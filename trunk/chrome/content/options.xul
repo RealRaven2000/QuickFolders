@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<prefwindow 
+    title="QuickFolders options"
+    buttons="accept,cancel"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    ondialogaccept="QuickFoldersOptions.accept();"
+>
+    <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+
+    <prefpane id="QuickFolders-Options-general" label="General">
+		<preferences>
+			<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
+			<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
+			<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
+                        <preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
+                        <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
+                        <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
+                        <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
+		</preferences>
+
+		<checkbox 
+			label="Show the &quot;QuickFolders&quot; label in the toolbar" 
+			preference="QuickFolders-Preferences-ShowQuickFoldersLabel" 
+			instantApply="true"
+		/>
+
+                <checkbox 
+			label="Use keyboard shortcuts (alt + 1 through alt + 9)" 
+			preference="QuickFolders-Preferences-UseKeyboardShortcuts" 
+			instantApply="true"
+		/>
+
+                <checkbox 
+			label="Show shortcut number on folder labels" 
+			preference="QuickFolders-Preferences-ShowShortcutNumber" 
+			instantApply="true"
+		/>
+
+                <checkbox 
+			label="Show the number of unread messages on the folder button" 
+			preference="QuickFolders-Preferences-ShowUnread" 
+			instantApply="true"
+		/>
+		
+		<checkbox 
+			label="Show buttons for folders with unread messages in bold" 
+			preference="QuickFolders-Preferences-ShowUnreadFoldersBold" 
+			instantApply="true"
+		/>
+
+                <checkbox 
+			label="Show the total number of messages on the folder button" 
+			preference="QuickFolders-Preferences-ShowTotalNumber" 
+			instantApply="true"
+		/>
+		
+		<checkbox 
+			label="Show buttons for folders with messages in them italic" 
+			preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
+			instantApply="true"
+		/>
+	</prefpane>
+
+</prefwindow>

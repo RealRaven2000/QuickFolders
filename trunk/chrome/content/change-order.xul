@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="layout.css" type="text/css"?>
+
+
+<dialog 
+	title="Change the order of the bookmarks"
+	buttons="accept"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    ondialogaccept="QuickFolders.Model.update();"
+    onload="QuickFolders.ChangeOrder.init(this)"
+>
+	<script>
+		QuickFolders = window.arguments[0];
+	</script>
+
+    <grid flex="1" id="QuickFolders-change-order-grid">
+    	<columns>
+    		<column flex="2" />
+    		<column flex="1" />
+    		<column flex="1" />
+    	</columns>
+    	
+    	<rows id="QuickFolders-change-order-grid-rows">
+    		<row>
+	    		<label>Test Folder</label>
+	    		<button label="Up" class="order-button" />
+	    		<button label="Down" class="order-button" />
+	    	</row>
+	    	<row>
+	    		<label>Test Folder 2</label>
+	    		<button label="Up" class="order-button" />
+	    		<button label="Down" class="order-button" />
+	    	</row>
+    	</rows>
+    </grid>
+</dialog>

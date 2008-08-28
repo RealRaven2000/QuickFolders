@@ -1,7 +1,17 @@
 var QuickFolders = {
 
     initDelayed: function() {
-        setTimeout("QuickFolders.init()",1000);
+        if(QuickFolders.isCorrectWindow()) {
+            document.getElementById('QuickFolders-Toolbar').style.display = '';
+            setTimeout("QuickFolders.init()",1000);
+        }
+        else {
+            document.getElementById('QuickFolders-Toolbar').style.display = 'none';
+        }
+    } ,
+    
+    isCorrectWindow: function() {
+        return document.getElementById('messengerWindow').getAttribute('windowtype') == "mail:3pane";
     } ,
 	
     init: function() {
@@ -181,14 +191,14 @@ var QuickFolders = {
         } ,
         
         onCompactFolder: function(folder) {
-      		var msgfolder = GetMsgFolderFromUri(folder.URI,true);
-      		//alert ("GetMsgFolderFromUri " + folder.URI + "=" + msgfolder);
-      		
-					var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
-					    
-					messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
-					alert("Compacted " + folder.name);
-      		
+            var msgfolder = GetMsgFolderFromUri(folder.URI,true);
+            //alert ("GetMsgFolderFromUri " + folder.URI + "=" + msgfolder);
+            
+            var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
+            
+            messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
+            alert("Compacted " + folder.name);
+            
         },
         
         addPopupSet: function(popupId, folder) {
@@ -302,33 +312,33 @@ var QuickFolders = {
             flavours.appendFlavour("text/unicode");  // test
             return flavours;
         },
-  
+        
         onDragOver: function (evt,flavour,session){
             session.canDrop = true;
         },
-  
+        
         onDrop: function (evt,dropData,dragSession) {
-	        
-          switch (dropData.flavour.contentType) {
-	          case  "text/x-moz-folder":
-	            if((sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession))) {
-			          alert("add folder: " + sourceUri);  
-		              QuickFolders.Model.addFolder(sourceUri);
-		          }
-							break;
-	          case "text/unicode":
-		           // plain text: button was moved
-		           var myDragPos;
-		           if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
-		             myDragPos="LeftMost"
-		           else
-		             myDragPos="RightMost"
-               QuickFolders.ChangeOrder.insertAtPosition(dropData.data, "", myDragPos); 
-	             break;
-          }
+            
+            switch (dropData.flavour.contentType) {
+                case  "text/x-moz-folder":
+                    var sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
+	            if(sourceUri) {
+                        QuickFolders.Model.addFolder(sourceUri);
+                    }
+                    break;
+                case "text/unicode":
+                    // plain text: button was moved
+                    var myDragPos;
+                    if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
+                        myDragPos="LeftMost"
+                    else
+                        myDragPos="RightMost"
+                    QuickFolders.ChangeOrder.insertAtPosition(dropData.data, "", myDragPos); 
+                    break;
+            }
         }
     } ,
-  	
+    
     buttonDragObserver: {
         getSupportedFlavours : function () {
             var flavours = new FlavourSet();
@@ -336,63 +346,61 @@ var QuickFolders = {
             flavours.appendFlavour("text/unicode");  // test
             return flavours;
         },
-  
+        
         onDragOver: function (evt,flavor,session){
             session.canDrop = (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode");
         },
-  
+        
         onDrop: function (evt,dropData,dragSession) {
             var button = evt.target;
             var targetFolder = button.folder;
             
-	          switch (dropData.flavour.contentType) {
-		          case  "text/x-moz-message":  // fall through
-		          case  "text/x-moz-folder":
-                var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-		            trans.addDataFlavor("text/x-moz-message");
-		            
-		            var messageUris = [];
-				        
-		            for (var i = 0; i < dragSession.numDropItems; i++) {
-		                dragSession.getData (trans, i);
-		                var dataObj = new Object();
-		                var flavor = new Object();
-		                var len = new Object();
-		                trans.getAnyTransferData(flavor, dataObj, len);
-			        	
-		                if (flavor.value == "text/x-moz-message" && dataObj) {
-		                    dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
-		                    var messageUri = dataObj.data.substring(0, len.value);
-		                    
-		                    messageUris.push(messageUri);
-		                }
-		            }
-		            // handler for dropping messages
-		            if(messageUris.length > 0) {
-		                QuickFolders.Util.moveMessages(
-		                  targetFolder, 
-		                  messageUris,
-		                  dragSession.dragAction == nsIDragService.DRAGDROP_ACTION_COPY
-		                )
-		            }
-		          
-								break;
-		          case "text/unicode":
-                var folder = GetMsgFolderFromUri(dropData.data, true);
-                QuickFolders.ChangeOrder.insertAtPosition(dropData.data, button.folder.URI, ""); 
-								break;
-	          }
+            switch (dropData.flavour.contentType) {
+                case  "text/x-moz-message":  // fall through
+                case  "text/x-moz-folder":
+                    var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+                    trans.addDataFlavor("text/x-moz-message");
+                    
+                    var messageUris = [];
+                    
+                    for (var i = 0; i < dragSession.numDropItems; i++) {
+                        dragSession.getData (trans, i);
+                        var dataObj = new Object();
+                        var flavor = new Object();
+                        var len = new Object();
+                        trans.getAnyTransferData(flavor, dataObj, len);
+                        
+                        if (flavor.value == "text/x-moz-message" && dataObj) {
+                            dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
+                            var messageUri = dataObj.data.substring(0, len.value);
+                            
+                            messageUris.push(messageUri);
+                        }
+                    }
+                    // handler for dropping messages
+                    if(messageUris.length > 0) {
+                        QuickFolders.Util.moveMessages(
+                          targetFolder, 
+                          messageUris,
+                          dragSession.dragAction == nsIDragService.DRAGDROP_ACTION_COPY
+                        )
+                    }
+                    
+                    break;
+                case "text/unicode":
+                    QuickFolders.ChangeOrder.insertAtPosition(dropData.data, button.folder.URI, ""); 
+                    break;
+            }
         },
         // new handler for starting drag of buttons (re-order)
-	      onDragStart: function (event, transferData, action) {
-			    var txt = event.target.label; 
-			    var button = event.target;
-			    transferData.data = new TransferData();
-			    transferData.data.addDataForFlavour("text/unicode", button.folder.URI); // test 
-			  }
-
+        onDragStart: function (event, transferData, action) {
+            var button = event.target;
+            transferData.data = new TransferData();
+            transferData.data.addDataForFlavour("text/unicode", button.folder.URI); // test 
+        }
+        
     } ,
-  	
+    
     Preferences: {
         service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
   		
@@ -690,7 +698,9 @@ var myFolderListener = {
     OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
         //alert("OnIntPropertyChanged has fired with property " + item + " / " + property + "\n");
         if (property == "TotalUnreadMessages") {
-            QuickFolders.Interface.updateFolders();
+            if(QuickFolders) {
+                QuickFolders.Interface.updateFolders();
+            }
         }
     },
     OnItemBoolPropertyChanged: function(item, property, oldValue, newValue) {},
@@ -698,7 +708,9 @@ var myFolderListener = {
     OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
     OnItemEvent: function(item, event) {
         if(event == "FolderLoaded") {
-            QuickFolders.Interface.onFolderSelected();
+            if(QuickFolders) {
+                QuickFolders.Interface.onFolderSelected();
+            }
         }
     },
     OnFolderLoaded: function(aFolder) { },

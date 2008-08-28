@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="layout.css" type="text/css"?>
+
+<overlay id="QuickFolders-Overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
+    
+
+	<toolbox id="mail-toolbox">
+		<toolbar 
+			id="QuickFolders-Toolbar" 
+			toolbarname="QuickFolders Toolbar" 
+			class="toolbar-primary chromeclass-toolbar" 
+			ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
+  			ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+    		dragdroparea="QuickFolders-FoldersBox"
+			customizable="false"
+			context="QuickFolders-ToolbarPopup"
+		>
+			
+			<label style="font-weight: bold;" class="toolbar-height" id="QuickFolders-title-label">QuickFolders:</label>
+			
+			<box 
+				id="QuickFolders-FoldersBox" 
+				align="horizontal" 
+				flex="100%"
+    		>
+    			<!-- Filled dynamically by the script -->	
+    			<label class="toolbar-height">Drag folders here to bookmark. Click the bookmark to go to the folder, drag messages to move/copy them there.</label>
+    		</box>
+    		
+
+			<popupset>
+				<menupopup id="QuickFolders-ToolbarPopup">
+					<menuitem label="QuickFolders Options" oncommand="QuickFolders.Interface.viewOptions()" />
+					<menuitem label="Change the order of the bookmarks" oncommand="QuickFolders.Interface.viewChangeOrder()" />
+				</menupopup>
+			</popupset>    		
+			
+		</toolbar>
+	</toolbox>
+</overlay>
+

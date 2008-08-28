@@ -133,6 +133,8 @@ var QuickFolders = {
             button.setAttribute("class","toolbar-height");
             button.setAttribute("label", label);
             
+            
+            
             if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
                 button.className += " has-unread";
             }
@@ -155,6 +157,9 @@ var QuickFolders = {
 			
             button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
             button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver)");
+            // AG add dragging of buttons
+            button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+            
             
             return button;
         } ,
@@ -174,8 +179,18 @@ var QuickFolders = {
                 QuickFolders.Model.renameFolder(folder.URI, newName);
             }
         } ,
-		
-
+        
+        onCompactFolder: function(folder) {
+      		var msgfolder = GetMsgFolderFromUri(folder.URI,true);
+      		//alert ("GetMsgFolderFromUri " + folder.URI + "=" + msgfolder);
+      		
+					var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
+					    
+					messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
+					alert("Compacted " + folder.name);
+      		
+        },
+        
         addPopupSet: function(popupId, folder) {
             popupset = document.createElement('popupset');
             this.getToolbar().appendChild(popupset);
@@ -195,6 +210,12 @@ var QuickFolders = {
             menuitem.setAttribute('label','Rename bookmark..');
             menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
             menupopup.appendChild(menuitem);
+            
+            menuitem = document.createElement('menuitem');
+            menuitem.setAttribute('label','Compact Folder');
+            menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
+            menupopup.appendChild(menuitem);
+            
         } ,
 		
         viewOptions: function() {
@@ -217,6 +238,7 @@ var QuickFolders = {
             
             if((selectedButton = this.getButtonByFolder(folder))) {
                 selectedButton.className += " selected-folder";
+                // selectedButton.setAttribute("text-decoration","underline !important");
             }
         } 
     } ,
@@ -244,7 +266,7 @@ var QuickFolders = {
                     return this.selectedFolders[i];
                 }
             }
-			
+	
             return false;
         } ,
 		
@@ -272,10 +294,12 @@ var QuickFolders = {
 		
     } ,
 	
+    // handler for dropping folder shortcuts
     toolbarDragObserver: {
         getSupportedFlavours : function () {
             var flavours = new FlavourSet();
             flavours.appendFlavour("text/x-moz-folder");
+            flavours.appendFlavour("text/unicode");  // test
             return flavours;
         },
   
@@ -284,9 +308,24 @@ var QuickFolders = {
         },
   
         onDrop: function (evt,dropData,dragSession) {
-            if((sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession))) {
-                QuickFolders.Model.addFolder(sourceUri);
-            }
+	        
+          switch (dropData.flavour.contentType) {
+	          case  "text/x-moz-folder":
+	            if((sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession))) {
+			          alert("add folder: " + sourceUri);  
+		              QuickFolders.Model.addFolder(sourceUri);
+		          }
+							break;
+	          case "text/unicode":
+		           // plain text: button was moved
+		           var myDragPos;
+		           if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
+		             myDragPos="LeftMost"
+		           else
+		             myDragPos="RightMost"
+               QuickFolders.ChangeOrder.insertAtPosition(dropData.data, "", myDragPos); 
+	             break;
+          }
         }
     } ,
   	
@@ -294,45 +333,64 @@ var QuickFolders = {
         getSupportedFlavours : function () {
             var flavours = new FlavourSet();
             flavours.appendFlavour("text/x-moz-message");
+            flavours.appendFlavour("text/unicode");  // test
             return flavours;
         },
   
         onDragOver: function (evt,flavor,session){
-            session.canDrop = (flavor.contentType == "text/x-moz-message");
+            session.canDrop = (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode");
         },
   
         onDrop: function (evt,dropData,dragSession) {
             var button = evt.target;
             var targetFolder = button.folder;
-			
-            var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-            trans.addDataFlavor("text/x-moz-message");
             
-            var messageUris = [];
-		    
-            for (var i = 0; i < dragSession.numDropItems; i++) {
-                dragSession.getData (trans, i);
-                var dataObj = new Object();
-                var flavor = new Object();
-                var len = new Object();
-                trans.getAnyTransferData(flavor, dataObj, len);
-	        	
-                if (flavor.value == "text/x-moz-message" && dataObj) {
-                    dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
-                    var messageUri = dataObj.data.substring(0, len.value);
-                    
-                    messageUris.push(messageUri);
-                }
-            }
-            
-            if(messageUris.length > 0) {
-                QuickFolders.Util.moveMessages(
-                  targetFolder, 
-                  messageUris,
-                  dragSession.dragAction == nsIDragService.DRAGDROP_ACTION_COPY
-                )
-            }
-        }
+	          switch (dropData.flavour.contentType) {
+		          case  "text/x-moz-message":  // fall through
+		          case  "text/x-moz-folder":
+                var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+		            trans.addDataFlavor("text/x-moz-message");
+		            
+		            var messageUris = [];
+				        
+		            for (var i = 0; i < dragSession.numDropItems; i++) {
+		                dragSession.getData (trans, i);
+		                var dataObj = new Object();
+		                var flavor = new Object();
+		                var len = new Object();
+		                trans.getAnyTransferData(flavor, dataObj, len);
+			        	
+		                if (flavor.value == "text/x-moz-message" && dataObj) {
+		                    dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
+		                    var messageUri = dataObj.data.substring(0, len.value);
+		                    
+		                    messageUris.push(messageUri);
+		                }
+		            }
+		            // handler for dropping messages
+		            if(messageUris.length > 0) {
+		                QuickFolders.Util.moveMessages(
+		                  targetFolder, 
+		                  messageUris,
+		                  dragSession.dragAction == nsIDragService.DRAGDROP_ACTION_COPY
+		                )
+		            }
+		          
+								break;
+		          case "text/unicode":
+                var folder = GetMsgFolderFromUri(dropData.data, true);
+                QuickFolders.ChangeOrder.insertAtPosition(dropData.data, button.folder.URI, ""); 
+								break;
+	          }
+        },
+        // new handler for starting drag of buttons (re-order)
+	      onDragStart: function (event, transferData, action) {
+			    var txt = event.target.label; 
+			    var button = event.target;
+			    transferData.data = new TransferData();
+			    transferData.data.addDataForFlavour("text/unicode", button.folder.URI); // test 
+			  }
+
     } ,
   	
     Preferences: {
@@ -381,7 +439,12 @@ var QuickFolders = {
         
         isShowFoldersWithMessagesItalic: function() {
             return this.service.getBoolPref("extensions.quickfolders.showFoldersWithMessagesItalic");
+        } ,
+        
+        isShowSelectedUnderlined: function() {
+            return this.service.getBoolPref("extensions.quickfolders.showSelectedUnderlined");
         }
+        
         
     } ,
   	
@@ -405,7 +468,7 @@ var QuickFolders = {
 		
 		
         getFolderUriFromDropData: function(dropData, dragSession) {
-            var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+           var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
             trans.addDataFlavor("text/x-moz-folder");
 		    
             dragSession.getData (trans, 0);
@@ -528,7 +591,58 @@ var QuickFolders = {
                     }
                 }
             }
-        } 
+        } ,
+        
+        insertAtPosition: function(buttonURI, targetURI, toolbarPos) {
+          var folderEntry, folder;
+          var iSource, iTarget;
+          
+		      // alert (i + " " + folder.name + " lbl: " + folderEntry.name + " uri: " + folderEntry.uri);
+          // alert("insertAtPosition(" + buttonURI +", "+ targetURI +  ")");
+          modelSelection = QuickFolders.Model.selectedFolders;
+          
+          for(var i = 0; i < modelSelection.length; i++) {
+            folderEntry  = QuickFolders.Model.selectedFolders[i];
+	          folder = GetMsgFolderFromUri(folderEntry.uri, true);
+
+	          if (toolbarPos=="")
+	            if (folderEntry.uri==targetURI) 
+		            iTarget = i;
+            
+            if (folderEntry.uri==buttonURI) 
+	            iSource = i;
+          }
+          
+          switch(toolbarPos) {
+	          case "LeftMost":
+	            iTarget = 0;
+	            break;
+	          case "RightMost":
+	            iTarget = modelSelection.length-1;
+	            break;
+	         }
+
+		      if (iSource!=iTarget) {
+			      var tmp;
+			      if (iSource<iTarget) { // drag right
+				      for (i=iSource; i<iTarget; i++) {
+                tmp = modelSelection[i];
+                modelSelection[i] = modelSelection[i+1];
+                modelSelection[i+1] = tmp;
+              }
+			      }
+			      else {  // drag left
+				      for (i=iSource; i>iTarget; i--) {
+                tmp = modelSelection[i];
+                modelSelection[i] = modelSelection[i-1];
+                modelSelection[i-1] = tmp;
+              }
+			      }
+			      
+            QuickFolders.Interface.updateFolders();
+		      }
+        }
+        
     }
 }
 

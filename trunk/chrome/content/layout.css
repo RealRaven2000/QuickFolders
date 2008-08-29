@@ -6,41 +6,14 @@
 #QuickFolders-Toolbar {
     margin: 0;
     padding: 0;
-    border: 1px solid #AAA;
-    background: Menu; /* #FFFDF3 */;
-    border-bottom: 3px solid Highlight; /* #FFF3B3 */;
 }
 
 button.order-button {
     width: 20px;
 }
 
-#QuickFolders-Toolbar toolbarbutton {
-    background: ButtonFace; /* #FFFAE1 */;
-    padding: 1px 5px 0px 5px;
-    border: 1px solid #AAA;
-    margin: 3px 0px 0px 3px;
-}
-
-#QuickFolders-Toolbar toolbarbutton:hover {
-    color: HighlightText !important;
-    background: Highlight; /* #FFF3B3 */;
-    margin-top: 2px !important; 
-    padding-top: 0px  !important; 
-    height: 25px;
-}
-
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
     text-decoration: underline;
-    border: 1px solid #666 !important;
-    border-bottom: none !important;
-    background:  Highlight !important; /* #FFF3B3 */;
-    color: HighlightText !important;
-    padding: 2px 5px !important;
-    padding-top: 0px  !important; 
-    margin-top: 2px !important;    
-    margin-bottom: -1px !important;
-    height: 26px;
 }
 
 #QuickFolders-Toolbar toolbarbutton.has-unread {

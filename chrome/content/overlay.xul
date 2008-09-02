@@ -19,7 +19,7 @@
             context="QuickFolders-ToolbarPopup"
             style="display: none;"
         >
-            <label style="font-weight: bold;" class="toolbar-height" id="QuickFolders-title-label">QuickFolders:</label>
+            <label id="QuickFolders-title-label">QuickFolders:</label>
 
             <box 
                 id="QuickFolders-FoldersBox" 

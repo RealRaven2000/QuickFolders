@@ -39,9 +39,22 @@ var QuickFolders = {
     Interface: {
         
         buttonsByOffset: [],
+        menuPopupsByOffset: [],
 		
         updateFolders: function() {
+            // AG made flat style configurable
+
+            var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
+            
+            if (QuickFolders.Preferences.isShowToolbarFlatstyle()) {
+                toolbar.className = "toolbar-flat";
+            }
+            else {
+                toolbar.className = "";
+            }
+            
             this.buttonsByOffset = [];
+            this.menuPopupsByOffset = [];
             
             QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
@@ -140,10 +153,10 @@ var QuickFolders = {
             }
 			
             var button = document.createElement("toolbarbutton");
-            button.setAttribute("class","toolbar-height");
+            
+            //button.setAttribute("class",ToolbarStyle);  // was toolbar-height!
+              
             button.setAttribute("label", label);
-            
-            
             
             if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
                 button.className += " has-unread";
@@ -162,18 +175,19 @@ var QuickFolders = {
             button.setAttribute('context',popupId);
 
             this.getToolbar().appendChild(button);
+            this.addPopupSet(popupId,folder, offset);
 			
-            this.addPopupSet(popupId,folder);
-			
-            button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
-            button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver)");
+            button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+            button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+            button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+            
             // AG add dragging of buttons
             button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
             
             
             return button;
         } ,
-		
+        
         onButtonClick: function(button) {
             MySelectFolder(button.folder.URI);
         } ,
@@ -201,12 +215,13 @@ var QuickFolders = {
             
         },
         
-        addPopupSet: function(popupId, folder) {
+        addPopupSet: function(popupId, folder,offset) {
             popupset = document.createElement('popupset');
             this.getToolbar().appendChild(popupset);
 
             menupopup = document.createElement('menupopup');
             menupopup.setAttribute('id',popupId);
+            menupopup.className = 'QuickFolders-folder-popup';
             menupopup.folder = folder;
 			
             popupset.appendChild(menupopup);
@@ -226,8 +241,50 @@ var QuickFolders = {
             menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
             menupopup.appendChild(menuitem);
             
+            this.addSubFoldersPopup(menupopup, folder);    
+            
+            this.menuPopupsByOffset[offset] = menupopup;
+            
         } ,
-		
+        
+        // add all subfolders (1st level, non recursive) of folder to popupMenu
+        addSubFoldersPopup: function(popupMenu, folder) {
+            if (folder.hasSubFolders) {
+                var subfolders = folder.GetSubFolders();
+                var done = false;
+                var menuitem = document.createElement('menuseparator');
+                popupMenu.appendChild(menuitem);
+                
+                while (!done) {
+                    var subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+                    //if (nostalgy_completion_options.sort_folders) { arr.push(subfolder); }
+                    //else { IterateSubfolders(subfolder,f); }
+                    try {
+                        menuitem = document.createElement('menuitem');
+                        menuitem.setAttribute('label',subfolder.name ); //+ subfolder.URI
+                        // MySelectFolder(button.folder.URI);
+                        menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");  // "MsgCompactFolder(false);" only for current folder
+                        
+                        menuitem.folder = subfolder;
+                        menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
+                        menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");            
+                        
+                        
+                        popupMenu.appendChild(menuitem);
+                        subfolders.next();
+                    }
+                    catch(e) {done = true;}
+                }
+                
+            }
+        } ,
+        
+        // select subfolder (on click)
+        onSelectSubFolder: function(folderUri) {
+	       MySelectFolder (folderUri);
+        } ,
+        
+
         viewOptions: function() {
             prefWindow = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders);
         } ,
@@ -347,6 +404,35 @@ var QuickFolders = {
             return flavours;
         },
         
+        dragOverTimer: null,
+        
+        onDragEnter: function(evt, flavor, session) {
+            try {
+                var button = evt.target;
+            
+                //show context menu if dragged over a button which has subfolders
+                if(button.tagName == "toolbarbutton") {
+                    var targetFolder = button.folder;
+
+                    if(targetFolder.hasSubFolders) {
+                        //close other context menus
+                        otherPopups = QuickFolders.Interface.menuPopupsByOffset;
+                        for(var i = 0; i < otherPopups.length; i++) {
+                            otherPopups[i].hidePopup();
+                        }
+
+                        var popupId = 'QuickFolders-folder-popup-' + targetFolder.URI;
+                        var popup = document.getElementById(popupId);
+                        popup.showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+                    }
+                }
+            }
+            catch(e) {
+                alert(e);
+            }
+        } ,
+        
+
         onDragOver: function (evt,flavor,session){
             session.canDrop = (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode");
         },
@@ -449,8 +535,8 @@ var QuickFolders = {
             return this.service.getBoolPref("extensions.quickfolders.showFoldersWithMessagesItalic");
         } ,
         
-        isShowSelectedUnderlined: function() {
-            return this.service.getBoolPref("extensions.quickfolders.showSelectedUnderlined");
+        isShowToolbarFlatstyle: function() {
+            return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
         }
         
         

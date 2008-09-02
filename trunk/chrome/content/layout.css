@@ -1,15 +1,16 @@
-.toolbar-height {
-    line-height: 24px;
-    height: 24px;
-}
-
-#QuickFolders-Toolbar {
-    margin: 0;
-    padding: 0;
-}
 
 button.order-button {
     width: 20px;
+}
+
+#QuickFolders-Toolbar {
+    min-height: 24px;
+    line-height: 24px;
+}
+
+#QuickFolders-Toolbar toolbarbutton {
+    line-height: 24px;
+    height: 24px;
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -24,5 +25,53 @@ button.order-button {
     font-style: italic;
 }
 
+#QuickFolders-title-label {
+    line-height: 24px;
+    font-weight: bold;
+}
 
+/* Flat Styles below */
+
+#QuickFolders-Toolbar.toolbar-flat {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #AAA;
+    background: Menu; 
+    border-bottom: 3px solid Highlight;
+}
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+    -moz-appearance: none !important;
+    background: ButtonFace; 
+    padding: 1px 5px 0px 5px;
+    border: 1px solid #AAA;
+    margin: 3px 0px 0px 3px;	
+    line-height: 24px;
+    height: 24px;
+}
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
+    height: 25px;
+}
+
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
+    background: Highlight !important; 
+    color: HighlightText !important;
+    margin-top: 2px !important; 
+    padding-top: 0px  !important; 
+}
+
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
+    border: 1px solid #666 !important;
+    border-bottom: none !important;
+    padding: 2px 5px !important;
+    padding-top: 0px  !important; 
+    margin-top: 2px !important;    
+    margin-bottom: -1px !important;
+    height: 26px;
+    background:  Highlight !important; 
+    color: HighlightText !important;
+}
 

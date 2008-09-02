@@ -416,7 +416,7 @@ var QuickFolders = {
 
                     if(targetFolder.hasSubFolders) {
                         //close other context menus
-                        otherPopups = QuickFolders.Interface.menuPopupsByOffset;
+                        var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
                         for(var i = 0; i < otherPopups.length; i++) {
                             otherPopups[i].hidePopup();
                         }

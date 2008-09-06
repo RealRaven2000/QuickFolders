@@ -14,9 +14,14 @@
 	<script>
 		QuickFolders = window.arguments[0];
 	</script>
+	
+	
+ 	<description flex="1" style="max-width:300px">
+       Bookmarks can also be dragged to change positions! Drop one on top of another to insert before / after it.
+    </description>
 
     <grid flex="1" id="QuickFolders-change-order-grid">
-    	<columns>
+   	<columns>
     		<column flex="2" />
     		<column flex="1" />
     		<column flex="1" />

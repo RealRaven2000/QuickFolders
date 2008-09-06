@@ -25,6 +25,7 @@ button.order-button {
     font-style: italic;
 }
 
+
 #QuickFolders-title-label {
     line-height: 24px;
     font-weight: bold;
@@ -74,4 +75,17 @@ button.order-button {
     background:  Highlight !important; 
     color: HighlightText !important;
 }
+
+#QuickFolders-Toolbar toolbarbutton.dragRIGHT {
+  border-style: solid !important;
+  border-right-width: thick !important;
+  border-right-color: red !important;
+}
+
+#QuickFolders-Toolbar toolbarbutton.dragLEFT {
+  border-style: solid !important;
+  border-left-width: thick !important;
+  border-left-color: red !important;
+}
+
 

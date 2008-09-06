@@ -1,3 +1,29 @@
+
+/*
+  File History
+  ============
+  
+  05/09/2008
+    AG added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
+       made sorting with mouse more persistant (it sometimes jumped back!)
+    
+    
+  KNOWN ISSUES
+  ============
+  05/09/2008
+    - if folders are added / removed during session this is not refreshed in subfolder list of popup set!
+  
+    
+  PLANNED FEATURES / NICE TO HAVE
+  ===============================
+    - dragging onto Menus should highlight target folder (difficult?)
+    - dragged menus y position sometimes "drifts down". 
+    - nice to have: visual indication for drop position (like FX tabs)
+
+
+
+*/
+
 var QuickFolders = {
 
     initDelayed: function() {
@@ -183,6 +209,7 @@ var QuickFolders = {
             
             // AG add dragging of buttons
             button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+            button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
             
             
             return button;
@@ -206,13 +233,10 @@ var QuickFolders = {
         
         onCompactFolder: function(folder) {
             var msgfolder = GetMsgFolderFromUri(folder.URI,true);
-            //alert ("GetMsgFolderFromUri " + folder.URI + "=" + msgfolder);
-            
             var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
             
             messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
             alert("Compacted " + folder.name);
-            
         },
         
         addPopupSet: function(popupId, folder,offset) {
@@ -257,11 +281,9 @@ var QuickFolders = {
                 
                 while (!done) {
                     var subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
-                    //if (nostalgy_completion_options.sort_folders) { arr.push(subfolder); }
-                    //else { IterateSubfolders(subfolder,f); }
                     try {
                         menuitem = document.createElement('menuitem');
-                        menuitem.setAttribute('label',subfolder.name ); //+ subfolder.URI
+                        menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
                         // MySelectFolder(button.folder.URI);
                         menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");  // "MsgCompactFolder(false);" only for current folder
                         
@@ -406,30 +428,134 @@ var QuickFolders = {
         
         dragOverTimer: null,
         
-        onDragEnter: function(evt, flavor, session) {
+        onDragEnter: function(evt, dragSession) {
             try {
                 var button = evt.target;
             
                 //show context menu if dragged over a button which has subfolders
                 if(button.tagName == "toolbarbutton") {
+	                
+	                
                     var targetFolder = button.folder;
-
+					
+                    // only drag messages into popup, not buttons
                     if(targetFolder.hasSubFolders) {
+	                    
                         //close other context menus
                         var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
                         for(var i = 0; i < otherPopups.length; i++) {
                             otherPopups[i].hidePopup();
                         }
+                        
+                        if (dragSession.numDropItems==1) {
+	                      if (dragSession.isDataFlavorSupported("text/unicode" )) {
+		                    // show reordering target position!
+		                    // right or left of current button! (try styling button with > OR < to show which side the drop happens)
+		                    // instead of unpacking the whole dragSession, can we use the starting x position 
+		                    // and compare this to the current one?
+		                    var node = dragSession.sourceNode;  // toolbarbutton
+		                    //document.getBoxObjectFor(document.getElementById(
+		                    
+		                    
+		                    // WIP WIP WIP
+		                    // WIP WIP WIP
+		                    // WIP WIP WIP
+		                    // WIP WIP WIP
+		                    // I want to find out whether drop target button is right or left from 
+		                    // source button!!!!!
+		                    
+		                    // want to get from dom node (toolbarbutton) to Element ??
+		                    if (dragSession.sourceNode.hasAttributes()) {
+			                   //var element = getElementById(node.attributes.item("context"))
+			                    var map = node.attributes; // nsIDOMNamedNodeMap
+								var j;
+								for (j=0; j<map.length; ++j){
+									var attr = map.item(j);
+									  window.dump(attr.nodeName + " : " + attr.nodeValue + "\n")
+									if (attr.nodeName=="context") {
+										// the context menu,
+										
+										var modelSelection = QuickFolders.Model.selectedFolders;
+										for(var i = 0; i < modelSelection.length; i++) {
+											
+									    }	
 
+									  var el = document.getElementById(attr.nodeValue)
+									  
+									  var box = el.boxObject
+									  if (box) {
+									     window.dump("x=" + box.screenX + ", y=" + box.screenY)
+									  }
+								   } 
+								}
+		                    }
+		                    
+
+		                    
+		                    return;  // don't show popup when reordering tabs
+	                      }
+                        } 
+                        
+                        // instead of using the full popup menu (containing the 3 top commands)
+                        // try to create droptarget menu that only contains the target subfolders "on the fly"
+                        // haven't found a way to tidy these up, yet (should be done in onDragExit?) 
+                        // Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
+                        // no menus necessary for folders without subfolders!
+			            var popupset = document.createElement('popupset');
+			            QuickFolders.Interface.getToolbar().appendChild(popupset);
+			            var menupopup = document.createElement('menupopup');
+			            var popupId = 'moveTo_'+targetFolder.URI;
+			            menupopup.setAttribute('id', popupId); 
+			            menupopup.className = 'QuickFolders-folder-popup';
+			            menupopup.folder = targetFolder;
+			            popupset.appendChild(menupopup);
+	                    QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder);
+	                    document.getElementById(popupId).showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+                        
+						/* original by Alex (displays full menu)
                         var popupId = 'QuickFolders-folder-popup-' + targetFolder.URI;
                         var popup = document.getElementById(popupId);
                         popup.showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+                        */
                     }
+                    
                 }
+		        // delete previous drag folders popup!
+                if (globalHidePopupId && globalHidePopupId!="") {
+	                    var popup = document.getElementById(globalHidePopupId);
+				        try {
+					        popup.parentNode.removeChild(popup); //was popup.hidePopup() 
+				        }
+				        catch (e) {
+					        window.dump("removing popup: " + globalHidePopupId + " failed!\n" + e + "\n");	
+				        }
+				        globalHidePopupId="";
+                    }
             }
             catch(e) {
-                alert(e);
+                alert("quickFolders:\n" + e);
             }
+        } ,
+        
+        // deal with old folder popups 	
+        onDragExit: function(event, dragSession) {
+	        if (dragSession.isDataFlavorSupported("text/unicode" ))
+		    	return;  // don't remove popup when reordering tabs
+		    // problem: event also fires when dragging into the menu, so we can not remove it then!
+	        var button = event.target;
+	        var targetFolder = button.folder;
+	        var popupId = 'moveTo_'+targetFolder.URI;
+	        
+	        // this popup needs to be removed if we drag into another button.
+	        try {
+		        if (document.getElementById(popupId)) 
+			        globalHidePopupId = popupId; // arm for hiding! GLOBAL VAR!!
+            }
+            catch(ex) {
+	            window.dump("Cannot setup for delete: popup " + popupId + "\n" + ex);
+            }
+
+	            
         } ,
         
 
@@ -696,14 +822,14 @@ var QuickFolders = {
           modelSelection = QuickFolders.Model.selectedFolders;
           
           for(var i = 0; i < modelSelection.length; i++) {
-            folderEntry  = QuickFolders.Model.selectedFolders[i];
+              folderEntry  = QuickFolders.Model.selectedFolders[i];
 	          folder = GetMsgFolderFromUri(folderEntry.uri, true);
 
 	          if (toolbarPos=="")
 	            if (folderEntry.uri==targetURI) 
 		            iTarget = i;
             
-            if (folderEntry.uri==buttonURI) 
+              if (folderEntry.uri==buttonURI) 
 	            iSource = i;
           }
           
@@ -714,28 +840,27 @@ var QuickFolders = {
 	          case "RightMost":
 	            iTarget = modelSelection.length-1;
 	            break;
-	         }
+	      }
 
-		      if (iSource!=iTarget) {
-			      var tmp;
-			      if (iSource<iTarget) { // drag right
-				      for (i=iSource; i<iTarget; i++) {
-                tmp = modelSelection[i];
-                modelSelection[i] = modelSelection[i+1];
-                modelSelection[i+1] = tmp;
-              }
-			      }
-			      else {  // drag left
-				      for (i=iSource; i>iTarget; i--) {
-                tmp = modelSelection[i];
-                modelSelection[i] = modelSelection[i-1];
-                modelSelection[i-1] = tmp;
-              }
-			      }
-			      
-            QuickFolders.Interface.updateFolders();
+	      if (iSource!=iTarget) {
+		      var tmp;
+		      if (iSource<iTarget) { // drag right
+			      for (i=iSource; i<iTarget; i++) {
+		            tmp = modelSelection[i];
+		            modelSelection[i] = modelSelection[i+1];
+		            modelSelection[i+1] = tmp;
+		        }
 		      }
-        }
+		      else {  // drag left
+			      for (i=iSource; i>iTarget; i--) {
+		            tmp = modelSelection[i];
+		            modelSelection[i] = modelSelection[i-1];
+		            modelSelection[i-1] = tmp;
+		          }
+		      }
+		      QuickFolders.Model.update(); // update folders!
+		 }
+	   }
         
     }
 }
@@ -809,3 +934,6 @@ var mailSession = Components.classes["@mozilla.org/messenger/services/session;1"
 mailSession.AddFolderListener(myFolderListener, Components.interfaces.nsIFolderListener.all);
 
 window.addEventListener("load", QuickFolders.initDelayed, true);
+
+var globalHidePopupId="";
+window.dump("globalHidePopupId=" + globalHidePopupId);

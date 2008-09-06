@@ -432,69 +432,40 @@ var QuickFolders = {
             try {
                 var button = evt.target;
             
-                //show context menu if dragged over a button which has subfolders
                 if(button.tagName == "toolbarbutton") {
-	                
-	                
-                    var targetFolder = button.folder;
-					
-                    // only drag messages into popup, not buttons
-                    if(targetFolder.hasSubFolders) {
+                    // highlight drop target
+                    if (dragSession.numDropItems==1) {
+                      if (dragSession.isDataFlavorSupported("text/unicode" )) {
+	                    // show reordering target position!
+	                    // right or left of current button! (try styling button with > OR < to show on which side the drop will happen)
+	                    var node = dragSession.sourceNode;  
 	                    
-                        //close other context menus
+	                    // find out whether drop target button is right or left from source button:
+	                    if (node.hasAttributes()) {
+							var j;
+							var sDirection;
+							  var box = node.boxObject;
+							  if (box) {
+								  var dx = (box.x - button.boxObject.x);
+								  if (dx != 0) {
+									  sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT")
+								      //window.dump("dx=" + dx + ", " + button.getAttribute("label") + " " + sDirection + "\n");
+								      button.className += (" " + sDirection); // add style for drop arrow (remove onDragExit)
+							      }
+							  }
+	                    }
+                      }
+                    } 
+  
+	                //show context menu if dragged over a button which has subfolders
+                    var targetFolder = button.folder;
+                    if(targetFolder.hasSubFolders) {
+                        //close any other context menus
                         var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
                         for(var i = 0; i < otherPopups.length; i++) {
                             otherPopups[i].hidePopup();
                         }
-                        
-                        if (dragSession.numDropItems==1) {
-	                      if (dragSession.isDataFlavorSupported("text/unicode" )) {
-		                    // show reordering target position!
-		                    // right or left of current button! (try styling button with > OR < to show which side the drop happens)
-		                    // instead of unpacking the whole dragSession, can we use the starting x position 
-		                    // and compare this to the current one?
-		                    var node = dragSession.sourceNode;  // toolbarbutton
-		                    //document.getBoxObjectFor(document.getElementById(
-		                    
-		                    
-		                    // WIP WIP WIP
-		                    // WIP WIP WIP
-		                    // WIP WIP WIP
-		                    // WIP WIP WIP
-		                    // I want to find out whether drop target button is right or left from 
-		                    // source button!!!!!
-		                    
-		                    // want to get from dom node (toolbarbutton) to Element ??
-		                    if (dragSession.sourceNode.hasAttributes()) {
-			                   //var element = getElementById(node.attributes.item("context"))
-			                    var map = node.attributes; // nsIDOMNamedNodeMap
-								var j;
-								for (j=0; j<map.length; ++j){
-									var attr = map.item(j);
-									  window.dump(attr.nodeName + " : " + attr.nodeValue + "\n")
-									if (attr.nodeName=="context") {
-										// the context menu,
-										
-										var modelSelection = QuickFolders.Model.selectedFolders;
-										for(var i = 0; i < modelSelection.length; i++) {
-											
-									    }	
-
-									  var el = document.getElementById(attr.nodeValue)
-									  
-									  var box = el.boxObject
-									  if (box) {
-									     window.dump("x=" + box.screenX + ", y=" + box.screenY)
-									  }
-								   } 
-								}
-		                    }
-		                    
-
-		                    
-		                    return;  // don't show popup when reordering tabs
-	                      }
-                        } 
+	                    return;  // don't show popup when reordering tabs
                         
                         // instead of using the full popup menu (containing the 3 top commands)
                         // try to create droptarget menu that only contains the target subfolders "on the fly"
@@ -510,7 +481,8 @@ var QuickFolders = {
 			            menupopup.folder = targetFolder;
 			            popupset.appendChild(menupopup);
 	                    QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder);
-	                    document.getElementById(popupId).showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+	                    // client coordinates? Here something goes awry sometimes:
+	                    document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
                         
 						/* original by Alex (displays full menu)
                         var popupId = 'QuickFolders-folder-popup-' + targetFolder.URI;
@@ -518,6 +490,7 @@ var QuickFolders = {
                         popup.showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
                         */
                     }
+                  
                     
                 }
 		        // delete previous drag folders popup!
@@ -539,10 +512,15 @@ var QuickFolders = {
         
         // deal with old folder popups 	
         onDragExit: function(event, dragSession) {
-	        if (dragSession.isDataFlavorSupported("text/unicode" ))
-		    	return;  // don't remove popup when reordering tabs
-		    // problem: event also fires when dragging into the menu, so we can not remove it then!
 	        var button = event.target;
+	        if (dragSession.isDataFlavorSupported("text/unicode" )) 
+	        {
+		        // remove dragdrop marker:
+		        button.className = button.className.replace(/\s*dragLEFT/,"");
+		        button.className = button.className.replace(/\s*dragRIGHT/,"");
+		    	return;  // don't remove popup when reordering tabs
+	        }
+		    // problem: event also fires when dragging into the menu, so we can not remove it then!
 	        var targetFolder = button.folder;
 	        var popupId = 'moveTo_'+targetFolder.URI;
 	        
@@ -936,4 +914,4 @@ mailSession.AddFolderListener(myFolderListener, Components.interfaces.nsIFolderL
 window.addEventListener("load", QuickFolders.initDelayed, true);
 
 var globalHidePopupId="";
-window.dump("globalHidePopupId=" + globalHidePopupId);
+window.dump("globalHidePopupId=" + globalHidePopupId + "\n");

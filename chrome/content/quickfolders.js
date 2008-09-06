@@ -465,7 +465,8 @@ var QuickFolders = {
                         for(var i = 0; i < otherPopups.length; i++) {
                             otherPopups[i].hidePopup();
                         }
-	                    return;  // don't show popup when reordering tabs
+                        if (dragSession.isDataFlavorSupported("text/unicode" ))
+	                      return;  // don't show popup when reordering tabs
                         
                         // instead of using the full popup menu (containing the 3 top commands)
                         // try to create droptarget menu that only contains the target subfolders "on the fly"

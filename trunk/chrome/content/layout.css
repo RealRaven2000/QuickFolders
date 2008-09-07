@@ -76,16 +76,22 @@ button.order-button {
     color: HighlightText !important;
 }
 
-#QuickFolders-Toolbar toolbarbutton.dragRIGHT {
+#QuickFolders-Toolbar toolbarbutton.dragRIGHT, toolbarbutton.selected-folder.dragRIGHT {
+/*
   border-style: solid !important;
   border-right-width: thick !important;
-  border-right-color: red !important;
+  border-right-color: red !important; */
+  background-image: url("dropRight.gif") !important;
+  background-position: right center;
+  background-repeat: no-repeat;
+  margin-right: 1px;
 }
 
-#QuickFolders-Toolbar toolbarbutton.dragLEFT {
-  border-style: solid !important;
-  border-left-width: thick !important;
-  border-left-color: red !important;
+
+#QuickFolders-Toolbar toolbarbutton.dragLEFT, toolbarbutton.selected-folder.dragLEFT {
+  background-image: url("dropLeft.gif") !important;
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 
 

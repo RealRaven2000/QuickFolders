@@ -1,75 +1,115 @@
 <?xml version="1.0"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="layout.css" type="text/css"?>
+
 
 <prefwindow 
     title="QuickFolders options"
+    id="qf-options"
     buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFoldersOptions.accept();"
+    onload="QuickFoldersOptions.load();"
 >
     <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+<prefpane>
+	<hbox id="qf-options-header" >	
+		<label class="dialogheader-title"
+			value="Quickfolders"
+			flex="1"/>
+			
+		<label id="qf-options-header-description"/>
+	</hbox>
+	
+	<tabbox orient="vertical" flex="1">
+		<tabs>
+			<tab label="General"/>
+			<tab label="Quick Help"/>
+		</tabs>
 
-    <prefpane id="QuickFolders-Options-general" label="General">
-		<preferences>
-			<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
-			<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
-			<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
-            <preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
-            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
-            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
-            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
-            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
-		</preferences>
+		<tabpanels>
+			<tabpanel orient="vertical" id="QuickFolders-Options-general" label="General">
 
-		<checkbox 
-			label="Show the &quot;QuickFolders&quot; label in the toolbar" 
-			preference="QuickFolders-Preferences-ShowQuickFoldersLabel" 
-			instantApply="true"
-		/>
-
-        <checkbox 
-			label="Use keyboard shortcuts (alt + 1 through alt + 9)" 
-			preference="QuickFolders-Preferences-UseKeyboardShortcuts" 
-			instantApply="true"
-		/>
-
-        <checkbox 
-			label="Show shortcut number on folder labels" 
-			preference="QuickFolders-Preferences-ShowShortcutNumber" 
-			instantApply="true"
-		/>
-
-        <checkbox 
-			label="Show the number of unread messages on the folder button" 
-			preference="QuickFolders-Preferences-ShowUnread" 
-			instantApply="true"
-		/>
+				<preferences>
+					<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
+					<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
+					<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
+		            <preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
+		            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
+		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
+		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
+		            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
+				</preferences>
 		
-		<checkbox 
-			label="Show buttons for folders with unread messages in bold" 
-			preference="QuickFolders-Preferences-ShowUnreadFoldersBold" 
-			instantApply="true"
-		/>
-
-        <checkbox 
-			label="Show the total number of messages on the folder button" 
-			preference="QuickFolders-Preferences-ShowTotalNumber" 
-			instantApply="true"
-		/>
+				<checkbox 
+					label="Show the &quot;QuickFolders&quot; label in the toolbar" 
+					preference="QuickFolders-Preferences-ShowQuickFoldersLabel" 
+					instantApply="true"
+				/>
 		
-		<checkbox 
-			label="Show buttons for folders with messages in them italic" 
-			preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
-			instantApply="true"
-		/>
+		        <checkbox 
+					label="Use keyboard shortcuts (alt + 1 through alt + 9)" 
+					preference="QuickFolders-Preferences-UseKeyboardShortcuts" 
+					instantApply="true"
+				/>
 		
-		<checkbox 
-			label="Show Tabs as Flat Style" 
-			preference="QuickFolders-Preferences-ShowFlatStyle" 
-			instantApply="true"
-		/>
+		        <checkbox 
+					label="Show shortcut number on folder labels" 
+					preference="QuickFolders-Preferences-ShowShortcutNumber" 
+					instantApply="true"
+				/>
 		
-	</prefpane>
-
+		        <checkbox 
+					label="Show the number of unread messages on the folder button" 
+					preference="QuickFolders-Preferences-ShowUnread" 
+					instantApply="true"
+				/>
+				
+				<checkbox 
+					label="Show buttons for folders with unread messages in bold" 
+					preference="QuickFolders-Preferences-ShowUnreadFoldersBold" 
+					instantApply="true"
+				/>
+		
+		        <checkbox 
+					label="Show the total number of messages on the folder button" 
+					preference="QuickFolders-Preferences-ShowTotalNumber" 
+					instantApply="true"
+				/>
+				
+				<checkbox 
+					label="Show buttons for folders with messages in them italic" 
+					preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
+					instantApply="true"
+				/>
+				
+				<checkbox 
+					label="Show Tabs as Flat Style" 
+					preference="QuickFolders-Preferences-ShowFlatStyle" 
+					instantApply="true"
+				/>
+						
+			</tabpanel>
+			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help">
+			  <description  flex="1" maxwidth="450">
+			    Drag folders onto an empty area of the new toolbar to create a quickfolder.
+			    Drag Messages onto shortcuts to move them there (or Copy with modifier key).
+			  </description>
+			  <description flex="1" maxwidth="450">
+			    Drag quickfolders to change their order.
+			    Right-click quickfolder for context menu, in the context menu you can jump into its subfolders.
+			  </description>
+			  <description flex="1" maxwidth="450">
+			    Drag onto popup menu to move messages into sub folders.
+			  </description>
+			  <description flex="1" maxwidth="450">
+			    Right-clicking an empty area will open the options menu.
+			    In options, you can choose native style (smaller) or flat style (clearer).
+			  </description>
+			  
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</prefpane>
 </prefwindow>

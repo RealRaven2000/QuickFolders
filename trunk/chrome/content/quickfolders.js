@@ -6,20 +6,25 @@
   05/09/2008
     AG added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
        made sorting with mouse more persistant (it sometimes jumped back!)
-    
+  07/07/2008
+    AG added visual indication for drop position (like FX tabs)
+  10/09/2008
+    AG added Quick Help (options.xul, options.js)
+       removed 'toolbar' style from option window to support tabbed interface
+      
     
   KNOWN ISSUES
   ============
   05/09/2008
     - if folders are added / removed during session this is not refreshed in subfolder list of popup set!
+    - dragged menus y position sometimes "drifts down". 
+  10/09/2008
+    - Version Number on Option dialog is currently hard coded; please revisit options.js
   
     
   PLANNED FEATURES / NICE TO HAVE
   ===============================
     - dragging onto Menus should highlight target folder (difficult?)
-    - dragged menus y position sometimes "drifts down". 
-    - nice to have: visual indication for drop position (like FX tabs)
-
 
 
 */
@@ -308,7 +313,8 @@ var QuickFolders = {
         
 
         viewOptions: function() {
-            prefWindow = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders);
+            prefWindow = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options',
+              'chrome,titlebar,centerscreen,modal',QuickFolders);
         } ,
 		
         viewChangeOrder: function() {

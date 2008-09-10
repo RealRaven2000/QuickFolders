@@ -92,20 +92,25 @@
 						
 			</tabpanel>
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help">
-			  <description  flex="1" maxwidth="450">
-			    Drag folders onto an empty area of the new toolbar to create a quickfolder.
-			    Drag Messages onto shortcuts to move them there (or Copy with modifier key).
+			  <description  flex="1" maxwidth="450" style="text-align:justify">
+			    Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias).
+			    Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). 
+			    Click quickfolder to jump to mail folder.
 			  </description>
-			  <description flex="1" maxwidth="450">
-			    Drag quickfolders to change their order.
-			    Right-click quickfolder for context menu, in the context menu you can jump into its subfolders.
+			  <description flex="1" maxwidth="450" style="text-align:justify">
+			    Drag quickfolders sideways to change their positions. 
+			    Right-click quickfolder for context menu; by selecting you can jump into sub folders.
+			    'Rename bookmark' changes the label of the quickfolder. 'Remove bookmark' deletes the quickfolder (not the mail folder).
 			  </description>
-			  <description flex="1" maxwidth="450">
-			    Drag onto popup menu to move messages into sub folders.
+			  <description flex="1" maxwidth="450" style="text-align:justify">
+			    Drag messages onto quickfolder popup menu to move messages into sub folders.
 			  </description>
-			  <description flex="1" maxwidth="450">
-			    Right-clicking an empty area will open the options menu.
-			    In options, you can choose native style (smaller) or flat style (clearer).
+			  <description maxwidth="450" style="text-align:justify">
+			    Right-click an empty area to open the options menu.
+			    In options, you can select native style (smaller) or flat style (clearer; supports drag indicator).
+			  </description>
+			  <description>
+			    Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing.
 			  </description>
 			  
 			</tabpanel>

@@ -81,7 +81,6 @@ button.order-button {
   border-style: solid !important;
   border-right-width: thick !important;
   border-right-color: red !important; */
-  /*background:  url("dropRight.gif") !important; */
   background-image: url("dropRight.gif") !important;
   background-position: right center !important;
   background-repeat: no-repeat !important;
@@ -95,8 +94,14 @@ button.order-button {
   background-repeat: no-repeat !important;
 }
 
+#qf-options-prefpane {
+	background-image: url("quickfolders-Icon.png") !important;
+    background-position: 10px 10px !important;
+    background-repeat: no-repeat !important;
+}    
+
 #qf-options-header {
-	margin: 8px 5px 5px 5px;
+	margin: 5px 0px 5px 45px;
 	border: 2px solid;
 	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
 	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
@@ -105,7 +110,6 @@ button.order-button {
 	padding: 5px 8px;
 	background-color: Highlight;
 	color: HighlightText;
-
 }
 
 #qf-options-header .dialogheader-title {

@@ -3,13 +3,13 @@ const QF_CI = Components.interfaces;
 
 
 function QF_getAddon(aId) {
-  return QF_CC["@mozilla.org/extensions/manager;1"]
-       .getService(QF_CI.nsIExtensionManager)
-       .getItemForID(aId);
+	var em = QF_CC["@mozilla.org/extensions/manager;1"]
+       .getService(QF_CI.nsIExtensionManager);
+  return em.getItemForID(aId);
 }
 
 function QF_getMyVersion() {
-  return QF_getAddon("{3550f703-e582-4d05-9a08-453d09bdfdc6}").version;
+  return QF_getAddon("quickfolders@curious.be").version; 
 }
 
 var QuickFoldersOptions = {
@@ -19,9 +19,8 @@ var QuickFoldersOptions = {
     } ,
     load : function() {
 	    var version=QF_getMyVersion();
-		//alert ("Version=" + version);
-		if (version=="") version='0.9';
-	     document.getElementById("qf-options-header-description").setAttribute("value", version);
+		if (version=="") version='version?';
+	    document.getElementById("qf-options-header-description").setAttribute("value", version);
     }
 }
 

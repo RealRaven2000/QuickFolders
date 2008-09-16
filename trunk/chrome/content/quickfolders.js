@@ -49,7 +49,7 @@ var QuickFolders = {
         QuickFolders.Util.ensureNormalFolderView();
         window.addEventListener("keypress", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
 		
-        folderEntries = QuickFolders.Preferences.getFolderEntries();
+        var folderEntries = QuickFolders.Preferences.getFolderEntries();
 		
         if(folderEntries.length > 0) {
             QuickFolders.Model.selectedFolders = folderEntries;
@@ -71,6 +71,7 @@ var QuickFolders = {
         
         buttonsByOffset: [],
         menuPopupsByOffset: [],
+        specialButtons: [],
 		
         updateFolders: function() {
             // AG made flat style configurable
@@ -86,6 +87,7 @@ var QuickFolders = {
             
             this.buttonsByOffset = [];
             this.menuPopupsByOffset = [];
+            this.specialButtons = [];
             
             QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
@@ -95,7 +97,6 @@ var QuickFolders = {
 			
             for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
                 var folderEntry = QuickFolders.Model.selectedFolders[i];
-		
                 var folder;
                 
                 if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
@@ -106,6 +107,13 @@ var QuickFolders = {
             }
             
             this.onFolderSelected();
+            
+            QuickFolders.Util.clearChildren(this.getSpecialToolbar());
+            
+            // new special button to find thread of dropped msg (good to archive sent messages)
+            this.specialButtons[0] = this.addSpecialButton("findMsgThreadFolder", "Thread", 0);
+            this.specialButtons[1] = this.addSpecialButton("findMyTrashFolder", "Trash", 1);
+            
         } ,
         
         windowKeyPress: function(e) {
@@ -147,6 +155,10 @@ var QuickFolders = {
 			
         getToolbar: function() {
             return QuickFolders.Util.$('QuickFolders-FoldersBox');
+        } ,
+        
+        getSpecialToolbar: function() {
+            return QuickFolders.Util.$('Quickfolders-SpecialTools');
         } ,
 		
         addFolderButton: function(folder, useName, offset) {
@@ -215,10 +227,33 @@ var QuickFolders = {
             // AG add dragging of buttons
             button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
             button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-            
-            
             return button;
         } ,
+        
+        addSpecialButton: function(SpecialFunction, SpecialId, Offset) {
+	        var button = document.createElement("toolbarbutton");
+	        var image='';
+	        var lbl=''; // for testing
+	        switch (SpecialId) {
+		       case 'Thread':
+		         image = "url('thread.png')";
+		         lbl = 'Thread';
+		         break;
+		       case 'Trash':
+		         image = "url('folder-trash.png')";
+		         lbl = 'trash';
+		         break;
+		       default:
+		         break;   
+	        }
+	        button.setAttribute("label", lbl);
+            button.setAttribute("class","specialButton");  // was toolbar-height!
+	        button.setAttribute("image", image);
+            button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+            this.getSpecialToolbar().appendChild(button);
+	        
+        },
+        
         
         onButtonClick: function(button) {
             MySelectFolder(button.folder.URI);
@@ -245,17 +280,17 @@ var QuickFolders = {
         },
         
         addPopupSet: function(popupId, folder,offset) {
-            popupset = document.createElement('popupset');
+            var popupset = document.createElement('popupset');
             this.getToolbar().appendChild(popupset);
 
-            menupopup = document.createElement('menupopup');
+            var menupopup = document.createElement('menupopup');
             menupopup.setAttribute('id',popupId);
             menupopup.className = 'QuickFolders-folder-popup';
             menupopup.folder = folder;
 			
             popupset.appendChild(menupopup);
 			
-            menuitem = document.createElement('menuitem');
+            var menuitem = document.createElement('menuitem');
             menuitem.setAttribute('label','Remove bookmark');
             menuitem.setAttribute("oncommand","QuickFolders.Interface.onRemoveFolder(event.target.parentNode.folder)");			
             menupopup.appendChild(menuitem);
@@ -313,7 +348,7 @@ var QuickFolders = {
         
 
         viewOptions: function() {
-            prefWindow = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options',
+            var prefWindow = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options',
               'chrome,titlebar,centerscreen,modal',QuickFolders);
         } ,
 		
@@ -609,6 +644,8 @@ var QuickFolders = {
             if(!this.service.prefHasUserValue("QuickFolders.folders")) {
                 return [];
             }
+            
+            var folders;
   			
             if((folders = this.service.getCharPref("QuickFolders.folders"))) {
                 return JSON.parse(folders);
@@ -804,7 +841,7 @@ var QuickFolders = {
           
 		      // alert (i + " " + folder.name + " lbl: " + folderEntry.name + " uri: " + folderEntry.uri);
           // alert("insertAtPosition(" + buttonURI +", "+ targetURI +  ")");
-          modelSelection = QuickFolders.Model.selectedFolders;
+          var modelSelection = QuickFolders.Model.selectedFolders;
           
           for(var i = 0; i < modelSelection.length; i++) {
               folderEntry  = QuickFolders.Model.selectedFolders[i];
@@ -884,9 +921,7 @@ function MySelectFolder(folderUri)
 }
 
 
-
 // set up the folder listener to point to the above function
-
 var myFolderListener = {
     OnItemAdded: function(parent, item, viewString) {},
     OnItemRemoved: function(parent, item, viewString) {},

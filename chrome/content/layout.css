@@ -31,8 +31,9 @@ button.order-button {
     font-weight: bold;
 }
 
-/* Flat Styles below */
 
+
+/* Flat Styles below */
 #QuickFolders-Toolbar.toolbar-flat {
     margin: 0;
     padding: 0;
@@ -77,10 +78,6 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
-/*
-  border-style: solid !important;
-  border-right-width: thick !important;
-  border-right-color: red !important; */
   background-image: url("dropRight.gif") !important;
   background-position: right center !important;
   background-repeat: no-repeat !important;
@@ -88,11 +85,26 @@ button.order-button {
 }
 
 
+
 #QuickFolders-Toolbar toolbarbutton.dragLEFT {
   background-image: url("dropLeft.gif") !important;
   background-position: left center !important;
   background-repeat: no-repeat !important;
 }
+
+/* Experimental for Trash, FindThread Icon */
+#Quickfolders-SpecialTools {
+	background: Menu; 
+	border: 0;
+}
+
+#QuickFolders-Toolbar toolbarbutton.specialButton {
+    -moz-appearance: toolbarbutton !important;
+    dir: normal !important;
+    orient: horizontal  !important;
+    validate: always !important;
+}
+
 
 #qf-options-prefpane {
 	background-image: url("quickfolders-Icon.png") !important;

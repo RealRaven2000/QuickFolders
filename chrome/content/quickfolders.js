@@ -108,11 +108,14 @@ var QuickFolders = {
             
             this.onFolderSelected();
             
+            /*
+            // Experimental; for new 'drop to thread' feature
             QuickFolders.Util.clearChildren(this.getSpecialToolbar());
             
             // new special button to find thread of dropped msg (good to archive sent messages)
             this.specialButtons[0] = this.addSpecialButton("findMsgThreadFolder", "Thread", 0);
             this.specialButtons[1] = this.addSpecialButton("findMyTrashFolder", "Trash", 1);
+            */
             
         } ,
         

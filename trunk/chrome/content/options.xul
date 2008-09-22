@@ -12,8 +12,8 @@
     ondialogaccept="QuickFoldersOptions.accept();"
     onload="QuickFoldersOptions.load();"
 >
-    <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
-<prefpane id="qf-options-prefpane">
+<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+ <prefpane id="qf-options-prefpane"> 
 	<hbox id="qf-options-header" >	
 		<label class="dialogheader-title"
 			value="Quickfolders"
@@ -116,5 +116,5 @@
 			</tabpanel>
 		</tabpanels>
 	</tabbox>
-</prefpane>
+  </prefpane> 
 </prefwindow>

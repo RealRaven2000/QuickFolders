@@ -9,8 +9,8 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar toolbarbutton {
-    line-height: 24px;
-    height: 24px;
+    line-height: 20px;
+    height: 20px;
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -48,13 +48,12 @@ button.order-button {
     padding: 1px 5px 0px 5px;
     border: 1px solid #AAA;
     margin: 3px 0px 0px 3px;	
-    line-height: 24px;
-    height: 24px;
-    padding-left: 1px !important; 
+    line-height: 20px;
+    height: 20px;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
-    height: 25px;
+    height: 21px;
 }
 
 
@@ -63,17 +62,16 @@ button.order-button {
     color: HighlightText !important;
     margin-top: 2px !important; 
     padding-top: 0px  !important; 
-    padding-left: 1px !important; 
 }
 
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
     border: 1px solid #666 !important;
     border-bottom: none !important;
-    padding: 0px 5px 2px 1px !important;
+    padding: 0px 5px 2px 5px !important;
     margin-top: 2px !important;    
     margin-bottom: -1px !important;
-    height: 26px;
+    height: 22px;
     background:  Highlight; 
     color: HighlightText;
 }
@@ -96,17 +94,32 @@ button.order-button {
 /* Experimental for Trash, FindThread Icon */
 #Quickfolders-SpecialTools {
 	background: Menu; 
-	border: 0;
+	border: 1;
 }
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {
-    -moz-appearance: toolbarbutton !important;
-    dir: normal !important;
+  -moz-appearance: none !important;*/
+    -moz-image-region: rect( 0px 24px 24px  0px);
+/*      -moz-appearance: toolbarbutton !important; */
+	background-image: url("thread.png") !important;
+	background-repeat: no-repeat !important;
+	padding-left:24 pix;
+/*    dir: normal !important;
     orient: horizontal  !important;
-    validate: always !important;
+    validate: always !important; */
+    line-height: 17px !important;
+    height: 17px !important;
+
+}
+#QuickFolders-Toolbar toolbarbutton.specialButton:hover {
+    background: default !important; 
+    color: default !important;
+    margin-top: default !important; 
+    padding-top: default  !important; 
 }
 
 
+/* Options window */
 #qf-options-prefpane {
 	background-image: url("quickfolders-Icon.png") !important;
     background-position: 10px 10px !important;

@@ -19,22 +19,27 @@
             context="QuickFolders-ToolbarPopup"
             style="display: none;"
         >
-            <label id="QuickFolders-title-label">QuickFolders:</label>
+        <label id="QuickFolders-title-label">QuickFolders:</label>
 
-            <box 
-                id="QuickFolders-FoldersBox" 
-                align="horizontal" 
-                flex="100%"
-            >
-                    <!-- Filled dynamically by the script -->	
-                    <label class="toolbar-height">Drag folders here to bookmark. Click the bookmark to go to the folder, drag messages to move/copy them there.</label>
-            </box>
-            <spacer flex="1"/>
-
-            <box id="Quickfolders-SpecialTools" align="right">
+        <box 
+            id="QuickFolders-FoldersBox" 
+            align="horizontal" 
+            flex="100%"
+        >
+            <!-- Filled dynamically by the script -->	
+            <label class="toolbar-height">Drag folders here to bookmark. Click the bookmark to go to the folder, drag messages to move/copy them there.</label>
+        </box>
             
+        <spacer flex="1"/>
 
-            </box>
+        <toolbar 
+          id="Quickfolders-SpecialTools" 
+          align="right"
+          customizable="false"
+        >
+        
+
+        </toolbar>
 
 
             <popupset>

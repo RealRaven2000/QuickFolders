@@ -108,14 +108,14 @@ var QuickFolders = {
             
             this.onFolderSelected();
             
-            /*
+            /* */
             // Experimental; for new 'drop to thread' feature
             QuickFolders.Util.clearChildren(this.getSpecialToolbar());
             
             // new special button to find thread of dropped msg (good to archive sent messages)
-            this.specialButtons[0] = this.addSpecialButton("findMsgThreadFolder", "Thread", 0);
-            this.specialButtons[1] = this.addSpecialButton("findMyTrashFolder", "Trash", 1);
-            */
+            this.specialButtons[0] = this.addSpecialButton("findMsgThreadFolder", "Thread", 0, "drag messages to their thread");
+            //this.specialButtons[1] = this.addSpecialButton("findMyTrashFolder", "Trash", 1);
+            /**/
             
         } ,
         
@@ -233,14 +233,14 @@ var QuickFolders = {
             return button;
         } ,
         
-        addSpecialButton: function(SpecialFunction, SpecialId, Offset) {
+        addSpecialButton: function(SpecialFunction, SpecialId, Offset, tooltip) {
 	        var button = document.createElement("toolbarbutton");
 	        var image='';
 	        var lbl=''; // for testing
 	        switch (SpecialId) {
 		       case 'Thread':
-		         image = "url('thread.png')";
-		         lbl = 'Thread';
+		         image = "url('chrome://quickfolders/content/thread.png')";  // "thread.png" ; //
+		         lbl = ''; // Thread
 		         break;
 		       case 'Trash':
 		         image = "url('folder-trash.png')";
@@ -250,8 +250,12 @@ var QuickFolders = {
 		         break;   
 	        }
 	        button.setAttribute("label", lbl);
-            button.setAttribute("class","specialButton");  // was toolbar-height!
-	        button.setAttribute("image", image);
+            button.setAttribute("class","specialButton"); 
+	        button.setAttribute("list-style-image", image);
+	        button.setAttribute("dir", "normal");
+	        button.setAttribute("orient", "horizontal");
+	        button.setAttribute("validate", "always");
+	        button.setAttribute("tooltiptext", tooltip);
             button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
             this.getSpecialToolbar().appendChild(button);
 	        
@@ -558,6 +562,7 @@ var QuickFolders = {
         // deal with old folder popups 	
         onDragExit: function(event, dragSession) {
 	        var button = event.target;
+	        globalHidePopupId="";
 	        if (dragSession.isDataFlavorSupported("text/unicode" )) 
 	        {
 		        // remove dragdrop marker:
@@ -589,6 +594,7 @@ var QuickFolders = {
         onDrop: function (evt,dropData,dragSession) {
             var button = evt.target;
             var targetFolder = button.folder;
+            globalHidePopupId="";
             
             switch (dropData.flavour.contentType) {
                 case  "text/x-moz-message":  // fall through

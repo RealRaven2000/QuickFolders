@@ -11,20 +11,24 @@
   10/09/2008
     AG added Quick Help (options.xul, options.js)
        removed 'toolbar' style from option window to support tabbed interface
+  05/10/2008
+    AG loading version number dynamically in options dialog
+  19/11/2008
+    AG fixed bug with drifting popup menus
+       fixed same popup not reappearing if first drag not completed
       
     
   KNOWN ISSUES
   ============
   05/09/2008
     - if folders are added / removed during session this is not refreshed in subfolder list of popup set!
-    - dragged menus y position sometimes "drifts down". 
-  10/09/2008
-    - Version Number on Option dialog is currently hard coded; please revisit options.js
   
     
   PLANNED FEATURES / NICE TO HAVE
   ===============================
     - dragging onto Menus should highlight target folder (difficult?)
+    - drag to thread finds quickfolder with correct thread and drops message there
+    - multiple lines for quickfolders
 
 
 */
@@ -108,14 +112,14 @@ var QuickFolders = {
             
             this.onFolderSelected();
             
-            /* */
+            /* 
             // Experimental; for new 'drop to thread' feature
             QuickFolders.Util.clearChildren(this.getSpecialToolbar());
             
             // new special button to find thread of dropped msg (good to archive sent messages)
             this.specialButtons[0] = this.addSpecialButton("findMsgThreadFolder", "Thread", 0, "drag messages to their thread");
             //this.specialButtons[1] = this.addSpecialButton("findMyTrashFolder", "Trash", 1);
-            /**/
+            */
             
         } ,
         
@@ -256,6 +260,10 @@ var QuickFolders = {
 	        button.setAttribute("orient", "horizontal");
 	        button.setAttribute("validate", "always");
 	        button.setAttribute("tooltiptext", tooltip);
+	        button.setAttribute("id", SpecialId);
+	        
+            button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+            button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
             button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
             this.getSpecialToolbar().appendChild(button);
 	        
@@ -497,7 +505,6 @@ var QuickFolders = {
 								  var dx = (box.x - button.boxObject.x);
 								  if (dx != 0) {
 									  sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT")
-								      //window.dump("dx=" + dx + ", " + button.getAttribute("label") + " " + sDirection + "\n");
 								      button.className += (" " + sDirection); // add style for drop arrow (remove onDragExit)
 							      }
 							  }
@@ -530,9 +537,13 @@ var QuickFolders = {
 			            menupopup.folder = targetFolder;
 			            popupset.appendChild(menupopup);
 	                    QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder);
-	                    // client coordinates? Here something goes awry sometimes:
-	                    document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+	                    // a bug in showPopup when used with coordinates makes it start from the wrong origin
+	                    //document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
+	                    // AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
+	                    document.getElementById(popupId).showPopup(button, -1,-1,"context","bottomleft","topleft");
                         
+	                    if (popupId==globalHidePopupId) globalHidePopupId=""; // avoid hiding "itself". globalHidePopupId is not cleared if previous drag cancelled.
+	                    
 						/* original by Alex (displays full menu)
                         var popupId = 'QuickFolders-folder-popup-' + targetFolder.URI;
                         var popup = document.getElementById(popupId);
@@ -549,7 +560,7 @@ var QuickFolders = {
 					        popup.parentNode.removeChild(popup); //was popup.hidePopup() 
 				        }
 				        catch (e) {
-					        window.dump("removing popup: " + globalHidePopupId + " failed!\n" + e + "\n");	
+					        //window.dump("removing popup: " + globalHidePopupId + " failed!\n" + e + "\n");	
 				        }
 				        globalHidePopupId="";
                     }

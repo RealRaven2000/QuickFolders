@@ -281,7 +281,7 @@ var QuickFolders = {
         } ,
 		
         onRenameBookmark: function(folder) {
-            var newName = window.prompt("Enter a new name for the bookmark",QuickFolders.Model.getFolderEntry(folder.URI).name)
+            var newName = window.prompt("Enter a new name for the bookmark",QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
             if(newName) {
                 QuickFolders.Model.renameFolder(folder.URI, newName);
             }

@@ -16,7 +16,8 @@
   19/11/2008
     AG fixed bug with drifting popup menus
        fixed same popup not reappearing if first drag not completed
-      
+  24/11/2008
+    AG rename improved (this used to show folder name not quickfolder name)  
     
   KNOWN ISSUES
   ============
@@ -280,7 +281,7 @@ var QuickFolders = {
         } ,
 		
         onRenameBookmark: function(folder) {
-            var newName = window.prompt("Enter a new name for the bookmark",folder.name)
+            var newName = window.prompt("Enter a new name for the bookmark",QuickFolders.Model.getFolderEntry(folder.URI).name)
             if(newName) {
                 QuickFolders.Model.renameFolder(folder.URI, newName);
             }

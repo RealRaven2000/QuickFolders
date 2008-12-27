@@ -231,6 +231,11 @@ var QuickFolders = {
             button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
             button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
             button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+
+            var buttonFontSize = QuickFolders.Preferences.getButtonFontSize();
+            if(buttonFontSize) {
+                button.style.fontSize = buttonFontSize + "px";
+            }
             
             // AG add dragging of buttons
             button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
@@ -706,9 +711,11 @@ var QuickFolders = {
         
         isShowToolbarFlatstyle: function() {
             return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
+        } ,
+
+        getButtonFontSize: function() {
+            return this.service.getCharPref("extensions.quickfolders.buttonFontSize");
         }
-        
-        
     } ,
   	
     Util: {

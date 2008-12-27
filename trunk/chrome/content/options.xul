@@ -40,6 +40,7 @@
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
+                    <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
 				</preferences>
 		
 				<checkbox 
@@ -89,6 +90,21 @@
 					preference="QuickFolders-Preferences-ShowFlatStyle" 
 					instantApply="true"
 				/>
+
+                <hbox style="margin-top: .5em;">
+                    <label
+                        control="button-font-size"
+                        value="Button font size (blank for default): "
+                    />
+                    <textbox
+                        id="button-font-size"
+                        preference="QuickFolders-Preferences-ButtonFontSize"
+                        instantApply="true"
+                        size="3"
+                    />
+
+                    <label value="pixels" />
+                </hbox>
 						
 			</tabpanel>
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help">

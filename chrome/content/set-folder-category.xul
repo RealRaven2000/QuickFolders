@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="layout.css" type="text/css"?>
+
+
+<dialog
+	title="Set the category for a bookmark"
+	buttons="cancel"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    ondialogaccept="QuickFolders.Model.update();"
+    onload="QuickFolders.FolderCategory.init(this, window.arguments[1])"
+>
+	<script type="text/javascript">
+		QuickFolders = window.arguments[0];
+	</script>
+
+ 	<description>
+       You can put this bookmark in a category (i.e. "Work", "Private", ...).
+    </description>
+
+    <description>
+       The QuickFolders bar will display a pulldown, allowing you to filter your bookmarks by category.
+    </description>
+
+    <description>
+        Select an existing category by double clicking on it, or add a new category below.
+    </description>
+
+    <hbox style="margin-top: 1em">
+        <vbox>
+            <label>Existing categories:</label>
+
+            <listbox id="existing-categories" ondblclick="QuickFolders.FolderCategory.setSelectedCategory()">
+                <!-- added by script -->
+            </listbox>
+        </vbox>
+        <vbox>
+            <label>New category:</label>
+
+            <hbox>
+                <textbox
+                    id="new-category-name"
+                    onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
+                />
+                <button label="OK" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+            </hbox>
+        </vbox>
+    </hbox>
+</dialog>

@@ -18,6 +18,9 @@
        fixed same popup not reappearing if first drag not completed
   24/11/2008
     AG rename improved (this used to show folder name not quickfolder name)  
+  04/01/2009
+    AM added folder category feature
+       split sources into more manageable portions
     
   KNOWN ISSUES
   ============
@@ -30,6 +33,8 @@
     - dragging onto Menus should highlight target folder (difficult?)
     - drag to thread finds quickfolder with correct thread and drops message there
     - multiple lines for quickfolders
+    - colors for categories!
+    - decrease categories dropdown size or make display optional
 
 
 */

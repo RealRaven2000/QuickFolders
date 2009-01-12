@@ -6,9 +6,9 @@
 
 <dialog
 	title="Set the category for a bookmark"
-	buttons="cancel"
+	buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    ondialogaccept="QuickFolders.Model.update();"
+    ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();QuickFolders.Model.update();"
     onload="QuickFolders.FolderCategory.init(this, window.arguments[1])"
 >
 	<script type="text/javascript">
@@ -31,7 +31,9 @@
         <vbox>
             <label>Existing categories:</label>
 
-            <listbox id="existing-categories" ondblclick="QuickFolders.FolderCategory.setSelectedCategory()">
+            <listbox id="existing-categories" 
+              ondblclick="QuickFolders.FolderCategory.setSelectedCategory()"
+              onchange="QuickFolders.FolderCategory.getSelectedColor()">
                 <!-- added by script -->
             </listbox>
         </vbox>
@@ -43,8 +45,18 @@
                     id="new-category-name"
                     onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
                 />
-                <button label="OK" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+                <button label="Add!" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+            </hbox>
+            <hbox>
+            
+            <colorpicker id="category-colorpicker" palettename="standard" 
+              type="button" 
+              onchange="QuickFolders.FolderCategory.setColor(this);"
+              />
+
+
             </hbox>
         </vbox>
     </hbox>
 </dialog>
+

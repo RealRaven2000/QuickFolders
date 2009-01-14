@@ -9,8 +9,8 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar toolbarbutton {
-    line-height: 20px;
-    height: 20px;
+    line-height: 24px;
+    height: 24px;
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -45,7 +45,7 @@ button.order-button {
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton {
     -moz-appearance: none !important;
     background: ButtonFace; 
-    padding: 1px 5px 0px 5px;
+    padding: 1px 5px 0px 2px;
     border: 1px solid #AAA;
     margin: 3px 0px 0px 3px;	
     line-height: 20px;
@@ -53,27 +53,23 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
+    background: Orange !important; 
+    color: Black !important;
     height: 21px;
-}
-
-
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
-    background: Highlight !important; 
-    color: HighlightText !important;
     margin-top: 2px !important; 
     padding-top: 0px  !important; 
 }
 
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
-    border: 1px solid #666 !important;
-    border-bottom: none !important;
-    padding: 0px 5px 2px 5px !important;
-    margin-top: 2px !important;    
-    margin-bottom: -1px !important;
-    height: 22px;
     background:  Highlight; 
     color: HighlightText;
+    border: 1px solid #666 !important;
+    border-bottom: none !important;
+    height: 22px;
+    padding: 0px 5px 2px 2px !important;
+    margin-top: 2px !important;    
+    margin-bottom: -1px !important;
 }
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
@@ -98,12 +94,12 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {
-  -moz-appearance: none !important;*/
+  -moz-appearance: none !important;
     -moz-image-region: rect( 0px 24px 24px  0px);
 /*      -moz-appearance: toolbarbutton !important; */
 	background-image: url("thread.png") !important;
 	background-repeat: no-repeat !important;
-	padding-left:24 pix;
+	padding-left:24 px;
 /*    dir: normal !important;
     orient: horizontal  !important;
     validate: always !important; */

@@ -1,26 +1,45 @@
 
-/*
-  File History
-  ============
+/*===============
+  Project History
+  ===============
   
   05/09/2008
     AG added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
        made sorting with mouse more persistant (it sometimes jumped back!)
+       
   07/07/2008
     AG added visual indication for drop position (like FX tabs)
+    
   10/09/2008
-    AG added Quick Help (options.xul, options.js)
+    AG added Quick Help tab (options.xul, options.js)
        removed 'toolbar' style from option window to support tabbed interface
+       
   05/10/2008
     AG loading version number dynamically in options dialog
-  19/11/2008
+    
+  19/11/2008 - Release 0.9.3
     AG fixed bug with drifting popup menus
        fixed same popup not reappearing if first drag not completed
+       
   24/11/2008
-    AG rename improved (this used to show folder name not quickfolder name)  
-  04/01/2009
+    AG rename bug fixed (this used to show original folder name not quickfolder name)  
+    
+  04/01/2009 - Release 0.9.4
     AM added folder category feature
        split sources into more manageable portions
+       
+  09/01/2009 - Release 0.9.5
+    AG added "Always show" category and moved "(All)" to the top
+       set category dialog: added [Add] button and made [Ok] button work differently
+       re-added addon icon to install.rdf
+       
+  14/01/2009
+    AG Split main options dialog into 3 tabs and added Layout tab
+       Added Color Picker to Layout tab (WIP)
+       Added Color Picker to Categories dialog (WIP)
+       Added accelerator keys to popup menus
+       Layout Improvements in style sheet (saves space)
+       Tidied up Project History
     
   KNOWN ISSUES
   ============
@@ -28,13 +47,17 @@
     - if folders are added / removed during session this is not refreshed in subfolder list of popup set!
   
     
-  PLANNED FEATURES / NICE TO HAVE
-  ===============================
-    - dragging onto Menus should highlight target folder (difficult?)
-    - drag to thread finds quickfolder with correct thread and drops message there
-    - multiple lines for quickfolders
+  PLANNED FEATURES
+  ================
+    - set & store colors for Active tab, Hovered tab, default and Toolbar background (WIP)
     - colors for categories!
-    - decrease categories dropdown size or make display optional
+    - for clarity, dragging onto Menus should highlight line in popupmenu (popup tracking) (difficult?)
+    
+  WISHLIST
+  ========  
+    - drag to thread finds quickfolder with correct thread and drops message there
+    - multiple lines for quickfolders (probably obsolete, since categories)
+    - decrease categories dropdown size (?)
 
 
 */

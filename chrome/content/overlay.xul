@@ -56,8 +56,8 @@
 
             <popupset>
                 <menupopup id="QuickFolders-ToolbarPopup">
-                    <menuitem label="QuickFolders Options" oncommand="QuickFolders.Interface.viewOptions()" />
-                    <menuitem label="Change the order of the bookmarks" oncommand="QuickFolders.Interface.viewChangeOrder()" />
+                    <menuitem label="QuickFolders Options..." oncommand="QuickFolders.Interface.viewOptions()" accesskey="O" />
+                    <menuitem label="Change the order of the bookmarks..." oncommand="QuickFolders.Interface.viewChangeOrder()"  accesskey="C"/>
                 </menupopup>
             </popupset>
 

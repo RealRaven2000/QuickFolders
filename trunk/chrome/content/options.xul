@@ -4,6 +4,7 @@
 <?xml-stylesheet href="layout.css" type="text/css"?>
 
 
+    
 <prefwindow 
     title="QuickFolders options"
     id="qf-options"
@@ -13,7 +14,9 @@
     onload="QuickFoldersOptions.load();"
 >
 <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
- <prefpane id="qf-options-prefpane"> 
+<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+
+ <prefpane id="qf-options-prefpane" flex="12"> 
 	<hbox id="qf-options-header" >	
 		<label class="dialogheader-title"
 			value="Quickfolders"
@@ -22,14 +25,15 @@
 		<label id="qf-options-header-description"/>
 	</hbox>
 	
-	<tabbox orient="vertical" flex="1">
+	<tabbox orient="vertical" flex="6">
 		<tabs>
 			<tab label="General"/>
+			<tab label="Layout"/>
 			<tab label="Quick Help"/>
 		</tabs>
 
 		<tabpanels>
-			<tabpanel orient="vertical" id="QuickFolders-Options-general" label="General">
+			<tabpanel orient="vertical" id="QuickFolders-Options-general" label="General" flex="10" style="min-height:200px;">
 
 				<preferences>
 					<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
@@ -39,8 +43,6 @@
 		            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
-		            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
-                    <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
 				</preferences>
 		
 				<checkbox 
@@ -84,13 +86,21 @@
 					preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
 					instantApply="true"
 				/>
-				
+			</tabpanel>
+			
+			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10">
+
+				<preferences>
+		            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
+                    <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
+				</preferences>
+		            
+                
 				<checkbox 
 					label="Show Tabs as Flat Style" 
 					preference="QuickFolders-Preferences-ShowFlatStyle" 
 					instantApply="true"
 				/>
-
                 <hbox style="margin-top: .5em;">
                     <label
                         control="button-font-size"
@@ -101,13 +111,43 @@
                         preference="QuickFolders-Preferences-ButtonFontSize"
                         instantApply="true"
                         size="3"
+                        style="vertical-align:text-bottom"
                     />
 
                     <label value="pixels" />
                 </hbox>
-						
+                <hbox style="margin-top: .2em;">
+                
+                <label value="Active Tab Color:"  style="vertical-align:middle"/>
+				
+	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
+	              type="button" 
+	              onchange="return QuickFoldersOptions.setElementColor('toolbarbutton.selected-folder', this.color);"
+	              />
+                </hbox>
+                
+                <hbox style="margin-top: .2em;">
+                <label value="Hovered Tab Color:" style="vertical-align:middle"/>
+				
+	            <colorpicker id="toolbarbutton:hover" palettename="standard" style="vertical-align:middle" 
+	              type="button" 
+	              onchange="return QuickFoldersOptions.setElementColor('toolbarbutton:hover', this.color);"
+	              />
+                </hbox>
+
+                <hbox style="margin-top: .2em;">
+		        <label value="Toolbar Background:"  style="vertical-align:middle"/>
+				
+	            <colorpicker id="toolbar" palettename="standard"  style="vertical-align:middle"
+	              type="button" 
+	              onchange="return QuickFoldersOptions.setElementColor('toolbar', this.color);"
+	              />
+                </hbox>
+
+                                
 			</tabpanel>
-			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help">
+			
+			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help" flex="10">
 			  <description  flex="1" maxwidth="450" style="text-align:justify">
 			    Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias).
 			    Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). 

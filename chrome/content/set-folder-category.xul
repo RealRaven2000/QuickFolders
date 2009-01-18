@@ -1,11 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="layout.css" type="text/css"?>
+<?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
 
 
-<dialog
-	title="Set the category for a bookmark"
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/set_folder_category.dtd" >
+<dialog title="&qf.dialog.setcategory;" 
 	buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();QuickFolders.Model.update();"
@@ -16,20 +16,20 @@
 	</script>
 
  	<description>
-       You can put this bookmark in a category (i.e. "Work", "Private", ...).
+   &qf.description.categoryusage;
     </description>
 
     <description>
-       The QuickFolders bar will display a pulldown, allowing you to filter your bookmarks by category.
+       &qf.description.pulldown;
     </description>
 
     <description>
-        Select an existing category by double clicking on it, or add a new category below.
+       &qf.description.editcategory;
     </description>
 
     <hbox style="margin-top: 1em">
         <vbox>
-            <label>Existing categories:</label>
+            <label>&qf.label.existingcategories;</label>
 
             <listbox id="existing-categories" 
               ondblclick="QuickFolders.FolderCategory.setSelectedCategory()"
@@ -38,14 +38,14 @@
             </listbox>
         </vbox>
         <vbox>
-            <label>New category:</label>
+            <label>&qf.label.newcategory;</label>
 
             <hbox>
                 <textbox
                     id="new-category-name"
                     onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
                 />
-                <button label="Add!" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+                <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
             </hbox>
             <hbox>
             

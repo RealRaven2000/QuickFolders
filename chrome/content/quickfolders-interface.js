@@ -160,10 +160,12 @@ QuickFolders.Interface = {
     getButtonByFolder: function(folder) {
        for(var i = 0; i < this.buttonsByOffset.length; i++) {
            var button = this.buttonsByOffset[i];
-
-           if(button.folder.URI == folder.URI) {
+           try {
+             if(button.folder.URI == folder.URI) 
                return button;
+           
            }
+           catch(e) { };
        }
 
        return null;

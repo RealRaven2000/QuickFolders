@@ -38,13 +38,13 @@ button.order-button {
     margin: 0;
     padding: 0;
     border: 1px solid #AAA;
-    background: Menu; 
+    background-color: Menu; 
     border-bottom: 3px solid Highlight;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton {
     -moz-appearance: none !important;
-    background: ButtonFace; 
+    background-color: ButtonFace; 
     padding: 1px 5px 0px 2px;
     border: 1px solid #AAA;
     margin: 3px 0px 0px 3px;	
@@ -53,7 +53,7 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
-    background: Orange !important; 
+    background-color: Orange !important; 
     color: Black !important;
     height: 21px;
     margin-top: 2px !important; 
@@ -62,7 +62,7 @@ button.order-button {
 
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
-    background:  Highlight; 
+    background-color:  Highlight; 
     color: HighlightText;
     border: 1px solid #666 !important;
     border-bottom: none !important;
@@ -89,7 +89,7 @@ button.order-button {
 
 /* Experimental for Trash, FindThread Icon */
 #Quickfolders-SpecialTools {
-	background: Menu; 
+	background-color: Menu; 
 	border: 1;
 }
 

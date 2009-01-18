@@ -9,9 +9,11 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="quickfolders@curious.be"
                    em:name="QuickFolders"
-                   em:version="0.9.4"
+                   em:version="0.9.6"
                    em:creator="Alexander Malfait"
-                   em:description="Bookmark mail folders in Thunderbird"
+                   em:contributor="Axel Grude [Tab Styling, Subfolders, Localization]"
+                   em:description="Bookmark your favorite mail folders in Thunderbird."
+                   em:iconURL="chrome://quickfolders/content/quickfolders-Icon.png"
                    em:homepageURL="http://www.curious.be/"
                    em:optionsURL="chrome://quickfolders/content/options.xul">
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>

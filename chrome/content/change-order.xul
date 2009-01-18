@@ -1,11 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="layout.css" type="text/css"?>
 
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/change_order.dtd" >
 
 <dialog 
-	title="Change the order of the bookmarks"
+  title="&qf.dialog.changeorder;" 
 	buttons="accept"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFolders.Model.update();"
@@ -17,7 +18,7 @@
 	
 	
  	<description flex="1" style="max-width:300px">
-       Bookmarks can also be dragged to change positions! Drop one on top of another to insert before / after it.
+     &qf.description.dragexplain;
     </description>
 
     <grid flex="1" id="QuickFolders-change-order-grid">
@@ -29,14 +30,14 @@
     	
     	<rows id="QuickFolders-change-order-grid-rows">
     		<row>
-	    		<label>Test Folder</label>
-	    		<button label="Up" class="order-button" />
-	    		<button label="Down" class="order-button" />
+	    		<label>&qf.label.testfolder;</label>
+	    		<button label="&qf.button.up;" class="order-button" />
+	    		<button label="&qf.button.down;" class="order-button" />
 	    	</row>
 	    	<row>
-	    		<label>Test Folder 2</label>
-	    		<button label="Up" class="order-button" />
-	    		<button label="Down" class="order-button" />
+	    		<label>&qf.label.testfolder2;</label>
+	    		<button label="&qf.button.up;" class="order-button" />
+	    		<button label="&qf.button.down;" class="order-button" />
 	    	</row>
     	</rows>
     </grid>

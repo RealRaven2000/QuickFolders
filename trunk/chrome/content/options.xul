@@ -1,12 +1,13 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="layout.css" type="text/css"?>
+<?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
 
+<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
     
 <prefwindow 
-    title="QuickFolders options"
+title="&qf.prefwindow.quickfolders.options;" 
     id="qf-options"
     buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -19,7 +20,7 @@
  <prefpane id="qf-options-prefpane" flex="12"> 
 	<hbox id="qf-options-header" >	
 		<label class="dialogheader-title"
-			value="Quickfolders"
+			value="&qf.label.quickfolders;" 
 			flex="1"/>
 			
 		<label id="qf-options-header-description"/>
@@ -27,13 +28,14 @@
 	
 	<tabbox orient="vertical" flex="6">
 		<tabs>
-			<tab label="General"/>
-			<tab label="Layout"/>
-			<tab label="Quick Help"/>
+			<tab label="&qf.tab.general;" />
+			<tab label="&qf.tab.layout;" />
+			<tab label="&qf.tab.quickhelp;" />
 		</tabs>
 
 		<tabpanels>
-			<tabpanel orient="vertical" id="QuickFolders-Options-general" label="General" flex="10" style="min-height:200px;">
+			<tabpanel orient="vertical" id="QuickFolders-Options-general" 
+       label="&qf.tab.general;" flex="10" style="min-height:200px;">
 
 				<preferences>
 					<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
@@ -46,43 +48,43 @@
 				</preferences>
 		
 				<checkbox 
-					label="Show the &quot;QuickFolders&quot; label in the toolbar" 
+					label="&qf.checkbox.displaylabel;" 
 					preference="QuickFolders-Preferences-ShowQuickFoldersLabel" 
 					instantApply="true"
 				/>
 		
 		        <checkbox 
-					label="Use keyboard shortcuts (alt + 1 through alt + 9)" 
+					label="&qf.checkbox.usekeyboardshortcuts;" 
 					preference="QuickFolders-Preferences-UseKeyboardShortcuts" 
 					instantApply="true"
 				/>
 		
 		        <checkbox 
-					label="Show shortcut number on folder labels" 
+					label="&qf.checkbox.showshortcutnumber;" 
 					preference="QuickFolders-Preferences-ShowShortcutNumber" 
 					instantApply="true"
 				/>
 		
 		        <checkbox 
-					label="Show the number of unread messages on the folder button" 
+label="&qf.checkbox.showUnreadMessageCount;" 
 					preference="QuickFolders-Preferences-ShowUnread" 
 					instantApply="true"
 				/>
 				
 				<checkbox 
-					label="Show buttons for folders with unread messages in bold" 
+					label="&qf.checkbox.showUnreadBold;" 
 					preference="QuickFolders-Preferences-ShowUnreadFoldersBold" 
 					instantApply="true"
 				/>
 		
 		        <checkbox 
-					label="Show the total number of messages on the folder button" 
+          label="&qf.checkbox.showTotalMessageCount;" 
 					preference="QuickFolders-Preferences-ShowTotalNumber" 
 					instantApply="true"
 				/>
 				
 				<checkbox 
-					label="Show buttons for folders with messages in them italic" 
+          label="&qf.checkbox.showNonEmptyItalics;" 
 					preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
 					instantApply="true"
 				/>
@@ -91,20 +93,20 @@
 			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10">
 
 				<preferences>
-		            <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
-                    <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
+		     <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
+         <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
 				</preferences>
 		            
                 
 				<checkbox 
-					label="Show Tabs as Flat Style" 
+          label="&qf.checkbox.showFlatStyle;" 
 					preference="QuickFolders-Preferences-ShowFlatStyle" 
 					instantApply="true"
 				/>
                 <hbox style="margin-top: .5em;">
                     <label
                         control="button-font-size"
-                        value="Button font size (blank for default): "
+                        value="&qf.label.buttonFontSize;" 
                     />
                     <textbox
                         id="button-font-size"
@@ -118,58 +120,53 @@
                 </hbox>
                 <hbox style="margin-top: .2em;">
                 
-                <label value="Active Tab Color:"  style="vertical-align:middle"/>
+                <label value="&qf.label.ActiveTabColor;"  style="vertical-align:middle"/>
 				
 	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('toolbarbutton.selected-folder', this.color);"
+	              onchange="return QuickFoldersOptions.setElementColor('.toolbar-flat toolbarbutton.selected-folder', 'background-color', this.color);"
 	              />
                 </hbox>
                 
                 <hbox style="margin-top: .2em;">
-                <label value="Hovered Tab Color:" style="vertical-align:middle"/>
+                <label value="&qf.label.HoveredTabColor;" style="vertical-align:middle"/>
 				
 	            <colorpicker id="toolbarbutton:hover" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('toolbarbutton:hover', this.color);"
+	              onchange="return QuickFoldersOptions.setElementColor('.toolbar-flat toolbarbutton:hover', 'background-color', this.color);"
 	              />
                 </hbox>
 
                 <hbox style="margin-top: .2em;">
-		        <label value="Toolbar Background:"  style="vertical-align:middle"/>
+		        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
 				
 	            <colorpicker id="toolbar" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('toolbar', this.color);"
+	              onchange="return QuickFoldersOptions.setElementColor('.toolbar', 'background-color', this.color);"
 	              />
                 </hbox>
 
                                 
 			</tabpanel>
 			
-			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help" flex="10">
+			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" 
+       label="Quick Help" 
+       flex="10">
 			  <description  flex="1" maxwidth="450" style="text-align:justify">
-			    Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias).
-			    Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). 
-			    Click quickfolder to jump to mail folder.
+			    &qf.description.dragToAdd;
 			  </description>
+			  <description flex="1" maxwidth="450" style="text-align:justify">&qf.description.dragToPosition;</description>
 			  <description flex="1" maxwidth="450" style="text-align:justify">
-			    Drag quickfolders sideways to change their positions. 
-			    Right-click quickfolder for context menu; by selecting you can jump into sub folders.
-			    'Rename bookmark' changes the label of the quickfolder. 'Remove bookmark' deletes the quickfolder (not the mail folder).
-			  </description>
-			  <description flex="1" maxwidth="450" style="text-align:justify">
-			    Drag messages onto quickfolder popup menu to move messages into sub folders.
+			    &qf.description.dragToPopup;
 			  </description>
               <description maxwidth="450" style="text-align:justify">
-			    Right click a bookmark to organize it into a category. You will get a categories pulldown on the left of the bar.
+			    &qf.description.changeCategory;
 			  </description>
 			  <description maxwidth="450" style="text-align:justify">
-			    Right-click an empty area to open the options menu.
-			    In options, you can select native style (smaller) or flat style (clearer; supports drag indicator).
+			    &qf.description.rightClickOptions;
 			  </description>
 			  <description>
-			    Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing.
+			    &qf.description.tipMsg;
 			  </description>
 			  
 			</tabpanel>

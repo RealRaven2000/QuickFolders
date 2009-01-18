@@ -1,3 +1,5 @@
+var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 QuickFolders.Interface = {
 
     buttonsByOffset: [],
@@ -66,13 +68,13 @@ QuickFolders.Interface = {
         if(bookmarkCategories.length > 0) {
             menuList.style.display = '';
 
+            menuPopup.appendChild(this.createMenuItem("__ALL", "(All)"))
             for(var i = 0; i < bookmarkCategories.length; i++) {
                 var category = bookmarkCategories[i]
-
-                menuPopup.appendChild(this.createMenuItem(category, category))
+                if (bookmarkCategories[i] != "__ALWAYS")
+	                menuPopup.appendChild(this.createMenuItem(category, category))
             }
 
-            menuPopup.appendChild(this.createMenuItem("__ALL", "All"))
             menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", "Uncategorized"))
 
             if(QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
@@ -123,6 +125,8 @@ QuickFolders.Interface = {
         else if(!QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
             return true;
         }
+        else if ((typeof folderEntry.category != "undefined") && folderEntry.category== "__ALWAYS")
+          return true;
         else {
             return this.currentlySelectedCategory == folderEntry.category;
         }
@@ -240,6 +244,8 @@ QuickFolders.Interface = {
         if(buttonFontSize) {
             button.style.fontSize = buttonFontSize + "px";
         }
+        
+// INSERT COLOR RULES HERE LATER
 
         // AG add dragging of buttons
         button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
@@ -290,7 +296,7 @@ QuickFolders.Interface = {
     } ,
 
     onRenameBookmark: function(folder) {
-        var newName = window.prompt("Enter a new name for the bookmark",QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
+        var newName = window.prompt(_bundle.GetStringFromName("qfNewName"),QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
         if(newName) {
             QuickFolders.Model.renameFolder(folder.URI, newName);
         }
@@ -301,7 +307,7 @@ QuickFolders.Interface = {
         var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
 
         messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
-        alert("Compacted " + folder.name);
+        alert(_bundle.GetStringFromName("qfCompacted") +" "+folder.name);
     },
 
     addPopupSet: function(popupId, folder,offset) {
@@ -318,22 +324,26 @@ QuickFolders.Interface = {
         var menuitem;
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute('label','Remove bookmark');
+        menuitem.setAttribute('label',_bundle.GetStringFromName("qfRemoveBookmark"));
+        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRemoveBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRemoveFolder(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute('label','Rename bookmark..');
+        menuitem.setAttribute('label',_bundle.GetStringFromName("qfRenameBookmark"));
+        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRenameBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute('label','Compact Folder');
+        menuitem.setAttribute('label',_bundle.GetStringFromName("qfCompactFolder"));
+        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfCompactFolderAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
         menupopup.appendChild(menuitem);
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute('label','Set / change bookmark category');
+        menuitem.setAttribute('label',_bundle.GetStringFromName("qfSetCategory"));
+        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfSetCategoryA"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.addFolderToCategory(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
         menupopup.appendChild(menuitem);
 
@@ -406,4 +416,5 @@ QuickFolders.Interface = {
     addFolderToCategory: function(folder) {
         window.openDialog('chrome://quickfolders/content/set-folder-category.xul','quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders, folder);
     }
+    
 };

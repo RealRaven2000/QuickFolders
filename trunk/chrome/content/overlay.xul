@@ -1,6 +1,7 @@
-<?xml version="1.0"?>
-<?xml-stylesheet href="layout.css" type="text/css"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
 
+<!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
          
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -25,7 +26,7 @@
             context="QuickFolders-ToolbarPopup"
             style="display: none;"
         >
-        <label id="QuickFolders-title-label">QuickFolders:</label>
+        <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 
         <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value)" style="display: none">
             <menupopup>
@@ -39,7 +40,7 @@
             flex="100%"
         >
             <!-- Filled dynamically by the script -->	
-            <label class="toolbar-height">Drag folders here to bookmark. Click the bookmark to go to the folder, drag messages to move/copy them there.</label>
+            <label class="toolbar-height">&qf.label.dragFolderLabel;</label>
         </box>
             
         <spacer flex="1"/>
@@ -56,8 +57,12 @@
 
             <popupset>
                 <menupopup id="QuickFolders-ToolbarPopup">
-                    <menuitem label="QuickFolders Options..." oncommand="QuickFolders.Interface.viewOptions()" accesskey="O" />
-                    <menuitem label="Change the order of the bookmarks..." oncommand="QuickFolders.Interface.viewChangeOrder()"  accesskey="C"/>
+                    <menuitem label="&qf.menuitem.quickfolders.options;" 
+                              accesskey="&qf.menuitem.quickfolders.optionsAccess;"
+                              oncommand="QuickFolders.Interface.viewOptions()" />
+                    <menuitem label="&qf.menuitem.quickfolders.changeOrder;" 
+                              accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
+                              oncommand="QuickFolders.Interface.viewChangeOrder()"  />
                 </menupopup>
             </popupset>
 

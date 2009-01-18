@@ -42,10 +42,12 @@ var QuickFoldersOptions = {
 	    // find the class element itself and change its properties
 	    // persist in options
 	    // load on startup
-	    
+	  try {
 	    var ss = this.getMyStyleSheet();
-	    if (!ss || ss==null)
+	    if (!ss || ss==null) {
+		  window.dump("Quickfolders: could not find my style sheet!\n")
 	      return;
+        }
 	    
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
@@ -57,7 +59,7 @@ var QuickFoldersOptions = {
 	    { 
 		    var found;
 	        //alert("searching rule (" + i + "): " + rulesList[i].selectorText);
-		    for (var j=0; j<r.length; j++) {
+		    for (var j=0; j<rAtoms.length; j++) {
 			  found=true;
 			  
 		      if (-1 == rulesList[i].selectorText.indexOf(rAtoms[j])) {
@@ -66,20 +68,29 @@ var QuickFoldersOptions = {
 	          }
 	        }
 	        if (found) {
+		      window.dump ("\n ------- MATCHED  ----------")
+	          window.dump ("\nrule(" + i + ") - selectorText:" + rulesList[i].selectorText);
 			  alert("Matched Rule(" + i + ")\n\nselectorText:" + rulesList[i].selectorText + "\n"+
 			        "rule type:" + rulesList[i].type + "\n" +
 			        "rule cssText:" + rulesList[i].cssText + "\n" +
 			        "setting " + colortype + ":" + color);
 			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration  
-			  alert("getPropertyValue(background):" + st.getPropertyValue("background"));
-			  alert("getPropertyValue(background-color):" + st.getPropertyValue("background-color"));
+			  //iterate styles!
 			  var k;
 			  for (k=0;k<st.length;k++) {
-			    if (colortype==st.item(k)) {
-			      alert("item(" + k  + "):" + st.item(k));
-				  rulesList[k].style.setProperty(colortype,color,"important");
-				  alert("changed? getPropertyValue(background):" + rulesList[k].style.getPropertyValue("background"));
-			    }
+				try{
+		         // window.dump ("\ngetPropertyValue(" + st.item(k) + "):" + rulesList[k].style.getPropertyValue(colortype));
+			      if (colortype==st.item(k)) {
+			        window.dump ("\n=============\nModify item(" + k  + "):" + st.item(k));
+				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+				    window.dump ("\ngetPropertyCSSValue(" + colortype + "):" + st.getPropertyCSSValue(colortype));
+				    window.dump ("\ncssText:" + st.cssText);
+				    st.setProperty(colortype,color,"important");
+				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+				    break;
+			      }
+		        }
+		        catch (e) { window.dump ("error: " + e) };
 		      }
 		      break;
 		      //st.removeProperty(colortype);
@@ -118,7 +129,11 @@ var QuickFoldersOptions = {
 	    //            add system colors such as ButtonFace, Highlight, HighlightText etc.
 	    // even later: 
 	    //            extend the color picker to select 2 colors and a gradient direction (vertical / horizontal)
+      }
+      catch(e) {
+	     window.dump ("\nQuickfolders: " + e);   
+      };
     }
-    
 }
+
 

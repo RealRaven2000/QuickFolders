@@ -1,3 +1,4 @@
+pref("extensions.{3550f703-e582-4d05-9a08-453d09bdfdc6}.description", "chrome://quickfolders/locale/quickfolders.properties");
 pref("extensions.quickfolders.showShortcutNumber",true);
 pref("extensions.quickfolders.showUnreadOnButtons",true);
 pref("extensions.quickfolders.showQuickfoldersLabel",false);

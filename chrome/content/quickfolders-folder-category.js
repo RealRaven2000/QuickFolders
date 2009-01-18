@@ -1,3 +1,5 @@
+var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 QuickFolders.FolderCategory = {
     window: null,
     folder: null,
@@ -28,11 +30,11 @@ QuickFolders.FolderCategory = {
 
         for(var i = 0; i < categories.length; i++) {
             var category = categories[i]
-
-            listBox.appendChild(this.createListItem(category, category))
+            if (category!="__ALWAYS")
+              listBox.appendChild(this.createListItem(category, category))
         }
-
-        listBox.appendChild(this.createListItem("", "Uncategorized"))
+        listBox.appendChild(this.createListItem("__ALWAYS", _bundle.GetStringFromName("qfShowAlways")))
+        listBox.appendChild(this.createListItem("", _bundle.GetStringFromName("qfUncategorized")))
     } ,
 
     createListItem: function(value, label) {
@@ -59,5 +61,17 @@ QuickFolders.FolderCategory = {
         QuickFolders.Model.setFolderCategory(this.folder.URI, category);
 
         this.window.close();
+    },
+    
+    setColor: function(picker) {
+	    alert (_bundle.GetStringFromName("qfColorPickingWIP") + picker.color);
+    },
+    
+    getSelectedColor: function() {
+        var listBox = this.$('existing-categories')
+        var category = listBox.value;
+        picker.color = getCategoryColor(category);
+    },
+    getCategoryColor: function(cat) {
     }
 }

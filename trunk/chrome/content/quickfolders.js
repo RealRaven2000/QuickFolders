@@ -40,11 +40,17 @@
        Added accelerator keys to popup menus
        Layout Improvements in style sheet (saves space)
        Tidied up Project History
+       
+  17/01/2009       
+    AG added locale support with help of goofy's sent code
+       coloring of active, hovered tab and tabbar background 
+       
     
   KNOWN ISSUES
   ============
   05/09/2008
     - if folders are added / removed during session this is not refreshed in subfolder list of popup set!
+    - folders can be orphaned in config settings and are not removable via interface
   
     
   PLANNED FEATURES

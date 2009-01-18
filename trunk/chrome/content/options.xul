@@ -118,7 +118,14 @@ label="&qf.checkbox.showUnreadMessageCount;"
 
                     <label value="pixels" />
                 </hbox>
+                
+   <vbox style="background-color:#FDCCCC; margin-top:.2em; padding: 0.3em; border: 1 black;" label="colors">
+                <label style="font-weight: bold;" 
+                       value="&qf.description.experimentalItems;" />
+                
+
                 <hbox style="margin-top: .2em;">
+                
                 
                 <label value="&qf.label.ActiveTabColor;"  style="vertical-align:middle"/>
 				
@@ -146,7 +153,8 @@ label="&qf.checkbox.showUnreadMessageCount;"
 	              />
                 </hbox>
 
-                                
+               </vbox>
+               
 			</tabpanel>
 			
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" 

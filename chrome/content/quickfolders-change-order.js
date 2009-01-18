@@ -1,3 +1,5 @@
+var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders2.properties");
 QuickFolders.ChangeOrder = {
     window: null,
 
@@ -36,13 +38,13 @@ QuickFolders.ChangeOrder = {
         row.appendChild(folderLabel);
 
         var buttonUp = document.createElement("button");
-        buttonUp.setAttribute("label","Up");
+        buttonUp.setAttribute("label",_bundle.GetStringFromName("qfUp"));
         buttonUp.linkedFolder = folder;
         buttonUp.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
         row.appendChild(buttonUp);
 
         var buttonDown = document.createElement("button");
-        buttonDown.setAttribute("label","Down");
+        buttonDown.setAttribute("label",_bundle.GetStringFromName("qfDown"));
         buttonDown.linkedFolder = folder;
         buttonDown.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
         row.appendChild(buttonDown);

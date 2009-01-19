@@ -119,7 +119,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
                     <label value="pixels" />
                 </hbox>
                 
-   <vbox style="background-color:#FDCCCC; margin-top:.2em; padding: 0.3em; border: 1 black;" label="colors">
+   <vbox style="background-color:#FDCCCC; margin-top:.2em; padding: 0.3em; border: 1px groove black;" label="colors">
                 <label style="font-weight: bold;" 
                        value="&qf.description.experimentalItems;" />
                 

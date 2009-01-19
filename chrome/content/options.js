@@ -35,6 +35,10 @@ var QuickFoldersOptions = {
       //return NaN;
     },
     
+    getElementColor: function(rule, colortype, color) {
+	    
+    },
+    
     setElementColor: function(rule, colortype, color) {
 	    // alert("setElementColor!");
 	    // alert("Set color of css class " + rule + " to " + color);
@@ -87,6 +91,7 @@ var QuickFoldersOptions = {
 				    window.dump ("\ncssText:" + st.cssText);
 				    st.setProperty(colortype,color,"important");
 				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+				    window.dump ("\ncssText:" + st.cssText);
 				    break;
 			      }
 		        }

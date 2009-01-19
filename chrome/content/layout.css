@@ -90,7 +90,7 @@ button.order-button {
 /* Experimental for Trash, FindThread Icon */
 #Quickfolders-SpecialTools {
 	background-color: Menu; 
-	border: 1;
+	border: 1px solid;
 }
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {
@@ -99,7 +99,7 @@ button.order-button {
 /*      -moz-appearance: toolbarbutton !important; */
 	background-image: url("thread.png") !important;
 	background-repeat: no-repeat !important;
-	padding-left:24 px;
+	padding-left: 24px;
 /*    dir: normal !important;
     orient: horizontal  !important;
     validate: always !important; */

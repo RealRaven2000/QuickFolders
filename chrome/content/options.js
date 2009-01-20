@@ -52,7 +52,6 @@ var QuickFoldersOptions = {
 	    
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
-	    var colorRule;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
@@ -97,9 +96,8 @@ var QuickFoldersOptions = {
 	    
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
-	    var colorRule;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
-	    window.dump("\nSearching Rule Name:" + RuleName +"\n" + "rulesList.length=" + rulesList.length);
+	    window.dump("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
 	    { 
@@ -149,7 +147,9 @@ var QuickFoldersOptions = {
 			  }
 			  alert ("cssText list:" + sStyleTextList );
 			  */
-				  /*  
+				  /*
+	    	    var colorRule;
+
 				  if(rulesList[i].selectorText.toLowerCase()==RuleName.toLowerCase())
 				  { //find "a:hover" rule
 		            colorRule=rulesList[i];
@@ -157,12 +157,19 @@ var QuickFoldersOptions = {
 		            break;
 		          }
 		          */
+		          
+	    //ss.deleteRule(colorRule);
+	    //ss.insertRule(colorRule, ss.cssRules.length);
+		          
 	        }
 		    
 	    }
+	    // HOW DO WE FORCE REFRESH OF ELEMENTS FROM STYELSHEET?
+	    // this doesn't work =>
+	    // ss.disabled=true;
+	    // ss.disabled=false;
+        
 	    
-        //ss.deleteRule(colorRule);
-	    //ss.insertRule(colorRule, ss.cssRules.length);
 	    
 	    return true;
 	    // planned for later: 

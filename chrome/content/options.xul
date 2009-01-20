@@ -138,7 +138,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
                 <hbox style="margin-top: .2em;">
                 <label value="&qf.label.HoveredTabColor;" style="vertical-align:middle"/>
 				
-	            <colorpicker id="toolbarbutton:hover" palettename="standard" style="vertical-align:middle" 
+	            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
 	              onchange="return QuickFoldersOptions.setElementColor('.toolbar-flat toolbarbutton:hover', 'background-color', this.color);"
 	              />
@@ -147,7 +147,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
                 <hbox style="margin-top: .2em;">
 		        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
 				
-	            <colorpicker id="toolbar" palettename="standard"  style="vertical-align:middle"
+	            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
 	              onchange="return QuickFoldersOptions.setElementColor('.toolbar', 'background-color', this.color);"
 	              />

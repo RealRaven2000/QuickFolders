@@ -54,7 +54,6 @@ var QuickFoldersOptions = {
 	    var i;
 	    var colorRule;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
-	    window.dump("\nSearching Rule Name:" + RuleName +"\n" + "rulesList.length=" + rulesList.length);
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
 	    { 
@@ -68,18 +67,16 @@ var QuickFoldersOptions = {
 	          }
 	        }
 	        if (found) {
-	          window.dump ("\nfound rule(" + i + ") - selectorText: " + rulesList[i].selectorText);
-			  window.dump ("\n"+ "rule type:" + rulesList[i].type + "\n" +
-			                     "getting " + colortype );
 			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration  
 		      return st.getPropertyValue(colortype);
 	        }
 		    
 	    }
+        window.dump ("\nQuickfolders.getElementColor: could not find rule " + RuleName);
 	    return 0;
       }
       catch(e) {
-	     window.dump ("\nQuickfolders: " + e);   
+	     window.dump ("\nQuickfolders.getElementColor: " + e);   
       };
 	    
     },
@@ -118,22 +115,19 @@ var QuickFoldersOptions = {
 	        if (found) {
 		      window.dump ("\n ------- MATCHED  ----------")
 	          window.dump ("\nrule(" + i + ") - selectorText: " + rulesList[i].selectorText);
-			  window.dump ("\n"+ "rule type:" + rulesList[i].type + "\n" +
-			                     "setting " + colortype + ": " + color);
+			  window.dump ("\n"+ "setting " + colortype + " to " + color);
 			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration  
 			  //iterate styles!
 			  var k;
 			  for (k=0;k<st.length;k++) {
 				try{
-		         // window.dump ("\ngetPropertyValue(" + st.item(k) + "):" + rulesList[k].style.getPropertyValue(colortype));
 			      if (colortype==st.item(k)) {
-			        window.dump ("\n=============\nModify item(" + k  + "):" + st.item(k));
+			        window.dump ("\n=============\nModify item: " + st.item(k));
 				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
-				    //window.dump ("\ngetPropertyCSSValue(" + colortype + "):" + st.getPropertyCSSValue(colortype));
-				    window.dump ("\ncssText BEFORE:" + st.cssText);
+				    //window.dump ("\ncssText BEFORE:" + st.cssText);
 				    st.setProperty(colortype,color,"important");
 				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
-				    window.dump ("\ncssText AFTER:" + st.cssText);
+				    //window.dump ("\ncssText AFTER:" + st.cssText);
 				    break;
 			      }
 		        }

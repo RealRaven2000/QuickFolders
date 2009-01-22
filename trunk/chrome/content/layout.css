@@ -53,12 +53,19 @@ button.order-button {
     height: 20px;
 }
 
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
+
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
     background-color: Orange !important; 
     color: Black !important;
     height: 21px;
     margin-top: 2px !important; 
     padding-top: 0px  !important; 
+}
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:-moz-drag-over {
+    background-color: #E93903 !important; 
+    color: White !important;
 }
 
 
@@ -92,6 +99,12 @@ button.order-button {
 #Quickfolders-SpecialTools {
 	background-color: Menu; 
 	border: 1px solid;
+}
+
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+  background-color: Highlight !important;
+  color: HighlightText !important;
 }
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {

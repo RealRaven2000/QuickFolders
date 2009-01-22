@@ -114,17 +114,36 @@ var QuickFoldersOptions = {
 		      window.dump ("\n ------- MATCHED  ----------")
 	          window.dump ("\nrule(" + i + ") - selectorText: " + rulesList[i].selectorText);
 			  window.dump ("\n"+ "setting " + colortype + " to " + color);
-			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration  
+			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration 
 			  //iterate styles!
 			  var k;
+			  
+			  /*
+			  for (k=0;k<st.length;k++) {
+		        window.dump ("\nRule Item "+k+": " + st.item(k));
+			  }
+			  */
+			  
 			  for (k=0;k<st.length;k++) {
 				try{
 			      if (colortype==st.item(k)) {
-			        window.dump ("\n=============\nModify item: " + st.item(k));
-				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+			        window.dump ("\n=============\nModify item: " + st.item(k)) + " =====================";
 				    //window.dump ("\ncssText BEFORE:" + st.cssText);
+				   window.dump ("\nrulesList[i].style[k]=" + rulesList[i].style[k]);
+				   window.dump ("\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule);
+				   window.dump ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype));
+				    window.dump ("\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+				   window.dump ("\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
+				   window.dump ("\n -->> REMOVING AND ADDING PROPERTY NOW:");
+				    st.removeProperty(colortype);
 				    st.setProperty(colortype,color,"important");
-				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
+				   window.dump ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype));
+				   window.dump ("\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
+				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype) );
+			        window.dump ("\n==========================================\n");
+				   
+				   //alert("st.item(k).style=" + st.item(k).style);undefined
+				   //alert("st.item(k).type=" + st.item(k).type);undefined
 				    //window.dump ("\ncssText AFTER:" + st.cssText);
 				    break;
 			      }

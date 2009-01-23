@@ -1,5 +1,6 @@
 const QF_CC = Components.classes;
 const QF_CI = Components.interfaces;
+var 	consoleService=null;
 
 
 function QF_getAddon(aId) {
@@ -27,10 +28,16 @@ var QuickFoldersOptions = {
 		    document.getElementById("hover-colorpicker").color=this.getElementColor('.toolbar-flat toolbarbutton:hover', 'background-color');
 		    document.getElementById("toolbar-colorpicker").color=this.getElementColor('.toolbar', 'background-color');
 	    }
-	    catch(e) { Window.dump("Quickfolders:" + e); };
+	    catch(e) { this.logToConsole("Quickfolders:" + e); };
 	    
     },
-    
+    logToConsole: function (msg) {
+	  if (consoleService == null)
+	    consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+	                                 .getService(Components.interfaces.nsIConsoleService);
+	  consoleService.logStringMessage("Quickfolders:" +msg);
+	},
+
     getMyStyleSheet: function() {
 	  var styleSheetList = document.styleSheets;
       for (var i=0; i<document.styleSheets.length; i++) {
@@ -46,7 +53,7 @@ var QuickFoldersOptions = {
 	  try {
 	    var ss = this.getMyStyleSheet();
 	    if (!ss || ss==null) {
-		  window.dump("Quickfolders: could not find my style sheet!\n")
+		  this.logToConsole("Quickfolders: could not find my style sheet!\n")
 	      return;
         }
 	    
@@ -71,11 +78,11 @@ var QuickFoldersOptions = {
 	        }
 		    
 	    }
-        window.dump ("\nQuickfolders.getElementColor: could not find rule " + RuleName);
+        this.logToConsole ("\nQuickfolders.getElementColor: could not find rule " + RuleName);
 	    return 0;
       }
       catch(e) {
-	     window.dump ("\nQuickfolders.getElementColor: " + e);   
+	     this.logToConsole ("\nQuickfolders.getElementColor: " + e);   
       };
 	    
     },
@@ -90,14 +97,14 @@ var QuickFoldersOptions = {
 	  try {
 	    var ss = this.getMyStyleSheet();
 	    if (!ss || ss==null) {
-		  window.dump("Quickfolders: could not find my style sheet!\n")
+		  this.logToConsole("Quickfolders: could not find my style sheet!\n")
 	      return;
         }
 	    
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
-	    window.dump("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
+	    this.logToConsole("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
 	    { 
@@ -111,44 +118,44 @@ var QuickFoldersOptions = {
 	          }
 	        }
 	        if (found) {
-		      window.dump ("\n ------- MATCHED  ----------")
-	          window.dump ("\nrule(" + i + ") - selectorText: " + rulesList[i].selectorText);
-			  window.dump ("\n"+ "setting " + colortype + " to " + color);
+		      this.logToConsole ("------- MATCHED  ----------" 
+	          + "\nrule(" + i + ") - selectorText: " + rulesList[i].selectorText
+			  + "\n"+ "setting " + colortype + " to " + color);
 			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration 
 			  //iterate styles!
 			  var k;
 			  
 			  /*
 			  for (k=0;k<st.length;k++) {
-		        window.dump ("\nRule Item "+k+": " + st.item(k));
+		        this.logToConsole ("\nRule Item "+k+": " + st.item(k));
 			  }
 			  */
 			  
 			  for (k=0;k<st.length;k++) {
 				try{
 			      if (colortype==st.item(k)) {
-			        window.dump ("\n=============\nModify item: " + st.item(k)) + " =====================";
-				    //window.dump ("\ncssText BEFORE:" + st.cssText);
-				   window.dump ("\nrulesList[i].style[k]=" + rulesList[i].style[k]);
-				   window.dump ("\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule);
-				   window.dump ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype));
-				    window.dump ("\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype));
-				   window.dump ("\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
-				   window.dump ("\n -->> REMOVING AND ADDING PROPERTY NOW:");
+			        this.logToConsole ("\n=============\nModify item: " + st.item(k)) + " =====================";
+				    //this.logToConsole ("\ncssText BEFORE:" + st.cssText);
+				   this.logToConsole ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
+				              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
+				              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
+				              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
+				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
+				   this.logToConsole ("\n -->> REMOVING AND ADDING PROPERTY NOW:");
 				    st.removeProperty(colortype);
 				    st.setProperty(colortype,color,"important");
-				   window.dump ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype));
-				   window.dump ("\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
-				    window.dump ("\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype) );
-			        window.dump ("\n==========================================\n");
+				   this.logToConsole ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
+				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype)
+				               + "\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
+			                   + "\n==========================================\n");
 				   
 				   //alert("st.item(k).style=" + st.item(k).style);undefined
 				   //alert("st.item(k).type=" + st.item(k).type);undefined
-				    //window.dump ("\ncssText AFTER:" + st.cssText);
+				    //this.logToConsole ("\ncssText AFTER:" + st.cssText);
 				    break;
 			      }
 		        }
-		        catch (e) { window.dump ("error: " + e) };
+		        catch (e) { this.logToConsole ("error: " + e) };
 		      }
 		      break;
 		      //st.removeProperty(colortype);
@@ -198,7 +205,7 @@ var QuickFoldersOptions = {
 	    //            extend the color picker to select 2 colors and a gradient direction (vertical / horizontal)
       }
       catch(e) {
-	     window.dump ("\nQuickfolders: " + e);   
+	     this.logToConsole ("\nQuickfolders: " + e);   
       };
     }
 }

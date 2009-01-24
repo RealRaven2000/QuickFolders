@@ -47,14 +47,27 @@ var QuickFoldersOptions = {
 	    document.getElementById("qf-options-header-description").setAttribute("value", version);
 	    // initialize colorpickers
 	    try {
-		    document.getElementById("activetab-colorpicker").color=QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","HighLight");
-		    document.getElementById("activetab-fontcolorpicker").color=QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText");
+		    var col,bcol;
+		    bcol=QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","HighLight");
+		    document.getElementById("activetab-colorpicker").color=bcol;
+		    col=QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText");
+		    document.getElementById("activetab-fontcolorpicker").color=col;
+		    document.getElementById("activetabs-label").style.color=col;
+		    document.getElementById("activetabs-label").style.backgroundColor=bcol;
 
-		    document.getElementById("hover-colorpicker").color=QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange");
-		    document.getElementById("hover-fontcolorpicker").color=QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black");
-
-		    document.getElementById("dragover-colorpicker").color=QuickFolders.Preferences.getUserStyle("DragTab","background-color", "#E93903"); 
-		    document.getElementById("dragover-fontcolorpicker").color=QuickFolders.Preferences.getUserStyle("DragTab","color", "White"); 
+		    bcol=QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange");
+		    document.getElementById("hover-colorpicker").color=bcol;
+		    col=QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black");
+		    document.getElementById("hover-fontcolorpicker").color=col;
+		    document.getElementById("hoveredtabs-label").style.color=col;
+		    document.getElementById("hoveredtabs-label").style.backgroundColor=bcol;
+		    
+		    bcol=QuickFolders.Preferences.getUserStyle("DragTab","background-color", "#E93903"); 
+		    document.getElementById("dragover-colorpicker").color=bcol;
+		    col=QuickFolders.Preferences.getUserStyle("DragTab","color", "White"); 
+		    document.getElementById("dragover-fontcolorpicker").color=col;
+		    document.getElementById("dragovertabs-label").style.color=col;
+		    document.getElementById("dragovertabs-label").style.backgroundColor=bcol;
 
 		    document.getElementById("toolbar-colorpicker").color=QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White"); 
 		    

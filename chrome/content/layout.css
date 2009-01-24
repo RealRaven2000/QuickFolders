@@ -39,7 +39,8 @@ button.order-button {
     padding: 0;
     border: 1px solid #AAA;
     background-color: Menu; 
-    border-bottom: 3px solid Highlight;
+    border-bottom: 3px solid;
+    border-bottom-color: Highlight;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton {
@@ -70,8 +71,8 @@ button.order-button {
 
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
-    background-color:  Highlight; 
-    color: HighlightText;
+    background-color:  Highlight !important; 
+    color: HighlightText !important;
     border: 1px solid #666 !important;
     border-bottom: none !important;
     height: 22px;
@@ -122,8 +123,6 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
 
 }
 #QuickFolders-Toolbar toolbarbutton.specialButton:hover {
-    background: default !important; 
-    color: default !important;
     margin-top: default !important; 
     padding-top: default  !important; 
 }

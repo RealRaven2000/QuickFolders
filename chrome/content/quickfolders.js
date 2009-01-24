@@ -100,13 +100,18 @@ var QuickFolders = {
             }
 
             QuickFolders.Interface.updateFolders();
+            QuickFolders.Interface.updateUserStyles();
+
         }
         
         var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
         
         observerService.addObserver({
-            observe: function() { QuickFolders.Interface.updateFolders(); }
-        },"quickfolders-options-saved", false);
+            observe: function() { 
+	           QuickFolders.Interface.updateFolders(); 
+               QuickFolders.Interface.updateUserStyles();
+                 }
+               },"quickfolders-options-saved", false);
     } ,
 	
     sayHello: function() {

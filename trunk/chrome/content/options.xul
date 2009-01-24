@@ -132,47 +132,50 @@ label="&qf.checkbox.showUnreadMessageCount;"
                 <hbox style="margin-top: .2em;">
                 
                 
-	              <hbox style="-moz-border-radius: 4px 4px 0 0;padding: 1px 5px 0px 2px;min-width:20px;"
-	              id = "activetabs-label" 
-                  align="horizontal" 
-                  >
-                  <label value="&qf.label.ActiveTabColor;"  style="vertical-align:middle"/>                  
-                  </hbox>
+                    <label value="&qf.label.ActiveTabColor;"
+	                id = "activetabs-label" 
+	                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
+                    /> 
                 
 				
 	            <colorpicker id="activetab-fontcolorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
+	              onchange="document.getElementById('activetabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
 	              />
 	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
+	              onchange="document.getElementById('activetabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
 	              />
                 </hbox>
                 
                 <hbox style="margin-top: .2em;">
-                <label value="&qf.label.HoveredTabColor;" style="vertical-align:middle"/>
+                <label value="&qf.label.HoveredTabColor;" 
+	                id = "hoveredtabs-label" 
+                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
+                />
 				
 	            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('HoveredTab','color', this.color);"
+	              onchange="document.getElementById('hoveredtabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','color', this.color);"
 	              />
 	            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('HoveredTab','background-color', this.color);"
+	              onchange="document.getElementById('hoveredtabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','background-color', this.color);"
 	              />
                 </hbox>
 
                 <hbox style="margin-top: .2em;">
-		        <label value="&qf.label.DragOverBackground;" style="vertical-align:middle"/>
+		        <label value="&qf.label.DragOverBackground;"  id="dragovertabs-label"
+                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
+                />
 				
 	            <colorpicker id="dragover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('DragTab','color', this.color);"
+	              onchange="document.getElementById('dragovertabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','color', this.color);"
 	              />
 	            <colorpicker id="dragover-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
+	              onchange="document.getElementById('dragovertabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
 	              />
                 </hbox>
                 

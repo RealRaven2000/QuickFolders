@@ -5,6 +5,7 @@
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
+
     
 <prefwindow 
 title="&qf.prefwindow.quickfolders.options;" 
@@ -14,8 +15,11 @@ title="&qf.prefwindow.quickfolders.options;"
     ondialogaccept="QuickFoldersOptions.accept();"
     onload="QuickFoldersOptions.load();"
 >
+
+<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
-<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 
  <prefpane id="qf-options-prefpane" flex="12">
 	<hbox id="qf-options-header" >	
@@ -120,39 +124,68 @@ label="&qf.checkbox.showUnreadMessageCount;"
                     <label value="pixels" />
                 </hbox>
                 
-   <vbox style="background-color:#FDCCCC; margin-top:.2em; padding: 0.3em; border: 1px groove black;" label="colors">
+   <vbox style="background-color:#CCCCCC; margin-top:.2em; padding: 0.3em; border: 1px groove black;" label="colors">
                 <label style="font-weight: bold;" 
-                       value="&qf.description.experimentalItems;" />
+                       value="&qf.label.setcolors;" />
                 
 
                 <hbox style="margin-top: .2em;">
                 
                 
-                <label value="&qf.label.ActiveTabColor;"  style="vertical-align:middle"/>
+	              <hbox style="-moz-border-radius: 4px 4px 0 0;padding: 1px 5px 0px 2px;min-width:20px;"
+	              id = "activetabs-label" 
+                  align="horizontal" 
+                  >
+                  <label value="&qf.label.ActiveTabColor;"  style="vertical-align:middle"/>                  
+                  </hbox>
+                
 				
+	            <colorpicker id="activetab-fontcolorpicker" palettename="standard"  style="vertical-align:middle"
+	              type="button" 
+	              onchange="return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
+	              />
 	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color', this.color);"
+	              onchange="return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
 	              />
                 </hbox>
                 
                 <hbox style="margin-top: .2em;">
                 <label value="&qf.label.HoveredTabColor;" style="vertical-align:middle"/>
 				
+	            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
+	              type="button" 
+	              onchange="return QuickFolders.Preferences.setUserStyle('HoveredTab','color', this.color);"
+	              />
 	            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color', this.color);"
+	              onchange="return QuickFolders.Preferences.setUserStyle('HoveredTab','background-color', this.color);"
 	              />
                 </hbox>
 
+                <hbox style="margin-top: .2em;">
+		        <label value="&qf.label.DragOverBackground;" style="vertical-align:middle"/>
+				
+	            <colorpicker id="dragover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
+	              type="button" 
+	              onchange="return QuickFolders.Preferences.setUserStyle('DragTab','color', this.color);"
+	              />
+	            <colorpicker id="dragover-colorpicker" palettename="standard"  style="vertical-align:middle"
+	              type="button" 
+	              onchange="return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
+	              />
+                </hbox>
+                
+                
                 <hbox style="margin-top: .2em;">
 		        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
 				
 	            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar', 'background-color', this.color);"
+	              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
 	              />
                 </hbox>
+                
 
                </vbox>
                

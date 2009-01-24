@@ -10,14 +10,14 @@ QuickFolders.Styles = {
 	      return ss;
         }
       }
-	  Quickfolders.Util.logToConsole("Can not find style sheet:" +"qfStyles");
+	  QuickFolders.Util.logToConsole("Can not find style sheet:" +"qfStyles");
     },
     
     getElementStyle: function(rule, colortype) {
 	  try {
 	    var ss = this.getMyStyleSheet();
 	    if (!ss || ss==null) {
-		  Quickfolders.Util.logToConsole("Quickfolders: could not find my style sheet!\n")
+		  QuickFolders.Util.logToConsole("Quickfolders: could not find my style sheet!\n")
 	      return;
         }
 	    
@@ -42,11 +42,11 @@ QuickFolders.Styles = {
 	        }
 		    
 	    }
-        Quickfolders.Util.logToConsole ("\nQuickfolders.getElementStyle: could not find rule " + RuleName);
+        QuickFolders.Util.logToConsole ("\nQuickFolders.getElementStyle: could not find rule " + RuleName);
 	    return 0;
       }
       catch(e) {
-	     Quickfolders.Util.logToConsole ("\nQuickfolders.getElementStyle: " + e);   
+	     QuickFolders.Util.logToConsole ("\nQuickFolders.getElementStyle: " + e);   
       };
 	    
     },
@@ -61,14 +61,14 @@ QuickFolders.Styles = {
 	  try {
 	    var ss = this.getMyStyleSheet();
 	    if (!ss || ss==null) {
-		  Quickfolders.Util.logToConsole("could not find my style sheet!\n")
+		  QuickFolders.Util.logToConsole("could not find my style sheet!\n")
 	      return;
         }
 	    
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
-	    Quickfolders.Util.logToConsole("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
+	    QuickFolders.Util.logToConsole("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
 	    { 
@@ -82,7 +82,7 @@ QuickFolders.Styles = {
 	          }
 	        }
 	        if (found) {
-		      Quickfolders.Util.logToConsole ("------- MATCHED  ----------" 
+		      QuickFolders.Util.logToConsole ("------- MATCHED  ----------" 
 	          + "\nrule(" + i + ") - selectorText: " + rulesList[i].selectorText
 			  + "\n"+ "setting " + colortype + " to " + color);
 			  var st=rulesList[i].style; // readonly  CSSStyleDeclaration 
@@ -91,35 +91,35 @@ QuickFolders.Styles = {
 			  
 			  /*
 			  for (k=0;k<st.length;k++) {
-		        Quickfolders.Util.logToConsole ("\nRule Item "+k+": " + st.item(k));
+		        QuickFolders.Util.logToConsole ("\nRule Item "+k+": " + st.item(k));
 			  }
 			  */
 			  
 			  for (k=0;k<st.length;k++) {
 				try{
 			      if (colortype==st.item(k)) {
-			        Quickfolders.Util.logToConsole ("\n=============\nModify item: " + st.item(k)) + " =====================";
-				    //Quickfolders.Util.logToConsole ("\ncssText BEFORE:" + st.cssText);
-				   Quickfolders.Util.logToConsole ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
+			        QuickFolders.Util.logToConsole ("\n=============\nModify item: " + st.item(k)) + " =====================";
+				    //QuickFolders.Util.logToConsole ("\ncssText BEFORE:" + st.cssText);
+				   QuickFolders.Util.logToConsole ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
 				              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
 				              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
 				              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
 				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
-				   Quickfolders.Util.logToConsole ("\n -->> REMOVING AND ADDING PROPERTY NOW:");
+				   QuickFolders.Util.logToConsole ("\n -->> REMOVING AND ADDING PROPERTY NOW:");
 				    st.removeProperty(colortype);
 				    st.setProperty(colortype,color,"important");
-				   Quickfolders.Util.logToConsole ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
+				   QuickFolders.Util.logToConsole ("\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
 				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype)
 				               + "\ngetPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
 			                   + "\n==========================================\n");
 				   
 				   //alert("st.item(k).style=" + st.item(k).style);undefined
 				   //alert("st.item(k).type=" + st.item(k).type);undefined
-				    //Quickfolders.Util.logToConsole ("\ncssText AFTER:" + st.cssText);
+				    //QuickFolders.Util.logToConsole ("\ncssText AFTER:" + st.cssText);
 				    break;
 			      }
 		        }
-		        catch (e) { Quickfolders.Util.logToConsole ("error: " + e) };
+		        catch (e) { QuickFolders.Util.logToConsole ("error: " + e) };
 		      }
 		      break;
 	        }
@@ -133,7 +133,7 @@ QuickFolders.Styles = {
 	    return true;
       }
       catch(e) {
-	     Quickfolders.Util.logToConsole ("\nQuickfolders: " + e);   
+	     QuickFolders.Util.logToConsole ("\nQuickfolders: " + e);   
       };
     }
 	

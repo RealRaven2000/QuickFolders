@@ -1,0 +1,25 @@
+<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Instellingen">
+<!ENTITY qf.label.quickfolders "Quickfolders">
+<!ENTITY qf.tab.general "Algemeen">
+<!ENTITY qf.tab.layout "Layout">
+<!ENTITY qf.tab.quickhelp "Info">
+<!ENTITY qf.checkbox.displaylabel "Toon het 'QuickFolders' label in de toolbar">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Gebruik keyboard sneltoetsen (alt + 1 tot alt + 9)">
+<!ENTITY qf.checkbox.showshortcutnumber "Toon het sneltoets nummer op de knop">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Toon het aantal ongelezen bericht op de knop">
+<!ENTITY qf.checkbox.showUnreadBold "Toon knoppen voor folders met ongelezen berichten in het vet">
+<!ENTITY qf.checkbox.showTotalMessageCount "Toon het totaal aantal berichten op de knop (ook gelezen berichten)">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
+<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabs">
+<!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard): ">
+<!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.ActiveTabColor "Actieve Tab Kleur:">
+<!ENTITY qf.label.HoveredTabColor "Hovered Tab Kleur:">
+<!ENTITY qf.label.ToolbarBackground "Toolbar Achtergrond:">
+<!ENTITY qf.description.dragToAdd "Sleep mail folders over een lege ruimte van de toolbar om een QuickFolder aan te maken (werkt als een snelkoppeling). Sleep berichten naar de QuickFolder om ze naar de bijhorende folder te verplaatsen (of kopiëren mbv de control knop). Klik de QuickFolder aan om naar de bijhorende folder te navigeren.">
+<!ENTITY qf.description.dragToPosition "Sleep QuickFolders zijndelings om hun posities te veranderen. Rechtsklik op de QuickFolder om het context menu te openen; Langs deze weg kan u ook de sub-folders van de folder bereiken. 'Bookmark hernomen' verandert het label van de QuickFolder. 'Bookmark verwijderen' verwijdert de bookmark (niet de echte mail folder).">
+<!ENTITY qf.description.dragToPopup "Sleep berichten naar een subfolder in het context menu om ze naar die subfolder te verplaatsen.">
+<!ENTITY qf.description.changeCategory "Rechtsklik op een bookmark om die in een categorie te organiseren. De categorieën verschijnen in een pulldown links op de toolbar.">
+<!ENTITY qf.description.rightClickOptions "Rechtsklik een een lege ruimte op de toolbar om het opties menu te openen. In het opties menu kan u de standaard stijl (kleiner) of de tab stijl (duidelijker; ondersteunt sleep-indicator).">
+<!ENTITY qf.description.tipMsg "Tip: als u een groot aantal folders hebt, probeer dan ook de Nostalgy Add-On om uw berichten toetsenbord-gestuurd te organiseren.">
+<!ENTITY qf.description.experimentalItems "De volgende items zijn experimenteel, hopelijk zullen ze werken in de volgende release!">

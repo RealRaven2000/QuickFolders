@@ -89,7 +89,7 @@ var QuickFoldersOptions = {
     
     setElementColor: function(rule, colortype, color) {
 	    // alert("setElementColor!");
-	    // alert("Set color of css class " + rule + " to " + color);
+	    alert("Set color of css class " + rule + " to " + color);
 	    // to do: find elements of this class and change their color
 	    // find the class element itself and change its properties
 	    // persist in options

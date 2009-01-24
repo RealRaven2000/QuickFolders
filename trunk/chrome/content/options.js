@@ -22,11 +22,12 @@ var QuickFoldersOptions = {
 	    document.getElementById("qf-options-header-description").setAttribute("value", version);
 	    // initialize colorpickers
 	    try {
-		    document.getElementById("activetab-colorpicker").color=this.getElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color');
-		    document.getElementById("hover-colorpicker").color=this.getElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color');
-		    document.getElementById("toolbar-colorpicker").color=this.getElementStyle('.toolbar', 'background-color');
+		    
+		    document.getElementById("activetab-colorpicker").color=QuickFolders.Preferences.getUserStyle("ActiveTab","color"); // this.getElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color');
+		    document.getElementById("hover-colorpicker").color=QuickFolders.Preferences.getUserStyle("HoveredTab","color"); // this.getElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color');
+		    document.getElementById("toolbar-colorpicker").color=QuickFolders.Preferences.getUserStyle("Toolbar","backrgound-color"); // this.getElementStyle('.toolbar', 'background-color');
 	    }
-	    catch(e) { Quickfolders.Util.logToConsole("Quickfolders:" + e); };
+	    catch(e) { QuickFolders.Util.logToConsole("Quickfolders:" + e); };
 	    
     }
 }

@@ -65,13 +65,6 @@
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;" 
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
                               oncommand="QuickFolders.Interface.viewChangeOrder()"  />
-                    <menuitem label="background" 
-                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar', 'background-color', 'gray');"  />
-                    <menuitem label="Active Folder" 
-                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color', 'green');"  />
-                    <menuitem label="Hovered" 
-                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color', 'yellow');"  />
-                              
                               
                 </menupopup>
             </popupset>

@@ -1,6 +1,8 @@
 var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+
 QuickFolders.Interface = {
+
 
     buttonsByOffset: [],
     menuPopupsByOffset: [],
@@ -19,6 +21,7 @@ QuickFolders.Interface = {
         }
 
         this.updateCategories();
+
 
         this.buttonsByOffset = [];
         this.menuPopupsByOffset = [];
@@ -421,6 +424,35 @@ QuickFolders.Interface = {
 
     addFolderToCategory: function(folder) {
         window.openDialog('chrome://quickfolders/content/set-folder-category.xul','quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders, folder);
+    },
+    
+    updateUserStyles: function() {
+	  try {
+      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','background-color',
+                   QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight")); 
+      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','color',
+                   QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText")); 
+      QuickFolders.Styles.setElementStyle('.toolbar-flat','border-bottom-color',
+                   QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight")); 
+                   
+      
+	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','background-color',
+	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange")); 
+	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','color',
+	               QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black")); 
+
+   	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','background-color', 
+	               QuickFolders.Preferences.getUserStyle("DragTab","background-color","#E93903")); 
+   	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','color', 
+	               QuickFolders.Preferences.getUserStyle("DragTab","color","White")); 
+	               
+	  QuickFolders.Styles.setElementStyle('.toolbar','background-color', 
+	               QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace")); 
+	               
+	               
+      }
+      catch(e) { alert("Quickfolders.updateUserStyles - error " + e); };
+  
     }
     
 };

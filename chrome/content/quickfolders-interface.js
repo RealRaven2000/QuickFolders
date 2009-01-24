@@ -165,7 +165,7 @@ QuickFolders.Interface = {
                return button;
            
            }
-           catch(e) { };
+           catch(e) { }
        }
 
        return null;
@@ -217,15 +217,9 @@ QuickFolders.Interface = {
 
         //button.setAttribute("class",ToolbarStyle);  // was toolbar-height!
 
+        this.styleFolderButton(button, numUnread, numTotal);
+
         button.setAttribute("label", label);
-
-        if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
-            button.className += " has-unread";
-        }
-
-        if(numTotal > 0 && QuickFolders.Preferences.isShowFoldersWithMessagesItalic()) {
-            button.className += " has-messages";
-        }
 
         button.folder = folder;
 
@@ -241,11 +235,6 @@ QuickFolders.Interface = {
         button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
         button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
         button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
-
-        var buttonFontSize = QuickFolders.Preferences.getButtonFontSize();
-        if(buttonFontSize) {
-            button.style.fontSize = buttonFontSize + "px";
-        }
         
 // INSERT COLOR RULES HERE LATER
 
@@ -253,6 +242,21 @@ QuickFolders.Interface = {
         button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
         button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
         return button;
+    } ,
+
+    styleFolderButton: function(button, numUnread, numTotal) {
+        if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
+            button.className += " has-unread";
+        }
+
+        if(numTotal > 0 && QuickFolders.Preferences.isShowFoldersWithMessagesItalic()) {
+            button.className += " has-messages";
+        }
+
+        var buttonFontSize = QuickFolders.Preferences.getButtonFontSize();
+        if(buttonFontSize) {
+            button.style.fontSize = buttonFontSize + "px";
+        }
     } ,
 
     addSpecialButton: function(SpecialFunction, SpecialId, Offset, tooltip) {

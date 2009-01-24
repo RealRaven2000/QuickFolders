@@ -1,3 +1,5 @@
+var consoleService=null;
+
 QuickFolders.Util = {
     $: function(id) {
         return document.getElementById(id);
@@ -61,5 +63,13 @@ QuickFolders.Util = {
         }
 
         dump(str);
-    }
+    },
+
+    logToConsole: function (msg) {
+	  if (consoleService == null)
+	    consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+	                               .getService(Components.interfaces.nsIConsoleService);
+	  consoleService.logStringMessage("Quickfolders:" +msg);
+	}
+    
 }

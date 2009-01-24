@@ -11,6 +11,8 @@
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
     
 
@@ -63,6 +65,14 @@
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;" 
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
                               oncommand="QuickFolders.Interface.viewChangeOrder()"  />
+                    <menuitem label="background" 
+                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar', 'background-color', 'gray');"  />
+                    <menuitem label="Active Folder" 
+                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color', 'green');"  />
+                    <menuitem label="Hovered" 
+                              oncommand="QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color', 'yellow');"  />
+                              
+                              
                 </menupopup>
             </popupset>
             

@@ -64,25 +64,32 @@ QuickFolders.Preferences = {
         return this.service.getCharPref("extensions.quickfolders.lastSelectedCategory")
     },
     
-    getUserStyle: function(sId, sType) {
+    getUserStyle: function(sId, sType, sDefault) {
 	    // note: storing color as string in order to store OS specific colors like Menu, Highlight
-	    // usage: getUserStyle("ActiveTab","color")
-	    // usage: getUserStyle("ActiveTab","background-color")
-	    var sStyleName = "QuickFolders." & sId & ".Style." & sType;
+	    // usage: getUserStyle("ActiveTab","background-color","HighLight")
+	    // usage: getUserStyle("ActiveTab","color", "HighlightText")
+	    var sStyleName = "QuickFolders." + sId + ".Style." + sType;
+	    var sReturnValue="";
+	    
         if(!this.service.prefHasUserValue(sStyleName)) {
-            return "";
-        }
-        
-        if((folders = this.service.getCharPref(sStyleName))) {
-	        return this.service.getCharPref(sStyleName);
+		    sReturnValue=sDefault
         }
         else {
-            return "";
+	        var localPref= this.service.getCharPref(sStyleName);
+	        if(localPref) 
+			    sReturnValue=localPref;
+	        else 
+			    sReturnValue=sDefault
         }
+        /*
+		QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
+		        "Style Name: " + sStyleName + "\n" +
+		        "Value: " + sReturnValue) */
+		return sReturnValue;
     },
 
     setUserStyle: function(sId, sType, sValue) {
-	    var sStyleName = "QuickFolders." & sId & ".Style." & sType;
+	    var sStyleName = "QuickFolders." + sId + ".Style." + sType;
         this.service.setCharPref(sStyleName, sValue);
 	    
     }

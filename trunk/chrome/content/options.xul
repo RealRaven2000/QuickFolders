@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
+<?xml-stylesheet href="layout.css" title="qfStylesOptions" type="text/css"?>
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
@@ -132,7 +132,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				
 	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('.toolbar-flat toolbarbutton.selected-folder', 'background-color', this.color);"
+	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar-flat toolbarbutton.selected-folder', 'background-color', this.color);"
 	              />
                 </hbox>
                 
@@ -141,7 +141,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				
 	            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('.toolbar-flat toolbarbutton:hover', 'background-color', this.color);"
+	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar-flat toolbarbutton:hover', 'background-color', this.color);"
 	              />
                 </hbox>
 
@@ -150,7 +150,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				
 	            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
 	              type="button" 
-	              onchange="return QuickFoldersOptions.setElementColor('.toolbar', 'background-color', this.color);"
+	              onchange="return QuickFoldersOptions.setElementStyle('.toolbar', 'background-color', this.color);"
 	              />
                 </hbox>
 

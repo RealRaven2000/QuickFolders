@@ -1,7 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders options">
 <!ENTITY qf.label.quickfolders "Quickfolders">
 <!ENTITY qf.tab.general "General">
-<!ENTITY qf.tab.layout "Layout">
+<!ENTITY qf.tab.layout "Pimp My Tabs!">
 <!ENTITY qf.tab.quickhelp "Quick Help">
 <!ENTITY qf.checkbox.displaylabel "Show the 'QuickFolders' label in the toolbar">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Use keyboard shortcuts (alt + 1 through alt + 9)">
@@ -13,8 +13,10 @@
 <!ENTITY qf.checkbox.showFlatStyle "Show Tabs as Flat Style">
 <!ENTITY qf.label.buttonFontSize "Button font size (blank for default): ">
 <!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
 <!ENTITY qf.label.ActiveTabColor "Active Tab Color:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Color:">
+<!ENTITY qf.label.DragOverBackground "Drag Over Color:">
 <!ENTITY qf.label.ToolbarBackground "Toolbar Background:">
 <!ENTITY qf.description.dragToAdd "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder.">
 <!ENTITY qf.description.dragToPosition "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename bookmark' changes the label of the quickfolder. 'Remove bookmark' deletes the quickfolder (not the mail folder).">

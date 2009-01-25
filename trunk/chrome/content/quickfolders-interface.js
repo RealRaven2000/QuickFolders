@@ -128,7 +128,8 @@ QuickFolders.Interface = {
         else if(!QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
             return true;
         }
-        else if ((typeof folderEntry.category != "undefined") && folderEntry.category== "__ALWAYS")
+        else if (typeof folderEntry.category != "undefined" 
+                  && folderEntry.category== "__ALWAYS")
           return true;
         else {
             return this.currentlySelectedCategory == folderEntry.category;

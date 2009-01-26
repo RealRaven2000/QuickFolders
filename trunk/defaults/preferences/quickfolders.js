@@ -9,3 +9,4 @@ pref("extensions.quickfolders.showFoldersWithMessagesItalic",false);
 pref("extensions.quickfolders.showFlatStyle",true);
 pref("extensions.quickfolders.buttonFontSize","");
 pref("extensions.quickfolders.lastSelectedCategory","");
+pref("extensions.quickfolders.showIcons",false);

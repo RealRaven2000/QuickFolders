@@ -12,6 +12,8 @@ QuickFolders.Model = {
             });
 
             this.update();
+            QuickFolders.Util.logToConsole ("\nQuickFolders: added Folder URI " + uri + "\nto Category: " + categoryName);
+
         }
         else {
             alert(_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));

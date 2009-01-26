@@ -49,7 +49,9 @@ button.order-button {
     -moz-border-radius: 4px 4px 0 0;
     background-color: ButtonFace; 
     padding: 1px 5px 0px 2px;
-    border: 1px solid #AAA;
+    border: 1px solid ThreeDHighlight; /* #AAA */
+    border-right: 1px solid ThreeDShadow ; /* new */
+    border-bottom: 1px solid ThreeDShadow ; /* new */
     margin: 3px 0px 0px 3px;	
     line-height: 20px;
     height: 20px;
@@ -79,7 +81,7 @@ button.order-button {
 
 
 #QuickFolders-Toolbar toolbarbutton.dragLEFT {
-  background-image: url("dropLeft.gif") !important;
+  list-style-image: url("dropLeft.gif") !important;
   background-position: left center !important;
   background-repeat: no-repeat !important;
 }
@@ -88,13 +90,15 @@ button.order-button {
     padding: 0px 5px 2px 2px !important;
     background-color:  Highlight !important; 
     color: HighlightText !important;
-    border: 1px solid #666 !important;
+    border: 1px solid ThreeDHighlight !important; /* #666 */
+    border-right: 1px solid ThreeDShadow !important; /* new */
     border-bottom: none !important;
     height: 22px;
     margin-top: 2px !important;    
     margin-bottom: -1px !important;
 }
 
+/* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
 #QuickFolders-Toolbar toolbarbutton.selected-folder.icon {
     list-style-image: url("folder-open.png");
 }

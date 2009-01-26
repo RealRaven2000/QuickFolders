@@ -43,6 +43,7 @@ button.order-button {
     border-bottom-color: Highlight;
 }
 
+
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton {
     -moz-appearance: none !important;
     -moz-border-radius: 4px 4px 0 0;
@@ -56,29 +57,17 @@ button.order-button {
 
 
 
+
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
     background-color: Orange !important; 
     color: Black !important;
     height: 21px;
     margin-top: 2px !important; 
-    padding-top: 0px  !important; 
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:-moz-drag-over {
     background-color: #E93903 !important; 
     color: White !important;
-}
-
-
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
-    background-color:  Highlight !important; 
-    color: HighlightText !important;
-    border: 1px solid #666 !important;
-    border-bottom: none !important;
-    height: 22px;
-    padding: 0px 5px 2px 2px !important;
-    margin-top: 2px !important;    
-    margin-bottom: -1px !important;
 }
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
@@ -89,12 +78,46 @@ button.order-button {
 }
 
 
-
 #QuickFolders-Toolbar toolbarbutton.dragLEFT {
   background-image: url("dropLeft.gif") !important;
   background-position: left center !important;
   background-repeat: no-repeat !important;
 }
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
+    padding: 0px 5px 2px 2px !important;
+    background-color:  Highlight !important; 
+    color: HighlightText !important;
+    border: 1px solid #666 !important;
+    border-bottom: none !important;
+    height: 22px;
+    margin-top: 2px !important;    
+    margin-bottom: -1px !important;
+}
+
+#QuickFolders-Toolbar toolbarbutton.selected-folder.icon {
+    list-style-image: url("folder-open.png");
+}
+#QuickFolders-Toolbar toolbarbutton.inbox.icon {
+    list-style-image: url("folder-inbox.png");
+}
+#QuickFolders-Toolbar toolbarbutton.sent.icon {
+    list-style-image: url("folder-sent.png");
+}
+#QuickFolders-Toolbar toolbarbutton.trash.icon {
+    list-style-image: url("folder-trash.png");
+}
+
+/* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work :-( */
+#QuickFolders-Toolbar toolbarbutton.selected-folder.icon,
+#QuickFolders-Toolbar toolbarbutton.inbox.icon,
+#QuickFolders-Toolbar toolbarbutton.sent.icon, 
+#QuickFolders-Toolbar toolbarbutton.trash.icon {
+    -moz-image-region: rect(0px, 16px, 16px, 0) !important;
+    background-repeat: no-repeat !important;
+    background-position: 3px center;
+}
+
 
 /* Experimental for Trash, FindThread Icon */
 #Quickfolders-SpecialTools {

@@ -52,6 +52,10 @@ QuickFolders.Preferences = {
         return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
     } ,
 
+    isShowToolbarIcons: function() {
+        return this.service.getBoolPref("extensions.quickfolders.showIcons");
+    } ,
+    
     getButtonFontSize: function() {
         return this.service.getCharPref("extensions.quickfolders.buttonFontSize");
     } ,

@@ -220,8 +220,23 @@ QuickFolders.Interface = {
         var button = document.createElement("toolbarbutton");
 
         //button.setAttribute("class",ToolbarStyle);  // was toolbar-height!
+        
+        
+        // find out whether this is a special button and add specialFolderType
+        // for (optional) icon display
+        var specialFolderType="";
+        var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
+        if (0 < folder.URI.indexOf("Inbox")) 
+	        specialFolderType="inbox" + sDisplayIcons;
+        else if (0 < folder.URI.indexOf("Sent")) 
+	        specialFolderType="sent" + sDisplayIcons;
+        else if (0 < folder.URI.indexOf("Trash")) 
+	        specialFolderType="trash" + sDisplayIcons;
+	    else
+	        specialFolderType=sDisplayIcons;
 
-        this.styleFolderButton(button, numUnread, numTotal);
+	                
+        this.styleFolderButton(button, numUnread, numTotal, specialFolderType);
 
         button.setAttribute("label", label);
 
@@ -248,7 +263,7 @@ QuickFolders.Interface = {
         return button;
     } ,
 
-    styleFolderButton: function(button, numUnread, numTotal) {
+    styleFolderButton: function(button, numUnread, numTotal, specialStyle) {
         if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
             button.className += " has-unread";
         }
@@ -256,6 +271,9 @@ QuickFolders.Interface = {
         if(numTotal > 0 && QuickFolders.Preferences.isShowFoldersWithMessagesItalic()) {
             button.className += " has-messages";
         }
+        
+        if (specialStyle!="")
+          button.className += " " + specialStyle;
 
         var buttonFontSize = QuickFolders.Preferences.getButtonFontSize();
         if(buttonFontSize) {

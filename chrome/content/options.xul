@@ -99,14 +99,15 @@ label="&qf.checkbox.showUnreadMessageCount;"
 
 				<preferences>
 		     <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
-         <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
+		     <preference id="QuickFolders-Preferences-ShowIcons" name="extensions.quickfolders.showIcons" type="bool"/>
+             <preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSize" type="string"/>
 				</preferences>
 		            
                 
 				<checkbox 
-          label="&qf.checkbox.showFlatStyle;" 
-					preference="QuickFolders-Preferences-ShowFlatStyle" 
-					instantApply="true"
+                    label="&qf.checkbox.showIcons;" 
+					preference="QuickFolders-Preferences-ShowIcons" 
+					instantApply="false"
 				/>
                 <hbox style="margin-top: .5em;">
                     <label
@@ -124,9 +125,16 @@ label="&qf.checkbox.showUnreadMessageCount;"
                     <label value="pixels" />
                 </hbox>
                 
-   <vbox style="background-color:#CCCCCC; margin-top:.2em; padding: 0.3em; border: 1px groove black;" label="colors">
-                <label style="font-weight: bold;" 
-                       value="&qf.label.setcolors;" />
+   <vbox style="margin-top:.2em; padding: 0.3em; border: 1px groove black;" >
+				<checkbox 
+                    label="&qf.checkbox.showFlatStyle;" 
+					preference="QuickFolders-Preferences-ShowFlatStyle" 
+					instantApply="true"
+				/>
+   
+                <label style="background-color:#CCCCCC;margin:4px,0px;padding:6px;" 
+                       value="&qf.label.setcolors;:" 
+                       />
                 
 
                 <hbox style="margin-top: .2em;">

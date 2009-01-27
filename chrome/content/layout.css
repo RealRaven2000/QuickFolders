@@ -52,9 +52,9 @@ button.order-button {
     -moz-border-radius: 4px 4px 0 0;
     background-color: ButtonFace; 
     padding: 1px 5px 0px 2px;
-    border: 1px solid ThreeDHighlight; /* #AAA */
-    border-right: 1px solid ThreeDShadow ; /* new */
-    border-bottom: 1px solid ThreeDShadow ; /* new */
+    border: 1px solid #AAA; /* #AAA ThreeDHighlight */
+     /* border-right: 1px solid ThreeDShadow; */
+     /* border-bottom: 1px solid ThreeDShadow; */
     margin: 3px 0px 0px 3px;	
     line-height: 20px;
     height: 20px;
@@ -94,9 +94,9 @@ button.order-button {
     background-color:  Highlight !important; 
     color: HighlightText !important;
     border: 1px solid ThreeDHighlight !important; /* #666 */
-    border-right: 1px solid ThreeDShadow !important; /* new */
+    border-right: 1px solid ThreeDDarkShadow !important; /* new */
     border-bottom: none !important;
-    height: 22px;
+    height: 21px;
     margin-top: 2px !important;    
     margin-bottom: -1px !important;
 }

@@ -41,10 +41,22 @@
        Layout Improvements in style sheet (saves space)
        Tidied up Project History
        
-  17/01/2009       
+  17/01/2009 0.9.7
     AG added locale support with help of goofy's sent code
        coloring of active, hovered tab and tabbar background 
+       German locale
        
+  19/01/2009 0.9.8
+    AG storing of colors
+       rounded tabs (flat style)!  
+       updated screenshots on the site and added German translations
+    Alex added Dutch locale
+--
+  26/01/2009 added stuff for next release
+    AG Improved layout of flat style - tested under Crystal, default and outlook themes.
+       added "show icons" option which displays special icons for Inbox, Sent, Trash and current folder
+       added "3d" look to flat-style tabs (not sure about that one)
+       fixed an issue with height of category dropdown
     
   KNOWN ISSUES
   ============
@@ -55,7 +67,7 @@
     
   PLANNED FEATURES
   ================
-    - set & store colors for Active tab, Hovered tab, default and Toolbar background (WIP)
+    - size of category dropdown should increase with size of 
     - colors for categories!
     - for clarity, dragging onto Menus should highlight line in popupmenu (popup tracking) (difficult?)
     
@@ -63,7 +75,6 @@
   ========  
     - drag to thread finds quickfolder with correct thread and drops message there
     - multiple lines for quickfolders (probably obsolete, since categories)
-    - decrease categories dropdown size (?)
 
 
 */

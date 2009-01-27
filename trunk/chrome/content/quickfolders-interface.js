@@ -226,11 +226,11 @@ QuickFolders.Interface = {
         // for (optional) icon display
         var specialFolderType="";
         var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
-        if (0 < folder.URI.indexOf("Inbox")) 
+        if (0 < folder.URI.indexOf("/Inbox")) 
 	        specialFolderType="inbox" + sDisplayIcons;
-        else if (0 < folder.URI.indexOf("Sent")) 
+        else if (0 < folder.URI.indexOf("/Sent")) 
 	        specialFolderType="sent" + sDisplayIcons;
-        else if (0 < folder.URI.indexOf("Trash")) 
+        else if (0 < folder.URI.indexOf("/Trash")) 
 	        specialFolderType="trash" + sDisplayIcons;
 	    else
 	        specialFolderType=sDisplayIcons;
@@ -324,7 +324,7 @@ QuickFolders.Interface = {
     } ,
 
     onRenameBookmark: function(folder) {
-        var newName = window.prompt(_bundle.GetStringFromName("qfNewName"),QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
+        var newName = window.prompt(_bundle.GetStringFromName("qfNewName")+"\n"+folder.URI,QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
         if(newName) {
             QuickFolders.Model.renameFolder(folder.URI, newName);
         }

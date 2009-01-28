@@ -73,5 +73,18 @@ QuickFolders.FolderCategory = {
         picker.color = getCategoryColor(category);
     },
     getCategoryColor: function(cat) {
+	    
+/*
+           <hbox>
+            
+            <colorpicker id="category-colorpicker" palettename="standard" 
+              type="button" 
+              onchange="QuickFolders.FolderCategory.setColor(this);"
+              />
+
+
+            </hbox>
+
+*/	    
     }
 }

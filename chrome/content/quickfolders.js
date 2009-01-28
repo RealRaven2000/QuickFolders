@@ -51,12 +51,13 @@
        rounded tabs (flat style)!  
        updated screenshots on the site and added German translations
     Alex added Dutch locale
---
-  26/01/2009 added stuff for next release
+
+  28/01/2009 0.9.9
     AG Improved layout of flat style - tested under Crystal, default and outlook themes.
        added "show icons" option which displays special icons for Inbox, Sent, Trash and current folder
-       added "3d" look to flat-style tabs (not sure about that one)
+       tried "3d" look on flat-style tabs but removed it again
        fixed an issue with height of category dropdown
+       removed (test) color picker from category dialog
     
   KNOWN ISSUES
   ============

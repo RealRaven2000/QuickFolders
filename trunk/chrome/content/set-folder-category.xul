@@ -47,16 +47,7 @@
                 />
                 <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
             </hbox>
-            <hbox>
-            
-            <colorpicker id="category-colorpicker" palettename="standard" 
-              type="button" 
-              onchange="QuickFolders.FolderCategory.setColor(this);"
-              />
-
-
-            </hbox>
-        </vbox>
+         </vbox>
     </hbox>
 </dialog>
 

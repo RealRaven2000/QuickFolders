@@ -1,4 +1,4 @@
-var consoleService=null;
+var qfConsoleService=null;
 
 QuickFolders.Util = {
     $: function(id) {
@@ -66,10 +66,10 @@ QuickFolders.Util = {
     },
 
     logToConsole: function (msg) {
-	  if (consoleService == null)
-	    consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+	  if (qfConsoleService == null)
+	    qfConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 	                               .getService(Components.interfaces.nsIConsoleService);
-	  consoleService.logStringMessage("Quickfolders:" +msg);
+	  qfConsoleService.logStringMessage("Quickfolders:" +msg);
 	}
     
 }

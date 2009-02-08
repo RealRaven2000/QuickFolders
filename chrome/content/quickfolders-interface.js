@@ -182,6 +182,12 @@ QuickFolders.Interface = {
     getSpecialToolbar: function() {
         return QuickFolders.Util.$('Quickfolders-SpecialTools');
     } ,
+    
+    endsWith:  function(sURI, sFolder) {
+	    if (sFolder.length == sURI.length - sURI.indexOf(sFolder))
+	      return true;
+	    return false;
+    },
 
     addFolderButton: function(folder, useName, offset) {
         var numUnread = folder.getNumUnread(false);
@@ -226,11 +232,14 @@ QuickFolders.Interface = {
         // for (optional) icon display
         var specialFolderType="";
         var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
-        if (0 < folder.URI.indexOf("/Inbox")) 
+	    // QuickFolders.Util.logToConsole ("\nQuickFolders: " + folder.URI );
+        
+	    // does the folder end with this name?
+        if (this.endsWith(folder.URI, "/Inbox")) 
 	        specialFolderType="inbox" + sDisplayIcons;
-        else if (0 < folder.URI.indexOf("/Sent")) 
+        else if (this.endsWith(folder.URI, "/Sent")) 
 	        specialFolderType="sent" + sDisplayIcons;
-        else if (0 < folder.URI.indexOf("/Trash")) 
+        else if (this.endsWith(folder.URI, "/Trash")) 
 	        specialFolderType="trash" + sDisplayIcons;
 	    else
 	        specialFolderType=sDisplayIcons;
@@ -418,7 +427,11 @@ QuickFolders.Interface = {
 
 
     viewOptions: function() {
+      // temporarily disable instantApply! Necessary for the time consuming style sheet changes in Layout tab.
+	    var b=QuickFolders.Preferences.getInstantApplyPref();
+	    QuickFolders.Preferences.setInstantApplyPref(false);
         window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal',QuickFolders);
+	    QuickFolders.Preferences.setInstantApplyPref(b);
     } ,
 
     viewChangeOrder: function() {

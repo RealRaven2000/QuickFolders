@@ -13,6 +13,7 @@ title="&qf.prefwindow.quickfolders.options;"
     buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFoldersOptions.accept();"
+    ondialogcancel="QuickFoldersOptions.close();"
     onload="QuickFoldersOptions.load();"
 >
 
@@ -31,7 +32,7 @@ title="&qf.prefwindow.quickfolders.options;"
 	</hbox>
 
     <!-- I Set a specific height on the <tabbox> because the help panel wouldn't grow and the text would be clipped -->
-	<tabbox orient="vertical" flex="6" style="height: 300px">
+	<tabbox orient="vertical" flex="6" style="min-height: 320px">
 		<tabs>
 			<tab label="&qf.tab.general;" />
 			<tab label="&qf.tab.layout;" />
@@ -95,7 +96,9 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				/>
 			</tabpanel>
 			
-			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10">
+			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10"
+					instantApply="false"
+			>
 
 				<preferences>
 		     <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
@@ -107,7 +110,6 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				<checkbox 
                     label="&qf.checkbox.showIcons;" 
 					preference="QuickFolders-Preferences-ShowIcons" 
-					instantApply="false"
 				/>
                 <hbox style="margin-top: .5em;">
                     <label
@@ -132,7 +134,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					instantApply="true"
 				/>
    
-                <label style="background-color:#CCCCCC;margin:4px,0px;padding:6px;" 
+                <label style="background-color:#CCCCCC;margin:4px 0px;padding:6px;" 
                        value="&qf.label.setcolors;:" 
                        />
                 
@@ -161,6 +163,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 	                id = "hoveredtabs-label" 
                 style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
                 />
+                
 				
 	            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
 	              type="button" 
@@ -195,32 +198,39 @@ label="&qf.checkbox.showUnreadMessageCount;"
 	              type="button" 
 	              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
 	              />
-                </hbox>
-                
 
+                </hbox>
+  
                </vbox>
+                <description 
+		           style="text-align:justify;color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
+                    &qf.label.instantApplyMsg;
+		       </description>
                
 			</tabpanel>
 			
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" 
-       label="Quick Help" 
-       flex="10">
-			  <description  flex="1" maxwidth="450" style="text-align:justify">
+		       label="Quick Help" flex="10">
+			  <description  flex="1" maxwidth="550px" style="text-align:justify;">
 			    &qf.description.dragToAdd;
 			  </description>
-			  <description flex="1" maxwidth="450" style="text-align:justify">&qf.description.dragToPosition;</description>
-			  <description flex="1" maxwidth="450" style="text-align:justify">
+			  <description flex="1" maxwidth="550px" style="text-align:justify;">&qf.description.dragToPosition;</description>
+			  <description flex="1" maxwidth="550px" style="text-align:justify;">
 			    &qf.description.dragToPopup;
 			  </description>
-              <description maxwidth="450" style="text-align:justify">
+              <description maxwidth="550px" style="text-align:justify;">
 			    &qf.description.changeCategory;
 			  </description>
-			  <description maxwidth="450" style="text-align:justify">
+			  <description maxwidth="550px" style="text-align:justify;">
 			    &qf.description.rightClickOptions;
 			  </description>
 			  <description>
 			    &qf.description.tipMsg;
 			  </description>
+                <description 
+		           style="text-align:justify;color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
+                    &qf.label.contactMe;
+		       </description>
 			  
 			</tabpanel>
 		</tabpanels>

@@ -85,8 +85,7 @@ QuickFolders.Preferences = {
 	        else 
 			    sReturnValue=sDefault
         }
-        /*
-		QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
+        /* QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
 		        "Style Name: " + sStyleName + "\n" +
 		        "Value: " + sReturnValue) */
 		return sReturnValue;
@@ -96,6 +95,14 @@ QuickFolders.Preferences = {
 	    var sStyleName = "QuickFolders." + sId + ".Style." + sType;
         this.service.setCharPref(sStyleName, sValue);
 	    
+    },
+    
+    getInstantApplyPref: function() {
+        return this.service.getBoolPref("browser.preferences.instantApply");
+    },
+    
+    setInstantApplyPref: function(b) {
+        return this.service.setBoolPref("browser.preferences.instantApply",b);
     }
     
 }

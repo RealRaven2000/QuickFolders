@@ -52,11 +52,8 @@
           align="right"
           customizable="false"
         >
-        
 
         </toolbar>
-
-
             <popupset>
                 <menupopup id="QuickFolders-ToolbarPopup">
                     <menuitem label="&qf.menuitem.quickfolders.options;" 
@@ -68,9 +65,7 @@
                               
                 </menupopup>
             </popupset>
-            
-            
-
+ 
         </toolbar>
     </toolbox>
 </overlay>

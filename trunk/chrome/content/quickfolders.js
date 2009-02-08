@@ -58,7 +58,12 @@
        tried "3d" look on flat-style tabs but removed it again
        fixed an issue with height of category dropdown
        removed (test) color picker from category dialog
+       added menu highlighting on drag mail to popup
     
+   07/02/2009 0.9.9.1
+     AG force display of OK / Cancel button for applying color options
+        improved detection of URIs for special icons
+   
   KNOWN ISSUES
   ============
   05/09/2008
@@ -69,13 +74,13 @@
   PLANNED FEATURES
   ================
     - size of category dropdown should increase with size of 
-    - colors for categories!
-    - for clarity, dragging onto Menus should highlight line in popupmenu (popup tracking) (difficult?)
+    - colors for categories / single folders {TBD}
     
   WISHLIST
   ========  
     - drag to thread finds quickfolder with correct thread and drops message there
     - multiple lines for quickfolders (probably obsolete, since categories)
+    - instantApply support (difficult, as there is no onclose event)
 
 
 */

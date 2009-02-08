@@ -63,6 +63,10 @@
    07/02/2009 0.9.9.1
      AG force display of OK / Cancel button for applying color options
         improved detection of URIs for special icons
+
+   08/02/2009 
+     AG update count if total count is displayed
+   
    
   KNOWN ISSUES
   ============
@@ -392,21 +396,25 @@ var myFolderListener = {
     OnItemRemoved: function(parent, item, viewString) {},
     OnItemPropertyChanged: function(parent, item, viewString) {  },
     OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
-        //alert("OnIntPropertyChanged has fired with property " + item + " / " + property + "\n");
-        if (property == "TotalUnreadMessages") {
-            if(QuickFolders) {
-                QuickFolders.Interface.updateFolders();
-            }
+        try {
+          if (property == "TotalUnreadMessages" || 
+              (QuickFolders.Preferences.isShowUnreadCount() && property == "TotalMessages")) {  // FolderSize
+	            if(QuickFolders) 
+	                QuickFolders.Interface.updateFolders();
+          }
         }
+        catch(e) {};
     },
     OnItemBoolPropertyChanged: function(item, property, oldValue, newValue) {},
     OnItemUnicharPropertyChanged: function(item, property, oldValue, newValue) {},
     OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
     OnItemEvent: function(item, event) {
-        if(event == "FolderLoaded") {
-            if(QuickFolders) {
+        if(event == "FolderLoaded") {  // DeleteOrMoveMsgCompleted
+	        try {
+              if(QuickFolders) 
                 QuickFolders.Interface.onFolderSelected();
             }
+            catch(e) {};
         }
     },
     OnFolderLoaded: function(aFolder) { },

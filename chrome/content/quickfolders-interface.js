@@ -362,6 +362,7 @@ QuickFolders.Interface = {
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
+        menuitem.setAttribute("tag","qfRemove");
         menuitem.setAttribute('label',_bundle.GetStringFromName("qfRemoveBookmark"));
         menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRemoveBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRemoveFolder(event.target.parentNode.folder)");
@@ -369,6 +370,7 @@ QuickFolders.Interface = {
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
+        menuitem.setAttribute("tag","qfRename");
         menuitem.setAttribute('label',_bundle.GetStringFromName("qfRenameBookmark"));
         menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRenameBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
@@ -376,6 +378,7 @@ QuickFolders.Interface = {
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
+        menuitem.setAttribute("tag","qfCompact");
         menuitem.setAttribute('label',_bundle.GetStringFromName("qfCompactFolder"));
         menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfCompactFolderAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
@@ -383,6 +386,7 @@ QuickFolders.Interface = {
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
+        menuitem.setAttribute("tag","qfCategory");
         menuitem.setAttribute('label',_bundle.GetStringFromName("qfSetCategory"));
         menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfSetCategoryA"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.addFolderToCategory(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder

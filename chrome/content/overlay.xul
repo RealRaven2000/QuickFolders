@@ -55,13 +55,17 @@
 
         </toolbar>
             <popupset>
-                <menupopup id="QuickFolders-ToolbarPopup">
+                <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
                     <menuitem label="&qf.menuitem.quickfolders.options;" 
                               accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-                              oncommand="QuickFolders.Interface.viewOptions()" />
+                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd"
+                              tagName="qfOptions"
+                              />
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;" 
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
-                              oncommand="QuickFolders.Interface.viewChangeOrder()"  />
+                              oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd"
+                              tagName="qfOrder"
+                              />
                               
                 </menupopup>
             </popupset>

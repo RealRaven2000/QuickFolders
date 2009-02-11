@@ -145,6 +145,28 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
   background-image: url('jade-bar.png') !important;
 }
 
+menuitem[tagName="qfOptions"] {
+  list-style-image : url('settings-20.png') !important;
+}
+
+menuitem[tagName="qfOrder"] {
+  list-style-image : url('order.gif') !important;
+}
+
+
+menuitem[tag="qfRename"] {
+  list-style-image : url('rename.gif') !important;
+}
+menuitem[tag="qfCompact"] {
+  list-style-image : url('compact.png') !important;
+}
+menuitem[tag="qfCategory"] {
+  list-style-image : url('ablist-item.png') !important;
+}
+menuitem[tag="qfRemove"] {
+  list-style-image : url('folder-trash.png') !important;
+}
+
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menuitem:hover
 {
@@ -156,6 +178,7 @@ menupopup.QuickFolders-folder-popup menuitem:hover
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
   border: 1px solid brown !important;
   background-image: url('orange-bar.png') !important;
+  list-style-image : url('tb-anchor.png');
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover {
@@ -163,6 +186,12 @@ menupopup.QuickFolders-folder-popup menuitem:hover {
   background-image: url('gold-bar.png') !important;
 }
 
+menupopup.QuickFolders-folder-popup menuitem:hover
+{
+  list-style-image : url('folder-open.png') ;
+}
+
+ 
 
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {

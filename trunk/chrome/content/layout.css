@@ -133,10 +133,37 @@ button.order-button {
 }
 
 
+/* standard menu look (booring?) */
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
-  background-color: Highlight !important;
-  color: HighlightText !important;
+  background-color: Highlight;
+  color: HighlightText;
 }
+
+/* gradient look  (yum!) by AG*/
+menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
+  border: 1px solid darkgreen !important;
+  background-image: url('jade-bar.png') !important;
+}
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menuitem:hover
+{
+  max-height: 18px !important;
+  color: black !important;
+}
+
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+  border: 1px solid brown !important;
+  background-image: url('orange-bar.png') !important;
+}
+
+menupopup.QuickFolders-folder-popup menuitem:hover {
+  border: 1px solid brown !important;
+  background-image: url('gold-bar.png') !important;
+}
+
+
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {
   -moz-appearance: none !important;

@@ -67,6 +67,12 @@
    08/02/2009 
      AG update count if total count is displayed
    
+   12/02/2009 0.9.9.2
+     AG added menu icons
+        added gradient display for menu items
+
+   12/02/2009 
+     AG removed arbitrary error output caused by isCorrectWindow and initDelayed (?)
    
   KNOWN ISSUES
   ============
@@ -97,12 +103,16 @@ var QuickFolders = {
             setTimeout("QuickFolders.init()",1000);
         }
         else {
-            document.getElementById('QuickFolders-Toolbar').style.display = 'none';
+	      try { document.getElementById('QuickFolders-Toolbar').style.display = 'none'; }
+	      catch(e) { ;}
         }
     } ,
     
     isCorrectWindow: function() {
-        return document.getElementById('messengerWindow').getAttribute('windowtype') == "mail:3pane";
+	    try {
+          return document.getElementById('messengerWindow').getAttribute('windowtype') == "mail:3pane";
+        }
+        catch(e) { return false; }
     } ,
 	
     init: function() {

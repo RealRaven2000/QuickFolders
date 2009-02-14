@@ -10,7 +10,7 @@ QuickFolders.Styles = {
 	      return ss;
         }
       }
-	  QuickFolders.Util.logToConsole("Can not find style sheet:" +"qfStyles");
+	  QuickFolders.Util.logToConsole("Can not find style sheet: qfStyles in " +(window.closed ? "closed window" : window.location) );
 	  return 0;
     },
     

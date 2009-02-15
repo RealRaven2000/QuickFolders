@@ -116,7 +116,6 @@ var QuickFolders = {
     } ,
 	
     init: function() {
-        QuickFolders.Util.ensureNormalFolderView();
         window.addEventListener("keypress", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
 		
         var folderEntries = QuickFolders.Preferences.getFolderEntries();

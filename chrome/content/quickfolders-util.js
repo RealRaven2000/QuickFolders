@@ -12,13 +12,13 @@ QuickFolders.Util = {
     } ,
 
     ensureNormalFolderView: function() {
-	    /*   
-	    this.logToConsole("ensureNormalFolderView...(obsolete?)"); 
-	    // loadFolderView is nowhere to be found!
-        if(loadFolderView != undefined) {
+        try {
             //default folder view to "All folders", so we can select it
             loadFolderView(0);
-        }*/
+        }
+        catch(e) {
+           //loadFolderView() might be undefined at certain times, ignore this problem
+        }
     } ,
 
 

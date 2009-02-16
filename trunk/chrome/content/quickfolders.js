@@ -71,8 +71,8 @@
      AG added menu icons
         added gradient display for menu items
 
-   12/02/2009 
-     AG removed arbitrary error output caused by isCorrectWindow and initDelayed (?)
+   15/02/2009 
+     AG+Alex added error handlers for isCorrectWindow and initDelayed functions
    
   KNOWN ISSUES
   ============
@@ -99,11 +99,16 @@ var QuickFolders = {
 
     initDelayed: function() {
         if(QuickFolders.isCorrectWindow()) {
+		    QuickFolders.Util.logToConsole ("initDelayed ==== correct window: " + window.location + " - " + window.document.title);
             document.getElementById('QuickFolders-Toolbar').style.display = '';
             setTimeout("QuickFolders.init()",1000);
         }
         else {
-	      try { document.getElementById('QuickFolders-Toolbar').style.display = 'none'; }
+	      try { 
+		    QuickFolders.Util.logToConsole ("initDelayed ==== other window: " + window.location + " - " + window.document.title);
+		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
+            setTimeout("QuickFolders.initDelayed()",1000);
+          }
 	      catch(e) { ;}
         }
     } ,

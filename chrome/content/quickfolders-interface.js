@@ -412,6 +412,10 @@ QuickFolders.Interface = {
                     menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
                     // MySelectFolder(button.folder.URI);
+                    if (subfolder.getNumUnread(false)>0) {
+                      menuitem.setAttribute("class","hasUnread");
+                      menuitem.setAttribute('label', subfolder.name + ' (' + subfolder.getNumUnread(false) + ')');
+                    }
                     menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");  // "MsgCompactFolder(false);" only for current folder
 
                     menuitem.folder = subfolder;

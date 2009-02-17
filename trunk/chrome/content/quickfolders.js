@@ -73,6 +73,10 @@
 
    15/02/2009 
      AG+Alex added error handlers for isCorrectWindow and initDelayed functions
+     
+   17/02/2009
+     AG added number of unread messages to popup menu (jump to menu, not drag menu)
+     
    
   KNOWN ISSUES
   ============
@@ -107,7 +111,7 @@ var QuickFolders = {
 	      try { 
 		    QuickFolders.Util.logToConsole ("initDelayed ==== other window: " + window.location + " - " + window.document.title);
 		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
-            setTimeout("QuickFolders.initDelayed()",1000);
+            //setTimeout("QuickFolders.initDelayed()",1000);
           }
 	      catch(e) { ;}
         }

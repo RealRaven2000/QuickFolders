@@ -60,9 +60,6 @@ button.order-button {
     height: 20px;
 }
 
-
-
-
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
     background-color: Orange !important; 
     color: Black !important;
@@ -132,16 +129,21 @@ button.order-button {
 	border: 1px solid;
 }
 
-
 /* standard menu look (booring?) */
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
   background-color: Highlight;
   color: HighlightText;
 }
 
-/* gradient look  (yum!) by AG*/
+menupopup.QuickFolders-folder-popup menuitem.hasUnread {
+  font-weight: bold !important;
+}
+
+/* gradient look  by AG (yum!)*/
 menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
   border: 1px solid darkgreen !important;
+  color: black !important;
+  font-weight: 500;
   background-image: url('jade-bar.png') !important;
 }
 
@@ -176,13 +178,17 @@ menupopup.QuickFolders-folder-popup menuitem:hover
 
 
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
-  border: 1px solid brown !important;
+  border: 1px solid darkred !important;
+  color: darkred !important;
+  font-weight: 500;
   background-image: url('orange-bar.png') !important;
   list-style-image : url('tb-anchor.png');
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover {
   border: 1px solid brown !important;
+  color: brown !important;
+  font-weight: 500;
   background-image: url('gold-bar.png') !important;
 }
 

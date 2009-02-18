@@ -88,7 +88,27 @@ var QuickFoldersOptions = {
 	  // unfortunately, this is not executed when user clicks [CLose] button!
 	  // restore instant apply
 	  // if (qfStaticInstantApply)        QuickFolders.Preferences.setInstantApplyPref(true);
+    },
+    
+    setDefaultColors: function() {
+	    document.getElementById("activetab-colorpicker").color="Highlight";
+	    document.getElementById("activetabs-label").style.backgroundColor="Highlight";
+	    document.getElementById("activetab-fontcolorpicker").color="HighlightText";
+	    document.getElementById("activetabs-label").style.color="HighlightText";
+
+	    document.getElementById("hover-colorpicker").color="orange";
+	    document.getElementById("hover-fontcolorpicker").color="white";
+	    document.getElementById("hoveredtabs-label").style.color="white";
+	    document.getElementById("hoveredtabs-label").style.backgroundColor="orange";
+	    
+	    document.getElementById("dragover-colorpicker").color="#E93903";
+	    document.getElementById("dragover-fontcolorpicker").color="white";
+	    document.getElementById("dragovertabs-label").style.color="white";
+	    document.getElementById("dragovertabs-label").style.backgroundColor="#E93903";
+	    document.getElementById("toolbar-colorpicker").color="#CCCCCC"; 
+      
     }
+    
 }
 
 

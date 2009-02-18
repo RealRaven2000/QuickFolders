@@ -136,7 +136,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
   <hbox>   
                 <label style="background-color:#CCCCCC;margin:4px 0px;padding:6px;" 
                        value="&qf.label.setcolors;:" flex="1" />
-                <button label="default colors" oncommand="QuickFoldersOptions.setDefaultColors();"  />
+                <button label="&qf.button.defaultcolors;" oncommand="QuickFoldersOptions.setDefaultColors();"  />
   </hbox>                
   <hbox >
     <vbox flex="1">                       

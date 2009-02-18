@@ -77,6 +77,9 @@
    17/02/2009
      AG added number of unread messages to popup menu (jump to menu, not drag menu)
      
+   18/02/2009
+     AG do not force switching to All Folders view if not necessary
+     
    
   KNOWN ISSUES
   ============
@@ -377,33 +380,40 @@ var QuickFolders = {
 function MyEnsureFolderIndex(builder, msgFolder)
 {
     // try to get the index of the folder in the tree
-    var index = builder.getIndexOfResource(msgFolder);
-  
-    if (index == -1) {
-  	parentIndex = MyEnsureFolderIndex(builder, msgFolder.parent);
-  	
-        // if we couldn't find the folder, open the parent
-        if(!builder.isContainerOpen(parentIndex)) {
-            builder.toggleOpenState(parentIndex);
-        }
-    
-        index = builder.getIndexOfResource(msgFolder);
-    }
-    return index;
+    try {
+	    var index = builder.getIndexOfResource(msgFolder);
+	  
+	    if (index == -1) {
+	  	  var parentIndex = MyEnsureFolderIndex(builder, msgFolder.parent);
+	  	
+	      // if we couldn't find the folder, open the parent
+	      if(!builder.isContainerOpen(parentIndex)) {
+	            builder.toggleOpenState(parentIndex);
+	      }
+	    
+	      index = builder.getIndexOfResource(msgFolder);
+	    }
+	    return index;
+	}
+	catch(e) {return -1;}
 }
 
 function MySelectFolder(folderUri)
 {
-    QuickFolders.Util.ensureNormalFolderView();
-	
     var folderTree = GetFolderTree();
     var folderResource = RDF.GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
-    
+
+    //if (QuickFolders.Preferences.getIntPref('mail.ui.folderpane.view')==0) QuickFolders.Util.ensureNormalFolderView();
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded
     var folderIndex = MyEnsureFolderIndex(folderTree.builderView, msgFolder);
+    // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
+    if (folderIndex<0) {
+       QuickFolders.Util.ensureNormalFolderView();	    
+       folderIndex = MyEnsureFolderIndex(folderTree.builderView, msgFolder);
+    }
     ChangeSelection(folderTree, folderIndex);
 }
 

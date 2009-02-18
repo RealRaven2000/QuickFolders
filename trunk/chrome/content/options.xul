@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
+<?xml-stylesheet href="options.css" title="qfOptionsStyles" type="text/css"?>
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
@@ -133,74 +133,64 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					preference="QuickFolders-Preferences-ShowFlatStyle" 
 					instantApply="true"
 				/>
-   
+  <hbox>   
                 <label style="background-color:#CCCCCC;margin:4px 0px;padding:6px;" 
-                       value="&qf.label.setcolors;:" 
-                       />
-                
+                       value="&qf.label.setcolors;:" flex="1" />
+                <button label="default colors" oncommand="QuickFoldersOptions.setDefaultColors();"  />
+  </hbox>                
+  <hbox >
+    <vbox flex="1">                       
 
                 <hbox style="margin-top: .2em;">
-                
-                
-                    <label value="&qf.label.ActiveTabColor;"
-	                id = "activetabs-label" 
-	                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
-                    /> 
-                
+                    <label value="&qf.label.ActiveTabColor;" id = "activetabs-label"  class="qfTabPreview" /> 
 				
-	            <colorpicker id="activetab-fontcolorpicker" palettename="standard"  style="vertical-align:middle"
-	              type="button" 
-	              onchange="document.getElementById('activetabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
-	              />
-	            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
-	              type="button" 
-	              onchange="document.getElementById('activetabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
-	              />
+		            <colorpicker id="activetab-fontcolorpicker" palettename="virbant"  style="vertical-align:middle"
+		              type="button" 
+		              onchange="document.getElementById('activetabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
+		              />
+		            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
+		              type="button" 
+		              onchange="document.getElementById('activetabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
+		              />
                 </hbox>
                 
                 <hbox style="margin-top: .2em;">
-                <label value="&qf.label.HoveredTabColor;" 
-	                id = "hoveredtabs-label" 
-                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
-                />
-                
-				
-	            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
-	              type="button" 
-	              onchange="document.getElementById('hoveredtabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','color', this.color);"
-	              />
-	            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
-	              type="button" 
-	              onchange="document.getElementById('hoveredtabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','background-color', this.color);"
-	              />
+	                <label value="&qf.label.HoveredTabColor;" id = "hoveredtabs-label" class="qfTabPreview" />
+		            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
+		              type="button" 
+		              onchange="document.getElementById('hoveredtabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','color', this.color);"
+		              />
+		            <colorpicker id="hover-colorpicker" palettename="standard" style="vertical-align:middle" 
+		              type="button" 
+		              onchange="document.getElementById('hoveredtabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('HoveredTab','background-color', this.color);"
+		              />
                 </hbox>
 
                 <hbox style="margin-top: .2em;">
-		        <label value="&qf.label.DragOverBackground;"  id="dragovertabs-label"
-                style="border: #AAA 1px solid;-moz-border-radius: 4px 5px 0 0;padding: 3px 8px;min-width:20px;vertical-align:middle;"
-                />
-				
-	            <colorpicker id="dragover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
-	              type="button" 
-	              onchange="document.getElementById('dragovertabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','color', this.color);"
-	              />
-	            <colorpicker id="dragover-colorpicker" palettename="standard"  style="vertical-align:middle"
-	              type="button" 
-	              onchange="document.getElementById('dragovertabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
-	              />
+			        <label value="&qf.label.DragOverBackground;"  id="dragovertabs-label" class="qfTabPreview" />
+		            <colorpicker id="dragover-fontcolorpicker" palettename="standard" style="vertical-align:middle" 
+		              type="button" 
+		              onchange="document.getElementById('dragovertabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','color', this.color);"
+		              />
+		            <colorpicker id="dragover-colorpicker" palettename="standard"  style="vertical-align:middle"
+		              type="button" 
+		              onchange="document.getElementById('dragovertabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
+		              />
                 </hbox>
-                
+</vbox>                
+<spacer flex="1" />
+<vbox flex="1">
                 
                 <hbox style="margin-top: .2em;">
-		        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
-				
-	            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
-	              type="button" 
-	              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
-	              />
-
+			        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+					
+		            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
+		              type="button" 
+		              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
+		              />
                 </hbox>
-  
+</vbox>                
+</hbox>  
                </vbox>
                 <description 
 		           style="text-align:justify;color:#C0C0C0;background-color:#202020;padding: 3px 8px;">

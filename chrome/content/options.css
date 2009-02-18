@@ -1,0 +1,37 @@
+/* Options window */
+#qf-options-prefpane {
+	background-image: url("quickfolders-Icon.png") !important;
+    background-position: 10px 10px !important;
+    background-repeat: no-repeat !important;
+}    
+
+#qf-options-header {
+	margin: 5px 0px 5px 45px;
+	border: 2px solid;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+	padding: 5px 8px;
+	background-color: Highlight;
+	color: HighlightText;
+}
+
+#qf-options-header .dialogheader-title {
+	margin: 0px !important;
+	font-size: larger;
+	font-weight: bold;
+}
+
+
+label.qfTabPreview {
+  border: #AAA 1px solid;
+  -moz-border-radius: 4px 5px 0 0;
+  padding: 3px 8px;
+  min-width:20px;
+  vertical-align:middle;	
+}
+
+description.quickhelp-desc {
+	max-width: 460px;
+}

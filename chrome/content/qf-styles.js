@@ -46,7 +46,7 @@ QuickFolders.Styles = {
         QuickFolders.Util.logToConsole ("\nQuickFolders.getElementStyle: could not find rule " + RuleName);
       }
       catch(e) {
-	     QuickFolders.Util.logToConsole ("\nQuickFolders.getElementStyle: " + e);   
+	     QuickFolders.Util.logToConsole ("(error)\nQuickFolders.getElementStyle: " + e);   
       };
       return "undefined";
 	    
@@ -102,7 +102,7 @@ QuickFolders.Styles = {
 				   break;
 			      }
 		        }
-		        catch (e) { QuickFolders.Util.logToConsole ("error: " + e) };
+		        catch (e) { QuickFolders.Util.logToConsole ("(error) " + e) };
 		      }
 		      break;
 	        }
@@ -111,7 +111,7 @@ QuickFolders.Styles = {
 	    return true;
       }
       catch(e) {
-	     QuickFolders.Util.logToConsole ("\nQuickfolders: " + e);   
+	     QuickFolders.Util.logToConsole ("(error) " + e);   
       };
 	  return false;
     }

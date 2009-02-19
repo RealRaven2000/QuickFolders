@@ -51,6 +51,7 @@ title="&qf.prefwindow.quickfolders.options;"
 		            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
+		            <preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
 				</preferences>
 		
 				<checkbox 
@@ -94,6 +95,13 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" 
 					instantApply="true"
 				/>
+				<spacer flex="1" />
+				<checkbox 
+                    label="debug mode" 
+					preference="QuickFolders-Preferences-Debug" 
+					instantApply="true"
+				/>
+				
 			</tabpanel>
 			
 			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10"
@@ -192,8 +200,9 @@ label="&qf.checkbox.showUnreadMessageCount;"
 </vbox>                
 </hbox>  
                </vbox>
-                <description 
-		           style="text-align:justify;color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
+			  <spacer flex="1" />
+                <description class="quickhelp-desc"
+		           style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
                     &qf.label.instantApplyMsg;
 		       </description>
                
@@ -201,26 +210,17 @@ label="&qf.checkbox.showUnreadMessageCount;"
 			
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" 
 		       label="Quick Help" flex="10">
-			  <description  flex="1" maxwidth="550px" style="text-align:justify;">
-			    &qf.description.dragToAdd;
-			  </description>
-			  <description flex="1" maxwidth="550px" style="text-align:justify;">&qf.description.dragToPosition;</description>
-			  <description flex="1" maxwidth="550px" style="text-align:justify;">
-			    &qf.description.dragToPopup;
-			  </description>
-              <description maxwidth="550px" style="text-align:justify;">
-			    &qf.description.changeCategory;
-			  </description>
-			  <description maxwidth="550px" style="text-align:justify;">
-			    &qf.description.rightClickOptions;
-			  </description>
-			  <description>
-			    &qf.description.tipMsg;
-			  </description>
-                <description 
-		           style="text-align:justify;color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
-                    &qf.label.contactMe;
-		       </description>
+			  <description class="quickhelp-desc">&qf.description.dragToAdd;</description>
+			  <description class="quickhelp-desc">&qf.description.dragToPosition;</description>
+			  <description class="quickhelp-desc">&qf.description.dragToPopup;</description>
+              <description class="quickhelp-desc">&qf.description.changeCategory;</description>
+			  <description class="quickhelp-desc">&qf.description.rightClickOptions;</description>
+			  <description class="quickhelp-desc">&qf.description.tipMsg;</description>
+			  <spacer flex="1" />
+              <description class="quickhelp-desc"
+		        style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
+                &qf.label.contactMe;
+		      </description>
 			  
 			</tabpanel>
 		</tabpanels>

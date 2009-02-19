@@ -1,5 +1,10 @@
 QuickFolders.Preferences = {
     service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
+    
+    isDebug: function () {
+	    return this.service.getBoolPref("extensions.quickfolders.debug"); 
+    }, 
+    
 
     setFolderEntries: function(folderEntries) {
         this.service.setCharPref("QuickFolders.folders",JSON.stringify(folderEntries));
@@ -103,6 +108,10 @@ QuickFolders.Preferences = {
     
     setInstantApplyPref: function(b) {
         return this.service.setBoolPref("browser.preferences.instantApply",b);
+    },
+    
+    getIntPref: function(p) {
+        return this.service.getIntPref(p);
     }
     
 }

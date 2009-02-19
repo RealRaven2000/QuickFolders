@@ -1,8 +1,8 @@
 var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 
-QuickFolders.Interface = {
 
+QuickFolders.Interface = {
 
     buttonsByOffset: [],
     menuPopupsByOffset: [],
@@ -10,6 +10,8 @@ QuickFolders.Interface = {
 
     updateFolders: function() {
         // AG made flat style configurable
+        
+        QuickFolders.Util.logDebug("updateFolders()...");
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
@@ -29,9 +31,12 @@ QuickFolders.Interface = {
 
         QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
+        QuickFolders.Util.logDebug("updateFolders.clearChildren...");
         QuickFolders.Util.clearChildren(this.getToolbar());
 
         var offset = 0;
+        
+        QuickFolders.Util.logDebug("this.currentlySelectedCategory=" + this.currentlySelectedCategory);
 
         for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
             var folderEntry = QuickFolders.Model.selectedFolders[i];
@@ -47,6 +52,7 @@ QuickFolders.Interface = {
                 offset++;
             }
         }
+        QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.\nonFolderSelected");
 
         this.onFolderSelected();
 
@@ -62,6 +68,8 @@ QuickFolders.Interface = {
     } ,
 
     updateCategories: function() {
+        QuickFolders.Util.logDebug("updateCategories...");
+	    
         var bookmarkCategories = QuickFolders.Model.getCategories();
         var menuList = QuickFolders.Util.$('QuickFolders-Category-Selection');
         var menuPopup = menuList.menupopup;
@@ -224,15 +232,13 @@ QuickFolders.Interface = {
         }
 
         var button = document.createElement("toolbarbutton");
-
         //button.setAttribute("class",ToolbarStyle);  // was toolbar-height!
-        
         
         // find out whether this is a special button and add specialFolderType
         // for (optional) icon display
         var specialFolderType="";
         var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
-	    // QuickFolders.Util.logToConsole ("\nQuickFolders: " + folder.URI );
+	    // QuickFolders.Util.logDebug ("\nQuickFolders: " + folder.URI );
         
 	    // does the folder end with this name?
         if (this.endsWith(folder.URI, "/Inbox")) 
@@ -256,6 +262,7 @@ QuickFolders.Interface = {
 
         var popupId = 'QuickFolders-folder-popup-' + folder.URI;
         button.setAttribute('context',popupId);
+        
 
         this.getToolbar().appendChild(button);
         this.addPopupSet(popupId,folder, offset);
@@ -347,7 +354,7 @@ QuickFolders.Interface = {
         alert(_bundle.GetStringFromName("qfCompacted") +" "+folder.name);
     },
 
-    addPopupSet: function(popupId, folder,offset) {
+    addPopupSet: function(popupId, folder, offset) {
         var popupset = document.createElement('popupset');
         this.getToolbar().appendChild(popupset);
 
@@ -472,25 +479,25 @@ QuickFolders.Interface = {
     
     updateUserStyles: function() {
 	  try {
-      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','background-color',
+        QuickFolders.Util.logDebug("Starting updateUserStyles...");
+	      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','background-color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight")); 
-      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','color',
+    	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText")); 
-      QuickFolders.Styles.setElementStyle('.toolbar-flat','border-bottom-color',
+	      QuickFolders.Styles.setElementStyle('.toolbar-flat','border-bottom-color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight")); 
-                   
       
-	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','background-color',
+		  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','background-color',
 	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange")); 
-	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','color',
+	  	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:hover','color',
 	               QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black")); 
 
-   	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','background-color', 
+	   	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','background-color', 
 	               QuickFolders.Preferences.getUserStyle("DragTab","background-color","#E93903")); 
-   	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','color', 
+   		  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton:-moz-drag-over','color', 
 	               QuickFolders.Preferences.getUserStyle("DragTab","color","White")); 
 	               
-	  QuickFolders.Styles.setElementStyle('.toolbar','background-color', 
+		  QuickFolders.Styles.setElementStyle('.toolbar','background-color', 
 	               QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace")); 
 	               
 	               

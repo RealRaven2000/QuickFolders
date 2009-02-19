@@ -77,8 +77,10 @@
    17/02/2009
      AG added number of unread messages to popup menu (jump to menu, not drag menu)
      
-   18/02/2009
+   18/02/2009  
      AG do not force switching to All Folders view if not necessary
+        added debug mode switch to options
+        tidied options layout
      
    
   KNOWN ISSUES
@@ -106,13 +108,13 @@ var QuickFolders = {
 
     initDelayed: function() {
         if(QuickFolders.isCorrectWindow()) {
-		    QuickFolders.Util.logToConsole ("initDelayed ==== correct window: " + window.location + " - " + window.document.title);
+		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + window.location + " - " + window.document.title);
             document.getElementById('QuickFolders-Toolbar').style.display = '';
             setTimeout("QuickFolders.init()",1000);
         }
         else {
 	      try { 
-		    QuickFolders.Util.logToConsole ("initDelayed ==== other window: " + window.location + " - " + window.document.title);
+		    QuickFolders.Util.logDebug ("initDelayed ==== other window: " + window.location + " - " + window.document.title);
 		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
             //setTimeout("QuickFolders.initDelayed()",1000);
           }
@@ -129,7 +131,7 @@ var QuickFolders = {
 	
     init: function() {
         window.addEventListener("keypress", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
-		
+        
         var folderEntries = QuickFolders.Preferences.getFolderEntries();
 		
         if(folderEntries.length > 0) {

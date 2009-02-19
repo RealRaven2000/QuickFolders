@@ -72,7 +72,13 @@ QuickFolders.Util = {
 	  if (qfConsoleService == null)
 	    qfConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 	                               .getService(Components.interfaces.nsIConsoleService);
-	  qfConsoleService.logStringMessage("Quickfolders:" +msg);
+	  qfConsoleService.logStringMessage("Quickfolders:" + msg);
+	},
+	
+    logDebug: function (msg) {
+	  if (QuickFolders.Preferences.isDebug()) 
+	    this.logToConsole(msg);
 	}
+	
     
 }

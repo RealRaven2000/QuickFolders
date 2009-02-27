@@ -69,7 +69,6 @@ QuickFolders.Styles = {
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
-	    //QuickFolders.Util.logToConsole("\nSearching Rule Name: " + RuleName +"\n" + "rulesList.length=" + rulesList.length);
 	    var rAtoms=RuleName.split(" ");
 	    for (i=1; i<rulesList.length; i++) 
 	    { 

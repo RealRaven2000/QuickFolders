@@ -10,8 +10,7 @@ QuickFolders.Interface = {
 
     updateFolders: function() {
         // AG made flat style configurable
-        
-        QuickFolders.Util.logDebug("updateFolders()...");
+        //QuickFolders.Util.logDebug("updateFolders()...");
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
@@ -31,30 +30,29 @@ QuickFolders.Interface = {
 
         QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
-        QuickFolders.Util.logDebug("updateFolders.clearChildren...");
         QuickFolders.Util.clearChildren(this.getToolbar());
 
         var offset = 0;
         
-        QuickFolders.Util.logDebug("this.currentlySelectedCategory=" + this.currentlySelectedCategory);
-
-        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
-            var folderEntry = QuickFolders.Model.selectedFolders[i];
-            var folder;
-
-            if(!this.shouldDisplayFolder(folderEntry)) {
-                continue;
-            }
-
-            if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-                var button = this.addFolderButton(folder, folderEntry.name, offset)
-                this.buttonsByOffset[offset] = button;
-                offset++;
-            }
+        if (QuickFolders.Model.selectedFolders.length) {
+	        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+	            var folderEntry = QuickFolders.Model.selectedFolders[i];
+	            var folder;
+	
+	            if(!this.shouldDisplayFolder(folderEntry)) {
+	                continue;
+	            }
+	
+	            if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
+	                var button = this.addFolderButton(folder, folderEntry.name, offset)
+	                this.buttonsByOffset[offset] = button;
+	                offset++;
+	            }
+	        }
+	        QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.");
+	
+	        this.onFolderSelected();
         }
-        QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.\nonFolderSelected");
-
-        this.onFolderSelected();
 
         /*
         // Experimental; for new 'drop to thread' feature
@@ -68,7 +66,7 @@ QuickFolders.Interface = {
     } ,
 
     updateCategories: function() {
-        QuickFolders.Util.logDebug("updateCategories...");
+        //QuickFolders.Util.logDebug("updateCategories...");
 	    
         var bookmarkCategories = QuickFolders.Model.getCategories();
         var menuList = QuickFolders.Util.$('QuickFolders-Category-Selection');
@@ -479,7 +477,6 @@ QuickFolders.Interface = {
     
     updateUserStyles: function() {
 	  try {
-        QuickFolders.Util.logDebug("Starting updateUserStyles...");
 	      QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','background-color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight")); 
     	  QuickFolders.Styles.setElementStyle('.toolbar-flat toolbarbutton.selected-folder','color',

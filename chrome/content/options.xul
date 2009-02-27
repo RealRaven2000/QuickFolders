@@ -52,6 +52,7 @@ title="&qf.prefwindow.quickfolders.options;"
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
 		            <preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
+		            <preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int"/>
 				</preferences>
 		
 				<checkbox 
@@ -96,11 +97,21 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					instantApply="true"
 				/>
 				<spacer flex="1" />
+			<hbox style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
 				<checkbox 
-                    label="debug mode" 
+                    label="&qf.checkbox.debug;" 
 					preference="QuickFolders-Preferences-Debug" 
 					instantApply="true"
 				/>
+                <spacer flex="1" />
+				<label value="[ms] init delay {1000 is standard}:" 
+                    style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;"
+				/>
+                <textbox
+                    id="init-delay" preference="QuickFolders-init-delay"
+                    instantApply="true" flex="0" style="vertical-align:text-bottom;max-width:70px;"
+                />
+			</hbox>	
 				
 			</tabpanel>
 			

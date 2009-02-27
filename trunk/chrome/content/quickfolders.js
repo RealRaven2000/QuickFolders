@@ -81,6 +81,9 @@
      AG do not force switching to All Folders view if not necessary
         added debug mode switch to options
         tidied options layout
+
+   26/02/2009
+     AG added configurable init Delay and better error logging
      
    
   KNOWN ISSUES
@@ -107,16 +110,30 @@
 var QuickFolders = {
 
     initDelayed: function() {
-        if(QuickFolders.isCorrectWindow()) {
-		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + window.location + " - " + window.document.title);
+       var sWinLocation;
+       var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.initDelay');
+       if (!nDelay>0) nDelay = 750;
+       sWinLocation = new String(window.location);
+       
+       if(QuickFolders.isCorrectWindow()) {
+		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
             document.getElementById('QuickFolders-Toolbar').style.display = '';
-            setTimeout("QuickFolders.init()",1000);
+            setTimeout("QuickFolders.init()", nDelay);
         }
         else {
 	      try { 
-		    QuickFolders.Util.logDebug ("initDelayed ==== other window: " + window.location + " - " + window.document.title);
+		    QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): " 
+		            + document.getElementById('messengerWindow').getAttribute('windowtype')
+		            + "\ndocument.title: " + window.document.title )
+/*		    
+		    if (sWinLocation.indexOf("options.xul")>0) {
+			  QuickFolders.Util.logDebug ("initDelayed - QF Options Window");
+			  return;  
+		    }
+		    QuickFolders.Util.logDebug ("initDelayed ==== unknown window: " + sWinLocation + " - " + window.document.title);
 		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
-            //setTimeout("QuickFolders.initDelayed()",1000);
+            setTimeout("QuickFolders.initDelayed()",2500);
+*/            
           }
 	      catch(e) { ;}
         }
@@ -130,6 +147,8 @@ var QuickFolders = {
     } ,
 	
     init: function() {
+        QuickFolders.Util.logDebug("quickfolders.init()");
+	    
         window.addEventListener("keypress", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
         
         var folderEntries = QuickFolders.Preferences.getFolderEntries();
@@ -142,8 +161,8 @@ var QuickFolders = {
             if(QuickFolders.Model.isValidCategory(lastSelectedCategory)) {
                 QuickFolders.Interface.selectCategory(QuickFolders.Preferences.getLastSelectedCategory())
             }
-
-            QuickFolders.Interface.updateFolders();
+            else
+              QuickFolders.Interface.updateFolders();  // selectCategory already called updateFolders!
             QuickFolders.Interface.updateUserStyles();
 
         }
@@ -406,7 +425,6 @@ function MySelectFolder(folderUri)
     var folderResource = RDF.GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 
-    //if (QuickFolders.Preferences.getIntPref('mail.ui.folderpane.view')==0) QuickFolders.Util.ensureNormalFolderView();
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded

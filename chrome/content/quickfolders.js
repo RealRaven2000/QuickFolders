@@ -85,6 +85,10 @@
    26/02/2009
      AG added configurable init Delay and better error logging
      
+   04/03/2009
+     AG added more focused stylesheet logging
+        added an option for changing color of inactive tabs
+     
    
   KNOWN ISSUES
   ============
@@ -122,6 +126,8 @@ var QuickFolders = {
         }
         else {
 	      try { 
+		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
+		    
 		    QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): " 
 		            + document.getElementById('messengerWindow').getAttribute('windowtype')
 		            + "\ndocument.title: " + window.document.title )
@@ -131,7 +137,6 @@ var QuickFolders = {
 			  return;  
 		    }
 		    QuickFolders.Util.logDebug ("initDelayed ==== unknown window: " + sWinLocation + " - " + window.document.title);
-		    document.getElementById('QuickFolders-Toolbar').style.display = 'none'; 
             setTimeout("QuickFolders.initDelayed()",2500);
 */            
           }
@@ -175,6 +180,7 @@ var QuickFolders = {
                QuickFolders.Interface.updateUserStyles();
                  }
                },"quickfolders-options-saved", false);
+       QuickFolders.Util.logDebug("quickfolders.init() ends.");
     } ,
 	
     sayHello: function() {

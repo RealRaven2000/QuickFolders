@@ -33,13 +33,17 @@ Updated 2006-05-29
 USAGE:
    var o = JSON.parse(jsonStr);
    var s = JSON.stringify(obj);
-   
+
    // If there is an error, the method calls _root.debug("Error message...")
    // Override JSON.error for the desired behaviour
-   
+
 */
 
-   JSON = new Object();
+/*
+  AG 22/09/09 added return values to avoid JS warnings "function does not always return a value"
+*/
+
+var JSON = new Object();
 
    JSON.error = new function(msg) {
         JSON.error_occured = true;
@@ -119,8 +123,8 @@ USAGE:
            return 'null';
        }
    }
-   
-   
+
+
 
    JSON.parse = function (text) {
        var at = 0;
@@ -224,6 +228,7 @@ USAGE:
                }
            }
            error("Bad string");
+           return null;
        }
 
        function arr() {
@@ -250,6 +255,7 @@ USAGE:
                }
            }
            error("Bad array");
+           return null;
        }
 
        function obj() {
@@ -282,6 +288,7 @@ USAGE:
                }
            }
            error("Bad object");
+           return null;
        }
 
        function num() {
@@ -347,6 +354,7 @@ USAGE:
                    break;
            }
            error("Syntax error");
+           return null;
        }
 
        function value() {
@@ -367,5 +375,5 @@ USAGE:
 
        return value();
    }
-   
+
 

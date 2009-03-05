@@ -6,7 +6,7 @@ QuickFolders.Styles = {
 	  var styleSheetList = document.styleSheets;
       for (var i=0; i<document.styleSheets.length; i++) {
 	    var ss = document.styleSheets[i];
-	    if (ss.title == "qfStyles" || ss.href.indexOf("//quickfolders/layout.css")>0) {
+	    if (ss.title == "qfStyles" || ss.href.indexOf("//quickfolders/content/layout.css")>0) {
 		    QuickFolders.Util.logDebug("stylesheet (" + i + ") [" + ss.title + "] =" + ss.href
 		      + "\nwin.doc.title=" + window.document.title
 		      + "\ndoc.title=" + document.title

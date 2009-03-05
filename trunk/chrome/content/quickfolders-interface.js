@@ -77,14 +77,14 @@ QuickFolders.Interface = {
         if(bookmarkCategories.length > 0) {
             menuList.style.display = '';
 
-            menuPopup.appendChild(this.createMenuItem("__ALL", "(All)"))
+            menuPopup.appendChild(this.createMenuItem("__ALL", _bundle.GetStringFromName("qfAll")))
             for(var i = 0; i < bookmarkCategories.length; i++) {
                 var category = bookmarkCategories[i]
                 if (bookmarkCategories[i] != "__ALWAYS")
 	                menuPopup.appendChild(this.createMenuItem(category, category))
             }
 
-            menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", "Uncategorized"))
+            menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", _bundle.GetStringFromName("qfUncategorized")))
 
             if(QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
                 menuList.value = this.currentlySelectedCategory
@@ -134,8 +134,7 @@ QuickFolders.Interface = {
         else if(!QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
             return true;
         }
-        else if (typeof folderEntry.category != "undefined"
-                  && folderEntry.category== "__ALWAYS")
+        else if (typeof folderEntry.category != "undefined" && folderEntry.category== "__ALWAYS" && this.currentlySelectedCategory != "__UNCATEGORIZED")
           return true;
         else {
             return this.currentlySelectedCategory == folderEntry.category;

@@ -114,6 +114,7 @@
 
 
 */
+var gFolderTree;
 
 var QuickFolders = {
 
@@ -135,14 +136,7 @@ var QuickFolders = {
 		    QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): "
 		            + document.getElementById('messengerWindow').getAttribute('windowtype')
 		            + "\ndocument.title: " + window.document.title )
-/*
-		    if (sWinLocation.indexOf("options.xul")>0) {
-			  QuickFolders.Util.logDebug ("initDelayed - QF Options Window");
-			  return;
-		    }
-		    QuickFolders.Util.logDebug ("initDelayed ==== unknown window: " + sWinLocation + " - " + window.document.title);
-            setTimeout("QuickFolders.initDelayed()",2500);
-*/
+            //setTimeout("QuickFolders.initDelayed()",1000);
           }
 	      catch(e) { ;}
         }
@@ -196,7 +190,7 @@ var QuickFolders = {
         getSupportedFlavours : function () {
             var flavours = new FlavourSet();
             flavours.appendFlavour("text/x-moz-folder");
-            flavours.appendFlavour("text/unicode");  // test
+            flavours.appendFlavour("text/unicode");
             return flavours;
         },
 
@@ -208,10 +202,16 @@ var QuickFolders = {
 
             switch (dropData.flavour.contentType) {
                 case  "text/x-moz-folder":
-                    var sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
-                    if(sourceUri) {
-                        QuickFolders.Model.addFolder(sourceUri, QuickFolders.Interface.getCurrentlySelectedCategoryName());
+                    var sourceUri;
+                    if (QuickFolders.Util.Appver() > 2) {
+                      var msgFolder = evt.dataTransfer.mozGetDataAt("text/x-moz-folder", 0);
+                      sourceUri = msgFolder.URI;
                     }
+                    else
+                      sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
+                    if(sourceUri)
+                      QuickFolders.Model.addFolder(sourceUri, QuickFolders.Interface.getCurrentlySelectedCategoryName());
+
                     break;
                 case "text/unicode":
                     // plain text: button was moved
@@ -386,7 +386,7 @@ var QuickFolders = {
                         QuickFolders.Util.moveMessages(
                           targetFolder,
                           messageUris,
-                          dragSession.dragAction == nsIDragService.DRAGDROP_ACTION_COPY
+                          dragSession.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
                         )
                     }
 
@@ -408,43 +408,86 @@ var QuickFolders = {
 
 }
 
-function MyEnsureFolderIndex(builder, msgFolder)
+function MyEnsureFolderIndex(tree, msgFolder)
 {
     // try to get the index of the folder in the tree
     try {
-	    var index = builder.getIndexOfResource(msgFolder);
+	    var index ;
+        if (QuickFolders.Util.Appver() > 2)
+	      index = tree.getIndexOfFolder(msgFolder);
+        else
+          index= tree.builderView.getIndexOfResource(msgFolder);
+        QuickFolders.Util.logDebug ("MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 	    if (index == -1) {
-	  	  var parentIndex = MyEnsureFolderIndex(builder, msgFolder.parent);
+	  	  var parentIndex = MyEnsureFolderIndex(tree, msgFolder.parent);
 
 	      // if we couldn't find the folder, open the parent
-	      if(!builder.isContainerOpen(parentIndex)) {
-	            builder.toggleOpenState(parentIndex);
+	      if(!tree.builderView.isContainerOpen(parentIndex)) {
+	            tree.builderView.toggleOpenState(parentIndex);
 	      }
 
-	      index = builder.getIndexOfResource(msgFolder);
+          if (QuickFolders.Util.Appver() > 2)
+	        index = tree.getIndexOfFolder(msgFolder);
+          else
+	        index = tree.builderView.getIndexOfResource(msgFolder);
 	    }
 	    return index;
 	}
-	catch(e) {return -1;}
+	catch(e) {
+        QuickFolders.Util.logDebug ("MyEnsureFolderIndex - error " + e);
+		return -1;
+	}
+}
+
+
+
+function myRDF()
+{
+  if (QuickFolders.Util.Appver() > 2)
+    return Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Components.interfaces.nsIRDFService);
+  else
+    return RDF;
+}
+
+// replaces TB2 only helper method GetFolderTree()
+function MyGetFolderTree() {
+  if (!gFolderTree)
+     gFolderTree = document.getElementById("folderTree");
+  return gFolderTree;
+}
+
+function MyChangeSelection(tree, newIndex)
+{
+  if (QuickFolders.Util.Appver() > 2)
+    alert ("MyChangeSelection " + newIndex);
+  if(newIndex >= 0)
+  {
+    tree.view.selection.select(newIndex);
+    tree.treeBoxObject.ensureRowIsVisible(newIndex);
+  }
 }
 
 function MySelectFolder(folderUri)
 {
-    var folderTree = GetFolderTree();
-    var folderResource = RDF.GetResource(folderUri);
+    var folderTree = MyGetFolderTree();
+    var folderResource = myRDF().GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded
-    var folderIndex = MyEnsureFolderIndex(folderTree.builderView, msgFolder);
+    if (QuickFolders.Util.Appver() <= 2) {
+	    var folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
     // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
-    if (folderIndex<0) {
-       QuickFolders.Util.ensureNormalFolderView();
-       folderIndex = MyEnsureFolderIndex(folderTree.builderView, msgFolder);
+      if (folderIndex<0) {
+        QuickFolders.Util.ensureNormalFolderView();
+	       folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+      }
+	  MyChangeSelection(folderTree, folderIndex);
     }
-    ChangeSelection(folderTree, folderIndex);
+    else
+      gFolderTreeView.selectFolder (msgFolder);
 }
 
 

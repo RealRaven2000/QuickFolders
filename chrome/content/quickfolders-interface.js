@@ -10,6 +10,7 @@ QuickFolders.Interface = {
 
     updateFolders: function() {
         // AG made flat style configurable
+
         //QuickFolders.Util.logDebug("updateFolders()...");
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
@@ -35,23 +36,23 @@ QuickFolders.Interface = {
         var offset = 0;
 
         if (QuickFolders.Model.selectedFolders.length) {
-	        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
-	            var folderEntry = QuickFolders.Model.selectedFolders[i];
-	            var folder;
+        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+            var folderEntry = QuickFolders.Model.selectedFolders[i];
+            var folder;
 
-	            if(!this.shouldDisplayFolder(folderEntry)) {
-	                continue;
-	            }
+            if(!this.shouldDisplayFolder(folderEntry)) {
+                continue;
+            }
 
-	            if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-	                var button = this.addFolderButton(folder, folderEntry.name, offset)
-	                this.buttonsByOffset[offset] = button;
-	                offset++;
-	            }
-	        }
+            if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
+                var button = this.addFolderButton(folder, folderEntry.name, offset)
+                this.buttonsByOffset[offset] = button;
+                offset++;
+            }
+        }
 	        QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.");
 
-	        this.onFolderSelected();
+        this.onFolderSelected();
         }
 
         /*
@@ -347,7 +348,10 @@ QuickFolders.Interface = {
         var msgfolder = GetMsgFolderFromUri(folder.URI,true);
         var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
 
-        messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
+        if (QuickFolders.Util.Appver() > 2)
+          alert ("to do: add compactfolder for TB3");
+        else
+          messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
         alert(_bundle.GetStringFromName("qfCompacted") +" "+folder.name);
     },
 
@@ -380,13 +384,16 @@ QuickFolders.Interface = {
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
-        menuitem = document.createElement('menuitem');
-        menuitem.className='cmd';
-        menuitem.setAttribute("tag","qfCompact");
-        menuitem.setAttribute('label',_bundle.GetStringFromName("qfCompactFolder"));
-        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfCompactFolderAccess"));
-        menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
-        menupopup.appendChild(menuitem);
+        if (QuickFolders.Util.Appver() < 3) {
+	        // TB3 we will implement that one later :)
+	        menuitem = document.createElement('menuitem');
+	        menuitem.className='cmd';
+	        menuitem.setAttribute("tag","qfCompact");
+	        menuitem.setAttribute('label',_bundle.GetStringFromName("qfCompactFolder"));
+	        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfCompactFolderAccess"));
+	        menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
+	        menupopup.appendChild(menuitem);
+        }
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
@@ -405,13 +412,28 @@ QuickFolders.Interface = {
     // add all subfolders (1st level, non recursive) of folder to popupMenu
     addSubFoldersPopup: function(popupMenu, folder) {
         if (folder.hasSubFolders) {
-            var subfolders = folder.GetSubFolders();
+            var subfolder, subfolders;
+	        var appver=QuickFolders.Util.Appver();
+	        if (appver<3)
+              subfolders = folder.GetSubFolders();
+            else
+              subfolders = folder.subFolders;
             var done = false;
             var menuitem = document.createElement('menuseparator');
             popupMenu.appendChild(menuitem);
 
             while (!done) {
-                var subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+	        	if (appver<3)
+                  subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+                else {
+	              if (subfolders.hasMoreElements())
+                    subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+                  else {
+                    done=true;
+                    break;
+                  }
+                }
+
                 try {
                     menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
@@ -426,9 +448,9 @@ QuickFolders.Interface = {
                     menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
                     menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 
-
                     popupMenu.appendChild(menuitem);
-                    subfolders.next();
+                    if (appver<3)
+                      subfolders.next();
                 }
                 catch(e) {done = true;}
             }
@@ -493,8 +515,6 @@ QuickFolders.Interface = {
 	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"));
 
-
-
 		  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','background-color',
 	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange"));
 	  	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','color',
@@ -507,15 +527,17 @@ QuickFolders.Interface = {
 
 		  QuickFolders.Styles.setElementStyle(ss, '.toolbar','background-color',
 	               QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace"));
-
 		  QuickFolders.Util.logDebug("updateUserStyles(): success");
 		  return true;
+
+
       }
       catch(e) {
 	      alert("Quickfolders.updateUserStyles - error " + e);
 		  return false;
       };
 	  return false;
+
     }
 
 };

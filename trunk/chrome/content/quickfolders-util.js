@@ -1,9 +1,18 @@
 var qfConsoleService=null;
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+
 
 QuickFolders.Util = {
     $: function(id) {
         return document.getElementById(id);
     } ,
+
+	// add code for TB3 compatibility!
+    Appver: function() {
+	  // abmanager is a TB3 only component!
+	  return Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
+    },
 
     clearChildren: function(element) {
         while(element.childNodes.length > 0) {
@@ -23,39 +32,60 @@ QuickFolders.Util = {
 
 
     getFolderUriFromDropData: function(dropData, dragSession) {
-       var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+        var trans = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
         trans.addDataFlavor("text/x-moz-folder");
 
         dragSession.getData (trans, 0);
-        var dataObj = new Object();
-        var flavor = new Object();
-        var len = new Object();
-        trans.getAnyTransferData(flavor, dataObj, len);
 
-        if (dataObj) {
-            dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
+        var dataObj = new Object();
+        var len = new Object();
+        var flavor = "text/x-moz-folder";
+        try {
+          trans.getTransferData(flavor, dataObj, len);
+
+          if (dataObj) {
+            dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
             sourceUri = dataObj.data.substring(0, len.value);
             return sourceUri;
+          }
         }
+        catch(e) {this.logToConsole("getTransferData " + e);};
 
         return null;
     } ,
 
     moveMessages: function(targetFolder, messageUris, makeCopy) {
-        var targetResource = targetFolder.QueryInterface(Components.interfaces.nsIRDFResource);
+        var targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
 
-        var messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
+        var messageList ;
+        //nsISupportsArray is deprecated in TB3 as its a hog :-)
+        if (QuickFolders.Util.Appver() > 2)
+          messageList = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+        else
+          messageList = Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
 
         for (var i = 0; i < messageUris.length; i++) {
             var messageUri = messageUris[i];
-            messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
+            if (QuickFolders.Util.Appver() > 2)
+              messageList.appendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri), false);
+            else
+              messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
         }
 
-        var sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(Components.interfaces.nsIMsgDBHdr);
-        var sourceFolder = sourceMsgHdr.folder;
-        var sourceResource = sourceFolder.QueryInterface(Components.interfaces.nsIRDFResource);
+        var sourceMsgHdr;
 
-        messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
+        if (QuickFolders.Util.Appver() > 2)
+          sourceMsgHdr = messageList.queryElementAt(0,Ci.nsIMsgDBHdr);
+        else
+          sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(Ci.nsIMsgDBHdr);
+        var sourceFolder = sourceMsgHdr.folder;
+        var sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource);
+        if (QuickFolders.Util.Appver() > 2) {
+          var cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+          cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
+        }
+        else
+          messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
     } ,
 
 
@@ -70,15 +100,15 @@ QuickFolders.Util = {
 
     logToConsole: function (msg) {
 	  if (qfConsoleService == null)
-	    qfConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
-	                               .getService(Components.interfaces.nsIConsoleService);
+	    qfConsoleService = Cc["@mozilla.org/consoleservice;1"]
+	                               .getService(Ci.nsIConsoleService);
 	  qfConsoleService.logStringMessage("Quickfolders:" + msg);
 	},
-	
+
     logDebug: function (msg) {
-	  if (QuickFolders.Preferences.isDebug()) 
+	  if (QuickFolders.Preferences.isDebug())
 	    this.logToConsole(msg);
 	}
-	
-    
+
+
 }

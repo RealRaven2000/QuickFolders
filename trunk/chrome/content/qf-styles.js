@@ -1,7 +1,6 @@
 
 QuickFolders.Styles = {
 
-
     getMyStyleSheet: function() {
 	  var styleSheetList = document.styleSheets;
       for (var i=0; i<document.styleSheets.length; i++) {

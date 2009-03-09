@@ -93,6 +93,9 @@
      AG do not display folders of category "ALWAYS" when "Uncategorized" is selected.
         for consistency, categories drop down now shows the translated string for "uncategorized"
 
+   08/03/2009  0.9.9.7
+     AG  made compatible with TB 3.0 beta 2
+
 
   KNOWN ISSUES
   ============

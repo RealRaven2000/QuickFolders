@@ -57,14 +57,14 @@ QuickFolders.Util = {
     } ,
 
     moveMessages: function(targetFolder, messageUris, makeCopy) {
-        var targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
+        var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
 
         var messageList ;
         //nsISupportsArray is deprecated in TB3 as its a hog :-)
         if (QuickFolders.Util.Appver() > 2)
-          messageList = this.Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+          messageList = this.Cc["@mozilla.org/array;1"].createInstance(this.Ci.nsIMutableArray);
         else
-          messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
+          messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(this.Ci.nsISupportsArray);
 
         for (var i = 0; i < messageUris.length; i++) {
             var messageUri = messageUris[i];
@@ -77,13 +77,13 @@ QuickFolders.Util = {
         var sourceMsgHdr;
 
         if (QuickFolders.Util.Appver() > 2)
-          sourceMsgHdr = messageList.queryElementAt(0,Ci.nsIMsgDBHdr);
+          sourceMsgHdr = messageList.queryElementAt(0,this.Ci.nsIMsgDBHdr);
         else
-          sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(Ci.nsIMsgDBHdr);
+          sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
         var sourceFolder = sourceMsgHdr.folder;
-        var sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource);
+        var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
         if (QuickFolders.Util.Appver() > 2) {
-          var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+          var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(this.Ci.nsIMsgCopyService);
           cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
         }
         else
@@ -103,7 +103,7 @@ QuickFolders.Util = {
     logToConsole: function (msg) {
 	  if (qfConsoleService == null)
 	    qfConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
-	                               .getService(Ci.nsIConsoleService);
+	                               .getService(this.Ci.nsIConsoleService);
 	  qfConsoleService.logStringMessage("Quickfolders:" + msg);
 	},
 

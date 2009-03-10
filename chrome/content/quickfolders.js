@@ -462,8 +462,6 @@ function MyGetFolderTree() {
 
 function MyChangeSelection(tree, newIndex)
 {
-  if (QuickFolders.Util.Appver() > 2)
-    alert ("MyChangeSelection " + newIndex);
   if(newIndex >= 0)
   {
     tree.view.selection.select(newIndex);

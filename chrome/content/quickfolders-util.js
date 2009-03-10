@@ -1,9 +1,11 @@
 var qfConsoleService=null;
-const Cc = Components.classes;
-const Ci = Components.interfaces;
 
 
 QuickFolders.Util = {
+	  // avoid these global objects
+	  Cc: Components.classes,
+    Ci: Components.interfaces,
+
     $: function(id) {
         return document.getElementById(id);
     } ,
@@ -11,7 +13,7 @@ QuickFolders.Util = {
 	// add code for TB3 compatibility!
     Appver: function() {
 	  // abmanager is a TB3 only component!
-	  return Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
+	  return this.Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
     },
 
     clearChildren: function(element) {
@@ -32,7 +34,7 @@ QuickFolders.Util = {
 
 
     getFolderUriFromDropData: function(dropData, dragSession) {
-        var trans = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+        var trans = this.Cc["@mozilla.org/widget/transferable;1"].createInstance(this.Ci.nsITransferable);
         trans.addDataFlavor("text/x-moz-folder");
 
         dragSession.getData (trans, 0);
@@ -44,7 +46,7 @@ QuickFolders.Util = {
           trans.getTransferData(flavor, dataObj, len);
 
           if (dataObj) {
-            dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
+            dataObj = dataObj.value.QueryInterface(this.Ci.nsISupportsString);
             sourceUri = dataObj.data.substring(0, len.value);
             return sourceUri;
           }
@@ -60,9 +62,9 @@ QuickFolders.Util = {
         var messageList ;
         //nsISupportsArray is deprecated in TB3 as its a hog :-)
         if (QuickFolders.Util.Appver() > 2)
-          messageList = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+          messageList = this.Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
         else
-          messageList = Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
+          messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
 
         for (var i = 0; i < messageUris.length; i++) {
             var messageUri = messageUris[i];
@@ -81,7 +83,7 @@ QuickFolders.Util = {
         var sourceFolder = sourceMsgHdr.folder;
         var sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource);
         if (QuickFolders.Util.Appver() > 2) {
-          var cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+          var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
           cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
         }
         else
@@ -100,7 +102,7 @@ QuickFolders.Util = {
 
     logToConsole: function (msg) {
 	  if (qfConsoleService == null)
-	    qfConsoleService = Cc["@mozilla.org/consoleservice;1"]
+	    qfConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
 	                               .getService(Ci.nsIConsoleService);
 	  qfConsoleService.logStringMessage("Quickfolders:" + msg);
 	},

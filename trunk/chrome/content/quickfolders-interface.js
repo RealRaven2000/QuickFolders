@@ -245,7 +245,7 @@ QuickFolders.Interface = {
 	        specialFolderType="sent" + sDisplayIcons;
         else if (this.endsWith(folder.URI, "/Trash"))
 	        specialFolderType="trash" + sDisplayIcons;
-	    else
+	      else
 	        specialFolderType=sDisplayIcons;
 
 
@@ -437,6 +437,7 @@ QuickFolders.Interface = {
                 try {
                     menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
+                    menuitem.setAttribute("tag","sub");
                     // MySelectFolder(button.folder.URI);
                     if (subfolder.getNumUnread(false)>0) {
                       menuitem.setAttribute("class","hasUnread");

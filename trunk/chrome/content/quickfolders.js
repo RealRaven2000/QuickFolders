@@ -96,6 +96,8 @@
    08/03/2009  0.9.9.7
      AG  made compatible with TB 3.0 beta 2
 
+   20/03/2009 0.9.9.8
+     AG renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox
 
   KNOWN ISSUES
   ============
@@ -106,7 +108,8 @@
 
   PLANNED FEATURES
   ================
-    - size of category dropdown should increase with size of
+    - persist categories in separate JSON list for more flexibility (e.g. rename)
+    - size of category dropdown should increase with length of list
     - colors for categories / single folders {TBD}
 
   WISHLIST

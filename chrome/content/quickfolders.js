@@ -96,7 +96,7 @@
    08/03/2009  0.9.9.7
      AG  made compatible with TB 3.0 beta 2
 
-   20/03/2009 0.9.9.8
+   20/03/2009 0.9.10
      AG renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox
 
   KNOWN ISSUES

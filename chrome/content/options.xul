@@ -32,7 +32,7 @@ title="&qf.prefwindow.quickfolders.options;"
 	</hbox>
 
     <!-- I Set a specific height on the <tabbox> because the help panel wouldn't grow and the text would be clipped -->
-	<tabbox orient="vertical" flex="6" style="min-height: 320px">
+	<tabbox orient="vertical" flex="6" style="min-height: 350px">
 		<tabs>
 			<tab label="&qf.tab.general;" />
 			<tab label="&qf.tab.layout;" />

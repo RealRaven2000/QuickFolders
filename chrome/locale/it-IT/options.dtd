@@ -1,0 +1,32 @@
+﻿<!ENTITY qf.prefwindow.quickfolders.options "Opzioni QuickFolders">
+<!ENTITY qf.label.quickfolders "Quickfolders">
+<!ENTITY qf.tab.general "Generali">
+<!ENTITY qf.tab.layout "Personalizzazione schede">
+<!ENTITY qf.tab.quickhelp "Guida rapida">
+<!ENTITY qf.checkbox.displaylabel "Visualizza l'etichetta 'QuickFolders' sulla sua barra">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Usa le scorciatoie da tastiera (combinazione tasti da Alt+1 ad Alt+9)">
+<!ENTITY qf.checkbox.showshortcutnumber "Visualizza il numero di scorciatoia sulle etichette delle schede">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Visualizza il numero di messaggi non letti sull'etichetta della scheda">
+<!ENTITY qf.checkbox.showUnreadBold "Visualizza in grassetto le etichette delle schede con messaggi non letti">
+<!ENTITY qf.checkbox.showTotalMessageCount "Visualizza il numero totale dei messaggi sull'etichetta della scheda">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Visualizza in corsivo le etichette delle schede contenenti dei messaggi">
+<!ENTITY qf.checkbox.showFlatStyle "Visualizza le schede in stile normale"><!ENTITY qf.checkbox.showIcons "Visualizza le icone per Posta in arrivo, Posta inviata, Scheda selezionata, Cestino">
+<!ENTITY qf.label.buttonFontSize "Dimensione dei caratteri delle etichette (per default vuoto): ">
+<!ENTITY qf.label.pixels "pixel">
+<!ENTITY qf.label.setcolors "Configurazione Colori - Testo/Sfondo">
+<!ENTITY qf.label.ActiveTabColor "Colori scheda attiva:">
+<!ENTITY qf.label.HoveredTabColor "Colori scheda ove è il mouse:">
+<!ENTITY qf.label.DragOverBackground "Colori scheda trascinata:">
+<!ENTITY qf.label.ToolbarBackground "Sfondo della barra QuickFolders:">
+<!ENTITY qf.description.dragToAdd "Per creare una scheda QuickFolder trascinare una cartella di posta in un'area vuota della barra QuickFolders: funziona come un collegamento/alias. Per spostare dei messaggi in tale scheda basta trascinarli dalla cartella di posta in cui sono. Cliccare sulla scheda 'QuickFolder' per andare alla cartella di posta relativa.">
+<!ENTITY qf.description.dragToPosition "Trascinare e rilasciare le schede 'QuickFolder' lateralmente, l'una sull'altra, per modificarne le posizioni relative. Cliccando il pulsante destro del mouse su una scheda compare un menu contestuale in cui si visualizzano anche eventuali sottocartelle. 'Rinomina scheda': cambia l'etichetta della scheda QuickFolder. 'Rimuovi scheda': cancella la scheda QuickFolder ma NON la relativa cartella di posta!">
+<!ENTITY qf.description.dragToPopup "Trascinando e rilasciando dei messaggi su una scheda contenente sottocartelle compare un menu contestuale con il nome delle sottocartelle per cui si può decidere dove spostare i messaggi.">
+<!ENTITY qf.description.changeCategory "'Assegnazione categoria alla scheda': cliccare col pulsante destro del mouse sulle etichette delle schede per inserirle nelle diverse categorie che compaiono in un menu a discesa posto nella parte sinistra della barra 'QuickFolders'.">
+<!ENTITY qf.description.rightClickOptions "Cliccando il pulsante destro in una area vuota della barra QuickFolders si apre il menu delle opzioni. Si può scegliere tra lo stile nativo (con etichette ravvicinate) e quello normale (più nitido, con etichette distanziate che consentono l'indicazione delle aree di trascinamento e rilascio).">
+<!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un elevato numero di schede, usare l'estensione Nostalgy per poter disporre di un'organizzazione dei messaggi guidata da tastiera.">
+<!ENTITY qf.description.experimentalItems "I seguenti oggetti sono sperimentali. E' auspicabile che siano funzionanti nella prossima versione!">
+<!ENTITY qf.label.instantApplyMsg "Nota: se sotto si visualizza solo il pulsante [Close], significa che le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a cliccare sul pulsante destro del mouse in un area vuota della barra QuickFolders per selezionare il menu 'Opzioni'. Ciò forza la comparsa del pulsante [Ok] che dovrebbe consentire il salvataggio dei colori.">
+<!ENTITY qf.label.contactMe "Per suggerimenti, segnalazione di errori e feedback scrivere a axelg@gofree.indigo.ie.">
+<!ENTITY qf.button.defaultcolors "Colori di default">
+<!ENTITY qf.checkbox.debug "Modalità debug">
+<!ENTITY qf.label.StandardTabColor "Colori standard schede:">

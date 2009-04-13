@@ -155,10 +155,17 @@ var QuickFolders = {
         catch(e) { return false; }
     } ,
 
+    boundKeyListener: false,
+
     init: function() {
         QuickFolders.Util.logDebug("quickfolders.init()");
 
-        window.addEventListener("keypress", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
+
+        if(!this.boundKeyListener) {
+            window.addEventListener("keyup", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
+
+            this.boundKeyListener = true;
+        }
 
         var folderEntries = QuickFolders.Preferences.getFolderEntries();
 

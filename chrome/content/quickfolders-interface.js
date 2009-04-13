@@ -143,9 +143,11 @@ QuickFolders.Interface = {
     } ,
 
     windowKeyPress: function(e) {
+        QuickFolders.Util.logToConsole(e.altKey + " - " + e.ctrlKey + ": " + e.keyCode);
+
         if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
             if(e.altKey) {
-                var shortcut = e.charCode-48;
+                var shortcut = e.keyCode-48;
 
                 if (shortcut >= 0 && shortcut < 10) {
                     if(shortcut == 0) {

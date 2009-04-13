@@ -1,5 +1,5 @@
 var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+var qfBundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 
 
 QuickFolders.Interface = {
@@ -78,14 +78,14 @@ QuickFolders.Interface = {
         if(bookmarkCategories.length > 0) {
             menuList.style.display = '';
 
-            menuPopup.appendChild(this.createMenuItem("__ALL", _bundle.GetStringFromName("qfAll")))
+            menuPopup.appendChild(this.createMenuItem("__ALL", qfBundle.GetStringFromName("qfAll")))
             for(var i = 0; i < bookmarkCategories.length; i++) {
                 var category = bookmarkCategories[i]
                 if (bookmarkCategories[i] != "__ALWAYS")
 	                menuPopup.appendChild(this.createMenuItem(category, category))
             }
 
-            menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", _bundle.GetStringFromName("qfUncategorized")))
+            menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", qfBundle.GetStringFromName("qfUncategorized")))
 
             if(QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
                 menuList.value = this.currentlySelectedCategory
@@ -338,7 +338,7 @@ QuickFolders.Interface = {
     } ,
 
     onRenameBookmark: function(folder) {
-        var newName = window.prompt(_bundle.GetStringFromName("qfNewName")+"\n"+folder.URI,QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
+        var newName = window.prompt(qfBundle.GetStringFromName("qfNewName")+"\n"+folder.URI,QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
         if(newName) {
             QuickFolders.Model.renameFolder(folder.URI, newName);
         }
@@ -352,7 +352,7 @@ QuickFolders.Interface = {
           alert ("to do: add compactfolder for TB3");
         else
           messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
-        alert(_bundle.GetStringFromName("qfCompacted") +" "+folder.name);
+        alert(qfBundle.GetStringFromName("qfCompacted") +" "+folder.name);
     },
 
     addPopupSet: function(popupId, folder, offset) {
@@ -371,16 +371,17 @@ QuickFolders.Interface = {
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
         menuitem.setAttribute("tag","qfRemove");
-        menuitem.setAttribute('label',_bundle.GetStringFromName("qfRemoveBookmark"));
-        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRemoveBookmarkAccess"));
+
+        menuitem.setAttribute('label',qfBundle.GetStringFromName("qfRemoveBookmark"));
+        menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfRemoveBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRemoveFolder(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
         menuitem.setAttribute("tag","qfRename");
-        menuitem.setAttribute('label',_bundle.GetStringFromName("qfRenameBookmark"));
-        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfRenameBookmarkAccess"));
+        menuitem.setAttribute('label',qfBundle.GetStringFromName("qfRenameBookmark"));
+        menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfRenameBookmarkAccess"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
@@ -389,8 +390,8 @@ QuickFolders.Interface = {
 	        menuitem = document.createElement('menuitem');
 	        menuitem.className='cmd';
 	        menuitem.setAttribute("tag","qfCompact");
-	        menuitem.setAttribute('label',_bundle.GetStringFromName("qfCompactFolder"));
-	        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfCompactFolderAccess"));
+	        menuitem.setAttribute('label',qfBundle.GetStringFromName("qfCompactFolder"));
+	        menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfCompactFolderAccess"));
 	        menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
 	        menupopup.appendChild(menuitem);
         }
@@ -398,8 +399,8 @@ QuickFolders.Interface = {
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
         menuitem.setAttribute("tag","qfCategory");
-        menuitem.setAttribute('label',_bundle.GetStringFromName("qfSetCategory"));
-        menuitem.setAttribute("accesskey",_bundle.GetStringFromName("qfSetCategoryA"));
+        menuitem.setAttribute('label',qfBundle.GetStringFromName("qfSetCategory"));
+        menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfSetCategoryA"));
         menuitem.setAttribute("oncommand","QuickFolders.Interface.addFolderToCategory(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
         menupopup.appendChild(menuitem);
 

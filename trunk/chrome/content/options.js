@@ -46,7 +46,13 @@ var QuickFoldersOptions = {
 	    }
 	    catch(e) {
 		    alert("Error in QuickFolders:\n" + e);
-		};
+      };
+
+		  // remove event listener before add is _not_ necessary as duplicates will be discarded:
+      if (QuickFolders.Preferences.isUseKeyboardShortcuts())
+        window.addEventListener("keypress", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
+      else
+        window.removeEventListener("keypress", QuickFolders.keyListener, true);
     } ,
     load : function() {
 	    var version=QF_getMyVersion();

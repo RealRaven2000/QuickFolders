@@ -95,9 +95,13 @@
 
    08/03/2009  0.9.9.7
      AG  made compatible with TB 3.0 beta 2
-
-   20/03/2009 0.9.10
+   20/03/2009  0.9.10
      AG renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox
+
+   30/03/2009
+     AG added option to use CTRL instead of ALT for keyboard shortcuts
+     AG suppress event bubbling (for better Lightning compatibility)
+     AG added button for copying folder string to clipboard
 
   KNOWN ISSUES
   ============
@@ -123,7 +127,7 @@
 var gFolderTree;
 
 var QuickFolders = {
-
+	  keyListen: EventListener,
     initDelayed: function() {
        var sWinLocation;
        var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.initDelay');
@@ -155,18 +159,19 @@ var QuickFolders = {
         catch(e) { return false; }
     } ,
 
-    boundKeyListener: false,
 
     init: function() {
         QuickFolders.Util.logDebug("quickfolders.init()");
 
-
-        if(!this.boundKeyListener) {
-            window.addEventListener("keyup", function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
-
-            this.boundKeyListener = true;
-        }
-
+        // only add event listener on startup if necessary as we don't
+        // want to consume unnecessary performance during keyboard presses!
+        if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
+	        if(!Quickfolders.Interface.boundKeyListener) {
+	          window.addEventListener("keypress", this.keyListen = function(e) { QuickFolders.Interface.windowKeyPress(e,'down'); }, true);
+            window.addEventListener("keyup", function(e) { QuickFolders.Interface.windowKeyPress(e,'up'); }, true);
+            Quickfolders.Interface.boundKeyListener = true;
+	        }
+	      }
         var folderEntries = QuickFolders.Preferences.getFolderEntries();
 
         if(folderEntries.length > 0) {

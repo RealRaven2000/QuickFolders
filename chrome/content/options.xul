@@ -118,6 +118,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
                     id="init-delay" preference="QuickFolders-init-delay"
                     instantApply="true" flex="0" style="vertical-align:text-bottom;max-width:70px;"
                 />
+                <button label="Folders?" image="copy.png" oncommand="QuickFoldersOptions.dumpFolderEntries();"  />
 			</hbox>
 
 			</tabpanel>

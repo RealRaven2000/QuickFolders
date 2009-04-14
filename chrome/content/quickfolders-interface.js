@@ -7,6 +7,7 @@ QuickFolders.Interface = {
     buttonsByOffset: [],
     menuPopupsByOffset: [],
     specialButtons: [],
+    boundKeyListener: false,
 
     updateFolders: function() {
         // AG made flat style configurable
@@ -142,18 +143,23 @@ QuickFolders.Interface = {
         }
     } ,
 
-    windowKeyPress: function(e) {
-        QuickFolders.Util.logToConsole(e.altKey + " - " + e.ctrlKey + ": " + e.keyCode);
+    windowKeyPress: function(e,dir) {
+        QuickFolders.Util.logToConsole(dir + "ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
 
         if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
             if(   (!QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.altKey)
                || (QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.ctrlKey)
                ) {
-                var shortcut = e.keyCode-48;
+	               var shortcut;
+	               if (dir=='up')
+                   shortcut = e.keyCode-48;
+	               if (dir=='down')
+                   shortcut = e.charCode-48;
 
                 if (shortcut >= 0 && shortcut < 10) {
 	                  e.preventDefault();
                     e.stopPropagation();
+                    if (dir=='down') return;
                     if(shortcut == 0) {
                         shortcut = 10;
                     }

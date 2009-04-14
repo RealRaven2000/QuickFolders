@@ -49,10 +49,16 @@ var QuickFoldersOptions = {
       };
 
 		  // remove event listener before add is _not_ necessary as duplicates will be discarded:
-      if (QuickFolders.Preferences.isUseKeyboardShortcuts())
-        window.addEventListener("keypress", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e); }, true);
-      else
+      if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
+        Quickfolders.Interface.boundKeyListener=true;
+        window.addEventListener("keypress", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e,'down'); }, true);
+        window.addEventListener("keyup", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e,'up'); }, true);
+      }
+      else {
         window.removeEventListener("keypress", QuickFolders.keyListener, true);
+        window.removeEventListener("keyup", QuickFolders.keyListener, true);
+        Quickfolders.Interface.boundKeyListener=false;
+      }
     } ,
     load : function() {
 	    var version=QF_getMyVersion();
@@ -133,6 +139,17 @@ var QuickFoldersOptions = {
 	    document.getElementById("inactivetabs-label").style.backgroundColor="buttonface";
 	    document.getElementById("inactive-fontcolorpicker").color="buttontext";
 	    document.getElementById("inactivetabs-label").style.color="buttontext";
+    },
+
+    dumpFolderEntries: function() {
+	    // debug function for checking users folder string (about:config has trouble with editing JSON strings)
+      var service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	    var sFolderString = service.getCharPref("QuickFolders.folders");
+      var clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+
+	    QuickFolders.Util.logToConsole("Folder String: " & sFolderString);
+	    clipboardhelper.copyString(sFolderString);
+	    alert("Folder String is now in Clipboard!");
 
     }
 

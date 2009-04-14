@@ -50,14 +50,14 @@ var QuickFoldersOptions = {
 
 		  // remove event listener before add is _not_ necessary as duplicates will be discarded:
       if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
-        Quickfolders.Interface.boundKeyListener=true;
         window.addEventListener("keypress", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e,'down'); }, true);
         window.addEventListener("keyup", QuickFolders.keyListener = function(e) { QuickFolders.Interface.windowKeyPress(e,'up'); }, true);
+        QuickFolders.Interface.boundKeyListener = true;
       }
       else {
         window.removeEventListener("keypress", QuickFolders.keyListener, true);
         window.removeEventListener("keyup", QuickFolders.keyListener, true);
-        Quickfolders.Interface.boundKeyListener=false;
+        QuickFolders.Interface.boundKeyListener = false;
       }
     } ,
     load : function() {

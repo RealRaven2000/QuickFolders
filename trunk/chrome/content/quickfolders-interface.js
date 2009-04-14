@@ -9,6 +9,10 @@ QuickFolders.Interface = {
     specialButtons: [],
     boundKeyListener: false,
 
+    setBoundKeyListener: function(b) {
+	    this.boundKeyListener=b;
+    },
+
     updateFolders: function() {
         // AG made flat style configurable
 

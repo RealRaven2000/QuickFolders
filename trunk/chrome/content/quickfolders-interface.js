@@ -144,7 +144,7 @@ QuickFolders.Interface = {
     } ,
 
     windowKeyPress: function(e,dir) {
-        QuickFolders.Util.logToConsole(dir + "ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
+        QuickFolders.Util.logToConsole(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
 
         if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
             if(   (!QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.altKey)

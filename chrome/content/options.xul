@@ -48,6 +48,7 @@ title="&qf.prefwindow.quickfolders.options;"
 					<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
 					<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
 		            <preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
+		            <preference id="QuickFolders-Preferences-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
@@ -61,10 +62,17 @@ title="&qf.prefwindow.quickfolders.options;"
 					instantApply="true"
 				/>
 
-		        <checkbox
+		   <checkbox
 					label="&qf.checkbox.usekeyboardshortcuts;"
 					preference="QuickFolders-Preferences-UseKeyboardShortcuts"
 					instantApply="true"
+				/>
+
+	     <checkbox
+					label="&qf.checkbox.usekeyboardshortcutsCTRL;"
+					preference="QuickFolders-Preferences-UseKeyboardShortcutCTRL"
+					instantApply="true"
+					style="margin-left:25px;"
 				/>
 
 		        <checkbox

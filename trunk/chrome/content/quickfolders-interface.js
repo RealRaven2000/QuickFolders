@@ -151,17 +151,21 @@ QuickFolders.Interface = {
         QuickFolders.Util.logToConsole(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
 
         if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
-            if(   (!QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.altKey)
-               || (QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.ctrlKey)
-               ) {
-	               var shortcut;
-	               if (dir=='up')
-                   shortcut = e.keyCode-48;
-	               if (dir=='down')
-                   shortcut = e.charCode-48;
+            var shouldBeHandled =
+                (!QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.altKey)
+                ||
+                (QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && e.ctrlKey)
+            ;
+
+            if(shouldBeHandled) {
+                var shortcut = -1;
+                if (dir=='up')
+                    shortcut = e.keyCode-48;
+                if (dir=='down')
+                    shortcut = e.charCode-48;
 
                 if (shortcut >= 0 && shortcut < 10) {
-	                  e.preventDefault();
+                    e.preventDefault();
                     e.stopPropagation();
                     if (dir=='down') return;
                     if(shortcut == 0) {
@@ -174,8 +178,9 @@ QuickFolders.Interface = {
                         if(e.shiftKey) {
                             MsgMoveMessage(button.folder.URI);
                         }
-                        else
+                        else {
                             this.onButtonClick(button);
+                        }
                     }
                 }
             }

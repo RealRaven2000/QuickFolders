@@ -166,12 +166,17 @@ var QuickFolders = {
         // only add event listener on startup if necessary as we don't
         // want to consume unnecessary performance during keyboard presses!
         if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
-	        if(!Quickfolders.Interface.boundKeyListener) {
-	          window.addEventListener("keypress", this.keyListen = function(e) { QuickFolders.Interface.windowKeyPress(e,'down'); }, true);
-            window.addEventListener("keyup", function(e) { QuickFolders.Interface.windowKeyPress(e,'up'); }, true);
-            Quickfolders.Interface.boundKeyListener = true;
-	        }
-	      }
+            if(!QuickFolders.Interface.boundKeyListener) {
+                window.addEventListener("keypress", this.keyListen = function(e) {
+                    QuickFolders.Interface.windowKeyPress(e,'down');
+                }, true);
+                window.addEventListener("keyup", function(e) {
+                    QuickFolders.Interface.windowKeyPress(e,'up');
+                }, true);
+
+                QuickFolders.Interface.boundKeyListener = true;
+            }
+        }
         var folderEntries = QuickFolders.Preferences.getFolderEntries();
 
         if(folderEntries.length > 0) {
@@ -183,7 +188,7 @@ var QuickFolders = {
                 QuickFolders.Interface.selectCategory(QuickFolders.Preferences.getLastSelectedCategory())
             }
             else
-              QuickFolders.Interface.updateFolders();  // selectCategory already called updateFolders!
+                QuickFolders.Interface.updateFolders();  // selectCategory already called updateFolders!
             QuickFolders.Interface.updateUserStyles();
 
         }
@@ -192,11 +197,11 @@ var QuickFolders = {
 
         observerService.addObserver({
             observe: function() {
-	           QuickFolders.Interface.updateFolders();
-               QuickFolders.Interface.updateUserStyles();
-                 }
-               },"quickfolders-options-saved", false);
-       QuickFolders.Util.logDebug("quickfolders.init() ends.");
+                QuickFolders.Interface.updateFolders();
+                QuickFolders.Interface.updateUserStyles();
+            }
+        },"quickfolders-options-saved", false);
+        QuickFolders.Util.logDebug("quickfolders.init() ends.");
     } ,
 
     sayHello: function() {

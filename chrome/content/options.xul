@@ -32,7 +32,8 @@ title="&qf.prefwindow.quickfolders.options;"
 	</hbox>
 
     <!-- I Set a specific height on the <tabbox> because the help panel wouldn't grow and the text would be clipped -->
-	<tabbox orient="vertical" flex="6" style="min-height: 350px">
+    <!-- added min width for wordy italian ;-) -->
+	<tabbox orient="vertical" flex="6" style="min-height:350px;min-width:550px;">
 		<tabs>
 			<tab label="&qf.tab.general;" />
 			<tab label="&qf.tab.layout;" />
@@ -93,7 +94,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					instantApply="true"
 				/>
 
-		        <checkbox
+		   <checkbox
           label="&qf.checkbox.showTotalMessageCount;"
 					preference="QuickFolders-Preferences-ShowTotalNumber"
 					instantApply="true"
@@ -105,20 +106,20 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					instantApply="true"
 				/>
 				<spacer flex="1" />
-			<hbox style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
+			<hbox class="quickhelp-dbg">
 				<checkbox label="&qf.checkbox.debug;"
 					preference="QuickFolders-Preferences-Debug"
 					instantApply="true"
 				/>
                 <spacer flex="1" />
-				<label value="[ms] init delay {1000 is standard}:"
+				<label value="&qf.label.initdelay;"
                     style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;"
 				/>
                 <textbox
                     id="init-delay" preference="QuickFolders-init-delay"
-                    instantApply="true" flex="0" style="vertical-align:text-bottom;max-width:70px;"
+                    instantApply="true" flex="0" style="vertical-align:text-bottom;max-	width:70px;"
                 />
-                <button label="Folders?" image="copy.png" oncommand="QuickFoldersOptions.dumpFolderEntries();"  />
+       <button label="&qf.label.folders;" image="copy.png" oncommand="QuickFoldersOptions.dumpFolderEntries();"  />
 			</hbox>
 
 			</tabpanel>
@@ -232,26 +233,19 @@ label="&qf.checkbox.showUnreadMessageCount;"
 </hbox>
                </vbox>
 			  <spacer flex="1" />
-                <description class="quickhelp-desc"
-		           style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
-                    &qf.label.instantApplyMsg;
-		       </description>
+        <description class="quickhelp-dbg" flex="2">&qf.label.instantApplyMsg;</description>
 
 			</tabpanel>
 
-			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp"
-		       label="Quick Help" flex="10">
+			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help" flex="10">
 			  <description class="quickhelp-desc">&qf.description.dragToAdd;</description>
 			  <description class="quickhelp-desc">&qf.description.dragToPosition;</description>
 			  <description class="quickhelp-desc">&qf.description.dragToPopup;</description>
-              <description class="quickhelp-desc">&qf.description.changeCategory;</description>
+        <description class="quickhelp-desc">&qf.description.changeCategory;</description>
 			  <description class="quickhelp-desc">&qf.description.rightClickOptions;</description>
 			  <description class="quickhelp-desc">&qf.description.tipMsg;</description>
 			  <spacer flex="1" />
-              <description class="quickhelp-desc"
-		        style="color:#C0C0C0;background-color:#202020;padding: 3px 8px;">
-                &qf.label.contactMe;
-		      </description>
+        <description class="quickhelp-dbg">&qf.label.contactMe;</description>
 
 			</tabpanel>
 		</tabpanels>

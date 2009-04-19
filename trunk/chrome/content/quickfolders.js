@@ -103,6 +103,16 @@
      AG suppress event bubbling (for better Lightning compatibility)
      AG added button for copying folder string to clipboard
 
+   17/04/2009  0.9.12
+     AM Fixed some problems with keyboard handler
+     AM added italian locale (provided by Leopoldo Saggin)
+
+   19/04/2008
+     AG removed constant debug output of keyboard handler (now only visible in debug mode and when relevant)
+     AG increased width of options window to avoid truncation of italian quickhelp texts
+     AG added language resources for debug items
+
+
   KNOWN ISSUES
   ============
   05/09/2008

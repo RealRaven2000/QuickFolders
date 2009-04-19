@@ -172,14 +172,19 @@ menuitem[tag="qfRemove"] {
 
 
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+  -moz-border-radius: 4px 4px 0 0;
   border: 1px solid darkred !important;
   color: darkred !important;
   font-weight: 500;
   background-image: url('orange-bar.png') !important;
   list-style-image : url('tb-anchor.png');
 }
+menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover {
+  -moz-border-radius: 4px 4px 0 0;
+}
 
 menupopup.QuickFolders-folder-popup menuitem:hover {
+  -moz-border-radius: 0 4px 4px 0 !important;
   border: 1px solid brown !important;
   color: brown !important;
   font-weight: 500;

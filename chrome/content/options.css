@@ -3,7 +3,7 @@
 	background-image: url("quickfolders-Icon.png") !important;
     background-position: 10px 10px !important;
     background-repeat: no-repeat !important;
-}    
+}
 
 #qf-options-header {
 	margin: 5px 0px 5px 45px;
@@ -29,10 +29,16 @@ label.qfTabPreview {
   -moz-border-radius: 4px 5px 0 0;
   padding: 3px 8px;
   min-width:20px;
-  vertical-align:middle;	
+  vertical-align:middle;
 }
 
-description.quickhelp-desc {
+description.quickhelp-desc, description.quickhelp-dbg {
 	text-align:justify;
-	max-width: 460px;
+	max-width: 550px;
+}
+
+description.quickhelp-dbg, hbox.quickhelp-dbg {
+  color:#C0C0C0;
+  background-color:#202020;
+  padding: 3px 8px 3px 8px;
 }

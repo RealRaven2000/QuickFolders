@@ -148,7 +148,6 @@ QuickFolders.Interface = {
     } ,
 
     windowKeyPress: function(e,dir) {
-        QuickFolders.Util.logToConsole(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
 
         if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
             var shouldBeHandled =
@@ -158,6 +157,7 @@ QuickFolders.Interface = {
             ;
 
             if(shouldBeHandled) {
+					      QuickFolders.Util.logDebug(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
                 var shortcut = -1;
                 if (dir=='up')
                     shortcut = e.keyCode-48;

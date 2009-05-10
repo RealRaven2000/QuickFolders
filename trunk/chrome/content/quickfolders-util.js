@@ -97,7 +97,7 @@ QuickFolders.Util = {
             str += prop + " => " + value[prop] + "\r\n";
         }
 
-        dump(str);
+        this.logDebug(str);
     },
 
     logToConsole: function (msg) {

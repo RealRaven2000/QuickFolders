@@ -3,7 +3,7 @@
 <!ENTITY qf.tab.general "Algemeen">
 <!ENTITY qf.tab.layout "Layout">
 <!ENTITY qf.tab.quickhelp "Info">
-<!ENTITY qf.checkbox.displaylabel "Toon het 'QuickFolders' label in de toolbar">
+<!ENTITY qf.checkbox.displaylabel "Toon het &apos;QuickFolders&apos; label in de toolbar">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Gebruik keyboard sneltoetsen (Alt + 1 tot Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Control in plaats van Alt">
 <!ENTITY qf.checkbox.showshortcutnumber "Toon het sneltoets nummer op de knop">
@@ -15,23 +15,22 @@
 <!ENTITY qf.checkbox.showIcons "Toon iconen">
 <!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard): ">
 <!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.setcolors "[Text Kleur], Achtergrond Kleur">
 <!ENTITY qf.label.ActiveTabColor "Actieve Tab Kleur:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Kleur:">
 <!ENTITY qf.label.DragOverBackground "Drag and Drop Kleur:">
 <!ENTITY qf.label.ToolbarBackground "Toolbar Achtergrond:">
 <!ENTITY qf.description.dragToAdd "Sleep mail folders over een lege ruimte van de toolbar om een QuickFolder aan te maken (werkt als een snelkoppeling). Sleep berichten naar de QuickFolder om ze naar de bijhorende folder te verplaatsen (of kopiëren mbv de control knop). Klik de QuickFolder aan om naar de bijhorende folder te navigeren.">
-<!ENTITY qf.description.dragToPosition "Sleep QuickFolders zijndelings om hun posities te veranderen. Rechtsklik op de QuickFolder om het context menu te openen; Langs deze weg kan u ook de sub-folders van de folder bereiken. 'Bookmark hernomen' verandert het label van de QuickFolder. 'Bookmark verwijderen' verwijdert de bookmark (niet de echte mail folder).">
+<!ENTITY qf.description.dragToPosition "Sleep QuickFolders zijndelings om hun posities te veranderen. Rechtsklik op de QuickFolder om het context menu te openen; Langs deze weg kan u ook de sub-folders van de folder bereiken. &apos;Bookmark hernomen&apos; verandert het label van de QuickFolder. &apos;Bookmark verwijderen&apos; verwijdert de bookmark (niet de echte mail folder).">
 <!ENTITY qf.description.dragToPopup "Sleep berichten naar een subfolder in het context menu om ze naar die subfolder te verplaatsen.">
 <!ENTITY qf.description.changeCategory "Rechtsklik op een bookmark om die in een categorie te organiseren. De categorieën verschijnen in een pulldown links op de toolbar.">
 <!ENTITY qf.description.rightClickOptions "Rechtsklik een een lege ruimte op de toolbar om het opties menu te openen. In het opties menu kan u de standaard stijl (kleiner) of de tab stijl (duidelijker; ondersteunt sleep-indicator).">
 <!ENTITY qf.description.tipMsg "Tip: als u een groot aantal folders hebt, probeer dan ook de Nostalgy Add-On om uw berichten toetsenbord-gestuurd te organiseren.">
 <!ENTITY qf.description.experimentalItems "De volgende items zijn experimenteel, hopelijk zullen ze werken in de volgende release!">
-<!ENTITY qf.label.setcolors "[Text Kleur], Achtergrond Kleur">
-<!ENTITY qf.label.instantApplyMsg "Nota: als u hieronder enkel een [Close] knop ziet, zullen deze instellingen misschien niet werken - als oplossing kan u rechts klikkn op de QuickFolders toolbar en 'Opties' klikken... hierdoor zal de Ok knop worden weergegeven.">
+<!ENTITY qf.label.instantApplyMsg "Nota: als u hieronder enkel een [Close] knop ziet, zullen deze instellingen misschien niet werken - als oplossing kan u rechts klikkn op de QuickFolders toolbar en &apos;Opties&apos; klikken... hierdoor zal de Ok knop worden weergegeven.">
 <!ENTITY qf.label.contactMe "Als u feedback of suggesties hebt, of u een bug wil rapporteren, email me dan op axelg@gofree.indigo.ie.">
 <!ENTITY qf.button.defaultcolors "Standaard Kleuren">
 <!ENTITY qf.checkbox.debug "Debug Mode">
 <!ENTITY qf.label.StandardTabColor "Standard Tab Kleur:">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
 <!ENTITY qf.label.folders "Folders?">
-

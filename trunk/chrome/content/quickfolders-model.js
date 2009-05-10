@@ -50,8 +50,8 @@ QuickFolders.Model = {
     } ,
 
     update: function() {
-        QuickFolders.Interface.updateFolders();
         QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
+        QuickFolders.Interface.updateFolders();
     } ,
 
     setFolderCategory: function(uri, name) {
@@ -81,9 +81,23 @@ QuickFolders.Model = {
     } ,
 
     isValidCategory: function(category) {
-        return category == "__ALL" 
-                           || category == "__UNCATEGORIZED" 
-                           || category == "__ALWAYS"
-                           || this.getCategories().indexOf(category) != -1;
+        return (
+            category == "__ALL"
+            || category == "__UNCATEGORIZED"
+            || category == "__ALWAYS"
+            || this.getCategories().indexOf(category) != -1
+        );
+    } ,
+
+    renameFolderCategory: function(oldName, newName) {
+        for(var i = 0; i < this.selectedFolders.length; i++) {
+            var folder = this.selectedFolders[i]
+
+            if(folder.category == oldName) {
+                folder.category = newName
+            }
+        }
+
+        this.update()
     }
 }

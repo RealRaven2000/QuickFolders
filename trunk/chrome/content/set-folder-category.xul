@@ -38,16 +38,30 @@
             </listbox>
         </vbox>
         <vbox>
-            <label>&qf.label.newcategory;</label>
+            <vbox>
+                <label>&qf.label.newcategory;</label>
 
-            <hbox>
-                <textbox
-                    id="new-category-name"
-                    onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
-                />
-                <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
-            </hbox>
-         </vbox>
+                <hbox>
+                    <textbox
+                        id="new-category-name"
+                        onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
+                    />
+                    <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+                </hbox>
+            </vbox>
+
+            <vbox style="margin-top: 20px">
+                <label>&qf.label.renameselectedcategory;</label>
+
+                <hbox>
+                    <textbox
+                        id="rename-category-new-name"
+                        onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.renameSelectedCategory() }"
+                    />
+                    <button label="&qf.button.rename;" oncommand="QuickFolders.FolderCategory.renameSelectedCategory()" />
+                </hbox>
+             </vbox>
+        </vbox>
     </hbox>
 </dialog>
 

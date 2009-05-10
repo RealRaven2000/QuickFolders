@@ -72,6 +72,30 @@ QuickFolders.FolderCategory = {
         var category = listBox.value;
         picker.color = getCategoryColor(category);
     },
+
+    renameSelectedCategory: function() {
+        var selectedCategory = this.$('existing-categories').value
+
+        if(!selectedCategory || selectedCategory.match(/$__/)) {
+            //can't rename a "system category"
+            return;
+        }
+
+        var newName = this.$('rename-category-new-name').value
+
+        if(!newName) {
+            //no new name entered
+            return;
+        }
+
+        QuickFolders.Model.renameFolderCategory(selectedCategory, newName)
+
+        this.populateCategories()
+
+        this.getCategoriesListBox().value = newName
+    } ,
+
+
     getCategoryColor: function(cat) {
 	    
 /*

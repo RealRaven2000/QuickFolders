@@ -41,23 +41,23 @@ QuickFolders.Interface = {
         var offset = 0;
 
         if (QuickFolders.Model.selectedFolders.length) {
-        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
-            var folderEntry = QuickFolders.Model.selectedFolders[i];
-            var folder;
+            for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+                var folderEntry = QuickFolders.Model.selectedFolders[i];
+                var folder;
 
-            if(!this.shouldDisplayFolder(folderEntry)) {
-                continue;
+                if(!this.shouldDisplayFolder(folderEntry)) {
+                    continue;
+                }
+
+                if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
+                    var button = this.addFolderButton(folder, folderEntry.name, offset)
+                    this.buttonsByOffset[offset] = button;
+                    offset++;
+                }
             }
+            QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.");
 
-            if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-                var button = this.addFolderButton(folder, folderEntry.name, offset)
-                this.buttonsByOffset[offset] = button;
-                offset++;
-            }
-        }
-	        QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.");
-
-        this.onFolderSelected();
+            this.onFolderSelected();
         }
 
         /*
@@ -86,8 +86,10 @@ QuickFolders.Interface = {
             menuPopup.appendChild(this.createMenuItem("__ALL", qfBundle.GetStringFromName("qfAll")))
             for(var i = 0; i < bookmarkCategories.length; i++) {
                 var category = bookmarkCategories[i]
-                if (bookmarkCategories[i] != "__ALWAYS")
-	                menuPopup.appendChild(this.createMenuItem(category, category))
+                
+                if (bookmarkCategories[i] != "__ALWAYS") {
+                    menuPopup.appendChild(this.createMenuItem(category, category))
+                }
             }
 
             menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", qfBundle.GetStringFromName("qfUncategorized")))

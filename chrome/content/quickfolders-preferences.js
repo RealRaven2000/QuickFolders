@@ -7,7 +7,11 @@ QuickFolders.Preferences = {
 
 
     setFolderEntries: function(folderEntries) {
-        this.service.setCharPref("QuickFolders.folders",JSON.stringify(folderEntries));
+        var json = JSON.stringify(folderEntries)
+
+        QuickFolders.Util.logDebug(json)
+
+        this.service.setCharPref("QuickFolders.folders",json)
     } ,
 
     getFolderEntries: function() {

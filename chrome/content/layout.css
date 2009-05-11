@@ -4,13 +4,16 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar {
-    min-height: 24px;
-    line-height: 24px;
+    display:inline-block;
+    min-height: 24px ;
+    line-height: 24px
 }
 
 #QuickFolders-Toolbar toolbarbutton {
     line-height: 24px;
     height: 24px;
+    /*display: block !important;*/
+    /*overflow-y: auto !important;*/
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -25,14 +28,23 @@ button.order-button {
     font-style: italic;
 }
 
+#QuickFolders-Category-Box {vertical-align:bottom;}
+#QuickFolders-Category-Selection {
+	max-height:1.9em;
+  display: inline-block;
+
+}
 
 #QuickFolders-title-label {
     line-height: 24px;
     font-weight: bold;
+    display: inline-block;
+    float: left;
 }
 
 #QuickFolders-FoldersBox {
-	max-height:23px;
+	display:inline-block;
+  float:right;
 }
 
 
@@ -44,6 +56,7 @@ button.order-button {
     background-color: Menu;
     border-bottom: 3px solid;
     border-bottom-color: Highlight;
+    display:inline-block;
 }
 
 
@@ -54,24 +67,38 @@ button.order-button {
     -moz-border-radius: 4px 4px 0 0;
     padding: 1px 5px 0px 2px;
     border: 1px solid #AAA; /* #AAA ThreeDHighlight */
-     /* border-right: 1px solid ThreeDShadow; */
-     /* border-bottom: 1px solid ThreeDShadow; */
     margin: 3px 0px 0px 3px;
-    line-height: 20px;
-    height: 20px;
+    line-height: 19px;
+    height: 19px;
+    vertical-align:top;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
     background-color: Orange !important;
     color: Black !important;
-    height: 21px;
+    height: 19px;
     margin-top: 2px !important;
+    margin-bottom: -1px !important;
+    padding: 0px 5px 2px 2px;
+}
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
+    background-color:  Highlight !important;
+    border: 1px solid ThreeDHighlight !important; /* #666 */
+    border-right: 1px solid ThreeDDarkShadow !important; /* new */
+    border-bottom: none !important;
+    color: HighlightText !important;
+    height: 20px;
+    margin-top: 2px !important;
+    margin-bottom: -1px !important;
+    padding: 0px 5px 2px 2px;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:-moz-drag-over {
     background-color: #E93903 !important;
     color: White !important;
 }
+
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
   background-image: url("dropRight.gif") !important;
@@ -87,18 +114,6 @@ button.order-button {
   background-repeat: no-repeat !important;
 }
 
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
-    padding: 0px 5px 2px 2px !important;
-    background-color:  Highlight !important;
-    color: HighlightText !important;
-    border: 1px solid ThreeDHighlight !important; /* #666 */
-    border-right: 1px solid ThreeDDarkShadow !important; /* new */
-    border-bottom: none !important;
-    height: 21px;
-    margin-top: 2px !important;
-    margin-bottom: -1px !important;
-}
-
 /* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
 #QuickFolders-Toolbar toolbarbutton.selected-folder.icon {
     list-style-image: url("folder-open.png");
@@ -112,6 +127,14 @@ button.order-button {
 #QuickFolders-Toolbar toolbarbutton.trash.icon {
     list-style-image: url("folder-trash.png");
 }
+
+/* container for categories drop down*/
+#QuickFolders-Category-Box {
+  display: block;
+  float:left;
+  vertical-align: bottom !important;
+}
+
 
 /* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work :-( */
 #QuickFolders-Toolbar toolbarbutton.selected-folder.icon,
@@ -140,7 +163,9 @@ menupopup.QuickFolders-folder-popup menuitem.hasUnread {
   font-weight: bold !important;
 }
 
-/* gradient look  by AG (yum!)*/
+
+
+/* gradient look */
 menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
   border: 1px solid darkgreen !important;
   color: black !important;

@@ -3,7 +3,7 @@
 
 <!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-         
+
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
@@ -14,62 +14,53 @@
     <script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
-    
+
 
     <toolbox id="mail-toolbox">
-        <toolbar 
-            id="QuickFolders-Toolbar" 
-            toolbarname="QuickFolders Toolbar" 
-            class="toolbar-primary chromeclass-toolbar" 
+        <toolbar
+            id="QuickFolders-Toolbar"
+            toolbarname="QuickFolders Toolbar"
+            class="toolbar-primary chromeclass-toolbar"
             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
             ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
             dragdroparea="QuickFolders-FoldersBox"
             customizable="false"
             context="QuickFolders-ToolbarPopup"
             style="display: none;"
+             flex="1"
         >
         <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 
-        <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value)" style="display: none">
+        <vbox id="QuickFolders-Category-Box" >
+        <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value)">
             <menupopup>
                 <!-- filled dynamically from JS -->
             </menupopup>
         </menulist>
+        </vbox>
 
-        <box 
-            id="QuickFolders-FoldersBox" 
-            align="horizontal" 
-            flex="100%"
-        >
-            <!-- Filled dynamically by the script -->	
-            <label class="toolbar-height">&qf.label.dragFolderLabel;</label>
+        <box id="QuickFolders-FoldersBox" align="horizontal"  flex="100%">
+             <label class="toolbar-height" >&qf.label.dragFolderLabel;</label>
+           <!-- Filled dynamically by the script -->
         </box>
-            
-        <spacer flex="1"/>
 
-        <toolbar 
-          id="Quickfolders-SpecialTools" 
-          align="right"
-          customizable="false"
-        >
 
-        </toolbar>
             <popupset>
                 <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
-                    <menuitem label="&qf.menuitem.quickfolders.options;" 
+                    <menuitem label="&qf.menuitem.quickfolders.options;"
                               accesskey="&qf.menuitem.quickfolders.optionsAccess;"
                               oncommand="QuickFolders.Interface.viewOptions()" class="cmd"
                               tagName="qfOptions"
                               />
-                    <menuitem label="&qf.menuitem.quickfolders.changeOrder;" 
+                    <menuitem label="&qf.menuitem.quickfolders.changeOrder;"
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
                               oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd"
                               tagName="qfOrder"
                               />
-                              
+
                 </menupopup>
             </popupset>
- 
+
         </toolbar>
     </toolbox>
 </overlay>

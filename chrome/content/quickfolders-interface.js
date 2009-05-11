@@ -81,12 +81,12 @@ QuickFolders.Interface = {
         QuickFolders.Util.clearChildren(menuPopup)
 
         if(bookmarkCategories.length > 0) {
-            menuList.style.display = '';
+            menuList.style.display = 'block';
 
             menuPopup.appendChild(this.createMenuItem("__ALL", qfBundle.GetStringFromName("qfAll")))
             for(var i = 0; i < bookmarkCategories.length; i++) {
                 var category = bookmarkCategories[i]
-                
+
                 if (bookmarkCategories[i] != "__ALWAYS") {
                     menuPopup.appendChild(this.createMenuItem(category, category))
                 }

@@ -20,12 +20,13 @@
 <!ENTITY qf.label.HoveredTabColor "Farbe Hovered Tab:">
 <!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
 <!ENTITY qf.label.DragOverBackground "Drag und Drop:">
-<!ENTITY qf.description.dragToAdd "Ziehen Sie die Mail Verzeichnisse auf eine leere Fläche des quickfolder toolbars. Dies erzeugt einen neuen Tab, der wie ein Shortcut funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen.">
+<!ENTITY qf.description.dragToAdd "Ziehen Sie die Mail Verzeichnisse auf eine leere Fläche des quickfolder toolbars. Dies erzeugt einen neuen Tab, der wie eine Verknüpfung funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen.">
 <!ENTITY qf.description.dragToPosition "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. 'Umbenennen' ändert den Titel des Tabs. 'Tab löschen' entfernt den Tab (nicht das Mail-Verzeichnis).">
 <!ENTITY qf.description.dragToPopup "Ziehen Sie Mails auf das Kontextmenü um sie in Unterverzeichnisse zu verschieben.">
 <!ENTITY qf.description.changeCategory "Per Rechts-klick kann man die Tabs kategorisieren. Ein Kategorie Filter wird dann links der Tabs angezeigt.">
 <!ENTITY qf.description.rightClickOptions "Rechts-klick auf den Toolbar für die Optionen. Dort gibt es native style (Tabs als Schaltflächen) oder flat style (klarer und mit Drag Anzeige).">
 <!ENTITY qf.description.tipMsg "Tip: Falls Sie sehr viele Verzeichnisse haben, probieren Sie auch die Nostalgy extension.">
+<!ENTITY qf.description.experimentalItems "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert.">
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">
 <!ENTITY qf.label.contactMe "Noch offene Wünsche / feedback / Programmfehler? Bitte E-Mail an: axelg@gofree.indigo.ie.">
 <!ENTITY qf.button.defaultcolors "Standard Farben">
@@ -33,4 +34,5 @@
 <!ENTITY qf.label.StandardTabColor "Normale Tab Farbe:">
 <!ENTITY qf.label.initdelay "[ms] init Verzögerung {1000=standard}:">
 <!ENTITY qf.label.folders "Verzeichnisse?">
+<!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
 

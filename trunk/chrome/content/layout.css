@@ -4,9 +4,9 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar {
-    display:inline-block;
+    /*display:inline-block;*/
     min-height: 24px ;
-    line-height: 24px
+    line-height: 24px;
 }
 
 #QuickFolders-Toolbar toolbarbutton {
@@ -31,19 +31,19 @@ button.order-button {
 #QuickFolders-Category-Box {vertical-align:bottom;}
 #QuickFolders-Category-Selection {
 	max-height:1.9em;
-  display: inline-block;
+  display: -moz-inline-box;
 
 }
 
 #QuickFolders-title-label {
     line-height: 24px;
     font-weight: bold;
-    display: inline-block;
+    display: -moz-inline-box;
     float: left;
 }
 
 #QuickFolders-FoldersBox {
-	display:inline-block;
+	display: -moz-inline-box;
   float:right;
 }
 
@@ -56,7 +56,7 @@ button.order-button {
     background-color: Menu;
     border-bottom: 3px solid;
     border-bottom-color: Highlight;
-    display:inline-block;
+    display: -moz-inline-box;
 }
 
 

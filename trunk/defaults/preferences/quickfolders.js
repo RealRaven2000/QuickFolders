@@ -8,6 +8,7 @@ pref("extensions.quickfolders.useKeyboardShortcutCTRL",false);
 pref("extensions.quickfolders.showTotalNumber",false);
 pref("extensions.quickfolders.showFoldersWithMessagesItalic",false);
 pref("extensions.quickfolders.showFlatStyle",true);
+pref("extensions.quickfolders.autoFocusPreview",true);
 pref("extensions.quickfolders.buttonFontSize","");
 pref("extensions.quickfolders.lastSelectedCategory","");
 pref("extensions.quickfolders.showIcons",false);

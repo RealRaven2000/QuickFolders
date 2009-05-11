@@ -515,13 +515,12 @@ function MySelectFolder(folderUri)
     // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
         QuickFolders.Util.ensureNormalFolderView();
-	       folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+	      folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
       }
 	  MyChangeSelection(folderTree, folderIndex);
-		// select message in top pane for keyboard navigation
-	    if (! GetMessagePane().collapsed) {
+		  // select message in top pane for keyboard navigation
+		  if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
 	      GetMessagePane().focus();
-	      QuickFolders.Util.logToConsole("Focused to Message Pane");
 	      document.commandDispatcher.advanceFocus();
 	      document.commandDispatcher.rewindFocus();
       }

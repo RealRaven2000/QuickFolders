@@ -61,6 +61,10 @@ QuickFolders.Preferences = {
         return this.service.getBoolPref("extensions.quickfolders.showFoldersWithMessagesItalic");
     } ,
 
+    isFocusPreview: function() {
+        return this.service.getBoolPref("extensions.quickfolders.autoFocusPreview");
+    } ,
+
     isShowToolbarFlatstyle: function() {
         return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
     } ,

@@ -53,6 +53,7 @@ title="&qf.prefwindow.quickfolders.options;"
 		            <preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 		            <preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
+		            <preference id="QuickFolders-Preferences-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool"/>
 		            <preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
 		            <preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int"/>
 				</preferences>
@@ -105,6 +106,13 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic"
 					instantApply="true"
 				/>
+
+				<checkbox
+          label="&qf.checkbox.autoFocusPreview;"
+					preference="QuickFolders-Preferences-FocusPreview"
+					instantApply="true"
+				/>
+
 				<spacer flex="1" />
 			<hbox class="quickhelp-dbg">
 				<checkbox label="&qf.checkbox.debug;"
@@ -117,7 +125,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				/>
                 <textbox
                     id="init-delay" preference="QuickFolders-init-delay"
-                    instantApply="true" flex="0" style="vertical-align:text-bottom;max-	width:70px;"
+                    instantApply="true" flex="0" style="vertical-align:text-bottom;max-width:70px;"
                 />
        <button label="&qf.label.folders;" image="copy.png" oncommand="QuickFoldersOptions.dumpFolderEntries();"  />
 			</hbox>

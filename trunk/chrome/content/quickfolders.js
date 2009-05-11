@@ -111,6 +111,7 @@
      AG removed constant debug output of keyboard handler (now only visible in debug mode and when relevant)
      AG increased width of options window to avoid truncation of italian quickhelp texts
      AG added language resources for debug items
+     AG added icon for folder to clipboard
 
 
   KNOWN ISSUES
@@ -123,14 +124,15 @@
   PLANNED FEATURES
   ================
     - persist categories in separate JSON list for more flexibility (e.g. rename)
-    - size of category dropdown should increase with length of list
-    - colors for categories / single folders {TBD}
+    - size of category dropdown should expand with length of list
 
   WISHLIST
   ========
     - drag to thread finds quickfolder with correct thread and drops message there
     - multiple lines for quickfolders (probably obsolete, since categories)
     - instantApply support (difficult, as there is no onclose event)
+    - multiple categories per folder (like tags)
+    - colors for categories / single folders {TBD}
 
 
 */
@@ -516,7 +518,14 @@ function MySelectFolder(folderUri)
 	       folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
       }
 	  MyChangeSelection(folderTree, folderIndex);
-    }
+		// select message in top pane for keyboard navigation
+	    if (! GetMessagePane().collapsed) {
+	      GetMessagePane().focus();
+	      QuickFolders.Util.logToConsole("Focused to Message Pane");
+	      document.commandDispatcher.advanceFocus();
+	      document.commandDispatcher.rewindFocus();
+      }
+   }
     else
       gFolderTreeView.selectFolder (msgFolder);
 }

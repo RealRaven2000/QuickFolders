@@ -113,6 +113,10 @@
      AG added language resources for debug items
      AG added icon for folder to clipboard
 
+   11/05/2009
+     AG added multiple line support
+     AG added option for focusing message pane after changing category & selecting a tab (to be improved)
+
 
   KNOWN ISSUES
   ============
@@ -129,7 +133,6 @@
   WISHLIST
   ========
     - drag to thread finds quickfolder with correct thread and drops message there
-    - multiple lines for quickfolders (probably obsolete, since categories)
     - instantApply support (difficult, as there is no onclose event)
     - multiple categories per folder (like tags)
     - colors for categories / single folders {TBD}

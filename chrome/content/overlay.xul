@@ -27,7 +27,7 @@
             customizable="false"
             context="QuickFolders-ToolbarPopup"
             style="display: none;"
-             flex="1"
+             flex="10"
         >
         <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 
@@ -39,8 +39,8 @@
         </menulist>
         </vbox>
 
-        <box id="QuickFolders-FoldersBox" align="horizontal"  flex="100%">
-             <label class="toolbar-height" >&qf.label.dragFolderLabel;</label>
+        <box id="QuickFolders-FoldersBox" flex="10">
+             <label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
            <!-- Filled dynamically by the script -->
         </box>
 

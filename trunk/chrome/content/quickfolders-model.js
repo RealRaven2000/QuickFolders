@@ -68,7 +68,14 @@ QuickFolders.Model = {
         // can we sort this?
         // can we add a color per category?
         for(var i = 0; i < this.selectedFolders.length; i++) {
-            var category = this.selectedFolders[i].category;
+            var entry = this.selectedFolders[i]
+
+            // if the folder doesn't exist anymore, ignore this category
+            if(!GetMsgFolderFromUri(entry.uri, true)) {
+                continue;
+            }
+
+            var category = entry.category;
 
             if(category && category != "") {
                 if(categories.indexOf(category) == -1) {
@@ -95,6 +102,18 @@ QuickFolders.Model = {
 
             if(folder.category == oldName) {
                 folder.category = newName
+            }
+        }
+
+        this.update()
+    } ,
+
+    deleteFolderCategory: function(category) {
+        for(var i = 0; i < this.selectedFolders.length; i++) {
+            var folder = this.selectedFolders[i]
+
+            if(folder.category == category) {
+                folder.category = null
             }
         }
 

@@ -4,7 +4,6 @@ button.order-button {
 }
 
 #QuickFolders-Toolbar {
-    /*display:inline-block;*/
     min-height: 24px ;
     line-height: 24px;
 }
@@ -12,8 +11,6 @@ button.order-button {
 #QuickFolders-Toolbar toolbarbutton {
     line-height: 24px;
     height: 24px;
-    /*display: block !important;*/
-    /*overflow-y: auto !important;*/
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -28,12 +25,18 @@ button.order-button {
     font-style: italic;
 }
 
-#QuickFolders-Category-Box {vertical-align:bottom;}
+/* container for categories drop down*/
+#QuickFolders-Category-Box {
+  display: -moz-inline-box;
+  float:left;
+  vertical-align: bottom !important;
+}
+
 #QuickFolders-Category-Selection {
 	max-height:1.9em;
-  display: -moz-inline-box;
-
+	display:none;
 }
+
 
 #QuickFolders-title-label {
     line-height: 24px;
@@ -45,8 +48,13 @@ button.order-button {
 #QuickFolders-FoldersBox {
 	display: -moz-inline-box;
   float:right;
+  max-height:15em;
 }
 
+#QuickFolders-Instructions-Label {
+	max-height:28px;
+	min-width: 85%;
+}
 
 /* Flat Styles below */
 #QuickFolders-Toolbar.toolbar-flat {
@@ -126,13 +134,6 @@ button.order-button {
 }
 #QuickFolders-Toolbar toolbarbutton.trash.icon {
     list-style-image: url("folder-trash.png");
-}
-
-/* container for categories drop down*/
-#QuickFolders-Category-Box {
-  display: block;
-  float:left;
-  vertical-align: bottom !important;
 }
 
 

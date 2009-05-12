@@ -6,11 +6,16 @@ button.order-button {
 #QuickFolders-Toolbar {
     min-height: 24px ;
     line-height: 24px;
+    margin: 0;
+    padding: 0;
 }
 
 #QuickFolders-Toolbar toolbarbutton {
-    line-height: 24px;
-    height: 24px;
+    padding: 1px 5px 2px 2px;
+    margin: 3px 0px 0px 3px;
+    line-height: 19px;
+    height: 19px;
+    vertical-align:top;
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder {
@@ -27,14 +32,14 @@ button.order-button {
 
 /* container for categories drop down*/
 #QuickFolders-Category-Box {
-  display: -moz-inline-box;
-  float:left;
-  vertical-align: bottom !important;
+    display: -moz-inline-box;
+    float:left;
+    vertical-align: bottom !important;
 }
 
 #QuickFolders-Category-Selection {
-	max-height:1.9em;
-	display:none;
+    max-height:1.9em;
+    display:none;
 }
 
 
@@ -46,14 +51,14 @@ button.order-button {
 }
 
 #QuickFolders-FoldersBox {
-	display: -moz-inline-box;
-  float:right;
-  max-height:15em;
+    display: -moz-inline-box;
+    float:right;
+    max-height:15em;
 }
 
 #QuickFolders-Instructions-Label {
-	max-height:28px;
-	min-width: 85%;
+    max-height:28px;
+    min-width: 85%;
 }
 
 /* Flat Styles below */
@@ -109,17 +114,17 @@ button.order-button {
 
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
-  background-image: url("dropRight.gif") !important;
-  background-position: right center !important;
-  background-repeat: no-repeat !important;
-  margin-right: 1px;
+    background-image: url("dropRight.gif") !important;
+    background-position: right center !important;
+    background-repeat: no-repeat !important;
+    margin-right: 1px;
 }
 
 
 #QuickFolders-Toolbar toolbarbutton.dragLEFT {
-  list-style-image: url("dropLeft.gif") !important;
-  background-position: left center !important;
-  background-repeat: no-repeat !important;
+    list-style-image: url("dropLeft.gif") !important;
+    background-position: left center !important;
+    background-repeat: no-repeat !important;
 }
 
 /* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
@@ -150,91 +155,91 @@ button.order-button {
 
 /* Experimental for Trash, FindThread Icon */
 #Quickfolders-SpecialTools {
-	background-color: Menu;
-	border: 1px solid;
+    background-color: Menu;
+    border: 1px solid;
 }
 
 /* standard menu look (booring?) */
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
-  background-color: Highlight;
-  color: HighlightText;
+    background-color: Highlight;
+    color: HighlightText;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.hasUnread {
-  font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 
 
 /* gradient look */
 menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
-  border: 1px solid darkgreen !important;
-  color: black !important;
-  font-weight: 500;
-  background-image: url('jade-bar.png') !important;
+    border: 1px solid darkgreen !important;
+    color: black !important;
+    font-weight: 500;
+    background-image: url('jade-bar.png') !important;
 }
 
 menuitem[tagName="qfOptions"] {
-  list-style : url('settings-20.png') outside !important;
+    list-style : url('settings-20.png') outside !important;
 }
 
 menuitem[tagName="qfOrder"] {
-  list-style : url('order.gif') !important;
+    list-style : url('order.gif') !important;
 }
 
 
 menuitem[tag="qfRename"] {
-  list-style-image : url('rename.gif') !important;
+    list-style-image : url('rename.gif') !important;
 }
 menuitem[tag="qfCompact"] {
-  list-style-image : url('compact.png') !important;
+    list-style-image : url('compact.png') !important;
 }
 menuitem[tag="qfCategory"] {
-  list-style-image : url('ablist-item.png') !important;
+    list-style-image : url('ablist-item.png') !important;
 }
 menuitem[tag="qfRemove"] {
-  list-style-image : url('folder-trash.png') !important;
+    list-style-image : url('folder-trash.png') !important;
 }
 
 
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
-  -moz-border-radius: 4px 4px 0 0;
-  border: 1px solid darkred !important;
-  color: darkred !important;
-  font-weight: 500;
-  background-image: url('orange-bar.png') !important;
-  list-style-image : url('tb-anchor.png');
+    -moz-border-radius: 4px 4px 0 0;
+    border: 1px solid darkred !important;
+    color: darkred !important;
+    font-weight: 500;
+    background-image: url('orange-bar.png') !important;
+    list-style-image : url('tb-anchor.png');
 }
 menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover {
-  -moz-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover {
-  -moz-border-radius: 0 4px 4px 0 !important;
-  border: 1px solid brown !important;
-  color: brown !important;
-  font-weight: 500;
-  background-image: url('gold-bar.png') !important;
+    -moz-border-radius: 0 4px 4px 0 !important;
+    border: 1px solid brown !important;
+    color: brown !important;
+    font-weight: 500;
+    background-image: url('gold-bar.png') !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover
 {
-  list-style-image : url('folder-open.png') ;
+    list-style-image : url('folder-open.png') ;
 }
 
 
 
 
 #QuickFolders-Toolbar toolbarbutton.specialButton {
-  -moz-appearance: none !important;
+    -moz-appearance: none !important;
     -moz-image-region: rect( 0px 24px 24px  0px);
-/*      -moz-appearance: toolbarbutton !important; */
-	background-image: url("thread.png") !important;
-	background-repeat: no-repeat !important;
-	padding-left: 24px;
-/*    dir: normal !important;
-    orient: horizontal  !important;
-    validate: always !important; */
+    /*      -moz-appearance: toolbarbutton !important; */
+    background-image: url("thread.png") !important;
+    background-repeat: no-repeat !important;
+    padding-left: 24px;
+    /*    dir: normal !important;
+        orient: horizontal  !important;
+        validate: always !important; */
     line-height: 17px !important;
     height: 17px !important;
 

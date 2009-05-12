@@ -95,6 +95,15 @@ QuickFolders.FolderCategory = {
         this.getCategoriesListBox().value = newName
     } ,
 
+    deleteSelectedCategory: function() {
+       var selectedCategory = this.$('existing-categories').value
+
+       QuickFolders.Model.deleteFolderCategory(selectedCategory)
+
+       this.populateCategories()
+
+       this.getCategoriesListBox().value = "__ALL"
+    } ,
 
     getCategoryColor: function(cat) {
 	    

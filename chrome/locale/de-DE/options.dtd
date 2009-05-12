@@ -1,9 +1,9 @@
-﻿<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Einstellungen">
+<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Einstellungen">
 <!ENTITY qf.label.quickfolders "Quickfolders">
 <!ENTITY qf.tab.general "Allgemein">
 <!ENTITY qf.tab.layout "Layout">
 <!ENTITY qf.tab.quickhelp "Hilfe">
-<!ENTITY qf.checkbox.displaylabel "'QuickFolders' Titel im Toolbar anzeigen">
+<!ENTITY qf.checkbox.displaylabel "&apos;QuickFolders&apos; Titel im Toolbar anzeigen">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Tastaturkürzel aktivieren (Alt + 1 bis Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Strg statt Alt">
 <!ENTITY qf.checkbox.showshortcutnumber "Tastaturkürzel auf den Tabs anzeigen">
@@ -11,17 +11,17 @@
 <!ENTITY qf.checkbox.showUnreadBold "Tabs mit ungelesenen Mails fett darstellen">
 <!ENTITY qf.checkbox.showTotalMessageCount "Anzahl aller Mails auf Tabs zeigen">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabs die nicht leer sind kursiv darstellen">
-<!ENTITY qf.checkbox.showFlatStyle "Tabs mit 'Flat Style' anzeigen">
+<!ENTITY qf.checkbox.showFlatStyle "Tabs mit &apos;Flat Style&apos; anzeigen">
 <!ENTITY qf.checkbox.showIcons "Icons anzeigen (Posteingang, Gesendet, Selektiert, Papierkorb)">
 <!ENTITY qf.label.buttonFontSize "Schriftgrösse (leer für Standardeinstellung): ">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.setcolors "Farben für [Text], Hintergrund">
 <!ENTITY qf.label.ActiveTabColor "Farbe Aktives Tab:">
 <!ENTITY qf.label.HoveredTabColor "Farbe Hovered Tab:">
-<!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
 <!ENTITY qf.label.DragOverBackground "Drag und Drop:">
+<!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
 <!ENTITY qf.description.dragToAdd "Ziehen Sie die Mail Verzeichnisse auf eine leere Fläche des quickfolder toolbars. Dies erzeugt einen neuen Tab, der wie eine Verknüpfung funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen.">
-<!ENTITY qf.description.dragToPosition "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. 'Umbenennen' ändert den Titel des Tabs. 'Tab löschen' entfernt den Tab (nicht das Mail-Verzeichnis).">
+<!ENTITY qf.description.dragToPosition "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. &apos;Umbenennen&apos; ändert den Titel des Tabs. &apos;Tab löschen&apos; entfernt den Tab (nicht das Mail-Verzeichnis).">
 <!ENTITY qf.description.dragToPopup "Ziehen Sie Mails auf das Kontextmenü um sie in Unterverzeichnisse zu verschieben.">
 <!ENTITY qf.description.changeCategory "Per Rechts-klick kann man die Tabs kategorisieren. Ein Kategorie Filter wird dann links der Tabs angezeigt.">
 <!ENTITY qf.description.rightClickOptions "Rechts-klick auf den Toolbar für die Optionen. Dort gibt es native style (Tabs als Schaltflächen) oder flat style (klarer und mit Drag Anzeige).">
@@ -35,4 +35,3 @@
 <!ENTITY qf.label.initdelay "[ms] init Verzögerung {1000=standard}:">
 <!ENTITY qf.label.folders "Verzeichnisse?">
 <!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
-

@@ -13,7 +13,7 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
 <!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabs">
 <!ENTITY qf.checkbox.showIcons "Toon iconen">
-<!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard): ">
+<!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.setcolors "[Text Kleur], Achtergrond Kleur">
 <!ENTITY qf.label.ActiveTabColor "Actieve Tab Kleur:">
@@ -34,5 +34,4 @@
 <!ENTITY qf.label.StandardTabColor "Standard Tab Kleur:">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
 <!ENTITY qf.label.folders "Folders?">
-<!ENTITY qf.checkbox.autoFocusPreview "">
-
+<!ENTITY qf.checkbox.autoFocusPreview "Focus berichtenlijst bij tab switch">

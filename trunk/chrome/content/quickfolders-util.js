@@ -16,10 +16,20 @@ QuickFolders.Util = {
 	  return this.Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
     },
 
-    clearChildren: function(element) {
-        while(element.childNodes.length > 0) {
-            element.removeChild(element.childNodes[0]);
-        }
+    clearChildren: function(element,withCategories) {
+	    if (withCategories)
+	        while(element.childNodes.length > 0) {
+	            element.removeChild(element.childNodes[0]);
+	        }
+	    else {
+		  var nCount=0;  // skip removal of category selection box
+	        while(element.childNodes.length > nCount) {
+		        if (element.childNodes[nCount].id=='QuickFolders-Category-Box')
+		          nCount++;
+		        else
+	              element.removeChild(element.childNodes[nCount]);
+	        }
+	    }
     } ,
 
     ensureNormalFolderView: function() {
@@ -104,12 +114,27 @@ QuickFolders.Util = {
 	  if (qfConsoleService == null)
 	    qfConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
 	                               .getService(this.Ci.nsIConsoleService);
-	  qfConsoleService.logStringMessage("Quickfolders:" + msg);
+	  qfConsoleService.logStringMessage("QuickFolders:" + msg);
 	},
 
     logDebug: function (msg) {
 	  if (QuickFolders.Preferences.isDebug())
 	    this.logToConsole(msg);
+	},
+
+	logFocus: function(origin) {
+		try {
+			var el=document.commandDispatcher.focusedElement;
+			this.logDebug(origin + "- logFocus");
+			if (el==null) {
+			    el=document.commandDispatcher.focusedWindow;
+			  	this.logDebug ( "window focused: " + el.name);
+			}
+			else {
+			  QuickFolders.Util.logDebug ( "element focused\nid: " + el.id +" \ntag: " + el.tag +" \nclass: " + el.class + "\ncontainer: " + el.container  );
+			}
+		}
+		catch(e) { this.logDebug("logFocus " + e);};
 	}
 
 

@@ -5,12 +5,13 @@
 
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/set_folder_category.dtd" >
-<dialog title="&qf.dialog.setcategory;" 
+<dialog title="&qf.dialog.setcategory;"
 	buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();QuickFolders.Model.update();"
+    ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"
     onload="QuickFolders.FolderCategory.init(this, window.arguments[1])"
 >
+
     <script type="text/javascript">
 		QuickFolders = window.arguments[0];
     </script>

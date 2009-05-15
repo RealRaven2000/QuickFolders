@@ -13,10 +13,11 @@ QuickFolders.Interface = {
 	    this.boundKeyListener=b;
     },
 
-    updateFolders: function() {
+    // added parameter to avoid deleting categories dropdown while selectig from it!
+    updateFolders: function(rebuildCategories) {
         // AG made flat style configurable
 
-        //QuickFolders.Util.logDebug("updateFolders()...");
+        QuickFolders.Util.logDebug('updateFolders(' + rebuildCategories + ')');
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
@@ -27,7 +28,8 @@ QuickFolders.Interface = {
             toolbar.className = "";
         }
 
-        this.updateCategories();
+        if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
+          this.updateCategories();
 
 
         this.buttonsByOffset = [];
@@ -36,7 +38,7 @@ QuickFolders.Interface = {
 
         QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
-        QuickFolders.Util.clearChildren(this.getToolbar());
+        QuickFolders.Util.clearChildren(this.getToolbar(),rebuildCategories);
 
         var offset = 0;
 
@@ -72,13 +74,13 @@ QuickFolders.Interface = {
     } ,
 
     updateCategories: function() {
-        //QuickFolders.Util.logDebug("updateCategories...");
+        QuickFolders.Util.logDebug("updateCategories()");
 
         var bookmarkCategories = QuickFolders.Model.getCategories();
         var menuList = QuickFolders.Util.$('QuickFolders-Category-Selection');
         var menuPopup = menuList.menupopup;
 
-        QuickFolders.Util.clearChildren(menuPopup)
+        QuickFolders.Util.clearChildren(menuPopup,true);
 
         if(bookmarkCategories.length > 0) {
             menuList.style.display = 'block';
@@ -116,12 +118,15 @@ QuickFolders.Interface = {
 
     currentlySelectedCategory: null,
 
-    selectCategory: function(categoryName) {
+    selectCategory: function(categoryName, rebuild) {
        this.currentlySelectedCategory = categoryName;
-       this.updateFolders();
+       this.updateFolders(rebuild);
 
-       QuickFolders.Preferences.setLastSelectedCategory(categoryName)
+       QuickFolders.Preferences.setLastSelectedCategory(categoryName);
+       QuickFolders.Util.logDebug("Successfully selected Category: " + categoryName);
     } ,
+
+
 
     getCurrentlySelectedCategoryName: function() {
        if(this.currentlySelectedCategory == "__ALL" || this.currentlySelectedCategory == "__UNCATEGORIZED") {
@@ -159,7 +164,7 @@ QuickFolders.Interface = {
             ;
 
             if(shouldBeHandled) {
-					      QuickFolders.Util.logDebug(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
+				QuickFolders.Util.logDebug(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
                 var shortcut = -1;
                 if (dir=='up')
                     shortcut = e.keyCode-48;
@@ -356,7 +361,7 @@ QuickFolders.Interface = {
 
     onRemoveFolder: function(folder) {
         QuickFolders.Model.removeFolder(folder.URI);
-        this.updateFolders();
+        this.updateFolders(true);
     } ,
 
     onRenameBookmark: function(folder) {
@@ -517,7 +522,11 @@ QuickFolders.Interface = {
     },
 
     addFolderToCategory: function(folder) {
-        window.openDialog('chrome://quickfolders/content/set-folder-category.xul','quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders, folder);
+	    var retval={btnClicked:null};
+        window.openDialog('chrome://quickfolders/content/set-folder-category.xul','quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders,folder,retval);
+        if (retval.btnClicked!=null) {
+         QuickFolders.Model.update();
+       }
     },
 
     updateUserStyles: function() {

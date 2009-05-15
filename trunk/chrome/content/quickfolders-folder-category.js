@@ -14,7 +14,8 @@ QuickFolders.FolderCategory = {
     } ,
 
     $: function(id) {
-        return this.window.document.getElementById(id);
+	    try { return this.window.document.getElementById(id); }
+        catch(e) {QuickFolders.Util.logDebug (e); return null;}
     } ,
 
     getCategoriesListBox: function() {
@@ -54,19 +55,22 @@ QuickFolders.FolderCategory = {
     } ,
 
     setSelectedCategory: function() {
-        var listBox = this.$('existing-categories')
+	    try {
+	        var listBox = this.$('existing-categories')
+	        listBox.blur();
+	        var category = listBox.value;
 
-        var category = listBox.value
-
-        QuickFolders.Model.setFolderCategory(this.folder.URI, category);
+	        QuickFolders.Model.setFolderCategory(this.folder.URI, category);
+        }
+        catch(e) {QuickFolders.Util.logDebug(e); }
 
         this.window.close();
     },
-    
+
     setColor: function(picker) {
 	    alert (_bundle.GetStringFromName("qfColorPickingWIP") + picker.color);
     },
-    
+
     getSelectedColor: function() {
         var listBox = this.$('existing-categories')
         var category = listBox.value;
@@ -106,18 +110,18 @@ QuickFolders.FolderCategory = {
     } ,
 
     getCategoryColor: function(cat) {
-	    
+
 /*
            <hbox>
-            
-            <colorpicker id="category-colorpicker" palettename="standard" 
-              type="button" 
+
+            <colorpicker id="category-colorpicker" palettename="standard"
+              type="button"
               onchange="QuickFolders.FolderCategory.setColor(this);"
               />
 
 
             </hbox>
 
-*/	    
+*/
     }
 }

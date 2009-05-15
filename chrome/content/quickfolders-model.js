@@ -51,7 +51,8 @@ QuickFolders.Model = {
 
     update: function() {
         QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
-        QuickFolders.Interface.updateFolders();
+        QuickFolders.Util.logDebug("model.update");
+        QuickFolders.Interface.updateFolders(true);
     } ,
 
     setFolderCategory: function(uri, name) {

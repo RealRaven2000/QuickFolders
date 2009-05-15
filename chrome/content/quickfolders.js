@@ -117,6 +117,13 @@
      AG added multiple line support
      AG added option for focusing message pane after changing category & selecting a tab (to be improved)
 
+   12/05/2009
+     AM added Delete and Rename Category features.
+
+   13/05/2009
+     AG fixed focus problem after changing of categories
+     AG fixed remembered categories not being selected on startup
+
 
   KNOWN ISSUES
   ============
@@ -142,17 +149,21 @@
 var gFolderTree;
 
 var QuickFolders = {
-	  keyListen: EventListener,
+	keyListen: EventListener,
+	loadListen: false,
+	initDone: false,
     initDelayed: function() {
        var sWinLocation;
+       if (this.initDone) return;
        var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.initDelay');
        if (!nDelay>0) nDelay = 750;
        sWinLocation = new String(window.location);
 
        if(QuickFolders.isCorrectWindow()) {
 		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
-            document.getElementById('QuickFolders-Toolbar').style.display = '';
+            document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
             setTimeout("QuickFolders.init()", nDelay);
+	        this.initDone=true;
         }
         else {
 	      try {
@@ -161,7 +172,6 @@ var QuickFolders = {
 		    QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): "
 		            + document.getElementById('messengerWindow').getAttribute('windowtype')
 		            + "\ndocument.title: " + window.document.title )
-            //setTimeout("QuickFolders.initDelayed()",1000);
           }
 	      catch(e) { ;}
         }
@@ -198,12 +208,13 @@ var QuickFolders = {
             QuickFolders.Model.selectedFolders = folderEntries;
 
             var lastSelectedCategory = QuickFolders.Preferences.getLastSelectedCategory()
+            QuickFolders.Util.logDebug("last selected Category:" + lastSelectedCategory );
 
             if(QuickFolders.Model.isValidCategory(lastSelectedCategory)) {
-                QuickFolders.Interface.selectCategory(QuickFolders.Preferences.getLastSelectedCategory())
+                QuickFolders.Interface.selectCategory(QuickFolders.Preferences.getLastSelectedCategory(),true)
             }
             else
-                QuickFolders.Interface.updateFolders();  // selectCategory already called updateFolders!
+                QuickFolders.Interface.updateFolders(true);  // selectCategory already called updateFolders!
             QuickFolders.Interface.updateUserStyles();
 
         }
@@ -212,7 +223,7 @@ var QuickFolders = {
 
         observerService.addObserver({
             observe: function() {
-                QuickFolders.Interface.updateFolders();
+                QuickFolders.Interface.updateFolders(true);
                 QuickFolders.Interface.updateUserStyles();
             }
         },"quickfolders-options-saved", false);
@@ -441,7 +452,14 @@ var QuickFolders = {
             transferData.data.addDataForFlavour("text/unicode", button.folder.URI); // test
         }
 
-    }
+    },
+
+	addLoadEventListener: function() {
+		// avoid registering this event listener twice!
+		if (!this.loadListen)
+			window.addEventListener("load", QuickFolders.initDelayed, true);
+		this.loadListen=true;
+	}
 
 
 }
@@ -476,6 +494,7 @@ function MyEnsureFolderIndex(tree, msgFolder)
         QuickFolders.Util.logDebug ("MyEnsureFolderIndex - error " + e);
 		return -1;
 	}
+
 }
 
 
@@ -517,18 +536,18 @@ function MySelectFolder(folderUri)
 	    var folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
     // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
-        QuickFolders.Util.ensureNormalFolderView();
-	      folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+  		QuickFolders.Util.ensureNormalFolderView();
+  		folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
       }
 	  MyChangeSelection(folderTree, folderIndex);
-		  // select message in top pane for keyboard navigation
-		  if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
+	  // select message in top pane for keyboard navigation
+	  if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
 	      GetMessagePane().focus();
 	      document.commandDispatcher.advanceFocus();
 	      document.commandDispatcher.rewindFocus();
       }
    }
-    else
+   else
       gFolderTreeView.selectFolder (msgFolder);
 }
 
@@ -543,7 +562,7 @@ var myFolderListener = {
           if (property == "TotalUnreadMessages" ||
               (QuickFolders.Preferences.isShowUnreadCount() && property == "TotalMessages")) {  // FolderSize
 	            if(QuickFolders)
-	                QuickFolders.Interface.updateFolders();
+	                QuickFolders.Interface.updateFolders(false);
           }
         }
         catch(e) {};
@@ -565,11 +584,14 @@ var myFolderListener = {
 }
 
 
+
+
 // now register myself as a listener on every mail folder
 var mailSession = Components.classes["@mozilla.org/messenger/services/session;1"].getService(Components.interfaces.nsIMsgMailSession);
 mailSession.AddFolderListener(myFolderListener, Components.interfaces.nsIFolderListener.all);
 
-window.addEventListener("load", QuickFolders.initDelayed, true);
+QuickFolders.addLoadEventListener();
+
 
 var globalHidePopupId="";
 window.dump("globalHidePopupId=" + globalHidePopupId + "\n");

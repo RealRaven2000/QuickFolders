@@ -32,11 +32,11 @@
         <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 
         <vbox id="QuickFolders-Category-Box" >
-            <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value)">
-                <menupopup>
-                    <!-- filled dynamically from JS -->
-                </menupopup>
-            </menulist>
+        <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);">
+            <menupopup>
+                <!-- filled dynamically from JS -->
+            </menupopup>
+        </menulist>
         </vbox>
 
         <box id="QuickFolders-FoldersBox" flex="10">

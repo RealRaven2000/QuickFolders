@@ -12,9 +12,9 @@ QuickFolders.Styles = {
 		      + "\nwin.location=" + window.location);
 	      return ss;
         }
-        QuickFolders.Util.logDebug ("stylesheet (" + i + ")"
+        /*QuickFolders.Util.logDebug ("stylesheet (" + i + ")"
           + (ss.title.length ? "[" + ss.title + "]" : "")
-          + " = " + ss.href);
+          + " = " + ss.href);*/
       }
 	  QuickFolders.Util.logToConsole("Can not find style sheet: qfStyles in " +(window.closed ? "closed window" : window.location)
 	          + "\nwin.doc.title=" + window.document.title

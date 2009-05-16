@@ -21,14 +21,12 @@ QuickFolders.Interface = {
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
-        if (QuickFolders.Preferences.isShowToolbarFlatstyle()) {
-            toolbar.className = "toolbar-flat";
-        }
-        else {
-            toolbar.className = "";
-        }
+        if (QuickFolders.Preferences.isShowToolbarFlatstyle())
+          toolbar.className = "toolbar-flat";
+        else
+          toolbar.className = "";
 
-        if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
+        if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection')) 
           this.updateCategories();
 
 
@@ -104,6 +102,7 @@ QuickFolders.Interface = {
             }
         }
         else {
+	        QuickFolders.Util.logDebug("bookmarkCategories.length=" + bookmarkCategories.length);
             menuList.style.display = 'none';
         }
     } ,
@@ -517,7 +516,6 @@ QuickFolders.Interface = {
 
         if((selectedButton = this.getButtonByFolder(folder))) {
             selectedButton.className += " selected-folder";
-            // selectedButton.setAttribute("text-decoration","underline !important");
         }
     },
 

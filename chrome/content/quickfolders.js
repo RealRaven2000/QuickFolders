@@ -120,9 +120,12 @@
    12/05/2009
      AM added Delete and Rename Category features.
 
-   13/05/2009
+   13/05/2009 Release 1.0.1
      AG fixed focus problem after changing of categories
      AG fixed remembered categories not being selected on startup
+
+   15/05/2009  Release 1.0.2
+     AG fixed problem on startup when short delay - GetMsgFolderFromUri did not work!!
 
 
   KNOWN ISSUES
@@ -207,15 +210,15 @@ var QuickFolders = {
         if(folderEntries.length > 0) {
             QuickFolders.Model.selectedFolders = folderEntries;
 
+            QuickFolders.Interface.updateUserStyles(); // Pulled up from } below for speed
+
             var lastSelectedCategory = QuickFolders.Preferences.getLastSelectedCategory()
             QuickFolders.Util.logDebug("last selected Category:" + lastSelectedCategory );
 
-            if(QuickFolders.Model.isValidCategory(lastSelectedCategory)) {
-                QuickFolders.Interface.selectCategory(QuickFolders.Preferences.getLastSelectedCategory(),true)
-            }
+            if(QuickFolders.Model.isValidCategory(lastSelectedCategory))
+              QuickFolders.Interface.selectCategory(lastSelectedCategory, true)
             else
-                QuickFolders.Interface.updateFolders(true);  // selectCategory already called updateFolders!
-            QuickFolders.Interface.updateUserStyles();
+              QuickFolders.Interface.updateFolders(true);  // selectCategory already called updateFolders!
 
         }
 
@@ -561,8 +564,10 @@ var myFolderListener = {
         try {
           if (property == "TotalUnreadMessages" ||
               (QuickFolders.Preferences.isShowUnreadCount() && property == "TotalMessages")) {  // FolderSize
-	            if(QuickFolders)
+	            if(QuickFolders) {
+		            QuickFolders.Util.logDebug('myFolderListener: '+property);
 	                QuickFolders.Interface.updateFolders(false);
+                }
           }
         }
         catch(e) {};

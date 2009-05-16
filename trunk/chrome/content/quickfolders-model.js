@@ -64,17 +64,46 @@ QuickFolders.Model = {
         }
     } ,
 
-    getCategories: function() {
+   myGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
+   {
+     var msgfolder = null;
+     try {
+         var resource = GetResourceFromUri(uri);
+         msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
+         if (checkFolderAttributes) {
+             if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
+                 msgfolder = null;
+             }
+         }
+     }
+     catch (ex) {
+         //dump("failed to get the folder resource\n");
+     }
+     return msgfolder;
+   } ,
+
+
+
+   getCategories: function() {
         var categories = []
         // can we sort this?
         // can we add a color per category?
         for(var i = 0; i < this.selectedFolders.length; i++) {
-            var entry = this.selectedFolders[i]
+            var entry = this.selectedFolders[i];
 
             // if the folder doesn't exist anymore, ignore this category
-            if(!GetMsgFolderFromUri(entry.uri, true)) {
+            var mf=this.myGetMsgFolderFromUri(entry.uri, false);
+            if(!mf) {
                 continue;
-            }
+	          }
+            else {
+	            // filter out imap folders this way (incomplete, only shared imaps)
+	            try {
+		            if (!mf.canCreateSubfolders) 
+		              continue;
+                }
+                catch(ex) {continue};
+             }
 
             var category = entry.category;
 

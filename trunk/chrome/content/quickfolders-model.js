@@ -91,23 +91,21 @@ QuickFolders.Model = {
         for(var i = 0; i < this.selectedFolders.length; i++) {
             var entry = this.selectedFolders[i];
 
-            // if the folder doesn't exist anymore, ignore this category
-            var mf=this.myGetMsgFolderFromUri(entry.uri, false);
-            if(!mf) {
-                continue;
-	          }
-            else {
-	            // filter out imap folders this way (incomplete, only shared imaps)
-	            try {
-		            if (!mf.canCreateSubfolders) 
-		              continue;
-                }
-                catch(ex) {continue};
-             }
-
             var category = entry.category;
 
             if(category && category != "") {
+                // if the folder doesn't exist anymore, ignore this category
+                try {
+                    if(!GetMsgFolderFromUri(entry.uri, false)) {
+                        continue;
+                    }
+                }
+                catch(e) {
+                    QuickFolders.Util.logDebug("Exception while checking folder existence: " + e)
+
+                    continue;
+                }
+
                 if(categories.indexOf(category) == -1) {
                     categories.push(category);
                 }

@@ -96,9 +96,12 @@ QuickFolders.Model = {
             if(category && category != "") {
                 // if the folder doesn't exist anymore, ignore this category
                 try {
-                    if(!GetMsgFolderFromUri(entry.uri, false)) {
-                        continue;
-                    }
+				  if (QuickFolders.Util.Appver()>=3) {
+                    if(!GetMsgFolderFromUri(entry.uri, false)) continue;
+				  }
+				  else {
+				    if (!this.myGetMsgFolderFromUri(entry.uri, false)) continue;
+				  }
                 }
                 catch(e) {
                     QuickFolders.Util.logDebug("Exception while checking folder existence: " + e)

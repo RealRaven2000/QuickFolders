@@ -61,6 +61,25 @@ button.order-button {
     min-width: 85%;
 }
 
+/* gradient options */
+vbox.gradientpanel {
+	margin-left: 30px;
+	padding:6px 4px;
+	border: 1px solid white;
+    background-repeat: repeat-x;
+    background-size: 100%;
+}
+#green {
+  background-image: url("gradient-green.png");
+}
+#red {
+  background-image: url("gradient-red.png");
+}
+#yellow {
+  background-image: url("gradient-yellow.png");
+}
+
+
 /* Flat Styles below */
 #QuickFolders-Toolbar.toolbar-flat {
     margin: 0;

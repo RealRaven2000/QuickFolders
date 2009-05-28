@@ -133,23 +133,34 @@ vbox.gradientpanel {
 
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT {
-    background-image: url("dropRight.gif") !important;
-    background-position: right center !important;
+	direction: rtl !important;
+    list-style-image: url("dropRight.gif") !important;
+    background-position: right top !important;
     background-repeat: no-repeat !important;
     margin-right: 1px;
 }
 
+/* Test Example for colored toolbar
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label="Quickfolders"] {
+    background-image: url("cols/tabcol-1.png") !important;
+    background-position: 4px top  !important;
+    background-repeat: repeat-x !important;
+} */
+
+
+
 
 #QuickFolders-Toolbar toolbarbutton.dragLEFT {
     list-style-image: url("dropLeft.gif") !important;
-    background-position: left center !important;
+    background-position: left top !important;
     background-repeat: no-repeat !important;
 }
 
 /* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
+/*
 #QuickFolders-Toolbar toolbarbutton.selected-folder.icon {
     list-style-image: url("folder-open.png");
-}
+}*/
 #QuickFolders-Toolbar toolbarbutton.inbox.icon {
     list-style-image: url("folder-inbox.png");
 }
@@ -162,13 +173,12 @@ vbox.gradientpanel {
 
 
 /* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work :-( */
-#QuickFolders-Toolbar toolbarbutton.selected-folder.icon,
+/*#QuickFolders-Toolbar toolbarbutton.selected-folder.icon, */
 #QuickFolders-Toolbar toolbarbutton.inbox.icon,
 #QuickFolders-Toolbar toolbarbutton.sent.icon,
 #QuickFolders-Toolbar toolbarbutton.trash.icon {
     -moz-image-region: rect(0px, 16px, 16px, 0) !important;
-    background-repeat: no-repeat !important;
-    background-position: 3px center;
+    background-position: 3px top;
 }
 
 
@@ -206,6 +216,43 @@ menuitem[tagName="qfOrder"] {
     list-style : url('order.gif') !important;
 }
 
+menupopup.QuickFolders-folder-popup menuitem.color {
+    list-style-image : url('palette.png') !important;
+    background-position: 4px 0px  !important;
+    background-repeat: repeat-x !important;
+}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfTabColorMenu"] { list-style-image : url('palette.png')!important;}
+
+
+menupopup.QuickFolders-folder-popup menuitem.color:hover {
+    -moz-border-radius: 0;
+    border: 1px solid white !important;
+    font-weight: 500;
+    background-image:none ;
+}
+
+
+menuitem[tag="qfColor0"] { background-image: none!important; }
+menuitem[tag="qfColor1"] { background-image: url('cols/tabcol-1.png')!important; }
+menuitem[tag="qfColor2"] { background-image: url('cols/tabcol-2.png')!important; }
+menuitem[tag="qfColor3"] { background-image: url('cols/tabcol-3.png')!important; }
+menuitem[tag="qfColor4"] { background-image: url('cols/tabcol-4.png')!important; }
+menuitem[tag="qfColor5"] { background-image: url('cols/tabcol-5.png')!important; }
+menuitem[tag="qfColor6"] { background-image: url('cols/tabcol-6.png')!important; }
+menuitem[tag="qfColor7"] { background-image: url('cols/tabcol-7.png')!important; }
+menuitem[tag="qfColor8"] { background-image: url('cols/tabcol-8.png')!important; }
+menuitem[tag="qfColor9"] { background-image: url('cols/tabcol-9.png')!important; }
+menuitem[tag="qfColor10"] { background-image: url('cols/tabcol-10.png')!important; }
+menuitem[tag="qfColor11"] { background-image: url('cols/tabcol-11.png')!important; }
+menuitem[tag="qfColor12"] { background-image: url('cols/tabcol-12.png')!important; }
+menuitem[tag="qfColor13"] { background-image: url('cols/tabcol-13.png')!important; }
+menuitem[tag="qfColor14"] { background-image: url('cols/tabcol-14.png')!important; }
+menuitem[tag="qfColor15"] { background-image: url('cols/tabcol-15.png')!important; }
+menuitem[tag="qfColor16"] { background-image: url('cols/tabcol-16.png')!important; }
+menuitem[tag="qfColor17"] { background-image: url('cols/tabcol-17.png')!important; }
+menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png')!important; }
+menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png')!important; }
+menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png')!important; }
 
 menuitem[tag="qfRename"] {
     list-style-image : url('rename.gif') !important;
@@ -234,11 +281,11 @@ menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover {
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover {
-    -moz-border-radius: 0 4px 4px 0 !important;
+    -moz-border-radius: 0 4px 4px 0;
     border: 1px solid brown !important;
     color: brown !important;
     font-weight: 500;
-    background-image: url('gold-bar.png') !important;
+    background-image: url('gold-bar.png');
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover

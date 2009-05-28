@@ -60,7 +60,7 @@ QuickFolders.Styles = {
 
     },
 
-    setElementStyle: function(ss, rule, colortype, color) {
+    setElementStyle: function(ss, rule, colortype, color, important) {
 	    // to do: find elements of this class and change their color
 	    // find the class element itself and change its properties
 	    // persist in options
@@ -71,14 +71,17 @@ QuickFolders.Styles = {
 		  if (!ss || ss==null)
 		    return false;
         }
+        QuickFolders.Util.logDebug("setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
 
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
 	    var rAtoms=RuleName.split(" ");
+	    var found=false;
+	    var foundRule=false;
+	    var st; // new style rule
 	    for (i=1; i<rulesList.length; i++)
 	    {
-		    var found;
 		    for (var j=0; j<rAtoms.length; j++) {
 			  found=true;
 
@@ -87,21 +90,21 @@ QuickFolders.Styles = {
 		        break;
 	          }
 	        }
-	        if (found) {
-			  var st=rulesList[i].style; // CSSStyleDeclaration
+	        if (found && !(undefined == found)) {
+			  st=rulesList[i].style; // CSSStyleDeclaration
+	          QuickFolders.Util.logDebug("found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
 			  var k;//iterate styles!
 
 			  for (k=0;k<st.length;k++) {
 				try{
 			      if (colortype==st.item(k)) {
-/*
-			        QuickFolders.Util.logToConsole ("\n=============\nModify item: " + st.item(k)) + " =====================";
-				    QuickFolders.Util.logToConsole ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
+				    foundRule=true;
+			        QuickFolders.Util.logDebug ("\n=============\nModify item: " + st.item(k)) + " =====================";
+				    QuickFolders.Util.logDebug ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
 				              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
 				              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
 				              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
 				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
-*/
 				   st.removeProperty(colortype);
 				   st.setProperty(colortype,color,"important");
 				   break;
@@ -109,16 +112,27 @@ QuickFolders.Styles = {
 		        }
 		        catch (e) { QuickFolders.Util.logToConsole ("(error) " + e) };
 		      }
-		      break;
+		      if (foundRule) // keep searching if exact rule was not found!
+		        break;
 	        }
 
 	    }
-	    return true;
+	    if (found)
+	      return true;
+	    else {  // add the rule
+	      var sRule=RuleName +"{" + colortype + ":" + color + " !important;}";
+	      QuickFolders.Util.logDebug("Adding new rule..." + sRule );
+	      ss.insertRule(sRule,ss.length)
+	      return true;
+	    }
+
       }
       catch(e) {
 	     QuickFolders.Util.logToConsole ("(error) " + e);
       };
 	  return false;
     }
+
+
 
 }

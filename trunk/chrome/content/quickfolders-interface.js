@@ -7,6 +7,7 @@ QuickFolders.Interface = {
     buttonsByOffset: [],
     menuPopupsByOffset: [],
     specialButtons: [],
+    //myPopup: null,
     boundKeyListener: false,
 
     setBoundKeyListener: function(b) {
@@ -393,6 +394,7 @@ QuickFolders.Interface = {
         popupset.appendChild(menupopup);
 
         var menuitem;
+        QuickFolders.Util.logDebug("Creating Popup Set for " + folder.name);
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
@@ -457,6 +459,8 @@ QuickFolders.Interface = {
 
         // append it to main popup menu
 	    menupopup.appendChild(colorMenu);
+
+	    //myMasterPopup=menupopup;
 
 
         this.addSubFoldersPopup(menupopup, folder);
@@ -564,11 +568,13 @@ QuickFolders.Interface = {
 
 	  var folderLabel = this.getButtonByFolder(folder).label;
 	  QuickFolders.Util.logToConsole("setFolderColor(" + folder.name + ", " + col + ")  label=" + folderLabel );
+      // have to do wildcard matching because of shortcut numbers / unread emails
 	  if (col!='0')
-        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',false);
+        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',true);
       else
-        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label="' + folderLabel  + '"]','background-image', 'none',false);
-      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
+        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',true);
+      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
+      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
 
 
     },

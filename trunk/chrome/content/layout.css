@@ -217,42 +217,48 @@ menuitem[tagName="qfOrder"] {
 }
 
 menupopup.QuickFolders-folder-popup menuitem.color {
-    list-style-image : url('palette.png') !important;
     background-position: 4px 0px  !important;
     background-repeat: repeat-x !important;
+    border: 1px solid #444 !important;
+    list-style-image : url('palette.png') !important;
+    -moz-border-radius: 5px 5px 0 0;
+/* test these with CSS3 / TB3  try to stretch image Y and repeat X*/
+/*   background-size: 100% 100%;
+    background-origin: content-box; */
 }
+
 menupopup.QuickFolders-folder-popup menuitem[tag="qfTabColorMenu"] { list-style-image : url('palette.png')!important;}
 
-
 menupopup.QuickFolders-folder-popup menuitem.color:hover {
-    -moz-border-radius: 0;
-    border: 1px solid white !important;
-    font-weight: 500;
-    background-image:none ;
+    background-color: transparent !important;
+	border: 1px solid #D00 !important;
+    color: #D00 !important;
+    font-weight: 900;
+    -moz-border-radius: 5px 5px 0 0;
 }
 
 
 menuitem[tag="qfColor0"] { background-image: none!important; }
-menuitem[tag="qfColor1"] { background-image: url('cols/tabcol-1.png')!important; }
-menuitem[tag="qfColor2"] { background-image: url('cols/tabcol-2.png')!important; }
-menuitem[tag="qfColor3"] { background-image: url('cols/tabcol-3.png')!important; }
-menuitem[tag="qfColor4"] { background-image: url('cols/tabcol-4.png')!important; }
-menuitem[tag="qfColor5"] { background-image: url('cols/tabcol-5.png')!important; }
-menuitem[tag="qfColor6"] { background-image: url('cols/tabcol-6.png')!important; }
-menuitem[tag="qfColor7"] { background-image: url('cols/tabcol-7.png')!important; }
-menuitem[tag="qfColor8"] { background-image: url('cols/tabcol-8.png')!important; }
-menuitem[tag="qfColor9"] { background-image: url('cols/tabcol-9.png')!important; }
-menuitem[tag="qfColor10"] { background-image: url('cols/tabcol-10.png')!important; }
-menuitem[tag="qfColor11"] { background-image: url('cols/tabcol-11.png')!important; }
-menuitem[tag="qfColor12"] { background-image: url('cols/tabcol-12.png')!important; }
-menuitem[tag="qfColor13"] { background-image: url('cols/tabcol-13.png')!important; }
-menuitem[tag="qfColor14"] { background-image: url('cols/tabcol-14.png')!important; }
-menuitem[tag="qfColor15"] { background-image: url('cols/tabcol-15.png')!important; }
-menuitem[tag="qfColor16"] { background-image: url('cols/tabcol-16.png')!important; }
-menuitem[tag="qfColor17"] { background-image: url('cols/tabcol-17.png')!important; }
-menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png')!important; }
-menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png')!important; }
-menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png')!important; }
+menuitem[tag="qfColor1"] { background-image: url('cols/tabcol-1.png')!important;background-color:#FFC105; }
+menuitem[tag="qfColor2"] { background-image: url('cols/tabcol-2.png')!important;background-color:#00C000;}
+menuitem[tag="qfColor3"] { background-image: url('cols/tabcol-3.png')!important;background-color:#F06000;}
+menuitem[tag="qfColor4"] { background-image: url('cols/tabcol-4.png')!important;background-color:#46B066;}
+menuitem[tag="qfColor5"] { background-image: url('cols/tabcol-5.png')!important;background-color:#2591CF;}
+menuitem[tag="qfColor6"] { background-image: url('cols/tabcol-6.png')!important;background-color:#800080;}
+menuitem[tag="qfColor7"] { background-image: url('cols/tabcol-7.png')!important;background-color:#4D7EFB;}
+menuitem[tag="qfColor8"] { background-image: url('cols/tabcol-8.png')!important;background-color:#FF119D;}
+menuitem[tag="qfColor9"] { background-image: url('cols/tabcol-9.png')!important;background-color:#0E51FA;}
+menuitem[tag="qfColor10"] { background-image: url('cols/tabcol-10.png')!important;background-color:#D40000;}
+menuitem[tag="qfColor11"] { background-image: url('cols/tabcol-11.png')!important;background-color:#01B1D7;}
+menuitem[tag="qfColor12"] { background-image: url('cols/tabcol-12.png')!important;background-color:#F7FF13;}
+menuitem[tag="qfColor13"] { background-image: url('cols/tabcol-13.png')!important;background-color:#0A5C68;}
+menuitem[tag="qfColor14"] { background-image: url('cols/tabcol-14.png')!important;background-color:#9BF868;}
+menuitem[tag="qfColor15"] { background-image: url('cols/tabcol-15.png')!important;background-color:#000000;}
+menuitem[tag="qfColor16"] { background-image: url('cols/tabcol-16.png')!important;background-color:#404040;}
+menuitem[tag="qfColor17"] { background-image: url('cols/tabcol-17.png')!important;background-color:#01D71A;}
+menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png')!important;background-color:#FE28E2;}
+menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png')!important;background-color:#FF8080;}
+menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png')!important;background-color:#000000;}
 
 menuitem[tag="qfRename"] {
     list-style-image : url('rename.gif') !important;

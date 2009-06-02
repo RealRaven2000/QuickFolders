@@ -33,7 +33,7 @@ title="&qf.prefwindow.quickfolders.options;"
 
     <!-- I Set a specific height on the <tabbox> because the help panel wouldn't grow and the text would be clipped -->
     <!-- added min width for wordy italian ;-) -->
-	<tabbox orient="vertical" flex="6" style="min-height:350px;min-width:550px;">
+	<tabbox orient="vertical" flex="6" style="min-height:280px;min-width:550px;">
 		<tabs>
 			<tab label="&qf.tab.general;" />
 			<tab label="&qf.tab.layout;" />
@@ -253,10 +253,13 @@ label="&qf.checkbox.showUnreadMessageCount;"
 			  <description class="quickhelp-desc">&qf.description.rightClickOptions;</description>
 			  <description class="quickhelp-desc">&qf.description.tipMsg;</description>
 			  <spacer flex="1" />
-        <description class="quickhelp-dbg">&qf.label.contactMe;</description>
+			  <label href="http://quickfolders.mozdev.org/" class="text-link" >&qf.label.homePage;</label>
 
 			</tabpanel>
 		</tabpanels>
 	</tabbox>
+	<hbox id="qf-feedback" style="min-height:1.5em;border: 1px solid blue;">
+    <label href="mailto:axelg@gofree.indigo.ie" class="text-link" onclick="QuickFoldersOptions.QF_mailAxel();">&qf.label.contactMe;</label>
+    </hbox>
   </prefpane>
 </prefwindow>

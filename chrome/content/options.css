@@ -32,6 +32,22 @@ label.qfTabPreview {
   vertical-align:middle;
 }
 
+description.text-link {
+  padding: 3px 8px 3px 8px;
+}
+description.text-link:hover {
+  text-decoration: underline !important;
+}
+
+label [href^="mailto"] {
+  text-decoration: underline  !important;
+}
+
+label.text-link:hover {
+  color: white !important;;
+  background-color:	blue !important;
+}
+
 description.quickhelp-desc, description.quickhelp-dbg {
 	text-align:justify;
 	max-width: 550px;

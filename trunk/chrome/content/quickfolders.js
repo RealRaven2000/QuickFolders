@@ -124,8 +124,19 @@
      AG fixed focus problem after changing of categories
      AG fixed remembered categories not being selected on startup
 
-   15/05/2009  Release 1.0.2
+   15/05/2009  Release 1.0.2 (permanently sandboxed)
      AG fixed problem on startup when short delay - GetMsgFolderFromUri did not work!!
+        Rejected by AMO - not able to add new Category
+
+   26/05/2009 Release 1.0.3
+     AG Fixed previous problem by AMO
+     AG added l10n for copy folders to clipboard message
+     AG added colored panels to category screen
+
+   02/06/2009
+     AG added individual Tab Color feature (does not save yet!)
+     AG added feedback link (mail to me) to options dialog
+     AG made options dialog resizable
 
 
   KNOWN ISSUES
@@ -565,7 +576,7 @@ var myFolderListener = {
           if (property == "TotalUnreadMessages" ||
               (QuickFolders.Preferences.isShowUnreadCount() && property == "TotalMessages")) {  // FolderSize
 	            if(QuickFolders) {
-		            QuickFolders.Util.logDebug('myFolderListener: '+property);
+		            //QuickFolders.Util.logDebug('myFolderListener: '+property);
 	                QuickFolders.Interface.updateFolders(false);
                 }
           }

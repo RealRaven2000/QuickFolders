@@ -394,7 +394,7 @@ QuickFolders.Interface = {
         popupset.appendChild(menupopup);
 
         var menuitem;
-        QuickFolders.Util.logDebug("Creating Popup Set for " + folder.name);
+        //QuickFolders.Util.logDebug("Creating Popup Set for " + folder.name);
 
         menuitem = document.createElement('menuitem');
         menuitem.className='cmd';
@@ -529,7 +529,7 @@ QuickFolders.Interface = {
       // temporarily disable instantApply! Necessary for the time consuming style sheet changes in Layout tab.
 	    var b=QuickFolders.Preferences.getInstantApplyPref();
 	    QuickFolders.Preferences.setInstantApplyPref(false);
-        window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal',QuickFolders);
+        window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders);
 	    QuickFolders.Preferences.setInstantApplyPref(b);
     } ,
 
@@ -574,6 +574,7 @@ QuickFolders.Interface = {
       else
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',true);
       QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
+      // CSS 3 test in TB3
       QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
 
 

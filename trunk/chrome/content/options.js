@@ -135,6 +135,29 @@ var QuickFoldersOptions = {
       return qfBundle = qfBundle.GetStringFromName(s);
     },
 
+    QF_mailAxel: function()  {
+
+	  var sURL="mailto:axelg@gofree.indigo.ie?subject=[quickfolders]%20<add%20your%20own%20subject%20line%20here>";
+	  var msgComposeService=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService);
+	  // make the URI
+	  var ioService = Components.classes["@mozilla.org/network/io-service;1"]
+                            .getService(Components.interfaces.nsIIOService);
+      aURI = ioService.newURI(sURL, null, null);
+      // open new message
+	  msgComposeService.OpenComposeWindowWithURI (null, aURI);
+
+
+/*  FX code.
+  	  var ioservice =
+		QF_CC['@mozilla.org/network/io-service;1'].getService(QF_CI.nsIIOService);
+		  var uriToOpen = ioservice.newURI(uri, null, null);
+		  var extps = QF_CC['@mozilla.org/uriloader/external-protocol-service;1'].getService(QF_CI.nsIExternalProtocolService);
+		  // now, open it!
+		  extps.loadURI(uriToOpen, null);
+*/
+
+    },
+
 
     dumpFolderEntries: function() {
 	    // debug function for checking users folder string (about:config has trouble with editing JSON strings)

@@ -120,6 +120,7 @@ QuickFolders.Interface = {
 
     selectCategory: function(categoryName, rebuild) {
        this.currentlySelectedCategory = categoryName;
+       QuickFolders.Util.logDebug("Selecting Category: " + categoryName);
        this.updateFolders(rebuild);
 
        QuickFolders.Preferences.setLastSelectedCategory(categoryName);
@@ -138,20 +139,28 @@ QuickFolders.Interface = {
     } ,
 
     shouldDisplayFolder: function(folderEntry) {
-        if(!this.currentlySelectedCategory || this.currentlySelectedCategory == "__ALL") {
-            return true;
+	    try {
+	        if(this.currentlySelectedCategory==null || this.currentlySelectedCategory == "__ALL" || folderEntry.category=="") {
+	            return true;
+	        }
+	        else if(this.currentlySelectedCategory == "__UNCATEGORIZED" && !folderEntry.category) {
+	            return true;
+	        }
+	        else if(!QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
+	            return true;
+	        }
+	        else if (typeof folderEntry.category != "undefined"
+	                    && folderEntry.category== "__ALWAYS"
+	                    && this.currentlySelectedCategory != "__UNCATEGORIZED")
+	          return true;
+	        else {
+	            return this.currentlySelectedCategory == folderEntry.category;
+	        }
         }
-        else if(this.currentlySelectedCategory == "__UNCATEGORIZED" && !folderEntry.category) {
-            return true;
-        }
-        else if(!QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
-            return true;
-        }
-        else if (typeof folderEntry.category != "undefined" && folderEntry.category== "__ALWAYS" && this.currentlySelectedCategory != "__UNCATEGORIZED")
-          return true;
-        else {
-            return this.currentlySelectedCategory == folderEntry.category;
-        }
+        catch (e) {
+	        QuickFolders.Util.logDebug("shouldDisplayFolder caught error: " + e);
+	        return true;
+	    }
     } ,
 
     windowKeyPress: function(e,dir) {
@@ -365,7 +374,13 @@ QuickFolders.Interface = {
     } ,
 
     onRenameBookmark: function(folder) {
-        var newName = window.prompt(qfBundle.GetStringFromName("qfNewName")+"\n"+folder.URI,QuickFolders.Interface.getButtonByFolder(folder).label); // replace folder.name!
+	    var sOldName = QuickFolders.Interface.getButtonByFolder(folder).label;
+	    if(QuickFolders.Preferences.isShowShortcutNumbers()) {
+		  var i = sOldName.indexOf('. ');
+		  if (i<3 && i>0)
+	        sOldName = sOldName.substring(i+2,sOldName.length);
+        }
+        var newName = window.prompt(qfBundle.GetStringFromName("qfNewName")+"\n"+folder.URI,sOldName); // replace folder.name!
         if(newName) {
             QuickFolders.Model.renameFolder(folder.URI, newName);
         }

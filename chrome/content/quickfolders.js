@@ -138,6 +138,8 @@
      AG added feedback link (mail to me) to options dialog
      AG made options dialog resizable
 
+   24/06/2009
+     AG fixed renaming bug for numbered folders
 
   KNOWN ISSUES
   ============
@@ -547,8 +549,8 @@ function MySelectFolder(folderUri)
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded
     if (QuickFolders.Util.Appver() <= 2) {
-	    var folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
-    // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
+	  var folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+      // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
   		QuickFolders.Util.ensureNormalFolderView();
   		folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);

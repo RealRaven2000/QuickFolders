@@ -620,8 +620,8 @@ QuickFolders.Interface = {
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',true);
       }
       else {
-        return;
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',true);
+        return;
       }
       // CSS 3 test in TB3
       if (QuickFolders.Util.Appver() > 2)

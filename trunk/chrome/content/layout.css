@@ -1,4 +1,4 @@
-/* test */
+
 button.order-button {
     width: 20px;
 }
@@ -67,7 +67,6 @@ vbox.gradientpanel {
 	padding:6px 4px;
 	border: 1px solid white;
     background-repeat: repeat-x;
-    background-size: 100%;
 }
 #green {
   background-image: url("gradient-green.png");
@@ -141,7 +140,7 @@ vbox.gradientpanel {
 }
 
 /* Test Example for colored toolbar
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label="Quickfolders"] {
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label*="Quickfolders"] {
     background-image: url("cols/tabcol-1.png") !important;
     background-position: 4px top  !important;
     background-repeat: repeat-x !important;

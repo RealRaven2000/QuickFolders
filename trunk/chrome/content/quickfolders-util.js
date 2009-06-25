@@ -57,7 +57,7 @@ QuickFolders.Util = {
 
           if (dataObj) {
             dataObj = dataObj.value.QueryInterface(this.Ci.nsISupportsString);
-            sourceUri = dataObj.data.substring(0, len.value);
+            var sourceUri = dataObj.data.substring(0, len.value);
             return sourceUri;
           }
         }

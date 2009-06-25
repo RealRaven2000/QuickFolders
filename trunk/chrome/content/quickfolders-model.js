@@ -4,7 +4,8 @@ QuickFolders.Model = {
     selectedFolders: [],
 
     addFolder: function(uri, categoryName) {
-        if(!this.getFolderEntry(uri)) {
+	    var entry=this.getFolderEntry(uri)
+        if(!entry) {
             this.selectedFolders.push({
                 uri: uri,
                 name: '',
@@ -17,6 +18,8 @@ QuickFolders.Model = {
         }
         else {
             alert(_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));
+            // switch to category if it exists
+            QuickFolders.Interface.selectCategory(entry.category,true);
         }
     } ,
 
@@ -54,6 +57,17 @@ QuickFolders.Model = {
         QuickFolders.Util.logDebug("model.update");
         QuickFolders.Interface.updateFolders(true);
     } ,
+
+    setFolderColor: function(uri, tabColor) {
+        var entry;
+        QuickFolders.Util.logDebug("Model.setFolderColor("+uri+") = " + tabColor);
+
+        if((entry = this.getFolderEntry(uri))) {
+            entry.tabColor = tabColor;
+
+            this.update();
+        }
+    },
 
     setFolderCategory: function(uri, name) {
         var entry;

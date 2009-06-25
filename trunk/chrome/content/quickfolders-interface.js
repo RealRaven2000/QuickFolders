@@ -45,18 +45,26 @@ QuickFolders.Interface = {
             for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
                 var folderEntry = QuickFolders.Model.selectedFolders[i];
                 var folder;
+                var tabColor;
 
                 if(!this.shouldDisplayFolder(folderEntry)) {
                     continue;
                 }
+                try {
+	                tabColor = folderEntry.tabColor;
+                }
+                catch(e) {tabColor = null};
 
                 if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-                    var button = this.addFolderButton(folder, folderEntry.name, offset)
+                    var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor)
                     this.buttonsByOffset[offset] = button;
+			        if (tabColor)
+			          this.setButtonColor(button, tabColor);
+
                     offset++;
                 }
             }
-            QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " selected folders added.");
+            QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " bookmarked folders added to Model.");
 
             this.onFolderSelected();
         }
@@ -207,11 +215,17 @@ QuickFolders.Interface = {
        for(var i = 0; i < this.buttonsByOffset.length; i++) {
            var button = this.buttonsByOffset[i];
            try {
-             if(button.folder.URI == folder.URI)
+	         // doesn't work for search folders?
+             if(button.folder.URI == folder.URI) {
+               //QuickFolders.Util.logDebug("getButtonByFolder: " + button.folder.URI + " = " + folder.URI);
                return button;
+             }
+
 
            }
-           catch(e) { }
+           catch(e) {
+             QuickFolders.Util.logDebug("getButtonByFolder: could not match " + button.folder.URI + " error: " + e);
+	       }
        }
 
        return null;
@@ -231,7 +245,7 @@ QuickFolders.Interface = {
 	    return false;
     },
 
-    addFolderButton: function(folder, useName, offset) {
+    addFolderButton: function(folder, useName, offset, tabColor) {
         var numUnread = folder.getNumUnread(false);
         var numTotal = folder.getTotalMessages(false);
 
@@ -374,7 +388,7 @@ QuickFolders.Interface = {
     } ,
 
     onRenameBookmark: function(folder) {
-	    var sOldName = QuickFolders.Interface.getButtonByFolder(folder).label;
+	    var sOldName = this.getButtonByFolder(folder).label;
 	    if(QuickFolders.Preferences.isShowShortcutNumbers()) {
 		  var i = sOldName.indexOf('. ');
 		  if (i<3 && i>0)
@@ -468,7 +482,7 @@ QuickFolders.Interface = {
             }
 	        else
 	          menuitem.setAttribute('label',"No Color!");
-	        menuitem.setAttribute("oncommand","QuickFolders.Interface.setFolderColor(event.target.parentNode.parentNode.parentNode.folder,'" + jCol + "')");  // "MsgCompactFolder(false);" only for current folder
+	        menuitem.setAttribute("oncommand","QuickFolders.Interface.setTabColor(event.target.parentNode.parentNode.parentNode.folder,'" + jCol + "')");  // "MsgCompactFolder(false);" only for current folder
 	        menuColorPopup.appendChild(menuitem);
         }
 
@@ -537,6 +551,20 @@ QuickFolders.Interface = {
     // select subfolder (on click)
     onSelectSubFolder: function(folderUri) {
        MySelectFolder (folderUri);
+       // rename parent tab EXPERIMENTAL!!
+       /*
+        var entry, parentEntry;
+        var li=folderUri.lastIndexOf('/');
+        if (li<=1) return;
+        var uriParent=folderUri.substr(0, li);
+        QuickFolders.Util.logDebug("uriParent: " + uriParent);
+        entry = QuickFolders.Model.getFolderEntry(folderUri);
+
+        if((parentEntry = QuickFolders.Model.getFolderEntry(uriParent))) {
+            parentEntry.name = parentEntry.name + ' - ' + entry.name;
+            QuickFolders.Model.update();
+        }
+        */
     } ,
 
 
@@ -553,6 +581,7 @@ QuickFolders.Interface = {
     } ,
 
     onFolderSelected: function() {
+
         var folder = GetFirstSelectedMsgFolder();
 
         for(var i = 0; i < this.buttonsByOffset.length; i++) {
@@ -575,24 +604,35 @@ QuickFolders.Interface = {
        }
     },
 
-    setFolderColor: function(folder, col) {
+    setButtonColor: function(button, col) {
 	  var ss=QuickFolders.Styles.getMyStyleSheet();
 	  if (!ss)
 	    return false;
 
 
-	  var folderLabel = this.getButtonByFolder(folder).label;
-	  QuickFolders.Util.logToConsole("setFolderColor(" + folder.name + ", " + col + ")  label=" + folderLabel );
+	  var folderLabel = button.label;
+
+
+	  QuickFolders.Util.logToConsole("Interface.setButtonColor folder.label=" + folderLabel );
       // have to do wildcard matching because of shortcut numbers / unread emails
-	  if (col!='0')
+	  if (col!='0') {
+	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',true);
-      else
+      }
+      else {
+        return;
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',true);
-      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
+      }
       // CSS 3 test in TB3
-      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
+      if (QuickFolders.Util.Appver() > 2)
+        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
 
+    },
 
+    setTabColor: function(folder, col) {
+	    QuickFolders.Util.logToConsole("Interface.setTabColor(" + folder.URI + ", " + col + ")" );
+	    this.setButtonColor(this.getButtonByFolder(folder), col);
+	    QuickFolders.Model.setFolderColor(folder.URI, col); // store color in folder string
     },
 
     updateUserStyles: function() {

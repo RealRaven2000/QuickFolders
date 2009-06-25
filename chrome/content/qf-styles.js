@@ -122,7 +122,7 @@ QuickFolders.Styles = {
 	    else {  // add the rule
 	      var sRule=RuleName +"{" + colortype + ":" + color + " !important;}";
 	      QuickFolders.Util.logDebug("Adding new rule..." + sRule );
-	      ss.insertRule(sRule,ss.length)
+	      ss.insertRule(sRule, ss.cssRules.length-1);
 	      return true;
 	    }
 

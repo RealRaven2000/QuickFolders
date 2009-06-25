@@ -140,6 +140,9 @@
 
    24/06/2009
      AG fixed renaming bug for numbered folders
+     AG automatically switch to folder when trying to add it and it already exists.
+     AG Store Tab Colors!
+
 
   KNOWN ISSUES
   ============
@@ -589,6 +592,7 @@ var myFolderListener = {
     OnItemUnicharPropertyChanged: function(item, property, oldValue, newValue) {},
     OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
     OnItemEvent: function(item, event) {
+        QuickFolders.Util.logDebug("event: " + event);
         if(event == "FolderLoaded") {  // DeleteOrMoveMsgCompleted
 	        try {
               if(QuickFolders)

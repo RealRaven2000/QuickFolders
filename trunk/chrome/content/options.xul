@@ -38,6 +38,7 @@ title="&qf.prefwindow.quickfolders.options;"
 			<tab label="&qf.tab.general;" />
 			<tab label="&qf.tab.layout;" />
 			<tab label="&qf.tab.quickhelp;" />
+			<tab label="&qf.tab.support;" />
 		</tabs>
 
 		<tabpanels>
@@ -245,7 +246,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 
 			</tabpanel>
 
-			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="Quick Help" flex="10">
+			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="&qf.tab.quickhelp;" flex="10">
 			  <description class="quickhelp-desc">&qf.description.dragToAdd;</description>
 			  <description class="quickhelp-desc">&qf.description.dragToPosition;</description>
 			  <description class="quickhelp-desc">&qf.description.dragToPopup;</description>
@@ -256,10 +257,21 @@ label="&qf.checkbox.showUnreadMessageCount;"
 			  <label href="http://quickfolders.mozdev.org/" class="text-link" >&qf.label.homePage;</label>
 
 			</tabpanel>
+
+			<tabpanel orient="vertical" id="QuickFolders-Options-support" label="&qf.tab.support;" flex="10">
+			  <description class="quickhelp-desc">&qf.description.donate;</description>
+			  <label href="http://quickfolders.mozdev.org/donate.html" class="text-link" >&qf.label.donateLink;</label>
+			  <description class="quickhelp-desc">&qf.description.bugs;</description>
+			  <label href="http://quickfolders.mozdev.org/bugs.html" class="text-link" >&qf.label.bugLink;</label>
+			  <description class="quickhelp-desc">&qf.description.features;</description>
+			  <label href="http://quickfolders.mozdev.org/drupal/forum" class="text-link" >&qf.label.featuresLink;</label>
+			  <description class="quickhelp-desc">&qf.description.languages;</description>
+			  <label href="http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099" class="text-link" >&qf.label.languagesLink;</label>
+			  <description class="quickhelp-desc">&qf.description.contactMe;</description>
+			  <label href="mailto:axelg@gofree.indigo.ie" class="text-link" onclick="QuickFoldersOptions.QF_mail('axelg@gofree.indigo.ie');">&qf.label.contactLink;</label>
+			</tabpanel>
+
 		</tabpanels>
 	</tabbox>
-	<hbox id="qf-feedback" style="min-height:1.5em;border: 1px solid blue;">
-    <label href="mailto:axelg@gofree.indigo.ie" class="text-link" onclick="QuickFoldersOptions.QF_mailAxel();">&qf.label.contactMe;</label>
-    </hbox>
   </prefpane>
 </prefwindow>

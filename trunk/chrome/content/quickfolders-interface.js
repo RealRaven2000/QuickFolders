@@ -616,7 +616,7 @@ QuickFolders.Interface = {
 	  QuickFolders.Util.logToConsole("Interface.setButtonColor folder.label=" + folderLabel );
       // have to do wildcard matching because of shortcut numbers / unread emails
 	  if (col!='0') {
-	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',false);
+	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',true);
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',true);
       }
       else {

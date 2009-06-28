@@ -23,6 +23,11 @@
 	font-weight: bold;
 }
 
+/****** LINKS  ********/
+.text-link {
+  padding: 3px 8px;
+  text-decoration: underline !important;
+}
 
 label.qfTabPreview {
   border: #AAA 1px solid;
@@ -32,10 +37,7 @@ label.qfTabPreview {
   vertical-align:middle;
 }
 
-description.text-link {
-  padding: 3px 8px 3px 8px;
-}
-description.text-link:hover {
+label.text-link {
   text-decoration: underline !important;
 }
 
@@ -44,9 +46,16 @@ label [href^="mailto"] {
 }
 
 label.text-link:hover {
-  color: white !important;;
+  color: white !important;
   background-color:	blue !important;
 }
+
+description.text-link:hover {
+
+}
+
+
+
 
 description.quickhelp-desc, description.quickhelp-dbg {
 	text-align:justify;

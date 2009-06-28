@@ -100,8 +100,8 @@
 
    30/03/2009
      AG added option to use CTRL instead of ALT for keyboard shortcuts
-     AG suppress event bubbling (for better Lightning compatibility)
-     AG added button for copying folder string to clipboard
+        suppress event bubbling (for better Lightning compatibility)
+        added button for copying folder string to clipboard
 
    17/04/2009  0.9.12
      AM Fixed some problems with keyboard handler
@@ -109,20 +109,20 @@
 
    19/04/2008
      AG removed constant debug output of keyboard handler (now only visible in debug mode and when relevant)
-     AG increased width of options window to avoid truncation of italian quickhelp texts
-     AG added language resources for debug items
-     AG added icon for folder to clipboard
+        increased width of options window to avoid truncation of italian quickhelp texts
+        added language resources for debug items
+        added icon for folder to clipboard
 
    11/05/2009
      AG added multiple line support
-     AG added option for focusing message pane after changing category & selecting a tab (to be improved)
+        added option for focusing message pane after changing category & selecting a tab (to be improved)
 
    12/05/2009
      AM added Delete and Rename Category features.
 
    13/05/2009 Release 1.0.1
      AG fixed focus problem after changing of categories
-     AG fixed remembered categories not being selected on startup
+        fixed remembered categories not being selected on startup
 
    15/05/2009  Release 1.0.2 (permanently sandboxed)
      AG fixed problem on startup when short delay - GetMsgFolderFromUri did not work!!
@@ -130,18 +130,18 @@
 
    26/05/2009 Release 1.0.3
      AG Fixed previous problem by AMO
-     AG added l10n for copy folders to clipboard message
-     AG added colored panels to category screen
+        added l10n for copy folders to clipboard message
+        added colored panels to category screen
 
    02/06/2009
-     AG added individual Tab Color feature (does not save yet!)
-     AG added feedback link (mail to me) to options dialog
-     AG made options dialog resizable
+     AG added individual Tab Color feature (experimental, does not save yet!)
+        added feedback link (mail to me) to options dialog
+        made options dialog resizable
 
    24/06/2009
      AG fixed renaming bug for numbered folders
-     AG automatically switch to folder when trying to add it and it already exists.
-     AG Store Tab Colors!
+        automatically switch to folder when trying to add it and it already exists.
+        Store Tab Colors!
 
 
   KNOWN ISSUES

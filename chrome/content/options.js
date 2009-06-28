@@ -135,9 +135,9 @@ var QuickFoldersOptions = {
       return qfBundle = qfBundle.GetStringFromName(s);
     },
 
-    QF_mailAxel: function()  {
+    QF_mail: function(mailto)  {
 
-	  var sURL="mailto:axelg@gofree.indigo.ie?subject=[quickfolders]%20<add%20your%20own%20subject%20line%20here>";
+	  var sURL="mailto:" + mailto + "?subject=[QuickFolders]%20<add%20your%20own%20subject%20line%20here>";
 	  var msgComposeService=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService);
 	  // make the URI
 	  var ioService = Components.classes["@mozilla.org/network/io-service;1"]

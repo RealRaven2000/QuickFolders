@@ -106,7 +106,7 @@ QuickFolders.Styles = {
 				              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
 				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
 				   st.removeProperty(colortype);
-				   st.setProperty(colortype,color,"important");
+				   st.setProperty(colortype,color,((important) ?  "important" : ""));
 				   break;
 			      }
 		        }
@@ -120,7 +120,7 @@ QuickFolders.Styles = {
 	    if (found)
 	      return true;
 	    else {  // add the rule
-	      var sRule=RuleName +"{" + colortype + ":" + color + " !important;}";
+	      var sRule=RuleName +"{" + colortype + ":" + color +  ((important) ?  " !important;}" : "");
 	      QuickFolders.Util.logDebug("Adding new rule..." + sRule );
 	      ss.insertRule(sRule, ss.cssRules.length-1);
 	      return true;

@@ -131,12 +131,13 @@ vbox.gradientpanel {
 }
 
 
-#QuickFolders-Toolbar toolbarbutton.dragRIGHT {
-	direction: rtl !important;
-    list-style-image: url("dropRight.gif") !important;
-    background-position: right top !important;
+#QuickFolders-Toolbar toolbarbutton.dragRIGHT,
+#QuickFolders-Toolbar toolbarbutton.dragRIGHT[label*="Kl"] {
+    background-image: url("dropRight.gif") !important;
+    background-position: right center !important;
     background-repeat: no-repeat !important;
-    margin-right: 1px;
+    /*list-style-type: none;
+    margin-right: 1px;*/
 }
 
 /* Test Example for colored toolbar

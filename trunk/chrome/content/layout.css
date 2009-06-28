@@ -131,13 +131,17 @@ vbox.gradientpanel {
 }
 
 
-#QuickFolders-Toolbar toolbarbutton.dragRIGHT,
-#QuickFolders-Toolbar toolbarbutton.dragRIGHT[label*="Kl"] {
+#QuickFolders-Toolbar toolbarbutton.dragRIGHT:-moz-drag-over,
+#QuickFolders-Toolbar toolbarbutton[label].dragRIGHT:-moz-drag-over {
     background-image: url("dropRight.gif") !important;
     background-position: right center !important;
     background-repeat: no-repeat !important;
-    /*list-style-type: none;
-    margin-right: 1px;*/
+}
+
+#QuickFolders-Toolbar toolbarbutton.dragLEFT:-moz-drag-over {
+    list-style-image: url("dropLeft.gif") !important;
+    background-position: left top !important;
+    background-repeat: no-repeat !important;
 }
 
 /* Test Example for colored toolbar
@@ -148,13 +152,6 @@ vbox.gradientpanel {
 } */
 
 
-
-
-#QuickFolders-Toolbar toolbarbutton.dragLEFT {
-    list-style-image: url("dropLeft.gif") !important;
-    background-position: left top !important;
-    background-repeat: no-repeat !important;
-}
 
 /* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
 /*

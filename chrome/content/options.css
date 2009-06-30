@@ -50,11 +50,77 @@ label.text-link:hover {
   background-color:	blue !important;
 }
 
-description.text-link:hover {
+label.text-link:focus {
+  color: #FFF !important;
+  background-color:	#06396F !important;
+  /*background-image: url("dellablue.png");
+  background-repeat: repeat-x;*/
+  border: 1px #006 solid;
+  text-decoration: underline !important;
+}
 
+label#L2:hover {
+  background-image: url("orange-bar.png");
+  background-repeat: repeat-x;
+  color: #630 !important;
+  border: 1px #630 solid;
+  font-weight: bold;
+}
+label#L2:active {
+  color: #630 !important;
+  text-decoration: underline;
 }
 
 
+label#L3:hover {
+  background-image: url("gold-bar.png");
+  background-repeat: repeat-x;
+  border: 1px #500 solid;
+  color: #500 !important;
+  font-weight: bold;
+}
+
+label#L3:active {
+  color: red !important;
+  text-decoration: underline;
+}
+
+
+label#L4:hover {
+  color: #006 !important;
+  background-image: url("ice-bar.png");
+  background-repeat: repeat-x;
+  border: 1px #006 solid;
+  font-weight: bold;
+}
+
+label#L4:active {
+  color: #00A !important;
+  text-decoration: underline;
+}
+
+label#L0:hover, label#L1:hover, label#L5:hover {
+  color: #FFF !important;
+  background-image: url("dellablue.png");
+  background-repeat: repeat-x;
+  border: 1px #006 solid;
+  font-weight: bold;
+}
+
+label#L0:active, label#L1:active, label#L5:active {
+  color: #FFF !important;
+  text-decoration: underline !important;
+}
+
+
+label.text-link:link {
+  color: orange !important;
+  background-color:	blue !important;
+}
+label.text-link:visited {
+  color: #00A !important;
+  background-color:	blue !important;
+}
 
 
 description.quickhelp-desc, description.quickhelp-dbg {

@@ -143,6 +143,9 @@
         automatically switch to folder when trying to add it and it already exists.
         Store Tab Colors!
 
+   02/07/2009 Release 1.1
+     AG fixed renaming bug for total/unread folders
+
 
   KNOWN ISSUES
   ============
@@ -161,8 +164,6 @@
     - drag to thread finds quickfolder with correct thread and drops message there
     - instantApply support (difficult, as there is no onclose event)
     - multiple categories per folder (like tags)
-    - colors for categories / single folders {TBD}
-
 
 */
 var gFolderTree;

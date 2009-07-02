@@ -389,11 +389,29 @@ QuickFolders.Interface = {
 
     onRenameBookmark: function(folder) {
 	    var sOldName = this.getButtonByFolder(folder).label;
+        // strip shortcut numbers
 	    if(QuickFolders.Preferences.isShowShortcutNumbers()) {
 		  var i = sOldName.indexOf('. ');
 		  if (i<3 && i>0)
 	        sOldName = sOldName.substring(i+2,sOldName.length);
         }
+        // find if trhere is a number of total messages / unread message in the label, and strip them from renaming!!
+        if(QuickFolders.Preferences.isShowTotalCount() || QuickFolders.Preferences.isShowUnreadCount()) {
+		  var i = sOldName.lastIndexOf(' (');
+		  var j = sOldName.lastIndexOf(')');
+		  // TODO: additional check if there are just numbers and commas within the brackets!
+
+		  //making sure there is stuff between the () and the last char is a )
+		  if (i>1 && sOldName.substr(i, j-i).length>0 && j==sOldName.length-1) {
+			  var bracketedLen = j-i+1;
+			  QuickFolders.Util.logDebug("Suspected number of new / total mails = " + sOldName.substr(i, j-i+1) + "   length = " + bracketedLen);
+		    // lets check if this is numeral, after removing any ','
+	          	sOldName = sOldName.substring(0,sOldName.length - bracketedLen);
+          }
+
+        }
+
+
         var newName = window.prompt(qfBundle.GetStringFromName("qfNewName")+"\n"+folder.URI,sOldName); // replace folder.name!
         if(newName) {
             QuickFolders.Model.renameFolder(folder.URI, newName);
@@ -609,11 +627,8 @@ QuickFolders.Interface = {
 	  if (!ss)
 	    return false;
 
-
 	  var folderLabel = button.label;
 
-
-	  QuickFolders.Util.logToConsole("Interface.setButtonColor folder.label=" + folderLabel );
       // have to do wildcard matching because of shortcut numbers / unread emails
 	  if (col!='0') {
 	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',true);

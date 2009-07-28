@@ -593,10 +593,11 @@ var myFolderListener = {
     OnItemUnicharPropertyChanged: function(item, property, oldValue, newValue) {},
     OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
     OnItemEvent: function(item, event) {
-        QuickFolders.Util.logDebug("event: " + event);
+        if(!isNaN(QuickFolders))
+          QuickFolders.Util.logDebug("event: " + event);
         if(event == "FolderLoaded") {  // DeleteOrMoveMsgCompleted
 	        try {
-              if(QuickFolders)
+              if(!isNaN(QuickFolders))
                 QuickFolders.Interface.onFolderSelected();
             }
             catch(e) {};

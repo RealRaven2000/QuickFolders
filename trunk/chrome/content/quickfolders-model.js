@@ -99,8 +99,8 @@ QuickFolders.Model = {
 
 
    getCategories: function() {
-        var categories = []
-        // can we sort this?
+        var categories = [];
+
         // can we add a color per category?
         for(var i = 0; i < this.selectedFolders.length; i++) {
             var entry = this.selectedFolders[i];
@@ -129,6 +129,7 @@ QuickFolders.Model = {
             }
         }
 
+        categories.sort(); // can we sort this? yes we can.
         return categories;
     } ,
 

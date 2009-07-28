@@ -27,17 +27,20 @@ QuickFolders.Interface = {
         else
           toolbar.className = "";
 
-        if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
-          this.updateCategories();
-
 
         this.buttonsByOffset = [];
         this.menuPopupsByOffset = [];
         this.specialButtons = [];
 
-        QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
 
         QuickFolders.Util.clearChildren(this.getToolbar(),rebuildCategories);
+        //QuickFolders.Util.$('QuickFolders-title-label').style.visibility = QuickFolders.Preferences.isShowQuickFoldersLabel() ? 'visible' : 'hidden';
+        QuickFolders.Util.$('QuickFolders-title-label').value = QuickFolders.Preferences.isShowQuickFoldersLabel() ? 'QuickFolders:' : '';
+
+        //QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
+        if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
+          this.updateCategories();
+
 
         var offset = 0;
 
@@ -94,13 +97,14 @@ QuickFolders.Interface = {
 
             menuPopup.appendChild(this.createMenuItem("__ALL", qfBundle.GetStringFromName("qfAll")))
             for(var i = 0; i < bookmarkCategories.length; i++) {
-                var category = bookmarkCategories[i]
+                var category = bookmarkCategories[i];
 
                 if (bookmarkCategories[i] != "__ALWAYS") {
                     menuPopup.appendChild(this.createMenuItem(category, category))
                 }
             }
 
+            menuPopup.appendChild(document.createElement('menuseparator'));
             menuPopup.appendChild(this.createMenuItem("__UNCATEGORIZED", qfBundle.GetStringFromName("qfUncategorized")))
 
             if(QuickFolders.Model.isValidCategory(this.currentlySelectedCategory)) {
@@ -435,6 +439,8 @@ QuickFolders.Interface = {
 
         var menupopup = document.createElement('menupopup');
         menupopup.setAttribute('id',popupId);
+        menupopup.setAttribute('position','after_start');
+
         menupopup.className = 'QuickFolders-folder-popup';
         menupopup.folder = folder;
 

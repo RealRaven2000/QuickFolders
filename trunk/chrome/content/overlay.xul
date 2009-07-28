@@ -29,7 +29,9 @@
             style="display: none;"
              flex="10"
         >
-        <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
+        <vbox id="QuickFolders-LabelBox" flex="0">
+          <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
+        </vbox>
 
         <vbox id="QuickFolders-Category-Box" >
         <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);">

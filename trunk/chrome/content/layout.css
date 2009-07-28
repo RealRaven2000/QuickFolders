@@ -32,7 +32,7 @@ button.order-button {
 
 /* container for categories drop down*/
 #QuickFolders-Category-Box {
-    display: -moz-inline-box;
+    display: block;
     float:left;
     vertical-align: bottom !important;
 }
@@ -43,15 +43,22 @@ button.order-button {
 }
 
 
+#QuickFolders-LabelBox {
+    display: block;
+    float: left;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: 0px !important;
+}
+
 #QuickFolders-title-label {
     line-height: 24px;
     font-weight: bold;
-    display: -moz-inline-box;
-    float: left;
 }
 
 #QuickFolders-FoldersBox {
-    display: -moz-inline-box;
+    display: block;
     float:right;
     max-height:15em;
 }

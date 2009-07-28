@@ -1,20 +1,20 @@
 
 QuickFolders.Styles = {
 
+	DebugMe: false,
+
     getMyStyleSheet: function() {
 	  var styleSheetList = document.styleSheets;
       for (var i=0; i<document.styleSheets.length; i++) {
 	    var ss = document.styleSheets[i];
 	    if (ss.title == "qfStyles" || ss.href.indexOf("//quickfolders/content/layout.css")>0) {
-		    QuickFolders.Util.logDebug("stylesheet (" + i + ") [" + ss.title + "] =" + ss.href
-		      + "\nwin.doc.title=" + window.document.title
-		      + "\ndoc.title=" + document.title
-		      + "\nwin.location=" + window.location);
+		    if (this.DebugMe)
+		      QuickFolders.Util.logDebug("stylesheet (" + i + ") [" + ss.title + "] =" + ss.href
+		        + "\nwin.doc.title=" + window.document.title
+		        + "\ndoc.title=" + document.title
+		        + "\nwin.location=" + window.location);
 	      return ss;
         }
-        /*QuickFolders.Util.logDebug ("stylesheet (" + i + ")"
-          + (ss.title.length ? "[" + ss.title + "]" : "")
-          + " = " + ss.href);*/
       }
 	  QuickFolders.Util.logToConsole("Can not find style sheet: qfStyles in " +(window.closed ? "closed window" : window.location)
 	          + "\nwin.doc.title=" + window.document.title
@@ -71,7 +71,8 @@ QuickFolders.Styles = {
 		  if (!ss || ss==null)
 		    return false;
         }
-        QuickFolders.Util.logDebug("setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
+        if (this.DebugMe)
+          QuickFolders.Util.logDebug("setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
 
 	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
 	    var i;
@@ -92,19 +93,22 @@ QuickFolders.Styles = {
 	        }
 	        if (found && !(undefined == found)) {
 			  st=rulesList[i].style; // CSSStyleDeclaration
-	          QuickFolders.Util.logDebug("found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
+			  if (this.DebugMe)
+	            QuickFolders.Util.logDebug("found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
 			  var k;//iterate styles!
 
 			  for (k=0;k<st.length;k++) {
 				try{
 			      if (colortype==st.item(k)) {
 				    foundRule=true;
-			        QuickFolders.Util.logDebug ("\n=============\nModify item: " + st.item(k)) + " =====================";
-				    QuickFolders.Util.logDebug ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
-				              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
-				              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
-				              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
-				              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
+				    if (this.DebugMe) {
+				        QuickFolders.Util.logDebug ("\n=============\nModify item: " + st.item(k)) + " =====================";
+					    QuickFolders.Util.logDebug ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
+					              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
+					              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
+					              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
+					              + "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
+	               }
 				   st.removeProperty(colortype);
 				   st.setProperty(colortype,color,((important) ?  "important" : ""));
 				   break;

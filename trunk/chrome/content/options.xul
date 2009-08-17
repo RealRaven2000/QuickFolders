@@ -57,6 +57,7 @@ title="&qf.prefwindow.quickfolders.options;"
 		            <preference id="QuickFolders-Preferences-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool"/>
 		            <preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
 		            <preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int"/>
+		            <preference id="QuickFolders-Preferences-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"/>
 				</preferences>
 
 				<checkbox
@@ -179,19 +180,6 @@ label="&qf.checkbox.showUnreadMessageCount;"
     <vbox flex="1">
 
                 <hbox style="margin-top: .2em;">
-                    <label value="&qf.label.ActiveTabColor;" id = "activetabs-label"  class="qfTabPreview" />
-
-		            <colorpicker id="activetab-fontcolorpicker" palettename="vibrant"  style="vertical-align:middle"
-		              type="button"
-		              onchange="document.getElementById('activetabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
-		              />
-		            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
-		              type="button"
-		              onchange="document.getElementById('activetabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
-		              />
-                </hbox>
-
-                <hbox style="margin-top: .2em;">
 	                <label value="&qf.label.StandardTabColor;" id = "inactivetabs-label" class="qfTabPreview" />
 		            <colorpicker id="inactive-fontcolorpicker" palettename="standard" style="vertical-align:middle"
 		              type="button"
@@ -203,18 +191,33 @@ label="&qf.checkbox.showUnreadMessageCount;"
 		              />
                 </hbox>
 
-                <hbox style="margin-top: .2em;">
-			        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+                <hbox>
+                  <groupbox flex="1" >
 
-		            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
-		              type="button"
-		              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
-		              />
+			      <caption label="Individual Tab Color Appearance:"/>
+                  <radiogroup preference="QuickFolders-Preferences-ColorTabStyleId">
+                     <radio label="striped" value="0"/>
+                     <radio label="full" value="1"/>
+                  </radiogroup>
+                  </groupbox>
+
                 </hbox>
 </vbox>
 <spacer flex="1" />
 <vbox flex="1">
 
+                <hbox style="margin-top: .2em;">
+                    <label value="&qf.label.ActiveTabColor;" id = "activetabs-label"  class="qfTabPreview" />
+
+		            <colorpicker id="activetab-fontcolorpicker" palettename="vibrant"  style="vertical-align:middle"
+		              type="button"
+		              onchange="document.getElementById('activetabs-label').style.color=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','color', this.color);"
+		              />
+		            <colorpicker id="activetab-colorpicker" palettename="standard"  style="vertical-align:middle"
+		              type="button"
+		              onchange="document.getElementById('activetabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('ActiveTab','background-color', this.color);"
+		              />
+                </hbox>
                 <hbox style="margin-top: .2em;">
 	                <label value="&qf.label.HoveredTabColor;" id = "hoveredtabs-label" class="qfTabPreview" />
 		            <colorpicker id="hover-fontcolorpicker" palettename="standard" style="vertical-align:middle"
@@ -238,6 +241,15 @@ label="&qf.checkbox.showUnreadMessageCount;"
 		              onchange="document.getElementById('dragovertabs-label').style.backgroundColor=this.color;return QuickFolders.Preferences.setUserStyle('DragTab','background-color', this.color);"
 		              />
                 </hbox>
+                <hbox style="margin-top: .2em;">
+			        <label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+
+		            <colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
+		              type="button"
+		              onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
+		              />
+                </hbox>
+
 </vbox>
 </hbox>
                </vbox>

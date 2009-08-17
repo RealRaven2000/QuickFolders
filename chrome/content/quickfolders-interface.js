@@ -531,6 +531,7 @@ QuickFolders.Interface = {
               subfolders = folder.GetSubFolders();
             else
               subfolders = folder.subFolders;
+
             var done = false;
             var menuitem = document.createElement('menuseparator');
             popupMenu.appendChild(menuitem);
@@ -634,14 +635,20 @@ QuickFolders.Interface = {
 	    return false;
 
 	  var folderLabel = button.label;
+	  var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
 
       // have to do wildcard matching because of shortcut numbers / unread emails
 	  if (col!='0') {
 	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',true);
-        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("cols/tabcol-' + col + '.png")',true);
+	    var sColFolder;
+	    if (nTabStyle==0)
+	      sColFolder="striped"
+	    else
+	      sColFolder="cols"
+        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'url("' + sColFolder + '/tabcol-' + col + '.png")',true);
       }
       else {
-        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',true);
+        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',false);
         return;
       }
       // CSS 3 test in TB3
@@ -668,10 +675,22 @@ QuickFolders.Interface = {
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','color',
                    QuickFolders.Preferences.getUserStyle("InactiveTab","color","black"),true);
 
+          var colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight");
 	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','background-color',
-                   QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),true);
+                   colActiveBG, true);
+          // for full colored tabs color the border as well!
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-right-color',
+                   colActiveBG, true);
+
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-left-color',
+                   colActiveBG, true);
+
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-top-color',
+                   colActiveBG, true);
+
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);
+
 	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),true);
 

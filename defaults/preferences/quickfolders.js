@@ -14,3 +14,4 @@ pref("extensions.quickfolders.lastSelectedCategory","");
 pref("extensions.quickfolders.showIcons",false);
 pref("extensions.quickfolders.debug",false);
 pref("extensions.quickfolders.initDelay",750);
+pref("extensions.quickfolders.colorTabStyle",0);

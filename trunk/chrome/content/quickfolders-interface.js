@@ -3,7 +3,7 @@ var qfBundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/qu
 
 
 QuickFolders.Interface = {
-
+	TimeoutID: 0,
     buttonsByOffset: [],
     menuPopupsByOffset: [],
     specialButtons: [],
@@ -14,10 +14,32 @@ QuickFolders.Interface = {
 	    this.boundKeyListener=b;
     },
 
-    // added parameter to avoid deleting categories dropdown while selectig from it!
-    updateFolders: function(rebuildCategories) {
-        // AG made flat style configurable
+    setFolderUpdateTimer: function() {
+	    QuickFolders.Util.logDebug(" Old Timer ID = " + this.TimeoutID);
+	    // avoid the overhead if marking a folder with lots of unread mails as read or getting emails
+	    // made folder update asynchronous instead.
+	    if (!(this.TimeoutID>0)) {
+		  try {
+		      this.TimeoutID = setTimeout("QuickFolders.Interface.queuedFolderUpdate()", 2500);
+		      QuickFolders.Util.logDebug("New Folder Update Timer ID = " + this.TimeoutID);
+          }
+          catch (e) {
+	          QuickFolders.Util.logDebug("setFolderUpdateTimer: " + e);
+          }
 
+	    }
+
+    },
+
+    queuedFolderUpdate: function() {
+	  this.updateFolders(false);
+	  this.TimeoutID=0;
+    },
+
+    // added parameter to avoid deleting categories dropdown while selecting from it!
+    updateFolders: function(rebuildCategories) {
+	    this.TimeoutID=0;
+        // AG made flat style configurable
         QuickFolders.Util.logDebug('updateFolders(' + rebuildCategories + ')');
 
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
@@ -513,10 +535,13 @@ QuickFolders.Interface = {
         // append it to main popup menu
 	    menupopup.appendChild(colorMenu);
 
-	    //myMasterPopup=menupopup;
+	    //moved this out of addSubFoldersPopup for recursive menus
+	    if (folder.hasSubFolders) {
+           menupopup.appendChild(document.createElement('menuseparator'));
 
-
-        this.addSubFoldersPopup(menupopup, folder);
+	       QuickFolders.Util.logToConsole("Create popup menu " + folder.name + "...");
+	       this.addSubFoldersPopup(menupopup, folder);
+        }
 
         this.menuPopupsByOffset[offset] = menupopup;
 
@@ -533,37 +558,58 @@ QuickFolders.Interface = {
               subfolders = folder.subFolders;
 
             var done = false;
-            var menuitem = document.createElement('menuseparator');
-            popupMenu.appendChild(menuitem);
 
             while (!done) {
 	        	if (appver<3)
                   subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
                 else {
-	              if (subfolders.hasMoreElements())
-                    subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-                  else {
-                    done=true;
-                    break;
-                  }
+	                if (subfolders.hasMoreElements())
+	                  subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+	                else {
+	                  done=true;
+	                  break;
+	                }
                 }
 
                 try {
+
+				    //QuickFolders.Util.logToConsole("   creating menu item " + subfolder.name + "...");
                     menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
                     menuitem.setAttribute("tag","sub");
-                    // MySelectFolder(button.folder.URI);
+
                     if (subfolder.getNumUnread(false)>0) {
                       menuitem.setAttribute("class","hasUnread");
                       menuitem.setAttribute('label', subfolder.name + ' (' + subfolder.getNumUnread(false) + ')');
                     }
-                    menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");  // "MsgCompactFolder(false);" only for current folder
+                    menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");
 
                     menuitem.folder = subfolder;
                     menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
                     menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 
+				    //QuickFolders.Util.logToConsole("   adding menu item " + subfolder.name + " to " + folder.name + "...");
                     popupMenu.appendChild(menuitem);
+
+	                if (subfolder.hasSubFolders) {
+                      //QuickFolders.Util.logToConsole("folder " + subfolder.name + " has subfolders");
+				      var subMenu = document.createElement('menu');
+				      subMenu.setAttribute("label", subfolder.name);
+				      subMenu.className = 'QuickFolders-folder-popup';
+
+		              var subPopup = document.createElement("menupopup");
+
+                      subMenu.appendChild(subPopup);
+                      //QuickFolders.Util.logToConsole("[ appending submenu " + subfolder.name + " to " + folder.name);
+                      popupMenu.appendChild(subMenu); // append it to main menu
+
+                      //QuickFolders.Util.logToConsole("append header item " + subfolder.name + ".");
+                      subPopup.appendChild(menuitem); // add parent entry
+
+		              this.addSubFoldersPopup(subPopup,subfolder); // populate the sub menu
+                      //QuickFolders.Util.logToConsole("submenu " + subfolder.name + " appended to " + folder.name + " ]");
+	                }
+
                     if (appver<3)
                       subfolders.next();
                 }

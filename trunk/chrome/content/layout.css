@@ -105,19 +105,19 @@ vbox.gradientpanel {
     -moz-border-radius: 4px 4px 0 0;
     padding: 1px 5px 0px 2px;
     border-color: #AAA;
-    border-width: 2px !important;
+    border-width: 1px !important;
     border-style: solid;
 
     margin: 3px 0px 0px 3px;
-    line-height: 19px;
-    height: 19px;
+    line-height: 18px;
+    height: 18px;
     vertical-align:top;
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
     background-color: Orange !important;
     color: Black !important;
-    height: 19px;
+    height: 18px;
     margin-top: 2px !important;
     margin-bottom: -1px !important;
     padding: 0px 5px 2px 2px;
@@ -127,7 +127,7 @@ vbox.gradientpanel {
     background-color:  Highlight !important;
     border-bottom: none !important;
     color: HighlightText !important;
-    height: 21px;
+    height: 19px;
     margin-top: 2px !important;
     margin-bottom: 0px !important;
     padding: 0px 5px 2px 2px;
@@ -308,17 +308,13 @@ menupopup.QuickFolders-folder-popup menuitem:hover
 
 
 
-
+/*
 #QuickFolders-Toolbar toolbarbutton.specialButton {
     -moz-appearance: none !important;
     -moz-image-region: rect( 0px 24px 24px  0px);
-    /*      -moz-appearance: toolbarbutton !important; */
     background-image: url("thread.png") !important;
     background-repeat: no-repeat !important;
     padding-left: 24px;
-    /*    dir: normal !important;
-        orient: horizontal  !important;
-        validate: always !important; */
     line-height: 17px !important;
     height: 17px !important;
 
@@ -327,7 +323,7 @@ menupopup.QuickFolders-folder-popup menuitem:hover
 
 
 }
-
+*/
 
 
 

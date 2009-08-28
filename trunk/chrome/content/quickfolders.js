@@ -146,6 +146,26 @@
    02/07/2009 Release 1.1
      AG fixed renaming bug for total/unread folders
 
+   28/07/2009 Release 1.2
+     AG added: Categories are sorted alphabetically
+               Compatibility for Tb3.0b3
+        fixed: Quickfolders label floats to right when switched on via options dialog
+               warning "QuickFolders is not defined" in quickfolders.js
+
+   26/08/2009:
+     AG fixed: in Tb3 the folder tree view would not scroll
+        added: whole tab coloring
+
+   27/08/2009
+     AG WIP: subfolders in popup menus
+     known issues:
+     to do: remove call to updateFolders EACH TIME the count of Total Messages changes!
+            code popup of submenus when dragging mail and test drag & drop on these
+            tweaks in whole tab coloring (active, hover consistency)
+
+
+
+
 
   KNOWN ISSUES
   ============
@@ -567,8 +587,11 @@ function MySelectFolder(folderUri)
 	      document.commandDispatcher.rewindFocus();
       }
    }
-   else
+   else {
       gFolderTreeView.selectFolder (msgFolder);
+      folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
+  }
+
 }
 
 
@@ -576,14 +599,16 @@ function MySelectFolder(folderUri)
 var myFolderListener = {
     OnItemAdded: function(parent, item, viewString) {},
     OnItemRemoved: function(parent, item, viewString) {},
-    OnItemPropertyChanged: function(parent, item, viewString) {  },
+    OnItemPropertyChanged: function(parent, item, viewString) {},
     OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
         try {
+
           if (property == "TotalUnreadMessages" ||
-              (QuickFolders.Preferences.isShowUnreadCount() && property == "TotalMessages")) {  // FolderSize
+              (QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {  // FolderSize
 	            if(QuickFolders) {
-		            //QuickFolders.Util.logDebug('myFolderListener: '+property);
-	                QuickFolders.Interface.updateFolders(false);
+				    QuickFolders.Util.logDebug("myFolderListener: " + property);
+		            QuickFolders.Interface.setFolderUpdateTimer();
+		            QuickFolders.Util.logDebug("myFolderListener: called setFolderUpdateTimer()");
                 }
           }
         }

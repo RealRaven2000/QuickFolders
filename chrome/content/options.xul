@@ -43,7 +43,7 @@ title="&qf.prefwindow.quickfolders.options;"
 
 		<tabpanels>
 			<tabpanel orient="vertical" id="QuickFolders-Options-general"
-       label="&qf.tab.general;" flex="10" style="min-height:200px;">
+       label="&qf.tab.general;" flex="10" style="min-height:350px;">
 
 				<preferences>
 					<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
@@ -58,6 +58,7 @@ title="&qf.prefwindow.quickfolders.options;"
 		            <preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
 		            <preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int"/>
 		            <preference id="QuickFolders-Preferences-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"/>
+		            <preference id="QuickFolders-Preferences-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool"/>
 				</preferences>
 
 				<checkbox
@@ -114,6 +115,13 @@ label="&qf.checkbox.showUnreadMessageCount;"
 					preference="QuickFolders-Preferences-FocusPreview"
 					instantApply="true"
 				/>
+
+				<checkbox
+          label="&qf.checkbox.showSubfolders;"
+					preference="QuickFolders-Preferences-ShowSubFolders"
+					instantApply="true"
+				/>
+
 
 				<spacer flex="1" />
 			<hbox class="quickhelp-dbg">
@@ -196,8 +204,8 @@ label="&qf.checkbox.showUnreadMessageCount;"
 
 			      <caption label="Individual Tab Color Appearance:"/>
                   <radiogroup preference="QuickFolders-Preferences-ColorTabStyleId">
-                     <radio label="striped" value="0"/>
-                     <radio label="full" value="1"/>
+                     <radio label=" (striped style)" value="0" src="striped-example.gif" />
+                     <radio label=" (filled style)" value="1" src="full-example.gif"/>
                   </radiogroup>
                   </groupbox>
 

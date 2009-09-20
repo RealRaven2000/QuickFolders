@@ -156,14 +156,18 @@
      AG fixed: in Tb3 the folder tree view would not scroll
         added: whole tab coloring
 
-   27/08/2009
-     AG WIP: subfolders in popup menus
-     known issues:
-     to do: remove call to updateFolders EACH TIME the count of Total Messages changes!
-            code popup of submenus when dragging mail and test drag & drop on these
-            tweaks in whole tab coloring (active, hover consistency)
+   12/09/2009  Release 1.3
+     AG added: subfolders in popup menus - configurable
+               whole / striped tab option and backgrounds
+     fixed: slowdown of operations that change the number of Total / Unread emails because QF was updated every time
+            this is now donw asynchroneously with a 1000ms timer.
+     known issues: subfolders expand points do not expand when dragging mail on them
+                   to solve, debug popupDragObserver()
+     open items: code popup of submenus when dragging mail and test drag & drop on these
+                 tweaks in whole tab coloring (active, hover consistency)
 
-
+    20/09/2009
+      AG added: scrollbars and animation to "change order of bookmarks" dialog
 
 
 
@@ -201,7 +205,7 @@ var QuickFolders = {
 
        if(QuickFolders.isCorrectWindow()) {
 		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
-            document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
+            // document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
             setTimeout("QuickFolders.init()", nDelay);
 	        this.initDone=true;
         }
@@ -227,6 +231,7 @@ var QuickFolders = {
 
     init: function() {
         QuickFolders.Util.logDebug("quickfolders.init()");
+        document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 
         // only add event listener on startup if necessary as we don't
         // want to consume unnecessary performance during keyboard presses!
@@ -314,6 +319,45 @@ var QuickFolders = {
             }
         }
     } ,
+
+    // recursive popups have to react to drag mails!
+    popupDragObserver: {
+        getSupportedFlavours : function () {
+            var flavours = new FlavourSet();
+            flavours.appendFlavour("text/x-moz-message");
+            flavours.appendFlavour("text/unicode");  // test
+            return flavours;
+        },
+        dragOverTimer: null,
+        onDragEnter: function(evt, dragSession) {
+            try {
+	            var popupStart = evt.target;
+	            QuickFolders.Util.logDebug ("Popup DragEnter" + popupStart.name);
+            }
+            catch(e) {
+                alert("quickFolders:\n" + e);
+            }
+        },
+
+        // deal with old folder popups
+        onDragExit: function(event, dragSession) {
+	        var popupStart = evt.target;
+	        QuickFolders.Util.logDebug ("Popup DragExit " + popupStart.name);
+
+        } ,
+
+        onDragOver: function (evt,flavor,session){
+            session.canDrop = (flavor.contentType == "text/x-moz-message");
+        },
+
+
+        // drop mails on popup: move mail, like in buttondragobserver!
+        onDrop: function (evt,dropData,dragSession) {
+            var popupStart = evt.target;
+            QuickFolders.Util.logDebug ("Popup Drop on" + popupStart.name);
+        }
+
+    },
 
     buttonDragObserver: {
         getSupportedFlavours : function () {
@@ -509,7 +553,7 @@ function MyEnsureFolderIndex(tree, msgFolder)
     // try to get the index of the folder in the tree
     try {
 	    var index ;
-        if (QuickFolders.Util.Appver() > 2)
+        if (QuickFolders.Util.Appver() > 2  || QuickFolders.Util.Application() == 'Postbox' )
 	      index = tree.getIndexOfFolder(msgFolder);
         else
           index= tree.builderView.getIndexOfResource(msgFolder);
@@ -523,7 +567,7 @@ function MyEnsureFolderIndex(tree, msgFolder)
 	            tree.builderView.toggleOpenState(parentIndex);
 	      }
 
-          if (QuickFolders.Util.Appver() > 2)
+          if (QuickFolders.Util.Appver() > 2 || QuickFolders.Util.Application() == 'Postbox' )
 	        index = tree.getIndexOfFolder(msgFolder);
           else
 	        index = tree.builderView.getIndexOfResource(msgFolder);
@@ -568,12 +612,16 @@ function MySelectFolder(folderUri)
     var folderTree = MyGetFolderTree();
     var folderResource = myRDF().GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+    var folderIndex;
 
+    if (QuickFolders.Util.Appver() <= 2 || QuickFolders.Util.Application()=='Postbox' ) {
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded
-    if (QuickFolders.Util.Appver() <= 2) {
-	  var folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+	    if (QuickFolders.Util.Application()=='Postbox')
+		   folderIndex = EnsureFolderIndex(msgFolder);
+		else
+			folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
       // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
   		QuickFolders.Util.ensureNormalFolderView();
@@ -586,11 +634,11 @@ function MySelectFolder(folderUri)
 	      document.commandDispatcher.advanceFocus();
 	      document.commandDispatcher.rewindFocus();
       }
-   }
-   else {
-      gFolderTreeView.selectFolder (msgFolder);
-      folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
-  }
+	}
+	else { // TB 3
+		gFolderTreeView.selectFolder (msgFolder);
+		folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
+	}
 
 }
 

@@ -38,12 +38,14 @@ QuickFolders.ChangeOrder = {
         row.appendChild(folderLabel);
 
         var buttonUp = document.createElement("button");
+        buttonUp.className = "order-button-up"
         buttonUp.setAttribute("label",_bundle.GetStringFromName("qfUp"));
         buttonUp.linkedFolder = folder;
         buttonUp.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
         row.appendChild(buttonUp);
 
         var buttonDown = document.createElement("button");
+        buttonDown.className = "order-button-down"
         buttonDown.setAttribute("label",_bundle.GetStringFromName("qfDown"));
         buttonDown.linkedFolder = folder;
         buttonDown.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");

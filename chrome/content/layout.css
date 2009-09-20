@@ -1,7 +1,4 @@
 
-button.order-button {
-    width: 20px;
-}
 
 #QuickFolders-Toolbar {
     min-height: 24px ;
@@ -131,7 +128,7 @@ vbox.gradientpanel {
     margin-top: 2px !important;
     margin-bottom: 0px !important;
     padding: 0px 5px 2px 2px;
-    background-image: url('cols/tabcol-10.png')!important;
+    /*background-image: url('cols/tabcol-10.png')!important;*/
     background-repeat: repeat-x;
 }
 
@@ -229,9 +226,6 @@ menupopup.QuickFolders-folder-popup menuitem.color {
     border: 1px solid #444 !important;
     list-style-image : url('palette.png') !important;
     -moz-border-radius: 5px 5px 0 0;
-/* test these with CSS3 / TB3  try to stretch image Y and repeat X*/
-/*   background-size: 100% 100%;
-    background-origin: content-box; */
 }
 
 menupopup.QuickFolders-folder-popup menuitem[tag="qfTabColorMenu"] { list-style-image : url('palette.png')!important;}

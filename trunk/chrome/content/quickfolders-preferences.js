@@ -41,6 +41,10 @@ QuickFolders.Preferences = {
         return this.service.getBoolPref("extensions.quickfolders.showUnreadFoldersBold");
     } ,
 
+    isShowRecursiveFolders: function() {
+        return this.service.getBoolPref("extensions.quickfolders.showSubfolders");
+    } ,
+
     isUseKeyboardShortcuts: function() {
         return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcuts");
     } ,

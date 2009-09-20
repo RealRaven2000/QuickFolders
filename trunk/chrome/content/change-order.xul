@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="layout.css" type="text/css"?>
+<?xml-stylesheet href="change-order.css" type="text/css"?>
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/change_order.dtd" >
 
-<dialog 
-  title="&qf.dialog.changeorder;" 
+<dialog
+  title="&qf.dialog.changeorder;"
 	buttons="accept"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFolders.Model.update();"
@@ -15,30 +15,44 @@
 	<script>
 		QuickFolders = window.arguments[0];
 	</script>
-	
-	
- 	<description flex="1" style="max-width:300px">
+
+<hbox id="qf-header" >
+	<hbox id="qf-options-header" flex="12">
+		<label class="dialogheader-title"
+			value="&qf.dialog.changeorder;"
+			flex="1"/>
+
+		<label id="qf-options-header-description"/>
+	</hbox>
+</hbox>
+ 	<description style="max-width:455px" id="Explain-Drag">
      &qf.description.dragexplain;
     </description>
 
-    <grid flex="1" id="QuickFolders-change-order-grid">
-   	<columns>
-    		<column flex="2" />
-    		<column flex="1" />
-    		<column flex="1" />
-    	</columns>
-    	
-    	<rows id="QuickFolders-change-order-grid-rows">
-    		<row>
-	    		<label>&qf.label.testfolder;</label>
-	    		<button label="&qf.button.up;" class="order-button" />
-	    		<button label="&qf.button.down;" class="order-button" />
-	    	</row>
-	    	<row>
-	    		<label>&qf.label.testfolder2;</label>
-	    		<button label="&qf.button.up;" class="order-button" />
-	    		<button label="&qf.button.down;" class="order-button" />
-	    	</row>
-    	</rows>
-    </grid>
+    <hbox class="drag-image">
+      <image src="Drag-Tabs.gif" />
+    </hbox>
+
+    <vbox id="myscrollbox" flex="1">
+	    <grid flex="1" id="QuickFolders-change-order-grid">
+		   	<columns>
+	    		<column flex="5" />
+	    		<column flex="0" />
+	    		<column flex="0" />
+	    	</columns>
+
+	    	<rows id="QuickFolders-change-order-grid-rows">
+	    		<row>
+		    		<label>&qf.label.testfolder;</label>
+		    		<button label="&qf.button.up;" class="order-button-up" />
+		    		<button label="&qf.button.down;" class="order-button-down" />
+		    	</row>
+		    	<row>
+		    		<label>&qf.label.testfolder2;</label>
+		    		<button label="&qf.button.up;" class="order-button-up" />
+		    		<button label="&qf.button.down;" class="order-button-down" />
+		    	</row>
+	    	</rows>
+	    </grid>
+    </vbox >
 </dialog>

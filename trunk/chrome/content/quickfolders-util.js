@@ -16,6 +16,13 @@ QuickFolders.Util = {
 	  return this.Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
     },
 
+    Application: function() {
+        var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+                        .getService(Components.interfaces.nsIXULAppInfo);
+        var appName=appInfo.name;
+	    return appName;
+    },
+
     clearChildren: function(element,withCategories) {
 	    if (withCategories)
 	        while(element.childNodes.length > 0) {
@@ -92,7 +99,7 @@ QuickFolders.Util = {
           sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
         var sourceFolder = sourceMsgHdr.folder;
         var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
-        if (QuickFolders.Util.Appver() > 2) {
+        if (QuickFolders.Util.Appver() > 2 || QuickFolders.Util.Application()=='Postbox') {
           var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(this.Ci.nsIMsgCopyService);
           cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
         }

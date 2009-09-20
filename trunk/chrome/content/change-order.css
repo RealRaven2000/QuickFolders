@@ -1,0 +1,66 @@
+hbox#qf-header {
+	background-image: url("quickfolders-Icon.png") !important;
+    background-position: 10px 10px !important;
+    background-repeat: no-repeat !important;
+}
+
+description#Explain-Drag {
+  Padding: 10px 0px;
+}
+
+#qf-options-header .dialogheader-title {
+	margin: 0px !important;
+	font-size: large;
+	font-weight: bold;
+}
+
+
+#qf-options-header {
+	margin: 5px 0px 5px 45px;
+	border: 2px solid;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+	padding: 5px 8px;
+	background-image: url("ice-bar-tall.png");
+	background-repeat: repeat-x;
+	background-color: Highlight;
+	color: #000;
+}
+
+
+vbox#myscrollbox {
+  overflow: auto;
+  max-height:650px;
+  background-color: #FFF;
+  color: black;
+  padding: 2px;
+  border: 1px solid black;
+}
+
+grid#QuickFolders-change-order-grid {
+  max-height:650px !important;
+
+}
+
+hbox.drag-image {
+  margin-bottom: 20px;
+}
+
+button.order-button-up {
+    -moz-appearance: button-small;
+    max-height: 1.6em !important;
+    list-style-image: url("dropUp.gif") !important;
+}
+button.order-button-down {
+    -moz-appearance: button-small;
+    max-height: 1.6em !important;
+    list-style-image: url("dropDown.gif") !important;
+}
+rows.#QuickFolders-change-order-grid-rows row
+{
+  line-height: 1.8em !important;
+}
+
+-moz-appearance: menulist

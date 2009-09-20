@@ -16,11 +16,14 @@ QuickFolders.Interface = {
 
     setFolderUpdateTimer: function() {
 	    QuickFolders.Util.logDebug(" Old Timer ID = " + this.TimeoutID);
+
 	    // avoid the overhead if marking a folder with lots of unread mails as read or getting emails
 	    // made folder update asynchronous instead.
 	    if (!(this.TimeoutID>0)) {
 		  try {
-		      this.TimeoutID = setTimeout("QuickFolders.Interface.queuedFolderUpdate()", 2500);
+		      var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.queuedFolderUpdateDelay');
+		      if (!nDelay>0) nDelay = 750;
+		      this.TimeoutID = setTimeout("QuickFolders.Interface.queuedFolderUpdate()", nDelay);
 		      QuickFolders.Util.logDebug("New Folder Update Timer ID = " + this.TimeoutID);
           }
           catch (e) {
@@ -472,8 +475,8 @@ QuickFolders.Interface = {
         //QuickFolders.Util.logDebug("Creating Popup Set for " + folder.name);
 
         menuitem = document.createElement('menuitem');
-        menuitem.className='cmd';
         menuitem.setAttribute("tag","qfRemove");
+        menuitem.className='cmd menuitem-iconic';
 
         menuitem.setAttribute('label',qfBundle.GetStringFromName("qfRemoveBookmark"));
         menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfRemoveBookmarkAccess"));
@@ -481,7 +484,7 @@ QuickFolders.Interface = {
         menupopup.appendChild(menuitem);
 
         menuitem = document.createElement('menuitem');
-        menuitem.className='cmd';
+        menuitem.className='cmd menuitem-iconic';
         menuitem.setAttribute("tag","qfRename");
         menuitem.setAttribute('label',qfBundle.GetStringFromName("qfRenameBookmark"));
         menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfRenameBookmarkAccess"));
@@ -491,7 +494,7 @@ QuickFolders.Interface = {
         if (QuickFolders.Util.Appver() < 3) {
 	        // TB3 we will implement that one later :)
 	        menuitem = document.createElement('menuitem');
-	        menuitem.className='cmd';
+	        menuitem.className='cmd menuitem-iconic';
 	        menuitem.setAttribute("tag","qfCompact");
 	        menuitem.setAttribute('label',qfBundle.GetStringFromName("qfCompactFolder"));
 	        menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfCompactFolderAccess"));
@@ -500,6 +503,7 @@ QuickFolders.Interface = {
         }
 
         menuitem = document.createElement('menuitem');
+        menuitem.setAttribute("class","menuitem-iconic");
         menuitem.className='cmd';
         menuitem.setAttribute("tag","qfCategory");
         menuitem.setAttribute('label',qfBundle.GetStringFromName("qfSetCategory"));
@@ -512,6 +516,7 @@ QuickFolders.Interface = {
         colorMenu.setAttribute("tag",'qfTabColorMenu');
         colorMenu.setAttribute("label", "Tab Color");
         colorMenu.className = 'QuickFolders-folder-popup';
+        menuitem.setAttribute("class","menuitem-iconic");
 
         var menuColorPopup = document.createElement("menupopup");
         colorMenu.appendChild(menuColorPopup);
@@ -579,9 +584,11 @@ QuickFolders.Interface = {
                     menuitem.setAttribute("tag","sub");
 
                     if (subfolder.getNumUnread(false)>0) {
-                      menuitem.setAttribute("class","hasUnread");
+                      menuitem.setAttribute("class","hasUnread menuitem-iconic");
                       menuitem.setAttribute('label', subfolder.name + ' (' + subfolder.getNumUnread(false) + ')');
                     }
+                    else
+                      menuitem.setAttribute("class","menuitem-iconic");
                     menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");
 
                     menuitem.folder = subfolder;
@@ -591,11 +598,13 @@ QuickFolders.Interface = {
 				    //QuickFolders.Util.logToConsole("   adding menu item " + subfolder.name + " to " + folder.name + "...");
                     popupMenu.appendChild(menuitem);
 
-	                if (subfolder.hasSubFolders) {
+	                if (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders()) {
                       //QuickFolders.Util.logToConsole("folder " + subfolder.name + " has subfolders");
 				      var subMenu = document.createElement('menu');
 				      subMenu.setAttribute("label", subfolder.name);
 				      subMenu.className = 'QuickFolders-folder-popup';
+// WIP WIP WIP AG to test: recursive popup menus...
+				      subMenu.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)");
 
 		              var subPopup = document.createElement("menupopup");
 
@@ -648,7 +657,8 @@ QuickFolders.Interface = {
     } ,
 
     viewChangeOrder: function() {
-        window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order','chrome,titlebar,toolbar,centerscreen,modal',QuickFolders);
+        window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
+                          'chrome,titlebar,toolbar,centerscreen,resizable,modal=no',QuickFolders);
     } ,
 
     onFolderSelected: function() {

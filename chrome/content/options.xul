@@ -202,10 +202,10 @@ label="&qf.checkbox.showUnreadMessageCount;"
                 <hbox>
                   <groupbox flex="1" >
 
-			      <caption label="Individual Tab Color Appearance:"/>
+			      <caption label="&qf.options.LayoutColorAppearance;"/>
                   <radiogroup preference="QuickFolders-Preferences-ColorTabStyleId">
-                     <radio label=" (striped style)" value="0" src="striped-example.gif" />
-                     <radio label=" (filled style)" value="1" src="full-example.gif"/>
+                     <radio label=" &qf.options.LayoutColorAppearanceStriped;" value="0" src="striped-example.gif" />
+                     <radio label=" &qf.options.LayoutColorAppearanceFilled;" value="1" src="full-example.gif"/>
                   </radiogroup>
                   </groupbox>
 

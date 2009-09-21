@@ -40,7 +40,7 @@ vbox#myscrollbox {
 }
 
 grid#QuickFolders-change-order-grid {
-  max-height:650px !important;
+  max-height:1000px !important;
 
 }
 
@@ -61,6 +61,6 @@ button.order-button-down {
 rows.#QuickFolders-change-order-grid-rows row
 {
   line-height: 1.8em !important;
+  /*overflow: auto;*/
 }
 
--moz-appearance: menulist

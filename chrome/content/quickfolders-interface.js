@@ -514,7 +514,7 @@ QuickFolders.Interface = {
         // tab colors menu
         var colorMenu = document.createElement('menu');
         colorMenu.setAttribute("tag",'qfTabColorMenu');
-        colorMenu.setAttribute("label", "Tab Color");
+        colorMenu.setAttribute("label", qfBundle.GetStringFromName("qfMenuTabColorPopup") );
         colorMenu.className = 'QuickFolders-folder-popup';
         menuitem.setAttribute("class","menuitem-iconic");
 
@@ -528,11 +528,11 @@ QuickFolders.Interface = {
 	        menuitem.className='color';
 		    menuitem.setAttribute("tag","qfColor"+jCol);
 	        if (jCol) {
-	          menuitem.setAttribute('label',"Color "+ jCol);
+	          menuitem.setAttribute('label',qfBundle.GetStringFromName("qfMenuColor") + " "+ jCol);
 	          //menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
             }
 	        else
-	          menuitem.setAttribute('label',"No Color!");
+	          menuitem.setAttribute('label',qfBundle.GetStringFromName("qfMenuTabColorNone"));
 	        menuitem.setAttribute("oncommand","QuickFolders.Interface.setTabColor(event.target.parentNode.parentNode.parentNode.folder,'" + jCol + "')");  // "MsgCompactFolder(false);" only for current folder
 	        menuColorPopup.appendChild(menuitem);
         }

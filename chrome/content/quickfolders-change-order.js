@@ -6,6 +6,8 @@ QuickFolders.ChangeOrder = {
     init: function(window) {
         this.window = window;
         this.showFolders();
+        window.sizeToContent();
+        window.resizeTo(window.outerWidth, window.parent.innerHeight / 1.6);
     } ,
 
     $: function(id) {

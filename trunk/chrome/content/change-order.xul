@@ -41,7 +41,7 @@
 	    		<column flex="0" />
 	    	</columns>
 
-	    	<rows id="QuickFolders-change-order-grid-rows">
+	    	<rows id="QuickFolders-change-order-grid-rows" style="overflow: auto;">
 	    		<row>
 		    		<label>&qf.label.testfolder;</label>
 		    		<button label="&qf.button.up;" class="order-button-up" />

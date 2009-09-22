@@ -37,8 +37,8 @@
 	    <grid flex="1" id="QuickFolders-change-order-grid">
 		   	<columns>
 	    		<column flex="5" />
-	    		<column flex="0" />
-	    		<column flex="0" />
+	    		<column flex="1" />
+	    		<column flex="1" />
 	    	</columns>
 
 	    	<rows id="QuickFolders-change-order-grid-rows" style="overflow: auto;">

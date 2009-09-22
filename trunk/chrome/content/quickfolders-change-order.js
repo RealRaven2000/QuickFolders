@@ -7,7 +7,7 @@ QuickFolders.ChangeOrder = {
         this.window = window;
         this.showFolders();
         window.sizeToContent();
-        window.resizeTo(window.outerWidth, window.parent.innerHeight / 1.6);
+        window.resizeTo(window.outerWidth, window.parent.innerHeight / 1.8);
     } ,
 
     $: function(id) {

@@ -49,13 +49,13 @@ hbox.drag-image {
 }
 
 button.order-button-up {
-    -moz-appearance: button-small;
-    max-height: 1.6em !important;
+/*    -moz-appearance: button-small; */
+    max-height: 1.9em !important;
     list-style-image: url("dropUp.gif") !important;
 }
 button.order-button-down {
-    -moz-appearance: button-small;
-    max-height: 1.6em !important;
+/*    -moz-appearance: button-small; */
+    max-height: 1.9em !important;
     list-style-image: url("dropDown.gif") !important;
 }
 rows.#QuickFolders-change-order-grid-rows row

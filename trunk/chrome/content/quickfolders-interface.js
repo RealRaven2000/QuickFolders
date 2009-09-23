@@ -577,9 +577,8 @@ QuickFolders.Interface = {
                 }
 
                 try {
-
 				    //QuickFolders.Util.logToConsole("   creating menu item " + subfolder.name + "...");
-                    menuitem = document.createElement('menuitem');
+                    var menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
                     menuitem.setAttribute("tag","sub");
 
@@ -603,20 +602,18 @@ QuickFolders.Interface = {
 				      var subMenu = document.createElement('menu');
 				      subMenu.setAttribute("label", subfolder.name);
 				      subMenu.className = 'QuickFolders-folder-popup';
-// WIP WIP WIP AG to test: recursive popup menus...
-				      subMenu.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)");
+
+				      subMenu.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
+                      //subMenu.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 		              var subPopup = document.createElement("menupopup");
 
-                      subMenu.appendChild(subPopup);
-                      //QuickFolders.Util.logToConsole("[ appending submenu " + subfolder.name + " to " + folder.name);
-                      popupMenu.appendChild(subMenu); // append it to main menu
 
-                      //QuickFolders.Util.logToConsole("append header item " + subfolder.name + ".");
+                      subMenu.appendChild(subPopup);
+                      popupMenu.appendChild(subMenu); // append it to main menu
                       subPopup.appendChild(menuitem); // add parent entry
 
 		              this.addSubFoldersPopup(subPopup,subfolder); // populate the sub menu
-                      //QuickFolders.Util.logToConsole("submenu " + subfolder.name + " appended to " + folder.name + " ]");
 	                }
 
                     if (appver<3)
@@ -649,7 +646,7 @@ QuickFolders.Interface = {
 
 
     viewOptions: function() {
-      // temporarily disable instantApply! Necessary for the time consuming style sheet changes in Layout tab.
+        // temporarily disable instantApply! Necessary for the time consuming style sheet changes in Layout tab.
 	    var b=QuickFolders.Preferences.getInstantApplyPref();
 	    QuickFolders.Preferences.setInstantApplyPref(false);
         window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders);
@@ -658,7 +655,7 @@ QuickFolders.Interface = {
 
     viewChangeOrder: function() {
         window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
-                          'chrome,titlebar,toolbar,centerscreen,resizable,modal=no',QuickFolders);
+                          'chrome,titlebar,toolbar,centerscreen,resizable,dependent',QuickFolders); // dependent = modeless
     } ,
 
     onFolderSelected: function() {
@@ -705,11 +702,12 @@ QuickFolders.Interface = {
       }
       else {
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',false);
-        return;
+        return  true;
       }
       // CSS 3 test in TB3
       if (QuickFolders.Util.Appver() > 2)
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
+      return  true;
 
     },
 

@@ -332,30 +332,32 @@ var QuickFolders = {
         onDragEnter: function(evt, dragSession) {
             try {
 	            var popupStart = evt.target;
-	            QuickFolders.Util.logDebug ("Popup DragEnter" + popupStart.name);
+	            if (popupStart.firstChild.nodeName == 'menupopup') {
+ 	              QuickFolders.Util.logDebug ("showing popup ");
+	              popupStart.firstChild.showPopup();
+                }
+                else
+ 	              QuickFolders.Util.logDebug ("Dragenter with child node: " + popupStart.firstChild.nodeName);
             }
             catch(e) {
-                alert("quickFolders:\n" + e);
+                QuickFolders.Util.logDebug ("onDragEnter: popupStart.firstChild has no nodeName - parents noder name" + popupStart.nodeName);
             }
         },
 
         // deal with old folder popups
-        onDragExit: function(event, dragSession) {
+        onDragExit: function(evt, dragSession) {
 	        var popupStart = evt.target;
-	        QuickFolders.Util.logDebug ("Popup DragExit " + popupStart.name);
-
+	        if (popupStart.nodeName == 'menupopup')
+	          QuickFolders.Util.logDebug ("Popup DragExit on " + popupStart.firstChild.nodeName);
+	          //popupStart.firstChild.hidePopup();
         } ,
 
-        onDragOver: function (evt,flavor,session){
+        onDragOver: function (evt, flavor, session){
+	        var popupStart = evt.target;
+	        QuickFolders.Util.logDebug ("Popup DragOver " + popupStart.firstChild.nodeName);
             session.canDrop = (flavor.contentType == "text/x-moz-message");
-        },
-
-
-        // drop mails on popup: move mail, like in buttondragobserver!
-        onDrop: function (evt,dropData,dragSession) {
-            var popupStart = evt.target;
-            QuickFolders.Util.logDebug ("Popup Drop on" + popupStart.name);
         }
+
 
     },
 

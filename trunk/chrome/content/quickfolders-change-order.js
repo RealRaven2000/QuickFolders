@@ -7,7 +7,7 @@ QuickFolders.ChangeOrder = {
         this.window = window;
         this.showFolders();
         window.sizeToContent();
-        window.resizeTo(window.outerWidth, window.parent.innerHeight / 1.8);
+        window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
     } ,
 
     $: function(id) {
@@ -57,7 +57,7 @@ QuickFolders.ChangeOrder = {
     } ,
 
     onButtonClick: function(button, direction, folderURI) {
-        modelSelection = QuickFolders.Model.selectedFolders;
+        var modelSelection = QuickFolders.Model.selectedFolders;
 
         for(var i = 0; i < modelSelection.length; i++) {
             folderEntry = modelSelection[i];
@@ -65,7 +65,7 @@ QuickFolders.ChangeOrder = {
             if(folderEntry.uri == folderURI) {
 
                 if(i > 0 && direction == 'up') {
-                    tmp = modelSelection[i - 1];
+                    var tmp = modelSelection[i - 1];
                     modelSelection[i - 1] = modelSelection[i];
                     modelSelection[i] = tmp;
                     QuickFolders.ChangeOrder.showFolders();

@@ -213,11 +213,11 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
 }
 
 menuitem[tagName="qfOptions"] {
-    list-style : url('settings-20.png') outside !important;
+    list-style-image : url('settings-20.png')  !important;
 }
 
 menuitem[tagName="qfOrder"] {
-    list-style : url('order.gif') !important;
+    list-style-image : url('order.gif') !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.color {

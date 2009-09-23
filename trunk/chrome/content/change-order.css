@@ -58,7 +58,8 @@ button.order-button-down {
     max-height: 1.9em !important;
     list-style-image: url("dropDown.gif") !important;
 }
-rows.#QuickFolders-change-order-grid-rows row
+
+rows#QuickFolders-change-order-grid-rows row
 {
   line-height: 1.8em !important;
   /*overflow: auto;*/

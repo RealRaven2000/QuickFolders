@@ -386,7 +386,7 @@ var QuickFolders = {
         onDragEnter: function(evt, dragSession) {
             try {
                 var button = evt.target;
-
+ 
                 if(button.tagName == "toolbarbutton") {
                     // highlight drop target
                     if (dragSession.numDropItems==1) {
@@ -413,7 +413,9 @@ var QuickFolders = {
 
 	                //show context menu if dragged over a button which has subfolders
                     var targetFolder = button.folder;
-                    if(targetFolder.hasSubFolders) {
+                    
+                    // only show popups when dragging messages!
+                    if(dragSession.isDataFlavorSupported("text/x-moz-message") && targetFolder.hasSubFolders) {
                         //close any other context menus
                         var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
                         for(var i = 0; i < otherPopups.length; i++) {

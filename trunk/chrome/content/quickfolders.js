@@ -156,18 +156,29 @@
      AG fixed: in Tb3 the folder tree view would not scroll
         added: whole tab coloring
 
-   12/09/2009  Release 1.3
-     AG added: subfolders in popup menus - configurable
+   12/09/2009  Release 1.3 (Test Release)
+     AG added subfolders in popup menus - configurable
                whole / striped tab option and backgrounds
-     fixed: slowdown of operations that change the number of Total / Unread emails because QF was updated every time
+     fixed slowdown of operations that change the number of Total / Unread emails because QF was updated every time
             this is now donw asynchroneously with a 1000ms timer.
-     known issues: subfolders expand points do not expand when dragging mail on them
-                   to solve, debug popupDragObserver()
-     open items: code popup of submenus when dragging mail and test drag & drop on these
-                 tweaks in whole tab coloring (active, hover consistency)
 
-    20/09/2009
-      AG added: scrollbars and animation to "change order of bookmarks" dialog
+    23/09/2009 Release 1.4
+      AG added scrollbars and animation to "change order of bookmarks" dialog
+         added subfolder expansion
+         added Postbox support
+    open items tweaks in whole tab coloring (active, hover consistency)
+  known issues  sometimes the colors do not show up on program startup. Any folder modification (e.g. unread/read) or Category selection will make the color appear
+                popup menus might close delayed
+                change the order of bookmarks has the wrong height (should be 80% of its parent)
+                chevrons for moving Tabs don't show up in TB3 (beta bug?)
+  --------------1.4  Postbox specific
+  known issues color submenu still has no colors
+               some minor CSS errors
+
+
+    23/09/2009 Release 1.5b
+      AG bumped compatibility to 3.0.4b
+         fixed 2 security issues releated to setTimer
 
 
 
@@ -206,7 +217,8 @@ var QuickFolders = {
        if(QuickFolders.isCorrectWindow()) {
 		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
             // document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-            setTimeout("QuickFolders.init()", nDelay);
+            var thefunc='QuickFolders.init()';
+            setTimeout(thefunc, nDelay);
 	        this.initDone=true;
         }
         else {

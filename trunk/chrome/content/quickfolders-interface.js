@@ -23,7 +23,8 @@ QuickFolders.Interface = {
 		  try {
 		      var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.queuedFolderUpdateDelay');
 		      if (!nDelay>0) nDelay = 750;
-		      this.TimeoutID = setTimeout("QuickFolders.Interface.queuedFolderUpdate()", nDelay);
+		      var func = "QuickFolders.Interface.queuedFolderUpdate()";
+		      this.TimeoutID = setTimeout(func, nDelay);
 		      QuickFolders.Util.logDebug("New Folder Update Timer ID = " + this.TimeoutID);
           }
           catch (e) {
@@ -35,6 +36,7 @@ QuickFolders.Interface = {
     },
 
     queuedFolderUpdate: function() {
+	  QuickFolders.Util.logDebug("Folder Update from Timer " + this.TimeoutID);
 	  this.updateFolders(false);
 	  this.TimeoutID=0;
     },
@@ -57,19 +59,19 @@ QuickFolders.Interface = {
         this.menuPopupsByOffset = [];
         this.specialButtons = [];
 
-
-        QuickFolders.Util.clearChildren(this.getToolbar(),rebuildCategories);
-        //QuickFolders.Util.$('QuickFolders-title-label').style.visibility = QuickFolders.Preferences.isShowQuickFoldersLabel() ? 'visible' : 'hidden';
+        QuickFolders.Util.clearChildren(this.getToolbar(), rebuildCategories);
         QuickFolders.Util.$('QuickFolders-title-label').value = QuickFolders.Preferences.isShowQuickFoldersLabel() ? 'QuickFolders:' : '';
 
-        //QuickFolders.Util.$('QuickFolders-title-label').style.display = QuickFolders.Preferences.isShowQuickFoldersLabel() ? '' : 'none';
         if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
           this.updateCategories();
 
 
         var offset = 0;
 
+        // force user colors on first updateFolders (no selecteFolder yet!)
         if (QuickFolders.Model.selectedFolders.length) {
+	        QuickFolders.Util.logDebug('QuickFolders.Model.selectedFolders.length = ' + QuickFolders.Model.selectedFolders.length + ')');
+
             for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
                 var folderEntry = QuickFolders.Model.selectedFolders[i];
                 var folder;
@@ -688,6 +690,7 @@ QuickFolders.Interface = {
 	    return false;
 
 	  var folderLabel = button.label;
+      QuickFolders.Util.logDebug('setButtonColor (' + folderLabel + ',' + col + ')');
 	  var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
 
       // have to do wildcard matching because of shortcut numbers / unread emails

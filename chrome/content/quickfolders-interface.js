@@ -593,8 +593,9 @@ QuickFolders.Interface = {
                     menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");
 
                     menuitem.folder = subfolder;
-                    menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver)");
-                    menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+                    menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
+                    menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+                    menuitem.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 				    //QuickFolders.Util.logToConsole("   adding menu item " + subfolder.name + " to " + folder.name + "...");
                     popupMenu.appendChild(menuitem);
@@ -606,7 +607,7 @@ QuickFolders.Interface = {
 				      subMenu.className = 'QuickFolders-folder-popup';
 
 				      subMenu.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-                      //subMenu.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+                      subMenu.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 		              var subPopup = document.createElement("menupopup");
 

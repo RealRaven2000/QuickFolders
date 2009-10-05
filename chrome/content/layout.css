@@ -287,7 +287,8 @@ menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover {
     -moz-border-radius: 4px 4px 0 0;
 }
 
-menupopup.QuickFolders-folder-popup menuitem:hover {
+menupopup.QuickFolders-folder-popup menuitem:hover,
+menupopup.QuickFolders-folder-popup menu:hover {
     -moz-border-radius: 0 4px 4px 0;
     border: 1px solid brown !important;
     color: brown !important;

@@ -344,30 +344,67 @@ var QuickFolders = {
         onDragEnter: function(evt, dragSession) {
             try {
 	            var popupStart = evt.target;
-	            if (popupStart.firstChild.nodeName == 'menupopup') {
- 	              QuickFolders.Util.logDebug ("showing popup ");
-	              popupStart.firstChild.showPopup();
+	            var pchild = popupStart.firstChild;
+	            if (pchild.nodeName == 'menupopup') {
+	              // hide all sibling popup menus
+	              var psib = popupStart.nextSibling;
+	              while (psib) {
+		              if (psib.nodeName == 'menu' && popupStart!=psib)
+		                psib.firstChild.hidePopup();
+		              psib = psib.nextSibling;
+	              }
+	              psib = popupStart.previousSibling;
+	              while (psib) {
+		              if (psib.nodeName == 'menu' && popupStart!=psib)
+		                psib.firstChild.hidePopup();
+		              psib = psib.previousSibling;
+	              }
+	              pchild.showPopup();
+ 	              QuickFolders.Util.logDebug ("Displayed popup " + popupStart.getAttribute('label'));
                 }
                 else
- 	              QuickFolders.Util.logDebug ("Dragenter with child node: " + popupStart.firstChild.nodeName);
+ 	              QuickFolders.Util.logDebug ("Ignoring DragEnter with child node: " + pchild.nodeName);
             }
             catch(e) {
-                QuickFolders.Util.logDebug ("onDragEnter: popupStart.firstChild has no nodeName - parents noder name" + popupStart.nodeName);
+                QuickFolders.Util.logDebug ("onDragEnter: node name:" + popupStart.nodeName + "\n" + e);
             }
         },
 
         // deal with old folder popups
         onDragExit: function(evt, dragSession) {
 	        var popupStart = evt.target;
-	        if (popupStart.nodeName == 'menupopup')
-	          QuickFolders.Util.logDebug ("Popup DragExit on " + popupStart.firstChild.nodeName);
-	          //popupStart.firstChild.hidePopup();
+	        // find parent node!
+            QuickFolders.Util.logDebug("popupDragObserver.DrageExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+	        try {
+		        if (popupStart.nodeName=='menu') {
+			        QuickFolders.Util.logDebug ("remember hidePopup " + popupStart.getAttribute('label'));
+			        globalLastChildPopup=popupStart; // remember to destroy!
+		            QuickFolders.Util.logDebug ("popupDragObserver DragExit on " + popupStart.firstChild.nodeName );
+                }
+            }
+            catch (e) {
+              QuickFolders.Util.logDebug ("CATCH popupDragObserver DragExit: node(" + popupStart.nodeName + ")\n" + e);
+            }
+	        // if (popupStart.nodeName == 'menupopup')
         } ,
 
         onDragOver: function (evt, flavor, session){
-	        var popupStart = evt.target;
-	        QuickFolders.Util.logDebug ("Popup DragOver " + popupStart.firstChild.nodeName);
             session.canDrop = (flavor.contentType == "text/x-moz-message");
+            if (null!=globalLastChildPopup) { //  && globalLastChildPopup!=evt.target
+              QuickFolders.Util.logDebug ("onDragOver: globalLastChildPopup = " + globalLastChildPopup.getAttribute('label') + "\n");
+              /*globalLastChildPopup.firstChild.hidePopup();*/
+              globalLastChildPopup=null;
+          }
+        },
+
+        // drop mails on popup: move mail, like in buttondragobserver!
+        onDrop: function (evt,dropData,dragSession) {
+            QuickFolders.Util.logDebug("popupDragObserver.onDrop " + dropData.flavour.contentType);
+	        var popupStart = evt.target;
+            try {
+	            QuickFolders.Util.logDebug ("Popup Drop on" + popupStart.name);
+            } catch(e) {QuickFolders.Util.logDebug (e);}
+            popupStart.firstChild.hidePopup(); // new
         }
 
 
@@ -385,6 +422,10 @@ var QuickFolders = {
 
         onDragEnter: function(evt, dragSession) {
             try {
+		        QuickFolders.Util.logDebug("buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName);
+		        if (dragSession.sourceNode.nodeName == 'toolbarpaletteitem') {
+		          return;
+	            }
                 var button = evt.target;
  
                 if(button.tagName == "toolbarbutton") {
@@ -421,6 +462,11 @@ var QuickFolders = {
                         for(var i = 0; i < otherPopups.length; i++) {
                             otherPopups[i].hidePopup();
                         }
+                    }
+
+                    // only show popups when dragging messages!
+                    if(dragSession.isDataFlavorSupported("text/x-moz-message") && targetFolder.hasSubFolders) {
+                        //close any other context menus
                         if (dragSession.isDataFlavorSupported("text/unicode" ))
 	                      return;  // don't show popup when reordering tabs
 
@@ -473,9 +519,13 @@ var QuickFolders = {
 
         // deal with old folder popups
         onDragExit: function(event, dragSession) {
+	        QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - sourceNode = " + dragSession.sourceNode.nodeName);
+            if (dragSession.sourceNode.nodeName == 'toolbarpaletteitem') {
+	            return;
+            }
 	        var button = event.target;
 	        globalHidePopupId="";
-	        if (dragSession.isDataFlavorSupported("text/unicode" ))
+	        if (dragSession.isDataFlavorSupported("text/unicode" )) // drag buttons
 	        {
 		        // remove dragdrop marker:
 		        button.className = button.className.replace(/\s*dragLEFT/,"");
@@ -504,8 +554,9 @@ var QuickFolders = {
         },
 
         onDrop: function (evt,dropData,dragSession) {
-            var button = evt.target;
-            var targetFolder = button.folder;
+	        QuickFolders.Util.logDebug("buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
+            var DropTarget = evt.target;
+            var targetFolder = DropTarget.folder;
             globalHidePopupId="";
 
             switch (dropData.flavour.contentType) {
@@ -538,10 +589,48 @@ var QuickFolders = {
                           dragSession.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
                         )
                     }
+                    // close any top level menu items after message drop!
+                    if (flavor.value == "text/x-moz-message") {
+	                    //hide popups menus!
+                       QuickFolders.Util.logDebug ("buttonDragObserver.onDrop " + DropTarget.tagName+ '  Target:' + targetFolder.name );
+                       var p=DropTarget;
+                       QuickFolders.Util.logDebug ("Close menus for node=" + p.nodeName
+                                                 + "\nlabel=" + p.getAttribute('label')
+                                                 + "\nparent tag=" + p.parentNode.tagName);
+                       if (p.tagName=='menuitem') // drop to a menu item
+                       {
+	                       // close all containing menus
+	                       while (null!=p.parentNode && p.tagName!='toolbar') {
+	                         p=p.parentNode;
+	                         QuickFolders.Util.logDebug ("parenttag=" + p.tagName);
+	                         QuickFolders.Util.logDebug ("node= " + p.nodeName);
+	                         if (p.tagName=='menupopup') {
+						        QuickFolders.Util.logDebug ("Try hide parent Popup " + p.getAttribute('label'));
+						        p.hidePopup();
+	                         }
+                           }
+                       }
+
+                       if (p.tagName=='toolbarbutton') {// drop to a button
+                         globalHidePopupId='moveTo_'+DropTarget.folder.URI;
+                         QuickFolders.Util.logDebug ("set globalHidePopupId to " + globalHidePopupId);
+
+		                    var popup = document.getElementById(globalHidePopupId);
+					        try {
+						        popup.parentNode.removeChild(popup); //was popup.hidePopup()
+						        globalHidePopupId="";
+					        }
+					        catch(e) {
+						        QuickFolders.Util.logDebug ("could not remove popup of " + globalHidePopupId );
+					        }
+
+                       }
+
+                    }
 
                     break;
                 case "text/unicode":
-                    QuickFolders.ChangeOrder.insertAtPosition(dropData.data, button.folder.URI, "");
+                    QuickFolders.ChangeOrder.insertAtPosition(dropData.data, DropTarget.folder.URI, "");
                     break;
             }
         },
@@ -692,7 +781,7 @@ var myFolderListener = {
 	          catch(e) {};
 	        }
         }
-        catch(e) {};
+        catch(e) {QuickFolders.Util.logDebug("item event error: " + e)};
     },
     OnFolderLoaded: function(aFolder) { },
     OnDeleteOrMoveMessagesCompleted: function( aFolder) {}
@@ -709,4 +798,5 @@ QuickFolders.addLoadEventListener();
 
 
 var globalHidePopupId="";
+var globalLastChildPopup=null;
 window.dump("globalHidePopupId=" + globalHidePopupId + "\n");

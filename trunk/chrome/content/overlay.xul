@@ -51,12 +51,12 @@
                 <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
                     <menuitem label="&qf.menuitem.quickfolders.options;"
                               accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd"
+                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd menuitem-iconic"
                               tagName="qfOptions"
                               />
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;"
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
-                              oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd"
+                              oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd menuitem-iconic"
                               tagName="qfOrder"
                               />
 

@@ -505,7 +505,7 @@ QuickFolders.Interface = {
         }
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute("class","menuitem-iconic");
+        menuitem.setAttribute("class","cmd menuitem-iconic");
         menuitem.className='cmd';
         menuitem.setAttribute("tag","qfCategory");
         menuitem.setAttribute('label',qfBundle.GetStringFromName("qfSetCategory"));
@@ -527,7 +527,7 @@ QuickFolders.Interface = {
         var jCol;
         for (jCol=0; jCol<=20;jCol++) {
 	        menuitem = document.createElement('menuitem');
-	        menuitem.className='color';
+	        menuitem.className='color menuitem-iconic';
 		    menuitem.setAttribute("tag","qfColor"+jCol);
 	        if (jCol) {
 	          menuitem.setAttribute('label',qfBundle.GetStringFromName("qfMenuColor") + " "+ jCol);

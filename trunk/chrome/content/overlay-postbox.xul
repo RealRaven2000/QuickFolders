@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
+<?xml-stylesheet href="postbox.css" type="text/css"?>
 
 <!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -51,12 +52,12 @@
                 <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
                     <menuitem label="&qf.menuitem.quickfolders.options;"
                               accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd"
+                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd menuitem-iconic"
                               tagName="qfOptions"
                               />
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;"
                               accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
-                              oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd"
+                              oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd menuitem-iconic"
                               tagName="qfOrder"
                               />
 

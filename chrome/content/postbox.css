@@ -1,0 +1,46 @@
+/* temporary fixes for postbox */
+menupopup.QuickFolders-folder-popup menuitem.color:hover {margin:3px !important; color: white !important;}
+
+/* color menu */
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor1"].color { color:#FFC105; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor2"].color { color:#00C000; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor3"].color { color:#F06000;  }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor4"].color { color:#46B066; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor5"].color  {color:#2591CF; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor6"].color  { color:#800080; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor7"].color  { color:#4D7EFB; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor8"].color  { color:#FF119D; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor9"].color  { color:#0E51FA; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor10"].color  { color:#D40000; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor11"].color  { color:#01B1D7; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor12"].color  { color:#F7FF13; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor13"].color  { color:#0A5C68; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor14"].color  { color:#9BF868; }
+menupopup.QuickFolders-folder-popup menuitem[tag='qfColor15'].color  { color:#000000; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor16"].color  { color:#404040; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor17"].color  { color:#01D71A; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor18"].color  { color:#FE28E2; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor19"].color  { color:#FF8080; }
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor20"].color  { color:#000000; }
+
+
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor1"].color:hover { outline: #FFC105 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor2"].color:hover { outline: #00C000 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor3"].color:hover { outline: #F06000 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor4"].color:hover { outline: #46B066 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor5"].color:hover { outline: #2591CF solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor6"].color:hover  { outline: #800080 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor7"].color:hover  { outline: #4D7EFB solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor8"].color:hover  { outline: #FF119D solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor9"].color:hover  { outline: #0E51FA solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor10"].color:hover  { outline: #D40000 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor11"].color:hover  { outline: #01B1D7 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor12"].color:hover  { outline: #F7FF13 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor13"].color:hover  { outline: #0A5C68 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor14"].color:hover  { outline: #9BF868 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag='qfColor15'].color:hover  { outline: #000000 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor16"].color:hover  { outline: #404040 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor17"].color:hover { outline: #01D71A solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor18"].color:hover { outline: #FE28E2 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor19"].color:hover  { outline: #FF8080 solid medium !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfColor20"].color:hover  { outline: #000000 solid medium !important;}

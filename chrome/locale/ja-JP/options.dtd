@@ -1,0 +1,54 @@
+<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders オプション">
+<!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.tab.general "一般">
+<!ENTITY qf.tab.layout "タブ表示">
+<!ENTITY qf.tab.quickhelp "簡易ヘルプ">
+<!ENTITY qf.checkbox.displaylabel "ツールバーに 'QuickFolders' ラベルを表示する">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt + 1 から Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Cｔｒｌ キーを使用する">
+<!ENTITY qf.checkbox.showshortcutnumber "フォルダのラベルにショートカット番号を表示する">
+<!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
+<!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
+<!ENTITY qf.checkbox.showTotalMessageCount "フォルダボタンにメッセージ数の合計を表示する">
+<!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
+<!ENTITY qf.checkbox.showFlatStyle "タブをフラットスタイルにする">
+<!ENTITY qf.checkbox.showIcons "アイコンを表示する (受信トレイ、送信済みトレイ、現在のフォルダ、ごみ箱)">
+<!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
+<!ENTITY qf.label.pixels "ピクセル">
+<!ENTITY qf.label.setcolors "[文字色] と背景色の設定">
+<!ENTITY qf.label.ActiveTabColor "アクティブなタブの色:">
+<!ENTITY qf.label.HoveredTabColor "ポイントしたタブの色:">
+<!ENTITY qf.label.DragOverBackground "タブのドラッグ中の色:">
+<!ENTITY qf.label.ToolbarBackground "ツールバーの背景色:">
+<!ENTITY qf.description.dragToAdd "新しいクイックフォルダ (ショートカット) を作成するには、メールフォルダをツールバー上の空いたところにドラッグします。メッセージをクイックフォルダ上にドラッグするとメッセージを移動します (Ctrl キーを押しながらドラッグでコピー)。メールフォルダを開くにはクイックフォルダをクリックします。">
+<!ENTITY qf.description.dragToPosition "クイックフォルダの位置を変更するには、フォルダを横にドラッグします。クイックフォルダを右クリックするとコンテキストメニューが表示され、サブフォルダを開くことができます。'ブックマークの名前を変更' はクイックフォルダのラベルを変更します。'ブックマークを削除' はクイックフォルダを削除します (実際のメールフォルダは削除しません)。">
+<!ENTITY qf.description.dragToPopup "メッセージをサブフォルダに移動するには、クイックフォルダのポップアップメニュー上にドラッグします。">
+<!ENTITY qf.description.changeCategory "ブックマークを右クリックするとカテゴリに追加できます。カテゴリはバーの左端のプルダウンメニューから選択できます。">
+<!ENTITY qf.description.rightClickOptions "オプションメニューを開くにはバーの空いたところを右クリックします。オプションでは表示スタイルをネイティブスタイル(小さめ) またはフラットスタイル(見やすい) から選択できます。">
+<!ENTITY qf.description.tipMsg "ヒント: フォルダ数が非常に多い場合は、キーボードでメッセージが操作できる Nostalgy 拡張をお試しください。">
+<!ENTITY qf.description.experimentalItems "以下の項目は実験段階です。将来のリリースで動作する予定です！">
+<!ENTITY qf.label.instantApplyMsg "注意: [閉じる] ボタンしか表示されないときは、カラー設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション...] を選択してください。[OK] ボタンを表示してカラー設定を保存します。">
+<!ENTITY qf.button.defaultcolors "既定の色">
+<!ENTITY qf.checkbox.debug "デバッグモード">
+<!ENTITY qf.label.StandardTabColor "タブの標準色:">
+<!ENTITY qf.label.initdelay "[ms] 初期化遅延時間 {標準は 1000}:">
+<!ENTITY qf.label.folders "フォルダのパス？">
+<!ENTITY qf.checkbox.autoFocusPreview "タブの変更時にメッセージリストをフォーカスする">
+<!ENTITY qf.label.homePage "詳しい情報は Mozdev.org の QuickFolders ホームページにあります。">
+<!ENTITY qf.tab.support "サポート">
+<!ENTITY qf.description.bugs "bugzilla でバグを報告してください:">
+<!ENTITY qf.label.bugLink "バグを報告する...">
+<!ENTITY qf.description.features "新しい機能の提案はこちら:">
+<!ENTITY qf.label.featuresLink "新しい機能を提案する...">
+<!ENTITY qf.description.languages "QuickFolders は他の言語にも対応しています。あなたの言語を追加するには Babelzilla で翻訳を追加してください:">
+<!ENTITY qf.label.languagesLink "翻訳を追加する...">
+<!ENTITY qf.description.donate "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:">
+<!ENTITY qf.label.donateLink "寄付ページを開く...">
+<!ENTITY qf.description.contactMe "個人的な連絡は axelg@gofree.indigo.ie まで:">
+<!ENTITY qf.label.contactLink "作者にメールする (英語またはドイツ語のみ)...">
+<!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
+<!ENTITY qf.menu.tabColor "色指定なし！">
+<!ENTITY qf.menu.Color "色番号">
+<!ENTITY qf.options.LayoutColorAppearance "タブのスタイル">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(ストライプ)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(塗りつぶし)">

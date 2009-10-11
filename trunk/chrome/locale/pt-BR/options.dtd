@@ -1,0 +1,56 @@
+<!ENTITY qf.prefwindow.quickfolders.options "Opções do QuickFolders">
+<!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.tab.general "Geral">
+<!ENTITY qf.tab.layout "Incremente minhas Abas!">
+<!ENTITY qf.tab.quickhelp "Ajuda rápida">
+<!ENTITY qf.checkbox.displaylabel "Mostrar o 'QuickFolders' na barra de ferramentas">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atalhos de teclado (Alt + 1 até Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl ao invés de Alt">
+<!ENTITY qf.checkbox.showshortcutnumber "Exibir o número do atalho nos rótulos de pastas">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Exibir o número de mensagens não lidas no botão da pasta">
+<!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
+<!ENTITY qf.checkbox.showTotalMessageCount "Exibir o total de mensagens no botão de cada pasta">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
+<!ENTITY qf.checkbox.showFlatStyle "Exibir abas em estilo liso">
+<!ENTITY qf.checkbox.showIcons "Exibir ícones (Caixa de entrada, Enviados, Atual, Lixo)">
+<!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
+<!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.setcolors "Definir [Cor de Texto], Cor de Fundo">
+<!ENTITY qf.label.ActiveTabColor "Cor da aba ativa:">
+<!ENTITY qf.label.HoveredTabColor "Cor da aba sob o cursor do mouse:">
+<!ENTITY qf.label.DragOverBackground "Cor de arrastar sobre:">
+<!ENTITY qf.label.ToolbarBackground "Fundo da barra de ferramentas:">
+<!ENTITY qf.description.dragToAdd "Arraste pastas de email para uma área vazia da nova barra de ferramentas para criar um novo quickfolder (funciona como um atalho/sinônimo). Arraste mensagens para um quickfolder para movê-las para a pasta correspondente (ou copie com a tecla modificadora). Clique em um quickfolder para mostrar sua pasta de email.">
+<!ENTITY qf.description.dragToPosition "Arraste quickfolders para os lados para alterar suas posições. Clique com o botão direito sobre um quickfolder para abrir o menu de contexto; por seleção, você pode ir para sub-pastas. 'Renomear favorito' altera o rótulo de um quickfolder. 'Remover favorito' apaga um quickfolder (não sua pasta de email).">
+<!ENTITY qf.description.dragToPopup "Arraste mensagens para o menu de um quickfolder para movê-las para sub-pastas.">
+<!ENTITY qf.description.changeCategory "Clique com o botão direito sobre um favorito para organizá-lo em uma categoria. Aparecerá uma lista de categorias à esquerda da barra.">
+<!ENTITY qf.description.rightClickOptions "Clique com o botão direito sobre uma área vazia para abrir o menu de opções. Nele você pode selecionar estilo nativo (menor) ou estilo liso (mais limpo; suporta indicador ao arrastar).">
+<!ENTITY qf.description.tipMsg "Dica: Se você tiver uma grande quantidade de pastas, tente a extensão Nostalgy para organização de mensagens através do teclado.">
+<!ENTITY qf.description.experimentalItems "Os itens a seguir são experimentais. Esperamos que estejam funcionando na próxima versão!!">
+<!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções... Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
+<!ENTITY qf.button.defaultcolors "Cores padrão">
+<!ENTITY qf.checkbox.debug "Modo Debug">
+<!ENTITY qf.label.StandardTabColor "Cor padrão de abas:">
+<!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
+<!ENTITY qf.label.folders "Pastas?">
+<!ENTITY qf.checkbox.autoFocusPreview "Foco na lista de mensagens ao mudar de aba">
+<!ENTITY qf.label.homePage "Informações detalhadas na nova página do QuickFolders no Mozdev.org...">
+<!ENTITY qf.tab.support "Suporte">
+<!ENTITY qf.description.bugs "Você pode reportar erros usando o bugzilla:">
+<!ENTITY qf.label.bugLink "Reportar um bug...">
+<!ENTITY qf.description.features "Solicite novos recursos aqui:">
+<!ENTITY qf.label.featuresLink "Solicitar um novo recurso...">
+<!ENTITY qf.description.languages "O QuickFolders suporta localizações. Você pode ajudar adicionando uma tradução para seu idioma no Babelzilla:">
+<!ENTITY qf.label.languagesLink "Adicionar uma tradução...">
+<!ENTITY qf.description.donate "Se você adora o QuickFolders tanto quanto nós e gostaria de ajudar seu desenvolvimento, pode doar algum dinheiro para incentivar a evolução do QuickFolders.">
+<!ENTITY qf.label.donateLink "Visitar a página de doações...">
+<!ENTITY qf.description.contactMe "Você pode ainda entrar em contato comigo pessoalmente no email axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Entrar em contato (inglês ou alemão)...">
+<!ENTITY qf.checkbox.showSubfolders "Expand Subfolders in popup menus (Experimental)">
+<!ENTITY qf.menu.tabColor "Tab Color">
+<!ENTITY qf.menu.tabColor "No Color!">
+<!ENTITY qf.menu.Color "Color">
+<!ENTITY qf.options.LayoutColorAppearance "Individual Tab Color Appearance">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(striped style)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(filled style)">
+

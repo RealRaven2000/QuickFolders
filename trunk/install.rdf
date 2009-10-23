@@ -3,32 +3,33 @@
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="rdf:#$Vsomz2"
-                   em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-                   em:minVersion="1.5"
-                   em:maxVersion="3.0b4" />
-  <RDF:Description RDF:about="urn:mozilla:install-manifest"
-                   em:id="quickfolders@curious.be"
-                   em:name="QuickFolders"
-                   em:version="1.5pre5"
-                   em:creator="Alexander Malfait"
-                   em:description="Bookmark your favorite mail folders in Thunderbird."
-                   em:iconURL="chrome://quickfolders/content/quickfolders-Icon.png"
-                   em:homepageURL="http://quickfolders.mozdev.org/index.html"
-                   em:optionsURL="chrome://quickfolders/content/options.xul">
-    <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
+   em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+   em:minVersion="1.5"
+   em:maxVersion="3.0b4"/>
   <RDF:Description RDF:about="rdf:#$Vsomt2"
-                   em:id="postbox@postbox-inc.com"
-                   em:minVersion="1.0.0"
-                   em:maxVersion="1.0.*" />
-
+   em:id="postbox@postbox-inc.com"
+   em:minVersion="1.0.0"
+   em:maxVersion="1.0.*" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+   em:id="quickfolders@curious.be"
+   em:name="QuickFolders"
+   em:version="1.6"
+   em:creator="Alexander Malfait"
+   em:description="Bookmark your favorite mail folders in Thunderbird."
+   em:iconURL="chrome://quickfolders/content/quickfolders-Icon.png"
+   em:optionsURL="chrome://quickfolders/content/options.xul">
+    <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomt2"/>
-
     <em:developer>Alexander Malfait</em:developer>
     <em:developer>Axel Grude</em:developer>
     <em:contributor>Jean-Bernard Marcon (general locale support)</em:contributor>
     <em:translator>Leopoldo Saggin (it-IT)</em:translator>
+    <em:translator>Masahiko Imanaka (ja-JP)</em:translator>
     <em:translator>Jojaba - Fr BabelZilla team (fr-FR)</em:translator>
     <em:translator>Alex Malfait (nl-NL)</em:translator>
+    <em:translator>Marcelo Ghelman [ghelman.net] (pt-BR)</em:translator>
+    <em:translator>Anton Pinsky (ru-RU)</em:translator>
     <em:translator>Axel Grude (de-DE)</em:translator>
+    <em:homepageURL>"http://quickfolders.mozdev.org/index.html"</em:homepageURL>
   </RDF:Description>
 </RDF:RDF>

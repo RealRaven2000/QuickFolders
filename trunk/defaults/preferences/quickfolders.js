@@ -13,7 +13,7 @@ pref("extensions.quickfolders.buttonFontSize","");
 pref("extensions.quickfolders.lastSelectedCategory","");
 pref("extensions.quickfolders.showIcons",false);
 pref("extensions.quickfolders.debug",false);
-pref("extensions.quickfolders.initDelay",3000);
+pref("extensions.quickfolders.initDelay", 5000);
 pref("extensions.quickfolders.colorTabStyle",0);
 pref("extensions.quickfolders.showSubfolders",false);
 pref("extensions.quickfolders.queuedFolderUpdateDelay",500);

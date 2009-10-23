@@ -111,7 +111,7 @@ vbox.gradientpanel {
     vertical-align:top;
 }
 
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover{
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
     background-color: Orange !important;
     color: Black !important;
     height: 18px;
@@ -119,6 +119,9 @@ vbox.gradientpanel {
     margin-bottom: -1px !important;
     padding: 0px 5px 2px 2px;
 }
+
+/* if we add this we get full colored red for active folder: */
+/*background-image: url('cols/tabcol-10.png')!important;*/
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.selected-folder {
     background-color:  Highlight !important;
@@ -128,7 +131,6 @@ vbox.gradientpanel {
     margin-top: 2px !important;
     margin-bottom: 0px !important;
     padding: 0px 5px 2px 2px;
-    /*background-image: url('cols/tabcol-10.png')!important;*/
     background-repeat: repeat-x;
 }
 
@@ -152,75 +154,75 @@ vbox.gradientpanel {
 }
 
 /* Test Example for colored toolbar
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label*="Quickfolders"] {
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label*="Quickfolders"]
+{
     background-image: url("cols/tabcol-1.png") !important;
     background-position: 4px top  !important;
     background-repeat: repeat-x !important;
-} */
+}
+*/
 
 
 
 /* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
 /*
-#QuickFolders-Toolbar toolbarbutton.selected-folder.icon {
+#QuickFolders-Toolbar toolbarbutton.selected-folder.icon
+{
     list-style-image: url("folder-open.png");
-}*/
-#QuickFolders-Toolbar toolbarbutton.inbox.icon {
-    list-style-image: url("folder-inbox.png");
 }
-#QuickFolders-Toolbar toolbarbutton.sent.icon {
-    list-style-image: url("folder-sent.png");
-}
-#QuickFolders-Toolbar toolbarbutton.trash.icon {
-    list-style-image: url("folder-trash.png");
-}
+*/
+
+#QuickFolders-Toolbar toolbarbutton.inbox.icon {list-style-image: url("folder-inbox.png");}
+#QuickFolders-Toolbar toolbarbutton.sent.icon {list-style-image: url("folder-sent.png");}
+#QuickFolders-Toolbar toolbarbutton.trash.icon {list-style-image: url("folder-trash.png");}
 
 
-/* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work :-( */
+/* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work  */
 /*#QuickFolders-Toolbar toolbarbutton.selected-folder.icon, */
 #QuickFolders-Toolbar toolbarbutton.inbox.icon,
 #QuickFolders-Toolbar toolbarbutton.sent.icon,
-#QuickFolders-Toolbar toolbarbutton.trash.icon {
+#QuickFolders-Toolbar toolbarbutton.trash.icon
+{
     -moz-image-region: rect(0px, 16px, 16px, 0) !important;
     background-position: 3px top;
 }
 
 
 /* Experimental for Trash, FindThread Icon */
-#Quickfolders-SpecialTools {
+#Quickfolders-SpecialTools
+{
     background-color: Menu;
     border: 1px solid;
 }
 
 /* standard menu look (booring?) */
-menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
+{
     background-color: Highlight;
     color: HighlightText;
 }
 
-menupopup.QuickFolders-folder-popup menuitem.hasUnread {
+menupopup.QuickFolders-folder-popup menuitem.hasUnread
+{
     font-weight: bold !important;
 }
 
 
 
 /* gradient look */
-menupopup.QuickFolders-folder-popup menuitem.cmd:hover {
+menupopup.QuickFolders-folder-popup menuitem.cmd:hover
+{
     border: 1px solid darkgreen !important;
     color: black !important;
     font-weight: 500;
     background-image: url('jade-bar.png') !important;
 }
 
-menuitem[tagName="qfOptions"] {
-    list-style-image : url('settings-20.png')  !important;
-}
+menuitem[tagName="qfOptions"] { list-style-image: url('settings-20.png')  !important;}
+menuitem[tagName="qfOrder"] { list-style-image : url('order.gif') !important; }
 
-menuitem[tagName="qfOrder"] {
-    list-style-image : url('order.gif') !important;
-}
-
-menupopup.QuickFolders-folder-popup menuitem.color {
+menupopup.QuickFolders-folder-popup menuitem.color
+{
     background-position: 4px 0px  !important;
     background-repeat: repeat-x !important;
     border: 1px solid #444 !important;
@@ -230,7 +232,8 @@ menupopup.QuickFolders-folder-popup menuitem.color {
 
 menupopup.QuickFolders-folder-popup menuitem[tag="qfTabColorMenu"] { list-style-image : url('palette.png')!important;}
 
-menupopup.QuickFolders-folder-popup menuitem.color:hover {
+menupopup.QuickFolders-folder-popup menuitem.color:hover
+{
     background-color: transparent !important;
 	border: 1px solid #D00 !important;
     color: #D00 !important;
@@ -240,42 +243,35 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover {
 
 
 menuitem[tag="qfColor0"] { background-image: none!important; }
-menuitem[tag="qfColor1"] { background-image: url('cols/tabcol-1.png')!important;background-color:#FFC105; }
-menuitem[tag="qfColor2"] { background-image: url('cols/tabcol-2.png')!important;background-color:#00C000;}
-menuitem[tag="qfColor3"] { background-image: url('cols/tabcol-3.png')!important;background-color:#F06000;}
-menuitem[tag="qfColor4"] { background-image: url('cols/tabcol-4.png')!important;background-color:#46B066;}
-menuitem[tag="qfColor5"] { background-image: url('cols/tabcol-5.png')!important;background-color:#2591CF;}
-menuitem[tag="qfColor6"] { background-image: url('cols/tabcol-6.png')!important;background-color:#800080;}
-menuitem[tag="qfColor7"] { background-image: url('cols/tabcol-7.png')!important;background-color:#4D7EFB;}
-menuitem[tag="qfColor8"] { background-image: url('cols/tabcol-8.png')!important;background-color:#FF119D;}
-menuitem[tag="qfColor9"] { background-image: url('cols/tabcol-9.png')!important;background-color:#0E51FA;}
-menuitem[tag="qfColor10"] { background-image: url('cols/tabcol-10.png')!important;background-color:#D40000;}
-menuitem[tag="qfColor11"] { background-image: url('cols/tabcol-11.png')!important;background-color:#01B1D7;}
-menuitem[tag="qfColor12"] { background-image: url('cols/tabcol-12.png')!important;background-color:#F7FF13;}
-menuitem[tag="qfColor13"] { background-image: url('cols/tabcol-13.png')!important;background-color:#0A5C68;}
-menuitem[tag="qfColor14"] { background-image: url('cols/tabcol-14.png')!important;background-color:#9BF868;}
-menuitem[tag="qfColor15"] { background-image: url('cols/tabcol-15.png')!important;background-color:#000000;}
-menuitem[tag="qfColor16"] { background-image: url('cols/tabcol-16.png')!important;background-color:#404040;}
-menuitem[tag="qfColor17"] { background-image: url('cols/tabcol-17.png')!important;background-color:#01D71A;}
-menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png')!important;background-color:#FE28E2;}
-menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png')!important;background-color:#FF8080;}
-menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png')!important;background-color:#000000;}
+menuitem[tag="qfColor1"] { background-image: url('cols/tabcol-1.png') !important;background-color:#FFC105;}
+menuitem[tag="qfColor2"] { background-image: url('cols/tabcol-2.png') !important;background-color:#00C000;}
+menuitem[tag="qfColor3"] { background-image: url('cols/tabcol-3.png') !important;background-color:#F06000;}
+menuitem[tag="qfColor4"] { background-image: url('cols/tabcol-4.png') !important;background-color:#46B066;}
+menuitem[tag="qfColor5"] { background-image: url('cols/tabcol-5.png') !important;background-color:#2591CF;}
+menuitem[tag="qfColor6"] { background-image: url('cols/tabcol-6.png') !important;background-color:#800080;}
+menuitem[tag="qfColor7"] { background-image: url('cols/tabcol-7.png') !important;background-color:#4D7EFB;}
+menuitem[tag="qfColor8"] { background-image: url('cols/tabcol-8.png') !important;background-color:#FF119D;}
+menuitem[tag="qfColor9"] { background-image: url('cols/tabcol-9.png') !important;background-color:#0E51FA;}
+menuitem[tag="qfColor10"] { background-image: url('cols/tabcol-10.png') !important;background-color:#D40000;}
+menuitem[tag="qfColor11"] { background-image: url('cols/tabcol-11.png') !important;background-color:#01B1D7;}
+menuitem[tag="qfColor12"] { background-image: url('cols/tabcol-12.png') !important;background-color:#F7FF13;}
+menuitem[tag="qfColor13"] { background-image: url('cols/tabcol-13.png') !important;background-color:#0A5C68;}
+menuitem[tag="qfColor14"] { background-image: url('cols/tabcol-14.png') !important;background-color:#9BF868;}
+menuitem[tag="qfColor15"] { background-image: url('cols/tabcol-15.png') !important;background-color:#000000;}
+menuitem[tag="qfColor16"] { background-image: url('cols/tabcol-16.png') !important;background-color:#404040;}
+menuitem[tag="qfColor17"] { background-image: url('cols/tabcol-17.png') !important;background-color:#01D71A;}
+menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png') !important;background-color:#FE28E2;}
+menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png') !important;background-color:#FF8080;}
+menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png') !important;background-color:#000000;}
 
-menuitem[tag="qfRename"] {
-    list-style-image : url('rename.gif') !important;
-}
-menuitem[tag="qfCompact"] {
-    list-style-image : url('compact.png') !important;
-}
-menuitem[tag="qfCategory"] {
-    list-style-image : url('ablist-item.png') !important;
-}
-menuitem[tag="qfRemove"] {
-    list-style-image : url('folder-trash.png') !important;
-}
+menuitem[tag="qfRename"] { list-style-image : url('rename.gif') !important;}
+menuitem[tag="qfCompact"] { list-style-image : url('compact.png') !important;}
+menuitem[tag="qfCategory"] { list-style-image : url('ablist-item.png') !important;}
+menuitem[tag="qfRemove"] { list-style-image : url('folder-trash.png') !important;}
 
 
-menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
+{
     -moz-border-radius: 4px 4px 0 0;
     border: 1px solid darkred !important;
     color: darkred !important;
@@ -283,12 +279,15 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
     background-image: url('orange-bar.png') !important;
     list-style-image : url('tb-anchor.png');
 }
-menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover {
+
+menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
+{
     -moz-border-radius: 4px 4px 0 0;
 }
 
 menupopup.QuickFolders-folder-popup menuitem:hover,
-menupopup.QuickFolders-folder-popup menu:hover {
+menupopup.QuickFolders-folder-popup menu:hover
+{
     -moz-border-radius: 0 4px 4px 0;
     border: 1px solid brown !important;
     color: brown !important;
@@ -298,27 +297,9 @@ menupopup.QuickFolders-folder-popup menu:hover {
 
 menupopup.QuickFolders-folder-popup menuitem:hover
 {
-    list-style-image : url('folder-open.png') ;
+    list-style-image : url('folder-open.png') !important;
 }
 
-
-
-/*
-#QuickFolders-Toolbar toolbarbutton.specialButton {
-    -moz-appearance: none !important;
-    -moz-image-region: rect( 0px 24px 24px  0px);
-    background-image: url("thread.png") !important;
-    background-repeat: no-repeat !important;
-    padding-left: 24px;
-    line-height: 17px !important;
-    height: 17px !important;
-
-}
-#QuickFolders-Toolbar toolbarbutton.specialButton:hover {
-
-
-}
-*/
 
 
 

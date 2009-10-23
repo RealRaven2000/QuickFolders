@@ -86,7 +86,8 @@ QuickFolders.Interface = {
                 catch(e) {tabColor = null};
 
                 if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-                    var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor)
+                    var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor);
+
                     this.buttonsByOffset[offset] = button;
 			        if (tabColor)
 			          this.setButtonColor(button, tabColor);
@@ -248,10 +249,8 @@ QuickFolders.Interface = {
            try {
 	         // doesn't work for search folders?
              if(button.folder.URI == folder.URI) {
-               //QuickFolders.Util.logDebug("getButtonByFolder: " + button.folder.URI + " = " + folder.URI);
                return button;
              }
-
 
            }
            catch(e) {
@@ -414,8 +413,10 @@ QuickFolders.Interface = {
     } ,
 
     onRemoveFolder: function(folder) {
+	    var msg=folder.name + " tab removed from QuickFolders";
         QuickFolders.Model.removeFolder(folder.URI);
         this.updateFolders(true);
+	    try{window.MsgStatusFeedback.showStatusString(msg);} catch(e) {;};
     } ,
 
     onRenameBookmark: function(folder) {
@@ -546,7 +547,7 @@ QuickFolders.Interface = {
 	    if (folder.hasSubFolders) {
            menupopup.appendChild(document.createElement('menuseparator'));
 
-	       QuickFolders.Util.logToConsole("Create popup menu " + folder.name + "...");
+	       QuickFolders.Util.logDebug("Create popup menu " + folder.name + "...");
 	       this.addSubFoldersPopup(menupopup, folder);
         }
 
@@ -690,8 +691,7 @@ QuickFolders.Interface = {
 	  if (!ss)
 	    return false;
 
-	  var folderLabel = button.label;
-      QuickFolders.Util.logDebug('setButtonColor (' + folderLabel + ',' + col + ')');
+	  var folderLabel = button.getAttribute("label"); // fixes disappearing colors on startup bug
 	  var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
 
       // have to do wildcard matching because of shortcut numbers / unread emails
@@ -729,22 +729,16 @@ QuickFolders.Interface = {
 		    return false;
 	      }
    	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','background-color',
-                   QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","ButtonFace"),true);
+          QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","ButtonFace"),true);
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','color',
-                   QuickFolders.Preferences.getUserStyle("InactiveTab","color","black"),true);
+          QuickFolders.Preferences.getUserStyle("InactiveTab","color","black"),true);
 
           var colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight");
-	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','background-color',
-                   colActiveBG, true);
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
           // for full colored tabs color the border as well!
-	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-right-color',
-                   colActiveBG, true);
+          // but should only apply if background image is set!!
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[background-image].selected-folder','border-color', colActiveBG, true);
 
-	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-left-color',
-                   colActiveBG, true);
-
-	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','border-top-color',
-                   colActiveBG, true);
 
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);

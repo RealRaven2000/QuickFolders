@@ -14,13 +14,14 @@ QuickFolders.Model = {
 
             this.update();
             QuickFolders.Util.logToConsole ("\nQuickFolders: added Folder URI " + uri + "\nto Category: " + categoryName);
-
+            return true;
         }
         else {
             alert(_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));
             // switch to category if it exists
             QuickFolders.Interface.selectCategory(entry.category,true);
         }
+        return false;
     } ,
 
     getFolderEntry: function(uri) {

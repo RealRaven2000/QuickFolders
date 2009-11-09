@@ -111,7 +111,7 @@ QuickFolders.Model = {
             if(category && category != "") {
                 // if the folder doesn't exist anymore, ignore this category
                 try {
-				  if (QuickFolders.Util.Appver()>=3) {
+				  if (QuickFolders.Util.Appver()>=3 || QuickFolders.Util.Application()=='SeaMonkey') {
                     if(!GetMsgFolderFromUri(entry.uri, false)) continue;
 				  }
 				  else {

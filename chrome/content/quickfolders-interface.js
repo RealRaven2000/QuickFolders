@@ -454,7 +454,7 @@ QuickFolders.Interface = {
         var msgfolder = GetMsgFolderFromUri(folder.URI,true);
         var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
 
-        if (QuickFolders.Util.Appver() > 2)
+        if (QuickFolders.Util.Appver() > 2 && QuickFolders.Util.Application=='Thunderbird')
           alert ("to do: add compactfolder for TB3");
         else
           messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
@@ -494,8 +494,9 @@ QuickFolders.Interface = {
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
-        if (QuickFolders.Util.Appver() < 3) {
-	        // TB3 we will implement that one later :)
+        if (QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application=='Thunderbird') {
+	        // IN TB3, Postbox, SeaMonkey we will implement that one later :)
+	        // Postbox might get an indexing menu item?
 	        menuitem = document.createElement('menuitem');
 	        menuitem.className='cmd menuitem-iconic';
 	        menuitem.setAttribute("tag","qfCompact");
@@ -560,15 +561,27 @@ QuickFolders.Interface = {
         if (folder.hasSubFolders) {
             var subfolder, subfolders;
 	        var appver=QuickFolders.Util.Appver();
-	        if (appver<3)
-              subfolders = folder.GetSubFolders();
-            else
-              subfolders = folder.subFolders;
+	        switch (QuickFolders.Util.Application()) {
+		          case 'Postbox':
+		            // was appver<2
+	                subfolders = folder.GetSubFolders();
+		            break;
+		          case 'Thunderbird':
+			        if (appver<3)
+		              subfolders = folder.GetSubFolders();
+		            else
+		              subfolders = folder.subFolders;
+		            break;
+		          case 'SeaMonkey':
+	                subfolders = folder.subFolders;
+		            break;
+	        }
 
             var done = false;
 
             while (!done) {
-	        	if (appver<3)
+	        	if ( (QuickFolders.Util.Application()=='Thunderbird' && appver<3)
+	        	   || QuickFolders.Util.Application()=='Postbox')
                   subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
                 else {
 	                if (subfolders.hasMoreElements())
@@ -620,10 +633,12 @@ QuickFolders.Interface = {
 		              this.addSubFoldersPopup(subPopup,subfolder); // populate the sub menu
 	                }
 
-                    if (appver<3)
-                      subfolders.next();
+                    if ((QuickFolders.Util.Application()=='Thunderbird' && appver<3)
+                        || QuickFolders.Util.Application()=='Postbox') {
+	                  try { subfolders.next(); } catch(e) { done=true; }
+                    }
                 }
-                catch(e) {done = true;}
+                catch(e) {QuickFolders.Util.logDebug('Exception in addSubFoldersPopup: ' + e); done = true;}
             }
 
         }
@@ -708,9 +723,6 @@ QuickFolders.Interface = {
         QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-image', 'none',false);
         return  true;
       }
-      // CSS 3 test in TB3
-      if (QuickFolders.Util.Appver() > 2)
-        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-clip', 'padding-box',false);
       return  true;
 
     },

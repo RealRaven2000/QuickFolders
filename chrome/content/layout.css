@@ -195,7 +195,8 @@ vbox.gradientpanel {
     border: 1px solid;
 }
 
-/* standard menu look (booring?) */
+
+/* standard menu look */
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
 {
     background-color: Highlight;
@@ -208,7 +209,6 @@ menupopup.QuickFolders-folder-popup menuitem.hasUnread
 }
 
 
-
 /* gradient look */
 menupopup.QuickFolders-folder-popup menuitem.cmd:hover
 {
@@ -218,8 +218,8 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover
     background-image: url('jade-bar.png') !important;
 }
 
-menuitem[tagName="qfOptions"] { list-style-image: url('settings-20.png')  !important;}
-menuitem[tagName="qfOrder"] { list-style-image : url('order.gif') !important; }
+menuitem.cmd[tagName="qfOptions"] { list-style-image: url('settings-20.png')  !important;}
+menuitem.cmd[tagName="qfOrder"] { list-style-image : url('order.gif') !important; }
 
 menupopup.QuickFolders-folder-popup menuitem.color
 {
@@ -264,20 +264,22 @@ menuitem[tag="qfColor18"] { background-image: url('cols/tabcol-18.png') !importa
 menuitem[tag="qfColor19"] { background-image: url('cols/tabcol-19.png') !important;background-color:#FF8080;}
 menuitem[tag="qfColor20"] { background-image: url('cols/tabcol-20.png') !important;background-color:#000000;}
 
-menuitem[tag="qfRename"] { list-style-image : url('rename.gif') !important;}
-menuitem[tag="qfCompact"] { list-style-image : url('compact.png') !important;}
-menuitem[tag="qfCategory"] { list-style-image : url('ablist-item.png') !important;}
-menuitem[tag="qfRemove"] { list-style-image : url('folder-trash.png') !important;}
+menuitem.cmd[tag="qfRename"] { list-style-image : url('rename.gif') !important;}
+menuitem.cmd[tag="qfCompact"] { list-style-image : url('compact.png') !important;}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
+menuitem.cmd[tag="qfCategory"] { list-style-image : url('ablist-item.png') !important;}
+menuitem.cmd[tag="qfRemove"] { list-style-image : url('folder-trash.png') !important;}
 
 
-menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
     -moz-border-radius: 4px 4px 0 0;
     border: 1px solid darkred !important;
     color: darkred !important;
     font-weight: 500;
     background-image: url('orange-bar.png') !important;
-    list-style-image : url('tb-anchor.png');
+    list-style-image : url('tb-anchor.png') !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
@@ -285,10 +287,10 @@ menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
     -moz-border-radius: 4px 4px 0 0;
 }
 
+
 menupopup.QuickFolders-folder-popup menuitem:hover,
 menupopup.QuickFolders-folder-popup menu:hover
 {
-    -moz-border-radius: 0 4px 4px 0;
     border: 1px solid brown !important;
     color: brown !important;
     font-weight: 500;
@@ -297,7 +299,18 @@ menupopup.QuickFolders-folder-popup menu:hover
 
 menupopup.QuickFolders-folder-popup menuitem:hover
 {
-    list-style-image : url('folder-open.png') !important;
+    list-style-image : url('folder-open.png')
+}
+
+menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
+{
+    /*list-style-image : url('folder-open.png') !important; */
+}
+
+menupopup.QuickFolders-folder-popup menuitem menu:hover,
+menupopup.QuickFolders-folder-popup menu:-moz-drag-over
+{
+    list-style-image : url('tb-anchor.png') !important;
 }
 
 

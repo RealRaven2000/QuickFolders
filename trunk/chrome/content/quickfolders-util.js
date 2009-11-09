@@ -5,22 +5,38 @@ QuickFolders.Util = {
 	  // avoid these global objects
 	  Cc: Components.classes,
     Ci: Components.interfaces,
+    mAppver: null, mAppName: null, mHost: null,
 
     $: function(id) {
         return document.getElementById(id);
     } ,
 
-	// add code for TB3 compatibility!
     Appver: function() {
-	  // abmanager is a TB3 only component!
-	  return this.Cc["@mozilla.org/abmanager;1"] ? 3 : 2;
+        if (null == this.mAppver) {
+	    var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+	                    .getService(Components.interfaces.nsIXULAppInfo);
+	    var appVer=appInfo.version.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
+		    this.mAppver = parseFloat(appVer); // quick n dirty!
+        }
+		return this.mAppver;
     },
 
     Application: function() {
+		if (null==this.mAppName) {
         var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
                         .getService(Components.interfaces.nsIXULAppInfo);
-        var appName=appInfo.name;
-	    return appName;
+	        this.mAppName=appInfo.name;
+        }
+	    return this.mAppName;
+    },
+
+    HostSystem: function() {
+		if (null==this.mHost) {
+			var osString = Components.classes["@mozilla.org/xre/app-info;1"]
+		                .getService(Components.interfaces.nsIXULRuntime).OS;
+			this.mHost = osString.toLowerCase();
+        }
+        return this.mHost; // linux - winnt - darwin
     },
 
     clearChildren: function(element,withCategories) {
@@ -74,37 +90,54 @@ QuickFolders.Util = {
     } ,
 
     moveMessages: function(targetFolder, messageUris, makeCopy) {
-        var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
+	    var step = 0;
+	    try {
+	        var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
+	        //alert('In moveMessages (' + targetFolder + ', ' + messageUris + ', ' + makeCopy + ')' );
+	        step = 1;
 
-        var messageList ;
-        //nsISupportsArray is deprecated in TB3 as its a hog :-)
-        if (QuickFolders.Util.Appver() > 2)
-          messageList = this.Cc["@mozilla.org/array;1"].createInstance(this.Ci.nsIMutableArray);
-        else
-          messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(this.Ci.nsISupportsArray);
+	        var messageList ;
+	        var av = QuickFolders.Util.Appver();
+	        var ap = QuickFolders.Util.Application();
+            var hostsystem = QuickFolders.Util.HostSystem();
+	        //nsISupportsArray is deprecated in TB3 as its a hog :-)
+        if (av > 2 || ap=='SeaMonkey')
+	          messageList = this.Cc["@mozilla.org/array;1"].createInstance(this.Ci.nsIMutableArray);
+	        else
+	          messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(this.Ci.nsISupportsArray);
+	        step = 2;
 
-        for (var i = 0; i < messageUris.length; i++) {
-            var messageUri = messageUris[i];
-            if (QuickFolders.Util.Appver() > 2)
-              messageList.appendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri), false);
-            else
-              messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
+	        for (var i = 0; i < messageUris.length; i++) {
+	            var messageUri = messageUris[i];
+            if (av > 2 || ap=='SeaMonkey')
+	              messageList.appendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri), false);
+	            else
+	              messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
+	        }
+
+            step = 3;
+	        var sourceMsgHdr;
+
+        if (av > 2 || ap=='SeaMonkey')
+	          sourceMsgHdr = messageList.queryElementAt(0,this.Ci.nsIMsgDBHdr);
+	        else
+	          sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
+            step = 4;
+
+	        var sourceFolder = sourceMsgHdr.folder;
+            step = 5;
+	        var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
+	        if (!(ap=='Thunderbird' && av<=2 )) {
+	          var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(this.Ci.nsIMsgCopyService);
+              step = 7;
+	          cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
+	        }
+	        else {
+              step = 8;
+	          messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
+            }
         }
-
-        var sourceMsgHdr;
-
-        if (QuickFolders.Util.Appver() > 2)
-          sourceMsgHdr = messageList.queryElementAt(0,this.Ci.nsIMsgDBHdr);
-        else
-          sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
-        var sourceFolder = sourceMsgHdr.folder;
-        var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
-        if (QuickFolders.Util.Appver() > 2 || QuickFolders.Util.Application()=='Postbox') {
-          var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(this.Ci.nsIMsgCopyService);
-          cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
-        }
-        else
-          messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
+        catch(e) { this.logToConsole('Exception in Util.moveMessages, step ' + step + ':\n' + e); };
     } ,
 
 

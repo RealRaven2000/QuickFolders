@@ -187,7 +187,8 @@
          fixed in Postbox - the color sub menu now displays colors
       improved error handling in Drag-Drop (WIP for some Linux users)
 
-
+    09/11/2009 Release 1.6.3
+      AG removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
 
   KNOWN ISSUES
   ============
@@ -346,9 +347,11 @@ var QuickFolders = {
             switch (dropData.flavour.contentType) {
                 case  "text/x-moz-folder":
                     var sourceUri;
-                    if (QuickFolders.Util.Appver() > 2) {
+                    if ((QuickFolders.Util.Appver() > 2)
+                        && (QuickFolders.Util.Application()=='Thunderbird')) {
                       var msgFolder = evt.dataTransfer.mozGetDataAt("text/x-moz-folder", 0);
                       sourceUri = msgFolder.URI;
+                      if (!sourceUri) sourceUri = msgFolder;  // SeaMonkey
                     }
                     else
                       sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
@@ -358,7 +361,7 @@ var QuickFolders = {
                         var s = "Added shortcut " + msgFolder + " to QuickFolders"
                         if (cat!=null) s = s + " Category " + cat;
                         try{window.MsgStatusFeedback.showStatusString(s);} catch (e) {};
-                    }
+                      }
 
                     }
 
@@ -385,7 +388,6 @@ var QuickFolders = {
         },
         dragOverTimer: null,
         onDragEnter: function(evt, dragSession) {
-            QuickFolders.Util.logDebug("popupDragObserver.onEnter...");
             try {
 	            var popupStart = evt.target;
 	            var pchild = popupStart.firstChild;
@@ -410,7 +412,7 @@ var QuickFolders = {
  	              QuickFolders.Util.logDebug ("Ignoring DragEnter with child node: " + pchild.nodeName);
             }
             catch(e) {
-                QuickFolders.Util.logDebug ("onDragEnter: node name:" + popupStart.nodeName + "\n" + e);
+                QuickFolders.Util.logDebug ("onDragEnter: failure - " + e);
             }
         },
 
@@ -421,22 +423,17 @@ var QuickFolders = {
             QuickFolders.Util.logDebug("popupDragObserver.DrageExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 	        try {
 		        if (popupStart.nodeName=='menu') {
-			        QuickFolders.Util.logDebug ("remember hidePopup " + popupStart.getAttribute('label'));
 			        globalLastChildPopup=popupStart; // remember to destroy!
-		            QuickFolders.Util.logDebug ("popupDragObserver DragExit on " + popupStart.firstChild.nodeName );
                 }
             }
             catch (e) {
-              QuickFolders.Util.logDebug ("CATCH popupDragObserver DragExit: node(" + popupStart.nodeName + ")\n" + e);
+              QuickFolders.Util.logDebug ("CATCH popupDragObserver DragExit: \n" + e);
             }
-	        // if (popupStart.nodeName == 'menupopup')
         } ,
 
         onDragOver: function (evt, flavor, session){
-            // QuickFolders.Util.logDebug("popupDragObserver.onDragover flavor=" + flavor.contentType);
             session.canDrop = (flavor.contentType == "text/x-moz-message");
-            if (null!=globalLastChildPopup) { //  && globalLastChildPopup!=evt.target
-              QuickFolders.Util.logDebug ("onDragOver: globalLastChildPopup = " + globalLastChildPopup.getAttribute('label') + "\n");
+            if (null!=globalLastChildPopup) {
               /*globalLastChildPopup.firstChild.hidePopup();*/
               globalLastChildPopup=null;
           }
@@ -470,7 +467,7 @@ var QuickFolders = {
 
             try {
 	            if (null==dragSession.sourceNode) {
-	              QuickFolders.Util.logToConsole ("UNEXPECTED ERROR QuickFolders.OnDragEnter - Problem with sourceNode - it is null!");
+	              QuickFolders.Util.logToConsole ("UNEXPECTED ERROR QuickFolders.OnDragEnter - empty sourceNode!");
 	              return;
                 }
 		        QuickFolders.Util.logDebug("buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName);
@@ -480,6 +477,21 @@ var QuickFolders = {
 		          return;
 	            }
                 var button = evt.target;
+		        // delete previous drag folders popup!
+                if (globalHidePopupId && globalHidePopupId!="") {
+                    var popup = document.getElementById(globalHidePopupId);
+			        try {
+				        if (QuickFolders.Util.Application() == 'SeaMonkey')
+				          popup.parentNode.removeChild(popup);
+				        else
+				          popup.hidePopup(); // parentNode.removeChild(popup)
+				       QuickFolders.Util.logDebug("removed popup globalHidePopupId: " + globalHidePopupId );
+			        }
+			        catch (e) {
+				       QuickFolders.Util.logDebug("removing popup:  globalHidePopupId  failed!\n" + e + "\n");
+			        }
+			        globalHidePopupId="";
+               }
 
                 if(button.tagName == "toolbarbutton") {
                     // highlight drop target
@@ -517,10 +529,12 @@ var QuickFolders = {
                     }
 
                     // only show popups when dragging messages!
-                    if(dragSession.isDataFlavorSupported("text/x-moz-message") && targetFolder.hasSubFolders) {
+                    if(dragSession.isDataFlavorSupported("text/x-moz-message") && targetFolder.hasSubFolders)
+                    try {
                         //close any other context menus
                         if (dragSession.isDataFlavorSupported("text/unicode" ))
 	                      return;  // don't show popup when reordering tabs
+	                    QuickFolders.Util.logDebug("creating popupset for " + targetFolder.name );
 
                         // instead of using the full popup menu (containing the 3 top commands)
                         // try to create droptarget menu that only contains the target subfolders "on the fly"
@@ -539,40 +553,31 @@ var QuickFolders = {
 	                    // a bug in showPopup when used with coordinates makes it start from the wrong origin
 	                    //document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
 	                    // AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
+	                    QuickFolders.Util.logDebug("showPopup with id " + popupId );
+	                    if (QuickFolders.Util.Application() == 'SeaMonkey')
+	                      document.getElementById(popupId).openPopup(button,'after_start', -1,-1,"context");
+	                    else
 	                    document.getElementById(popupId).showPopup(button, -1,-1,"context","bottomleft","topleft");
 
 	                    if (popupId==globalHidePopupId) globalHidePopupId=""; // avoid hiding "itself". globalHidePopupId is not cleared if previous drag cancelled.
 
-						/* original by Alex (displays full menu)
-                        var popupId = 'QuickFolders-folder-popup-' + targetFolder.URI;
-                        var popup = document.getElementById(popupId);
-                        popup.showPopup(button,button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
-                        */
                     }
 
 
-                }
-		        // delete previous drag folders popup!
-                if (globalHidePopupId && globalHidePopupId!="") {
-	                    var popup = document.getElementById(globalHidePopupId);
-				        try {
-					        popup.hidePopup(); //was popup.hidePopup() // parentNode.removeChild(popup)
-					       QuickFolders.Util.logDebug("removed popup globalHidePopupId: " + globalHidePopupId );
-				        }
-				        catch (e) {
-					       QuickFolders.Util.logDebug("removing popup: " + globalHidePopupId + " failed!\n" + e + "\n");
-				        }
-				        globalHidePopupId="";
+                    catch(e) { QuickFolders.Util.logDebug("Exception creating folder popup: " + e);};
                     }
             }
             catch(e) {
-	            QuickFolders.Util.logToConsole ("EXCEPTION onDragEnter: " + e);
+	            QuickFolders.Util.logToConsole ("EXCEPTION buttonDragObserver.onDragEnter: " + e);
             }
         } ,
 
         // deal with old folder popups
         onDragExit: function(event, dragSession) {
-	        QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - sourceNode = " + dragSession.sourceNode.nodeName);
+             if (null==dragSession.sourceNode) { return; }
+             try {
+	        //QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - sourceNode = " + dragSession.sourceNode.nodeName);
+             } catch(e) { QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - " + e); }
             if (dragSession.sourceNode.nodeName == 'toolbarpaletteitem') {
 	            QuickFolders.Util.logDebug("trying to drag a toolbar palette item - ignored.");
 		        dragSession.canDrop=false;
@@ -597,7 +602,7 @@ var QuickFolders = {
 			        globalHidePopupId = popupId; // arm for hiding! GLOBAL VAR!!
             }
             catch(ex) {
-	            window.dump("Cannot setup for delete: popup " + popupId + "\n" + ex);
+	            window.dump("Cannot setup for delete: popup \n" + ex);
             }
 
 
@@ -605,7 +610,7 @@ var QuickFolders = {
 
 
         onDragOver: function (evt,flavor,session){
-	        QuickFolders.Util.logDebug("buttonDragObserver.onDragOver flavor=" + flavor.contentType);
+	        //QuickFolders.Util.logDebug("buttonDragObserver.onDragOver flavor=" + flavor.contentType);
 	        session.canDrop = true;
 	        if (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode" || flavor.contentType == "text/x-moz-folder")
               session.canDrop = true;
@@ -617,6 +622,7 @@ var QuickFolders = {
         },
 
         onDrop: function (evt,dropData,dragSession) {
+            var debugDragging = false;
 	        //alert('test: dropped item, flavor=' + dropData.flavour.contentType);
 	        QuickFolders.Util.logDebug("buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
             var DropTarget = evt.target;
@@ -638,15 +644,16 @@ var QuickFolders = {
                         var dataObj = new Object();
                         var flavor = new Object();
                         var len = new Object();
-                        //alert('trans.getAnyTransferData ... '+(i+1));
+                        if (debugDragging ) alert('trans.getAnyTransferData ... '+(i+1));
                         try {
 	                        trans.getAnyTransferData(flavor, dataObj, len);
 
 	                        if (flavor.value == "text/x-moz-message" && dataObj) {
-		                        //alert('Enumerating dragsession - item '+(i+1));
 	                            dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
+		                        if (debugDragging ) alert('getting data from dataObj...');
 	                            var messageUri = dataObj.data.substring(0, len.value);
-
+		                        if (debugDragging ) alert('messageUris.push...');
+		                        if (debugDragging ) alert('messageUri=' + messageUri) ;
 	                            messageUris.push(messageUri);
 	                        }
                         }
@@ -655,13 +662,16 @@ var QuickFolders = {
                         }
                     }
                     // handler for dropping messages
-                    if(messageUris.length > 0) {
-                        QuickFolders.Util.moveMessages(
-                          targetFolder,
-                          messageUris,
-                          dragSession.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
-                        )
+                    try {
+	                    if(messageUris.length > 0) {
+	                        QuickFolders.Util.moveMessages(
+	                          targetFolder,
+	                          messageUris,
+	                          dragSession.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
+	                        )
+	                    }
                     }
+                    catch(e) {qfLocalErrorLogger("Exception in onDrop - QuickFolders.Util.moveMessages:" + e); };
                     // close any top level menu items after message drop!
                     //hide popups menus!
                    QuickFolders.Util.logDebug ("buttonDragObserver.onDrop " + DropTarget.tagName+ '  Target:' + targetFolder.name );
@@ -672,18 +682,40 @@ var QuickFolders = {
                    if (p.tagName=='menuitem') // drop to a menu item
                    {
                        // close all containing menus
-                       while (null!=p.parentNode && p.tagName!='toolbar') {
-                         p=p.parentNode;
-                         QuickFolders.Util.logDebug ("parenttag=" + p.tagName);
-                         QuickFolders.Util.logDebug ("node= " + p.nodeName);
-                         if (p.tagName=='menupopup') {
-					        QuickFolders.Util.logDebug ("Try hide parent Popup " + p.getAttribute('label'));
-					        p.hidePopup();
-                         }
-                       }
+                        // hidepopup is broken in linkux during OnDrag action!!
+                        // bug only confirmed on TB 2.0!
+						if (QuickFolders.Util.HostSystem()=='linux' && QuickFolders.Util.Appver()<3) {
+							var lastmenu=p;
+
+							// in linux, toolbarbutton is box - let's navigate up to the toolbar instead
+	                       	while (null!=p.parentNode && p.parentNode.tagName!='toolbar') {
+		                        if(p.tagName=='menupopup') lastmenu=p;
+		                        p=p.parentNode;
+							}
+
+						  if (lastmenu.tagName=='menupopup') {
+							globalHidePopupId = lastmenu.id;
+							var popOne = document.getElementById(globalHidePopupId);
+							try {
+						        //popOne.parentNode.removeChild(popOne); //was popup.hidePopup()
+						        //globalHidePopupId="";
+							} catch (e) { alert (e); }
+						  }
+						}
+						else {  // not linux
+	                       while (null!=p.parentNode && p.tagName!='toolbar') {
+	                         p=p.parentNode;
+	                         QuickFolders.Util.logDebug ("parenttag=" + p.tagName);
+	                         QuickFolders.Util.logDebug ("node= " + p.nodeName);
+	                         if (p.tagName=='menupopup') {
+						        QuickFolders.Util.logDebug ("Try hide parent Popup " + p.getAttribute('label'));
+						        p.hidePopup();
+	                         }
+	                       }
+					    } // else not linux
                    }
 
-                   if (p.tagName=='toolbarbutton') {// drop to a button
+                   else if (p.tagName=='toolbarbutton') {// drop to a button
                      globalHidePopupId='moveTo_'+DropTarget.folder.URI;
                      QuickFolders.Util.logDebug ("set globalHidePopupId to " + globalHidePopupId);
 
@@ -695,7 +727,6 @@ var QuickFolders = {
 				        catch(e) {
 					        QuickFolders.Util.logDebug ("Could not remove popup of " + globalHidePopupId );
 				        }
-
                    }
 
 
@@ -729,7 +760,9 @@ function MyEnsureFolderIndex(tree, msgFolder)
     // try to get the index of the folder in the tree
     try {
 	    var index ;
-        if (QuickFolders.Util.Appver() > 2  || QuickFolders.Util.Application() == 'Postbox' )
+        if (((QuickFolders.Util.Application() == 'Thunderbird')
+             && (QuickFolders.Util.Appver() > 2))
+           || (QuickFolders.Util.Application() == 'Postbox'))
 	      index = tree.getIndexOfFolder(msgFolder);
         else
           index= tree.builderView.getIndexOfResource(msgFolder);
@@ -743,9 +776,10 @@ function MyEnsureFolderIndex(tree, msgFolder)
 	            tree.builderView.toggleOpenState(parentIndex);
 	      }
 
-          if (QuickFolders.Util.Appver() > 2 || QuickFolders.Util.Application() == 'Postbox' )
+          if ((QuickFolders.Util.Application() == 'Thunderbird' && QuickFolders.Util.Appver() > 2)
+            || QuickFolders.Util.Application() == 'Postbox' )
 	        index = tree.getIndexOfFolder(msgFolder);
-          else
+          else  //TB3, SeaMonkey
 	        index = tree.builderView.getIndexOfResource(msgFolder);
 	    }
 	    return index;
@@ -790,7 +824,9 @@ function MySelectFolder(folderUri)
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
     var folderIndex;
 
-    if (QuickFolders.Util.Appver() <= 2 || QuickFolders.Util.Application()=='Postbox' ) {
+    if (QuickFolders.Util.Appver() <= 2
+        || QuickFolders.Util.Application()=='Postbox'
+        || QuickFolders.Util.Application()=='SeaMonkey' ) {
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded

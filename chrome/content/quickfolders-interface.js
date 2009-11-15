@@ -316,14 +316,14 @@ QuickFolders.Interface = {
         // for (optional) icon display
         var specialFolderType="";
         var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
-	    // QuickFolders.Util.logDebug ("\nQuickFolders: " + folder.URI );
 
 	    // does the folder end with this name?
-        if (this.endsWith(folder.URI, "/Inbox"))
+	    var fString = folder.URI.toLowerCase();
+        if (this.endsWith(fString, "/inbox"))
 	        specialFolderType="inbox" + sDisplayIcons;
-        else if (this.endsWith(folder.URI, "/Sent"))
+        else if (this.endsWith(fString, "/sent"))
 	        specialFolderType="sent" + sDisplayIcons;
-        else if (this.endsWith(folder.URI, "/Trash"))
+        else if (this.endsWith(fString, "/trash"))
 	        specialFolderType="trash" + sDisplayIcons;
 	      else
 	        specialFolderType=sDisplayIcons;

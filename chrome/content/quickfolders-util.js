@@ -1,11 +1,13 @@
 var qfConsoleService=null;
+var	MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
 
 
 QuickFolders.Util = {
 	  // avoid these global objects
-	  Cc: Components.classes,
+	Cc: Components.classes,
     Ci: Components.interfaces,
     mAppver: null, mAppName: null, mHost: null,
+    lastTime: 0,
 
     $: function(id) {
         return document.getElementById(id);
@@ -92,8 +94,11 @@ QuickFolders.Util = {
     moveMessages: function(targetFolder, messageUris, makeCopy) {
 	    var step = 0;
 	    try {
+		    if (targetFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) {
+			    alert(qfBundle.GetStringFromName("qfAlertDropFolderVirtual"));
+			    return;
+		    }
 	        var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
-	        //alert('In moveMessages (' + targetFolder + ', ' + messageUris + ', ' + makeCopy + ')' );
 	        step = 1;
 
 	        var messageList ;
@@ -150,11 +155,24 @@ QuickFolders.Util = {
         this.logDebug(str);
     },
 
+    logTime: function() {
+	    var timePassed = '';
+	    try { // AG added time logging for test
+		    var end= new Date();
+		    var endTime = end.getTime();
+			var elapsed = new String(endTime  - this.lastTime); // time in milliseconds
+			timePassed = '[' + elapsed + ' ms]   ';
+		    this.lastTime = endTime; // remember last time
+        }
+        catch(e) {;}
+	    return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
+    },
+
     logToConsole: function (msg) {
 	  if (qfConsoleService == null)
 	    qfConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
 	                               .getService(this.Ci.nsIConsoleService);
-	  qfConsoleService.logStringMessage("QuickFolders:" + msg);
+	  qfConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
 	},
 
     logDebug: function (msg) {

@@ -188,7 +188,15 @@
       improved error handling in Drag-Drop (WIP for some Linux users)
 
     09/11/2009 Release 1.6.3
-      AG removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
+      AG fixed bug 21919 removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
+
+    09/11/2009 Release 1.6.4
+      AG fixed bug 21960 icon for inbox not visible in postbox
+      AG fixed disabled dropping emails to virtual (search) folders
+
+   WIP
+      added time logging to debug output
+
 
   KNOWN ISSUES
   ============

@@ -104,6 +104,7 @@ vbox.gradientpanel {
     border-color: #AAA;
     border-width: 1px !important;
     border-style: solid;
+    background-repeat: repeat-x;
 
     margin: 3px 0px 0px 3px;
     line-height: 18px;
@@ -148,9 +149,10 @@ vbox.gradientpanel {
 }
 
 #QuickFolders-Toolbar toolbarbutton.dragLEFT:-moz-drag-over {
+/*    background-image: url("dropLeft.gif") !important; // not possible for specifiticy!
+    background-position: left center !important;
+    background-repeat: no-repeat !important;  */
     list-style-image: url("dropLeft.gif") !important;
-    background-position: left top !important;
-    background-repeat: no-repeat !important;
 }
 
 /* Test Example for colored toolbar
@@ -271,6 +273,13 @@ menuitem.cmd[tag="qfCategory"] { list-style-image : url('ablist-item.png') !impo
 menuitem.cmd[tag="qfRemove"] { list-style-image : url('folder-trash.png') !important;}
 
 
+menupopup.QuickFolders-folder-popup menuitem,
+menupopup.QuickFolders-folder-popup menu
+{
+    -moz-appearance: none !important;
+}
+
+
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
@@ -312,7 +321,6 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
     list-style-image : url('tb-anchor.png') !important;
 }
-
 
 
 

@@ -4,6 +4,7 @@ var qfBundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/qu
 
 QuickFolders.Interface = {
 	TimeoutID: 0,
+	debugPopupItems: 0,
     buttonsByOffset: [],
     menuPopupsByOffset: [],
     specialButtons: [],
@@ -280,6 +281,7 @@ QuickFolders.Interface = {
         var numTotal = folder.getTotalMessages(false);
 
         var label = "";
+	    QuickFolders.Util.logDebug("addFolderButton " + folder.name + "...");
 
         if(QuickFolders.Preferences.isShowShortcutNumbers()) {
             if(offset < 10) {
@@ -454,7 +456,7 @@ QuickFolders.Interface = {
         var msgfolder = GetMsgFolderFromUri(folder.URI,true);
         var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
 
-        if (QuickFolders.Util.Appver() > 2 && QuickFolders.Util.Application=='Thunderbird')
+        if (QuickFolders.Util.Appver() > 2 && QuickFolders.Util.Application()=='Thunderbird')
           alert ("to do: add compactfolder for TB3");
         else
           messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
@@ -463,6 +465,7 @@ QuickFolders.Interface = {
 
     addPopupSet: function(popupId, folder, offset) {
         var popupset = document.createElement('popupset');
+        QuickFolders.Util.logDebug("Create popup menu " + folder.name + "...");
         this.getToolbar().appendChild(popupset);
 
         var menupopup = document.createElement('menupopup');
@@ -494,7 +497,8 @@ QuickFolders.Interface = {
         menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameBookmark(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
-        if (QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application=='Thunderbird') {
+        if (QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird'
+         || QuickFolders.Util.Application()=='Postbox') {
 	        // IN TB3, Postbox, SeaMonkey we will implement that one later :)
 	        // Postbox might get an indexing menu item?
 	        menuitem = document.createElement('menuitem');
@@ -547,14 +551,31 @@ QuickFolders.Interface = {
 	    //moved this out of addSubFoldersPopup for recursive menus
 	    if (folder.hasSubFolders) {
            menupopup.appendChild(document.createElement('menuseparator'));
-
-	       QuickFolders.Util.logDebug("Create popup menu " + folder.name + "...");
+	       this.debugPopupItems=0;
 	       this.addSubFoldersPopup(menupopup, folder);
+	       QuickFolders.Util.logDebug("Created Menu " + folder.name + ": " + this.debugPopupItems + " items");
         }
 
         this.menuPopupsByOffset[offset] = menupopup;
 
     } ,
+
+     /**
+	* Sorts the passed in array of folder items using the folder sort key
+	*
+	* @param aFolders - the array of ftvItems to sort.
+	*/
+	sortFolderItems: function (aFtvItems) {
+	  function sorter(a, b) {
+		var sortKey;
+	    sortKey = a._folder.compareSortKeys(b._folder);
+	    if (sortKey)
+	      return sortKey;
+	    return a.text.toLowerCase() > b.text.toLowerCase();
+	  }
+	  aFtvItems.sort(sorter);
+	},
+
 
     // add all subfolders (1st level, non recursive) of folder to popupMenu
     addSubFoldersPopup: function(popupMenu, folder) {
@@ -567,8 +588,10 @@ QuickFolders.Interface = {
 	                subfolders = folder.GetSubFolders();
 		            break;
 		          case 'Thunderbird':
-			        if (appver<3)
+			        if (appver<3) {
 		              subfolders = folder.GetSubFolders();
+		              //subfolders.sort();
+	                }
 		            else
 		              subfolders = folder.subFolders;
 		            break;
@@ -593,6 +616,7 @@ QuickFolders.Interface = {
                 }
 
                 try {
+	                this.debugPopupItems++;
 				    //QuickFolders.Util.logToConsole("   creating menu item " + subfolder.name + "...");
                     var menuitem = document.createElement('menuitem');
                     menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
@@ -615,6 +639,7 @@ QuickFolders.Interface = {
                     popupMenu.appendChild(menuitem);
 
 	                if (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders()) {
+		              this.debugPopupItems++;
                       //QuickFolders.Util.logToConsole("folder " + subfolder.name + " has subfolders");
 				      var subMenu = document.createElement('menu');
 				      subMenu.setAttribute("label", subfolder.name);
@@ -711,7 +736,7 @@ QuickFolders.Interface = {
 
       // have to do wildcard matching because of shortcut numbers / unread emails
 	  if (col!='0') {
-	    QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',true);
+	    //QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[label*="' + folderLabel  + '"]','background-repeat', 'repeat-x',true);
 	    var sColFolder;
 	    if (nTabStyle==0)
 	      sColFolder="striped"

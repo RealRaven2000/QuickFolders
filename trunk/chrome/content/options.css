@@ -67,6 +67,7 @@ label#L2:hover {
   border: 1px #630 solid;
   font-weight: bold;
 }
+
 label#L2:active {
   color: #630 !important;
   text-decoration: underline;
@@ -100,16 +101,30 @@ label#L4:active {
   color: #00A !important;
 }
 
-label#L0:hover, label#L1:hover, label#L5:hover {
+label#L5:hover {
+  color: #FFF !important;
+  background-image: url("cherry-bar.png");
+  background-repeat: repeat-x;
+  background-color: #7E1808 !important;
+  border: 1px #4B1400 solid;
+  font-weight: bold;
+}
+
+label#L5:active {
+  color: #FFF !important;
+}
+
+label#L0:hover, label#L1:hover {
   color: #FFF !important;
   background-image: url("dellablue.png");
   background-repeat: repeat-x;
-  background-color: #072E5E;
+  background-color: 2B9EEE;
   border: 1px #006 solid;
   font-weight: bold;
 }
 
-label#L0:active, label#L1:active, label#L5:active {
+
+label#L0:active, label#L1:active {
   color: #FFF !important;
 }
 

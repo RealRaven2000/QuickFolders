@@ -194,6 +194,11 @@
       AG fixed bug 21960 icon for inbox not visible in postbox
       AG fixed disabled dropping emails to virtual (search) folders
 
+    15/12/2009 Release 1.7
+      AG fixed drag & drop layout issues for the new versions of TB3, SeaMonkey and Postbox 1.1
+      AG bug 22121 fixed?
+      AG fixed bug 22067 (TB3 did not display colors in tab colors submenu)
+
    WIP
       added time logging to debug output
 
@@ -211,9 +216,8 @@
 
   OPEN BUGS
   ============
-    Bug 21919 - In certain Linux environments, such as Ubuntu Jounty when the users drag a
-                message into a quickfolder tab and then try to move it to a subfolder on the
-                subfolder popup menu, thunderbird just closes.
+    Bug 22122 	External links in QF settings to not work anymore - only TB 3.0.1 - likely a Mozilla Bug
+
     A complete list of bugs can be viewed at http://quickfolders.mozdev.org/bugs.html
 
 
@@ -243,10 +247,10 @@ function qfLocalErrorLogger (msg) {
 }
 
 
-
 var QuickFolders = {
 	keyListen: EventListener,
 	loadListen: false,
+	tabContainer: null,
 	initDone: false,
     initDelayed: function() {
        var sWinLocation;
@@ -283,7 +287,16 @@ var QuickFolders = {
 
 
     init: function() {
-        QuickFolders.Util.logDebug("quickfolders.init()");
+		var em = Components.classes["@mozilla.org/extensions/manager;1"]
+	       .getService(Components.interfaces.nsIExtensionManager);
+	    var myver=em.getItemForID("quickfolders@curious.be").version;
+
+	    var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
+	    var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
+
+		qfLocalErrorLogger("QF.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+		QuickFolders.addTabEventListener();
+
         document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 
         // only add event listener on startup if necessary as we don't
@@ -305,7 +318,7 @@ var QuickFolders = {
         if(folderEntries.length > 0) {
             QuickFolders.Model.selectedFolders = folderEntries;
 
-            QuickFolders.Interface.updateUserStyles(); // Pulled up from } below for speed
+            QuickFolders.Interface.updateUserStyles();
 
             var lastSelectedCategory = QuickFolders.Preferences.getLastSelectedCategory()
             QuickFolders.Util.logDebug("last selected Category:" + lastSelectedCategory );
@@ -325,7 +338,7 @@ var QuickFolders = {
                 QuickFolders.Interface.updateUserStyles();
             }
         },"quickfolders-options-saved", false);
-        QuickFolders.Util.logDebug("quickfolders.init() ends.");
+        QuickFolders.Util.logDebug("QF.init() ends.");
     } ,
 
     sayHello: function() {
@@ -341,17 +354,25 @@ var QuickFolders = {
             return flavours;
         },
 
+        onDragEnter: function (evt,flavour,session){
+            if (!((QuickFolders.Util.Appver() < 3) && (QuickFolders.Util.Application()=='Thunderbird'))) {
+		        evt.preventDefault();
+		        return false;
+            }
+            return true;
+        },
+
         onDragOver: function (evt,flavour,session){
             if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode") // only allow folders or  buttons!
               session.canDrop = true;
             else {
-	          QuickFolders.Util.logDebug("toolbarDragObserver.onDragover - can not drop " + flavour.contentType);
+	          QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + flavour.contentType);
               session.canDrop = false;
             }
         },
 
         onDrop: function (evt,dropData,dragSession) {
-            QuickFolders.Util.logDebug("toolbarDragObserver.onDrop " + dropData.flavour.contentType);
+            QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
             switch (dropData.flavour.contentType) {
                 case  "text/x-moz-folder":
                     var sourceUri;
@@ -397,6 +418,9 @@ var QuickFolders = {
         dragOverTimer: null,
         onDragEnter: function(evt, dragSession) {
             try {
+	            if (!(QuickFolders.Util.Application()=='Thunderbird' && QuickFolders.Util.Appver()<3))
+	                evt.preventDefault(); // fix layout issues in TB3 + Postbox!
+
 	            var popupStart = evt.target;
 	            var pchild = popupStart.firstChild;
 	            if (pchild.nodeName == 'menupopup') {
@@ -414,10 +438,10 @@ var QuickFolders = {
 		              psib = psib.previousSibling;
 	              }
 	              pchild.showPopup();
- 	              QuickFolders.Util.logDebug ("Displayed popup " + popupStart.getAttribute('label'));
+ 	              QuickFolders.Util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
                 }
                 else
- 	              QuickFolders.Util.logDebug ("Ignoring DragEnter with child node: " + pchild.nodeName);
+ 	              QuickFolders.Util.logDebugOptional("dnd","Ignoring DragEnter with child node: " + pchild.nodeName);
             }
             catch(e) {
                 QuickFolders.Util.logDebug ("onDragEnter: failure - " + e);
@@ -428,31 +452,31 @@ var QuickFolders = {
         onDragExit: function(evt, dragSession) {
 	        var popupStart = evt.target;
 	        // find parent node!
-            QuickFolders.Util.logDebug("popupDragObserver.DrageExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+            QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.DrageExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 	        try {
 		        if (popupStart.nodeName=='menu') {
 			        globalLastChildPopup=popupStart; // remember to destroy!
                 }
             }
             catch (e) {
-              QuickFolders.Util.logDebug ("CATCH popupDragObserver DragExit: \n" + e);
+              QuickFolders.Util.logDebugOptional("dnd","CATCH popupDragObserver DragExit: \n" + e);
             }
         } ,
 
         onDragOver: function (evt, flavor, session){
-            session.canDrop = (flavor.contentType == "text/x-moz-message");
-            if (null!=globalLastChildPopup) {
-              /*globalLastChildPopup.firstChild.hidePopup();*/
-              globalLastChildPopup=null;
-          }
+	        session.canDrop = (flavor.contentType == "text/x-moz-message");
+	        if (null!=globalLastChildPopup) {
+	          /*globalLastChildPopup.firstChild.hidePopup();*/
+	          globalLastChildPopup=null;
+			}
         },
 
         // drop mails on popup: move mail, like in buttondragobserver - this is set up to point to the other one
         onDrop: function (evt,dropData,dragSession) {
             var popupStart = evt.target;
             try {
-                QuickFolders.Util.logDebug("popupDragObserver.onDrop " + dropData.flavour.contentType);
-	            QuickFolders.Util.logDebug ("Popup Drop on" + popupStart.name);
+                QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDrop " + dropData.flavour.contentType);
+	            QuickFolders.Util.logDebugOptional("dnd","Popup Drop on" + popupStart.name);
             } catch(e) { qfLocalErrorLogger("Exception in OnDrop event: " + e)}
             try {
 	            popupStart.firstChild.hidePopup(); // new
@@ -478,7 +502,7 @@ var QuickFolders = {
 	              QuickFolders.Util.logToConsole ("UNEXPECTED ERROR QuickFolders.OnDragEnter - empty sourceNode!");
 	              return;
                 }
-		        QuickFolders.Util.logDebug("buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName);
+		        QuickFolders.Util.logDebugOptional("dnd","buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName);
 		        if (dragSession.sourceNode.nodeName == 'toolbarpaletteitem') {
 		          QuickFolders.Util.logDebug("trying to drag a toolbar palette item - not allowed.");
 		          dragSession.canDrop=false;
@@ -493,10 +517,10 @@ var QuickFolders = {
 				          popup.parentNode.removeChild(popup);
 				        else
 				          popup.hidePopup(); // parentNode.removeChild(popup)
-				       QuickFolders.Util.logDebug("removed popup globalHidePopupId: " + globalHidePopupId );
+				       QuickFolders.Util.logDebugOptional("dnd", "removed popup globalHidePopupId: " + globalHidePopupId );
 			        }
 			        catch (e) {
-				       QuickFolders.Util.logDebug("removing popup:  globalHidePopupId  failed!\n" + e + "\n");
+				       QuickFolders.Util.logDebugOptional("dnd", "removing popup:  globalHidePopupId  failed!\n" + e + "\n");
 			        }
 			        globalHidePopupId="";
                }
@@ -542,7 +566,7 @@ var QuickFolders = {
                         //close any other context menus
                         if (dragSession.isDataFlavorSupported("text/unicode" ))
 	                      return;  // don't show popup when reordering tabs
-	                    QuickFolders.Util.logDebug("creating popupset for " + targetFolder.name );
+	                    QuickFolders.Util.logDebugOptional("dnd", "creating popupset for " + targetFolder.name );
 
                         // instead of using the full popup menu (containing the 3 top commands)
                         // try to create droptarget menu that only contains the target subfolders "on the fly"
@@ -561,7 +585,7 @@ var QuickFolders = {
 	                    // a bug in showPopup when used with coordinates makes it start from the wrong origin
 	                    //document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
 	                    // AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
-	                    QuickFolders.Util.logDebug("showPopup with id " + popupId );
+	                    QuickFolders.Util.logDebugOptional("dnd", "showPopup with id " + popupId );
 	                    if (QuickFolders.Util.Application() == 'SeaMonkey')
 	                      document.getElementById(popupId).openPopup(button,'after_start', -1,-1,"context");
 	                    else
@@ -572,7 +596,7 @@ var QuickFolders = {
                     }
 
 
-                    catch(e) { QuickFolders.Util.logDebug("Exception creating folder popup: " + e);};
+                    catch(e) { QuickFolders.Util.logDebugOptional("dnd", "Exception creating folder popup: " + e);};
                     }
             }
             catch(e) {
@@ -584,10 +608,10 @@ var QuickFolders = {
         onDragExit: function(event, dragSession) {
              if (null==dragSession.sourceNode) { return; }
              try {
-	        //QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - sourceNode = " + dragSession.sourceNode.nodeName);
-             } catch(e) { QuickFolders.Util.logDebug("buttonDragObserver.onDragExit - " + e); }
+	        //QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - sourceNode = " + dragSession.sourceNode.nodeName);
+             } catch(e) { QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - " + e); }
             if (dragSession.sourceNode.nodeName == 'toolbarpaletteitem') {
-	            QuickFolders.Util.logDebug("trying to drag a toolbar palette item - ignored.");
+	            QuickFolders.Util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
 		        dragSession.canDrop=false;
 	            return;
             }
@@ -623,7 +647,7 @@ var QuickFolders = {
 	        if (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode" || flavor.contentType == "text/x-moz-folder")
               session.canDrop = true;
             else {
-              QuickFolders.Util.logDebug("buttonDragObserver.onDragover - can not drop " + flavor.contentType);
+              QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragover - can not drop " + flavor.contentType);
               session.canDrop = false;
             }
 
@@ -632,7 +656,7 @@ var QuickFolders = {
         onDrop: function (evt,dropData,dragSession) {
             var debugDragging = false;
 	        //alert('test: dropped item, flavor=' + dropData.flavour.contentType);
-	        QuickFolders.Util.logDebug("buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
+	        QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
             var DropTarget = evt.target;
             var targetFolder = DropTarget.folder;
             globalHidePopupId="";
@@ -755,9 +779,26 @@ var QuickFolders = {
 
 	addLoadEventListener: function() {
 		// avoid registering this event listener twice!
-		if (!this.loadListen)
+		if (!this.loadListen) {
 			window.addEventListener("load", QuickFolders.initDelayed, true);
+		}
 		this.loadListen=true;
+	},
+
+	addTabEventListener: function() {
+		if (((QuickFolders.Util.Appver() < 3) && (QuickFolders.Util.Application()=='Thunderbird')))
+		  return;
+		try{
+			this.tabContainer = document.getElementById('tabmail'); // tabbrowser // .tabContainer; // tabmail-container
+		    //qfLocalErrorLogger("id=" + document.getElementById('tabmail') + " tabContainer att:" + this.tabContainer.attributes);
+			//other events: "TabClose", "TabOpen"
+			document.getElementById('tabmail').addEventListener("TabSelect", qfTabListener.mailTabSelected, false);
+			//qfLocalErrorLogger("after addEventListener id=" + this.tabContainer.id);
+	    }
+	    catch (e) {
+		    qfLocalErrorLogger("No tabContainer available! " + e);
+		    this.tabContainer = null;
+	    }
 	}
 
 
@@ -774,7 +815,7 @@ function MyEnsureFolderIndex(tree, msgFolder)
 	      index = tree.getIndexOfFolder(msgFolder);
         else
           index= tree.builderView.getIndexOfResource(msgFolder);
-        QuickFolders.Util.logDebug ("MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
+        QuickFolders.Util.logDebug ("folders","MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 	    if (index == -1) {
 	  	  var parentIndex = MyEnsureFolderIndex(tree, msgFolder.parent);
@@ -818,7 +859,7 @@ function MyChangeSelection(tree, newIndex)
 {
   if(newIndex >= 0)
  {
-    QuickFolders.Util.logDebug("ChangeSelection of folder tree from index " + tree.currentIndex + " to index: " + newIndex);
+    QuickFolders.Util.logDebug("folders","ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
     tree.view.selection.select(newIndex);
     tree.treeBoxObject.ensureRowIsVisible(newIndex);
   }
@@ -826,7 +867,7 @@ function MyChangeSelection(tree, newIndex)
 
 function MySelectFolder(folderUri)
 {
-	QuickFolders.Util.logDebug("MySelectFolder: " + folderUri);
+	QuickFolders.Util.logDebugOptional("folders", "MySelectFolder: " + folderUri);
     var folderTree = MyGetFolderTree();
     var folderResource = myRDF().GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
@@ -878,7 +919,7 @@ var qfFolderListener = {
     }
     catch(e) {
 	    // write to TB status bar??
-	    try{window.MsgStatusFeedback.showStatusString("QuickFolders: " + msg);} catch(e) {;};
+	    try{QuickFolders.Util.logToConsole("Error: " + msg);} catch(e) {;};
 	};
     },
 
@@ -891,9 +932,9 @@ var qfFolderListener = {
           if (property == "TotalUnreadMessages" ||
               (QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {  // FolderSize
 	            if(QuickFolders) {
-				    QuickFolders.Util.logDebug("qfFolderListener: " + property);
+				    QuickFolders.Util.logDebugOptional("folders", "qfFolderListener: " + property);
 		            QuickFolders.Interface.setFolderUpdateTimer();
-		            QuickFolders.Util.logDebug("qfFolderListener: called setFolderUpdateTimer()");
+		            QuickFolders.Util.logDebugOptional("folders", "qfFolderListener: called setFolderUpdateTimer()");
                 }
           }
         }
@@ -904,7 +945,7 @@ var qfFolderListener = {
     OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
     OnItemEvent: function(item, event) {
 	    try {
-          QuickFolders.Util.logDebug("event: " + event);
+          QuickFolders.Util.logDebugOptional("events","event: " + event);
 	      if(event == "FolderLoaded") {  // DeleteOrMoveMsgCompleted
 		    try {
 	          if(QuickFolders)
@@ -919,12 +960,29 @@ var qfFolderListener = {
     OnDeleteOrMoveMessagesCompleted: function( aFolder) {}
 }
 
+var qfTabListener = {
+    mailTabSelected: function(evt){
+      qfLocalErrorLogger('mailTabSelected');
+      try {
+
+	    QuickFolders.Util.logToConsole('event ' + evt);
+
+        if(QuickFolders)
+            QuickFolders.Interface.onFolderSelected();
+      }
+      catch(e) {qfLocalErrorLogger("Exception in Item event - calling mailTabSelected: " + e)};
+    }
+}
+
+
 
 
 
 // now register myself as a listener on every mail folder
 var mailSession = Components.classes["@mozilla.org/messenger/services/session;1"].getService(Components.interfaces.nsIMsgMailSession);
 mailSession.AddFolderListener(qfFolderListener, Components.interfaces.nsIFolderListener.all);
+
+
 
 QuickFolders.addLoadEventListener();
 

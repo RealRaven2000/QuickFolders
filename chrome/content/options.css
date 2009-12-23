@@ -24,10 +24,34 @@
 }
 
 /****** LINKS  ********/
-.text-link {
-  padding: 4px 8px;
+label.text-link[href] {
+  padding: 4px 2px 16px 5px;
+  text-decoration: underline !important;
+  vertical-align: middle !important;;
+}
+
+label.text-link[href]:hover {
+  color: white !important;
+  background-color:	blue !important;
+}
+
+label.text-link[href]:focus {
+  color: #FFF !important;
+  background-color:	#06396F !important;
+  /*background-image: url("dellablue.png");
+  background-repeat: repeat-x;*/
+  border: 1px #006 solid;
   text-decoration: underline !important;
 }
+
+label.text-link:link {
+  color: orange !important;
+}
+label.text-link:visited {
+  color: #00A !important;
+}
+
+
 
 label.qfTabPreview {
   border: #AAA 1px solid;
@@ -37,27 +61,11 @@ label.qfTabPreview {
   vertical-align:middle;
 }
 
-label.text-link {
-  text-decoration: underline !important;
-}
-
 label [href^="mailto"] {
   text-decoration: underline  !important;
 }
 
-label.text-link:hover {
-  color: white !important;
-  background-color:	blue !important;
-}
 
-label.text-link:focus {
-  color: #FFF !important;
-  background-color:	#06396F !important;
-  /*background-image: url("dellablue.png");
-  background-repeat: repeat-x;*/
-  border: 1px #006 solid;
-  text-decoration: underline !important;
-}
 
 label#L2:hover {
   background-color: #EF8F34 !important;
@@ -118,7 +126,7 @@ label#L0:hover, label#L1:hover {
   color: #FFF !important;
   background-image: url("dellablue.png");
   background-repeat: repeat-x;
-  background-color: 2B9EEE;
+  background-color: #2B9EEE;
   border: 1px #006 solid;
   font-weight: bold;
 }
@@ -128,13 +136,6 @@ label#L0:active, label#L1:active {
   color: #FFF !important;
 }
 
-
-label.text-link:link {
-  color: orange !important;
-}
-label.text-link:visited {
-  color: #00A !important;
-}
 
 
 description.quickhelp-desc, description.quickhelp-dbg {

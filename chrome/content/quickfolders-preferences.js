@@ -5,6 +5,11 @@ QuickFolders.Preferences = {
 	    return this.service.getBoolPref("extensions.quickfolders.debug");
     },
 
+    isDebugOption: function(option) { // granular debugging
+        if(!this.isDebug) return false;
+	    try {return this.service.getBoolPref("extensions.quickfolders.debug." + option);}
+	    catch(e) {return false;}
+    },
 
     setFolderEntries: function(folderEntries) {
         var json = JSON.stringify(folderEntries)
@@ -72,6 +77,11 @@ QuickFolders.Preferences = {
     isShowToolbarFlatstyle: function() {
         return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
     } ,
+
+    isShowToolbarNativeTabstyle: function() {
+        return this.service.getBoolPref("extensions.quickfolders.showNativeTabStyle");
+    } ,
+
 
     isShowToolbarIcons: function() {
         return this.service.getBoolPref("extensions.quickfolders.showIcons");

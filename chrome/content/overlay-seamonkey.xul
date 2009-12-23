@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="layout.css" title="qfStyles" type="text/css"?>
+<?xml-stylesheet href="seamonkey.css" type="text/css"?>
 
 <!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -23,6 +24,7 @@
             class="toolbar-primary chromeclass-toolbar"
             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
             ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+            ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
             dragdroparea="QuickFolders-FoldersBox"
             customizable="false"
             context="QuickFolders-ToolbarPopup"

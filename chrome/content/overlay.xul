@@ -5,10 +5,10 @@
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
-    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
-    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
@@ -23,6 +23,7 @@
             class="toolbar-primary chromeclass-toolbar"
             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
             ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+            ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
             dragdroparea="QuickFolders-FoldersBox"
             customizable="false"
             context="QuickFolders-ToolbarPopup"

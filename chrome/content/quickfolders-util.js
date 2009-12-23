@@ -13,11 +13,15 @@ QuickFolders.Util = {
         return document.getElementById(id);
     } ,
 
-    Appver: function() {
-        if (null == this.mAppver) {
+    AppverFull: function() {
 	    var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 	                    .getService(Components.interfaces.nsIXULAppInfo);
-	    var appVer=appInfo.version.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
+        return appInfo.version;
+    },
+
+    Appver: function() {
+        if (null == this.mAppver) {
+	    var appVer=this.AppverFull().substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
 		    this.mAppver = parseFloat(appVer); // quick n dirty!
         }
 		return this.mAppver;
@@ -177,6 +181,11 @@ QuickFolders.Util = {
 
     logDebug: function (msg) {
 	  if (QuickFolders.Preferences.isDebug())
+	    this.logToConsole(msg);
+	},
+
+    logDebugOptional: function (option, msg) {
+	  if (QuickFolders.Preferences.isDebugOption(option))
 	    this.logToConsole(msg);
 	},
 

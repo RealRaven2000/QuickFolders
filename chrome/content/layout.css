@@ -82,6 +82,17 @@ vbox.gradientpanel {
   background-image: url("gradient-yellow.png");
 }
 
+/* Native shell styles */
+#QuickFolders-Toolbar.toolbar-native toolbarbutton
+{
+	-moz-appearance: tab !important;
+}
+
+#QuickFolders-Toolbar.toolbar-native  toolbarbutton.selected-folder
+{
+  /* find a way to make button look selected/active all the time? */
+}
+
 
 /* Flat Styles below */
 #QuickFolders-Toolbar.toolbar-flat {
@@ -135,11 +146,6 @@ vbox.gradientpanel {
     background-repeat: repeat-x;
 }
 
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton:-moz-drag-over {
-    background-color: #E93903 !important;
-    color: White !important;
-}
-
 
 #QuickFolders-Toolbar toolbarbutton.dragRIGHT:-moz-drag-over,
 #QuickFolders-Toolbar toolbarbutton[label].dragRIGHT:-moz-drag-over {
@@ -155,24 +161,6 @@ vbox.gradientpanel {
     list-style-image: url("dropLeft.gif") !important;
 }
 
-/* Test Example for colored toolbar
-#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label*="Quickfolders"]
-{
-    background-image: url("cols/tabcol-1.png") !important;
-    background-position: 4px top  !important;
-    background-repeat: repeat-x !important;
-}
-*/
-
-
-
-/* using list-style-image instead of background-image is a hack that makes this behave better with some themes (e.g. outlook blueTB) */
-/*
-#QuickFolders-Toolbar toolbarbutton.selected-folder.icon
-{
-    list-style-image: url("folder-open.png");
-}
-*/
 
 #QuickFolders-Toolbar toolbarbutton.inbox.icon {list-style-image: url("folder-inbox.png");}
 #QuickFolders-Toolbar toolbarbutton.sent.icon {list-style-image: url("folder-sent.png");}
@@ -283,14 +271,30 @@ menupopup.QuickFolders-folder-popup menu
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
-    -moz-border-radius: 4px 4px 0 0;
+    -moz-appearance: none !important;
     border: 1px solid darkred !important;
     color: darkred !important;
     font-weight: 500;
+    background-repeat: repeat-x;
+}
+
+menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over
+{
+    background-image: url('gold-bar.png') !important;
+    list-style-image : url('arrow-yellow.png') !important;
+    -moz-border-radius: 5px 0 0 5px;
+}
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
+{
+    text-decoration: underline !important;
     background-image: url('orange-bar.png') !important;
     list-style-image : url('tb-anchor.png') !important;
 }
 
+
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
 {
     -moz-border-radius: 4px 4px 0 0;
@@ -310,18 +314,5 @@ menupopup.QuickFolders-folder-popup menuitem:hover
 {
     list-style-image : url('folder-open.png')
 }
-
-menupopup.QuickFolders-folder-popup menuitem[tag="sub"]:hover
-{
-    /*list-style-image : url('folder-open.png') !important; */
-}
-
-menupopup.QuickFolders-folder-popup menuitem menu:hover,
-menupopup.QuickFolders-folder-popup menu:-moz-drag-over
-{
-    list-style-image : url('tb-anchor.png') !important;
-}
-
-
 
 

@@ -1,12 +1,16 @@
 
 /* Postbox fixes; */
 menupopup.QuickFolders-folder-popup menuitem,
-menupopup.QuickFolders-folder-popup menu,
-menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
-menupopup.QuickFolders-folder-popup menu:-moz-drag-over
+menupopup.QuickFolders-folder-popup menu
 {
     -moz-appearance: none !important;
     padding: 1px 5px;
     margin: 0px default;
+}
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menu:-moz-drag-over
+{
+    -moz-appearance: none !important;
 }
 

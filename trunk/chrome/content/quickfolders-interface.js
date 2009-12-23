@@ -16,7 +16,7 @@ QuickFolders.Interface = {
     },
 
     setFolderUpdateTimer: function() {
-	    QuickFolders.Util.logDebug(" Old Timer ID = " + this.TimeoutID);
+	    QuickFolders.Util.logDebug("setFolderUpdateTimer - Old Timer ID: " + this.TimeoutID);
 
 	    // avoid the overhead if marking a folder with lots of unread mails as read or getting emails
 	    // made folder update asynchronous instead.
@@ -26,7 +26,7 @@ QuickFolders.Interface = {
 		      if (!nDelay>0) nDelay = 750;
 		      var func = "QuickFolders.Interface.queuedFolderUpdate()";
 		      this.TimeoutID = setTimeout(func, nDelay);
-		      QuickFolders.Util.logDebug("New Folder Update Timer ID = " + this.TimeoutID);
+		      QuickFolders.Util.logDebug("New Folder Update Timer ID: " + this.TimeoutID);
           }
           catch (e) {
 	          QuickFolders.Util.logDebug("setFolderUpdateTimer: " + e);
@@ -45,15 +45,29 @@ QuickFolders.Interface = {
     // added parameter to avoid deleting categories dropdown while selecting from it!
     updateFolders: function(rebuildCategories) {
 	    this.TimeoutID=0;
-        // AG made flat style configurable
-        QuickFolders.Util.logDebug('updateFolders(' + rebuildCategories + ')');
-
+	    var sDebug='updateFolders(' + rebuildCategories + ')';
         var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
         if (QuickFolders.Preferences.isShowToolbarFlatstyle())
           toolbar.className = "toolbar-flat";
-        else
-          toolbar.className = "";
+        else {
+	      if (QuickFolders.Preferences.isShowToolbarNativeTabstyle())
+	        toolbar.className = "toolbar-native";
+          else
+	        toolbar.className = "";
+        }
+        switch (toolbar.className) {
+	        case "":
+	          sDebug += "Style: toolbarbuttons";
+	          break;
+	        case "toolbar-flat":
+	          sDebug += "Style: flat style";
+	          break;
+	        case "toolbar-native":
+	          sDebug += "Style: shell tabs style";
+	          break;
+        }
+        QuickFolders.Util.logDebug(sDebug);
 
 
         this.buttonsByOffset = [];
@@ -61,7 +75,9 @@ QuickFolders.Interface = {
         this.specialButtons = [];
 
         QuickFolders.Util.clearChildren(this.getToolbar(), rebuildCategories);
-        QuickFolders.Util.$('QuickFolders-title-label').value = QuickFolders.Preferences.isShowQuickFoldersLabel() ? 'QuickFolders:' : '';
+        // force label when there are no folders!
+        QuickFolders.Util.$('QuickFolders-title-label').value =
+           (QuickFolders.Preferences.isShowQuickFoldersLabel()||(0==QuickFolders.Model.selectedFolders.length)) ? 'QuickFolders:' : '';
 
         if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
           this.updateCategories();
@@ -86,17 +102,21 @@ QuickFolders.Interface = {
                 }
                 catch(e) {tabColor = null};
 
+                QuickFolders.Util.logDebugOptional("folders","GetMsgFolderFromUri (" + folderEntry.uri + "...");
                 if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
                     var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor);
+		            QuickFolders.Util.logDebugOptional("folders","addFolderButton( " + folderEntry.name + ") finished.\n===================================");
 
                     this.buttonsByOffset[offset] = button;
-			        if (tabColor)
+			        if (tabColor) {
 			          this.setButtonColor(button, tabColor);
+		              QuickFolders.Util.logDebugOptional("folders","Button Color: " + tabColor);
+		            }
 
                     offset++;
                 }
             }
-            QuickFolders.Util.logDebug(QuickFolders.Model.selectedFolders.length + " bookmarked folders added to Model.");
+            QuickFolders.Util.logDebugOptional("folders",QuickFolders.Model.selectedFolders.length + " bookmarked folders added to Model.");
 
             this.onFolderSelected();
         }
@@ -214,7 +234,7 @@ QuickFolders.Interface = {
             ;
 
             if(shouldBeHandled) {
-				QuickFolders.Util.logDebug(dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
+				QuickFolders.Util.logDebugOptional("events", dir + " ALT " + e.altKey + " - CTRL " + e.ctrlKey + "   kC: " + e.keyCode + "  cC:" + e.charCode);
                 var shortcut = -1;
                 if (dir=='up')
                     shortcut = e.keyCode-48;
@@ -281,7 +301,7 @@ QuickFolders.Interface = {
         var numTotal = folder.getTotalMessages(false);
 
         var label = "";
-	    QuickFolders.Util.logDebug("addFolderButton " + folder.name + "...");
+	    QuickFolders.Util.logDebugOptional("folders", "addFolderButton " + folder.name + "...");
 
         if(QuickFolders.Preferences.isShowShortcutNumbers()) {
             if(offset < 10) {
@@ -458,14 +478,15 @@ QuickFolders.Interface = {
 
         if (QuickFolders.Util.Appver() > 2 && QuickFolders.Util.Application()=='Thunderbird')
           alert ("to do: add compactfolder for TB3");
-        else
+        else {
           messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
-        alert(qfBundle.GetStringFromName("qfCompacted") +" "+folder.name);
+          alert(qfBundle.GetStringFromName("qfCompacted") +" "+folder.name);
+        }
     },
 
     addPopupSet: function(popupId, folder, offset) {
         var popupset = document.createElement('popupset');
-        QuickFolders.Util.logDebug("Create popup menu " + folder.name + "...");
+        QuickFolders.Util.logDebugOptional("popupmenus", "Create popup menu " + folder.name + "...");
         this.getToolbar().appendChild(popupset);
 
         var menupopup = document.createElement('menupopup');
@@ -478,7 +499,7 @@ QuickFolders.Interface = {
         popupset.appendChild(menupopup);
 
         var menuitem;
-        //QuickFolders.Util.logDebug("Creating Popup Set for " + folder.name);
+        QuickFolders.Util.logDebugOptional("popupmenus","Creating Popup Set for " + folder.name);
 
         menuitem = document.createElement('menuitem');
         menuitem.setAttribute("tag","qfRemove");
@@ -526,11 +547,14 @@ QuickFolders.Interface = {
         colorMenu.className = 'QuickFolders-folder-popup';
         menuitem.setAttribute("class","menuitem-iconic");
 
+        QuickFolders.Util.logDebugOptional("popupmenus","Popup set created..\n-------------------------");
+
         var menuColorPopup = document.createElement("menupopup");
         colorMenu.appendChild(menuColorPopup);
 
         // create color pick items
         var jCol;
+        QuickFolders.Util.logDebugOptional("popupmenus","Creating Colors Menu for " + folder.name + "...");
         for (jCol=0; jCol<=20;jCol++) {
 	        menuitem = document.createElement('menuitem');
 	        menuitem.className='color menuitem-iconic';
@@ -544,16 +568,18 @@ QuickFolders.Interface = {
 	        menuitem.setAttribute("oncommand","QuickFolders.Interface.setTabColor(event.target.parentNode.parentNode.parentNode.folder,'" + jCol + "')");  // "MsgCompactFolder(false);" only for current folder
 	        menuColorPopup.appendChild(menuitem);
         }
+        QuickFolders.Util.logDebugOptional("popupmenus","Colors Menu created.\n-------------------------");
 
         // append it to main popup menu
 	    menupopup.appendChild(colorMenu);
 
 	    //moved this out of addSubFoldersPopup for recursive menus
 	    if (folder.hasSubFolders) {
+	       QuickFolders.Util.logDebugOptional("popupmenus","Creating SubFolder Menu for " + folder.name + "...");
            menupopup.appendChild(document.createElement('menuseparator'));
 	       this.debugPopupItems=0;
 	       this.addSubFoldersPopup(menupopup, folder);
-	       QuickFolders.Util.logDebug("Created Menu " + folder.name + ": " + this.debugPopupItems + " items");
+	       QuickFolders.Util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
         }
 
         this.menuPopupsByOffset[offset] = menupopup;
@@ -631,6 +657,8 @@ QuickFolders.Interface = {
                     menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "')");
 
                     menuitem.folder = subfolder;
+                    if (!(QuickFolders.Util.Application()=='Thunderbird' && appver<3))
+                      menuitem.setAttribute("ondragenter","event.preventDefault()"); // fix layout issues in TB3 + Postbox!
                     menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
                     menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
                     menuitem.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
@@ -705,6 +733,8 @@ QuickFolders.Interface = {
     onFolderSelected: function() {
 
         var folder = GetFirstSelectedMsgFolder();
+
+        if (null==folder) return; // cut out lots of unneccessary processing!
 
         for(var i = 0; i < this.buttonsByOffset.length; i++) {
            var button = this.buttonsByOffset[i];
@@ -795,7 +825,7 @@ QuickFolders.Interface = {
 
 		  QuickFolders.Styles.setElementStyle(ss, '.toolbar','background-color',
 	               QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace"),true);
-		  QuickFolders.Util.logDebug("updateUserStyles(): success");
+		  QuickFolders.Util.logDebugOptional ("css","updateUserStyles(): success");
 		  return true;
 
 

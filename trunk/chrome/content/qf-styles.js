@@ -9,7 +9,7 @@ QuickFolders.Styles = {
 	    var ss = document.styleSheets[i];
 	    if (ss.title == "qfStyles" || ss.href.indexOf("//quickfolders/content/layout.css")>0) {
 		    if (this.DebugMe)
-		      QuickFolders.Util.logDebug("stylesheet (" + i + ") [" + ss.title + "] =" + ss.href
+		      QuickFolders.Util.logDebugOptional("css", "stylesheet (" + i + ") [" + ss.title + "] =" + ss.href
 		        + "\nwin.doc.title=" + window.document.title
 		        + "\ndoc.title=" + document.title
 		        + "\nwin.location=" + window.location);
@@ -30,7 +30,7 @@ QuickFolders.Styles = {
 	      return "";
         }
 
-	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
+	    var rulesList=ss.cssRules;
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
 	    var rAtoms=RuleName.split(" ");
@@ -72,9 +72,9 @@ QuickFolders.Styles = {
 		    return false;
         }
         if (this.DebugMe)
-          QuickFolders.Util.logDebug("setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
+          QuickFolders.Util.logDebugOptional("css", "setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
 
-	    var rulesList=ss.cssRules; //  ? ss.cssRules : ss.rules
+	    var rulesList=ss.cssRules;
 	    var i;
 	    var RuleName = '#QuickFolders-Toolbar' + rule;
 	    var rAtoms=RuleName.split(" ");
@@ -94,7 +94,7 @@ QuickFolders.Styles = {
 	        if (found && !(undefined == found)) {
 			  st=rulesList[i].style; // CSSStyleDeclaration
 			  if (this.DebugMe)
-	            QuickFolders.Util.logDebug("found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
+	            QuickFolders.Util.logDebugOptional("css", "found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
 			  var k;//iterate styles!
 
 			  for (k=0;k<st.length;k++) {
@@ -102,8 +102,8 @@ QuickFolders.Styles = {
 			      if (colortype==st.item(k)) {
 				    foundRule=true;
 				    if (this.DebugMe) {
-				        QuickFolders.Util.logDebug ("\n=============\nModify item: " + st.item(k)) + " =====================";
-					    QuickFolders.Util.logDebug ("\nrulesList[i].style[k]=" + rulesList[i].style[k]
+				        QuickFolders.Util.logDebugOptional ("css", "\n=============\nModify item: " + st.item(k)) + " =====================";
+					    QuickFolders.Util.logDebugOptional ("css", "\nrulesList[i].style[k]=" + rulesList[i].style[k]
 					              + "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
 					              + "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
 					              + "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
@@ -124,8 +124,8 @@ QuickFolders.Styles = {
 	    if (found)
 	      return true;
 	    else {  // add the rule
-	      var sRule=RuleName +"{" + colortype + ":" + color +  ((important) ?  " !important;}" : "");
-	      QuickFolders.Util.logDebug("Adding new rule..." + sRule );
+	      var sRule=RuleName +"{" + colortype + ":" + color +  ((important) ?  " !important" : "") + ";}";
+	      QuickFolders.Util.logDebugOptional("css", "Adding new rule:" + sRule );
 	      ss.insertRule(sRule, ss.cssRules.length-1);
 	      return true;
 	    }

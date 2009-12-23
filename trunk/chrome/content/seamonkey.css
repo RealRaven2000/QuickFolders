@@ -10,3 +10,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     margin: 0px default;
 }
 
+toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text
+{
+	display: block !important;
+}

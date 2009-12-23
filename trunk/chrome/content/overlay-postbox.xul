@@ -24,6 +24,7 @@
             class="toolbar-primary chromeclass-toolbar"
             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
             ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+            ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
             dragdroparea="QuickFolders-FoldersBox"
             customizable="false"
             context="QuickFolders-ToolbarPopup"

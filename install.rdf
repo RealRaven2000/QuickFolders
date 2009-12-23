@@ -5,7 +5,7 @@
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
    em:minVersion="1.5"
-   em:maxVersion="3.0b4"/>
+   em:maxVersion="3.0.*"/>
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="1.0.0"
@@ -19,11 +19,12 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="quickfolders@curious.be"
    em:name="QuickFolders"
-   em:version="1.6.3"
+   em:version="1.7"
    em:creator="Alexander Malfait"
    em:description="Bookmark your favorite mail folders in Thunderbird."
    em:iconURL="chrome://quickfolders/content/quickfolders-Icon.png"
    em:optionsURL="chrome://quickfolders/content/options.xul">
+    <em:homepageURL>http://quickfolders.mozdev.org/index.html</em:homepageURL>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomt2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomv2"/>
@@ -37,8 +38,7 @@
     <em:translator>Alex Malfait (nl-NL)</em:translator>
     <em:translator>Marcelo Ghelman [ghelman.net] (pt-BR)</em:translator>
     <em:translator>Anton Pinsky (ru-RU)</em:translator>
+    <em:translator>Nguyen Hoang Long(vi-VN)</em:translator>
     <em:translator>Axel Grude (de-DE)</em:translator>
-    <em:homepageURL>"http://quickfolders.mozdev.org/index.html"</em:homepageURL>
-
   </RDF:Description>
 </RDF:RDF>

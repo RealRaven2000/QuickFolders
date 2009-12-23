@@ -1,4 +1,4 @@
-﻿<!ENTITY qf.prefwindow.quickfolders.options "Opzioni QuickFolders">
+<!ENTITY qf.prefwindow.quickfolders.options "Opzioni QuickFolders">
 <!ENTITY qf.label.quickfolders "Quickfolders">
 <!ENTITY qf.tab.general "Generali">
 <!ENTITY qf.tab.layout "Personalizzazione schede">
@@ -28,7 +28,6 @@
 <!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un elevato numero di cartelle Quickfolders, provare l&apos;estensione Nostalgy per disporre di un&apos;organizzazione dei messaggi guidata da tastiera.">
 <!ENTITY qf.description.experimentalItems "I seguenti elementi sono sperimentali. E&apos; auspicabile che funzionino nella prossima versione!">
 <!ENTITY qf.label.instantApplyMsg "Nota: se in basso si visualizza solo il pulsante [Close], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a cliccare il pulsante destro del mouse in un&apos;area vuota della barra QuickFolders e selezionare &apos;Opzioni di QuickFolders&apos;. Ciò forza la comparsa del pulsante [Ok] che dovrebbe consentire il salvataggio dei colori.">
-<!ENTITY qf.label.contactMe "Per suggerimenti, segnalazione di errori e feedback scrivere a axelg@gofree.indigo.ie.">
 <!ENTITY qf.button.defaultcolors "Colori di default">
 <!ENTITY qf.checkbox.debug "Modalità di debug">
 <!ENTITY qf.label.StandardTabColor "Colore standard schede:">
@@ -47,8 +46,10 @@
 <!ENTITY qf.label.donateLink "Visita la Pagina delle Donazioni...">
 <!ENTITY qf.description.contactMe "Si può anche contattarmi personalmente all&apos;email axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Per contattarmi (in lingua inglese o tedesca)...">
-
 <!ENTITY qf.checkbox.showSubfolders "Espande le sottocartelle nel menu a popup (sperimentale)">
+<!ENTITY qf.menu.tabColor "No Color!">
+<!ENTITY qf.menu.Color "Color">
 <!ENTITY qf.options.LayoutColorAppearance "Aspetto del colore della singola scheda">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(con barra colorata)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(completamente colorata)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">

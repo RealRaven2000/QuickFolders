@@ -15,6 +15,49 @@ QuickFolders.Interface = {
 	    this.boundKeyListener=b;
     },
 
+    tabSelectUpdate: function() {
+	    try {
+		    var folder;
+    		QuickFolders.Util.logDebugOptional("mailTabs", "tabSelectUpdate - "
+    		     + QuickFolders.currentURI +"\ntabSelectEnable=" + QuickFolders.tabSelectEnable);
+		    if (QuickFolders.tabSelectEnable) {
+    		    QuickFolders.Interface.onFolderSelected();
+		    	// change the category (if selected folder is in list)
+	    		folder = GetFirstSelectedMsgFolder();
+		    	if (folder) {
+			    	QuickFolders.Util.logDebugOptional("mailTabs", "Selected Tab: "+ folder.name);
+			        var entry=QuickFolders.Model.getFolderEntry(folder.URI);
+			        if (entry) {
+				        QuickFolders.Util.logDebugOptional ("mailTabs","Current Category =" + this.getCurrentlySelectedCategoryName());
+				        QuickFolders.Util.logDebugOptional ("mailTabs","Category of selected folder=" + entry.category);
+				        if (!entry.category)
+				          QuickFolders.Interface.selectCategory("__UNCATEGORIZED", false);
+				        if (entry.category && entry.category!=this.getCurrentlySelectedCategoryName() && entry.category!="__ALWAYS")
+				          QuickFolders.Interface.selectCategory(entry.category, false);
+				        this.updateCategories()
+
+			        }
+	            }
+            }
+    		else {
+    			//folder = GetMsgFolderFromUri(QuickFolders.currentURI);
+			}
+        } catch(e) { QuickFolders.Util.logToConsole("tabSelectUpdate failed: " + e); }
+        QuickFolders.tabSelectEnable=true;
+    },
+
+    setTabSelectTimer: function() {
+		  try {
+		      var nDelay = 250;
+		      var func = "QuickFolders.Interface.tabSelectUpdate()";
+		      var tID=setTimeout(func, nDelay);
+		      QuickFolders.Util.logDebug("Folder Tab Select Timer ID: " + tID);
+          }
+          catch (e) {
+	          QuickFolders.Util.logDebug("setTabSelectTimer: " + e);
+          }
+    },
+
     setFolderUpdateTimer: function() {
 	    QuickFolders.Util.logDebug("setFolderUpdateTimer - Old Timer ID: " + this.TimeoutID);
 
@@ -87,30 +130,25 @@ QuickFolders.Interface = {
 
         // force user colors on first updateFolders (no selecteFolder yet!)
         if (QuickFolders.Model.selectedFolders.length) {
-	        QuickFolders.Util.logDebug('QuickFolders.Model.selectedFolders.length = ' + QuickFolders.Model.selectedFolders.length + ')');
+	        QuickFolders.Util.logDebug('QuickFolders.Model.selectedFolders.length = ' + QuickFolders.Model.selectedFolders.length);
 
             for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
                 var folderEntry = QuickFolders.Model.selectedFolders[i];
                 var folder;
                 var tabColor;
 
-                if(!this.shouldDisplayFolder(folderEntry)) {
+                if(!this.shouldDisplayFolder(folderEntry))
                     continue;
-                }
-                try {
-	                tabColor = folderEntry.tabColor;
-                }
+                try {tabColor = folderEntry.tabColor;}
                 catch(e) {tabColor = null};
 
-                QuickFolders.Util.logDebugOptional("folders","GetMsgFolderFromUri (" + folderEntry.uri + "...");
                 if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
                     var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor);
-		            QuickFolders.Util.logDebugOptional("folders","addFolderButton( " + folderEntry.name + ") finished.\n===================================");
 
                     this.buttonsByOffset[offset] = button;
 			        if (tabColor) {
 			          this.setButtonColor(button, tabColor);
-		              QuickFolders.Util.logDebugOptional("folders","Button Color: " + tabColor);
+		              QuickFolders.Util.logDebugOptional("css","Button Color: " + tabColor);
 		            }
 
                     offset++;
@@ -181,7 +219,7 @@ QuickFolders.Interface = {
 
     selectCategory: function(categoryName, rebuild) {
        this.currentlySelectedCategory = categoryName;
-       QuickFolders.Util.logDebug("Selecting Category: " + categoryName);
+       QuickFolders.Util.logDebug("Selecting Category: " + categoryName + "...");
        this.updateFolders(rebuild);
 
        QuickFolders.Preferences.setLastSelectedCategory(categoryName);
@@ -376,6 +414,9 @@ QuickFolders.Interface = {
         // AG add dragging of buttons
         button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
         button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+
+        QuickFolders.Util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
+
         return button;
     } ,
 
@@ -700,20 +741,6 @@ QuickFolders.Interface = {
     // select subfolder (on click)
     onSelectSubFolder: function(folderUri) {
        MySelectFolder (folderUri);
-       // rename parent tab EXPERIMENTAL!!
-       /*
-        var entry, parentEntry;
-        var li=folderUri.lastIndexOf('/');
-        if (li<=1) return;
-        var uriParent=folderUri.substr(0, li);
-        QuickFolders.Util.logDebug("uriParent: " + uriParent);
-        entry = QuickFolders.Model.getFolderEntry(folderUri);
-
-        if((parentEntry = QuickFolders.Model.getFolderEntry(uriParent))) {
-            parentEntry.name = parentEntry.name + ' - ' + entry.name;
-            QuickFolders.Model.update();
-        }
-        */
     } ,
 
 
@@ -731,7 +758,6 @@ QuickFolders.Interface = {
     } ,
 
     onFolderSelected: function() {
-
         var folder = GetFirstSelectedMsgFolder();
 
         if (null==folder) return; // cut out lots of unneccessary processing!
@@ -746,6 +772,8 @@ QuickFolders.Interface = {
         if((selectedButton = this.getButtonByFolder(folder))) {
             selectedButton.className += " selected-folder";
         }
+
+
     },
 
     addFolderToCategory: function(folder) {
@@ -810,8 +838,7 @@ QuickFolders.Interface = {
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);
 
-	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color',
-                   QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),true);
+	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color', colActiveBG,true);
 
 		  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','background-color',
 	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange"),true);

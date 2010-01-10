@@ -199,8 +199,16 @@
       AG bug 22121 fixed?
       AG fixed bug 22067 (TB3 did not display colors in tab colors submenu)
 
-   WIP
-      added time logging to debug output
+    31/12/2009 Release 1.7.1
+      AG added mail tab support for TB3, SeaMonkey and Postbox. Changing tabs will also affect current QF selection (and Categories)
+      AG added separate debug options for mailTabs, folders, CSS, Drag and Drop, popup menus and (folder) events
+
+    05/01/2009 Release 1.7.2
+      AG added: right click the debug option to be able to toggle all separate debug options easily
+
+    07/01/2009 Release 1.8 [pre3]
+      AG added Smart Folders Support (TB3 only)
+      AG added Newsgroup Folders Support (TB3, SM, Pb) - not supported in TB2
 
 
   KNOWN ISSUES
@@ -251,6 +259,8 @@ var QuickFolders = {
 	keyListen: EventListener,
 	loadListen: false,
 	tabContainer: null,
+	tabSelectEnable: true,
+	currentURI: '',
 	initDone: false,
     initDelayed: function() {
        var sWinLocation;
@@ -350,6 +360,7 @@ var QuickFolders = {
         getSupportedFlavours : function () {
             var flavours = new FlavourSet();
             flavours.appendFlavour("text/x-moz-folder"); // folder tree items
+            flavours.appendFlavour("text/x-moz-newsfolder");
             flavours.appendFlavour("text/unicode"); // buttons
             return flavours;
         },
@@ -363,7 +374,7 @@ var QuickFolders = {
         },
 
         onDragOver: function (evt,flavour,session){
-            if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode") // only allow folders or  buttons!
+            if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode" || flavour.contentType=="text/x-moz-newsfolder") // only allow folders or  buttons!
               session.canDrop = true;
             else {
 	          QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + flavour.contentType);
@@ -374,20 +385,30 @@ var QuickFolders = {
         onDrop: function (evt,dropData,dragSession) {
             QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
             switch (dropData.flavour.contentType) {
-                case  "text/x-moz-folder":
-                    var sourceUri;
-                    if ((QuickFolders.Util.Appver() > 2)
-                        && (QuickFolders.Util.Application()=='Thunderbird')) {
-                      var msgFolder = evt.dataTransfer.mozGetDataAt("text/x-moz-folder", 0);
-                      sourceUri = msgFolder.URI;
-                      if (!sourceUri) sourceUri = msgFolder;  // SeaMonkey
+                case "text/x-moz-folder":
+                case "text/x-moz-newsfolder":
+                    var msgFolder, sourceUri;
+                    switch(QuickFolders.Util.Application()) {
+	                  case 'Thunderbird':
+	                    if (QuickFolders.Util.Appver()<3)
+	                      sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession);
+	                    else {
+		                  msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
+		                  sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
+                        }
+	                    break;
+	                  case 'SeaMonkey':
+	                    sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
+	                    break;
+	                  case 'Postbox':
+	                    sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
+	                    break;
                     }
-                    else
-                      sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
+
                     if(sourceUri) {
 	                  var cat=QuickFolders.Interface.getCurrentlySelectedCategoryName();
                       if (QuickFolders.Model.addFolder(sourceUri, cat)) {
-                        var s = "Added shortcut " + msgFolder + " to QuickFolders"
+                        var s = "Added shortcut " + sourceUri + " to QuickFolders"
                         if (cat!=null) s = s + " Category " + cat;
                         try{window.MsgStatusFeedback.showStatusString(s);} catch (e) {};
                       }
@@ -644,7 +665,8 @@ var QuickFolders = {
         onDragOver: function (evt,flavor,session){
 	        //QuickFolders.Util.logDebug("buttonDragObserver.onDragOver flavor=" + flavor.contentType);
 	        session.canDrop = true;
-	        if (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode" || flavor.contentType == "text/x-moz-folder")
+	        if (flavor.contentType == "text/x-moz-message" || flavor.contentType == "text/unicode"
+	         || flavor.contentType == "text/x-moz-folder" || flavor.contentType == "text/x-moz-newsfolder")
               session.canDrop = true;
             else {
               QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragover - can not drop " + flavor.contentType);
@@ -662,7 +684,9 @@ var QuickFolders = {
             globalHidePopupId="";
 
             switch (dropData.flavour.contentType) {
-                //case  "text/x-moz-folder": // not supported! You can not drop a folder from foldertree on a tab!
+                case  "text/x-moz-folder": // not supported! You can not drop a folder from foldertree on a tab!
+                  alert("Please drag new folders to an empty area of the toolbar!");
+                  break;
                 case  "text/x-moz-message":
                     var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 	                //alert('trans.addDataFlavor: trans=' + trans + '\n numDropItems=' + dragSession.numDropItems);
@@ -787,13 +811,14 @@ var QuickFolders = {
 
 	addTabEventListener: function() {
 		if (((QuickFolders.Util.Appver() < 3) && (QuickFolders.Util.Application()=='Thunderbird')))
-		  return;
+		  return; // no tabs in TB2!
 		try{
-			this.tabContainer = document.getElementById('tabmail'); // tabbrowser // .tabContainer; // tabmail-container
-		    //qfLocalErrorLogger("id=" + document.getElementById('tabmail') + " tabContainer att:" + this.tabContainer.attributes);
-			//other events: "TabClose", "TabOpen"
-			document.getElementById('tabmail').addEventListener("TabSelect", qfTabListener.mailTabSelected, false);
-			//qfLocalErrorLogger("after addEventListener id=" + this.tabContainer.id);
+			if (QuickFolders.Util.Application()=='Postbox')
+				this.tabContainer = document.getElementById('tabmail').mTabContainer;
+			else
+				this.tabContainer = document.getElementById('tabmail').tabContainer;
+			this.tabContainer.addEventListener("select", qfTabListener.mailTabSelected, false);
+			//this.tabContainer.addEventListener("tabselected", qfTabListener.mailTabSelected, false);
 	    }
 	    catch (e) {
 		    qfLocalErrorLogger("No tabContainer available! " + e);
@@ -814,8 +839,8 @@ function MyEnsureFolderIndex(tree, msgFolder)
            || (QuickFolders.Util.Application() == 'Postbox'))
 	      index = tree.getIndexOfFolder(msgFolder);
         else
-          index= tree.builderView.getIndexOfResource(msgFolder);
-        QuickFolders.Util.logDebug ("folders","MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
+          index = tree.builderView.getIndexOfResource(msgFolder);
+        QuickFolders.Util.logDebugOptional ("folders", "MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 	    if (index == -1) {
 	  	  var parentIndex = MyEnsureFolderIndex(tree, msgFolder.parent);
@@ -858,8 +883,8 @@ function MyGetFolderTree() {
 function MyChangeSelection(tree, newIndex)
 {
   if(newIndex >= 0)
- {
-    QuickFolders.Util.logDebug("folders","ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
+  {
+    QuickFolders.Util.logDebugOptional("folders", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
     tree.view.selection.select(newIndex);
     tree.treeBoxObject.ensureRowIsVisible(newIndex);
   }
@@ -867,27 +892,43 @@ function MyChangeSelection(tree, newIndex)
 
 function MySelectFolder(folderUri)
 {
+	//during MySelectFolder, disable the listener for tabmail "select"
 	QuickFolders.Util.logDebugOptional("folders", "MySelectFolder: " + folderUri);
+	// QuickFolders.tabSelectEnable=false;
+
     var folderTree = MyGetFolderTree();
     var folderResource = myRDF().GetResource(folderUri);
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
     var folderIndex;
 
-    if (QuickFolders.Util.Appver() <= 2
-        || QuickFolders.Util.Application()=='Postbox'
-        || QuickFolders.Util.Application()=='SeaMonkey' ) {
+	QuickFolders.currentURI = folderUri;
+
+    if (QuickFolders.Util.Application()=='Thunderbird'
+     && QuickFolders.Util.Appver()>=3)
+    { // TB 3
+		gFolderTreeView.selectFolder (msgFolder);
+		folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
+		if (folderUri.indexOf("nobody@smart")>0)
+	      QuickFolders.Interface.onFolderSelected();
+	}
+	else { // TB 2, Postbox, SeaMonkey
     // before we can select a folder, we need to make sure it is "visible"
     // in the tree.  to do that, we need to ensure that all its
     // ancestors are expanded
-	    if (QuickFolders.Util.Application()=='Postbox')
+	    if (QuickFolders.Util.Application()=='Postbox') {
 		   folderIndex = EnsureFolderIndex(msgFolder);
+		   QuickFolders.Util.logDebugOptional("folders", "EnsureFolderIndex: " + msgFolder.URI);
+	    }
 		else
 		   folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
       // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
   		QuickFolders.Util.ensureNormalFolderView();
   		folderIndex = MyEnsureFolderIndex(folderTree, msgFolder);
+  		QuickFolders.tabSelectEnable=true;
       }
+      //else
+	  //  QuickFolders.tabSelectEnable=false;
 	  MyChangeSelection(folderTree, folderIndex);
 	  // select message in top pane for keyboard navigation
 	  if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
@@ -895,10 +936,6 @@ function MySelectFolder(folderUri)
 	      document.commandDispatcher.advanceFocus();
 	      document.commandDispatcher.rewindFocus();
       }
-	}
-	else { // TB 3
-		gFolderTreeView.selectFolder (msgFolder);
-		folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
 	}
 
 }
@@ -928,14 +965,10 @@ var qfFolderListener = {
     OnItemPropertyChanged: function(parent, item, viewString) {},
     OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
         try {
-
           if (property == "TotalUnreadMessages" ||
               (QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {  // FolderSize
-	            if(QuickFolders) {
-				    QuickFolders.Util.logDebugOptional("folders", "qfFolderListener: " + property);
+	            if(QuickFolders)
 		            QuickFolders.Interface.setFolderUpdateTimer();
-		            QuickFolders.Util.logDebugOptional("folders", "qfFolderListener: called setFolderUpdateTimer()");
-                }
           }
         }
         catch(e) {this.ELog("Exception in Item OnItemIntPropertyChanged - TotalUnreadMessages: " + e);};
@@ -962,13 +995,9 @@ var qfFolderListener = {
 
 var qfTabListener = {
     mailTabSelected: function(evt){
-      qfLocalErrorLogger('mailTabSelected');
       try {
-
-	    QuickFolders.Util.logToConsole('event ' + evt);
-
         if(QuickFolders)
-            QuickFolders.Interface.onFolderSelected();
+            QuickFolders.Interface.setTabSelectTimer();
       }
       catch(e) {qfLocalErrorLogger("Exception in Item event - calling mailTabSelected: " + e)};
     }

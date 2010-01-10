@@ -6,7 +6,7 @@ QuickFolders.Preferences = {
     },
 
     isDebugOption: function(option) { // granular debugging
-        if(!this.isDebug) return false;
+        if(!this.isDebug()) return false;
 	    try {return this.service.getBoolPref("extensions.quickfolders.debug." + option);}
 	    catch(e) {return false;}
     },
@@ -92,7 +92,9 @@ QuickFolders.Preferences = {
     } ,
 
     setLastSelectedCategory: function(category) {
-        this.service.setCharPref("extensions.quickfolders.lastSelectedCategory", category);
+        // avoid error when no categories exist
+	    if (category)
+          this.service.setCharPref("extensions.quickfolders.lastSelectedCategory", category);
     } ,
 
     getLastSelectedCategory: function() {

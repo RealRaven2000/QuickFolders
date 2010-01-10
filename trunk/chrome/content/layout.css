@@ -30,12 +30,18 @@
 /* container for categories drop down*/
 #QuickFolders-Category-Box {
     display: -moz-inline-box;
+    margin: 0;
+    padding: 0;
     float:left;
-    vertical-align: bottom !important;
+    vertical-align: middle;
+    overflow-y: visible;
 }
 
 #QuickFolders-Category-Selection {
-    max-height:1.9em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0 !important;
+    padding: 0;
     display:none;
 }
 
@@ -57,7 +63,7 @@
 #QuickFolders-FoldersBox {
     display:  -moz-inline-box;
     float:right;
-    max-height:15em;
+    max-height:25em;
 }
 
 #QuickFolders-Instructions-Label {

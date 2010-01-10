@@ -146,16 +146,6 @@ var QuickFoldersOptions = {
       // open new message
 	  msgComposeService.OpenComposeWindowWithURI (null, aURI);
 
-
-/*  FX code.
-  	  var ioservice =
-		QF_CC['@mozilla.org/network/io-service;1'].getService(QF_CI.nsIIOService);
-		  var uriToOpen = ioservice.newURI(uri, null, null);
-		  var extps = QF_CC['@mozilla.org/uriloader/external-protocol-service;1'].getService(QF_CI.nsIExternalProtocolService);
-		  // now, open it!
-		  extps.loadURI(uriToOpen, null);
-*/
-
     },
 
 
@@ -169,7 +159,32 @@ var QuickFoldersOptions = {
 	    clipboardhelper.copyString(sFolderString);
 	    alert(this.getResourceString("qfAlertCopyString"));
 
-    }
+    },
+
+    openAboutConfigDebug : function() {
+		const name = "Preferences:ConfigManager";
+		const uri = "chrome://global/content/config.xul";
+
+		var mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
+		var w = mediator.getMostRecentWindow(name);
+
+		if (!w) {
+			var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
+			w = watcher.openWindow(null, uri, name, "chrome,resizable,centerscreen,width=500px,height=350px", null);
+		}
+		w.focus();
+        w.setTimeout(
+          function () {
+			var flt = w.document.getElementById("textbox");
+			if (flt) {
+			   flt.value="quickfolders.debug"
+			   flt.focus();
+			   if (w.self.FilterPrefs)
+			     w.self.FilterPrefs();
+		   }
+          }, 300);
+	}
+
 
 }
 

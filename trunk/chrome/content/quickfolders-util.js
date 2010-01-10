@@ -75,12 +75,13 @@ QuickFolders.Util = {
     getFolderUriFromDropData: function(dropData, dragSession) {
         var trans = this.Cc["@mozilla.org/widget/transferable;1"].createInstance(this.Ci.nsITransferable);
         trans.addDataFlavor("text/x-moz-folder");
+        trans.addDataFlavor("text/x-moz-newsfolder");
 
         dragSession.getData (trans, 0);
 
         var dataObj = new Object();
         var len = new Object();
-        var flavor = "text/x-moz-folder";
+        var flavor = dropData.flavour.contentType
         try {
           trans.getTransferData(flavor, dataObj, len);
 

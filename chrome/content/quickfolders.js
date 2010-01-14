@@ -210,6 +210,9 @@
       AG added Smart Folders Support (TB3 only)
       AG added Newsgroup Folders Support (TB3, SM, Pb) - not supported in TB2
 
+    13/01/2009 Release 1.8.2
+      AG added toggling Smart Folders / All Folders views where necessary
+
 
   KNOWN ISSUES
   ============
@@ -520,7 +523,7 @@ var QuickFolders = {
 
             try {
 	            if (null==dragSession.sourceNode) {
-	              QuickFolders.Util.logToConsole ("UNEXPECTED ERROR QuickFolders.OnDragEnter - empty sourceNode!");
+	              QuickFolders.Util.logDebugOptional("dnd", "UNEXPECTED ERROR QuickFolders.OnDragEnter - empty sourceNode!");
 	              return;
                 }
 		        QuickFolders.Util.logDebugOptional("dnd","buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName);
@@ -901,13 +904,70 @@ function MySelectFolder(folderUri)
     var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
     var folderIndex;
 
+
+
 	QuickFolders.currentURI = folderUri;
 
     if (QuickFolders.Util.Application()=='Thunderbird'
      && QuickFolders.Util.Appver()>=3)
-    { // TB 3
+    {
+	    // TB 3
+		const MSG_FOLDER_FLAG_TRASH     = 0x0100
+		const MSG_FOLDER_FLAG_SENTMAIL  = 0x0200
+		const MSG_FOLDER_FLAG_DRAFTS    = 0x0400
+		const MSG_FOLDER_FLAG_QUEUE     = 0x0800
+		const MSG_FOLDER_FLAG_INBOX     = 0x1000
+		const MSG_FOLDER_FLAG_TEMPLATES = 0x400000
+		const MSG_FOLDER_FLAG_JUNK      = 0x40000000
+		//
+		const MSG_FOLDER_FLAG_SMART     = 0x4000  // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
+		const MSG_FOLDER_FLAG_ELIDED    = 0x0010  // currenty hidden
+		const MSG_FOLDER_FLAG_VIRTUAL   = 0x0020
+		// find out if parent folder is smart and collapsed (bug in TB3!)
+		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
+		// therefore, ensureRowIsVisible does not work!
+		if (msgFolder.parent) {
+	      var parentIndex = gFolderTreeView.getIndexOfFolder(msgFolder.parent);
+		  folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
+		  // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
+		  var specialFlags = MSG_FOLDER_FLAG_INBOX + MSG_FOLDER_FLAG_QUEUE + MSG_FOLDER_FLAG_SENTMAIL + MSG_FOLDER_FLAG_TRASH + MSG_FOLDER_FLAG_DRAFTS + MSG_FOLDER_FLAG_TEMPLATES  + MSG_FOLDER_FLAG_JUNK ;
+		  if (msgFolder.flags & specialFlags) {
+			  // is this folder a smartfolder?
+			 if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && gFolderTreeView.mode!="smart") {
+			    // toggle to smartfolder view and reinitalize folder variable!
+			  	gFolderTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+			  	folderResource = myRDF().GetResource(folderUri);
+                msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+                parentIndex = gFolderTreeView.getIndexOfFolder(msgFolder.parent);
+		  	 }
+
+			  // a special folder, its parent is a smart folder?
+			  if (msgFolder.parent.flags & MSG_FOLDER_FLAG_SMART || "smart" == gFolderTreeView.mode) {
+				  if (null==folderIndex || parentIndex > folderIndex) {
+					  // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
+					  var smartIndex=0;
+					  while (0x0==(specialFlags & (gFolderTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
+					    smartIndex++;
+					  if (!(gFolderTreeView._rowMap[smartIndex]).open) {
+						  gFolderTreeView._toggleRow(smartIndex, false);
+					  }
+			      }
+		      }
+		      else { // all other views:
+			      if (null != parentIndex) {
+					  if (!(gFolderTreeView._rowMap[parentIndex]).open)
+						  gFolderTreeView._toggleRow(parentIndex, true); // server
+				  }
+				  else {
+					QuickFolders.Util.logDebugOptional("folders", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
+				  }
+		      }
+		  }
+	    }
 		gFolderTreeView.selectFolder (msgFolder);
-		folderTree.treeBoxObject.ensureRowIsVisible(folderTree.currentIndex);
+		gFolderTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+
+		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
 		if (folderUri.indexOf("nobody@smart")>0)
 	      QuickFolders.Interface.onFolderSelected();
 	}

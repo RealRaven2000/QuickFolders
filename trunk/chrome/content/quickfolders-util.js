@@ -31,7 +31,24 @@ QuickFolders.Util = {
 		if (null==this.mAppName) {
         var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
                         .getService(Components.interfaces.nsIXULAppInfo);
-	        this.mAppName=appInfo.name;
+			const FIREFOX_ID = "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
+			const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
+			const SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
+			const POSTBOX_ID = "postbox@postbox-inc.com";
+			switch(appInfo.ID) {
+				case FIREFOX_ID:
+				  return this.mAppName='Firefox';
+				case THUNDERBIRD_ID:
+				  return this.mAppName='Thunderbird';
+				case SEAMONKEY_ID:
+				  return this.mAppName='SeaMonkey';
+				case POSTBOX_ID:
+				  return this.mAppName='Postbox';
+				default:
+				  this.mAppName=appInfo.name;
+				  this.logDebug ( 'Unknown Application: ' + appInfo.name);
+				  return appInfo.name;
+			}
         }
 	    return this.mAppName;
     },

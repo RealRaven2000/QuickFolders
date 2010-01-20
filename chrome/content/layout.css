@@ -171,13 +171,15 @@ vbox.gradientpanel {
 #QuickFolders-Toolbar toolbarbutton.inbox.icon {list-style-image: url("folder-inbox.png");}
 #QuickFolders-Toolbar toolbarbutton.sent.icon {list-style-image: url("folder-sent.png");}
 #QuickFolders-Toolbar toolbarbutton.trash.icon {list-style-image: url("folder-trash.png");}
+#QuickFolders-Toolbar toolbarbutton.junk.icon {list-style-image: url("folder-junk.png");}
+#QuickFolders-Toolbar toolbarbutton.template.icon {list-style-image: url("folder-template.png");}
+#QuickFolders-Toolbar toolbarbutton.outbox.icon {list-style-image: url("folder-unsent.png");}
+#QuickFolders-Toolbar toolbarbutton.virtual.icon {list-style-image: url("folder-virtual.png");}
+#QuickFolders-Toolbar toolbarbutton.draft.icon {list-style-image: url("folder-draft.png");}
+#QuickFolders-Toolbar toolbarbutton.news.icon {list-style-image: url("folder-news.png");}
 
-
-/* there is probably a more elegant way to specify this, but I did not find it [background-image] does not work  */
-/*#QuickFolders-Toolbar toolbarbutton.selected-folder.icon, */
-#QuickFolders-Toolbar toolbarbutton.inbox.icon,
-#QuickFolders-Toolbar toolbarbutton.sent.icon,
-#QuickFolders-Toolbar toolbarbutton.trash.icon
+/* make sure list image icons are shown in Postbox / SeaMonkey */
+#QuickFolders-Toolbar toolbarbutton[list-style-image].icon
 {
     -moz-image-region: rect(0px, 16px, 16px, 0) !important;
     background-position: 3px top;
@@ -265,6 +267,7 @@ menuitem.cmd[tag="qfCompact"] { list-style-image : url('compact.png') !important
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"] { list-style-image : url('ablist-item.png') !important;}
 menuitem.cmd[tag="qfRemove"] { list-style-image : url('folder-trash.png') !important;}
+
 
 
 menupopup.QuickFolders-folder-popup menuitem,

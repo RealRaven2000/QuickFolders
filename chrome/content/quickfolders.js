@@ -213,6 +213,11 @@
     13/01/2009 Release 1.8.2
       AG added toggling Smart Folders / All Folders views where necessary
 
+    13/01/2009 WIP
+      AG more selection improvements for virtual folders (such as search / smart folders)
+      AG TB3 enabled focus to message list in TB3 by relocating some code
+      AG added special icons for Junk, Drafts, Outbox and Templates
+      AG added code to fix changed Application Name (Mozilla-Thunderbird) which makes branching code fail in Linux.
 
   KNOWN ISSUES
   ============
@@ -912,6 +917,7 @@ function MySelectFolder(folderUri)
      && QuickFolders.Util.Appver()>=3)
     {
 	    // TB 3
+		const MSG_FOLDER_FLAG_NEWSGROUP = 0x0001
 		const MSG_FOLDER_FLAG_TRASH     = 0x0100
 		const MSG_FOLDER_FLAG_SENTMAIL  = 0x0200
 		const MSG_FOLDER_FLAG_DRAFTS    = 0x0400
@@ -968,7 +974,7 @@ function MySelectFolder(folderUri)
 		gFolderTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
 
 		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-		if (folderUri.indexOf("nobody@smart")>0)
+		if ((msgFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) )  // || folderUri.indexOf("nobody@smart")>0
 	      QuickFolders.Interface.onFolderSelected();
 	}
 	else { // TB 2, Postbox, SeaMonkey
@@ -991,12 +997,12 @@ function MySelectFolder(folderUri)
 	  //  QuickFolders.tabSelectEnable=false;
 	  MyChangeSelection(folderTree, folderIndex);
 	  // select message in top pane for keyboard navigation
-	  if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
-	      GetMessagePane().focus();
-	      document.commandDispatcher.advanceFocus();
-	      document.commandDispatcher.rewindFocus();
-      }
 	}
+    if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
+      GetMessagePane().focus();
+      document.commandDispatcher.advanceFocus();
+      document.commandDispatcher.rewindFocus();
+    }
 
 }
 

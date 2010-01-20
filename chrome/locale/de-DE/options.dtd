@@ -28,7 +28,6 @@
 <!ENTITY qf.description.tipMsg "Tip: Falls Sie sehr viele Verzeichnisse haben, probieren Sie auch die Nostalgy extension.">
 <!ENTITY qf.description.experimentalItems "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert.">
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">
-<!ENTITY qf.label.contactMe "Noch offene Wünsche / feedback / Programmfehler? Bitte E-Mail an: axelg@gofree.indigo.ie.">
 <!ENTITY qf.button.defaultcolors "Standard Farben">
 <!ENTITY qf.checkbox.debug "Debug Modus">
 <!ENTITY qf.label.StandardTabColor "Normale Tab Farbe:">
@@ -36,7 +35,6 @@
 <!ENTITY qf.label.folders "Verzeichnisse?">
 <!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
 <!ENTITY qf.label.homePage "Mehr Infos, Doku (Englisch) und Forum auf der neuen QuickFolders Homepage (mozdev.org)...">
-
 <!ENTITY qf.tab.support "Support">
 <!ENTITY qf.description.bugs "Bugs können in Bugzilla gemeldet werden:">
 <!ENTITY qf.label.bugLink "Einen Bug melden...">
@@ -48,9 +46,10 @@
 <!ENTITY qf.label.donateLink "Die Spenden-Seite besuchen...">
 <!ENTITY qf.description.contactMe "Sie können mich auch jederzeit persönlich unter axelg@gofree.indigo.ie kontaktieren:">
 <!ENTITY qf.label.contactLink "Mail an Axel (Deutsch oder Englisch)...">
-
 <!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs (Experimentell)">
+<!ENTITY qf.menu.tabColor "Ohne Farbe!">
+<!ENTITY qf.menu.Color "Farbe">
 <!ENTITY qf.options.LayoutColorAppearance "Individuelle Tab-Farben">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(gestreift)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(gefüllt)">
-
+<!ENTITY qf.checkbox.showNativeTabStyle "Tabs im Shell Stil (keine Farbenunterstützung)">

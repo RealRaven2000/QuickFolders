@@ -377,17 +377,38 @@ QuickFolders.Interface = {
         var specialFolderType="";
         var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
 
-	    // does the folder end with this name?
-	    var fString = folder.URI.toLowerCase();
-        if (this.endsWith(fString, "/inbox"))
-	        specialFolderType="inbox" + sDisplayIcons;
-        else if (this.endsWith(fString, "/sent"))
-	        specialFolderType="sent" + sDisplayIcons;
-        else if (this.endsWith(fString, "/trash"))
-	        specialFolderType="trash" + sDisplayIcons;
-	      else
-	        specialFolderType=sDisplayIcons;
+	    // use folder flags instead!
+		const MSG_FOLDER_FLAG_NEWSGROUP = 0x0001
+		const MSG_FOLDER_FLAG_TRASH     = 0x0100
+		const MSG_FOLDER_FLAG_SENTMAIL  = 0x0200
+		const MSG_FOLDER_FLAG_DRAFTS    = 0x0400
+		const MSG_FOLDER_FLAG_QUEUE     = 0x0800
+		const MSG_FOLDER_FLAG_INBOX     = 0x1000
+		const MSG_FOLDER_FLAG_TEMPLATES = 0x400000
+		const MSG_FOLDER_FLAG_JUNK      = 0x40000000
+		const MSG_FOLDER_FLAG_SMART     = 0x4000  // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
+		const MSG_FOLDER_FLAG_VIRTUAL   = 0x0020
 
+	    if (folder.flags & MSG_FOLDER_FLAG_INBOX)
+	        specialFolderType="inbox" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_SENTMAIL)
+	        specialFolderType="sent" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_TRASH)
+	        specialFolderType="trash" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_JUNK)
+	        specialFolderType="junk" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_TEMPLATES)
+	        specialFolderType="template" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_QUEUE)
+	        specialFolderType="outbox" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_DRAFTS)
+	        specialFolderType="draft" + sDisplayIcons;
+        else if (folder.flags & MSG_FOLDER_FLAG_NEWSGROUP)
+	        specialFolderType="news" + sDisplayIcons;
+	    else if (folder.flags & MSG_FOLDER_FLAG_VIRTUAL)
+	        specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
+	    else
+	        specialFolderType=sDisplayIcons;
 
         this.styleFolderButton(button, numUnread, numTotal, specialFolderType);
 
@@ -573,12 +594,11 @@ QuickFolders.Interface = {
         }
 
         menuitem = document.createElement('menuitem');
-        menuitem.setAttribute("class","cmd menuitem-iconic");
-        menuitem.className='cmd';
+        menuitem.className='cmd menuitem-iconic';
         menuitem.setAttribute("tag","qfCategory");
         menuitem.setAttribute('label',qfBundle.GetStringFromName("qfSetCategory"));
         menuitem.setAttribute("accesskey",qfBundle.GetStringFromName("qfSetCategoryA"));
-        menuitem.setAttribute("oncommand","QuickFolders.Interface.addFolderToCategory(event.target.parentNode.folder)");  // "MsgCompactFolder(false);" only for current folder
+        menuitem.setAttribute("oncommand","QuickFolders.Interface.addFolderToCategory(event.target.parentNode.folder)");
         menupopup.appendChild(menuitem);
 
         // tab colors menu
@@ -586,7 +606,7 @@ QuickFolders.Interface = {
         colorMenu.setAttribute("tag",'qfTabColorMenu');
         colorMenu.setAttribute("label", qfBundle.GetStringFromName("qfMenuTabColorPopup") );
         colorMenu.className = 'QuickFolders-folder-popup';
-        menuitem.setAttribute("class","menuitem-iconic");
+        colorMenu.setAttribute("class","menuitem-iconic");
 
         QuickFolders.Util.logDebugOptional("popupmenus","Popup set created..\n-------------------------");
 

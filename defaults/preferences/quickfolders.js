@@ -23,4 +23,5 @@ pref("extensions.quickfolders.debug.dnd",false);
 pref("extensions.quickfolders.debug.folders",false);
 pref("extensions.quickfolders.debug.popupmenus",false);
 pref("extensions.quickfolders.debug.events",false);
+pref("extensions.quickfolders.debug.mailTabs",false);
 

@@ -12,6 +12,37 @@ function QF_getMyVersion() {
   return QF_getAddon("quickfolders@curious.be").version;
 }
 
+let QF_TabURIopener = {
+    get _thunderbirdRegExp() {
+      delete this._thunderbirdRegExp;
+      return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
+    },
+    openURLInTab: function (URL) {
+        // open the new content tab for displaying support info, see
+		// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
+		let tabmail = document.getElementById("tabmail");
+		if (!tabmail) {
+		  // Try opening new tabs in an existing 3pane window
+		  let mail3PaneWindow = QF_CC["@mozilla.org/appshell/window-mediator;1"]
+		                             .getService(QF_CI.nsIWindowMediator)
+		                             .getMostRecentWindow("mail:3pane");
+		  if (mail3PaneWindow) {
+		    tabmail = mail3PaneWindow.document.getElementById("tabmail");
+		    mail3PaneWindow.focus();
+		  }
+		}
+		if (tabmail)
+		  tabmail.openTab("contentTab",
+		    {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QF_TabURIopener._thunderbirdRegExp);"});
+		else
+		  window.openDialog("chrome://messenger/content/", "_blank",
+		                  "chrome,dialog=no,all", null,
+		  { tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QF_TabURIopener._thunderbirdRegExp);"} } );
+    }
+
+}
+
+
 var QuickFoldersOptions = {
     qfStaticInstantApply : true,
     accept: function() {
@@ -183,6 +214,24 @@ var QuickFoldersOptions = {
 			     w.self.FilterPrefs();
 		   }
           }, 300);
+	},
+
+	openURL: function(URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
+	  var ioservice,iuri,eps;
+	  if (QuickFolders.Util.Application()=="Postbox")
+	    return; // label with href already follows the link!
+	  if (QuickFolders.Util.Appver()>=3 && QuickFolders.Util.Application()=='Thunderbird')
+		  QF_TabURIopener.openURLInTab(URL);
+      else {
+		  let ioservice  = QF_CC["@mozilla.org/network/io-service;1"].
+		                getService(QF_CI.nsIIOService);
+		  let iuri = ioservice.newURI(URL, null, null);
+		  let eps  = QF_CC["@mozilla.org/uriloader/external-protocol-service;1"].
+		                getService(QF_CI.nsIExternalProtocolService);
+
+		  eps.loadURI(iuri, null);
+      }
+
 	}
 
 

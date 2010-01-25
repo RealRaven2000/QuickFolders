@@ -177,6 +177,7 @@ vbox.gradientpanel {
 #QuickFolders-Toolbar toolbarbutton.virtual.icon {list-style-image: url("folder-virtual.png");}
 #QuickFolders-Toolbar toolbarbutton.draft.icon {list-style-image: url("folder-draft.png");}
 #QuickFolders-Toolbar toolbarbutton.news.icon {list-style-image: url("folder-news.png");}
+#QuickFolders-Toolbar toolbarbutton.archives.icon {list-style-image: url("folder-archive.png");}
 
 /* make sure list image icons are shown in Postbox / SeaMonkey */
 #QuickFolders-Toolbar toolbarbutton[list-style-image].icon
@@ -218,6 +219,7 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover
 
 menuitem.cmd[tagName="qfOptions"] { list-style-image: url('settings-20.png')  !important;}
 menuitem.cmd[tagName="qfOrder"] { list-style-image : url('order.gif') !important; }
+menuitem.cmd[tagName="qfHelp"] { list-style-image : url('question.png') !important; }
 
 menupopup.QuickFolders-folder-popup menuitem.color
 {

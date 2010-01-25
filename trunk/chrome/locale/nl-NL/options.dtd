@@ -11,8 +11,6 @@
 <!ENTITY qf.checkbox.showUnreadBold "Toon knoppen voor folders met ongelezen berichten in het vet">
 <!ENTITY qf.checkbox.showTotalMessageCount "Toon het totaal aantal berichten op de knop (ook gelezen berichten)">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
-<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabs">
-<!ENTITY qf.checkbox.showIcons "Toon iconen">
 <!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.setcolors "[Text Kleur], Achtergrond Kleur">
@@ -46,10 +44,14 @@
 <!ENTITY qf.label.donateLink "Bezoek de donaite pagina...">
 <!ENTITY qf.description.contactMe "Je kan me ook persoonlijk contacteren op axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Contacteer me (Engels of Duits)...">
-<!ENTITY qf.checkbox.showSubfolders "Subfolders uitklappen in popup menus (Experimenteel)">
+<!ENTITY qf.checkbox.showIcons "Toon iconen">
+<!ENTITY qf.checkbox.showSubfolders "Subfolders uitklappen in popup menus">
 <!ENTITY qf.menu.tabColor "Geen kleur!">
 <!ENTITY qf.menu.Color "Kleur">
 <!ENTITY qf.options.LayoutColorAppearance "Tab Kleuren Weergave">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(gestreepte stijl)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(gevulde stijl)">
 <!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
+<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabs">
+<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">

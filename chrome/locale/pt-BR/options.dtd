@@ -11,8 +11,6 @@
 <!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
 <!ENTITY qf.checkbox.showTotalMessageCount "Exibir o total de mensagens no botão de cada pasta">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
-<!ENTITY qf.checkbox.showFlatStyle "Exibir abas em estilo liso">
-<!ENTITY qf.checkbox.showIcons "Exibir ícones (Caixa de entrada, Enviados, Atual, Lixo)">
 <!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.setcolors "Definir [Cor de Texto], Cor de Fundo">
@@ -46,6 +44,7 @@
 <!ENTITY qf.label.donateLink "Visitar a página de doações...">
 <!ENTITY qf.description.contactMe "Você pode ainda entrar em contato comigo pessoalmente no email axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Entrar em contato (inglês ou alemão)...">
+<!ENTITY qf.checkbox.showIcons "Exibir ícones (Caixa de entrada, Enviados, Atual, Lixo)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto (experimental)">
 <!ENTITY qf.menu.tabColor "Nenhuma cor!">
 <!ENTITY qf.menu.Color "Cor">
@@ -53,3 +52,7 @@
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(estilo listrado)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(estilo preenchido)">
 <!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
+<!ENTITY qf.checkbox.showFlatStyle "Exibir abas em estilo liso">
+<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">
+

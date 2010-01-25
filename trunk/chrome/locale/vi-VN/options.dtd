@@ -11,8 +11,6 @@
 <!ENTITY qf.checkbox.showUnreadBold "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm">
 <!ENTITY qf.checkbox.showTotalMessageCount "Hiển thị tổng số tin nhắn trên nút thư mục">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng">
-<!ENTITY qf.checkbox.showFlatStyle "Hiển thị các thẻ với phong cách Phẳng">
-<!ENTITY qf.checkbox.showIcons "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)">
 <!ENTITY qf.label.buttonFontSize "Cỡ chữ trên nút (để trống là mặc định):">
 <!ENTITY qf.label.pixels "điểm ảnh">
 <!ENTITY qf.label.setcolors "Chọn [Màu chữ, màu nền">
@@ -46,10 +44,14 @@
 <!ENTITY qf.label.donateLink "Ghé thăm trang quyên góp...">
 <!ENTITY qf.description.contactMe "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)...">
-<!ENTITY qf.checkbox.showSubfolders "Mở rộng các thư mục con trong trình đơn tự bung (thử nghiệm)">
+<!ENTITY qf.checkbox.showIcons "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)">
+<!ENTITY qf.checkbox.showSubfolders "Mở rộng các thư mục con trong trình đơn tự bung">
 <!ENTITY qf.menu.tabColor "Không màu!">
 <!ENTITY qf.menu.Color "Màu sắc">
 <!ENTITY qf.options.LayoutColorAppearance "Màu riêng của từng thẻ">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(kiểu gạch sọc)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(kiểu phủ kín)">
 <!ENTITY qf.checkbox.showNativeTabStyle "kiểu của hệ thống (không hỗ trợ màu)">
+<!ENTITY qf.checkbox.showFlatStyle "Hiển thị các thẻ với phong cách Phẳng">
+<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">

@@ -11,9 +11,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Display buttons for folders with unread messages in bold">
 <!ENTITY qf.checkbox.showTotalMessageCount "Display the total number of messages on the folder button">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Display buttons for folders with messages in them italic">
-<!ENTITY qf.checkbox.showFlatStyle "Display Tabs as Flat Style">
-<!ENTITY qf.checkbox.showIcons "Display Icons (Inbox, Sent, Current, Trash)">
-<!ENTITY qf.label.buttonFontSize "Button font size (blank for default): ">
+<!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default): ">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
 <!ENTITY qf.label.ActiveTabColor "Active Tab Color:">
@@ -46,11 +44,14 @@
 <!ENTITY qf.label.donateLink "Visit the Donation Page...">
 <!ENTITY qf.description.contactMe "You can also contact me personally at axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Contact me (English or German)...">
-
-<!ENTITY qf.checkbox.showSubfolders "Expand Subfolders in popup menus (Experimental)">
+<!ENTITY qf.checkbox.showIcons "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)">
+<!ENTITY qf.checkbox.showSubfolders "Expand Subfolders in popup menus">
 <!ENTITY qf.menu.tabColor "No Color!">
 <!ENTITY qf.menu.Color "Color">
 <!ENTITY qf.options.LayoutColorAppearance "Individual Tab Color Appearance">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(striped style)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(filled style)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs - layout resembles the tabs of your OS; without any of the coloring options below">
+<!ENTITY qf.checkbox.showFlatStyle "User Style Tabs 'Flat Style' - recommended, as it supports all the color options shown below">
+<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">

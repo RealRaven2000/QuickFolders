@@ -11,8 +11,6 @@
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
 <!ENTITY qf.checkbox.showTotalMessageCount "フォルダボタンにメッセージ数の合計を表示する">
 <!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
-<!ENTITY qf.checkbox.showFlatStyle "タブをフラットスタイルにする">
-<!ENTITY qf.checkbox.showIcons "アイコンを表示する (受信トレイ、送信済みトレイ、現在のフォルダ、ごみ箱)">
 <!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
 <!ENTITY qf.label.pixels "ピクセル">
 <!ENTITY qf.label.setcolors "[文字色] と背景色の設定">
@@ -46,10 +44,14 @@
 <!ENTITY qf.label.donateLink "寄付ページを開く...">
 <!ENTITY qf.description.contactMe "個人的な連絡は axelg@gofree.indigo.ie まで:">
 <!ENTITY qf.label.contactLink "作者にメールする (英語またはドイツ語のみ)...">
+<!ENTITY qf.checkbox.showIcons "アイコンを表示する (受信トレイ、送信済みトレイ、現在のフォルダ、ごみ箱)">
 <!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
 <!ENTITY qf.menu.tabColor "色指定なし！">
 <!ENTITY qf.menu.Color "色番号">
 <!ENTITY qf.options.LayoutColorAppearance "タブのスタイル">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(ストライプ)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(塗りつぶし)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs - layout resembles the tabs of your OS; without any of the coloring options below">
+<!ENTITY qf.checkbox.showFlatStyle "タブをフラットスタイルにする">
+<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">

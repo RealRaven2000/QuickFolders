@@ -1,5 +1,5 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Instellingen">
-<!ENTITY qf.label.quickfolders "Quickfolders">
+<!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Algemeen">
 <!ENTITY qf.tab.layout "Layout">
 <!ENTITY qf.tab.quickhelp "Info">
@@ -13,37 +13,37 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
 <!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
-<!ENTITY qf.label.setcolors "[Text Kleur], Achtergrond Kleur">
+<!ENTITY qf.label.setcolors "[Tekst kleur], Achtergrond Kleur">
 <!ENTITY qf.label.ActiveTabColor "Actieve Tab Kleur:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Kleur:">
 <!ENTITY qf.label.DragOverBackground "Drag and Drop Kleur:">
 <!ENTITY qf.label.ToolbarBackground "Toolbar Achtergrond:">
-<!ENTITY qf.description.dragToAdd "Sleep mail folders over een lege ruimte van de toolbar om een QuickFolder aan te maken (werkt als een snelkoppeling). Sleep berichten naar de QuickFolder om ze naar de bijhorende folder te verplaatsen (of kopiëren mbv de control knop). Klik de QuickFolder aan om naar de bijhorende folder te navigeren.">
-<!ENTITY qf.description.dragToPosition "Sleep QuickFolders zijndelings om hun posities te veranderen. Rechtsklik op de QuickFolder om het context menu te openen; Langs deze weg kan u ook de sub-folders van de folder bereiken. 'Bookmark hernomen' verandert het label van de QuickFolder. 'Bookmark verwijderen' verwijdert de bookmark (niet de echte mail folder).">
+<!ENTITY qf.description.dragToAdd "Sleep mail folders over een lege ruimte van de toolbar om een QuickFolder aan te maken (werkt als een snelkoppeling). Sleep berichten naar de QuickFolder om ze naar de bijbehorende folder te verplaatsen (of kopiëren mbv de control knop). Klik de QuickFolder aan om naar de bijhorende folder te navigeren.">
+<!ENTITY qf.description.dragToPosition "Sleep QuickFolders zijdelings om hun posities te veranderen. Rechtsklik op de QuickFolder om het context menu te openen; Langs deze weg kunt u ook de sub-folders van de folder bereiken. 'Bookmark hernoemen' verandert het label van de QuickFolder. 'Bookmark verwijderen' verwijdert de bookmark (niet de echte mail folder).">
 <!ENTITY qf.description.dragToPopup "Sleep berichten naar een subfolder in het context menu om ze naar die subfolder te verplaatsen.">
 <!ENTITY qf.description.changeCategory "Rechtsklik op een bookmark om die in een categorie te organiseren. De categorieën verschijnen in een pulldown links op de toolbar.">
-<!ENTITY qf.description.rightClickOptions "Rechtsklik een een lege ruimte op de toolbar om het opties menu te openen. In het opties menu kan u de standaard stijl (kleiner) of de tab stijl (duidelijker; ondersteunt sleep-indicator).">
+<!ENTITY qf.description.rightClickOptions "Rechtsklik een lege ruimte op de toolbar om het opties menu te openen. In het opties menu kan u de standaard stijl (kleiner) of de tab stijl aanpassen (duidelijker; ondersteunt sleep-indicator).">
 <!ENTITY qf.description.tipMsg "Tip: als u een groot aantal folders hebt, probeer dan ook de Nostalgy Add-On om uw berichten toetsenbord-gestuurd te organiseren.">
 <!ENTITY qf.description.experimentalItems "De volgende items zijn experimenteel, hopelijk zullen ze werken in de volgende release!">
-<!ENTITY qf.label.instantApplyMsg "Nota: als u hieronder enkel een [Close] knop ziet, zullen deze instellingen misschien niet werken - als oplossing kan u rechts klikkn op de QuickFolders toolbar en 'Opties' klikken... hierdoor zal de Ok knop worden weergegeven.">
+<!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een [Close] knop ziet, zullen deze instellingen misschien niet werken - als oplossing kunt u rechts klikken op de QuickFolders toolbar en 'QuickFolders Opties' klikken... hierdoor zal de Ok knop worden weergegeven.">
 <!ENTITY qf.button.defaultcolors "Standaard Kleuren">
-<!ENTITY qf.checkbox.debug "Debug Mode">
-<!ENTITY qf.label.StandardTabColor "Standard Tab Kleur:">
-<!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
+<!ENTITY qf.checkbox.debug "Debug Modus">
+<!ENTITY qf.label.StandardTabColor "Standaard Tab Kleur:">
+<!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
 <!ENTITY qf.label.folders "Folders?">
-<!ENTITY qf.checkbox.autoFocusPreview "Focus berichtenlijst bij tab switch">
+<!ENTITY qf.checkbox.autoFocusPreview "Focus berichtenlijst bij wisselen van tabblad">
 <!ENTITY qf.label.homePage "Klik hier voor gedetailleerde informatie op de nieuwe QuickFolders homepage (Mozdev.org).">
 <!ENTITY qf.tab.support "Ondersteuning">
-<!ENTITY qf.description.bugs "Je kan bugs rapporteren via bugzilla:">
-<!ENTITY qf.label.bugLink "Bug rapporteren...">
+<!ENTITY qf.description.bugs "U kunt problemen rapporteren via bugzilla:">
+<!ENTITY qf.label.bugLink "Probleem rapporteren...">
 <!ENTITY qf.description.features "Vraag nieuwe features hier aan:">
 <!ENTITY qf.label.featuresLink "Nieuwe feature aanvragen...">
-<!ENTITY qf.description.languages "QuickFolders ondersteunt vertalingen - je kan ons helpen door een vertaling toe te voegen op BabelZilla:">
+<!ENTITY qf.description.languages "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op BabelZilla:">
 <!ENTITY qf.label.languagesLink "Vertaling toevoegen...">
-<!ENTITY qf.description.donate "Als je QuickFolders even leuk vind als wij en de ontwikkeling ervan wil ondersteunen, kan je wat geld doneren.">
-<!ENTITY qf.label.donateLink "Bezoek de donaite pagina...">
-<!ENTITY qf.description.contactMe "Je kan me ook persoonlijk contacteren op axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Contacteer me (Engels of Duits)...">
+<!ENTITY qf.description.donate "Als u QuickFolders even leuk vind als wij en de ontwikkeling ervan wil ondersteunen, kan je wat geld doneren.">
+<!ENTITY qf.label.donateLink "Bezoek de donatie pagina...">
+<!ENTITY qf.description.contactMe "U kunt ook persoonlijk met me opnemen via axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Neem contact op (Engels of Duits)...">
 <!ENTITY qf.checkbox.showIcons "Toon iconen">
 <!ENTITY qf.checkbox.showSubfolders "Subfolders uitklappen in popup menus">
 <!ENTITY qf.menu.tabColor "Geen kleur!">
@@ -51,7 +51,8 @@
 <!ENTITY qf.options.LayoutColorAppearance "Tab Kleuren Weergave">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(gestreepte stijl)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(gevulde stijl)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
-<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabs">
-<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
-<!ENTITY qf.checkbox.transparent "transparent">
+<!ENTITY qf.checkbox.showNativeTabStyle "Shell stijl tabbladen (geen kleur ondersteuning)">
+<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabbladen">
+<!ENTITY qf.description.linkNote "Bezoek de homepage van QuickFolders voor een gedetailleerde handleiding, tips en FAQ:">
+<!ENTITY qf.checkbox.transparent "Transparant">
+<!ENTITY qf.checkbox.shadows "Schaduwen">

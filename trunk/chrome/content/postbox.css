@@ -14,3 +14,8 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     -moz-appearance: none !important;
 }
 
+#QuickFolders-Toolbar.toolbar-native,
+#QuickFolders-Toolbar.toolbar-flat
+{
+  -moz-appearance: toolbar !important;
+}

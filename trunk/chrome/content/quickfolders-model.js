@@ -1,5 +1,6 @@
-var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var QF_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+
 QuickFolders.Model = {
     selectedFolders: [],
 
@@ -17,7 +18,10 @@ QuickFolders.Model = {
             return true;
         }
         else {
-            alert(_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));
+	        try {
+            alert(QF_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));
+            } catch (e) { var msg="Folder already bookmarked: " + uri + "\nCan not display message - " + e; QuickFolders.Util.logToConsole (msg); alert(msg); }
+
             // switch to category if it exists
             QuickFolders.Interface.selectCategory(entry.category,true);
         }
@@ -79,7 +83,7 @@ QuickFolders.Model = {
         }
     } ,
 
-   myGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
+   qfGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
    {
      var msgfolder = null;
      try {
@@ -115,7 +119,7 @@ QuickFolders.Model = {
                     if(!GetMsgFolderFromUri(entry.uri, false)) continue;
 				  }
 				  else {
-				    if (!this.myGetMsgFolderFromUri(entry.uri, false)) continue;
+				    if (!this.qfGetMsgFolderFromUri(entry.uri, false)) continue;
 				  }
                 }
                 catch(e) {

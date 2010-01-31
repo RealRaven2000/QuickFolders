@@ -1,5 +1,4 @@
-var qfConsoleService=null;
-var	MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
+var QF_ConsoleService=null;
 
 
 QuickFolders.Util = {
@@ -62,6 +61,43 @@ QuickFolders.Util = {
         return this.mHost; // linux - winnt - darwin
     },
 
+    getToolbar: function() {
+        return QuickFolders.Util.$('QuickFolders-FoldersBox');
+    } ,
+
+    getSystemColor: function(sColorString) {
+	    var hexColor;  // convert system colors such as menubackground etc. to hex
+		var d = document.createElement("div");
+		d.style.color = sColorString;
+		this.getToolbar().appendChild(d)
+		hexColor = window.getComputedStyle(d,null).color;
+		this.getToolbar().removeChild(d);
+		return hexColor;
+    },
+
+    getRGBA: function(hexIn,alpha) {
+	    var rgb = '';
+	    var hex = hexIn;
+	    try {parseInt(cutHex(hex),16);}
+	    catch(e) {
+		    hex=getSystemColor(hex);
+	    }
+		function cutHex(h) {var rv= ((h.toString()).charAt(0)=='#') ? h.substring(1,7):h;
+		                    return rv.toString();}
+		function HexToR(h) {return parseInt(h.substring(0,2),16);}
+		function HexToG(h) {return parseInt(h.substring(2,4),16);}
+		function HexToB(h) {return parseInt(h.substring(4,6),16);}
+		if (hex) { //
+		  hex = cutHex(hex);
+		  return "rgba(" + HexToR(hex).toString() + ',' + HexToG(hex).toString() + ',' + HexToB(hex).toString() + ',' + alpha.toString() +')';
+	    }
+		else {
+		  QuickFolders.Util.logDebugOptional ("css","Can not retrieve color value: " + hexIn);
+		  return "#666";
+	    }
+    },
+
+
     clearChildren: function(element,withCategories) {
 	    if (withCategories)
 	        while(element.childNodes.length > 0) {
@@ -78,15 +114,58 @@ QuickFolders.Util = {
 	    }
     } ,
 
+    // ensureNormalFolderView: switches the current folder view to the "all" mode
+    // - only call after having checked that current folder index can not be determined!
     ensureNormalFolderView: function() {
         try {
             //default folder view to "All folders", so we can select it
-            loadFolderView(0);
+            if ((this.Application()=='Thunderbird' && this.Appver()>=3)||(this.Application()=='Postbox')) {
+				var theTreeView;
+				theTreeView = gFolderTreeView;
+				theTreeView.mode="all";
+				this.logDebug("switched TreeView mode= " + theTreeView.mode);
+            }
+            else
+              loadFolderView(0);
         }
         catch(e) {
            //loadFolderView() might be undefined at certain times, ignore this problem
+           this.logToConsole("ensureNormalFolderView failed: " + e);
         }
     } ,
+
+    ensureFolderViewTab: function() {
+	    // TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
+		var found=false;
+        let tabmail = document.getElementById("tabmail");
+		if (tabmail) {
+			let tab =  (QuickFolders.Util.Application()=='Thunderbird') ? tabmail.selectedTab :  tabmail.currentTabInfo;
+
+		    if (tab) {
+			  if (tab.mode.name=='message' || tab.mode.name=='calendar'
+			      || tab.mode.name=='contentTab' || tab.mode.name=='glodaFacet') {  // SM:  tab.getAttribute("type")=='message'
+				// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
+				// switchToTab
+				var i;
+				for (i=0;i<tabmail.tabInfo.length;i++) {
+                  if (tabmail.tabInfo[i].mode.name=='folder') { // SM:  tabmail.tabInfo[i].getAttribute("type")=='folder'
+	                tabmail.switchToTab(i);
+	                found=true;
+                    break;
+                  }
+                }
+                // if it can't find a tab with folders ideally it should call openTab to display a new folder tab
+                for (i=0;(!found) && i<tabmail.tabInfo.length;i++) {
+                  if ( tabmail.tabInfo[i].mode.name!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+	                tabmail.switchToTab(i);
+                    break;
+                  }
+                }
+			  }
+		   }
+        }
+        return found;
+     } ,
 
 
     getFolderUriFromDropData: function(dropData, dragSession) {
@@ -114,6 +193,7 @@ QuickFolders.Util = {
     } ,
 
     moveMessages: function(targetFolder, messageUris, makeCopy) {
+	    const MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
 	    var step = 0;
 	    try {
 		    if (targetFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) {
@@ -191,10 +271,10 @@ QuickFolders.Util = {
     },
 
     logToConsole: function (msg) {
-	  if (qfConsoleService == null)
-	    qfConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
+	  if (QF_ConsoleService == null)
+	    QF_ConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
 	                               .getService(this.Ci.nsIConsoleService);
-	  qfConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
+	  QF_ConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
 	},
 
     logDebug: function (msg) {
@@ -221,6 +301,5 @@ QuickFolders.Util = {
 		}
 		catch(e) { this.logDebug("logFocus " + e);};
 	}
-
 
 }

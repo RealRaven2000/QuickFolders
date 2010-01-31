@@ -13,7 +13,7 @@
     onload="QuickFolders.ChangeOrder.init(this)"
 >
 	<script>
-		QuickFolders = window.arguments[0];
+		var QuickFolders = window.arguments[0];
 	</script>
 
 <hbox id="qf-header" >

@@ -137,6 +137,4 @@ QuickFolders.Styles = {
 	  return false;
     }
 
-
-
 }

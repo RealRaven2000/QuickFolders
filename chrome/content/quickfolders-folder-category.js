@@ -1,8 +1,16 @@
-var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var QF_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+
 QuickFolders.FolderCategory = {
     window: null,
     folder: null,
+
+    getUIstring: function(id, defaultString) {
+	    var s;
+	    try{s=QF_bundle.GetStringFromName(id);}
+	    catch(e) { s=defaultString; }
+	    return s;
+    },
 
     init: function(window, folder) {
         this.window = window;
@@ -34,8 +42,8 @@ QuickFolders.FolderCategory = {
             if (category!="__ALWAYS")
               listBox.appendChild(this.createListItem(category, category))
         }
-        listBox.appendChild(this.createListItem("__ALWAYS", _bundle.GetStringFromName("qfShowAlways")))
-        listBox.appendChild(this.createListItem("", _bundle.GetStringFromName("qfUncategorized")))
+        listBox.appendChild(this.createListItem("__ALWAYS", this.getUIstring("qfShowAlways","Show Always!")))
+        listBox.appendChild(this.createListItem("", this.getUIstring("qfUncategorized", "(Uncategorized)")))
     } ,
 
     createListItem: function(value, label) {
@@ -68,7 +76,7 @@ QuickFolders.FolderCategory = {
     },
 
     setColor: function(picker) {
-	    alert (_bundle.GetStringFromName("qfColorPickingWIP") + picker.color);
+	    alert (this.getUIstring("qfColorPickingWIP", "Sorry, this feature is still Work in Progress!") + picker.color);
     },
 
     getSelectedColor: function() {

@@ -140,6 +140,26 @@ QuickFolders.Preferences = {
 
     getIntPref: function(p) {
         return this.service.getIntPref(p);
+    },
+
+    getBoolPref: function(p) {
+	    try {
+        return this.service.getBoolPref(p);
+        } catch(e) {
+	        var s="Err:" +e;
+	        return false;
+	    }
+    },
+
+    setBoolPref: function(p, v) {
+	    try {
+        return this.service.setBoolPref(p, v);
+        } catch(e) {
+	        var s="Err:" +e;
+	        return false;
+	    }
     }
+
+
 
 }

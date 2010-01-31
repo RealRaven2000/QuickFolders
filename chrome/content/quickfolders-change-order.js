@@ -1,7 +1,17 @@
-var gquickfoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var _bundle = gquickfoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders2.properties");
+var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var QF_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+
 QuickFolders.ChangeOrder = {
     window: null,
+    upString: "",
+    downString: "",
+
+    getUIstring: function(id, defaultString) {
+	    var s;
+	    try{s=QF_bundle.GetStringFromName(id);}
+	    catch(e) { s=defaultString; }
+	    return s;
+    },
 
     init: function(window) {
         this.window = window;
@@ -15,13 +25,12 @@ QuickFolders.ChangeOrder = {
     } ,
 
     showFolders: function() {
-        rows = this.$('QuickFolders-change-order-grid-rows');
+        var rows = this.$('QuickFolders-change-order-grid-rows');
         QuickFolders.Util.clearChildren(rows);
 
-        for(i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
-            folderEntry = QuickFolders.Model.selectedFolders[i];
-
-            folder = GetMsgFolderFromUri(folderEntry.uri, true);
+        for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+            var folderEntry = QuickFolders.Model.selectedFolders[i];
+            var folder = GetMsgFolderFromUri(folderEntry.uri, true);
 
             if(folder != undefined) {
                 this.addFolderButton(folder, folderEntry.name)
@@ -30,25 +39,31 @@ QuickFolders.ChangeOrder = {
     } ,
 
     addFolderButton: function(folder, useName) {
-        label = (useName && useName.length > 0) ? useName : folder.name;
+        var label = (useName && useName.length > 0) ? useName : folder.name;
 
-        rows = this.$('QuickFolders-change-order-grid-rows');
-        row = document.createElement("row");
+        if (this.upString=="")
+          this.upString = this.getUIstring("qfUp","Up");
+        if (this.downString=="")
+          this.downString = this.getUIstring("qfDown","Down");
 
-        folderLabel = document.createElement("label");
+        var rows = this.$('QuickFolders-change-order-grid-rows');
+        var row = document.createElement("row");
+
+        var folderLabel = document.createElement("label");
         folderLabel.appendChild(document.createTextNode(label));
         row.appendChild(folderLabel);
 
         var buttonUp = document.createElement("button");
         buttonUp.className = "order-button-up"
-        buttonUp.setAttribute("label",_bundle.GetStringFromName("qfUp"));
+
+        buttonUp.setAttribute("label",this.upString);
         buttonUp.linkedFolder = folder;
         buttonUp.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
         row.appendChild(buttonUp);
 
         var buttonDown = document.createElement("button");
         buttonDown.className = "order-button-down"
-        buttonDown.setAttribute("label",_bundle.GetStringFromName("qfDown"));
+        buttonDown.setAttribute("label",this.downString);
         buttonDown.linkedFolder = folder;
         buttonDown.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
         row.appendChild(buttonDown);
@@ -60,7 +75,7 @@ QuickFolders.ChangeOrder = {
         var modelSelection = QuickFolders.Model.selectedFolders;
 
         for(var i = 0; i < modelSelection.length; i++) {
-            folderEntry = modelSelection[i];
+            var folderEntry = modelSelection[i];
 
             if(folderEntry.uri == folderURI) {
 

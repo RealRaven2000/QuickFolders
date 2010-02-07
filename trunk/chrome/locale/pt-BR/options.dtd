@@ -44,16 +44,15 @@
 <!ENTITY qf.label.donateLink "Visitar a página de doações...">
 <!ENTITY qf.description.contactMe "Você pode ainda entrar em contato comigo pessoalmente no email axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Entrar em contato (inglês ou alemão)...">
-<!ENTITY qf.checkbox.showIcons "Exibir ícones (Caixa de entrada, Enviados, Atual, Lixo)">
-<!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto (experimental)">
+<!ENTITY qf.checkbox.showIcons "Exibir ícones (Entrada, Enviados, Spam, Lixeira, Rascunho, Arquivados, Modelos)">
+<!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto">
 <!ENTITY qf.menu.tabColor "Nenhuma cor!">
 <!ENTITY qf.menu.Color "Cor">
 <!ENTITY qf.options.LayoutColorAppearance "Aparência individual de cores de abas">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(estilo listrado)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(estilo preenchido)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Shell Style Tabs (no color support)">
-<!ENTITY qf.checkbox.showFlatStyle "Exibir abas em estilo liso">
-<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
-<!ENTITY qf.checkbox.transparent "transparent">
-<!ENTITY qf.checkbox.shadows "Sombra">
-
+<!ENTITY qf.checkbox.showNativeTabStyle "Abas com estilo do sistema - o visual se assemelha às abas do seu sistema operacional, sem nenhuma das opções de cores abaixo">
+<!ENTITY qf.checkbox.showFlatStyle "Abas com estilo do usuário 'estilo liso' - recomendado, uma vez que suporta todas as opções de cores abaixo">
+<!ENTITY qf.description.linkNote "Visitar a página do QuickFolders para ver um um guia de uso detalhado, dicas e FAQ:">
+<!ENTITY qf.checkbox.transparent "transparente">
+<!ENTITY qf.checkbox.shadows "sombras">

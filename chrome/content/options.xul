@@ -158,6 +158,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 
 
 				<checkbox
+					id="qf-options-shadow"
                     label="&qf.checkbox.showIcons;"
 					preference="QuickFolders-Preferences-ShowIcons"
 				/>
@@ -185,7 +186,7 @@ label="&qf.checkbox.showUnreadMessageCount;"
 				/>
 
 
-   <vbox style="margin-top:.2em; padding: 0.3em; border: 1px groove black;" >
+   <vbox style="margin-top:.2em; padding: 0.3em; border-style: outset; border-width:1px;" >
 				<checkbox
                     id="chkFlatTabs"
 					onclick="QuickFoldersOptions.toggleMutexCheckbox(this, 'chkNativeTabs');"

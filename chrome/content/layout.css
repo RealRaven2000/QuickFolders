@@ -130,7 +130,7 @@ vbox.gradientpanel {
 }
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
-    background-color: Orange !important;
+    background-color: #F90 !important;
     color: Black !important;
     height: 18px;
     margin-top: 2px !important;
@@ -220,6 +220,8 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover
 menuitem.cmd[tagName="qfOptions"] { list-style-image: url('settings-20.png')  !important;}
 menuitem.cmd[tagName="qfOrder"] { list-style-image : url('order.gif') !important; }
 menuitem.cmd[tagName="qfHelp"] { list-style-image : url('question.png') !important; }
+menuitem.cmd[tagName="qfSupport"] { list-style-image : url('info16.png') !important; }
+
 
 menupopup.QuickFolders-folder-popup menuitem.color
 {

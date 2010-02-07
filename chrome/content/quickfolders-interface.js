@@ -61,8 +61,8 @@ QuickFolders.Interface = {
     setTabSelectTimer: function() {
 		  try {
 		      var nDelay = 250;
-		      var func = "QuickFolders.Interface.tabSelectUpdate()";
-		      var tID=setTimeout(func, nDelay);
+		      //var func = "QuickFolders.Interface.tabSelectUpdate()"; // changed to closure, according to Michael Buckley's tip:
+		      var tID=setTimeout(function() { QuickFolders.Interface.tabSelectUpdate(); }, nDelay);
 		      QuickFolders.Util.logDebug("Folder Tab Select Timer ID: " + tID);
           }
           catch (e) {
@@ -78,9 +78,12 @@ QuickFolders.Interface = {
 		  try {
 		      var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.queuedFolderUpdateDelay');
 		      if (!nDelay>0) nDelay = 750;
-		      var func = "QuickFolders.Interface.queuedFolderUpdate()";
+		      // var func = "QuickFolders.Interface.queuedFolderUpdate()";
 		      var oldTimer = this.TimeoutID;
-		      this.TimeoutID = setTimeout(func, nDelay);
+		      //this.TimeoutID = setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
+		      this.TimeoutID=setTimeout(function() { QuickFolders.Interface.queuedFolderUpdate(); }, nDelay);
+		      QuickFolders.Util.logDebug("Folder Tab Select Timer ID: " + tID);
+
 		      QuickFolders.Util.logDebug("Setting Update Timer (after timer " + oldTimer + " expired), new ID: " + this.TimeoutID);
           }
           catch (e) {
@@ -435,8 +438,21 @@ QuickFolders.Interface = {
         this.styleFolderButton(button, numUnread, numTotal, specialFolderType);
 
         button.setAttribute("label", label);
-
         button.folder = folder;
+
+        // tooltip - see also Attributes section of
+        // https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
+        // and docs for nsIMsgIncomingServer
+        var sVirtual = (folder.flags & MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)": " ";
+        var srv= folder.server;
+        var srvName='';
+        if (srv) {
+            try {srvName = ' [' + srv.hostName + ']';}
+            catch(e) { };
+        }
+        var hostString = folder.rootFolder.name + srvName;
+        button.setAttribute("tooltiptext", folder.name + ' @ ' + hostString + sVirtual);
+
 
         button.setAttribute("oncommand",'QuickFolders.Interface.onButtonClick(event.target);');
 
@@ -560,7 +576,7 @@ QuickFolders.Interface = {
         var msgfolder = GetMsgFolderFromUri(folder.URI,true);
         var targetResource = msgfolder.QueryInterface(Components.interfaces.nsIRDFResource);
 
-        if (QuickFolders.Util.Appver() > 2 && QuickFolders.Util.Application()=='Thunderbird')
+        if (QuickFolders.Util.Appver() >= 3 && QuickFolders.Util.Application()=='Thunderbird')
           alert ("to do: add compactfolder for TB3");
         else {
           messenger.CompactFolder(GetFolderDatasource(),targetResource, false);
@@ -800,6 +816,11 @@ QuickFolders.Interface = {
         window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders,params).focus();
     } ,
 
+    viewSupport: function() {
+	    var params = {inn:{mode:"supportOnly"}, out:null};
+        window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders,params).focus();
+    } ,
+
     viewChangeOrder: function() {
         window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
                           'chrome,titlebar,toolbar,centerscreen,resizable,dependent',QuickFolders); // dependent = modeless
@@ -885,16 +906,18 @@ QuickFolders.Interface = {
           // for full colored tabs color the border as well!
           // but should only apply if background image is set!!
           QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
-          if (QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows")) {
-            QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','1px -1px 3px -1px rgba(0,0,0,0.7)', true);
-	        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
-	        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
-          }
-          else {
-            QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','none', true);
-	        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', 'none', true);
-	        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', 'none', true);
-          }
+          if (!(QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird')) {
+	          if (QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows")) {
+	            QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','1px -1px 3px -1px rgba(0,0,0,0.7)', true);
+		        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
+		        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
+	          }
+	          else {
+	            QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','none', true);
+		        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', 'none', true);
+		        QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', 'none', true);
+	          }
+		  }
 
     	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','color',
                    QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);
@@ -902,7 +925,7 @@ QuickFolders.Interface = {
 	      QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color', colActiveBG,true);
 
 		  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','background-color',
-	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","Orange"),true);
+	               QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90"),true);
 	  	  QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','color',
 	               QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black"),true);
 

@@ -24,4 +24,10 @@ pref("extensions.quickfolders.debug.folders",false);
 pref("extensions.quickfolders.debug.popupmenus",false);
 pref("extensions.quickfolders.debug.events",false);
 pref("extensions.quickfolders.debug.mailTabs",false);
+pref("extensions.quickfolders.transparentButtons", false);
+pref("extensions.quickfolders.transparentToolbar", true);
+pref("extensions.quickfolders.transparentButtons", false);
+pref("extensions.quickfolders.buttonShadows", false);
+
+
 

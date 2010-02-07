@@ -82,6 +82,8 @@ QuickFolders.Util = {
 	    catch(e) {
 		    hex=getSystemColor(hex);
 	    }
+	    if (this.Application()=='Thunderbird' && this.Appver()<3)
+	    	return hex.toString();
 		function cutHex(h) {var rv= ((h.toString()).charAt(0)=='#') ? h.substring(1,7):h;
 		                    return rv.toString();}
 		function HexToR(h) {return parseInt(h.substring(0,2),16);}
@@ -137,18 +139,22 @@ QuickFolders.Util = {
     ensureFolderViewTab: function() {
 	    // TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
 		var found=false;
-        let tabmail = document.getElementById("tabmail");
+		var tabmail = document.getElementById("tabmail");
 		if (tabmail) {
-			let tab =  (QuickFolders.Util.Application()=='Thunderbird') ? tabmail.selectedTab :  tabmail.currentTabInfo;
+			var tab =  (QuickFolders.Util.Application()=='Thunderbird') ? tabmail.selectedTab :  tabmail.currentTabInfo;
 
 		    if (tab) {
-			  if (tab.mode.name=='message' || tab.mode.name=='calendar'
-			      || tab.mode.name=='contentTab' || tab.mode.name=='glodaFacet') {  // SM:  tab.getAttribute("type")=='message'
+			  QuickFolders.Util.logDebugOptional ("mailTabs","ensureFolderViewTab - current tab mode: " + tab.mode.name);
+/*			  if (tab.mode.name=='message' || tab.mode.name=='calendar'
+			      || tab.mode.name=='contentTab' || tab.mode.name=='glodaFacet' || tab.mode.name=='glodaList') */
+			  if (tab.mode.name!='folder')
+			  {  // SM:  tab.getAttribute("type")=='message'
 				// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 				// switchToTab
 				var i;
 				for (i=0;i<tabmail.tabInfo.length;i++) {
                   if (tabmail.tabInfo[i].mode.name=='folder') { // SM:  tabmail.tabInfo[i].getAttribute("type")=='folder'
+                    QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + tabmail.tabInfo[i].title);
 	                tabmail.switchToTab(i);
 	                found=true;
                     break;
@@ -157,6 +163,7 @@ QuickFolders.Util = {
                 // if it can't find a tab with folders ideally it should call openTab to display a new folder tab
                 for (i=0;(!found) && i<tabmail.tabInfo.length;i++) {
                   if ( tabmail.tabInfo[i].mode.name!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+                    QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + tabmail.tabInfo[i].title);
 	                tabmail.switchToTab(i);
                     break;
                   }

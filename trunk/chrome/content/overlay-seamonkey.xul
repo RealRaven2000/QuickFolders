@@ -62,6 +62,11 @@
                               oncommand="QuickFolders.Interface.viewChangeOrder()"  class="cmd menuitem-iconic"
                               tagName="qfOrder"
                               />
+                    <menuitem label="&qf.menuitem.quickfolders.support;"
+                              accesskey="&qf.menuitem.quickfolders.supportAccess;"
+                              oncommand="QuickFolders.Interface.viewSupport()" class="cmd menuitem-iconic"
+                              tagName="qfSupport"
+                              />
                     <menuitem label="&qf.menuitem.quickfolders.help;"
                               accesskey="&qf.menuitem.quickfolders.helpAccess;"
                               oncommand="QuickFolders.Interface.viewHelp()" class="cmd menuitem-iconic"

@@ -178,7 +178,7 @@
 
     23/09/2009 Release 1.5b
       AG bumped compatibility to 3.0.4b
-         fixed 2 security issues releated to setTimer
+         fixed 2 security issues releated to setTimeout
 
 
     21/10/2009 Release 1.6 23/10/2009
@@ -218,7 +218,7 @@
       AG added special icons for Junk, Drafts, Outbox and Templates
       AG added code to fix changed Application Name (Mozilla-Thunderbird) which makes branching code fail in Linux.
 
-    30/01/2009 Release 1.8.5 (WIP)
+    30/01/2009 Release 1.8.5
       AG fixed: Bug 22295 (selecting a QuickFolder closes single Message Tab) => now opens a folder view tab
       AG fixed: Bug 22144 - Highlighting not updated when switching Tabs in TB3 - now also selects Category if necessary!
       AG fixed: Bug 22316 - added Transparency options for toolbar (Personas friendly) and tabs (translucently colored, use white for almost complete transparency)
@@ -229,6 +229,24 @@
       AG Improved: tried to resolve as many name space conflicts as possible by using QF_ prefix for global objects
       AG added: Shadows option
       AG added: ca-AD locale (Catalan) by Jordi Benaiges; Improvements to Russian, Italian and Dutch locales.
+      AG: bundled all locales into locales.jar
+
+    30/01/2009 Release 1.8.5.1
+      AG: enabled switching to folder view when in Task view
+
+    30/01/2009 Release 1.8.5.2
+      AG: removed unneccessary use of let - fixes crash issues for Thunderbird 2
+      AG: validation - removed 'insecure' usage of SetTimeout
+      AG: new Support option in Menu
+      AG: fixed missing option in french locale which would have caused a crash
+      AG: Removed attempting to apply shadow & alpha blending to TB2 version.
+
+    06/02/2009 Release 1.8.5.3
+      AG: swapped Support / Help Menu as they were the wrong way round
+      AG: added new support menu item to Postbox and SeaMonkey overlay
+
+    WIP 1.8.6
+      AG: added tooltiptext with full folder name + server
 
   KNOWN ISSUES
   ============
@@ -290,8 +308,9 @@ var QuickFolders = {
        if(QuickFolders.isCorrectWindow()) {
 		    QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
             // document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-            var thefunc='QuickFolders.init()';
-            setTimeout(thefunc, nDelay);
+            //var thefunc='QuickFolders.init()';
+	        //setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
+            setTimeout(function() { QuickFolders.init(); }, nDelay);
 	        this.initDone=true;
         }
         else {
@@ -1005,7 +1024,7 @@ function QF_MySelectFolder(folderUri)
         const TAB_MODBITS_TabShowThreadPane  = 0x0004;
         const TAB_MODBITS_TabShowAcctCentral = 0x0008;
 
-        let tabmail = GetTabMail();
+        var tabmail = GetTabMail();
         // must have at least have either folder pane or message pane,
         // otherwise find another tab!
 		if (!(tabmail.currentTabInfo.modeBits & (TAB_MODBITS_TabShowFolderPane | TAB_MODBITS_TabShowThreadPane)))
@@ -1033,8 +1052,9 @@ function QF_MySelectFolder(folderUri)
 		   folderIndex = EnsureFolderIndex(msgFolder);
 		   QuickFolders.Util.logDebugOptional("folders", "EnsureFolderIndex: " + msgFolder.URI);
 	    }
-		else
+		else {
 		   folderIndex = QF_MyEnsureFolderIndex(folderTree, msgFolder);
+	    }
       // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
   		QuickFolders.Util.ensureNormalFolderView();

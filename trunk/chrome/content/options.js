@@ -13,7 +13,7 @@ function QF_getMyVersion() {
 }
 
 
-let QF_TabURIregexp = {
+var QF_TabURIregexp = {
     get _thunderbirdRegExp() {
       delete this._thunderbirdRegExp;
       return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
@@ -22,7 +22,7 @@ let QF_TabURIregexp = {
 
 // open the new content tab for displaying support info, see
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
-let QF_TabURIopener = {
+var QF_TabURIopener = {
 
     openURLInTab: function (URL) {
 	    try {
@@ -31,7 +31,7 @@ let QF_TabURIopener = {
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 			  // Try opening new tabs in an existing 3pane window
-			  let mail3PaneWindow = QF_CC["@mozilla.org/appshell/window-mediator;1"]
+			  var mail3PaneWindow = QF_CC["@mozilla.org/appshell/window-mediator;1"]
 			                             .getService(QF_CI.nsIWindowMediator)
 			                             .getMostRecentWindow("mail:3pane");
 			  if (mail3PaneWindow) {
@@ -60,7 +60,7 @@ var QuickFoldersOptions = {
     qfStaticInstantApply : true,
     qfOptionsMode : "",
     accept: function() {
-	    if (this.qfOptionsMode=="helpOnly")
+	    if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly")
 	      return; // do not store any changes!
         var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
         observerService.notifyObservers(null, "quickfolders-options-saved", null);
@@ -97,7 +97,7 @@ var QuickFoldersOptions = {
     } ,
     load : function() {
 	    var version=QF_getMyVersion();
-	    let wd=window.document;
+	    var wd=window.document;
 	    try { this.qfOptionsMode = window.arguments[1].inn.mode;}
 	    catch(e) {;}
 	    // force instantapply off
@@ -108,22 +108,52 @@ var QuickFoldersOptions = {
 	    */
 
 		if (version=="") version='version?';
+
 	    wd.getElementById("qf-options-header-description").setAttribute("value", version);
 	    // hide first 2 tabs!!
-	    if (this.qfOptionsMode=="helpOnly") {
+	    if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly") {
 		  var tabbox = wd.getElementById("QuickFolders-Options-Tabbox");
 		  if (tabbox) {
+			var keep;
+			switch(this.qfOptionsMode) {
+				case "helpOnly":
+					keep=2;
+					break;
+				  case "supportOnly":
+					keep=3;
+					break;
+			  }
 			  // remove the first 2 (options tab)
-			  tabbox.tabs.removeItemAt(1);
-			  tabbox.tabs.removeItemAt(0);
-			  tabbox.tabpanels.removeChild(tabbox.tabpanels.children[1]);
-			  tabbox.tabpanels.removeChild(tabbox.tabpanels.children[0]);
+			  if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird') {
+				  // only display the srcond page to avoid errors in TB2
+				  for (var i=3; i>=0; i--)
+				    tabbox._tabs.removeItemAt(i); // remove all tabs
+				  for (var i=3; i>=0; i--)
+					  if (i!=keep) tabbox._tabpanels.removeChild(tabbox._tabpanels.childNodes[i]);
+			  }
+			  else {
+				  for (var i=3; i>=0; i--)
+				    tabbox.tabs.removeItemAt(i);
+				  for (var i=3; i>=0; i--)
+					  if (i!=keep)  tabbox.tabpanels.removeChild(tabbox.tabpanels.children[i]);
+		      }
 	      }
 		  return; // we do not set any values!
         }
 
 	    // initialize colorpickers
 	    try {
+
+			if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird') {
+				// toggle off and disable shadow!
+				if (QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows")==true)
+				  QuickFolders.Preferences.setBoolPref("extensions.quickfolders.buttonShadows", false);
+				// try to remove Shadow Checkbox in TB2... doesn't work for some reason ?
+				var cb=wd.getElementById("qf-options-shadow");
+				wd.getElementById("qf-options-shadow").display="none";
+				cb.style.display="none";
+			}
+
 		    var col, bcol;
 		    bcol=QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","HighLight");
 		    wd.getElementById("activetab-colorpicker").color=bcol;
@@ -160,6 +190,8 @@ var QuickFoldersOptions = {
 		    wd.getElementById("dragovertabs-label").style.backgroundColor=bcol;
 		    wd.getElementById("toolbar-colorpicker").color=QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
 
+
+
 	    }
 	    catch(e) {
 		    alert("Error in QuickFolders:\n" + e);
@@ -193,8 +225,9 @@ var QuickFoldersOptions = {
     },
 
     toggleColorTranslucent: function (isChecked) {
+	    var picker = document.getElementById('inactive-colorpicker');
 	    document.getElementById('inactivetabs-label').style.backgroundColor=
-	      QuickFolders.Util.getRGBA(document.getElementById('inactive-colorpicker').color, isChecked ? 0.25 : 1.0);
+	      QuickFolders.Util.getRGBA(picker.color, isChecked ? 0.25 : 1.0);
 	    return QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
     },
 
@@ -290,9 +323,9 @@ var QuickFoldersOptions = {
 
     openLinkInBrowser: function(evt,linkURI) {
 	    if (QuickFolders.Util.Appver()==3 && QuickFolders.Util.Application()=='Thunderbird') {
-	       let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+	       var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
 	       		.getService(Components.interfaces.nsIExternalProtocolService);
-	       let ioservice  = QF_CC["@mozilla.org/network/io-service;1"].
+	       var ioservice  = QF_CC["@mozilla.org/network/io-service;1"].
 			            getService(QF_CI.nsIIOService);
 	       	service.loadURI(ioservice.newURI(linkURI, null, null));
 	       	evt.stopPropagation();

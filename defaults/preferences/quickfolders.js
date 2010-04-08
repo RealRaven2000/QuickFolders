@@ -1,7 +1,8 @@
-pref("extensions.{3550f703-e582-4d05-9a08-453d09bdfdc6}.description", "chrome://quickfolders/locale/quickfolders.properties");
+pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
 pref("extensions.quickfolders.showShortcutNumber",true);
 pref("extensions.quickfolders.showUnreadOnButtons",true);
 pref("extensions.quickfolders.showQuickfoldersLabel",true);
+pref("extensions.quickfolders.textQuickfoldersLabel","QuickFolders");
 pref("extensions.quickfolders.showUnreadFoldersBold",true);
 pref("extensions.quickfolders.useKeyboardShortcuts",true);
 pref("extensions.quickfolders.useKeyboardShortcutCTRL",false);
@@ -28,6 +29,8 @@ pref("extensions.quickfolders.transparentButtons", false);
 pref("extensions.quickfolders.transparentToolbar", true);
 pref("extensions.quickfolders.transparentButtons", false);
 pref("extensions.quickfolders.buttonShadows", false);
+pref("extensions.quickfolders.disableFolderSwitching",false);
+pref("extensions.quickfolders.showCountInSubFolders",false);
 
 
 

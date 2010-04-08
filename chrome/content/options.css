@@ -1,9 +1,14 @@
 /* Options window */
 #qf-options-prefpane {
-	background-image: url("quickfolders-Icon.png") !important;
-    background-position: 10px 10px !important;
-    background-repeat: no-repeat !important;
+	background-image: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png") !important;
+	background-position: 10px 10px !important;
+	background-repeat: no-repeat !important;
+	min-height: 400px;
 }
+
+#QuickFolders-Options-Tabbox { min-width:400px; }
+#QuickFolders-Options-general { min-height:350px; }
+
 
 #qf-options-header {
 	margin: 5px 0px 5px 45px;
@@ -23,152 +28,156 @@
 	font-weight: bold;
 }
 
-/****** LINKS  ********/
+/****** LINKS	********/
 label.text-link[href] {
-  padding: 4px 2px 16px 5px !important;
-  text-decoration: underline !important;
-  vertical-align: middle !important;;
+	padding: 4px 2px 16px 5px !important;
+	margin: 0px 2px;
+	text-decoration: underline !important;
+	vertical-align: middle !important;;
 }
 
 label.text-link[href]:hover {
-  color: white !important;
-  background-color:	blue !important;
+	color: white !important;
+	background-color: blue !important;
 }
 
 label.text-link[href]:focus {
-  color: #FFF !important;
-  background-color:	#06396F !important;
-  /*background-image: url("dellablue.png");
-  background-repeat: repeat-x;*/
-  border: 1px #006 solid;
-  text-decoration: underline !important;
+	color: #FFF !important;
+	background-color: #06396F !important;
+	/*background-image: url("chrome://quickfolders/skin/ico/dellablue.png");
+	background-repeat: repeat-x;*/
+	border: 1px #006 solid;
+	text-decoration: underline !important;
 }
 
 label.text-link:link {
-  color: orange !important;
+	color: orange !important;
 }
 label.text-link:visited {
-  color: #00A !important;
+	color: #00A !important;
 }
 
 
 
 label.qfTabPreview {
-  border: #AAA 1px solid;
-  -moz-border-radius: 4px 5px 0 0;
-  padding: 3px 8px;
-  min-width:20px;
-  max-height:22px;
-  vertical-align:middle;
+	border: #AAA 1px solid;
+	-moz-border-radius: 4px 5px 0 0;
+	padding: 3px 8px;
+	min-width:20px;
+	max-height:22px;
+	vertical-align:middle;
 }
 
 label [href^="mailto"] {
-  text-decoration: underline  !important;
+	text-decoration: underline	!important;
 }
 
 
 
 label#L2:hover {
-  background-color: #EF8F34 !important;
-  background-image: url("orange-bar.png");
-  background-repeat: repeat-x;
-  color: #630 !important;
-  border: 1px #630 solid;
-  font-weight: bold;
+	background-color: #EF8F34 !important;
+	background-image: url("chrome://quickfolders/skin/ico/orange-bar.png");
+	background-repeat: repeat-x;
+	color: #630 !important;
+	border: 1px #630 solid;
+	font-weight: bold;
 }
 
 label#L2:active {
-  color: #630 !important;
-  text-decoration: underline;
+	color: #630 !important;
+	text-decoration: underline;
 }
 
 
 label#L3:hover {
-  background-image: url("gold-bar.png");
-  background-repeat: repeat-x;
-  border: 1px #500 solid;
-  color: #500 !important;
-  font-weight: bold;
-  background-color: #FACB2B !important;
+	background-image: url("chrome://quickfolders/skin/ico/gold-bar.png");
+	background-repeat: repeat-x;
+	border: 1px #500 solid;
+	color: #500 !important;
+	font-weight: bold;
+	background-color: #FACB2B !important;
 }
 
 label#L3:active {
-  color: red !important;
+	color: red !important;
 }
 
 
 label#L4:hover {
-  color: #006 !important;
-  background-image: url("ice-bar.png");
-  background-repeat: repeat-x;
-  background-color: #2B9EEE !important;
-  border: 1px #006 solid;
-  font-weight: bold;
+	color: #006 !important;
+	background-image: url("chrome://quickfolders/skin/ico/ice-bar.png");
+	background-repeat: repeat-x;
+	background-color: #2B9EEE !important;
+	border: 1px #006 solid;
+	font-weight: bold;
 }
 
 label#L4:active {
-  color: #00A !important;
+	color: #00A !important;
 }
 
 label#L5:hover {
-  color: #FFF !important;
-  background-image: url("cherry-bar.png");
-  background-repeat: repeat-x;
-  background-color: #7E1808 !important;
-  border: 1px #4B1400 solid;
-  font-weight: bold;
+	color: #FFF !important;
+	background-image: url("chrome://quickfolders/skin/ico/cherry-bar.png");
+	background-repeat: repeat-x;
+	background-color: #7E1808 !important;
+	border: 1px #4B1400 solid;
+	font-weight: bold;
 }
 
 label#L5:active {
-  color: #FFF !important;
+	color: #FFF !important;
 }
 
 label#L0 {
-  margin: 10px 20px;
+	margin: 10px 20px;
 }
 
 label#L1,label#L2,label#L3,label#L4,label#L5 {
-  margin: 10px 50px;
-  text-align: center;
-  width: auto;
+	margin: 10px 50px;
+	text-align: center;
+	width: auto;
 }
 
 label#L0 a {
-  Padding: 1em 2em;
+	Padding: 1em 2em;
 }
 
 label#L0:hover, label#L1:hover {
-  color: #FFF !important;
-  background-image: url("dellablue.png");
-  background-repeat: repeat-x;
-  background-color: #073061 !important; /*#2B9EEE;*/
-  border: 1px #006 solid;
-  font-weight: bold;
+	color: #FFF !important;
+	background-image: url("chrome://quickfolders/skin/ico/dellablue.png");
+	background-repeat: repeat-x;
+	background-color: #073061 !important; /*#2B9EEE;*/
+	border: 1px #006 solid;
+	font-weight: bold;
 }
 
 
 label#L0:active, label#L1:active {
-  color: #FFF !important;
-  background-color: #073061 !important;
+	color: #FFF !important;
+	background-color: #073061 !important;
 }
 label#L0:active a, label#L1:active a {
-  text-decoration: underline !important;
+	text-decoration: underline !important;
 }
 
 
 
 description.quickhelp-desc, description.quickhelp-dbg {
 	text-align:justify;
-	max-width: 550px;
+	max-width: 620px;
+	padding: 2px;0px;
+	margin: 1px 0px;
+	line-height:1.2em;
 }
 
 description#importantNote {
-  font-weight: bold;
-  color: #A00 !important;
+	font-weight: bold;
+	color: #A00 !important;
 }
 
 description.quickhelp-dbg, hbox.quickhelp-dbg {
-  color:#C0C0C0;
-  background-color:#202020;
-  padding: 3px 8px 3px 8px;
+	color:#C0C0C0;
+	background-color:#202020;
+	padding: 3px 8px 3px 8px;
 }

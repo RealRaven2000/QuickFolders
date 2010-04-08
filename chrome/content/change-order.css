@@ -1,5 +1,5 @@
 hbox#qf-header {
-	background-image: url("quickfolders-Icon.png") !important;
+	background-image: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png") !important;
     background-position: 10px 10px !important;
     background-repeat: no-repeat !important;
 }
@@ -23,7 +23,7 @@ description#Explain-Drag {
 	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
 	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
 	padding: 5px 8px;
-	background-image: url("ice-bar-tall.png");
+	background-image: url("chrome://quickfolders/skin/ico/ice-bar-tall.png");
 	background-repeat: repeat-x;
 	background-color: Highlight;
 	color: #000;
@@ -51,12 +51,12 @@ hbox.drag-image {
 button.order-button-up {
 /*    -moz-appearance: button-small; */
     max-height: 1.9em !important;
-    list-style-image: url("dropUp.gif") !important;
+    list-style-image: url("chrome://quickfolders/skin/ico/dropUp.gif") !important;
 }
 button.order-button-down {
 /*    -moz-appearance: button-small; */
     max-height: 1.9em !important;
-    list-style-image: url("dropDown.gif") !important;
+    list-style-image: url("chrome://quickfolders/skin/ico/dropDown.gif") !important;
 }
 
 rows#QuickFolders-change-order-grid-rows row

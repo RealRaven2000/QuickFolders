@@ -297,7 +297,7 @@ var QuickFoldersOptions = {
 
     },
 
-    openAboutConfigDebug : function() {
+    openAboutConfig : function(filter) {
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
@@ -313,7 +313,7 @@ var QuickFoldersOptions = {
           function () {
 			var flt = w.document.getElementById("textbox");
 			if (flt) {
-			   flt.value="quickfolders.debug"
+			   flt.value=filter;
 			   flt.focus();
 			   if (w.self.FilterPrefs)
 			     w.self.FilterPrefs();
@@ -322,7 +322,7 @@ var QuickFoldersOptions = {
 	},
 
     openLinkInBrowser: function(evt,linkURI) {
-	    if (QuickFolders.Util.Appver()==3 && QuickFolders.Util.Application()=='Thunderbird') {
+	    if (QuickFolders.Util.Appver()>=3 && QuickFolders.Util.Application()=='Thunderbird') {
 	       var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
 	       		.getService(Components.interfaces.nsIExternalProtocolService);
 	       var ioservice  = QF_CC["@mozilla.org/network/io-service;1"].

@@ -10,6 +10,8 @@
 <!ENTITY qf.checkbox.showUnreadMessageCount "Toon het aantal ongelezen bericht op de knop">
 <!ENTITY qf.checkbox.showUnreadBold "Toon knoppen voor folders met ongelezen berichten in het vet">
 <!ENTITY qf.checkbox.showTotalMessageCount "Toon het totaal aantal berichten op de knop (ook gelezen berichten)">
+<!ENTITY qf.checkbox.showCountInSubFolders "Geef ook totalen voor subfolders weer">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Deze worden weergeven met een '+' bij de hoofd aantallen; onderliggende ongelezen mails zallen de tab ook vet maken als bovenstaande optie geactiveerd is">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
 <!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
@@ -31,6 +33,7 @@
 <!ENTITY qf.label.StandardTabColor "Standaard Tab Kleur:">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
 <!ENTITY qf.label.folders "Folders?">
+<!ENTITY qf.label.folders.tooltip "Kopieert de configuratie-string die de folders bevat naar het klembord">
 <!ENTITY qf.checkbox.autoFocusPreview "Focus berichtenlijst bij wisselen van tabblad">
 <!ENTITY qf.label.homePage "Klik hier voor gedetailleerde informatie op de nieuwe QuickFolders homepage (Mozdev.org).">
 <!ENTITY qf.tab.support "Ondersteuning">
@@ -56,3 +59,8 @@
 <!ENTITY qf.description.linkNote "Bezoek de homepage van QuickFolders voor een gedetailleerde handleiding, tips en FAQ:">
 <!ENTITY qf.checkbox.transparent "Transparant">
 <!ENTITY qf.checkbox.shadows "Schaduwen">
+<!ENTITY qf.checkbox.debug.tooltip "Rechtsklik dit vinkje voor geavanceerde debug opties">
+<!ENTITY qf.checkbox.displaylabel.tooltip "Rechtsklikken om de tekst van dit label te wijzigen">
+<!ENTITY qf.checkbox.sortMenusAlpha "Forceer alphabetische sortering van menu's met subfolders.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Gebruik deze optie alleen als uw mail client de subfolders niet correct sorteert">
+<!ENTITY qf.options.versionnumber.tooltip "Rechtsklikken voor versie geschiedenis.">

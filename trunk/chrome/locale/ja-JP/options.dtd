@@ -10,6 +10,8 @@
 <!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
 <!ENTITY qf.checkbox.showTotalMessageCount "フォルダボタンにメッセージ数の合計を表示する">
+<!ENTITY qf.checkbox.showCountInSubFolders "サブフォルダのメッセージ数も表示する">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "「メインフォルダのメッセージ数 + サブフォルダのメッセージ数」のように表示されます。上記のオプションが有効であれば、未読を含むタブは太字で表示されます。">
 <!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
 <!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
 <!ENTITY qf.label.pixels "ピクセル">
@@ -31,6 +33,7 @@
 <!ENTITY qf.label.StandardTabColor "タブの標準色:">
 <!ENTITY qf.label.initdelay "[ms] 初期化遅延時間 {標準は 1000}:">
 <!ENTITY qf.label.folders "フォルダのパス？">
+<!ENTITY qf.label.folders.tooltip "フォルダへのパス文字列をクリップボードにコピーします。">
 <!ENTITY qf.checkbox.autoFocusPreview "タブの変更時にメッセージリストをフォーカスする">
 <!ENTITY qf.label.homePage "詳しい情報は Mozdev.org の QuickFolders ホームページにあります。">
 <!ENTITY qf.tab.support "サポート">
@@ -56,3 +59,8 @@
 <!ENTITY qf.description.linkNote "QuickFolders のホームページに詳しいユーザガイドとヒント、FAQ があります:">
 <!ENTITY qf.checkbox.transparent "透過">
 <!ENTITY qf.checkbox.shadows "影">
+<!ENTITY qf.checkbox.debug.tooltip "このチェックボックスを右クリックすると詳細デバッグオプションを表示。">
+<!ENTITY qf.checkbox.displaylabel.tooltip "右クリックするとラベルのテキストを変更できます。">
+<!ENTITY qf.checkbox.sortMenusAlpha "サブフォルダメニューをアルファベット順に並べ替える">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "このオプションはサブフォルダが正しく並べ替えられない場合に使用してください。">
+<!ENTITY qf.options.versionnumber.tooltip "右クリックでバージョン履歴を表示します。">

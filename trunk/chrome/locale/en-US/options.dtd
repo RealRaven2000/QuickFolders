@@ -10,6 +10,8 @@
 <!ENTITY qf.checkbox.showUnreadMessageCount "Display the number of unread messages on the folder button">
 <!ENTITY qf.checkbox.showUnreadBold "Display buttons for folders with unread messages in bold">
 <!ENTITY qf.checkbox.showTotalMessageCount "Display the total number of messages on the folder button">
+<!ENTITY qf.checkbox.showCountInSubFolders "Also display totals of subfolders">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Display buttons for folders with messages in them italic">
 <!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default): ">
 <!ENTITY qf.label.pixels "pixels">
@@ -31,6 +33,7 @@
 <!ENTITY qf.label.StandardTabColor "Standard Tab Color:">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
 <!ENTITY qf.label.folders "Folders?">
+<!ENTITY qf.label.folders.tooltip "Copies the folders configuration string to the clipboard">
 <!ENTITY qf.checkbox.autoFocusPreview "Focus on message list when changing tabs">
 <!ENTITY qf.label.homePage "Detailed information at the new QuickFolders homepage at Mozdev.org...">
 <!ENTITY qf.tab.support "Support">
@@ -56,3 +59,8 @@
 <!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
 <!ENTITY qf.checkbox.transparent "transparent">
 <!ENTITY qf.checkbox.shadows "shadows">
+<!ENTITY qf.checkbox.debug.tooltip "right click this checkbox for advanced debug options">
+<!ENTITY qf.checkbox.displaylabel.tooltip "right click to change the text of this label">
+<!ENTITY qf.checkbox.sortMenusAlpha "Force alphabetic sorting of menus with subfolders.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Only use this option if your mail client doesn't sort the subfolders correctly.">
+<!ENTITY qf.options.versionnumber.tooltip "Right-click for version history.">

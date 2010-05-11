@@ -10,6 +10,8 @@
 <!ENTITY qf.checkbox.showUnreadMessageCount "Exibir o número de mensagens não lidas no botão da pasta">
 <!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
 <!ENTITY qf.checkbox.showTotalMessageCount "Exibir o total de mensagens no botão de cada pasta">
+<!ENTITY qf.checkbox.showCountInSubFolders "Exibir também totais de subpastas">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estes são exibidos separados por um '+' ao lado de suas contagens principais; mensagens não lidas farão também com que a aba fique em negrito se a opção acima for ativada">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
 <!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
 <!ENTITY qf.label.pixels "pixels">
@@ -31,6 +33,7 @@
 <!ENTITY qf.label.StandardTabColor "Cor padrão de abas:">
 <!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
 <!ENTITY qf.label.folders "Pastas?">
+<!ENTITY qf.label.folders.tooltip "Copia a configuração de pastas para a área de transferência">
 <!ENTITY qf.checkbox.autoFocusPreview "Foco na lista de mensagens ao mudar de aba">
 <!ENTITY qf.label.homePage "Informações detalhadas na nova página do QuickFolders no Mozdev.org...">
 <!ENTITY qf.tab.support "Suporte">
@@ -56,3 +59,8 @@
 <!ENTITY qf.description.linkNote "Visitar a página do QuickFolders para ver um um guia de uso detalhado, dicas e FAQ:">
 <!ENTITY qf.checkbox.transparent "transparente">
 <!ENTITY qf.checkbox.shadows "sombras">
+<!ENTITY qf.checkbox.debug.tooltip "clique com o botão direito nesta caixa para opções avançadas de depuração">
+<!ENTITY qf.checkbox.displaylabel.tooltip "clique com o botão direito para alterar o texto deste rótulo">
+<!ENTITY qf.checkbox.sortMenusAlpha "Forçar classificação alfabética de menus com subpastas.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Só use essa opção se o seu cliente de email não classificar corretamente as subpastas.">
+<!ENTITY qf.options.versionnumber.tooltip "Botão direito do mouse para o histórico de versões.">

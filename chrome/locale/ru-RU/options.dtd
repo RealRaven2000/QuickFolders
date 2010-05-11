@@ -1,18 +1,20 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Настройки QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
-<!ENTITY qf.tab.general "Общие">
+<!ENTITY qf.tab.general "Основные">
 <!ENTITY qf.tab.layout "Разнообразить закладки">
-<!ENTITY qf.tab.quickhelp "Помощь">
+<!ENTITY qf.tab.quickhelp "Справка">
 <!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
-<!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавишные комбинации(от Alt + 1 до Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
-<!ENTITY qf.checkbox.showshortcutnumber "Показывать номер комбинации на закладках">
+<!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Показывать в закладке количество не прочтенных сообщений">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
 <!ENTITY qf.checkbox.showTotalMessageCount "Показывать в закладке общее количество сообщений">
+<!ENTITY qf.checkbox.showCountInSubFolders "Также показывать общее количество сообщений и для папок, находящихся в этой папке">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
-<!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный)">
-<!ENTITY qf.label.pixels "пикселей">
+<!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
+<!ENTITY qf.label.pixels "пикселов">
 <!ENTITY qf.label.setcolors "Цвет текста и фона">
 <!ENTITY qf.label.ActiveTabColor "Цвет активной закладки">
 <!ENTITY qf.label.HoveredTabColor "Цвет закладки под мышкой">
@@ -29,8 +31,9 @@
 <!ENTITY qf.button.defaultcolors "Стандартные цвета">
 <!ENTITY qf.checkbox.debug "Режим отладки">
 <!ENTITY qf.label.StandardTabColor "Стандартный цвет закладки:">
-<!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс - стандарт)">
+<!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс по умолчанию)">
 <!ENTITY qf.label.folders "Папки?">
+<!ENTITY qf.label.folders.tooltip "Копировать настройки в буфер обмена">
 <!ENTITY qf.checkbox.autoFocusPreview "Переводить фокус на список сообщений после смены закладок">
 <!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org...">
 <!ENTITY qf.tab.support "Поддержка">
@@ -40,7 +43,7 @@
 <!ENTITY qf.label.featuresLink "Новая возможность...">
 <!ENTITY qf.description.languages "Вы можете помочь, добавив перевод на свой язык на Babelzilla:">
 <!ENTITY qf.label.languagesLink "Добавить перевод...">
-<!ENTITY qf.description.donate "Если QuickFolder Вам нравится также, как и нам, Вы можете поддержать дальнейшее развитие пожертвованием.">
+<!ENTITY qf.description.donate "Если QuickFolder Вам нравится также, как и нам, Вы можете поддержать дальнейшее развитие денежным пожертвованием.">
 <!ENTITY qf.label.donateLink "Поддержать...">
 <!ENTITY qf.description.contactMe "Мой личный адрес axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Написать мне (на английском или немецком)">
@@ -55,4 +58,9 @@
 <!ENTITY qf.checkbox.showFlatStyle "Плоский стиль закладок - рекомендуется, так как поддерживает цветовые настройки">
 <!ENTITY qf.description.linkNote "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:">
 <!ENTITY qf.checkbox.transparent "прозрачный">
-<!ENTITY qf.checkbox.shadows "Тень">
+<!ENTITY qf.checkbox.shadows "с тенями">
+<!ENTITY qf.checkbox.debug.tooltip "Нажмите правой кнопкой мышки для получения дополнительных настроек">
+<!ENTITY qf.checkbox.displaylabel.tooltip "Нажмите правой кнопкой мышки для изменения этого текста">
+<!ENTITY qf.checkbox.sortMenusAlpha "Заставлять сортировать папки в папках по алфавиту.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Используйте только если нет правильной сортировки папок в папках.">
+<!ENTITY qf.options.versionnumber.tooltip "Нажмите правой кнопкой мышки для получения истории изменений.">

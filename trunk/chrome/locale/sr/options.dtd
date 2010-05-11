@@ -1,0 +1,66 @@
+<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders - опције">
+<!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.tab.general "Основно">
+<!ENTITY qf.tab.layout "Набуџи моје језичке!">
+<!ENTITY qf.tab.quickhelp "Брза помоћ">
+<!ENTITY qf.checkbox.displaylabel "Прикажи натпис „QuickFolders” на траци са алаткама">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Користи пречице на тастатури (од алт+а до алт+9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Користи ктрл уместо алт">
+<!ENTITY qf.checkbox.showshortcutnumber "Прикажи број пречице на наслов фасцикле">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Прикажи број непрочитаних порука на дугмету фасцикле">
+<!ENTITY qf.checkbox.showUnreadBold "Подебљај дугмад фасцикли које садрже непрочитане поруке">
+<!ENTITY qf.checkbox.showTotalMessageCount "Прикажи укупан број порука на дугмету фасцикле">
+<!ENTITY qf.checkbox.showCountInSubFolders "Прикажи и укупан број фасцикли">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Приказани су одвојено са знаком „+” поред главног бројача; непрочитане поруке које се налазе у њему ће, такође, подебљати језичак ако је горња опција активна">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Искоси дугмад фасцикли које садрже порукама">
+<!ENTITY qf.label.buttonFontSize "Величина фонта на дугмету (оставите празно да би била коришћена подразумевана):">
+<!ENTITY qf.label.pixels "пиксела">
+<!ENTITY qf.label.setcolors "Подеси [боју текста], боју позадине">
+<!ENTITY qf.label.ActiveTabColor "Боја активног језичка:">
+<!ENTITY qf.label.HoveredTabColor "Боја језичка када се нанесе миш:">
+<!ENTITY qf.label.DragOverBackground "Боја за превлачење:">
+<!ENTITY qf.label.ToolbarBackground "Позадина траке са алаткама:">
+<!ENTITY qf.description.dragToAdd "Превиците фасциклу са порукама у празан простор нове траке са алаткама да бисте напраили нову фасциклу за брзи приступ (нешто попут пречице). Превуците поруке у фасциклу за брзи приступ да бисте их преместили у одговарајућу (или копирајте помоћу пречице на тастатури). КЛикните на фасциклу за брзи приступ да бисте отворили фасциклу са порукама.">
+<!ENTITY qf.description.dragToPosition "Бочно превуците фасцикле за брзе приступе да бисте променили њихове позиције. Кликните десним кликком на фасциклу за брзи приступ да бисте приступили садржајном менију; бирањем можете да пређете у подфасцикле; преименовање и бележење; измењивање натписа фасцикле за брзи приступ; уклањање омиљеног места; брисање фасцикле за брзи приступ (али не и фасцикле са порукама).">
+<!ENTITY qf.description.dragToPopup "Превуците поруке у искачући мени фасцикле за брзи приступ да бисте их преместили у подфасцикле.">
+<!ENTITY qf.description.changeCategory "Притисните десни клик на омиљено место да бисте организовали категорије. На левој страни траке ћете добити падајући списак категорија.">
+<!ENTITY qf.description.rightClickOptions "Притисните десни клик на празан простор да бисте отворили мени са опцијама. У њима можете да одаберете подразумевани стил (мањи) или раван стил (прегледнији и подржава показивач приликом премештања).">
+<!ENTITY qf.description.tipMsg "Савет: ако имате много фасцикли, испробајте додатак Nostalgy за организовање порука помоћу тастатуре.">
+<!ENTITY qf.description.experimentalItems "Следеће ставке су пробне, па се надамо да ће бити уграђене у наредно издање!">
+<!ENTITY qf.label.instantApplyMsg "Напомена: ако испод видите само дугме [Затвори], подешавања боја можда неће радити. Како бисте решили овај проблем, пробајте да притиснете десни клик на празну површину фасцикле за брзи приступ. То ће присилити дугме [У реду] да се појави, па ће боје тиме бити сачуване.">
+<!ENTITY qf.button.defaultcolors "Подразумеване боје">
+<!ENTITY qf.checkbox.debug "Начин приказивања грешака">
+<!ENTITY qf.label.StandardTabColor "Стандардна боја језичка:">
+<!ENTITY qf.label.initdelay "[мс] почетна пауза {стандардно је 1000}:">
+<!ENTITY qf.label.folders "Фасцикле?">
+<!ENTITY qf.label.folders.tooltip "Копирање подешавања фасцикле у оставу">
+<!ENTITY qf.checkbox.autoFocusPreview "Пребаци на списак порука када се мењају језичци">
+<!ENTITY qf.label.homePage "Детаљне информације на новој страници додатка QuickFolders на Mozdev.org...">
+<!ENTITY qf.tab.support "Подршка">
+<!ENTITY qf.description.bugs "Грешке можете да пријавите користећи Багзилу:">
+<!ENTITY qf.label.bugLink "Пријавите грешку...">
+<!ENTITY qf.description.features "Захтевајте нову могућност у:">
+<!ENTITY qf.label.featuresLink "Захтевај нову могућност...">
+<!ENTITY qf.description.languages "QuickFolders подржава локализовање, тако да можете помоћи превођењем на ваш језик помоћу Бабелзиле:">
+<!ENTITY qf.label.languagesLink "Преведи...">
+<!ENTITY qf.description.donate "Ако волите додатак QuickFolders као и ми, а желели бисте да подржите његов развој , можете да донирате нешто новца за његов даљи развој.">
+<!ENTITY qf.label.donateLink "Посети страницу за донирање">
+<!ENTITY qf.description.contactMe "Можете да ме и лично контактирате на axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Контактирајте ме (на енглеском или немачком)...">
+<!ENTITY qf.checkbox.showIcons "Прикажи иконе (Примљене, послате, нежељене, избрисане, у припреми, архивиране, обрасци)">
+<!ENTITY qf.checkbox.showSubfolders "Развиј подфасцикле у искачућим менијима">
+<!ENTITY qf.menu.tabColor "Без боје!">
+<!ENTITY qf.menu.Color "Боја">
+<!ENTITY qf.options.LayoutColorAppearance "Приказ појединачне боје језичка">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(пругасти стил)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(попуњен стил)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Језичци стила оквира - изглед опонаша језичке вашег оперативног система; без икаквих опција за боје испод">
+<!ENTITY qf.checkbox.showFlatStyle "Кориснички стил „равних језичака” је препоручен, јер подржава све опције за боје приказане испод">
+<!ENTITY qf.description.linkNote "Посетите матичну страницу додатка QuickFolders да бисте видели детаљно упутство за кориснике, савете и ЧПП:">
+<!ENTITY qf.checkbox.transparent "провидно">
+<!ENTITY qf.checkbox.shadows "сенке">
+<!ENTITY qf.checkbox.debug.tooltip "притисните десни клик на ово поље да бисте приступили напредним опцијама извештавања о грешкама">
+<!ENTITY qf.checkbox.displaylabel.tooltip "притисните десни клик на бисте изменили текст овог натписа">
+<!ENTITY qf.checkbox.sortMenusAlpha "Присили ређање менија са подфасциклама по азбуци">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Ову опцију користите само ако ваш програм за е-пошту не ређа подфасцикле исправно.">
+<!ENTITY qf.options.versionnumber.tooltip "Притисните десни клик да бисте видели историјат верзија.">

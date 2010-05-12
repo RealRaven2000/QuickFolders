@@ -31,6 +31,8 @@ pref("extensions.quickfolders.transparentButtons", false);
 pref("extensions.quickfolders.buttonShadows", false);
 pref("extensions.quickfolders.disableFolderSwitching",false);
 pref("extensions.quickfolders.showCountInSubFolders",false);
+pref("extensions.quickfolders.enableMenuAlphaSorting",false);
+pref("extensions.quickfolders.debug.firstrun", false);
 
 
 

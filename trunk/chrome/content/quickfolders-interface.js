@@ -579,7 +579,7 @@ QuickFolders.Interface = {
 			}
 		}
 		catch (ex) { QuickFolders.Util.logToConsole(ex); };
-		QF_MySelectFolder(button.folder.URI);
+		QuickFolders_MySelectFolder(button.folder.URI);
 	} ,
 
 	onRemoveFolder: function(folder) {
@@ -809,37 +809,42 @@ QuickFolders.Interface = {
 					menuitem.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 					//QuickFolders.Util.logToConsole("	 adding menu item " + subfolder.name + " to " + folder.name + "...");
-					// alpha sorting by starting from end of menu up to separator!
-					var c=popupMenu.childElementCount-1; //count of last menu item
-					var added=false;
-					tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
-						  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
-						  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
-						  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
-						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
-						  "\xDF":"ss", "_":"/", ":":"."};
-					killDiacritics = function(s) {
-    					return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
-					}
+					if (QuickFolders.Preferences.isSortSubfolderMenus()) {
+						// alpha sorting by starting from end of menu up to separator!
+						var c=popupMenu.childElementCount-1; //count of last menu item
+						var c=popupMenu.childNodes.length-1; //count of last menu item
+						var added=false;
+						var tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
+							  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
+							  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
+							  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
+							  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
+							  "\xDF":"ss", "_":"/", ":":"."};
+						var killDiacritics = function(s) {
+	    					return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
+						}
 
-					var sNewName = killDiacritics(subfolder.name);
-					for (;c>=0 && popupMenu.children[c].hasAttribute('label');c--) {
-						if (sNewName > killDiacritics(popupMenu.children[c].getAttribute('label')))
-						{
-							if (c+1 == popupMenu.childElementCount)
+						var sNewName = killDiacritics(subfolder.name);
+					for (;c>=0 && popupMenu.childNodes[c].hasAttribute('label');c--) {
+						if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute('label')))
+							{
+							if (c+1 == popupMenu.childNodes.length)
+									popupMenu.appendChild(menuitem);
+								else
+								popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
+								added=true;
+								break;
+							}
+						}
+						if (!added) { // nothing with a label was found? then this must be the first folder item in the menu
+						if (c+1 >= popupMenu.childNodes.length)
 								popupMenu.appendChild(menuitem);
 							else
-								popupMenu.insertBefore(menuitem,popupMenu.children[c+1]);
-							added=true;
-							break;
+							popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
 						}
-					}
-					if (!added) { // nothing with a label was found? then this must be the first folder item in the menu
-						if (c+1 >= popupMenu.childElementCount)
-							popupMenu.appendChild(menuitem);
-						else
-							popupMenu.insertBefore(menuitem,popupMenu.children[c+1]);
-					}
+					} // end alphanumeric sorting
+					else
+						popupMenu.appendChild(menuitem);
 
 
 					if (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders()) {
@@ -902,7 +907,7 @@ QuickFolders.Interface = {
 			}
 		}
 		catch (ex) { QuickFolders.Util.logToConsole(ex); };
-		QF_MySelectFolder (folderUri);
+		QuickFolders_MySelectFolder (folderUri);
 	} ,
 
 

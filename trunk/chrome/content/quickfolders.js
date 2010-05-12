@@ -259,13 +259,19 @@
 	  AG: Added - CTRL+Click tab shortcut opens a new mail tab.
 
 
-	08/04/2010 - 1.9.1
+	12/05/2010 - 1.9.1
 	  AG: Fixed Bug 22585 - (1.8.9) Smart Folders view erratically switched to standard folder if clicked folder is in a collapsed tree branch
 	  AG: Fixed Bug 21054 - (1.8.9) Enabled scrolling long menus while dragging by using code from Robert Gibson's "Scroll Menus On Drag" extension https://addons.mozilla.org/en-US/firefox/addon/1411
 	  AG: Fixed Bug 21317 - force alphabetical sorting of subfolder menus. Note: Does only work with some Umlauts / Diacritics.
 	  AG: Added code from Pavel for displaying subfolder counts
 	  AG: Added code for customizing the "QuickFolders" label (Pavel)
 	  AG: Fixed Bug 22695 - now folders can be moved within the folder tree without QuickFolders losing track of them
+	  AG: Added option for alphabetically sorting subfolders in menus
+	  AG: Added firstrun functionality
+	  AG: Added locale sr by DakSrbija
+	  AG: various tooltips in options dialog
+	  AG: tightened up namespace pollution issues
+	  AG: Added version history jump to options dialog (right-click from version number)
 
   KNOWN ISSUES
   ============
@@ -347,6 +353,7 @@ var QuickFolders = {
 
 
 	init: function() {
+
 		var em = Components.classes["@mozilla.org/extensions/manager;1"]
 		   .getService(Components.interfaces.nsIExtensionManager);
 		var myver=em.getItemForID("quickfolders@curious.be").version;
@@ -399,6 +406,7 @@ var QuickFolders = {
 			}
 		},"quickfolders-options-saved", false);
 		QuickFolders.Util.logDebug("QF.init() ends.");
+		QuickFolders.Util.FirstRun.init();
 	} ,
 
 	sayHello: function() {
@@ -877,7 +885,7 @@ var QuickFolders = {
 	}
 }
 
-function QF_MyEnsureFolderIndex(tree, msgFolder)
+function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 {
 	// try to get the index of the folder in the tree
 	try {
@@ -888,10 +896,10 @@ function QF_MyEnsureFolderIndex(tree, msgFolder)
 		  index = tree.getIndexOfFolder(msgFolder);
 		else
 		  index = tree.builderView.getIndexOfResource(msgFolder);
-		QuickFolders.Util.logDebugOptional ("folders", "QF_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
+		QuickFolders.Util.logDebugOptional ("folders", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 		if (index == -1) {
-		  var parentIndex = QF_MyEnsureFolderIndex(tree, msgFolder.parent);
+		  var parentIndex = QuickFolders_MyEnsureFolderIndex(tree, msgFolder.parent);
 
 		  // if we couldn't find the folder, open the parent
 		  if(!tree.builderView.isContainerOpen(parentIndex)) {
@@ -907,13 +915,13 @@ function QF_MyEnsureFolderIndex(tree, msgFolder)
 		return index;
 	}
 	catch(e) {
-		QuickFolders.LocalErrorLogger("Exception in QF_MyEnsureFolderIndex: " + e);
+		QuickFolders.LocalErrorLogger("Exception in QuickFolders_MyEnsureFolderIndex: " + e);
 		return -1;
 	}
 
 }
 
-function QF_myRDF()
+function QuickFolders_myRDF()
 {
   if (QuickFolders.Util.Appver() > 2)
 	return Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Components.interfaces.nsIRDFService);
@@ -922,13 +930,13 @@ function QF_myRDF()
 }
 
 // replaces TB2 only helper method GetFolderTree()
-function QF_MyGetFolderTree() {
+function QuickFolders_MyGetFolderTree() {
   if (!QuickFolders.gFolderTree)
 	 QuickFolders.gFolderTree = document.getElementById("folderTree");
   return QuickFolders.gFolderTree;
 }
 
-function QF_MyChangeSelection(tree, newIndex)
+function QuickFolders_MyChangeSelection(tree, newIndex)
 {
   if(newIndex >= 0)
   {
@@ -938,14 +946,14 @@ function QF_MyChangeSelection(tree, newIndex)
   }
 }
 
-function QF_MySelectFolder(folderUri)
+function QuickFolders_MySelectFolder(folderUri)
 {
-	//during QF_MySelectFolder, disable the listener for tabmail "select"
-	QuickFolders.Util.logDebugOptional("folders", "QF_MySelectFolder: " + folderUri);
+	//during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
+	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
 
-	var folderTree = QF_MyGetFolderTree();
-	var folderResource = QF_myRDF().GetResource(folderUri);
+	var folderTree = QuickFolders_MyGetFolderTree();
+	var folderResource = QuickFolders_myRDF().GetResource(folderUri);
 	var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 	var folderIndex;
 
@@ -996,7 +1004,7 @@ function QF_MySelectFolder(folderUri)
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode!="smart") {
 					// toggle to smartfolder view and reinitalize folder variable!
 					theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-					folderResource = QF_myRDF().GetResource(folderUri);
+					folderResource = QuickFolders_myRDF().GetResource(folderUri);
 					msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 					parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
 				}
@@ -1056,14 +1064,14 @@ function QF_MySelectFolder(folderUri)
 				}
 			}
 
-		folderIndex = QF_MyEnsureFolderIndex(folderTree, msgFolder);
+		folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 		// AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
 		if (folderIndex<0) {
 			QuickFolders.Util.ensureNormalFolderView();
-			folderIndex = QF_MyEnsureFolderIndex(folderTree, msgFolder);
+			folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 			QuickFolders.tabSelectEnable=true;
 		}
-		QF_MyChangeSelection(folderTree, folderIndex);
+		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	}
 		else { // TB 2, Postbox, SeaMonkey
 	// before we can select a folder, we need to make sure it is "visible"
@@ -1074,17 +1082,17 @@ function QF_MySelectFolder(folderUri)
 			QuickFolders.Util.logDebugOptional("folders", "EnsureFolderIndex: " + msgFolder.URI);
 		}
 		else {
-			 folderIndex = QF_MyEnsureFolderIndex(folderTree, msgFolder);
+			 folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 		}
 		// AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
 		if (folderIndex<0) {
 			QuickFolders.Util.ensureNormalFolderView();
-			folderIndex = QF_MyEnsureFolderIndex(folderTree, msgFolder);
+			folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 			QuickFolders.tabSelectEnable=true;
 		}
 	  //else
 	  //  QuickFolders.tabSelectEnable=false;
-		QF_MyChangeSelection(folderTree, folderIndex);
+		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	  // select message in top pane for keyboard navigation
 	}
 	if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {

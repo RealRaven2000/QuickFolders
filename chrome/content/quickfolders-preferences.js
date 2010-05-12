@@ -92,7 +92,11 @@ QuickFolders.Preferences = {
 	} ,
 
 	isChangeFolderTreeViewEnabled: function() {
-	  return !this.service.getBoolPref('extensions.quickfolders.disableFolderSwitching')
+		return !this.service.getBoolPref('extensions.quickfolders.disableFolderSwitching');
+	} ,
+
+	isSortSubfolderMenus: function() {
+		return this.service.getBoolPref( 'extensions.quickfolders.enableMenuAlphaSorting');
 	} ,
 
 	getButtonFontSize: function() {
@@ -102,7 +106,7 @@ QuickFolders.Preferences = {
 	setLastSelectedCategory: function(category) {
 		// avoid error when no categories exist
 		if (category)
-		  this.service.setCharPref("extensions.quickfolders.lastSelectedCategory", category);
+			this.service.setCharPref("extensions.quickfolders.lastSelectedCategory", category);
 	} ,
 
 	getTextQuickfoldersLabel: function() {

@@ -1,5 +1,5 @@
 var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var QF_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+var QuickFolders_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 
 QuickFolders.ChangeOrder = {
     window: null,
@@ -8,7 +8,7 @@ QuickFolders.ChangeOrder = {
 
     getUIstring: function(id, defaultString) {
 	    var s;
-	    try{s=QF_bundle.GetStringFromName(id);}
+	    try{s=QuickFolders_bundle.GetStringFromName(id);}
 	    catch(e) { s=defaultString; }
 	    return s;
     },

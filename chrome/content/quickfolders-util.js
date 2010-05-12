@@ -1,8 +1,45 @@
 var QuickFolders_ConsoleService=null;
 
+// code moved from options.js
+// open the new content tab for displaying support info, see
+// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
+var QuickFolders_TabURIopener = {
+
+	openURLInTab: function (URL) {
+		try {
+			var sTabMode="";
+			var tabmail;
+			tabmail = document.getElementById("tabmail");
+			if (!tabmail) {
+				// Try opening new tabs in an existing 3pane window
+				var mail3PaneWindow = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
+										 .getService(QuickFolders_CI.nsIWindowMediator)
+										 .getMostRecentWindow("mail:3pane");
+				if (mail3PaneWindow) {
+					tabmail = mail3PaneWindow.document.getElementById("tabmail");
+					mail3PaneWindow.focus();
+				}
+			}
+			if (tabmail) {
+				sTabMode = (QuickFolders.Util.Application() == "Thunderbird" && QuickFolders.Util.Appver()>=3) ? "contentTab" : "3pane";
+				tabmail.openTab(sTabMode,
+				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
+			}
+			else
+				window.openDialog("chrome://messenger/content/", "_blank",
+								  "chrome,dialog=no,all", null,
+			  { tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", id:"QuickFolders_Weblink"} } );
+		}
+		catch(e) { return false; }
+		return true;
+	}
+};
+
+
+
 
 QuickFolders.Util = {
-	  // avoid these global objects
+	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 	mAppver: null, mAppName: null, mHost: null,
@@ -203,7 +240,7 @@ QuickFolders.Util = {
 		var step = 0;
 		try {
 			if (targetFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) {
-				alert(qfBundle.GetStringFromName("qfAlertDropFolderVirtual"));
+				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual"));
 				return;
 			}
 			var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
@@ -312,7 +349,192 @@ QuickFolders.Util = {
 		// this code only works if called from a child window of the Add-Ons Manager!!
 		//window.opener.gExtensionsView.builder.rebuild();
 		window.opener.gExtensionsViewController.doCommand('cmd_about');
+	},
+
+	// dedicated function for email clients which don't support tabs
+	// and for secured pages (donation page).
+	openLinkInBrowserForced: function(linkURI) {
+		var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+			.getService(Components.interfaces.nsIExternalProtocolService);
+		var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
+					getService(QuickFolders_CI.nsIIOService);
+		service.loadURI(ioservice.newURI(linkURI, null, null));
+	},
+
+
+	// moved from options.js
+	// use this to follow a href that did not trigger the browser to open (from a XUL file)
+	openLinkInBrowser: function(evt,linkURI) {
+		if (QuickFolders.Util.Appver()>=3 && QuickFolders.Util.Application()=='Thunderbird') {
+			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+				.getService(Components.interfaces.nsIExternalProtocolService);
+			var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
+						getService(QuickFolders_CI.nsIIOService);
+			service.loadURI(ioservice.newURI(linkURI, null, null));
+			if(null!=evt)
+				evt.stopPropagation();
+		}
+	},
+
+	// moved from options.js (then called
+	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
+		var ioservice,iuri,eps;
+		//if (QuickFolders.Util.Application()=="Postbox")
+		//	return; // label with href already follows the link!
+		if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird' || QuickFolders.Util.Application()=='SeaMonkey')
+		{
+			this.openLinkInBrowserForced(URL);
+			if(null!=evt) evt.stopPropagation();
+		}
+		else {
+			// also affect SeaMonkey?
+			if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
+				evt.preventDefault();
+				evt.stopPropagation();
+			}
+		}
+	},
+
+	getBundleString: function(id, defaultText) { // moved from local copies in various modules.
+		var theBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+		var qfBundle = theBundleService.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+		var s="";
+		try {s= qfBundle.GetStringFromName(id);}
+		catch(e) {
+			s= defaultText;
+			this.logToConsole ("Could not retrieve bundle string: " + id + "");
+		}
+		return s;
+	},
+
+
+
+};
+
+
+// https://developer.mozilla.org/en/Code_snippets/On_page_load#Running_code_on_an_extension%27s_first_run_or_after_an_extension%27s_update
+QuickFolders.Util.FirstRun =
+{
+	init: function() {
+		var prev = -1, firstrun = true;
+		var showFirsts = true, debugFirstRun = false;
+
+		var svc = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+		var ssPrefs = svc.getBranch("extensions.quickfolders.");
+
+		try { debugFirstRun = ssPrefs.getBoolPref("debug.firstrun"); } catch (e) { debugFirstRun = false; }
+
+		QuickFolders.Util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
+
+
+		// no need for this var to be in the global name-space
+		// NOR to share a potentiall common name. so, ssPrefs
+		var svc = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+		var ssPrefs = svc.getBranch("extensions.quickfolders.");
+
+		//gets the version number.
+		var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+			.getService(Components.interfaces.nsIExtensionManager);
+		var current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
+
+		try {
+			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getCharPref(version)");
+			try { prev = ssPrefs.getCharPref("version"); } catch (e) { prev = "?"; } ;
+
+			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getBoolPref(firstrun)");
+			try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch (e) { firstrun = true; }
+
+			// enablefirstruns=false - allows start pages to be turned off for partners
+			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getBoolPref(enablefirstruns)");
+			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
+
+
+			QuickFolders.Util.logDebugOptional ("firstrun","Settings retrieved:\nversion=" + prev
+					+ "\nfirstrun=" + firstrun
+					+ "\nshowfirstruns=" + showFirsts
+					+ "\ndebugFirstRun=" + debugFirstRun);
+
+		}
+		catch(e) {
+
+			alert("QuickFolders exception in QuickFolders-util.js: " + e.message
+				+ "\n\ncurrent: " + current
+				+ "\nprev: " + prev
+				+ "\nfirstrun: " + firstrun
+				+ "\nshowFirstRuns: " + showFirsts
+				+ "\ndebugFirstRun: " + debugFirstRun);
+
+		}
+		finally {
+
+			QuickFolders.Util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
+
+			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
+			var pre=0;
+			var pureVersion=current;
+			if (0<(pre=current.indexOf('pre'))) {
+				pureVersion = current.substring(0,pre);
+			}
+			QuickFolders.Util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
+			// change this depending on the branch
+			var versionPage = "http://quickfolders.mozdev.org/version.html#" + pureVersion;
+			QuickFolders.Util.logDebugOptional ("firstrun","finally - versionPage=" + versionPage);
+
+			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
+			if (firstrun){
+				QuickFolders.Util.logDebugOptional ("firstrun","set firstrun=false and store version " + current);
+				ssPrefs.setBoolPref("firstrun",false);
+				ssPrefs.setCharPref("version",current); // store current (simplified) version!
+
+				if (showFirsts) {
+					// Insert code for first run here
+					// on very first run, we go to the index page - welcome blablabla
+					QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
+					window.setTimeout(function() {
+						QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/index.html");
+					}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
+
+				}
+
+			}
+			else { // this section does not get loaded if its a first run.
+				if (prev!=current){
+					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
+					// upgrade case!!
+					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:");
+					alert(sUpgradeMessage + " " + current);
+					ssPrefs.setCharPref("version",current);
+
+					if (showFirsts) {
+						// version is different => upgrade (or conceivably downgrade)
+						QuickFolders.Util.logDebugOptional ("firstrun","open tab for version history + browser for donation" + current);
+						window.setTimeout(function(){
+							// display version history
+							QuickFolders.Util.openURL(null, versionPage);
+
+							// display donation page (can be disabled; I will send out method to all donators and anyone who asks me for it)
+							if ((QuickFolders.Preferences.getBoolPref("extensions.quickfolders.donateNoMore")))
+								QuickFolders.Util.logDebugOptional ("firstrun","donations link disabled by user");
+							else
+								QuickFolders.Util.openLinkInBrowserForced("http://quickfolders.mozdev.org/donate.html"); // show donation page!
+						}, 1500); //Firefox 2 fix - or else tab will get closed
+
+
+					}
+				}
+				else
+					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> just a reload of same version - prev=" + prev + ", current = " + current);
+			}
+			QuickFolders.Util.logDebugOptional ("firstrun","finally { } ends.");
+		} // end finally
+
+		//window.removeEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
 	}
 
+// // fire this on application launch, which includes open-link-in-new-window
+// window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
 
-}
+
+};

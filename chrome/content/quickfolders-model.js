@@ -1,5 +1,3 @@
-var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var QuickFolders_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 
 QuickFolders.Model = {
 	selectedFolders: [],
@@ -19,7 +17,7 @@ QuickFolders.Model = {
 		}
 		else {
 			try {
-			alert(QuickFolders_bundle.GetStringFromName("qfFolderAlreadyBookmarked"));
+				alert(QuickFolders.Util.getBundleString("qfFolderAlreadyBookmarked","The folder " + uri  + " is already bookmarked."));
 			} catch (e) { var msg="Folder already bookmarked: " + uri + "\nCan not display message - " + e; QuickFolders.Util.logToConsole (msg); alert(msg); }
 
 			// switch to category if it exists

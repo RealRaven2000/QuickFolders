@@ -73,14 +73,17 @@ QuickFolders.Model = {
 		QuickFolders.Interface.updateFolders(true);
 	} ,
 
-	setFolderColor: function(uri, tabColor) {
+	setFolderColor: function(uri, tabColor, withUpdate) {
 		var entry;
 		QuickFolders.Util.logDebug("Model.setFolderColor("+uri+") = " + tabColor);
 
 		if((entry = this.getFolderEntry(uri))) {
 			entry.tabColor = tabColor;
 
-			this.update();
+			if (withUpdate)
+				this.update();
+			else  // only store, no visual update.
+				QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
 		}
 	},
 

@@ -305,6 +305,10 @@ QuickFolders.Util = {
 		try { // AG added time logging for test
 			var end= new Date();
 			var endTime = end.getTime();
+			if (this.lastTime==0) {
+				this.lastTime = endTime;
+				return "[logTime init]"
+			}
 			var elapsed = new String(endTime - this.lastTime); // time in milliseconds
 			timePassed = '[' + elapsed + ' ms]	 ';
 			this.lastTime = endTime; // remember last time

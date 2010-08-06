@@ -30,10 +30,13 @@
 
 /****** LINKS	********/
 label.text-link[href] {
-	padding: 4px 2px 16px 5px !important;
+	padding: 4px 2px 4px 5px !important;
 	margin: 0px 2px;
+	vertical-align: middle !important;
+}
+
+label.text-link[href] > * {
 	text-decoration: underline !important;
-	vertical-align: middle !important;;
 }
 
 label.text-link[href]:hover {

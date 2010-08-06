@@ -37,10 +37,6 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
 <!ENTITY qf.label.homePage "Mehr Infos, Doku (Englisch) und Forum auf der neuen QuickFolders Homepage (mozdev.org)...">
 <!ENTITY qf.tab.support "Support">
-<!ENTITY qf.description.bugs "Bugs können in Bugzilla gemeldet werden:">
-<!ENTITY qf.label.bugLink "Einen Bug melden...">
-<!ENTITY qf.description.features "Neue Funktionen können im Forum vorgeschlagen werden:">
-<!ENTITY qf.label.featuresLink "Neues Features vorschlagen...">
 <!ENTITY qf.description.languages "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf Babelzilla:">
 <!ENTITY qf.label.languagesLink "Neue Übersetzung...">
 <!ENTITY qf.description.donate "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Menüs mit Unterverzeichnissen alphabetisch sortieren.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Diese Option nur aktivieren falls Ihr Mail Programm die Unterverzeichnisse selbst nicht korrekt sortiert.">
 <!ENTITY qf.options.versionnumber.tooltip "Rechts-klick um die Versionsgeschichte zu sehen.">
+<!ENTITY qf.description.bugzilla "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte Bugzilla verwenden.">
+<!ENTITY qf.label.bugzilla "Bug melden oder Neues Feature vorschlagen mit Bugzilla...">
+<!ENTITY qf.description.versionhistory "Detailierte Versionsgeschichte bei mozdev.org">
+<!ENTITY qf.label.versionhistory "Versionsgeschichte lesen...">

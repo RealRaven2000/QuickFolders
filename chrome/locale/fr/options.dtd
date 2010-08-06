@@ -37,10 +37,6 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Lors du changement d'onglet, rendre la liste des messages active">
 <!ENTITY qf.label.homePage "Informations détaillées sur la nouvelle page Web sur Mozdev.org…">
 <!ENTITY qf.tab.support "Support">
-<!ENTITY qf.description.bugs "Vous pouvez signaler des bogues en utilisant bugzilla :">
-<!ENTITY qf.label.bugLink "Signaler un bogue…">
-<!ENTITY qf.description.features "Demande de nouvelles fonctionnalités ici :">
-<!ENTITY qf.label.featuresLink "Demander une nouvelle fonctionnalité…">
 <!ENTITY qf.description.languages "QuickFolders est traduisible - vous pouvez proposer votre aide en ajoutant votre langue sur BabelZilla :">
 <!ENTITY qf.label.languagesLink "Ajouter une traduction…">
 <!ENTITY qf.description.donate "Si vous aimez QuickFolders autant que nous et que vous souhaitez soutenir son développement, vous pouvez faire un don pour faire évoluer QuickFolders.">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Forcer l'ordre alphabétique des menus avec sous-dossiers.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "N'utilisez cette option que si votre client de messagerie ne trie pas correctement les sous-dossiers.">
 <!ENTITY qf.options.versionnumber.tooltip "Clic-droit pour l'historique des versions.">
+<!ENTITY qf.description.bugzilla "Veuillez utiliser Bugzilla pour toute demande de fonctionnalité et de signalement de bogues officiels">
+<!ENTITY qf.label.bugzilla "Signaler un bogue / demander une nouvelle fonctionnalité avec Bugzilla…">
+<!ENTITY qf.description.versionhistory "Historique de version détaillé sur mozdev.org">
+<!ENTITY qf.label.versionhistory "Lire l'historique de version…">

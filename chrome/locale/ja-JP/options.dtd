@@ -37,10 +37,6 @@
 <!ENTITY qf.checkbox.autoFocusPreview "タブの変更時にメッセージリストをフォーカスする">
 <!ENTITY qf.label.homePage "詳しい情報は Mozdev.org の QuickFolders ホームページにあります。">
 <!ENTITY qf.tab.support "サポート">
-<!ENTITY qf.description.bugs "bugzilla でバグを報告してください:">
-<!ENTITY qf.label.bugLink "バグを報告する...">
-<!ENTITY qf.description.features "新しい機能の提案はこちら:">
-<!ENTITY qf.label.featuresLink "新しい機能を提案する...">
 <!ENTITY qf.description.languages "QuickFolders は他の言語にも対応しています。あなたの言語を追加するには Babelzilla で翻訳を追加してください:">
 <!ENTITY qf.label.languagesLink "翻訳を追加する...">
 <!ENTITY qf.description.donate "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "サブフォルダメニューをアルファベット順に並べ替える">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "このオプションはサブフォルダが正しく並べ替えられない場合に使用してください。">
 <!ENTITY qf.options.versionnumber.tooltip "右クリックでバージョン履歴を表示します。">
+<!ENTITY qf.description.bugzilla "すべての要望とバグ報告は Bugzilla へお願いします">
+<!ENTITY qf.label.bugzilla "Bugzilla でバグ報告または新しい機能を要望する...">
+<!ENTITY qf.description.versionhistory "変更履歴 (mozdev.org)">
+<!ENTITY qf.label.versionhistory "変更履歴を見る...">

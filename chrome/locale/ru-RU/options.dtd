@@ -37,13 +37,9 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Переводить фокус на список сообщений после смены закладок">
 <!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org...">
 <!ENTITY qf.tab.support "Поддержка">
-<!ENTITY qf.description.bugs "Сообщить об ошибке с помощью bugzilla:">
-<!ENTITY qf.label.bugLink "Сообщить об ошибке...">
-<!ENTITY qf.description.features "Предложить новую функцию:">
-<!ENTITY qf.label.featuresLink "Новая возможность...">
 <!ENTITY qf.description.languages "Вы можете помочь, добавив перевод на свой язык на Babelzilla:">
 <!ENTITY qf.label.languagesLink "Добавить перевод...">
-<!ENTITY qf.description.donate "Если QuickFolder Вам нравится также, как и нам, Вы можете поддержать дальнейшее развитие денежным пожертвованием.">
+<!ENTITY qf.description.donate "Если QuickFolders Вам нравится также, как и нам, Вы можете поддержать деньгами дальнейшее развитие.">
 <!ENTITY qf.label.donateLink "Поддержать...">
 <!ENTITY qf.description.contactMe "Мой личный адрес axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Написать мне (на английском или немецком)">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Заставлять сортировать папки в папках по алфавиту.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Используйте только если нет правильной сортировки папок в папках.">
 <!ENTITY qf.options.versionnumber.tooltip "Нажмите правой кнопкой мышки для получения истории изменений.">
+<!ENTITY qf.description.bugzilla "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях">
+<!ENTITY qf.label.bugzilla "Сообщить об ошибке/Запрос новых возможностей на Bugzilla...">
+<!ENTITY qf.description.versionhistory "Детальная история изменений на mozdev.org">
+<!ENTITY qf.label.versionhistory "Смотреть историю изменений...">

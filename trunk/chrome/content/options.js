@@ -27,8 +27,6 @@ var QuickFoldersOptions = {
 	accept: function() {
 		if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly")
 			return; // do not store any changes!
-		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 		// persist colors
 		try {
 			QuickFolders.Preferences.setUserStyle("ActiveTab","background-color",
@@ -59,6 +57,9 @@ var QuickFoldersOptions = {
 		catch(e) {
 			alert("Error in QuickFolders:\n" + e);
 		};
+		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+		observerService.notifyObservers(null, "quickfolders-options-saved", null);
+		
 	} ,
 	load : function() {
 		var version=QuickFolders_getMyVersion();

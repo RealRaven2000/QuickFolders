@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="options.css" title="qfOptionsStyles" type="text/css"?>
+<?xml-stylesheet href="quickfolders-options.css" title="qfOptionsStyles" type="text/css"?>
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
@@ -45,7 +45,7 @@
 
 		<tabpanels >
 			<tabpanel orient="vertical" id="QuickFolders-Options-general"
-	   label="&qf.tab.general;" flex="10">
+	   label="&qf.tab.general;" flex="10" style="position:relative;">
 
 				<preferences>
 					<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
@@ -142,8 +142,7 @@
 				/>
 
 
-				<spacer flex="1" />
-			<hbox class="quickhelp-dbg">
+			<hbox class="quickhelp-dbg" style="position:absolute; bottom:5px;">
 				<checkbox label="&qf.checkbox.debug;"
 					preference="QuickFolders-Preferences-Debug"
 					instantApply="true"
@@ -344,12 +343,12 @@
 			  <description class="quickhelp-desc" oncontextmenu="QuickFoldersOptions.addConfigFeature('extensions.quickfolders.donateNoMore', true, 'Stop Displaying Donation Link?');return false;">&qf.description.donate;</description>
 			  <label href="http://quickfolders.mozdev.org/donate.html" class="text-link" id="L1" tooltiptext="quickfolders.mozdev.org/donate.html"
 					 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')" >&qf.label.donateLink;</label>
-			  <description class="quickhelp-desc">&qf.description.bugs;</description>
+			  <description class="quickhelp-desc">&qf.description.bugzilla;</description>
 			  <label href="http://quickfolders.mozdev.org/bugs.html" class="text-link" id="L2" tooltiptext="quickfolders.mozdev.org/bugs.html"
-					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')" >&qf.label.bugLink;</label>
-			  <description class="quickhelp-desc">&qf.description.features;</description>
-			  <label href="http://quickfolders.mozdev.org/drupal/forum" class="text-link" id="L3" tooltiptext="quickfolders.mozdev.org/drupal/forum"
-					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/drupal/forum')" >&qf.label.featuresLink;</label>
+					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')" >&qf.label.bugzilla;</label>
+			  <description class="quickhelp-desc">&qf.description.versionhistory;</description>
+			  <label href="http://quickfolders.mozdev.org/drupal/forum" class="text-link" id="L3" tooltiptext="http://quickfolders.mozdev.org/version.html"
+					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/version.html')" >&qf.label.versionhistory;</label>
 			  <description class="quickhelp-desc">&qf.description.languages;</description>
 			  <label href="http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099"
 			  class="text-link" id="L4" tooltiptext="www.babelzilla.org?extension=5099"

@@ -160,7 +160,7 @@
 	 AG added subfolders in popup menus - configurable
 			   whole / striped tab option and backgrounds
 	 fixed slowdown of operations that change the number of Total / Unread emails because QF was updated every time
-			this is now donw asynchroneously with a 1000ms timer.
+			this is now done asynchroneously with a 1000ms timer.
 
 	23/09/2009 Release 1.4
 	  AG added scrollbars and animation to "change order of bookmarks" dialog
@@ -188,15 +188,15 @@
 	  improved error handling in Drag-Drop (WIP for some Linux users)
 
 	09/11/2009 Release 1.6.3
-	  AG fixed bug 21919 removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
+	  AG fixed [Bug 21919] removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
 
 	09/11/2009 Release 1.6.4
-	  AG fixed bug 21960 icon for inbox not visible in postbox
+	  AG fixed [Bug 21960] icon for inbox not visible in postbox
 	  AG fixed disabled dropping emails to virtual (search) folders
 
 	15/12/2009 Release 1.7
 	  AG fixed drag & drop layout issues for the new versions of TB3, SeaMonkey and Postbox 1.1
-	  AG bug 22121 fixed?
+	  AG [Bug 22121] fixed?
 	  AG fixed bug 22067 (TB3 did not display colors in tab colors submenu)
 
 	31/12/2009 Release 1.7.1
@@ -219,9 +219,9 @@
 	  AG added code to fix changed Application Name (Mozilla-Thunderbird) which makes branching code fail in Linux.
 
 	30/01/2010 Release 1.8.5
-	  AG fixed: Bug 22295 (selecting a QuickFolder closes single Message Tab) => now opens a folder view tab
-	  AG fixed: Bug 22144 - Highlighting not updated when switching Tabs in TB3 - now also selects Category if necessary!
-	  AG fixed: Bug 22316 - added Transparency options for toolbar (Personas friendly) and tabs (translucently colored, use white for almost complete transparency)
+	  AG fixed: [Bug 22295] (selecting a QuickFolder closes single Message Tab) => now opens a folder view tab
+	  AG fixed: [Bug 22144] - Highlighting not updated when switching Tabs in TB3 - now also selects Category if necessary!
+	  AG fixed: [Bug 22316] - added Transparency options for toolbar (Personas friendly) and tabs (translucently colored, use white for almost complete transparency)
 	  AG fixed: Broken Dutch locale leading to crashes for the users of this language
 	  AG improved: toggling between flat style and native style tabs
 	  AG improved: following external support links in TB3 (done) and SeaMonkey (WIP)
@@ -260,18 +260,34 @@
 
 
 	12/05/2010 - 1.9.1
-	  AG: Fixed Bug 22585 - (1.8.9) Smart Folders view erratically switched to standard folder if clicked folder is in a collapsed tree branch
-	  AG: Fixed Bug 21054 - (1.8.9) Enabled scrolling long menus while dragging by using code from Robert Gibson's "Scroll Menus On Drag" extension https://addons.mozilla.org/en-US/firefox/addon/1411
-	  AG: Fixed Bug 21317 - force alphabetical sorting of subfolder menus. Note: Does only work with some Umlauts / Diacritics.
+	  AG: Fixed [Bug 22585] - (1.8.9) Smart Folders view erratically switched to standard folder if clicked folder is in a collapsed tree branch
+	  AG: Fixed [Bug 21054] - (1.8.9) Enabled scrolling long menus while dragging by using code from Robert Gibson's "Scroll Menus On Drag" extension https://addons.mozilla.org/en-US/firefox/addon/1411
+	  AG: Fixed [Bug 21317] - force alphabetical sorting of subfolder menus. Note: Does only work with some Umlauts / Diacritics.
 	  AG: Added code from Pavel for displaying subfolder counts
 	  AG: Added code for customizing the "QuickFolders" label (Pavel)
-	  AG: Fixed Bug 22695 - now folders can be moved within the folder tree without QuickFolders losing track of them
+	  AG: Fixed [Bug 22695] - now folders can be moved within the folder tree without QuickFolders losing track of them
 	  AG: Added option for alphabetically sorting subfolders in menus
 	  AG: Added firstrun functionality
 	  AG: Added locale sr by DakSrbija
 	  AG: various tooltips in options dialog
 	  AG: tightened up namespace pollution issues
 	  AG: Added version history jump to options dialog (right-click from version number)
+
+	11/07/2010 - 1.9.3
+	  AG: fixed [Bug 22901] - Position of subfolder within submenu should be always on top, even with alphabetical sorting enabled.
+	  AG: simplified dragging & selection of parent folder nodes in expanded sub folders.
+
+	WIP - 1.9.5
+	  AG: improved spacing around Category Dropdown
+	  AG: Refactored code from main module into Interface.collapseParentMenus
+	  AG: [Bug 22902] Added ensureStyleSheetLoaded method for testing
+	  AG: Renamed style sheet files and title to avoid referencing clashes
+	  AG: Fixed [Bug 23091] this caused parent subfolder to be opened instead of subfolder (if not visible in folder tree)
+	  AG: Added deep scanning of folder counts and display for all sub menu items. menus with unread nested subfolders also bold.
+	  AG: fixed missing translation in french options screen
+	  AG: Fixing [Bug 23078] the (black) font on the full colored pimped tabs was unreadeable. Hardcoded to White for dark backgrounds.
+	      (only when using filled style) this overrides the user set font color
+
 
   KNOWN ISSUES
   ============
@@ -282,7 +298,6 @@
 
   OPEN BUGS
   ============
-	Bug 22122	External links in QF settings to not work anymore - only TB 3.0.1 - likely a Mozilla Bug
 
 	A complete list of bugs can be viewed at http://quickfolders.mozdev.org/bugs.html
 
@@ -357,6 +372,9 @@ var QuickFolders = {
 		var em = Components.classes["@mozilla.org/extensions/manager;1"]
 		   .getService(Components.interfaces.nsIExtensionManager);
 		var myver=em.getItemForID("quickfolders@curious.be").version;
+
+
+
 
 		var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
 		var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
@@ -787,62 +805,11 @@ var QuickFolders = {
 					}
 					catch(e) {QuickFolders.LocalErrorLogger("Exception in onDrop - QuickFolders.Util.moveMessages:" + e); };
 					// close any top level menu items after message drop!
-					//hide popups menus!
+
+					//hide popup's menus!
 					QuickFolders.Util.logDebug ("buttonDragObserver.onDrop " + DropTarget.tagName+ '  Target:' + targetFolder.name );
-					var p=DropTarget;
-					QuickFolders.Util.logDebug ("Close menus for node=" + p.nodeName
-											 + "\nlabel=" + p.getAttribute('label')
-											 + "\nparent tag=" + p.parentNode.tagName);
-					if (p.tagName=='menuitem') // drop to a menu item
-					{
-						// close all containing menus
-						// hidepopup is broken in linkux during OnDrag action!!
-						// bug only confirmed on TB 2.0!
-						if (QuickFolders.Util.HostSystem()=='linux' && QuickFolders.Util.Appver()<3) {
-							var lastmenu=p;
 
-							// in linux, toolbarbutton is box - let's navigate up to the toolbar instead
-							while (null!=p.parentNode && p.parentNode.tagName!='toolbar') {
-								if(p.tagName=='menupopup') lastmenu=p;
-								p=p.parentNode;
-							}
-
-						  if (lastmenu.tagName=='menupopup') {
-							QuickFolders_globalHidePopupId = lastmenu.id;
-							var popOne = document.getElementById(QuickFolders_globalHidePopupId);
-							try {
-								//popOne.parentNode.removeChild(popOne); //was popup.hidePopup()
-								//QuickFolders_globalHidePopupId="";
-							} catch (e) { alert (e); }
-						  }
-						}
-						else {	// not linux
-						   while (null!=p.parentNode && p.tagName!='toolbar') {
-							 p=p.parentNode;
-							 QuickFolders.Util.logDebug ("parenttag=" + p.tagName);
-							 QuickFolders.Util.logDebug ("node= " + p.nodeName);
-							 if (p.tagName=='menupopup') {
-								QuickFolders.Util.logDebug ("Try hide parent Popup " + p.getAttribute('label'));
-								p.hidePopup();
-							 }
-						   }
-						} // else not linux
-				   }
-
-				   else if (p.tagName=='toolbarbutton') {// drop to a button
-					 QuickFolders_globalHidePopupId='moveTo_'+DropTarget.folder.URI;
-					 QuickFolders.Util.logDebug ("set QuickFolders_globalHidePopupId to " + QuickFolders_globalHidePopupId);
-
-						var popup = document.getElementById(QuickFolders_globalHidePopupId);
-						try {
-							popup.parentNode.removeChild(popup); //was popup.hidePopup()
-							QuickFolders_globalHidePopupId="";
-						}
-						catch(e) {
-							QuickFolders.Util.logDebug ("Could not remove popup of " + QuickFolders_globalHidePopupId );
-						}
-				   }
-
+					QuickFolders.Interface.collapseParentMenus(DropTarget);
 
 					break;
 				case "text/unicode":  // dropping another tab on this tab inserts it before

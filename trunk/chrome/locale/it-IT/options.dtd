@@ -1,4 +1,4 @@
-﻿<!ENTITY qf.prefwindow.quickfolders.options "Opzioni QuickFolders">
+<!ENTITY qf.prefwindow.quickfolders.options "Opzioni QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Generali">
 <!ENTITY qf.tab.layout "Aspetto schede">
@@ -37,16 +37,12 @@
 <!ENTITY qf.checkbox.autoFocusPreview "La selezione delle schede 'quickfolder' porta in primo piano l'elenco dei messaggi">
 <!ENTITY qf.label.homePage "Clicca qui per andare al sito web di QuickFolders (ospitato da Mozdev.org)">
 <!ENTITY qf.tab.support "Supporto">
-<!ENTITY qf.description.bugs "E' possibile segnalare bug usando bugzilla:">
-<!ENTITY qf.label.bugLink "Segnala un bug...">
-<!ENTITY qf.description.features "Cliccare qui per richiedere nuove caratteristiche:">
-<!ENTITY qf.label.featuresLink "Richiedi una nuova caratteristica...">
-<!ENTITY qf.description.languages "QuickFolders supporta le localizzazioni. - È possibile aiutarci aggiungendo sul sito di Babelzilla la traduzione nella vostra lingua:">
+<!ENTITY qf.description.languages "QuickFolders supporta le localizzazioni - è possibile aiutarci aggiungendo sul sito di Babelzilla la traduzione nella tua lingua:">
 <!ENTITY qf.label.languagesLink "Aggiungi una traduzione...">
-<!ENTITY qf.description.donate "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo.">
+<!ENTITY qf.description.donate "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo">
 <!ENTITY qf.label.donateLink "Visita la pagina delle donazioni...">
-<!ENTITY qf.description.contactMe "Si può anche contattarmi personalmente all'email axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Per contattarmi (in lingua inglese o tedesca)...">
+<!ENTITY qf.description.contactMe "Puoi anche contattarmi personalmente all'email axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Contattami (in lingua inglese o tedesca)...">
 <!ENTITY qf.checkbox.showIcons "Visualizza le icone (Posta in arrivo, Posta inviata, Indesiderata, Cestino, Bozze, Archiviata, Modelli)">
 <!ENTITY qf.checkbox.showSubfolders "Espande le sottocartelle nel menu a popup">
 <!ENTITY qf.menu.tabColor "Nessun colore!">
@@ -56,7 +52,7 @@
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(completamente colorata)">
 <!ENTITY qf.checkbox.showNativeTabStyle "Stile nativo schede - è lo stesso usato dal sistema operativo, senza le sottostanti opzioni di colore">
 <!ENTITY qf.checkbox.showFlatStyle "Stile personalizzato schede (flat style) - raccomandato perché supporta tutte le sottostanti opzioni di colore">
-<!ENTITY qf.description.linkNote "Per una dettagliata guida utente, per trovare suggerimenti e per le FAQ visitare la Home Page di QuickFolders:">
+<!ENTITY qf.description.linkNote "Per una dettagliata guida utente, per trovare suggerimenti e per le FAQ visita la Home Page di QuickFolders:">
 <!ENTITY qf.checkbox.transparent "Trasparente">
 <!ENTITY qf.checkbox.shadows "Ombreggiatura">
 <!ENTITY qf.checkbox.debug.tooltip "Cliccare il pulsante destro del mouse su questa casella di selezione (checkbox) per accedere ad opzioni avanzate di debug">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Forza l'ordinamento alfabetico dei menu con sottocartelle">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Usare questa opzione solo se il programma di posta elettronica non ordina correttamente le sottocartelle">
 <!ENTITY qf.options.versionnumber.tooltip "Per visualizzare la cronologia delle versioni, cliccare il pulsante destro del mouse">
+<!ENTITY qf.description.bugzilla "Usa Bugzilla per segnalare eventuali bug e/o per richiedere l'aggiunta di nuove caratteristiche">
+<!ENTITY qf.label.bugzilla "Segnala un bug / richiedi una nuova caratteristica tramite Bugzilla...">
+<!ENTITY qf.description.versionhistory "Cronologia dettagliata delle versioni di QuickFolders nel sito mozdev.org">
+<!ENTITY qf.label.versionhistory "Visualizza la cronologia delle versioni...">

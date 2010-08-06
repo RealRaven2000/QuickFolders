@@ -37,10 +37,6 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Focus berichtenlijst bij wisselen van tabblad">
 <!ENTITY qf.label.homePage "Klik hier voor gedetailleerde informatie op de nieuwe QuickFolders homepage (Mozdev.org).">
 <!ENTITY qf.tab.support "Ondersteuning">
-<!ENTITY qf.description.bugs "U kunt problemen rapporteren via bugzilla:">
-<!ENTITY qf.label.bugLink "Probleem rapporteren...">
-<!ENTITY qf.description.features "Vraag nieuwe features hier aan:">
-<!ENTITY qf.label.featuresLink "Nieuwe feature aanvragen...">
 <!ENTITY qf.description.languages "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op BabelZilla:">
 <!ENTITY qf.label.languagesLink "Vertaling toevoegen...">
 <!ENTITY qf.description.donate "Als u QuickFolders even leuk vindt als wij en de ontwikkeling ervan wilt ondersteunen, kunt u wat geld doneren.">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Forceer alphabetische sortering van menu's met subfolders.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Gebruik deze optie alleen als uw mail client de subfolders niet correct sorteert">
 <!ENTITY qf.options.versionnumber.tooltip "Rechtsklikken voor versie geschiedenis.">
+<!ENTITY qf.description.bugzilla "Gebruik a.u.b. Bugzilla voor alle officiële feature aanvragen en bug rapporten">
+<!ENTITY qf.label.bugzilla "Rapporteer een bug / Vraag een feature aan met Bugzilla...">
+<!ENTITY qf.description.versionhistory "Gedetailleerde versie historiek op mozdev.org">
+<!ENTITY qf.label.versionhistory "Lees versies historiek...">

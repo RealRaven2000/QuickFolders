@@ -37,10 +37,6 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Foco na lista de mensagens ao mudar de aba">
 <!ENTITY qf.label.homePage "Informações detalhadas na nova página do QuickFolders no Mozdev.org...">
 <!ENTITY qf.tab.support "Suporte">
-<!ENTITY qf.description.bugs "Você pode reportar erros usando o bugzilla:">
-<!ENTITY qf.label.bugLink "Reportar um bug...">
-<!ENTITY qf.description.features "Solicite novos recursos aqui:">
-<!ENTITY qf.label.featuresLink "Solicitar um novo recurso...">
 <!ENTITY qf.description.languages "O QuickFolders suporta localizações. Você pode ajudar adicionando uma tradução para seu idioma no Babelzilla:">
 <!ENTITY qf.label.languagesLink "Adicionar uma tradução...">
 <!ENTITY qf.description.donate "Se você adora o QuickFolders tanto quanto nós e gostaria de ajudar seu desenvolvimento, pode doar algum dinheiro para incentivar a evolução do QuickFolders.">
@@ -64,3 +60,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Forçar classificação alfabética de menus com subpastas.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Só use essa opção se o seu cliente de email não classificar corretamente as subpastas.">
 <!ENTITY qf.options.versionnumber.tooltip "Botão direito do mouse para o histórico de versões.">
+<!ENTITY qf.description.bugzilla "Favor usar o Bugzilla para todas as solicitações oficiais: pedidos de novos recursos e relatórios de bug">
+<!ENTITY qf.label.bugzilla "Relatar um bug / Pedir uma nova funcionalidade com o Bugzilla...">
+<!ENTITY qf.description.versionhistory "Histórico de versões detalhado no mozdev.org">
+<!ENTITY qf.label.versionhistory "Leia o histórico de versões...">

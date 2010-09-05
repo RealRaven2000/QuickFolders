@@ -44,6 +44,15 @@ label.text-link[href]:hover {
 	background-color: blue !important;
 }
 
+button.debug {
+	-moz-border-radius: 2px !important;
+	-moz-appearance: none !important;
+	background-color: #B00;
+	color: #FFF;
+	border: 1px solid gray;
+	padding:2px 5px;
+}
+
 label.text-link[href]:focus {
 	color: #FFF !important;
 	background-color: #06396F !important;

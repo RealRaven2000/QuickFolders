@@ -1,3 +1,28 @@
+/* BEGIN LICENSE BLOCK
+
+for detail, please refer to license.txt in the root folder of this extension
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+If you use large portions of the code please attribute to the authors
+(Axel Grude, Alexander Malfait)
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You can download a copy of the GNU General Public License at
+http://www.gnu.org/licenses/gpl-3.0.txt or get a free printed
+copy by writing to:
+  Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
+END LICENSE BLOCK */
+
 
 /*===============
   Project History
@@ -277,17 +302,35 @@
 	  AG: fixed [Bug 22901] - Position of subfolder within submenu should be always on top, even with alphabetical sorting enabled.
 	  AG: simplified dragging & selection of parent folder nodes in expanded sub folders.
 
-	WIP - 1.9.5
+	06/08/2010 - 1.9.5
 	  AG: improved spacing around Category Dropdown
 	  AG: Refactored code from main module into Interface.collapseParentMenus
 	  AG: [Bug 22902] Added ensureStyleSheetLoaded method for testing
 	  AG: Renamed style sheet files and title to avoid referencing clashes
 	  AG: Fixed [Bug 23091] this caused parent subfolder to be opened instead of subfolder (if not visible in folder tree)
 	  AG: Added deep scanning of folder counts and display for all sub menu items. menus with unread nested subfolders also bold.
-	  AG: fixed missing translation in french options screen
-	  AG: Fixing [Bug 23078] the (black) font on the full colored pimped tabs was unreadeable. Hardcoded to White for dark backgrounds.
-	      (only when using filled style) this overrides the user set font color
+	  AG: Fixed missing translation in french options screen
+	  AG: Fixed [Bug 23078] the (black) font on the filled style pimped tabs was unreadeable. Font color hardcoded to white for dark backgrounds
+	      - this overrides the user set font color, by design.
 
+	14/08/2010 - 1.9.5.3
+	  AG: Fixed [Bug 23118] Version 1.9.5 missing Tabs in TB2 (due to using an undefined trim function)
+
+	16/08/2010 - 1.9.7
+	  AG: Fixed [Bug 23121] Using Japanese characters in tab, "moji-bake" Problem after restart
+	  AG: Fixed [Bug 23129] popup menu points with subfolders ignored click (since 1.9.3)
+	  AG: Fixed [Bug 23077] Active/Hovered/Drag colors do not override filled style
+
+	19/08/2010 - 1.9.7.1
+	  AG: Fixed [Bug 23147] Dragging emails does not open subfolder popups
+
+
+	20/08/2010 - 1.9.7.3
+	  AG: Fixed [Bug 23091] TB only - caused parent subfolder to be opened instead of subfolder!
+
+	04/09/2010 - 1.9.8 pre
+	  AG: Added drag and drop from folder submenu to add new QF tab
+	  AG: Revised quicktab context menu layout and added folder commands (Mark read, compact, rename, delete, xpunge)
 
   KNOWN ISSUES
   ============
@@ -319,11 +362,30 @@
 
 //QuickFolders.gFolderTree = null;
 
+const QuickFolders_CC = Components.classes;
+const QuickFolders_CI = Components.interfaces;
+
 var QuickFolders_globalHidePopupId="";
 var QuickFolders_globalLastChildPopup=null;
+var QuickFolders_globalWin=Components.classes["@mozilla.org/appshell/window-mediator;1"]
+				.getService(QuickFolders_CI.nsIWindowMediator)
+				.getMostRecentWindow("mail:3pane");
+var QuickFolders_globalDoc=document;
+
+var QuickFolders_getWindow = function() {
+	return QuickFolders_globalWin;
+}
+
+var QuickFolders_getDocument= function() {
+	return QuickFolders_globalDoc;
+}
+
+
 
 
 var QuickFolders = {
+	doc: null,
+	win: null,
 	gFolderTree: null,
 	keyListen: EventListener,
 	loadListen: false,
@@ -332,15 +394,40 @@ var QuickFolders = {
 	currentURI: '',
 	lastTreeViewMode: null,
 	initDone: false,
+
+	// helper function to do init from options dialog!
+	initDocAndWindow: function() {
+		var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+				.getService(QuickFolders_CI.nsIWindowMediator)
+				.getMostRecentWindow("mail:3pane");
+
+		if (mail3PaneWindow) {
+			QuickFolders.doc = mail3PaneWindow.document;
+			QuickFolders.win = mail3PaneWindow;
+		}
+		else {
+			QuickFolders.doc = document;
+			QuickFolders.win = window;
+		}
+		QuickFolders_globalWin=QuickFolders.win;
+		QuickFolders_globalDoc=QuickFolders.doc;
+
+		QuickFolders.Util.logDebug ("initDocAndWindow - QuickFolders.doc = " + QuickFolders.doc + "  this.doc = " + this.doc);
+
+
+	},
+
 	initDelayed: function() {
 	   var sWinLocation;
 	   if (this.initDone) return;
+	   QuickFolders.initDocAndWindow();
 	   var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.initDelay');
 	   if (!nDelay>0) nDelay = 750;
+
 	   sWinLocation = new String(window.location);
 
 	   if(QuickFolders.isCorrectWindow()) {
-			QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + window.document.title + "\nwait " + nDelay + " msec until init()...");
+			QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 			//var thefunc='QuickFolders.init()';
 			//setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
@@ -349,11 +436,11 @@ var QuickFolders = {
 		}
 		else {
 		  try {
-			document.getElementById('QuickFolders-Toolbar').style.display = 'none';
+			this.doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
 			QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): "
-					+ document.getElementById('messengerWindow').getAttribute('windowtype')
-					+ "\ndocument.title: " + window.document.title )
+					+ this.doc.getElementById('messengerWindow').getAttribute('windowtype')
+					+ "\ndocument.title: " + document.title )
 		  }
 		  catch(e) { ;} // QuickFolders.LocalErrorLogger("Exception in initDelayed: " + e) -- always thrown when options dialog is up!
 		}
@@ -361,7 +448,7 @@ var QuickFolders = {
 
 	isCorrectWindow: function() {
 		try {
-		  return document.getElementById('messengerWindow').getAttribute('windowtype') == "mail:3pane";
+			return document.getElementById('messengerWindow').getAttribute('windowtype') == "mail:3pane";
 		}
 		catch(e) { return false; }
 	} ,
@@ -375,23 +462,22 @@ var QuickFolders = {
 
 
 
-
 		var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
 		var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
 
 		QuickFolders.LocalErrorLogger("QF.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 		QuickFolders.addTabEventListener();
 
-		document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
+		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
 		if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
 			if(!QuickFolders.Interface.boundKeyListener) {
-				window.addEventListener("keypress", this.keyListen = function(e) {
+				this.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
 				}, true);
-				window.addEventListener("keyup", function(e) {
+				this.win.addEventListener("keyup", function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'up');
 				}, true);
 
@@ -433,6 +519,9 @@ var QuickFolders = {
 
 	// handler for dropping folder shortcuts
 	toolbarDragObserver: {
+		win: QuickFolders_getWindow(),
+		doc: QuickFolders_getDocument(),
+
 		getSupportedFlavours : function () {
 			var flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-folder"); // folder tree items
@@ -460,10 +549,22 @@ var QuickFolders = {
 
 		onDrop: function (evt,dropData,dragSession) {
 			QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
+			var msgFolder, sourceUri;
+
+			addFolder = function (src) {
+					if(src) {
+						var cat=QuickFolders.Interface.getCurrentlySelectedCategoryName();
+						if (QuickFolders.Model.addFolder(src, cat)) {
+							var s = "Added shortcut " + src + " to QuickFolders"
+							if (cat!=null) s = s + " Category " + cat;
+							try{QuickFolders_getWindow().MsgStatusFeedback.showStatusString(s);} catch (e) {};
+						}
+					}
+			};
+
 			switch (dropData.flavour.contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
-					var msgFolder, sourceUri;
 					switch(QuickFolders.Util.Application()) {
 						case 'Thunderbird':
 							if (QuickFolders.Util.Appver()<3)
@@ -480,24 +581,21 @@ var QuickFolders = {
 							sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
 							break;
 					}
-
-					if(sourceUri) {
-						var cat=QuickFolders.Interface.getCurrentlySelectedCategoryName();
-						if (QuickFolders.Model.addFolder(sourceUri, cat)) {
-							var s = "Added shortcut " + sourceUri + " to QuickFolders"
-							if (cat!=null) s = s + " Category " + cat;
-							try{window.MsgStatusFeedback.showStatusString(s);} catch (e) {};
-						}
-					}
+					addFolder(sourceUri);
 
 					break;
-				case "text/unicode":  // plain text: button was moved
+				case "text/unicode":  // plain text: button was moved OR: a menuitem was dropped!!
+					var sourceUri = dropData.data;
 					var myDragPos;
+					var target=evt.currentTarget
 					if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
 						myDragPos="LeftMost"
 					else
 						myDragPos="RightMost"
-					QuickFolders.ChangeOrder.insertAtPosition(dropData.data, "", myDragPos);
+					if(!QuickFolders.ChangeOrder.insertAtPosition(sourceUri, "", myDragPos)) {
+						//a menu item for a tab that does not exist was dropped!
+						addFolder(sourceUri);
+					}
 					break;
 			}
 		}
@@ -505,6 +603,9 @@ var QuickFolders = {
 
 	// recursive popups have to react to drag mails!
 	popupDragObserver: {
+		win: QuickFolders_getWindow(),
+		doc: QuickFolders_getDocument(),
+
 		getSupportedFlavours : function () {
 			var flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-message");
@@ -582,6 +683,8 @@ var QuickFolders = {
 	},
 
 	buttonDragObserver: {
+		win: QuickFolders_getWindow(),
+		doc: QuickFolders_getDocument(),
 		getSupportedFlavours : function () {
 			var flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-message"); // emails
@@ -607,7 +710,7 @@ var QuickFolders = {
 				var button = evt.target;
 				// delete previous drag folders popup!
 				if (QuickFolders_globalHidePopupId && QuickFolders_globalHidePopupId!="") {
-					var popup = document.getElementById(QuickFolders_globalHidePopupId);
+					var popup = this.doc.getElementById(QuickFolders_globalHidePopupId);
 					try {
 						if (QuickFolders.Util.Application() == 'SeaMonkey')
 							popup.parentNode.removeChild(popup);
@@ -670,9 +773,9 @@ var QuickFolders = {
 						// haven't found a way to tidy these up, yet (should be done in onDragExit?)
 						// Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
 						// no menus necessary for folders without subfolders!
-						var popupset = document.createElement('popupset');
+						var popupset = this.doc.createElement('popupset');
 						QuickFolders.Interface.getToolbar().appendChild(popupset);
-						var menupopup = document.createElement('menupopup');
+						var menupopup = this.doc.createElement('menupopup');
 						var popupId = 'moveTo_'+targetFolder.URI;
 						menupopup.setAttribute('id', popupId);
 						menupopup.className = 'QuickFolders-folder-popup';
@@ -684,9 +787,9 @@ var QuickFolders = {
 						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
 						QuickFolders.Util.logDebugOptional("dnd", "showPopup with id " + popupId );
 						if (QuickFolders.Util.Application() == 'SeaMonkey')
-							document.getElementById(popupId).openPopup(button,'after_start', -1,-1,"context");
+							this.doc.getElementById(popupId).openPopup(button,'after_start', -1,-1,"context",false);
 						else
-							document.getElementById(popupId).showPopup(button, -1,-1,"context","bottomleft","topleft");
+							this.doc.getElementById(popupId).showPopup(button, -1,-1,"context","bottomleft","topleft");
 
 						if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
 
@@ -727,7 +830,7 @@ var QuickFolders = {
 
 			// this popup needs to be removed if we drag into another button.
 			try {
-				if (document.getElementById(popupId))
+				if (this.doc.getElementById(popupId))
 					QuickFolders_globalHidePopupId = popupId; // arm for hiding! GLOBAL VAR!!
 			}
 			catch(ex) {
@@ -839,26 +942,26 @@ var QuickFolders = {
 		  return; // no tabs in TB2!
 		try{
 			if (QuickFolders.Util.Application()=='Postbox')
-				this.tabContainer = document.getElementById('tabmail').mTabContainer;
+				QuickFolders.tabContainer = this.doc.getElementById('tabmail').mTabContainer;
 			else
-				this.tabContainer = document.getElementById('tabmail').tabContainer;
-			this.tabContainer.addEventListener("select", QuickFolders.TabListener.mailTabSelected, false);
+				QuickFolders.tabContainer = this.doc.getElementById('tabmail').tabContainer;
+			QuickFolders.tabContainer.addEventListener("select", QuickFolders.TabListener.mailTabSelected, false);
 			//this.tabContainer.addEventListener("tabselected", QuickFolders.TabListener.mailTabSelected, false);
 		}
 		catch (e) {
 			QuickFolders.LocalErrorLogger("No tabContainer available! " + e);
-			this.tabContainer = null;
+			QuickFolders.tabContainer = null;
 		}
 	}
 }
+
 
 function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 {
 	// try to get the index of the folder in the tree
 	try {
 		var index ;
-		if (((QuickFolders.Util.Application() == 'Thunderbird')
-			 && (QuickFolders.Util.Appver() > 2))
+		if (((QuickFolders.Util.Application() == 'Thunderbird') && (QuickFolders.Util.Appver() > 2))
 		   || (QuickFolders.Util.Application() == 'Postbox'))
 		  index = tree.getIndexOfFolder(msgFolder);
 		else
@@ -899,7 +1002,7 @@ function QuickFolders_myRDF()
 // replaces TB2 only helper method GetFolderTree()
 function QuickFolders_MyGetFolderTree() {
   if (!QuickFolders.gFolderTree)
-	 QuickFolders.gFolderTree = document.getElementById("folderTree");
+	 QuickFolders.gFolderTree = QuickFolders.doc.getElementById("folderTree");
   return QuickFolders.gFolderTree;
 }
 
@@ -1064,8 +1167,8 @@ function QuickFolders_MySelectFolder(folderUri)
 	}
 	if (QuickFolders.Preferences.isFocusPreview() && !(GetMessagePane().collapsed)) {
 		GetMessagePane().focus();
-		document.commandDispatcher.advanceFocus();
-		document.commandDispatcher.rewindFocus();
+		QuickFolders.doc.commandDispatcher.advanceFocus();
+		QuickFolders.doc.commandDispatcher.rewindFocus();
 	}
 
 }
@@ -1171,11 +1274,4 @@ QuickFolders.LocalErrorLogger = function(msg) {
 }
 
 
-
-
-// now register myself as a listener on every mail folder
-var mailSession = Components.classes["@mozilla.org/messenger/services/session;1"].getService(Components.interfaces.nsIMsgMailSession);
-mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-
-QuickFolders.addLoadEventListener();
 

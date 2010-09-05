@@ -1,3 +1,9 @@
+/* BEGIN LICENSE BLOCK
+
+GPL3 applies.
+For detail, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
 
 QuickFolders.Model = {
 	selectedFolders: [],

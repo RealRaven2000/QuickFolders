@@ -1,3 +1,10 @@
+/* BEGIN LICENSE BLOCK
+
+GPL3 applies.
+For detail, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+
 var QuickFolders_ConsoleService=null;
 
 // code moved from options.js
@@ -358,11 +365,15 @@ QuickFolders.Util = {
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function(linkURI) {
-		var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-			.getService(Components.interfaces.nsIExternalProtocolService);
-		var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
-					getService(QuickFolders_CI.nsIIOService);
-		service.loadURI(ioservice.newURI(linkURI, null, null));
+		try {
+			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+				.getService(Components.interfaces.nsIExternalProtocolService);
+			var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
+						getService(QuickFolders_CI.nsIIOService);
+			var uri = ioservice.newURI(linkURI, null, null);
+			service.loadURI(uri);
+		}
+		catch(e) { this.logDebug("openLinkInBrowserForced (" + linkURI + ") " + e.toString()); }
 	},
 
 
@@ -409,7 +420,7 @@ QuickFolders.Util = {
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
 		}
 		return s;
-	},
+	}
 
 
 

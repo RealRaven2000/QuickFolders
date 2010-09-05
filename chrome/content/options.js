@@ -1,10 +1,13 @@
-const QuickFolders_CC = Components.classes;
-const QuickFolders_CI = Components.interfaces;
+/* BEGIN LICENSE BLOCK
 
+GPL3 applies.
+For detail, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
 
 function QuickFolders_getAddon(aId) {
-	var em = QuickFolders_CC["@mozilla.org/extensions/manager;1"]
-		 .getService(QuickFolders_CI.nsIExtensionManager);
+	var em = Components.classes["@mozilla.org/extensions/manager;1"]
+		 .getService(Components.interfaces.nsIExtensionManager);
 	return em.getItemForID(aId);
 }
 
@@ -24,34 +27,35 @@ var QuickFolders_TabURIregexp = {
 var QuickFoldersOptions = {
 	qfStaticInstantApply : true,
 	qfOptionsMode : "",
+
 	accept: function() {
 		if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly")
 			return; // do not store any changes!
 		// persist colors
 		try {
 			QuickFolders.Preferences.setUserStyle("ActiveTab","background-color",
-													document.getElementById("activetab-colorpicker").color);
+							document.getElementById("activetab-colorpicker").color);
 			QuickFolders.Preferences.setUserStyle("ActiveTab","color",
-													document.getElementById("activetab-fontcolorpicker").color);
+							document.getElementById("activetab-fontcolorpicker").color);
 
 			QuickFolders.Preferences.setUserStyle("InactiveTab","background-color",
-													document.getElementById("inactive-colorpicker").color);
+							document.getElementById("inactive-colorpicker").color);
 			QuickFolders.Preferences.setUserStyle("InactiveTab","color",
-													document.getElementById("inactive-fontcolorpicker").color);
+							document.getElementById("inactive-fontcolorpicker").color);
 
 
 			QuickFolders.Preferences.setUserStyle("HoveredTab","background-color",
-													document.getElementById("hover-colorpicker").color);
+							document.getElementById("hover-colorpicker").color);
 			QuickFolders.Preferences.setUserStyle("HoveredTab","color",
-													document.getElementById("hover-fontcolorpicker").color);
+							document.getElementById("hover-fontcolorpicker").color);
 
 			QuickFolders.Preferences.setUserStyle("DragTab","background-color",
-													document.getElementById("dragover-colorpicker").color);
+							document.getElementById("dragover-colorpicker").color);
 			QuickFolders.Preferences.setUserStyle("DragTab","color",
-													document.getElementById("dragover-fontcolorpicker").color);
+							document.getElementById("dragover-fontcolorpicker").color);
 
 			QuickFolders.Preferences.setUserStyle("Toolbar","background-color",
-													document.getElementById("toolbar-colorpicker").color);
+							document.getElementById("toolbar-colorpicker").color);
 
 		}
 		catch(e) {
@@ -59,7 +63,6 @@ var QuickFoldersOptions = {
 		};
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
-		
 	} ,
 	load : function() {
 		var version=QuickFolders_getMyVersion();
@@ -245,12 +248,21 @@ var QuickFoldersOptions = {
 	dumpFolderEntries: function() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
 		var service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-		var sFolderString = service.getCharPref("QuickFolders.folders");
-		var clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
 
-		QuickFolders.Util.logToConsole("Folder String: " & sFolderString);
-		clipboardhelper.copyString(sFolderString);
-		alert(QuickFolders.Util.getBundleString("qfAlertCopyString", "You can not move messages to a virtual folder!"));
+		try {
+			var sFolderString = service.getCharPref("QuickFolders.folders");
+			sFolderString = service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
+
+
+			var clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+
+			QuickFolders.Util.logToConsole("Folder String: " & sFolderString);
+			clipboardhelper.copyString(sFolderString);
+			alert(QuickFolders.Util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard."));
+		}
+		catch(e) {
+			alert(e);
+		}
 
 	},
 
@@ -269,13 +281,13 @@ var QuickFoldersOptions = {
 		w.focus();
 		w.setTimeout(
 			function () {
-			var flt = w.document.getElementById("textbox");
-			if (flt) {
-				 flt.value=filter;
-				 flt.focus();
-				 if (w.self.FilterPrefs)
-				 w.self.FilterPrefs();
-			 }
+				var flt = w.document.getElementById("textbox");
+				if (flt) {
+					 flt.value=filter;
+					 flt.focus();
+					 if (w.self.FilterPrefs)
+					 w.self.FilterPrefs();
+				}
 			}, 300);
 	},
 

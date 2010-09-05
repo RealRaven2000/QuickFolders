@@ -12,11 +12,19 @@ QuickFolders.Preferences = {
 	},
 
 	setFolderEntries: function(folderEntries) {
+		try {
 		var json = JSON.stringify(folderEntries)
 
-		QuickFolders.Util.logDebug(json)
+		var str = Components.classes["@mozilla.org/supports-string;1"]
+			.createInstance(Components.interfaces.nsISupportsString);
+		str.data = json;
 
-		this.service.setCharPref("QuickFolders.folders",json)
+		this.service.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
+		//this.service.setCharPref("QuickFolders.folders",json)
+		}
+		catch(e) {
+			QuickFolders.Util.logToConsole("setFolderEntries()" + e);
+		}
 	} ,
 
 	getFolderEntries: function() {
@@ -24,12 +32,19 @@ QuickFolders.Preferences = {
 			return [];
 		}
 
-		var folders;
+		try {
+			var folders = this.service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
+			// fall back for old version
+			if (folders.length<3)
+				folders = this.service.getCharPref("QuickFolders.folders");
 
-		if((folders = this.service.getCharPref("QuickFolders.folders"))) {
-			return JSON.parse(folders);
+			if(folders)
+				return JSON.parse(folders);
+			else
+				return [];
 		}
-		else {
+		catch(e) {
+			QuickFolders.Util.logToConsole("getFolderEntries()" + e);
 			return [];
 		}
 	} ,

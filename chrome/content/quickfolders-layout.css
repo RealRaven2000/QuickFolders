@@ -213,7 +213,10 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
 
 
 /* gradient look */
-menupopup.QuickFolders-folder-popup menuitem.cmd:hover
+menupopup.QuickFolders-folder-popup menu.cmd:hover,
+menupopup.QuickFolders-folder-popup menu.mailCmd:hover,
+menupopup.QuickFolders-folder-popup menuitem.cmd:hover,
+menupopup.QuickFolders-folder-popup menuitem.mailCmd:hover
 {
     border: 1px solid darkgreen !important;
     color: black !important;
@@ -379,9 +382,9 @@ menupopup.QuickFolders-folder-popup menu
     -moz-appearance: none !important;
 }
 
-menupopup.QuickFolders-folder-popup menu.menuitem-iconic[tag="qfTabColorMenu"] { list-style-image: url('chrome://quickfolders/skin/ico/palette.png') !important;}
+menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"] { list-style-image: url('chrome://quickfolders/skin/ico/palette.png') !important;}
 
-menupopup.QuickFolders-folder-popup menu.menuitem-iconic[tag="qfTabColorMenu"]:hover { list-style-image: url('chrome://quickfolders/skin/ico/palette.png') !important;}
+menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"]:hover { list-style-image: url('chrome://quickfolders/skin/ico/palette.png') !important;}
 
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menu:-moz-drag-over
@@ -410,6 +413,12 @@ menupopup.QuickFolders-folder-popup menu:hover
     font-weight: 500;
     background-image: url('chrome://quickfolders/skin/ico/gold-bar.png');
     list-style-image : url('chrome://quickfolders/skin/ico/folder-open.png');
+}
+
+menupopup.QuickFolders-folder-popup menuitem.mailCmd:hover,
+menupopup.QuickFolders-folder-popup menu.mailCmd:hover
+{
+    list-style-image : url('chrome://quickfolders/skin/ico/folderCommand.png');
 }
 
 

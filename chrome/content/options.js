@@ -117,7 +117,6 @@ var QuickFoldersOptions = {
 				// toggle off and disable shadow!
 				if (QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows")==true)
 					QuickFolders.Preferences.setBoolPref("extensions.quickfolders.buttonShadows", false);
-				// try to remove Shadow Checkbox in TB2... doesn't work for some reason ?
 				var cb=wd.getElementById("qf-options-shadow");
 				wd.getElementById("qf-options-shadow").display="none";
 				cb.style.display="none";

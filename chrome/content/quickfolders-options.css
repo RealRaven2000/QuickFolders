@@ -9,7 +9,6 @@
 #QuickFolders-Options-Tabbox { min-width:400px; }
 #QuickFolders-Options-general { min-height:350px; }
 
-
 #qf-options-header {
 	margin: 5px 0px 5px 45px;
 	border: 2px solid;
@@ -176,12 +175,18 @@ label#L0:active a, label#L1:active a {
 
 
 description.quickhelp-desc, description.quickhelp-dbg {
+	position:absolute;
 	text-align:justify;
 	max-width: 620px;
 	padding: 2px 0px;
 	margin: 1px 0px;
 	line-height:1.2em;
+	bottom:5px;
+	overflow-y: scroll;
+	overflow-x: auto;
 }
+
+
 
 description#importantNote {
 	font-weight: bold;

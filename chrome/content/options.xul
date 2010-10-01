@@ -142,7 +142,7 @@
 				/>
 
 
-			<hbox class="quickhelp-dbg" style="position:absolute; bottom:5px;">
+			<hbox class="quickhelp-dbg" >
 				<checkbox label="&qf.checkbox.debug;"
 					preference="QuickFolders-Preferences-Debug"
 					instantApply="true"
@@ -164,8 +164,7 @@
 
 			</tabpanel>
 
-			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10"
-					 >
+			<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout" flex="10">
 
 				<preferences>
 			 <preference id="QuickFolders-Preferences-ShowFlatStyle" name="extensions.quickfolders.showFlatStyle" type="bool"/>
@@ -177,12 +176,13 @@
 			 <preference id="QuickFolders-Preferences-Shadows" name="extensions.quickfolders.buttonShadows" type="bool"/>
 				</preferences>
 
-
 				<checkbox
-					id="qf-options-shadow"
+					id="qf-options-icons"
 					label="&qf.checkbox.showIcons;"
 					preference="QuickFolders-Preferences-ShowIcons"
 				/>
+
+
 				<hbox style="margin-top: .5em;">
 					<label
 						control="button-font-size"
@@ -241,8 +241,9 @@
 				  </vbox>
 				</hbox>
 				<hbox style="margin-bottom: .2em;">
-					<checkbox label="&qf.checkbox.shadows;" preference="QuickFolders-Preferences-Shadows"
-					 onclick= "return QuickFoldersOptions.showButtonShadow(!this.checked);"
+					<checkbox id="qf-options-shadow"
+						label="&qf.checkbox.shadows;" preference="QuickFolders-Preferences-Shadows"
+						onclick= "return QuickFoldersOptions.showButtonShadow(!this.checked);"
 					/>
 					<checkbox id="buttonTransparency"
 						label="&qf.checkbox.transparent;"
@@ -314,14 +315,15 @@
 					/>
 					</vbox>
 				</hbox>
-</vbox>
-<spacer flex="1" />
+		</vbox>
+	<spacer flex="1" />
 </hbox>
 </vbox>
-			  <spacer flex="2" />
-		<description class="quickhelp-dbg" flex="2">&qf.label.instantApplyMsg;</description>
 
-			</tabpanel>
+	<spacer flex="1"/>
+	<description class="quickhelp-dbg">&qf.label.instantApplyMsg;</description>
+
+</tabpanel>
 
 			<tabpanel orient="vertical" id="QuickFolders-Options-quickhelp" label="&qf.tab.quickhelp;"
 			 flex="10" style="min-height:350px;">

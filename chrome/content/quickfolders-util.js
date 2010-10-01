@@ -246,8 +246,11 @@ QuickFolders.Util = {
 		const MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
 		var step = 0;
 		try {
+			try {QuickFolders.Util.logDebugOptional('dnd', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);}
+			catch(e) { alert('QuickFolders.Util.moveMessages:' + e); }
+
 			if (targetFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) {
-				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual"));
+				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return;
 			}
 			var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
@@ -258,7 +261,7 @@ QuickFolders.Util = {
 			var ap = QuickFolders.Util.Application();
 			var hostsystem = QuickFolders.Util.HostSystem();
 			//nsISupportsArray is deprecated in TB3 as its a hog :-)
-		if (av > 2 || ap=='SeaMonkey')
+			if (av > 2 || ap=='SeaMonkey')
 				messageList = this.Cc["@mozilla.org/array;1"].createInstance(this.Ci.nsIMutableArray);
 			else
 				messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(this.Ci.nsISupportsArray);
@@ -294,7 +297,7 @@ QuickFolders.Util = {
 				messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
 			}
 		}
-		catch(e) { this.logToConsole('Exception in Util.moveMessages, step ' + step + ':\n' + e); };
+		catch(e) { this.logToConsole('Exception in QuickFolders.Util.moveMessages, step ' + step + ':\n' + e); };
 	} ,
 
 
@@ -530,7 +533,7 @@ QuickFolders.Util.FirstRun =
 							QuickFolders.Util.openURL(null, versionPage);
 
 							// display donation page (can be disabled; I will send out method to all donators and anyone who asks me for it)
-							if ((QuickFolders.Preferences.getBoolPref("extensions.quickfolders.donateNoMore")))
+							if ((QuickFolders.Preferences.getBoolPrefQF("donateNoMore")))
 								QuickFolders.Util.logDebugOptional ("firstrun","donations link disabled by user");
 							else
 								QuickFolders.Util.openLinkInBrowserForced("http://quickfolders.mozdev.org/donate.html"); // show donation page!

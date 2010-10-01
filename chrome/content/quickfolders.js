@@ -328,9 +328,16 @@ END LICENSE BLOCK */
 	20/08/2010 - 1.9.7.3
 	  AG: Fixed [Bug 23091] TB only - caused parent subfolder to be opened instead of subfolder!
 
-	04/09/2010 - 1.9.8 pre
+	19/09/2010 - 2.0
 	  AG: Added drag and drop from folder submenu to add new QF tab
-	  AG: Revised quicktab context menu layout and added folder commands (Mark read, compact, rename, delete, xpunge)
+	  AG: New Right-click Tab context menu layout, added folder commands (Mark read, compact, rename, delete, xpunge)
+	  AG: Added: Create new folder on drag feature! POP only (as it can crash IMAP accounts), not a feature in TB2.
+	  AG: Fixed [Bug 23209] CTRL+Number Shortcut opens new content tabs
+	  AG: Fixed [Bug 21317] During drag & drop, the top item in subfolders list is not sorted alphabetically
+	  AG: Fixed CTRL+Shift+Number did not move selected messages
+	  AG: Compatible with Postbox 2.0.b3
+	  AG: Fixed a bug that made reordering quicktabs to the right of their current position fail sometimes
+	  AG: TB2 - Fixed - hidden shadows option and made icons option visible again
 
   KNOWN ISSUES
   ============
@@ -362,8 +369,10 @@ END LICENSE BLOCK */
 
 //QuickFolders.gFolderTree = null;
 
-const QuickFolders_CC = Components.classes;
-const QuickFolders_CI = Components.interfaces;
+if (!this.QuickFolders_CC)
+	this.QuickFolders_CC = Components.classes;
+if (!this.QuickFolders_CI)
+	this.QuickFolders_CI = Components.interfaces;
 
 var QuickFolders_globalHidePopupId="";
 var QuickFolders_globalLastChildPopup=null;
@@ -605,6 +614,8 @@ var QuickFolders = {
 	popupDragObserver: {
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
+		newFolderMsgUris: [],
+		dragAction: null,
 
 		getSupportedFlavours : function () {
 			var flavours = new FlavourSet();
@@ -620,25 +631,27 @@ var QuickFolders = {
 
 				var popupStart = evt.target;
 				var pchild = popupStart.firstChild;
-				if (pchild.nodeName == 'menupopup') {
-					// hide all sibling popup menus
-					var psib = popupStart.nextSibling;
-					while (psib) {
-						if (psib.nodeName == 'menu' && popupStart!=psib)
-							psib.firstChild.hidePopup();
-						psib = psib.nextSibling;
+				if (pchild) {
+					if (pchild.nodeName == 'menupopup') {
+						// hide all sibling popup menus
+						var psib = popupStart.nextSibling;
+						while (psib) {
+							if (psib.nodeName == 'menu' && popupStart!=psib)
+								psib.firstChild.hidePopup();
+							psib = psib.nextSibling;
+						}
+						psib = popupStart.previousSibling;
+						while (psib) {
+							if (psib.nodeName == 'menu' && popupStart!=psib)
+								psib.firstChild.hidePopup();
+							psib = psib.previousSibling;
+						}
+						pchild.showPopup();
+						QuickFolders.Util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
 					}
-					psib = popupStart.previousSibling;
-					while (psib) {
-						if (psib.nodeName == 'menu' && popupStart!=psib)
-							psib.firstChild.hidePopup();
-						psib = psib.previousSibling;
-					}
-					pchild.showPopup();
-					QuickFolders.Util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
+					else
+						QuickFolders.Util.logDebugOptional("dnd","Ignoring DragEnter with child node: " + pchild.nodeName);
 				}
-				else
-					QuickFolders.Util.logDebugOptional("dnd","Ignoring DragEnter with child node: " + pchild.nodeName);
 			}
 			catch(e) {
 				QuickFolders.Util.logDebug ("onDragEnter: failure - " + e);
@@ -668,16 +681,140 @@ var QuickFolders = {
 			}
 		},
 
-		// drop mails on popup: move mail, like in buttondragobserver - this is set up to point to the other one
+		// drop mails on popup: move mail, like in buttondragobserver
 		onDrop: function (evt,dropData,dragSession) {
-			var popupStart = evt.target;
+			var menuItem = evt.target;
+
 			try {
 				QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDrop " + dropData.flavour.contentType);
-				QuickFolders.Util.logDebugOptional("dnd","Popup Drop on" + popupStart.name);
-			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop event: " + e)}
-			try {
-				popupStart.firstChild.hidePopup(); // new
-			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop hidePopup: " + e)}
+				QuickFolders.Util.logDebugOptional("dnd","target's parent folder: " + menuItem.folder.URI);
+				var targetFolder = menuItem.folder.QueryInterface(Components.interfaces.nsIMsgFolder);
+
+				if (!targetFolder.canCreateSubfolders) {
+					alert("You can not create a subfolder in " + targetFolder.prettiestName);
+					return false;
+				}
+
+				var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+				trans.addDataFlavor("text/x-moz-message");
+
+				// let's store the Msg URIs from drag session before we do anything else!!
+				QuickFolders.popupDragObserver.dragAction = dragSession.dragAction; // remember copy or move?
+				while (QuickFolders.popupDragObserver.newFolderMsgUris.length) QuickFolders.popupDragObserver.newFolderMsgUris.pop(); // reset!
+				for (var i = 0; i < dragSession.numDropItems; i++) {
+					dragSession.getData (trans, i);
+					var dataObj = new Object();
+					var flavor = new Object();
+					var len = new Object();
+					try {
+						trans.getAnyTransferData(flavor, dataObj, len);
+
+						if (flavor.value == "text/x-moz-message" && dataObj) {
+							dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
+							var messageUri = dataObj.data.substring(0, len.value);
+							QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
+						}
+					}
+					catch (e) {
+						QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+					}
+				}
+
+
+/**
+ http://mozilla-xp.com/mozilla.dev.apps.thunderbird/How-To-Get-Highlighted-Folder-in-TB3
+ As a general rule,
+ anything to do with the folder pane is an attribute of gFolderTreeView,
+ anything to do with the thread pane is an attribute of gFolderDisplay,
+ and anything to do with the message pane is an attribute of gMessageDisplay.
+**/
+
+				var dualUseFolders = true;
+				if (targetFolder.server instanceof Components.interfaces.nsIImapIncomingServer)
+					dualUseFolders = targetFolder.server.dualUseFolders;
+
+				function newFolderCallback(aName, FolderParam) {
+					var step='';
+					if (aName) try {
+						var currentURI;
+
+						// we're dragging, so we are interested in the folder currently displayed in the threads pane
+						var aFolder;
+						if (QuickFolders.Util.Application()=='Postbox') {
+							currentURI = GetSelectedFolderURI();
+							aFolder = GetMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+						}
+						else {
+							currentURI = gFolderDisplay.displayedFolder.URI;
+							aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
+						}
+
+						step='1. create sub folder: ' + aName;
+						QuickFolders.Util.logDebugOptional("dragToNew", step);
+						aFolder.createSubfolder(aName, msgWindow);
+
+						var newFolder;
+
+						// if folder creation is successful, we can continue with calling the
+						// other drop handler that takes care of dropping the messages!
+						step='2. find new sub folder';
+						QuickFolders.Util.logDebugOptional("dragToNew", step);
+						if (QuickFolders.Util.Application()=='Postbox') {
+							newFolder = GetMsgFolderFromUri(aFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
+						}
+						else {
+							var iCount=0;
+							QuickFolders.Util.logDebugOptional("dragToNew", step);
+							while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
+							if (iCount>=10000) {
+								alert('could not find the new folder ' + aName + ' - on IMAP accounts this function might be too slow!');
+								iCount=0;
+								while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
+								if (iCount>=10000)
+									return false;
+							}
+						}
+						menuItem.folder = newFolder;
+
+						var isCopy = (QuickFolders.popupDragObserver.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY);
+						step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI;
+						QuickFolders.Util.logDebugOptional("dragToNew", step);
+						QuickFolders.Util.moveMessages(newFolder, QuickFolders.popupDragObserver.newFolderMsgUris, isCopy)
+
+						QuickFolders.Util.logDebugOptional("dragToNew", "4. updateFolders...");
+						QuickFolders.Interface.updateFolders(false); // update context menus
+						return true;
+
+					}
+					catch(ex) {
+						alert("Exception in newFolderCallback, step [" + step + "]: " + ex);
+					}
+					return false;
+				}
+
+				QuickFolders.Util.logDebugOptional("window.openDialog (newFolderDialog.xul)\n"
+					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
+					+ "dualUseFolders:" + dualUseFolders);
+				if (QuickFolders.Util.Application()=='Postbox') {
+					// see newFolderDialog.js for when Callback is called.
+
+					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
+                      "",
+                      "chrome,titlebar,modal",
+                      {preselectedURI:targetFolder.URI, dualUseFolders:dualUseFolders, okCallback:newFolderCallback});
+				}
+				else {
+
+					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
+							"",
+							"chrome,modal,resizable=no,centerscreen",
+							{folder: targetFolder, dualUseFolders: dualUseFolders, okCallback: newFolderCallback});
+				}
+
+
+
+			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop event: " + e); return false}
+			return true;
 		}
 
 	},
@@ -761,11 +898,17 @@ var QuickFolders = {
 					}
 
 					// only show popups when dragging messages!
-					if(dragSession.isDataFlavorSupported("text/x-moz-message") && targetFolder.hasSubFolders)
+					// removed && targetFolder.hasSubFolders as we especially need the new folder submenu item for folders without subfolders!
+					if(dragSession.isDataFlavorSupported("text/x-moz-message") )
 					try {
 						//close any other context menus
 						if (dragSession.isDataFlavorSupported("text/unicode" ))
 							return;  // don't show popup when reordering tabs
+
+						var isTB2 = ((QuickFolders.Util.Application()=='Thunderbird') && (QuickFolders.Util.Appver() < 3));
+						if ( isTB2 && !targetFolder.hasSubFolders)
+							return; // no popup menu at all!
+
 						QuickFolders.Util.logDebugOptional("dnd", "creating popupset for " + targetFolder.name );
 
 						// instead of using the full popup menu (containing the 3 top commands)
@@ -781,7 +924,9 @@ var QuickFolders = {
 						menupopup.className = 'QuickFolders-folder-popup';
 						menupopup.folder = targetFolder;
 						popupset.appendChild(menupopup);
-						QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder);
+						// excluding TB 2 from "drag to new folder" menu for now
+						QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder, true);
+
 						// a bug in showPopup when used with coordinates makes it start from the wrong origin
 						//document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
 						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
@@ -898,6 +1043,7 @@ var QuickFolders = {
 					}
 					// handler for dropping messages
 					try {
+						QuickFolders.Util.logDebugOptional("dragToNew", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
 						if(messageUris.length > 0) {
 							QuickFolders.Util.moveMessages(
 							  targetFolder,

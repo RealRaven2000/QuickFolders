@@ -113,24 +113,6 @@ QuickFolders.ChangeOrder = {
 		// alert("insertAtPosition(" + buttonURI +", "+ targetURI +  ")");
 		var modelSelection = QuickFolders.Model.selectedFolders;
 
-		for(var i = 0; i < modelSelection.length; i++) {
-			folderEntry = QuickFolders.Model.selectedFolders[i];
-			folder = GetMsgFolderFromUri(folderEntry.uri, true);
-
-			if (toolbarPos=="")
-				if (folderEntry.uri==targetURI)
-					iTarget = i;
-
-			if (folderEntry.uri==buttonURI) {
-				iSource = i; // found corresponding tab
-				break;
-			}
-		}
-
-		//button not found: might have been a menu item to add a new button!
-		if (iSource==null && iTarget==null)
-			return false;
-
 		switch(toolbarPos) {
 			case "LeftMost":
 				iTarget = 0;
@@ -139,6 +121,27 @@ QuickFolders.ChangeOrder = {
 				iTarget = modelSelection.length-1;
 				break;
 		}
+
+		for(var i = 0; i < modelSelection.length; i++) {
+			folderEntry = QuickFolders.Model.selectedFolders[i];
+			folder = GetMsgFolderFromUri(folderEntry.uri, true);
+
+			if (toolbarPos=="")
+				if (folderEntry.uri==targetURI) {
+					iTarget = i;
+					if (iSource!=null) break;
+				}
+
+			if (folderEntry.uri==buttonURI) {
+				iSource = i;
+				if (iTarget!=null) break;
+			}
+		}
+
+		//button not found: might have been a menu item to add a new button!
+		if (iSource==null && targetURI=="")
+			return false;
+
 
 		if (iSource!=iTarget)
 		{

@@ -4,7 +4,7 @@
 <!ENTITY qf.tab.layout "外观">
 <!ENTITY qf.tab.quickhelp "帮助">
 <!ENTITY qf.checkbox.displaylabel "在工具栏显示「目录导航」标签">
-<!ENTITY qf.checkbox.usekeyboardshortcuts "使用快捷键(Alt + 1 到 Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "使用快捷键(Alt+1 到 Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "用 Ctrl 键代替 Alt 键">
 <!ENTITY qf.checkbox.showshortcutnumber "在导航卡上显示序号">
 <!ENTITY qf.checkbox.showUnreadMessageCount "在导航卡上显示未读消息的数目">
@@ -32,8 +32,8 @@
 <!ENTITY qf.checkbox.debug "调试模式">
 <!ENTITY qf.label.StandardTabColor "标准颜色:">
 <!ENTITY qf.label.initdelay "初始化延迟 {标准是1000} [毫秒]:">
-<!ENTITY qf.label.folders "文件夹?">
-<!ENTITY qf.label.folders.tooltip "复制该文件夹配置字符串到剪贴板">
+<!ENTITY qf.label.folders "导航代码">
+<!ENTITY qf.label.folders.tooltip "复制导航栏配置字符串到剪贴板">
 <!ENTITY qf.checkbox.autoFocusPreview "切换导航卡时将窗口焦点置于消息列表">
 <!ENTITY qf.label.homePage "更多细节尽在官网 Mozdev.org ...">
 <!ENTITY qf.tab.support "支持">

@@ -15,7 +15,7 @@ pref("extensions.quickfolders.buttonFontSize","");
 pref("extensions.quickfolders.lastSelectedCategory","");
 pref("extensions.quickfolders.showIcons",false);
 pref("extensions.quickfolders.debug",false);
-pref("extensions.quickfolders.initDelay", 5000);
+pref("extensions.quickfolders.initDelay", 2500);
 pref("extensions.quickfolders.colorTabStyle",0);
 pref("extensions.quickfolders.showSubfolders",false);
 pref("extensions.quickfolders.queuedFolderUpdateDelay",500);
@@ -27,6 +27,7 @@ pref("extensions.quickfolders.debug.folders",false);
 pref("extensions.quickfolders.debug.popupmenus",false);
 pref("extensions.quickfolders.debug.events",false);
 pref("extensions.quickfolders.debug.mailTabs",false);
+pref("extensions.quickfolders.debug.dragToNew",false);
 pref("extensions.quickfolders.transparentButtons", false);
 pref("extensions.quickfolders.transparentToolbar", true);
 pref("extensions.quickfolders.transparentButtons", false);
@@ -35,6 +36,9 @@ pref("extensions.quickfolders.disableFolderSwitching",false);
 pref("extensions.quickfolders.showCountInSubFolders",false);
 pref("extensions.quickfolders.enableMenuAlphaSorting",false);
 pref("extensions.quickfolders.debug.firstrun", false);
+pref("extensions.quickfolders.dragToCreateFolder.pop3",true);
+pref("extensions.quickfolders.dragToCreateFolder.imap",false);
+
 
 
 

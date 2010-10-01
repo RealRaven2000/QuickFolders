@@ -7,7 +7,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
     -moz-appearance: none !important;
     padding: 1px 5px;
-    margin: 0px default;
+    margin: 0px;
 }
 
 toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text

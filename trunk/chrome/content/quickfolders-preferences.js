@@ -178,11 +178,15 @@ QuickFolders.Preferences = {
 
 	getBoolPref: function(p) {
 		try {
-		return this.service.getBoolPref(p);
+			return this.service.getBoolPref(p);
 		} catch(e) {
 			var s="Err:" +e;
 			return false;
 		}
+	},
+
+	getBoolPrefQF: function(p) {
+		return QuickFolders.Preferences.getBoolPref("extensions.quickfolders." + p);
 	},
 
 	setBoolPref: function(p, v) {

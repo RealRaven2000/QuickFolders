@@ -2,6 +2,8 @@
 <overlay id="ScrollMenusOnDrag"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+
 	<script type="application/x-javascript"><![CDATA[
 		(function(){
 			var	REPEAT_DELAY_MS = 50,
@@ -56,14 +58,15 @@
 					tsLastRepeat = (evt.timeStamp || (new Date()).getTime()) - REPEAT_DELAY_MS;
 					fnRepeat = function(){ el.doCommand.call(el); };
 
-					el.addEventListener("dragover", repeatOnDragover, true);
-					el.addEventListener("dragexit", removeRepeat, false);
-					repeatOnDragover({timeStamp: evt.timeStamp});
-
 					function removeRepeat (evt) {
 						el.removeEventListener("dragover", repeatOnDragover, true);
 						el.removeEventListener("dragexit", removeRepeat, false);
 					}
+
+					el.addEventListener("dragover", repeatOnDragover, true);
+					el.addEventListener("dragexit", removeRepeat, false);
+					repeatOnDragover({timeStamp: evt.timeStamp});
+
 				}
 			}, true);
 

@@ -1,0 +1,68 @@
+<!ENTITY qf.prefwindow.quickfolders.options "Настройки QuickFolders">
+<!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.tab.general "Основные">
+<!ENTITY qf.tab.layout "Разнообразить закладки">
+<!ENTITY qf.tab.quickhelp "Справка">
+<!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
+<!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Показывать в закладке количество не прочтенных сообщений">
+<!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
+<!ENTITY qf.checkbox.showTotalMessageCount "Показывать в закладке общее количество сообщений">
+<!ENTITY qf.checkbox.showCountInSubFolders "Также показывать общее количество сообщений и для папок, находящихся в этой папке">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
+<!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
+<!ENTITY qf.label.pixels "пикселов">
+<!ENTITY qf.label.setcolors "Цвет текста и фона">
+<!ENTITY qf.label.ActiveTabColor "Цвет активной закладки">
+<!ENTITY qf.label.HoveredTabColor "Цвет закладки под мышкой">
+<!ENTITY qf.label.DragOverBackground "Цвет закладки под переносимой">
+<!ENTITY qf.label.ToolbarBackground "Фоновый цвет панели инструментов">
+<!ENTITY qf.description.dragToAdd "Для создания новых закладок перетаскивайте папки на свободное место в новой панели инструментов. Для перемещения сообщений перетаскивайте их на закладки (удерживайте Ctrl для копирования). Нажмите на закладку, чтобы переместится в папку.">
+<!ENTITY qf.description.dragToPosition "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки Вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку).">
+<!ENTITY qf.description.dragToPopup "Перетаскивайте сообщения на контекстное меню закладки для их перемещения в папки, находящиеся в этой папке.">
+<!ENTITY qf.description.changeCategory "Нажмите на закладке правой кнопкой мышки для присвоения ей категории. Список категорий будет показан в левой части панели инструментов.">
+<!ENTITY qf.description.rightClickOptions "Для вызова меню настроек, нажмите на свободном месте панели инструментов. В этом меню Вы можете выбрать обычный (занимает меньше места) или плоский(четче, показывает индикатор при перетаскивании) стиль.">
+<!ENTITY qf.description.tipMsg "Совет: Если у Вас много папок, попробуйте воспользоваться расширением 'Nostalgy' для навигации с помощью клавиатуры">
+<!ENTITY qf.description.experimentalItems "Последующие функции - экспериментальные, надеюсь они будут работать в следующей версии!!">
+<!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">
+<!ENTITY qf.button.defaultcolors "Стандартные цвета">
+<!ENTITY qf.checkbox.debug "Режим отладки">
+<!ENTITY qf.label.StandardTabColor "Стандартный цвет закладки:">
+<!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс по умолчанию)">
+<!ENTITY qf.label.folders "Папки?">
+<!ENTITY qf.label.folders.tooltip "Копировать настройки в буфер обмена">
+<!ENTITY qf.checkbox.autoFocusPreview "Переводить фокус на список сообщений после смены закладок">
+<!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org...">
+<!ENTITY qf.tab.support "Поддержка">
+<!ENTITY qf.description.languages "Вы можете помочь, добавив перевод на свой язык на Babelzilla:">
+<!ENTITY qf.label.languagesLink "Добавить перевод...">
+<!ENTITY qf.description.donate "Если QuickFolders Вам нравится также, как и нам, Вы можете поддержать деньгами дальнейшее развитие.">
+<!ENTITY qf.label.donateLink "Поддержать...">
+<!ENTITY qf.description.contactMe "Мой личный адрес axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Написать мне (на английском или немецком)">
+<!ENTITY qf.checkbox.showIcons "Показывать значки (Входящие, Отправленные, Спам, Удаленные, Черновики, Архивы, Шаблоны)">
+<!ENTITY qf.checkbox.showSubfolders "Раскрывать папки из этой папке в меню">
+<!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.menu.tabColor "Без цвета!">
+<!ENTITY qf.menu.Color "Цвет">
+<!ENTITY qf.options.LayoutColorAppearance "Индивидуальный вид закладок">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(полосатый стиль)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(&quot;заполненный&quot; стиль)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Стиль закладок как в ОС - напоминает закладки Вашей ОС, но без цветовых настроек">
+<!ENTITY qf.checkbox.showFlatStyle "Плоский стиль закладок - рекомендуется, так как поддерживает цветовые настройки">
+<!ENTITY qf.description.linkNote "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:">
+<!ENTITY qf.checkbox.transparent "прозрачный">
+<!ENTITY qf.checkbox.shadows "с тенями">
+<!ENTITY qf.checkbox.debug.tooltip "Нажмите правой кнопкой мышки для получения дополнительных настроек">
+<!ENTITY qf.checkbox.displaylabel.tooltip "Нажмите правой кнопкой мышки для изменения этого текста">
+<!ENTITY qf.checkbox.sortMenusAlpha "Заставлять сортировать папки в папках по алфавиту.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Используйте только если нет правильной сортировки папок в папках.">
+<!ENTITY qf.options.versionnumber.tooltip "Нажмите правой кнопкой мышки для получения истории изменений.">
+<!ENTITY qf.description.bugzilla "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях">
+<!ENTITY qf.label.bugzilla "Сообщить об ошибке/Запрос новых возможностей на Bugzilla...">
+<!ENTITY qf.description.versionhistory "Детальная история изменений на mozdev.org">
+<!ENTITY qf.label.versionhistory "Смотреть историю изменений...">

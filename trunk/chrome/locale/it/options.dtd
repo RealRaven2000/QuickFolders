@@ -45,6 +45,8 @@
 <!ENTITY qf.label.contactLink "Contattami (in lingua inglese o tedesca)...">
 <!ENTITY qf.checkbox.showIcons "Visualizza le icone (Posta in arrivo, Posta inviata, Indesiderata, Cestino, Bozze, Archiviata, Modelli)">
 <!ENTITY qf.checkbox.showSubfolders "Espande le sottocartelle nel menu a popup">
+<!ENTITY qf.checkbox.showRecentTab "Visualizza la scheda delle cartelle recenti">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Per la configurazione cliccare il pulsante destro del mouse">
 <!ENTITY qf.menu.tabColor "Nessun colore!">
 <!ENTITY qf.menu.Color "Colore">
 <!ENTITY qf.options.LayoutColorAppearance "Aspetto del colore della singola scheda">
@@ -52,14 +54,14 @@
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(completamente colorata)">
 <!ENTITY qf.checkbox.showNativeTabStyle "Stile nativo schede - è lo stesso usato dal sistema operativo, senza le sottostanti opzioni di colore">
 <!ENTITY qf.checkbox.showFlatStyle "Stile personalizzato schede (flat style) - raccomandato perché supporta tutte le sottostanti opzioni di colore">
-<!ENTITY qf.description.linkNote "Per una dettagliata guida utente, per trovare suggerimenti e per le FAQ visita la Home Page di QuickFolders:">
+<!ENTITY qf.description.linkNote "Per una dettagliata guida utente, per trovare suggerimenti e per le FAQ, visita la Home Page di QuickFolders:">
 <!ENTITY qf.checkbox.transparent "Trasparente">
 <!ENTITY qf.checkbox.shadows "Ombreggiatura">
-<!ENTITY qf.checkbox.debug.tooltip "Cliccare il pulsante destro del mouse su questa casella di selezione (checkbox) per accedere ad opzioni avanzate di debug">
-<!ENTITY qf.checkbox.displaylabel.tooltip "Cliccare il pulsante destro del mouse per modificare il nome dell'etichetta">
+<!ENTITY qf.checkbox.debug.tooltip "Per accedere ad opzioni avanzate di debug cliccare qui col pulsante destro del mouse">
+<!ENTITY qf.checkbox.displaylabel.tooltip "Per modificare il nome dell'etichetta cliccare il pulsante destro del mouse">
 <!ENTITY qf.checkbox.sortMenusAlpha "Forza l'ordinamento alfabetico dei menu con sottocartelle">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Usare questa opzione solo se il programma di posta elettronica non ordina correttamente le sottocartelle">
-<!ENTITY qf.options.versionnumber.tooltip "Per visualizzare la cronologia delle versioni, cliccare il pulsante destro del mouse">
+<!ENTITY qf.options.versionnumber.tooltip "Per visualizzare la cronologia delle versioni cliccare il pulsante destro del mouse">
 <!ENTITY qf.description.bugzilla "Usa Bugzilla per segnalare eventuali bug e/o per richiedere l'aggiunta di nuove caratteristiche">
 <!ENTITY qf.label.bugzilla "Segnala un bug / richiedi una nuova caratteristica tramite Bugzilla...">
 <!ENTITY qf.description.versionhistory "Cronologia dettagliata delle versioni di QuickFolders nel sito mozdev.org">

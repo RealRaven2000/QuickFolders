@@ -2,18 +2,30 @@ content quickfolders chrome/content/
 locale quickfolders en-US jar:chrome/locale.jar!/locale/en-US/
 locale quickfolders de jar:chrome/locale.jar!/locale/de/
 locale quickfolders nl jar:chrome/locale.jar!/locale/nl/
-locale quickfolders it-IT jar:chrome/locale.jar!/locale/it-IT/
+locale quickfolders it jar:chrome/locale.jar!/locale/it/
 locale quickfolders fr jar:chrome/locale.jar!/locale/fr/
 locale quickfolders ja-JP jar:chrome/locale.jar!/locale/ja-JP/
 locale quickfolders pt-BR jar:chrome/locale.jar!/locale/pt-BR/
-locale quickfolders ru-RU jar:chrome/locale.jar!/locale/ru-RU/
+locale quickfolders ru jar:chrome/locale.jar!/locale/ru/
 locale quickfolders sr jar:chrome/locale.jar!/locale/sr/
 locale quickfolders vi jar:chrome/locale.jar!/locale/vi/
 locale quickfolders ca jar:chrome/locale.jar!/locale/ca/
 locale quickfolders es-MX jar:chrome/locale.jar!/locale/es-MX/
 locale quickfolders zh-CN jar:chrome/locale.jar!/locale/zh-CN/
+locale quickfolders hu-HU jar:chrome/locale.jar!/locale/hu-HU/
+locale quickfolders sv-SE jar:chrome/locale.jar!/locale/sv-SE/
+
 skin quickfolders classic/1.0  jar:chrome/skin/quickfolders.jar!/
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus2.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<3.0
+
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-postbox.xul application=postbox@postbox-inc.com
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application=postbox@postbox-inc.com
+
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-seamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-layout.css
+style chrome://quickfolders/content/overlay-postbox.xul chrome://quickfolders/content/quickfolders-postbox.css application=postbox@postbox-inc.com
+style chrome://quickfolders/content/overlay-seamonkey.xul chrome://quickfolders/content/quickfolders-seamonkey.css  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+

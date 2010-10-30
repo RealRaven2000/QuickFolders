@@ -52,6 +52,7 @@
 					<preference id="QuickFolders-Preferences-ShowCountInSubFolders" name="extensions.quickfolders.showCountInSubFolders" type="bool" />
 					<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
 					<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
+					<preference id="QuickFolders-Preferences-ShowRecentTab" name="extensions.quickfolders.showRecentTab" type="bool" />
 					<preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
 					<preference id="QuickFolders-Preferences-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool"/>
 					<preference id="QuickFolders-Preferences-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool"/>
@@ -73,7 +74,7 @@
 					oncontextmenu="QuickFoldersOptions.showAboutConfig('extensions.quickfolders.textQuickfoldersLabel');return false;"
 					tooltiptext="&qf.checkbox.displaylabel.tooltip;"
 				/>
-
+<hbox>
 		   <checkbox
 					label="&qf.checkbox.usekeyboardshortcuts;"
 					preference="QuickFolders-Preferences-UseKeyboardShortcuts"
@@ -86,6 +87,7 @@
 					instantApply="true"
 					style="margin-left:25px;"
 				/>
+</hbox>
 
 				<checkbox
 					label="&qf.checkbox.showshortcutnumber;"
@@ -139,6 +141,16 @@
 					preference="QuickFolders-Preferences-EnableMenuSorting"
 					instantApply="true"
 					tooltiptext="&qf.checkbox.sortMenusAlpha.tooltip;"
+				/>
+
+				<checkbox
+					id="chkRecent"
+					label="&qf.checkbox.showRecentTab;"
+					preference="QuickFolders-Preferences-ShowRecentTab"
+					instantApply="true"
+					src="chrome://quickfolders/skin/ico/history.png"
+					oncontextmenu="QuickFoldersOptions.showAboutConfig('quickfolders.recentfolders');return false;"
+					tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
 				/>
 
 

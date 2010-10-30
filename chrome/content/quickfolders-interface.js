@@ -16,6 +16,7 @@ QuickFolders.Interface = {
 	specialButtons: [],
 	//myPopup: null,
 	boundKeyListener: false,
+	RecentPopupId: 'QuickFolders-folder-popup-Recent',
 
 	getUIstring: function(id, defaultString) {
 		var theBundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
@@ -107,6 +108,297 @@ QuickFolders.Interface = {
 		this.TimeoutID=0;
 	},
 
+	generateMRUlist: function (ftv) { // generateMap: function ftv_recent_generateMap(ftv)
+		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist');
+
+		var items;
+		var MAXRECENT = QuickFolders.Preferences.getIntPrefQF("recentfolders.itemCount");
+
+		try {
+			/**
+			 * Sorts our folders by their recent-times.
+			 */
+			function sorter(a, b) {
+				return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
+			}
+
+			/**
+			 * This function will add a folder to the recentFolders array if it
+			 * is among the 15 most recent.  If we exceed 15 folders, it will pop
+			 * the oldest folder, ensuring that we end up with the right number
+			 *
+			 * @param aFolder the folder to check
+			 */
+			let recent = [];
+			let oldestTime = 0;
+			function addIfRecent(aFolder) {
+				let time;
+				try {
+					time = Number(aFolder.getStringProperty("MRUTime")) || 0;
+				} catch (ex) {return;}
+				if (time <= oldestTime)
+					return;
+
+				if (recent.length == MAXRECENT) {
+					recent.sort(sorter);
+					recent.pop();
+					let oldestFolder = recent[recent.length - 1];
+					oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
+				}
+				recent.push(aFolder);
+			}
+
+			for each (let folder in ftv._enumerateFolders)
+				addIfRecent(folder);
+
+			recent.sort(sorter);
+
+			items = [new ftvItem(f) for each (f in recent)];
+
+			// There are no children in this view!
+			// And we want to display the account name to distinguish folders w/
+			// the same name.
+			for each (let folder in items) {
+				folder.__defineGetter__("children", function() []);
+				folder.addServerName = true;
+			}
+		}
+		catch(ex) {
+			QuickFolders.Util.logException('Exception during generateMRUlist: ', ex);
+			return null;
+		}
+
+		return items;
+	},
+
+	// Postbox / SeaMonkey specific code:
+	// See also: http://mxr.mozilla.org/mozilla/source/mail/base/content/mail-folder-bindings.xml#369
+	generateMRUlist_Postbox: function()
+	{
+		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox');
+		const Cc = Components.classes;
+		const Ci = Components.interfaces;
+		// Iterate through all folders in all accounts, and check MRU_Time,
+		// then take the most current 15.
+
+		/**
+		 * This function will iterate through any existing sub-folders and
+		 * (1) check if they're recent and (2) recursively call this function
+		 * to iterate through any sub-sub-folders.
+		 *
+		 * @param aFolder  the folder to check
+		 */
+		function checkSubFolders(aFolder) {
+			QuickFolders.Util.logDebugOptional("recentFolders","checkSubFolders: " + aFolder.prettyName);
+			if (!aFolder.hasSubFolders)
+				return;
+			let myenum; // force instanciation for SM
+			if (typeof aFolder.subFolders != 'undefined')
+				myenum = aFolder.subFolders;
+			else
+				myenum = aFolder.GetSubFolders();
+
+
+			let done=false;
+			while (!done) {
+				var folder;
+				if (typeof myenum.currentItem!='undefined')
+					folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
+				else // SeaMonkey
+				{
+					if (myenum.hasMoreElements())
+						folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+					else {
+						done=true;
+						break;
+					}
+				}
+				QuickFolders.Util.logDebugOptional("popupmenus","      check for recent: " + folder.prettyName);
+
+				addIfRecent(folder);
+				checkSubFolders(folder);
+				// Postbox
+				if (typeof myenum.next != 'undefined') {
+					try { myenum.next(); } catch(e) {done=true;}
+				}
+			}
+			done=false;
+		}
+
+		var recentFolders = [];
+		var oldestTime = 0;
+
+		/**
+		 * This function will add a folder to the recentFolders array if it
+		 * is among the 15 most recent.  If we exceed 15 folders, it will pop
+		 * the oldest folder, ensuring that we end up with the right number
+		 *
+		 * @param aFolder the folder to check
+		 */
+		var MAXRECENT = QuickFolders.Preferences.getIntPrefQF("recentfolders.itemCount");
+
+		var menu = this;
+		function addIfRecent(aFolder) {
+			if (!aFolder.canFileMessages)
+				return;
+
+			var time = 0;
+			try {
+				time = aFolder.getStringProperty("MRUTime");
+			} catch(ex) {}
+			if (time <= oldestTime)
+				return;
+
+			if (recentFolders.length == MAXRECENT) {
+				recentFolders.sort(sorter);
+				recentFolders.pop();
+				oldestTime = recentFolders[recentFolders.length-1].getStringProperty("MRUTime");
+			}
+			recentFolders.push(aFolder);
+		}
+
+		// Start iterating at the top of the hierarchy, that is, with the root
+		// folders for each account.
+		var acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
+		              getService(Ci.nsIMsgAccountManager);
+		var count = acctMgr.accounts.Count();
+		for (var i = 0; i < count; i++) {
+		  var acct = acctMgr.accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
+		  addIfRecent(acct.incomingServer.rootFolder);
+		  checkSubFolders(acct.incomingServer.rootFolder);
+		}
+
+		function sorter(a, b) {
+		   return a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime");
+		}
+		recentFolders.sort(sorter);
+
+		return  recentFolders;
+	} ,
+
+	createRecentPopup: function(passedPopup, isDrag, isCreate) {
+		var menupopup;
+
+		var popupId = this.RecentPopupId;
+		QuickFolders.Util.logDebugOptional('recentFolders','createRecentPopup(passedPopup:' + passedPopup + ', isDrag:'+ isDrag +', isCreate:' + isCreate + ')');
+
+		if (passedPopup) {
+			menupopup = passedPopup;
+			popupId = passedPopup.getAttribute('id');
+			// clear old folders...
+			while (menupopup.firstChild)
+				menupopup.removeChild(menupopup.firstChild);
+		}
+		else {
+			menupopup = document.createElement('menupopup');
+			menupopup.setAttribute('id',popupId);
+		}
+
+
+		menupopup.setAttribute('position','after_start'); //
+		menupopup.className = 'QuickFolders-folder-popup';
+		if (isCreate) {
+			// if popup is null, we are creating the button - no need to populate the menu as it is being done again on the click / drag event!
+			return menupopup;
+		}
+
+
+		QuickFolders.Util.logDebugOptional("recentFolders","Creating Popup Set for Recent Folders tab");
+
+		// convert array into nsISimpleEnumerator
+		var recentFolders;
+		var FoldersArray = Components.classes["@mozilla.org/array;1"]
+		                    .createInstance(Components.interfaces.nsIMutableArray);
+
+		var isOldFolderList = false;
+		if (typeof gFolderTreeView=='undefined') {
+			recentFolders = this.generateMRUlist_Postbox();
+			isOldFolderList = true;
+		}
+		else {
+			recentFolders = this.generateMRUlist(gFolderTreeView); // instead of 'let' recentFolders
+		}
+
+		for (var i=0; i<recentFolders.length; i++) {
+			var prettyName;
+			if (isOldFolderList) {
+				FoldersArray.appendElement(recentFolders[i], false);
+				prettyName = recentFolders[i].prettyName;
+			}
+			else {
+				FoldersArray.appendElement(recentFolders[i]._folder, false);
+				prettyName = recentFolders[i]._folder.prettyName;
+			}
+			QuickFolders.Util.logDebugOptional('recentFolders.detail','Recent Folders Array: ' + i + '. appended ' + prettyName);
+		}
+
+
+		// addSubFoldersPopupFromList expects nsISimpleEnumerator, enumerate() convrts the nsIMutableArray
+		var isAlphaSorted =  QuickFolders.Preferences.getBoolPrefQF("recentfolders.sortAlphabetical");
+		this.addSubFoldersPopupFromList(FoldersArray.enumerate(), menupopup, isDrag, isAlphaSorted, true);
+		QuickFolders.Util.logDebugOptional('recentFolders','=============================\n'
+			+ 'createRecentPopup Finished!');
+		return menupopup;
+
+	} ,
+
+	createRecentTab: function(passedPopup, isDrag, passedButton) {
+		try {
+			QuickFolders.Util.logDebugOptional('recentFolders','createRecentTab( passedPopup:' + passedPopup + ', isDrag:' + isDrag + ', passedButton:' + passedButton + ')');
+			var menupopup;
+			var isFolderUpdate = false; //  need this to know if we are creating a fresh button (true) or just rebuild the folders menu on click/drag (false)
+			var button = passedButton ? passedButton : document.createElement("toolbarbutton");
+			if (!passedButton) {
+				isFolderUpdate = true;
+				var recentLabel = QuickFolders.Preferences.getBoolPrefQF("recentfolders.showLabel") ?
+					this.getUIstring("qfRecentFolders", "Recent Folders") : '';
+				button.setAttribute("label", recentLabel);
+				button.setAttribute("tag", "#Recent");
+
+				this.styleFolderButton(button, 0, 0, 'recent icon');
+				this.buttonsByOffset[0] = button; // currently, hard code to be the first! ([0] was [offset])
+				var tabColor = 1;
+				if (tabColor)
+					this.setButtonColor(button, tabColor);
+			}
+
+			menupopup = this.createRecentPopup(passedPopup, isDrag, isFolderUpdate);
+
+			var menuitem;
+			this.menuPopupsByOffset[0] = menupopup;
+			if (!isDrag) {
+				button.appendChild(menupopup); // was popupset.appendChild
+
+				button.setAttribute('context', this.RecentPopupId);
+				button.setAttribute('position','after_start');
+				button.setAttribute("oncontextmenu",'QuickFolders.Interface.onClickRecent(event.target, event, false);');
+				button.setAttribute("onclick",'QuickFolders.Interface.onClickRecent(event.target, event, true); return false;');
+
+				button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+				button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+			}
+
+			return button;
+		}
+
+		catch(ex) {
+			QuickFolders.Util.logException("Exception during createRecentTab: ", ex);
+			return null;
+		}
+
+	},
+
+	onClickRecent: function(button, evt, forceDisplay) {
+		// refresh the recent menu on right click
+		this.createRecentTab(this.menuPopupsByOffset[0], false, button);
+
+		if (forceDisplay) {
+			// left click: open context menu through code
+			QuickFolders.Interface.showPopup(button, this.RecentPopupId);
+		}
+
+	} ,
+
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	updateFolders: function(rebuildCategories) {
 		this.TimeoutID=0;
@@ -158,6 +450,17 @@ QuickFolders.Interface = {
 
 
 		var offset = 0;
+
+		// Recent Folders tab
+		if (QuickFolders.Preferences.isShowRecentTab()
+			&& !(QuickFolders.Util.Appver()<3 && (QuickFolders.Util.Application()=='Thunderbird')) )
+		{
+			var rtab = this.createRecentTab(null, false, null);
+			if (rtab) {
+				this.getToolbar().appendChild(rtab);
+				offset++;
+			}
+		}
 
 		// force user colors on first updateFolders (no selecteFolder yet!)
 		if (QuickFolders.Model.selectedFolders.length) {
@@ -342,7 +645,7 @@ QuickFolders.Interface = {
 			var button = this.buttonsByOffset[i];
 			try {
 				// doesn't work for search folders?
-				if(button.folder.URI == folder.URI) {
+				if(button.folder && button.folder.URI == folder.URI) {
 					return button;
 				}
 
@@ -367,6 +670,17 @@ QuickFolders.Interface = {
 		if (sFolder.length == sURI.length - sURI.indexOf(sFolder))
 			return true;
 		return false;
+	},
+
+	// to fix positioning problems, we replace context with popup
+	showPopup: function(button, popupId) {
+		var p =  QuickFolders.doc.getElementById(popupId);
+		if (p) {
+			if (typeof p.openPopup=='undefined')
+				p.showPopup(button, -1,-1,"context","bottomleft","topleft");
+			else
+				p.openPopup(button,'after_start', -1,-1,"context",false);
+		}
 	},
 
 	addFolderButton: function(folder, useName, offset, tabColor) {
@@ -498,8 +812,10 @@ QuickFolders.Interface = {
 
 
 		var popupId = 'QuickFolders-folder-popup-' + folder.URI;
-		button.setAttribute('context',popupId);
-		button.setAttribute('position','after_start');
+		//button.setAttribute('popup',popupId); // not needed, we do this manually now...
+		button.setAttribute('context',''); // overwrites the parent context menu
+		button.setAttribute("oncontextmenu",'QuickFolders.Interface.showPopup(this,"' + popupId + '")');
+
 
 		this.getToolbar().appendChild(button);
 
@@ -576,6 +892,8 @@ QuickFolders.Interface = {
 
 
 	onButtonClick: function(button, evt, isMouseClick) {
+
+		QuickFolders.Util.logDebugOptional("mouseclicks","onButtonClick - isMouseClick = " + isMouseClick);
 
 		try {
 			if (evt) {
@@ -759,9 +1077,6 @@ QuickFolders.Interface = {
 
 
 	addPopupSet: function(popupId, folder, offset, button) {
-		//var popupset = document.createElement('popupset');
-		QuickFolders.Util.logDebugOptional("popupmenus", "Create popup menu " + folder.name + "...");
-		//this.getToolbar().appendChild(popupset);
 
 		var menupopup = document.createElement('menupopup');
 		menupopup.setAttribute('id',popupId);
@@ -1096,173 +1411,179 @@ QuickFolders.Interface = {
 				}
 			}
 		}
-		catch(ex) {QuickFolders.Util.logDebug('Exception in addDragToNewFolderItem (adding drag Menu items): ' + ex); }
+		catch(ex) {QuickFolders.Util.logException('Exception in addDragToNewFolderItem (adding drag Menu items): ', ex); }
 	},
+
+	// isDrag: if this is set to true, then the command items are not included
+	addSubFoldersPopupFromList: function(subfolders, popupMenu, isDrag, forceAlphaSort, includeAccountName) {
+		var subfolder;
+		var appver=QuickFolders.Util.Appver();
+
+		var done = false;
+
+		while (!done) {
+			// TB2 and Postbox:
+			if (typeof subfolders.currentItem!='undefined')
+				subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+			else {
+				if (subfolders.hasMoreElements())
+					subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+				else {
+					done=true;
+					break;
+				}
+			}
+
+			try {
+				this.debugPopupItems++;
+				var menuitem = document.createElement('menuitem');
+
+				var menuLabel = subfolder.name;
+
+				var hostString = subfolder.rootFolder.name;
+				if (includeAccountName)
+					menuLabel = subfolder.name + ' - ' + hostString;
+
+
+				menuitem.setAttribute('label', menuLabel); //+ subfolder.URI
+				menuitem.setAttribute("tag","sub");
+
+				var numUnread = subfolder.getNumUnread(false);
+				var numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread;
+				var sCount = ' (' + ((numUnread>0) ? numUnread : '') ;
+				if (numUnread + numUnreadInSubFolders == 0)
+					sCount = ''
+
+
+				if (numUnreadInSubFolders+numUnread>0) {
+					if(numUnreadInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
+						sCount += '+'+numUnreadInSubFolders+'';
+					sCount += ")";
+					if (!QuickFolders.Preferences.isShowCountInSubFolders() && numUnread==0)
+						sCount="";
+
+					menuitem.setAttribute("class","hasUnread menuitem-iconic");
+					menuitem.setAttribute('label', menuLabel + sCount);
+				}
+				else
+					menuitem.setAttribute("class","menuitem-iconic");
+				if (! (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders()))
+					menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
+
+				if (true) {
+					// AG added "empty" click event to avoid bubbling to parent menu!
+					menuitem.addEventListener("click", function(evt) { evt.stopPropagation(); }, false);
+				}
+
+				QuickFolders.Util.logDebugOptional("popupmenus","add oncommand event for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
+
+				menuitem.folder = subfolder;
+				if (!(QuickFolders.Util.Application()=='Thunderbird' && appver<3))
+					menuitem.setAttribute("ondragenter","event.preventDefault()"); // fix layout issues in TB3 + Postbox!
+				menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
+				menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+				menuitem.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+
+				if (forceAlphaSort) {
+					// alpha sorting by starting from end of menu up to separator!
+					var c=popupMenu.childNodes.length-1; //count of last menu item
+					var added=false;
+					var tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
+						  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
+						  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
+						  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
+						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
+						  "\xDF":"ss", "_":"/", ":":"."};
+					var killDiacritics = function(s) {
+						return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
+					}
+
+					var sNewName = killDiacritics(subfolder.name);
+					// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
+					// >=0 undo this change - fixes [Bug 21317]
+					for (;c>=0 && popupMenu.childNodes[c].hasAttribute('label');c--) {
+						if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute('label')))
+						{
+							if (c+1 == popupMenu.childNodes.length)
+								popupMenu.appendChild(menuitem);
+							else
+								popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
+							added=true;
+							break;
+						}
+					}
+					if (!added) { // nothing with a label was found? then this must be the first folder item in the menu
+						if (c+1 >= popupMenu.childNodes.length)
+							popupMenu.appendChild(menuitem);
+						else
+							popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
+					}
+				} // end alphanumeric sorting
+				else
+					popupMenu.appendChild(menuitem);
+
+
+				if (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders())
+				{
+					this.debugPopupItems++;
+					//QuickFolders.Util.logToConsole("folder " + subfolder.name + " has subfolders");
+					var subMenu = document.createElement('menu');
+					subMenu.setAttribute("label", menuLabel + sCount);
+					subMenu.className = 'QuickFolders-folder-popup' + ((numUnreadInSubFolders+numUnread>0) ? ' hasUnread' : '');
+
+					subMenu.folder = subfolder;
+
+					subMenu.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
+					subMenu.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+					subMenu.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+
+					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
+					//subMenu.allowEvents=true;
+					// oncommand did not work
+					QuickFolders.Util.logDebugOptional("popupmenus","add click listener for subMenu " + subMenu.getAttribute("label") + " onSelectParentFolder(" + subfolder.URI+ ")");
+
+					//let uriCopy = subfolder.URI; // snapshot! (not working in TB2)
+					this.addSubMenuEventListener(subMenu, subfolder.URI); // create a new context for copying URI
+
+					var subPopup = document.createElement("menupopup");
+
+
+					subMenu.appendChild(subPopup);
+					//popupMenu.appendChild(subMenu); // append it to main menu
+
+					popupMenu.insertBefore(subMenu,menuitem)
+					subPopup.appendChild(menuitem); // move parent menu entry
+
+					this.addSubFoldersPopup(subPopup, subfolder, isDrag); // populate the sub menu
+
+					subPopup.removeChild(menuitem);
+				}
+
+				if (typeof subfolders.next!='undefined') {
+					try { subfolders.next(); } catch(e) { done=true; }
+				}
+			}
+			catch(ex) {QuickFolders.Util.logDebug('Exception in addSubFoldersPopup: ' + ex  + '\nFile: ' + ex.FileName + '  [' + ex.lineNumber + ']'); done = true;}
+		}
+	},
+
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
 	addSubFoldersPopup: function(popupMenu, folder, isDrag) {
 		if (folder.hasSubFolders) {
-			var subfolder, subfolders;
+			var subfolders;
 			var isTB2 = false;
-			var appver=QuickFolders.Util.Appver();
-			switch (QuickFolders.Util.Application()) {
-				case 'Postbox':
-					// was appver<2
-					subfolders = folder.GetSubFolders();
-					break;
-				case 'Thunderbird':
-					if (appver<3) {
-						isTB2 = true;
-						subfolders = folder.GetSubFolders(); //subfolders.sort();
-					}
-					else
-						subfolders = folder.subFolders; // was folder.GetSubFolders() not defined in TB3 ! // also GetSubFoldersInFolderPaneOrder()
-					break;
-				case 'SeaMonkey':
-					subfolders = folder.subFolders;
-					break;
-			}
+			if (typeof folder.subFolders != 'undefined')
+				subfolders = folder.subFolders;
+			else
+				subfolders = folder.GetSubFolders();
 
-			var done = false;
+			if (QuickFolders.Util.Application()=='Thunderbird')
+				if (QuickFolders.Util.Appver()<3)
+					isTB2=true;
 
-			while (!done) {
-				if ( (QuickFolders.Util.Application()=='Thunderbird' && appver<3)
-				   || QuickFolders.Util.Application()=='Postbox')
-					subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
-				else {
-					if (subfolders.hasMoreElements())
-						subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-					else {
-						done=true;
-						break;
-					}
-				}
-
-				try {
-					this.debugPopupItems++;
-					var menuitem = document.createElement('menuitem');
-					menuitem.setAttribute('label', subfolder.name); //+ subfolder.URI
-					menuitem.setAttribute("tag","sub");
-
-					var numUnread = subfolder.getNumUnread(false);
-					var numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread;
-					var sCount = ' (' + ((numUnread>0) ? numUnread : '') ;
-					if (numUnread + numUnreadInSubFolders == 0)
-						sCount = ''
-
-
-					if (numUnreadInSubFolders+numUnread>0) {
-						if(numUnreadInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
-							sCount += '+'+numUnreadInSubFolders+'';
-						sCount += ")";
-						if (!QuickFolders.Preferences.isShowCountInSubFolders() && numUnread==0)
-							sCount="";
-
-						menuitem.setAttribute("class","hasUnread menuitem-iconic");
-						menuitem.setAttribute('label', subfolder.name + sCount);
-					}
-					else
-						menuitem.setAttribute("class","menuitem-iconic");
-					if (! (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders()))
-						menuitem.setAttribute("oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
-
-					if (QuickFolders.Util.Application()=='Thunderbird'  && appver<3) {
-						// AG added "empty" click event to avoid bubbling to parent menu!
-						menuitem.addEventListener("click", function(evt) { evt.stopPropagation(); }, false);
-					}
-
-					QuickFolders.Util.logDebugOptional("popupmenus","add oncommand event for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
-
-					menuitem.folder = subfolder;
-					if (!(QuickFolders.Util.Application()=='Thunderbird' && appver<3))
-						menuitem.setAttribute("ondragenter","event.preventDefault()"); // fix layout issues in TB3 + Postbox!
-					menuitem.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
-					menuitem.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-					menuitem.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
-
-					if (QuickFolders.Preferences.isSortSubfolderMenus()) {
-						// alpha sorting by starting from end of menu up to separator!
-						var c=popupMenu.childNodes.length-1; //count of last menu item
-						var added=false;
-						var tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
-							  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
-							  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
-							  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
-							  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
-							  "\xDF":"ss", "_":"/", ":":"."};
-						var killDiacritics = function(s) {
-							return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
-						}
-
-						var sNewName = killDiacritics(subfolder.name);
-						// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
-						// >=0 undo this change - fixes [Bug 21317]
-						for (;c>=0 && popupMenu.childNodes[c].hasAttribute('label');c--) {
-							if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute('label')))
-							{
-								if (c+1 == popupMenu.childNodes.length)
-									popupMenu.appendChild(menuitem);
-								else
-									popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
-								added=true;
-								break;
-							}
-						}
-						if (!added) { // nothing with a label was found? then this must be the first folder item in the menu
-							if (c+1 >= popupMenu.childNodes.length)
-								popupMenu.appendChild(menuitem);
-							else
-								popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
-						}
-					} // end alphanumeric sorting
-					else
-						popupMenu.appendChild(menuitem);
-
-
-					if (subfolder.hasSubFolders && QuickFolders.Preferences.isShowRecursiveFolders())
-					{
-						this.debugPopupItems++;
-						//QuickFolders.Util.logToConsole("folder " + subfolder.name + " has subfolders");
-						var subMenu = document.createElement('menu');
-						subMenu.setAttribute("label", subfolder.name + sCount);
-						subMenu.className = 'QuickFolders-folder-popup' + ((numUnreadInSubFolders+numUnread>0) ? ' hasUnread' : '');
-
-						subMenu.folder = subfolder;
-
-						subMenu.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-						subMenu.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-						subMenu.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
-
-						// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
-						//subMenu.allowEvents=true;
-						// oncommand did not work
-						QuickFolders.Util.logDebugOptional("popupmenus","add click listener for subMenu " + subMenu.getAttribute("label") + " onSelectParentFolder(" + subfolder.URI+ ")");
-
-						//let uriCopy = subfolder.URI; // snapshot! (not working in TB2)
-						this.addSubMenuEventListener(subMenu, subfolder.URI); // create a new context for copying URI
-
-						var subPopup = document.createElement("menupopup");
-
-
-						subMenu.appendChild(subPopup);
-						//popupMenu.appendChild(subMenu); // append it to main menu
-
-						popupMenu.insertBefore(subMenu,menuitem)
-						subPopup.appendChild(menuitem); // move parent menu entry
-
-						this.addSubFoldersPopup(subPopup, subfolder, isDrag); // populate the sub menu
-
-						subPopup.removeChild(menuitem);
-					}
-
-					if ((QuickFolders.Util.Application()=='Thunderbird' && appver<3)
-						|| QuickFolders.Util.Application()=='Postbox') {
-						try { subfolders.next(); } catch(e) { done=true; }
-					}
-				}
-				catch(e) {QuickFolders.Util.logDebug('Exception in addSubFoldersPopup: ' + e); done = true;}
-			}
-
+			var isAlphaSorted = QuickFolders.Preferences.isSortSubfolderMenus()
+			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, false);
 		}
 
 		// append the "Create New Folder" menu item!
@@ -1453,7 +1774,7 @@ QuickFolders.Interface = {
 
 		newclass += 'col'+col+ ((nTabStyle==0) ? 'striped' : '');
 
-		button.setAttribute("class", newclass);
+		button.setAttribute("class", newclass); // .trim()
 		return true;
 
 	},

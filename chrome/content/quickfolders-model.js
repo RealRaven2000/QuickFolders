@@ -102,27 +102,27 @@ QuickFolders.Model = {
 		}
 	} ,
 
-   qfGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
-   {
-	 var msgfolder = null;
-	 try {
-		 var resource = GetResourceFromUri(uri);
-		 msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
-		 if (checkFolderAttributes) {
-			 if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
-				 msgfolder = null;
-			 }
-		 }
-	 }
-	 catch (ex) {
-		 //dump("failed to get the folder resource\n");
-	 }
-	 return msgfolder;
-   } ,
+	qfGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
+	{
+		var msgfolder = null;
+		try {
+			var resource = GetResourceFromUri(uri);
+			msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
+			if (checkFolderAttributes) {
+				if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
+					msgfolder = null;
+				}
+			}
+		}
+		catch (ex) {
+			 //dump("failed to get the folder resource\n");
+		}
+	return msgfolder;
+	} ,
 
 
 
-   getCategories: function() {
+	getCategories: function() {
 		var categories = [];
 
 		// can we add a color per category?
@@ -142,7 +142,7 @@ QuickFolders.Model = {
 				  }
 				}
 				catch(e) {
-					QuickFolders.Util.logDebug("Exception while checking folder existence: " + e)
+					QuickFolders.Util.logException("Exception while checking folder existence: ", e)
 
 					continue;
 				}

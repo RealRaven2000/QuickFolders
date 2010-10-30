@@ -1,0 +1,68 @@
+<!ENTITY qf.prefwindow.quickfolders.options "Inställningar för QuickFolders">
+<!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.tab.general "Allmänt">
+<!ENTITY qf.tab.layout "Utseende">
+<!ENTITY qf.tab.quickhelp "Snabbhjälp">
+<!ENTITY qf.checkbox.displaylabel "Visa &apos;QuickFolders&apos;-etiketten i verktygsfältet">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Använd kortkommandon (Alt + 1 till Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Använd Ctrl istället för Alt">
+<!ENTITY qf.checkbox.showshortcutnumber "Visa kortkommandonummer på mappetiketter">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Visa antalet olästa meddelanden på mappknappen">
+<!ENTITY qf.checkbox.showUnreadBold "Visa knappar för mappar med olästa meddelanden i fetstil">
+<!ENTITY qf.checkbox.showTotalMessageCount "Visa det totala antalet meddelanden på mappknappen">
+<!ENTITY qf.checkbox.showCountInSubFolders "Visa även det totala antalet undermappar">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Dessa visas med ett '+' bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Visa knappar för mappar med meddelanden i sig i kursiv stil">
+<!ENTITY qf.label.buttonFontSize "Fontstorlek för knapp (lämna tomt för standardvärdet): ">
+<!ENTITY qf.label.pixels "pixlar">
+<!ENTITY qf.label.setcolors "Ange [Textfärg], Bakgrundsfärg">
+<!ENTITY qf.label.ActiveTabColor "Färg på aktiv flik:">
+<!ENTITY qf.label.HoveredTabColor "Färg på mushovrad flik:">
+<!ENTITY qf.label.DragOverBackground "Färg vid dra &amp; släpp över flik:">
+<!ENTITY qf.label.ToolbarBackground "Verktygsfältets bakgrund:">
+<!ENTITY qf.description.dragToAdd "Dra meddelandemappar till en tom yta i det nya verktygsfältet för att skapa en ny snabbmapp (fungerar som en genväg/ett alias). Dra meddelanden till snabbmappen för att flytta dem till motsvarande mapp (eller kopiera med låstangenten). Klicka på snabbmappen för att hoppa till meddelandemappen.">
+<!ENTITY qf.description.dragToPosition "Dra snabbmappar i sidled för att ändra deras inbördes positioner. Högerklicka på en snabbmapp för en snabbmeny där du kan välja undermappar att hoppa till. &apos;Byt namn på bokmärke&apos; ändrar snabbmappens etikett. &apos;Ta bort bokmärke&apos; tar bort snabbmappen (inte meddelandemappen).">
+<!ENTITY qf.description.dragToPopup "Dra meddelanden till snabbmappens popup-meny för att flytta dem till undermappar.">
+<!ENTITY qf.description.changeCategory "Högerklicka på ett bokmärke för att inordna det i en kategori. Du får upp en rullgardinsmeny med kategorier till vänster om fältet.">
+<!ENTITY qf.description.rightClickOptions "Högerklicka på en tom yta för att öppna alternativmenyn. Där kan du välja Systemlik stil (mindre) eller Platt stil (tydligare; stödjer dragindikator).">
+<!ENTITY qf.description.tipMsg "Tips: Om du har ett mycket stort antal mappar, testa tillägget Nostalgy som erbjuder en tangentbordsbaserad meddelandehantering.">
+<!ENTITY qf.description.experimentalItems "Följande objekt är experimentella, de kommer förhoppningsvis att inkluderas i nästa version!!">
+<!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar... Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">
+<!ENTITY qf.button.defaultcolors "Standardfärger">
+<!ENTITY qf.checkbox.debug "Felsökningsläge">
+<!ENTITY qf.label.StandardTabColor "Standardflikfärg:">
+<!ENTITY qf.label.initdelay "Inledande fördröjning (ms) {standardvärdet är 1000}:">
+<!ENTITY qf.label.folders "Mappar?">
+<!ENTITY qf.label.folders.tooltip "Kopierar mapparnas konfigurationssträng till Urklipp">
+<!ENTITY qf.checkbox.autoFocusPreview "Fokusera på meddelandelistan när du byter flik">
+<!ENTITY qf.label.homePage "Utförlig information finns på QuickFolders webbplats på Mozdev.org...">
+<!ENTITY qf.tab.support "Support">
+<!ENTITY qf.description.languages "QuickFolders stödjer språkanpassning - du kan hjälpa till genom att lägga till en översättning på ditt språk på BabelZilla:">
+<!ENTITY qf.label.languagesLink "Lägg till översättning...">
+<!ENTITY qf.description.donate "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders.">
+<!ENTITY qf.label.donateLink "Gå till donationssidan...">
+<!ENTITY qf.description.contactMe "Du kan också kontakta mig personligen på axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Kontakta mig (på engelska eller tyska)...">
+<!ENTITY qf.checkbox.showIcons "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)">
+<!ENTITY qf.checkbox.showSubfolders "Visa undermappar i popup-menyer">
+<!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Högerklicka för inställningar">
+<!ENTITY qf.menu.tabColor "Ingen färg!">
+<!ENTITY qf.menu.Color "Färg">
+<!ENTITY qf.options.LayoutColorAppearance "Flikfärgsutseende">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(randig stil)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(fylld stil)">
+<!ENTITY qf.checkbox.showNativeTabStyle "Systemlik flikstil - utseendet påminner om flikarna i ditt OS; utan något av färgalternativen nedan">
+<!ENTITY qf.checkbox.showFlatStyle "Platt flikstil - rekommenderas eftersom det stödjer alla färgalternativen nedan">
+<!ENTITY qf.description.linkNote "Besök QuickFolders webbplats för en utförlig användarguide, tips och FAQ:">
+<!ENTITY qf.checkbox.transparent "transparent">
+<!ENTITY qf.checkbox.shadows "skuggor">
+<!ENTITY qf.checkbox.debug.tooltip "högerklicka på den här kryssrutan för avancerade felsökningsalternativ">
+<!ENTITY qf.checkbox.displaylabel.tooltip "högerklicka för att ändra etikettexten">
+<!ENTITY qf.checkbox.sortMenusAlpha "Tvinga alfabetisk sortering av menyer med undermappar.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Använd endast det här alternativet om din e-postklient inte sorterar undermappar korrekt.">
+<!ENTITY qf.options.versionnumber.tooltip "Högerklicka för versionshistorik.">
+<!ENTITY qf.description.bugzilla "Var vänlig använd Bugzilla för alla officiella funktionsönskemål och buggrapporter">
+<!ENTITY qf.label.bugzilla "Rapportera en bugg / Uttryck önskemål om en ny funktion på Bugzilla...">
+<!ENTITY qf.description.versionhistory "Utförlig versionshistorik på mozdev.org">
+<!ENTITY qf.label.versionhistory "Läs versionshistoriken...">

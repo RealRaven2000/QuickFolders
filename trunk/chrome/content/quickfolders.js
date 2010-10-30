@@ -339,6 +339,12 @@ END LICENSE BLOCK */
 	  AG: Fixed a bug that made reordering quicktabs to the right of their current position fail sometimes
 	  AG: TB2 - Fixed - hidden shadows option and made icons option visible again
 
+	12/10/2010 - 2.1 WIP
+	  AG: Fixed a problem when dragging to New Folder from find result list (error message: no source folder)
+	  AG: Added Recent Folders Tab
+	  AG: Added locale sv-SE by Mikael Hiort af Ornaes
+	  AG: Fixed Positioning of Folder Menus
+
   KNOWN ISSUES
   ============
   23/10/2009
@@ -735,6 +741,7 @@ var QuickFolders = {
 
 				function newFolderCallback(aName, FolderParam) {
 					var step='';
+					var isManyFolders = false;
 					if (aName) try {
 						var currentURI;
 
@@ -745,7 +752,10 @@ var QuickFolders = {
 							aFolder = GetMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 						}
 						else {
-							currentURI = gFolderDisplay.displayedFolder.URI;
+							if (gFolderDisplay.displayedFolder)
+								currentURI = gFolderDisplay.displayedFolder.URI;
+							else
+								isManyFolders = true;
 							aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
 						}
 
@@ -886,16 +896,32 @@ var QuickFolders = {
 					}
 
 					//show context menu if dragged over a button which has subfolders
-					var targetFolder = button.folder;
+					var targetFolder = null;
+					if(button.folder)
+						targetFolder = button.folder;
 
-					if (targetFolder.hasSubFolders) {
-						var i;
-						var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
-						for(i = 0; i < otherPopups.length; i++) {
+					var i;
+					var otherPopups = QuickFolders.Interface.menuPopupsByOffset;
+					for(i = 0; i < otherPopups.length; i++) {
+						if (otherPopups[i].folder) {
 							if (otherPopups[i].folder!=targetFolder)
 								otherPopups[i].hidePopup();
 						}
+						else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
+							otherPopups[i].hidePopup();
+						}
+/*						// use the "tag" attribute to close popup on special buttons (e.g. Recent Folders tab)
+ *						if (otherPopups[i].getAttribute('tag')) {
+ *							if (!button.getAttribute('tag'))
+ *								otherPopups[i].hidePopup();
+ *							else
+ *								if (otherPopups[i].getAttribute('tag')!=button.getAttribute('tag'))
+ *									otherPopups[i].hidePopup();
+ *						}
+ */
+
 					}
+
 
 					// only show popups when dragging messages!
 					// removed && targetFolder.hasSubFolders as we especially need the new folder submenu item for folders without subfolders!
@@ -906,10 +932,12 @@ var QuickFolders = {
 							return;  // don't show popup when reordering tabs
 
 						var isTB2 = ((QuickFolders.Util.Application()=='Thunderbird') && (QuickFolders.Util.Appver() < 3));
-						if ( isTB2 && !targetFolder.hasSubFolders)
-							return; // no popup menu at all!
+						if (isTB2 && targetFolder!=null)
+							if (isTB2 && !targetFolder.hasSubFolders)
+								return; // no popup menu at all!
 
-						QuickFolders.Util.logDebugOptional("dnd", "creating popupset for " + targetFolder.name );
+						if (targetFolder)
+							QuickFolders.Util.logDebugOptional("dnd", "creating popupset for " + targetFolder.name );
 
 						// instead of using the full popup menu (containing the 3 top commands)
 						// try to create droptarget menu that only contains the target subfolders "on the fly"
@@ -919,22 +947,33 @@ var QuickFolders = {
 						var popupset = this.doc.createElement('popupset');
 						QuickFolders.Interface.getToolbar().appendChild(popupset);
 						var menupopup = this.doc.createElement('menupopup');
-						var popupId = 'moveTo_'+targetFolder.URI;
-						menupopup.setAttribute('id', popupId);
-						menupopup.className = 'QuickFolders-folder-popup';
-						menupopup.folder = targetFolder;
-						popupset.appendChild(menupopup);
-						// excluding TB 2 from "drag to new folder" menu for now
-						QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder, true);
+
+						var popupId;
+						if (targetFolder) {
+							popupId = 'moveTo_'+targetFolder.URI;
+							menupopup.setAttribute('id', popupId);
+							menupopup.className = 'QuickFolders-folder-popup';
+							menupopup.folder = targetFolder;
+							popupset.appendChild(menupopup);
+							// excluding TB 2 from "drag to new folder" menu for now
+							QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder, true);
+						}
+						else { // special folderbutton: recent
+							popupId = 'moveTo_QuickFolders-folder-popup-Recent';
+							menupopup.setAttribute('id', popupId);
+							popupset.appendChild(menupopup);
+							QuickFolders.Interface.createRecentTab(menupopup, true, button);
+						}
 
 						// a bug in showPopup when used with coordinates makes it start from the wrong origin
 						//document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
 						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
 						QuickFolders.Util.logDebugOptional("dnd", "showPopup with id " + popupId );
-						if (QuickFolders.Util.Application() == 'SeaMonkey')
-							this.doc.getElementById(popupId).openPopup(button,'after_start', -1,-1,"context",false);
+						var p =  this.doc.getElementById(popupId);
+						if (p.openPopup)
+							p.openPopup(button,'after_start', -1,-1,"context",false);
 						else
-							this.doc.getElementById(popupId).showPopup(button, -1,-1,"context","bottomleft","topleft");
+							p.showPopup(button, -1,-1,"context","bottomleft","topleft");
 
 						if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
 
@@ -944,8 +983,8 @@ var QuickFolders = {
 					catch(e) { QuickFolders.Util.logDebugOptional("dnd", "Exception creating folder popup: " + e);};
 					}
 			}
-			catch(e) {
-				QuickFolders.Util.logToConsole ("EXCEPTION buttonDragObserver.onDragEnter: " + e);
+			catch(ex) {
+				QuickFolders.Util.logException ("EXCEPTION buttonDragObserver.onDragEnter: ", ex);
 			}
 		} ,
 
@@ -1107,31 +1146,43 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 	// try to get the index of the folder in the tree
 	try {
 		var index ;
-		if (((QuickFolders.Util.Application() == 'Thunderbird') && (QuickFolders.Util.Appver() > 2))
-		   || (QuickFolders.Util.Application() == 'Postbox'))
-		  index = tree.getIndexOfFolder(msgFolder);
+
+		if (typeof tree.getIndexOfFolder != 'undefined')
+			index = tree.getIndexOfFolder(msgFolder);
 		else
-		  index = tree.builderView.getIndexOfResource(msgFolder);
+			if (tree.builderView != 'undefined')
+				index = tree.builderView.getIndexOfResource(msgFolder);
+			else
+				if (typeof EnsureFolderIndex != 'undefined')
+					index = EnsureFolderIndex(msgFolder);
+				else
+					return -1;
+
 		QuickFolders.Util.logDebugOptional ("folders", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 		if (index == -1) {
-		  var parentIndex = QuickFolders_MyEnsureFolderIndex(tree, msgFolder.parent);
+			var parentIndex = QuickFolders_MyEnsureFolderIndex(tree, msgFolder.parent);
 
-		  // if we couldn't find the folder, open the parent
-		  if(!tree.builderView.isContainerOpen(parentIndex)) {
+			// if we couldn't find the folder, open the parent
+			if(!tree.builderView.isContainerOpen(parentIndex)) {
 				tree.builderView.toggleOpenState(parentIndex);
-		  }
+			}
 
-		  if ((QuickFolders.Util.Application() == 'Thunderbird' && QuickFolders.Util.Appver() > 2)
-			|| QuickFolders.Util.Application() == 'Postbox' )
-			index = tree.getIndexOfFolder(msgFolder);
-		  else	//TB3, SeaMonkey
-			index = tree.builderView.getIndexOfResource(msgFolder);
+			if (typeof tree.getIndexOfFolder != 'undefined')
+				index = tree.getIndexOfFolder(msgFolder);
+			else
+				if (tree.builderView != 'undefined')
+					index = tree.builderView.getIndexOfResource(msgFolder);
+				else
+					if (typeof EnsureFolderIndex != 'undefined')
+						index = EnsureFolderIndex(msgFolder);
+					else
+						return -1;
 		}
 		return index;
 	}
 	catch(e) {
-		QuickFolders.LocalErrorLogger("Exception in QuickFolders_MyEnsureFolderIndex: " + e);
+		QuickFolders.Util.logException('Exception in QuickFolders_MyEnsureFolderIndex', e);
 		return -1;
 	}
 
@@ -1289,7 +1340,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		}
 		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	}
-		else { // TB 2, Postbox, SeaMonkey
+	else { // TB 2, Postbox, SeaMonkey
 	// before we can select a folder, we need to make sure it is "visible"
 	// in the tree.	to do that, we need to ensure that all its
 	// ancestors are expanded

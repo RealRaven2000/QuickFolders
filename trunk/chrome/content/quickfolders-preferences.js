@@ -114,6 +114,10 @@ QuickFolders.Preferences = {
 		return this.service.getBoolPref( 'extensions.quickfolders.enableMenuAlphaSorting');
 	} ,
 
+	isShowRecentTab: function() {
+		return this.service.getBoolPref( 'extensions.quickfolders.showRecentTab');
+	} ,
+
 	getButtonFontSize: function() {
 		return this.service.getCharPref("extensions.quickfolders.buttonFontSize");
 	} ,
@@ -187,6 +191,10 @@ QuickFolders.Preferences = {
 
 	getBoolPrefQF: function(p) {
 		return QuickFolders.Preferences.getBoolPref("extensions.quickfolders." + p);
+	},
+
+	getIntPrefQF: function(p) {
+		return QuickFolders.Preferences.getIntPref("extensions.quickfolders." + p);
 	},
 
 	setBoolPref: function(p, v) {

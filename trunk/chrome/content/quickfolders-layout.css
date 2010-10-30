@@ -172,6 +172,7 @@ vbox.gradientpanel {
 }
 
 
+#QuickFolders-Toolbar toolbarbutton.recent.icon {list-style-image: url("chrome://quickfolders/skin/ico/history.png");}
 #QuickFolders-Toolbar toolbarbutton.inbox.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-inbox.png");}
 #QuickFolders-Toolbar toolbarbutton.sent.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-sent.png");}
 #QuickFolders-Toolbar toolbarbutton.trash.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-trash.png");}

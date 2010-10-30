@@ -44,10 +44,16 @@
 		</menulist>
 		</vbox>
 
+
 		<box id="QuickFolders-FoldersBox" flex="10">
 			<label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
 			<!-- Filled dynamically by the script -->
+			<toolbarbutton class="" id="QuickFolders_RecentTab">
+			    Recent
+			</toolbarbutton>
+
 		</box>
+
 
 
 		<popupset>

@@ -165,18 +165,19 @@ QuickFolders.Util = {
 	ensureNormalFolderView: function() {
 		try {
 			//default folder view to "All folders", so we can select it
-			if ((this.Application()=='Thunderbird' && this.Appver()>=3)||(this.Application()=='Postbox')) {
+			if (typeof gFolderTreeView != 'undefined') {
 				var theTreeView;
 				theTreeView = gFolderTreeView;
 				theTreeView.mode="all";
 				this.logDebug("switched TreeView mode= " + theTreeView.mode);
 			}
 			else
-				loadFolderView(0);
+				if (typeof loadFolderView !='undefined')
+					loadFolderView(0);
 		}
 		catch(e) {
 			//loadFolderView() might be undefined at certain times, ignore this problem
-			this.logToConsole("ensureNormalFolderView failed: " + e);
+			this.logException('ensureNormalFolderView failed: ', e);
 		}
 	} ,
 
@@ -333,6 +334,29 @@ QuickFolders.Util = {
 									.getService(this.Ci.nsIConsoleService);
 		QuickFolders_ConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
 	},
+
+	// flags
+	// errorFlag 		0x0 	Error messages. A pseudo-flag for the default, error case.
+	// warningFlag 		0x1 	Warning messages.
+	// exceptionFlag 	0x2 	An exception was thrown for this case - exception-aware hosts can ignore this.
+	// strictFlag 		0x4
+	logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags)
+	{
+	  var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+	                                 .getService(Components.interfaces.nsIConsoleService);
+	  var aCategory = '';
+
+	  var scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
+	  scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
+	  consoleService.logMessage(scriptError);
+	} ,
+
+	logException: function (aMessage, ex) {
+		var stack = ''
+		if (typeof ex.stack!='undefined')
+			stack= ex.stack.replace("@","\n  ");
+		this.logError(aMessage + "\n" + ex.message, ex.fileName, stack, ex.lineNumber, 0, 0x2)
+	} ,
 
 	logDebug: function (msg) {
 		if (QuickFolders.Preferences.isDebug())

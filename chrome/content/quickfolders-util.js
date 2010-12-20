@@ -224,6 +224,8 @@ QuickFolders.Util = {
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
 
+		// alert ("numDropItems = " + dragSession.numDropItems + ", isDataFlavorSupported=" + dragSession.isDataFlavorSupported("text/x-moz-folder"));
+
 		dragSession.getData (trans, 0);
 
 		var dataObj = new Object();
@@ -285,7 +287,7 @@ QuickFolders.Util = {
 				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
 			step = 4;
 
-			var sourceFolder = sourceMsgHdr.folder;
+			var sourceFolder = sourceMsgHdr.folder.QueryInterface(this.Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
 			step = 5;
 			var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
 			if (!(ap=='Thunderbird' && av<=2 )) {

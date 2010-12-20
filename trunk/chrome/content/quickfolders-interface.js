@@ -156,12 +156,9 @@ QuickFolders.Interface = {
 			items = [new ftvItem(f) for each (f in recent)];
 
 			// There are no children in this view!
-			// And we want to display the account name to distinguish folders w/
-			// the same name.
-			for each (let folder in items) {
-				folder.__defineGetter__("children", function() []);
-				folder.addServerName = true;
-			}
+			for each (let folder in items)
+				folder.__defineGetter__("children", function() { return [];});
+
 		}
 		catch(ex) {
 			QuickFolders.Util.logException('Exception during generateMRUlist: ', ex);
@@ -173,9 +170,9 @@ QuickFolders.Interface = {
 
 	// Postbox / SeaMonkey specific code:
 	// See also: http://mxr.mozilla.org/mozilla/source/mail/base/content/mail-folder-bindings.xml#369
-	generateMRUlist_Postbox: function()
+	generateMRUlist_Postbox_TB2: function()
 	{
-		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox');
+		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox_TB2');
 		const Cc = Components.classes;
 		const Ci = Components.interfaces;
 		// Iterate through all folders in all accounts, and check MRU_Time,
@@ -189,7 +186,6 @@ QuickFolders.Interface = {
 		 * @param aFolder  the folder to check
 		 */
 		function checkSubFolders(aFolder) {
-			QuickFolders.Util.logDebugOptional("recentFolders","checkSubFolders: " + aFolder.prettyName);
 			if (!aFolder.hasSubFolders)
 				return;
 			let myenum; // force instanciation for SM
@@ -226,7 +222,7 @@ QuickFolders.Interface = {
 		}
 
 		var recentFolders = [];
-		var oldestTime = 0;
+		let oldestTime = 0;
 
 		/**
 		 * This function will add a folder to the recentFolders array if it
@@ -246,11 +242,19 @@ QuickFolders.Interface = {
 			try {
 				time = aFolder.getStringProperty("MRUTime");
 			} catch(ex) {}
-			if (time <= oldestTime)
+			if (time <= oldestTime) {
+				QuickFolders.Util.logDebugOptional('recentFolders.detail','time <= oldest: ' + aFolder.prettyName);
 				return;
+			}
 
-			if (recentFolders.length == MAXRECENT) {
+			if (recentFolders.length >= MAXRECENT) {
 				recentFolders.sort(sorter);
+				QuickFolders.Util.logDebugOptional('recentFolders','recentFolders.pop(): '
+					+ recentFolders[recentFolders.length-1].prettyName
+					+ '\n- MRUTime: ' + recentFolders[recentFolders.length-1].getStringProperty("MRUTime")
+					+ '\n- for folder: ' + aFolder.prettyName
+					+ '\ntime=' + time
+					+ '\noldestTime=' + oldestTime);
 				recentFolders.pop();
 				oldestTime = recentFolders[recentFolders.length-1].getStringProperty("MRUTime");
 			}
@@ -269,7 +273,9 @@ QuickFolders.Interface = {
 		}
 
 		function sorter(a, b) {
-		   return a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime");
+		   if (a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime"))
+		     return 1;
+		   return -1;
 		}
 		recentFolders.sort(sorter);
 
@@ -311,8 +317,9 @@ QuickFolders.Interface = {
 		                    .createInstance(Components.interfaces.nsIMutableArray);
 
 		var isOldFolderList = false;
-		if (typeof gFolderTreeView=='undefined') {
-			recentFolders = this.generateMRUlist_Postbox();
+		if (typeof gFolderTreeView=='undefined')
+		{
+			recentFolders = this.generateMRUlist_Postbox_TB2();
 			isOldFolderList = true;
 		}
 		else {
@@ -320,16 +327,13 @@ QuickFolders.Interface = {
 		}
 
 		for (var i=0; i<recentFolders.length; i++) {
-			var prettyName;
-			if (isOldFolderList) {
-				FoldersArray.appendElement(recentFolders[i], false);
-				prettyName = recentFolders[i].prettyName;
-			}
-			else {
-				FoldersArray.appendElement(recentFolders[i]._folder, false);
-				prettyName = recentFolders[i]._folder.prettyName;
-			}
-			QuickFolders.Util.logDebugOptional('recentFolders.detail','Recent Folders Array: ' + i + '. appended ' + prettyName);
+			var f;
+			if (isOldFolderList)
+				f = recentFolders[i];
+			else
+				f = recentFolders[i]._folder;
+			FoldersArray.appendElement(f, false);
+			QuickFolders.Util.logDebugOptional('recentFolders.detail','Recent Folders Array: ' + i + '. appended ' +  f.prettyName);
 		}
 
 
@@ -452,8 +456,7 @@ QuickFolders.Interface = {
 		var offset = 0;
 
 		// Recent Folders tab
-		if (QuickFolders.Preferences.isShowRecentTab()
-			&& !(QuickFolders.Util.Appver()<3 && (QuickFolders.Util.Application()=='Thunderbird')) )
+		if (QuickFolders.Preferences.isShowRecentTab() )
 		{
 			var rtab = this.createRecentTab(null, false, null);
 			if (rtab) {
@@ -628,7 +631,8 @@ QuickFolders.Interface = {
 					}
 
 					//alert(shortcut);
-					var button = this.buttonsByOffset[shortcut - 1];
+					var offset = QuickFolders.Preferences.isShowRecentTab() ? shortcut+1 : shortcut;
+					var button = this.buttonsByOffset[offset - 1];
 					if(button) {
 						if(isShift)
 							MsgMoveMessage(button.folder);
@@ -693,12 +697,13 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional("folders", "addFolderButton " + folder.name + "...");
 
 		if(QuickFolders.Preferences.isShowShortcutNumbers()) {
-			if(offset < 10) {
-				if(offset == 9) {
+			var shortCutNumber = QuickFolders.Preferences.isShowRecentTab() ? offset-1 : offset;
+			if(shortCutNumber < 10) {
+				if(shortCutNumber == 9) {
 					label += "0. ";
 				}
 				else {
-					label += (offset + 1) + ". ";
+					label += (shortCutNumber + 1) + ". ";
 				}
 			}
 
@@ -1441,9 +1446,11 @@ QuickFolders.Interface = {
 				var menuLabel = subfolder.name;
 
 				var hostString = subfolder.rootFolder.name;
-				if (includeAccountName)
+				if (includeAccountName) {
 					menuLabel = subfolder.name + ' - ' + hostString;
-
+					if (QuickFolders.Preferences.isDebugOption('recentFolders.detail'))
+						menuLabel = subfolder.getStringProperty("MRUTime") + ' - ' + menuLabel;
+				}
 
 				menuitem.setAttribute('label', menuLabel); //+ subfolder.URI
 				menuitem.setAttribute("tag","sub");

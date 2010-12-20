@@ -81,12 +81,18 @@ vbox.gradientpanel {
 }
 #green {
   background-image: url("chrome://quickfolders/skin/ico/gradient-green.png");
+  background-color: #5DAE8B;
+  color: #000;
 }
 #red {
   background-image: url("chrome://quickfolders/skin/ico/gradient-red.png");
+  background-color: #D6644A;
+  color: #fff;
 }
 #yellow {
   background-image: url("chrome://quickfolders/skin/ico/gradient-yellow.png");
+  background-color: #CFBD5C;
+  color: #000;
 }
 
 /* Native shell styles */
@@ -220,6 +226,7 @@ menupopup.QuickFolders-folder-popup menuitem.cmd:hover,
 menupopup.QuickFolders-folder-popup menuitem.mailCmd:hover
 {
     border: 1px solid darkgreen !important;
+    margin: -1px !important;
     color: black !important;
     font-weight: 500;
     background-image: url('chrome://quickfolders/skin/ico/jade-bar.png') !important;
@@ -233,21 +240,21 @@ menuitem.cmd[tagName="qfSupport"] { list-style-image : url('chrome://quickfolder
 
 menupopup.QuickFolders-folder-popup menuitem.color
 {
-    background-position: 4px 0px  !important;
-    background-repeat: repeat-x !important;
-    border: 1px solid #444 !important;
-    list-style-image : url('chrome://quickfolders/skin/ico/palette.png') !important;
-    -moz-border-radius: 5px 5px 0 0;
+	background-position: 4px 0px  !important;
+	background-repeat: repeat-x !important;
+	border: 1px solid #444 !important;
+	list-style-image : url('chrome://quickfolders/skin/ico/palette.png') !important;
+	-moz-border-radius: 5px 5px 0 0;
 }
 
 
 menupopup.QuickFolders-folder-popup menuitem.color:hover
 {
-    background-color: transparent !important;
+	background-color: transparent !important;
 	border: 1px solid #FFF !important;
-    font-weight: 900;
-    text-decoration: underline;
-    -moz-border-radius: 5px;
+	font-weight: 900;
+	text-decoration: underline;
+	-moz-border-radius: 5px;
 }
 
 
@@ -392,6 +399,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 {
     -moz-appearance: none !important;
     border: 1px solid darkred !important;
+    margin: -1px !important;
     color: darkred !important;
     font-weight: 500;
     background-repeat: repeat-x;
@@ -406,14 +414,27 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
 }
 
 
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over:last-of-type,
+menupopup.QuickFolders-folder-popup menu:-moz-drag-over:last-of-type
+{
+    margin-bottom: 0 !important;
+}
+
+
 menupopup.QuickFolders-folder-popup menuitem:hover,
 menupopup.QuickFolders-folder-popup menu:hover
 {
     border: 1px solid brown !important;
+    margin: -1px !important;
     color: brown !important;
     font-weight: 500;
     background-image: url('chrome://quickfolders/skin/ico/gold-bar.png');
     list-style-image : url('chrome://quickfolders/skin/ico/folder-open.png');
+}
+
+menupopup.QuickFolders-folder-popup menu:hover:last-of-type,
+menupopup.QuickFolders-folder-popup menuitem:hover:last-of-type {
+    margin-bottom: 0 !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.mailCmd:hover,

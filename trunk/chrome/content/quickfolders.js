@@ -339,11 +339,20 @@ END LICENSE BLOCK */
 	  AG: Fixed a bug that made reordering quicktabs to the right of their current position fail sometimes
 	  AG: TB2 - Fixed - hidden shadows option and made icons option visible again
 
-	12/10/2010 - 2.1 WIP
+	12/10/2010 - 2.1
 	  AG: Fixed a problem when dragging to New Folder from find result list (error message: no source folder)
 	  AG: Added Recent Folders Tab
 	  AG: Added locale sv-SE by Mikael Hiort af Ornaes
 	  AG: Fixed Positioning of Folder Menus
+
+	10/12/2010 - 2.2
+	  AG: Made compatible with Postbox 2.2
+	  AG: Fixed [Bug 23500] Tabs begin counting at "2" when using Recent Folders tab
+
+
+
+
+
 
   KNOWN ISSUES
   ============
@@ -580,21 +589,12 @@ var QuickFolders = {
 			switch (dropData.flavour.contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
-					switch(QuickFolders.Util.Application()) {
-						case 'Thunderbird':
-							if (QuickFolders.Util.Appver()<3)
-								sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession);
-							else {
-								msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
-								sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
-							}
-							break;
-						case 'SeaMonkey':
-							sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
-							break;
-						case 'Postbox':
-							sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession)
-							break;
+					if ('Thunderbird'==QuickFolders.Util.Application() && QuickFolders.Util.Appver()>=3) {
+						msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
+						sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
+					}
+					else {
+						sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession);
 					}
 					addFolder(sourceUri);
 
@@ -980,8 +980,8 @@ var QuickFolders = {
 					}
 
 
-					catch(e) { QuickFolders.Util.logDebugOptional("dnd", "Exception creating folder popup: " + e);};
-					}
+					catch(e) { QuickFolders.Util.logException("Exception creating folder popup: ", e);};
+				}
 			}
 			catch(ex) {
 				QuickFolders.Util.logException ("EXCEPTION buttonDragObserver.onDragEnter: ", ex);
@@ -1099,6 +1099,10 @@ var QuickFolders = {
 
 					QuickFolders.Interface.collapseParentMenus(DropTarget);
 
+					if (evt.shiftKey) {
+						QuickFolders_MySelectFolder(targetFolder.URI);
+					}
+
 					break;
 				case "text/unicode":  // dropping another tab on this tab inserts it before
 					QuickFolders.ChangeOrder.insertAtPosition(dropData.data, DropTarget.folder.URI, "");
@@ -1161,10 +1165,12 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 		QuickFolders.Util.logDebugOptional ("folders", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 		if (index == -1) {
+			if (null==msgFolder.parent)
+				return -1;
 			var parentIndex = QuickFolders_MyEnsureFolderIndex(tree, msgFolder.parent);
 
 			// if we couldn't find the folder, open the parent
-			if(!tree.builderView.isContainerOpen(parentIndex)) {
+			if(parentIndex != -1 && !tree.builderView.isContainerOpen(parentIndex)) {
 				tree.builderView.toggleOpenState(parentIndex);
 			}
 

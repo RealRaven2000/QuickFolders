@@ -5,13 +5,13 @@
   <!-- Thunderbird  -  bumped minVersion from 1.5!! -->
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-   em:minVersion="3.0"
+   em:minVersion="2.0"
    em:maxVersion="3.3a1pre"/>
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="1.0.0"
-   em:maxVersion="2.0.*" />
+   em:maxVersion="2.*" />
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
@@ -21,7 +21,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="quickfolders@curious.be"
    em:name="QuickFolders"
-   em:version="2.1a.pre5"
+   em:version="2.2.1"
    em:creator="Alexander Malfait"
    em:description="Bookmark your favorite mail folders in Thunderbird."
    em:iconURL="chrome://quickfolders/skin/ico/quickfolders-Icon.png"

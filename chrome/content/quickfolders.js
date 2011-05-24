@@ -349,7 +349,30 @@ END LICENSE BLOCK */
 	  AG: Made compatible with Postbox 2.2
 	  AG: Fixed [Bug 23500] Tabs begin counting at "2" when using Recent Folders tab
 
+	27/12/2010 - 2.3
+	  AG: improvement in handling MRUTime - this will be now also updated if an email is moved that is already read.
+	  AG: (Postbox) Fixed [Bug 23542] which caused Move (& Copy) Messages to fail in Postbox version > 2.0
+	  AG: (Postbox) Fixed display of Version history after upgrade
 
+	31/01/2010 - 2.4
+	  AG: Improved Performance during lengthy mail downloads by not _completely_ rebuilding the visible tabs
+		  (now only updating labels and popupmenus of the existing tabs so that counts & "unread style" are up to date
+	  AG: added new context menu item for rebuilding the tabs
+	  AG: added new context menu item for removing orphaned tabs
+	  AG: added "repair folder" command (mail folder menu)
+
+	2.5  (WIP)
+	  AG: Added Hotkey for folders rebuild CTRL+SHIFT+(Configurable)
+	  AG: Category Dropdown now saves space by using menulist attribute sizetopopup=none
+	  AG: Added settings dropdown button on main toolbar
+	  AG: Added Current Folder Toolbar (single message view)
+	  AG: Added option for disabling recent folders dropdown
+	  AG: Added icons to options tabs
+	  AG: Added new folder command: "delete junk in current folder"
+	Bugfixes
+	  AG: moved getVersion to Utilities
+	  AG: Replaced deprecated popupNode with triggerNode and workaround code for modern Gecko Versions
+	  AG: Fixed issues with font colors on dark colored Tabs
 
 
 
@@ -479,12 +502,7 @@ var QuickFolders = {
 
 
 	init: function() {
-
-		var em = Components.classes["@mozilla.org/extensions/manager;1"]
-		   .getService(Components.interfaces.nsIExtensionManager);
-		var myver=em.getItemForID("quickfolders@curious.be").version;
-
-
+		var myver = QuickFolders.Util.Version();
 
 		var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
 		var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
@@ -496,7 +514,7 @@ var QuickFolders = {
 
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
-		if (QuickFolders.Preferences.isUseKeyboardShortcuts()) {
+		if (QuickFolders.Preferences.isUseKeyboardShortcuts() || QuickFolders.Preferences.isUseRebuildShortcut()) {
 			if(!QuickFolders.Interface.boundKeyListener) {
 				this.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
@@ -535,6 +553,10 @@ var QuickFolders = {
 		},"quickfolders-options-saved", false);
 		QuickFolders.Util.logDebug("QF.init() ends.");
 		QuickFolders.Util.FirstRun.init();
+
+		// remember whether toolbar was shown, and make invisible or initialize if necessary
+		QuickFolders.Interface.displayNavigationToolbar(QuickFolders.Preferences.isShowCurrentFolderToolbar());
+
 	} ,
 
 	sayHello: function() {
@@ -827,6 +849,23 @@ var QuickFolders = {
 			return true;
 		}
 
+	},
+
+	messageDragObserver: {
+		getSupportedFlavours : function () {
+			var flavours = new FlavourSet();
+			flavours.appendFlavour("text/x-moz-message"); // emails only (find out whether a thread is covered by this)
+			return flavours;
+		},
+
+		onDragStart: function (event, transferData, action) {
+			var button = event.target;
+
+			transferData.data = new TransferData();
+
+			// check event.originalTarget and event.target
+			QuickFolders.Util.threadPaneOnDragStart(event);
+		}
 	},
 
 	buttonDragObserver: {
@@ -1154,7 +1193,7 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 		if (typeof tree.getIndexOfFolder != 'undefined')
 			index = tree.getIndexOfFolder(msgFolder);
 		else
-			if (tree.builderView != 'undefined')
+			if (typeof tree.builderView != 'undefined' && typeof tree.builderView.getIndexOfResource != 'undefined')
 				index = tree.builderView.getIndexOfResource(msgFolder);
 			else
 				if (typeof EnsureFolderIndex != 'undefined')
@@ -1235,18 +1274,6 @@ function QuickFolders_MySelectFolder(folderUri)
 	if (QuickFolders.Util.Application()=='Thunderbird' && QuickFolders.Util.Appver()>=3)
 	{
 		// TB 3
-		const MSG_FOLDER_FLAG_NEWSGROUP = 0x0001
-		const MSG_FOLDER_FLAG_TRASH 	= 0x0100
-		const MSG_FOLDER_FLAG_SENTMAIL	= 0x0200
-		const MSG_FOLDER_FLAG_DRAFTS	= 0x0400
-		const MSG_FOLDER_FLAG_QUEUE 	= 0x0800
-		const MSG_FOLDER_FLAG_INBOX 	= 0x1000
-		const MSG_FOLDER_FLAG_TEMPLATES = 0x400000
-		const MSG_FOLDER_FLAG_JUNK		= 0x40000000
-		//
-		const MSG_FOLDER_FLAG_SMART 	= 0x4000  // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
-		const MSG_FOLDER_FLAG_ELIDED	= 0x0010  // currenty hidden
-		const MSG_FOLDER_FLAG_VIRTUAL	= 0x0020
 
 		// find out if parent folder is smart and collapsed (bug in TB3!)
 		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
@@ -1271,7 +1298,8 @@ function QuickFolders_MySelectFolder(folderUri)
 
 			var parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
 			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-			var specialFlags = MSG_FOLDER_FLAG_INBOX + MSG_FOLDER_FLAG_QUEUE + MSG_FOLDER_FLAG_SENTMAIL + MSG_FOLDER_FLAG_TRASH + MSG_FOLDER_FLAG_DRAFTS + MSG_FOLDER_FLAG_TEMPLATES	+ MSG_FOLDER_FLAG_JUNK ;
+			var Con = QuickFolders.Util.Constants;
+			var specialFlags = Con.MSG_FOLDER_FLAG_INBOX + Con.MSG_FOLDER_FLAG_QUEUE + Con.MSG_FOLDER_FLAG_SENTMAIL + Con.MSG_FOLDER_FLAG_TRASH + Con.MSG_FOLDER_FLAG_DRAFTS + Con.MSG_FOLDER_FLAG_TEMPLATES + Con.MSG_FOLDER_FLAG_JUNK ;
 			if (msgFolder.flags & specialFlags) {
 				// is this folder a smartfolder?
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode!="smart") {
@@ -1283,7 +1311,7 @@ function QuickFolders_MySelectFolder(folderUri)
 				}
 
 				// a special folder, its parent is a smart folder?
-				if (msgFolder.parent.flags & MSG_FOLDER_FLAG_SMART || "smart" == theTreeView.mode) {
+				if (msgFolder.parent.flags & Con.MSG_FOLDER_FLAG_SMART || "smart" == theTreeView.mode) {
 					if (null==folderIndex || parentIndex > folderIndex) {
 						// if the parent appears AFTER the folder, then the "real" parent is a smart folder.
 						var smartIndex=0;
@@ -1316,7 +1344,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		}
 
 		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-		if ((msgFolder.flags & MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
+		if ((msgFolder.flags & Con.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
 			QuickFolders.Interface.onFolderSelected();
 	}
 	else if (QuickFolders.Util.Application()=='SeaMonkey') {
@@ -1372,6 +1400,16 @@ function QuickFolders_MySelectFolder(folderUri)
 		GetMessagePane().focus();
 		QuickFolders.doc.commandDispatcher.advanceFocus();
 		QuickFolders.doc.commandDispatcher.rewindFocus();
+	}
+
+	/* MESSAGE PREVIEW TOOLBAR */
+	var currentFolderTab = document.getElementById('QuickFolders-CurrentFolder');
+	if (currentFolderTab) {
+		var entry = QuickFolders.Model.getFolderEntry(msgFolder.URI);
+		try {tabColor = entry.tabColor;}
+		catch(e) {tabColor = null};
+		QuickFolders.Interface.addFolderButton(msgFolder, "", -1, tabColor, currentFolderTab, 'QuickFolders-CurrentFolder');
+		// QuickFolders.Interface.addPopupSet('QuickFolders-folder-popup-currentFolder', msgFolder, -1, currentFolderTab);
 	}
 
 }
@@ -1450,10 +1488,10 @@ QuickFolders.FolderListener = {
 					if(QuickFolders.Interface)
 						QuickFolders.Interface.onFolderSelected();
 				}
-				catch(e) {this.ELog("Exception in Item event - calling onFolderSelected: " + e)};
+				catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onFolderSelected:\n" + e)};
 			}
 		}
-		catch(e) {this.ELog("Exception in Item event: " + e)};
+		catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "}:\n" + e)};
 	},
 	OnFolderLoaded: function(aFolder) { },
 	OnDeleteOrMoveMessagesCompleted: function( aFolder) {}

@@ -11,9 +11,13 @@ QuickFolders.Model = {
 	addFolder: function(uri, categoryName) {
 		var entry=this.getFolderEntry(uri)
 		if(!entry) {
+
+			var folder = this.getMsgFolderFromUri(uri, false);
+			var folderName = (folder==null) ? '' : folder.prettyName;
+
 			this.selectedFolders.push({
 				uri: uri,
-				name: '',
+				name: folderName,
 				category: categoryName
 			});
 
@@ -39,17 +43,18 @@ QuickFolders.Model = {
 			}
 		}
 
-		return false;
+		return null;
 	} ,
 
-	removeFolder: function(uri) {
+	removeFolder: function(uri, updateEntries) {
 		for(var i = 0; i < this.selectedFolders.length; i++) {
 			if(this.selectedFolders[i].uri == uri) {
 				this.selectedFolders.splice(i,1);
 			}
 		}
 
-		this.update();
+		if (updateEntries)
+			this.update();
 	} ,
 
 	renameFolder: function(uri, name) {
@@ -76,7 +81,7 @@ QuickFolders.Model = {
 	update: function() {
 		QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
 		QuickFolders.Util.logDebug("model.update");
-		QuickFolders.Interface.updateFolders(true);
+		QuickFolders.Interface.updateFolders(true, false);
 	} ,
 
 	setFolderColor: function(uri, tabColor, withUpdate) {
@@ -102,9 +107,12 @@ QuickFolders.Model = {
 		}
 	} ,
 
-	qfGetMsgFolderFromUri:  function(uri, checkFolderAttributes)
+	getMsgFolderFromUri:  function(uri, checkFolderAttributes)
 	{
 		var msgfolder = null;
+		if (QuickFolders.Util.Appver()>=3 || QuickFolders.Util.Application()=='SeaMonkey') {
+			return (GetMsgFolderFromUri(uri, checkFolderAttributes));
+		}
 		try {
 			var resource = GetResourceFromUri(uri);
 			msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
@@ -134,12 +142,7 @@ QuickFolders.Model = {
 			if(category && category != "") {
 				// if the folder doesn't exist anymore, ignore this category
 				try {
-				  if (QuickFolders.Util.Appver()>=3 || QuickFolders.Util.Application()=='SeaMonkey') {
-					if(!GetMsgFolderFromUri(entry.uri, false)) continue;
-				  }
-				  else {
-					if (!this.qfGetMsgFolderFromUri(entry.uri, false)) continue;
-				  }
+					if (!this.getMsgFolderFromUri(entry.uri, false)) continue;
 				}
 				catch(e) {
 					QuickFolders.Util.logException("Exception while checking folder existence: ", e)

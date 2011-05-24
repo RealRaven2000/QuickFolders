@@ -46,10 +46,24 @@ var QuickFolders_TabURIopener = {
 
 
 QuickFolders.Util = {
+
+	Constants : {
+		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
+		MSG_FOLDER_FLAG_TRASH 	: 0x0100,
+		MSG_FOLDER_FLAG_SENTMAIL	: 0x0200,
+		MSG_FOLDER_FLAG_DRAFTS	: 0x0400,
+		MSG_FOLDER_FLAG_QUEUE 	: 0x0800,
+		MSG_FOLDER_FLAG_INBOX 	: 0x1000,
+		MSG_FOLDER_FLAG_TEMPLATES : 0x400000,
+		MSG_FOLDER_FLAG_JUNK		: 0x40000000,
+		MSG_FOLDER_FLAG_SMART 	: 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
+		MSG_FOLDER_FLAG_ARCHIVE	: 0x4004, // another guess ?
+		MSG_FOLDER_FLAG_VIRTUAL   : 0x0020
+	},
 	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
-	mAppver: null, mAppName: null, mHost: null,
+	mAppver: null, mAppName: null, mHost: null, mPlatformVer: null,
 	lastTime: 0,
 
 	$: function(id) {
@@ -105,6 +119,34 @@ QuickFolders.Util = {
 		return this.mHost; // linux - winnt - darwin
 	},
 
+	Version: function() {
+		//gets the version number.
+		try {
+			var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+				.getService(Components.interfaces.nsIExtensionManager);
+			var current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
+			return current;
+		}
+		catch(ex) {
+			return "2.5pre1"; // hardcoded, program this for Tb 3.3 later
+		}
+
+	} ,
+
+	PlatformVersion: function() {
+		if (null==this.mPlatformVer)
+			try {
+				var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+				                        .getService(Components.interfaces.nsIXULAppInfo);
+				this.mPlatformVer = appInfo.platformVersion;
+			}
+			catch(ex) {
+				this.mPlatformVer = 1.0; // just a guess
+			}
+		return this.mPlatformVer;
+	} ,
+
+
 	getToolbar: function() {
 		return QuickFolders.Util.$('QuickFolders-FoldersBox');
 	} ,
@@ -145,6 +187,7 @@ QuickFolders.Util = {
 
 
 	clearChildren: function(element,withCategories) {
+		QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
 		if (withCategories)
 			while(element.childNodes.length > 0) {
 				element.removeChild(element.childNodes[0]);
@@ -175,9 +218,9 @@ QuickFolders.Util = {
 				if (typeof loadFolderView !='undefined')
 					loadFolderView(0);
 		}
-		catch(e) {
+		catch(ex) {
 			//loadFolderView() might be undefined at certain times, ignore this problem
-			this.logException('ensureNormalFolderView failed: ', e);
+			this.logException('ensureNormalFolderView failed: ', ex);
 		}
 	} ,
 
@@ -220,7 +263,7 @@ QuickFolders.Util = {
 
 
 	getFolderUriFromDropData: function(dropData, dragSession) {
-		var trans = this.Cc["@mozilla.org/widget/transferable;1"].createInstance(this.Ci.nsITransferable);
+		var trans = QuickFolders_CC["@mozilla.org/widget/transferable;1"].createInstance(QuickFolders_CI.nsITransferable);
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
 
@@ -235,7 +278,7 @@ QuickFolders.Util = {
 			trans.getTransferData(flavor, dataObj, len);
 
 			if (dataObj) {
-				dataObj = dataObj.value.QueryInterface(this.Ci.nsISupportsString);
+				dataObj = dataObj.value.QueryInterface(QuickFolders_CI.nsISupportsString);
 				var sourceUri = dataObj.data.substring(0, len.value);
 				return sourceUri;
 			}
@@ -246,17 +289,16 @@ QuickFolders.Util = {
 	} ,
 
 	moveMessages: function(targetFolder, messageUris, makeCopy) {
-		const MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
 		var step = 0;
 		try {
 			try {QuickFolders.Util.logDebugOptional('dnd', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);}
 			catch(e) { alert('QuickFolders.Util.moveMessages:' + e); }
 
-			if (targetFolder.flags & MSG_FOLDER_FLAG_VIRTUAL) {
+			if (targetFolder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) {
 				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return;
 			}
-			var targetResource = targetFolder.QueryInterface(this.Ci.nsIRDFResource);
+			var targetResource = targetFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
 			step = 1;
 
 			var messageList ;
@@ -264,15 +306,15 @@ QuickFolders.Util = {
 			var ap = QuickFolders.Util.Application();
 			var hostsystem = QuickFolders.Util.HostSystem();
 			//nsISupportsArray is deprecated in TB3 as its a hog :-)
-			if (av > 2 || ap=='SeaMonkey')
-				messageList = this.Cc["@mozilla.org/array;1"].createInstance(this.Ci.nsIMutableArray);
+			if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
+				messageList = QuickFolders_CC["@mozilla.org/array;1"].createInstance(QuickFolders_CI.nsIMutableArray);
 			else
-				messageList = this.Cc["@mozilla.org/supports-array;1"].createInstance(this.Ci.nsISupportsArray);
+				messageList = QuickFolders_CC["@mozilla.org/supports-array;1"].createInstance(QuickFolders_CI.nsISupportsArray);
 			step = 2;
 
 			for (var i = 0; i < messageUris.length; i++) {
 				var messageUri = messageUris[i];
-				if (av > 2 || ap=='SeaMonkey')
+				if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
 					messageList.appendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri), false);
 				else
 					messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
@@ -281,28 +323,142 @@ QuickFolders.Util = {
 			step = 3;
 			var sourceMsgHdr;
 
-			if (av > 2 || ap=='SeaMonkey')
-				sourceMsgHdr = messageList.queryElementAt(0,this.Ci.nsIMsgDBHdr);
+			if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
+				sourceMsgHdr = messageList.queryElementAt(0,QuickFolders_CI.nsIMsgDBHdr);
 			else
-				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(this.Ci.nsIMsgDBHdr);
+				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(QuickFolders_CI.nsIMsgDBHdr);
 			step = 4;
 
-			var sourceFolder = sourceMsgHdr.folder.QueryInterface(this.Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
+			var sourceFolder = sourceMsgHdr.folder.QueryInterface(QuickFolders_CI.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
 			step = 5;
-			var sourceResource = sourceFolder.QueryInterface(this.Ci.nsIRDFResource);
-			if (!(ap=='Thunderbird' && av<=2 )) {
-				var cs = this.Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(this.Ci.nsIMsgCopyService);
+			var sourceResource = sourceFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
+			if (ap=='Thunderbird' && av<3 ) {
+				step = 8;
+				messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
+			}
+			else {
+				var cs = QuickFolders_CC["@mozilla.org/messenger/messagecopyservice;1"].getService(QuickFolders_CI.nsIMsgCopyService);
+				step = 6;
+				targetFolder = targetFolder.QueryInterface(QuickFolders_CI.nsIMsgFolder);
 				step = 7;
 				cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
 			}
-			else {
-				step = 8;
-				messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
+			if (QuickFolders.Preferences.isShowRecentTab()) {
+				// from version 2.3 make sure most recent is updated even if unread messages are moved!
+				step = 9;
+				if (targetFolder.SetMRUTime)
+					targetFolder.SetMRUTime();
+				else {
+					var ct = parseInt(new Date().getTime() / 1000); // current time in secs
+					targetFolder.setStringProperty("MRUTime", ct);
+				}
 			}
 		}
 		catch(e) { this.logToConsole('Exception in QuickFolders.Util.moveMessages, step ' + step + ':\n' + e); };
 	} ,
 
+	getCurrentFolder: function() {
+		var aFolder;
+
+
+		if (typeof(GetLoadedMsgFolder) != 'undefined') {
+			aFolder = GetLoadedMsgFolder();
+		}
+		else
+		{
+			var currentURI;
+			if (QuickFolders.Util.Application()=='Postbox') {
+				currentURI = GetSelectedFolderURI();
+			}
+			else {
+				if (gFolderDisplay.displayedFolder)
+					currentURI = gFolderDisplay.displayedFolder.URI;
+
+
+				// aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
+			}
+			aFolder = GetMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+		}
+
+		return aFolder;
+	} ,
+
+	pbGetSelectedMessages : function ()
+	{
+	  try {
+	    var messageArray = {};
+	    var length = {};
+	    var view = GetDBView();
+	    view.getURIsForSelection(messageArray, length);
+	    if (length.value)
+	    	return messageArray.value;
+	    else
+	    	return null;
+	  }
+	  catch (ex) {
+	    dump("GetSelectedMessages ex = " + ex + "\n");
+	    return null;
+	  }
+	},
+
+	threadPaneOnDragStart: function (aEvent)
+	{
+		if (aEvent.originalTarget.localName != "toolbarbutton")
+			return;
+
+		var messages;
+		let msgs = null;
+		if (typeof gFolderDisplay !='undefined') {
+			msgs = gFolderDisplay.selectedMessageUris;
+			if (!msgs)
+				return;
+			if (!QuickFolders.Util.Application()=='SeaMonkey')
+				gFolderDisplay.hintAboutToDeleteMessages();
+		}
+		else {
+			msgs = QuickFolders.Util.pbGetSelectedMessages();
+			if (!msgs)
+				return;
+		}
+		messages = msgs;
+
+		let ios = Components.classes["@mozilla.org/network/io-service;1"]
+						  .getService(Components.interfaces.nsIIOService);
+		let fileNames = [];
+		let msgUrls = {};
+
+		// dragging multiple messages to desktop does not
+		// currently work, pending core fixes for
+		// multiple-drop-on-desktop support. (bug 513464)
+		for (let i in messages) {
+			messenger.messageServiceFromURI(messages[i])
+					 .GetUrlForUri(messages[i], msgUrls, null);
+			var subject = messenger.messageServiceFromURI(messages[i])
+			              	.messageURIToMsgHdr(messages[i]).mime2DecodedSubject;
+			if (suggestUniqueFileName) {
+				var uniqueFileName = suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames);
+				fileNames[i] = uniqueFileName;
+			}
+			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", messages[i], i);
+			try {
+				if (typeof msgUrls.value !='undefined') {
+					aEvent.dataTransfer.mozSetDataAt("text/x-moz-url",msgUrls.value.spec, i);
+					if (suggestUniqueFileName) { // no file support in SeaMonkey
+						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", msgUrls.value.spec + "&fileName=" + uniqueFileName, i);
+					}
+				}
+				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
+			}
+			catch(ex)
+			{
+				this.logException("threadPaneOnDragStart: error during processing message[" + i + "]", ex)
+			}
+		}
+		aEvent.dataTransfer.dropEffect = "move";
+		aEvent.dataTransfer.mozCursor = "auto";
+		aEvent.dataTransfer.effectAllowed = "all"; // copyMove
+		aEvent.dataTransfer.addElement(aEvent.originalTarget);
+	},
 
 	debugVar: function(value) {
 		str = "Value: " + value + "\r\n";
@@ -332,8 +488,8 @@ QuickFolders.Util = {
 
 	logToConsole: function (msg) {
 		if (QuickFolders_ConsoleService == null)
-			QuickFolders_ConsoleService = this.Cc["@mozilla.org/consoleservice;1"]
-									.getService(this.Ci.nsIConsoleService);
+			QuickFolders_ConsoleService = QuickFolders_CC["@mozilla.org/consoleservice;1"]
+									.getService(QuickFolders_CI.nsIConsoleService);
 		QuickFolders_ConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
 	},
 
@@ -425,7 +581,7 @@ QuickFolders.Util = {
 		var ioservice,iuri,eps;
 		//if (QuickFolders.Util.Application()=="Postbox")
 		//	return; // label with href already follows the link!
-		if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird' || QuickFolders.Util.Application()=='SeaMonkey')
+		if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird' || QuickFolders.Util.Application()=='SeaMonkey' || QuickFolders.Util.Application()=='Postbox')
 		{
 			this.openLinkInBrowserForced(URL);
 			if(null!=evt) evt.stopPropagation();
@@ -449,6 +605,38 @@ QuickFolders.Util = {
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
 		}
 		return s;
+	} ,
+
+	getFolderTooltip: function(folder) {
+		// tooltip - see also Attributes section of
+		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
+		// and docs for nsIMsgIncomingServer
+		var sVirtual = (folder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)": " ";
+		var srv= folder.server;
+		var srvName='';
+		if (srv) {
+			try {srvName = ' [' + srv.hostName + ']';}
+			catch(e) { };
+		}
+		var hostString = folder.rootFolder.name + srvName;
+
+		return folder.name + ' @ ' + hostString + sVirtual;
+	},
+
+	getPopupNode: function(callerThis) {
+		if (document.popupNode != null) // typeof callerThis.parentNode.triggerNode == 'undefined'
+			return document.popupNode;
+		else {
+			if (callerThis.parentNode.triggerNode != null)
+				return callerThis.parentNode.triggerNode;
+			else {
+				var theParent = callerThis.parentNode;
+				while (theParent!=null && theParent.tagName!="toolbarbutton")
+					theParent = theParent.parentNode;
+				return theParent;
+
+			}
+		}
 	}
 
 
@@ -478,10 +666,7 @@ QuickFolders.Util.FirstRun =
 			.getService(Components.interfaces.nsIPrefService);
 		var ssPrefs = svc.getBranch("extensions.quickfolders.");
 
-		//gets the version number.
-		var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-			.getService(Components.interfaces.nsIExtensionManager);
-		var current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
+		var current = QuickFolders.Util.Version();
 
 		try {
 			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getCharPref(version)");

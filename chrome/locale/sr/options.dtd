@@ -1,4 +1,4 @@
-<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders - Опције">
+<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders - опције">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Основно">
 <!ENTITY qf.tab.layout "Набуџи моје језичке!">
@@ -6,6 +6,7 @@
 <!ENTITY qf.checkbox.displaylabel "Прикажи натпис „QuickFolders” на траци са алаткама">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Користи пречице на тастатури (од алт+а до алт+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Користи ктрл уместо алт">
+<!ENTITY qf.checkbox.useRebuildShortcut "Врати језичке помоћћу пречице ктрл+алт">
 <!ENTITY qf.checkbox.showshortcutnumber "Прикажи број пречице на наслов фасцикле">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Прикажи број непрочитаних порука на дугмету фасцикле">
 <!ENTITY qf.checkbox.showUnreadBold "Подебљај дугмад фасцикли које садрже непрочитане поруке">
@@ -45,6 +46,8 @@
 <!ENTITY qf.label.contactLink "Контактирајте ме (на енглеском или немачком)...">
 <!ENTITY qf.checkbox.showIcons "Прикажи иконе (Примљене, послате, нежељене, избрисане, у припреми, архивиране, обрасци)">
 <!ENTITY qf.checkbox.showSubfolders "Развиј подфасцикле у искачућим менијима">
+<!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Пристисните десни клик да бисте подесили">
 <!ENTITY qf.menu.tabColor "Без боје!">
 <!ENTITY qf.menu.Color "Боја">
 <!ENTITY qf.options.LayoutColorAppearance "Приказ појединачне боје језичка">

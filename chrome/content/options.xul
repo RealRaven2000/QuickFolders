@@ -18,7 +18,7 @@
 
 <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
-<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 
 
@@ -29,7 +29,7 @@
 			value="&qf.label.quickfolders;"
 			flex="1"/>
 
-		<label id="qf-options-header-description" oncontextmenu="QuickFoldersOptions.showVersionHistory(this);return false;" tooltiptext="&qf.options.versionnumber.tooltip;"/>
+		<label id="qf-options-header-description" oncontextmenu="QuickFoldersOptions.showVersionHistory(this, true);return false;" tooltiptext="&qf.options.versionnumber.tooltip;"/>
 	</hbox>
 
 
@@ -37,10 +37,10 @@
 	<!-- added min width for wordy italian ;-) -->
 	<tabbox orient="vertical" flex="6" id="QuickFolders-Options-Tabbox">
 		<tabs>
-			<tab label="&qf.tab.general;" />
-			<tab label="&qf.tab.layout;" />
-			<tab label="&qf.tab.quickhelp;" />
-			<tab label="&qf.tab.support;" />
+			<tab label="&qf.tab.general;" id="QuickFolders-General" />
+			<tab label="&qf.tab.layout;" id="QuickFolders-Layout" />
+			<tab label="&qf.tab.quickhelp;" id="QuickFolders-Help" />
+			<tab label="&qf.tab.support;" id="QuickFolders-Support" />
 		</tabs>
 
 		<tabpanels >
@@ -65,6 +65,8 @@
 					<preference id="QuickFolders-Preferences-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"/>
 					<preference id="QuickFolders-Preferences-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool"/>
 					<preference id="QuickFolders-Preferences-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool"/>
+					<preference id="QuickFolders-Preferences-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool"/>
+					<preference id="QuickFolders-Preferences-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string"/>
 				</preferences>
 
 				<checkbox
@@ -75,25 +77,45 @@
 					tooltiptext="&qf.checkbox.displaylabel.tooltip;"
 				/>
 <hbox>
-		   <checkbox
-					label="&qf.checkbox.usekeyboardshortcuts;"
-					preference="QuickFolders-Preferences-UseKeyboardShortcuts"
-					instantApply="true"
-				/>
+	<vbox>
+		<checkbox
+			label="&qf.checkbox.usekeyboardshortcuts;"
+			preference="QuickFolders-Preferences-UseKeyboardShortcuts"
+			instantApply="true"
+		/>
 
-		 <checkbox
-					label="&qf.checkbox.usekeyboardshortcutsCTRL;"
-					preference="QuickFolders-Preferences-UseKeyboardShortcutCTRL"
-					instantApply="true"
-					style="margin-left:25px;"
-				/>
+		<checkbox
+			label="&qf.checkbox.usekeyboardshortcutsCTRL;"
+			preference="QuickFolders-Preferences-UseKeyboardShortcutCTRL"
+			instantApply="true"
+			style="margin-left:25px;"
+		/>
+	</vbox>
+
+	<vbox>
+		<checkbox
+			label="&qf.checkbox.showshortcutnumber;"
+			preference="QuickFolders-Preferences-ShowShortcutNumber"
+			instantApply="true"
+		/>
+
+		<hbox>
+			<checkbox
+				label="&qf.checkbox.useRebuildShortcut;"
+				preference="QuickFolders-Preferences-RebuildShortcut"
+				instantApply="true"
+				src="chrome://quickfolders/skin/ico/reload.png"
+			/>
+
+			<textbox
+				id="QuickFolders-Options-RebuildShortcutKey"
+				preference="QuickFolders-Preferences-RebuildShortcutKey"
+				instantApply="true"
+			/>
+		</hbox>
+	</vbox>
 </hbox>
 
-				<checkbox
-					label="&qf.checkbox.showshortcutnumber;"
-					preference="QuickFolders-Preferences-ShowShortcutNumber"
-					instantApply="true"
-				/>
 <groupbox>
 				<checkbox
 					label="&qf.checkbox.showUnreadBold;"
@@ -361,8 +383,8 @@
 			  <label href="http://quickfolders.mozdev.org/bugs.html" class="text-link" id="L2" tooltiptext="quickfolders.mozdev.org/bugs.html"
 					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')" >&qf.label.bugzilla;</label>
 			  <description class="quickhelp-desc">&qf.description.versionhistory;</description>
-			  <label href="http://quickfolders.mozdev.org/drupal/forum" class="text-link" id="L3" tooltiptext="http://quickfolders.mozdev.org/version.html"
-					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/version.html')" >&qf.label.versionhistory;</label>
+			  <label href="http://quickfolders.mozdev.org/version.html" class="text-link" id="L3" tooltiptext="http://quickfolders.mozdev.org/version.html"
+					 onclick="QuickFoldersOptions.showVersionHistory(this, false);return false;" >&qf.label.versionhistory;</label>
 			  <description class="quickhelp-desc">&qf.description.languages;</description>
 			  <label href="http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099"
 			  class="text-link" id="L4" tooltiptext="www.babelzilla.org?extension=5099"

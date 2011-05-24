@@ -10,6 +10,7 @@ var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
 
 QuickFolders.Interface = {
 	TimeoutID: 0,
+	LastTimeoutID: 0,
 	debugPopupItems: 0,
 	buttonsByOffset: [],
 	menuPopupsByOffset: [],
@@ -17,6 +18,7 @@ QuickFolders.Interface = {
 	//myPopup: null,
 	boundKeyListener: false,
 	RecentPopupId: 'QuickFolders-folder-popup-Recent',
+	RecentPopupIdCurrentFolderTool: 'QuickFolders-folder-popup-Recent-CurrentFolderTool',
 
 	getUIstring: function(id, defaultString) {
 		var theBundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
@@ -82,17 +84,17 @@ QuickFolders.Interface = {
 
 		// avoid the overhead if marking a folder with lots of unread mails as read or getting emails
 		// made folder update asynchronous instead.
-		if (!(this.TimeoutID>0)) {
+		// we only set a new timer, if there is not already one active.
+		if (!(this.TimeoutID)) {
 			try {
 				var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.queuedFolderUpdateDelay');
 				if (!nDelay>0) nDelay = 750;
-				// var func = "QuickFolders.Interface.queuedFolderUpdate()";
-				var oldTimer = this.TimeoutID;
 				//this.TimeoutID = setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
 				this.TimeoutID=setTimeout(function() { QuickFolders.Interface.queuedFolderUpdate(); }, nDelay);
 				QuickFolders.Util.logDebug("Folder Tab Select Timer ID: " + this.TimeoutID);
 
-				QuickFolders.Util.logDebug("Setting Update Timer (after timer " + oldTimer + " expired), new ID: " + this.TimeoutID);
+				QuickFolders.Util.logDebug("Setting Update Timer (after timer " + this.LastTimeoutID + " expired), new Timer: " + this.TimeoutID);
+				this.LastTimeoutID=this.TimeoutID;
 			}
 			catch (e) {
 				QuickFolders.Util.logDebug("setFolderUpdateTimer: " + e);
@@ -104,7 +106,8 @@ QuickFolders.Interface = {
 
 	queuedFolderUpdate: function() {
 		QuickFolders.Util.logDebug("Folder Update from Timer " + this.TimeoutID + "...");
-		this.updateFolders(false);
+		this.updateFolders(false, true);
+		//reset all timers
 		this.TimeoutID=0;
 	},
 
@@ -209,7 +212,7 @@ QuickFolders.Interface = {
 						break;
 					}
 				}
-				QuickFolders.Util.logDebugOptional("popupmenus","      check for recent: " + folder.prettyName);
+				QuickFolders.Util.logDebugOptional("popupmenus","	   check for recent: " + folder.prettyName);
 
 				addIfRecent(folder);
 				checkSubFolders(folder);
@@ -222,7 +225,7 @@ QuickFolders.Interface = {
 		}
 
 		var recentFolders = [];
-		let oldestTime = 0;
+		var oldestTime = 0; // let sometimes creates a problem in TB2!
 
 		/**
 		 * This function will add a folder to the recentFolders array if it
@@ -264,7 +267,7 @@ QuickFolders.Interface = {
 		// Start iterating at the top of the hierarchy, that is, with the root
 		// folders for each account.
 		var acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
-		              getService(Ci.nsIMsgAccountManager);
+					  getService(Ci.nsIMsgAccountManager);
 		var count = acctMgr.accounts.Count();
 		for (var i = 0; i < count; i++) {
 		  var acct = acctMgr.accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
@@ -274,18 +277,18 @@ QuickFolders.Interface = {
 
 		function sorter(a, b) {
 		   if (a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime"))
-		     return 1;
+			 return 1;
 		   return -1;
 		}
 		recentFolders.sort(sorter);
 
-		return  recentFolders;
+		return	recentFolders;
 	} ,
 
-	createRecentPopup: function(passedPopup, isDrag, isCreate) {
+	createRecentPopup: function(passedPopup, isDrag, isCreate, isCurrentFolderButton) {
 		var menupopup;
 
-		var popupId = this.RecentPopupId;
+		var popupId = isCurrentFolderButton ? this.RecentPopupIdCurrentFolderTool : this.RecentPopupId ;
 		QuickFolders.Util.logDebugOptional('recentFolders','createRecentPopup(passedPopup:' + passedPopup + ', isDrag:'+ isDrag +', isCreate:' + isCreate + ')');
 
 		if (passedPopup) {
@@ -314,7 +317,7 @@ QuickFolders.Interface = {
 		// convert array into nsISimpleEnumerator
 		var recentFolders;
 		var FoldersArray = Components.classes["@mozilla.org/array;1"]
-		                    .createInstance(Components.interfaces.nsIMutableArray);
+							.createInstance(Components.interfaces.nsIMutableArray);
 
 		var isOldFolderList = false;
 		if (typeof gFolderTreeView=='undefined')
@@ -348,9 +351,14 @@ QuickFolders.Interface = {
 
 	createRecentTab: function(passedPopup, isDrag, passedButton) {
 		try {
-			QuickFolders.Util.logDebugOptional('recentFolders','createRecentTab( passedPopup:' + passedPopup + ', isDrag:' + isDrag + ', passedButton:' + passedButton + ')');
+			QuickFolders.Util.logDebugOptional('recentFolders','createRecentTab( '
+				+ ' passedPopup: ' + (passedPopup==null ? 'null' : passedPopup.id)
+				+ ', isDrag: ' + isDrag
+				+ ', passedButton: ' + (passedButton==null ? 'null' : passedButton.id)
+				+ ')');
 			var menupopup;
-			var isFolderUpdate = false; //  need this to know if we are creating a fresh button (true) or just rebuild the folders menu on click/drag (false)
+			var isFolderUpdate = false; //	need this to know if we are creating a fresh button (true) or just rebuild the folders menu on click/drag (false)
+			var isCurrentFolderButton = (passedButton==null ? false : (passedButton.id=="QuickFolders-Recent-CurrentFolderTool"));
 			var button = passedButton ? passedButton : document.createElement("toolbarbutton");
 			if (!passedButton) {
 				isFolderUpdate = true;
@@ -358,6 +366,7 @@ QuickFolders.Interface = {
 					this.getUIstring("qfRecentFolders", "Recent Folders") : '';
 				button.setAttribute("label", recentLabel);
 				button.setAttribute("tag", "#Recent");
+				button.id="QuickFolders-Recent";
 
 				this.styleFolderButton(button, 0, 0, 'recent icon');
 				this.buttonsByOffset[0] = button; // currently, hard code to be the first! ([0] was [offset])
@@ -366,20 +375,29 @@ QuickFolders.Interface = {
 					this.setButtonColor(button, tabColor);
 			}
 
-			menupopup = this.createRecentPopup(passedPopup, isDrag, isFolderUpdate);
+			menupopup = this.createRecentPopup(passedPopup, isDrag, isFolderUpdate, isCurrentFolderButton);
 
 			var menuitem;
-			this.menuPopupsByOffset[0] = menupopup;
+			if (!isCurrentFolderButton)
+				this.menuPopupsByOffset[0] = menupopup;
+
 			if (!isDrag) {
+				// remove last popup menu (if button is reused and not created from fresh!)
+				// this needed in minimal rebuild as we reuse the buttons!
+				if (button.firstChild)
+					button.removeChild(button.firstChild);
 				button.appendChild(menupopup); // was popupset.appendChild
 
-				button.setAttribute('context', this.RecentPopupId);
-				button.setAttribute('position','after_start');
-				button.setAttribute("oncontextmenu",'QuickFolders.Interface.onClickRecent(event.target, event, false);');
-				button.setAttribute("onclick",'QuickFolders.Interface.onClickRecent(event.target, event, true); return false;');
+				if (!isCurrentFolderButton)  // the currentfolder recent button has already the correct attributes set by the overlay
+				{
+					button.setAttribute('context', this.RecentPopupId);
+					button.setAttribute('position','after_start');
+					button.setAttribute("oncontextmenu",'QuickFolders.Interface.onClickRecent(event.target, event, false);');
+					button.setAttribute("onclick",'QuickFolders.Interface.onClickRecent(event.target, event, true); return false;');
 
-				button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
-				button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+					button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+					button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+				}
 			}
 
 			return button;
@@ -400,13 +418,27 @@ QuickFolders.Interface = {
 			// left click: open context menu through code
 			QuickFolders.Interface.showPopup(button, this.RecentPopupId);
 		}
+	} ,
 
+	onClickRecentCurrentFolderTools: function(button, evt, forceDisplay) {
+		// refresh the recent menu on right click
+		this.createRecentTab(null, false, button);
+
+		if (forceDisplay) {
+			// left click: open context menu through code
+			QuickFolders.Interface.showPopup(button, this.RecentPopupIdCurrentFolderTool);
+		}
 	} ,
 
 	// added parameter to avoid deleting categories dropdown while selecting from it!
-	updateFolders: function(rebuildCategories) {
+	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
+	updateFolders: function(rebuildCategories, minimalUpdate) {
 		this.TimeoutID=0;
-		var sDebug='updateFolders(' + rebuildCategories + ')';
+
+		if(rebuildCategories || QuickFolders.Preferences.isMinimalUpdateDisabled())
+			minimalUpdate=false;
+
+		var sDebug='updateFolders(rebuildCategories: ' + rebuildCategories + ', minimal: ' + minimalUpdate +')';
 		var toolbar = QuickFolders.Util.$('QuickFolders-Toolbar');
 
 		if (QuickFolders.Preferences.isShowToolbarFlatstyle())
@@ -433,45 +465,54 @@ QuickFolders.Interface = {
 
 		QuickFolders.Util.logDebug(sDebug);
 
+		if (!minimalUpdate) {
+			this.buttonsByOffset = [];
+			this.menuPopupsByOffset = [];
+			this.specialButtons = [];
 
-		this.buttonsByOffset = [];
-		this.menuPopupsByOffset = [];
-		this.specialButtons = [];
+			QuickFolders.Util.clearChildren(this.getToolbar(), rebuildCategories);
 
-		QuickFolders.Util.clearChildren(this.getToolbar(), rebuildCategories);
-		// force label when there are no folders!
-		QuickFolders.Util.$('QuickFolders-title-label').value = QuickFolders.Preferences.getTextQuickfoldersLabel();
+			// force label when there are no folders!
+			QuickFolders.Util.$('QuickFolders-title-label').value = QuickFolders.Preferences.getTextQuickfoldersLabel();
 
-		var showLabelBox = QuickFolders.Preferences.isShowQuickFoldersLabel()||(0==QuickFolders.Model.selectedFolders.length);
+			var showLabelBox = QuickFolders.Preferences.isShowQuickFoldersLabel()||(0==QuickFolders.Model.selectedFolders.length);
 
-		QuickFolders.Util.$('QuickFolders-title-label').collapsed = !showLabelBox;
-		QuickFolders.Util.$('QuickFolders-LabelBox').collapsed = !showLabelBox;
-		QuickFolders.Util.$('QuickFolders-LabelBox').style.width = showLabelBox ? "auto" : "0px";
+			QuickFolders.Util.$('QuickFolders-title-label').collapsed = !showLabelBox;
+			QuickFolders.Util.$('QuickFolders-LabelBox').collapsed = !showLabelBox;
+			QuickFolders.Util.$('QuickFolders-LabelBox').style.width = showLabelBox ? "auto" : "0px";
 
 
-		if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
-			this.updateCategories();
+			if (rebuildCategories || null==QuickFolders.Util.$('QuickFolders-Category-Selection'))
+				this.updateCategories();
+		}
 
 
 		var offset = 0;
 
 		// Recent Folders tab
-		if (QuickFolders.Preferences.isShowRecentTab() )
-		{
-			var rtab = this.createRecentTab(null, false, null);
-			if (rtab) {
-				this.getToolbar().appendChild(rtab);
+		if (QuickFolders.Preferences.isShowRecentTab()) {
+			if (minimalUpdate ) {
 				offset++;
+			}
+			else
+			{
+				var rtab = this.createRecentTab(null, false, null);
+				if (rtab) {
+					this.getToolbar().appendChild(rtab);
+					offset++;
+				}
 			}
 		}
 
-		// force user colors on first updateFolders (no selecteFolder yet!)
+		var countFolders = 0;
+		// force user colors on first updateFolders (no selected Folder yet!)
 		if (QuickFolders.Model.selectedFolders.length) {
 
 			for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 				var folderEntry = QuickFolders.Model.selectedFolders[i];
 				var folder;
 				var tabColor;
+				var button;
 
 				if(!this.shouldDisplayFolder(folderEntry))
 					continue;
@@ -479,21 +520,33 @@ QuickFolders.Interface = {
 				catch(e) {tabColor = null};
 
 				if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
-					var button = this.addFolderButton(folder, folderEntry.name, offset, tabColor);
-
-					this.buttonsByOffset[offset] = button;
-					if (tabColor) {
-						this.setButtonColor(button, tabColor);
-						QuickFolders.Util.logDebugOptional("css","Button Color: " + tabColor);
+					countFolders++;
+					if (!minimalUpdate) {
+						button = this.addFolderButton(folder, folderEntry.name, offset, tabColor, null, null);
+						this.buttonsByOffset[offset] = button;
+					}
+					else {
+						// now just update the folder count on the button label, if it changed.
+						// button is not newly created. Also it is not recolored.
+						button = this.getButtonByFolder(folder);
+						if (button) {
+							this.addFolderButton(folder, folderEntry.name, offset, tabColor, button, null);
+						}
 					}
 
 					offset++;
 				}
 			}
-			QuickFolders.Util.logDebugOptional("folders",QuickFolders.Model.selectedFolders.length + " bookmarked folders added to Model.");
 
 			this.onFolderSelected();
+
+			var sDoneWhat = minimalUpdate ? " rebuilt." : " created on Toolbar."
+			QuickFolders.Util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
 		}
+
+		var button =  QuickFolders.doc.getElementById('QuickFolders-CurrentMail');
+		if (button)
+			button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
 
 		/*
 		// Experimental; for new 'drop to thread' feature
@@ -518,7 +571,7 @@ QuickFolders.Interface = {
 		QuickFolders.Util.clearChildren(menuPopup,true);
 
 		if(lCatCount > 0) {
-			menuList.style.display = 'block';
+			menuList.style.display = 'inline-block';
 
 
 			menuPopup.appendChild(this.createMenuItem("__ALL", this.getUIstring("qfAll", "(Display All)")))
@@ -548,6 +601,48 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+	tidyDeadFolders: function() {
+		var countTabs=0;
+		var countDeleted=0;
+		var sMsg = this.getUIstring('qfTidyDeadFolders',
+			'This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is removed without QuickFolders being notified.')
+		alert(sMsg);
+		for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++)
+		{
+			var folderEntry = QuickFolders.Model.selectedFolders[i];
+			// test mail folder for existence
+			var folder = GetMsgFolderFromUri(folderEntry.uri, true);
+			if (!folder) {
+				countTabs++;
+				if (confirm(folderEntry.name + this.getUIstring('qfThisTabIsInvalid',': This is a tab that points to an invalid folder:') + '\n'
+					+ folderEntry.uri + '\n'
+					+ this.getUIstring('qfTabDeletePrompt','Delete this Tab?')))
+				{
+					QuickFolders.Model.removeFolder(folderEntry.uri, false); // do not store this yet!
+					i--; // array is spliced, so we need to go back one!
+					countDeleted++;
+				}
+			}
+
+		}
+
+		if (countDeleted>0) {
+			if (confirm(this.getUIstring('qfSavePrompt','Save these changes?'))) {
+				QuickFolders.Preferences.setFolderEntries(QuickFolders.Model.selectedFolders);
+				this.updateFolders(true, false); // show this on screen
+			}
+			else {
+				// restore model
+				QuickFolders.Preferences.getFolderEntries();
+				countDeleted=0;
+				this.updateFolders(true, false);
+			}
+		}
+		var sLabelFound = this.getUIstring('qfDeadTabsCount', '# dead tabs found:');
+		var sLabelDeleted = this.getUIstring('qfDeadTabsDeleted', '# dead tabs removed:');
+		alert(sLabelFound + ' ' + countTabs + '\n' + sLabelDeleted + ' ' + countDeleted);
+	} ,
+
 	createMenuItem: function(value, label) {
 		var menuItem = document.createElement("menuitem");
 		menuItem.setAttribute("label", label);
@@ -561,7 +656,7 @@ QuickFolders.Interface = {
 	selectCategory: function(categoryName, rebuild) {
 		this.currentlySelectedCategory = categoryName;
 		QuickFolders.Util.logDebug("Selecting Category: " + categoryName + "...");
-		this.updateFolders(rebuild);
+		this.updateFolders(rebuild, false);
 
 		QuickFolders.Preferences.setLastSelectedCategory(categoryName);
 		QuickFolders.Util.logDebug("Successfully selected Category: " + categoryName);
@@ -603,11 +698,23 @@ QuickFolders.Interface = {
 	} ,
 
 	windowKeyPress: function(e,dir) {
+		var isAlt = e.altKey;
+		var isCtrl = e.ctrlKey
+		var isShift = e.shiftKey;
+
+		if (isCtrl && isAlt && dir!='up' && QuickFolders.Preferences.isUseRebuildShortcut()) {
+			if ((String.fromCharCode(e.charCode)).toLowerCase() == QuickFolders.Preferences.RebuildShortcutKey().toLowerCase()) {
+				this.updateFolders(true,false);
+				try{
+					QuickFolders.Util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
+					    + (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '')
+					    + QuickFolders.Preferences.RebuildShortcutKey());
+					window.MsgStatusFeedback.showStatusString('quickfolder shortcuts were rebuilt');
+				} catch(e) {;};
+			}
+		}
 
 		if(QuickFolders.Preferences.isUseKeyboardShortcuts()) {
-			var isAlt = e.altKey;
-			var isCtrl = e.ctrlKey
-			var isShift = e.shiftKey;
 			var shouldBeHandled =
 				(!QuickFolders.Preferences.isUseKeyboardShortcutsCTRL() && isAlt)
 				||
@@ -687,60 +794,83 @@ QuickFolders.Interface = {
 		}
 	},
 
-	addFolderButton: function(folder, useName, offset, tabColor) {
-		var numUnread = folder.getNumUnread(false);
-		var numUnreadInSubFolders = folder.getNumUnread(true) - numUnread;
-		var numTotal = folder.getTotalMessages(false);
-		var numTotalInSubFolders = folder.getTotalMessages(true) - numTotal;
+	unReadCount:0, totalCount:0, // to pass temp information from getButtonLabel to styleFolderButton
 
-		var label = "";
-		QuickFolders.Util.logDebugOptional("folders", "addFolderButton " + folder.name + "...");
+	getButtonLabel: function(folder, useName, offset) {
+		try {
+			var numUnread = folder.getNumUnread(false);
+			var numUnreadInSubFolders = folder.getNumUnread(true) - numUnread;
+			var numTotal = folder.getTotalMessages(false);
+			var numTotalInSubFolders = folder.getTotalMessages(true) - numTotal;
 
-		if(QuickFolders.Preferences.isShowShortcutNumbers()) {
-			var shortCutNumber = QuickFolders.Preferences.isShowRecentTab() ? offset-1 : offset;
-			if(shortCutNumber < 10) {
-				if(shortCutNumber == 9) {
-					label += "0. ";
-				}
-				else {
-					label += (shortCutNumber + 1) + ". ";
+			this.unReadCount = numUnread + numUnreadInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders() ? 1 : 0);
+			this.totalCount = numTotal + numTotalInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders() ? 1 : 0);
+
+			var label = "";
+			QuickFolders.Util.logDebugOptional("folders", "addFolderButton " + folder.name + "...");
+
+			// offset=-1 for folders tabs that are NOT on the quickFOlder bar (e.g. current Folder Panel)
+			if (offset>=0) {
+				if(QuickFolders.Preferences.isShowShortcutNumbers()) {
+					var shortCutNumber = QuickFolders.Preferences.isShowRecentTab() ? offset-1 : offset;
+					if(shortCutNumber < 10) {
+						if(shortCutNumber == 9) {
+							label += "0. ";
+						}
+						else {
+							label += (shortCutNumber + 1) + ". ";
+						}
+					}
+
 				}
 			}
 
+			label += (useName && useName.length > 0) ? useName : folder.name;
+
+			var displayNumbers = [];
+			QuickFolders.Util.logDebugOptional("folders",
+				  "unread " + (QuickFolders.Preferences.isShowUnreadCount() ? "(displayed)" : "(not dispayed)") +	": " + numUnread
+				+ " - total:" + (QuickFolders.Preferences.isShowTotalCount() ? "(displayed)" : "(not dispayed)") +	 ": " + numTotal);
+			var s="";
+			if (QuickFolders.Preferences.isShowUnreadCount()) {
+				if(numUnread > 0)
+					s=s+numUnread;
+				if(numUnreadInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
+					s=s+'+'+numUnreadInSubFolders+'';
+				if(s!="")
+					displayNumbers.push(s);
+			}
+
+			if (QuickFolders.Preferences.isShowTotalCount()) {
+				s="";
+				if(numTotal > 0)
+					s=s+numTotal;
+				if(numTotalInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
+					s=s+'+'+numTotalInSubFolders+'';
+				if(s!="")
+					displayNumbers.push(s);
+			}
+
+			if(displayNumbers.length > 0) {
+				label += " (" + displayNumbers.join(' / ') + ")";
+			}
+			return label;
 		}
-
-		label += (useName && useName.length > 0) ? useName : folder.name;
-
-		var displayNumbers = [];
-		QuickFolders.Util.logDebugOptional("folders",
-			  "unread " + (QuickFolders.Preferences.isShowUnreadCount() ? "(displayed)" : "(not dispayed)") +	": " + numUnread
-			+ " - total:" + (QuickFolders.Preferences.isShowTotalCount() ? "(displayed)" : "(not dispayed)") +	 ": " + numTotal);
-
-		var s="";
-		if (QuickFolders.Preferences.isShowUnreadCount()) {
-			if(numUnread > 0)
-				s=s+numUnread;
-			if(numUnreadInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
-				s=s+'+'+numUnreadInSubFolders+'';
-			if(s!="")
-				displayNumbers.push(s);
+		catch(ex) {
+			QuickFolders.Util.logToConsole('getButtonLabel:' + ex);
+			return "";
 		}
+	},
 
-		if (QuickFolders.Preferences.isShowTotalCount()) {
-			s="";
-			if(numTotal > 0)
-				s=s+numTotal;
-			if(numTotalInSubFolders > 0 && QuickFolders.Preferences.isShowCountInSubFolders())
-				s=s+'+'+numTotalInSubFolders+'';
-			if(s!="")
-				displayNumbers.push(s);
-		}
+	addFolderButton: function(folder, useName, offset, tabColor, theButton, buttonId) {
 
-		if(displayNumbers.length > 0) {
-			label += " (" + displayNumbers.join(' / ') + ")";
-		}
+		var label = this.getButtonLabel(folder, useName, offset);
 
-		var button = document.createElement("toolbarbutton");
+		var button = (theButton) ? theButton : document.createElement("toolbarbutton"); // create the button!
+
+		button.setAttribute("label", label);
+
+
 		//button.setAttribute("class",ToolbarStyle); // was toolbar-height!
 
 		// find out whether this is a special button and add specialFolderType
@@ -749,37 +879,27 @@ QuickFolders.Interface = {
 		var sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons() ? ' icon': '';
 
 		// use folder flags instead!
-		const MSG_FOLDER_FLAG_NEWSGROUP = 0x0001
-		const MSG_FOLDER_FLAG_TRASH 	= 0x0100
-		const MSG_FOLDER_FLAG_SENTMAIL	= 0x0200
-		const MSG_FOLDER_FLAG_DRAFTS	= 0x0400
-		const MSG_FOLDER_FLAG_QUEUE 	= 0x0800
-		const MSG_FOLDER_FLAG_INBOX 	= 0x1000
-		const MSG_FOLDER_FLAG_TEMPLATES = 0x400000
-		const MSG_FOLDER_FLAG_JUNK		= 0x40000000
-		const MSG_FOLDER_FLAG_SMART 	= 0x4000 // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
-		const MSG_FOLDER_FLAG_ARCHIVE	= 0x4004 // another guess ?
-		const MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
+		var Constants = QuickFolders.Util.Constants;
 
-		if (folder.flags & MSG_FOLDER_FLAG_INBOX)
+		if (folder.flags & Constants.MSG_FOLDER_FLAG_INBOX)
 			specialFolderType="inbox" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_SENTMAIL)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_SENTMAIL)
 			specialFolderType="sent" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_TRASH)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_TRASH)
 			specialFolderType="trash" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_JUNK)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_JUNK)
 			specialFolderType="junk" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_TEMPLATES)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_TEMPLATES)
 			specialFolderType="template" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_QUEUE)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_QUEUE)
 			specialFolderType="outbox" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_DRAFTS)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_DRAFTS)
 			specialFolderType="draft" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_NEWSGROUP)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_NEWSGROUP)
 			specialFolderType="news" + sDisplayIcons;
-		else if (folder.flags & MSG_FOLDER_FLAG_VIRTUAL)
+		else if (folder.flags & Constants.MSG_FOLDER_FLAG_VIRTUAL)
 			specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
-		else if (folder.flags == MSG_FOLDER_FLAG_ARCHIVE)
+		else if (folder.flags == Constants.MSG_FOLDER_FLAG_ARCHIVE)
 			specialFolderType="archives" + sDisplayIcons;
 		else {
 			if (sDisplayIcons.trim)
@@ -788,79 +908,89 @@ QuickFolders.Interface = {
 				specialFolderType=sDisplayIcons;
 		}
 
-		button.setAttribute("label", label);
 
+		// this needs to be done also when a minimal Update is done (button passed in)
 		this.styleFolderButton(
-		  button,
-		  numUnread + numUnreadInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders() ? 1 : 0),
-		  numTotal + numTotalInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders() ? 1 : 0),
-		  specialFolderType
+			button, this.unReadCount, this.totalCount, specialFolderType, tabColor
 		);
 
 		button.folder = folder;
 
-		// tooltip - see also Attributes section of
-		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
-		// and docs for nsIMsgIncomingServer
-		var sVirtual = (folder.flags & MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)": " ";
-		var srv= folder.server;
-		var srvName='';
-		if (srv) {
-			try {srvName = ' [' + srv.hostName + ']';}
-			catch(e) { };
+		if (null==theButton || (null==button.getAttribute("oncommand"))) {
+			button.setAttribute("tooltiptext", QuickFolders.Util.getFolderTooltip(folder));
+
+			button.setAttribute("oncommand",'QuickFolders.Interface.onButtonClick(event.target, event, true);');
 		}
-		var hostString = folder.rootFolder.name + srvName;
-		button.setAttribute("tooltiptext", folder.name + ' @ ' + hostString + sVirtual);
 
 
-		button.setAttribute("oncommand",'QuickFolders.Interface.onButtonClick(event.target, event, true);');
 
-
-		var popupId = 'QuickFolders-folder-popup-' + folder.URI;
-		//button.setAttribute('popup',popupId); // not needed, we do this manually now...
+		var popupId = 'QuickFolders-folder-popup-'
+		          + ((buttonId!=null) ? buttonId : folder.URI);
 		button.setAttribute('context',''); // overwrites the parent context menu
 		button.setAttribute("oncontextmenu",'QuickFolders.Interface.showPopup(this,"' + popupId + '")');
+		if (buttonId == 'QuickFolders-CurrentFolder') {
+			button.setAttribute("onclick",'QuickFolders.Interface.showPopup(this,"' + popupId + '")');
+			button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+			button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+
+		}
 
 
-		this.getToolbar().appendChild(button);
+		if (!theButton) {
+			this.getToolbar().appendChild(button);
+			button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+			button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+			button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+			button.setAttribute("flex",100);
+		}
 
-		button.setAttribute("ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
-		button.setAttribute("ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-		button.setAttribute("ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
-		button.setAttribute("flex",100);
-
+		// popupset is re-done even on minimal update:
 		this.addPopupSet(popupId, folder, offset, button);
 
-// INSERT COLOR RULES HERE LATER
+		if (!theButton) {
+			// AG add dragging of buttons
+			button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+			button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
 
-		// AG add dragging of buttons
-		button.setAttribute("ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
-		button.setAttribute("ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-
-		QuickFolders.Util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
+			QuickFolders.Util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
+		}
 
 		return button;
 	} ,
 
-	styleFolderButton: function(button, numUnread, numTotal, specialStyle) {
+	styleFolderButton: function(button, numUnread, numTotal, specialStyle, tabColor) {
+
+		//reset style!
+		var cssClass = '';
 		QuickFolders.Util.logDebugOptional("buttonStyle","styleFolderButton(" + button.getAttribute("label")
 			+ ", " + numUnread + ", " + numTotal + ", " + specialStyle + ")");
 
 		if(numUnread > 0 && QuickFolders.Preferences.isShowUnreadFoldersBold()) {
-			button.className += " has-unread";
+			cssClass += " has-unread";
 		}
 
 		if(numTotal > 0 && QuickFolders.Preferences.isShowFoldersWithMessagesItalic()) {
-			button.className += " has-messages";
+			cssClass += " has-messages";
 		}
 
 		if (specialStyle!="")
-			button.className += " " + specialStyle;
+			cssClass += " " + specialStyle;
 
 		var buttonFontSize = QuickFolders.Preferences.getButtonFontSize();
 		if(buttonFontSize) {
 			button.style.fontSize = buttonFontSize + "px";
 		}
+
+		// add some color, the easy way
+		if (tabColor) {
+			cssClass += " " + this.getButtonColorClass(tabColor);
+		}
+
+		if (cssClass.trim)
+			button.className = cssClass.trim();
+		else
+			button.className = cssClass;
+
 	} ,
 
 	addSpecialButton: function(SpecialFunction, SpecialId, Offset, tooltip) {
@@ -932,13 +1062,13 @@ QuickFolders.Interface = {
 
 	onRemoveBookmark: function(popupNode) {
 		var msg = popupNode.folder.name + " tab removed from QuickFolders";
-		QuickFolders.Model.removeFolder(popupNode.folder.URI);
-		this.updateFolders(true);
+		QuickFolders.Model.removeFolder(popupNode.folder.URI, true);
+		// this.updateFolders(true); already done!
 		try{window.MsgStatusFeedback.showStatusString(msg);} catch(e) {;};
 	} ,
 
 	onRenameBookmark: function(popupNode) {
-		var sOldName = popupNode.label; //  this.getButtonByFolder(popupNode.folder).label;
+		var sOldName = popupNode.label; //	this.getButtonByFolder(popupNode.folder).label;
 		// strip shortcut numbers
 		if(QuickFolders.Preferences.isShowShortcutNumbers()) {
 			var i = sOldName.indexOf('. ');
@@ -954,7 +1084,7 @@ QuickFolders.Interface = {
 			//making sure there is stuff between the () and the last char is a )
 			if (i>1 && sOldName.substr(i, j-i).length>0 && j==sOldName.length-1) {
 				var bracketedLen = j-i+1;
-				QuickFolders.Util.logDebug("Suspected number of new / total mails = " + sOldName.substr(i, j-i+1) + "   length = " + bracketedLen);
+				QuickFolders.Util.logDebug("Suspected number of new / total mails = " + sOldName.substr(i, j-i+1) + "	length = " + bracketedLen);
 			// lets check if this is numeral, after removing any ','
 				sOldName = sOldName.substring(0,sOldName.length - bracketedLen);
 			}
@@ -980,7 +1110,7 @@ QuickFolders.Interface = {
 		}
 		try{
 			var s2 = folder.sizeOnDisk;
-			var out = this.getUIstring("qfCompacted", "Compacted ") + " "+ folder.name + "     " + (s1-s2).toString() + " bytes expunged.";
+			var out = this.getUIstring("qfCompacted", "Compacted ") + " "+ folder.name + "	   " + (s1-s2).toString() + " bytes expunged.";
 			window.MsgStatusFeedback.showStatusString(out);
 		} catch(e) {;};
 	},
@@ -1009,15 +1139,18 @@ QuickFolders.Interface = {
 
 	onDeleteFolder: function(popupParent) {
 
-		// first we delete the QuickFolder attached to this mail folder
-		QuickFolders.Interface.onRemoveBookmark(popupParent);
-
+		var result = null;
+		var uri = popupParent.folder.URI;
 		if ((QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird') || (QuickFolders.Util.Application()=='Postbox') || (QuickFolders.Util.Application()=='SeaMonkey')) {
 			QuickFolders_MySelectFolder(popupParent.folder.URI);
 			MsgDeleteFolder();
 		}
 		else
 			gFolderTreeController.deleteFolder(popupParent.folder);
+
+		// if folder is gone, delete quickFolder
+		if (!GetMsgFolderFromUri(uri, true))
+			QuickFolders.Interface.onRemoveBookmark(popupParent);
 
 	},
 
@@ -1044,7 +1177,9 @@ QuickFolders.Interface = {
 				var s2 = 0; // folder.sizeOnDisk;
 				var out = "Emptied Trash. " + (s1-s2).toString() + " bytes expunged.";
 				window.MsgStatusFeedback.showStatusString(out);
-			} catch(e) {;};
+			} catch(e) {
+				QuickFolders.Util.logToConsole("onEmptyTrash: " + e);
+			};
 		}
 	},
 
@@ -1061,6 +1196,12 @@ QuickFolders.Interface = {
 	},
 
 
+	onDeleteJunk: function(folder) {
+		//gFolderTreeController.deleteJunk(folder);
+		deleteJunkInFolder();
+	},
+
+
 	onEditVirtualFolder: function(folder) {
 		if ((QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird') || (QuickFolders.Util.Application()=='Postbox') || (QuickFolders.Util.Application()=='SeaMonkey')) {
 			QuickFolders_MySelectFolder(folder.URI);
@@ -1068,6 +1209,105 @@ QuickFolders.Interface = {
 		}
 		else
 			gFolderTreeController.editVirtualFolder(folder);
+	},
+
+	onFolderProperties: function(folder) {
+		if ((QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird') || (QuickFolders.Util.Application()=='Postbox') || (QuickFolders.Util.Application()=='SeaMonkey')) {
+			QuickFolders_MySelectFolder(folder.URI);
+			MsgFolderProperties();
+		}
+		else
+			gFolderTreeController.editFolder(null,folder);
+	},
+
+
+	rebuildSummary: function (folder) {
+		var isCurrent=false;
+		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
+		if (folder.locked) {
+			folder.throwAlertMsg("operationFailedFolderBusy", msgWindow);
+			return;
+		}
+		if (folder.supportsOffline) {
+			// Remove the offline store, if any.
+			let offlineStore = folder.filePath;
+			if (offlineStore.exists())
+				offlineStore.remove(false);
+		}
+		if (typeof gFolderDisplay !='undefined') {
+			if (gFolderDisplay.view) { // Tb3
+				if (gFolderDisplay.view.displayedFolder == folder) {
+					gFolderDisplay.view.close();
+					isCurrent = true;
+				}
+			}
+			else if(gFolderDisplay.displayedFolder == folder) {  // SeaMonkey
+				gFolderDisplay.view.close();
+				isCurrent = true;
+			}
+
+			// Send a notification that we are triggering a database rebuild.
+			let notifier =
+				Components.classes["@mozilla.org/messenger/msgnotificationservice;1"]
+						.getService(
+							Components.interfaces.nsIMsgFolderNotificationService);
+
+			notifier.notifyItemEvent(folder, "FolderReindexTriggered", null);
+			folder.msgDatabase.summaryValid = false;
+
+			var msgDB = folder.msgDatabase;
+			msgDB.summaryValid = false;
+			try {
+				folder.closeAndBackupFolderDB('');
+			}
+			catch(e) {
+				// In a failure, proceed anyway since we're dealing with problems
+				folder.ForceDBClosed();
+			}
+			folder.updateFolder(msgWindow);
+			if (isCurrent)
+				gFolderDisplay.show(folder);
+		}
+		else { // Postbox / SeaMonkey
+			var msgDB = folder.getMsgDatabase(msgWindow);
+			try
+			{
+				if (folder.supportsOffline) {
+					// Remove the offline store, if any.
+					let offlineStore = folder.filePath;
+					if (offlineStore.exists())
+						offlineStore.remove(false);
+				}
+			}
+			catch (ex)
+			{
+				Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage("failed to remove offline store: " + ex);
+			}
+
+			msgDB.summaryValid = false;
+			folder.ForceDBClosed();
+			// these two lines will cause the thread pane to get reloaded
+			// when the download/reparse is finished. Only do this
+			// if the selected folder is loaded (i.e., not thru the
+			// context menu on a non-loaded folder).
+			if (folder == GetLoadedMsgFolder())
+			{
+				gRerootOnFolderLoad = true;
+				gCurrentFolderToReroot = folder.URI;
+			}
+			if ( !(QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird'))
+				folder.updateFolder(msgWindow);
+		}
+
+
+		alert(this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
+
+	},
+
+
+
+	onRepairFolder: function(folder) {
+		this.rebuildSummary(folder);
 	},
 
 	onNewFolder: function(folder) {
@@ -1094,141 +1334,147 @@ QuickFolders.Interface = {
 
 		var menuitem;
 
-		/***  QUICKFOLDERS COMMANDS   ***/
+		if (button.id != "QuickFolders-CurrentFolder") {
 
-		var QFcommandPopup = document.createElement('menupopup');
-		QFcommandPopup.className = 'QuickFolders-folder-popup';
+			/***  QUICKFOLDERS COMMANDS   ***/
 
-		// tab colors menu
-		var colorMenu = document.createElement('menu');
-		colorMenu.setAttribute("tag",'qfTabColorMenu');
-		colorMenu.setAttribute("label", this.getUIstring("qfMenuTabColorPopup", "Tab Color") );
-		colorMenu.className = 'QuickFolders-folder-popup';
-		colorMenu.setAttribute("class","menu-iconic");
+			var QFcommandPopup = document.createElement('menupopup');
+			QFcommandPopup.className = 'QuickFolders-folder-popup';
 
-		QuickFolders.Util.logDebugOptional("popupmenus","Popup set created..\n-------------------------");
+			// tab colors menu
+			// we should clone this!
+			var colorMenu = document.createElement('menu');
+			colorMenu.setAttribute("tag",'qfTabColorMenu');
+			colorMenu.setAttribute("label", this.getUIstring("qfMenuTabColorPopup", "Tab Color") );
+			colorMenu.className = 'QuickFolders-folder-popup';
+			colorMenu.setAttribute("class","menu-iconic");
 
-		// SelectColor
-		var menuColorPopup = document.createElement("menupopup");
-		colorMenu.appendChild(menuColorPopup);
+			QuickFolders.Util.logDebugOptional("popupmenus","Popup set created..\n-------------------------");
 
-		// create color pick items
-		var jCol;
-		QuickFolders.Util.logDebugOptional("popupmenus","Creating Colors Menu for " + folder.name + "...");
-		for (jCol=0; jCol<=20;jCol++) {
-			menuitem = document.createElement('menuitem');
-			menuitem.className='color menuitem-iconic';
-			menuitem.setAttribute("tag","qfColor"+jCol);
-			if (jCol) {
-				menuitem.setAttribute('label',this.getUIstring("qfMenuColor", "Color") + " "+ jCol);
-				//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
+			// SelectColor
+			var menuColorPopup = document.createElement("menupopup");
+			colorMenu.appendChild(menuColorPopup);
+
+			// create color pick items
+			var jCol;
+			QuickFolders.Util.logDebugOptional("popupmenus","Creating Colors Menu for " + folder.name + "...");
+			for (jCol=0; jCol<=20;jCol++) {
+				menuitem = document.createElement('menuitem');
+				menuitem.className='color menuitem-iconic';
+				menuitem.setAttribute("tag","qfColor"+jCol);
+				if (jCol) {
+					menuitem.setAttribute('label',this.getUIstring("qfMenuColor", "Color") + " "+ jCol);
+					//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
+				}
+				else
+					menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
+				menuitem.setAttribute("oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
+				menuColorPopup.appendChild(menuitem);
 			}
-			else
-				menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
-			menuColorPopup.appendChild(menuitem);
-		}
-		QuickFolders.Util.logDebugOptional("popupmenus","Colors Menu created.\n-------------------------");
+			QuickFolders.Util.logDebugOptional("popupmenus","Colors Menu created.\n-------------------------");
 
-		// append color menu to QFcommandPopup
-		QFcommandPopup.appendChild(colorMenu);
+			// append color menu to QFcommandPopup
+			QFcommandPopup.appendChild(colorMenu);
 
-		// SelectCategory
-		menuitem = document.createElement('menuitem');
-		menuitem.className='cmd menuitem-iconic';
-		menuitem.setAttribute('tag','qfCategory');
-		menuitem.setAttribute('label',this.getUIstring('qfSetCategory', 'Set Bookmark Category...'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfSetCategoryA', 'C'));
-		menuitem.setAttribute('oncommand','QuickFolders.Interface.addFolderToCategory(document.popupNode)'); // event.target.parentNode.parentNode.parentNode.folder
-		QFcommandPopup.appendChild(menuitem);
+			// SelectCategory
+			menuitem = document.createElement('menuitem');
+			menuitem.className='cmd menuitem-iconic';
+			menuitem.setAttribute('tag','qfCategory');
+			menuitem.setAttribute('label',this.getUIstring('qfSetCategory', 'Set Bookmark Category...'));
+			menuitem.setAttribute('accesskey',this.getUIstring('qfSetCategoryA', 'C'));
 
+			menuitem.setAttribute('oncommand',
+				'QuickFolders.Interface.addFolderToCategory(QuickFolders.Util.getPopupNode(this))');
 
-		// DeleteQuickFolder
-		menuitem = document.createElement('menuitem');
-		menuitem.setAttribute('tag','qfRemove');
-		menuitem.className='cmd menuitem-iconic';
-
-		menuitem.setAttribute('label',this.getUIstring('qfRemoveBookmark', 'Remove bookmark'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfRemoveBookmarkAccess','R'));
-		menuitem.setAttribute('oncommand','QuickFolders.Interface.onRemoveBookmark(document.popupNode)');
-		QFcommandPopup.appendChild(menuitem);
-
-		var fi = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-
-		// RenameQuickFolder
-		menuitem = document.createElement('menuitem');
-		menuitem.className='cmd menuitem-iconic';
-		menuitem.setAttribute('tag','qfRename');
-		menuitem.setAttribute('label',this.getUIstring('qfRenameBookmark','Rename Bookmark'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfRenameBookmarkAccess','R'));
-		menuitem.setAttribute('oncommand','QuickFolders.Interface.onRenameBookmark(document.popupNode)');
-		QFcommandPopup.appendChild(menuitem);
-
-		// --------------------
-		QFcommandPopup.appendChild(document.createElement('menuseparator'));
-		var menuItemToClone;
-
-		// Options
-		menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-options');
-		if (menuItemToClone) {
-			menuitem = menuItemToClone.cloneNode(true);
 			QFcommandPopup.appendChild(menuitem);
-		}
 
-		// Support
-		menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-support');
-		if (menuItemToClone) {
-			menuitem = menuItemToClone.cloneNode(true);
+
+			// DeleteQuickFolder
+			menuitem = document.createElement('menuitem');
+			menuitem.setAttribute('tag','qfRemove');
+			menuitem.className='cmd menuitem-iconic';
+
+			menuitem.setAttribute('label',this.getUIstring('qfRemoveBookmark', 'Remove bookmark'));
+			menuitem.setAttribute('accesskey',this.getUIstring('qfRemoveBookmarkAccess','R'));
+			menuitem.setAttribute('oncommand','QuickFolders.Interface.onRemoveBookmark(QuickFolders.Util.getPopupNode(this))');
 			QFcommandPopup.appendChild(menuitem);
-		}
-		// menuitem.setAttribute('id','');
 
-		// Help
-		menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-help');
-		if (menuItemToClone) {
-			menuitem = menuItemToClone.cloneNode(true);
+			// RenameQuickFolder
+			menuitem = document.createElement('menuitem');
+			menuitem.className='cmd menuitem-iconic';
+			menuitem.setAttribute('tag','qfRename');
+			menuitem.setAttribute('label',this.getUIstring('qfRenameBookmark','Rename Bookmark'));
+			menuitem.setAttribute('accesskey',this.getUIstring('qfRenameBookmarkAccess','R'));
+			menuitem.setAttribute('oncommand','QuickFolders.Interface.onRenameBookmark(QuickFolders.Util.getPopupNode(this))');
 			QFcommandPopup.appendChild(menuitem);
+
+			// --------------------
+			QFcommandPopup.appendChild(document.createElement('menuseparator'));
+			var menuItemToClone;
+
+			// Options
+			menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-options');
+			if (menuItemToClone) {
+				menuitem = menuItemToClone.cloneNode(true);
+				QFcommandPopup.appendChild(menuitem);
+			}
+
+			// Support
+			menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-support');
+			if (menuItemToClone) {
+				menuitem = menuItemToClone.cloneNode(true);
+				QFcommandPopup.appendChild(menuitem);
+			}
+			// menuitem.setAttribute('id','');
+
+			// Help
+			menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-help');
+			if (menuItemToClone) {
+				menuitem = menuItemToClone.cloneNode(true);
+				QFcommandPopup.appendChild(menuitem);
+			}
+
+
+			// Append the QuickFolder Command Items menu
+			var QuickFolderCmdMenu = document.createElement('menu');
+			QuickFolderCmdMenu.setAttribute('id','qfQuickFolderCommands');
+			QuickFolderCmdMenu.setAttribute('label',this.getUIstring("qfCommandPopup",'QuickFolders Commands'));
+			QuickFolderCmdMenu.setAttribute("accesskey",this.getUIstring("qfCommandAccess","Q"));
+			QuickFolderCmdMenu.className='cmd menu-iconic';
+			QuickFolderCmdMenu.appendChild(QFcommandPopup);
+
+			menupopup.appendChild(QuickFolderCmdMenu);
 		}
-
-
-		// Append the QuickFolder Command Items menu
-		var QuickFolderCmdMenu = document.createElement('menu');
-		QuickFolderCmdMenu.setAttribute('id','qfQuickFolderCommands');
-		QuickFolderCmdMenu.setAttribute('label',this.getUIstring("qfCommandPopup",'QuickFolders Commands'));
-		QuickFolderCmdMenu.setAttribute("accesskey",this.getUIstring("qfCommandAccess","Q"));
-		QuickFolderCmdMenu.className='cmd menu-iconic';
-		QuickFolderCmdMenu.appendChild(QFcommandPopup);
-
-		menupopup.appendChild(QuickFolderCmdMenu);
 
 
 
 		var MailcommandPopup = document.createElement('menupopup');
 		MailcommandPopup.className = 'QuickFolders-folder-popup mailCmd menu-iconic';
 
-		/***  MAIL FOLDER COMMANDS   ***/
+		/***  MAIL FOLDER COMMANDS	 ***/
 
 		// special folder commands: at top, as these are used most frequently!
 		// EmptyTrash
-		const MSG_FOLDER_FLAG_TRASH = 0x0100
-		if (fi.flags & MSG_FOLDER_FLAG_TRASH) {
+
+		var fi = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
+
+		if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH) {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-emptyTrash");
 			menuitem.setAttribute('label',this.getUIstring("qfEmptyTrash", "Empty Trash"));
 			menuitem.setAttribute("accesskey",this.getUIstring("qfEmptyTrashAccess","T"));
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.onEmptyTrash(document.popupNode.folder);");
+			menuitem.setAttribute("oncommand","QuickFolders.Interface.onEmptyTrash(QuickFolders.Util.getPopupNode(this).folder);event.stopPropagation();");
 			MailcommandPopup.appendChild(menuitem);
 			MailcommandPopup.appendChild(document.createElement('menuseparator'));
 		}
 
 		// EditVirtualFolder
-		const MSG_FOLDER_FLAG_VIRTUAL = 0x0020;
-		if (fi.flags & MSG_FOLDER_FLAG_VIRTUAL) {
+		if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_VIRTUAL) {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-properties");
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.onEditVirtualFolder(document.popupNode.folder);");
+			menuitem.setAttribute("oncommand","QuickFolders.Interface.onEditVirtualFolder(QuickFolders.Util.getPopupNode(this).folder);");
 			menuitem.setAttribute('label',this.getUIstring("qfEditVirtual", "Search Properties..."));
 			menuitem.setAttribute('accesskey',this.getUIstring("qfEditVirtualAccess", "S"));
 			MailcommandPopup.appendChild(menuitem);
@@ -1238,14 +1484,23 @@ QuickFolders.Interface = {
 
 		if (!(QuickFolders.Util.Application()=="Thunderbird" && QuickFolders.Util.Appver()<3)  && QuickFolders.Util.Application()!="Postbox") {
 			// EmptyJunk
-			const MSG_FOLDER_FLAG_JUNK		= 0x40000000
-			if (fi.flags & MSG_FOLDER_FLAG_JUNK) {
+			if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_JUNK) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='mailCmd menuitem-iconic';
 				menuitem.setAttribute("id","folderPaneContext-emptyJunk");
 				menuitem.setAttribute('label',this.getUIstring("qfEmptyJunk", "Empty Junk"));
 				menuitem.setAttribute('accesskey',this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
-				menuitem.setAttribute("oncommand","QuickFolders.Interface.onEmptyJunk(document.popupNode.folder);");
+				menuitem.setAttribute("oncommand","QuickFolders.Interface.onEmptyJunk(QuickFolders.Util.getPopupNode(this).folder);");
+				MailcommandPopup.appendChild(menuitem);
+				MailcommandPopup.appendChild(document.createElement('menuseparator'));
+			}
+			else  if (!(fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH) && button.id == "QuickFolders-CurrentFolder") {
+				// only allow this command in current folder!
+				menuitem = document.createElement('menuitem');
+				menuitem.className='mailCmd menuitem-iconic';
+				menuitem.setAttribute("id","deleteJunk");
+				menuitem.setAttribute('label',this.getUIstring("qfDeleteJunk", "Purge Junk"));
+				menuitem.setAttribute("oncommand","QuickFolders.Interface.onDeleteJunk(QuickFolders.Util.getPopupNode(this).folder);");
 				MailcommandPopup.appendChild(menuitem);
 				MailcommandPopup.appendChild(document.createElement('menuseparator'));
 			}
@@ -1263,7 +1518,7 @@ QuickFolders.Interface = {
 		menuitem.setAttribute("id","folderPaneContext-markMailFolderAllRead");
 		menuitem.setAttribute('label',this.getUIstring("qfMarkAllRead","Mark Folder Read"));
 		menuitem.setAttribute('accesskey',this.getUIstring("qfMarkAllReadAccess","M"));
-		menuitem.setAttribute("oncommand","QuickFolders.Interface.onMarkAllRead(document.popupNode.folder)");
+		menuitem.setAttribute("oncommand","QuickFolders.Interface.onMarkAllRead(QuickFolders.Util.getPopupNode(this).folder)");
 		MailcommandPopup.appendChild(menuitem); // MsgMarkAllRead(),.
 
 		// CompactFolder
@@ -1274,19 +1529,20 @@ QuickFolders.Interface = {
 			menuitem.setAttribute("tag","qfCompact");
 			menuitem.setAttribute('label',this.getUIstring("qfCompactFolder", "Compact Folder"));
 			menuitem.setAttribute("accesskey",this.getUIstring("qfCompactFolderAccess","C"));
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(document.popupNode.folder)"); // "MsgCompactFolder(false);" only for current folder
+			menuitem.setAttribute("oncommand","QuickFolders.Interface.onCompactFolder(QuickFolders.Util.getPopupNode(this).folder)"); // "MsgCompactFolder(false);" only for current folder
 			MailcommandPopup.appendChild(menuitem);
 		}
 
 		// ===================================
 		MailcommandPopup.appendChild(document.createElement('menuseparator'));
 
+
 		// NewFolder
 		if (fi.canCreateSubfolders) {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-new");
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.onNewFolder(document.popupNode.folder);");
+			menuitem.setAttribute("oncommand","QuickFolders.Interface.onNewFolder(QuickFolders.Util.getPopupNode(this).folder);");
 			menuitem.setAttribute('label',this.getUIstring("qfNewFolder","New Folder"));
 			menuitem.setAttribute("accesskey",this.getUIstring("qfNewFolderAccess","N"));
 			MailcommandPopup.appendChild(menuitem);
@@ -1298,7 +1554,7 @@ QuickFolders.Interface = {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='mailCmd menuitem-iconic';
 				menuitem.setAttribute("id","folderPaneContext-remove");
-				menuitem.setAttribute("oncommand","QuickFolders.Interface.onDeleteFolder(document.popupNode);");
+				menuitem.setAttribute("oncommand","QuickFolders.Interface.onDeleteFolder(QuickFolders.Util.getPopupNode(this));");
 				menuitem.setAttribute('label',this.getUIstring("qfDeleteFolder", "Delete Folder"));
 				menuitem.setAttribute("accesskey",this.getUIstring("qfDeleteFolderAccess","D"));
 				MailcommandPopup.appendChild(menuitem);
@@ -1310,11 +1566,31 @@ QuickFolders.Interface = {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-rename");
-			menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameFolder(document.popupNode);");
+			menuitem.setAttribute("oncommand","QuickFolders.Interface.onRenameFolder(QuickFolders.Util.getPopupNode(this));");
 			menuitem.setAttribute('label',this.getUIstring("qfRenameFolder", "Rename Folder"));
 			menuitem.setAttribute("accesskey",this.getUIstring("qfRenameFolderAccess","R"));
 			MailcommandPopup.appendChild(menuitem);
+			MailcommandPopup.appendChild(document.createElement('menuseparator'));
 		}
+
+		// Repair Folder
+		menuitem = document.createElement('menuitem');
+		menuitem.className='mailCmd menuitem-iconic';
+		menuitem.setAttribute("id","folderRepair");
+		menuitem.setAttribute("tag","qfFolderRepair");
+		menuitem.setAttribute("oncommand","QuickFolders.Interface.onRepairFolder(QuickFolders.Util.getPopupNode(this).folder);");
+		menuitem.setAttribute('label',this.getUIstring("qfFolderRepair","Repair Folder..."));
+		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderRepairAccess","F"));
+		MailcommandPopup.appendChild(menuitem);
+
+		// Folder Properties
+		menuitem = document.createElement('menuitem');
+		menuitem.className='mailCmd menuitem-iconic';
+		menuitem.setAttribute("id","folderPaneContext-properties");
+		menuitem.setAttribute("oncommand","QuickFolders.Interface.onFolderProperties(QuickFolders.Util.getPopupNode(this).folder);");
+		menuitem.setAttribute('label',this.getUIstring("qfFolderProperties","Folder Properties..."));
+		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderPropertiesAccess","P"));
+		MailcommandPopup.appendChild(menuitem);
 
 
 		// Append the Mail Folder Context Menu...
@@ -1338,8 +1614,13 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
 		}
 
+		if (offset>=0)
+			this.menuPopupsByOffset[offset] = menupopup;
 
-		this.menuPopupsByOffset[offset] = menupopup;
+		// remove last popup menu (if button is reused and not created from fresh!)
+		// this needed in minimal rebuild as we reuse the buttons!
+		if (button.firstChild)
+			button.removeChild(button.firstChild);
 		button.appendChild(menupopup); // was popupset.appendChild
 
 	} ,
@@ -1371,7 +1652,7 @@ QuickFolders.Interface = {
 	{
 		try
 		{
-			QuickFolders.Util.logDebugOptional("dragToNew","addDragToNewFolderItem  " + folder.prettiestName
+			QuickFolders.Util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettiestName
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
 				+ "\nserver.type = " + folder.server.type);
 			if (!folder.canCreateSubfolders) return;
@@ -1570,7 +1851,7 @@ QuickFolders.Interface = {
 					try { subfolders.next(); } catch(e) { done=true; }
 				}
 			}
-			catch(ex) {QuickFolders.Util.logDebug('Exception in addSubFoldersPopup: ' + ex  + '\nFile: ' + ex.FileName + '  [' + ex.lineNumber + ']'); done = true;}
+			catch(ex) {QuickFolders.Util.logDebug('Exception in addSubFoldersPopup: ' + ex	+ '\nFile: ' + ex.FileName + '	[' + ex.lineNumber + ']'); done = true;}
 		}
 	},
 
@@ -1727,11 +2008,12 @@ QuickFolders.Interface = {
 	} ,
 
 	onFolderSelected: function() {
-		var folder = GetFirstSelectedMsgFolder();
-		var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
-
+		var folder;
+		try  { folder = GetFirstSelectedMsgFolder(); }
+		catch (e) { return; }
 		if (null==folder) return; // cut out lots of unneccessary processing!
 
+		var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
 		for(var i = 0; i < this.buttonsByOffset.length; i++) {
 			var button = this.buttonsByOffset[i];
 			// filled style, remove striped style
@@ -1750,6 +2032,26 @@ QuickFolders.Interface = {
 			}
 		}
 
+		/* MESSAGE PREVIEW TOOLBAR */
+		var currentFolderTab = document.getElementById('QuickFolders-CurrentFolder');
+		if (currentFolderTab) {
+			var tabColor;
+			var entry = QuickFolders.Model.getFolderEntry(folder.URI);
+
+			currentFolderTab.className =  (null!=selectedButton) ? selectedButton.className : "icon";
+			currentFolderTab.className = currentFolderTab.className.replace("striped", "");
+
+			var theLabel = (selectedButton==null) ? folder.prettyName : selectedButton.label;
+			if (null!=entry) {
+				try {
+					tabColor = entry.tabColor;
+				}
+				catch(e) {tabColor = null};
+			}
+			QuickFolders.Interface.addFolderButton(folder, theLabel, -1, tabColor, currentFolderTab, 'QuickFolders-CurrentFolder');
+			currentFolderTab.setAttribute("tooltiptext", QuickFolders.Util.getFolderTooltip(folder));
+		}
+
 
 	},
 
@@ -1760,26 +2062,27 @@ QuickFolders.Interface = {
 			QuickFolders.Model.update();
 	},
 
+	getButtonColorClass: function(col) {
+		//var sColFolder = (nTabStyle==0) ? "chrome://quickfolders/skin/striped" : "chrome://quickfolders/skin/cols";
+		var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
+		return 'col'+col+ ((nTabStyle==0) ? 'striped' : '');
+	},
+
 	setButtonColor: function(button, col) {
 		// no more style sheet modification for settings colors.
-		var ButtonLabel = button.getAttribute("label");
-		QuickFolders.Util.logDebugOptional("buttonStyle","setButtonColor(" + ButtonLabel + "," + col + ")");
-
 		var folderLabel = button.getAttribute("label"); // fixes disappearing colors on startup bug
-		var nTabStyle = QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle');
 
-		var sColFolder = (nTabStyle==0) ? "chrome://quickfolders/skin/striped" : "chrome://quickfolders/skin/cols";
 
-		var CSSclass = button.getAttribute("class");
+		var cssClass = button.getAttribute("class");
 		var newclass = '';
-		var rClasses=CSSclass.split(' ');
+		var rClasses=cssClass.split(' ');
 		for (var j=0; j<rClasses.length; j++) {
 			// strip previous style
 			if (rClasses[j].indexOf('col')<0)
 				newclass+=rClasses[j] + ' ';
 		}
 
-		newclass += 'col'+col+ ((nTabStyle==0) ? 'striped' : '');
+		newclass += this.getButtonColorClass(col);
 
 		button.setAttribute("class", newclass); // .trim()
 		return true;
@@ -1806,9 +2109,9 @@ QuickFolders.Interface = {
 			QuickFolders.Styles.getMyStyleSheet(); // just to log something in console window
 
 			var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-			                    .getService(Components.interfaces.nsIStyleSheetService);
+								.getService(Components.interfaces.nsIStyleSheetService);
 			var ios = Components.classes["@mozilla.org/network/io-service;1"]
-			                    .getService(Components.interfaces.nsIIOService);
+								.getService(Components.interfaces.nsIIOService);
 			var uri = ios.newURI("chrome://quickfolders/content/quickfolders-layout.css", null, null);
 			if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
 				QuickFolders.Util.logDebugOptional("css","sheet not Registered - now loading: " + uri);
@@ -1841,40 +2144,45 @@ QuickFolders.Interface = {
 				theColorString = QuickFolders.Util.getRGBA(theColorString, 0.25) ; // better than "transparent";
 
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','background-color', theColorString, true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','color',
-				QuickFolders.Preferences.getUserStyle("InactiveTab","color","black"),true);
+			// doesn't work:
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton#QuickFolders-CurrentFolder','background-color', theColorString, true);
+
+			theColorString = QuickFolders.Preferences.getUserStyle("InactiveTab","color","black");
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton', 'color', theColorString, true);
+			// doesn't work:
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton#QuickFolders-CurrentFolder','color', theColorString, true);
 
 			// for full colored tabs color the border as well!
 			// but should only apply if background image is set!!
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
 			if (!(QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird')) {
 				if (QuickFolders.Preferences.getBoolPrefQF("buttonShadows")) {
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','1px -1px 3px -1px rgba(0,0,0,0.7)', true);
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton','-moz-box-shadow','1px -1px 3px -1px rgba(0,0,0,0.7)', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','-moz-box-shadow', '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
 				}
 				else {
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton','-moz-box-shadow','none', true);
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','-moz-box-shadow', 'none', true);
-					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','-moz-box-shadow', 'none', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton','-moz-box-shadow','none', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder','-moz-box-shadow', 'none', true);
+					QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','-moz-box-shadow', 'none', true);
 				}
 			}
 
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder','color',
 				QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);
 
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color', colActiveBG,true);
 
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','background-color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','background-color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:hover','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton[buttonover="true"]','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton[buttonover="true"]','color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black"),true);
 
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:-moz-drag-over','background-color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:-moz-drag-over','background-color',
 				QuickFolders.Preferences.getUserStyle("DragTab","background-color","#E93903"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton:-moz-drag-over','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:-moz-drag-over','color',
 				QuickFolders.Preferences.getUserStyle("DragTab","color","White"),true);
 
 			theColorString = QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace");
@@ -1884,7 +2192,7 @@ QuickFolders.Interface = {
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','background-color', theColorString,true);
 
 
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder','background-color', colActiveBG, true);
 
 
 			QuickFolders.Util.logDebugOptional ("css","updateUserStyles(): success");
@@ -1898,6 +2206,140 @@ QuickFolders.Interface = {
 		};
 		return false;
 
+	} ,
+
+	goUpFolder: function() {
+		var aFolder = QuickFolders.Util.getCurrentFolder();
+		parentFolder = aFolder.parent;
+		QuickFolders_MySelectFolder(parentFolder.URI);
+	} ,
+
+	goPreviousSiblingFolder: function() {
+		var aFolder = QuickFolders.Util.getCurrentFolder();
+		// nsMsgDBView::NavigateStatus(nsMsgNavigationTypeValue motion, PRBool *_retval)
+		//    motion = {  nsMsgNavigationType::nextFolder , nsMsgNavigationType::nextUnreadMessage, nsMsgNavigationType::previousUnreadMessage,
+		// performNavigation(nsMsgNavigationType.back);
+		var folderList = QuickFolders_MyGetFolderTree();
+		var parentFolder = aFolder.parent;
+		if (!parentFolder)
+			return;
+
+		if (typeof parentFolder.subFolders != 'undefined')
+			myenum = parentFolder.subFolders;
+		else
+			myenum = parentFolder.GetSubFolders();
+		var done=false;
+		var target=null;
+		var folder=null;
+		while (!done) {
+			target = folder;
+			if (typeof myenum.currentItem!='undefined') {
+				folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
+				if (typeof myenum.next != 'undefined') {
+					try { myenum.next(); }
+					catch(e) {
+						done=true;
+					}
+				}
+			}
+			else // SeaMonkey
+			{
+				if (myenum.hasMoreElements())
+					folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+				else {
+					done=true;
+					break;
+				}
+			}
+			if (folder.URI == aFolder.URI) {
+				done=true;
+				// if target is null:
+				var next=null;
+				var x = null;
+				while (target==null) {  // we are at start, lets go to the end (wrap around)
+					if (typeof myenum.currentItem!='undefined') {
+						try {
+							myenum.next();
+							x = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+						} // no next: end of list
+						catch(e) {
+							target = x;
+						}
+					}
+					else {
+						if (myenum.hasMoreElements())
+							x = myenum.getNext();
+						else
+							target = x.QueryInterface(Components.interfaces.nsIMsgFolder);
+					}
+				}
+			}
+		}
+		if (null!=target)
+			QuickFolders_MySelectFolder(target.URI);
+
+	} ,
+
+	goNextSiblingFolder: function() {
+		var aFolder = QuickFolders.Util.getCurrentFolder();
+		// performNavigation(nsMsgNavigationType.forward);
+
+		var parentFolder = aFolder.parent;
+		if (!parentFolder)
+			return;
+
+		if (typeof parentFolder.subFolders != 'undefined')
+			myenum = parentFolder.subFolders;
+		else
+			myenum = parentFolder.GetSubFolders();
+		var done=false;
+		var found=false;
+		var first=null;
+		var folder;
+		while (!(done)) {
+			if (typeof myenum.currentItem!='undefined') {
+				folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
+				if (typeof myenum.next != 'undefined') {
+					try {
+						myenum.next();
+					}
+					catch(e) {
+						done=true;
+					}
+				}
+			}
+			else // SeaMonkey
+			{
+				if (myenum.hasMoreElements())
+					folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+				else {
+					done=true;
+					break;
+				}
+			}
+			if (!first)
+				first = folder;
+			if (found)
+				done=true;
+			if (folder.URI == aFolder.URI)
+				found=true;
+		}
+		if (found) {
+			if (folder.URI == aFolder.URI)
+				QuickFolders_MySelectFolder(first.URI);
+			else
+				QuickFolders_MySelectFolder(folder.URI);
+		}
+
+	} ,
+
+	displayNavigationToolbar: function(visible) {
+		var node;
+		node = document.getElementById( "QuickFolders-PreviewToolbarPanel" );
+		// node.parentNode.removeChild(node);
+		node.style.display= visible ? '-moz-box' : 'none';
+		QuickFolders.Preferences.setShowCurrentFolderToolbar(visible);
 	}
+
 
 };

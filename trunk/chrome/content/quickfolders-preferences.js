@@ -69,6 +69,14 @@ QuickFolders.Preferences = {
 		return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcuts");
 	} ,
 
+	isUseRebuildShortcut: function() {
+		return this.service.getBoolPref("extensions.quickfolders.useRebuildShortcut");
+	} ,
+
+	RebuildShortcutKey: function() {
+		return this.service.getCharPref("extensions.quickfolders.rebuildShortcutKey");
+	} ,
+
 	isUseKeyboardShortcutsCTRL: function() {
 		return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcutCTRL");
 	} ,
@@ -116,6 +124,10 @@ QuickFolders.Preferences = {
 
 	isShowRecentTab: function() {
 		return this.service.getBoolPref( 'extensions.quickfolders.showRecentTab');
+	} ,
+
+	isMinimalUpdateDisabled: function() {
+		return this.service.getBoolPref( 'extensions.quickfolders.update.disableMinimal');
 	} ,
 
 	getButtonFontSize: function() {
@@ -195,6 +207,14 @@ QuickFolders.Preferences = {
 
 	getIntPrefQF: function(p) {
 		return QuickFolders.Preferences.getIntPref("extensions.quickfolders." + p);
+	},
+
+	setShowCurrentFolderToolbar: function(b) {
+		return this.service.setBoolPref("extensions.quickfolders.showCurrentFolderToolbar",b);
+	},
+
+	isShowCurrentFolderToolbar: function() {
+		return QuickFolders.Preferences.getBoolPrefQF("showCurrentFolderToolbar");
 	},
 
 	setBoolPref: function(p, v) {

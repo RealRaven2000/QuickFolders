@@ -198,3 +198,31 @@ description.quickhelp-dbg, hbox.quickhelp-dbg {
 	background-color:#202020;
 	padding: 3px 8px 3px 8px;
 }
+
+#QuickFolders-Options-RebuildShortcutKey {
+	width: 2em;
+	text-align: center;
+}
+
+
+#QuickFolders-Options-Tabbox tab {
+	padding: 0.2em 0.6em;
+	-moz-border-radius: 4px 4px 0 0;
+}
+
+tab#QuickFolders-General {
+	list-style-image: url('chrome://quickfolders/skin/ico/settings-20.png');
+}
+
+tab#QuickFolders-Layout {
+	list-style-image : url('chrome://quickfolders/skin/ico/icon_pimp_shades.gif');
+}
+
+tab#QuickFolders-Help {
+	list-style-image : url('chrome://quickfolders/skin/ico/question.png');
+}
+
+tab#QuickFolders-Support {
+	list-style-image : url('chrome://quickfolders/skin/ico/info16.png');
+}
+

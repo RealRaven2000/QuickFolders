@@ -5,16 +5,6 @@ For detail, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
-function QuickFolders_getAddon(aId) {
-	var em = Components.classes["@mozilla.org/extensions/manager;1"]
-		 .getService(Components.interfaces.nsIExtensionManager);
-	return em.getItemForID(aId);
-}
-
-function QuickFolders_getMyVersion() {
-	return QuickFolders_getAddon("quickfolders@curious.be").version;
-}
-
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -65,7 +55,7 @@ var QuickFoldersOptions = {
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
 	load : function() {
-		var version=QuickFolders_getMyVersion();
+		var version=QuickFolders.Util.Version();
 		var wd=window.document;
 		try { this.qfOptionsMode = window.arguments[1].inn.mode;}
 		catch(e) {;}
@@ -302,15 +292,16 @@ var QuickFoldersOptions = {
 
 	},
 
-	showVersionHistory: function(label) {
+	showVersionHistory: function(label, ask) {
 		var pre=0;
 		var current=label.value.toString();  // retrieve version number from label
 		var pureVersion = current;
 		if (0<(pre=current.indexOf('pre'))) {   // make sure to strip of any pre release labels
 			pureVersion = current.substring(0,pre);
 		}
+
 		var sPrompt = QuickFolders.Util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders")
-		if (confirm(sPrompt + " " + pureVersion + "?")) {
+		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
 			QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/version.html" + "#" + pureVersion);
 		}
 	}

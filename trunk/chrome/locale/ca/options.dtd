@@ -3,9 +3,10 @@
 <!ENTITY qf.tab.general "General">
 <!ENTITY qf.tab.layout "Pimp My Tabs!">
 <!ENTITY qf.tab.quickhelp "Ajuda Ràpida">
-<!ENTITY qf.checkbox.displaylabel "Mostra &apos;QuickFolders&apos; a la barra d'eines">
+<!ENTITY qf.checkbox.displaylabel "Mostra 'QuickFolders' a la barra d'eines">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utilitzar Ctrl enlloc de Alt">
+<!ENTITY qf.checkbox.useRebuildShortcut "Regenera Pestanyes amb: Ctrl + Alt +">
 <!ENTITY qf.checkbox.showshortcutnumber "Mostra el número de drecera a les etiquetes de les carpetes">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Mostra el nombre de missatges per llegir al botó de la carpeta">
 <!ENTITY qf.checkbox.showUnreadBold "Mostra amb negreta els botons de les carpetes amb missatges per llegir">
@@ -21,7 +22,7 @@
 <!ENTITY qf.label.DragOverBackground "Color a l'arrossegar a sobre:">
 <!ENTITY qf.label.ToolbarBackground "Fons de la barra d'eines">
 <!ENTITY qf.description.dragToAdd "Arrossegueu carpetes de correu a una àrea buida d'una nova barra d'eines, per a crear una nova QuickFolder (funciona com un àlies). Arrossegueu missatges a sobre d'una QuickFolder per moure'ls a la carpeta corresponent (o copiar-los amb la tecla modificadora). Cliqueu la QuickFolder per anar a la carpeta de correu.">
-<!ENTITY qf.description.dragToPosition "Arrossegueu les QuickFolders cap als costats per canviar-les de posició. Feu clic amb el botó dret per al menú contextual; podeu anar a les subcarpetes, seleccionant-les. &apos;Reanomenar Marcador&apos; canvia l'etiqueta de la QuickFolder. &apos;Esborrar Marcador&apos; esborra la QuickFolder (no la carpeta de correu).">
+<!ENTITY qf.description.dragToPosition "Arrossegueu les QuickFolders cap als costats per canviar-les de posició. Feu clic amb el botó dret per al menú contextual; podeu anar a les subcarpetes, seleccionant-les. 'Reanomenar Marcador' canvia l'etiqueta de la QuickFolder. 'Esborrar Marcador' esborra la QuickFolder (no la carpeta de correu).">
 <!ENTITY qf.description.dragToPopup "Arrossegueu missatges al menu emergent de la QuickFolder per moure els missatges dintre les subcarpetes.">
 <!ENTITY qf.description.changeCategory "Feu clic amb el botó dret a un marcador, per organitzar-lo a una categoria. Podeu obtenir un desplegable de les categories a l'esquerra de la barra.">
 <!ENTITY qf.description.rightClickOptions "Feu clic amb el botó dret a sobre una àrea buida per obrir el menu d'opcions. A les opcions, podeu selecciona l'estil: estil natiu (mes petit) o estil pla (mes clar; suporta indicadors d'arrossegament).">

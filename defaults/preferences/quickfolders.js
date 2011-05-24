@@ -19,6 +19,10 @@ pref("extensions.quickfolders.showSubfolders",false);
 pref("extensions.quickfolders.disableFolderSwitching",false);
 pref("extensions.quickfolders.showCountInSubFolders",false);
 pref("extensions.quickfolders.enableMenuAlphaSorting",false);
+pref("extensions.quickfolders.useRebuildShortcut", false);
+pref("extensions.quickfolders.rebuildShortcutKey", 'F');
+// Current Folder Toolbar
+pref("extensions.quickfolders.showCurrentFolderToolbar",true);
 // Layout
 pref("extensions.quickfolders.buttonFontSize","");
 pref("extensions.quickfolders.showIcons",false);
@@ -51,7 +55,8 @@ pref("extensions.quickfolders.recentfolders.itemCount", 12);
 // Recent Folder Item
 pref("extensions.quickfolders.recentfolders.showLabel", true);
 pref("extensions.quickfolders.recentfolders.sortAlphabetical", false);
-
+// new Folder Optimization
+pref("extensions.quickfolders.update.disableMinimal", false);
 
 
 

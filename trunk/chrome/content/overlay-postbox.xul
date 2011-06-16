@@ -8,6 +8,7 @@
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
     <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
     <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
@@ -57,7 +58,7 @@
                 <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
                     <menuitem label="&qf.menuitem.quickfolders.options;"
                               accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-                              oncommand="QuickFolders.Interface.viewOptions()" class="cmd menuitem-iconic"
+                              oncommand="QuickFolders.Interface.viewOptions(-1)" class="cmd menuitem-iconic"
                               tagName="qfOptions"
                               />
                     <menuitem label="&qf.menuitem.quickfolders.changeOrder;"
@@ -106,7 +107,7 @@
 	<vbox id="messagePaneWrapper">
 		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView">
 			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
-			<toolbar id="QuickFolders-CurrentFolderTools" class="toolbar-flat">
+			<toolbar id="QuickFolders-CurrentFolderTools" class="toolbar-flat" iconsize="small">
 				<toolbarbutton id="QuickFolders-CurrentMail"
 						class="icon draggable"
 						tooltiptext="&qf.tooltip.emailIcon;" />
@@ -122,6 +123,19 @@
 						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 						tooltiptext="&qf.tooltip.RecentFolders;"/>
+				<toolbarbutton id="button-previous"
+						tooltiptext="&qf.tooltip.goPreviousFolder;"
+						class="toolbarbutton-1"
+						style="-moz-box-orient:horizontal !important;"
+						onclick="goDoCommand('button_previous');" />
+				<toolbarbutton id="button-next"
+						class="toolbarbutton-1"
+						style="-moz-box-orient:horizontal !important;"
+						tooltiptext="&qf.tooltip.goNextFolder;"
+						onclick="goDoCommand('button_next');" />
+
+				<toolbarseparator />
+
 				<toolbarbutton id="QuickFolders-NavigateUp"
 						class="icon"
 						onclick="QuickFolders.Interface.goUpFolder();"
@@ -137,6 +151,12 @@
 						class="icon"
 						onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
 				<toolbarseparator />
+				<toolbarbutton id="QuickFolders-Options"
+						class="icon"
+						tooltiptext="&qf.menuitem.quickfolders.options;"
+						accesskey="&qf.menuitem.quickfolders.optionsAccess;"
+						oncommand="QuickFolders.Interface.viewOptions(-1);"
+						tagName="qfOptions"/>
 				<toolbarbutton id="QuickFolders-Close"
 						class="icon"
 						tooltiptext="&qf.tooltip.closeToolbar;"

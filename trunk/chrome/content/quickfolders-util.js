@@ -7,6 +7,11 @@ END LICENSE BLOCK */
 
 var QuickFolders_ConsoleService=null;
 
+if (!QuickFolders.StringBundle)
+	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+if (!QuickFolders.Properties)
+	QuickFolders.Properties = QuickFolders.StringBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+
 // code moved from options.js
 // open the new content tab for displaying support info, see
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
@@ -128,7 +133,7 @@ QuickFolders.Util = {
 			return current;
 		}
 		catch(ex) {
-			return "2.5pre1"; // hardcoded, program this for Tb 3.3 later
+			return "2.7"; // hardcoded, program this for Tb 3.3 later
 		}
 
 	} ,
@@ -147,18 +152,30 @@ QuickFolders.Util = {
 	} ,
 
 
-	getToolbar: function() {
-		return QuickFolders.Util.$('QuickFolders-FoldersBox');
-	} ,
 
 	getSystemColor: function(sColorString) {
-		var hexColor; // convert system colors such as menubackground etc. to hex
+
+		var getContainer = function() {
+			var div=null;
+			if (div = QuickFolders.Util.$('QuickFolders-FoldersBox')) return div;
+			return QuickFolders.Util.$('qf-options-prefpane');
+		}
+		var theColor; // convert system colors such as menubackground etc. to hex
 		var d = document.createElement("div");
 		d.style.color = sColorString;
-		this.getToolbar().appendChild(d)
-		hexColor = window.getComputedStyle(d,null).color;
-		this.getToolbar().removeChild(d);
-		return hexColor;
+		getContainer().appendChild(d)
+		theColor = window.getComputedStyle(d,null).color;
+		getContainer().removeChild(d);
+
+        if (theColor.search("rgb") == -1)
+            return theColor;
+        else {
+            theColor = theColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
+            var hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
+			return hexColor;
+        }
+
 	},
 
 	getRGBA: function(hexIn,alpha) {
@@ -260,6 +277,27 @@ QuickFolders.Util = {
 		}
 		return found;
 	 } ,
+
+
+	showStatusMessage: function(s) {
+		try {
+			var sb = QuickFolders_getDocument().getElementById('status-bar');
+			if (sb) {
+				var stb = sb.getElementById('statusTextBox');
+				if (stb) {
+					var tb = stb.getElementById('statusText');
+					if (tb)
+						tb.label = s;
+				}
+			}
+			else
+				MsgStatusFeedback.showStatusString(s);
+		}
+		catch(ex) {
+			this.logToConsole("showStatusMessage - " +  ex);
+			MsgStatusFeedback.showStatusString(s);
+		}
+	} ,
 
 
 	getFolderUriFromDropData: function(dropData, dragSession) {
@@ -551,6 +589,19 @@ QuickFolders.Util = {
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function(linkURI) {
 		try {
+			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
+			if (QuickFolders.Util.Application()=='SeaMonkey') {
+				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
+				browser = windowManager.getMostRecentWindow( "navigator:browser" );
+				if (browser) {
+					let URI = linkURI;
+					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); browser.currentTab.reload(); }, 250);
+				}
+				else
+					QuickFolders_globalWin.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFolders update');
+
+				return;
+			}
 			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
 				.getService(Components.interfaces.nsIExternalProtocolService);
 			var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
@@ -574,20 +625,20 @@ QuickFolders.Util = {
 			if(null!=evt)
 				evt.stopPropagation();
 		}
+		else
+			this.openLinkInBrowserForced(linkURI);
 	},
 
 	// moved from options.js (then called
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
 		var ioservice,iuri,eps;
-		//if (QuickFolders.Util.Application()=="Postbox")
-		//	return; // label with href already follows the link!
+
 		if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird' || QuickFolders.Util.Application()=='SeaMonkey' || QuickFolders.Util.Application()=='Postbox')
 		{
 			this.openLinkInBrowserForced(URL);
 			if(null!=evt) evt.stopPropagation();
 		}
 		else {
-			// also affect SeaMonkey?
 			if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
 				evt.preventDefault();
 				evt.stopPropagation();
@@ -596,10 +647,8 @@ QuickFolders.Util = {
 	},
 
 	getBundleString: function(id, defaultText) { // moved from local copies in various modules.
-		var theBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-		var qfBundle = theBundleService.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 		var s="";
-		try {s= qfBundle.GetStringFromName(id);}
+		try {s= QuickFolders.Properties.GetStringFromName(id);}
 		catch(e) {
 			s= defaultText;
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
@@ -638,7 +687,6 @@ QuickFolders.Util = {
 			}
 		}
 	}
-
 
 
 };
@@ -680,7 +728,9 @@ QuickFolders.Util.FirstRun =
 			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
 
 
-			QuickFolders.Util.logDebugOptional ("firstrun","Settings retrieved:\nversion=" + prev
+			QuickFolders.Util.logDebugOptional ("firstrun", "Settings retrieved:"
+					+ "\nprevious version=" + prev
+					+ "\ncurrent version=" + current
 					+ "\nfirstrun=" + firstrun
 					+ "\nshowfirstruns=" + showFirsts
 					+ "\ndebugFirstRun=" + debugFirstRun);
@@ -728,12 +778,13 @@ QuickFolders.Util.FirstRun =
 				}
 
 			}
-			else { // this section does not get loaded if its a first run.
+			else { // this section does not get loaded if its a fresh install.
+				var isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
+
 				if (prev!=current){
 					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
 					// upgrade case!!
-					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:");
-					alert(sUpgradeMessage + " " + current);
+					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version: ")  + current;
 					ssPrefs.setCharPref("version",current);
 
 					if (showFirsts) {
@@ -749,9 +800,24 @@ QuickFolders.Util.FirstRun =
 							else
 								QuickFolders.Util.openLinkInBrowserForced("http://quickfolders.mozdev.org/donate.html"); // show donation page!
 						}, 1500); //Firefox 2 fix - or else tab will get closed
-
-
 					}
+
+					if (isThemeUpgrade) {
+						sUpgradeMessage +=
+						  "\n" +
+						  QuickFolders.Util.getBundleString("qfUpdatedThemesEngineMsg",
+						  	"A new theming engine for QuickFolders has been installed, please select a look from the drop down box and click [Ok].");
+						window.setTimeout(function(){
+							// open options window for setting new theming engine options! for pimp my Tabs panel visible
+							QuickFolders.Interface.viewOptions(1, sUpgradeMessage);
+						}, 4600);
+					}
+					else
+						window.setTimeout(function(){
+							alert(sUpgradeMessage);
+						}, 3000);
+
+
 				}
 				else
 					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> just a reload of same version - prev=" + prev + ", current = " + current);

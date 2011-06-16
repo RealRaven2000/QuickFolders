@@ -12,12 +12,19 @@ locale quickfolders vi jar:chrome/locale.jar!/locale/vi/
 locale quickfolders ca jar:chrome/locale.jar!/locale/ca/
 locale quickfolders es-MX jar:chrome/locale.jar!/locale/es-MX/
 locale quickfolders zh-CN jar:chrome/locale.jar!/locale/zh-CN/
+locale quickfolders zh-CHS jar:chrome/locale.jar!/locale/zh-CN/
+locale quickfolders zh jar:chrome/locale.jar!/locale/zh/
+locale quickfolders zh-CHT jar:chrome/locale.jar!/locale/zh/
+locale quickfolders zh-TW jar:chrome/locale.jar!/locale/zh/
 locale quickfolders hu-HU jar:chrome/locale.jar!/locale/hu-HU/
 locale quickfolders sv-SE jar:chrome/locale.jar!/locale/sv-SE/
 
 skin quickfolders classic/1.0  jar:chrome/skin/quickfolders.jar!/
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-tb3-currentfolder.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
+
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-tb2-currentfolder.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<3.0
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus2.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<3.0
 
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-postbox.xul application=postbox@postbox-inc.com

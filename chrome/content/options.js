@@ -14,15 +14,17 @@ var QuickFolders_TabURIregexp = {
 };
 
 
-var QuickFoldersOptions = {
-	qfStaticInstantApply : true,
-	qfOptionsMode : "",
+QuickFolders.Options = {
+	optionsMode : "",  // filter out certain pages (for support / help only)
+	message : "",      // alert to display on dialog opening (for certain update cases); make sure to clear out after use!
 
 	accept: function() {
-		if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly")
+		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly")
 			return; // do not store any changes!
 		// persist colors
 		try {
+			QuickFolders.Preferences.setCurrentThemeId(document.getElementById("QuickFolders-Theme-Selection").value);
+
 			QuickFolders.Preferences.setUserStyle("ActiveTab","background-color",
 							document.getElementById("activetab-colorpicker").color);
 			QuickFolders.Preferences.setUserStyle("ActiveTab","color",
@@ -46,35 +48,41 @@ var QuickFoldersOptions = {
 
 			QuickFolders.Preferences.setUserStyle("Toolbar","background-color",
 							document.getElementById("toolbar-colorpicker").color);
+			QuickFolders.Preferences.setUserStyle( 'corners','customizedTopRadius',
+							document.getElementById("QuickFolders-Options-CustomTopRadius").value);
+			QuickFolders.Preferences.setUserStyle( 'corners','customizedBottomRadius',
+							document.getElementById("QuickFolders-Options-CustomBottomRadius").value);
 
 		}
 		catch(e) {
 			alert("Error in QuickFolders:\n" + e);
 		};
+		var tabbox = window.document.getElementById("QuickFolders-Options-Tabbox");
+		QuickFolders.Preferences.setIntPrefQF('lastSelectedOptionsTab', tabbox.selectedIndex);
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
-	load : function() {
+
+	load: function() {
 		var version=QuickFolders.Util.Version();
 		var wd=window.document;
-		try { this.qfOptionsMode = window.arguments[1].inn.mode;}
+		try {
+			this.optionsMode = window.arguments[1].inn.mode;
+			// force selection of a certain pane (-1 ignores)
+			if (window.arguments[2].inn.mode >= 0)
+				QuickFolders.Preferences.setIntPrefQF('lastSelectedOptionsTab', window.arguments[2].inn.mode);
+		}
 		catch(e) {;}
-		// force instantapply off
-		/*
-		qfStaticInstantApply = QuickFolders.Preferences.getInstantApplyPref();
-		if (qfStaticInstantApply)
-			QuickFolders.Preferences.setInstantApplyPref(false);
-		*/
 
 		if (version=="") version='version?';
 
 		wd.getElementById("qf-options-header-description").setAttribute("value", version);
+		var tabbox = wd.getElementById("QuickFolders-Options-Tabbox");
 		// hide first 2 tabs!!
-		if (this.qfOptionsMode=="helpOnly" || this.qfOptionsMode=="supportOnly") {
-			var tabbox = wd.getElementById("QuickFolders-Options-Tabbox");
+		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly") {
 			if (tabbox) {
 				var keep;
-				switch(this.qfOptionsMode) {
+				switch(this.optionsMode) {
 					case "helpOnly":
 						keep=2;
 						break;
@@ -148,19 +156,96 @@ var QuickFoldersOptions = {
 			wd.getElementById("dragovertabs-label").style.backgroundColor=bcol;
 			wd.getElementById("toolbar-colorpicker").color=QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
 
+			this.selectTheme(wd, QuickFolders.Preferences.getCurrentThemeId());
 
+			// initialize Theme Selector by adding original titles to localized versions
+			var cbo = wd.getElementById("QuickFolders-Theme-Selection");
+			if (cbo.itemCount)
+				for (var index=0; index<cbo.itemCount; index++) {
+					var item = cbo.getItemAtIndex( index );
+					var theme = QuickFolders.Themes.Theme(item.value);
+					if (theme) {
+						if (item.label != theme.name)
+							item.label = theme.name + ' - ' + item.label
+					}
+				}
 
+			try {
+				var selectOptionsPane = QuickFolders.Preferences.getIntPrefQF('lastSelectedOptionsTab');
+				if (selectOptionsPane >=0)
+					tabbox.selectedIndex = selectOptionsPane; // 1 for pimp my tabs
+			}
+			catch(e) { ; }
 		}
 		catch(e) {
 			alert("Error in QuickFolders:\n" + e);
 		};
+		if (this.message && this.message!='') {
+			alert(message);
+			message = '';
+		}
 
 	},
+
+	selectTheme: function(wd, themeId) {
+		var myTheme =  QuickFolders.Themes.Theme(themeId);
+		if (myTheme) {
+			wd.getElementById("QuickFolders-Theme-Selection").value = themeId;
+
+			document.getElementById("Quickfolders-Theme-Author").value
+				= myTheme.author;
+
+			// textContent wraps, value doesnt
+			document.getElementById("Quickfolders-Theme-Description").textContent
+				= QuickFolders.Interface.getUIstring("qf.themes." + themeId + ".description", "N/A");
+
+			document.getElementById("qf-options-icons").disabled
+				= !(myTheme.supportsFeatures.specialIcons);
+			document.getElementById("qf-options-shadow").collapsed
+				= !(myTheme.supportsFeatures.buttonShadows);
+
+			document.getElementById("button-font-size").disabled
+				= !(myTheme.supportsFeatures.supportsFontSize);
+			document.getElementById("button-font-size-label").disabled
+				= !(myTheme.supportsFeatures.supportsFontSize);
+
+			document.getElementById("qf-pimpMyRadius").collapsed
+				= !(myTheme.supportsFeatures.cornerRadius);
+
+			document.getElementById("qf-pimpMyBorders").collapsed
+				= !(myTheme.supportsFeatures.borderToggle);
+
+			document.getElementById("qf-pimpMyColors").collapsed
+				= !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
+
+			document.getElementById("qf-individualColors").collapsed
+				= !(myTheme.supportsFeatures.individualColors);
+
+			document.getElementById("chkPastelColors").collapsed
+				= !(myTheme.supportsFeatures.pastelColors);
+
+			document.getElementById("qf-StandardColors").collapsed
+				= !(myTheme.supportsFeatures.standardTabColor);
+
+			document.getElementById("buttonTransparency").collapsed
+				= !(myTheme.supportsFeatures.tabTransparency);
+
+
+			document.getElementById("qf-stateColors").collapsed
+				= !(myTheme.supportsFeatures.stateColors);
+
+			/******  FOR FUTURE USE ??  ******/
+			// if (myTheme.supportsFeatures.supportsFontSelection)
+			// if (myTheme.supportsFeatures.buttonInnerShadows)
+
+			QuickFolders.Util.logDebug ('Theme [' + myTheme.Id + '] selected');
+
+		}
+	} ,
+
+
 	close : function () {
-		this.qfOptionsMode="";
-		// unfortunately, this is not executed when user clicks [CLose] button!
-		// restore instant apply
-		// if (qfStaticInstantApply)		QuickFolders.Preferences.setInstantApplyPref(true);
+		this.optionsMode="";
 	},
 
 	toggleMutexCheckbox: function(cbox, cbox2Name) {
@@ -176,6 +261,12 @@ var QuickFoldersOptions = {
 		}
 	},
 
+	setDefaultButtonRadius: function() {
+		document.getElementById("QuickFolders-Options-CustomTopRadius").value = "4px";
+		document.getElementById("QuickFolders-Options-CustomBottomRadius").value = "0px";
+
+	},
+
 	colorPickerTranslucent: function (picker) {
 		document.getElementById('inactivetabs-label').style.backgroundColor=
 			QuickFolders.Util.getRGBA(picker.color, document.getElementById('buttonTransparency').checked ? 0.25 : 1.0);
@@ -189,6 +280,19 @@ var QuickFoldersOptions = {
 		return QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
 	},
 
+	toggleColorPastel: function (isChecked) {
+		document.getElementById('ExampleStripedColor').src=
+			isChecked ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";
+		document.getElementById('ExampleFilledColor').src=
+			isChecked ? "chrome://quickfolders/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/skin/ico/full-example.gif";
+
+		var picker = document.getElementById('inactive-colorpicker');
+		document.getElementById('inactivetabs-label').style.backgroundColor=
+			QuickFolders.Util.getRGBA(picker.color, isChecked ? 0.25 : 1.0);
+		return QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
+	},
+
+
 	showButtonShadow: function(isChecked) {
 		var el= document.getElementById('inactivetabs-label');
 		var myStyle = isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
@@ -196,28 +300,34 @@ var QuickFoldersOptions = {
 	},
 
 	setDefaultColors: function() {
-		document.getElementById("activetab-colorpicker").color="Highlight";
-		document.getElementById("activetabs-label").style.backgroundColor="Highlight";
-		document.getElementById("activetab-fontcolorpicker").color="HighlightText";
-		document.getElementById("activetabs-label").style.color="HighlightText";
+		var highlightColor = QuickFolders.Util.getSystemColor("Highlight");
+		var highlightTextColor = QuickFolders.Util.getSystemColor("HighlightText");
+		var buttonfaceColor = QuickFolders.Util.getSystemColor("buttonface");
+		var buttontextColor = QuickFolders.Util.getSystemColor("buttontext");
 
-		document.getElementById("hover-colorpicker").color="orange";
-		document.getElementById("hover-fontcolorpicker").color="white";
-		document.getElementById("hoveredtabs-label").style.color="white";
-		document.getElementById("hoveredtabs-label").style.backgroundColor="orange";
+
+		document.getElementById("activetab-colorpicker").color = highlightColor;
+		document.getElementById("activetabs-label").style.backgroundColor = highlightColor;
+		document.getElementById("activetab-fontcolorpicker").color = highlightTextColor;
+		document.getElementById("activetabs-label").style.color = highlightTextColor;
+
+		document.getElementById("hover-colorpicker").color = QuickFolders.Util.getSystemColor("orange");
+		document.getElementById("hover-fontcolorpicker").color = "#FFF";
+		document.getElementById("hoveredtabs-label").style.color = "#FFF";
+		document.getElementById("hoveredtabs-label").style.backgroundColor = QuickFolders.Util.getSystemColor("orange");
 
 		document.getElementById("dragover-colorpicker").color="#E93903";
-		document.getElementById("dragover-fontcolorpicker").color="white";
-		document.getElementById("dragovertabs-label").style.color="white";
+		document.getElementById("dragover-fontcolorpicker").color="#FFF";
+		document.getElementById("dragovertabs-label").style.color="#FFF";
 		document.getElementById("dragovertabs-label").style.backgroundColor="#E93903";
 
-		document.getElementById("toolbar-colorpicker").color="transparent";
+		document.getElementById("toolbar-colorpicker").color=buttonfaceColor;
 
 
-		document.getElementById("inactive-colorpicker").color="buttonface";
-		document.getElementById("inactivetabs-label").style.backgroundColor="buttonface";
-		document.getElementById("inactive-fontcolorpicker").color="buttontext";
-		document.getElementById("inactivetabs-label").style.color="buttontext";
+		document.getElementById("inactive-colorpicker").color = buttonfaceColor;
+		document.getElementById("inactivetabs-label").style.backgroundColor = buttonfaceColor;
+		document.getElementById("inactive-fontcolorpicker").color = buttontextColor;
+		document.getElementById("inactivetabs-label").style.color = buttontextColor;
 	},
 
 	sendMail: function(mailto)	{
@@ -287,7 +397,7 @@ var QuickFoldersOptions = {
 			// create (non existent filter setting:
 			QuickFolders.Preferences.setBoolPref(filter, Default);
 
-			QuickFoldersOptions.showAboutConfig(filter);
+			QuickFolders.Options.showAboutConfig(filter);
 		}
 
 	},

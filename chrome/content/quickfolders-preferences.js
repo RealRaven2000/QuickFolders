@@ -65,6 +65,10 @@ QuickFolders.Preferences = {
 		return this.service.getBoolPref("extensions.quickfolders.showSubfolders");
 	} ,
 
+	isUseNavigateShortcuts: function() {
+		return this.service.getBoolPref("extensions.quickfolders.useNavigateShortcuts");
+	} ,
+
 	isUseKeyboardShortcuts: function() {
 		return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcuts");
 	} ,
@@ -101,15 +105,6 @@ QuickFolders.Preferences = {
 		return this.service.getBoolPref("extensions.quickfolders.autoFocusPreview");
 	} ,
 
-	isShowToolbarFlatstyle: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showFlatStyle");
-	} ,
-
-	isShowToolbarNativeTabstyle: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showNativeTabStyle");
-	} ,
-
-
 	isShowToolbarIcons: function() {
 		return this.service.getBoolPref("extensions.quickfolders.showIcons");
 	} ,
@@ -126,9 +121,27 @@ QuickFolders.Preferences = {
 		return this.service.getBoolPref( 'extensions.quickfolders.showRecentTab');
 	} ,
 
+	isShowRecentTabIcon: function() {
+		return this.service.getBoolPref( 'extensions.quickfolders.recentfolders.showIcon');
+	} ,
+
+	isPastelColors: function () {
+		return this.service.getBoolPref( 'extensions.quickfolders.pastelColors');
+	} ,
+
+	recentTabColor: function() {
+		return this.service.getIntPref( 'extensions.quickfolders.recentfolders.color');
+	} ,
+
+
 	isMinimalUpdateDisabled: function() {
 		return this.service.getBoolPref( 'extensions.quickfolders.update.disableMinimal');
 	} ,
+
+	isShowToolIcon: function() {
+		return this.service.getBoolPref( 'extensions.quickfolders.showToolIcon');
+	} ,
+
 
 	getButtonFontSize: function() {
 		return this.service.getCharPref("extensions.quickfolders.buttonFontSize");
@@ -151,15 +164,101 @@ QuickFolders.Preferences = {
 		return this.service.getCharPref("extensions.quickfolders.lastSelectedCategory")
 	},
 
+	existsCharPref: function(pref) {
+		try {
+			if(this.service.prefHasUserValue(pref))
+				return true;
+			if (this.service.getCharPref(pref))
+				return true;
+		}
+		catch (e) {return false; }
+		return false;
+	},
+
+	existsBoolPref: function(pref) {
+		try {
+			if(this.service.prefHasUserValue(pref))
+				return true;
+			if (this.service.getBoolPref(pref))
+				return true;
+		}
+		catch (e) {return false; }
+		return false;
+	},
+
+	// updates all toxic preferences to skinning engine of v 2.7
+	// returns true if upgraded from a previous skinning engine
+	tidyUpBadPreferences: function () {
+		var isUpgradeSkinning = false;
+		try {
+			QuickFolders.Util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
+			// get rid of preferences that do not start with "preferences." and replace with newer versions.
+			if (this.existsCharPref('QuickFolders.Toolbar.Style.background-color')) {
+				var replacePref = function(id1, id2) {
+					var service = QuickFolders.Preferences.service;
+					var origPref = 'QuickFolders.' + id1 + '.Style.' + id2;
+					var sValue = "";
+					// save value set by user (if none, default will create it)
+					if (service.prefHasUserValue(origPref)) {
+						sValue = service.getCharPref(origPref);
+						var newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
+						service.setCharPref(newPref, sValue);
+						QuickFolders.Util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
+					}
+					// delete bad preference
+					try { service.deleteBranch(origPref) } catch (ex) {;};
+				}
+
+				replacePref('ActiveTab','background-color');
+				replacePref('ActiveTab','color');
+				replacePref('DragOver','background-color');
+				replacePref('DragTab','background-color');
+				replacePref('DragTab','color');
+				replacePref('HoveredTab','background-color');
+				replacePref('HoveredTab','color');
+				replacePref('InactiveTab','background-color');
+				replacePref('InactiveTab','color');
+				replacePref('Toolbar','background-color');
+				isUpgradeSkinning = true;
+
+			}
+
+			if (this.existsBoolPref("extensions.quickfolders.showFlatStyle")) {
+				var theme = QuickFolders.Themes;
+
+				if (this.service.getBoolPref("extensions.quickfolders.showFlatStyle"))
+					this.setCurrentThemeId(theme.themes.Flat.Id);
+				else {
+					if (this.service.getBoolPref("extensions.quickfolders.showNativeTabStyle"))
+						this.setCurrentThemeId(theme.themes.NativeTabs.Id);
+					else
+						this.setCurrentThemeId(theme.themes.ApplePills.Id); // Pills style
+				}
+
+				try {
+					this.service.deleteBranch("extensions.quickfolders.showFlatStyle");
+					this.service.deleteBranch("extensions.quickfolders.showNativeTabStyle");
+					isUpgradeSkinning = true;
+				}
+				catch (ex) { alert(ex);};
+			}
+		}
+		catch (ex) {
+			QuickFolders.Util.logException("tidyUpBadPreferences",ex) ;
+			return false;
+		};
+		return isUpgradeSkinning;
+	},
+
 	getUserStyle: function(sId, sType, sDefault) {
 		// note: storing color as string in order to store OS specific colors like Menu, Highlight
 		// usage: getUserStyle("ActiveTab","background-color","HighLight")
 		// usage: getUserStyle("ActiveTab","color", "HighlightText")
-		var sStyleName = "QuickFolders." + sId + ".Style." + sType;
+		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		var sReturnValue="";
 
 		if(!this.service.prefHasUserValue(sStyleName)) {
-			sReturnValue=sDefault
+			sReturnValue=sDefault;
 		}
 		else {
 			var localPref= this.service.getCharPref(sStyleName);
@@ -175,7 +274,7 @@ QuickFolders.Preferences = {
 	},
 
 	setUserStyle: function(sId, sType, sValue) {
-		var sStyleName = "QuickFolders." + sId + ".Style." + sType;
+		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		this.service.setCharPref(sStyleName, sValue);
 
 	},
@@ -190,6 +289,10 @@ QuickFolders.Preferences = {
 
 	getIntPref: function(p) {
 		return this.service.getIntPref(p);
+	},
+
+	setIntPref: function(p, v) {
+		return this.service.setIntPref(p, v);
 	},
 
 	getBoolPref: function(p) {
@@ -209,6 +312,10 @@ QuickFolders.Preferences = {
 		return QuickFolders.Preferences.getIntPref("extensions.quickfolders." + p);
 	},
 
+	setIntPrefQF: function(p, v) {
+		return this.setIntPref("extensions.quickfolders." + p, v);
+	},
+
 	setShowCurrentFolderToolbar: function(b) {
 		return this.service.setBoolPref("extensions.quickfolders.showCurrentFolderToolbar",b);
 	},
@@ -224,6 +331,18 @@ QuickFolders.Preferences = {
 			var s="Err:" +e;
 			return false;
 		}
-	}
+	} ,
 
+	getCurrentTheme: function() {
+		var id = this.getCurrentThemeId();
+		return QuickFolders.Themes.Theme(id);
+	},
+
+	getCurrentThemeId: function() {
+		return this.service.getCharPref("extensions.quickfolders.style.theme");
+	},
+
+	setCurrentThemeId: function(t) {
+		return this.service.setCharPref("extensions.quickfolders.style.theme",t);
+	}
 }

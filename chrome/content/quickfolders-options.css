@@ -27,6 +27,29 @@
 	font-weight: bold;
 }
 
+label.textBoxLabel {
+	vertical-align: bottom;
+	padding-top: 4px;
+}
+
+hbox > textbox {
+	max-height: 2em;
+}
+hbox > button {
+	max-height: 3em !important;
+}
+
+
+
+#chkCogWheel .checkbox-icon {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#chkCogWheel:hover .checkbox-icon {
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+
 /****** LINKS	********/
 label.text-link[href] {
 	padding: 4px 2px 4px 5px !important;
@@ -209,6 +232,8 @@ description.quickhelp-dbg, hbox.quickhelp-dbg {
 	padding: 0.2em 0.6em;
 	-moz-border-radius: 4px 4px 0 0;
 }
+
+#QuickFolders-Options-Tabbox tab .tab-icon { margin-right:6px; }
 
 tab#QuickFolders-General {
 	list-style-image: url('chrome://quickfolders/skin/ico/settings-20.png');

@@ -29,7 +29,6 @@
 			dragdroparea="QuickFolders-FoldersBox"
 			customizable="false"
 			context="QuickFolders-ToolbarPopup"
-			style="display: none;"
 			flex="10"
 		>
 		<vbox id="QuickFolders-LabelBox" flex="0">
@@ -37,7 +36,7 @@
 		</vbox>
 
 		<hbox id="QuickFolders-Category-Box">
-			<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none">
+			<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none" collapsed="true">
 				<menupopup>
 					<!-- filled dynamically from JS -->
 				</menupopup>
@@ -64,7 +63,7 @@
 				<menuitem label="&qf.menuitem.quickfolders.options;"
 						id="QuickFolders-ToolbarPopup-options"
 						accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-						oncommand="QuickFolders.Interface.viewOptions();" class="cmd menuitem-iconic"
+						oncommand="QuickFolders.Interface.viewOptions(-1);" class="cmd menuitem-iconic"
 						tagName="qfOptions"
 						/>
 				<menuitem label="&qf.menuitem.quickfolders.changeOrder;"
@@ -112,48 +111,5 @@
 		</toolbar>
 	</toolbox>
 
-
-	<vbox id="singlemessage">
-		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView">
-			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
-			<toolbar id="QuickFolders-CurrentFolderTools" class="toolbar-flat">
-				<toolbarbutton id="QuickFolders-CurrentMail"
-						class="icon draggable"
-						tooltiptext="&qf.tooltip.emailIcon;" />
-				<toolbarbutton id="QuickFolders-CurrentThread"
-						class="icon draggable"
-						tooltiptext="&qf.tooltip.threadIcon;" />
-				<toolbarseparator />
-				<toolbarbutton id="QuickFolders-Recent-CurrentFolderTool" tag="#Recent" class="recent icon"
-						context="QuickFolders-folder-popup-Recent-CurrentFolderTool"
-						position="after_start"
-						oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, false);"
-						onclick= "QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
-						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
-						tooltiptext="&qf.tooltip.RecentFolders;"/>
-				<toolbarbutton id="QuickFolders-NavigateUp"
-						class="icon"
-						onclick="QuickFolders.Interface.goUpFolder();"
-						tooltiptext="&qf.tooltip.folderUp;"/>
-				<toolbarbutton id="QuickFolders-NavigateLeft"
-						class="icon"
-						onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
-				<toolbarbutton id="QuickFolders-CurrentFolder"
-						label="Current Folder"
-						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
-				<toolbarbutton id="QuickFolders-NavigateRight"
-						class="icon"
-						onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
-				<toolbarseparator />
-				<toolbarbutton id="QuickFolders-Close"
-						class="icon"
-						tooltiptext="&qf.tooltip.closeToolbar;"
-						onclick="QuickFolders.Interface.displayNavigationToolbar(false);" />
-			</toolbar>
-			<spacer flex="10" id="QF-CurrentRightSpacer" />
-		</hbox>
-	</vbox>
 </overlay>
 

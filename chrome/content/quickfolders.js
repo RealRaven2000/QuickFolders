@@ -28,6 +28,11 @@ END LICENSE BLOCK */
   Project History
   ===============
 
+  Personnel:
+  AM - Alexander Malfait (Creator of QuickFolders)
+  AG - Lead Developer and owner of the Mozdev project
+  CW - Christopher White (Mac User and Theme Engine developer)
+
   05/09/2008
 	AG added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
 	   made sorting with mouse more persistant (it sometimes jumped back!)
@@ -361,7 +366,7 @@ END LICENSE BLOCK */
 	  AG: added new context menu item for removing orphaned tabs
 	  AG: added "repair folder" command (mail folder menu)
 
-	2.5  (WIP)
+	2.5  24/05/2011
 	  AG: Added Hotkey for folders rebuild CTRL+SHIFT+(Configurable)
 	  AG: Category Dropdown now saves space by using menulist attribute sizetopopup=none
 	  AG: Added settings dropdown button on main toolbar
@@ -373,6 +378,30 @@ END LICENSE BLOCK */
 	  AG: moved getVersion to Utilities
 	  AG: Replaced deprecated popupNode with triggerNode and workaround code for modern Gecko Versions
 	  AG: Fixed issues with font colors on dark colored Tabs
+
+	2.6 - 06/06/2011
+	  AG: Bugfix - hide Current Folder toolbar in message fullscreen mode
+	  AG: Bugfix - Category dropdown was invisible in Thunderbird 2.0
+	  AG: added option extensions.quickfolders.showToolIcon for hiding tools menu icon
+	  AG: Bugfix - on SeaMonkey 2.1 adding folders to the QuickFolders toolbar from the folderpane did not work anymore
+	  AG: Coloring improvement for unstyled Tabs
+	  AG: Added more options for Recent Folder menu (right-click in Options window)
+	  AG: Fixed "Purge Junk" command in Current Folder Toolbar
+	  AG: Fixed - SeaMonkey did not open Version History in internal browser.
+
+	2.7 - Work In Progress
+	  AG + CW: Added pastel style
+	  AG: Added custom radius
+	  AG: First Run tidy ups:replace "QuickFolders.ActiveTab.Style.background-color" with "extensions.quickfolders.style.ActiveTab.background-color" etc.
+      CW: Added Mac Style (CWA-Design + Testing, AG QF integration)
+	  AG: Added Next / Previous unread Mail buttons
+	  AG: Added checkbox for disabling toolbar menu icon (cogwheel)
+	  AG: Added dropdown for theming and theming dependant customization
+	  AG: Split Native Style into Tabs and Buttons, implemented Selected on Tabs look
+	  AG: Renamed toxic preferences
+	  AG: Options dialog now remembers last panel selected
+	  AG: Fixed [Bug 23930] Recent Folders Tab Dropdown stops working after a Message Dropped into it
+	  AG: Fixed "expunged n bytes" message for Empty Trash, Empty Junk and Compact Folder
 
 
 
@@ -441,6 +470,10 @@ var QuickFolders = {
 	currentURI: '',
 	lastTreeViewMode: null,
 	initDone: false,
+	compactReportFolderCompacted: false,
+	compactReportCommandType: '',
+	compactLastFolderSize: 0,
+	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
 
 	// helper function to do init from options dialog!
 	initDocAndWindow: function() {
@@ -502,19 +535,22 @@ var QuickFolders = {
 
 
 	init: function() {
+		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 		var myver = QuickFolders.Util.Version();
 
 		var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
 		var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
 
 		QuickFolders.LocalErrorLogger("QF.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+
+		QuickFolders.Util.FirstRun.init();
+
 		QuickFolders.addTabEventListener();
 
-		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
-		if (QuickFolders.Preferences.isUseKeyboardShortcuts() || QuickFolders.Preferences.isUseRebuildShortcut()) {
+		if (QuickFolders.Preferences.isUseKeyboardShortcuts() || QuickFolders.Preferences.isUseRebuildShortcut() || QuickFolders.Preferences.isUseNavigateShortcuts()) {
 			if(!QuickFolders.Interface.boundKeyListener) {
 				this.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
@@ -539,7 +575,7 @@ var QuickFolders = {
 			if(QuickFolders.Model.isValidCategory(lastSelectedCategory))
 			  QuickFolders.Interface.selectCategory(lastSelectedCategory, true)
 			else
-			  QuickFolders.Interface.updateFolders(true);  // selectCategory already called updateFolders!
+			  QuickFolders.Interface.updateFolders(true, false);  // selectCategory already called updateFolders!
 
 		}
 
@@ -547,12 +583,12 @@ var QuickFolders = {
 
 		observerService.addObserver({
 			observe: function() {
-				QuickFolders.Interface.updateFolders(true);
+				QuickFolders.Interface.updateFolders(true, false);
 				QuickFolders.Interface.updateUserStyles();
 			}
 		},"quickfolders-options-saved", false);
 		QuickFolders.Util.logDebug("QF.init() ends.");
-		QuickFolders.Util.FirstRun.init();
+		// QuickFolders.Util.FirstRun.init();
 
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
 		QuickFolders.Interface.displayNavigationToolbar(QuickFolders.Preferences.isShowCurrentFolderToolbar());
@@ -603,7 +639,7 @@ var QuickFolders = {
 						if (QuickFolders.Model.addFolder(src, cat)) {
 							var s = "Added shortcut " + src + " to QuickFolders"
 							if (cat!=null) s = s + " Category " + cat;
-							try{QuickFolders_getWindow().MsgStatusFeedback.showStatusString(s);} catch (e) {};
+							try{QuickFolders.Util.showStatusMessage(s);} catch (e) {};
 						}
 					}
 			};
@@ -611,12 +647,12 @@ var QuickFolders = {
 			switch (dropData.flavour.contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
-					if ('Thunderbird'==QuickFolders.Util.Application() && QuickFolders.Util.Appver()>=3) {
+					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) {  // 'Thunderbird'==QuickFolders.Util.Application() && QuickFolders.Util.Appver()>=3
 						msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
 						sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
 					}
 					else {
-						sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession);
+						sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession); // older gecko versions.
 					}
 					addFolder(sourceUri);
 
@@ -947,7 +983,10 @@ var QuickFolders = {
 								otherPopups[i].hidePopup();
 						}
 						else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
-							otherPopups[i].hidePopup();
+							if (otherPopups[i].hidePopup)
+								otherPopups[i].hidePopup();
+							else
+								QuickFolders.Util.logDebugOptional("otherPopups[" + i + "] (" + otherPopups[i].id + ") does not have a hidePopup method!");
 						}
 /*						// use the "tag" attribute to close popup on special buttons (e.g. Recent Folders tab)
  *						if (otherPopups[i].getAttribute('tag')) {
@@ -976,7 +1015,7 @@ var QuickFolders = {
 								return; // no popup menu at all!
 
 						if (targetFolder)
-							QuickFolders.Util.logDebugOptional("dnd", "creating popupset for " + targetFolder.name );
+							QuickFolders.Util.logDebugOptional("recentFolders", "creating popupset for " + targetFolder.name );
 
 						// instead of using the full popup menu (containing the 3 top commands)
 						// try to create droptarget menu that only contains the target subfolders "on the fly"
@@ -1406,10 +1445,13 @@ function QuickFolders_MySelectFolder(folderUri)
 	var currentFolderTab = document.getElementById('QuickFolders-CurrentFolder');
 	if (currentFolderTab) {
 		var entry = QuickFolders.Model.getFolderEntry(msgFolder.URI);
+		var theLabel = entry ? entry.name : "";
+		var tabColor;
 		try {tabColor = entry.tabColor;}
 		catch(e) {tabColor = null};
-		QuickFolders.Interface.addFolderButton(msgFolder, "", -1, tabColor, currentFolderTab, 'QuickFolders-CurrentFolder');
+		QuickFolders.Interface.addFolderButton(msgFolder, theLabel, -1, tabColor, currentFolderTab, 'QuickFolders-CurrentFolder', QuickFolders.Preferences.getIntPref('extensions.quickfolders.colorTabStyle'));
 		// QuickFolders.Interface.addPopupSet('QuickFolders-folder-popup-currentFolder', msgFolder, -1, currentFolderTab);
+		currentFolderTab.className = currentFolderTab.className.replace(/\s*striped/,"") + " selected-folder";
 	}
 
 }
@@ -1466,32 +1508,84 @@ QuickFolders.FolderListener = {
 		catch(e) { };
 	},
 
-	OnItemPropertyChanged: function(parent, item, viewString) {},
+	OnItemPropertyChanged: function(property, oldValue, newValue) { // parent, item, viewString
+		var x=property.toString();
+	},
+
 	OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
 		try {
 			if (property == "TotalUnreadMessages" ||
-				(QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {	// FolderSize
+				(QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {
 				if(QuickFolders)
 					QuickFolders.Interface.setFolderUpdateTimer();
+			}
+			if (QuickFolders.compactReportFolderCompacted && property == "FolderSize") {
+				try
+				{
+					QuickFolders.compactReportFolderCompacted = false;
+					var size1 = QuickFolders.compactLastFolderSize;
+					var size2 = item.sizeOnDisk;
+					var message = "";
+
+					// describe the action that caused the compacting
+					switch (QuickFolders.compactReportCommandType) {
+						case 'compactFolder':
+							message = QuickFolders.Util.getBundleString("qfCompactedFolder", "Compacted folder") + " " + item.prettyName;
+							break;
+						case 'emptyJunk':
+							message = QuickFolders.Util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " " + item.prettyName;
+							break;
+						case 'emptyTrash':
+							message = QuickFolders.Util.getBundleString("qfEmptiedTrash", "Emptied trash.");
+							break;
+						default:
+							message = "unknown compactReportCommandType: [" + compactReportCommandType + "]";
+							break;
+					}
+					var originalSize= QuickFolders.Util.getBundleString("qfCompactedOriginalFolderSize","Original size");
+					var newSize = QuickFolders.Util.getBundleString("qfCompactedNewFolderSize","New Size");
+					var expunged = QuickFolders.Util.getBundleString("qfCompactedBytesFreed","Bytes expunged");
+
+					var out = message + " :: "
+						+ (size1 ? (originalSize + ": " + size1.toString() + " ::  "
+								   + expunged + ":" + (size1-size2).toString() + " :: ")
+								 : " ")
+						+ newSize + ": " + size2.toString() ;
+					setTimeout(function() {
+						QuickFolders.Util.showStatusMessage(out);
+						QuickFolders.Util.logDebug(out);
+								}, 500); // overwrite "compacting done" message
+
+					QuickFolders.compactLastFolderSize = 0;
+				} catch(e) {;};
 			}
 		}
 		catch(e) {this.ELog("Exception in Item OnItemIntPropertyChanged - TotalUnreadMessages: " + e);};
 	},
 	OnItemBoolPropertyChanged: function(item, property, oldValue, newValue) {},
-	OnItemUnicharPropertyChanged: function(item, property, oldValue, newValue) {},
+	OnItemUnicharPropertyChanged: function(item, property, oldValue, newValue) {
+		var x=property.toString();
+		},
 	OnItemPropertyFlagChanged: function(item, property, oldFlag, newFlag) {},
 	OnItemEvent: function(item, event) {
+		var eString = event.toString();
 		try {
-			QuickFolders.Util.logDebugOptional("events","event: " + event);
-			if(event == "FolderLoaded") {	// DeleteOrMoveMsgCompleted
-				try {
-					if(QuickFolders.Interface)
-						QuickFolders.Interface.onFolderSelected();
-				}
-				catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onFolderSelected:\n" + e)};
+			QuickFolders.Util.logDebugOptional("events","event: " + eString);
+			switch (eString) {
+				case "FolderLoaded": // DeleteOrMoveMsgCompleted
+					try {
+						if(QuickFolders.Interface)
+							QuickFolders.Interface.onFolderSelected();
+					}
+					catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onFolderSelected:\n" + e)};
+					break;
+				case "RenameCompleted":
+					// item.URI;
+					QuickFolders.Model.renameFolder(item.URI, item.prettyName);
+					break;
 			}
 		}
-		catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "}:\n" + e)};
+		catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + eString + "}:\n" + e)};
 	},
 	OnFolderLoaded: function(aFolder) { },
 	OnDeleteOrMoveMessagesCompleted: function( aFolder) {}

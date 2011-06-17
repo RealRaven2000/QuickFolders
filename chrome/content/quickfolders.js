@@ -1551,10 +1551,9 @@ QuickFolders.FolderListener = {
 								   + expunged + ":" + (size1-size2).toString() + " :: ")
 								 : " ")
 						+ newSize + ": " + size2.toString() ;
-					setTimeout(function() {
-						QuickFolders.Util.showStatusMessage(out);
-						QuickFolders.Util.logDebug(out);
-								}, 500); // overwrite "compacting done" message
+					//make sure it displays straight away and overwrite the compacting done message as well.
+					setTimeout(function() { QuickFolders.Util.showStatusMessage(out); QuickFolders.Util.logDebug(out); }, 250); // display "after compacting"
+					setTimeout(function() { QuickFolders.Util.showStatusMessage(out); QuickFolders.Util.logDebug(out); }, 2000); // overwrite "compacting done" message
 
 					QuickFolders.compactLastFolderSize = 0;
 				} catch(e) {;};

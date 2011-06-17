@@ -282,12 +282,23 @@ QuickFolders.Util = {
 	showStatusMessage: function(s) {
 		try {
 			var sb = QuickFolders_getDocument().getElementById('status-bar');
+			var el, sbt;
 			if (sb) {
-				var stb = sb.getElementById('statusTextBox');
-				if (stb) {
-					var tb = stb.getElementById('statusText');
-					if (tb)
-						tb.label = s;
+				for(var i = 0; i < sb.childNodes.length; i++)
+				{
+					el = sb.childNodes[i];
+					if (el.nodeType == 1 && el.id=='statusTextBox') {
+						sbt = el;
+					    break;
+					}
+				}
+				for(var i = 0; i < sbt.childNodes.length; i++)
+				{
+					el = sbt.childNodes[i];
+					if (el.nodeType == 1 && el.id=='statusText') {
+					    el.label = s;
+					    break;
+					}
 				}
 			}
 			else

@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "使用鍵盤快捷鍵（Alt+1到Alt+9）">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "使用Ctrl鍵取代Alt鍵">
 <!ENTITY qf.checkbox.useRebuildShortcut "以捷徑重新建立頁籤：Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "在資料夾標籤上顯示快捷鍵數字">
 <!ENTITY qf.checkbox.showUnreadMessageCount "在資料夾標籤上顯示未讀郵件的數目">
 <!ENTITY qf.checkbox.showUnreadBold "在資料夾標籤上以粗體顯示未讀郵件的數目">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "在標籤上以斜體顯示有郵件的資料夾">
 <!ENTITY qf.label.buttonFontSize "標籤字體大小（空白表示使用預設的設定）：">
 <!ENTITY qf.label.pixels "像素">
+<!ENTITY qf.label.appearance "外觀">
+<!ENTITY qf.label.colors "顏色">
+<!ENTITY qf.label.themes "佈景主題：">
+<!ENTITY qf.button.default "預設值">
 <!ENTITY qf.label.setcolors "設定文字、背景顏色">
 <!ENTITY qf.label.ActiveTabColor "使用中標籤顏色：">
 <!ENTITY qf.label.HoveredTabColor "停留的標籤顏色：">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "在彈出式選單中顯示子資料夾">
 <!ENTITY qf.checkbox.showRecentTab "顯示最近使用的資料夾標籤">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "以滑鼠右鍵點選來確認">
+<!ENTITY qf.checkbox.tabMenuIcon "工具列選單圖示">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "也能以點選右鍵的方式，點選工具列本身來開啟此選單！">
 <!ENTITY qf.menu.tabColor "沒有顏色！">
 <!ENTITY qf.menu.Color "顏色">
 <!ENTITY qf.options.LayoutColorAppearance "個別標籤顏色樣式">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "條紋樣式">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "填滿樣式">
-<!ENTITY qf.checkbox.showNativeTabStyle "框架式標籤 - 標籤的樣式與系統類似；同時不適用下列顏色設定">
-<!ENTITY qf.checkbox.showFlatStyle "使用平板式的標籤風格 - 建議使用；支援下列的顏色設定">
+<!ENTITY qf.options.label.themeAuthor "佈景主題作者：">
+<!ENTITY qf.themes.nativeTabs.label "原始分頁">
+<!ENTITY qf.themes.flatTabs.label "平面風格">
+<!ENTITY qf.themes.applePills.label "蘋果風格">
+<!ENTITY qf.themes.flatButtons.label "工具列按鈕">
+<!ENTITY qf.options.theme.pastelColors "淡雅的色彩">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "自訂角度">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "上：">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "下：">
+<!ENTITY qf.options.themes.showBorders.checkbox "總是顯示邊界">
 <!ENTITY qf.description.linkNote "參觀QuickFolders的首頁，以便進一步瞭解詳細的使用說明、技巧和問答集：">
 <!ENTITY qf.checkbox.transparent "透明">
 <!ENTITY qf.checkbox.shadows "陰影">

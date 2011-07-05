@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "使用快捷键(Alt+1 到 Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "用 Ctrl 键代替 Alt 键">
 <!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt + ">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "在导航卡上显示序号">
 <!ENTITY qf.checkbox.showUnreadMessageCount "在导航卡上显示未读消息的数目">
 <!ENTITY qf.checkbox.showUnreadBold "有未读消息的导航卡用粗体字显示">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "存有消息的导航卡用斜体字显示">
 <!ENTITY qf.label.buttonFontSize "导航卡字体大小(留空则为默认): ">
 <!ENTITY qf.label.pixels "像素(pixels)">
+<!ENTITY qf.label.appearance "Appearance">
+<!ENTITY qf.label.colors "Colors">
+<!ENTITY qf.label.themes "Themes:">
+<!ENTITY qf.button.default "Defaults">
 <!ENTITY qf.label.setcolors "设置导航卡的文本颜色和背景颜色">
 <!ENTITY qf.label.ActiveTabColor "导航卡激活的颜色:">
 <!ENTITY qf.label.HoveredTabColor "鼠标悬停着的颜色:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "在弹出菜单中关联子文件夹">
 <!ENTITY qf.checkbox.showRecentTab "显示最近访问的文件夹">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "点击鼠标右键可配置选项">
+<!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menu Icon">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "This menu can also be invoked by right-clicking the toolbar itself">
 <!ENTITY qf.menu.tabColor "默认颜色!">
 <!ENTITY qf.menu.Color "颜色">
 <!ENTITY qf.options.LayoutColorAppearance "导航卡独立的颜色外观">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(条纹样式)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(填充样式)">
-<!ENTITY qf.checkbox.showNativeTabStyle "嵌入式标签 - 布局类似于操作系统的标签，以下的任何颜色选项均不起作用。">
-<!ENTITY qf.checkbox.showFlatStyle "平板式标签 - 推荐，支持以下所有的颜色选项。">
+<!ENTITY qf.options.label.themeAuthor "Theme Author:">
+<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
+<!ENTITY qf.themes.flatTabs.label "Flat Style">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
+<!ENTITY qf.options.theme.pastelColors "Pastel Colors">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Custom Corner Radius">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Top:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bottom:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Always Display Borders">
 <!ENTITY qf.description.linkNote "访问网站以获取用户指南，使用技巧和常见问题等更多信息:">
 <!ENTITY qf.checkbox.transparent "透明">
 <!ENTITY qf.checkbox.shadows "阴影">

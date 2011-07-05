@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Tastaturkürzel aktivieren (Alt + 1 bis Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Strg statt Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Tabs erneuern mit Strg + Alt + ">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Links / ALT-Rechts für voriges / nächstes Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Tastaturkürzel auf den Tabs anzeigen">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Anzahl der ungelesenen Mails anzeigen">
 <!ENTITY qf.checkbox.showUnreadBold "Tabs mit ungelesenen Mails fett darstellen">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabs die Emails enthalten kursiv darstellen">
 <!ENTITY qf.label.buttonFontSize "Schriftgrösse (leer für Standardeinstellung):">
 <!ENTITY qf.label.pixels "pixel">
+<!ENTITY qf.label.appearance "Aussehen">
+<!ENTITY qf.label.colors "Farben">
+<!ENTITY qf.label.themes "Themes:">
+<!ENTITY qf.button.default "Standardwerte">
 <!ENTITY qf.label.setcolors "Farben für [Text], Hintergrund">
 <!ENTITY qf.label.ActiveTabColor "Farbe Aktives Tab:">
 <!ENTITY qf.label.HoveredTabColor "Farbe Hovered Tab:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs (Experimentell)">
 <!ENTITY qf.checkbox.showRecentTab "Letzte Ordner Tab anzeigen">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklick für weitere Konfiguration">
+<!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menü Icon">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dieses Menü kann auch durch Rechtsklick auf den Toolbar selbst aufgerufen werden">
 <!ENTITY qf.menu.tabColor "Ohne Farbe!">
 <!ENTITY qf.menu.Color "Farbe">
 <!ENTITY qf.options.LayoutColorAppearance "Individuelle Tab-Farben">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(gestreift)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(gefüllt)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Tabs im Shell Stil - den Tabs des Betriebssystems am ähnlichsten; ohne Unterstützung der folgenden Optionen...">
-<!ENTITY qf.checkbox.showFlatStyle "Tabs mit 'Flat Style' anzeigen. Empfohlen, unterstützt als einziges folgende Optionen:">
+<!ENTITY qf.options.label.themeAuthor "Autor des Themes:">
+<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
+<!ENTITY qf.themes.flatTabs.label "Flat Style">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
+<!ENTITY qf.options.theme.pastelColors "Pastel Farben">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Abgerundete Ecken">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Oben:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Unten:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Ränder immer anzeigen">
 <!ENTITY qf.description.linkNote "Besuchen Sie die homepage von QuickFolders für ein detailiertes Handbuch, Tips und FAQ:">
 <!ENTITY qf.checkbox.transparent "Transparent">
 <!ENTITY qf.checkbox.shadows "Schatten">

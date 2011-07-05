@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atajos de teclado (Alt + 1 al  Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl en lugar de  Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir pestañas con el atajo: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Mostrar el número del atajo en la etiqueta de las carpetas">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Mostrar el número de mensajes no leídos en el botón de la carpeta">
 <!ENTITY qf.checkbox.showUnreadBold "Mostrar los botones de las carpetas con mensajes no leídos en negritas">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostrar los botones  con mensajes en la carpeta en cursivas">
 <!ENTITY qf.label.buttonFontSize "Tamaño del texto del botón (Dejar en blanco para tamaño estándar):">
 <!ENTITY qf.label.pixels "pixeles">
+<!ENTITY qf.label.appearance "Apariencia">
+<!ENTITY qf.label.colors "Colores">
+<!ENTITY qf.label.themes "Temas:">
+<!ENTITY qf.button.default "Valores por omisión">
 <!ENTITY qf.label.setcolors "Asignar [Color del texto], Color del fondo">
 <!ENTITY qf.label.ActiveTabColor "Color pestaña activa:">
 <!ENTITY qf.label.HoveredTabColor "Color del mouse sobre la pestaña:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetas en menús emergentes (Experimental)">
 <!ENTITY qf.checkbox.showRecentTab "Mostrar pestaña de carpetas recientes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic derecho para configurar">
+<!ENTITY qf.checkbox.tabMenuIcon "Ícono de menú de herramientas">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Este menú puede ser invocado mediante un clic derecho en la misma barra de herramientas">
 <!ENTITY qf.menu.tabColor "¡Sin Color!">
 <!ENTITY qf.menu.Color "Color">
 <!ENTITY qf.options.LayoutColorAppearance "Apariencia individual del color de las pestañas">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(Estilo rayado)">
-<!ENTITY qf.options.LayoutColorAppearanceFilled "(Estilo lleno)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Pestañas tipo sistema operativo - el formato es similar a las pestañas del SO sin incluir ninguna opción de color mostrada aquí">
-<!ENTITY qf.checkbox.showFlatStyle "pestañas de Estilo personal 'Estilo plano' (recomendado ya que soporta todas las opciones siguientes)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(estilo lleno)">
+<!ENTITY qf.options.label.themeAuthor "Autor del tema:">
+<!ENTITY qf.themes.nativeTabs.label "Pestañas nativas">
+<!ENTITY qf.themes.flatTabs.label "Estilo plano">
+<!ENTITY qf.themes.applePills.label "Botones apple">
+<!ENTITY qf.themes.flatButtons.label "Botones de la barra de herramientas">
+<!ENTITY qf.options.theme.pastelColors "Colores pastel">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Radio de las esquinas">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Parte superior:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Parte inferior:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Siempre muestra bordes">
 <!ENTITY qf.description.linkNote "Visita la página de QuickFolders para una Guía de usuario detallada, Consejos y preguntas frecuentes:">
 <!ENTITY qf.checkbox.transparent "Transparente">
 <!ENTITY qf.checkbox.shadows "Sombras">

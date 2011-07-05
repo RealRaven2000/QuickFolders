@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Gebruik keyboard sneltoetsen (Alt + 1 tot Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Control in plaats van Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Tabs herbouwen met snelkoppeling: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Toon het sneltoets nummer op de knop">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Toon het aantal ongelezen bericht op de knop">
 <!ENTITY qf.checkbox.showUnreadBold "Toon knoppen voor folders met ongelezen berichten in het vet">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Toon knoppen voor folders die berichten bevatten in cursief">
 <!ENTITY qf.label.buttonFontSize "Lettertype grootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.appearance "Uiterlijk">
+<!ENTITY qf.label.colors "Kleuren">
+<!ENTITY qf.label.themes "Thema's:">
+<!ENTITY qf.button.default "Standaardwaarden">
 <!ENTITY qf.label.setcolors "[Tekst kleur], Achtergrond Kleur">
 <!ENTITY qf.label.ActiveTabColor "Actieve Tab Kleur:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Kleur:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Subfolders uitklappen in popup menus">
 <!ENTITY qf.checkbox.showRecentTab "Recente folders tab weergeven">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklikken voor instellingen">
+<!ENTITY qf.checkbox.tabMenuIcon "Werkbalk Menu Icoon">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dit menu kan ook worden aangeroepen door rechts te klikken op de werkbalk zelf">
 <!ENTITY qf.menu.tabColor "Geen kleur!">
 <!ENTITY qf.menu.Color "Kleur">
 <!ENTITY qf.options.LayoutColorAppearance "Tab Kleuren Weergave">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(gestreepte stijl)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(gevulde stijl)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Shell stijl tabbladen (geen kleur ondersteuning)">
-<!ENTITY qf.checkbox.showFlatStyle "Toon knoppen als tabbladen ('Flat Style') - aangeraden, dit ondersteunt alle kleuren opties hieronder getoond">
+<!ENTITY qf.options.label.themeAuthor "Thema Auteur:">
+<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
+<!ENTITY qf.themes.flatTabs.label "Vlakke Stijl">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.flatButtons.label "Werkbalk Knoppen">
+<!ENTITY qf.options.theme.pastelColors "Pastel Kleuren">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Specifieke Hoek Radius">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Top:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bodem:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Toon Randen Altijd">
 <!ENTITY qf.description.linkNote "Bezoek de homepage van QuickFolders voor een gedetailleerde handleiding, tips en FAQ:">
 <!ENTITY qf.checkbox.transparent "Transparant">
 <!ENTITY qf.checkbox.shadows "Schaduwen">

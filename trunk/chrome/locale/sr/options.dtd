@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Користи пречице на тастатури (од алт+а до алт+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Користи ктрл уместо алт">
 <!ENTITY qf.checkbox.useRebuildShortcut "Врати језичке помоћћу пречице ктрл+алт">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Прикажи број пречице на наслов фасцикле">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Прикажи број непрочитаних порука на дугмету фасцикле">
 <!ENTITY qf.checkbox.showUnreadBold "Подебљај дугмад фасцикли које садрже непрочитане поруке">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Искоси дугмад фасцикли које садрже порукама">
 <!ENTITY qf.label.buttonFontSize "Величина фонта на дугмету (оставите празно да би била коришћена подразумевана):">
 <!ENTITY qf.label.pixels "пиксела">
+<!ENTITY qf.label.appearance "Изглед">
+<!ENTITY qf.label.colors "Боје">
+<!ENTITY qf.label.themes "Теме:">
+<!ENTITY qf.button.default "Подразумевано">
 <!ENTITY qf.label.setcolors "Подеси [боју текста], боју позадине">
 <!ENTITY qf.label.ActiveTabColor "Боја активног језичка:">
 <!ENTITY qf.label.HoveredTabColor "Боја језичка када се нанесе миш:">
@@ -38,7 +43,7 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Пребаци на списак порука када се мењају језичци">
 <!ENTITY qf.label.homePage "Детаљне информације на новој страници додатка QuickFolders на Mozdev.org...">
 <!ENTITY qf.tab.support "Подршка">
-<!ENTITY qf.description.languages "QuickFolders подржава локализовање, тако да можете помоћи превођењем на ваш језик помоћу Бабелзиле:">
+<!ENTITY qf.description.languages "QuickFolders подржава мног ејезике преводе, па можете помоћи са превођењем превођењем на ваш језик (помоћу Бабелзиле):">
 <!ENTITY qf.label.languagesLink "Преведи...">
 <!ENTITY qf.description.donate "Ако волите додатак QuickFolders као и ми, а желели бисте да подржите његов развој, можете да донирате нешто новца.">
 <!ENTITY qf.label.donateLink "Посети страницу за донирање">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Развиј подфасцикле у искачућим менијима">
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Пристисните десни клик да бисте подесили">
-<!ENTITY qf.menu.tabColor "Без боје!">
+<!ENTITY qf.checkbox.tabMenuIcon "Икона менија траке са алаткама">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Овај мени можете добити и десним кликом на траку са алаткама">
+<!ENTITY qf.menu.tabColor "Безбојно">
 <!ENTITY qf.menu.Color "Боја">
 <!ENTITY qf.options.LayoutColorAppearance "Приказ појединачне боје језичка">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(пругасти стил)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(попуњен стил)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Језичци стила оквира - изглед опонаша језичке вашег оперативног система; без икаквих опција за боје испод">
-<!ENTITY qf.checkbox.showFlatStyle "Кориснички стил „равних језичака” је препоручен, јер подржава све опције за боје приказане испод">
+<!ENTITY qf.options.label.themeAuthor "Аутор теме:">
+<!ENTITY qf.themes.nativeTabs.label "Почетне боје">
+<!ENTITY qf.themes.flatTabs.label "Flat стил">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.flatButtons.label "Дугмад траке са алаткама">
+<!ENTITY qf.options.theme.pastelColors "Пастелне боје">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Прилагођени радијус углова">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "горњи:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "доњи:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Увек приказуј оквире">
 <!ENTITY qf.description.linkNote "Посетите матичну страницу додатка QuickFolders да бисте видели детаљно упутство за кориснике, савете и ЧПП:">
 <!ENTITY qf.checkbox.transparent "провидно">
 <!ENTITY qf.checkbox.shadows "сенке">

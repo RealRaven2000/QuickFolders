@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utilitzar Ctrl enlloc de Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Regenera Pestanyes amb: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Mostra el número de drecera a les etiquetes de les carpetes">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Mostra el nombre de missatges per llegir al botó de la carpeta">
 <!ENTITY qf.checkbox.showUnreadBold "Mostra amb negreta els botons de les carpetes amb missatges per llegir">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostra en cursiva els botons de les carpetes que continguin missatges">
 <!ENTITY qf.label.buttonFontSize "Mida de font del botó (deixeu en blanc per a la mida per defecte):">
 <!ENTITY qf.label.pixels "píxels">
+<!ENTITY qf.label.appearance "Aparença">
+<!ENTITY qf.label.colors "Colors">
+<!ENTITY qf.label.themes "Temes:">
+<!ENTITY qf.button.default "Valors per defecte">
 <!ENTITY qf.label.setcolors "Aplica [Color del text], Color del fons">
 <!ENTITY qf.label.ActiveTabColor "Color de la Pestanya Activa:">
 <!ENTITY qf.label.HoveredTabColor "Color de la pestanya flotant:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetes al menú emergent">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botó dret per configurar">
+<!ENTITY qf.checkbox.tabMenuIcon "Icona del Menú de la Barra d'eines">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines">
 <!ENTITY qf.menu.tabColor "Sense Color!">
 <!ENTITY qf.menu.Color "Color">
 <!ENTITY qf.options.LayoutColorAppearance "Colors Individuals de les Pestanyes">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(estil ratllat)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(estil ple)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Estil de Pestanyes del SO - imita l'aparença del vostre SO; sense aplicar cap de les opcions de color">
-<!ENTITY qf.checkbox.showFlatStyle "Estil de pestanyes d'usuari 'Estil pla' - recomanada, ja que suporta totes les opcions de color mostrades mes avall">
+<!ENTITY qf.options.label.themeAuthor "Autor del Tema:">
+<!ENTITY qf.themes.nativeTabs.label "Pestanyes Natives">
+<!ENTITY qf.themes.flatTabs.label "Estil Pla">
+<!ENTITY qf.themes.applePills.label "Pastilles d'Apple">
+<!ENTITY qf.themes.flatButtons.label "Botons de la Barra d'Eines">
+<!ENTITY qf.options.theme.pastelColors "Colors Pastel">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Radi de les cantonades Personalitzat">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "A dalt:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "A baix:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Mostra Sempre els Costats">
 <!ENTITY qf.description.linkNote "Visiteu la pàgina de QuickFolders per a la guia d'usuari detallada, Suggeriments i FAQ">
 <!ENTITY qf.checkbox.transparent "transparent">
 <!ENTITY qf.checkbox.shadows "ombres">

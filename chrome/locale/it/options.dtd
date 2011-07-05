@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usa le scorciatoie da tastiera (combinazione tasti ALT+1 … ALT+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usa CTRL al posto di ALT">
 <!ENTITY qf.checkbox.useRebuildShortcut "Ricostruzione schede QuickFolders con la scorciatoia CTRL + ALT +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Visualizza il numero di scorciatoia sulle etichette delle schede QuickFolders">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Visualizza il numero di messaggi non letti sul pulsante delle schede QuickFolders">
 <!ENTITY qf.checkbox.showUnreadBold "Visualizza in grassetto i pulsanti delle schede QuickFolders con messaggi non letti">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Visualizza in corsivo i pulsanti delle schede QuickFolders contenenti messaggi">
 <!ENTITY qf.label.buttonFontSize "Dimensione dei caratteri dei pulsanti (lasciare vuoto per mantenere i valori di default):">
 <!ENTITY qf.label.pixels "pixel">
+<!ENTITY qf.label.appearance "Aspetto">
+<!ENTITY qf.label.colors "Colori">
+<!ENTITY qf.label.themes "Temi:">
+<!ENTITY qf.button.default "Default">
 <!ENTITY qf.label.setcolors "Configurazione [Colore Testo], Colore Sfondo">
 <!ENTITY qf.label.ActiveTabColor "Colore scheda attiva:">
 <!ENTITY qf.label.HoveredTabColor "Colore scheda ove è il mouse:">
@@ -48,15 +53,25 @@
 <!ENTITY qf.checkbox.showSubfolders "Espande le sottocartelle nel menu a popup">
 <!ENTITY qf.checkbox.showRecentTab "Visualizza la scheda QF delle cartelle recenti">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Per la configurazione cliccare il pulsante destro del mouse">
+<!ENTITY qf.checkbox.tabMenuIcon "Icona del menu della barra degli strumenti di Quick Folders">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Questo menu può essere invocato anche cliccando col pulsante destro del mouse sulla barra stessa">
 <!ENTITY qf.menu.tabColor "Nessun colore!">
 <!ENTITY qf.menu.Color "Colore">
 <!ENTITY qf.options.LayoutColorAppearance "Aspetto del colore della singola scheda">
-<!ENTITY qf.options.LayoutColorAppearanceStriped "(barra colorata)">
-<!ENTITY qf.options.LayoutColorAppearanceFilled "(completamente colorata)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Stile nativo schede - è lo stesso usato dal sistema operativo, senza le sottostanti opzioni di colore">
-<!ENTITY qf.checkbox.showFlatStyle "Stile personalizzato schede (flat style) - raccomandato perché supporta tutte le sottostanti opzioni di colore">
+<!ENTITY qf.options.LayoutColorAppearanceStriped " (con barra colorata)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled " (completamente colorata)">
+<!ENTITY qf.options.label.themeAuthor "Autore:">
+<!ENTITY qf.themes.nativeTabs.label "Nativo">
+<!ENTITY qf.themes.flatTabs.label "Piano">
+<!ENTITY qf.themes.applePills.label "Briciole di Apple">
+<!ENTITY qf.themes.flatButtons.label "Pulsanti della barra strumenti">
+<!ENTITY qf.options.theme.pastelColors "Colori pastello">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Personalizzazione del raggio angolare">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Alto:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Basso:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Mostra sempre i bordi">
 <!ENTITY qf.description.linkNote "Per una dettagliata guida utente, per trovare suggerimenti e per le FAQ, visita la Home Page di QuickFolders:">
-<!ENTITY qf.checkbox.transparent "Trasparente">
+<!ENTITY qf.checkbox.transparent "Trasparenza">
 <!ENTITY qf.checkbox.shadows "Ombreggiatura">
 <!ENTITY qf.checkbox.debug.tooltip "Per accedere ad opzioni avanzate di debug cliccare qui col pulsante destro del mouse">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Per modificare il nome dell'etichetta cliccare il pulsante destro del mouse">

@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utiliser les raccourcis clavier (Alt + 1 jusqu'à Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utiliser la touche Ctrl à la place de la touche Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Recréer les onglets avec le raccourci clavier : Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Afficher le numéro du raccourci sur les libellés des dossiers">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Afficher le nombre de messages non lus sur le bouton du dossier">
 <!ENTITY qf.checkbox.showUnreadBold "Afficher les boutons des dossiers contenant des messages non lus en gras">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Afficher les boutons des dossiers contenant des messages en italique">
 <!ENTITY qf.label.buttonFontSize "Taille de la police des boutons (vide pour laisser la valeur par défaut) :">
 <!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.appearance "Apparence">
+<!ENTITY qf.label.colors "Couleurs">
+<!ENTITY qf.label.themes "Thèmes :">
+<!ENTITY qf.button.default "Par défaut">
 <!ENTITY qf.label.setcolors "Définition de [la couleur du texte] [la couleur de fond]">
 <!ENTITY qf.label.ActiveTabColor "Onglet actif :">
 <!ENTITY qf.label.HoveredTabColor "Onglet survolé :">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Développer les sous-dossiers dans des menus popup">
 <!ENTITY qf.checkbox.showRecentTab "Afficher l'onglet des dossiers récents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic droit pour la configuration">
+<!ENTITY qf.checkbox.tabMenuIcon "Icône du menu de la barre d'outils">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Ce menu peut-être également affiché via un clic droit sur la barre d'outils elle-même">
 <!ENTITY qf.menu.tabColor "Pas de couleur !">
 <!ENTITY qf.menu.Color "Couleur">
 <!ENTITY qf.options.LayoutColorAppearance "Couleur pour chaque onglet">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(style rayé)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(style rempli)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Onglets style OS - L'apparence est celle des onglets de l'interface de votre système d'exploitationvotre ; sans options de coloration ci-dessous">
-<!ENTITY qf.checkbox.showFlatStyle "Afficher les raccourcis sous forme d'onglets">
+<!ENTITY qf.options.label.themeAuthor "Auteur du thème :">
+<!ENTITY qf.themes.nativeTabs.label "Onglets natifs">
+<!ENTITY qf.themes.flatTabs.label "Style plat">
+<!ENTITY qf.themes.applePills.label "Apple pills">
+<!ENTITY qf.themes.flatButtons.label "Boutons de barre d'outils">
+<!ENTITY qf.options.theme.pastelColors "Couleurs pastelles">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Coins arrondis personnalisés">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Haut :">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bas :">
+<!ENTITY qf.options.themes.showBorders.checkbox "Toujours afficher les bordures">
 <!ENTITY qf.description.linkNote "Rendez-vous sur le site Web de QuickFolders pour un manuel de l'utilisateur détaillé, des astuces et une FAQ :">
 <!ENTITY qf.checkbox.transparent "transparent">
 <!ENTITY qf.checkbox.shadows "ombres">

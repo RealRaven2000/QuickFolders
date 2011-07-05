@@ -6,7 +6,8 @@
 <!ENTITY qf.checkbox.displaylabel "Mostrar o 'QuickFolders' na barra de ferramentas">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atalhos de teclado (Alt + 1 até Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl ao invés de Alt">
-<!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt + ">
+<!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir abas com atalho: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Exibir o número do atalho nos rótulos de pastas">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Exibir o número de mensagens não lidas no botão da pasta">
 <!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
@@ -16,14 +17,18 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
 <!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
 <!ENTITY qf.label.pixels "pixels">
+<!ENTITY qf.label.appearance "Aparência">
+<!ENTITY qf.label.colors "Cores">
+<!ENTITY qf.label.themes "Temas:">
+<!ENTITY qf.button.default "Padrões">
 <!ENTITY qf.label.setcolors "Definir [Cor de Texto], Cor de Fundo">
 <!ENTITY qf.label.ActiveTabColor "Cor da aba ativa:">
 <!ENTITY qf.label.HoveredTabColor "Cor da aba sob o cursor do mouse:">
 <!ENTITY qf.label.DragOverBackground "Cor de arrastar sobre:">
 <!ENTITY qf.label.ToolbarBackground "Fundo da barra de ferramentas:">
-<!ENTITY qf.description.dragToAdd "Arraste pastas de email para uma área vazia da nova barra de ferramentas para criar um novo quickfolder (funciona como um atalho/sinônimo). Arraste mensagens para um quickfolder para movê-las para a pasta correspondente (ou copie com a tecla modificadora). Clique em um quickfolder para mostrar sua pasta de email.">
-<!ENTITY qf.description.dragToPosition "Arraste quickfolders para os lados para alterar suas posições. Clique com o botão direito sobre um quickfolder para abrir o menu de contexto; por seleção, você pode ir para sub-pastas. 'Renomear favorito' altera o rótulo de um quickfolder. 'Remover favorito' apaga um quickfolder (não sua pasta de email).">
-<!ENTITY qf.description.dragToPopup "Arraste mensagens para o menu de um quickfolder para movê-las para sub-pastas.">
+<!ENTITY qf.description.dragToAdd "Arraste pastas de email para uma área vazia da nova barra de ferramentas para criar um novo quickfolder (funciona como um atalho/sinônimo). Arraste mensagens para um quickfolder para movê-las para a pasta correspondente (ou copiar com a tecla modificadora). Clique em um quickfolder para mostrar sua pasta de email.">
+<!ENTITY qf.description.dragToPosition "Arraste um quickfolder para os lados para alterar sua posição. Clique com o botão direito sobre um quickfolder para abrir o menu de contexto; por seleção, você pode ir para subpastas. &apos;Renomear favorito&apos; altera o rótulo de um quickfolder. &apos;Remover favorito&apos; apaga um quickfolder (não sua pasta de email).">
+<!ENTITY qf.description.dragToPopup "Arraste mensagens para o menu de um quickfolder para movê-las para subpastas.">
 <!ENTITY qf.description.changeCategory "Clique com o botão direito sobre um favorito para organizá-lo em uma categoria. Aparecerá uma lista de categorias à esquerda da barra.">
 <!ENTITY qf.description.rightClickOptions "Clique com o botão direito sobre uma área vazia para abrir o menu de opções. Nele você pode selecionar estilo nativo (menor) ou estilo liso (mais limpo; suporta indicador ao arrastar).">
 <!ENTITY qf.description.tipMsg "Dica: Se você tiver uma grande quantidade de pastas, tente a extensão Nostalgy para organização de mensagens através do teclado.">
@@ -46,15 +51,25 @@
 <!ENTITY qf.label.contactLink "Entrar em contato (inglês ou alemão)...">
 <!ENTITY qf.checkbox.showIcons "Exibir ícones (Entrada, Enviados, Spam, Lixeira, Rascunho, Arquivados, Modelos)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto">
-<!ENTITY qf.checkbox.showRecentTab "Mostrar aba de pastas recentes">
+<!ENTITY qf.checkbox.showRecentTab "Exibir aba de pastas recentes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botão direito do mouse para configuração">
+<!ENTITY qf.checkbox.tabMenuIcon "Ícone da barra de menu">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Este menu também pode ser chamado clicando com o botão direito do mouse na própria barra de ferramentas">
 <!ENTITY qf.menu.tabColor "Nenhuma cor!">
 <!ENTITY qf.menu.Color "Cor">
 <!ENTITY qf.options.LayoutColorAppearance "Aparência individual de cores de abas">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(estilo listrado)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(estilo preenchido)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Abas com estilo do sistema - o visual se assemelha às abas do seu sistema operacional, sem nenhuma das opções de cores abaixo">
-<!ENTITY qf.checkbox.showFlatStyle "Abas com estilo do usuário 'estilo liso' - recomendado, uma vez que suporta todas as opções de cores abaixo">
+<!ENTITY qf.options.label.themeAuthor "Autor do tema:">
+<!ENTITY qf.themes.nativeTabs.label "Abas nativas">
+<!ENTITY qf.themes.flatTabs.label "Estilo plano">
+<!ENTITY qf.themes.applePills.label "Pílulas da Apple">
+<!ENTITY qf.themes.flatButtons.label "Botões da barra de ferramentas">
+<!ENTITY qf.options.theme.pastelColors "Cores pastel">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Arredondamento de cantos personalizado">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Topo:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Base:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Sempre exibir bordas">
 <!ENTITY qf.description.linkNote "Visitar a página do QuickFolders para ver um um guia de uso detalhado, dicas e FAQ:">
 <!ENTITY qf.checkbox.transparent "transparente">
 <!ENTITY qf.checkbox.shadows "sombras">

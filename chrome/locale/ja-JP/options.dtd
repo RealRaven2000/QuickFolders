@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt + 1 から Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Cｔｒｌ キーを使用する">
 <!ENTITY qf.checkbox.useRebuildShortcut "次のショートカットキーでタブを再構築する: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "フォルダのラベルにショートカット番号を表示する">
 <!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
 <!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
 <!ENTITY qf.label.pixels "ピクセル">
+<!ENTITY qf.label.appearance "外観">
+<!ENTITY qf.label.colors "配色">
+<!ENTITY qf.label.themes "テーマ:">
+<!ENTITY qf.button.default "デフォルト">
 <!ENTITY qf.label.setcolors "[文字色] と背景色の設定">
 <!ENTITY qf.label.ActiveTabColor "アクティブなタブの色:">
 <!ENTITY qf.label.HoveredTabColor "ポイントしたタブの色:">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "右クリックで設定を開きます">
+<!ENTITY qf.checkbox.tabMenuIcon "ツールバーメニューアイコン">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "このメニューはツールバーを右クリックして呼び出せます">
 <!ENTITY qf.menu.tabColor "色指定なし！">
 <!ENTITY qf.menu.Color "色番号">
 <!ENTITY qf.options.LayoutColorAppearance "タブのスタイル">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(ストライプ)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(塗りつぶし)">
-<!ENTITY qf.checkbox.showNativeTabStyle "シェルスタイルタブ - OS に合わせたレイアウトのタブ。以下の色設定は無効です。">
-<!ENTITY qf.checkbox.showFlatStyle "ユーザスタイルタブ 'フラットスタイル' - 推奨設定。以下の色設定が有効です。">
+<!ENTITY qf.options.label.themeAuthor "テーマの作者:">
+<!ENTITY qf.themes.nativeTabs.label "ネイティブのタブ">
+<!ENTITY qf.themes.flatTabs.label "フラットスタイル">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.flatButtons.label "ツールバーボタン">
+<!ENTITY qf.options.theme.pastelColors "パステルカラー">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "カスタムの角丸">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "上部:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "下部:">
+<!ENTITY qf.options.themes.showBorders.checkbox "常に境界線を表示する">
 <!ENTITY qf.description.linkNote "QuickFolders のホームページに詳しいユーザガイドとヒント、FAQ があります:">
 <!ENTITY qf.checkbox.transparent "透過">
 <!ENTITY qf.checkbox.shadows "影">

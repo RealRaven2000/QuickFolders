@@ -7,6 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Обновить все закладки:Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Показывать в закладке количество не прочтенных сообщений">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
@@ -16,6 +17,10 @@
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
 <!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
 <!ENTITY qf.label.pixels "пикселов">
+<!ENTITY qf.label.appearance "Внешний вид">
+<!ENTITY qf.label.colors "Цвета">
+<!ENTITY qf.label.themes "Темы:">
+<!ENTITY qf.button.default "По умолчанию">
 <!ENTITY qf.label.setcolors "Цвет текста и фона">
 <!ENTITY qf.label.ActiveTabColor "Цвет активной закладки">
 <!ENTITY qf.label.HoveredTabColor "Цвет закладки под мышкой">
@@ -48,13 +53,23 @@
 <!ENTITY qf.checkbox.showSubfolders "Раскрывать папки из этой папке в меню">
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.checkbox.tabMenuIcon "Значок меню на панели инструментов">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Это меню можно также вызвать нажатием правой кнопки мыши на самой панели инструментов">
 <!ENTITY qf.menu.tabColor "Без цвета!">
 <!ENTITY qf.menu.Color "Цвет">
 <!ENTITY qf.options.LayoutColorAppearance "Индивидуальный вид закладок">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(полосатый стиль)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(&quot;заполненный&quot; стиль)">
-<!ENTITY qf.checkbox.showNativeTabStyle "Стиль закладок как в ОС - напоминает закладки Вашей ОС, но без цветовых настроек">
-<!ENTITY qf.checkbox.showFlatStyle "Плоский стиль закладок - рекомендуется, так как поддерживает цветовые настройки">
+<!ENTITY qf.options.label.themeAuthor "Автор темы:">
+<!ENTITY qf.themes.nativeTabs.label "Родные закладки">
+<!ENTITY qf.themes.flatTabs.label "Плоский стиль">
+<!ENTITY qf.themes.applePills.label "Для Apple">
+<!ENTITY qf.themes.flatButtons.label "Кнопки панели инструментов">
+<!ENTITY qf.options.theme.pastelColors "Пастельные цвета">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Радиус угла">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Верх:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Низ:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Всегда показывать рамку">
 <!ENTITY qf.description.linkNote "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:">
 <!ENTITY qf.checkbox.transparent "прозрачный">
 <!ENTITY qf.checkbox.shadows "с тенями">

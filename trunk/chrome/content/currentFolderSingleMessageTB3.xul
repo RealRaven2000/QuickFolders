@@ -17,11 +17,10 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
-
-
-	<box id="messagesBox">
-	<vbox id="messagepanebox">
-		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView">
+	
+	
+	<vbox id="singlemessage">
+		<hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="messagepane" style="display:none;">
 			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
 			<toolbar id="QuickFolders-CurrentFolderTools" class="toolbar-flat" iconsize="small">
 				<toolbarbutton id="QuickFolders-CurrentMail"
@@ -41,14 +40,10 @@
 						tooltiptext="&qf.tooltip.RecentFolders;"/>
 <!-- Global Namespace Pollution: this use of button-previous is deliberate - the main TB toolbar uses the same. I am doing this for better theme integration -->
 				<toolbarbutton id="button-previous"
-						style="-moz-box-orient:horizontal !important;"
-						class="toolbarbutton-1"
 						tooltiptext="&qf.tooltip.goPreviousFolder;"
 						onclick="goDoCommand('button_previous');" />
 <!-- Global Namespace Pollution: this use of button-next is deliberate - the main TB toolbar uses the same. I am doing this for better theme integration -->
 				<toolbarbutton id="button-next"
-						style="-moz-box-orient:horizontal !important;"
-						class="toolbarbutton-1"
 						tooltiptext="&qf.tooltip.goNextFolder;"
 						onclick="goDoCommand('button_next');" />
 				<toolbarseparator />
@@ -83,8 +78,6 @@
 			<spacer flex="10" id="QF-CurrentRightSpacer" />
 		</hbox>
 	</vbox>
-	</box>
 
-
+	
 </overlay>
-

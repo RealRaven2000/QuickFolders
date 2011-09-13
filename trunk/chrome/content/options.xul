@@ -26,13 +26,16 @@
 
  <prefpane id="qf-options-prefpane" flex="12">
 
-	<hbox id="qf-options-header" >
+ <box id="qf-header-container">
+	<vbox><spacer flex="1"/><image id="qf-options-icon" src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" flex="0"/><spacer flex="1"/></vbox>
+	<hbox id="qf-options-header" class="paneSelector" flex="50">
 		<label class="dialogheader-title"
 			value="&qf.label.quickfolders;"
 			flex="1"/>
 
 		<label id="qf-options-header-description" oncontextmenu="QuickFolders.Options.showVersionHistory(this, true);return false;" tooltiptext="&qf.options.versionnumber.tooltip;"/>
 	</hbox>
+</box>
 
 
 	<!-- I Set a specific height on the <tabbox> because the help panel wouldn't grow and the text would be clipped -->
@@ -62,6 +65,7 @@
 					<preference id="QuickFolders-Preferences-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool"/>
 					<preference id="QuickFolders-Preferences-ShowTotalNumberInSubFolders" name="extensions.quickfolders.showTotalNumberInSubFolders" type="bool"/>
 					<preference id="QuickFolders-Preferences-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool"/>
+					<preference id="QuickFolders-Preferences-HideToolbarWhenNotNeeded" name="extensions.quickfolders.toolbar.onlyShowInMailWindows" type="bool"/>
 					<preference id="QuickFolders-Preferences-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool"/>
 					<preference id="QuickFolders-Preferences-Debug" name="extensions.quickfolders.debug" type="bool"/>
 					<preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int"/>
@@ -119,7 +123,7 @@
 			/>
 		</hbox>
 		<checkbox
-			label="ALT-Left / ALT-Right for previous / next Tab"
+			label="&qf.checkbox.useNavigationShortcuts;"
 			preference="QuickFolders-Preferences-NavigateShortcut"
 			instantApply="true"
 		/>
@@ -156,6 +160,13 @@
 				preference="QuickFolders-Preferences-ShowFoldersWithMessagesItalic"
 				instantApply="true"
 			/>
+			<checkbox
+				label="&qf.checkbox.autoHideToolbar;"
+				tooltiptext="&qf.checkbox.autoHideToolbar.tooltip;"
+				preference="QuickFolders-Preferences-HideToolbarWhenNotNeeded"
+				instantApply="true"
+			/>
+
 	</vbox>
 </groupbox>
 
@@ -527,15 +538,20 @@
 			</tabpanel>
 
 			<tabpanel orient="vertical" id="QuickFolders-Options-support" label="&qf.tab.support;" flex="10" >
-			  <description class="quickhelp-desc" oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, 'Stop Displaying Donation Link?');return false;">&qf.description.donate;</description>
+			  <description class="quickhelp-desc" 
+			  	oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
 			  <label href="http://quickfolders.mozdev.org/donate.html" class="text-link" id="L1" tooltiptext="quickfolders.mozdev.org/donate.html"
 					 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')" >&qf.label.donateLink;</label>
 			  <description class="quickhelp-desc">&qf.description.bugzilla;</description>
 			  <label href="http://quickfolders.mozdev.org/bugs.html" class="text-link" id="L2" tooltiptext="quickfolders.mozdev.org/bugs.html"
 					 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')" >&qf.label.bugzilla;</label>
-			  <description class="quickhelp-desc">&qf.description.versionhistory;</description>
-			  <label href="http://quickfolders.mozdev.org/version.html" class="text-link" id="L3" tooltiptext="http://quickfolders.mozdev.org/version.html"
-					 onclick="QuickFolders.Options.showVersionHistory(this, false);return false;" >&qf.label.versionhistory;</label>
+			  <description class="quickhelp-desc" 
+			  		oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;"
+			  		>&qf.description.versionhistory;</description>
+			  <label href="http://quickfolders.mozdev.org/version.html" class="text-link" id="L3" 
+			  		tooltiptext="http://quickfolders.mozdev.org/version.html"
+					 onclick="QuickFolders.Options.showVersionHistory(this, false);return false;" 
+					 >&qf.label.versionhistory;</label>
 			  <description class="quickhelp-desc">&qf.description.languages;</description>
 			  <label href="http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099"
 			  class="text-link" id="L4" tooltiptext="www.babelzilla.org?extension=5099"

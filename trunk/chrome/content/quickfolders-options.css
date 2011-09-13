@@ -1,24 +1,37 @@
 /* Options window */
 #qf-options-prefpane {
-	background-image: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png") !important;
-	background-position: 10px 10px !important;
-	background-repeat: no-repeat !important;
 	min-height: 400px;
 }
 
 #QuickFolders-Options-Tabbox { min-width:400px; }
 #QuickFolders-Options-general { min-height:350px; }
 
+#qf-header-container {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	background-image: url("chrome://messenger/skin/preferences/background.png");
+	background-color: transparent;
+	color: -moz-fieldtext;
+}
+
+#qf-options-icon {
+	height: 32px !important;
+	width: 32px !important;
+	padding: 0;
+	margin: 0 5px;
+}
+
 #qf-options-header {
-	margin: 5px 0px 5px 45px;
-	border: 2px solid;
+	margin: 5px 5px 5px 5px;
+	border: 1px solid;
+	-moz-border-radius: 1em;
 	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
 	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
 	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
 	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
 	padding: 5px 8px;
-	background-color: Highlight;
-	color: HighlightText;
+	background-color: rgba(10,10,10,0.2);
+	color: white;
 }
 
 #qf-options-header .dialogheader-title {

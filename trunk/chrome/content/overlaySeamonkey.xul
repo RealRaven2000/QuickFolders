@@ -8,17 +8,15 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
-    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
+    <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
     <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
-
-    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+    <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
     <script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
-    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 
 
     <toolbox id="mail-toolbox">
@@ -131,6 +129,7 @@
 						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 						tooltiptext="&qf.tooltip.RecentFolders;"/>
+<!-- Global Namespace Pollution: this use of button-next is deliberate - the main SM toolbar uses the same. I am doing this for better theme integration -->
 				<toolbarbutton
 						class="toolbarbutton-1"
 						id="button-next"

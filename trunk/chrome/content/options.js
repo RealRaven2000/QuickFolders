@@ -1,3 +1,4 @@
+"use strict";
 /* BEGIN LICENSE BLOCK
 
 GPL3 applies.
@@ -64,6 +65,11 @@ QuickFolders.Options = {
 	} ,
 
 	load: function() {
+		if (window.arguments && window.arguments[1].inn.instance) {
+			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
+			QuickFolders.Util.mExtensionVer = window.arguments[1].inn.instance.Util.Version();
+		}
+		
 		var version=QuickFolders.Util.Version();
 		var wd=window.document;
 		try {
@@ -404,7 +410,7 @@ QuickFolders.Options = {
 
 	showVersionHistory: function(label, ask) {
 		var pre=0;
-		var current=label.value.toString();  // retrieve version number from label
+		var current=QuickFolders.Util.Version();
 		var pureVersion = current;
 		if (0<(pre=current.indexOf('pre'))) {   // make sure to strip of any pre release labels
 			pureVersion = current.substring(0,pre);

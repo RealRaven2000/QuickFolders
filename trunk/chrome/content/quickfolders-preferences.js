@@ -1,3 +1,4 @@
+"use strict";
 QuickFolders.Preferences = {
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 

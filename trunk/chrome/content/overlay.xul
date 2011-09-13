@@ -12,7 +12,7 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
@@ -54,7 +54,6 @@
 			<toolbarbutton class="" id="QuickFolders_RecentTab">
 			    Recent
 			</toolbarbutton>
-
 		</box>
 
 
@@ -104,7 +103,6 @@
 						oncommand="QuickFolders.Interface.displayNavigationToolbar(true);" class="cmd menuitem-iconic"
 						tagName="qfPreviewToolbar"
 						/>
-
 			</menupopup>
 
 		</popupset>

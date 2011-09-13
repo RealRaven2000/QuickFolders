@@ -1,9 +1,11 @@
+"use strict";
 /* BEGIN LICENSE BLOCK
 
 GPL3 applies.
 For detail, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
@@ -113,6 +115,27 @@ QuickFolders.Interface = {
 	},
 
 	generateMRUlist: function (ftv) { // generateMap: function ftv_recent_generateMap(ftv)
+		function sorter(a, b) {
+			return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
+		}
+		
+		function addIfRecent(aFolder) {
+			let time;
+			try {
+				time = Number(aFolder.getStringProperty("MRUTime")) || 0;
+			} catch (ex) {return;}
+			if (time <= oldestTime)
+				return;
+
+			if (recent.length == MAXRECENT) {
+				recent.sort(sorter);
+				recent.pop();
+				let oldestFolder = recent[recent.length - 1];
+				oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
+			}
+			recent.push(aFolder);
+		}
+
 		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist');
 
 		var items;
@@ -122,9 +145,6 @@ QuickFolders.Interface = {
 			/**
 			 * Sorts our folders by their recent-times.
 			 */
-			function sorter(a, b) {
-				return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
-			}
 
 			/**
 			 * This function will add a folder to the recentFolders array if it
@@ -135,22 +155,6 @@ QuickFolders.Interface = {
 			 */
 			let recent = [];
 			let oldestTime = 0;
-			function addIfRecent(aFolder) {
-				let time;
-				try {
-					time = Number(aFolder.getStringProperty("MRUTime")) || 0;
-				} catch (ex) {return;}
-				if (time <= oldestTime)
-					return;
-
-				if (recent.length == MAXRECENT) {
-					recent.sort(sorter);
-					recent.pop();
-					let oldestFolder = recent[recent.length - 1];
-					oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
-				}
-				recent.push(aFolder);
-			}
 
 			for each (let folder in ftv._enumerateFolders)
 				addIfRecent(folder);
@@ -176,18 +180,15 @@ QuickFolders.Interface = {
 	// See also: http://mxr.mozilla.org/mozilla/source/mail/base/content/mail-folder-bindings.xml#369
 	generateMRUlist_Postbox_TB2: function()
 	{
-		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox_TB2');
-		const Cc = Components.classes;
-		const Ci = Components.interfaces;
-		// Iterate through all folders in all accounts, and check MRU_Time,
-		// then take the most current 15.
-
-		/**
-		 * This function will iterate through any existing sub-folders and
-		 * (1) check if they're recent and (2) recursively call this function
-		 * to iterate through any sub-sub-folders.
+		// use strict: must declare local functions at the top!
+		
+		/**    checkSubFolders(aFolder)
+		 * This function will iterate through any existing 
+		 * sub-folders and
+		 *    (1) check if they're recent and 
+		 *    (2) recursively call this function to iterate through any sub-sub-folders.
 		 *
-		 * @param aFolder  the folder to check
+		 * @param aFolder:  the folder to check
 		 */
 		function checkSubFolders(aFolder) {
 			if (!aFolder.hasSubFolders)
@@ -224,20 +225,14 @@ QuickFolders.Interface = {
 			}
 			done=false;
 		}
-
-		var recentFolders = [];
-		var oldestTime = 0; // let sometimes creates a problem in TB2!
-
-		/**
+		
+		/**    addIfRecent(aFolder)
 		 * This function will add a folder to the recentFolders array if it
 		 * is among the 15 most recent.  If we exceed 15 folders, it will pop
 		 * the oldest folder, ensuring that we end up with the right number
 		 *
 		 * @param aFolder the folder to check
 		 */
-		var MAXRECENT = QuickFolders.Preferences.getIntPrefQF("recentfolders.itemCount");
-
-		var menu = this;
 		function addIfRecent(aFolder) {
 			if (!aFolder.canFileMessages)
 				return;
@@ -264,6 +259,27 @@ QuickFolders.Interface = {
 			}
 			recentFolders.push(aFolder);
 		}
+		
+		function sorter(a, b) {
+		   if (a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime"))
+			 return 1;
+		   return -1;
+		}
+		
+		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox_TB2');
+		const Cc = Components.classes;
+		const Ci = Components.interfaces;
+		// Iterate through all folders in all accounts, and check MRU_Time,
+		// then take the most current 15.
+
+
+
+		var recentFolders = [];
+		var oldestTime = 0; // let sometimes creates a problem in TB2!
+
+		var MAXRECENT = QuickFolders.Preferences.getIntPrefQF("recentfolders.itemCount");
+
+		var menu = this;
 
 		// Start iterating at the top of the hierarchy, that is, with the root
 		// folders for each account.
@@ -276,11 +292,6 @@ QuickFolders.Interface = {
 		  checkSubFolders(acct.incomingServer.rootFolder);
 		}
 
-		function sorter(a, b) {
-		   if (a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime"))
-			 return 1;
-		   return -1;
-		}
 		recentFolders.sort(sorter);
 
 		return recentFolders;
@@ -429,7 +440,6 @@ QuickFolders.Interface = {
 		evt.stopPropagation();
 
 		this.createRecentTab(this.menuPopupsByOffset[0], false, button);
-//		this.createRecentTab(null, false, button);
 
 		if (forceDisplay) {
 			// left click: open context menu through code
@@ -470,7 +480,8 @@ QuickFolders.Interface = {
 		toolbar.className = theme.cssToolbarClassName;
 
 		var toolbar2 = QuickFolders.Util.$('QuickFolders-CurrentFolderTools');
-		toolbar2.className = theme.cssToolbarClassName;
+		if (toolbar2)
+			toolbar2.className = theme.cssToolbarClassName;
 
 
 		if (QuickFolders.Model.selectedFolders.length)
@@ -660,7 +671,9 @@ QuickFolders.Interface = {
 	currentlySelectedCategory: null,
 
 	selectCategory: function(categoryName, rebuild) {
-		this.currentlySelectedCategory = categoryName;
+		this.currentlySelectedCategory = categoryName ? categoryName : "__UNCATEGORIZED";
+		if (categoryName== "__ALWAYS")
+			return;
 		QuickFolders.Util.logDebug("Selecting Category: " + categoryName + "...");
 		this.updateFolders(rebuild, false);
 
@@ -802,6 +815,7 @@ QuickFolders.Interface = {
 	showPopup: function(button, popupId) {
 		var p =  QuickFolders.doc.getElementById(popupId);
 		if (p) {
+			document.popupNode = button;
 			if (typeof p.openPopup=='undefined')
 				p.showPopup(button, -1,-1,"context","bottomleft","topleft");
 			else
@@ -1002,6 +1016,8 @@ QuickFolders.Interface = {
 		if (tabColor) {
 			cssClass += " " + this.getButtonColorClass(tabColor);
 		}
+		else
+			cssClass += " col0"
 
 		if (cssClass.trim)
 			button.className = cssClass.trim();
@@ -1529,8 +1545,7 @@ QuickFolders.Interface = {
 		}
 
 		// MarkAllRead (always on top)
-		if (button.id == "QuickFolders-CurrentFolder"
-		    && !(fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH)
+		if (!(fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH)
 		    && !(fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_JUNK)) { // && folder.getNumUnread(false)>0
 			menuitem = this.createMenuItem_MarkAllRead();
 			menupopup.appendChild(menuitem);
@@ -1624,6 +1639,8 @@ QuickFolders.Interface = {
 		// Repair Folder
 		menuitem = document.createElement('menuitem');
 		menuitem.className='mailCmd menuitem-iconic';
+		// Global Namespace Pollution: this use of folderRepair is deliberate - the Thundbird folder context menu uses the same id. 
+		// This is necessary for better theme integration (same css rules apply)
 		menuitem.setAttribute("id","folderRepair");
 		menuitem.setAttribute("tag","qfFolderRepair");
 		menuitem.setAttribute("oncommand","QuickFolders.Interface.onRepairFolder(this);");
@@ -1815,6 +1832,9 @@ QuickFolders.Interface = {
 
 	// isDrag: if this is set to true, then the command items are not included
 	addSubFoldersPopupFromList: function(subfolders, popupMenu, isDrag, forceAlphaSort, includeAccountName) {
+		var killDiacritics = function(s) {
+			return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
+		}
 		var subfolder;
 		var appver=QuickFolders.Util.Appver();
 
@@ -1895,9 +1915,6 @@ QuickFolders.Interface = {
 						  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
 						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
 						  "\xDF":"ss", "_":"/", ":":"."};
-					var killDiacritics = function(s) {
-						return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
-					}
 
 					var sNewName = killDiacritics(subfolder.name);
 					// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
@@ -2102,18 +2119,18 @@ QuickFolders.Interface = {
 		// temporarily disable instantApply! Necessary for the time consuming style sheet changes in Layout tab.
 		var b=QuickFolders.Preferences.getInstantApplyPref();
 		QuickFolders.Preferences.setInstantApplyPref(false);
-		var params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage}, out:null};
+		var params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null};
 		var win = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders,params).focus();
 		QuickFolders.Preferences.setInstantApplyPref(b);
 	} ,
 
 	viewHelp: function() {
-		var params = {inn:{mode:"helpOnly",tab:-1, message: ""}, out:null};
+		var params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
 		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders,params).focus();
 	} ,
 
 	viewSupport: function() {
-		var params = {inn:{mode:"supportOnly",tab:-1, message: ""}, out:null};
+		var params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
 		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,modal,resizable',QuickFolders,params).focus();
 	} ,
 
@@ -2124,7 +2141,12 @@ QuickFolders.Interface = {
 
 	onFolderSelected: function() {
 		var folder;
-		try  { folder = GetFirstSelectedMsgFolder(); }
+		try  {
+			// avoid TB logging unnecessary errors in Stack Trace
+			if ((QuickFolders.Util.Appver() >= 3 && QuickFolders.Util.Application()=='Thunderbird') && !gFolderTreeView )
+				return;
+			folder = GetFirstSelectedMsgFolder();
+		}
 		catch (e) { return; }
 		if (null==folder) return; // cut out lots of unneccessary processing!
 
@@ -2160,7 +2182,10 @@ QuickFolders.Interface = {
 				}
 				else { // striped style, active button colored fully!
 						selectedButton.className = selectedButton.className.replace("striped","");
-						if (QuickFolders.Preferences.isPastelColors())
+						// avoid pastel duplicates
+						if (QuickFolders.Preferences.isPastelColors()
+						    &&
+						    selectedButton.className.indexOf("pastel")<0)
 							selectedButton.className += " pastel"
 				}
 
@@ -2288,7 +2313,7 @@ QuickFolders.Interface = {
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton#QuickFolders-CurrentFolder','background-color', theColorString, true);
 
 			theColorString = QuickFolders.Preferences.getUserStyle("InactiveTab","color","black");
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton', 'color', theColorString, true);
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col0 > *', 'color', theColorString, false);
 			// doesn't work:
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat toolbarbutton#QuickFolders-CurrentFolder','color', theColorString, true);
 
@@ -2321,21 +2346,21 @@ QuickFolders.Interface = {
 				}
 			}
 
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col0.selected-folder > *','color',
 				QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),true);
 
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat','border-bottom-color', colActiveBG,true);
 
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','background-color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:hover','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col0:hover > *','color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton[buttonover="true"]','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col0[buttonover="true"] > *','color',
 				QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black"),true);
 
 			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:-moz-drag-over','background-color',
 				QuickFolders.Preferences.getUserStyle("DragTab","background-color","#E93903"),true);
-			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton:-moz-drag-over','color',
+			QuickFolders.Styles.setElementStyle(ss, '.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col0:-moz-drag-over > *','color',
 				QuickFolders.Preferences.getUserStyle("DragTab","color","White"),true);
 
 			theColorString = QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace");
@@ -2422,7 +2447,8 @@ QuickFolders.Interface = {
 		var parentFolder = aFolder.parent;
 		if (!parentFolder)
 			return;
-
+			
+		let myenum; // force instanciation for SM
 		if (typeof parentFolder.subFolders != 'undefined')
 			myenum = parentFolder.subFolders;
 		else
@@ -2487,6 +2513,7 @@ QuickFolders.Interface = {
 		if (!parentFolder)
 			return;
 
+		let myenum; // force instanciation for SM
 		if (typeof parentFolder.subFolders != 'undefined')
 			myenum = parentFolder.subFolders;
 		else
@@ -2533,14 +2560,110 @@ QuickFolders.Interface = {
 	} ,
 
 	displayNavigationToolbar: function(visible) {
-		var node;
-		node = document.getElementById( "QuickFolders-PreviewToolbarPanel" );
-		// node.parentNode.removeChild(node);
-		if (node) {
-			node.style.display= visible ? '-moz-box' : 'none';
+		var mm = document.getElementById("multimessage");
+		
+		var currentFolderBar = 
+			(mm) 
+			? 
+			document.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
+			:
+			document.getElementById( "QuickFolders-PreviewToolbarPanel" );
+
+		if (currentFolderBar) {
+			currentFolderBar.style.display= visible ? '-moz-box' : 'none';
 			QuickFolders.Preferences.setShowCurrentFolderToolbar(visible);
 		}
+		if (mm) {
+			var unusedFolderBar =
+				(mm.id == "QuickFolders-PreviewToolbarPanel") 
+				?
+				document.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
+				:
+				document.getElementById( "QuickFolders-PreviewToolbarPanel" );
+				
+			if (unusedFolderBar) 
+				unusedFolderBar.style.display = 'none';
+				
+		}
+	},
+
+	getCurrentTabMode : function() {
+		var tabMode = null;
+		var tabmail = document.getElementById("tabmail");
+
+		if (tabmail) {
+
+			var selectedTab = 0;
+			if (tabmail.currentTabOwner) {
+				tabMode = tabmail.currentTabOwner.type;
+			}
+			else if (tabmail.tabContainer) {
+				selectedTab = tabmail.tabContainer.selectedIndex;
+				if (selectedTab>=0) {
+					var tab = tabmail.tabInfo[tabmail.tabContainer.selectedIndex];
+					tabMode = tab.mode.type;
+					if (tabMode == "glodaSearch" && tab.collection) { //distinguish gloda search result
+						tabMode = "glodaSearch-result";
+					}
+				}
+			}
+		}
+
+		return tabMode;
+	},
+
+
+	initToolbarHiding: function() {
+		QuickFolders.Util.logDebugOptional("toolbarHiding", "initToolbarHiding");
+		var tabmail = document.getElementById("tabmail");
+		if (tabmail) {
+			var me = this;
+			var monitor = {
+				onTabTitleChanged: function(aTab){},
+				onTabSwitched: function(aTab, aOldTab){
+					var tabMode = QuickFolders.Interface.getCurrentTabMode();
+					QuickFolders.Util.logDebugOptional("toolbarHiding", "tabMode = " + tabMode);
+					QuickFolders.Interface.onDeckChange(null);
+				}
+			};
+		  	tabmail.registerTabMonitor(monitor);
+			QuickFolders.Util.logDebugOptional("toolbarHiding", "registered Tab Monitor");
+		}
+	},
+
+	onDeckChange : function(event)
+	{
+		var panel = "";
+
+		if (!QuickFolders.Preferences.getBoolPrefQF("toolbar.onlyShowInMailWindows"))
+			return;
+
+		var toolbar = document.getElementById("QuickFolders-Toolbar");
+		if (event) {
+			var targetId = event.target.id;
+			if (targetId != "displayDeck") return;
+
+		 	panel = event.target.selectedPanel.id.toString();
+			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar + " - panel: " + panel);
+		} else { //tab
+			panel = this.getCurrentTabMode().toString();
+			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar + " - panel: " + panel);
+			if (panel != "glodaSearch-result" && panel != "calendar" && panel != "tasks" && panel != "contentTab")
+				panel = "showQFbar";
+		}
+
+		var action = "";
+		if (panel == "threadPaneBox" || panel == "accountCentralBox" || panel == "showQFbar") {
+			action = "Showing";
+			toolbar.removeAttribute("collapsed");
+		} else {
+			action = "Collapsing";
+			toolbar.setAttribute("collapsed", true);
+		}
+		QuickFolders.Util.logDebugOptional("toolbarHiding",action + " QuickFolders Toolbar (panel=" + panel + ")");
+
 	}
+
 
 
 };

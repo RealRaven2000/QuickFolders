@@ -1,3 +1,4 @@
+"use strict";
 /* BEGIN LICENSE BLOCK
 
 GPL3 applies.

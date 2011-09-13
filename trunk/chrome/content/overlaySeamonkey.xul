@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="quickfolders-layout.css" title="QuickFolderStyles" type="text/css"?>
+<?xml-stylesheet href="quickfolders-seamonkey.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
+<overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+    <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
+
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/json.js" />
+    <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+
+
+    <toolbox id="mail-toolbox">
+        <toolbar
+            id="QuickFolders-Toolbar"
+            toolbarname="QuickFolders Toolbar"
+            class="toolbar-primary chromeclass-toolbar"
+            ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
+            ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+            ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
+            dragdroparea="QuickFolders-FoldersBox"
+            customizable="false"
+            context="QuickFolders-ToolbarPopup"
+            style="display: none;"
+             flex="10"
+        >
+        <vbox id="QuickFolders-LabelBox" flex="0">
+          <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
+        </vbox>
+
+        <hbox id="QuickFolders-Category-Box" >
+	        <menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none">
+	            <menupopup>
+	                <!-- filled dynamically from JS -->
+	            </menupopup>
+	        </menulist>
+			<toolbarbutton id="QF-mainPopup"
+			 context="QuickFolders-ToolbarPopup"
+			 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
+        </hbox>
+
+        <box id="QuickFolders-FoldersBox" flex="10">
+             <label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
+           <!-- Filled dynamically by the script -->
+			<toolbarbutton class="" id="QuickFolders_RecentTab">
+			    Recent
+			</toolbarbutton>
+        </box>
+
+
+            <popupset>
+                <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
+                    <menuitem label="&qf.menuitem.quickfolders.options;"
+						id="QuickFolders-ToolbarPopup-options"
+                              accesskey="&qf.menuitem.quickfolders.optionsAccess;"
+						oncommand="QuickFolders.Interface.viewOptions(-1);" class="cmd menuitem-iconic"
+                              tagName="qfOptions"
+                              />
+                    <menuitem label="&qf.menuitem.quickfolders.changeOrder;"
+                              accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
+						oncommand="QuickFolders.Interface.viewChangeOrder();"	class="cmd menuitem-iconic"
+                              tagName="qfOrder"
+                              />
+                    <menuitem label="&qf.menuitem.quickfolders.support;"
+						id="QuickFolders-ToolbarPopup-support"
+                              accesskey="&qf.menuitem.quickfolders.supportAccess;"
+						oncommand="QuickFolders.Interface.viewSupport();" class="cmd menuitem-iconic"
+                              tagName="qfSupport"
+                              />
+                    <menuitem label="&qf.menuitem.quickfolders.help;"
+						id="QuickFolders-ToolbarPopup-help"
+                              accesskey="&qf.menuitem.quickfolders.helpAccess;"
+						oncommand="QuickFolders.Interface.viewHelp();" class="cmd menuitem-iconic"
+                              tagName="qfHelp"
+                              />
+				<menuseparator />
+				<menuitem label="&qf.menuitem.quickfolders.repairTabs;"
+						id="QuickFolders-ToolbarPopup-refresh"
+						accesskey="&qf.menuitem.quickfolders.repairTabsAccess;"
+						oncommand="QuickFolders.Interface.updateFolders(true,false);" class="cmd menuitem-iconic"
+						tagName="qfRebuild"
+						/>
+				<menuitem label="&qf.menuitem.quickfolders.deleteDeadTabs;"
+						id="QuickFolders-ToolbarPopup-tidy"
+						accesskey="&qf.menuitem.quickfolders.deleteDeadTabsAccess;"
+						oncommand="QuickFolders.Interface.tidyDeadFolders();" class="cmd menuitem-iconic"
+						tagName="qfTidyTabs"
+						/>
+				<menuseparator />
+				<menuitem label="&qf.menuitem.quickfolders.displayPreviewToolbar;"
+						id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
+						accesskey="&qf.menuitem.quickfolders.displayPreviewToolbarAccessKey;"
+						oncommand="QuickFolders.Interface.displayNavigationToolbar(true);" class="cmd menuitem-iconic"
+						tagName="qfPreviewToolbar"
+						/>
+
+                </menupopup>
+            </popupset>
+
+        </toolbar>
+    </toolbox>
+
+
+	<vbox id="messagepanebox">
+		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView">
+			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
+			<toolbar id="QuickFolders-CurrentFolderTools" class="toolbar-flat" iconsize="small">
+				<toolbarbutton id="QuickFolders-CurrentMail"
+						class="icon draggable"
+						tooltiptext="&qf.tooltip.emailIcon;" />
+				<toolbarbutton id="QuickFolders-CurrentThread"
+						class="icon draggable"
+						tooltiptext="&qf.tooltip.threadIcon;" />
+				<toolbarseparator />
+				<toolbarbutton id="QuickFolders-Recent-CurrentFolderTool" tag="#Recent" class="recent icon"
+						context="QuickFolders-folder-popup-Recent-CurrentFolderTool"
+						position="after_start"
+						oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, false);"
+						onclick= "QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
+						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+						tooltiptext="&qf.tooltip.RecentFolders;"/>
+				<toolbarbutton
+						class="toolbarbutton-1"
+						id="button-next"
+						tooltiptext="&qf.tooltip.goNextFolder;"
+						onclick="goDoCommand('button_next');" />
+
+				<toolbarseparator />
+
+				<toolbarbutton id="QuickFolders-NavigateUp"
+						class="icon"
+						onclick="QuickFolders.Interface.goUpFolder();"
+						tooltiptext="&qf.tooltip.folderUp;"/>
+				<toolbarbutton id="QuickFolders-NavigateLeft"
+						class="icon"
+						onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
+				<toolbarbutton id="QuickFolders-CurrentFolder"
+						label="Current Folder"
+						ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+						ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
+				<toolbarbutton id="QuickFolders-NavigateRight"
+						class="icon"
+						onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
+				<toolbarseparator />
+				<toolbarbutton id="QuickFolders-Options"
+						class="icon"
+						tooltiptext="&qf.menuitem.quickfolders.options;"
+						accesskey="&qf.menuitem.quickfolders.optionsAccess;"
+						oncommand="QuickFolders.Interface.viewOptions(-1);"
+						tagName="qfOptions"/>
+				<toolbarbutton id="QuickFolders-Close"
+						class="icon"
+						tooltiptext="&qf.tooltip.closeToolbar;"
+						onclick="QuickFolders.Interface.displayNavigationToolbar(false);" />
+			</toolbar>
+			<spacer flex="10" id="QF-CurrentRightSpacer" />
+		</hbox>
+	</vbox>
+</overlay>
+

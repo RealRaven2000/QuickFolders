@@ -4,6 +4,7 @@ GPL3 applies.
 For detail, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+"use strict";
 
 var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 var QuickFolders_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");

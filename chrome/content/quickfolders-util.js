@@ -1,3 +1,4 @@
+"use strict";
 /* BEGIN LICENSE BLOCK
 
 GPL3 applies.
@@ -49,9 +50,10 @@ var QuickFolders_TabURIopener = {
 
 
 
-
+//if (!QuickFolders.Util)
 QuickFolders.Util = {
 
+	HARCODED_EXTENSION_VERSION : "2.8.2hc",
 	Constants : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_TRASH 	: 0x0100,
@@ -68,7 +70,12 @@ QuickFolders.Util = {
 	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
-	mAppver: null, mAppName: null, mHost: null, mPlatformVer: null,
+	VersionProxyRunning: false,
+	mAppver: null, 
+	mAppName: null, 
+	mHost: null, 
+	mPlatformVer: null, 
+	mExtensionVer: null,
 	lastTime: 0,
 
 	$: function(id) {
@@ -123,18 +130,82 @@ QuickFolders.Util = {
 		}
 		return this.mHost; // linux - winnt - darwin
 	},
-
-	Version: function() {
-		//gets the version number.
+	
+	VersionProxy: function() {
 		try {
-			var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-				.getService(Components.interfaces.nsIExtensionManager);
-			var current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
-			return current;
+			if(this.mExtensionVer) 
+				return; // early exit, we got the version!
+			if (QuickFolders.Util.VersionProxyRunning)
+				return; // do not allow recursion...
+			QuickFolders.Util.VersionProxyRunning = true;
+			QuickFolders.Util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
+			Components.utils.import("resource://gre/modules/AddonManager.jsm");
+			
+			AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
+				let u = QuickFolders.Util;
+				u.mExtensionVer = addon.version;
+				u.logDebug("================================================\n" +
+				           "================================================");
+				u.logDebug("AddonManager: QuickFolders extension's version is " + addon.version);
+				u.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + u.mExtensionVer + "\n" + "Running on " + u.Application()	 + " Version " + u.AppverFull());
+				u.logDebug("================================================\n" +
+				           "================================================");
+				u.FirstRun.init();
+
+			});
+			QuickFolders.Util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
+			
 		}
 		catch(ex) {
-			return "2.7"; // hardcoded, program this for Tb 3.3 later
+			QuickFolders.Util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + QuickFolders.Util.Application() + "?"
+				+ "\n" + ex);
 		}
+		finally {
+			QuickFolders.Util.VersionProxyRunning=false;
+		}
+		
+	},
+
+	Version: function() {
+		//returns the current QF version number.
+		var bAddonManager = false;
+		if(QuickFolders.Util.mExtensionVer)
+			return QuickFolders.Util.mExtensionVer;
+		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
+			QuickFolders.Util.VersionProxy(); // modern Mozilla builds.
+											  // these will set mExtensionVer (eventually)
+											  // also we will delay FirstRun.init() until we _know_ the version number
+			bAddonManager = true;
+		}
+		else {
+			QuickFolders.Util.FirstRun.init(); 
+		}
+		// --- older code
+		var current = null;
+		
+		if (bAddonManager)
+			current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "-AddonManagerVersionPending";
+		else {
+			current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?)";
+			try {
+				if(Components.classes["@mozilla.org/extensions/manager;1"]) 
+				{
+					var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+						.getService(Components.interfaces.nsIExtensionManager);
+					current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
+					QuickFolders.Util.mExtensionVer = current; // legal version (pre Tb3.3)
+				}
+				else {
+					current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?)"
+				}
+				
+			}
+			catch(ex) {
+				current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?ex?)" // hardcoded, program this for Tb 3.3 later
+				QuickFolders.Util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + QuickFolders.Util.Application() + "?");
+			}
+		}
+		return current;
 
 	} ,
 
@@ -151,13 +222,23 @@ QuickFolders.Util = {
 		return this.mPlatformVer;
 	} ,
 
-
+	popupAlert: function (title, text) {
+	  try {
+	    Components.classes['@mozilla.org/alerts-service;1'].
+	              getService(Components.interfaces.nsIAlertsService).
+	              showAlertNotification("chrome://quickfolders/skin/ico/quickfolders-Icon.png", title, text, false, '', null);
+	  } catch(e) {
+	    // prevents runtime error on platforms that don't implement nsIAlertsService
+	  }
+	} ,
 
 	getSystemColor: function(sColorString) {
+        function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
 
 		var getContainer = function() {
-			var div=null;
-			if (div = QuickFolders.Util.$('QuickFolders-FoldersBox')) return div;
+			var div = QuickFolders.Util.$('QuickFolders-FoldersBox');
+			if (div)
+				return div;
 			return QuickFolders.Util.$('qf-options-prefpane');
 		}
 		var theColor; // convert system colors such as menubackground etc. to hex
@@ -171,7 +252,6 @@ QuickFolders.Util = {
             return theColor;
         else {
             theColor = theColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-            function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
             var hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
 			return hexColor;
         }
@@ -179,6 +259,12 @@ QuickFolders.Util = {
 	},
 
 	getRGBA: function(hexIn,alpha) {
+		function cutHex(h) {var rv= ((h.toString()).charAt(0)=='#') ? h.substring(1,7):h;
+							return rv.toString();}
+		function HexToR(h) {return parseInt(h.substring(0,2),16);}
+		function HexToG(h) {return parseInt(h.substring(2,4),16);}
+		function HexToB(h) {return parseInt(h.substring(4,6),16);}
+
 		var rgb = '';
 		var hex = hexIn;
 		try {parseInt(cutHex(hex),16);}
@@ -187,11 +273,6 @@ QuickFolders.Util = {
 		}
 		if (this.Application()=='Thunderbird' && this.Appver()<3)
 			return hex.toString();
-		function cutHex(h) {var rv= ((h.toString()).charAt(0)=='#') ? h.substring(1,7):h;
-							return rv.toString();}
-		function HexToR(h) {return parseInt(h.substring(0,2),16);}
-		function HexToG(h) {return parseInt(h.substring(2,4),16);}
-		function HexToB(h) {return parseInt(h.substring(4,6),16);}
 		if (hex) { //
 			hex = cutHex(hex);
 			return "rgba(" + HexToR(hex).toString() + ',' + HexToG(hex).toString() + ',' + HexToB(hex).toString() + ',' + alpha.toString() +')';
@@ -603,10 +684,10 @@ QuickFolders.Util = {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
 			if (QuickFolders.Util.Application()=='SeaMonkey') {
 				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
-				browser = windowManager.getMostRecentWindow( "navigator:browser" );
+				var browser = windowManager.getMostRecentWindow( "navigator:browser" );
 				if (browser) {
 					let URI = linkURI;
-					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); browser.currentTab.reload(); }, 250);
+					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
 				}
 				else
 					QuickFolders_globalWin.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFolders update');
@@ -651,8 +732,8 @@ QuickFolders.Util = {
 		}
 		else {
 			if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
-				evt.preventDefault();
-				evt.stopPropagation();
+				if (evt.preventDefault)  evt.preventDefault();
+				if (evt.stopPropagation)  evt.stopPropagation();
 			}
 		}
 	},
@@ -714,18 +795,12 @@ QuickFolders.Util.FirstRun =
 			.getService(Components.interfaces.nsIPrefService);
 		var ssPrefs = svc.getBranch("extensions.quickfolders.");
 
-		try { debugFirstRun = ssPrefs.getBoolPref("debug.firstrun"); } catch (e) { debugFirstRun = false; }
+		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } catch (e) { debugFirstRun = false; }
 
 		QuickFolders.Util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
 
-
-		// no need for this var to be in the global name-space
-		// NOR to share a potentiall common name. so, ssPrefs
-		var svc = Components.classes["@mozilla.org/preferences-service;1"]
-			.getService(Components.interfaces.nsIPrefService);
-		var ssPrefs = svc.getBranch("extensions.quickfolders.");
-
 		var current = QuickFolders.Util.Version();
+		QuickFolders.Util.logDebug("Current QuickFolders Version: " + current);
 
 		try {
 			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getCharPref(version)");
@@ -792,25 +867,33 @@ QuickFolders.Util.FirstRun =
 			else { // this section does not get loaded if its a fresh install.
 				var isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
 
-				if (prev!=current){
+				if (prev!=current && prev!='?' && current.indexOf(QuickFolders.Util.HARCODED_EXTENSION_VERSION) < 0) {
 					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
 					// upgrade case!!
-					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version: ")  + current;
+					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:") 
+						 + " " + current;
 					ssPrefs.setCharPref("version",current);
 
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
-						QuickFolders.Util.logDebugOptional ("firstrun","open tab for version history + browser for donation" + current);
-						window.setTimeout(function(){
-							// display version history
-							QuickFolders.Util.openURL(null, versionPage);
+						
+						// DONATION PAGE
+						// display donation page - disable by right-clicking label above version jump panel
+						if ((QuickFolders.Preferences.getBoolPrefQF("donateNoMore")))
+							QuickFolders.Util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
+						else {
+							QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for donation link");
+							window.setTimeout(function() {QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/donate.html");}, 2000);
+						}
 
-							// display donation page (can be disabled; I will send out method to all donators and anyone who asks me for it)
-							if ((QuickFolders.Preferences.getBoolPrefQF("donateNoMore")))
-								QuickFolders.Util.logDebugOptional ("firstrun","donations link disabled by user");
-							else
-								QuickFolders.Util.openLinkInBrowserForced("http://quickfolders.mozdev.org/donate.html"); // show donation page!
-						}, 1500); //Firefox 2 fix - or else tab will get closed
+						// VERSION HISTORY PAGE
+						// display versino history - disable by right-clicking label above show history panel
+						if (!QuickFolders.Preferences.getBoolPrefQF("hideVersionOnUpdate")) {
+							QuickFolders.Util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
+							window.setTimeout(function(){QuickFolders.Util.openURL(null, versionPage);}, 2200);
+						}
+						
+						
 					}
 
 					if (isThemeUpgrade) {
@@ -823,15 +906,13 @@ QuickFolders.Util.FirstRun =
 							QuickFolders.Interface.viewOptions(1, sUpgradeMessage);
 						}, 4600);
 					}
-					else
+					else 
 						window.setTimeout(function(){
-							alert(sUpgradeMessage);
+							QuickFolders.Util.popupAlert("QuickFolders",sUpgradeMessage); 
 						}, 3000);
 
 
 				}
-				else
-					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> just a reload of same version - prev=" + prev + ", current = " + current);
 			}
 			QuickFolders.Util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally

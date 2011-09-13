@@ -1,3 +1,4 @@
+"use strict";
 
 QuickFolders.Themes = {
 	// note: for localization, the theme descriptions reside in Babelzilla, naming convention:
@@ -94,6 +95,7 @@ QuickFolders.Themes = {
 			if (id == obj.Id)
 				return obj;
 		}
+		return null;
 
 	}
 

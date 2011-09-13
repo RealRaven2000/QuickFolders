@@ -389,23 +389,53 @@ END LICENSE BLOCK */
 	  AG: Fixed "Purge Junk" command in Current Folder Toolbar
 	  AG: Fixed - SeaMonkey did not open Version History in internal browser.
 
-	2.7 - Work In Progress
+	2.7 - 18/06/2011
 	  AG + CW: Added pastel style
 	  AG: Added custom radius
 	  AG: First Run tidy ups:replace "QuickFolders.ActiveTab.Style.background-color" with "extensions.quickfolders.style.ActiveTab.background-color" etc.
       CW: Added Mac Style (CWA-Design + Testing, AG QF integration)
 	  AG: Added Next / Previous unread Mail buttons
-	  AG: Added checkbox for disabling toolbar menu icon (cogwheel)
+	  AG: Added checkbox for hiding qf toolbar menu icon (cogwheel)
 	  AG: Added dropdown for theming and theming dependant customization
 	  AG: Split Native Style into Tabs and Buttons, implemented Selected on Tabs look
-	  AG: Renamed toxic preferences
 	  AG: Options dialog now remembers last panel selected
 	  AG: Fixed [Bug 23930] Recent Folders Tab Dropdown stops working after a Message Dropped into it
 	  AG: Fixed "expunged n bytes" message for Empty Trash, Empty Junk and Compact Folder
+	  AG: It is now possible to add the Current Folder button to the QuickFolder tab (like a drag from the folder tree)
+	  AG: Improved behavior when adding an existing QuickFolder (selects category correctly, even if not categorized or display always is selected)
+	  AG: Renamed toxic preferences
+	Known issues
+	  - the label for goto next / Previous unread Mail is currently not localized (last minute feature!)
+	  - when multiple messages are selected the Current Folder toolbar is not visible (this works in Postbox though, so multiple messages can be dragged)
 
+	2.7.1 - 07/07/2011
+	  AG: Fixed [Bug 24143] - (Linux) Folder tabs disappear and ALT+N shortcuts disabled on upgrade to 2.7 - renamed Current Folder XUL files.
+	  AG: Added hidden option (about.config) to hide QF toolbar when it is not needed (e.g. Calendar view) extensions.quickfolders.toolbar.onlyShowInMailWindows
+	  AG: Fixed Postbox bug - could not drag new folders to toolbar (Error: msgFolder.QueryInterface is not a function)
+	  AG: Fixed a bug that caused folders to disappear on TB2 on Mac Systems (related to new Current Folder Bar)
+	  AG: Right dropmarker did not display correctly when reordering tabs
+	  AG: Fixed Bug [24188] - font color in flat style tabs is ignored (tabs without individual color settings)
 
+	2.7.2 - Bugfixes - 11/08/2011
+	  AG: Fixed [Bug 24223] - In Postbox, after displaying the calender. the message pane could not be displayed by clicking on the messages tab
+	  AG: Added checkbox for option to hide QF toolbar when not needed
+	  AG: avoid TB logging unnecessary errors in Stack Trace during unnecessary FolderLoaded events [Bug 24176]
 
+	2.8 - Bugfixes - 31/08/2011
+	  AG: Bumped Compatibility to work with Tb 6.*
+	  AG: Moved Current Folder Bar position in Thunderbird for compatibility with Conversation View and to support multiple messages
+	  AG: Fixed versioning issues introduced by AddonManager changes in the new Mozilla versions.
+	  AG: Fixed [Bug 24361] QuickFolders 2.7.2 incompatible with Thunderbird 6.0.1
+	  AG: Fixed [Bug 24365] QF folders disappear after viewing email
+	  
+	2.9 - WIP
+	  AG: [Bug 24389] Stability fixes on version updates - firstRun check is now only run _after_ extension version number was retrieved from AddonManager
+	  AG: Removed popup "successfully upgraded to version..." and replaced with a modeless notification panel
+	  AG: added "use strict" for better namespace pollution control
+	  AG: added hidden option to suppress version history on update
 
+###VERSION###	  
+	  
   KNOWN ISSUES
   ============
   23/10/2009
@@ -432,7 +462,7 @@ END LICENSE BLOCK */
 	- instantApply support (difficult, as there is no onclose event)
 	- multiple categories per folder (like tags)
 */
-
+"use strict";
 
 //QuickFolders.gFolderTree = null;
 
@@ -462,6 +492,7 @@ var QuickFolders_getDocument= function() {
 var QuickFolders = {
 	doc: null,
 	win: null,
+	isQuickFolders: true, // to verify this
 	gFolderTree: null,
 	keyListen: EventListener,
 	loadListen: false,
@@ -501,6 +532,7 @@ var QuickFolders = {
 	   var sWinLocation;
 	   if (this.initDone) return;
 	   QuickFolders.initDocAndWindow();
+	   QuickFolders.Util.VersionProxy(); // initialize the version number using the AddonManager
 	   var nDelay = QuickFolders.Preferences.getIntPref('extensions.quickfolders.initDelay');
 	   if (!nDelay>0) nDelay = 750;
 
@@ -516,11 +548,18 @@ var QuickFolders = {
 		}
 		else {
 		  try {
-			this.doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
+			var doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
+			doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
+			let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
+			
 			QuickFolders.Util.logDebug ("DIFFERENT window type(messengerWindow): "
-					+ this.doc.getElementById('messengerWindow').getAttribute('windowtype')
-					+ "\ndocument.title: " + document.title )
+					+ wt
+					+ "\ndocument.title: " + doc.title )
+			if (wt == 'mail:messageWindow')
+				QuickFolders.Interface.displayNavigationToolbar(QuickFolders.Preferences.isShowCurrentFolderToolbar());
+					
+					
 		  }
 		  catch(e) { ;} // QuickFolders.LocalErrorLogger("Exception in initDelayed: " + e) -- always thrown when options dialog is up!
 		}
@@ -535,47 +574,48 @@ var QuickFolders = {
 
 
 	init: function() {
-		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-		var myver = QuickFolders.Util.Version();
+		var that = this.isQuickFolders ? this : QuickFolders;
+		var myver = that.Util.Version(); // will start VersionProxy
 
-		var ApVer; try{ ApVer=QuickFolders.Util.AppverFull()} catch(e){ApVer="?"};
-		var ApName; try{ ApName= QuickFolders.Util.Application()} catch(e){ApName="?"};
+		var ApVer; try{ ApVer=that.Util.AppverFull()} catch(e){ApVer="?"};
+		var ApName; try{ ApName= that.Util.Application()} catch(e){ApName="?"};
 
-		QuickFolders.LocalErrorLogger("QF.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+		that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
-		QuickFolders.Util.FirstRun.init();
+		// moved into Version Proxy!
+		// that.Util.FirstRun.init(); 
 
-		QuickFolders.addTabEventListener();
+		that.addTabEventListener();
 
 
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
-		if (QuickFolders.Preferences.isUseKeyboardShortcuts() || QuickFolders.Preferences.isUseRebuildShortcut() || QuickFolders.Preferences.isUseNavigateShortcuts()) {
-			if(!QuickFolders.Interface.boundKeyListener) {
-				this.win.addEventListener("keypress", this.keyListen = function(e) {
+		if (that.Preferences.isUseKeyboardShortcuts() || that.Preferences.isUseRebuildShortcut() || that.Preferences.isUseNavigateShortcuts()) {
+			if(!that.Interface.boundKeyListener) {
+				that.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
 				}, true);
-				this.win.addEventListener("keyup", function(e) {
+				that.win.addEventListener("keyup", function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'up');
 				}, true);
 
-				QuickFolders.Interface.boundKeyListener = true;
+				that.Interface.boundKeyListener = true;
 			}
 		}
-		var folderEntries = QuickFolders.Preferences.getFolderEntries();
+		var folderEntries = that.Preferences.getFolderEntries();
 
 		if(folderEntries.length > 0) {
-			QuickFolders.Model.selectedFolders = folderEntries;
+			that.Model.selectedFolders = folderEntries;
 
-			QuickFolders.Interface.updateUserStyles();
+			that.Interface.updateUserStyles();
 
-			var lastSelectedCategory = QuickFolders.Preferences.getLastSelectedCategory()
-			QuickFolders.Util.logDebug("last selected Category:" + lastSelectedCategory );
+			var lastSelectedCategory = that.Preferences.getLastSelectedCategory()
+			that.Util.logDebug("last selected Category:" + lastSelectedCategory );
 
-			if(QuickFolders.Model.isValidCategory(lastSelectedCategory))
-			  QuickFolders.Interface.selectCategory(lastSelectedCategory, true)
+			if(that.Model.isValidCategory(lastSelectedCategory))
+			  that.Interface.selectCategory(lastSelectedCategory, true)
 			else
-			  QuickFolders.Interface.updateFolders(true, false);  // selectCategory already called updateFolders!
+			  that.Interface.updateFolders(true, false);  // selectCategory already called updateFolders!
 
 		}
 
@@ -587,11 +627,18 @@ var QuickFolders = {
 				QuickFolders.Interface.updateUserStyles();
 			}
 		},"quickfolders-options-saved", false);
-		QuickFolders.Util.logDebug("QF.init() ends.");
 		// QuickFolders.Util.FirstRun.init();
 
+		that.Util.logDebug("call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
-		QuickFolders.Interface.displayNavigationToolbar(QuickFolders.Preferences.isShowCurrentFolderToolbar());
+		that.Interface.displayNavigationToolbar(that.Preferences.isShowCurrentFolderToolbar());
+
+		// new function to automatically main toolbar when it is not needed
+		that.Util.logDebug("call initToolbarHiding.");
+		that.Interface.initToolbarHiding();
+		that.Util.logDebug("QF.init() ends.");
+		// now make it visible!
+		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 
 	} ,
 
@@ -609,6 +656,7 @@ var QuickFolders = {
 			flavours.appendFlavour("text/x-moz-folder"); // folder tree items
 			flavours.appendFlavour("text/x-moz-newsfolder");
 			flavours.appendFlavour("text/unicode"); // buttons
+			flavours.appendFlavour("text/currentFolder"); // custom flavour for dragging current
 			return flavours;
 		},
 
@@ -621,7 +669,7 @@ var QuickFolders = {
 		},
 
 		onDragOver: function (evt,flavour,session){
-			if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode" || flavour.contentType=="text/x-moz-newsfolder") // only allow folders or  buttons!
+			if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode" || flavour.contentType=="text/x-moz-newsfolder" || flavour.contentType=="text/currentFolder") // only allow folders or  buttons!
 				session.canDrop = true;
 			else {
 				QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + flavour.contentType);
@@ -630,10 +678,7 @@ var QuickFolders = {
 		},
 
 		onDrop: function (evt,dropData,dragSession) {
-			QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
-			var msgFolder, sourceUri;
-
-			addFolder = function (src) {
+ 			function addFolder(src) {
 					if(src) {
 						var cat=QuickFolders.Interface.getCurrentlySelectedCategoryName();
 						if (QuickFolders.Model.addFolder(src, cat)) {
@@ -643,19 +688,29 @@ var QuickFolders = {
 						}
 					}
 			};
+			
+			QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
+			var msgFolder, sourceUri;
 
 			switch (dropData.flavour.contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) {  // 'Thunderbird'==QuickFolders.Util.Application() && QuickFolders.Util.Appver()>=3
 						msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
-						sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
+						if (msgFolder.QueryInterface)
+							sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
+						else
+							sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession); // Postbox
 					}
 					else {
 						sourceUri = QuickFolders.Util.getFolderUriFromDropData(dropData, dragSession); // older gecko versions.
 					}
 					addFolder(sourceUri);
 
+					break;
+				case "text/currentFolder":
+					var sourceUri = dropData.data;
+					addFolder(sourceUri);
 					break;
 				case "text/unicode":  // plain text: button was moved OR: a menuitem was dropped!!
 					var sourceUri = dropData.data;
@@ -747,6 +802,69 @@ var QuickFolders = {
 
 		// drop mails on popup: move mail, like in buttondragobserver
 		onDrop: function (evt,dropData,dragSession) {
+			function newFolderCallback(aName, FolderParam) {
+				var step='';
+				var isManyFolders = false;
+				if (aName) try {
+					var currentURI;
+
+					// we're dragging, so we are interested in the folder currently displayed in the threads pane
+					var aFolder;
+					if (QuickFolders.Util.Application()=='Postbox') {
+						currentURI = GetSelectedFolderURI();
+						aFolder = GetMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+					}
+					else {
+						if (gFolderDisplay.displayedFolder)
+							currentURI = gFolderDisplay.displayedFolder.URI;
+						else
+							isManyFolders = true;
+						aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
+					}
+
+					step='1. create sub folder: ' + aName;
+					QuickFolders.Util.logDebugOptional("dragToNew", step);
+					aFolder.createSubfolder(aName, msgWindow);
+
+					var newFolder;
+
+					// if folder creation is successful, we can continue with calling the
+					// other drop handler that takes care of dropping the messages!
+					step='2. find new sub folder';
+					QuickFolders.Util.logDebugOptional("dragToNew", step);
+					if (QuickFolders.Util.Application()=='Postbox') {
+						newFolder = GetMsgFolderFromUri(aFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
+					}
+					else {
+						var iCount=0;
+						QuickFolders.Util.logDebugOptional("dragToNew", step);
+						while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
+						if (iCount>=10000) {
+							alert('could not find the new folder ' + aName + ' - on IMAP accounts this function might be too slow!');
+							iCount=0;
+							while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
+							if (iCount>=10000)
+								return false;
+						}
+					}
+					menuItem.folder = newFolder;
+
+					var isCopy = (QuickFolders.popupDragObserver.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY);
+					step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI;
+					QuickFolders.Util.logDebugOptional("dragToNew", step);
+					QuickFolders.Util.moveMessages(newFolder, QuickFolders.popupDragObserver.newFolderMsgUris, isCopy)
+
+					QuickFolders.Util.logDebugOptional("dragToNew", "4. updateFolders...");
+					QuickFolders.Interface.updateFolders(false); // update context menus
+					return true;
+
+				}
+				catch(ex) {
+					alert("Exception in newFolderCallback, step [" + step + "]: " + ex);
+				}
+				return false;
+			}
+				
 			var menuItem = evt.target;
 
 			try {
@@ -797,68 +915,6 @@ var QuickFolders = {
 				if (targetFolder.server instanceof Components.interfaces.nsIImapIncomingServer)
 					dualUseFolders = targetFolder.server.dualUseFolders;
 
-				function newFolderCallback(aName, FolderParam) {
-					var step='';
-					var isManyFolders = false;
-					if (aName) try {
-						var currentURI;
-
-						// we're dragging, so we are interested in the folder currently displayed in the threads pane
-						var aFolder;
-						if (QuickFolders.Util.Application()=='Postbox') {
-							currentURI = GetSelectedFolderURI();
-							aFolder = GetMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
-						}
-						else {
-							if (gFolderDisplay.displayedFolder)
-								currentURI = gFolderDisplay.displayedFolder.URI;
-							else
-								isManyFolders = true;
-							aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
-						}
-
-						step='1. create sub folder: ' + aName;
-						QuickFolders.Util.logDebugOptional("dragToNew", step);
-						aFolder.createSubfolder(aName, msgWindow);
-
-						var newFolder;
-
-						// if folder creation is successful, we can continue with calling the
-						// other drop handler that takes care of dropping the messages!
-						step='2. find new sub folder';
-						QuickFolders.Util.logDebugOptional("dragToNew", step);
-						if (QuickFolders.Util.Application()=='Postbox') {
-							newFolder = GetMsgFolderFromUri(aFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
-						}
-						else {
-							var iCount=0;
-							QuickFolders.Util.logDebugOptional("dragToNew", step);
-							while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
-							if (iCount>=10000) {
-								alert('could not find the new folder ' + aName + ' - on IMAP accounts this function might be too slow!');
-								iCount=0;
-								while (! (newFolder = aFolder.findSubFolder(aName)) && iCount++<10000); // let this time out.
-								if (iCount>=10000)
-									return false;
-							}
-						}
-						menuItem.folder = newFolder;
-
-						var isCopy = (QuickFolders.popupDragObserver.dragAction == Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY);
-						step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI;
-						QuickFolders.Util.logDebugOptional("dragToNew", step);
-						QuickFolders.Util.moveMessages(newFolder, QuickFolders.popupDragObserver.newFolderMsgUris, isCopy)
-
-						QuickFolders.Util.logDebugOptional("dragToNew", "4. updateFolders...");
-						QuickFolders.Interface.updateFolders(false); // update context menus
-						return true;
-
-					}
-					catch(ex) {
-						alert("Exception in newFolderCallback, step [" + step + "]: " + ex);
-					}
-					return false;
-				}
 
 				QuickFolders.Util.logDebugOptional("window.openDialog (newFolderDialog.xul)\n"
 					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
@@ -941,7 +997,7 @@ var QuickFolders = {
 						QuickFolders.Util.logDebugOptional("dnd", "removed popup QuickFolders_globalHidePopupId: " + QuickFolders_globalHidePopupId );
 					}
 					catch (e) {
-						QuickFolders.Util.logDebugOptional("dnd", "removing popup:  QuickFolders_globalHidePopupId  failed!\n" + e + "\n");
+						QuickFolders.Util.logDebugOptional("dnd", "removing popup:  QuickFolders_globalHidePopupId[" + QuickFolders_globalHidePopupId.toString() + "]  failed!\n" + e + "\n");
 					}
 					QuickFolders_globalHidePopupId="";
 				}
@@ -1048,6 +1104,7 @@ var QuickFolders = {
 						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
 						QuickFolders.Util.logDebugOptional("dnd", "showPopup with id " + popupId );
 						var p =  this.doc.getElementById(popupId);
+						this.doc.popupNode = button;
 						if (p.openPopup)
 							p.openPopup(button,'after_start', -1,-1,"context",false);
 						else
@@ -1191,7 +1248,11 @@ var QuickFolders = {
 		onDragStart: function (event, transferData, action) {
 			var button = event.target;
 			transferData.data = new TransferData();
-			transferData.data.addDataForFlavour("text/unicode", button.folder.URI); // test
+			// if current folder button is started to drag, use a different flavor
+			if (button.id && button.id == "QuickFolders-CurrentFolder")
+				transferData.data.addDataForFlavour("text/currentFolder", button.folder.URI);
+			else
+				transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
 		}
 
 	},
@@ -1199,7 +1260,7 @@ var QuickFolders = {
 	addLoadEventListener: function() {
 		// avoid registering this event listener twice!
 		if (!this.loadListen) {
-			window.addEventListener("load", QuickFolders.initDelayed, true);
+			window.addEventListener("load", function() { QuickFolders.initDelayed(); }, true);			
 		}
 		this.loadListen=true;
 	},
@@ -1212,8 +1273,7 @@ var QuickFolders = {
 				QuickFolders.tabContainer = this.doc.getElementById('tabmail').mTabContainer;
 			else
 				QuickFolders.tabContainer = this.doc.getElementById('tabmail').tabContainer;
-			QuickFolders.tabContainer.addEventListener("select", QuickFolders.TabListener.mailTabSelected, false);
-			//this.tabContainer.addEventListener("tabselected", QuickFolders.TabListener.mailTabSelected, false);
+			QuickFolders.tabContainer.addEventListener("select", function() { QuickFolders.TabListener.mailTabSelected(); }, false);
 		}
 		catch (e) {
 			QuickFolders.LocalErrorLogger("No tabContainer available! " + e);
@@ -1313,7 +1373,6 @@ function QuickFolders_MySelectFolder(folderUri)
 	if (QuickFolders.Util.Application()=='Thunderbird' && QuickFolders.Util.Appver()>=3)
 	{
 		// TB 3
-
 		// find out if parent folder is smart and collapsed (bug in TB3!)
 		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
 		// therefore, ensureRowIsVisible does not work!
@@ -1513,6 +1572,11 @@ QuickFolders.FolderListener = {
 	},
 
 	OnItemIntPropertyChanged: function(item, property, oldValue, newValue) {
+		function add1000Separators( sValue ) {
+			var sRegExp = new RegExp('(-?[0-9]+)([0-9]{3})');
+			while(sRegExp.test(sValue.toString())) { sValue = sValue.replace(sRegExp, '$1,$2'); }
+			return sValue;
+		}
 		try {
 			if (property == "TotalUnreadMessages" ||
 				(QuickFolders.Preferences.isShowTotalCount() && property == "TotalMessages")) {
@@ -1530,10 +1594,10 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = QuickFolders.Util.getBundleString("qfCompactedFolder", "Compacted folder") + " " + item.prettyName;
+							message = QuickFolders.Util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
 							break;
 						case 'emptyJunk':
-							message = QuickFolders.Util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " " + item.prettyName;
+							message = QuickFolders.Util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
 							break;
 						case 'emptyTrash':
 							message = QuickFolders.Util.getBundleString("qfEmptiedTrash", "Emptied trash.");
@@ -1547,13 +1611,13 @@ QuickFolders.FolderListener = {
 					var expunged = QuickFolders.Util.getBundleString("qfCompactedBytesFreed","Bytes expunged");
 
 					var out = message + " :: "
-						+ (size1 ? (originalSize + ": " + size1.toString() + " ::  "
-								   + expunged + ":" + (size1-size2).toString() + " :: ")
+						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
+								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
 								 : " ")
-						+ newSize + ": " + size2.toString() ;
+						+ newSize + ": " + add1000Separators(size2.toString()) ;
 					//make sure it displays straight away and overwrite the compacting done message as well.
-					setTimeout(function() { QuickFolders.Util.showStatusMessage(out); QuickFolders.Util.logDebug(out); }, 250); // display "after compacting"
-					setTimeout(function() { QuickFolders.Util.showStatusMessage(out); QuickFolders.Util.logDebug(out); }, 2000); // overwrite "compacting done" message
+					
+					setTimeout(function() { QuickFolders.Util.popupAlert("QuickFolders",out); QuickFolders.Util.logDebug(out); }, 250); // display "after compacting"
 
 					QuickFolders.compactLastFolderSize = 0;
 				} catch(e) {;};

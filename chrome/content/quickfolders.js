@@ -1247,6 +1247,8 @@ var QuickFolders = {
 		// new handler for starting drag of buttons (re-order)
 		onDragStart: function (event, transferData, action) {
 			var button = event.target;
+			if(!button.folder)
+				 return;
 			transferData.data = new TransferData();
 			// if current folder button is started to drag, use a different flavor
 			if (button.id && button.id == "QuickFolders-CurrentFolder")

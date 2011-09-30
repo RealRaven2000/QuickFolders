@@ -53,7 +53,7 @@ var QuickFolders_TabURIopener = {
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
 
-	HARCODED_EXTENSION_VERSION : "2.8.2hc",
+	HARCODED_EXTENSION_VERSION : "2.9hc",
 	Constants : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_TRASH 	: 0x0100,
@@ -139,20 +139,23 @@ QuickFolders.Util = {
 				return; // do not allow recursion...
 			QuickFolders.Util.VersionProxyRunning = true;
 			QuickFolders.Util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
-			Components.utils.import("resource://gre/modules/AddonManager.jsm");
+			if (Components.utils.import) {
+				Components.utils.import("resource://gre/modules/AddonManager.jsm");
+				
+				AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
+					let u = QuickFolders.Util;
+					u.mExtensionVer = addon.version;
+					u.logDebug("================================================\n" +
+					           "================================================");
+					u.logDebug("AddonManager: QuickFolders extension's version is " + addon.version);
+					u.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + u.mExtensionVer + "\n" + "Running on " + u.Application()	 + " Version " + u.AppverFull());
+					u.logDebug("================================================\n" +
+					           "================================================");
+					u.FirstRun.init();
+	
+				});
+			}
 			
-			AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
-				let u = QuickFolders.Util;
-				u.mExtensionVer = addon.version;
-				u.logDebug("================================================\n" +
-				           "================================================");
-				u.logDebug("AddonManager: QuickFolders extension's version is " + addon.version);
-				u.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + u.mExtensionVer + "\n" + "Running on " + u.Application()	 + " Version " + u.AppverFull());
-				u.logDebug("================================================\n" +
-				           "================================================");
-				u.FirstRun.init();
-
-			});
 			QuickFolders.Util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
 			
 		}
@@ -177,9 +180,7 @@ QuickFolders.Util = {
 											  // also we will delay FirstRun.init() until we _know_ the version number
 			bAddonManager = true;
 		}
-		else {
-			QuickFolders.Util.FirstRun.init(); 
-		}
+		
 		// --- older code
 		var current = null;
 		
@@ -198,6 +199,8 @@ QuickFolders.Util = {
 				else {
 					current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?)"
 				}
+				QuickFolders.Util.mExtensionVer = current;
+				QuickFolders.Util.FirstRun.init();
 				
 			}
 			catch(ex) {

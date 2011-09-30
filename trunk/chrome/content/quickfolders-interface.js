@@ -115,6 +115,8 @@ QuickFolders.Interface = {
 	},
 
 	generateMRUlist: function (ftv) { // generateMap: function ftv_recent_generateMap(ftv)
+		let oldestTime = 0;
+		let recent = [];
 		function sorter(a, b) {
 			return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
 		}
@@ -153,8 +155,6 @@ QuickFolders.Interface = {
 			 *
 			 * @param aFolder the folder to check
 			 */
-			let recent = [];
-			let oldestTime = 0;
 
 			for each (let folder in ftv._enumerateFolders)
 				addIfRecent(folder);
@@ -1198,9 +1198,9 @@ QuickFolders.Interface = {
 
 	onRenameFolder: function(element) {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
-		var theURI = popupNode.folder.URI;
+		var theURI = folder.URI;
 		if (gFolderTreeController && gFolderTreeController.renameFolder) {
-			gFolderTreeController.renameFolder(popupNode.folder);
+			gFolderTreeController.renameFolder(folder);
 		}
 		else { // (QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird') || (QuickFolders.Util.Application()=='Postbox') || (QuickFolders.Util.Application()=='SeaMonkey')
 			QuickFolders_MySelectFolder(theURI);
@@ -1237,7 +1237,7 @@ QuickFolders.Interface = {
 
 	onDeleteJunk: function(element) {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
-		if (gFolderTreeController && gFolderTreeController.deleteJunk)
+		if (typeof(gFolderTreeController) !='undefined' && gFolderTreeController.deleteJunk)
 			gFolderTreeController.deleteJunk(folder);
 		else
 			deleteJunkInFolder();
@@ -1295,7 +1295,7 @@ QuickFolders.Interface = {
 				}
 			}
 			else if(gFolderDisplay.displayedFolder == folder) {  // SeaMonkey
-				gFolderDisplay.view.close();
+				// gFolderDisplay.view.close();
 				isCurrent = true;
 			}
 
@@ -1318,8 +1318,10 @@ QuickFolders.Interface = {
 				folder.ForceDBClosed();
 			}
 			folder.updateFolder(msgWindow);
-			if (isCurrent)
-				gFolderDisplay.show(folder);
+			if (isCurrent) {
+				if (typeof(gFolderDisplay.show) != 'undefined')
+					gFolderDisplay.show(folder);
+			}
 		}
 		else { // Postbox / SeaMonkey
 			var msgDB = folder.getMsgDatabase(msgWindow);
@@ -1351,9 +1353,8 @@ QuickFolders.Interface = {
 			if ( !(QuickFolders.Util.Appver() < 3 && QuickFolders.Util.Application()=='Thunderbird'))
 				folder.updateFolder(msgWindow);
 		}
-
-
-		alert(this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
+		
+		QuickFolders.Util.popupAlert("QuickFolders", this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
 
 	},
 

@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Gebruik keyboard sneltoetsen (Alt + 1 tot Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Control in plaats van Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Tabs herbouwen met snelkoppeling: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Alt+Links / Alt+Rechts voor vorige / volgende tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Toon het sneltoets nummer op de knop">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Toon het aantal ongelezen bericht op de knop">
 <!ENTITY qf.checkbox.showUnreadBold "Toon knoppen voor folders met ongelezen berichten in het vet">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Subfolders uitklappen in popup menus">
 <!ENTITY qf.checkbox.showRecentTab "Recente folders tab weergeven">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklikken voor instellingen">
+<!ENTITY qf.checkbox.autoHideToolbar "QuickFolders verbergen wanneer onnodig">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "De toolbar klapt toe in speciale tabs zoals de kalender, browser, extensiebeheerder.">
 <!ENTITY qf.checkbox.tabMenuIcon "Werkbalk Menu Icoon">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dit menu kan ook worden aangeroepen door rechts te klikken op de werkbalk zelf">
 <!ENTITY qf.menu.tabColor "Geen kleur!">

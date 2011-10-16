@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Använd kortkommandon (Alt+1 till Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Använd Ctrl istället för Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Återskapa flikar med kortkommandot: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Alt+vänsterpil/Alt+högerpil för föregående/nästa flik">
 <!ENTITY qf.checkbox.showshortcutnumber "Visa kortkommandonummer på mappetiketter">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Visa antalet olästa meddelanden på mappknappen">
 <!ENTITY qf.checkbox.showUnreadBold "Visa knappar för mappar med olästa meddelanden i fetstil">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Visa undermappar i popup-menyer">
 <!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Högerklicka för inställningar">
+<!ENTITY qf.checkbox.autoHideToolbar "Dölj QuickFolders-fältet där det inte behövs">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Döljer verktygsfältet i specialflikar såsom kalendern, innehållsflikar och tilläggshanteraren.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ikon för verktygsfältsmenyn">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Denna meny kan även öppnas genom att högerklicka själva verktygsfältet">
 <!ENTITY qf.menu.tabColor "Ingen färg!">

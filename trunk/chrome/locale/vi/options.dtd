@@ -3,11 +3,11 @@
 <!ENTITY qf.tab.general "Tổng quan">
 <!ENTITY qf.tab.layout "Sắp xếp các thẻ!">
 <!ENTITY qf.tab.quickhelp "Trợ giúp">
-<!ENTITY qf.checkbox.displaylabel "Hiển thị 'QuickFolders' nhãn trên thanh công cụ">
+<!ENTITY qf.checkbox.displaylabel "Hiển thị 'QuickFolders' trên thanh công cụ">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Sử dụng phím tắt (Alt + 1 đến Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Sử dụng Ctrl thay cho Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Xây dựng lại các thẻ với phím tắt: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Phím ALT-trái/ALT-phải để chuyển sang Thẻ phía trước/sau">
 <!ENTITY qf.checkbox.showshortcutnumber "Hiển thị số phím tắt trên nhãn thư mục">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Hiển thị số tin nhắn chưa đọc trên nút thư mục">
 <!ENTITY qf.checkbox.showUnreadBold "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm">
@@ -53,23 +53,25 @@
 <!ENTITY qf.checkbox.showSubfolders "Mở rộng các thư mục con trong trình đơn tự bung (thử nghiệm)">
 <!ENTITY qf.checkbox.showRecentTab "Hiển thị thẻ các thư mục gần đây nhất">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Nhấp chuột phải để chỉnh cấu hình">
-<!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menu Icon">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "This menu can also be invoked by right-clicking the toolbar itself">
+<!ENTITY qf.checkbox.autoHideToolbar "Ẩn QuickFolders khi không dùng">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Thu gọn thanh công cụ trong các thẻ đặc biệt như lịch, nội dung, quản lý addon.">
+<!ENTITY qf.checkbox.tabMenuIcon "Biểu tượng thanh công cụ">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Trình đơn này cũng có thể được gọi bằng cách kích chuột phải lên chính thanh công cụ">
 <!ENTITY qf.menu.tabColor "Không màu!">
 <!ENTITY qf.menu.Color "Màu sắc">
 <!ENTITY qf.options.LayoutColorAppearance "Màu riêng của từng thẻ">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(kiểu gạch sọc)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(kiểu phủ kín)">
-<!ENTITY qf.options.label.themeAuthor "Theme Author:">
-<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
-<!ENTITY qf.themes.flatTabs.label "Flat Style">
+<!ENTITY qf.options.label.themeAuthor "Tác giả giao diện:">
+<!ENTITY qf.themes.nativeTabs.label "Các thẻ gốc">
+<!ENTITY qf.themes.flatTabs.label "Phong cách phẳng">
 <!ENTITY qf.themes.applePills.label "Apple Pills">
-<!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
-<!ENTITY qf.options.theme.pastelColors "Pastel Colors">
-<!ENTITY qf.options.themes.customCornerRadius.checkbox "Custom Corner Radius">
-<!ENTITY qf.options.themes.customCornerRadius.Top.label "Top:">
-<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bottom:">
-<!ENTITY qf.options.themes.showBorders.checkbox "Always Display Borders">
+<!ENTITY qf.themes.flatButtons.label "Các nút công cụ">
+<!ENTITY qf.options.theme.pastelColors "Phấn màu">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Tùy chỉnh bán kính góc">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Trên cùng:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Dưới cùng:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Luôn hiển thị các đường biên">
 <!ENTITY qf.description.linkNote "Ghé thăm trang chủ QuickFolders để xem thêm hướng dẫn sử dụng chi tiết, các mẹo và các câu hỏi thường gặp:">
 <!ENTITY qf.checkbox.transparent "hiệu ứng trong suốt">
 <!ENTITY qf.checkbox.shadows "Bóng">

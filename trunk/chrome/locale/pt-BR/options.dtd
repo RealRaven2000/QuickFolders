@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atalhos de teclado (Alt + 1 até Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl ao invés de Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir abas com atalho: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-esquerda/ALT-direita para aba anterior/posterior">
 <!ENTITY qf.checkbox.showshortcutnumber "Exibir o número do atalho nos rótulos de pastas">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Exibir o número de mensagens não lidas no botão da pasta">
 <!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
@@ -27,7 +27,7 @@
 <!ENTITY qf.label.DragOverBackground "Cor de arrastar sobre:">
 <!ENTITY qf.label.ToolbarBackground "Fundo da barra de ferramentas:">
 <!ENTITY qf.description.dragToAdd "Arraste pastas de email para uma área vazia da nova barra de ferramentas para criar um novo quickfolder (funciona como um atalho/sinônimo). Arraste mensagens para um quickfolder para movê-las para a pasta correspondente (ou copiar com a tecla modificadora). Clique em um quickfolder para mostrar sua pasta de email.">
-<!ENTITY qf.description.dragToPosition "Arraste um quickfolder para os lados para alterar sua posição. Clique com o botão direito sobre um quickfolder para abrir o menu de contexto; por seleção, você pode ir para subpastas. &apos;Renomear favorito&apos; altera o rótulo de um quickfolder. &apos;Remover favorito&apos; apaga um quickfolder (não sua pasta de email).">
+<!ENTITY qf.description.dragToPosition "Arraste um quickfolder para os lados para alterar sua posição. Clique com o botão direito sobre um quickfolder para abrir o menu de contexto; por seleção, você pode ir para subpastas. 'Renomear favorito' altera o rótulo de um quickfolder. 'Remover favorito' apaga um quickfolder (não sua pasta de email).">
 <!ENTITY qf.description.dragToPopup "Arraste mensagens para o menu de um quickfolder para movê-las para subpastas.">
 <!ENTITY qf.description.changeCategory "Clique com o botão direito sobre um favorito para organizá-lo em uma categoria. Aparecerá uma lista de categorias à esquerda da barra.">
 <!ENTITY qf.description.rightClickOptions "Clique com o botão direito sobre uma área vazia para abrir o menu de opções. Nele você pode selecionar estilo nativo (menor) ou estilo liso (mais limpo; suporta indicador ao arrastar).">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto">
 <!ENTITY qf.checkbox.showRecentTab "Exibir aba de pastas recentes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botão direito do mouse para configuração">
+<!ENTITY qf.checkbox.autoHideToolbar "Esconder QuickFolders quando não são necessários">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Recolhe a barra de ferramentas em abas especiais, tais como calendário, conteúdo, gerenciador de extensões.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícone da barra de menu">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Este menu também pode ser chamado clicando com o botão direito do mouse na própria barra de ferramentas">
 <!ENTITY qf.menu.tabColor "Nenhuma cor!">

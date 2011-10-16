@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Обновить все закладки:Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Влево/ALT-Вправо для предыдущей/следующей закладки">
 <!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Показывать в закладке количество не прочтенных сообщений">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Раскрывать папки из этой папке в меню">
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.checkbox.autoHideToolbar "Не показывать QuickFolders если он не нужен">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений, итд.">
 <!ENTITY qf.checkbox.tabMenuIcon "Значок меню на панели инструментов">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Это меню можно также вызвать нажатием правой кнопки мыши на самой панели инструментов">
 <!ENTITY qf.menu.tabColor "Без цвета!">

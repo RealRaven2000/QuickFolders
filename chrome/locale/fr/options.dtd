@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utiliser les raccourcis clavier (Alt + 1 jusqu'à Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utiliser la touche Ctrl à la place de la touche Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Recréer les onglets avec le raccourci clavier : Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Alt-flèche gauche / Alt-flèche droite pour onglet précédent / suivant">
 <!ENTITY qf.checkbox.showshortcutnumber "Afficher le numéro du raccourci sur les libellés des dossiers">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Afficher le nombre de messages non lus sur le bouton du dossier">
 <!ENTITY qf.checkbox.showUnreadBold "Afficher les boutons des dossiers contenant des messages non lus en gras">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Développer les sous-dossiers dans des menus popup">
 <!ENTITY qf.checkbox.showRecentTab "Afficher l'onglet des dossiers récents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic droit pour la configuration">
+<!ENTITY qf.checkbox.autoHideToolbar "Masquer la barre d'outils si elle n'est pas nécessaire">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Masque/affiche la barre d'outils dans les onglets spéciaux tels que le calendrier, le contenu, le gestionnaire de modules.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icône du menu de la barre d'outils">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Ce menu peut-être également affiché via un clic droit sur la barre d'outils elle-même">
 <!ENTITY qf.menu.tabColor "Pas de couleur !">

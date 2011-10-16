@@ -7,8 +7,8 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Користи пречице на тастатури (од алт+а до алт+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Користи ктрл уместо алт">
 <!ENTITY qf.checkbox.useRebuildShortcut "Врати језичке помоћћу пречице ктрл+алт">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
-<!ENTITY qf.checkbox.showshortcutnumber "Прикажи број пречице на наслов фасцикле">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Алт+лево за претходнни/алт+десно за следећи језичак">
+<!ENTITY qf.checkbox.showshortcutnumber "Прикажи број пречице на наслову фасцикле">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Прикажи број непрочитаних порука на дугмету фасцикле">
 <!ENTITY qf.checkbox.showUnreadBold "Подебљај дугмад фасцикли које садрже непрочитане поруке">
 <!ENTITY qf.checkbox.showTotalMessageCount "Прикажи укупан број порука на дугмету фасцикле">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Развиј подфасцикле у искачућим менијима">
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Пристисните десни клик да бисте подесили">
+<!ENTITY qf.checkbox.autoHideToolbar "Сакриј QuickFolders кад није потребан">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Умањује траку са алаткама у посебне језичке, попут календара, садржаја и управљача додацима.">
 <!ENTITY qf.checkbox.tabMenuIcon "Икона менија траке са алаткама">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Овај мени можете добити и десним кликом на траку са алаткама">
 <!ENTITY qf.menu.tabColor "Безбојно">

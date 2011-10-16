@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt + 1 から Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Cｔｒｌ キーを使用する">
 <!ENTITY qf.checkbox.useRebuildShortcut "次のショートカットキーでタブを再構築する: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right キーで前のタブ / 次のタブへ移動する">
 <!ENTITY qf.checkbox.showshortcutnumber "フォルダのラベルにショートカット番号を表示する">
 <!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "右クリックで設定を開きます">
+<!ENTITY qf.checkbox.autoHideToolbar "QuickFolders が不要な場合は隠す">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "カレンダーや Web コンテンツ、アドオンマネージャのタブではツールバーを隠します。">
 <!ENTITY qf.checkbox.tabMenuIcon "ツールバーメニューアイコン">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "このメニューはツールバーを右クリックして呼び出せます">
 <!ENTITY qf.menu.tabColor "色指定なし！">

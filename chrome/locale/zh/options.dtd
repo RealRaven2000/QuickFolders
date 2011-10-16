@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "使用鍵盤快捷鍵（Alt+1到Alt+9）">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "使用Ctrl鍵取代Alt鍵">
 <!ENTITY qf.checkbox.useRebuildShortcut "以捷徑重新建立頁籤：Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-方向左鍵 / ALT-方向右鍵 來移至 前一個 / 下一個 頁籤">
 <!ENTITY qf.checkbox.showshortcutnumber "在資料夾標籤上顯示快捷鍵數字">
 <!ENTITY qf.checkbox.showUnreadMessageCount "在資料夾標籤上顯示未讀郵件的數目">
 <!ENTITY qf.checkbox.showUnreadBold "在資料夾標籤上以粗體顯示未讀郵件的數目">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "在彈出式選單中顯示子資料夾">
 <!ENTITY qf.checkbox.showRecentTab "顯示最近使用的資料夾標籤">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "以滑鼠右鍵點選來確認">
+<!ENTITY qf.checkbox.autoHideToolbar "當不需要QuickFolders時隱藏">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "在特別的頁面，像是日曆、內容或附加元件管理中心折疊工具列。">
 <!ENTITY qf.checkbox.tabMenuIcon "工具列選單圖示">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "也能以點選右鍵的方式，點選工具列本身來開啟此選單！">
 <!ENTITY qf.menu.tabColor "沒有顏色！">

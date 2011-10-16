@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utilitzar Ctrl enlloc de Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Regenera Pestanyes amb: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya">
 <!ENTITY qf.checkbox.showshortcutnumber "Mostra el número de drecera a les etiquetes de les carpetes">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Mostra el nombre de missatges per llegir al botó de la carpeta">
 <!ENTITY qf.checkbox.showUnreadBold "Mostra amb negreta els botons de les carpetes amb missatges per llegir">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetes al menú emergent">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botó dret per configurar">
+<!ENTITY qf.checkbox.autoHideToolbar "Amaga QuickFolders quan no es necessiti">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Col·lapsa la barra d'eines en fitxes especials, com ara calendari, contingut, gestor de complements.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del Menú de la Barra d'eines">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines">
 <!ENTITY qf.menu.tabColor "Sense Color!">

@@ -7,7 +7,7 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atajos de teclado (Alt + 1 al  Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl en lugar de  Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir pestañas con el atajo: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Izq/ALT-Der para la pestaña anterior/siguiente pestaña">
 <!ENTITY qf.checkbox.showshortcutnumber "Mostrar el número del atajo en la etiqueta de las carpetas">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Mostrar el número de mensajes no leídos en el botón de la carpeta">
 <!ENTITY qf.checkbox.showUnreadBold "Mostrar los botones de las carpetas con mensajes no leídos en negritas">
@@ -53,6 +53,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetas en menús emergentes (Experimental)">
 <!ENTITY qf.checkbox.showRecentTab "Mostrar pestaña de carpetas recientes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic derecho para configurar">
+<!ENTITY qf.checkbox.autoHideToolbar "Ocultar QuickFolders cuando no se necesiten">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Contrae la barra de herramientas en pestañas especiales, tales como calendario, contenido, administrador de complementos.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícono de menú de herramientas">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Este menú puede ser invocado mediante un clic derecho en la misma barra de herramientas">
 <!ENTITY qf.menu.tabColor "¡Sin Color!">

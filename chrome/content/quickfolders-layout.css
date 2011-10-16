@@ -123,7 +123,10 @@ vbox.gradientpanel {
 /* Native shell styles */
 #QuickFolders-Toolbar.toolbar-native toolbarbutton
 {
-	-moz-appearance: tab !important;
+	-moz-appearance: tab;
+	/* -moz-binding: url("chrome://global/content/bindings/tabbox.xml#tab")  !important; */
+    /* 	display: -moz-box; */
+
 }
 
 
@@ -201,6 +204,14 @@ vbox.gradientpanel {
 }
 
 
+/* toolbar itself, to be overwritten by user styling */
+#QuickFolders-Toolbar.pills,
+#QuickFolders-Toolbar.toolbar-native,
+#QuickFolders-Toolbar.toolbar-button
+{
+	background-color: transparent;
+}
+
 /* Flat Styles below */
 #QuickFolders-Toolbar.toolbar-flat {
 	margin: 0;
@@ -214,7 +225,6 @@ vbox.gradientpanel {
 
 .toolbar-flat #QuickFolders-FoldersBox toolbarbutton {
 	background-color: #CCC;
-	color: buttontext;
 	-moz-appearance: none !important;
 	-moz-border-radius-topleft: 4px;
 	-moz-border-radius-topright: 4px;
@@ -231,6 +241,12 @@ vbox.gradientpanel {
 	height: 20px;
 	vertical-align:top;
 }
+
+/*
+.toolbar-flat #QuickFolders-FoldersBox toolbarbutton > label {
+	color: buttontext;
+}
+*/
 
 .toolbar-flat #QuickFolders-FoldersBox toolbarbutton:-moz-drag-over {
 	background-image: none !important;
@@ -380,69 +396,96 @@ menuitem[tag="qfColor20"] { background-image: url('chrome://quickfolders/skin/co
 
 
 /* 1st rule is for #QuickFolders-CurrentFolderTools 2nd for main toolbar */
-.pills toolbarbutton.col0.selected-folder, .pills toolbarbutton.col0:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col0.selected-folder, .pills toolbarbutton.col0:hover,
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.col0,
 .toolbar-flat #QuickFolders-CurrentFolder.col0 { background-image: none !important; }
-.pills toolbarbutton.col1.selected-folder, .pills toolbarbutton.col1:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col1.selected-folder, .pills toolbarbutton.col1:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col1,
 .toolbar-flat #QuickFolders-CurrentFolder.col1 { background-image: url('chrome://quickfolders/skin/cols/tabcol-1.png') !important; color:#000 !important;}
-.pills toolbarbutton.col2.selected-folder, .pills toolbarbutton.col2:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col2.selected-folder, .pills toolbarbutton.col2:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col2,
 .toolbar-flat #QuickFolders-CurrentFolder.col2 { background-image: url('chrome://quickfolders/skin/cols/tabcol-2.png') !important; color:#000 !important;}
-.pills toolbarbutton.col3.selected-folder, .pills toolbarbutton.col3:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col3.selected-folder, .pills toolbarbutton.col3:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col3,
 .toolbar-flat #QuickFolders-CurrentFolder.col3 { background-image: url('chrome://quickfolders/skin/cols/tabcol-3.png') !important; color:#FFF;}
-.pills toolbarbutton.col4.selected-folder, .pills toolbarbutton.col4:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col4.selected-folder, .pills toolbarbutton.col4:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col4,
 .toolbar-flat #QuickFolders-CurrentFolder.col4 { background-image: url('chrome://quickfolders/skin/cols/tabcol-4.png') !important; color:#FFF;}
-.pills toolbarbutton.col5.selected-folder, #QuickFolders-Toolbar.pills toolbarbutton.col5:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col5.selected-folder, #QuickFolders-Toolbar.pills toolbarbutton.col5:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col5,
 .toolbar-flat #QuickFolders-CurrentFolder.col5 { background-image: url('chrome://quickfolders/skin/cols/tabcol-5.png') !important; color:#FFF;}
-.pills toolbarbutton.col6.selected-folder, toolbarbutton.col6:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col6.selected-folder, toolbarbutton.col6:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col6,
 .toolbar-flat #QuickFolders-CurrentFolder.col6 { background-image: url('chrome://quickfolders/skin/cols/tabcol-6.png') !important; color:#FFF;}
-.pills toolbarbutton.col7.selected-folder, toolbarbutton.col7:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col7.selected-folder, toolbarbutton.col7:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col7,
 .toolbar-flat #QuickFolders-CurrentFolder.col7 { background-image: url('chrome://quickfolders/skin/cols/tabcol-7.png') !important; color:#FFF;}
-.pills toolbarbutton.col8.selected-folder, toolbarbutton.col8:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col8.selected-folder, toolbarbutton.col8:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col8,
 .toolbar-flat #QuickFolders-CurrentFolder.col8 { background-image: url('chrome://quickfolders/skin/cols/tabcol-8.png') !important; color:#FFF;}
-.pills toolbarbutton.col9.selected-folder, toolbarbutton.col9:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col9.selected-folder, toolbarbutton.col9:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col9,
 .toolbar-flat #QuickFolders-CurrentFolder.col9 { background-image: url('chrome://quickfolders/skin/cols/tabcol-9.png') !important; color:#FFF;}
-.pills toolbarbutton.col10.selected-folder, toolbarbutton.col10:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col10.selected-folder, toolbarbutton.col10:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col10,
 .toolbar-flat #QuickFolders-CurrentFolder.col10 { background-image: url('chrome://quickfolders/skin/cols/tabcol-10.png') !important; color:#FFF;}
-.pills toolbarbutton.col11.selected-folder, toolbarbutton.col11:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col11.selected-folder, toolbarbutton.col11:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col11,
 .toolbar-flat #QuickFolders-CurrentFolder.col11 { background-image: url('chrome://quickfolders/skin/cols/tabcol-11.png') !important; color:#000 !important;}
-.pills toolbarbutton.col12.selected-folder, toolbarbutton.col12:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col12.selected-folder, toolbarbutton.col12:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col12,
 .toolbar-flat #QuickFolders-CurrentFolder.col12 { background-image: url('chrome://quickfolders/skin/cols/tabcol-12.png') !important; color:#000 !important;}
-.pills toolbarbutton.col13.selected-folder, toolbarbutton.col13:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col13.selected-folder, toolbarbutton.col13:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col13,
 .toolbar-flat #QuickFolders-CurrentFolder.col13 { background-image: url('chrome://quickfolders/skin/cols/tabcol-13.png') !important; color:#FFF;}
-.pills toolbarbutton.col14.selected-folder, toolbarbutton.col14:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col14.selected-folder, toolbarbutton.col14:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col14,
 .toolbar-flat #QuickFolders-CurrentFolder.col14 { background-image: url('chrome://quickfolders/skin/cols/tabcol-14.png') !important; color:#000 !important;}
-.pills toolbarbutton.col15.selected-folder, toolbarbutton.col15:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col15.selected-folder, toolbarbutton.col15:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col15,
 .toolbar-flat #QuickFolders-CurrentFolder.col15 { background-image: url('chrome://quickfolders/skin/cols/tabcol-15.png') !important; color:#FFF;}
-.pills toolbarbutton.col16.selected-folder, toolbarbutton.col16:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col16.selected-folder, toolbarbutton.col16:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col16,
 .toolbar-flat #QuickFolders-CurrentFolder.col16 { background-image: url('chrome://quickfolders/skin/cols/tabcol-16.png') !important; color:#FFF;}
-.pills toolbarbutton.col17.selected-folder, toolbarbutton.col17:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col17.selected-folder, toolbarbutton.col17:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col17,
 .toolbar-flat #QuickFolders-CurrentFolder.col17 { background-image: url('chrome://quickfolders/skin/cols/tabcol-17.png') !important; color:#000 !important;}
-.pills toolbarbutton.col18.selected-folder, toolbarbutton.col18:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col18.selected-folder, toolbarbutton.col18:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col18,
 .toolbar-flat #QuickFolders-CurrentFolder.col18 { background-image: url('chrome://quickfolders/skin/cols/tabcol-18.png') !important; color:#FFF;}
-.pills toolbarbutton.col19.selected-folder, toolbarbutton.col19:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col19.selected-folder, toolbarbutton.col19:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col19,
 .toolbar-flat #QuickFolders-CurrentFolder.col19 { background-image: url('chrome://quickfolders/skin/cols/tabcol-19.png') !important; color:#000 !important;}
-.pills toolbarbutton.col20.selected-folder, toolbarbutton.col20:hover,
+#QuickFolders-Toolbar.pills toolbarbutton.col20.selected-folder, toolbarbutton.col20:hover,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col20,
 .toolbar-flat #QuickFolders-CurrentFolder.col20 { background-image: url('chrome://quickfolders/skin/cols/tabcol-20.png') !important; color:#000 !important;}
+
+
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col1 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col2 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col3 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col4 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col5 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col6 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col7 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col8 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col9 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col10 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col11 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col12 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col13 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col14 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col15 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col16 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col17 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col18 > label { color:#FFF !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col19 > label { color:#000 !important;}
+#QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.col20 > label { color:#000 !important;}
+
+
+
+
+/* the hardcoded to white texts need dark shadows */
 
 .toolbar-flat #QuickFolders-CurrentFolder,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton { background-position: 0px 0px; }
@@ -450,9 +493,15 @@ menuitem[tag="qfColor20"] { background-image: url('chrome://quickfolders/skin/co
 .toolbar-flat #QuickFolders-CurrentFolder.pastel,
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.pastel { background-position: 0px -24px; }
 /* for some reason we see a 1px rim at the top! */
+.pills toolbarbutton { background-position: 0px -1px; }
 .pills toolbarbutton.pastel { background-position: 0px -25px; }
 
 #QuickFolders-Toolbar.toolbar-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder { background-position: 0px 0px !important; }
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+	-moz-transition-property: color, background-color, background-image, -moz-border-radius, -moz-box-shadow;
+	-moz-transition-duration: 2s, 2s, 2s, 2s, 2s;
+}
 
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.col1:hover,
 #QuickFolders-Toolbar.toolbar-flat toolbarbutton.col2:hover,
@@ -585,7 +634,7 @@ menupopup.QuickFolders-folder-popup menu.mailCmd:hover
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView {
 	background-color:transparent;
-	background-image: -moz-linear-gradient(center bottom, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%);
+	/* background-image: -moz-linear-gradient(center bottom, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%); */
 	height: 30px !important;
 	max-height:30px !important;
 	overflow-y: visible !important;

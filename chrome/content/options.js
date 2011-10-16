@@ -239,6 +239,9 @@ QuickFolders.Options = {
 
 			document.getElementById("qf-stateColors").collapsed
 				= !(myTheme.supportsFeatures.stateColors);
+				
+			document.getElementById("qf-stateColors-defaultButton").collapsed
+				= !(myTheme.supportsFeatures.stateColors);
 
 			/******  FOR FUTURE USE ??  ******/
 			// if (myTheme.supportsFeatures.supportsFontSelection)

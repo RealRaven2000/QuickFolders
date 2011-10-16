@@ -31,7 +31,7 @@ QuickFolders.Themes = {
 			,author:"Christopher White"
 			,cssToolbarClassName: 'pills'
 			,supportsFeatures: {
-				 stateColors: true
+				 stateColors: false
 				,individualColors: true
 				,standardTabColor: false
 				,pastelColors: true

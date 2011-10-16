@@ -211,6 +211,15 @@ QuickFolders.Util = {
 		return current;
 
 	} ,
+	
+	mailFolderTypeName: function() {
+		switch(this.Application()) {
+			case "Thunderbird": return "folder";
+			case "SeaMonkey": return "3pane";
+			default: return "folder";
+		}
+		return "";
+	} ,
 
 	PlatformVersion: function() {
 		if (null==this.mPlatformVer)
@@ -325,6 +334,7 @@ QuickFolders.Util = {
 		}
 	} ,
 
+	// find the first mail tab representing a folder and open it
 	ensureFolderViewTab: function() {
 		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
 		var found=false;
@@ -334,9 +344,7 @@ QuickFolders.Util = {
 
 			if (tab) {
 				QuickFolders.Util.logDebugOptional ("mailTabs","ensureFolderViewTab - current tab mode: " + tab.mode.name);
-/*				if (tab.mode.name=='message' || tab.mode.name=='calendar'
-					|| tab.mode.name=='contentTab' || tab.mode.name=='glodaFacet' || tab.mode.name=='glodaList') */
-				if (tab.mode.name!='folder') { // SM: tab.getAttribute("type")=='message'
+				if (tab.mode.name!=QuickFolders.Util.mailFolderTypeName()) { //  TB: 'folder', SM: '3pane'
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					var i;

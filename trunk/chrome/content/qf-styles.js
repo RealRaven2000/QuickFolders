@@ -28,7 +28,7 @@ QuickFolders.Styles = {
 		return 0;
 	},
 
-	getElementStyle: function(rule, colortype) {
+	getElementStyle: function(rule, attribute) {
 		try {
 			var ss = this.getMyStyleSheet();
 			if (!ss || ss==null) {
@@ -53,7 +53,7 @@ QuickFolders.Styles = {
 				}
 				if (found) {
 					var st=rulesList[i].style; // readonly	CSSStyleDeclaration
-					return st.getPropertyValue(colortype);
+					return st.getPropertyValue(attribute);
 				}
 
 			}
@@ -65,8 +65,8 @@ QuickFolders.Styles = {
 		return "";
 
 	},
-
-	setElementStyle: function(ss, rule, colortype, color, important) {
+	
+	setElementStyle: function(ss, rule, attribute, value, important) {
 		// to do: find elements of this class and change their color
 		// find the class element itself and change its properties
 		// persist in options
@@ -77,7 +77,7 @@ QuickFolders.Styles = {
 				if (!ss || ss==null)
 				return false;
 			}
-			QuickFolders.Util.logDebugOptional("cssDetail", "setElementStyle( " + rule + ", " + colortype + ", " + color + ")");
+			QuickFolders.Util.logDebugOptional("cssDetail", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
 
 			var rulesList=ss.cssRules;
 			var i;
@@ -86,49 +86,44 @@ QuickFolders.Styles = {
 			var found=false;
 			var foundRule=false;
 			var st; // new style rule
+			// 0 is fake, it is not a rule (no idea why)
 			for (i=1; i<rulesList.length; i++)
 			{
-				for (var j=0; j<rAtoms.length; j++) {
-					found=true;
-
-					if (-1 == rulesList[i].selectorText.indexOf(rAtoms[j])) {
-						found=false;
-						break;
-					}
-				}
-				if (found && !(undefined == found)) {
+				if (RuleName == rulesList[i].selectorText) {					
 					st=rulesList[i].style; // CSSStyleDeclaration
-					QuickFolders.Util.logDebugOptional("cssDetail", "found relevant style: " + rulesList[i].selectorText + " searching rule " + colortype);
-					var k;//iterate styles!
+					QuickFolders.Util.logDebugOptional("cssDetail", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
+					var k;//iterate rules!
 
 					for (k=0;k<st.length;k++) {
-					try{
-						if (colortype==st.item(k)) {
-						foundRule=true;
-						QuickFolders.Util.logDebugOptional ("cssDetail", "\n=============\nModify item: " + st.item(k)) + " =====================";
-						QuickFolders.Util.logDebugOptional ("cssDetail", "\nrulesList[i].style[k]=" + rulesList[i].style[k]
-									+ "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
-									+ "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(colortype)
-									+ "\nst.getPropertyValue(" + colortype + "):" + st.getPropertyValue(colortype)
-									+ "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(colortype));
-						 st.removeProperty(colortype);
-						 st.setProperty(colortype,color,((important) ?	"important" : ""));
-						 break;
+						try{
+							if (attribute==st.item(k)) {
+								foundRule=true;
+								QuickFolders.Util.logDebugOptional ("cssDetail", "\n=============\nModify item: " + st.item(k)) + " =====================";
+								QuickFolders.Util.logDebugOptional ("cssDetail", "\nrulesList[i].style[k]=" + rulesList[i].style[k]
+											+ "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
+											+ "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(attribute)
+											+ "\nst.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute)
+											+ "\nrulesList[i].style.getPropertyValue=" + rulesList[i].style.getPropertyValue(attribute));
+								 st.removeProperty(attribute);
+								 if (null!=value)
+								 	st.setProperty(attribute,value,((important) ?	"important" : ""));
+								 break;
+							}
 						}
-					}
-					catch (e) { QuickFolders.Util.logToConsole ("(error) " + e) };
+						catch (e) { QuickFolders.Util.logToConsole ("(error) " + e) };
 					}
 					if (foundRule) // keep searching if exact rule was not found!
-					break;
+						break;
 				}
 
 			}
 			if (found)
 				return true;
 			else {	// add the rule
-				var sRule=RuleName +"{" + colortype + ":" + color +	((important) ?	" !important" : "") + ";}";
+				var sRule=RuleName +"{" + attribute + ":" + value +	((important) ?	" !important" : "") + ";}";
 				QuickFolders.Util.logDebugOptional("css", "Adding new CSS rule:" + sRule );
-				ss.insertRule(sRule, ss.cssRules.length-1);
+				if (null!=value)
+					ss.insertRule(sRule, ss.cssRules.length-1);
 				return true;
 			}
 
@@ -137,6 +132,10 @@ QuickFolders.Styles = {
 			QuickFolders.Util.logToConsole ("(error) " + e);
 		};
 		return false;
+	},
+
+	removeElementStyle: function(ss, rule, attribute) {
+		return QuickFolders.Styles.setElementStyle(ss, rule, attribute, null, true);
 	}
 
 }

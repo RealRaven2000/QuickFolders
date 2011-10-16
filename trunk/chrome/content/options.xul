@@ -261,8 +261,8 @@
 			 <preference id="QuickFolders-Preferences-Shadows" name="extensions.quickfolders.buttonShadows" type="bool"/>
 		</preferences>
 
-			<groupbox flex="1" >
-				<caption label="&qf.label.appearance;"/>
+		<groupbox flex="0" >
+			<caption label="&qf.label.appearance;"/>
 
 
 			<hbox>
@@ -405,10 +405,27 @@
 				</hbox>
 
 			</groupbox>
+			
+	<spacer flex="1" />
 
+	<hbox>
+			<label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+			<colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
+			  type="button"
+			  onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
+			  />
+			<checkbox
+				label="&qf.checkbox.transparent;"
+				preference="QuickFolders-Preferences-TransparentToolbar"
+			/>
 
-		   <groupbox style="margin-top:.2em; padding: 0.3em;" id="qf-pimpMyColors">
-				<caption label="&qf.label.colors;"/>
+	</hbox>
+
+	<spacer flex="1" />
+		
+   <groupbox style="margin-top:.2em; padding: 0.3em;" id="qf-pimpMyColors">
+		<caption label="&qf.label.colors;"/>
+		
 	<hbox >
 		<vbox flex="5">
 
@@ -498,26 +515,19 @@
 				</hbox>
 			</vbox>
 
-			<hbox style="margin-top: .2em;" align="right">
-				<label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+			<hbox style="margin-top: .2em;" align="right" id="qf-stateColors-defaultButton">
 				<vbox>
 
-					<colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
-					  type="button"
-					  onchange="return QuickFolders.Preferences.setUserStyle('Toolbar','background-color', this.color);"
-					  />
-					<checkbox
-						label="&qf.checkbox.transparent;"
-						preference="QuickFolders-Preferences-TransparentToolbar"
-					/>
 					<button label="&qf.button.defaultcolors;" oncommand="QuickFolders.Options.setDefaultColors();"  />
 
 				</vbox>
 			</hbox>
 		</vbox>
-	<spacer flex="1" />
 	</hbox>
+	
+
 </groupbox>
+	<spacer flex="2" />
 
 </tabpanel>
 

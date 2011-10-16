@@ -428,11 +428,26 @@ END LICENSE BLOCK */
 	  AG: Fixed [Bug 24361] QuickFolders 2.7.2 incompatible with Thunderbird 6.0.1
 	  AG: Fixed [Bug 24365] QF folders disappear after viewing email
 	  
-	2.9 - WIP
+	2.9 - 23/09/2011
 	  AG: [Bug 24389] Stability fixes on version updates - firstRun check is now only run _after_ extension version number was retrieved from AddonManager
 	  AG: Removed popup "successfully upgraded to version..." and replaced with a modeless notification panel
 	  AG: added "use strict" for better namespace pollution control
 	  AG: added hidden option to suppress version history on update
+	  
+	2.9.1 - 01/10/2011 Emergency bugfix for older versions of Thunderbird (2.* and 3.*) 
+	  AG: [Bug 24451] On older versions of Thunderbird (pre 4.2) the Tabs are not displayed as QuickFolders can not be loaded completely. 
+	  
+	2.9.2 - WIP
+	  AG: Fixed - Go to Parent Folder was not working
+	  AG: Improved - Tab text color to white / black on applePill layout selected folder
+	  AG: Improved Font coloring for native tabs, apple pills and flat style; made background color for apple pills configurable, for use also with dark themes
+	  AG: Fixed striped pastel style
+	  AG: Improved theme integratopm of Current Folder Bar by making background transparent
+	  AG: Improved collapsing behavior of "Pimp My Tabs" page
+	  AG: added some transition effects
+	  AG: New Feature - [Bug 24435] On clicking a QF tab, activate corresponding mail Tab (Thunderbird + SeaMonkey only)
+	  AG: Fixed bug in SeaMonkey that changed current folder URI when new mail Tab was opened by CTRL+Click on QF Tab
+	  
 
 ###VERSION###	  
 	  
@@ -1359,8 +1374,22 @@ function QuickFolders_MyChangeSelection(tree, newIndex)
   }
 }
 
+// the core function for selecting a folder
+// adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
 function QuickFolders_MySelectFolder(folderUri)
 {
+	function getIndexTabURI(idx) {
+		var info = tabmail.tabInfo[idx]; // note: tabmail is declared further down - it is in scope.
+		if (info.msgSelectedFolder)
+			return info.msgSelectedFolder.URI; // SM
+		if (    info.folderDisplay
+		     && info.folderDisplay.view
+		     && info.folderDisplay.view.displayedFolder
+		     && info.folderDisplay.view.displayedFolder.URI
+		   )
+		   return info.folderDisplay.view.displayedFolder.URI; //Tb
+		return '';
+	}
 	//during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
@@ -1368,9 +1397,32 @@ function QuickFolders_MySelectFolder(folderUri)
 	var folderTree = QuickFolders_MyGetFolderTree();
 	var folderResource = QuickFolders_myRDF().GetResource(folderUri);
 	var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
-	var folderIndex;
-
+	var folderIndex, i;
+	
 	QuickFolders.currentURI = folderUri;
+	
+	
+	var tabmail = document.getElementById("tabmail");
+	if (tabmail && tabmail.tabInfo) {
+		
+		
+		for (i=0;i<tabmail.tabInfo.length;i++) {
+			var tabURI = getIndexTabURI(i);
+			if(   tabmail.tabInfo[i].mode
+			   && tabmail.tabInfo[i].mode.name==QuickFolders.Util.mailFolderTypeName()
+			   && folderUri == tabURI 
+			   && tabmail.tabContainer
+			   && i != tabmail.tabContainer.selectedIndex) 
+			{
+				if (tabmail.switchToTab)
+					tabmail.switchToTab(i); // switch to first tab with this URI
+				else
+					tabmail.tabContainer.selectedIndex = i;
+				break;
+			}
+		}
+	}
+
 
 	if (QuickFolders.Util.Application()=='Thunderbird' && QuickFolders.Util.Appver()>=3)
 	{
@@ -1379,6 +1431,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
 		// therefore, ensureRowIsVisible does not work!
 		var theTreeView = gFolderTreeView;
+		
 
 		QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
 
@@ -1452,8 +1505,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		const TAB_MODBITS_TabShowMessagePane = 0x0002;
 		const TAB_MODBITS_TabShowThreadPane  = 0x0004;
 		const TAB_MODBITS_TabShowAcctCentral = 0x0008;
-
-		var tabmail = GetTabMail();
+		
 		// must have at least have either folder pane or message pane,
 		// otherwise find another tab!
 		if (!(tabmail.currentTabInfo.modeBits & (TAB_MODBITS_TabShowFolderPane | TAB_MODBITS_TabShowThreadPane)))

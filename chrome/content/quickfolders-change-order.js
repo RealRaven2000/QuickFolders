@@ -6,8 +6,8 @@ For detail, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 "use strict";
 
-var gQuickFoldersBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var QuickFolders_bundle = gQuickFoldersBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+var QuickFolders_StringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+var QuickFolders_bundle = QuickFolders_StringBundleSvc.createBundle("chrome://quickfolders/locale/quickfolders.properties");
 
 QuickFolders.ChangeOrder = {
 	window: null,
@@ -17,7 +17,10 @@ QuickFolders.ChangeOrder = {
 	getUIstring: function(id, defaultString) {
 		var s;
 		try{s=QuickFolders_bundle.GetStringFromName(id);}
-		catch(e) { s=defaultString; }
+		catch(e) { 
+			QuickFolders.Util.logException('Exception during getUIstring(' + id + ') ', e);
+			s = defaultString; 
+		}
 		return s;
 	},
 

@@ -6,6 +6,14 @@
 
 	<script type="application/x-javascript"><![CDATA[
 		(function(){
+			function repeatOnDragover (evt) {
+				var now = evt.timeStamp || (new Date()).getTime(), timeWarp = (now < tsLastRepeat);
+				if (timeWarp || now >= (tsLastRepeat + REPEAT_DELAY_MS)) {
+					tsLastRepeat = now;
+					if (!timeWarp) { fnRepeat(); }
+				}
+			};
+			
 			var	REPEAT_DELAY_MS = 50,
 					REPEAT_RE = /^(xul:)?autorepeatbutton$/i,
 					tsLastRepeat,
@@ -50,6 +58,10 @@
 
 			// activate autorepeatbuttons on dragover (bug 194319)
 			document.addEventListener("dragenter", function (evt) {
+				function removeRepeat (evt) {
+					el.removeEventListener("dragover", repeatOnDragover, true);
+					el.removeEventListener("dragexit", removeRepeat, false);
+				}
 				var el = evt.originalTarget, hierarchyLimit = 3;
 				while (el && !REPEAT_RE.test(el.nodeName)) {
 					el = (--hierarchyLimit && el.parentNode);
@@ -58,11 +70,6 @@
 					tsLastRepeat = (evt.timeStamp || (new Date()).getTime()) - REPEAT_DELAY_MS;
 					fnRepeat = function(){ el.doCommand.call(el); };
 
-					function removeRepeat (evt) {
-						el.removeEventListener("dragover", repeatOnDragover, true);
-						el.removeEventListener("dragexit", removeRepeat, false);
-					}
-
 					el.addEventListener("dragover", repeatOnDragover, true);
 					el.addEventListener("dragexit", removeRepeat, false);
 					repeatOnDragover({timeStamp: evt.timeStamp});
@@ -70,13 +77,6 @@
 				}
 			}, true);
 
-			function repeatOnDragover (evt) {
-				var now = evt.timeStamp || (new Date()).getTime(), timeWarp = (now < tsLastRepeat);
-				if (timeWarp || now >= (tsLastRepeat + REPEAT_DELAY_MS)) {
-					tsLastRepeat = now;
-					if (!timeWarp) { fnRepeat(); }
-				}
-			};
 		})();
 	]]></script>
 </overlay>

@@ -3,12 +3,12 @@ QuickFolders.Preferences = {
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 
 	isDebug: function () {
-		return this.service.getBoolPref("extensions.quickfolders.debug");
+		return this.getBoolPrefQF("debug");
 	},
 
 	isDebugOption: function(option) { // granular debugging
 		if(!this.isDebug()) return false;
-		try {return this.service.getBoolPref("extensions.quickfolders.debug." + option);}
+		try {return this.getBoolPrefQF("debug." + option);}
 		catch(e) {return false;}
 	},
 
@@ -39,8 +39,14 @@ QuickFolders.Preferences = {
 			if (folders.length<3)
 				folders = this.service.getCharPref("QuickFolders.folders");
 
-			if(folders)
-				return JSON.parse(folders);
+			if(folders) {
+				let entries = JSON.parse(folders);
+				for(var i = 0; i < entries.length; i++) {
+					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
+						entries[i].tabColor = 0;
+				}
+				return entries;
+			}
 			else
 				return [];
 		}
@@ -50,120 +56,144 @@ QuickFolders.Preferences = {
 		}
 	} ,
 
-	isShowUnreadCount: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showUnreadOnButtons");
+	get isShowUnreadCount() {
+		return this.getBoolPrefQF("showUnreadOnButtons");
 	} ,
 
-	isShowQuickFoldersLabel: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showQuickfoldersLabel");
+	get isShowQuickFoldersLabel() {
+		return this.getBoolPrefQF("showQuickfoldersLabel");
 	} ,
 
-	isShowUnreadFoldersBold: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showUnreadFoldersBold");
+	get isShowUnreadFoldersBold() {
+		return this.getBoolPrefQF("showUnreadFoldersBold");
 	} ,
 
-	isShowRecursiveFolders: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showSubfolders");
+	get isHighlightNewMail() {
+		return this.getBoolPrefQF("showNewMailHighlight");
+	} ,
+	
+	get isItalicsNewMail() { // xxx experimental
+		return this.getBoolPrefQF("showFoldersWithNewMailItalic");
 	} ,
 
-	isUseNavigateShortcuts: function() {
-		return this.service.getBoolPref("extensions.quickfolders.useNavigateShortcuts");
+	get isShowRecursiveFolders() {
+		return this.getBoolPrefQF("showSubfolders");
 	} ,
 
-	isUseKeyboardShortcuts: function() {
-		return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcuts");
+	get isShowCategoryNewCount() {
+		return this.getBoolPrefQF("showCategoryCounts");
 	} ,
 
-	isUseRebuildShortcut: function() {
-		return this.service.getBoolPref("extensions.quickfolders.useRebuildShortcut");
+	get isUseNavigateShortcuts() {
+		return this.getBoolPrefQF("useNavigateShortcuts");
+	} ,
+
+	get isUseKeyboardShortcuts() {
+		return this.getBoolPrefQF("useKeyboardShortcuts");
+	} ,
+
+	get isUseRebuildShortcut() {
+		return this.getBoolPrefQF("useRebuildShortcut");
 	} ,
 
 	RebuildShortcutKey: function() {
-		return this.service.getCharPref("extensions.quickfolders.rebuildShortcutKey");
+		return this.getCharPrefQF("rebuildShortcutKey");
 	} ,
 
-	isUseKeyboardShortcutsCTRL: function() {
-		return this.service.getBoolPref("extensions.quickfolders.useKeyboardShortcutCTRL");
+	get isUseKeyboardShortcutsCTRL() {
+		return this.getBoolPrefQF("useKeyboardShortcutCTRL");
 	} ,
 
-	isShowShortcutNumbers: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showShortcutNumber");
+	get isShowShortcutNumbers() {
+		return this.getBoolPrefQF("showShortcutNumber");
 	} ,
 
-	isShowTotalCount: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showTotalNumber");
+	get isShowTotalCount() {
+		return this.getBoolPrefQF("showTotalNumber");
 	} ,
 
-	isShowCountInSubFolders: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showCountInSubFolders");
+	get isShowCountInSubFolders() {
+		return this.getBoolPrefQF("showCountInSubFolders");
 	} ,
 
-	isShowFoldersWithMessagesItalic: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showFoldersWithMessagesItalic");
+	get isShowFoldersWithMessagesItalic() {
+		return this.getBoolPrefQF("showFoldersWithMessagesItalic");
 	} ,
 
-	isFocusPreview: function() {
-		return this.service.getBoolPref("extensions.quickfolders.autoFocusPreview");
+	get isFocusPreview() {
+		return this.getBoolPrefQF("autoFocusPreview");
 	} ,
 
-	isShowToolbarIcons: function() {
-		return this.service.getBoolPref("extensions.quickfolders.showIcons");
+	get isShowToolbarIcons() {
+		return this.getBoolPrefQF("showIcons");
 	} ,
 
-	isChangeFolderTreeViewEnabled: function() {
-		return !this.service.getBoolPref('extensions.quickfolders.disableFolderSwitching');
+	get isChangeFolderTreeViewEnabled() {
+		return !this.getBoolPrefQF('disableFolderSwitching');
 	} ,
 
-	isSortSubfolderMenus: function() {
-		return this.service.getBoolPref( 'extensions.quickfolders.enableMenuAlphaSorting');
+	get isSortSubfolderMenus() {
+		return this.getBoolPrefQF('enableMenuAlphaSorting');
 	} ,
 
-	isShowRecentTab: function() {
-		return this.service.getBoolPref( 'extensions.quickfolders.showRecentTab');
+	get isShowRecentTab() {
+		return this.getBoolPrefQF('showRecentTab');
 	} ,
 
-	isShowRecentTabIcon: function() {
-		return this.service.getBoolPref( 'extensions.quickfolders.recentfolders.showIcon');
+	get isShowRecentTabIcon() {
+		return this.getBoolPrefQF('recentfolders.showIcon');
 	} ,
 
-	isPastelColors: function () {
-		return this.service.getBoolPref( 'extensions.quickfolders.pastelColors');
+	get isPastelColors() {
+		return this.getBoolPrefQF('pastelColors');
 	} ,
 
 	recentTabColor: function() {
-		return this.service.getIntPref( 'extensions.quickfolders.recentfolders.color');
+		return this.getIntPref( 'recentfolders.color');
 	} ,
 
 
-	isMinimalUpdateDisabled: function() {
-		return this.service.getBoolPref( 'extensions.quickfolders.update.disableMinimal');
+	get isMinimalUpdateDisabled() {
+		return this.getBoolPrefQF('update.disableMinimal');
 	} ,
 
-	isShowToolIcon: function() {
-		return this.service.getBoolPref( 'extensions.quickfolders.showToolIcon');
+	get isShowToolIcon() {
+		return this.getBoolPrefQF('showToolIcon');
 	} ,
 
+	get isCssTransitions() {
+		return this.getBoolPrefQF('style.transitions');
+	} ,
 
-	getButtonFontSize: function() {
-		return this.service.getCharPref("extensions.quickfolders.buttonFontSize");
+	get ButtonFontSize() {
+		return this.getCharPrefQF("buttonFontSize");
 	} ,
 
 	setLastSelectedCategory: function(category) {
 		// avoid error when no categories exist
 		if (category)
-			this.service.setCharPref("extensions.quickfolders.lastSelectedCategory", category);
+			this.setCharPrefQF("lastSelectedCategory", category);
 	} ,
 
-	getTextQuickfoldersLabel: function() {
+	get TextQuickfoldersLabel() {
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 			return this.service.getComplexValue("extensions.quickfolders.textQuickfoldersLabel", Components.interfaces.nsISupportsString).data;
 		}
 		catch(e) { return 'QuickFolders'; }
 	},
 
-	getLastSelectedCategory: function() {
-		return this.service.getCharPref("extensions.quickfolders.lastSelectedCategory")
+	get LastSelectedCategory() {
+		return this.getCharPrefQF("lastSelectedCategory");
 	},
+
+	get ColoredTabStyle() {
+		// 0 - filled
+		// 1 - striped
+		return this.getIntPref('colorTabStyle');
+	} ,
+
+	TABS_STRIPED: 0,
+	TABS_FILLED: 1,
 
 	existsCharPref: function(pref) {
 		try {
@@ -196,7 +226,7 @@ QuickFolders.Preferences = {
 			// get rid of preferences that do not start with "preferences." and replace with newer versions.
 			if (this.existsCharPref('QuickFolders.Toolbar.Style.background-color')) {
 				var replacePref = function(id1, id2) {
-					var service = QuickFolders.Preferences.service;
+					let service = QuickFolders.Preferences.service;
 					var origPref = 'QuickFolders.' + id1 + '.Style.' + id2;
 					var sValue = "";
 					// save value set by user (if none, default will create it)
@@ -227,10 +257,10 @@ QuickFolders.Preferences = {
 			if (this.existsBoolPref("extensions.quickfolders.showFlatStyle")) {
 				var theme = QuickFolders.Themes;
 
-				if (this.service.getBoolPref("extensions.quickfolders.showFlatStyle"))
+				if (this.getBoolPrefQF("showFlatStyle"))
 					this.setCurrentThemeId(theme.themes.Flat.Id);
 				else {
-					if (this.service.getBoolPref("extensions.quickfolders.showNativeTabStyle"))
+					if (this.getBoolPrefQF("showNativeTabStyle"))
 						this.setCurrentThemeId(theme.themes.NativeTabs.Id);
 					else
 						this.setCurrentThemeId(theme.themes.ApplePills.Id); // Pills style
@@ -277,52 +307,77 @@ QuickFolders.Preferences = {
 	setUserStyle: function(sId, sType, sValue) {
 		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		this.service.setCharPref(sStyleName, sValue);
-
 	},
 
-	getInstantApplyPref: function() {
-		return this.service.getBoolPref("browser.preferences.instantApply");
+	getIntPreference: function(p) {
+		try {
+			return this.service.getIntPref(p);
+		}
+		catch (ex) {
+			QuickFolders.Util.logException("getIntPref(" + p + ") failed\n", ex);
+			return 0;
+		}
 	},
 
-	setInstantApplyPref: function(b) {
-		return this.service.setBoolPref("browser.preferences.instantApply",b);
-	},
-
-	getIntPref: function(p) {
-		return this.service.getIntPref(p);
-	},
-
-	setIntPref: function(p, v) {
+	setIntPreference: function(p, v) {
 		return this.service.setIntPref(p, v);
+	},
+
+	getBoolPrefSilent: function(p) {
+		try {
+			return this.service.getBoolPref(p);
+		}
+		catch(e) {
+			return false;
+		}
 	},
 
 	getBoolPref: function(p) {
 		try {
 			return this.service.getBoolPref(p);
-		} catch(e) {
-			var s="Err:" +e;
+		}
+		catch(e) {
+			QuickFolders.Util.logException("getBoolPref(" + p + ") failed\n", e);
 			return false;
 		}
 	},
 
 	getBoolPrefQF: function(p) {
-		return QuickFolders.Preferences.getBoolPref("extensions.quickfolders." + p);
+		return this.service.getBoolPref("extensions.quickfolders." + p);
 	},
 
-	getIntPrefQF: function(p) {
-		return QuickFolders.Preferences.getIntPref("extensions.quickfolders." + p);
+	setBoolPrefQF: function(p, v) {
+		return this.service.setBoolPref("extensions.quickfolders." + p, v);
+	},
+	
+	getCharPrefQF: function(p) {
+		return this.service.getCharPref("extensions.quickfolders." + p);
+	},
+	
+	setCharPrefQF: function(p, v) {
+		return this.service.setCharPref("extensions.quickfolders." + p, v);
 	},
 
-	setIntPrefQF: function(p, v) {
-		return this.setIntPref("extensions.quickfolders." + p, v);
+	getIntPref: function(p) {
+		return QuickFolders.Preferences.getIntPreference("extensions.quickfolders." + p);
 	},
 
-	setShowCurrentFolderToolbar: function(b) {
-		return this.service.setBoolPref("extensions.quickfolders.showCurrentFolderToolbar",b);
+	setIntPref: function(p, v) {
+		return this.setIntPreference("extensions.quickfolders." + p, v);
 	},
 
-	isShowCurrentFolderToolbar: function() {
-		return QuickFolders.Preferences.getBoolPrefQF("showCurrentFolderToolbar");
+	setShowCurrentFolderToolbar: function(b, singleMessage) {
+		var tag = "showCurrentFolderToolbar";
+		if (singleMessage)
+			tag = "messageWindow." + tag;
+		return this.service.setBoolPref("extensions.quickfolders." + tag, b);
+	},
+
+	isShowCurrentFolderToolbar: function(singleMessage) {
+		var tag = "showCurrentFolderToolbar";
+		if (singleMessage)
+			tag = "messageWindow." + tag;
+		return QuickFolders.Preferences.getBoolPrefQF(tag, false);
 	},
 
 	setBoolPref: function(p, v) {
@@ -330,20 +385,21 @@ QuickFolders.Preferences = {
 			return this.service.setBoolPref(p, v);
 		} catch(e) {
 			var s="Err:" +e;
+			QuickFolders.Util.logException("setBoolPref(" + p + ") failed\n", e);
 			return false;
 		}
 	} ,
 
-	getCurrentTheme: function() {
-		var id = this.getCurrentThemeId();
+	get CurrentTheme() {
+		var id = this.CurrentThemeId;
 		return QuickFolders.Themes.Theme(id);
 	},
 
-	getCurrentThemeId: function() {
-		return this.service.getCharPref("extensions.quickfolders.style.theme");
+	get CurrentThemeId() {
+		return this.getCharPrefQF("style.theme");
 	},
 
 	setCurrentThemeId: function(t) {
-		return this.service.setCharPref("extensions.quickfolders.style.theme",t);
+		return this.setCharPrefQF("style.theme",t);
 	}
 }

@@ -1,0 +1,39 @@
+
+#qf-reorderButtonTop {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-top.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+#qf-reorderButtonBottom {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-bottom.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+#reorderDownButton {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-down.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+#reorderUpButton {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-up.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+
+#qf-reorderButtonTop[disabled="true"],
+#qf-reorderButtonBottom[disabled="true"],
+#reorderDownButton[disabled="true"],
+#reorderUpButton[disabled="true"]
+{
+	-moz-image-region: rect(16px, 16px, 32px, 0);
+}
+
+
+#serverMenu {
+	min-width: 20em;
+	width:70%;
+}
+
+#qf-FilterCount {  
+	text-align: right;
+}

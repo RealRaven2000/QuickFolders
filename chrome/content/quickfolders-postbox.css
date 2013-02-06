@@ -1,4 +1,7 @@
 
+@import url('chrome://quickfolders/skin/quickfolders-palettes.css');
+@import url('chrome://quickfolders/content/quickfolders-layout.css');
+
 /* Postbox fixes; */
 menupopup.QuickFolders-folder-popup menuitem,
 menupopup.QuickFolders-folder-popup menu
@@ -14,8 +17,8 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     -moz-appearance: none !important;
 }
 
-#QuickFolders-Toolbar.toolbar-native,
-#QuickFolders-Toolbar.toolbar-flat
+#QuickFolders-Toolbar.quickfolders-realTabs,
+#QuickFolders-Toolbar.quickfolders-flat
 {
   -moz-appearance: toolbar !important;
 }

@@ -1,33 +1,36 @@
+
+hbox#qf-header:before {
+	content: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png");
+	margin: 0.2em 0.5em 0em 0.2em;
+}
 hbox#qf-header {
-	background-image: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png") !important;
-    background-position: 10px 10px !important;
-    background-repeat: no-repeat !important;
+	background-image: linear-gradient(to bottom, rgba(154,201,244,1) 0%, rgba(208,228,247,1) 13%, rgba(47,137,216,1) 45%, rgba(83,159,225,1) 77%, rgba(135,188,234,1) 100%);
+	background-repeat: repeat-x;
+	background-color: rgb(154,201,244);
+	color: #fff;
+	padding: 5px 8px;
+	border-radius: 0.8em;
+	border: 1px solid #aaa;
+	box-shadow: inset 0px 0px 10px #666;
 }
 
 description#Explain-Drag {
   Padding: 10px 0px;
 }
 
+#qf-options-header {
+	vertical-align: top;
+	margin-top: 0.5em;
+}
 #qf-options-header .dialogheader-title {
 	margin: 0px !important;
 	font-size: large;
 	font-weight: bold;
+	font-family: calibri,sans-serif;
+	color: none;
 }
 
 
-#qf-options-header {
-	margin: 5px 0px 5px 45px;
-	border: 2px solid;
-	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
-	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
-	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
-	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
-	padding: 5px 8px;
-	background-image: url("chrome://quickfolders/skin/ico/ice-bar-tall.png");
-	background-repeat: repeat-x;
-	background-color: Highlight;
-	color: #000;
-}
 
 
 vbox#myscrollbox {

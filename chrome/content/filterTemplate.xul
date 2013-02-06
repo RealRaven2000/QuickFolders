@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/filterTemplate.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/filters.dtd" >
+
+
+
+<prefwindow title="&qf.filters.title;"
+	id="qf-template"
+	buttons="extra2,cancel,extra1"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttonlabelcancel="&qf.label.cancel;"
+	buttonlabelextra1="&qf.continueFilter.label;"
+	buttonaccesskeyextra1="&qf.continueFilter.shortcut;"
+	buttonlabelextra2="&qf.label.donate;"
+	ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')"
+	ondialogcancel="return QuickFolders.FilterWorker.cancelTemplate();"
+	ondialogextra1="return QuickFolders.FilterWorker.acceptTemplate();"
+	onload="QuickFolders.FilterWorker.loadTemplate();"
+>
+<!--	tooltiptextextra2="&qf.donate.tooltip;" -->
+
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
+	
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_filter" src="chrome://quickfolders/locale/filters.properties"/>
+  </stringbundleset>
+	
+
+	<prefpane id="qf-template-prefpane" >
+
+		<preferences>
+			<preference id="QuickFolders-Preferences-SelectedFilterTemplate" name="extensions.quickfolders.filters.currentTemplate" type="string" />
+		</preferences>
+	
+	
+		<hbox class="myWizard">
+			<vbox>
+				<image id="logo" src="chrome://quickfolders/skin/ico/filterTemplate.png"/>
+				<spacer id="bottomLogo" />
+			</vbox>
+
+			<listbox id="qf-filter-templates"
+			  ondblclick="QuickFolders.FilterWorker.selectTemplate(this);"
+			  onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
+			  preference="QuickFolders-Preferences-SelectedFilterTemplate"
+			  rows="6">
+			    <listitem label='&qf.filters.template.from;' value='from' />
+			    <listitem label='&qf.filters.template.to;' value='to' />
+			    <listitem label='&qf.filters.template.list;' value='list' />
+			    <listitem label='&qf.filters.template.topic;' value='topic' />
+			    <listitem label='&qf.filters.template.tag;' value='tag' />
+			</listbox>
+		</hbox>
+
+		<groupbox id="boxDescription">
+			<description id="templateDescription"></description>
+		</groupbox>
+		
+		<description id="qf-whatToDo">&qf.filters.instructions;</description>
+    </prefpane>
+</prefwindow>
+

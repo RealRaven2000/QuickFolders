@@ -3,6 +3,10 @@
 <!ENTITY qf.label.dragFolderLabel "Превуците фасцикле овде да бисте их додали у омиљена места. Кликните на омиљено место да бисте отишли у фасциклу. Превуците их да бисте их померили/копирали овде.">
 <!ENTITY qf.menuitem.quickfolders.options "QuickFolders - опције">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "О">
+<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Режим за бојење">
+<!ENTITY qf.menuitem.quickfolders.togglePaintModeAccess "б">
+<!ENTITY qf.menuitem.quickfolders.filters "Направи филтере за поруке...">
+<!ENTITY qf.menuitem.quickfolders.filtersAccess "Ф">
 <!ENTITY qf.menuitem.quickfolders.changeOrder "Измени редослед омиљених места">
 <!ENTITY qf.menuitem.quickfolders.changeOrderAccess "И">
 <!ENTITY qf.menuitem.quickfolders.help "Помоћ за QuickFolders">
@@ -18,7 +22,14 @@
 <!ENTITY qf.tooltip.RecentFolders "Недавне фасцикле">
 <!ENTITY qf.tooltip.folderUp "Иди у надређену фасциклу">
 <!ENTITY qf.tooltip.goNextFolder "Пређи на следећу непрочитану поруку">
+<!ENTITY qf.tooltip.quickFoldersNavToggle "пређи кретаће између непрочитаних и свих порука">
 <!ENTITY qf.tooltip.goPreviousFolder "Пређи на претходну непрочитану поруку">
 <!ENTITY qf.tooltip.emailIcon "Тренутна пошта - превуците QuickFolders језичак да бисте преместили пошту">
-<!ENTITY qf.tooltip.threadIcon "Пренутна нит - превуците QuickFolders језичак да бисте преместили разговоре">
+<!ENTITY qf.tooltip.threadIcon "Тренутна тема - превуците QuickFolders језичак да бисте преместили разговоре">
 <!ENTITY qf.tooltip.closeToolbar "Затвори ову траку са алаткама">
+<!ENTITY qf.tooltip.conversationRead "Означи разговоре као прочитане и пређи на следећу непрочитану поруку">
+<!ENTITY qf.tooltip.mainOptions "QuickFolders - опције и напредне наредбе">
+<!ENTITY qf.tooltip.filters "Немој да правиш филтере.">
+<!ENTITY qf.tooltip.filterStart "Активирај учење филтера. Превлачењем порука у QuickFolder направићете нове филтере.">
+<!ENTITY qf.tooltip.mailFolderCommands "Наредбе фасцикле са поштом">
+<!ENTITY qf.tooltip.paintCanActive "Режим за бојење: кликните на палету, потом на језичке, да бисте их обојили, а десним кликом, ако желите да добијете њихову боју.">

@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opções do QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Geral">
+<!ENTITY qf.tab.advanced "Avançado">
 <!ENTITY qf.tab.layout "Incremente minhas Abas!">
 <!ENTITY qf.tab.quickhelp "Ajuda rápida">
 <!ENTITY qf.checkbox.displaylabel "Mostrar o 'QuickFolders' na barra de ferramentas">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Exibir o total de mensagens no botão de cada pasta">
 <!ENTITY qf.checkbox.showCountInSubFolders "Exibir também totais de subpastas">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estes são exibidos separados por um '+' ao lado de suas contagens principais; mensagens não lidas farão também com que a aba fique em negrito se a opção acima for ativada">
+<!ENTITY qf.checkbox.showMessageNavigation "Botões de navegação em mensagens">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
+<!ENTITY qf.checkbox.enableTransitions "Habilitar transições CSS">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Exibir transições suaves entre diversos aspectos de cores de abas.">
+<!ENTITY qf.checkbox.highlightNewMail "Destacar pastas com novas mensagens">
 <!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Aparência">
+<!ENTITY qf.label.behavior "Comportamento">
+<!ENTITY qf.label.mainToolbar "Elementos da barra de ferramentas principal">
+<!ENTITY qf.label.keyboard "Atalhos de teclado">
+<!ENTITY qf.label.menus "Configuração de menu">
 <!ENTITY qf.label.colors "Cores">
 <!ENTITY qf.label.themes "Temas:">
+<!ENTITY qf.label.tabContent "Conteúdo de aba">
+<!ENTITY qf.label.misc "Diversos">
 <!ENTITY qf.button.default "Padrões">
+<!ENTITY qf.label.currentFolderToolbar "Barra de ferramentas da pasta corrente">
+<!ENTITY qf.checkbox.currentFolder.show "Exibir a barra de ferramentas">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…também em janelas de mensagem simples">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Exibir barra de ferramentas da pasta atual na janela que é aberta quando você pedir para abrir um email em nova janela">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Botão de fechar">
+<!ENTITY qf.button.currentFolderBackground.set "definir">
+<!ENTITY qf.currentFolderBackground.custom "personalizado">
+<!ENTITY qf.currentFolderBackground.translucent "translúcido">
+<!ENTITY qf.currentFolderBackground.default "padrão">
+<!ENTITY qf.currentFolderBackground.dark "escuro">
+<!ENTITY qf.caption.currentFolderBackground "Cor de fundo do Current Folder Toolbar">
 <!ENTITY qf.label.setcolors "Definir [Cor de Texto], Cor de Fundo">
 <!ENTITY qf.label.ActiveTabColor "Cor da aba ativa:">
 <!ENTITY qf.label.HoveredTabColor "Cor da aba sob o cursor do mouse:">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Cores padrão">
 <!ENTITY qf.checkbox.debug "Modo Debug">
 <!ENTITY qf.label.StandardTabColor "Cor padrão de abas:">
+<!ENTITY qf.checkbox.usePalette "Usar palheta">
 <!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
 <!ENTITY qf.label.folders "Pastas?">
 <!ENTITY qf.label.folders.tooltip "Copia a configuração de pastas para a área de transferência">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Adicionar uma tradução...">
 <!ENTITY qf.description.donate "Se você adora o QuickFolders tanto quanto nós e gostaria de ajudar seu desenvolvimento, pode doar algum dinheiro para incentivar a evolução do QuickFolders.">
 <!ENTITY qf.label.donateLink "Visitar a página de doações...">
+<!ENTITY qf.label.donate "Doar">
 <!ENTITY qf.description.contactMe "Você pode ainda entrar em contato comigo pessoalmente no email axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Entrar em contato (inglês ou alemão)...">
 <!ENTITY qf.checkbox.showIcons "Exibir ícones (Entrada, Enviados, Spam, Lixeira, Rascunho, Arquivados, Modelos)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subpastas no menu de contexto">
 <!ENTITY qf.checkbox.showRecentTab "Exibir aba de pastas recentes">
+<!ENTITY qf.checkbox.showRecentButton "Botão de pastas recentes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botão direito do mouse para configuração">
+<!ENTITY qf.checkbox.showFilterButton "Botão 'Criar filtros'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Você também pode criar filtros usando o menu de contexto do QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Esconder QuickFolders quando não são necessários">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Recolhe a barra de ferramentas em abas especiais, tais como calendário, conteúdo, gerenciador de extensões.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícone da barra de menu">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Abas nativas">
 <!ENTITY qf.themes.flatTabs.label "Estilo plano">
 <!ENTITY qf.themes.applePills.label "Pílulas da Apple">
+<!ENTITY qf.themes.realButtons.label "Pushbuttons">
 <!ENTITY qf.themes.flatButtons.label "Botões da barra de ferramentas">
 <!ENTITY qf.options.theme.pastelColors "Cores pastel">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Arredondamento de cantos personalizado">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Relatar um bug / Pedir uma nova funcionalidade com o Bugzilla...">
 <!ENTITY qf.description.versionhistory "Histórico de versões detalhado no mozdev.org">
 <!ENTITY qf.label.versionhistory "Leia o histórico de versões...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Receber mensagens (contas de email)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Receber mensagens (contas de notícias)">
+<!ENTITY qf.checkbox.menus.markAllRead "Marcar pasta como lida">
+<!ENTITY qf.checkbox.menus.emptyJunk "Esvaziar lixeira">
+<!ENTITY qf.checkbox.menus.emptyTrash "Esvaziar lixeira">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastar para nova subpasta">

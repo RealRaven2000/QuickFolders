@@ -3,6 +3,10 @@
 <!ENTITY qf.label.dragFolderLabel "Для создания закладки перетащите папку сюда. Нажмите на закладку для перехода в папку, перетащите сообщения на закладку для перемещения/копирования их в соответствующую папку.">
 <!ENTITY qf.menuitem.quickfolders.options "Настройки QuickFolders">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "Н">
+<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Режим раскраски">
+<!ENTITY qf.menuitem.quickfolders.togglePaintModeAccess "р">
+<!ENTITY qf.menuitem.quickfolders.filters "Создать фильтр сообщений...">
+<!ENTITY qf.menuitem.quickfolders.filtersAccess "ф">
 <!ENTITY qf.menuitem.quickfolders.changeOrder "Изменить порядок закладок">
 <!ENTITY qf.menuitem.quickfolders.changeOrderAccess "И">
 <!ENTITY qf.menuitem.quickfolders.help "Справка QuickFolders">
@@ -18,7 +22,14 @@
 <!ENTITY qf.tooltip.RecentFolders "Последние папки">
 <!ENTITY qf.tooltip.folderUp "Перейти к вышестоящей папке">
 <!ENTITY qf.tooltip.goNextFolder "К следующему не прочтенному сообщению">
+<!ENTITY qf.tooltip.quickFoldersNavToggle "переключает навигацию между всеми / не прочтенными сообщениями">
 <!ENTITY qf.tooltip.goPreviousFolder "К предыдущему не прочтенному сообщению">
 <!ENTITY qf.tooltip.emailIcon "Текущее сообщение - перетащите на закладку QuickFolders для перемещения.">
 <!ENTITY qf.tooltip.threadIcon "Текущее обсуждение - перетащите на закладку QuickFolders для перемещения.">
 <!ENTITY qf.tooltip.closeToolbar "Закрыть эту панель инструментов">
+<!ENTITY qf.tooltip.conversationRead "Отметить обсуждение как прочитанное и перейти к следующему не прочтенному сообщению">
+<!ENTITY qf.tooltip.mainOptions "Настройки QuickFolders и дополнительные команды">
+<!ENTITY qf.tooltip.filters "Прекратить создавать фильтры сообщений.">
+<!ENTITY qf.tooltip.filterStart "Активирует создание фильтров. Перетаскивание сообщений в QuickFolder создает новые фильтры.">
+<!ENTITY qf.tooltip.mailFolderCommands "Команды почтовых папок">
+<!ENTITY qf.tooltip.paintCanActive "Режим раскраски: показывает палитру, нажатие на закладку ее раскрасит, правой кнопкой мышки узнайте цвет закладки.">

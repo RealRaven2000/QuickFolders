@@ -1,24 +1,35 @@
-<!ENTITY qf.toolbar.quickfolders.toolbar "QuickFolders Toolbar">
+<!ENTITY qf.toolbar.quickfolders.toolbar "QuickFolders-werkbalk">
 <!ENTITY qf.label.quickfolders "QuickFolders:">
-<!ENTITY qf.label.dragFolderLabel "Sleep folders hier om te bookmarken. Klik de bookmark aan om naar de folder te gaan, sleep berichten om ze te verplaatsen/kopiëren.">
-<!ENTITY qf.menuitem.quickfolders.options "QuickFolders Opties">
+<!ENTITY qf.label.dragFolderLabel "Sleep mappen hierheen om een tabblad te maken. Klik op het tabblad om naar de map te gaan, sleep berichten om ze te verplaatsen/kopiëren.">
+<!ENTITY qf.menuitem.quickfolders.options "QuickFolders-opties…">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "O">
-<!ENTITY qf.menuitem.quickfolders.changeOrder "Wijzig de volgorde van de bookmarks">
+<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Verfmodus">
+<!ENTITY qf.menuitem.quickfolders.togglePaintModeAccess "V">
+<!ENTITY qf.menuitem.quickfolders.filters "Berichtfilters aanmaken…">
+<!ENTITY qf.menuitem.quickfolders.filtersAccess "F">
+<!ENTITY qf.menuitem.quickfolders.changeOrder "Volgorde van de tabbladen wijzigen">
 <!ENTITY qf.menuitem.quickfolders.changeOrderAccess "W">
-<!ENTITY qf.menuitem.quickfolders.help "QuickFolders Hulp...">
+<!ENTITY qf.menuitem.quickfolders.help "QuickFolders-hulp…">
 <!ENTITY qf.menuitem.quickfolders.helpAccess "H">
-<!ENTITY qf.menuitem.quickfolders.support "QuickFolders Support...">
+<!ENTITY qf.menuitem.quickfolders.support "QuickFolders-ondersteuning…">
 <!ENTITY qf.menuitem.quickfolders.supportAccess "S">
-<!ENTITY qf.menuitem.quickfolders.repairTabs "Zichtbare Tabs Vernieuwen!">
+<!ENTITY qf.menuitem.quickfolders.repairTabs "Zichtbare tabbladen verversen!">
 <!ENTITY qf.menuitem.quickfolders.repairTabsAccess "V">
-<!ENTITY qf.menuitem.quickfolders.deleteDeadTabs "Vind ouderloze Tabs">
+<!ENTITY qf.menuitem.quickfolders.deleteDeadTabs "Verweesde tabbladen zoeken">
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabsAccess "T">
-<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Gereedschappen voor huidige folder weergeven">
+<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Hulpmiddelen voor huidige folder weergeven">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbarAccessKey "D">
-<!ENTITY qf.tooltip.RecentFolders "Recente folders">
+<!ENTITY qf.tooltip.RecentFolders "Recente mappen">
 <!ENTITY qf.tooltip.folderUp "Naar bovenliggende folder">
-<!ENTITY qf.tooltip.goNextFolder "Naar de volgende ongelezen boodschap">
-<!ENTITY qf.tooltip.goPreviousFolder "Naar de vorige ongelezen boodschap">
-<!ENTITY qf.tooltip.emailIcon "Huidige Email - sleep naar QuickFolders tab om email te verplaatsen">
-<!ENTITY qf.tooltip.threadIcon "Huidige conversatie - sleep naar QuickFolders tab om conversatie te verplaatsen">
+<!ENTITY qf.tooltip.goNextFolder "Naar het volgende [ongelezen] bericht">
+<!ENTITY qf.tooltip.quickFoldersNavToggle "navigeren door alleen ongelezen / alle berichten wisselen">
+<!ENTITY qf.tooltip.goPreviousFolder "Naar het vorige [ongelezen] bericht">
+<!ENTITY qf.tooltip.emailIcon "Huidig e-mailbericht - sleep naar een QuickFolders-tabblad om het e-mailbericht te verplaatsen">
+<!ENTITY qf.tooltip.threadIcon "Huidige conversatie - sleep naar een QuickFolders-tabblad om conversatie te verplaatsen">
 <!ENTITY qf.tooltip.closeToolbar "Deze werkbalk sluiten">
+<!ENTITY qf.tooltip.conversationRead "Conversatie als gelezen markeren en naar volgend bericht springen">
+<!ENTITY qf.tooltip.mainOptions "QuickFolders-opties en geavanceerde opdrachten">
+<!ENTITY qf.tooltip.filters "Aanmaken van filters stoppen.">
+<!ENTITY qf.tooltip.filterStart "Filterleren activeren. Slepen van e-mailberichten naar een QuickFolder maakt nieuwe filters aan.">
+<!ENTITY qf.tooltip.mailFolderCommands "E-mailmapopdrachten">
+<!ENTITY qf.tooltip.paintCanActive "Verfmodus: klik voor palet, klik op tabbladen om ze te kleuren, rechtsklik op tabbladen om de kleur te selecteren">

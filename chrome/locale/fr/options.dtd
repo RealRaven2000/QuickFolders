@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Options de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Générales">
+<!ENTITY qf.tab.advanced "Avancées">
 <!ENTITY qf.tab.layout "Personnaliser mes onglets !">
 <!ENTITY qf.tab.quickhelp "Aide rapide">
 <!ENTITY qf.checkbox.displaylabel "Afficher le libellé « QuickFolders » dans la barre d'outils">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Afficher le nombre total de messages sur le bouton du dossier">
 <!ENTITY qf.checkbox.showCountInSubFolders "Afficher également tous les sous-dossiers">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Ils sont affichés séparés par un « + » à côté de leur compte principal ; s'ils contiennent des messages non lus, l'onglet sera également en gras si l'option ci-dessus a été activée.">
+<!ENTITY qf.checkbox.showMessageNavigation "Boutons de navigation entre les messages">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Afficher les boutons des dossiers contenant des messages en italique">
+<!ENTITY qf.checkbox.enableTransitions "Activer les transitions CSS">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Affiche des transitions fluides entre différents aspects de coloration d'onglet.">
+<!ENTITY qf.checkbox.highlightNewMail "Mettre en surbrillance les dossiers contenant de nouveaux messages">
 <!ENTITY qf.label.buttonFontSize "Taille de la police des boutons (vide pour laisser la valeur par défaut) :">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Apparence">
+<!ENTITY qf.label.behavior "Comportement">
+<!ENTITY qf.label.mainToolbar "Éléments de la barre d'outils principale">
+<!ENTITY qf.label.keyboard "Raccourcis clavier">
+<!ENTITY qf.label.menus "Configuration de menu">
 <!ENTITY qf.label.colors "Couleurs">
 <!ENTITY qf.label.themes "Thèmes :">
+<!ENTITY qf.label.tabContent "Contenu d'onglet">
+<!ENTITY qf.label.misc "Divers">
 <!ENTITY qf.button.default "Par défaut">
+<!ENTITY qf.label.currentFolderToolbar "Barre d'outils du dossier courant">
+<!ENTITY qf.checkbox.currentFolder.show "Afficher la barre d'outils">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…également dans les fenêtres de message">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Afficher la barre d'outils du dossier courant dans la fenêtre qui s'ouvre quand vous ouvrez le courriel dans une nouvelle fenêtre">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Bouton de fermeture">
+<!ENTITY qf.button.currentFolderBackground.set "défini">
+<!ENTITY qf.currentFolderBackground.custom "personnalisé">
+<!ENTITY qf.currentFolderBackground.translucent "translucide">
+<!ENTITY qf.currentFolderBackground.default "défaut">
+<!ENTITY qf.currentFolderBackground.dark "sombre">
+<!ENTITY qf.caption.currentFolderBackground "Fond de la barre d'outils du dossier courant">
 <!ENTITY qf.label.setcolors "Définition de [la couleur du texte] [la couleur de fond]">
 <!ENTITY qf.label.ActiveTabColor "Onglet actif :">
 <!ENTITY qf.label.HoveredTabColor "Onglet survolé :">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Par défaut">
 <!ENTITY qf.checkbox.debug "Mode débogage">
 <!ENTITY qf.label.StandardTabColor "Onglet standard :">
+<!ENTITY qf.checkbox.usePalette "Utiliser la palette">
 <!ENTITY qf.label.initdelay "[ms] délai initial {1000 par défaut} :">
 <!ENTITY qf.label.folders "Dossiers ?">
 <!ENTITY qf.label.folders.tooltip "Copie la chaîne de caractères de configuration des dossiers vers le presse-papiers">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Ajouter une traduction…">
 <!ENTITY qf.description.donate "Si vous aimez QuickFolders autant que nous et que vous souhaitez soutenir son développement, vous pouvez faire un don pour faire évoluer QuickFolders.">
 <!ENTITY qf.label.donateLink "Se rendre à la page de donation…">
+<!ENTITY qf.label.donate "Faire un don">
 <!ENTITY qf.description.contactMe "Vous pouvez également me contacter personnellement (axelg@gofree.indigo.ie) :">
 <!ENTITY qf.label.contactLink "Me contacter (en anglais ou en allemand)…">
 <!ENTITY qf.checkbox.showIcons "Afficher les icônes (« Courrier entrant », « Envoyés », « Dossier ouvert », « Corbeille »)">
 <!ENTITY qf.checkbox.showSubfolders "Développer les sous-dossiers dans des menus popup">
 <!ENTITY qf.checkbox.showRecentTab "Afficher l'onglet des dossiers récents">
+<!ENTITY qf.checkbox.showRecentButton "Bouton des dossiers récents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic droit pour la configuration">
+<!ENTITY qf.checkbox.showFilterButton "Bouton « Créer des filtres »">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Vous pouvez également créer des filtres en utilisant le menu contextuel de QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Masquer la barre d'outils si elle n'est pas nécessaire">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Masque/affiche la barre d'outils dans les onglets spéciaux tels que le calendrier, le contenu, le gestionnaire de modules.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icône du menu de la barre d'outils">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Onglets natifs">
 <!ENTITY qf.themes.flatTabs.label "Style plat">
 <!ENTITY qf.themes.applePills.label "Apple pills">
+<!ENTITY qf.themes.realButtons.label "Boutons poussoirs">
 <!ENTITY qf.themes.flatButtons.label "Boutons de barre d'outils">
 <!ENTITY qf.options.theme.pastelColors "Couleurs pastelles">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Coins arrondis personnalisés">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Signaler un bogue / demander une nouvelle fonctionnalité avec Bugzilla…">
 <!ENTITY qf.description.versionhistory "Historique de version détaillé sur mozdev.org">
 <!ENTITY qf.label.versionhistory "Lire l'historique de version…">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Relever les messages (Comptes courriel)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Relever les messages (Comptes actualités)">
+<!ENTITY qf.checkbox.menus.markAllRead "Marquer le dossier comme lu">
+<!ENTITY qf.checkbox.menus.emptyJunk "Vider le dossier des indésirables">
+<!ENTITY qf.checkbox.menus.emptyTrash "Vider la corbeille">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Glisser vers un nouveau sous-dossier">

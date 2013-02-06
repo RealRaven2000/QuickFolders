@@ -1,12 +1,13 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Einstellungen">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Allgemein">
+<!ENTITY qf.tab.advanced "Erweitert">
 <!ENTITY qf.tab.layout "Layout">
 <!ENTITY qf.tab.quickhelp "Hilfe">
-<!ENTITY qf.checkbox.displaylabel "'QuickFolders' Titel im Toolbar anzeigen">
+<!ENTITY qf.checkbox.displaylabel "'QuickFolders' Titel in Werkzeugleiste anzeigen">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Tastaturkürzel aktivieren (Alt + 1 bis Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Strg statt Alt">
-<!ENTITY qf.checkbox.useRebuildShortcut "Tabs erneuern mit Strg + Alt + ">
+<!ENTITY qf.checkbox.useRebuildShortcut "Tabs erneuern mit Strg + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Links / ALT-Rechts für voriges / nächstes Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Tastaturkürzel auf den Tabs anzeigen">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Anzahl der ungelesenen Mails anzeigen">
@@ -14,22 +15,43 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Anzahl aller Mails auf Tabs zeigen">
 <!ENTITY qf.checkbox.showCountInSubFolders "Auch die Anzahlen aus Unterverzeichnissen darstellen">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Diese werden mit einem '+' neben dem jeweiligen Hauptzähler dargestellt; bei in Unterverzeichnissen enthaltenen ungelesenen EMails wird auch fett hervorgehoben falls obige Option aktiviert ist.">
+<!ENTITY qf.checkbox.showMessageNavigation "Schaltflächen zum Navigieren der EMails">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabs die Emails enthalten kursiv darstellen">
+<!ENTITY qf.checkbox.enableTransitions "CSS Transitionen zeigen">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "überblendet die verschiedenen Farben vom Layout allmählich.">
+<!ENTITY qf.checkbox.highlightNewMail "Verzeichnisse mit neuer Post hervorheben">
 <!ENTITY qf.label.buttonFontSize "Schriftgrösse (leer für Standardeinstellung):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.appearance "Aussehen">
+<!ENTITY qf.label.behavior "Verhalten bei Aktionen">
+<!ENTITY qf.label.mainToolbar "Elemente der Werkzeugleiste">
+<!ENTITY qf.label.keyboard "Hotkeys">
+<!ENTITY qf.label.menus "Menü-Konfiguration">
 <!ENTITY qf.label.colors "Farben">
 <!ENTITY qf.label.themes "Themes:">
-<!ENTITY qf.button.default "Standardwerte">
+<!ENTITY qf.label.tabContent "Tab Inhalte">
+<!ENTITY qf.label.misc "Etcetera">
+<!ENTITY qf.button.default "Standardeinstellungen">
+<!ENTITY qf.label.currentFolderToolbar "Werkzeugleiste Aktiv-Verzeichnis">
+<!ENTITY qf.checkbox.currentFolder.show "Werkzeugleiste anzeigen">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…auch im eigenen Mail Fenster">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Die Aktiv-Verzeichnis Werkzeuge anzeigen, wenn eine einzelne Email in neuem Fenster geöffnet wird">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Schliessen Schaltfläche">
+<!ENTITY qf.button.currentFolderBackground.set "aktualisieren">
+<!ENTITY qf.currentFolderBackground.translucent "Milchglas">
+<!ENTITY qf.currentFolderBackground.custom "benutzerdefiniert">
+<!ENTITY qf.currentFolderBackground.default "standard">
+<!ENTITY qf.currentFolderBackground.dark "dunkel">
+<!ENTITY qf.caption.currentFolderBackground "Hintergrund Aktiv-Verzeichnis">
 <!ENTITY qf.label.setcolors "Farben für [Text], Hintergrund">
 <!ENTITY qf.label.ActiveTabColor "Farbe Aktives Tab:">
 <!ENTITY qf.label.HoveredTabColor "Farbe Hovered Tab:">
 <!ENTITY qf.label.DragOverBackground "Drag und Drop:">
 <!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
-<!ENTITY qf.description.dragToAdd "Ziehen Sie die Mail Verzeichnisse auf eine leere Fläche des quickfolder toolbars. Dies erzeugt einen neuen Tab, der wie eine Verknüpfung funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen.">
+<!ENTITY qf.description.dragToAdd "Ziehen Sie ihre Mail Verzeichnisse auf eine leere Fläche der QuickFolders Werkzeugleiste. Dies erzeugt einen neuen Tab, der wie eine Verknüpfung funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen.">
 <!ENTITY qf.description.dragToPosition "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. 'Umbenennen' ändert den Titel des Tabs. 'Tab löschen' entfernt den Tab (nicht das Mail-Verzeichnis).">
 <!ENTITY qf.description.dragToPopup "Ziehen Sie Mails auf das Kontextmenü um sie in Unterverzeichnisse zu verschieben.">
-<!ENTITY qf.description.changeCategory "Per Rechts-klick kann man die Tabs kategorisieren. Ein Kategorie Filter wird dann links der Tabs angezeigt.">
+<!ENTITY qf.description.changeCategory "Per Rechts-klick kann man die Tabs kategorisieren. Am linken Ende der QuickFolders Werkzeugleiste wird dann ein Aufklappmenü angezeigt womit man eine Untergruppe von Tabs anzeigen kann.">
 <!ENTITY qf.description.rightClickOptions "Rechts-klick auf den Toolbar für die Optionen. Dort gibt es native style (Tabs als Schaltflächen) oder flat style (klarer und mit Drag Anzeige).">
 <!ENTITY qf.description.tipMsg "Tip: Falls Sie sehr viele Verzeichnisse haben, probieren Sie auch die Nostalgy extension.">
 <!ENTITY qf.description.experimentalItems "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert.">
@@ -37,26 +59,31 @@
 <!ENTITY qf.button.defaultcolors "Standard Farben">
 <!ENTITY qf.checkbox.debug "Debug Modus">
 <!ENTITY qf.label.StandardTabColor "Normale Tab Farbe:">
+<!ENTITY qf.checkbox.usePalette "Palette benutzen">
 <!ENTITY qf.label.initdelay "[ms] init Verzögerung {1000=standard}:">
 <!ENTITY qf.label.folders "Verzeichnisse?">
 <!ENTITY qf.label.folders.tooltip "Kopiert den kompletten String der Verzeichnis Konfiguration in die Zwischenablage">
 <!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
-<!ENTITY qf.label.homePage "Mehr Infos, Doku (Englisch) und Forum auf der neuen QuickFolders Homepage (mozdev.org)...">
+<!ENTITY qf.label.homePage "Mehr Infos, Doku (Englisch) und Forum auf der neuen QuickFolders Homepage (mozdev.org)…">
 <!ENTITY qf.tab.support "Support">
 <!ENTITY qf.description.languages "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf Babelzilla:">
-<!ENTITY qf.label.languagesLink "Neue Übersetzung...">
+<!ENTITY qf.label.languagesLink "Neue Übersetzung…">
 <!ENTITY qf.description.donate "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:">
-<!ENTITY qf.label.donateLink "Die Spenden-Seite besuchen...">
+<!ENTITY qf.label.donate "Spenden">
+<!ENTITY qf.label.donateLink "Die Spenden-Seite besuchen…">
 <!ENTITY qf.description.contactMe "Sie können mich auch jederzeit persönlich unter axelg@gofree.indigo.ie kontaktieren:">
-<!ENTITY qf.label.contactLink "Mail an Axel (Deutsch oder Englisch)...">
+<!ENTITY qf.label.contactLink "Mail an Axel (Deutsch oder Englisch)…">
 <!ENTITY qf.checkbox.showIcons "Icons anzeigen (Posteingang, Gesendet, Junk, Papierkorb, Entwurf, Muster, Archiv)">
 <!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs (Experimentell)">
 <!ENTITY qf.checkbox.showRecentTab "Letzte Ordner Tab anzeigen">
+<!ENTITY qf.checkbox.showRecentButton "Letzte Ordner Schaltfläche">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklick für weitere Konfiguration">
+<!ENTITY qf.checkbox.showFilterButton "Schaltfläche zum 'Filter Lernmodus'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Der Filter Lernmodus lässt sich auch über das QuickFolders Kontextmenü starten.">
 <!ENTITY qf.checkbox.autoHideToolbar "QuickFolders ausblenden wenn unnötig">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Versteckt die Werkzeugleiste in bestimmten Tabs, wie z.B. Kalender (Lightning), Addon Manager.">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Versteckt die Werkzeugleiste bei Aktivierung bestimmter Thunderbird Tabs, wie z.B. Kalender (Lightning), Addon Manager.">
 <!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menü Icon">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dieses Menü kann auch durch Rechtsklick auf den Toolbar selbst aufgerufen werden">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dies Menü kann auch durch Rechtsklick auf den Toolbar selbst aufgerufen werden">
 <!ENTITY qf.menu.tabColor "Ohne Farbe!">
 <!ENTITY qf.menu.Color "Farbe">
 <!ENTITY qf.options.LayoutColorAppearance "Individuelle Tab-Farben">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Native Tabs">
 <!ENTITY qf.themes.flatTabs.label "Flat Style">
 <!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.realButtons.label "Standard Buttons">
 <!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
 <!ENTITY qf.options.theme.pastelColors "Pastel Farben">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Abgerundete Ecken">
@@ -81,6 +109,12 @@
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Diese Option nur aktivieren falls Ihr Mail Programm die Unterverzeichnisse selbst nicht korrekt sortiert.">
 <!ENTITY qf.options.versionnumber.tooltip "Rechts-klick um die Versionsgeschichte zu sehen.">
 <!ENTITY qf.description.bugzilla "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte Bugzilla verwenden.">
-<!ENTITY qf.label.bugzilla "Bug melden oder Neues Feature vorschlagen mit Bugzilla...">
+<!ENTITY qf.label.bugzilla "Bug melden oder Neues Feature vorschlagen mit Bugzilla…">
 <!ENTITY qf.description.versionhistory "Detailierte Versionsgeschichte bei mozdev.org">
-<!ENTITY qf.label.versionhistory "Versionsgeschichte lesen...">
+<!ENTITY qf.label.versionhistory "Versionsgeschichte lesen…">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Nachrichten abrufen (Mailkonto)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Nachrichten abrufen (Newskonto)">
+<!ENTITY qf.checkbox.menus.markAllRead "Ordner as gelesen markieren">
+<!ENTITY qf.checkbox.menus.emptyJunk "Junk löschen">
+<!ENTITY qf.checkbox.menus.emptyTrash "Papierkorb Leeren">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Drag+Drop in Neues Verzeichnis">

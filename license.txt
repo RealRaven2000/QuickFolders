@@ -1,0 +1,114 @@
+LICENSE
+
+QuickFolders is released under the GNU GPL Version 3.
+
+All contents of this file are subject to the GNU General Public License Version 3
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the complete License at
+http://www.gnu.org/licenses/gpl-3.0.txt
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+If you use large portions of the code please attribute to the authors
+(Axel Grude, Alexander Malfait)
+
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You can download a copy of the GNU General Public License at
+http://www.gnu.org/licenses/gpl-3.0.txt or get a free printed
+copy by writing to:
+  Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
+
+
+ATTRIBUTIONS
+
+QuickFolders includes work by:
+Axel Grude: Current developer
+Alexander Malfait: intial creation and development of large portions of the code up
+  to version 1.0. For detailed list of who did what, refer to quickfolders.js
+Richard Gibson: Scrolling Menus bugfix (see "scrollPatch" subfolder)
+Jean Bernard Marcon: Initial code for localization
+Christopher White: Mac Styling and additional theming engine development
+
+Translations - the current list of translators is listed in the install.rdf and
+displayed on the "about" dialog. (Add-ons Manager / About)
+
+FUGUE ICON SET
+Fugue Icons are by Yusuke Kamiyamane under Creative Commons, see: http://p.yusukekamiyamane.com
+broom.png                 =>  Find orphaned tabs
+fugue-paint-can.png      => palette mode
+rubber-balloons.png      => categories
+
+Fugue Composites
+fugue-arrow-bottom.png    
+fugue-arrow-down.png
+fugue-arrow-top.png
+fugue-arrow-up.png
+fugue-down.png
+fugue-next.png
+fugue-previous.png
+fugue-up.png
+fugue-nw.png             => parent folder
+
+Fugue Derivatives - Based on Fugue Icons
+folderCommand.png
+folder-properties.png
+folder-rename.png
+folder-search.png
+fugue-next-conversation.png
+msgNavigate.png
+
+
+CRYSTAL ICON SET
+the following icons are from Everaldo's Crystal Icon set; The Crystal Project are released under LGPL
+see http://www.everaldo.com/crystal/?action=license for details.
+
+ablist-item.png  =>  Adress book users - everaldo-crystal
+close.png
+cogwheel.png
+compact.png
+copy.png
+delete.png
+Drag-Tabs.gif
+dropDown.gif
+dropLeft.gif
+dropRight.gif
+dropUp.gif
+folder-archive.png
+folder-draft.png
+folder-inbox.png
+folder-junk.png
+folder-news.png
+folder-open.png
+folder-sent.png
+folder-template.png
+folder-trash.png
+folder-trash.png
+folder-unsent.png
+folder-up.png
+folder-virtual.png
+history.png
+info16.png
+message-mail.png
+next.png
+order.gif
+palette.png
+previous.png
+question.png
+reload.png
+rename.gif
+settings.png
+settings-20.png
+tb-anchor.png
+thread.png
+toolbar.png
+wrench.png

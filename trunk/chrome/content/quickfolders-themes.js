@@ -8,7 +8,7 @@ QuickFolders.Themes = {
 			 name:"Flat Style"
 			,Id:"flatTabs"
 			,author:"Axel Grude"
-			,cssToolbarClassName: 'toolbar-flat'
+			,cssToolbarClassName: 'quickfolders-flat'
 			,supportsFeatures: {
 				 stateColors: true
 				,individualColors: true
@@ -29,7 +29,7 @@ QuickFolders.Themes = {
 			 name:"Apple Pills"
 			,Id:"applePills"
 			,author:"Christopher White"
-			,cssToolbarClassName: 'pills'
+			,cssToolbarClassName: 'quickfolders-pills'
 			,supportsFeatures: {
 				 stateColors: false
 				,individualColors: true
@@ -50,7 +50,7 @@ QuickFolders.Themes = {
 			 name:"Native Tabs"
 			,Id:"nativeTabs"
 			,author:"Your OS ;)"
-			,cssToolbarClassName: 'toolbar-native'
+			,cssToolbarClassName: 'quickfolders-realTabs'
 			,supportsFeatures: {
 				 stateColors: false
 				,individualColors: false
@@ -71,7 +71,28 @@ QuickFolders.Themes = {
 			 name:"Toolbar Buttons"
 			,Id:"flatButtons"
 			,author:"Alexander Malfait"
-			,cssToolbarClassName: 'toolbar-buttons'
+			,cssToolbarClassName: 'quickfolders-toolbarbuttons'
+			,supportsFeatures: {
+				 stateColors: false
+				,individualColors: false
+				,standardTabColor: true
+				,pastelColors: false
+				,specialIcons: true
+				,buttonShadows: true
+				,buttonInnerShadows: false
+				,supportsFontSelection: false
+				,supportsFontSize: true
+				,cornerRadius: false
+				,borderToggle: false
+				,tabTransparency: true
+			}
+		} ,
+		
+		RealButtons: {
+			 name:"Buttons"
+			,Id:"realButtons"
+			,author:"Axel Grude"
+			,cssToolbarClassName: 'quickfolders-realbuttons'
 			,supportsFeatures: {
 				 stateColors: false
 				,individualColors: false
@@ -87,6 +108,7 @@ QuickFolders.Themes = {
 				,tabTransparency: true
 			}
 		}
+/* end of themes list */	
 	} ,
 
 	Theme : function(id) {
@@ -95,7 +117,8 @@ QuickFolders.Themes = {
 			if (id == obj.Id)
 				return obj;
 		}
-		return null;
+		// if no theme is found, let's default to flatTabs
+		return this.themes['Flat'];
 
 	}
 

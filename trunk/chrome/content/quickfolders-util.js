@@ -8,11 +8,16 @@ END LICENSE BLOCK */
 
 var QuickFolders_ConsoleService=null;
 
-if (!QuickFolders.StringBundle)
-	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
+if (!QuickFolders.StringBundleSvc)
+	QuickFolders.StringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 if (!QuickFolders.Properties)
-	QuickFolders.Properties = QuickFolders.StringBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties");
+	QuickFolders.Properties =
+		QuickFolders.StringBundleSvc.createBundle("chrome://quickfolders/locale/quickfolders.properties")
+			.QueryInterface(Components.interfaces.nsIStringBundle);
 
+if (!QuickFolders.Filter)
+	QuickFolders.Filter = {};
+	
 // code moved from options.js
 // open the new content tab for displaying support info, see
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
@@ -34,7 +39,7 @@ var QuickFolders_TabURIopener = {
 				}
 			}
 			if (tabmail) {
-				sTabMode = (QuickFolders.Util.Application() == "Thunderbird" && QuickFolders.Util.Appver()>=3) ? "contentTab" : "3pane";
+				sTabMode = (QuickFolders.Util.Application == "Thunderbird") ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
 			}
@@ -52,11 +57,14 @@ var QuickFolders_TabURIopener = {
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-
-	HARCODED_EXTENSION_VERSION : "2.9hc",
+  _isCSSGradients: -1,
+	_isCSSRadius: -1,
+	_isCSSShadow: -1,
+	HARDCODED_EXTENSION_VERSION : "3.10",
+	HARDCODED_EXTENSION_TOKEN : ".hc",
 	Constants : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
-		MSG_FOLDER_FLAG_TRASH 	: 0x0100,
+		MSG_FOLDER_FLAG_TRASH 	  : 0x0100,
 		MSG_FOLDER_FLAG_SENTMAIL	: 0x0200,
 		MSG_FOLDER_FLAG_DRAFTS	: 0x0400,
 		MSG_FOLDER_FLAG_QUEUE 	: 0x0800,
@@ -65,24 +73,40 @@ QuickFolders.Util = {
 		MSG_FOLDER_FLAG_JUNK		: 0x40000000,
 		MSG_FOLDER_FLAG_SMART 	: 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
 		MSG_FOLDER_FLAG_ARCHIVE	: 0x4004, // another guess ?
-		MSG_FOLDER_FLAG_VIRTUAL   : 0x0020
+		MSG_FOLDER_FLAG_VIRTUAL : 0x0020,
+		MSG_FOLDER_FLAG_GOTNEW  : 0x00020000
 	},
 	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 	VersionProxyRunning: false,
-	mAppver: null, 
-	mAppName: null, 
-	mHost: null, 
-	mPlatformVer: null, 
+	mAppver: null,
+	mAppName: null,
+	mHost: null,
+	mPlatformVer: null,
 	mExtensionVer: null,
 	lastTime: 0,
 
 	$: function(id) {
-		return document.getElementById(id);
+		// get an element from the main window for manipulating
+		var doc=document; // we want the main document
+		if (doc.documentElement && doc.documentElement.tagName) {
+			if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
+// 				if (!QuickFolders.doc) {
+					var mail3PaneWindow = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
+											 .getService(QuickFolders_CI.nsIWindowMediator)
+											 .getMostRecentWindow("mail:3pane");
+					if (mail3PaneWindow && mail3PaneWindow.document)
+						doc = mail3PaneWindow.document;
+// 				}
+// 				else
+// 					doc = QuickFolders.doc;
+			}
+		}
+		return doc.getElementById(id);
 	} ,
 
-	AppverFull: function() {
+	get ApplicationVersion() {
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
 		return appInfo.version;
@@ -90,13 +114,13 @@ QuickFolders.Util = {
 
 	Appver: function() {
 		if (null == this.mAppver) {
-		var appVer=this.AppverFull().substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
+		var appVer=this.ApplicationVersion.substr(0,4);
 			this.mAppver = parseFloat(appVer); // quick n dirty!
 		}
 		return this.mAppver;
 	},
 
-	Application: function() {
+	get Application() {
 		if (null==this.mAppName) {
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
@@ -122,7 +146,7 @@ QuickFolders.Util = {
 		return this.mAppName;
 	},
 
-	HostSystem: function() {
+	get HostSystem() {
 		if (null==this.mHost) {
 			var osString = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULRuntime).OS;
@@ -130,90 +154,102 @@ QuickFolders.Util = {
 		}
 		return this.mHost; // linux - winnt - darwin
 	},
-	
+
+	// detect current QuickFolders version and storing it in mExtensionVer
+	// this is done asynchronously, so it respawns itself
 	VersionProxy: function() {
 		try {
-			if(this.mExtensionVer) 
-				return; // early exit, we got the version!
-			if (QuickFolders.Util.VersionProxyRunning)
-				return; // do not allow recursion...
+			if (QuickFolders.Util.mExtensionVer // early exit, we got the version!
+				||
+			    QuickFolders.Util.VersionProxyRunning) // no recursion...
+				return;
 			QuickFolders.Util.VersionProxyRunning = true;
 			QuickFolders.Util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
 			if (Components.utils.import) {
 				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				
+
 				AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
+					let versionLabel = window.document.getElementById("qf-options-header-description");
+					if (versionLabel) versionLabel.setAttribute("value", addon.version);
+
 					let u = QuickFolders.Util;
 					u.mExtensionVer = addon.version;
-					u.logDebug("================================================\n" +
-					           "================================================");
 					u.logDebug("AddonManager: QuickFolders extension's version is " + addon.version);
-					u.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + u.mExtensionVer + "\n" + "Running on " + u.Application()	 + " Version " + u.AppverFull());
-					u.logDebug("================================================\n" +
-					           "================================================");
-					u.FirstRun.init();
-	
+					u.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + u.mExtensionVer + "\n" + "Running on " + u.Application	 + " Version " + u.ApplicationVersion);
+					// make sure we are not in options window
+					if (!versionLabel)
+						u.FirstRun.init();
+
 				});
 			}
-			
+
 			QuickFolders.Util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
-			
+
 		}
 		catch(ex) {
-			QuickFolders.Util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + QuickFolders.Util.Application() + "?"
+			QuickFolders.Util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + QuickFolders.Util.Application + "?"
 				+ "\n" + ex);
 		}
 		finally {
 			QuickFolders.Util.VersionProxyRunning=false;
 		}
-		
+
 	},
 
-	Version: function() {
+	get Version() {
 		//returns the current QF version number.
-		var bAddonManager = false;
 		if(QuickFolders.Util.mExtensionVer)
 			return QuickFolders.Util.mExtensionVer;
+		var current = QuickFolders.Util.HARDCODED_EXTENSION_VERSION + QuickFolders.Util.HARDCODED_EXTENSION_TOKEN;
+
 		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
+			// Addon Manager: use Proxy code to retrieve version asynchronously
 			QuickFolders.Util.VersionProxy(); // modern Mozilla builds.
 											  // these will set mExtensionVer (eventually)
 											  // also we will delay FirstRun.init() until we _know_ the version number
-			bAddonManager = true;
 		}
-		
-		// --- older code
-		var current = null;
-		
-		if (bAddonManager)
-			current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "-AddonManagerVersionPending";
-		else {
-			current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?)";
+		else  // --- older code: extensions manager.
+		{
 			try {
-				if(Components.classes["@mozilla.org/extensions/manager;1"]) 
+				if(Components.classes["@mozilla.org/extensions/manager;1"])
 				{
 					var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
 						.getService(Components.interfaces.nsIExtensionManager);
 					current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
-					QuickFolders.Util.mExtensionVer = current; // legal version (pre Tb3.3)
 				}
 				else {
-					current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?)"
+					current = current + "(?)";
 				}
 				QuickFolders.Util.mExtensionVer = current;
 				QuickFolders.Util.FirstRun.init();
-				
+
 			}
 			catch(ex) {
-				current = QuickFolders.Util.HARCODED_EXTENSION_VERSION + "(?ex?)" // hardcoded, program this for Tb 3.3 later
-				QuickFolders.Util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + QuickFolders.Util.Application() + "?");
+				current = current + "(?ex?)" // hardcoded, program this for Tb 3.3 later
+				QuickFolders.Util.logToConsole("QuickFolder Version retrieval failed - are you using an old version of " + QuickFolders.Util.Application + "?");
 			}
 		}
 		return current;
 
 	} ,
-	
-	mailFolderTypeName: function() {
-		switch(this.Application()) {
+
+	get VersionSanitized() {
+		function strip(version, token) {
+			let cutOff = version.indexOf(token);
+			if (cutOff > 0) { 	// make sure to strip of any pre release labels
+				return version.substring(0, cutOff);
+			}
+			return version;
+		}
+
+		var pureVersion = strip(QuickFolders.Util.Version, 'pre');
+		pureVersion = strip(pureVersion, 'beta');
+		pureVersion = strip(pureVersion, 'alpha');
+		return strip(pureVersion, '.hc');
+	},
+
+	get mailFolderTypeName() {
+		switch(this.Application) {
 			case "Thunderbird": return "folder";
 			case "SeaMonkey": return "3pane";
 			default: return "folder";
@@ -221,12 +257,12 @@ QuickFolders.Util = {
 		return "";
 	} ,
 
-	PlatformVersion: function() {
+	get PlatformVersion() {
 		if (null==this.mPlatformVer)
 			try {
 				var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 				                        .getService(Components.interfaces.nsIXULAppInfo);
-				this.mPlatformVer = appInfo.platformVersion;
+				this.mPlatformVer = parseFloat(appInfo.platformVersion);
 			}
 			catch(ex) {
 				this.mPlatformVer = 1.0; // just a guess
@@ -234,14 +270,18 @@ QuickFolders.Util = {
 		return this.mPlatformVer;
 	} ,
 
-	popupAlert: function (title, text) {
-	  try {
-	    Components.classes['@mozilla.org/alerts-service;1'].
-	              getService(Components.interfaces.nsIAlertsService).
-	              showAlertNotification("chrome://quickfolders/skin/ico/quickfolders-Icon.png", title, text, false, '', null);
-	  } catch(e) {
-	    // prevents runtime error on platforms that don't implement nsIAlertsService
-	  }
+	popupAlert: function (title, text, icon) {
+		setTimeout(function() {
+				try {
+					if (!icon)
+						icon = "chrome://quickfolders/skin/ico/quickfolders-Icon.png";
+					Components.classes['@mozilla.org/alerts-service;1'].
+								getService(Components.interfaces.nsIAlertsService).
+								showAlertNotification(icon, title, text, false, '', null);
+				} catch(e) {
+				// prevents runtime error on platforms that don't implement nsIAlertsService
+				}
+			} , 0);
 	} ,
 
 	getSystemColor: function(sColorString) {
@@ -283,8 +323,6 @@ QuickFolders.Util = {
 		catch(e) {
 			hex=getSystemColor(hex);
 		}
-		if (this.Application()=='Thunderbird' && this.Appver()<3)
-			return hex.toString();
 		if (hex) { //
 			hex = cutHex(hex);
 			return "rgba(" + HexToR(hex).toString() + ',' + HexToG(hex).toString() + ',' + HexToB(hex).toString() + ',' + alpha.toString() +')';
@@ -340,11 +378,11 @@ QuickFolders.Util = {
 		var found=false;
 		var tabmail = document.getElementById("tabmail");
 		if (tabmail) {
-			var tab = (QuickFolders.Util.Application()=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+			var tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
 
 			if (tab) {
 				QuickFolders.Util.logDebugOptional ("mailTabs","ensureFolderViewTab - current tab mode: " + tab.mode.name);
-				if (tab.mode.name!=QuickFolders.Util.mailFolderTypeName()) { //  TB: 'folder', SM: '3pane'
+				if (tab.mode.name!=QuickFolders.Util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					var i;
@@ -374,20 +412,24 @@ QuickFolders.Util = {
 	showStatusMessage: function(s) {
 		try {
 			var sb = QuickFolders_getDocument().getElementById('status-bar');
-			var el, sbt;
+			var el;
+			var sbt;
 			if (sb) {
 				for(var i = 0; i < sb.childNodes.length; i++)
 				{
 					el = sb.childNodes[i];
-					if (el.nodeType == 1 && el.id=='statusTextBox') {
+					if (el.nodeType == 1 && el.id == 'statusTextBox') {
 						sbt = el;
 					    break;
 					}
 				}
+				// SeaMonkey
+				if (!sbt)
+					sbt = sb;
 				for(var i = 0; i < sbt.childNodes.length; i++)
 				{
 					el = sbt.childNodes[i];
-					if (el.nodeType == 1 && el.id=='statusText') {
+					if (el.nodeType == 1 && el.id == 'statusText') {
 					    el.label = s;
 					    break;
 					}
@@ -403,7 +445,7 @@ QuickFolders.Util = {
 	} ,
 
 
-	getFolderUriFromDropData: function(dropData, dragSession) {
+	getFolderUriFromDropData: function(evt, dropData, dragSession) {
 		var trans = QuickFolders_CC["@mozilla.org/widget/transferable;1"].createInstance(QuickFolders_CI.nsITransferable);
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
@@ -414,7 +456,7 @@ QuickFolders.Util = {
 
 		var dataObj = new Object();
 		var len = new Object();
-		var flavor = dropData.flavour.contentType
+		var flavor = dropData.flavour.contentType;
 		try {
 			trans.getTransferData(flavor, dataObj, len);
 
@@ -424,11 +466,42 @@ QuickFolders.Util = {
 				return sourceUri;
 			}
 		}
-		catch(e) {this.logToConsole("getTransferData " + e);};
+		catch(e) {
+			if (evt.dataTransfer.mozGetDataAt) {
+				var f = evt.dataTransfer.mozGetDataAt(flavor, 0)
+				if (f && f.URI)
+					return f.URI;
+			}
+			this.logToConsole("getTransferData " + e);
+		};
 
 		return null;
 	} ,
 
+	getFolderFromDropData: function(evt, dropData, dragSession) {
+		var msgFolder=null;
+
+// 		if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) {
+// 			msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
+// 		}
+// 		else {
+			var uri = this.getFolderUriFromDropData(evt, dropData, dragSession); // older gecko versions.
+			if (!uri)
+				return null;
+			msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(QuickFolders_CI.nsIMsgFolder);
+// 		}
+//
+		return msgFolder;
+
+	} ,
+	
+	isVirtual: function(folder) {
+	  if (!folder)
+			return true;
+	  return (folder.username && folder.username == 'nobody') || (folder.hostname == 'smart mailboxes');
+	} ,
+
+	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function(targetFolder, messageUris, makeCopy) {
 		var step = 0;
 		try {
@@ -437,34 +510,47 @@ QuickFolders.Util = {
 
 			if (targetFolder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) {
 				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
-				return;
+				return null;
 			}
 			var targetResource = targetFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
 			step = 1;
 
 			var messageList ;
-			var av = QuickFolders.Util.Appver();
-			var ap = QuickFolders.Util.Application();
-			var hostsystem = QuickFolders.Util.HostSystem();
-			//nsISupportsArray is deprecated in TB3 as its a hog :-)
-			if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
+			var ap = QuickFolders.Util.Application;
+			var hostsystem = QuickFolders.Util.HostSystem;
+			//nsISupportsArray is deprecated in TB3 as it's a hog :-)
+			if (ap=='Thunderbird' || ap=='SeaMonkey')
 				messageList = QuickFolders_CC["@mozilla.org/array;1"].createInstance(QuickFolders_CI.nsIMutableArray);
 			else
 				messageList = QuickFolders_CC["@mozilla.org/supports-array;1"].createInstance(QuickFolders_CI.nsISupportsArray);
 			step = 2;
 
+			// copy what we need...
+			// let myInfos = [{ recipient: x.mime2DecodedRecipients, subject: x.subject}
+			//		for each ([, x] in fixIterator(myMessages))];
+
+			// OR
+			// let q = Gloda.newQuery(Gloda.NOUN_MSG);
+			// q.headerMessageID(messageId);
+			// q.run(listener) => async
+			// q.getCollection(listener)
+
+			let messageIdList = [];
 			for (var i = 0; i < messageUris.length; i++) {
 				var messageUri = messageUris[i];
-				if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
-					messageList.appendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri), false);
+				var Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+
+				messageIdList.push(Message.messageId);
+				if (ap=='Thunderbird' || ap=='SeaMonkey')
+					messageList.appendElement(Message , false);
 				else
-					messageList.AppendElement(messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri));
+					messageList.AppendElement(Message);
 			}
 
 			step = 3;
 			var sourceMsgHdr;
 
-			if (av >= 3 && ap=='Thunderbird' || ap=='SeaMonkey')
+			if (ap=='Thunderbird' || ap=='SeaMonkey')
 				sourceMsgHdr = messageList.queryElementAt(0,QuickFolders_CI.nsIMsgDBHdr);
 			else
 				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(QuickFolders_CI.nsIMsgDBHdr);
@@ -473,20 +559,14 @@ QuickFolders.Util = {
 			var sourceFolder = sourceMsgHdr.folder.QueryInterface(QuickFolders_CI.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
 			step = 5;
 			var sourceResource = sourceFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
-			if (ap=='Thunderbird' && av<3 ) {
+			var cs = QuickFolders_CC["@mozilla.org/messenger/messagecopyservice;1"].getService(QuickFolders_CI.nsIMsgCopyService);
+			step = 6;
+			targetFolder = targetFolder.QueryInterface(QuickFolders_CI.nsIMsgFolder);
+			step = 7;
+			cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
+
+			if (QuickFolders.Preferences.isShowRecentTab) {
 				step = 8;
-				messenger.CopyMessages(GetFolderDatasource(), sourceResource, targetResource, messageList, !makeCopy);
-			}
-			else {
-				var cs = QuickFolders_CC["@mozilla.org/messenger/messagecopyservice;1"].getService(QuickFolders_CI.nsIMsgCopyService);
-				step = 6;
-				targetFolder = targetFolder.QueryInterface(QuickFolders_CI.nsIMsgFolder);
-				step = 7;
-				cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
-			}
-			if (QuickFolders.Preferences.isShowRecentTab()) {
-				// from version 2.3 make sure most recent is updated even if unread messages are moved!
-				step = 9;
 				if (targetFolder.SetMRUTime)
 					targetFolder.SetMRUTime();
 				else {
@@ -494,11 +574,15 @@ QuickFolders.Util = {
 					targetFolder.setStringProperty("MRUTime", ct);
 				}
 			}
+			return messageIdList; // we need the first element for further processing
 		}
-		catch(e) { this.logToConsole('Exception in QuickFolders.Util.moveMessages, step ' + step + ':\n' + e); };
+		catch(e) {
+			this.logToConsole('Exception in QuickFolders.Util.moveMessages, step ' + step + ':\n' + e);
+		};
+		return null;
 	} ,
 
-	getCurrentFolder: function() {
+	get CurrentFolder() {
 		var aFolder;
 
 
@@ -508,7 +592,7 @@ QuickFolders.Util = {
 		else
 		{
 			var currentURI;
-			if (QuickFolders.Util.Application()=='Postbox') {
+			if (QuickFolders.Util.Application=='Postbox') {
 				currentURI = GetSelectedFolderURI();
 			}
 			else {
@@ -518,6 +602,9 @@ QuickFolders.Util = {
 
 				// aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
 			}
+			// in search result folders, there is no current URI!
+			if (!currentURI)
+				return null;
 			aFolder = GetMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 		}
 
@@ -544,6 +631,9 @@ QuickFolders.Util = {
 
 	threadPaneOnDragStart: function (aEvent)
 	{
+		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
+			+ (aEvent.isThread ? ",thread=true" : "")
+			+ ")");
 		if (aEvent.originalTarget.localName != "toolbarbutton")
 			return;
 
@@ -553,7 +643,7 @@ QuickFolders.Util = {
 			msgs = gFolderDisplay.selectedMessageUris;
 			if (!msgs)
 				return;
-			if (!QuickFolders.Util.Application()=='SeaMonkey')
+			if (!QuickFolders.Util.Application=='SeaMonkey')
 				gFolderDisplay.hintAboutToDeleteMessages();
 		}
 		else {
@@ -599,6 +689,7 @@ QuickFolders.Util = {
 		aEvent.dataTransfer.mozCursor = "auto";
 		aEvent.dataTransfer.effectAllowed = "all"; // copyMove
 		aEvent.dataTransfer.addElement(aEvent.originalTarget);
+		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends.");
 	},
 
 	debugVar: function(value) {
@@ -627,11 +718,13 @@ QuickFolders.Util = {
 		return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
 	},
 
-	logToConsole: function (msg) {
+	logToConsole: function (msg, optionTag) {
 		if (QuickFolders_ConsoleService == null)
 			QuickFolders_ConsoleService = QuickFolders_CC["@mozilla.org/consoleservice;1"]
 									.getService(QuickFolders_CI.nsIConsoleService);
-		QuickFolders_ConsoleService.logStringMessage("QuickFolders " + this.logTime() + "\n"+ msg);
+		QuickFolders_ConsoleService.logStringMessage("QuickFolders "
+			+ (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '')
+			+ this.logTime() + "\n"+ msg);
 	},
 
 	// flags
@@ -654,7 +747,9 @@ QuickFolders.Util = {
 		var stack = ''
 		if (typeof ex.stack!='undefined')
 			stack= ex.stack.replace("@","\n  ");
-		this.logError(aMessage + "\n" + ex.message, ex.fileName, stack, ex.lineNumber, 0, 0x2)
+		// let's display a caught exception as a warning.
+		let fn = ex.fileName ? ex.fileName : "?";
+		this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
 	} ,
 
 	logDebug: function (msg) {
@@ -664,7 +759,7 @@ QuickFolders.Util = {
 
 	logDebugOptional: function (option, msg) {
 		if (QuickFolders.Preferences.isDebugOption(option))
-			this.logToConsole(msg);
+			this.logToConsole(msg, option);
 	},
 
 	logFocus: function(origin) {
@@ -693,7 +788,7 @@ QuickFolders.Util = {
 	openLinkInBrowserForced: function(linkURI) {
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			if (QuickFolders.Util.Application()=='SeaMonkey') {
+			if (QuickFolders.Util.Application=='SeaMonkey') {
 				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
 				var browser = windowManager.getMostRecentWindow( "navigator:browser" );
 				if (browser) {
@@ -719,10 +814,12 @@ QuickFolders.Util = {
 	// moved from options.js
 	// use this to follow a href that did not trigger the browser to open (from a XUL file)
 	openLinkInBrowser: function(evt,linkURI) {
-		if (QuickFolders.Util.Appver()>=3 && QuickFolders.Util.Application()=='Thunderbird') {
-			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-				.getService(Components.interfaces.nsIExternalProtocolService);
-			var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
+		let Cc = Components.classes;
+		let Ci = Components.interfaces;
+		if (QuickFolders.Util.Application=='Thunderbird') {
+			var service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
+				.getService(Ci.nsIExternalProtocolService);
+			var ioservice = Cc["@mozilla.org/network/io-service;1"].
 						getService(QuickFolders_CI.nsIIOService);
 			service.loadURI(ioservice.newURI(linkURI, null, null));
 			if(null!=evt)
@@ -736,7 +833,7 @@ QuickFolders.Util = {
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
 		var ioservice,iuri,eps;
 
-		if (QuickFolders.Util.Appver()<3 && QuickFolders.Util.Application()=='Thunderbird' || QuickFolders.Util.Application()=='SeaMonkey' || QuickFolders.Util.Application()=='Postbox')
+		if (QuickFolders.Util.Application=='SeaMonkey' || QuickFolders.Util.Application=='Postbox')
 		{
 			this.openLinkInBrowserForced(URL);
 			if(null!=evt) evt.stopPropagation();
@@ -751,7 +848,9 @@ QuickFolders.Util = {
 
 	getBundleString: function(id, defaultText) { // moved from local copies in various modules.
 		var s="";
-		try {s= QuickFolders.Properties.GetStringFromName(id);}
+		try {
+			s= QuickFolders.Properties.GetStringFromName(id);
+		}
 		catch(e) {
 			s= defaultText;
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
@@ -763,36 +862,95 @@ QuickFolders.Util = {
 		// tooltip - see also Attributes section of
 		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
 		// and docs for nsIMsgIncomingServer
-		var sVirtual = (folder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)": " ";
-		var srv= folder.server;
-		var srvName='';
+		let sVirtual = (folder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "";
+		let srv = folder.server;
+		let srvName='';
 		if (srv) {
 			try {srvName = ' [' + srv.hostName + ']';}
 			catch(e) { };
 		}
-		var hostString = folder.rootFolder.name + srvName;
+		let hostString = srvName;
+		try {
+			if (folder.rootFolder) {
+				try {hostString = folder.rootFolder.name + srvName;}
+				catch(e) { };
+			}
+			else
+				this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
+		}
+		catch(e) { 
+			this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
+		};
 
 		return folder.name + ' @ ' + hostString + sVirtual;
 	},
 
+	// get the parent button of a popup menu, in order to get its attributes:
+	// - folder
+	// - label
 	getPopupNode: function(callerThis) {
-		if (document.popupNode != null) // typeof callerThis.parentNode.triggerNode == 'undefined'
-			return document.popupNode;
+		if (document.popupNode != null) {
+			if (document.popupNode.folder)
+				return document.popupNode;
+		}
+		if (callerThis.parentNode.triggerNode != null)
+			return callerThis.parentNode.triggerNode;
 		else {
-			if (callerThis.parentNode.triggerNode != null)
-				return callerThis.parentNode.triggerNode;
-			else {
-				var theParent = callerThis.parentNode;
-				while (theParent!=null && theParent.tagName!="toolbarbutton")
-					theParent = theParent.parentNode;
-				return theParent;
+			let theParent = callerThis.parentNode;
+			while (theParent!=null && theParent.tagName!="toolbarbutton")
+				theParent = theParent.parentNode;
+			return theParent;
 
+		}
+	},
+	
+	get isCSSGradients() {
+	  try {
+		  if (this._isCSSGradients !== -1)
+				return this._isCSSGradients;
+			this._isCSSGradients = false;
+			var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+												.getService(Components.interfaces.nsIXULAppInfo);		
+			if (appInfo && appInfo.platformVersion && parseFloat(appInfo.platformVersion)>=16.0) {
+				this._isCSSGradients = true;
 			}
 		}
+		catch(ex) {
+			this._isCSSGradients = false;
+		}
+		return this._isCSSGradients;
+	},
+	
+	get isCSSRadius() {
+	  if (this._isCSSRadius === -1) {
+			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+																	.getService(Components.interfaces.nsIVersionComparator);
+			this._isCSSRadius =																
+				((QuickFolders.Util.Application == 'Thunderbird') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "4.0") >= 0))
+				 ||
+				((QuickFolders.Util.Application == 'SeaMonkey') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "2.2") >= 0))
+				 ||
+				((QuickFolders.Util.Application == 'Postbox') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "3.0") >= 0));
+		}
+		return this._isCSSRadius;
+	},
+	
+	get isCSSShadow() {
+		if (this._isCSSShadow === -1) {
+			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+                              .getService(Components.interfaces.nsIVersionComparator);
+			this._isCSSShadow = (versionComparator.compare(QuickFolders.Util.PlatformVersion, "2.0") >= 0);
+		}
+		return this._isCSSShadow;
 	}
 
 
+
+
 };
+
+
+
 
 
 // https://developer.mozilla.org/en/Code_snippets/On_page_load#Running_code_on_an_extension%27s_first_run_or_after_an_extension%27s_update
@@ -801,21 +959,29 @@ QuickFolders.Util.FirstRun =
 	init: function() {
 		var prev = -1, firstrun = true;
 		var showFirsts = true, debugFirstRun = false;
+		var prefBranchString = "extensions.quickfolders.";
 
 		var svc = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
-		var ssPrefs = svc.getBranch("extensions.quickfolders.");
+		var ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } catch (e) { debugFirstRun = false; }
 
 		QuickFolders.Util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
+		if (!ssPrefs) {
+			QuickFolders.Util.logDebugOptional ("firstrun","Could not retrieve prefbranch for " + prefBranchString);
+		}
 
-		var current = QuickFolders.Util.Version();
+		var current = QuickFolders.Util.Version;
 		QuickFolders.Util.logDebug("Current QuickFolders Version: " + current);
 
 		try {
 			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getCharPref(version)");
-			try { prev = ssPrefs.getCharPref("version"); } catch (e) { prev = "?"; } ;
+			try { prev = ssPrefs.getCharPref("version"); }
+			catch (e) {
+				prev = "?";
+				QuickFolders.Util.logDebugOptional ("firstrun","Could not determine previous version - " + e);
+			} ;
 
 			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getBoolPref(firstrun)");
 			try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch (e) { firstrun = true; }
@@ -848,21 +1014,28 @@ QuickFolders.Util.FirstRun =
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
 
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-			var pre=0;
-			var pureVersion=current;
-			if (0<(pre=current.indexOf('pre'))) {
-				pureVersion = current.substring(0,pre);
-			}
+			var pureVersion=QuickFolders.Util.VersionSanitized;
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
 			var versionPage = "http://quickfolders.mozdev.org/version.html#" + pureVersion;
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - versionPage=" + versionPage);
 
+			// STORE CURRENT VERSION NUMBER!
+			if (prev!=pureVersion && current!='?' && (current.indexOf(QuickFolders.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+				QuickFolders.Util.logDebugOptional ("firstrun","Store current version " + current);
+				ssPrefs.setCharPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+			}
+			else {
+				QuickFolders.Util.logDebugOptional ("firstrun","Can't store current version: " + current
+					+ "\nprevious: " + prev.toString()
+					+ "\ncurrent!='?' = " + (current!='?').toString()
+					+ "\nprev!=current = " + (prev!=current).toString()
+					+ "\ncurrent.indexOf(" + QuickFolders.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(QuickFolders.Util.HARDCODED_EXTENSION_TOKEN).toString());
+			}
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstrun){
-				QuickFolders.Util.logDebugOptional ("firstrun","set firstrun=false and store version " + current);
+				QuickFolders.Util.logDebugOptional ("firstrun","set firstrun=false");
 				ssPrefs.setBoolPref("firstrun",false);
-				ssPrefs.setCharPref("version",current); // store current (simplified) version!
 
 				if (showFirsts) {
 					// Insert code for first run here
@@ -877,20 +1050,20 @@ QuickFolders.Util.FirstRun =
 			}
 			else { // this section does not get loaded if its a fresh install.
 				var isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
+				QuickFolders.Model.updatePalette();
 
-				if (prev!=current && prev!='?' && current.indexOf(QuickFolders.Util.HARCODED_EXTENSION_VERSION) < 0) {
+				if (prev!=pureVersion && current.indexOf(QuickFolders.Util.HARDCODED_EXTENSION_TOKEN) < 0) {
 					QuickFolders.Util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
 					// upgrade case!!
-					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:") 
+					var sUpgradeMessage = QuickFolders.Util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:")
 						 + " " + current;
-					ssPrefs.setCharPref("version",current);
 
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
-						
+
 						// DONATION PAGE
 						// display donation page - disable by right-clicking label above version jump panel
-						if ((QuickFolders.Preferences.getBoolPrefQF("donateNoMore")))
+						if ((QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.donateNoMore")))
 							QuickFolders.Util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
 						else {
 							QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for donation link");
@@ -898,13 +1071,13 @@ QuickFolders.Util.FirstRun =
 						}
 
 						// VERSION HISTORY PAGE
-						// display versino history - disable by right-clicking label above show history panel
-						if (!QuickFolders.Preferences.getBoolPrefQF("hideVersionOnUpdate")) {
+						// display version history - disable by right-clicking label above show history panel
+						if (!QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate")) {
 							QuickFolders.Util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
 							window.setTimeout(function(){QuickFolders.Util.openURL(null, versionPage);}, 2200);
 						}
-						
-						
+
+
 					}
 
 					if (isThemeUpgrade) {
@@ -917,9 +1090,9 @@ QuickFolders.Util.FirstRun =
 							QuickFolders.Interface.viewOptions(1, sUpgradeMessage);
 						}, 4600);
 					}
-					else 
+					else
 						window.setTimeout(function(){
-							QuickFolders.Util.popupAlert("QuickFolders",sUpgradeMessage); 
+							QuickFolders.Util.popupAlert("QuickFolders",sUpgradeMessage);
 						}, 3000);
 
 
@@ -931,8 +1104,40 @@ QuickFolders.Util.FirstRun =
 		//window.removeEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
 	}
 
+
 // // fire this on application launch, which includes open-link-in-new-window
 // window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
 
-
 };
+
+
+//			//// CHEAT SHEET
+// 			// from comm-central/mailnews/test/resources/filterTestUtils.js
+// 			var ATTRIB_MAP = {
+// 				// Template : [attrib, op, field of value, otherHeader]
+// 				"subject" : [Ci.nsMsgSearchAttrib.Subject, contains, "str", null],
+// 				"from" : [Ci.nsMsgSearchAttrib.Sender, contains, "str", null],
+// 				"date" : [Ci.nsMsgSearchAttrib.Date, Ci.nsMsgSearchOp.Is, "date", null],
+// 				"size" : [Ci.nsMsgSearchAttrib.Size, Ci.nsMsgSearchOp.Is, "size", null],
+// 				"message-id" : [Ci.nsMsgSearchAttrib.OtherHeader+1, contains, "str", "Message-ID"],
+// 				"user-agent" : [Ci.nsMsgSearchAttrib.OtherHeader+2, contains, "str", "User-Agent"]
+// 			 };
+// 			 // And this maps strings to filter actions
+// 			 var ACTION_MAP = {
+// 				// Template : [action, auxiliary attribute field, auxiliary value]
+// 				"priority" : [Ci.nsMsgFilterAction.ChangePriority, "priority", 6],
+// 				"delete" : [Ci.nsMsgFilterAction.Delete],
+// 				"read" : [Ci.nsMsgFilterAction.MarkRead],
+// 				"unread" : [Ci.nsMsgFilterAction.MarkUnread],
+// 				"kill" : [Ci.nsMsgFilterAction.KillThread],
+// 				"watch" : [Ci.nsMsgFilterAction.WatchThread],
+// 				"flag" : [Ci.nsMsgFilterAction.MarkFlagged],
+// 				"stop": [Ci.nsMsgFilterAction.StopExecution],
+// 				"tag" : [Ci.nsMsgFilterAction.AddTag, "strValue", "tag"]
+// 				"move" : [Ci.nsMsgFilterAction.MoveToFolder, "folder"]
+// 			 };
+
+
+
+
+

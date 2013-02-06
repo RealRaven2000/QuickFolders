@@ -1,0 +1,39 @@
+vbox#air {
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+/* gradient options */
+vbox.gradientpanel {
+	margin-left: 30px;
+	padding:6px 4px;
+	border: 1px solid white;
+	background-repeat: repeat-x;
+	border-radius: 5px;
+}
+
+#green {
+	margin-top: 1em;
+	background: linear-gradient(to bottom, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 21%, rgba(195,216,37,1) 37%, rgba(219,240,67,1) 100%);
+	background-color: rgb(230,240,163);
+	color: #000;
+}
+#red {
+	background: linear-gradient(to bottom, rgba(242,206,206,1) 0%, rgba(218,106,106,1) 27%, rgba(218,102,76,1) 29%, rgba(244,162,162,1) 100%);
+	background-color: #D6644A;
+	color: #fff;
+}
+#yellow {
+	background: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 29%, rgba(248,181,0,1) 39%, rgba(251,223,147,1) 100%);
+	background-color: rgb(242,206,206);
+	color: #000;
+}
+
+#multiCategory {
+	font-weight: bold;
+	max-width: 450px;
+	padding: 2px 0px;
+	line-height:1.2em;
+	overflow-y: scroll;
+	overflow-x: auto;
+}

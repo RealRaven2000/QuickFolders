@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/filterList.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/filterList.dtd" >
+<overlay id="QuickFolders-FilterOverlay" 
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript"             src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterList.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/overlayFilterList.js" />
+	
+	<window id="filterListDialog">
+	
+		<label id="qf-FilterCount-n-of-m"
+			hidden="true"
+			value="&qf.label.filterCountN_of_M;" />
+			
+		<label id="qf-FilterCount-items"
+			hidden="true"
+			value="&qf.label.filterEntities;" />
+		<label id="qf-FilterCount-1-item"
+			hidden="true"
+			value="&qf.label.filterSingleEntity;" />
+
+	
+		<textbox id="qf-Filter"
+			flex="7"
+			type="search"
+			oncommand="QuickFolders.FilterList.onFindFilter(false, true);"
+			emptytext="&qf.textbox.searchBox.emptyText;"
+			tooltiptext="&qf.textbox.searchBox.toolTip;"
+			isempty="true"
+			timeout="300"
+		/>
+		
+		<label id="qf-FilterCount" 
+			flex="1"
+			/>
+	
+		<button 
+			id="qf-reorderButtonTop"
+			insertbefore="reorderUpButton"
+			label="&qf.button.reorderButtonTop;"
+			accesskey="&qf.button.reorderButtonTop.accessKey;"
+			tooltiptext="&qf.button.reorderButtonTop.toolTip;"
+			oncommand="QuickFolders.FilterList.onTop(event);"
+		/>
+		
+		<button 
+			id="qf-reorderButtonBottom"
+			insertafter="reorderDownButton"
+			label="&qf.button.reorderButtonBottom;"
+			accesskey="&qf.button.reorderButtonBottom.accessKey;"
+			tooltiptext="&qf.button.reorderButtonBottom.toolTip;"
+			oncommand="QuickFolders.FilterList.onBottom(event);"
+		/>
+	</window>
+
+</overlay>

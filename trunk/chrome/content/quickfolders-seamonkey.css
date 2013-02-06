@@ -1,4 +1,7 @@
 
+@import url('chrome://quickfolders/skin/quickfolders-palettes.css');
+@import url('chrome://quickfolders/content/quickfolders-layout.css');
+
 /* SeaMonkey layout fixes; */
 menupopup.QuickFolders-folder-popup menuitem,
 menupopup.QuickFolders-folder-popup menu,
@@ -15,12 +18,12 @@ toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text
 	display: block !important;
 }
 
-#QuickFolders-Toolbar toolbarbutton#QF-mainPopup {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
 	/*height:20px;*/
 	margin-top:0px !important;
 	padding-top: 0px !important;
 	vertical-align: middle;
 }
-#QuickFolders-Toolbar toolbarbutton#QF-mainPopup > * {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup > * {
 	min-height: 16px;
 }

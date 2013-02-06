@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-palettes.css" title="QuickFolderPalettes" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
+<overlay id="QuickFolders-CF-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filters.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+	
+	
+	<menupopup id = "QuickFolders-currentContextMenuSingle">
+		<menuitem  label="Thunderbird11-currentFolderSingleMessage" />
+	</menupopup>
+	
+	<vbox id="messagepanebox">
+		<hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="messagepane" style="display:none;">
+			<spacer flex="5" id="QF-CurrentLeftSpacer" />
+			<toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
+				<toolbarbutton id="QuickFolders-CurrentMail"
+					             class="icon draggable"
+					             tooltiptext="&qf.tooltip.emailIcon;" />
+				<toolbarseparator />
+				<toolbarbutton id="quickFoldersPreviousUnread"
+					             special="qfMsgFolderNavigation" 
+					             tooltiptext="&qf.tooltip.goPreviousFolder;"
+					             onclick="QuickFolders.Interface.onGoPreviousMsg(this);"/>
+				<toolbarbutton id="quickFoldersNavToggle" 
+					             special="qfMsgFolderNavigation" 
+					             tooltiptext="toggle unread / all"
+					             onclick="QuickFolders.Interface.onToggleNavigation(this);" />
+				<toolbarbutton id="quickFoldersNextUnread"
+					             special="qfMsgFolderNavigation" 
+					             tooltiptext="&qf.tooltip.goNextFolder;"
+					             onclick="QuickFolders.Interface.onGoNextMsg(this);"/>
+				<toolbarbutton id="QuickFolders-CurrentThread"
+					             special="qfMsgFolderNavigation" 
+					             class="icon"
+					             tooltiptext="&qf.tooltip.conversationRead;" />
+				<toolbarseparator />
+
+				<toolbarbutton id="QuickFolders-NavigateUp"
+					             class="icon"
+					             onclick="QuickFolders.Interface.goUpFolder();"
+					             tooltiptext="&qf.tooltip.folderUp;"
+					             collapsed="true"/>
+				<toolbarbutton id="QuickFolders-NavigateLeft"
+					             class="icon"
+					             onclick="QuickFolders.Interface.goPreviousSiblingFolder();"
+					             collapsed="true"/>
+				<hbox class="folderBarContainer">
+					<toolbarbutton id="QuickFolders-CurrentFolder"
+					               label="Current Folder"
+					               class="selected-folder"
+					               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+					               ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
+				</hbox>
+				<toolbarbutton id="QuickFolders-NavigateRight"
+					             class="icon"
+					             onclick="QuickFolders.Interface.goNextSiblingFolder();"
+					             collapsed="true"/>
+				<toolbarseparator />
+				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
+					             class="icon"
+					             tooltiptext="&qf.tooltip.filterStart;"
+					             oncommand="QuickFolders.Interface.toggleFilterMode(!QuickFolders.FilterWorker.FilterMode);" />
+				<toolbarbutton id="QuickFolders-Options"
+					             class="icon"
+					             tooltiptext="&qf.menuitem.quickfolders.options;"
+					             oncommand="QuickFolders.Interface.viewOptions(-1);"
+					             tagName="qfOptions"
+					             context="QuickFolders-currentContextMenuSingle"
+					             oncontextmenu="QuickFolders.Interface.showPopup(this,this.getAttribute('context'));"/>
+				<toolbarbutton id="QuickFolders-Close"
+					             class="icon"
+					             tooltiptext="&qf.tooltip.closeToolbar;"
+					             oncommand="QuickFolders.Interface.displayNavigationToolbar(false, true);" />
+			</toolbar>
+			<spacer flex="10" id="QF-CurrentRightSpacer" />
+		</hbox>
+	</vbox>
+
+	
+</overlay>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="quickfolders-layout.css" title="QuickFolderStyles" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/quickfolders-categories.css" title="QuickFolderStyles" type="text/css"?>
 
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/set_folder_category.dtd" >
@@ -9,32 +9,28 @@
 	buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"
-    onload="QuickFolders.FolderCategory.init(this, window.arguments[1])"
+    onload="QuickFolders.FolderCategory.init(this, window.arguments[1]);"
 >
 
     <script type="text/javascript">
 		var QuickFolders = window.arguments[0];
     </script>
 
-    <description>
-   &qf.description.categoryusage;
-    </description>
+<vbox id="air">    
+    <description>&qf.description.categoryusage;</description>
 
-    <description>
-       &qf.description.pulldown;
-    </description>
+    <description>&qf.description.pulldown;</description>
 
-    <description>
-       &qf.description.editcategory;
-    </description>
+    <description>&qf.description.editcategory;</description>
 
     <hbox style="margin-top: 1em">
         <vbox>
             <label>&qf.label.existingcategories;</label>
 
             <listbox id="existing-categories"
-              ondblclick="QuickFolders.FolderCategory.setSelectedCategory()"
-              onchange="QuickFolders.FolderCategory.getSelectedColor()">
+              ondblclick="QuickFolders.FolderCategory.setSelectedCategory();"
+              onselect="QuickFolders.FolderCategory.onSelectionChange(event);"
+              seltype="multiple">
                 <!-- added by script -->
             </listbox>
         </vbox>
@@ -69,5 +65,9 @@
             </vbox>
         </vbox>
     </hbox>
+    
+    <description id="multiCategory">&qf.description.multicategory;</description>
+</vbox>
+    
 </dialog>
 

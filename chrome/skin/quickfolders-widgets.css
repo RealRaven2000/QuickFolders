@@ -1,0 +1,121 @@
+
+
+tab#QuickFolders-Advanced {
+	list-style-image: url('chrome://quickfolders/skin/ico/settings-advanced.png');
+}
+
+tab#QuickFolders-Layout {
+	list-style-image : url('chrome://quickfolders/skin/ico/icon_pimp_shades.gif');
+}
+
+menuitem.cmd[tagName="qfHelp"],
+tab#QuickFolders-Help {
+	list-style-image : url('chrome://quickfolders/skin/ico/help.png') !important;
+}
+
+menuitem.cmd[tagName="qfSupport"],
+tab#QuickFolders-Support {
+	list-style-image : url('chrome://quickfolders/skin/ico/info16.png') !important;
+}
+
+
+tab#QuickFolders-General  {
+	list-style-image: url('chrome://quickfolders/skin/ico/settings-general.png');
+}
+
+menuitem.cmd[tagName="qfRebuild"] { list-style-image : url('chrome://quickfolders/skin/ico/reload.png') !important; }
+menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/skin/ico/broom.png') !important; }
+menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('chrome://quickfolders/skin/ico/toolbar.png') !important; }
+menuitem.cmd[tagName="qfOrder"] { list-style-image : url('chrome://quickfolders/skin/ico/order.gif') !important; }
+
+
+/* dual state animated icons (menuitems / tabs) */
+tab#QuickFolders-General:not([selected]), 
+tab#QuickFolders-Advanced:not([selected]), 
+tab#QuickFolders-Help:not([selected]), 
+tab#QuickFolders-Support:not([selected]),
+menuitem.cmd[tagName="qfSupport"]  .menu-iconic-icon,
+menuitem.cmd[tagName="qfHelp"]  .menu-iconic-icon
+{
+	-moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+}
+tab#QuickFolders-General[selected="true"], 
+tab#QuickFolders-Advanced[selected="true"], 
+tab#QuickFolders-Help[selected="true"], 
+tab#QuickFolders-Support[selected="true"],
+menuitem.cmd[tagName="qfSupport"]:hover .menu-iconic-icon,
+menuitem.cmd[tagName="qfHelp"]:hover .menu-iconic-icon
+{
+	-moz-image-region: rect(16px, 16px, 32px, 0px) !important;
+}
+
+/* three state menuitems */
+
+toolbarbutton#QuickFolders-Options,
+menuitem.cmd[tagName="qfOptions"] .menu-iconic-icon { 
+	list-style-image: url('chrome://quickfolders/skin/ico/settings-general.png')  !important;
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+toolbarbutton#QuickFolders-Options:hover,
+menuitem.cmd[tagName="qfOptions"]:hover .menu-iconic-icon { 
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+toolbarbutton#QuickFolders-Options:active,
+menuitem.cmd[tagName="qfOptions"]:active .menu-iconic-icon { 
+	-moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-paintBucketActive {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-paint-bucket.png");
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-paintBucketActive {
+  -moz-appearance: none !important; /* make sure we can fill in a background color */
+	min-height: 22px; 
+	border-radius: 5px;
+	border: 1px solid #BBB;
+}
+
+#quickFoldersNavToggle {
+	list-style-image: url('chrome://quickfolders/skin/ico/navigation-mode.png');
+	-moz-image-region: rect(0px, 12px, 16px, 0px);
+	-moz-appearance: none !important;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+/* lets make the background invisible! */
+#quickFoldersNavToggle[checked="true"] {
+	-moz-image-region: rect(16px, 12px, 32px, 0px);
+	margin-left: -6px;
+	margin-right: -4px;
+	background-image: none !important;
+	background-color: transparent;
+}
+
+#quickFoldersNavToggle:hover {
+	-moz-image-region: rect(32px, 12px, 48px, 0px);
+}
+
+#quickFoldersNavToggle[checked="true"]:hover {
+	-moz-image-region: rect(48px, 12px, 64px, 0px);
+}
+
+
+
+
+
+#quickFoldersPreviousUnread { 
+	list-style-image: url('chrome://quickfolders/skin/ico/fugue-up.png');
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#quickFoldersNextUnread { 
+	list-style-image: url('chrome://quickfolders/skin/ico/fugue-down.png');
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#quickFoldersPreviousUnread[disabled="true"],
+#quickFoldersNextUnread[disabled="true"] { 
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+ 

@@ -1,0 +1,532 @@
+/* broken out background image pieces for customzed color support */
+
+/* 1st rule is for #QuickFolders-CurrentFolderTools 2nd for main toolbar */
+.quickfolders-pills .col0.selected-folder, .quickfolders-pills .col0:hover,
+.quickfolders-flat .col0,
+.quickfolders-flat #QuickFolders-CurrentFolder.col0 { background-image: none; }
+
+/* 1 - light blue */
+#folderTree treechildren.col1::-moz-tree-cell-text,
+.quickfolders-pills .col1.selected-folder, 
+.quickfolders-pills .col1:hover,
+.quickfolders-flat .col1, .quickfolders-flat [selected].selected-folder.cActive1, 
+.QuickFolders-folder-popup menuitem[tag="qfColor1"] { 
+	background-image: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(129,213,239,1) 16%, rgba(83,203,241,1) 27%, rgba(5,171,224,1) 100%); 
+	color: #000 !important;
+}
+/* 1 - aqua */
+.quickfolders-flat .pastel.col1, 
+.quickfolders-pills .pastel.col1.selected-folder, 
+.quickfolders-pills .pastel.col1:hover,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor1"],
+.quickfolders-flat .pastel.selected-folder.cActive1 {
+	background-image: linear-gradient(to bottom, rgba(226,251,255,1) 0%, rgba(153,255,255,1) 34%, rgba(153,255,255,1) 100%); 
+	color:#000 !important;
+}
+
+
+/* 2 - Sky Blue */
+#folderTree treechildren.col2::-moz-tree-cell-text,
+.quickfolders-pills .col2.selected-folder, 
+.quickfolders-pills .col2:hover,
+.quickfolders-flat .col2, .quickfolders-flat [selected].selected-folder.cActive2,
+.QuickFolders-folder-popup menuitem[tag="qfColor2"] { 
+	background-image: linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 14%, rgba(10,119,213,1) 33%, rgba(8,78,175,1) 60%, rgba(10,119,213,1) 100%); 
+	color:#F0F0F0 !important;
+}
+/* 2 - sky */
+.quickfolders-pills .pastel.col2.selected-folder, 
+.quickfolders-pills .pastel.col2:hover,
+.quickfolders-flat .pastel.col2,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor2"],
+.quickfolders-flat .pastel.selected-folder.cActive2 {
+	background-image: linear-gradient(to bottom, rgba(229,239,249,1) 0%, rgba(153,204,255,1) 39%, rgba(124,189,255,1) 100%); 
+	color:#000033 !important;
+}
+
+/* 3 - navy */
+#folderTree treechildren.col3::-moz-tree-cell-text,
+.quickfolders-pills .col3.selected-folder, 
+.quickfolders-pills .col3:hover,
+.quickfolders-flat .col3, .quickfolders-flat [selected].selected-folder.cActive3, 
+.QuickFolders-folder-popup menuitem[tag="qfColor3"] { 
+	background-image: linear-gradient(to bottom, rgba(161,208,244,1) 0%, rgba(39,135,219,1) 10%, rgba(7,81,145,1) 21%, rgba(4,30,86,1) 49%, rgba(0,1,86,1) 100%); 
+	color: rgb(220, 235, 245) !important;
+}
+/* 3 - slate */
+.quickfolders-pills .pastel.col3.selected-folder, 
+.quickfolders-pills .pastel.col3:hover,
+.quickfolders-flat .pastel.col3,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor3"],
+.quickfolders-flat .pastel.selected-folder.cActive3 {
+	background-image: linear-gradient(to bottom, rgba(234,246,255,1) 0%, rgba(165,202,226,1) 11%, rgba(102,153,204,1) 45%, rgba(102,153,204,1) 100%); 
+	color: rgb(220, 235, 245) !important;
+}
+
+/* 4 - ocean floor */
+#folderTree treechildren.col4::-moz-tree-cell-text,
+.quickfolders-pills .col4.selected-folder, 
+.quickfolders-pills .col4:hover,
+.quickfolders-flat .col4, .quickfolders-flat [selected].selected-folder.cActive4, 
+.QuickFolders-folder-popup menuitem[tag="qfColor4"] { 
+	background-image: linear-gradient(to bottom, rgba(144,232,237,1) 0%, rgba( 4,176,178,1)  3%, rgba( 7,68,76,1) 32%, rgba( 8,79,89,1) 100%); 
+	color:rgb(215, 255, 230) !important;
+}
+/* 4 - pale green */
+.quickfolders-pills .pastel.col4.selected-folder, 
+.quickfolders-pills .pastel.col4:hover,
+.quickfolders-flat .pastel.col4,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor4"],
+.quickfolders-flat .pastel.selected-folder.cActive4 {
+	background-image: linear-gradient(to bottom, rgba(189,239,226,1) 0%, rgba(82,123,127,1) 36%, rgba(82,123,127,1) 100%);
+}
+
+/* 5 - jade */
+#folderTree treechildren.col5::-moz-tree-cell-text,
+.quickfolders-pills .col5.selected-folder, 
+.quickfolders-pills .col5:hover,
+.quickfolders-flat .col5,  .quickfolders-flat [selected].selected-folder.cActive5,
+menuitem[tag="qfColor5"] { 
+	background-image: linear-gradient(to bottom, rgba(37,245,231,1) 0%, rgba(9,205,188,1) 15%, rgba(2,136,125,1) 51%, rgba(5,108,117,1) 100%) !important; 
+	color:#FFFFFF !important;
+}
+/* 5 - spring */
+.quickfolders-pills .pastel.col5.selected-folder, 
+.quickfolders-pills .pastel.col5:hover,
+.quickfolders-flat .pastel.col5,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor5"],
+.quickfolders-flat .pastel.selected-folder.cActive5 {
+	background-image: linear-gradient(to bottom, rgba(127,255,231,1) 0%, rgba(82,206,169,1) 35%, rgba(72,181,162,1) 100%); 
+	color: rgb(220, 255, 245);
+}
+
+/* 6 - Olive Green */
+#folderTree treechildren.col6::-moz-tree-cell-text,
+.quickfolders-pills .col6.selected-folder, 
+.quickfolders-pills .col6:hover,
+.quickfolders-flat .col6, .quickfolders-flat [selected].selected-folder.cActive6,
+menuitem[tag="qfColor6"]  { 
+	background-image: linear-gradient(to bottom, rgba(184,205,65,1) 0%, rgba(132,171,39,1) 30%, rgba(104,156,0,1) 31%, rgba(145,186,42,1) 100%); 
+	color:#FFFFFF !important;
+}
+/* 6 - moss */
+.quickfolders-pills .pastel.col6.selected-folder, 
+.quickfolders-pills .pastel.col6:hover,
+.quickfolders-flat .pastel.col6,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor6"],
+.quickfolders-flat .pastel.selected-folder.cActive6 {
+	background-image: linear-gradient(to bottom, rgba(199,237,111,1) 0%, rgba(120,167,16,1) 40%, rgba(120,167,16,1) 100%); 
+	color:rgb(230, 255, 235) !important;
+}
+
+/* 7 - neon lime */
+#folderTree treechildren.col7::-moz-tree-cell-text,
+.quickfolders-pills .col7.selected-folder, 
+.quickfolders-pills .col7:hover,
+.quickfolders-flat .col7, .quickfolders-flat [selected].selected-folder.cActive7,
+ menuitem[tag="qfColor7"] { 
+	background-image: linear-gradient(to bottom, rgba(200,255,50,0.8) 0%, rgba(152,253,21,1) 10%, rgba(0,192,0,1) 50%); 
+	color:#FFFFFF !important;
+}
+.quickfolders-pills .pastel.col7.selected-folder, 
+.quickfolders-pills .pastel.col7:hover,
+.quickfolders-flat .pastel.col7,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor7"],
+.quickfolders-flat .pastel.selected-folder.cActive7 {
+	background-image: linear-gradient(to bottom, rgba(224,243,177,1) 0%, rgba(203,242,106,1) 40%, rgba(201,242,96,1) 100%);
+	color: rgb(0, 100, 0) !important;
+}
+
+/* 8 - Lime Green */
+#folderTree treechildren.col8::-moz-tree-cell-text,
+.quickfolders-pills .col8.selected-folder, .quickfolders-pills .col8:hover,
+.quickfolders-flat .col8, .quickfolders-flat [selected].selected-folder.cActive8, 
+.QuickFolders-folder-popup menuitem[tag="qfColor8"] { 
+	background-image: linear-gradient(to bottom, rgba(255,255,136,1) 0%, rgba(226,255,40,1) 8%, rgba(206,221,35,1) 28%, rgba(206,221,35,1) 100%); 
+	color:#000 !important;
+}
+/* 8 - ocre */
+.quickfolders-pills .pastel.col8.selected-folder, 
+.quickfolders-pills .pastel.col8:hover,
+.quickfolders-flat .pastel.col8,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor8"],
+.quickfolders-flat .pastel.selected-folder.cActive8 {
+	background-image: linear-gradient(to bottom, rgba(216,210,26,1) 0%, rgba(188,176,66,1) 33%, rgba(186,172,44,1) 100%); 
+	color:#FFFFFF !important;
+}
+
+
+/* 9 - lemon custard */
+#folderTree treechildren.col9::-moz-tree-cell-text,
+.quickfolders-pills .col9.selected-folder, .quickfolders-pills .col9:hover,
+.quickfolders-flat .col9,  .quickfolders-flat [selected].selected-folder.cActive9,
+.QuickFolders-folder-popup menuitem[tag="qfColor9"] {
+	background-image: linear-gradient(to bottom, rgba(252,251,239,1) 0%, rgba(255,246,122,1) 33%, rgba(255,255,127,1) 100%); 
+	color:#000 !important;
+}
+/* 9 - daffodil */
+.quickfolders-pills .pastel.col9.selected-folder, 
+.quickfolders-pills .pastel.col9:hover,
+.quickfolders-flat .pastel.col9,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor9"],
+.quickfolders-flat .pastel.selected-folder.cActive9 {
+	background-image: linear-gradient(to bottom, rgba(254,252,234,1) 0%, rgba(255,255,153,1) 22%, rgba(255,255,153,1) 100%); 
+	color: rgb(25, 25, 0) !important;
+}
+
+
+/* 10 - Yolk Yellow */
+#folderTree treechildren.col10::-moz-tree-cell-text,
+.quickfolders-pills .col10.selected-folder, .quickfolders-pills .col10:hover,
+.quickfolders-flat .col10, .quickfolders-flat [selected].selected-folder.cActive10,
+.QuickFolders-folder-popup menuitem[tag="qfColor10"] { 
+	background-image:  linear-gradient(to bottom, rgba(255,255,50,0.95) 0%, rgba(255,228,16,0.96) 10%, rgba(255,193,5,0.98) 50%, rgba(255,193,5,1) 100%); 
+	color:#000 !important;
+}
+/* 10 - sunset */
+.quickfolders-pills .pastel.col11.selected-folder, 
+.quickfolders-pills .pastel.col11:hover,
+.quickfolders-flat .pastel.col10,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor10"],
+.quickfolders-flat .pastel.selected-folder.cActive10 {
+	background-image:  linear-gradient(to bottom, rgba(255,240,219,1) 0%, rgba(255,204,102,1) 36%, rgba(255,204,102,1) 100%); 
+	color:#000 !important;
+}
+
+/* 11 - orange */
+#folderTree treechildren.col11::-moz-tree-cell-text,
+.quickfolders-pills .col11.selected-folder, 
+.quickfolders-pills .col11:hover,
+.quickfolders-flat .col11, .quickfolders-flat [selected].selected-folder.cActive11,
+ menuitem[tag="qfColor11"] { 
+	background-image: linear-gradient(to bottom, rgba(255,190,140,1) 0%, rgba(250,133,15,1) 20%, rgba(240,96,0,1) 40%, rgba(240,96,0,1) 100%); 
+	color:#FFFFFF !important;
+}
+/* 11 - peach */
+.quickfolders-pills .pastel.col11.selected-folder, 
+.quickfolders-pills .pastel.col11:hover,
+.quickfolders-flat .pastel.col11,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor11"],
+.quickfolders-flat .pastel.selected-folder.cActive11 {
+	background-image: linear-gradient(to bottom, rgba(255,240,219,1) 0%, rgba(254,169,106,1) 36%, rgba(254,169,106,1) 100%); 
+	color:#000000 !important;
+}
+	
+/* 12 - Mars Red */
+#folderTree treechildren.col12::-moz-tree-cell-text,
+.quickfolders-pills .col12.selected-folder, 
+.quickfolders-pills .col12:hover,
+.quickfolders-flat .col12, .quickfolders-flat [selected].selected-folder.cActive12, 
+.QuickFolders-folder-popup menuitem[tag="qfColor12"] { 
+	background-image: linear-gradient(to bottom, rgba(255,229,229,1) 0%, rgba(209,27,0,1) 21%, rgba(206,0,0,1) 49%, rgba(190,24,0,1) 100%); 
+	color: #FFFFFF !important;
+}
+/* 12 - petal */
+.quickfolders-flat .pastel.col12,
+.quickfolders-pills .pastel.col12.selected-folder, 
+.quickfolders-pills .pastel.col12:hover,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor12"],
+.quickfolders-flat .pastel.selected-folder.cActive12 {
+	background-image: linear-gradient(to bottom, rgba(255,221,221,1) 0%, rgba(255,204,204,1) 41%, rgba(255,204,204,1) 100%); 
+	color: #000000 !important;	
+}
+
+/* 13 - Rust Red */
+#folderTree treechildren.col13::-moz-tree-cell-text,
+.quickfolders-pills .col13.selected-folder, 
+.quickfolders-pills .col13:hover,
+.quickfolders-flat .col13,  .quickfolders-flat [selected].selected-folder.cActive13,
+.QuickFolders-folder-popup menuitem[tag="qfColor13"] { 
+	background-image: linear-gradient(to bottom, rgba(248,181,154,1) 0%, rgba(148,48,8,1) 25%, rgba(118,34,0,1) 44%, rgba(157,27,27,1) 100%); 
+	color: rgb(250, 235, 250) !important;
+}
+/* 13 - rose */
+.quickfolders-pills .pastel.col13.selected-folder, 
+.quickfolders-pills .pastel.col13:hover,
+.quickfolders-flat .pastel.col13,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor13"],
+.quickfolders-flat .pastel.selected-folder.cActive13 {
+	background-image: linear-gradient(to bottom, rgba(255,209,209,1) 0%, rgba(236,158,166,1) 52%, rgba(236,158,166,1) 100%); 
+	color: rgb(75, 0, 0) !important;
+}
+
+/* 14 - Deep Purple */
+#folderTree treechildren.col14::-moz-tree-cell-text,
+.quickfolders-pills .col14.selected-folder, 
+.quickfolders-pills .col14:hover,
+.quickfolders-flat .col14, .quickfolders-flat [selected].selected-folder.cActive14,
+ menuitem[tag="qfColor14"] { 
+	background-image: linear-gradient(to bottom, rgba(239,213,233,1) 0%, rgba(200,86,175,1) 16%, rgba(140,15,106,1) 32%, rgba(109,5,76,1) 100%); 
+	color:#FFFFFF !important;
+}
+/* 14 - violet */
+.quickfolders-flat .pastel.col14,
+.quickfolders-pills .pastel.col14.selected-folder, 
+.quickfolders-pills .pastel.col14:hover,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor14"],
+.quickfolders-flat .pastel.selected-folder.cActive14 {
+	background-image: linear-gradient(to bottom, rgba(221,221,255,1) 0%, rgba(153,153,255,1) 41%, rgba(153,153,255,1) 100%); 
+	color: #000000 !important;
+}
+
+/* 15 - Hot Pink */
+#folderTree treechildren.col15::-moz-tree-cell-text,
+.quickfolders-pills .col15.selected-folder, .quickfolders-pills .col15:hover,
+.quickfolders-flat .col15,  .quickfolders-flat [selected].selected-folder.cActive15,
+menuitem[tag="qfColor15"] { 
+	background-image: linear-gradient(to bottom, rgba(252,236,252,1) 0%, rgba(251,166,225,1) 13%, rgba(252,40,181,1) 32%, rgba(255,58,196,1) 100%); 
+	color:#FFFFFF !important;
+}
+/* 15 - blanched almond */
+.quickfolders-flat .pastel.col15,
+.quickfolders-pills .pastel.col15.selected-folder, 
+.quickfolders-pills .pastel.col15:hover,
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor15"],
+.quickfolders-flat .pastel.selected-folder.cActive15 {
+	background-image: linear-gradient(to bottom, rgba(252,198,106,1) 0%, rgba(254,235,202,1) 30%, rgba(254,235,202,1) 100%); 
+	color:#100000 !important;	
+}
+
+/* 16 - white (same in pastel) */
+#folderTree treechildren.col16::-moz-tree-cell-text,
+.quickfolders-pills .col16.selected-folder, 
+.quickfolders-pills .col16:hover,
+.quickfolders-flat .col16, .quickfolders-flat [selected].selected-folder.cActive16,
+.QuickFolders-folder-popup menuitem[tag="qfColor16"],
+.quickfolders-flat .pastel.col16 { 
+	background-image: linear-gradient(to bottom, rgba(204,204,204,1) 0%, rgba(237,237,237,1) 20%, rgba(255,255,255,1) 85%, rgba(234,234,234,1) 100%); 
+	color:#000 !important;
+}
+
+/* 17 - light gray (same in pastel) */
+#folderTree treechildren.col17::-moz-tree-cell-text,
+.quickfolders-pills .col17.selected-folder, 
+.quickfolders-pills .col17:hover,
+.quickfolders-flat .col17, .quickfolders-flat [selected].selected-folder.cActive17,
+.QuickFolders-folder-popup menuitem[tag="qfColor17"],
+.quickfolders-flat .pastel.col17  { 
+	background-image: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(175,175,175,1) 22%, rgba(204,204,204,1) 100%);
+	color:#000000 !important; 
+}
+
+/* 18 - medium gray (same in pastel) */
+#folderTree treechildren.col18::-moz-tree-cell-text,
+.quickfolders-pills .col18.selected-folder, .quickfolders-pills .col18:hover,
+.quickfolders-flat .col18, .quickfolders-flat [selected].selected-folder.cActive18, 
+.QuickFolders-folder-popup menuitem[tag="qfColor18"],
+.quickfolders-flat .pastel.col18 { 
+	background-image: linear-gradient(to bottom, rgba(201,201,201,1) 0%, rgba(130,130,130,1) 22%, rgba(151,151,151,1) 100%); 
+	color:#FFFFFF !important;
+}
+
+/* 19 - dark gray (same in pastel) */
+#folderTree treechildren.col19::-moz-tree-cell-text,
+.quickfolders-pills .col19.selected-folder, .quickfolders-pills .col19:hover,
+.quickfolders-flat .col19, .quickfolders-flat [selected].selected-folder.cActive19, 
+.QuickFolders-folder-popup menuitem[tag="qfColor19"],
+.quickfolders-flat .pastel.col19 { 
+	background-image: linear-gradient(to bottom, rgba(239,239,239,1) 0%, rgba(183,183,183,1) 7%, rgba(66,66,66,1) 25%, rgba(79,79,79,1) 100%); 
+	color:#FFFFFF !important;
+}
+
+/* 20 - black (same in pastel) */
+#folderTree treechildren.col20::-moz-tree-cell-text,
+.quickfolders-pills .col20.selected-folder, .quickfolders-pills .col20:hover,
+.quickfolders-flat .col20, .quickfolders-flat [selected].selected-folder.cActive20, 
+.QuickFolders-folder-popup menuitem[tag="qfColor20"],
+.quickfolders-flat .pastel.col20 { 
+	background-image: linear-gradient(to bottom, rgba(234,234,234,1) 0%, rgba(173,173,173,1) 7%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 100%); 
+	color:#EEEEEE !important;
+}
+
+/** PILLS **/
+.quickfolders-pills toolbarbutton,
+.quickfolders-pills toolbarbutton#QuickFolders-CurrentFolder {
+	border-radius: 1.8em !important;
+	border-width: 1px !important;
+	border-style: solid;
+	border-color: transparent;
+	/* text: bold, near-black, dark-silver shadow */
+	/* the font and font size to use on Mac for the bar is Lucida Grande size 11px */
+	font-size: 11px;
+	font-family: "Lucida Grande",Helvetica,Arial;
+	font-weight: bold;
+	color: rgb(40, 40, 40);
+	text-shadow: 0px 1px rgb(202, 202, 202);
+	
+	/* the correct padding for mac-style buttons 0 10 0 10 */
+	/* correction for label margin-start 6px and label margin-end 5px */
+	padding: 0px 9px 0 7px; /* Thunderbird 3 */
+}
+
+.quickfolders-pills toolbarbutton:hover,
+.quickfolders-pills toolbarbutton:active,
+.quickfolders-pills toolbarbutton.selected-folder {
+	border-style:inset;
+	color: rgb(40, 40, 40);
+}
+
+.quickfolders-pills toolbarbutton:active {
+	box-shadow:inset 0 0 8px #111;
+	text-shadow: 0px 1px rgb(51, 51, 51);
+}
+
+.quickfolders-pills toolbarbutton:hover {
+	/* when hovering, set the font to white and the shadow to almost dark gray */
+	color: rgb(255, 255, 255) !important;
+	text-shadow: 0px 1px rgb(79, 79, 79);
+	background-color: rgb(132,132,132) !important;
+}
+
+.quickfolders-pills toolbarbutton:active {
+	/* when the button is clicked or the folder is active, draw an inset shadow and darken the text shadow further */
+	background-color: rgb(108,108,108) !important;
+	text-shadow: 0px 1px rgb(51, 51, 51);
+}
+
+
+/* Improved text shadow colors */
+/* 1. dark font */
+.quickfolders-pills .selected-folder.col1, .quickfolders-pills .selected-folder.col1:hover,
+.quickfolders-pills .selected-folder.pastel.col2,
+.quickfolders-pills .selected-folder.pastel.col7,
+.quickfolders-pills .selected-folder.col8, .quickfolders-pills .selected-folder.col8:hover,
+.quickfolders-pills .selected-folder.col9, .quickfolders-pills .selected-folder.col9:hover,
+.quickfolders-pills .selected-folder.col10, .quickfolders-pills .selected-folder.col10:hover, 
+.quickfolders-pills .selected-folder.pastel.col11,
+.quickfolders-pills .selected-folder.pastel.col12, 
+.quickfolders-pills .selected-folder.pastel.col13, 
+.quickfolders-pills .selected-folder.pastel.col15, 
+.quickfolders-pills .selected-folder.col16, .quickfolders-pills .selected-folder.col16:hover {
+	text-shadow: 0px 1px rgb(240, 240, 240);
+}
+
+/* bright font */
+.quickfolders-pills .selected-folder.col2, 
+.quickfolders-pills .selected-folder.col3, 
+.quickfolders-pills .selected-folder.col4, 
+.quickfolders-pills .selected-folder.col5, 
+.quickfolders-pills .selected-folder.col6, 
+.quickfolders-pills .selected-folder.col7,
+.quickfolders-pills .selected-folder.pastel.col8, 
+.quickfolders-pills .selected-folder.col11, 
+.quickfolders-pills .selected-folder.col12, 
+.quickfolders-pills .selected-folder.col13, 
+.quickfolders-pills .selected-folder.col14,
+.quickfolders-pills .selected-folder.col15, 
+.quickfolders-pills .selected-folder.col17, 
+.quickfolders-pills .selected-folder.col18, 
+.quickfolders-pills .selected-folder.col19, 
+.quickfolders-pills .selected-folder.col20 {
+	text-shadow: 0px 1px rgb(0, 0, 0);
+}
+
+/* some experimental color labels, injected via content */
+.QuickFolders-folder-popup menuitem[tag="qfColor1"]::after { content:"light blue"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor1"]::after { content:"aqua"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor2"]::after { content:"sky blue"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor2"]::after { content:"sky"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor3"]::after { content:"navy"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor3"]::after { content:"slate"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor4"]::after { content:"ocean floor"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor4"]::after { content:"pale green"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor5"]::after { content:"jade"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor5"]::after { content:"spring"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor6"]::after { content:"olive"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor6"]::after { content:"moss"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor7"]::after { content:"neon lime"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor7"]::after { content:"grass"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor8"]::after { content:"green-yellow"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor8"]::after { content:"ocre"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor9"]::after { content:"lemon custard"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor9"]::after { content:"daffodil"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor10"]::after { content:"yolk yellow"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor10"]::after { content:"sunset"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor11"]::after { content:"orange"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor11"]::after { content:"peach"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor12"]::after { content:"mars red"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor12"]::after { content:"petal"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor13"]::after { content:"rust"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor13"]::after { content:"rose"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor14"]::after { content:"deep purple"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor14"]::after { content:"violet"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor15"]::after { content:"hot pink"; margin-left:0;}
+.QuickFolders-folder-popup.pastel menuitem[tag="qfColor15"]::after { content:"blanched almond"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor16"]::after { content:"white"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor17"]::after { content:"light gray"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor18"]::after { content:"medium gray"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor19"]::after { content:"dark gray"; margin-left:0;}
+.QuickFolders-folder-popup menuitem[tag="qfColor20"]::after { content:"black"; margin-left:0;}
+
+
+
+/* STRIPED STYLE GRADIENTS */
+.col0striped { background-image: none !important; }
+.col1striped {        background-image: linear-gradient(to bottom, rgba(250,250,250,1) 0%, rgba(129,213,239,1) 5%, rgba( 83,203,241,1) 8%, rgba(  5,171,224,1) 20%, rgba(  5,171,224,0) 21%); }
+.pastel.col1striped { background-image: linear-gradient(to bottom, rgba(226,251,255,1) 0%, rgba(153,255,255,1) 20%, rgba(153,255,255,0) 21%); }
+.col2striped {        background-image: linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 10%, rgba(10,119,213,1) 15%, rgba( 8,78,175,1) 20%, rgba(10,119,213,0) 21%); }
+.pastel.col2striped { background-image: linear-gradient(to bottom, rgba(229,239,249,1) 0%, rgba(153,204,255,1) 15%, rgba(124,189,255,1) 20%, rgba(124,189,255,0) 21%); }
+.col3striped {        background-image: linear-gradient(to bottom, rgba(161,208,244,1) 0%, rgba(39,135,219,1) 10%, rgba( 7,81,145,1) 14%, rgba( 4,30,86,1) 16%, rgba( 0, 1,86,1) 20%, rgba( 0, 1,86,0) 21%); }
+.pastel.col3striped { background-image: linear-gradient(to bottom, rgba(183,206,223,1) 0%, rgba(85,132,173,1) 10%, rgba(42,78,110,1) 14%, rgba(25,38,65,1) 16%, rgba(22,23,64,1) 20%, rgba(22,23,64,0) 21%); }
+.col4striped {        background-image: linear-gradient(to bottom, rgba(144,232,237,1) 0%, rgba( 4,176,178,1) 3%, rgba( 7,68,76,1) 9%, rgba( 4,156,159,1) 20%, rgba( 8,79,89,0) 21%); }
+.pastel.col4striped { background-image: linear-gradient(to bottom, rgba(189,239,226,1) 0%, rgba(82,123,127,1) 9%, rgba(82,123,127,1) 20%, rgba(82,123,127,0) 25%); }
+.col5striped {        background-image: linear-gradient(to bottom, rgba( 37,245,231,1) 0%, rgba(  9,205,188,1) 10%, rgba( 2,136,125,1) 15%, rgba( 5,108,117,1) 20%, rgba( 5,108,117,0) 21%); }
+.pastel.col5striped { background-image: linear-gradient(to bottom, rgba(177,237,233,1) 0%, rgba(151,201,191,1) 10%, rgba(79,153,147,1) 13%, rgba(77,138,143,1) 20%, rgba(77,138,143,0) 21%); }
+.col6striped {        background-image: linear-gradient(to bottom, rgba(184,205,65,1) 0%, rgba(132,171,39,1) 10%, rgba(104,156,0,1) 20%, rgba(145,186,42,0) 21%); }
+.pastel.col6striped { background-image: linear-gradient(to bottom, rgba(199,237,111,1) 0%, rgba(120,167,16,1) 10%, rgba(120,167,16,1) 20%, rgba(120,167,16,0) 21%) }
+.col7striped {        background-image: linear-gradient(to bottom, rgba(200,255,50,1) 0%, rgba(152,253,21,1) 4%, rgba(0,192,0,1) 20%, rgba(0,192,0,0) 21%); }
+.pastel.col7striped { background-image: linear-gradient(to bottom, rgba(176,223,118,1) 0%, rgba(165,223,118,1) 4%, rgba(112,190,110,1) 20%, rgba(112,190,110,0) 21%); }
+.col8striped {        background-image: linear-gradient(to bottom, rgba(255,255,136,1) 0%, rgba(226,255, 40,1) 10%, rgba(206,221, 35,1) 14%, rgba(206,221, 35,1) 20%, rgba(206,221, 35,0) 21%); }
+.pastel.col8striped { background-image: linear-gradient(to bottom, rgba(238,238,178,1) 0%, rgba(210,225,117,1) 10%, rgba(195,203,109,1) 14%, rgba(195,203,109,1) 20%, rgba(195,203,109,0) 21%); }
+.col9striped {        background-image: linear-gradient(to bottom, rgba(252,251,239,1) 0%, rgba(255,246,122,1) 10%, rgba(255,255,127,1) 20%, rgba(255,255,127,0) 21%); }
+.pastel.col9striped { background-image: linear-gradient(to bottom, rgba(251,250,247,1) 0%, rgba(255,246,168,1) 10%, rgba(247,244,183,1) 20%, rgba(247,244,183,0) 21%); }
+.col10striped {        background-image: linear-gradient(to bottom, rgba(255,255,50,1) 0%, rgba(255,228,16,1) 4%, rgba(255,193,5,1) 20%, rgba(255,193,5,0) 21%); }
+.pastel.col10striped { background-image: linear-gradient(to bottom, rgba(155,155,160,1) 0%, rgba(223,223,122,1) 4%, rgba(223,197,122,1) 20%, rgba(223,197,122,0) 21%);}
+.col11striped {        background-image: linear-gradient(to bottom, rgba(255,190,140,1) 0%, rgba(250,133,15,1) 4%, rgba(240,96,0,1) 10%, rgba(240,96,0,1) 20%, rgba(240,96,0,0) 21%); } 
+.pastel.col11striped { background-image: linear-gradient(to bottom, rgba(255,240,219,1) 0%, rgba(254,169,106,1) 9%, rgba(254,169,106,1) 20%, rgba(254,169,106,0) 21%); }
+.col12striped {        background-image: linear-gradient(to bottom, rgba(255,229,229,1) 0%, rgba(209, 27, 0,1) 9%, rgba(206, 0, 0,1) 15%, rgba(190,24, 0,1) 20%, rgba(190,24, 0,0) 21%); }
+.pastel.col12striped { background-image: linear-gradient(to bottom, rgba(255,221,221,1) 0%, rgba(255,204,204,1) 9%, rgba(255,204,204,1) 20%,  rgba(255,204,204,0) 21%) ; }
+.col13striped {        background-image: linear-gradient(to bottom, rgba(248,181,154,1) 0%, rgba(148,48, 8,1) 10%, rgba(118,34, 0,1) 15%, rgba(157,27,27,1) 20%, rgba(157,27,27,0) 21%); }
+.pastel.col13striped { background-image: linear-gradient(to bottom, rgba(255,209,209,1) 0%, rgba(236,158,166,1) 20%, rgba(236,158,166,0) 21%); }
+.col14striped {        background-image: linear-gradient(to bottom, rgb(239,213,233) 0%, rgb(200, 86,175) 10%, rgb(140,15,106) 15%, rgba(109, 5, 76,1) 20%, rgba(109, 5, 76,0) 21%); }
+.pastel.col14striped { background-image: linear-gradient(to bottom, rgba(221,221,255,1) 0%, rgba(153,153,255,1) 10%, rgba(153,153,255,1) 20%, rgba(153,153,255,0) 21%); }
+.col15striped {        background-image: linear-gradient(to bottom, rgba(252,236,252,1) 0%, rgba(251,166,225,1) 10%, rgba(252, 40,181,1) 15%, rgba(255, 58,196,1) 20%, rgba(255, 58,196,0) 21%); }
+.pastel.col15striped { background-image: linear-gradient(to bottom, rgba(252,198,106,1) 0%, rgba(254,235,202,1) 15%, rgba(254,235,202,1) 20%, rgba(254,235,202,0) 21%); }
+.pastel.col16striped,
+.col16striped        { background-image: linear-gradient(to bottom, rgba(204,204,204,1) 0%, rgba(237,237,237,1) 3%, rgba(255,255,255,1) 20%, rgba(234,234,234,0) 21%); }
+.pastel.col17striped,
+.col17striped        { background-image: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(175,175,175,1) 7%, rgba(204,204,204,1) 20%, rgba(204,204,204,0) 21%); }
+.pastel.col18striped,
+.col18striped        { background-image: linear-gradient(to bottom, rgba(201,201,201,1) 0%, rgba(130,130,130,1) 7%, rgba(151,151,151,1) 20%, rgba(151,151,151,0) 21%); }
+.pastel.col19striped,
+.col19striped {        background-image: linear-gradient(to bottom, rgba(239,239,239,1) 0%, rgba(183,183,183,1) 3%, rgba(66,66,66,1) 12%, rgba(79,79,79,1) 20%, rgba(79,79,79,0) 21%); }
+.pastel.col20striped,
+.col20striped {        background-image: linear-gradient(to bottom, rgba(234,234,234,1) 0%, rgba(173,173,173,1) 4%, rgba(0,0,0,1) 9%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 21%); }
+
+menuitem[tag="qfColor0"].color,
+menuitem[tag="qfColor0"].color:hover {
+	list-style-image : url('chrome://quickfolders/skin/ico/folder.png') !important;
+}
+
+menuitem[tag="qfColor0"] { background-image: none!important; }
+menuitem[tag="qfColor1"] { background-color:#01B1D7;}
+menuitem[tag="qfColor2"] { color:#FFF;background-color:#2591CF;}
+menuitem[tag="qfColor3"] { color:#FFF;background-color:#FE28E2;}
+menuitem[tag="qfColor4"] { color:#FFF;background-color:#0A5C68;}
+menuitem[tag="qfColor5"] { background-color:#4D7EFB;}
+menuitem[tag="qfColor6"] { color:#FFF;background-color:#46B066;}
+menuitem[tag="qfColor7"] { background-color:#00C000;}
+menuitem[tag="qfColor8"] { background-color:#01D71A;}
+menuitem[tag="qfColor9"] { background-color:#F7FF13;}
+menuitem[tag="qfColor10"] { background-color:#FFC105;}
+menuitem[tag="qfColor11"] { color:#FFF;background-color:#F06000;}
+menuitem[tag="qfColor12"] { color:#FFF;background-color:#D40000;}
+menuitem[tag="qfColor13"] { color:#FFF;background-color:#0E51FA;}
+menuitem[tag="qfColor14"] { color:#FFF;background-color:#800080;}
+menuitem[tag="qfColor15"] { color:#FFF;background-color:#FF119D;}
+menuitem[tag="qfColor16"] { background-color:#000000;}
+menuitem[tag="qfColor17"] { background-color:#9BF868;}
+menuitem[tag="qfColor18"] { color:#FFF;background-color:#000000;}
+menuitem[tag="qfColor19"] { color:#FFF;background-color:#404040;}
+menuitem[tag="qfColor20"] { background-color:#FF8080;}
+

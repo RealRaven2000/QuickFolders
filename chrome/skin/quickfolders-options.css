@@ -1,0 +1,324 @@
+@import url('chrome://quickfolders/content/quickfolders-layout.css');
+@import url('chrome://quickfolders/skin/quickfolders-palettes.css');
+@import url('chrome://quickfolders/content/contribute.css');
+
+/* Options window */
+#qf-options-prefpane {
+	min-height: 400px;
+}
+
+#QuickFolders-Options-Tabbox { min-width:400px; }
+#QuickFolders-Options-general { min-height:350px; }
+
+#qf-header-container {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	background-image: url("chrome://messenger/skin/preferences/background.png");
+	background-color: transparent;
+	color: -moz-fieldtext;
+}
+
+#qf-options-icon {
+	height: 32px !important;
+	width: 32px !important;
+	padding: 0;
+	margin: 0 5px;
+}
+
+#qf-options-header {
+	margin: 5px 5px 5px 5px;
+	border: 1px solid;
+	border-radius: 1em;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+	padding: 5px 8px;
+	background-image: linear-gradient(to top, rgba(10, 10, 10, 0.2) 0%, rgba(100, 100, 100, 0.2) 60%, rgba(220, 220, 220, 0.5) 95%, rgba(255, 255, 255, 0.9) 100%);
+	color: white;
+	font-family: Calibri,sans-serif;
+}
+
+#qf-options-header .dialogheader-title {
+	margin: 0px !important;
+	font-size: 13pt;
+	font-weight: bold;
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
+	color: white !important;
+}
+
+/* version number */
+#qf-options-header-description {
+	font-size: 11pt;
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
+	color: white !important;
+}
+
+/* preview container which represents the toolbar */
+#qf-StandardColors {
+	padding: 3px 10px;
+	border: #BBBBBB;
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+}
+
+#chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/reload.png"); }
+#chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/cogwheel.png"); }
+#chkCurrentFolderShow .checkbox-icon, #chkCurrentFolderShowSingleMsg .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
+#chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/msgNavigate.png"); }
+#chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/folderCommand.png"); }
+#chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/Filter.png"); }
+#chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png"); }
+#chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon { 
+	list-style-image: url("chrome://quickfolders/skin/ico/chk-history.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+/*
+#chkRecent:hover hbox image {
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}*/
+
+
+label.textBoxLabel {
+	vertical-align: bottom;
+	padding-top: 4px;
+}
+
+hbox > textbox {
+	max-height: 2em;
+}
+hbox > button {
+	max-height: 3em !important;
+}
+
+button.narrow {
+  width:auto;
+  min-width: 4em;
+}
+
+#chkCogWheel .checkbox-icon {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#chkCogWheel:hover .checkbox-icon {
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+
+/****** LINKS	********/
+label.text-link[href] {
+	padding: 4px 2px 4px 5px !important;
+	vertical-align: middle !important;
+}
+
+label.text-link[href] > * {
+	text-decoration: underline !important;
+}
+
+label.text-link[href]:hover {
+	color: white !important;
+	background-color: blue !important;
+}
+
+button.debug {
+	border-radius: 2px !important;
+	-moz-appearance: none !important;
+	background-color: #B00;
+	color: #FFF;
+	border: 1px solid gray;
+	padding:2px 5px;
+}
+
+label.text-link[href]:focus {
+	color: #FFF !important;
+	background-color: #06396F !important;
+	border: 1px #006 solid;
+	text-decoration: underline !important;
+}
+
+
+
+label.qfTabPreview {
+	border: #AAA 1px solid;
+	border-radius: 4px 5px 0 0;
+	padding: 3px 8px;
+	min-width:20px;
+	max-height:22px;
+	vertical-align:middle;
+}
+
+label [href^="mailto"] {
+	text-decoration: underline	!important;
+}
+
+
+label.text-link {
+	border-radius: 0.5em;
+	margin: 0.7em 12em 0.8em 11em !important;
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	-moz-transition-property: box-shadow;
+	-moz-transition-duration: 0.2s;
+}
+
+label.text-link:hover {
+	margin: 1.0em 11.8em 0.5em 11.2em !important;
+	box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.8);
+}
+
+label.text-link, label.text-link[visited="true"] {
+	border: 1px #AAA solid;
+	padding: 4px 2px 6px 5px !important;
+	text-decoration: underline !important;
+	vertical-align: middle !important;;
+	text-align: center;
+	font-size: 12px;
+}
+
+
+#L0.text-link:focus, #L1.text-link:focus  {
+	color: #FFF !important;
+	background: rgb(191,210,85);
+	background: linear-gradient(to bottom, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
+	border: 1px #006 solid;
+	text-decoration: underline !important;
+}
+
+
+/* blutorange */
+label#L2:hover,
+label#L2:focus {
+	background-color: rgb(251,202,159);
+	background: linear-gradient(to bottom, rgba(251,202,159,1) 0%, rgba(248,148,60,1) 23%, rgba(239,101,21,1) 42%, rgba(252,183,122,1) 100%) !important;
+	color: rgb(128,0,0) !important;
+	border: 1px #802D19 solid;
+}
+
+label#L2:active {
+	color: #fff !important;
+	text-decoration: underline;
+	border: 1px #802D19 solid;
+}
+
+/* version history - yellow */
+label#L3:hover, label#L3:focus {
+	background-color: rgb(252,234,187) !important;
+	background-image: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,234,187,1) 6%, rgba(248,181,0,1) 34%, rgba(251,223,147,1) 100%) !important;
+	border: 1px #802D19 solid;
+	color: #82370A !important;
+	font-weight: bold;
+}
+
+label#L3:active {
+	color: #BA4E0B !important;
+	border: 1px #802D19 solid;
+}
+
+/* blue */
+label#L4:hover, label#L4:focus {
+	color: #FFF !important;
+	background-color: #2B9EEE !important;
+	background-image: linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%) !important;
+	border: 1px #006 solid;
+}
+
+label#L4:active {
+	color: #00A !important;
+}
+
+/* cherry-red */
+label#L5:hover, label#L5:focus {
+	background-color: rgb(174,45,28) !important;
+	background-image: linear-gradient(to bottom, rgba(174,45,28,1) 0%, rgba(214,90,79,1) 12%, rgba(193,53,38,1) 43%, rgba(126,24,8,1) 100%) !important;
+	color: #fff !important;
+	border: 1px #4B1400 solid;
+}
+
+label#L5:active {
+	color: #FFF !important;
+	text-shadow: #fdd 0 0 1px;
+}
+
+label#L0 {
+	margin: 10px 20px;
+}
+
+label#L1,label#L2,label#L3,label#L4,label#L5 {
+	margin: 10px 50px;
+	text-align: center;
+	width: auto;
+	text-shadow: none !important;
+	font-style: normal;
+}
+
+label#L0 a {
+	Padding: 1em 2em;
+}
+
+/* green */
+label#L0:hover, label#L1:hover {
+	color: #FFF !important;
+	background: linear-gradient(to bottom, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
+	background-color: #073061 !important; /*#2B9EEE;*/
+	border: 1px #24463C solid;
+}
+
+label#L0:active, label#L1:active {
+	color: #FFF !important;
+	background-color: #076030 !important;
+	border: 1px #24463C solid;
+}
+
+label#L0:active a, label#L1:active a {
+	text-decoration: underline !important;
+}
+
+
+
+description.quickhelp-desc, description.quickhelp-dbg {
+	position:absolute;
+	text-align:justify;
+	max-width: 620px;
+	padding: 2px 0px;
+	margin: 1px 0px;
+	line-height:1.2em;
+	bottom:5px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+
+
+description#importantNote {
+	font-weight: bold;
+	color: #A00 !important;
+}
+
+description.quickhelp-dbg, hbox.quickhelp-dbg {
+	color:#CCC;
+	padding: 3px 8px 3px 8px;
+}
+
+hbox.quickhelp-dbg {
+	background-color:#333;
+	background: linear-gradient(to bottom, rgba(174,188,191,1) 0%, rgba(110,119,116,1) 27%, rgba(10,14,10,1) 48%, rgba(10,8,9,1) 100%);
+	border-radius: 0.5em;
+}
+
+#QuickFolders-Options-RebuildShortcutKey {
+	width: 2em;
+	text-align: center;
+}
+
+
+#QuickFolders-Options-Tabbox tab {
+	padding: 0.2em 0.6em;
+	border-radius: 4px 4px 0 0;
+}
+
+#QuickFolders-Options-Tabbox tab .tab-icon { margin-right:6px; }
+
+#QuickFolders-Theme-Selector {
+	max-width:50%; 
+	vertical-align:top;
+}
+

@@ -1,38 +1,102 @@
-content quickfolders chrome/content/
-locale quickfolders en-US jar:chrome/locale.jar!/locale/en-US/
-locale quickfolders de jar:chrome/locale.jar!/locale/de/
-locale quickfolders nl jar:chrome/locale.jar!/locale/nl/
-locale quickfolders it jar:chrome/locale.jar!/locale/it/
-locale quickfolders fr jar:chrome/locale.jar!/locale/fr/
-locale quickfolders ja-JP jar:chrome/locale.jar!/locale/ja-JP/
-locale quickfolders pt-BR jar:chrome/locale.jar!/locale/pt-BR/
-locale quickfolders ru jar:chrome/locale.jar!/locale/ru/
-locale quickfolders sr jar:chrome/locale.jar!/locale/sr/
-locale quickfolders vi jar:chrome/locale.jar!/locale/vi/
-locale quickfolders ca jar:chrome/locale.jar!/locale/ca/
-locale quickfolders es-MX jar:chrome/locale.jar!/locale/es-MX/
-locale quickfolders zh-CN jar:chrome/locale.jar!/locale/zh-CN/
-locale quickfolders zh-CHS jar:chrome/locale.jar!/locale/zh-CN/
-locale quickfolders zh jar:chrome/locale.jar!/locale/zh/
-locale quickfolders zh-CHT jar:chrome/locale.jar!/locale/zh/
-locale quickfolders zh-TW jar:chrome/locale.jar!/locale/zh/
-locale quickfolders hu-HU jar:chrome/locale.jar!/locale/hu-HU/
-locale quickfolders sv-SE jar:chrome/locale.jar!/locale/sv-SE/
+content quickfolders       chrome/content/
+locale quickfolders en-US  chrome/locale/en-US/
+locale quickfolders de     chrome/locale/de/
+locale quickfolders nl     chrome/locale/nl/
+locale quickfolders it     chrome/locale/it/
+locale quickfolders fr     chrome/locale/fr/
+locale quickfolders ja-JP  chrome/locale/ja-JP/
+locale quickfolders pt-BR  chrome/locale/pt-BR/
+locale quickfolders pl     chrome/locale/pl/
+locale quickfolders ru     chrome/locale/ru/
+locale quickfolders sr     chrome/locale/sr/
+locale quickfolders vi     chrome/locale/vi/
+locale quickfolders ca     chrome/locale/ca/
+locale quickfolders es-MX  chrome/locale/es-MX/
+locale quickfolders zh-CN  chrome/locale/zh-CN/
+locale quickfolders zh-CHS chrome/locale/zh-CN/
+locale quickfolders zh     chrome/locale/zh/
+locale quickfolders zh-CHT chrome/locale/zh/
+locale quickfolders zh-TW  chrome/locale/zh/
+locale quickfolders hu-HU  chrome/locale/hu-HU/
+locale quickfolders sv-SE  chrome/locale/sv-SE/
 
-skin quickfolders classic/1.0  jar:chrome/skin/quickfolders.jar!/
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-tb3-currentfolder.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
+skin quickfolders classic/1.0  chrome/skin/
+
+# replace mailWindowOverlay.xul with messenger.xul!
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+
+# Thunderbird >=3
+content myXUL chrome://quickfolders/content/xul3/  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
+content myXUL chrome://quickfolders/content/xul10/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>9.99
+content myXUL chrome://quickfolders/content/xul11/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>10.99
+content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>11.99
+# SeaMonkey
+content myXUL chrome://quickfolders/content/xulSM/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+# Postbox
+content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-inc.com
+
+#ALL
+overlay chrome://messenger/content/messenger.xul          chrome://myXUL/content/overlayCurrentfolder.xul
+overlay chrome://messenger/content/messageWindow.xul      chrome://myXUL/content/currentFolderSingleMessage.xul
+overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
+
+#TB3+
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
 
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-tb2-currentfolder.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<3.0
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus2.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<3.0
-
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-postbox.xul application=postbox@postbox-inc.com
+#Postbox - we need to keep overlaying mailWindowOverlay at the moment or we loose the styling
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlayPostbox.xul application=postbox@postbox-inc.com
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application=postbox@postbox-inc.com
 
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay-seamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#SeaMonkey
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlaySeamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-layout.css
-style chrome://quickfolders/content/overlay-postbox.xul chrome://quickfolders/content/quickfolders-postbox.css application=postbox@postbox-inc.com
-style chrome://quickfolders/content/overlay-seamonkey.xul chrome://quickfolders/content/quickfolders-seamonkey.css  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+
+
+##Style Tweaks
+#All
+style chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css
+style chrome://quickfolders/content/options.xul chrome://quickfolders/content/quickfolders-widgets.css
+
+#Tb # appversion<4.0  = before gecko2
+style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-pre4.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<4.0
+style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-widgets.css
+style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-filters.css
+
+#Postbox
+style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-postbox.css application=postbox@postbox-inc.com
+style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com
+style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-widgets.css application=postbox@postbox-inc.com
+
+#SeaMonkey # appversion<2.2  = before gecko2
+style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-pre4.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} appversion<2.2
+style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-seamonkey.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-filters.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-widgets.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+
+####### LEGACY RULES - these list deprecated css styles, for backwards compatibility with older versions of Gecko
+#######                should be ignored by the validator (but probably aren't)
+#Tb legacy
+style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+style chrome://messenger/content/messenger.xul              chrome://quickfolders/content/qf_palette_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_palette_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
+
+#SM legacy
+style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+style chrome://messenger/content/messenger.xul              chrome://quickfolders/content/qf_palette_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_palette_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
+
+#Postbox - still all legacy styles for linear-gradients!
+style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+#style chrome://quickfolders/content/overlayPostbox.xul    chrome://quickfolders/content/qf_palette_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://messenger/content/messenger.xul              chrome://quickfolders/content/qf_palette_legacy16.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_palette_legacy16.css application=postbox@postbox-inc.com appversion<4.0
 

@@ -3,6 +3,10 @@
 <!ENTITY qf.label.dragFolderLabel "Dra mappar hit för att bokmärka dem. Klicka på bokmärket för att gå till mappen, dra och släpp meddelanden för att flytta/kopiera dem dit.">
 <!ENTITY qf.menuitem.quickfolders.options "Inställningar för QuickFolders…">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "I">
+<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Målarläge">
+<!ENTITY qf.menuitem.quickfolders.togglePaintModeAccess "M">
+<!ENTITY qf.menuitem.quickfolders.filters "Skapa meddelandefilter…">
+<!ENTITY qf.menuitem.quickfolders.filtersAccess "F">
 <!ENTITY qf.menuitem.quickfolders.changeOrder "Ändra ordningen på dina bokmärken">
 <!ENTITY qf.menuitem.quickfolders.changeOrderAccess "Ä">
 <!ENTITY qf.menuitem.quickfolders.help "QuickFolders hjälpsektion…">
@@ -18,7 +22,14 @@
 <!ENTITY qf.tooltip.RecentFolders "Nyligen använda mappar">
 <!ENTITY qf.tooltip.folderUp "Gå till överordnad mapp">
 <!ENTITY qf.tooltip.goNextFolder "Gå till nästa olästa meddelande">
+<!ENTITY qf.tooltip.quickFoldersNavToggle "växla navigering bland endast olästa/alla e-brev">
 <!ENTITY qf.tooltip.goPreviousFolder "Gå till föregående olästa meddelande">
 <!ENTITY qf.tooltip.emailIcon "Aktuellt meddelande - dra till en QuickFolders-flik för att flytta ett meddelande">
 <!ENTITY qf.tooltip.threadIcon "Aktuell tråd - dra till en QuickFolders-flik för att flytta en konversation">
 <!ENTITY qf.tooltip.closeToolbar "Stäng detta verktygsfält">
+<!ENTITY qf.tooltip.conversationRead "Märk konversation som läst och hoppa till nästa olästa meddelande">
+<!ENTITY qf.tooltip.mainOptions "Inställningar och avancerade kommandon för QuickFolders">
+<!ENTITY qf.tooltip.filters "Sluta skapa filter.">
+<!ENTITY qf.tooltip.filterStart "Aktivera filterinlärningsläget. Att dra meddelanden till en QuickFolders-mapp skapar nya filter.">
+<!ENTITY qf.tooltip.mailFolderCommands "E-postmappkommandon">
+<!ENTITY qf.tooltip.paintCanActive "Målarläge: Klicka för att öppna paletten, klicka på flikar för att färga dem, högerklicka flikar för att hämta deras färg">

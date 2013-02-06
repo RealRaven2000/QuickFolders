@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opcions de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "General">
+<!ENTITY qf.tab.advanced "Advanced">
 <!ENTITY qf.tab.layout "Pimp My Tabs!">
 <!ENTITY qf.tab.quickhelp "Ajuda Ràpida">
 <!ENTITY qf.checkbox.displaylabel "Mostra 'QuickFolders' a la barra d'eines">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Mostra el nombre total de missatges al botó de la carpeta">
 <!ENTITY qf.checkbox.showCountInSubFolders "Mostra el total de subcarpetes">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Es mostren separats per un '+' al costat; el correu no llegit pot fer que la pestanya es mostri en negreta si l'opció està activa">
+<!ENTITY qf.checkbox.showMessageNavigation "Botons de Navegació de Missatges">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostra en cursiva els botons de les carpetes que continguin missatges">
+<!ENTITY qf.checkbox.enableTransitions "Activa transicions CSS">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Mostra transicions suaus entre diferents coloracions de les pestanyes.">
+<!ENTITY qf.checkbox.highlightNewMail "Ressalta carpetes amb correu nou">
 <!ENTITY qf.label.buttonFontSize "Mida de font del botó (deixeu en blanc per a la mida per defecte):">
 <!ENTITY qf.label.pixels "píxels">
 <!ENTITY qf.label.appearance "Aparença">
+<!ENTITY qf.label.behavior "Aparença">
+<!ENTITY qf.label.mainToolbar "Elements de la barra d'Eines Principal">
+<!ENTITY qf.label.keyboard "Dreceres de Teclat">
+<!ENTITY qf.label.menus "Configuració del Menú">
 <!ENTITY qf.label.colors "Colors">
 <!ENTITY qf.label.themes "Temes:">
+<!ENTITY qf.label.tabContent "Fitxa de Contingut">
+<!ENTITY qf.label.misc "Miscel·lània">
 <!ENTITY qf.button.default "Valors per defecte">
+<!ENTITY qf.label.currentFolderToolbar "Barra d'Eines de la Carpeta Actual">
+<!ENTITY qf.checkbox.currentFolder.show "Mostra la Barra d'Eines">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... i també a la Finestra de Missatge">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra d'eines de la carpeta actual a la finestra que s'obre quan trieu obrir un correu a una nova finestra">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Botó de Tancar">
+<!ENTITY qf.button.currentFolderBackground.set "estableix">
+<!ENTITY qf.currentFolderBackground.custom "personalitzat">
+<!ENTITY qf.currentFolderBackground.translucent "translúcid">
+<!ENTITY qf.currentFolderBackground.default "per defecte">
+<!ENTITY qf.currentFolderBackground.dark "fosc">
+<!ENTITY qf.caption.currentFolderBackground "Fons de la barra d'eines de la carpeta actual">
 <!ENTITY qf.label.setcolors "Aplica [Color del text], Color del fons">
 <!ENTITY qf.label.ActiveTabColor "Color de la Pestanya Activa:">
 <!ENTITY qf.label.HoveredTabColor "Color de la pestanya flotant:">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Colors per Defecte">
 <!ENTITY qf.checkbox.debug "Mode de Depuració">
 <!ENTITY qf.label.StandardTabColor "Color estàndard per a la pestanya:">
+<!ENTITY qf.checkbox.usePalette "Utilitza la paleta">
 <!ENTITY qf.label.initdelay "[ms] retard a l'inici {1000 es l'estàndard}:">
 <!ENTITY qf.label.folders "Carpetes?">
 <!ENTITY qf.label.folders.tooltip "Copia la cadena de configuració de les carpetes al portapapers">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Afegir Traducció...">
 <!ENTITY qf.description.donate "Si us ha encantat QuickFolders i voleu donar suport al seu desenvolupament, podeu donar algun diner per al futur desenvolupament de QuickFolders">
 <!ENTITY qf.label.donateLink "Visiteu la Pàgina de Donacions...">
+<!ENTITY qf.label.donate "Fer una Donació">
 <!ENTITY qf.description.contactMe "També podeu contactar-me personalment a axelg@gofree.indigo.ie">
 <!ENTITY qf.label.contactLink "Contacteu-me (Anglès o Alemany)...">
 <!ENTITY qf.checkbox.showIcons "Mostrar Icones (Safata d'entrada, Enviats, Brossa, Escombraries, Esborranys, Arxivat, Plantilles)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetes al menú emergent">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
+<!ENTITY qf.checkbox.showRecentButton "Botó de Carpetes Recents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botó dret per configurar">
+<!ENTITY qf.checkbox.showFilterButton "Botó 'Crea Filtres'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "També podeu crear Filtres, utilitzant el menú de contexte de QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Amaga QuickFolders quan no es necessiti">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Col·lapsa la barra d'eines en fitxes especials, com ara calendari, contingut, gestor de complements.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del Menú de la Barra d'eines">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Pestanyes Natives">
 <!ENTITY qf.themes.flatTabs.label "Estil Pla">
 <!ENTITY qf.themes.applePills.label "Pastilles d'Apple">
+<!ENTITY qf.themes.realButtons.label "Botons">
 <!ENTITY qf.themes.flatButtons.label "Botons de la Barra d'Eines">
 <!ENTITY qf.options.theme.pastelColors "Colors Pastel">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Radi de les cantonades Personalitzat">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla">
 <!ENTITY qf.description.versionhistory "Historial Detallat de Versions a mozdev.org">
 <!ENTITY qf.label.versionhistory "Historial de Versions...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Obtenir Missatges (Comptes de Correu)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Obtenir Missatges (Comptes de Notícies)">
+<!ENTITY qf.checkbox.menus.markAllRead "Marcar la Carpeta com a Llegida">
+<!ENTITY qf.checkbox.menus.emptyJunk "Esborrar Brossa">
+<!ENTITY qf.checkbox.menus.emptyTrash "Esborrar Paperera">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Arrosegar a nova Subcarpeta">

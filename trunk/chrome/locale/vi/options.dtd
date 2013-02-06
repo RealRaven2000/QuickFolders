@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Tùy chọn QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Tổng quan">
+<!ENTITY qf.tab.advanced "Nâng cao">
 <!ENTITY qf.tab.layout "Sắp xếp các thẻ!">
 <!ENTITY qf.tab.quickhelp "Trợ giúp">
 <!ENTITY qf.checkbox.displaylabel "Hiển thị 'QuickFolders' trên thanh công cụ">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Hiển thị tổng số tin nhắn trên nút thư mục">
 <!ENTITY qf.checkbox.showCountInSubFolders "Hiển thị toàn bộ các thư mục con">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Chúng được hiển thị ngăn cách bởi dấu '+' bên cạnh số đếm chính; thư chưa đọc bên trong sẽ làm cho thẻ được in đậm lên nếu tùy chọn trên được kích hoạt.">
+<!ENTITY qf.checkbox.showMessageNavigation "Nút Điều Hướng Tin Nhắn">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng">
+<!ENTITY qf.checkbox.enableTransitions "Cho phép chuyển tiếp CSS">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Hiển thị chuyển tiếp mượt giữa các màu sắc của thẻ.">
+<!ENTITY qf.checkbox.highlightNewMail "Làm nổi bật các thư mục có thư mới">
 <!ENTITY qf.label.buttonFontSize "Cỡ chữ trên nút (để trống là mặc định):">
 <!ENTITY qf.label.pixels "điểm ảnh">
 <!ENTITY qf.label.appearance "Appearance">
+<!ENTITY qf.label.behavior "Hành vi">
+<!ENTITY qf.label.mainToolbar "Các phần tử Thanh Công Cụ chính">
+<!ENTITY qf.label.keyboard "Phím tắt">
+<!ENTITY qf.label.menus "Thiết lập trình đơn">
 <!ENTITY qf.label.colors "Colors">
 <!ENTITY qf.label.themes "Themes:">
+<!ENTITY qf.label.tabContent "Nội dung thẻ">
+<!ENTITY qf.label.misc "Linh tinh">
 <!ENTITY qf.button.default "Defaults">
+<!ENTITY qf.label.currentFolderToolbar "Thanh công cụ thư mục hiện tại">
+<!ENTITY qf.checkbox.currentFolder.show "Hiển thị Thanh Công Cụ">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…cả trong các cửa sổ Tin Nhắn Đơn">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Hiển thị thanh thư mục hiện tại trong cửa sổ khi bạn mở một Thư ở cửa sổ mới">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Nút Đóng">
+<!ENTITY qf.button.currentFolderBackground.set "chọn">
+<!ENTITY qf.currentFolderBackground.custom "thay đổi">
+<!ENTITY qf.currentFolderBackground.translucent "trong suốt">
+<!ENTITY qf.currentFolderBackground.default "mặc định">
+<!ENTITY qf.currentFolderBackground.dark "tối">
+<!ENTITY qf.caption.currentFolderBackground "nền của Thanh Công Cụ Thư Mục Hiện Tại">
 <!ENTITY qf.label.setcolors "Chọn [Màu chữ, màu nền">
 <!ENTITY qf.label.ActiveTabColor "Màu của thẻ đang xem">
 <!ENTITY qf.label.HoveredTabColor "Màu của thẻ khi đưa chuột lên trên thẻ">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Màu mặc định">
 <!ENTITY qf.checkbox.debug "Chế độ sửa lỗi">
 <!ENTITY qf.label.StandardTabColor "Màu chuẩn của thẻ:">
+<!ENTITY qf.checkbox.usePalette "Dùng bảng màu">
 <!ENTITY qf.label.initdelay "[mili giây] thời gian trễ ban đầu {1000 là chuẩn}:">
 <!ENTITY qf.label.folders "Thư mục?">
 <!ENTITY qf.label.folders.tooltip "Sao chép chuỗi cấu hình vào bộ nhớ tạm">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Thêm ngôn ngữ...">
 <!ENTITY qf.description.donate "Nếu bạn yêu thích QuickFolders như chúng tôi và muốn hỗ trợ phát triển nó, bạn có thể quyên góp tiền cho QuickFolders">
 <!ENTITY qf.label.donateLink "Ghé thăm trang quyên góp...">
+<!ENTITY qf.label.donate "Quyên góp">
 <!ENTITY qf.description.contactMe "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)...">
 <!ENTITY qf.checkbox.showIcons "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)">
 <!ENTITY qf.checkbox.showSubfolders "Mở rộng các thư mục con trong trình đơn tự bung (thử nghiệm)">
 <!ENTITY qf.checkbox.showRecentTab "Hiển thị thẻ các thư mục gần đây nhất">
+<!ENTITY qf.checkbox.showRecentButton "Nút thư mục hiện tại">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Nhấp chuột phải để chỉnh cấu hình">
+<!ENTITY qf.checkbox.showFilterButton "Nút 'Tạo Bộ Lọc'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Ẩn QuickFolders khi không dùng">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Thu gọn thanh công cụ trong các thẻ đặc biệt như lịch, nội dung, quản lý addon.">
 <!ENTITY qf.checkbox.tabMenuIcon "Biểu tượng thanh công cụ">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Các thẻ gốc">
 <!ENTITY qf.themes.flatTabs.label "Phong cách phẳng">
 <!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.realButtons.label "Nút ấn">
 <!ENTITY qf.themes.flatButtons.label "Các nút công cụ">
 <!ENTITY qf.options.theme.pastelColors "Phấn màu">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Tùy chỉnh bán kính góc">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Báo cáo lỗi / Yêu cầu tính năng mới bằng Bugzilla...">
 <!ENTITY qf.description.versionhistory "Chi tiết về các phiên bản cũ tại mozdev.org">
 <!ENTITY qf.label.versionhistory "Xem phiên bản cũ...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Nhận tin nhắn (Tài khoản thư)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Nhận tin nhắn (Tài khoản tin tức)">
+<!ENTITY qf.checkbox.menus.markAllRead "Đánh dấu thư mục là Đã Đọc">
+<!ENTITY qf.checkbox.menus.emptyJunk "Xóa hết Rác">
+<!ENTITY qf.checkbox.menus.emptyTrash "Xóa hết thư rác">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Kéo vào một thư mục con mới">

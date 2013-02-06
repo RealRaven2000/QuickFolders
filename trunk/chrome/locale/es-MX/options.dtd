@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opciones de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "General">
+<!ENTITY qf.tab.advanced "Avanzado">
 <!ENTITY qf.tab.layout "¡Modifica mis Pestañas!">
 <!ENTITY qf.tab.quickhelp "Ayuda rápida">
 <!ENTITY qf.checkbox.displaylabel "Muestra la etiqueta 'QuickFolders' en la barra">
@@ -14,29 +15,51 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Mostrar el total de mensajes en la carpeta">
 <!ENTITY qf.checkbox.showCountInSubFolders "Mostrar además los totales de sub-carpetas.">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estos se muestran separados por un &quot;+&quot; al lado de los totales principales, incluye correo no leído y tendrá la pestaña en negritas si la opción anterior está activada">
-<!ENTITY qf.checkbox.showNonEmptyItalics "Mostrar los botones  con mensajes en la carpeta en cursivas">
+<!ENTITY qf.checkbox.showMessageNavigation "Botones de navegación de mensajes">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Mostrar los botones con mensajes en la carpeta en cursivas">
+<!ENTITY qf.checkbox.enableTransitions "Activar transiciones CSS.">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Muestra transiciones suaves entre varios aspectos de coloración de las pestañas.">
+<!ENTITY qf.checkbox.highlightNewMail "Resaltar las carpetas con nuevos mensajes de correo">
 <!ENTITY qf.label.buttonFontSize "Tamaño del texto del botón (Dejar en blanco para tamaño estándar):">
 <!ENTITY qf.label.pixels "pixeles">
 <!ENTITY qf.label.appearance "Apariencia">
+<!ENTITY qf.label.behavior "Comportamiento">
+<!ENTITY qf.label.mainToolbar "Elementos principales de la barra">
+<!ENTITY qf.label.keyboard "Atajos de teclado">
+<!ENTITY qf.label.menus "Configuración del menú">
 <!ENTITY qf.label.colors "Colores">
 <!ENTITY qf.label.themes "Temas:">
+<!ENTITY qf.label.tabContent "Contenido de la pestaña">
+<!ENTITY qf.label.misc "Misceláneos">
 <!ENTITY qf.button.default "Valores por omisión">
+<!ENTITY qf.label.currentFolderToolbar "Herramientas de la carpeta actual">
+<!ENTITY qf.checkbox.currentFolder.show "Muestra la barra de herramientas">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "...también en las ventanas de mensajes individuales">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Muestra la barra de la carpeta actual en la ventana que se abre cuando seleccionas abrir un mensaje en una nueva ventana">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Botón de cerrar">
+<!ENTITY qf.button.currentFolderBackground.set "establecer">
+<!ENTITY qf.currentFolderBackground.custom "personalizado">
+<!ENTITY qf.currentFolderBackground.translucent "transparente">
+<!ENTITY qf.currentFolderBackground.default "por omisión">
+<!ENTITY qf.currentFolderBackground.dark "oscuro">
+<!ENTITY qf.caption.currentFolderBackground "Fondo de la barra de herramientas de la carpeta actual">
 <!ENTITY qf.label.setcolors "Asignar [Color del texto], Color del fondo">
 <!ENTITY qf.label.ActiveTabColor "Color pestaña activa:">
-<!ENTITY qf.label.HoveredTabColor "Color del mouse sobre la pestaña:">
+<!ENTITY qf.label.HoveredTabColor "Color del ratón sobre la pestaña:">
 <!ENTITY qf.label.DragOverBackground "Color cuando se arrastra:">
 <!ENTITY qf.label.ToolbarBackground "Color de fondo de la barra:">
-<!ENTITY qf.description.dragToAdd "Arrastra carpetas de tu correo a un espacio libre de la nueva barra herramientas para crear un nuevo QuickFolder (funciona como un atajo / alias). Arrastra mensajes hacia Quickfolder para moverlos a la carpeta correspondiente (o copiarlos usando la tecla modificadora). Haga clic en el QuickFolder para ir a esa carpeta de correo.">
-<!ENTITY qf.description.dragToPosition "Arrastre los QuickFolders hacia los lados para cambiar sus posiciones. Haga clic en un QuickFolder para desplegar el menú contextual, seleccionando puede saltar en subcarpetas. &quot;Cambiar el nombre de marcador&quot; cambia la etiqueta del QuickFolder. &quot;Eliminar marcador&quot; elimina el QuickFolder (no la carpeta de correo).&quot;">
+<!ENTITY qf.description.dragToAdd "Arrastra carpetas de tu correo a un espacio libre de la nueva barra herramientas para crear un nuevo QuickFolder (funciona como un atajo / alias). Arrastra mensajes hacia el Quickfolder para moverlos a la carpeta correspondiente (o copiarlos usando la tecla modificadora). Haga clic en el QuickFolder para ir a esa carpeta de correo.">
+<!ENTITY qf.description.dragToPosition "Arrastre los QuickFolders hacia los lados para cambiar sus posiciones. Haga clic en un QuickFolder para desplegar el menú contextual, seleccionando puede saltar en subcarpetas. &quot;Cambiar el nombre de marcador&quot; cambia la etiqueta del QuickFolder. &quot;Eliminar marcador&quot; elimina el QuickFolder (no la carpeta de correo).">
 <!ENTITY qf.description.dragToPopup "Arrastra mensajes al menú emergente de QuickFolder para mover mensajes a las subcarpetas.">
 <!ENTITY qf.description.changeCategory "Clic derecho de un marcador para organizarlo en una categoría. Aparecerán las categorías a la izquierda de la barra.">
-<!ENTITY qf.description.rightClickOptions "Clic en el área libre abrirá el menú de opciones. En las opciones, podrás elegir el estilo nativo (más pequeño) o el estilo plano (más clara, con indicador de arrastre).">
+<!ENTITY qf.description.rightClickOptions "Clic derecho en el área libre abrirá el menú de opciones. En las opciones, podrás elegir el estilo nativo (más pequeño) o el estilo plano (más clara, con indicador de arrastre).">
 <!ENTITY qf.description.tipMsg "Consejo: Si tienes una gran cantidad de carpetas, puedes probar la extensión Nostalgy para organizar los mensajes a través del teclado.">
 <!ENTITY qf.description.experimentalItems "Los siguientes elementos son experimentales. ¡Esperamos estén disponibles en la siguiente versión!">
-<!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar las opciones ... Esto forzará el botón [Aceptar] para que se muestre, que debe guardar los colores.">
+<!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones ... Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">
 <!ENTITY qf.button.defaultcolors "Colores por omisión">
 <!ENTITY qf.checkbox.debug "Modo de depuración">
 <!ENTITY qf.label.StandardTabColor "Color estándar de la carpeta:">
+<!ENTITY qf.checkbox.usePalette "Usar la paleta">
 <!ENTITY qf.label.initdelay "[ms] retraso inicial {1000 es el estándar}:">
 <!ENTITY qf.label.folders "¿Carpetas?">
 <!ENTITY qf.label.folders.tooltip "Copia la configuración de carpetas al portapapeles">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Añadir traducción...">
 <!ENTITY qf.description.donate "Si te gusta QuickFolders tanto como a nosotros y quieres ayudar en su desarrollo, puedes donar algo de dinero destinado al continuo desarrollo de QuickFolders.">
 <!ENTITY qf.label.donateLink "Visita la página para donaciones...">
+<!ENTITY qf.label.donate "Donar">
 <!ENTITY qf.description.contactMe "Puedes contactarme directamente en axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Contáctame (Inglés o Alemán)...">
 <!ENTITY qf.checkbox.showIcons "Mostrar íconos (Entrada, Enviados, Actual, Basura, Borradores, Plantillas, Archivados)">
-<!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetas en menús emergentes (Experimental)">
+<!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetas en menús emergentes">
 <!ENTITY qf.checkbox.showRecentTab "Mostrar pestaña de carpetas recientes">
+<!ENTITY qf.checkbox.showRecentButton "Botón de carpetas recientes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic derecho para configurar">
+<!ENTITY qf.checkbox.showFilterButton "Botón de 'Crear Filtros'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Puedes además crear Filtros usando el menú contextual de QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Ocultar QuickFolders cuando no se necesiten">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Contrae la barra de herramientas en pestañas especiales, tales como calendario, contenido, administrador de complementos.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícono de menú de herramientas">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Pestañas nativas">
 <!ENTITY qf.themes.flatTabs.label "Estilo plano">
 <!ENTITY qf.themes.applePills.label "Botones apple">
+<!ENTITY qf.themes.realButtons.label "Botones de presión">
 <!ENTITY qf.themes.flatButtons.label "Botones de la barra de herramientas">
 <!ENTITY qf.options.theme.pastelColors "Colores pastel">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Radio de las esquinas">
@@ -76,7 +104,7 @@
 <!ENTITY qf.checkbox.transparent "Transparente">
 <!ENTITY qf.checkbox.shadows "Sombras">
 <!ENTITY qf.checkbox.debug.tooltip "Clic con el botón derecho para opciones avanzadas de depuración">
-<!ENTITY qf.checkbox.displaylabel.tooltip "Clic con el botón derecho para cambiar este texto (QuickFolders)">
+<!ENTITY qf.checkbox.displaylabel.tooltip "clic con el botón derecho para cambiar este texto">
 <!ENTITY qf.checkbox.sortMenusAlpha "Forzar ordenar alfabéticamente los menúes con los subfolders.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Use esta opción solamente si su programa de email no ordena los subfolders correctamente.">
 <!ENTITY qf.options.versionnumber.tooltip "clic con el botón derecho para ver la historia de versiones.">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Reporte una falla /Solicite una opción nueva con Bugzilla">
 <!ENTITY qf.description.versionhistory "Historia detallada de versiones en mozdev.org">
 <!ENTITY qf.label.versionhistory "Leer historia de versiones...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Recibir mensajes (Cuentas de correo)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Recibir mensajes (Cuentas de Noticias)">
+<!ENTITY qf.checkbox.menus.markAllRead "Marca la carpeta como leída">
+<!ENTITY qf.checkbox.menus.emptyJunk "Eliminar la basura">
+<!ENTITY qf.checkbox.menus.emptyTrash "Eliminar la basura">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">

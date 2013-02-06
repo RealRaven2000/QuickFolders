@@ -1,7 +1,8 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Настройки QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Основные">
-<!ENTITY qf.tab.layout "Разнообразить закладки">
+<!ENTITY qf.tab.advanced "Дополнительные">
+<!ENTITY qf.tab.layout "Разнообразить закладки!">
 <!ENTITY qf.tab.quickhelp "Справка">
 <!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "Показывать в закладке общее количество сообщений">
 <!ENTITY qf.checkbox.showCountInSubFolders "Также показывать общее количество сообщений и для папок, находящихся в этой папке">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
+<!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
+<!ENTITY qf.checkbox.enableTransitions "Разрешить CSS трансформации">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Плавные переходы между цветами закладок.">
+<!ENTITY qf.checkbox.highlightNewMail "Подсвечивать папки с новыми сообщениями">
 <!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
 <!ENTITY qf.label.pixels "пикселов">
 <!ENTITY qf.label.appearance "Внешний вид">
+<!ENTITY qf.label.behavior "Поведение">
+<!ENTITY qf.label.mainToolbar "Элементы основной панели инструментов">
+<!ENTITY qf.label.keyboard "Клавиатурные сокращения">
+<!ENTITY qf.label.menus "Конфигурация меню">
 <!ENTITY qf.label.colors "Цвета">
 <!ENTITY qf.label.themes "Темы:">
+<!ENTITY qf.label.tabContent "Содержание закладок">
+<!ENTITY qf.label.misc "Разное">
 <!ENTITY qf.button.default "По умолчанию">
+<!ENTITY qf.label.currentFolderToolbar "Панель инструментов текущей папки">
+<!ENTITY qf.checkbox.currentFolder.show "Показывать панель инструментов">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…также и в новом окне с сообщением">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Показывать панель инструментов текущей папки в окне, если Вы открываете сообщение в новом окне.">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Закрывающая кнопка">
+<!ENTITY qf.button.currentFolderBackground.set "установить">
+<!ENTITY qf.currentFolderBackground.custom "собственный">
+<!ENTITY qf.currentFolderBackground.translucent "просвечивающий">
+<!ENTITY qf.currentFolderBackground.default "по умолчанию">
+<!ENTITY qf.currentFolderBackground.dark "темный">
+<!ENTITY qf.caption.currentFolderBackground "Фон панели инструментов текущей папки">
 <!ENTITY qf.label.setcolors "Цвет текста и фона">
 <!ENTITY qf.label.ActiveTabColor "Цвет активной закладки">
 <!ENTITY qf.label.HoveredTabColor "Цвет закладки под мышкой">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Стандартные цвета">
 <!ENTITY qf.checkbox.debug "Режим отладки">
 <!ENTITY qf.label.StandardTabColor "Стандартный цвет закладки:">
+<!ENTITY qf.checkbox.usePalette "Показ палитры">
 <!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс по умолчанию)">
 <!ENTITY qf.label.folders "Папки?">
 <!ENTITY qf.label.folders.tooltip "Копировать настройки в буфер обмена">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "Добавить перевод...">
 <!ENTITY qf.description.donate "Если QuickFolders Вам нравится также, как и нам, Вы можете поддержать деньгами дальнейшее развитие.">
 <!ENTITY qf.label.donateLink "Поддержать...">
+<!ENTITY qf.label.donate "Пожертвовать">
 <!ENTITY qf.description.contactMe "Мой личный адрес axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Написать мне (на английском или немецком)">
 <!ENTITY qf.checkbox.showIcons "Показывать значки (Входящие, Отправленные, Спам, Удаленные, Черновики, Архивы, Шаблоны)">
 <!ENTITY qf.checkbox.showSubfolders "Раскрывать папки из этой папке в меню">
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
+<!ENTITY qf.checkbox.showRecentButton "Кнопка с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.checkbox.showFilterButton "Кнопка 'Создать фильтр'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Вы также можете создавать фильтры с помощью контекстного меню QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Не показывать QuickFolders если он не нужен">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений, итд.">
 <!ENTITY qf.checkbox.tabMenuIcon "Значок меню на панели инструментов">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "Родные закладки">
 <!ENTITY qf.themes.flatTabs.label "Плоский стиль">
 <!ENTITY qf.themes.applePills.label "Для Apple">
+<!ENTITY qf.themes.realButtons.label "Обычные кнопки">
 <!ENTITY qf.themes.flatButtons.label "Кнопки панели инструментов">
 <!ENTITY qf.options.theme.pastelColors "Пастельные цвета">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Радиус угла">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Сообщить об ошибке/Запрос новых возможностей на Bugzilla…">
 <!ENTITY qf.description.versionhistory "Детальная история изменений на mozdev.org">
 <!ENTITY qf.label.versionhistory "Смотреть историю изменений...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Получить сообщения (почта)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Получить сообщения (новости)">
+<!ENTITY qf.checkbox.menus.markAllRead "Отметить папку как прочитанную">
+<!ENTITY qf.checkbox.menus.emptyJunk "Удалить спам">
+<!ENTITY qf.checkbox.menus.emptyTrash "Очистить «Удалённые»">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Перетащить, создавая под-папку">

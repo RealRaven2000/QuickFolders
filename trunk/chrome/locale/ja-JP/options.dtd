@@ -1,26 +1,48 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders オプション">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "一般">
+<!ENTITY qf.tab.advanced "詳細">
 <!ENTITY qf.tab.layout "タブ表示">
 <!ENTITY qf.tab.quickhelp "簡易ヘルプ">
 <!ENTITY qf.checkbox.displaylabel "ツールバーに 'QuickFolders' ラベルを表示する">
-<!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt + 1 から Alt + 9)">
-<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Cｔｒｌ キーを使用する">
-<!ENTITY qf.checkbox.useRebuildShortcut "次のショートカットキーでタブを再構築する: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right キーで前のタブ / 次のタブへ移動する">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt+1 から Alt+9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Ctrl キーを使用する">
+<!ENTITY qf.checkbox.useRebuildShortcut "次のショートカットキーでタブを再構築する: Ctrl+Alt+">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Alt+← / Alt+→ キーで前のタブ / 次のタブへ移動する">
 <!ENTITY qf.checkbox.showshortcutnumber "フォルダのラベルにショートカット番号を表示する">
 <!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
 <!ENTITY qf.checkbox.showTotalMessageCount "フォルダボタンにメッセージ数の合計を表示する">
 <!ENTITY qf.checkbox.showCountInSubFolders "サブフォルダのメッセージ数も表示する">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "「メインフォルダのメッセージ数 + サブフォルダのメッセージ数」のように表示されます。上記のオプションが有効であれば、未読を含むタブは太字で表示されます。">
+<!ENTITY qf.checkbox.showMessageNavigation "メッセージナビゲーションのボタン">
 <!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
+<!ENTITY qf.checkbox.enableTransitions "CSS トランジションを有効にする">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "タブの色遷移をスムースに表示します">
+<!ENTITY qf.checkbox.highlightNewMail "新着メールのあるフォルダを強調する">
 <!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
 <!ENTITY qf.label.pixels "ピクセル">
 <!ENTITY qf.label.appearance "外観">
+<!ENTITY qf.label.behavior "動作">
+<!ENTITY qf.label.mainToolbar "メインツールバーの要素">
+<!ENTITY qf.label.keyboard "キーボードショートカット">
+<!ENTITY qf.label.menus "メニュー設定">
 <!ENTITY qf.label.colors "配色">
 <!ENTITY qf.label.themes "テーマ:">
+<!ENTITY qf.label.tabContent "タブコンテンツ">
+<!ENTITY qf.label.misc "その他">
 <!ENTITY qf.button.default "デフォルト">
+<!ENTITY qf.label.currentFolderToolbar "現在のフォルダツールバー">
+<!ENTITY qf.checkbox.currentFolder.show "ツールバーを表示">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... 単体のメッセージウィンドウにも表示">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "メールを選択して開いた新しいウィンドウに現在のフォルダツールバーを表示します">
+<!ENTITY qf.checkbox.currentFolder.closeButton "閉じるボタン">
+<!ENTITY qf.button.currentFolderBackground.set "設定">
+<!ENTITY qf.currentFolderBackground.custom "カスタム">
+<!ENTITY qf.currentFolderBackground.translucent "半透明">
+<!ENTITY qf.currentFolderBackground.default "既定">
+<!ENTITY qf.currentFolderBackground.dark "ダーク">
+<!ENTITY qf.caption.currentFolderBackground "現在のフォルダツールバーの背景">
 <!ENTITY qf.label.setcolors "[文字色] と背景色の設定">
 <!ENTITY qf.label.ActiveTabColor "アクティブなタブの色:">
 <!ENTITY qf.label.HoveredTabColor "ポイントしたタブの色:">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "既定の色">
 <!ENTITY qf.checkbox.debug "デバッグモード">
 <!ENTITY qf.label.StandardTabColor "タブの標準色:">
+<!ENTITY qf.checkbox.usePalette "パレットを使用">
 <!ENTITY qf.label.initdelay "[ms] 初期化遅延時間 {標準は 1000}:">
 <!ENTITY qf.label.folders "フォルダのパス？">
 <!ENTITY qf.label.folders.tooltip "フォルダへのパス文字列をクリップボードにコピーします。">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "翻訳を追加する...">
 <!ENTITY qf.description.donate "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:">
 <!ENTITY qf.label.donateLink "寄付ページを開く...">
+<!ENTITY qf.label.donate "寄付">
 <!ENTITY qf.description.contactMe "個人的な連絡は axelg@gofree.indigo.ie まで:">
 <!ENTITY qf.label.contactLink "作者にメールする (英語またはドイツ語のみ)...">
 <!ENTITY qf.checkbox.showIcons "アイコンを表示する (受信トレイ、送信済みトレイ、ごみ箱、下書き、アーカイブ、テンプレート)">
 <!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
+<!ENTITY qf.checkbox.showRecentButton "最近使用したフォルダボタン">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "右クリックで設定を開きます">
+<!ENTITY qf.checkbox.showFilterButton "[フィルタ作成] ボタン">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "QuickFolders のコンテキストメニューからもフィルタを作成できます。">
 <!ENTITY qf.checkbox.autoHideToolbar "QuickFolders が不要な場合は隠す">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "カレンダーや Web コンテンツ、アドオンマネージャのタブではツールバーを隠します。">
 <!ENTITY qf.checkbox.tabMenuIcon "ツールバーメニューアイコン">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "ネイティブのタブ">
 <!ENTITY qf.themes.flatTabs.label "フラットスタイル">
 <!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.realButtons.label "Pushbuttons">
 <!ENTITY qf.themes.flatButtons.label "ツールバーボタン">
 <!ENTITY qf.options.theme.pastelColors "パステルカラー">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "カスタムの角丸">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Bugzilla でバグ報告または新しい機能を要望する...">
 <!ENTITY qf.description.versionhistory "変更履歴 (mozdev.org)">
 <!ENTITY qf.label.versionhistory "変更履歴を見る...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "メッセージを受信 (メールアカウント)">
+<!ENTITY qf.checkbox.menus.getMailForNews "メッセージを受信 (ニュースアカウント)">
+<!ENTITY qf.checkbox.menus.markAllRead "フォルダを既読にする">
+<!ENTITY qf.checkbox.menus.emptyJunk "迷惑メールフォルダを空にする">
+<!ENTITY qf.checkbox.menus.emptyTrash "ごみ箱を空にする">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "新しいサブフォルダにドラッグする">

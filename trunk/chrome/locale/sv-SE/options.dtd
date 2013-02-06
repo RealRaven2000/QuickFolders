@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Inställningar för QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Allmänt">
+<!ENTITY qf.tab.advanced "Avancerat">
 <!ENTITY qf.tab.layout "Utseende">
 <!ENTITY qf.tab.quickhelp "Snabbhjälp">
 <!ENTITY qf.checkbox.displaylabel "Visa &quot;QuickFolders&quot;-etiketten i verktygsfältet">
@@ -13,14 +14,35 @@
 <!ENTITY qf.checkbox.showUnreadBold "Visa knappar för mappar med olästa meddelanden i fetstil">
 <!ENTITY qf.checkbox.showTotalMessageCount "Visa det totala antalet meddelanden på mappknappen">
 <!ENTITY qf.checkbox.showCountInSubFolders "Visa även det totala antalet undermappar">
-<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Dessa visas med ett &quot;+&quot; bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Dessa visas med ett &quot;&quot;+&quot; bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat">
+<!ENTITY qf.checkbox.showMessageNavigation "Meddelandenavigeringsknappar">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Visa knappar för mappar med meddelanden i sig i kursiv stil">
-<!ENTITY qf.label.buttonFontSize "Fontstorlek för knapp (lämna tomt för standardvärdet):">
+<!ENTITY qf.checkbox.enableTransitions "Aktivera CSS-övergångar">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Visar mjuka övergångar mellan olika typer av flikfärgning.">
+<!ENTITY qf.checkbox.highlightNewMail "Färgmarkera mappar med nya meddelanden">
+<!ENTITY qf.label.buttonFontSize "Teckenstorlek för knapp (lämna tomt för standardvärdet):">
 <!ENTITY qf.label.pixels "pixlar">
 <!ENTITY qf.label.appearance "Utseende">
+<!ENTITY qf.label.behavior "Beteende">
+<!ENTITY qf.label.mainToolbar "Element i huvudverktygsfältet">
+<!ENTITY qf.label.keyboard "Kortkommandon">
+<!ENTITY qf.label.menus "Menykonfiguration">
 <!ENTITY qf.label.colors "Färger">
 <!ENTITY qf.label.themes "Teman:">
+<!ENTITY qf.label.tabContent "Flikinnehåll">
+<!ENTITY qf.label.misc "Övrigt">
 <!ENTITY qf.button.default "Standard">
+<!ENTITY qf.label.currentFolderToolbar "Verktygsfält för aktuell mapp">
+<!ENTITY qf.checkbox.currentFolder.show "Visa verktygsfältet">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "… även i fönster med endast ett meddelande">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Visa verktygsfält för aktuell mapp i fönstret som öppnas när du öppnar ett e-brev i ett nytt fönster.">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Stängknapp">
+<!ENTITY qf.button.currentFolderBackground.set "använd">
+<!ENTITY qf.currentFolderBackground.custom "egen">
+<!ENTITY qf.currentFolderBackground.translucent "genomskinlig">
+<!ENTITY qf.currentFolderBackground.default "standard">
+<!ENTITY qf.currentFolderBackground.dark "mörk">
+<!ENTITY qf.caption.currentFolderBackground "Bakgrund för aktuell mapp">
 <!ENTITY qf.label.setcolors "Ange [Textfärg], Bakgrundsfärg">
 <!ENTITY qf.label.ActiveTabColor "Färg på aktiv flik:">
 <!ENTITY qf.label.HoveredTabColor "Färg på mushovrad flik:">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "Standardfärger">
 <!ENTITY qf.checkbox.debug "Felsökningsläge">
 <!ENTITY qf.label.StandardTabColor "Standardflikfärg:">
+<!ENTITY qf.checkbox.usePalette "Använd palett">
 <!ENTITY qf.label.initdelay "Inledande fördröjning (ms) {standardvärdet är 1000}:">
 <!ENTITY qf.label.folders "Mappar?">
 <!ENTITY qf.label.folders.tooltip "Kopierar mapparnas konfigurationssträng till Urklipp">
@@ -44,15 +67,19 @@
 <!ENTITY qf.label.homePage "Utförlig information finns på QuickFolders webbplats på Mozdev.org…">
 <!ENTITY qf.tab.support "Support">
 <!ENTITY qf.description.languages "QuickFolders stödjer språkanpassning - du kan hjälpa till genom att lägga till en översättning på ditt språk på BabelZilla:">
-<!ENTITY qf.label.languagesLink "Lägg till översättning…">
+<!ENTITY qf.label.languagesLink "Gör en översättning…">
 <!ENTITY qf.description.donate "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders.">
 <!ENTITY qf.label.donateLink "Gå till donationssidan…">
+<!ENTITY qf.label.donate "Donera">
 <!ENTITY qf.description.contactMe "Du kan också kontakta mig personligen på axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Kontakta mig (på engelska eller tyska)…">
 <!ENTITY qf.checkbox.showIcons "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)">
 <!ENTITY qf.checkbox.showSubfolders "Visa undermappar i popup-menyer">
 <!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
+<!ENTITY qf.checkbox.showRecentButton "Visa Nyligen använda mappar-knapp">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Högerklicka för inställningar">
+<!ENTITY qf.checkbox.showFilterButton "Visa Skapa filter-knapp">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Du kan även skapa filter via QuickFolders snabbmeny.">
 <!ENTITY qf.checkbox.autoHideToolbar "Dölj QuickFolders-fältet där det inte behövs">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Döljer verktygsfältet i specialflikar såsom kalendern, innehållsflikar och tilläggshanteraren.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ikon för verktygsfältsmenyn">
@@ -65,7 +92,8 @@
 <!ENTITY qf.options.label.themeAuthor "Temats skapare:">
 <!ENTITY qf.themes.nativeTabs.label "Ursprungliga flikar">
 <!ENTITY qf.themes.flatTabs.label "Platt stil">
-<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.applePills.label "Äppelpiller">
+<!ENTITY qf.themes.realButtons.label "Tryckknappar">
 <!ENTITY qf.themes.flatButtons.label "Verktygsfältsknappar">
 <!ENTITY qf.options.theme.pastelColors "Pastellfärger">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Anpassad hörnradie">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "Rapportera en bugg / Uttryck önskemål om en ny funktion på Bugzilla…">
 <!ENTITY qf.description.versionhistory "Utförlig versionshistorik på mozdev.org">
 <!ENTITY qf.label.versionhistory "Läs versionshistoriken…">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Hämta meddelanden (e-postkonton)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Hämta meddelanden (diskussionsgruppskonton)">
+<!ENTITY qf.checkbox.menus.markAllRead "Märk mappen som läst">
+<!ENTITY qf.checkbox.menus.emptyJunk "Töm skräppost">
+<!ENTITY qf.checkbox.menus.emptyTrash "Töm papperskorgen">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Dra till ny undermapp">

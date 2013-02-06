@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "目录导航卡选项">
 <!ENTITY qf.label.quickfolders "目录导航">
 <!ENTITY qf.tab.general "常规">
+<!ENTITY qf.tab.advanced "Advanced">
 <!ENTITY qf.tab.layout "外观">
 <!ENTITY qf.tab.quickhelp "帮助">
 <!ENTITY qf.checkbox.displaylabel "在工具栏显示「目录导航」标签">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "在导航卡上显示文件夹里消息的总数">
 <!ENTITY qf.checkbox.showCountInSubFolders "同时显示子文件夹里的消息总数">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "子文件夹里的消息总数将显示在导航卡的主计数旁边并用 '+' 号与之隔开">
+<!ENTITY qf.checkbox.showMessageNavigation "Message Navigation buttons">
 <!ENTITY qf.checkbox.showNonEmptyItalics "存有消息的导航卡用斜体字显示">
+<!ENTITY qf.checkbox.enableTransitions "Enable CSS transitions">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Shows smooth transitions between several aspects of tab coloring.">
+<!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
 <!ENTITY qf.label.buttonFontSize "导航卡字体大小(留空则为默认): ">
 <!ENTITY qf.label.pixels "像素(pixels)">
 <!ENTITY qf.label.appearance "样式">
+<!ENTITY qf.label.behavior "Behavior">
+<!ENTITY qf.label.mainToolbar "Main Toolbar Elements">
+<!ENTITY qf.label.keyboard "Keyboard Shortcuts">
+<!ENTITY qf.label.menus "Menu Configuration">
 <!ENTITY qf.label.colors "颜色">
 <!ENTITY qf.label.themes "主题:">
+<!ENTITY qf.label.tabContent "Tab Content">
+<!ENTITY qf.label.misc "Miscellaneous">
 <!ENTITY qf.button.default "默认值">
+<!ENTITY qf.label.currentFolderToolbar "Current Folder Toolbar">
+<!ENTITY qf.checkbox.currentFolder.show "Display the Toolbar">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…also in Single Message windows">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Show current folder toolbar in the window that opens when you select to open an Email in a new window">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Close Button">
+<!ENTITY qf.button.currentFolderBackground.set "set">
+<!ENTITY qf.currentFolderBackground.custom "custom">
+<!ENTITY qf.currentFolderBackground.translucent "translucent">
+<!ENTITY qf.currentFolderBackground.default "default">
+<!ENTITY qf.currentFolderBackground.dark "dark">
+<!ENTITY qf.caption.currentFolderBackground "Current Folder Toolbar background">
 <!ENTITY qf.label.setcolors "设置导航卡的文本颜色和背景颜色">
 <!ENTITY qf.label.ActiveTabColor "导航卡激活的颜色:">
 <!ENTITY qf.label.HoveredTabColor "鼠标悬停着的颜色:">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "默认颜色">
 <!ENTITY qf.checkbox.debug "调试模式">
 <!ENTITY qf.label.StandardTabColor "标准颜色:">
+<!ENTITY qf.checkbox.usePalette "Use palette">
 <!ENTITY qf.label.initdelay "初始化延迟 {标准是1000} [毫秒]:">
 <!ENTITY qf.label.folders "导航代码">
 <!ENTITY qf.label.folders.tooltip "复制导航栏配置字符串到剪贴板">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "添加语言...">
 <!ENTITY qf.description.donate "如果您喜欢这个组件，可以自愿的捐助些钱以支持这个组件的继续发展。">
 <!ENTITY qf.label.donateLink "访问捐助页面...">
+<!ENTITY qf.label.donate "Donate">
 <!ENTITY qf.description.contactMe "您也可以通过我的个人邮箱 axelg@gofree.indigo.ie 联系我:">
 <!ENTITY qf.label.contactLink "联系我(英文或德文)...">
 <!ENTITY qf.checkbox.showIcons "显示图标(收件箱，发件箱，废件箱，垃圾箱，草稿箱，存档箱，模板)">
 <!ENTITY qf.checkbox.showSubfolders "在弹出菜单中关联子文件夹">
 <!ENTITY qf.checkbox.showRecentTab "显示最近访问的文件夹">
+<!ENTITY qf.checkbox.showRecentButton "Recent Folders Button">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "点击鼠标右键可配置选项">
+<!ENTITY qf.checkbox.showFilterButton "'Create Filters' Button">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "You can also create Filters using the QuickFolders context menu.">
 <!ENTITY qf.checkbox.autoHideToolbar "自动隐藏工具栏">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "使用特殊标签折叠工具栏（如日历，内容，插件管理）">
 <!ENTITY qf.checkbox.tabMenuIcon "显示工具栏菜单图标">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "标签风格">
 <!ENTITY qf.themes.flatTabs.label "平坦风格">
 <!ENTITY qf.themes.applePills.label "苹果风格">
+<!ENTITY qf.themes.realButtons.label "Pushbuttons">
 <!ENTITY qf.themes.flatButtons.label "按钮风格">
 <!ENTITY qf.options.theme.pastelColors "柔和">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "自定义边缘弧度">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "使用 Bugzilla 提交问题反馈和功能请求...">
 <!ENTITY qf.description.versionhistory "查看历史版本的详细信息">
 <!ENTITY qf.label.versionhistory "查看历史版本...">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Get Messages (Mail Accounts)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Get Messages (News Accounts)">
+<!ENTITY qf.checkbox.menus.markAllRead "Mark Folder Read">
+<!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
+<!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">

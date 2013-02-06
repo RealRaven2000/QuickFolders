@@ -1,6 +1,7 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders選項">
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "一般">
+<!ENTITY qf.tab.advanced "進階">
 <!ENTITY qf.tab.layout "外觀">
 <!ENTITY qf.tab.quickhelp "說明">
 <!ENTITY qf.checkbox.displaylabel "在工具列顯示「Quick Folders」的標籤">
@@ -14,13 +15,34 @@
 <!ENTITY qf.checkbox.showTotalMessageCount "在資料夾標籤上以粗體顯示所有郵件的數目">
 <!ENTITY qf.checkbox.showCountInSubFolders "同時顯示子資料夾內郵件的數目">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "在主資料夾郵件數目旁以+隔開；如果上面的選項有選取的話，未讀的郵件將以粗體顯示">
+<!ENTITY qf.checkbox.showMessageNavigation "訊息導航按鈕">
 <!ENTITY qf.checkbox.showNonEmptyItalics "在標籤上以斜體顯示有郵件的資料夾">
+<!ENTITY qf.checkbox.enableTransitions "開啟CSS transitions">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "在分頁色彩各面向間平滑顯示transitions">
+<!ENTITY qf.checkbox.highlightNewMail "有新郵件時資料夾高亮度顯示">
 <!ENTITY qf.label.buttonFontSize "標籤字體大小（空白表示使用預設的設定）：">
 <!ENTITY qf.label.pixels "像素">
 <!ENTITY qf.label.appearance "外觀">
+<!ENTITY qf.label.behavior "特性">
+<!ENTITY qf.label.mainToolbar "主要工具列元件">
+<!ENTITY qf.label.keyboard "鍵盤捷徑">
+<!ENTITY qf.label.menus "選單設定">
 <!ENTITY qf.label.colors "顏色">
 <!ENTITY qf.label.themes "佈景主題：">
+<!ENTITY qf.label.tabContent "分頁內容">
+<!ENTITY qf.label.misc "雜項">
 <!ENTITY qf.button.default "預設值">
+<!ENTITY qf.label.currentFolderToolbar "現在資料夾工具列">
+<!ENTITY qf.checkbox.currentFolder.show "顯示工具列">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "...也在單一信件視窗">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "當你選擇以一個新視窗來開啟E-mail時，在開啟時於視窗中顯示現在資料夾工具列">
+<!ENTITY qf.checkbox.currentFolder.closeButton "關閉按鈕">
+<!ENTITY qf.button.currentFolderBackground.set "設定">
+<!ENTITY qf.currentFolderBackground.custom "自訂">
+<!ENTITY qf.currentFolderBackground.translucent "半透明">
+<!ENTITY qf.currentFolderBackground.default "預設">
+<!ENTITY qf.currentFolderBackground.dark "暗黑">
+<!ENTITY qf.caption.currentFolderBackground "現在資料夾工具列背景">
 <!ENTITY qf.label.setcolors "設定文字、背景顏色">
 <!ENTITY qf.label.ActiveTabColor "使用中標籤顏色：">
 <!ENTITY qf.label.HoveredTabColor "停留的標籤顏色：">
@@ -37,6 +59,7 @@
 <!ENTITY qf.button.defaultcolors "預設顏色">
 <!ENTITY qf.checkbox.debug "除錯模式">
 <!ENTITY qf.label.StandardTabColor "標準標籤顏色">
+<!ENTITY qf.checkbox.usePalette "使用調色盤">
 <!ENTITY qf.label.initdelay "初始延遲（1000是預設值）[毫秒]：">
 <!ENTITY qf.label.folders "資料夾？">
 <!ENTITY qf.label.folders.tooltip "複製資料夾設定於剪貼簿中">
@@ -47,12 +70,16 @@
 <!ENTITY qf.label.languagesLink "增加翻譯..">
 <!ENTITY qf.description.donate "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。">
 <!ENTITY qf.label.donateLink "參觀捐助網頁..">
+<!ENTITY qf.label.donate "捐助">
 <!ENTITY qf.description.contactMe "您也能與我個人聯絡axelg@gofree.indigo.ie：">
 <!ENTITY qf.label.contactLink "與我聯絡（英文或德文）..">
 <!ENTITY qf.checkbox.showIcons "顯示圖示（收件匣、寄件備份、垃圾信、垃圾桶、草稿、備存、模組）">
 <!ENTITY qf.checkbox.showSubfolders "在彈出式選單中顯示子資料夾">
 <!ENTITY qf.checkbox.showRecentTab "顯示最近使用的資料夾標籤">
+<!ENTITY qf.checkbox.showRecentButton "最近的資料夾按鈕">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "以滑鼠右鍵點選來確認">
+<!ENTITY qf.checkbox.showFilterButton "「建立過濾器」按鈕">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "你也可以使用QuickFolders內文選單來建立過濾器。">
 <!ENTITY qf.checkbox.autoHideToolbar "當不需要QuickFolders時隱藏">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "在特別的頁面，像是日曆、內容或附加元件管理中心折疊工具列。">
 <!ENTITY qf.checkbox.tabMenuIcon "工具列選單圖示">
@@ -66,6 +93,7 @@
 <!ENTITY qf.themes.nativeTabs.label "原始分頁">
 <!ENTITY qf.themes.flatTabs.label "平面風格">
 <!ENTITY qf.themes.applePills.label "蘋果風格">
+<!ENTITY qf.themes.realButtons.label "推按鈕">
 <!ENTITY qf.themes.flatButtons.label "工具列按鈕">
 <!ENTITY qf.options.theme.pastelColors "淡雅的色彩">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "自訂角度">
@@ -84,3 +112,9 @@
 <!ENTITY qf.label.bugzilla "以Bugzilla回報錯誤與新的特色需求">
 <!ENTITY qf.description.versionhistory "詳細的版本歷史在mozdev.org">
 <!ENTITY qf.label.versionhistory "閱讀版本歷史">
+<!ENTITY qf.checkbox.menus.getMailForInbox "取得信件（信箱帳號）">
+<!ENTITY qf.checkbox.menus.getMailForNews "取得訊息（新聞帳號）">
+<!ENTITY qf.checkbox.menus.markAllRead "標記資料夾為已讀取">
+<!ENTITY qf.checkbox.menus.emptyJunk "清空垃圾郵件">
+<!ENTITY qf.checkbox.menus.emptyTrash "清空垃圾桶">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "拖曳到新的子資料夾">

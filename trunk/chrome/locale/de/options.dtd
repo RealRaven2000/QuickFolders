@@ -27,6 +27,11 @@
 <!ENTITY qf.label.mainToolbar "Elemente der Werkzeugleiste">
 <!ENTITY qf.label.keyboard "Hotkeys">
 <!ENTITY qf.label.menus "Menü-Konfiguration">
+<!ENTITY qf.label.menus.mailFolder "Email Kommandos">
+<!ENTITY qf.label.menus.quickFolder "QuickFolders Kommandos">
+<!ENTITY qf.label.menus.help "QuickFolders Hilfe">
+<!ENTITY qf.label.menus.support "QuickFolders Support">
+<!ENTITY qf.label.menus.options "Optionen">
 <!ENTITY qf.label.colors "Farben">
 <!ENTITY qf.label.themes "Themes:">
 <!ENTITY qf.label.tabContent "Tab Inhalte">
@@ -38,8 +43,8 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Die Aktiv-Verzeichnis Werkzeuge anzeigen, wenn eine einzelne Email in neuem Fenster geöffnet wird">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Schliessen Schaltfläche">
 <!ENTITY qf.button.currentFolderBackground.set "aktualisieren">
-<!ENTITY qf.currentFolderBackground.translucent "Milchglas">
 <!ENTITY qf.currentFolderBackground.custom "benutzerdefiniert">
+<!ENTITY qf.currentFolderBackground.translucent "Milchglas">
 <!ENTITY qf.currentFolderBackground.default "standard">
 <!ENTITY qf.currentFolderBackground.dark "dunkel">
 <!ENTITY qf.caption.currentFolderBackground "Hintergrund Aktiv-Verzeichnis">
@@ -69,8 +74,8 @@
 <!ENTITY qf.description.languages "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf Babelzilla:">
 <!ENTITY qf.label.languagesLink "Neue Übersetzung…">
 <!ENTITY qf.description.donate "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:">
-<!ENTITY qf.label.donate "Spenden">
 <!ENTITY qf.label.donateLink "Die Spenden-Seite besuchen…">
+<!ENTITY qf.label.donate "Spenden">
 <!ENTITY qf.description.contactMe "Sie können mich auch jederzeit persönlich unter axelg@gofree.indigo.ie kontaktieren:">
 <!ENTITY qf.label.contactLink "Mail an Axel (Deutsch oder Englisch)…">
 <!ENTITY qf.checkbox.showIcons "Icons anzeigen (Posteingang, Gesendet, Junk, Papierkorb, Entwurf, Muster, Archiv)">

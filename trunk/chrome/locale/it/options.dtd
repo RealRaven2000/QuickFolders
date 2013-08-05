@@ -27,6 +27,11 @@
 <!ENTITY qf.label.mainToolbar "Elementi della barra degli strumenti principale">
 <!ENTITY qf.label.keyboard "Scorciatoie da tastiera">
 <!ENTITY qf.label.menus "Configurazione menu">
+<!ENTITY qf.label.menus.mailFolder "Comandi per la Posta">
+<!ENTITY qf.label.menus.quickFolder "Comandi di QuickFolders">
+<!ENTITY qf.label.menus.help "Aiuto per Quick Folders">
+<!ENTITY qf.label.menus.support "Supporto di QuickFolders">
+<!ENTITY qf.label.menus.options "Opzioni">
 <!ENTITY qf.label.colors "Colori">
 <!ENTITY qf.label.themes "Temi:">
 <!ENTITY qf.label.tabContent "Contenuto delle schede">
@@ -45,7 +50,7 @@
 <!ENTITY qf.caption.currentFolderBackground "Sfondo della barra degli strumenti della cartella corrente">
 <!ENTITY qf.label.setcolors "Configurazione [Colore testo], Colore sfondo">
 <!ENTITY qf.label.ActiveTabColor "Colore scheda attiva:">
-<!ENTITY qf.label.HoveredTabColor "Colore scheda ove si aggira il mouse:">
+<!ENTITY qf.label.HoveredTabColor "Colore scheda ove si muove il mouse:">
 <!ENTITY qf.label.DragOverBackground "Colore scheda trascinata:">
 <!ENTITY qf.label.ToolbarBackground "Sfondo della barra degli strumenti:">
 <!ENTITY qf.description.dragToAdd "Trascinare le cartelle di posta in un'area vuota della nuova barra degli strumenti per creare un nuovo 'QuickFolder' (di seguito anche abbreviato in 'QF') che funziona come una scorciatoia/alias. Trascinare dei messaggi in un QF per spostarli (o copiarli) nella cartella corrispondente. Fare clic su di un QF per saltare alla cartella di posta.">

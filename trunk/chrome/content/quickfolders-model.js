@@ -66,6 +66,10 @@ QuickFolders.Model = {
 
 		return null;
 	} ,
+	
+	getButtonEntry: function(button) {
+	  return this.getFolderEntry(button.folder.URI);
+	} ,
 
 	removeFolder: function(uri, updateEntries) {
 		QuickFolders.Util.logDebug("model.removeFolder");
@@ -104,7 +108,7 @@ QuickFolders.Model = {
 
 	update: function() {
 		QuickFolders.Util.logDebug("model.update");
-		QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
+		QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
 		QuickFolders.Interface.updateFolders(true, false);
 	} ,
 
@@ -120,7 +124,7 @@ QuickFolders.Model = {
 			if (withUpdate)
 				this.update();
 			else  // only store, no visual update.
-				QuickFolders.Preferences.setFolderEntries(this.selectedFolders);
+				QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
 		}
 	},
 
@@ -129,6 +133,28 @@ QuickFolders.Model = {
 
 		if((entry = this.getFolderEntry(uri))) {
 			entry.category = name;
+			this.update();
+		}
+	} ,
+
+	setFolderSpacer: function(entry, isSpace) {
+		if(entry) {
+		  // add class "spaced" with .spaced { margin-left: 2em;}
+		  if (isSpace) 
+				entry.spaceBefore = true;
+			else
+				delete entry.spaceBefore;
+			this.update();
+		}
+	} ,
+	
+	setFolderLineBreak: function(entry, isBreak) {
+	  // insert before: <br xmlns="http://www.w3.org/1999/xhtml" />
+		if(entry) {
+		  if (isBreak) 
+				entry.breakBefore = true;
+			else
+				delete entry.breakBefore;
 			this.update();
 		}
 	} ,
@@ -151,7 +177,7 @@ QuickFolders.Model = {
 		catch (ex) {
 			 //dump("failed to get the folder resource\n");
 		}
-	return msgfolder;
+		return msgfolder;
 	} ,
 
 
@@ -316,7 +342,7 @@ QuickFolders.Model = {
 		let currentPalette = QuickFolders.Preferences.getIntPref("style.palette.version");
 		QuickFolders.Util.logDebug('QuickFolders.Model.updatePalette()\nCurrent Palette Version=' + currentPalette);
 		if (currentPalette < 1) {
-			let folderEntries = QuickFolders.Preferences.getFolderEntries();
+			let folderEntries = QuickFolders.Preferences.loadFolderEntries();
 	
 			if(folderEntries.length > 0) {
 				QuickFolders.Util.logDebug("Updating Palettes from version:" + currentPalette);
@@ -366,7 +392,7 @@ QuickFolders.Model = {
 				this.paletteUpdated = true;
 
 				QuickFolders.Interface.updateFolders(true, false);
-				QuickFolders.Preferences.setFolderEntries(folderEntries);
+				QuickFolders.Preferences.storeFolderEntries(folderEntries);
 	
 			}
 			QuickFolders.Preferences.setIntPref("style.palette.version", 1);

@@ -285,6 +285,11 @@
 			<preference id="QuickFolders-Preferences-FolderMenu-emptyJunk" name="extensions.quickfolders.folderMenu.emptyJunk" type="bool"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-emptyTrash" name="extensions.quickfolders.folderMenu.emptyTrash" type="bool"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-newFolder" name="extensions.quickfolders.folderMenu.dragToNew" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-Separator" name="extensions.quickfolders.commandMenu.separator" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-LineBreak" name="extensions.quickfolders.commandMenu.lineBreak" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-Support" name="extensions.quickfolders.commandMenu.support" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-Help" name="extensions.quickfolders.commandMenu.help" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-Options" name="extensions.quickfolders.commandMenu.options" type="bool"/>
 			<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
 			<preference id="QuickFolders-Preferences-Transitions" name="extensions.quickfolders.style.transitions" type="bool"/>
 		</preferences>
@@ -345,46 +350,79 @@
 		</vbox>
 	</groupbox>
 	
-	<groupbox  orient="vertical" >
+	<groupbox orient="horizontal">
 		<caption label="&qf.label.menus;"/>
-		<checkbox
-			id="qfGetMail"
-			label="&qf.checkbox.menus.getMailForInbox;"
-			preference="QuickFolders-Preferences-FolderMenu-getMailForInbox"
-			instantApply="false"
-		/>
-		<checkbox
-			id="qfGetMail"
-			label="&qf.checkbox.menus.getMailForNews;"
-			preference="QuickFolders-Preferences-FolderMenu-getMailForNews"
-			instantApply="false"
-		/>
-		<checkbox
-			id="qfGetMail"
-			label="&qf.checkbox.menus.markAllRead;"
-			preference="QuickFolders-Preferences-FolderMenu-markAllRead"
-			instantApply="false"
-		/>
-		<checkbox
-			id="qfGetMail"
-			label="&qf.checkbox.menus.emptyJunk;"
-			preference="QuickFolders-Preferences-FolderMenu-emptyJunk"
-			instantApply="false"
-		/>
-		<checkbox
-			id="qfGetMail"
-			label="&qf.checkbox.menus.emptyTrash;"
-			preference="QuickFolders-Preferences-FolderMenu-emptyTrash"
-			instantApply="false"
-		/>
-		<checkbox
-			id="qfNewFolder"
-			label="&qf.checkbox.menus.dragToNewFolder;"
-			preference="QuickFolders-Preferences-FolderMenu-newFolder"
-			oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;"
-			instantApply="false"
-		/>
-		
+		<groupbox  orient="vertical" >
+			<caption label="&qf.label.menus.mailFolder;"/>
+			<checkbox
+				id="qfGetMail"
+				label="&qf.checkbox.menus.getMailForInbox;"
+				preference="QuickFolders-Preferences-FolderMenu-getMailForInbox"
+				instantApply="false"
+			/>
+			<checkbox
+				id="qfGetMail"
+				label="&qf.checkbox.menus.getMailForNews;"
+				preference="QuickFolders-Preferences-FolderMenu-getMailForNews"
+				instantApply="false"
+			/>
+			<checkbox
+				id="qfGetMail"
+				label="&qf.checkbox.menus.markAllRead;"
+				preference="QuickFolders-Preferences-FolderMenu-markAllRead"
+				instantApply="false"
+			/>
+			<checkbox
+				id="qfGetMail"
+				label="&qf.checkbox.menus.emptyJunk;"
+				preference="QuickFolders-Preferences-FolderMenu-emptyJunk"
+				instantApply="false"
+			/>
+			<checkbox
+				id="qfGetMail"
+				label="&qf.checkbox.menus.emptyTrash;"
+				preference="QuickFolders-Preferences-FolderMenu-emptyTrash"
+				instantApply="false"
+			/>
+			<checkbox
+				id="qfNewFolder"
+				label="&qf.checkbox.menus.dragToNewFolder;"
+				preference="QuickFolders-Preferences-FolderMenu-newFolder"
+				oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;"
+				instantApply="false"
+			/>
+			
+		</groupbox>
+		<groupbox  orient="vertical" >
+			<caption label="&qf.label.menus.quickFolder;"/>
+			<checkbox
+			    id = "qfInsertSeparator" 
+				label = "Insert Separator"
+				preference = "QuickFolders-Preferences-CommandMenu-Separator"
+				/>
+			<checkbox
+				id = "qfInsertLineBreak"
+				label = "Insert Line Break"
+				preference = "QuickFolders-Preferences-CommandMenu-LineBreak"
+				/>
+			<checkbox
+				id = "qfMenuHelp"
+				label = "&qf.label.menus.help;"
+				preference = "QuickFolders-Preferences-CommandMenu-Help"
+				/>
+			<checkbox
+				id = "qfMenuSupport"
+				label = "&qf.label.menus.support;"
+				preference = "QuickFolders-Preferences-CommandMenu-Support"
+				/>
+			<checkbox
+				id = "qfMenuOptions"
+				label = "&qf.label.menus.options;"
+				preference = "QuickFolders-Preferences-CommandMenu-Options"
+				/>
+				 
+				
+		</groupbox>
 	</groupbox>
 </hbox>
 <groupbox  orient="horizontal" id="grpCurrentFolderBackground">

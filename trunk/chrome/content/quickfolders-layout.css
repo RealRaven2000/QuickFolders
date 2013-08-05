@@ -21,6 +21,11 @@
 	height: 24px !important;  /* attempted linux squashed height fixes */
 	vertical-align: middle; 
 }
+#QuickFolders-FindFolder {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	min-height: 20px !important;
+}
 
 #QuickFolders-mainPopup image, #filterActive image { height:16px !important; }
 #QuickFolders-mainPopup image, #filterActive image  { height:16px !important; }
@@ -75,7 +80,7 @@
 #QuickFolders-FoldersBox toolbarbutton {
 	padding-top: 0px;
 	padding-bottom: 0px;
-	margin: 3px 3px 0px 0px;
+	/*margin: 3px 3px 0px 0px; */
 /* line-height: 19px; */
 	height: 19px;
 	vertical-align:top;
@@ -149,7 +154,8 @@
 }*/
 
 #QuickFolders-Category-Selection {
-	margin: 3px 1px 2px 3px !important;
+	margin-right: 1px;
+	margin-left:  3px;
 	padding: 0;
 }
 
@@ -274,7 +280,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 #QuickFolders-Toolbar.quickfolders-flat {
 	margin: 0;
 	padding: 0;
-	border: 1px solid #AAA;
+	border: 1px solid transparent;
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
 	display: -moz-inline-box;
@@ -290,7 +296,9 @@ toolbar#QuickFolders-CurrentFolderTools {
 	border-width: 1px !important;
 	border-style: solid;
 	background-repeat: repeat-x;
-	margin: 3px 0px 0px 3px;
+	margin-right: 0px;
+	margin-left: 3px;
+	/* margin-top : 3px */
 /* line-height: 18px; */
 	height: 20px;
 	min-height: 1.4em !important; /* large font support */
@@ -307,16 +315,16 @@ toolbar#QuickFolders-CurrentFolderTools {
   {
 	border-bottom: none !important;
 	border-collapse: collapse;
-	height: 22px;
-	margin-top: 2px !important;
-	margin-bottom: -1px !important;
+	/* height: 22px; */
+	margin-top: 1px;
+	margin-bottom: -1px;
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder {
 	border-bottom: none !important;
-	height: 22px;
-	margin-top: 2px !important;
-	margin-bottom: -1px !important;
+	/* height: 22px; */
+	margin-top: 1px;
+	margin-bottom: -1px ;
 	padding-top: 0px;
 	padding-bottom: 1px;
 	background-repeat: repeat-x;
@@ -457,7 +465,34 @@ menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-im
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] { list-style-image : url('chrome://quickfolders/skin/ico/rubber-balloons.png') !important;}
 menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] { list-style-image : url('chrome://quickfolders/skin/ico/editdelete.png') !important;}
+menuitem.cmd[tag="qfBreak"] { list-style-image : url('chrome://quickfolders/skin/ico/fugue-linebreak-add.png') !important; }
+menuitem.cmd[tag="qfBreakDel"] { list-style-image : url('chrome://quickfolders/skin/ico/fugue-linebreak-delete.png') !important; }
+menuitem.cmd[tag="qfSeparator"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-add.png') !important; }
+menuitem.cmd[tag="qfSeparatorDel"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-delete.png') !important; }
 menuitem.mailCmd[tag="qfFolderRepair"] { list-style-image : url('chrome://quickfolders/skin/ico/wrench.png') !important; }
+
+#QuickFolders-FoldersBox toolbarseparator {
+  vertical-align: top;
+  margin-top: 4px;
+  min-height: 18px;
+}
+.quickfolders-flat #QuickFolders-FoldersBox toolbarseparator {
+  margin-left: 4px;
+}
+
+.quickfolders-realTabs #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-pills #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-realbuttons #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator
+{
+  margin-left: 1px;
+  margin-right: 4px;
+}
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator
+{
+  margin-top: 6px !important;
+}
+
 
 #quickFoldersCommands  { list-style-image : url('chrome://quickfolders/skin/ico/QF16x16.png') !important;}
 #quickFoldersMailFolderCommands  { list-style-image : url('chrome://quickfolders/skin/ico/folderCommand.png') !important;}
@@ -498,6 +533,10 @@ menupopup.QuickFolders-folder-popup menu.mailCmd:hover,
 menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new , 
 menuitem#folderPaneContext-new, menuitem#folderPaneContext-new:-moz-drag-over {
 	list-style-image : url('chrome://quickfolders/skin/ico/folder-new.png');
+}
+
+menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {
+  list-style-image : url('chrome://quickfolders/skin/ico/promote-Tab.png');
 }
 
 menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-remove {

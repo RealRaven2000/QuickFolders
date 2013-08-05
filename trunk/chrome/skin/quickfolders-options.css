@@ -156,8 +156,8 @@ label.text-link {
 	border-radius: 0.5em;
 	margin: 0.7em 12em 0.8em 11em !important;
 	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
-	-moz-transition-property: box-shadow;
-	-moz-transition-duration: 0.2s;
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
 }
 
 label.text-link:hover {

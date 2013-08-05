@@ -169,6 +169,8 @@ QuickFolders.Options = {
 			return; // we do not set any values!
 		}
 		
+		wd.getElementById("qfInsertSeparator").label = QuickFolders.Util.getBundleString("qfInsertSeparator");
+		wd.getElementById("qfInsertLineBreak").label = QuickFolders.Util.getBundleString("qfInsertLineBreak");
 		// bundle strings
 		wd.getElementById("chkShowFolderMenuButton").label = QuickFolders.Util.getBundleString("qfFolderPopup");
 		// let backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');
@@ -190,7 +192,7 @@ QuickFolders.Options = {
 			//support transparency and shadow
 			var transcol  =  QuickFolders.Util.getRGBA(bcol, QuickFolders.Preferences.getBoolPref("extensions.quickfolders.transparentButtons") ? 0.25 : 1.0);
 			wd.getElementById("inactivetabs-label").style.backgroundColor = transcol;
-			this.showButtonShadow(QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows"));
+			// this.showButtonShadow(QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows"));
 
 			col = QuickFolders.Preferences.getUserStyle("InactiveTab","color","buttontext");
 			wd.getElementById("inactive-fontcolorpicker").color = col;

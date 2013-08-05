@@ -26,6 +26,7 @@ pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.showToolIcon",true);
 pref("extensions.quickfolders.toolbar.minHeight", "24px");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows",false);
+pref("extensions.quickfolders.toolbar.hideInSingleMessage",true);
 pref("extensions.quickfolders.style.transitions",true); // changing to true because of wobbly bug
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar",true);
@@ -122,13 +123,20 @@ pref("extensions.quickfolders.recentfolders.showIcon",true);
 pref("extensions.quickfolders.recentfolders.folderPathDetail", 1);
 // new Folder Optimization
 pref("extensions.quickfolders.update.disableMinimal", false);
-// Special Folder Menu items
+// Tab Context Menu items
 pref("extensions.quickfolders.folderMenu.getMessagesForInbox", true);
 pref("extensions.quickfolders.folderMenu.getMessagesForNews", true);
 pref("extensions.quickfolders.folderMenu.markAllRead", true);
 pref("extensions.quickfolders.folderMenu.emptyJunk", true);
 pref("extensions.quickfolders.folderMenu.emptyTrash", true);
 pref("extensions.quickfolders.folderMenu.dragToNew", true);
+pref("extensions.quickfolders.folderMenu.openNewTab", true);
+pref("extensions.quickfolders.commandMenu.options", true);
+pref("extensions.quickfolders.commandMenu.separator", true);
+pref("extensions.quickfolders.commandMenu.lineBreak", true);
+pref("extensions.quickfolders.commandMenu.support", true);
+pref("extensions.quickfolders.commandMenu.help", true);
+
 pref("extensions.quickfolders.hideVersionOnUpdate",false);
 // Filter Template
 pref("extensions.quickfolders.filters.currentTemplate", "from");

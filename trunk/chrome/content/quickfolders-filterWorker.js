@@ -115,11 +115,18 @@ QuickFolders.FilterWorker = {
 		}
 
 		QuickFolders.FilterWorker.FilterMode = active;
-		QuickFolders.Util.$('QuickFolders-mainPopup').collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
-		QuickFolders.Util.$('QuickFolders-filterActive').collapsed = !active;
-		QuickFolders.Util.$('QuickFolders-Category-Box').setAttribute('mode', active ? 'filter' : '');
-		if (QuickFolders.Util.$('QuickFolders-currentFolderFilterActive'))
-			QuickFolders.Util.$('QuickFolders-currentFolderFilterActive').setAttribute('mode', active ? 'filter' : '');
+		
+		if (QuickFolders.Interface.CogWheelPopupButton)
+			QuickFolders.Interface.CogWheelPopupButton.collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
+		
+		if (QuickFolders.Interface.FilterToggleButton)
+			QuickFolders.Interface.FilterToggleButton.collapsed = !active;
+
+		if (QuickFolders.Interface.CategoryBox)
+			QuickFolders.Interface.CategoryBox.setAttribute('mode', active ? 'filter' : '');
+		let btnFilterToggle = QuickFolders.Interface.CurrentFolderFilterToggleButton;
+		if (btnFilterToggle)
+			btnFilterToggle.setAttribute('mode', active ? 'filter' : '');
 			
 		// tidy up notifications
 		if (!active && notifyBox) {

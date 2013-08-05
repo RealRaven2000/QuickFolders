@@ -12,7 +12,7 @@ QuickFolders.Preferences = {
 		catch(e) {return false;}
 	},
 
-	setFolderEntries: function(folderEntries) {
+	storeFolderEntries: function(folderEntries) {
 		try {
 		var json = JSON.stringify(folderEntries)
 
@@ -24,11 +24,11 @@ QuickFolders.Preferences = {
 		//this.service.setCharPref("QuickFolders.folders",json)
 		}
 		catch(e) {
-			QuickFolders.Util.logToConsole("setFolderEntries()" + e);
+			QuickFolders.Util.logToConsole("storeFolderEntries()" + e);
 		}
 	} ,
 
-	getFolderEntries: function() {
+	loadFolderEntries: function() {
 		if(!this.service.prefHasUserValue("QuickFolders.folders")) {
 			return [];
 		}
@@ -44,6 +44,13 @@ QuickFolders.Preferences = {
 				for(var i = 0; i < entries.length; i++) {
 					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
 						entries[i].tabColor = 0;
+					// default the name!!
+					if (!entries[i].name) {
+						// retrieve the name from the folder uri (prettyName)
+						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, true);
+						if (f)
+							entries[i].name = f.prettyName;
+					}
 				}
 				return entries;
 			}
@@ -51,7 +58,7 @@ QuickFolders.Preferences = {
 				return [];
 		}
 		catch(e) {
-			QuickFolders.Util.logToConsole("getFolderEntries()" + e);
+			QuickFolders.Util.logToConsole("loadFolderEntries()" + e);
 			return [];
 		}
 	} ,

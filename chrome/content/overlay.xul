@@ -15,11 +15,11 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+	<!--	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />	-->
 
 	<!-- Thunderbird & SeaMonkey -->
 	<toolbarpalette id="MailToolbarPalette">
@@ -70,6 +70,12 @@
 				               context="QuickFolders-PalettePopup" 
 				               oncommand="QuickFolders.Interface.showPalette(this);"
 				               collapsed="true"/>
+				<textbox id="QuickFolders-FindFolder" 
+						 oncommand="QuickFolders.Interface.findFolderName(this);"
+						 type="search"
+						 collapsed="true"
+						 searchbutton="true"
+						 placeholder="folder name"/>
 			 </hbox>
 		</hbox>
 		
@@ -77,10 +83,22 @@
 			<menupopup id="QuickFolders-PalettePopup" class="QuickFolders-folder-popup">
 				<!-- created in Interface code -->
 			</menupopup>
+			<menupopup id="QuickFolders-FindPopup" 
+			           class="menu-iconic" 
+					   position="after_start"
+					   oncommand="QuickFolders.Interface.selectFound(event.target);">
+			</menupopup>
 		</popupset>
 
 		<popupset id="QuickFolders-MainPopupSet">
 			<menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
+				<menuitem id="QuickFolders-ToolbarPopup-find"
+				          label="&qf.menuitem.quickfolders.find;"
+				          accesskey="&qf.menuitem.quickfolders.findAccess;"
+				          oncommand="QuickFolders.Interface.findFolder();" 
+				          class="cmd menuitem-iconic"
+				          tagName="qfFindFolder"
+				          />
 				<menuitem id="QuickFolders-ToolbarPopup-options"
 				          label="&qf.menuitem.quickfolders.options;"
 				          accesskey="&qf.menuitem.quickfolders.optionsAccess;"
@@ -152,10 +170,13 @@
 		</popupset>
 
 
-		<box id="QuickFolders-FoldersBox" flex="10" class="folderBarContainer">
-			<label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
-			<!-- Filled dynamically by the script -->
-		</box>
+		<vbox flex="1">
+			<spacer flex="25" />
+			<box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
+				<label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
+				<!-- Filled dynamically by the script -->
+			</box>
+		</vbox>
 
 
 

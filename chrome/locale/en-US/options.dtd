@@ -4,10 +4,10 @@
 <!ENTITY qf.tab.advanced "Advanced">
 <!ENTITY qf.tab.layout "Bling My Tabs!">
 <!ENTITY qf.tab.quickhelp "Quick Help">
-<!ENTITY qf.checkbox.displaylabel "Display the &apos;QuickFolders&apos; label in the toolbar">
+<!ENTITY qf.checkbox.displaylabel "Display the 'QuickFolders' label in the toolbar">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Use keyboard shortcuts (Alt + 1 through Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Use Ctrl instead of Alt">
-<!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt + ">
+<!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.checkbox.showshortcutnumber "Display shortcut number on folder labels">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Display the number of unread messages on the folder button">
@@ -20,13 +20,18 @@
 <!ENTITY qf.checkbox.enableTransitions "Enable CSS transitions">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Shows smooth transitions between several aspects of tab coloring.">
 <!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
-<!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default): ">
+<!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Appearance">
 <!ENTITY qf.label.behavior "Behavior">
 <!ENTITY qf.label.mainToolbar "Main Toolbar Elements">
 <!ENTITY qf.label.keyboard "Keyboard Shortcuts">
 <!ENTITY qf.label.menus "Menu Configuration">
+<!ENTITY qf.label.menus.mailFolder "Mail Commands">
+<!ENTITY qf.label.menus.quickFolder "QuickFolders Commands">
+<!ENTITY qf.label.menus.help "QuickFolders Help">
+<!ENTITY qf.label.menus.support "QuickFolders Support">
+<!ENTITY qf.label.menus.options "Options">
 <!ENTITY qf.label.colors "Colors">
 <!ENTITY qf.label.themes "Themes:">
 <!ENTITY qf.label.tabContent "Tab Content">
@@ -37,7 +42,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…also in Single Message windows">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Show current folder toolbar in the window that opens when you select to open an Email in a new window">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Close Button">
-<!ENTITY qf.button.currentFolderBackground.set "set">
+<!ENTITY qf.button.currentFolderBackground.set "apply">
 <!ENTITY qf.currentFolderBackground.custom "custom">
 <!ENTITY qf.currentFolderBackground.translucent "translucent">
 <!ENTITY qf.currentFolderBackground.default "default">
@@ -118,4 +123,3 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
 <!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
-

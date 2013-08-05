@@ -53,8 +53,8 @@ hbox.quickhelp-dbg {
 
 .dialog-button[dlgtype=extra2]
 {
-	-moz-transition-property: box-shadow, margin;
-	-moz-transition-duration: 0.75s, 0.2s;
+	transition-property: box-shadow, margin;
+	transition-duration: 0.75s, 0.2s;
 }
 
 

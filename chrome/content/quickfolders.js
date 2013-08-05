@@ -592,10 +592,28 @@ END LICENSE BLOCK */
 		AG: Various style fixes
 		
 		
-	3.11 - WIP
+	3.11 - Release 12/02/2013
 		AG: Fixed [Bug 25204] - filter mode: dragging from a fresh search, creates error "QuickFolders.Util.moveMessages:TypeError: sourceFolder is null"
 		AG: Fixed dropping of current folder tab to QuickFolders bar
+		AG: Improved contrast of filter activation icon (small and big sizes)
+		AG: Added setting for displaying folders with new mails in italics
+		AG: [Bug 25021] - Added setting for Minimum Height for fixing issues for Mac users
+		AG: Enhancement: Do not switch to current folder's category, if current tab has an tab from a different Category selected! 
+		    This way mail tabs "remembering" their QF Category will work better and faster
 		
+	3.12 - WIP
+	  AG: redesigned tab bar to align tabs to bottom regardless of theme used
+		AG: [FR 23039] - Support Linebreaks to force Multiple Rows of Tabs
+		AG: [FR 24431] - Optional Separators between tabs
+    AG: [FR 25364] - Hide QF toolbar and current folder bar in single message tab (should behave same as single message window) 
+		AG: Some interface refactoring
+		AG: Option Tab Extended: added checkboxes for QuickFolders commands 
+		AG: new top level menu: open new tab
+    AG: made compatible with redefinition of Thunderbird's nsIMsgAccount interface 		
+		AG: fixed broken paint mode.
+		AG: removed call from options load that caused redraw of folders; made remove orphans more resilient against Tb bugs
+	
+
 ###VERSION###
 
   KNOWN ISSUES
@@ -648,7 +666,7 @@ var QuickFolders = {
 	win: null,
 	isQuickFolders: true, // to verify this
 	gFolderTree: null,
-	keyListen: EventListener,
+	// keyListen: EventListener,
 	loadListen: false,
 	_tabContainer: null,
 	get tabContainer() {
@@ -693,16 +711,16 @@ var QuickFolders = {
 	},
 
 	initDelayed: function() {
-	   var sWinLocation;
-	   if (this.initDone) return;
-	   QuickFolders.initDocAndWindow();
-	   QuickFolders.Util.VersionProxy(); // initialize the version number using the AddonManager
-	   var nDelay = QuickFolders.Preferences.getIntPref('initDelay');
-	   if (!nDelay>0) nDelay = 750;
+	  var sWinLocation;
+	  if (this.initDone) return;
+	  QuickFolders.initDocAndWindow();
+	  QuickFolders.Util.VersionProxy(); // initialize the version number using the AddonManager
+	  var nDelay = QuickFolders.Preferences.getIntPref('initDelay');
+	  if (!nDelay>0) nDelay = 750;
 
-	   sWinLocation = new String(window.location);
+	  sWinLocation = new String(window.location);
 
-	   if(QuickFolders.isCorrectWindow()) {
+    if (QuickFolders.isCorrectWindow()) {
 			QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 			//var thefunc='QuickFolders.init()';
@@ -713,7 +731,8 @@ var QuickFolders = {
 		else {
 		  try {
 			var doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
-			doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
+			QuickFolders.Interface.Toolbar.style.display = 'none';
+			// doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
 			let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
 
@@ -779,7 +798,7 @@ var QuickFolders = {
 				that.Interface.boundKeyListener = true;
 			}
 		}
-		var folderEntries = that.Preferences.getFolderEntries();
+		var folderEntries = that.Preferences.loadFolderEntries();
 
 		if(folderEntries.length > 0) {
 			
@@ -818,11 +837,12 @@ var QuickFolders = {
 		that.Interface.initToolbarHiding();
 		that.Util.logDebug("QF.init() ends.");
 		// now make it visible!
-		this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
+		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
+		// this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 		
 		if (QuickFolders.Preferences.getBoolPrefQF('contextMenu.hideFilterMode')) {
-			// this.doc.getElementById('QuickFolders-ToolbarPopup-StartFilterMode').collapsed=true;
-			this.doc.getElementById('QuickFolders-filterActive').collapsed=true;
+			if (QuickFolders.Interface.FilterToggleButton)
+				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
 	} ,
 
@@ -1525,6 +1545,31 @@ var QuickFolders = {
 				transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
 			else
 				transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
+			// now let's start supporting dragging to the tab bar.
+			// it looks like I need to wrap http://mxr.mozilla.org/comm-central/source/mail/base/content/tabmail.xml
+			//  ---  dragstart  ---
+			// let dt = event.dataTransfer;
+			//  // If we drag within the same window, we use the tab directly
+      // dt.mozSetDataAt("application/x-moz-tabmail-tab", draggedTab, 0);
+			// // otherwise we use session restore & JSON to migrate the tab.
+      // let uri = this.tabmail.persistTab(tab);    // <==== !!!!
+			// if (uri)
+      //   uri = JSON.stringify(uri);
+			// dt.mozSetDataAt("application/x-moz-tabmail-json", uri, 0);
+			// dt.mozCursor = "default";
+			//  --- dragover ---
+			//  // incase the user is dragging something else than a tab, and
+      //  // keeps hovering over a tab, we assume he wants to switch to this tab.
+      //  if ((dt.mozTypesAt(0)[0] != "application/x-moz-tabmail-tab")
+      //         && (dt.mozTypesAt(0)[1] != "application/x-moz-tabmail-json")) {
+			//    let tab = this._getDragTargetTab(event);
+      // 		if (!tab) return;
+			//  --- drop ---
+			// 
+			
+			
+			
+			
 		}
 
 	},
@@ -1651,7 +1696,7 @@ function QuickFolders_MySelectFolder(folderUri)
 	var folderTree = QuickFolders_MyGetFolderTree();
 	var folderResource = QuickFolders_myRDF().GetResource(folderUri);
 	var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
-	var folderIndex, i;
+	let folderIndex, i;
 
 	QuickFolders.currentURI = folderUri;
 
@@ -1684,18 +1729,16 @@ function QuickFolders_MySelectFolder(folderUri)
 		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
 		// therefore, ensureRowIsVisible does not work!
 		var theTreeView = gFolderTreeView;
-
-
 		QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
 
+		folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+		if (null == folderIndex) {
+				theTreeView.selectFolder(msgFolder);
+			folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+		}
+		
 		if (msgFolder.parent) {
 			QuickFolders.Util.ensureFolderViewTab(); // lets always do this when a folder is clicked!
-
-			folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-			if (null==folderIndex) {
-			    theTreeView.selectFolder(msgFolder);
-				folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-		    }
 
 			if (null==folderIndex) {
 				QuickFolders.Util.ensureNormalFolderView();
@@ -1739,8 +1782,10 @@ function QuickFolders_MySelectFolder(folderUri)
 			}
 		}
 
-		theTreeView.selectFolder (msgFolder);
-		theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+		if (folderIndex != null) {
+			theTreeView.selectFolder (msgFolder);
+			theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+		}
 
 		// reset the view mode.
 		if (!QuickFolders.Preferences.isChangeFolderTreeViewEnabled) {
@@ -1778,7 +1823,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		}
 		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	}
-	else { // TB 2, Postbox, SeaMonkey
+	else { // TB 2, Postbox
 	// before we can select a folder, we need to make sure it is "visible"
 	// in the tree.	to do that, we need to ensure that all its
 	// ancestors are expanded
@@ -1800,6 +1845,13 @@ function QuickFolders_MySelectFolder(folderUri)
 		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	  // select message in top pane for keyboard navigation
 	}
+	
+	// could not find folder!
+	if (null == folderIndex) {
+		if (!msgFolder || !msgFolder.filePath || !msgFolder.filePath.exists())
+			return false;
+	}
+
 	if (QuickFolders.Preferences.isFocusPreview && !(GetMessagePane().collapsed)) {
 		GetMessagePane().focus();
 		QuickFolders.doc.commandDispatcher.advanceFocus();
@@ -1828,7 +1880,7 @@ function QuickFolders_MySelectFolder(folderUri)
 		}
 	}
 	*/
-
+	return true;
 }
 
 // set up the folder listener to point to the above function
@@ -2007,8 +2059,11 @@ QuickFolders.TabListener = {
 				if (info.QuickFoldersCategory) {
 					QuickFolders.Util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
 					QuickFolders.Interface.selectCategory(info.QuickFoldersCategory, false);
+					QuickFolders.Interface.updateCategories();
 				}
-				QuickFolders.Interface.setTabSelectTimer();
+				// Do not switch to current folder's category, if current tab has another selected!
+				else
+					QuickFolders.Interface.setTabSelectTimer();
 			}
 		}
 		catch(e) {QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected: " + e)};

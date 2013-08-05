@@ -60,7 +60,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "3.10",
+	HARDCODED_EXTENSION_VERSION : "3.12",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	Constants : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -288,7 +288,7 @@ QuickFolders.Util = {
         function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
 
 		var getContainer = function() {
-			var div = QuickFolders.Util.$('QuickFolders-FoldersBox');
+			var div = QuickFolders.Interface.FoldersBox;
 			if (div)
 				return div;
 			return QuickFolders.Util.$('qf-options-prefpane');
@@ -943,8 +943,6 @@ QuickFolders.Util = {
 		}
 		return this._isCSSShadow;
 	}
-
-
 
 
 };

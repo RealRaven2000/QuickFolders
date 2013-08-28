@@ -614,6 +614,7 @@ END LICENSE BLOCK */
 		AG: removed call from options load that caused redraw of folders; made remove orphans more resilient against Tb bugs
 		AG: [Bug 25533] - SeaMonkey 2.23a1 - throws "ReferenceError: EventListener is not defined"
 		AG: Added independent palette type settings for the tab states selected / hover / dragover
+		AG: Fixed truncated filter notification in Postbox
 		AG: To DO: restore selected category on startup
 	
 

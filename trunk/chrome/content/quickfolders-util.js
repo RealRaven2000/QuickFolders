@@ -283,6 +283,98 @@ QuickFolders.Util = {
 				}
 			} , 0);
 	} ,
+	
+	disableFeatureNotification: function(featureName) {
+		QuickFolders.Preferences.setBoolPrefQF("proNotify." + featureName, false);
+	} ,
+	
+	// Postbox special functions to avoid line being truncated
+	// removes description.value and adds it into inner text
+	fixLineWrap: function(notifyBox, notificationKey) {
+    try {
+		  if (!notifyBox || !notificationKey)
+				return;
+			let note = notifyBox.getNotificationWithValue(notificationKey);
+			// if we  could get at the description element within the notificaiton 
+			// we could empty the value and stick thje text into textContent instead!
+			let hbox = note.boxObject.firstChild.firstChild;
+			if (hbox) {
+				this.logDebug('hbox = ' + hbox.tagName + ' hbox.childNodes: ' + hbox.childNodes.length);
+				let desc = hbox.childNodes[1];
+				desc.textContent = desc.value.toString();
+				desc.removeAttribute('value');
+			}
+		}
+		catch(ex) {
+			this.logException('Postbox notification: ', ex);
+		}
+	} ,
+	
+	popupProFeature: function(featureName, text) {
+		let notificationId;
+		// is notification disabled?
+		// check setting extensions.quickfolders.proNotify.<featureName>
+		if (!QuickFolders.Preferences.getBoolPrefQF("proNotify." + featureName))
+			return;
+
+		switch(QuickFolders.Util.Application) {
+			case 'Postbox': 
+				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
+				break;
+			case 'Thunderbird': 
+				notificationId = 'mail-notification-box'
+				break;
+			case 'SeaMonkey':
+				notificationId = null;
+				break;
+		}
+		let notifyBox = document.getElementById (notificationId);
+		let title=QuickFolders.Util.getBundleString("qf.notification.proFeature.title",
+				"Pro Feature");
+		let theText=QuickFolders.Util.getBundleString("qf.notification.proFeature.notificationText",
+				"The {1} feature is a Pro feature, if you use it regularly consider donating to development of QuickFolders this year. "
+				+ "If a registration system for Pro Features will ever be implemented, all donations will be honored.");
+		theText = theText.replace ("{1}", "'" + featureName + "'");
+		let dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain",
+			"Do not show this message again.");
+
+		if (notifyBox) {
+			// button for disabling this notification in the future
+			var nbox_buttons = [{
+				label: dontShow,
+				accessKey: null, 
+				callback: function() { QuickFolders.Util.disableFeatureNotification(featureName); },
+				popup: null
+			}];
+			
+			let notificationKey = "quickfolders-proFeature";
+			var item = notifyBox.getNotificationWithValue(notificationKey)
+			if(item)
+				notifyBox.removeNotification(item);
+		
+			notifyBox.appendNotification( theText, 
+					notificationKey , 
+					"chrome://quickfolders/skin/ico/proFeature.png" , 
+					notifyBox.PRIORITY_INFO_HIGH, 
+					nbox_buttons ); // , eventCallback
+			if (QuickFolders.Util.Application == 'Postbox') {
+				this.fixLineWrap(notifyBox, notificationKey);
+			}
+		}
+		else {
+			// fallback for systems that do not support notification (currently: SeaMonkey)
+			var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
+															.getService(Components.interfaces.nsIPromptService);  
+				
+			var check = {value: false};   // default the checkbox to true  
+				
+			var result = prompts.alertCheck(null, title, theText, dontShow, check);
+			if (check.value==true)
+				QuickFolders.Util.disableFeatureNotification(featureName);
+		}
+			
+	
+	} ,
 
 	getSystemColor: function(sColorString) {
         function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }

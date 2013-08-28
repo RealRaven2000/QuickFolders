@@ -898,7 +898,7 @@
 					             />
 								 
 					<menulist id="menuDragOverPalette"
-					          preference="QuickFolders-Preferences-Dragover-PaletteType"
+					          preference="QuickFolders-Preferences-DragOver-PaletteType"
 							  sizetopopup="none"
 							  oncommand="QuickFolders.Interface.updateMainWindow();"
 							  >

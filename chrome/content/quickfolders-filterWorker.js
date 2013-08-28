@@ -137,8 +137,8 @@ QuickFolders.FilterWorker = {
 			
 		// sync with quickFilters
 		if (window.quickFilters) {
-			if (active != quickFilters.Worker.FilterMode) {
-				quickFilters.Worker.toggleFilterMode(active);
+			if (active != window.quickFilters.Worker.FilterMode) {
+				window.quickFilters.Worker.toggleFilterMode(active);
 				if (!active && notifyBox) {
 					item=notifyBox.getNotificationWithValue("quickFilters-filter");
 					if(item)

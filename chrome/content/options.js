@@ -87,17 +87,18 @@ QuickFolders.Options = {
 	 * @colorPickerId: [optional] color picker for plain coloring - this is hidden when palette is used
 	 * @preference: [optional] pull palette entry from this preference, ignored when paletteColor is passed
 	 * @previewId: id of target element (preview tab)
-	 * @isActive: true if palette is used; false if plain coloring applies
+	 * @paletteType: -1 {as standard tab} 0 none 1 default 2 pastel ...
 	 * @paletteColor: [optional] palette index; 0=no styling
 	 */
-	preparePreviewTab: function (colorPickerId, preference, previewId, isActive, paletteColor) {
+	preparePreviewTab: function (colorPickerId, preference, previewId, paletteType, paletteColor) {
 		let wd = window.document;
 		let previewTab = wd.getElementById(previewId);
-		let usePalette = (typeof isActive === 'undefined') ? QuickFolders.Preferences.getBoolPrefQF(preference + 'usePalette') : isActive;
-		let pastelClass = QuickFolders.Preferences.isPastelColors ? ' pastel': '';
+		let paletteId = (typeof paletteType === 'undefined') ? QuickFolders.Preferences.getIntPref(preference + 'paletteType') : paletteType;
+		// let globalPastelClass = QuickFolders.Interface.getPaletteClass('InactiveTab');
+		let paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteId);
 		let colorPicker = colorPickerId ? wd.getElementById(colorPickerId) : null;
 		
-		if (usePalette) {
+		if (paletteId) {
 			let paletteIndex = (typeof paletteColor === 'undefined') 
 			                   ? QuickFolders.Preferences.getIntPref(preference + 'paletteEntry') :
 			                   paletteColor;
@@ -113,7 +114,7 @@ QuickFolders.Options = {
 					colorPicker.collapsed = true;
 			}
 			
-			previewTab.className = 'qfTabPreview col' + paletteIndex + pastelClass;
+			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;
 		}
 		else {
 			previewTab.className = 'qfTabPreview';
@@ -239,12 +240,7 @@ QuickFolders.Options = {
 			QuickFolders.Interface.buildPaletteMenu(0, menupopup);
 			
 			// customized coloring support
-			this.preparePreviewTab('inactive-colorpicker', 'style.InactiveTab.', 'inactivetabs-label');
-			this.preparePreviewTab('activetab-colorpicker', 'style.ActiveTab.', 'activetabs-label');
-			this.preparePreviewTab('hover-colorpicker', 'style.HoveredTab.', 'hoveredtabs-label');
-			this.preparePreviewTab('dragover-colorpicker', 'style.DragOver.', 'dragovertabs-label');
-
-			this.preparePreviewPastel(QuickFolders.Preferences.getBoolPrefQF('pastelColors'));
+      this.initPreviewTabStyles();
 		}
 		catch(e) {
 			alert("Error in QuickFolders.Options.load():\n" + e);
@@ -259,52 +255,54 @@ QuickFolders.Options = {
 	selectTheme: function(wd, themeId) {
 		var myTheme =  QuickFolders.Themes.Theme(themeId);
 		if (myTheme) {
-			wd.getElementById("QuickFolders-Theme-Selector").value = themeId;
+		  try {
+				wd.getElementById("QuickFolders-Theme-Selector").value = themeId;
 
-			document.getElementById("Quickfolders-Theme-Author").value
-				= myTheme.author;
+				document.getElementById("Quickfolders-Theme-Author").value
+					= myTheme.author;
 
-			// textContent wraps, value doesnt
-			document.getElementById("Quickfolders-Theme-Description").textContent
-				= QuickFolders.Interface.getUIstring("qf.themes." + themeId + ".description", "N/A");
+				// textContent wraps, value doesnt
+				document.getElementById("Quickfolders-Theme-Description").textContent
+					= QuickFolders.Interface.getUIstring("qf.themes." + themeId + ".description", "N/A");
 
-			document.getElementById("qf-options-icons").disabled
-				= !(myTheme.supportsFeatures.specialIcons);
-			document.getElementById("qf-options-shadow").disabled
-				= !(myTheme.supportsFeatures.buttonShadows);
+				document.getElementById("qf-options-icons").disabled
+					= !(myTheme.supportsFeatures.specialIcons);
+				document.getElementById("qf-options-shadow").disabled
+					= !(myTheme.supportsFeatures.buttonShadows);
 
-			document.getElementById("button-font-size").disabled
-				= !(myTheme.supportsFeatures.supportsFontSize);
-			document.getElementById("button-font-size-label").disabled
-				= !(myTheme.supportsFeatures.supportsFontSize);
+				document.getElementById("button-font-size").disabled
+					= !(myTheme.supportsFeatures.supportsFontSize);
+				document.getElementById("button-font-size-label").disabled
+					= !(myTheme.supportsFeatures.supportsFontSize);
 
-			document.getElementById("qf-pimpMyRadius").collapsed
-				= !(myTheme.supportsFeatures.cornerRadius);
+				document.getElementById("qf-pimpMyRadius").collapsed
+					= !(myTheme.supportsFeatures.cornerRadius);
 
-			document.getElementById("qf-pimpMyBorders").collapsed
-				= !(myTheme.supportsFeatures.borderToggle);
+				document.getElementById("qf-pimpMyBorders").collapsed
+					= !(myTheme.supportsFeatures.borderToggle);
 
-			document.getElementById("qf-pimpMyColors").collapsed
-				= !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
+				document.getElementById("qf-pimpMyColors").collapsed
+					= !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
 
-			document.getElementById("qf-individualColors").collapsed
-				= !(myTheme.supportsFeatures.individualColors);
+				document.getElementById("qf-individualColors").collapsed
+					= !(myTheme.supportsFeatures.individualColors);
 
-			document.getElementById("chkPastelColors").collapsed
-				= !(myTheme.supportsFeatures.pastelColors);
+				document.getElementById("qf-StandardColors").collapsed
+					= !(myTheme.supportsFeatures.standardTabColor);
 
-			document.getElementById("qf-StandardColors").collapsed
-				= !(myTheme.supportsFeatures.standardTabColor);
-
-			document.getElementById("buttonTransparency").collapsed
-				= !(myTheme.supportsFeatures.tabTransparency);
+				document.getElementById("buttonTransparency").collapsed
+					= !(myTheme.supportsFeatures.tabTransparency);
 
 
-			document.getElementById("qf-stateColors").collapsed
-				= !(myTheme.supportsFeatures.stateColors);
-				
-			document.getElementById("qf-stateColors-defaultButton").collapsed
-				= !(myTheme.supportsFeatures.stateColors);
+				document.getElementById("qf-stateColors").collapsed
+					= !(myTheme.supportsFeatures.stateColors);
+					
+				document.getElementById("qf-stateColors-defaultButton").collapsed
+					= !(myTheme.supportsFeatures.stateColors);
+			}
+			catch(ex) {
+				QuickFolders.Util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
+			}
 
 			/******  FOR FUTURE USE ??  ******/
 			// if (myTheme.supportsFeatures.supportsFontSelection)
@@ -441,61 +439,99 @@ QuickFolders.Options = {
 		return QuickFolders.Preferences.getBoolPrefQF('style.InactiveTab.usePalette'); // hide if Palette is used.
 	},
 	
-	// [x] use palette for the 4 states
-	toggleUsePalette: function(checkbox, buttonState) {
-		let isChecked = checkbox.checked;
+	
+	getButtonStatePrefId: function(buttonState) {
+		switch(buttonState) {
+			case 'standard':
+				return 'InactiveTab';
+			case 'active':
+				return 'ActiveTab';
+			case 'hovered':
+				return 'HoveredTab';
+			case 'dragOver':
+				return 'DragOver';
+			default:
+				throw('QuickFolders.Options.getButtonStatePrefId - Invalid buttonState: ' + buttonState); // error!
+		}
+	} ,
+	
+	/*********************
+	 * toggleUsePalette() 
+	 * Set whether (and which) palette is used for a particular tab state.
+	 * @mnuNode:       either a menuitem node or the menu with the correct paletteType value
+	 * @buttonState:   [string] which kind of tab state: standard, active, hovered, dragOver
+	 * @paletteType:  -1 as standard, 0 none, 1 normal, 2 pastel ....
+	 */	 
+	toggleUsePalette: function(mnuNode, buttonState, paletteType) {
+		//let isChecked = checkbox.checked;
+		let paletteTypeMenu = null;
+		if (mnuNode.tagName) {
+		  switch(mnuNode.tagName) {
+				case 'menulist':
+				  paletteTypeMenu = mnuNode;
+					break;
+			  case 'menuitem':
+				  paletteTypeMenu = mnuNode.parentNode.parentNode;
+					break;
+			}
+		}
 		let idPreview;
-		let stylePref;
 		let colorPicker;
 		
+		let stylePref = this.getButtonStatePrefId(buttonState);
 		switch(buttonState) {
 			case 'standard':
 				idPreview = 'inactivetabs-label';
-				stylePref = 'InactiveTab';
 				colorPicker = 'inactive-colorpicker';
 				break;
 			case 'active':
 				idPreview = 'activetabs-label';
-				stylePref = 'ActiveTab';
 				colorPicker = 'activetab-colorpicker';
 				break;
 			case 'hovered':
 				idPreview = 'hoveredtabs-label';
-				stylePref = 'HoveredTab';
 				colorPicker = 'hover-colorpicker';
 				break;
 			case 'dragOver':
 				idPreview = 'dragovertabs-label';
-				stylePref = 'DragOver';
 				colorPicker = 'dragover-colorpicker';
 				break;
 		}
 		
 		// preparePreviewTab(id, preference, previewId)
-		this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, isChecked);
-		this.toggleBoolPreference(checkbox, true);
+		this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, paletteType);
+		// this.toggleBoolPreference(checkbox, true);
 		
 		// let's not hide the standard background color picker! 
 		// this way we can override the background for "striped" (or future translucent) styles.
 		if (buttonState == 'standard')
-			checkbox.previousSibling.collapsed = this.isHideStandardBackgroundColor;
+			paletteTypeMenu.previousSibling.collapsed = this.isHideStandardBackgroundColor;
 		else
-			checkbox.previousSibling.collapsed = isChecked;
+			paletteTypeMenu.previousSibling.collapsed = (paletteType==0) ? false : true;
 	},
 	
-	// open palette popup
-	showPalette: function(label, buttonState, checkBoxId) {
+	/*********************  
+	 *	showPalette()       
+	 *  open palette popup   
+	 *  @label              parent node  
+	 *  @buttonState        'standard', 'active', 'hovered', 'dragOver'
+	 *  @paletteMenuId      'menuStandardPalette', 'menuActivePalette', 'menuHoverPalette', 'menuDragOverPalette'
+	 */
+	showPalette: function(label, buttonState, paletteMenuId) {
 		let id=label ? label.id : label.toString();
 		QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
-		let checkBox = document.getElementById(checkBoxId);
-		if (checkBox) {
-			checkBox.checked = true;
-			this.toggleUsePalette(checkBox, buttonState);
+		let paletteMenu = document.getElementById(paletteMenuId);
+		if (paletteMenu) {
+			this.toggleUsePalette(paletteMenu, buttonState, paletteMenu.value);
 			// allow overriding standard background for striped style!
 			if (buttonState == 'standard')
-				checkBox.previousSibling.collapsed = this.isHideStandardBackgroundColor;
+				paletteMenu.previousSibling.collapsed = this.isHideStandardBackgroundColor;
 			else
-				checkBox.previousSibling.collapsed = true;
+				paletteMenu.previousSibling.collapsed = true; // -1 is a special case...
+			// Now style the palette with the correct palette class
+			let context = label.getAttribute('context');
+			let menu = document.getElementById(context);
+			menu.className = 'QuickFolders-folder-popup' + QuickFolders.Interface.getPaletteClass(this.getButtonStatePrefId(buttonState));
 		}
 		QuickFolders.Interface.showPalette(label);
 	},
@@ -539,49 +575,43 @@ QuickFolders.Options = {
 	},
 	
 	// switch pastel mode on preview tabs
-	preparePreviewPastel: function (isPastel) {
+	initPreviewTabStyles: function () {
 		let inactiveTab = document.getElementById('inactivetabs-label');
 		let activeTab = document.getElementById('activetabs-label');
 		let hoverTab = document.getElementById('hoveredtabs-label');
 		let dragTab = document.getElementById('dragovertabs-label');
 		let menupopup = document.getElementById("QuickFolders-Options-PalettePopup");
-
-		if (isPastel) {
-			activeTab.className += ' pastel';
-			inactiveTab.className += ' pastel';
-			hoverTab.className += ' pastel';
-			dragTab.className += ' pastel';
-			menupopup.className += ' pastel';
-		}
-		else {
-			activeTab.className = activeTab.className.replace(/\s*pastel/,"");
-			inactiveTab.className = inactiveTab.className.replace(/\s*pastel/,"");
-			hoverTab.className = hoverTab.className.replace(/\s*pastel/,"");
-			dragTab.className = dragTab.className.replace(/\s*pastel/,"");
-			menupopup.className = menupopup.className.replace(/\s*pastel/,"");
-		}
 		
+		let defaultPalette = QuickFolders.Interface.getPaletteClass('InactiveTab');
+		
+		this.preparePreviewTab('inactive-colorpicker', 'style.InactiveTab.', 'inactivetabs-label');
+		this.preparePreviewTab('activetab-colorpicker', 'style.ActiveTab.', 'activetabs-label');
+		this.preparePreviewTab('hover-colorpicker', 'style.HoveredTab.', 'hoveredtabs-label');
+		this.preparePreviewTab('dragover-colorpicker', 'style.DragOver.', 'dragovertabs-label');
+
 	} ,
 
-	// toggle pastel mode
-	toggleColorPastel: function (isChecked) {
+	// toggle pastel mode was toggleColorPastel
+	showPalettePreview: function (withUpdate) {
+	  let defaultPalette =  QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+	  let isPastel = (defaultPalette == 2);
 		document.getElementById('ExampleStripedColor').src=
-			isChecked ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";
+			isPastel ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";
 		document.getElementById('ExampleFilledColor').src=
-			isChecked ? "chrome://quickfolders/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/skin/ico/full-example.gif";
+			isPastel ? "chrome://quickfolders/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/skin/ico/full-example.gif";
 
 		var picker = document.getElementById('inactive-colorpicker');
-		
-		
+	
 		document.getElementById('activetabs-label').style.backgroundColor=
-			QuickFolders.Util.getRGBA(picker.color, isChecked ? 0.25 : 1.0);
+			QuickFolders.Util.getRGBA(picker.color, isPastel ? 0.25 : 1.0);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
+		QuickFolders.Preferences.setBoolPrefQF('pastelColors', isPastel);
 		
-		QuickFolders.Preferences.setBoolPrefQF('pastelColors', isChecked);
+		this.initPreviewTabStyles();
 		
-		this.preparePreviewPastel(isChecked);
-		
-		return QuickFolders.Interface.updateMainWindow();
+		if (withUpdate) {
+		  QuickFolders.Interface.updateMainWindow();
+		}
 	},
 
 

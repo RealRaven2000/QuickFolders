@@ -16,6 +16,10 @@
 	padding-right: 1px;
 }
 
+#QuickFolders-FoldersBox-PushDown {
+  max-height: 12px !important;
+}
+
 
 #QuickFolders-oneButtonPanel { 
 	height: 24px !important;  /* attempted linux squashed height fixes */
@@ -119,15 +123,16 @@
   padding-left: 0.2em;
 }
 
-
 /* container for categories drop down*/
 #QuickFolders-Category-Box {
 	display: -moz-inline-box;
 	margin: 0;
 	padding: 0;
-	float:left;
+	/* float:left; [Bug 25432] */
 	vertical-align: middle;
 	overflow-y: visible;
+	/* max-height: 24px; */
+	margin-top: 0;
 }
 
 #QuickFolders-Category-Box[mode="filter"] {
@@ -161,7 +166,7 @@
 
 #QuickFolders-LabelBox {
 	display: -moz-inline-box;
-	float: left;
+	/* float: left; */
 	border: 0 !important;
 	padding: 0 !important;
 	margin: 0 !important;
@@ -298,7 +303,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	background-repeat: repeat-x;
 	margin-right: 0px;
 	margin-left: 3px;
-	/* margin-top : 3px */
+	margin-top : 1px;
 /* line-height: 18px; */
 	height: 20px;
 	min-height: 1.4em !important; /* large font support */
@@ -320,7 +325,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	margin-bottom: -1px;
 }
 
-.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder {
+.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder:not(hover) {
 	border-bottom: none !important;
 	/* height: 22px; */
 	margin-top: 1px;
@@ -473,8 +478,9 @@ menuitem.mailCmd[tag="qfFolderRepair"] { list-style-image : url('chrome://quickf
 
 #QuickFolders-FoldersBox toolbarseparator {
   vertical-align: top;
-  margin-top: 4px;
-  min-height: 18px;
+  min-height: 15px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarseparator {
   margin-left: 4px;

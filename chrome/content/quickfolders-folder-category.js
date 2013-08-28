@@ -17,7 +17,6 @@ QuickFolders.FolderCategory = {
 		window.setTimeout(function() {
 			this.document.title = this.document.title + ": " + QuickFolders.FolderCategory.folder.prettyName;
 		}, 200);
-
 	} ,
 
 	$: function(id) {

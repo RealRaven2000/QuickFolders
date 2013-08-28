@@ -49,35 +49,38 @@
 		<vbox id="QuickFolders-LabelBox" flex="0">
 			<label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 		</vbox>
-
-		<hbox id="QuickFolders-Category-Box">
-			<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none" collapsed="true">
-				<menupopup>
-					<!-- filled dynamically from JS -->
-				</menupopup>
-			</menulist>
-			<hbox id="QuickFolders-oneButtonPanel">
-				<toolbarbutton id="QuickFolders-mainPopup"
-				               tooltiptext="&qf.tooltip.mainOptions;"
-				               context="QuickFolders-ToolbarPopup"
-				               onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
-				<toolbarbutton id="QuickFolders-filterActive"
-				               tooltiptext="&qf.tooltip.filters;"
-				               oncommand="QuickFolders.Interface.toggleFilterMode(false);"
-				               collapsed="true"/>
-				<toolbarbutton id="QuickFolders-paintBucketActive"
-				               tooltiptext="&qf.tooltip.paintCanActive;"
-				               context="QuickFolders-PalettePopup" 
-				               oncommand="QuickFolders.Interface.showPalette(this);"
-				               collapsed="true"/>
-				<textbox id="QuickFolders-FindFolder" 
-						 oncommand="QuickFolders.Interface.findFolderName(this);"
-						 type="search"
-						 collapsed="true"
-						 searchbutton="true"
-						 placeholder="folder name"/>
-			 </hbox>
-		</hbox>
+		
+		<vbox id="QuickFolders-Tools-Pane">
+			<hbox id="QuickFolders-Category-Box">
+				<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none" collapsed="true">
+					<menupopup>
+						<!-- filled dynamically from JS -->
+					</menupopup>
+				</menulist>
+				<hbox id="QuickFolders-oneButtonPanel">
+					<toolbarbutton id="QuickFolders-mainPopup"
+								   tooltiptext="&qf.tooltip.mainOptions;"
+								   context="QuickFolders-ToolbarPopup"
+								   onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
+					<toolbarbutton id="QuickFolders-filterActive"
+								   tooltiptext="&qf.tooltip.filters;"
+								   oncommand="QuickFolders.Interface.toggleFilterMode(false);"
+								   collapsed="true"/>
+					<toolbarbutton id="QuickFolders-paintBucketActive"
+								   tooltiptext="&qf.tooltip.paintCanActive;"
+								   context="QuickFolders-PalettePopup" 
+								   oncommand="QuickFolders.Interface.showPalette(this);"
+								   collapsed="true"/>
+					<textbox id="QuickFolders-FindFolder" 
+							 oncommand="QuickFolders.Interface.findFolderName(this);"
+							 type="search"
+							 collapsed="true"
+							 searchbutton="true"
+							 placeholder="folder name"/>
+				 </hbox>
+			</hbox>
+			<spacer flex="2" />
+		</vbox>
 		
 		<popupset id="QuickFolders-Palette">
 			<menupopup id="QuickFolders-PalettePopup" class="QuickFolders-folder-popup">
@@ -166,12 +169,11 @@
 				          tagName="qfPreviewToolbar" 
 				          />
 			</menupopup>
-
 		</popupset>
 
 
-		<vbox flex="1">
-			<spacer flex="25" />
+		<vbox id="QuickFolders-Folders-Pane"  flex="1">
+			<spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
 			<box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
 				<label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
 				<!-- Filled dynamically by the script -->

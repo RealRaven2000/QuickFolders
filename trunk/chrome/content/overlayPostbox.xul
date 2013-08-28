@@ -172,7 +172,7 @@
 				</menupopup>
 			</popupset>
 		<vbox flex="1">
-			<spacer flex="25" />
+			<spacer flex="4" id="QuickFolders-FoldersBox-PushDown" />
 			<box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
 				 <label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
 			   <!-- Filled dynamically by the script -->

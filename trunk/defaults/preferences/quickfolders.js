@@ -53,7 +53,7 @@ pref("extensions.quickfolders.queuedFolderUpdateDelay",500);
 pref("extensions.quickfolders.transparentButtons", false);
 pref("extensions.quickfolders.transparentToolbar", true);
 pref("extensions.quickfolders.buttonShadows", false);
-pref("extensions.quickfolders.pastelColors", true);
+pref("extensions.quickfolders.pastelColors", true); // legacye, now obsolete
 pref("extensions.quickfolders.style.corners.customizedRadius", false);
 pref("extensions.quickfolders.style.corners.customizedTopRadius", "4px");
 pref("extensions.quickfolders.style.corners.customizedBottomRadius", "0px");
@@ -65,12 +65,14 @@ pref("extensions.quickfolders.style.ActiveTab.color", "#FFFFFF");
 pref("extensions.quickfolders.style.ActiveTab.background-color", "#000090");
 pref("extensions.quickfolders.style.ActiveTab.paletteEntry", 5);
 pref("extensions.quickfolders.style.ActiveTab.usePalette",true);
+pref("extensions.quickfolders.style.ActiveTab.paletteType", -1);
 pref("extensions.quickfolders.style.palette.version", 0);
 
 pref("extensions.quickfolders.style.DragOver.color", "#E93903");
 pref("extensions.quickfolders.style.DragOver.background-color", "#FFFFFF");
 pref("extensions.quickfolders.style.DragOver.paletteEntry", 10);
 pref("extensions.quickfolders.style.DragOver.usePalette",false);
+pref("extensions.quickfolders.style.DragOver.paletteType", -1);
 
 pref("extensions.quickfolders.style.DragTab.color", "#FFFFFF");
 pref("extensions.quickfolders.style.DragTab.background-color", "#E93903");
@@ -79,11 +81,13 @@ pref("extensions.quickfolders.style.HoveredTab.color", "#FFFFFF");
 pref("extensions.quickfolders.style.HoveredTab.background-color", "orange");
 pref("extensions.quickfolders.style.HoveredTab.paletteEntry", 3);
 pref("extensions.quickfolders.style.HoveredTab.usePalette",false);
+pref("extensions.quickfolders.style.HoveredTab.paletteType", -1);
 
 pref("extensions.quickfolders.style.InactiveTab.color", "buttontext");
 pref("extensions.quickfolders.style.InactiveTab.background-color", "buttonface");
 pref("extensions.quickfolders.style.InactiveTab.paletteEntry", 20);
 pref("extensions.quickfolders.style.InactiveTab.usePalette",false);
+pref("extensions.quickfolders.style.InactiveTab.paletteType", 1); // default, needs to be determined on update to 3.12
 
 // Debugging Options
 pref("extensions.quickfolders.debug.firstrun", false);

@@ -151,7 +151,7 @@ QuickFolders.Preferences = {
 		return this.getBoolPrefQF('recentfolders.showIcon');
 	} ,
 
-	get isPastelColors() {
+	get isPastelColors() { // OBSOLETE!
 		return this.getBoolPrefQF('pastelColors');
 	} ,
 

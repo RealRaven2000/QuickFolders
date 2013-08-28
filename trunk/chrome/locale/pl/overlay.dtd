@@ -1,35 +1,33 @@
-<!ENTITY qf.toolbar.quickfolders.toolbar "QuickFolders Toolbar">
+<!ENTITY qf.toolbar.quickfolders.toolbar "Pasek QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders:">
-<!ENTITY qf.label.dragFolderLabel "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there.">
-<!ENTITY qf.menuitem.quickfolders.options "QuickFolders Options…">
+<!ENTITY qf.label.dragFolderLabel "Przeciągnij foldery tutaj aby utworzyć zakładkę. Kliknij na zakładkę aby do folderu, przeciągnij tutaj wiadomości aby je przenieść/skopiować.">
+<!ENTITY qf.menuitem.quickfolders.find "Znajdź folder...">
+<!ENTITY qf.menuitem.quickfolders.findAccess "i">
+<!ENTITY qf.menuitem.quickfolders.options "Opcje QuickFolders…">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "O">
-<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Paint mode">
+<!ENTITY qf.menuitem.quickfolders.togglePaintMode "Tryb malowania">
 <!ENTITY qf.menuitem.quickfolders.togglePaintModeAccess "p">
-<!ENTITY qf.menuitem.quickfolders.filters "Create Message Filters…">
+<!ENTITY qf.menuitem.quickfolders.filters "Utwórz filtry wiadomości...">
 <!ENTITY qf.menuitem.quickfolders.filtersAccess "F">
-<!ENTITY qf.menuitem.quickfolders.changeOrder "Change the order of the tabs">
+<!ENTITY qf.menuitem.quickfolders.changeOrder "Zmień kolejność zakładek">
 <!ENTITY qf.menuitem.quickfolders.changeOrderAccess "C">
-<!ENTITY qf.menuitem.quickfolders.help "QuickFolders Help…">
+<!ENTITY qf.menuitem.quickfolders.help "Pomoc QuickFolders…">
 <!ENTITY qf.menuitem.quickfolders.helpAccess "H">
-<!ENTITY qf.menuitem.quickfolders.support "QuickFolders Support…">
+<!ENTITY qf.menuitem.quickfolders.support "Wsparcie QuickFolders…">
 <!ENTITY qf.menuitem.quickfolders.supportAccess "S">
-<!ENTITY qf.menuitem.quickfolders.repairTabs "Refresh Visible Tabs!">
+<!ENTITY qf.menuitem.quickfolders.repairTabs "Odśwież widoczne zakładki!">
 <!ENTITY qf.menuitem.quickfolders.repairTabsAccess "V">
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabs "Find orphaned Tabs">
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabsAccess "T">
-<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Display Current Folder Tools">
+<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Wyświetl narzędzia aktualnego folderu">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbarAccessKey "D">
-<!ENTITY qf.tooltip.RecentFolders "Recent Folders">
-<!ENTITY qf.tooltip.folderUp "Go to Parent Folder">
-<!ENTITY qf.tooltip.goNextFolder "Move to the next [unread] message">
-<!ENTITY qf.tooltip.quickFoldersNavToggle "toggle navigating unread only / all mails">
-<!ENTITY qf.tooltip.goPreviousFolder "Move to the previous [unread] message">
-<!ENTITY qf.tooltip.emailIcon "Current Email - drag to a QuickFolders tab to move Mail">
-<!ENTITY qf.tooltip.threadIcon "Current Thread - drag to a QuickFolders tab to move Conversation">
-<!ENTITY qf.tooltip.closeToolbar "Close this toolbar">
-<!ENTITY qf.tooltip.conversationRead "Mark Conversation as Read and jump to next unread Email">
-<!ENTITY qf.tooltip.mainOptions "QuickFolders options and advanced commands">
-<!ENTITY qf.tooltip.filters "Stop creating filters.">
-<!ENTITY qf.tooltip.filterStart "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters.">
-<!ENTITY qf.tooltip.mailFolderCommands "Mail Folder Commands">
-<!ENTITY qf.tooltip.paintCanActive "Paint mode: click for palette, click tabs to color them, right-click tabs to get their color">
+<!ENTITY qf.tooltip.RecentFolders "Ostatnie foldery">
+<!ENTITY qf.tooltip.folderUp "Przejdź do folderu nadrzędnego">
+<!ENTITY qf.tooltip.goNextFolder "Przejdź do następnej [nieprzeczytanej] wiadomości">
+<!ENTITY qf.tooltip.quickFoldersNavToggle "przełączanie nawigacji tylko nieprzeczytane / wszystkie wiadomości">
+<!ENTITY qf.tooltip.goPreviousFolder "Przejdź do poprzedniej [nieprzeczytanej] wiadomości">
+<!ENTITY qf.tooltip.closeToolbar "Zamknij ten pasek narzędziowy">
+<!ENTITY qf.tooltip.conversationRead "Oznacz rozmowę jako przeczytaną i przejdź do następnej nieprzeczytanej wiadomości">
+<!ENTITY qf.tooltip.filters "Zakończ tworzenie filtrów.">
+<!ENTITY qf.tooltip.filterStart "Aktywuj filtr nauczania. Przeciąganie wiadomości na QuickFolder tworzy nowe filtry.">
+<!ENTITY qf.tooltip.paintCanActive "Tryb malowania: kliknij na paletę, kliknij na zakładkę aby zmienić kolor, prawy klawisz pobierz kolor zakładki">

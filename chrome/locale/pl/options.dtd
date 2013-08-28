@@ -1,53 +1,23 @@
-<!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Options">
+<!ENTITY qf.prefwindow.quickfolders.options "Opcje QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
-<!ENTITY qf.tab.general "General">
-<!ENTITY qf.tab.advanced "Advanced">
-<!ENTITY qf.tab.layout "Bling My Tabs!">
-<!ENTITY qf.tab.quickhelp "Quick Help">
-<!ENTITY qf.checkbox.displaylabel "Display the 'QuickFolders' label in the toolbar">
-<!ENTITY qf.checkbox.usekeyboardshortcuts "Use keyboard shortcuts (Alt + 1 through Alt + 9)">
-<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Use Ctrl instead of Alt">
-<!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
-<!ENTITY qf.checkbox.showshortcutnumber "Display shortcut number on folder labels">
-<!ENTITY qf.checkbox.showUnreadMessageCount "Display the number of unread messages on the folder button">
-<!ENTITY qf.checkbox.showUnreadBold "Display tabs for folders with unread messages in bold">
-<!ENTITY qf.checkbox.showTotalMessageCount "Display the total number of messages on the folder button">
-<!ENTITY qf.checkbox.showCountInSubFolders "Also display totals of subfolders">
-<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active">
-<!ENTITY qf.checkbox.showMessageNavigation "Message Navigation buttons">
-<!ENTITY qf.checkbox.showNonEmptyItalics "Display tabs for folders which contain messages italic">
-<!ENTITY qf.checkbox.enableTransitions "Enable CSS transitions">
-<!ENTITY qf.checkbox.enableTransitions.tooltip "Shows smooth transitions between several aspects of tab coloring.">
-<!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
-<!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default):">
-<!ENTITY qf.label.pixels "pixels">
-<!ENTITY qf.label.appearance "Appearance">
-<!ENTITY qf.label.behavior "Behavior">
-<!ENTITY qf.label.mainToolbar "Main Toolbar Elements">
-<!ENTITY qf.label.keyboard "Keyboard Shortcuts">
-<!ENTITY qf.label.menus "Menu Configuration">
-<!ENTITY qf.label.menus.mailFolder "Mail Commands">
-<!ENTITY qf.label.menus.quickFolder "QuickFolders Commands">
-<!ENTITY qf.label.menus.help "QuickFolders Help">
-<!ENTITY qf.label.menus.support "QuickFolders Support">
-<!ENTITY qf.label.menus.options "Options">
-<!ENTITY qf.label.colors "Colors">
-<!ENTITY qf.label.themes "Themes:">
-<!ENTITY qf.label.tabContent "Tab Content">
-<!ENTITY qf.label.misc "Miscellaneous">
-<!ENTITY qf.button.default "Defaults">
-<!ENTITY qf.label.currentFolderToolbar "Current Folder Toolbar">
-<!ENTITY qf.checkbox.currentFolder.show "Display the Toolbar">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…also in Single Message windows">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Show current folder toolbar in the window that opens when you select to open an Email in a new window">
-<!ENTITY qf.checkbox.currentFolder.closeButton "Close Button">
-<!ENTITY qf.button.currentFolderBackground.set "apply">
-<!ENTITY qf.currentFolderBackground.custom "custom">
-<!ENTITY qf.currentFolderBackground.translucent "translucent">
-<!ENTITY qf.currentFolderBackground.default "default">
-<!ENTITY qf.currentFolderBackground.dark "dark">
-<!ENTITY qf.caption.currentFolderBackground "Current Folder Toolbar background">
+<!ENTITY qf.tab.general "Ogólne">
+<!ENTITY qf.tab.advanced "Zaawansowane">
+<!ENTITY qf.tab.layout "Upiększ moje zakładki">
+<!ENTITY qf.tab.quickhelp "Szybka pomoc">
+<!ENTITY qf.checkbox.displaylabel "Wyświetlaj nazwę 'QuickFolders' w tytule zakładki">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Używaj skrótów klawiaturowych (Alt + 1 do Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Używaj Ctrl zamiast Alt">
+<!ENTITY qf.checkbox.useRebuildShortcut "Przebuduj zakładki używając skrótu: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Lewy ALT / prawy ALT jako poprzednia / następna zakładka">
+<!ENTITY qf.checkbox.showshortcutnumber "Wyświetlaj numer skrótu na zakładkach folderów">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Wyświetlaj liczbę nieprzeczytanych wiadomości na zakładce folderu">
+<!ENTITY qf.checkbox.showUnreadBold "Wyświetlaj zakładki z nieprzeczytanymi wiadomościami jako pogrubione">
+<!ENTITY qf.checkbox.highlightNewMail "Podświetl foldery z nową wiadomością">
+<!ENTITY qf.label.menus.options "Opcje">
+<!ENTITY qf.label.colors "Kolory">
+<!ENTITY qf.label.themes "Tematy:">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Pryzcisk zamykania">
+<!ENTITY qf.button.currentFolderBackground.set "zastosuj">
 <!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
 <!ENTITY qf.label.ActiveTabColor "Active Tab Color:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Color:">
@@ -123,3 +93,7 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
 <!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
+<!ENTITY qf.palette.twoColors "2 kolory">
+<!ENTITY qf.palette.standard "Paleta standardowa">
+<!ENTITY qf.palette.pastel "Kolory Pastelowe">
+<!ENTITY qf.palette.inactive "Jak zakładki nieaktywne">

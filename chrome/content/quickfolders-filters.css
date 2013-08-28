@@ -47,6 +47,7 @@ notification[value="quickfolders-filter"] .messageCloseButton {
 	border-radius: 3px;
 	margin: 1em 1.5em;
 }
+
 notification[value="quickfolders-filter"] .messageCloseButton:hover {
 	background-color: rgba(255, 255, 255, 1);
 }

@@ -99,7 +99,7 @@
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"
-				          oncommand="QuickFolders.Interface.findFolder();" 
+				          oncommand="QuickFolders.Interface.findFolder(true);" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
 				          />

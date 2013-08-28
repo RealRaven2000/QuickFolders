@@ -685,3 +685,26 @@ toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button image
 {
   -moz-image-region: rect(16px 16px 32px 0px);
 }
+
+/** notifications **/
+
+notification[value="quickfolders-proFeature"] image.messageImage {
+	/* proFeature.png */
+	min-width: 72px !important;
+	width: 72px !important;
+	min-height: 32px !important;
+	height: 32px !important;
+}
+notification[value="quickfolders-proFeature"] .messageCloseButton {
+	min-width: 20px;
+	min-height: 20px;
+	border: 2px solid green;
+}
+
+notification[value="quickfolders-proFeature"] description.messageText 
+{
+	white-space: normal !important;
+	height: auto;
+	word-wrap: normal;
+	overflow: auto;
+}

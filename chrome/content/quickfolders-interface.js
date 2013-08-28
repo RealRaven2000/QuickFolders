@@ -2756,7 +2756,7 @@ QuickFolders.Interface = {
 		
 		if (isSelected) {
 			// success: collapses the search box! 
-			this.findFolder();
+			this.findFolder(false);
 		}	
  	} ,
 	
@@ -2765,7 +2765,7 @@ QuickFolders.Interface = {
 		let isSelected = QuickFolders_MySelectFolder(URI);
 		if (isSelected) {
 			// success: collapses the search box! 
-			this.findFolder();
+			this.findFolder(false);
 		}
 		else {
 			if (el.className.indexOf('quickFolder')>=0) {
@@ -2813,13 +2813,18 @@ QuickFolders.Interface = {
 	} ,
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
-	findFolder: function() {
+	findFolder: function(notify) {
 		let ff = QuickFolders.Util.$("QuickFolders-FindFolder");
 		ff.collapsed = !ff.collapsed;
-		if (!ff.collapsed) 
+		if (!ff.collapsed) {
+			if (notify) {
+				QuickFolders.Util.popupProFeature("findFolder");
+			}
 			ff.focus();
-		else
-		  ff.value = ""; // reset
+		}
+		else {
+		  ff.value = ""; // reset search box
+		}
 	}	,
 	
 	viewOptions: function(selectedTab, updateMessage) {
@@ -3058,7 +3063,7 @@ QuickFolders.Interface = {
 					let targetNode = parent.targetNode;
 					// now paint the button
 				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, true, col);
-				  QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPrefQF('pastelColors'));
+				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPrefQF('pastelColors'));
 					//   retrieve about config key to persist setting;
 					let styleKey =  targetNode.getAttribute('stylePrefKey');
 				  var stylePref = 'style.' + styleKey + '.';

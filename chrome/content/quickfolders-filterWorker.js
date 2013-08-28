@@ -50,7 +50,7 @@ QuickFolders.FilterWorker = {
 	toggleFilterMode: function(active)
 	{
 		QuickFolders.Util.logDebugOptional ("filters", "toggleFilterMode(" + active + ")");
-		var notificationId;
+		let notificationId;
 
 		switch(QuickFolders.Util.Application) {
 			case 'Postbox': 
@@ -64,7 +64,8 @@ QuickFolders.FilterWorker = {
 				break;
 				
 		}
-		var notifyBox = document.getElementById (notificationId);
+		let notifyBox = document.getElementById (notificationId);
+		let notificationKey = "quickfolders-filter";
 		
 		if (active 
 			&& 
@@ -78,7 +79,7 @@ QuickFolders.FilterWorker = {
 			var theText=QuickFolders.Util.getBundleString("qf.filters.toggleMessage.notificationText",
 			  	"Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
 			  	+" To end the filter learning mode, press the filter button on the top left of QuickFolders bar.");
-			var dontShow = QuickFolders.Util.getBundleString("qf.filters.toggleMessage.dontShow",
+			var dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain",
 				"Do not show this message again.");
 
 			
@@ -91,15 +92,20 @@ QuickFolders.FilterWorker = {
 					popup: null
 				}];
 				
-				var item=notifyBox.getNotificationWithValue("quickfolders-filter")
+				var item=notifyBox.getNotificationWithValue(notificationKey)
 				if(item)
 					notifyBox.removeNotification(item);
 			
 				notifyBox.appendNotification( theText, 
-						"quickfolders-filter" , 
+						notificationKey , 
 						"chrome://quickfolders/skin/ico/filterTemplate.png" , 
 						notifyBox.PRIORITY_INFO_HIGH, 
-						nbox_buttons )  // , eventCallback
+						nbox_buttons ); // , eventCallback
+						
+				if (QuickFolders.Util.Application == 'Postbox') {
+					QuickFolders.Util.fixLineWrap(notifyBox, notificationKey);
+				}						
+						
 			}
 			else {
 				// fallback for systems that do not support notification (currently: SeaMonkey)
@@ -130,7 +136,7 @@ QuickFolders.FilterWorker = {
 			
 		// tidy up notifications
 		if (!active && notifyBox) {
-			item = notifyBox.getNotificationWithValue("quickfolders-filter");
+			item = notifyBox.getNotificationWithValue(notificationKey);
 			if(item)
 				notifyBox.removeNotification(item);
 		}

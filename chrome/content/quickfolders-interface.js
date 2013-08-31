@@ -1269,7 +1269,7 @@ QuickFolders.Interface = {
 			  this.FoldersBox.appendChild(LF);
 			}
 			
-			if (entry.spaceBefore) {
+			if (entry.separatorBefore) {
 			  // without explicitely adding this namespace, the break doesnt show up!
 			  let sep = document.createElement("toolbarseparator");
 			  this.FoldersBox.appendChild(sep);
@@ -1446,10 +1446,10 @@ QuickFolders.Interface = {
     QuickFolders.Model.setFolderLineBreak	(entry, !entry.breakBefore);
 	} ,
 	
-	onSpacerToggle: function (element) {
+	onSeparatorToggle: function (element) {
 		let folderButton = QuickFolders.Util.getPopupNode(element);
 		let entry = QuickFolders.Model.getButtonEntry(folderButton);
-    QuickFolders.Model.setFolderSpacer (entry, !entry.spaceBefore);
+    QuickFolders.Model.setTabSeparator (entry, !entry.separatorBefore);
 	} ,
 
 	onRenameBookmark: function(element) {
@@ -2032,10 +2032,10 @@ QuickFolders.Interface = {
 			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.separator")) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
-				menuitem.setAttribute('tag', entry.spaceBefore ? 'qfSeparatorDel' : 'qfSeparator');
-				let lbString = entry.spaceBefore ? this.getUIstring('qfRemoveSeparator', 'Remove Separator!') : this.getUIstring('qfInsertSeparator', 'Insert Separator!')
+				menuitem.setAttribute('tag', entry.separatorBefore ? 'qfSeparatorDel' : 'qfSeparator');
+				let lbString = entry.separatorBefore ? this.getUIstring('qfRemoveSeparator', 'Remove Separator!') : this.getUIstring('qfInsertSeparator', 'Insert Separator!')
 				menuitem.setAttribute('label', lbString);
-				menuitem.setAttribute('oncommand','QuickFolders.Interface.onSpacerToggle(this)');
+				menuitem.setAttribute('oncommand','QuickFolders.Interface.onSeparatorToggle(this)');
 				QFcommandPopup.appendChild(menuitem);
 			}
 			
@@ -3297,7 +3297,7 @@ QuickFolders.Interface = {
 	} ,
 	
 	getPaletteClassToken: function(paletteType) {
-		switch (paletteType) {
+		switch (parseInt(paletteType, 10)) {
 		  case -1:
 			  return this.getPaletteClassToken(this.getPaletteClass('InactiveTab')); // default
 			case 0:

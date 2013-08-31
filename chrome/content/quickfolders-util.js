@@ -316,6 +316,8 @@ QuickFolders.Util = {
 		// check setting extensions.quickfolders.proNotify.<featureName>
 		if (!QuickFolders.Preferences.getBoolPrefQF("proNotify." + featureName))
 			return;
+		let countDown = QuickFolders.Preferences.getIntPref("proNotify." + featureName + ".countDown") - 1;
+		QuickFolders.Preferences.setIntPref("proNotify." + featureName + ".countDown", countDown);
 
 		switch(QuickFolders.Util.Application) {
 			case 'Postbox': 
@@ -336,21 +338,30 @@ QuickFolders.Util = {
 				+ "If a registration system for Pro Features will ever be implemented, all donations will be honored.");
 		theText = theText.replace ("{1}", "'" + featureName + "'");
 		let dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain",
-			"Do not show this message again.");
+			"Do not show this message again.") + ' [' + featureName + ']';
+			
 
+		let nbox_buttons;
 		if (notifyBox) {
 			// button for disabling this notification in the future
-			var nbox_buttons = [{
-				label: dontShow,
-				accessKey: null, 
-				callback: function() { QuickFolders.Util.disableFeatureNotification(featureName); },
-				popup: null
-			}];
+			if (countDown>0) {
+				nbox_buttons = [];
+			}
+			else {
+				nbox_buttons = [
+					{
+						label: dontShow,
+						accessKey: null, 
+						callback: function() { QuickFolders.Util.disableFeatureNotification(featureName); },
+						popup: null
+					}
+				];
+			}
 			
 			let notificationKey = "quickfolders-proFeature";
 			var item = notifyBox.getNotificationWithValue(notificationKey)
 			if(item)
-				notifyBox.removeNotification(item);
+				notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
 		
 			notifyBox.appendNotification( theText, 
 					notificationKey , 

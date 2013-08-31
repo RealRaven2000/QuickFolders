@@ -137,13 +137,15 @@ QuickFolders.Model = {
 		}
 	} ,
 
-	setFolderSpacer: function(entry, isSpace) {
+	setTabSeparator: function(entry, isSpace) {
 		if(entry) {
 		  // add class "spaced" with .spaced { margin-left: 2em;}
-		  if (isSpace) 
-				entry.spaceBefore = true;
+		  if (isSpace) {
+				entry.separatorBefore = true;
+				QuickFolders.Util.popupProFeature("tabSeparator");
+			}
 			else
-				delete entry.spaceBefore;
+				delete entry.separatorBefore;
 			this.update();
 		}
 	} ,
@@ -151,8 +153,10 @@ QuickFolders.Model = {
 	setFolderLineBreak: function(entry, isBreak) {
 	  // insert before: <br xmlns="http://www.w3.org/1999/xhtml" />
 		if(entry) {
-		  if (isBreak) 
+		  if (isBreak) {
 				entry.breakBefore = true;
+				QuickFolders.Util.popupProFeature("lineBreaks");
+			}
 			else
 				delete entry.breakBefore;
 			this.update();

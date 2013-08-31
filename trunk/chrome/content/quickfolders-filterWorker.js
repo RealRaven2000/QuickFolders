@@ -40,6 +40,16 @@ QuickFolders.FilterWorker = {
 		QuickFolders.Preferences.setBoolPrefQF("filters.showMessage", show);
 	} ,
 	
+	onCloseNotification: function(eventType, notifyBox, notificationKey) {
+	  // Postbox doesn't tidy up after itself?
+		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
+		let item = notifyBox.getNotificationWithValue(notificationKey);
+		if(item) {
+		  // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
+			notifyBox.removeNotification(item, (quickFilters.Util.Application == 'Postbox'));	 // skipAnimation
+		}
+	} ,
+	
 	
   /** 
 	* toggles the filter mode so that dragging emails will
@@ -49,9 +59,17 @@ QuickFolders.FilterWorker = {
 	*/  
 	toggleFilterMode: function(active)
 	{
+    function removeOldNotification(box, active, id) {
+      if (!active && box) {
+        let item = box.getNotificationWithValue(id);
+        if(item)
+          box.removeNotification(item, (quickFilters.Util.Application == 'Postbox'));
+      }   
+    }
 		QuickFolders.Util.logDebugOptional ("filters", "toggleFilterMode(" + active + ")");
 		let notificationId;
 
+    let notifyBox;
 		switch(QuickFolders.Util.Application) {
 			case 'Postbox': 
 				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
@@ -64,8 +82,12 @@ QuickFolders.FilterWorker = {
 				break;
 				
 		}
-		let notifyBox = document.getElementById (notificationId);
+		notifyBox = document.getElementById (notificationId);
 		let notificationKey = "quickfolders-filter";
+
+		let item=notifyBox.getNotificationWithValue(notificationKey)
+		if(item)
+			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
 		
 		if (active 
 			&& 
@@ -85,16 +107,38 @@ QuickFolders.FilterWorker = {
 			
 			if (notifyBox) {
 				// button for disabling this notification in the future
-				var nbox_buttons = [{
-					label: dontShow,
-					accessKey: null, 
-					callback: function() { QuickFolders.FilterWorker.showMessage(false); },
-					popup: null
-				}];
+					var nbox_buttons;
+					// the close button in Postbox is broken: skipAnimation defaults to false and 
+					// creates a invisible label with margin = (-height) pixeles, covering toolbars above
+					// therefore we implement our own close button in Postbox!!
+					if (quickFilters.Util.Application == 'Postbox') {
+						nbox_buttons = [
+							{
+								label: dontShow,
+								accessKey: null,
+								callback: function() { QuickFolders.FilterWorker.showMessage(false); },
+								popup: null
+							},
+							{
+								label: 'X',
+								accessKey: 'x',
+								callback: function() { QuickFolders.FilterWorker.onCloseNotification(null, notifyBox, notificationKey); },
+								popup: null
+							}
+						];
+					}
+					else {
+						nbox_buttons = [
+							{
+								label: dontShow,
+								accessKey: null,
+								callback: function() { QuickFolders.FilterWorker.showMessage(false); },
+								popup: null
+							}
+						];
+					}
+					
 				
-				var item=notifyBox.getNotificationWithValue(notificationKey)
-				if(item)
-					notifyBox.removeNotification(item);
 			
 				notifyBox.appendNotification( theText, 
 						notificationKey , 
@@ -109,12 +153,12 @@ QuickFolders.FilterWorker = {
 			}
 			else {
 				// fallback for systems that do not support notification (currently: SeaMonkey)
-				var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
+				let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
 				                        .getService(Components.interfaces.nsIPromptService);  
 				  
-				var check = {value: false};   // default the checkbox to true  
+				let check = {value: false};   // default the checkbox to true  
 				  
-				var result = prompts.alertCheck(null, title, theText, dontShow, check);
+				let result = prompts.alertCheck(null, title, theText, dontShow, check);
 				if (check.value==true)
 					QuickFolders.FilterWorker.showMessage(false);
 			}
@@ -138,7 +182,7 @@ QuickFolders.FilterWorker = {
 		if (!active && notifyBox) {
 			item = notifyBox.getNotificationWithValue(notificationKey);
 			if(item)
-				notifyBox.removeNotification(item);
+				notifyBox.removeNotification(item, true);
 		}
 			
 		// sync with quickFilters
@@ -148,7 +192,7 @@ QuickFolders.FilterWorker = {
 				if (!active && notifyBox) {
 					item=notifyBox.getNotificationWithValue("quickFilters-filter");
 					if(item)
-						notifyBox.removeNotification(item);
+						notifyBox.removeNotification(item, true);
 				}
 			}
 		}

@@ -64,14 +64,14 @@ pref("extensions.quickfolders.style.Toolbar.background-color", "transparent");
 pref("extensions.quickfolders.style.ActiveTab.color", "#FFFFFF");
 pref("extensions.quickfolders.style.ActiveTab.background-color", "#000090");
 pref("extensions.quickfolders.style.ActiveTab.paletteEntry", 5);
-pref("extensions.quickfolders.style.ActiveTab.usePalette",true);
+//pref("extensions.quickfolders.style.ActiveTab.usePalette",true);
 pref("extensions.quickfolders.style.ActiveTab.paletteType", -1);
 pref("extensions.quickfolders.style.palette.version", 0);
 
 pref("extensions.quickfolders.style.DragOver.color", "#E93903");
 pref("extensions.quickfolders.style.DragOver.background-color", "#FFFFFF");
 pref("extensions.quickfolders.style.DragOver.paletteEntry", 10);
-pref("extensions.quickfolders.style.DragOver.usePalette",false);
+//pref("extensions.quickfolders.style.DragOver.usePalette",false);
 pref("extensions.quickfolders.style.DragOver.paletteType", -1);
 
 pref("extensions.quickfolders.style.DragTab.color", "#FFFFFF");
@@ -80,13 +80,13 @@ pref("extensions.quickfolders.style.DragTab.background-color", "#E93903");
 pref("extensions.quickfolders.style.HoveredTab.color", "#FFFFFF");
 pref("extensions.quickfolders.style.HoveredTab.background-color", "orange");
 pref("extensions.quickfolders.style.HoveredTab.paletteEntry", 3);
-pref("extensions.quickfolders.style.HoveredTab.usePalette",false);
+//pref("extensions.quickfolders.style.HoveredTab.usePalette",false);
 pref("extensions.quickfolders.style.HoveredTab.paletteType", -1);
 
 pref("extensions.quickfolders.style.InactiveTab.color", "buttontext");
 pref("extensions.quickfolders.style.InactiveTab.background-color", "buttonface");
 pref("extensions.quickfolders.style.InactiveTab.paletteEntry", 20);
-pref("extensions.quickfolders.style.InactiveTab.usePalette",false);
+//pref("extensions.quickfolders.style.InactiveTab.usePalette",false);
 pref("extensions.quickfolders.style.InactiveTab.paletteType", 1); // default, needs to be determined on update to 3.12
 
 // Debugging Options
@@ -146,6 +146,13 @@ pref("extensions.quickfolders.hideVersionOnUpdate",false);
 pref("extensions.quickfolders.filters.currentTemplate", "from");
 pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
+// Pro Features
+pref("extensions.quickfolders.proNotify.findFolder", true);
+pref("extensions.quickfolders.proNotify.findFolder.countDown", 5);
+pref("extensions.quickfolders.proNotify.lineBreaks", true);
+pref("extensions.quickfolders.proNotify.lineBreaks.countDown", 3);
+pref("extensions.quickfolders.proNotify.tabSeparator", true);
+pref("extensions.quickfolders.proNotify.tabSeparator.countDown", 3);
 // we need this to better integrate with quickFilters - therefore using the same extension naming space is intended!
 pref("extensions.quickfilters.naming.keyWord", true);
 pref("extensions.quickfilters.naming.parentFolder", false);

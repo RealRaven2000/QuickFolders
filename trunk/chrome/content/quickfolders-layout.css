@@ -694,6 +694,7 @@ notification[value="quickfolders-proFeature"] image.messageImage {
 	width: 72px !important;
 	min-height: 32px !important;
 	height: 32px !important;
+	margin-bottom: 1em;
 }
 notification[value="quickfolders-proFeature"] .messageCloseButton {
 	min-width: 20px;
@@ -707,4 +708,12 @@ notification[value="quickfolders-proFeature"] description.messageText
 	height: auto;
 	word-wrap: normal;
 	overflow: auto;
+	padding-left: 2em;
+	padding-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 1.5em;
 }
+#mail-notification-box notification[value="quickfolders-proFeature"] 
+{
+}
+

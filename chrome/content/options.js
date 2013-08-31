@@ -84,6 +84,7 @@ QuickFolders.Options = {
 	/*********************
 	 * preparePreviewTab() 
 	 * paints a preview tab on the options window
+	 * collapses or shows the background color picker accordingly
 	 * @colorPickerId: [optional] color picker for plain coloring - this is hidden when palette is used
 	 * @preference: [optional] pull palette entry from this preference, ignored when paletteColor is passed
 	 * @previewId: id of target element (preview tab)
@@ -94,11 +95,16 @@ QuickFolders.Options = {
 		let wd = window.document;
 		let previewTab = wd.getElementById(previewId);
 		let paletteId = (typeof paletteType === 'undefined') ? QuickFolders.Preferences.getIntPref(preference + 'paletteType') : paletteType;
-		// let globalPastelClass = QuickFolders.Interface.getPaletteClass('InactiveTab');
-		let paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteId);
 		let colorPicker = colorPickerId ? wd.getElementById(colorPickerId) : null;
 		
-		if (paletteId) {
+		// set to that of inactive style for option ("like on inactive")
+		if (paletteId == -1 && colorPickerId!='inactive-colorpicker') {
+		  paletteId = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+		}
+		let paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteId);
+		
+		
+		if (paletteId) { // use a palette
 			let paletteIndex = (typeof paletteColor === 'undefined') 
 			                   ? QuickFolders.Preferences.getIntPref(preference + 'paletteEntry') :
 			                   paletteColor;
@@ -117,6 +123,7 @@ QuickFolders.Options = {
 			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;
 		}
 		else {
+		  colorPicker.collapsed = false; // paletteId = 0 is no palette
 			previewTab.className = 'qfTabPreview';
 			if (colorPicker)
 				previewTab.style.backgroundColor = colorPicker.color;
@@ -436,7 +443,7 @@ QuickFolders.Options = {
 	get isHideStandardBackgroundColor() {
 	  if (QuickFolders.Preferences.ColoredTabStyle==QuickFolders.Preferences.TABS_STRIPED)
 			return false; // always show if striped tabs are used
-		return QuickFolders.Preferences.getBoolPrefQF('style.InactiveTab.usePalette'); // hide if Palette is used.
+		return QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'); // 0 = no palette - hide if Palette is used.
 	},
 	
 	
@@ -458,6 +465,7 @@ QuickFolders.Options = {
 	/*********************
 	 * toggleUsePalette() 
 	 * Set whether (and which) palette is used for a particular tab state.
+	 * also hides background colorpicker if a palette is used
 	 * @mnuNode:       either a menuitem node or the menu with the correct paletteType value
 	 * @buttonState:   [string] which kind of tab state: standard, active, hovered, dragOver
 	 * @paletteType:  -1 as standard, 0 none, 1 normal, 2 pastel ....
@@ -499,15 +507,17 @@ QuickFolders.Options = {
 		}
 		
 		// preparePreviewTab(id, preference, previewId)
+		QuickFolders.Preferences.setIntPref('style.' + stylePref + '.paletteType', paletteType);
 		this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, paletteType);
 		// this.toggleBoolPreference(checkbox, true);
 		
+		/*
 		// let's not hide the standard background color picker! 
 		// this way we can override the background for "striped" (or future translucent) styles.
 		if (buttonState == 'standard')
 			paletteTypeMenu.previousSibling.collapsed = this.isHideStandardBackgroundColor;
 		else
-			paletteTypeMenu.previousSibling.collapsed = (paletteType==0) ? false : true;
+			paletteTypeMenu.previousSibling.collapsed = (paletteType==0) ? false : true; */
 	},
 	
 	/*********************  
@@ -524,10 +534,10 @@ QuickFolders.Options = {
 		if (paletteMenu) {
 			this.toggleUsePalette(paletteMenu, buttonState, paletteMenu.value);
 			// allow overriding standard background for striped style!
-			if (buttonState == 'standard')
-				paletteMenu.previousSibling.collapsed = this.isHideStandardBackgroundColor;
-			else
-				paletteMenu.previousSibling.collapsed = true; // -1 is a special case...
+//			if (buttonState == 'standard')
+//				paletteMenu.previousSibling.collapsed = this.isHideStandardBackgroundColor;
+//			else
+//				paletteMenu.previousSibling.collapsed = true; // -1 is a special case...
 			// Now style the palette with the correct palette class
 			let context = label.getAttribute('context');
 			let menu = document.getElementById(context);
@@ -582,8 +592,6 @@ QuickFolders.Options = {
 		let dragTab = document.getElementById('dragovertabs-label');
 		let menupopup = document.getElementById("QuickFolders-Options-PalettePopup");
 		
-		let defaultPalette = QuickFolders.Interface.getPaletteClass('InactiveTab');
-		
 		this.preparePreviewTab('inactive-colorpicker', 'style.InactiveTab.', 'inactivetabs-label');
 		this.preparePreviewTab('activetab-colorpicker', 'style.ActiveTab.', 'activetabs-label');
 		this.preparePreviewTab('hover-colorpicker', 'style.HoveredTab.', 'hoveredtabs-label');
@@ -593,7 +601,7 @@ QuickFolders.Options = {
 
 	// toggle pastel mode was toggleColorPastel
 	showPalettePreview: function (withUpdate) {
-	  let defaultPalette =  QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+	  let defaultPalette = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
 	  let isPastel = (defaultPalette == 2);
 		document.getElementById('ExampleStripedColor').src=
 			isPastel ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";

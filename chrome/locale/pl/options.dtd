@@ -12,12 +12,42 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Wyświetlaj numer skrótu na zakładkach folderów">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Wyświetlaj liczbę nieprzeczytanych wiadomości na zakładce folderu">
 <!ENTITY qf.checkbox.showUnreadBold "Wyświetlaj zakładki z nieprzeczytanymi wiadomościami jako pogrubione">
+<!ENTITY qf.checkbox.showTotalMessageCount "Wyświetla całkowitą liczbę wiadomości na zakładce folderu">
+<!ENTITY qf.checkbox.showCountInSubFolders "Wyświetla również całkowitą liczbę podfolderów">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Wyświetlane są poprzez oddzielenie znakiem '+' obok głównej liczby; zawiera nieprzeczytane wiadomości również oznaczone pogrubieniem jeśli opcja powyżej jest aktywna">
+<!ENTITY qf.checkbox.showMessageNavigation "Przyciski nawigacji wiadomości">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Wyświetlanie kursywą kart folderów, które zawierają wiadomości">
+<!ENTITY qf.checkbox.enableTransitions "Włącz przejścia CSS">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Pokazuje płynne przejścia między różnymi aspekami kolorowania kart.">
 <!ENTITY qf.checkbox.highlightNewMail "Podświetl foldery z nową wiadomością">
+<!ENTITY qf.label.buttonFontSize "Wielkość czcionki (pozostaw puste dla domyślnej):">
+<!ENTITY qf.label.pixels "pikseli">
+<!ENTITY qf.label.appearance "Wygląd">
+<!ENTITY qf.label.behavior "Zachowanie">
+<!ENTITY qf.label.mainToolbar "Elementy głównego paska narzędziowego">
+<!ENTITY qf.label.keyboard "Skróty klawiaturowe">
+<!ENTITY qf.label.menus "Menu konfiguracji">
+<!ENTITY qf.label.menus.mailFolder "Komendy wiadomości">
+<!ENTITY qf.label.menus.quickFolder "Polecenia QuickFolders">
+<!ENTITY qf.label.menus.help "Pomoc QuickFolders">
+<!ENTITY qf.label.menus.support "Wsparcie QuickFolders">
 <!ENTITY qf.label.menus.options "Opcje">
 <!ENTITY qf.label.colors "Kolory">
 <!ENTITY qf.label.themes "Tematy:">
+<!ENTITY qf.label.tabContent "Zawartość zakładki">
+<!ENTITY qf.label.misc "Różne">
+<!ENTITY qf.button.default "Domyślne">
+<!ENTITY qf.label.currentFolderToolbar "Bieżący pasek narzędziowy folderu">
+<!ENTITY qf.checkbox.currentFolder.show "Wyświetlaj pasek narzędziowy">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... także w pojedynczych oknach wiadomości">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Pokazuje bieżący pasek narzędziowy w oknie, które otworzy się, gdy otworzysz wiadomość w nowym oknie">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Pryzcisk zamykania">
 <!ENTITY qf.button.currentFolderBackground.set "zastosuj">
+<!ENTITY qf.currentFolderBackground.custom "własne">
+<!ENTITY qf.currentFolderBackground.translucent "przezroczyste">
+<!ENTITY qf.currentFolderBackground.default "domyślne">
+<!ENTITY qf.currentFolderBackground.dark "ciemne">
+<!ENTITY qf.caption.currentFolderBackground "Tło bieżącej zakładki folderu">
 <!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
 <!ENTITY qf.label.ActiveTabColor "Active Tab Color:">
 <!ENTITY qf.label.HoveredTabColor "Hovered Tab Color:">

@@ -523,12 +523,12 @@
 			<preference id="QuickFolders-Preferences-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool"/>
 			<preference id="QuickFolders-Preferences-Shadows" name="extensions.quickfolders.buttonShadows" type="bool"/>
 			<preference id="QuickFolders-Preferences-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"/>
-			
+			<!-- obsolete
 			<preference id="QuickFolders-Preferences-InactiveTab-Palette" name="extensions.quickfolders.style.InactiveTab.usePalette" type="bool"/>
 			<preference id="QuickFolders-Preferences-ActiveTab-Palette" name="extensions.quickfolders.style.ActiveTab.usePalette" type="bool"/>
 			<preference id="QuickFolders-Preferences-DragOver-Palette" name="extensions.quickfolders.style.DragOver.usePalette" type="bool"/>
 			<preference id="QuickFolders-Preferences-HoveredTab-Palette" name="extensions.quickfolders.style.HoveredTab.usePalette" type="bool"/>
-			
+			-->
 			<preference id="QuickFolders-Preferences-InactiveTab-PaletteType" name="extensions.quickfolders.style.InactiveTab.paletteType" type="int"/>
 			<preference id="QuickFolders-Preferences-ActiveTab-PaletteType" name="extensions.quickfolders.style.ActiveTab.paletteType" type="int"/>
 			<preference id="QuickFolders-Preferences-DragOver-PaletteType" name="extensions.quickfolders.style.DragOver.paletteType" type="int"/>

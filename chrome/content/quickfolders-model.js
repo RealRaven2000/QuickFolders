@@ -5,11 +5,15 @@ GPL3 applies.
 For detail, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+if (QuickFolders.Util.Application != 'Postbox') {
+	Components.utils.import("resource:///modules/MailUtils.js");
+}
 
 QuickFolders.Model = {
 	selectedFolders: [],
 	categoriesList: [],
 	paletteUpdated: false,
+	paletteUpgraded: false,
 
 	addFolder: function(uri, categoryName) {
 		QuickFolders.Util.logDebug("model.addFolder");
@@ -165,12 +169,12 @@ QuickFolders.Model = {
 
 	getMsgFolderFromUri:  function(uri, checkFolderAttributes)
 	{
-		var msgfolder = null;
-		if (QuickFolders.Util.Application=='Thunderbird' || QuickFolders.Util.Application=='SeaMonkey') {
-			return (GetMsgFolderFromUri(uri, checkFolderAttributes));
+		let msgfolder = null;
+		if (typeof MailUtils != 'undefined' && MailUtils.getFolderForURI) {
+			return MailUtils.getFolderForURI(uri, checkFolderAttributes);
 		}
 		try {
-			var resource = GetResourceFromUri(uri);
+			let resource = GetResourceFromUri(uri);
 			msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
 			if (checkFolderAttributes) {
 				if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
@@ -338,6 +342,7 @@ QuickFolders.Model = {
 		return 'unknown color: ' + id;
 	} ,
 	
+	// new palette indices
 	updatePalette: function() {
 		// we only do this ONCE
 		if (this.paletteUpdated) 
@@ -402,7 +407,53 @@ QuickFolders.Model = {
 			QuickFolders.Preferences.setIntPref("style.palette.version", 1);
 	
 		}
+	} ,
+	
+	// new upgrade function to switch over to multiple palettes
+	upgradePalette: function(prefSvc) {
+	  function getBoolPref(key, boolDefault) {
+		  let result;
+			try {
+				result = prefSvc.getBoolPref(key)
+			}
+			catch(ex) {
+			  result = boolDefault;
+			}
+			finally {
+			  return result;
+			}
+		}
+		function setPaletteType(key, wasPalette) {
+			prefSvc.setIntPref('style.' + key + '.paletteType', wasPalette ? (wasPastel ? 2 : 1) : 0);
+			let pType = prefSvc.getIntPref('style.' + key + '.paletteType');
+			return key + " usePalette - was " + wasPalette + " ==> " + pType + " (" + QuickFolders.Interface.getPaletteClassToken(pType) + ")";
+		}
 		
+	  if (this.paletteUpgraded)
+			return;
+		QuickFolders.Util.logDebugOptional ("firstrun", "Upgrading Palette for 3.12...");
 		
+		var wasPastel = getBoolPref('pastelColors', true);
+		let wasInactivePalette = getBoolPref('style.InactiveTab.usePalette',false);
+		let wasActivePalette = getBoolPref('style.ActiveTab.usePalette',true);
+		let wasHoveredPalette = getBoolPref('style.HoveredTab.usePalette',false);
+		let wasDragOverPalette = getBoolPref('style.DragOver.usePalette',false);
+		
+		// default to no palette
+		let s1 = setPaletteType('InactiveTab', wasInactivePalette);
+		let s2 = setPaletteType('ColoredTab', wasInactivePalette);
+		// default to "like Inactive Tab"
+		let s3 = setPaletteType('ActiveTab', wasActivePalette);
+		let s4 = setPaletteType('HoveredTab', wasHoveredPalette);
+		let s5 = setPaletteType('DragOver', wasDragOverPalette);
+		
+		QuickFolders.Util.logDebugOptional ("firstrun", "New Palette types selected:\n"
+		  + '(uncolored) ' + s1 + "\n"
+		  + s2 + "\n"
+		  + s3 + "\n"
+		  + s4 + "\n"
+		  + s5 + "\n");
+			
+    this.paletteUpgraded = true;
 	}
 }

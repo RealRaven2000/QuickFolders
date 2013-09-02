@@ -645,7 +645,7 @@ QuickFolders.Interface = {
 				if(!this.shouldDisplayFolder(folderEntry))
 					continue;
 
-				if((folder = GetMsgFolderFromUri(folderEntry.uri, true))) {
+				if((folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true))) {
 					countFolders++;
 					if (!minimalUpdate) {
 						button = this.addFolderButton(folder, folderEntry, offset, null, null, tabStyle);
@@ -828,7 +828,7 @@ QuickFolders.Interface = {
 			// test mail folder for existence
 			let folder = null;
 			try { 
-				folder = GetMsgFolderFromUri(folderEntry.uri, true);
+				folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true);
 			}
 			catch(ex) {
 				QuickFolders.Util.logException('GetMsgFolderFromUri failed with uri:' + folderEntry.uri, ex); 			
@@ -1201,7 +1201,9 @@ QuickFolders.Interface = {
 		// for (optional) icon display
 		let specialFolderType="";
 		let sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons ? ' icon': '';
-		let paletteClass = this.getPaletteClass('InactiveTab'); //  QuickFolders.Preferences.isPastelColors ? ' pastel': '';
+		// if the tab is colored, use the new palette setting "ColoredTab"
+		// if it is uncolored use the old "InActiveTab"
+		let paletteClass = tabColor ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); //  QuickFolders.Preferences.isPastelColors ? ' pastel': '';
 
 		// use folder flags instead!
 		var Constants = QuickFolders.Util.Constants;
@@ -1535,7 +1537,7 @@ QuickFolders.Interface = {
 			this.globalTreeController.deleteFolder(folderButton.folder);
 
 		// if folder is gone, delete quickFolder
-		if (!GetMsgFolderFromUri(uri, true))
+		if (!QuickFolders.Model.getMsgFolderFromUri(uri, true))
 			QuickFolders.Interface.onRemoveBookmark(folderButton);
 
 	} ,
@@ -2993,7 +2995,7 @@ QuickFolders.Interface = {
 	initElementPaletteClass: function(element, targetElement) {
 		if (!element) 
 			return;
-		let paletteToken = this.getPaletteClass('InactiveTab'); // QuickFolders.Preferences.isPastelColors;
+		let paletteToken = this.getPaletteClass('ColoredTab'); // QuickFolders.Preferences.isPastelColors;
 		
 		QuickFolders.Util.logDebugOptional("css.palette",
 			"initElementPaletteClass(element: " + (element.id ? element.id : element.tagName) +
@@ -3205,11 +3207,11 @@ QuickFolders.Interface = {
 		let engine = QuickFolders.Styles;
 		let hoverBackColor = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90");
 		let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
-		let defaultColClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
+		let noColorClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
 		let hoverColor = QuickFolders.Preferences.getUserStyle("HoveredTab","color","#000000");
 		
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover','background-color', hoverBackColor,true);
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + defaultColClass + ':hover','background-color', hoverBackColor,true);
+		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover','background-color', hoverBackColor,true);
 
 		let paintButton = isPaintMode ? this.PaintButton : null;
 			
@@ -3229,7 +3231,7 @@ QuickFolders.Interface = {
 			
 			// build some rules..
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':hover', 'background-image', hoverGradient, true); // [class^="col"]
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + defaultColClass + ':hover', 'background-image', hoverGradient, true); 
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ':hover', 'background-image', hoverGradient, true); 
 
 			// let hoverColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder):hover > label','color', hoverColor, true);
@@ -3238,12 +3240,12 @@ QuickFolders.Interface = {
 		else {
 			QuickFolders.Util.logDebugOptional("interface.buttonStyles", "Configure Plain backgrounds...");
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':hover', 'background-image', 'none', true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + defaultColClass + ':hover', 'background-image', 'none', true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ':hover', 'background-image', 'none', true);
 			if (tabStyle == QuickFolders.Preferences.TABS_STRIPED) {
 				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor ,true);
 			}
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder):hover > label','color', hoverColor, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + defaultColClass + '[buttonover="true"] > label','color', hoverColor ,true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + '[buttonover="true"] > label','color', hoverColor ,true);
 			// full monochrome background
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder):hover','background-color', hoverBackColor,true);
 		}
@@ -3344,7 +3346,7 @@ QuickFolders.Interface = {
 		let inactiveBackground = QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","ButtonFace");
 		let inactiveColor = QuickFolders.Preferences.getUserStyle("InactiveTab","color","black");
 		let paletteClass = this.getPaletteClassCss('InactiveTab');
-		let defaultColClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
+		let noColorClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
 
 		// transparent buttons: means translucent background! :))
 		if (QuickFolders.Preferences.getBoolPrefQF('transparentButtons')) 
@@ -3355,28 +3357,28 @@ QuickFolders.Interface = {
 		
 		// INACTIVE STATE (PALETTE) FOR UNCOLORED TABS ONLY
 		// LETS AVOID !IMPORTANT TO SIMPLIFY STATE STYLING
-		if (QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')) {
+		if (QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')>0) {
+			
 			let paletteEntry = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteEntry');
 			if (tabStyle === QuickFolders.Preferences.TABS_STRIPED)
 				paletteEntry += 'striped';
 			let ruleName = ((tabStyle === QuickFolders.Preferences.TABS_FILLED) ? '.quickfolders-flat ' : '') + paletteClass + '.col' + paletteEntry;
 			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton.' + defaultColClass + ':not(:-moz-drag-over)', 'background-image'); // remove 'none'
+			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image'); // remove 'none'
 			// removed 'toolbarbutton'. qualifier
-			engine.setElementStyle(ss, '.quickfolders-flat .' + defaultColClass + ':not(:-moz-drag-over)', 'background-image', inactiveGradient, false);
-			engine.setElementStyle(ss, '.quickfolders-flat .' + defaultColClass + ':not(:-moz-drag-over)#QuickFolders-CurrentFolder', 'background-image', inactiveGradient, false);
+			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)', 'background-image', inactiveGradient, false);
+			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)#QuickFolders-CurrentFolder', 'background-image', inactiveGradient, false);
 			
 			let inactiveGradientColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
 			if (inactiveGradientColor!=null)
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + defaultColClass + ' > label','color', inactiveGradientColor, false);
+				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ' > label','color', inactiveGradientColor, false);
 		}
 		else {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + defaultColClass + ':not(:-moz-drag-over)', 'background-image', 'none', false);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image', 'none', false);
 		}
 		
-		// if (!QuickFolders.Preferences.getBoolPrefQF('style.InactiveTab.usePalette') || tabStyle == QuickFolders.Preferences.TABS_STRIPED) {
-	    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder)' + paletteClass + '.' + defaultColClass + ' > label','color', inactiveColor, false);
-		// }
+	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder)' + paletteClass + '.' + noColorClass + ' > label','color', inactiveColor, false);
+
 		// Coloring all striped tabbed buttons that have individual colors 
 		if (tabStyle == QuickFolders.Preferences.TABS_STRIPED) {
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder)' + paletteClass + ' > label','color', inactiveColor, false);
@@ -3522,7 +3524,7 @@ QuickFolders.Interface = {
 				return;
 			}
 			var folder;
-			if (aFolder == GetMsgFolderFromUri(folderEntry.uri, true))
+			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true))
 				found=true;
 		}
 		if (found)
@@ -3547,7 +3549,7 @@ QuickFolders.Interface = {
 				return;
 			}
 			var folder;
-			if (aFolder == GetMsgFolderFromUri(folderEntry.uri, true))
+			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true))
 				found=true;
 		}
 		if (found)

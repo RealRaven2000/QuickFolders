@@ -449,6 +449,8 @@ QuickFolders.Options = {
 	
 	getButtonStatePrefId: function(buttonState) {
 		switch(buttonState) {
+		  case 'colored':
+				return 'ColoredTab';
 			case 'standard':
 				return 'InactiveTab';
 			case 'active':
@@ -488,6 +490,10 @@ QuickFolders.Options = {
 		
 		let stylePref = this.getButtonStatePrefId(buttonState);
 		switch(buttonState) {
+		  case 'colored':
+			  idPreview = null;
+				colorPicker = null;
+				break;
 			case 'standard':
 				idPreview = 'inactivetabs-label';
 				colorPicker = 'inactive-colorpicker';
@@ -508,7 +514,8 @@ QuickFolders.Options = {
 		
 		// preparePreviewTab(id, preference, previewId)
 		QuickFolders.Preferences.setIntPref('style.' + stylePref + '.paletteType', paletteType);
-		this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, paletteType);
+		if (colorPicker)
+			this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, paletteType);
 		// this.toggleBoolPreference(checkbox, true);
 		
 		/*

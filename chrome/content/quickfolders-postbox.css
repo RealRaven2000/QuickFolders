@@ -32,7 +32,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] button:nth-child(2) {
    -moz-appearance: toolbarbutton;
    /* background-image: close-button-option */
-   list-style-image: url("chrome://quickfilters/skin/close-button.png");
+   list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png");
    min-width: 16px;
    background-image: none;
  }

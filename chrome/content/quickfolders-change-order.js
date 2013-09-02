@@ -41,7 +41,7 @@ QuickFolders.ChangeOrder = {
 
 		for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 			var folderEntry = QuickFolders.Model.selectedFolders[i];
-			var folder = GetMsgFolderFromUri(folderEntry.uri, true);
+			var folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true);
 
 			if(folder != undefined) {
 				this.addFolderButton(folder, folderEntry.name)
@@ -128,7 +128,7 @@ QuickFolders.ChangeOrder = {
 
 		for(var i = 0; i < modelSelection.length; i++) {
 			folderEntry = QuickFolders.Model.selectedFolders[i];
-			folder = GetMsgFolderFromUri(folderEntry.uri, true);
+			folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true);
 
 			if (toolbarPos=="")
 				if (folderEntry.uri==targetURI) {

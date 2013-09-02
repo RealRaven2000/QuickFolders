@@ -63,7 +63,11 @@
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">
 <!ENTITY qf.button.defaultcolors "Standard Farben">
 <!ENTITY qf.checkbox.debug "Debug Modus">
-<!ENTITY qf.label.StandardTabColor "Normale Tab Farbe:">
+<!ENTITY qf.label.UncoloredTab "Ungefärbtes Tab">
+<!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuell gewählte Farbe">
+<!ENTITY qf.label.UncoloredTab "Normale Tab Farbe:">
+<!ENTITY qf.label.ColoredTabPalette "Palette für individuelle Farben:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette für Tabs mit individuell gewählter Farbe">
 <!ENTITY qf.checkbox.usePalette "Palette benutzen">
 <!ENTITY qf.label.initdelay "[ms] init Verzögerung {1000=standard}:">
 <!ENTITY qf.label.folders "Verzeichnisse?">

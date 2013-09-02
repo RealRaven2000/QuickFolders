@@ -22,7 +22,6 @@ if (!QuickFolders.Filter)
 // open the new content tab for displaying support info, see
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
 var QuickFolders_TabURIopener = {
-
 	openURLInTab: function (URL) {
 		try {
 			var sTabMode="";
@@ -359,9 +358,11 @@ QuickFolders.Util = {
 			}
 			
 			let notificationKey = "quickfolders-proFeature";
-			var item = notifyBox.getNotificationWithValue(notificationKey)
-			if(item)
-				notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
+			if (notifyBox) {
+				let item = notifyBox.getNotificationWithValue(notificationKey)
+				if(item)
+					notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
+			}
 		
 			notifyBox.appendNotification( theText, 
 					notificationKey , 
@@ -708,7 +709,7 @@ QuickFolders.Util = {
 			// in search result folders, there is no current URI!
 			if (!currentURI)
 				return null;
-			aFolder = GetMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+			aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 		}
 
 		return aFolder;
@@ -1058,13 +1059,13 @@ QuickFolders.Util = {
 QuickFolders.Util.FirstRun =
 {
 	init: function() {
-		var prev = -1, firstrun = true;
-		var showFirsts = true, debugFirstRun = false;
-		var prefBranchString = "extensions.quickfolders.";
+		let prev = -1, firstrun = true;
+		let showFirsts = true, debugFirstRun = false;
+		let prefBranchString = "extensions.quickfolders.";
 
-		var svc = Components.classes["@mozilla.org/preferences-service;1"]
+		let svc = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
-		var ssPrefs = svc.getBranch(prefBranchString);
+		let ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } catch (e) { debugFirstRun = false; }
 
@@ -1091,7 +1092,6 @@ QuickFolders.Util.FirstRun =
 			QuickFolders.Util.logDebugOptional ("firstrun","try to get setting: getBoolPref(enablefirstruns)");
 			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
 
-
 			QuickFolders.Util.logDebugOptional ("firstrun", "Settings retrieved:"
 					+ "\nprevious version=" + prev
 					+ "\ncurrent version=" + current
@@ -1108,19 +1108,22 @@ QuickFolders.Util.FirstRun =
 				+ "\nfirstrun: " + firstrun
 				+ "\nshowFirstRuns: " + showFirsts
 				+ "\ndebugFirstRun: " + debugFirstRun);
-
 		}
 		finally {
 
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
 
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-			var pureVersion=QuickFolders.Util.VersionSanitized;
+			var pureVersion = QuickFolders.Util.VersionSanitized;
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
 			var versionPage = "http://quickfolders.mozdev.org/version.html#" + pureVersion;
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - versionPage=" + versionPage);
-
+			
+			if (pureVersion >= '3.12' && prev < "3.12") {
+				QuickFolders.Model.upgradePalette(ssPrefs);
+			}
+			
 			// STORE CURRENT VERSION NUMBER!
 			if (prev!=pureVersion && current!='?' && (current.indexOf(QuickFolders.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
 				QuickFolders.Util.logDebugOptional ("firstrun","Store current version " + current);
@@ -1149,7 +1152,7 @@ QuickFolders.Util.FirstRun =
 				}
 
 			}
-			else { // this section does not get loaded if its a fresh install.
+			else { // this section does not get loaded if it's a fresh install.
 				var isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();
 

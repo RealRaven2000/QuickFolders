@@ -42,11 +42,13 @@ QuickFolders.FilterWorker = {
 	
 	onCloseNotification: function(eventType, notifyBox, notificationKey) {
 	  // Postbox doesn't tidy up after itself?
+		if (!notifyBox)
+			return;
 		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
 		let item = notifyBox.getNotificationWithValue(notificationKey);
 		if(item) {
 		  // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
-			notifyBox.removeNotification(item, (quickFilters.Util.Application == 'Postbox'));	 // skipAnimation
+			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));	 // skipAnimation
 		}
 	} ,
 	
@@ -63,7 +65,7 @@ QuickFolders.FilterWorker = {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
         if(item)
-          box.removeNotification(item, (quickFilters.Util.Application == 'Postbox'));
+          box.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
       }   
     }
 		QuickFolders.Util.logDebugOptional ("filters", "toggleFilterMode(" + active + ")");
@@ -82,12 +84,14 @@ QuickFolders.FilterWorker = {
 				break;
 				
 		}
-		notifyBox = document.getElementById (notificationId);
 		let notificationKey = "quickfolders-filter";
 
-		let item=notifyBox.getNotificationWithValue(notificationKey)
-		if(item)
-			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+		if (notificationId) {
+			notifyBox = document.getElementById (notificationId);
+			let item=notifyBox.getNotificationWithValue(notificationKey)
+			if(item)
+				notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+		}
 		
 		if (active 
 			&& 
@@ -111,7 +115,7 @@ QuickFolders.FilterWorker = {
 					// the close button in Postbox is broken: skipAnimation defaults to false and 
 					// creates a invisible label with margin = (-height) pixeles, covering toolbars above
 					// therefore we implement our own close button in Postbox!!
-					if (quickFilters.Util.Application == 'Postbox') {
+					if (QuickFolders.Util.Application == 'Postbox') {
 						nbox_buttons = [
 							{
 								label: dontShow,
@@ -180,17 +184,17 @@ QuickFolders.FilterWorker = {
 			
 		// tidy up notifications
 		if (!active && notifyBox) {
-			item = notifyBox.getNotificationWithValue(notificationKey);
+			let item = notifyBox.getNotificationWithValue(notificationKey);
 			if(item)
 				notifyBox.removeNotification(item, true);
 		}
 			
 		// sync with quickFilters
-		if (window.quickFilters) {
+		if (typeof window.quickFilters != 'undefined') {
 			if (active != window.quickFilters.Worker.FilterMode) {
 				window.quickFilters.Worker.toggleFilterMode(active);
 				if (!active && notifyBox) {
-					item=notifyBox.getNotificationWithValue("quickFilters-filter");
+					let item = notifyBox.getNotificationWithValue("quickFilters-filter");
 					if(item)
 						notifyBox.removeNotification(item, true);
 				}

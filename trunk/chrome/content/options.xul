@@ -20,10 +20,10 @@
 <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
 <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
 <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-styles.js" />
+<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 <script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
-<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 <script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 
 
@@ -529,7 +529,10 @@
 			<preference id="QuickFolders-Preferences-DragOver-Palette" name="extensions.quickfolders.style.DragOver.usePalette" type="bool"/>
 			<preference id="QuickFolders-Preferences-HoveredTab-Palette" name="extensions.quickfolders.style.HoveredTab.usePalette" type="bool"/>
 			-->
+			<!-- "uncolored" tabs (inactive)  0, 1, n -->
 			<preference id="QuickFolders-Preferences-InactiveTab-PaletteType" name="extensions.quickfolders.style.InactiveTab.paletteType" type="int"/>
+			<!-- "colored" tabs (inactive)    1, n    -->
+			<preference id="QuickFolders-Preferences-ColoredTab-PaletteType" name="extensions.quickfolders.style.ColoredTab.paletteType" type="int"/>
 			<preference id="QuickFolders-Preferences-ActiveTab-PaletteType" name="extensions.quickfolders.style.ActiveTab.paletteType" type="int"/>
 			<preference id="QuickFolders-Preferences-DragOver-PaletteType" name="extensions.quickfolders.style.DragOver.paletteType" type="int"/>
 			<preference id="QuickFolders-Preferences-HoveredTab-PaletteType" name="extensions.quickfolders.style.HoveredTab.paletteType" type="int"/>
@@ -692,7 +695,8 @@
 	<spacer flex="1" />
 
 	<hbox>
-			<label value="&qf.label.ToolbarBackground;" style="vertical-align:middle"/>
+			<label value="&qf.label.ToolbarBackground;" 
+			       class="textBoxLabel"/>
 			<colorpicker id="toolbar-colorpicker" palettename="standard"  style="vertical-align:middle"
 			  type="button"
 			  onchange="return QuickFolders.Options.styleUpdate('Toolbar', 'background-color', this.color, 'qf-StandardColors');"
@@ -722,8 +726,8 @@
 					       class="qfTabPreview" 
 					       stylePrefKey="InactiveTab"
 					       context="QuickFolders-Options-PalettePopup"
-					       tooltiptext="&qf.label.setcolors;" 
-					       value="&qf.label.StandardTabColor;" 
+					       value="&qf.label.UncoloredTab;" 
+					       tooltiptext="&qf.label.UncoloredTab.tooltip;" 
 					       onclick="QuickFolders.Options.showPalette(this, 'standard', 'menuStandardPalette');"/>
 					<colorpicker id="inactive-fontcolorpicker" palettename="standard" style="vertical-align:middle"
 					             type="button"
@@ -754,6 +758,31 @@
 						</menupopup>
 					</menulist>
 					  
+					</hbox>
+					<spacer />
+					<hbox>
+					    <spacer flex="1" />
+					    <label id = "coloredtabs-label" 
+					       stylePrefKey="ColoredTab"
+						   class="textBoxLabel"
+					       context="QuickFolders-Options-PalettePopup"
+					       tooltiptext="&qf.label.ColoredTabPalette.tooltip;" 
+					       value="&qf.label.ColoredTabPalette;" 
+					       onclick="QuickFolders.Options.showPalette(this, 'colored', 'menuColoredPalette');"/>
+						<menulist id="menuColoredPalette"
+								  preference="QuickFolders-Preferences-ColoredTab-PaletteType"
+								  sizetopopup="none"
+								  oncommand="QuickFolders.Options.showPalettePreview(true);"
+								  >
+							<menupopup>
+								<menuitem label="&qf.palette.standard;"
+										  oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 1);"
+										  value="1"/>
+								<menuitem label="&qf.palette.pastel;"
+										  oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 2);"
+										  value="2"/>
+							</menupopup>
+						</menulist>
 					</hbox>
 					
 				  </vbox>

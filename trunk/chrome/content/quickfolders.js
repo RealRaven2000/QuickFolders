@@ -615,6 +615,7 @@ END LICENSE BLOCK */
 		AG: [Bug 25533] - SeaMonkey 2.23a1 - throws "ReferenceError: EventListener is not defined"
 		AG: Added independent palette type settings for the tab states selected / hover / dragover
 		AG: Fixed truncated filter notification in Postbox
+		AG: [Bug 25536] Compatibility Fixes for Thunderbird 26 (removed widgetglue.js)
 		AG: To DO: restore selected category on startup
 	
 
@@ -1031,7 +1032,7 @@ var QuickFolders = {
 					let aFolder;
 					if (QuickFolders.Util.Application=='Postbox') {
 						currentURI = GetSelectedFolderURI();
-						aFolder = GetMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}
 					else {
 						if (gFolderDisplay.displayedFolder)
@@ -1052,7 +1053,7 @@ var QuickFolders = {
 					step='2. find new sub folder';
 					QuickFolders.Util.logDebugOptional("dragToNew", step);
 					if (QuickFolders.Util.Application=='Postbox') {
-						newFolder = GetMsgFolderFromUri(aFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
+						newFolder = QuickFolders.Model.getMsgFolderFromUri(aFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
 						
 					}
 					else {

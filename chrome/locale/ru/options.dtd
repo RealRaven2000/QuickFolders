@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
 <!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
+<!ENTITY qf.checkbox.showNewMailItalics "Текст закладок для папок с новоприбывшими сообщениями - курсивом">
 <!ENTITY qf.checkbox.enableTransitions "Разрешить CSS трансформации">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Плавные переходы между цветами закладок.">
 <!ENTITY qf.checkbox.highlightNewMail "Подсвечивать папки с новыми сообщениями">
+<!ENTITY qf.toolbarMinimumHeight "Минимальная высота:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Для Mac систем страдающих от [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
 <!ENTITY qf.label.pixels "пикселов">
 <!ENTITY qf.label.appearance "Внешний вид">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">
 <!ENTITY qf.button.defaultcolors "Стандартные цвета">
 <!ENTITY qf.checkbox.debug "Режим отладки">
-<!ENTITY qf.label.StandardTabColor "Стандартный цвет закладки:">
+<!ENTITY qf.label.UncoloredTab "Бесцветные закладки">
+<!ENTITY qf.label.UncoloredTab.tooltip "Вид (неактивных) закладок без предопределенного цвета">
+<!ENTITY qf.label.ColoredTabPalette "Палитра цветных закладок:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Палитра закладок с предопределенным цветом">
 <!ENTITY qf.checkbox.usePalette "Показ палитры">
 <!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс по умолчанию)">
 <!ENTITY qf.label.folders "Папки?">

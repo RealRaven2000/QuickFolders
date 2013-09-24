@@ -34,14 +34,16 @@
 				<toolbarbutton id="quickFoldersPreviousUnread"
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goPreviousFolder;"
+								 class="icon"
 					             onclick="QuickFolders.Interface.onGoPreviousMsg(this);" />
 				<toolbarbutton id="quickFoldersNavToggle" 
 					             special="qfMsgFolderNavigation" 
-					             tooltiptext="toggle unread / all"
+					             tooltiptext="&qf.tooltip.quickFoldersNavToggle;"
 					             onclick="QuickFolders.Interface.onToggleNavigation(this);" />
 				<toolbarbutton id="quickFoldersNextUnread"
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goNextFolder;"
+								 class="icon"
 					             onclick="QuickFolders.Interface.onGoNextMsg(this);" />
 				<toolbarbutton id="QuickFolders-CurrentThread"
 					             special="qfMsgFolderNavigation" 
@@ -79,7 +81,7 @@
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.filterStart;"
-					             oncommand="QuickFolders.Interface.toggleFilterMode(!QuickFolders.FilterWorker.FilterMode);" />
+					             oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);" />
 				<toolbarbutton id="QuickFolders-Options"
 					             class="icon"
 					             tooltiptext="&qf.menuitem.quickfolders.options;"

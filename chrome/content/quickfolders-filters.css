@@ -14,7 +14,7 @@ menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon {
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive {
-	background-color: transparent;
+	background-color: transparent !important;
 	padding: 0px 2px;
 	margin: 0;
 	min-height: 20px;

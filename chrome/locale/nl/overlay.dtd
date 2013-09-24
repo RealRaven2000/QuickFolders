@@ -1,8 +1,8 @@
 <!ENTITY qf.toolbar.quickfolders.toolbar "QuickFolders-werkbalk">
 <!ENTITY qf.label.quickfolders "QuickFolders:">
 <!ENTITY qf.label.dragFolderLabel "Sleep mappen hierheen om een tabblad te maken. Klik op het tabblad om naar de map te gaan, sleep berichten om ze te verplaatsen/kopiëren.">
-<!ENTITY qf.menuitem.quickfolders.find "Zoek Folder...">
-<!ENTITY qf.menuitem.quickfolders.findAccess "i">
+<!ENTITY qf.menuitem.quickfolders.find "Map zoeken…">
+<!ENTITY qf.menuitem.quickfolders.findAccess "z">
 <!ENTITY qf.menuitem.quickfolders.options "QuickFolders-opties…">
 <!ENTITY qf.menuitem.quickfolders.optionsAccess "O">
 <!ENTITY qf.menuitem.quickfolders.togglePaintMode "Verfmodus">
@@ -19,10 +19,10 @@
 <!ENTITY qf.menuitem.quickfolders.repairTabsAccess "V">
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabs "Verweesde tabbladen zoeken">
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabsAccess "T">
-<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Hulpmiddelen voor huidige folder weergeven">
+<!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Hulpmiddelen voor huidige map weergeven">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbarAccessKey "D">
 <!ENTITY qf.tooltip.RecentFolders "Recente mappen">
-<!ENTITY qf.tooltip.folderUp "Naar bovenliggende folder">
+<!ENTITY qf.tooltip.folderUp "Naar bovenliggende map">
 <!ENTITY qf.tooltip.goNextFolder "Naar het volgende [ongelezen] bericht">
 <!ENTITY qf.tooltip.quickFoldersNavToggle "navigeren door alleen ongelezen / alle berichten wisselen">
 <!ENTITY qf.tooltip.goPreviousFolder "Naar het vorige [ongelezen] bericht">

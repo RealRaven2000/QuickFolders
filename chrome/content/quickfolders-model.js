@@ -441,7 +441,7 @@ QuickFolders.Model = {
 		
 		// default to no palette
 		let s1 = setPaletteType('InactiveTab', wasInactivePalette);
-		let s2 = setPaletteType('ColoredTab', wasInactivePalette);
+		let s2 = setPaletteType('ColoredTab', true); // this must use palette always, by definition!
 		// default to "like Inactive Tab"
 		let s3 = setPaletteType('ActiveTab', wasActivePalette);
 		let s4 = setPaletteType('HoveredTab', wasHoveredPalette);

@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estes são exibidos separados por um '+' ao lado de suas contagens principais; mensagens não lidas farão também com que a aba fique em negrito se a opção acima for ativada">
 <!ENTITY qf.checkbox.showMessageNavigation "Botões de navegação em mensagens">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Exibir os botões de pastas com mensagens com texto em itálico">
+<!ENTITY qf.checkbox.showNewMailItalics "Exibir em itálico abas com novos emails recebidos">
 <!ENTITY qf.checkbox.enableTransitions "Habilitar transições CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Exibir transições suaves entre diversos aspectos de cores de abas.">
 <!ENTITY qf.checkbox.highlightNewMail "Destacar pastas com novas mensagens">
+<!ENTITY qf.toolbarMinimumHeight "Altura mínima:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Para sistemas Mac que encontrarem o [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Tamanho do fonte do botão (deixar vazio para usar o padrão):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Aparência">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções... Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
 <!ENTITY qf.button.defaultcolors "Cores padrão">
 <!ENTITY qf.checkbox.debug "Modo Debug">
-<!ENTITY qf.label.StandardTabColor "Cor padrão de abas:">
+<!ENTITY qf.label.UncoloredTab "Aba não colorida">
+<!ENTITY qf.label.UncoloredTab.tooltip "Visual de abas (inativas) sem uma cor selecionada específica">
+<!ENTITY qf.label.ColoredTabPalette "Paleta para abas coloridas:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Paleta para abas com um cor específica">
 <!ENTITY qf.checkbox.usePalette "Usar palheta">
 <!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
 <!ENTITY qf.label.folders "Pastas?">
@@ -123,3 +129,7 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Esvaziar lixeira">
 <!ENTITY qf.checkbox.menus.emptyTrash "Esvaziar lixeira">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastar para nova subpasta">
+<!ENTITY qf.palette.twoColors "2 cores">
+<!ENTITY qf.palette.standard "Paleta padrão">
+<!ENTITY qf.palette.pastel "Cores pastéis">
+<!ENTITY qf.palette.inactive "Como abas inativas">

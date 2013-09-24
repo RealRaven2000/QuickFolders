@@ -1,0 +1,454 @@
+/*===============
+  Project History
+  ===============
+  
+  (old history, pre 3.0; for newer history, please the read comment block in quickfolders.js!)
+
+  Personnel:
+  AM - Alexander Malfait (Creator of QuickFolders)
+  AG - Lead Developer and owner of the Mozdev project
+  CW - Christopher White (Mac User and Theme Engine developer)
+
+  05/09/2008
+	AG added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
+	   made sorting with mouse more persistant (it sometimes jumped back!)
+
+  07/07/2008
+	AG added visual indication for drop position (like FX tabs)
+
+  10/09/2008
+	AG added Quick Help tab (options.xul, options.js)
+	   removed 'toolbar' style from option window to support tabbed interface
+
+  05/10/2008
+	AG loading version number dynamically in options dialog
+
+  19/11/2008 - Release 0.9.3
+	AG fixed bug with drifting popup menus
+	   fixed same popup not reappearing if first drag not completed
+
+  24/11/2008
+	AG rename bug fixed (this used to show original folder name not quickfolder name)
+
+  04/01/2009 - Release 0.9.4
+	AM added folder category feature
+	   split sources into more manageable portions
+
+  09/01/2009 - Release 0.9.5
+	AG added "Always show" category and moved "(All)" to the top
+	   set category dialog: added [Add] button and made [Ok] button work differently
+	   re-added addon icon to install.rdf
+
+  14/01/2009
+	AG Split main options dialog into 3 tabs and added Layout tab
+	   Added Color Picker to Layout tab (WIP)
+	   Added Color Picker to Categories dialog (WIP)
+	   Added accelerator keys to popup menus
+	   Layout Improvements in style sheet (saves space)
+	   Tidied up Project History
+
+  17/01/2009 0.9.7
+	AG added locale support with help of goofy's sent code
+	   coloring of active, hovered tab and tabbar background
+	   German locale
+
+  19/01/2009 0.9.8
+	AG storing of colors
+	   rounded tabs (flat style)!
+	   updated screenshots on the site and added German translations
+	Alex added Dutch locale
+
+  28/01/2009 0.9.9
+	AG Improved layout of flat style - tested under Crystal, default and outlook themes.
+	   added "show icons" option which displays special icons for Inbox, Sent, Trash and current folder
+	   tried "3d" look on flat-style tabs but removed it again
+	   fixed an issue with height of category dropdown
+	   removed (test) color picker from category dialog
+	   added menu highlighting on drag mail to popup
+
+   07/02/2009 0.9.9.1
+	 AG force display of OK / Cancel button for applying color options
+		improved detection of URIs for special icons
+
+   08/02/2009
+	 AG update count if total count is displayed
+
+   12/02/2009 0.9.9.2
+	 AG added menu icons
+		added gradient display for menu items
+
+   15/02/2009
+	 AG+Alex added error handlers for isCorrectWindow and initDelayed functions
+
+   17/02/2009
+	 AG added number of unread messages to popup menu (jump to menu, not drag menu)
+
+   18/02/2009
+	 AG do not force switching to All Folders view if not necessary
+		added debug mode switch to options
+		tidied options layout
+
+   26/02/2009
+	 AG added configurable init Delay and better error logging
+
+   04/03/2009
+	 AG added more focused stylesheet logging
+		added an option for changing color of inactive tabs
+
+   05/03/2009
+	 AG do not display folders of category "ALWAYS" when "Uncategorized" is selected.
+		for consistency, categories drop down now shows the translated string for "uncategorized"
+
+   08/03/2009  0.9.9.7
+	 AG  made compatible with TB 3.0 beta 2
+   20/03/2009  0.9.10
+	 AG renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox
+
+   30/03/2009
+	 AG added option to use CTRL instead of ALT for keyboard shortcuts
+		suppress event bubbling (for better Lightning compatibility)
+		added button for copying folder string to clipboard
+
+   17/04/2009  0.9.12
+	 AM Fixed some problems with keyboard handler
+	 AM added italian locale (provided by Leopoldo Saggin)
+
+   19/04/2008
+	 AG removed constant debug output of keyboard handler (now only visible in debug mode and when relevant)
+		increased width of options window to avoid truncation of italian quickhelp texts
+		added language resources for debug items
+		added icon for folder to clipboard
+
+   11/05/2009
+	 AG added multiple line support
+		added option for focusing message pane after changing category & selecting a tab (to be improved)
+
+   12/05/2009
+	 AM added Delete and Rename Category features.
+
+   13/05/2009 Release 1.0.1
+	 AG fixed focus problem after changing of categories
+		fixed remembered categories not being selected on startup
+
+   15/05/2009  Release 1.0.2 (permanently sandboxed)
+	 AG fixed problem on startup when short delay - GetMsgFolderFromUri did not work!!
+		Rejected by AMO - not able to add new Category
+
+   26/05/2009 Release 1.0.3
+	 AG Fixed previous problem by AMO
+		added l10n for copy folders to clipboard message
+		added colored panels to category screen
+
+   02/06/2009
+	 AG added individual Tab Color feature (experimental, does not save yet!)
+		added feedback link (mail to me) to options dialog
+		made options dialog resizable
+
+   24/06/2009
+	 AG fixed renaming bug for numbered folders
+		automatically switch to folder when trying to add it and it already exists.
+		Store Tab Colors!
+
+   02/07/2009 Release 1.1
+	 AG fixed renaming bug for total/unread folders
+
+   28/07/2009 Release 1.2
+	 AG added: Categories are sorted alphabetically
+			   Compatibility for Tb3.0b3
+		fixed: Quickfolders label floats to right when switched on via options dialog
+			   warning "QuickFolders is not defined" in quickfolders.js
+
+   26/08/2009:
+	 AG fixed: in Tb3 the folder tree view would not scroll
+		added: whole tab coloring
+
+   12/09/2009  Release 1.3 (Test Release)
+	 AG added subfolders in popup menus - configurable
+			   whole / striped tab option and backgrounds
+	 fixed slowdown of operations that change the number of Total / Unread emails because QF was updated every time
+			this is now done asynchroneously with a 1000ms timer.
+
+	23/09/2009 Release 1.4
+	  AG added scrollbars and animation to "change order of bookmarks" dialog
+		 added subfolder expansion
+		 added Postbox support
+	open items tweaks in whole tab coloring (active, hover consistency)
+  known issues	sometimes the colors do not show up on program startup. Any folder modification (e.g. unread/read) or Category selection will make the color appear
+				popup menus might close delayed
+				change the order of bookmarks has the wrong height (should be 80% of its parent)
+				chevrons for moving Tabs don't show up in TB3 (beta bug?)
+  --------------1.4  Postbox specific
+  known issues color submenu still has no colors
+			   some minor CSS errors
+
+
+	23/09/2009 Release 1.5b
+	  AG bumped compatibility to 3.0.4b
+		 fixed 2 security issues releated to setTimeout
+
+
+	21/10/2009 Release 1.6 23/10/2009
+	  AG added locales for Japan (Masahiko Imanaka), Portuguese (Marcelo Ghelman), Russian (Anton Pinsky)
+		 fixed TB not displaying the colors on start up
+		 fixed in Postbox - the color sub menu now displays colors
+	  improved error handling in Drag-Drop (WIP for some Linux users)
+
+	09/11/2009 Release 1.6.3
+	  AG fixed [Bug 21919] removed popup remove code for linux users as it crashed Thunderbird (not confirmed for TB 3)
+
+	09/11/2009 Release 1.6.4
+	  AG fixed [Bug 21960] icon for inbox not visible in postbox
+	  AG fixed disabled dropping emails to virtual (search) folders
+
+	15/12/2009 Release 1.7
+	  AG fixed drag & drop layout issues for the new versions of TB3, SeaMonkey and Postbox 1.1
+	  AG [Bug 22121] fixed?
+	  AG fixed bug 22067 (TB3 did not display colors in tab colors submenu)
+
+	31/12/2009 Release 1.7.1
+	  AG added mail tab support for TB3, SeaMonkey and Postbox. Changing tabs will also affect current QF selection (and Categories)
+	  AG added separate debug options for mailTabs, folders, CSS, Drag and Drop, popup menus and (folder) events
+
+	05/01/2010 Release 1.7.2
+	  AG added: right click the debug option to be able to toggle all separate debug options easily
+
+	07/01/2010 Release 1.8 [pre3]
+	  AG added Smart Folders Support (TB3 only)
+	  AG added Newsgroup Folders Support (TB3, SM, Pb) - not supported in TB2
+
+	13/01/2010 Release 1.8.2
+	  AG added toggling Smart Folders / All Folders views where necessary
+
+	18/01/2010 Release 1.8.3
+	  AG more selection improvements for virtual folders (such as search / smart folders)
+	  AG added special icons for Junk, Drafts, Outbox and Templates
+	  AG added code to fix changed Application Name (Mozilla-Thunderbird) which makes branching code fail in Linux.
+
+	30/01/2010 Release 1.8.5
+	  AG fixed: [Bug 22295] (selecting a QuickFolder closes single Message Tab) => now opens a folder view tab
+	  AG fixed: [Bug 22144] - Highlighting not updated when switching Tabs in TB3 - now also selects Category if necessary!
+	  AG fixed: [Bug 22316] - added Transparency options for toolbar (Personas friendly) and tabs (translucently colored, use white for almost complete transparency)
+	  AG fixed: Broken Dutch locale leading to crashes for the users of this language
+	  AG improved: toggling between flat style and native style tabs
+	  AG improved: following external support links in TB3 (done) and SeaMonkey (WIP)
+	  AG Added: Help menu item for popup menu
+	  AG Improved: tried to resolve as many name space conflicts as possible by using QF_ prefix for global objects
+	  AG added: Shadows option
+	  AG added: ca-AD locale (Catalan) by Jordi Benaiges; Improvements to Russian, Italian and Dutch locales.
+	  AG: bundled all locales into locales.jar
+
+	30/01/2010 Release 1.8.5.1
+	  AG: enabled switching to folder view when in Task view
+
+	30/01/2010 Release 1.8.5.2
+	  AG: removed unneccessary use of let - fixes crash issues for Thunderbird 2
+	  AG: validation - removed 'insecure' usage of SetTimeout
+	  AG: new Support option in Menu
+	  AG: fixed missing option in french locale which would have caused a crash
+	  AG: Removed attempting to apply shadow & alpha blending to TB2 version.
+
+	06/02/2010 Release 1.8.5.3
+	  AG: swapped Support / Help Menu as they were the wrong way round
+	  AG: added new support menu item to Postbox and SeaMonkey overlay
+
+	22/02/2010 1.8.7
+	  AG: added tooltiptext with full folder name + server
+	  AG: Fixed some layout issues in Options screen (linux case sensitivity, vertical spacing)
+	  AG: added localization for Add-Ons description
+	  AG: added hidden option for not changing the folder tree view (extensions.quickfolders.disableFolderSwitching)
+	  AG: further reduced namespace pollution
+	  AG: moved all picture resources to skin folder and packaged into a jar file to conserve resources (1 file handle instead of 81)
+
+	08/03/2010 1.8.8
+	  AG: fixed missing Icons in options and reorder tabs dialogs.
+	  AG: Added locale zh-CN by Loviny
+	  AG: Added - CTRL+Click tab shortcut opens a new mail tab.
+
+
+	12/05/2010 - 1.9.1
+	  AG: Fixed [Bug 22585] - (1.8.9) Smart Folders view erratically switched to standard folder if clicked folder is in a collapsed tree branch
+	  AG: Fixed [Bug 21054] - (1.8.9) Enabled scrolling long menus while dragging by using code from Robert Gibson's "Scroll Menus On Drag" extension https://addons.mozilla.org/en-US/firefox/addon/1411
+	  AG: Fixed [Bug 21317] - force alphabetical sorting of subfolder menus. Note: Does only work with some Umlauts / Diacritics.
+	  AG: Added code from Pavel for displaying subfolder counts
+	  AG: Added code for customizing the "QuickFolders" label (Pavel)
+	  AG: Fixed [Bug 22695] - now folders can be moved within the folder tree without QuickFolders losing track of them
+	  AG: Added option for alphabetically sorting subfolders in menus
+	  AG: Added firstrun functionality
+	  AG: Added locale sr by DakSrbija
+	  AG: various tooltips in options dialog
+	  AG: tightened up namespace pollution issues
+	  AG: Added version history jump to options dialog (right-click from version number)
+
+	11/07/2010 - 1.9.3
+	  AG: fixed [Bug 22901] - Position of subfolder within submenu should be always on top, even with alphabetical sorting enabled.
+	  AG: simplified dragging & selection of parent folder nodes in expanded sub folders.
+
+	06/08/2010 - 1.9.5
+	  AG: improved spacing around Category Dropdown
+	  AG: Refactored code from main module into Interface.collapseParentMenus
+	  AG: [Bug 22902] Added ensureStyleSheetLoaded method for testing
+	  AG: Renamed style sheet files and title to avoid referencing clashes
+	  AG: Fixed [Bug 23091] this caused parent subfolder to be opened instead of subfolder (if not visible in folder tree)
+	  AG: Added deep scanning of folder counts and display for all sub menu items. menus with unread nested subfolders also bold.
+	  AG: Fixed missing translation in french options screen
+	  AG: Fixed [Bug 23078] the (black) font on the filled style pimped tabs was unreadeable. Font color hardcoded to white for dark backgrounds
+	      - this overrides the user set font color, by design.
+
+	14/08/2010 - 1.9.5.3
+	  AG: Fixed [Bug 23118] Version 1.9.5 missing Tabs in TB2 (due to using an undefined trim function)
+
+	16/08/2010 - 1.9.7
+	  AG: Fixed [Bug 23121] Using Japanese characters in tab, "moji-bake" Problem after restart
+	  AG: Fixed [Bug 23129] popup menu points with subfolders ignored click (since 1.9.3)
+	  AG: Fixed [Bug 23077] Active/Hovered/Drag colors do not override filled style
+
+	19/08/2010 - 1.9.7.1
+	  AG: Fixed [Bug 23147] Dragging emails does not open subfolder popups
+
+
+	20/08/2010 - 1.9.7.3
+	  AG: Fixed [Bug 23091] TB only - caused parent subfolder to be opened instead of subfolder!
+
+==  2.0  ======
+	19/09/2010 - 2.0
+	  AG: Added drag and drop from folder submenu to add new QF tab
+	  AG: New Right-click Tab context menu layout, added folder commands (Mark read, compact, rename, delete, xpunge)
+	  AG: Added: Create new folder on drag feature! POP only (as it can crash IMAP accounts), not a feature in TB2.
+	  AG: Fixed [Bug 23209] CTRL+Number Shortcut opens new content tabs
+	  AG: Fixed [Bug 21317] During drag & drop, the top item in subfolders list is not sorted alphabetically
+	  AG: Fixed CTRL+Shift+Number did not move selected messages
+	  AG: Compatible with Postbox 2.0.b3
+	  AG: Fixed a bug that made reordering quicktabs to the right of their current position fail sometimes
+	  AG: TB2 - Fixed - hidden shadows option and made icons option visible again
+
+	12/10/2010 - 2.1
+	  AG: Fixed a problem when dragging to New Folder from find result list (error message: no source folder)
+	  AG: Added Recent Folders Tab
+	  AG: Added locale sv-SE by Mikael Hiort af Ornaes
+	  AG: Fixed Positioning of Folder Menus
+
+	10/12/2010 - 2.2
+	  AG: Made compatible with Postbox 2.2
+	  AG: Fixed [Bug 23500] Tabs begin counting at "2" when using Recent Folders tab
+
+	27/12/2010 - 2.3
+	  AG: improvement in handling MRUTime - this will be now also updated if an email is moved that is already read.
+	  AG: (Postbox) Fixed [Bug 23542] which caused Move (& Copy) Messages to fail in Postbox version > 2.0
+	  AG: (Postbox) Fixed display of Version history after upgrade
+
+	31/01/2010 - 2.4
+	  AG: Improved Performance during lengthy mail downloads by not _completely_ rebuilding the visible tabs
+		  (now only updating labels and popupmenus of the existing tabs so that counts & "unread style" are up to date
+	  AG: added new context menu item for rebuilding the tabs
+	  AG: added new context menu item for removing orphaned tabs
+	  AG: added "repair folder" command (mail folder menu)
+
+	2.5  24/05/2011
+	  AG: Added Hotkey for folders rebuild CTRL+SHIFT+(Configurable)
+	  AG: Category Dropdown now saves space by using menulist attribute sizetopopup=none
+	  AG: Added settings dropdown button on main toolbar
+	  AG: Added Current Folder Toolbar (single message view)
+	  AG: Added option for disabling recent folders dropdown
+	  AG: Added icons to options tabs
+	  AG: Added new folder command: "delete junk in current folder"
+	Bugfixes
+	  AG: moved getVersion to Utilities
+	  AG: Replaced deprecated popupNode with triggerNode and workaround code for modern Gecko Versions
+	  AG: Fixed issues with font colors on dark colored Tabs
+
+	2.6 - 06/06/2011
+	  AG: Bugfix - hide Current Folder toolbar in message fullscreen mode
+	  AG: Bugfix - Category dropdown was invisible in Thunderbird 2.0
+	  AG: added option extensions.quickfolders.showToolIcon for hiding tools menu icon
+	  AG: Bugfix - on SeaMonkey 2.1 adding folders to the QuickFolders toolbar from the folderpane did not work anymore
+	  AG: Coloring improvement for unstyled Tabs
+	  AG: Added more options for Recent Folder menu (right-click in Options window)
+	  AG: Fixed "Purge Junk" command in Current Folder Toolbar
+	  AG: Fixed - SeaMonkey did not open Version History in internal browser.
+
+	2.7 - 18/06/2011
+	  AG + CW: Added pastel style
+	  AG: Added custom radius
+	  AG: First Run tidy ups:replace "QuickFolders.ActiveTab.Style.background-color" with "extensions.quickfolders.style.ActiveTab.background-color" etc.
+      CW: Added Mac Style (CWA-Design + Testing, AG QF integration)
+	  AG: Added Next / Previous unread Mail buttons
+	  AG: Added checkbox for hiding qf toolbar menu icon (cogwheel)
+	  AG: Added dropdown for theming and theming dependant customization
+	  AG: Split Native Style into Tabs and Buttons, implemented Selected on Tabs look
+	  AG: Options dialog now remembers last panel selected
+	  AG: Fixed [Bug 23930] Recent Folders Tab Dropdown stops working after a Message Dropped into it
+	  AG: Fixed "expunged n bytes" message for Empty Trash, Empty Junk and Compact Folder
+	  AG: It is now possible to add the Current Folder button to the QuickFolder tab (like a drag from the folder tree)
+	  AG: Improved behavior when adding an existing QuickFolder (selects category correctly, even if not categorized or display always is selected)
+	  AG: Renamed toxic preferences
+	Known issues
+	  - the label for goto next / Previous unread Mail is currently not localized (last minute feature!)
+	  - when multiple messages are selected the Current Folder toolbar is not visible (this works in Postbox though, so multiple messages can be dragged)
+
+	2.7.1 - 07/07/2011
+	  AG: Fixed [Bug 24143] - (Linux) Folder tabs disappear and ALT+N shortcuts disabled on upgrade to 2.7 - renamed Current Folder XUL files.
+	  AG: Added hidden option (about.config) to hide QF toolbar when it is not needed (e.g. Calendar view) extensions.quickfolders.toolbar.onlyShowInMailWindows
+	  AG: Fixed Postbox bug - could not drag new folders to toolbar (Error: msgFolder.QueryInterface is not a function)
+	  AG: Fixed a bug that caused folders to disappear on TB2 on Mac Systems (related to new Current Folder Bar)
+	  AG: Right dropmarker did not display correctly when reordering tabs
+	  AG: Fixed Bug [24188] - font color in flat style tabs is ignored (tabs without individual color settings)
+
+	2.7.2 - Bugfixes - 11/08/2011
+	  AG: Fixed [Bug 24223] - In Postbox, after displaying the calender. the message pane could not be displayed by clicking on the messages tab
+	  AG: Added checkbox for option to hide QF toolbar when not needed
+	  AG: avoid TB logging unnecessary errors in Stack Trace during unnecessary FolderLoaded events [Bug 24176]
+
+	2.8 - Bugfixes - 31/08/2011
+	  AG: Bumped Compatibility to work with Tb 6.*
+	  AG: Moved Current Folder Bar position in Thunderbird for compatibility with Conversation View and to support multiple messages
+	  AG: Fixed versioning issues introduced by AddonManager changes in the new Mozilla versions.
+	  AG: Fixed [Bug 24361] QuickFolders 2.7.2 incompatible with Thunderbird 6.0.1
+	  AG: Fixed [Bug 24365] QF folders disappear after viewing email
+
+	2.9 - 23/09/2011
+	  AG: [Bug 24389] Stability fixes on version updates - firstRun check is now only run _after_ extension version number was retrieved from AddonManager
+	  AG: Removed popup "successfully upgraded to version..." and replaced with a modeless notification panel
+	  AG: added "use strict" for better namespace pollution control
+	  AG: added hidden option to suppress version history on update
+
+	2.9.1 - 01/10/2011 Emergency bugfix for older versions of Thunderbird (2.* and 3.*)
+	  AG: [Bug 24451] On older versions of Thunderbird (pre 4.2) the Tabs are not displayed as QuickFolders can not be loaded completely.
+
+	2.9.3 - 16/10/2011
+	  AG: Fixed - Go to Parent Folder was not working
+	  AG: Improved - Tab text color to white / black on applePill layout selected folder
+	  AG: Improved Font coloring for native tabs, apple pills and flat style; made background color for apple pills configurable, for use also with dark themes
+	  AG: Fixed striped pastel style
+	  AG: Improved theme integration of Current Folder Bar by making background transparent
+	  AG: Improved collapsing behavior of "Pimp My Tabs" page
+	  AG: added some transition effects
+	  AG: New Feature - [Bug 24435] On clicking a QF tab, activate corresponding mail Tab (Thunderbird + SeaMonkey only)
+	  AG: Fixed bug in SeaMonkey that changed current folder URI when new mail Tab was opened by CTRL+Click on QF Tab
+
+	2.9.4 - 30/11/2011
+	  AG: Pushed Postbox Compatibility to 3.0
+	  AG: Make is possible to use multiple categories per tab
+	  AG: height fixes in Apple Pills style
+
+	2.10 - 03/01/2012
+	  AG: Added hidden Option for disabling drag to New folder in local accounts [Bug 24617]
+	  AG: Made compatible with Thunderbird 10.0 (new overlay because of structural changes)
+	  AG: Replaced Mostly Crystal Icons with the original ones from Everaldo Crystal Project (version from 2003); Crystal Icons are released under GNU General Public License
+	  AG: Renamed 'bookmark' to 'tab' to make descriptions easier to understand
+	  AG: Tab Categories - Highlight "uncategorized" item if a folder has no category; optimized category retrieval by caching cat array.
+	  AG: Tab Categories - added logic to unselect other items if show ALWAYS or UNCATEGORIZED are selected
+	  AG: Tab Categories - fixed Category Remove / Rename which was broken due to introduciton of "use strict"
+
+	2.11 - 09/01/2012
+	  AG: Tab Categories: added tab title to dialog
+	  AG: Some improvements for showing correct folder size results after compact / empty trash etc.
+	  AG: Inbox Folders => added "Get Mail" menu item
+	  AG: fixed review issues from 2.10 with winstripe / qute theme on windows 7 causing all menu items to be shifted left.
+
+	2.12 - 13/01/2012
+	  AG: Fixed a bug that caused the current Folder toolbar to be missing on Thunderbird3 - Thunderbird7 
+
+	2.13 - 17/01/2012
+	  AG: Fixed: in some cases, rename categories or delete categories can fail. 
+
+*/

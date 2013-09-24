@@ -8,6 +8,7 @@
 <overlay id="QuickFolders-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-tablistener.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-listener.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
@@ -18,7 +19,6 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
-	<!--	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />	-->
 
 	<!-- Thunderbird & SeaMonkey -->
 	<toolbarpalette id="MailToolbarPalette">
@@ -64,7 +64,7 @@
 					             onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
 				<toolbarbutton id="QuickFolders-filterActive"
 				               tooltiptext="&qf.tooltip.filters;"
-				               oncommand="QuickFolders.Interface.toggleFilterMode(false);"
+				               oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
 				               collapsed="true"/>
 				<toolbarbutton id="QuickFolders-paintBucketActive"
 				               tooltiptext="&qf.tooltip.paintCanActive;"
@@ -113,7 +113,7 @@
 				<menuitem id="QuickFolders-ToolbarPopup-filterMode"
 				          label="&qf.menuitem.quickfolders.filters;"
 				          accesskey="&qf.menuitem.quickfolders.filtersAccess;"
-				          oncommand="QuickFolders.Interface.toggleFilterMode(!QuickFolders.FilterWorker.FilterMode);"
+				          oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);"
 				          class="cmd menuitem-iconic"
 				          tagName="qfFilter"
 				          />

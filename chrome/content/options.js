@@ -387,8 +387,8 @@ QuickFolders.Options = {
 		  case 'dark':
 				backgroundCombo.selectedIndex = this.BGCHOICE.dark;
 				setting.value = (QuickFolders.Util.isCSSGradients)
-				                ? 'linear-gradient(to top, #0A0809 0%, #0A0E0A 52%, #6E7774 73%, #AEBCBF 100%)'
-												: '-moz-linear-gradient(bottom, #0A0809 0%, #0A0E0A 52%, #6E7774 73%, #AEBCBF 100%)'
+				                ? 'linear-gradient(rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
+												: '-moz-linear-gradient(bottom, rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
 				break;
 			case 'translucent':
 				backgroundCombo.selectedIndex = this.BGCHOICE.translucent;

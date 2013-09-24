@@ -316,9 +316,9 @@ QuickFolders.FilterList = {
 			this.updateCountBox();
 			// we need to overwrite the existing functions in order to support the "filtered" state
 			var reorderUpButton = document.getElementById("reorderUpButton");
-			reorderUpButton.setAttribute("oncommand", "QuickFolders.FilterList.onUp(event);");
+			QuickFolders.Interface.setEventAttribute(reorderUpButton, "oncommand", "QuickFolders.FilterList.onUp(event);");
 			var reorderDownButton = document.getElementById("reorderDownButton");
-			reorderDownButton.setAttribute("oncommand", "QuickFolders.FilterList.onDown(event);");
+			QuickFolders.Interface.setEventAttribute(reorderDownButton, "oncommand", "QuickFolders.FilterList.onDown(event);");
 			
 			var runFiltersButton =  document.getElementById("runFiltersButton");
 			// find the log button (first button in hbox) and move it down

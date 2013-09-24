@@ -490,18 +490,21 @@ QuickFolders.Util = {
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					var i;
-					for (i=0;i<tabmail.tabInfo.length;i++) {
-						if (tabmail.tabInfo[i].mode.name=='folder') { // SM:	tabmail.tabInfo[i].getAttribute("type")=='folder'
-						QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + tabmail.tabInfo[i].title);
-						tabmail.switchToTab(i);
-						found=true;
-						break;
+					let tabInfoCount = QuickFolders.Util.getTabInfoLength(tabmail);
+					for (i = 0; i < tabInfoCount; i++) {
+					  let info = QuickFolders.Util.getTabInfoByIndex(i);
+						if (info && info.mode.name==QuickFolders.Util.mailFolderTypeName) { // SM:	tabmail.tabInfo[i].getAttribute("type")=='folder'
+							QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
+							tabmail.switchToTab(i);
+							found=true;
+							break;
 						}
 					}
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
-					for (i=0;(!found) && i<tabmail.tabInfo.length;i++) {
-						if ( tabmail.tabInfo[i].mode.name!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
-							QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + tabmail.tabInfo[i].title);
+					for (i=0;(!found) && i < tabInfoCount; i++) {
+					  let info = QuickFolders.Util.getTabInfoByIndex(i);
+						if (info && QuickFolders.Util.getTabModeName(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+							QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
 							tabmail.switchToTab(i);
 						break;
 						}
@@ -686,6 +689,29 @@ QuickFolders.Util = {
 		return null;
 	} ,
 
+	getTabInfoLength: function(tabmail) {
+		if (tabmail.tabInfo)
+		  return tabmail.tabInfo.length
+	  if (tabmail.tabOwners)
+		  return tabmail.tabOwners.length;
+		return null;
+	} ,
+	
+	getTabInfoByIndex: function(tabmail, idx) {
+		if (tabmail.tabInfo)
+			return tabmail.tabInfo[idx];
+		if (tabmail.tabOwners)
+		  return tabmail.tabOwners[idx];
+	} ,
+	
+	getTabModeName: function(tab) {
+	  if (tab.mode)   // Tb / Sm
+			return tab.mode.name;
+		if (tab.type)  // Pb
+		  return tab.type;
+		return "";
+	},
+	
 	get CurrentFolder() {
 		var aFolder;
 

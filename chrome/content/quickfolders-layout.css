@@ -246,6 +246,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 #QuickFolders-CurrentFolderTools toolbarbutton {
 	-moz-box-align: center;
 	-moz-box-pack: center;
+	padding: 2px;/* avoid stretching/compressing of some themes */
 	border: none;
 	min-height: 22px;
 }
@@ -255,6 +256,12 @@ toolbar#QuickFolders-CurrentFolderTools {
 	-moz-appearance: none !important;
 	margin: 0 2px !important;
 }
+
+#QuickFolders-CurrentFolderTools toolbarbutton.icon image {
+  width: 16px;
+  height: 16px;
+}
+
 
 /*********************************
 **           THEMES             **

@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Chúng được hiển thị ngăn cách bởi dấu '+' bên cạnh số đếm chính; thư chưa đọc bên trong sẽ làm cho thẻ được in đậm lên nếu tùy chọn trên được kích hoạt.">
 <!ENTITY qf.checkbox.showMessageNavigation "Nút Điều Hướng Tin Nhắn">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng">
+<!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
 <!ENTITY qf.checkbox.enableTransitions "Cho phép chuyển tiếp CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Hiển thị chuyển tiếp mượt giữa các màu sắc của thẻ.">
 <!ENTITY qf.checkbox.highlightNewMail "Làm nổi bật các thư mục có thư mới">
+<!ENTITY qf.toolbarMinimumHeight "Minimum height:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Cỡ chữ trên nút (để trống là mặc định):">
 <!ENTITY qf.label.pixels "điểm ảnh">
 <!ENTITY qf.label.appearance "Appearance">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn... làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại.">
 <!ENTITY qf.button.defaultcolors "Màu mặc định">
 <!ENTITY qf.checkbox.debug "Chế độ sửa lỗi">
-<!ENTITY qf.label.StandardTabColor "Màu chuẩn của thẻ:">
+<!ENTITY qf.label.UncoloredTab "Uncolored Tab">
+<!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
+<!ENTITY qf.label.ColoredTabPalette "Palette for Colored Tabs:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette for tabs with a specific color">
 <!ENTITY qf.checkbox.usePalette "Dùng bảng màu">
 <!ENTITY qf.label.initdelay "[mili giây] thời gian trễ ban đầu {1000 là chuẩn}:">
 <!ENTITY qf.label.folders "Thư mục?">
@@ -123,3 +129,7 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Xóa hết Rác">
 <!ENTITY qf.checkbox.menus.emptyTrash "Xóa hết thư rác">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Kéo vào một thư mục con mới">
+<!ENTITY qf.palette.twoColors "2 Colors">
+<!ENTITY qf.palette.standard "Standard Palette">
+<!ENTITY qf.palette.pastel "Pastel Colors">
+<!ENTITY qf.palette.inactive "Like inactive Tabs">

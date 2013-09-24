@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Diese werden mit einem '+' neben dem jeweiligen Hauptzähler dargestellt; bei in Unterverzeichnissen enthaltenen ungelesenen EMails wird auch fett hervorgehoben falls obige Option aktiviert ist.">
 <!ENTITY qf.checkbox.showMessageNavigation "Schaltflächen zum Navigieren der EMails">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabs die Emails enthalten kursiv darstellen">
+<!ENTITY qf.checkbox.showNewMailItalics "Tabs mit neu eingetroffenen Emails kursiv darstellen">
 <!ENTITY qf.checkbox.enableTransitions "CSS Transitionen zeigen">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "überblendet die verschiedenen Farben vom Layout allmählich.">
 <!ENTITY qf.checkbox.highlightNewMail "Verzeichnisse mit neuer Post hervorheben">
+<!ENTITY qf.toolbarMinimumHeight "Minimalhöhe:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Für Mac System die von [Bug 25021] betroffen sind">
 <!ENTITY qf.label.buttonFontSize "Schriftgrösse (leer für Standardeinstellung):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.appearance "Aussehen">

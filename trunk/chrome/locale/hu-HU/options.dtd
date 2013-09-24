@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Ezek '+' -al lesznek elválasztva a fő számtól, ha tartalmaz olvasatlan üzenetet, a fül is félkövér lesz, amennyiben a fenti opció aktív">
 <!ENTITY qf.checkbox.showMessageNavigation "Üzenet mozgatás gombok">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Olvasatlan üzeneteket tartalmazó mappák megjelenítése dőlttel">
+<!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
 <!ENTITY qf.checkbox.enableTransitions "CSS átmenetek engedélyezése">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Sima átmeneteket jelenít meg a fülek színezésén.">
 <!ENTITY qf.checkbox.highlightNewMail "Új üzeneteket tartalmazó mappák kiemelése">
+<!ENTITY qf.toolbarMinimumHeight "Minimum height:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Gombok betűnagysága (alapértelmezetthez hagyd üresen)">
 <!ENTITY qf.label.pixels "pixelek">
 <!ENTITY qf.label.appearance "Megjelenés">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">
 <!ENTITY qf.button.defaultcolors "Alapértelmezett színek">
 <!ENTITY qf.checkbox.debug "Debug mód">
-<!ENTITY qf.label.StandardTabColor "Alapvető fülszín:">
+<!ENTITY qf.label.UncoloredTab "Uncolored Tab">
+<!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
+<!ENTITY qf.label.ColoredTabPalette "Palette for Colored Tabs:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette for tabs with a specific color">
 <!ENTITY qf.checkbox.usePalette "Paletta használata">
 <!ENTITY qf.label.initdelay "[ms] kezdési késleltetés (1000 az alapértelmezett):">
 <!ENTITY qf.label.folders "Mappák?">
@@ -123,3 +129,7 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Piszkozatok kiürítése">
 <!ENTITY qf.checkbox.menus.emptyTrash "Törölt elemek kiürítése">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
+<!ENTITY qf.palette.twoColors "2 Colors">
+<!ENTITY qf.palette.standard "Standard Palette">
+<!ENTITY qf.palette.pastel "Pastel Colors">
+<!ENTITY qf.palette.inactive "Like inactive Tabs">

@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estos se muestran separados por un &quot;+&quot; al lado de los totales principales, incluye correo no leído y tendrá la pestaña en negritas si la opción anterior está activada">
 <!ENTITY qf.checkbox.showMessageNavigation "Botones de navegación de mensajes">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostrar los botones con mensajes en la carpeta en cursivas">
+<!ENTITY qf.checkbox.showNewMailItalics "Muestra en itálicas las pestañas con correo recién llegado">
 <!ENTITY qf.checkbox.enableTransitions "Activar transiciones CSS.">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Muestra transiciones suaves entre varios aspectos de coloración de las pestañas.">
 <!ENTITY qf.checkbox.highlightNewMail "Resaltar las carpetas con nuevos mensajes de correo">
+<!ENTITY qf.toolbarMinimumHeight "Altura mínima:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Para equipos MAC que encuentren el [BUG 25021]">
 <!ENTITY qf.label.buttonFontSize "Tamaño del texto del botón (Dejar en blanco para tamaño estándar):">
 <!ENTITY qf.label.pixels "pixeles">
 <!ENTITY qf.label.appearance "Apariencia">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones ... Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">
 <!ENTITY qf.button.defaultcolors "Colores por omisión">
 <!ENTITY qf.checkbox.debug "Modo de depuración">
-<!ENTITY qf.label.StandardTabColor "Color estándar de la carpeta:">
+<!ENTITY qf.label.UncoloredTab "Pestaña sin color">
+<!ENTITY qf.label.UncoloredTab.tooltip "Presentación de pestañas (inactivas) sin un color específicamente seleccionado">
+<!ENTITY qf.label.ColoredTabPalette "Paleta de las pestañas coloreadas:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Paleta para pestañas con un color específico">
 <!ENTITY qf.checkbox.usePalette "Usar la paleta">
 <!ENTITY qf.label.initdelay "[ms] retraso inicial {1000 es el estándar}:">
 <!ENTITY qf.label.folders "¿Carpetas?">

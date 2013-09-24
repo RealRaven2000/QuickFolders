@@ -158,7 +158,7 @@
 		/>
 		
 		<checkbox
-			label="Display tabs with newly arrived mail italic"
+			label="&qf.checkbox.showNewMailItalics;"
 			preference="QuickFolders-Preferences-ShowFoldersWithNewMailItalic"
 			oncommand="QuickFolders.Options.toggleBoolPreference(this);"
 			instantApply="true"
@@ -250,8 +250,8 @@
 			          flex="1"
 			/>
 			<hbox>
-				<label value="Minimum height:"
-					   tooltiptext="For Mac systems who encounter [Bug 25021]"
+				<label value="&qf.toolbarMinimumHeight;"
+					   tooltiptext="&qf.toolbarMinimumHeight.tooltip;"
 					   href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
 					   onclick="QuickFolders.Util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"	
 					   style = "text-decoration:underline;cursor:pointer;"

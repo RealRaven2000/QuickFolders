@@ -2,13 +2,13 @@
 <!ENTITY qf.label.quickfolders "QuickFolders">
 <!ENTITY qf.tab.general "Generali">
 <!ENTITY qf.tab.advanced "Avanzate">
-<!ENTITY qf.tab.layout "Aspetto schede">
+<!ENTITY qf.tab.layout "Luccichio schede!">
 <!ENTITY qf.tab.quickhelp "Guida rapida">
 <!ENTITY qf.checkbox.displaylabel "Visualizza l'etichetta 'QuickFolders' sulla sua barra degli strumenti">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usa le scorciatoie da tastiera (combinazione tasti ALT+1 … ALT+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usa CTRL invece di ALT">
 <!ENTITY qf.checkbox.useRebuildShortcut "Ricostruzione delle schede con la scorciatoia: CTRL + ALT +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Freccia sinistra/ALT-Freccia destra va alla scheda precedente/successiva">
+<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Freccia sinistra/ALT-Freccia destra vanno alla scheda precedente/successiva">
 <!ENTITY qf.checkbox.showshortcutnumber "Visualizza il numero di scorciatoia sulle etichette delle cartelle">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Visualizza il numero di messaggi non letti sul pulsante delle cartelle">
 <!ENTITY qf.checkbox.showUnreadBold "Visualizza in grassetto le schede delle cartelle contenenti messaggi non letti">
@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Questi sono visualizzati separati da un '+' a fianco delle loro conte principali; se questa opzione è attiva, una scheda che contenga al suo interno dei messaggi non letti viene visualizzata in grassetto">
 <!ENTITY qf.checkbox.showMessageNavigation "Pulsanti per la navigazione tra i messaggi">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Visualizza in corsivo le schede delle cartelle contenenti messaggi">
+<!ENTITY qf.checkbox.showNewMailItalics "Visualizza in corsivo le schede contenenti nuovi messaggi">
 <!ENTITY qf.checkbox.enableTransitions "Abilita le transizioni dei CSS">
-<!ENTITY qf.checkbox.enableTransitions.tooltip "Mostra transizioni regolari tra i parecchi aspetti di colorazione delle schede">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Mostra transizioni regolari tra i molti aspetti di colorazione delle schede">
 <!ENTITY qf.checkbox.highlightNewMail "Evidenzia le cartelle contenenti nuovi messaggi">
+<!ENTITY qf.toolbarMinimumHeight "Altezza massima:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Per i MacOS soggetti al [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Dimensione dei caratteri dei pulsanti (lasciare vuoto per mantenere il valore predefinito):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.appearance "Aspetto">
@@ -29,7 +32,7 @@
 <!ENTITY qf.label.menus "Configurazione menu">
 <!ENTITY qf.label.menus.mailFolder "Comandi per la Posta">
 <!ENTITY qf.label.menus.quickFolder "Comandi di QuickFolders">
-<!ENTITY qf.label.menus.help "Aiuto per Quick Folders">
+<!ENTITY qf.label.menus.help "Guida di Quick Folders">
 <!ENTITY qf.label.menus.support "Supporto di QuickFolders">
 <!ENTITY qf.label.menus.options "Opzioni">
 <!ENTITY qf.label.colors "Colori">
@@ -40,7 +43,7 @@
 <!ENTITY qf.label.currentFolderToolbar "Barra degli strumenti della cartella corrente">
 <!ENTITY qf.checkbox.currentFolder.show "Visualizza la barra degli strumenti">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…anche nelle finestre contenenti un solo messaggio">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra degli strumenti della cartella corrente nella finestra che si apre quando si decide di aprire una email in una nuova finestra">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra degli strumenti della cartella corrente nella finestra che si apre quando si apre un messaggio in una nuova finestra">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Pulsante di chiusura">
 <!ENTITY qf.button.currentFolderBackground.set "Configurazione">
 <!ENTITY qf.currentFolderBackground.custom "personalizzata">
@@ -56,14 +59,17 @@
 <!ENTITY qf.description.dragToAdd "Trascinare le cartelle di posta in un'area vuota della nuova barra degli strumenti per creare un nuovo 'QuickFolder' (di seguito anche abbreviato in 'QF') che funziona come una scorciatoia/alias. Trascinare dei messaggi in un QF per spostarli (o copiarli) nella cartella corrispondente. Fare clic su di un QF per saltare alla cartella di posta.">
 <!ENTITY qf.description.dragToPosition "Trascinare lateralmente e rilasciare i QF per modificare le loro posizioni. Facendo clic col pulsante destro del mouse su di un QF compare un menu contestuale: selezionandone un elemento ci si può spostare direttamente nelle sottocartelle. Inoltre: 'Rinomina scheda' = cambia l'etichetta del QF. 'Rimuovi scheda' = cancella il QF ma non la cartella di posta.">
 <!ENTITY qf.description.dragToPopup "Per spostare dei messaggi all'interno delle sottocartelle, trascinarli sul menu a pop-up di un QF.">
-<!ENTITY qf.description.changeCategory "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Ciò crea un filtro per le categorie posto a sinistra delle schede.">
+<!ENTITY qf.description.changeCategory "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posto a sinistra delle schede.">
 <!ENTITY qf.description.rightClickOptions "Fare clic col pulsante destro del mouse in un'area vuota per aprire il menu Opzioni il che consente di scegliere lo stile nativo (più piccolo) o quello flat (più nitido; supporta l'indicatore di trascinamento).">
-<!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un'elevata quantità di cartelle, si può provare l'estensione Nostalgy per disporre di un'organizzazione dei messaggi guidata da tastiera.">
+<!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un elevato numero di cartelle, si può provare l'estensione Nostalgy per disporre di un'organizzazione dei messaggi guidata da tastiera.">
 <!ENTITY qf.description.experimentalItems "I seguenti elementi sono sperimentali. È auspicabile che funzionino nella prossima versione!">
 <!ENTITY qf.label.instantApplyMsg "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante destro del mouse in un'area vuota della barra 'QuickFolders' per selezionare 'Opzioni di QuickFolders…' Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori.">
 <!ENTITY qf.button.defaultcolors "Colori predefiniti">
 <!ENTITY qf.checkbox.debug "Modalità di debug">
-<!ENTITY qf.label.StandardTabColor "Colore standard schede:">
+<!ENTITY qf.label.UncoloredTab "Scheda non colorata">
+<!ENTITY qf.label.UncoloredTab.tooltip "Aspetto delle schede (inattive) senza un colore specifico selezionato">
+<!ENTITY qf.label.ColoredTabPalette "Tavolozza per le schede colorate:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Tavolozza per le schede con colore specifico">
 <!ENTITY qf.checkbox.usePalette "Usa tavolozza">
 <!ENTITY qf.label.initdelay "[ms] di ritardo iniziale {1000 è lo standard}:">
 <!ENTITY qf.label.folders "Cartelle QF?">
@@ -71,7 +77,7 @@
 <!ENTITY qf.checkbox.autoFocusPreview "Cambiando scheda si porta in primo piano l'elenco dei messaggi">
 <!ENTITY qf.label.homePage "Informazioni dettagliate nel nuovo sito web di QuickFolders ospitato da Mozdev.org…">
 <!ENTITY qf.tab.support "Supporto">
-<!ENTITY qf.description.languages "QuickFolders supporta le localizzazioni - è possibile dare un aiuto aggiungendo la traduzione nella propria lingua su Babelzilla:">
+<!ENTITY qf.description.languages "QuickFolders supporta le localizzazioni - si può dare un aiuto aggiungendo su Babelzilla la traduzione nella propria lingua:">
 <!ENTITY qf.label.languagesLink "Aggiungi una traduzione…">
 <!ENTITY qf.description.donate "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo">
 <!ENTITY qf.label.donateLink "Visita la pagina delle donazioni…">
@@ -126,4 +132,4 @@
 <!ENTITY qf.palette.twoColors "2 colori">
 <!ENTITY qf.palette.standard "Tavolozza standard">
 <!ENTITY qf.palette.pastel "Colori pastello">
-<!ENTITY qf.palette.inactive "SCHEDE INATTIVE (???)">
+<!ENTITY qf.palette.inactive "Come le schede inattive">

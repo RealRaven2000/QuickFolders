@@ -84,7 +84,7 @@ pref("extensions.quickfolders.style.InactiveTab.color", "buttontext");
 pref("extensions.quickfolders.style.InactiveTab.background-color", "buttonface");
 pref("extensions.quickfolders.style.InactiveTab.paletteEntry", 20);
 pref("extensions.quickfolders.style.InactiveTab.paletteType", 0); // InactiveTab = "uncolored tab" default to none, but is set on upgradePalette
-pref("extensions.quickfolders.style.ColoredTab.paletteType", 0); // default to none, but is set on upgradePalette
+pref("extensions.quickfolders.style.ColoredTab.paletteType", 1); // default to none, but is set on upgradePalette
 
 // Debugging Options
 pref("extensions.quickfolders.debug.firstrun", false);
@@ -111,6 +111,7 @@ pref("extensions.quickfolders.debug.recentFolders.detail",false);
 pref("extensions.quickfolders.debug.toolbarHiding",false);
 pref("extensions.quickfolders.debug.filters",false);
 pref("extensions.quickfolders.debug.listeners.tabmail",false);
+pref("extensions.quickfolders.debug.listeners.folder",false);
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3",true);
 pref("extensions.quickfolders.dragToCreateFolder.imap",false);

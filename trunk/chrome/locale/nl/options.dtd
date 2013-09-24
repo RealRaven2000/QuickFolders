@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Deze worden weergeven met een ‘+’ naast de aantallen; onderliggende ongelezen e-mailberichten zullen het tabblad ook vet maken als bovenstaande optie geactiveerd is">
 <!ENTITY qf.checkbox.showMessageNavigation "Bericht-navigatieknoppen">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabbladen voor mappen die berichten bevatten schuingedrukt weergeven">
+<!ENTITY qf.checkbox.showNewMailItalics "Tabbladen met nieuwe e-mailberichten cursief weergeven">
 <!ENTITY qf.checkbox.enableTransitions "CSS-transities inschakelen">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Toont vloeiende overgangen tussen de verschillende aspecten van de tabbladkleuren.">
 <!ENTITY qf.checkbox.highlightNewMail "Mappen met nieuwe berichten accentueren">
+<!ENTITY qf.toolbarMinimumHeight "Minimale hoogte:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Voor Mac-systemen die te maken hebben met [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Lettertypegrootte voor knoppen (leeg voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Weergave">
@@ -41,7 +44,7 @@
 <!ENTITY qf.checkbox.currentFolder.show "Werkbalk weergeven">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…ook in losse berichtvensters">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Werkbalk huidige map weergeven in het venster dat opent wanneer u selecteert om een e-mailbericht te openen in een nieuw venster">
-<!ENTITY qf.checkbox.currentFolder.closeButton "Sluitknop">
+<!ENTITY qf.checkbox.currentFolder.closeButton "Knop Sluiten">
 <!ENTITY qf.button.currentFolderBackground.set "instellen">
 <!ENTITY qf.currentFolderBackground.custom "aangepast">
 <!ENTITY qf.currentFolderBackground.translucent "doorschijnend">
@@ -60,10 +63,13 @@
 <!ENTITY qf.description.rightClickOptions "Rechtsklik een lege ruimte om het optiesmenu te openen. In het optiesmenu kunt u de ingebouwde stijl (kleiner) of de vlakke stijl (duidelijker; ondersteunt sleep-indicator) selecteren.">
 <!ENTITY qf.description.tipMsg "Tip: als u een groot aantal mappen hebt, probeer dan de Nostalgy-extensie om uw berichten toetsenbordgestuurd te organiseren.">
 <!ENTITY qf.description.experimentalItems "De volgende onderdelen zijn experimenteel, hopelijk zullen ze werken in de volgende uitgave!!">
-<!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellichtniet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
+<!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
 <!ENTITY qf.button.defaultcolors "Standaardkleuren">
 <!ENTITY qf.checkbox.debug "Foutopsporingsmodus">
-<!ENTITY qf.label.StandardTabColor "Standaard tabbladkleur:">
+<!ENTITY qf.label.UncoloredTab "Ongekleurd tabblad">
+<!ENTITY qf.label.UncoloredTab.tooltip "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur">
+<!ENTITY qf.label.ColoredTabPalette "Palet voor gekleurde tabbladen:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palet voor tabbladen met een specifieke kleur">
 <!ENTITY qf.checkbox.usePalette "Palet gebruiken">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
 <!ENTITY qf.label.folders "Mappen?">
@@ -124,6 +130,6 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Prullenbak leegmaken">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Naar nieuwe submap slepen">
 <!ENTITY qf.palette.twoColors "2 kleuren">
-<!ENTITY qf.palette.standard "Standaard Palet">
+<!ENTITY qf.palette.standard "Standaardpalet">
 <!ENTITY qf.palette.pastel "Pastelkleuren">
-<!ENTITY qf.palette.inactive "Zoals inactieve tabs">
+<!ENTITY qf.palette.inactive "Zoals inactieve tabbladen">

@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "在主資料夾郵件數目旁以+隔開；如果上面的選項有選取的話，未讀的郵件將以粗體顯示">
 <!ENTITY qf.checkbox.showMessageNavigation "訊息導航按鈕">
 <!ENTITY qf.checkbox.showNonEmptyItalics "在標籤上以斜體顯示有郵件的資料夾">
+<!ENTITY qf.checkbox.showNewMailItalics "在收到新郵件時以斜體顯示分頁">
 <!ENTITY qf.checkbox.enableTransitions "開啟CSS transitions">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "在分頁色彩各面向間平滑顯示transitions">
 <!ENTITY qf.checkbox.highlightNewMail "有新郵件時資料夾高亮度顯示">
+<!ENTITY qf.toolbarMinimumHeight "最小高度：">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "針對遇到[Bug 25021]的Mac系統使用者">
 <!ENTITY qf.label.buttonFontSize "標籤字體大小（空白表示使用預設的設定）：">
 <!ENTITY qf.label.pixels "像素">
 <!ENTITY qf.label.appearance "外觀">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "注意：如果您只在下面看到「關閉」的按鈕，表示色彩的設定未能正常運作，解決方法是，試著以滑鼠右鍵點選快捷資料夾工具列的空白區域來選擇選項，這能使「確定」按鈕顯示，以便儲存顏色設定。">
 <!ENTITY qf.button.defaultcolors "預設顏色">
 <!ENTITY qf.checkbox.debug "除錯模式">
-<!ENTITY qf.label.StandardTabColor "標準標籤顏色">
+<!ENTITY qf.label.UncoloredTab "未上色的分頁">
+<!ENTITY qf.label.UncoloredTab.tooltip "未特別選定顏色的（未作用中）分頁外觀">
+<!ENTITY qf.label.ColoredTabPalette "上色分頁的調色盤：">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "特定顏色分頁調色盤">
 <!ENTITY qf.checkbox.usePalette "使用調色盤">
 <!ENTITY qf.label.initdelay "初始延遲（1000是預設值）[毫秒]：">
 <!ENTITY qf.label.folders "資料夾？">

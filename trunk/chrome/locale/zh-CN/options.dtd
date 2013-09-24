@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "子文件夹里的消息总数将显示在导航卡的主计数旁边并用 '+' 号与之隔开">
 <!ENTITY qf.checkbox.showMessageNavigation "Message Navigation buttons">
 <!ENTITY qf.checkbox.showNonEmptyItalics "存有消息的导航卡用斜体字显示">
+<!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
 <!ENTITY qf.checkbox.enableTransitions "Enable CSS transitions">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Shows smooth transitions between several aspects of tab coloring.">
 <!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
+<!ENTITY qf.toolbarMinimumHeight "Minimum height:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "导航卡字体大小(留空则为默认): ">
 <!ENTITY qf.label.pixels "像素(pixels)">
 <!ENTITY qf.label.appearance "样式">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "　　注意：如果在下面只看到一个「关闭」按钮，那就是颜色设置可能无法正常工作。遇到这种情况，在目录导航工具栏上的空白区域点击鼠标右键，并选择「选项」。这将使「确定」按钮强制显示出来，并可以保存颜色。">
 <!ENTITY qf.button.defaultcolors "默认颜色">
 <!ENTITY qf.checkbox.debug "调试模式">
-<!ENTITY qf.label.StandardTabColor "标准颜色:">
+<!ENTITY qf.label.UncoloredTab "Uncolored Tab">
+<!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
+<!ENTITY qf.label.ColoredTabPalette "Palette for Colored Tabs:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette for tabs with a specific color">
 <!ENTITY qf.checkbox.usePalette "Use palette">
 <!ENTITY qf.label.initdelay "初始化延迟 {标准是1000} [毫秒]:">
 <!ENTITY qf.label.folders "导航代码">
@@ -123,3 +129,7 @@
 <!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
 <!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
+<!ENTITY qf.palette.twoColors "2 Colors">
+<!ENTITY qf.palette.standard "Standard Palette">
+<!ENTITY qf.palette.pastel "Pastel Colors">
+<!ENTITY qf.palette.inactive "Like inactive Tabs">

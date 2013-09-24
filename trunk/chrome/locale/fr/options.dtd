@@ -17,9 +17,12 @@
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Ils sont affichés séparés par un « + » à côté de leur compte principal ; s'ils contiennent des messages non lus, l'onglet sera également en gras si l'option ci-dessus a été activée.">
 <!ENTITY qf.checkbox.showMessageNavigation "Boutons de navigation entre les messages">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Afficher les boutons des dossiers contenant des messages en italique">
+<!ENTITY qf.checkbox.showNewMailItalics "Afficher les onglets avec de nouveaux courriels en italique">
 <!ENTITY qf.checkbox.enableTransitions "Activer les transitions CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Affiche des transitions fluides entre différents aspects de coloration d'onglet.">
 <!ENTITY qf.checkbox.highlightNewMail "Mettre en surbrillance les dossiers contenant de nouveaux messages">
+<!ENTITY qf.toolbarMinimumHeight "Hauteur minimale :">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Pour les systèmes Mac rencontrant le bogue 25021">
 <!ENTITY qf.label.buttonFontSize "Taille de la police des boutons (vide pour laisser la valeur par défaut) :">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Apparence">
@@ -63,7 +66,10 @@
 <!ENTITY qf.label.instantApplyMsg "Remarque : si vous ne voyez qu'un bouton [Fermer] ci-dessous, les paramètres de couleurs ne seront pas pris en compte - pour contourner ce problème, essayez de cliquer droit sur une zone vide de la barre QuickFolders pour vous rendre au menu des options… Cela forcera l'affichage du bouton [OK] qui vous permettra d'enregistrer les couleurs.">
 <!ENTITY qf.button.defaultcolors "Par défaut">
 <!ENTITY qf.checkbox.debug "Mode débogage">
-<!ENTITY qf.label.StandardTabColor "Onglet standard :">
+<!ENTITY qf.label.UncoloredTab "Onglet sans couleur">
+<!ENTITY qf.label.UncoloredTab.tooltip "Look des onglets (inactifs) sans couleur spécifique">
+<!ENTITY qf.label.ColoredTabPalette "Palette pour onglets colorés :">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette pour onglets avec une couleur spécifique">
 <!ENTITY qf.checkbox.usePalette "Utiliser la palette">
 <!ENTITY qf.label.initdelay "[ms] délai initial {1000 par défaut} :">
 <!ENTITY qf.label.folders "Dossiers ?">

@@ -69,14 +69,14 @@ QuickFolders.ChangeOrder = {
 
 		buttonUp.setAttribute("label",this.upString);
 		buttonUp.linkedFolder = folder;
-		buttonUp.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
 		row.appendChild(buttonUp);
 
 		var buttonDown = document.createElement("button");
 		buttonDown.className = "order-button-down"
 		buttonDown.setAttribute("label",this.downString);
 		buttonDown.linkedFolder = folder;
-		buttonDown.setAttribute("oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
 		row.appendChild(buttonDown);
 
 		rows.appendChild(row);

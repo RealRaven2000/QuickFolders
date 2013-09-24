@@ -52,14 +52,17 @@ QuickFolders.FilterWorker = {
 		}
 	} ,
 	
-	
+	toggleFilterMode: function(active) {
+		toggle_FilterMode(active);
+	} ,
+		
   /** 
 	* toggles the filter mode so that dragging emails will
 	* open the filter wizard
 	* 
 	* @param {bool} start or stop filter mode
 	*/  
-	toggleFilterMode: function(active)
+	toggle_FilterMode: function(active)
 	{
     function removeOldNotification(box, active, id) {
       if (!active && box) {
@@ -68,7 +71,7 @@ QuickFolders.FilterWorker = {
           box.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
       }   
     }
-		QuickFolders.Util.logDebugOptional ("filters", "toggleFilterMode(" + active + ")");
+		QuickFolders.Util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		let notificationId;
 
     let notifyBox;

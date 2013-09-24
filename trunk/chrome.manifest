@@ -1,4 +1,6 @@
 content quickfolders       chrome/content/
+#jsm modules
+resource quickfolders  chrome://quickfolders/content/
 locale quickfolders en-US  chrome/locale/en-US/
 locale quickfolders de     chrome/locale/de/
 locale quickfolders nl     chrome/locale/nl/
@@ -50,7 +52,6 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 #SeaMonkey
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlaySeamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-
 
 ##Style Tweaks
 #All

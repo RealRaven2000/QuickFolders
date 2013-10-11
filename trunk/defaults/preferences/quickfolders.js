@@ -23,6 +23,8 @@ pref("extensions.quickfolders.showCountInSubFolders",false);
 pref("extensions.quickfolders.enableMenuAlphaSorting",false);
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
+pref("extensions.quickfolders.useFindFolderShortcut", true);
+pref("extensions.quickfolders.findFolderShortcutKey", 'J');
 pref("extensions.quickfolders.showToolIcon",true);
 pref("extensions.quickfolders.toolbar.minHeight", "24px");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows",false);

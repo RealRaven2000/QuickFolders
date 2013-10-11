@@ -32,58 +32,58 @@ END LICENSE BLOCK */
 
 ==  3.0  ======
 	3.0  - 22/02/2012
-	  AG: Thread Tools - added "mark thread as read" command on click
-	  AG: New Filter Wizard
-	  AG: Reorganization of options window (split first page into General and Advanced)
-	  AG: Made some current folder tools and mail context menu items configurable
-	  AG: Some (but not all) of the layout changes can be previewed instantly (WIP)
+	  ## Thread Tools - added "mark thread as read" command on click
+	  ## New Filter Wizard
+	  ## Reorganization of options window (split first page into General and Advanced)
+	  ## Made some current folder tools and mail context menu items configurable
+	  ## Some (but not all) of the layout changes can be previewed instantly (WIP)
 
 	3.1 - 17/04/2012
-	  AG: [Bug 24767] right-click+Control shows QF commands popup only.
-	  AG: Folder categories - added ability to copy existing QF tab to a new Category, without the message "Folder already has a tab"
-	  AG: [Bug 24766] Support MOVING folders by dragging them from foldertree to a QF location and holding down SHIFT 
+	  ## [Bug 24767] right-click+Control shows QF commands popup only.
+	  ## Folder categories - added ability to copy existing QF tab to a new Category, without the message "Folder already has a tab"
+	  ## [Bug 24766] Support MOVING folders by dragging them from foldertree to a QF location and holding down SHIFT 
 	  	(currently this works only on Windows - somehow Tb doesn't detect the SHIFT state in Linux)
-	  AG: Fixed - if a Folder is renamed the Tab does not "come with it" leading to invalid / missing tabs
-	  AG: Added Filter List enhancements (search filters box, move to top button, move to bottom button) 
+	  ## Fixed - if a Folder is renamed the Tab does not "come with it" leading to invalid / missing tabs
+	  ## Added Filter List enhancements (search filters box, move to top button, move to bottom button) 
 	      - localization of this feature will be provided in the next maintenance release.
-	  AG: changed overlay using messenger.xul instead of mailWindowOverlay.xul
-	  AG: [Bug 24736] fixed & simplified overlay for single Message window; fixed closing current folder bar in single message window
-	  AG: added option for disabling current folder bar on single message window
-	  AG: about:config (for advanced Debug and other hidden settings) used to be obscured behind the options dialog
-	  AG: stylesheet fix in SeaMonkey
-	  AG: added border around the close button on the (filter) notification message to make it better visible 
-	  AG: increased minimum width of label on Current Folder bar from 12 to 16em to avoid resizing on newsgroups
-	  AG: Added about:config shortcut to Recent Folder Icon (max number of entries) on Advanced Options
-	  AG: Fixed a button size issue with SeaMonkey Modern Theme which was causing some buttons in current Folder bar to be too big
+	  ## changed overlay using messenger.xul instead of mailWindowOverlay.xul
+	  ## [Bug 24736] fixed & simplified overlay for single Message window; fixed closing current folder bar in single message window
+	  ## added option for disabling current folder bar on single message window
+	  ## about:config (for advanced Debug and other hidden settings) used to be obscured behind the options dialog
+	  ## stylesheet fix in SeaMonkey
+	  ## added border around the close button on the (filter) notification message to make it better visible 
+	  ## increased minimum width of label on Current Folder bar from 12 to 16em to avoid resizing on newsgroups
+	  ## Added about:config shortcut to Recent Folder Icon (max number of entries) on Advanced Options
+	  ## Fixed a button size issue with SeaMonkey Modern Theme which was causing some buttons in current Folder bar to be too big
 	  
 	3.3 - RELEASED 01/05/2012
-	  AG: Added context menu entry to Search Folder
-	  AG: [Bug 24715] Added main Toolbar toggle button
-	  AG: Fixed [Bug 24864] "updateUserStyles - TypeError: ss.href is null" caused by the Rise of The Tools extension
-	  AG: Added folder context menu button to current Folder bar
-	  AG: Added option to hide msg navigation buttons from current Folder bar
-	  AG: Folder categories - added ability to copy existing QF tab to a Category, without the message "Folder already has a tab", even if it has no category
-	  AG: Added Message Filter count & localizations
-	  AG: Improved & tightened Filter List layout, pre publishing the changes planned in Thunderbird [Bug 450302] 
-	  AG: New Feature in Filter List: added count of displayed filters (Thunderbird only) 
+	  ## Added context menu entry to Search Folder
+	  ## [Bug 24715] Added main Toolbar toggle button
+	  ## Fixed [Bug 24864] "updateUserStyles - TypeError: ss.href is null" caused by the Rise of The Tools extension
+	  ## Added folder context menu button to current Folder bar
+	  ## Added option to hide msg navigation buttons from current Folder bar
+	  ## Folder categories - added ability to copy existing QF tab to a Category, without the message "Folder already has a tab", even if it has no category
+	  ## Added Message Filter count & localizations
+	  ## Improved & tightened Filter List layout, pre publishing the changes planned in Thunderbird [Bug 450302] 
+	  ## New Feature in Filter List: added count of displayed filters (Thunderbird only) 
 	3.4 - Quick fix for Postbox users
-	  AG: Fixed [Bug 24894] - Postbox only - trying to add new folders to the QuickFolders toolbar results in an error or no action at all
-	  AG: updated Dutch and Hungarian locales
-	  AG: 1st round of tidy up on install.manifest following the drop of support for Tb<3.1
+	  ## Fixed [Bug 24894] - Postbox only - trying to add new folders to the QuickFolders toolbar results in an error or no action at all
+	  ## updated Dutch and Hungarian locales
+	  ## 1st round of tidy up on install.manifest following the drop of support for Tb<3.1
 	3.5 - RELEASED 08/05/2012
-	  AG: Fixed regression that caused unread count not to be updated anymore
-	  AG: Removed unnecessary console outputs
-	  AG: removed styling hacks that looked like namespace pollutions
-	  AG: replaced is.. functions with get properties
+	  ## Fixed regression that caused unread count not to be updated anymore
+	  ## Removed unnecessary console outputs
+	  ## removed styling hacks that looked like namespace pollutions
+	  ## replaced is.. functions with get properties
 	3.6 - RELEASED 05/06/2012
-	  AG: Complete overhaul of the palette - removed images for performance and completely redesigned Pastel style
-	  AG: Added paint mode - now also supports recent folders tab
-	  AG: added "use Palette" entries for the Bling My Tabs status color choices (default, active, hovered, draggedOver)
-	  AG: Fixed synchronizing quickFilters status
-	  AG: more refinements for filters from the quickFilters project
-	  AG: added "Real Buttons" style
-	  AG: fixed some glitches that caused hovered  & active folder to "push down" toolbar border.
-	  AG: use new quickFilters settings & behavior for Naming conventions
+	  ## Complete overhaul of the palette - removed images for performance and completely redesigned Pastel style
+	  ## Added paint mode - now also supports recent folders tab
+	  ## added "use Palette" entries for the Bling My Tabs status color choices (default, active, hovered, draggedOver)
+	  ## Fixed synchronizing quickFilters status
+	  ## more refinements for filters from the quickFilters project
+	  ## added "Real Buttons" style
+	  ## fixed some glitches that caused hovered  & active folder to "push down" toolbar border.
+	  ## use new quickFilters settings & behavior for Naming conventions
 	  
 	  Developer Notes:
 	  - Palette was redesigned and the css moved out to the skin folder
@@ -91,103 +91,115 @@ END LICENSE BLOCK */
 	  - Switched over to native JSON
 	  
 	3.7 - Released 21/08/2012
-	  AG: [Bug 24945] Removed Accelerator on quickFolders options button that cause QF options to come up when ALT+O was pressed
-	  AG: Fixed insufficient height of filter notification
-	  AG: removed legacy deprecated css attributes to its own style sheet
-	  AG: [Bug 25061] added checkbox so the "new subfolder" item can be disabled when dragging
-	  AG: changed color of bottom color to reflect background of active tab
-	  AG: in "bling my tabs" background colors now corresponds to last selected palette item.
-	  AG: removed any empty popup menus that may occur during dragging.
-	  AG: Completed pt-BR locale (thanks to Marcelo Ghelman) 
-	  AG: Fixed zh-CN locale
+	  ## [Bug 24945] Removed Accelerator on quickFolders options button that cause QF options to come up when ALT+O was pressed
+	  ## Fixed insufficient height of filter notification
+	  ## removed legacy deprecated css attributes to its own style sheet
+	  ## [Bug 25061] added checkbox so the "new subfolder" item can be disabled when dragging
+	  ## changed color of bottom color to reflect background of active tab
+	  ## in "bling my tabs" background colors now corresponds to last selected palette item.
+	  ## removed any empty popup menus that may occur during dragging.
+	  ## Completed pt-BR locale (thanks to Marcelo Ghelman) 
+	  ## Fixed zh-CN locale
 	  
 	3.7.2 - Released 30/08/2012
-	  AG: updated CA locale
-	  AG: synchronized background color picker and background color of non-palette preview tabs
-	  AG: improved faulty font coloring in tab on current folder bar
-	  AG: improved padding of (flat-style) toolbarbuttons 
-	  AG: improved readability of active colored tabs and pastel support in apple-pills style by choosing appropriate text-shadow
+	  ## updated CA locale
+	  ## synchronized background color picker and background color of non-palette preview tabs
+	  ## improved faulty font coloring in tab on current folder bar
+	  ## improved padding of (flat-style) toolbarbuttons 
+	  ## improved readability of active colored tabs and pastel support in apple-pills style by choosing appropriate text-shadow
 	
 	3.7.3 - Released 04/09/2012
-	  AG: fixed mail me link on options tab
+	  ## fixed mail me link on options tab
 	  
 	3.8.1 - Released 11/11/2012
-	  AG: improved per-mailTab category selection.
-	  AG: use quickFilters filtering engine instead of the QuickFolders one if qF is installed.
-	  AG: added Donation button to bottom of options dialog
-	  AG: improved horizontal padding in Noia & other themes
-	  AG: Removed obsolete "Recent" placeholder on empty QF toolbar
-	  AG: Fixed [Bug 25203] - Error when adding a filter if Message Filters window is already open
-	  AG: removed deprecated -moz-linear-gradient into legacy style sheets
+	  ## improved per-mailTab category selection.
+	  ## use quickFilters filtering engine instead of the QuickFolders one if qF is installed.
+	  ## added Donation button to bottom of options dialog
+	  ## improved horizontal padding in Noia & other themes
+	  ## Removed obsolete "Recent" placeholder on empty QF toolbar
+	  ## Fixed [Bug 25203] - Error when adding a filter if Message Filters window is already open
+	  ## removed deprecated -moz-linear-gradient into legacy style sheets
 	  
 	3.8.2 - Released 18/11/2012
-	  AG: getFolderTooltip throws an error if no root folder is present leading to missing or incomplete tabs.
-	  AG: Fixed [Bug 25220] - No more background gradient colors on tabs with Thunderbird 3.x
-	  AG: [CR 24613] - added a hidden option for full path in recent folders
-	  AG: Bugfix: A missing rootFolder can create a NS_ERROR_FAILURE leading to no visible tabs.
-	  AG: Fixed: logging can lead to errors if there are no categories defined.
-	  AG: Bumped up SeaMonkey compatibility to 2.14.*
-	  AG: Fixed styling glitches in SeaMonkey and Postbox (invisible Filter buttons)
-		AG: Fixed [Bug 25204] - Allow location-aware dragging from within "virtual folder"
+	  ## getFolderTooltip throws an error if no root folder is present leading to missing or incomplete tabs.
+	  ## Fixed [Bug 25220] - No more background gradient colors on tabs with Thunderbird 3.x
+	  ## [CR 24613] - added a hidden option for full path in recent folders
+	  ## Bugfix: A missing rootFolder can create a NS_ERROR_FAILURE leading to no visible tabs.
+	  ## Fixed: logging can lead to errors if there are no categories defined.
+	  ## Bumped up SeaMonkey compatibility to 2.14.*
+	  ## Fixed styling glitches in SeaMonkey and Postbox (invisible Filter buttons)
+		## Fixed [Bug 25204] - Allow location-aware dragging from within "virtual folder"
 	
 	3.9 - Release 21/12/2012
-	  AG: Fixed a styling problem with checkbox icons in options dialog
-		AG: Fixed colorings in legacy Gecko systems (Postbox)
-		AG: flat tabs special states - added override for active tab color
-		AG: improved preview tabs on "bling my tabs" page
-		AG: improved 'use palette' auto-hide
-		AG: optimized order of style sheets for better performance
+	  ## Fixed a styling problem with checkbox icons in options dialog
+		## Fixed colorings in legacy Gecko systems (Postbox)
+		## flat tabs special states - added override for active tab color
+		## improved preview tabs on "bling my tabs" page
+		## improved 'use palette' auto-hide
+		## optimized order of style sheets for better performance
 		
 	3.10 - Release 09/01/2013
-	  AG: [Bug 25277] - Error at startup: "Quickfolders.updateUserStyles - error TypeError: ss is null"
-		AG: Made background color of current folder toolbar configurable
-		AG: Fixed status bar messages in SeaMonkey
-		AG: fixed duplicate donation tabs in SeaMonkey and Postbox
-		AG: Added Polish locale (this is still work in progress) - thanks to hipogrys (Babelzilla)
-		AG: Various style fixes
+	  ## [Bug 25277] - Error at startup: "Quickfolders.updateUserStyles - error TypeError: ss is null"
+		## Made background color of current folder toolbar configurable
+		## Fixed status bar messages in SeaMonkey
+		## fixed duplicate donation tabs in SeaMonkey and Postbox
+		## Added Polish locale (this is still work in progress) - thanks to hipogrys (Babelzilla)
+		## Various style fixes
 		
 		
 	3.11 - Release 12/02/2013
-		AG: Fixed [Bug 25204] - filter mode: dragging from a fresh search, creates error "QuickFolders.Util.moveMessages:TypeError: sourceFolder is null"
-		AG: Fixed dropping of current folder tab to QuickFolders bar
-		AG: Improved contrast of filter activation icon (small and big sizes)
-		AG: Added setting for displaying folders with new mails in italics
-		AG: [Bug 25021] - Added setting for Minimum Height for fixing issues for Mac users
-		AG: Enhancement: Do not switch to current folder's category, if current tab has an tab from a different Category selected! 
+		## Fixed [Bug 25204] - filter mode: dragging from a fresh search, creates error "QuickFolders.Util.moveMessages:TypeError: sourceFolder is null"
+		## Fixed dropping of current folder tab to QuickFolders bar
+		## Improved contrast of filter activation icon (small and big sizes)
+		## Added setting for displaying folders with new mails in italics
+		## [Bug 25021] - Added setting for Minimum Height for fixing issues for Mac users
+		## Enhancement: Do not switch to current folder's category, if current tab has an tab from a different Category selected! 
 		    This way mail tabs "remembering" their QF Category will work better and faster
 		
-	3.12 - WIP
+	3.12 - 22/09/2013
 		PRO FEATURES
-		AG: [FR 23039] - Support Linebreaks to force Multiple Rows of Tabs
-		AG: [FR 24431] - Optional Separators between tabs
-    AG: [FR 25364] - Hide QF toolbar and current folder bar in single message tab (should behave same as single message window) 
+		## [FR 23039] - Support Linebreaks to force Multiple Rows of Tabs
+		## [FR 24431] - Optional Separators between tabs
+    ## [FR 25364] - Hide QF toolbar and current folder bar in single message tab (should behave same as single message window) 
 		FEATURES
-	  AG: Redesigned tab bar to align tabs to bottom regardless of theme used
-		AG: Option Tab Extended: added checkboxes for QuickFolders commands 
-		AG: New top level menu: open new tab
-    AG: Made compatible with redefinition of Thunderbird's nsIMsgAccount interface 		
-		AG: removed call from options load that caused redraw of folders; made remove orphans more resilient against Tb bugs
-		AG: Added independent palette type settings for the tab states selected / hover / dragover
-		AG: Improved "dark" style of current folder toolbar to harmonize better with TT deepdark
-		AG: Accelerated visual response when selecting a QuickFolder
+	  ## Redesigned tab bar to align tabs to bottom regardless of theme used
+		## Option Tab Extended: added checkboxes for QuickFolders commands 
+		## New top level menu: open new tab
+    ## Made compatible with redefinition of Thunderbird's nsIMsgAccount interface 		
+		## removed call from options load that caused redraw of folders; made remove orphans more resilient against Tb bugs
+		## Added independent palette type settings for the tab states selected / hover / dragover
+		## Improved "dark" style of current folder toolbar to harmonize better with TT deepdark
+		## Accelerated visual response when selecting a QuickFolder
 		BUG FIXES
-		AG: Fixed broken paint mode.
-		AG: Fixed truncated filter notification in Postbox
-		AG: [Bug 25536] Compatibility Fixes for Thunderbird 26 (removed widgetglue.js)
-		AG: [Bug 25533] - SeaMonkey 2.23a1 - throws "ReferenceError: EventListener is not defined"
-		AG: Some interface refactoring
-		AG: Thunderbird only: Now persists selected categories of multiple tabs.
-		AG: Numerous SeaMonkey bugfixes especially around mail tabs 
-		AG: Fixed a problem with (jade) green palette style and removed !important from font colors.
+		## Fixed broken paint mode.
+		## Fixed truncated filter notification in Postbox
+		## [Bug 25536] Compatibility Fixes for Thunderbird 26 (removed widgetglue.js)
+		## [Bug 25533] - SeaMonkey 2.23a1 - throws "ReferenceError: EventListener is not defined"
+		## Some interface refactoring
+		## Thunderbird only: Now persists selected categories of multiple tabs.
+		## Numerous SeaMonkey bugfixes especially around mail tabs 
+		## Fixed a problem with (jade) green palette style and removed !important from font colors.
+		
+	3.12.1 Maintenance Release - 25/09/2013
+	  ## Fixed [Bug 25585] -	"Hide when not needed option" ALWAYS hides toolbar 
+		## Fixed [Bug 25589] When Pastel was selected the preview tabs (on layout "bling" screen) where painted with standard palette when a new color was chosen
 
+	3.12.2 Maintenance Release - WIP
+	  ## Fixed [Bug 25598] - Active folder not marked at startup / category selection
+		## Fixed [Bug 25606] - QuickFolders doesn't always highlight active folder
+		## Improved Search Folder algorithm and UI
+		## Configurable Shortcut for Find folder
+		## SeaMonkey - Improved height of current folder tab
+		## [Bug 25607] - Drag and Drop from current folder icon broken
+
+		
+	
+	
 ###VERSION###
 
   KNOWN ISSUES
   ============
-  23/10/2009
-	- if folders are added / removed during session this is not refreshed in subfolder list of popup set
-	  workaround: select another Category this will rebuild the menus
-	  single message window still buggy regarding showing current folder label
+
 
   OPEN BUGS
   ============

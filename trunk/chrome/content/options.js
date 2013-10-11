@@ -91,21 +91,39 @@ QuickFolders.Options = {
 	 * @paletteType: -1 {as standard tab} 0 none 1 default 2 pastel ...
 	 * @paletteColor: [optional] palette index; 0=no styling
 	 */
-	preparePreviewTab: function (colorPickerId, preference, previewId, paletteType, paletteColor) {
+	preparePreviewTab: function (colorPickerId, preference, previewId, paletteColor, paletteType) {
 		let wd = window.document;
 		let previewTab = wd.getElementById(previewId);
-		let paletteId = (typeof paletteType === 'undefined') ? QuickFolders.Preferences.getIntPref(preference + 'paletteType') : paletteType;
 		let colorPicker = colorPickerId ? wd.getElementById(colorPickerId) : null;
 		
-		// set to that of inactive style for option ("like on inactive")
-		if (paletteId == -1 && colorPickerId!='inactive-colorpicker') {
-		  paletteId = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+		// Address [Bug 25589] - when color is set from a drop down, the preference wasn't transmitted leading to wrong palette (always 1)
+		if (!preference) {  
+			switch(previewId) {
+			  case 'inactivetabs-label':
+					preference = 'style.InactiveTab.';
+					break;
+			  case 'activetabs-label':
+					preference = 'style.ActiveTab.';
+					break;
+			  case 'hoveredtabs-label':
+					preference = 'style.HoveredTab.';
+					break;
+			  case 'dragovertabs-label':
+					preference = 'style.DragOver.';
+					break;
+			}
 		}
-		let paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteId);
+		let paletteKey = (typeof paletteType === 'undefined') ? QuickFolders.Preferences.getIntPref(preference + 'paletteType') : paletteType;
+		
+		// set to that of inactive style for option ("like on inactive")
+		if (paletteKey == -1 && colorPickerId!='inactive-colorpicker') {
+		  paletteKey = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+		}
+		let paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteKey);
 		
 		
-		if (paletteId) { // use a palette
-			let paletteIndex = (typeof paletteColor === 'undefined') 
+		if (paletteKey) { // use a palette
+			let paletteIndex = (typeof paletteColor === 'undefined' || paletteColor === null) 
 			                   ? QuickFolders.Preferences.getIntPref(preference + 'paletteEntry') :
 			                   paletteColor;
 												 
@@ -123,7 +141,7 @@ QuickFolders.Options = {
 			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;
 		}
 		else {
-		  colorPicker.collapsed = false; // paletteId = 0 is no palette
+		  colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
 			previewTab.className = 'qfTabPreview';
 			if (colorPicker)
 				previewTab.style.backgroundColor = colorPicker.color;
@@ -515,7 +533,7 @@ QuickFolders.Options = {
 		// preparePreviewTab(id, preference, previewId)
 		QuickFolders.Preferences.setIntPref('style.' + stylePref + '.paletteType', paletteType);
 		if (colorPicker)
-			this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, paletteType);
+			this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
 		// this.toggleBoolPreference(checkbox, true);
 		
 		/*
@@ -539,6 +557,9 @@ QuickFolders.Options = {
 		QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
 		let paletteMenu = document.getElementById(paletteMenuId);
 		if (paletteMenu) {
+		  if (paletteMenu.value == "0") {
+			  return;  // no menu, as 2 colors / no palette is selected
+			}
 			this.toggleUsePalette(paletteMenu, buttonState, paletteMenu.value);
 			// allow overriding standard background for striped style!
 //			if (buttonState == 'standard')
@@ -632,8 +653,9 @@ QuickFolders.Options = {
 
 	showButtonShadow: function(isChecked) {
 		var el= document.getElementById('inactivetabs-label');
-		var myStyle = isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
+		var myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
 		el.style.MozBoxShadow = myStyle;
+		QuickFolders.Preferences.setBoolPrefQF('buttonShadows', !isChecked);
 		return QuickFolders.Interface.updateMainWindow();
 	},
 

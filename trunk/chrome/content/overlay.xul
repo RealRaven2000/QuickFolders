@@ -70,11 +70,12 @@
 								   context="QuickFolders-PalettePopup" 
 								   oncommand="QuickFolders.Interface.showPalette(this);"
 								   collapsed="true"/>
+					<!-- removed searchbutton=true so pressing [Enter] is not necessary-->
 					<textbox id="QuickFolders-FindFolder" 
 							 oncommand="QuickFolders.Interface.findFolderName(this);"
+							 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
 							 type="search"
 							 collapsed="true"
-							 searchbutton="true"
 							 placeholder="folder name"/>
 				 </hbox>
 			</hbox>
@@ -88,7 +89,10 @@
 			<menupopup id="QuickFolders-FindPopup" 
 			           class="menu-iconic" 
 					   position="after_start"
-					   oncommand="QuickFolders.Interface.selectFound(event.target);">
+					   oncommand="QuickFolders.Interface.selectFound(this, event);"
+					   onkeypress="QuickFolders.Interface.foundInput(this, event);"
+					   onblur="QuickFolders.Interface.findPopupBlur(this, event);"
+					   ignorekeys="true">
 			</menupopup>
 		</popupset>
 

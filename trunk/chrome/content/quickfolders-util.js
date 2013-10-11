@@ -389,7 +389,7 @@ QuickFolders.Util = {
 	} ,
 
 	getSystemColor: function(sColorString) {
-        function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
+    function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
 
 		var getContainer = function() {
 			var div = QuickFolders.Interface.FoldersBox;
@@ -414,25 +414,51 @@ QuickFolders.Util = {
 
 	},
 
-	getRGBA: function(hexIn,alpha) {
-		function cutHex(h) {var rv= ((h.toString()).charAt(0)=='#') ? h.substring(1,7):h;
-							return rv.toString();}
-		function HexToR(h) {return parseInt(h.substring(0,2),16);}
-		function HexToG(h) {return parseInt(h.substring(2,4),16);}
-		function HexToB(h) {return parseInt(h.substring(4,6),16);}
+	getRGBA: function(hexIn, alpha) {
+		function cutHex(h) {
+			let rv = ((h.toString()).charAt(0)=='#') ? h.substring(1,7) : h;
+			return rv.toString();
+		}
+		function HexToR(h) {
+			return parseInt(h.substring(0,2),16);
+		}
+		function HexToG(h) {
+			return parseInt(h.substring(2,4),16);
+		}
+		function HexToB(h) {
+		  return parseInt(h.substring(4,6),16);
+		}
 
-		var rgb = '';
-		var hex = hexIn;
-		try {parseInt(cutHex(hex),16);}
-		catch(e) {
-			hex=getSystemColor(hex);
+		let hex = hexIn;
+		let isRGB = (hexIn.indexOf('rgb')>=0);
+		let isRGBA = (hexIn.indexOf('rgba')>=0);
+		if (isRGB) {
+		  // inject alpha value:
+			let li = isRGBA ?
+               hexIn.lastIndexOf(',') :   // replace alpha
+			         hexIn.indexOf(')');        // append alpha
+			hex = hexIn.substring(0, li) + ',' +  alpha.toString() +')';
+			if (!isRGBA)
+			  hex = hex.replace('rgb','rgba');
+			return hex;
+		}
+		else {
+			try {
+				parseInt(cutHex(hex),16);
+			}
+			catch(e) {
+				hex = QuickFolders.Util.getSystemColor(hex);
+			}
 		}
 		if (hex) { //
 			hex = cutHex(hex);
-			return "rgba(" + HexToR(hex).toString() + ',' + HexToG(hex).toString() + ',' + HexToB(hex).toString() + ',' + alpha.toString() +')';
+			let r = HexToR(hex).toString();
+			let g = HexToG(hex).toString();
+			let b = HexToB(hex).toString();
+			return "rgba(" + r + ',' + g + ',' + b + ',' + alpha.toString() +')';
 		}
 		else {
-			QuickFolders.Util.logDebugOptional ("css","Can not retrieve color value: " + hexIn);
+			QuickFolders.Util.logDebugOptional ("css", "Can not retrieve color value: " + hexIn);
 			return "#666";
 		}
 	},
@@ -702,6 +728,7 @@ QuickFolders.Util = {
 			return tabmail.tabInfo[idx];
 		if (tabmail.tabOwners)
 		  return tabmail.tabOwners[idx];
+		return null;
 	} ,
 	
 	getTabModeName: function(tab) {
@@ -758,6 +785,34 @@ QuickFolders.Util = {
 	    return null;
 	  }
 	},
+	
+/**
+ * Returns a new filename that is guaranteed to not be in the Set
+ * of existing names.
+ *
+ * Example use:
+ *   suggestUniqueFileName("testname", ".txt", Set("testname", "testname1"))
+ *   returns "testname2.txt"
+ * Does not check file system for existing files.
+ *
+ * @param aIdentifier     proposed filename
+ * @param aType           extension
+ * @param aExistingNames  a Set of names already in use
+ */
+  suggestUniqueFileName: function (aIdentifier, aType, aExistingNames) {
+		let suffix = 1;
+		let base = validateFileName(aIdentifier);
+		let suggestion = base + aType;
+		while(true) {
+			if (!aExistingNames.has(suggestion))
+				break;
+
+			suggestion = base + suffix + aType;
+			suffix++;
+		}
+
+		return suggestion;
+  }	,
 
 	threadPaneOnDragStart: function (aEvent)
 	{
@@ -785,8 +840,10 @@ QuickFolders.Util = {
 
 		let ios = Components.classes["@mozilla.org/network/io-service;1"]
 						  .getService(Components.interfaces.nsIIOService);
-		let fileNames = [];
+		
+		let fileNames = new Set();
 		let msgUrls = {};
+		let uniqueFileName = '';
 
 		// dragging multiple messages to desktop does not
 		// currently work, pending core fixes for
@@ -794,19 +851,19 @@ QuickFolders.Util = {
 		for (let i in messages) {
 			messenger.messageServiceFromURI(messages[i])
 					 .GetUrlForUri(messages[i], msgUrls, null);
-			var subject = messenger.messageServiceFromURI(messages[i])
+			let subject = messenger.messageServiceFromURI(messages[i])
 			              	.messageURIToMsgHdr(messages[i]).mime2DecodedSubject;
-			if (suggestUniqueFileName) {
-				var uniqueFileName = suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames);
-				fileNames[i] = uniqueFileName;
+			if (fileNames) {
+				uniqueFileName = this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames);
+				fileNames.add(uniqueFileName);
 			}
 			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", messages[i], i);
 			try {
 				if (typeof msgUrls.value !='undefined') {
 					aEvent.dataTransfer.mozSetDataAt("text/x-moz-url",msgUrls.value.spec, i);
-					if (suggestUniqueFileName) { // no file support in SeaMonkey
+					//if (suggestUniqueFileName) { // no file support in SeaMonkey
 						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", msgUrls.value.spec + "&fileName=" + uniqueFileName, i);
-					}
+					//}
 				}
 				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
 			}
@@ -1136,7 +1193,7 @@ QuickFolders.Util.FirstRun =
 				+ "\ndebugFirstRun: " + debugFirstRun);
 		}
 		finally {
-
+      let suppressDonationScreen = false;
 			QuickFolders.Util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
 
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
@@ -1163,22 +1220,27 @@ QuickFolders.Util.FirstRun =
 					+ "\ncurrent.indexOf(" + QuickFolders.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(QuickFolders.Util.HARDCODED_EXTENSION_TOKEN).toString());
 			}
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
-			if (firstrun){
+			if (firstrun){  // FIRST TIME INSTALL
 				QuickFolders.Util.logDebugOptional ("firstrun","set firstrun=false");
 				ssPrefs.setBoolPref("firstrun",false);
 
 				if (showFirsts) {
-					// Insert code for first run here
 					// on very first run, we go to the index page - welcome blablabla
 					QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
 					window.setTimeout(function() {
 						QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/index.html");
-					}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
+					}, 1500); 
 
 				}
 
 			}
 			else { // this section does not get loaded if it's a fresh install.
+			  
+				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
+				if (pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) {
+					suppressDonationScreen = true;
+				}
+				
 				var isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();
 
@@ -1193,11 +1255,15 @@ QuickFolders.Util.FirstRun =
 
 						// DONATION PAGE
 						// display donation page - disable by right-clicking label above version jump panel
-						if ((QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.donateNoMore")))
-							QuickFolders.Util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
+						if (suppressDonationScreen) { ; }
 						else {
-							QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for donation link");
-							window.setTimeout(function() {QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/donate.html");}, 2000);
+							if ((QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.donateNoMore"))) {
+								QuickFolders.Util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
+							}
+							else {
+								QuickFolders.Util.logDebugOptional ("firstrun","setTimeout for donation link");
+								window.setTimeout(function() {QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/donate.html");}, 2000);
+							}
 						}
 
 						// VERSION HISTORY PAGE

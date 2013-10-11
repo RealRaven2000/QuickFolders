@@ -103,8 +103,16 @@ QuickFolders.Preferences = {
 		return this.getBoolPrefQF("useRebuildShortcut");
 	} ,
 
-	RebuildShortcutKey: function() {
+	get RebuildShortcutKey() {
 		return this.getCharPrefQF("rebuildShortcutKey");
+	} ,
+	
+	get isFindFolderShortcut() {
+		return this.getBoolPrefQF("useFindFolderShortcut");
+	} ,
+	
+	get FindFolderShortcutKey() {
+		return this.getCharPrefQF("findFolderShortcutKey");
 	} ,
 
 	get isUseKeyboardShortcutsCTRL() {

@@ -86,7 +86,10 @@
 			<menupopup id="QuickFolders-FindPopup" 
 			           class="menu-iconic" 
 					   position="after_start"
-					   oncommand="QuickFolders.Interface.selectFound(event.target);">
+					   oncommand="QuickFolders.Interface.selectFound(this, event);"
+					   onkeypress="QuickFolders.Interface.foundInput(this, event);"
+					   onblur="QuickFolders.Interface.findPopupBlur(this, event);"
+					   ignorekeys="true">
 			</menupopup>
 		</popupset>
 

@@ -85,6 +85,8 @@
 					<preference id="QuickFolders-Preferences-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool"/>
 					<preference id="QuickFolders-Preferences-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool"/>
 					<preference id="QuickFolders-Preferences-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string"/>
+					<preference id="QuickFolders-Preferences-FindFolderShortcut" name="extensions.quickfolders.useFindFolderShortcut" type="bool"/>
+					<preference id="QuickFolders-Preferences-FindFolderShortcutKey" name="extensions.quickfolders.findFolderShortcutKey" type="string"/>
 					<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool"/>
 					<preference id="QuickFolders-Preferences-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string" />
 				</preferences>
@@ -125,10 +127,26 @@
 			/>
 
 			<textbox id="QuickFolders-Options-RebuildShortcutKey"
-			          preference="QuickFolders-Preferences-RebuildShortcutKey"
-			          instantApply="true"
+			         preference="QuickFolders-Preferences-RebuildShortcutKey"
+					 class = "shortCutKey"
+			         instantApply="true"
 			/>
 		</hbox>
+		
+		<hbox>
+			<checkbox id="chkFindFolderAccel"
+			          label="&qf.checkbox.findFolderShortcut;"
+			          preference="QuickFolders-Preferences-FindFolderShortcut"
+			          instantApply="true"
+			/>
+
+			<textbox id="QuickFolders-Options-FindFolderShortcut"
+					 preference="QuickFolders-Preferences-FindFolderShortcutKey"
+					 class = "shortCutKey"
+					 instantApply="true"
+			/>
+		</hbox>
+
 		<checkbox
 			label="&qf.checkbox.useNavigationShortcuts;"
 			preference="QuickFolders-Preferences-NavigateShortcut"

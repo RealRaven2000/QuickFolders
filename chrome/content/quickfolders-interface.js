@@ -685,6 +685,9 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
 		}
 
+		// [Bug 25598] highlight active tab
+		this.onTabSelected();
+		
 		// current message dragging
 		var button = this.MailButton;
 		if (button)
@@ -998,16 +1001,23 @@ QuickFolders.Interface = {
 		var isShift = e.shiftKey;
 
 		if (isCtrl && isAlt && dir!='up' && QuickFolders.Preferences.isUseRebuildShortcut) {
-			if ((String.fromCharCode(e.charCode)).toLowerCase() == QuickFolders.Preferences.RebuildShortcutKey().toLowerCase()) {
+			if ((String.fromCharCode(e.charCode)).toLowerCase() == QuickFolders.Preferences.RebuildShortcutKey.toLowerCase()) {
 				this.updateFolders(true,false);
 				try {
 					QuickFolders.Util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
 					    + (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '')
-					    + QuickFolders.Preferences.RebuildShortcutKey());
+					    + QuickFolders.Preferences.RebuildShortcutKey);
 					QuickFolders.Util.showStatusMessage('QuickFolders tabs were rebuilt');
 				} catch(e) {;};
 			}
 		}
+		
+		if (isCtrl && isAlt && dir!='up' && QuickFolders.Preferences.isFindFolderShortcut) {
+			if ((String.fromCharCode(e.charCode)).toLowerCase() == QuickFolders.Preferences.FindFolderShortcutKey.toLowerCase()) {
+			  QuickFolders.Interface.findFolder(true);
+			}
+		}
+		
 
 		if (!isCtrl && isAlt && (dir != 'up') && QuickFolders.Preferences.isUseNavigateShortcuts) {
 			if (e.keyCode == 37)  // ALT + left
@@ -2697,18 +2707,44 @@ QuickFolders.Interface = {
 		evt.stopPropagation();
 		QuickFolders_MySelectFolder (folderUri);
 	} ,
+	
+	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
+	findFolderKeyPress: function(event) {
+	  const VK_DOWN = 0x28;
+	  if (event.keyCode && event.keyCode  == VK_DOWN) {
+		  let menupopup = document.getElementById('QuickFolders-FindPopup');
+			menupopup.removeAttribute('ignorekeys');
+			let palette = document.getElementById('QuickFolders-Palette');
+			if (palette) {
+			  menupopup = palette.appendChild(palette.removeChild(menupopup));
+				let textBox = document.getElementById('QuickFolders-FindFolder');
+				if (typeof menupopup.openPopup == 'undefined')
+					menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
+				else
+					menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
+				
+			  menupopup.focus();
+			}
+		}
+	} ,
 
 	findFolderName: function(textBox) {
 		function addMatchingFolder(matches, folder) {
-			let matchPos = folder.prettyName.toLocaleLowerCase().indexOf(searchString);
+			let folderNameSearched = folder.prettyName.toLocaleLowerCase();
+			let matchPos = folderNameSearched.indexOf(searchString);
 			if (matchPos >= 0) {
 				// only add to matches if not already there
 				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
 					let rank = searchString.length - folder.prettyName.length; 
 					if (rank == 0) rank += 7;  // full match - promote
 					if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
+					if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
+						// is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
+						if (" .-,_".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
+							return;  // skip if not starting with single letter
+					}
 					let parentName = (folder.parent && folder.parent.prettyName) ? folder.parent.prettyName + ' - ' : '';
-					matches.push( { name:parentName + folder.prettyName, lname:folder.prettyName.toLocaleLowerCase(), uri:folder.URI, rank:rank, type:'folder' } );
+					matches.push( { name:parentName + folder.prettyName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:'folder' } );
 				}
 			}
 		}
@@ -2717,42 +2753,58 @@ QuickFolders.Interface = {
 	  let searchString = textBox.value.toLocaleLowerCase();
 		if (!searchString) 
 			return;
+		QuickFolders.Util.logDebug("findFolder - " + searchString);
 		let account = null;
 		let identity = null;
 		let matches = [];
  		
+		// change: if only 1 character is given, then the name must start with that character!
 		// first, search QuickFolders
+		let folderNameSearched;
 		for (let i=0; i<QuickFolders.Model.selectedFolders.length; i++) {
 			let folderEntry = QuickFolders.Model.selectedFolders[i];
+		  folderNameSearched = folderEntry.name.toLocaleLowerCase();
 			// folderEntry.uri
-			let matchPos = folderEntry.name.toLocaleLowerCase().indexOf(searchString);
+			let matchPos = folderNameSearched.indexOf(searchString);
 			if (matchPos >= 0) {
 				let rank = searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
 				if (rank == 0) rank += 4;  // full match - promote
 				if (matchPos == 0)  rank += 2; // promote the rank if folder name starts with this string
-				matches.push( { name:folderEntry.name, lname:folderEntry.name.toLocaleLowerCase(), uri:folderEntry.uri, rank: rank, type:'quickFolder' } );
+				if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
+				  // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
+				  if (" .-,_".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
+					  continue;  // skip if not starting with single letter
+				}
+				// avoid duplicates
+				if (!matches.some( function(a) { return (a.uri == folderEntry.uri); })) {
+					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:'quickFolder' } );
+				}
 			}
 		}
-		// if 1 unique match is found, we can jump there
+		// if 1 unique full match is found, we can jump there
 		if ((matches.length == 1) && (matches[0].lname == searchString)) {
 			// go to folder
 			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
 		}
 		
     // second, search all folders globally
-		if (MailServices.accounts.allFolders) {
-			let allFolders = MailServices.accounts.allFolders;
+		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+			.getService(Ci.nsIMsgAccountManager);
+		
+		if (acctMgr.allFolders) {
+			let allFolders = acctMgr.allFolders;
 			for (let folder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
 				addMatchingFolder(matches, folder);
 			}		 
 		}
 		else { // SeaMonkey
-			let accounts = MailServices.accounts.accounts;
+			let accounts = acctMgr.accounts;
 			let allFolders = Components.classes["@mozilla.org/array;1"]
 								.createInstance(Ci.nsIMutableArray);
 			// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
 			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-			for (let i = 0; accounts && (i < iAccounts) ; ++i) {  // && (!account || !identity)
+			let i;
+			for (i = 0; accounts && (i < iAccounts) ; ++i) {  // && (!account || !identity)
 					try {
 						let account = accounts.queryElementAt ?
 							accounts.queryElementAt(i, Ci.nsIMsgAccount) :
@@ -2800,9 +2852,27 @@ QuickFolders.Interface = {
 			// success: collapses the search box! 
 			this.findFolder(false);
 		}	
+		else
+			textBox.focus();
+		  
  	} ,
+
+  // when typing while search results popup is displayed	
+	// should be passed on to the (parent) search box
+	foundInput: function(element, event) {
+		QuickFolders.Util.logDebug("foundInput - " + event);
+		element.setAttribute('ignorekeys', 'true');
+	} ,
 	
-	selectFound: function(el) {
+	findPopupBlur: function(el, event) {
+		QuickFolders.Util.logDebug("findPopupBlur - " + event);
+		el.setAttribute('ignorekeys', 'true');
+	} ,
+	
+	selectFound: function(element, event) {
+		QuickFolders.Util.logDebug("selectFound - " + event);
+		element.setAttribute('ignorekeys', 'true');
+	  let el = event.target;
 		let URI = el.getAttribute('value');
 		let isSelected = QuickFolders_MySelectFolder(URI);
 		if (isSelected) {
@@ -3105,7 +3175,7 @@ QuickFolders.Interface = {
 					//   showPopup should have set this as 'targetNode'
 					let targetNode = parent.targetNode;
 					// now paint the button
-				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, true, col);
+				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
 				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPrefQF('pastelColors'));
 					//   retrieve about config key to persist setting;
 					let styleKey =  targetNode.getAttribute('stylePrefKey');
@@ -3185,13 +3255,25 @@ QuickFolders.Interface = {
 									if (styleKey == 'DragOver') 
 										styleKey = 'DragTab'; // fix naming inconsistency
 									QuickFolders.Preferences.setUserStyle(styleKey, "background-color", rgb);
-									// QuickFolders.Interface.updateUserStyles(); 
 								}
 							}
 						}
 					}
-					return;
-					// early exit
+
+					// if no color is selected in inactive tab, switch on transparent:
+					if (styleKey == 'InactiveTab' && col == 0) {
+						let chkTransparent = window.document.getElementById('buttonTransparency');
+						if (chkTransparent && !chkTransparent.checked) {
+							chkTransparent.checked = true;
+							QuickFolders.Options.toggleColorTranslucent(chkTransparent, 'inactive-colorpicker', 'inactivetabs-label', styleKey);
+						}
+						let cp = document.getElementById('inactive-colorpicker');
+						if (cp)
+						  cp.color = 'rgb(255,255,255)';
+						QuickFolders.Preferences.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
+						QuickFolders.Interface.updateMainWindow();
+					}
+					return; // early exit
 			} // end switch
 		}
 		// or... paint a quickFolders tab
@@ -3307,8 +3389,8 @@ QuickFolders.Interface = {
 			let paletteEntry = QuickFolders.Preferences.getIntPref('style.DragOver.paletteEntry');
 			let ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry;
 			let dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
+			// for some reason this one is completely ignored by SeaMonkey and Postbox
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over', 'background-image', dragOverGradient, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:drag-over', 'background-image', dragOverGradient, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':-moz-drag-over > label','color', dragOverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '[buttonover="true"] > label','color', dragOverColor, true);
 		}
@@ -3852,7 +3934,7 @@ QuickFolders.Interface = {
 
 		let action = "";
 		
-		if (panel == "threadPaneBox" || panel == "accountCentralBox" || panel == "folder" || 
+		if (panel == "threadPaneBox" || panel == "accountCentralBox" || panel == "folder" || panel == "glodaList" ||
 		    isMailPanel && !QuickFolders.Preferences.getBoolPrefQF("toolbar.hideInSingleMessage")) {
 			action = "Showing";
 			toolbar.removeAttribute("collapsed");

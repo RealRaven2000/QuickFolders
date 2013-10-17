@@ -159,7 +159,7 @@ QuickFolders.Interface = {
 	setFolderSelectTimer: function() {
 			try {
 				let nDelay = 100;
-				let tID=setTimeout(function() { QuickFolders.Interface.onTabSelected()(); }, nDelay);
+				let tID=setTimeout(function() { QuickFolders.Interface.onTabSelected(); }, nDelay);
 				QuickFolders.Util.logDebug("Folder Select Timer prepared - ID: " + tID);
 			}
 			catch (e) {
@@ -474,9 +474,10 @@ QuickFolders.Interface = {
 					, 'recent' + ((isCurrentFolderButton || QuickFolders.Preferences.isShowRecentTabIcon) ?  ' icon' : '')
 					, false);
 				this.buttonsByOffset[0] = button; // currently, hard code to be the first! ([0] was [offset])
-				var tabColor = QuickFolders.Preferences.recentTabColor();
-				if (tabColor)
+				var tabColor = QuickFolders.Preferences.recentTabColor;
+				if (tabColor) {
 					this.setButtonColor(button, tabColor);
+			  }
 			}
 
 			menupopup = this.createRecentPopup(passedPopup, isDrag, isFolderUpdate, isCurrentFolderButton);
@@ -531,8 +532,8 @@ QuickFolders.Interface = {
 			let color = paintButton.getAttribute("colorIndex");
 			if (!color) color = 0;
 			this.setButtonColor(button, color);
-			// QuickFolders.Model.setFolderColor(button.folder.URI, color, true); 
-			QuickFolders.Preferences.setIntPref( 'extensions.quickfolders.recentfolders.color'. color)
+			this.initElementPaletteClass(button);
+			QuickFolders.Preferences.setIntPref( 'recentfolders.color',  color)
 			return;
 		}
 
@@ -1437,7 +1438,7 @@ QuickFolders.Interface = {
 	onButtonClick: function(button, evt, isMouseClick) {
 		QuickFolders.Util.logDebugOptional("mouseclicks","onButtonClick - isMouseClick = " + isMouseClick);
 		try {
-			if(QuickFolders.Interface.PaintModeActive) {
+			if (QuickFolders.Interface.PaintModeActive) {
 				QuickFolders.Util.logDebugOptional("mouseclicks","onButtonClick - Paint Mode!");
 				let paintButton = this.PaintButton;
 				let color;
@@ -2711,20 +2712,39 @@ QuickFolders.Interface = {
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
 	findFolderKeyPress: function(event) {
 	  const VK_DOWN = 0x28;
-	  if (event.keyCode && event.keyCode  == VK_DOWN) {
-		  let menupopup = document.getElementById('QuickFolders-FindPopup');
-			menupopup.removeAttribute('ignorekeys');
-			let palette = document.getElementById('QuickFolders-Palette');
-			if (palette) {
-			  menupopup = palette.appendChild(palette.removeChild(menupopup));
-				let textBox = document.getElementById('QuickFolders-FindFolder');
-				if (typeof menupopup.openPopup == 'undefined')
-					menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
-				else
-					menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
-				
-			  menupopup.focus();
-			}
+		const VK_ESCAPE = 0x1B;
+		let menupopup;
+	  if (event.keyCode) switch (event.keyCode) 
+		{
+		  case VK_DOWN:
+				menupopup = document.getElementById('QuickFolders-FindPopup');
+				menupopup.removeAttribute('ignorekeys');
+				let palette = document.getElementById('QuickFolders-Palette');
+				if (palette) {
+					menupopup = palette.appendChild(palette.removeChild(menupopup));
+					let textBox = document.getElementById('QuickFolders-FindFolder');
+					if (typeof menupopup.openPopup == 'undefined')
+						menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
+					else
+						menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
+					
+					setTimeout( function() {
+							menupopup.focus();
+							if (menupopup.dispatchEvent(event)) { // now pass it on!
+								// event was not cancelled with preventDefault()
+								;
+							}
+						});
+				} // palette
+				break;
+			case VK_ESCAPE:
+				menupopup = document.getElementById('QuickFolders-FindPopup');
+				let state = menupopup.getAttribute('state');
+				if (state == 'open' || state == 'showing') {
+					menupopup.hidePopup();
+				}
+			  this.findFolder(false);
+			  break;
 		}
 	} ,
 
@@ -2841,6 +2861,7 @@ QuickFolders.Interface = {
 						menuitem.className = 'quickFolder menuitem-iconic';
 					menupopup.appendChild(menuitem);
 				}
+				menupopup.setAttribute('ignorekeys', 'true');
 				if (typeof menupopup.openPopup == 'undefined')
 					menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
 				else
@@ -3115,17 +3136,12 @@ QuickFolders.Interface = {
 			   (targetElement.label ? targetElement.label : targetElement.tagName) : 'none') 
 			+ ")  paletteClass = {" + paletteToken + "}");
 		
-		//
+		// remove palette name(s)
+		element.className = this.stripPaletteClasses(element.className, paletteToken);
 		let hasClass = (paletteToken && element.className.indexOf(paletteToken) >= 0);
 		if (!hasClass) {
 		  if (paletteToken)
 				element.className += paletteToken;
-		}
-		else { // strip all (other) classes
-		  if (!paletteToken) {
-			  // remove classes that are NOT paletteToken .. TO BE EXTENDED!
-			  element.className = element.className.replace(/\s*pastel/,'');	
-			}
 		}
 	} ,
 	
@@ -3139,17 +3155,18 @@ QuickFolders.Interface = {
 		if (col === -1)
 			col = this.getButtonColor(paintButton);
 
-		this.setButtonColor(paintButton, col, false); // let's allow striping
-		this.initElementPaletteClass(paintButton);
-		this.initElementPaletteClass(this.PalettePopup);
+		this.setButtonColor(paintButton, col, false);    // let's allow striping
+		this.initElementPaletteClass(paintButton);       // palette -> Button
+		this.initElementPaletteClass(this.PalettePopup); // palette -> popup
 		// striped
 		if (QuickFolders.Preferences.ColoredTabStyle == QuickFolders.Preferences.TABS_STRIPED && paintButton.className.indexOf('striped')<0)
 			paintButton.className = paintButton.className.replace(/(col[0-9]+)/,'$1striped');
 		// filled
 		if (QuickFolders.Preferences.ColoredTabStyle == QuickFolders.Preferences.TABS_FILLED && paintButton.className.indexOf('striped')>0)
 			paintButton.className = paintButton.className.replace('striped','');
-
+			
 		// initialize hover color
+		// ==> must become palette type aware as well!
 		this.initHoverStyle(
 		         this.getStyleSheet(QuickFolders.Styles, 'quickfolders-layout.css', "QuickFolderStyles"), 
 		         this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, ''),
@@ -3280,7 +3297,8 @@ QuickFolders.Interface = {
 		var theFolder = parent.folder;
 		var button = this.getButtonByFolder(theFolder);
 		QuickFolders.Util.logToConsole("Interface.setTabColorFromMenu(" + menuitem.toString() + ", " + col + ")" );
-		this.setButtonColor(button, col);
+		this.setButtonColor(button, col);        // color the  button via palette entry number
+		this.initElementPaletteClass(button);    // make sure correct palette is set
 		QuickFolders.Model.setFolderColor(theFolder.URI, col, false); // store color in folder string
 	} ,
 
@@ -3325,20 +3343,23 @@ QuickFolders.Interface = {
 	initHoverStyle: function(ss, ssPalettes, isPaintMode) {
 	  if (ssPalettes == null)
 		  ssPalettes = ss;
-		let paletteClass = this.getPaletteClassCss('HoveredTab');
-		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initHoverStyle()");
+		let templateTabClass =  isPaintMode ? 'ColoredTab' : 'HoveredTab';
+		let paletteClass = this.getPaletteClassCss(templateTabClass);
+		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initHoverStyle()  PaintMode=" + isPaintMode + "   paletteClass=" + paletteClass);
 		let engine = QuickFolders.Styles;
 		let hoverBackColor = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90");
 		let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
 		let noColorClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
-		let hoverColor = QuickFolders.Preferences.getUserStyle("HoveredTab","color","#000000");
+		let hoverColor = QuickFolders.Preferences.getUserStyle(templateTabClass, "color", "#000000");
 		
+		// default hover colors: (not sure if we even need them during paint mode)
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover','background-color', hoverBackColor,true);
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover','background-color', hoverBackColor,true);
 
 		let paintButton = isPaintMode ? this.PaintButton : null;
 			
-		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "style.HoveredTab.paletteType = " + QuickFolders.Preferences.getIntPref('style.HoveredTab.paletteType'));
+		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "style." + templateTabClass + ".paletteType = " 
+		  + QuickFolders.Preferences.getIntPref('style.' + templateTabClass + '.paletteType'));
 
 		if (QuickFolders.Preferences.getIntPref('style.HoveredTab.paletteType') || isPaintMode) {
 			let paletteEntry = 
@@ -3356,7 +3377,9 @@ QuickFolders.Interface = {
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':hover', 'background-image', hoverGradient, true); // [class^="col"]
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ':hover', 'background-image', hoverGradient, true); 
 
-			// let hoverColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
+			// picked hover color )from paint mode)
+			let hc = engine.getElementStyle(ssPalettes, ruleName, 'color');
+			hoverColor = hc ? hc : hoverColor;
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFolders-CurrentFolder):hover > label','color', hoverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[buttonover="true"] > label','color', hoverColor, true);
 		}
@@ -3403,6 +3426,14 @@ QuickFolders.Interface = {
 	getPaletteClassCss: function(tabStateId) {
 		let cl = this.getPaletteClass(tabStateId);
 		return cl.replace(' ', '.');
+	} ,
+	
+	stripPaletteClasses: function(className, exclude) {
+	  let stripped = className;
+		if (exclude !== 'pastel')
+		  stripped = className.replace(/\s*pastel/,'')
+		return stripped;
+	  
 	} ,
 	
 	getPaletteClass: function(tabStateId) {
@@ -4092,9 +4123,7 @@ QuickFolders.Interface = {
 
 				try {
 					this.setButtonColor(paintButton, tabColor);
-					this.initElementPaletteClass(paintButton);
 					// create context menu
-					
 					let menupopup = this.PalettePopup;
 					if (!menupopup.firstChild) {
 						this.buildPaletteMenu(tabColor, menupopup);

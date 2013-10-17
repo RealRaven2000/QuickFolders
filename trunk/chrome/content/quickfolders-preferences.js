@@ -163,7 +163,7 @@ QuickFolders.Preferences = {
 		return this.getBoolPrefQF('pastelColors');
 	} ,
 
-	recentTabColor: function() {
+	get recentTabColor() {
 		return this.getIntPref( 'recentfolders.color');
 	} ,
 

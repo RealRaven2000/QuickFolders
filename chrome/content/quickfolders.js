@@ -186,11 +186,13 @@ END LICENSE BLOCK */
 
 	3.12.2 Maintenance Release - WIP
 	  ## Fixed [Bug 25598] - Active folder not marked at startup / category selection
+		## [Bug 25610] - Clicking on tab does not switch to that tab most of the time
 		## Fixed [Bug 25606] - QuickFolders doesn't always highlight active folder
 		## Improved Search Folder algorithm and UI
 		## Configurable Shortcut for Find folder
 		## SeaMonkey - Improved height of current folder tab
-		## [Bug 25607] - Drag and Drop from current folder icon broken
+		## When in paint mode instant coloring showed wrong color while pastel palette was selected
+		## Fixed storing color for recent folder tab
 
 		
 	

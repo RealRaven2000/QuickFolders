@@ -801,7 +801,7 @@ QuickFolders.Util = {
  */
   suggestUniqueFileName: function (aIdentifier, aType, aExistingNames) {
 		let suffix = 1;
-		let base = validateFileName(aIdentifier);
+		let base = validateFileName(aIdentifier); // mail/base/content/utilityOverlay.js or mozilla/toolkit/content/contentAreaUtils.js
 		let suggestion = base + aType;
 		while(true) {
 			if (!aExistingNames.has(suggestion))
@@ -813,6 +813,27 @@ QuickFolders.Util = {
 
 		return suggestion;
   }	,
+	
+  suggestUniqueFileName_Old: function (aIdentifier, aType, aExistingNames) {
+    let suffix = 1;
+    let suggestion;
+    let base = identifier;
+    let exists;
+    do {
+      exists = false;
+      suggestion = GenerateValidFilename(base, type);
+      for (let i = 0; i < existingNames.length; i++) {
+        if (existingNames[i] == suggestion) {
+          base = identifier + suffix;
+          suffix++;
+          exists = true;
+          break;
+        }
+      }
+    } while (exists);
+		return suggestion;
+	} ,
+
 
 	threadPaneOnDragStart: function (aEvent)
 	{
@@ -841,9 +862,11 @@ QuickFolders.Util = {
 		let ios = Components.classes["@mozilla.org/network/io-service;1"]
 						  .getService(Components.interfaces.nsIIOService);
 		
-		let fileNames = new Set();
+		let newUF = (typeof Set !== 'undefined');
+		let fileNames = newUF ? new Set() : [];
 		let msgUrls = {};
 		let uniqueFileName = '';
+		let count = 0;
 
 		// dragging multiple messages to desktop does not
 		// currently work, pending core fixes for
@@ -851,21 +874,20 @@ QuickFolders.Util = {
 		for (let i in messages) {
 			messenger.messageServiceFromURI(messages[i])
 					 .GetUrlForUri(messages[i], msgUrls, null);
+			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", messages[i], i);
 			let subject = messenger.messageServiceFromURI(messages[i])
 			              	.messageURIToMsgHdr(messages[i]).mime2DecodedSubject;
-			if (fileNames) {
-				uniqueFileName = this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames);
-				fileNames.add(uniqueFileName);
-			}
-			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", messages[i], i);
+			uniqueFileName = newUF ?
+				this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames) :
+				this.suggestUniqueFileName_Old(subject.substr(0,124), ".eml", fileNames);
+			fileNames.add(uniqueFileName);
 			try {
-				if (typeof msgUrls.value !='undefined') {
-					aEvent.dataTransfer.mozSetDataAt("text/x-moz-url",msgUrls.value.spec, i);
-					//if (suggestUniqueFileName) { // no file support in SeaMonkey
-						aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", msgUrls.value.spec + "&fileName=" + uniqueFileName, i);
-					//}
-				}
+				aEvent.dataTransfer.mozSetDataAt("text/x-moz-url",msgUrls.value.spec, i);
+				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", 
+																				 msgUrls.value.spec + "&fileName=" + 
+																				 uniqueFileName, i);
 				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
+				count++;
 			}
 			catch(ex)
 			{
@@ -874,9 +896,9 @@ QuickFolders.Util = {
 		}
 		aEvent.dataTransfer.dropEffect = "move";
 		aEvent.dataTransfer.mozCursor = "auto";
-		aEvent.dataTransfer.effectAllowed = "all"; // copyMove
+		aEvent.dataTransfer.effectAllowed = "copyMove"; // all
 		aEvent.dataTransfer.addElement(aEvent.originalTarget);
-		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends.");
+		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends: " + count + " messages prepared.");
 	},
 
 	debugVar: function(value) {

@@ -49,6 +49,8 @@
 		<vbox id="QuickFolders-LabelBox" flex="0">
 		  <label id="QuickFolders-title-label">&qf.label.quickfolders;</label>
 		</vbox>
+		
+		<vbox id="QuickFolders-Tools-Pane">
 
 		<hbox id="QuickFolders-Category-Box" >
 			<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);"  sizetopopup="none" collapsed="true">
@@ -72,12 +74,14 @@
 				 collapsed="true"/>
 				<textbox id="QuickFolders-FindFolder" 
 						 oncommand="QuickFolders.Interface.findFolderName(this);"
+							 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
 						 type="search"
 						 collapsed="true"
-						 searchbutton="true"
 						 placeholder="folder name"/>
 			 </hbox>
 		</hbox>
+			<spacer flex="2" />
+		</vbox>
 		
 		<popupset id="QuickFolders-Palette">
 			<menupopup id="QuickFolders-PalettePopup" class="QuickFolders-folder-popup">

@@ -2947,16 +2947,32 @@ QuickFolders.Interface = {
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
 	findFolder: function(notify) {
-		let ff = QuickFolders.Util.$("QuickFolders-FindFolder");
-		ff.collapsed = !ff.collapsed;
-		if (!ff.collapsed) {
-			if (notify) {
-				QuickFolders.Util.popupProFeature("findFolder");
+		try {
+			let ff = QuickFolders.Util.$("QuickFolders-FindFolder");
+			ff.collapsed = !ff.collapsed;
+			if (!ff.collapsed) {
+				if (notify) {
+					QuickFolders.Util.popupProFeature("findFolder");
+				}
+				ff.focus();
 			}
-			ff.focus();
+			else (
+				ff.value = ""; // reset search box
+				// move focus away!
+				let msgPane = GetMessagePane();
+				if (!msgPane.collapsed) {
+					msgPane.focus();
+				}
+				else {
+					let fPane = GetFolderPane();
+					if (!fPane.collapsed) {
+						fPane.focus();
+					}
+				}
+			}
 		}
-		else {
-		  ff.value = ""; // reset search box
+		catch(ex) {
+			QuickFolders.Util.logException("findFolder (" + notify + ") failed.", ex);
 		}
 	}	,
 	

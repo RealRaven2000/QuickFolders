@@ -193,6 +193,9 @@ END LICENSE BLOCK */
 		## SeaMonkey - Improved height of current folder tab
 		## When in paint mode instant coloring showed wrong color while pastel palette was selected
 		## Fixed storing color for recent folder tab
+		Known Issues
+		============
+		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 
 		
 	

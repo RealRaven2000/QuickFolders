@@ -2895,7 +2895,7 @@ QuickFolders.Interface = {
 		element.setAttribute('ignorekeys', 'true');
 	  let el = event.target;
 		let URI = el.getAttribute('value');
-		let isSelected = QuickFolders_MySelectFolder(URI);
+		let isSelected = QuickFolders_MySelectFolder(URI, true);
 		if (isSelected) {
 			// success: collapses the search box! 
 			this.findFolder(false);
@@ -2956,7 +2956,7 @@ QuickFolders.Interface = {
 				}
 				ff.focus();
 			}
-			else (
+			else {
 				ff.value = ""; // reset search box
 				// move focus away!
 				let msgPane = GetMessagePane();

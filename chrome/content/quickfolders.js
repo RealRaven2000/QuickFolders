@@ -1305,7 +1305,7 @@ function QuickFolders_MyChangeSelection(tree, newIndex)
 
 // the core function for selecting a folder
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
-function QuickFolders_MySelectFolder(folderUri)
+function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 {
 	function getIndexTabURI(idx) {
 	  // note: tabmail is declared further down - it is in scope.
@@ -1332,7 +1332,7 @@ function QuickFolders_MySelectFolder(folderUri)
 	let folderIndex, i;
 
 	QuickFolders.currentURI = folderUri;
-
+	
 	let tabmail = document.getElementById("tabmail");
 	if (tabmail && tabmail.tabInfo) {
 		for (i = 0; i < tabmail.tabInfo.length; i++) {
@@ -1368,7 +1368,7 @@ function QuickFolders_MySelectFolder(folderUri)
 
 		folderIndex = theTreeView.getIndexOfFolder(msgFolder);
 		if (null == folderIndex) {
-				theTreeView.selectFolder(msgFolder);
+			theTreeView.selectFolder(msgFolder);
 			folderIndex = theTreeView.getIndexOfFolder(msgFolder);
 		}
 		
@@ -1380,7 +1380,7 @@ function QuickFolders_MySelectFolder(folderUri)
 				folderIndex = theTreeView.getIndexOfFolder(msgFolder);
 			}
 
-			var parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+			let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
 			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
 			var specialFlags = Con.MSG_FOLDER_FLAG_INBOX + Con.MSG_FOLDER_FLAG_QUEUE + Con.MSG_FOLDER_FLAG_SENTMAIL + Con.MSG_FOLDER_FLAG_TRASH + Con.MSG_FOLDER_FLAG_DRAFTS + Con.MSG_FOLDER_FLAG_TEMPLATES + Con.MSG_FOLDER_FLAG_JUNK ;
 			if (msgFolder.flags & specialFlags) {
@@ -1411,7 +1411,7 @@ function QuickFolders_MySelectFolder(folderUri)
 							theTreeView._toggleRow(parentIndex, true); // server
 					}
 					else {
-					QuickFolders.Util.logDebugOptional("folders", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
+					  QuickFolders.Util.logDebugOptional("folders", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
 					}
 				}
 			}
@@ -1493,6 +1493,14 @@ function QuickFolders_MySelectFolder(folderUri)
 		QuickFolders.doc.commandDispatcher.advanceFocus();
 		QuickFolders.doc.commandDispatcher.rewindFocus();
 	}
+	
+	// speed up the highlighting... - is this only necessary on MAC ?
+	if (highlightTabFirst) {
+	  let entry = QuickFolders.Model.getFolderEntry(folderUri);
+		if (entry) {
+		  QuickFolders.Interface.onTabSelected();  
+		}
+	}	
 	
 	return true;
 }
@@ -1678,6 +1686,4 @@ QuickFolders.LocalErrorLogger = function(msg) {
 	var cserv = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);
 	cserv.logStringMessage("QuickFolders:" + msg);
 }
-
-
 

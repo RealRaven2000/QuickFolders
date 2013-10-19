@@ -896,7 +896,7 @@ QuickFolders.Util = {
 		}
 		aEvent.dataTransfer.dropEffect = "move";
 		aEvent.dataTransfer.mozCursor = "auto";
-		aEvent.dataTransfer.effectAllowed = "copyMove"; // all
+		aEvent.dataTransfer.effectAllowed = "all"; // copyMove
 		aEvent.dataTransfer.addElement(aEvent.originalTarget);
 		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends: " + count + " messages prepared.");
 	},
@@ -1328,7 +1328,6 @@ QuickFolders.Util.FirstRun =
 
 };
 
-
 //			//// CHEAT SHEET
 // 			// from comm-central/mailnews/test/resources/filterTestUtils.js
 // 			var ATTRIB_MAP = {
@@ -1354,8 +1353,3 @@ QuickFolders.Util.FirstRun =
 // 				"tag" : [Ci.nsMsgFilterAction.AddTag, "strValue", "tag"]
 // 				"move" : [Ci.nsMsgFilterAction.MoveToFolder, "folder"]
 // 			 };
-
-
-
-
-

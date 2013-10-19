@@ -1,6 +1,8 @@
+@import url('chrome://quickfolders-pl/skin/style.css');
 @import url('chrome://quickfolders/content/quickfolders-layout.css');
 @import url('chrome://quickfolders/skin/quickfolders-palettes.css');
 @import url('chrome://quickfolders/content/contribute.css');
+/* platform specific styling */
 
 /* Options window */
 #qf-options-prefpane {

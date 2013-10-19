@@ -22,11 +22,11 @@ locale quickfolders zh-TW  chrome/locale/zh/
 locale quickfolders hu-HU  chrome/locale/hu-HU/
 locale quickfolders sv-SE  chrome/locale/sv-SE/
 
-skin    quickfolders classic/1.0  chrome/skin/
 
 #platform specific content -> allow additional platform specific rules
 content quickfolders-pl    content/ platform
-skin    quickfolders-pl    classic/1.0  skin/
+skin    quickfolders       classic/1.0  chrome/skin/
+skin    quickfolders-pl    classic/1.0  chrome/skin/
 
 
 # replace mailWindowOverlay.xul with messenger.xul!

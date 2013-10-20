@@ -2718,6 +2718,9 @@ QuickFolders.Interface = {
 		{
 		  case VK_DOWN:
 				menupopup = document.getElementById('QuickFolders-FindPopup');
+				let fC = menupopup.firstChild;
+				if (!fC) 
+				  return; // no children = no results!
 				menupopup.removeAttribute('ignorekeys');
 				let palette = document.getElementById('QuickFolders-Palette');
 				if (palette) {
@@ -2727,24 +2730,36 @@ QuickFolders.Interface = {
 						menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
 					else
 						menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
+					if (event.preventDefault) event.preventDefault();
+					if (event.stopPropagation) event.stopPropagation();
 					
 					setTimeout( function() {
-							menupopup.focus();
-							if (menupopup.dispatchEvent(event)) { // now pass it on!
+							let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
+							keypress_event.initKeyEvent("keypress", true, true, null,   // typeArg, canBubble, cancelable
+											 false, false, false, false,                        // ctrl, alt, shift, meta
+											 VK_DOWN, 0);                                       // keyCode, charcode
+							
+							if (menupopup.dispatchEvent(keypress_event)) { // now pass it on!
 								// event was not cancelled with preventDefault()
 								;
 							}
-						});
+					});
+					
+					setTimeout( function() { menupopup.focus(); fC.focus(); }, 250 );
 				} // palette
 				break;
 			case VK_ESCAPE:
-				menupopup = document.getElementById('QuickFolders-FindPopup');
-				let state = menupopup.getAttribute('state');
-				if (state == 'open' || state == 'showing') {
-					menupopup.hidePopup();
-				}
 			  this.findFolder(false);
+			  this.hideFindPopup();
 			  break;
+		}
+	} ,
+	
+	hideFindPopup: function() {
+	  let menupopup = document.getElementById('QuickFolders-FindPopup');
+		let state = menupopup.getAttribute('state');
+		if (state == 'open' || state == 'showing') {
+			menupopup.hidePopup();
 		}
 	} ,
 
@@ -2805,6 +2820,7 @@ QuickFolders.Interface = {
 		if ((matches.length == 1) && (matches[0].lname == searchString)) {
 			// go to folder
 			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+			this.hideFindPopup();
 		}
 		
     // second, search all folders globally
@@ -2899,6 +2915,7 @@ QuickFolders.Interface = {
 		if (isSelected) {
 			// success: collapses the search box! 
 			this.findFolder(false);
+			this.hideFindPopup();
 		}
 		else {
 			if (el.className.indexOf('quickFolder')>=0) {
@@ -2959,15 +2976,17 @@ QuickFolders.Interface = {
 			else {
 				ff.value = ""; // reset search box
 				// move focus away!
-				let msgPane = GetMessagePane();
-				if (!msgPane.collapsed) {
-					msgPane.focus();
+				let threadPane = this.getThreadPane();
+				if (!threadPane.collapsed) {
+					SetFocusThreadPane();
 				}
 				else {
-					let fPane = GetFolderPane();
-					if (!fPane.collapsed) {
-						fPane.focus();
+					let fTree = GetFolderTree();
+					if (!fTree.collapsed) {
+						fTree.focus();
 					}
+					else
+						ff.blur();
 				}
 			}
 		}
@@ -2975,6 +2994,10 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logException("findFolder (" + notify + ") failed.", ex);
 		}
 	}	,
+	
+	getThreadPane: function() { 
+	  return document.getElementById("threadPaneBox");  // need this for Postbox.
+	} , 
 	
 	viewOptions: function(selectedTab, updateMessage) {
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null};

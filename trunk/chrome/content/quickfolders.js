@@ -188,14 +188,18 @@ END LICENSE BLOCK */
 	  ## Fixed [Bug 25598] - Active folder not marked at startup / category selection
 		## [Bug 25610] - Clicking on tab does not switch to that tab most of the time
 		## Fixed [Bug 25606] - QuickFolders doesn't always highlight active folder
+		## Fixed [Bug 25608] - Unexpected behavior when changing folders while reading a message
 		## Improved Search Folder algorithm and UI
 		## Configurable Shortcut for Find folder
 		## SeaMonkey - Improved height of current folder tab
 		## When in paint mode instant coloring showed wrong color while pastel palette was selected
 		## Fixed storing color for recent folder tab
-		Known Issues
-		============
+		## Raised minimum Version for Thunderbird to 17.0
+	Known Issues
+	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
+		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
+		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
 
 		
 	
@@ -1325,6 +1329,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	//during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
+	
 
 	var folderTree = QuickFolders_MyGetFolderTree();
 	var folderResource = QuickFolders_myRDF().GetResource(folderUri);
@@ -1354,6 +1359,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		}
 	}
 
+	// if single message is shown, we cannot do anything with the folder tree...
+	if (QuickFolders.Interface.CurrentTabMode == 'message') {
+	  return; // avoid closing the single message
+	}
 
 	var Con = QuickFolders.Util.Constants;
 

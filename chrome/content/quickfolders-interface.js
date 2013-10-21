@@ -2743,7 +2743,7 @@ QuickFolders.Interface = {
 								// event was not cancelled with preventDefault()
 								;
 							}
-					});
+					}, 150);
 					
 					setTimeout( function() { menupopup.focus(); fC.focus(); }, 250 );
 				} // palette
@@ -2806,8 +2806,8 @@ QuickFolders.Interface = {
 				if (rank == 0) rank += 4;  // full match - promote
 				if (matchPos == 0)  rank += 2; // promote the rank if folder name starts with this string
 				if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
-				  // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
-				  if (" .-,_".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
+				  // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred" ":fred" "(fred" "@fred"
+				  if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
 					  continue;  // skip if not starting with single letter
 				}
 				// avoid duplicates
@@ -2978,7 +2978,7 @@ QuickFolders.Interface = {
 				// move focus away!
 				let threadPane = this.getThreadPane();
 				if (!threadPane.collapsed) {
-					SetFocusThreadPane();
+					this.setFocusThreadPane();
 				}
 				else {
 					let fTree = GetFolderTree();
@@ -2998,6 +2998,18 @@ QuickFolders.Interface = {
 	getThreadPane: function() { 
 	  return document.getElementById("threadPaneBox");  // need this for Postbox.
 	} , 
+	
+	setFocusThreadPane: function()
+  {
+    let threadTree = this.getThreadTree();
+		if (threadTree)
+			threadTree.focus();
+  } ,
+
+  getThreadTree: function()
+  {
+    return document.getElementById("threadTree")
+  } ,
 	
 	viewOptions: function(selectedTab, updateMessage) {
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null};

@@ -1361,7 +1361,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 
 	// if single message is shown, we cannot do anything with the folder tree...
 	if (QuickFolders.Interface.CurrentTabMode == 'message') {
-	  return; // avoid closing the single message
+	  return false; // avoid closing the single message
 	}
 
 	var Con = QuickFolders.Util.Constants;
@@ -1497,8 +1497,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 			return false;
 	}
 
-	if (QuickFolders.Preferences.isFocusPreview && !(GetMessagePane().collapsed)) {
-		GetMessagePane().focus();
+	if (QuickFolders.Preferences.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
+		QuickFolders.Interface.setFocusThreadPane();
 		QuickFolders.doc.commandDispatcher.advanceFocus();
 		QuickFolders.doc.commandDispatcher.rewindFocus();
 	}

@@ -2,12 +2,12 @@
 QuickFolders.Preferences = {
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 
-	isDebug: function () {
+	get isDebug() {
 		return this.getBoolPrefQF("debug");
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if(!this.isDebug()) return false;
+		if(!this.isDebug) return false;
 		try {return this.getBoolPrefQF("debug." + option);}
 		catch(e) {return false;}
 	},
@@ -358,7 +358,15 @@ QuickFolders.Preferences = {
 	},
 
 	getBoolPrefQF: function(p) {
-		return this.service.getBoolPref("extensions.quickfolders." + p);
+	  let ans;
+	  try {
+	    ans = this.service.getBoolPref("extensions.quickfolders." + p);
+		}
+		catch(ex) {
+		  QuickFolders.Util.logException("getBoolPrefQF("  + p +") failed\n", ex);
+		  throw(ex);
+		}
+		return ans;
 	},
 
 	setBoolPrefQF: function(p, v) {

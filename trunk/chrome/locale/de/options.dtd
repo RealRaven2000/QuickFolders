@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Tabs mit ungelesenen Mails fett darstellen">
 <!ENTITY qf.checkbox.showTotalMessageCount "Anzahl aller Mails auf Tabs zeigen">
 <!ENTITY qf.checkbox.showCountInSubFolders "Auch die Anzahlen aus Unterverzeichnissen darstellen">
+<!ENTITY qf.button.configureTooltips "Tooltips konfigurieren…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Diese werden mit einem '+' neben dem jeweiligen Hauptzähler dargestellt; bei in Unterverzeichnissen enthaltenen ungelesenen EMails wird auch fett hervorgehoben falls obige Option aktiviert ist.">
 <!ENTITY qf.checkbox.showMessageNavigation "Schaltflächen zum Navigieren der EMails">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Tabs die Emails enthalten kursiv darstellen">
@@ -67,9 +68,8 @@
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">
 <!ENTITY qf.button.defaultcolors "Standard Farben">
 <!ENTITY qf.checkbox.debug "Debug Modus">
-<!ENTITY qf.label.UncoloredTab "Ungefärbtes Tab">
-<!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuell gewählte Farbe">
 <!ENTITY qf.label.UncoloredTab "Normale Tab Farbe:">
+<!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuell gewählte Farbe">
 <!ENTITY qf.label.ColoredTabPalette "Palette für individuelle Farben:">
 <!ENTITY qf.label.ColoredTabPalette.tooltip "Palette für Tabs mit individuell gewählter Farbe">
 <!ENTITY qf.checkbox.usePalette "Palette benutzen">

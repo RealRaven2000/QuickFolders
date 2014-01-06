@@ -7,14 +7,15 @@
 <!ENTITY qf.checkbox.displaylabel "ツールバーに 'QuickFolders' ラベルを表示する">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt+1 から Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Ctrl キーを使用する">
-<!ENTITY qf.checkbox.useRebuildShortcut "次のショートカットキーでタブを再構築する: Ctrl+Alt+">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useRebuildShortcut "タブ再構築のショートカットキー: Ctrl+Alt+">
+<!ENTITY qf.checkbox.findFolderShortcut "フォルダ検索のショートカットキー: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+← / Alt+→ キーで前のタブ / 次のタブへ移動する">
 <!ENTITY qf.checkbox.showshortcutnumber "フォルダのラベルにショートカット番号を表示する">
 <!ENTITY qf.checkbox.showUnreadMessageCount "フォルダボタンに未読メッセージ数を表示する">
 <!ENTITY qf.checkbox.showUnreadBold "未読メッセージ数を太字で表示する">
 <!ENTITY qf.checkbox.showTotalMessageCount "フォルダボタンにメッセージ数の合計を表示する">
 <!ENTITY qf.checkbox.showCountInSubFolders "サブフォルダのメッセージ数も表示する">
+<!ENTITY qf.button.configureTooltips "ツールチップ設定…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "「メインフォルダのメッセージ数 + サブフォルダのメッセージ数」のように表示されます。上記のオプションが有効であれば、未読を含むタブは太字で表示されます。">
 <!ENTITY qf.checkbox.showMessageNavigation "メッセージナビゲーションのボタン">
 <!ENTITY qf.checkbox.showNonEmptyItalics "メッセージを含むフォルダを斜体で表示する">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "デフォルト">
 <!ENTITY qf.label.currentFolderToolbar "現在のフォルダツールバー">
 <!ENTITY qf.checkbox.currentFolder.show "ツールバーを表示">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... 単体のメッセージウィンドウにも表示">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "… 単体のメッセージウィンドウにも表示">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "メールを選択して開いた新しいウィンドウに現在のフォルダツールバーを表示します">
 <!ENTITY qf.checkbox.currentFolder.closeButton "閉じるボタン">
 <!ENTITY qf.button.currentFolderBackground.set "設定">
@@ -64,7 +65,7 @@
 <!ENTITY qf.description.rightClickOptions "オプションメニューを開くにはバーの空いたところを右クリックします。オプションでは表示スタイルをネイティブスタイル(小さめ) またはフラットスタイル(見やすい) から選択できます。">
 <!ENTITY qf.description.tipMsg "ヒント: フォルダ数が非常に多い場合は、キーボードでメッセージが操作できる Nostalgy 拡張をお試しください。">
 <!ENTITY qf.description.experimentalItems "以下の項目は実験段階です。将来のリリースで動作する予定です！">
-<!ENTITY qf.label.instantApplyMsg "注意: [閉じる] ボタンしか表示されないときは、色設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション...] を選択してください。[OK] ボタンを表示して色設定を保存します。">
+<!ENTITY qf.label.instantApplyMsg "注意: [閉じる] ボタンしか表示されないときは、色設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション…] を選択してください。[OK] ボタンを表示して色設定を保存します。">
 <!ENTITY qf.button.defaultcolors "既定の色">
 <!ENTITY qf.checkbox.debug "デバッグモード">
 <!ENTITY qf.label.UncoloredTab "色無しのタブ">
@@ -79,12 +80,12 @@
 <!ENTITY qf.label.homePage "詳しい情報は Mozdev.org の QuickFolders ホームページにあります。">
 <!ENTITY qf.tab.support "サポート">
 <!ENTITY qf.description.languages "QuickFolders は他の言語にも対応しています。あなたの言語を追加するには Babelzilla で翻訳を追加してください:">
-<!ENTITY qf.label.languagesLink "翻訳を追加する...">
+<!ENTITY qf.label.languagesLink "翻訳を追加する…">
 <!ENTITY qf.description.donate "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:">
-<!ENTITY qf.label.donateLink "寄付ページを開く...">
+<!ENTITY qf.label.donateLink "寄付ページを開く…">
 <!ENTITY qf.label.donate "寄付">
 <!ENTITY qf.description.contactMe "個人的な連絡は axelg@gofree.indigo.ie まで:">
-<!ENTITY qf.label.contactLink "作者にメールする (英語またはドイツ語のみ)...">
+<!ENTITY qf.label.contactLink "作者にメールする (英語またはドイツ語のみ)…">
 <!ENTITY qf.checkbox.showIcons "アイコンを表示する (受信トレイ、送信済みトレイ、ごみ箱、下書き、アーカイブ、テンプレート)">
 <!ENTITY qf.checkbox.showSubfolders "ポップアップメニューにサブフォルダを展開する">
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
@@ -121,9 +122,9 @@
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "このオプションはサブフォルダが正しく並べ替えられない場合に使用してください。">
 <!ENTITY qf.options.versionnumber.tooltip "右クリックでバージョン履歴を表示します。">
 <!ENTITY qf.description.bugzilla "すべての要望とバグ報告は Bugzilla へお願いします">
-<!ENTITY qf.label.bugzilla "Bugzilla でバグ報告または新しい機能を要望する...">
+<!ENTITY qf.label.bugzilla "Bugzilla でバグ報告または新しい機能を要望する…">
 <!ENTITY qf.description.versionhistory "変更履歴 (mozdev.org)">
-<!ENTITY qf.label.versionhistory "変更履歴を見る...">
+<!ENTITY qf.label.versionhistory "変更履歴を見る…">
 <!ENTITY qf.checkbox.menus.getMailForInbox "メッセージを受信 (メールアカウント)">
 <!ENTITY qf.checkbox.menus.getMailForNews "メッセージを受信 (ニュースアカウント)">
 <!ENTITY qf.checkbox.menus.markAllRead "フォルダを既読にする">

@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
 <!ENTITY qf.checkbox.showTotalMessageCount "Показывать в закладке общее количество сообщений">
 <!ENTITY qf.checkbox.showCountInSubFolders "Также показывать общее количество сообщений и для папок, находящихся в этой папке">
+<!ENTITY qf.button.configureTooltips "Настроить всплывающие подсказки…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
 <!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
@@ -76,12 +77,12 @@
 <!ENTITY qf.label.folders "Папки?">
 <!ENTITY qf.label.folders.tooltip "Копировать настройки в буфер обмена">
 <!ENTITY qf.checkbox.autoFocusPreview "Переводить фокус на список сообщений после смены закладок">
-<!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org...">
+<!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org…">
 <!ENTITY qf.tab.support "Поддержка">
 <!ENTITY qf.description.languages "Вы можете помочь, добавив перевод на свой язык на Babelzilla:">
-<!ENTITY qf.label.languagesLink "Добавить перевод...">
+<!ENTITY qf.label.languagesLink "Добавить перевод…">
 <!ENTITY qf.description.donate "Если QuickFolders Вам нравится также, как и нам, Вы можете поддержать деньгами дальнейшее развитие.">
-<!ENTITY qf.label.donateLink "Поддержать...">
+<!ENTITY qf.label.donateLink "Поддержать…">
 <!ENTITY qf.label.donate "Пожертвовать">
 <!ENTITY qf.description.contactMe "Мой личный адрес axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Написать мне (на английском или немецком)">
@@ -123,7 +124,7 @@
 <!ENTITY qf.description.bugzilla "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях">
 <!ENTITY qf.label.bugzilla "Сообщить об ошибке/Запрос новых возможностей на Bugzilla…">
 <!ENTITY qf.description.versionhistory "Детальная история изменений на mozdev.org">
-<!ENTITY qf.label.versionhistory "Смотреть историю изменений...">
+<!ENTITY qf.label.versionhistory "Смотреть историю изменений…">
 <!ENTITY qf.checkbox.menus.getMailForInbox "Получить сообщения (почта)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Получить сообщения (новости)">
 <!ENTITY qf.checkbox.menus.markAllRead "Отметить папку как прочитанную">

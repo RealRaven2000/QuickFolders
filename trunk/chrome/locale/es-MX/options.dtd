@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Mostrar los botones de las carpetas con mensajes no leídos en negritas">
 <!ENTITY qf.checkbox.showTotalMessageCount "Mostrar el total de mensajes en la carpeta">
 <!ENTITY qf.checkbox.showCountInSubFolders "Mostrar además los totales de sub-carpetas.">
+<!ENTITY qf.button.configureTooltips "Configurar descripciones emergentes…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Estos se muestran separados por un &quot;+&quot; al lado de los totales principales, incluye correo no leído y tendrá la pestaña en negritas si la opción anterior está activada">
 <!ENTITY qf.checkbox.showMessageNavigation "Botones de navegación de mensajes">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostrar los botones con mensajes en la carpeta en cursivas">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "Valores por omisión">
 <!ENTITY qf.label.currentFolderToolbar "Herramientas de la carpeta actual">
 <!ENTITY qf.checkbox.currentFolder.show "Muestra la barra de herramientas">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "...también en las ventanas de mensajes individuales">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…también en las ventanas de mensajes individuales">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Muestra la barra de la carpeta actual en la ventana que se abre cuando seleccionas abrir un mensaje en una nueva ventana">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Botón de cerrar">
 <!ENTITY qf.button.currentFolderBackground.set "establecer">
@@ -64,7 +65,7 @@
 <!ENTITY qf.description.rightClickOptions "Clic derecho en el área libre abrirá el menú de opciones. En las opciones, podrás elegir el estilo nativo (más pequeño) o el estilo plano (más clara, con indicador de arrastre).">
 <!ENTITY qf.description.tipMsg "Consejo: Si tienes una gran cantidad de carpetas, puedes probar la extensión Nostalgy para organizar los mensajes a través del teclado.">
 <!ENTITY qf.description.experimentalItems "Los siguientes elementos son experimentales. ¡Esperamos estén disponibles en la siguiente versión!">
-<!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones ... Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">
+<!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones … Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">
 <!ENTITY qf.button.defaultcolors "Colores por omisión">
 <!ENTITY qf.checkbox.debug "Modo de depuración">
 <!ENTITY qf.label.UncoloredTab "Pestaña sin color">
@@ -76,15 +77,15 @@
 <!ENTITY qf.label.folders "¿Carpetas?">
 <!ENTITY qf.label.folders.tooltip "Copia la configuración de carpetas al portapapeles">
 <!ENTITY qf.checkbox.autoFocusPreview "Enfoque en la lista de mensajes al cambiar de pestañas">
-<!ENTITY qf.label.homePage "Información detallada se encuentra en la nueva página de QuickFolders en Mozdev.org...">
+<!ENTITY qf.label.homePage "Información detallada se encuentra en la nueva página de QuickFolders en Mozdev.org…">
 <!ENTITY qf.tab.support "Soporte">
 <!ENTITY qf.description.languages "QuickFolders soporta localización - Puedes ayudar añadiendo una nueva traducción a tu idioma en Babelzilla:">
-<!ENTITY qf.label.languagesLink "Añadir traducción...">
+<!ENTITY qf.label.languagesLink "Añadir traducción…">
 <!ENTITY qf.description.donate "Si te gusta QuickFolders tanto como a nosotros y quieres ayudar en su desarrollo, puedes donar algo de dinero destinado al continuo desarrollo de QuickFolders.">
-<!ENTITY qf.label.donateLink "Visita la página para donaciones...">
+<!ENTITY qf.label.donateLink "Visita la página para donaciones…">
 <!ENTITY qf.label.donate "Donar">
 <!ENTITY qf.description.contactMe "Puedes contactarme directamente en axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Contáctame (Inglés o Alemán)...">
+<!ENTITY qf.label.contactLink "Contáctame (Inglés o Alemán)…">
 <!ENTITY qf.checkbox.showIcons "Mostrar íconos (Entrada, Enviados, Actual, Basura, Borradores, Plantillas, Archivados)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetas en menús emergentes">
 <!ENTITY qf.checkbox.showRecentTab "Mostrar pestaña de carpetas recientes">
@@ -123,7 +124,7 @@
 <!ENTITY qf.description.bugzilla "Por favor utilice Bugzilla para todas las peticiones nuevas y reportes de fallas.">
 <!ENTITY qf.label.bugzilla "Reporte una falla /Solicite una opción nueva con Bugzilla">
 <!ENTITY qf.description.versionhistory "Historia detallada de versiones en mozdev.org">
-<!ENTITY qf.label.versionhistory "Leer historia de versiones...">
+<!ENTITY qf.label.versionhistory "Leer historia de versiones…">
 <!ENTITY qf.checkbox.menus.getMailForInbox "Recibir mensajes (Cuentas de correo)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Recibir mensajes (Cuentas de Noticias)">
 <!ENTITY qf.checkbox.menus.markAllRead "Marca la carpeta como leída">

@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Подебљај дугмад фасцикли које садрже непрочитане поруке">
 <!ENTITY qf.checkbox.showTotalMessageCount "Прикажи укупан број порука на дугмету фасцикле">
 <!ENTITY qf.checkbox.showCountInSubFolders "Прикажи и укупан број фасцикли">
+<!ENTITY qf.button.configureTooltips "Подешавање облачића са описом…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Приказани су одвојено са знаком „+” поред главног бројача; непрочитане поруке које се налазе у њему ће, такође, подебљати језичак ако је горња опција активна">
 <!ENTITY qf.checkbox.showMessageNavigation "Дугмад за кретање кроз поруке">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Искоси дугмад фасцикли које садрже порукама">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "Подразумевано">
 <!ENTITY qf.label.currentFolderToolbar "Трака са алаткама тренутне фасцикле">
 <!ENTITY qf.checkbox.currentFolder.show "Прикажи тренутну траку са алаткама">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "...и у прозорима са једном поруком">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…и у прозорима са једном поруком">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Прикажи траку са алаткама тренутног прозора који се отвара када изаберете да отворите е-поруку у новом прозору.">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Дугме за затварање">
 <!ENTITY qf.button.currentFolderBackground.set "постављено">
@@ -76,15 +77,15 @@
 <!ENTITY qf.label.folders "Фасцикле?">
 <!ENTITY qf.label.folders.tooltip "Копирање подешавања фасцикле у оставу">
 <!ENTITY qf.checkbox.autoFocusPreview "Пребаци на списак порука када се мењају језичци">
-<!ENTITY qf.label.homePage "Детаљне информације на новој страници додатка QuickFolders на Mozdev.org...">
+<!ENTITY qf.label.homePage "Детаљне информације на новој страници додатка QuickFolders на Mozdev.org…">
 <!ENTITY qf.tab.support "Подршка">
 <!ENTITY qf.description.languages "QuickFolders подржава мног ејезике преводе, па можете помоћи са превођењем превођењем на ваш језик (помоћу Бабелзиле):">
-<!ENTITY qf.label.languagesLink "Преведи...">
+<!ENTITY qf.label.languagesLink "Преведи…">
 <!ENTITY qf.description.donate "Ако волите додатак QuickFolders као и ми, а желели бисте да подржите његов развој, можете да донирате нешто новца.">
 <!ENTITY qf.label.donateLink "Посети страницу за донирање">
 <!ENTITY qf.label.donate "Донирај">
 <!ENTITY qf.description.contactMe "Можете да ме и лично контактирате на axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Контактирајте ме (на енглеском или немачком)...">
+<!ENTITY qf.label.contactLink "Контактирајте ме (на енглеском или немачком)…">
 <!ENTITY qf.checkbox.showIcons "Прикажи иконе (Примљене, послате, нежељене, избрисане, у припреми, архивиране, обрасци)">
 <!ENTITY qf.checkbox.showSubfolders "Развиј подфасцикле у искачућим менијима">
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
@@ -121,9 +122,9 @@
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Ову опцију користите само ако ваш програм за е-пошту не ређа подфасцикле исправно.">
 <!ENTITY qf.options.versionnumber.tooltip "Притисните десни клик да бисте видели историјат верзија.">
 <!ENTITY qf.description.bugzilla "Користите Багзилу за све званичне захтеве и пријављивање грешака">
-<!ENTITY qf.label.bugzilla "Пријави грешку/предложи нешто ново помоћу Багзиле...">
+<!ENTITY qf.label.bugzilla "Пријави грешку/предложи нешто ново помоћу Багзиле…">
 <!ENTITY qf.description.versionhistory "Детаљан историјат верзија на mozdev.org">
-<!ENTITY qf.label.versionhistory "Погледај историјат верзија...">
+<!ENTITY qf.label.versionhistory "Погледај историјат верзија…">
 <!ENTITY qf.checkbox.menus.getMailForInbox "Прими поруке (налози за поруке)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Прими поруке (налози за вести)">
 <!ENTITY qf.checkbox.menus.markAllRead "Означи фасциклу као прочитану">

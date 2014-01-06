@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "Mostra amb negreta els botons de les carpetes amb missatges per llegir">
 <!ENTITY qf.checkbox.showTotalMessageCount "Mostra el nombre total de missatges al botó de la carpeta">
 <!ENTITY qf.checkbox.showCountInSubFolders "Mostra el total de subcarpetes">
+<!ENTITY qf.button.configureTooltips "Configura les informacions emergents…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Es mostren separats per un '+' al costat; el correu no llegit pot fer que la pestanya es mostri en negreta si l'opció està activa">
 <!ENTITY qf.checkbox.showMessageNavigation "Botons de Navegació de Missatges">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Mostra en cursiva els botons de les carpetes que continguin missatges">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "Valors per defecte">
 <!ENTITY qf.label.currentFolderToolbar "Barra d'Eines de la Carpeta Actual">
 <!ENTITY qf.checkbox.currentFolder.show "Mostra la Barra d'Eines">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... i també a la Finestra de Missatge">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "… i també a la Finestra de Missatge">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra d'eines de la carpeta actual a la finestra que s'obre quan trieu obrir un correu a una nova finestra">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Botó de Tancar">
 <!ENTITY qf.button.currentFolderBackground.set "estableix">
@@ -64,7 +65,7 @@
 <!ENTITY qf.description.rightClickOptions "Feu clic amb el botó dret a sobre una àrea buida per obrir el menu d'opcions. A les opcions, podeu selecciona l'estil: estil natiu (mes petit) o estil pla (mes clar; suporta indicadors d'arrossegament).">
 <!ENTITY qf.description.tipMsg "Consell: Si tenim una quantitat considerable de carpetes, proveu l'extensió Nostalgy per organitzar els missatges via teclat.">
 <!ENTITY qf.description.experimentalItems "Les següents opcions estan en període experimental, esperem que estiguin totalment funcionals a la següent versió!!">
-<!ENTITY qf.label.instantApplyMsg "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions... això forçarà que aparegui el botó [OK], que us permetrà desar els colors.">
+<!ENTITY qf.label.instantApplyMsg "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors.">
 <!ENTITY qf.button.defaultcolors "Colors per Defecte">
 <!ENTITY qf.checkbox.debug "Mode de Depuració">
 <!ENTITY qf.label.UncoloredTab "Pestanya sense color assignat.">
@@ -76,15 +77,15 @@
 <!ENTITY qf.label.folders "Carpetes?">
 <!ENTITY qf.label.folders.tooltip "Copia la cadena de configuració de les carpetes al portapapers">
 <!ENTITY qf.checkbox.autoFocusPreview "Passar el focus a la llista de missatges al canviar de pestanya">
-<!ENTITY qf.label.homePage "Informació detallada a la nova pàgina de QuickFolders a Mozdev.org...">
+<!ENTITY qf.label.homePage "Informació detallada a la nova pàgina de QuickFolders a Mozdev.org…">
 <!ENTITY qf.tab.support "Suport">
 <!ENTITY qf.description.languages "QuickFolders suporta traduccións a múltiples idiomes - podeu ajudar afegint una traducció al vostre llenguatge a Babelzilla:">
-<!ENTITY qf.label.languagesLink "Afegir Traducció...">
+<!ENTITY qf.label.languagesLink "Afegir Traducció…">
 <!ENTITY qf.description.donate "Si us ha encantat QuickFolders i voleu donar suport al seu desenvolupament, podeu donar algun diner per al futur desenvolupament de QuickFolders">
-<!ENTITY qf.label.donateLink "Visiteu la Pàgina de Donacions...">
+<!ENTITY qf.label.donateLink "Visiteu la Pàgina de Donacions…">
 <!ENTITY qf.label.donate "Fer una Donació">
 <!ENTITY qf.description.contactMe "També podeu contactar-me personalment a axelg@gofree.indigo.ie">
-<!ENTITY qf.label.contactLink "Contacteu-me (Anglès o Alemany)...">
+<!ENTITY qf.label.contactLink "Contacteu-me (Anglès o Alemany)…">
 <!ENTITY qf.checkbox.showIcons "Mostrar Icones (Safata d'entrada, Enviats, Brossa, Escombraries, Esborranys, Arxivat, Plantilles)">
 <!ENTITY qf.checkbox.showSubfolders "Expandir subcarpetes al menú emergent">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
@@ -123,7 +124,7 @@
 <!ENTITY qf.description.bugzilla "Utilitzeu el Bugzilla per a totes les peticions oficial de noves característiques i informes de fallades.">
 <!ENTITY qf.label.bugzilla "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla">
 <!ENTITY qf.description.versionhistory "Historial Detallat de Versions a mozdev.org">
-<!ENTITY qf.label.versionhistory "Historial de Versions...">
+<!ENTITY qf.label.versionhistory "Historial de Versions…">
 <!ENTITY qf.checkbox.menus.getMailForInbox "Obtenir Missatges (Comptes de Correu)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Obtenir Missatges (Comptes de Notícies)">
 <!ENTITY qf.checkbox.menus.markAllRead "Marcar la Carpeta com a Llegida">

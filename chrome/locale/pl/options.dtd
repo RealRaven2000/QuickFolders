@@ -8,13 +8,14 @@
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Używaj skrótów klawiaturowych (Alt + 1 do Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Używaj Ctrl zamiast Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Przebuduj zakładki używając skrótu: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
+<!ENTITY qf.checkbox.findFolderShortcut "Znajdź foldery używając skrótu: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Lewy ALT / prawy ALT jako poprzednia / następna zakładka">
 <!ENTITY qf.checkbox.showshortcutnumber "Wyświetlaj numer skrótu na zakładkach folderów">
 <!ENTITY qf.checkbox.showUnreadMessageCount "Wyświetlaj liczbę nieprzeczytanych wiadomości na zakładce folderu">
 <!ENTITY qf.checkbox.showUnreadBold "Wyświetlaj zakładki z nieprzeczytanymi wiadomościami jako pogrubione">
 <!ENTITY qf.checkbox.showTotalMessageCount "Wyświetla całkowitą liczbę wiadomości na zakładce folderu">
 <!ENTITY qf.checkbox.showCountInSubFolders "Wyświetla również całkowitą liczbę podfolderów">
+<!ENTITY qf.button.configureTooltips "Konfiguruj podpowiedzi…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Wyświetlane są poprzez oddzielenie znakiem '+' obok głównej liczby; zawiera nieprzeczytane wiadomości również oznaczone pogrubieniem jeśli opcja powyżej jest aktywna">
 <!ENTITY qf.checkbox.showMessageNavigation "Przyciski nawigacji wiadomości">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Wyświetlanie kursywą kart folderów, które zawierają wiadomości">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "Domyślne">
 <!ENTITY qf.label.currentFolderToolbar "Bieżący pasek narzędziowy folderu">
 <!ENTITY qf.checkbox.currentFolder.show "Wyświetlaj pasek narzędziowy">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "... także w pojedynczych oknach wiadomości">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "… także w pojedynczych oknach wiadomości">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Pokazuje bieżący pasek narzędziowy w oknie, które otworzy się, gdy otworzysz wiadomość w nowym oknie">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Pryzcisk zamykania">
 <!ENTITY qf.button.currentFolderBackground.set "zastosuj">

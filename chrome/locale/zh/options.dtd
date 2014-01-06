@@ -15,6 +15,7 @@
 <!ENTITY qf.checkbox.showUnreadBold "在資料夾標籤上以粗體顯示未讀郵件的數目">
 <!ENTITY qf.checkbox.showTotalMessageCount "在資料夾標籤上以粗體顯示所有郵件的數目">
 <!ENTITY qf.checkbox.showCountInSubFolders "同時顯示子資料夾內郵件的數目">
+<!ENTITY qf.button.configureTooltips "設定工具提示…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "在主資料夾郵件數目旁以+隔開；如果上面的選項有選取的話，未讀的郵件將以粗體顯示">
 <!ENTITY qf.checkbox.showMessageNavigation "訊息導航按鈕">
 <!ENTITY qf.checkbox.showNonEmptyItalics "在標籤上以斜體顯示有郵件的資料夾">
@@ -43,7 +44,7 @@
 <!ENTITY qf.button.default "預設值">
 <!ENTITY qf.label.currentFolderToolbar "現在資料夾工具列">
 <!ENTITY qf.checkbox.currentFolder.show "顯示工具列">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.show "...也在單一信件視窗">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.show "…也在單一信件視窗">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "當你選擇以一個新視窗來開啟E-mail時，在開啟時於視窗中顯示現在資料夾工具列">
 <!ENTITY qf.checkbox.currentFolder.closeButton "關閉按鈕">
 <!ENTITY qf.button.currentFolderBackground.set "設定">
@@ -76,15 +77,15 @@
 <!ENTITY qf.label.folders "資料夾？">
 <!ENTITY qf.label.folders.tooltip "複製資料夾設定於剪貼簿中">
 <!ENTITY qf.checkbox.autoFocusPreview "當改變標籤時聚焦於信件清單">
-<!ENTITY qf.label.homePage "詳細的資訊於Mozdev.org網站上的QuickFolders頁面都找得到..">
+<!ENTITY qf.label.homePage "詳細的資訊於Mozdev.org網站上的QuickFolders頁面都找得到…">
 <!ENTITY qf.tab.support "支援">
 <!ENTITY qf.description.languages "QuickFolders支援在地語言 - 你能在Babelzilla上協助翻譯成你的語言：">
-<!ENTITY qf.label.languagesLink "增加翻譯..">
+<!ENTITY qf.label.languagesLink "增加翻譯…">
 <!ENTITY qf.description.donate "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。">
-<!ENTITY qf.label.donateLink "參觀捐助網頁..">
+<!ENTITY qf.label.donateLink "參觀捐助網頁…">
 <!ENTITY qf.label.donate "捐助">
 <!ENTITY qf.description.contactMe "您也能與我個人聯絡axelg@gofree.indigo.ie：">
-<!ENTITY qf.label.contactLink "與我聯絡（英文或德文）..">
+<!ENTITY qf.label.contactLink "與我聯絡（英文或德文）…">
 <!ENTITY qf.checkbox.showIcons "顯示圖示（收件匣、寄件備份、垃圾信、垃圾桶、草稿、備存、模組）">
 <!ENTITY qf.checkbox.showSubfolders "在彈出式選單中顯示子資料夾">
 <!ENTITY qf.checkbox.showRecentTab "顯示最近使用的資料夾標籤">

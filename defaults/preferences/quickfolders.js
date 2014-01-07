@@ -30,6 +30,11 @@ pref("extensions.quickfolders.toolbar.minHeight", "24px");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows",false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage",true);
 pref("extensions.quickfolders.style.transitions",true); // changing to true because of wobbly bug
+pref("extensions.quickfolders.tooltips.parentFolder",false);
+pref("extensions.quickfolders.tooltips.baseFolder",true);
+pref("extensions.quickfolders.tooltips.serverName",true);
+pref("extensions.quickfolders.tooltips.virtualFlag",true);
+pref("extensions.quickfolders.tooltips.msgFolderFlags",false);
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar",true);
 pref("extensions.quickfolders.messageWindow.showCurrentFolderToolbar",false);
@@ -101,11 +106,13 @@ pref("extensions.quickfolders.debug.css.palette",false);
 pref("extensions.quickfolders.debug.dnd",false);
 pref("extensions.quickfolders.debug.folders",false);
 pref("extensions.quickfolders.debug.popupmenus",false);
+pref("extensions.quickfolders.debug.popupmenus.drag",false);
 pref("extensions.quickfolders.debug.mouseclicks",false);
 pref("extensions.quickfolders.debug.events",false);
 pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
+pref("extensions.quickfolders.debug.interface.findFolder", false);
 pref("extensions.quickfolders.debug.mailTabs",false);
 pref("extensions.quickfolders.debug.dragToNew",false);
 pref("extensions.quickfolders.debug.recentFolders",false);
@@ -135,9 +142,12 @@ pref("extensions.quickfolders.folderMenu.emptyJunk", true);
 pref("extensions.quickfolders.folderMenu.emptyTrash", true);
 pref("extensions.quickfolders.folderMenu.dragToNew", true);
 pref("extensions.quickfolders.folderMenu.openNewTab", true);
+pref("extensions.quickfolders.folderMenu.realignMinTabs", 0);
 pref("extensions.quickfolders.commandMenu.options", true);
 pref("extensions.quickfolders.commandMenu.separator", true);
 pref("extensions.quickfolders.commandMenu.lineBreak", true);
+pref("extensions.quickfolders.commandMenu.icon", false);
+pref("extensions.quickfolders.tabIcons.defaultPath","");
 pref("extensions.quickfolders.commandMenu.support", true);
 pref("extensions.quickfolders.commandMenu.help", true);
 

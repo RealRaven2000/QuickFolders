@@ -195,13 +195,36 @@ END LICENSE BLOCK */
 		## When in paint mode instant coloring showed wrong color while pastel palette was selected
 		## Fixed storing color for recent folder tab
 		## Raised minimum Version for Thunderbird to 17.0
+
+  3.12.4  02/11/2013
+	
+	
+	3.14 WIP
+	  ## Fixed [Bug 25610] + [Bug 25608] - In single message view, QF tabs will now open a new folder tab 
+		   (unless existing tab with that folder can be found). This should now also work in a search results / conversation view.
+		## Improved tab handling code in Postbox (reuse existing tabs) / SeaMonkey (new virtual tab mode for single messages view)
+		## Fixed [Bug 25634] - Long menus obscure tabs - tab popup menu is shifted to the right if it exceeds a configurable number of items
+		   in about:config, edit extensions.quickfolders.folderMenu.realignMinTabs
+		## Added [CR 25636] - make tab tooltips configurable
+		## Fixed [Bug 25672] - Pastel and "Inactive Tab" colors don't work for Active, Hover, or DragOver colors
+		## Used fixIterator for cross-application compatible accounts code
+		## Fixed - when searching for folders (CTRL+ALT+J) the list is not reset when no matches are found.
+		## when jumping to an invalid QuickFolder (the folder that it points to doesn't exist) give the option of deleting it immediately
+		## QuickFolders now detects (and offers to delete) tabs for non-existant folders when you open 
+		   them using the Find Folder feature or clicking their tab
+		## Experimental: Adding Icons via context menu - to display the new menu, set Konfiguration setting
+		   extensions.quickfolders.commandMenu.icon = true
+		
+	4.0   Future version
+		## Planned [Bug 25645] adding icon support
+		
+
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
 		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
-
-		
+	
 	
 	
 ###VERSION###
@@ -257,6 +280,7 @@ let QuickFolders_PrepareSessionStore = function () {
 			let rdfService = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
 			let folder = rdfService.GetResource(aPersistedState.folderURI).QueryInterface(Components.interfaces.nsIMsgFolder);
 			if (folder && aPersistedState.QuickFoldersCategory) {
+			  // Thunderbird only code, so it is fine to use tabInfo here:
 				for (let i = 0; i < aTabmail.tabInfo.length; i++)
 				{
 					let tabInfo = aTabmail.tabInfo[i];
@@ -392,7 +416,7 @@ var QuickFolders = {
 		var ApVer; try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
 		var ApName; try{ ApName=that.Util.Application} catch(e){ApName="?"};
 
-		if (that.Preferences && that.Preferences.isDebug())
+		if (that.Preferences && that.Preferences.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
 		// moved into Version Proxy!
@@ -983,13 +1007,36 @@ var QuickFolders = {
 						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
 						QuickFolders.Util.logDebugOptional("dnd", "showPopup with id " + popupId );
 						var p =  this.doc.getElementById(popupId);
+						
 						// avoid showing empty popup
-						if (p.childNodes && p.childNodes.length>0) {
+						if (p.childNodes && p.childNodes.length) {
+						
+							// from a certain size, make sure to shift menu to right to allow clicking the tab
+							let minRealign = QuickFolders.Preferences.getIntPref("folderMenu.realignMinTabs");
+							let xAlign = -1;
+							if (minRealign) {
+							  let isDebug = QuickFolders.Preferences.isDebugOption('popupmenus.drag');
+								// count top level menu items
+								for (let c = 0; c < p.childNodes.length; c++) {
+									if (isDebug) {
+										QuickFolders.Util.logDebugOptional("popupmenus.drag", 
+											c + ': ' + p.childNodes[c].tagName + ' - ' +  p.childNodes[c].getAttribute('label'));
+									}
+									if (c > minRealign) {
+										xAlign = 24; 
+										if (!isDebug) break;
+									}
+								}
+								if (isDebug) {
+									QuickFolders.Util.logDebugOptional("popupmenus.drag", "x align offset = " + xAlign);
+								}
+							}
+						
 							this.doc.popupNode = button;
 							if (p.openPopup)
-								p.openPopup(button,'after_start', -1,-1,"context",false);
+								p.openPopup(button,'after_start', xAlign,-1,"context",false);
 							else
-								p.showPopup(button, -1,-1,"context","bottomleft","topleft");
+								p.showPopup(button, -1,-1,"context","bottomleft","topleft"); // deprecated
 						}
 
 						if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
@@ -1170,7 +1217,7 @@ var QuickFolders = {
 				 return;
 			transferData.data = new TransferData();
 			// if current folder button is started to drag, use a different flavor
-			if (button.id && button.id === "QuickFolders-CurrentFolder")
+			if (button.id && button.id === "QuickFoldersCurrentFolder")
 				transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
 			else
 				transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
@@ -1311,9 +1358,8 @@ function QuickFolders_MyChangeSelection(tree, newIndex)
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 {
-	function getIndexTabURI(idx) {
+	function getTabURI(info) {
 	  // note: tabmail is declared further down - it is in scope.
-		var info = QuickFolders.Util.getTabInfoByIndex(tabmail, idx); // tabmail.tabInfo[idx]; 
 		if (!info)
 			return null;
 		if (info.msgSelectedFolder)
@@ -1324,44 +1370,79 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		     && info.folderDisplay.view.displayedFolder.URI
 		   )
 		   return info.folderDisplay.view.displayedFolder.URI; //Tb
+		if (info.type 
+		    && info.type == 'folder' 
+		    && info._folderURI)
+				return info._folderURI;  // Postbox
 		return '';
 	}
 	//during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
-	
 
-	var folderTree = QuickFolders_MyGetFolderTree();
-	var folderResource = QuickFolders_myRDF().GetResource(folderUri);
-	var msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+	let folderTree = QuickFolders_MyGetFolderTree();
+	let folderResource = QuickFolders_myRDF().GetResource(folderUri);
+	let msgFolder;
+	let isInvalid = false;
+	try {
+	  // msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
+		isInvalid = (!QuickFolders.Util.doesMailFolderExist(msgFolder));
+	}
+	catch (ex) {
+	  isInvalid = true;
+	}
+	
+	if (isInvalid) {
+	  // invalid folder; suggest to correct this!
+		let folderEntry = QuickFolders.Model.getFolderEntry(folderUri);
+		if (folderEntry) {
+			switch(QuickFolders.Interface.deleteFolderPrompt(folderEntry, false)) {
+			  case 1: // delete 
+				  // save changes right away!
+					QuickFolders.Preferences.storeFolderEntries(QuickFolders.Model.selectedFolders);
+				  break;
+				case 0: // don't delete
+				  break;
+			};
+		}
+	  return false;
+	}
 	let folderIndex, i;
 
 	QuickFolders.currentURI = folderUri;
 	
+	let isCurrentTabSelected = false;
 	let tabmail = document.getElementById("tabmail");
-	if (tabmail && tabmail.tabInfo) {
-		for (i = 0; i < tabmail.tabInfo.length; i++) {
-			var tabURI = getIndexTabURI(i);
+	if (tabmail) {
+	  let len = QuickFolders.Util.getTabInfoLength(tabmail);
+		for (i = 0; i < len; i++) {
+		  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
+			let tabURI = getTabURI(info);
 			if (!tabURI)
-				continue; // SM seems to have "false" tabs (without any info in them) we are not interested in them
-			if(   tabmail.tabInfo[i].mode
-			   && tabmail.tabInfo[i].mode.name==QuickFolders.Util.mailFolderTypeName
-			   && folderUri === tabURI
-			   && tabmail.tabContainer
-			   && i !== tabmail.tabContainer.selectedIndex)
+				continue; 
+			// SM seems to have "false" tabs (without any info in them) we are not interested in them
+			if (  folderUri === tabURI
+			   && QuickFolders.Util.getTabModeName(info) == QuickFolders.Util.mailFolderTypeName // SM folders only, no single msg.
+			   && i !== QuickFolders.tabContainer.selectedIndex)
 			{
 				if (tabmail.switchToTab)
 					tabmail.switchToTab(i); // switch to first tab with this URI
-				else
-					tabmail.tabContainer.selectedIndex = i;
+				else {
+					QuickFolders.tabContainer.selectedIndex = i;
+				}
+				isCurrentTabSelected = true;
 				break;
 			}
 		}
 	}
 
-	// if single message is shown, we cannot do anything with the folder tree...
-	if (QuickFolders.Interface.CurrentTabMode == 'message') {
-	  return false; // avoid closing the single message
+	// if single message is shown, open folder in a new Tab...
+	if (QuickFolders.Interface.CurrentTabMode == 'message' || QuickFolders.Interface.CurrentTabMode =='glodaList') {
+	  if (!isCurrentTabSelected)
+			QuickFolders.Interface.openFolderInNewTab(msgFolder);
+		else
+	    return true; // avoid closing the single message
 	}
 
 	var Con = QuickFolders.Util.Constants;
@@ -1454,7 +1535,6 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 			  let info = tabmail.tabInfo[i];
 				if (info && (info.modeBits & TAB_MODBITS_TabShowFolderPane)) {
 					gMailNewsTabsType.showTab (info);
-					found=true;
 					break;
 				}
 			}

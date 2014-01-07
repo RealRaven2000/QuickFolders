@@ -116,8 +116,32 @@ QuickFolders.Model = {
 		QuickFolders.Interface.updateFolders(true, false);
 	} ,
 
+	setTabIcon: function(button, entry, iconURI, menuItem) {
+	  let fileSpec = '';
+		if (iconURI) {
+			let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI )
+			QuickFolders.Util.logDebug("Model.setTabIcon(" + entry.name + "," + fileURL.path + ")");
+			fileSpec = fileURL.asciiSpec;
+		}
+		
+		if (fileSpec)  {
+			entry.icon = fileSpec; 
+			QuickFolders.Interface.applyIcon(button, entry.icon);
+			if (menuItem)
+				menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon
+		}
+		else {
+			if (entry.icon) delete entry.icon;
+			QuickFolders.Interface.applyIcon(button, '');
+		}
+		  
+		// store the icon path
+	  QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
+	} ,
+	
+	
 	setFolderColor: function(uri, tabColor, withUpdate) {
-		var entry;
+		let entry;
 		if (tabColor == 'undefined') 
 			tabColor=0;
 		QuickFolders.Util.logDebug("Model.setFolderColor("+uri+") = " + tabColor);

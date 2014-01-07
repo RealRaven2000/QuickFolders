@@ -214,7 +214,7 @@
 	width: 100%;
 }
 
-#QuickFolders-CurrentFolder {
+#QuickFoldersCurrentFolder {
 	background-repeat: repeat-x;
 	border-color: #888 !important;
 	border-width: 1px !important;
@@ -463,7 +463,7 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover
 
 
 /* the hardcoded to white texts need dark shadows */
-.quickfolders-flat #QuickFolders-CurrentFolder,
+.quickfolders-flat #QuickFoldersCurrentFolder,
 .quickfolders-flat toolbarbutton { 
 	background-position: 0px 0px; 
 }
@@ -474,6 +474,8 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover
 /** MAIL COMMANDS + CONTEXT MENU ITEMS **/
 menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] { list-style-image : url('chrome://quickfolders/skin/ico/rename.gif') !important;}
 menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-image : url('chrome://quickfolders/skin/ico/compact.png') !important;}
+menuitem.cmd[tag="qfIcon"], menuitem.mailCmd[tag="qfIcon"] { list-style-image : url('chrome://quickfolders/skin/ico/fugue-picture.png') !important;}
+menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] { list-style-image : url('chrome://quickfolders/skin/ico/fugue-picture-remove.png') !important;}
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] { list-style-image : url('chrome://quickfolders/skin/ico/rubber-balloons.png') !important;}
 menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] { list-style-image : url('chrome://quickfolders/skin/ico/editdelete.png') !important;}
@@ -482,6 +484,7 @@ menuitem.cmd[tag="qfBreakDel"] { list-style-image : url('chrome://quickfolders/s
 menuitem.cmd[tag="qfSeparator"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-add.png') !important; }
 menuitem.cmd[tag="qfSeparatorDel"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-delete.png') !important; }
 menuitem.mailCmd[tag="qfFolderRepair"] { list-style-image : url('chrome://quickfolders/skin/ico/wrench.png') !important; }
+
 
 #QuickFolders-FoldersBox toolbarseparator {
   vertical-align: top;

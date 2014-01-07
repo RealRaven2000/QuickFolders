@@ -488,18 +488,13 @@ QuickFolders.FilterList = {
 			let Ci = Components.interfaces;
 			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
 	                        .getService(Ci.nsIMsgAccountManager);  
-			let accounts = acctMgr.accounts;  
-			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-			for (var i = 0; i < iAccounts; i++) {  
-				let account = accounts.queryElementAt ?
-					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
-					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
+			for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
 				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
 				{ 
-					var ac = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
-					QuickFolders.Util.logDebugOptional("filters", "checking account for filter changes: " +  ac.prettyName);
+					let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
+					QuickFolders.Util.logDebugOptional("filters", "checking account for filter changes: " +  srv.prettyName);
 					// 2. getFilterList
-					var filterList = ac.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
+					let filterList = srv.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
 					// 3. use  nsIMsgFilterList.matchOrChangeFilterTarget(oldUri, newUri, false) 
 					if (filterList) {
 						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 

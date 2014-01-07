@@ -3,7 +3,7 @@
 /* 1st rule is for #QuickFolders-CurrentFolderTools 2nd for main toolbar */
 .quickfolders-pills .col0.selected-folder, .quickfolders-pills .col0:hover,
 .quickfolders-flat .col0,
-.quickfolders-flat #QuickFolders-CurrentFolder.col0 { background-image: none; }
+.quickfolders-flat #QuickFoldersCurrentFolder.col0 { background-image: none; }
 
 /* 1 - light blue */
 #folderTree treechildren.col1::-moz-tree-cell-text,
@@ -341,7 +341,7 @@ menuitem[tag="qfColor15"] {
 
 /** PILLS **/
 .quickfolders-pills toolbarbutton,
-.quickfolders-pills toolbarbutton#QuickFolders-CurrentFolder {
+.quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;
 	border-style: solid;

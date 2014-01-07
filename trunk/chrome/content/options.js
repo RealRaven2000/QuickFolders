@@ -575,7 +575,7 @@ QuickFolders.Options = {
 	},
 
 	changeTextPreference: function(txtBox) {
-		var prefString = cb.getAttribute("preference");
+		var prefString = txtBox.getAttribute("preference");
 		var pref = document.getElementById(prefString);
 		
 		if (pref)
@@ -726,21 +726,36 @@ QuickFolders.Options = {
 
 	},
 
-	showAboutConfig: function(clickedElement, filter, readOnly) {
+	configureTooltips: function(btn) {
+	  setTimeout( function () {
+			QuickFolders.Options.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
+			} );	
+	},
+	
+	showAboutConfig: function(clickedElement, filter, readOnly, updateFolders) {
+	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
+	  QuickFolders.Util.logDebug('showAboutConfig(clickedElement: ' + clickedElement.tagName + ', filter: ' + filter + ', readOnly: ' + readOnly +')');
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
-		var mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-		var w = mediator.getMostRecentWindow(name);
-
-		var win = clickedElement.ownerDocument.defaultView ? clickedElement.ownerDocument.defaultView : window;
+		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
+		let w = mediator.getMostRecentWindow(name);
+		// parent window
+		let win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
+         		? clickedElement.ownerDocument.defaultView 
+						: window;
 		if (!w) {
 			var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
 			w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=500px,height=350px", null);
 		}
+		if (updateFolders) {
+		  // make sure QuickFolders UI is updated when about:config is closed.
+			w.addEventListener('unload', function(event) { QuickFolders.Interface.updateMainWindow(); });
+		}
 		w.focus();
-		w.setTimeout(
-			function (readOnly) {
+		w.addEventListener('load', 
+			function () {
+			  QuickFolders.Util.logDebug('showAboutConfig() : setting config Filter.\nreadonly = ' + readOnly);
 				var flt = w.document.getElementById("textbox");
 				if (flt) {
 					 flt.value=filter;
@@ -753,7 +768,9 @@ QuickFolders.Options = {
 					 	w.self.FilterPrefs();
 				 	}
 				}
-			}, 300);
+				else
+				  QuickFolders.Util.logDebug('filter textbox not found');
+			});
 	},
 
 	addConfigFeature: function(filter, Default, textPrompt) {
@@ -761,7 +778,7 @@ QuickFolders.Options = {
 		if (confirm(textPrompt)) {
 			// create (non existent filter setting:
 			QuickFolders.Preferences.setBoolPref(filter, Default);
-			QuickFolders.Options.showAboutConfig(filter, true);
+			QuickFolders.Options.showAboutConfig(null, filter, true, false);
 		}
 	},
 

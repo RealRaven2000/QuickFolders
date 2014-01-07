@@ -59,7 +59,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "3.12",
+	HARDCODED_EXTENSION_VERSION : "3.12.4",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	Constants : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -505,21 +505,22 @@ QuickFolders.Util = {
 	// find the first mail tab representing a folder and open it
 	ensureFolderViewTab: function() {
 		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
-		var found=false;
-		var tabmail = document.getElementById("tabmail");
+		let found=false;
+		let tabmail = document.getElementById("tabmail");
 		if (tabmail) {
-			var tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+			let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
 
 			if (tab) {
-				QuickFolders.Util.logDebugOptional ("mailTabs","ensureFolderViewTab - current tab mode: " + tab.mode.name);
-				if (tab.mode.name!=QuickFolders.Util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
+			  let tabMode = this.getTabModeName(tab);
+				QuickFolders.Util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
+				if (tabMode != QuickFolders.Util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
-					var i;
+					// iterate tabs
 					let tabInfoCount = QuickFolders.Util.getTabInfoLength(tabmail);
-					for (i = 0; i < tabInfoCount; i++) {
-					  let info = QuickFolders.Util.getTabInfoByIndex(i);
-						if (info && info.mode.name==QuickFolders.Util.mailFolderTypeName) { // SM:	tabmail.tabInfo[i].getAttribute("type")=='folder'
+					for (let i = 0; i < tabInfoCount; i++) {
+					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
+						if (info && this.getTabModeName(info) == QuickFolders.Util.mailFolderTypeName) { 
 							QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
 							tabmail.switchToTab(i);
 							found=true;
@@ -527,12 +528,12 @@ QuickFolders.Util = {
 						}
 					}
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
-					for (i=0;(!found) && i < tabInfoCount; i++) {
-					  let info = QuickFolders.Util.getTabInfoByIndex(i);
+					for (let i=0;(!found) && i < tabInfoCount; i++) {
+					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
 						if (info && QuickFolders.Util.getTabModeName(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
 							QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
 							tabmail.switchToTab(i);
-						break;
+						  break;
 						}
 					}
 				}
@@ -732,8 +733,20 @@ QuickFolders.Util = {
 	} ,
 	
 	getTabModeName: function(tab) {
-	  if (tab.mode)   // Tb / Sm
+	  if (tab.mode) {   // Tb / Sm
+		  if (this.Application=='SeaMonkey') {
+				const kTabShowFolderPane  = 1 << 0;
+				const kTabShowMessagePane = 1 << 1;
+				const kTabShowThreadPane  = 1 << 2;			
+				// SM: maybe also check	tab.getAttribute("type")=='folder'
+				// check for single message shown - SeaMonkey always uses 3pane!
+				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
+			  if ( (tab.modeBits & kTabShowMessagePane) && !(tab.modeBits & kTabShowFolderPane)) {
+				  return 'message';
+				}
+			}
 			return tab.mode.name;
+		}
 		if (tab.type)  // Pb
 		  return tab.type;
 		return "";
@@ -962,7 +975,7 @@ QuickFolders.Util = {
 	} ,
 
 	logDebug: function (msg) {
-		if (QuickFolders.Preferences.isDebug())
+		if (QuickFolders.Preferences.isDebug)
 			this.logToConsole(msg);
 	},
 
@@ -1071,27 +1084,49 @@ QuickFolders.Util = {
 		// tooltip - see also Attributes section of
 		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
 		// and docs for nsIMsgIncomingServer
+		let getPref = function(arg) { return QuickFolders.Preferences.getBoolPrefQF('tooltips.' + arg); };
 		let sVirtual = (folder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "";
 		let srv = folder.server;
+		
 		let srvName='';
-		if (srv) {
-			try {srvName = ' [' + srv.hostName + ']';}
-			catch(e) { };
-		}
-		let hostString = srvName;
-		try {
-			if (folder.rootFolder) {
-				try {hostString = folder.rootFolder.name + srvName;}
+		if (getPref('serverName')) {
+			if (srv) {
+				try {srvName = ' [' + srv.hostName + ']';}
 				catch(e) { };
 			}
-			else
-				this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
 		}
-		catch(e) { 
-			this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
-		};
+		
+		let baseFolder = '';
+		if (getPref('baseFolder')) {
+			try {
+				if (folder.rootFolder) {
+					try {baseFolder = ' - ' + folder.rootFolder.name;}
+					catch(e) { };
+				}
+				else
+					this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
+			}
+			catch(e) { 
+				this.logDebug('getFolderTooltip() - No rootFolder on: ' + folder.name + '!');
+			};
+		}
+		
+		let flags = '';
+		if (getPref('msgFolderFlags')) {
+		  flags = ' 0x' + folder.flags.toString(16);
+		}
+		
+		let tooltip = '';
+		if (getPref('parentFolder')) {
+		  let parent = folder.parent;
+			if (parent && !parent.isServer) {
+			  tooltip += parent.name+'/';
+			}
+		}
+		tooltip += folder.name + baseFolder + srvName + flags;
+		tooltip += getPref('virtualFlag') ? sVirtual : '';
 
-		return folder.name + ' @ ' + hostString + sVirtual;
+		return tooltip;
 	},
 
 	// get the parent button of a popup menu, in order to get its attributes:
@@ -1151,10 +1186,55 @@ QuickFolders.Util = {
 			this._isCSSShadow = (versionComparator.compare(QuickFolders.Util.PlatformVersion, "2.0") >= 0);
 		}
 		return this._isCSSShadow;
+	} ,
+	
+	doesMailFolderExist: function checkExists(msgFolder) {
+		if (!msgFolder || !msgFolder.filePath)	{
+			return false;
+		}
+		if (msgFolder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP)
+		  return true; // we do not validate nntp folders
+		if (msgFolder.filePath.exists()) {
+			return true;
+		}
+		else {
+		  let oldPath = msgFolder.filePath.path.toString();
+			//  see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+			if (typeof oldPath.endsWith != 'function')
+				QuickFolders.Util.polyFillEndsWidth();
+			let testPath = '';
+			if (oldPath.endsWith('.sbd')) {
+			  testPath = oldPath.substr(0, oldPath.length-4);
+			}
+			else {
+			  testPath = oldPath + ".sbd";
+			}
+			let localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+			localFile.initWithPath(testPath);
+			if (localFile.exists())
+				return true;
+		}
+		return false;
+	},
+	
+	polyFillEndsWidth: function() {
+		if (!String.prototype.endsWith) {
+			Object.defineProperty(String.prototype, 'endsWith', {
+					enumerable: false,
+					configurable: false,
+					writable: false,
+					value: function (searchString, position) {
+							position = position || this.length;
+							position = position - searchString.length;
+							var lastIndex = this.lastIndexOf(searchString);
+							return lastIndex !== -1 && lastIndex === position;
+					}
+			});
+		}
 	}
 
 
-};
+};  // QuickFolders.Util
 
 
 
@@ -1326,7 +1406,7 @@ QuickFolders.Util.FirstRun =
 // // fire this on application launch, which includes open-link-in-new-window
 // window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
 
-};
+};  // QuickFolders.Util.FirstRun
 
 //			//// CHEAT SHEET
 // 			// from comm-central/mailnews/test/resources/filterTestUtils.js

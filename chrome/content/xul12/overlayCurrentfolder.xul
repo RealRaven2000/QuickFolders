@@ -75,7 +75,7 @@
 					             class="icon"
 					             onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
 				<hbox class="folderBarContainer">
-					<toolbarbutton id="QuickFolders-CurrentFolder"
+					<toolbarbutton id="QuickFoldersCurrentFolder"
 					               label="Current Folder"
 					               class="selected-folder"
 					                ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
@@ -154,7 +154,7 @@
 					             class="icon"
 					             onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
 				<hbox class="folderBarContainer">
-					<toolbarbutton id="QuickFolders-CurrentFolder"
+					<toolbarbutton id="QuickFoldersCurrentFolder"
 					               label="Current Folder"
 					               class="selected-folder"
 					               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"

@@ -58,7 +58,7 @@
 					               class="icon"
 					               onclick="QuickFolders.Interface.goPreviousSiblingFolder();"
 					               collapsed="true"/>
-					<toolbarbutton id="QuickFolders-CurrentFolder"
+					<toolbarbutton id="QuickFoldersCurrentFolder"
 					               label="Current Folder"
 					               class="selected-folder"
 					               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"

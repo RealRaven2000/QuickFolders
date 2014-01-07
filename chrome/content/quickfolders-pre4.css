@@ -12,7 +12,7 @@
 	-moz-border-radius: 2px;
 }
 
-#QuickFolders-CurrentFolderTools.quickfolders-pills toolbarbutton#QuickFolders-CurrentFolder,
+#QuickFolders-CurrentFolderTools.quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder,
 .quickfolders-pills toolbarbutton {
 	-moz-border-radius: 1.8em !important;
 }
@@ -30,7 +30,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	-moz-border-radius: 0 0 6px 6px !important;
 }
 
-#QuickFolders-CurrentFolder {
+#QuickFoldersCurrentFolder {
 	-moz-border-radius: 0px 0px 4px 4px !important;
 }
 

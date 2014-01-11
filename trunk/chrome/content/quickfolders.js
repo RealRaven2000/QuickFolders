@@ -493,7 +493,7 @@ var QuickFolders = {
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
 		// this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 		
-		if (QuickFolders.Preferences.getBoolPrefQF('contextMenu.hideFilterMode')) {
+		if (QuickFolders.Preferences.getBoolPref('contextMenu.hideFilterMode')) {
 			if (QuickFolders.Interface.FilterToggleButton)
 				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
@@ -1387,9 +1387,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	try {
 	  // msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
-		isInvalid = (!QuickFolders.Util.doesMailFolderExist(msgFolder));
+		if (QuickFolders.Preferences.getBoolPref("autoValidateFolders")) {
+		  isInvalid = (!QuickFolders.Util.doesMailFolderExist(msgFolder));
+		}
 	}
 	catch (ex) {
+	  QuickFolders.Util.logException("Exception validating folder: ", ex);
 	  isInvalid = true;
 	}
 	
@@ -1445,7 +1448,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	    return true; // avoid closing the single message
 	}
 
-	var Con = QuickFolders.Util.Constants;
+	var Flags = QuickFolders.Util.FolderFlags;
 
 	if (QuickFolders.Util.Application=='Thunderbird')
 	{
@@ -1472,7 +1475,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 
 			let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
 			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-			var specialFlags = Con.MSG_FOLDER_FLAG_INBOX + Con.MSG_FOLDER_FLAG_QUEUE + Con.MSG_FOLDER_FLAG_SENTMAIL + Con.MSG_FOLDER_FLAG_TRASH + Con.MSG_FOLDER_FLAG_DRAFTS + Con.MSG_FOLDER_FLAG_TEMPLATES + Con.MSG_FOLDER_FLAG_JUNK ;
+			var specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES + Flags.MSG_FOLDER_FLAG_JUNK ;
 			if (msgFolder.flags & specialFlags) {
 				// is this folder a smartfolder?
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
@@ -1484,7 +1487,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 				}
 
 				// a special folder, its parent is a smart folder?
-				if (msgFolder.parent.flags & Con.MSG_FOLDER_FLAG_SMART || "smart" === theTreeView.mode) {
+				if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_SMART || "smart" === theTreeView.mode) {
 					if (null === folderIndex || parentIndex > folderIndex) {
 						// if the parent appears AFTER the folder, then the "real" parent is a smart folder.
 						var smartIndex=0;
@@ -1519,7 +1522,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		}
 
 		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-		if ((msgFolder.flags & Con.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
+		if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
 			QuickFolders.Interface.onTabSelected();
 	}
 	else if (QuickFolders.Util.Application=='SeaMonkey') {

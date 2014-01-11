@@ -37,7 +37,7 @@ QuickFolders.FilterWorker = {
 	
 	// FILTER WIZARD FUNCTIONS ...
 	showMessage: function(show) {
-		QuickFolders.Preferences.setBoolPrefQF("filters.showMessage", show);
+		QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
 	} ,
 	
 	onCloseNotification: function(eventType, notifyBox, notificationKey) {
@@ -100,7 +100,7 @@ QuickFolders.FilterWorker = {
 			&& 
 			!QuickFolders.FilterWorker.FilterMode 
 			&&
-			QuickFolders.Preferences.getBoolPrefQF("filters.showMessage")) 
+			QuickFolders.Preferences.getBoolPref("filters.showMessage")) 
 		{
 			
 			var title=QuickFolders.Util.getBundleString("qf.filters.toggleMessage.title",
@@ -437,7 +437,7 @@ QuickFolders.FilterWorker = {
 							newFilter.appendTerm(searchTerm);
 							newFilter.appendTerm(searchTerm2);
               
-							if (QuickFolders.Preferences.getBoolPref("extensions.quickfilters.naming.keyWord"))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
 							  filterName += " - " + emailAddress;
 							break;
 
@@ -456,7 +456,7 @@ QuickFolders.FilterWorker = {
                   newFilter.appendTerm(searchTerm2);
                 }
               }
-							if (QuickFolders.Preferences.getBoolPref("extensions.quickfilters.naming.keyWord"))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
 								filterName += " - " + emailAddress;
 
 							break;
@@ -475,7 +475,7 @@ QuickFolders.FilterWorker = {
 								str: topicFilter 
 							};
 							newFilter.appendTerm(searchTerm);
-							if (QuickFolders.Preferences.getBoolPref("extensions.quickfilters.naming.keyWord"))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
 							  filterName += " - " + topicFilter;
 							break;
 							
@@ -515,7 +515,7 @@ QuickFolders.FilterWorker = {
 							for (let i = msgKeyArray.length - 1; i >= 0; --i) {
 								searchTerm = createTerm(newFilter, Components.interfaces.nsMsgSearchAttrib.Keywords, Components.interfaces.nsMsgSearchOp.Contains, msgKeyArray[i]);
 								newFilter.appendTerm(searchTerm);
-								if (QuickFolders.Preferences.getBoolPref("extensions.quickfilters.naming.keyWord")) {
+								if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 								for each (tagInfo in tagArray)
                   if (tagInfo.key === msgKeyArray[i]) 
 										filterName += ' ' + tagInfo.tag;
@@ -528,7 +528,7 @@ QuickFolders.FilterWorker = {
 							return false;
 					}
 
-					if (QuickFolders.Preferences.getBoolPref("extensions.quickfilters.naming.parentFolder")) {
+					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder". true)) {
 					  if (targetFolder.parent)
 					    filterName = targetFolder.parent.prettyName + " - " + filterName;
 					}

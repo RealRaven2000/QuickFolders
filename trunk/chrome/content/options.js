@@ -216,9 +216,9 @@ QuickFolders.Options = {
 			wd.getElementById("inactive-colorpicker").color = bcol;
 
 			//support transparency and shadow
-			var transcol  =  QuickFolders.Util.getRGBA(bcol, QuickFolders.Preferences.getBoolPref("extensions.quickfolders.transparentButtons") ? 0.25 : 1.0);
+			var transcol  =  QuickFolders.Util.getRGBA(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons") ? 0.25 : 1.0);
 			wd.getElementById("inactivetabs-label").style.backgroundColor = transcol;
-			// this.showButtonShadow(QuickFolders.Preferences.getBoolPref("extensions.quickfolders.buttonShadows"));
+			// this.showButtonShadow(QuickFolders.Preferences.getBoolPref("buttonShadows"));
 
 			col = QuickFolders.Preferences.getUserStyle("InactiveTab","color","buttontext");
 			wd.getElementById("inactive-fontcolorpicker").color = col;
@@ -350,12 +350,12 @@ QuickFolders.Options = {
 		var prefString1 = cbox.getAttribute('preference');
 		var prefName1 = document.getElementById(prefString1).getAttribute('name');
 		var cbox2 = document.getElementById(cbox2Name);
-		if(!QuickFolders.Preferences.getBoolPref(prefName1)) { // not yet checked but will be after event is propagated.
+		if(!QuickFolders.Preferences.getBoolPrefVerbose(prefName1)) { // not yet checked but will be after event is propagated.
 			var prefString2 = cbox2.getAttribute('preference');
 			var prefName2 = document.getElementById(prefString2).getAttribute('name');
 			// uncheck the other checkbox
-			if (QuickFolders.Preferences.getBoolPref(prefName2))
-				QuickFolders.Preferences.setBoolPref(prefName2, false);
+			if (QuickFolders.Preferences.getBoolPrefVerbose(prefName2))
+				QuickFolders.Preferences.setBoolPrefVerbose(prefName2, false);
 		}
 	},
 
@@ -589,7 +589,7 @@ QuickFolders.Options = {
 		var pref = document.getElementById(prefString);
 		
 		if (pref)
-			QuickFolders.Preferences.setBoolPref(pref.getAttribute('name'), cb.checked);
+			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
 		if (noUpdate)
 			return true;
 		return QuickFolders.Interface.updateMainWindow();
@@ -607,7 +607,7 @@ QuickFolders.Options = {
 		var pref = document.getElementById(prefString);
 		
 		if (pref)
-			QuickFolders.Preferences.setBoolPref(pref.getAttribute('name'), cb.checked);
+			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
 		
 		return QuickFolders.Interface.updateMainWindow();
 	},
@@ -641,7 +641,7 @@ QuickFolders.Options = {
 		document.getElementById('activetabs-label').style.backgroundColor=
 			QuickFolders.Util.getRGBA(picker.color, isPastel ? 0.25 : 1.0);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
-		QuickFolders.Preferences.setBoolPrefQF('pastelColors', isPastel);
+		QuickFolders.Preferences.setBoolPref('pastelColors', isPastel);
 		
 		this.initPreviewTabStyles();
 		
@@ -655,7 +655,7 @@ QuickFolders.Options = {
 		var el= document.getElementById('inactivetabs-label');
 		var myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
 		el.style.MozBoxShadow = myStyle;
-		QuickFolders.Preferences.setBoolPrefQF('buttonShadows', !isChecked);
+		QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
 		return QuickFolders.Interface.updateMainWindow();
 	},
 
@@ -777,7 +777,7 @@ QuickFolders.Options = {
 		// adds a new option to about:config, that isn't there by default
 		if (confirm(textPrompt)) {
 			// create (non existent filter setting:
-			QuickFolders.Preferences.setBoolPref(filter, Default);
+			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
 			QuickFolders.Options.showAboutConfig(null, filter, true, false);
 		}
 	},

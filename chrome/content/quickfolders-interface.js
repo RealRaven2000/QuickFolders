@@ -438,7 +438,7 @@ QuickFolders.Interface = {
 
 
 		// addSubFoldersPopupFromList expects nsISimpleEnumerator, enumerate() convrts the nsIMutableArray
-		let isAlphaSorted =  QuickFolders.Preferences.getBoolPrefQF("recentfolders.sortAlphabetical");
+		let isAlphaSorted =  QuickFolders.Preferences.getBoolPref("recentfolders.sortAlphabetical");
 		this.addSubFoldersPopupFromList(FoldersArray.enumerate(), menupopup, isDrag, isAlphaSorted, true);
 		QuickFolders.Util.logDebugOptional('recentFolders','=============================\n'
 			+ 'createRecentPopup Finished!');
@@ -459,7 +459,7 @@ QuickFolders.Interface = {
 			var button = passedButton ? passedButton : document.createElement("toolbarbutton");
 			if (!passedButton) {
 				isFolderUpdate = true;
-				var recentLabel = QuickFolders.Preferences.getBoolPrefQF("recentfolders.showLabel") ?
+				var recentLabel = QuickFolders.Preferences.getBoolPref("recentfolders.showLabel") ?
 					this.getUIstring("qfRecentFolders", "Recent Folders") : '';
 				button.setAttribute("label", recentLabel);
 				button.setAttribute("tag", "#Recent");
@@ -708,7 +708,7 @@ QuickFolders.Interface = {
 			if (checkParent && element.parentNode.id.indexOf('QuickFolders') < 0)
 				return;
 			if (element)
-				element.setAttribute('collapsed', !QuickFolders.Preferences.getBoolPrefQF(isShownSetting));
+				element.setAttribute('collapsed', !QuickFolders.Preferences.getBoolPref(isShownSetting));
 		}
 		
 		collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
@@ -729,7 +729,7 @@ QuickFolders.Interface = {
 			if (cF && cF.parentNode)
 				cF.parentNode.className = theme.cssToolbarClassName;
 
-			let collapsed = !QuickFolders.Preferences.getBoolPrefQF("currentFolderBar.navigation.showButtons");
+			let collapsed = !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showButtons");
 			for (var n=0; n< toolbar2.childNodes.length; n++)
 			{
 				let node = toolbar2.childNodes[n];
@@ -739,14 +739,14 @@ QuickFolders.Interface = {
 					        ||
 					          (node.id == 'quickFoldersNavToggle')
 					          && 
-					          !QuickFolders.Preferences.getBoolPrefQF("currentFolderBar.navigation.showToggle"));
+					          !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showToggle"));
 				}
 			}
 			
 			// collapse the separator if msg nav buttons are hidden
 			let lastMsgNavButton = QuickFolders.Util.$('QuickFolders-CurrentThread');
 			if (lastMsgNavButton.nextSibling && lastMsgNavButton.nextSibling.tagName=='toolbarseparator')
-				lastMsgNavButton.nextSibling.collapsed = !QuickFolders.Preferences.getBoolPrefQF("currentFolderBar.navigation.showButtons");
+				lastMsgNavButton.nextSibling.collapsed = !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showButtons");
 		}	
 	} ,
 
@@ -1258,27 +1258,27 @@ QuickFolders.Interface = {
 		let paletteClass = tabColor ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); //  QuickFolders.Preferences.isPastelColors ? ' pastel': '';
 
 		// use folder flags instead!
-		var Constants = QuickFolders.Util.Constants;
+		var FLAGS = QuickFolders.Util.FolderFlags;
 
-		if (folder.flags & Constants.MSG_FOLDER_FLAG_INBOX)
+		if (folder.flags & FLAGS.MSG_FOLDER_FLAG_INBOX)
 			specialFolderType="inbox" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_SENTMAIL)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_SENTMAIL)
 			specialFolderType="sent" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_TRASH)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
 			specialFolderType="trash" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_JUNK)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_JUNK)
 			specialFolderType="junk" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_TEMPLATES)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TEMPLATES)
 			specialFolderType="template" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_QUEUE)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_QUEUE)
 			specialFolderType="outbox" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_DRAFTS)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_DRAFTS)
 			specialFolderType="draft" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_NEWSGROUP)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP)
 			specialFolderType="news" + sDisplayIcons;
-		else if (folder.flags & Constants.MSG_FOLDER_FLAG_VIRTUAL)
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_VIRTUAL)
 			specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
-		else if (folder.flags == Constants.MSG_FOLDER_FLAG_ARCHIVE)
+		else if (folder.flags == FLAGS.MSG_FOLDER_FLAG_ARCHIVE)
 			specialFolderType="archives" + sDisplayIcons;
 		else {
 			if (sDisplayIcons.trim)
@@ -1561,7 +1561,11 @@ QuickFolders.Interface = {
 		if (lastPath)
 			localFile.initWithPath(lastPath);
     fp.displayDirectory = localFile; // gLastOpenDirectory.path
-    fp.open(fpCallback);		
+		if (fp.open)
+			fp.open(fpCallback);		
+		else { // Postbox
+		  fpCallback(fp.show());
+		}
 	} ,
 	
 	onBreakToggle: function (element) {
@@ -1734,9 +1738,9 @@ QuickFolders.Interface = {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
 		
 		// Get new Messages
-		if ((	folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP
+		if ((	folder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP
 				||
-				folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_INBOX) 
+				folder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_INBOX) 
 			&& 
 			GetNewMsgs) 
 		{
@@ -1887,11 +1891,13 @@ QuickFolders.Interface = {
 	//   folder = related folder
 	//   button = parent button
 	appendMailFolderCommands: function(MailCommands, folder, isRootMenu, button, menupopup) {
-		var topShortCuts = 0;
+		let topShortCuts = 0;
+		let utils = QuickFolders.Util;
+		let prefs = QuickFolders.Preferences;
 		// Empty Trash
-		if (folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH
+		if (folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_TRASH
 			&&
-			QuickFolders.Preferences.getBoolPrefQF("folderMenu.emptyTrash")) 
+			prefs.getBoolPref("folderMenu.emptyTrash")) 
 		{
 			var menuitem = this.createMenuItem_EmptyTrash();
 			MailCommands.appendChild(menuitem);
@@ -1900,9 +1906,9 @@ QuickFolders.Interface = {
 		}
 
 		// Get Newsgroup Mail
-		if ((folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP)
+		if ((folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP)
 			&&
-			QuickFolders.Preferences.getBoolPrefQF("folderMenu.getMessagesForNews")) 
+			prefs.getBoolPref("folderMenu.getMessagesForNews")) 
 		{
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
@@ -1918,11 +1924,11 @@ QuickFolders.Interface = {
 		// Get Mail - at top of Inbox menu!
 		if (menupopup 
 			&& 
-			(folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_INBOX)
+			(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_INBOX)
 			&&
-			!(folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_VIRTUAL)
+			!(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)
 			&&
-			QuickFolders.Preferences.getBoolPrefQF("folderMenu.getMessagesForInbox"))
+			prefs.getBoolPref("folderMenu.getMessagesForInbox"))
 		{
 			menuitem = this.createMenuItem_GetMail(folder);
 			if (menuitem) {
@@ -1934,24 +1940,24 @@ QuickFolders.Interface = {
 		// MarkAllRead (always on top)
 		if (menupopup 
 			&& 
-			!(folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH)
+			!(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_TRASH)
 			&& 
-			!(folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_JUNK)
+			!(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_JUNK)
 			&&
-			QuickFolders.Preferences.getBoolPrefQF("folderMenu.markAllRead"))
+			prefs.getBoolPref("folderMenu.markAllRead"))
 			// && folder.getNumUnread(false)>0
 		{
-			menuitem = this.createMenuItem_MarkAllRead((folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_VIRTUAL)==true);
+			menuitem = this.createMenuItem_MarkAllRead((folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)==true);
 			menupopup.appendChild(menuitem);
 			topShortCuts ++ ;
 		}
 
-		if (QuickFolders.Util.Application!="Postbox"
+		if (utils.Application!="Postbox"
 		    &&
-		    QuickFolders.Preferences.getBoolPrefQF("folderMenu.emptyJunk"))
+		    prefs.getBoolPref("folderMenu.emptyJunk"))
 		{
 			// EmptyJunk
-			if (folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_JUNK) {
+			if (folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
 				menuitem = this.createMenuItem_EmptyJunk();
 				if (menuitem) {
 					MailCommands.appendChild(menuitem);
@@ -1959,9 +1965,9 @@ QuickFolders.Interface = {
 						topShortCuts ++ ;
 				}
 			}
-			else if (!(folder.flags & (QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH | QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP))
+			else if (!(folder.flags & (utils.FolderFlags.MSG_FOLDER_FLAG_TRASH | utils.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP))
 				&& button.id == "QuickFoldersCurrentFolder"
-				&& QuickFolders.Preferences.getBoolPrefQF("folderMenu.emptyJunk") 
+				&& prefs.getBoolPref("folderMenu.emptyJunk") 
 				) {
 				// delete Junk
 				menuitem = this.createMenuItem_DeleteJunk();
@@ -1974,7 +1980,7 @@ QuickFolders.Interface = {
 		}
 
 		// EditVirtualFolder
-		if (folder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_VIRTUAL) {
+		if (folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-properties");
@@ -2070,7 +2076,7 @@ QuickFolders.Interface = {
 	} ,
 	
 	addPopupSet: function(popupId, folder, entry, offset, button) {
-
+		let prefs = QuickFolders.Preferences;
 		let menupopup = document.createElement('menupopup');
 		menupopup.setAttribute('id',popupId);
 		menupopup.setAttribute('position','after_start'); //
@@ -2144,7 +2150,7 @@ QuickFolders.Interface = {
 			this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRenameBookmark(this)');
 			QFcommandPopup.appendChild(menuitem);
 			
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.icon")) {
+			if (prefs.getBoolPref("commandMenu.icon")) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
 				menuitem.setAttribute('tag', 'qfIcon');
@@ -2164,7 +2170,7 @@ QuickFolders.Interface = {
 			}
 
 			
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.lineBreak")) {
+			if (prefs.getBoolPref("commandMenu.lineBreak")) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
 				menuitem.setAttribute('tag', entry.breakBefore ? 'qfBreakDel' : 'qfBreak');
@@ -2174,7 +2180,7 @@ QuickFolders.Interface = {
 				QFcommandPopup.appendChild(menuitem);
 			}
 
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.separator")) {
+			if (prefs.getBoolPref("commandMenu.separator")) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
 				menuitem.setAttribute('tag', entry.separatorBefore ? 'qfSeparatorDel' : 'qfSeparator');
@@ -2184,18 +2190,18 @@ QuickFolders.Interface = {
 				QFcommandPopup.appendChild(menuitem);
 			}
 			
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.options")
+			if (prefs.getBoolPref("commandMenu.options")
 			   ||
-				 QuickFolders.Preferences.getBoolPrefQF("commandMenu.support")
+				 prefs.getBoolPref("commandMenu.support")
 				 ||
-				 QuickFolders.Preferences.getBoolPrefQF("commandMenu.help")
+				 prefs.getBoolPref("commandMenu.help")
 			   ) {
 				// --------------------
 				QFcommandPopup.appendChild(document.createElement('menuseparator'));
 			}
 			let menuItemToClone;
 
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.options")) {
+			if (prefs.getBoolPref("commandMenu.options")) {
 				// Options
 				menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-options');
 				if (menuItemToClone) {
@@ -2205,7 +2211,7 @@ QuickFolders.Interface = {
 			}
 
 			// Support
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.support")) {
+			if (prefs.getBoolPref("commandMenu.support")) {
 				menuItemToClone = document.getElementById('QuickFolders-ToolbarPopup-support');
 				if (menuItemToClone) {
 					menuitem = menuItemToClone.cloneNode(true);
@@ -2214,14 +2220,13 @@ QuickFolders.Interface = {
 			}
 
 			// Help
-			if (QuickFolders.Preferences.getBoolPrefQF("commandMenu.help")) {
+			if (prefs.getBoolPref("commandMenu.help")) {
 				menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-help');
 				if (menuItemToClone) {
 					menuitem = menuItemToClone.cloneNode(true);
 					QFcommandPopup.appendChild(menuitem);
 				}
 			}
-
 
 			QuickFolderCmdMenu = document.createElement('menu');
 			QuickFolderCmdMenu.setAttribute('id','quickFoldersCommands');
@@ -2237,7 +2242,7 @@ QuickFolders.Interface = {
 
 
 		/* In certain cases, let's append mail folder commands to the root menu */
-		if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP) {
+		if (fi.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
 			// newsgroups have no subfolders anyway
 			var MailCommands = menupopup;
 			var isRootMenu = true;
@@ -2258,19 +2263,19 @@ QuickFolders.Interface = {
 		// special folder commands: at top, as these are used most frequently!
 		// 1. TOP LEVEL SPECIAL COMMANDS
 		var topShortCuts = 0;
-		if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_TRASH) {
+		if (fi.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
 			menuitem = this.createMenuItem_EmptyTrash();
 			menupopup.appendChild(menuitem);
 			topShortCuts ++ ;
 		}
 
-		if (fi.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_JUNK) {
+		if (fi.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
 			menuitem = this.createMenuItem_EmptyJunk();
 			menupopup.appendChild(menuitem);
 			topShortCuts ++ ;
 		}
 		
-		if (QuickFolders.Preferences.getBoolPrefQF("folderMenu.openNewTab")) {
+		if (prefs.getBoolPref("folderMenu.openNewTab")) {
 			let newTabMenuItem = document.getElementById('folderPaneContext-openNewTab');		
 			// folder listener sometimes throws here?
 			let label = newTabMenuItem && newTabMenuItem.label ? newTabMenuItem.label.toString() : "Open in New Tab";
@@ -2463,19 +2468,19 @@ QuickFolders.Interface = {
 			var server=folder.server.QueryInterface(Components.interfaces.nsIMsgIncomingServer);// check server.type!!
 			switch(server.type) {
 				case 'pop3':
-					if (!QuickFolders.Preferences.getBoolPrefQF("dragToCreateFolder.pop3"))
+					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.pop3"))
 						return;
 					break;
 				case 'imap':
-					if (!QuickFolders.Preferences.getBoolPrefQF("dragToCreateFolder.imap"))
+					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.imap"))
 						return;
 					break;
 				case 'none': // allow all local folders!
-					if (!QuickFolders.Preferences.getBoolPrefQF("dragToCreateFolder.local"))
+					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.local"))
 						return;
 					break;
 				default:
-					if (!QuickFolders.Preferences.getBoolPrefQF("dragToCreateFolder." + server.type)) {
+					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder." + server.type)) {
 						QuickFolders.Util.logDebugOptional("dragToNew","Not enabled: drag & create new folder for server's of type: " + server.type);
 						return;
 					}
@@ -2698,7 +2703,7 @@ QuickFolders.Interface = {
 		}
 
 		// append the "Create New Folder" menu item!
-		if (isDrag && QuickFolders.Preferences.getBoolPrefQF('folderMenu.dragToNew')) {
+		if (isDrag && QuickFolders.Preferences.getBoolPref('folderMenu.dragToNew')) {
 			QuickFolders.Interface.addDragToNewFolderItem(popupMenu, folder);
 		}
 	} ,
@@ -3340,7 +3345,7 @@ QuickFolders.Interface = {
 					let targetNode = parent.targetNode;
 					// now paint the button
 				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
-				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPrefQF('pastelColors'));
+				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPref('pastelColors'));
 					//   retrieve about config key to persist setting;
 					let styleKey =  targetNode.getAttribute('stylePrefKey');
 				  var stylePref = 'style.' + styleKey + '.';
@@ -3654,7 +3659,7 @@ QuickFolders.Interface = {
 		let noColorClass = (tabStyle == QuickFolders.Preferences.TABS_FILLED) ? 'col0' : 'col0striped';
 
 		// transparent buttons: means translucent background! :))
-		if (QuickFolders.Preferences.getBoolPrefQF('transparentButtons')) 
+		if (QuickFolders.Preferences.getBoolPref('transparentButtons')) 
 			inactiveBackground = QuickFolders.Util.getRGBA(inactiveBackground, 0.25) ; 
 
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton','background-color', inactiveBackground, true);
@@ -3731,7 +3736,7 @@ QuickFolders.Interface = {
 			// CUSTOM RADIUS 
 			let topRadius = "4px";
 			let bottomRadius = "0px";
-			if (QuickFolders.Preferences.getBoolPref("extensions.quickfolders.style.corners.customizedRadius")) {
+			if (QuickFolders.Preferences.getBoolPref("style.corners.customizedRadius")) {
 				topRadius =  QuickFolders.Preferences.getUserStyle("corners","customizedTopRadius");
 				bottomRadius = QuickFolders.Preferences.getUserStyle("corners","customizedBottomRadius");
 			}
@@ -3749,7 +3754,7 @@ QuickFolders.Interface = {
 			// but should only apply if background image is set!!
 			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
 			let SHADOW = QuickFolders.Util.isCSSShadow ? 'box-shadow' : '-moz-box-shadow';
-			if (QuickFolders.Preferences.getBoolPrefQF("buttonShadows")) {
+			if (QuickFolders.Preferences.getBoolPref("buttonShadows")) {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'1px -1px 3px -1px rgba(0,0,0,0.7)', true);
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
@@ -3779,7 +3784,7 @@ QuickFolders.Interface = {
 			
 			// TOOLBAR
 			theColorString = QuickFolders.Preferences.getUserStyle("Toolbar","background-color","ButtonFace");
-			if (QuickFolders.Preferences.getBoolPrefQF("transparentToolbar"))
+			if (QuickFolders.Preferences.getBoolPref("transparentToolbar"))
 				theColorString = "transparent";
 			styleEngine.setElementStyle(ss, '.toolbar','background-color', theColorString,true);
 
@@ -4094,7 +4099,7 @@ QuickFolders.Interface = {
 		let panel = "";
 		let isMailPanel = false;
 		
-		if (!QuickFolders.Preferences.getBoolPrefQF("toolbar.onlyShowInMailWindows"))
+		if (!QuickFolders.Preferences.getBoolPref("toolbar.onlyShowInMailWindows"))
 			return;
 	
 		var toolbar = this.Toolbar;
@@ -4116,7 +4121,7 @@ QuickFolders.Interface = {
 		let action = "";
 		
 		if (panel == "threadPaneBox" || panel == "accountCentralBox" || panel == "folder" || panel == "glodaList" ||
-		    isMailPanel && !QuickFolders.Preferences.getBoolPrefQF("toolbar.hideInSingleMessage")) {
+		    isMailPanel && !QuickFolders.Preferences.getBoolPref("toolbar.hideInSingleMessage")) {
 			action = "Showing";
 			toolbar.removeAttribute("collapsed");
 		} 

@@ -59,9 +59,9 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "3.12.4",
+	HARDCODED_EXTENSION_VERSION : "3.14beta2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
-	Constants : {
+	FolderFlags : {
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_TRASH 	  : 0x0100,
 		MSG_FOLDER_FLAG_SENTMAIL	: 0x0200,
@@ -284,7 +284,7 @@ QuickFolders.Util = {
 	} ,
 	
 	disableFeatureNotification: function(featureName) {
-		QuickFolders.Preferences.setBoolPrefQF("proNotify." + featureName, false);
+		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
 	} ,
 	
 	// Postbox special functions to avoid line being truncated
@@ -313,7 +313,7 @@ QuickFolders.Util = {
 		let notificationId;
 		// is notification disabled?
 		// check setting extensions.quickfolders.proNotify.<featureName>
-		if (!QuickFolders.Preferences.getBoolPrefQF("proNotify." + featureName))
+		if (!QuickFolders.Preferences.getBoolPref("proNotify." + featureName))
 			return;
 		let countDown = QuickFolders.Preferences.getIntPref("proNotify." + featureName + ".countDown") - 1;
 		QuickFolders.Preferences.setIntPref("proNotify." + featureName + ".countDown", countDown);
@@ -642,7 +642,7 @@ QuickFolders.Util = {
 			try {QuickFolders.Util.logDebugOptional('dnd', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);}
 			catch(e) { alert('QuickFolders.Util.moveMessages:' + e); }
 
-			if (targetFolder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) {
+			if (targetFolder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
 				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
@@ -1084,8 +1084,8 @@ QuickFolders.Util = {
 		// tooltip - see also Attributes section of
 		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
 		// and docs for nsIMsgIncomingServer
-		let getPref = function(arg) { return QuickFolders.Preferences.getBoolPrefQF('tooltips.' + arg); };
-		let sVirtual = (folder.flags & this.Constants.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "";
+		let getPref = function(arg) { return QuickFolders.Preferences.getBoolPref('tooltips.' + arg); };
+		let sVirtual = (folder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "";
 		let srv = folder.server;
 		
 		let srvName='';
@@ -1192,7 +1192,7 @@ QuickFolders.Util = {
 		if (!msgFolder || !msgFolder.filePath)	{
 			return false;
 		}
-		if (msgFolder.flags & QuickFolders.Util.Constants.MSG_FOLDER_FLAG_NEWSGROUP)
+		if (msgFolder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP)
 		  return true; // we do not validate nntp folders
 		if (msgFolder.filePath.exists()) {
 			return true;

@@ -41,6 +41,10 @@
 	font-family: Calibri,sans-serif;
 }
 
+#qf-options-header label {
+  padding: 8px;
+}
+
 #qf-options-header .dialogheader-title {
 	margin: 0px !important;
 	font-size: 13pt;

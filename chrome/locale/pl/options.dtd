@@ -23,8 +23,8 @@
 <!ENTITY qf.checkbox.enableTransitions "Włącz przejścia CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Pokazuje płynne przejścia między różnymi aspekami kolorowania kart.">
 <!ENTITY qf.checkbox.highlightNewMail "Podświetl foldery z nową wiadomością">
-<!ENTITY qf.toolbarMinimumHeight "Minimum height:">
-<!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
+<!ENTITY qf.toolbarMinimumHeight "Minimalna wysokość:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Dla systemów Mac jeśli występuje [Bug 25021]">
 <!ENTITY qf.label.buttonFontSize "Wielkość czcionki (pozostaw puste dla domyślnej):">
 <!ENTITY qf.label.pixels "pikseli">
 <!ENTITY qf.label.appearance "Wygląd">
@@ -53,84 +53,84 @@
 <!ENTITY qf.currentFolderBackground.default "domyślne">
 <!ENTITY qf.currentFolderBackground.dark "ciemne">
 <!ENTITY qf.caption.currentFolderBackground "Tło bieżącej zakładki folderu">
-<!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
-<!ENTITY qf.label.ActiveTabColor "Active Tab Color:">
-<!ENTITY qf.label.HoveredTabColor "Hovered Tab Color:">
-<!ENTITY qf.label.DragOverBackground "Drag Over Color:">
-<!ENTITY qf.label.ToolbarBackground "Toolbar Background:">
-<!ENTITY qf.description.dragToAdd "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder.">
-<!ENTITY qf.description.dragToPosition "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder).">
-<!ENTITY qf.description.dragToPopup "Drag messages onto quickfolder popup menu to move messages into sub folders.">
-<!ENTITY qf.description.changeCategory "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs.">
-<!ENTITY qf.description.rightClickOptions "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator).">
-<!ENTITY qf.description.tipMsg "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing.">
-<!ENTITY qf.description.experimentalItems "The following items are experimental, they will hopefully be working in the next release!!">
-<!ENTITY qf.label.instantApplyMsg "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors.">
-<!ENTITY qf.button.defaultcolors "Default Colors">
-<!ENTITY qf.checkbox.debug "Debug Mode">
+<!ENTITY qf.label.setcolors "Ustaw [kolor tekstu], kolor tła">
+<!ENTITY qf.label.ActiveTabColor "Kolor aktywnej zakładki:">
+<!ENTITY qf.label.HoveredTabColor "Kolor wskazywanej zakładki:">
+<!ENTITY qf.label.DragOverBackground "Kolor podczas przeciągania:">
+<!ENTITY qf.label.ToolbarBackground "Tło paska:">
+<!ENTITY qf.description.dragToAdd "Przeciągnij folder poczty na puste miejsce aby utworzyć zakładkę quickfolder (działa jako skrót/alias). Przeciągnij wiadomości na pasek quickfolders aby przenieść je do odpowiedniego folderu (lub skopiować z kluczem modyfikacji). Kliknij na zakładkę quickfolder aby przejść do tego folderu.">
+<!ENTITY qf.description.dragToPosition "Przeciągnij zakładkę quickfolder w bok aby zmienić jej pozycję. Prawy klawisz na zakładce quickfolder aby otworzyć menu kontekstowe; wybierając możesz przejść do podfolderów. &quot;Zmień nazwę zakładki&quot; zmienia wyświetlany tekst na tej zakładce. &quot;Usuń zakładkę&quot; kasuje zakładkę quickfolder (ale nie katalog poczty).">
+<!ENTITY qf.description.dragToPopup "Przeciągnij wiadomości na menu podręczne quickfolder aby przenieść je do podfolderów.">
+<!ENTITY qf.description.changeCategory "Kliknij prawym klawiszem myszy na zakładce aby przyporządkować jej jedną lub kilka kategorii. Tworzy filtr dla kategorii po lewej stronie zakładki.">
+<!ENTITY qf.description.rightClickOptions "Kliknięcie prawym klawiszem na pustym miejscu otwiera menu opcji. W opcjach możesz wybrać styl macierzysty (mniejszy) albo styl płaski (bardziej przejrzysty, wsparcie dla wskaźników przenoszenia).">
+<!ENTITY qf.description.tipMsg "Porada: Jeśli masz dużą ilość folderów, spróbuj rozszerzenie Nostalgy aby organizować wiadomości przy pomocy klawiatury.">
+<!ENTITY qf.description.experimentalItems "Następujące elementy są eksperymentalne, ale mam nadzieję, że będą działać w następnym wydaniu!">
+<!ENTITY qf.label.instantApplyMsg "Uwaga: jeśli widzisz tylko przycisk [Zamknij] poniżej, ustawienia kolorów może nie działać - aby obejść problem, spróbuj kliknąć prawym przyciskiem myszy na pusty obszar paska QuickFolders wybrać opcje ... To wymusi przycisk [OK] aby został wyświetlony, który powinien zapisać kolory.">
+<!ENTITY qf.button.defaultcolors "Kolory domyślne">
+<!ENTITY qf.checkbox.debug "Tryb debugowania">
 <!ENTITY qf.label.UncoloredTab "Zakładka bez koloru">
 <!ENTITY qf.label.UncoloredTab.tooltip "Wygląd (nieaktywnych) zakładek bez specjalnie wybranego koloru">
 <!ENTITY qf.label.ColoredTabPalette "Paleta dla zakładek z kolorem:">
 <!ENTITY qf.label.ColoredTabPalette.tooltip "Paleta do zakładek z określonym kolorem">
-<!ENTITY qf.checkbox.usePalette "Use palette">
-<!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
-<!ENTITY qf.label.folders "Folders?">
-<!ENTITY qf.label.folders.tooltip "Copies the folders configuration string to the clipboard">
-<!ENTITY qf.checkbox.autoFocusPreview "Focus on message list when changing tabs">
-<!ENTITY qf.label.homePage "Detailed information at the new QuickFolders homepage at Mozdev.org…">
-<!ENTITY qf.tab.support "Support">
-<!ENTITY qf.description.languages "QuickFolders supports localization - you can help by adding a translation in your language on Babelzilla:">
-<!ENTITY qf.label.languagesLink "Add Translation…">
-<!ENTITY qf.description.donate "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders.">
-<!ENTITY qf.label.donateLink "Visit the Donation Page…">
-<!ENTITY qf.label.donate "Donate">
-<!ENTITY qf.description.contactMe "You can also contact me personally at axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Contact me (English or German)…">
-<!ENTITY qf.checkbox.showIcons "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)">
-<!ENTITY qf.checkbox.showSubfolders "Expand Subfolders in popup menus">
-<!ENTITY qf.checkbox.showRecentTab "Display Recent Folders Tab">
-<!ENTITY qf.checkbox.showRecentButton "Recent Folders Button">
-<!ENTITY qf.checkbox.showRecentTab.tooltip "Right click for configuration">
-<!ENTITY qf.checkbox.showFilterButton "'Create Filters' Button">
-<!ENTITY qf.checkbox.showFilterButton.tooltip "You can also create Filters using the QuickFolders context menu.">
-<!ENTITY qf.checkbox.autoHideToolbar "Hide QuickFolders when they are not needed">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Collapses the toolbar in special tabs such as calendar, content, addon manager.">
-<!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menu Icon">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "This menu can also be invoked by right-clicking the toolbar itself">
-<!ENTITY qf.menu.tabColor "No Color!">
-<!ENTITY qf.menu.Color "Color">
+<!ENTITY qf.checkbox.usePalette "Użyj palety">
+<!ENTITY qf.label.initdelay "[ms] opóźnienie startu {1000 jest standardem}:">
+<!ENTITY qf.label.folders "Foldery?">
+<!ENTITY qf.label.folders.tooltip "Kopiuje łańcuch konfiguracji folderów do schowka">
+<!ENTITY qf.checkbox.autoFocusPreview "Koncentracja na liście wiadomości przy zmianie zakładek">
+<!ENTITY qf.label.homePage "Szczegółowe informacje o nowej stroni QuickFolders na Mozdev.org ...">
+<!ENTITY qf.tab.support "Pomoc techniczna">
+<!ENTITY qf.description.languages "Wsparcie tłumaczenia QuickFolders - możesz pomóc dodając tłumaczenie w we własnym na BabelZilla:">
+<!ENTITY qf.label.languagesLink "Dodaj tłumaczenie…">
+<!ENTITY qf.description.donate "Jeśli kochasz QuickFolders tak jak my i chcesz wesprzeć jego rozwój, możesz wpłacić pieniądze na rzecz dalszego rozwoju QuickFolders.">
+<!ENTITY qf.label.donateLink "Otwórz stronę ze wsparciem…">
+<!ENTITY qf.label.donate "Wsparcie finansowe">
+<!ENTITY qf.description.contactMe "Możesz również kontaktować się ze mną osobiście pod adresem axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Kontakt ze mną (angielski lub niemiecki)…">
+<!ENTITY qf.checkbox.showIcons "Wyświetlaj ikony (Skrzynka odbiorcza, Wysłane, Niechciane, Kosz, Szkice, Archiwum, Szablony)">
+<!ENTITY qf.checkbox.showSubfolders "Rozwijaj podfoldery jako podmenu">
+<!ENTITY qf.checkbox.showRecentTab "Wyświetlaj zakładkę &quot;Ostatnio otwierane foldery&quot;">
+<!ENTITY qf.checkbox.showRecentButton "Przycisk &quot;Ostatnio otwierane foldery&quot;">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Kliknij prawym klawiszem do konfiguracji">
+<!ENTITY qf.checkbox.showFilterButton "Przycisk 'Tworzenie filtrów'">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Możesz również tworzyć filtry używając menu kontekstowego QuickFolders.">
+<!ENTITY qf.checkbox.autoHideToolbar "Ukryj QuickFolders kiedy nie jest potrzebne">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Zwija pasek narzędzi w specjalnych zakładkach, takich jak kalendarz, zawartość, menedżer dodatków.">
+<!ENTITY qf.checkbox.tabMenuIcon "Ikony paska narzędziowego">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "To menu może być również wywołane poprzez kliknięcie prawym klawiszem na zakładce">
+<!ENTITY qf.menu.tabColor "Brak koloru!">
+<!ENTITY qf.menu.Color "Kolor">
 <!ENTITY qf.options.LayoutColorAppearance "Individual Tab Color Appearance">
-<!ENTITY qf.options.LayoutColorAppearanceStriped "(striped style)">
-<!ENTITY qf.options.LayoutColorAppearanceFilled "(filled style)">
-<!ENTITY qf.options.label.themeAuthor "Theme Author:">
-<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
-<!ENTITY qf.themes.flatTabs.label "Flat Style">
-<!ENTITY qf.themes.applePills.label "Apple Pills">
-<!ENTITY qf.themes.realButtons.label "Pushbuttons">
-<!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
-<!ENTITY qf.options.theme.pastelColors "Pastel Colors">
-<!ENTITY qf.options.themes.customCornerRadius.checkbox "Custom Corner Radius">
-<!ENTITY qf.options.themes.customCornerRadius.Top.label "Top:">
-<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bottom:">
-<!ENTITY qf.options.themes.showBorders.checkbox "Always Display Borders">
-<!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
-<!ENTITY qf.checkbox.transparent "transparent">
-<!ENTITY qf.checkbox.shadows "shadows">
-<!ENTITY qf.checkbox.debug.tooltip "right click this checkbox for advanced debug options">
-<!ENTITY qf.checkbox.displaylabel.tooltip "right click to change the text of this label">
-<!ENTITY qf.checkbox.sortMenusAlpha "Force alphabetic sorting of menus with subfolders.">
-<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Only use this option if your mail client doesn't sort the subfolders correctly.">
-<!ENTITY qf.options.versionnumber.tooltip "Right-click for version history.">
-<!ENTITY qf.description.bugzilla "Please use Bugzilla for all official feature requests and bug reports">
-<!ENTITY qf.label.bugzilla "Report a bug / Request a new feature with Bugzilla…">
-<!ENTITY qf.description.versionhistory "Detailed Version History at mozdev.org">
-<!ENTITY qf.label.versionhistory "Read Version History…">
-<!ENTITY qf.checkbox.menus.getMailForInbox "Get Messages (Mail Accounts)">
-<!ENTITY qf.checkbox.menus.getMailForNews "Get Messages (News Accounts)">
-<!ENTITY qf.checkbox.menus.markAllRead "Mark Folder Read">
-<!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
-<!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
-<!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(paskii)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(wypełniony)">
+<!ENTITY qf.options.label.themeAuthor "Autor motywu:">
+<!ENTITY qf.themes.nativeTabs.label "Zakładki macierzyste">
+<!ENTITY qf.themes.flatTabs.label "Płaski styl">
+<!ENTITY qf.themes.applePills.label "Styl Apple">
+<!ENTITY qf.themes.realButtons.label "Przyciski">
+<!ENTITY qf.themes.flatButtons.label "Przyciski na pasku">
+<!ENTITY qf.options.theme.pastelColors "Kolory pastelowe">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Własny promień zaokrąglenia narożników">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Góra:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Dół:">
+<!ENTITY qf.options.themes.showBorders.checkbox "Zawsze wyświetlaj obramowanie">
+<!ENTITY qf.description.linkNote "Odwiedź stronę domową QuickFolders aby zobaczyć szczegółową instrukcję użytkowania, podpowiedzi i FAQ:">
+<!ENTITY qf.checkbox.transparent "przezroczyste">
+<!ENTITY qf.checkbox.shadows "cienie">
+<!ENTITY qf.checkbox.debug.tooltip "kliknij prawym klawiszem dla zaawansowanych opcji debugowania">
+<!ENTITY qf.checkbox.displaylabel.tooltip "kliknij prawym klawiszem aby zmienić tekst tej etykiety">
+<!ENTITY qf.checkbox.sortMenusAlpha "Wymuszenie alfabetycznego sortowania podfolderów  w menu.">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Używaj tej opcji wyłącznie w sytuacji kiedy twój klient poczty nie sortuje właściwie podfolderów.">
+<!ENTITY qf.options.versionnumber.tooltip "Kliknij prawym klawiszem dla historii wersji.">
+<!ENTITY qf.description.bugzilla "Proszę używać Bugzilli jako oficjalnej możliwości wysyłania zapytań i raportowania błędów">
+<!ENTITY qf.label.bugzilla "Zgłoś błąd / Zapytaj o nową funkcję poprzez Bugzillę..">
+<!ENTITY qf.description.versionhistory "Szczegółowa historia wersji na mozdev.org">
+<!ENTITY qf.label.versionhistory "Zobacz historię wersji…">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Pobierz wiadomości (Konta mailowe)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Pobierz wiadomości (Konta aktualności)">
+<!ENTITY qf.checkbox.menus.markAllRead "Oznacz folder jako przeczytany">
+<!ENTITY qf.checkbox.menus.emptyJunk "Opróżnij niechciane">
+<!ENTITY qf.checkbox.menus.emptyTrash "Opróżnij kosz">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Przeciągnij do nowego podfolderu">
 <!ENTITY qf.palette.twoColors "2 kolory">
 <!ENTITY qf.palette.standard "Paleta standardowa">
 <!ENTITY qf.palette.pastel "Kolory Pastelowe">

@@ -6,6 +6,8 @@ For detail, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+Components.utils.import("resource://gre/modules/Services.jsm");
+
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 if (!QuickFolders.Properties)
@@ -289,7 +291,7 @@ QuickFolders.Interface = {
 			while (!done) {
 				var folder;
 				if (typeof myenum.currentItem!='undefined')
-					folder = myenum.currentItem().QueryInterface(QuickFolders_CI.nsIMsgFolder); // Postbox
+					folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
 				else // SeaMonkey
 				{
 					if (myenum.hasMoreElements())
@@ -369,8 +371,8 @@ QuickFolders.Interface = {
 		// Start iterating at the top of the hierarchy, that is, with the root
 		// folders for each account.
 		var acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
-					  getService(QuickFolders_CI.nsIMsgAccountManager);
-		for (let acct in fixIterator(acctMgr.accounts, QuickFolders_CI.nsIMsgAccount)) {
+					  getService(Components.interfaces.nsIMsgAccountManager);
+		for (let acct in fixIterator(acctMgr.accounts, Components.interfaces.nsIMsgAccount)) {
 		  addIfRecent(acct.incomingServer.rootFolder);
 		  checkSubFolders(acct.incomingServer.rootFolder);
 		}
@@ -648,6 +650,7 @@ QuickFolders.Interface = {
 
 			let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
 
+			let isFirst=true;
 			for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 				var folderEntry = QuickFolders.Model.selectedFolders[i];
 				var folder;
@@ -660,15 +663,17 @@ QuickFolders.Interface = {
 				if((folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, true))) {
 					countFolders++;
 					if (!minimalUpdate) {
-						button = this.addFolderButton(folder, folderEntry, offset, null, null, tabStyle);
+						button = this.addFolderButton(folder, folderEntry, offset, null, null, tabStyle, isFirst);
 						this.buttonsByOffset[offset] = button;
+						isFirst = false;
 					}
 					else {
 						// now just update the folder count on the button label, if it changed.
 						// button is not newly created. Also it is not recolored.
 						button = this.getButtonByFolder(folder);
 						if (button) {
-							this.addFolderButton(folder, folderEntry, offset, button, null, tabStyle);
+							this.addFolderButton(folder, folderEntry, offset, button, null, tabStyle, isFirst);
+							isFirst = false;
 						}
 					}
 
@@ -808,8 +813,8 @@ QuickFolders.Interface = {
 		QuickFolders.Preferences.setCurrentThemeId(themeSelector ? themeSelector.value : QuickFolders.Preferences.CurrentThemeId);
 		var style =  QuickFolders.Preferences.ColoredTabStyle;
 		// refresh main window
-		var mail3PaneWindow = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
-											 .getService(QuickFolders_CI.nsIWindowMediator)
+		var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+											 .getService(Components.interfaces.nsIWindowMediator)
 											 .getMostRecentWindow("mail:3pane");
 		// we need to try and get at the main window context of QuickFolders, not the prefwindow instance!
 		if (mail3PaneWindow && mail3PaneWindow.document) { 
@@ -1235,7 +1240,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	addFolderButton: function(folder, entry, offset, theButton, buttonId, fillStyle) 
+	addFolderButton: function(folder, entry, offset, theButton, buttonId, fillStyle, isFirst) 
 	{
 		let tabColor =  (entry && entry.tabColor) ? entry.tabColor : null;			
 		let tabIcon = (entry && entry.icon) ? entry.icon : '';
@@ -1302,8 +1307,6 @@ QuickFolders.Interface = {
 			this.setEventAttribute(button, "oncommand",'QuickFolders.Interface.onButtonClick(event.target, event, true);');
 		}
 
-
-
 		var popupId = 'QuickFolders-folder-popup-'
 		          + ((buttonId!=null) ? buttonId : folder.URI);
 		button.setAttribute('context',''); // overwrites the parent context menu
@@ -1317,14 +1320,13 @@ QuickFolders.Interface = {
 
 		if (!theButton) {
 		  // line break?
-			if (entry.breakBefore) {
+			if (entry.breakBefore && !isFirst) { // no line break if this is the first button on a line
 			  // without explicitely adding this namespace, the break doesnt show up!
 			  let LF = document.createElementNS("http://www.w3.org/1999/xhtml", "br");
 			  this.FoldersBox.appendChild(LF);
 			}
 			
-			if (entry.separatorBefore) {
-			  // without explicitely adding this namespace, the break doesnt show up!
+			if (entry.separatorBefore  && !isFirst) {  // no separator if this is the first button on a line
 			  let sep = document.createElement("toolbarseparator");
 			  this.FoldersBox.appendChild(sep);
 			}
@@ -1518,19 +1520,45 @@ QuickFolders.Interface = {
 	} ,
 	
 	onRemoveIcon: function (element) {
-		let folderButton = QuickFolders.Util.getPopupNode(element);
-		let entry = QuickFolders.Model.getButtonEntry(folderButton);
-		element.collapsed = true; // hide the menu item!
-	  QuickFolders.Model.setTabIcon	(folderButton, entry, '');
+		if (element.id == 'context-quickFoldersRemoveIcon') { // style a folder tree icon
+			var folders = gFolderTreeView.getSelectedFolders();
+			if (folders) {
+				for each (let folder in folders) {
+					QuickFolders.FolderTree.setFolderTreeIcon(folder, null);
+					let entry = QuickFolders.Model.getFolderEntry(folder.URI);
+					if (entry) {
+						// if button visible, update it!
+					  let folderButton = this.shouldDisplayFolder(entry) ? this.getButtonByFolder(folder) : null;
+						QuickFolders.Model.setTabIcon (folderButton, entry, ''); // will only modify stored entry, if tab not visible.
+					}
+				}			
+			}			
+		}
+		else {
+			let folderButton = QuickFolders.Util.getPopupNode(element);
+			let entry = QuickFolders.Model.getButtonEntry(folderButton);
+			element.collapsed = true; // hide the menu item!
+	    QuickFolders.Model.setTabIcon	(folderButton, entry, '');
+			let folder = QuickFolders.Model.getMsgFolderFromUri(entry.uri)
+			if (folder)
+				QuickFolders.FolderTree.setFolderTreeIcon(folder, null);
+		}
 	} ,
 	
-	onSelectIcon: function (element) {
+	onSelectIcon: function (element,event) {
 		const nsIFilePicker = Components.interfaces.nsIFilePicker;
-		let folderButton = QuickFolders.Util.getPopupNode(element);
-		let entry = QuickFolders.Model.getButtonEntry(folderButton);
-		let fileLocation = Components.interfaces.nsILocalFile;
+		let folderButton, entry;
+		if (element.id == 'context-quickFoldersIcon') { // style a folder tree icon
+		  // get selected folder (form event?)
+			var folders = gFolderTreeView.getSelectedFolders();
+		}
+		else {
+			folderButton = QuickFolders.Util.getPopupNode(element);
+			entry = QuickFolders.Model.getButtonEntry(folderButton);
+		}
     let fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 		
+		// callback, careful, no "this"
     let fpCallback = function fpCallback_done(aResult) {
       if (aResult == nsIFilePicker.returnOK) {
         try {
@@ -1541,7 +1569,23 @@ QuickFolders.Interface = {
 							//localFile.initWithPath(path); // get the default path
 							QuickFolders.Preferences.setCharPrefQF('tabIcons.defaultPath', file.path);
 							let iconURL = fp.fileURL; 
-							QuickFolders.Model.setTabIcon	(folderButton, entry, iconURL, element);
+							if (folders) {
+							  for each (let folder in folders) {
+									QuickFolders.FolderTree.setFolderTreeIcon(folder, iconURL);
+									let entry = QuickFolders.Model.getFolderEntry(folder.URI);
+									if (entry) {
+										// if button visible, update it!
+										let folderButton = QuickFolders.Interface.shouldDisplayFolder(entry) ? QuickFolders.Interface.getButtonByFolder(folder) : null;
+										QuickFolders.Model.setTabIcon (folderButton, entry, iconURL); // will only modify stored entry, if tab not visible.
+									}
+								}			
+							}
+							else {
+								QuickFolders.Model.setTabIcon	(folderButton, entry, iconURL, element);
+								let folder = QuickFolders.Model.getMsgFolderFromUri(entry.uri)
+								if (folder)
+									QuickFolders.FolderTree.setFolderTreeIcon(folder, iconURL);
+							}
 						}
 						catch(ex) {
 						}
@@ -1631,7 +1675,10 @@ QuickFolders.Interface = {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
 		try {
 			var f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-			f.markAllMessagesRead(msgWindow);
+			if (QuickFolders.Util.Application == 'Postbox')
+				f.markAllMessagesRead();
+			else
+				f.markAllMessagesRead(msgWindow);
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("QuickFolders.Interface.onMarkAllRead " + e);
@@ -1641,9 +1688,7 @@ QuickFolders.Interface = {
 	onCreateSubFolder: function(folder) {
 		try {
 			var f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-
-			//gFolderTreeController.newFolder( ,msgWindow);
-			folder.createSubfolder("test" ,msgWindow);
+			folder.createSubfolder("test", msgWindow);
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("QuickFolders.Interface.onCreateSubFolder " + e);
@@ -1702,8 +1747,23 @@ QuickFolders.Interface = {
 
 	onEmptyJunk: function(element) {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
-		this.globalTreeController.emptyJunk(folder);
-		this.compactFolder(folder, 'emptyJunk');
+		if (QuickFolders.Util.Application == 'Postbox') { 
+			let getSelFunction;
+			try {
+			  // functions from folderPaneContext
+			  // Postbox hack: we pretend the tree folder was selected by temporarily replacing GetSelectedFolderURI
+			  getSelFunction = GetSelectedFolderURI;
+				GetSelectedFolderURI = function() { return folder.URI; };
+				deleteAllInFolder('emptyJunk');
+			}
+			catch(ex) { QuickFolders.Util.logException('Exception in onEmptyJunk ', ex);  };
+			if (getSelFunction)
+				GetSelectedFolderURI = getSelFunction;
+		}
+		else {
+			this.globalTreeController.emptyJunk(folder);
+		  this.compactFolder(folder, 'emptyJunk');
+		}
 	} ,
 
 	onDeleteJunk: function(element) {
@@ -1733,6 +1793,68 @@ QuickFolders.Interface = {
 		else
 			this.globalTreeController.editFolder(null,folder);
 	} ,
+	
+	openExternal: function (aFile)
+	{
+		var uri = Cc["@mozilla.org/network/io-service;1"].
+							getService(Ci.nsIIOService).newFileURI(aFile);
+
+		var protocolSvc = Cc["@mozilla.org/uriloader/external-protocol-service;1"].
+											getService(Ci.nsIExternalProtocolService);
+		protocolSvc.loadUrl(uri);
+		return;
+	}, 
+	
+	getLocalFileFromNativePathOrUrl: function(aPathOrUrl)
+	{
+	  try {
+			if (aPathOrUrl.substring(0,7) == "file://") {
+				// if this is a URL, get the file from that
+				let ioSvc = Cc["@mozilla.org/network/io-service;1"].
+										getService(Ci.nsIIOService);
+
+				// XXX it's possible that using a null char-set here is bad
+				const fileUrl = ioSvc.newURI(aPathOrUrl, null, null).
+												QueryInterface(Ci.nsIFileURL);
+				return fileUrl.file.clone().QueryInterface(Ci.nsILocalFile);
+			} else {
+				// if it's a pathname, create the nsILocalFile directly
+				var f = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				f.initWithPath(aPathOrUrl);
+				return f;
+			}
+		}
+		catch(ex) {
+		  QuickFolders.Util.popupAlert("Problems opening URL: " + aPathOrUrl, ex);
+		}
+		return null;
+	}	,	
+	
+	onFolderOpenLocation: function(element) {
+		let folder = QuickFolders.Util.getPopupNode(element).folder;
+		// code from gDownloadViewController.showDownload(folder);
+		let f = this.getLocalFileFromNativePathOrUrl(folder.filePath.path); // aDownload.getAttribute("file")
+		try {
+			// Show the directory containing the file and select the file
+			f.reveal();
+		} catch (e) {
+			// If reveal fails for some reason (e.g., it's not implemented on unix or
+			// the file doesn't exist), try using the parent if we have it.
+			let parent = f.parent.QueryInterface(Ci.nsILocalFile);
+			if (!parent)
+				return;
+
+			try {
+				// "Double click" the parent directory to show where the file should be
+				parent.launch();
+			} catch (e) {
+				// If launch also fails (probably because it's not implemented), let the
+				// OS handler try to open the parent
+				this.openExternal(parent);
+			}
+		}		
+		
+	} ,
 
 	onGetMessages: function(element) {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
@@ -1740,12 +1862,21 @@ QuickFolders.Interface = {
 		// Get new Messages
 		if ((	folder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP
 				||
-				folder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_INBOX) 
-			&& 
-			GetNewMsgs) 
-		{
-			if (folder.server.type != 'none')
-				GetNewMsgs(folder.server, folder); 
+				folder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_INBOX)) 
+		{ 
+			if (typeof GetNewMsgs != "undefined") { // Tb, Sm
+   			if (folder.server.type != 'none')   
+				  GetNewMsgs(folder.server, folder); 
+			}
+			else if (typeof MsgGetMessage != "undefined") {  // Postbox
+			  let getM = GetSelectedMsgFolders;
+				try {
+				  GetSelectedMsgFolders = function() { let msg=[]; msg.push(folder); return msg; };
+					GetFolderMessages();
+				}
+				catch(ex) {}
+				GetSelectedMsgFolders = getM;
+			}
 		}	
 	} ,
 
@@ -2073,6 +2204,16 @@ QuickFolders.Interface = {
 		menuitem.setAttribute('label',this.getUIstring("qfFolderProperties","Folder Properties..."));
 		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderPropertiesAccess","P"));
 		MailCommands.appendChild(menuitem);
+		
+		// Open in File System
+		MailCommands.appendChild(document.createElement('menuseparator'));
+		menuitem = document.createElement('menuitem');
+		menuitem.className='mailCmd menuitem-iconic';
+		menuitem.setAttribute("id","quickFolders-openFolderLocation");
+		this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onFolderOpenLocation(this);");
+		menuitem.setAttribute('label',this.getUIstring("qfFolderOpenLocation","Explore Folder Location..."));
+		MailCommands.appendChild(menuitem);
+		
 	} ,
 	
 	addPopupSet: function(popupId, folder, entry, offset, button) {
@@ -3201,7 +3342,7 @@ QuickFolders.Interface = {
 		this.initCurrentFolderTab(this.CurrentFolderTab, folder, selectedButton);
 		// single message window:
 		if (QuickFolders.Preferences.isShowCurrentFolderToolbar(true)) {
-			let winMediator = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"].getService(QuickFolders_CI.nsIWindowMediator);
+			let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
 			let singleMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
 			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
 				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');
@@ -3958,7 +4099,7 @@ QuickFolders.Interface = {
 		var folder;
 		while (!(done)) {
 			if (typeof myenum.currentItem!='undefined') {
-				folder = myenum.currentItem().QueryInterface(QuickFolders_CI.nsIMsgFolder); // Postbox
+				folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
 				if (typeof myenum.next != 'undefined') {
 					try {
 						myenum.next();
@@ -3995,8 +4136,8 @@ QuickFolders.Interface = {
 	
 	displayNavigationToolbar: function(visible, singleMessage) {
 		QuickFolders.Util.logDebugOptional("interface", "displayNavigationToolbar(" + visible + ", singleMessage=" + singleMessage + ")");
-		var winMediator = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
-						 .getService(QuickFolders_CI.nsIWindowMediator);
+		var winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+						 .getService(Components.interfaces.nsIWindowMediator);
 		
 		var mail3PaneWindow = winMediator.getMostRecentWindow("mail:3pane");
 		var mailMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
@@ -4167,7 +4308,7 @@ QuickFolders.Interface = {
 						?
 						toXPCOMArray(folders, Components.interfaces.nsIMutableArray)
 						:
-						QuickFolders_CC["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
+						Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
 					
 					if (!isNewArray)
 						array.AppendElement(fromFolder);

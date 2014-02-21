@@ -196,10 +196,10 @@ END LICENSE BLOCK */
 		## Fixed storing color for recent folder tab
 		## Raised minimum Version for Thunderbird to 17.0
 
-  3.12.4  02/11/2013
+  3.12.4 - 02/11/2013
 	
 	
-	3.14 WIP
+	3.14 - 12/02/2014
 	  ## Fixed [Bug 25610] + [Bug 25608] - In single message view, QF tabs will now open a new folder tab 
 		   (unless existing tab with that folder can be found). This should now also work in a search results / conversation view.
 		## Improved tab handling code in Postbox (reuse existing tabs) / SeaMonkey (new virtual tab mode for single messages view)
@@ -207,14 +207,25 @@ END LICENSE BLOCK */
 		   in about:config, edit extensions.quickfolders.folderMenu.realignMinTabs
 		## Added [CR 25636] - make tab tooltips configurable
 		## Fixed [Bug 25672] - Pastel and "Inactive Tab" colors don't work for Active, Hover, or DragOver colors
-		## Used fixIterator for cross-application compatible accounts code
 		## Fixed - when searching for folders (CTRL+ALT+J) the list is not reset when no matches are found.
 		## when jumping to an invalid QuickFolder (the folder that it points to doesn't exist) give the option of deleting it immediately
 		## QuickFolders now detects (and offers to delete) tabs for non-existant folders when you open 
 		   them using the Find Folder feature or clicking their tab
-		## Experimental: Adding Icons via context menu - to display the new menu, set Konfiguration setting
+		## Experimental: [Bug 25645] Adding Icons via context menu - to display the new menu, set Konfiguration setting
 		   extensions.quickfolders.commandMenu.icon = true
-		
+		## Fix [Bug 25683] - Supress Line Break if Tab is first in Line
+		## Fixed: changeTextPreference on options so that tab font size works
+		## Postbox: Fixed get new messages, Delete Junk and Compact Folder commands
+		## Reset Option "Display Shortcut Number" to false as default to remove clutter when installing QuickFolders. 
+		   Note that some of the numbered shortcuts do not work out of the box anyway as they are used by Lightning
+		## Used fixIterator for cross-application compatible accounts code
+		## Refactored code around bool preferences
+	
+  3.14.1 - WIP
+	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
+		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
+		## Added new mail folder command: "Explore Folder Location..."
+  	
 	4.0   Future version
 		## Planned [Bug 25645] adding icon support
 		
@@ -277,8 +288,8 @@ let QuickFolders_PrepareSessionStore = function () {
 		let orgRestore = mailTabType.modes["folder"].restoreTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
 		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
 			orgRestore(aTabmail, aPersistedState);
-			let rdfService = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
-			let folder = rdfService.GetResource(aPersistedState.folderURI).QueryInterface(Components.interfaces.nsIMsgFolder);
+			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+			let folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(Components.interfaces.nsIMsgFolder);
 			if (folder && aPersistedState.QuickFoldersCategory) {
 			  // Thunderbird only code, so it is fine to use tabInfo here:
 				for (let i = 0; i < aTabmail.tabInfo.length; i++)
@@ -301,7 +312,7 @@ QuickFolders_PrepareSessionStore(); // Tb only!
 var QuickFolders_globalHidePopupId="";
 var QuickFolders_globalLastChildPopup=null;
 var QuickFolders_globalWin=Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(QuickFolders_CI.nsIWindowMediator)
+				.getService(Components.interfaces.nsIWindowMediator)
 				.getMostRecentWindow("mail:3pane");
 var QuickFolders_globalDoc=document;
 
@@ -454,9 +465,7 @@ var QuickFolders = {
 		var folderEntries = that.Preferences.loadFolderEntries();
 
 		if(folderEntries.length > 0) {
-			
 			that.Model.selectedFolders = folderEntries;
-
 			that.Interface.updateUserStyles();
 
 			var lastSelectedCategory = that.Preferences.LastSelectedCategory;
@@ -466,8 +475,10 @@ var QuickFolders = {
 			  that.Interface.selectCategory(lastSelectedCategory, true);
 			  
 			QuickFolders.Interface.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
-
 		}
+		// only load in main window(?)
+		if (QuickFolders.FolderTree)
+			QuickFolders.FolderTree.init();
 
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 
@@ -497,6 +508,7 @@ var QuickFolders = {
 			if (QuickFolders.Interface.FilterToggleButton)
 				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
+		
 	} ,
 
 	sayHello: function() {
@@ -1166,12 +1178,14 @@ var QuickFolders = {
 						}
 					}
 					// handler for dropping messages
+					let lastAction = "drop handler";
 					try {
 						QuickFolders.Util.logDebugOptional("dragToNew", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
 						if(messageUris.length > 0) {
 							let sourceFolder;
 							if (QuickFolders.FilterWorker.FilterMode)
-							{
+							{ 
+							  lastAction = "Try to get sourceFolder";
 								// note: get CurrentFolder fails when we are in a search results window!!
 								// [Bug 25204] => fixed in 3.10
 								sourceFolder = QuickFolders.Util.CurrentFolder;
@@ -1182,17 +1196,21 @@ var QuickFolders = {
 									sourceFolder = msgHdr.folder;
 								}
 							}
+							
+							lastAction = "moveMessages";
 							var msgList = QuickFolders.Util.moveMessages(
 								targetFolder,
 								messageUris,
 								dragSession.dragAction === Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
 							);
-							if (QuickFolders.FilterWorker.FilterMode)
+							if (QuickFolders.FilterWorker.FilterMode) {
+							  lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
 								QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
+							}
 						}
 
 					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in onDrop - QuickFolders.Util.moveMessages:" + e); };
+					catch(e) {QuickFolders.LocalErrorLogger("Exception in onDrop -" + lastAction + "... " + e); };
 					// close any top level menu items after message drop!
 
 					//hide popup's menus!
@@ -1329,13 +1347,6 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 
 }
 
-function QuickFolders_myRDF()
-{
-//  if (QuickFolders.Util.Appver() > 2)
-	return Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Components.interfaces.nsIRDFService);
-//  else
-// return RDF;
-}
 
 // replaces TB2 only helper method GetFolderTree()
 function QuickFolders_MyGetFolderTree() {
@@ -1381,7 +1392,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	// QuickFolders.tabSelectEnable=false;
 
 	let folderTree = QuickFolders_MyGetFolderTree();
-	let folderResource = QuickFolders_myRDF().GetResource(folderUri);
+	let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+	let folderResource = rdf.GetResource(folderUri);
 	let msgFolder;
 	let isInvalid = false;
 	try {
@@ -1440,10 +1452,17 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		}
 	}
 
+	// new behavior: OPEN NEW TAB
 	// if single message is shown, open folder in a new Tab...
 	if (QuickFolders.Interface.CurrentTabMode == 'message' || QuickFolders.Interface.CurrentTabMode =='glodaList') {
-	  if (!isCurrentTabSelected)
-			QuickFolders.Interface.openFolderInNewTab(msgFolder);
+	  if (!isCurrentTabSelected) {
+		  if (QuickFolders.Preferences.getBoolPref('behavior.nonFolderView.openNewTab')) {
+				QuickFolders.Interface.openFolderInNewTab(msgFolder);
+			}
+			else {  // switch to first tab
+			  tabmail.switchToTab(0);
+			}
+		}
 		else
 	    return true; // avoid closing the single message
 	}
@@ -1481,7 +1500,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
 					// toggle to smartfolder view and reinitalize folder variable!
 					theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-					folderResource = QuickFolders_myRDF().GetResource(folderUri);
+					let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+					folderResource = rdf.GetResource(folderUri);
 					msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 					parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
 				}

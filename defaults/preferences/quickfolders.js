@@ -2,7 +2,7 @@ pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/lo
 // Model
 pref("extensions.quickfolders.lastSelectedCategory","");
 // General Prefs
-pref("extensions.quickfolders.showShortcutNumber",true);
+pref("extensions.quickfolders.showShortcutNumber",false);
 pref("extensions.quickfolders.showUnreadOnButtons",true);
 pref("extensions.quickfolders.showQuickfoldersLabel",true);
 pref("extensions.quickfolders.textQuickfoldersLabel","QuickFolders");
@@ -29,12 +29,14 @@ pref("extensions.quickfolders.showToolIcon",true);
 pref("extensions.quickfolders.toolbar.minHeight", "24px");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows",false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage",true);
+pref("extensions.quickfolders.behavior.nonFolderView.openNewTab",true);
 pref("extensions.quickfolders.style.transitions",true); // changing to true because of wobbly bug
 pref("extensions.quickfolders.tooltips.parentFolder",false);
 pref("extensions.quickfolders.tooltips.baseFolder",true);
 pref("extensions.quickfolders.tooltips.serverName",true);
 pref("extensions.quickfolders.tooltips.virtualFlag",true);
 pref("extensions.quickfolders.tooltips.msgFolderFlags",false);
+pref("extensions.quickfolders.autoValidateFolders",true); // check if folder exists when clicking a tab
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar",true);
 pref("extensions.quickfolders.messageWindow.showCurrentFolderToolbar",false);
@@ -65,7 +67,7 @@ pref("extensions.quickfolders.style.corners.customizedRadius", false);
 pref("extensions.quickfolders.style.corners.customizedTopRadius", "4px");
 pref("extensions.quickfolders.style.corners.customizedBottomRadius", "0px");
 pref("extensions.quickfolders.style.borders",true);
-
+pref("extensions.quickfolders.folderIcons", ""); // json folder icon dictionary
 // Special State colors
 pref("extensions.quickfolders.style.Toolbar.background-color", "transparent");
 pref("extensions.quickfolders.style.ActiveTab.color", "#FFFFFF");
@@ -121,6 +123,7 @@ pref("extensions.quickfolders.debug.toolbarHiding",false);
 pref("extensions.quickfolders.debug.filters",false);
 pref("extensions.quickfolders.debug.listeners.tabmail",false);
 pref("extensions.quickfolders.debug.listeners.folder",false);
+pref("extensions.quickfolders.debug.folderTree",false);
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3",true);
 pref("extensions.quickfolders.dragToCreateFolder.imap",false);

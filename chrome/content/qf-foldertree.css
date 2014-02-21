@@ -1,0 +1,15 @@
+/** Folder Tree Icons  **/
+/*									 
+treechildren::-moz-tree-image(folderIconCol, folderIcon_server14_Inbox_Test) {
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+	list-style-image: url(file:///E:/Dev/Mozilla/Icons/test.png);
+}	
+*/	
+#folderPaneContext menuitem#context-quickFoldersIcon[tag="qfIcon"] { 
+  list-style-image : url('chrome://quickfolders/skin/ico/fugue-picture.png') !important;
+ }
+ 
+#folderPaneContext menuitem#context-quickFoldersRemoveIcon[tag="qfIconRemove"] { 
+  list-style-image : url('chrome://quickfolders/skin/ico/fugue-picture-remove.png') !important;
+}
+

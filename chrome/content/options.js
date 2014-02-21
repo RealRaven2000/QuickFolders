@@ -141,7 +141,8 @@ QuickFolders.Options = {
 			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;
 		}
 		else {
-		  colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
+		  if (colorPicker)
+				colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
 			previewTab.className = 'qfTabPreview';
 			if (colorPicker)
 				previewTab.style.backgroundColor = colorPicker.color;

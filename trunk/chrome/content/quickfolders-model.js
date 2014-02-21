@@ -35,13 +35,11 @@ QuickFolders.Model = {
 
 		}
 		if(!entry) {
-
-			var folder = this.getMsgFolderFromUri(uri, false);
-			var folderName = (folder==null) ? '' : folder.prettyName;
+			let folder = this.getMsgFolderFromUri(uri, false);
 
 			this.selectedFolders.push({
 				uri: uri,
-				name: folderName,
+				name: (folder==null) ? '' : folder.prettyName,
 				category: categoryName,
 				tabColor: 0
 			});
@@ -119,27 +117,28 @@ QuickFolders.Model = {
 	setTabIcon: function(button, entry, iconURI, menuItem) {
 	  let fileSpec = '';
 		if (iconURI) {
-			let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI )
+			let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
 			QuickFolders.Util.logDebug("Model.setTabIcon(" + entry.name + "," + fileURL.path + ")");
 			fileSpec = fileURL.asciiSpec;
 		}
 		
 		if (fileSpec)  {
 			entry.icon = fileSpec; 
-			QuickFolders.Interface.applyIcon(button, entry.icon);
+			if (button)
+				QuickFolders.Interface.applyIcon(button, entry.icon);
 			if (menuItem)
 				menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon
 		}
 		else {
 			if (entry.icon) delete entry.icon;
-			QuickFolders.Interface.applyIcon(button, '');
+			if (button)
+				QuickFolders.Interface.applyIcon(button, '');
 		}
 		  
 		// store the icon path
 	  QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
 	} ,
-	
-	
+
 	setFolderColor: function(uri, tabColor, withUpdate) {
 		let entry;
 		if (tabColor == 'undefined') 
@@ -191,8 +190,7 @@ QuickFolders.Model = {
 		}
 	} ,
 
-	getMsgFolderFromUri:  function(uri, checkFolderAttributes)
-	{
+	getMsgFolderFromUri:  function(uri, checkFolderAttributes) {
 		let msgfolder = null;
 		if (typeof MailUtils != 'undefined' && MailUtils.getFolderForURI) {
 			return MailUtils.getFolderForURI(uri, checkFolderAttributes);
@@ -212,7 +210,6 @@ QuickFolders.Model = {
 		return msgfolder;
 	} ,
 
-
 	// for optimization, let's cache the categories array in a model attribute.
 	// this means we need to reset categories whenever a folder changing operation is carried out
 	// (if a folder is deleted, this might render a category as obsoletel;
@@ -220,7 +217,6 @@ QuickFolders.Model = {
 	resetCategories: function() {
 		this.categoriesList=[];
 	} ,
-	 
 
 	// get the list of Categories from the current Folder Array
 	get Categories() {

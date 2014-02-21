@@ -60,6 +60,7 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 
 ##Style Tweaks
 #All
+style chrome://messenger/content/messenger.xul     chrome://quickfolders/content/qf-foldertree.css
 style chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css
 style chrome://quickfolders/content/options.xul chrome://quickfolders/content/quickfolders-widgets.css
 style chrome://mozapps/content/extensions/about.xul chrome://quickfolders-pl/skin/about.css

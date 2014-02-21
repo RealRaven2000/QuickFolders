@@ -23,6 +23,9 @@ menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
 	list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important;
 }
 
+menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
+	list-style-image : url('chrome://quickfolders/skin/ico/folder_open.png') !important;
+}
 
 tab#QuickFolders-General  {
 	list-style-image: url('chrome://quickfolders/skin/ico/settings-general.png');
@@ -117,10 +120,6 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 #quickFoldersNavToggle[checked="true"]:hover {
 	-moz-image-region: rect(48px, 12px, 64px, 0px);
 }
-
-
-
-
 
 #quickFoldersPreviousUnread { 
 	list-style-image: url('chrome://quickfolders/skin/ico/fugue-up.png');

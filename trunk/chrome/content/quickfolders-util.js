@@ -29,8 +29,8 @@ var QuickFolders_TabURIopener = {
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				var mail3PaneWindow = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
-										 .getService(QuickFolders_CI.nsIWindowMediator)
+				var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+										 .getService(Components.interfaces.nsIWindowMediator)
 										 .getMostRecentWindow("mail:3pane");
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
@@ -52,16 +52,14 @@ var QuickFolders_TabURIopener = {
 	}
 };
 
-
-
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "3.14beta2",
+	HARDCODED_EXTENSION_VERSION : "3.15",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
-	FolderFlags : {
+	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_TRASH 	  : 0x0100,
 		MSG_FOLDER_FLAG_SENTMAIL	: 0x0200,
@@ -92,8 +90,8 @@ QuickFolders.Util = {
 		if (doc.documentElement && doc.documentElement.tagName) {
 			if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
 // 				if (!QuickFolders.doc) {
-					var mail3PaneWindow = QuickFolders_CC["@mozilla.org/appshell/window-mediator;1"]
-											 .getService(QuickFolders_CI.nsIWindowMediator)
+					var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+											 .getService(Components.interfaces.nsIWindowMediator)
 											 .getMostRecentWindow("mail:3pane");
 					if (mail3PaneWindow && mail3PaneWindow.document)
 						doc = mail3PaneWindow.document;
@@ -580,7 +578,7 @@ QuickFolders.Util = {
 
 
 	getFolderUriFromDropData: function(evt, dropData, dragSession) {
-		var trans = QuickFolders_CC["@mozilla.org/widget/transferable;1"].createInstance(QuickFolders_CI.nsITransferable);
+		var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
 
@@ -595,7 +593,7 @@ QuickFolders.Util = {
 			trans.getTransferData(flavor, dataObj, len);
 
 			if (dataObj) {
-				dataObj = dataObj.value.QueryInterface(QuickFolders_CI.nsISupportsString);
+				dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
 				var sourceUri = dataObj.data.substring(0, len.value);
 				return sourceUri;
 			}
@@ -622,7 +620,7 @@ QuickFolders.Util = {
 			var uri = this.getFolderUriFromDropData(evt, dropData, dragSession); // older gecko versions.
 			if (!uri)
 				return null;
-			msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(QuickFolders_CI.nsIMsgFolder);
+			msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(Components.interfaces.nsIMsgFolder);
 // 		}
 //
 		return msgFolder;
@@ -646,7 +644,7 @@ QuickFolders.Util = {
 				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
-			var targetResource = targetFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
+			var targetResource = targetFolder.QueryInterface(Components.interfaces.nsIRDFResource);
 			step = 1;
 
 			var messageList ;
@@ -654,9 +652,9 @@ QuickFolders.Util = {
 			var hostsystem = QuickFolders.Util.HostSystem;
 			//nsISupportsArray is deprecated in TB3 as it's a hog :-)
 			if (ap=='Thunderbird' || ap=='SeaMonkey')
-				messageList = QuickFolders_CC["@mozilla.org/array;1"].createInstance(QuickFolders_CI.nsIMutableArray);
+				messageList = Components.classes["@mozilla.org/array;1"].createInstance(Components.interfaces.nsIMutableArray);
 			else
-				messageList = QuickFolders_CC["@mozilla.org/supports-array;1"].createInstance(QuickFolders_CI.nsISupportsArray);
+				messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
 			step = 2;
 
 			// copy what we need...
@@ -683,19 +681,20 @@ QuickFolders.Util = {
 
 			step = 3;
 			var sourceMsgHdr;
+			let Ci = Components.interfaces;
 
 			if (ap=='Thunderbird' || ap=='SeaMonkey')
-				sourceMsgHdr = messageList.queryElementAt(0,QuickFolders_CI.nsIMsgDBHdr);
+				sourceMsgHdr = messageList.queryElementAt(0, Ci.nsIMsgDBHdr);
 			else
-				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(QuickFolders_CI.nsIMsgDBHdr);
+				sourceMsgHdr = messageList.GetElementAt(0).QueryInterface(Ci.nsIMsgDBHdr);
 			step = 4;
 
-			var sourceFolder = sourceMsgHdr.folder.QueryInterface(QuickFolders_CI.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
+			var sourceFolder = sourceMsgHdr.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
 			step = 5;
-			var sourceResource = sourceFolder.QueryInterface(QuickFolders_CI.nsIRDFResource);
-			var cs = QuickFolders_CC["@mozilla.org/messenger/messagecopyservice;1"].getService(QuickFolders_CI.nsIMsgCopyService);
+			var sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource);
+			var cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
-			targetFolder = targetFolder.QueryInterface(QuickFolders_CI.nsIMsgFolder);
+			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;
 			cs.CopyMessages(sourceFolder, messageList, targetFolder, !makeCopy, null, msgWindow, true);
 
@@ -781,7 +780,7 @@ QuickFolders.Util = {
 		return aFolder;
 	} ,
 
-	pbGetSelectedMessages : function ()
+	pbGetSelectedMessageURIs : function ()
 	{
 	  try {
 	    var messageArray = {};
@@ -847,7 +846,6 @@ QuickFolders.Util = {
 		return suggestion;
 	} ,
 
-
 	threadPaneOnDragStart: function (aEvent)
 	{
 		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
@@ -856,21 +854,17 @@ QuickFolders.Util = {
 		if (aEvent.originalTarget.localName != "toolbarbutton")
 			return;
 
-		var messages;
-		let msgs = null;
+		let messages;
 		if (typeof gFolderDisplay !='undefined') {
-			msgs = gFolderDisplay.selectedMessageUris;
-			if (!msgs)
-				return;
+			messages = gFolderDisplay.selectedMessageUris;
 			if (!QuickFolders.Util.Application=='SeaMonkey')
 				gFolderDisplay.hintAboutToDeleteMessages();
 		}
 		else {
-			msgs = QuickFolders.Util.pbGetSelectedMessages();
-			if (!msgs)
-				return;
+			messages = QuickFolders.Util.pbGetSelectedMessageURIs();
 		}
-		messages = msgs;
+		if (!messages)
+			return;
 
 		let ios = Components.classes["@mozilla.org/network/io-service;1"]
 						  .getService(Components.interfaces.nsIIOService);
@@ -942,8 +936,8 @@ QuickFolders.Util = {
 
 	logToConsole: function (msg, optionTag) {
 		if (QuickFolders_ConsoleService == null)
-			QuickFolders_ConsoleService = QuickFolders_CC["@mozilla.org/consoleservice;1"]
-									.getService(QuickFolders_CI.nsIConsoleService);
+			QuickFolders_ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
+									.getService(Components.interfaces.nsIConsoleService);
 		QuickFolders_ConsoleService.logStringMessage("QuickFolders "
 			+ (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '')
 			+ this.logTime() + "\n"+ msg);
@@ -1008,14 +1002,23 @@ QuickFolders.Util = {
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function(linkURI) {
+    let Ci = Components.interfaces;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
 			if (QuickFolders.Util.Application=='SeaMonkey') {
-				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
-				var browser = windowManager.getMostRecentWindow( "navigator:browser" );
-				if (browser) {
+				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
+				var browserWin = windowManager.getMostRecentWindow( "navigator:browser" );
+				if (browserWin) {
 					let URI = linkURI;
-					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
+					setTimeout(function() {  
+						let tabBrowser = browserWin.getBrowser();
+						let params = {"selected":true};
+					  browserWin.currentTab = tabBrowser.addTab(URI, params); 
+					  if (browserWin.currentTab.reload) browserWin.currentTab.reload(); 
+						// activate last tab
+						if (tabBrowser && tabBrowser.tabContainer)
+							tabBrowser.tabContainer.selectedIndex = tabBrowser.tabContainer.childNodes.length-1;
+					}, 250);
 				}
 				else
 					QuickFolders_globalWin.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFolders update');
@@ -1023,9 +1026,9 @@ QuickFolders.Util = {
 				return;
 			}
 			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-				.getService(Components.interfaces.nsIExternalProtocolService);
-			var ioservice = QuickFolders_CC["@mozilla.org/network/io-service;1"].
-						getService(QuickFolders_CI.nsIIOService);
+				.getService(Ci.nsIExternalProtocolService);
+			var ioservice = Components.classes["@mozilla.org/network/io-service;1"].
+						getService(Ci.nsIIOService);
 			var uri = ioservice.newURI(linkURI, null, null);
 			service.loadURI(uri);
 		}
@@ -1042,7 +1045,7 @@ QuickFolders.Util = {
 			var service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
 				.getService(Ci.nsIExternalProtocolService);
 			var ioservice = Cc["@mozilla.org/network/io-service;1"].
-						getService(QuickFolders_CI.nsIIOService);
+						getService(Ci.nsIIOService);
 			service.loadURI(ioservice.newURI(linkURI, null, null));
 			if(null!=evt)
 				evt.stopPropagation();
@@ -1144,7 +1147,6 @@ QuickFolders.Util = {
 			while (theParent!=null && theParent.tagName!="toolbarbutton")
 				theParent = theParent.parentNode;
 			return theParent;
-
 		}
 	},
 	
@@ -1190,6 +1192,7 @@ QuickFolders.Util = {
 	
 	doesMailFolderExist: function checkExists(msgFolder) {
 		if (!msgFolder || !msgFolder.filePath)	{
+			QuickFolders.Util.logDebug('doesMailFolderExist() msgFolder.filePath missing! - returning false');
 			return false;
 		}
 		if (msgFolder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP)
@@ -1198,10 +1201,17 @@ QuickFolders.Util = {
 			return true;
 		}
 		else {
+		  // jcranmer's method. Just check for the parent, and we are done.
+			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+		  let folder = rdf.GetResource(msgFolder.URI).QueryInterface(Ci.nsIMsgFolder); 
+			return folder.parent != null;
+			
+		  /*** legacy unused code [[[ ***/
 		  let oldPath = msgFolder.filePath.path.toString();
 			//  see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
 			if (typeof oldPath.endsWith != 'function')
 				QuickFolders.Util.polyFillEndsWidth();
+			QuickFolders.Util.logDebug('doesMailFolderExist() 1. path does not exist [' + oldPath + ']');
 			let testPath = '';
 			if (oldPath.endsWith('.sbd')) {
 			  testPath = oldPath.substr(0, oldPath.length-4);
@@ -1213,6 +1223,16 @@ QuickFolders.Util = {
 			localFile.initWithPath(testPath);
 			if (localFile.exists())
 				return true;
+			QuickFolders.Util.logDebug('doesMailFolderExist() 2. path does not exist [' + testPath + ']');
+			if (testPath.endsWith('.sbd'))
+			  testPath = oldPath + ".msf";
+			else
+			  testPath = testPath + ".msf";
+			localFile.initWithPath(testPath);
+			if (localFile.exists())
+				return true;
+			QuickFolders.Util.logDebug('doesMailFolderExist() 3. path does not exist [' + testPath + '] - returning false');
+		  /*** ]]] legacy unused code ***/
 		}
 		return false;
 	},
@@ -1332,14 +1352,15 @@ QuickFolders.Util.FirstRun =
 					window.setTimeout(function() {
 						QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/index.html");
 					}, 1500); 
-
 				}
-
 			}
 			else { // this section does not get loaded if it's a fresh install.
 			  
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
-				if (pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) {
+				//  same for 3.14.1, 3.14.2 etc - no donation screen
+				if ((pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) ||
+				    (pureVersion.indexOf('3.14.') == 0 && prev.indexOf("3.14") == 0))
+        {
 					suppressDonationScreen = true;
 				}
 				

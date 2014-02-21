@@ -41,15 +41,17 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	onCloseNotification: function(eventType, notifyBox, notificationKey) {
+		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
+		window.setTimeout(function() {
 	  // Postbox doesn't tidy up after itself?
 		if (!notifyBox)
 			return;
-		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
 		let item = notifyBox.getNotificationWithValue(notificationKey);
 		if(item) {
 		  // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
 			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));	 // skipAnimation
 		}
+			}, 200);
 	} ,
 	
 	toggleFilterMode: function(active) {
@@ -150,8 +152,10 @@ QuickFolders.FilterWorker = {
 				notifyBox.appendNotification( theText, 
 						notificationKey , 
 						"chrome://quickfolders/skin/ico/filterTemplate.png" , 
-						notifyBox.PRIORITY_INFO_HIGH, 
-						nbox_buttons ); // , eventCallback
+						notifyBox.PRIORITY_INFO_LOW, 
+              nbox_buttons,
+							function(eventType) { QuickFolders.FilterWorker.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
+							); 
 						
 				if (QuickFolders.Util.Application == 'Postbox') {
 					QuickFolders.Util.fixLineWrap(notifyBox, notificationKey);
@@ -269,6 +273,7 @@ QuickFolders.FilterWorker = {
 			}
 			window.setTimeout(function() {
 						let filtered = QuickFolders.FilterWorker.createFilter(sourceFolder, targetFolder, messageList, isCopy);
+            QuickFolders.Util.logDebug('createFilter returned: ' + filtered);
 					}, 400);
 			return 0;
 		}
@@ -276,10 +281,10 @@ QuickFolders.FilterWorker = {
 		if (!messageList || !sourceFolder || !targetFolder)
 			return null;
 		
-		var Ci = Components.interfaces;
+		let Ci = Components.interfaces;
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
-      		var serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
+      	let serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
 			QuickFolders.Util.popupAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
       }
       else {
@@ -292,17 +297,19 @@ QuickFolders.FilterWorker = {
 
 		if (!QuickFolders.FilterWorker.FilterMode)
 			return -2;
+    /************* MESSAGE PROCESSING  ********/
 		try {
 
 
 			// for the moment, let's only process the first element of the message Id List;
 			if (messageList.length) {
 				QuickFolders.Util.logDebugOptional ("filters","messageList.length = " + messageList.length);
-				var messageId = messageList[0];
-				var messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null;
+				let messageId = messageList[0];
+				let messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null;
+				let messageHeader;
 				
 				if (messageDb) {
-					var messageHeader = messageDb.getMsgHdrForMessageID(messageId);
+					messageHeader = messageDb.getMsgHdrForMessageID(messageId);
 				}
 				else { // Postbox ??
 					// var globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
@@ -318,8 +325,6 @@ QuickFolders.FilterWorker = {
 				}
 				
 
-				if (!targetFolder.msgDatabase || !messageHeader || !messageHeader.QueryInterface)
-					debugger;
 
 
 				if (!messageHeader) 
@@ -375,21 +380,20 @@ QuickFolders.FilterWorker = {
 					return false;
 				}
 
+				try {
 				QuickFolders.Util.logDebugOptional ("filters",
-						"createFilter(target folder="+ targetFolder
+						"createFilter(target folder="+ targetFolder.prettyName
 							+ ", messageId=" + msg.messageId
 							+ ", author=" + msg.mime2DecodedAuthor + "\n"
 							+ ", subject=" + msg.mime2DecodedSubject + "\n"
 							+ ", recipients=" + msg.mime2DecodedRecipients + "\n"
 							+ ", copy=" + isCopy + "\n"
-							+ ", cc=" + ccAddress ? ccAddress : '' + "\n"
-							+ ", bcc=" + bccAddress ? bccAddress : '' + "\n"
-							+ ", foldername=" + folderName
+							+ ", cc=" + (ccAddress || '') + "\n"
+							+ ", bcc=" + (bccAddress || '') + "\n"
+							+ ", source folder =" + sourceFolder 
 							+ ", parsed email address=" + emailAddress);
+				} catch(ex) {;} 
 							
-// 				var names = {};
-// 				var emails = {};
-// 				var numAddresses = hdrParser.parseHeadersWithArray(msg.mime2DecodedAuthor, emails, names, {});
 				var previewText = msg.getStringProperty('preview');
 				QuickFolders.Util.logDebugOptional ("filters", "previewText="+ previewText );
 

@@ -298,6 +298,7 @@
 			<preference id="QuickFolders-Preferences-ShowFilterButton" name="extensions.quickfolders.currentFolderBar.showFilterButton" type="bool" />
 			<preference id="QuickFolders-Preferences-ShowFolderMenuButton" name="extensions.quickfolders.currentFolderBar.showFolderMenuButton" type="bool" />
 			<preference id="QuickFolders-Preferences-ShowMsgNavButton" name="extensions.quickfolders.currentFolderBar.navigation.showButtons" type="bool" />
+			<preference id="QuickFolders-Preferences-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool" />
 			<preference id="QuickFolders-Preferences-CurrentFolder-Background" name="extensions.quickfolders.currentFolderBar.background" type="string"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool"/>
@@ -351,6 +352,12 @@
 			/>
 			<checkbox id="chkShowFolderMenuButton"
 			          preference="QuickFolders-Preferences-ShowFolderMenuButton"
+			          instantApply="true"
+			          oncommand="QuickFolders.Options.toggleBoolPreference(this);"
+			/>
+			<checkbox id="chkShowIconButtons"
+			          label="&qf.checkbox.showIconButtons;"
+			          preference="QuickFolders-Preferences-ShowIconButtons"
 			          instantApply="true"
 			          oncommand="QuickFolders.Options.toggleBoolPreference(this);"
 			/>

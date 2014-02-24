@@ -90,6 +90,19 @@
 					             onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
 					             oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
 					             collapsed="true"/>
+				<hbox id="QuickFolders-currentFolderIconCommands" >
+					<toolbarbutton id="QuickFolders-SelectIcon"
+									 class="icon"
+									 tooltiptext="&qf.foldercontextmenu.quickfolders.customizeIcon;"
+									 oncommand="QuickFolders.Interface.onSelectIcon(this,event);"
+									 tag="qfIcon"/>
+					<toolbarbutton id="QuickFolders-RemoveIcon"
+									 class="icon"
+									 tooltiptext="&qf.foldercontextmenu.quickfolders.removeIcon;"
+									 collapsed = "true"
+									 oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"
+									 tag="qfIcon"/>
+				</hbox>
 				<toolbarseparator />
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					             class="icon"

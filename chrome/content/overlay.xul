@@ -193,13 +193,13 @@
 	
   <popup id="folderPaneContext">
     <menuitem id="context-quickFoldersIcon"
-              label="Icon..."
+              label="&qf.foldercontextmenu.quickfolders.customizeIcon;"
 			  tag="qfIcon"
               class="menuitem-iconic"
               insertafter="folderPaneContext-properties"
               oncommand="QuickFolders.Interface.onSelectIcon(this,event);"/>
     <menuitem id="context-quickFoldersRemoveIcon"
-              label="Remove Icon"
+              label="&qf.foldercontextmenu.quickfolders.removeIcon;"
 			  tag="qfIconRemove"
               class="menuitem-iconic"
               insertafter="context-quickFoldersIcon"

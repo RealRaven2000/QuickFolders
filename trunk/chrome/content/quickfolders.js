@@ -328,7 +328,13 @@ var QuickFolders = {
 	doc: null,
 	win: null,
 	isQuickFolders: true, // to verify this
-	gFolderTree: null,
+	_folderTree: null,
+	get mailFolderTree() {
+	  // replaces TB2 only helper method GetFolderTree()
+		if (!this._folderTree)
+		  this._folderTree = QuickFolders.Util.$("folderTree");
+		return this._folderTree;
+	},
 	// keyListen: EventListener,
 	loadListen: false,
 	_tabContainer: null,
@@ -1347,21 +1353,13 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 
 }
 
-
-// replaces TB2 only helper method GetFolderTree()
-function QuickFolders_MyGetFolderTree() {
-  if (!QuickFolders.gFolderTree)
-	 QuickFolders.gFolderTree = QuickFolders.Util.$("folderTree");
-  return QuickFolders.gFolderTree;
-}
-
 function QuickFolders_MyChangeSelection(tree, newIndex)
 {
   if(newIndex >= 0)
   {
-	QuickFolders.Util.logDebugOptional("folders", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
-	tree.view.selection.select(newIndex);
-	tree.treeBoxObject.ensureRowIsVisible(newIndex);
+		QuickFolders.Util.logDebugOptional("folders", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
+		tree.view.selection.select(newIndex);
+		tree.treeBoxObject.ensureRowIsVisible(newIndex);
   }
 }
 
@@ -1391,7 +1389,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
 
-	let folderTree = QuickFolders_MyGetFolderTree();
+	let folderTree = QuickFolders.mailFolderTree;
 	let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
 	let folderResource = rdf.GetResource(folderUri);
 	let msgFolder;

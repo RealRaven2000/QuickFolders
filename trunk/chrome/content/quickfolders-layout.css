@@ -616,6 +616,13 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 	-moz-image-region: rect(16px, 16px, 32px, 0px);
 }
 
+#QuickFolders-SelectIcon {
+  list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture.png");
+}
+#QuickFolders-RemoveIcon {
+  list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture-remove.png");
+}
+
 /* button for future use: mark thread as read; drag thread to a location */
 /* 	display: none; */
 #QuickFolders-CurrentThread {

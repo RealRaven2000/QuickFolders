@@ -245,6 +245,29 @@ QuickFolders.Util = {
 		return strip(pureVersion, '.hc');
 	},
 
+	allFoldersIterator: function () {
+    let Ci = Components.interfaces;
+		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+		
+		if (acctMgr.allFolders) {
+			let allFolders = acctMgr.allFolders;
+			return fixIterator(allFolders, Ci.nsIMsgFolder);
+		}
+		else { // SeaMonkey
+			let FoldersArray = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+			let accounts = acctMgr.accounts;
+			let allFolders = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+			// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
+			for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+				account.rootFolder.ListDescendents(allFolders);
+				for each (let aFolder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
+					FoldersArray.appendElement(aFolder, false);
+				}		 
+			}	
+			return fixIterator(FoldersArray, Ci.nsIMsgFolder);
+		}
+	} ,
+	
 	get mailFolderTypeName() {
 		switch(this.Application) {
 			case "Thunderbird": return "folder";
@@ -630,6 +653,8 @@ QuickFolders.Util = {
 	isVirtual: function(folder) {
 	  if (!folder)
 			return true;
+		if (this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL & folder.flags)
+		  return true;
 	  return (folder.username && folder.username == 'nobody') || (folder.hostname == 'smart mailboxes');
 	} ,
 

@@ -30,6 +30,7 @@ QuickFolders.Interface = {
 	get CategoryBox() { return  QuickFolders.Util.$('QuickFolders-Category-Box'); },
 	get FilterToggleButton() { return QuickFolders.Util.$('QuickFolders-filterActive'); },
 	get CurrentFolderTab() { return QuickFolders.Util.$('QuickFoldersCurrentFolder');},
+	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.$('QuickFolders-RemoveIcon');},
 	get CurrentFolderBar() { return QuickFolders.Util.$('QuickFolders-CurrentFolderTools');},
 	get CurrentFolderFilterToggleButton() { return QuickFolders.Util.$('QuickFolders-currentFolderFilterActive'); },
 	get CogWheelPopupButton () { return QuickFolders.Util.$('QuickFolders-mainPopup'); },
@@ -445,7 +446,6 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional('recentFolders','=============================\n'
 			+ 'createRecentPopup Finished!');
 		return menupopup;
-
 	} ,
 
 	createRecentTab: function(passedPopup, isDrag, passedButton) {
@@ -720,6 +720,7 @@ QuickFolders.Interface = {
 		collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
 		collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
 		collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
+		collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
 		
 		let toolbar2 = this.CurrentFolderBar;
 		if (toolbar2) {
@@ -1540,7 +1541,7 @@ QuickFolders.Interface = {
 			element.collapsed = true; // hide the menu item!
 	    QuickFolders.Model.setTabIcon	(folderButton, entry, '');
 			let folder = QuickFolders.Model.getMsgFolderFromUri(entry.uri)
-			if (folder)
+			if (folder && QuickFolders.FolderTree)
 				QuickFolders.FolderTree.setFolderTreeIcon(folder, null);
 		}
 	} ,
@@ -1548,9 +1549,13 @@ QuickFolders.Interface = {
 	onSelectIcon: function (element,event) {
 		const nsIFilePicker = Components.interfaces.nsIFilePicker;
 		let folderButton, entry;
-		if (element.id == 'context-quickFoldersIcon') { // style a folder tree icon
+		let folders = null;
+		if (element.id == 'context-quickFoldersIcon' // style a folder tree icon
+		    ||
+				element.id == 'QuickFolders-SelectIcon')  // current folder bar
+		{ 
 		  // get selected folder (form event?)
-			var folders = gFolderTreeView.getSelectedFolders();
+			folders = gFolderTreeView.getSelectedFolders();
 		}
 		else {
 			folderButton = QuickFolders.Util.getPopupNode(element);
@@ -1571,7 +1576,8 @@ QuickFolders.Interface = {
 							let iconURL = fp.fileURL; 
 							if (folders) {
 							  for each (let folder in folders) {
-									QuickFolders.FolderTree.setFolderTreeIcon(folder, iconURL);
+								  if (QuickFolders.FolderTree)
+										QuickFolders.FolderTree.setFolderTreeIcon(folder, iconURL);
 									let entry = QuickFolders.Model.getFolderEntry(folder.URI);
 									if (entry) {
 										// if button visible, update it!
@@ -1583,7 +1589,7 @@ QuickFolders.Interface = {
 							else {
 								QuickFolders.Model.setTabIcon	(folderButton, entry, iconURL, element);
 								let folder = QuickFolders.Model.getMsgFolderFromUri(entry.uri)
-								if (folder)
+								if (folder && QuickFolders.FolderTree)
 									QuickFolders.FolderTree.setFolderTreeIcon(folder, iconURL);
 							}
 						}
@@ -2295,14 +2301,14 @@ QuickFolders.Interface = {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
 				menuitem.setAttribute('tag', 'qfIcon');
-			  menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Icon...'));
+			  menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Customize Icon...'));
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this)');
 				QFcommandPopup.appendChild(menuitem);
 				
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
 				menuitem.setAttribute('tag', 'qfIconRemove');
-			  menuitem.setAttribute('label',this.getUIstring('qfRemoveIcon','Remove Icon...'));
+			  menuitem.setAttribute('label',this.getUIstring('qfRemoveIcon','Remove Customized Icon...'));
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveIcon(this)');
 				if (!entry.icon)
 					menuitem.collapsed = true;
@@ -2451,8 +2457,6 @@ QuickFolders.Interface = {
 			MailFolderCmdMenu.appendChild(MailCommands);
 			menupopup.appendChild(MailFolderCmdMenu);
 		}
-
-
 
 		//moved this out of addSubFoldersPopup for recursive menus
 		if (fi.hasSubFolders) {
@@ -2714,6 +2718,14 @@ QuickFolders.Interface = {
 
 				menuitem.setAttribute('label', menuLabel); //+ subfolder.URI
 				menuitem.setAttribute("tag","sub");
+				
+				try {
+					let iconURL = subfolder.getStringProperty("iconURL");
+					if (iconURL) {
+						menuitem.style.setProperty('list-style-image', iconURL);
+					}
+				} 
+				catch(ex) {;}
 
 				var numUnread = subfolder.getNumUnread(false);
 				var numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread;
@@ -2798,6 +2810,13 @@ QuickFolders.Interface = {
 						subMenu.setAttribute("biffState-NewMail","true");
 
 					subMenu.folder = subfolder;
+					try {
+						let iconURL = subfolder.getStringProperty("iconURL");
+						if (iconURL) {
+							subMenu.style.setProperty('list-style-image', iconURL);
+						}
+					} 
+					catch(ex) {;}
 
 					this.setEventAttribute(subMenu, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(subMenu, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
@@ -3051,28 +3070,10 @@ QuickFolders.Interface = {
 			this.hideFindPopup();
 		}
 		
-    // second, search all folders globally
-		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
-			.getService(Ci.nsIMsgAccountManager);
+		for (let folder in QuickFolders.Util.allFoldersIterator()) {
+			addMatchingFolder(matches, folder);
+		};
 		
-		if (acctMgr.allFolders) {
-			let allFolders = acctMgr.allFolders;
-			for (let folder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
-				addMatchingFolder(matches, folder);
-			}		 
-		}
-		else { // SeaMonkey
-			let accounts = acctMgr.accounts;
-			let allFolders = Components.classes["@mozilla.org/array;1"]
-								.createInstance(Ci.nsIMutableArray);
-			// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
-			for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-				account.rootFolder.ListDescendents(allFolders);
-				for each (let aFolder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
-					addMatchingFolder(matches, aFolder);
-				}		 
-			}	
-		}
 		// rebuild popup
 		let menupopup;
 		if (true) {
@@ -3351,6 +3352,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 	
+	
 	/* MESSAGE PREVIEW TOOLBAR */
 	initCurrentFolderTab: function(currentFolderTab, folder, selectedButton) {
 		if (!currentFolderTab) return;
@@ -3360,6 +3362,11 @@ QuickFolders.Interface = {
 		}
 
 		QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, 'QuickFoldersCurrentFolder', QuickFolders.Preferences.ColoredTabStyle	);
+		if (QuickFolders.FolderTree && this.CurrentFolderRemoveIconBtn) {
+			let hasIcon = QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder); // add icon from folder tree
+			this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
+		}
+		
 		// QuickFolders.Interface.addPopupSet('QuickFolders-folder-popup-currentFolder', msgFolder, -1, currentFolderTab);
 		currentFolderTab.className = currentFolderTab.className.replace("striped", "");
 		currentFolderTab.className = currentFolderTab.className.replace("selected-folder", "");
@@ -4012,10 +4019,6 @@ QuickFolders.Interface = {
 		var aFolder = QuickFolders.Util.CurrentFolder;
 		if (!aFolder) // we are probably in search results
 			return;
-		// nsMsgDBView::NavigateStatus(nsMsgNavigationTypeValue motion, PRBool *_retval)
-		//    motion = {  nsMsgNavigationType::nextFolder , nsMsgNavigationType::nextUnreadMessage, nsMsgNavigationType::previousUnreadMessage,
-		// performNavigation(nsMsgNavigationType.back);
-		var folderList = QuickFolders_MyGetFolderTree();
 		var parentFolder = aFolder.parent;
 		if (!parentFolder)
 			return;

@@ -31,6 +31,7 @@ QuickFolders.Interface = {
 	get FilterToggleButton() { return QuickFolders.Util.$('QuickFolders-filterActive'); },
 	get CurrentFolderTab() { return QuickFolders.Util.$('QuickFoldersCurrentFolder');},
 	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.$('QuickFolders-RemoveIcon');},
+  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.$('QuickFolders-SelectIcon');},
 	get CurrentFolderBar() { return QuickFolders.Util.$('QuickFolders-CurrentFolderTools');},
 	get CurrentFolderFilterToggleButton() { return QuickFolders.Util.$('QuickFolders-currentFolderFilterActive'); },
 	get CogWheelPopupButton () { return QuickFolders.Util.$('QuickFolders-mainPopup'); },
@@ -1261,7 +1262,7 @@ QuickFolders.Interface = {
 		let sDisplayIcons = QuickFolders.Preferences.isShowToolbarIcons ? ' icon': '';
 		// if the tab is colored, use the new palette setting "ColoredTab"
 		// if it is uncolored use the old "InActiveTab"
-		let paletteClass = tabColor ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); //  QuickFolders.Preferences.isPastelColors ? ' pastel': '';
+		let paletteClass = tabColor ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); 
 
 		// use folder flags instead!
 		var FLAGS = QuickFolders.Util.FolderFlags;
@@ -1473,6 +1474,11 @@ QuickFolders.Interface = {
 					QuickFolders.Interface.setButtonColor(paintButton, color);
 				}
 				QuickFolders.Model.setFolderColor(button.folder.URI, color, true); 
+        if (evt.ctrlKey) { // go to next color! (RAINBOW MODE)
+          color = (parseInt(color) + 1);
+          if (color>20) color=1;
+          QuickFolders.Interface.setButtonColor(paintButton, color.toString());
+        }
 				return;
 			}
 
@@ -1521,8 +1527,10 @@ QuickFolders.Interface = {
 	} ,
 	
 	onRemoveIcon: function (element) {
-		if (element.id == 'context-quickFoldersRemoveIcon') { // style a folder tree icon
-			var folders = gFolderTreeView.getSelectedFolders();
+		if (element.id == 'context-quickFoldersRemoveIcon' // folder tree icon
+		    ||
+				element.id == 'QuickFolders-RemoveIcon') { // current folder bar
+			var folders = GetSelectedMsgFolders(); // gFolderTreeView.getSelectedFolders();
 			if (folders) {
 				for each (let folder in folders) {
 					QuickFolders.FolderTree.setFolderTreeIcon(folder, null);
@@ -1555,7 +1563,7 @@ QuickFolders.Interface = {
 				element.id == 'QuickFolders-SelectIcon')  // current folder bar
 		{ 
 		  // get selected folder (form event?)
-			folders = gFolderTreeView.getSelectedFolders();
+			folders = GetSelectedMsgFolders(); // gFolderTreeView.getSelectedFolders();
 		}
 		else {
 			folderButton = QuickFolders.Util.getPopupNode(element);
@@ -1991,9 +1999,10 @@ QuickFolders.Interface = {
 	
 	buildPaletteMenu: function(currentColor, existingPopupMenu) {
 		let logLevel = (typeof existingPopupMenu === 'undefined') ? "interface.tabs" : "interface";
+    let popupTitle = existingPopupMenu ? existingPopupMenu.id : 'none';
 		QuickFolders.Util.logDebugOptional(
 			logLevel, 
-			"buildPaletteMenu(" + currentColor + ", existingPopupMenu=" + existingPopupMenu + ")");
+			"buildPaletteMenu(" + currentColor + ", existingPopupMenu=" + popupTitle + ")");
 		let menuColorPopup = existingPopupMenu ? existingPopupMenu : document.createElement("menupopup");
 		try {
 			// create color pick items
@@ -3365,6 +3374,7 @@ QuickFolders.Interface = {
 		if (QuickFolders.FolderTree && this.CurrentFolderRemoveIconBtn) {
 			let hasIcon = QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder); // add icon from folder tree
 			this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
+      this.CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
 		}
 		
 		// QuickFolders.Interface.addPopupSet('QuickFolders-folder-popup-currentFolder', msgFolder, -1, currentFolderTab);
@@ -3731,10 +3741,13 @@ QuickFolders.Interface = {
 	} ,
 	
 	stripPaletteClasses: function(className, exclude) {
-	  let stripped = className;
 		if (exclude !== 'pastel')
-		  stripped = className.replace(/\s*pastel/,'')
-		return stripped;
+		  className = className.replace(/\s*pastel/,'')
+		if (exclude !== 'plastic')
+		  className = className.replace(/\s*plastic/,'')
+		if (exclude !== 'night')
+		  className = className.replace(/\s*night/,'')
+		return className;
 	  
 	} ,
 	
@@ -3762,9 +3775,11 @@ QuickFolders.Interface = {
 			case 0:
 			  return '';  // none
 			case 1:
-			  return '';  // default
+			  return ' plastic';  // default
 			case 2:
 			  return ' pastel';
+      case 3:
+        return ' night';
 		}
 		return '';
 	} ,
@@ -3778,21 +3793,23 @@ QuickFolders.Interface = {
 		let colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight");
 		let selectedColor = QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText");
 		let globalPaletteClass = this.getPaletteClassCss('InactiveTab');
+    let paletteClass = this.getPaletteClassCss('ActiveTab');
 		
 		if (QuickFolders.Preferences.getIntPref('style.ActiveTab.paletteType')) {
 			let paletteEntry =  QuickFolders.Preferences.getIntPref('style.ActiveTab.paletteEntry');
-			let paletteClass = this.getPaletteClassCss('ActiveTab');
 			let ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry;
 			let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
 			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, 'color'); // make this overridable!
 			// we do not want the rule to containg the paletteClass because it has to always work!
 			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', selectedGradient, true);
+      engine.setElementStyle(ss, '.quickfolders-flat ' + paletteClass + '.selected-folder > label', 'color', selectedColor ,true);
 		}
 		else { // two colors mode
 			engine.setElementStyle(ss, '.quickfolders-flat ' + globalPaletteClass + '.selected-folder', 'background-image', 'none', true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
 		}
-		engine.setElementStyle(ss, '.quickfolders-flat ' + globalPaletteClass + '.selected-folder > label', 'color', selectedColor ,true);
+    if (paletteClass != globalPaletteClass)
+      engine.setElementStyle(ss, '.quickfolders-flat ' + globalPaletteClass + '.selected-folder > label', 'color', selectedColor ,true);
 	} ,
 	
 	// INACTIVE STATE (DEFAULT)
@@ -3835,8 +3852,8 @@ QuickFolders.Interface = {
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image', 'none', false);
 		}
 		
-		let avoidCurrentFolder = ':not(#QuickFoldersCurrentFolder)';
-	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + avoidCurrentFolder + paletteClass + '.' + noColorClass + ' > label','color', inactiveColor, false);
+		let avoidCurrentFolder = ':not(#QuickFoldersCurrentFolder)'; // we omit paletteClass for uncolored tabs:
+	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + avoidCurrentFolder + '.' + noColorClass + ' > label','color', inactiveColor, false);
 
 		// Coloring all striped tabbed buttons that have individual colors 
 		if (tabStyle == QuickFolders.Preferences.TABS_STRIPED) {
@@ -3864,7 +3881,7 @@ QuickFolders.Interface = {
 			
 			if (QuickFolders.Preferences.isCssTransitions) {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration', '1s, 1s, 2s, 1s');
-				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property', 'color, background-color, border-radius, -moz-box-shadow');
+				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property', 'color, background-color, border-radius, box-shadow');
 			}
 			else {
 				styleEngine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration');
@@ -3908,9 +3925,9 @@ QuickFolders.Interface = {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
 			}
 			else {
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'none', true);
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW, 'none', true);
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW,'none', true);
+				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW);
+				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW);
+				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW);
 			}
 
 			styleEngine.setElementStyle(ss, 'toolbar.quickfolders-flat','border-bottom-color', colActiveBG, true); // only in main toolbar!

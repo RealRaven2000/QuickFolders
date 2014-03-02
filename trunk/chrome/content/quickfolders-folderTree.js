@@ -8,31 +8,31 @@ Components.utils.import("resource://gre/modules/Dict.jsm");
 QuickFolders.FolderTree = {
   dictionary: null,
   init: function() {
-	  try {
-			// override getCellProperties()
-			QuickFolders.Util.logDebugOptional('folderTree', 'QuickFolders.FolderTree.init()');
-			let treeView;
-			if (typeof gFolderTreeView=='undefined') { treeView = GetFolderTree().view; }
-			else { treeView = gFolderTreeView; }
-			QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties;  
-			treeView.getCellProperties = function(row, col) {
-				var props = QuickFolders.FolderTree.GetCellProperties(row, col);
-				if (col.id == "folderNameCol") {
-					var folder = treeView.getFolderForIndex(row);
-					var folderIcon;
-					if ( folderIcon = folder.getStringProperty("folderIcon") ) {
-						// save folder icon for css rule.
-						props += " " + folderIcon;
-					}
-				}
-				return props;
-			} // end of override		
-			// now we need to iterate all Folders and find matches in our dictionary,
-			// then inject the style rules for the icons...
-			this.loadDictionary();
-		}
-		catch(ex) { QuickFolders.Util.logException('QuickFolders.FolderTree.init()',ex); };
-	} ,
+    try {
+      // override getCellProperties()
+      QuickFolders.Util.logDebugOptional('folderTree', 'QuickFolders.FolderTree.init()');
+      let treeView;
+      if (typeof gFolderTreeView=='undefined') { treeView = GetFolderTree().view; }
+      else { treeView = gFolderTreeView; }
+      QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties;  
+      treeView.getCellProperties = function(row, col) {
+        var props = QuickFolders.FolderTree.GetCellProperties(row, col);
+        if (col.id == "folderNameCol") {
+          var folder = treeView.getFolderForIndex(row);
+          var folderIcon;
+          if ( folderIcon = folder.getStringProperty("folderIcon") ) {
+            // save folder icon for css rule.
+            props += " " + folderIcon;
+          }
+        }
+        return props;
+      } // end of override		
+      // now we need to iterate all Folders and find matches in our dictionary,
+      // then inject the style rules for the icons...
+      this.loadDictionary();
+    }
+    catch(ex) { QuickFolders.Util.logException('QuickFolders.FolderTree.init()',ex); };
+  } ,
 	
 	restoreStyles: function() {
 	  if (!this.dictionary || !this.dictionary.listitems().length) return;

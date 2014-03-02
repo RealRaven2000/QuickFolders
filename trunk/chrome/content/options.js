@@ -88,7 +88,7 @@ QuickFolders.Options = {
 	 * @colorPickerId: [optional] color picker for plain coloring - this is hidden when palette is used
 	 * @preference: [optional] pull palette entry from this preference, ignored when paletteColor is passed
 	 * @previewId: id of target element (preview tab)
-	 * @paletteType: -1 {as standard tab} 0 none 1 default 2 pastel ...
+	 * @paletteType: -1 {as standard tab} 0 none 1 plastic 2 pastel ...
 	 * @paletteColor: [optional] palette index; 0=no styling
 	 */
 	preparePreviewTab: function (colorPickerId, preference, previewId, paletteColor, paletteType) {
@@ -489,7 +489,7 @@ QuickFolders.Options = {
 	 * also hides background colorpicker if a palette is used
 	 * @mnuNode:       either a menuitem node or the menu with the correct paletteType value
 	 * @buttonState:   [string] which kind of tab state: standard, active, hovered, dragOver
-	 * @paletteType:  -1 as standard, 0 none, 1 normal, 2 pastel ....
+	 * @paletteType:  -1 as standard, 0 none, 1 plastic, 2 pastel, 3 night ....
 	 */	 
 	toggleUsePalette: function(mnuNode, buttonState, paletteType) {
 		//let isChecked = checkbox.checked;
@@ -629,6 +629,7 @@ QuickFolders.Options = {
 	} ,
 
 	// toggle pastel mode was toggleColorPastel
+  // NEEDS A REWRITE FOR MULTIPLE PALETTES!
 	showPalettePreview: function (withUpdate) {
 	  let defaultPalette = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
 	  let isPastel = (defaultPalette == 2);
@@ -693,7 +694,16 @@ QuickFolders.Options = {
 	},
 
 	sendMail: function(mailto) {
-		let sURL = "mailto:" + mailto + "?subject=[QuickFolders]%20<add%20your%20own%20subject%20line%20here>";
+    let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+                                  .getService(Components.interfaces.nsIPromptService);
+    let title = QuickFolders.Util.getBundleString('qf.prompt.contact.title', "Contact QuickFolders Support");
+    let text = QuickFolders.Util.getBundleString('qf.prompt.contact.subject', "Please enter a short subject line:");;
+    let input = {value: ""};
+    let check = {value: false};
+    let result = prompts.prompt(window, title, text, input, null, check); 
+    if (!result) return;
+    
+    let sURL="mailto:" + mailto + "?subject=[QuickFolders]" + encodeURI(" " + input.value); // urlencode
 		let MessageComposer=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService);
 		// make the URI
 		let ioService = Components.classes["@mozilla.org/network/io-service;1"]
@@ -702,10 +712,8 @@ QuickFolders.Options = {
 		window.close();
 		// open new message
 		MessageComposer.OpenComposeWindowWithURI (null, aURI);
-
 	},
-
-
+  
 	dumpFolderEntries: function() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
 		var service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);

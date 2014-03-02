@@ -221,10 +221,13 @@ END LICENSE BLOCK */
 		## Used fixIterator for cross-application compatible accounts code
 		## Refactored code around bool preferences
 	
-  3.14.1 - WIP
+  3.15 - WIP
 	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
 		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
+    ## Fixed: Active Tab font color wasn't set reliably if active tab palette differs from uncolored / standard tabs.
 		## Added new mail folder command: "Explore Folder Location..."
+    ## Added prompt for subject line when sending support email
+    ## Thunderbird only: allow dragging multiple folders to QuickFolders tab
   	
 	4.0   Future version
 		## Planned [Bug 25645] adding icon support
@@ -568,16 +571,20 @@ var QuickFolders = {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
-						msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
-						if (msgFolder.QueryInterface)
-							sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
-						else
-							sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dropData, dragSession); // Postbox
+            let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
+            for (let i=0; i<count; i++) { // allow multiple folder drops...
+              msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, i);
+              if (msgFolder.QueryInterface)
+                sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
+              else
+                sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dropData, dragSession); // Postbox
+              addFolder(sourceUri);
+            }
 					}
 					else {
 						sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dropData, dragSession); // older gecko versions.
+            addFolder(sourceUri);
 					}
-					addFolder(sourceUri);
 
 					break;
 				case "text/currentfolder":
@@ -1031,7 +1038,7 @@ var QuickFolders = {
 						
 							// from a certain size, make sure to shift menu to right to allow clicking the tab
 							let minRealign = QuickFolders.Preferences.getIntPref("folderMenu.realignMinTabs");
-							let xAlign = -1;
+              let isShift = false;
 							if (minRealign) {
 							  let isDebug = QuickFolders.Preferences.isDebugOption('popupmenus.drag');
 								// count top level menu items
@@ -1041,7 +1048,7 @@ var QuickFolders = {
 											c + ': ' + p.childNodes[c].tagName + ' - ' +  p.childNodes[c].getAttribute('label'));
 									}
 									if (c > minRealign) {
-										xAlign = 24; 
+										isShift = true;
 										if (!isDebug) break;
 									}
 								}
@@ -1051,8 +1058,14 @@ var QuickFolders = {
 							}
 						
 							this.doc.popupNode = button;
-							if (p.openPopup)
-								p.openPopup(button,'after_start', xAlign,-1,"context",false);
+							if (p.openPopup) {
+                if (isShift) {
+                  p.openPopup(button,'end_before', 0,-1,"context",false);
+                }
+                else {
+                  p.openPopup(button,'after_start', 0,-1,"context",false);
+                }
+              }
 							else
 								p.showPopup(button, -1,-1,"context","bottomleft","topleft"); // deprecated
 						}

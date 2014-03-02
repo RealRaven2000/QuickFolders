@@ -182,6 +182,7 @@
 	display: -moz-inline-box;
 	float:right;
 	max-height:25em;
+	margin-bottom: 0px;
 }
 
 #QuickFolders-Instructions-Label {
@@ -216,7 +217,7 @@
 
 #QuickFoldersCurrentFolder {
 	background-repeat: repeat-x;
-	border-color: #888 !important;
+	border-color: #888;
 	border-width: 1px !important;
 	border-style: solid !important;
 	background-color: #fff;
@@ -293,18 +294,18 @@ toolbar#QuickFolders-CurrentFolderTools {
 	margin: 0;
 	padding: 0;
 	border: 1px solid transparent;
-	border-bottom-width: 3px;
+	border-bottom-width: 3px !important;
 	border-bottom-style: solid;
 	display: -moz-inline-box;
 }
 
-.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton {
+.quickfolders-flat .folderBarContainer toolbarbutton {
 	-moz-appearance: none !important;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-	border-color: #AAA !important;
+	border-color: #AAA;
 	border-width: 1px !important;
 	border-style: solid;
 	background-repeat: repeat-x;
@@ -323,7 +324,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	background-image: none !important;
 }
 
-.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:hover
+.quickfolders-flat .folderBarContainer toolbarbutton:hover
   {
 	border-bottom: none !important;
 	border-collapse: collapse;
@@ -332,10 +333,11 @@ toolbar#QuickFolders-CurrentFolderTools {
 	margin-bottom: -1px;
 }
 
-.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton.selected-folder:not(hover) {
+.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder:not(hover) {
 	border-bottom: none !important;
-	/* height: 22px; */
-	margin-top: 1px;
+	/* make selected tab 'slide down' */
+	min-height: 21px;
+	margin-top: 2px;
 	margin-bottom: -1px ;
 	padding-top: 0px;
 	padding-bottom: 1px;
@@ -344,10 +346,10 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 /** DRAG TOOLBARBUTTONS **/
 
-#QuickFolders-Toolbar #QuickFolders-FoldersBox toolbarbutton.dragRIGHT:-moz-drag-over,
-#QuickFolders-Toolbar #QuickFolders-FoldersBox toolbarbutton.dragRIGHT.pastel:-moz-drag-over,
-#QuickFolders-Toolbar #QuickFolders-FoldersBox toolbarbutton[label].dragRIGHT:-moz-drag-over,
-#QuickFolders-Toolbar #QuickFolders-FoldersBox toolbarbutton[label].dragRIGHT.pastel:-moz-drag-over
+#QuickFolders-Toolbar .folderBarContainer toolbarbutton.dragRIGHT:-moz-drag-over,
+#QuickFolders-Toolbar .folderBarContainer toolbarbutton.dragRIGHT.pastel:-moz-drag-over,
+#QuickFolders-Toolbar .folderBarContainer toolbarbutton[label].dragRIGHT:-moz-drag-over,
+#QuickFolders-Toolbar .folderBarContainer toolbarbutton[label].dragRIGHT.pastel:-moz-drag-over
 {
 	background-image: url("chrome://quickfolders/skin/ico/dropRight.gif") !important;
 	background-position: right center !important;
@@ -358,6 +360,13 @@ toolbar#QuickFolders-CurrentFolderTools {
 	list-style-image: url("chrome://quickfolders/skin/ico/dropLeft.gif") !important;
 }
 
+#QuickFolders-Toolbar toolbarbutton .toolbarbutton-icon {
+  margin-left: 2px;
+}
+
+#QuickFolders-Toolbar.quickfolders-pills toolbarbutton .toolbarbutton-icon {
+  margin-left: 0px;
+}
 
 /** SPECIAL FOLDER ICONS **/
 
@@ -467,9 +476,6 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover
 .quickfolders-flat toolbarbutton { 
 	background-position: 0px 0px; 
 }
-
-/* for some reason we see a 1px rim at the top! */
-.quickfolders-pills toolbarbutton { background-position: 0px -1px; }
 
 /** MAIL COMMANDS + CONTEXT MENU ITEMS **/
 menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] { list-style-image : url('chrome://quickfolders/skin/ico/rename.gif') !important;}

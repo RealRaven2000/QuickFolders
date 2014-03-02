@@ -782,6 +782,9 @@
 							<menuitem label="&qf.palette.pastel;"
 									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 2);"
 									  value="2"/>
+							<menuitem label="&qf.palette.night;"
+									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 3);"
+									  value="3"/>
 						</menupopup>
 					</menulist>
 					  
@@ -808,6 +811,9 @@
 								<menuitem label="&qf.palette.pastel;"
 										  oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 2);"
 										  value="2"/>
+								<menuitem label="&qf.palette.night;"
+										  oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 3);"
+										  value="3"/>
 							</menupopup>
 						</menulist>
 					</hbox>
@@ -886,6 +892,9 @@
 							<menuitem label="&qf.palette.pastel;"
 									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 2);"
 									  value="2"/>
+							<menuitem label="&qf.palette.night;"
+									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 3);"
+									  value="3"/>
 						</menupopup>
 					</menulist>
 
@@ -929,6 +938,9 @@
 							<menuitem label="&qf.palette.pastel;"
 									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 2);"
 									  value="2"/>
+							<menuitem label="&qf.palette.night;"
+									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 3);"
+									  value="3"/>
 						</menupopup>
 					</menulist>
 
@@ -971,6 +983,9 @@
 							<menuitem label="&qf.palette.pastel;"
 									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 2);"
 									  value="2"/>
+							<menuitem label="&qf.palette.night;"
+									  oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 3);"
+									  value="3"/>
 						</menupopup>
 					</menulist>
 					
@@ -1033,7 +1048,7 @@
 					 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099')">&qf.label.languagesLink;</label>
 					 
 			  <description class="quickhelp-desc">&qf.description.contactMe;</description>
-			  <label href="mailto:axelg@gofree.indigo.ie" class="text-link" id="L5" onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');" >&qf.label.contactLink;</label>
+			  <label class="text-link" id="L5" onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');" >&qf.label.contactLink;</label>
 			</tabpanel>
 
 		</tabpanels>

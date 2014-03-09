@@ -92,6 +92,8 @@
 <!ENTITY qf.checkbox.showRecentTab "Wyświetlaj zakładkę &quot;Ostatnio otwierane foldery&quot;">
 <!ENTITY qf.checkbox.showRecentButton "Przycisk &quot;Ostatnio otwierane foldery&quot;">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Kliknij prawym klawiszem do konfiguracji">
+<!ENTITY qf.checkbox.showQuickMove "Przycisk quickMove">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "Przycisk QuickMove może być używany do przeciągania wiadomości do folderu docelowego o określonej nazwie. Można zebrać wiadomości z wielu folderów. Po wybraniu pożądanych wiadomości, wprowadź nazwę folderu docelowego w oknie wyszukiwarki.">
 <!ENTITY qf.checkbox.showFilterButton "Przycisk 'Tworzenie filtrów'">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Możesz również tworzyć filtry używając menu kontekstowego QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Ukryj QuickFolders kiedy nie jest potrzebne">
@@ -135,4 +137,5 @@
 <!ENTITY qf.palette.twoColors "2 kolory">
 <!ENTITY qf.palette.standard "Paleta standardowa">
 <!ENTITY qf.palette.pastel "Kolory Pastelowe">
+<!ENTITY qf.palette.night "Night Vision">
 <!ENTITY qf.palette.inactive "Jak zakładki nieaktywne">

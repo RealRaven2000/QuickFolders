@@ -18,6 +18,7 @@
 <!ENTITY qf.button.configureTooltips "Konfigurera verktygstips …">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Dessa visas med ett &quot;&quot;+&quot; bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat">
 <!ENTITY qf.checkbox.showMessageNavigation "Meddelandenavigeringsknappar">
+<!ENTITY qf.checkbox.showIconButtons "Anpassa ikon-knappar">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Visa knappar för mappar med meddelanden i sig i kursiv stil">
 <!ENTITY qf.checkbox.showNewMailItalics "Visa flikar med nymottagna meddelanden med kursiverad text">
 <!ENTITY qf.checkbox.enableTransitions "Aktivera CSS-övergångar">
@@ -91,6 +92,8 @@
 <!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
 <!ENTITY qf.checkbox.showRecentButton "Visa Nyligen använda mappar-knapp">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Högerklicka för inställningar">
+<!ENTITY qf.checkbox.showQuickMove "quickMove-knapp">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "quickMove-knappen kan användas för att dra e-brev till en namngiven målmapp. Du kan samla in e-brev från flera mappar. När du har samlat ihop alla e-brev du vill flytta, skriver du in målmappens namn i sökrutan.">
 <!ENTITY qf.checkbox.showFilterButton "Visa Skapa filter-knapp">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Du kan även skapa filter via QuickFolders snabbmeny.">
 <!ENTITY qf.checkbox.autoHideToolbar "Dölj QuickFolders-fältet där det inte behövs">
@@ -134,4 +137,5 @@
 <!ENTITY qf.palette.twoColors "2 färger">
 <!ENTITY qf.palette.standard "Standardpalett">
 <!ENTITY qf.palette.pastel "Pastellfärger">
+<!ENTITY qf.palette.night "Mörkerkikare">
 <!ENTITY qf.palette.inactive "Som inaktiva flikar">

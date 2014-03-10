@@ -62,11 +62,21 @@
 								   tooltiptext="&qf.tooltip.mainOptions;"
 								   context="QuickFolders-ToolbarPopup"
 								   onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
+					<toolbarbutton id="QuickFolders-quickMove"
+								 tooltiptext="&qf.tooltip.quickMove;"
+								 label=""
+								 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-quickMoveMenu');"
+								 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver)"
+					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+								 context="QuickFolders-quickMoveMenu"
+							     />
 					<toolbarbutton id="QuickFolders-filterActive"
 								   tooltiptext="&qf.tooltip.filters;"
 								   oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
 								   collapsed="true"/>
 					<toolbarbutton id="QuickFolders-paintBucketActive"
+								   label="ABC"
 								   tooltiptext="&qf.tooltip.paintCanActive;"
 								   context="QuickFolders-PalettePopup" 
 								   oncommand="QuickFolders.Interface.showPalette(this);"
@@ -77,7 +87,7 @@
 							 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
 							 type="search"
 							 collapsed="true"
-							 placeholder="folder name"/>
+							 placeholder="&quickfolders.findFolder.placeHolder;"/>
 				 </hbox>
 			</hbox>
 			<spacer flex="2" />
@@ -97,12 +107,35 @@
 			</menupopup>
 		</popupset>
 
+		<popupset id="QuickFolders-QuickMovePopupSet">
+			<menupopup id="QuickFolders-quickMoveMenu">
+				<menuitem id="QuickFolders-quickMove-cancel"
+				          label="&quickfolders.quickMove.menu.cancel;"
+				          oncommand="QuickFolders.quickMove.cancel();" 
+				          collapsed="true"
+				          />
+				<menuitem id="QuickFolders-quickMove-showSearch"
+				          label="&quickfolders.quickMove.menu.showSearch;"
+				          oncommand="QuickFolders.quickMove.showSearch();" 
+				          />
+				<menuitem id="QuickFolders-quickMove-hideSearch"
+				          label="&quickfolders.quickMove.menu.hideSearch;"
+				          oncommand="QuickFolders.quickMove.hideSearch();" 
+				          collapsed="true"
+				          />
+				<menuitem id="QuickFolders-quickMove-suspend"
+				          label="&quickfolders.quickMove.menu.suspend;"
+				          oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
+				          type="checkbox"
+				          />
+			</menupopup>
+		</popupset>	
 		<popupset id="QuickFolders-MainPopupSet">
 			<menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"
-				          oncommand="QuickFolders.Interface.findFolder(true);" 
+				          oncommand="QuickFolders.Interface.findFolder(true,'findFolder');" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
 				          />

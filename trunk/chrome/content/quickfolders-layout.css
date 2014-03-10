@@ -3,10 +3,10 @@
 @import url('chrome://quickfolders/skin/quickfolders-palettes.css');
 @import url('chrome://quickfolders/skin/quickfolders-widgets.css');
 
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup,
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
 	background: transparent !important;
 	border-style: none !important;
-	list-style-image: url("chrome://quickfolders/skin/ico/settings.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	min-height:16px;
 	height:16px !important; 
@@ -14,6 +14,42 @@
 	padding-top: 0;
 	padding-bottom: 0;
 	padding-right: 1px;
+}
+
+#QuickFolders-quickMoveMenu .msgUri {
+	list-style-image: url("chrome://quickfolders/skin/ico/message-mail.png");
+}
+
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
+	list-style-image: url("chrome://quickfolders/skin/ico/settings.png");
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png");
+	list-style-position: outside !important;
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:-moz-drag-over {
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:active {
+	-moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+#QuickFolders-quickMove > label {
+  background-color: rgba(50, 50, 50, 0.3);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
+  border-radius: 0.5em;
+  color: #ffffff;
+  padding: 2px 4px;
+  margin-left: 0.5em !important;
+  text-decoration: none;
+}
+#QuickFolders-quickMove[label=''] > label {
+  padding:0;
+  width: 0;
+}
+#QuickFolders-quickMove:not([label='']) {
+  /* margin-right: 0.5em; */
 }
 
 #QuickFolders-FoldersBox-PushDown {
@@ -31,8 +67,7 @@
 	min-height: 20px !important;
 }
 
-#QuickFolders-mainPopup image, #filterActive image { height:16px !important; }
-#QuickFolders-mainPopup image, #filterActive image  { height:16px !important; }
+#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
 	list-style-image: url("chrome://quickfolders/skin/ico/settings.png");
@@ -99,7 +134,8 @@
 
 #QuickFolders-Toolbar toolbarbutton[collapsed="true"],
 #QuickFolders-filterActive[collapsed="true"], 
-#QuickFolders-mainPopup[collapsed="true"]
+#QuickFolders-mainPopup[collapsed="true"],
+#QuickFolders-quickMove[collapsed="true"]
  {
 	margin: 0 !important;
 	padding: 0 !important;

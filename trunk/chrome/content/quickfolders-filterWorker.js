@@ -179,15 +179,14 @@ QuickFolders.FilterWorker = {
 		
 		if (QuickFolders.Interface.CogWheelPopupButton)
 			QuickFolders.Interface.CogWheelPopupButton.collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
-		
 		if (QuickFolders.Interface.FilterToggleButton)
 			QuickFolders.Interface.FilterToggleButton.collapsed = !active;
-
 		if (QuickFolders.Interface.CategoryBox)
 			QuickFolders.Interface.CategoryBox.setAttribute('mode', active ? 'filter' : '');
 		let btnFilterToggle = QuickFolders.Interface.CurrentFolderFilterToggleButton;
 		if (btnFilterToggle)
 			btnFilterToggle.setAttribute('mode', active ? 'filter' : '');
+      
 			
 		// tidy up notifications
 		if (!active && notifyBox) {

@@ -68,6 +68,7 @@
 					 oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
 					 collapsed="true"/>
 				<toolbarbutton id="QuickFolders-paintBucketActive"
+				   label="ABC"
 				 tooltiptext="&qf.tooltip.paintCanActive;"
 				 context="QuickFolders-PalettePopup" 
 				 oncommand="QuickFolders.Interface.showPalette(this);"
@@ -77,7 +78,7 @@
 							 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
 						 type="search"
 						 collapsed="true"
-						 placeholder="folder name"/>
+						 placeholder="&quickfolders.findFolder.placeHolder;"/>
 			 </hbox>
 		</hbox>
 			<spacer flex="2" />
@@ -104,7 +105,7 @@
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"
-				          oncommand="QuickFolders.Interface.findFolder(true);" 
+				          oncommand="QuickFolders.Interface.findFolder(true,'findFolder');" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
 				          />

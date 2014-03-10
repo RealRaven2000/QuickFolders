@@ -68,6 +68,7 @@
 					<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
 					<preference id="QuickFolders-Preferences-ShowNewMail" name="extensions.quickfolders.showNewMailHighlight" type="bool"/>
 					<preference id="QuickFolders-Preferences-ShowRecentTab" name="extensions.quickfolders.showRecentTab" type="bool" />
+					<preference id="QuickFolders-Preferences-ShowQuickMove" name="extensions.quickfolders.showQuickMove" type="bool" />
 					<preference id="QuickFolders-Preferences-ShowToolbarMenuIcon" name="extensions.quickfolders.showToolIcon" type="bool" />
 					<preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool"/>
 					<preference id="QuickFolders-Preferences-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool"/>
@@ -258,6 +259,15 @@
 			          instantApply="true"
 			          tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
 			          oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
+			          oncommand="QuickFolders.Options.toggleBoolPreference(this);"
+			          flex="1"
+			/>
+			<checkbox id="chkQuickMove"
+			          label="&qf.checkbox.showQuickMove;"
+			          preference="QuickFolders-Preferences-ShowQuickMove"
+			          instantApply="true"
+			          tooltiptext="&qf.checkbox.showQuickMove.tooltip;"
+			          oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
 			          oncommand="QuickFolders.Options.toggleBoolPreference(this);"
 			          flex="1"
 			/>

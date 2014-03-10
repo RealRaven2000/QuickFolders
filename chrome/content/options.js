@@ -267,6 +267,10 @@ QuickFolders.Options = {
 			
 			// customized coloring support
       this.initPreviewTabStyles();
+      
+      let coloredPalette = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+      let isStripable = (coloredPalette == 1 || coloredPalette == 2) ? true : false ;
+      wd.getElementById('qf-individualColors').collapsed = !isStripable;
 		}
 		catch(e) {
 			alert("Error in QuickFolders.Options.load():\n" + e);
@@ -512,6 +516,8 @@ QuickFolders.Options = {
 		  case 'colored':
 			  idPreview = null;
 				colorPicker = null;
+        let isStripable = (paletteType == 1 || paletteType == 2) ? true : false ;
+        document.getElementById('qf-individualColors').collapsed = !isStripable;
 				break;
 			case 'standard':
 				idPreview = 'inactivetabs-label';
@@ -535,6 +541,7 @@ QuickFolders.Options = {
 		QuickFolders.Preferences.setIntPref('style.' + stylePref + '.paletteType', paletteType);
 		if (colorPicker)
 			this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
+
 		// this.toggleBoolPreference(checkbox, true);
 		
 		/*

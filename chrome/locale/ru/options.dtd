@@ -14,7 +14,7 @@
 <!ENTITY qf.checkbox.showUnreadMessageCount "Показывать в закладке количество не прочтенных сообщений">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
 <!ENTITY qf.checkbox.showTotalMessageCount "Показывать в закладке общее количество сообщений">
-<!ENTITY qf.checkbox.showCountInSubFolders "Также показывать общее количество сообщений и для папок, находящихся в этой папке">
+<!ENTITY qf.checkbox.showCountInSubFolders "... и общее количество сообщений для папок в этой папке">
 <!ENTITY qf.button.configureTooltips "Настроить всплывающие подсказки…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки">
 <!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
@@ -92,6 +92,8 @@
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
 <!ENTITY qf.checkbox.showRecentButton "Кнопка с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.checkbox.showQuickMove "Кнопка &quot;Быстрое перемещение&quot;">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "Кнопка &quot;Быстрое перемещение&quot; позволяет переместить сообщения из различных папок в одну. После того как сообщения были собраны, введите название папки назначения в строке поиска.">
 <!ENTITY qf.checkbox.showFilterButton "Кнопка 'Создать фильтр'">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Вы также можете создавать фильтры с помощью контекстного меню QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Не показывать QuickFolders если он не нужен">

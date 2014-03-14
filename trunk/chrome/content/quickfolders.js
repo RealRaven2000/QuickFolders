@@ -222,13 +222,20 @@ END LICENSE BLOCK */
 		## Refactored code around bool preferences
 	
   3.15 - WIP
-	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
+    ## Allow dragging multiple folders to QuickFolders tab (Tb / SeaMonkey)
+    ## Interface for adding custom Icons (16px*16px) to Tabs
 		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
-    ## Fixed: Active Tab font color wasn't set reliably if active tab palette differs from uncolored / standard tabs.
+    ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
 		## Added new mail folder command: "Explore Folder Location..."
     ## Added prompt for subject line when sending support email
-    ## Thunderbird only: allow dragging multiple folders to QuickFolders tab
-  	
+    ## Paint mode: holding CTRL while painting will advance to the next color, CTRL+SHIFT goes back to previous color
+    ## Fixed: Active Tab font color wasn't set reliably if active tab palette differs from uncolored / standard tabs.
+    ## Fixed [Bug 25722] Hover Tab color is overwritten when right-clicking a Tab
+    ## Fixed [Bug 25721] Drag Over Color not working in 2 Color mode
+    ## Fixed: In some cases QuickFolders loaded the default font color if the user has stored 
+              certain color value (due to wrong use of prefHasUserValue)
+	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
+    
 	4.0   Future version
 		## Planned [Bug 25645] adding icon support
 		
@@ -285,7 +292,7 @@ let QuickFolders_PrepareSessionStore = function () {
 			if (retval) {
 				retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
 			}
-			return retval;
+			return retval; 
 		}
 		// overwrite restoreTab
 		let orgRestore = mailTabType.modes["folder"].restoreTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
@@ -359,6 +366,7 @@ var QuickFolders = {
 	compactLastFolderSize: 0,
 	compactLastFolderUri: null,
 	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
+  quickMoveUris: [],
 
 	// helper function to do init from options dialog!
 	initDocAndWindow: function() {
@@ -395,8 +403,8 @@ var QuickFolders = {
     if (QuickFolders.isCorrectWindow()) {
 			QuickFolders.Util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-			//var thefunc='QuickFolders.init()';
-			//setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
+			// var thefunc='QuickFolders.init()';
+			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
 			setTimeout(function() { QuickFolders.init(); }, nDelay);
 			this.initDone=true;
 		}
@@ -907,7 +915,7 @@ var QuickFolders = {
 				else
 					QuickFolders.Util.logDebugOptional("dnd", "removeLastPopup could not find element: " + p);
 				if (p === QuickFolders_globalHidePopupId)
-					QuickFolders_globalHidePopupId="";
+					QuickFolders_globalHidePopupId = '';
 				
 			}
 
@@ -932,9 +940,23 @@ var QuickFolders = {
 				var button = evt.target;
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
-// 				removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+        if (button.id && button.id =="QuickFolders-quickMove") {
+          QuickFolders.Util.logDebug("DragEnter - quickMove button");
+          if (dragSession.isDataFlavorSupported("text/x-moz-message")) {
+            dragSession.canDrop=true;
+            removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+          }
+          else {
+            dragSession.canDrop=false;
+          }
+          if (QuickFolders.Preferences.isShowRecentTab)
+            removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
+          return;
+        }
 
 				if(button.tagName === "toolbarbutton") {
+          // new quickMove
+        
 					// highlight drop target
 					if (dragSession.numDropItems==1) {
 						if (dragSession.isDataFlavorSupported("text/unicode" )) {
@@ -1018,14 +1040,22 @@ var QuickFolders = {
 							}
 						}
 						else { // special folderbutton: recent
-							popupId = 'moveTo_QuickFolders-folder-popup-Recent';
-							if(QuickFolders_globalHidePopupId !== popupId) {
-								menupopup.setAttribute('id', popupId);
-								popupset.appendChild(menupopup);
-								removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-								QuickFolders.Interface.createRecentTab(menupopup, true, button);
-							}
+              if (button.id == 'QuickFolders-Recent-CurrentFolderTool' || button.id == 'QuickFolders-Recent') {
+                popupId = 'moveTo_QuickFolders-folder-popup-Recent';
+                if(QuickFolders_globalHidePopupId !== popupId) {
+                  menupopup.setAttribute('id', popupId);
+                  popupset.appendChild(menupopup);
+                  removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+                  QuickFolders.Interface.createRecentTab(menupopup, true, button);
+                }
+              }
+              else {
+                if (QuickFolders.Preferences.isShowRecentTab)
+                  removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
+              }
 						}
+            if (!popupId)
+              return;
 
 						// a bug in showPopup when used with coordinates makes it start from the wrong origin
 						//document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
@@ -1088,7 +1118,7 @@ var QuickFolders = {
 			if (!dragSession.sourceNode) { 
 				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)
-				event.preventDefault();
+				  event.preventDefault();
 				return; 
 			}
 			try {
@@ -1121,10 +1151,7 @@ var QuickFolders = {
 			catch(ex) {
 				window.dump("Cannot setup for delete: popup \n" + ex);
 			}
-
-
 		} ,
-
 
 		onDragOver: function (evt,flavor,session){
 			//QuickFolders.Util.logDebug("buttonDragObserver.onDragOver flavor=" + flavor.contentType);
@@ -1142,10 +1169,11 @@ var QuickFolders = {
 		onDrop: function (evt,dropData,dragSession) {
 			var isShift = evt.shiftKey;
 			var debugDragging = false;
-			//alert('test: dropped item, flavor=' + dropData.flavour.contentType);
-			QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
 			var DropTarget = evt.target;
 			var targetFolder = DropTarget.folder;
+      try {
+			QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
+      } catch(ex) { QuickFolders.Util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId="";
 
 			switch (dropData.flavour.contentType) {
@@ -1168,7 +1196,8 @@ var QuickFolders = {
 					//alert('trans.addDataFlavor: trans=' + trans + '\n numDropItems=' + dragSession.numDropItems);
 					trans.addDataFlavor("text/x-moz-message");
 
-					var messageUris = []; var i;
+					var messageUris = []; 
+          var i;
 					var sourceFolder = null;
 
 					for (i = 0; i < dragSession.numDropItems; i++) {
@@ -1198,8 +1227,20 @@ var QuickFolders = {
 					}
 					// handler for dropping messages
 					let lastAction = "drop handler";
+          
+          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+            QuickFolders.Util.logDebugOptional("dnd", "onDrop: quickMove button - added " + messageUris.length + " message URIs");
+            // copy message list into "holding area"
+            while (messageUris.length) {
+              let newUri = messageUris.pop();
+              QuickFolders.quickMove.add(newUri);
+            }
+            QuickFolders.quickMove.update();
+            return;
+          }          
+          
 					try {
-						QuickFolders.Util.logDebugOptional("dragToNew", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
+						QuickFolders.Util.logDebugOptional("dnd", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
 						if(messageUris.length > 0) {
 							let sourceFolder;
 							if (QuickFolders.FilterWorker.FilterMode)
@@ -1233,7 +1274,9 @@ var QuickFolders = {
 					// close any top level menu items after message drop!
 
 					//hide popup's menus!
-					QuickFolders.Util.logDebug ("buttonDragObserver.onDrop " + DropTarget.tagName+ '  Target:' + targetFolder.name );
+					QuickFolders.Util.logDebug ("buttonDragObserver.onDrop DropTarget = " + DropTarget.tagName + 
+            + (DropTarget.id ? '[' + DropTarget.id + ']' : '')
+            + '  Target Folder:' + targetFolder.name );
 
 					QuickFolders.Interface.collapseParentMenus(DropTarget);
 
@@ -1334,7 +1377,7 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder)
 				else
 					return -1;
 
-		QuickFolders.Util.logDebugOptional ("folders", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
+		QuickFolders.Util.logDebugOptional ("folders.select", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 		if (index === -1) {
 			if (null==msgFolder.parent)
@@ -1370,7 +1413,7 @@ function QuickFolders_MyChangeSelection(tree, newIndex)
 {
   if(newIndex >= 0)
   {
-		QuickFolders.Util.logDebugOptional("folders", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
+		QuickFolders.Util.logDebugOptional("folders.select", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
 		tree.view.selection.select(newIndex);
 		tree.treeBoxObject.ensureRowIsVisible(newIndex);
   }
@@ -1399,7 +1442,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		return '';
 	}
 	//during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
-	QuickFolders.Util.logDebugOptional("folders", "QuickFolders_MySelectFolder: " + folderUri);
+	QuickFolders.Util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
 	// QuickFolders.tabSelectEnable=false;
 
 	let folderTree = QuickFolders.mailFolderTree;
@@ -1421,6 +1464,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	
 	if (isInvalid) {
 	  // invalid folder; suggest to correct this!
+    QuickFolders.Util.logDebugOptional("folders.select","detected invalid folder, trying to correct entry table.");
 		let folderEntry = QuickFolders.Model.getFolderEntry(folderUri);
 		if (folderEntry) {
 			switch(QuickFolders.Interface.deleteFolderPrompt(folderEntry, false)) {
@@ -1438,9 +1482,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 
 	QuickFolders.currentURI = folderUri;
 	
-	let isCurrentTabSelected = false;
+	let isExistFolderInTab = false;
 	let tabmail = document.getElementById("tabmail");
 	if (tabmail) {
+    QuickFolders.Util.logDebugOptional("folders.select","try to find open tab with folder...");
 	  let len = QuickFolders.Util.getTabInfoLength(tabmail);
 		for (i = 0; i < len; i++) {
 		  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
@@ -1452,25 +1497,29 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 			   && QuickFolders.Util.getTabModeName(info) == QuickFolders.Util.mailFolderTypeName // SM folders only, no single msg.
 			   && i !== QuickFolders.tabContainer.selectedIndex)
 			{
+        QuickFolders.Util.logDebugOptional("folders.select","matched folder to open tab, switching to tab " + i);
 				if (tabmail.switchToTab)
 					tabmail.switchToTab(i); // switch to first tab with this URI
 				else {
 					QuickFolders.tabContainer.selectedIndex = i;
 				}
-				isCurrentTabSelected = true;
+				isExistFolderInTab = true;
 				break;
 			}
 		}
+     QuickFolders.Util.logDebugOptional("folders.select", isExistFolderInTab ? "...found folder in existing mail Tab." : "...folder is currently not open in any Tab.");
 	}
 
 	// new behavior: OPEN NEW TAB
 	// if single message is shown, open folder in a new Tab...
 	if (QuickFolders.Interface.CurrentTabMode == 'message' || QuickFolders.Interface.CurrentTabMode =='glodaList') {
-	  if (!isCurrentTabSelected) {
+	  if (!isExistFolderInTab) {
 		  if (QuickFolders.Preferences.getBoolPref('behavior.nonFolderView.openNewTab')) {
+        QuickFolders.Util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
 				QuickFolders.Interface.openFolderInNewTab(msgFolder);
 			}
 			else {  // switch to first tab
+        QuickFolders.Util.logDebugOptional("folders.select", "tab is not selected, openNewTab disabled, switching to tab 0");
 			  tabmail.switchToTab(0);
 			}
 		}
@@ -1486,29 +1535,38 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 		// find out if parent folder is smart and collapsed (bug in TB3!)
 		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
 		// therefore, ensureRowIsVisible does not work!
+    let isSelected = false;
+    let forceSelect = QuickFolders.Preferences.isChangeFolderTreeViewEnabled;
 		var theTreeView = gFolderTreeView;
 		QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
 
 		folderIndex = theTreeView.getIndexOfFolder(msgFolder);
 		if (null == folderIndex) {
-			theTreeView.selectFolder(msgFolder);
+      QuickFolders.Util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
+			isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
 			folderIndex = theTreeView.getIndexOfFolder(msgFolder);
 		}
+    QuickFolders.Util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
 		
 		if (msgFolder.parent) {
-			QuickFolders.Util.ensureFolderViewTab(); // lets always do this when a folder is clicked!
+      QuickFolders.Util.logDebugOptional("folders.select","ensureFolderViewTab()");
+			QuickFolders.Util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
 
 			if (null==folderIndex) {
+        QuickFolders.Util.logDebugOptional("folders.select","ensureNormalFolderView()");
 				QuickFolders.Util.ensureNormalFolderView();
 				folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+        QuickFolders.Util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
 			}
 
 			let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+      QuickFolders.Util.logDebugOptional("folders.select","parent index: " + parentIndex);
 			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
 			var specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES + Flags.MSG_FOLDER_FLAG_JUNK ;
 			if (msgFolder.flags & specialFlags) {
 				// is this folder a smartfolder?
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
+          QuickFolders.Util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
 					// toggle to smartfolder view and reinitalize folder variable!
 					theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
 					let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
@@ -1535,21 +1593,29 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 							theTreeView._toggleRow(parentIndex, true); // server
 					}
 					else {
-					  QuickFolders.Util.logDebugOptional("folders", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
+					  QuickFolders.Util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
 					}
 				}
 			}
 		}
 
 		if (folderIndex != null) {
-			theTreeView.selectFolder (msgFolder);
-			theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+      try {
+        QuickFolders.Util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..");
+        theTreeView.selectFolder (msgFolder);
+        QuickFolders.Util.logDebugOptional("folders.select","ensureRowIsVisible()..");
+        theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+      }
+      catch(e) { QuickFolders.Util.logException("Exception selecting via treeview: ", e);};
 		}
 
 		// reset the view mode.
 		if (!QuickFolders.Preferences.isChangeFolderTreeViewEnabled) {
-			if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode)
+      
+			if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
+        QuickFolders.Util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
 				theTreeView.mode = QuickFolders.lastTreeViewMode;
+      }
 		}
 
 		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
@@ -1573,6 +1639,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 				}
 			}
 
+    QuickFolders.Util.logDebugOptional("folders.select", 'QuickFolders_MyEnsureFolderIndex()');
 		folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 		// AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
 		if (folderIndex<0) {
@@ -1580,6 +1647,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 			folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
 			QuickFolders.tabSelectEnable=true;
 		}
+    QuickFolders.Util.logDebugOptional("folders.select", 'QuickFolders_MyChangeSelection(folderTree,' + folderIndex + ')');
 		QuickFolders_MyChangeSelection(folderTree, folderIndex);
 	}
 	else { // TB 2, Postbox
@@ -1588,7 +1656,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	// ancestors are expanded
 		if (QuickFolders.Util.Application=='Postbox') {
 			folderIndex = EnsureFolderIndex(msgFolder);
-			QuickFolders.Util.logDebugOptional("folders", "EnsureFolderIndex: " + msgFolder.URI);
+			QuickFolders.Util.logDebugOptional("folders.select", "EnsureFolderIndex: " + msgFolder.URI);
 		}
 		else {
 			 folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
@@ -1607,11 +1675,13 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	
 	// could not find folder!
 	if (null == folderIndex) {
+    QuickFolders.Util.logDebugOptional("folders.select", 'Could not find folder in tree (folderIndex = null)');
 		if (!msgFolder || !msgFolder.filePath || !msgFolder.filePath.exists())
 			return false;
 	}
 
 	if (QuickFolders.Preferences.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
+    QuickFolders.Util.logDebugOptional("folders.select", 'setFocusThreadPane()');
 		QuickFolders.Interface.setFocusThreadPane();
 		QuickFolders.doc.commandDispatcher.advanceFocus();
 		QuickFolders.doc.commandDispatcher.rewindFocus();
@@ -1621,6 +1691,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 	if (highlightTabFirst) {
 	  let entry = QuickFolders.Model.getFolderEntry(folderUri);
 		if (entry) {
+      QuickFolders.Util.logDebugOptional("folders.select", 'onTabSelected() - highlighting speed hack');
 		  QuickFolders.Interface.onTabSelected();  
 		}
 	}	

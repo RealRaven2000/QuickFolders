@@ -1,11 +1,24 @@
-/** default background for night vision (anything with bright enough text */
+/* broken out background image pieces for customzed color support */
+
+/* 1st rule is for #QuickFolders-CurrentFolderTools 2nd for main toolbar */
+.quickfolders-pills .col0.selected-folder, 
+.quickfolders-pills .col0:hover,
+.quickfolders-flat .col0,
+.quickfolders-flat #QuickFoldersCurrentFolder.col0 { background-image: none; }
+.quickfolders-flat .folderBarContainer .night,.quickfolders-flat .night,
+#QuickFoldersCurrentFolder.night {
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.07), 0px 1px rgba(255, 255, 255, 0.027) inset, 1px 0px rgba(255, 255, 255, 0.2) inset, -1px 0px rgba(255, 255, 255, 0.2) inset !important;
+  border-color: rgb(0,0,0) !important;
+}
+
+/** default background / text shadow for night vision (anything with bright enough text */
 .quickfolders-flat .night,
 .QuickFolders-folder-popup.night menuitem.color {
   background: -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+  text-shadow: none;
 }
 
 /* 1 - light blue */
-#folderTree treechildren.col1::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col1.selected-folder, 
 .quickfolders-pills .plastic.col1:hover,
 .quickfolders-flat .plastic.col1, 
@@ -34,7 +47,6 @@
 }
 
 /* 2 - Sky Blue */
-#folderTree treechildren.col2::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col2.selected-folder, 
 .quickfolders-pills .plastic.col2:hover,
 .quickfolders-flat .plastic.col2, 
@@ -121,7 +133,6 @@
 }
 
 /* 5 - jade */
-#folderTree treechildren.plastic.col5::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col5.selected-folder, 
 .quickfolders-pills .plastic.col5:hover,
 .quickfolders-flat .plastic.col5,  
@@ -149,7 +160,6 @@
 }
 
 /* 6 - Olive Green */
-#folderTree treechildren..plasticcol6::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col6.selected-folder, 
 .quickfolders-pills .plastic.col6:hover,
 .quickfolders-flat .plastic.col6, 
@@ -168,10 +178,19 @@
 	background-image: -moz-linear-gradient(top, rgb(222, 247, 111) 0%, rgb(150, 197, 56) 8%, rgb(120, 167, 16) 40%, rgb(120, 167, 16) 100%);
 	color:rgb(230, 255, 235);
 }
+/* 6 - bright olive - night vision */
+.quickfolders-flat .night.col6, 
+.quickfolders-pills .night.col6.selected-folder, 
+.quickfolders-pills .night.col6:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor6"],
+.quickfolders-flat .night.selected-folder.cActive6 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(196, 255, 104);
+}
 
 
 /* 7 - neon lime */
-#folderTree treechildren.plastic.col7::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col7.selected-folder, 
 .quickfolders-pills .plastic.col7:hover,
 .quickfolders-flat .plastic.col7, 
@@ -244,10 +263,19 @@
 	background-image: -moz-linear-gradient(top, rgba(254,252,234,1) 0%, rgba(255,255,153,1) 22%, rgba(255,255,153,1) 100%); 
 	color: rgb(25, 25, 0);
 }
+/* 9 - light yellow - night vision */
+.quickfolders-flat .night.col9, 
+.quickfolders-pills .night.col9.selected-folder, 
+.quickfolders-pills .night.col9:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor9"],
+.quickfolders-flat .night.selected-folder.cActive9 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(253, 255, 97);
+}
 
 
 /* 10 - Yolk Yellow */
-#folderTree treechildren.plastic.col10::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col10.selected-folder, 
 .quickfolders-pills .plastic.col10:hover,
 .quickfolders-flat .plastic.col10, 
@@ -262,12 +290,21 @@
 .quickfolders-flat .pastel.col10,
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor10"],
 .quickfolders-flat .pastel.selected-folder.cActive10 {
-	background-image:  -moz-linear-gradient(top, rgba(255,240,219,1) 0%, rgba(255,204,102,1) 10%, rgba(255,204,102,1) 100%); 
-	color:#000;
+	background-image:   -moz-linear-gradient(top, rgba(255,240,219,1) 0%, rgba(255,204,102,1) 10%, rgba(255,204,102,1) 100%); 
+	color: rgb(0, 0, 0);
+}
+/* 10 - custard - night vision */
+.quickfolders-flat .night.col10, 
+.quickfolders-pills .night.col10.selected-folder, 
+.quickfolders-pills .night.col10:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor10"],
+.quickfolders-flat .night.selected-folder.cActive10 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(255, 252, 0);
 }
 
 /* 11 - orange */
-#folderTree treechildren.plastic.col11::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col11.selected-folder, 
 .quickfolders-pills .plastic.col11:hover,
 .quickfolders-flat .plastic.col11, 
@@ -284,6 +321,16 @@
 .quickfolders-flat .pastel.selected-folder.cActive11 {
 	background-image: -moz-linear-gradient(top, rgb(255, 240, 219) 0%, rgb(234, 149, 86) 10%, rgb(245, 160, 130) 60%, rgb(254, 169, 106) 100%);
 	color:rgb(0, 0, 0);
+}
+/* 11 - mandarin - night vision */
+.quickfolders-flat .night.col11, 
+.quickfolders-pills .night.col11.selected-folder, 
+.quickfolders-pills .night.col11:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor11"],
+.quickfolders-flat .night.selected-folder.cActive11 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(255, 150, 0);
 }
 	
 /* 12 - Mars Red */
@@ -310,12 +357,13 @@
 .quickfolders-pills .night.col12:hover,
 .QuickFolders-folder-popup.night menuitem[tag="qfColor12"],
 .quickfolders-flat .night.selected-folder.cActive12 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(255, 0, 0);
 	text-shadow: 0px 0px 1px rgb(255, 0, 0), 0px 0px 2px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* 13 - Rust Red */
-#folderTree treechildren.plastic.col13::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col13.selected-folder, 
 .quickfolders-pills .plastic.col13:hover,
 .quickfolders-flat .plastic.col13,  
@@ -333,9 +381,19 @@
 	background-image: -moz-linear-gradient(top, rgba(255,209,209,1) 0%, rgba(236,158,166,1) 52%, rgba(236,158,166,1) 100%); 
 	color: rgb(75, 0, 0);
 }
+/* 13 - ocre - night vision */
+.quickfolders-flat .night.col13, 
+.quickfolders-pills .night.col13.selected-folder, 
+.quickfolders-pills .night.col13:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor13"],
+.quickfolders-flat .night.selected-folder.cActive13 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(182, 119, 33);
+	text-shadow: 0px 0px 1px rgb(100, 59, 15) !important;
+}
 
 /* 14 - Deep Purple */
-#folderTree treechildren.plastic.col14::-moz-tree-cell-text,
 .quickfolders-pills .plastic.col14.selected-folder, 
 .quickfolders-pills .plastic.col14:hover,
 .quickfolders-flat .plastic.col14, 
@@ -352,7 +410,18 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor14"],
 .quickfolders-flat .pastel.selected-folder.cActive14 {
 	background-image: -moz-linear-gradient(top, rgb(221, 221, 255) 0%, rgb(146, 146, 218) 11%, rgb(150, 150, 250) 100%); 
-	color: #000000;
+	color: rgb(0, 0, 0);
+}
+/* 14 - ultra violet - night vision */
+.quickfolders-flat .night.col14, 
+.quickfolders-pills .night.col14.selected-folder, 
+.quickfolders-pills .night.col14:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor14"],
+.quickfolders-flat .night.selected-folder.cActive14 {
+	/* ## standard ## */
+	background:  -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color: rgb(205, 40, 175);
+	text-shadow: 0px 0px 1px rgba(255, 0, 255, 0.9), 0px 0px 3px rgba(255, 0, 255, 0.5) !important;
 }
 
 /* 15 - Hot Pink */
@@ -380,6 +449,8 @@
 .quickfolders-pills .night.col15:hover,
 .QuickFolders-folder-popup.night menuitem[tag="qfColor15"],
 .quickfolders-flat .night.selected-folder.cActive15 {
+	/* ## standard ## */
+	background: -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(254, 122, 234);
 }
 
@@ -402,6 +473,7 @@
 .quickfolders-flat .pastel.selected-folder.col16 {
 	background-image: -moz-linear-gradient(top, rgba(204,204,204,1) 0%, rgba(237,237,237,1) 20%, rgba(255,255,255,1) 85%, rgba(234,234,234,1) 100%); 
 	color: rgb(0, 0, 0);
+	box-shadow: 1px 0px 1px rgba(50, 50, 50, 0.3) inset, -1px 0px 1px rgba(50, 50, 50, 0.3) inset, 0px -1px 1px rgba(50, 50, 50, 0.3) inset !important;
 }
 /* 16 - white - night */
 .quickfolders-flat .night.col16,
@@ -409,6 +481,8 @@
 .quickfolders-pills .night.col16:hover,
 .QuickFolders-folder-popup.night menuitem[tag="qfColor16"],
 .quickfolders-flat .night.selected-folder.col16 {
+	/* ## standard ## */
+	background: -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(255, 255, 255);
 }
 
@@ -430,7 +504,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor17"],
 .quickfolders-flat .pastel.selected-folder.col17 { 
 	background-image: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(188,188,188,1) 5%,rgba(151,151,151,1) 100%);
-	color:#000000 ; 
+	color: rgb(0, 0, 0);  
 }
 /* 17 - light gray - night */
 .quickfolders-flat .night.col17,
@@ -491,6 +565,16 @@
 	background-image: -moz-linear-gradient(top, rgb(250, 250, 250) 0%, rgb(128, 128, 128) 9%, rgb(28, 28, 28) 100%);
 	color:#C0C0C0;
 }
+/* 19 - night gray - night */
+.quickfolders-flat .night.col19,
+.quickfolders-pills .night.col19.selected-folder, 
+.quickfolders-pills .night.col19:hover,
+.QuickFolders-folder-popup.night menuitem[tag="qfColor19"],
+.quickfolders-flat .night.selected-folder.col19 { 
+	/* ## standard ## */
+	background: -moz-linear-gradient(top, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
+	color:#C0C0C0;
+}
 
 /* 20 - black */
 .quickfolders-pills .plastic.col20.selected-folder, 
@@ -545,7 +629,7 @@
 .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;
-	box-sizing:   border-box; /* draw borders on inside */
+	-moz-box-sizing:   border-box; /* draw borders on inside; gecko 29 without prefix */
 	border-style: solid;
 	border-color: rgba(200,200,200,0.1);
 	/* text: bold, near-black, dark-silver shadow */
@@ -561,7 +645,7 @@
 	padding: 0px 7px 1px 7px !important; /* Thunderbird 3 */
 	margin-top: 1px !important;
 	margin-bottom: 1px !important;
-	min-height: 19x;
+	min-height: 19px;
 }
 
 .quickfolders-pills toolbarbutton:hover,
@@ -665,10 +749,10 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor12"]::after { content:"cherry"; margin-left:0;}
 .QuickFolders-folder-popup menuitem[tag="qfColor13"]::after { content:"rust"; margin-left:0;}
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor13"]::after { content:"rose"; margin-left:0;}
-.QuickFolders-folder-popup.night menuitem[tag="qfColor13"]::after { content:"dark red"; margin-left:0;}
+.QuickFolders-folder-popup.night menuitem[tag="qfColor13"]::after { content:"ocre"; margin-left:0;}
 .QuickFolders-folder-popup menuitem[tag="qfColor14"]::after { content:"deep purple"; margin-left:0;}
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor14"]::after { content:"violet"; margin-left:0;}
-.QuickFolders-folder-popup.night menuitem[tag="qfColor14"]::after { content:"purple berry"; margin-left:0;}
+.QuickFolders-folder-popup.night menuitem[tag="qfColor14"]::after { content:"ultra violet"; margin-left:0;}
 .QuickFolders-folder-popup menuitem[tag="qfColor15"]::after { content:"hot pink"; margin-left:0;}
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor15"]::after { content:"blanched almond"; margin-left:0;}
 .QuickFolders-folder-popup.night menuitem[tag="qfColor15"]::after { content:"soft magenta"; margin-left:0;}
@@ -721,5 +805,9 @@
 .col19striped {        background-image: -moz-linear-gradient(top, rgba(239,239,239,1) 0%, rgba(183,183,183,1) 3%, rgba(66,66,66,1) 12%, rgba(79,79,79,1) 20%, rgba(79,79,79,0) 21%); }
 .pastel.col20striped,
 .col20striped {        background-image: -moz-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(173,173,173,1) 4%, rgba(0,0,0,1) 9%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 21%); }
+menuitem[tag="qfColor0"].color,
+menuitem[tag="qfColor0"].color:hover {
+	list-style-image : url('chrome://quickfolders/skin/ico/folder.png') !important;
+}
 
 

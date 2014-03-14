@@ -18,9 +18,10 @@
 <!ENTITY qf.button.configureTooltips "Подешавање облачића са описом…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Приказани су одвојено са знаком „+” поред главног бројача; непрочитане поруке које се налазе у њему ће, такође, подебљати језичак ако је горња опција активна">
 <!ENTITY qf.checkbox.showMessageNavigation "Дугмад за кретање кроз поруке">
-<!ENTITY qf.checkbox.showNonEmptyItalics "Искоси дугмад фасцикли које садрже порукама">
+<!ENTITY qf.checkbox.showIconButtons "Прилагоди дугмад икона">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Искоси језичке фасцикли које садрже поруке">
 <!ENTITY qf.checkbox.showNewMailItalics "Језичке у којима има нових порука прикажи искошеним словима">
-<!ENTITY qf.checkbox.enableTransitions "Омогући прелазе помоћу CSS">
+<!ENTITY qf.checkbox.enableTransitions "Омогући CSS прелазе">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Приказује благе прелазе између мењања разних боја језичака.">
 <!ENTITY qf.checkbox.highlightNewMail "Истакни фасцикле када стигне нова порука">
 <!ENTITY qf.toolbarMinimumHeight "Најмања висина:">
@@ -91,6 +92,8 @@
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
 <!ENTITY qf.checkbox.showRecentButton "Дугме за недавне фасцикле">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Притисните десни клик да бисте подесили">
+<!ENTITY qf.checkbox.showQuickMove "Дугме за брзо премештање">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "Дугме за брзо премештање може бити коришћено за премештање порука у одабрану фасциклу. Можете премештати поруке из више фасцикли. Када у њему имате поруке, унесите назив одредишне фасцикле у поље за претрагу.">
 <!ENTITY qf.checkbox.showFilterButton "Дугме „Направи филтере”">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Филтере можете направити и коришћењем приручног менија QuickFolders">
 <!ENTITY qf.checkbox.autoHideToolbar "Сакриј QuickFolders кад није потребан">
@@ -134,4 +137,5 @@
 <!ENTITY qf.palette.twoColors "две боје">
 <!ENTITY qf.palette.standard "стандардна палета">
 <!ENTITY qf.palette.pastel "пастелне боје">
+<!ENTITY qf.palette.night "Ноћни визир">
 <!ENTITY qf.palette.inactive "као неактивни језичци">

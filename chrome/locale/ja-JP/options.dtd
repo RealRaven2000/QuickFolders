@@ -92,6 +92,8 @@
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
 <!ENTITY qf.checkbox.showRecentButton "最近使用したフォルダボタン">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "右クリックで設定を開きます">
+<!ENTITY qf.checkbox.showQuickMove "quickMove ボタン">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "quickMove ボタンは、メールをドラッグして指定したフォルダに移動するのに使用します。複数のフォルダから対象のメールを集め、検索ボックスに移動先のフォルダ名を入力します。">
 <!ENTITY qf.checkbox.showFilterButton "[フィルタ作成] ボタン">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "QuickFolders のコンテキストメニューからもフィルタを作成できます。">
 <!ENTITY qf.checkbox.autoHideToolbar "QuickFolders が不要な場合は隠す">
@@ -135,4 +137,5 @@
 <!ENTITY qf.palette.twoColors "2 色">
 <!ENTITY qf.palette.standard "標準パレット">
 <!ENTITY qf.palette.pastel "パステルカラー">
+<!ENTITY qf.palette.night "夜景">
 <!ENTITY qf.palette.inactive "アクティブでないタブの色">

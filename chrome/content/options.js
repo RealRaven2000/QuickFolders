@@ -141,16 +141,23 @@ QuickFolders.Options = {
 			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;
 		}
 		else {
-		  if (colorPicker)
-				colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
 			previewTab.className = 'qfTabPreview';
-			if (colorPicker)
-				previewTab.style.backgroundColor = colorPicker.color;
+		  if (colorPicker) {
+				colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
+        let transcol =
+          (previewId=='inactivetabs-label') 
+            ? this.getTransparent(colorPicker.color, QuickFolders.Preferences.getBoolPref("transparentButtons"))
+            : colorPicker.color;
+				previewTab.style.backgroundColor = transcol;
+      }
 			
 		}
 	} ,
 	
-
+  getTransparent: function(color, transparent) {
+    return QuickFolders.Util.getRGBA(color, transparent ? 0.25 : 1.0);
+  },
+  
 	load: function() {
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -217,7 +224,8 @@ QuickFolders.Options = {
 			wd.getElementById("inactive-colorpicker").color = bcol;
 
 			//support transparency and shadow
-			var transcol  =  QuickFolders.Util.getRGBA(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons") ? 0.25 : 1.0);
+			let transcol  =  this.getTransparent(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons"));
+      QuickFolders.Util.logDebug('inactivetabs-label: setting background color to ' + transcol);
 			wd.getElementById("inactivetabs-label").style.backgroundColor = transcol;
 			// this.showButtonShadow(QuickFolders.Preferences.getBoolPref("buttonShadows"));
 
@@ -372,7 +380,7 @@ QuickFolders.Options = {
 
 	colorPickerTranslucent: function (picker) {
 		document.getElementById('inactivetabs-label').style.backgroundColor=
-			QuickFolders.Util.getRGBA(picker.color, document.getElementById('buttonTransparency').checked ? 0.25 : 1.0);
+      this.getTransparent(picker.color, document.getElementById('buttonTransparency').checked);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
 		return QuickFolders.Interface.updateMainWindow();
 	},
@@ -445,10 +453,14 @@ QuickFolders.Options = {
 		}
 		return QuickFolders.Interface.updateMainWindow();
 	},
-	
+
+  setColoredTabStyleFromRadioGroup: function (rgroup) {
+    let styleId = parseInt(rgroup.value, 10);
+    this.setColoredTabStyle(styleId);
+  },
+  
 	// select: striped style / filled style
-	setColoredTabStyle: function  (rgroup) {
-		var styleId = parseInt(rgroup.value, 10);
+	setColoredTabStyle: function  (styleId) {
 		QuickFolders.Preferences.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
 		QuickFolders.Interface.updateMainWindow();
 		// no need to display background color picker when full colored style is selected.
@@ -517,6 +529,9 @@ QuickFolders.Options = {
 			  idPreview = null;
 				colorPicker = null;
         let isStripable = (paletteType == 1 || paletteType == 2) ? true : false ;
+        if (!isStripable) {
+          this.setColoredTabStyle(QuickFolders.Preferences.TABS_FILLED);
+        }
         document.getElementById('qf-individualColors').collapsed = !isStripable;
 				break;
 			case 'standard':
@@ -606,7 +621,7 @@ QuickFolders.Options = {
 	toggleColorTranslucent: function (cb, pickerId, label, userStyle) {
 		var picker = document.getElementById(pickerId);
 		document.getElementById(label).style.backgroundColor=
-			QuickFolders.Util.getRGBA(picker.color, cb.checked ? 0.25 : 1.0);
+			this.getTransparent(picker.color, cb.checked);
 		if (userStyle)
 			QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.color);
 
@@ -648,7 +663,7 @@ QuickFolders.Options = {
 		var picker = document.getElementById('inactive-colorpicker');
 	
 		document.getElementById('activetabs-label').style.backgroundColor=
-			QuickFolders.Util.getRGBA(picker.color, isPastel ? 0.25 : 1.0);
+			this.getTransparent(picker.color, isPastel);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
 		QuickFolders.Preferences.setBoolPref('pastelColors', isPastel);
 		

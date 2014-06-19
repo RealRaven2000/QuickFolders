@@ -8,42 +8,74 @@ END LICENSE BLOCK */
 
 
 QuickFolders.Styles = {
-
 	getMyStyleSheet: function(Name, Title) {
-		let ssFirstMatch = null;
+    function checkMatch(sheet, href) {
+      return (Title && sheet.title == Title)
+                ||
+              (href && href.indexOf(Name)>=0);
+    }
+    function makeDebugEntry(cnt, ss, href) {
+      return  cnt + '. ' + href
+			         + (ss.title ? ' [' + ss.title + ']' : '') + '\n';
+    }
+    // now for some naasty closures... :)
+    function checkNestedSheets(ss) {
+      for (let j=0; j<ss.cssRules.length; j++) {
+        let rule = ss.cssRules[j];
+        if (rule.styleSheet) { // rule.type == rule.IMPORT_RULE
+          let nestedSS = rule.styleSheet;  // nsIDOMCSSImportRule
+          href = nestedSS.href ? nestedSS.href : "";
+          sList += makeDebugEntry('[nested]', nestedSS, href);
+          if (checkMatch(nestedSS, href)) {
+            ssFirstMatch = nestedSS;
+            break;
+          }
+          else
+            checkNestedSheets(nestedSS);
+          if (ssFirstMatch) break;
+        }
+      }
+      return (ssFirstMatch) ? true : false;
+    }
+    let href; // closured
+		let ssFirstMatch = null; // closured
 		let sList = '';
 		let styleSheetList = document.styleSheets;
 		for (let i = 0; i < styleSheetList.length; i++) {
 			let ss = styleSheetList[i];
-			let href = ss.href ? ss.href : "";
+			href = ss.href ? ss.href : "";
 
-			sList += i.toString() + '. ' + href
-			         + (ss.title ? ' [' + ss.title + ']' : '') + '\n';
-			if (	(	(Title && ss.title == Title)
-			    		||
-			    		(href && href.indexOf(Name)>=0) )
-			    &&
-			    typeof ss.cssRules != 'undefined')
-			{
-				QuickFolders.Util.logDebugOptional("css.styleSheets",
-				    "============================================\n"
-				  + "getMyStyleSheet (" + Name + "," + Title + ") [" + i + ", " + ss.title + "] =" + href
-					+ "\nwin.doc.title   =" + window.document.title
-					+ "\ndoc.title       =" + document.title
-					+ "\nwindow.location =" + window.location
-					+ "\n============================================");
-				if (!ssFirstMatch)
-					ssFirstMatch = ss;
-				break;
-			}
+			sList += makeDebugEntry(i.toString(), ss, href);
+      if (typeof ss.cssRules != 'undefined') {
+        if (checkMatch(ss,href))
+        {
+          if (!ssFirstMatch)
+            ssFirstMatch = ss;
+          break;
+        }
+        if (!ssFirstMatch) {
+          // iterate rules to check for nested style sheets
+          if (checkNestedSheets(ss))
+            break;
+        }
+      }
 		}
-		QuickFolders.Util.logDebugOptional("css.styleSheets", styleSheetList.length + " StyleSheets found:\n" + sList);
-
-		if (!ssFirstMatch)
+    if (ssFirstMatch)
+      QuickFolders.Util.logDebugOptional("css.styleSheets",
+          "============================================\n"
+        + "getMyStyleSheet (" + Name + "," + Title + ") [" + ssFirstMatch.title + "] =" + href
+        + "\nwin.doc.title   =" + window.document.title
+        + "\ndoc.title       =" + document.title
+        + "\nwindow.location =" + window.location
+        + "\n============================================");
+    else
 			QuickFolders.Util.logDebug("Can not find style sheet: " + Name + " - " + Title + " in "
 			  + (window.closed ? "closed window" : window.location)
 				+ "\nwin.doc.title=" + window.document.title
 				+ "\ndoc.documentURI=" + document.documentURI);
+        
+		QuickFolders.Util.logDebugOptional("css.styleSheets", styleSheetList.length + " StyleSheets found:\n" + sList);
+
 		return ssFirstMatch;
 	},
 

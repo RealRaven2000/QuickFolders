@@ -158,6 +158,17 @@ QuickFolders.Options = {
     return QuickFolders.Util.getRGBA(color, transparent ? 0.25 : 1.0);
   },
   
+  stripedSupport: function(paletteType) {
+    switch(paletteType) {
+      case 1: // Standard Palette
+        return true;
+      case 2: // Pastel Palette
+        return true;
+      default:
+        return false;
+    }
+  } ,
+  
 	load: function() {
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -276,9 +287,10 @@ QuickFolders.Options = {
 			// customized coloring support
       this.initPreviewTabStyles();
       
-      let coloredPalette = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
-      let isStripable = (coloredPalette == 1 || coloredPalette == 2) ? true : false ;
-      wd.getElementById('qf-individualColors').collapsed = !isStripable;
+      let paletteType = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+      wd.getElementById('qf-individualColors').collapsed = !
+        (this.stripedSupport(paletteType) && 
+         this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')));      
 		}
 		catch(e) {
 			alert("Error in QuickFolders.Options.load():\n" + e);
@@ -524,19 +536,17 @@ QuickFolders.Options = {
 		let colorPicker;
 		
 		let stylePref = this.getButtonStatePrefId(buttonState);
+    let isStripable = null;
 		switch(buttonState) {
 		  case 'colored':
 			  idPreview = null;
 				colorPicker = null;
-        let isStripable = (paletteType == 1 || paletteType == 2) ? true : false ;
-        if (!isStripable) {
-          this.setColoredTabStyle(QuickFolders.Preferences.TABS_FILLED);
-        }
-        document.getElementById('qf-individualColors').collapsed = !isStripable;
+        isStripable = this.stripedSupport(paletteType) && this.stripedSupport(QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'));
 				break;
 			case 'standard':
 				idPreview = 'inactivetabs-label';
 				colorPicker = 'inactive-colorpicker';
+        isStripable = this.stripedSupport(paletteType) && this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType'));
 				break;
 			case 'active':
 				idPreview = 'activetabs-label';
@@ -551,6 +561,16 @@ QuickFolders.Options = {
 				colorPicker = 'dragover-colorpicker';
 				break;
 		}
+    if (isStripable === null) {
+        isStripable = this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType'))
+                      && 
+                      this.stripedSupport(QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'));
+    }
+    
+    if (!isStripable) {
+      this.setColoredTabStyle(QuickFolders.Preferences.TABS_FILLED);
+    }
+    document.getElementById('qf-individualColors').collapsed = !isStripable;
 		
 		// preparePreviewTab(id, preference, previewId)
 		QuickFolders.Preferences.setIntPref('style.' + stylePref + '.paletteType', paletteType);
@@ -601,8 +621,13 @@ QuickFolders.Options = {
 		var prefString = txtBox.getAttribute("preference");
 		var pref = document.getElementById(prefString);
 		
-		if (pref)
-			QuickFolders.Preferences.setIntPreference(pref.getAttribute('name'), txtBox.value);
+		if (pref) {
+      let name = pref.getAttribute('name');
+      if(name)
+        QuickFolders.Preferences.setIntPreference(name, txtBox.value);
+      else
+        QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
+    }
 		return QuickFolders.Interface.updateMainWindow();
 	},
 	

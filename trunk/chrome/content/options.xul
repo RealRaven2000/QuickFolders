@@ -849,7 +849,7 @@
 				  <caption label="&qf.options.LayoutColorAppearance;"/>
 				  <radiogroup preference="QuickFolders-Preferences-ColorTabStyleId"
 					instantApply="true"
-					oncommand="QuickFolders.Options.setColoredTabStyle(this);"
+					oncommand="QuickFolders.Options.setColoredTabStyleFromRadioGroup(this);"
 				  >
 					 <radio label=" &qf.options.LayoutColorAppearanceStriped;" value="0" src="chrome://quickfolders/skin/ico/striped-example.gif" id="ExampleStripedColor"/>
 					 <radio label=" &qf.options.LayoutColorAppearanceFilled;" value="1" src="chrome://quickfolders/skin/ico/full-example.gif" id="ExampleFilledColor"/>

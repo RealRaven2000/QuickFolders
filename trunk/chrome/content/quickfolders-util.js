@@ -248,24 +248,46 @@ QuickFolders.Util = {
 	allFoldersIterator: function () {
     let Ci = Components.interfaces;
 		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+    let FoldersArray, allFolders;
 		
-		if (acctMgr.allFolders) {
-			let allFolders = acctMgr.allFolders;
-			return fixIterator(allFolders, Ci.nsIMsgFolder);
-		}
-		else { // SeaMonkey
-			let FoldersArray = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-			let accounts = acctMgr.accounts;
-			let allFolders = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-			// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
-			for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-				account.rootFolder.ListDescendents(allFolders);
-				for each (let aFolder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
-					FoldersArray.appendElement(aFolder, false);
-				}		 
-			}	
-			return fixIterator(FoldersArray, Ci.nsIMsgFolder);
-		}
+    if (QuickFolders.Util.Application == 'Postbox') {
+      FoldersArray = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      let servers = acctMgr.allServers;
+      for (let i = 0; i < servers.Count(); i++)
+      {
+        let server = servers.QueryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        let rootFolder = server.rootFolder;
+        allFolders = Cc["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
+        rootFolder.ListDescendents(allFolders);
+        let numFolders = allFolders.Count();
+
+        for (let folderIndex = 0; folderIndex < numFolders; folderIndex++)
+        {
+          let folder = allFolders.GetElementAt(folderIndex).QueryInterface(Components.interfaces.nsIMsgFolder);
+          FoldersArray.appendElement(folder, false);
+        }
+      }        
+      return FoldersArray; // , Ci.nsIMsgFolder - can't return the fixIterator??
+    }
+    else if (acctMgr.allFolders) { // Thunderbird & modern builds
+      allFolders = acctMgr.allFolders;
+      return fixIterator(allFolders, Ci.nsIMsgFolder);
+    }
+    else { //old / SeaMonkey?
+      /**   ### obsolete code  ###  */
+      FoldersArray = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      let accounts = acctMgr.accounts;
+      allFolders = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      // accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
+      for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+        if (account.rootFolder)
+          account.rootFolder.ListDescendents(allFolders);
+        for each (let aFolder in fixIterator(allFolders, Ci.nsIMsgFolder)) {
+          FoldersArray.appendElement(aFolder, false);
+        }		 
+      }	
+      return fixIterator(FoldersArray, Ci.nsIMsgFolder);
+    }
 	} ,
 	
 	get mailFolderTypeName() {
@@ -334,8 +356,10 @@ QuickFolders.Util = {
 		let notificationId;
 		// is notification disabled?
 		// check setting extensions.quickfolders.proNotify.<featureName>
-		if (!QuickFolders.Preferences.getBoolPref("proNotify." + featureName))
-			return;
+    try {
+      if (!QuickFolders.Preferences.getBoolPref("proNotify." + featureName))
+        return;
+    } catch(ex) {return;}
 		let countDown = QuickFolders.Preferences.getIntPref("proNotify." + featureName + ".countDown") - 1;
 		QuickFolders.Preferences.setIntPref("proNotify." + featureName + ".countDown", countDown);
 
@@ -486,6 +510,7 @@ QuickFolders.Util = {
 
 
 	clearChildren: function(element,withCategories) {
+    if (!element) return;
 		QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
 		if (withCategories)
 			while(element.childNodes.length > 0) {
@@ -661,6 +686,7 @@ QuickFolders.Util = {
 	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function(targetFolder, messageUris, makeCopy) {
 		var step = 0;
+    let Ci = Components.interfaces;
 		try {
 			try {QuickFolders.Util.logDebugOptional('dnd', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);}
 			catch(e) { alert('QuickFolders.Util.moveMessages:' + e); }
@@ -669,7 +695,7 @@ QuickFolders.Util = {
 				alert(QuickFolders.Util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
-			var targetResource = targetFolder.QueryInterface(Components.interfaces.nsIRDFResource);
+			var targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
 			step = 1;
 
 			var messageList ;
@@ -677,9 +703,9 @@ QuickFolders.Util = {
 			var hostsystem = QuickFolders.Util.HostSystem;
 			//nsISupportsArray is deprecated in TB3 as it's a hog :-)
 			if (ap=='Thunderbird' || ap=='SeaMonkey')
-				messageList = Components.classes["@mozilla.org/array;1"].createInstance(Components.interfaces.nsIMutableArray);
+				messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 			else
-				messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
+				messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
 			step = 2;
 
 			// copy what we need...
@@ -706,7 +732,6 @@ QuickFolders.Util = {
 
 			step = 3;
 			var sourceMsgHdr;
-			let Ci = Components.interfaces;
 
 			if (ap=='Thunderbird' || ap=='SeaMonkey')
 				sourceMsgHdr = messageList.queryElementAt(0, Ci.nsIMsgDBHdr);
@@ -963,9 +988,10 @@ QuickFolders.Util = {
 		if (QuickFolders_ConsoleService == null)
 			QuickFolders_ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									.getService(Components.interfaces.nsIConsoleService);
-		QuickFolders_ConsoleService.logStringMessage("QuickFolders "
+    let logMsg =  "QuickFolders "
 			+ (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '')
-			+ this.logTime() + "\n"+ msg);
+			+ QuickFolders.Util.logTime() + "\n"+ msg;
+		QuickFolders_ConsoleService.logStringMessage(logMsg);
 	},
 
 	// flags
@@ -1228,7 +1254,7 @@ QuickFolders.Util = {
 		else {
 		  // jcranmer's method. Just check for the parent, and we are done.
 			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
-		  let folder = rdf.GetResource(msgFolder.URI).QueryInterface(Ci.nsIMsgFolder); 
+		  let folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
 			return folder.parent != null;
 			
 		  /*** legacy unused code [[[ ***/
@@ -1276,9 +1302,40 @@ QuickFolders.Util = {
 					}
 			});
 		}
-	}
+	},
+  
+  // open an email in a new tab
+  openMessageTabFromUri: function(messageUri) {
+    let tabmail = QuickFolders.Util.$("tabmail");
+    let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+    
+    switch (QuickFolders.Util.Application) {
+      case 'Thunderbird':
+        tabmail.openTab('message', {msgHdr: hdr, background: false});  
+        break;
+      case 'SeaMonkey':
+        let tabMode = tabmail.tabModes['3pane'];
+        let tabInfo = {mode: tabMode, canClose: true};
+        let modeBits = 2; // get current mode? (kTabShowFolderPane = 1, kTabShowMessagePane = 2, kTabShowThreadPane = 4)
+        // gMailNewsTabsType.modes['3pane'].openTab(tabInfo, modeBits, null, hdr);
+        tabmail.openTab('3pane', modeBits, null, hdr);
+        break;
+      case 'Postbox':
+					var win = QuickFolders.Interface.getMail3PaneWindow();
+          // from src/mail/base/content/mailWindowOverlay.js
+					win.MsgOpenNewTabForMessageWithAnimation(
+                 hdr.messageKey, 
+                 hdr.folder.URI, //
+                 '',       // aMode
+                 false ,   // Background
+                 true      // skipAnimation 
+                 // [, aAccountURI (optional) ]
+                 )
+          break;
+    }
+  }
 
-
+  
 };  // QuickFolders.Util
 
 

@@ -34,6 +34,13 @@ tab#QuickFolders-General  {
 #QuickFolders-FindPopup menuitem.quickFolder  {
 	list-style-image : url('chrome://quickfolders/skin/ico/folder-tab-small.png') !important;
 }
+
+#QuickFolders-FindPopup[tag=quickMove] menuitem:hover {
+	list-style-image : url('chrome://quickfolders/skin/ico/tb-anchor.png') !important;
+	text-decoration: underline;
+}
+
+
 menuitem.cmd[tagName="qfFindFolder"] { list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important; }
 menuitem.cmd[tagName="qfRebuild"] { list-style-image : url('chrome://quickfolders/skin/ico/reload.png') !important; }
 menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/skin/ico/broom.png') !important; }
@@ -94,8 +101,9 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 	-moz-appearance: none !important;
 	margin-left: -5px;
 	margin-right: -5px;
+	min-width: 12px; /* fix Nautipolis etc */
 	padding: 0 !important;
-	width: 12px;
+	width: 12px !important;
 	height: 20px;
 }
 /* lets make the background invisible! */

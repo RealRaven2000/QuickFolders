@@ -175,7 +175,10 @@ QuickFolders.Preferences = {
 	get isShowToolIcon() {
 		return this.getBoolPref('showToolIcon');
 	} ,
-
+  
+  get isShowQuickMove() {
+    return this.getBoolPref('showQuickMove');
+  } ,
 	get isCssTransitions() {
 		return this.getBoolPref('style.transitions');
 	} ,
@@ -303,16 +306,16 @@ QuickFolders.Preferences = {
 		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		var sReturnValue="";
 
-		if(!this.service.prefHasUserValue(sStyleName)) {
-			sReturnValue=sDefault;
-		}
-		else {
-			var localPref= this.service.getCharPref(sStyleName);
+    try {
+			var localPref = this.service.getCharPref(sStyleName);
 			if(localPref)
 				sReturnValue=localPref;
 			else
 				sReturnValue=sDefault
 		}
+    catch(ex) {
+      sReturnValue=sDefault
+    }
 		/* QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
 				"Style Name: " + sStyleName + "\n" +
 				"Value: " + sReturnValue) */

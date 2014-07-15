@@ -211,7 +211,7 @@ END LICENSE BLOCK */
 		## when jumping to an invalid QuickFolder (the folder that it points to doesn't exist) give the option of deleting it immediately
 		## QuickFolders now detects (and offers to delete) tabs for non-existant folders when you open 
 		   them using the Find Folder feature or clicking their tab
-		## Experimental: [Bug 25645] Adding Icons via context menu - to display the new menu, set Konfiguration setting
+		## Experimental: [Bug 25645] Adding Icons via context menu - to display the new menu, set Configuration setting
 		   extensions.quickfolders.commandMenu.icon = true
 		## Fix [Bug 25683] - Supress Line Break if Tab is first in Line
 		## Fixed: changeTextPreference on options so that tab font size works
@@ -223,11 +223,13 @@ END LICENSE BLOCK */
 	
   3.15 - WIP
     ## Allow dragging multiple folders to QuickFolders tab (Tb / SeaMonkey)
+    ## Added "Download Now" Command for unsynchronized IMAP / Exchange folders.
     ## Interface for adding custom Icons (16px*16px) to Tabs
 		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
     ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
 		## Added new mail folder command: "Explore Folder Location..."
     ## Added prompt for subject line when sending support email
+    ## Improved large font support and spacing, especially on current folder bar.
     ## Paint mode: holding CTRL while painting will advance to the next color, CTRL+SHIFT goes back to previous color
     ## Fixed: Active Tab font color wasn't set reliably if active tab palette differs from uncolored / standard tabs.
     ## Fixed [Bug 25722] Hover Tab color is overwritten when right-clicking a Tab
@@ -235,6 +237,9 @@ END LICENSE BLOCK */
     ## Fixed: In some cases QuickFolders loaded the default font color if the user has stored 
               certain color value (due to wrong use of prefHasUserValue)
 	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
+    ## removed retired Thunderbird overlays (appversion<12)
+    ## Fixed: Recent folder menu shows encoded path decreasing readability
+    ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
     
 	4.0   Future version
 		## Planned [Bug 25645] adding icon support
@@ -1562,7 +1567,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst)
 			let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
       QuickFolders.Util.logDebugOptional("folders.select","parent index: " + parentIndex);
 			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-			var specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES + Flags.MSG_FOLDER_FLAG_JUNK ;
+			var specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
+                       + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
+                       + Flags.MSG_FOLDER_FLAG_JUNK ;
 			if (msgFolder.flags & specialFlags) {
 				// is this folder a smartfolder?
 				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {

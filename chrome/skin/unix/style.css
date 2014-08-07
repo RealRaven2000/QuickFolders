@@ -2,3 +2,9 @@
 #QuickFolders-Options-Tabbox tab {
 	padding: 0.2em 0.6em;
 }
+
+toolbar.quickfolders-flat ,
+toolbar.quickfolders-pills {
+  /* in linux -moz-appearance is 'toolbar' and this overrides any coloring of background / borders */
+  -moz-appearance: none !important; 
+}

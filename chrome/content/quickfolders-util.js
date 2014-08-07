@@ -719,9 +719,14 @@ QuickFolders.Util = {
 			// q.getCollection(listener)
 
 			let messageIdList = [];
+      let isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove');
 			for (var i = 0; i < messageUris.length; i++) {
 				var messageUri = messageUris[i];
 				var Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+        
+        if(isMarkAsRead) {
+          Message.markRead(true);
+        }
 
 				messageIdList.push(Message.messageId);
 				if (ap=='Thunderbird' || ap=='SeaMonkey')

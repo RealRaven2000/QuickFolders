@@ -227,6 +227,7 @@ END LICENSE BLOCK */
     ## Interface for adding custom Icons (16px*16px) to Tabs
 		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
     ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
+    ## [FR 25825] quickMove feature - move mails to any folder by drag + entering name
 		## Added new mail folder command: "Explore Folder Location..."
     ## Added prompt for subject line when sending support email
     ## Improved large font support and spacing, especially on current folder bar.
@@ -240,6 +241,8 @@ END LICENSE BLOCK */
     ## removed retired Thunderbird overlays (appversion<12)
     ## Fixed: Recent folder menu shows encoded path decreasing readability
     ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
+    ## Fixed [Bug 25824] In Ubuntu QuickFolders Toolbar can't be styled
+    ## Feature Request [Bug 25513] Mark message as read when moving: toggle extensions.quickfolders.markAsReadOnMove to true for this behavior
     
 	4.0   Future version
 		## Planned [Bug 25645] adding icon support

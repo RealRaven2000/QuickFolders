@@ -19,6 +19,7 @@ if (!QuickFolders.Properties)
 QuickFolders.Interface = {
 	PaintModeActive: false,
 	TimeoutID: 0,
+  isMoveActive: false,
 	LastTimeoutID: 0,
 	debugPopupItems: 0,
 	buttonsByOffset: [],
@@ -975,9 +976,9 @@ QuickFolders.Interface = {
 			    (tabMode == QuickFolders.Util.mailFolderTypeName || tabMode == "message")) {
 				tab.QuickFoldersCategory = selectedCat; 
 				// setTabValue does not exist (yet)
-				//if (sessionStoreManager.setTabValue) {
+				//if (sessionStoreManager.setTabValue) 
 				//	sessionStoreManager.setTabValue(tab, "QuickFoldersCategory", selectedCat);
-				//}
+				//
 			}
 		}
 		catch(e) {
@@ -1253,8 +1254,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	addFolderButton: function(folder, entry, offset, theButton, buttonId, fillStyle, isFirst) 
-	{
+	addFolderButton: function(folder, entry, offset, theButton, buttonId, fillStyle, isFirst) {
 		let tabColor =  (entry && entry.tabColor) ? entry.tabColor : null;			
 		let tabIcon = (entry && entry.icon) ? entry.icon : '';
     let useName = (entry && entry.name) ? entry.name : '';
@@ -2585,8 +2585,7 @@ QuickFolders.Interface = {
 		return menuitem;
 	} ,
 	
-	createMenuItem_GetMail: function(folder)
-	{
+	createMenuItem_GetMail: function(folder) {
 		try
 		{
 			// find out the server name
@@ -2615,7 +2614,6 @@ QuickFolders.Interface = {
 			return null;
 		}		
 	} ,
-
 
 	createMenuItem_EmptyTrash: function() {
 		var menuitem = document.createElement('menuitem');
@@ -2664,8 +2662,7 @@ QuickFolders.Interface = {
 			function(evt) { QuickFolders.Interface.onSelectParentFolder(url, evt); }, false);
 	} ,
 	
-	addDragToNewFolderItem: function(popupMenu, folder)
-	{
+	addDragToNewFolderItem: function(popupMenu, folder) {
 		try
 		{
 			QuickFolders.Util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettiestName
@@ -3028,11 +3025,11 @@ QuickFolders.Interface = {
 				if (palette) {
 					QuickFolders.Util.logDebugOptional("interface.findFolder","palette processing");
 					menupopup = palette.appendChild(palette.removeChild(menupopup));
-					let textBox = document.getElementById('QuickFolders-FindFolder');
+					let searchBox = document.getElementById('QuickFolders-FindFolder');
 					if (typeof menupopup.openPopup == 'undefined')
-						menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
+						menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 					else
-						menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
+						menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 					if (event.preventDefault) event.preventDefault();
 					if (event.stopPropagation) event.stopPropagation();
 					
@@ -3058,9 +3055,11 @@ QuickFolders.Interface = {
 				} // palette
 				break;
 			case VK_ESCAPE:
-			  this.findFolder(false);
-			  this.hideFindPopup();
-        QuickFolders.quickMove.updateFindBoxMenus(false);
+        let inter = QuickFolders.Interface;
+			  inter.findFolder(false);
+			  inter.hideFindPopup();
+        inter.updateFindBoxMenus(false);
+        inter.toggleMoveMode(false);
 			  break;
 		}
 	} ,
@@ -3073,7 +3072,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	findFolderName: function(textBox) {
+	findFolderName: function(searchBox) {
 		function addMatchingFolder(matches, folder) {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase();
 			let matchPos = folderNameSearched.indexOf(searchString);
@@ -3095,7 +3094,7 @@ QuickFolders.Interface = {
 		}
 		let Ci = Components.interfaces;
 		let isSelected = false;
-	  let searchString = textBox.value.toLocaleLowerCase();
+	  let searchString = searchBox.value.toLocaleLowerCase();
 		if (!searchString) 
 			return;
 		QuickFolders.Util.logDebug("findFolder - " + searchString);
@@ -3180,9 +3179,9 @@ QuickFolders.Interface = {
 			}
 			menupopup.setAttribute('ignorekeys', 'true');
 			if (typeof menupopup.openPopup == 'undefined')
-				menupopup.showPopup(textBox, 0, -1,"context","bottomleft","topleft");
+				menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 			else
-				menupopup.openPopup(textBox,'after_start', 0, -1,true,false);  // ,evt
+				menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 		}
 		if (matches.length == 1) { // go to folder?
 		  // make it easy to hit return to jump into folder instead:
@@ -3193,7 +3192,7 @@ QuickFolders.Interface = {
 					let fC = menupopup.firstChild; 
 					fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
 				}, 250 );
-			return; // avoid textBox.focus()
+			return; // avoid searchBox.focus()
 		}
 		
 		if (isSelected) {
@@ -3202,7 +3201,7 @@ QuickFolders.Interface = {
 			this.hideFindPopup();
 		}	
 		else
-			textBox.focus();
+			searchBox.focus();
 		  
  	} ,
 
@@ -3290,15 +3289,20 @@ QuickFolders.Interface = {
 	} ,
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
-	findFolder: function(show, ProNotification) {
+  // actionType - 'quickMove' or 'findFolder'. Empty when used for disabling the find / jump method
+	findFolder: function(show, actionType) {
+    QuickFolders.Util.logDebugOptional("interface.findFolder", "findFolder(" + show + " , " + actionType + ")");
 		try {
 			let ff = QuickFolders.Util.$("QuickFolders-FindFolder");
 			ff.collapsed = !show;
 			if (show) {
-				if (ProNotification) {
-					QuickFolders.Util.popupProFeature(ProNotification);
+				if (actionType) {
+					QuickFolders.Util.popupProFeature(actionType); // Pro Version Notification
+          let isMove = (actionType == 'quickMove');
+          QuickFolders.Interface.toggleMoveMode(isMove);
 				}
-        QuickFolders.quickMove.updateFindBoxMenus(show);
+        QuickFolders.Interface.updateFindBoxMenus(show);
+        
 				ff.focus();
 			}
 			else {
@@ -3316,11 +3320,11 @@ QuickFolders.Interface = {
 					else
 						ff.blur();
 				}
-        QuickFolders.quickMove.updateFindBoxMenus(show);
+        QuickFolders.Interface.updateFindBoxMenus(show);
 			}
 		}
 		catch(ex) {
-			QuickFolders.Util.logException("findFolder (" + show + ", " + ProNotification + ") failed.", ex);
+			QuickFolders.Util.logException("findFolder (" + show + ", " + actionType + ") failed.", ex);
 		}
 	}	,
 	
@@ -3328,15 +3332,13 @@ QuickFolders.Interface = {
 	  return document.getElementById("threadPaneBox");  // need this for Postbox.
 	} , 
 	
-	setFocusThreadPane: function()
-  {
+	setFocusThreadPane: function() {
     let threadTree = this.getThreadTree();
 		if (threadTree)
 			threadTree.focus();
   } ,
 
-  getThreadTree: function()
-  {
+  getThreadTree: function()  {
     return document.getElementById("threadTree")
   } ,
 	
@@ -3437,7 +3439,6 @@ QuickFolders.Interface = {
 			}
 		}
 	} ,
-	
 	
 	/* MESSAGE PREVIEW TOOLBAR */
 	initCurrentFolderTab: function(currentFolderTab, folder, selectedButton, tabInfo) {
@@ -3734,8 +3735,7 @@ QuickFolders.Interface = {
 		QuickFolders.Model.setFolderColor(theFolder.URI, col, false); // store color in folder string
 	} ,
 
-	ensureStyleSheetLoaded: function(Name, Title)
-	{
+	ensureStyleSheetLoaded: function(Name, Title)	{
 		try {
 			QuickFolders.Util.logDebugOptional("css","ensureStyleSheetLoaded(Name: " + Name + ", Title: " + Title + ")" );
 
@@ -4144,7 +4144,7 @@ QuickFolders.Interface = {
 			return;
 		var found=false;
 		var lastOne = null;
-		for (var i=QuickFolders.Model.selectedFolders.length-1; i>0; i--) {
+		for (var i=QuickFolders.Model.selectedFolders.length-1; i>=0; i--) {
 			var folderEntry = QuickFolders.Model.selectedFolders[i];
 			if (!this.shouldDisplayFolder(folderEntry))
 				continue;
@@ -4386,8 +4386,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	onDeckChange : function(event)
-	{
+	onDeckChange : function(event) {
 		QuickFolders.Util.logDebugOptional("interface", "onDeckChange(" + event + ")");
 		let panel = "";
 		let isMailPanel = false;
@@ -4431,8 +4430,7 @@ QuickFolders.Interface = {
 
 	} ,
 	
-	toggle_FilterMode: function(active)
-	{
+	toggle_FilterMode: function(active) {
 		QuickFolders.Util.logDebugOptional("interface", "toggle_FilterMode(" + active + ")");
 		QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
@@ -4599,8 +4597,31 @@ QuickFolders.Interface = {
 		         this.PaintModeActive);
 
 		// set cursor!
-	}
-
+	} ,
+  
+  updateFindBoxMenus: function(toggle) {
+    try {
+      QuickFolders.Util.$('QuickFolders-quickMove-showSearch').collapsed = toggle;
+      QuickFolders.Util.$('QuickFolders-quickMove-hideSearch').collapsed = !toggle;
+    }
+    catch (ex) {
+			QuickFolders.Util.logException('Exception during updateFindBoxMenus(' + toggle + ') ', ex);
+    }
+  } ,
+  
+  // make a special style visible to show that [Enter] will move the mails in the list (and not just jump to the folder)
+  toggleMoveMode: function(toggle) {
+    QuickFolders.Util.logDebug('toggleMoveMode(' + toggle + ')');
+    let searchBox = QuickFolders.Util.$('QuickFolders-FindFolder');
+    searchBox.className = toggle ? "quickMove" : "";
+  } ,
+  
+  quickMoveButtonClick: function(el) {
+    if (QuickFolders.quickMove.hasMails)
+      QuickFolders.Interface.showPopup(el,'QuickFolders-quickMoveMenu');
+    else
+      QuickFolders.Interface.findFolder(true,'findFolder'); // show jump to folder box
+  }
 };
 
 // drop target which defers a move to a quickJump operation
@@ -4609,16 +4630,23 @@ QuickFolders.quickMove = {
   // drop code uses QuickFolders.buttonDragObserver
   // this.QuickMoveButton ...
   suspended: false,
+  
   get isActive() {
-    return (QuickFolders.quickMoveUris.length>0 && !this.suspended)
+    return (QuickFolders.Interface.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
   },
+  
+  get hasMails() {
+    return (QuickFolders.quickMoveUris.length > 0)
+  },
+  
   onClick: function(button, evt, forceDisplay) {
     // we need to display a popup menu with a "cancel" item (this will delete the list of mails to be moved.
     // this.QuickMoveButton ...
     if (confirm('Cancel quickMove operation?')) {
       this.resetList();
     }
-  }, 
+  },
+  
   execute: function(folderUri, isCopy) {
     let actionCount = 0;
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
@@ -4644,7 +4672,8 @@ QuickFolders.quickMove = {
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
       QuickFolders.Util.popupAlert("QuickFolders",notify);
     }
-  } ,
+  },
+  
   resetList: function() {
     while (QuickFolders.quickMoveUris.length)
       QuickFolders.quickMoveUris.pop();
@@ -4656,21 +4685,29 @@ QuickFolders.quickMove = {
     }
     this.update();
   },
+  
   cancel: function() {
     this.resetList();
   },
+  
   showSearch: function() {
-    QuickFolders.Interface.findFolder(true);
-    this.updateFindBoxMenus(true);
+    QuickFolders.Interface.findFolder(true, 'quickMove');
+    QuickFolders.Interface.updateFindBoxMenus(true);
   },
+  
   hideSearch: function() {
     QuickFolders.Interface.findFolder(false);
-    this.updateFindBoxMenus(false);
+    QuickFolders.Interface.updateFindBoxMenus(false);
   },
+  
   toggleSuspendMove: function(menuitem) {
     this.suspended = !this.suspended;
     menuitem.checked = this.suspended;
+    if (this.suspended) { // show the box
+      QuickFolders.Interface.findFolder(true, 'findFolder');
+    }
   },
+  
   add: function(newUri)  {
     if (QuickFolders.quickMoveUris.indexOf(newUri) == -1) { // avoid duplicates!
       QuickFolders.quickMoveUris.push(newUri);
@@ -4704,32 +4741,37 @@ QuickFolders.quickMove = {
           QuickFolders.Util.logException('quickMove.add', ex);
         }
       }
+      if (QuickFolders.quickMove.hasMails) {
+        QuickFolders.Interface.isMoveActive = true;
+        QuickFolders.Interface.toggleMoveMode(true);
+      }
     }
   },
+  
   remove: function(URI)  {
     let i = QuickFolders.quickMoveUris.indexOf(URI);
     if (i >= 0) {
       QuickFolders.quickMoveUris.splice(i, 1);
     }
+    if (!QuickFolders.quickMove.hasMails) {
+      qfInterface.isMoveActive = false;
+      qfInterface.toggleMoveMode(false);
+    }
   },
+  
   update: function() {
-    let isActive = QuickFolders.quickMoveUris.length ? true : false;
+    let isActive = QuickFolders.quickMove.hasMails; // ? true : false;
+    let qfInterface = QuickFolders.Interface;
+    qfInterface.isMoveActive = isActive; 
+    QuickFolders.Util.logDebug('QuickFolders.quickMove.update()\n' + 'isActive = ' + isActive);
     // indicate number of messages on the button?
-    QuickFolders.Interface.QuickMoveButton.label = 
+    qfInterface.QuickMoveButton.label = 
       isActive ?
       '(' + QuickFolders.quickMoveUris.length +')' : '';
     // toggle quickMove searchbox visible
     QuickFolders.Util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
-    this.updateFindBoxMenus(isActive);
-    QuickFolders.Interface.findFolder(isActive, isActive ? 'quickMove' : null);
-  },
-  updateFindBoxMenus: function(toggle) {
-    try {
-      QuickFolders.Util.$('QuickFolders-quickMove-showSearch').collapsed = toggle;
-      QuickFolders.Util.$('QuickFolders-quickMove-hideSearch').collapsed = !toggle;
-    }
-    catch (ex) {
-			QuickFolders.Util.logException('Exception during updateFindBoxMenus(' + toggle + ') ', ex);
-    }
+    qfInterface.updateFindBoxMenus(isActive);
+    qfInterface.toggleMoveMode(isActive);
+    qfInterface.findFolder(isActive, isActive ? 'quickMove' : null);
   }
 };

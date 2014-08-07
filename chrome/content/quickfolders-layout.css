@@ -66,6 +66,12 @@
 	min-height: 20px !important;
 }
 
+#QuickFolders-FindFolder.quickMove {
+  background: linear-gradient(to bottom, rgba(242,94,94,1) 0%,rgba(206,9,6,1) 43%,rgba(150,30,30,1) 100%) !important;
+	background-color: rgba(229,132,117,1);
+	color: rgb(255,255,255) !important;
+}
+
 #QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {

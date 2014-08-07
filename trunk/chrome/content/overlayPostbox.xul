@@ -66,8 +66,8 @@
 					<toolbarbutton id="QuickFolders-quickMove"
 								 tooltiptext="&qf.tooltip.quickMove;"
 								 label=""
-								 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-quickMoveMenu');"
-								 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver)"
+								 onclick="QuickFolders.Interface.quickMoveButtonClick(this);"
+								 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
 					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 								 context="QuickFolders-quickMoveMenu"
@@ -109,6 +109,11 @@
 
 		<popupset id="QuickFolders-QuickMovePopupSet">
 			<menupopup id="QuickFolders-quickMoveMenu">
+				<menuitem id="QuickFolders-quickMove-suspend"
+				          label="&quickfolders.quickMove.menu.suspend;"
+				          oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
+				          type="checkbox"
+				          />
 				<menuitem id="QuickFolders-quickMove-cancel"
 				          label="&quickfolders.quickMove.menu.cancel;"
 				          oncommand="QuickFolders.quickMove.cancel();" 
@@ -122,11 +127,6 @@
 				          label="&quickfolders.quickMove.menu.hideSearch;"
 				          oncommand="QuickFolders.quickMove.hideSearch();" 
 				          collapsed="true"
-				          />
-				<menuitem id="QuickFolders-quickMove-suspend"
-				          label="&quickfolders.quickMove.menu.suspend;"
-				          oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
-				          type="checkbox"
 				          />
 			</menupopup>
 		</popupset>	

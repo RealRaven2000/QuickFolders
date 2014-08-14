@@ -4,4 +4,5 @@ var QuickFolders_mailSession = Components.classes["@mozilla.org/messenger/servic
 QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
 
 QuickFolders.addLoadEventListener();
+
 // note: addTabEventListener() is called during QuickFolders.init()

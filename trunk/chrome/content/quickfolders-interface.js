@@ -2129,7 +2129,8 @@ QuickFolders.Interface = {
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-downloadAll");
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDownloadAll(this);");
-			menuitem.setAttribute('label',this.getUIstring("qfDownloadAll", "Download Now [" + folder.server.type + "]"));
+      let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + folder.server.type + "]";
+			menuitem.setAttribute('label', downloadLabel);
 			// MailCommands.appendChild(menuitem);
 			// if (isRootMenu)
       menupopup.appendChild(menuitem);
@@ -2362,7 +2363,7 @@ QuickFolders.Interface = {
 			if (prefs.getBoolPref("commandMenu.icon")) {
 				menuitem = document.createElement('menuitem');
 				menuitem.className='cmd menuitem-iconic';
-				menuitem.setAttribute('tag', 'qfIcon');
+				menuitem.setAttribute('tag', 'qfIconAdd');
 			  menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Customize Icon...'));
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this)');
 				QFcommandPopup.appendChild(menuitem);
@@ -3429,6 +3430,11 @@ QuickFolders.Interface = {
 		}
 
 		this.initCurrentFolderTab(this.CurrentFolderTab, folder, selectedButton);
+    if (!QuickFolders.Preferences.supportsCustomIcon) {
+      QuickFolders.Util.$("context-quickFoldersIcon").collapsed = true;
+      QuickFolders.Util.$("context-quickFoldersRemoveIcon").collapsed = true;
+    }
+    
 		// single message window:
 		if (QuickFolders.Preferences.isShowCurrentFolderToolbar(true)) {
 			let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
@@ -3462,12 +3468,18 @@ QuickFolders.Interface = {
         }
         QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, 'QuickFoldersCurrentFolder', QuickFolders.Preferences.ColoredTabStyle	);
         if (QuickFolders.FolderTree && this.CurrentFolderRemoveIconBtn) {
-          let hasIcon = 
-            QuickFolders.Preferences.getBoolPref('currentFolderBar.folderTreeIcon')
-            ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
-            : QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
-          this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
-          this.CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
+          if (!QuickFolders.Preferences.supportsCustomIcon) {
+            this.CurrentFolderSelectIconBtn.collapsed = true;
+            this.CurrentFolderRemoveIconBtn.collapsed = true;
+          }
+          else {
+            let hasIcon = 
+              QuickFolders.Preferences.getBoolPref('currentFolderBar.folderTreeIcon')
+              ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
+              : QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
+            this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
+            this.CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
+          }
         }
         disableNavigation(false);
         currentFolderTab.setAttribute("tooltiptext", QuickFolders.Util.getFolderTooltip(folder));
@@ -4621,157 +4633,21 @@ QuickFolders.Interface = {
       QuickFolders.Interface.showPopup(el,'QuickFolders-quickMoveMenu');
     else
       QuickFolders.Interface.findFolder(true,'findFolder'); // show jump to folder box
+  },
+  
+  folderPanePopup: function(evt) {  
+    // needs to go into popup listener
+    try {
+      let folders = GetSelectedMsgFolders();
+      let folder = folders[0];
+      let hasIcon = QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
+      QuickFolders.Util.$("context-quickFoldersRemoveIcon").collapsed = !hasIcon;
+      QuickFolders.Util.$("context-quickFoldersIcon").collapsed = hasIcon; // hide select icon for tidier experience.
+    }
+    catch (ex) {
+      QuickFolders.Util.logDebug('folderPanePopup() failed:' + ex);
+    }
   }
-};
+  
+}; // Interface
 
-// drop target which defers a move to a quickJump operation
-QuickFolders.quickMove = {
-  // for drop target code see QuickFolders-Recent-CurrentFolderTool
-  // drop code uses QuickFolders.buttonDragObserver
-  // this.QuickMoveButton ...
-  suspended: false,
-  
-  get isActive() {
-    return (QuickFolders.Interface.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
-  },
-  
-  get hasMails() {
-    return (QuickFolders.quickMoveUris.length > 0)
-  },
-  
-  onClick: function(button, evt, forceDisplay) {
-    // we need to display a popup menu with a "cancel" item (this will delete the list of mails to be moved.
-    // this.QuickMoveButton ...
-    if (confirm('Cancel quickMove operation?')) {
-      this.resetList();
-    }
-  },
-  
-  execute: function(folderUri, isCopy) {
-    let actionCount = 0;
-    // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
-    let fld = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);
-    let messageIdList = QuickFolders.Util.moveMessages(fld, QuickFolders.quickMoveUris, isCopy);
-    // should return an array of message ids...
-    if (messageIdList) { 
-      // ...which we should match before deleting our URIs?
-      this.resetList();
-      if (QuickFolders.FilterWorker.FilterMode) {
-        QuickFolders.FilterWorker.createFilterAsync(null, fld, messageIdList, isCopy, true);
-      }
-      actionCount = messageIdList.length;
-    }
-    this.update();
-    QuickFolders.Interface.hideFindPopup();
-    // show notification
-    if (actionCount) {
-      let msg = 
-        isCopy 
-        ?  QuickFolders.Util.getBundleString("quickfoldersQuickCopiedMails","Email copied to folder {2};{1} Emails copied to folder {2}")
-        :  QuickFolders.Util.getBundleString("quickfoldersQuickMovedMails","Email moved to folder {2};{1} Emails moved to folder {2}");
-      let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
-      QuickFolders.Util.popupAlert("QuickFolders",notify);
-    }
-  },
-  
-  resetList: function() {
-    while (QuickFolders.quickMoveUris.length)
-      QuickFolders.quickMoveUris.pop();
-    let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
-      if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
-        menu.removeChild(item);
-    }
-    this.update();
-  },
-  
-  cancel: function() {
-    this.resetList();
-  },
-  
-  showSearch: function() {
-    QuickFolders.Interface.findFolder(true, 'quickMove');
-    QuickFolders.Interface.updateFindBoxMenus(true);
-  },
-  
-  hideSearch: function() {
-    QuickFolders.Interface.findFolder(false);
-    QuickFolders.Interface.updateFindBoxMenus(false);
-  },
-  
-  toggleSuspendMove: function(menuitem) {
-    this.suspended = !this.suspended;
-    menuitem.checked = this.suspended;
-    if (this.suspended) { // show the box
-      QuickFolders.Interface.findFolder(true, 'findFolder');
-    }
-  },
-  
-  add: function(newUri)  {
-    if (QuickFolders.quickMoveUris.indexOf(newUri) == -1) { // avoid duplicates!
-      QuickFolders.quickMoveUris.push(newUri);
-      // now add to menu!
-      let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-      if (QuickFolders.quickMoveUris.length==1)
-        menu.appendChild(document.createElement('menuseparator'));
-      let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
-      if (hdr) {
-        try {
-          let label;
-          let fromName = hdr.mime2DecodedAuthor;
-          let date;
-          let subject = hdr.mime2DecodedSubject.substring(0, 35);
-          if (hdr.mime2DecodedSubject.length>35)
-            subject += ("\u2026".toString()); // ellipsis
-          let matches = fromName.match(/([^<]+)\s<(.*)>/);
-          if (matches && matches.length>=2)
-            fromName = matches[1];
-          try {
-            date =(new Date(hdr.date/1000)).toLocaleString();
-          } catch(ex) {date = '';}
-          label = fromName + ': ' + (subject ? (subject + ' - ') : '') + date;
-          let menuitem = document.createElement("menuitem");
-          menuitem.setAttribute("label", label);
-          menuitem.className='msgUri menuitem-iconic';
-          QuickFolders.Interface.setEventAttribute(menuitem, "oncommand","QuickFolders.Util.openMessageTabFromUri('" + newUri + "');");
-          menu.appendChild(menuitem);
-        }
-        catch(ex) {
-          QuickFolders.Util.logException('quickMove.add', ex);
-        }
-      }
-      if (QuickFolders.quickMove.hasMails) {
-        QuickFolders.Interface.isMoveActive = true;
-        QuickFolders.Interface.toggleMoveMode(true);
-      }
-    }
-  },
-  
-  remove: function(URI)  {
-    let i = QuickFolders.quickMoveUris.indexOf(URI);
-    if (i >= 0) {
-      QuickFolders.quickMoveUris.splice(i, 1);
-    }
-    if (!QuickFolders.quickMove.hasMails) {
-      qfInterface.isMoveActive = false;
-      qfInterface.toggleMoveMode(false);
-    }
-  },
-  
-  update: function() {
-    let isActive = QuickFolders.quickMove.hasMails; // ? true : false;
-    let qfInterface = QuickFolders.Interface;
-    qfInterface.isMoveActive = isActive; 
-    QuickFolders.Util.logDebug('QuickFolders.quickMove.update()\n' + 'isActive = ' + isActive);
-    // indicate number of messages on the button?
-    qfInterface.QuickMoveButton.label = 
-      isActive ?
-      '(' + QuickFolders.quickMoveUris.length +')' : '';
-    // toggle quickMove searchbox visible
-    QuickFolders.Util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
-    qfInterface.updateFindBoxMenus(isActive);
-    qfInterface.toggleMoveMode(isActive);
-    qfInterface.findFolder(isActive, isActive ? 'quickMove' : null);
-  }
-};

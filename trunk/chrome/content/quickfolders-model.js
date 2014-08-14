@@ -16,6 +16,11 @@ QuickFolders.Model = {
   paletteUpgraded: false,
 
   addFolder: function(uri, categoryName) {
+    function unpackURI(URL) {
+      if (!URL) return URL;
+      // remove url(...) from Icon file name for storing in model.entry.icon
+      return URL.substr(4, URL.length-5);
+    }
     QuickFolders.Util.logDebug("model.addFolder");
     var entry=this.getFolderEntry(uri);
     if (entry) {
@@ -34,14 +39,20 @@ QuickFolders.Model = {
       }
 
     }
+    // Create entirely new QF Tab
     if(!entry) {
       let folder = this.getMsgFolderFromUri(uri, false);
+      let iconURI = null;
+      if (gFolderTreeView.supportsIcons) {
+        iconURI = unpackURI(folder.getStringProperty("iconURL"));
+      }
 
       this.selectedFolders.push({
         uri: uri,
         name: (folder==null) ? '' : folder.prettyName,
         category: categoryName,
-        tabColor: 0
+        tabColor: 0,
+        icon: iconURI
       });
 
       this.update();

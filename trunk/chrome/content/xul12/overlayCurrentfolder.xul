@@ -95,13 +95,13 @@
 									 class="icon"
 									 tooltiptext="&qf.foldercontextmenu.quickfolders.customizeIcon;"
 									 oncommand="QuickFolders.Interface.onSelectIcon(this,event);"
-									 tag="qfIcon"/>
+									 tag="qfIconAdd"/>
 					<toolbarbutton id="QuickFolders-RemoveIcon"
 									 class="icon"
 									 tooltiptext="&qf.foldercontextmenu.quickfolders.removeIcon;"
 									 collapsed = "true"
 									 oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"
-									 tag="qfIcon"/>
+									 tag="qfIconRemove"/>
 				</hbox>
 				<toolbarseparator />
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"

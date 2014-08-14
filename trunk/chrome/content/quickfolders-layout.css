@@ -514,7 +514,10 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover
 	border-radius: 5px;
 }
 
-
+#QuickFolders-Tools-Pane toolbarbutton {
+  /* eliminate padding in Linux as it leads to squashed icons*/
+  -moz-appearance: none;
+}
 
 /* the hardcoded to white texts need dark shadows */
 .quickfolders-flat #QuickFoldersCurrentFolder,
@@ -525,10 +528,10 @@ menupopup.QuickFolders-folder-popup menuitem.color:hover
 /** MAIL COMMANDS + CONTEXT MENU ITEMS **/
 menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] { list-style-image : url('chrome://quickfolders/skin/ico/rename.gif') !important;}
 menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-image : url('chrome://quickfolders/skin/ico/compact.png') !important;}
-menuitem.cmd[tag="qfIcon"], menuitem.mailCmd[tag="qfIcon"] { 
+menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] { 
   list-style-image : url('chrome://quickfolders/skin/ico/fugue-picture.png') !important; 
 }
-menuitem.cmd[tag="qfIcon"]  *, menuitem.mailCmd[tag="qfIcon"] * { 
+menuitem.cmd[tag="qfIconAdd"]  *, menuitem.mailCmd[tag="qfIconAdd"] * { 
   -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
 }
 menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] { 

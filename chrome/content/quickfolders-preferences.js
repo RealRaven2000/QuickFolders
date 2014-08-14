@@ -440,5 +440,15 @@ QuickFolders.Preferences = {
 
 	setCurrentThemeId: function(t) {
 		return this.setCharPrefQF("style.theme",t);
-	}
+	},
+  
+  get supportsCustomIcon() {
+    switch(QuickFolders.Util.Application) {
+      case "Thunderbird":
+        return true;
+      default:
+        return false; // SeaMonkey and Postbox - custom icons not supported!
+    }
+  }
+  
 }

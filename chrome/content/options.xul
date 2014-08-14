@@ -316,6 +316,7 @@
 			<preference id="QuickFolders-Preferences-FolderMenu-emptyJunk" name="extensions.quickfolders.folderMenu.emptyJunk" type="bool"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-emptyTrash" name="extensions.quickfolders.folderMenu.emptyTrash" type="bool"/>
 			<preference id="QuickFolders-Preferences-FolderMenu-newFolder" name="extensions.quickfolders.folderMenu.dragToNew" type="bool"/>
+			<preference id="QuickFolders-Preferences-CommandMenu-Icons" name="extensions.quickfolders.commandMenu.icon" type="bool"/>
 			<preference id="QuickFolders-Preferences-CommandMenu-Separator" name="extensions.quickfolders.commandMenu.separator" type="bool"/>
 			<preference id="QuickFolders-Preferences-CommandMenu-LineBreak" name="extensions.quickfolders.commandMenu.lineBreak" type="bool"/>
 			<preference id="QuickFolders-Preferences-CommandMenu-Support" name="extensions.quickfolders.commandMenu.support" type="bool"/>
@@ -434,13 +435,18 @@
 			<caption label="&qf.label.menus.quickFolder;"/>
 			<checkbox
 			    id = "qfInsertSeparator" 
-				label = "Insert Separator"
+				label = "&qf.label.menus.separator;"
 				preference = "QuickFolders-Preferences-CommandMenu-Separator"
 				/>
 			<checkbox
 				id = "qfInsertLineBreak"
-				label = "Insert Line Break"
+				label = "&qf.label.menus.lineBreak;"
 				preference = "QuickFolders-Preferences-CommandMenu-LineBreak"
+				/>
+			<checkbox
+				id = "qfCustomizeIcon"
+				label = "&qf.label.menus.customIcon;"
+				preference = "QuickFolders-Preferences-CommandMenu-Icons"
 				/>
 			<checkbox
 				id = "qfMenuHelp"

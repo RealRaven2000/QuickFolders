@@ -241,7 +241,7 @@ END LICENSE BLOCK */
     ## removed retired Thunderbird overlays (appversion<12)
     ## Fixed: Recent folder menu shows encoded path decreasing readability
     ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
-    ## Fixed [Bug 25824] In Ubuntu QuickFolders Toolbar can't be styled
+    ## Fixed [Bug 25824] In Ubuntu, QuickFolders Toolbar color cannot be set
     ## Feature Request [Bug 25513] Mark message as read when moving: toggle extensions.quickfolders.markAsReadOnMove to true for this behavior
     
 	4.0   Future version
@@ -355,6 +355,7 @@ var QuickFolders = {
 	},
 	// keyListen: EventListener,
 	loadListen: false,
+  folderPaneListen: false,
 	_tabContainer: null,
 	get tabContainer() {
 		if (!this._tabContainer) {
@@ -533,7 +534,8 @@ var QuickFolders = {
 			if (QuickFolders.Interface.FilterToggleButton)
 				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
-		
+    
+    QuickFolders.addFolderPaneListener();
 	} ,
 
 	sayHello: function() {
@@ -1350,6 +1352,16 @@ var QuickFolders = {
 		}
 		this.loadListen=true;
 	},
+  
+  addFolderPaneListener: function() {
+    if (!this.folderPaneListen) {
+      let menu = document.getElementById('folderPaneContext');
+      if (menu) {
+        menu.addEventListener("popupshowing", QuickFolders.Interface.folderPanePopup, false);
+      }
+    }
+    this.folderPaneListen= true;
+  },
 
 	addTabEventListener: function() {
 		try {

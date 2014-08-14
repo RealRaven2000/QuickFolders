@@ -259,6 +259,8 @@ QuickFolders.Options = {
 			wd.getElementById("dragovertabs-label").style.setProperty('color', col, 'important');
 			wd.getElementById("dragovertabs-label").style.backgroundColor = bcol;
 			wd.getElementById("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
+      wd.getElementById("qfCustomizeIcon").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
+      wd.getElementById("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
 
 			this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
 

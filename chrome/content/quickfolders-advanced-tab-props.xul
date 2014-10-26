@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-tab-advanced.css" title="QuickFolderAdvancedStyles" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/advanced.dtd"  >
+<dialog 
+	id="qf-tabproperties"
+	buttons="extra1, extra2, accept"
+	buttonlabelextra2="&btnReset;"
+	buttonlabelextra1="&btnApply;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	ondialogaccept="QuickFolders.AdvancedTab.accept();"
+	onload="QuickFolders.AdvancedTab.load();"
+	ondialogextra2="QuickFolders.AdvancedTab.defaults();"
+	ondialogextra1="QuickFolders.AdvancedTab.apply();"
+	onresize="QuickFolders.AdvancedTab.resize();"
+>
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+
+	<vbox>
+		<dialogheader 
+			title="&windowTitle;" 
+			description="[Tab Name]"
+			id="myHeader"
+			/>
+
+		<hbox>
+		  <button label="&btnCategory;:"
+		          class="miniBtn"
+		          oncommand="QuickFolders.AdvancedTab.configureCategory();"
+				  tooltiptext="&btnCategory.tooltip;"
+		  />
+		  <label id="lblCategories"></label>
+		  <spacer />
+		</hbox>
+	
+		<checkbox
+		    id="chkIgnoreUnread"
+			label="&chkIgnoreUnread;"
+			tooltiptext="&chkIgnoreUnread.tooltip;"
+		/>
+		<checkbox
+		    id="chkIgnoreCounts"
+			label="&chkIgnoreCounts;"
+			tooltiptext="&chkIgnoreCounts.tooltip;"
+		/>	
+		<groupbox>
+		  <caption label="&grpCustomCSS;"/>
+		  <hbox>
+			  
+			  <checkbox id="chkCustomCSS"/>	
+			  
+			  <grid>
+				<columns>
+					<column/>
+					<column flex="3"/>
+				</columns>	
+				<rows>
+					<row>
+						<button label="&cssBackground;"
+						       oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
+							   class="textLink"/>	
+						<textbox id="txtBackground" 
+						         tooltiptext="&cssBackground.tooltip;"/>
+					</row>
+					<row>
+						<button label="&cssColor;"
+						       oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
+						       class="textLink"/>
+						<textbox id="txtColor" 
+						         tooltiptext="&cssColor.tooltip;" />
+					</row>
+				</rows>
+			  </grid>
+		    </hbox>
+		</groupbox>
+		
+	</vbox>
+
+</dialog>

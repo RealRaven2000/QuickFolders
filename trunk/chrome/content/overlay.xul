@@ -63,15 +63,6 @@
 								   tooltiptext="&qf.tooltip.mainOptions;"
 								   context="QuickFolders-ToolbarPopup"
 								   onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
-					<toolbarbutton id="QuickFolders-quickMove"
-								 tooltiptext="&qf.tooltip.quickMove;"
-								 label=""
-								 onclick="QuickFolders.Interface.quickMoveButtonClick(this);"
-								 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
-					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
-								 context="QuickFolders-quickMoveMenu"
-							     />
 					<toolbarbutton id="QuickFolders-filterActive"
 								   tooltiptext="&qf.tooltip.filters;"
 								   oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
@@ -82,6 +73,15 @@
 								   context="QuickFolders-PalettePopup" 
 								   oncommand="QuickFolders.Interface.showPalette(this);"
 								   collapsed="true"/>
+					<toolbarbutton id="QuickFolders-quickMove"
+								 tooltiptext="&qf.tooltip.quickMove;"
+								 label=""
+								 onclick="QuickFolders.Interface.quickMoveButtonClick(this);"
+								 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+								 context="QuickFolders-quickMoveMenu"
+							     />
 					<!-- removed searchbutton=true so pressing [Enter] is not necessary-->
 					<textbox id="QuickFolders-FindFolder" 
 							 oncommand="QuickFolders.Interface.findFolderName(this);"

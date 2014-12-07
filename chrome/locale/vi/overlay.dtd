@@ -21,6 +21,8 @@
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabsAccess "T">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "Hiển thị các công cụ cho thư mục hiện tại">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbarAccessKey "D">
+<!ENTITY qf.foldercontextmenu.quickfolders.customizeIcon "Customize Icon…">
+<!ENTITY qf.foldercontextmenu.quickfolders.removeIcon "Remove Customized Icon">
 <!ENTITY qf.tooltip.RecentFolders "Các thư mục gần đây nhất">
 <!ENTITY qf.tooltip.folderUp "Chuyển tới thư mục mẹ">
 <!ENTITY qf.tooltip.goNextFolder "Move to the next unread message">
@@ -33,5 +35,11 @@
 <!ENTITY qf.tooltip.mainOptions "Các tùy chọn và lệnh nâng cao của QuickFolders">
 <!ENTITY qf.tooltip.filters "Dừng việc tạo các bộ lọc.">
 <!ENTITY qf.tooltip.filterStart "Hướng dẫn kích hoạt bộ lọc. Kéo các thư điện tử vào QuickFolder để tạo các Bộ Lọc mới.">
+<!ENTITY qf.tooltip.quickMove "quickMove: drag an email here then enter folder name">
+<!ENTITY quickfolders.quickMove.menu.cancel "Cancel quickMove">
+<!ENTITY quickfolders.quickMove.menu.showSearch "Show Folder Name box">
+<!ENTITY quickfolders.quickMove.menu.hideSearch "Hide Folder Name box">
+<!ENTITY quickfolders.quickMove.menu.suspend "Jump to folder (don't move mails)">
+<!ENTITY quickfolders.findFolder.placeHolder "folder name">
 <!ENTITY qf.tooltip.mailFolderCommands "Các lệnh thư mục chứa Thư">
 <!ENTITY qf.tooltip.paintCanActive "Chế độ vẽ: nhấp chuột để mở bảng màu, nhấp chuột vào các thẻ để tô màu cho chúng, nhấp chuột phải vào các thẻ để lấy màu của chúng">

@@ -21,6 +21,8 @@
 <!ENTITY qf.menuitem.quickfolders.deleteDeadTabsAccess "T">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbar "显示文件夹工具栏(D)">
 <!ENTITY qf.menuitem.quickfolders.displayPreviewToolbarAccessKey "D">
+<!ENTITY qf.foldercontextmenu.quickfolders.customizeIcon "Customize Icon…">
+<!ENTITY qf.foldercontextmenu.quickfolders.removeIcon "Remove Customized Icon">
 <!ENTITY qf.tooltip.RecentFolders "最近的文件夹">
 <!ENTITY qf.tooltip.folderUp "转至上一级">
 <!ENTITY qf.tooltip.goNextFolder "下一条未读消息">
@@ -33,5 +35,11 @@
 <!ENTITY qf.tooltip.mainOptions "QuickFolders options and advanced commands">
 <!ENTITY qf.tooltip.filters "Stop creating filters.">
 <!ENTITY qf.tooltip.filterStart "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters.">
+<!ENTITY qf.tooltip.quickMove "quickMove: drag an email here then enter folder name">
+<!ENTITY quickfolders.quickMove.menu.cancel "Cancel quickMove">
+<!ENTITY quickfolders.quickMove.menu.showSearch "Show Folder Name box">
+<!ENTITY quickfolders.quickMove.menu.hideSearch "Hide Folder Name box">
+<!ENTITY quickfolders.quickMove.menu.suspend "Jump to folder (don't move mails)">
+<!ENTITY quickfolders.findFolder.placeHolder "folder name">
 <!ENTITY qf.tooltip.mailFolderCommands "Mail Folder Commands">
 <!ENTITY qf.tooltip.paintCanActive "Paint mode: click for palette, click tabs to color them, right-click tabs to get their color">

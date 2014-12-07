@@ -1,0 +1,15 @@
+<!ENTITY windowTitle "進階屬性">
+<!ENTITY btnCategory "分類">
+<!ENTITY btnCategory.tooltip "定義分頁分類">
+<!ENTITY chkIgnoreUnread "隱藏未讀狀態">
+<!ENTITY chkIgnoreUnread.tooltip "即使資料夾包含未讀郵件，永不顯示粗體或任何未讀數量。">
+<!ENTITY chkIgnoreCounts "隱藏郵件數量">
+<!ENTITY chkIgnoreCounts.tooltip "永不顯示包含的郵件數量">
+<!ENTITY grpCustomCSS "自訂CSS">
+<!ENTITY cssBackground "背景">
+<!ENTITY cssBackground.tooltip "輸入一個CSS背景，例如線性梯度（到底部，rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;）">
+<!ENTITY cssColor "文字顏色">
+<!ENTITY cssColor.tooltip "輸入一個CSS色彩，例如rgba(100,20,20,0.8)">
+<!ENTITY btnReset "回復到預設值">
+<!ENTITY btnApply "套用">
+<!ENTITY lblCustomPalette "自訂調色盤：">

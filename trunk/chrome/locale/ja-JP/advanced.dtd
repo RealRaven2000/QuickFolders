@@ -1,0 +1,15 @@
+<!ENTITY windowTitle "詳細プロパティ">
+<!ENTITY btnCategory "カテゴリ">
+<!ENTITY btnCategory.tooltip "タブのカテゴリを定義します">
+<!ENTITY chkIgnoreUnread "未読状態を隠す">
+<!ENTITY chkIgnoreUnread.tooltip "フォルダに未読のメールが含まれていても、太字または未読のカウントを表示しないようにします">
+<!ENTITY chkIgnoreCounts "メール数のカウンタを隠す">
+<!ENTITY chkIgnoreCounts.tooltip "フォルダに含まれるメールの数を表示しないようにします">
+<!ENTITY grpCustomCSS "カスタム CSS">
+<!ENTITY cssBackground "背景">
+<!ENTITY cssBackground.tooltip "背景を CSS で指定します。 linear-gradient(下方向へグラデーション rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">
+<!ENTITY cssColor "テキスト色">
+<!ENTITY cssColor.tooltip "色を CSS で指定します。rgba(100,20,20,0.8)">
+<!ENTITY btnReset "既定値にリセット">
+<!ENTITY btnApply "適用">
+<!ENTITY lblCustomPalette "カスタムパレット:">

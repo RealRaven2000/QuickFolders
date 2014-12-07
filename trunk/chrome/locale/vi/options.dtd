@@ -15,8 +15,10 @@
 <!ENTITY qf.checkbox.showUnreadBold "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm">
 <!ENTITY qf.checkbox.showTotalMessageCount "Hiển thị tổng số tin nhắn trên nút thư mục">
 <!ENTITY qf.checkbox.showCountInSubFolders "Hiển thị toàn bộ các thư mục con">
+<!ENTITY qf.button.configureTooltips "Configure tooltips…">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Chúng được hiển thị ngăn cách bởi dấu '+' bên cạnh số đếm chính; thư chưa đọc bên trong sẽ làm cho thẻ được in đậm lên nếu tùy chọn trên được kích hoạt.">
 <!ENTITY qf.checkbox.showMessageNavigation "Nút Điều Hướng Tin Nhắn">
+<!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng">
 <!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
 <!ENTITY qf.checkbox.enableTransitions "Cho phép chuyển tiếp CSS">
@@ -33,6 +35,9 @@
 <!ENTITY qf.label.menus "Thiết lập trình đơn">
 <!ENTITY qf.label.menus.mailFolder "Các Lệnh về Thư">
 <!ENTITY qf.label.menus.quickFolder "Các lệnh QuickFolders">
+<!ENTITY qf.label.menus.customIcon "Customize Icon">
+<!ENTITY qf.label.menus.lineBreak "Insert Line Break">
+<!ENTITY qf.label.menus.separator "Insert Separator">
 <!ENTITY qf.label.menus.help "Hướng dẫn">
 <!ENTITY qf.label.menus.support "Trợ giúp">
 <!ENTITY qf.label.menus.options "Tùy chọn">
@@ -90,6 +95,8 @@
 <!ENTITY qf.checkbox.showRecentTab "Hiển thị thẻ các thư mục gần đây nhất">
 <!ENTITY qf.checkbox.showRecentButton "Nút thư mục hiện tại">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Nhấp chuột phải để chỉnh cấu hình">
+<!ENTITY qf.checkbox.showQuickMove "quickMove Button">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box.">
 <!ENTITY qf.checkbox.showFilterButton "Nút 'Tạo Bộ Lọc'">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders.">
 <!ENTITY qf.checkbox.autoHideToolbar "Ẩn QuickFolders khi không dùng">
@@ -133,4 +140,5 @@
 <!ENTITY qf.palette.twoColors "2 Colors">
 <!ENTITY qf.palette.standard "Standard Palette">
 <!ENTITY qf.palette.pastel "Pastel Colors">
+<!ENTITY qf.palette.night "Night Vision">
 <!ENTITY qf.palette.inactive "Like inactive Tabs">

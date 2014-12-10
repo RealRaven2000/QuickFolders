@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Avancées">
 <!ENTITY qf.tab.layout "Personnaliser mes onglets !">
 <!ENTITY qf.tab.quickhelp "Aide rapide">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Afficher le libellé « QuickFolders » dans la barre d'outils">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Utiliser les raccourcis clavier (Alt + 1 jusqu'à Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utiliser la touche Ctrl à la place de la touche Alt">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Couleurs pastelles">
 <!ENTITY qf.palette.night "Vision nocturne">
 <!ENTITY qf.palette.inactive "Comme les onglets inactifs">
+<!ENTITY qf.label.licenseValid "Votre licence est valide jusqu'au :">
+<!ENTITY qf.button.validateLicense "valider">
+<!ENTITY qf.button.pasteLicense "coller">
+<!ENTITY qf.label.insertLicense "Insérez votre clé de licence personnelle ici :">
+<!ENTITY qf.label.insertLicense.tooltip "Votre clé de licence se trouve dans votre courriel de confirmation de commande émanant de FastSpring.">
+<!ENTITY qf.licenseValidation.passed "Merci pour votre abonnement à QuickFolders Pro ! Toutes les fonctionnalités premium sont à présent disponibles.">
+<!ENTITY qf.licenseValidation.failed "La clé de licence que vous avez saisie n'est pas valide. Vérifiez votre courriel de FastSpring pour des instructions complémentaires. Si vous rencontrez encore des problèmes, veuillez me contacter à partir de l'onglet d'aide.">
+<!ENTITY qf.licenseValidation.expired "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence.">

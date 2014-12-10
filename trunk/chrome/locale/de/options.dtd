@@ -145,6 +145,9 @@
 <!ENTITY qf.palette.inactive "Wie normale Tabs">
 <!ENTITY qf.label.licenseValid "Ihre Lizenz ist gültig bis:">
 <!ENTITY qf.button.validateLicense "bestätigen">
-<!ENTITY qf.label.insertLicense "Lizenzschlüssel hier einfügen:">
+<!ENTITY qf.button.pasteLicense "einfügen">
+<!ENTITY qf.label.insertLicense "Lizenzschlüssel hier eintragen:">
 <!ENTITY qf.label.insertLicense.tooltip "Der Lizenzschlüssel wird Ihnen von Fastspring zugeschickt.">
-
+<!ENTITY qf.licenseValidation.passed "Vielen Dank für's Registrieren von Quickfolders Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY qf.licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
+<!ENTITY qf.licenseValidation.expired "Der eingegebene  Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">

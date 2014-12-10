@@ -145,5 +145,9 @@
 <!ENTITY qf.palette.inactive "Like inactive Tabs">
 <!ENTITY qf.label.licenseValid "Your license is valid until:">
 <!ENTITY qf.button.validateLicense "validate">
-<!ENTITY qf.label.insertLicense "Paste your personal License key below:">
+<!ENTITY qf.button.pasteLicense "paste">
+<!ENTITY qf.label.insertLicense "Insert your personal License key here:">
 <!ENTITY qf.label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
+<!ENTITY qf.licenseValidation.passed "Thanks for registering QuickFolders Pro! All premium features are now unlocked.">
+<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
+<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">

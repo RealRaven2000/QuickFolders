@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Avanzate">
 <!ENTITY qf.tab.layout "Luccichio schede!">
 <!ENTITY qf.tab.quickhelp "Guida rapida">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Visualizza l'etichetta 'QuickFolders' sulla sua barra degli strumenti">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usa le scorciatoie da tastiera (combinazione tasti ALT+1 … ALT+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usa CTRL invece di ALT">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Colori pastello">
 <!ENTITY qf.palette.night "Visione notturna">
 <!ENTITY qf.palette.inactive "Come le schede inattive">
+<!ENTITY qf.label.licenseValid "La licenza è valida fino a:">
+<!ENTITY qf.button.validateLicense "Convalida">
+<!ENTITY qf.button.pasteLicense "Incolla">
+<!ENTITY qf.label.insertLicense "Inserire la propria chiave di licenza qui:">
+<!ENTITY qf.label.insertLicense.tooltip "La chiave di licenza è contenuta nella email di conferma dell'ordine proveniente da Fastspring.">
+<!ENTITY qf.licenseValidation.passed "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche della versione Premium sono ora disponibili.">
+<!ENTITY qf.licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare la email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY qf.licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">

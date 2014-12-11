@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Zaawansowane">
 <!ENTITY qf.tab.layout "Upiększ moje zakładki">
 <!ENTITY qf.tab.quickhelp "Szybka pomoc">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Wyświetlaj nazwę 'QuickFolders' w tytule zakładki">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Używaj skrótów klawiaturowych (Alt + 1 do Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Używaj Ctrl zamiast Alt">
@@ -35,9 +36,9 @@
 <!ENTITY qf.label.menus "Menu konfiguracji">
 <!ENTITY qf.label.menus.mailFolder "Komendy wiadomości">
 <!ENTITY qf.label.menus.quickFolder "Polecenia QuickFolders">
-<!ENTITY qf.label.menus.customIcon "Customize Icon">
-<!ENTITY qf.label.menus.lineBreak "Insert Line Break">
-<!ENTITY qf.label.menus.separator "Insert Separator">
+<!ENTITY qf.label.menus.customIcon "Dostosowanie ikony">
+<!ENTITY qf.label.menus.lineBreak "Wstaw linię oddzielenia">
+<!ENTITY qf.label.menus.separator "Wstaw separator">
 <!ENTITY qf.label.menus.help "Pomoc QuickFolders">
 <!ENTITY qf.label.menus.support "Wsparcie QuickFolders">
 <!ENTITY qf.label.menus.options "Opcje">
@@ -105,7 +106,7 @@
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "To menu może być również wywołane poprzez kliknięcie prawym klawiszem na zakładce">
 <!ENTITY qf.menu.tabColor "Brak koloru!">
 <!ENTITY qf.menu.Color "Kolor">
-<!ENTITY qf.options.LayoutColorAppearance "Individual Tab Color Appearance">
+<!ENTITY qf.options.LayoutColorAppearance "Indywidualny kolor zakładki">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(paskii)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(wypełniony)">
 <!ENTITY qf.options.label.themeAuthor "Autor motywu:">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Kolory Pastelowe">
 <!ENTITY qf.palette.night "Night Vision">
 <!ENTITY qf.palette.inactive "Jak zakładki nieaktywne">
+<!ENTITY qf.label.licenseValid "Twoja licencja jest ważna do:">
+<!ENTITY qf.button.validateLicense "zatwierdź">
+<!ENTITY qf.button.pasteLicense "wstaw">
+<!ENTITY qf.label.insertLicense "Wstaw tutaj Twój osobisty klucz licencji:">
+<!ENTITY qf.label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring z potwierdzeniem zamówienia.">
+<!ENTITY qf.licenseValidation.passed "Dziękuję za rejestrację QuickFolders Pro! Wszystkie funkcje premium są teraz odblokowane.">
+<!ENTITY qf.licenseValidation.failed "Wprowadzony przez Ciebie klucz licencyjny nie jest prawidłowy. Sprawdź wiadomość od FastSpring z instrukcją. Jeżeli problem występuje nadal, proszę o kontakt ze mną poprzez zakładkę &quot;Pomoc techniczna&quot; w opcjach.">
+<!ENTITY qf.licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Proszę kliknąć na poniższy przycisk aby odnowić licencję.">

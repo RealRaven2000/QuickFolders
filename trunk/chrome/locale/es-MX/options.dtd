@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Avanzado">
 <!ENTITY qf.tab.layout "¡Modifica mis Pestañas!">
 <!ENTITY qf.tab.quickhelp "Ayuda rápida">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Muestra la etiqueta 'QuickFolders' en la barra">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Usar atajos de teclado (Alt + 1 al  Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl en lugar de  Alt">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Colores pastel">
 <!ENTITY qf.palette.night "Visión nocturna">
 <!ENTITY qf.palette.inactive "Como las pestañas inactivas">
+<!ENTITY qf.label.licenseValid "Su licencia es válida hasta:">
+<!ENTITY qf.button.validateLicense "validar">
+<!ENTITY qf.button.pasteLicense "pegar">
+<!ENTITY qf.label.insertLicense "Ingrese su licencia personal aquí:">
+<!ENTITY qf.label.insertLicense.tooltip "La clave de la licencia se encuentra en su correo electrónico de confirmación enviado por Fastspring.">
+<!ENTITY qf.licenseValidation.passed "¡Gracias por registrat QuickFolders Pro! Todas las características Premium están habilitadas ahora.">
+<!ENTITY qf.licenseValidation.failed "La clave de licencia que ingresó no es válida. Verifique su correo recibido de Fastspring para instrucciones. Si continúa con problemas, por favor contácteme usando la pestaña de soporte.">
+<!ENTITY qf.licenseValidation.expired "La clave de licencia que ingresó ya expiro. Por favor presione el botón de abajo para renovarla.">

@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Дополнительные">
 <!ENTITY qf.tab.layout "Разнообразить закладки!">
 <!ENTITY qf.tab.quickhelp "Справка">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Пастельные цвета">
 <!ENTITY qf.palette.night "Ночное Видение">
 <!ENTITY qf.palette.inactive "Как неактивная закладка">
+<!ENTITY qf.label.licenseValid "Лицензионный ключ действителен до:">
+<!ENTITY qf.button.validateLicense "проверить">
+<!ENTITY qf.button.pasteLicense "вставить">
+<!ENTITY qf.label.insertLicense "Вставить лицензионный ключ сюда:">
+<!ENTITY qf.label.insertLicense.tooltip "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ.">
+<!ENTITY qf.licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
+<!ENTITY qf.licenseValidation.failed "Лицензионный ключ недействителен. Еще раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
+<!ENTITY qf.licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">

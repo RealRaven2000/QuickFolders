@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "進階">
 <!ENTITY qf.tab.layout "外觀">
 <!ENTITY qf.tab.quickhelp "說明">
+<!ENTITY qf.tab.gopro "QuickFolders 專業版">
 <!ENTITY qf.checkbox.displaylabel "在工具列顯示「Quick Folders」的標籤">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "使用鍵盤快捷鍵（Alt+1到Alt+9）">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "使用Ctrl鍵取代Alt鍵">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "粉蠟筆色系">
 <!ENTITY qf.palette.night "夜視模式">
 <!ENTITY qf.palette.inactive "像非作用中分頁">
+<!ENTITY qf.label.licenseValid "您的購買證明在此日期之前有效：">
+<!ENTITY qf.button.validateLicense "確認購買證明">
+<!ENTITY qf.button.pasteLicense "貼上">
+<!ENTITY qf.label.insertLicense "在這裡輸入您個人的購買證明金鑰：">
+<!ENTITY qf.label.insertLicense.tooltip "您的購買證明金鑰是在Fastspring發出的確認購買E-mail內容中。">
+<!ENTITY qf.licenseValidation.passed "感謝購買QuickFolders專業版！所有的進階功能現在都將開啟。">
+<!ENTITY qf.licenseValidation.failed "您輸入無效的購買證明金鑰。請確認您從FastSpring收到的E-mail內容。如果您還有問題，請從支援分頁中跟我聯繫。">
+<!ENTITY qf.licenseValidation.expired "您輸入的購買證明金鑰過期了。請按下面的按鈕來更新您的購買證明。">

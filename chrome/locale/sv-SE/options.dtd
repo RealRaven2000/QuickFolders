@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Avancerat">
 <!ENTITY qf.tab.layout "Utseende">
 <!ENTITY qf.tab.quickhelp "Snabbhjälp">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "Visa &quot;QuickFolders&quot;-etiketten i verktygsfältet">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Använd kortkommandon (Alt+1 till Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Använd Ctrl istället för Alt">
@@ -88,8 +89,8 @@
 <!ENTITY qf.description.donate "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders.">
 <!ENTITY qf.label.donateLink "Gå till donationssidan…">
 <!ENTITY qf.label.donate "Donera">
-<!ENTITY qf.description.contactMe "Du kan också kontakta mig personligen på axelg@gofree.indigo.ie:">
-<!ENTITY qf.label.contactLink "Kontakta mig (på engelska eller tyska)…">
+<!ENTITY qf.description.contactMe "Du kan också kontakta oss via axelg@gofree.indigo.ie:">
+<!ENTITY qf.label.contactLink "Kontakta oss (på engelska eller tyska)…">
 <!ENTITY qf.checkbox.showIcons "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)">
 <!ENTITY qf.checkbox.showSubfolders "Visa undermappar i popup-menyer">
 <!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
@@ -142,3 +143,11 @@
 <!ENTITY qf.palette.pastel "Pastellfärger">
 <!ENTITY qf.palette.night "Mörkerkikare">
 <!ENTITY qf.palette.inactive "Som inaktiva flikar">
+<!ENTITY qf.label.licenseValid "Din licens är giltig t.o.m.:">
+<!ENTITY qf.button.validateLicense "verifiera">
+<!ENTITY qf.button.pasteLicense "klistra in">
+<!ENTITY qf.label.insertLicense "Infoga din personliga licensnyckel here:">
+<!ENTITY qf.label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
+<!ENTITY qf.licenseValidation.passed "Tack för att du registrerar QuickFolders Pro! Alla licensbelagda funktioner är nu tillgängliga.">
+<!ENTITY qf.licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
+<!ENTITY qf.licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">

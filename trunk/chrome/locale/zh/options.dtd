@@ -27,7 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "有新郵件時資料夾高亮度顯示">
 <!ENTITY qf.toolbarMinimumHeight "最小高度：">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "針對遇到[Bug 25021]的Mac系統使用者">
-<!ENTITY qf.label.buttonFontSize "標籤字體大小（空白表示使用預設的設定）：">
+<!ENTITY qf.label.buttonFontSizeNumeric "按鈕字型大小（0為預設值）：">
 <!ENTITY qf.label.pixels "像素">
 <!ENTITY qf.label.appearance "外觀">
 <!ENTITY qf.label.behavior "特性">
@@ -152,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "您輸入無效的購買證明金鑰。請確認您從FastSpring收到的E-mail內容。如果您還有問題，請從支援分頁中跟我聯繫。">
 <!ENTITY qf.licenseValidation.expired "您輸入的購買證明金鑰過期了。請按下面的按鈕來更新您的購買證明。">
 <!ENTITY qf.licenseValidation.invalidMail "這個跟購買證明[{1}]連結的E-mail信箱，並沒有列於任何您現在的信箱帳號中。請從支援分頁內容中跟我聯絡來尋求幫助。">
+<!ENTITY qf.licenseValidation.notMatchedMail "加密的E-mail位址無法符合辨識。">

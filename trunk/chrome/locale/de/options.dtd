@@ -27,7 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Verzeichnisse mit neuer Post hervorheben">
 <!ENTITY qf.toolbarMinimumHeight "Minimalhöhe:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Für Mac System die von [Bug 25021] betroffen sind">
-<!ENTITY qf.label.buttonFontSize "Schriftgrösse (leer für Standardeinstellung):">
+<!ENTITY qf.label.buttonFontSizeNumeric "Schriftgrösse (0 für Standardeinstellung):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.appearance "Aussehen">
 <!ENTITY qf.label.behavior "Verhalten bei Aktionen">
@@ -152,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY qf.licenseValidation.expired "Der eingegebene  Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY qf.licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Kontent vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">

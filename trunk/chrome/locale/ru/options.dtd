@@ -27,7 +27,6 @@
 <!ENTITY qf.checkbox.highlightNewMail "Подсвечивать папки с новыми сообщениями">
 <!ENTITY qf.toolbarMinimumHeight "Минимальная высота:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Для Mac систем страдающих от [Bug 25021]">
-<!ENTITY qf.label.buttonFontSize "Размер шрифта(ничего - стандартный):">
 <!ENTITY qf.label.pixels "пикселов">
 <!ENTITY qf.label.appearance "Внешний вид">
 <!ENTITY qf.label.behavior "Поведение">
@@ -151,3 +150,4 @@
 <!ENTITY qf.licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
 <!ENTITY qf.licenseValidation.failed "Лицензионный ключ недействителен. Еще раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
 <!ENTITY qf.licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
+<!ENTITY qf.licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">

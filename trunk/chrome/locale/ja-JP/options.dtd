@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "詳細">
 <!ENTITY qf.tab.layout "タブ表示">
 <!ENTITY qf.tab.quickhelp "簡易ヘルプ">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.checkbox.displaylabel "ツールバーに 'QuickFolders' ラベルを表示する">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "キーボードショートカットを使用する (Alt+1 から Alt+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "キーボードショートカットに Ctrl キーを使用する">
@@ -26,7 +27,6 @@
 <!ENTITY qf.checkbox.highlightNewMail "新着メールのあるフォルダを強調する">
 <!ENTITY qf.toolbarMinimumHeight "最小高さ:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "[Bug 25021] のバグに遭遇した Mac システムのユーザ向けです">
-<!ENTITY qf.label.buttonFontSize "ボタンのフォントサイズ (空白にするとデフォルト値):">
 <!ENTITY qf.label.pixels "ピクセル">
 <!ENTITY qf.label.appearance "外観">
 <!ENTITY qf.label.behavior "動作">
@@ -142,3 +142,12 @@
 <!ENTITY qf.palette.pastel "パステルカラー">
 <!ENTITY qf.palette.night "夜景">
 <!ENTITY qf.palette.inactive "アクティブでないタブの色">
+<!ENTITY qf.label.licenseValid "ライセンスの有効期限:">
+<!ENTITY qf.button.validateLicense "認証">
+<!ENTITY qf.button.pasteLicense "貼り付け">
+<!ENTITY qf.label.insertLicense "個人ライセンスキーをここに記入してください:">
+<!ENTITY qf.label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
+<!ENTITY qf.licenseValidation.passed "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
+<!ENTITY qf.licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
+<!ENTITY qf.licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
+<!ENTITY qf.licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">

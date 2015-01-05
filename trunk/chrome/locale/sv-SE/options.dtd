@@ -27,7 +27,6 @@
 <!ENTITY qf.checkbox.highlightNewMail "Färgmarkera mappar med nya meddelanden">
 <!ENTITY qf.toolbarMinimumHeight "Minimihöjd:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "För Mac-datorer som stöter på buggen [Bug 25021]">
-<!ENTITY qf.label.buttonFontSize "Teckenstorlek för knapp (lämna tomt för standardvärdet):">
 <!ENTITY qf.label.pixels "pixlar">
 <!ENTITY qf.label.appearance "Utseende">
 <!ENTITY qf.label.behavior "Beteende">
@@ -151,3 +150,4 @@
 <!ENTITY qf.licenseValidation.passed "Tack för att du registrerar QuickFolders Pro! Alla licensbelagda funktioner är nu tillgängliga.">
 <!ENTITY qf.licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY qf.licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
+<!ENTITY qf.licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">

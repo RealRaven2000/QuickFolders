@@ -27,7 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
 <!ENTITY qf.toolbarMinimumHeight "Minimum height:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
-<!ENTITY qf.label.buttonFontSize "Button font size (leave blank for default):">
+<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Appearance">
 <!ENTITY qf.label.behavior "Behavior">
@@ -152,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">

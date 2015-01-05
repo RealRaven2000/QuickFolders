@@ -27,7 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Mappen met nieuwe berichten accentueren">
 <!ENTITY qf.toolbarMinimumHeight "Minimale hoogte:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Voor Mac-systemen die te maken hebben met [Bug 25021]">
-<!ENTITY qf.label.buttonFontSize "Lettertypegrootte voor knoppen (leeg voor standaard):">
+<!ENTITY qf.label.buttonFontSizeNumeric "Lettertypegrootte voor knoppen (0 voor standaard):">
 <!ENTITY qf.label.pixels "pixels">
 <!ENTITY qf.label.appearance "Weergave">
 <!ENTITY qf.label.behavior "Gedrag">
@@ -151,3 +151,5 @@
 <!ENTITY qf.licenseValidation.passed "Bedankt voor uw registratie van QucikFolders Pro! Alle premium-functies kunnen nu worden gebruikt.">
 <!ENTITY qf.licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het ondersteuningstabblad.">
 <!ENTITY qf.licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Druk op onderstaande knop om uw licentie te vernieuwen.">
+<!ENTITY qf.licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Geëncrypteerd e-mail adres komt niet overeen met het leesbare e-mail adres.">

@@ -4,6 +4,7 @@
 <!ENTITY qf.tab.advanced "Напредно">
 <!ENTITY qf.tab.layout "Набуџи моје језичке!">
 <!ENTITY qf.tab.quickhelp "Брза помоћ">
+<!ENTITY qf.tab.gopro "QuickFolders про">
 <!ENTITY qf.checkbox.displaylabel "Прикажи натпис „QuickFolders” на траци са алаткама">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Користи пречице на тастатури (од алт+а до алт+9)">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Користи ктрл уместо алт">
@@ -26,7 +27,6 @@
 <!ENTITY qf.checkbox.highlightNewMail "Истакни фасцикле када стигне нова порука">
 <!ENTITY qf.toolbarMinimumHeight "Најмања висина:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "За кориснике Mac система који имају проблем са [Bug 25021]">
-<!ENTITY qf.label.buttonFontSize "Величина фонта на дугмету (оставите празно да би била коришћена подразумевана):">
 <!ENTITY qf.label.pixels "пиксела">
 <!ENTITY qf.label.appearance "Изглед">
 <!ENTITY qf.label.behavior "Понашање">
@@ -142,3 +142,12 @@
 <!ENTITY qf.palette.pastel "пастелне боје">
 <!ENTITY qf.palette.night "Ноћни визир">
 <!ENTITY qf.palette.inactive "као неактивни језичци">
+<!ENTITY qf.label.licenseValid "Ваша лиценца важи до:">
+<!ENTITY qf.button.validateLicense "потврди">
+<!ENTITY qf.button.pasteLicense "налепи">
+<!ENTITY qf.label.insertLicense "Унесите свој лични број лиценце овде:">
+<!ENTITY qf.label.insertLicense.tooltip "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а.">
+<!ENTITY qf.licenseValidation.passed "Хвала што сте регистровали QuickFolders про! Све могућности су сада откључане.">
+<!ENTITY qf.licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
+<!ENTITY qf.licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
+<!ENTITY qf.licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">

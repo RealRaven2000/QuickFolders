@@ -18,6 +18,35 @@ tab#QuickFolders-Support {
 	list-style-image : url('chrome://quickfolders/skin/ico/info16.png') !important;
 }
 
+menuitem.cmd[tagName="qfRegister"],
+tab#QuickFolders-Pro {
+	list-style-image : url('chrome://quickfolders/skin/ico/pro.png') !important;
+}
+
+menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon,
+#QuickFolders-Pro .tab-icon {
+  -moz-animation-delay: 0.3s;
+  -moz-animation-duration: 3s;
+  -moz-animation-name: qfIconRotateY;
+  -moz-animation-iteration-count: infinite;
+	height: 19px;
+	width: 30px;
+}
+
+menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
+	margin-left: -7px;
+	margin-right: -7px;
+}
+	
+@keyframes qfIconRotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
 
 menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
 	list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important;

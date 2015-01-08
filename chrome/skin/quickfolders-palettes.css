@@ -630,7 +630,7 @@
 }
 
 /** PILLS **/
-.quickfolders-pills toolbarbutton,
+.quickfolders-pills #QuickFolders-Folders-Pane toolbarbutton,
 .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;

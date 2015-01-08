@@ -80,6 +80,21 @@ toolbar#QuickFolders-CurrentFolderTools {
 	background-image: -moz-linear-gradient(center bottom, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
 }
 
+/* quickfilters button */
+#QuickFolders-Category-Box[mode="filter"] {
+	background-image: -moz-linear-gradient(top, rgba(251,28,3,1) 0%, rgba(161,26,11,1) 42%, rgba(138,18,4,1) 51%, rgba(199,24,5,1) 100%);
+}
+
+
+/* register license window */
+.product {
+  background: -moz-linear-gradient(top, rgb(254, 204, 177) 0%, rgb(241, 116, 50) 50%, rgb(234, 85, 7) 51%, rgb(251, 149, 94) 100%);
+}
+.heading {
+  background: -moz-linear-gradient(top, #F1E767 0%, #F1E767 37%, #FEB645 100%) repeat scroll 0% 0% transparent;
+}
+
+
 
 
 

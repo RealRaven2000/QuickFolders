@@ -12,7 +12,7 @@ QuickFolders.Preferences = {
 		catch(e) {return false;}
 	},
 
-	storeFolderEntries: function(folderEntries) {
+	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
 		var json = JSON.stringify(folderEntries)
 
@@ -28,7 +28,7 @@ QuickFolders.Preferences = {
 		}
 	} ,
 
-	loadFolderEntries: function() {
+	loadFolderEntries: function loadFolderEntries() {
 		if(!this.service.prefHasUserValue("QuickFolders.folders")) {
 			return [];
 		}
@@ -184,10 +184,10 @@ QuickFolders.Preferences = {
 	} ,
 
 	get ButtonFontSize() {
-		return this.getCharPrefQF("buttonFontSize");
+		return this.getIntPref("buttonFontSizeN");
 	} ,
 
-	setLastSelectedCategory: function(category) {
+	setLastSelectedCategory: function setLastSelectedCategory(category) {
 		// avoid error when no categories exist
 		if (category)
 			this.setCharPrefQF("lastSelectedCategory", category);
@@ -204,6 +204,10 @@ QuickFolders.Preferences = {
 		return this.getCharPrefQF("lastSelectedCategory");
 	},
 
+  get maxSubjectLength() {
+    return this.getIntPref('menuMessageList.maxSubjectLength');
+  } ,
+  
 	get ColoredTabStyle() {
 		// 0 - filled
 		// 1 - striped
@@ -213,7 +217,7 @@ QuickFolders.Preferences = {
 	TABS_STRIPED: 0,
 	TABS_FILLED: 1,
 
-	existsCharPref: function(pref) {
+	existsCharPref: function existsCharPref(pref) {
 		try {
 			if(this.service.prefHasUserValue(pref))
 				return true;
@@ -224,7 +228,7 @@ QuickFolders.Preferences = {
 		return false;
 	},
 
-	existsBoolPref: function(pref) {
+	existsBoolPref: function existsBoolPref(pref) {
 		try {
 			if(this.service.prefHasUserValue(pref))
 				return true;
@@ -237,7 +241,7 @@ QuickFolders.Preferences = {
 
 	// updates all toxic preferences to skinning engine of v 2.7
 	// returns true if upgraded from a previous skinning engine
-	tidyUpBadPreferences: function () {
+	tidyUpBadPreferences: function tidyUpBadPreferences() {
 		var isUpgradeSkinning = false;
 		try {
 			QuickFolders.Util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
@@ -299,7 +303,7 @@ QuickFolders.Preferences = {
 		return isUpgradeSkinning;
 	},
 
-	getUserStyle: function(sId, sType, sDefault) {
+	getUserStyle: function getUserStyle(sId, sType, sDefault) {
 		// note: storing color as string in order to store OS specific colors like Menu, Highlight
 		// usage: getUserStyle("ActiveTab","background-color","HighLight")
 		// usage: getUserStyle("ActiveTab","color", "HighlightText")
@@ -322,12 +326,12 @@ QuickFolders.Preferences = {
 		return sReturnValue;
 	},
 
-	setUserStyle: function(sId, sType, sValue) {
+	setUserStyle: function setUserStyle(sId, sType, sValue) {
 		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		this.service.setCharPref(sStyleName, sValue);
 	},
 
-	getIntPreference: function(p) {
+	getIntPreference: function getIntPreference(p) {
 		try {
 			return this.service.getIntPref(p);
 		}
@@ -337,11 +341,11 @@ QuickFolders.Preferences = {
 		}
 	},
 
-	setIntPreference: function(p, v) {
+	setIntPreference: function setIntPreference(p, v) {
 		return this.service.setIntPref(p, v);
 	},
 
-	getBoolPrefSilent: function(p) {
+	getBoolPrefSilent: function getBoolPrefSilent(p) {
 		try {
 			return this.service.getBoolPref(p);
 		}
@@ -350,7 +354,7 @@ QuickFolders.Preferences = {
 		}
 	},
 
-	getBoolPrefVerbose: function(p) {
+	getBoolPrefVerbose: function getBoolPrefVerbose(p) {
 		try {
 			return this.service.getBoolPref(p);
 		}
@@ -360,7 +364,7 @@ QuickFolders.Preferences = {
 		}
 	},
 	
-	getBoolPref: function(p) {
+	getBoolPref: function getBoolPref(p) {
 	  let ans;
 	  try {
 	    ans = this.service.getBoolPref("extensions.quickfolders." + p);
@@ -372,11 +376,11 @@ QuickFolders.Preferences = {
 		return ans;
 	},
 
-	setBoolPref: function(p, v) {
+	setBoolPref: function setBoolPref(p, v) {
 		return this.service.setBoolPref("extensions.quickfolders." + p, v);
 	},
 	
-	getFiltersBoolPref: function(p, defaultV) {
+	getFiltersBoolPref: function getFiltersBoolPref(p, defaultV) {
 	  let ans;
 	  try {
 	    ans = this.service.getBoolPref("extensions.quickfilters." + p);
@@ -389,37 +393,37 @@ QuickFolders.Preferences = {
 	},
 	
 	
-	getCharPrefQF: function(p) {
+	getCharPrefQF: function getCharPrefQF(p) {
 		return this.service.getCharPref("extensions.quickfolders." + p);
 	},
 	
-	setCharPrefQF: function(p, v) {
+	setCharPrefQF: function setCharPrefQF(p, v) {
 		return this.service.setCharPref("extensions.quickfolders." + p, v);
 	},
 
-	getIntPref: function(p) {
+	getIntPref: function getIntPref(p) {
 		return QuickFolders.Preferences.getIntPreference("extensions.quickfolders." + p);
 	},
 
-	setIntPref: function(p, v) {
+	setIntPref: function setIntPref(p, v) {
 		return this.setIntPreference("extensions.quickfolders." + p, v);
 	},
 
-	setShowCurrentFolderToolbar: function(b, singleMessage) {
+	setShowCurrentFolderToolbar: function setShowCurrentFolderToolbar(b, singleMessage) {
 		var tag = "showCurrentFolderToolbar";
 		if (singleMessage)
 			tag = "messageWindow." + tag;
 		return this.service.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
-	isShowCurrentFolderToolbar: function(singleMessage) {
+	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(singleMessage) {
 		var tag = "showCurrentFolderToolbar";
 		if (singleMessage)
 			tag = "messageWindow." + tag;
 		return QuickFolders.Preferences.getBoolPref(tag, false);
 	},
 
-	setBoolPrefVerbose: function(p, v) {
+	setBoolPrefVerbose: function setBoolPrefVerbose(p, v) {
 		try {
 			return this.service.setBoolPref(p, v);
 		} catch(e) {
@@ -438,7 +442,7 @@ QuickFolders.Preferences = {
 		return this.getCharPrefQF("style.theme");
 	},
 
-	setCurrentThemeId: function(t) {
+	setCurrentThemeId: function setCurrentThemeId(t) {
 		return this.setCharPrefQF("style.theme",t);
 	},
   

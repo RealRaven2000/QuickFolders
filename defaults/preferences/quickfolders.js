@@ -16,17 +16,19 @@ pref("extensions.quickfolders.showFoldersWithNewMailItalic",false);
 pref("extensions.quickfolders.showCategoryCounts",false);
 pref("extensions.quickfolders.showNewMailHighlight",false);
 pref("extensions.quickfolders.showRecentTab",false);
+pref("extensions.quickfolders.showQuickMove",true);
 pref("extensions.quickfolders.autoFocusPreview",true);
 pref("extensions.quickfolders.showSubfolders",false);
 pref("extensions.quickfolders.disableFolderSwitching",false);
 pref("extensions.quickfolders.showCountInSubFolders",false);
 pref("extensions.quickfolders.enableMenuAlphaSorting",false);
+pref("extensions.quickfolders.markAsReadOnMove",false);
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.useFindFolderShortcut", true);
 pref("extensions.quickfolders.findFolderShortcutKey", 'J');
 pref("extensions.quickfolders.showToolIcon",true);
-pref("extensions.quickfolders.toolbar.minHeight", "24px");
+pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows",false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage",true);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab",true);
@@ -44,16 +46,18 @@ pref("extensions.quickfolders.currentFolderBar.showClose",true);
 pref("extensions.quickfolders.currentFolderBar.showRecentButton",true);
 pref("extensions.quickfolders.currentFolderBar.showFilterButton",true);
 pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton",false);
+pref("extensions.quickfolders.currentFolderBar.showIconButtons",true);
 pref("extensions.quickfolders.currentFolderBar.navigation.showButtons",true);
 pref("extensions.quickfolders.currentFolderBar.navigation.showToggle",true);
 pref("extensions.quickfolders.currentFolderBar.background","linear-gradient(to top, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%)");
 pref("extensions.quickfolders.currentFolderBar.background.selection","default");
+pref("extensions.quickfolders.currentFolderBar.folderTreeIcon",true);
 // off the wall German flag style:
 pref("extensions.quickfolders.currentFolderBar.background.custom","linear-gradient(140deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 12%,rgba(0,0,0,1) 14%,rgba(214,40,40,1) 24%,rgba(255,231,50,1) 32%,rgba(255,231,50,0.0) 34%,rgba(0,0,0,0) 100%)"); 
 // note: in old Gecko versions it would be -moz-linear-gradient(-30deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 12%,rgba(0,0,0,1) 14%,rgba(214,40,40,1) 24%,rgba(255,231,50,1) 32%,rgba(255,231,50,0.0) 34%,rgba(0,0,0,0) 100%)
 // Layout
 pref("extensions.quickfolders.style.theme", "flatTabs");
-pref("extensions.quickfolders.buttonFontSize","");
+pref("extensions.quickfolders.buttonFontSizeN", 0);
 pref("extensions.quickfolders.showIcons",true);
 pref("extensions.quickfolders.debug",false);
 pref("extensions.quickfolders.initDelay", 2500);
@@ -64,10 +68,9 @@ pref("extensions.quickfolders.transparentToolbar", true);
 pref("extensions.quickfolders.buttonShadows", false);
 pref("extensions.quickfolders.pastelColors", true); // legacy, now obsolete
 pref("extensions.quickfolders.style.corners.customizedRadius", false);
-pref("extensions.quickfolders.style.corners.customizedTopRadius", "4px");
-pref("extensions.quickfolders.style.corners.customizedBottomRadius", "0px");
+pref("extensions.quickfolders.style.corners.customizedTopRadiusN", 4);
+pref("extensions.quickfolders.style.corners.customizedBottomRadiusN", 0);
 pref("extensions.quickfolders.style.borders",true);
-pref("extensions.quickfolders.folderIcons", ""); // json folder icon dictionary
 // Special State colors
 pref("extensions.quickfolders.style.Toolbar.background-color", "transparent");
 pref("extensions.quickfolders.style.ActiveTab.color", "#FFFFFF");
@@ -107,7 +110,10 @@ pref("extensions.quickfolders.debug.css.palette.styleSheets",false);
 pref("extensions.quickfolders.debug.css.palette",false);
 pref("extensions.quickfolders.debug.dnd",false);
 pref("extensions.quickfolders.debug.folders",false);
+pref("extensions.quickfolders.debug.folders.select",false);
 pref("extensions.quickfolders.debug.popupmenus",false);
+pref("extensions.quickfolders.debug.popupmenus.items",false);
+pref("extensions.quickfolders.debug.popupmenus.collapse",false);
 pref("extensions.quickfolders.debug.popupmenus.drag",false);
 pref("extensions.quickfolders.debug.mouseclicks",false);
 pref("extensions.quickfolders.debug.events",false);
@@ -124,6 +130,10 @@ pref("extensions.quickfolders.debug.filters",false);
 pref("extensions.quickfolders.debug.listeners.tabmail",false);
 pref("extensions.quickfolders.debug.listeners.folder",false);
 pref("extensions.quickfolders.debug.folderTree",false);
+pref("extensions.quickfolders.debug.quickMove",false);
+pref("extensions.quickfolders.debug.premium",false);
+
+
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3",true);
 pref("extensions.quickfolders.dragToCreateFolder.imap",false);
@@ -145,7 +155,7 @@ pref("extensions.quickfolders.folderMenu.emptyJunk", true);
 pref("extensions.quickfolders.folderMenu.emptyTrash", true);
 pref("extensions.quickfolders.folderMenu.dragToNew", true);
 pref("extensions.quickfolders.folderMenu.openNewTab", true);
-pref("extensions.quickfolders.folderMenu.realignMinTabs", 0);
+pref("extensions.quickfolders.folderMenu.realignMinTabs", 25);
 pref("extensions.quickfolders.commandMenu.options", true);
 pref("extensions.quickfolders.commandMenu.separator", true);
 pref("extensions.quickfolders.commandMenu.lineBreak", true);
@@ -155,21 +165,33 @@ pref("extensions.quickfolders.commandMenu.support", true);
 pref("extensions.quickfolders.commandMenu.help", true);
 
 pref("extensions.quickfolders.hideVersionOnUpdate",false);
+pref("extensions.quickfolders.folderTree.icons",true);
+pref("extensions.quickfolders.folderTree.icons.injectCSS",true);
+
 // Filter Template
 pref("extensions.quickfolders.filters.currentTemplate", "from");
 pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
 pref("extensions.quickfolders.proNotify.findFolder", true);
-pref("extensions.quickfolders.proNotify.findFolder.countDown", 5);
 pref("extensions.quickfolders.proNotify.lineBreaks", true);
-pref("extensions.quickfolders.proNotify.lineBreaks.countDown", 3);
 pref("extensions.quickfolders.proNotify.tabSeparator", true);
-pref("extensions.quickfolders.proNotify.tabSeparator.countDown", 3);
+pref("extensions.quickfolders.proNotify.quickMove", true);
+pref("extensions.quickfolders.proNotify.findFolder.usage", 0);
+pref("extensions.quickfolders.proNotify.lineBreaks.usage", 0);
+pref("extensions.quickfolders.proNotify.tabSeparator.usage", 0);
+pref("extensions.quickfolders.proNotify.quickMove.usage", 0);
+pref("extensions.quickfolders.proNotify.advancedTabProperties.usage", 0);
+pref("extensions.quickfolders.LicenseKey", "");
+pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
+/** obsolete **/
+//pref("extensions.quickfolders.proNotify.findFolder.countDown", 5);
+//pref("extensions.quickfolders.proNotify.lineBreaks.countDown", 3);
+//pref("extensions.quickfolders.proNotify.tabSeparator.countDown", 3);
+//pref("extensions.quickfolders.proNotify.quickMove.countDown", 5);
 // we need this to better integrate with quickFilters - therefore using the same extension naming space is intended!
 pref("extensions.quickfilters.naming.keyWord", true);
 pref("extensions.quickfilters.naming.parentFolder", false);
-
 
 
 

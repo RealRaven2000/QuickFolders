@@ -27,6 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Resaltar las carpetas con nuevos mensajes de correo">
 <!ENTITY qf.toolbarMinimumHeight "Altura mínima:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Para equipos MAC que encuentren el [BUG 25021]">
+<!ENTITY qf.label.buttonFontSizeNumeric "Tamaño de letra para el botón (0 por omisión):">
 <!ENTITY qf.label.pixels "pixeles">
 <!ENTITY qf.label.appearance "Apariencia">
 <!ENTITY qf.label.behavior "Comportamiento">
@@ -151,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "La clave de licencia que ingresó no es válida. Verifique su correo recibido de Fastspring para instrucciones. Si continúa con problemas, por favor contácteme usando la pestaña de soporte.">
 <!ENTITY qf.licenseValidation.expired "La clave de licencia que ingresó ya expiro. Por favor presione el botón de abajo para renovarla.">
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico asociada a esta licencia [{1}] no está ligada a ninguna de sus cuentas de correo. Póngase en contacto conmigo desde la pestaña de Soporte para obtener ayuda.">
+<!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo electrónico cifrada no corresponde a la legible.">

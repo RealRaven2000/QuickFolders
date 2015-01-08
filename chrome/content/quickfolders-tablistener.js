@@ -1,8 +1,9 @@
 "use strict";
 /* BEGIN LICENSE BLOCK
 
-GPL3 applies.
-For detail, please refer to license.txt in the root folder of this extension
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
@@ -23,11 +24,10 @@ QuickFolders.TabListener = {
         if (info.QuickFoldersCategory) {
           QuickFolders.Util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
           QuickFolders.Interface.selectCategory(info.QuickFoldersCategory, false);
-          QuickFolders.Interface.updateCategories();
-					// speed hack
-					if (QuickFolders.Util.Application != 'Thunderbird') {
-						QuickFolders.Interface.setFolderSelectTimer();					
-					}
+          let isFolderUpdated = QuickFolders.Interface.updateCategories();
+					// do not select folder if selectCategory had to be done
+          if (!isFolderUpdated)
+            QuickFolders.Interface.setFolderSelectTimer();					
         }
         // Do not switch to current folder's category, if current tab has another selected!
         else {

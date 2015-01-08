@@ -1,4 +1,30 @@
 /* platform styles - Mac */
+#qf-header-container {
+  padding-bottom: 1.3em;
+}
 #QuickFolders-Options-Tabbox tab {
-	padding: 0 0.6em 0.2em;
+  padding: 0.8em 0.1em 0.2em 0.1em;
+}
+#QuickFolders-Options-Tabbox tab .tab-text {
+  margin-top: -6px;	
+}
+#QuickFolders-Options-Tabbox tab .tab-icon {
+  margin-top: -3px;
+}
+#QuickFolders-Options-Tabbox tabpanels {
+  padding-top: 1em;
+}
+#QuickFolders-Options-Tabbox tab .tab-icon { 
+  margin: -15px 0px -6px 0px; 
+}
+#QuickFolders-CurrentFolderTools toolbarbutton {
+  max-width: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+*
+/** make sure empty labels don't take up space **/
+#QuickFolders-CurrentFolderTools toolbarbutton > .toolbarbutton-text,
+#QuickFolders-oneButtonPanel toolbarbutton > .toolbarbutton-text  {
+  visibility: collapse;
+  margin: 0 !important;
 }

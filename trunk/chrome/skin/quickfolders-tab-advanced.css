@@ -1,0 +1,18 @@
+
+/*  Advanced Properties */
+.miniBtn {
+  -moz-appearance: toolbarbutton;
+	height: 8px !important;
+	max-height: 10px !important;
+	max-width: 3em !important;
+}
+
+#txtBackground {
+  min-width: 25em;
+}
+
+.textLink {
+  -moz-appearance: none;
+	text-decoration: underline;
+	cursor: pointer;
+}

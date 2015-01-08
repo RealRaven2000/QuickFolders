@@ -17,16 +17,16 @@ QuickFolders.FolderTree = {
         return; // for now, disable it
       }
       else { treeView = gFolderTreeView; }
-      if (gFolderTreeView.supportsIcons) return; // already defined!
-      QuickFolders.FolderTree.GetCellProperties = gFolderTreeView.getCellProperties.bind(gFolderTreeView);
+      if (treeView.supportsIcons) return; // already defined!
+      QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties.bind(treeView);
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
-      gFolderTreeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
-      gFolderTreeView.getCellProperties = function(row, col) {
+      treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
+      treeView.getCellProperties = function(row, col) {
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
-          let folder = gFolderTreeView.getFolderForIndex(row);
+          let folder = treeView.getFolderForIndex(row);
           let folderIcon;
-          if (!gFolderTreeView.qfIconsEnabled) {
+          if (!treeView.qfIconsEnabled) {
             return props;
           }
           
@@ -43,7 +43,7 @@ QuickFolders.FolderTree = {
         }
         return props;
       } // end of override		
-      gFolderTreeView.supportsIcons = true;
+      treeView.supportsIcons = true;
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
       this.loadDictionary();

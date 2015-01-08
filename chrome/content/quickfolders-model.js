@@ -1,10 +1,12 @@
 "use strict";
 /* BEGIN LICENSE BLOCK
 
-GPL3 applies.
-For detail, please refer to license.txt in the root folder of this extension
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+
 if (QuickFolders.Util.Application != 'Postbox') {
   Components.utils.import("resource:///modules/MailUtils.js");
 }
@@ -15,7 +17,7 @@ QuickFolders.Model = {
   paletteUpdated: false,
   paletteUpgraded: false,
 
-  addFolder: function(uri, categoryName) {
+  addFolder: function addFolder(uri, categoryName) {
     function unpackURI(URL) {
       if (!URL) return URL;
       // remove url(...) from Icon file name for storing in model.entry.icon
@@ -70,21 +72,22 @@ QuickFolders.Model = {
     return false;
   } ,
 
-  getFolderEntry: function(uri) {
+  getFolderEntry: function getFolderEntry(uri) {
+    if (!uri) return null;
     for(var i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
         return this.selectedFolders[i];
       }
     }
-
     return null;
   } ,
   
-  getButtonEntry: function(button) {
+  getButtonEntry: function getButtonEntry(button) {
+    if (!button.folder) return null;
     return this.getFolderEntry(button.folder.URI);
   } ,
 
-  removeFolder: function(uri, updateEntries) {
+  removeFolder: function removeFolder(uri, updateEntries) {
     QuickFolders.Util.logDebug("model.removeFolder");
     for(var i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
@@ -96,7 +99,7 @@ QuickFolders.Model = {
       this.update();
   } ,
 
-  renameFolder: function(uri, name) {
+  renameFolder: function renameFolder(uri, name) {
     QuickFolders.Util.logDebug("model.renameFolder");
     var entry;
 
@@ -106,7 +109,7 @@ QuickFolders.Model = {
     }
   } ,
 
-  moveFolderURI: function(fromUri, toUri) {
+  moveFolderURI: function moveFolderURI(fromUri, toUri) {
     QuickFolders.Util.logDebug("model.moveFolderURI");
     var entry;
 
@@ -119,13 +122,17 @@ QuickFolders.Model = {
 
   } ,
 
-  update: function() {
+  store: function store() {
+    QuickFolders.Preferences.storeFolderEntries(QuickFolders.Model.selectedFolders);
+  } ,
+  
+  update: function update() {
     QuickFolders.Util.logDebug("model.update");
-    QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
+    this.store();
     QuickFolders.Interface.updateFolders(true, false);
   } ,
 
-  setTabIcon: function(button, entry, iconURI, menuItem) {
+  setTabIcon: function setTabIcon(button, entry, iconURI, menuItem) {
     let fileSpec = '';
     if (iconURI) {
       let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
@@ -150,7 +157,7 @@ QuickFolders.Model = {
     QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
   } ,
 
-  setFolderColor: function(uri, tabColor, withUpdate) {
+  setFolderColor: function setFolderColor(uri, tabColor, withUpdate) {
     let entry;
     if (tabColor == 'undefined') 
       tabColor=0;
@@ -166,7 +173,7 @@ QuickFolders.Model = {
     }
   },
 
-  setFolderCategory: function(uri, name) {
+  setFolderCategory: function setFolderCategory(uri, name) {
     var entry;
 
     if((entry = this.getFolderEntry(uri))) {
@@ -175,7 +182,7 @@ QuickFolders.Model = {
     }
   } ,
 
-  setTabSeparator: function(entry, isSpace) {
+  setTabSeparator: function setTabSeparator(entry, isSpace) {
     if(entry) {
       // add class "spaced" with .spaced { margin-left: 2em;}
       if (isSpace) {
@@ -188,7 +195,7 @@ QuickFolders.Model = {
     }
   } ,
   
-  setFolderLineBreak: function(entry, isBreak) {
+  setFolderLineBreak: function setFolderLineBreak(entry, isBreak) {
     // insert before: <br xmlns="http://www.w3.org/1999/xhtml" />
     if(entry) {
       if (isBreak) {
@@ -201,7 +208,7 @@ QuickFolders.Model = {
     }
   } ,
 
-  getMsgFolderFromUri:  function(uri, checkFolderAttributes) {
+  getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
     let msgfolder = null;
     if (typeof MailUtils != 'undefined' && MailUtils.getFolderForURI) {
       return MailUtils.getFolderForURI(uri, checkFolderAttributes);
@@ -225,7 +232,7 @@ QuickFolders.Model = {
   // this means we need to reset categories whenever a folder changing operation is carried out
   // (if a folder is deleted, this might render a category as obsoletel;
   //  also whenever categories are added or removed.)
-  resetCategories: function() {
+  resetCategories: function resetCategories() {
     this.categoriesList=[];
   } ,
 
@@ -274,7 +281,7 @@ QuickFolders.Model = {
     return this.categoriesList;
   } ,
 
-  isValidCategory: function(category) {
+  isValidCategory: function isValidCategory(category) {
     return (
          category == QuickFolders.FolderCategory.ALL
       || category == QuickFolders.FolderCategory.UNCATEGORIZED 
@@ -283,7 +290,7 @@ QuickFolders.Model = {
     );
   } ,
 
-  renameFolderCategory: function(oldName, newName) {
+  renameFolderCategory: function renameFolderCategory(oldName, newName) {
     QuickFolders.Util.logDebugOptional("categories","Model.renameFolderCategory()\n"
       + "from: " + oldName 
       + "to: "   + newName);
@@ -312,7 +319,7 @@ QuickFolders.Model = {
     this.update()
   } ,
 
-  deleteFolderCategory: function(category) {
+  deleteFolderCategory: function deleteFolderCategory(category) {
     QuickFolders.Util.logDebugOptional("categories","Model.deleteFolderCategory(" + category + ")");
     var folderList = '';
     for(var i = 0; i < this.selectedFolders.length; i++) {
@@ -344,7 +351,7 @@ QuickFolders.Model = {
     this.update()
   } ,
   
-  colorName: function(paletteVersion, id) {
+  colorName: function colorName(paletteVersion, id) {
     if (paletteVersion==1) {
       switch(id) {
         case 0: return 'none';
@@ -374,7 +381,7 @@ QuickFolders.Model = {
   } ,
   
   // new palette indices
-  updatePalette: function() {
+  updatePalette: function updatePalette() {
     // we only do this ONCE
     if (this.paletteUpdated) 
       return;
@@ -441,7 +448,7 @@ QuickFolders.Model = {
   } ,
   
   // new upgrade function to switch over to multiple palettes
-  upgradePalette: function(prefSvc) {
+  upgradePalette: function upgradePalette(prefSvc) {
     function getBoolPref(key, boolDefault) {
       let result;
       try {
@@ -487,4 +494,5 @@ QuickFolders.Model = {
       
     this.paletteUpgraded = true;
   }
-}
+}  // Model
+

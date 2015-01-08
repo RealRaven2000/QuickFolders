@@ -2,30 +2,12 @@
 
 /* BEGIN LICENSE BLOCK
 
-for detail, please refer to license.txt in the root folder of this extension
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 3
-of the License, or (at your option) any later version.
+END LICENSE BLOCK */
 
-If you use large portions of the code please attribute to the authors
-(Axel Grude)
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You can download a copy of the GNU General Public License at
-http://www.gnu.org/licenses/gpl-3.0.txt or get a free printed
-copy by writing to:
-  Free Software Foundation, Inc.,
-  51 Franklin Street, Fifth Floor,
-  Boston, MA 02110-1301, USA.
-  
-END LICENSE BLOCK 
-*/
 
 QuickFolders.FilterWorker = {
 
@@ -36,25 +18,11 @@ QuickFolders.FilterWorker = {
 	SelectedValue: '',
 	
 	// FILTER WIZARD FUNCTIONS ...
-	showMessage: function(show) {
+	showMessage: function showMessage(show) {
 		QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
 	} ,
 	
-	onCloseNotification: function(eventType, notifyBox, notificationKey) {
-		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
-		window.setTimeout(function() {
-	  // Postbox doesn't tidy up after itself?
-		if (!notifyBox)
-			return;
-		let item = notifyBox.getNotificationWithValue(notificationKey);
-		if(item) {
-		  // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
-			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));	 // skipAnimation
-		}
-			}, 200);
-	} ,
-	
-	toggleFilterMode: function(active) {
+	toggleFilterMode: function toggleFilterMode(active) {
 		toggle_FilterMode(active);
 	} ,
 		
@@ -64,7 +32,7 @@ QuickFolders.FilterWorker = {
 	* 
 	* @param {bool} start or stop filter mode
 	*/  
-	toggle_FilterMode: function(active)
+	toggle_FilterMode: function toggle_FilterMode(active)
 	{
     function removeOldNotification(box, active, id) {
       if (!active && box) {
@@ -131,7 +99,7 @@ QuickFolders.FilterWorker = {
 							{
 								label: 'X',
 								accessKey: 'x',
-								callback: function() { QuickFolders.FilterWorker.onCloseNotification(null, notifyBox, notificationKey); },
+								callback: function() { QuickFolders.Util.onCloseNotification(null, notifyBox, notificationKey); },
 								popup: null
 							}
 						];
@@ -154,7 +122,7 @@ QuickFolders.FilterWorker = {
 						"chrome://quickfolders/skin/ico/filterTemplate.png" , 
 						notifyBox.PRIORITY_INFO_LOW, 
               nbox_buttons,
-							function(eventType) { QuickFolders.FilterWorker.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
+							function(eventType) { QuickFolders.Util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
 							); 
 						
 				if (QuickFolders.Util.Application == 'Postbox') {
@@ -208,7 +176,7 @@ QuickFolders.FilterWorker = {
 		}
 	},
 	
-  openFilterList: function(isRefresh, sourceFolder) {
+  openFilterList: function openFilterList(isRefresh, sourceFolder) {
     try {
 			let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
 			let w = mediator.getMostRecentWindow('mailnews:filterlist');
@@ -234,7 +202,7 @@ QuickFolders.FilterWorker = {
   } ,
 
 	// folder is the target folder - we might also need the source folder
-	createFilter: function(sourceFolder, targetFolder, messageList, isCopy)
+	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy)
 	{
 		function getMailKeyword(subject) {
 			var topicFilter = subject;
@@ -588,7 +556,7 @@ QuickFolders.FilterWorker = {
 
 	} ,
 
-	createFilterAsync: function(sourceFolder, targetFolder, messageList, isCopy, isSlow)
+	createFilterAsync: function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow)
 	{
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
 			QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
@@ -602,7 +570,7 @@ QuickFolders.FilterWorker = {
 		
 	},
 	
-	selectTemplate : function(element) {
+	selectTemplate : function selectTemplate(element) {
 		if (!element) {
 			element = document.getElementById('qf-filter-templates');
 		}
@@ -611,7 +579,7 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	
-	acceptTemplate : function()
+	acceptTemplate : function acceptTemplate()
 	{
 		QuickFolders.FilterWorker.selectTemplate();
 		QuickFolders.FilterWorker.TemplateSelected = true;
@@ -622,7 +590,7 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	
-	cancelTemplate : function()
+	cancelTemplate : function cancelTemplate()
 	{
 		QuickFolders.FilterWorker.TemplateSelected = false;
 		var retVals = window.arguments[0];
@@ -631,24 +599,24 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	
-	loadTemplate : function()
+	loadTemplate : function loadTemplate()
 	{
 		// initialize list and preselect last chosen item!
 		var element = document.getElementById('qf-filter-templates');
 		element.value = this.getCurrentFilterTemplate();
 	} ,
 	
-	getCurrentFilterTemplate : function()
+	getCurrentFilterTemplate : function getCurrentFilterTemplate()
 	{
 		return QuickFolders.Preferences.getCharPrefQF("filters.currentTemplate");
 	} ,
 	
-	setCurrentFilterTemplate : function(pref)
+	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref)
 	{
 		return QuickFolders.Preferences.setCharPrefQF("filters.currentTemplate", pref);
 	} ,
 	
-  getBundleString  : function(id) {
+  getBundleString  : function getBundleString(id) {
     //var bundle = document.getElementById("bundle_filter");
     try {
       if(!this.bundle)
@@ -661,7 +629,7 @@ QuickFolders.FilterWorker = {
     return '';
   },
 	
-  selectTemplateFromList: function(element) {
+  selectTemplateFromList: function selectTemplateFromList(element) {
     let descriptionId = "qf.filters.template." + element.selectedItem.value + ".description";
     let desc = document.getElementById ("templateDescription");
     if (desc) {

@@ -1,11 +1,13 @@
 "use strict";
 /* BEGIN LICENSE BLOCK
 
-GPL3 applies.
-For detail, please refer to license.txt in the root folder of this extension
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+Components.utils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -18,19 +20,20 @@ var QuickFolders_TabURIregexp = {
 QuickFolders.Options = {
 	optionsMode : "",  // filter out certain pages (for support / help only)
 	message : "",      // alert to display on dialog opening (for certain update cases); make sure to clear out after use!
-	QF_PREF_LAST : 4,
+	QF_PREF_LAST : 5,    // last tab which can be filtered out
+  QF_PREF_LICENSE : 5, // always show this one
 	QF_PREF_SUPPORT : 4,
 	QF_PREF_HELP : 3,
 	QF_PREF_LAYOUT : 2,
 	QF_PREF_ADVANCED : 1,
 	QF_PREF_GENERAL : 0,
 
-	rememberLastTab: function() {
+	rememberLastTab: function rememberLastTab() {
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
 	
-	accept: function() {
+	accept: function accept() {
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly")
 			return; // do not store any changes!
 		// persist colors
@@ -60,9 +63,9 @@ QuickFolders.Options = {
 
 			QuickFolders.Preferences.setUserStyle("Toolbar","background-color",
 							document.getElementById("toolbar-colorpicker").color);
-			QuickFolders.Preferences.setUserStyle( 'corners','customizedTopRadius',
+			QuickFolders.Preferences.setIntPref('customizedTopRadiusN',
 							document.getElementById("QuickFolders-Options-CustomTopRadius").value);
-			QuickFolders.Preferences.setUserStyle( 'corners','customizedBottomRadius',
+			QuickFolders.Preferences.setIntPref('customizedBottomRadiusN',
 							document.getElementById("QuickFolders-Options-CustomBottomRadius").value);
 
 			// QuickFolders.Interface.setPaintButtonColor(-1);
@@ -75,11 +78,10 @@ QuickFolders.Options = {
 		QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', tabbox.selectedIndex);
 	} ,
 	
-	close: function () {
+	close: function close() {
 		// let's remember the last open tab on cancel as well
 		this.rememberLastTab(); 
 	},
-
 
 	/*********************
 	 * preparePreviewTab() 
@@ -91,7 +93,7 @@ QuickFolders.Options = {
 	 * @paletteType: -1 {as standard tab} 0 none 1 plastic 2 pastel ...
 	 * @paletteColor: [optional] palette index; 0=no styling
 	 */
-	preparePreviewTab: function (colorPickerId, preference, previewId, paletteColor, paletteType) {
+	preparePreviewTab: function preparePreviewTab(colorPickerId, preference, previewId, paletteColor, paletteType) {
 		let wd = window.document;
 		let previewTab = wd.getElementById(previewId);
 		let colorPicker = colorPickerId ? wd.getElementById(colorPickerId) : null;
@@ -154,11 +156,11 @@ QuickFolders.Options = {
 		}
 	} ,
 	
-  getTransparent: function(color, transparent) {
+  getTransparent: function getTransparent(color, transparent) {
     return QuickFolders.Util.getRGBA(color, transparent ? 0.25 : 1.0);
   },
   
-  stripedSupport: function(paletteType) {
+  stripedSupport: function stripedSupport(paletteType) {
     switch(paletteType) {
       case 1: // Standard Palette
         return true;
@@ -169,15 +171,16 @@ QuickFolders.Options = {
     }
   } ,
   
-	load: function() {
+	load: function load() {
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
 			QuickFolders.Util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
 		
-		var version=QuickFolders.Util.Version;
-		let wd=window.document;
-		if (window.arguments)
+		let version=QuickFolders.Util.Version;
+    let util = QuickFolders.Util;
+		let wd = window.document;
+		if (window.arguments) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
@@ -185,12 +188,37 @@ QuickFolders.Options = {
 					QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', this.optionsMode);
 			}
 			catch(e) {;}
+    }
+    
+    // convert from str5ing "24px" to number "24"
+    let minToolbarHeight = QuickFolders.Preferences.getCharPrefQF('toolbar.minHeight');
+    let mT = parseInt(minToolbarHeight);
+    if (minToolbarHeight.indexOf('px' > 0)) {
+      QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', mT.toString()) 
+    }
+    else if (minToolbarHeight.indexOf('em' > 0)) {
+      // convert to px based on 12px default size (might be wrong for Mac+Linux)
+      QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', (mT*12).toString()) ;  // 12 px default font size.
+    }
+
 
 		if (version=="") version='version?';
-
 		wd.getElementById("qf-options-header-description").setAttribute("value", version);
-		var tabbox = wd.getElementById("QuickFolders-Options-Tabbox");
+		let tabbox = wd.getElementById("QuickFolders-Options-Tabbox");
 		
+    /*****  License  *****/
+    // licensing tab - we also need a "renew license"  label!
+    let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense",
+      "Get License!");
+    wd.getElementById("btnLicense").label=regBtn;
+    // validate License key
+    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey');
+    wd.getElementById('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
+    if (QuickFolders.Licenser.LicenseKey) {
+      this.validateLicense();
+    }
+    
+    /*****  Help / Support Mode  *****/
 		// hide first 3 tabs!!
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly") {
 			if (tabbox) {
@@ -214,97 +242,228 @@ QuickFolders.Options = {
 			return; // we do not set any values!
 		}
 		
-		wd.getElementById("qfInsertSeparator").label = QuickFolders.Util.getBundleString("qfInsertSeparator");
-		wd.getElementById("qfInsertLineBreak").label = QuickFolders.Util.getBundleString("qfInsertLineBreak");
+    /***** Menu Items / Labels *****/
+		wd.getElementById("qfInsertSeparator").label = util.getBundleString("qfInsertSeparator");
+		wd.getElementById("qfInsertLineBreak").label = util.getBundleString("qfInsertLineBreak");
 		// bundle strings
-		wd.getElementById("chkShowFolderMenuButton").label = QuickFolders.Util.getBundleString("qfFolderPopup");
+		wd.getElementById("chkShowFolderMenuButton").label = util.getBundleString("qfFolderPopup");
 		// let backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');
-		this.setCurrentToolbarBackground(QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background.selection'), false);
+		this.setCurrentToolbarBackground(QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background.selection'), false);  
 
+    /*****  Bling + Stuff  *****/
 		// initialize colorpickers
 		try {
-			var col, bcol;
-			bcol = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","#000090");
-			wd.getElementById("activetab-colorpicker").color = bcol;
-			col = QuickFolders.Preferences.getUserStyle("ActiveTab","color","#FFFFFF");
-			wd.getElementById("activetab-fontcolorpicker").color = col;
-			wd.getElementById("activetabs-label").style.setProperty('color', col, 'important');
-			wd.getElementById("activetabs-label").style.backgroundColor = bcol;
-
-			bcol = QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","buttonface");
-			wd.getElementById("inactive-colorpicker").color = bcol;
-
-			//support transparency and shadow
-			let transcol  =  this.getTransparent(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons"));
-      QuickFolders.Util.logDebug('inactivetabs-label: setting background color to ' + transcol);
-			wd.getElementById("inactivetabs-label").style.backgroundColor = transcol;
-			// this.showButtonShadow(QuickFolders.Preferences.getBoolPref("buttonShadows"));
-
-			col = QuickFolders.Preferences.getUserStyle("InactiveTab","color","buttontext");
-			wd.getElementById("inactive-fontcolorpicker").color = col;
-			wd.getElementById("inactivetabs-label").style.setProperty('color', col, 'important');
-
-
-			bcol = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#FFFFFF");
-			wd.getElementById("hover-colorpicker").color = bcol;
-			col = QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black");
-			wd.getElementById("hover-fontcolorpicker").color = col;
-			wd.getElementById("hoveredtabs-label").style.setProperty('color', col, 'important');
-			wd.getElementById("hoveredtabs-label").style.backgroundColor = bcol;
-
-			bcol = QuickFolders.Preferences.getUserStyle("DragTab","background-color", "#E93903");
-			wd.getElementById("dragover-colorpicker").color = bcol;
-			col = QuickFolders.Preferences.getUserStyle("DragTab","color", "White");
-			wd.getElementById("dragover-fontcolorpicker").color = col;
-			wd.getElementById("dragovertabs-label").style.setProperty('color', col, 'important');
-			wd.getElementById("dragovertabs-label").style.backgroundColor = bcol;
-			wd.getElementById("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
-      wd.getElementById("qfCustomizeIcon").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
-      wd.getElementById("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
-
-			this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
-
-			// initialize Theme Selector by adding original titles to localized versions
-			var cbo = wd.getElementById("QuickFolders-Theme-Selector");
-			if (cbo.itemCount)
-				for (var index = 0; index<cbo.itemCount; index++) {
-					var item = cbo.getItemAtIndex( index );
-					var theme = QuickFolders.Themes.Theme(item.value);
-					if (theme) {
-						if (item.label != theme.name)
-							item.label = theme.name + ' - ' + item.label
-					}
-				}
-
-			try {
-				var selectOptionsPane = QuickFolders.Preferences.getIntPref('lastSelectedOptionsTab');
-				if (selectOptionsPane >=0)
-					tabbox.selectedIndex = selectOptionsPane; // 1 for pimp my tabs
-			}
-			catch(e) { ; }
-			
-			let menupopup = wd.getElementById("QuickFolders-Options-PalettePopup");
-			QuickFolders.Interface.buildPaletteMenu(0, menupopup);
-			
-			// customized coloring support
-      this.initPreviewTabStyles();
-      
-      let paletteType = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
-      wd.getElementById('qf-individualColors').collapsed = !
-        (this.stripedSupport(paletteType) && 
-         this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')));      
+      this.initBling(tabbox);
 		}
 		catch(e) {
-			alert("Error in QuickFolders.Options.load():\n" + e);
+			alert("Error in QuickFolders.Options.load(initBling()):\n" + e);
 		};
+
+    switch(this.optionsMode) {
+      case "licenseKey":
+        tabbox.selectedPanel = wd.getElementById('QuickFolders-Pro');
+        break;
+      case "helpOnly":
+        tabbox.selectedPanel = wd.getElementById('QuickFolders-Help');
+        break;
+      case "supportOnly":
+        tabbox.selectedPanel = wd.getElementById('QuickFolders-Support');
+        break;
+    }
+    
+
+    /***** Update message(s) *****/
 		if (this.message && this.message!='') {
 			alert(message);
 			message = '';
 		}
 
 	},
+  
+  initBling: function initBling (tabbox) {
+    let col, bcol;
+    let wd = window.document;
+    bcol = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","#000090");
+    wd.getElementById("activetab-colorpicker").color = bcol;
+    col = QuickFolders.Preferences.getUserStyle("ActiveTab","color","#FFFFFF");
+    wd.getElementById("activetab-fontcolorpicker").color = col;
+    wd.getElementById("activetabs-label").style.setProperty('color', col, 'important');
+    wd.getElementById("activetabs-label").style.backgroundColor = bcol;
 
-	selectTheme: function(wd, themeId) {
+    bcol = QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","buttonface");
+    wd.getElementById("inactive-colorpicker").color = bcol;
+
+    //support transparency and shadow
+    let transcol  =  this.getTransparent(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons"));
+    QuickFolders.Util.logDebug('inactivetabs-label: setting background color to ' + transcol);
+    wd.getElementById("inactivetabs-label").style.backgroundColor = transcol;
+    // this.showButtonShadow(QuickFolders.Preferences.getBoolPref("buttonShadows"));
+
+    col = QuickFolders.Preferences.getUserStyle("InactiveTab","color","buttontext");
+    wd.getElementById("inactive-fontcolorpicker").color = col;
+    wd.getElementById("inactivetabs-label").style.setProperty('color', col, 'important');
+
+
+    bcol = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#FFFFFF");
+    wd.getElementById("hover-colorpicker").color = bcol;
+    col = QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black");
+    wd.getElementById("hover-fontcolorpicker").color = col;
+    wd.getElementById("hoveredtabs-label").style.setProperty('color', col, 'important');
+    wd.getElementById("hoveredtabs-label").style.backgroundColor = bcol;
+
+    bcol = QuickFolders.Preferences.getUserStyle("DragTab","background-color", "#E93903");
+    wd.getElementById("dragover-colorpicker").color = bcol;
+    col = QuickFolders.Preferences.getUserStyle("DragTab","color", "White");
+    wd.getElementById("dragover-fontcolorpicker").color = col;
+    wd.getElementById("dragovertabs-label").style.setProperty('color', col, 'important');
+    wd.getElementById("dragovertabs-label").style.backgroundColor = bcol;
+    wd.getElementById("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
+    wd.getElementById("qfCustomizeIcon").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
+    wd.getElementById("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
+
+    this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
+
+    // initialize Theme Selector by adding original titles to localized versions
+    var cbo = wd.getElementById("QuickFolders-Theme-Selector");
+    if (cbo.itemCount)
+      for (var index = 0; index<cbo.itemCount; index++) {
+        var item = cbo.getItemAtIndex( index );
+        var theme = QuickFolders.Themes.Theme(item.value);
+        if (theme) {
+          if (item.label != theme.name)
+            item.label = theme.name + ' - ' + item.label
+        }
+      }
+
+    try {
+      var selectOptionsPane = QuickFolders.Preferences.getIntPref('lastSelectedOptionsTab');
+      if (selectOptionsPane >=0)
+        tabbox.selectedIndex = selectOptionsPane; // 1 for pimp my tabs
+    }
+    catch(e) { ; }
+    
+    let menupopup = wd.getElementById("QuickFolders-Options-PalettePopup");
+    QuickFolders.Interface.buildPaletteMenu(0, menupopup);
+    
+    // customized coloring support
+    this.initPreviewTabStyles();
+    
+    let paletteType = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
+    wd.getElementById('qf-individualColors').collapsed = !
+      (this.stripedSupport(paletteType) && 
+       this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')));   
+  },
+
+  trimLicense: function trimLicense() {
+    let txtBox = document.getElementById('txtLicenseKey');
+    let strLicense = txtBox.value.toString();
+    strLicense = strLicense.replace(/^\s+|\s+$/g, ''); // remove line breaks
+    txtBox.value = strLicense;
+  } ,
+  
+  pasteLicense: function pasteLicense() {
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+    trans.addDataFlavor("text/unicode");
+    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+
+    let str       = {};
+    let strLength = {};
+    
+    trans.getTransferData("text/unicode", str, strLength);
+    if (strLength.value) {
+      if (str) {
+        let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
+        let txtBox = document.getElementById('txtLicenseKey');
+        let strLicense = pastetext.toString();
+        txtBox.value = strLicense;
+        this.trimLicense();
+      }    
+    }
+  } ,
+  
+  validateLicense: function validateLicense() {
+    let validationPassed       = document.getElementById('validationPassed');
+    let validationFailed       = document.getElementById('validationFailed');
+    let validationExpired      = document.getElementById('validationExpired');
+    let validationInvalidEmail = document.getElementById('validationInvalidEmail');
+    let validationEmailNoMatch = document.getElementById('validationEmailNoMatch');
+    validationPassed.collapsed=true;
+    validationFailed.collapsed=true;
+    validationExpired.collapsed=true;
+    validationInvalidEmail.collapsed=true;
+    validationEmailNoMatch.collapsed=true;
+    
+    try {
+      this.trimLicense();
+      let State = QuickFolders.Licenser.ELicenseState;
+      let txtBox = document.getElementById('txtLicenseKey');
+      let license = txtBox.value;
+      // store new license key
+      QuickFolders.Preferences.setCharPrefQF('LicenseKey', license);
+      
+      let maxDigits = document.getElementById('txtMaxDigits').value; // this will be hardcoded in production
+      let result, LicenseKey;
+      let crypto = QuickFolders.Licenser.getCrypto(license);
+      let mail = QuickFolders.Licenser.getMail(license);
+      let date = QuickFolders.Licenser.getDate(license);
+      if (QuickFolders.Preferences.isDebug) {
+        let test = "QuickFolders.Licenser found the following License components:\n"
+          + "Email: " + mail + "\n"
+          + "Date: " + date + "\n"
+          + "Crypto: " + crypto + "\n";
+        QuickFolders.Util.logDebug(test);
+      }
+      if (crypto)
+        [result, LicenseKey] = QuickFolders.Licenser.validateLicense(license, maxDigits);
+      else 
+        result = State.Invalid;
+      document.getElementById('licenseDate').value = QuickFolders.Licenser.DecryptedDate;
+      let decryptedMail = QuickFolders.Licenser.DecryptedMail;
+      switch(result) {
+        case State.Valid:
+          validationPassed.collapsed=false;
+          document.getElementById('dialogProductTitle').value = "QuickFolders Pro"
+          // test code
+          document.getElementById('txtEncrypt').value = LicenseKey;
+          break;
+        case State.Invalid:
+          validationFailed.collapsed=false;
+          break;
+        case State.Expired:
+          validationExpired.collapsed=false;
+          break;
+        case State.MailNotConfigured:
+          validationInvalidEmail.collapsed=false;
+          // if mail was already replaced the string will contain [mail address] in square brackets
+          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", decryptedMail);
+          break;
+        case State.MailDifferent:
+          validationFailed.collapsed=false;
+          validationEmailNoMatch.collapsed=false;
+          break;
+        default:
+          alert('Unknown license status: ' + result);
+          break;
+      }
+      // reset License status of main instance
+      if (window.arguments && window.arguments[1].inn.instance && result != State.Valid) {
+        window.arguments[1].inn.instance.Licenser.ValidationStatus = State.NotValidated;
+      }
+      
+    }
+    catch(ex) {
+      QuickFolders.Util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
+    }
+  } ,
+  
+  encryptLicense: function encryptLicense() {
+    let encryptThis = document.getElementById('txtEncrypt').value;
+    let maxDigits = document.getElementById('txtMaxDigits').value; // this will be hardcoded in production
+    let encrypted = QuickFolders.Licenser.encryptLicense(encryptThis, maxDigits);
+    document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
+  },
+  
+	selectTheme: function selectTheme(wd, themeId) {
 		var myTheme =  QuickFolders.Themes.Theme(themeId);
 		if (myTheme) {
 		  try {
@@ -373,7 +532,7 @@ QuickFolders.Options = {
 	} ,
 
 
-	toggleMutexCheckbox: function(cbox, cbox2Name) {
+	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
 		var prefString1 = cbox.getAttribute('preference');
 		var prefName1 = document.getElementById(prefString1).getAttribute('name');
 		var cbox2 = document.getElementById(cbox2Name);
@@ -386,13 +545,13 @@ QuickFolders.Options = {
 		}
 	},
 
-	setDefaultButtonRadius: function() {
+	setDefaultButtonRadius: function setDefaultButtonRadius() {
 		document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4px";
 		document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0px";
 
 	},
 
-	colorPickerTranslucent: function (picker) {
+	colorPickerTranslucent: function colorPickerTranslucent(picker) {
 		document.getElementById('inactivetabs-label').style.backgroundColor=
       this.getTransparent(picker.color, document.getElementById('buttonTransparency').checked);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
@@ -400,7 +559,7 @@ QuickFolders.Options = {
 	},
 
   // set the custom value entered by user (only if custom is actually selected)
-	setCurrentToolbarBackgroundCustom: function() {
+	setCurrentToolbarBackgroundCustom: function setCurrentToolbarBackgroundCustom() {
 		let setting = document.getElementById('currentFolderBackground');
 		let backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
@@ -412,7 +571,7 @@ QuickFolders.Options = {
 	
 	// change background color for current folder bar
 	// 4 choices: default, dark, custom, translucent
-	setCurrentToolbarBackground: function(choice, withUpdate) {
+	setCurrentToolbarBackground: function setCurrentToolbarBackground(choice, withUpdate) {
 		QuickFolders.Util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
 		let setting = document.getElementById('currentFolderBackground');
 		
@@ -452,7 +611,7 @@ QuickFolders.Options = {
 			QuickFolders.Interface.updateMainWindow();
 	},
 	
-	styleUpdate: function(elementName, elementStyle, styleValue, label ) {
+	styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {
 		QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue);
 		if (label) {
 			switch(elementStyle) {
@@ -474,7 +633,7 @@ QuickFolders.Options = {
   },
   
 	// select: striped style / filled style
-	setColoredTabStyle: function  (styleId) {
+	setColoredTabStyle: function setColoredTabStyle(styleId) {
 		QuickFolders.Preferences.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
 		QuickFolders.Interface.updateMainWindow();
 		// no need to display background color picker when full colored style is selected.
@@ -494,9 +653,8 @@ QuickFolders.Options = {
 			return false; // always show if striped tabs are used
 		return QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'); // 0 = no palette - hide if Palette is used.
 	},
-	
-	
-	getButtonStatePrefId: function(buttonState) {
+		
+	getButtonStatePrefId: function getButtonStatePrefId(buttonState) {
 		switch(buttonState) {
 		  case 'colored':
 				return 'ColoredTab';
@@ -521,7 +679,7 @@ QuickFolders.Options = {
 	 * @buttonState:   [string] which kind of tab state: standard, active, hovered, dragOver
 	 * @paletteType:  -1 as standard, 0 none, 1 plastic, 2 pastel, 3 night ....
 	 */	 
-	toggleUsePalette: function(mnuNode, buttonState, paletteType) {
+	toggleUsePalette: function toggleUsePalette(mnuNode, buttonState, paletteType) {
 		//let isChecked = checkbox.checked;
 		let paletteTypeMenu = null;
 		if (mnuNode.tagName) {
@@ -597,7 +755,7 @@ QuickFolders.Options = {
 	 *  @buttonState        'standard', 'active', 'hovered', 'dragOver'
 	 *  @paletteMenuId      'menuStandardPalette', 'menuActivePalette', 'menuHoverPalette', 'menuDragOverPalette'
 	 */
-	showPalette: function(label, buttonState, paletteMenuId) {
+	showPalette: function showPalette(label, buttonState, paletteMenuId) {
 		let id=label ? label.id : label.toString();
 		QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
 		let paletteMenu = document.getElementById(paletteMenuId);
@@ -619,7 +777,7 @@ QuickFolders.Options = {
 		QuickFolders.Interface.showPalette(label);
 	},
 
-	changeTextPreference: function(txtBox) {
+	changeTextPreference: function changeTextPreference(txtBox) {
 		var prefString = txtBox.getAttribute("preference");
 		var pref = document.getElementById(prefString);
 		
@@ -634,7 +792,7 @@ QuickFolders.Options = {
 	},
 	
 	// doing what instantApply really should provide...
-	toggleBoolPreference: function(cb, noUpdate) {
+	toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
 		var prefString = cb.getAttribute("preference");
 		var pref = document.getElementById(prefString);
 		
@@ -645,7 +803,7 @@ QuickFolders.Options = {
 		return QuickFolders.Interface.updateMainWindow();
 	},
 	
-	toggleColorTranslucent: function (cb, pickerId, label, userStyle) {
+	toggleColorTranslucent: function toggleColorTranslucent(cb, pickerId, label, userStyle) {
 		var picker = document.getElementById(pickerId);
 		document.getElementById(label).style.backgroundColor=
 			this.getTransparent(picker.color, cb.checked);
@@ -663,7 +821,7 @@ QuickFolders.Options = {
 	},
 	
 	// switch pastel mode on preview tabs
-	initPreviewTabStyles: function () {
+	initPreviewTabStyles: function initPreviewTabStyles() {
 		let inactiveTab = document.getElementById('inactivetabs-label');
 		let activeTab = document.getElementById('activetabs-label');
 		let hoverTab = document.getElementById('hoveredtabs-label');
@@ -679,7 +837,7 @@ QuickFolders.Options = {
 
 	// toggle pastel mode was toggleColorPastel
   // NEEDS A REWRITE FOR MULTIPLE PALETTES!
-	showPalettePreview: function (withUpdate) {
+	showPalettePreview: function showPalettePreview(withUpdate) {
 	  let defaultPalette = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
 	  let isPastel = (defaultPalette == 2);
 		document.getElementById('ExampleStripedColor').src=
@@ -701,8 +859,7 @@ QuickFolders.Options = {
 		}
 	},
 
-
-	showButtonShadow: function(isChecked) {
+	showButtonShadow: function showButtonShadow(isChecked) {
 		var el= document.getElementById('inactivetabs-label');
 		var myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
 		el.style.MozBoxShadow = myStyle;
@@ -712,7 +869,7 @@ QuickFolders.Options = {
 
 	// Set Default Colors (partly from system colors) 
 	//   - will be converted to rgb values to avoid error messages on color pickers
-	setDefaultColors: function() {
+	setDefaultColors: function setDefaultColors() {
 		var highlightColor = QuickFolders.Util.getSystemColor("Highlight");
 		var highlightTextColor = QuickFolders.Util.getSystemColor("HighlightText");
 		var buttonfaceColor = QuickFolders.Util.getSystemColor("buttonface");
@@ -742,7 +899,7 @@ QuickFolders.Options = {
 		return QuickFolders.Interface.updateMainWindow();
 	},
 
-	sendMail: function(mailto) {
+	sendMail: function sendMail(mailto) {
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService);
     let title = QuickFolders.Util.getBundleString('qf.prompt.contact.title', "Contact QuickFolders Support");
@@ -763,20 +920,34 @@ QuickFolders.Options = {
 		MessageComposer.OpenComposeWindowWithURI (null, aURI);
 	},
   
-	dumpFolderEntries: function() {
+	dumpFolderEntries: function dumpFolderEntries() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
 		var service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 
 		try {
 			var sFolderString = service.getCharPref("QuickFolders.folders");
 			sFolderString = service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
-
-
 			var clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
 
 			QuickFolders.Util.logToConsole("Folder String: " & sFolderString);
-			clipboardhelper.copyString(sFolderString);
-			alert(QuickFolders.Util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard."));
+      try {
+        // format the json
+        let prettyFolders = JSON.stringify(JSON.parse(sFolderString), null, '  '); 
+        clipboardhelper.copyString(prettyFolders);
+      }
+      catch (e) {
+        logExQuickFolders.Util.logException("Error prettifying folder string:\n", e);
+        clipboardhelper.copyString(sFolderString);
+      }
+      let out = QuickFolders.Util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard.");
+      let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                         .getService(Components.interfaces.nsIWindowMediator)
+                         .getMostRecentWindow("mail:3pane");
+      
+      if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
+        out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
+      }
+			alert(out);
 		}
 		catch(e) {
 			alert(e);
@@ -784,13 +955,13 @@ QuickFolders.Options = {
 
 	},
 
-	configureTooltips: function(btn) {
+	configureTooltips: function configureTooltips(btn) {
 	  setTimeout( function () {
 			QuickFolders.Options.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
 			} );	
 	},
 	
-	showAboutConfig: function(clickedElement, filter, readOnly, updateFolders) {
+	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
 	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
 	  QuickFolders.Util.logDebug('showAboutConfig(clickedElement: ' + clickedElement.tagName + ', filter: ' + filter + ', readOnly: ' + readOnly +')');
 		const name = "Preferences:ConfigManager";
@@ -831,7 +1002,7 @@ QuickFolders.Options = {
 			});
 	},
 
-	addConfigFeature: function(filter, Default, textPrompt) {
+	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
 		// adds a new option to about:config, that isn't there by default
 		if (confirm(textPrompt)) {
 			// create (non existent filter setting:
@@ -840,7 +1011,7 @@ QuickFolders.Options = {
 		}
 	},
 
-	showVersionHistory: function(label, ask) {
+	showVersionHistory: function showVersionHistory(label, ask) {
 		let pureVersion=QuickFolders.Util.VersionSanitized;
 		let sPrompt = QuickFolders.Util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders")
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
@@ -848,12 +1019,12 @@ QuickFolders.Options = {
 		}
 	},
 	
-	toggleCurrentFolderBar: function(chk) {
+	toggleCurrentFolderBar: function toggleCurrentFolderBar(chk) {
 		var checked = chk.checked ? chk.checked : false;
 		QuickFolders.Interface.displayNavigationToolbar(checked, false);
 	},
 	
-	toggleCurrentFolderBar_SingleMessage: function(chk) {
+	toggleCurrentFolderBar_SingleMessage: function toggleCurrentFolderBar_SingleMessage(chk) {
 		var checked = chk.checked ? chk.checked : false;
 		QuickFolders.Interface.displayNavigationToolbar(checked, true);
 	}

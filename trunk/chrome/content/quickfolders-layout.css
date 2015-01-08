@@ -53,6 +53,7 @@
 
 #QuickFolders-FoldersBox-PushDown {
   max-height: 12px !important;
+	min-height: 1px;
 }
 
 
@@ -88,7 +89,9 @@
 	padding: 0;
 }
 
-
+#QuickFolders-Tools-Pane {
+	vertical-align:top;
+}
 
 #QuickFolders-Toolbar toolbarbutton[biffState-NewItalics].has-unread > label,
 #QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
@@ -126,17 +129,19 @@
 #QuickFolders-FoldersBox toolbarbutton {
 	padding-top: 0px;
 	padding-bottom: 0px;
-	/*margin: 3px 3px 0px 0px; */
-/* line-height: 19px; */
 	height: 19px;
 	vertical-align:top;
 	background-repeat: repeat-x;
 }
 
-#QuickFolders-FoldersBox toolbarbutton,
-#QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
-	padding-right: 0.4em ;
-	padding-left: 0.1em ;
+.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
+.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
+	padding-right: 0.5em !important;
+	padding-left: 0.1em !important;
+	padding-top: 0px !important; /* Noia Extreme Fix */
+}
+.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
+	margin-bottom: 0px !important;
 }
 
 #QuickFolders-Toolbar toolbarbutton[collapsed="true"],
@@ -201,6 +206,10 @@
 	display: -moz-inline-box;
 }*/
 
+.quickfolders-flat #QuickFolders-Category-Selection {
+  margin-bottom: 0; /* avoid extra space under toolbarbuttons */
+}
+
 #QuickFolders-Category-Selection {
 	margin-right: 1px;
 	margin-left:  3px;
@@ -249,8 +258,6 @@
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView {
 	background-color:transparent;
-	height: 2.4em !important;
-	max-height:2.4em !important;
 	overflow-y: visible !important;
 	padding-top: 0 !important;
 	padding-bottom: 3px;
@@ -260,17 +267,16 @@
 
 #QuickFoldersCurrentFolder {
 	background-repeat: repeat-x;
-	border-color: #888;
+	border-color: rgba(120, 120, 120, 0.5);
 	border-width: 1px !important;
 	border-style: solid !important;
+  box-shadow: 1px -1px 1px threedshadow inset;	
 	background-color: #fff;
-	height: 2em;
 	padding: 0 0.5em;
 	vertical-align: top;
 	-moz-appearance: none !important;
 	border-radius: 0px 0px 4px 4px !important;
 	min-width: 16em;
-	min-height: 2em !important; /* large font support */
 }
 
 #QuickFoldersCurrentFolder label.toolbarbutton-text {
@@ -284,30 +290,31 @@ toolbar#QuickFolders-CurrentFolderTools {
 	background: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
 	border-style: solid  !important;
 	border-color: #666;
-	height: 2.3em;
-	min-height: 2.3em;
+	height: 1.8em; /* large font support, test on Mac / Linux! */
+	min-height: 25px;
 	overflow: visible;
-	padding: 0 0.2em 0.3em 0.2em;
+	padding: 0 2px 3px 2px;
 	border-width: 0px 1px 1px 1px !important;
 }
 
 #QuickFolders-CurrentFolderTools toolbarbutton {
 	-moz-box-align: center;
 	-moz-box-pack: center;
-	padding: 2px;/* avoid stretching/compressing of some themes */
-	border: none;
+	padding: 0px 2px 0 2px;/* avoid stretching/compressing of some themes */
 /*	min-height: 22px; */
 }
 
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon {
 	-moz-appearance: none !important;
-	margin: 0 2px !important;
+	margin: 0 1px !important;
 }
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon > image {
   width: 16px;
-  height: 16px;
+  height: 16px !important;
+	margin-right: 0;
+	margin-bottom: 0;
 }
 
 
@@ -338,12 +345,12 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 /** FLAT TABS **/
 #QuickFolders-Toolbar.quickfolders-flat {
+	display: -moz-inline-box;
 	margin: 0;
 	padding: 0;
 	border: 1px solid transparent;
 	border-bottom-width: 3px !important;
-	border-bottom-style: solid;
-	display: -moz-inline-box;
+	border-bottom-style: solid !important;
 }
 
 .quickfolders-flat .folderBarContainer toolbarbutton {
@@ -389,6 +396,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	/* padding-top: 0px;
 	   padding-bottom: 1px; */
 	background-repeat: repeat-x;
+	box-shadow: 1px 1px 1px threedshadow inset;
 }
 
 /** DRAG TOOLBARBUTTONS **/
@@ -409,6 +417,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 #QuickFolders-Toolbar toolbarbutton .toolbarbutton-icon {
   margin-left: 2px;
+  margin-right: 1px;
 }
 
 #QuickFolders-Toolbar.quickfolders-pills toolbarbutton .toolbarbutton-icon {

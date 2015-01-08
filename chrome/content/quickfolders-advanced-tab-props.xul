@@ -3,7 +3,14 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-tab-advanced.css" title="QuickFolderAdvancedStyles" type="text/css"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/advanced.dtd"  >
+<!-- multiple language resources, so we get palette titles -->
+<!DOCTYPE dialog [
+  <!ENTITY % advancedDTD SYSTEM "chrome://quickfolders/locale/advanced.dtd">
+  %advancedDTD;
+  <!ENTITY % optionsDTD SYSTEM "chrome://quickfolders/locale/options.dtd">
+  %optionsDTD;
+]>
+
 <dialog 
 	id="qf-tabproperties"
 	buttons="extra1, extra2, accept"
@@ -20,20 +27,28 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-advancedTab.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 
 	<vbox>
-		<dialogheader 
-			title="&windowTitle;" 
-			description="[Tab Name]"
-			id="myHeader"
-			/>
+	    <hbox>
+			<dialogheader 
+				title="&windowTitle;" 
+				description="[Tab Name]"
+				id="myHeader"
+				flex="1"
+				/>
+			<toolbarbutton
+			    class="close-icon"
+			    id="btnClose"
+				oncommand="QuickFolders.AdvancedTab.close();"
+				/>
+		</hbox>
 
 		<hbox>
-		  <button label="&btnCategory;:"
-		          class="miniBtn"
-		          oncommand="QuickFolders.AdvancedTab.configureCategory();"
-				  tooltiptext="&btnCategory.tooltip;"
+		  <toolbarbutton label="&btnCategory;:"
+						oncommand="QuickFolders.AdvancedTab.configureCategory();"
+						tooltiptext="&btnCategory.tooltip;"
 		  />
 		  <label id="lblCategories"></label>
 		  <spacer />
@@ -63,8 +78,8 @@
 				<rows>
 					<row>
 						<button label="&cssBackground;"
-						       oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
-							   class="textLink"/>	
+						        oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
+										class="textLink"/>	
 						<textbox id="txtBackground" 
 						         tooltiptext="&cssBackground.tooltip;"/>
 					</row>
@@ -72,13 +87,42 @@
 						<button label="&cssColor;"
 						       oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
 						       class="textLink"/>
-						<textbox id="txtColor" 
-						         tooltiptext="&cssColor.tooltip;" />
+						<hbox>
+							<textbox id="txtColor" 
+											 tooltiptext="&cssColor.tooltip;"
+											 onblur="QuickFolders.AdvancedTab.updatePicker(this);"/>
+							<colorpicker id="txtColorPicker" 
+											 type="button"
+											 onchange="return QuickFolders.AdvancedTab.pickColor(this.color);"/>
+						</hbox>
 					</row>
 				</rows>
 			  </grid>
 		    </hbox>
 		</groupbox>
+		<hbox>
+			<checkbox id="chkCustomPalette"
+		              label="&lblCustomPalette;"/>
+			<menulist id="menuCustomTabPalette"
+					  sizetopopup="none"
+					  oncommand="QuickFolders.AdvancedTab.updatePalette(this);"
+					  >
+				<menupopup>
+					<menuitem label="&qf.palette.twoColors;"
+							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 0);"
+							  value="0"/>
+					<menuitem label="&qf.palette.standard;"
+							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 1);"
+							  value="1"/>
+					<menuitem label="&qf.palette.pastel;"
+							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 2);"
+							  value="2"/>
+					<menuitem label="&qf.palette.night;"
+							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 3);"
+							  value="3"/>
+				</menupopup>
+			</menulist>		  
+		</hbox>
 		
 	</vbox>
 

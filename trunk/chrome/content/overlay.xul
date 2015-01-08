@@ -14,9 +14,12 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-advancedTab.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-folderTree.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-styles.js" />
@@ -91,7 +94,6 @@
 							 placeholder="&quickfolders.findFolder.placeHolder;"/>
 				 </hbox>
 			</hbox>
-			<spacer flex="2" />
 		</vbox>
 		
 		<popupset id="QuickFolders-Palette">
@@ -205,6 +207,12 @@
 				          oncommand="QuickFolders.Interface.displayNavigationToolbar(true);"
 				          class="cmd menuitem-iconic"
 				          tagName="qfPreviewToolbar" 
+				          />
+				<menuitem id="QuickFolders-ToolbarPopup-register"
+				          label="&qf.menuitem.quickfolders.register;"
+				          oncommand="QuickFolders.Licenser.showDialog('mainPopup');"
+				          class="cmd menuitem-iconic"
+				          tagName="qfRegister"
 				          />
 			</menupopup>
 		</popupset>

@@ -27,6 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Evidenzia le cartelle contenenti nuovi messaggi">
 <!ENTITY qf.toolbarMinimumHeight "Altezza massima:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Per i MacOS soggetti al [Bug 25021]">
+<!ENTITY qf.label.buttonFontSizeNumeric "Pulsante dimensione caratteri (valore predefinito 0):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.label.appearance "Aspetto">
 <!ENTITY qf.label.behavior "Comportamento">
@@ -151,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare la email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY qf.licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">
 <!ENTITY qf.licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY qf.licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">

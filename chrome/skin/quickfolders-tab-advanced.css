@@ -16,3 +16,7 @@
 	text-decoration: underline;
 	cursor: pointer;
 }
+
+#btnClose {
+  -moz-appearance: -moz-window-button-close;
+}

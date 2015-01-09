@@ -2442,16 +2442,7 @@ QuickFolders.Interface = {
 				QFcommandPopup.appendChild(menuitem);
 			}
 			
-			if (prefs.getBoolPref("commandMenu.options")
-			   ||
-				 prefs.getBoolPref("commandMenu.support")
-				 ||
-				 prefs.getBoolPref("commandMenu.help")
-			   ) {
-				// --------------------
-				QFcommandPopup.appendChild(document.createElement('menuseparator'));
-			}
-			let menuItemToClone;
+  		let menuItemToClone;
 
       QFcommandPopup.appendChild(document.createElement('menuseparator'));
 
@@ -2491,6 +2482,17 @@ QuickFolders.Interface = {
       QFcommandPopup.appendChild(menuitem);
       
       
+      // Options, Support and Help
+			if (prefs.getBoolPref("commandMenu.options")
+			   ||
+				 prefs.getBoolPref("commandMenu.support")
+				 ||
+				 prefs.getBoolPref("commandMenu.help")
+			   ) {
+				// --------------------
+				QFcommandPopup.appendChild(document.createElement('menuseparator'));
+			}
+	    
 			if (prefs.getBoolPref("commandMenu.options")) {
 				// Options
 				menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-options');

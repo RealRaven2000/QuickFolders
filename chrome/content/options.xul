@@ -260,7 +260,7 @@
 					</preferences>
 
 					<hbox>
-						<groupbox flex="1">
+						<groupbox>
 							<caption label="&qf.label.currentFolderToolbar;" />
 							<checkbox id="chkCurrentFolderShow"
 												label="&qf.checkbox.currentFolder.show;"
@@ -268,6 +268,7 @@
 												instantApply="true"
 												oncommand="QuickFolders.Options.toggleCurrentFolderBar(this);" />
 							<checkbox id="chkCurrentFolderShowSingleMsg"
+												class="indent"
 												label="&qf.checkbox.singleMessage.currentFolder.show;"
 												tooltiptext="&qf.checkbox.singleMessage.currentFolder.tooltip;"
 												preference="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage"
@@ -332,7 +333,7 @@
 													oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;" />
 							</groupbox>
 
-							<groupbox flex="1">
+							<groupbox>
 								<caption label="&qf.label.menus.quickFolder;" />
 								<checkbox id="qfInsertSeparator"
 													label="&qf.label.menus.separator;"
@@ -407,7 +408,6 @@
 											preference="QuickFolders-Preferences-Debug"
 											instantApply="true"
 											oncontextmenu="QuickFolders.Options.toggleBoolPreference(this,true);QuickFolders.Options.showAboutConfig(this,'quickfolders.debug',true);return false;" />
-						<separator class="thin" />
 						<label value="&qf.label.initdelay;"
 									 style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;" />
 						<textbox id="init-delay"
@@ -453,7 +453,7 @@
 						<caption label="&qf.label.appearance;" />
 						<hbox>
 							<vbox>
-								<hbox>
+								<hbox align="center">
 									<label class="textBoxLabel"
 												 control="QuickFolders-Themes"
 												 value="&qf.label.themes;" />
@@ -544,7 +544,6 @@
 							<textbox id="QuickFolders-Options-CustomTopRadius"
 											 type="number"
 											 size="3"
-											 tooltip="use px or em, e.g. 5px, 0.6em"
 											 preference="QuickFolders-Preferences-TopRadius"
 											 instantApply="true"
 											 onchange="QuickFolders.Options.changeTextPreference(this);" />
@@ -554,7 +553,6 @@
 							<textbox id="QuickFolders-Options-CustomBottomRadius"
 											 type="number"
 											 size="3"
-											 tooltip="use px or em, e.g. 5px, 0.6em"
 											 preference="QuickFolders-Preferences-BottomRadius"
 											 instantApply="true"
 											 onchange="QuickFolders.Options.changeTextPreference(this);" />

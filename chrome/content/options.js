@@ -71,7 +71,7 @@ QuickFolders.Options = {
 			// QuickFolders.Interface.setPaintButtonColor(-1);
 		}
 		catch(e) {
-			alert("Error in QuickFolders:\n" + e);
+			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
 		};
 		this.rememberLastTab();
 		var tabbox = window.document.getElementById("QuickFolders-Options-Tabbox");
@@ -256,7 +256,8 @@ QuickFolders.Options = {
       this.initBling(tabbox);
 		}
 		catch(e) {
-			alert("Error in QuickFolders.Options.load(initBling()):\n" + e);
+			//alert("Error in QuickFolders.Options.load(initBling()):\n" + e);
+			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders.Options.load(initBling()):\n" + e);
 		};
 
     switch(this.optionsMode) {
@@ -274,7 +275,8 @@ QuickFolders.Options = {
 
     /***** Update message(s) *****/
 		if (this.message && this.message!='') {
-			alert(message);
+			//alert(message);
+			Services.prompt.alert(null,"QuickFolders",message);
 			message = '';
 		}
 
@@ -442,7 +444,7 @@ QuickFolders.Options = {
           validationEmailNoMatch.collapsed=false;
           break;
         default:
-          alert('Unknown license status: ' + result);
+          Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
           break;
       }
       // reset License status of main instance
@@ -947,10 +949,12 @@ QuickFolders.Options = {
       if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
         out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
       }
-			alert(out);
+			//alert(out);
+			Services.prompt.alert(null,"QuickFolders",out);
 		}
 		catch(e) {
-			alert(e);
+			//alert(e);
+			Services.prompt.alert(null,"QuickFolders",e);
 		}
 
 	},

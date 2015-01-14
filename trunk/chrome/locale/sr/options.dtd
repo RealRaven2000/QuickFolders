@@ -27,6 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Истакни фасцикле када стигне нова порука">
 <!ENTITY qf.toolbarMinimumHeight "Најмања висина:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "За кориснике Mac система који имају проблем са [Bug 25021]">
+<!ENTITY qf.label.buttonFontSizeNumeric "Величина фонта на дугмету (0 је подразумевана):">
 <!ENTITY qf.label.pixels "пиксела">
 <!ENTITY qf.label.appearance "Изглед">
 <!ENTITY qf.label.behavior "Понашање">
@@ -151,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
 <!ENTITY qf.licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
 <!ENTITY qf.licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">

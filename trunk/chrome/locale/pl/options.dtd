@@ -27,6 +27,7 @@
 <!ENTITY qf.checkbox.highlightNewMail "Podświetl foldery z nową wiadomością">
 <!ENTITY qf.toolbarMinimumHeight "Minimalna wysokość:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Dla systemów Mac jeśli występuje [Bug 25021]">
+<!ENTITY qf.label.buttonFontSizeNumeric "Rozmiar czcionki przycisku (domyślnie 0):">
 <!ENTITY qf.label.pixels "pikseli">
 <!ENTITY qf.label.appearance "Wygląd">
 <!ENTITY qf.label.behavior "Zachowanie">
@@ -151,3 +152,4 @@
 <!ENTITY qf.licenseValidation.failed "Wprowadzony przez Ciebie klucz licencyjny nie jest prawidłowy. Sprawdź wiadomość od FastSpring z instrukcją. Jeżeli problem występuje nadal, proszę o kontakt ze mną poprzez zakładkę &quot;Pomoc techniczna&quot; w opcjach.">
 <!ENTITY qf.licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Proszę kliknąć na poniższy przycisk aby odnowić licencję.">
 <!ENTITY qf.licenseValidation.invalidMail "Adres e-mail, który jest powiązany z kluczem licencyjnym [{1}] nie jest obecnie wymieniony w żadnym koncie pocztowym. Proszę o kontakt ze mną poprzez zakładkę &quot;Pomoc techniczna&quot; w opcjach w celu uzyskania pomocy.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Zaszyfrowany adres email nie pasuje do odczytanego.">

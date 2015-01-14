@@ -924,7 +924,8 @@ QuickFolders.Interface = {
 		}
 		var sLabelFound = this.getUIstring('qfDeadTabsCount', '# dead tabs found:');
 		var sLabelDeleted = this.getUIstring('qfDeadTabsDeleted', '# dead tabs removed:');
-		alert(sLabelFound + ' ' + countOrphans + '\n' + sLabelDeleted + ' ' + countDeleted);
+		//alert(sLabelFound + ' ' + countOrphans + '\n' + sLabelDeleted + ' ' + countDeleted);
+		Services.prompt.alert(null,"QuickFolders",sLabelFound + ' ' + countOrphans + '\n' + sLabelDeleted + ' ' + countDeleted);
 	} ,
 
 	createMenuItem: function createMenuItem(value, label) {
@@ -1458,7 +1459,7 @@ QuickFolders.Interface = {
   addCustomStyles: function addCustomStyles(button, entry) {
     function getLabel(button) {
         let anonChildren = document.getAnonymousNodes(button);
-        if (anonChildren) return null;
+        if (!anonChildren) return null;
         for (let i=0; i<anonChildren.length; i++) {
           if (anonChildren[i].className == 'toolbarbutton-text')
             return anonChildren[i];
@@ -1470,7 +1471,9 @@ QuickFolders.Interface = {
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
         button.style.setProperty('background-image', entry.cssBack, 'important');
-        getLabel(button).style.setProperty('color', entry.cssColor, 'important');
+        let l = getLabel(button);
+        if (l) 
+          l.style.setProperty('color', entry.cssColor, 'important');
       }
       catch(ex) {
         QuickFolders.Util.logException('custom CSS failed',ex);
@@ -1479,7 +1482,9 @@ QuickFolders.Interface = {
     else {
       if(button.id == 'QuickFoldersCurrentFolder') {
         button.style.removeProperty('background-image');
-        getLabel(button).style.removeProperty('color');
+        let l = getLabel(button);
+        if (l) 
+          l.style.removeProperty('color');
       }
     }
   },
@@ -3330,7 +3335,8 @@ QuickFolders.Interface = {
 				this.hideFindPopup();
 			}
 			else { // this should not happen as we have found it from the folder tree!
-				alert('could not find folder!');
+				//alert('could not find folder!');
+				Services.prompt.alert(null,"QuickFolders",'could not find folder!');
 				this.findFolder(false);
 				this.hideFindPopup();
 			}
@@ -3366,7 +3372,8 @@ QuickFolders.Interface = {
 						this.updateFolders(true, true);
 					}
 					else {
-						alert('Could not find that path either!');
+						//alert('Could not find that path either!');
+						Services.prompt.alert(null,"QuickFolders",'Could not find that path either!');
 					}
 				}
 				break;
@@ -3877,7 +3884,8 @@ QuickFolders.Interface = {
 			}
 		}
 		catch(e) {
-			alert('ensureStyleSheetLoaded failed: ' + e);
+			//alert('ensureStyleSheetLoaded failed: ' + e);
+			Services.prompt.alert(null,"QuickFolders",'ensureStyleSheetLoaded failed: ' + e);
 		}
 	} ,
 	
@@ -4416,16 +4424,17 @@ QuickFolders.Interface = {
 
 	} ,
 	
-	displayNavigationToolbar: function displayNavigationToolbar(visible, singleMessage) {
+	displayNavigationToolbar: function displayNavigationToolbar(visible, singleMessage = false) {
 		QuickFolders.Util.logDebugOptional("interface", "displayNavigationToolbar(" + visible + ", singleMessage=" + singleMessage + ")");
-		var winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+		let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 						 .getService(Components.interfaces.nsIWindowMediator);
 		
-		var mail3PaneWindow = winMediator.getMostRecentWindow("mail:3pane");
-		var mailMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
+		let mail3PaneWindow = winMediator.getMostRecentWindow("mail:3pane");
+		let mailMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
+    let doc;
 		if (singleMessage) {
 			if (null == mailMessageWindow) return; // single message window not displayed
-			var doc = mailMessageWindow.document;
+			doc = mailMessageWindow.document;
 		}
 		else {
 			if (null == mail3PaneWindow) return; // main window not displayed
@@ -4436,38 +4445,28 @@ QuickFolders.Interface = {
 		
 		// doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
 
+		let mm = doc.getElementById("multimessage");
+    let isMultiHidden = mm ? ("true" == mm.getAttribute('hidden')) : false;
+    let currentFolderBar, unusedFolderBar;
 		if (singleMessage) {
-			var currentFolderBar = 
+			currentFolderBar = 
 				doc.getElementById( "QuickFolders-PreviewToolbarPanel-Single" );
 		}
 		else {
-			var mm = doc.getElementById("multimessage");
-			
-			currentFolderBar = 
-				(mm) 
-				? 
-				doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
-				:
-				doc.getElementById( "QuickFolders-PreviewToolbarPanel" );
+			currentFolderBar = (isMultiHidden)
+				? doc.getElementById("QuickFolders-PreviewToolbarPanel")
+				: doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView");
+      unusedFolderBar = (isMultiHidden)
+        ? doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
+        : doc.getElementById( "QuickFolders-PreviewToolbarPanel" );
 		}
 
 		if (currentFolderBar) {
 			currentFolderBar.style.display= visible ? '-moz-box' : 'none';
 			QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, singleMessage);
-		}
-		
-		if (mm) {
-			// toggle the other one off
-			var unusedFolderBar =
-				(mm.id == "QuickFolders-PreviewToolbarPanel") 
-				?
-				doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
-				:
-				doc.getElementById( "QuickFolders-PreviewToolbarPanel" );
-				
-			if (unusedFolderBar) 
-				unusedFolderBar.style.display = 'none';
-				
+      // toggle the other one off
+      if (unusedFolderBar) 
+        unusedFolderBar.style.display = 'none';
 		}
 	} ,
 
@@ -4521,43 +4520,46 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional("interface", "onDeckChange(" + event + ")");
 		let panel = "";
 		let isMailPanel = false;
+    let hideToolbar = QuickFolders.Preferences.getBoolPref("toolbar.onlyShowInMailWindows");
+    // used to early exit when !hideToolbar
 		
-		if (!QuickFolders.Preferences.getBoolPref("toolbar.onlyShowInMailWindows"))
-			return;
-	
-		var toolbar = this.Toolbar;
+		let toolbar = this.Toolbar;
 		if (event) {
-			var targetId = event.target.id;
+			let targetId = event.target.id;
 			if (targetId != "displayDeck") return;
 
 		 	panel = event.target.selectedPanel.id.toString();
-			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar + " - panel: " + panel);
+			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - panel: " + panel);
 		} 
 		else { //tab
 			panel = this.CurrentTabMode;
-			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar + " - panel: " + panel);
+			QuickFolders.Util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - panel: " + panel);
 			if (panel != "glodaSearch-result" && panel != "calendar" && panel != "tasks" && panel != "contentTab")
 				isMailPanel = true;
 		}
 		let isMailSingleMessageTab = (panel == "message") ? true  : false;
-
 		let action = "";
-		
+      
 		if (panel == "threadPaneBox" || panel == "accountCentralBox" || panel == "folder" || panel == "glodaList" ||
 		    isMailPanel && !QuickFolders.Preferences.getBoolPref("toolbar.hideInSingleMessage")) {
 			action = "Showing";
-			toolbar.removeAttribute("collapsed");
+      if (hideToolbar)
+        toolbar.removeAttribute("collapsed");
 		} 
 		else {
 			action = "Collapsing";
-			toolbar.setAttribute("collapsed", true);
+      if (hideToolbar)
+        toolbar.setAttribute("collapsed", true);
 		}
-		QuickFolders.Util.logDebugOptional("toolbarHiding",action + " QuickFolders Toolbar (panel=" + panel + ")");
+		QuickFolders.Util.logDebugOptional("toolbarHiding (panel=" + panel + ")" + action + " QuickFolders Toolbar ");
 		
-		let singleMessageCurrentFolderTab = this.CurrentFolderBar;
-		if (singleMessageCurrentFolderTab && !QuickFolders.Preferences.isShowCurrentFolderToolbar(true)) {
+    // always hide CF toolbar in single message mode 
+    let singleMessageCurrentFolderPanel = document.getElementById("QuickFolders-PreviewToolbarPanel");
+    singleMessageCurrentFolderPanel.style.display= isMailSingleMessageTab ? 'none' : '-moz-box' ;
+		/*let singleMessageCurrentFolderTab = this.CurrentFolderBar;
+		if (singleMessageCurrentFolderTab) { //  && !QuickFolders.Preferences.isShowCurrentFolderToolbar(true)
 			singleMessageCurrentFolderTab.collapsed = isMailSingleMessageTab;
-		}
+		}*/
 
 	} ,
 	
@@ -4622,7 +4624,8 @@ QuickFolders.Interface = {
 			catch(ex) {
 				sPrompt = QuickFolders.Util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");
 				sPrompt = sPrompt.replace("{0}", fromFolder.prettyName);
-				alert(sPrompt + "\n" + ex);
+				//alert(sPrompt + "\n" + ex);
+				Services.prompt.alert(null,"QuickFolders",sPrompt + "\n" + ex);
 				QuickFolders.Util.logException("Exception in movefolder ", ex);
 			}			
 		}

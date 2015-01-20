@@ -1031,9 +1031,25 @@ QuickFolders.Options = {
 	toggleCurrentFolderBar_SingleMessage: function toggleCurrentFolderBar_SingleMessage(chk) {
 		var checked = chk.checked ? chk.checked : false;
 		QuickFolders.Interface.displayNavigationToolbar(checked, true);
-	}
-
-	
+	},
+  
+  onTabSelect: function onTabSelect(element, event) {
+    let el = event.target;
+    if (el.selectedPanel) {
+      // let v = el.ownerDocument.defaultView;
+      // el.ownerDocument.getElementsByTagName('pushbutton');
+      let donateButton = document.documentElement.getButton('extra2');
+      switch (el.selectedPanel.id) {
+        case 'QuickFolders-Options-goPro':
+          donateButton.collapsed = true;
+          break;
+        default:
+          donateButton.collapsed = false;
+          break;
+      }
+      QuickFolders.Util.logDebug('Tab Select: ' + element.id + ' selected panel = ' + el.selectedPanel.id);
+    }
+  }
 }
 
 

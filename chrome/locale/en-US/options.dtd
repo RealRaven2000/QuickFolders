@@ -15,12 +15,12 @@
 <!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.label.tabContent "Tab Content">
-<!ENTITY qf.checkbox.showUnreadBold "Display tabs for folders with unread messages in bold">
-<!ENTITY qf.checkbox.showNonEmptyItalics "Display tabs for folders which contain messages italic">
+<!ENTITY qf.checkbox.showUnreadBold "Display tabs with unread messages in bold">
+<!ENTITY qf.checkbox.showNonEmptyItalics "Display tabs which contain messages italic">
 <!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
 <!ENTITY qf.checkbox.highlightNewMail "Highlight folders with new mail">
-<!ENTITY qf.checkbox.showUnreadMessageCount "Display the number of unread messages on the folder button">
-<!ENTITY qf.checkbox.showTotalMessageCount "Display the total number of messages on the folder button">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Display the number of unread messages">
+<!ENTITY qf.checkbox.showTotalMessageCount "Display the total number of messages">
 <!ENTITY qf.checkbox.showCountInSubFolders "Also display totals of subfolders">
 <!ENTITY qf.checkbox.showCountInSubFolders.tooltip "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active">
 <!ENTITY qf.button.configureTooltips "Configure tooltips…">

@@ -1,66 +1,123 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders Beállítások">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.options.versionnumber.tooltip "A programverziók közti változások megjelenítéséhez kattintson jobb gombbal.">
 <!ENTITY qf.tab.general "Általános">
 <!ENTITY qf.tab.advanced "Haladó">
 <!ENTITY qf.tab.layout "Spécizze fel a füleket!">
 <!ENTITY qf.tab.quickhelp "Gyorssegéd">
-<!ENTITY qf.checkbox.displaylabel "&quot;QuickFolders&quot; címke megjelenítése az eszköztáron">
+<!ENTITY qf.tab.support "Támogatás">
+<!ENTITY qf.label.keyboard "Billentyű kombinációk">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)">
+<!ENTITY qf.checkbox.showshortcutnumber "Gyorsgomb sorszám megjelenítése a mappák címkéjén">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Alt helyett Ctrl használata">
 <!ENTITY qf.checkbox.useRebuildShortcut "Fülek újraépítése a Ctrl + Alt + billentyűkombinációval">
 <!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+Jobbra / Alt+Balra az előző / következő fülhöz">
-<!ENTITY qf.checkbox.showshortcutnumber "Gyorsgomb sorszám megjelenítése a mappák címkéjén">
-<!ENTITY qf.checkbox.showUnreadMessageCount "Az olvasatlan üzenetek számának megjelenítése a mappán">
+<!ENTITY qf.label.tabContent "Fül tartalom">
 <!ENTITY qf.checkbox.showUnreadBold "Olvasatlan üzeneteket tartalmazó mappák megjelenítése félkövérrel">
-<!ENTITY qf.checkbox.showTotalMessageCount "Az összes üzenetek számának megjelenítése a mappán">
-<!ENTITY qf.checkbox.showCountInSubFolders "Az almappákét is jelenítse meg">
-<!ENTITY qf.button.configureTooltips "Configure tooltips…">
-<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Ezek '+' -al lesznek elválasztva a fő számtól, ha tartalmaz olvasatlan üzenetet, a fül is félkövér lesz, amennyiben a fenti opció aktív">
-<!ENTITY qf.checkbox.showMessageNavigation "Üzenet mozgatás gombok">
-<!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Olvasatlan üzeneteket tartalmazó mappák megjelenítése dőlttel">
 <!ENTITY qf.checkbox.showNewMailItalics "Display tabs with newly arrived mail italic">
-<!ENTITY qf.checkbox.enableTransitions "CSS átmenetek engedélyezése">
-<!ENTITY qf.checkbox.enableTransitions.tooltip "Sima átmeneteket jelenít meg a fülek színezésén.">
 <!ENTITY qf.checkbox.highlightNewMail "Új üzeneteket tartalmazó mappák kiemelése">
+<!ENTITY qf.checkbox.showUnreadMessageCount "Az olvasatlan üzenetek számának megjelenítése a mappán">
+<!ENTITY qf.checkbox.showTotalMessageCount "Az összes üzenetek számának megjelenítése a mappán">
+<!ENTITY qf.checkbox.showCountInSubFolders "Az almappákét is jelenítse meg">
+<!ENTITY qf.checkbox.showCountInSubFolders.tooltip "Ezek '+' -al lesznek elválasztva a fő számtól, ha tartalmaz olvasatlan üzenetet, a fül is félkövér lesz, amennyiben a fenti opció aktív">
+<!ENTITY qf.button.configureTooltips "Configure tooltips…">
+<!ENTITY qf.label.behavior "Viselkedés">
+<!ENTITY qf.checkbox.autoFocusPreview "Üzenetlista kijelölése fülek váltásakor">
+<!ENTITY qf.checkbox.showSubfolders "Fülek kiterjesztése a felugró ablakokban">
+<!ENTITY qf.checkbox.sortMenusAlpha "Almappák felsorolása ABC sorrendben a menüben">
+<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Csak akkor használja ezt a funkciót, ha az e-mail kliense nem megfelelő sorrendben jeleníti meg az almappákat.">
+<!ENTITY qf.checkbox.autoHideToolbar "QuickFolders mappák elrejtése amikor nem szükségesek">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Speciális eszköztárak összecsukása, mint a naptár, a tartalom és a kiegészítőkezelő.">
+<!ENTITY qf.label.mainToolbar "Fő eszköztár elemek">
+<!ENTITY qf.checkbox.showRecentTab "Mutassa az előző mappa fült">
+<!ENTITY qf.checkbox.showRecentTab.tooltip "Kattintson jobb gombbal a beállításokhoz">
+<!ENTITY qf.checkbox.showQuickMove "quickMove Button">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box.">
+<!ENTITY qf.checkbox.tabMenuIcon "Eszköztár ikon">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "A menü az eszköztáron jobb kattintással is előhívható">
 <!ENTITY qf.toolbarMinimumHeight "Minimum height:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
-<!ENTITY qf.label.pixels "pixelek">
-<!ENTITY qf.label.appearance "Megjelenés">
-<!ENTITY qf.label.behavior "Viselkedés">
-<!ENTITY qf.label.mainToolbar "Fő eszköztár elemek">
-<!ENTITY qf.label.keyboard "Billentyű kombinációk">
-<!ENTITY qf.label.menus "Menü konfiguráció">
-<!ENTITY qf.label.menus.mailFolder "Mail Commands">
-<!ENTITY qf.label.menus.quickFolder "QuickFolders Commands">
-<!ENTITY qf.label.menus.customIcon "Customize Icon">
-<!ENTITY qf.label.menus.lineBreak "Insert Line Break">
-<!ENTITY qf.label.menus.separator "Insert Separator">
-<!ENTITY qf.label.menus.help "QuickFolders Help">
-<!ENTITY qf.label.menus.support "QuickFolders Support">
-<!ENTITY qf.label.menus.options "Options">
-<!ENTITY qf.label.colors "Színek">
-<!ENTITY qf.label.themes "Témák:">
-<!ENTITY qf.label.tabContent "Fül tartalom">
-<!ENTITY qf.label.misc "Egyéb">
-<!ENTITY qf.button.default "Alapértelmezett">
 <!ENTITY qf.label.currentFolderToolbar "Jelenlegi mappa eszköztár">
 <!ENTITY qf.checkbox.currentFolder.show "Eszköztár megjelenítése">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "… az üzenetablakokban is">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "A jelenlegi mappa eszköztár megjelenítése abban az ablakban, ami az üzenet új ablakban való megjelenítésekor nyílik">
+<!ENTITY qf.checkbox.showRecentButton "Nemrég látogatott mappák gomb">
+<!ENTITY qf.checkbox.showMessageNavigation "Üzenet mozgatás gombok">
+<!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
+<!ENTITY qf.checkbox.showFilterButton "&quot;Szűrők létrehozása&quot; gomb">
+<!ENTITY qf.checkbox.showFilterButton.tooltip "Szűrőket a QuickFolders jobb gombos menüjének használatával is készíthet.">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Bezárás gomb">
+<!ENTITY qf.label.menus "Menü konfiguráció">
+<!ENTITY qf.label.menus.mailFolder "Mail Commands">
+<!ENTITY qf.checkbox.menus.getMailForInbox "Üzenetek letöltése (levelezési postafiókok)">
+<!ENTITY qf.checkbox.menus.getMailForNews "Üzenetek letöltése (hírcsatorna fiókok)">
+<!ENTITY qf.checkbox.menus.markAllRead "Mappa jelölése olvasottként">
+<!ENTITY qf.checkbox.menus.emptyJunk "Piszkozatok kiürítése">
+<!ENTITY qf.checkbox.menus.emptyTrash "Törölt elemek kiürítése">
+<!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
+<!ENTITY qf.label.menus.quickFolder "QuickFolders Commands">
+<!ENTITY qf.label.menus.separator "Insert Separator">
+<!ENTITY qf.label.menus.lineBreak "Insert Line Break">
+<!ENTITY qf.label.menus.customIcon "Customize Icon">
+<!ENTITY qf.label.menus.help "QuickFolders Help">
+<!ENTITY qf.label.menus.support "QuickFolders Support">
+<!ENTITY qf.label.menus.options "Options">
+<!ENTITY qf.caption.currentFolderBackground "Current Folder Toolbar background">
 <!ENTITY qf.button.currentFolderBackground.set "apply">
-<!ENTITY qf.currentFolderBackground.custom "custom">
-<!ENTITY qf.currentFolderBackground.translucent "translucent">
 <!ENTITY qf.currentFolderBackground.default "default">
 <!ENTITY qf.currentFolderBackground.dark "dark">
-<!ENTITY qf.caption.currentFolderBackground "Current Folder Toolbar background">
-<!ENTITY qf.label.setcolors "Szöveg színének, háttér színének beállítása">
+<!ENTITY qf.currentFolderBackground.translucent "translucent">
+<!ENTITY qf.currentFolderBackground.custom "custom">
+<!ENTITY qf.label.misc "Egyéb">
+<!ENTITY qf.checkbox.displaylabel "&quot;QuickFolders&quot; címke megjelenítése az eszköztáron">
+<!ENTITY qf.checkbox.displaylabel.tooltip "kattintson jobb gombbal a címke címének megváltoztatásához">
+<!ENTITY qf.checkbox.enableTransitions "CSS átmenetek engedélyezése">
+<!ENTITY qf.checkbox.enableTransitions.tooltip "Sima átmeneteket jelenít meg a fülek színezésén.">
+<!ENTITY qf.checkbox.debug "Debug mód">
+<!ENTITY qf.checkbox.debug.tooltip "kattintson jobb gombbal a jelölőnégyzetbe a debug opciókhoz">
+<!ENTITY qf.label.initdelay "[ms] kezdési késleltetés (1000 az alapértelmezett):">
+<!ENTITY qf.label.folders "Mappák?">
+<!ENTITY qf.label.folders.tooltip "Mappák beállításainak másolása a vágólapra">
+<!ENTITY qf.label.appearance "Megjelenés">
+<!ENTITY qf.label.themes "Témák:">
+<!ENTITY qf.themes.flatTabs.label "Flat Style">
+<!ENTITY qf.themes.applePills.label "Apple Pills">
+<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
+<!ENTITY qf.themes.realButtons.label "Nyomógombok">
+<!ENTITY qf.themes.flatButtons.label "Eszköztár gombok">
+<!ENTITY qf.options.label.themeAuthor "Téma szerzője:">
+<!ENTITY qf.checkbox.showIcons "Ikonok megjelenítése (Beérkezett üzenetek, Elküldött üzenetek, Spam, Törölt elemek, Piszkozatok, Archívum, Sablonok)">
+<!ENTITY qf.label.pixels "pixelek">
+<!ENTITY qf.options.themes.showBorders.checkbox "Mindig jelenítse meg a szegélyeket">
+<!ENTITY qf.options.themes.customCornerRadius.checkbox "Egyedi corner radius">
+<!ENTITY qf.options.themes.customCornerRadius.Top.label "Felső:">
+<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Alsó:">
+<!ENTITY qf.button.default "Alapértelmezett">
+<!ENTITY qf.label.ToolbarBackground "Eszköztár háttérszíne:">
+<!ENTITY qf.checkbox.transparent "átlátszó">
+<!ENTITY qf.label.colors "Színek">
+<!ENTITY qf.label.UncoloredTab "Uncolored Tab">
+<!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
+<!ENTITY qf.palette.twoColors "2 Colors">
+<!ENTITY qf.palette.standard "Standard Palette">
+<!ENTITY qf.palette.pastel "Pastel Colors">
+<!ENTITY qf.palette.night "Night Vision">
+<!ENTITY qf.palette.inactive "Like inactive Tabs">
+<!ENTITY qf.label.ColoredTabPalette "Palette for Colored Tabs:">
+<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette for tabs with a specific color">
+<!ENTITY qf.checkbox.shadows "árnyékok">
+<!ENTITY qf.options.LayoutColorAppearance "Egyéni fül szín megjelenítés">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "(csíkos stílus)">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "(kitöltött stílus)">
 <!ENTITY qf.label.ActiveTabColor "Aktív fül színe:">
 <!ENTITY qf.label.HoveredTabColor "Fókuszban lévő fül színe">
 <!ENTITY qf.label.DragOverBackground "Ráhúzott fül színe:">
-<!ENTITY qf.label.ToolbarBackground "Eszköztár háttérszíne:">
+<!ENTITY qf.label.setcolors "Szöveg színének, háttér színének beállítása">
+<!ENTITY qf.button.defaultcolors "Alapértelmezett színek">
+<!ENTITY qf.description.linkNote "QuickFolders  honlap meglátogatása: részletes ismertető, tippek, és GYÍK">
+<!ENTITY qf.label.homePage "További információ az új QuickFolders honlapon a Mozdev.org -on...">
 <!ENTITY qf.description.dragToAdd "Új gyorsmappa (hivatkozásként működik) létrehozásához húzza az üzenetmappát az eszköztár üres részére. Húzza az üzeneteket a gyorsmappára, hogy a megfelelő mappába mozgassa őket (vagy másolja módosító billentyűvel). Kattintson a gyorsmappára a főmappa megnyitásához.">
 <!ENTITY qf.description.dragToPosition "Húzza a gyorsmappákat oldalra a helyzetük megváltoztatásához. Kattintson jobb gombbal a környezeti menü eléréséhez; kijelöléssel az almappába ugorhat. A &apos;könyvjelző&apos; átnevezése megváltoztatja a gyorsmappa nevét. A &apos;könyvjelző eltávolítása&apos; törli a gyorsmappát (kivéve, ha ez a főmappa).">
 <!ENTITY qf.description.dragToPopup "Húzza az üzeneteket a gyorsmappa felugró menüjébe az almappákba való mozgatáshoz.">
@@ -68,76 +125,19 @@
 <!ENTITY qf.description.rightClickOptions "Kattintson jobb gombbal egy üres helyre az opciók menü előhívásához. Itt választhat alap stílust (kisebb) vagy lapos stílust (áttekinthetőbb).">
 <!ENTITY qf.description.tipMsg "Tipp: ha rengeteg mappája van, próbálja ki a Nostalgy kiegészítőt, mellyel a billentyűzettel rendezheti az üzeneteit!">
 <!ENTITY qf.description.experimentalItems "A következő elemek fejlesztésben vannak, remélhetőleg a következő változatban működni fognak!">
-<!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">
-<!ENTITY qf.button.defaultcolors "Alapértelmezett színek">
-<!ENTITY qf.checkbox.debug "Debug mód">
-<!ENTITY qf.label.UncoloredTab "Uncolored Tab">
-<!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
-<!ENTITY qf.label.ColoredTabPalette "Palette for Colored Tabs:">
-<!ENTITY qf.label.ColoredTabPalette.tooltip "Palette for tabs with a specific color">
-<!ENTITY qf.checkbox.usePalette "Paletta használata">
-<!ENTITY qf.label.initdelay "[ms] kezdési késleltetés (1000 az alapértelmezett):">
-<!ENTITY qf.label.folders "Mappák?">
-<!ENTITY qf.label.folders.tooltip "Mappák beállításainak másolása a vágólapra">
-<!ENTITY qf.checkbox.autoFocusPreview "Üzenetlista kijelölése fülek váltásakor">
-<!ENTITY qf.label.homePage "További információ az új QuickFolders honlapon a Mozdev.org -on...">
-<!ENTITY qf.tab.support "Támogatás">
-<!ENTITY qf.description.languages "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a Babelzillán:">
-<!ENTITY qf.label.languagesLink "Fordítás hozzáadása…">
 <!ENTITY qf.description.donate "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért.">
 <!ENTITY qf.label.donateLink "Adományozási honlap megtekintése…">
-<!ENTITY qf.label.donate "Támogatás">
-<!ENTITY qf.description.contactMe "Személyesen is elérhet a axelg@gofree.indigo.ie címen:">
-<!ENTITY qf.label.contactLink "Lépjen kapcsolatba velem (angolul vagy németül)…">
-<!ENTITY qf.checkbox.showIcons "Ikonok megjelenítése (Beérkezett üzenetek, Elküldött üzenetek, Spam, Törölt elemek, Piszkozatok, Archívum, Sablonok)">
-<!ENTITY qf.checkbox.showSubfolders "Fülek kiterjesztése a felugró ablakokban">
-<!ENTITY qf.checkbox.showRecentTab "Mutassa az előző mappa fült">
-<!ENTITY qf.checkbox.showRecentButton "Nemrég látogatott mappák gomb">
-<!ENTITY qf.checkbox.showRecentTab.tooltip "Kattintson jobb gombbal a beállításokhoz">
-<!ENTITY qf.checkbox.showQuickMove "quickMove Button">
-<!ENTITY qf.checkbox.showQuickMove.tooltip "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box.">
-<!ENTITY qf.checkbox.showFilterButton "&quot;Szűrők létrehozása&quot; gomb">
-<!ENTITY qf.checkbox.showFilterButton.tooltip "Szűrőket a QuickFolders jobb gombos menüjének használatával is készíthet.">
-<!ENTITY qf.checkbox.autoHideToolbar "QuickFolders mappák elrejtése amikor nem szükségesek">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Speciális eszköztárak összecsukása, mint a naptár, a tartalom és a kiegészítőkezelő.">
-<!ENTITY qf.checkbox.tabMenuIcon "Eszköztár ikon">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "A menü az eszköztáron jobb kattintással is előhívható">
-<!ENTITY qf.menu.tabColor "Nincs szín!">
-<!ENTITY qf.menu.Color "Szín">
-<!ENTITY qf.options.LayoutColorAppearance "Egyéni fül szín megjelenítés">
-<!ENTITY qf.options.LayoutColorAppearanceStriped "(csíkos stílus)">
-<!ENTITY qf.options.LayoutColorAppearanceFilled "(kitöltött stílus)">
-<!ENTITY qf.options.label.themeAuthor "Téma szerzője:">
-<!ENTITY qf.themes.nativeTabs.label "Native Tabs">
-<!ENTITY qf.themes.flatTabs.label "Flat Style">
-<!ENTITY qf.themes.applePills.label "Apple Pills">
-<!ENTITY qf.themes.realButtons.label "Nyomógombok">
-<!ENTITY qf.themes.flatButtons.label "Eszköztár gombok">
-<!ENTITY qf.options.theme.pastelColors "Pasztell színek">
-<!ENTITY qf.options.themes.customCornerRadius.checkbox "Egyedi corner radius">
-<!ENTITY qf.options.themes.customCornerRadius.Top.label "Felső:">
-<!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Alsó:">
-<!ENTITY qf.options.themes.showBorders.checkbox "Mindig jelenítse meg a szegélyeket">
-<!ENTITY qf.description.linkNote "QuickFolders  honlap meglátogatása: részletes ismertető, tippek, és GYÍK">
-<!ENTITY qf.checkbox.transparent "átlátszó">
-<!ENTITY qf.checkbox.shadows "árnyékok">
-<!ENTITY qf.checkbox.debug.tooltip "kattintson jobb gombbal a jelölőnégyzetbe a debug opciókhoz">
-<!ENTITY qf.checkbox.displaylabel.tooltip "kattintson jobb gombbal a címke címének megváltoztatásához">
-<!ENTITY qf.checkbox.sortMenusAlpha "Almappák felsorolása ABC sorrendben a menüben">
-<!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Csak akkor használja ezt a funkciót, ha az e-mail kliense nem megfelelő sorrendben jeleníti meg az almappákat.">
-<!ENTITY qf.options.versionnumber.tooltip "A programverziók közti változások megjelenítéséhez kattintson jobb gombbal.">
 <!ENTITY qf.description.bugzilla "Bugok jelentéséhez és új funkciók javaslásához kérem használja a Bugzillát">
 <!ENTITY qf.label.bugzilla "Bug jelentése / Új funkció javaslása a Bugzillán">
 <!ENTITY qf.description.versionhistory "Részletes verziótörténet a mozdev.org -on">
 <!ENTITY qf.label.versionhistory "Verziótörténet">
-<!ENTITY qf.checkbox.menus.getMailForInbox "Üzenetek letöltése (levelezési postafiókok)">
-<!ENTITY qf.checkbox.menus.getMailForNews "Üzenetek letöltése (hírcsatorna fiókok)">
-<!ENTITY qf.checkbox.menus.markAllRead "Mappa jelölése olvasottként">
-<!ENTITY qf.checkbox.menus.emptyJunk "Piszkozatok kiürítése">
-<!ENTITY qf.checkbox.menus.emptyTrash "Törölt elemek kiürítése">
-<!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
-<!ENTITY qf.palette.twoColors "2 Colors">
-<!ENTITY qf.palette.standard "Standard Palette">
-<!ENTITY qf.palette.pastel "Pastel Colors">
-<!ENTITY qf.palette.night "Night Vision">
-<!ENTITY qf.palette.inactive "Like inactive Tabs">
+<!ENTITY qf.description.languages "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a Babelzillán:">
+<!ENTITY qf.label.languagesLink "Fordítás hozzáadása…">
+<!ENTITY qf.description.contactMe "Személyesen is elérhet a axelg@gofree.indigo.ie címen:">
+<!ENTITY qf.label.contactLink "Lépjen kapcsolatba velem (angolul vagy németül)…">
+<!ENTITY qf.label.donate "Támogatás">
+<!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">
+<!ENTITY qf.checkbox.usePalette "Paletta használata">
+<!ENTITY qf.options.theme.pastelColors "Pasztell színek">
+<!ENTITY qf.menu.tabColor "Nincs szín!">
+<!ENTITY qf.menu.Color "Szín">

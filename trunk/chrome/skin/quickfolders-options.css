@@ -177,16 +177,8 @@ label.text-link, label.text-link[visited="true"] {
 	font-size: 12px;
 }
 
-description.quickhelp-desc, description.quickhelp-dbg {
-	position:absolute;
-	text-align:justify;
-	max-width: 620px;
-	padding: 2px 0px;
-	margin: 1px 0px;
-	line-height:1.2em;
-	bottom:5px;
-	overflow-y: scroll;
-	overflow-x: auto;
+#quickHelpTextPane {
+  max-width: 630px;
 }
 
 description#importantNote {
@@ -194,15 +186,12 @@ description#importantNote {
 	color: #A00 !important;
 }
 
-description.quickhelp-dbg, hbox.quickhelp-dbg {
-	color:#CCC;
-	padding: 3px 8px 3px 8px;
-}
-
 hbox.quickhelp-dbg {
 	background-color:#333;
 	background: linear-gradient(to bottom, rgba(174,188,191,1) 0%, rgba(110,119,116,1) 27%, rgba(10,14,10,1) 48%, rgba(10,8,9,1) 100%);
 	border-radius: 0.5em;
+	color:#CCC;
+	padding: 3px 8px 3px 8px;
 }
 
 .shortCutKey {
@@ -213,6 +202,18 @@ hbox.quickhelp-dbg {
 #QuickFolders-Options-Tabbox tab {
 	border-radius: 4px 4px 0 0;
 }
+
+/* Experimental to avoid ugly tabs */
+/*
+#QuickFolders-Options-Tabbox tab:not([selected="true"]) {
+  max-width: 120px !important;
+}
+
+#QuickFolders-Options-Tabbox tab:not([selected="true"]) .tab-text{
+	min-width: 3em;
+	text-overflow: ellipsis;
+}
+*/
 
 #QuickFolders-Options-Tabbox tab .tab-icon { margin-right:6px; }
 
@@ -235,9 +236,15 @@ hbox.quickhelp-dbg {
 	height: 4.5em !important;
 }
 
-#btnLicense, #validationPassed, #validationFailed, #validationExpired, #validationInvalidEmail, #validationEmailNoMatch {
+#QuickFolders-Options-quickhelp {
+  padding-left: 16px;
+  padding-right: 16px;
+	text-align: justify;
+}
+
+#btnLicense, .niceFont {
   font-family: cambria, Georgia, serif;
-  font-size: 11pt;
+  font-size: 10.2pt;
 }
 #validationPassed {
   color: rgb(0,120,0);
@@ -345,3 +352,4 @@ hbox.quickhelp-dbg {
 	color: #FFF !important;
 	text-shadow: #fdd 0 0 1px;
 }
+

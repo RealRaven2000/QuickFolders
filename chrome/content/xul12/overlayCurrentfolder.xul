@@ -123,9 +123,11 @@
 			<spacer flex="10" id="QF-CurrentRightSpacer" />
 		</hbox>
 
-	
+	<!-- toolbar for Postbox -->
 	<vbox id="singlemessage">
-		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView" style="display:none;">
+		<hbox id="QuickFolders-PreviewToolbarPanel" 
+		      insertafter="msgHeaderView" 
+					style="display:none;">
 			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
 			<toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
 				<toolbarbutton id="QuickFolders-CurrentMail"

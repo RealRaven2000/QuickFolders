@@ -60,7 +60,7 @@
 				<tab id="QuickFolders-Support" label="&qf.tab.support;" />
 				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" />
 			</tabs>
-			<tabpanels>
+			<tabpanels  onselect="QuickFolders.Options.onTabSelect(this,event)">
 				<tabpanel id="QuickFolders-Options-general" orient="vertical" label="&qf.tab.general;">
 					<preferences>
 						<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
@@ -421,7 +421,7 @@
 					</hbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical" id="QuickFolders-Options-layout" label="Layout">
+				<tabpanel orient="vertical" id="QuickFolders-Options-layout">
 					<preferences>
 						<preference id="QuickFolders-Preferences-CustomizedRadius" name="extensions.quickfolders.style.corners.customizedRadius" type="bool" />
 						<preference id="QuickFolders-Preferences-TopRadius" name="extensions.quickfolders.style.corners.customizedTopRadiusN" type="int" />
@@ -827,33 +827,31 @@
 					</groupbox>
 					<spacer flex="2" />
 				</tabpanel>
-				<tabpanel id="QuickFolders-Options-quickhelp"
-									orient="vertical"
-									label="&qf.tab.quickhelp;">
-					<description id="importantNote">&qf.description.linkNote;</description>
-					<vbox>
-						<button id="L0" height="40"
-										href="http://quickfolders.mozdev.org/"
-										tooltiptext="quickfolders.mozdev.org"
-										onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/')">
-							<label width="240">&qf.label.homePage;</label>
-						</button>
-					</vbox>
-					<separator class="thin" />
-					<vbox maxwidth="630" flex="1">
-						<description>&qf.description.dragToAdd;</description>
-						<description>&qf.description.dragToPosition;</description>
-						<description>&qf.description.dragToPopup;</description>
-						<description>&qf.description.changeCategory;</description>
-						<description>&qf.description.rightClickOptions;</description>
+				<tabpanel id="QuickFolders-Options-quickhelp" orient="vertical" align="center">
+					<vbox id="quickHelpTextPane" flex="1">
+						<separator class="thin" />
+							<description id="importantNote" class="niceFont">
+								&qf.description.linkNote;
+							</description>
+							<vbox height="70">
+							<button id="L0" height="40"
+											href="http://quickfolders.mozdev.org/"
+											tooltiptext="quickfolders.mozdev.org"
+											onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/')">
+								<label width="240">&qf.label.homePage;</label>
+							</button>
+						</vbox>
+						<description class="niceFont">&qf.description.dragToAdd;</description>
+						<description class="niceFont">&qf.description.dragToPosition;</description>
+						<description class="niceFont">&qf.description.dragToPopup;</description>
+						<description class="niceFont">&qf.description.changeCategory;</description>
+						<description class="niceFont">&qf.description.rightClickOptions;</description>
 						<!--
 						<description>&qf.description.tipMsg;</description>
 						-->
 					</vbox>
 				</tabpanel>
-				<tabpanel id="QuickFolders-Options-support"
-									orient="vertical"
-									label="&qf.tab.support;">
+				<tabpanel id="QuickFolders-Options-support" orient="vertical">
 					<separator class="thin" />
 					<grid id="supportgrid">
 						<columns>
@@ -862,7 +860,7 @@
 						</columns>
 						<rows>
 							<row>
-								<description
+								<description class="niceFont"
 									oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
 								<vbox>
 									<button id="L1"
@@ -874,7 +872,7 @@
 							</row>
 							<separator />
 							<row>
-								<description>&qf.description.bugzilla;</description>
+								<description class="niceFont">&qf.description.bugzilla;</description>
 								<vbox>
 									<button id="L2"
 													tooltiptext="quickfolders.mozdev.org/bugs.html"
@@ -885,9 +883,10 @@
 							</row>
 							<separator />
 							<row>
-								<description
-														 oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;"
-									>&qf.description.versionhistory;</description>
+								<description class="niceFont"
+														 oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;">
+									&qf.description.versionhistory;
+								</description>
 								<vbox>
 									<button id="L3"
 													tooltiptext="http://quickfolders.mozdev.org/version.html"
@@ -898,7 +897,7 @@
 							</row>
 							<separator />
 							<row>
-								<description>&qf.description.languages;</description>
+								<description class="niceFont">&qf.description.languages;</description>
 								<vbox>
 									<button id="L4"
 												 tooltiptext="www.babelzilla.org?extension=5099"
@@ -909,7 +908,7 @@
 							</row>
 							<separator />
 							<row>
-								<description>&qf.description.contactMe;</description>
+								<description class="niceFont">&qf.description.contactMe;</description>
 								<vbox>
 									<button id="L5"
 													onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');">
@@ -921,9 +920,7 @@
 					</grid>
 				</tabpanel>
 				<!-- Licensing tab -->
-				<tabpanel id="QuickFolders-Options-goPro"
-									orient="vertical"
-									label="QuickFolders Pro">
+				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
 					<description
 						oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">
 						&qf.label.insertLicense;</description>
@@ -950,11 +947,11 @@
 						<label id="licenseDate" value="-" />
 					</hbox>
 					<separator class = "licenseSeparator" />
-					<description id="validationPassed" collapsed="true">&qf.licenseValidation.passed;</description>
-					<description id="validationFailed" collapsed="true">&qf.licenseValidation.failed;</description>
-					<description id="validationExpired" collapsed="true">&qf.licenseValidation.expired;</description>
-					<description id="validationInvalidEmail" collapsed="true">&qf.licenseValidation.invalidMail;</description>
-					<description id="validationEmailNoMatch" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+					<description id="validationPassed" class="niceFont" collapsed="true">&qf.licenseValidation.passed;</description>
+					<description id="validationFailed" class="niceFont" collapsed="true">&qf.licenseValidation.failed;</description>
+					<description id="validationExpired" class="niceFont" collapsed="true">&qf.licenseValidation.expired;</description>
+					<description id="validationInvalidEmail" class="niceFont" collapsed="true">&qf.licenseValidation.invalidMail;</description>
+					<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
 					<separator flexclass="thin" />
 					<hbox>
 						<spacer flex="1" />
@@ -985,5 +982,6 @@
 				</tabpanel>
 			</tabpanels>
 		</tabbox>
+		<separator class="thin" />
 	</prefpane>
 </prefwindow>

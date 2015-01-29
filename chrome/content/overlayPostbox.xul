@@ -79,7 +79,7 @@
 						<toolbarbutton id="QuickFolders-quickMove"
 									 tooltiptext="&qf.tooltip.quickMove;"
 									 label=""
-									 onclick="QuickFolders.Interface.quickMoveButtonClick(this);"
+									 onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
 									 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
 												 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 												 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"

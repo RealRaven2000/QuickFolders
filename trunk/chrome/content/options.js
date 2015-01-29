@@ -243,11 +243,12 @@ QuickFolders.Options = {
 		}
 		
     /***** Menu Items / Labels *****/
+    /*
 		wd.getElementById("qfInsertSeparator").label = util.getBundleString("qfInsertSeparator");
 		wd.getElementById("qfInsertLineBreak").label = util.getBundleString("qfInsertLineBreak");
 		// bundle strings
 		wd.getElementById("chkShowFolderMenuButton").label = util.getBundleString("qfFolderPopup");
-		// let backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');
+    */
 		this.setCurrentToolbarBackground(QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background.selection'), false);  
 
     /*****  Bling + Stuff  *****/

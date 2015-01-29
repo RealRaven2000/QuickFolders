@@ -681,13 +681,13 @@ QuickFolders.Interface = {
 				}
 			}
 
-			// this.onTabSelected();  // wrong, this is most likely too early!
-
 			var sDoneWhat = minimalUpdate ? "rebuilt." : "rendered on toolbar."
 			QuickFolders.Util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
 		}
 
 		// [Bug 25598] highlight active tab
+    if (!minimalUpdate)
+      this.lastTabSelected = null;  // reset to force highlight active tab
 		this.onTabSelected();
 		
 		// current message dragging
@@ -957,6 +957,10 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional("categories","Selecting 1st of Categories: " + categoryName + ": " + firstCat[0] + "...");
 		this.currentlySelectedCategory = selectedCat;
 		this.updateFolders(rebuild, false);
+    // ###################################
+    QuickFolders.Interface.lastTabSelected = null;
+    QuickFolders.Interface.onTabSelected(); // update selected tab?
+    // QuickFolders.Interface.styleSelectedTab(selectedButton);
 
 		let idx;
 		try {
@@ -1259,6 +1263,10 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+  makePopupId: function makePopupId(folder, buttonId) {
+    return 'QuickFolders-folder-popup-' + ((buttonId!=null) ? buttonId : folder.URI);
+  },
+  
 	addFolderButton: function addFolderButton(folder, entry, offset, theButton, buttonId, fillStyle, isFirst) {
 		let tabColor =  (entry && entry.tabColor) ? entry.tabColor : null;			
 		let tabIcon = (entry && entry.icon) ? entry.icon : '';
@@ -1327,8 +1335,7 @@ QuickFolders.Interface = {
 			this.setEventAttribute(button, "oncommand",'QuickFolders.Interface.onButtonClick(event.target, event, true);');
 		}
 
-		var popupId = 'QuickFolders-folder-popup-'
-		          + ((buttonId!=null) ? buttonId : folder.URI);
+		var popupId = this.makePopupId(folder, buttonId);
 		button.setAttribute('context',''); // overwrites the parent context menu
 		this.setEventAttribute(button, "oncontextmenu",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
 		if (buttonId == 'QuickFoldersCurrentFolder') {
@@ -1924,7 +1931,7 @@ QuickFolders.Interface = {
 			}
 		}
 		catch(ex) {
-		  QuickFolders.Util.popupAlert("Problems opening URL: " + aPathOrUrl, ex);
+		  QuickFolders.Util.slideAlert("Problems opening URL: " + aPathOrUrl, ex);
 		}
 		return null;
 	}	,	
@@ -2072,7 +2079,7 @@ QuickFolders.Interface = {
 			folder.updateFolder(msgWindow);
 		}
 		
-		QuickFolders.Util.popupAlert("QuickFolders", this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
+		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
 	} ,
 
 	onRepairFolder: function onRepairFolder(element) {
@@ -2404,9 +2411,20 @@ QuickFolders.Interface = {
 			this.setEventAttribute(menuitem, 
 			  'oncommand',
 				'QuickFolders.Interface.configureCategory_FromMenu(this)');
-
 			QFcommandPopup.appendChild(menuitem);
 
+      if (entry.category) {
+        // RemoveFromCategory
+        menuitem = document.createElement('menuitem');
+        menuitem.className='cmd menuitem-iconic';
+        menuitem.setAttribute('tag','qfRemoveCategory');
+        menuitem.setAttribute('label',this.getUIstring('qfRemoveCategory', 'Remove from Category'));
+
+        this.setEventAttribute(menuitem, 
+          'oncommand',
+          'QuickFolders.Interface.removeFromCategory(this)');
+        QFcommandPopup.appendChild(menuitem);
+      }
 
 			// DeleteQuickFolder
 			menuitem = document.createElement('menuitem');
@@ -2535,14 +2553,14 @@ QuickFolders.Interface = {
 		}
 
 
-		var fi = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-
+		let fi = folder.QueryInterface(Components.interfaces.nsIMsgFolder),
+        MailCommands, isRootMenu;
 
 		/* In certain cases, let's append mail folder commands to the root menu */
 		if (fi.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
 			// newsgroups have no subfolders anyway
-			var MailCommands = menupopup;
-			var isRootMenu = true;
+			MailCommands = menupopup;
+			isRootMenu = true;
 		}
 		else {
 			MailCommands = document.createElement('menupopup');
@@ -2789,10 +2807,8 @@ QuickFolders.Interface = {
 					createFolderMenuItem.id="folderPaneContext-new"; // for styling!
 					createFolderMenuItem.folder=folder;
 					// use parent folder URI as each starting point
-					// this.setEventAttribute(createFolderMenuItem, "oncommand","QuickFolders.Interface.onCreateSubFolder(GetMsgFolderFromURI('" + folder.URI + "'));");
 					this.setEventAttribute(createFolderMenuItem, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(createFolderMenuItem, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
-					//this.setEventAttribute(createFolderMenuItem, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 					popupMenu.appendChild(createFolderMenuItem);
 				}
@@ -2999,13 +3015,13 @@ QuickFolders.Interface = {
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
 	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag) {
 		if (folder.hasSubFolders) {
-			var subfolders;
+			let subfolders;
 			if (typeof folder.subFolders != 'undefined')
 				subfolders = folder.subFolders;
 			else
 				subfolders = folder.GetSubFolders();
 
-			var isAlphaSorted = QuickFolders.Preferences.isSortSubfolderMenus;
+			let isAlphaSorted = QuickFolders.Preferences.isSortSubfolderMenus;
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, false);
 		}
 
@@ -3097,57 +3113,62 @@ QuickFolders.Interface = {
 	findFolderKeyPress: function findFolderKeyPress(event) {
 	  const VK_DOWN = 0x28;
 		const VK_ESCAPE = 0x1B;
+    const VK_ENTER = 0x0D;
+    function makeEvent(evtType, evt) {
+      let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
+      keypress_event.initKeyEvent(evtType, true, true, null,   // typeArg, canBubble, cancelable
+               false, false, false, false,                        // ctrl, alt, shift, meta
+               evt, 0);                                           // keyCode, charcode
+      return keypress_event;
+    }
 		let menupopup;
-	  if (event.keyCode) switch (event.keyCode) 
-		{
+    let util = QuickFolders.Util;
+    let interf = QuickFolders.Interface;
+	  if (event.keyCode) switch (event.keyCode) {
+      case VK_ENTER:
+			  util.logDebugOptional("interface.findFolder","VK_ENTER");
+        interf.findFolderName(event.target, true);
+        event.preventDefault();
+        break;
 		  case VK_DOWN:
-			  QuickFolders.Util.logDebugOptional("interface.findFolder","VK_DOWN");
+			  util.logDebugOptional("interface.findFolder","VK_DOWN");
 				menupopup = document.getElementById('QuickFolders-FindPopup');
 				let fC = menupopup.firstChild;
 				if (!fC) {
-					QuickFolders.Util.logDebugOptional("interface.findFolder","no popup children, early exit");
+					util.logDebugOptional("interface.findFolder","no popup children, early exit");
 				  return; // no children = no results!
 		    }
 				menupopup.removeAttribute('ignorekeys');
 				let palette = document.getElementById('QuickFolders-Palette');
 				if (palette) {
-					QuickFolders.Util.logDebugOptional("interface.findFolder","palette processing");
-					menupopup = palette.appendChild(palette.removeChild(menupopup));
+					util.logDebugOptional("interface.findFolder","1. show Popup...");
+          // remove and add the popup to register ignorekeys removal
+          menupopup = palette.appendChild(palette.removeChild(menupopup));
 					let searchBox = document.getElementById('QuickFolders-FindFolder');
 					if (typeof menupopup.openPopup == 'undefined')
 						menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 					else
-						menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
+						menupopup.openPopup(searchBox,'after_start', 0, -1, true, false); 
+            
 					if (event.preventDefault) event.preventDefault();
 					if (event.stopPropagation) event.stopPropagation();
-					
+          
 					setTimeout( function() {
-						QuickFolders.Util.logDebugOptional("interface.findFolder","creating Keyboard Event VK_DOWN");
-						let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
-						keypress_event.initKeyEvent("keypress", true, true, null,   // typeArg, canBubble, cancelable
-										 false, false, false, false,                        // ctrl, alt, shift, meta
-										 VK_DOWN, 0);                                       // keyCode, charcode
-						
-						if (menupopup.dispatchEvent(keypress_event)) { // now pass it on!
-							// event was not cancelled with preventDefault()
-							QuickFolders.Util.logDebugOptional("interface.findFolder","event was dispatched.");
-							;
+						util.logDebugOptional("interface.findFolder","creating Keyboard Events...");
+						if (menupopup.dispatchEvent(makeEvent('keydown',VK_DOWN))) { // event was not cancelled with preventDefault()
+							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
 						}
-					}, 200);
-					
-					setTimeout( function() { 
-						QuickFolders.Util.logDebugOptional("interface.findFolder","focusing menu popup");
-					  menupopup.focus(); 
-						QuickFolders.Util.logDebugOptional("interface.findFolder","focusing popup's first child.");
-						fC.focus(); }, 350 );
+						if (menupopup.dispatchEvent(makeEvent('keyup',VK_DOWN))) { // event was not cancelled with preventDefault()
+							util.logDebugOptional("interface.findFolder","keyup event was dispatched.");
+            }
+					});
 				} // palette
 				break;
 			case VK_ESCAPE:
-        let inter = QuickFolders.Interface;
-			  inter.findFolder(false);
-			  inter.hideFindPopup();
-        inter.updateFindBoxMenus(false);
-        inter.toggleMoveMode(false);
+			  interf.findFolder(false);
+			  interf.hideFindPopup();
+        interf.updateFindBoxMenus(false);
+        interf.toggleMoveMode(false);
 			  break;
 		}
 	} ,
@@ -3155,12 +3176,15 @@ QuickFolders.Interface = {
 	hideFindPopup: function hideFindPopup() {
 	  let menupopup = document.getElementById('QuickFolders-FindPopup');
 		let state = menupopup.getAttribute('state');
-		if (state == 'open' || state == 'showing') {
+    QuickFolders.Util.logDebugOptional("interface.findFolder","hideFindPopup - menupopup status = " + state);
+		//if (state == 'open' || state == 'showing') 
+    try {
 			menupopup.hidePopup();
-		}
+		} catch(ex) { QuickFolders.Util.logException('hideFindPopup', ex); }
 	} ,
 
-	findFolderName: function findFolderName(searchBox) {
+  // forceFind - enter key has been pressed, so we want the first match to force a jump
+	findFolderName: function findFolderName(searchBox, forceFind) {
 		function addMatchingFolder(matches, folder) {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase();
 			let matchPos = folderNameSearched.indexOf(searchString);
@@ -3213,15 +3237,22 @@ QuickFolders.Interface = {
 				}
 			}
 		}
-		// if 1 unique full match is found, we can jump there
-		if ((matches.length == 1) && (matches[0].lname == searchString) && (!QuickFolders.quickMove.isActive)) {
+    let isFiling = QuickFolders.quickMove.isActive;
+    /********* old jump point *********/
+		// if 1 unique full match is found, we can automatically jump there
+		if ((matches.length == 1)  && (!isFiling)
+        && (matches[0].lname == searchString      // one exact match
+           || (matches[0].lname.indexOf(searchString)==0 && forceFind)) // match starts with search string + [Enter] key was pressed
+       ) {
 			// go to folder
 			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
-			this.hideFindPopup();
+      setTimeout(function() {
+        QuickFolders.Interface.tearDownSearchBox();
+      }, 400);
+      return; // ????
 		}
 		
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
-    let isFiling = QuickFolders.quickMove.isActive;
     if(QuickFolders.Util.Application == 'Postbox') {
       let AF = QuickFolders.Util.allFoldersIterator(isFiling);
       for (let fi=0; fi<AF.length; fi++) {
@@ -3246,7 +3277,7 @@ QuickFolders.Interface = {
         menupopup.removeAttribute("tag");
       }     
 			
-			//reset the popup menu
+			//rebuild the popup menu
 			while (menupopup.firstChild)
 				menupopup.removeChild(menupopup.firstChild);
 		  if (matches.length == 0) {
@@ -3273,15 +3304,24 @@ QuickFolders.Interface = {
 			else
 				menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 		}
-		if (matches.length == 1) { // go to folder?
-		  // make it easy to hit return to jump into folder instead:
-			// isSelected = QuickFolders_MySelectFolder(matches[0].uri);
-			setTimeout( function() { 
-					let fm = Components.classes["@mozilla.org/focus-manager;1"].getService(Ci.nsIFocusManager);
-					fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
-					let fC = menupopup.firstChild; 
-					fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
-				}, 250 );
+		if (matches.length == 1) { 
+      if (!isFiling && matches[0].lname.indexOf(searchString)==0 && forceFind) {
+        // go to folder
+        isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+        setTimeout(function() {
+          QuickFolders.Interface.tearDownSearchBox();
+        }, 400);
+      }
+      else {
+        // make it easy to hit return to jump into folder instead:
+        // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+        setTimeout( function() { 
+            let fm = Components.classes["@mozilla.org/focus-manager;1"].getService(Ci.nsIFocusManager);
+            fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
+            let fC = menupopup.firstChild; 
+            fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
+          }, 250 );
+      }
 			return; // avoid searchBox.focus()
 		}
 		
@@ -3294,6 +3334,14 @@ QuickFolders.Interface = {
 			searchBox.focus();
 		  
  	} ,
+  
+  tearDownSearchBox: function tearDownSearchBox() {
+    let interf = QuickFolders.Interface;
+    interf.findFolder(false);
+    interf.hideFindPopup();
+    interf.updateFindBoxMenus(false);
+    interf.toggleMoveMode(false);
+  } ,
 
   // when typing while search results popup is displayed	
 	// should be passed on to the (parent) search box
@@ -3418,7 +3466,7 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logException("findFolder (" + show + ", " + actionType + ") failed.", ex);
 		}
 	}	,
-	
+  
 	getThreadPane: function getThreadPane() { 
 	  return document.getElementById("threadPaneBox");  // need this for Postbox.
 	} , 
@@ -3461,6 +3509,15 @@ QuickFolders.Interface = {
 	} ,
 
   lastTabSelected: null,
+  styleSelectedTab: function styleSelectedTab(selectedButton) {
+		if(!(selectedButton)) 
+      return;
+    if (selectedButton.className.indexOf("selected-folder") >=0) 
+      return;
+    selectedButton.className += " selected-folder";
+    selectedButton.checked = true;
+    selectedButton.setAttribute("selected", true); // real tabs
+  } ,
 	// passing in forceButton is a speed hack for SeaMonkey:
 	onTabSelected: function onTabSelected(forceButton) {
 		let folder, selectedButton;
@@ -3479,7 +3536,6 @@ QuickFolders.Interface = {
 		let showNewMail = QuickFolders.Preferences.isHighlightNewMail;
 		let newItalic = QuickFolders.Preferences.isItalicsNewMail;
 		
-
 		let  tabStyle = QuickFolders.Preferences.ColoredTabStyle; // filled or striped
 		for(var i = 0; i < this.buttonsByOffset.length; i++) {
 			var button = this.buttonsByOffset[i];
@@ -3522,11 +3578,7 @@ QuickFolders.Interface = {
 		}
 
 		/* ACTIVE TAB STYLING */
-		if((selectedButton)) {
-			selectedButton.className += " selected-folder";
-			selectedButton.checked = true;
-			selectedButton.setAttribute("selected", true); // real tabs
-		}
+    QuickFolders.Interface.styleSelectedTab(selectedButton);
 
 		this.initCurrentFolderTab(this.CurrentFolderTab, folder, selectedButton);
     if (!QuickFolders.Preferences.supportsCustomIcon) {
@@ -3631,6 +3683,31 @@ QuickFolders.Interface = {
 		var folder = QuickFolders.Util.getPopupNode(element).folder;
     this.configureCategory(folder, QuickFolders);
 	} ,
+  
+  removeFromCategory: function removeFromCategory(element) {
+    let folderButton = QuickFolders.Util.getPopupNode(element);
+    let entry = QuickFolders.Model.getButtonEntry(folderButton);
+    let cats = entry.category.split('|');
+    let newC = '';
+    let removeAlwaysShow = false;
+    // see if it is set to "show always" and show a prompt allowing to remove
+    if (cats.indexOf(QuickFolders.FolderCategory.ALWAYS) >= 0) {
+      let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+      let text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt","The category is '{1}'\n" + "Remove that?");
+      text = text.replace("{1}", QuickFolders.Util.getBundleString("qfShowAlways","Show Always!"));
+      if (promptService.confirm(window, 'QuickFolders', text))
+        removeAlwaysShow = true;
+    }
+    
+    for (let i=0; i<cats.length; i++) {
+      if (i) newC += '|'; // appending next ones delimited with pipe character
+      if (cats[i].trim() == this.currentlySelectedCategory.trim()) continue;
+      if (removeAlwaysShow && cats[i].trim() == QuickFolders.FolderCategory.ALWAYS) continue;
+      newC += cats[i];
+    }
+    entry.category = newC;
+    QuickFolders.Model.update();
+  },
   
 	getButtonColorClass: function getButtonColorClass(col, noStripe) {
 		//var sColFolder = (tabStyle == 0) ? "chrome://quickfolders/skin/striped" : "chrome://quickfolders/skin/cols";
@@ -4424,8 +4501,9 @@ QuickFolders.Interface = {
 
 	} ,
 	
-	displayNavigationToolbar: function displayNavigationToolbar(visible, singleMessage = false) {
-		QuickFolders.Util.logDebugOptional("interface", "displayNavigationToolbar(" + visible + ", singleMessage=" + singleMessage + ")");
+	displayNavigationToolbar: function displayNavigationToolbar(visible, singleMessage) {
+    if (typeof singleMessage === 'undefined') singleMessage = false; // Unfortunately Postbox cannot do default parameters
+		QuickFolders.Util.logDebugOptional("interface", "displayNavigationToolbar(visible=" + visible + ", singleMessage=" + singleMessage + ")");
 		let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 						 .getService(Components.interfaces.nsIWindowMediator);
 		
@@ -4446,27 +4524,29 @@ QuickFolders.Interface = {
 		// doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
 
 		let mm = doc.getElementById("multimessage");
-    let isMultiHidden = mm ? ("true" == mm.getAttribute('hidden')) : false;
+    let doesMultiExist = (mm != null);
     let currentFolderBar, unusedFolderBar;
 		if (singleMessage) {
 			currentFolderBar = 
 				doc.getElementById( "QuickFolders-PreviewToolbarPanel-Single" );
 		}
 		else {
-			currentFolderBar = (isMultiHidden)
-				? doc.getElementById("QuickFolders-PreviewToolbarPanel")
-				: doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView");
-      unusedFolderBar = (isMultiHidden)
-        ? doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
-        : doc.getElementById( "QuickFolders-PreviewToolbarPanel" );
+      // 3pane window (any view)
+			currentFolderBar = (doesMultiExist)
+				? doc.getElementById("QuickFolders-PreviewToolbarPanel-ConversationView")
+				: doc.getElementById("QuickFolders-PreviewToolbarPanel");
+      unusedFolderBar = (doesMultiExist)
+        ? doc.getElementById("QuickFolders-PreviewToolbarPanel")
+        : doc.getElementById( "QuickFolders-PreviewToolbarPanel-ConversationView" );
+      // hide the unused current folder bar
+      if (unusedFolderBar) {
+        unusedFolderBar.style.display = 'none';
+      }
 		}
 
 		if (currentFolderBar) {
 			currentFolderBar.style.display= visible ? '-moz-box' : 'none';
 			QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, singleMessage);
-      // toggle the other one off
-      if (unusedFolderBar) 
-        unusedFolderBar.style.display = 'none';
 		}
 	} ,
 
@@ -4551,12 +4631,14 @@ QuickFolders.Interface = {
       if (hideToolbar)
         toolbar.setAttribute("collapsed", true);
 		}
-		QuickFolders.Util.logDebugOptional("toolbarHiding (panel=" + panel + ")" + action + " QuickFolders Toolbar ");
+		QuickFolders.Util.logDebugOptional("toolbarHiding", " (panel=" + panel + ")" + action + " QuickFolders Toolbar ");
 		
     // always hide CF toolbar in single message mode 
-    let singleMessageCurrentFolderPanel = document.getElementById("QuickFolders-PreviewToolbarPanel");
-    singleMessageCurrentFolderPanel.style.display= isMailSingleMessageTab ? 'none' : '-moz-box' ;
-		/*let singleMessageCurrentFolderTab = this.CurrentFolderBar;
+    if (isMailSingleMessageTab) {
+      let singleMessageCurrentFolderPanel = document.getElementById("QuickFolders-PreviewToolbarPanel");
+      singleMessageCurrentFolderPanel.style.display= 'none';
+    }
+		/*let singleMessageCurrentFolderTab = this.CurrentFolderBar; // bug with empty toolbar (mac?)
 		if (singleMessageCurrentFolderTab) { //  && !QuickFolders.Preferences.isShowCurrentFolderToolbar(true)
 			singleMessageCurrentFolderTab.collapsed = isMailSingleMessageTab;
 		}*/
@@ -4624,7 +4706,6 @@ QuickFolders.Interface = {
 			catch(ex) {
 				sPrompt = QuickFolders.Util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");
 				sPrompt = sPrompt.replace("{0}", fromFolder.prettyName);
-				//alert(sPrompt + "\n" + ex);
 				Services.prompt.alert(null,"QuickFolders",sPrompt + "\n" + ex);
 				QuickFolders.Util.logException("Exception in movefolder ", ex);
 			}			
@@ -4750,11 +4831,16 @@ QuickFolders.Interface = {
     searchBox.className = toggle ? "quickMove" : "";
   } ,
   
-  quickMoveButtonClick: function quickMoveButtonClick(el) {
-    if (QuickFolders.quickMove.hasMails)
-      QuickFolders.Interface.showPopup(el,'QuickFolders-quickMoveMenu');
-    else
-      QuickFolders.Interface.findFolder(true,'findFolder'); // show jump to folder box
+  quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
+	  let searchBox = document.getElementById('QuickFolders-FindFolder');
+    if (searchBox && !searchBox.collapsed && evt.button==0)  // hide only on left click
+      QuickFolders.quickMove.hideSearch(); // hide search box if shown
+    else {
+      if (QuickFolders.quickMove.hasMails)
+        QuickFolders.Interface.showPopup(el,'QuickFolders-quickMoveMenu');
+      else
+        QuickFolders.Interface.findFolder(true,'findFolder'); // show jump to folder box
+    }
   },
   
   folderPanePopup: function folderPanePopup(evt) {  

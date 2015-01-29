@@ -1,10 +1,10 @@
 
-#qf-reorderButtonTop {
+#qf-reorderButtonTop, #reorderTopButton {
 	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-top.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 
-#qf-reorderButtonBottom {
+#qf-reorderButtonBottom, #reorderBottomButton {
 	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-bottom.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }

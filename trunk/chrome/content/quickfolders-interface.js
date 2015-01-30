@@ -148,8 +148,8 @@ QuickFolders.Interface = {
 
 	setTabSelectTimer: function setTabSelectTimer() {
 			try {
-				let nDelay = 250;
-				let tID=setTimeout(function() { QuickFolders.Interface.tabSelectUpdate(); }, nDelay);
+				let nDelay = 250,
+				    tID=setTimeout(function() { QuickFolders.Interface.tabSelectUpdate(); }, nDelay);
 				QuickFolders.Util.logDebug("Tab Select Timer prepared - ID: " + tID);
 			}
 			catch (e) {
@@ -161,8 +161,8 @@ QuickFolders.Interface = {
 	// as this doesn't trigger FolderListener events!
 	setFolderSelectTimer: function setFolderSelectTimer() {
 			try {
-				let nDelay = 100;
-				let tID=setTimeout(function() { QuickFolders.Interface.onTabSelected(); }, nDelay);
+				let nDelay = 100,
+				    tID=setTimeout(function() { QuickFolders.Interface.onTabSelected(); }, nDelay);
 				QuickFolders.Util.logDebug("Folder Select Timer prepared - ID: " + tID);
 			}
 			catch (e) {
@@ -203,8 +203,8 @@ QuickFolders.Interface = {
 
 	generateMRUlist: function generateMRUlist(ftv) { // generateMap: function ftv_recent_generateMap(ftv)
 		QuickFolders.Util.logDebugOptional("interface", "generateMRUlist()");
-		let oldestTime = 0;
-		let recent = [];
+		let oldestTime = 0,
+		    recent = [];
 		function sorter(a, b) {
 			return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
 		}
@@ -523,8 +523,8 @@ QuickFolders.Interface = {
 		evt.stopPropagation();
 
 		if (this.PaintModeActive) {
-			let paintButton = this.PaintButton;
-			let color = paintButton.getAttribute("colorIndex");
+			let paintButton = this.PaintButton,
+			    color = paintButton.getAttribute("colorIndex");
 			if (!color) color = 0;
 			this.setButtonColor(button, color);
 			this.initElementPaletteClass(button);
@@ -597,10 +597,9 @@ QuickFolders.Interface = {
 		if(rebuildCategories || QuickFolders.Preferences.isMinimalUpdateDisabled)
 			minimalUpdate = false;
 
-		let sDebug = 'updateFolders(rebuildCategories: ' + rebuildCategories + ', minimal: ' + minimalUpdate +')';
-		let toolbar = this.Toolbar;
-
-		let theme = QuickFolders.Preferences.CurrentTheme;
+		let sDebug = 'updateFolders(rebuildCategories: ' + rebuildCategories + ', minimal: ' + minimalUpdate +')',
+		    toolbar = this.Toolbar,
+		    theme = QuickFolders.Preferences.CurrentTheme;
 		toolbar.className = theme.cssToolbarClassName + " chromeclass-toolbar";
 
 		if (QuickFolders.Model.selectedFolders.length)
@@ -648,14 +647,12 @@ QuickFolders.Interface = {
 		// force user colors on first updateFolders (no selected Folder yet!)
 		if (QuickFolders.Model.selectedFolders.length) {
 
-			let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
-
-			let isFirst=true;
-			for(var i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
-				var folderEntry = QuickFolders.Model.selectedFolders[i];
-				var folder;
-				var tabColor;
-				var button;
+			let tabStyle = QuickFolders.Preferences.ColoredTabStyle,
+			    isFirst=true;
+			for(let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+				let folderEntry = QuickFolders.Model.selectedFolders[i],
+				    folder,
+				    button;
 
 				if(!this.shouldDisplayFolder(folderEntry))
 					continue;
@@ -681,7 +678,7 @@ QuickFolders.Interface = {
 				}
 			}
 
-			var sDoneWhat = minimalUpdate ? "rebuilt." : "rendered on toolbar."
+			let sDoneWhat = minimalUpdate ? "rebuilt." : "rendered on toolbar."
 			QuickFolders.Util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
 		}
 
@@ -691,7 +688,7 @@ QuickFolders.Interface = {
 		this.onTabSelected();
 		
 		// current message dragging
-		var button = this.MailButton;
+		let button = this.MailButton;
 		if (button)
 			this.setEventAttribute(button, "ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
 
@@ -724,41 +721,44 @@ QuickFolders.Interface = {
 		
 		let toolbar2 = this.CurrentFolderBar;
 		if (toolbar2) {
-			let theme = QuickFolders.Preferences.CurrentTheme;
-			let styleEngine = QuickFolders.Styles;
-			let ss = styleSheet ? styleSheet : this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
-			let background = QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background');
+			let prefs = QuickFolders.Preferences,
+          theme = prefs.CurrentTheme,
+			    styleEngine = QuickFolders.Styles,
+			    ss = styleSheet ? styleSheet : this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
+			    background = prefs.getCharPrefQF('currentFolderBar.background');
 			styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
 			
 			// add styling to current folder via a fake container
 			let cF = this.CurrentFolderTab;
+			
+			// add styling to current folder via a fake container
 			if (cF && cF.parentNode)
 				cF.parentNode.className = theme.cssToolbarClassName;
       
       // support larger fonts - should have a knock-on effect for min-height
-      let fontSize = QuickFolders.Preferences.ButtonFontSize;
+      let fontSize = prefs.ButtonFontSize;
       fontSize = fontSize ? (fontSize+"px") : "11px"; // default size
       toolbar2.style.fontSize = fontSize;
       cF.style.fontSize = fontSize;
 
-			let collapsed = !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showButtons");
+			let collapsed = !prefs.getBoolPref("currentFolderBar.navigation.showButtons");
 			for (var n=0; n< toolbar2.childNodes.length; n++)
 			{
-				let node = toolbar2.childNodes[n];
-				let special = node.getAttribute ? node.getAttribute('special') : null;
+				let node = toolbar2.childNodes[n],
+				    special = node.getAttribute ? node.getAttribute('special') : null;
 				if (special && special=="qfMsgFolderNavigation") {
 					node.collapsed = (collapsed
 					        ||
 					          (node.id == 'quickFoldersNavToggle')
 					          && 
-					          !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showToggle"));
+					          !prefs.getBoolPref("currentFolderBar.navigation.showToggle"));
 				}
 			}
 			
 			// collapse the separator if msg nav buttons are hidden
 			let lastMsgNavButton = QuickFolders.Util.$('QuickFolders-CurrentThread');
 			if (lastMsgNavButton.nextSibling && lastMsgNavButton.nextSibling.tagName=='toolbarseparator')
-				lastMsgNavButton.nextSibling.collapsed = !QuickFolders.Preferences.getBoolPref("currentFolderBar.navigation.showButtons");
+				lastMsgNavButton.nextSibling.collapsed = !prefs.getBoolPref("currentFolderBar.navigation.showButtons");
 		}	
 	} ,
 
@@ -813,11 +813,12 @@ QuickFolders.Interface = {
 		}
 
 		logCSS("============================\n" + "updateMainWindow...");
-		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
+		let themeSelector = document.getElementById("QuickFolders-Theme-Selector"),
+        prefs = QuickFolders.Preferences;
 			
 		// update the theme type - based on theme selection in options window, if this is open, else use the id from preferences
-		QuickFolders.Preferences.setCurrentThemeId(themeSelector ? themeSelector.value : QuickFolders.Preferences.CurrentThemeId);
-		var style =  QuickFolders.Preferences.ColoredTabStyle;
+		prefs.setCurrentThemeId(themeSelector ? themeSelector.value : prefs.CurrentThemeId);
+		var style =  prefs.ColoredTabStyle;
 		// refresh main window
 		var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 											 .getService(Components.interfaces.nsIWindowMediator)
@@ -958,9 +959,9 @@ QuickFolders.Interface = {
 		this.currentlySelectedCategory = selectedCat;
 		this.updateFolders(rebuild, false);
     // ###################################
-    QuickFolders.Interface.lastTabSelected = null;
-    QuickFolders.Interface.onTabSelected(); // update selected tab?
-    // QuickFolders.Interface.styleSelectedTab(selectedButton);
+    this.lastTabSelected = null;
+    this.onTabSelected(); // update selected tab?
+    // this.styleSelectedTab(selectedButton);
 
 		let idx;
 		try {
@@ -1096,8 +1097,8 @@ QuickFolders.Interface = {
 	} ,
 
 	getButtonByFolder: function getButtonByFolder(folder) {
-		for(var i = 0; i < this.buttonsByOffset.length; i++) {
-			var button = this.buttonsByOffset[i];
+		for(let i = 0; i < this.buttonsByOffset.length; i++) {
+			let button = this.buttonsByOffset[i];
 			try {
 				// doesn't work for search folders?
 				if(button.folder && button.folder.URI == folder.URI) {
@@ -1115,9 +1116,9 @@ QuickFolders.Interface = {
 
 	toggleToolbar: function(button) {
 		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar(" + button.checked + ")");
-		var toolbar = this.Toolbar;
-		// toolbar.style.display = '-moz-inline-box';
-		var makeVisible = !(toolbar.collapsed);
+		let toolbar = this.Toolbar,
+		    // toolbar.style.display = '-moz-inline-box';
+		    makeVisible = !(toolbar.collapsed);
 		toolbar.setAttribute('collapsed', makeVisible);
 		button.checked = !makeVisible;
 		return makeVisible;
@@ -1144,8 +1145,8 @@ QuickFolders.Interface = {
 				// need to find first child menu
 				let i;
 				// see if cloned menu is there already.
-				var menupopup = null;
-				var nodes  = button.getElementsByTagName('menupopup');
+				let menupopup = null,
+				    nodes  = button.getElementsByTagName('menupopup');
 
 				for(i=0; i<nodes.length; i++) {
 					if (nodes[i].id && nodes[i].id === 'quickFoldersCommandsCloned') {
@@ -1191,15 +1192,15 @@ QuickFolders.Interface = {
 
 	getButtonLabel: function getButtonLabel(folder, useName, offset, entry) {
 		try {
-			var numUnread = folder.getNumUnread(false);
-			var numUnreadInSubFolders = folder.getNumUnread(true) - numUnread;
-			var numTotal = folder.getTotalMessages(false);
-			var numTotalInSubFolders = folder.getTotalMessages(true) - numTotal;
+			let numUnread = folder.getNumUnread(false),
+			    numUnreadInSubFolders = folder.getNumUnread(true) - numUnread,
+			    numTotal = folder.getTotalMessages(false),
+			    numTotalInSubFolders = folder.getTotalMessages(true) - numTotal;
 
 			this.unReadCount = numUnread + numUnreadInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders ? 1 : 0);
 			this.totalCount = numTotal + numTotalInSubFolders * (QuickFolders.Preferences.isShowCountInSubFolders ? 1 : 0);
 
-			var label = "";
+			let label = "";
 
 			// offset=-1 for folders tabs that are NOT on the quickFOlder bar (e.g. current Folder Panel)
 			if (offset>=0) {
@@ -1741,12 +1742,12 @@ QuickFolders.Interface = {
 	} ,
 
   onAdvancedProperties: function onAdvancedProperties(evt, element) {
-    let util = QuickFolders.Util;
-    let folder = util.getPopupNode(element).folder;  
-    let entry = QuickFolders.Model.getFolderEntry(folder.URI);
-    let button = util.getPopupNode(element);
-    let x = button.boxObject.screenX;
-    let y = button.boxObject.screenY + button.boxObject.height;
+    let util = QuickFolders.Util,
+        folder = util.getPopupNode(element).folder,
+        entry = QuickFolders.Model.getFolderEntry(folder.URI),
+        button = util.getPopupNode(element),
+        x = button.boxObject.screenX,
+        y = button.boxObject.screenY + button.boxObject.height;
     // attach to bottom of the Tab (like a popup menu)
     util.popupProFeature("advancedTabProperties");
     let win = window.openDialog(
@@ -1759,7 +1760,7 @@ QuickFolders.Interface = {
   } ,
   
 	compactFolder: function compactFolder(folder, command) {
-		var s1 = folder.sizeOnDisk;
+		let s1 = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderSize = s1;
 		QuickFolders.compactLastFolderUri = folder.URI;
 		QuickFolders.compactReportCommandType = command;
@@ -3484,22 +3485,30 @@ QuickFolders.Interface = {
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
 	viewOptions: function viewOptions(selectedTab, updateMessage) {
-		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null};
-		let win = window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',QuickFolders,params).focus();
+		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
+        //  in linux the first alwaysRaised hides the next child (config dialogs)
+        features = (QuickFolders.Util.HostSystem == 'linux') ?
+          'chrome,titlebar,centerscreen,resizable,dependent,instantApply' :
+          'chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
+		    win = window.openDialog('chrome://quickfolders/content/options.xul',
+          'quickfolders-options',
+          features,
+          QuickFolders,
+          params).focus();
 	} ,
 
 	viewHelp: function viewHelp() {
-		var params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
+		let params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
 		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
 	} ,
 
 	viewSupport: function viewSupport() {
-		var params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
+		let params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
 		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
 	} ,
   
   viewLicense: function viewLicense() {
-		var params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: QuickFolders}, out:null};
+		let params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: QuickFolders}, out:null};
 		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
   } ,
 
@@ -3537,8 +3546,8 @@ QuickFolders.Interface = {
 		let newItalic = QuickFolders.Preferences.isItalicsNewMail;
 		
 		let  tabStyle = QuickFolders.Preferences.ColoredTabStyle; // filled or striped
-		for(var i = 0; i < this.buttonsByOffset.length; i++) {
-			var button = this.buttonsByOffset[i];
+		for(let i = 0; i < this.buttonsByOffset.length; i++) {
+			let button = this.buttonsByOffset[i];
 			// filled style, remove striped style
 			if ((tabStyle != QuickFolders.Preferences.TABS_STRIPED) && (button.className.indexOf("selected-folder")>=0))
 				button.className = button.className.replace(/\s*striped/,"");
@@ -3672,7 +3681,7 @@ QuickFolders.Interface = {
 	} ,
 
   configureCategory: function configureCategory(folder, quickfoldersPointer) {
-		var retval={btnClicked:null};
+		let retval = {btnClicked:null};
 		window.openDialog('chrome://quickfolders/content/set-folder-category.xul',
 			'quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal=no,resizable,alwaysRaised', quickfoldersPointer, folder,retval);
 		if (retval.btnClicked!=null)
@@ -3680,20 +3689,20 @@ QuickFolders.Interface = {
   } ,
 
 	configureCategory_FromMenu: function configureCategory_FromMenu(element) {
-		var folder = QuickFolders.Util.getPopupNode(element).folder;
+		let folder = QuickFolders.Util.getPopupNode(element).folder;
     this.configureCategory(folder, QuickFolders);
 	} ,
   
   removeFromCategory: function removeFromCategory(element) {
-    let folderButton = QuickFolders.Util.getPopupNode(element);
-    let entry = QuickFolders.Model.getButtonEntry(folderButton);
-    let cats = entry.category.split('|');
-    let newC = '';
-    let removeAlwaysShow = false;
+    let folderButton = QuickFolders.Util.getPopupNode(element),
+        entry = QuickFolders.Model.getButtonEntry(folderButton),
+        cats = entry.category.split('|'),
+        newC = '',
+        removeAlwaysShow = false;
     // see if it is set to "show always" and show a prompt allowing to remove
     if (cats.indexOf(QuickFolders.FolderCategory.ALWAYS) >= 0) {
-      let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-      let text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt","The category is '{1}'\n" + "Remove that?");
+      let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
+          text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt","The category is '{1}'\n" + "Remove that?");
       text = text.replace("{1}", QuickFolders.Util.getBundleString("qfShowAlways","Show Always!"));
       if (promptService.confirm(window, 'QuickFolders', text))
         removeAlwaysShow = true;
@@ -3718,9 +3727,9 @@ QuickFolders.Interface = {
 	} ,
 	
 	getButtonColor: function getButtonColor(button) {
-		var cssClass = button.className;
-		var rClasses=cssClass.split(' ');
-		for (var j=0; j<rClasses.length; j++) {
+		let cssClass = button.className,
+		    rClasses=cssClass.split(' ');
+		for (let j=0; j<rClasses.length; j++) {
 			// determine number from string, e.g. col1striped or col1
 			let f = rClasses[j].indexOf('col');
 			if (f>=0)
@@ -3733,19 +3742,17 @@ QuickFolders.Interface = {
 		// no more style sheet modification for settings colors.
 		if (!button)
 			return false;
-		var folderLabel = button.getAttribute("label"); // fixes disappearing colors on startup bug
-
-		var cssClass = button.className;
-		var newclass = '';
-		var rClasses=cssClass.split(' ');
-		for (var j=0; j<rClasses.length; j++) {
+		let folderLabel = button.getAttribute("label"), // fixes disappearing colors on startup bug
+		    cssClass = button.className,
+		    newclass = '',
+	      rClasses=cssClass.split(' ');
+		for (let j=0; j<rClasses.length; j++) {
 			// strip previous style
 			if (rClasses[j].indexOf('col')<0)
 				newclass+=rClasses[j] + ' ';
 		}
 
 		newclass += this.getButtonColorClass(col, dontStripe);
-
 		button.className = newclass; // .trim()
 		button.setAttribute("colorIndex", col);
 		return true;
@@ -3760,8 +3767,8 @@ QuickFolders.Interface = {
      
     /* element needs to get custom Palette attribute from model entry */
     if (element.folder || (targetElement && targetElement.folder)) {
-      let btn = element.folder ? element : targetElement; // menu item
-      let entry = QuickFolders.Model.getButtonEntry(btn);
+      let btn = element.folder ? element : targetElement, // menu item
+          entry = QuickFolders.Model.getButtonEntry(btn);
       if (entry && entry.customPalette) {
         paletteToken = this.getPaletteClassToken(entry.customPalette);
       }

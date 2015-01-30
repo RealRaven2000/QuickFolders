@@ -48,7 +48,7 @@ QuickFolders.quickMove = {
         ?  util.getBundleString("quickfoldersQuickCopiedMails","Email copied to folder {2};{1} Emails copied to folder {2}")
         :  util.getBundleString("quickfoldersQuickMovedMails","Email moved to folder {2};{1} Emails moved to folder {2}");
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
-      util.popupAlert("QuickFolders",notify);
+      util.slideAlert("QuickFolders",notify);
     }
   },
   

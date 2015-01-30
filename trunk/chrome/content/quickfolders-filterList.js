@@ -181,8 +181,10 @@ QuickFolders.FilterList = {
 	} ,
 	
 	getListElementCount: function (list) {
-		if (typeof list.getRowCount !== "undefined")
-			return list.getRowCount();
+    try {
+      if (typeof list.getRowCount !== "undefined")
+        return list.getRowCount();
+    } catch (ex) {;}
 		return list.view.rowCount; // SM: treeview
 	} ,
 	

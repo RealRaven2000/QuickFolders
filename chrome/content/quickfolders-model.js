@@ -230,7 +230,7 @@ QuickFolders.Model = {
 
   // for optimization, let's cache the categories array in a model attribute.
   // this means we need to reset categories whenever a folder changing operation is carried out
-  // (if a folder is deleted, this might render a category as obsoletel;
+  // (if a folder is deleted, this might render a category as obsolete;
   //  also whenever categories are added or removed.)
   resetCategories: function resetCategories() {
     this.categoriesList=[];

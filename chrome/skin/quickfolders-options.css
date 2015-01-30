@@ -2,6 +2,7 @@
 @import url('chrome://quickfolders/content/quickfolders-layout.css');
 @import url('chrome://quickfolders/skin/quickfolders-palettes.css');
 @import url('chrome://quickfolders/content/contribute.css');
+@import url('chrome://quickfolders/content/license.css');
 /* platform specific styling */
 
 /* Options window */
@@ -237,15 +238,30 @@ hbox.quickhelp-dbg {
 }
 
 #QuickFolders-Options-quickhelp {
-  padding-left: 16px;
-  padding-right: 16px;
+/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical" 
+   and align="center" so all elements inside will be centered vertically*/
+/* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
+  padding-left: 20px; 
+  padding-right: 20px;
 	text-align: justify;
+	overflow-y: scroll;
 }
 
-#btnLicense, .niceFont {
+/* Test (Teo) - wanted to disable this font for consistency reasons
+   note that on Mac the system font is already a lot bigger than on Windows
+	 in Windows, mine is Tahoma, 8pt which makes a longer texts hard to read
+	 
+	 move #btnLicense to separate style sheet license.css
+  */
+.niceFont, 
+.niceFont description, 
+.niceFont button,
+.niceFont button label
+{
   font-family: cambria, Georgia, serif;
   font-size: 10.2pt;
 }
+
 #validationPassed {
   color: rgb(0,120,0);
 }
@@ -259,7 +275,7 @@ hbox.quickhelp-dbg {
 /*added/changed by Teo*/
 
 #supportgrid row {
-  height: 45px;
+  height: 55px;
 }
 
 #supportgrid label {

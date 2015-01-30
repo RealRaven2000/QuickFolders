@@ -252,11 +252,11 @@ QuickFolders.FilterWorker = {
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
       	let serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
-			QuickFolders.Util.popupAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
+			QuickFolders.Util.slideAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
       }
       else {
         if (sourceFolder.prettyName) {
-          QuickFolders.Util.popupAlert("QuickFolders", "Folder (" + sourceFolder.prettyName + ") does not have a server.");
+          QuickFolders.Util.slideAlert("QuickFolders", "Folder (" + sourceFolder.prettyName + ") does not have a server.");
         }
       }
 			return false;

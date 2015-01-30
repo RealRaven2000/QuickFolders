@@ -27,7 +27,7 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
 
-	<prefpane id="qf-options-prefpane" flex="1">
+	<prefpane id="qf-options-prefpane">
 		<box id="qf-header-container">
 			<vbox>
 				<spacer flex="1" />
@@ -61,7 +61,7 @@
 				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" />
 			</tabs>
 			<tabpanels  onselect="QuickFolders.Options.onTabSelect(this,event)">
-				<tabpanel id="QuickFolders-Options-general" orient="vertical" label="&qf.tab.general;">
+				<tabpanel id="QuickFolders-Options-general" orient="vertical">
 					<preferences>
 						<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
@@ -232,7 +232,7 @@
 					</hbox>
 				</tabpanel>
 
-				<tabpanel id="QuickFolders-Options-advanced" orient="vertical" label="&qf.tab.general;">
+				<tabpanel id="QuickFolders-Options-advanced" orient="vertical">
 					<preferences>
 						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar" name="extensions.quickfolders.showCurrentFolderToolbar" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage" name="extensions.quickfolders.messageWindow.showCurrentFolderToolbar" type="bool" />
@@ -493,7 +493,6 @@
 									</menulist>
 								</hbox>
 							</vbox>
-							<separator class="thin" />
 							<vbox>
 								<hbox>
 									<label id="Quickfolders-Theme-Author-Label"
@@ -522,9 +521,9 @@
 											 instantApply="true"
 											 onchange="QuickFolders.Options.changeTextPreference(this);" />
 							<label value="px" />
+							<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
 							<hbox id="qf-pimpMyBorders" align="center">
 								<label value="&qf.label.pixels;" />
-								<separator class="thin" />
 								<checkbox id="chkShowBorders"
 													label="&qf.options.themes.showBorders.checkbox;"
 													preference="QuickFolders-Preferences-ShowBorders"
@@ -574,7 +573,6 @@
 											instantApply="true"
 											oncommand="return QuickFolders.Options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);" />
 					</hbox>
-					<separator class="thin" />
 					<groupbox id="qf-pimpMyColors">
 						<caption label="&qf.label.colors;" />
 						<!-- styling hacks, we need these for the rules to apply to our preview 'tabs' -->
@@ -623,7 +621,7 @@
 											</menulist>
 										</hbox>
 										<separator class="thin" />
-										<hbox>
+										<hbox align="center">
 											<spacer flex="1" />
 											<label id="coloredtabs-label"
 														 value="&qf.label.ColoredTabPalette;"
@@ -662,23 +660,6 @@
 														preference="QuickFolders-Preferences-TransparentButtons"
 														instantApply="true"
 														oncommand="return QuickFolders.Options.toggleColorTranslucent(this, 'inactive-colorpicker', 'inactivetabs-label', 'InactiveTab');" />
-								</hbox>
-								<hbox id="qf-individualColors" flex="1">
-									<groupbox>
-										<caption label="&qf.options.LayoutColorAppearance;" />
-										<radiogroup preference="QuickFolders-Preferences-ColorTabStyleId"
-																instantApply="true"
-																oncommand="QuickFolders.Options.setColoredTabStyleFromRadioGroup(this);">
-											<radio id="ExampleStripedColor" 
-														 label=" &qf.options.LayoutColorAppearanceStriped;"
-														 value="0"
-														 src="chrome://quickfolders/skin/ico/striped-example.gif" />
-											<radio id="ExampleFilledColor"
-														 label=" &qf.options.LayoutColorAppearanceFilled;"
-														 value="1"
-														 src="chrome://quickfolders/skin/ico/full-example.gif" />
-										</radiogroup>
-									</groupbox>
 								</hbox>
 							</vbox>
 							<spacer flex="1" />
@@ -818,19 +799,35 @@
 										</row>
 									</rows>
 								</grid>
-								<separator class="thin" />
 								<hbox id="qf-stateColors-defaultButton" pack="end">
 									<button label="&qf.button.defaultcolors;" oncommand="QuickFolders.Options.setDefaultColors();" />
 								</hbox>
 							</vbox>
 						</hbox>
+						<hbox id="qf-individualColors" flex="">
+							<groupbox>
+								<caption label="&qf.options.LayoutColorAppearance;" />
+								<radiogroup orient="horizontal"
+														preference="QuickFolders-Preferences-ColorTabStyleId"
+														instantApply="true"
+														oncommand="QuickFolders.Options.setColoredTabStyleFromRadioGroup(this);">
+									<radio id="ExampleStripedColor" 
+												 label=" &qf.options.LayoutColorAppearanceStriped;"
+												 value="0"
+												 src="chrome://quickfolders/skin/ico/striped-example.gif" />
+									<radio id="ExampleFilledColor"
+												 label=" &qf.options.LayoutColorAppearanceFilled;"
+												 value="1"
+												 src="chrome://quickfolders/skin/ico/full-example.gif" />
+								</radiogroup>
+							</groupbox>
+						</hbox>
 					</groupbox>
-					<spacer flex="2" />
 				</tabpanel>
 				<tabpanel id="QuickFolders-Options-quickhelp" orient="vertical" align="center">
-					<vbox id="quickHelpTextPane" flex="1">
+					<vbox id="quickHelpTextPane" flex="1"  class="niceFont">
 						<separator class="thin" />
-							<description id="importantNote" class="niceFont">
+							<description id="importantNote">
 								&qf.description.linkNote;
 							</description>
 							<vbox height="70">
@@ -841,11 +838,11 @@
 								<label width="240">&qf.label.homePage;</label>
 							</button>
 						</vbox>
-						<description class="niceFont">&qf.description.dragToAdd;</description>
-						<description class="niceFont">&qf.description.dragToPosition;</description>
-						<description class="niceFont">&qf.description.dragToPopup;</description>
-						<description class="niceFont">&qf.description.changeCategory;</description>
-						<description class="niceFont">&qf.description.rightClickOptions;</description>
+						<description>&qf.description.dragToAdd;</description>
+						<description>&qf.description.dragToPosition;</description>
+						<description>&qf.description.dragToPopup;</description>
+						<description>&qf.description.changeCategory;</description>
+						<description>&qf.description.rightClickOptions;</description>
 						<!--
 						<description>&qf.description.tipMsg;</description>
 						-->
@@ -853,14 +850,14 @@
 				</tabpanel>
 				<tabpanel id="QuickFolders-Options-support" orient="vertical">
 					<separator class="thin" />
-					<grid id="supportgrid">
+					<grid id="supportgrid" class="niceFont">
 						<columns>
 							<column flex="1" width="400" />
 							<column flex="1" width="200" />
 						</columns>
 						<rows>
 							<row>
-								<description class="niceFont"
+								<description
 									oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
 								<vbox>
 									<button id="L1"
@@ -870,7 +867,7 @@
 									</button>
 								</vbox>
 							</row>
-							<separator />
+							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.bugzilla;</description>
 								<vbox>
@@ -881,7 +878,7 @@
 									</button>
 								</vbox>
 							</row>
-							<separator />
+							<separator class="thin" />
 							<row>
 								<description class="niceFont"
 														 oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;">
@@ -895,7 +892,7 @@
 									</button>
 								</vbox>
 							</row>
-							<separator />
+							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.languages;</description>
 								<vbox>
@@ -906,7 +903,7 @@
 									</button>
 								</vbox>
 							</row>
-							<separator />
+							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.contactMe;</description>
 								<vbox>
@@ -924,8 +921,7 @@
 					<description
 						oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">
 						&qf.label.insertLicense;</description>
-					<hbox id="licenseContainer"
-						align="start">
+					<hbox id="licenseContainer" align="start">
 						<textbox id="txtLicenseKey"
 										 class="licenseKey"
 										 flex="1"
@@ -952,14 +948,15 @@
 					<description id="validationExpired" class="niceFont" collapsed="true">&qf.licenseValidation.expired;</description>
 					<description id="validationInvalidEmail" class="niceFont" collapsed="true">&qf.licenseValidation.invalidMail;</description>
 					<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
-					<separator flexclass="thin" />
-					<hbox>
-						<spacer flex="1" />
-						<button id="btnLicense"
-										label="get license"
-										oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+					<separator />
+					<vbox height="40">
+						<hbox pack="end">
+							<button id="btnLicense" 
+                      label="get license"
+										  oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
 					</hbox>
-					<spacer flex="2" />
+					</vbox>
+					<separator flex="1" />
 					<groupbox>
 					  <caption label="CREATE REGISTRATION KEY: REMOVE IN PRODUCTION - TRANSLATION UNNECESSARY!" />
 						<hbox>
@@ -976,9 +973,10 @@
 							<textbox id="txtMaxDigits"
 											 type="number"
 											 value="35"
-											 width="40" />
+											 width="50" />
 						</hbox>
 					</groupbox>
+					<separator flex="1" />
 				</tabpanel>
 			</tabpanels>
 		</tabbox>

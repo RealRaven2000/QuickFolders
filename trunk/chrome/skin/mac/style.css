@@ -11,7 +11,9 @@
   font-size: 10pt !important;
 }
 
-#btnLicense, .niceFont {
+/* #btnLicense - note this will get special rules for Mac */
+.niceFont, 
+.niceFont * {
   font-family: initial !important; /* or inherit ? */
   font-size: 10pt !important;
 }

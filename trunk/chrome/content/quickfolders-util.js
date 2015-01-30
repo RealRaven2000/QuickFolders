@@ -31,22 +31,21 @@ if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.inte
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
 var QuickFolders_TabURIopener = {
 	openURLInTab: function openURLInTab(URL) {
+    let util = QuickFolders.Util;
 		try {
-			var sTabMode="";
-			var tabmail;
+			let sTabMode="",
+			    tabmail;
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-										 .getService(Components.interfaces.nsIWindowMediator)
-										 .getMostRecentWindow("mail:3pane");
+				var mail3PaneWindow = util.getMail3PaneWindow();
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
 				}
 			}
 			if (tabmail) {
-				sTabMode = (QuickFolders.Util.Application == "Thunderbird") ? "contentTab" : "3pane";
+				sTabMode = (util.Application == "Thunderbird") ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
 			}
@@ -99,9 +98,7 @@ QuickFolders.Util = {
 		if (doc.documentElement && doc.documentElement.tagName) {
 			if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
 // 				if (!QuickFolders.doc) {
-					var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-											 .getService(Components.interfaces.nsIWindowMediator)
-											 .getMostRecentWindow("mail:3pane");
+					var mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
 					if (mail3PaneWindow && mail3PaneWindow.document)
 						doc = mail3PaneWindow.document;
 // 				}
@@ -255,9 +252,9 @@ QuickFolders.Util = {
 	},
   
 	getMail3PaneWindow: function getMail3PaneWindow() {
-		var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
-				.getService(Components.interfaces.nsIWindowMediator);
-		var win3pane = windowManager.getMostRecentWindow("mail:3pane");
+		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
+				.getService(Components.interfaces.nsIWindowMediator),
+		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
 	
@@ -372,7 +369,7 @@ QuickFolders.Util = {
 		return this.mPlatformVer;
 	} ,
 
-	popupAlert: function popupAlert(title, text, icon) {
+	slideAlert: function slideAlert(title, text, icon) {
 		setTimeout(function() {
 				try {
 					if (!icon)
@@ -786,7 +783,7 @@ QuickFolders.Util = {
 			catch(e) { alert('QuickFolders.Util.moveMessages:' + e); }
 
 			if (targetFolder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
-				alert(util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
+        util.slideAlert (util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
 			var targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
@@ -840,7 +837,7 @@ QuickFolders.Util = {
 
 			var sourceFolder = sourceMsgHdr.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
       if (sourceFolder == targetFolder) {
-        util.popupAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
+        util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
 			step = 5;
@@ -850,7 +847,7 @@ QuickFolders.Util = {
 			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;
       let isMove = (!makeCopy);
-      util.logDebugOptional('dnd,quickMove', 'calling CopyMessages (\n' +
+      util.logDebugOptional('dnd,quickMove,dragToNew', 'calling CopyMessages (\n' +
         'sourceFolder = ' + sourceFolder + '\n'+
         'messages = ' + messageList + '\n' +
         'destinationFolder = ' + targetFolder + '\n' + 
@@ -1608,7 +1605,7 @@ QuickFolders.Util.FirstRun =
 					}
 					else
 						window.setTimeout(function(){
-							QuickFolders.Util.popupAlert("QuickFolders",sUpgradeMessage);
+							QuickFolders.Util.slideAlert("QuickFolders",sUpgradeMessage);
 						}, 3000);
 
 

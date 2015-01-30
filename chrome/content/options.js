@@ -177,9 +177,9 @@ QuickFolders.Options = {
 			QuickFolders.Util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
 		
-		let version=QuickFolders.Util.Version;
-    let util = QuickFolders.Util;
-		let wd = window.document;
+		let version=QuickFolders.Util.Version,
+        util = QuickFolders.Util,
+		    wd = window.document;
 		if (window.arguments) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
@@ -191,8 +191,8 @@ QuickFolders.Options = {
     }
     
     // convert from str5ing "24px" to number "24"
-    let minToolbarHeight = QuickFolders.Preferences.getCharPrefQF('toolbar.minHeight');
-    let mT = parseInt(minToolbarHeight);
+    let minToolbarHeight = QuickFolders.Preferences.getCharPrefQF('toolbar.minHeight'),
+        mT = parseInt(minToolbarHeight);
     if (minToolbarHeight.indexOf('px' > 0)) {
       QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', mT.toString()) 
     }
@@ -222,7 +222,7 @@ QuickFolders.Options = {
 		// hide first 3 tabs!!
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly") {
 			if (tabbox) {
-				var keep;
+				let keep;
 				switch(this.optionsMode) {
 					case "helpOnly":
 						keep=this.QF_PREF_HELP;
@@ -238,7 +238,6 @@ QuickFolders.Options = {
 						tabbox.tabpanels.removeChild(tabbox.tabpanels.children[i]);
 				}
 			}
-			
 			return; // we do not set any values!
 		}
 		
@@ -280,7 +279,7 @@ QuickFolders.Options = {
 			Services.prompt.alert(null,"QuickFolders",message);
 			message = '';
 		}
-
+    sizeToContent();
 	},
   
   initBling: function initBling (tabbox) {
@@ -925,27 +924,26 @@ QuickFolders.Options = {
   
 	dumpFolderEntries: function dumpFolderEntries() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
-		var service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+		let service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+    let util = QuickFolders.Util;
 
 		try {
 			var sFolderString = service.getCharPref("QuickFolders.folders");
 			sFolderString = service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
 			var clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
 
-			QuickFolders.Util.logToConsole("Folder String: " & sFolderString);
+			util.logToConsole("Folder String: " & sFolderString);
       try {
         // format the json
         let prettyFolders = JSON.stringify(JSON.parse(sFolderString), null, '  '); 
         clipboardhelper.copyString(prettyFolders);
       }
       catch (e) {
-        logExQuickFolders.Util.logException("Error prettifying folder string:\n", e);
+        util.logException("Error prettifying folder string:\n", e);
         clipboardhelper.copyString(sFolderString);
       }
-      let out = QuickFolders.Util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard.");
-      let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-                         .getService(Components.interfaces.nsIWindowMediator)
-                         .getMostRecentWindow("mail:3pane");
+      let out = util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard.");
+      let mail3PaneWindow = util.getMail3PaneWindow();
       
       if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
         out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
@@ -968,19 +966,27 @@ QuickFolders.Options = {
 	
 	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
 	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
-	  QuickFolders.Util.logDebug('showAboutConfig(clickedElement: ' + clickedElement.tagName + ', filter: ' + filter + ', readOnly: ' + readOnly +')');
+    let util = QuickFolders.Util;
+	  util.logDebug('showAboutConfig(clickedElement: ' + clickedElement.tagName + ', filter: ' + filter + ', readOnly: ' + readOnly +')');
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
-		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-		let w = mediator.getMostRecentWindow(name);
-		// parent window
-		let win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
+		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
+		    w = mediator.getMostRecentWindow(name),
+        // set parent window
+		    win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
          		? clickedElement.ownerDocument.defaultView 
 						: window;
 		if (!w) {
-			var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-			w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=500px,height=350px", null);
+			let watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher),
+          width = (util.HostSystem == 'linux') ? "650px" : "500px",
+          height = (util.HostSystem == 'linux') ? "320px" : "300px",
+          features = "alwaysRaised,dependent,chrome,resizable,width="+ width + ",height=" + height;
+      if (util.HostSystem == 'winnt')
+        w = watcher.openWindow(win, uri, name, features, null);
+      else
+      else
+        w = win.openDialog(uri, name, features);
 		}
 		if (updateFolders) {
 		  // make sure QuickFolders UI is updated when about:config is closed.
@@ -989,8 +995,8 @@ QuickFolders.Options = {
 		w.focus();
 		w.addEventListener('load', 
 			function () {
-			  QuickFolders.Util.logDebug('showAboutConfig() : setting config Filter.\nreadonly = ' + readOnly);
-				var flt = w.document.getElementById("textbox");
+			  util.logDebug('showAboutConfig() : setting config Filter.\nreadonly = ' + readOnly);
+				let flt = w.document.getElementById("textbox");
 				if (flt) {
 					 flt.value=filter;
 				 	// make filter box readonly to prevent damage!
@@ -1003,7 +1009,7 @@ QuickFolders.Options = {
 				 	}
 				}
 				else
-				  QuickFolders.Util.logDebug('filter textbox not found');
+				  util.logDebug('filter textbox not found');
 			});
 	},
 

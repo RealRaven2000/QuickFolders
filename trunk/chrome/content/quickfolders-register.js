@@ -9,11 +9,11 @@ END LICENSE BLOCK */
 
 QuickFolders.Licenser = {
   LicenseKey: '',  // store in preference when given
-  RSA_encryption: "15e564c31eae2314e86636395c486358e6c25df98c7ac44bdf280cf85e3c13bb",
-  RSA_decryption: "57c9ad69ecb93e9b51f877faf0594b50dea56bf2ab881f2cc303c74c5846a733",
-  RSA_modulus:    "7f773331c19f8de6b7b8f1be66c80841d29b2b6e90c3fbe56d4a5503141ecd75",
+  RSA_encryption: "", // 
+  RSA_decryption: "1a9a5c4b1cc62e975e3e10e4b5746c5de581dcfab3474d0488cb2cd10073e01b",
+  RSA_modulus:    "2e1a582ecaab7ea39580890e1db6462137c20fb8abcad9b2dad70a610011e685",
   RSA_keylength: 256,
-  MaxDigits: 36,
+  MaxDigits: 35,
   DecryptedMail: '',
   DecryptedDate: '',
   AllowSecondaryMails: false,
@@ -193,12 +193,14 @@ QuickFolders.Licenser = {
       return null;
     return arr1[1];
   },
+  
   getMail: function getMail(LicenseKey) {
     let arr1 = LicenseKey.split(':');
     if (!arr1.length)
       return null;
     return arr1[0].substr(3); // split off QF-
   },
+  
   getCrypto: function getCrypto(LicenseKey) {
     let arr=LicenseKey.split(';');
     if (arr.length<2)

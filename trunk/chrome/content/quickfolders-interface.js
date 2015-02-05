@@ -807,7 +807,7 @@ QuickFolders.Interface = {
 	} ,
 	
 	// moved from options.js!
-	updateMainWindow: function updateMainWindow() {
+	updateMainWindow: function updateMainWindow(minimal) {
 		function logCSS(txt) {
 			QuickFolders.Util.logDebugOptional("css", txt);
 		}
@@ -818,16 +818,18 @@ QuickFolders.Interface = {
 			
 		// update the theme type - based on theme selection in options window, if this is open, else use the id from preferences
 		prefs.setCurrentThemeId(themeSelector ? themeSelector.value : prefs.CurrentThemeId);
-		var style =  prefs.ColoredTabStyle;
-		// refresh main window
-		var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+		let style =  prefs.ColoredTabStyle,
+		    // refresh main window
+		    mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 											 .getService(Components.interfaces.nsIWindowMediator)
 											 .getMostRecentWindow("mail:3pane");
 		// we need to try and get at the main window context of QuickFolders, not the prefwindow instance!
 		if (mail3PaneWindow && mail3PaneWindow.document) { 
 			let _interface = mail3PaneWindow.QuickFolders.Interface;
-			logCSS("updateMainWindow: update Folders...");
-			_interface.updateFolders(true, false);
+      if (!minimal) {
+        logCSS("updateMainWindow: update Folders...");
+        _interface.updateFolders(true, false);
+      }
 			logCSS("updateMainWindow: update User Styles...");
 			_interface.updateUserStyles();
 		}
@@ -1478,10 +1480,10 @@ QuickFolders.Interface = {
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
-        button.style.setProperty('background-image', entry.cssBack, 'important');
+        button.style.setProperty('background-image', entry.cssBack); // , 'important'??
         let l = getLabel(button);
         if (l) 
-          l.style.setProperty('color', entry.cssColor, 'important');
+          l.style.setProperty('color', entry.cssColor);  // , 'important'
       }
       catch(ex) {
         QuickFolders.Util.logException('custom CSS failed',ex);
@@ -2393,8 +2395,8 @@ QuickFolders.Interface = {
 
 			// SelectColor
 			QuickFolders.Util.logDebugOptional("popupmenus","Creating Colors Menu for " + folder.name + "...");
-			let entry = QuickFolders.Model.getFolderEntry(folder.URI);
-			var menuColorPopup = this.buildPaletteMenu(entry.tabColor ? entry.tabColor : 0);
+			let entry = QuickFolders.Model.getFolderEntry(folder.URI),
+			    menuColorPopup = this.buildPaletteMenu(entry.tabColor ? entry.tabColor : 0);
 			colorMenu.appendChild(menuColorPopup);
 		  this.initElementPaletteClass(QFcommandPopup, button);
 
@@ -3508,8 +3510,10 @@ QuickFolders.Interface = {
 	} ,
   
   viewLicense: function viewLicense() {
-		let params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+		let win = QuickFolders.Util.getMail3PaneWindow(),
+        params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.QuickFolders}, out:null};
+        
+    win.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {
@@ -3537,9 +3541,13 @@ QuickFolders.Interface = {
 			folder = forceButton ? forceButton.folder : GetFirstSelectedMsgFolder();
 		}
 		catch (e) { return; }
-    if (this.lastTabSelected == folder) return; // avoid duplicate selection actions
 		if (null == folder) return; // cut out lots of unneccessary processing!
 		selectedButton = forceButton ? forceButton : this.getButtonByFolder(folder);
+    
+    if (this.lastTabSelected == folder) {
+      this.styleSelectedTab(selectedButton);
+      return; // avoid duplicate selection actions
+    }
 		
 		// update unread folder flag:
 		let showNewMail = QuickFolders.Preferences.isHighlightNewMail;
@@ -3842,20 +3850,19 @@ QuickFolders.Interface = {
 				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
 				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPref('pastelColors'));
 					//   retrieve about config key to persist setting;
-					let styleKey =  targetNode.getAttribute('stylePrefKey');
-				  var stylePref = 'style.' + styleKey + '.';
+					let styleKey =  targetNode.getAttribute('stylePrefKey'),
+				      stylePref = 'style.' + styleKey + '.';
 				  if (stylePref)
 					  QuickFolders.Preferences.setIntPref(stylePref + 'paletteEntry', col);
 					
 					// special rule: if this is the Active Tab Color, let's also determine the active BG (bottom pixel of gradient!)
-					let paletteClass = this.getPaletteClassCss(styleKey);
-					let ruleName = '.quickfolders-flat ' + paletteClass + '.col' + col;
-					let engine = QuickFolders.Styles;
+					let paletteClass = this.getPaletteClassCss(styleKey),
+					    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + col,
+					    engine = QuickFolders.Styles;
 					ssPalettes = ssPalettes ? ssPalettes : this.getStyleSheet(engine, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes');
-					let colPickId = '';
-					
-					let selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
-					let previewTab;
+					let colPickId = '',
+					    selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, 'color'),
+					    previewTab;
 					if (selectedFontColor !== null) {
 						switch(styleKey) {
 							case 'DragOver':
@@ -3887,9 +3894,10 @@ QuickFolders.Interface = {
 					}
 					
 					// find out the last (=main) gradient color and set as background color!
-					let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
+					let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image'),
+              resultBackgroundColor = '';
 					if (selectedGradient !== null) { 
-						// get last gradient point (bottom) 
+						// get last gradient point (bottom) to determine background color
 						// all gradients should be defined top down
 						QuickFolders.Util.logDebugOptional("css.palette", "selectedGradient = " + selectedGradient);
 						let f = selectedGradient.lastIndexOf('rgb');
@@ -3920,6 +3928,7 @@ QuickFolders.Interface = {
 										styleKey = 'DragTab'; // fix naming inconsistency
 									QuickFolders.Preferences.setUserStyle(styleKey, "background-color", rgb);
 								}
+                resultBackgroundColor = rgb;
 							}
 						}
 					}
@@ -3937,12 +3946,17 @@ QuickFolders.Interface = {
 						QuickFolders.Preferences.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
 						QuickFolders.Interface.updateMainWindow();
 					}
+          // immediate update of background color for bottom border
+          if (styleKey == 'ActiveTab' && resultBackgroundColor) {
+            QuickFolders.Options.styleUpdate('ActiveTab','background-color', resultBackgroundColor, 'activetabs-label');
+          }
+          
 					return; // early exit
 			} // end switch
 		}
 		// or... paint a quickFolders tab
-		var theFolder = parent.folder;
-		var button = this.getButtonByFolder(theFolder);
+		let theFolder = parent.folder,
+		    button = this.getButtonByFolder(theFolder);
 		QuickFolders.Util.logToConsole("Interface.setTabColorFromMenu(" + menuitem.toString() + ", " + col + ")" );
 		this.setButtonColor(button, col);        // color the  button via palette entry number
     this.initElementPaletteClass(button, '', (col=='0'));    // make sure correct palette is set
@@ -4144,14 +4158,16 @@ QuickFolders.Interface = {
 			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, 'color'); // make this overridable!
 			// we do not want the rule to containg the paletteClass because it has to always work!
 			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', selectedGradient, true);
-      engine.setElementStyle(ss, '.quickfolders-flat ' + paletteClass + '.selected-folder > label', 'color', selectedColor ,true);
+      // engine.setElementStyle(ss, '.quickfolders-flat ' + paletteClass + '.selected-folder > label', 'color', selectedColor ,true);
 		}
 		else { // two colors mode
-			engine.setElementStyle(ss, '.quickfolders-flat ' + globalPaletteClass + '.selected-folder', 'background-image', 'none', true);
+			// engine.setElementStyle(ss, '.quickfolders-flat ' + globalPaletteClass + '.selected-folder', 'background-image', 'none', true);
+			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', 'none', true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
 		}
     if (paletteClass != coloredPaletteClass) 
-      engine.setElementStyle(ss, '.quickfolders-flat ' + coloredPaletteClass + '.selected-folder > label', 'color', selectedColor ,true);
+      // engine.setElementStyle(ss, '.quickfolders-flat ' + coloredPaletteClass + '.selected-folder > label', 'color', selectedColor ,true);
+      engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder > label', 'color', selectedColor ,true);
 
     if (paletteClass != globalPaletteClass)
       engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder > label', 'color', selectedColor ,true);
@@ -4267,7 +4283,6 @@ QuickFolders.Interface = {
 			// BORDERS & SHADOWS
 			// for full colored tabs color the border as well!
 			// but should only apply if background image is set!!
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
 			let SHADOW = QuickFolders.Util.isCSSShadow ? 'box-shadow' : '-moz-box-shadow';
 			if (QuickFolders.Preferences.getBoolPref("buttonShadows")) {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'1px -1px 3px -1px rgba(0,0,0,0.3)', true);
@@ -4280,6 +4295,7 @@ QuickFolders.Interface = {
 				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW);
 			}
 
+			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
 			styleEngine.setElementStyle(ss, 'toolbar.quickfolders-flat','border-bottom-color', colActiveBG, true); // only in main toolbar!
 
 			let theInit = '';

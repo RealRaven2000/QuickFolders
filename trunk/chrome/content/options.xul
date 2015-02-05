@@ -288,6 +288,7 @@
 												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkShowFolderMenuButton"
+												label="&qf.checkbox.showMailFolderCommands;"
 												preference="QuickFolders-Preferences-ShowFolderMenuButton"
 												instantApply="true"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
@@ -502,7 +503,7 @@
 								</hbox>
 								<description id="Quickfolders-Theme-Description"
 														 flex="1"
-														 style="margin-left:6px !important;max-width:40em;"
+														 style="margin-left:6px !important;max-width:46em;"
 									>...</description>
 							</vbox>
 						</hbox>
@@ -560,7 +561,6 @@
 											oncommand="QuickFolders.Options.setDefaultButtonRadius();" />
 						</hbox>
 					</groupbox>
-					<separator class="thin" />
 					<hbox align="center">
 						<label value="&qf.label.ToolbarBackground;" />
 						<colorpicker id="toolbar-colorpicker"
@@ -581,23 +581,21 @@
 								<!-- pretend toolbar -->
 								<hbox style="margin-top: .2em;" id="qf-StandardColors">
 									<vbox>
-										<hbox>
+										<hbox align="center">
 											<label id="inactivetabs-label"
 														 class="qfTabPreview"
 														 stylePrefKey="InactiveTab"
 														 value="&qf.label.UncoloredTab;"
 														 tooltiptext="&qf.label.UncoloredTab.tooltip;"
 														 context="QuickFolders-Options-PalettePopup"
-														 onclick="QuickFolders.Options.showPalette(this, 'standard', 'menuStandardPalette');" />
+														 onclick="QuickFolders.Options.showPalette(this, 'standard');" />
 											<colorpicker id="inactive-fontcolorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('InactiveTab','color', this.color, 'inactivetabs-label');" />
 											<colorpicker id="inactive-colorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.colorPickerTranslucent(this);"
 																	 instantApply="true" />
 											<menulist id="menuStandardPalette"
@@ -607,16 +605,16 @@
 												<menupopup>
 													<menuitem label="&qf.palette.twoColors;"
 																		value="0"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 0);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 0, true);" />
 													<menuitem label="&qf.palette.standard;"
 																		value="1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 1);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 1, true);" />
 													<menuitem label="&qf.palette.pastel;"
 																		value="2"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 2);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 2, true);" />
 													<menuitem label="&qf.palette.night;"
 																		value="3"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 3);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'standard', 3, true);" />
 												</menupopup>
 											</menulist>
 										</hbox>
@@ -629,7 +627,7 @@
 														 stylePrefKey="ColoredTab"
 														 class="textBoxLabel"
 														 context="QuickFolders-Options-PalettePopup"
-														 onclick="QuickFolders.Options.showPalette(this, 'colored', 'menuColoredPalette');" />
+														 onclick="QuickFolders.Options.showPalette(this, 'colored');" />
 											<menulist id="menuColoredPalette"
 																sizetopopup="none"
 																preference="QuickFolders-Preferences-ColoredTab-PaletteType"
@@ -637,13 +635,13 @@
 												<menupopup>
 													<menuitem label="&qf.palette.standard;"
 																		value="1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 1);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 1, true);" />
 													<menuitem label="&qf.palette.pastel;"
 																		value="2"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 2);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 2, true);" />
 													<menuitem label="&qf.palette.night;"
 																		value="3"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 3);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'colored', 3, true);" />
 												</menupopup>
 											</menulist>
 										</hbox>
@@ -679,16 +677,14 @@
 														 class="qfTabPreview"
 														 stylePrefKey="ActiveTab"
 														 context="QuickFolders-Options-PalettePopup"
-														 onclick="QuickFolders.Options.showPalette(this, 'active', 'menuActiveTabPalette');" />
+														 onclick="QuickFolders.Options.showPalette(this, 'active');" />
 											<colorpicker id="activetab-fontcolorpicker"
 																	 type="button"
 																	 palettename="vibrant"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('ActiveTab','color', this.color, 'activetabs-label');" />
 											<colorpicker id="activetab-colorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('ActiveTab','background-color', this.color, 'activetabs-label');" />
 											<!-- instead of a checkbox, lets have a selection: no palette, like standard, vibrant, pastel"
 											This used to call QuickFolders.Options.toggleUsePalette(this,'active') from a checkbox
@@ -698,21 +694,18 @@
 																preference="QuickFolders-Preferences-ActiveTab-PaletteType"
 																oncommand="QuickFolders.Interface.updateMainWindow();">
 												<menupopup>
-													<menuitem label="&qf.palette.inactive;"
-																		value="-1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', -1);" />
 													<menuitem label="&qf.palette.twoColors;"
 																		value="0"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 0);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 0, true);" />
 													<menuitem label="&qf.palette.standard;"
 																		value="1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 1);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 1, true);" />
 													<menuitem label="&qf.palette.pastel;"
 																		value="2"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 2);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 2, true);" />
 													<menuitem label="&qf.palette.night;"
 																		value="3"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 3);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'active', 3, true);" />
 												</menupopup>
 											</menulist>
 										</row>
@@ -723,37 +716,32 @@
 														 class="qfTabPreview"
 														 stylePrefKey="HoveredTab"
 														 context="QuickFolders-Options-PalettePopup"
-														 onclick="QuickFolders.Options.showPalette(this, 'hovered', 'menuHoverPalette');" />
+														 onclick="QuickFolders.Options.showPalette(this, 'hovered');" />
 											<colorpicker id="hover-fontcolorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('HoveredTab','color', this.color, 'hoveredtabs-label');" />
 											<colorpicker id="hover-colorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('HoveredTab','background-color', this.color, 'hoveredtabs-label');" />
 											<menulist id="menuHoverPalette"
 																sizetopopup="none"
 																preference="QuickFolders-Preferences-HoveredTab-PaletteType"
 																oncommand="QuickFolders.Interface.updateMainWindow();">
 												<menupopup>
-													<menuitem label="&qf.palette.inactive;"
-																		value="-1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', -1);" />
 													<menuitem label="&qf.palette.twoColors;"
 																		value="0"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 0);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 0, true);" />
 													<menuitem label="&qf.palette.standard;"
 																		value="1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 1);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 1, true);" />
 													<menuitem label="&qf.palette.pastel;"
 																		value="2"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 2);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 2, true);" />
 													<menuitem label="&qf.palette.night;"
 																		value="3"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 3);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'hovered', 3, true);" />
 												</menupopup>
 											</menulist>
 										</row>
@@ -763,42 +751,38 @@
 														 class="qfTabPreview"
 														 stylePrefKey="DragOver"
 														 context="QuickFolders-Options-PalettePopup"
-														 onclick="QuickFolders.Options.showPalette(this, 'dragOver', 'menuDragOverPalette');" />
+														 onclick="QuickFolders.Options.showPalette(this, 'dragOver');" />
 											<colorpicker id="dragover-fontcolorpicker"
 																	 palettename="standard"
 																	 type="button"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('DragTab', 'color', this.color, 'dragovertabs-label');" />
 											<colorpicker id="dragover-colorpicker"
 																	 type="button"
 																	 palettename="standard"
-																	 style="vertical-align:middle"
 																	 onchange="return QuickFolders.Options.styleUpdate('DragTab', 'background-color', this.color, 'dragovertabs-label');" />
 											<menulist id="menuDragOverPalette"
 																sizetopopup="none"
 																preference="QuickFolders-Preferences-DragOver-PaletteType"
 																oncommand="QuickFolders.Interface.updateMainWindow();">
 												<menupopup>
-													<menuitem label="&qf.palette.inactive;"
-																		value="-1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', -1);" />
 													<menuitem label="&qf.palette.twoColors;"
 																		value="0"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 0);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 0, true);" />
 													<menuitem label="&qf.palette.standard;"
 																		value="1"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 1);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 1, true);" />
 													<menuitem label="&qf.palette.pastel;"
 																		value="2"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 2);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 2, true);" />
 													<menuitem label="&qf.palette.night;"
 																		value="3"
-																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 3);" />
+																		oncommand="QuickFolders.Options.toggleUsePalette(this, 'dragOver', 3, true);" />
 												</menupopup>
 											</menulist>
 										</row>
 									</rows>
 								</grid>
+								<separator class="thin" />
 								<hbox id="qf-stateColors-defaultButton" pack="end">
 									<button label="&qf.button.defaultcolors;" oncommand="QuickFolders.Options.setDefaultColors();" />
 								</hbox>
@@ -825,27 +809,30 @@
 					</groupbox>
 				</tabpanel>
 				<tabpanel id="QuickFolders-Options-quickhelp" orient="vertical" align="center">
-					<vbox id="quickHelpTextPane" flex="1"  class="niceFont">
+					<vbox id="quickHelpPane" flex="1"  class="niceFont">
 						<separator class="thin" />
 							<description id="importantNote">
 								&qf.description.linkNote;
 							</description>
 							<vbox height="70">
-							<button id="L0" height="40"
+							<button id="L0"
 											href="http://quickfolders.mozdev.org/"
 											tooltiptext="quickfolders.mozdev.org"
 											onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/')">
-								<label width="240">&qf.label.homePage;</label>
+								<label width="270">&qf.label.homePage;</label>
 							</button>
 						</vbox>
-						<description>&qf.description.dragToAdd;</description>
-						<description>&qf.description.dragToPosition;</description>
-						<description>&qf.description.dragToPopup;</description>
-						<description>&qf.description.changeCategory;</description>
-						<description>&qf.description.rightClickOptions;</description>
-						<!--
-						<description>&qf.description.tipMsg;</description>
-						-->
+						<!-- help details, scrollable so I can add more later ... -->
+						<vbox id="quickHelpTextPane">
+							<description>&qf.description.dragToAdd;</description>
+							<description>&qf.description.dragToPosition;</description>
+							<description>&qf.description.dragToPopup;</description>
+							<description>&qf.description.changeCategory;</description>
+							<description>&qf.description.rightClickOptions;</description>
+							<!-- NOSTALGY - OBSOLETE!
+							<description>&qf.description.tipMsg;</description>
+							-->
+						</vbox>
 					</vbox>
 				</tabpanel>
 				<tabpanel id="QuickFolders-Options-support" orient="vertical">
@@ -943,11 +930,16 @@
 						<label id="licenseDate" value="-" />
 					</hbox>
 					<separator class = "licenseSeparator" />
-					<description id="validationPassed" class="niceFont" collapsed="true">&qf.licenseValidation.passed;</description>
-					<description id="validationFailed" class="niceFont" collapsed="true">&qf.licenseValidation.failed;</description>
-					<description id="validationExpired" class="niceFont" collapsed="true">&qf.licenseValidation.expired;</description>
-					<description id="validationInvalidEmail" class="niceFont" collapsed="true">&qf.licenseValidation.invalidMail;</description>
-					<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+					<hbox id="validationResults">
+					  <vbox>
+							<description id="validationPassed" class="niceFont" collapsed="true">&qf.licenseValidation.passed;</description>
+							<description id="validationFailed" class="niceFont" collapsed="true">&qf.licenseValidation.failed;</description>
+							<description id="validationExpired" class="niceFont" collapsed="true">&qf.licenseValidation.expired;</description>
+							<description id="validationInvalidEmail" class="niceFont" collapsed="true">&qf.licenseValidation.invalidMail;</description>
+							<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+					  </vbox>
+						<spacer flex="1"/>
+					</hbox>
 					<separator />
 					<vbox height="40">
 						<hbox pack="end">
@@ -957,7 +949,7 @@
 					</hbox>
 					</vbox>
 					<separator flex="1" />
-					<groupbox>
+					<groupbox id="txtKeyGenerator" collapsed="true">
 					  <caption label="CREATE REGISTRATION KEY: REMOVE IN PRODUCTION - TRANSLATION UNNECESSARY!" />
 						<hbox>
 							<textbox id="txtEncrypt"

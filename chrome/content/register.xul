@@ -102,13 +102,19 @@
 			</hbox>
 		</vbox>
 		<spacer flex="2" />
-		<button id="btnEnterCode"
-						label="&enterLicenseKey.button;"
-						tooltiptext="&enterLicenseKey.tooltip;"
-						oncommand="QuickFolders.Interface.viewLicense();" />
-		<button id="btnLicense"
-						label="&buyLicense.button;"
-						oncommand="QuickFolders.Licenser.goPro();" />
+		<vbox>
+		  <spacer flex="1"/>
+			<!-- align buttons bottom right -->
+			<hbox>
+				<button id="btnEnterCode"
+								label="&enterLicenseKey.button;"
+								tooltiptext="&enterLicenseKey.tooltip;"
+								oncommand="QuickFolders.Interface.viewLicense();" />
+				<button id="btnLicense"
+								label="&buyLicense.button;"
+								oncommand="QuickFolders.Licenser.goPro();" />
+			</hbox>
+		</vbox>
 		
 	</hbox>
 	<textbox id="referrer" collapsed="true"/>

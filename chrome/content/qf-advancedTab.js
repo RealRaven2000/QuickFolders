@@ -15,7 +15,7 @@ QuickFolders.AdvancedTab = {
     return window.arguments[1];
   } ,
   get MainQuickFolders() {
-    var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+    let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 				.getService(QuickFolders_CI.nsIWindowMediator)
 				.getMostRecentWindow("mail:3pane");  
     return mail3PaneWindow.QuickFolders;
@@ -35,34 +35,34 @@ QuickFolders.AdvancedTab = {
   } ,
   
   load: function load() {
-    let entry = this.entry;
+    let entry = this.entry,
+        elem = document.getElementById.bind(document);
     if (entry.flags) {
+      let ig = elem('chkIgnoreUnread'),
+          ic = elem('chkIgnoreCounts'),
+          iss = elem('chkCustomCSS'),
+          ip = elem('chkCustomPalette');
       // ignore unread counts
-      let ig = document.getElementById('chkIgnoreUnread');
       ig.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
       // ignore all counts
-      let ic = document.getElementById('chkIgnoreCounts');
       ic.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_COUNTS) && true;
       // custom css rules
-      let iss = document.getElementById('chkCustomCSS');
       iss.checked = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_CSS) && true;
-      document.getElementById('txtColor').value = entry.cssColor ? entry.cssColor : '';
-      document.getElementById('txtColorPicker').color = document.getElementById('txtColor').value;
-      document.getElementById('txtBackground').value = entry.cssBack ? entry.cssBack : '';
+      elem('txtColor').value = entry.cssColor ? entry.cssColor : '';
+      elem('txtColorPicker').color = elem('txtColor').value;
+      elem('txtBackground').value = entry.cssBack ? entry.cssBack : '';
       // custom palette
-      let ip = document.getElementById('chkCustomPalette');
       let isPalette = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_PALETTE) && true;
       ip.checked = isPalette;
       if (isPalette) {
-        let menuList = document.getElementById('menuCustomTabPalette');
+        let menuList = elem('menuCustomTabPalette');
         menuList.value = this.entry.customPalette.toString();
       }
     }
     
-    
-    let lbl = document.getElementById('lblCategories');
+    let lbl = elem('lblCategories');
     lbl.value = entry.category;
-    let tabHeader = document.getElementById('myHeader');
+    let tabHeader = elem('myHeader');
     tabHeader.setAttribute('description', entry.name);
     
     // we wait as the width isn't correct on load
@@ -76,6 +76,7 @@ QuickFolders.AdvancedTab = {
     window.close();
     return true;
   } ,
+  
   accept: function accept() {
     this.apply();
     return true;
@@ -90,9 +91,9 @@ QuickFolders.AdvancedTab = {
       return isFlagged;
     }
     
-    let f = this.folder;
-    let isChange = false;
-    let flags = this.ADVANCED_FLAGS.NONE;
+    let f = this.folder,
+        isChange = false,
+        flags = this.ADVANCED_FLAGS.NONE;
     
     addFlag('chkIgnoreUnread', this.ADVANCED_FLAGS.SUPPRESS_UNREAD);
     addFlag('chkIgnoreCounts', this.ADVANCED_FLAGS.SUPPRESS_COUNTS);
@@ -128,12 +129,13 @@ QuickFolders.AdvancedTab = {
   } ,
   
   defaults: function defaults() {
-    document.getElementById('chkIgnoreUnread').checked = false;
-    document.getElementById('chkIgnoreCounts').checked = false;
-    document.getElementById('chkCustomCSS').checked = false;
-    document.getElementById('chkCustomPalette').checked = false;
-    document.getElementById('txtColor').value = '';
-    document.getElementById('txtBackground').value = '';
+    let elem = document.getElementById.bind(document);
+    elem('chkIgnoreUnread').checked = false;
+    elem('chkIgnoreCounts').checked = false;
+    elem('chkCustomCSS').checked = false;
+    elem('chkCustomPalette').checked = false;
+    elem('txtColor').value = '';
+    elem('txtBackground').value = '';
     this.entry.flags = this.ADVANCED_FLAGS.NONE;
     // let's close the window with apply to unclunk it
     this.accept();
@@ -158,7 +160,7 @@ QuickFolders.AdvancedTab = {
   } ,
   
   configureCategory: function configureCategory() {
-    var mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+    let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 				.getService(QuickFolders_CI.nsIWindowMediator)
 				.getMostRecentWindow("mail:3pane");  
     QuickFolders.Interface.configureCategory(this.folder, mail3PaneWindow.QuickFolders); // should actually get the "parent" QuickFolders

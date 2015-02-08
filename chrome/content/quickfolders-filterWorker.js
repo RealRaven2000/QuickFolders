@@ -38,14 +38,15 @@ QuickFolders.FilterWorker = {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
         if(item)
-          box.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));
+          box.removeNotification(item, (util.Application == 'Postbox'));
       }   
     }
-		QuickFolders.Util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
-		let notificationId;
-
-    let notifyBox;
-		switch(QuickFolders.Util.Application) {
+    let util = QuickFolders.Util,
+		    notificationId,
+        notifyBox;
+        
+		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
+		switch(util.Application) {
 			case 'Postbox': 
 				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
 				break;
@@ -63,7 +64,7 @@ QuickFolders.FilterWorker = {
 			notifyBox = document.getElementById (notificationId);
 			let item=notifyBox.getNotificationWithValue(notificationKey)
 			if(item)
-				notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+				notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
 		}
 		
 		if (active 
@@ -73,12 +74,12 @@ QuickFolders.FilterWorker = {
 			QuickFolders.Preferences.getBoolPref("filters.showMessage")) 
 		{
 			
-			let title = QuickFolders.Util.getBundleString("qf.filters.toggleMessage.title",
+			let title = util.getBundleString("qf.filters.toggleMessage.title",
                   "Creating Filters"),
-			    theText = QuickFolders.Util.getBundleString("qf.filters.toggleMessage.notificationText",
+			    theText = util.getBundleString("qf.filters.toggleMessage.notificationText",
             "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
             +" To end the filter learning mode, press the filter button on the top left of QuickFolders bar."),
-			    dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
+			    dontShow = util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
 
 			
 			if (notifyBox) {
@@ -87,7 +88,7 @@ QuickFolders.FilterWorker = {
 					// the close button in Postbox is broken: skipAnimation defaults to false and 
 					// creates a invisible label with margin = (-height) pixeles, covering toolbars above
 					// therefore we implement our own close button in Postbox!!
-					if (QuickFolders.Util.Application == 'Postbox') {
+					if (util.Application == 'Postbox') {
 						nbox_buttons = [
 							{
 								label: dontShow,
@@ -98,7 +99,7 @@ QuickFolders.FilterWorker = {
 							{
 								label: 'X',
 								accessKey: 'x',
-								callback: function() { QuickFolders.Util.onCloseNotification(null, notifyBox, notificationKey); },
+								callback: function() { util.onCloseNotification(null, notifyBox, notificationKey); },
 								popup: null
 							}
 						];
@@ -121,11 +122,11 @@ QuickFolders.FilterWorker = {
 						"chrome://quickfolders/skin/ico/filterTemplate.png" , 
 						notifyBox.PRIORITY_INFO_LOW, 
               nbox_buttons,
-							function(eventType) { QuickFolders.Util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
+							function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
 							); 
 						
-				if (QuickFolders.Util.Application == 'Postbox') {
-					QuickFolders.Util.fixLineWrap(notifyBox, notificationKey);
+				if (util.Application == 'Postbox') {
+					util.fixLineWrap(notifyBox, notificationKey);
 				}						
 						
 			}
@@ -203,6 +204,9 @@ QuickFolders.FilterWorker = {
 	// folder is the target folder - we might also need the source folder
 	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy)
 	{
+		let Ci = Components.interfaces,
+        msg,
+        util = QuickFolders.Util;
 		function getMailKeyword(subject) {
 			let topicFilter = subject,
 			    left,right;
@@ -227,18 +231,19 @@ QuickFolders.FilterWorker = {
 			return searchTerm;
 		}
 		
+    
 		// do an async repeat if it fails for the first time
 		function rerun() {
 			QuickFolders.FilterWorker.reRunCount++;
 			if (QuickFolders.FilterWorker.reRunCount > 5) {
-				QuickFolders.Util.alert("QuickFolders", "Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
-					+"Try to move a different message. Otherwise, updating " + QuickFolders.Util.Application + " to a newer version might help");
+				util.alert("QuickFolders", "Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
+					+"Try to move a different message. Otherwise, updating " + util.Application + " to a newer version might help");
 				QuickFolders.FilterWorker.reRunCount=0;
 				return 0;
 			}
 			window.setTimeout(function() {
 						let filtered = QuickFolders.FilterWorker.createFilter(sourceFolder, targetFolder, messageList, isCopy);
-            QuickFolders.Util.logDebug('createFilter returned: ' + filtered);
+            util.logDebug('createFilter returned: ' + filtered);
 					}, 400);
 			return 0;
 		}
@@ -246,16 +251,14 @@ QuickFolders.FilterWorker = {
 		if (!messageList || !sourceFolder || !targetFolder)
 			return null;
 		
-		let Ci = Components.interfaces,
-        msg;
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
       	let serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
-			QuickFolders.Util.slideAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
+			util.slideAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
       }
       else {
         if (sourceFolder.prettyName) {
-          QuickFolders.Util.slideAlert("QuickFolders", "Folder (" + sourceFolder.prettyName + ") does not have a server.");
+          util.slideAlert("QuickFolders", "Folder (" + sourceFolder.prettyName + ") does not have a server.");
         }
       }
 			return false;
@@ -267,7 +270,7 @@ QuickFolders.FilterWorker = {
 		try {
 			// for the moment, let's only process the first element of the message Id List;
 			if (messageList.length) {
-				QuickFolders.Util.logDebugOptional ("filters","messageList.length = " + messageList.length);
+				util.logDebugOptional ("filters","messageList.length = " + messageList.length);
 				let messageId = messageList[0],
 				    messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null,
 				    messageHeader;
@@ -283,7 +286,7 @@ QuickFolders.FilterWorker = {
 						messageHeader = messageDb.getMsgHdrForMessageID(messageId);
 					}
 					catch(e) {
-						QuickFolders.Util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
+						util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
 						return null;
 					}
 				}
@@ -305,13 +308,13 @@ QuickFolders.FilterWorker = {
             filterName = folderName,
             emailAddress, ccAddress, bccAddress;
 				
-				QuickFolders.Util.logDebugOptional ("filters","got msg; key=" + key);
+				util.logDebugOptional ("filters","got msg; key=" + key);
 
 				let headerParser = Components.classes["@mozilla.org/messenger/headerparser;1"].getService(Components.interfaces.nsIMsgHeaderParser);
 				if (headerParser) {
-					QuickFolders.Util.logDebugOptional ("filters","parsing msg header...");
+					util.logDebugOptional ("filters","parsing msg header...");
 					if (headerParser.extractHeaderAddressMailboxes) { // Tb 2 can't ?
-						if (QuickFolders.Util.Application=='Postbox') {
+						if (util.Application=='Postbox') {
 							// guessing guessing guessing ...
 							// somehow this takes the C++ signature?
 							emailAddress = headerParser.extractHeaderAddressMailboxes(null, msg.author); 
@@ -326,22 +329,22 @@ QuickFolders.FilterWorker = {
 						}
 					}
 					else { //exception for early versions of Tb - hence no l10n
-						QuickFolders.Util.alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support extracting addresses from the message header!\n"
+						util.alert("Sorry, but in this version of " + util.Application + ", we cannot do filters as it does not support extracting addresses from the message header!\n"
 						    + "Consider updating to a newer version to get this feature.");
-						QuickFolders.Util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
+						util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
 						return false;
 					}
-					QuickFolders.Util.logDebugOptional ("filters","msg header parsed...");
+					util.logDebugOptional ("filters","msg header parsed...");
 				}
 				else { // exception
-					QuickFolders.Util.alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support parsing message headers!\n"
+					util.alert("Sorry, but in this version of " + util.Application + ", we cannot do filters as it does not support parsing message headers!\n"
 					    + "Consider updating to a newer version to get this feature.");
-					QuickFolders.Util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
+					util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
 					return false;
 				}
 
 				try {
-				QuickFolders.Util.logDebugOptional ("filters",
+				util.logDebugOptional ("filters",
 						"createFilter(target folder="+ targetFolder.prettyName
 							+ ", messageId=" + msg.messageId
 							+ ", author=" + msg.mime2DecodedAuthor + "\n"
@@ -355,7 +358,7 @@ QuickFolders.FilterWorker = {
 				} catch(ex) {;} 
 							
 				let previewText = msg.getStringProperty('preview');
-				QuickFolders.Util.logDebugOptional ("filters", "previewText="+ previewText );
+				util.logDebugOptional ("filters", "previewText="+ previewText );
 
 
 				let args;
@@ -375,7 +378,7 @@ QuickFolders.FilterWorker = {
               // filterEditor dialog and prefill that with the emailAddress.
 					    template = this.getCurrentFilterTemplate();
 					
-					if (QuickFolders.Util.Application=='Postbox') {
+					if (util.Application=='Postbox') {
 						// mailWindowOverlay.js:1790
 						filtersList = sourceFolder.getFilterList(msgWindow);
 						newFilter = filtersList.createFilter(folderName);
@@ -488,7 +491,7 @@ QuickFolders.FilterWorker = {
 							
 							break;
 						default:
-							QuickFolders.Util.alert('invalid template: ' + template);
+							util.alert('invalid template: ' + template);
 							return false;
 					}
 
@@ -507,7 +510,7 @@ QuickFolders.FilterWorker = {
 					
 					
 					// Add to the end
-					QuickFolders.Util.logDebug("Adding new Filter '" + newFilter.filterName + "' "
+					util.logDebug("Adding new Filter '" + newFilter.filterName + "' "
 							 + "for email " + emailAddress
 							 + ": current list has: " + filtersList.filterCount + " items");
 					filtersList.insertFilterAt(0, newFilter);
@@ -535,12 +538,12 @@ QuickFolders.FilterWorker = {
 				}
 			}
 			else
-				QuickFolders.Util.logDebugOptional ("filters","no message found to set up filter");
+				util.logDebugOptional ("filters","no message found to set up filter");
 
 			return 1;
 		}
 		catch(e) {
-			QuickFolders.Util.alert("Exception in QuickFolders.FilterWorker.createFilter: " + e.message);
+			util.alert("Exception in QuickFolders.FilterWorker.createFilter: " + e.message);
 			return -1;
 		}
 		return null;

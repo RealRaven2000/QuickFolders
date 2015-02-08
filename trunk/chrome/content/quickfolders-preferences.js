@@ -14,9 +14,8 @@ QuickFolders.Preferences = {
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
-		var json = JSON.stringify(folderEntries)
-
-		var str = Components.classes["@mozilla.org/supports-string;1"]
+		let json = JSON.stringify(folderEntries),
+		    str = Components.classes["@mozilla.org/supports-string;1"]
 			.createInstance(Components.interfaces.nsISupportsString);
 		str.data = json;
 
@@ -29,19 +28,19 @@ QuickFolders.Preferences = {
 	} ,
 
 	loadFolderEntries: function loadFolderEntries() {
-		if(!this.service.prefHasUserValue("QuickFolders.folders")) {
+		if (!this.service.prefHasUserValue("QuickFolders.folders")) {
 			return [];
 		}
 
 		try {
-			var folders = this.service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
+			let folders = this.service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
 			// fall back for old version
 			if (folders.length<3)
 				folders = this.service.getCharPref("QuickFolders.folders");
 
 			if(folders) {
 				let entries = JSON.parse(folders);
-				for(var i = 0; i < entries.length; i++) {
+				for(let i = 0; i < entries.length; i++) {
 					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
 						entries[i].tabColor = 0;
 					// default the name!!
@@ -242,19 +241,19 @@ QuickFolders.Preferences = {
 	// updates all toxic preferences to skinning engine of v 2.7
 	// returns true if upgraded from a previous skinning engine
 	tidyUpBadPreferences: function tidyUpBadPreferences() {
-		var isUpgradeSkinning = false;
+		let isUpgradeSkinning = false;
 		try {
 			QuickFolders.Util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
 			// get rid of preferences that do not start with "preferences." and replace with newer versions.
 			if (this.existsCharPref('QuickFolders.Toolbar.Style.background-color')) {
-				var replacePref = function(id1, id2) {
-					let service = QuickFolders.Preferences.service;
-					var origPref = 'QuickFolders.' + id1 + '.Style.' + id2;
-					var sValue = "";
+				let replacePref = function(id1, id2) {
+					let service = QuickFolders.Preferences.service,
+					    origPref = 'QuickFolders.' + id1 + '.Style.' + id2,
+					    sValue = "";
 					// save value set by user (if none, default will create it)
 					if (service.prefHasUserValue(origPref)) {
 						sValue = service.getCharPref(origPref);
-						var newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
+						let newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
 						service.setCharPref(newPref, sValue);
 						QuickFolders.Util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
 					}
@@ -277,7 +276,7 @@ QuickFolders.Preferences = {
 			}
 
 			if (this.existsBoolPref("extensions.quickfolders.showFlatStyle")) {
-				var theme = QuickFolders.Themes;
+				let theme = QuickFolders.Themes;
 
 				if (this.getBoolPref("showFlatStyle"))
 					this.setCurrentThemeId(theme.themes.Flat.Id);
@@ -307,11 +306,11 @@ QuickFolders.Preferences = {
 		// note: storing color as string in order to store OS specific colors like Menu, Highlight
 		// usage: getUserStyle("ActiveTab","background-color","HighLight")
 		// usage: getUserStyle("ActiveTab","color", "HighlightText")
-		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
-		var sReturnValue="";
+		let sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType,
+		    sReturnValue="";
 
     try {
-			var localPref = this.service.getCharPref(sStyleName);
+			let localPref = this.service.getCharPref(sStyleName);
 			if(localPref)
 				sReturnValue=localPref;
 			else
@@ -327,7 +326,7 @@ QuickFolders.Preferences = {
 	},
 
 	setUserStyle: function setUserStyle(sId, sType, sValue) {
-		var sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
+		let sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
 		this.service.setCharPref(sStyleName, sValue);
 	},
 
@@ -410,14 +409,14 @@ QuickFolders.Preferences = {
 	},
 
 	setShowCurrentFolderToolbar: function setShowCurrentFolderToolbar(b, singleMessage) {
-		var tag = "showCurrentFolderToolbar";
+		let tag = "showCurrentFolderToolbar";
 		if (singleMessage)
 			tag = "messageWindow." + tag;
 		return this.service.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
 	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(singleMessage) {
-		var tag = "showCurrentFolderToolbar";
+		let tag = "showCurrentFolderToolbar";
 		if (singleMessage)
 			tag = "messageWindow." + tag;
 		return QuickFolders.Preferences.getBoolPref(tag, false);
@@ -426,15 +425,16 @@ QuickFolders.Preferences = {
 	setBoolPrefVerbose: function setBoolPrefVerbose(p, v) {
 		try {
 			return this.service.setBoolPref(p, v);
-		} catch(e) {
-			var s="Err:" +e;
+		} 
+    catch(e) {
+			let s="Err:" +e;
 			QuickFolders.Util.logException("setBoolPrefVerbose(" + p + ") failed\n", e);
 			return false;
 		}
 	} ,
 
 	get CurrentTheme() {
-		var id = this.CurrentThemeId;
+		let id = this.CurrentThemeId;
 		return QuickFolders.Themes.Theme(id);
 	},
 

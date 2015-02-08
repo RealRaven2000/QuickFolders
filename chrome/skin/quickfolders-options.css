@@ -73,6 +73,10 @@
 #chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/cogwheel.png"); }
 #chkCurrentFolderShow .checkbox-icon, #chkCurrentFolderShowSingleMsg .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
 #chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/msgNavigate.png"); }
+#chkFolderNavigation .checkbox-icon { 
+  list-style-image: url("chrome://quickfolders/skin/ico/fugue-nw.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
 #chkShowIconButtons .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture.png"); -moz-image-region: rect(0px, 16px, 16px, 0px); }
 #chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/folderCommand.png"); }
 #chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/Filter.png"); }
@@ -173,13 +177,26 @@ label.text-link, label.text-link[visited="true"] {
 	border: 1px #AAA solid;
 	padding: 4px 2px 6px 5px !important;
 	text-decoration: underline !important;
-	vertical-align: middle !important;;
+	vertical-align: middle !important;
 	text-align: center;
 	font-size: 12px;
 }
 
+#QuickFolders-Options-quickhelp {
+/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical" 
+   and align="center" so all elements inside will be centered vertically*/
+/* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
+  padding-left: 20px; 
+  padding-right: 20px;
+	text-align: justify;
+}
+
+#quickHelpPane {
+  max-width: 650px;
+}
 #quickHelpTextPane {
-  max-width: 630px;
+	overflow-y: scroll;
+	min-height: 21em;
 }
 
 description#importantNote {
@@ -235,16 +252,7 @@ hbox.quickhelp-dbg {
 }
 #txtLicenseKey {
 	height: 4.5em !important;
-}
-
-#QuickFolders-Options-quickhelp {
-/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical" 
-   and align="center" so all elements inside will be centered vertically*/
-/* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
-  padding-left: 20px; 
-  padding-right: 20px;
-	text-align: justify;
-	overflow-y: scroll;
+	min-width: 45em; /* avoid "shrinking" too much in licenseKey only mode */
 }
 
 /* Test (Teo) - wanted to disable this font for consistency reasons
@@ -262,6 +270,10 @@ hbox.quickhelp-dbg {
   font-size: 10.2pt;
 }
 
+#validationResults description {
+  max-width:50em;
+}
+
 #validationPassed {
   color: rgb(0,120,0);
 }
@@ -270,6 +282,10 @@ hbox.quickhelp-dbg {
 }
 #validationExpired {
   color: rgb(120,0,90);
+}
+
+#QuickFolders-Panels {
+  min-height: 425px;
 }
 
 /*added/changed by Teo*/
@@ -297,6 +313,8 @@ hbox.quickhelp-dbg {
 
 #L0 {
 	margin: 0.7em 12em 0.8em 11em !important;
+	min-height: 4em;
+	line-height: 1.6em;
 }
 
 #L0:hover {
@@ -369,3 +387,7 @@ hbox.quickhelp-dbg {
 	text-shadow: #fdd 0 0 1px;
 }
 
+#currentFolderCustomize {
+	overflow-y: scroll;
+	max-height: 216px;
+}

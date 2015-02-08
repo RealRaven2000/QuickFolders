@@ -27,14 +27,14 @@
 <!ENTITY qf.label.behavior "Zachowanie">
 <!ENTITY qf.checkbox.autoFocusPreview "Uaktywniaj listę wiadomości podczas zmiany folderów">
 <!ENTITY qf.checkbox.showSubfolders "Wyświetlaj subfoldery w menu podręcznym">
-<!ENTITY qf.checkbox.sortMenusAlpha "Wymuś alfabetyczne sortowanie subfolderów w menu">
+<!ENTITY qf.checkbox.sortMenusAlpha "Wymuszaj alfabetyczne sortowanie subfolderów w menu">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Używaj tej funkcji wyłącznie w sytuacji, gdy twój klient poczty nie sortuje właściwie subfolderów">
 <!ENTITY qf.checkbox.autoHideToolbar "Nie wyświetlaj paska QuickFolders, gdy jest niepotrzebny">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Pasek QuickFolders będzie ukrywany, gdy będą wyświetlane specjalne karty, takie jak kalendarz, treści, menedżer dodatków">
 <!ENTITY qf.label.mainToolbar "Dodatkowe elementy paska QuickFolders">
 <!ENTITY qf.checkbox.showRecentTab "Wyświetlaj przycisk „Ostatnio otwierane”">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Kliknij prawym przyciskiem, by zmienić konfigurację">
-<!ENTITY qf.checkbox.showQuickMove "Wyświetlaj przycisk quickMove">
+<!ENTITY qf.checkbox.showQuickMove "Wyświetlaj przycisk QuickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Przycisk QuickMove może być używany do przeciągania wiadomości do folderu docelowego o określonej nazwie. Można zebrać wiadomości z wielu folderów. Po wybraniu pożądanych wiadomości, można wprowadzić nazwę folderu docelowego w panelu wyszukiwania.">
 <!ENTITY qf.checkbox.tabMenuIcon "Wyświetlaj ikonę menu na pasku QuickFolders">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "To menu może być również wywołane poprzez kliknięcie prawym przyciskiem na pasku QuickFolders">
@@ -46,12 +46,13 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Po zaznaczeniu tej funkcji, pasek narzędzi będzie wyświetlany w oknie otwieranym po wybraniu funkcji „Otwórz wiadomość w nowym oknie”">
 <!ENTITY qf.checkbox.showRecentButton "Przycisk „Ostatnio otwierane”">
 <!ENTITY qf.checkbox.showMessageNavigation "Przyciski nawigacji wiadomości">
+<!ENTITY qf.checkbox.showFolderNavigation "Przyciski nawigacyjne folderu">
 <!ENTITY qf.checkbox.showMailFolderCommands "Przycisk poleceń folderu">
 <!ENTITY qf.checkbox.showIconButtons "Przycisk dostosowywania ikon">
 <!ENTITY qf.checkbox.showFilterButton "Przycisk „Tworzenie filtrów”">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Można również tworzyć filtry z poziomu menu podręcznego paska QuickFolders">
 <!ENTITY qf.checkbox.currentFolder.closeButton "Przycisk zamykania">
-<!ENTITY qf.label.menus "Elementy wyświetlane w menu">
+<!ENTITY qf.label.menus "Elementy menu – wyświetlanie">
 <!ENTITY qf.label.menus.mailFolder "Polecenia w menu wiadomości">
 <!ENTITY qf.checkbox.menus.getMailForInbox "Pobierz wiadomości (w menu kont)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Pobierz wiadomości (w menu grup dysk.)">
@@ -112,8 +113,8 @@
 <!ENTITY qf.label.ColoredTabPalette.tooltip "Paleta kolorów do określenia kolorów etykiet folderów">
 <!ENTITY qf.checkbox.shadows "Cienie">
 <!ENTITY qf.options.LayoutColorAppearance "Wygląd dodatkowych elementów paska">
-<!ENTITY qf.options.LayoutColorAppearanceStriped "(styl paska)">
-<!ENTITY qf.options.LayoutColorAppearanceFilled "(styl wypełnienia)">
+<!ENTITY qf.options.LayoutColorAppearanceStriped "Pasek">
+<!ENTITY qf.options.LayoutColorAppearanceFilled "Wypełnienie">
 <!ENTITY qf.label.ActiveTabColor "Kolor aktywnego folderu:">
 <!ENTITY qf.label.HoveredTabColor "Kolor wskazywanego folderu:">
 <!ENTITY qf.label.DragOverBackground "Kolor podczas przeciągania:">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY qf.label.donate "Przekaż dotację">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamknij], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">
 <!ENTITY qf.checkbox.usePalette "Użyj palety">
 <!ENTITY qf.options.theme.pastelColors "Kolory pastelowe">

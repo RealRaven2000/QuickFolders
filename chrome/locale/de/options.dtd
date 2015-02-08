@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Die Aktiv-Verzeichnis Werkzeuge anzeigen, wenn eine einzelne Email in neuem Fenster geöffnet wird">
 <!ENTITY qf.checkbox.showRecentButton "Letzte Ordner Schaltfläche">
 <!ENTITY qf.checkbox.showMessageNavigation "Schaltflächen zum Navigieren der EMails">
+<!ENTITY qf.checkbox.showFolderNavigation "Schaltflächen zur Verzeichnis-Navigation">
 <!ENTITY qf.checkbox.showMailFolderCommands "Verzeichnis-Befehle">
 <!ENTITY qf.checkbox.showIconButtons "Schaltflächen zum Anpassen der Icons">
 <!ENTITY qf.checkbox.showFilterButton "Schaltfläche zum 'Filter Lernmodus'">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Kontent vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY qf.label.donate "Spenden">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">
 <!ENTITY qf.checkbox.usePalette "Palette benutzen">
 <!ENTITY qf.options.theme.pastelColors "Pastel Farben">

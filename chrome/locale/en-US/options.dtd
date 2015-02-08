@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Show current folder toolbar in the window that opens when you select to open an Email in a new window">
 <!ENTITY qf.checkbox.showRecentButton "Recent Folders Button">
 <!ENTITY qf.checkbox.showMessageNavigation "Message Navigation buttons">
+<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
 <!ENTITY qf.checkbox.showMailFolderCommands "Mail Folder Commands">
 <!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showFilterButton "'Create Filters' Button">
@@ -120,8 +121,7 @@
 <!ENTITY qf.label.setcolors "Set [Text Color], Background Color">
 <!ENTITY qf.button.defaultcolors "Default Colors">
 <!ENTITY qf.description.linkNote "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:">
-<!ENTITY qf.label.homePage "Detailed information at the new QuickFolders homepage at Mozdev.org…">
-
+<!ENTITY qf.label.homePage "Find detailed information at the QuickFolders homepage at Mozdev.org…">
 <!ENTITY qf.description.dragToAdd "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder.">
 <!ENTITY qf.description.dragToPosition "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder).">
 <!ENTITY qf.description.dragToPopup "Drag messages onto quickfolder popup menu to move messages into sub folders.">

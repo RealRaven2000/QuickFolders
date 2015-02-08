@@ -44,11 +44,11 @@
 					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 					             tooltiptext="&qf.tooltip.RecentFolders;"/>
-				<toolbarseparator />
+				<toolbarseparator special="qfMsgFolderNavigation" />
 				<toolbarbutton id="quickFoldersPreviousUnread"
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goPreviousFolder;"
-								 class="icon"
+											 class="icon"
 					             onclick="QuickFolders.Interface.onGoPreviousMsg(this);" />
 				<toolbarbutton id="quickFoldersNavToggle" 
 					             special="qfMsgFolderNavigation" 
@@ -57,7 +57,7 @@
 				<toolbarbutton id="quickFoldersNextUnread"
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goNextFolder;"
-								 class="icon"
+											 class="icon"
 					             onclick="QuickFolders.Interface.onGoNextMsg(this);" />
 				<toolbarbutton id="QuickFolders-CurrentThread"
 					             special="qfMsgFolderNavigation" 
@@ -65,8 +65,7 @@
 					             oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
 					             tooltiptext="&qf.tooltip.conversationRead;" 
 					             />
-				<toolbarseparator />
-
+				<toolbarseparator id="QuickFolders-Navigate-Separator" />
 				<toolbarbutton id="QuickFolders-NavigateUp"
 					             class="icon"
 					             onclick="QuickFolders.Interface.goUpFolder();"
@@ -78,7 +77,7 @@
 					<toolbarbutton id="QuickFoldersCurrentFolder"
 					               label="Current Folder"
 					               class="selected-folder"
-					                ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+					               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 					               ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
 				</hbox>
 				<toolbarbutton id="QuickFolders-NavigateRight"
@@ -141,7 +140,7 @@
 					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 					             tooltiptext="&qf.tooltip.RecentFolders;"/>
-				<toolbarseparator />
+				<toolbarseparator special="qfMsgFolderNavigation" />
 				<toolbarbutton id="quickFoldersPreviousUnread"
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goPreviousFolder;"
@@ -159,8 +158,7 @@
 					             class="icon"
 					             oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
 					             tooltiptext="&qf.tooltip.conversationRead;" />
-				<toolbarseparator />
-
+				<toolbarseparator id="QuickFolders-Navigate-Separator" />
 				<toolbarbutton id="QuickFolders-NavigateUp"
 					             class="icon"
 					             onclick="QuickFolders.Interface.goUpFolder();"

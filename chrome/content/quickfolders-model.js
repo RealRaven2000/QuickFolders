@@ -23,13 +23,14 @@ QuickFolders.Model = {
       // remove url(...) from Icon file name for storing in model.entry.icon
       return URL.substr(4, URL.length-5);
     }
-    QuickFolders.Util.logDebug("model.addFolder");
-    var entry=this.getFolderEntry(uri);
+    let util = QuickFolders.Util;
+    util.logDebug("model.addFolder");
+    let entry = this.getFolderEntry(uri);
     if (entry) {
       // adding existing folder ...
-      var category = entry.category;
-      if(!category) category = "";
-      var currentCategory = QuickFolders.Interface.CurrentlySelectedCategoryName;
+      let category = entry.category ? entry.category : '',
+          currentCategory = QuickFolders.Interface.CurrentlySelectedCategoryName;
+
       // adding folder to a different category
       if (currentCategory && currentCategory!= category) {
           category = category
@@ -39,12 +40,11 @@ QuickFolders.Model = {
         this.update();
         return true;
       }
-
     }
     // Create entirely new QF Tab
     if(!entry) {
-      let folder = this.getMsgFolderFromUri(uri, false);
-      let iconURI = null;
+      let folder = this.getMsgFolderFromUri(uri, false),
+          iconURI = null;
       if (gFolderTreeView.supportsIcons) {
         iconURI = unpackURI(folder.getStringProperty("iconURL"));
       }
@@ -58,13 +58,17 @@ QuickFolders.Model = {
       });
 
       this.update();
-      QuickFolders.Util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Category: " + categoryName);
+      util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Category: " + categoryName);
       return true;
     }
     else {
       try {
-        alert(QuickFolders.Util.getBundleString("qfFolderAlreadyBookmarked","The folder " + uri  + " is already bookmarked."));
-      } catch (e) { var msg="Folder already bookmarked: " + uri + "\nCan not display message - " + e; QuickFolders.Util.logToConsole (msg); alert(msg); }
+        util.alert(util.getBundleString("qfFolderAlreadyBookmarked","The folder " + uri  + " is already bookmarked."));
+      } catch (e) { 
+        let msg = "Folder already bookmarked: " + uri + "\nCan not display message - " + e; 
+        util.logToConsole (msg); 
+        util.alert(msg); 
+      }
 
       // switch to category if it exists
       QuickFolders.Interface.selectCategory(entry.category,true);
@@ -74,7 +78,7 @@ QuickFolders.Model = {
 
   getFolderEntry: function getFolderEntry(uri) {
     if (!uri) return null;
-    for(var i = 0; i < this.selectedFolders.length; i++) {
+    for (let i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
         return this.selectedFolders[i];
       }
@@ -89,7 +93,7 @@ QuickFolders.Model = {
 
   removeFolder: function removeFolder(uri, updateEntries) {
     QuickFolders.Util.logDebug("model.removeFolder");
-    for(var i = 0; i < this.selectedFolders.length; i++) {
+    for (let i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
         this.selectedFolders.splice(i,1);
       }
@@ -101,7 +105,7 @@ QuickFolders.Model = {
 
   renameFolder: function renameFolder(uri, name) {
     QuickFolders.Util.logDebug("model.renameFolder");
-    var entry;
+    let entry;
 
     if((entry = this.getFolderEntry(uri))) {
       entry.name = name;
@@ -111,7 +115,7 @@ QuickFolders.Model = {
 
   moveFolderURI: function moveFolderURI(fromUri, toUri) {
     QuickFolders.Util.logDebug("model.moveFolderURI");
-    var entry;
+    let entry;
 
     if((entry = this.getFolderEntry(fromUri))) {
       entry.uri = toUri;
@@ -174,7 +178,7 @@ QuickFolders.Model = {
   },
 
   setFolderCategory: function setFolderCategory(uri, name) {
-    var entry;
+    let entry;
 
     if((entry = this.getFolderEntry(uri))) {
       entry.category = name;
@@ -238,17 +242,16 @@ QuickFolders.Model = {
 
   // get the list of Categories from the current Folder Array
   get Categories() {
-    var categories = [];
+    let categories = [];
     if (this.categoriesList.length>0)
       return this.categoriesList;
 
     // can we add a color per category?
-    for(var i = 0; i < this.selectedFolders.length; i++) {
-      var entry = this.selectedFolders[i];
+    for (let i = 0; i < this.selectedFolders.length; i++) {
+      let entry = this.selectedFolders[i],
+          category = entry.category;
 
-      var category = entry.category;
-
-      if(category && category != "") {
+      if (category) {
         // if the folder doesn't exist anymore, ignore this category
         try {
           if (!this.getMsgFolderFromUri(entry.uri, false)) continue;
@@ -261,18 +264,16 @@ QuickFolders.Model = {
 
         // allow multiple categories - comma separated list
         if (category) {
-          var cats = category.split('|');
-          for (var j=0; j<cats.length; j++) { // add it to list if it doesn't exist already.
-            if(    cats[j].length 
+          let cats = category.split('|');
+          for (let j=0; j<cats.length; j++) { // add it to list if it doesn't exist already.
+            if(  cats[j].length 
               && cats[j] != '|' 
               && categories.indexOf(cats[j]) == -1) 
             {
               categories.push(cats[j]);
             }
           }
-        }
-        
-        
+        } 
       }
     }
 
@@ -294,16 +295,16 @@ QuickFolders.Model = {
     QuickFolders.Util.logDebugOptional("categories","Model.renameFolderCategory()\n"
       + "from: " + oldName 
       + "to: "   + newName);
-    var matches = 0;
+    let matches = 0;
 
-    for(var i = 0; i < this.selectedFolders.length; i++) {
-      var folder = this.selectedFolders[i];
+    for(let i = 0; i < this.selectedFolders.length; i++) {
+      let folder = this.selectedFolders[i];
       
       if (folder.category) {
         // multiple cats
-        var cats = folder.category.split('|');
+        let cats = folder.category.split('|');
   
-        for(var j=0; j<cats.length; j++)
+        for(let j=0; j<cats.length; j++)
           if(cats[j] == oldName) {
             cats[j] = newName;
               matches ++;
@@ -321,22 +322,21 @@ QuickFolders.Model = {
 
   deleteFolderCategory: function deleteFolderCategory(category) {
     QuickFolders.Util.logDebugOptional("categories","Model.deleteFolderCategory(" + category + ")");
-    var folderList = '';
-    for(var i = 0; i < this.selectedFolders.length; i++) {
-      var folder = this.selectedFolders[i]
-
+    let folderList = '';
+    for(let i = 0; i < this.selectedFolders.length; i++) {
+      let folder = this.selectedFolders[i];
       if (folder.category) {
-        // multiple cats
-        var cats = folder.category.split('|');
+        // herding cats
+        let cats = folder.category.split('|');
   
-        for(var j=0; j<cats.length; j++)
-          if(cats[j] == category) {
+        for (let j=0; j<cats.length; j++) {
+          if (cats[j] == category) {
             cats[j] = '';
             folderList = folderList + ',' + folder.name;
           }
+        }
           
-        var str = cats.join('|');
-          
+        let str = cats.join('|');   
         if(!str) {
           folder.category = null;
         }
@@ -391,13 +391,13 @@ QuickFolders.Model = {
     if (currentPalette < 1) {
       let folderEntries = QuickFolders.Preferences.loadFolderEntries();
   
-      if(folderEntries.length > 0) {
+      if (folderEntries.length > 0) {
         QuickFolders.Util.logDebug("Updating Palettes from version:" + currentPalette);
         let updateString='';
-        for(var i = 0; i < folderEntries.length; i++) {
+        for(let i = 0; i < folderEntries.length; i++) {
         
-          let folderEntry = folderEntries[i];
-          let tabColor = 0;
+          let folderEntry = folderEntries[i],
+              tabColor = 0;
           try {tabColor = parseInt(folderEntry.tabColor, 10);}
           catch(ex) { tabcolor=-1; }
           let old=tabColor;
@@ -471,19 +471,19 @@ QuickFolders.Model = {
       return;
     QuickFolders.Util.logDebugOptional ("firstrun", "Upgrading Palette for 3.12...");
     
-    var wasPastel = getBoolPref('pastelColors', true);
-    let wasInactivePalette = getBoolPref('style.InactiveTab.usePalette',false);
-    let wasActivePalette = getBoolPref('style.ActiveTab.usePalette',true);
-    let wasHoveredPalette = getBoolPref('style.HoveredTab.usePalette',false);
-    let wasDragOverPalette = getBoolPref('style.DragOver.usePalette',false);
+    let wasPastel = getBoolPref('pastelColors', true),
+        wasInactivePalette = getBoolPref('style.InactiveTab.usePalette',false),
+        wasActivePalette = getBoolPref('style.ActiveTab.usePalette',true),
+        wasHoveredPalette = getBoolPref('style.HoveredTab.usePalette',false),
+        wasDragOverPalette = getBoolPref('style.DragOver.usePalette',false);
     
     // default to no palette
-    let s1 = setPaletteType('InactiveTab', wasInactivePalette);
-    let s2 = setPaletteType('ColoredTab', true); // this must use palette always, by definition!
-    // default to "like Inactive Tab"
-    let s3 = setPaletteType('ActiveTab', wasActivePalette);
-    let s4 = setPaletteType('HoveredTab', wasHoveredPalette);
-    let s5 = setPaletteType('DragOver', wasDragOverPalette);
+    let s1 = setPaletteType('InactiveTab', wasInactivePalette),
+        s2 = setPaletteType('ColoredTab', true), // this must use palette always, by definition!
+        // default to "like Inactive Tab"
+        s3 = setPaletteType('ActiveTab', wasActivePalette),
+        s4 = setPaletteType('HoveredTab', wasHoveredPalette),
+        s5 = setPaletteType('DragOver', wasDragOverPalette);
     
     QuickFolders.Util.logDebugOptional ("firstrun", "New Palette types selected:\n"
       + '(uncolored) ' + s1 + "\n"

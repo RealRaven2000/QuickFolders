@@ -112,8 +112,8 @@ QuickFolders.Themes = {
 	} ,
 
 	Theme : function(id) {
-		for (var key in this.themes) {
-			var obj = this.themes[key];
+		for (let key in this.themes) {
+			let obj = this.themes[key];
 			if (id == obj.Id)
 				return obj;
 		}

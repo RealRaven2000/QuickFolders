@@ -41,8 +41,7 @@
 					<toolbarbutton id="QuickFolders-CurrentThread"
 					               class="icon"
 					               tooltiptext="&qf.tooltip.conversationRead;" />
-					<toolbarseparator />
-	
+					<toolbarseparator id="QuickFolders-Navigate-Separator" />	
 					<toolbarbutton id="QuickFolders-NavigateUp"
 					               class="icon"
 					               onclick="QuickFolders.Interface.goUpFolder();"

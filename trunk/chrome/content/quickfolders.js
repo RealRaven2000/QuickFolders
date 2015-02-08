@@ -229,14 +229,21 @@ END LICENSE BLOCK */
     ## Feature Request [Bug 25513] Mark message as read when moving: toggle extensions.quickfolders.markAsReadOnMove to true for this behavior
     ## Feature Request [Bug 25856] 'Display total number of messages' on a per button basis
     ## [Bug 25941] : drag to new folder on IMAP fails
+    ## Added configuration setting for folder navigation buttons and hide by default to simplify
     TO DO: 
     ## [Bug 25939] Hide current folder tab in single message tab
+    ## Night Vision Palette for dark themes
     
-	4.*   Future versions
-    ## add a (?) Icon beside the Filter button in Options to link to quickFilters!
-    ## use UITourHighlight (http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser.xul#241)
+	4.*   Future Versions
+    ## modify "Find Folder" Icon to tie in with quickJump feature
+    ## simplify Options Icon
+    ## add option to hide prev/next/parent buttons in current Folder bar
+    ## add tooltips to current folder previous and next sibling
+    ## QuickFolders label autohide?
+    ## Add a (?) Icon beside the Filter button in Options to link to quickFilters!
+    ## Use UITourHighlight (http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser.xul#241)
     ## or something similar to highlight new UI features
-    ## investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
+    ## Investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
 		
 
 	Known Issues

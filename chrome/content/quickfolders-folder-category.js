@@ -8,7 +8,7 @@ QuickFolders.FolderCategory = {
 	ALL: "__ALL",
 	semaphorSel: null,
 
-	init: function(window, folder) {
+	init: function init(window, folder) {
 		this.window = window;
 
 		this.folder = folder;
@@ -24,28 +24,28 @@ QuickFolders.FolderCategory = {
 		catch(e) {QuickFolders.Util.logDebug (e); return null;}
 	} ,
 
-	getCategoriesListBox: function() {
+	getCategoriesListBox: function getCategoriesListBox() {
 		return this.$('existing-categories');
 	} ,
 
-	populateCategories: function() {
-		var listBox = this.getCategoriesListBox()
-		var folderEntry = QuickFolders.Model.getFolderEntry(this.folder.URI);
-		var cat = folderEntry.category;
-		// get array of categories for the folder
-		var cats = cat ? cat.split('|') : ''; // will be "" if no category is defined
+	populateCategories: function populateCategories() {
+		let listBox = this.getCategoriesListBox(),
+        item,
+        folderEntry = QuickFolders.Model.getFolderEntry(this.folder.URI),
+        cat = folderEntry.category,
+        // get array of categories for the folder
+        cats = cat ? cat.split('|') : ''; // will be "" if no category is defined
 
 		QuickFolders.Util.clearChildren(listBox);
-
-		var categories = QuickFolders.Model.Categories;
+		let categories = QuickFolders.Model.Categories;
 
 		//deselect all
 		listBox.selectedIndex=-1;
 
-		for(var i = 0; i < categories.length; i++) {
-			var category = categories[i];
+		for(let i = 0; i < categories.length; i++) {
+			let category = categories[i];
 			if (category!=this.ALWAYS) {
-				var item = listBox.appendChild(this.createListItem(category, category));
+				item = listBox.appendChild(this.createListItem(category, category));
 				// is the current folder in this category?
 				if (cats && cats.indexOf(category) >=0)
 					listBox.addItemToSelection(item);
@@ -62,16 +62,16 @@ QuickFolders.FolderCategory = {
 
 	} ,
 
-	createListItem: function(value, label) {
-		var listItem = document.createElement("listitem");
+	createListItem: function createListItem(value, label) {
+		let listItem = document.createElement("listitem");
 		listItem.setAttribute("label", label);
 		listItem.setAttribute("value", value);
 
 		return listItem;
 	} ,
 
-	addToNewCategory: function() {
-		var categoryName = this.$('new-category-name').value;
+	addToNewCategory: function addToNewCategory() {
+		let categoryName = this.$('new-category-name').value;
 
 		QuickFolders.Model.setFolderCategory(this.folder.URI, categoryName);
 		//add new category to listbox
@@ -82,14 +82,14 @@ QuickFolders.FolderCategory = {
 	} ,
 
 	// select Category into model
-	setSelectedCategory: function() {
+	setSelectedCategory: function setSelectedCategory() {
 		try {
-			var listBox = this.$('existing-categories')
+			let listBox = this.$('existing-categories'),
+			    category = '',
+			    sel = 1, i = 0;
 			listBox.blur();
-			// build a csv string of categories
-			var category = '';
-			let sel = 1, i = 0;
 			sel = listBox.getSelectedItem(i)
+			// build a | delimited string of categories
 			while (sel) {
 			   category = category
 						+ ((category.length) ? '|' : '')
@@ -106,19 +106,19 @@ QuickFolders.FolderCategory = {
 		this.window.close();
 	},
 
-	setColor: function(picker) {
+	setColor: function setColor(picker) {
 		alert (QuickFolders.Util.getBundleString("qfColorPickingWIP", "Sorry, this feature is still Work in Progress!") + picker.color);
 	},
 
-	onSelectionChange: function(evt) {
-		var i = 0; // just one iterator will do me :)
+	onSelectionChange: function onSelectionChange(evt) {
+		let i = 0, // just one iterator will do me :)
+		    listBox = this.$('existing-categories');
 		if(this.semaphorSel)
 			return;
-		var listBox = this.$('existing-categories')
 		QuickFolders.Util.logDebugOptional("categories", "onSelectionChange() - listBox.value = " + listBox.value ); // " + evt.type + "
 
 		if (listBox.selectedItems.length) {
-			var target  = listBox.selectedItems[listBox.selectedItems.length-1]; // evt.originalTarget; // should be the list item
+			let target  = listBox.selectedItems[listBox.selectedItems.length-1]; // evt.originalTarget; // should be the list item
 			if (target)
 				QuickFolders.Util.logDebugOptional("categories", "target  = " + target.value + " - selected = " + target.selected);
 		}
@@ -128,7 +128,7 @@ QuickFolders.FolderCategory = {
 			if (listBox.itemCount) {
 				QuickFolders.Util.logDebugOptional("categories", "All Categories deselected - selecting UNCATEGORIZED");
 				i = listBox.itemCount; // Fx 3+!!
-				var item = listBox.getItemAtIndex(--i);
+				let item = listBox.getItemAtIndex(--i);
 				while (item) {
 					if (item.value == "")  // this.UNCATEGORIZED
 					{
@@ -144,7 +144,8 @@ QuickFolders.FolderCategory = {
 		if (!target.selected)
 			return;
 
-		var category = target.value;
+		let category = target.value,
+        sel;
 		// find out whether current item is selected or not:
 		QuickFolders.Util.logDebugOptional("categories", "category = " + category + " - selected = " + target.selected);
 
@@ -154,7 +155,7 @@ QuickFolders.FolderCategory = {
 			i = listBox.selectedItems.length-1;
 
 			if (category == "" || category == this.ALWAYS) {  // this.UNCATEGORIZED
-				var sel = listBox.getSelectedItem(i);
+				sel = listBox.getSelectedItem(i);
 				while (sel) {
 					if (sel.value != category)
 						listBox.removeItemFromSelection(sel);
@@ -175,9 +176,9 @@ QuickFolders.FolderCategory = {
 		}
 	},
 
-	renameSelectedCategory: function() {
+	renameSelectedCategory: function renameSelectedCategory() {
 		QuickFolders.Util.logDebugOptional("categories","renameSelectedCategory()");
-		var selectedCategory = this.$('existing-categories').value
+		let selectedCategory = this.$('existing-categories').value
 
 		QuickFolders.Util.logDebugOptional("categories","renameSelectedCategory()\n"
 			+ "selectedCategory = "  + selectedCategory);
@@ -186,11 +187,11 @@ QuickFolders.FolderCategory = {
 			return;
 		}
 
-		var newName = this.$('rename-category-new-name').value
+		let newName = this.$('rename-category-new-name').value
 		QuickFolders.Util.logDebugOptional("categories","renameSelectedCategory()\n"
 			+ "newName = " + newName);
 
-		if(!newName) {
+		if (!newName) {
 			//no new name entered
 			return;
 		}
@@ -205,33 +206,19 @@ QuickFolders.FolderCategory = {
 		this.getCategoriesListBox().value = newName;
 	} ,
 
-	deleteSelectedCategory: function() {
+	deleteSelectedCategory: function deleteSelectedCategory() {
 		QuickFolders.Util.logDebugOptional("categories","deleteSelectedCategory()");
-		var selectedCategory = this.$('existing-categories').value
-
+		let selectedCategory = this.$('existing-categories').value;
 		QuickFolders.Util.logDebugOptional("categories","selectedCategory = " + selectedCategory);
 		
 		QuickFolders.Model.deleteFolderCategory(selectedCategory)
 		QuickFolders.Model.resetCategories();
 
 		this.populateCategories();
-
 		this.getCategoriesListBox().value = QuickFolders.FolderCategory.ALL;
 	} ,
 
 	getCategoryColor: function(cat) {
 
-/*
-		   <hbox>
-
-			<colorpicker id="category-colorpicker" palettename="standard"
-			  type="button"
-			  onchange="QuickFolders.FolderCategory.setColor(this);"
-			  />
-
-
-			</hbox>
-
-*/
 	}
 }

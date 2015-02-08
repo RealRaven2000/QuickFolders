@@ -29,7 +29,7 @@ QuickFolders.Options = {
 	QF_PREF_GENERAL : 0,
 
 	rememberLastTab: function rememberLastTab() {
-		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
 	
@@ -63,9 +63,9 @@ QuickFolders.Options = {
 
 			QuickFolders.Preferences.setUserStyle("Toolbar","background-color",
 							getElement("toolbar-colorpicker").color);
-			QuickFolders.Preferences.setIntPref('customizedTopRadiusN',
+			QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN',
 							getElement("QuickFolders-Options-CustomTopRadius").value);
-			QuickFolders.Preferences.setIntPref('customizedBottomRadiusN',
+			QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN',
 							getElement("QuickFolders-Options-CustomBottomRadius").value);
 
 			// QuickFolders.Interface.setPaintButtonColor(-1);
@@ -155,7 +155,7 @@ QuickFolders.Options = {
   },
   
   stripedSupport: function stripedSupport(paletteType) {
-    switch(paletteType) {
+    switch(parseInt(paletteType)) {
       case 1: // Standard Palette
         return true;
       case 2: // Pastel Palette
@@ -166,15 +166,17 @@ QuickFolders.Options = {
   } ,
   
 	load: function load() {
+    // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
 			QuickFolders.Util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
-		
-		let version = QuickFolders.Util.Version,
-        util = QuickFolders.Util,
+		let util = QuickFolders.Util,
+        version = util.Version,
         wd = window.document,
         getElement = wd.getElementById.bind(wd);
+		
+    util.logDebugOptional('options', 'QuickFolders.Options.load()');
 		if (window.arguments) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
@@ -185,7 +187,7 @@ QuickFolders.Options = {
 			catch(e) {;}
     }
     
-    // convert from str5ing "24px" to number "24"
+    // convert from string "24px" to number "24"
     let minToolbarHeight = QuickFolders.Preferences.getCharPrefQF('toolbar.minHeight'),
         mT = parseInt(minToolbarHeight);
     if (minToolbarHeight.indexOf('px' > 0)) {
@@ -205,8 +207,8 @@ QuickFolders.Options = {
 		
     /*****  License  *****/
     // licensing tab - we also need a "renew license"  label!
-    let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense",
-      "Get License!");
+    util.logDebugOptional('options', 'QuickFolders.Options.load - check License...');
+    let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense", "Get License!");
     getElement("btnLicense").label=regBtn;
     // validate License key
     QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey');
@@ -217,7 +219,9 @@ QuickFolders.Options = {
     
     /*****  Help / Support Mode  *****/
 		// hide other tabs
+    let earlyExit = false;
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly" || this.optionsMode=="licenseKey") {
+      util.logDebugOptional('options', 'QuickFolders.Options.load - Single Tab Mode!');
 			if (tabbox) {
 				let keep = [];
 				switch(this.optionsMode) {
@@ -231,18 +235,40 @@ QuickFolders.Options = {
 						keep.push(this.QF_PREF_LICENSE);
             break;
 				}
-//				for (let i=this.QF_PREF_LAST; i>=0; i--)
-//					tabbox.tabs.removeItemAt(i);
 				for (let i=this.QF_PREF_LAST; i>=0; i--) {
 					if (keep.indexOf(i)<0) {
-						tabbox.tabpanels.removeChild(tabbox.tabpanels.children[i]);
-            tabbox.tabs.removeItemAt(i);
+            let panel = tabbox.tabpanels.children[i];
+            util.logDebugOptional('options', 'collapsing panel: ' + panel.id + '...');
+            panel.collapsed = true;
+						// tabbox.tabpanels.removeChild(panel);
+            tabbox.tabs.getItemAtIndex(i).collapsed = true; // removeItemAt();
           }
 				}
 			}
-			return; // we do not set any values!
+			earlyExit = true; // we do not set any values!
 		}
 		
+    switch(this.optionsMode) {
+      case "licenseKey":
+        tabbox.selectedPanel = getElement('QuickFolders-Pro');
+        break;
+      case "helpOnly":
+        tabbox.selectedPanel = getElement('QuickFolders-Help');
+        break;
+      case "supportOnly":
+        tabbox.selectedPanel = getElement('QuickFolders-Support');
+        break;
+    }
+    
+    let EncryptionKey = QuickFolders.Preferences.getCharPrefQF('premium.encryptionKey');
+    if (EncryptionKey) {
+      getElement('txtKeyGenerator').collapsed = false;
+      QuickFolders.Licenser.RSA_encryption = EncryptionKey;
+    }
+    
+    if (earlyExit) return;
+    
+    util.logDebugOptional('options', 'QuickFolders.Options.load - continue with palette + bling initialisation');
     /***** Menu Items / Labels *****/
 		// bundle strings
 		// getElement("chkShowFolderMenuButton").label = util.getBundleString("qfFolderPopup");
@@ -256,20 +282,7 @@ QuickFolders.Options = {
 		catch(e) {
 			//alert("Error in QuickFolders.Options.load(initBling()):\n" + e);
 			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders.Options.load(initBling()):\n" + e);
-		};
-
-    switch(this.optionsMode) {
-      case "licenseKey":
-        tabbox.selectedPanel = getElement('QuickFolders-Pro');
-        break;
-      case "helpOnly":
-        tabbox.selectedPanel = getElement('QuickFolders-Help');
-        break;
-      case "supportOnly":
-        tabbox.selectedPanel = getElement('QuickFolders-Support');
-        break;
-    }
-    
+		};    
 
     /***** Update message(s) *****/
 		if (this.message && this.message!='') {
@@ -278,12 +291,7 @@ QuickFolders.Options = {
 			message = '';
 		}
     
-    let EncryptionKey = QuickFolders.Preferences.getCharPrefQF('premium.encryptionKey');
-    if (EncryptionKey) {
-      getElement('txtKeyGenerator').collapsed = false;
-      QuickFolders.Licenser.RSA_encryption = EncryptionKey;
-    }
-    
+    util.logDebugOptional('options', 'QuickFolders.Options.load - end with sizeToContent()');
     sizeToContent();
 	},
   
@@ -359,6 +367,7 @@ QuickFolders.Options = {
     getElement('qf-individualColors').collapsed = !
       (this.stripedSupport(paletteType) && 
        this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')));   
+    getElement('buttonTransparency').disabled = (paletteType!=0); // only with "no colors"
   },
 
   trimLicense: function trimLicense() {
@@ -537,7 +546,6 @@ QuickFolders.Options = {
 		custom: 3
 	} ,
 
-
 	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
 		let prefString1 = cbox.getAttribute('preference'),
 		    prefName1 = document.getElementById(prefString1).getAttribute('name'),
@@ -552,9 +560,13 @@ QuickFolders.Options = {
 	},
 
 	setDefaultButtonRadius: function setDefaultButtonRadius() {
-		document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4px";
-		document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0px";
-
+		document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4";
+		document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
+    QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN', 4);
+    QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN', 0);
+    let main = QuickFolders.Util.getMail3PaneWindow(),
+        ifs = main.QuickFolders.Interface; 
+    ifs.updateUserStyles();
 	},
 
 	colorPickerTranslucent: function colorPickerTranslucent(picker) {
@@ -566,8 +578,8 @@ QuickFolders.Options = {
 
   // set the custom value entered by user (only if custom is actually selected)
 	setCurrentToolbarBackgroundCustom: function setCurrentToolbarBackgroundCustom() {
-		let setting = document.getElementById('currentFolderBackground');
-		let backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
+		let setting = document.getElementById('currentFolderBackground'),
+		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
 		  // store the new setting!
 			QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background.custom', setting.value);  
@@ -635,7 +647,7 @@ QuickFolders.Options = {
 		return updateResult;
 	},
 
-  setColoredTabStyleFromRadioGroup: function (rgroup) {
+  setColoredTabStyleFromRadioGroup: function setColoredTabStyleFromRadioGroup(rgroup) {
     let styleId = parseInt(rgroup.value, 10);
     this.setColoredTabStyle(styleId, true);
   },
@@ -691,7 +703,6 @@ QuickFolders.Options = {
 		}
 	} ,
   
-	
 	/*********************
 	 * toggleUsePalette() 
 	 * Set whether (and which) palette is used for a particular tab state.
@@ -704,7 +715,8 @@ QuickFolders.Options = {
 	toggleUsePalette: function toggleUsePalette(mnuNode, buttonState, paletteType, isUpdatePanelColor) {
 		//let isChecked = checkbox.checked;
 		let paletteTypeMenu = null,
-        prefs = QuickFolders.Preferences;
+        prefs = QuickFolders.Preferences,
+        getElement = document.getElementById.bind(document);
 		if (mnuNode.tagName) {
 		  switch(mnuNode.tagName) {
 				case 'menulist':
@@ -718,7 +730,8 @@ QuickFolders.Options = {
 		let idPreview = null,
 		    colorPicker = null,
 		    stylePref = this.getButtonStatePrefId(buttonState),
-        isStripable = null;
+        isStripable = null,
+        isTransparentSupport = false;
 		switch(buttonState) {
 		  case 'colored':
         isStripable = this.stripedSupport(paletteType) && this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType'));
@@ -727,6 +740,7 @@ QuickFolders.Options = {
 				idPreview = 'inactivetabs-label';
 				colorPicker = 'inactive-colorpicker';
         isStripable = this.stripedSupport(paletteType) && this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'));
+        isTransparentSupport = (paletteType==0);
 				break;
 			case 'active':
 				idPreview = 'activetabs-label';
@@ -741,16 +755,19 @@ QuickFolders.Options = {
 				colorPicker = 'dragover-colorpicker';
 				break;
 		}
-    if (isStripable === null) {
-        isStripable = this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'))
-                      && 
-                      this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType'));
+    if (isUpdatePanelColor) {
+      getElement('buttonTransparency').disabled = !isTransparentSupport;
+      if (isStripable === null) {
+          isStripable = this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'))
+                        && 
+                        this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType'));
+      }
+      
+      if (!isStripable) {
+        this.setColoredTabStyle(prefs.TABS_FILLED);
+      }
+      getElement('qf-individualColors').collapsed = !isStripable;
     }
-    
-    if (!isStripable) {
-      this.setColoredTabStyle(prefs.TABS_FILLED);
-    }
-    document.getElementById('qf-individualColors').collapsed = !isStripable;
 		
 		// preparePreviewTab(id, preference, previewId)
 		prefs.setIntPref('style.' + stylePref + '.paletteType', paletteType);
@@ -759,18 +776,16 @@ QuickFolders.Options = {
       // we need to force reselect the palette entry of the button
       // to update font & background color
       if (isUpdatePanelColor) {
-        let m = document.getElementById('QuickFolders-Options-PalettePopup');
+        let m = getElement('QuickFolders-Options-PalettePopup');
         if (m) {
+          if (!m.targetNode)
+            m.targetNode = getElement(QuickFolders.Interface.getPreviewButtonId(buttonState));
           // retrieve palette index
           let col = QuickFolders.Preferences.getIntPref('style.' + stylePref + '.paletteEntry');
           QuickFolders.Interface.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item!
         }
       }
-      //let picker = document.getElementById(colorPicker);
-      //this.styleUpdate(stylePref, 'background-color', picker.color, idPreview);
     }
-
-		// this.toggleBoolPreference(checkbox, true);		
 	},
 	
 	/*********************  
@@ -810,7 +825,7 @@ QuickFolders.Options = {
       else
         QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
     }
-		return QuickFolders.Interface.updateMainWindow(true);
+		return QuickFolders.Interface.updateMainWindow(false);
 	},
 	
 	// doing what instantApply really should provide...
@@ -1052,12 +1067,12 @@ QuickFolders.Options = {
 	},
 	
 	toggleCurrentFolderBar: function toggleCurrentFolderBar(chk) {
-		var checked = chk.checked ? chk.checked : false;
+		let checked = chk.checked ? chk.checked : false;
 		QuickFolders.Interface.displayNavigationToolbar(checked, false);
 	},
 	
 	toggleCurrentFolderBar_SingleMessage: function toggleCurrentFolderBar_SingleMessage(chk) {
-		var checked = chk.checked ? chk.checked : false;
+		let checked = chk.checked ? chk.checked : false;
 		QuickFolders.Interface.displayNavigationToolbar(checked, true);
 	},
   

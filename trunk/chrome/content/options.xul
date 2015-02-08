@@ -27,6 +27,7 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
 
+	
 	<prefpane id="qf-options-prefpane">
 		<box id="qf-header-container">
 			<vbox>
@@ -60,9 +61,9 @@
 				<tab id="QuickFolders-Support" label="&qf.tab.support;" />
 				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" />
 			</tabs>
-			<tabpanels  onselect="QuickFolders.Options.onTabSelect(this,event)">
+			<tabpanels id="QuickFolders-Panels"  onselect="QuickFolders.Options.onTabSelect(this,event);">
 				<tabpanel id="QuickFolders-Options-general" orient="vertical">
-					<preferences>
+					<preferences id="prefsGeneral">
 						<preference id="QuickFolders-Preferences-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowNewMail" name="extensions.quickfolders.showNewMailHighlight" type="bool" />
@@ -233,7 +234,7 @@
 				</tabpanel>
 
 				<tabpanel id="QuickFolders-Options-advanced" orient="vertical">
-					<preferences>
+					<preferences id="prefsAdvanced">
 						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar" name="extensions.quickfolders.showCurrentFolderToolbar" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage" name="extensions.quickfolders.messageWindow.showCurrentFolderToolbar" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowCloseButton" name="extensions.quickfolders.currentFolderBar.showClose" type="bool" />
@@ -241,6 +242,7 @@
 						<preference id="QuickFolders-Preferences-ShowFilterButton" name="extensions.quickfolders.currentFolderBar.showFilterButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowFolderMenuButton" name="extensions.quickfolders.currentFolderBar.showFolderMenuButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowMsgNavButton" name="extensions.quickfolders.currentFolderBar.navigation.showButtons" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowFolderNavButton" name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-CurrentFolder-Background" name="extensions.quickfolders.currentFolderBar.background" type="string" />
 						<preference id="QuickFolders-Preferences-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
@@ -262,6 +264,7 @@
 					<hbox>
 						<groupbox>
 							<caption label="&qf.label.currentFolderToolbar;" />
+							<vbox id="currentFolderCustomize">
 							<checkbox id="chkCurrentFolderShow"
 												label="&qf.checkbox.currentFolder.show;"
 												preference="QuickFolders-Preferences-ShowCurrentFolderBar"
@@ -287,6 +290,12 @@
 												instantApply="true"
 												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
+							<checkbox id="chkFolderNavigation"
+												label="&qf.checkbox.showFolderNavigation;"
+												preference="QuickFolders-Preferences-ShowFolderNavButton"
+												instantApply="true"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
+												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkShowFolderMenuButton"
 												label="&qf.checkbox.showMailFolderCommands;"
 												preference="QuickFolders-Preferences-ShowFolderMenuButton"
@@ -308,11 +317,12 @@
 												preference="QuickFolders-Preferences-ShowCloseButton"
 												instantApply="true"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
+							</vbox>
 						</groupbox>
 
 						<groupbox orient="horizontal" flex="2">
 							<caption label="&qf.label.menus;" />
-							<groupbox flex="1">
+							<groupbox id="mailCommandsCustomize" flex="1">
 								<caption label="&qf.label.menus.mailFolder;" />
 								<checkbox id="qfGetMail" label="&qf.checkbox.menus.getMailForInbox;"
 													preference="QuickFolders-Preferences-FolderMenu-getMailForInbox" />
@@ -334,7 +344,7 @@
 													oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;" />
 							</groupbox>
 
-							<groupbox>
+							<groupbox id="contextMenuCommandsCustomize" >
 								<caption label="&qf.label.menus.quickFolder;" />
 								<checkbox id="qfInsertSeparator"
 													label="&qf.label.menus.separator;"
@@ -422,8 +432,8 @@
 					</hbox>
 				</tabpanel>
 
-				<tabpanel orient="vertical" id="QuickFolders-Options-layout">
-					<preferences>
+				<tabpanel id="QuickFolders-Options-layout" orient="vertical" >
+					<preferences id="prefsLayout">
 						<preference id="QuickFolders-Preferences-CustomizedRadius" name="extensions.quickfolders.style.corners.customizedRadius" type="bool" />
 						<preference id="QuickFolders-Preferences-TopRadius" name="extensions.quickfolders.style.corners.customizedTopRadiusN" type="int" />
 						<preference id="QuickFolders-Preferences-BottomRadius" name="extensions.quickfolders.style.corners.customizedBottomRadiusN" type="int" />
@@ -435,12 +445,6 @@
 						<preference id="QuickFolders-Preferences-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool" />
 						<preference id="QuickFolders-Preferences-Shadows" name="extensions.quickfolders.buttonShadows" type="bool" />
 						<preference id="QuickFolders-Preferences-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int" />
-						<!-- obsolete
-						<preference id="QuickFolders-Preferences-InactiveTab-Palette" name="extensions.quickfolders.style.InactiveTab.usePalette" type="bool" />
-						<preference id="QuickFolders-Preferences-ActiveTab-Palette" name="extensions.quickfolders.style.ActiveTab.usePalette" type="bool" />
-						<preference id="QuickFolders-Preferences-DragOver-Palette" name="extensions.quickfolders.style.DragOver.usePalette" type="bool" />
-						<preference id="QuickFolders-Preferences-HoveredTab-Palette" name="extensions.quickfolders.style.HoveredTab.usePalette" type="bool" />
-						-->
 						<!-- "uncolored" tabs (inactive)	0, 1, n -->
 						<preference id="QuickFolders-Preferences-InactiveTab-PaletteType" name="extensions.quickfolders.style.InactiveTab.paletteType" type="int" />
 						<!-- "colored" tabs (inactive)		1, n		-->
@@ -846,24 +850,20 @@
 							<row>
 								<description
 									oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
-								<vbox>
-									<button id="L1"
-													tooltiptext="quickfolders.mozdev.org/donate.html"
-													onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')">
-										<label>&qf.label.donateLink;</label>
-									</button>
-								</vbox>
+								<button id="L1"
+												tooltiptext="quickfolders.mozdev.org/donate.html"
+												onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')">
+									<label>&qf.label.donateLink;</label>
+								</button>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.bugzilla;</description>
-								<vbox>
-									<button id="L2"
-													tooltiptext="quickfolders.mozdev.org/bugs.html"
-													onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')">
-										<label>&qf.label.bugzilla;</label>
-									</button>
-								</vbox>
+								<button id="L2"
+												tooltiptext="quickfolders.mozdev.org/bugs.html"
+												onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')">
+									<label>&qf.label.bugzilla;</label>
+								</button>
 							</row>
 							<separator class="thin" />
 							<row>
@@ -871,34 +871,28 @@
 														 oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;">
 									&qf.description.versionhistory;
 								</description>
-								<vbox>
-									<button id="L3"
-													tooltiptext="http://quickfolders.mozdev.org/version.html"
-													onclick="QuickFolders.Options.showVersionHistory(this, false);return false;">
-										<label>&qf.label.versionhistory;</label>
-									</button>
-								</vbox>
+								<button id="L3"
+												tooltiptext="http://quickfolders.mozdev.org/version.html"
+												onclick="QuickFolders.Options.showVersionHistory(this, false);return false;">
+									<label>&qf.label.versionhistory;</label>
+								</button>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.languages;</description>
-								<vbox>
-									<button id="L4"
-												 tooltiptext="www.babelzilla.org?extension=5099"
-												 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099')">
-										<label>&qf.label.languagesLink;</label>
-									</button>
-								</vbox>
+								<button id="L4"
+											 tooltiptext="www.babelzilla.org?extension=5099"
+											 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099')">
+									<label>&qf.label.languagesLink;</label>
+								</button>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.contactMe;</description>
-								<vbox>
-									<button id="L5"
-													onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');">
-										<label>&qf.label.contactLink;</label>
-									</button>
-								</vbox>
+								<button id="L5"
+												onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');">
+									<label>&qf.label.contactLink;</label>
+								</button>
 							</row>
 						</rows>
 					</grid>

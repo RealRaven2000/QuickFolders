@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "當你選擇以一個新視窗來開啟E-mail時，在開啟時於視窗中顯示現在資料夾工具列">
 <!ENTITY qf.checkbox.showRecentButton "最近的資料夾按鈕">
 <!ENTITY qf.checkbox.showMessageNavigation "訊息導航按鈕">
+<!ENTITY qf.checkbox.showFolderNavigation "資料夾導航按鈕">
 <!ENTITY qf.checkbox.showMailFolderCommands "信件資料夾命令">
 <!ENTITY qf.checkbox.showIconButtons "自訂圖示按鈕">
 <!ENTITY qf.checkbox.showFilterButton "「建立過濾器」按鈕">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "這個跟購買證明[{1}]連結的E-mail信箱，並沒有列於任何您現在的信箱帳號中。請從支援分頁內容中跟我聯絡來尋求幫助。">
 <!ENTITY qf.licenseValidation.notMatchedMail "加密的E-mail位址無法符合辨識。">
 <!ENTITY qf.label.donate "捐助">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "注意：如果您只在下面看到「關閉」的按鈕，表示色彩的設定未能正常運作，解決方法是，試著以滑鼠右鍵點選快捷資料夾工具列的空白區域來選擇選項，這能使「確定」按鈕顯示，以便儲存顏色設定。">
 <!ENTITY qf.checkbox.usePalette "使用調色盤">
 <!ENTITY qf.options.theme.pastelColors "淡雅的色彩">

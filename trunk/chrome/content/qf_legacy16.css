@@ -94,6 +94,13 @@ toolbar#QuickFolders-CurrentFolderTools {
   background: -moz-linear-gradient(top, #F1E767 0%, #F1E767 37%, #FEB645 100%) repeat scroll 0% 0% transparent;
 }
 
+#btnLicense {
+  background: -moz-linear-gradient(top, rgba(184,211,27,1) 0%, rgba(122,166,18,1) 50%, rgba(92,138,0,1) 51%, rgba(135,181,19,1) 100%);	
+}
+#btnLicense:hover, #btnLicense:active
+{
+	background: -moz-linear-gradient(top, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
+}
 
 
 

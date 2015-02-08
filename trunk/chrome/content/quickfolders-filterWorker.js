@@ -73,18 +73,17 @@ QuickFolders.FilterWorker = {
 			QuickFolders.Preferences.getBoolPref("filters.showMessage")) 
 		{
 			
-			var title=QuickFolders.Util.getBundleString("qf.filters.toggleMessage.title",
-			  	"Creating Filters");
-			var theText=QuickFolders.Util.getBundleString("qf.filters.toggleMessage.notificationText",
-			  	"Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
-			  	+" To end the filter learning mode, press the filter button on the top left of QuickFolders bar.");
-			var dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain",
-				"Do not show this message again.");
+			let title = QuickFolders.Util.getBundleString("qf.filters.toggleMessage.title",
+                  "Creating Filters"),
+			    theText = QuickFolders.Util.getBundleString("qf.filters.toggleMessage.notificationText",
+            "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
+            +" To end the filter learning mode, press the filter button on the top left of QuickFolders bar."),
+			    dontShow = QuickFolders.Util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
 
 			
 			if (notifyBox) {
 				// button for disabling this notification in the future
-					var nbox_buttons;
+					let nbox_buttons;
 					// the close button in Postbox is broken: skipAnimation defaults to false and 
 					// creates a invisible label with margin = (-height) pixeles, covering toolbars above
 					// therefore we implement our own close button in Postbox!!
@@ -205,8 +204,8 @@ QuickFolders.FilterWorker = {
 	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy)
 	{
 		function getMailKeyword(subject) {
-			var topicFilter = subject;
-			var left,right;
+			let topicFilter = subject,
+			    left,right;
 			if ( (left=subject.indexOf('[')) < (right=subject.indexOf(']')) ) {
 				topicFilter = subject.substr(left, right-left+1);
 			}
@@ -217,23 +216,22 @@ QuickFolders.FilterWorker = {
 		}
 		
 		function createTerm(filter, attrib, op, val) {
-			let searchTerm = filter.createTerm();
+			let searchTerm = filter.createTerm(),
+			    value = searchTerm.value; // Ci.nsIMsgSearchValue
 			searchTerm.attrib = attrib;
 			searchTerm.op = op;
 			searchTerm.booleanAnd = false;
-			var value = searchTerm.value; // Ci.nsIMsgSearchValue
 			value.attrib = searchTerm.attrib;
 			value.str = val;
 			searchTerm.value = value;
 			return searchTerm;
-			
 		}
 		
 		// do an async repeat if it fails for the first time
 		function rerun() {
 			QuickFolders.FilterWorker.reRunCount++;
 			if (QuickFolders.FilterWorker.reRunCount > 5) {
-				alert("QuickFolders", "Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
+				QuickFolders.Util.alert("QuickFolders", "Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
 					+"Try to move a different message. Otherwise, updating " + QuickFolders.Util.Application + " to a newer version might help");
 				QuickFolders.FilterWorker.reRunCount=0;
 				return 0;
@@ -248,7 +246,8 @@ QuickFolders.FilterWorker = {
 		if (!messageList || !sourceFolder || !targetFolder)
 			return null;
 		
-		let Ci = Components.interfaces;
+		let Ci = Components.interfaces,
+        msg;
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
       	let serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
@@ -266,64 +265,58 @@ QuickFolders.FilterWorker = {
 			return -2;
     /************* MESSAGE PROCESSING  ********/
 		try {
-
-
 			// for the moment, let's only process the first element of the message Id List;
 			if (messageList.length) {
 				QuickFolders.Util.logDebugOptional ("filters","messageList.length = " + messageList.length);
-				let messageId = messageList[0];
-				let messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null;
-				let messageHeader;
+				let messageId = messageList[0],
+				    messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null,
+				    messageHeader;
 				
 				if (messageDb) {
 					messageHeader = messageDb.getMsgHdrForMessageID(messageId);
 				}
 				else { // Postbox ??
-					// var globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
+					// let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
 					try {
 						// see nsMsgFilleTextIndexer
 						messageDb = targetFolder.getMsgDatabase(null); //GetMsgFolderFromUri(currentFolderURI, false)
 						messageHeader = messageDb.getMsgHdrForMessageID(messageId);
 					}
 					catch(e) {
-						alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
+						QuickFolders.Util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
 						return null;
 					}
 				}
-				
-
-
 
 				if (!messageHeader) 
 					return rerun();
-				var msg = messageHeader.QueryInterface(Components.interfaces.nsIMsgDBHdr);
+				msg = messageHeader.QueryInterface(Components.interfaces.nsIMsgDBHdr);
 				if (!msg) 
 					return rerun();
 			}
 
 			if (msg) {
-				var key = msg.messageKey;
-				QuickFolders.Util.logDebugOptional ("filters","got msg; key=" + key);
-				var threadParent = msg.threadParent;
-				var thread = msg.thread;
-				// some of the fields are not filled, so we need to go to the db to get them
-				//var msgHdr = targetFolder.msgDatabase.GetMsgHdrForKey(key); // .QueryInterface(Ci.nsIMsgDBHdr);
-				var folderName = targetFolder.prettyName;
+				let key = msg.messageKey,
+				    threadParent = msg.threadParent,
+				    thread = msg.thread,
+            // some of the fields are not filled, so we need to go to the db to get them
+            //let msgHdr = targetFolder.msgDatabase.GetMsgHdrForKey(key); // .QueryInterface(Ci.nsIMsgDBHdr);
+				    folderName = targetFolder.prettyName,
+            filterName = folderName,
+            emailAddress, ccAddress, bccAddress;
 				
-				// for filters that move or copy mail (currently, all of them) :-)
-				// we will later have a type that tags instead!
-				let filterName = folderName;
+				QuickFolders.Util.logDebugOptional ("filters","got msg; key=" + key);
 
-				var headerParser = Components.classes["@mozilla.org/messenger/headerparser;1"].getService(Components.interfaces.nsIMsgHeaderParser);
+				let headerParser = Components.classes["@mozilla.org/messenger/headerparser;1"].getService(Components.interfaces.nsIMsgHeaderParser);
 				if (headerParser) {
 					QuickFolders.Util.logDebugOptional ("filters","parsing msg header...");
 					if (headerParser.extractHeaderAddressMailboxes) { // Tb 2 can't ?
 						if (QuickFolders.Util.Application=='Postbox') {
 							// guessing guessing guessing ...
 							// somehow this takes the C++ signature?
-							var emailAddress = headerParser.extractHeaderAddressMailboxes(null, msg.author); 
-							var ccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.ccList)
-							var bccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.bccList)
+							emailAddress = headerParser.extractHeaderAddressMailboxes(null, msg.author); 
+							ccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.ccList)
+							bccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.bccList)
 						}
 						else {
 							// Tb + SM
@@ -333,7 +326,7 @@ QuickFolders.FilterWorker = {
 						}
 					}
 					else { //exception for early versions of Tb - hence no l10n
-						alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support extracting addresses from the message header!\n"
+						QuickFolders.Util.alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support extracting addresses from the message header!\n"
 						    + "Consider updating to a newer version to get this feature.");
 						QuickFolders.Util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
 						return false;
@@ -341,7 +334,7 @@ QuickFolders.FilterWorker = {
 					QuickFolders.Util.logDebugOptional ("filters","msg header parsed...");
 				}
 				else { // exception
-					alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support parsing message headers!\n"
+					QuickFolders.Util.alert("Sorry, but in this version of " + QuickFolders.Util.Application + ", we cannot do filters as it does not support parsing message headers!\n"
 					    + "Consider updating to a newer version to get this feature.");
 					QuickFolders.Util.logDebugOptional ("filters","no header parser :(\nAborting Filter Operation");
 					return false;
@@ -361,15 +354,14 @@ QuickFolders.FilterWorker = {
 							+ ", parsed email address=" + emailAddress);
 				} catch(ex) {;} 
 							
-				var previewText = msg.getStringProperty('preview');
+				let previewText = msg.getStringProperty('preview');
 				QuickFolders.Util.logDebugOptional ("filters", "previewText="+ previewText );
 
 
-				var args;
-				if (emailAddress)
-				{
-					var retVals = { answer: null };
-					var win = window.openDialog('chrome://quickfolders/content/filterTemplate.xul',
+				let args;
+				if (emailAddress) {
+					let retVals = { answer: null },
+					    win = window.openDialog('chrome://quickfolders/content/filterTemplate.xul',
 						'quickfolders-filterTemplate',
 						'chrome,titlebar,centerscreen,modal,centerscreen,dialog=yes,accept=yes,cancel=yes',
 						retVals).focus();
@@ -377,21 +369,22 @@ QuickFolders.FilterWorker = {
 					if (!retVals.answer)
 						return false;
 					
-					var searchTerm, searchTerm2, searchTerm3;
-					// We have to do prefill filter so we are going to launch the
-					// filterEditor dialog and prefill that with the emailAddress.
-					var template = this.getCurrentFilterTemplate();
+					let searchTerm, searchTerm2, searchTerm3,
+              filtersList, newFilter, emailAddress2,
+              // We have to do prefill filter so we are going to launch the
+              // filterEditor dialog and prefill that with the emailAddress.
+					    template = this.getCurrentFilterTemplate();
 					
 					if (QuickFolders.Util.Application=='Postbox') {
 						// mailWindowOverlay.js:1790
-						var filtersList = sourceFolder.getFilterList(msgWindow);
-						var newFilter = filtersList.createFilter(folderName);
+						filtersList = sourceFolder.getFilterList(msgWindow);
+						newFilter = filtersList.createFilter(folderName);
 					}
 					else {
 						filtersList = sourceFolder.getEditableFilterList(msgWindow);
 						newFilter = filtersList.createFilter(folderName);
 					}
-					var emailAddress2 = '';
+					emailAddress2 = '';
 
 					switch (template) {
 						// 1st Filter Template: Conversation based on a Person (email from ..., replies to ...)
@@ -440,7 +433,7 @@ QuickFolders.FilterWorker = {
 							searchTerm = newFilter.createTerm();
 							searchTerm.attrib = Components.interfaces.nsMsgSearchAttrib.Subject;
 							searchTerm.op = Components.interfaces.nsMsgSearchOp.Contains;
-							var topicFilter = getMailKeyword(msg.mime2DecodedSubject);
+							let topicFilter = getMailKeyword(msg.mime2DecodedSubject);
 							searchTerm.value = { 
 								attrib: searchTerm.attrib, 
 								str: topicFilter 
@@ -453,11 +446,11 @@ QuickFolders.FilterWorker = {
 						// 4th Filter Template: Based on a Tag
 						case 'tag':
 							// get the list of known tags
-							var tagService = Components.classes["@mozilla.org/messenger/tagservice;1"]
-							        .getService(Components.interfaces.nsIMsgTagService);
-							var tagArray = tagService.getAllTags({});
-							var tagKeys = {};
-							for each (var tagInfo in tagArray)
+							let tagService = Components.classes["@mozilla.org/messenger/tagservice;1"]
+							        .getService(Components.interfaces.nsIMsgTagService),
+							    tagArray = tagService.getAllTags({}),
+							    tagKeys = {};
+							for each (let tagInfo in tagArray)
 								if (tagInfo.tag) 
 									tagKeys[tagInfo.key] = true;
 
@@ -495,7 +488,7 @@ QuickFolders.FilterWorker = {
 							
 							break;
 						default:
-							alert('invalid template: ' + template);
+							QuickFolders.Util.alert('invalid template: ' + template);
 							return false;
 					}
 
@@ -540,8 +533,6 @@ QuickFolders.FilterWorker = {
 				{
 					QuickFolders.FilterWorker.openFilterList(false, sourceFolder);
 				}
-
-
 			}
 			else
 				QuickFolders.Util.logDebugOptional ("filters","no message found to set up filter");
@@ -549,7 +540,7 @@ QuickFolders.FilterWorker = {
 			return 1;
 		}
 		catch(e) {
-			alert("Exception in QuickFolders.FilterWorker.createFilter: " + e.message);
+			QuickFolders.Util.alert("Exception in QuickFolders.FilterWorker.createFilter: " + e.message);
 			return -1;
 		}
 		return null;
@@ -579,45 +570,39 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	
-	acceptTemplate : function acceptTemplate()
-	{
+	acceptTemplate : function acceptTemplate() {
 		QuickFolders.FilterWorker.selectTemplate();
 		QuickFolders.FilterWorker.TemplateSelected = true;
-		var retVals = window.arguments[0];
+		let retVals = window.arguments[0];
 		retVals.answer  = true;
 		setTimeout(function() {window.close()});
 		return true;
 	} ,
 	
-	
-	cancelTemplate : function cancelTemplate()
-	{
+	cancelTemplate : function cancelTemplate() {
 		QuickFolders.FilterWorker.TemplateSelected = false;
-		var retVals = window.arguments[0];
-		retVals.answer  = false;
+		let retVals = window.arguments[0];
+		retVals.answer = false;
 		return true;
 	} ,
 	
 	
-	loadTemplate : function loadTemplate()
-	{
+	loadTemplate : function loadTemplate() {
 		// initialize list and preselect last chosen item!
-		var element = document.getElementById('qf-filter-templates');
+		let element = document.getElementById('qf-filter-templates');
 		element.value = this.getCurrentFilterTemplate();
 	} ,
 	
-	getCurrentFilterTemplate : function getCurrentFilterTemplate()
-	{
+	getCurrentFilterTemplate : function getCurrentFilterTemplate() {
 		return QuickFolders.Preferences.getCharPrefQF("filters.currentTemplate");
 	} ,
 	
-	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref)
-	{
+	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref) {
 		return QuickFolders.Preferences.setCharPrefQF("filters.currentTemplate", pref);
 	} ,
 	
   getBundleString  : function getBundleString(id) {
-    //var bundle = document.getElementById("bundle_filter");
+    //let bundle = document.getElementById("bundle_filter");
     try {
       if(!this.bundle)
         this.bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://quickfolders/locale/filters.properties");

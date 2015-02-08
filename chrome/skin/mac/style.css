@@ -18,6 +18,9 @@
   font-size: 10pt !important;
 }
 
+#firstName, #lastName {
+  width: 12em;
+}
 /*
 #QuickFolders-Options-Tabbox tab .tab-text {
   margin-top: -6px;	

@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Werkbalk huidige map weergeven in het venster dat opent wanneer u selecteert om een e-mailbericht te openen in een nieuw venster">
 <!ENTITY qf.checkbox.showRecentButton "Knop Recente mappen">
 <!ENTITY qf.checkbox.showMessageNavigation "Bericht-navigatieknoppen">
+<!ENTITY qf.checkbox.showFolderNavigation "Mapnavigatieknoppen">
 <!ENTITY qf.checkbox.showMailFolderCommands "E-mailmapopdrachten">
 <!ENTITY qf.checkbox.showIconButtons "Pictogramknoppen aanpassen">
 <!ENTITY qf.checkbox.showFilterButton "Knop ‘Filters maken’">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Geëncrypteerd e-mail adres komt niet overeen met het leesbare e-mail adres.">
 <!ENTITY qf.label.donate "Doneren">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
 <!ENTITY qf.checkbox.usePalette "Palet gebruiken">
 <!ENTITY qf.options.theme.pastelColors "Pastelkleuren">

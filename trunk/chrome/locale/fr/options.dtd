@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Afficher la barre d'outils du dossier courant dans la fenêtre qui s'ouvre quand vous ouvrez le courriel dans une nouvelle fenêtre">
 <!ENTITY qf.checkbox.showRecentButton "Bouton des dossiers récents">
 <!ENTITY qf.checkbox.showMessageNavigation "Boutons de navigation entre les messages">
+<!ENTITY qf.checkbox.showFolderNavigation "Boutons de navigation dossier">
 <!ENTITY qf.checkbox.showMailFolderCommands "Commandes pour dossier">
 <!ENTITY qf.checkbox.showIconButtons "Personnaliser les boutons icônes">
 <!ENTITY qf.checkbox.showFilterButton "Bouton « Créer des filtres »">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "L'adresse électronique associée à la clé de licence [{1}] n'est pas listée dans un de vos comptes courriel. Veuillez me contacter à partir de l'onglet d'aide.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY qf.label.donate "Faire un don">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Remarque : si vous ne voyez qu'un bouton [Fermer] ci-dessous, les paramètres de couleurs ne seront pas pris en compte - pour contourner ce problème, essayez de cliquer droit sur une zone vide de la barre QuickFolders pour vous rendre au menu des options… Cela forcera l'affichage du bouton [OK] qui vous permettra d'enregistrer les couleurs.">
 <!ENTITY qf.checkbox.usePalette "Utiliser la palette">
 <!ENTITY qf.options.theme.pastelColors "Couleurs pastelles">

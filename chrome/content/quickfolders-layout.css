@@ -363,10 +363,9 @@ toolbar#QuickFolders-CurrentFolderTools {
 	border-width: 1px !important;
 	border-style: solid;
 	background-repeat: repeat-x;
-	margin-right: 0.2em; 
-	margin-left: 0.2em;
+	margin-right: 0.15em; 
+	margin-left: 0.15em;
 	margin-top : 1px;
-/* line-height: 18px; */
 	height: 20px;
 	min-height: 1.5em !important; /* large font support */
 	vertical-align:top;
@@ -571,7 +570,8 @@ menuitem.mailCmd[tag="qfFolderRepair"] { list-style-image : url('chrome://quickf
   margin-bottom: 3px;
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarseparator {
-  margin-left: 4px;
+  margin-left: 2px;
+  margin-left: 1px;
 }
 
 .quickfolders-realTabs #QuickFolders-FoldersBox toolbarseparator,

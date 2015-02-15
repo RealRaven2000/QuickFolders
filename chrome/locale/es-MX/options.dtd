@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Muestra la barra de la carpeta actual en la ventana que se abre cuando seleccionas abrir un mensaje en una nueva ventana">
 <!ENTITY qf.checkbox.showRecentButton "Botón de carpetas recientes">
 <!ENTITY qf.checkbox.showMessageNavigation "Botones de navegación de mensajes">
+<!ENTITY qf.checkbox.showFolderNavigation "Botones de navegación de carpetas">
 <!ENTITY qf.checkbox.showMailFolderCommands "Comandos de la Carpeta de Correos">
 <!ENTITY qf.checkbox.showIconButtons "Personalizar los íconos de los botones">
 <!ENTITY qf.checkbox.showFilterButton "Botón de 'Crear Filtros'">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico asociada a esta licencia [{1}] no está ligada a ninguna de sus cuentas de correo. Póngase en contacto conmigo desde la pestaña de Soporte para obtener ayuda.">
 <!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo electrónico cifrada no corresponde a la legible.">
 <!ENTITY qf.label.donate "Donar">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones … Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">
 <!ENTITY qf.checkbox.usePalette "Usar la paleta">
 <!ENTITY qf.options.theme.pastelColors "Colores pastel">

@@ -46,6 +46,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Показывать панель инструментов текущей папки в окне, если Вы открываете сообщение в новом окне.">
 <!ENTITY qf.checkbox.showRecentButton "Кнопка с последними папками">
 <!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
+<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
 <!ENTITY qf.checkbox.showMailFolderCommands "Команды почтовых папок">
 <!ENTITY qf.checkbox.showIconButtons "Настроить кнопки иконок">
 <!ENTITY qf.checkbox.showFilterButton "Кнопка 'Создать фильтр'">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY qf.label.donate "Пожертвовать">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">
 <!ENTITY qf.checkbox.usePalette "Показ палитры">
 <!ENTITY qf.options.theme.pastelColors "Пастельные цвета">

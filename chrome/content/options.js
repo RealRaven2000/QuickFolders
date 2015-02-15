@@ -396,26 +396,27 @@ QuickFolders.Options = {
     }
   } ,
   
-  validateLicense: function validateLicense() {
+  decryptLicense: function decryptLicense(testMode) {
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
         validationFailed       = getElement('validationFailed'),
         validationExpired      = getElement('validationExpired'),
         validationInvalidEmail = getElement('validationInvalidEmail'),
-        validationEmailNoMatch = getElement('validationEmailNoMatch');
-    validationPassed.collapsed=true;
-    validationFailed.collapsed=true;
-    validationExpired.collapsed=true;
-    validationInvalidEmail.collapsed=true;
-    validationEmailNoMatch.collapsed=true;
-    
+        validationEmailNoMatch = getElement('validationEmailNoMatch'),
+        decryptedMail, decryptedDate;
+    validationPassed.collapsed = true;
+    validationFailed.collapsed = true;
+    validationExpired.collapsed = true;
+    validationInvalidEmail.collapsed = true;
+    validationEmailNoMatch.collapsed = true;
     try {
       this.trimLicense();
       let State = QuickFolders.Licenser.ELicenseState,
           txtBox = getElement('txtLicenseKey'),
           license = txtBox.value;
       // store new license key
-      QuickFolders.Preferences.setCharPrefQF('LicenseKey', license);
+      if (!testMode) // in test mode we do not store the license key!
+        QuickFolders.Preferences.setCharPrefQF('LicenseKey', license);
       
       let maxDigits = getElement('txtMaxDigits').value, // this will be hardcoded in production
           result, LicenseKey,
@@ -427,14 +428,17 @@ QuickFolders.Options = {
           + "Email: " + mail + "\n"
           + "Date: " + date + "\n"
           + "Crypto: " + crypto + "\n";
+        if (testMode)
+          QuickFolders.Util.alert(test);
         QuickFolders.Util.logDebug(test);
       }
       if (crypto)
         [result, LicenseKey] = QuickFolders.Licenser.validateLicense(license, maxDigits);
       else 
         result = State.Invalid;
-      getElement('licenseDate').value = QuickFolders.Licenser.DecryptedDate;
-      let decryptedMail = QuickFolders.Licenser.DecryptedMail;
+      decryptedDate = QuickFolders.Licenser.DecryptedDate;
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+      decryptedMail = QuickFolders.Licenser.DecryptedMail;
       switch(result) {
         case State.Valid:
           validationPassed.collapsed=false;
@@ -451,7 +455,7 @@ QuickFolders.Options = {
         case State.MailNotConfigured:
           validationInvalidEmail.collapsed=false;
           // if mail was already replaced the string will contain [mail address] in square brackets
-          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", decryptedMail);
+          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
         case State.MailDifferent:
           validationFailed.collapsed=false;
@@ -461,16 +465,35 @@ QuickFolders.Options = {
           Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
           break;
       }
-      // reset License status of main instance
-      if (window.arguments && window.arguments[1].inn.instance && result != State.Valid) {
-        window.arguments[1].inn.instance.Licenser.ValidationStatus = State.NotValidated;
+      if (testMode) {
+        getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
+      }
+      else {
+        // reset License status of main instance
+        if (window.arguments && window.arguments[1].inn.instance && result != State.Valid) {
+          window.arguments[1].inn.instance.Licenser.ValidationStatus = State.NotValidated;
+        }
       }
       
+    }    
+    catch(ex) {
+      QuickFolders.Util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
+    }
+  } ,
+  
+  validateLicense: function validateLicense() {
+    try {
+      this.decryptLicense(false);
     }
     catch(ex) {
       QuickFolders.Util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
     }
   } ,
+  
+  restoreLicense: function restoreLicense() {
+    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey'); 
+    document.getElementById('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
+  },
   
   encryptLicense: function encryptLicense() {
     let encryptThis = document.getElementById('txtEncrypt').value,
@@ -1004,7 +1027,10 @@ QuickFolders.Options = {
 	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
 	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
     let util = QuickFolders.Util;
-	  util.logDebug('showAboutConfig(clickedElement: ' + clickedElement.tagName + ', filter: ' + filter + ', readOnly: ' + readOnly +')');
+	  util.logDebug('showAboutConfig(clickedElement: ' 
+      + (clickedElement ? clickedElement.tagName : 'none') 
+      + ', filter: ' + filter 
+      + ', readOnly: ' + readOnly +')');
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
@@ -1049,18 +1075,9 @@ QuickFolders.Options = {
 			});
 	},
 
-	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
-		// adds a new option to about:config, that isn't there by default
-		if (confirm(textPrompt)) {
-			// create (non existent filter setting:
-			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
-			QuickFolders.Options.showAboutConfig(null, filter, true, false);
-		}
-	},
-
 	showVersionHistory: function showVersionHistory(label, ask) {
 		let pureVersion=QuickFolders.Util.VersionSanitized,
-		    sPrompt = QuickFolders.Util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders")
+		    sPrompt = QuickFolders.Util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
 			QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/version.html" + "#" + pureVersion);
 		}

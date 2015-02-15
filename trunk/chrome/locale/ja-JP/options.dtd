@@ -44,8 +44,9 @@
 <!ENTITY qf.checkbox.currentFolder.show "ツールバーを表示">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "… 単体のメッセージウィンドウにも表示">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "メールを選択して開いた新しいウィンドウに現在のフォルダツールバーを表示します">
-<!ENTITY qf.checkbox.showRecentButton "最近使用したフォルダボタン">
+<!ENTITY qf.checkbox.showRecentButton "最近使用したフォルダのボタン">
 <!ENTITY qf.checkbox.showMessageNavigation "メッセージナビゲーションのボタン">
+<!ENTITY qf.checkbox.showFolderNavigation "フォルダナビゲーションのボタン">
 <!ENTITY qf.checkbox.showMailFolderCommands "メールフォルダコマンド">
 <!ENTITY qf.checkbox.showIconButtons "アイコンボタンのカスタマイズ">
 <!ENTITY qf.checkbox.showFilterButton "[フィルタ作成] ボタン">
@@ -149,6 +150,7 @@
 <!ENTITY qf.licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">
 <!ENTITY qf.licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY qf.label.donate "寄付">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "注意: [閉じる] ボタンしか表示されないときは、色設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション…] を選択してください。[OK] ボタンを表示して色設定を保存します。">
 <!ENTITY qf.checkbox.usePalette "パレットを使用">
 <!ENTITY qf.options.theme.pastelColors "パステルカラー">

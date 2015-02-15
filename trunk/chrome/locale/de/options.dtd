@@ -26,7 +26,7 @@
 <!ENTITY qf.button.configureTooltips "Tooltips konfigurieren…">
 <!ENTITY qf.label.behavior "Verhalten bei Aktionen">
 <!ENTITY qf.checkbox.autoFocusPreview "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste">
-<!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs (Experimentell)">
+<!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs">
 <!ENTITY qf.checkbox.sortMenusAlpha "Menüs mit Unterverzeichnissen alphabetisch sortieren.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Diese Option nur aktivieren falls Ihr Mail Programm die Unterverzeichnisse selbst nicht korrekt sortiert.">
 <!ENTITY qf.checkbox.autoHideToolbar "QuickFolders ausblenden wenn unnötig">
@@ -88,22 +88,22 @@
 <!ENTITY qf.themes.flatTabs.label "Flat Style">
 <!ENTITY qf.themes.applePills.label "Apple Pills">
 <!ENTITY qf.themes.nativeTabs.label "Native Tabs">
-<!ENTITY qf.themes.realButtons.label "Standard Buttons">
-<!ENTITY qf.themes.flatButtons.label "Toolbar Buttons">
+<!ENTITY qf.themes.realButtons.label "Standard Schaltflächen">
+<!ENTITY qf.themes.flatButtons.label "Werkzeugleiste">
 <!ENTITY qf.options.label.themeAuthor "Autor des Themes:">
 <!ENTITY qf.checkbox.showIcons "Icons anzeigen (Posteingang, Gesendet, Junk, Papierkorb, Entwurf, Muster, Archiv)">
-<!ENTITY qf.label.buttonFontSizeNumeric "Schriftgrösse (0 für Standardeinstellung):">
+<!ENTITY qf.label.buttonFontSizeNumeric "Schriftgrösse (0 für Standardwert):">
 <!ENTITY qf.label.pixels "pixel">
 <!ENTITY qf.options.themes.showBorders.checkbox "Ränder immer anzeigen">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Abgerundete Ecken">
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Oben:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Unten:">
-<!ENTITY qf.button.default "Standardeinstellungen">
+<!ENTITY qf.button.default "Standardwerte">
 <!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
 <!ENTITY qf.checkbox.transparent "Transparent">
 <!ENTITY qf.label.colors "Farben">
 <!ENTITY qf.label.UncoloredTab "Normale Tab Farbe:">
-<!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuell gewählte Farbe">
+<!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuelle Farbe">
 <!ENTITY qf.palette.twoColors "2 Farben">
 <!ENTITY qf.palette.standard "Standardpalette">
 <!ENTITY qf.palette.pastel "Pastelfarben">
@@ -147,7 +147,7 @@
 <!ENTITY qf.licenseValidation.passed "Vielen Dank für's Registrieren von Quickfolders Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
 <!ENTITY qf.licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY qf.licenseValidation.expired "Der eingegebene  Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
-<!ENTITY qf.licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Kontent vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
+<!ENTITY qf.licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY qf.label.donate "Spenden">
 <!-- obsolete ?? double check in js code -->

@@ -46,6 +46,8 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Visa verktygsfält för aktuell mapp i fönstret som öppnas när du öppnar ett e-brev i ett nytt fönster.">
 <!ENTITY qf.checkbox.showRecentButton "Visa Nyligen använda mappar-knapp">
 <!ENTITY qf.checkbox.showMessageNavigation "Meddelandenavigeringsknappar">
+<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
+<!ENTITY qf.checkbox.showMailFolderCommands "Mail Folder Commands">
 <!ENTITY qf.checkbox.showIconButtons "Anpassa ikon-knappar">
 <!ENTITY qf.checkbox.showFilterButton "Visa Skapa filter-knapp">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Du kan även skapa filter via QuickFolders snabbmeny.">
@@ -90,6 +92,7 @@
 <!ENTITY qf.themes.flatButtons.label "Verktygsfältsknappar">
 <!ENTITY qf.options.label.themeAuthor "Temats skapare:">
 <!ENTITY qf.checkbox.showIcons "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)">
+<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "pixlar">
 <!ENTITY qf.options.themes.showBorders.checkbox "Visa alltid kantlinjer">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Anpassad hörnradie">
@@ -145,7 +148,9 @@
 <!ENTITY qf.licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY qf.licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY qf.licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY qf.label.donate "Donera">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">
 <!ENTITY qf.checkbox.usePalette "Använd palett">
 <!ENTITY qf.options.theme.pastelColors "Pastellfärger">

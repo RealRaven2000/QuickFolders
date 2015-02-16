@@ -60,9 +60,9 @@ QuickFolders.AdvancedTab = {
       }
     }
     
-    let lbl = elem('lblCategories');
+    let lbl = elem('lblCategories'),
+        tabHeader = elem('myHeader');
     lbl.value = entry.category;
-    let tabHeader = elem('myHeader');
     tabHeader.setAttribute('description', entry.name);
     
     // we wait as the width isn't correct on load
@@ -144,8 +144,8 @@ QuickFolders.AdvancedTab = {
   
   resize: function resize() {
     // make sure the window is placed below the referenced Tab, but not clipped by screen edge
-    let x = window.screenX;
-    let y = window.screenY;
+    let x = window.screenX,
+        y = window.screenY;
     QuickFolders.Util.logDebug('Move window: \n' +
       'Screen width      : ' + window.screen.width + '\n' +
       'Window outer width: ' + window.outerWidth + '\n' +

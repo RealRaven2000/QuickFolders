@@ -204,14 +204,17 @@ END LICENSE BLOCK */
 		## Used fixIterator for cross-application compatible accounts code
 		## Refactored code around bool preferences
 	
-  3.15 - WIP
+  4.0 - 15/02/2015
+    ### PREMIUM FEATURES
+    ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
+    ## [Bug 25645] Interface for adding custom Icons (16px*16px) to Tabs
+    ## [FR 25825] quickMove feature - move mails to any folder by drag + entering name
+		## [FR 23039] Support Line breaks to force Multiple Rows of Tabs 
+		## [FR 24431] Optional Separators between tabs 
+    ### FREE IMPROVEMENTS
     ## Allow dragging multiple folders to QuickFolders tab (Tb / SeaMonkey)
     ## Added "Download Now" Command for unsynchronized IMAP / Exchange folders.
-		## [Bug 25645] adding icon support
-    ## Interface for adding custom Icons (16px*16px) to Tabs
 		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
-    ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
-    ## [FR 25825] quickMove feature - move mails to any folder by drag + entering name
 		## Added new mail folder command: "Explore Folder Location..."
     ## Added prompt for subject line when sending support email
     ## Improved large font support and spacing, especially on current folder bar.
@@ -222,7 +225,6 @@ END LICENSE BLOCK */
     ## Fixed: In some cases QuickFolders loaded the default font color if the user has stored 
               certain color value (due to wrong use of prefHasUserValue)
 	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
-    ## removed retired Thunderbird overlays (appversion<12)
     ## Fixed: Recent folder menu shows encoded path decreasing readability
     ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
     ## Fixed [Bug 25824] In Ubuntu, QuickFolders Toolbar color cannot be set
@@ -230,11 +232,14 @@ END LICENSE BLOCK */
     ## Feature Request [Bug 25856] 'Display total number of messages' on a per button basis
     ## [Bug 25941] : drag to new folder on IMAP fails
     ## Added configuration setting for folder navigation buttons and hide by default to simplify
-    TO DO: 
-    ## [Bug 25939] Hide current folder tab in single message tab
+    ## Show subfolders in popup menus is now activated by default (extensions.quickfolders.showSubfolders)
+    ## removed retired Thunderbird overlays (appversion<12)
+    ### VISUAL IMPROVEMENTS
     ## Night Vision Palette for dark themes
+    ## Revised Standard and Pastel Colors
     
 	4.*   Future Versions
+    ## [Bug 25939] Hide current folder tab in single message tab
     ## modify "Find Folder" Icon to tie in with quickJump feature
     ## simplify Options Icon
     ## add option to hide prev/next/parent buttons in current Folder bar
@@ -607,7 +612,7 @@ var QuickFolders = {
 					sourceUri = dropData.data;
 					let eType = dragSession.dataTransfer.mozSourceNode.tagName,
 					    myDragPos,
-					    target = evt.currentTarget
+					    target = evt.currentTarget;
 					if (evt.pageX<120) // should find this out by checking whether "Quickfolders" label is hit
 						myDragPos="LeftMost"
 					else

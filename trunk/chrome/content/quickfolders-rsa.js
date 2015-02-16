@@ -2,9 +2,13 @@
 
 QuickFolders.RSA = {
   initialise: function initialise(maxDigits) {
-    QuickFolders.RSA.BigInt.reset();
-    QuickFolders.RSA.BigInt.init(maxDigits);
+    QuickFolders.RSA.BigIntModule.reset();
+    QuickFolders.RSA.BigIntModule.init(maxDigits);
   } ,
+  
+  log: function log(txt) {
+    QuickFolders.Util.logDebugOptional('premium.rsa', txt);
+  },
   // BigInt, a suite of routines for performing multiple-precision arithmetic in JavaScript.
   //
   // Copyright 1998-2005 David Shapiro.
@@ -15,7 +19,7 @@ QuickFolders.RSA = {
   //
   // Dave Shapiro
   // dave@ohdave.com
-  BigInt : {
+  BigIntModule : {
     initialised: false,
     biRadixBase: 2,
     biRadixBits: 16,
@@ -37,20 +41,24 @@ QuickFolders.RSA = {
     // lr10 = 10 ^ dpl10
     lr10 : null,
     
+    log: function log(txt) {
+      QuickFolders.RSA.log(txt);
+    },
+    
     reset: function reset() {
       this.initialised = false;
     },
+    
     init: function init(MaxDigits) {
       if (this.initialised) return;
+      QuickFolders.RSA.log('BigInt.init(' + MaxDigits + ')');
       this.bitsPerDigit = this.biRadixBits;
       this.biRadix = 1 << 16; // = 2^16 = 65536
       this.biHalfRadix = this.biRadix >>> 1;
       this.biRadixSquared = this.biRadix * this.biRadix,
       this.maxDigitVal = this.biRadix - 1;
       
-      if (MaxDigits)
-        this.setMaxDigits(MaxDigits); // 11 - 64bit / 19 - 128bit
-        
+      this.setMaxDigits(20); 
       this.lr10 = this.biFromNumber(1000000000000000);
       this.hexatrigesimalToChar = new Array(
        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -65,6 +73,8 @@ QuickFolders.RSA = {
       this.lowBitMasks = new Array(0x0000, 0x0001, 0x0003, 0x0007, 0x000F, 0x001F,
                             0x003F, 0x007F, 0x00FF, 0x01FF, 0x03FF, 0x07FF,
                             0x0FFF, 0x1FFF, 0x3FFF, 0x7FFF, 0xFFFF);    
+      if (MaxDigits)
+        this.setMaxDigits(MaxDigits); // 11 - 64bit / 19 - 128bit
       this.initialised = true;
     },
     
@@ -78,28 +88,30 @@ QuickFolders.RSA = {
       this.bigOne.digits[0] = 1;
     },
     
+    // this is an object and will be instatiated and extended many times!
     BigInt: function BigInt(flag) {
+      let RSA = QuickFolders.RSA;
       if (typeof flag == "boolean" && flag == true) {
         this.digits = null;
       }
       else {
-        this.digits = QuickFolders.RSA.BigInt.ZERO_ARRAY.slice(0);
+        this.digits = RSA.BigIntModule.ZERO_ARRAY.slice(0);
       }
       this.isNeg = false;
     },
     
     biFromDecimal: function biFromDecimal(s) {
-      let isNeg = s.charAt(0) == '-';
-      let i = isNeg ? 1 : 0;
-      let result;
+      let isNeg = s.charAt(0) == '-',
+          i = isNeg ? 1 : 0,
+          result;
       // Skip leading zeros.
       while (i < s.length && s.charAt(i) == '0') ++i;
       if (i == s.length) {
         result = new this.BigInt();
       }
       else {
-        let digitCount = s.length - i;
-        let fgl = digitCount % this.dpl10;
+        let digitCount = s.length - i,
+            fgl = digitCount % this.dpl10;
         if (fgl == 0) fgl = this.dpl10;
         result = this.biFromNumber(Number(s.substr(i, fgl)));
         i += fgl;
@@ -114,6 +126,7 @@ QuickFolders.RSA = {
     },
 
     biCopy: function biCopy(bi) {
+      QuickFolders.RSA.log('BigInt.biCopy()');
       let result = new this.BigInt(true);
       result.digits = bi.digits.slice(0);
       result.isNeg = bi.isNeg;
@@ -144,8 +157,8 @@ QuickFolders.RSA = {
       // 2 <= radix <= 36
       let b = new this.BigInt();
       b.digits[0] = radix;
-      let qr = this.biDivideModulo(x, b);
-      let result = this.hexatrigesimalToChar[qr[1].digits[0]];
+      let qr = this.biDivideModulo(x, b),
+          result = this.hexatrigesimalToChar[qr[1].digits[0]];
       while (this.biCompare(qr[0], this.bigZero) == 1) {
         qr = this.biDivideModulo(qr[0], b);
         digit = qr[1].digits[0];
@@ -155,10 +168,10 @@ QuickFolders.RSA = {
     },
 
     biToDecimal: function biToDecimal(x) {
-      let b = new BigInt();
+      let b = new this.BigInt();
       b.digits[0] = 10;
-      let qr = this.biDivideModulo(x, b);
-      let result = String(qr[1].digits[0]);
+      let qr = this.biDivideModulo(x, b),
+          result = String(qr[1].digits[0]);
       while (this.biCompare(qr[0], this.bigZero) == 1) {
         qr = this.biDivideModulo(qr[0], b);
         result += String(qr[1].digits[0]);
@@ -167,8 +180,8 @@ QuickFolders.RSA = {
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++++++
     digitToHex: function digitToHex(n) {
-      let mask = 0xf;
-      let result = "";
+      let mask = 0xf,
+          result = "";
       for (let i = 0; i < 4; ++i) {
         result += this.hexToChar[n & mask];
         n >>>= 4;
@@ -177,8 +190,8 @@ QuickFolders.RSA = {
     },
 
     biToHex: function biToHex(x) {
-      let result = "";
-      let n = this.biHighIndex(x);
+      let result = "",
+          n = this.biHighIndex(x);
       for (let i = this.biHighIndex(x); i > -1; --i) {
         result += this.digitToHex(x.digits[i]);
       }
@@ -186,13 +199,13 @@ QuickFolders.RSA = {
     },
 
     charToHex: function charToHex(c) {
-      let ZERO = 48;
-      let NINE = ZERO + 9;
-      let littleA = 97;
-      let littleZ = littleA + 25;
-      let bigA = 65;
-      let bigZ = 65 + 25;
-      let result;
+      let ZERO = 48,
+          NINE = ZERO + 9,
+          littleA = 97,
+          littleZ = littleA + 25,
+          bigA = 65,
+          bigZ = 65 + 25,
+          result;
 
       if (c >= ZERO && c <= NINE) {
         result = c - ZERO;
@@ -207,8 +220,8 @@ QuickFolders.RSA = {
     },
 
     hexToDigit: function hexToDigit(s) {
-      let result = 0;
-      let sl = Math.min(s.length, 4);
+      let result = 0,
+          sl = Math.min(s.length, 4);
       for (let i = 0; i < sl; ++i) {
         result <<= 4;
         result |= this.charToHex(s.charCodeAt(i))
@@ -217,8 +230,8 @@ QuickFolders.RSA = {
     },
 
     biFromHex: function biFromHex(s) {
-      let result = new this.BigInt();
-      let sl = s.length;
+      let result = new this.BigInt(),
+          sl = s.length;
       for (let i = sl, j = 0; i > 0; i -= 4, ++j) {
         result.digits[j] = this.hexToDigit(s.substr(Math.max(i - 4, 0), Math.min(i, 4)));
       }
@@ -226,15 +239,15 @@ QuickFolders.RSA = {
     },
 
     biFromString: function biFromString(s, radix) {
-      let isNeg = s.charAt(0) == '-';
-      let istop = isNeg ? 1 : 0;
-      let result = new this.BigInt();
-      let place = new this.BigInt();
+      let isNeg = s.charAt(0) == '-',
+          istop = isNeg ? 1 : 0,
+          result = new this.BigInt(),
+          place = new this.BigInt();
       place.digits[0] = 1; // radix^0
       for (let i = s.length - 1; i >= istop; i--) {
-        let c = s.charCodeAt(i);
-        let digit = charToHex(c);
-        let biDigit = this.biMultiplyDigit(place, digit);
+        let c = s.charCodeAt(i),
+            digit = charToHex(c),
+            biDigit = this.biMultiplyDigit(place, digit);
         result = this.biAdd(result, biDigit);
         place = this.biMultiplyDigit(place, radix);
       }
@@ -256,8 +269,8 @@ QuickFolders.RSA = {
       }
       else {
         result = new this.BigInt();
-        let c = 0;
-        let n;
+        let c = 0,
+            n;
         for (let i = 0; i < x.digits.length; ++i) {
           n = x.digits[i] + y.digits[i] + c;
           result.digits[i] = n & 0xffff;
@@ -316,10 +329,10 @@ QuickFolders.RSA = {
     },
 
     biNumBits: function biNumBits(x) {
-      let n = this.biHighIndex(x);
-      let d = x.digits[n];
-      let m = (n + 1) * this.bitsPerDigit;
-      let result;
+      let n = this.biHighIndex(x),
+          d = x.digits[n],
+          m = (n + 1) * this.bitsPerDigit,
+          result;
       for (result = m; result > m - this.bitsPerDigit; --result) {
         if ((d & 0x8000) != 0) break;
         d <<= 1;
@@ -328,11 +341,11 @@ QuickFolders.RSA = {
     },
 
     biMultiply: function biMultiply(x, y) {
-      let result = new this.BigInt();
-      let c;
-      let n = this.biHighIndex(x);
-      let t = this.biHighIndex(y);
-      let u, uv, k;
+      let result = new this.BigInt(),
+          c,
+          n = this.biHighIndex(x),
+          t = this.biHighIndex(y),
+          u, uv, k;
 
       for (let i = 0; i <= t; ++i) {
         c = 0;
@@ -350,8 +363,8 @@ QuickFolders.RSA = {
     },
 
     biMultiplyDigit: function biMultiplyDigit(x, y) {
-      let n, c, uv;
-      let result = new this.BigInt();
+      let n, c, uv,
+          result = new this.BigInt();
       n = this.biHighIndex(x);
       c = 0;
       for (let j = 0; j <= n; ++j) {
@@ -371,13 +384,13 @@ QuickFolders.RSA = {
     },
         
     biShiftLeft: function biShiftLeft(x, n) {
-      let digitCount = Math.floor(n / this.bitsPerDigit);
-      let result = new this.BigInt();
+      let digitCount = Math.floor(n / this.bitsPerDigit),
+          result = new this.BigInt();
       this.arrayCopy(x.digits, 0, result.digits, digitCount,
                 result.digits.length - digitCount);
-      let bits = n % this.bitsPerDigit;
-      let rightBits = this.bitsPerDigit - bits;
-      let i, i1;
+      let bits = n % this.bitsPerDigit,
+          rightBits = this.bitsPerDigit - bits,
+          i, i1;
       for (i = result.digits.length - 1, i1 = i - 1; i > 0; --i, --i1) {
         result.digits[i] = ((result.digits[i] << bits) & this.maxDigitVal) |
                            ((result.digits[i1] & this.highBitMasks[bits]) >>>
@@ -389,12 +402,12 @@ QuickFolders.RSA = {
     },
      
     biShiftRight: function biShiftRight(x, n) {
-      let digitCount = Math.floor(n / this.bitsPerDigit);
-      let result = new this.BigInt();
+      let digitCount = Math.floor(n / this.bitsPerDigit),
+          result = new this.BigInt();
       this.arrayCopy(x.digits, digitCount, result.digits, 0, x.digits.length - digitCount);
-      let bits = n % this.bitsPerDigit;
-      let leftBits = this.bitsPerDigit - bits;
-      let i, i1;
+      let bits = n % this.bitsPerDigit,
+          leftBits = this.bitsPerDigit - bits,
+          i, i1;
       for (i = 0, i1 = i + 1; i < result.digits.length - 1; ++i, ++i1) {
         result.digits[i] = (result.digits[i] >>> bits) |
                            ((result.digits[i1] & this.lowBitMasks[bits]) << leftBits);
@@ -439,10 +452,10 @@ QuickFolders.RSA = {
     },
 
     biDivideModulo: function biDivideModulo(x, y) {
-      let nb = this.biNumBits(x);
-      let tb = this.biNumBits(y);
-      let origYIsNeg = y.isNeg;
-      let q, r;
+      let nb = this.biNumBits(x),
+          tb = this.biNumBits(y),
+          origYIsNeg = y.isNeg,
+          q, r;
       if (nb < tb) {
         // |x| < |y|
         if (x.isNeg) {
@@ -465,8 +478,8 @@ QuickFolders.RSA = {
       r = x;
 
       // Normalize Y.
-      let t = Math.ceil(tb / this.bitsPerDigit) - 1;
-      let lambda = 0;
+      let t = Math.ceil(tb / this.bitsPerDigit) - 1,
+          lambda = 0;
       while (y.digits[t] < this.biHalfRadix) {
         y = this.biShiftLeft(y, 1);
         ++lambda;
@@ -477,28 +490,27 @@ QuickFolders.RSA = {
       // remainder back at the end.
       r = this.biShiftLeft(r, lambda);
       nb += lambda; // Update the bit count for x.
-      let n = Math.ceil(nb / this.bitsPerDigit) - 1;
-
-      let b = this.biMultiplyByRadixPower(y, n - t);
+      let n = Math.ceil(nb / this.bitsPerDigit) - 1,
+          b = this.biMultiplyByRadixPower(y, n - t);
       while (this.biCompare(r, b) != -1) {
         ++q.digits[n - t];
         r = this.biSubtract(r, b);
       }
       let _Radix = this.biRadix;
       for (let i = n; i > t; --i) {
-        let ri = (i >= r.digits.length) ? 0 : r.digits[i];
-        let ri1 = (i - 1 >= r.digits.length) ? 0 : r.digits[i - 1];
-        let ri2 = (i - 2 >= r.digits.length) ? 0 : r.digits[i - 2];
-        let yt = (t >= y.digits.length) ? 0 : y.digits[t];
-        let yt1 = (t - 1 >= y.digits.length) ? 0 : y.digits[t - 1];
+        let ri = (i >= r.digits.length) ? 0 : r.digits[i],
+            ri1 = (i - 1 >= r.digits.length) ? 0 : r.digits[i - 1],
+            ri2 = (i - 2 >= r.digits.length) ? 0 : r.digits[i - 2],
+            yt = (t >= y.digits.length) ? 0 : y.digits[t],
+            yt1 = (t - 1 >= y.digits.length) ? 0 : y.digits[t - 1];
         if (ri == yt) {
           q.digits[i - t - 1] = this.maxDigitVal;
         } else {
           q.digits[i - t - 1] = Math.floor((ri * _Radix + ri1) / yt);
         }
 
-        let c1 = q.digits[i - t - 1] * ((yt * _Radix) + yt1);
-        let c2 = (ri * this.biRadixSquared) + ((ri1 * _Radix) + ri2);
+        let c1 = q.digits[i - t - 1] * ((yt * _Radix) + yt1),
+            c2 = (ri * this.biRadixSquared) + ((ri1 * _Radix) + ri2);
         while (c1 > c2) {
           --q.digits[i - t - 1];
           c1 = q.digits[i - t - 1] * ((yt * _Radix) | yt1);
@@ -543,8 +555,8 @@ QuickFolders.RSA = {
     },
 
     biPow: function biPow(x, y) {
-      let result = this.bigOne;
-      let a = x;
+      let result = this.bigOne,
+          a = x;
       while (true) {
         if ((y & 1) != 0) result = this.biMultiply(result, a);
         y >>= 1;
@@ -555,9 +567,9 @@ QuickFolders.RSA = {
     },
 
     biPowMod: function biPowMod(x, y, m) {
-      let result = this.bigOne;
-      let a = x;
-      let k = y;
+      let result = this.bigOne,
+          a = x,
+          k = y;
       while (true) {
         if ((k.digits[0] & 1) != 0) result = this.biMultiplyMod(result, a, m);
         k = this.biShiftRight(k, 1);
@@ -572,6 +584,10 @@ QuickFolders.RSA = {
   
 
   Barrett : {
+    log: function log(txt) {
+      QuickFolders.RSA.log(txt);
+    },
+    
     // BarrettMu, a class for performing Barrett modular reduction computations in
     // JavaScript.
     //
@@ -587,8 +603,10 @@ QuickFolders.RSA = {
     // Dave Shapiro
     // dave@ohdave.com   
     BarrettMu: function BarrettMu(m) {
-      let RSA = QuickFolders.RSA;
-      let BInt = RSA.BigInt;
+      let RSA = QuickFolders.RSA,
+          BInt = RSA.BigIntModule,
+          barret = QuickFolders.RSA.Barrett;
+      RSA.log('new BarrettMu()');
       BInt.init();
       this.modulus = BInt.biCopy(m);
       this.k = BInt.biHighIndex(this.modulus) + 1;
@@ -597,23 +615,22 @@ QuickFolders.RSA = {
       this.mu = BInt.biDivide(b2k, this.modulus);
       this.bkplus1 = new BInt.BigInt();
       this.bkplus1.digits[this.k + 1] = 1; // bkplus1 = b^(k+1)
-      let barret = QuickFolders.RSA.Barrett;
       this.modulo = barret.BarrettMu_modulo;
       this.multiplyMod = barret.BarrettMu_multiplyMod;
       this.powMod = barret.BarrettMu_powMod;
     },
 
     BarrettMu_modulo: function BarrettMu_modulo(x) {
-      let RSA = QuickFolders.RSA;
-      let BInt = RSA.BigInt;
+      let RSA = QuickFolders.RSA,
+          BInt = RSA.BigIntModule;
       BInt.init();
-      let q1 = BInt.biDivideByRadixPower(x, this.k - 1);
-      let q2 = BInt.biMultiply(q1, this.mu);
-      let q3 = BInt.biDivideByRadixPower(q2, this.k + 1);
-      let r1 = BInt.biModuloByRadixPower(x, this.k + 1);
-      let r2term = BInt.biMultiply(q3, this.modulus);
-      let r2 = BInt.biModuloByRadixPower(r2term, this.k + 1);
-      let r = BInt.biSubtract(r1, r2);
+      let q1 = BInt.biDivideByRadixPower(x, this.k - 1),
+          q2 = BInt.biMultiply(q1, this.mu),
+          q3 = BInt.biDivideByRadixPower(q2, this.k + 1),
+          r1 = BInt.biModuloByRadixPower(x, this.k + 1),
+          r2term = BInt.biMultiply(q3, this.modulus),
+          r2 = BInt.biModuloByRadixPower(r2term, this.k + 1),
+          r = BInt.biSubtract(r1, r2);
       if (r.isNeg) {
         r = BInt.biAdd(r, this.bkplus1);
       }
@@ -626,26 +643,38 @@ QuickFolders.RSA = {
     },
 
     BarrettMu_multiplyMod: function BarrettMu_multiplyMod(x, y) {
-      /*
-      x = this.modulo(x);
-      y = this.modulo(y);
-      */
-      let xy = QuickFolders.RSA.BigInt.biMultiply(x, y);
+      let BInt = QuickFolders.RSA.BigIntModule,
+          xy = BInt.biMultiply(x, y);
       return this.modulo(xy);
     },
 
     BarrettMu_powMod: function BarrettMu_powMod(x, y) {
-      let BInt = QuickFolders.RSA.BigInt;
+      let BInt = QuickFolders.RSA.BigIntModule,
+          isLog = QuickFolders.Preferences.isDebugOption('premium.rsa');
+      
+      BInt.log('BarrettMu_powMod()');
       BInt.init();
       let result = new BInt.BigInt();
       result.digits[0] = 1;
-      let a = x;
-      let k = y;
+      let a = x,
+          k = y,
+          count = 0,
+          testStrng = '';
       while (true) {
+        if (isLog) {
+          testStrng = testStrng + ('   ' + (++count)).slice(-3) + '.'  // left pad counter
+            + ' digits[0] = ' 
+            + ('     ' + k.digits[0]).slice(-5)   // left pad number
+            + '  a=' + a.digits + '\n';
+        }
         if ((k.digits[0] & 1) != 0) result = this.multiplyMod(result, a);
         k = BInt.biShiftRight(k, 1);
         if (k.digits[0] == 0 && BInt.biHighIndex(k) == 0) break;
         a = this.multiplyMod(a, a);
+      }
+      if (isLog) {
+        BInt.log(testStrng);
+        BInt.log('BarrettMu_powMod().result =' + result.digits);
       }
       return result;
     }
@@ -681,8 +710,8 @@ QuickFolders.RSA = {
  */
   RSAKeyPair: function RSAKeyPair(encryptionExponent, decryptionExponent, modulus, keylength) {
     if (typeof keylength === 'undefined') keylength = 0; // Unfortunately Postbox cannot do default parameters
-    let RSA = QuickFolders.RSA;
-    let BInt = RSA.BigInt;
+    let RSA = QuickFolders.RSA,
+        BInt = RSA.BigIntModule;
     BInt.init();
     this.e = BInt.biFromHex(encryptionExponent);
     this.d = BInt.biFromHex(decryptionExponent);
@@ -733,8 +762,8 @@ QuickFolders.RSA = {
     const PAD_PKCS1 = 2;
     if (!key) throw('RSA.encryptedString: No valid encryption key!');
     if (!s) throw('RSA.encryptedString: Nothing to encrypt!');
-    let BInt = QuickFolders.RSA.BigInt;
-    let padtype;
+    let BInt = QuickFolders.RSA.BigIntModule,
+        padtype;
     switch (pad) {
       case 'OHDave':
         padtype = PAD_OHDave;
@@ -781,8 +810,8 @@ QuickFolders.RSA = {
      * Note that, if we're talking to a real crypto library at the other end, we
      * reverse the plaintext order to preserve big-endian order.
      */
-    let a = new Array();
-    let i = 0;
+    let a = new Array(),
+        i = 0;
     for (i = 0; i < sl; i++, j--) {
       if  (padtype == PAD_OHDave)
         a.push(s.charCodeAt(i));  // a[i]=
@@ -815,9 +844,9 @@ QuickFolders.RSA = {
       a[key.chunkSize - 1] = 0;
     }
 
-    let al = a.length;
-    let result = "";
-    let k, block;
+    let al = a.length,
+        result = "",
+        k, block;
     for (i = 0; i < al; i += key.chunkSize) {
       block = new BInt.BigInt();
       j = 0;
@@ -825,8 +854,8 @@ QuickFolders.RSA = {
         block.digits[j] = a[k++];
         block.digits[j] += a[k++] << 8;
       }
-      let crypt = key.barrett.powMod(block, key.e);
-      let text = (key.radix == 16) ? BInt.biToHex(crypt) : BInt.biToString(crypt, key.radix);
+      let crypt = key.barrett.powMod(block, key.e),
+          text = (key.radix == 16) ? BInt.biToHex(crypt) : BInt.biToString(crypt, key.radix);
       result += (text + " ");
     }
     return result.substring(0, result.length - 1); // Remove last space.
@@ -847,11 +876,11 @@ QuickFolders.RSA = {
   decryptedString: function decryptedString(key, c) {
     if (!key) throw('RSA.decryptedString: No valid decryption key!');
     if (!c) throw('RSA.decryptedString: Nothing to decrypt!');
-    let BInt = QuickFolders.RSA.BigInt;
+    let BInt = QuickFolders.RSA.BigIntModule;
     BInt.init();
-    let blocks = c.split(" ");
-    let result = "";
-    let i, j, b;
+    let blocks = c.split(" "),
+        result = "",
+        i, j, b;
     for (i = 0; i < blocks.length; ++i) {
       let bi;
       if (key.radix == 16) {

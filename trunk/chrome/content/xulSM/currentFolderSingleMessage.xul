@@ -62,13 +62,13 @@
 					               class="icon"
 					               onclick="QuickFolders.Interface.goNextSiblingFolder();"
 					               collapsed="true"/>
+					<toolbarseparator id="QuickFolders-Navigate-Separator2" />
 					<toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
 					               class="icon"
 					               tooltiptext="&qf.tooltip.mailFolderCommands;"
 					               onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
 					               oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
 					               collapsed="true"/>
-					<toolbarseparator />
 					<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					               class="icon"
 					               tooltiptext="&qf.tooltip.filterStart;"

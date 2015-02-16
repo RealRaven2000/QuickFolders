@@ -83,6 +83,7 @@
 				<toolbarbutton id="QuickFolders-NavigateRight"
 					             class="icon"
 					             onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
+				<toolbarseparator id="QuickFolders-Navigate-Separator2" />
 				<toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.mailFolderCommands;"
@@ -102,7 +103,6 @@
 									 oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"
 									 tag="qfIconRemove"/>
 				</hbox>
-				<toolbarseparator />
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.filterStart;"
@@ -176,13 +176,13 @@
 				<toolbarbutton id="QuickFolders-NavigateRight"
 					             class="icon"
 					             onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
+				<toolbarseparator id="QuickFolders-Navigate-Separator2" />
 				<toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.mailFolderCommands;"
 					             onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
 					             oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
 					             collapsed="true"/>
-				<toolbarseparator />
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.filterStart;"

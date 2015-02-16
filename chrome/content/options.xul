@@ -849,7 +849,7 @@
 						<rows>
 							<row>
 								<description
-									oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
+									oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
 								<button id="L1"
 												tooltiptext="quickfolders.mozdev.org/donate.html"
 												onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')">
@@ -868,7 +868,7 @@
 							<separator class="thin" />
 							<row>
 								<description class="niceFont"
-														 oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','stop displaying version history after updates'));return false;">
+														 oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
 									&qf.description.versionhistory;
 								</description>
 								<button id="L3"
@@ -900,7 +900,7 @@
 				<!-- Licensing tab -->
 				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
 					<description
-						oncontextmenu="QuickFolders.Options.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">
+						oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','Stop displaying donation page on update?'));return false;">
 						&qf.label.insertLicense;</description>
 					<hbox id="licenseContainer" align="start">
 						<textbox id="txtLicenseKey"
@@ -960,6 +960,12 @@
 											 type="number"
 											 value="35"
 											 width="50" />
+							<button id="btnTestLicense"
+											label="Decrypt + Test"
+											oncommand="QuickFolders.Options.decryptLicense(true);" />
+							<button id="btnRestoreLicense"
+											label="Restore my own License"
+											oncommand="QuickFolders.Options.restoreLicense();" />
 						</hbox>
 					</groupbox>
 					<separator flex="1" />

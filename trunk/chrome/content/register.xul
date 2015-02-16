@@ -39,7 +39,8 @@
 				</td>
 			  <td>
 					<description class="para">&yearlyLicense.premiumFeatures;</description>
-					<label class="para link" onclick="QuickFolders.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
+					<label class="para link" 
+					onclick="QuickFolders.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
 					<description class="para">&yearlyLicense.usageTerm;</description>
 				</td>
 			</tr>	

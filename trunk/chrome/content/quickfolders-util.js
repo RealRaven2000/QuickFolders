@@ -397,7 +397,14 @@ QuickFolders.Util = {
 		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
 	} ,
   
-
+	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
+		// adds a new option to about:config, that isn't there by default
+		if (confirm(textPrompt)) {
+			// create (non existent filter setting:
+			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
+			QuickFolders.Options.showAboutConfig(null, filter, true, false);
+		}
+	},
 	
 	// Postbox special functions to avoid line being truncated
 	// removes description.value and adds it into inner text
@@ -1589,8 +1596,6 @@ QuickFolders.Util.FirstRun = {
 							util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
 							window.setTimeout(function(){util.openURL(null, versionPage);}, 2200);
 						}
-
-
 					}
 
 					if (isThemeUpgrade) {

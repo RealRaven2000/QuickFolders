@@ -1709,7 +1709,7 @@ QuickFolders.Interface = {
 				sOldName = sOldName.substring(i+2,sOldName.length);
 		}
 		// find if trhere is a number of total messages / unread message in the label, and strip them from renaming!!
-		if(QuickFolders.Preferences.isShowTotalCount || QuickFolders.Preferences.isShowUnreadCount) {
+		if (QuickFolders.Preferences.isShowTotalCount || QuickFolders.Preferences.isShowUnreadCount) {
 			let i = sOldName.lastIndexOf(' ('),
 			    j = sOldName.lastIndexOf(')');
 			// TODO: additional check if there are just numbers and commas within the brackets!
@@ -1721,7 +1721,6 @@ QuickFolders.Interface = {
 			// lets check if this is numeral, after removing any ','
 				sOldName = sOldName.substring(0,sOldName.length - bracketedLen);
 			}
-
 		}
 
 		let newName = window.prompt(this.getUIstring("qfNewName","Enter a new name for the bookmark")+"\n"+ folderButton.folder.URI, sOldName); // replace folder.name!
@@ -1742,8 +1741,7 @@ QuickFolders.Interface = {
     let win = window.openDialog(
       'chrome://quickfolders/content/quickfolders-advanced-tab-props.xul',
       'quickfilters-advanced','titlebar=no,close=no,chrome,alwaysRaised,top=' + y +',left=' + x, 
-      folder,
-      entry);
+      folder, entry);
     // the window may correct its x position if cropped by screen's right edge
     win.focus();
   } ,
@@ -2799,7 +2797,13 @@ QuickFolders.Interface = {
 
 	// isDrag: if this is set to true, then the command items are not included
 	addSubFoldersPopupFromList: function addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList) {
-		let killDiacritics = function(s) {
+    let tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
+						  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
+						  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
+						  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
+						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
+						  "\xDF":"ss", "_":"/", ":":"."},
+        killDiacritics = function(s) {
 			    return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
 		    },
 		    subfolder,
@@ -2912,12 +2916,6 @@ QuickFolders.Interface = {
 					// alpha sorting by starting from end of menu up to separator!
 					let c = popupMenu.childNodes.length-1, //count of last menu item
 					    added = false,
-					    tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
-						  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
-						  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
-						  "\xEC":"i", "\xED":"i", "\xEE":"i", "\xEF":"i",
-						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
-						  "\xDF":"ss", "_":"/", ":":"."},
 					    sNewName = killDiacritics(subfolder.name);
 					// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
 					// >=0 undo this change - fixes [Bug 21317]

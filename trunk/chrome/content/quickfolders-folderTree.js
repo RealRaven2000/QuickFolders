@@ -24,8 +24,8 @@ QuickFolders.FolderTree = {
       treeView.getCellProperties = function(row, col) {
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
-          let folder = treeView.getFolderForIndex(row);
-          let folderIcon;
+          let folder = treeView.getFolderForIndex(row),
+              folderIcon;
           if (!treeView.qfIconsEnabled) {
             return props;
           }
@@ -55,8 +55,8 @@ QuickFolders.FolderTree = {
 	  if (!this.dictionary || !this.dictionary.listitems().length) return;
     if (!QuickFolders.Preferences.getBoolPref('folderTree.icons')) return;
     if (!QuickFolders.Preferences.getBoolPref('folderTree.icons.injectCSS')) return;
-		let styleEngine = QuickFolders.Styles;
-		let ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
+		let styleEngine = QuickFolders.Styles,
+		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
 		for (let [key, value]  in this.dictionary.items) {
 			let selector = this.makeSelector(key);
 			// the folder properties are (or should be) restored by the msf file automatically.
@@ -106,15 +106,15 @@ QuickFolders.FolderTree = {
 		QuickFolders.mailFolderTree
 
     this.dictionary = new Dict(); // empty dictionary		
-		let txtList = 'Folders without Icon\n';  
-		let txtWithIcon = 'Folders with Icon\n';
-		let iCount = 0;
-		let iIcons = 0;
-		let debug = QuickFolders.Preferences.isDebugOption('folderTree');
+		let txtList = 'Folders without Icon\n',
+		    txtWithIcon = 'Folders with Icon\n',
+		    iCount = 0,
+		    iIcons = 0,
+		    debug = QuickFolders.Preferences.isDebugOption('folderTree');
 		for (let folder in QuickFolders.Util.allFoldersIterator()) {
 		  iCount++;
-			let key = folder.getStringProperty("folderIcon");
-			let url = folder.getStringProperty("iconURL");
+			let key = folder.getStringProperty("folderIcon"),
+			    url = folder.getStringProperty("iconURL");
 		
 			if (key && key!='noIcon' && url) {
 				this.addItem(key, url);
@@ -197,16 +197,16 @@ QuickFolders.FolderTree = {
 	  // https://developer.mozilla.org/en-US/docs/XUL/Tutorial/Styling_a_Tree
     
     if (!QuickFolders.Preferences.getBoolPref('folderTree.icons')) return;
-		let fileURL, fileSpec;
-		let styleEngine = QuickFolders.Styles;
-		let ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
-		let names = folder.URI.split("/");
-		let serverKey = folder.server.key;
-		let GUID = serverKey + '_' + names[names.length-2] + '_' + names[names.length-1];
+		let fileURL, fileSpec,
+		    styleEngine = QuickFolders.Styles,
+		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles'),
+		    names = folder.URI.split("/"),
+		    serverKey = folder.server.key,
+		    GUID = serverKey + '_' + names[names.length-2] + '_' + names[names.length-1];
 		GUID = GUID.replace(/[\s\,\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
 		// GUID = GUID.replace(/\_/g,'');// removed replacement with _; instead replace with ''
-		let propName = "folderIcon_" + GUID; // removed _
-		let selector = this.makeSelector(propName);
+		let propName = "folderIcon_" + GUID, // removed _
+		    selector = this.makeSelector(propName);
 		try {
 		  if (iconURI) {
 				fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);

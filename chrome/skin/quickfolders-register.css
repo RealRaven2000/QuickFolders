@@ -40,6 +40,7 @@ td {
 .para {
   font-family: Cambria, Georgia, serif;
   font-size: 10.2pt;
+	color: rgb(0, 0, 0);
 }
 .product:before {
   content: url('chrome://quickfolders/skin/ico/quickfolders-Icon.png'); 
@@ -76,6 +77,7 @@ td {
 .heading {
   background: linear-gradient(to bottom, #F1E767 0%, #F1E767 37%, #FEB645 100%) repeat scroll 0% 0% transparent;
   border: 1px solid rgba(120,120,120,0.5) !important;
+	color: rgb(0, 0, 0);
   display: inline-block;
   font-family: calibri, arial, sans-serif;
   font-size: 13pt;

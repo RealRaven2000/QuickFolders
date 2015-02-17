@@ -149,7 +149,6 @@ QuickFolders.Licenser = {
     if (featureName) {
       queryString = "&referrer=" + featureName;
     }
-    alert("The web shop is still work in progress - it will be ready for your order when the full version of QuickFolders Pro is released");
     util.openLinkInBrowser(null, url + queryString);
     window.close();
   }  ,

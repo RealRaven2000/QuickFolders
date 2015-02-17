@@ -756,10 +756,11 @@ QuickFolders.RSA = {
   * returns   The cyphertext block that results from encrypting the plaintext string s
   *           with the RSA key.
   */    
-  encryptedString: function encryptedString(key, s, pad = 'OHDave') {
+  encryptedString: function encryptedString(key, s, pad ) {
     const PAD_OHDave = 0;
     const PAD_NoPadding = 1;
     const PAD_PKCS1 = 2;
+    if (!pad) pad = 'OHDave';
     if (!key) throw('RSA.encryptedString: No valid encryption key!');
     if (!s) throw('RSA.encryptedString: Nothing to encrypt!');
     let BInt = QuickFolders.RSA.BigIntModule,

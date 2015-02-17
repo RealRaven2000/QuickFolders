@@ -2,9 +2,12 @@
 #btnLicense label,
 #btnEnterCode label
 {
-	padding: 0px 2em;
+  padding-bottom: 0.6em;
+  padding-top: 0.6em;
+	padding-left: 1em;
+	padding-right: 1em;
 	margin: 0;
-	max-height: 1.6em; /* slimmer donate button */
+	max-height: 2em; /* slimmer donate button */
 }
 
 #btnLicense, #btnEnterCode {
@@ -13,8 +16,6 @@
 }
 
 #btnLicense {
-  padding-bottom: 0.8em;
-  padding-top: 0.6em;
 	-moz-appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;

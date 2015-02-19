@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Sneltoetsnummer op maplabels weergeven">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Control in plaats van Alt gebruiken">
 <!ENTITY qf.checkbox.useRebuildShortcut "Tabbladen herbouwen met sneltoets: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Mappen zoeken met sneltoets: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+Links / Alt+Rechts voor vorig / volgend tabblad">
 <!ENTITY qf.label.tabContent "Tabbladinhoud">
 <!ENTITY qf.checkbox.showUnreadBold "Tabbladen voor mappen met ongelezen berichten vet weergeven">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Druk op onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY qf.licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Geëncrypteerd e-mail adres komt niet overeen met het leesbare e-mail adres.">
+<!ENTITY qf.premiumConfig "Premiumfuncties">
+<!ENTITY qf.checkbox.quickJump "quickJump: Mappen zoeken met sneltoets: Shift +">
+<!ENTITY qf.checkbox.quickJump.tip "Sneltoets voor aanklikken van de knop quickJump voor de snelste navigatie via naamingave.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Verplaats e-mailberichten naar elke map met de sneltoets: Shift +">
+<!ENTITY qf.checkbox.quickMove.tip "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in elke map via naamingave.">
 <!ENTITY qf.label.donate "Doneren">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">

@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Mostra el número de drecera a les etiquetes de les carpetes">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utilitzar Ctrl enlloc de Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Regenera Pestanyes amb: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya">
 <!ENTITY qf.label.tabContent "Fitxa de Contingut">
 <!ENTITY qf.checkbox.showUnreadBold "Mostra amb negreta els botons de les carpetes amb missatges per llegir">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "La clau de llicència que heu entrat ja ha expirat. Polseu el següent botó per renovar-la.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Fer una Donació">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors.">

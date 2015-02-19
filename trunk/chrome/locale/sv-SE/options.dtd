@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Visa kortkommandonummer på mappetiketter">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Använd Ctrl istället för Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Återskapa flikar med kortkommandot: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Sök efter mappar med kortkommandot: Ctrl+Alt+">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+vänsterpil/Alt+högerpil för föregående/nästa flik">
 <!ENTITY qf.label.tabContent "Flikinnehåll">
 <!ENTITY qf.checkbox.showUnreadBold "Visa knappar för mappar med olästa meddelanden i fetstil">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY qf.licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Sök efter mappar med kortkommandot: Shift +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Donera">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">

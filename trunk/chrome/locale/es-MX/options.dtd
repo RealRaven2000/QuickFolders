@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Mostrar el número del atajo en la etiqueta de las carpetas">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl en lugar de  Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir pestañas con el atajo: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Buscar Carpetas con acceso directo: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Izq/ALT-Der para la pestaña anterior/siguiente pestaña">
 <!ENTITY qf.label.tabContent "Contenido de la pestaña">
 <!ENTITY qf.checkbox.showUnreadBold "Mostrar los botones de las carpetas con mensajes no leídos en negritas">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "La clave de licencia que ingresó ya expiro. Por favor presione el botón de abajo para renovarla.">
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico asociada a esta licencia [{1}] no está ligada a ninguna de sus cuentas de correo. Póngase en contacto conmigo desde la pestaña de Soporte para obtener ayuda.">
 <!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo electrónico cifrada no corresponde a la legible.">
+<!ENTITY qf.premiumConfig "Opciones Premium">
+<!ENTITY qf.checkbox.quickJump "quickJump: Carpetas con acceso directo: Shift +">
+<!ENTITY qf.checkbox.quickJump.tip "Acceso directo para hacer clic en el botón quickJump para una navegación más rápida en cualquier lugar vía entrada de nombre.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Mover correo a cualquier carpeta con acceso directo: Mayús +">
+<!ENTITY qf.checkbox.quickMove.tip "Acceso directo para arrastrar correos al botón QuickMove para archivar más rápido a cualquier carpeta vía entrada de nombre.">
 <!ENTITY qf.label.donate "Donar">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Si sólo ve un botón de [Cerrar] más abajo, los ajustes de color pueden no estar funcionando - como solución, intente hacer clic derecho sobre un área vacía de la barra de QuickFolders para seleccionar opciones … Esto forzará el botón [Aceptar] para que se muestre, y así debe guardar los colores.">

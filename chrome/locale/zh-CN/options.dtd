@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "在导航卡上显示序号">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "使用 Ctrl 键代替 Alt 键">
 <!ENTITY qf.checkbox.useRebuildShortcut "重建导航卡使用快捷键: Ctrl + Alt + ">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "使用 ALT+左方向键/ALT+右方向键 向前/向后 切换导航卡">
 <!ENTITY qf.label.tabContent "Tab Content">
 <!ENTITY qf.checkbox.showUnreadBold "有未读消息的导航卡用粗体字显示">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Donate">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "　　注意：如果在下面只看到一个「关闭」按钮，那就是颜色设置可能无法正常工作。遇到这种情况，在目录导航工具栏上的空白区域点击鼠标右键，并选择「选项」。这将使「确定」按钮强制显示出来，并可以保存颜色。">

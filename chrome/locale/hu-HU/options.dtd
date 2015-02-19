@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Gyorsgomb sorszám megjelenítése a mappák címkéjén">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Alt helyett Ctrl használata">
 <!ENTITY qf.checkbox.useRebuildShortcut "Fülek újraépítése a Ctrl + Alt + billentyűkombinációval">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+Jobbra / Alt+Balra az előző / következő fülhöz">
 <!ENTITY qf.label.tabContent "Fül tartalom">
 <!ENTITY qf.checkbox.showUnreadBold "Olvasatlan üzeneteket tartalmazó mappák megjelenítése félkövérrel">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Támogatás">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">

@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Afficher le numéro du raccourci sur les libellés des dossiers">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Utiliser la touche Ctrl à la place de la touche Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Recréer les onglets avec le raccourci clavier : Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Rechercher les dossiers avec le raccourci : Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt-flèche gauche / Alt-flèche droite pour onglet précédent / suivant">
 <!ENTITY qf.label.tabContent "Contenu d'onglet">
 <!ENTITY qf.checkbox.showUnreadBold "Afficher les boutons des dossiers contenant des messages non lus en gras">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence.">
 <!ENTITY qf.licenseValidation.invalidMail "L'adresse électronique associée à la clé de licence [{1}] n'est pas listée dans un de vos comptes courriel. Veuillez me contacter à partir de l'onglet d'aide.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
+<!ENTITY qf.premiumConfig "Fonctionnalités Premium">
+<!ENTITY qf.checkbox.quickJump "quickJump : se rendre à n'importe quel dossier avec le raccourci : Maj +">
+<!ENTITY qf.checkbox.quickJump.tip "Raccourci pour cliquer sur le bouton quickMove pour une navigation plus rapide partout via la saisie d'un nom.">
+<!ENTITY qf.checkbox.quickMove "quickMove : déplacer un courriel vers n'importe quel dossier avec le raccourci MAJ +">
+<!ENTITY qf.checkbox.quickMove.tip "Raccourci pour glisser les courriels vers le bouton quickMove pour dépose express dans tout dossier via la saisie d'un nom.">
 <!ENTITY qf.label.donate "Faire un don">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Remarque : si vous ne voyez qu'un bouton [Fermer] ci-dessous, les paramètres de couleurs ne seront pas pris en compte - pour contourner ce problème, essayez de cliquer droit sur une zone vide de la barre QuickFolders pour vous rendre au menu des options… Cela forcera l'affichage du bouton [OK] qui vous permettra d'enregistrer les couleurs.">

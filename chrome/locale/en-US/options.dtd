@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Display shortcut number on folder labels">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Use Ctrl instead of Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Rebuild Tabs with Shortcut: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Left / ALT-Right for previous / next Tab">
 <!ENTITY qf.label.tabContent "Tab Content">
 <!ENTITY qf.checkbox.showUnreadBold "Display tabs with unread messages in bold">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Donate">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors.">

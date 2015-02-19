@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Wyświetlaj numer skrótu na etykietach folderów">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Używaj Ctrl zamiast Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Przebuduj foldery za pomocą skrótu Ctrl+Alt+">
-<!ENTITY qf.checkbox.findFolderShortcut "Wyszukuj foldery za pomocą skrótu: Ctrl+Alt+">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Klawisze lewy ALT/prawy ALT przełączają poprzednia/następna zakładka">
 <!ENTITY qf.label.tabContent "Wyświetlaj:">
 <!ENTITY qf.checkbox.showUnreadBold "nazwy folderów z nieprzeczytanymi wiadomościami – pogrubione">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję.">
 <!ENTITY qf.licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
+<!ENTITY qf.premiumConfig "Funkcje premium">
+<!ENTITY qf.checkbox.quickJump "quickJump: Wyszukuj foldery za pomocą skrótu: Shift+">
+<!ENTITY qf.checkbox.quickJump.tip "Skrót do przycisku quickJump do szybszej nawigacji do dowolnego miejsca za pomocą wprowadzonej nazwy.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Przenoś wiadomość do dowolnego folderu za pomocą skrótu Shift+">
+<!ENTITY qf.checkbox.quickMove.tip "Skrót do przycisku quickMove do szybszego przenoszenia do dowolnego folderu za pomocą wprowadzonej nazwy.">
 <!ENTITY qf.label.donate "Przekaż dotację">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamknij], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">

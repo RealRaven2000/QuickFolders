@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Hiển thị số phím tắt trên nhãn thư mục">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Sử dụng Ctrl thay cho Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Xây dựng lại các thẻ với phím tắt: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Find Folders with Shortcut: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Phím ALT-trái/ALT-phải để chuyển sang Thẻ phía trước/sau">
 <!ENTITY qf.label.tabContent "Nội dung thẻ">
 <!ENTITY qf.checkbox.showUnreadBold "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Quyên góp">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn… làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại.">

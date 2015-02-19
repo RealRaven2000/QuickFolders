@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Exibir o número do atalho nos rótulos de pastas">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Usar Ctrl ao invés de Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Reconstruir abas com atalho: Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Procurar pastas com atalho: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-esquerda/ALT-direita para aba anterior/próxima">
 <!ENTITY qf.label.tabContent "Conteúdo de aba">
 <!ENTITY qf.checkbox.showUnreadBold "Exibir botões de pastas com mensagens não lidas com texto em negrito">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Procurar pastas com atalho: Shift +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Doar">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções… Isto forçará a exibição do botão [Ok], que deve salvar as cores.">

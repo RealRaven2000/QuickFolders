@@ -12,7 +12,6 @@
 <!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
 <!ENTITY qf.checkbox.useRebuildShortcut "Обновить все закладки:Ctrl + Alt +">
-<!ENTITY qf.checkbox.findFolderShortcut "Найти папку:Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Влево/ALT-Вправо для предыдущей/следующей закладки">
 <!ENTITY qf.label.tabContent "Содержание закладок">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
@@ -149,6 +148,11 @@
 <!ENTITY qf.licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
 <!ENTITY qf.licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Пожертвовать">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">

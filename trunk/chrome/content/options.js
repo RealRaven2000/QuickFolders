@@ -396,6 +396,20 @@ QuickFolders.Options = {
     }
   } ,
   
+  enablePremiumConfig: function enablePremiumConfig(isEnabled) {
+    let getElement    = document.getElementById.bind(document),
+        premiumConfig = getElement('premiumConfig'),
+        quickJump     = getElement('chkQuickJumpHotkey'),
+        quickMove     = getElement('chkQuickMoveHotkey'),
+        quickJumpTxt  = getElement('qf-QuickJumpShortcut'),
+        quickMoveTxt  = getElement('qf-QuickMoveShortcut');
+    premiumConfig.disabled = !isEnabled;
+    quickJump.disabled = !isEnabled;
+    quickMove.disabled = !isEnabled;
+    quickJumpTxt.disabled = !isEnabled;
+    quickMoveTxt.disabled = !isEnabled;
+  },
+  
   decryptLicense: function decryptLicense(testMode) {
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
@@ -409,6 +423,7 @@ QuickFolders.Options = {
     validationExpired.collapsed = true;
     validationInvalidEmail.collapsed = true;
     validationEmailNoMatch.collapsed = true;
+    this.enablePremiumConfig(false);
     try {
       this.trimLicense();
       let State = QuickFolders.Licenser.ELicenseState,
@@ -441,6 +456,7 @@ QuickFolders.Options = {
       decryptedMail = QuickFolders.Licenser.DecryptedMail;
       switch(result) {
         case State.Valid:
+          this.enablePremiumConfig(true);
           validationPassed.collapsed=false;
           getElement('dialogProductTitle').value = "QuickFolders Pro";
           // test code
@@ -470,8 +486,13 @@ QuickFolders.Options = {
       }
       else {
         // reset License status of main instance
-        if (window.arguments && window.arguments[1].inn.instance && result != State.Valid) {
-          window.arguments[1].inn.instance.Licenser.ValidationStatus = State.NotValidated;
+        if (window.arguments && window.arguments[1].inn.instance) {
+          let mainLicenser = window.arguments[1].inn.instance.Licenser;
+          if (mainLicenser) {
+            mainLicenser.ValidationStatus =
+              result != State.Valid ? State.NotValidated : result;
+            mainLicenser.wasValidityTested = true; // no need to re-validate there
+          }
         }
       }
       

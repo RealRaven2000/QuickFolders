@@ -65,23 +65,28 @@ displayed on the "about" dialog. (Add-ons Manager / About)
 
 FUGUE ICON SET
 Fugue Icons are by Yusuke Kamiyamane under Creative Commons, see: http://p.yusukekamiyamane.com
-broom.png                 =>  Find orphaned tabs
-fugue-paint-can.png      => palette mode
-rubber-balloons.png      => categories
 
-Fugue Composites
-fugue-arrow-bottom.png    
-fugue-arrow-down.png
-fugue-arrow-top.png
-fugue-arrow-up.png
-fugue-down.png
-fugue-next.png
-fugue-previous.png
-fugue-up.png
-fugue-nw.png             => parent folder
+Fugue Icons Originals
+FILE                       COMMAND
+broom.png               |  Find orphaned tabs
+fugue-paint-can.png     |  palette mode
+fugue-balloons.png      |  categories
+
+Fugue Composites - combine 2 or more fugue icons:
+FILE                       COMMAND  
+fugue-balloonRemove     |  remove category
+fugue-arrow-bottom.png  |  Message Filters / Move to Bottom 
+fugue-arrow-down.png    |  Message Filters / Move Down
+fugue-arrow-top.png     |  Message Filters / Move to Top
+fugue-arrow-up.png      |  Message Filters / Move Up
+fugue-down.png          |  Move to next [unread] mail
+fugue-next.png          |  Move to next sibling folder
+fugue-previous.png      |  Move to previous sibling folder
+fugue-up.png            |  Move to previous [unread] mail
+fugue-nw.png            |  Move to parent folder
 
 Fugue Derivatives - Based on Fugue Icons
-folderCommand.png
+folderCommand.png       |  Mail Commands
 folder-properties.png
 folder-rename.png
 folder-search.png

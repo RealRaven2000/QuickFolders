@@ -24,7 +24,7 @@
 
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
@@ -58,6 +58,15 @@
 			    <listitem label='&qf.filters.template.topic;' value='topic' />
 			    <listitem label='&qf.filters.template.tag;' value='tag' />
 			</listbox>
+			<vbox id="quickFiltersPromoBox">
+			  <description id="getQuickFilters">
+				For an improved and more powerful way of creating Filters
+				please install my extension quickFilters!</description>
+				<label id="quickFiltersLink"
+				       class="para link" 
+					     onclick="QuickFolders.FilterWorker.showQuickFilters(event);">quickFilters Add-on</label>
+				
+			</vbox>
 		</hbox>
 
 		<groupbox id="boxDescription">

@@ -85,8 +85,10 @@
 						<preference id="QuickFolders-Preferences-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool" />
 						<preference id="QuickFolders-Preferences-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool" />
 						<preference id="QuickFolders-Preferences-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string" />
-						<preference id="QuickFolders-Preferences-FindFolderShortcut" name="extensions.quickfolders.useFindFolderShortcut" type="bool" />
-						<preference id="QuickFolders-Preferences-FindFolderShortcutKey" name="extensions.quickfolders.findFolderShortcutKey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickJumpShortcut" name="extensions.quickfolders.quickJump.useHotkey" type="bool" />
+						<preference id="QuickFolders-Preferences-QuickJumpShortcutKey" name="extensions.quickfolders.quickJump.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickMoveShortcut" name="extensions.quickfolders.quickMove.useHotkey" type="bool" />
+						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
 						<preference id="QuickFolders-Preferences-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string" />
 					</preferences>
@@ -116,16 +118,6 @@
 								<textbox id="QuickFolders-Options-RebuildShortcutKey"
 												 preference="QuickFolders-Preferences-RebuildShortcutKey"
 												 class = "shortCutKey"
-												 instantApply="true" />
-							</hbox>
-							<hbox>
-								<checkbox id="chkFindFolderAccel"
-													label="&qf.checkbox.findFolderShortcut;"
-													preference="QuickFolders-Preferences-FindFolderShortcut"
-													instantApply="true" />
-								<textbox id="QuickFolders-Options-FindFolderShortcut"
-												 preference="QuickFolders-Preferences-FindFolderShortcutKey"
-												 class="shortCutKey"
 												 instantApply="true" />
 							</hbox>
 							<checkbox label="&qf.checkbox.useNavigationShortcuts;"
@@ -934,14 +926,46 @@
 					  </vbox>
 						<spacer flex="1"/>
 					</hbox>
-					<separator />
-					<vbox height="40">
-						<hbox pack="end">
-							<button id="btnLicense" 
-                      label="get license"
-										  oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+					<separator  flex="1" />
+					<hbox>
+						<groupbox id="premiumConfig" disabled="true">
+							<caption label="Premium Features" />
+							<hbox>
+								<checkbox id="chkQuickJumpHotkey"
+													label="&qf.checkbox.quickJump;"
+													tooltiptext="&qf.checkbox.quickJump.tip;"
+													preference="QuickFolders-Preferences-QuickJumpShortcut"
+													instantApply="true"
+													disabled="true" />
+								<textbox id="qf-QuickJumpShortcut"
+												 preference="QuickFolders-Preferences-QuickJumpShortcutKey"
+												 class="shortCutKey"
+												 instantApply="true"
+												 disabled="true" />
+							</hbox>
+							<hbox>
+								<checkbox id="chkQuickMoveHotkey"
+													label="&qf.checkbox.quickMove;"
+													tooltiptext="&qf.checkbox.quickMove.tip;"
+													preference="QuickFolders-Preferences-QuickMoveShortcut"
+													instantApply="true"
+													disabled="true" />
+								<textbox id="qf-QuickMoveShortcut"
+												 preference="QuickFolders-Preferences-QuickMoveShortcutKey"
+												 class="shortCutKey"
+												 instantApply="true" 
+												 disabled="true" />
+							</hbox>
+						</groupbox>
+						<spacer flex="1" />
+						<vbox height="40">
+							<hbox pack="end">
+								<button id="btnLicense" 
+												label="get license"
+												oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+							</hbox>
+						</vbox>
 					</hbox>
-					</vbox>
 					<separator flex="1" />
 					<groupbox id="txtKeyGenerator" collapsed="true">
 					  <caption label="CREATE REGISTRATION KEY: REMOVE IN PRODUCTION - TRANSLATION UNNECESSARY!" />

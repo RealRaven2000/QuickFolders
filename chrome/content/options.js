@@ -166,13 +166,13 @@ QuickFolders.Options = {
   } ,
   
 	load: function load() {
+		let util = QuickFolders.Util;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
-			QuickFolders.Util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
+			util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
-		let util = QuickFolders.Util,
-        version = util.Version,
+		let version = util.Version,
         wd = window.document,
         getElement = wd.getElementById.bind(wd);
 		
@@ -417,7 +417,8 @@ QuickFolders.Options = {
         validationExpired      = getElement('validationExpired'),
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
-        decryptedMail, decryptedDate;
+        decryptedMail, decryptedDate,
+        util = QuickFolders.Util;
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
     validationExpired.collapsed = true;
@@ -444,8 +445,8 @@ QuickFolders.Options = {
           + "Date: " + date + "\n"
           + "Crypto: " + crypto + "\n";
         if (testMode)
-          QuickFolders.Util.alert(test);
-        QuickFolders.Util.logDebug(test);
+          util.alert(test);
+        util.logDebug(test);
       }
       if (crypto)
         [result, LicenseKey] = QuickFolders.Licenser.validateLicense(license, maxDigits);
@@ -498,7 +499,7 @@ QuickFolders.Options = {
       
     }    
     catch(ex) {
-      QuickFolders.Util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
+      util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
     }
   } ,
   
@@ -525,16 +526,18 @@ QuickFolders.Options = {
   
 	selectTheme: function selectTheme(wd, themeId) {
 		let myTheme =  QuickFolders.Themes.Theme(themeId),
-        getElement = wd.getElementById.bind(wd);
+        getElement = wd.getElementById.bind(wd),
+        util = QuickFolders.Util,
+        main = util.getMail3PaneWindow(),
+        QI = main.QuickFolders.Interface;
 		if (myTheme) {
 		  try {
 				getElement("QuickFolders-Theme-Selector").value = themeId;
-				getElement("Quickfolders-Theme-Author").value
-					= myTheme.author;
+				getElement("Quickfolders-Theme-Author").value =  myTheme.author;
 
 				// textContent wraps, value doesnt
 				getElement("Quickfolders-Theme-Description").textContent
-					= QuickFolders.Interface.getUIstring("qf.themes." + themeId + ".description", "N/A");
+					= QI.getUIstring("qf.themes." + themeId + ".description", "N/A");
 
 				getElement("qf-options-icons").disabled
 					= !(myTheme.supportsFeatures.specialIcons);
@@ -572,14 +575,14 @@ QuickFolders.Options = {
 					= !(myTheme.supportsFeatures.stateColors);
 			}
 			catch(ex) {
-				QuickFolders.Util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
+				util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
 			}
 
 			/******  FOR FUTURE USE ??  ******/
 			// if (myTheme.supportsFeatures.supportsFontSelection)
 			// if (myTheme.supportsFeatures.buttonInnerShadows)
 
-			QuickFolders.Util.logDebug ('Theme [' + myTheme.Id + '] selected');
+			util.logDebug ('Theme [' + myTheme.Id + '] selected');
 		}
 	} ,
 	
@@ -609,8 +612,8 @@ QuickFolders.Options = {
     QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN', 4);
     QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN', 0);
     let main = QuickFolders.Util.getMail3PaneWindow(),
-        ifs = main.QuickFolders.Interface; 
-    ifs.updateUserStyles();
+        QI = main.QuickFolders.Interface; 
+    QI.updateUserStyles();
 	},
 
 	colorPickerTranslucent: function colorPickerTranslucent(picker) {
@@ -634,10 +637,11 @@ QuickFolders.Options = {
 	// change background color for current folder bar
 	// 4 choices: default, dark, custom, translucent
 	setCurrentToolbarBackground: function setCurrentToolbarBackground(choice, withUpdate) {
-		QuickFolders.Util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
-		let setting = document.getElementById('currentFolderBackground'),
+    let util = QuickFolders.Util,
+		    setting = document.getElementById('currentFolderBackground'),
 		    // store custom value, when going away from custom selection
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
+		util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom && choice != 'custom') {
 			QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background.custom', setting.value);  
 		}
@@ -645,13 +649,13 @@ QuickFolders.Options = {
 		switch (choice) {
 		  case 'default':
 				backgroundCombo.selectedIndex = this.BGCHOICE.default;
-				setting.value = (QuickFolders.Util.isCSSGradients)
+				setting.value = (util.isCSSGradients)
 							          ? 'linear-gradient(to top, #FFF 7%, #BDB9BD 88%, #EEE 100%)'
 							          : '-moz-linear-gradient(bottom, #FFF 7%, #BDB9BD 88%, #EEE 100%)';
 				break;
 		  case 'dark':
 				backgroundCombo.selectedIndex = this.BGCHOICE.dark;
-				setting.value = (QuickFolders.Util.isCSSGradients)
+				setting.value = (util.isCSSGradients)
 				                ? 'linear-gradient(rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
 												: '-moz-linear-gradient(bottom, rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
 				break;
@@ -673,7 +677,8 @@ QuickFolders.Options = {
 	},
 	
 	styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {
-    QuickFolders.Util.logDebugOptional('interface.buttonStyles', 'styleUpdate(' + elementName + ', ' + elementStyle + ', ' + styleValue + ')');
+    let util = QuickFolders.Util;
+    util.logDebugOptional('interface.buttonStyles', 'styleUpdate(' + elementName + ', ' + elementStyle + ', ' + styleValue + ')');
 		QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue);
 		if (label) {
 			switch(elementStyle) {
@@ -687,7 +692,7 @@ QuickFolders.Options = {
 			}
 		}
     let updateResult = QuickFolders.Interface.updateMainWindow(true);
-    QuickFolders.Util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
+    util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
 		return updateResult;
 	},
 
@@ -822,8 +827,9 @@ QuickFolders.Options = {
       if (isUpdatePanelColor) {
         let m = getElement('QuickFolders-Options-PalettePopup');
         if (m) {
-          if (!m.targetNode)
-            m.targetNode = getElement(QuickFolders.Interface.getPreviewButtonId(buttonState));
+          // if (!m.targetNode)
+          m.targetNode = (buttonState == 'colored') ? 
+                         null : getElement(QuickFolders.Interface.getPreviewButtonId(buttonState));
           // retrieve palette index
           let col = QuickFolders.Preferences.getIntPref('style.' + stylePref + '.paletteEntry');
           QuickFolders.Interface.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item!
@@ -842,7 +848,8 @@ QuickFolders.Options = {
 	showPalette: function showPalette(label, buttonState) {
 		let id = label ? label.id : label.toString(),
         paletteMenuId = this.getButtonMenuId(buttonState),
-		    paletteMenu = document.getElementById(paletteMenuId);
+		    paletteMenu = document.getElementById(paletteMenuId),
+        QI = QuickFolders.Interface;
 		QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
 		if (paletteMenu) {
 		  if (paletteMenu.value == "0") {
@@ -853,9 +860,9 @@ QuickFolders.Options = {
 			// Now style the palette with the correct palette class
 			let context = label.getAttribute('context'),
 			    menu = document.getElementById(context);
-			menu.className = 'QuickFolders-folder-popup' + QuickFolders.Interface.getPaletteClass(this.getButtonStatePrefId(buttonState));
+			menu.className = 'QuickFolders-folder-popup' + QI.getPaletteClass(this.getButtonStatePrefId(buttonState));
 		}
-		QuickFolders.Interface.showPalette(label);
+		QI.showPalette(label);
 	},
 
 	changeTextPreference: function changeTextPreference(txtBox) {
@@ -954,10 +961,11 @@ QuickFolders.Options = {
 	// Set Default Colors (partly from system colors) 
 	//   - will be converted to rgb values to avoid error messages on color pickers
 	setDefaultColors: function setDefaultColors() {
-		let highlightColor = QuickFolders.Util.getSystemColor("Highlight"),
-		    highlightTextColor = QuickFolders.Util.getSystemColor("HighlightText"),
-		    buttonfaceColor = QuickFolders.Util.getSystemColor("buttonface"),
-		    buttontextColor = QuickFolders.Util.getSystemColor("buttontext"),
+		let util = QuickFolders.Util,
+        highlightColor = util.getSystemColor("Highlight"),
+		    highlightTextColor = util.getSystemColor("HighlightText"),
+		    buttonfaceColor = util.getSystemColor("buttonface"),
+		    buttontextColor = util.getSystemColor("buttontext"),
         getElement = document.getElementById.bind(document);
 
 		getElement("activetab-colorpicker").color = highlightColor;
@@ -965,10 +973,10 @@ QuickFolders.Options = {
 		getElement("activetab-fontcolorpicker").color = highlightTextColor;
 		getElement("activetabs-label").style.color = highlightTextColor;
 
-		getElement("hover-colorpicker").color = QuickFolders.Util.getSystemColor("orange");
+		getElement("hover-colorpicker").color = util.getSystemColor("orange");
 		getElement("hover-fontcolorpicker").color = "#FFF";
 		getElement("hoveredtabs-label").style.color = "#FFF";
-		getElement("hoveredtabs-label").style.backgroundColor = QuickFolders.Util.getSystemColor("orange");
+		getElement("hoveredtabs-label").style.backgroundColor = util.getSystemColor("orange");
 
 		getElement("dragover-colorpicker").color = "#E93903";
 		getElement("dragover-fontcolorpicker").color = "#FFF";
@@ -986,8 +994,9 @@ QuickFolders.Options = {
 	sendMail: function sendMail(mailto) {
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService),
-        title = QuickFolders.Util.getBundleString('qf.prompt.contact.title', "Contact QuickFolders Support"),
-        text = QuickFolders.Util.getBundleString('qf.prompt.contact.subject', "Please enter a short subject line:"),
+        util = QuickFolders.Util,       
+        title = util.getBundleString('qf.prompt.contact.title', "Contact QuickFolders Support"),
+        text = util.getBundleString('qf.prompt.contact.subject', "Please enter a short subject line:"),
         input = {value: ""},
         check = {value: false},
         result = prompts.prompt(window, title, text, input, null, check); 
@@ -1097,10 +1106,11 @@ QuickFolders.Options = {
 	},
 
 	showVersionHistory: function showVersionHistory(label, ask) {
-		let pureVersion=QuickFolders.Util.VersionSanitized,
-		    sPrompt = QuickFolders.Util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
+		let util = QuickFolders.Util,
+        pureVersion=util.VersionSanitized,
+		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
-			QuickFolders.Util.openURL(null, "http://quickfolders.mozdev.org/version.html" + "#" + pureVersion);
+			util.openURL(null, "http://quickfolders.mozdev.org/version.html" + "#" + pureVersion);
 		}
 	},
 	

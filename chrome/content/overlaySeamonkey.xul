@@ -145,6 +145,7 @@
 				          oncommand="QuickFolders.Interface.findFolder(true,'findFolder');" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
+									collapsed="true"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-options"
 				          label="&qf.menuitem.quickfolders.options;"

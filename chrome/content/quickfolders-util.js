@@ -67,7 +67,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "3.15",
+	HARDCODED_EXTENSION_VERSION : "4.0.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -190,7 +190,6 @@ QuickFolders.Util = {
 					// make sure we are not in options window
 					if (!versionLabel)
 						util.FirstRun.init();
-
 				});
 			}
 
@@ -207,13 +206,15 @@ QuickFolders.Util = {
 	},
 
 	get Version() {
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
     let util = QuickFolders.Util;
 		//returns the current QF version number.
 		if (util.mExtensionVer)
 			return util.mExtensionVer;
 		let current = util.HARDCODED_EXTENSION_VERSION + util.HARDCODED_EXTENSION_TOKEN;
 
-		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
+		if (!Cc["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
 			util.VersionProxy(); // modern Mozilla builds.
 											  // these will set mExtensionVer (eventually)
@@ -222,10 +223,9 @@ QuickFolders.Util = {
 		else  // --- older code: extensions manager.
 		{
 			try {
-				if(Components.classes["@mozilla.org/extensions/manager;1"])
-				{
-					let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-						.getService(Components.interfaces.nsIExtensionManager);
+				if (Cc["@mozilla.org/extensions/manager;1"]) {
+					let gExtensionManager = Cc["@mozilla.org/extensions/manager;1"]
+						                        .getService(Ci.nsIExtensionManager);
 					current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
 				}
 				else {
@@ -233,7 +233,6 @@ QuickFolders.Util = {
 				}
 				util.mExtensionVer = current;
 				util.FirstRun.init();
-
 			}
 			catch(ex) {
 				current = current + "(?ex?)" // hardcoded, program this for Tb 3.3 later
@@ -393,9 +392,9 @@ QuickFolders.Util = {
 			} , 0);
 	} ,
 	
-	disableFeatureNotification: function disableFeatureNotification(featureName) {
-		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
-	} ,
+//	disableFeatureNotification: function disableFeatureNotification(featureName) {
+//		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
+//	} ,
   
 	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
 		// adds a new option to about:config, that isn't there by default
@@ -442,28 +441,40 @@ QuickFolders.Util = {
 			}, 200);
 	} ,
   
-	popupProFeature: function popupProFeature(featureName, text) {
+  hasPremiumLicense: function hasPremiumLicense(reset) {
     // early exit for Licensed copies
     if (QuickFolders.Licenser.isValidated) 
-      return;
-    let util = QuickFolders.Util;
-    QuickFolders.Licenser.validateLicense(
-      QuickFolders.Preferences.getCharPrefQF('LicenseKey'), 
-      QuickFolders.Licenser.MaxDigits);
+      return true;
+    // short circuit if we already validated:
+    if (!reset && QuickFolders.Licenser.wasValidityTested)
+      return QuickFolders.Licenser.isValidated;
+    let licenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey'),
+        util = QuickFolders.Util;
+    if (!licenseKey) 
+      return false; // short circuit if no license key!
+    if (!QuickFolders.Licenser.isValidated || reset) {
+      QuickFolders.Licenser.wasValidityTested = false;
+      QuickFolders.Licenser.validateLicense(
+        licenseKey, 
+        QuickFolders.Licenser.MaxDigits);
+    }
     if (QuickFolders.Licenser.isValidated) 
+      return true;
+    return false;
+  },
+  
+	popupProFeature: function popupProFeature(featureName, text) {
+		let notificationId,
+        util = QuickFolders.Util;
+    if (util.hasPremiumLicense(false))
       return;
-    
-		let notificationId;
     util.logDebugOptional("premium", "popupProFeature(" + featureName + ", " + text + ")");
 		// is notification disabled?
 		// check setting extensions.quickfolders.proNotify.<featureName>
-    let usage = QuickFolders.Preferences.getIntPref("proNotify." + featureName + ".usage");
+    let usage = QuickFolders.Preferences.getIntPref("premium." + featureName + ".usage");
     usage++;
-    QuickFolders.Preferences.setIntPref("proNotify." + featureName + ".usage", usage);
+    QuickFolders.Preferences.setIntPref("premium." + featureName + ".usage", usage);
     
-		//let countDown = QuickFolders.Preferences.getIntPref("proNotify." + featureName + ".countDown") - 1;
-		//QuickFolders.Preferences.setIntPref("proNotify." + featureName + ".countDown", countDown);
-
 		switch(util.Application) {
 			case 'Postbox': 
 				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
@@ -482,6 +493,8 @@ QuickFolders.Util = {
 		    theText=util.getBundleString("qf.notification.premium.text",
 				        "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently.");
 		theText = theText.replace ("{1}", "'" + featureName + "'");
+    if (text)
+      theText = theText + '  ' + text;
     try {
       // disable notification only on SeaMonkey.
       if (util.Application == 'SeaMonkey') {
@@ -526,19 +539,18 @@ QuickFolders.Util = {
 			}
 		}
 		else {
+      // code should not be called, on SM we would have a sliding notification for now
 			// fallback for systems that do not support notification (currently: SeaMonkey)
       util.logDebugOptional("premium", "fallback for systems without notification-box...");
 			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
 															.getService(Components.interfaces.nsIPromptService),
-			    check = {value: false},   // default the checkbox to true  
-		      dontShow = util.getBundleString("qf.notification.dontShowAgain",
-		  	             "Do not show this message again.") + ' [' + featureName + ']',
-			    result = prompts.alertCheck(null, title, theText, dontShow, check);
-			if (check.value==true)
-				util.disableFeatureNotification(featureName);
+			    // check = {value: false},   // default the checkbox to true  
+		      // dontShow = util.getBundleString("qf.notification.dontShowAgain",
+		  	  //            "Do not show this message again.") + ' [' + featureName + ']',
+			    result = prompts.alert(null, title, theText);
+			//if (check.value==true)
+			//	util.disableFeatureNotification(featureName);
 		}
-			
-	
 	} ,
 
 	getSystemColor: function getSystemColor(sColorString) {
@@ -1016,13 +1028,7 @@ QuickFolders.Util = {
 		return suggestion;
 	} ,
 
-	threadPaneOnDragStart: function threadPaneOnDragStart(aEvent) {
-		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
-			+ (aEvent.isThread ? ",thread=true" : "")
-			+ ")");
-		if (aEvent.originalTarget.localName != "toolbarbutton")
-			return;
-
+  getSelectedMsgUris: function getSelectedMsgUris() {
 		let messages;
 		if (typeof gFolderDisplay !='undefined') {
 			messages = gFolderDisplay.selectedMessageUris;
@@ -1033,8 +1039,19 @@ QuickFolders.Util = {
 			messages = QuickFolders.Util.pbGetSelectedMessageURIs();
 		}
 		if (!messages)
+			return null;
+    return messages;
+  },
+  
+	threadPaneOnDragStart: function threadPaneOnDragStart(aEvent) {
+		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
+			+ (aEvent.isThread ? ",thread=true" : "")
+			+ ")");
+		if (aEvent.originalTarget.localName != "toolbarbutton")
 			return;
-
+    
+    let messages = this.getSelectedMsgUris();
+    if (!messages) return;
 		let ios = Components.classes["@mozilla.org/network/io-service;1"]
 						  .getService(Components.interfaces.nsIIOService),
 		    newUF = (typeof Set !== 'undefined'),

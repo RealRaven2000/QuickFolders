@@ -32,6 +32,9 @@
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:active {
 	-moz-image-region: rect(32px, 16px, 48px, 0px);
 }
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:hover {
+	-moz-image-region: rect(48px, 16px, 64px, 0px);
+}
 
 #QuickFolders-quickMove > label {
   background-color: rgba(50, 50, 50, 0.3);

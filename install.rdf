@@ -7,8 +7,8 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:name="QuickFolders"
    em:id="quickfolders@curious.be"
-   em:version="3.15pre2" 
-   em:creator="Alexander Malfait"
+   em:version="4.0.2pre53"
+   em:creator="Axel Grude"
    em:description="Bookmark your favorite mail folders in Thunderbird."
    em:iconURL="chrome://quickfolders/skin/ico/quickfolders-Icon.png"
    em:icon64URL="chrome://quickfolders/skin/ico/QF64x64.png"
@@ -20,23 +20,24 @@
     <em:targetApplication RDF:resource="rdf:#$Vsomv2"/>
 
     <em:developer>Axel Grude</em:developer>
-    <em:developer>Alexander Malfait</em:developer>
+    <em:developer>Alexander Malfait: original extension</em:developer>
 
     <em:contributor>Jean-Bernard Marcon (general locale support)</em:contributor>
     <em:contributor>Richard Gibson (Fix for "Scrolling Menus On Drag" bug)</em:contributor>
     <em:contributor>Christopher White (Mac Pimping)</em:contributor>
-	<em:contributor>Avinash Kundaliya [:hardfire] (Mac Testing)</em:contributor>
+		<em:contributor>Avinash Kundaliya [:hardfire] (Mac Testing)</em:contributor>
     <em:contributor>Everaldo (Crystal Icons, 2003)</em:contributor>
     <em:contributor>Yusuke Kamiyamane (Fugue Icons)[http://p.yusukekamiyamane.com]</em:contributor>
+    <em:contributor>Leszek Zyczkowski (Dialog Restyling, Mac QA)</em:contributor>
 
-    <em:translator>Jordi Benaiges (ca)</em:translator>
+		<em:translator>Jordi Benaiges (ca)</em:translator>
     <em:translator>Axel Grude (de-DE)</em:translator>
     <em:translator>Angel F. Outón (es-MX)</em:translator>
     <em:translator>Kozák Csaba [WonderCsabo] (hu-HU)</em:translator>
     <em:translator>Leopoldo Saggin (it-IT)</em:translator>
     <em:translator>Jojaba - French BabelZilla team (fr-FR)</em:translator>
     <em:translator>Alex Malfait (nl-NL)</em:translator>
-    <em:translator>hipogrys [babelzilla.org] (pl)</em:translator>
+    <em:translator>hipogrys [babelzilla.org], Leszek Zyczkowski (pl)</em:translator>
     <em:translator>Masahiko Imanaka (ja-JP)</em:translator>
     <em:translator>Marcelo Ghelman [ghelman.net] (pt-BR)</em:translator>
     <em:translator>Anton Pinsky (ru-RU)</em:translator>
@@ -51,7 +52,7 @@
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
    em:minVersion="19.0"
-   em:maxVersion="28.*"/>
+   em:maxVersion="36.0"/>
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
@@ -61,7 +62,7 @@
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
    em:minVersion="2.0"
-   em:maxVersion="2.26.*" />
+   em:maxVersion="2.36" />
    
 
   

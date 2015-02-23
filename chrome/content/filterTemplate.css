@@ -34,3 +34,19 @@ hbox.myWizard {
 #qf-whatToDo {
 	margin-bottom: 3em;
 }
+.link {
+  cursor: pointer;
+	text-decoration: underline;
+}
+#getQuickFilters {
+	background-color: rgb(130, 10, 10);
+  color: white;	
+  max-width: 180px;
+	min-height: 3em;
+	padding: 0.8em;
+}
+#quickFiltersLink {
+  padding: 0.8em;
+	border: 2px solid rgb(130, 10, 10);
+}
+

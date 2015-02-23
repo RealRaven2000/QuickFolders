@@ -32,8 +32,7 @@ QuickFolders.FilterWorker = {
 	* 
 	* @param {bool} start or stop filter mode
 	*/  
-	toggle_FilterMode: function toggle_FilterMode(active)
-	{
+	toggle_FilterMode: function toggle_FilterMode(active) {
     function removeOldNotification(box, active, id) {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
@@ -552,12 +551,16 @@ QuickFolders.FilterWorker = {
 
 	createFilterAsync: function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow)
 	{
+    let util = QuickFolders.Util;
+    util.logDebugOptional ("filters", "createFilterAsync()");
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
+      util.logDebugOptional ("filters", "redirecting to quickFilters createFilterAsync()...");
 			QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
 			return;
 		}
 		
 		let delay = isSlow ? 1200 : 300; // wait for the filter dialog to be updated with the new folder if drag to new
+    util.logDebugOptional ("filters", "Preparing filter creation with delay: " + delay + "ms...");
 		window.setTimeout(function() {
 			let filtered = QuickFolders.FilterWorker.createFilter(sourceFolder, targetFolder, messageList, isCopy);
 		}, delay);
@@ -592,8 +595,23 @@ QuickFolders.FilterWorker = {
 	
 	loadTemplate : function loadTemplate() {
 		// initialize list and preselect last chosen item!
-		let element = document.getElementById('qf-filter-templates');
+		let element = document.getElementById('qf-filter-templates'),
+        util = QuickFolders.Util;
 		element.value = this.getCurrentFilterTemplate();
+    try {
+      let loc = QuickFolders.Preferences.service.getCharPref("general.useragent.locale");
+      if (loc) {
+        util.logDebug('Locale found: ' + loc);
+        if (loc.indexOf('en')!=0) {
+          // hide quickFilters hint for non-english locales for now:
+          document.getElementById('quickFiltersPromoBox').collapsed = true;
+        }
+      }
+    }
+    catch (ex) {
+      util.logException("QuickFolders.FilterWorker.loadTemplate()", e);
+    }
+    
 	} ,
 	
 	getCurrentFilterTemplate : function getCurrentFilterTemplate() {
@@ -632,7 +650,12 @@ QuickFolders.FilterWorker = {
       // say 1 line of 20px per 50 characters
       window.height += (desc.textContent.length * 20) / 50;
     }
+  },
+  
+  showQuickFilters: function showQuickFilters(event) {
+    QuickFolders.Util.openURL(event,'https://addons.mozilla.org/thunderbird/addon/quickfilters');
   }
+  
 
 };
 

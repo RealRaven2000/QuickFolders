@@ -44,7 +44,7 @@ QuickFolders.FilterList = {
 		    list = this.getFilterListElement();
 		try {
 			if (this.getSelectedCount(list) != 1) {
-				alert("Exactly one filter entry must be highlighted!");
+				QuickFolders.Util.alert("Exactly one filter entry must be highlighted!");
 				return;
 			}
 			let activeFilter = this.getSelectedFilterAt(list, 0); 
@@ -74,7 +74,7 @@ QuickFolders.FilterList = {
 		    list =this.getFilterListElement();
 		try {
 			if (this.getSelectedCount(list) != 1) {
-				alert("Exactly one filter entry must be highlighted!");
+				QuickFolders.Util.alert("Exactly one filter entry must be highlighted!");
 				return;
 			}
 			let activeFilter = this.getSelectedFilterAt(list, 0); 
@@ -208,7 +208,8 @@ QuickFolders.FilterList = {
 		    buttonBottom = document.getElementById("qf-reorderButtonBottom"),
 		    down = document.getElementById("reorderDownButton"),
 		    searchBox = document.getElementById("qf-Filter"),
-		    countBox = document.getElementById("qf-FilterCount");
+		    countBox = document.getElementById("qf-FilterCount"),
+        filterHeader;
 		if (nativeSearchBox) {
 			// once [Bug 450302] has landed, we do not need to add this functionality ourselves :)
 			removeElement(buttonTop);
@@ -275,8 +276,8 @@ QuickFolders.FilterList = {
 			
 			// create a container that holds list label and count...
 			let rowAbove = filterList.parentNode.parentNode.previousSibling,
-			    filterHeader = rowAbove.firstChild,
 			    hbox = document.createElement('hbox');
+      filterHeader = rowAbove.firstChild;
 			filterHeader.id='filterHeader';
 			rowAbove.appendChild(hbox);
 			hbox.appendChild(filterHeader);
@@ -308,8 +309,8 @@ QuickFolders.FilterList = {
 			searchBox.collapsed = true;
 			
 			filterHeader = document.getElementById("filterHeader");
-			let row=filterHeader.parentNode;
-			hbox = document.createElement('hbox');
+			let row=filterHeader.parentNode,
+			    hbox = document.createElement('hbox');
 			row.appendChild(hbox);
 			
 			hbox.appendChild(countBox);

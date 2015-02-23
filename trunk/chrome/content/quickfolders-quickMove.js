@@ -128,29 +128,30 @@ QuickFolders.quickMove = {
   },
   
   remove: function remove(URI)  {
-    let i = QuickFolders.quickMoveUris.indexOf(URI);
+    let i = QuickFolders.quickMoveUris.indexOf(URI),
+        QI = QuickFolders.Interface;
     if (i >= 0) {
       QuickFolders.quickMoveUris.splice(i, 1);
     }
     if (!QuickFolders.quickMove.hasMails) {
-      qfInterface.isMoveActive = false;
-      qfInterface.toggleMoveMode(false);
+      QI.isMoveActive = false;
+      QI.toggleMoveMode(false);
     }
   },
   
   update: function update() {
-    let isActive = QuickFolders.quickMove.hasMails; // ? true : false;
-    let qfInterface = QuickFolders.Interface;
-    qfInterface.isMoveActive = isActive; 
+    let isActive = QuickFolders.quickMove.hasMails, // ? true : false;
+        QI = QuickFolders.Interface;
+    QI.isMoveActive = isActive; 
     QuickFolders.Util.logDebug('QuickFolders.quickMove.update()\n' + 'isActive = ' + isActive);
     // indicate number of messages on the button?
-    qfInterface.QuickMoveButton.label = 
+    QI.QuickMoveButton.label = 
       isActive ?
       '(' + QuickFolders.quickMoveUris.length +')' : '';
     // toggle quickMove searchbox visible
     QuickFolders.Util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
-    qfInterface.updateFindBoxMenus(isActive);
-    qfInterface.toggleMoveMode(isActive);
-    qfInterface.findFolder(isActive, isActive ? 'quickMove' : null);
+    QI.updateFindBoxMenus(isActive);
+    QI.toggleMoveMode(isActive);
+    QI.findFolder(isActive, isActive ? 'quickMove' : null);
   }  
 }; // quickMove

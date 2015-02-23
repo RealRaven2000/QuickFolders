@@ -106,12 +106,20 @@ QuickFolders.Preferences = {
 		return this.getCharPrefQF("rebuildShortcutKey");
 	} ,
 	
-	get isFindFolderShortcut() {
-		return this.getBoolPref("useFindFolderShortcut");
+	get isQuickJumpShortcut() {
+		return this.getBoolPref("quickJump.useHotkey");
 	} ,
 	
-	get FindFolderShortcutKey() {
-		return this.getCharPrefQF("findFolderShortcutKey");
+	get QuickJumpShortcutKey() {
+		return this.getCharPrefQF("quickJump.Hotkey");
+	} ,
+
+	get isQuickMoveShortcut() {
+		return this.getBoolPref("quickMove.useHotkey");
+	} ,
+	
+	get QuickMoveShortcutKey() {
+		return this.getCharPrefQF("quickMove.Hotkey");
 	} ,
 
 	get isUseKeyboardShortcutsCTRL() {
@@ -241,9 +249,10 @@ QuickFolders.Preferences = {
 	// updates all toxic preferences to skinning engine of v 2.7
 	// returns true if upgraded from a previous skinning engine
 	tidyUpBadPreferences: function tidyUpBadPreferences() {
-		let isUpgradeSkinning = false;
+		let isUpgradeSkinning = false,
+        util = QuickFolders.Util;
 		try {
-			QuickFolders.Util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
+			util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
 			// get rid of preferences that do not start with "preferences." and replace with newer versions.
 			if (this.existsCharPref('QuickFolders.Toolbar.Style.background-color')) {
 				let replacePref = function(id1, id2) {
@@ -255,7 +264,7 @@ QuickFolders.Preferences = {
 						sValue = service.getCharPref(origPref);
 						let newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
 						service.setCharPref(newPref, sValue);
-						QuickFolders.Util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
+						util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
 					}
 					// delete bad preference
 					try { service.deleteBranch(origPref) } catch (ex) {;};
@@ -292,11 +301,11 @@ QuickFolders.Preferences = {
 					this.service.deleteBranch("extensions.quickfolders.showNativeTabStyle");
 					isUpgradeSkinning = true;
 				}
-				catch (ex) { alert(ex);};
+				catch (ex) { util.alert(ex);};
 			}
 		}
 		catch (ex) {
-			QuickFolders.Util.logException("tidyUpBadPreferences",ex) ;
+			util.logException("tidyUpBadPreferences",ex) ;
 			return false;
 		};
 		return isUpgradeSkinning;

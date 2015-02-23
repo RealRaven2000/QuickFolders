@@ -85,9 +85,16 @@
 	list-style-image: url("chrome://quickfolders/skin/ico/chk-history.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
-#chkQuickMove .checkbox-icon, #chkQuickMove .checkbox-icon { 
+#chkQuickMove .checkbox-icon, 
+#chkQuickMoveHotkey .checkbox-icon
+{ 
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+#chkQuickJumpHotkey .checkbox-icon
+{ 
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	-moz-image-region: rect(48px, 16px, 64px, 0px);
 }
 
 hbox > textbox:not([multiline="true"]) {
@@ -195,7 +202,7 @@ label.text-link, label.text-link[visited="true"] {
   max-width: 650px;
 }
 #quickHelpTextPane {
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
 	min-height: 21em;
 }
 
@@ -268,6 +275,10 @@ hbox.quickhelp-dbg {
 {
   font-family: cambria, Georgia, serif;
   font-size: 10.2pt;
+}
+
+.niceFont description {
+	/* text-shadow: 0px 0px 2px rgb(250, 250, 255), 0px 0px 10px rgb(250, 250, 255), 0px 0px 6px rgb(250, 250, 255); */
 }
 
 #validationResults description {

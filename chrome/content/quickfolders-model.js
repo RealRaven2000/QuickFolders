@@ -45,7 +45,10 @@ QuickFolders.Model = {
     if(!entry) {
       let folder = this.getMsgFolderFromUri(uri, false),
           iconURI = null;
-      if (gFolderTreeView.supportsIcons) {
+      // SeaMonkey: GetFolderTree().view
+      if (typeof gFilterTreeView !== "undefined" 
+          && 
+          gFolderTreeView.supportsIcons) {
         iconURI = unpackURI(folder.getStringProperty("iconURL"));
       }
 
@@ -146,7 +149,7 @@ QuickFolders.Model = {
     
     if (fileSpec)  {
       entry.icon = fileSpec; 
-      if (button)
+      if (button) 
         QuickFolders.Interface.applyIcon(button, entry.icon);
       if (menuItem)
         menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon

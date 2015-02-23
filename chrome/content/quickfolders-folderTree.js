@@ -24,14 +24,14 @@ QuickFolders.FolderTree = {
       treeView.getCellProperties = function(row, col) {
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
-          let folder = treeView.getFolderForIndex(row),
-              folderIcon;
+          let folder = treeView.getFolderForIndex(row);
           if (!treeView.qfIconsEnabled) {
             return props;
           }
           
           try {
-            if ( folderIcon = folder.getStringProperty("folderIcon") ) {
+            let folderIcon = folder.getStringProperty("folderIcon");
+            if (folderIcon) {
               // save folder icon selector
               props += " " + folderIcon;
             }
@@ -103,7 +103,7 @@ QuickFolders.FolderTree = {
 	loadDictionary: function() {
 	  // https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Dict.jsm
 		QuickFolders.Util.logDebugOptional('folderTree', 'QuickFolders.FolderTree.loadDictionary()');
-		QuickFolders.mailFolderTree
+		// QuickFolders.mailFolderTree
 
     this.dictionary = new Dict(); // empty dictionary		
 		let txtList = 'Folders without Icon\n',
@@ -155,17 +155,17 @@ QuickFolders.FolderTree = {
 	} ,
 	
 	debugDictionary: function(withAlert) {
-	  if(!this.dictionary) {
-			QuickFolders.Util.logDebug('no FolderTree.dictionary');
+    let util = QuickFolders.Util;
+	  if (!this.dictionary) {
+			util.logDebug('no FolderTree.dictionary');
 			return;
 		}
 	  let txt = "QuickFolders.FolderTree - Dictionary Contents";
 		for (let [key, value]  in this.dictionary.items) {
 		  txt += '\n' + key + ': ' + value;
 		}
-		// alert(txt);
-	  QuickFolders.Util.logDebug(txt);
-		if (withAlert) alert(txt);
+	  util.logDebugOptional('folderTree', txt);
+		if (withAlert) util.alert(txt);
 	} ,
 	
 	addItem: function(key, uri) {
@@ -202,7 +202,9 @@ QuickFolders.FolderTree = {
 		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles'),
 		    names = folder.URI.split("/"),
 		    serverKey = folder.server.key,
-		    GUID = serverKey + '_' + names[names.length-2] + '_' + names[names.length-1];
+		    GUID = serverKey + '_' + names[names.length-2] + '_' + names[names.length-1],
+        // always update current folder toolbar icon?
+        currentFolderTab = QuickFolders.Interface.CurrentFolderTab;
 		GUID = GUID.replace(/[\s\,\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
 		// GUID = GUID.replace(/\_/g,'');// removed replacement with _; instead replace with ''
 		let propName = "folderIcon_" + GUID, // removed _
@@ -210,7 +212,7 @@ QuickFolders.FolderTree = {
 		try {
 		  if (iconURI) {
 				fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
-				QuickFolders.Util.logDebug("Model.setFolderTreeIcon(" + folder.prettyName + "," + fileURL.path + ")");
+				QuickFolders.Util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + fileURL.path + ")");
 				fileSpec = fileURL.asciiSpec;
 				folder.setStringProperty("folderIcon", propName);
 				let cssUri = 'url(' + fileSpec + ')';
@@ -224,25 +226,33 @@ QuickFolders.FolderTree = {
 				folder.setStringProperty("iconURL", cssUri);
 				styleEngine.setElementStyle(ss, selector, 'list-style-image', cssUri); 
 				styleEngine.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
-				this.addItem(propName, cssUri);
+        if (QuickFolders.FolderTree.dictionary)
+          this.addItem(propName, cssUri);
 			}
 			else {
-			  QuickFolders.Util.logDebug("Model.setFolderTreeIcon(" + folder.prettyName + ", empty)");
+			  QuickFolders.Util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
 				QuickFolders.Util.logDebugOptional('folderTree', 'REMOVING:\n' + selector + ' {\n' + 'list-style-image\n}');
 				styleEngine.removeElementStyle(ss, 'treechildren::-moz-tree-image(folderNameCol,' + propName + ')','list-style-image');
 			  folder.setStringProperty("folderIcon", "noIcon");
 				folder.setStringProperty("iconURL", "");
 			  folder.setForcePropertyEmpty("folderIcon", false); // remove property
-				this.removeItem(propName);
+        if (QuickFolders.FolderTree.dictionary)
+          this.removeItem(propName);
 			}
 	    this.storeDictionary();
 			this.debugDictionary(); // test dictionary, just for now
 			this.forceRedraw();
 			QuickFolders.Interface.updateFolders(false, true);  // forces rebuilding subfolder menus
+      
 		}
 		catch (ex) {
 		  QuickFolders.Util.logException('setFolderTreeIcon',ex);
 		}
+    finally {
+      if (currentFolderTab && currentFolderTab.folder && currentFolderTab.folder.URI == folder.URI) {
+        QuickFolders.Interface.initCurrentFolderTab(currentFolderTab, currentFolderTab.folder);
+      }
+    }
 	}
 } ;
 

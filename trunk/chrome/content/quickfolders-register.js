@@ -17,6 +17,7 @@ QuickFolders.Licenser = {
   DecryptedMail: '',
   DecryptedDate: '',
   AllowSecondaryMails: false,
+  wasValidityTested: false, // save time do not validate again and again
   get isValidated() {
     return (this.ValidationStatus == this.ELicenseState.Valid);
   },
@@ -30,6 +31,20 @@ QuickFolders.Licenser = {
     MailNotConfigured: 4,
     MailDifferent: 5,
     Empty: 6
+  },
+  
+  licenseDescription: function licenseDescription(status) {
+    const ELS = this.ELicenseState;
+    switch(status) {
+      case ELS.NotValidated: return 'Not Validated';
+      case ELS.Valid: return 'Valid';
+      case ELS.Invalid: return 'Invalid';
+      case ELS.Expired: return 'Invalid';
+      case ELS.MailNotConfigured: return 'Mail Not Configured';
+      case ELS.MailDifferent: return 'Mail Different';
+      case ELS.Empty: return 'Empty';
+      default: return 'Unknown Status';
+    }
   },
   
   showDialog: function showDialog(featureName) {
@@ -118,10 +133,10 @@ QuickFolders.Licenser = {
   
   selectIdentity: function selectIdentity(element) {
     // get selectedItem attributes
-    let it = element.selectedItem;
-    let fName = this.sanitizeName(it.getAttribute('fullName'));
-    let email = it.getAttribute('value');
-    let names = fName.split(' ');
+    let it = element.selectedItem,
+        fName = this.sanitizeName(it.getAttribute('fullName')),
+        email = it.getAttribute('value'),
+        names = fName.split(' ');
     document.getElementById('firstName').value = names[0];
     document.getElementById('lastName').value = names[names.length-1];
     document.getElementById('email').value = email;
@@ -134,10 +149,10 @@ QuickFolders.Licenser = {
     const shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
     // view product detail
     const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders";
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let email = document.getElementById('email').value;
-    let util = QuickFolders.Util; 
+    let firstName = document.getElementById('firstName').value,
+        lastName = document.getElementById('lastName').value,
+        email = document.getElementById('email').value,
+        util = QuickFolders.Util; 
     
     url = shortOrder 
         + "?contact_fname=" + firstName 
@@ -155,8 +170,8 @@ QuickFolders.Licenser = {
 
    /* obsolete form submission from code */
   postForm  : function postForm_obsolete(util) {
-    let url ="http://sites.fastspring.com/quickfolders/product/quickfolders?action=order";
-    let oReq;
+    let url ="http://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
+        oReq;
     
     if (util.PlatformVersion >=16.0) {
       const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1", "nsIXMLHttpRequest");    
@@ -208,23 +223,31 @@ QuickFolders.Licenser = {
   },
   
   validateLicense: function validate(LicenseKey, maxDigits) {
+    function logResult(parent) {
+      util.logDebug ('validateLicense()\n returns ' 
+                     + parent.licenseDescription(parent.ValidationStatus)
+                     + '   [' + parent.ValidationStatus + ']');
+    }
     // extract encrypted portion after ;
     const ELS = this.ELicenseState;
+    let util = QuickFolders.Util;
     if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;
+      logResult(this);
       return [this.ValidationStatus, ''];
     }
-    let encrypted = this.getCrypto(LicenseKey);
-    let clearTextEmail = this.getMail(LicenseKey);
-    let clearTextDate = this.getDate(LicenseKey);
-    let RealLicense = '';
+    let encrypted = this.getCrypto(LicenseKey),
+        clearTextEmail = this.getMail(LicenseKey),
+        clearTextDate = this.getDate(LicenseKey),
+        RealLicense = '';
     if (!encrypted) {
       this.ValidationStatus = ELS.Invalid;
+      logResult(this);
       return [this.ValidationStatus, ''];
     }
     // RSAKeyPair(encryptionExponent, decryptionExponent, modulus)
     QuickFolders.RSA.initialise(maxDigits);
-    QuickFolders.Util.logDebug ('Creating RSA key + decrypting');
+    util.logDebug ('Creating RSA key + decrypting');
     // we do not pass encryptionComponent as we don't need it for decryption
     let key = new QuickFolders.RSA.RSAKeyPair("", this.RSA_decryption, this.RSA_modulus, this.RSA_keylength);
     // decrypt
@@ -233,13 +256,15 @@ QuickFolders.Licenser = {
     this.DecryptedDate = '';
     if (encrypted) try {
       RealLicense = QuickFolders.RSA.decryptedString(key, encrypted);
-      QuickFolders.Util.logDebug ('Decryption Complete : decrypted string = ' + RealLicense);
+      this.wasValidityTested = true;
+      util.logDebug ('Decryption Complete : decrypted string = ' + RealLicense);
     }
     catch (ex) {
-      QuickFolders.Util.logException('RSA Decryption failed: ', ex);
+      util.logException('RSA Decryption failed: ', ex);
     }
     if (!RealLicense) {
       this.ValidationStatus = ELS.Invalid;
+      logResult(this);
       return [this.ValidationStatus, ''];
     }
     else {
@@ -250,19 +275,22 @@ QuickFolders.Licenser = {
       if (!this.DecryptedDate.match(regEx)) {
         this.DecryptedDate = '';
         this.ValidationStatus = ELS.Invalid;
+        logResult(this);
         return [this.ValidationStatus, RealLicense];
       }
     }
     if (clearTextEmail.toLocaleLowerCase() != this.DecryptedMail.toLocaleLowerCase()) {
       this.ValidationStatus = ELS.MailDifferent;
+      logResult(this);
       return [this.ValidationStatus, RealLicense];
     }
     // ******* CHECK LICENSE EXPIRY  ********
     // get current date
-    let today = new Date();
-    let dateString = today.toISOString().substr(0, 10);
+    let today = new Date(),
+        dateString = today.toISOString().substr(0, 10);
     if (this.DecryptedDate < dateString) {
       this.ValidationStatus = ELS.Expired;
+      logResult(this);
       return [this.ValidationStatus, RealLicense];
     }
     // ******* MATCH MAIL ACCOUNT  ********
@@ -303,6 +331,7 @@ QuickFolders.Licenser = {
     else {
       this.ValidationStatus = ELS.Valid;
     }
+    logResult(this);
     return [this.ValidationStatus, RealLicense];
   },
   

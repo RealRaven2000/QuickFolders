@@ -382,9 +382,13 @@ var QuickFolders = {
   quickMoveUris: [],
 
 	// helper function to do init from options dialog!
-	initDocAndWindow: function initDocAndWindow() {
+	initDocAndWindow: function initDocAndWindow(win) {
     let util = QuickFolders.Util,
-		    mail3PaneWindow = util.getMail3PaneWindow();
+		    mail3PaneWindow;
+    if(win && win.document && win.document.documentURI.indexOf('/messenger.xul')>0)
+      mail3PaneWindow = win;
+    else
+      mail3PaneWindow = util.getMail3PaneWindow();
 
 		if (mail3PaneWindow) {
 			QuickFolders.doc = mail3PaneWindow.document;
@@ -402,11 +406,11 @@ var QuickFolders = {
 		QuickFolders.Interface.prepareCurrentFolderIcons();
 	},
 
-	initDelayed: function initDelayed() {
+	initDelayed: function initDelayed(win) {
 	  if (this.initDone) return;
 	  let sWinLocation,
 	      nDelay = QuickFolders.Preferences.getIntPref('initDelay');
-	  QuickFolders.initDocAndWindow();
+	  QuickFolders.initDocAndWindow(win);
 	  QuickFolders.Util.VersionProxy(); // initialize the version number using the AddonManager
 	  nDelay = nDelay? nDelay: 750;
 	  sWinLocation = new String(window.location);
@@ -810,7 +814,7 @@ var QuickFolders = {
 				let targetFolder = menuItem.folder.QueryInterface(Components.interfaces.nsIMsgFolder);
 
 				if (!targetFolder.canCreateSubfolders) {
-					alert("You can not create a subfolder in " + targetFolder.prettiestName);
+					util.alert("You can not create a subfolder in " + targetFolder.prettiestName);
 					return false;
 				}
 
@@ -1217,18 +1221,17 @@ var QuickFolders = {
 						let dataObj = new Object(),
 						    flavor = new Object(),
 						    len = new Object();
-						if (debugDragging ) alert('trans.getAnyTransferData ... '+(i+1));
+						if (debugDragging ) util.alert('trans.getAnyTransferData ... '+(i+1));
 						try {
 							trans.getAnyTransferData(flavor, dataObj, len);
 
 							if (flavor.value === "text/x-moz-message" && dataObj) {
 
 								dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
-								if (debugDragging ) alert('getting data from dataObj...');
+								if (debugDragging ) util.alert('getting data from dataObj...');
 								let messageUri = dataObj.data.substring(0, len.value);
 
-								if (debugDragging ) alert('messageUris.push...');
-								if (debugDragging ) alert('messageUri=' + messageUri) ;
+								if (debugDragging ) util.alert('messageUris.push: messageUri=' + messageUri) ;
 								messageUris.push(messageUri);
 							}
 						}
@@ -1254,8 +1257,7 @@ var QuickFolders = {
 						QuickFolders.Util.logDebugOptional("dnd", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
 						if(messageUris.length > 0) {
 							let sourceFolder;
-							if (QuickFolders.FilterWorker.FilterMode)
-							{ 
+							if (QuickFolders.FilterWorker.FilterMode) { 
 							  lastAction = "Try to get sourceFolder";
 								// note: get CurrentFolder fails when we are in a search results window!!
 								// [Bug 25204] => fixed in 3.10
@@ -1275,8 +1277,8 @@ var QuickFolders = {
 								dragSession.dragAction === Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
 							);
 							if (QuickFolders.FilterWorker.FilterMode) {
-							  lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
-								QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
+                lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
+                QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
 							}
 						}
 
@@ -1349,7 +1351,7 @@ var QuickFolders = {
 	addLoadEventListener: function addLoadEventListener() {
 		// avoid registering this event listener twice!
 		if (!this.loadListen) {
-			window.addEventListener("load", function() { QuickFolders.initDelayed(); }, true);
+			window.addEventListener("load", function() { QuickFolders.initDelayed(window); }, true);
 		}
 		this.loadListen=true;
 	},
@@ -1744,7 +1746,7 @@ QuickFolders.FolderListener = {
 		try {
 			if (!QuickFolders)
 				return;
-			let f=item.QueryInterface(Components.interfaces.nsIMsgFolder);
+			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder);
 			QuickFolders.FolderListener.lastAdded = f;
 		}
 		catch(e) { };
@@ -1754,28 +1756,33 @@ QuickFolders.FolderListener = {
 		try {
 			if (!QuickFolders)
 				return;
-			QuickFolders.Util.logDebugOptional("listeners.folder", "onItemRemoved");
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder),
 			    fromURI = f.URI,
-			    toURI = QuickFolders.FolderListener.lastAdded ? QuickFolders.FolderListener.lastAdded.URI : "";
+			    toURI = QuickFolders.FolderListener.lastAdded ? QuickFolders.FolderListener.lastAdded.URI : "",
+          util = QuickFolders.Util,
+          logDebug = util.logDebug.bind(util),
+          logDebugOptional = util.logDebugOptional.bind(util),
+          logToConsole = util.logToConsole.bind(util);
+			logDebugOptional("listeners.folder", "onItemRemoved");
+          
 			QuickFolders.FolderListener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
 			if (fromURI !== toURI && QuickFolders.Model.getFolderEntry(fromURI)) {
 				if (QuickFolders.FolderListener.lastAdded && (f.name === QuickFolders.FolderListener.lastAdded.name)) {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
-					QuickFolders.Util.logDebugOptional("folders","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
+					logDebugOptional("folders","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
 					if (toURI && QuickFolders.Model.moveFolderURI(fromURI, toURI)) {
-						QuickFolders.Util.logDebug ("Successfully updated URI of Tab " + f.name);
+						logDebug ("Successfully updated URI of Tab " + f.name);
 						QuickFolders.Interface.updateFolders(true, true);
 					}
 					else {
 						let s = "Failed to update URI of tab: " + f.name + " please remove it manually and add to QuickFolders bar";
-						QuickFolders.Util.logToConsole (s);
-						alert(s);
+						logToConsole (s);
+						util.alert(s);
 					}
 				}
 			}
-			QuickFolders.FolderListener.lastAdded=null;
+			QuickFolders.FolderListener.lastAdded = null;
 		}
 		catch(e) { };
 	},
@@ -1794,12 +1801,13 @@ QuickFolders.FolderListener = {
 		try {
 			if (typeof QuickFolders === 'undefined')
 				return;
-			let prop = property ? property.toString() : '';
-			QuickFolders.Util.logDebugOptional("listeners.folder", "OnItemIntPropertyChanged - property = " + prop);
+			let prop = property ? property.toString() : '',
+          log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
+			log("listeners.folder", "OnItemIntPropertyChanged - property = " + prop);
 			if (prop === "TotalUnreadMessages" ||
 				(QuickFolders.Preferences.isShowTotalCount 
 					&& prop === "TotalMessages")) {
-					QuickFolders.Interface.setFolderUpdateTimer();
+					QuickFolders.Interface.setFolderUpdateTimer(item);
 					let cF = QuickFolders.Interface.CurrentFolderTab;
 					if (cF && cF.folder) {
 					  QuickFolders.Interface.initCurrentFolderTab(cF, cF.folder);
@@ -1859,18 +1867,21 @@ QuickFolders.FolderListener = {
 	OnItemUnicharPropertyChanged: function fldListen_OnItemUnicharPropertyChanged(item, property, oldValue, newValue) {
 		// var x=prop;
 	},
-	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {},
+	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {
+    // NOP
+  },
 	OnItemEvent: function fldListen_OnItemEvent(item, event) {
 		let eString = event.toString();
 		try {
 			if (!QuickFolders || !QuickFolders.Util)
 				return;
-      let util = QuickFolders.Util;
-			util.logDebugOptional("listeners.folder", "OnItemEvent - evt = " + eString);
+      let util = QuickFolders.Util,
+          log = util.logDebugOptional.bind(util);
+			log("listeners.folder", "OnItemEvent - evt = " + eString);
 			switch (eString) {
 				case "FolderLoaded": // DeleteOrMoveMsgCompleted
 					try {
-            util.logDebugOptional("events","event: " + eString + " item:" + item.prettyName);
+            log("events","event: " + eString + " item:" + item.prettyName);
 						if (QuickFolders.Interface)
 							QuickFolders.Interface.onTabSelected();
 					}
@@ -1878,23 +1889,25 @@ QuickFolders.FolderListener = {
 					break;
 				case "RenameCompleted":
 					// item.URI;
-          util.logDebugOptional("events","event: " + eString);
+          log("events","event: " + eString);
 					if (QuickFolders && QuickFolders.FolderListener.lastRemoved) {
 						QuickFolders.Model.moveFolderURI(QuickFolders.FolderListener.lastRemoved.URI, item.URI);
 					}
 					break;
         default:
-          util.logDebugOptional("events","event: " + eString);
+          log("events","event: " + eString);
           break;
 			}
 		}
 		catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + eString + "}:\n" + e)};
 	},
 	OnFolderLoaded: function fldListen_OnFolderLoaded(aFolder) { 
-		QuickFolders.Util.logDebugOptional("listeners.folder", "OnFolderLoaded - folder = " + aFolder.prettyName);
+    let log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
+		log("listeners.folder", "OnFolderLoaded - folder = " + aFolder.prettyName);
 	},
 	OnDeleteOrMoveMessagesCompleted: function fldListen_OnDeleteOrMoveMessagesCompleted(aFolder) {
-		QuickFolders.Util.logDebugOptional("listeners.folder", "OnDeleteOrMoveMessagesCompleted - folder = " + aFolder.prettyName);
+    let log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
+		log("listeners.folder", "OnDeleteOrMoveMessagesCompleted - folder = " + aFolder.prettyName);
 	}
 }
 

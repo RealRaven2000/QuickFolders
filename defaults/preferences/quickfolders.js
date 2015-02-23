@@ -25,8 +25,10 @@ pref("extensions.quickfolders.enableMenuAlphaSorting", false);
 pref("extensions.quickfolders.markAsReadOnMove", false);
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
-pref("extensions.quickfolders.useFindFolderShortcut", true);
-pref("extensions.quickfolders.findFolderShortcutKey", 'J');
+pref("extensions.quickfolders.quickJump.useHotkey", true);
+pref("extensions.quickfolders.quickJump.Hotkey", 'J');
+pref("extensions.quickfolders.quickMove.useHotkey", true);
+pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
@@ -149,6 +151,7 @@ pref("extensions.quickfolders.recentfolders.sortAlphabetical", false);
 pref("extensions.quickfolders.recentfolders.color", 10);
 pref("extensions.quickfolders.recentfolders.showIcon", true);
 pref("extensions.quickfolders.recentfolders.folderPathDetail", 1);
+pref("extensions.quickfolders.recentfolders.maxPathItems", 3);
 // new Folder Optimization
 pref("extensions.quickfolders.update.disableMinimal", false);
 // Tab Context Menu items
@@ -177,15 +180,12 @@ pref("extensions.quickfolders.filters.currentTemplate", "from");
 pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
-pref("extensions.quickfolders.proNotify.findFolder", true);
-pref("extensions.quickfolders.proNotify.lineBreaks", true);
-pref("extensions.quickfolders.proNotify.tabSeparator", true);
-pref("extensions.quickfolders.proNotify.quickMove", true);
-pref("extensions.quickfolders.proNotify.findFolder.usage", 0);
-pref("extensions.quickfolders.proNotify.lineBreaks.usage", 0);
-pref("extensions.quickfolders.proNotify.tabSeparator.usage", 0);
-pref("extensions.quickfolders.proNotify.quickMove.usage", 0);
-pref("extensions.quickfolders.proNotify.advancedTabProperties.usage", 0);
+pref("extensions.quickfolders.premium.findFolder.usage", 0);
+pref("extensions.quickfolders.premium.lineBreaks.usage", 0);
+pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
+pref("extensions.quickfolders.premium.quickMove.usage", 0);
+pref("extensions.quickfolders.premium.tabIcons.usage", 0);
+pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.LicenseKey", "");
 pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);

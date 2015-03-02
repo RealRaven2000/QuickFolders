@@ -17,7 +17,8 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/options.js" />
 
 	<vbox id="messagepanebox">
-		<hbox id="QuickFolders-PreviewToolbarPanel" insertafter="msgHeaderView">
+		<hbox id="QuickFolders-PreviewToolbarPanel" 
+          insertafter="msgHeaderView">
 			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
 			<toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
 				<toolbarbutton id="QuickFolders-CurrentMail"
@@ -31,22 +32,28 @@
 					             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 					             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 					             tooltiptext="&qf.tooltip.RecentFolders;"/>
-				<toolbarseparator />
+				<toolbarseparator special="qfMsgFolderNavigation" />
+				<toolbarbutton id="quickFoldersPreviousUnread"
+											 class="icon"
+											 special="qfMsgFolderNavigation" 
+											 tooltiptext="&qf.tooltip.goPreviousFolder;"
+											 onclick="QuickFolders.Interface.onGoPreviousMsg(this);" />
 				<toolbarbutton id="quickFoldersNavToggle" 
 					             special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.quickFoldersNavToggle;"
 					             onclick="QuickFolders.Interface.onToggleNavigation(this);" />
-				<toolbarbutton
-					             class="toolbarbutton-1"
-					             id="quickFoldersNextUnread"
+				<toolbarbutton id="quickFoldersNextUnread"
+					             class="icon"
+											 special="qfMsgFolderNavigation" 
 					             tooltiptext="&qf.tooltip.goNextFolder;"
 					             onclick="QuickFolders.Interface.onGoNextMsg(this);" />
 				<toolbarbutton id="QuickFolders-CurrentThread"
 					             class="icon"
+											 special="qfMsgFolderNavigation" 
 					             oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
 					             tooltiptext="&qf.tooltip.conversationRead;" />
 
-				<toolbarseparator />
+				<toolbarseparator id="QuickFolders-Navigate-Separator" />
 
 				<toolbarbutton id="QuickFolders-NavigateUp"
 					             class="icon"
@@ -80,11 +87,13 @@
 					             class="icon"
 					             tooltiptext="&qf.menuitem.quickfolders.options;"
 					             oncommand="QuickFolders.Interface.viewOptions(-1);"
-					             tagName="qfOptions"/>
+											 tagName="qfOptions"
+											 context="QuickFolders-currentContextMenu"
+											 oncontextmenu="QuickFolders.Interface.showPopup(this,this.getAttribute('context'));"/>
 				<toolbarbutton id="QuickFolders-Close"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.closeToolbar;"
-					             onclick="QuickFolders.Interface.displayNavigationToolbar(false);" />
+					             oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'?');" />
 			</toolbar>
 			<spacer flex="10" id="QF-CurrentRightSpacer" />
 		</hbox>

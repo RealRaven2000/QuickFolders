@@ -22,10 +22,6 @@ QuickFolders.FilterWorker = {
 		QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
 	} ,
 	
-	toggleFilterMode: function toggleFilterMode(active) {
-		toggle_FilterMode(active);
-	} ,
-		
   /** 
 	* toggles the filter mode so that dragging emails will
 	* open the filter wizard
@@ -200,9 +196,62 @@ QuickFolders.FilterWorker = {
     }
   } ,
 
-	// folder is the target folder - we might also need the source folder
-	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy)
-	{
+	getSourceFolder: function getSourceFolder(msg) {
+    let accountCount = 0,
+        aAccounts,
+        sourceFolder = null,
+        Cc = Components.classes,
+        Ci = Components.interfaces,
+        util = QuickFolders.Util,
+        accounts = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
+
+    for (let ab in fixIterator(accounts, Ci.nsIMsgAccount)) { 
+      if (ab.defaultIdentity)
+        accountCount++; 
+    }
+    
+    if (util.Application == 'Postbox') 
+      aAccounts = util.getAccountsPostbox();
+    else {
+      aAccounts = [];
+      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
+        aAccounts.push(ac);
+      };
+    }
+
+    // Get inbox from original account key - or use the only account if a SINGLE one exists
+    // (Should we count LocalFolders? typically no filtering on that inbox occurs?)
+    //    we could also add an account picker GUI here for Postbox,
+    //    or parse From/To/Bcc for account email addresses
+    if (msg.accountKey || accountCount==1) {
+      util.logDebugOptional('filters', "sourceFolder: get Inbox from account of first message, key:" + msg.accountKey);
+      for each (let ac in aAccounts) {
+        // Postbox quickFix: we do not need a match if only 1 account exists :-p
+        if ((ac.key == msg.accountKey) || (accountCount==1 && ac.defaultIdentity)) {
+          // account.identities is an nsISupportsArray of nsIMsgIdentity objects
+          // account.defaultIdentity is an nsIMsgIdentity
+          if (msg.accountKey)
+            util.logDebugOptional('filters', "Found account with matching key: " + ac.key);
+          // account.incomingServer is an nsIMsgIncomingServer
+          if (ac.incomingServer && ac.incomingServer.canHaveFilters) {
+            // ac.defaultIdentity
+            sourceFolder = ac.incomingServer.rootFolder;
+            util.logDebugOptional('filters', "rootfolder: " + sourceFolder.prettyName || '(empty)');
+          }
+          else {
+            util.logDebugOptional('filters', "Account - No incoming Server or cannot have filters!");
+            let wrn = 'Account [{1}] of mail origin cannot have filters!\nUsing current Inbox instead.';
+            util.popupAlert(wrn.replace('{1}', ac.key));
+          }
+          break;
+        }
+      }                       
+    }
+    return sourceFolder; 
+  } ,
+	
+  // folder is the target folder - we might also need the source folder
+	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy) {
 		let Ci = Components.interfaces,
         msg,
         util = QuickFolders.Util;
@@ -235,8 +284,9 @@ QuickFolders.FilterWorker = {
 		function rerun() {
 			QuickFolders.FilterWorker.reRunCount++;
 			if (QuickFolders.FilterWorker.reRunCount > 5) {
-				util.alert("QuickFolders", "Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
-					+"Try to move a different message. Otherwise, updating " + util.Application + " to a newer version might help");
+				util.alert("Tried to create a filter " + (QuickFolders.FilterWorker.reRunCount+1) + " times, but it didn't work out.\n"
+					+"Try to move a different message. Otherwise, updating " + util.Application + " to a newer version might help",
+          "QuickFolders");
 				QuickFolders.FilterWorker.reRunCount=0;
 				return 0;
 			}
@@ -247,8 +297,47 @@ QuickFolders.FilterWorker = {
 			return 0;
 		}
 		
-		if (!messageList || !sourceFolder || !targetFolder)
+		if (!messageList || !targetFolder || !messageList.length)
 			return null;
+    
+    /* retrieve (first) message detail */
+    util.logDebugOptional ("filters","messageList.length = " + messageList.length);
+    let messageId = messageList[0],
+        messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null,
+        messageHeader;
+    // for the moment, let's only process the first element of the message Id List;
+    if (messageDb) {
+      messageHeader = messageDb.getMsgHdrForMessageID(messageId);
+    }
+    else { // Postbox ??
+      // let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
+      try {
+        // see nsMsgFilleTextIndexer
+        messageDb = targetFolder.getMsgDatabase(null); //GetMsgFolderFromUri(currentFolderURI, false)
+        messageHeader = messageDb.getMsgHdrForMessageID(messageId);
+      }
+      catch(e) {
+        util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
+        return null;
+      }
+    }
+
+    if (!messageHeader) 
+      return rerun();
+    msg = messageHeader.QueryInterface(Components.interfaces.nsIMsgDBHdr);
+    if (!msg) 
+      return rerun();
+    
+    
+    if (!sourceFolder) {
+      // find out whether all mails come from the same sourceFolder, otherwise we need to fail this step!
+      sourceFolder = this.getSourceFolder(msg);
+      if (!sourceFolder) {
+        util.alert("No Filter can be created - I could not determine an originating folder for message:\n" + 
+                   msg.mime2DecodedSubject + "\n");
+        return false;
+      }
+    }
 		
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
@@ -267,36 +356,6 @@ QuickFolders.FilterWorker = {
 			return -2;
     /************* MESSAGE PROCESSING  ********/
 		try {
-			// for the moment, let's only process the first element of the message Id List;
-			if (messageList.length) {
-				util.logDebugOptional ("filters","messageList.length = " + messageList.length);
-				let messageId = messageList[0],
-				    messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null,
-				    messageHeader;
-				
-				if (messageDb) {
-					messageHeader = messageDb.getMsgHdrForMessageID(messageId);
-				}
-				else { // Postbox ??
-					// let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
-					try {
-						// see nsMsgFilleTextIndexer
-						messageDb = targetFolder.getMsgDatabase(null); //GetMsgFolderFromUri(currentFolderURI, false)
-						messageHeader = messageDb.getMsgHdrForMessageID(messageId);
-					}
-					catch(e) {
-						util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
-						return null;
-					}
-				}
-
-				if (!messageHeader) 
-					return rerun();
-				msg = messageHeader.QueryInterface(Components.interfaces.nsIMsgDBHdr);
-				if (!msg) 
-					return rerun();
-			}
-
 			if (msg) {
 				let key = msg.messageKey,
 				    threadParent = msg.threadParent,
@@ -487,18 +546,16 @@ QuickFolders.FilterWorker = {
 										filterName += ' ' + tagInfo.tag;
 								}
 							}
-							
 							break;
 						default:
 							util.alert('invalid template: ' + template);
 							return false;
 					}
 
-					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder". true)) {
+					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder" == true)) {
 					  if (targetFolder.parent)
 					    filterName = targetFolder.parent.prettyName + " - " + filterName;
 					}
-
 					newFilter.filterName = filterName;
 
  
@@ -549,8 +606,7 @@ QuickFolders.FilterWorker = {
 
 	} ,
 
-	createFilterAsync: function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow)
-	{
+	createFilterAsync: function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow) {
     let util = QuickFolders.Util;
     util.logDebugOptional ("filters", "createFilterAsync()");
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
@@ -604,7 +660,7 @@ QuickFolders.FilterWorker = {
         util.logDebug('Locale found: ' + loc);
         if (loc.indexOf('en')!=0) {
           // hide quickFilters hint for non-english locales for now:
-          document.getElementById('quickFiltersPromoBox').collapsed = true;
+          // document.getElementById('quickFiltersPromoBox').collapsed = true;
         }
       }
     }

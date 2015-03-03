@@ -214,7 +214,7 @@ QuickFolders.Options = {
     QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey');
     getElement('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
     if (QuickFolders.Licenser.LicenseKey) {
-      this.validateLicense();
+      this.validateLicense(false);
     }
     
     /*****  Help / Support Mode  *****/
@@ -262,7 +262,7 @@ QuickFolders.Options = {
     
     let EncryptionKey = QuickFolders.Preferences.getCharPrefQF('premium.encryptionKey');
     if (EncryptionKey) {
-      getElement('txtKeyGenerator').collapsed = false;
+      getElement('boxKeyGenerator').collapsed = false;
       QuickFolders.Licenser.RSA_encryption = EncryptionKey;
     }
     
@@ -375,25 +375,7 @@ QuickFolders.Options = {
         strLicense = txtBox.value.toString();
     strLicense = strLicense.replace(/^\s+|\s+$/g, ''); // remove line breaks
     txtBox.value = strLicense;
-  } ,
-  
-  pasteLicense: function pasteLicense() {
-    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
-        str       = {},
-        strLength = {};    
-    trans.addDataFlavor("text/unicode");
-    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-
-    trans.getTransferData("text/unicode", str, strLength);
-    if (strLength.value) {
-      if (str) {
-        let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data,
-            txtBox = document.getElementById('txtLicenseKey'),
-            strLicense = pastetext.toString();
-        txtBox.value = strLicense;
-        this.trimLicense();
-      }    
-    }
+    return strLicense;
   } ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
@@ -503,9 +485,33 @@ QuickFolders.Options = {
     }
   } ,
   
-  validateLicense: function validateLicense() {
+  pasteLicense: function pasteLicense() {
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
+        str       = {},
+        strLength = {},
+        finalLicense = '';        
+    trans.addDataFlavor("text/unicode");
+    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+
+    trans.getTransferData("text/unicode", str, strLength);
+    if (strLength.value) {
+      if (str) {
+        let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data,
+            txtBox = document.getElementById('txtLicenseKey'),
+            strLicense = pastetext.toString();
+        txtBox.value = strLicense;
+        finalLicense = this.trimLicense();
+      }    
+    }
+    if (finalLicense) {
+      let testMode = !document.getElementById('boxKeyGenerator').collapsed;
+      this.validateLicense(testMode);
+    }
+  } ,
+  
+  validateLicense: function validateLicense(testMode) {
     try {
-      this.decryptLicense(false);
+      this.decryptLicense(testMode);
     }
     catch(ex) {
       QuickFolders.Util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
@@ -1114,16 +1120,12 @@ QuickFolders.Options = {
 		}
 	},
 	
-	toggleCurrentFolderBar: function toggleCurrentFolderBar(chk) {
+  // 3pane window only?
+	toggleCurrentFolderBar: function toggleCurrentFolderBar(chk, selector) {
 		let checked = chk.checked ? chk.checked : false;
-		QuickFolders.Interface.displayNavigationToolbar(checked, false);
+		QuickFolders.Interface.displayNavigationToolbar(checked, selector);
 	},
 	
-	toggleCurrentFolderBar_SingleMessage: function toggleCurrentFolderBar_SingleMessage(chk) {
-		let checked = chk.checked ? chk.checked : false;
-		QuickFolders.Interface.displayNavigationToolbar(checked, true);
-	},
-  
   onTabSelect: function onTabSelect(element, event) {
     let el = event.target;
     if (el.selectedPanel) {

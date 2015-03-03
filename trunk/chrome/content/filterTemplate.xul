@@ -59,12 +59,10 @@
 			    <listitem label='&qf.filters.template.tag;' value='tag' />
 			</listbox>
 			<vbox id="quickFiltersPromoBox">
-			  <description id="getQuickFilters">
-				For an improved and more powerful way of creating Filters
-				please install my extension quickFilters!</description>
+			  <description id="getQuickFilters">&qf.label.getQuickFilters;</description>
 				<label id="quickFiltersLink"
 				       class="para link" 
-					     onclick="QuickFolders.FilterWorker.showQuickFilters(event);">quickFilters Add-on</label>
+					     onclick="QuickFolders.FilterWorker.showQuickFilters(event);">&qf.label.quickFilters.link;</label>
 				
 			</vbox>
 		</hbox>

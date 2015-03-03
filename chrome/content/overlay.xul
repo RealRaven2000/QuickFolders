@@ -8,7 +8,6 @@
 
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-tablistener.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-listener.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
@@ -23,6 +22,8 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-folderTree.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-styles.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-listener.js" />
+	
 
 	<!-- Thunderbird & SeaMonkey -->
 	<toolbarpalette id="MailToolbarPalette">
@@ -205,7 +206,7 @@
 				<menuitem id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
 				          label="&qf.menuitem.quickfolders.displayPreviewToolbar;"
 				          accesskey="&qf.menuitem.quickfolders.displayPreviewToolbarAccessKey;"
-				          oncommand="QuickFolders.Interface.displayNavigationToolbar(true);"
+				          oncommand="QuickFolders.Interface.displayNavigationToolbar(true,'?');"
 				          class="cmd menuitem-iconic"
 				          tagName="qfPreviewToolbar" 
 				          />
@@ -245,6 +246,12 @@
               insertafter="context-quickFoldersIcon"
               oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"/>
   </popup>	
+	
+	<script type="text/javascript">
+	  QuickFolders.Util.logDebug('Adding Folder Listener...');
+	  QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+    QuickFolders.addLoadEventListener();
+	</script>
 
 </overlay>
 

@@ -200,7 +200,7 @@
 												tooltiptext="&qf.checkbox.showQuickMove.tooltip;"
 												preference="QuickFolders-Preferences-ShowQuickMove"
 												instantApply="true"
-												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.premium.findFolder.maxPathItems',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkToolbarMenu"
 												label="&qf.checkbox.tabMenuIcon;"
@@ -227,8 +227,9 @@
 
 				<tabpanel id="QuickFolders-Options-advanced" orient="vertical">
 					<preferences id="prefsAdvanced">
-						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar" name="extensions.quickfolders.showCurrentFolderToolbar" type="bool" />
-						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage" name="extensions.quickfolders.messageWindow.showCurrentFolderToolbar" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar"               name="extensions.quickfolders.showCurrentFolderToolbar" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage" name="extensions.quickfolders.showCurrentFolderToolbar.messageWindow" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowCurrentFolderBar-MsgTab"        name="extensions.quickfolders.showCurrentFolderToolbar.singleMailTab" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowCloseButton" name="extensions.quickfolders.currentFolderBar.showClose" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowRecentButton" name="extensions.quickfolders.currentFolderBar.showRecentButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowFilterButton" name="extensions.quickfolders.currentFolderBar.showFilterButton" type="bool" />
@@ -253,7 +254,7 @@
 						<preference id="QuickFolders-Preferences-Transitions" name="extensions.quickfolders.style.transitions" type="bool" />
 					</preferences>
 
-					<hbox>
+					<hbox id="advancedConfig">
 						<groupbox>
 							<caption label="&qf.label.currentFolderToolbar;" />
 							<vbox id="currentFolderCustomize">
@@ -261,20 +262,26 @@
 												label="&qf.checkbox.currentFolder.show;"
 												preference="QuickFolders-Preferences-ShowCurrentFolderBar"
 												instantApply="true"
-												oncommand="QuickFolders.Options.toggleCurrentFolderBar(this);" />
+												oncommand="QuickFolders.Options.toggleCurrentFolderBar(this,'');" />
+							<checkbox id="chkCurrentFolderShowSingleTab"
+												class="indent"
+												label="&qf.checkbox.singleMessageTab.currentFolder.show;"
+												preference="QuickFolders-Preferences-ShowCurrentFolderBar-MsgTab"
+												instantApply="true"
+												oncommand="QuickFolders.Options.toggleCurrentFolderBar(this,'singleMailTab');" />
 							<checkbox id="chkCurrentFolderShowSingleMsg"
 												class="indent"
 												label="&qf.checkbox.singleMessage.currentFolder.show;"
 												tooltiptext="&qf.checkbox.singleMessage.currentFolder.tooltip;"
 												preference="QuickFolders-Preferences-ShowCurrentFolderBar-SingleMessage"
 												instantApply="true"
-												oncommand="QuickFolders.Options.toggleCurrentFolderBar_SingleMessage(this);" />
+												oncommand="QuickFolders.Options.toggleCurrentFolderBar(this,'messageWindow');" />
 							<checkbox id="chkRecentCurrent"
 												label="&qf.checkbox.showRecentButton;"
 												tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
 												preference="QuickFolders-Preferences-ShowRecentButton"
 												instantApply="true"
-												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.recentfolders.itemCount',true);return false;"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.recentfolders',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkMsgNavigation"
 												label="&qf.checkbox.showMessageNavigation;"
@@ -842,20 +849,22 @@
 							<row>
 								<description
 									oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
-								<button id="L1"
-												tooltiptext="quickfolders.mozdev.org/donate.html"
-												onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')">
+								<div id="L1"
+								     class="button"
+										 tooltiptext="quickfolders.mozdev.org/donate.html"
+										 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')">
 									<label>&qf.label.donateLink;</label>
-								</button>
+								</div>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.bugzilla;</description>
-								<button id="L2"
-												tooltiptext="quickfolders.mozdev.org/bugs.html"
-												onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')">
+								<div id="L2"
+								     class="button"
+										 tooltiptext="quickfolders.mozdev.org/bugs.html"
+										 onclick="QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/bugs.html')">
 									<label>&qf.label.bugzilla;</label>
-								</button>
+								</div>
 							</row>
 							<separator class="thin" />
 							<row>
@@ -863,28 +872,31 @@
 														 oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, QuickFolders.Util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
 									&qf.description.versionhistory;
 								</description>
-								<button id="L3"
+								<div id="L3"
+								     class="button"
 												tooltiptext="http://quickfolders.mozdev.org/version.html"
 												onclick="QuickFolders.Options.showVersionHistory(this, false);return false;">
 									<label>&qf.label.versionhistory;</label>
-								</button>
+								</div>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.languages;</description>
-								<button id="L4"
+								<div id="L4"
+								     class="button"
 											 tooltiptext="www.babelzilla.org?extension=5099"
 											 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099')">
 									<label>&qf.label.languagesLink;</label>
-								</button>
+								</div>
 							</row>
 							<separator class="thin" />
 							<row>
 								<description class="niceFont">&qf.description.contactMe;</description>
-								<button id="L5"
-												onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');">
+								<div id="L5"
+								     class="button"
+										 onclick="QuickFolders.Options.sendMail('axelg@gofree.indigo.ie');">
 									<label>&qf.label.contactLink;</label>
-								</button>
+								</div>
 							</row>
 						</rows>
 					</grid>
@@ -907,7 +919,7 @@
 											oncommand="QuickFolders.Options.pasteLicense();" />
 							<button id="btnValdidateLicense"
 											label="&qf.button.validateLicense;"
-											oncommand="QuickFolders.Options.validateLicense();" />
+											oncommand="QuickFolders.Options.validateLicense(false);" />
 						</vbox>
 					</hbox>
 					<separator class="licenseSeparator" />
@@ -967,7 +979,7 @@
 						</vbox>
 					</hbox>
 					<separator flex="1" />
-					<groupbox id="txtKeyGenerator" collapsed="true">
+					<groupbox id="boxKeyGenerator" collapsed="true">
 					  <caption label="CREATE REGISTRATION KEY: REMOVE IN PRODUCTION - TRANSLATION UNNECESSARY!" />
 						<hbox>
 							<textbox id="txtEncrypt"
@@ -990,6 +1002,10 @@
 							<button id="btnRestoreLicense"
 											label="Restore my own License"
 											oncommand="QuickFolders.Options.restoreLicense();" />
+							<spacer flex="1"/>
+							<button id="btnHideKeyGenerator"
+											label="Hide!"
+											oncommand="document.getElementById('boxKeyGenerator').collapsed=true;" />
 						</hbox>
 					</groupbox>
 					<separator flex="1" />

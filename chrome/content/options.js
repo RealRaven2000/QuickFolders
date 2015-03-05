@@ -373,8 +373,11 @@ QuickFolders.Options = {
   trimLicense: function trimLicense() {
     let txtBox = document.getElementById('txtLicenseKey'),
         strLicense = txtBox.value.toString();
+    QuickFolders.Util.logDebug('trimLicense() : ' + strLicense);
     strLicense = strLicense.replace(/^\s+|\s+$/g, ''); // remove line breaks
+    strLicense = strLicense.replace('\[at\]','@');
     txtBox.value = strLicense;
+    QuickFolders.Util.logDebug('trimLicense() result : ' + strLicense);
     return strLicense;
   } ,
   
@@ -1122,8 +1125,10 @@ QuickFolders.Options = {
 	
   // 3pane window only?
 	toggleCurrentFolderBar: function toggleCurrentFolderBar(chk, selector) {
-		let checked = chk.checked ? chk.checked : false;
-		QuickFolders.Interface.displayNavigationToolbar(checked, selector);
+		let checked = chk.checked ? chk.checked : false,
+        util = QuickFolders.Util,
+        win = (selector=='messageWindow') ? util.getSingleMessageWindow() : util.getMail3PaneWindow();
+    win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
 	},
 	
   onTabSelect: function onTabSelect(element, event) {

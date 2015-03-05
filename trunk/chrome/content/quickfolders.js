@@ -228,6 +228,7 @@ END LICENSE BLOCK */
     ## Fixed: Recent folder menu shows encoded path decreasing readability
     ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
     ## Fixed [Bug 25824] In Ubuntu, QuickFolders Toolbar color cannot be set
+    ## Improved Current Folder bar in Single Message window. (Styling + moving through messages)
     ## Feature Request [Bug 25513] Mark message as read when moving: toggle extensions.quickfolders.markAsReadOnMove to true for this behavior
     ## Feature Request [Bug 25856] 'Display total number of messages' on a per button basis
     ## [Bug 25941] : drag to new folder on IMAP fails
@@ -385,15 +386,19 @@ var QuickFolders = {
 	// helper function to do init from options dialog!
 	initDocAndWindow: function initDocAndWindow(win) {
     let util = QuickFolders.Util,
-		    mail3PaneWindow;
-    if(win && win.document && win.document.documentURI.indexOf('/messenger.xul')>0)
-      mail3PaneWindow = win;
-    else
-      mail3PaneWindow = util.getMail3PaneWindow();
+		    mainWindow;
+    if (win && win.document && win.document.documentURI.indexOf('/messenger.xul')>0)
+      mainWindow = win;
+    else if (win && win.document.documentURI.indexOf('/messageWindow.xul')>0)
+      mainWindow = win; // allow passing in single message window also
+    else {
+      if (win || (!win && window.documentURI.indexOf('/messageWindow.xul')==-1))
+        mainWindow = util.getMail3PaneWindow();
+    }
 
-		if (mail3PaneWindow) {
-			QuickFolders.doc = mail3PaneWindow.document;
-			QuickFolders.win = mail3PaneWindow;
+		if (mainWindow) {
+			QuickFolders.doc = mainWindow.document;
+			QuickFolders.win = mainWindow;
 		}
 		else {
 			QuickFolders.doc = document;
@@ -403,8 +408,6 @@ var QuickFolders = {
 		QuickFolders_globalDoc=QuickFolders.doc;
 
 		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
-		
-		QuickFolders.Interface.prepareCurrentFolderIcons();
 	},
 
 	initDelayed: function initDelayed(win) {
@@ -412,6 +415,7 @@ var QuickFolders = {
 	  let sWinLocation,
         prefs = QuickFolders.Preferences,
         util = QuickFolders.Util,
+        QI = QuickFolders.Interface,
 	      nDelay = prefs.getIntPref('initDelay');
 	  QuickFolders.initDocAndWindow(win);
 	  util.VersionProxy(); // initialize the version number using the AddonManager
@@ -432,7 +436,7 @@ var QuickFolders = {
 		else {
 		  try {
         let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
-        QuickFolders.Interface.Toolbar.style.display = 'none';
+        QI.Toolbar.style.display = 'none';
         // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
         let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
@@ -440,9 +444,22 @@ var QuickFolders = {
         util.logDebug ("DIFFERENT window type(messengerWindow): "
             + wt
             + "\ndocument.title: " + doc.title )
+        /**** SINGLE MESSAGE WINDOWS ****/
         if (wt === 'mail:messageWindow') {
+          if (QuickFolders.Preferences.isDebug) debugger;
           util.logDebug('Calling displayNavigationToolbar()');
           QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+          // set current folder tab label
+          if (window.arguments && window.arguments[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+            let msgHdr= window.arguments[0],
+                cF = QuickFolders.Interface.CurrentFolderTab;
+            // force loading main stylesheet (for single message window)
+            QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
+            QI.initCurrentFolderTab(cF, msgHdr.folder);
+            QI.updateUserStyles();
+          }
+
+
         }
         else {
           util.logDebug('window type : ' + wt);

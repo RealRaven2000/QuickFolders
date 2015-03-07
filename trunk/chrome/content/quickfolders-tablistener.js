@@ -12,45 +12,73 @@ QuickFolders.TabListener = {
   select: function(evt){
     try {
       if (QuickFolders) {
-        let util = QuickFolders.Util;
-        let QI = QuickFolders.Interface;
-        // restore the category
-        let tabmail = document.getElementById("tabmail");
-        let idx = QuickFolders.tabContainer.selectedIndex;
+        let util = QuickFolders.Util,
+            QI = QuickFolders.Interface,
+            tabmail = document.getElementById("tabmail"),
+            idx = QuickFolders.tabContainer.selectedIndex;
         idx = idx ? idx : 0;
         util.logDebugOptional("listeners.tabmail", "TabListener.select() - tab index = " + idx);
-				let tabs = tabmail.tabInfo ? tabmail.tabInfo : tabmail.tabOwners; // Pb: tabOwners
-        let info = util.getTabInfoByIndex(tabmail, idx);  // tabs[idx]
+				let tabs = tabmail.tabInfo ? tabmail.tabInfo : tabmail.tabOwners, // Pb: tabOwners
+            info = util.getTabInfoByIndex(tabmail, idx);  // tabs[idx]
 				if (!info)
 					return;
-        if (info.QuickFoldersCategory) {
-          util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
-          let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
-          QI.updateCategories();
-					// do not select folder if selectCategory had to be done
-          if (!isFolderUpdated)
-            QI.setFolderSelectTimer();	
+        let tabMode = util.getTabMode(info);
+        util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode);
+        if (tabMode == 'message') {
+          // Tb / Pb
+          let msg = null, fld = null;
+          switch (util.Application) {
+            case 'Postbox': 
+              msg = info._msgHdr;
+              if (msg) fld = msg.folder;
+              break;
+            case 'Thunderbird': 
+              msg = info.messageDisplay.displayedMessage
+              if (msg) fld = msg.folder;
+              break;
+            case 'SeaMonkey':
+              fld = info.msgSelectedFolder;
+              break;
+          }
+          if (fld) {
+            // reflect in current folder toolbar!
+            QI.initCurrentFolderTab(QI.CurrentFolderTab, fld, null, info);
+            // force reselection when we return to a folder tab
+            QI.lastTabSelected = null;
+            QI.setTabSelectTimer();
+            return;
+          }
+          util.logDebug("TabListener single message - could not determine displayed Message message in " + util.Application);
         }
-        // Do not switch to current folder's category, if current tab has another selected!
         else {
-          // there is no need for this if it is not a mail tab.
-					let tabMode = util.getTabModeName(info);
-          if (tabMode) { 
-            util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode);
-            if (tabMode == util.mailFolderTypeName || tabMode == "message") {
+          // restore the category
+          if (info.QuickFoldersCategory) {
+            util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
+            let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
+            util.logDebugOptional("listeners.tabmail", "After QuickFoldersCategory - isFolderUpdated =" + isFolderUpdated );
+            QI.updateCategories();
+            // do not select folder if selectCategory had to be done
+            if (!isFolderUpdated)
+              QI.setFolderSelectTimer();	
+          }
+          // Do not switch to current folder's category, if current tab has another selected!
+          else {
+            // there is no need for this if it is not a mail tab.
+            if (tabMode == util.mailFolderTypeName) {
               QI.setTabSelectTimer();
             }
             else {
-              // we should initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
-              QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
+              // should we initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
+              if (!QI.CurrentFolderTab.collapsed)
+                QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
             }
           }
         }
+        
         // for non-folder tabs: reset lastTabSelected to force refresh of current folder 
         // when we go back to a folder tab
-        if (util.getTabModeName(info) != util.mailFolderTypeName)
+        if (tabMode != util.mailFolderTypeName)
           QI.lastTabSelected = null;
-        
       }
     }
     catch(e) {QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected: " + e)};

@@ -29,11 +29,6 @@
 			<menuitem  label = "Thunderbird12/overlayCurrentfolder.xul (singlemessage)"/>
 		</menupopup>
 		
-		<!-- standard toolbar Tb
-		<vbox id="singlemessage">
-		
-		.. 		insertafter="msgHeaderView" 
-		 -->
 			<hbox id="QuickFolders-PreviewToolbarPanel" 
 				    position="1"
 						style="display:none;">
@@ -126,9 +121,6 @@
 				</toolbar>
 				<spacer flex="10" id="QF-CurrentRightSpacer" />
 			</hbox>
-<!--			
-		</vbox>
-		-->
 	
 	
 	<!-- if conversation view (extension) is active ?? then the browser element multimessage will be visible

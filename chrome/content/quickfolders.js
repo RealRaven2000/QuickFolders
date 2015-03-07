@@ -446,16 +446,28 @@ var QuickFolders = {
             + "\ndocument.title: " + doc.title )
         /**** SINGLE MESSAGE WINDOWS ****/
         if (wt === 'mail:messageWindow') {
-          if (QuickFolders.Preferences.isDebug) debugger;
           util.logDebug('Calling displayNavigationToolbar()');
           QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
           // set current folder tab label
-          if (window.arguments && window.arguments[0] instanceof Components.interfaces.nsIMsgDBHdr) {
-            let msgHdr= window.arguments[0],
-                cF = QuickFolders.Interface.CurrentFolderTab;
+          if (window.arguments) {
+            let fld;
+            if (util.Application=='Thunderbird') {
+              // from messageWindow.js actuallyLoadMessage()
+              if (window.arguments[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+                let msgHdr= window.arguments[0];
+                fld = msgHdr.folder;
+              }
+            }
+            else {
+              // This appears to work for Sm + Postbox alike
+              if (window.arguments.length>=3)
+                fld = window.arguments[2].viewFolder;
+            }
+            let cF = QuickFolders.Interface.CurrentFolderTab;
             // force loading main stylesheet (for single message window)
             QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
-            QI.initCurrentFolderTab(cF, msgHdr.folder);
+            if (fld)
+              QI.initCurrentFolderTab(cF, fld);
             QI.updateUserStyles();
           }
 

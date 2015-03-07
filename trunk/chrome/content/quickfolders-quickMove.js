@@ -22,22 +22,43 @@ QuickFolders.quickMove = {
   },
   
   execute: function execute(folderUri, isCopy) {
-    let util = QuickFolders.Util;
-    util.logDebugOptional('quickMove', 'quickMove.execute() ..');
-    let actionCount = 0;
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
-    let fld = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);
+    let util = QuickFolders.Util,
+        actionCount = 0,
+        fld = QuickFolders.Model.getMsgFolderFromUri(folderUri, true),
+        tabMode = QuickFolders.Interface.CurrentTabMode,    
+        tabmail = document.getElementById("tabmail"),
+        currentTab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+        
+    if (tabMode == 'message' && !isCopy) {
+      // close currentTab!
+      if (currentTab.canClose)
+        tabmail.closeTab(currentTab);
+    }
+        
+    // Move / Copy Messages
     let messageIdList = util.moveMessages(fld, QuickFolders.quickMoveUris, isCopy);
+        
+    util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
+        
     // should return an array of message ids...
     if (messageIdList) { 
       // ...which we should match before deleting our URIs?
-      this.resetList();
       if (QuickFolders.FilterWorker.FilterMode) {
-        QuickFolders.FilterWorker.createFilterAsync(null, fld, messageIdList, isCopy, true);
+        let sourceFolder = QuickFolders.quickMoveOrigins.length ? QuickFolders.quickMoveOrigins[0] : null;
+        for (let i=0; i<QuickFolders.quickMoveOrigins.length; i++) {
+          if (sourceFolder!=QuickFolders.quickMoveOrigins[i]) {
+            sourceFolder = null;
+            util.slideAlert('creating filters from multiple folders is currently not supported!');
+            break;
+          }
+        }
+        QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
       }
       actionCount = messageIdList.length;
     }
-    util.logDebugOptional('quickMove', 'After moveMessages actionCount: ' + actionCount);
+    util.logDebugOptional('quickMove', 'After moveMessages actionCount: ' + actionCount + ' resetting menu');
+    this.resetList();
     this.update();
     QuickFolders.Interface.hideFindPopup();
     util.logDebugOptional('quickMove', 'After hideFindPopup');
@@ -48,13 +69,37 @@ QuickFolders.quickMove = {
         ?  util.getBundleString("quickfoldersQuickCopiedMails","Email copied to folder {2};{1} Emails copied to folder {2}")
         :  util.getBundleString("quickfoldersQuickMovedMails","Email moved to folder {2};{1} Emails moved to folder {2}");
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
+      
+      // if we are in single message mode we now have to jump into the folder and reselect the message!
+      if (tabMode == 'message' && messageIdList.length) {
+        let theMessage = messageIdList[0];
+        //let treeView = (typeof gFolderTreeView!='undefined') ? gFolderTreeView : GetFolderTree().view; 
+        //treeView.selectFolder(fld);
+        let messageDb = fld.msgDatabase ? fld.msgDatabase : null;
+        if (messageDb && !isCopy) {
+          // reusing the existing Tab didn't work so we close & re-open msg from the new location.
+          // let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+          // currentTab.folderDisplay.selectMessage(msgHdr, true);
+          setTimeout( 
+            function() {
+              let msgHdr = messageDb.getMsgHdrForMessageID(theMessage);
+              util.logDebugOptional('quickMove', 'reopen mail in tab:' + msgHdr.mime2DecodedSubject );
+              QuickFolders.Util.openMessageTabFromHeader(msgHdr);
+            }, 1200);
+        }
+      }
+      
       util.slideAlert("QuickFolders",notify);
     }
   },
   
   resetList: function resetList() {
-    while (QuickFolders.quickMoveUris.length)
+    while (QuickFolders.quickMoveUris.length) {
       QuickFolders.quickMoveUris.pop();
+    }
+    while (QuickFolders.quickMoveOrigins.length) {
+      QuickFolders.quickMoveOrigins.pop();
+    }
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.childNodes.length-1; i>0; i--) {
       let item = menu.childNodes[i];
@@ -86,9 +131,12 @@ QuickFolders.quickMove = {
     }
   },
   
-  add: function add(newUri)  {
+  add: function add(newUri, sourceFolder)  {
     if (QuickFolders.quickMoveUris.indexOf(newUri) == -1) { // avoid duplicates!
+      let chevron = ' ' + "\u00BB".toString() + ' ',
+          showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
       QuickFolders.quickMoveUris.push(newUri);
+      QuickFolders.quickMoveOrigins.push(sourceFolder);
       // now add to menu!
       let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
       if (QuickFolders.quickMoveUris.length==1)
@@ -96,21 +144,10 @@ QuickFolders.quickMove = {
       let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
-          let label;
-          let fromName = hdr.mime2DecodedAuthor;
-          let date;
-          let maxLen = QuickFolders.Preferences.maxSubjectLength;
-          let subject = hdr.mime2DecodedSubject.substring(0, maxLen);
-          if (hdr.mime2DecodedSubject.length>maxLen)
-            subject += ("\u2026".toString()); // ellipsis
-          let matches = fromName.match(/([^<]+)\s<(.*)>/);
-          if (matches && matches.length>=2)
-            fromName = matches[1];
-          try {
-            date =(new Date(hdr.date/1000)).toLocaleString();
-          } catch(ex) {date = '';}
-          label = fromName + ': ' + (subject ? (subject + ' - ') : '') + date;
-          let menuitem = document.createElement("menuitem");
+          let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
+              menuitem = document.createElement("menuitem");
+          if (showFolder && sourceFolder)
+            label = sourceFolder.prettyName + chevron + label;
           menuitem.setAttribute("label", label);
           menuitem.className='msgUri menuitem-iconic';
           QuickFolders.Interface.setEventAttribute(menuitem, "oncommand","QuickFolders.Util.openMessageTabFromUri('" + newUri + "');");
@@ -132,7 +169,9 @@ QuickFolders.quickMove = {
         QI = QuickFolders.Interface;
     if (i >= 0) {
       QuickFolders.quickMoveUris.splice(i, 1);
+      QuickFolders.quickMoveOrigins.splice(i, 1);
     }
+       
     if (!QuickFolders.quickMove.hasMails) {
       QI.isMoveActive = false;
       QI.toggleMoveMode(false);

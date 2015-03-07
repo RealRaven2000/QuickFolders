@@ -40,6 +40,7 @@ content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-i
 #ALL
 overlay chrome://messenger/content/messenger.xul          chrome://myXUL/content/overlayCurrentfolder.xul
 overlay chrome://messenger/content/messageWindow.xul      chrome://myXUL/content/currentFolderSingleMessage.xul
+overlay chrome://messenger/content/messageWindow.xul      chrome://quickfolders/content/quickfolders-layout.css
 overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
 
 # replace mailWindowOverlay.xul with messenger.xul!

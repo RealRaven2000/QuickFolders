@@ -29,6 +29,7 @@ pref("extensions.quickfolders.quickJump.useHotkey", true);
 pref("extensions.quickfolders.quickJump.Hotkey", 'J');
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
+pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
@@ -43,8 +44,9 @@ pref("extensions.quickfolders.tooltips.msgFolderFlags", false);
 pref("extensions.quickfolders.autoValidateFolders", true); // check if folder exists when clicking a tab
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar", true);
-pref("extensions.quickfolders.messageWindow.showCurrentFolderToolbar", false);
-pref("extensions.quickfolders.currentFolderBar.showClose", true);
+pref("extensions.quickfolders.showCurrentFolderToolbar.messageWindow", false);
+pref("extensions.quickfolders.showCurrentFolderToolbar.singleMailTab", true);
+pref("extensions.quickfolders.currentFolderBar.showClose", false);
 pref("extensions.quickfolders.currentFolderBar.showRecentButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFilterButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton", false);
@@ -124,6 +126,7 @@ pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
 pref("extensions.quickfolders.debug.interface.findFolder", false);
+pref("extensions.quickfolders.debug.interface.currentFolderBar", false);
 pref("extensions.quickfolders.debug.mailTabs", false);
 pref("extensions.quickfolders.debug.options", false);
 pref("extensions.quickfolders.debug.dragToNew", false);
@@ -180,6 +183,7 @@ pref("extensions.quickfolders.filters.currentTemplate", "from");
 pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
+pref("extensions.quickfolders.premium.findFolder.maxPathItems", 2);
 pref("extensions.quickfolders.premium.findFolder.usage", 0);
 pref("extensions.quickfolders.premium.lineBreaks.usage", 0);
 pref("extensions.quickfolders.premium.tabSeparator.usage", 0);

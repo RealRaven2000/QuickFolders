@@ -67,7 +67,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "4.0.2",
+	HARDCODED_EXTENSION_VERSION : "4.0.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -118,7 +118,7 @@ QuickFolders.Util = {
 		return appInfo.version;
 	},
 
-	Appver: function() {
+	Appver: function Appver() {
 		if (null == this.mAppver) {
 		let appVer=this.ApplicationVersion.substr(0,6);
 			this.mAppver = parseFloat(appVer); // quick n dirty!
@@ -130,13 +130,10 @@ QuickFolders.Util = {
 		if (null==this.mAppName) {
       let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
-			const FIREFOX_ID = "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 			const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
 			const SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
 			const POSTBOX_ID = "postbox@postbox-inc.com";
 			switch(appInfo.ID) {
-				case FIREFOX_ID:
-					return this.mAppName='Firefox';
 				case THUNDERBIRD_ID:
 					return this.mAppName='Thunderbird';
 				case SEAMONKEY_ID:
@@ -145,7 +142,8 @@ QuickFolders.Util = {
 					return this.mAppName='Postbox';
 				default:
 					this.mAppName=appInfo.name;
-					this.logDebug ( 'Unknown Application: ' + appInfo.name);
+					this.logDebug ( 'Unknown Application: ' + appInfo.name + '\n'
+            + 'appInfo.id:' + appInfo.ID);
 					return appInfo.name;
 			}
 		}
@@ -264,7 +262,16 @@ QuickFolders.Util = {
 		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
+  
+  getSingleMessageWindow: function getSingleMessageWindow() {
+    let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
+        singleMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
+    return singleMessageWindow;
+  } ,
 	
+  /** 
+	* getAccountsPostbox() return an Array of mail Accounts for Postbox
+	*/   
 	getAccountsPostbox: function getAccountsPostbox() {
 	  let accounts=[],
         actManager = this.getMail3PaneWindow().accountManager,
@@ -679,7 +686,7 @@ QuickFolders.Util = {
 			let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
 
 			if (tab) {
-			  let tabMode = this.getTabModeName(tab);
+			  let tabMode = this.getTabMode(tab);
 				QuickFolders.Util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
 				if (tabMode != QuickFolders.Util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
@@ -688,7 +695,7 @@ QuickFolders.Util = {
 					let tabInfoCount = QuickFolders.Util.getTabInfoLength(tabmail);
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
-						if (info && this.getTabModeName(info) == QuickFolders.Util.mailFolderTypeName) { 
+						if (info && this.getTabMode(info) == QuickFolders.Util.mailFolderTypeName) { 
 							QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
 							tabmail.switchToTab(i);
 							found=true;
@@ -698,7 +705,7 @@ QuickFolders.Util = {
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
 					for (let i=0;(!found) && i < tabInfoCount; i++) {
 					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
-						if (info && QuickFolders.Util.getTabModeName(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+						if (info && QuickFolders.Util.getTabMode(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
 							QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
 							tabmail.switchToTab(i);
 						  break;
@@ -918,16 +925,18 @@ QuickFolders.Util = {
 		return null;
 	} ,
 	
-	getTabModeName: function getTabModeName(tab) {
+	getTabMode: function getTabMode(tab) {
 	  if (tab.mode) {   // Tb / Sm
-		  if (this.Application=='SeaMonkey') {
+		  if (this.Application=='SeaMonkey' && (typeof tab.modeBits != 'undefined')) {
 				const kTabShowFolderPane  = 1 << 0;
 				const kTabShowMessagePane = 1 << 1;
 				const kTabShowThreadPane  = 1 << 2;			
 				// SM: maybe also check	tab.getAttribute("type")=='folder'
 				// check for single message shown - SeaMonkey always uses 3pane!
 				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
-			  if ( (tab.modeBits & kTabShowMessagePane) && !(tab.modeBits & kTabShowFolderPane)) {
+			  if ( (tab.modeBits & kTabShowMessagePane) 
+             && 
+             !(tab.modeBits & kTabShowFolderPane)) {
 				  return 'message';
 				}
 			}
@@ -1043,6 +1052,22 @@ QuickFolders.Util = {
     return messages;
   },
   
+  getFriendlyMessageLabel: function getFriendlyMessageLabel(hdr) {
+    let fromName = hdr.mime2DecodedAuthor,
+        date,
+        maxLen = QuickFolders.Preferences.maxSubjectLength,
+        subject = hdr.mime2DecodedSubject.substring(0, maxLen);
+    if (hdr.mime2DecodedSubject.length>maxLen)
+      subject += ("\u2026".toString()); // ellipsis
+    let matches = fromName.match(/([^<]+)\s<(.*)>/);
+    if (matches && matches.length>=2)
+      fromName = matches[1];
+    try {
+      date =(new Date(hdr.date/1000)).toLocaleString();
+    } catch(ex) {date = '';}
+    return fromName + ': ' + (subject ? (subject + ' - ') : '') + date;    
+  } ,
+  
 	threadPaneOnDragStart: function threadPaneOnDragStart(aEvent) {
 		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
 			+ (aEvent.isThread ? ",thread=true" : "")
@@ -1063,12 +1088,14 @@ QuickFolders.Util = {
 		// dragging multiple messages to desktop does not
 		// currently work, pending core fixes for
 		// multiple-drop-on-desktop support. (bug 513464)
+    let summary = '';
 		for (let i in messages) {
-			messenger.messageServiceFromURI(messages[i])
-					 .GetUrlForUri(messages[i], msgUrls, null);
-			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", messages[i], i);
-			let subject = messenger.messageServiceFromURI(messages[i])
-			              	.messageURIToMsgHdr(messages[i]).mime2DecodedSubject;
+      let message = messages[i];
+      // copy message URLs:
+			messenger.messageServiceFromURI(message).GetUrlForUri(message, msgUrls, null);
+			aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", message, i);
+      let header = messenger.messageServiceFromURI(message).messageURIToMsgHdr(message),
+			    subject = header.mime2DecodedSubject;
 			uniqueFileName = newUF ?
 				this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames) :
 				this.suggestUniqueFileName_Old(subject.substr(0,124), ".eml", fileNames);
@@ -1080,6 +1107,7 @@ QuickFolders.Util = {
 																				 uniqueFileName, i);
 				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
 				count++;
+        summary += '\n' + count + '.  ' + QuickFolders.Util.getFriendlyMessageLabel(header);
 			}
 			catch(ex)
 			{
@@ -1090,7 +1118,7 @@ QuickFolders.Util = {
 		aEvent.dataTransfer.mozCursor = "auto";
 		aEvent.dataTransfer.effectAllowed = "all"; // copyMove
 		aEvent.dataTransfer.addElement(aEvent.originalTarget);
-		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends: " + count + " messages prepared.");
+		QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart() ends: " + count + " messages prepared:" + summary);
 	},
 
 	debugVar: function debugVar(value) {
@@ -1156,9 +1184,12 @@ QuickFolders.Util = {
 			this.logToConsole(msg);
 	},
 
-  // only log if debug flag and specific debug option are active
-  // optionString: comma delimited options
-  // msg: text to log
+  /** 
+	* only logs if debug mode is set and specific debug option are active
+	* 
+	* @optionString {string}: comma delimited options
+  * @msg {string}: text to log 
+	*/   
 	logDebugOptional: function logDebugOptional(optionString, msg) {
     let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
@@ -1448,10 +1479,8 @@ QuickFolders.Util = {
 	},
   
   // open an email in a new tab
-  openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
-    let tabmail = QuickFolders.Util.$("tabmail"),
-        hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-    
+  openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
+    let tabmail = QuickFolders.Util.$("tabmail");
     switch (QuickFolders.Util.Application) {
       case 'Thunderbird':
         tabmail.openTab('message', {msgHdr: hdr, background: false});  
@@ -1476,6 +1505,12 @@ QuickFolders.Util = {
                )
         break;
     }
+  },
+  
+  // open an email in a new tab
+  openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
+    let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+    this.openMessageTabFromHeader(hdr);
   }
 
   

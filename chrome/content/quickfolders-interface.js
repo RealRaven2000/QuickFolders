@@ -585,21 +585,42 @@ QuickFolders.Interface = {
 		}
 	} ,
   
+  // make sure current folder is shown after hitting next (unread) msg
+  // in single folder view!
+  ensureCurrentFolder: function ensureCurrentFolder() {
+    let util = QuickFolders.Util,
+        currentFolderTab = document.getElementById('QuickFoldersCurrentFolder'),
+        existsMsgDisplay = (typeof gMessageDisplay != 'undefined') ,
+        current = !existsMsgDisplay ? null : gMessageDisplay.displayedMessage.folder;
+    if (!existsMsgDisplay) {
+      let txt = "No gMessageDisplay in current view";
+      if (util.Application=='Postbox') 
+        txt += "\nSorry, but Postbox doesn't support navigation from single message window!";
+      util.logToConsole(txt);
+      return;
+    }
+    if (currentFolderTab.folder != current)
+      this.initCurrentFolderTab(currentFolderTab, current);
+  },
+  
 	onClickThreadTools: function onClickThreadTools(button, evt) {
 		goDoCommand('cmd_markThreadAsRead'); 
 		evt.stopPropagation();
 		goDoCommand('button_next');
+    this.ensureCurrentFolder();
 	} ,
 	
-	onGoPreviousMsg: function onGoPreviousMsg(button) {
+	onGoPreviousMsg: function onGoPreviousMsg(button, isSingleMessage) {
 		if (button.nextSibling.checked) 
 			goDoCommand('cmd_previousMsg');
 		else
 			goDoCommand('button_previous');
-			
+		if (isSingleMessage) {
+      this.ensureCurrentFolder();
+    }
 	} ,
 
-	onGoNextMsg: function onGoNextMsg(button) {
+	onGoNextMsg: function onGoNextMsg(button, isSingleMessage) {
 		if (button.previousSibling.checked) 
 			goDoCommand('cmd_nextMsg');
 		else
@@ -607,6 +628,9 @@ QuickFolders.Interface = {
     // mailTabs.js =>  DefaultController.doCommand(aCommand, aTab);
     // GoNextMessage(nsMsgNavigationType.nextMessage, false);
     // this will eventually call folderDisplay.navigate()
+		if (isSingleMessage) {
+      this.ensureCurrentFolder();
+    }
 	} ,
 	
 	onToggleNavigation: function onToggleNavigation(button) {
@@ -856,11 +880,9 @@ QuickFolders.Interface = {
 		prefs.setCurrentThemeId(themeSelector ? themeSelector.value : prefs.CurrentThemeId);
 		let style =  prefs.ColoredTabStyle,
 		    // refresh main window
-		    mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-											 .getService(Components.interfaces.nsIWindowMediator)
-											 .getMostRecentWindow("mail:3pane");
+		    mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
 		// we need to try and get at the main window context of QuickFolders, not the prefwindow instance!
-		if (mail3PaneWindow && mail3PaneWindow.document) { 
+		if (mail3PaneWindow) { 
 			let QI = mail3PaneWindow.QuickFolders.Interface;
       if (!minimal) {
         logCSS("updateMainWindow: update Folders...");
@@ -3908,8 +3930,7 @@ QuickFolders.Interface = {
     
 		// single message window:
 		if (QuickFolders.Preferences.isShowCurrentFolderToolbar('messageWindow')) {
-			let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-			let singleMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
+			let singleMessageWindow = util.getSingleMessageWindow();
 			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
 				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');
 				this.initCurrentFolderTab(singleMessageCurrentFolderTab, singleMessageWindow.gMessageDisplay.displayedMessage.folder);
@@ -3945,6 +3966,7 @@ QuickFolders.Interface = {
         if (!rect.width) {
           QuickFolders.Util.logDebug('Parent panel {' + panel.id + '} is not on screen; moving current folder button for tabMode: ' + tabMode);
           if (panel.id) {
+/*            
             // find multimessage browser element and check if it is visible
             // parent of visible toolbar
             let multimessage = document.getElementById('multimessage'),
@@ -3965,6 +3987,7 @@ QuickFolders.Interface = {
                 msgHeaderView.parentNode.insertBefore(panel, msgHeaderView.nextSibling);
               }
             }
+*/            
           }
         }
       }
@@ -4339,7 +4362,7 @@ QuickFolders.Interface = {
 			Services.prompt.alert(null,"QuickFolders",'ensureStyleSheetLoaded failed: ' + e);
 		}
 	} ,
-	
+
 	getStyleSheet: function getStyleSheet(engine, Name, Title) {
 		let sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title); // ignore engine
 		if (!sheet) {
@@ -4881,40 +4904,47 @@ QuickFolders.Interface = {
           selector = ''; // 3pane mode
       }
     }
-       
-		QuickFolders.Util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + visible + ", selector=" + selector + ")");
-		let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-						 .getService(Components.interfaces.nsIWindowMediator);
-		
-		let mail3PaneWindow = winMediator.getMostRecentWindow("mail:3pane"),
-		    mailMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow"),
-        doc;
+    let util = QuickFolders.Util,
+        mail3PaneWindow = util.getMail3PaneWindow(),
+        mailMessageWindow = util.getSingleMessageWindow(),
+        win, doc;
+		util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + visible + ", selector=" + selector + ")");
+    // store change in prefs
+    QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
+    
 		if (selector=='messageWindow') {
 			if (null == mailMessageWindow) return; // single message window not displayed
-			doc = mailMessageWindow.document;
+			win = mailMessageWindow;
 		}
 		else {
 			if (null == mail3PaneWindow) return; // main window not displayed
-			doc = mail3PaneWindow.document;
+			win = mail3PaneWindow;
 		}
+    doc = win.document;
 		if (!doc) return;
 		
 		// doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
 
-    let currentFolderBar = doc.getElementById(
+    let tabMode = QuickFolders.Interface.CurrentTabMode,
+        currentFolderBar = doc.getElementById(
                              (selector=='messageWindow') ? 
                              "QuickFolders-PreviewToolbarPanel-Single" :
                              "QuickFolders-PreviewToolbarPanel"
                            );
-
 		if (currentFolderBar) {
-			currentFolderBar.style.display = visible ? '-moz-box' : 'none';
-      if (visible) {
-        let rect = currentFolderBar.getBoundingClientRect();
-        if (!rect.width)
-          this.hoistCurrentFolderBar(this.CurrentFolderTab);
+      if (selector == 'singleMailTab' && tabMode =='message'
+          ||
+          selector == '' && tabMode == util.mailFolderTypeName
+          ||
+          selector == 'messageWindow'
+         ) {
+        currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+        if (visible && selector != 'messageWindow') {
+          let rect = currentFolderBar.getBoundingClientRect();
+          if (!rect.width)
+            this.hoistCurrentFolderBar(this.CurrentFolderTab);
+        }
       }
-			QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
 		}
 	} ,
 
@@ -4944,7 +4974,7 @@ QuickFolders.Interface = {
 			}
 		}
 
-		return tabMode.toString();
+		return tabMode ? tabMode.toString() : '';
 	} ,
 
 	initToolbarHiding: function initToolbarHiding() {
@@ -5080,32 +5110,6 @@ QuickFolders.Interface = {
 				QuickFolders.Util.logException("Exception in movefolder ", ex);
 			}			
 		}
-	} ,
-	
-	prepareCurrentFolderIcons: function prepareCurrentFolderIcons() {
-		function setIcon(targetId, source) {
-			if (!source)
-				return;
-			let element = document.getElementById(targetId);
-			if (element) {
-				// getComputedStyle doesn't help us as the icons might be large, but need small mode; we can use this as fallback though
-				let styles = window.getComputedStyle(source);
-				let fallbackImage = styles.getPropertyValue('list-style-image');
-				let fallbackRegion = styles.getPropertyValue('-moz-image-region');
-				
-				element.style.setProperty('list-style-image', fallbackImage, 'important');
-				if (fallbackRegion)
-					element.style.setProperty('-moz-image-region', fallbackRegion, 'important'); 
-			}
-		}
-		let doc = QuickFolders.Util.getMail3PaneWindow().document;
-		let forward = doc.getElementById('button-next');
-		if (!forward) 
-			forward = doc.getElementById('button-nextUnread');
-		let back = doc.getElementById('button-previous');
-		if (!back) 
-			back = doc.getElementById('button-previousUnread');
-		
 	} ,
 
 	showPalette: function showPalette(button) {

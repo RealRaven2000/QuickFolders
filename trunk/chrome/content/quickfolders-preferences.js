@@ -417,17 +417,17 @@ QuickFolders.Preferences = {
 		return this.setIntPreference("extensions.quickfolders." + p, v);
 	},
 
-	setShowCurrentFolderToolbar: function setShowCurrentFolderToolbar(b, singleMessage) {
+	setShowCurrentFolderToolbar: function setShowCurrentFolderToolbar(b, selector) {
 		let tag = "showCurrentFolderToolbar";
-		if (singleMessage)
-			tag = "messageWindow." + tag;
+		if (selector)
+			tag = tag + "." + selector;
 		return this.service.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
-	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(singleMessage) {
+	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(selector) {
 		let tag = "showCurrentFolderToolbar";
-		if (singleMessage)
-			tag = "messageWindow." + tag;
+		if (selector)
+			tag = tag + "." + selector;
 		return QuickFolders.Preferences.getBoolPref(tag, false);
 	},
 

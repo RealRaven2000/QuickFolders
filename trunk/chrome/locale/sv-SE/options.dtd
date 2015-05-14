@@ -41,13 +41,13 @@
 <!ENTITY qf.toolbarMinimumHeight.tooltip "För Mac-datorer som stöter på buggen [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Verktygsfält för aktuell mapp">
 <!ENTITY qf.checkbox.currentFolder.show "Visa verktygsfältet">
-<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
+<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Visa verktygsfält i flikar med endast ett meddelande">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "… även i fönster med endast ett meddelande">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Visa verktygsfält för aktuell mapp i fönstret som öppnas när du öppnar ett e-brev i ett nytt fönster.">
 <!ENTITY qf.checkbox.showRecentButton "Visa Nyligen använda mappar-knapp">
 <!ENTITY qf.checkbox.showMessageNavigation "Meddelandenavigeringsknappar">
-<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
-<!ENTITY qf.checkbox.showMailFolderCommands "Mail Folder Commands">
+<!ENTITY qf.checkbox.showFolderNavigation "Mappnavigeringsknappar">
+<!ENTITY qf.checkbox.showMailFolderCommands "E-postmappkommandon">
 <!ENTITY qf.checkbox.showIconButtons "Anpassa ikon-knappar">
 <!ENTITY qf.checkbox.showFilterButton "Visa Skapa filter-knapp">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Du kan även skapa filter via QuickFolders snabbmeny.">
@@ -92,7 +92,7 @@
 <!ENTITY qf.themes.flatButtons.label "Verktygsfältsknappar">
 <!ENTITY qf.options.label.themeAuthor "Temats skapare:">
 <!ENTITY qf.checkbox.showIcons "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)">
-<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
+<!ENTITY qf.label.buttonFontSizeNumeric "Textstorlek för knapp (0 för standard):">
 <!ENTITY qf.label.pixels "pixlar">
 <!ENTITY qf.options.themes.showBorders.checkbox "Visa alltid kantlinjer">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Anpassad hörnradie">
@@ -148,14 +148,13 @@
 <!ENTITY qf.licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY qf.licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY qf.licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
+<!ENTITY qf.premiumConfig "Premiumfunktioner">
 <!ENTITY qf.checkbox.quickJump "quickJump: Sök efter mappar med kortkommandot: Shift +">
-<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.checkbox.quickJump.tip "Kortkommando för quickJump-knappen ger snabb navigering via namnposter.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Flytta e-brev till vilken mapp som helst via kortkommando: Skift+">
+<!ENTITY qf.checkbox.quickMove.tip "Kortkommando för att dra e-brev till quickMove-knappen ger snabb arkivering till vilken mapp som helst via namnposter.">
 <!ENTITY qf.label.donate "Donera">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">
 <!ENTITY qf.checkbox.usePalette "Använd palett">
 <!ENTITY qf.options.theme.pastelColors "Pastellfärger">

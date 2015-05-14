@@ -30,13 +30,13 @@
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Diese Option nur aktivieren falls Ihr Mail Programm die Unterverzeichnisse selbst nicht korrekt sortiert.">
 <!ENTITY qf.checkbox.autoHideToolbar "QuickFolders ausblenden wenn unnötig">
 <!ENTITY qf.checkbox.autoHideToolbar.tooltip "Versteckt die Werkzeugleiste bei Aktivierung bestimmter Thunderbird Tabs, wie z.B. Kalender (Lightning), Addon Manager.">
-<!ENTITY qf.label.mainToolbar "Elemente der Werkzeugleiste">
+<!ENTITY qf.label.mainToolbar "Elemente der Tableiste">
 <!ENTITY qf.checkbox.showRecentTab "Letzte Ordner Tab anzeigen">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklick für weitere Konfiguration">
 <!ENTITY qf.checkbox.showQuickMove "quickMove Schaltfläche">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Diese Schaltfläche kann benutzt werden um Emails in einen beliebiges Verzeichnis zu ziehen; es können mails von verschiedenen Verzeichnissen angesammelt werden. Wenn die Liste komplett ist, einfach im Suchfeld den Verzeichnisnamen eingeben.">
-<!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menü Icon">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dies Menü kann auch durch Rechtsklick auf den Toolbar selbst aufgerufen werden">
+<!ENTITY qf.checkbox.tabMenuIcon "Tableisten Menü Icon">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Dies Menü kann auch durch Rechtsklick auf die Tableiste selbst aufgerufen werden">
 <!ENTITY qf.toolbarMinimumHeight "Minimalhöhe:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Für Mac System die von [Bug 25021] betroffen sind">
 <!ENTITY qf.label.currentFolderToolbar "Werkzeugleiste Aktiv-Verzeichnis">
@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Oben:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Unten:">
 <!ENTITY qf.button.default "Standardwerte">
-<!ENTITY qf.label.ToolbarBackground "Farbe Toolbar Hintergrund:">
+<!ENTITY qf.label.Toolbar "Tableiste">
+<!ENTITY qf.label.ToolbarBackground "Hintergrundsfarbe:">
 <!ENTITY qf.checkbox.transparent "Transparent">
+<!ENTITY qf.label.Toolbar.bottomLine "Höhe der Unterlinie:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "Höhe der der Linie unter den Tabs. Die Farbe kann mit der Schaltfläche hierunter eingestellt werden.">
 <!ENTITY qf.label.colors "Farben">
 <!ENTITY qf.label.UncoloredTab "Normale Tab Farbe:">
 <!ENTITY qf.label.UncoloredTab.tooltip "Aussehen inaktiver Tabs ohne individuelle Farbe">
@@ -126,7 +129,7 @@
 <!ENTITY qf.description.dragToPosition "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. 'Umbenennen' ändert den Titel des Tabs. 'Tab löschen' entfernt den Tab (nicht das Mail-Verzeichnis).">
 <!ENTITY qf.description.dragToPopup "Ziehen Sie Mails auf das Kontextmenü um sie in Unterverzeichnisse zu verschieben.">
 <!ENTITY qf.description.changeCategory "Per Rechts-klick kann man die Tabs kategorisieren. Am linken Ende der QuickFolders Werkzeugleiste wird dann ein Aufklappmenü angezeigt womit man eine Untergruppe von Tabs anzeigen kann.">
-<!ENTITY qf.description.rightClickOptions "Rechts-klick auf den Toolbar für die Optionen. Dort gibt es native style (Tabs als Schaltflächen) oder flat style (klarer und mit Drag Anzeige).">
+<!ENTITY qf.description.rightClickOptions "Rechts-klick auf die Tableiste für die Optionen. Dort gibt es native style (Tabs als Schaltflächen) oder flat style (klarer und mit Drag Anzeige).">
 <!ENTITY qf.description.tipMsg "Tip: Falls Sie sehr viele Verzeichnisse haben, probieren Sie auch die Nostalgy extension.">
 <!ENTITY qf.description.experimentalItems "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert.">
 <!ENTITY qf.description.donate "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:">
@@ -153,7 +156,9 @@
 <!ENTITY qf.checkbox.quickJump "quickJump: Springe in beliebiges Verzeichnis mit UMSCHALT +">
 <!ENTITY qf.checkbox.quickJump.tip "Schnelltaste für den Sprung in ein beliebiges Verzeichnis per Namenseingabe.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Verschiebe Mails in beliebiges Ziel mit UMSCHALT +">
-<!ENTITY qf.checkbox.quickMove.tip "Schnelltaste um mails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben.">
+<!ENTITY qf.checkbox.quickMove.tip "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben.">
+<!ENTITY qf.checkbox.readingList "Leseliste">
+<!ENTITY qf.checkbox.readingList.tooltip "Eine List wichtiger Emails. Ziehen Sie Emails auf diese Schaltfläche um sie später zu lesen.">
 <!ENTITY qf.label.donate "Spenden">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">

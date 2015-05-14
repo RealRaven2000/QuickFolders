@@ -6,7 +6,6 @@
 <!ENTITY qf.tab.layout "Sắp xếp các thẻ!">
 <!ENTITY qf.tab.quickhelp "Trợ giúp">
 <!ENTITY qf.tab.support "Hỗ trợ">
-<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.label.keyboard "Phím tắt">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Sử dụng phím tắt (Alt + 1 đến Alt + 9)">
 <!ENTITY qf.checkbox.showshortcutnumber "Hiển thị số phím tắt trên nhãn thư mục">
@@ -41,13 +40,10 @@
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Thanh công cụ thư mục hiện tại">
 <!ENTITY qf.checkbox.currentFolder.show "Hiển thị Thanh Công Cụ">
-<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…cả trong các cửa sổ Tin Nhắn Đơn">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Hiển thị thanh thư mục hiện tại trong cửa sổ khi bạn mở một Thư ở cửa sổ mới">
 <!ENTITY qf.checkbox.showRecentButton "Nút thư mục hiện tại">
 <!ENTITY qf.checkbox.showMessageNavigation "Nút Điều Hướng Tin Nhắn">
-<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
-<!ENTITY qf.checkbox.showMailFolderCommands "Mail Folder Commands">
 <!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showFilterButton "Nút 'Tạo Bộ Lọc'">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders.">
@@ -92,7 +88,6 @@
 <!ENTITY qf.themes.flatButtons.label "Các nút công cụ">
 <!ENTITY qf.options.label.themeAuthor "Tác giả giao diện:">
 <!ENTITY qf.checkbox.showIcons "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)">
-<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "điểm ảnh">
 <!ENTITY qf.options.themes.showBorders.checkbox "Luôn hiển thị các đường biên">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Tùy chỉnh bán kính góc">
@@ -139,23 +134,7 @@
 <!ENTITY qf.label.languagesLink "Thêm ngôn ngữ…">
 <!ENTITY qf.description.contactMe "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)…">
-<!ENTITY qf.label.insertLicense "Insert your personal License key here:">
-<!ENTITY qf.label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY qf.button.pasteLicense "paste">
-<!ENTITY qf.button.validateLicense "validate">
-<!ENTITY qf.label.licenseValid "Your license is valid until:">
-<!ENTITY qf.licenseValidation.passed "Thanks for registering QuickFolders Pro! All premium features are now unlocked.">
-<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY qf.premiumConfig "Premium Features">
-<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Quyên góp">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn… làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại.">
 <!ENTITY qf.checkbox.usePalette "Dùng bảng màu">
 <!ENTITY qf.options.theme.pastelColors "Phấn màu">

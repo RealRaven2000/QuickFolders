@@ -145,17 +145,12 @@
 <!ENTITY qf.button.validateLicense "validar">
 <!ENTITY qf.label.licenseValid "Sua licença é válida até:">
 <!ENTITY qf.licenseValidation.passed "Obrigado por registrar o QuickFolders Pro! Todas as funcionalidades premium estão agora desbloqueadas.">
-<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Endereço de email criptografado não corresponde a um legível.">
 <!ENTITY qf.premiumConfig "Funcionalidades Premium">
-<!ENTITY qf.checkbox.quickJump "quickJump: Procurar pastas com atalho: Shift +">
-<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.checkbox.quickJump "quickJump: Vai para qualquer pasta com atalho: Shift +">
+<!ENTITY qf.checkbox.quickJump.tip "Atalho para clique no botão quickJump para navegação mais rápida em qualquer lugar através de entrada de nome.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move email para qualquer pasta com atalho: SHIFT +">
 <!ENTITY qf.label.donate "Doar">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções… Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
 <!ENTITY qf.checkbox.usePalette "Usar palheta">
 <!ENTITY qf.options.theme.pastelColors "Cores pastel">

@@ -6,7 +6,6 @@
 <!ENTITY qf.tab.layout "Spécizze fel a füleket!">
 <!ENTITY qf.tab.quickhelp "Gyorssegéd">
 <!ENTITY qf.tab.support "Támogatás">
-<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.label.keyboard "Billentyű kombinációk">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)">
 <!ENTITY qf.checkbox.showshortcutnumber "Gyorsgomb sorszám megjelenítése a mappák címkéjén">
@@ -41,12 +40,10 @@
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Jelenlegi mappa eszköztár">
 <!ENTITY qf.checkbox.currentFolder.show "Eszköztár megjelenítése">
-<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "… az üzenetablakokban is">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "A jelenlegi mappa eszköztár megjelenítése abban az ablakban, ami az üzenet új ablakban való megjelenítésekor nyílik">
 <!ENTITY qf.checkbox.showRecentButton "Nemrég látogatott mappák gomb">
 <!ENTITY qf.checkbox.showMessageNavigation "Üzenet mozgatás gombok">
-<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
 <!ENTITY qf.checkbox.showMailFolderCommands "Üzenetmappa parancsok">
 <!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showFilterButton "&quot;Szűrők létrehozása&quot; gomb">
@@ -92,7 +89,6 @@
 <!ENTITY qf.themes.flatButtons.label "Eszköztár gombok">
 <!ENTITY qf.options.label.themeAuthor "Téma szerzője:">
 <!ENTITY qf.checkbox.showIcons "Ikonok megjelenítése (Beérkezett üzenetek, Elküldött üzenetek, Spam, Törölt elemek, Piszkozatok, Archívum, Sablonok)">
-<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "pixelek">
 <!ENTITY qf.options.themes.showBorders.checkbox "Mindig jelenítse meg a szegélyeket">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Egyedi corner radius">
@@ -139,23 +135,7 @@
 <!ENTITY qf.label.languagesLink "Fordítás hozzáadása…">
 <!ENTITY qf.description.contactMe "Személyesen is elérhet a axelg@gofree.indigo.ie címen:">
 <!ENTITY qf.label.contactLink "Lépjen kapcsolatba velem (angolul vagy németül)…">
-<!ENTITY qf.label.insertLicense "Insert your personal License key here:">
-<!ENTITY qf.label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY qf.button.pasteLicense "paste">
-<!ENTITY qf.button.validateLicense "validate">
-<!ENTITY qf.label.licenseValid "Your license is valid until:">
-<!ENTITY qf.licenseValidation.passed "Thanks for registering QuickFolders Pro! All premium features are now unlocked.">
-<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY qf.premiumConfig "Premium Features">
-<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
 <!ENTITY qf.label.donate "Támogatás">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">
 <!ENTITY qf.checkbox.usePalette "Paletta használata">
 <!ENTITY qf.options.theme.pastelColors "Pasztell színek">

@@ -114,16 +114,22 @@ QuickFolders.quickMove = {
   },
   
   showSearch: function showSearch() {
+    QuickFolders.Util.logDebugOptional("interface.findFolder,quickMove", "quickMove.showSearch()");
     QuickFolders.Interface.findFolder(true, 'quickMove');
     QuickFolders.Interface.updateFindBoxMenus(true);
   },
   
   hideSearch: function hideSearch() {
+    QuickFolders.Util.logDebugOptional("interface.findFolder,quickMove", "quickMove.hideSearch()");
     QuickFolders.Interface.findFolder(false);
     QuickFolders.Interface.updateFindBoxMenus(false);
   },
   
   toggleSuspendMove: function(menuitem) {
+    if (!menuitem) {
+      menuitem = document.getElementById('QuickFolders-quickMove-suspend');
+      if (!menuitem) return;
+    }
     this.suspended = !this.suspended;
     menuitem.checked = this.suspended;
     if (this.suspended) { // show the box
@@ -159,7 +165,7 @@ QuickFolders.quickMove = {
       }
       if (QuickFolders.quickMove.hasMails) {
         QuickFolders.Interface.isMoveActive = true;
-        QuickFolders.Interface.toggleMoveMode(true);
+        QuickFolders.Interface.toggleMoveModeSearchBox(true);
       }
     }
   },
@@ -174,7 +180,7 @@ QuickFolders.quickMove = {
        
     if (!QuickFolders.quickMove.hasMails) {
       QI.isMoveActive = false;
-      QI.toggleMoveMode(false);
+      QI.toggleMoveModeSearchBox(false);
     }
   },
   
@@ -186,11 +192,11 @@ QuickFolders.quickMove = {
     // indicate number of messages on the button?
     QI.QuickMoveButton.label = 
       isActive ?
-      '(' + QuickFolders.quickMoveUris.length +')' : '';
+      QuickFolders.quickMoveUris.length.toString() : '';
     // toggle quickMove searchbox visible
     QuickFolders.Util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
     QI.updateFindBoxMenus(isActive);
-    QI.toggleMoveMode(isActive);
+    QI.toggleMoveModeSearchBox(isActive);
     QI.findFolder(isActive, isActive ? 'quickMove' : null);
   }  
 }; // quickMove

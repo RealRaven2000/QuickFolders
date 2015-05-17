@@ -46,7 +46,7 @@ QuickFolders.Preferences = {
 					// default the name!!
 					if (!entries[i].name) {
 						// retrieve the name from the folder uri (prettyName)
-						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, true);
+						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
 						if (f)
 							entries[i].name = f.prettyName;
 					}
@@ -182,6 +182,10 @@ QuickFolders.Preferences = {
 	get isShowToolIcon() {
 		return this.getBoolPref('showToolIcon');
 	} ,
+  
+  get isShowReadingList() {
+		return this.getBoolPref('bookmarks.showButton');
+  } ,
   
   get isShowQuickMove() {
     return this.getBoolPref('showQuickMove');
@@ -319,14 +323,17 @@ QuickFolders.Preferences = {
 		    sReturnValue="";
 
     try {
-			let localPref = this.service.getCharPref(sStyleName);
-			if(localPref)
-				sReturnValue=localPref;
+			let localPref = 
+        (typeof sDefault == "string") ?
+        this.service.getCharPref(sStyleName) :
+        this.service.getIntPref(sStyleName);
+			if (localPref || (localPref===0))
+				sReturnValue = localPref;
 			else
-				sReturnValue=sDefault
+				sReturnValue = sDefault;
 		}
     catch(ex) {
-      sReturnValue=sDefault
+      sReturnValue = sDefault;
     }
 		/* QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
 				"Style Name: " + sStyleName + "\n" +

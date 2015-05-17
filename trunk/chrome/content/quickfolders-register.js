@@ -230,7 +230,8 @@ QuickFolders.Licenser = {
     }
     // extract encrypted portion after ;
     const ELS = this.ELicenseState;
-    let util = QuickFolders.Util;
+    let util = QuickFolders.Util,
+        logIdentity = util.logIdentity.bind(util);
     if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;
       logResult(this);
@@ -296,16 +297,36 @@ QuickFolders.Licenser = {
     // ******* MATCH MAIL ACCOUNT  ********
     // check mail accounts for setting
     // if not found return MailNotConfigured
-    let isMatched = false;
+    
+    let isMatched = false, 
+        iAccount=0,
+        isDbgAccounts = QuickFolders.Preferences.isDebugOption('premium.licenser'),
+        hasDefaultIdentity = false;
     for each (let ac in this.Accounts) { 
       if (ac.defaultIdentity) {
+        hasDefaultIdentity = true;
+        break;
+      }
+    }
+    if (!hasDefaultIdentity) {
+      this.AllowSecondaryMails = true;
+      util.logDebug("Premium License Check: There is no account with default identity!\n" +
+                    "You may want to check your account configuration as this might impact some functionality.\n" + 
+                    "Allowing use of secondary email addresses...");
+    }
+    for each (let ac in this.Accounts) { 
+      iAccount++;
+      if (ac.defaultIdentity) {
+        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
+          + logIdentity(ac.defaultIdentity));
         if (ac.defaultIdentity.email.toLowerCase()==this.DecryptedMail.toLowerCase()) {
           isMatched = true;
           break;
         }
       }
       else {
-        if (!this.AllowSecondaryMails) continue;
+        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] has no default identity! ");
+        if (!this.AllowSecondaryMails && !isDbgAccounts) continue;
         // ... allow using non default identities 
         // we might protect this execution branch 
         // with a config preference!
@@ -316,7 +337,10 @@ QuickFolders.Licenser = {
             // populate the dropdown with nsIMsgIdentity details
             let id = ids.queryElementAt(i, Components.interfaces.nsIMsgIdentity);
             if (!id) continue;
-            if (id.email.toLowerCase()==this.DecryptedMail.toLowerCase()) {
+            if (isDbgAccounts) {
+              util.logDebugOptional("premium.licenser", "Account[" + ac.key + "], Identity[" + i + "] = " + logIdentity(id));
+            }
+            if (this.AllowSecondaryMails && id.email.toLowerCase()==this.DecryptedMail.toLowerCase()) {
               isMatched = true;
               break;
             }

@@ -67,7 +67,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "4.0.3",
+	HARDCODED_EXTENSION_VERSION : "4.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -814,6 +814,7 @@ QuickFolders.Util = {
 		let step = 0,
         Ci = Components.interfaces,
         util = QuickFolders.Util; 
+    if (QuickFolders.Preferences.isDebug) debugger;
 		try {
 			try {
         util.logDebugOptional('dnd,quickMove', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);
@@ -1167,6 +1168,9 @@ QuickFolders.Util = {
 	      aCategory = '',
 	      scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 	  scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
+    if (this.Application == 'Postbox') {
+      this.logToConsole(scriptError, 'EXCEPTION');
+    }
 	  consoleService.logMessage(scriptError);
 	} ,
 
@@ -1221,6 +1225,24 @@ QuickFolders.Util = {
 		//window.opener.gExtensionsView.builder.rebuild();
 		window.opener.gExtensionsViewController.doCommand('cmd_about');
 	},
+  
+  logIdentity: function logIdentity(id) {  // debug a nsIMsgIdentity 
+    if (!id) return "EMPTY id!"
+    let txt = '';
+    try { // building this incremental in case of problems. I know this is bad for performance, because immutable strings.
+      txt += "key: " + id.key + '\n';
+      txt += "email:" + (id.email ? id.email : 'EMPTY') + '\n';
+      txt += "fullName:" + (id.fullName ? id.fullName : 'EMPTY') + '\n';
+      txt += "valid:" + (id.valid ? id.valid : 'EMPTY') + '\n';
+      txt += "identityName: " + id.identityName + '\n';
+    }
+    catch(ex) {
+      this.logException('validateLicense (identity info:)\n' + txt, ex);
+    }
+    finally {
+      return txt;
+    }
+  } ,
 
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
@@ -1480,8 +1502,9 @@ QuickFolders.Util = {
   
   // open an email in a new tab
   openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
-    let tabmail = QuickFolders.Util.$("tabmail");
-    switch (QuickFolders.Util.Application) {
+    let util = QuickFolders.Util,
+        tabmail = util.$("tabmail");
+    switch (util.Application) {
       case 'Thunderbird':
         tabmail.openTab('message', {msgHdr: hdr, background: false});  
         break;
@@ -1493,7 +1516,7 @@ QuickFolders.Util = {
         tabmail.openTab('3pane', modeBits, null, hdr);
         break;
       case 'Postbox':
-        let win = QuickFolders.Interface.getMail3PaneWindow();
+        let win = util.getMail3PaneWindow();
         // from src/mail/base/content/mailWindowOverlay.js
         win.MsgOpenNewTabForMessageWithAnimation(
                hdr.messageKey, 

@@ -381,18 +381,30 @@ QuickFolders.Options = {
     return strLicense;
   } ,
   
+  selectQuickMoveFormat: function selectQuickMoveFormat(menuList) {
+    let prefString1 = menuList.getAttribute('preference'),
+        prefName1 = document.getElementById(prefString1).getAttribute('name'),
+        val = menuList.value;
+    QuickFolders.Util.logDebug('Setting quick move format pref[' + prefName1 + ']: ' + val + '...');
+    QuickFolders.Preferences.setIntPreference(prefName1, parseInt(val));
+  } ,
+  
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
     let getElement    = document.getElementById.bind(document),
         premiumConfig = getElement('premiumConfig'),
         quickJump     = getElement('chkQuickJumpHotkey'),
         quickMove     = getElement('chkQuickMoveHotkey'),
         quickJumpTxt  = getElement('qf-QuickJumpShortcut'),
-        quickMoveTxt  = getElement('qf-QuickMoveShortcut');
+        quickMoveTxt  = getElement('qf-QuickMoveShortcut'),
+        quickMoveFormat = getElement('menuQuickMoveFormat'),
+        quickMoveDepth = getElement('quickmove-path-depth');
     premiumConfig.disabled = !isEnabled;
     quickJump.disabled = !isEnabled;
     quickMove.disabled = !isEnabled;
     quickJumpTxt.disabled = !isEnabled;
     quickMoveTxt.disabled = !isEnabled;
+    quickMoveFormat.disabled = !isEnabled;
+    quickMoveDepth.disabled = !isEnabled;
   },
   
   decryptLicense: function decryptLicense(testMode) {
@@ -558,13 +570,16 @@ QuickFolders.Options = {
 				getElement("button-font-size-label").disabled
 					= !(myTheme.supportsFeatures.supportsFontSize);
 
-				getElement("qf-pimpMyRadius").collapsed
+				getElement("qf-tweakRadius").collapsed
 					= !(myTheme.supportsFeatures.cornerRadius);
+          
+        getElement("qf-tweakToolbarBorder").collapsed
+					= !(myTheme.supportsFeatures.toolbarBorder);
 
-				getElement("qf-pimpMyBorders").collapsed
+				getElement("qf-tweakBorders").collapsed
 					= !(myTheme.supportsFeatures.borderToggle);
 
-				getElement("qf-pimpMyColors").collapsed
+				getElement("qf-tweakColors").collapsed
 					= !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
 
 				getElement("qf-individualColors").collapsed
@@ -1024,12 +1039,14 @@ QuickFolders.Options = {
   
 	dumpFolderEntries: function dumpFolderEntries() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
-		let service = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
+		let service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
         util = QuickFolders.Util;
 
 		try {
-			let sFolderString = service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data,
-			    clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+			let sFolderString = service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data,
+			    clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 
 			util.logToConsole("Folder String: " & sFolderString);
       try {
@@ -1064,6 +1081,8 @@ QuickFolders.Options = {
 	},
 	
 	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
 	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
     let util = QuickFolders.Util;
 	  util.logDebug('showAboutConfig(clickedElement: ' 
@@ -1073,14 +1092,14 @@ QuickFolders.Options = {
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
-		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
+		let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
 		    w = mediator.getMostRecentWindow(name),
         // set parent window
 		    win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
          		? clickedElement.ownerDocument.defaultView 
 						: window;
 		if (!w) {
-			let watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher),
+			let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
           width = (util.HostSystem == 'linux') ? "650px" : "500px",
           height = (util.HostSystem == 'linux') ? "320px" : "300px",
           features = "alwaysRaised,dependent,chrome,resizable,width="+ width + ",height=" + height;

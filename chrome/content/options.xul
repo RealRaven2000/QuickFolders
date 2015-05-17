@@ -69,6 +69,7 @@
 						<preference id="QuickFolders-Preferences-ShowNewMail" name="extensions.quickfolders.showNewMailHighlight" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowRecentTab" name="extensions.quickfolders.showRecentTab" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowQuickMove" name="extensions.quickfolders.showQuickMove" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowBookmarks" name="extensions.quickfolders.bookmarks.showButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowToolbarMenuIcon" name="extensions.quickfolders.showToolIcon" type="bool" />
 						<preference id="QuickFolders-Preferences-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool" />
 						<preference id="QuickFolders-Preferences-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool" />
@@ -89,6 +90,8 @@
 						<preference id="QuickFolders-Preferences-QuickJumpShortcutKey" name="extensions.quickfolders.quickJump.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickMoveShortcut" name="extensions.quickfolders.quickMove.useHotkey" type="bool" />
 						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
+						<preference id="QuickFolders-Preferences-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
 						<preference id="QuickFolders-Preferences-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string" />
 					</preferences>
@@ -439,6 +442,7 @@
 						<preference id="QuickFolders-Preferences-Theme" name="extensions.quickfolders.style.theme" type="string" />
 						<preference id="QuickFolders-Preferences-ShowIcons" name="extensions.quickfolders.showIcons" type="bool" />
 						<preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSizeN" type="int" />
+						<preference id="QuickFolders-Preferences-ToolbarBottom" name="extensions.quickfolders.style.Toolbar.bottomLineWidth" type="int" />
 						<preference id="QuickFolders-Preferences-TransparentButtons" name="extensions.quickfolders.transparentButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowBorders" name="extensions.quickfolders.style.borders" type="bool" />
 						<preference id="QuickFolders-Preferences-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool" />
@@ -526,7 +530,7 @@
 											 onchange="QuickFolders.Options.changeTextPreference(this);" />
 							<label value="px" />
 							<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
-							<hbox id="qf-pimpMyBorders" align="center">
+							<hbox id="qf-tweakBorders" align="center">
 								<label value="&qf.label.pixels;" />
 								<checkbox id="chkShowBorders"
 													label="&qf.options.themes.showBorders.checkbox;"
@@ -536,7 +540,7 @@
 							</hbox>
 						</hbox>
 						<separator class="thin" />
-						<hbox align="center" id="qf-pimpMyRadius">
+						<hbox align="center" id="qf-tweakRadius">
 							<checkbox id="chkCustomRadius"
 												label="&qf.options.themes.customCornerRadius.checkbox;"
 												preference="QuickFolders-Preferences-CustomizedRadius"
@@ -564,19 +568,36 @@
 											oncommand="QuickFolders.Options.setDefaultButtonRadius();" />
 						</hbox>
 					</groupbox>
-					<hbox align="center">
-						<label value="&qf.label.ToolbarBackground;" />
-						<colorpicker id="toolbar-colorpicker"
-												 type="button"
-												 palettename="standard"
-												 style="vertical-align:middle"
-												 onchange="return QuickFolders.Options.styleUpdate('Toolbar', 'background-color', this.color, 'qf-StandardColors');" />
-						<checkbox label="&qf.checkbox.transparent;"
-											preference="QuickFolders-Preferences-TransparentToolbar"
-											instantApply="true"
-											oncommand="return QuickFolders.Options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);" />
-					</hbox>
-					<groupbox id="qf-pimpMyColors">
+					<groupbox>
+						<caption label="&qf.label.Toolbar;" />
+						<hbox align="center">
+							<label value="&qf.label.ToolbarBackground;" />
+							<colorpicker id="toolbar-colorpicker"
+													 type="button"
+													 palettename="standard"
+													 style="vertical-align:middle"
+													 onchange="return QuickFolders.Options.styleUpdate('Toolbar', 'background-color', this.color, 'qf-StandardColors');" />
+							<checkbox label="&qf.checkbox.transparent;"
+												preference="QuickFolders-Preferences-TransparentToolbar"
+												instantApply="true"
+												oncommand="return QuickFolders.Options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);" />
+							<spacer />
+							<hbox id="qf-tweakToolbarBorder" align="center">
+								<label id="toolbar-bottom-label"
+											 value="&qf.label.Toolbar.bottomLine;"
+											 control="toolbar-bottom-size" />
+								<textbox id="toolbar-bottom-size"
+												 tooltiptext="&qf.label.Toolbar.bottomLine.tip;"
+												 type="number"
+												 size="3"
+												 preference="QuickFolders-Preferences-ToolbarBottom"
+												 instantApply="true"
+												 onchange="QuickFolders.Options.changeTextPreference(this);" />										 
+								<label value="px" />
+							</hbox>			 
+						</hbox>						
+					</groupbox>
+					<groupbox id="qf-tweakColors">
 						<caption label="&qf.label.colors;" />
 						<!-- styling hacks, we need these for the rules to apply to our preview 'tabs' -->
 						<hbox flex="1" class='quickfolders-flat'>
@@ -968,6 +989,46 @@
 												 instantApply="true" 
 												 disabled="true" />
 							</hbox>
+							<hbox align="center">
+								<label control="menuQuickMoveFormat"
+								       value="&qf.quickMove.path.format;"/>
+								<menulist id="menuQuickMoveFormat"
+													sizetopopup="none"
+													preference="QuickFolders-Preferences-QuickMove-PathType"
+													instantApply="true"
+													disabled="true"
+													oncommand="QuickFolders.Options.selectQuickMoveFormat(this);">
+									<menupopup>
+										<menuitem label="&qf.pathFormat.folderName;"
+															value="0"/>
+										<menuitem label="&qf.pathFormat.folderAndAccount;"
+															value="1"/>
+										<menuitem label="&qf.pathFormat.AccountAndPath;"
+															value="2"/>
+										<menuitem label="&qf.pathFormat.PathOnly;"
+															value="3"/>
+										<menuitem label="&qf.pathFormat.URI;"
+															value="4"/>
+									</menupopup>
+								</menulist>
+								<label id="button-font-size-label"
+											 control="quickmove-path-depth"
+											 value ="&qf.pathFormat.maxDepth;" />
+								<textbox id="quickmove-path-depth"
+												 tooltiptext="&qf.pathFormat.tooltip;"
+												 type="number"
+												 size="3"
+												 preference="QuickFolders-Preferences-QuickMove-PathDepth"
+												 instantApply="true"
+												 disabled="true"/>
+							</hbox>
+							<checkbox id="chkBookmarks"
+												label="&qf.checkbox.readingList;"
+												tooltiptext="&qf.checkbox.readingList.tooltip;"
+							          preference="QuickFolders-Preferences-ShowBookmarks"
+												instantApply="true"
+												oncommand="QuickFolders.Options.toggleBoolPreference(this);"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
 						</groupbox>
 						<spacer flex="1" />
 						<vbox height="40">

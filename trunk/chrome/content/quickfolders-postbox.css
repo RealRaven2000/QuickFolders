@@ -17,11 +17,15 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     -moz-appearance: none !important;
 }
 
-#QuickFolders-Toolbar.quickfolders-realTabs,
-#QuickFolders-Toolbar.quickfolders-flat
+#QuickFolders-Toolbar.quickfolders-realTabs
 {
   -moz-appearance: toolbar !important;
 }
+#QuickFolders-Toolbar.quickfolders-flat
+{
+  -moz-appearance: none !important; /* support coloring and bottom border */
+}
+
 
 /** Postbox fixes */
 

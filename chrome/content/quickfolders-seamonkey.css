@@ -13,6 +13,11 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     margin: 0px;
 }
 
+#QuickFolders-Toolbar.quickfolders-flat
+{
+  -moz-appearance: none !important; /* support coloring and bottom border */
+}
+
 toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text
 {
 	display: block !important;

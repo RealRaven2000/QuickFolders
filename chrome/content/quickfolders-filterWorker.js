@@ -37,6 +37,8 @@ QuickFolders.FilterWorker = {
       }   
     }
     let util = QuickFolders.Util,
+        QI = QuickFolders.Interface,
+        prefs = QuickFolders.Preferences,
 		    notificationId,
         notifyBox;
         
@@ -66,7 +68,7 @@ QuickFolders.FilterWorker = {
 			&& 
 			!QuickFolders.FilterWorker.FilterMode 
 			&&
-			QuickFolders.Preferences.getBoolPref("filters.showMessage")) 
+			prefs.getBoolPref("filters.showMessage")) 
 		{
 			
 			let title = util.getBundleString("qf.filters.toggleMessage.title",
@@ -140,13 +142,16 @@ QuickFolders.FilterWorker = {
 
 		QuickFolders.FilterWorker.FilterMode = active;
 		
-		if (QuickFolders.Interface.CogWheelPopupButton)
-			QuickFolders.Interface.CogWheelPopupButton.collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
-		if (QuickFolders.Interface.FilterToggleButton)
-			QuickFolders.Interface.FilterToggleButton.collapsed = !active;
-		if (QuickFolders.Interface.CategoryBox)
-			QuickFolders.Interface.CategoryBox.setAttribute('mode', active ? 'filter' : '');
-		let btnFilterToggle = QuickFolders.Interface.CurrentFolderFilterToggleButton;
+    /* Configure Optional buttons on Toolbar */
+		if (QI.CogWheelPopupButton)
+			QI.CogWheelPopupButton.collapsed = active || !prefs.isShowToolIcon;
+    if (QI.ReadingListButton)
+      QI.ReadingListButton.collapsed = !prefs.isShowReadingList;
+		if (QI.FilterToggleButton)
+			QI.FilterToggleButton.collapsed = !active;
+		if (QI.CategoryBox)
+			QI.CategoryBox.setAttribute('mode', active ? 'filter' : '');
+		let btnFilterToggle = QI.CurrentFolderFilterToggleButton;
 		if (btnFilterToggle)
 			btnFilterToggle.setAttribute('mode', active ? 'filter' : '');
       

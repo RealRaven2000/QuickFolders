@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "上部:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "下部:">
 <!ENTITY qf.button.default "デフォルト">
+<!ENTITY qf.label.Toolbar "ツールバー">
 <!ENTITY qf.label.ToolbarBackground "ツールバーの背景色:">
 <!ENTITY qf.checkbox.transparent "透過">
+<!ENTITY qf.label.Toolbar.bottomLine "下線の幅:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "タブの下線の幅です。アクティブカラーピッカで色を変更してください。">
 <!ENTITY qf.label.colors "配色">
 <!ENTITY qf.label.UncoloredTab "色無しのタブ">
 <!ENTITY qf.label.UncoloredTab.tooltip "タブに特定の色を設定しません">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "quickJump ボタンは、クリックすると名前エントリのどこにでもすばやく移動できるショートカットです。">
 <!ENTITY qf.checkbox.quickMove "quickMove: 次のショートカットキーでメールを任意のフォルダへ移動します: SHIFT +">
 <!ENTITY qf.checkbox.quickMove.tip "quickMove ボタンは、このボタンにメールをドラッグすると任意の名前エントリにメールを移動できるショートカットです。">
+<!ENTITY qf.quickMove.path.format "表示形式:">
+<!ENTITY qf.pathFormat.folderName "フォルダ名">
+<!ENTITY qf.pathFormat.folderAndAccount "フォルダ名 - メールアカウント">
+<!ENTITY qf.pathFormat.AccountAndPath "アカウント - フォルダのパス">
+<!ENTITY qf.pathFormat.PathOnly "フォルダのパス">
+<!ENTITY qf.pathFormat.URI "フォルダの URI">
+<!ENTITY qf.pathFormat.maxDepth "パス最大深さ:">
+<!ENTITY qf.pathFormat.tooltip "フォルダパスに表示されるフォルダの最大数です。">
+<!ENTITY qf.checkbox.readingList "後で読むリスト">
+<!ENTITY qf.checkbox.readingList.tooltip "後で読むメールのリストです。大事なメールをこのボタンにドラッグしてください。">
 <!ENTITY qf.label.donate "寄付">
 <!ENTITY qf.label.instantApplyMsg "注意: [閉じる] ボタンしか表示されないときは、色設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション…] を選択してください。[OK] ボタンを表示して色設定を保存します。">
 <!ENTITY qf.checkbox.usePalette "パレットを使用">

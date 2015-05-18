@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Bovenzijde:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Onderzijde:">
 <!ENTITY qf.button.default "Standaardwaarden">
+<!ENTITY qf.label.Toolbar "Werkbalk">
 <!ENTITY qf.label.ToolbarBackground "Werkbalkachtergrond:">
 <!ENTITY qf.checkbox.transparent "transparant">
+<!ENTITY qf.label.Toolbar.bottomLine "Breedte onderregel:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "De breedte van de regel onder tabbladen. Wijzig de kleur met de Actieve Tabbladkleurkiezer hieronder.">
 <!ENTITY qf.label.colors "Kleuren">
 <!ENTITY qf.label.UncoloredTab "Ongekleurd tabblad">
 <!ENTITY qf.label.UncoloredTab.tooltip "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "Sneltoets voor aanklikken van de knop quickJump voor de snelste navigatie via naamingave.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Verplaats e-mailberichten naar elke map met de sneltoets: Shift +">
 <!ENTITY qf.checkbox.quickMove.tip "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in elke map via naamingave.">
+<!ENTITY qf.quickMove.path.format "Formaat Weergave:">
+<!ENTITY qf.pathFormat.folderName "Folder Naam">
+<!ENTITY qf.pathFormat.folderAndAccount "Folder Naam - Mail Account">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder pad">
+<!ENTITY qf.pathFormat.PathOnly "Folder pad">
+<!ENTITY qf.pathFormat.URI "Folder URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximale diepte van pad:">
+<!ENTITY qf.pathFormat.tooltip "Maximaal aantal folders weergegeven in folder pad.">
+<!ENTITY qf.checkbox.readingList "Leeslijst">
+<!ENTITY qf.checkbox.readingList.tooltip "Een lijst met e-mailberichten die later gelezen moeten worden. Versleep uw belangrijke berichten naar deze knop.">
 <!ENTITY qf.label.donate "Doneren">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">

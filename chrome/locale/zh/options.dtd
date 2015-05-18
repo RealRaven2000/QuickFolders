@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "上：">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "下：">
 <!ENTITY qf.button.default "預設值">
+<!ENTITY qf.label.Toolbar "工具列">
 <!ENTITY qf.label.ToolbarBackground "工具列背景：">
 <!ENTITY qf.checkbox.transparent "透明">
+<!ENTITY qf.label.Toolbar.bottomLine "底線寬度：">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "在分頁下方的線寬度。使用下方的「使用中分頁顏色點選器」來改變它的顏色。">
 <!ENTITY qf.label.colors "顏色">
 <!ENTITY qf.label.UncoloredTab "未上色的分頁">
 <!ENTITY qf.label.UncoloredTab.tooltip "未特別選定顏色的（未作用中）分頁外觀">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "透過點選資料夾名稱的quickJump按鈕捷徑快速地來瀏覽任何資料夾">
 <!ENTITY qf.checkbox.quickMove "quickMove:使用快捷鍵來將信件移動到任何資料夾：SHIFT +">
 <!ENTITY qf.checkbox.quickMove.tip "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾">
+<!ENTITY qf.quickMove.path.format "顯示格式：">
+<!ENTITY qf.pathFormat.folderName "資料夾名稱">
+<!ENTITY qf.pathFormat.folderAndAccount "資料夾名稱 - 信件帳號">
+<!ENTITY qf.pathFormat.AccountAndPath "帳號 - 資料夾路徑">
+<!ENTITY qf.pathFormat.PathOnly "資料夾路徑">
+<!ENTITY qf.pathFormat.URI "資料夾 URI">
+<!ENTITY qf.pathFormat.maxDepth "最大路徑深度：">
+<!ENTITY qf.pathFormat.tooltip "在資料夾路徑中所顯示的最大資料夾數目：">
+<!ENTITY qf.checkbox.readingList "閱讀清單">
+<!ENTITY qf.checkbox.readingList.tooltip "計畫稍後閱讀的郵件清單。拉動你的重要郵件到這個按鈕上。">
 <!ENTITY qf.label.donate "捐助">
 <!ENTITY qf.label.instantApplyMsg "注意：如果您只在下面看到「關閉」的按鈕，表示色彩的設定未能正常運作，解決方法是，試著以滑鼠右鍵點選快捷資料夾工具列的空白區域來選擇選項，這能使「確定」按鈕顯示，以便儲存顏色設定。">
 <!ENTITY qf.checkbox.usePalette "使用調色盤">

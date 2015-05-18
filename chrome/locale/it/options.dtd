@@ -3,7 +3,7 @@
 <!ENTITY qf.options.versionnumber.tooltip "Per visualizzare la cronologia delle versioni fare clic col pulsante destro del mouse">
 <!ENTITY qf.tab.general "Generali">
 <!ENTITY qf.tab.advanced "Avanzate">
-<!ENTITY qf.tab.layout "Luccichio schede!">
+<!ENTITY qf.tab.layout "Arrichisci le mie schede!">
 <!ENTITY qf.tab.quickhelp "Guida rapida">
 <!ENTITY qf.tab.support "Supporto">
 <!ENTITY qf.tab.gopro "QuickFolders Pro">
@@ -69,7 +69,7 @@
 <!ENTITY qf.label.menus.options "Opzioni">
 <!ENTITY qf.caption.currentFolderBackground "Sfondo della barra degli strumenti della cartella corrente">
 <!ENTITY qf.button.currentFolderBackground.set "Configurazione">
-<!ENTITY qf.currentFolderBackground.default "di default">
+<!ENTITY qf.currentFolderBackground.default "predefinita">
 <!ENTITY qf.currentFolderBackground.dark "scura">
 <!ENTITY qf.currentFolderBackground.translucent "traslucida">
 <!ENTITY qf.currentFolderBackground.custom "personalizzata">
@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Alto:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Basso:">
 <!ENTITY qf.button.default "Predefiniti">
+<!ENTITY qf.label.Toolbar "Barra degli strumenti">
 <!ENTITY qf.label.ToolbarBackground "Sfondo della barra degli strumenti:">
 <!ENTITY qf.checkbox.transparent "Trasparente">
+<!ENTITY qf.label.Toolbar.bottomLine "Ampiezza della riga inferiore:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "Ampiezza della riga sotto le schede. È possibile modificarne il colore con il selettore del colore della scheda attiva sottostante.">
 <!ENTITY qf.label.colors "Colori">
 <!ENTITY qf.label.UncoloredTab "Scheda non colorata">
 <!ENTITY qf.label.UncoloredTab.tooltip "Aspetto delle schede (inattive) senza un colore specifico selezionato">
@@ -115,7 +118,7 @@
 <!ENTITY qf.options.LayoutColorAppearance "Aspetto del colore della singola scheda">
 <!ENTITY qf.options.LayoutColorAppearanceStriped "(stile a banda)">
 <!ENTITY qf.options.LayoutColorAppearanceFilled "(stile pieno)">
-<!ENTITY qf.label.ActiveTabColor "Colore scheda attiva:">
+<!ENTITY qf.label.ActiveTabColor "Colore della scheda attiva:">
 <!ENTITY qf.label.HoveredTabColor "Colore scheda ove si muove il mouse:">
 <!ENTITY qf.label.DragOverBackground "Colore scheda trascinata:">
 <!ENTITY qf.label.setcolors "Configurazione [Colore testo], Colore sfondo">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "Scorciatoia per attivare il pulsante quickJump che consente di navigare ovunque alla massima velocità in base al nome">
 <!ENTITY qf.checkbox.quickMove "quickMove: spostamento dei messaggi di posta in qualsiasi cartella mediante la scorciatoia MAIUSC +">
 <!ENTITY qf.checkbox.quickMove.tip "Scorciatoia per trascinare i messaggi di posta sul pulsante quickMove che consente una loro archiviazione in qualsiasi cartella alla massima velocità in base al nome">
+<!ENTITY qf.quickMove.path.format "Formato di visualizzazione:">
+<!ENTITY qf.pathFormat.folderName "Nome cartella">
+<!ENTITY qf.pathFormat.folderAndAccount "Nome cartella - Account di posta elettronica">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Percorso cartella">
+<!ENTITY qf.pathFormat.PathOnly "Percorso cartella">
+<!ENTITY qf.pathFormat.URI "URI cartella">
+<!ENTITY qf.pathFormat.maxDepth "Massima profondità percorso:">
+<!ENTITY qf.pathFormat.tooltip "Massimo numero di cartelle visualizzate nel percorso della cartella">
+<!ENTITY qf.checkbox.readingList "Da leggere">
+<!ENTITY qf.checkbox.readingList.tooltip "Elenco di messaggi di posta elettronica da leggere successivamente. Trascinare i propri messaggi di posta elettronica importanti su questo pulsante.">
 <!ENTITY qf.label.donate "Dona">
 <!ENTITY qf.label.instantApplyMsg "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante destro del mouse in un'area vuota della barra 'QuickFolders' per selezionare 'Opzioni di QuickFolders…' Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori.">
 <!ENTITY qf.checkbox.usePalette "Usa tavolozza">

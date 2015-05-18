@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Haut :">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Bas :">
 <!ENTITY qf.button.default "Par défaut">
+<!ENTITY qf.label.Toolbar "Barre d'outils">
 <!ENTITY qf.label.ToolbarBackground "Fond de la barre d'outils :">
 <!ENTITY qf.checkbox.transparent "transparent">
+<!ENTITY qf.label.Toolbar.bottomLine "Largeur de la ligne du bas :">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "La largeur de la ligne sous les onglets. Modifier sa couleur avec la palette de couleurs ci-dessous.">
 <!ENTITY qf.label.colors "Couleurs">
 <!ENTITY qf.label.UncoloredTab "Onglet sans couleur">
 <!ENTITY qf.label.UncoloredTab.tooltip "Look des onglets (inactifs) sans couleur spécifique">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "Raccourci pour cliquer sur le bouton quickMove pour une navigation plus rapide partout via la saisie d'un nom.">
 <!ENTITY qf.checkbox.quickMove "quickMove : déplacer un courriel vers n'importe quel dossier avec le raccourci MAJ +">
 <!ENTITY qf.checkbox.quickMove.tip "Raccourci pour glisser les courriels vers le bouton quickMove pour dépose express dans tout dossier via la saisie d'un nom.">
+<!ENTITY qf.quickMove.path.format "Format d'affichage :">
+<!ENTITY qf.pathFormat.folderName "Nom de dossier">
+<!ENTITY qf.pathFormat.folderAndAccount "Nom de dossier - compte courrier">
+<!ENTITY qf.pathFormat.AccountAndPath "Compte - Chemin du dossier">
+<!ENTITY qf.pathFormat.PathOnly "Chemin du dossier">
+<!ENTITY qf.pathFormat.URI "URI du dossier">
+<!ENTITY qf.pathFormat.maxDepth "Piste maximum du chemin :">
+<!ENTITY qf.pathFormat.tooltip "Nombre maximum de dossiers parents affichés dans le chemin du dossier.">
+<!ENTITY qf.checkbox.readingList "Liste à lire">
+<!ENTITY qf.checkbox.readingList.tooltip "Une liste de courriels qui devront être lus plus tard. Glissez vos messages important vers ce bouton.">
 <!ENTITY qf.label.donate "Faire un don">
 <!ENTITY qf.label.instantApplyMsg "Remarque : si vous ne voyez qu'un bouton [Fermer] ci-dessous, les paramètres de couleurs ne seront pas pris en compte - pour contourner ce problème, essayez de cliquer droit sur une zone vide de la barre QuickFolders pour vous rendre au menu des options… Cela forcera l'affichage du bouton [OK] qui vous permettra d'enregistrer les couleurs.">
 <!ENTITY qf.checkbox.usePalette "Utiliser la palette">

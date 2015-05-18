@@ -157,8 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "Schnelltaste für den Sprung in ein beliebiges Verzeichnis per Namenseingabe.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Verschiebe Mails in beliebiges Ziel mit UMSCHALT +">
 <!ENTITY qf.checkbox.quickMove.tip "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben.">
+<!ENTITY qf.quickMove.path.format "Anzeigeformat:">
+<!ENTITY qf.pathFormat.folderName "Verzeichnisname">
+<!ENTITY qf.pathFormat.folderAndAccount "Verzeichnisname - Konto">
+<!ENTITY qf.pathFormat.AccountAndPath "Konto - Verzeichnispfad">
+<!ENTITY qf.pathFormat.PathOnly "Verzeichnispfad">
+<!ENTITY qf.pathFormat.URI  "Verzeichnis URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximale Pfad Tiefe:">
+<!ENTITY qf.pathFormat.tooltip "Die maximale Anzahl von Verzeichnissen im angezeigten Pfad">
 <!ENTITY qf.checkbox.readingList "Leseliste">
-<!ENTITY qf.checkbox.readingList.tooltip "Eine List wichtiger Emails. Ziehen Sie Emails auf diese Schaltfläche um sie später zu lesen.">
+<!ENTITY qf.checkbox.readingList.tooltip "Eine Liste wichtiger Emails. Ziehen Sie Emails auf diese Schaltfläche um sie später zu lesen.">
 <!ENTITY qf.label.donate "Spenden">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen.">

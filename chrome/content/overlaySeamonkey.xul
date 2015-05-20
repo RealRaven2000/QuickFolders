@@ -15,6 +15,7 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
+	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-bookmarks.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-change-order.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-advancedTab.js" />
@@ -64,9 +65,20 @@
 				</menulist>
 				<hbox id="QuickFolders-oneButtonPanel">
 					<toolbarbutton id="QuickFolders-mainPopup"
+												 class="popupButton"
 												 tooltiptext="&qf.tooltip.mainOptions;"
 												 context="QuickFolders-ToolbarPopup"
 												 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup')"/>
+					<toolbarbutton id="QuickFolders-readingList"
+					         class="popupButton"
+								   tooltiptext="&quickfolders.readingList.tooltip;"
+									 label=""
+								   onclick="QuickFolders.Interface.readingListClick(event,this);"
+									 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+									 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+									 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+									 context="QuickFolders-readingListMenu"
+								   collapsed="true"/>
 					<toolbarbutton id="QuickFolders-filterActive"
 												 tooltiptext="&qf.tooltip.filters;"
 												 oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
@@ -78,6 +90,7 @@
 												 oncommand="QuickFolders.Interface.showPalette(this);"
 												 collapsed="true"/>
 					<toolbarbutton id="QuickFolders-quickMove"
+					         class="popupButton"
 									 tooltiptext="&qf.tooltip.quickMove;"
 									 label=""
 									 onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
@@ -134,15 +147,26 @@
 			</menupopup>
 		</popupset>	
 		
-		
-		
+		<popupset id="QuickFolders-ReadingListPopupSet">
+			<menupopup id="QuickFolders-readingListMenu">
+				<menuitem id="QuickFolders-readingList-reset"
+				          label="&quickfolders.readingList.clear;"
+									collapsed="true"
+				          oncommand="QuickFolders.bookmarks.resetList(true);" 
+				          />
+				<menuitem id="QuickFolders-readingList-add"
+				          label="&quickfolders.readingList.addCurrent;"
+				          oncommand="QuickFolders.bookmarks.addCurrent();" 
+				          />
+			</menupopup>
+		</popupset>			
 		
 		<popupset id="QuickFolders-MainPopupSet">
 			<menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"
-				          oncommand="QuickFolders.Interface.findFolder(true,'findFolder');" 
+				          oncommand="QuickFolders.Interface.findFolder(true,'quickJump');" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
 									collapsed="true"

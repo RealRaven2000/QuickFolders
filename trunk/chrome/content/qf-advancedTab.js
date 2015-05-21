@@ -48,9 +48,9 @@ QuickFolders.AdvancedTab = {
       ic.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_COUNTS) && true;
       // custom css rules
       iss.checked = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_CSS) && true;
-      elem('txtColor').value = entry.cssColor ? entry.cssColor : '';
+      elem('txtColor').value = entry.cssColor || '';
       elem('txtColorPicker').color = elem('txtColor').value;
-      elem('txtBackground').value = entry.cssBack ? entry.cssBack : '';
+      elem('txtBackground').value = entry.cssBack || '';
       // custom palette
       let isPalette = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_PALETTE) && true;
       ip.checked = isPalette;

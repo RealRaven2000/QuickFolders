@@ -51,7 +51,7 @@ QuickFolders.ChangeOrder = {
 	} ,
 
 	addFolderButton: function(folder, useName) {
-		let label = (useName && useName.length > 0) ? useName : folder.name;
+		let label = (useName && useName.length) ? useName : folder.name;
 
 		if (this.upString=="")
 			this.upString = this.getUIstring("qfUp","Up");

@@ -75,7 +75,7 @@ QuickFolders.quickMove = {
         let theMessage = messageIdList[0];
         //let treeView = (typeof gFolderTreeView!='undefined') ? gFolderTreeView : GetFolderTree().view; 
         //treeView.selectFolder(fld);
-        let messageDb = fld.msgDatabase ? fld.msgDatabase : null;
+        let messageDb = fld.msgDatabase || null;
         if (messageDb && !isCopy) {
           // reusing the existing Tab didn't work so we close & re-open msg from the new location.
           // let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;

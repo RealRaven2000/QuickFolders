@@ -28,7 +28,7 @@ QuickFolders.Model = {
     let entry = this.getFolderEntry(uri);
     if (entry) {
       // adding existing folder ...
-      let category = entry.category ? entry.category : '',
+      let category = entry.category || '',
           currentCategory = QuickFolders.Interface.CurrentlySelectedCategoryName;
 
       // adding folder to a different category
@@ -221,7 +221,8 @@ QuickFolders.Model = {
       return MailUtils.getFolderForURI(uri, checkFolderAttributes);
     }
     try {
-      let resource = GetResourceFromUri(uri);
+      let mw = QuickFolders.win,
+          resource = mw.GetMsgFolderFromUri ? mw.GetMsgFolderFromUri(uri, checkFolderAttributes) : mw.GetResourceFromUri(uri);
       msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
       if (checkFolderAttributes) {
         if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
@@ -230,7 +231,7 @@ QuickFolders.Model = {
       }
     }
     catch (ex) {
-       //dump("failed to get the folder resource\n");
+       QuickFolders.Util.logException("getMsgFolderFromUri( " + uri + ")", ex);
     }
     return msgfolder;
   } ,

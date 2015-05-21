@@ -2,8 +2,9 @@
 /* broke out palette piece for custom configurations */
 @import url('chrome://quickfolders/skin/quickfolders-widgets.css');
 
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup,
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
+/*#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup,
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove,*/
+#QuickFolders-Toolbar toolbarbutton.popupButton {
 	background: transparent !important;
 	border-style: none !important;
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
@@ -15,7 +16,8 @@
 	padding-right: 1px;
 }
 
-#QuickFolders-quickMoveMenu .msgUri {
+#QuickFolders-quickMoveMenu .msgUri,
+#QuickFolders-readingListMenu .msgUri {
 	list-style-image: url("chrome://quickfolders/skin/ico/message-mail.png");
 }
 
@@ -25,6 +27,10 @@
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png");
 	list-style-position: outside !important;
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-readingList {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png");
+	/* list-style-position: outside !important; */
 }
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:-moz-drag-over {
 	-moz-image-region: rect(16px, 16px, 32px, 0px);
@@ -36,23 +42,65 @@
 	-moz-image-region: rect(48px, 16px, 64px, 0px);
 }
 
-#QuickFolders-quickMove > label {
-  background-color: rgba(50, 50, 50, 0.3);
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
-  border-radius: 0.5em;
-  color: #ffffff;
-  padding: 2px 4px;
-  margin-left: 0.5em !important;
-  text-decoration: none;
+/* buttons with "counts" beside them */
+#QuickFolders-quickMove > label,
+#QuickFolders-readingList > label {
+	font-size: 7pt !important;
+	font-weight: bold;
 }
-#QuickFolders-quickMove[label=''] > label {
+#QuickFolders-quickMove[label=''] > label,
+#QuickFolders-readingList[label=''] > label {
   padding:0;
   width: 0;
+	border-width: 0 !important;
 }
-#QuickFolders-quickMove:not([label='']) {
-  /* margin-right: 0.5em; */
+
+#QuickFolders-quickMove > label {
+  background-color: rgba(220, 0, 0, 0.9);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
+  border-radius: 4px;
+	border: 1px solid rgba(128,128,128,0.5);
+  color: #ffffff;
+  padding: 1px 3px;
+  margin-left: 2px !important;
+  text-decoration: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
 }
+#QuickFolders-readingList > label {
+  background-color: rgba(180, 180, 180, 0.9);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 1px 3px 2px;
+	margin-left: 0px;
+}
+
+#QuickFolders-readingList:-moz-drag-over > label {
+  background-color: rgba(0, 140, 20, 0.75) !important;
+  text-shadow: none;
+}
+
+#QuickFolders-readingList:hover > label {
+  background-color: rgba(50, 190, 255, 0.9) !important;
+  color: #ffffff !important;
+}
+
+#QuickFolders-quickMove:hover > label {
+  background-color: #ffffff;
+	border: 1px solid rgba(120, 0, 0, 0.9);
+  color: rgba(120, 0, 0, 0.9) !important;
+  text-shadow: none;
+}
+
+#QuickFolders-quickMove:not([label='']):-moz-drag-over > label {
+  background-color: yellow;
+	border: 1px solid rgb(120, 0, 0);
+	box-shadow:inset 0px 0px 1px 1px rgba(120, 0, 0, 0.7); /* simulate fat border without object growing */
+  color: rgba(120, 0, 0, 0.9) !important;
+  text-shadow: none;
+}
+
 
 #QuickFolders-FoldersBox-PushDown {
   max-height: 12px !important;
@@ -108,13 +156,14 @@
 	border-radius: 3px;
 	color: #fff;
 	box-shadow: inset 0 0 6px #080808;
+	text-shadow: 1px 1px 1px rgba(40, 40, 40, 0.9);
 	padding: 0 3px;
 	border-style: dotted;
 	border-color: #aaa; 
 	border-width: 1px;
 }
 
-#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread > label, 
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread, 
 #QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
 #QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
 {
@@ -347,12 +396,12 @@ toolbar#QuickFolders-CurrentFolderTools {
 }
 
 /** FLAT TABS **/
-#QuickFolders-Toolbar.quickfolders-flat {
+toolbar.quickfolders-flat {
 	display: -moz-inline-box;
 	margin: 0;
 	padding: 0;
 	border: 1px solid transparent;
-	border-bottom-width: 3px !important;
+	border-bottom-width: 3px; /* overwrite in options: style.Toolbar.bottomLineWidth */
 	border-bottom-style: solid !important;
 }
 
@@ -369,8 +418,8 @@ toolbar#QuickFolders-CurrentFolderTools {
 	margin-right: 0.15em; 
 	margin-left: 0.15em;
 	margin-top : 1px;
-	height: 20px;
-	min-height: 1.5em !important; /* large font support */
+	min-height: 20px !important;
+	height: 1.5em !important; /* large font support */
 	vertical-align:top;
 	/* disable text shadow in tt deepdark QF */
 	text-shadow: none; 
@@ -417,9 +466,13 @@ toolbar#QuickFolders-CurrentFolderTools {
 	list-style-image: url("chrome://quickfolders/skin/ico/dropLeft.gif") !important;
 }
 
-#QuickFolders-Toolbar toolbarbutton .toolbarbutton-icon {
+#QuickFolders-Toolbar toolbarbutton .toolbarbutton-icon,
+#QuickFolders-CurrentFolderTools toolbarbutton .toolbarbutton-icon {
   margin-left: 2px;
   margin-right: 1px;
+	/* give enough space to icons even in smaller themes */
+	box-sizing: content-box;
+	min-height: 16px;
 }
 
 #QuickFolders-Toolbar.quickfolders-pills toolbarbutton .toolbarbutton-icon {

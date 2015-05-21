@@ -42,6 +42,7 @@ overlay chrome://messenger/content/messenger.xul          chrome://myXUL/content
 overlay chrome://messenger/content/messageWindow.xul      chrome://myXUL/content/currentFolderSingleMessage.xul
 overlay chrome://messenger/content/messageWindow.xul      chrome://quickfolders/content/quickfolders-layout.css
 overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
+overlay chrome://messenger/content/SearchDialog.xul       chrome://quickfolders/content/overlaySearchDialog.xul
 
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
@@ -73,6 +74,7 @@ style chrome://quickfolders/content/overlay.xul   chrome://quickfolders-pl/skin/
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-postbox.css application=postbox@postbox-inc.com
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-widgets.css application=postbox@postbox-inc.com
+#style chrome://quickfolders/content/options.xul        chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com
 
 #SeaMonkey # appversion<2.2  = before gecko2
 style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-pre4.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} appversion<2.2
@@ -100,12 +102,12 @@ style chrome://quickfolders/content/options.xul             chrome://quickfolder
 style chrome://quickfolders/content/register.xul            chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
 
 #Postbox - still all legacy styles for linear-gradients!
-style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://quickfolders/content/register.xul            chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.0
-#style chrome://quickfolders/content/overlayPostbox.xul    chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://messenger/content/messenger.xul              chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.0
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.0
+style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://quickfolders/content/register.xul            chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<4.1
+#style chrome://quickfolders/content/overlayPostbox.xul    chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://messenger/content/messenger.xul              chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.1
+style chrome://quickfolders/content/options.xul             chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<4.1
 

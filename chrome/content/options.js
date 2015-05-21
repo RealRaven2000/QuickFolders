@@ -333,8 +333,8 @@ QuickFolders.Options = {
     getElement("dragovertabs-label").style.setProperty('color', col, 'important');
     getElement("dragovertabs-label").style.backgroundColor = bcol;
     getElement("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
-    getElement("qfCustomizeIcon").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
-    getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon;
+    // disable folder tree icons - not supported on Postbox+Seamonkey
+    getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
 
     this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
 

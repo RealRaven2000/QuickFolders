@@ -71,7 +71,9 @@
 
 #chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/reload.png"); }
 #chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/cogwheel.png"); }
-#chkCurrentFolderShow .checkbox-icon, #chkCurrentFolderShowSingleMsg .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
+#chkCurrentFolderShow .checkbox-icon, 
+#chkCurrentFolderShowSingleMsg .checkbox-icon,
+#chkCurrentFolderShowSingleTab .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
 #chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/msgNavigate.png"); }
 #chkFolderNavigation .checkbox-icon { 
   list-style-image: url("chrome://quickfolders/skin/ico/fugue-nw.png");
@@ -95,6 +97,11 @@
 { 
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(48px, 16px, 64px, 0px);
+}
+#chkBookmarks .checkbox-icon 
+{
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 
 hbox > textbox:not([multiline="true"]) {
@@ -203,7 +210,11 @@ label.text-link, label.text-link[visited="true"] {
 }
 #quickHelpTextPane {
 	/*overflow-y: scroll;*/
-	min-height: 21em;
+	min-height: 16em;
+}
+
+#quickHelpTextPane description {
+  margin-bottom: 0.5em;  
 }
 
 description#importantNote {
@@ -284,6 +295,10 @@ hbox.quickhelp-dbg {
 #validationResults description {
   max-width:50em;
 }
+#validationResults:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 
 #validationPassed {
   color: rgb(0,120,0);
@@ -295,28 +310,57 @@ hbox.quickhelp-dbg {
   color: rgb(120,0,90);
 }
 
+/* improve visibility on dark themes */
+
 #QuickFolders-Panels {
   min-height: 425px;
 }
 
-/*added/changed by Teo*/
 
-#supportgrid row {
-  height: 55px;
+#supportgrid {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
-#supportgrid label {
-  width: 180px;
+#supportgrid columns,
+#supportgrid rows {
+  width: 600px !important;
+  max-width: 600px !important;
+	min-width: 400px;
+}
+
+/*added/changed by Teo*/
+#supportgrid row {
+  height: 55px;
+	margin-top: 0.9em;
+}
+
+/* #supportgrid  button, */
+#supportgrid .button {
+	display: table-cell;
+  width: 230px !important;
+  max-width: 230px !important;
+	min-width: 220px !important;
+	padding: 0.5em;
+	border: 1px solid rgba(80, 80, 80, 0.4);
+	height: 55px;	
+	text-align: center;
+	vertical-align: middle;
+}
+/* #supportgrid button label, */
+#supportgrid .button label  {
+  vertical-align: middle;
+	text-align: center;
+	margin: 4px;
 }
 
 #L0, #L1, #L2, #L3, #L4, #L5 {
   -moz-appearance: none !important;
-	width: auto;
-	text-align: center;
-	text-shadow: none !important;
 	font-style: normal;
 	border-radius: 0.5em;
 	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	text-align: center;
+	text-shadow: none !important;
 	transition-property: box-shadow;
 	transition-duration: 0.2s;
 	/*background-color: #FFFFFF !important;*/  /*here you can set color*/
@@ -334,7 +378,7 @@ hbox.quickhelp-dbg {
 
 /* green */
 #L1:hover, #L0:hover, #L1:focus {
-	background-color: #073061 !important;
+	background-color: #076130 !important;
 	background: linear-gradient(to bottom, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
 	color: #FFF !important;
 	border: 1px #24463C solid;
@@ -363,7 +407,7 @@ hbox.quickhelp-dbg {
 #L3:hover, #L3:focus {
 	background-color: rgb(252,234,187) !important;
 	background: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,234,187,1) 6%, rgba(248,181,0,1) 34%, rgba(251,223,147,1) 100%) !important;
-	color: #FFF !important;
+	color: rgb(75, 20, 0) !important;
 	border: 1px #802D19 solid;
 }
 
@@ -398,7 +442,24 @@ hbox.quickhelp-dbg {
 	text-shadow: #fdd 0 0 1px;
 }
 
+#advancedConfig > groupbox {
+  max-height: 230px;
+	min-height: 50px;
+}
+
 #currentFolderCustomize {
 	overflow-y: scroll;
-	max-height: 216px;
+	max-height: 194px;
+	/* -moz-appearance: listbox; */
+	/* for textured themes */
+	background-color: rgba(255, 255, 255, 0.4);  
+	backface-visibility: visible;
+	box-shadow: 1px 1px 1px threedshadow inset;
+}
+
+#mailCommandsCustomize {
+  min-width: 17em;
+}
+#contextMenuCommandsCustomize {
+  min-width: 15em;
 }

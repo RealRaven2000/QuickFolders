@@ -16,9 +16,9 @@ QuickFolders.TabListener = {
             QI = QuickFolders.Interface,
             tabmail = document.getElementById("tabmail"),
             idx = QuickFolders.tabContainer.selectedIndex;
-        idx = idx ? idx : 0;
+        idx = idx || 0;
         util.logDebugOptional("listeners.tabmail", "TabListener.select() - tab index = " + idx);
-				let tabs = tabmail.tabInfo ? tabmail.tabInfo : tabmail.tabOwners, // Pb: tabOwners
+				let tabs = tabmail.tabInfo || tabmail.tabOwners, // Pb: tabOwners
             info = util.getTabInfoByIndex(tabmail, idx);  // tabs[idx]
 				if (!info)
 					return;
@@ -93,14 +93,14 @@ QuickFolders.TabListener = {
   newTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
     let idx = QuickFolders.tabContainer.selectedIndex;
-    idx = idx ? idx : 0;
+    idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - idx = " + idx);
   } ,
   
   moveTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
     let idx = QuickFolders.tabContainer.selectedIndex;
-    idx = idx ? idx : 0;
+    idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
   } 
 }

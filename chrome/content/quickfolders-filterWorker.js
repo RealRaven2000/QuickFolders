@@ -308,7 +308,7 @@ QuickFolders.FilterWorker = {
     /* retrieve (first) message detail */
     util.logDebugOptional ("filters","messageList.length = " + messageList.length);
     let messageId = messageList[0],
-        messageDb = targetFolder.msgDatabase ? targetFolder.msgDatabase : null,
+        messageDb = targetFolder.msgDatabase || null,
         messageHeader;
     // for the moment, let's only process the first element of the message Id List;
     if (messageDb) {
@@ -346,7 +346,7 @@ QuickFolders.FilterWorker = {
 		
 		if (!sourceFolder.server.canHaveFilters) {
       if (sourceFolder.server) {
-      	let serverName = sourceFolder.server.name ? sourceFolder.server.name : "unknown";
+      	let serverName = sourceFolder.server.name || "unknown";
 			util.slideAlert("QuickFolders", "This account (" + serverName + ") cannot have filters");
       }
       else {

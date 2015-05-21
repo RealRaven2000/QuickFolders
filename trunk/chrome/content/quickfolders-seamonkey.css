@@ -16,6 +16,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 #QuickFolders-Toolbar.quickfolders-flat
 {
   -moz-appearance: none !important; /* support coloring and bottom border */
+	border-bottom-style: solid;
 }
 
 toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text

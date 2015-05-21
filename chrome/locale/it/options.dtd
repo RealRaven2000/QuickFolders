@@ -34,16 +34,16 @@
 <!ENTITY qf.checkbox.showRecentTab "Visualizza la scheda delle cartelle recenti">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Fare clic col pulsante destro del mouse per la configurazione">
 <!ENTITY qf.checkbox.showQuickMove "Pulsante quickMove">
-<!ENTITY qf.checkbox.showQuickMove.tooltip "Il pulsante quickMove serve per trascinare messaggi di posta elettronica in una specifica cartella-destinazione. Si possono raccogliere messaggi provenienti da diverse cartelle. Eseguita la procedura di raccolta, bisogna inserire il nome della cartella-destinazione nella casella di ricerca.">
+<!ENTITY qf.checkbox.showQuickMove.tooltip "Il pulsante quickMove serve per trascinare messaggi di posta elettronica in una specifica cartella-destinazione. Si possono raccogliere messaggi provenienti da diverse cartelle. Una volta eseguita la raccolta, bisogna inserire nella casella di ricerca il nome della cartella-destinazione.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del menu della barra degli strumenti">
-<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Questo menu può essere invocato anche cliccando col pulsante destro del mouse direttamente sulla barra degli strumenti">
+<!ENTITY qf.checkbox.tabMenuIcon.tooltip "Questo menu può essere invocato anche facendo clic col pulsante destro del mouse direttamente sulla barra degli strumenti">
 <!ENTITY qf.toolbarMinimumHeight "Altezza massima:">
 <!ENTITY qf.toolbarMinimumHeight.tooltip "Per i MacOS soggetti al [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Barra degli strumenti della cartella corrente">
 <!ENTITY qf.checkbox.currentFolder.show "Visualizza la barra degli strumenti">
 <!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Barra degli strumenti per schede contenenti un solo messaggio">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…anche nelle finestre contenenti un solo messaggio">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra degli strumenti della cartella corrente nella finestra che si apre quando si apre un messaggio in una nuova finestra">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra degli strumenti della cartella corrente nella finestra che appare quando si apre un messaggio in una nuova finestra">
 <!ENTITY qf.checkbox.showRecentButton "Pulsante delle cartelle recenti">
 <!ENTITY qf.checkbox.showMessageNavigation "Pulsanti per la navigazione tra i messaggi">
 <!ENTITY qf.checkbox.showFolderNavigation "Pulsanti per la navigazione tra le cartelle">
@@ -140,21 +140,21 @@
 <!ENTITY qf.label.versionhistory "Leggi la cronologia delle versioni…">
 <!ENTITY qf.description.languages "QuickFolders supporta le localizzazioni - si può dare un aiuto aggiungendo su Babelzilla la traduzione nella propria lingua:">
 <!ENTITY qf.label.languagesLink "Aggiungi una traduzione…">
-<!ENTITY qf.description.contactMe "Puoi anche contattarmi personalmente all'email axelg@gofree.indigo.ie:">
+<!ENTITY qf.description.contactMe "Puoi anche contattarmi personalmente all'indirizzo axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Contattami (in lingua inglese o tedesca)…">
 <!ENTITY qf.label.insertLicense "Inserire la propria chiave di licenza qui:">
-<!ENTITY qf.label.insertLicense.tooltip "La chiave di licenza è contenuta nella email di conferma dell'ordine proveniente da Fastspring.">
+<!ENTITY qf.label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">
 <!ENTITY qf.button.pasteLicense "Incolla">
 <!ENTITY qf.button.validateLicense "Convalida">
 <!ENTITY qf.label.licenseValid "La licenza è valida fino a:">
 <!ENTITY qf.licenseValidation.passed "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche della versione Premium sono ora disponibili.">
-<!ENTITY qf.licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare la email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY qf.licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare il messaggio di email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY qf.licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">
 <!ENTITY qf.licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY qf.licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY qf.premiumConfig "Caratteristiche Premium">
 <!ENTITY qf.checkbox.quickJump "quickJump: spostamento in qualsiasi cartella mediante la scorciatoia MAIUSC +">
-<!ENTITY qf.checkbox.quickJump.tip "Scorciatoia per attivare il pulsante quickJump che consente di navigare ovunque alla massima velocità in base al nome">
+<!ENTITY qf.checkbox.quickJump.tip "Scorciatoia per attivare il pulsante quickJump che consente di spostarsi ovunque alla massima velocità in base al nome">
 <!ENTITY qf.checkbox.quickMove "quickMove: spostamento dei messaggi di posta in qualsiasi cartella mediante la scorciatoia MAIUSC +">
 <!ENTITY qf.checkbox.quickMove.tip "Scorciatoia per trascinare i messaggi di posta sul pulsante quickMove che consente una loro archiviazione in qualsiasi cartella alla massima velocità in base al nome">
 <!ENTITY qf.quickMove.path.format "Formato di visualizzazione:">

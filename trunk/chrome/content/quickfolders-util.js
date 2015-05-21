@@ -160,7 +160,7 @@ QuickFolders.Util = {
 	},
   
   alert: function alert(msg, caption) {
-    caption = caption ? caption : "QuickFolders";
+    caption = caption || "QuickFolders";
     Services.prompt.alert(null, caption, msg);
   },
 
@@ -1179,7 +1179,7 @@ QuickFolders.Util = {
 		if (typeof ex.stack!='undefined')
 			stack= ex.stack.replace("@","\n  ");
 		// let's display a caught exception as a warning.
-		let fn = ex.fileName ? ex.fileName : "?";
+		let fn = ex.fileName || "?";
 		this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
 	} ,
 
@@ -1231,9 +1231,9 @@ QuickFolders.Util = {
     let txt = '';
     try { // building this incremental in case of problems. I know this is bad for performance, because immutable strings.
       txt += "key: " + id.key + '\n';
-      txt += "email:" + (id.email ? id.email : 'EMPTY') + '\n';
-      txt += "fullName:" + (id.fullName ? id.fullName : 'EMPTY') + '\n';
-      txt += "valid:" + (id.valid ? id.valid : 'EMPTY') + '\n';
+      txt += "email:" + (id.email || 'EMPTY') + '\n';
+      txt += "fullName:" + (id.fullName || 'EMPTY') + '\n';
+      txt += "valid:" + (id.valid || 'EMPTY') + '\n';
       txt += "identityName: " + id.identityName + '\n';
     }
     catch(ex) {
@@ -1532,8 +1532,14 @@ QuickFolders.Util = {
   
   // open an email in a new tab
   openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
-    let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-    this.openMessageTabFromHeader(hdr);
+    try {
+      let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+      this.openMessageTabFromHeader(hdr);
+    }
+    catch(ex) {
+      return false;
+    }
+    return true;
   }
 
   

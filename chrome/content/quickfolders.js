@@ -239,19 +239,41 @@ END LICENSE BLOCK */
     ## Night Vision Palette for dark themes
     ## Revised Standard and Pastel Colors
     
-	4.*   Future Versions
+	4.0.3 QuickFolders Pro final release - 07/03/2015
     ## [Bug 25939] Hide current folder tab in single message tab
     ## modify "Find Folder" Icon to tie in with quickJump feature
     ## simplify Options Icon
     ## add option to hide prev/next/parent buttons in current Folder bar
     ## add tooltips to current folder previous and next sibling
     ## QuickFolders label autohide?
-    ## Add a (?) Icon beside the Filter button in Options to link to quickFilters!
+    ## Add a (?) Icon and link beside the Filter button in Options to link to quickFilters!
     ## Use UITourHighlight (http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser.xul#241)
     ## or something similar to highlight new UI features
     ## Investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
 		
-
+  4.1  WIP planned release date: 24/05/2015
+    ## [Bug 26021] Postbox 4.0 Compatibility
+    ## [Bug 26019] Premium feature - Added "Reading List" for storing bookmarks for important mails
+    ## quickMove / quickJump - made shortcut less "greedy" so that CTRL+SHIFT or ALT+SHIFT do not trigger it. 
+       But also allow more areas to use the shortcut from (folder tree, accounts tree [Postbox], conversation view)
+    ## Postbox / SeaMonkey - support the Icons menuitem on the QuickFolders Commands interface 
+       (this doesn't support icons in the folder tree, but the tabs themselves)
+    ## changed default of recentfolders.folderPathDetail to 2 
+    ## Removed from current category had a bug that showed all categories if the FIRST category was removed from a Tab
+    ## [Bug 25991] Disambiguate folders shown in quickMove Name Box 
+        - added configuration options for the quickJump / quickMove results
+        - increased default depth to 3 and include Account by default 
+    ## [Bug 25864] but default unread subfolders aren't highlighted. changing the defaults to make this simpler:
+               [x] Also display totals of subfolders - true
+               [x] Highlight Folders with new mail - true
+               [x] Display Tabs with newly arrived mail italic
+    ## improved readability for highlighted new mail
+    ## if mails are "queued" for a quickMove operation, using the keyboard shortcut "quickJump" temporarily 
+       should not move the mails but navigate to the folder instead
+    ## fixed background color selection in Postbox when palette menu is used in options screen
+    ## Added colored bottom line in Postbox in flat theme and interface to change its height.
+    
+               
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
@@ -380,7 +402,7 @@ var QuickFolders = {
 	compactLastFolderSize: 0,
 	compactLastFolderUri: null,
 	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
-  quickMoveUris: [],      // message Uris of folders to be moved (quickMove)
+  quickMoveUris: [],      // message Uris of mails lined up for move (quickMove)
   quickMoveOrigins: [],   // source folder array
 
 	// helper function to do init from options dialog!
@@ -495,11 +517,12 @@ var QuickFolders = {
 		// document.addEventListener("SSTabRestored", QuickFolders.TabListener.restore, false); // use Session store to restore categories!
 		let that = this.isQuickFolders ? this : QuickFolders,
 		    myver = that.Util.Version, // will start VersionProxy
-		    ApVer, ApName; 
+		    ApVer, ApName,
+        prefs = that.Preferences; 
     try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
     try{ ApName=that.Util.Application} catch(e){ApName="?"};
 
-		if (that.Preferences && that.Preferences.isDebug)
+		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
 		// moved into Version Proxy!
@@ -522,7 +545,7 @@ var QuickFolders = {
 
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
-		if (that.Preferences.isUseKeyboardShortcuts || that.Preferences.isUseRebuildShortcut || that.Preferences.isUseNavigateShortcuts) {
+		if (prefs.isUseKeyboardShortcuts || prefs.isUseRebuildShortcut || prefs.isUseNavigateShortcuts) {
 			if(!that.Interface.boundKeyListener) {
 				that.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
@@ -534,13 +557,13 @@ var QuickFolders = {
 				that.Interface.boundKeyListener = true;
 			}
 		}
-		let folderEntries = that.Preferences.loadFolderEntries();
+		let folderEntries = prefs.loadFolderEntries();
 
 		if (folderEntries.length) {
 			that.Model.selectedFolders = folderEntries;
 			that.Interface.updateUserStyles();
 
-			let lastSelectedCategory = that.Preferences.LastSelectedCategory;
+			let lastSelectedCategory = prefs.LastSelectedCategory;
 			that.Util.logDebug("last selected Category:" + lastSelectedCategory );
 
 			if(that.Model.isValidCategory(lastSelectedCategory))
@@ -565,9 +588,9 @@ var QuickFolders = {
 		that.Util.logDebug("call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
     // default to folder view
-		that.Interface.displayNavigationToolbar(that.Preferences.isShowCurrentFolderToolbar(), ''); 
+		that.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 
 		// single Message
-		that.Interface.displayNavigationToolbar(that.Preferences.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+		that.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
 
 		// new function to automatically main toolbar when it is not needed
 		that.Util.logDebug("call initToolbarHiding.");
@@ -582,6 +605,11 @@ var QuickFolders = {
 				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
     QuickFolders.addFolderPaneListener();
+    
+    // Reading list
+    if (QuickFolders.bookmarks) {
+      QuickFolders.bookmarks.load();
+    }
 	} ,
 
 	sayHello: function sayHello() {
@@ -1012,6 +1040,18 @@ var QuickFolders = {
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
           return;
         }
+        // Reading List
+        if (button.id && button.id =="QuickFolders-readingList") {
+          util.logDebug("DragEnter - reading list button");
+          if (dragSession.isDataFlavorSupported("text/x-moz-message")) {
+            dragSession.canDrop=true;
+            removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+          }
+          else {
+            dragSession.canDrop=false;
+          }
+          return;
+        }
 
 				if(button.tagName === "toolbarbutton") {
           // new quickMove
@@ -1038,7 +1078,7 @@ var QuickFolders = {
 					}
 
 					//show context menu if dragged over a button which has subfolders
-					let targetFolder = (button.folder) ? (button.folder) : null,
+					let targetFolder = button.folder || null,
 					    otherPopups = QuickFolders.Interface.menuPopupsByOffset;
 					for (let i = 0; i < otherPopups.length; i++) {
 						if (otherPopups[i].folder) {
@@ -1182,7 +1222,7 @@ var QuickFolders = {
 				return; 
 			}
 			try {
-				let src = dragSession.sourceNode.nodeName ? dragSession.sourceNode.nodeName : "unnamed node";
+				let src = dragSession.sourceNode.nodeName || "unnamed node";
 				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - sourceNode = " + src);
 			} catch(e) { QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - " + e); }
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
@@ -1299,6 +1339,7 @@ var QuickFolders = {
 					// handler for dropping messages
 					lastAction = "drop handler";
           
+          // quickMove menu
           if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
             util.logDebugOptional("dnd", "onDrop: quickMove button - added " + messageUris.length + " message URIs");
             // copy message list into "holding area"
@@ -1308,7 +1349,21 @@ var QuickFolders = {
             }
             QuickFolders.quickMove.update();
             return;
-          }          
+          }
+          
+          // reading List menu
+          if (DropTarget.id && DropTarget.id =="QuickFolders-readingList") {
+            util.logDebugOptional("dnd", "onDrop: readingList button - added " + messageUris.length + " message URIs");
+            // copy message list 
+            while (messageUris.length) {
+              let newUri = messageUris.pop();
+              QuickFolders.bookmarks.addMail(newUri, sourceFolder);
+            }
+            QuickFolders.bookmarks.update();
+            QuickFolders.bookmarks.save(); // only 1 save is more efficient.
+            
+            return;
+          }
           
 					try {
 						util.logDebugOptional("dnd", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);

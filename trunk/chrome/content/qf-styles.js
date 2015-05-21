@@ -25,7 +25,7 @@ QuickFolders.Styles = {
         let rule = ss.cssRules[j];
         if (rule.styleSheet) { // rule.type == rule.IMPORT_RULE
           let nestedSS = rule.styleSheet;  // nsIDOMCSSImportRule
-          href = nestedSS.href ? nestedSS.href : "";
+          href = nestedSS.href || "";
           sList += makeDebugEntry('[nested]', nestedSS, href);
           if (checkMatch(nestedSS, href)) {
             ssFirstMatch = nestedSS;
@@ -44,7 +44,7 @@ QuickFolders.Styles = {
 		let styleSheetList = document.styleSheets;
 		for (let i = 0; i < styleSheetList.length; i++) {
 			let ss = styleSheetList[i];
-			href = ss.href ? ss.href : "";
+			href = ss.href || "";
 
 			sList += makeDebugEntry(i.toString(), ss, href);
       if (typeof ss.cssRules != 'undefined') {

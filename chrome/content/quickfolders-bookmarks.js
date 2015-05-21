@@ -48,23 +48,29 @@ QuickFolders.bookmarks = {
       term.op = op;
       term.value = val; // copy back object.
     }
+	  function _getEmailAddress(a) {
+			return a.replace(/.*<(\S+)>.*/g, "$1");
+		}    
     const Ci = Components.interfaces,
           typeOperator = Ci.nsMsgSearchOp;
     let folder = QuickFolders.Model.getMsgFolderFromUri(entry.FolderUri),
         termCreator = gFolderDisplay.view.search.session,
         searchTerms = [],
-        realTerm = termCreator.createTerm();
+        realTerm = termCreator.createTerm(),
+        subj = entry.subject || entry.label.substring(entry.label.indexOf(':')+1, entry.label.lastIndexOf('-'));
     setTermValue(realTerm,
                  Ci.nsMsgSearchAttrib.Subject,
                  typeOperator.Contains,
-                 entry.subject || entry.label.substring(entry.label.indexOf(':')+1, entry.label.lastIndexOf('-')))
+                 subj.trim())
     searchTerms.push(realTerm);
     if (entry.author) {
         realTerm = termCreator.createTerm();
+        let em = _getEmailAddress(entry.author);
+        em = em || author;
         setTermValue(realTerm,
                      Ci.nsMsgSearchAttrib.Sender,
-                     typeOperator.Is,
-                     entry.author);
+                     typeOperator.Contains,
+                     em);
         searchTerms.push(realTerm);
     }
     if (entry.date) {
@@ -88,9 +94,8 @@ QuickFolders.bookmarks = {
         if (!util.openMessageTabFromUri(entry.Uri)) {
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
           if (util.isDebug) debugger;
-          let search = Services.prompt.confirm(window, "QuickFolders",
-                         "Can't find the mail, it might have been moved elsewhere in the meantime.\n"
-                         + entry.label + "\n\nSearch for it?");
+          let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
+              search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
           if (search) {
             this.findBookmark(entry);
           }
@@ -143,9 +148,20 @@ QuickFolders.bookmarks = {
   },
   
   addMail: function addMail(newUri, sourceFolder)  {
+    let util = QuickFolders.Util,
+        countEntries = this.Entries.length;
+    const MAX_BOOKMARKS = 5;
+    if (!util.hasPremiumLicense(false), countEntries>2) {
+      let text = util.getBundleString("qf.notification.premium.readingList",
+                  "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}.");
+      util.popupProFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
+      // early exit if no license key and maximum icon number is reached
+      if (countEntries >= MAX_BOOKMARKS)
+        return;
+    }
+    
     if (this.indexOfEntry(newUri) == -1) { // avoid duplicates!
-      let util = QuickFolders.Util,
-          chevron = ' ' + "\u00BB".toString() + ' ',
+      let chevron = ' ' + "\u00BB".toString() + ' ',
           showFolder = QuickFolders.Preferences.getBoolPref('bookmarks.folderLabel'),
           hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {

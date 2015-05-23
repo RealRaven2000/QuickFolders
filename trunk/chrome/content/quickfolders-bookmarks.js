@@ -441,7 +441,6 @@ QuickFolders.bookmarks = {
     let isActive = this.hasEntries,
         util = QuickFolders.Util,
         QI = QuickFolders.Interface;
-    QI.isMoveActive = isActive; 
     util.logDebug('QuickFolders.bookmarks.update()\n' + 'isActive = ' + isActive);
     // indicate number of messages on the button?
     QI.ReadingListButton.label = 

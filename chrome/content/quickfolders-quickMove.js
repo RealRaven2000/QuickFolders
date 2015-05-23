@@ -4,13 +4,16 @@ QuickFolders.quickMove = {
   // drop code uses QuickFolders.buttonDragObserver
   // this.QuickMoveButton ...
   suspended: false,
+  isMoveActive: false,
+  Uris: [],      // message Uris of mails lined up for move (quickMove)
+  Origins: [],   // source folder array
   
   get isActive() {
-    return (QuickFolders.Interface.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
+    return (this.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
   },
   
   get hasMails() {
-    return (QuickFolders.quickMoveUris.length > 0)
+    return (this.Uris.length > 0)
   },
   
   onClick: function onClick(button, evt, forceDisplay) {
@@ -36,18 +39,17 @@ QuickFolders.quickMove = {
         tabmail.closeTab(currentTab);
     }
         
-    // Move / Copy Messages
-    let messageIdList = util.moveMessages(fld, QuickFolders.quickMoveUris, isCopy);
-        
     util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
-        
+    
+    // Move / Copy Messages
+    let messageIdList = util.moveMessages(fld, this.Uris, isCopy);
     // should return an array of message ids...
     if (messageIdList) { 
       // ...which we should match before deleting our URIs?
       if (QuickFolders.FilterWorker.FilterMode) {
-        let sourceFolder = QuickFolders.quickMoveOrigins.length ? QuickFolders.quickMoveOrigins[0] : null;
-        for (let i=0; i<QuickFolders.quickMoveOrigins.length; i++) {
-          if (sourceFolder!=QuickFolders.quickMoveOrigins[i]) {
+        let sourceFolder = this.Origins.length ? this.Origins[0] : null;
+        for (let i=0; i<this.Origins.length; i++) {
+          if (sourceFolder!=this.Origins[i]) {
             sourceFolder = null;
             util.slideAlert('creating filters from multiple folders is currently not supported!');
             break;
@@ -94,11 +96,11 @@ QuickFolders.quickMove = {
   },
   
   resetList: function resetList() {
-    while (QuickFolders.quickMoveUris.length) {
-      QuickFolders.quickMoveUris.pop();
+    while (this.Uris.length) {
+      this.Uris.pop();
     }
-    while (QuickFolders.quickMoveOrigins.length) {
-      QuickFolders.quickMoveOrigins.pop();
+    while (this.Origins.length) {
+      this.Origins.pop();
     }
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.childNodes.length-1; i>0; i--) {
@@ -138,14 +140,14 @@ QuickFolders.quickMove = {
   },
   
   add: function add(newUri, sourceFolder)  {
-    if (QuickFolders.quickMoveUris.indexOf(newUri) == -1) { // avoid duplicates!
+    if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
       let chevron = ' ' + "\u00BB".toString() + ' ',
           showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
-      QuickFolders.quickMoveUris.push(newUri);
-      QuickFolders.quickMoveOrigins.push(sourceFolder);
+      this.Uris.push(newUri);
+      this.Origins.push(sourceFolder);
       // now add to menu!
       let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-      if (QuickFolders.quickMoveUris.length==1)
+      if (this.Uris.length==1)
         menu.appendChild(document.createElement('menuseparator'));
       let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
@@ -163,36 +165,36 @@ QuickFolders.quickMove = {
           QuickFolders.Util.logException('quickMove.add', ex);
         }
       }
-      if (QuickFolders.quickMove.hasMails) {
-        QuickFolders.Interface.isMoveActive = true;
+      if (this.hasMails) {
+        this.isMoveActive = true;
         QuickFolders.Interface.toggleMoveModeSearchBox(true);
       }
     }
   },
   
   remove: function remove(URI)  {
-    let i = QuickFolders.quickMoveUris.indexOf(URI),
+    let i = this.Uris.indexOf(URI),
         QI = QuickFolders.Interface;
     if (i >= 0) {
-      QuickFolders.quickMoveUris.splice(i, 1);
-      QuickFolders.quickMoveOrigins.splice(i, 1);
+      this.Uris.splice(i, 1);
+      this.Origins.splice(i, 1);
     }
        
-    if (!QuickFolders.quickMove.hasMails) {
-      QI.isMoveActive = false;
+    if (!this.hasMails) {
+      this.isMoveActive = false; // Cancel Move operation if last one is removed
       QI.toggleMoveModeSearchBox(false);
     }
   },
   
   update: function update() {
-    let isActive = QuickFolders.quickMove.hasMails, // ? true : false;
+    let isActive = this.hasMails, // ? true : false;
         QI = QuickFolders.Interface;
-    QI.isMoveActive = isActive; 
+    this.isMoveActive = isActive; 
     QuickFolders.Util.logDebug('QuickFolders.quickMove.update()\n' + 'isActive = ' + isActive);
     // indicate number of messages on the button?
     QI.QuickMoveButton.label = 
       isActive ?
-      QuickFolders.quickMoveUris.length.toString() : '';
+      this.Uris.length.toString() : '';
     // toggle quickMove searchbox visible
     QuickFolders.Util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
     QI.updateFindBoxMenus(isActive);

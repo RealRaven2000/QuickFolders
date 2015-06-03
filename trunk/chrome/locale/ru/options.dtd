@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Верх:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Низ:">
 <!ENTITY qf.button.default "По умолчанию">
+<!ENTITY qf.label.Toolbar "Панель инструментов">
 <!ENTITY qf.label.ToolbarBackground "Фоновый цвет панели инструментов">
 <!ENTITY qf.checkbox.transparent "прозрачный">
+<!ENTITY qf.label.Toolbar.bottomLine "Ширина линии внизу:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "Ширина линии под закладками. Цвет меняется цветом активной закладки чуть ниже.">
 <!ENTITY qf.label.colors "Цвета">
 <!ENTITY qf.label.UncoloredTab "Бесцветные закладки">
 <!ENTITY qf.label.UncoloredTab.tooltip "Вид (неактивных) закладок без предопределенного цвета">
@@ -154,6 +157,16 @@
 <!ENTITY qf.checkbox.quickJump.tip "Сочетания клавиш кнопки quickJump для быстрого перехода к папке по имени.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Перемещение сообщений в любую папку по нажатию SHIFT +">
 <!ENTITY qf.checkbox.quickMove.tip "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени.">
+<!ENTITY qf.quickMove.path.format "Формат отображения:">
+<!ENTITY qf.pathFormat.folderName "Имя папки">
+<!ENTITY qf.pathFormat.folderAndAccount "Имя папки - Учётная запись">
+<!ENTITY qf.pathFormat.AccountAndPath "Учётная запись - Путь к папке">
+<!ENTITY qf.pathFormat.PathOnly "Путь к папке">
+<!ENTITY qf.pathFormat.URI "URI папки">
+<!ENTITY qf.pathFormat.maxDepth "Максимальная глубина пути:">
+<!ENTITY qf.pathFormat.tooltip "Максимальное количество имен папок показываемых в пути к папке.">
+<!ENTITY qf.checkbox.readingList "Список для чтения">
+<!ENTITY qf.checkbox.readingList.tooltip "Список сообщений для прочтения позже. Перетаскивайте важные сообщения на эту кнопку.">
 <!ENTITY qf.label.donate "Пожертвовать">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">

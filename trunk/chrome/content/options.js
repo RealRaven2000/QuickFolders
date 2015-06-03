@@ -333,7 +333,7 @@ QuickFolders.Options = {
     getElement("dragovertabs-label").style.setProperty('color', col, 'important');
     getElement("dragovertabs-label").style.backgroundColor = bcol;
     getElement("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
-    // disable folder tree icons - not supported on Postbox+Seamonkey
+    // disable folder tree icons - not supported on Postbox+SeaMonkey
     getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
 
     this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
@@ -437,10 +437,13 @@ QuickFolders.Options = {
           mail = QuickFolders.Licenser.getMail(license),
           date = QuickFolders.Licenser.getDate(license);
       if (QuickFolders.Preferences.isDebug) {
-        let test = "QuickFolders.Licenser found the following License components:\n"
-          + "Email: " + mail + "\n"
-          + "Date: " + date + "\n"
-          + "Crypto: " + crypto + "\n";
+        let test = 
+            "┌───────────────────────────────────────────────────────────────┐\n"
+          + "│ QuickFolders.Licenser found the following License components:\n"
+          + "│ Email: " + mail + "\n"
+          + "│ Date: " + date + "\n"
+          + "│ Crypto: " + crypto + "\n"
+          + "└───────────────────────────────────────────────────────────────┘";
         if (testMode)
           util.alert(test);
         util.logDebug(test);

@@ -393,7 +393,6 @@ var QuickFolders = {
 		}
 		return this._tabContainer;
 	},
-	tabSelectEnable: true,
 	currentURI: '',
 	lastTreeViewMode: null,
 	initDone: false,
@@ -402,8 +401,6 @@ var QuickFolders = {
 	compactLastFolderSize: 0,
 	compactLastFolderUri: null,
 	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
-  quickMoveUris: [],      // message Uris of mails lined up for move (quickMove)
-  quickMoveOrigins: [],   // source folder array
 
 	// helper function to do init from options dialog!
 	initDocAndWindow: function initDocAndWindow(win) {
@@ -1562,13 +1559,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	let util = QuickFolders.Util;
   //during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
-	// QuickFolders.tabSelectEnable=false;
 
-	let folderTree = QuickFolders.mailFolderTree;
-	let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
-	let folderResource = rdf.GetResource(folderUri);
-	let msgFolder;
-	let isInvalid = false;
+	let folderTree = QuickFolders.mailFolderTree,
+	    rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
+	    folderResource = rdf.GetResource(folderUri),
+	    msgFolder,
+	    isInvalid = false;
 	try {
 	  // msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
@@ -1597,12 +1593,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 		}
 	  return false;
 	}
-	let folderIndex, i;
-
 	QuickFolders.currentURI = folderUri;
 	
-	let isExistFolderInTab = false;
-	let tabmail = document.getElementById("tabmail");
+	let folderIndex, i,
+	    isExistFolderInTab = false,
+	    tabmail = document.getElementById("tabmail");
 	if (tabmail) {
     util.logDebugOptional("folders.select","try to find open tab with folder...");
 	  let len = util.getTabInfoLength(tabmail);
@@ -1650,155 +1645,150 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	let Flags = util.FolderFlags,
       theTreeView;
 
-	if (util.Application=='Thunderbird') {
-		// TB 3
-		// find out if parent folder is smart and collapsed (bug in TB3!)
-		// in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
-		// therefore, ensureRowIsVisible does not work!
-    let isSelected = false,
-        forceSelect = QuickFolders.Preferences.isChangeFolderTreeViewEnabled;
-		theTreeView = gFolderTreeView;
-		QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
+  util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags);
+	switch (util.Application) {
+    case 'Thunderbird':
+      // TB 3
+      // find out if parent folder is smart and collapsed (bug in TB3!)
+      // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
+      // therefore, ensureRowIsVisible does not work!
+      let isSelected = false,
+          forceSelect = QuickFolders.Preferences.isChangeFolderTreeViewEnabled;
+      theTreeView = gFolderTreeView;
+      QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
 
-		folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-		if (null == folderIndex) {
-      util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
-			isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
-			folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-		}
-    util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
-		
-		if (msgFolder.parent) {
-      util.logDebugOptional("folders.select","ensureFolderViewTab()");
-			util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
-
-			if (null==folderIndex) {
-        util.logDebugOptional("folders.select","ensureNormalFolderView()");
-				util.ensureNormalFolderView();
-				folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-        util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
-			}
-
-			let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
-      util.logDebugOptional("folders.select","parent index: " + parentIndex);
-			// flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-			let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
-                       + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
-                       + Flags.MSG_FOLDER_FLAG_JUNK ;
-			if (msgFolder.flags & specialFlags) {
-				// is this folder a smartfolder?
-				if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
-          util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
-					// toggle to smartfolder view and reinitalize folder variable!
-					theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-					let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
-					folderResource = rdf.GetResource(folderUri);
-					msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
-					parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
-				}
-
-				// a special folder, its parent is a smart folder?
-				if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_SMART || "smart" === theTreeView.mode) {
-					if (null === folderIndex || parentIndex > folderIndex) {
-						// if the parent appears AFTER the folder, then the "real" parent is a smart folder.
-						let smartIndex=0;
-						while (0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
-						smartIndex++;
-						if (!(theTreeView._rowMap[smartIndex]).open) {
-							theTreeView._toggleRow(smartIndex, false);
-						}
-					}
-				}
-				else { // all other views:
-					if (null !== parentIndex) {
-						if (!(theTreeView._rowMap[parentIndex]).open)
-							theTreeView._toggleRow(parentIndex, true); // server
-					}
-					else {
-					  util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
-					}
-				}
-			}
-		}
-
-		if (folderIndex != null) {
-      try {
-        util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..");
-        theTreeView.selectFolder (msgFolder);
-        util.logDebugOptional("folders.select","ensureRowIsVisible()..");
-        theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+      folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+      if (null == folderIndex) {
+        util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
+        isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
+        folderIndex = theTreeView.getIndexOfFolder(msgFolder);
       }
-      catch(e) { util.logException("Exception selecting via treeview: ", e);};
-		}
-
-		// reset the view mode.
-		if (!QuickFolders.Preferences.isChangeFolderTreeViewEnabled) {
+      util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
       
-			if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
-        util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
-				theTreeView.mode = QuickFolders.lastTreeViewMode;
+      if (msgFolder.parent) {
+        util.logDebugOptional("folders.select","ensureFolderViewTab()");
+        util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
+
+        if (null==folderIndex) {
+          util.logDebugOptional("folders.select","ensureNormalFolderView()");
+          util.ensureNormalFolderView();
+          folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+          util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
+        }
+
+        let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+        util.logDebugOptional("folders.select","parent index: " + parentIndex);
+        // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
+        let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
+                         + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
+                         + Flags.MSG_FOLDER_FLAG_JUNK ;
+        if (msgFolder.flags & specialFlags) {
+          // is this folder a smartfolder?
+          if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
+            util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
+            // toggle to smartfolder view and reinitalize folder variable!
+            theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+            let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+            folderResource = rdf.GetResource(folderUri);
+            msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+            parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+          }
+
+          // a special folder, its parent is a smart folder?
+          if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_SMART || "smart" === theTreeView.mode) {
+            if (null === folderIndex || parentIndex > folderIndex) {
+              // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
+              let smartIndex=0;
+              while (0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
+              smartIndex++;
+              if (!(theTreeView._rowMap[smartIndex]).open) {
+                theTreeView._toggleRow(smartIndex, false);
+              }
+            }
+          }
+          else { // all other views:
+            if (null !== parentIndex) {
+              if (!(theTreeView._rowMap[parentIndex]).open)
+                theTreeView._toggleRow(parentIndex, true); // server
+            }
+            else {
+              util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
+            }
+          }
+        }
       }
-		}
 
-		//folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-		if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
-			QuickFolders.Interface.onTabSelected();
-	}
-	else if (util.Application=='SeaMonkey') {
-		const TAB_MODBITS_TabShowFolderPane  = 0x0001;
-		const TAB_MODBITS_TabShowMessagePane = 0x0002;
-		const TAB_MODBITS_TabShowThreadPane  = 0x0004;
-		const TAB_MODBITS_TabShowAcctCentral = 0x0008;
+      if (folderIndex != null) {
+        try {
+          util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..");
+          theTreeView.selectFolder (msgFolder);
+          util.logDebugOptional("folders.select","ensureRowIsVisible()..");
+          theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+        }
+        catch(e) { util.logException("Exception selecting via treeview: ", e);};
+      }
 
-		// must have at least have either folder pane or message pane,
-		// otherwise find another tab!
-		if (!(tabmail.currentTabInfo.modeBits & (TAB_MODBITS_TabShowFolderPane | TAB_MODBITS_TabShowThreadPane)))
-			for (i = 0; i < tabmail.tabInfo.length; i++) {
-			  let info = tabmail.tabInfo[i];
-				if (info && (info.modeBits & TAB_MODBITS_TabShowFolderPane)) {
-					gMailNewsTabsType.showTab (info);
-					break;
-				}
-			}
+      // reset the view mode.
+      if (!QuickFolders.Preferences.isChangeFolderTreeViewEnabled) {
+        
+        if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
+          util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
+          theTreeView.mode = QuickFolders.lastTreeViewMode;
+        }
+      }
 
-    util.logDebugOptional("folders.select", 'QuickFolders_MyEnsureFolderIndex()');
-		folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-		// AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
-		if (folderIndex<0) {
-			util.ensureNormalFolderView();
-			folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-			QuickFolders.tabSelectEnable=true;
-		}
-    util.logDebugOptional("folders.select", 'QuickFolders_MyChangeSelection(folderTree,' + folderIndex + ')');
-		QuickFolders_MyChangeSelection(folderTree, folderIndex);
-	}
-	else { // TB 2, Postbox
-	// before we can select a folder, we need to make sure it is "visible"
-	// in the tree.	to do that, we need to ensure that all its
-	// ancestors are expanded
-		if (util.Application=='Postbox') {
-			folderIndex = EnsureFolderIndex(msgFolder);
-			util.logDebugOptional("folders.select", "EnsureFolderIndex: " + msgFolder.URI);
-		}
-		else {
-			 folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-		}
-		// AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
-		if (folderIndex<0) {
-			util.ensureNormalFolderView();
-			folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-			QuickFolders.tabSelectEnable=true;
-		}
-	  //else
-	  //  QuickFolders.tabSelectEnable=false;
-		QuickFolders_MyChangeSelection(folderTree, folderIndex);
-	  // select message in top pane for keyboard navigation
+      //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
+      if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
+        QuickFolders.Interface.onTabSelected();
+      break;
+    case 'SeaMonkey': 
+      const TAB_MODBITS_TabShowFolderPane  = 0x0001,
+            TAB_MODBITS_TabShowMessagePane = 0x0002,
+            TAB_MODBITS_TabShowThreadPane  = 0x0004,
+            TAB_MODBITS_TabShowAcctCentral = 0x0008;
+
+      // must have at least have either folder pane or message pane,
+      // otherwise find another tab!
+      if (!(tabmail.currentTabInfo.modeBits & (TAB_MODBITS_TabShowFolderPane | TAB_MODBITS_TabShowThreadPane)))
+        for (i = 0; i < tabmail.tabInfo.length; i++) {
+          let info = tabmail.tabInfo[i];
+          if (info && (info.modeBits & TAB_MODBITS_TabShowFolderPane)) {
+            gMailNewsTabsType.showTab (info);
+            break;
+          }
+        }
+
+      util.logDebugOptional("folders.select", 'QuickFolders_MyEnsureFolderIndex()');
+      folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
+      // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
+      if (folderIndex<0) {
+        util.ensureNormalFolderView();
+        folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
+      }
+      util.logDebugOptional("folders.select", 'QuickFolders_MyChangeSelection(folderTree,' + folderIndex + ')');
+      QuickFolders_MyChangeSelection(folderTree, folderIndex);
+      break;
+    case 'Postbox': // TB 2, Postbox
+      // before we can select a folder, we need to make sure it is "visible"
+      // in the tree.	to do that, we need to ensure that all its
+      // ancestors are expanded
+      folderIndex = EnsureFolderIndex(msgFolder);
+      util.logDebugOptional("folders.select", "EnsureFolderIndex: " + msgFolder.URI);
+      // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
+      if (folderIndex<0) {
+        util.ensureNormalFolderView();
+        folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
+      }
+      if (folderIndex>=0)
+        QuickFolders_MyChangeSelection(folderTree, folderIndex);
+      // select message in top pane for keyboard navigation
+      break;
 	}
 	
 	// could not find folder!
-	if (null == folderIndex) {
-    util.logDebugOptional("folders.select", 'Could not find folder in tree (folderIndex = null)');
-		if (!msgFolder || !msgFolder.filePath || !msgFolder.filePath.exists())
+	if (null == folderIndex || folderIndex<0) {
+    util.logDebugOptional("folders.select", 'Could not find folder in tree (folderIndex = ' + folderIndex + ')');
+		if (!msgFolder || !msgFolder.filePath || !msgFolder.filePath.exists() || folderIndex<0)
 			return false;
 	}
 

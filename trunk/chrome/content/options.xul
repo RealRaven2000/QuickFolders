@@ -93,7 +93,6 @@
 						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
-						<preference id="QuickFolders-Preferences-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string" />
 					</preferences>
 
 					<groupbox orient="horizontal" >
@@ -191,12 +190,11 @@
 
 						<groupbox flex="2">
 							<caption label="&qf.label.mainToolbar;" />
-							<checkbox id="chkRecent"
-												label="&qf.checkbox.showRecentTab;"
-												tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
-												preference="QuickFolders-Preferences-ShowRecentTab"
+							<checkbox id="chkToolbarMenu"
+												label="&qf.checkbox.tabMenuIcon;"
+												tooltiptext="&qf.checkbox.tabMenuIcon.tooltip;"
+												preference="QuickFolders-Preferences-ShowToolbarMenuIcon"
 												instantApply="true"
-												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkQuickMove"
 												label="&qf.checkbox.showQuickMove;"
@@ -205,25 +203,20 @@
 												instantApply="true"
 												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.premium.findFolder.maxPathItems',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
-							<checkbox id="chkToolbarMenu"
-												label="&qf.checkbox.tabMenuIcon;"
-												tooltiptext="&qf.checkbox.tabMenuIcon.tooltip;"
-												preference="QuickFolders-Preferences-ShowToolbarMenuIcon"
+							<checkbox id="chkBookmarks"
+												label="&qf.checkbox.readingList;"
+												tooltiptext="&qf.checkbox.readingList.tooltip;"
+							          preference="QuickFolders-Preferences-ShowBookmarks"
 												instantApply="true"
+												oncommand="QuickFolders.Options.toggleBoolPreference(this);"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
+							<checkbox id="chkRecent"
+												label="&qf.checkbox.showRecentTab;"
+												tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
+												preference="QuickFolders-Preferences-ShowRecentTab"
+												instantApply="true"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
-							<hbox align="center">
-								<label value="&qf.toolbarMinimumHeight;"
-											 tooltiptext="&qf.toolbarMinimumHeight.tooltip;"
-											 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
-											 onclick="QuickFolders.Util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
-											 style = "text-decoration:underline;cursor:pointer;" />
-								<textbox id="toolbarMinHeight"
-												 type="number"
-												 preference="QuickFolders-Preferences-ToolbarMinimalHeight"
-												 instantApply="true"
-												 style="max-width:5em; width:auto;" />
-								<label value="px" />
-							</hbox>
 						</groupbox>
 					</hbox>
 				</tabpanel>
@@ -443,6 +436,7 @@
 						<preference id="QuickFolders-Preferences-ShowIcons" name="extensions.quickfolders.showIcons" type="bool" />
 						<preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSizeN" type="int" />
 						<preference id="QuickFolders-Preferences-ToolbarBottom" name="extensions.quickfolders.style.Toolbar.bottomLineWidth" type="int" />
+						<preference id="QuickFolders-Preferences-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string" />
 						<preference id="QuickFolders-Preferences-TransparentButtons" name="extensions.quickfolders.transparentButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowBorders" name="extensions.quickfolders.style.borders" type="bool" />
 						<preference id="QuickFolders-Preferences-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool" />
@@ -595,6 +589,19 @@
 												 onchange="QuickFolders.Options.changeTextPreference(this);" />										 
 								<label value="px" />
 							</hbox>			 
+							<hbox align="center">
+								<label value="&qf.toolbarMinimumHeight;"
+											 tooltiptext="&qf.toolbarMinimumHeight.tooltip;"
+											 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
+											 onclick="QuickFolders.Util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
+											 style = "text-decoration:underline;cursor:pointer;" />
+								<textbox id="toolbarMinHeight"
+												 type="number"
+												 preference="QuickFolders-Preferences-ToolbarMinimalHeight"
+												 instantApply="true"
+												 style="max-width:5em; width:auto;" />
+								<label value="px" />
+							</hbox>
 						</hbox>						
 					</groupbox>
 					<groupbox id="qf-tweakColors">
@@ -1022,13 +1029,6 @@
 												 instantApply="true"
 												 disabled="true"/>
 							</hbox>
-							<checkbox id="chkBookmarks"
-												label="&qf.checkbox.readingList;"
-												tooltiptext="&qf.checkbox.readingList.tooltip;"
-							          preference="QuickFolders-Preferences-ShowBookmarks"
-												instantApply="true"
-												oncommand="QuickFolders.Options.toggleBoolPreference(this);"
-												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
 						</groupbox>
 						<spacer flex="1" />
 						<vbox height="40">

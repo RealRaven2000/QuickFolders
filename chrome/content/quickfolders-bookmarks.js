@@ -22,6 +22,9 @@ if (QuickFolders.Util.Application == 'Postbox') {
 QuickFolders.bookmarks = {
   Entries: [],  // { Uri , Folder , label? }
   charset: "UTF-8",
+  get isDebug() {
+    return (QuickFolders.Preferences.isDebugOption('bookmarks'));
+  },
   get document() {
     return QuickFolders.doc;
   },
@@ -52,11 +55,16 @@ QuickFolders.bookmarks = {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
     const Ci = Components.interfaces,
+          Cc = Components.classes,
           typeOperator = Ci.nsMsgSearchOp;
+    if (this.isDebug)  debugger;
     let folder = QuickFolders.Model.getMsgFolderFromUri(entry.FolderUri),
-        termCreator = gFolderDisplay.view.search.session,
+        util = QuickFolders.Util,
+        searchSession = (util.Application=='Thunderbird') 
+                      ? gFolderDisplay.view.search.session
+                      : Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
-        realTerm = termCreator.createTerm(),
+        realTerm = searchSession.createTerm(),
         subj = entry.subject || entry.label.substring(entry.label.indexOf(':')+1, entry.label.lastIndexOf('-'));
     setTermValue(realTerm,
                  Ci.nsMsgSearchAttrib.Subject,
@@ -64,7 +72,7 @@ QuickFolders.bookmarks = {
                  subj.trim())
     searchTerms.push(realTerm);
     if (entry.author) {
-        realTerm = termCreator.createTerm();
+        realTerm = searchSession.createTerm();
         let em = _getEmailAddress(entry.author);
         em = em || author;
         setTermValue(realTerm,
@@ -74,7 +82,7 @@ QuickFolders.bookmarks = {
         searchTerms.push(realTerm);
     }
     if (entry.date) {
-        realTerm = termCreator.createTerm();
+        realTerm = searchSession.createTerm();
         setTermValue(realTerm,
                      Ci.nsMsgSearchAttrib.Date,
                      typeOperator.Is,
@@ -88,12 +96,12 @@ QuickFolders.bookmarks = {
   
   onClick: function onClickBookmark(menuItem, evt, entry) {
     let util = QuickFolders.Util;
+    if (this.isDebug)  debugger;
     evt.stopPropagation();
     switch(evt.button) {
       case 0: // left button
         if (!util.openMessageTabFromUri(entry.Uri)) {
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
-          if (util.isDebug) debugger;
           let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
               search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
           if (search) {
@@ -151,13 +159,18 @@ QuickFolders.bookmarks = {
     let util = QuickFolders.Util,
         countEntries = this.Entries.length;
     const MAX_BOOKMARKS = 5;
-    if (!util.hasPremiumLicense(false), countEntries>2) {
+    if (!util.hasPremiumLicense(false) && countEntries>2) {
       let text = util.getBundleString("qf.notification.premium.readingList",
                   "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}.");
       util.popupProFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
       // early exit if no license key and maximum icon number is reached
       if (countEntries >= MAX_BOOKMARKS)
-        return;
+        return false;
+    }
+    
+    if (countEntries >= QuickFolders.Preferences.getIntPref('bookmarks.maxEntries')) {
+      util.logToConsole('Maximum number of bookmarks reached! You can change this via right-click on the Reading List checkbox in QuickFolders Options / General / Main Toolbar Elements.');
+      return false;
     }
     
     if (this.indexOfEntry(newUri) == -1) { // avoid duplicates!
@@ -189,6 +202,10 @@ QuickFolders.bookmarks = {
         }
       }
     }
+    else {
+      util.logDebugOptional("bookmarks", "Skipping duplicate entry for uri:\n" + newUri);
+    }
+    return true;
   },
   
   removeUri: function removeUri(URI)  {
@@ -201,52 +218,68 @@ QuickFolders.bookmarks = {
   },
   
   addCurrent: function addCurrent() {
+    if (this.isDebug) debugger;
     let util = QuickFolders.Util,
-        uriObject = this.getActiveUri();
-    // create blank entry    
-    let entry = 
-      { 
-        Uri: '', 
-        FolderUri: '', 
-        label: '', 
-        bookmarkType: ''
-      }
+        uris,
+        actUris = this.getActiveUri();
+        
+    if (!actUris) return; // something went wrong
     
-    if (Object.keys(uriObject).length === 0) {
-      util.alert("Could not determine context URL!","QuickFolders");
-      return;
+    if (Object.prototype.toString.call(actUris)  === "[object Array]") {
+      uris = actUris;
     }
-    switch (uriObject.bookmarkType) {
-      case 'msgUri':
-        this.addMail(uriObject.url, uriObject.folder);
-        break;
-      case 'browser':
-        entry.Uri = uriObject.url;
-        entry.FolderUri =  uriObject.folder ? uriObject.folder.URI : '';
-        entry.bookmarkType = 'browser';
-        entry.label = uriObject.label || uriObject.url;
-        /* add to Entries */
-        this.Entries.push(entry);
-        // now add to menu!
-        this.addMenuItem(entry);
-        break;
-      default:
-        alert('Currently unsupported type: ' + uriObject.bookmarkType);
+    else {
+      uris = [];
+      uris.push(actUris); // create array
+    }
+    
+    util.logDebugOptional("bookmarks", "Adding + " + uris.length + " bookmarks...");
+    // iterate the array
+    for (let i=0; i< uris.length; i++) {
+      let uriObject = uris[i]; 
+      // create blank entry    
+      if (Object.keys(uriObject).length === 0) {
+        util.alert("Could not determine context URL!","QuickFolders");
         return;
+      }
+      let earlyExit = false;
+      switch (uriObject.bookmarkType) {
+        case 'msgUri':
+          if (!this.addMail(uriObject.url, uriObject.folder))
+            earlyExit = true; // if it fails (because no license / max items hit)
+          break;
+        case 'browser':
+          let entry = 
+            { Uri: uriObject.url, 
+              FolderUri: uriObject.folder ? uriObject.folder.URI : '', 
+              label: uriObject.label || uriObject.url, 
+              bookmarkType: 'browser' };
+          /* add to Entries */
+          this.Entries.push(entry);
+          // now add to menu!
+          this.addMenuItem(entry);
+          break;
+        default:
+          util.alert('Currently unsupported bookmark type: ' + uriObject.bookmarkType + '\n'
+                + 'Select at least one message or just drag mails on the button');
+          return;
+      }
+      if (earlyExit) break;
     }
+    
     this.update(); // update UI
     this.save();   // persist to file
-    
   } ,
   
   getBrowser: function getBrowser() {
 		const Ci = Components.interfaces;
-    let util = QuickFolders.Util;
-		let interfaceType = Ci.nsIDOMWindow;
-    let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
-    let browsers = null;
-    let DomWindow = null;
-    let theBrowser = null;
+    let util = QuickFolders.Util,
+		    interfaceType = Ci.nsIDOMWindow,
+        mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
+        browsers = null,
+        DomWindow = null,
+        theBrowser = null;
+    if (util.Application=='Postbox') return null;
     
     let getWindowEnumerator = 
       (util.isLinux) ?
@@ -273,166 +306,204 @@ QuickFolders.bookmarks = {
         browsers = getWindowEnumerator ('mail:3pane', true);
       if (!browsers)
         return  null;
-      if (browsers.hasMoreElements()) {
-        theBrowser = browsers.getNext();
-        if (theBrowser.getInterface)
-          DomWindow = theBrowser.getInterface(interfaceType);
-        else // Linux
-          DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType)
-      }
-      else {
-        try { DomWindow=getBrowser(); } // Linux last resort
-        catch(ex) {
-          util.logException("getBrowser() failed:", ex);
+      try {
+        if (browsers.hasMoreElements()) {
+          theBrowser = browsers.getNext();
+          if (theBrowser.getInterface)
+            DomWindow = theBrowser.getInterface(interfaceType);
+          else // Linux
+            DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType)
+        }
+        else {
+          DomWindow=getBrowser();  // Linux last resort
         }
       }
-    
+      catch(ex) {
+        util.logException("getBrowser() failed:", ex);
+      }
     }
     return DomWindow;
   },
   
+	alternativeGetSelectedMessageURI : function alternativeGetSelectedMessageURI(win) {
+	try {
+		let view = win.GetDBView();
+		if (view.URIForFirstSelectedMessage)
+			return view.URIForFirstSelectedMessage;
+		
+		let messageArray = {};
+		let length = {};
+		view.getURIsForSelection(messageArray, length);
+		if (length.value)
+			return messageArray.value[0];
+		else
+			return null;
+		}
+		catch (ex) {
+			dump("alternativeGetSelectedMessageURI ex = " + ex + "\n");
+			return null;
+		}
+	},  
+  
   getActiveUri: function getActiveUri() {
-    let uriObject= {url:'',label:'', bookmarkType: null, folder:null},
-        util = QuickFolders.Util,
+    let util = QuickFolders.Util,
         browser = this.getBrowser(),
-        tabmail = null,
+        tabmail = document.getElementById("tabmail"),
         currentURI = '',
         currentLabel = '',
         currentType = '',
         currentFolder = null;
-		if (browser || document.getElementById("tabmail")) {  // in Linux we cannot get the browser while options dialog is displayed :(
-			try {
-				let isOriginBrowser = (util.Application=='Firefox');
-				// for SeaMonkey we need to determine whether we opened from the messenger or from the navigator window
-				if (util.Application!='Firefox') {
-					tabmail = browser.document ? browser.document.getElementById("tabmail") : document.getElementById("tabmail");
-					// double check whether we come from browser
-					if (util.Application=='SeaMonkey') {
-					  if (!tabmail) {
-							isOriginBrowser = true;
-						}
-						else {  
-						  // both windows are open, now what?
-						  // best: which window is in foreground. or which window called (owner?)
-						}
-					}
-				}
-				/*     GET CONTEXT FROM CURRENT MAIL TAB  */
-				if (!isOriginBrowser) {
-					
-					if (tabmail) {
-						let tab = tabmail.selectedTab || tabmail.currentTab;  // Pb currentTab
-						let theMode = tab.mode ? tab.mode.name : tab.getAttribute("type");
-						if (!browser)
-							browser = tab.browser;
-						if (theMode == 'folder') {
-						  // if we are in folder mode we might have a message selected
-							if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
-								theMode = 'message';
-							}
-						}
-            
-            currentType = theMode;
+		if (!browser && !tabmail) 
+      return null; // in Linux we cannot get the browser while options dialog is displayed :(
+    try {
+      let isOriginBrowser = false;
+      // for SeaMonkey we need to determine whether we opened from the messenger or from the navigator window
+      if (util.Application=='SeaMonkey' && !tabmail) {
+        tabmail = browser.document ? browser.document.getElementById("tabmail") : document.getElementById("tabmail");
+        // double check whether we come from browser
+        if (util.Application=='SeaMonkey') {
+          if (!tabmail) {
+            isOriginBrowser = true;
+          }
+        }
+      }
+      /*     GET CONTEXT FROM CURRENT MAIL TAB  */
+      if (!isOriginBrowser) {
+        if (tabmail) {
+          let tab = tabmail.selectedTab || tabmail.currentTab,  // Pb currentTab
+              theMode = tab.mode ? tab.mode.name : tab.getAttribute("type");
+          if (!browser)
+            browser = tab.browser;
+          if (theMode == 'folder') {
+            if (util.Application == 'Postbox') {
+              if (GetNumSelectedMessages()>0)
+                theMode = 'message';
+            }
+            else {
+              // if we are in folder mode we might have a message selected
+              if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
+                theMode = 'message';
+              }
+            }
+          }
+          
+          currentType = theMode;
+          util.logDebugOptional("bookmarks", "bookmarks.getActiveUri() - Selected Tab Type: " + theMode);
+          switch (theMode) {
+            case 'folder':
+              try {
+                let currentFolder = util.CurrentFolder;
+                currentURI = currentFolder.server.hostName; // password manager shows the host name
+                if (currentURI == 'localhost') {
+                  currentURI = currentFolder.server.realHostName;
+                }
+                currentLabel = currentFolder.prettyName;
+              }
+              catch(ex) {
+                util.logException("Could not determine current folder: ",ex);
+                return ""
+              }
+              break;
 
-						util.logDebugOptional("default", "Selected Tab mode: " + theMode);
-						switch (theMode) {
-							case 'folder':
-								isMailbox = true;
-
-								try {
-									let currentFolder =
-										tab.folderDisplay ?
-										tab.folderDisplay.displayedFolder :
-										browser.GetFirstSelectedMsgFolder().QueryInterface(Components.interfaces.nsIMsgFolder);
-									// let currentFolder2 = tab.folderDisplay.view.displayedFolder.QueryInterface(Components.interfaces.nsIMsgFolder);
-									// let msgFolder = theFolder.QueryInterface(Components.interfaces.nsIMsgFolder);
-									currentURI = currentFolder.server.hostName; // password manager shows the host name
-									if (currentURI == 'localhost') {
-										currentURI = currentFolder.server.realHostName;
-									}
-                  currentLabel = currentFolder.prettyName;
-								}
-								catch(ex) {
-									util.logException("Could not determine current folder: ",ex);
-									return ""
-								}
-								break;
-
-							case 'calendar':
-								currentURI="Calendar";
-                currentLabel="Calendar";
-								break;
-							case 'contentTab':      // fall through
-							case 'thunderbrowse':
-								currentURI = tab.browser.currentURI.host;
-                currentLabel = tab.browser.contentTitle;
-                currentType = 'browser';
-								break;
-							case 'glodaFacet':         // fall through
-							case 'glodaSearch-result': // fall through
-							case 'glodaList':          // fall through
-							case 'message':            // fall through => type = msgUri
-								// find out about currently viewed message
-								try {
-									let msg = null;
-									if (tab.folderDisplay) {
-										msg = tab.folderDisplay.selectedMessage;
-									}
-									else {
-										if (tab.messageDisplay && tab.messageDisplay.selectedCount==1) {
-											msg = tab.messageDisplay.displayedMessage;
-										}
-										else {
-											let msgUri = this.alternativeGetSelectedMessageURI (browser);
-											if (msgUri) {
-												msg = browser.messenger.messageServiceFromURI(msgUri).messageURIToMsgHdr(msgUri);
-											}
-										}
-									}
-									if (!msg) return '';
-                  currentURI = msg.folder.generateMessageURI(msg.messageKey) 
-                  currentLabel = msg.mime2DecodedSubject.substring(0, 70);
-                  currentType = 'msgUri';
-                  currentFolder = msg.folder;
-								}
-								catch(ex) { 
-								  util.logException("Could not retrieve message from context menu", ex);
-									currentURI = "{no message selected}"; 
-								};
-								break;
-              case 'chat':
-                currentLabel = tab.title;
-                currentURI = '#msg: not yet implemented - chat bookmarks.';
-                break;
-							default:  // case 'tasks':
-                Services.prompt.alert(null, 'QuickFolders.bookmarks - getActiveUri', 'Not supported: bookmarking ' + theMode + ' tab!');
-								break;
-						}
-					}
-				}
-				/*     GET CONTEXT FROM CURRENT BROWSER  */
-				else {
-          // https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/tabs_utils
-				  // Fx
-          currentType = 'browser';
-					let lB = browser.gBrowser.selectedTab.linkedBrowser;
-					// SM:
-					let uri = lB.registeredOpenURI || lB.currentURI; // nsIURI
-          currentLabel = lB.contentTitle;
-          currentURI = uri.spec;  // whole URL including query parameters; there is also asciiSpec and specIgnoringRef
-				}
-			}
-			catch(ex) {
-        util.logException("Error retrieving current URL:", ex);
-			}
-		}
+            case 'calendar':
+              currentURI="Calendar";
+              currentLabel="Calendar";
+              break;
+            case 'contentTab':      // fall through
+            case 'thunderbrowse':
+              currentURI = tab.browser.currentURI.host;
+              currentLabel = tab.browser.contentTitle;
+              currentType = 'browser';
+              break;
+            case 'glodaFacet':         // fall through
+            case 'glodaSearch-result': // fall through
+            case 'glodaList':          // fall through
+            case 'message':            // fall through => type = msgUri
+              // find out about currently viewed message
+              try {
+                // are multiple mails selected?
+                let selectionCount =
+                  (['Postbox', 'SeaMonkey'].indexOf(util.Application)>=0) ? GetNumSelectedMessages() :
+                  ((tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0);
+                util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);
+                if (selectionCount>=1) { 
+                  let selectedMessages;
+                  if (util.Application === 'Postbox') {
+                    selectedMessages = util.pbGetSelectedMessages();
+                  }
+                  else {
+                    selectedMessages = gFolderDisplay.selectedMessages; 
+                  }
+                  let uriObjects = [];
+                  for (let j=0; j<selectedMessages.length; j++) {
+                    let msg = selectedMessages[j];
+                    let uriObject = 
+                        {url: msg.folder.generateMessageURI(msg.messageKey),
+                         label: msg.mime2DecodedSubject.substring(0, 70), 
+                         bookmarkType: 'msgUri', 
+                         folder:msg.folder}
+                    uriObjects.push(uriObject);
+                  }
+                  return uriObjects;
+                }
+                // let msg = null;
+                // if (tab.folderDisplay) {
+                  // msg = tab.folderDisplay.selectedMessage;
+                // }
+                // else {
+                  // if (tab.messageDisplay && tab.messageDisplay.selectedCount==1) {
+                    // msg = tab.messageDisplay.displayedMessage;
+                  // }
+                  // else {
+                    // let msgUri = this.alternativeGetSelectedMessageURI (browser);
+                    // if (msgUri) {
+                      // msg = browser.messenger.messageServiceFromURI(msgUri).messageURIToMsgHdr(msgUri);
+                    // }
+                  // }
+                // }
+                // if (!msg) return '';
+                // currentURI = msg.folder.generateMessageURI(msg.messageKey) 
+                // currentLabel = msg.mime2DecodedSubject.substring(0, 70);
+                // currentType = 'msgUri';
+                // currentFolder = msg.folder;
+              }
+              catch(ex) { 
+                util.logException("Could not retrieve message from context menu", ex);
+                currentURI = "{no message selected}"; 
+              };
+              break;
+            case 'chat':
+              currentLabel = tab.title;
+              currentURI = '#msg: not yet implemented - chat bookmarks.';
+              break;
+            default:  // case 'tasks':
+              Services.prompt.alert(null, 'QuickFolders.bookmarks - getActiveUri', 'Not supported: bookmarking ' + theMode + ' tab!');
+              break;
+          }
+        }
+      }
+      /*     GET CONTEXT FROM CURRENT BROWSER  */
+      else {
+        // https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/tabs_utils
+        // Fx
+        currentType = 'browser';
+        let lB = browser.gBrowser.selectedTab.linkedBrowser;
+        // SM:
+        let uri = lB.registeredOpenURI || lB.currentURI; // nsIURI
+        currentLabel = lB.contentTitle;
+        currentURI = uri.spec;  // whole URL including query parameters; there is also asciiSpec and specIgnoringRef
+      }
+    }
+    catch(ex) {
+      util.logException("Error retrieving current URL:", ex);
+    }
 
     // Assign the object to pass back
-    uriObject.url = currentURI;
-    uriObject.label = currentLabel;
-    uriObject.bookmarkType = currentType;
-    uriObject.folder = currentFolder;
-    
+    let uriObject = 
+      {url: currentURI,
+       label: currentLabel, 
+       bookmarkType: currentType, 
+       folder: currentFolder};
 		return uriObject;
   },
   
@@ -488,7 +559,7 @@ QuickFolders.bookmarks = {
   } ,
     
   load: function load() {
-    if (QuickFolders.Preferences.isDebug) debugger;
+    if (this.isDebug) debugger;
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks; // "this" didn't work
     util.logDebug ('bookmarks.load...'); 
@@ -548,7 +619,7 @@ QuickFolders.bookmarks = {
   } ,
 
   save: function save()  {
-    if (QuickFolders.Preferences.isDebug) debugger;
+    if (this.isDebug)  debugger;
     let util = QuickFolders.Util;
     util.logDebug("bookmarks.save()...");
     if (util.Application == "Postbox") {
@@ -557,7 +628,6 @@ QuickFolders.bookmarks = {
     }
     try {
       const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
-      if (QuickFolders.Preferences.isDebug) debugger;
       let bookmarks = this, // closure this
           profileDir = OS.Constants.Path.profileDir,
           path = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json"),

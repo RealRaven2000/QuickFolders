@@ -9,7 +9,9 @@ QuickFolders.Preferences = {
 	isDebugOption: function(option) { // granular debugging
 		if(!this.isDebug) return false;
 		try {return this.getBoolPref("debug." + option);}
-		catch(e) {return false;}
+		catch(e) { 
+      return true; // more info is probably better in this case - this is an illegal value after all.
+    }
 	},
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {

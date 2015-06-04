@@ -112,18 +112,18 @@ QuickFolders.FolderCategory = {
 
 	onSelectionChange: function onSelectionChange(evt) {
 		let i = 0, // just one iterator will do me :)
-		    listBox = this.$('existing-categories');
+		    listBox = this.$('existing-categories'),
+        target = null;
 		if(this.semaphorSel)
 			return;
 		QuickFolders.Util.logDebugOptional("categories", "onSelectionChange() - listBox.value = " + listBox.value ); // " + evt.type + "
 
 		if (listBox.selectedItems.length) {
-			let target  = listBox.selectedItems[listBox.selectedItems.length-1]; // evt.originalTarget; // should be the list item
+			target = listBox.selectedItems[listBox.selectedItems.length-1]; // evt.originalTarget; // should be the list item
 			if (target)
 				QuickFolders.Util.logDebugOptional("categories", "target  = " + target.value + " - selected = " + target.selected);
 		}
-		else {
-			target = null; // nothing selected.
+		else { // nothing selected.
 			//special case: empty selection => select UNCATEGORIZED
 			if (listBox.itemCount) {
 				QuickFolders.Util.logDebugOptional("categories", "All Categories deselected - selecting UNCATEGORIZED");
@@ -141,7 +141,7 @@ QuickFolders.FolderCategory = {
 			return;
 		}
 		// an item was unselected, but there are still others left in selection
-		if (!target.selected)
+		if (!target || !target.selected)
 			return;
 
 		let category = target.value,

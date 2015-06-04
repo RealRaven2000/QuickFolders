@@ -251,27 +251,35 @@ END LICENSE BLOCK */
     ## or something similar to highlight new UI features
     ## Investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
 		
-  4.1  WIP planned release date: 24/05/2015
+  4.1  WIP planned release date: 07/06/2015
     ## [Bug 26021] Postbox 4.0 Compatibility
     ## [Bug 26019] Premium feature - Added "Reading List" for storing bookmarks for important mails
     ## quickMove / quickJump - made shortcut less "greedy" so that CTRL+SHIFT or ALT+SHIFT do not trigger it. 
        But also allow more areas to use the shortcut from (folder tree, accounts tree [Postbox], conversation view)
-    ## Postbox / SeaMonkey - support the Icons menuitem on the QuickFolders Commands interface 
-       (this doesn't support icons in the folder tree, but the tabs themselves)
-    ## changed default of recentfolders.folderPathDetail to 2 
-    ## Removed from current category had a bug that showed all categories if the FIRST category was removed from a Tab
+       Improved the quickJump by accepting start text for ALL words in string (So if you type "mil" you can jump into the 
+       folder "Steve Miller" by hitting Enter instantly, provided there is only 1 find result)
+    ## Postbox / SeaMonkey - display the Icons menuitem on the QuickFolders Commands interface 
+       (this doesn't support icons in the folder tree, but on the tabs themselves)
+    ## Added Slovenian locale {thanks to Peter Klofutar - Babelzilla.org}
+    ## "Remove from current category" had a bug that showed all categories if the FIRST category was removed from a Tab
     ## [Bug 25991] Disambiguate folders shown in quickMove Name Box 
         - added configuration options for the quickJump / quickMove results
         - increased default depth to 3 and include Account by default 
-    ## [Bug 25864] but default unread subfolders aren't highlighted. changing the defaults to make this simpler:
+    ## Changed default of recentfolders.folderPathDetail to 2 
+    ## [Bug 25864] By default, unread subfolders aren't highlighted. changing the defaults to make this simpler:
                [x] Also display totals of subfolders - true
                [x] Highlight Folders with new mail - true
                [x] Display Tabs with newly arrived mail italic
-    ## improved readability for highlighted new mail
-    ## if mails are "queued" for a quickMove operation, using the keyboard shortcut "quickJump" temporarily 
+    ## Bugfix: Removed side effect that overwrites naming conventions of new filters created with quickFilters.
+    ## Made highlighted new mail better readable
+    ## Fixed: when mails are "queued" for a quickMove operation, using the keyboard shortcut "quickJump" temporarily 
        should not move the mails but navigate to the folder instead
-    ## fixed background color selection in Postbox when palette menu is used in options screen
+    ## Fixed background color selection in Postbox when palette menu is used in options screen
     ## Added colored bottom line in Postbox in flat theme and interface to change its height.
+    ## Bling: fixed gradient colors for uncolored inactive tabs in striped mode
+       made text colors more consistent for striped tabs
+       disable transparent / striped options when appropriate
+       in striped mode, do not change color+background color when selecting a new color for inactive tab
     
                
 	Known Issues

@@ -297,6 +297,25 @@ QuickFolders.Util = {
 		return accounts;
 	},
   
+  // safe wrapper to get member from account.identities array
+  getIdentityByIndex: function getIdentityByIndex(ids, index) {
+    const Ci = Components.interfaces;
+    if (!ids) return null;
+    try {
+      if (ids.queryElementAt) {
+        return ids.queryElementAt(index, Ci.nsIMsgIdentity);
+      }
+      if (ids.QueryElementAt) {  // Postbox
+        return ids.QueryElementAt(index, Ci.nsIMsgIdentity);
+      }
+      return null;
+    }
+    catch(ex) {
+      QuickFolders.Util.logDebug('Exception in getIdentityByIndex(ids,' + index + ') \n' + ex.toString());
+    }
+    return null;
+  } ,
+  
   // iterate all folders
   // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
 	allFoldersIterator: function allFoldersIterator(writable) {
@@ -1167,11 +1186,16 @@ QuickFolders.Util = {
 	                                 .getService(Components.interfaces.nsIConsoleService),
 	      aCategory = '',
 	      scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
-	  scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
-    if (this.Application == 'Postbox') {
-      this.logToConsole(scriptError, 'EXCEPTION');
+	  try {
+      scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
+      if (this.Application == 'Postbox') {
+        this.logToConsole(scriptError, 'EXCEPTION');
+      }
+      consoleService.logMessage(scriptError);
     }
-	  consoleService.logMessage(scriptError);
+    catch(ex) {
+      alert('logError failed: ' + aMessage);
+    }
 	} ,
 
 	logException: function logException(aMessage, ex) {
@@ -1334,17 +1358,21 @@ QuickFolders.Util = {
 		// tooltip - see also Attributes section of
 		// https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
 		// and docs for nsIMsgIncomingServer
-		let getPref = function(arg) { return QuickFolders.Preferences.getBoolPref('tooltips.' + arg); };
-		let sVirtual = (folder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "";
-		let srv = folder.server;
-		
-		let srvName='';
-		if (getPref('serverName')) {
-			if (srv) {
-				try {srvName = ' [' + srv.hostName + ']';}
-				catch(e) { };
-			}
-		}
+		let getPref = function(arg) { return QuickFolders.Preferences.getBoolPref('tooltips.' + arg); },
+		    sVirtual = (folder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) ? " (virtual)" : "",
+		    srvName='';
+    try {
+      let srv = folder.server;
+      if (getPref('serverName')) {
+        if (srv) {
+          try {srvName = ' [' + srv.hostName + ']';}
+          catch(e) { };
+        }
+      }
+    }
+    catch(ex) {
+      this.logException('No folder.server for folder:' + folder.name + '!', ex);
+    }
 		
 		let baseFolder = '';
 		if (getPref('baseFolder')) {
@@ -1504,16 +1532,29 @@ QuickFolders.Util = {
   openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
     let util = QuickFolders.Util,
         tabmail = util.$("tabmail");
+    // TO DO - do sanity check on msgHdr (does the message still exist) and throw!
     switch (util.Application) {
       case 'Thunderbird':
         tabmail.openTab('message', {msgHdr: hdr, background: false});  
         break;
       case 'SeaMonkey':
-        let tabMode = tabmail.tabModes['3pane'],
-            tabInfo = {mode: tabMode, canClose: true},
-            modeBits = 2; // get current mode? (kTabShowFolderPane = 1, kTabShowMessagePane = 2, kTabShowThreadPane = 4)
-        // gMailNewsTabsType.modes['3pane'].openTab(tabInfo, modeBits, null, hdr);
-        tabmail.openTab('3pane', modeBits, null, hdr);
+        if (QuickFolders.bookmarks.isDebug)  debugger;
+        try {
+          // check out SM mplementaiton of 3pane openTab here:
+          // http://mxr.mozilla.org/comm-central/source/suite/mailnews/tabmail.js#43
+          let tabMode = tabmail.tabModes['3pane'],
+              modeBits = 2; // get current mode? (kTabShowFolderPane = 1, kTabShowMessagePane = 2, kTabShowThreadPane = 4)
+          // a somewhat stupid hack to bring the new tab into the foreground...
+          let openInBack = tabmail.mPrefs.getBoolPref("browser.tabs.loadInBackground")
+          if (openInBack)
+            tabmail.mPrefs.setBoolPref("browser.tabs.loadInBackground", false);
+          tabmail.openTab('3pane', modeBits, hdr.folder.URI, hdr); // 
+          if (openInBack)
+            tabmail.mPrefs.setBoolPref("browser.tabs.loadInBackground", true);
+        }
+        catch(ex) {
+          this.logException('SeaMonkey openTab failed: ', ex); 
+        }
         break;
       case 'Postbox':
         let win = util.getMail3PaneWindow();
@@ -1521,8 +1562,8 @@ QuickFolders.Util = {
         win.MsgOpenNewTabForMessageWithAnimation(
                hdr.messageKey, 
                hdr.folder.URI, //
-               '',       // aMode
-               false ,   // Background
+               '',       // aMode 'conversation' or ''
+               false ,   // Background  
                true      // skipAnimation 
                // [, aAccountURI (optional) ]
                )
@@ -1534,14 +1575,52 @@ QuickFolders.Util = {
   openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
     try {
       let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+      if (!hdr || hdr.messageId==0) {
+        return false;
+      }
       this.openMessageTabFromHeader(hdr);
     }
     catch(ex) {
       return false;
     }
     return true;
-  }
-
+  } ,
+ 
+  pbGetSelectedMessageUris: function pbGetSelectedMessageUris() {
+    let messageArray = {},
+        length = {},
+        view = GetDBView();
+    view.getURIsForSelection(messageArray, length);
+    if (length.value) {
+      return messageArray.value;
+    }
+    else
+      return null;
+  },
+  
+	// postbox helper function
+	pbGetSelectedMessages : function pbGetSelectedMessages() {
+	  let messageList = [];
+	  // guard against any other callers.
+	  if (this.Application != 'Postbox')
+		  throw('pbGetSelectedMessages: Postbox specific function!');
+			
+	  try {
+      let messageUris = this.pbGetSelectedMessageUris();
+      //let messageIdList = [];
+      // messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
+      for (let i = 0; i < messageUris.length; i++) {
+        let messageUri = messageUris[i],
+            Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+        messageList.push(Message);
+      }
+      return messageList;
+	  }
+	  catch (ex) {
+	    dump("GetSelectedMessages ex = " + ex + "\n");
+	    return null;
+	  }
+	} 
   
 };  // QuickFolders.Util
 

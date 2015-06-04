@@ -8,3 +8,7 @@ toolbar.quickfolders-pills {
   /* in linux -moz-appearance is 'toolbar' and this overrides any coloring of background / borders */
   -moz-appearance: none !important; 
 }
+
+#qf-options {
+  min-height: 640px;
+}

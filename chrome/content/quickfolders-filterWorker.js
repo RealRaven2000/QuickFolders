@@ -557,7 +557,7 @@ QuickFolders.FilterWorker = {
 							return false;
 					}
 
-					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder" == true)) {
+					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder", true)) {
 					  if (targetFolder.parent)
 					    filterName = targetFolder.parent.prettyName + " - " + filterName;
 					}

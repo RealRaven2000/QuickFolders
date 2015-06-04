@@ -298,45 +298,46 @@ QuickFolders.Options = {
   initBling: function initBling (tabbox) {
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
-        col = QuickFolders.Preferences.getUserStyle("ActiveTab","color","#FFFFFF"), 
-        bcol = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","#000090");
+        prefs = QuickFolders.Preferences,
+        col = prefs.getUserStyle("ActiveTab","color","#FFFFFF"), 
+        bcol = prefs.getUserStyle("ActiveTab","background-color","#000090");
     getElement("activetab-colorpicker").color = bcol;
     getElement("activetab-fontcolorpicker").color = col;
     getElement("activetabs-label").style.setProperty('color', col, 'important');
     getElement("activetabs-label").style.backgroundColor = bcol;
 
-    bcol = QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","buttonface");
+    bcol = prefs.getUserStyle("InactiveTab","background-color","buttonface");
     getElement("inactive-colorpicker").color = bcol;
 
     //support transparency and shadow
-    let transcol  =  this.getTransparent(bcol, QuickFolders.Preferences.getBoolPref("transparentButtons"));
+    let transcol  =  this.getTransparent(bcol, prefs.getBoolPref("transparentButtons"));
     QuickFolders.Util.logDebug('inactivetabs-label: setting background color to ' + transcol);
     getElement("inactivetabs-label").style.backgroundColor = transcol;
-    // this.showButtonShadow(QuickFolders.Preferences.getBoolPref("buttonShadows"));
+    // this.showButtonShadow(prefs.getBoolPref("buttonShadows"));
 
-    col = QuickFolders.Preferences.getUserStyle("InactiveTab","color","buttontext");
+    col = prefs.getUserStyle("InactiveTab","color","buttontext");
     getElement("inactive-fontcolorpicker").color = col;
     getElement("inactivetabs-label").style.setProperty('color', col, 'important');
 
 
-    bcol = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#FFFFFF");
+    bcol = prefs.getUserStyle("HoveredTab","background-color","#FFFFFF");
     getElement("hover-colorpicker").color = bcol;
-    col = QuickFolders.Preferences.getUserStyle("HoveredTab","color","Black");
+    col = prefs.getUserStyle("HoveredTab","color","Black");
     getElement("hover-fontcolorpicker").color = col;
     getElement("hoveredtabs-label").style.setProperty('color', col, 'important');
     getElement("hoveredtabs-label").style.backgroundColor = bcol;
 
-    bcol = QuickFolders.Preferences.getUserStyle("DragTab","background-color", "#E93903");
+    bcol = prefs.getUserStyle("DragTab","background-color", "#E93903");
     getElement("dragover-colorpicker").color = bcol;
-    col = QuickFolders.Preferences.getUserStyle("DragTab","color", "White");
+    col = prefs.getUserStyle("DragTab","color", "White");
     getElement("dragover-fontcolorpicker").color = col;
     getElement("dragovertabs-label").style.setProperty('color', col, 'important');
     getElement("dragovertabs-label").style.backgroundColor = bcol;
-    getElement("toolbar-colorpicker").color = QuickFolders.Preferences.getUserStyle("Toolbar","background-color", "White");
+    getElement("toolbar-colorpicker").color = prefs.getUserStyle("Toolbar","background-color", "White");
     // disable folder tree icons - not supported on Postbox+SeaMonkey
-    getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
+    getElement("chkShowIconButtons").collapsed = !prefs.supportsCustomIcon; 
 
-    this.selectTheme(wd, QuickFolders.Preferences.CurrentThemeId);
+    let currentTheme = this.selectTheme(wd, prefs.CurrentThemeId);
 
     // initialize Theme Selector by adding original titles to localized versions
     let cbo = getElement("QuickFolders-Theme-Selector");
@@ -351,7 +352,7 @@ QuickFolders.Options = {
       }
 
     try {
-      let selectOptionsPane = QuickFolders.Preferences.getIntPref('lastSelectedOptionsTab');
+      let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
       if (selectOptionsPane >=0)
         tabbox.selectedIndex = selectOptionsPane; // 1 for pimp my tabs
     }
@@ -363,11 +364,15 @@ QuickFolders.Options = {
     // customized coloring support
     this.initPreviewTabStyles();
     
-    let paletteType = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType');
-    getElement('qf-individualColors').collapsed = !
-      (this.stripedSupport(paletteType) && 
-       this.stripedSupport(QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')));   
-    getElement('buttonTransparency').disabled = (paletteType!=0); // only with "no colors"
+    if (prefs.isDebug) debugger;
+    let paletteType = prefs.getIntPref('style.InactiveTab.paletteType'),
+        disableStriped = !(this.stripedSupport(paletteType) && 
+                           this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')));
+    
+    getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
+    getElement('qf-individualColors').disabled = disableStriped;
+    getElement('ExampleStripedColor').disabled = disableStriped;
+    getElement('buttonTransparency').disabled = (paletteType!=0) && disableStriped; // only with "no colors"
   },
 
   trimLicense: function trimLicense() {
@@ -549,7 +554,7 @@ QuickFolders.Options = {
   },
   
 	selectTheme: function selectTheme(wd, themeId) {
-		let myTheme =  QuickFolders.Themes.Theme(themeId),
+		let myTheme = QuickFolders.Themes.Theme(themeId),
         getElement = wd.getElementById.bind(wd),
         util = QuickFolders.Util,
         main = util.getMail3PaneWindow(),
@@ -611,7 +616,8 @@ QuickFolders.Options = {
 
 			util.logDebug ('Theme [' + myTheme.Id + '] selected');
 		}
-	} ,
+	  return myTheme;
+  } ,
 	
 	BGCHOICE : {
 	  default: 0,
@@ -730,19 +736,15 @@ QuickFolders.Options = {
   
 	// select: striped style / filled style
 	setColoredTabStyle: function setColoredTabStyle(styleId, force) {
-    let prefs = QuickFolders.Preferences;
+    let prefs = QuickFolders.Preferences,
+        QI = QuickFolders.Interface;
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
 		prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
-		QuickFolders.Interface.updateMainWindow(false);
+		QI.updateMainWindow(false);
 		
 		let inactiveTab = document.getElementById('inactivetabs-label');
-		if (inactiveTab) {
-			if ((styleId != prefs.TABS_STRIPED))
-				inactiveTab.className = inactiveTab.className.replace(/\s*striped/,"");
-			if ((styleId == prefs.TABS_STRIPED) && (inactiveTab.className.indexOf("striped")<0))
-				inactiveTab.className = inactiveTab.className.replace(/(col[0-9]+)/,"$1striped");
-		}
+    QI.applyTabStyle(inactiveTab, styleId);
 	}, 
 	
 	getButtonStatePrefId: function getButtonStatePrefId(buttonState) {
@@ -833,6 +835,7 @@ QuickFolders.Options = {
 		}
     if (isUpdatePanelColor) {
       getElement('buttonTransparency').disabled = !isTransparentSupport;
+      if (prefs.isDebug) debugger;
       if (isStripable === null) {
           isStripable = this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'))
                         && 
@@ -842,7 +845,8 @@ QuickFolders.Options = {
       if (!isStripable) {
         this.setColoredTabStyle(prefs.TABS_FILLED);
       }
-      getElement('qf-individualColors').collapsed = !isStripable;
+      getElement('qf-individualColors').disabled = !isStripable;
+      getElement('ExampleStripedColor').disabled = !isStripable;
     }
 		
 		// preparePreviewTab(id, preference, previewId)

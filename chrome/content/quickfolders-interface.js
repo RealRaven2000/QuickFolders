@@ -21,7 +21,6 @@ if (!QuickFolders.Properties)
 QuickFolders.Interface = {
 	PaintModeActive: false,
 	TimeoutID: 0,
-  isMoveActive: false,
 	LastTimeoutID: 0,
 	debugPopupItems: 0,
 	buttonsByOffset: [],
@@ -135,41 +134,34 @@ QuickFolders.Interface = {
 		try {
 			let folder;
 			QuickFolders.Util.logDebugOptional("mailTabs", "tabSelectUpdate - "
-				 + QuickFolders.currentURI +"\ntabSelectEnable=" + QuickFolders.tabSelectEnable);
-			if (QuickFolders.tabSelectEnable) {
-				folder = QuickFolders.Interface.onTabSelected();
-				// change the category (if selected folder is in list)
-				// GetFirstSelectedMsgFolder(); // bad thing!
-				if (folder) {
-					QuickFolders.Util.logDebugOptional("mailTabs", "tabSelectUpdate() Folder Selected: "+ folder.name);
-					let entry = QuickFolders.Model.getFolderEntry(folder.URI);
-					if (entry) {
-						QuickFolders.Util.logDebugOptional ("mailTabs","Current Category = " + this.currentlySelectedCategory ); // + this.CurrentlySelectedCategoryName
-						if (entry.category)
-							QuickFolders.Util.logDebugOptional ("mailTabs","Categories of selected Tab = " + entry.category.replace('|',', '));
-						// no need to switch / update categories, if ALL is selected!
-						if (QuickFolders.FolderCategory.ALL == this.currentlySelectedCategory) {
-							QuickFolders.tabSelectEnable=true;
-							return;
-						}
-						if (!entry.category)
-							QuickFolders.Interface.selectCategory(QuickFolders.FolderCategory.UNCATEGORIZED , false);
-						// switch category - but to which one if the folder is in multiple categories?
-						if (entry.category 
-							&& 
-							entry.category.indexOf(this.CurrentlySelectedCategoryName) < 0
-							&& entry.category!=QuickFolders.FolderCategory.ALWAYS)
-							QuickFolders.Interface.selectCategory(entry.category, false);
-						this.updateCategories();
+				 + QuickFolders.currentURI +"\n");
+      folder = QuickFolders.Interface.onTabSelected();
+      // change the category (if selected folder is in list)
+      // GetFirstSelectedMsgFolder(); // bad thing!
+      if (folder) {
+        QuickFolders.Util.logDebugOptional("mailTabs", "tabSelectUpdate() Folder Selected: "+ folder.name);
+        let entry = QuickFolders.Model.getFolderEntry(folder.URI);
+        if (entry) {
+          QuickFolders.Util.logDebugOptional ("mailTabs","Current Category = " + this.currentlySelectedCategory ); // + this.CurrentlySelectedCategoryName
+          if (entry.category)
+            QuickFolders.Util.logDebugOptional ("mailTabs","Categories of selected Tab = " + entry.category.replace('|',', '));
+          // no need to switch / update categories, if ALL is selected!
+          if (QuickFolders.FolderCategory.ALL == this.currentlySelectedCategory) {
+            return;
+          }
+          if (!entry.category)
+            QuickFolders.Interface.selectCategory(QuickFolders.FolderCategory.UNCATEGORIZED , false);
+          // switch category - but to which one if the folder is in multiple categories?
+          if (entry.category 
+            && 
+            entry.category.indexOf(this.CurrentlySelectedCategoryName) < 0
+            && entry.category!=QuickFolders.FolderCategory.ALWAYS)
+            QuickFolders.Interface.selectCategory(entry.category, false);
+          this.updateCategories();
 
-					}
-				}
-			}
-			else {
-				//folder = GetMsgFolderFromUri(QuickFolders.currentURI);
-			}
+        }
+      }
 		} catch(e) { QuickFolders.Util.logToConsole("tabSelectUpdate failed: " + e); }
-		QuickFolders.tabSelectEnable=true;
 	} ,
 
 	setTabSelectTimer: function setTabSelectTimer() {
@@ -1395,7 +1387,8 @@ QuickFolders.Interface = {
 	totalCount:0, // to pass temp information from getButtonLabel to styleFolderButton
 	getButtonLabel: function getButtonLabel(folder, useName, offset, entry) {
 		try {
-			let numUnread = folder.getNumUnread(false),
+			let nU = folder.getNumUnread(false),
+          numUnread = (nU==-1) ? 0 : nU, // Postbox root folder fix
 			    numUnreadInSubFolders = folder.getNumUnread(true) - numUnread,
 			    numTotal = folder.getTotalMessages(false),
 			    numTotalInSubFolders = folder.getTotalMessages(true) - numTotal,
@@ -2481,26 +2474,33 @@ QuickFolders.Interface = {
         }
       }
       
-      // download all
-      // server.type = protocol type, that is "pop3", "imap", "nntp", "none", and so on
-      if (folder.server.type !== 'nntp' // newsgroups have their own "Get Messages" Command
-        &&
-          folder.server.type !== 'pop3' 
-        &&
-          folder.server.type !== 'none'  // local folders
-        &&
-          !(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_INBOX)) { 
-        menuitem = document.createElement('menuitem');
-        menuitem.className='mailCmd menuitem-iconic';
-        menuitem.setAttribute("id","folderPaneContext-downloadAll");
-        this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDownloadAll(this);");
-        let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + folder.server.type + "]";
-        menuitem.setAttribute('label', downloadLabel);
-        // MailCommands.appendChild(menuitem);
-        // if (isRootMenu)
-        menupopup.appendChild(menuitem);
-        topShortCuts ++ ;
-      }    
+      try {
+        // download all
+        // server.type = protocol type, that is "pop3", "imap", "nntp", "none", and so on
+        if (folder.server
+          &&
+            folder.server.type !== 'nntp' // newsgroups have their own "Get Messages" Command
+          &&
+            folder.server.type !== 'pop3' 
+          &&
+            folder.server.type !== 'none'  // local folders
+          &&
+            !(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_INBOX)) { 
+          menuitem = document.createElement('menuitem');
+          menuitem.className='mailCmd menuitem-iconic';
+          menuitem.setAttribute("id","folderPaneContext-downloadAll");
+          this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDownloadAll(this);");
+          let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + folder.server.type + "]";
+          menuitem.setAttribute('label', downloadLabel);
+          // MailCommands.appendChild(menuitem);
+          // if (isRootMenu)
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }    
+      }
+      catch(ex) {
+			  utils.logException('Exception in appendMailFolderCommands for ' + folder.name + ' this should have a server property!', ex); 
+      }
       
       // MarkAllRead (always on top)
       if (!(folder.flags & utils.FolderFlags.MSG_FOLDER_FLAG_TRASH)
@@ -2985,12 +2985,12 @@ QuickFolders.Interface = {
 	} ,
 	
 	createMenuItem_GetMail: function createMenuItem_GetMail(folder) {
+    let server = '?';
 		try {
 			// find out the server name
 			// let's clone it ?
-			// let getMailMenuItem=newMenuItem.cloneNode(true);
-			let server = folder.server,
-			    getMailMenuItem= document.createElement('menuitem');
+			let getMailMenuItem= document.createElement('menuitem');
+			server = folder.server;
 			getMailMenuItem.id="folderPaneContext-getMessages"; // for native styling
 			getMailMenuItem.folder=folder;
 			getMailMenuItem.setAttribute('label', this.getUIstring("qfGetMail", "Get Messages..."));
@@ -3058,6 +3058,8 @@ QuickFolders.Interface = {
 	addDragToNewFolderItem: function addDragToNewFolderItem(popupMenu, folder) {
     let util = QuickFolders.Util;
 		try {
+      if (typeof folder.server === 'undefined') return;
+      
 			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettiestName
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
 				+ "\nserver.type = " + folder.server.type);
@@ -3518,8 +3520,6 @@ QuickFolders.Interface = {
 			menupopup.hidePopup();
 		} catch(ex) { util.logException('hideFindPopup', ex); }
 	} ,
-
-  
   
   // forceFind - enter key has been pressed, so we want the first match to force a jump
 	findFolderName: function findFolderName(searchBox, forceFind) {
@@ -3544,7 +3544,16 @@ QuickFolders.Interface = {
 				}
 			}
 		}
-		let util = QuickFolders.Util,
+		// check if any word in foldername string starts with typed characters
+    function wordStartMatch(fName, search) {
+      let m = fName.split(' ');
+      for (let i=0; i<m.length; i++) {
+        if (m[i].indexOf(search)==0) return true;
+      }
+      return false;
+    }
+    
+    let util = QuickFolders.Util,
         model = QuickFolders.Model,
         Ci = Components.interfaces,
 		    isSelected = false,
@@ -3584,7 +3593,7 @@ QuickFolders.Interface = {
 		// if 1 unique full match is found, we can automatically jump there
 		if ((matches.length == 1)  && (!isFiling)
         && (matches[0].lname == searchString      // one exact match
-           || (matches[0].lname.indexOf(searchString)==0 && forceFind)) // match starts with search string + [Enter] key was pressed
+           || (wordStartMatch(matches[0].lname) && forceFind)) // match starts with search string + [Enter] key was pressed
        ) {
 			// go to folder
 			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
@@ -3647,7 +3656,7 @@ QuickFolders.Interface = {
 				menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 		}
 		if (matches.length == 1) { 
-      if (!isFiling && matches[0].lname.indexOf(searchString)==0 && forceFind) {
+      if (!isFiling && wordStartMatch(matches[0].lname, searchString) && forceFind) {
         // go to folder
         isSelected = QuickFolders_MySelectFolder(matches[0].uri);
         setTimeout(function() {
@@ -4226,6 +4235,7 @@ QuickFolders.Interface = {
 		newclass += this.getButtonColorClass(col, dontStripe);
 		button.className = newclass; // .trim()
 		button.setAttribute("colorIndex", col);
+    
 		return true;
 	} ,
 
@@ -4295,6 +4305,7 @@ QuickFolders.Interface = {
 	setTabColorFromMenu: function setTabColorFromMenu(menuitem, col) {
 		// get parent button of color sub(sub)(sub)menu
 		let parent = menuitem,
+        prefs = QuickFolders.Preferences,
 		    ssPalettes;
 		while (!parent.folder && parent.parentNode) {
 			parent=parent.parentNode;
@@ -4306,23 +4317,24 @@ QuickFolders.Interface = {
 				default:  // 'QuickFolders-Options-PalettePopup' etc.
 				  if (parent.id.indexOf('QuickFolders-Options-')<0) 
 						continue;  // 
-					// options dialog case: parent it menupopup
+					// options dialog case: parent is menupopup
 					//   showPopup should have set this as 'targetNode'
 					let targetNode = parent.targetNode;
 					// now paint the button
 				  QuickFolders.Options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
-				  //QuickFolders.Options.preparePreviewPastel(QuickFolders.Preferences.getBoolPref('pastelColors'));
+				  //QuickFolders.Options.preparePreviewPastel(prefs.getBoolPref('pastelColors'));
 					//   retrieve about config key to persist setting;
 					let styleKey =  targetNode.getAttribute('stylePrefKey'),
 				      stylePref = 'style.' + styleKey + '.',
               userStyleKey = (styleKey == 'DragOver') ? 'DragTab' : styleKey; // fix naming inconsistency
 				  if (stylePref)
-					  QuickFolders.Preferences.setIntPref(stylePref + 'paletteEntry', col);
+					  prefs.setIntPref(stylePref + 'paletteEntry', col);
 					
 					// special rule: if this is the Active Tab Color, let's also determine the active BG (bottom pixel of gradient!)
 					let paletteClass = this.getPaletteClassCss(styleKey),
 					    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + col,
-					    engine = QuickFolders.Styles;
+					    engine = QuickFolders.Styles,
+              disableColorChangeStriped = (styleKey=='InactiveTab' && prefs.ColoredTabStyle==prefs.TABS_STRIPED);
 					ssPalettes = ssPalettes ? ssPalettes : this.getStyleSheet(engine, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes');
 					let colPickId = '',
 					    selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, 'color'),
@@ -4348,9 +4360,9 @@ QuickFolders.Interface = {
 						}
 						// transfer color to font color picker for non-palette mode.
 						let cp = document.getElementById(colPickId);
-						if (cp) {
+						if (cp && !disableColorChangeStriped) {
 							cp.color = selectedFontColor;
-							QuickFolders.Preferences.setUserStyle(userStyleKey, "color", selectedFontColor);
+							prefs.setUserStyle(userStyleKey, "color", selectedFontColor);
 							QuickFolders.Options.styleUpdate(userStyleKey, 'color', selectedFontColor, previewTab);
 						}
 					}
@@ -4384,9 +4396,10 @@ QuickFolders.Interface = {
 								}
 								// transfer color to background color picker for non-palette mode.
 								let cp = document.getElementById(colPickId);
-								if (cp) {
-									cp.color = rgb;
-									QuickFolders.Preferences.setUserStyle(userStyleKey, "background-color", rgb);
+								if (cp && !disableColorChangeStriped) {
+                  // don't do it with inactive tab in striped mode!!
+                  cp.color = rgb;
+                  prefs.setUserStyle(userStyleKey, "background-color", rgb);
 								}
                 resultBackgroundColor = rgb;
 							}
@@ -4403,14 +4416,17 @@ QuickFolders.Interface = {
 						let cp = document.getElementById('inactive-colorpicker');
 						if (cp)
 						  cp.color = 'rgb(255,255,255)';
-						QuickFolders.Preferences.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
+						prefs.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
 						QuickFolders.Interface.updateMainWindow();
 					}
+          if (styleKey == 'InactiveTab')
+            this.applyTabStyle(document.getElementById('inactivetabs-label'), prefs.ColoredTabStyle);
           // immediate update of background color for bottom border
           if (styleKey == 'ActiveTab' && resultBackgroundColor) {
             QuickFolders.Options.styleUpdate('ActiveTab','background-color', resultBackgroundColor, 'activetabs-label');
           }
-          
+          if (disableColorChangeStriped)
+            QuickFolders.Interface.updateMainWindow(true);  // force update as it might have been missed!
 					return; // early exit
 			} // end switch
 		}
@@ -4422,6 +4438,15 @@ QuickFolders.Interface = {
     this.initElementPaletteClass(button, '', (col=='0'));    // make sure correct palette is set
 		QuickFolders.Model.setFolderColor(theFolder.URI, col, false); // store color in folder string
 	} ,
+  
+  applyTabStyle: function applyTabStyle(el, styleId) {
+		if (!el) return;
+    let prefs = QuickFolders.Preferences;
+    if ((styleId != prefs.TABS_STRIPED))
+      el.className = el.className.replace(/\s*striped/,"");
+    if ((styleId == prefs.TABS_STRIPED) && (el.className.indexOf("striped")<0))
+      el.className = el.className.replace(/(col[0-9]+)/,"$1striped");
+  },  
 
 	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(Name, Title)	{
 		try {
@@ -4467,10 +4492,11 @@ QuickFolders.Interface = {
 		    paletteClass = this.getPaletteClassCss(templateTabClass);
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initHoverStyle()  PaintMode=" + isPaintMode + "   paletteClass=" + paletteClass);
 		let engine = QuickFolders.Styles,
-		    hoverBackColor = QuickFolders.Preferences.getUserStyle("HoveredTab","background-color","#F90"),
-		    tabStyle = QuickFolders.Preferences.ColoredTabStyle,
-		    noColorClass = (tabStyle != QuickFolders.Preferences.TABS_STRIPED) ? 'col0' : 'col0striped',
-		    hoverColor = QuickFolders.Preferences.getUserStyle(templateTabClass, "color", "#000000"),
+        prefs = QuickFolders.Preferences,
+		    hoverBackColor = prefs.getUserStyle("HoveredTab","background-color","#F90"),
+		    tabStyle = prefs.ColoredTabStyle,
+		    noColorClass = (tabStyle != prefs.TABS_STRIPED) ? 'col0' : 'col0striped',
+		    hoverColor = prefs.getUserStyle(templateTabClass, "color", "#000000"),
         avoidCurrentFolder = ':not(#QuickFoldersCurrentFolder)';
 		
 		// default hover colors: (not sure if we even need them during paint mode)
@@ -4481,13 +4507,13 @@ QuickFolders.Interface = {
 		let paintButton = isPaintMode ? this.PaintButton : null;
 			
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "style." + templateTabClass + ".paletteType = " 
-		  + QuickFolders.Preferences.getIntPref('style.' + templateTabClass + '.paletteType'));
+		  + prefs.getIntPref('style.' + templateTabClass + '.paletteType'));
 
-		if (QuickFolders.Preferences.getIntPref('style.HoveredTab.paletteType') || isPaintMode) {
+		if (prefs.getIntPref('style.HoveredTab.paletteType') || isPaintMode) {
 			let paletteEntry = 
 				isPaintMode 
 				? paintButton.getAttribute("colorIndex")
-				: QuickFolders.Preferences.getIntPref('style.HoveredTab.paletteEntry');
+				: prefs.getIntPref('style.HoveredTab.paletteEntry');
 			if (!paletteEntry) 
 				paletteEntry = 1;
 			// extract current gradient from style sheet rule:
@@ -4511,7 +4537,7 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logDebugOptional("interface.buttonStyles", "Configure Plain backgrounds...");
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':hover', 'background-image', 'none', true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ':hover', 'background-image', 'none', true);
-			if (tabStyle == QuickFolders.Preferences.TABS_STRIPED) {
+			if (tabStyle == prefs.TABS_STRIPED) {
 				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor ,true);
 			}
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor, true);
@@ -4527,15 +4553,16 @@ QuickFolders.Interface = {
 		  ssPalettes = ss;
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initDragOverStyle()");
 		let engine = QuickFolders.Styles,
+        prefs = QuickFolders.Preferences,
 		    // let dragOverColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
-		    dragOverColor = QuickFolders.Preferences.getUserStyle("DragTab","color","White");
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over','background-color', QuickFolders.Preferences.getUserStyle("DragTab","background-color","#E93903"),true);
+		    dragOverColor = prefs.getUserStyle("DragTab","color","White");
+		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over','background-color', prefs.getUserStyle("DragTab","background-color","#E93903"),true);
     let noColorClass = 'col0'; // ####
     engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':-moz-drag-over > label','color', dragOverColor, true); // ####
 		
-		if (QuickFolders.Preferences.getIntPref('style.DragOver.paletteType')) {
+		if (prefs.getIntPref('style.DragOver.paletteType')) {
 			let paletteClass = this.getPaletteClassCss('DragOver'),
-			    paletteEntry = QuickFolders.Preferences.getIntPref('style.DragOver.paletteEntry'),
+			    paletteEntry = prefs.getIntPref('style.DragOver.paletteEntry'),
 			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
 			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
 			// for some reason this one is completely ignored by SeaMonkey and Postbox
@@ -4632,17 +4659,18 @@ QuickFolders.Interface = {
 		  ssPalettes = ss;
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initDefaultStyle()");
 		let engine = QuickFolders.Styles,
+        prefs = QuickFolders.Preferences,
         inactiveGradientColor = null,
-		    inactiveBackground = QuickFolders.Preferences.getUserStyle("InactiveTab","background-color","ButtonFace"),
-		    inactiveColor = QuickFolders.Preferences.getUserStyle("InactiveTab","color","black"),
+		    inactiveBackground = prefs.getUserStyle("InactiveTab","background-color","ButtonFace"),
+		    inactiveColor = prefs.getUserStyle("InactiveTab","color","black"),
 		    paletteClass = this.getPaletteClassCss('InactiveTab'),
     // only plastic & pastel support striped style:
-        isTabsStriped = (tabStyle == QuickFolders.Preferences.TABS_STRIPED) && QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')<3, 
+        isTabsStriped = (tabStyle == prefs.TABS_STRIPED) && prefs.getIntPref('style.InactiveTab.paletteType')<3, 
 		    noColorClass = (isTabsStriped) ? 'col0striped' : 'col0',
 		    avoidCurrentFolder = ''; // = ':not(#QuickFoldersCurrentFolder)'; // we omit paletteClass for uncolored tabs:
 
 		// transparent buttons: means translucent background! :))
-		if (QuickFolders.Preferences.getBoolPref('transparentButtons')) 
+		if (prefs.getBoolPref('transparentButtons')) 
 			inactiveBackground = QuickFolders.Util.getRGBA(inactiveBackground, 0.25) ; 
 
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton','background-color', inactiveBackground, true);
@@ -4650,10 +4678,10 @@ QuickFolders.Interface = {
 		
 		// INACTIVE STATE (PALETTE) FOR UNCOLORED TABS ONLY
 		// LETS AVOID !IMPORTANT TO SIMPLIFY STATE STYLING
-		if (QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')>0) {
-			
-			let paletteEntry = QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteEntry');
-			if (tabStyle === QuickFolders.Preferences.TABS_STRIPED)
+		if (prefs.getIntPref('style.InactiveTab.paletteType')>0) {
+			if (prefs.isDebug) debugger;
+			let paletteEntry = prefs.getIntPref('style.InactiveTab.paletteEntry');
+			if (tabStyle === prefs.TABS_STRIPED)
 				paletteEntry += 'striped';
 			let ruleName = (!isTabsStriped ? '.quickfolders-flat ' : '') + paletteClass + '.col' + paletteEntry;
 			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
@@ -4674,11 +4702,14 @@ QuickFolders.Interface = {
       engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ' > label','color', inactiveGradientColor, false);
 
 		// Coloring all striped tabbed buttons that have individual colors 
+    let coloredPaletteClass = this.getPaletteClassCss('ColoredTab');
 		if (isTabsStriped) {
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ' > label','color', inactiveColor, false);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + coloredPaletteClass + ' > label','color', inactiveColor, false);
 		}
 		else {
 			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ' > label','color');
+			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + coloredPaletteClass + ' > label','color');
 		}
 		
 	} ,
@@ -5165,7 +5196,7 @@ QuickFolders.Interface = {
 						array.AppendElement(fromFolder);
 					
 					// cannot move if the target Folder is in a different account?
-					// folders[0].server == targetFolder.server
+					// folders[0]\ == targetFolder.server
 					let isMove = (!fromFolder.locked && fromFolder.canRename && fromFolder.deletable
 					              	&&
 					               (fromFolder.server.type == 'pop3' || fromFolder.server.type == 'imap' || fromFolder.server.type == 'none')),

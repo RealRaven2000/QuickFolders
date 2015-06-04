@@ -53,14 +53,15 @@ QuickFolders.Licenser = {
   } ,
   // list of eligible accounts
   get Accounts() {
-    let util = QuickFolders.Util; 
-    let aAccounts=[];
-    let accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).accounts;
+    const Ci = Components.interfaces;
+    let util = QuickFolders.Util, 
+        aAccounts=[],
+        accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
     if (util.Application == 'Postbox') 
       aAccounts = util.getAccountsPostbox();
     else {
       aAccounts = [];
-      for (let ac in fixIterator(accounts, Components.interfaces.nsIMsgAccount)) {
+      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
         aAccounts.push(ac);
       };
     }
@@ -77,45 +78,70 @@ QuickFolders.Licenser = {
   
   load: function load() {
     function appendIdentity(dropdown, id, account) {
-      if (!id.email) {
-        QuickFolders.Util.logToConsole('Omitting account ' + id.fullName + ' - no mail address');
-        return;
+      if (!id) {
+        util.logDebug('appendIdentity failed for account = ' + account ? account.key : 'unknown');
       }
-      let menuitem = document.createElement('menuitem');
-      menuitem.setAttribute("id", "id" + idCount++);
-      // this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
-      menuitem.setAttribute("fullName", id.fullName);
-      menuitem.setAttribute("value", id.email);
-      menuitem.setAttribute("accountKey", account.key);
-      menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
-      dropdown.appendChild(menuitem);
+      try {
+        util.logDebugOptional('identities', 
+          'Account: ' + account.key + '...\n'  
+          + 'appendIdentity [' + dropdownCount + ']\n'
+          + '  identityName = ' + (id ? id.identityName : 'empty') + '\n'
+          + '  fullName = ' + (id ? id.fullName : 'empty') + '\n' 
+          + '  email = ' + (id.email ? id.email : 'empty'));
+        if (!id.email) {
+          util.logToConsole('Omitting account ' + id.fullName + ' - no mail address');
+          return;
+        }
+        let menuitem = document.createElement('menuitem');
+        menuitem.setAttribute("id", "id" + dropdownCount++);
+        // this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
+        menuitem.setAttribute("fullName", id.fullName);
+        menuitem.setAttribute("value", id.email);
+        menuitem.setAttribute("accountKey", account.key);
+        menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
+        dropdown.appendChild(menuitem);
+      }
+      catch (ex) {
+        util.logException('appendIdentity failed: ', ex);
+      }
     }
-    let idCount = 0;
     
-    let util = QuickFolders.Util; 
+    let util = QuickFolders.Util,
+        dropdownCount = 0;
 		if (window.arguments && window.arguments[1].inn.referrer) {
       let ref = document.getElementById('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }
     
     // iterate accounts
-    let idSelector = document.getElementById('mailIdentity');
-    let popup = idSelector.menupopup;
-    for each (let ac in this.Accounts) { 
+    let idSelector = document.getElementById('mailIdentity'),
+        popup = idSelector.menupopup,
+        myAccounts = this.Accounts,
+        acCount = myAccounts.length;
+    util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
+    for (let a=0; a < myAccounts.length; a++) { 
+      let ac = myAccounts[a];
       if (ac.defaultIdentity) {
+        util.logDebugOptional('identities', ac.key + ': appending default identity...');
         appendIdentity(popup, ac.defaultIdentity, ac);
         continue;
       }
       let ids = ac.identities; // array of nsIMsgIdentity 
       if (ids) {
-        for (let i=0; i<ids.length; i++) {
+        let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+        util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
+        for (let i=0; i<idCount; i++) {
           // use ac.defaultIdentity ??
           // populate the dropdown with nsIMsgIdentity details
-          let id = ids.queryElementAt(i, Components.interfaces.nsIMsgIdentity);
+          let id = util.getIdentityByIndex(ids, i);
           if (!id) continue;
           appendIdentity(popup, id, ac);
         }
-      }      
+      }
+      else {
+        util.logDebugOptional('identities', 
+          'Account: ' + account.key + ':\n - No identities.');
+      }  
     }
     // select first item
     idSelector.selectedIndex = 0;
@@ -301,9 +327,11 @@ QuickFolders.Licenser = {
     let isMatched = false, 
         iAccount=0,
         isDbgAccounts = QuickFolders.Preferences.isDebugOption('premium.licenser'),
-        hasDefaultIdentity = false;
-    for each (let ac in this.Accounts) { 
-      if (ac.defaultIdentity) {
+        hasDefaultIdentity = false,
+        myAccounts = this.Accounts;
+    
+    for (let a=0; a < myAccounts.length; a++) { 
+      if (myAccounts[a].defaultIdentity) {
         hasDefaultIdentity = true;
         break;
       }
@@ -314,33 +342,43 @@ QuickFolders.Licenser = {
                     "You may want to check your account configuration as this might impact some functionality.\n" + 
                     "Allowing use of secondary email addresses...");
     }
-    for each (let ac in this.Accounts) { 
+    let licensedMail = this.DecryptedMail.toLowerCase();
+    for (let a=0; a < myAccounts.length; a++) { 
+      let ac = myAccounts[a];
       iAccount++;
       if (ac.defaultIdentity) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
-        if (ac.defaultIdentity.email.toLowerCase()==this.DecryptedMail.toLowerCase()) {
+        if (ac.defaultIdentity.email.toLowerCase()==licensedMail) {
           isMatched = true;
           break;
         }
       }
       else {
-        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] has no default identity! ");
-        if (!this.AllowSecondaryMails && !isDbgAccounts) continue;
+        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] has no default identity!");
+        if (!this.AllowSecondaryMails) continue;
         // ... allow using non default identities 
         // we might protect this execution branch 
         // with a config preference!
-        let ids = ac.identities; // array of nsIMsgIdentity 
+        let ids = ac.identities, // array of nsIMsgIdentity 
+            idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids...");
         if (ids) {
-          for (let i=0; i<ids.length; i++) {
+          for (let i=0; i<idCount; i++) {
             // use ac.defaultIdentity ??
             // populate the dropdown with nsIMsgIdentity details
-            let id = ids.queryElementAt(i, Components.interfaces.nsIMsgIdentity);
-            if (!id) continue;
-            if (isDbgAccounts) {
-              util.logDebugOptional("premium.licenser", "Account[" + ac.key + "], Identity[" + i + "] = " + logIdentity(id));
+            let id = util.getIdentityByIndex(ids, i);
+            if (!id) {
+              util.logDebugOptional("premium.licenser", "Invalid nsIMsgIdentity: " + i);
+              continue;
             }
-            if (this.AllowSecondaryMails && id.email.toLowerCase()==this.DecryptedMail.toLowerCase()) {
+            let matchMail = id.email.toLocaleLowerCase();
+            if (isDbgAccounts) {
+              util.logDebugOptional("premium.licenser", 
+                "Account[" + ac.key + "], Identity[" + i + "] = " + logIdentity(id) +"\n"
+                + "Email: [" + matchMail + "]");
+            }
+            if (this.AllowSecondaryMails && matchMail==licensedMail) {
               isMatched = true;
               break;
             }

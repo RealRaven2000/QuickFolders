@@ -1,6 +1,7 @@
 pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
 // Model
 pref("extensions.quickfolders.lastSelectedCategory","");
+pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 // General Prefs
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
@@ -30,9 +31,12 @@ pref("extensions.quickfolders.quickJump.Hotkey", 'J');
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.folderLabel", true);
-pref("extensions.quickfolders.bookmarks.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
-pref("extensions.quickfolders.bookmarks.showButton", false);
+pref("extensions.quickfolders.bookmarks.folderLabel", true);
+pref("extensions.quickfolders.bookmarks.showButton", true);
+pref("extensions.quickfolders.bookmarks.maxEntries", 100);
+pref("extensions.quickfolders.bookmarks.searchUri", "");
+pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
@@ -109,6 +113,7 @@ pref("extensions.quickfolders.style.ColoredTab.paletteType", 1); // default to n
 // Debugging Options
 pref("extensions.quickfolders.debug.firstrun", false);
 pref("extensions.quickfolders.debug.buttonStyle", false);
+pref("extensions.quickfolders.debug.bookmarks", false);
 pref("extensions.quickfolders.debug.categories", false);
 pref("extensions.quickfolders.debug.css", false);
 pref("extensions.quickfolders.debug.css.Detail", false);
@@ -125,6 +130,7 @@ pref("extensions.quickfolders.debug.popupmenus.collapse", false);
 pref("extensions.quickfolders.debug.popupmenus.drag", false);
 pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.events", false);
+pref("extensions.quickfolders.debug.identities", false);
 pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
@@ -200,9 +206,4 @@ pref("extensions.quickfolders.LicenseKey", "");
 pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
 /** obsolete **/
-// we need this to better integrate with quickFilters - therefore using the same extension naming space is intended!
-pref("extensions.quickfilters.naming.keyWord", true);
-pref("extensions.quickfilters.naming.parentFolder", false);
-
-
 

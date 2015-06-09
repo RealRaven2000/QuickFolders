@@ -188,7 +188,7 @@ QuickFolders.Options = {
     }
     
     // convert from string "24px" to number "24"
-    let minToolbarHeight = QuickFolders.Preferences.getCharPrefQF('toolbar.minHeight'),
+    let minToolbarHeight = QuickFolders.Preferences.getStringPref('toolbar.minHeight'),
         mT = parseInt(minToolbarHeight);
     if (minToolbarHeight.indexOf('px' > 0)) {
       QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', mT.toString()) 
@@ -211,7 +211,7 @@ QuickFolders.Options = {
     let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense", "Get License!");
     getElement("btnLicense").label=regBtn;
     // validate License key
-    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey');
+    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey');
     getElement('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
     if (QuickFolders.Licenser.LicenseKey) {
       this.validateLicense(false);
@@ -260,7 +260,7 @@ QuickFolders.Options = {
         break;
     }
     
-    let EncryptionKey = QuickFolders.Preferences.getCharPrefQF('premium.encryptionKey');
+    let EncryptionKey = QuickFolders.Preferences.getStringPref('premium.encryptionKey');
     if (EncryptionKey) {
       getElement('boxKeyGenerator').collapsed = false;
       QuickFolders.Licenser.RSA_encryption = EncryptionKey;
@@ -272,7 +272,7 @@ QuickFolders.Options = {
     /***** Menu Items / Labels *****/
 		// bundle strings
 		// getElement("chkShowFolderMenuButton").label = util.getBundleString("qfFolderPopup");
-		this.setCurrentToolbarBackground(QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background.selection'), false);  
+		this.setCurrentToolbarBackground(QuickFolders.Preferences.getStringPref('currentFolderBar.background.selection'), false);  
 
     /*****  Bling + Stuff  *****/
 		// initialize colorpickers
@@ -542,7 +542,7 @@ QuickFolders.Options = {
   } ,
   
   restoreLicense: function restoreLicense() {
-    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey'); 
+    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'); 
     document.getElementById('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
   },
   
@@ -699,7 +699,7 @@ QuickFolders.Options = {
 			case 'custom':
 				backgroundCombo.selectedIndex = this.BGCHOICE.custom;
 				// restore custom value
-				setting.value = QuickFolders.Preferences.getCharPrefQF('currentFolderBar.background.custom');  
+				setting.value = QuickFolders.Preferences.getStringPref('currentFolderBar.background.custom');  
 				break;
 		}
 		let styleValue = setting.value;

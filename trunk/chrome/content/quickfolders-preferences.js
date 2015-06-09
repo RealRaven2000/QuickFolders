@@ -105,7 +105,7 @@ QuickFolders.Preferences = {
 	} ,
 
 	get RebuildShortcutKey() {
-		return this.getCharPrefQF("rebuildShortcutKey");
+		return this.getStringPref("rebuildShortcutKey");
 	} ,
 	
 	get isQuickJumpShortcut() {
@@ -113,7 +113,7 @@ QuickFolders.Preferences = {
 	} ,
 	
 	get QuickJumpShortcutKey() {
-		return this.getCharPrefQF("quickJump.Hotkey");
+		return this.getStringPref("quickJump.Hotkey");
 	} ,
 
 	get isQuickMoveShortcut() {
@@ -121,7 +121,7 @@ QuickFolders.Preferences = {
 	} ,
 	
 	get QuickMoveShortcutKey() {
-		return this.getCharPrefQF("quickMove.Hotkey");
+		return this.getStringPref("quickMove.Hotkey");
 	} ,
 
 	get isUseKeyboardShortcutsCTRL() {
@@ -214,7 +214,7 @@ QuickFolders.Preferences = {
 	},
 
 	get LastSelectedCategory() {
-		return this.getCharPrefQF("lastSelectedCategory");
+		return this.getStringPref("lastSelectedCategory");
 	},
 
   get maxSubjectLength() {
@@ -410,7 +410,7 @@ QuickFolders.Preferences = {
 	},
 	
 	
-	getCharPrefQF: function getCharPrefQF(p) {
+	getStringPref: function getStringPref(p) {
 		return this.service.getCharPref("extensions.quickfolders." + p);
 	},
 	
@@ -457,7 +457,7 @@ QuickFolders.Preferences = {
 	},
 
 	get CurrentThemeId() {
-		return this.getCharPrefQF("style.theme");
+		return this.getStringPref("style.theme");
 	},
 
 	setCurrentThemeId: function setCurrentThemeId(t) {

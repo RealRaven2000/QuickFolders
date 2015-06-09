@@ -149,11 +149,13 @@
 			<menupopup id="QuickFolders-readingListMenu">
 				<menuitem id="QuickFolders-readingList-reset"
 				          label="&quickfolders.readingList.clear;"
+									class="cmd"
 									collapsed="true"
 				          oncommand="QuickFolders.bookmarks.resetList(true);" 
 				          />
 				<menuitem id="QuickFolders-readingList-add"
 				          label="&quickfolders.readingList.addCurrent;"
+									class="cmd"
 				          oncommand="QuickFolders.bookmarks.addCurrent();" 
 				          />
 			</menupopup>

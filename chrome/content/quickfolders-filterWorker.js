@@ -676,7 +676,7 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	getCurrentFilterTemplate : function getCurrentFilterTemplate() {
-		return QuickFolders.Preferences.getCharPrefQF("filters.currentTemplate");
+		return QuickFolders.Preferences.getStringPref("filters.currentTemplate");
 	} ,
 	
 	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref) {

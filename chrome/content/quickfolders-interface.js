@@ -805,7 +805,7 @@ QuickFolders.Interface = {
           theme = prefs.CurrentTheme,
 			    styleEngine = QuickFolders.Styles,
 			    ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
-			    background = prefs.getCharPrefQF('currentFolderBar.background');
+			    background = prefs.getStringPref('currentFolderBar.background');
 			styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
 
 			// find (and move) button if necessary
@@ -1048,8 +1048,7 @@ QuickFolders.Interface = {
 		try {
 			// store info in tabInfo, so we can restore it easier later per mail Tab
 			let tabmail = document.getElementById("tabmail");
-			idx = QuickFolders.tabContainer.selectedIndex;
-      idx = idx || 0;
+			idx = QuickFolders.tabContainer.selectedIndex || 0;
 			// let's only store this if this is the first tab...
 			if (idx==0)
 				QuickFolders.Preferences.setLastSelectedCategory(selectedCat);
@@ -1954,7 +1953,7 @@ QuickFolders.Interface = {
 		
 //Error: NS_ERROR_XPC_BAD_CONVERT_JS: Could not convert JavaScript argument arg 0 [nsIFilePicker.displayDirectory]
 		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-		    lastPath = QuickFolders.Preferences.getCharPrefQF('tabIcons.defaultPath');
+		    lastPath = QuickFolders.Preferences.getStringPref('tabIcons.defaultPath');
 		if (lastPath)
 			localFile.initWithPath(lastPath);
     fp.displayDirectory = localFile; // gLastOpenDirectory.path
@@ -3941,6 +3940,7 @@ QuickFolders.Interface = {
 			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
 				return;
       
+      if (util.isDebug) debugger;
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
       // SM use: info.msgSelectedFolder
       if (forceButton)
@@ -4679,7 +4679,6 @@ QuickFolders.Interface = {
 		// INACTIVE STATE (PALETTE) FOR UNCOLORED TABS ONLY
 		// LETS AVOID !IMPORTANT TO SIMPLIFY STATE STYLING
 		if (prefs.getIntPref('style.InactiveTab.paletteType')>0) {
-			if (prefs.isDebug) debugger;
 			let paletteEntry = prefs.getIntPref('style.InactiveTab.paletteEntry');
 			if (tabStyle === prefs.TABS_STRIPED)
 				paletteEntry += 'striped';
@@ -4810,7 +4809,7 @@ QuickFolders.Interface = {
 			this.updateCurrentFolderBar(ss);
 			
       // change to numeric
-			let minToolbarHeight = prefs.getCharPrefQF('toolbar.minHeight');
+			let minToolbarHeight = prefs.getStringPref('toolbar.minHeight');
       if (minToolbarHeight) {
         let mT = parseInt(minToolbarHeight);
         styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar', 'min-height', mT.toString()+"px", false);

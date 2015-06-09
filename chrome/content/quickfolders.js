@@ -280,7 +280,7 @@ END LICENSE BLOCK */
        made text colors more consistent for striped tabs
        disable transparent / striped options when appropriate
        in striped mode, do not change color+background color when selecting a new color for inactive tab
-    
+    ## Postbox: when opening a single message window from search results, current folder bar is not initialized correctly
                
 	Known Issues
 	============
@@ -473,22 +473,28 @@ var QuickFolders = {
             + "\ndocument.title: " + doc.title )
         /**** SINGLE MESSAGE WINDOWS ****/
         if (wt === 'mail:messageWindow') {
+          if (util.isDebug) debugger;
           util.logDebug('Calling displayNavigationToolbar()');
           QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
           // set current folder tab label
           if (window.arguments) {
-            let fld;
-            if (util.Application=='Thunderbird') {
-              // from messageWindow.js actuallyLoadMessage()
-              if (window.arguments[0] instanceof Components.interfaces.nsIMsgDBHdr) {
-                let msgHdr= window.arguments[0];
-                fld = msgHdr.folder;
-              }
-            }
-            else {
-              // This appears to work for Sm + Postbox alike
-              if (window.arguments.length>=3)
-                fld = window.arguments[2].viewFolder;
+            let args = window.arguments,
+                fld;
+            switch (util.Application) {
+              case 'Thunderbird':
+                // from messageWindow.js actuallyLoadMessage()
+                if (args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+                  let msgHdr= args[0];
+                  fld = msgHdr.folder;
+                }
+                break;
+              default:
+                // This appears to work for Sm + Postbox alike
+                if (args.length>1 && typeof args[1] == 'string') {
+                  fld = QuickFolders.Model.getMsgFolderFromUri(args[1]);
+                }
+                else if (args.length>=3 && args[2])
+                  fld = args[2].viewFolder;
             }
             let cF = QuickFolders.Interface.CurrentFolderTab;
             // force loading main stylesheet (for single message window)
@@ -860,7 +866,8 @@ var QuickFolders = {
             }
 
             util.logDebugOptional("dragToNew", "4. updateFolders...");
-            QuickFolders.Interface.updateFolders(false, false); // update context menus            
+            QuickFolders.Interface.updateFolders(false, false); // update context menus   
+            // check bookmarks?
           }
           
 					step='1. create sub folder: ' + aName;
@@ -1333,12 +1340,12 @@ var QuickFolders = {
           lastAction = "Try to get sourceFolder";
           // note: get CurrentFolder fails when we are in a search results window!!
           // [Bug 25204] => fixed in 3.10
-          sourceFolder = util.CurrentFolder;
-          let virtual = util.isVirtual(sourceFolder);
-          if (!sourceFolder || virtual)
-          {
-            let msgHdr = messenger.msgHdrFromURI(messageUris[0].toString());
-            sourceFolder = msgHdr.folder;
+          
+          let msgHdr = messenger.msgHdrFromURI(messageUris[0].toString());
+          sourceFolder = msgHdr.folder;
+          //let virtual = util.isVirtual(sourceFolder);
+          if (!sourceFolder) {
+            sourceFolder = util.CurrentFolder;
           }
           
 					// handler for dropping messages
@@ -1358,14 +1365,17 @@ var QuickFolders = {
           
           // reading List menu
           if (DropTarget.id && DropTarget.id =="QuickFolders-readingList") {
+            let bm = QuickFolders.bookmarks;
             util.logDebugOptional("dnd", "onDrop: readingList button - added " + messageUris.length + " message URIs");
             // copy message list 
+            if (bm.isDebug) debugger;
             while (messageUris.length) {
               let newUri = messageUris.pop();
-              QuickFolders.bookmarks.addMail(newUri, sourceFolder);
+              // addMail can cause removal of an invalid item (sets bookmarks.dirty = true)
+              // this will cause a reload in order to rebuild the menu
+              bm.addMail(newUri, sourceFolder);
             }
-            QuickFolders.bookmarks.update();
-            QuickFolders.bookmarks.save(); // only 1 save is more efficient.
+            bm.persist(); // only 1 save is more efficient.
             
             return;
           }
@@ -2047,6 +2057,31 @@ QuickFolders.FolderListener = {
     let log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
 		log("listeners.folder", "OnDeleteOrMoveMessagesCompleted - folder = " + aFolder.prettyName);
 	}
+}
+
+QuickFolders.CopyListener = {
+  OnStartCopy: function copyLst_OnStartCopy() { },
+  OnProgress: function copyLst_OnProgress(Progress, ProgressMax) { },
+  SetMessageKey: function copyLst_SetMessageKey(key) { },
+  GetMessageId: function copyLst_GetMessageId(msgId) { // out ACString aMessageId 
+  },
+  OnStopCopy: function copyLst_OnStopCopy(status) { // in nsresult aStatus
+    if (QuickFolders.bookmarks && Components.isSuccessCode(status)) {
+      bm = QuickFolders.bookmarks;
+      if (bm.dirty) {
+        let invalidCount = 0;
+        for (let i=0; i<bm.Entries.length; i++) {
+          let entry = bm.Entries[i];
+          if (entry.invalid) {
+            invalidCount++;
+          }
+        }
+        if (invalidCount)
+          bm.persist();  // save & update menu with new Uris (we flagged them as invalid during Util.moveMessages!)
+      }
+    }
+  }
+  
 }
 
 QuickFolders.LocalErrorLogger = function(msg) {

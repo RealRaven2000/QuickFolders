@@ -20,6 +20,10 @@
 #QuickFolders-readingListMenu .msgUri {
 	list-style-image: url("chrome://quickfolders/skin/ico/message-mail.png");
 }
+#QuickFolders-quickMoveMenu .msgUri.invalid,
+#QuickFolders-readingListMenu .msgUri.invalid {
+	list-style-image: url("chrome://quickfolders/skin/ico/message-invalid.png");
+}
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
 	list-style-image: url("chrome://quickfolders/skin/ico/settings.png");

@@ -17,11 +17,16 @@ if (QuickFolders.Util.Application == 'Postbox') {
   });
 }
 
+if (QuickFolders.Util.Application != 'Postbox') {
+  Components.utils.import("resource:///modules/MailUtils.js");
+}
+
 
 // drop target - persistable "reading list"
 QuickFolders.bookmarks = {
   Entries: [],  // { Uri , Folder , label? }
   charset: "UTF-8",
+  dirty: false,     // force update (rload + rebuild menu) after removing invalid item
   get isDebug() {
     return (QuickFolders.Preferences.isDebugOption('bookmarks'));
   },
@@ -40,35 +45,51 @@ QuickFolders.bookmarks = {
   },
   
   findBookmark: function findBookmark(entry) {
+    // note: we can't use nsMsgFolderFlags, Postbox doesn't know it!
+    const Ci = Components.interfaces,
+          Cc = Components.classes,
+          nsMsgSearchScope = Ci.nsMsgSearchScope,
+          nsMsgSearchAttrib = Ci.nsMsgSearchAttrib,
+          nsMsgSearchOp = Ci.nsMsgSearchOp;
     function setTermValue(term, attr, op, valStr) {
       let val = term.value;
       term.attrib = attr;
       val.attrib = attr;
-      if (attr == Ci.nsMsgSearchAttrib.Date)
+      if (attr == nsMsgSearchAttrib.Date)
         val.date = valStr;
       else
         val.str = valStr;
       term.op = op;
       term.value = val; // copy back object.
+      term.booleanAnd = true;
+      term.matchAll = false; // make sure "and" is selected in search box
     }
 	  function _getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-          typeOperator = Ci.nsMsgSearchOp;
     if (this.isDebug)  debugger;
-    let folder = QuickFolders.Model.getMsgFolderFromUri(entry.FolderUri),
+    let getFolder = QuickFolders.Model.getMsgFolderFromUri,
+        folder = getFolder(entry.FolderUri),
         util = QuickFolders.Util,
-        searchSession = (util.Application=='Thunderbird') 
-                      ? gFolderDisplay.view.search.session
-                      : Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
+        searchSession = Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
-        realTerm = searchSession.createTerm(),
-        subj = entry.subject || entry.label.substring(entry.label.indexOf(':')+1, entry.label.lastIndexOf('-'));
+        serverScope = folder.server.searchScope,
+        offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual, // Postbox doesn't like nsMsgFolderFlags.Offline?
+        preferredUri = QuickFolders.Preferences.getStringPref('bookmarks.searchUri'),
+        targetFolder = (preferredUri ? getFolder(preferredUri) : null)  // preferred start point for finding missing emails. could be localhost.
+                       ||               
+                       (folder.server ? folder.server.rootFolder : folder);
+    util.logDebug("Search messages @ folder URI: " + targetFolder.URI + " ... ");
+    searchSession.addScopeTerm(serverScope, targetFolder);
+    
+    let realTerm = searchSession.createTerm(),
+        subj = entry.subject || entry.label.substring(entry.label.indexOf(':')+1, entry.label.lastIndexOf('-')),
+        ellipsis = subj.indexOf("\u2026".toString());
+    if (ellipsis>5 && ellipsis>=subj.length-2)
+      subj = subj.substr(0, ellipsis);
     setTermValue(realTerm,
-                 Ci.nsMsgSearchAttrib.Subject,
-                 typeOperator.Contains,
+                 nsMsgSearchAttrib.Subject,
+                 nsMsgSearchOp.Contains,
                  subj.trim())
     searchTerms.push(realTerm);
     if (entry.author) {
@@ -76,38 +97,133 @@ QuickFolders.bookmarks = {
         let em = _getEmailAddress(entry.author);
         em = em || author;
         setTermValue(realTerm,
-                     Ci.nsMsgSearchAttrib.Sender,
-                     typeOperator.Contains,
+                     nsMsgSearchAttrib.Sender,
+                     nsMsgSearchOp.Contains,
                      em);
         searchTerms.push(realTerm);
     }
     if (entry.date) {
         realTerm = searchSession.createTerm();
         setTermValue(realTerm,
-                     Ci.nsMsgSearchAttrib.Date,
-                     typeOperator.Is,
+                     nsMsgSearchAttrib.Date,
+                     nsMsgSearchOp.Is,
                      entry.date);
         searchTerms.push(realTerm);
     }
     window.openDialog("chrome://messenger/content/SearchDialog.xul", "_blank",
                       "chrome,resizable,status,centerscreen,dialog=no",
-                      { folder: folder, searchTerms: searchTerms});          
+                      { folder: targetFolder, searchTerms: searchTerms, searchSession: searchSession });          
+  },
+  
+  openMessage: function (entry, forceMethod)  {
+    let util = QuickFolders.Util,
+        prefs = QuickFolders.Preferences,
+        method = forceMethod || prefs.getStringPref('bookmarks.openMethod'),
+        msgHdr;
+    try {
+      if (this.isDebug) debugger;
+      msgHdr = messenger.messageServiceFromURI(entry.Uri).messageURIToMsgHdr(entry.Uri);
+      if (!msgHdr) return false;
+      if ((msgHdr.messageId.toString() + msgHdr.author + msgHdr.subject) == '' 
+          && msgHdr.messageSize==0) // invalid message
+        return false;
+    }
+    catch(ex) {
+      util.logException('bookmarks.openMessage',ex);
+      return false;
+    }
+    try {
+      switch (method) {
+        case 'currentTab':
+          let mode = QuickFolders.Interface.CurrentTabMode,
+              isInTab = (mode == "3pane" || mode == "folder");
+              
+          switch(util.Application) {
+            case 'Thunderbird':
+              MailUtils.displayMessageInFolderTab(msgHdr);
+              break;
+            case 'SeaMonkey':
+              if (isInTab) {
+                if (util.CurrentFolder!=msgHdr.folder)
+                  QuickFolders_MySelectFolder(msgHdr.folder.URI);
+                // from mailWindowOverlay.js - NavigateToUri(target)
+                // let msgHdrKey = messenger.msgHdrFromURI(entry.Uri).messageKey;
+                gDBView.selectMsgByKey(msgHdr.messageKey);
+                return true;
+              }
+              else
+                return util.openMessageTabFromUri(entry.Uri); // for now, new tab
+              break;
+            case 'Postbox':
+              if (isInTab) {
+                if (util.CurrentFolder!=msgHdr.folder)
+                  QuickFolders_MySelectFolder(msgHdr.folder.URI);
+                gDBView.selectMsgByKey(msgHdr.messageKey);
+                return true;
+              }
+              else
+                return util.openMessageTabFromUri(entry.Uri); // for now, new tab
+          }
+          return true;
+        case 'window':
+          if (msgHdr) {
+            switch(util.Application) {
+              case 'Thunderbird':
+                MailUtils.openMessageInNewWindow(msgHdr);
+                break;
+              case 'SeaMonkey':
+                MailUtils.displayMessage(msgHdr);
+                break;
+              case 'Postbox':
+                MsgOpenNewWindowForMessage(entry.Uri, entry.FolderUri, true);
+                break;
+            }
+            return true;
+          }
+          break;
+        default:
+          util.logDebug('Unknown bookmarks.open.method: {' + method + '}'); 
+          // fall through
+        case 'newTab':
+          return util.openMessageTabFromUri(entry.Uri);
+      } // switch method
+    }
+    catch(ex) {
+      util.logException('bookmarks.openMessage',ex);
+    }
+      
+    return false;
   },
   
   onClick: function onClickBookmark(menuItem, evt, entry) {
-    let util = QuickFolders.Util;
+    let util = QuickFolders.Util,
+        prefs = QuickFolders.Preferences,
+		    isAlt = evt.altKey,
+		    isCtrl = evt.ctrlKey,
+		    isShift = evt.shiftKey;  
     if (this.isDebug)  debugger;
     evt.stopPropagation();
     switch(evt.button) {
       case 0: // left button
-        if (!util.openMessageTabFromUri(entry.Uri)) {
+        let method = null;
+        // default will be user configured.
+        if (isShift) 
+          method = 'window';
+        if (isCtrl) {
+          method = (prefs.getStringPref('bookmarks.openMethod')=='newTab') ?
+                   'currentTab' : 'newTab' ; // accelerator toggles method
+        }
+          
+        if (!this.openMessage(entry, method)) {
+          entry.invalid = true; // make sure this propagates to this.Entries!
+          if (menuItem.className.indexOf('invalid')<0)
+            menuItem.className+= ' invalid';
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
           let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
               search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
           if (search) {
             this.findBookmark(entry);
           }
-            
         }
         break;
       case 2: // right button
@@ -125,18 +241,23 @@ QuickFolders.bookmarks = {
     }
   } ,
   
+  // removes all bookmarks from reading list. retain command items.
+  tearDownMenu: function tearDownMenu() {
+    let menu = QuickFolders.Util.$('QuickFolders-readingListMenu');
+    for (let i = menu.childNodes.length-1; i>0; i--) {
+      let item = menu.childNodes[i];
+      if (item.className.indexOf('cmd')<0 || item.tagName=='menuseparator')
+        menu.removeChild(item);
+    }
+  } , 
+  
   resetList: function resetList(isSave) {
     let util = QuickFolders.Util;
     util.logDebug ('bookmarks.resetList()'); 
     while (this.Entries.length) {  
       this.Entries.pop();
     }
-    let menu = util.$('QuickFolders-readingListMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
-      if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
-        menu.removeChild(item);
-    }
+    this.tearDownMenu();
     this.update();
     if (isSave)
       this.save();
@@ -149,14 +270,38 @@ QuickFolders.bookmarks = {
     if (this.Entries.length==1)
       menu.appendChild(document.createElement('menuseparator'));
     menuitem.setAttribute("label", entry.label);
-    menuitem.className='msgUri menuitem-iconic';
+    menuitem.className = 'msgUri menuitem-iconic';
+    if (entry.invalid) menuitem.className += ' invalid';
     menuitem.addEventListener("click", function(event) { 
       QuickFolders.bookmarks.onClick(event.target, event, entry); return false; }, false);
     menu.appendChild(menuitem);
   },
   
+  // has the item been added before from a different folder uri? (mail was moved)
+  findMovedMatch: function findMovedMatch(entry) {
+    try {
+      if (entry.bookmarkType=='msgUri') {
+        for (let i=0; i<this.Entries.length; i++) {
+          let e = this.Entries[i];
+          if (entry.subject == e.subject
+              &&
+              entry.author == e.author
+              &&
+              entry.date == e.date
+              && 
+              entry.Uri != e.Uri) {
+            return i;
+          }
+        }
+      }
+    }
+    catch(e) {;}
+    return -1;
+  } ,
+
   addMail: function addMail(newUri, sourceFolder)  {
     let util = QuickFolders.Util,
+        prefs = QuickFolders.Preferences,
         countEntries = this.Entries.length;
     const MAX_BOOKMARKS = 5;
     if (!util.hasPremiumLicense(false) && countEntries>2) {
@@ -168,14 +313,14 @@ QuickFolders.bookmarks = {
         return false;
     }
     
-    if (countEntries >= QuickFolders.Preferences.getIntPref('bookmarks.maxEntries')) {
+    if (countEntries >= prefs.getIntPref('bookmarks.maxEntries')) {
       util.logToConsole('Maximum number of bookmarks reached! You can change this via right-click on the Reading List checkbox in QuickFolders Options / General / Main Toolbar Elements.');
       return false;
     }
     
     if (this.indexOfEntry(newUri) == -1) { // avoid duplicates!
       let chevron = ' ' + "\u00BB".toString() + ' ',
-          showFolder = QuickFolders.Preferences.getBoolPref('bookmarks.folderLabel'),
+          showFolder = prefs.getBoolPref('bookmarks.folderLabel'),
           hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
@@ -188,14 +333,19 @@ QuickFolders.bookmarks = {
               FolderUri: sourceFolder.URI, 
               label: label, 
               bookmarkType:'msgUri',
-              subject: hdr.subject,
+              subject: hdr.mime2DecodedSubject,
               author: hdr.author,
               date: hdr.date
             }
+          let existing = this.findMovedMatch(entry);
           /* add to Entries */
           this.Entries.push(entry);
           // now add to menu!
           this.addMenuItem(entry);
+          if (existing>=0) {
+            this.removeUri(existing);
+            this.dirty = true;
+          }
         }
         catch(ex) {
           util.logException('bookmarks.add', ex);
@@ -209,11 +359,9 @@ QuickFolders.bookmarks = {
   },
   
   removeUri: function removeUri(URI)  {
-    let i = this.indexOfEntry(URI);
+    let i = (typeof URI=='string') ? this.indexOfEntry(URI) : URI;  // allow passing in index
     if (i>=0) {
-      if (this.Entries[i].Uri == URI) {
-        this.Entries.splice(i, 1);
-      }
+      this.Entries.splice(i, 1);
     }
   },
   
@@ -267,8 +415,20 @@ QuickFolders.bookmarks = {
       if (earlyExit) break;
     }
     
+    this.persist(); // save + update UI
+  } ,
+  
+  persist: function persist() {
     this.update(); // update UI
     this.save();   // persist to file
+    if (this.dirty) {
+      // recreate the UI
+      this.tearDownMenu();
+      for (let i=0; i<this.Entries.length; i++) {
+        this.addMenuItem(this.Entries[i]);
+      }
+      this.dirty = false;
+    }
   } ,
   
   getBrowser: function getBrowser() {
@@ -438,10 +598,14 @@ QuickFolders.bookmarks = {
                   for (let j=0; j<selectedMessages.length; j++) {
                     let msg = selectedMessages[j];
                     let uriObject = 
-                        {url: msg.folder.generateMessageURI(msg.messageKey),
-                         label: msg.mime2DecodedSubject.substring(0, 70), 
-                         bookmarkType: 'msgUri', 
-                         folder:msg.folder}
+                      {
+                        url: msg.folder.generateMessageURI(msg.messageKey),
+                        label: msg.mime2DecodedSubject.substring(0, 70), 
+                        bookmarkType: 'msgUri', 
+                        folder:msg.folder,
+                        threadId: msg.threadId,
+                        threadParent: msg.threadParent
+                      }
                     uriObjects.push(uriObject);
                   }
                   return uriObjects;
@@ -507,7 +671,8 @@ QuickFolders.bookmarks = {
 		return uriObject;
   },
   
-  // Update the User Interface (Reading List Menu)
+  // Update the User Interface (Reading List Menu: context items only)
+  // the list itself is only rebuilt when calling load() or setting ditry=true and calling persist()
   update: function update() {
     let isActive = this.hasEntries,
         util = QuickFolders.Util,
@@ -537,22 +702,27 @@ QuickFolders.bookmarks = {
   readBookmarksFromJson: function readJson(data) {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks,
-        entries = JSON.parse(data);  
+        entries = JSON.parse(data);
+    if (bookmarks.isDebug) debugger;    
     util.logDebug ('parsed ' + entries.length + ' entries'); 
     // empty list.
     bookmarks.resetList(false);
     for (let i=0; i<entries.length; i++) {
-      let fileEntry = entries[i],
+      let fileEntry = entries[i];
+      //  lets forget about SANITIZING as this completely narrows us down. trust the file instead
+      /*
           Entry = {
-        Uri: fileEntry.Uri, 
-        FolderUri: fileEntry.FolderUri,
-        label: fileEntry.label, 
-        bookmarkType: fileEntry.bookmarkType || 'msgUri'
-      };
-        
-      // populate the Entries array; fallback to browser bookmark type if undefined
-      bookmarks.Entries.push(Entry);
-      bookmarks.addMenuItem(Entry);
+            Uri: fileEntry.Uri, 
+            FolderUri: fileEntry.FolderUri,
+            label: fileEntry.label, 
+            bookmarkType: fileEntry.bookmarkType || 'msgUri'
+          };
+      */
+      // if the type is undefined we assume this is a mail bookmark (as we are in a mail client)
+      if (!fileEntry.bookmarkType)
+        fileEntry.bookmarkType = 'msgUri';
+      bookmarks.Entries.push(fileEntry);
+      bookmarks.addMenuItem(fileEntry);
     }
     // update Menu structure based on content
     bookmarks.update();
@@ -566,7 +736,7 @@ QuickFolders.bookmarks = {
     if (util.Application == 'Postbox') {
       try {
         let data = this.Postbox_readFile();
-        this.readBookmarksFromJson(data);
+        bookmarks.readBookmarksFromJson(data);
       }
       catch(ex) {
         util.logException('QuickFolders.bookmarks.load()', ex);

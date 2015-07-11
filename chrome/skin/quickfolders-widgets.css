@@ -73,6 +73,7 @@ tab#QuickFolders-General  {
 menuitem.cmd[tagName="qfFindFolder"] { list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important; }
 menuitem.cmd[tagName="qfRebuild"] { list-style-image : url('chrome://quickfolders/skin/ico/reload.png') !important; }
 menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/skin/ico/broom.png') !important; }
+menuitem.cmd[tagName="qfRepairTreeIcons"] { list-style-image : url('chrome://quickfolders/skin/ico/images-repair.png') !important; }
 menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('chrome://quickfolders/skin/ico/toolbar.png') !important; }
 menuitem.cmd[tagName="qfOrder"] { list-style-image : url('chrome://quickfolders/skin/ico/order.gif') !important; }
 

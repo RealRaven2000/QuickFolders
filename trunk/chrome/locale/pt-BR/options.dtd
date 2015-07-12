@@ -99,8 +99,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Topo:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Base:">
 <!ENTITY qf.button.default "Padrões">
+<!ENTITY qf.label.Toolbar "Barra de ferramentas">
 <!ENTITY qf.label.ToolbarBackground "Fundo da barra de ferramentas:">
 <!ENTITY qf.checkbox.transparent "transparente">
+<!ENTITY qf.label.Toolbar.bottomLine "Bottom Line Width:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "The width of the line under tabs. Change its color with the Active Tab Color picker below.">
 <!ENTITY qf.label.colors "Cores">
 <!ENTITY qf.label.UncoloredTab "Aba não colorida">
 <!ENTITY qf.label.UncoloredTab.tooltip "Visual de abas (inativas) sem uma cor selecionada específica">
@@ -145,12 +148,27 @@
 <!ENTITY qf.button.validateLicense "validar">
 <!ENTITY qf.label.licenseValid "Sua licença é válida até:">
 <!ENTITY qf.licenseValidation.passed "Obrigado por registrar o QuickFolders Pro! Todas as funcionalidades premium estão agora desbloqueadas.">
+<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
+<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
+<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Endereço de email criptografado não corresponde a um legível.">
 <!ENTITY qf.premiumConfig "Funcionalidades Premium">
 <!ENTITY qf.checkbox.quickJump "quickJump: Vai para qualquer pasta com atalho: Shift +">
 <!ENTITY qf.checkbox.quickJump.tip "Atalho para clique no botão quickJump para navegação mais rápida em qualquer lugar através de entrada de nome.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Move email para qualquer pasta com atalho: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.quickMove.path.format "Display Format:">
+<!ENTITY qf.pathFormat.folderName "Folder Name">
+<!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder Path">
+<!ENTITY qf.pathFormat.PathOnly "Folder Path">
+<!ENTITY qf.pathFormat.URI "Folder URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
+<!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
+<!ENTITY qf.checkbox.readingList "Reading List">
+<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
 <!ENTITY qf.label.donate "Doar">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções… Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
 <!ENTITY qf.checkbox.usePalette "Usar palheta">
 <!ENTITY qf.options.theme.pastelColors "Cores pastel">

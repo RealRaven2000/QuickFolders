@@ -1,4 +1,16 @@
-
+/* SEPARATED ANIMATION RULES TO DISABLE IN PRO VERSION */
+menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon {
+  animation-name: qfIconRotateY;
+	height: 19px;
+	width: 30px;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+/* ICON RULE TO OVERWRITE IN PRO VERSION */
+menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro {
+	list-style-image : url('chrome://quickfolders/skin/ico/pro.png') !important;
+}
 
 tab#QuickFolders-Advanced {
 	list-style-image: url('chrome://quickfolders/skin/ico/settings-advanced.png');
@@ -16,21 +28,6 @@ tab#QuickFolders-Help {
 menuitem.cmd[tagName="qfSupport"],
 tab#QuickFolders-Support {
 	list-style-image : url('chrome://quickfolders/skin/ico/info16.png') !important;
-}
-
-menuitem.cmd[tagName="qfRegister"],
-tab#QuickFolders-Pro {
-	list-style-image : url('chrome://quickfolders/skin/ico/pro.png') !important;
-}
-
-menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon,
-#QuickFolders-Pro .tab-icon {
-  -moz-animation-delay: 0.3s;
-  -moz-animation-duration: 3s;
-  -moz-animation-name: qfIconRotateY;
-  -moz-animation-iteration-count: infinite;
-	height: 19px;
-	width: 30px;
 }
 
 menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {

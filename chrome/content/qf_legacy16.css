@@ -102,6 +102,10 @@ toolbar#QuickFolders-CurrentFolderTools {
 	background: -moz-linear-gradient(top, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
 }
 
+/* animated icons */
+menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon {
+  -moz-animation-name: qfIconRotateY;
+}
 
 
 

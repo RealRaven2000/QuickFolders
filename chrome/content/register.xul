@@ -25,6 +25,12 @@
 		<hbox>
 			<div class="product">&getQuickFolders;</div>
 			<spacer flex="1" />
+			<vbox>
+				<hbox id="qfLicenseTerm" class="para">
+					<label >&qf.label.licenseValid;</label>
+					<label id="licenseDate" value="-" />
+				</hbox>
+			</vbox>
 		</hbox>
 		
 		<description class="para">&intro;</description>

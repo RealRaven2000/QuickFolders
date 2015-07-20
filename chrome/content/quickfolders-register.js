@@ -77,6 +77,9 @@ QuickFolders.Licenser = {
   } ,
   
   load: function load() {
+    const getElement = document.getElementById.bind(document),
+          util = QuickFolders.Util;
+        
     function appendIdentity(dropdown, id, account) {
       if (!id) {
         util.logDebug('appendIdentity failed for account = ' + account ? account.key : 'unknown');
@@ -106,15 +109,15 @@ QuickFolders.Licenser = {
       }
     }
     
-    let util = QuickFolders.Util,
-        dropdownCount = 0;
+    let dropdownCount = 0;
+
 		if (window.arguments && window.arguments[1].inn.referrer) {
-      let ref = document.getElementById('referrer');
+      let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }
     
     // iterate accounts
-    let idSelector = document.getElementById('mailIdentity'),
+    let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
         myAccounts = this.Accounts,
         acCount = myAccounts.length;
@@ -146,6 +149,14 @@ QuickFolders.Licenser = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
+    
+    let lic = util.getMail3PaneWindow().QuickFolders.Licenser,
+        decryptedDate = lic ? lic.DecryptedDate : '';
+    if (decryptedDate)
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+    else
+      getElement('licenseDate').collapsed = true;
+
     
   } ,
   
@@ -185,8 +196,8 @@ QuickFolders.Licenser = {
         + "&contact_lname=" + lastName 
         + "&contact_email=" + email;
         
-    let queryString = '';  // action=adds
-    let featureName = document.getElementById('referrer').value;
+    let queryString = '',  // action=adds
+        featureName = document.getElementById('referrer').value;
     if (featureName) {
       queryString = "&referrer=" + featureName;
     }
@@ -255,9 +266,10 @@ QuickFolders.Licenser = {
                      + '   [' + parent.ValidationStatus + ']');
     }
     // extract encrypted portion after ;
-    const ELS = this.ELicenseState;
-    let util = QuickFolders.Util,
-        logIdentity = util.logIdentity.bind(util);
+    const ELS = this.ELicenseState,
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences,
+          logIdentity = util.logIdentity.bind(util);
     if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;
       logResult(this);
@@ -326,27 +338,33 @@ QuickFolders.Licenser = {
     
     let isMatched = false, 
         iAccount=0,
-        isDbgAccounts = QuickFolders.Preferences.isDebugOption('premium.licenser'),
+        isDbgAccounts = prefs.isDebugOption('premium.licenser'),
         hasDefaultIdentity = false,
-        myAccounts = this.Accounts;
-    
-    for (let a=0; a < myAccounts.length; a++) { 
-      if (myAccounts[a].defaultIdentity) {
-        hasDefaultIdentity = true;
-        break;
-      }
-    }
-    if (!hasDefaultIdentity) {
+        myAccounts = this.Accounts,
+        ForceSecondaryMail = prefs.getBoolPref('licenser.forceSecondaryIdentity');
+    if (ForceSecondaryMail) {
+      // switch for secondary email licensing
       this.AllowSecondaryMails = true;
-      util.logDebug("Premium License Check: There is no account with default identity!\n" +
-                    "You may want to check your account configuration as this might impact some functionality.\n" + 
-                    "Allowing use of secondary email addresses...");
+    }
+    else {
+      for (let a=0; a < myAccounts.length; a++) { 
+        if (myAccounts[a].defaultIdentity) {
+          hasDefaultIdentity = true;
+          break;
+        }
+      }
+      if (!hasDefaultIdentity) {
+        this.AllowSecondaryMails = true;
+        util.logDebug("Premium License Check: There is no account with default identity!\n" +
+                      "You may want to check your account configuration as this might impact some functionality.\n" + 
+                      "Allowing use of secondary email addresses...");
+      }
     }
     let licensedMail = this.DecryptedMail.toLowerCase();
     for (let a=0; a < myAccounts.length; a++) { 
       let ac = myAccounts[a];
       iAccount++;
-      if (ac.defaultIdentity) {
+      if (ac.defaultIdentity && !ForceSecondaryMail) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
         if (ac.defaultIdentity.email.toLowerCase()==licensedMail) {
@@ -355,11 +373,9 @@ QuickFolders.Licenser = {
         }
       }
       else {
-        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] has no default identity!");
         if (!this.AllowSecondaryMails) continue;
+        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] secondary ids");
         // ... allow using non default identities 
-        // we might protect this execution branch 
-        // with a config preference!
         let ids = ac.identities, // array of nsIMsgIdentity 
             idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
         util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids...");
@@ -391,6 +407,7 @@ QuickFolders.Licenser = {
       this.ValidationStatus = ELS.MailNotConfigured;
     }
     else {
+      util.logDebug ("validateLicense() - successful.");
       this.ValidationStatus = ELS.Valid;
     }
     logResult(this);

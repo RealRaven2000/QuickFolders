@@ -271,6 +271,7 @@ END LICENSE BLOCK */
                [x] Highlight Folders with new mail - true
                [x] Display Tabs with newly arrived mail italic
     ## Bugfix: Removed side effect that overwrites naming conventions of new filters created with quickFilters.
+    ## [Bug 26046] Thunderbird 38 does not show customized Icons in folder tree
     ## Made highlighted new mail better readable
     ## Fixed: when mails are "queued" for a quickMove operation, using the keyboard shortcut "quickJump" temporarily 
        should not move the mails but navigate to the folder instead
@@ -473,7 +474,6 @@ var QuickFolders = {
             + "\ndocument.title: " + doc.title )
         /**** SINGLE MESSAGE WINDOWS ****/
         if (wt === 'mail:messageWindow') {
-          if (util.isDebug) debugger;
           util.logDebug('Calling displayNavigationToolbar()');
           QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
           // set current folder tab label
@@ -525,7 +525,7 @@ var QuickFolders = {
 	} ,
 
 	init: function init() {
-		// document.addEventListener("SSTabRestored", QuickFolders.TabListener.restore, false); // use Session store to restore categories!
+    const util = QuickFolders.Util;
 		let that = this.isQuickFolders ? this : QuickFolders,
 		    myver = that.Util.Version, // will start VersionProxy
 		    ApVer, ApName,
@@ -547,11 +547,11 @@ var QuickFolders = {
     // load legacy border radius + box-shadow rules
 		if (ApName == 'Thunderbird' && versionComparator.compare(ApVer, "4.0") < 0) {
 			let sE = QuickFolders.Styles;
-			QuickFolders.Util.logDebugOptional("css.styleSheets","Loading legacy style sheet... Ap Version=" + ApVer + "; styleEngine = " + sE);
+			util.logDebugOptional("css.styleSheets","Loading legacy style sheet... Ap Version=" + ApVer + "; styleEngine = " + sE);
 			let ss = QuickFolders.Interface.getStyleSheet(sE, 'chrome://quickfolders/content/quickfolders-pre4.css', "");
 		}
 		else
-			QuickFolders.Util.logDebugOptional("css.styleSheets","App Version {" + ApVer + "}>=4.0   => no legacy css rules loaded!");
+			util.logDebugOptional("css.styleSheets","App Version {" + ApVer + "}>=4.0   => no legacy css rules loaded!");
 		
 
 		// only add event listener on startup if necessary as we don't
@@ -594,7 +594,6 @@ var QuickFolders = {
 				QuickFolders.Interface.updateUserStyles();
 			}
 		},"quickfolders-options-saved", false);
-		// QuickFolders.Util.FirstRun.init();
 
 		that.Util.logDebug("call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
@@ -621,6 +620,15 @@ var QuickFolders = {
     if (QuickFolders.bookmarks) {
       QuickFolders.bookmarks.load();
     }
+    
+    // Force Registration key check (if key is entered) in order to update interface
+    setTimeout( function() {
+      if (util.hasPremiumLicense(false)) {
+        util.logDebug ("Premium License found - removing Animations()...");
+        QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+      }
+    }, 1000);
+    
 	} ,
 
 	sayHello: function sayHello() {
@@ -1368,7 +1376,7 @@ var QuickFolders = {
             let bm = QuickFolders.bookmarks;
             util.logDebugOptional("dnd", "onDrop: readingList button - added " + messageUris.length + " message URIs");
             // copy message list 
-            if (bm.isDebug) debugger;
+            // if (bm.isDebug) debugger;
             while (messageUris.length) {
               let newUri = messageUris.pop();
               // addMail can cause removal of an invalid item (sets bookmarks.dirty = true)

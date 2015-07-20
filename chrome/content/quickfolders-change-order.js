@@ -40,7 +40,7 @@ QuickFolders.ChangeOrder = {
 		let rows = this.$('QuickFolders-change-order-grid-rows');
 		QuickFolders.Util.clearChildren(rows);
 
-		for(let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+		for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 			let folderEntry = QuickFolders.Model.selectedFolders[i],
 			    folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 
@@ -85,7 +85,7 @@ QuickFolders.ChangeOrder = {
 		let modelSelection = QuickFolders.Model.selectedFolders,
         tmp;
 
-		for(let i = 0; i < modelSelection.length; i++) {
+		for (let i = 0; i < modelSelection.length; i++) {
 			let folderEntry = modelSelection[i];
 			if(folderEntry.uri == folderURI) {
 

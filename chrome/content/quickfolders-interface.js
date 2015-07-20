@@ -728,7 +728,7 @@ QuickFolders.Interface = {
 
 			let tabStyle = prefs.ColoredTabStyle,
 			    isFirst=true;
-			for(let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
+			for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 				let folderEntry = QuickFolders.Model.selectedFolders[i],
 				    folder, button;
 
@@ -857,7 +857,7 @@ QuickFolders.Interface = {
 			menuList.style.display = '-moz-box';
 
 			menuPopup.appendChild(this.createMenuItem(QuickFolders.FolderCategory.ALL, this.getUIstring("qfAll", "(Display All)")))
-			for(let i = 0; i < lCatCount; i++) {
+			for (let i = 0; i < lCatCount; i++) {
 				let category = bookmarkCategories[i];
 
 				if (bookmarkCategories[i] != QuickFolders.FolderCategory.ALWAYS) {
@@ -887,8 +887,9 @@ QuickFolders.Interface = {
 	// moved from options.js!
 	updateMainWindow: function updateMainWindow(minimal) {
 		function logCSS(txt) {
-			QuickFolders.Util.logDebugOptional("css", txt);
+			util.logDebugOptional("css", txt);
 		}
+    const util = QuickFolders.Util;
 
 		logCSS("============================\n" + "updateMainWindow...");
 		let themeSelector = document.getElementById("QuickFolders-Theme-Selector"),
@@ -898,7 +899,7 @@ QuickFolders.Interface = {
 		prefs.setCurrentThemeId(themeSelector ? themeSelector.value : prefs.CurrentThemeId);
 		let style =  prefs.ColoredTabStyle,
 		    // refresh main window
-		    mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
+		    mail3PaneWindow = util.getMail3PaneWindow();
 		// we need to try and get at the main window context of QuickFolders, not the prefwindow instance!
 		if (mail3PaneWindow) { 
 			let QI = mail3PaneWindow.QuickFolders.Interface;
@@ -912,8 +913,10 @@ QuickFolders.Interface = {
 		else {
 			logCSS("updateMainWindow: no mail3PaneWindow found!");
 		}
-    if (QuickFolders.bookmarks) 
-      QuickFolders.bookmarks.load()
+    if (QuickFolders.bookmarks) {
+      QuickFolders.bookmarks.load();
+      util.logDebug ('bookmarks.load complete.'); 
+    }
 		return true;
 	} ,
 
@@ -955,28 +958,29 @@ QuickFolders.Interface = {
 	
 	// find orphaned tabs
 	tidyDeadFolders: function tidyDeadFolders() {
-		QuickFolders.Util.logDebugOptional("interface", "tidyDeadFolders()");
-		let countTabs=0;
-		let countDeleted=0;
-		let sMsg = this.getUIstring('qfTidyDeadFolders',
+    const util = QuickFolders.Util;
+		util.logDebugOptional("interface", "tidyDeadFolders()");
+		let countTabs=0,
+		    countDeleted=0,
+		    sMsg = this.getUIstring('qfTidyDeadFolders',
 			'This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is removed without QuickFolders being notified.')
 		if (!confirm(sMsg))
 			return;
 		let isCancel = false;
-		for(let i = 0; i < QuickFolders.Model.selectedFolders.length; i++)
+		for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++)
 		{
-			let folderEntry = QuickFolders.Model.selectedFolders[i];
 			// test mail folder for existence
-			let folder = null;
+			let folderEntry = QuickFolders.Model.selectedFolders[i],
+			    folder = null;
 			try { 
 				folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 			}
 			catch(ex) {
-				QuickFolders.Util.logException('GetMsgFolderFromUri failed with uri:' + folderEntry.uri, ex); 			
+				util.logException('GetMsgFolderFromUri failed with uri:' + folderEntry.uri, ex); 			
 			}
 			countTabs++;
 			
-			if (!folder || !QuickFolders.Util.doesMailFolderExist(folder)) {
+			if (!folder || !util.doesMailFolderExist(folder)) {
 				switch (this.deleteFolderPrompt(folderEntry, true)) {
 				  case 1:  // deleted
 					  countDeleted++;
@@ -1009,6 +1013,75 @@ QuickFolders.Interface = {
 		Services.prompt.alert(null,"QuickFolders",sLabelFound + ' ' + countOrphans + '\n' + sLabelDeleted + ' ' + countDeleted);
 	} ,
 
+  repairTreeIcons: function repairTreeIcons() {
+    // repair all tree icons based on Tab Icons
+    // does not need to be high performance, hence we do file check synchronously
+    const util = QuickFolders.Util,
+          Cc = Components.classes,
+          Cu = Components.utils,
+          Ci = Components.interfaces,
+          model = QuickFolders.Model,
+          {OS} = Cu.import("resource://gre/modules/osfile.jsm", {}),
+          ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+    let missingIcons = [],
+        ctRepaired = 0, ctMissing = 0;
+		util.logDebugOptional("interface", "repairTreeIcons()");
+    
+		for (let i = 0; i < model.selectedFolders.length; i++) {
+      // if (util.isDebug)  debugger;
+			// test mail folder for existence
+			let folderEntry = model.selectedFolders[i],
+			    folder = null,
+          earlyExit = false;
+      if (!folderEntry.icon)
+        continue;
+			try { 
+				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
+        let fileSpec = folderEntry.icon,
+            path = OS.Path.fromFileURI(fileSpec),
+            localFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+			  localFile.initWithPath(path);
+			  if (!localFile.exists())  { 
+          missingIcons.push({path:path, name:this.folderPathLabel(1, folder, 2)} );
+          ctMissing++;
+          if (folder) {
+            folder.setStringProperty("folderIcon", "noIcon");
+            folder.setStringProperty("iconURL", "");
+            folder.setForcePropertyEmpty("folderIcon", false); // remove property
+          }
+          // button update is unnecessary as the icon is not shown anyway
+          model.setTabIcon (null, folderEntry, '');
+          continue;
+        }
+        if (fileSpec && folder) {
+          let uri = ios.newURI(fileSpec, null, null);
+          QuickFolders.FolderTree.setFolderTreeIcon(folder, uri);
+          ctRepaired++;
+        }
+        if (earlyExit) return;
+			}
+      catch(ex) {
+        util.logException("repairTreeIcons", ex);      
+      }
+    }
+    if (missingIcons.length) {
+      let list = '';
+      for (let i=0; i<missingIcons.length; i++) {
+        list += '\n' + missingIcons[i].name + '  =  ' + missingIcons[i].path;
+      }
+      let txt = util.getBundleString('qfRepairTreeIconsMissing', 'The following icon files do not exist:');
+      util.alert(txt + '\n' + list);
+    }
+    let repairedTxt = util.getBundleString('qfTreeIconsRepairedCount', '{0} tree icons repaired'),
+        invalidTxt = util.getBundleString('qfTreeIconsInvalidCount', '{0} icons missing'),
+        msg = repairedTxt.replace('{0}', ctRepaired) + '\n' 
+            + invalidTxt.replace('{0}', ctMissing);
+    util.slideAlert('repairTreeIcons()', msg);
+    // store icons in entry
+    if (ctMissing)
+      model.store();
+  } ,
+  
 	createMenuItem: function createMenuItem(value, label) {
 		let menuItem = document.createElement("menuitem");
 		menuItem.setAttribute("label", label);
@@ -1252,7 +1325,7 @@ QuickFolders.Interface = {
 	} ,
 
 	getButtonByFolder: function getButtonByFolder(folder) {
-		for(let i = 0; i < this.buttonsByOffset.length; i++) {
+		for (let i = 0; i < this.buttonsByOffset.length; i++) {
 			let button = this.buttonsByOffset[i];
 			try {
 				// doesn't work for search folders?
@@ -1343,7 +1416,7 @@ QuickFolders.Interface = {
 				let menupopup = null,
 				    nodes  = button.getElementsByTagName('menupopup');
 
-				for(i=0; i<nodes.length; i++) {
+				for (i=0; i<nodes.length; i++) {
 					if (nodes[i].id && nodes[i].id === 'quickFoldersCommandsCloned') {
 						menupopup = nodes[i];
 						break;
@@ -3940,7 +4013,6 @@ QuickFolders.Interface = {
 			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
 				return;
       
-      if (util.isDebug) debugger;
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
       // SM use: info.msgSelectedFolder
       if (forceButton)
@@ -3966,7 +4038,7 @@ QuickFolders.Interface = {
 		    newItalic = QuickFolders.Preferences.isItalicsNewMail,
 				tabStyle = QuickFolders.Preferences.ColoredTabStyle; // filled or striped
         
-		for(let i = 0; i < this.buttonsByOffset.length; i++) {
+		for (let i = 0; i < this.buttonsByOffset.length; i++) {
 			let button = this.buttonsByOffset[i];
 			// filled style, remove striped style
 			if ((tabStyle != QuickFolders.Preferences.TABS_STRIPED) && (button.className.indexOf("selected-folder")>=0))
@@ -5333,6 +5405,29 @@ QuickFolders.Interface = {
   readingListClick: function readingListClick(evt, el) {
     QuickFolders.Interface.showPopup(el,'QuickFolders-readingListMenu');
   },
+  
+  // remove animated icons for pro version
+  removeAnimations: function removeAnimations(styleSheetName) {
+    const util = QuickFolders.Util,
+          QI = QuickFolders.Interface,
+          styleEngine = QuickFolders.Styles,
+          isDebug = QuickFolders.Preferences.isDebug;
+    // win = util.getMail3PaneWindow();
+    if (isDebug) debugger;
+    styleSheetName = styleSheetName || 'quickfolders-layout.css';
+    let prefixedAni = ((util.PlatformVersion <16.0) ? '-moz-' : '')  + 'animation-name',
+        ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
+        iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';
+    styleEngine.removeElementStyle(ss, 
+                                   iconSelector, 
+                                   [prefixedAni, 'height', 'width'], 
+                                   isDebug);
+    styleEngine.setElementStyle(ss, 
+                                'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',  
+                                'list-style-image', 
+                                "url('chrome://quickfolders/skin/ico/pro-16.png')", 
+                                true);
+  } , 
   
   folderPanePopup: function folderPanePopup(evt) {  
     // needs to go into popup listener

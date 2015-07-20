@@ -33,7 +33,8 @@ QuickFolders.TabListener = {
               if (msg) fld = msg.folder;
               break;
             case 'Thunderbird': 
-              msg = info.messageDisplay.displayedMessage
+              if (info.messageDisplay)
+                msg = info.messageDisplay.displayedMessage;
               if (msg) fld = msg.folder;
               break;
             case 'SeaMonkey':

@@ -301,14 +301,14 @@ QuickFolders.Model = {
       + "to: "   + newName);
     let matches = 0;
 
-    for(let i = 0; i < this.selectedFolders.length; i++) {
+    for (let i = 0; i < this.selectedFolders.length; i++) {
       let folder = this.selectedFolders[i];
       
       if (folder.category) {
         // multiple cats
         let cats = folder.category.split('|');
   
-        for(let j=0; j<cats.length; j++)
+        for (let j=0; j<cats.length; j++)
           if(cats[j] == oldName) {
             cats[j] = newName;
               matches ++;
@@ -327,7 +327,7 @@ QuickFolders.Model = {
   deleteFolderCategory: function deleteFolderCategory(category) {
     QuickFolders.Util.logDebugOptional("categories","Model.deleteFolderCategory(" + category + ")");
     let folderList = '';
-    for(let i = 0; i < this.selectedFolders.length; i++) {
+    for (let i = 0; i < this.selectedFolders.length; i++) {
       let folder = this.selectedFolders[i];
       if (folder.category) {
         // herding cats
@@ -398,7 +398,7 @@ QuickFolders.Model = {
       if (folderEntries.length > 0) {
         QuickFolders.Util.logDebug("Updating Palettes from version:" + currentPalette);
         let updateString='';
-        for(let i = 0; i < folderEntries.length; i++) {
+        for (let i = 0; i < folderEntries.length; i++) {
         
           let folderEntry = folderEntries[i],
               tabColor = 0;

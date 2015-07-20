@@ -200,6 +200,8 @@ QuickFolders.FilterList = {
 			el.collapsed = true;
 			// document.removeChild(el);
 		}
+    const util = QuickFolders.Util;
+    // if (util.Debug) debugger;
 		// check whether [Bug 450302] has landed
 		let nativeSearchBox = document.getElementById("searchBox"),
 		    //move buttons to the correct place
@@ -245,8 +247,8 @@ QuickFolders.FilterList = {
 							QuickFolders.FilterList.updateCountBox();
 						}
 						catch(e) {
-							if (QuickFolders && QuickFolders.Util)
-								QuickFolders.Util.logException('onNewFilter - ',e);
+							if (util)
+								util.logException('onNewFilter - ',e);
 						}
 					}
 				}
@@ -258,8 +260,8 @@ QuickFolders.FilterList = {
 							QuickFolders.FilterList.updateCountBox();
 						}
 						catch(e) {
-							if (QuickFolders && QuickFolders.Util)
-								QuickFolders.Util.logException('onDeleteFilter - ',e);
+							if (util)
+								util.logException('onDeleteFilter - ',e);
 						}
 					}
 				}
@@ -267,7 +269,7 @@ QuickFolders.FilterList = {
 			}
 		}
 		
-		if (QuickFolders.Util.Application == 'Thunderbird') {
+		if (util.Application == 'Thunderbird') {
 			// move the search filter box
 			let dropDown = document.getElementById("serverMenu");
 
@@ -409,7 +411,7 @@ QuickFolders.FilterList = {
 
 		let rows = this.getListElementCount(filterList); 
 		
-		for(let i = rows - 1; i>=0; i--){
+		for (let i = rows - 1; i>=0; i--){
 			let matched = true, item, title;
 			 // SeaMonkey (Postbox) vs Thunderbird - treeview vs listbox
 			if (filterList.nodeName == 'tree') 

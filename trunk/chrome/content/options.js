@@ -198,7 +198,6 @@ QuickFolders.Options = {
       QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', (mT*12).toString()) ;  // 12 px default font size.
     }
 
-
 		if (version=="") version='version?';
     // Error: TypeError: 'getElementById' called on an object that does not implement interface Document.
 		getElement("qf-options-header-description").setAttribute("value", version);
@@ -267,6 +266,12 @@ QuickFolders.Options = {
     }
     
     if (earlyExit) return;
+    if (QuickFolders.Licenser.isValidated)
+      setTimeout(function() { 
+          util.logDebug('Remove animations in options dialog...');
+          QuickFolders.Interface.removeAnimations('quickfolders-options.css');
+        }
+      );
     
     util.logDebugOptional('options', 'QuickFolders.Options.load - continue with palette + bling initialisation');
     /***** Menu Items / Labels *****/
@@ -364,7 +369,6 @@ QuickFolders.Options = {
     // customized coloring support
     this.initPreviewTabStyles();
     
-    if (prefs.isDebug) debugger;
     let paletteType = prefs.getIntPref('style.InactiveTab.paletteType'),
         disableStriped = !(this.stripedSupport(paletteType) && 
                            this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')));

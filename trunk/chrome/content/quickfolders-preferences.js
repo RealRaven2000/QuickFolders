@@ -42,7 +42,7 @@ QuickFolders.Preferences = {
 
 			if(folders) {
 				let entries = JSON.parse(folders);
-				for(let i = 0; i < entries.length; i++) {
+				for (let i = 0; i < entries.length; i++) {
 					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
 						entries[i].tabColor = 0;
 					// default the name!!

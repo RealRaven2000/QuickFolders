@@ -142,22 +142,33 @@ QuickFolders.Styles = {
 		return getRuleFromList(ss.cssRules, rule, attribute, true);
 	},
 
-	setElementStyle: function(ss, rule, attribute, value, important) {
+	setElementStyle: function(ss, rule, attribute, value, important, debug) {
+    const util = QuickFolders.Util;
+    let visitedStyleSheetList = [];
+    visitedStyleSheetList.push(ss.href);
+    function logDebug(text) {
+      if (debug) 
+        util.logDebug(text);
+      else
+        util.logDebugOptional("css.Detail", text);
+    }
 		function setRuleFromList(rulesList, rule, attribute, value, important, recurse) {
-			let i;
-			let found = false;
-			let foundRule = false;
-			let st; // new style rule
+			let found = false,
+			    foundRule = false,
+			    st; // new style rule
 			
-			for (i=0; i<rulesList.length; i++)
-			{
+			for (let i=0; i<rulesList.length; i++) {
 				let theRule = rulesList[i];
 				switch (theRule.type) {
 					case theRule.IMPORT_RULE:
 						// try to set imported rule (recursive) and return true.
 						if (!recurse) // don't allow deep recursion (break circular @import refs!)
 							continue;
-						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, false))
+            let styleSheetName = theRule.styleSheet.href;
+            if (visitedStyleSheetList.indexOf(styleSheetName)>=0) // don't parse the same sheet twice :)
+              continue;
+            logDebug('setting CSS rule in ' + styleSheetName);
+						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true))
 							return true;
 						break;
 					case theRule.STYLE_RULE:
@@ -167,19 +178,17 @@ QuickFolders.Styles = {
 
 						if (rule == selectors) {
 							st = theRule.style; // CSSStyleDeclaration
-							QuickFolders.Util.logDebugOptional("css.Detail", "found relevant style: " + theRule.selectorText + " searching rule " + attribute);
-							let k;//iterate rules!
-
-							for (k = 0; k < st.length; k++) {
+              logDebug("Found relevant selector: " + theRule.selectorText + "\n" +
+                       "  ... searching rule:    " + attribute);
+							for (let k = 0; k < st.length; k++) {  //iterate rules!
 								try {
 									if (attribute == st.item(k)) {
 										foundRule = true;
-										QuickFolders.Util.logDebugOptional ("css.Detail", "\n=============\nModify item: " + st.item(k)) + " =====================";
-										QuickFolders.Util.logDebugOptional ("css.Detail", "\ntheRule.style[k]=" + theRule.style[k]
-													+ "\ntheRule.style[k].parentRule=" + theRule.style.parentRule
-													+ "\ntheRule.style.getPropertyPriority=" + theRule.style.getPropertyPriority(attribute)
-													+ "\nst.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute)
-													+ "\ntheRule.style.getPropertyValue=" + theRule.style.getPropertyValue(attribute));
+										logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
+										        + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
+													  + "\n                .parentRule = " + theRule.style.parentRule
+													  + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
+												  	+ "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));
 										st.removeProperty(attribute);
 										if (null!=value) {
 											st.setProperty(attribute,value,((important) ?	"important" : ""));
@@ -187,7 +196,7 @@ QuickFolders.Styles = {
 										break;
 									}
 								}
-								catch (e) { QuickFolders.Util.logToConsole ("(error) " + e) };
+								catch (e) { util.logToConsole ("(error) " + e) };
 								break;
 							}
 						}
@@ -202,6 +211,7 @@ QuickFolders.Styles = {
 			return foundRule; // was rule found?
 		}
 		
+
 		// to do: find elements of this class and change their attribute (e.g. color)
 		// find the class element itself and change its properties
 		// persist in options
@@ -216,27 +226,47 @@ QuickFolders.Styles = {
 			if (typeof ss.cssRules == 'undefined')
 				return false;
 
-			QuickFolders.Util.logDebugOptional("css.Detail", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
+      let action = value ? 'Setting' : 'Removing',
+          actionResult = value ? ('\nto ' + value) : '';
+      logDebug('======================================\n'
+               + action + ' CSS rule in ' + ss.href +'\n'
+               + rule + actionResult);
+      
+			util.logDebugOptional("css.Detail", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
 
-			let rulesList = ss.cssRules;
-			if (setRuleFromList(rulesList, rule, attribute, value, important, true))
-				return true;
-			// not found:
-			if (null!=value) {
-				let sRule=rule +"{" + attribute + ":" + value + ((important) ? " !important" : "") + ";}";
-				QuickFolders.Util.logDebugOptional("css.AddRule", "Adding new CSS rule:" + sRule );
-				ss.insertRule(sRule, ss.cssRules.length);
-			}
+			let rulesList = ss.cssRules,
+          resultSet = true,
+          attributes = [].concat(attribute); // support array for quick removal
+      for (let a=0; a<attributes.length; a++) {
+        let at = attributes[a];
+        // reset recursion list
+        while (visitedStyleSheetList.length>1) visitedStyleSheetList.pop();
+        if (!setRuleFromList(rulesList, rule, at, value, important, true)) {
+          // not found:
+          if (null!=value) {
+            let sRule=rule +"{" + at + ":" + value + ((important) ? " !important" : "") + ";}";
+            util.logDebugOptional("css.AddRule", "Adding new CSS rule:" + sRule );
+            ss.insertRule(sRule, ss.cssRules.length);
+            logDebug('setElementStyle()\nNo Existing rule found, so inserted a fresh one.');
+          }
+          else {
+            logDebug('setElementStyle()\nFailed finding rule ' + rule + 
+                     '\n{' + at +'}');
+            resultSet = false; //removing style(s) failed
+          }
+        }
+      }
+      return resultSet;
 
 		}
 		catch(e) {
-			QuickFolders.Util.logException ("setElementStyle( " + rule + ", " + attribute + ", " + value + ")", e);
+			util.logException ("setElementStyle( " + rule + ", " + attribute + ", " + value + ")", e);
 		};
 		return false;
 	},
 
-	removeElementStyle: function(ss, rule, attribute) {
-		return QuickFolders.Styles.setElementStyle(ss, rule, attribute, null, true);
+	removeElementStyle: function(ss, rule, attribute, debug) {
+		return QuickFolders.Styles.setElementStyle(ss, rule, attribute, null, true, debug);
 	}
 
 }

@@ -42,7 +42,7 @@ QuickFolders.FolderCategory = {
 		//deselect all
 		listBox.selectedIndex=-1;
 
-		for(let i = 0; i < categories.length; i++) {
+		for (let i = 0; i < categories.length; i++) {
 			let category = categories[i];
 			if (category!=this.ALWAYS) {
 				item = listBox.appendChild(this.createListItem(category, category));

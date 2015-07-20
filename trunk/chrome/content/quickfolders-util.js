@@ -82,7 +82,8 @@ QuickFolders.Util = {
 		MSG_FOLDER_FLAG_SMART 	: 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
 		MSG_FOLDER_FLAG_ARCHIVE	: 0x4004, // another guess ?
 		MSG_FOLDER_FLAG_VIRTUAL : 0x0020,
-		MSG_FOLDER_FLAG_GOTNEW  : 0x00020000
+		MSG_FOLDER_FLAG_GOTNEW  : 0x00020000,
+    MSG_FOLDER_FLAG_OFFLINE : 0x08000000
 	},
 	// avoid these global objects
 	Cc: Components.classes,
@@ -163,6 +164,15 @@ QuickFolders.Util = {
     caption = caption || "QuickFolders";
     Services.prompt.alert(null, caption, msg);
   },
+  
+  get supportsForOf() {
+    // supports for .. of loops  ES6 from gecko 13.0
+    return (this.PlatformVersion >= 13.0);
+  },
+  
+  get supportsMap() {
+    return (typeof Map == "function");
+  } ,
 
 	// detect current QuickFolders version and storing it in mExtensionVer
 	// this is done asynchronously, so it respawns itself
@@ -474,7 +484,7 @@ QuickFolders.Util = {
     // short circuit if we already validated:
     if (!reset && QuickFolders.Licenser.wasValidityTested)
       return QuickFolders.Licenser.isValidated;
-    let licenseKey = QuickFolders.Preferences.getCharPrefQF('LicenseKey'),
+    let licenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'),
         util = QuickFolders.Util;
     if (!licenseKey) 
       return false; // short circuit if no license key!
@@ -550,7 +560,7 @@ QuickFolders.Util = {
 			
 			if (notifyBox) {
 				let item = notifyBox.getNotificationWithValue(notificationKey)
-				if(item)
+				if (item)
 					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
 			}
 		
@@ -867,14 +877,27 @@ QuickFolders.Util = {
 			// q.run(listener) => async
 			// q.getCollection(listener)
 
-			let messageIdList = [];
-      let isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove');
+			let messageIdList = [],
+          isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
+          bookmarks = QuickFolders.bookmarks;
 			for (let i = 0; i < messageUris.length; i++) {
 				let messageUri = messageUris[i],
-				    Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-        
+				    Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
+            bookmarked = bookmarks.indexOfEntry(messageUri);
         if(isMarkAsRead) {
           Message.markRead(true);
+        }
+        // if we move, check our reading list!
+        if (!makeCopy && bookmarked>=0) {
+          let entry = bookmarks.Entries[bookmarked];
+          // overwrite the folder URI: we will hope to find it here after being moved
+          if (entry.FolderUri != targetFolder.URI) {
+            bookmarks.dirty = true;
+            util.logDebug('Moving Mail from ' + entry.Uri + ' to folder ' + targetFolder.URI + '\n'
+              + 'Reading List item marked as invalid.');
+            entry.FolderUri = targetFolder.URI; 
+            entry.invalid = true;
+          }
         }
 
 				messageIdList.push(Message.messageId);
@@ -907,10 +930,10 @@ QuickFolders.Util = {
         'messages = ' + messageList + '\n' +
         'destinationFolder = ' + targetFolder + '\n' + 
         'isMove = ' + isMove + '\n' + 
-        'listener = null' + '\n' +
+        'listener = QuickFolders.CopyListener\n' +
         'msgWindow = ' + msgWindow + '\n' +
         'allowUndo = true)');      
-			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, null, msgWindow, true);
+			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, msgWindow, true);
 
 			if (QuickFolders.Preferences.isShowRecentTab) {
 				step = 8;
@@ -1143,7 +1166,7 @@ QuickFolders.Util = {
 
 	debugVar: function debugVar(value) {
 		str = "Value: " + value + "\r\n";
-		for(prop in value) {
+		for (prop in value) {
 			str += prop + " => " + value[prop] + "\r\n";
 		}
 		this.logDebug(str);

@@ -10,14 +10,18 @@ END LICENSE BLOCK */
 Components.utils.import("resource://gre/modules/Services.jsm");
 
 
-if (QuickFolders.Util.Application == 'Postbox') {
-  XPCOMUtils.defineLazyGetter(this, "NetUtil", function() {
-  Components.utils.import("resource://gre/modules/NetUtil.jsm");
-  return NetUtil;
-  });
+if (QuickFolders.Util.Application == 'Postbox'){ 
+  if (typeof XPCOMUtils != 'undefined') {
+    XPCOMUtils.defineLazyGetter(this, "NetUtil", function() {
+    Components.utils.import("resource://gre/modules/NetUtil.jsm");
+    return NetUtil;
+    });
+  }
+  else {
+    Components.utils.import("resource://gre/modules/NetUtil.jsm");
+  }
 }
-
-if (QuickFolders.Util.Application != 'Postbox') {
+else {
   Components.utils.import("resource:///modules/MailUtils.js");
 }
 
@@ -67,7 +71,6 @@ QuickFolders.bookmarks = {
 	  function _getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
-    if (this.isDebug)  debugger;
     let getFolder = QuickFolders.Model.getMsgFolderFromUri,
         folder = getFolder(entry.FolderUri),
         util = QuickFolders.Util,
@@ -121,7 +124,6 @@ QuickFolders.bookmarks = {
         method = forceMethod || prefs.getStringPref('bookmarks.openMethod'),
         msgHdr;
     try {
-      if (this.isDebug) debugger;
       msgHdr = messenger.messageServiceFromURI(entry.Uri).messageURIToMsgHdr(entry.Uri);
       if (!msgHdr) return false;
       if ((msgHdr.messageId.toString() + msgHdr.author + msgHdr.subject) == '' 
@@ -201,7 +203,6 @@ QuickFolders.bookmarks = {
 		    isAlt = evt.altKey,
 		    isCtrl = evt.ctrlKey,
 		    isShift = evt.shiftKey;  
-    if (this.isDebug)  debugger;
     evt.stopPropagation();
     switch(evt.button) {
       case 0: // left button
@@ -366,7 +367,6 @@ QuickFolders.bookmarks = {
   },
   
   addCurrent: function addCurrent() {
-    if (this.isDebug) debugger;
     let util = QuickFolders.Util,
         uris,
         actUris = this.getActiveUri();
@@ -703,13 +703,22 @@ QuickFolders.bookmarks = {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks,
         entries = JSON.parse(data);
-    if (bookmarks.isDebug) debugger;    
     util.logDebug ('parsed ' + entries.length + ' entries'); 
     // empty list.
     bookmarks.resetList(false);
     for (let i=0; i<entries.length; i++) {
       let fileEntry = entries[i];
-      //  lets forget about SANITIZING as this completely narrows us down. trust the file instead
+      // lets forget about SANITIZING as this completely narrows us down. trust the file instead
+      // note the labels are currently created when ADDING a bookmark and then simply stored
+      // we need a separate method for regenerating the labels from the info we haVE:
+      // 1 - entry.FolderUri => msgHeader.prettyName  (fallback to "unknown") + chevron
+      // 2 - entry.author
+      // 2 - entry.subject.substr()...
+      // 3 - entry.date
+      //     let label = util.getFriendlyMessageLabel(hdr);
+      //     if (showFolder && sourceFolder)
+      //       label = sourceFolder.prettyName + chevron + label;
+
       /*
           Entry = {
             Uri: fileEntry.Uri, 
@@ -729,7 +738,6 @@ QuickFolders.bookmarks = {
   } ,
     
   load: function load() {
-    if (this.isDebug) debugger;
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks; // "this" didn't work
     util.logDebug ('bookmarks.load...'); 
@@ -789,7 +797,6 @@ QuickFolders.bookmarks = {
   } ,
 
   save: function save()  {
-    if (this.isDebug)  debugger;
     let util = QuickFolders.Util;
     util.logDebug("bookmarks.save()...");
     if (util.Application == "Postbox") {

@@ -146,6 +146,7 @@ pref("extensions.quickfolders.debug.filters", false);
 pref("extensions.quickfolders.debug.listeners.tabmail", false);
 pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.folderTree", false);
+pref("extensions.quickfolders.debug.folderTree.icons", false);
 pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.premium", false);
 pref("extensions.quickfolders.debug.premium.licenser", false);
@@ -202,6 +203,7 @@ pref("extensions.quickfolders.premium.quickMove.usage", 0);
 pref("extensions.quickfolders.premium.tabIcons.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
+pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
 pref("extensions.quickfolders.LicenseKey", "");
 pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);

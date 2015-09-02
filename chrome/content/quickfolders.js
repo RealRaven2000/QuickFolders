@@ -251,7 +251,7 @@ END LICENSE BLOCK */
     ## or something similar to highlight new UI features
     ## Investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
 		
-  4.1  WIP planned release date: 07/06/2015
+  4.1.1 QuickFolders Pro - 17/07/2015
     ## [Bug 26021] Postbox 4.0 Compatibility
     ## [Bug 26019] Premium feature - Added "Reading List" for storing bookmarks for important mails
     ## quickMove / quickJump - made shortcut less "greedy" so that CTRL+SHIFT or ALT+SHIFT do not trigger it. 
@@ -282,7 +282,14 @@ END LICENSE BLOCK */
        disable transparent / striped options when appropriate
        in striped mode, do not change color+background color when selecting a new color for inactive tab
     ## Postbox: when opening a single message window from search results, current folder bar is not initialized correctly
-               
+      
+  4.2 WIP
+    ## Bug 26065 - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
+                   of a message to a QF tab will not be shown again until Thudnerbird is restarted. Probably caused 
+                   by an optional debug output.
+    ## 
+    ## 
+      
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
@@ -1187,12 +1194,13 @@ var QuickFolders = {
 						if (p && p.childNodes && p.childNodes.length) {
 						
 							// from a certain size, make sure to shift menu to right to allow clicking the tab
-							let minRealign = QuickFolders.Preferences.getIntPref("folderMenu.realignMinTabs");
-              let isShift = false;
+							let minRealign = QuickFolders.Preferences.getIntPref("folderMenu.realignMinTabs"),
+                  isShift = false;
 							if (minRealign) {
-							  let isDebug = QuickFolders.Preferences.isDebugOption('popupmenus.drag');
+							  let c,
+                    isDebug = QuickFolders.Preferences.isDebugOption('popupmenus.drag');
 								// count top level menu items
-								for (let c = 0; c < p.childNodes.length; c++) {
+								for (c = 0; c < p.childNodes.length; c++) {
 									if (isDebug) {
 										util.logDebugOptional("popupmenus.drag", 
 											c + ': ' + p.childNodes[c].tagName + ' - ' +  p.childNodes[c].getAttribute('label'));
@@ -1203,7 +1211,8 @@ var QuickFolders = {
 									}
 								}
 								if (isDebug) {
-									util.logDebugOptional("popupmenus.drag", "x align offset = " + xAlign);
+									util.logDebugOptional("popupmenus.drag", 
+                    "count = " + c +"\nminRealign = " + minRealign + "\nisShift = " + isShift);
 								}
 							}
 						
@@ -1881,8 +1890,11 @@ QuickFolders.FolderListener = {
 
 	OnItemAdded: function fldListen_OnItemAdded(parent, item, viewString) {
 		try {
-			if (!QuickFolders)
-				return;
+			if (!QuickFolders
+         ||
+         !(item instanceof Components.interfaces.nsIMsgFolder))
+        return;
+      if (QuickFolders.Util.Debug) debugger;
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder);
 			QuickFolders.FolderListener.lastAdded = f;
 		}
@@ -2075,7 +2087,7 @@ QuickFolders.CopyListener = {
   },
   OnStopCopy: function copyLst_OnStopCopy(status) { // in nsresult aStatus
     if (QuickFolders.bookmarks && Components.isSuccessCode(status)) {
-      bm = QuickFolders.bookmarks;
+      let bm = QuickFolders.bookmarks;
       if (bm.dirty) {
         let invalidCount = 0;
         for (let i=0; i<bm.Entries.length; i++) {

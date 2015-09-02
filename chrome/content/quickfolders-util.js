@@ -101,13 +101,9 @@ QuickFolders.Util = {
 		let doc=document; // we want the main document
 		if (doc.documentElement && doc.documentElement.tagName) {
 			if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
-// 				if (!QuickFolders.doc) {
 					let mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
 					if (mail3PaneWindow && mail3PaneWindow.document)
 						doc = mail3PaneWindow.document;
-// 				}
-// 				else
-// 					doc = QuickFolders.doc;
 			}
 		}
 		return doc.getElementById(id);
@@ -954,7 +950,7 @@ QuickFolders.Util = {
 
 	getTabInfoLength: function getTabInfoLength(tabmail) {
 		if (tabmail.tabInfo)
-		  return tabmail.tabInfo.length
+		  return tabmail.tabInfo.length;
 	  if (tabmail.tabOwners)
 		  return tabmail.tabOwners.length;
 		return null;

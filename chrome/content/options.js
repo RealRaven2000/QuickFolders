@@ -28,6 +28,17 @@ QuickFolders.Options = {
 	QF_PREF_ADVANCED : 1,
 	QF_PREF_GENERAL : 0,
 
+  // save space, for visually impaired
+  collapseHead: function collapseHead() {
+    let hdr = document.getElementById('qf-header-container');
+    hdr.setAttribute('collapsed', true);
+    let panels = document.getElementById('QuickFolders-Panels');
+    panels.style.minHeight = '';
+    panels.style.overflowY = 'scroll';
+    let prefpane = document.getElementById('qf-options-prefpane');
+    prefpane.style.overflowY = 'scroll';;
+  },
+  
 	rememberLastTab: function rememberLastTab() {
 		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
@@ -259,7 +270,9 @@ QuickFolders.Options = {
         break;
     }
     
-    let EncryptionKey = QuickFolders.Preferences.getStringPref('premium.encryptionKey');
+    // .0 private license, .1 domain license
+    // these are only for testing, so normal users shouldn't need them, default to '' via code
+    let EncryptionKey = QuickFolders.Preferences.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
     if (EncryptionKey) {
       getElement('boxKeyGenerator').collapsed = false;
       QuickFolders.Licenser.RSA_encryption = EncryptionKey;
@@ -440,7 +453,7 @@ QuickFolders.Options = {
       if (!testMode) // in test mode we do not store the license key!
         QuickFolders.Preferences.setCharPrefQF('LicenseKey', license);
       
-      let maxDigits = getElement('txtMaxDigits').value, // this will be hardcoded in production
+      let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
           result, LicenseKey,
           crypto = QuickFolders.Licenser.getCrypto(license),
           mail = QuickFolders.Licenser.getMail(license),
@@ -550,10 +563,28 @@ QuickFolders.Options = {
     document.getElementById('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
   },
   
+  // only for testing, hence no l10n !
+  // if we add the secret encryption string(s) to our config db
+  // we will be able to generate new license keys...
   encryptLicense: function encryptLicense() {
-    let encryptThis = document.getElementById('txtEncrypt').value,
-        maxDigits = document.getElementById('txtMaxDigits').value, // this will be hardcoded in production
-        encrypted = QuickFolders.Licenser.encryptLicense(encryptThis, maxDigits);
+    let encryptThis = document.getElementById('txtEncrypt').value;
+    if (encryptThis.indexOf('*')>0) {
+      if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
+        // test only - not meant for public consumption
+        if (confirm('Switch to domain license?')) {
+          QuickFolders.Crypto.key_type=1; // switch to domain license
+        }
+      }
+    }
+    else {
+      if (QuickFolders.Crypto.key_type!=0) { // not currently a private key?
+        // test only - not meant for public consumption
+        if (confirm('Switch to private license?')) {
+          QuickFolders.Crypto.key_type=0; // switch to private license
+        }
+      }
+    }
+    let encrypted = QuickFolders.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
     document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
   },
   

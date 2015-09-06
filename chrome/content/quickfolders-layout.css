@@ -814,30 +814,36 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
 	 -moz-image-region: auto; /* trash inheritance */
 }
 
-#QuickFolders-toolbar-button
+#QuickFolders-toolbar-button.toolbarbutton-1,
+#mail-toolbox > toolbar[brighttext] #QuickFolders-toolbar-button.toolbarbutton-1
 {
   list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbar.png");
   -moz-image-region: rect(48px 24px 72px 0px);
 }
 
-#QuickFolders-toolbar-button[checked=true] {
+#QuickFolders-toolbar-button.toolbarbutton-1[checked=true] {
   -moz-image-region: rect(0px 24px 24px 0px);
 }
 
-#QuickFolders-toolbar-button:hover
+#QuickFolders-toolbar-button.toolbarbutton-1:hover
 {
   -moz-image-region: rect(24px 24px 48px 0px);
 }
 
-toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button image
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button.toolbarbutton-1 image,
+#mail-toolbox > toolbar[brighttext]:not([iconsize="small"]) #QuickFolders-toolbar-button.toolbarbutton-1 image
 {
   width: 24px;
   height: 24px;
 }
 
-[iconsize="small"] #QuickFolders-toolbar-button
+[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1
 {
   list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbarSmall.png");
+}
+
+[iconsize="small"] #QuickFolders-toolbar-button {
   -moz-image-region: rect(32px 16px 48px 0px);
 }
 
@@ -845,7 +851,8 @@ toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button image
   -moz-image-region: rect(0px 16px 16px 0px);
 }
 
-[iconsize="small"] #QuickFolders-toolbar-button:hover
+[iconsize="small"] #QuickFolders-toolbar-button:hover,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #QuickFolders-toolbar-button:hover
 {
   -moz-image-region: rect(16px 16px 32px 0px);
 }

@@ -7,13 +7,62 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+QuickFolders.Crypto = {
+  get key_type() {
+    return QuickFolders.Preferences.getIntPref('licenseType');
+  },
+  set  key_type(t) {
+    QuickFolders.Preferences.setIntPref('licenseType', t);
+  },
+  get decryption_key() {
+    switch (this.key_type) {
+      case 0:  // private
+        return "1a9a5c4b1cc62e975e3e10e4b5746c5de581dcfab3474d0488cb2cd10073e01b";
+      case 1:  // domain
+        return "68a025ffe52fd5cf9beaf0693b6e77e58278f6089f01bdac4afe965241f5cf8a5d9e25d0750091a7c8bcb3807909ddc290f00ed9ab6437d801ab1a2ac14cd5b";
+      default:
+        return -1; // unknown or free license
+    }
+  },
+  get modulus() {
+    switch (this.key_type) {
+      case 0:  // private
+        return "2e1a582ecaab7ea39580890e1db6462137c20fb8abcad9b2dad70a610011e685";
+      case 1:  // domain
+        return "12c127d3fb813f8bba7e863ab31c9943b76505f96cb87bfa9d4f9dc503a1bfe0c74e0057cff6ee9f3814fb90bc42207fdd908fbdb00cbf9a8f8c53dc7c4ed7b5";
+      default:
+        return -1; // unknown or free license
+    }
+  },
+  get maxDigits() {
+    switch (this.key_type) {
+      case 0:  // private
+        return 35;
+      case 1:  // domain
+        return 67;
+      default:
+        return 0; // unknown or free license
+    }
+  },
+  get keyLength() {
+    switch (this.key_type) {
+      case 0:  // private
+        return 256;
+      case 1:  // domain
+        return 512;
+      default:
+        return 0; // unknown or free license
+    }
+  }
+};
+
 QuickFolders.Licenser = {
   LicenseKey: '',  // store in preference when given
   RSA_encryption: "", // 
-  RSA_decryption: "1a9a5c4b1cc62e975e3e10e4b5746c5de581dcfab3474d0488cb2cd10073e01b",
-  RSA_modulus:    "2e1a582ecaab7ea39580890e1db6462137c20fb8abcad9b2dad70a610011e685",
-  RSA_keylength: 256,
-  MaxDigits: 35,
+  get RSA_decryption() {return QuickFolders.Crypto.decryption_key;},
+  get RSA_modulus()    {return QuickFolders.Crypto.modulus;},
+  get RSA_keylength()  {return QuickFolders.Crypto.keyLength;},
+  get MaxDigits()      {return QuickFolders.Crypto.maxDigits;},
   DecryptedMail: '',
   DecryptedDate: '',
   AllowSecondaryMails: false,
@@ -179,22 +228,24 @@ QuickFolders.Licenser = {
     document.getElementById('email').value = email;
   } ,
   
-  goPro: function goPro() {
+  goPro: function goPro(license_type) {
     // redirect to registration site; pass in the feature that brought user here
-    let url;
     // short order process
-    const shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
+    let shortOrder = 
+        (license_type == 0) ?
+       "https://sites.fastspring.com/quickfolders/instant/quickfolders" :
+       "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomain"
+       ;
     // view product detail
     const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders";
     let firstName = document.getElementById('firstName').value,
         lastName = document.getElementById('lastName').value,
         email = document.getElementById('email').value,
-        util = QuickFolders.Util; 
-    
-    url = shortOrder 
-        + "?contact_fname=" + firstName 
-        + "&contact_lname=" + lastName 
-        + "&contact_email=" + email;
+        util = QuickFolders.Util,
+        url = shortOrder 
+            + "?contact_fname=" + firstName 
+            + "&contact_lname=" + lastName 
+            + "&contact_email=" + email;
         
     let queryString = '',  // action=adds
         featureName = document.getElementById('referrer').value;
@@ -236,26 +287,35 @@ QuickFolders.Licenser = {
   getDate: function getDate(LicenseKey) {
     // get mail+date portion
     let arr = LicenseKey.split(';');
-    if (!arr.length)
-      return null; 
+    if (!arr.length) {
+      QuickFolders.Util.logDebug('getDate() failed - no ; found');
+      return ''; 
+    }
     // get date portion
     let arr1=arr[0].split(':');
-    if (arr1.length<2)
-      return null;
+    if (arr1.length<2) {
+      QuickFolders.Util.logDebug('getDate() failed - no : found');
+      return '';
+    }
     return arr1[1];
   },
   
   getMail: function getMail(LicenseKey) {
     let arr1 = LicenseKey.split(':');
-    if (!arr1.length)
-      return null;
-    return arr1[0].substr(3); // split off QF-
+    if (!arr1.length) {
+      QuickFolders.Util.logDebug('getMail() failed - no : found');
+      return '';
+    }
+    let pos = arr1[0].indexOf('-') + 1;
+    return arr1[0].substr(pos); // split off QF- or QFD-
   },
   
   getCrypto: function getCrypto(LicenseKey) {
     let arr=LicenseKey.split(';');
-    if (arr.length<2)
+    if (arr.length<2) {
+      QuickFolders.Util.logDebug('getCrypto() failed - no ; found');
       return null;
+    }
     return arr[1];
   },
   
@@ -265,15 +325,42 @@ QuickFolders.Licenser = {
                      + parent.licenseDescription(parent.ValidationStatus)
                      + '   [' + parent.ValidationStatus + ']');
     }
+    function isIdMatchedLicense(idMail, licenseMail) {
+      switch(QuickFolders.Crypto.key_type) {
+        case 0: // private license
+          return (idMail.toLowerCase()==licenseMail);
+        case 1: // domain matching 
+          // only allow one *
+          if ((licenseMail.match(/\*/g)||[]).length != 1)
+            return false;
+          // replace * => .*
+          let r = new RegExp(licenseMail.replace("*",".*"));
+          let t = r.test(idMail);
+          return t;
+      }
+      return false;
+    }
+    
     // extract encrypted portion after ;
     const ELS = this.ELicenseState,
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
           logIdentity = util.logIdentity.bind(util);
+    if (prefs.isDebug) {
+      debugger;
+      util.logDebug("validateLicense()");
+    }
     if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;
       logResult(this);
       return [this.ValidationStatus, ''];
+    }
+    if (LicenseKey.indexOf('*')>0) {
+       if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
+         if (confirm('Switch to volume license?')) {
+           QuickFolders.Crypto.key_type=1; // switch to colume license
+         }
+       }
     }
     let encrypted = this.getCrypto(LicenseKey),
         clearTextEmail = this.getMail(LicenseKey),
@@ -285,15 +372,28 @@ QuickFolders.Licenser = {
       return [this.ValidationStatus, ''];
     }
     // RSAKeyPair(encryptionExponent, decryptionExponent, modulus)
+    if (prefs.isDebug) {
+      debugger;
+      util.logDebug("RSA.initialise(" +  maxDigits + ")");
+    }
+    
     QuickFolders.RSA.initialise(maxDigits);
     util.logDebug ('Creating RSA key + decrypting');
     // we do not pass encryptionComponent as we don't need it for decryption
+    if (prefs.isDebug) {
+      debugger;
+      util.logDebug("new RSA.RSAKeyPair()");
+    }
     let key = new QuickFolders.RSA.RSAKeyPair("", this.RSA_decryption, this.RSA_modulus, this.RSA_keylength);
     // decrypt
     // verify against remainder of string
     this.DecryptedMail = '';
     this.DecryptedDate = '';
     if (encrypted) try {
+      if (prefs.isDebug) {
+        debugger;
+        util.logDebug("get RSA.decryptedString()");
+      }
       RealLicense = QuickFolders.RSA.decryptedString(key, encrypted);
       this.wasValidityTested = true;
       util.logDebug ('Decryption Complete : decrypted string = ' + RealLicense);
@@ -367,13 +467,17 @@ QuickFolders.Licenser = {
       if (ac.defaultIdentity && !ForceSecondaryMail) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
-        if (ac.defaultIdentity.email.toLowerCase()==licensedMail) {
+        if (isIdMatchedLicense(ac.defaultIdentity.email, licensedMail)) {
           isMatched = true;
           break;
         }
       }
       else {
-        if (!this.AllowSecondaryMails) continue;
+        // allow secondary matching using override switch, but not with domain licenses
+        if (!this.AllowSecondaryMails
+            ||  
+            QuickFolders.Crypto.key_type == 1) 
+          continue;  
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] secondary ids");
         // ... allow using non default identities 
         let ids = ac.identities, // array of nsIMsgIdentity 
@@ -394,7 +498,7 @@ QuickFolders.Licenser = {
                 "Account[" + ac.key + "], Identity[" + i + "] = " + logIdentity(id) +"\n"
                 + "Email: [" + matchMail + "]");
             }
-            if (this.AllowSecondaryMails && matchMail==licensedMail) {
+            if (isIdMatchedLicense(matchMail, licensedMail)) {
               isMatched = true;
               break;
             }

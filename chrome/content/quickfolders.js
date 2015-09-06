@@ -284,10 +284,12 @@ END LICENSE BLOCK */
     ## Postbox: when opening a single message window from search results, current folder bar is not initialized correctly
       
   4.2 WIP
+    ## added support for domain licenses!
     ## Bug 26065 - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
                    of a message to a QF tab will not be shown again until Thudnerbird is restarted. Probably caused 
                    by an optional debug output.
-    ## 
+    ## Fixed: Added support for brighttext themes - Dark Themes with [brighttext] attribute caused a 
+              QuickFolders toggle button icon to break
     ## 
       
 	Known Issues

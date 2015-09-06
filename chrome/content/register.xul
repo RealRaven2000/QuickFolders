@@ -31,6 +31,18 @@
 					<label id="licenseDate" value="-" />
 				</hbox>
 			</vbox>
+			<vbox>
+				<spacer flex="1"/>
+				<!-- align buttons bottom right -->
+				<label id="haveLicense">&qf.label.haveLicense;</label>
+				<hbox>
+					<button id="btnEnterCode"
+									label="&enterLicenseKey.button;"
+									tooltiptext="&enterLicenseKey.tooltip;"
+									oncommand="QuickFolders.Interface.viewLicense();" />
+				</hbox>
+			</vbox>
+			
 		</hbox>
 		
 		<description class="para">&intro;</description>
@@ -91,7 +103,7 @@
 				<textbox id="email" />
 			</hbox>
 		</vbox>
-	  <spacer />
+	  <spacer flex="1"/>
 	  <vbox>
 			<hbox>
 				<label control="firstName"
@@ -108,21 +120,37 @@
 				<textbox id="lastName" />
 			</hbox>
 		</vbox>
-		<spacer flex="2" />
-		<vbox>
-		  <spacer flex="1"/>
-			<!-- align buttons bottom right -->
-			<hbox>
-				<button id="btnEnterCode"
-								label="&enterLicenseKey.button;"
-								tooltiptext="&enterLicenseKey.tooltip;"
-								oncommand="QuickFolders.Interface.viewLicense();" />
-				<button id="btnLicense"
-								label="&buyLicense.button;"
-								oncommand="QuickFolders.Licenser.goPro();" />
-			</hbox>
-		</vbox>
-		
+		<spacer flex="3" />
 	</hbox>
+	<vbox id="buyBox">
+		<table class="buyAction">
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyLicense.instruct;</label>
+				</td>
+				<td>
+					<button id="btnLicense"
+						label="&buyPersonalLicense.button;"
+						oncommand="QuickFolders.Licenser.goPro(0);" />
+				</td>
+			</tr>
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyDomainLicense.instruct;</label>
+				</td>
+				<td>
+					<button id="btnDomainLicense"
+						label="&buyDomainLicense.button;"
+						oncommand="QuickFolders.Licenser.goPro(1);" />
+				</td>
+			</tr>
+		</table>
+	</vbox>
 	<textbox id="referrer" collapsed="true"/>
 </dialog>

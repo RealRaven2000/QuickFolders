@@ -411,7 +411,16 @@ QuickFolders.Preferences = {
 	
 	
 	getStringPref: function getStringPref(p) {
-		return this.service.getCharPref("extensions.quickfolders." + p);
+    let prefString =''
+    try {
+      prefString = this.service.getCharPref("extensions.quickfolders." + p);
+    }
+    catch(ex) {
+      QuickFolders.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
+    }
+    finally {
+      return prefString;
+    }
 	},
 	
 	setCharPrefQF: function setCharPrefQF(p, v) {

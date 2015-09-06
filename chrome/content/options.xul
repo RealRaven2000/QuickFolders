@@ -32,7 +32,8 @@
 		<box id="qf-header-container">
 			<vbox>
 				<spacer flex="1" />
-				<image id="qf-options-icon" src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" />
+				<image id="qf-options-icon" src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" 
+				onclick="QuickFolders.Options.collapseHead();"/>
 				<spacer flex="1" />
 			</vbox>
 			<hbox id="qf-options-header" class="paneSelector" flex="1">
@@ -1052,11 +1053,6 @@
 						</hbox>
 						<separator class="thin" />
 						<hbox align="center">
-							<label control="txtMaxDigits">Max Digits:</label>
-							<textbox id="txtMaxDigits"
-											 type="number"
-											 value="35"
-											 width="50" />
 							<button id="btnTestLicense"
 											label="Decrypt + Test"
 											oncommand="QuickFolders.Options.decryptLicense(true);" />

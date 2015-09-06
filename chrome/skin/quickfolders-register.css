@@ -31,13 +31,23 @@ td {
   vertical-align: top;
 }
 
-#thePage {
+#thePage, #buyBox {
   background-color: #ffffff;
 	-moz-box-align: start;
 	border: 1px solid rgba(88,88,88,0.4);
-	box-shadow: 2px 2px 2px rgba(80, 80, 80, 0.6);
 	margin: 1em;
 }
+
+#thePage {
+	box-shadow: 2px 2px 4px rgba(80, 80, 80, 0.4);
+}
+
+#buyBox {
+	box-shadow: inset 2px 2px 4px rgba(80, 80, 80, 0.4);
+	background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+	padding: 6px 10px 4px 0 !important;
+}
+
 
 /* main font - reflect in order  button */
 .para {
@@ -78,8 +88,9 @@ td {
 	text-decoration: underline;
 }
 .heading {
-  background: linear-gradient(to bottom, #F1E767 0%, #F1E767 37%, #FEB645 100%) repeat scroll 0% 0% transparent;
-  border: 1px solid rgba(120,120,120,0.5) !important;
+  background: none;
+  border: 1px solid rgba(140,140,140,0.5) !important;
+	border-radius: 12px;
 	color: rgb(0, 0, 0);
   display: inline-block;
   font-family: calibri, arial, sans-serif;

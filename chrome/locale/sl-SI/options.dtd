@@ -142,14 +142,14 @@
 <!ENTITY qf.label.languagesLink "Dodaj prevod ...">
 <!ENTITY qf.description.contactMe "Lahko tudi osebno navežete stik za mano na axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Naveži stik z mano (angleščina ali nemščina):">
-<!ENTITY qf.label.insertLicense "Vstavite svojo osebno licenco tukaj:">
+<!ENTITY qf.label.insertLicense "Vstavite svoje osebno dovoljenje tukaj:">
 <!ENTITY qf.label.insertLicense.tooltip "Vaš licenčni ključ je v vaši e-pošti za potrditev naročila od Fastspringa:">
 <!ENTITY qf.button.pasteLicense "Prilepi">
 <!ENTITY qf.button.validateLicense "Preveri veljavnost">
-<!ENTITY qf.label.licenseValid "Vaša licenca je veljavna do:">
+<!ENTITY qf.label.licenseValid "Vaše dovoljenje je veljavno do:">
 <!ENTITY qf.licenseValidation.passed "Hvala za registracijo razširitve QuickFolders Pro! Vse značilnosti Premium so sedaj odklenjene.">
 <!ENTITY qf.licenseValidation.failed "Vneseni licenčni ključ je neveljaven. Preverite svojo pošto od FastSpringa za navodila. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora.">
-<!ENTITY qf.licenseValidation.expired "Vneseni licenčni ključ je potekel. Pritisnite spodnji gumb, da obnovite svojo licenco.">
+<!ENTITY qf.licenseValidation.expired "Vneseni licenčni ključ je potekel. Pritisnite spodnji gumb, da obnovite svoje dovoljenje.">
 <!ENTITY qf.licenseValidation.invalidMail "E-poštni naslov, ki je vezan na licenčni ključ [{1}], trenutno ni naveden v nobenem vašem e-poštnem računu. Za pomoč navežite stik za mano iz zavihka Podpora.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY qf.premiumConfig "Značilnosti Premium">
@@ -168,7 +168,6 @@
 <!ENTITY qf.checkbox.readingList "Bralni seznam">
 <!ENTITY qf.checkbox.readingList.tooltip "Seznam pošte za kasnejše branje. Povlecite svojo pomembno pošto na ta gumb.">
 <!ENTITY qf.label.donate "Prispevaj">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Opomba: V primeru, da spodaj vidite gumb [Zapri], morda barvne nastavitve ne bodo delovale - za obideneje tega poskusite z desnim klikom na prazen prostor vrstice hitrih map, da izberete možnosti ... to bo vsililo prikaz gumba [V redu], ki bi moral imeti barve.">
 <!ENTITY qf.checkbox.usePalette "Uporabi paleto">
 <!ENTITY qf.options.theme.pastelColors "Pastelne barve">

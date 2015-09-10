@@ -194,6 +194,7 @@ pref("extensions.quickfolders.filters.currentTemplate", "from");
 pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
+pref("extensions.quickfolders.licenseType", 0); // private license, 1-domain
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.usage", 0);

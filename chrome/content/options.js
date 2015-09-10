@@ -141,8 +141,12 @@ QuickFolders.Options = {
 					if (QuickFolders.Preferences.ColoredTabStyle==QuickFolders.Preferences.TABS_STRIPED)
 						paletteIndex = '' + paletteIndex + 'striped';
 				}
-				else
-					colorPicker.collapsed = true;
+				else {
+          // do not hide background color for active tab so we can adjust  
+          // the bottom border color of the toolbar
+          if (colorPickerId!='activetab-colorpicker')
+            colorPicker.collapsed = true;
+        }
 			}
 			
 			previewTab.className = 'qfTabPreview col' + paletteIndex + paletteClass;

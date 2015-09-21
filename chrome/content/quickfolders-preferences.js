@@ -123,6 +123,14 @@ QuickFolders.Preferences = {
 	get QuickMoveShortcutKey() {
 		return this.getStringPref("quickMove.Hotkey");
 	} ,
+  
+	get isQuickCopyShortcut() {
+		return this.getBoolPref("quickCopy.useHotkey");
+	} ,
+  
+	get QuickCopyShortcutKey() {
+		return this.getStringPref("quickCopy.Hotkey");
+	} ,
 
 	get isUseKeyboardShortcutsCTRL() {
 		return this.getBoolPref("useKeyboardShortcutCTRL");

@@ -157,6 +157,8 @@
 <!ENTITY qf.checkbox.quickJump.tip "Skrót do przycisku quickJump do szybszej nawigacji do dowolnego miejsca za pomocą wprowadzonej nazwy.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Przenoś wiadomość do dowolnego folderu za pomocą skrótu Shift+">
 <!ENTITY qf.checkbox.quickMove.tip "Skrót do przycisku quickMove do szybszego przenoszenia do dowolnego folderu za pomocą wprowadzonej nazwy.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Kopiuj wiadomość do dowolnego folderu za pomocą skrótu Shift+">
+<!ENTITY qf.checkbox.quickCopy.tip "Skrót klawiszowy do przeciągania wiadomości do przycisku quickCopy w celu szybkiego kopiowania do dowolnego folderu.">
 <!ENTITY qf.quickMove.path.format "Format wyświetlania:">
 <!ENTITY qf.pathFormat.folderName "Nazwa folderu">
 <!ENTITY qf.pathFormat.folderAndAccount "Nazwa folderu – Konto pocztowe">
@@ -169,7 +171,7 @@
 <!ENTITY qf.checkbox.readingList.tooltip "Lista wiadomości, które należy przeczytać później. Przeciągnij ważne wiadomości na ten przycisk.">
 <!ENTITY qf.label.donate "Przekaż dotację">
 <!-- obsolete ?? double check in js code -->
-<!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamknij], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">
+<!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamkni], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">
 <!ENTITY qf.checkbox.usePalette "Użyj palety">
 <!ENTITY qf.options.theme.pastelColors "Kolory pastelowe">
 <!ENTITY qf.menu.tabColor "Brak koloru!">

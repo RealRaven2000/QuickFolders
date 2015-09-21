@@ -93,6 +93,12 @@
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
+#chkQuickCopy .checkbox-icon, 
+#chkQuickCopyHotkey .checkbox-icon
+{ 
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	-moz-image-region: rect(64px, 16px, 80px, 0px); 
+}
 #chkQuickJumpHotkey .checkbox-icon
 { 
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 

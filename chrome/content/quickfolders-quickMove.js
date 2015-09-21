@@ -6,6 +6,7 @@ QuickFolders.quickMove = {
   suspended: false,
   isMoveActive: false,
   Uris: [],      // message Uris of mails lined up for move (quickMove)
+  IsCopy: [],    // copy flag, false for move
   Origins: [],   // source folder array
   
   get isActive() {
@@ -24,48 +25,13 @@ QuickFolders.quickMove = {
     }
   },
   
-  execute: function execute(folderUri, isCopy) {
-    // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
-    let util = QuickFolders.Util,
-        actionCount = 0,
-        fld = QuickFolders.Model.getMsgFolderFromUri(folderUri, true),
-        tabMode = QuickFolders.Interface.CurrentTabMode,    
-        tabmail = document.getElementById("tabmail"),
-        currentTab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
-        
-    if (tabMode == 'message' && !isCopy) {
-      // close currentTab!
-      if (currentTab.canClose)
-        tabmail.closeTab(currentTab);
-    }
-        
-    util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
+  // move or copy mails (or both at the same time!)
+  execute: function execute(targetFolderUri) {
+    function showFeedback(actionCount, messageIdList, isCopy) {
+      // show notification
+      if (!actionCount) 
+        return;
     
-    // Move / Copy Messages
-    let messageIdList = util.moveMessages(fld, this.Uris, isCopy);
-    // should return an array of message ids...
-    if (messageIdList) { 
-      // ...which we should match before deleting our URIs?
-      if (QuickFolders.FilterWorker.FilterMode) {
-        let sourceFolder = this.Origins.length ? this.Origins[0] : null;
-        for (let i=0; i<this.Origins.length; i++) {
-          if (sourceFolder!=this.Origins[i]) {
-            sourceFolder = null;
-            util.slideAlert('creating filters from multiple folders is currently not supported!');
-            break;
-          }
-        }
-        QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
-      }
-      actionCount = messageIdList.length;
-    }
-    util.logDebugOptional('quickMove', 'After moveMessages actionCount: ' + actionCount + ' resetting menu');
-    this.resetList();
-    this.update();
-    QuickFolders.Interface.hideFindPopup();
-    util.logDebugOptional('quickMove', 'After hideFindPopup');
-    // show notification
-    if (actionCount) {
       let msg = 
         isCopy 
         ?  util.getBundleString("quickfoldersQuickCopiedMails","Email copied to folder {2};{1} Emails copied to folder {2}")
@@ -90,9 +56,71 @@ QuickFolders.quickMove = {
             }, 1200);
         }
       }
-      
       util.slideAlert("QuickFolders",notify);
     }
+    function copyList(uris, origins, isCopy) {
+      if (!uris.length) return;
+      actionCount = 0;
+      // Move / Copy Messages
+      let messageIdList = util.moveMessages(fld, uris, isCopy);
+      // should return an array of message ids...
+      if (messageIdList) { 
+        // ...which we should match before deleting our URIs?
+        if (QuickFolders.FilterWorker.FilterMode) {
+          let sourceFolder = origins.length ? origins[0] : null;
+          for (let i=0; i<origins.length; i++) {
+            if (sourceFolder!=origins[i]) {
+              sourceFolder = null;
+              util.slideAlert('creating filters from multiple folders is currently not supported!');
+              break;
+            }
+          }
+          QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
+        }
+        actionCount = messageIdList.length;
+      }
+      let theAction = isCopy ? 'copy Messages' : 'move Messages';
+      util.logDebugOptional('quickMove', 'After ' + theAction + ' actionCount: ' + actionCount + ' resetting menu');
+      // ==================================================================
+      showFeedback(actionCount, messageIdList, isCopy);
+    }
+    // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
+    let util = QuickFolders.Util,
+        actionCount,
+        fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
+        tabMode = QuickFolders.Interface.CurrentTabMode,    
+        tabmail = document.getElementById("tabmail"),
+        currentTab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+        
+    let hasMove = (this.IsCopy.indexOf(false)>=0); // are any message moved, close in case this is a single message tab
+    if (tabMode == 'message' && !hasMove) {
+      // close currentTab!
+      if (currentTab.canClose)
+        tabmail.closeTab(currentTab);
+    }
+        
+    util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
+
+    // split mails to copy / move:   
+    let uriCopy=[], uriMove=[],
+        originCopy=[], originMove=[];
+    for (let j=this.Uris.length-1; j>=0; j--) {
+      if (this.IsCopy[j]) {
+        uriCopy.push(this.Uris[j]);
+        originCopy.push(this.Origins[j]);
+      }
+      else {
+        uriMove.push(this.Uris[j]);
+        originMove.push(this.Origins[j]);
+      }
+    }
+    copyList(uriCopy, originCopy, true);
+    copyList(uriMove, originMove, false);
+    
+    this.resetList();
+    this.update();
+    QuickFolders.Interface.hideFindPopup();
+    util.logDebugOptional('quickMove', 'After hideFindPopup');
   },
   
   resetList: function resetList() {
@@ -101,6 +129,9 @@ QuickFolders.quickMove = {
     }
     while (this.Origins.length) {
       this.Origins.pop();
+    }
+    while (this.IsCopy.length) {
+      this.IsCopy.pop();
     }
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.childNodes.length-1; i>0; i--) {
@@ -139,11 +170,12 @@ QuickFolders.quickMove = {
     }
   },
   
-  add: function add(newUri, sourceFolder)  {
+  add: function add(newUri, sourceFolder, isCopy)  {
     if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
       let chevron = ' ' + "\u00BB".toString() + ' ',
           showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
       this.Uris.push(newUri);
+      this.IsCopy.push(isCopy);
       this.Origins.push(sourceFolder);
       // now add to menu!
       let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
@@ -157,7 +189,7 @@ QuickFolders.quickMove = {
           if (showFolder && sourceFolder)
             label = sourceFolder.prettyName + chevron + label;
           menuitem.setAttribute("label", label);
-          menuitem.className='msgUri menuitem-iconic';
+          menuitem.className='msgUri menuitem-iconic' + (isCopy ? ' msgCopy' : '');
           QuickFolders.Interface.setEventAttribute(menuitem, "oncommand","QuickFolders.Util.openMessageTabFromUri('" + newUri + "');");
           menu.appendChild(menuitem);
         }
@@ -178,6 +210,7 @@ QuickFolders.quickMove = {
     if (i >= 0) {
       this.Uris.splice(i, 1);
       this.Origins.splice(i, 1);
+      this.IsCopy.splice(i, 1);
     }
        
     if (!this.hasMails) {

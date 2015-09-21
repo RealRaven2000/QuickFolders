@@ -108,6 +108,20 @@ QuickFolders.Util = {
 		}
 		return doc.getElementById(id);
 	} ,
+  
+  enumProperties: function enumProps(v) {
+    let txt = '';
+    if (!v) return '';
+    Object.getOwnPropertyNames(v).forEach(
+      function (prop) {
+        let lbl = v[prop];
+        if  (typeof lbl === 'function') 
+          lbl = lbl.toString().substring(0, lbl.toString().indexOf(")")+1);
+        txt += prop + ': ' + lbl + '\n';
+      }
+    )
+    return txt;
+  } ,
 
 	get ApplicationVersion() {
 		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
@@ -290,11 +304,9 @@ QuickFolders.Util = {
 			if (account_groups)
 			{
 				let groups = account_groups.split(",");
-				for each (let accountKey in groups)
-				{
-					let account = actManager.getAccount(accountKey);
-					if (account)
-					{
+				for (let k=0; k<groups.length; k++) {
+          let account = actManager.getAccount(groups[k]); // groups returns accountkey
+					if (account) {
 						accounts.push(account);
 					}
 				}
@@ -839,7 +851,8 @@ QuickFolders.Util = {
 		let step = 0,
         Ci = Components.interfaces,
         util = QuickFolders.Util; 
-    if (QuickFolders.Preferences.isDebug) debugger;
+    if (!messageUris) 
+      return null;
 		try {
 			try {
         util.logDebugOptional('dnd,quickMove', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);
@@ -920,12 +933,12 @@ QuickFolders.Util = {
 			step = 6;
 			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;
-      let isMove = (!makeCopy);
+      let isMove = (!makeCopy); // mixed!
       util.logDebugOptional('dnd,quickMove,dragToNew', 'calling CopyMessages (\n' +
         'sourceFolder = ' + sourceFolder + '\n'+
         'messages = ' + messageList + '\n' +
         'destinationFolder = ' + targetFolder + '\n' + 
-        'isMove = ' + isMove + '\n' + 
+        'isMove = (various)\n' + 
         'listener = QuickFolders.CopyListener\n' +
         'msgWindow = ' + msgWindow + '\n' +
         'allowUndo = true)');      

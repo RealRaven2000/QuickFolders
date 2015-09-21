@@ -20,6 +20,10 @@
 #QuickFolders-readingListMenu .msgUri {
 	list-style-image: url("chrome://quickfolders/skin/ico/message-mail.png");
 }
+#QuickFolders-quickMoveMenu .msgCopy {
+	list-style-image: url("chrome://quickfolders/skin/ico/message-copy.png") !important;
+}
+
 #QuickFolders-quickMoveMenu .msgUri.invalid,
 #QuickFolders-readingListMenu .msgUri.invalid {
 	list-style-image: url("chrome://quickfolders/skin/ico/message-invalid.png");
@@ -199,6 +203,9 @@
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
 	margin-bottom: 0px !important;
+}
+.quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
+	box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.4) inset;
 }
 
 #QuickFolders-Toolbar toolbarbutton[collapsed="true"],

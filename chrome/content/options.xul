@@ -91,6 +91,8 @@
 						<preference id="QuickFolders-Preferences-QuickJumpShortcutKey" name="extensions.quickfolders.quickJump.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickMoveShortcut" name="extensions.quickfolders.quickMove.useHotkey" type="bool" />
 						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickCopyShortcut" name="extensions.quickfolders.quickCopy.useHotkey" type="bool" />
+						<preference id="QuickFolders-Preferences-QuickCopyShortcutKey" name="extensions.quickfolders.quickCopy.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
@@ -993,6 +995,19 @@
 													disabled="true" />
 								<textbox id="qf-QuickMoveShortcut"
 												 preference="QuickFolders-Preferences-QuickMoveShortcutKey"
+												 class="shortCutKey"
+												 instantApply="true" 
+												 disabled="true" />
+							</hbox>
+							<hbox>
+								<checkbox id="chkQuickCopyHotkey"
+													label="&qf.checkbox.quickCopy;"
+													tooltiptext="&qf.checkbox.quickCopy.tip;"
+													preference="QuickFolders-Preferences-QuickCopyShortcut"
+													instantApply="true"
+													disabled="true" />
+								<textbox id="qf-QuickCopyShortcut"
+												 preference="QuickFolders-Preferences-QuickCopyShortcutKey"
 												 class="shortCutKey"
 												 instantApply="true" 
 												 disabled="true" />

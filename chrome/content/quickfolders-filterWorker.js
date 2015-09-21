@@ -230,7 +230,9 @@ QuickFolders.FilterWorker = {
     //    or parse From/To/Bcc for account email addresses
     if (msg.accountKey || accountCount==1) {
       util.logDebugOptional('filters', "sourceFolder: get Inbox from account of first message, key:" + msg.accountKey);
-      for each (let ac in aAccounts) {
+      // replaced for..each
+      for (let a=0; a<aAccounts.length; a++) {
+        let ac = aAccounts[a];
         // Postbox quickFix: we do not need a match if only 1 account exists :-p
         if ((ac.key == msg.accountKey) || (accountCount==1 && ac.defaultIdentity)) {
           // account.identities is an nsISupportsArray of nsIMsgIdentity objects
@@ -516,9 +518,12 @@ QuickFolders.FilterWorker = {
 							        .getService(Components.interfaces.nsIMsgTagService),
 							    tagArray = tagService.getAllTags({}),
 							    tagKeys = {};
-							for each (let tagInfo in tagArray)
+							// remove for..each
+              for (let ti=0; ti<tagArray.length; ti++) {
+                let tagInfo = tagArray[ti];
 								if (tagInfo.tag) 
 									tagKeys[tagInfo.key] = true;
+              }
 
 							// extract the tag keys from the msgHdr
 							let msgKeyArray = msg.getStringProperty("keywords").split(" ");
@@ -546,9 +551,11 @@ QuickFolders.FilterWorker = {
 								searchTerm = createTerm(newFilter, Components.interfaces.nsMsgSearchAttrib.Keywords, Components.interfaces.nsMsgSearchOp.Contains, msgKeyArray[i]);
 								newFilter.appendTerm(searchTerm);
 								if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
-								for each (tagInfo in tagArray)
-                  if (tagInfo.key === msgKeyArray[i]) 
-										filterName += ' ' + tagInfo.tag;
+                  for (let ti=0; ti<tagArray.length; ti++) {
+                    let tagInfo = tagArray[ti];
+                    if (tagInfo.key === msgKeyArray[i]) 
+                      filterName += ' ' + tagInfo.tag;
+                  }
 								}
 							}
 							break;

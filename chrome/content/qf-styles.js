@@ -85,9 +85,7 @@ QuickFolders.Styles = {
 			let leftTrim = function(S) { return S ? S.replace(/^\s+/,"") : ''; };
 			try {
 				let match = false;
-				let i;
-				for (i=0; i<rulesList.length; i++)
-				{
+				for (let i=0; i<rulesList.length; i++) {
 					let theRule = rulesList[i];
 					switch (theRule.type) {
 						case theRule.IMPORT_RULE:
@@ -103,8 +101,9 @@ QuickFolders.Styles = {
 							if (!selectors || !selectors.length)
 								continue;
 							let selectorArray = selectors.split(',');
-							for each (let r in selectorArray) {
-								if (rule == leftTrim(r)) {
+              // replaced for..each
+              for (let r=0; r<selectorArray.length; r++) {
+								if (rule == leftTrim(selectorArray[r])) {
 									match = true;
 									break;
 								}

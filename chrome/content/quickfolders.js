@@ -285,12 +285,17 @@ END LICENSE BLOCK */
       
   4.2 WIP
     ## added support for domain licenses!
-    ## Bug 26065 - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
-                   of a message to a QF tab will not be shown again until Thudnerbird is restarted. Probably caused 
-                   by an optional debug output.
+    ## [Bug 26065] - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
+                     of a message to a QF tab will not be shown again until Thunderbird is restarted. Probably caused 
+                     by an optional debug output.
     ## Fixed: Added support for brighttext themes - Dark Themes with [brighttext] attribute caused a 
               QuickFolders toggle button icon to break
-    ## 
+    ## Support quickMove shortcuts from search results window (glodaList)
+    ## Created Shim to avoid warnings: "JavaScript 1.6's for-each-in loops are deprecated;" without crashing Postbox
+    ## [Bug 26070] = quickCopy - like quickMove but only copying an mail
+    ## [Bug 26071] = Hotkey to toggle folder pane  ( F9 )
+
+
       
 	Known Issues
 	============
@@ -358,7 +363,7 @@ let QuickFolders_PrepareSessionStore = function () {
 				for (let i = 0; i < aTabmail.tabInfo.length; i++)
 				{
 					tabInfo = aTabmail.tabInfo[i];
-					if (tabInfo && tabInfo.folderDisplay) {
+					if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
 						theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
 						if (theUri == aPersistedState.folderURI) {
 							tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
@@ -454,6 +459,7 @@ var QuickFolders = {
         util = QuickFolders.Util,
         QI = QuickFolders.Interface,
 	      nDelay = prefs.getIntPref('initDelay');
+    if (prefs.isDebug) debugger;
 	  QuickFolders.initDocAndWindow(win);
 	  util.VersionProxy(); // initialize the version number using the AddonManager
 	  nDelay = nDelay? nDelay: 750;
@@ -1376,7 +1382,7 @@ var QuickFolders = {
             // copy message list into "holding area"
             while (messageUris.length) {
               let newUri = messageUris.pop();
-              QuickFolders.quickMove.add(newUri, sourceFolder);
+              QuickFolders.quickMove.add(newUri, sourceFolder, evt.ctrlKey); // CTRL = copy
             }
             QuickFolders.quickMove.update();
             return;
@@ -1387,7 +1393,6 @@ var QuickFolders = {
             let bm = QuickFolders.bookmarks;
             util.logDebugOptional("dnd", "onDrop: readingList button - added " + messageUris.length + " message URIs");
             // copy message list 
-            // if (bm.isDebug) debugger;
             while (messageUris.length) {
               let newUri = messageUris.pop();
               // addMail can cause removal of an invalid item (sets bookmarks.dirty = true)
@@ -2042,14 +2047,8 @@ QuickFolders.FolderListener = {
               // make sure this event is not a "straggler"
               let folders = GetSelectedMsgFolders(),
                   itemFound = false;
-              for each (let folder in folders) {
-                if (item == folder) {
-                  itemFound = true;
-                  log("events", "FolderLoaded - calling onTabSelected for  " + item.prettyName);
-                  QI.onTabSelected(null, item);
-                  break;
-                }
-              }
+              // use shim to avoid foreach warning
+              itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
               if (!itemFound) {
                 log("events", "FolderLoaded - belated on folder " + item.prettyName + " - NOT shown in current folder bar!");
               }

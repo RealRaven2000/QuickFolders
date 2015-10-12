@@ -3552,6 +3552,8 @@ QuickFolders.Interface = {
 		function addMatchingFolder(matches, folder) {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
 			    matchPos = folderNameSearched.indexOf(searchString);
+      // add all child folders if "parentName/" entered
+      if (searchString=='' && parentString!='') matchPos = 0;
 			if (matchPos >= 0) {
 				// only add to matches if not already there
 				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
@@ -3570,6 +3572,7 @@ QuickFolders.Interface = {
 				}
 			}
 		}
+    
 		// check if any word in foldername string starts with typed characters
     function wordStartMatch(fName, search) {
       let m = fName.split(' ');
@@ -3579,11 +3582,26 @@ QuickFolders.Interface = {
       return false;
     }
     
+    // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passes search string
+    function isParentMatch(folder, search, maxLevel) {
+      if (!search) return true;
+      let f = folder;
+      while (f.parent && maxLevel) {
+        maxLevel--;
+        f = f.parent;
+        if (f.prettyName.toLowerCase().indexOf(search)==0)
+          return true;
+      }
+      return false;
+    }
+    
     let util = QuickFolders.Util,
         model = QuickFolders.Model,
+        prefs = QuickFolders.Preferences,
         Ci = Components.interfaces,
 		    isSelected = false,
-	      searchString = searchBox.value.toLocaleLowerCase();        
+	      searchString = searchBox.value.toLocaleLowerCase(),
+        parentString = '';        
     util.logDebug("findFolder (" + searchString + ")");
 		if (!searchString) 
 			return;
@@ -3614,6 +3632,11 @@ QuickFolders.Interface = {
 				}
 			}
 		}
+    let parentPos = searchString.indexOf('/');
+    if (parentPos>0) { // we have a parent folder
+      parentString = searchString.substr(0, parentPos);
+      searchString = searchString.substr(parentPos+1);
+    }
     let isFiling = QuickFolders.quickMove.isActive;
     /********* old jump point *********/
 		// if 1 unique full match is found, we can automatically jump there
@@ -3630,14 +3653,18 @@ QuickFolders.Interface = {
 		}
 		
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
+    let maxParentLevel = searchString.length ? prefs.getIntPref('premium.findFolder.maxParentLevel') : 1; // "parent/" no name given, only lists the direct children
     if(util.Application == 'Postbox') {
       let AF = util.allFoldersIterator(isFiling);
       for (let fi=0; fi<AF.length; fi++) {
-        addMatchingFolder(matches, AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder));
+        let folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
+        if (!isParentMatch(folder, parentString, maxParentLevel)) continue;
+        addMatchingFolder(matches, folder);
       }
     }
     else
       for (let folder in util.allFoldersIterator(isFiling)) {
+        if (!isParentMatch(folder, parentString, maxParentLevel)) continue;
         addMatchingFolder(matches, folder);
       }
 		

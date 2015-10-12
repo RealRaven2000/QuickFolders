@@ -319,7 +319,7 @@ QuickFolders.Licenser = {
     return arr[1];
   },
   
-  validateLicense: function validate(LicenseKey, maxDigits) {
+  validateLicense: function validate(LicenseKey) {
     function logResult(parent) {
       util.logDebug ('validateLicense()\n returns ' 
                      + parent.licenseDescription(parent.ValidationStatus)
@@ -355,14 +355,19 @@ QuickFolders.Licenser = {
       logResult(this);
       return [this.ValidationStatus, ''];
     }
-    if (LicenseKey.indexOf('*')>0) {
+    if (LicenseKey.indexOf('QFD')==0) {
        if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
-         if (confirm('Switch to volume license?')) {
-           QuickFolders.Crypto.key_type=1; // switch to colume license
+         let txt = util.getBundleString("qf.prompt.switchDomainLicense", "Switch to Domain License?");
+         if (confirm(txt)) {
+           QuickFolders.Crypto.key_type=1; // switch to volume license
          }
        }
     }
-    let encrypted = this.getCrypto(LicenseKey),
+    else {
+      QuickFolders.Crypto.key_type=0;
+    }
+    let maxDigits = QuickFolders.Crypto.maxDigits, // will be 67 for Domain License
+        encrypted = this.getCrypto(LicenseKey),
         clearTextEmail = this.getMail(LicenseKey),
         clearTextDate = this.getDate(LicenseKey),
         RealLicense = '';

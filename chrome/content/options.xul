@@ -204,7 +204,7 @@
 												tooltiptext="&qf.checkbox.showQuickMove.tooltip;"
 												preference="QuickFolders-Preferences-ShowQuickMove"
 												instantApply="true"
-												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.premium.findFolder.maxPathItems',true);return false;"
+												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.premium.findFolder.max',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkBookmarks"
 												label="&qf.checkbox.readingList;"

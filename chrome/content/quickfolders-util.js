@@ -498,9 +498,7 @@ QuickFolders.Util = {
       return false; // short circuit if no license key!
     if (!QuickFolders.Licenser.isValidated || reset) {
       QuickFolders.Licenser.wasValidityTested = false;
-      QuickFolders.Licenser.validateLicense(
-        licenseKey, 
-        QuickFolders.Licenser.MaxDigits);
+      QuickFolders.Licenser.validateLicense(licenseKey);
     }
     if (QuickFolders.Licenser.isValidated) 
       return true;

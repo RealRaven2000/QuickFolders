@@ -294,6 +294,7 @@ END LICENSE BLOCK */
     ## Created Shim to avoid warnings: "JavaScript 1.6's for-each-in loops are deprecated;" without crashing Postbox
     ## [Bug 26070] = quickCopy - like quickMove but only copying an mail
     ## [Bug 26071] = Hotkey to toggle folder pane  ( F9 )
+    ## [Bug 26088] = quickJump/quickMove Added support for searching child folders - add / search for children
 
 
       

@@ -30,6 +30,8 @@ pref("extensions.quickfolders.quickJump.useHotkey", true);
 pref("extensions.quickfolders.quickJump.Hotkey", 'J');
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
+pref("extensions.quickfolders.quickCopy.useHotkey", false);
+pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.bookmarks.folderLabel", true);
@@ -195,6 +197,7 @@ pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
 pref("extensions.quickfolders.licenseType", 0); // private license, 1-domain
+pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.usage", 0);

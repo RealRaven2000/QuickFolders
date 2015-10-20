@@ -347,7 +347,6 @@ QuickFolders.Licenser = {
           prefs = QuickFolders.Preferences,
           logIdentity = util.logIdentity.bind(util);
     if (prefs.isDebug) {
-      debugger;
       util.logDebug("validateLicense()");
     }
     if (!LicenseKey) {
@@ -378,7 +377,6 @@ QuickFolders.Licenser = {
     }
     // RSAKeyPair(encryptionExponent, decryptionExponent, modulus)
     if (prefs.isDebug) {
-      debugger;
       util.logDebug("RSA.initialise(" +  maxDigits + ")");
     }
     
@@ -386,7 +384,6 @@ QuickFolders.Licenser = {
     util.logDebug ('Creating RSA key + decrypting');
     // we do not pass encryptionComponent as we don't need it for decryption
     if (prefs.isDebug) {
-      debugger;
       util.logDebug("new RSA.RSAKeyPair()");
     }
     let key = new QuickFolders.RSA.RSAKeyPair("", this.RSA_decryption, this.RSA_modulus, this.RSA_keylength);
@@ -396,7 +393,6 @@ QuickFolders.Licenser = {
     this.DecryptedDate = '';
     if (encrypted) try {
       if (prefs.isDebug) {
-        debugger;
         util.logDebug("get RSA.decryptedString()");
       }
       RealLicense = QuickFolders.RSA.decryptedString(key, encrypted);

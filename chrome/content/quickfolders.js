@@ -396,6 +396,7 @@ var QuickFolders_getDocument= function() {
 var QuickFolders = {
 	doc: null,
 	win: null,
+  RenameFolders_Tb: null,
 	isQuickFolders: true, // to verify this
 	_folderTree: null,
 	get mailFolderTree() {
@@ -460,7 +461,6 @@ var QuickFolders = {
         util = QuickFolders.Util,
         QI = QuickFolders.Interface,
 	      nDelay = prefs.getIntPref('initDelay');
-    if (prefs.isDebug) debugger;
 	  QuickFolders.initDocAndWindow(win);
 	  util.VersionProxy(); // initialize the version number using the AddonManager
 	  nDelay = nDelay? nDelay: 750;
@@ -539,6 +539,78 @@ var QuickFolders = {
 		}
 		catch(e) { return false; }
 	} ,
+  
+  // rename folder - Thunderbird
+  renameFolder: function qf_rename(aFolder) {
+    let folder = aFolder || gFolderTreeView.getSelectedFolders()[0];
+
+    //xxx no need for uri now
+    let controller = gFolderTreeController; // this
+    function renameCallback(aName, aUri) {
+      if (aUri != folder.URI)
+        Components.utils.reportError("got back a different folder to rename!");
+
+      controller._tree.view.selection.clearSelection();
+      // QuickFolders specific, payload on RenameCompleted
+      QuickFolders.FolderListener.newFolderName = aName;
+      QuickFolders.FolderListener.oldFolderUri = folder.URI;
+      // Actually do the rename
+      folder.rename(aName, msgWindow);
+    }
+    window.openDialog("chrome://messenger/content/renameFolderDialog.xul",
+                      "",
+                      "chrome,modal,centerscreen",
+                      {preselectedURI: folder.URI,
+                       okCallback: renameCallback, 
+                       name: folder.prettyName});
+  },
+  
+  // rename folder - Postbox + SeaMonkey
+  renameFolderSuite: function qf_RenameFolder(name, uri) {
+    var folderTree = GetFolderTree();
+    if (folderTree) {
+      if (uri && (uri != "") && name && (name != "")) {
+        var selectedFolder;
+        switch(QuickFolders.Util.Application) {
+          case 'SeaMonkey':
+            selectedFolder = GetMsgFolderFromUri(uri);
+            break;
+          case 'Postbox':
+            selectedFolder = GetResourceFromUri(uri).QueryInterface(Components.interfaces.nsIMsgFolder);
+            break;
+        }
+        if (gDBView)
+          gCurrentlyDisplayedMessage = gDBView.currentlyDisplayedMessage;
+
+        ClearThreadPane();
+        ClearMessagePane();
+        folderTree.view.selection.clearSelection();
+
+        try {
+          selectedFolder.rename(name, msgWindow);
+          try {
+             // no RenameCompleted event in Postbox?
+            QuickFolders.Model.moveFolderURI(uri, name);
+          }
+          catch (ex) {
+            ;
+          }
+        }
+        catch(e) {
+          SelectFolder(selectedFolder.URI);  //restore selection
+          throw(e); // so that the dialog does not automatically close
+          dump ("Exception : RenameFolder \n");
+        }
+      }
+      else {
+        dump("no name or nothing selected\n");
+      }
+    }
+    else {
+      dump("no folder tree\n");
+    }
+  } ,
+   
 
 	init: function init() {
     const util = QuickFolders.Util;
@@ -549,6 +621,25 @@ var QuickFolders = {
     try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
     try{ ApName=that.Util.Application} catch(e){ApName="?"};
 
+    if (!QuickFolders.RenameFolders_Tb) {
+      util.logDebug("Wrapping renameFolder...");
+      // overwrite original function - we won't actualy use or restore this
+      switch (ApName) {
+        case 'SeaMonkey':
+        case 'Postbox':
+          QuickFolders.RenameFolders_Tb = RenameFolder;
+          RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
+          break;
+        case 'Thunderbird':
+            QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
+            gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
+          break;
+      }
+    }
+    else {
+      util.logDebug("gFolderTreeController not defined.");
+    }
+    
 		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
@@ -1599,7 +1690,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 				return info._folderURI;  // Postbox
 		return '';
 	}
-	let util = QuickFolders.Util;
+	const util = QuickFolders.Util,
+        prefs = QuickFolders.Preferences,
+        QFI = QuickFolders.Interface;
   //during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
 
@@ -1611,7 +1704,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	try {
 	  // msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
 	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
-		if (QuickFolders.Preferences.getBoolPref("autoValidateFolders")) {
+		if (prefs.getBoolPref("autoValidateFolders")) {
 		  isInvalid = (!util.doesMailFolderExist(msgFolder));
 		}
 	}
@@ -1624,17 +1717,23 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	  // invalid folder; suggest to correct this!
     util.logDebugOptional("folders.select","detected invalid folder, trying to correct entry table.");
 		let folderEntry = QuickFolders.Model.getFolderEntry(folderUri);
-		if (folderEntry) {
-			switch(QuickFolders.Interface.deleteFolderPrompt(folderEntry, false)) {
+    if (!folderEntry) return false;
+    if (folderEntry.disableValidation) {
+      ; // do nothing. a pending rename invalidated this entry
+    }
+    else {
+			switch(QFI.deleteFolderPrompt(folderEntry, false)) {
 			  case 1: // delete 
 				  // save changes right away!
-					QuickFolders.Preferences.storeFolderEntries(QuickFolders.Model.selectedFolders);
+					prefs.storeFolderEntries(QuickFolders.Model.selectedFolders);
+          // update the model
+          QFI.updateFolders(true, true);
 				  break;
 				case 0: // don't delete
 				  break;
 			};
+      return false;
 		}
-	  return false;
 	}
 	QuickFolders.currentURI = folderUri;
 	
@@ -1668,13 +1767,17 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     util.logDebugOptional("folders.select", isExistFolderInTab ? "...found folder in existing mail Tab." : "...folder is currently not open in any Tab.");
 	}
 
+  if (!msgFolder) {
+    util.logDebugOptional("folders.select", "No valid folder found for this Uri - maybe caused by a pending rename on IMAP Server.");
+    return false; // no valid folder (may be from rename)
+  }
 	// new behavior: OPEN NEW TAB
 	// if single message is shown, open folder in a new Tab...
-	if (QuickFolders.Interface.CurrentTabMode == 'message' || QuickFolders.Interface.CurrentTabMode =='glodaList') {
+	if (QFI.CurrentTabMode == 'message' || QFI.CurrentTabMode =='glodaList') {
 	  if (!isExistFolderInTab) {
-		  if (QuickFolders.Preferences.getBoolPref('behavior.nonFolderView.openNewTab')) {
+		  if (prefs.getBoolPref('behavior.nonFolderView.openNewTab')) {
         util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
-				QuickFolders.Interface.openFolderInNewTab(msgFolder);
+				QFI.openFolderInNewTab(msgFolder);
 			}
 			else {  // switch to first tab
         util.logDebugOptional("folders.select", "tab is not selected, openNewTab disabled, switching to tab 0");
@@ -1696,7 +1799,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
       // therefore, ensureRowIsVisible does not work!
       let isSelected = false,
-          forceSelect = QuickFolders.Preferences.isChangeFolderTreeViewEnabled;
+          forceSelect = prefs.isChangeFolderTreeViewEnabled;
       theTreeView = gFolderTreeView;
       QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
 
@@ -1772,7 +1875,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       }
 
       // reset the view mode.
-      if (!QuickFolders.Preferences.isChangeFolderTreeViewEnabled) {
+      if (!prefs.isChangeFolderTreeViewEnabled) {
         
         if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
           util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
@@ -1835,7 +1938,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 			return false;
 	}
 
-	if (QuickFolders.Preferences.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
+	if (prefs.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
     util.logDebugOptional("folders.select", 'setFocusThreadPane()');
 		QuickFolders.Interface.setFocusThreadPane();
 		QuickFolders.doc.commandDispatcher.advanceFocus();
@@ -1880,6 +1983,8 @@ QuickFolders.FolderTreeSelect = function FolderTreeSelect(event) {
 QuickFolders.FolderListener = {
 	lastRemoved: null, // MsgFolder was removed
 	lastAdded: null,   // MsgFolder was removed
+  newFolderName: null,
+  oldFolderUri: null,
 	ELog: function errLogFallback(msg) {
     try {
       try {Components.utils.reportError(msg);}
@@ -1898,12 +2003,13 @@ QuickFolders.FolderListener = {
 
 	OnItemAdded: function fldListen_OnItemAdded(parent, item, viewString) {
 		try {
-			if (!QuickFolders
-         ||
-         !(item instanceof Components.interfaces.nsIMsgFolder))
+      const util = QuickFolders.Util,
+            Ci = Components.interfaces;
+            
+			if (!QuickFolders)
         return;
-      if (QuickFolders.Util.Debug) debugger;
-			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder);
+      let f = item.QueryInterface(Ci.nsIMsgFolder);
+      util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
 			QuickFolders.FolderListener.lastAdded = f;
 		}
 		catch(e) { };
@@ -1913,33 +2019,35 @@ QuickFolders.FolderListener = {
 		try {
 			if (!QuickFolders)
 				return;
+      const util = QuickFolders.Util,
+            listener = QuickFolders.FolderListener;
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder),
 			    fromURI = f.URI,
-			    toURI = QuickFolders.FolderListener.lastAdded ? QuickFolders.FolderListener.lastAdded.URI : "",
-          util = QuickFolders.Util,
+			    toURI = listener.lastAdded ? listener.lastAdded.URI : "",
           logDebug = util.logDebug.bind(util),
           logDebugOptional = util.logDebugOptional.bind(util),
           logToConsole = util.logToConsole.bind(util);
-			logDebugOptional("listeners.folder", "onItemRemoved");
-          
-			QuickFolders.FolderListener.lastRemoved = f;
+			logDebugOptional("listeners.folder", "OnItemRemoved\n" + f.prettyName + "\nFROM " + fromURI);
+			listener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
-			if (fromURI !== toURI && QuickFolders.Model.getFolderEntry(fromURI)) {
-				if (QuickFolders.FolderListener.lastAdded && (f.name === QuickFolders.FolderListener.lastAdded.name)) {
+			if (fromURI !== toURI) {
+				if (listener.lastAdded && (f.name === listener.lastAdded.name)) {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
-					logDebugOptional("folders","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
-					if (toURI && QuickFolders.Model.moveFolderURI(fromURI, toURI)) {
-						logDebug ("Successfully updated URI of Tab " + f.name);
+					logDebugOptional("folders,listeners.folder","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
+					if (toURI)  {
+            let ct = QuickFolders.Model.moveFolderURI(fromURI, toURI);
+						logDebug ("Successfully updated " + ct + " URIs for folder " + f.name);
 						QuickFolders.Interface.updateFolders(true, true);
 					}
 					else {
-						let s = "Failed to update URI of tab: " + f.name + " please remove it manually and add to QuickFolders bar";
+						let s = "Failed to update URI of folder: " + f.name + " please remove it manually and add to QuickFolders bar";
 						logToConsole (s);
 						util.alert(s);
 					}
 				}
 			}
-			QuickFolders.FolderListener.lastAdded = null;
+			listener.lastAdded = null;
+      listener.lastRemoved = null;
 		}
 		catch(e) { };
 	},
@@ -2028,6 +2136,7 @@ QuickFolders.FolderListener = {
     // NOP
   },
 	OnItemEvent: function fldListen_OnItemEvent(item, event) {
+    const listener = QuickFolders.FolderListener;
 		let eString = event.toString();
 		try {
 			if (!QuickFolders || !QuickFolders.Util)
@@ -2058,10 +2167,18 @@ QuickFolders.FolderListener = {
 					catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onTabSelected:\n" + e)};
 					break;
 				case "RenameCompleted":
-					// item.URI;
-          log("events","event: " + eString);
-					if (QuickFolders && QuickFolders.FolderListener.lastRemoved) {
-						QuickFolders.Model.moveFolderURI(QuickFolders.FolderListener.lastRemoved.URI, item.URI);
+					// item.URI;=> is this the old folder uri ? - what's the new one.
+          
+          let newFolderName = listener.newFolderName || '',
+              oldUri = listener.oldFolderUri;
+          log("events,listeners.folder","event: " + eString + 
+              "\nitem.URI = " + (item && item.URI ? item.URI : "?") +
+              "\nold URI = " + oldUri +
+              "\nstored newFolderName = " + newFolderName);
+					if (newFolderName) {
+						QuickFolders.Model.moveFolderURI(oldUri, newFolderName);
+            listener.newFolderName = null;
+            listener.oldFolderUri = null;
 					}
 					break;
         default:

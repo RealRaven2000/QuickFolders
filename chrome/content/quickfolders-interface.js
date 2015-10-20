@@ -1318,7 +1318,8 @@ QuickFolders.Interface = {
 	showPopup: function(button, popupId, evt) {
     // If the evt argument is given, we know that a QuickFolder Tab was clicked
     // we can now refresh the popup menu! 
-    let util = QuickFolders.Util;
+    let util = QuickFolders.Util,
+        folder = button ? button.folder : null;
     if (evt) {
       let evtText;
       try { 
@@ -1336,7 +1337,11 @@ QuickFolders.Interface = {
         evtText = evt; 
         util.logDebugOptional("interface", ex.toString());
       }
-      util.logDebugOptional("interface", "showPopup(\n  btn =" + button.id + ", \n  popupId = " + popupId + ", \n  evt =" + evtText +")" );
+      util.logDebugOptional("interface", 
+        "showPopup(\n  btn =" + (button ? button.id : "?") + 
+                ", \n  popupId = " + popupId + 
+                ", \n  URI = " + (folder ? folder.URI : "?") + 
+                ", \n  evt =" + evtText +")" );
       if (!(button && button.id == 'QuickFoldersCurrentFolder')) {
         let folder = button.folder,
             entry = QuickFolders.Model.getFolderEntry(folder.URI),
@@ -1509,7 +1514,7 @@ QuickFolders.Interface = {
     }
     catch(ex) {
       util.logToConsole('Error in addFolderButton: ' + 'folder getStringProperty is missing.\n'
-                        + 'Entry: ' + (entry ? entry.name : ' invalid entry\n')
+                        + 'Entry: ' + (entry ? entry.name : ' invalid entry') + '\n'
                         + 'URI: ' + (folder.URI || 'missing'));
       util.logException('Error in addFolderButton', ex.toString);
     }
@@ -2110,7 +2115,7 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder,
 		    theURI = folder.URI;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-		if (this.globalTreeController  && this.globalTreeController.renameFolder) {
+		if (util.Application == 'Thunderbird') {
 			this.globalTreeController.renameFolder(folder);
 		}
 		else {
@@ -5275,9 +5280,10 @@ QuickFolders.Interface = {
 					// get encoded folder Name:
 					let slash = fromURI.lastIndexOf('/'),
 					    encName = fromURI.substring(slash),
-					    newURI = targetFolder.URI + encName;
-					QuickFolders.Model.moveFolderURI(fromURI, newURI);
-					this.updateFolders(true, true);
+					    newURI = targetFolder.URI + encName,
+              countChanges = QuickFolders.Model.moveFolderURI(fromURI, newURI);
+          if (countChanges)
+            this.updateFolders(true, true);
 					
 					// Filter Validation!
 					setTimeout(function() {  QuickFolders.FilterList.validateFilterTargets(fromURI, newURI); });
@@ -5403,8 +5409,7 @@ QuickFolders.Interface = {
   removeAnimations: function removeAnimations(styleSheetName) {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
-          styleEngine = QuickFolders.Styles,
-          isDebug = QuickFolders.Preferences.isDebug;
+          styleEngine = QuickFolders.Styles;
     // win = util.getMail3PaneWindow();
     styleSheetName = styleSheetName || 'quickfolders-layout.css';
     let prefixedAni = ((util.PlatformVersion <16.0) ? '-moz-' : '')  + 'animation-name',
@@ -5412,8 +5417,7 @@ QuickFolders.Interface = {
         iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';
     styleEngine.removeElementStyle(ss, 
                                    iconSelector, 
-                                   [prefixedAni, 'height', 'width'], 
-                                   isDebug);
+                                   [prefixedAni, 'height', 'width']);
     styleEngine.setElementStyle(ss, 
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',  
                                 'list-style-image', 

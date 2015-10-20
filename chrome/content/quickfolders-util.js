@@ -1496,7 +1496,8 @@ QuickFolders.Util = {
 	} ,
 	
 	doesMailFolderExist: function checkExists(msgFolder) {
-		if (!msgFolder || !msgFolder.filePath)	{
+    if (!msgFolder) return false;
+		if (!msgFolder.filePath)	{
 			QuickFolders.Util.logDebug('doesMailFolderExist() msgFolder.filePath missing! - returning false');
 			return false;
 		}
@@ -1568,7 +1569,6 @@ QuickFolders.Util = {
         tabmail.openTab('message', {msgHdr: hdr, background: false});  
         break;
       case 'SeaMonkey':
-        if (QuickFolders.bookmarks.isDebug)  debugger;
         try {
           // check out SM mplementaiton of 3pane openTab here:
           // http://mxr.mozilla.org/comm-central/source/suite/mailnews/tabmail.js#43
@@ -1658,12 +1658,13 @@ QuickFolders.Util = {
 // https://developer.mozilla.org/en/Code_snippets/On_page_load#Running_code_on_an_extension%27s_first_run_or_after_an_extension%27s_update
 QuickFolders.Util.FirstRun = {
 	init: function init() {
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
 		let prev = -1, firstrun = true,
 		    showFirsts = true, debugFirstRun = false,
 		    prefBranchString = "extensions.quickfolders.",
 		    svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
-		    ssPrefs = svc.getBranch(prefBranchString),
-        util = QuickFolders.Util;
+		    ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } 
     catch (e) { debugFirstRun = false; }
@@ -1710,6 +1711,7 @@ QuickFolders.Util.FirstRun = {
 		finally {
 			util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
       let suppressDonationScreen = false,
+          suppressVersionScreen = false,
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
 			    pureVersion = util.VersionSanitized;
 			util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
@@ -1746,7 +1748,16 @@ QuickFolders.Util.FirstRun = {
 					}, 1500); 
 				}
 			}
-			else { // this section does not get loaded if it's a fresh install.
+			else { 
+        // UPDATE CASE 
+        // this section does not get loaded if it's a fresh install.
+        if ((pureVersion.indexOf('4.2.') == 0 && prev.indexOf("4.2") == 0)) {
+          // completely silent install  
+          suppressVersionScreen = true;
+					suppressDonationScreen = true;
+        }
+        else
+          suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
 				//  same for 3.14.1, 3.14.2 etc - no donation screen
 				if ((pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) ||
@@ -1754,8 +1765,10 @@ QuickFolders.Util.FirstRun = {
         {
 					suppressDonationScreen = true;
 				}
+        if (!suppressDonationScreen && !util.hasPremiumLicense(false))
+          suppressDonationScreen = true;
 				
-				let isThemeUpgrade = QuickFolders.Preferences.tidyUpBadPreferences();
+				let isThemeUpgrade = prefs.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();
 
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
@@ -1771,7 +1784,7 @@ QuickFolders.Util.FirstRun = {
 						// display donation page - disable by right-clicking label above version jump panel
 						if (suppressDonationScreen) { ; }
 						else {
-							if ((QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.donateNoMore"))) {
+							if ((prefs.getBoolPrefSilent("extensions.quickfolders.donateNoMore"))) {
 								util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
 							}
 							else {
@@ -1782,7 +1795,7 @@ QuickFolders.Util.FirstRun = {
 
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
-						if (!QuickFolders.Preferences.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate")) {
+						if (!suppressVersionScreen) {
 							util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
 							window.setTimeout(function(){util.openURL(null, versionPage);}, 2200);
 						}

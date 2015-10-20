@@ -116,17 +116,39 @@ QuickFolders.Model = {
     }
   } ,
 
-  moveFolderURI: function moveFolderURI(fromUri, toUri) {
-    QuickFolders.Util.logDebug("model.moveFolderURI");
-    let entry;
-
-    if((entry = this.getFolderEntry(fromUri))) {
-      entry.uri = toUri;
-      this.update();
-      return true;
+  // second argument can be a folder name or Uri
+  // we test if it contains "://" for URI
+  moveFolderURI: function moveFolderURI(fromUri, newName) {
+    let changeLog = "",
+        countUris = 0,
+        toUri = newName.indexOf('://')>0
+                ? newName
+                : fromUri.substr(0, fromUri.lastIndexOf('/')+1) + encodeURIComponent(newName); // include the /
+        
+    QuickFolders.Util.logDebug("model.moveFolderURI:" + 
+                               "\nOLD: " + fromUri + 
+                               "\nNEW: " + toUri);
+      
+    if(!newName || (toUri == fromUri))  
+      return 0;    
+    // [Bug 260965]
+    // we must iterate all entries to check for any tabs that 
+    // point to subfolders that might be affected!
+    for (let i = 0; i < this.selectedFolders.length; i++) {
+      let entry = this.selectedFolders[i];
+      if(entry.uri.indexOf(fromUri)==0) {
+        entry.uri = entry.uri.replace(fromUri, toUri);
+        entry.disableValidation = true; // disable validation (IMAP only?)
+        changeLog += "\n  " + entry.name + ": "+ entry.uri;
+        countUris++;
+      }
     }
-    return false;
-
+    
+    if(countUris) {
+      QuickFolders.Util.logDebug("Changed URI for " + countUris + " Tabs:" + changeLog);
+      this.update();
+    }
+    return countUris;
   } ,
 
   store: function store() {

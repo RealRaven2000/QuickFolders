@@ -60,6 +60,7 @@
 .shilling {
 	margin-right:2em;
 	text-align: left;
+	max-width: 600px;
 }
 #haveLicense, #buyBox {
 	color: rgba(30, 100, 190, 0.8);

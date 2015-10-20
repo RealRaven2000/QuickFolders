@@ -9,6 +9,7 @@ locale quickfolders fr     chrome/locale/fr/
 locale quickfolders ja-JP  chrome/locale/ja-JP/
 locale quickfolders pt-BR  chrome/locale/pt-BR/
 locale quickfolders pl     chrome/locale/pl/
+locale quickfolders sl-SI  chrome/locale/sl-SI/
 locale quickfolders ru     chrome/locale/ru/
 locale quickfolders sr     chrome/locale/sr/
 locale quickfolders vi     chrome/locale/vi/
@@ -28,7 +29,14 @@ content quickfolders-pl    content/ platform
 skin    quickfolders       classic/1.0  chrome/skin/
 skin    quickfolders-pl    classic/1.0  chrome/skin/
 
-
+# shim-JS for platform>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
+# while also avoid Postbox crashing us for syntax when we use for..of
+#tb (for..of)
+content shimQF chrome://quickfolders/content/shim12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+#sm (for..of)
+content shimQF chrome://quickfolders/content/shim12/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#postbox (for in)
+content shimQF chrome://quickfolders/content/shim3/ application=postbox@postbox-inc.com
 
 # Thunderbird >=12
 content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>11.99
@@ -67,20 +75,16 @@ style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qu
 style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-widgets.css
 style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-filters.css
 style chrome://messenger/content/messenger.xul     chrome://quickfolders/content/qf-foldertree.css
-/* platform overlay for linux / mac fixes */
+# platform overlay for linux / mac fixes
 style chrome://quickfolders/content/overlay.xul   chrome://quickfolders-pl/skin/style.css
+style chrome://quickfolders/content/options.xul   chrome://quickfolders-pl/skin/style.css
 
 #Postbox
-style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-postbox.css application=postbox@postbox-inc.com
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com
-style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-widgets.css application=postbox@postbox-inc.com
-#style chrome://quickfolders/content/options.xul        chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com
 
 #SeaMonkey # appversion<2.2  = before gecko2
 style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-pre4.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} appversion<2.2
-style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-seamonkey.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-filters.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-widgets.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 
 ####### LEGACY RULES - these list deprecated css styles, for backwards compatibility with older versions of Gecko
 #######                should be ignored by the validator (but probably aren't)

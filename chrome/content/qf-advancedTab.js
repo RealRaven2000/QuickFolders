@@ -16,7 +16,7 @@ QuickFolders.AdvancedTab = {
   } ,
   get MainQuickFolders() {
     let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(QuickFolders_CI.nsIWindowMediator)
+				.getService(Components.interfaces.nsIWindowMediator)
 				.getMostRecentWindow("mail:3pane");  
     return mail3PaneWindow.QuickFolders;
   } ,
@@ -34,14 +34,68 @@ QuickFolders.AdvancedTab = {
     return false;
   } ,
   
+  // list of accounts
+  get Accounts() {
+    const Ci = Components.interfaces;
+    let util = this.MainQuickFolders.Util, 
+        aAccounts=[],
+        accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
+    if (util.Application == 'Postbox') 
+      aAccounts = util.getAccountsPostbox();
+    else {
+      aAccounts = [];
+      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
+        aAccounts.push(ac);
+      };
+    }
+    return aAccounts;
+  },
+	
   load: function load() {
+		const util = this.MainQuickFolders.Util;
+    let dropdownCount = 0;
+		
+    function appendIdentity(dropdown, id, account) {
+      try {
+        util.logDebugOptional('identities', 
+          'Account: ' + account.key + '...\n'  
+          + 'appendIdentity [' + dropdownCount + ']\n'
+          + '  identityName = ' + (id ? id.identityName : 'empty') + '\n'
+          + '  fullName = ' + (id ? id.fullName : 'empty') + '\n' 
+          + '  email = ' + (id.email ? id.email : 'empty'));
+        let menuitem = document.createElement('menuitem');
+				if (id==-1) {
+					menuitem.setAttribute("value", "default");
+					menuitem.setAttribute("label", "not set");
+					menuitem.setAttribute("accountKey", 0);
+				}
+				else {
+					if (!id.email) {
+						util.logToConsole('Omitting account ' + id.fullName + ' - no mail address');
+						return;
+					}
+					menuitem.setAttribute("id", "id" + dropdownCount++);
+					// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
+					menuitem.setAttribute("fullName", id.fullName);
+					menuitem.setAttribute("value", id.email);
+					menuitem.setAttribute("accountKey", account.key);
+					menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
+				}
+        dropdown.appendChild(menuitem);
+      }
+      catch (ex) {
+        util.logException('appendIdentity failed: ', ex);
+      }
+    }
+		
     let entry = this.entry,
         elem = document.getElementById.bind(document);
     if (entry.flags) {
       let ig = elem('chkIgnoreUnread'),
           ic = elem('chkIgnoreCounts'),
           iss = elem('chkCustomCSS'),
-          ip = elem('chkCustomPalette');
+          ip = elem('chkCustomPalette'),
+					cboIdentity = elem('mailIdentity');
       // ignore unread counts
       ig.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
       // ignore all counts
@@ -59,6 +113,39 @@ QuickFolders.AdvancedTab = {
         menuList.value = this.entry.customPalette.toString();
       }
     }
+		// Addressing
+		// iterate accounts for From Address dropdown
+		let cboIdentity = elem('mailIdentity'),
+		    popup = cboIdentity.menupopup,
+				myAccounts = this.Accounts,
+				acCount = myAccounts.length;
+		appendIdentity(popup, -1, 0); // not set (id0)
+		util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
+		for (let a=0; a < myAccounts.length; a++) { 
+			let ac = myAccounts[a],
+			    ids = ac.identities; // array of nsIMsgIdentity 
+			if (ids) {
+				let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+				util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
+				for (let i=0; i<idCount; i++) {
+					// use ac.defaultIdentity ??
+					// populate the dropdown with nsIMsgIdentity details
+					let id = util.getIdentityByIndex(ids, i);
+					if (!id) continue;
+					appendIdentity(popup, id, ac);
+				}
+			}
+			else {
+				util.logDebugOptional('identities', 'Account: ' + ac.key + ':\n - No identities.');
+			}  
+		}
+		
+		if (entry.fromIdentity) 
+			cboIdentity.value = entry.fromIdentity;
+		else
+			cboIdentity.value = 'default'; // default - no identity, so default is chosen.
+
+		elem('txtToAddress').value = entry.toAddress ? entry.toAddress : '';
     
     let lbl = elem('lblCategories'),
         tabHeader = elem('myHeader');
@@ -83,6 +170,8 @@ QuickFolders.AdvancedTab = {
   } ,
   
   apply: function apply() {
+		const util = this.MainQuickFolders.Util;
+		let elem = document.getElementById.bind(document);
     function addFlag(checkboxId, setFlag) {
       let isFlagged = document.getElementById(checkboxId).checked;
       if (isFlagged) {
@@ -98,11 +187,11 @@ QuickFolders.AdvancedTab = {
     addFlag('chkIgnoreUnread', this.ADVANCED_FLAGS.SUPPRESS_UNREAD);
     addFlag('chkIgnoreCounts', this.ADVANCED_FLAGS.SUPPRESS_COUNTS);
     if (addFlag('chkCustomCSS', this.ADVANCED_FLAGS.CUSTOM_CSS)) {
-      this.entry.cssColor = document.getElementById('txtColor').value;
-      this.entry.cssBack = document.getElementById('txtBackground').value;
+      this.entry.cssColor = elem('txtColor').value;
+      this.entry.cssBack = elem('txtBackground').value;
     }
     if (addFlag('chkCustomPalette', this.ADVANCED_FLAGS.CUSTOM_PALETTE)) {
-      this.entry.customPalette = document.getElementById('menuCustomTabPalette').value;
+      this.entry.customPalette = elem('menuCustomTabPalette').value;
     }
     else {
       delete this.entry.customPalette;
@@ -119,9 +208,31 @@ QuickFolders.AdvancedTab = {
         delete this.entry.cssColor;
         delete this.entry.customPalette;
       } catch(ex) {
-        QuickFolders.Util.logException('QuickFolders.AdvancedTab.accept()', ex);
+        util.logException('QuickFolders.AdvancedTab.accept()', ex);
       }
     }
+		
+		let cboIdentity = elem('mailIdentity'),
+		    fromId = cboIdentity.selectedItem.value,
+				toAddress = elem('txtToAddress').value;
+		if (fromId == 'default') {
+			try {
+				delete this.entry.fromIdentity; // default 'From:' identity 
+			}
+			catch (e) { ; }
+		}
+		else
+			this.entry.fromIdentity = fromId;
+		
+		if (!toAddress) {
+			try {
+				delete this.entry.toAddress;
+			}
+			catch (e) { ; }
+		}
+		else
+			this.entry.toAddress = toAddress;
+		
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);
     QuickFolders.Interface.updateMainWindow();
@@ -161,7 +272,7 @@ QuickFolders.AdvancedTab = {
   
   configureCategory: function configureCategory() {
     let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(QuickFolders_CI.nsIWindowMediator)
+				.getService(Components.interfaces.nsIWindowMediator)
 				.getMostRecentWindow("mail:3pane");  
     QuickFolders.Interface.configureCategory(this.folder, mail3PaneWindow.QuickFolders); // should actually get the "parent" QuickFolders
     let lbl = document.getElementById('lblCategories');
@@ -195,8 +306,13 @@ QuickFolders.AdvancedTab = {
   selectPalette: function selectPalette(el, paletteId) {
     this.entry.customPalette = paletteId;
     document.getElementById('chkCustomPalette').checked = true;
-  } 
+  } ,
   
+	selectIdentity: function selectIdentity(element) {
+    // get selectedItem attributes
+    let it = element.selectedItem,
+        email = it.getAttribute('value');
+	}
     
 }  // AdvancedTab
 

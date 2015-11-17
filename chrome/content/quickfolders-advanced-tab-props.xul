@@ -45,7 +45,7 @@
 				/>
 		</hbox>
 
-		<hbox>
+		<hbox align="center" >
 		  <toolbarbutton label="&btnCategory;:"
 						oncommand="QuickFolders.AdvancedTab.configureCategory();"
 						tooltiptext="&btnCategory.tooltip;"
@@ -54,16 +54,49 @@
 		  <spacer />
 		</hbox>
 	
-		<checkbox
-		    id="chkIgnoreUnread"
-			label="&chkIgnoreUnread;"
-			tooltiptext="&chkIgnoreUnread.tooltip;"
-		/>
-		<checkbox
-		    id="chkIgnoreCounts"
-			label="&chkIgnoreCounts;"
-			tooltiptext="&chkIgnoreCounts.tooltip;"
-		/>	
+		<groupbox>
+		  <caption label="&grpComposer;"/>
+			<grid>
+				<columns>
+					<column/>
+					<column flex="2"/>
+				</columns>	
+				<rows>
+					<row>
+						<label value="&fromAddress;"
+						       control="txtFromAddress"/>	
+						<menulist id="mailIdentity"
+											sizetopopup="none"
+											oncommand="QuickFolders.AdvancedTab.selectIdentity(this);"
+											tooltiptext="&fromAddress.tooltip;">									 
+							<menupopup>
+							</menupopup>
+						</menulist>
+					</row>
+					<row>
+						<label value="&toAddress;"
+						       control="txtToAddress"/>	
+						<textbox id="txtToAddress" 
+						         tooltiptext="&toAddress.tooltip;"/>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<groupbox>
+		  <caption label="&grpTabBehavior;"/>
+			<hbox>
+				<checkbox
+						id="chkIgnoreUnread"
+					label="&chkIgnoreUnread;"
+					tooltiptext="&chkIgnoreUnread.tooltip;"
+				/>
+				<checkbox
+						id="chkIgnoreCounts"
+					label="&chkIgnoreCounts;"
+					tooltiptext="&chkIgnoreCounts.tooltip;"
+				/>	
+			</hbox>
+		</groupbox>
 		<groupbox>
 		  <caption label="&grpCustomCSS;"/>
 		  <hbox>

@@ -1,6 +1,12 @@
 <!ENTITY windowTitle "Spezial-Eigenschaften">
 <!ENTITY btnCategory "Kategorien">
 <!ENTITY btnCategory.tooltip "Tab Kategorien festlegen">
+<!ENTITY grpComposer "Email Standardfelder">
+<!ENTITY fromAddress "Von:">
+<!ENTITY fromAddress.tooltip "Diese Identität als Absender für neue Emails wählen">
+<!ENTITY toAddress "An:">
+<!ENTITY toAddress.tooltip "Standardadresse für neue Emails">
+<!ENTITY grpTabBehavior "Spezielles Tab Verhalten">
 <!ENTITY chkIgnoreUnread "Status ungelesener emails unterdrücken">
 <!ENTITY chkIgnoreUnread.tooltip "Tabs mit ungelesenen mails werden nie fett dargestellt oder gezählt.">
 <!ENTITY chkIgnoreCounts "Keine Anzahlen darstellen">
@@ -8,8 +14,8 @@
 <!ENTITY grpCustomCSS "Tab-spezifisches CSS">
 <!ENTITY cssBackground "Hintergrund">
 <!ENTITY cssBackground.tooltip "Einen CSS Hintergrund angeben, z.B. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">
+<!ENTITY lblCustomPalette "Individuelle Palette:">
 <!ENTITY cssColor "Textfarbe">
 <!ENTITY cssColor.tooltip "Eine CSS Farbe, z.B. rgba(100,20,20,0.8)">
 <!ENTITY btnReset "Standard wiederherstellen">
 <!ENTITY btnApply "Anwenden">
-<!ENTITY lblCustomPalette "Individuelle Palette:">

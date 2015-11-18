@@ -109,6 +109,10 @@
 	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
+#chkCategories  .checkbox-icon
+{
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-balloons.png"); 
+}
 
 hbox > textbox:not([multiline="true"]) {
 	max-height: 2em;

@@ -1,6 +1,12 @@
 <!ENTITY windowTitle "Propiedades avanzadas">
 <!ENTITY btnCategory "Categorías">
 <!ENTITY btnCategory.tooltip "Definir categorías de pestañas">
+<!ENTITY grpComposer "Campos avanzados de correo electrónico">
+<!ENTITY fromAddress "De:">
+<!ENTITY fromAddress.tooltip "Identidad por omisión al escribir correos electrónicos">
+<!ENTITY toAddress "Para:">
+<!ENTITY toAddress.tooltip "Dirección de correo de envío por omisión al enviar nuevos correos electrónicos">
+<!ENTITY grpTabBehavior "Comportamiento avanzado de pestañas">
 <!ENTITY chkIgnoreUnread "Ocultar estado de No leído">
 <!ENTITY chkIgnoreUnread.tooltip "Nunca muestre negritas o cualquier número de no leídos incluso cuando la carpeta contenga mensajes no leídos.">
 <!ENTITY chkIgnoreCounts "Ocultar número de correos">

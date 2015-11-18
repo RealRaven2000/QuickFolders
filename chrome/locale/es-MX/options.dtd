@@ -158,14 +158,7 @@
 <!ENTITY qf.checkbox.quickMove "quickMove: Mover correo a cualquier carpeta con acceso directo: Mayús +">
 <!ENTITY qf.checkbox.quickMove.tip "Acceso directo para arrastrar correos al botón QuickMove para archivar más rápido a cualquier carpeta vía entrada de nombre.">
 <!ENTITY qf.checkbox.quickCopy "Para copiar correos a cualquier carpeta usar el atajo MAYUS+ (botón copia rápida)">
-<!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón de copia rápida para un copiado más rápido a cualquier carpeta mediante ingreso 
-
-
-
-
-
-
-de nombre.">
+<!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón de copia rápida para un copiado más rápido a cualquier carpeta mediante ingreso de nombre.">
 <!ENTITY qf.quickMove.path.format "Formato de despliegue:">
 <!ENTITY qf.pathFormat.folderName "Nombre de la carpeta">
 <!ENTITY qf.pathFormat.folderAndAccount "Nombre de carpeta - Cuenta de correo">
@@ -174,6 +167,8 @@ de nombre.">
 <!ENTITY qf.pathFormat.URI "URI de la carpeta">
 <!ENTITY qf.pathFormat.maxDepth "Nivel máximo de la ruta:">
 <!ENTITY qf.pathFormat.tooltip "Máximo número de carpetas desplegadas en la ruta de carpetas.">
+<!ENTITY qf.categories.supportMultiple "Soporte para seleccionar categorías múltiples en pestañas">
+<!ENTITY qf.categories.supportMultiple.tooltip "Utiliza la tecla MAYUS para seleccionar más de una categoría en la lista desplegable.">
 <!ENTITY qf.checkbox.readingList "Lista de lectura">
 <!ENTITY qf.checkbox.readingList.tooltip "Una lista de correos que deberán ser leídos después. Arrastre sus correos importantes sobre este botón.">
 <!ENTITY qf.label.donate "Donar">

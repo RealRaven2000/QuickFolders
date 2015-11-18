@@ -1,6 +1,12 @@
 <!ENTITY windowTitle "Propriétés avancées">
 <!ENTITY btnCategory "Catégories">
 <!ENTITY btnCategory.tooltip "Défini les catégories de l'onglet">
+<!ENTITY grpComposer "Champs courriel par défaut">
+<!ENTITY fromAddress "De :">
+<!ENTITY fromAddress.tooltip "Identité par défaut lors de la composition de courriels">
+<!ENTITY toAddress "À :">
+<!ENTITY toAddress.tooltip "Adresse du destinataire par défaut lors de la composition de nouveaux courriels">
+<!ENTITY grpTabBehavior "Comportement avancé des onglets">
 <!ENTITY chkIgnoreUnread "Masquer l'état non lu">
 <!ENTITY chkIgnoreUnread.tooltip "Ne jamais mettre en gras même si le dossier contient des messages non lus.">
 <!ENTITY chkIgnoreCounts "Masquer le nombre de courriels">

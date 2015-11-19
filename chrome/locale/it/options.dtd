@@ -61,9 +61,9 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Svuota cestino">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Trascina nella nuova sottocartella">
 <!ENTITY qf.label.menus.quickFolder "Comandi di QuickFolders">
-<!ENTITY qf.label.menus.separator "Inserimento di un separatore">
-<!ENTITY qf.label.menus.lineBreak "Inserimento Interruzione di riga">
-<!ENTITY qf.label.menus.customIcon "Personalizzazione icone">
+<!ENTITY qf.label.menus.separator "Inserisci separatore">
+<!ENTITY qf.label.menus.lineBreak "Inserisci interruzione di riga">
+<!ENTITY qf.label.menus.customIcon "Personalizza icone">
 <!ENTITY qf.label.menus.help "Guida di Quick Folders">
 <!ENTITY qf.label.menus.support "Supporto di QuickFolders">
 <!ENTITY qf.label.menus.options "Opzioni">
@@ -167,6 +167,8 @@
 <!ENTITY qf.pathFormat.URI "URI cartella">
 <!ENTITY qf.pathFormat.maxDepth "Massima profondità percorso:">
 <!ENTITY qf.pathFormat.tooltip "Massimo numero di cartelle visualizzate nel percorso della cartella">
+<!ENTITY qf.categories.supportMultiple "Supporto della selezione delle schede di più categorie">
+<!ENTITY qf.categories.supportMultiple.tooltip "Usa il tasto MAIUSC per selezionare più di una categoria dal menu a discesa">
 <!ENTITY qf.checkbox.readingList "Da leggere">
 <!ENTITY qf.checkbox.readingList.tooltip "Elenco di messaggi di posta elettronica da leggere successivamente. Trascinare i propri messaggi di posta elettronica importanti su questo pulsante.">
 <!ENTITY qf.label.donate "Dona">

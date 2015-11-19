@@ -1,6 +1,12 @@
 <!ENTITY windowTitle "詳細プロパティ">
 <!ENTITY btnCategory "カテゴリ">
 <!ENTITY btnCategory.tooltip "タブのカテゴリを定義します">
+<!ENTITY grpComposer "既定のメールフィールド">
+<!ENTITY fromAddress "差出人:">
+<!ENTITY fromAddress.tooltip "メール作成時の既定のアカウントです">
+<!ENTITY toAddress "宛先:">
+<!ENTITY toAddress.tooltip "新しいメール作成時の既定の宛先アドレスです">
+<!ENTITY grpTabBehavior "詳細タブ動作">
 <!ENTITY chkIgnoreUnread "未読状態を隠す">
 <!ENTITY chkIgnoreUnread.tooltip "フォルダに未読のメールが含まれていても、太字または未読のカウントを表示しないようにします">
 <!ENTITY chkIgnoreCounts "メール数のカウンタを隠す">

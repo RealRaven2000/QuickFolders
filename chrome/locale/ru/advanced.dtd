@@ -1,6 +1,12 @@
 <!ENTITY windowTitle "Дополнительные свойства">
 <!ENTITY btnCategory "Категории">
 <!ENTITY btnCategory.tooltip "Назначить категории закладки">
+<!ENTITY grpComposer "Стандартные значения полей сообщения">
+<!ENTITY fromAddress "От:">
+<!ENTITY fromAddress.tooltip "Стандартный адрес отправителя для новых сообщений">
+<!ENTITY toAddress "Кому:">
+<!ENTITY toAddress.tooltip "Стандартный адрес получателя для новых сообщений">
+<!ENTITY grpTabBehavior "Продвинутое поведение закладки">
 <!ENTITY chkIgnoreUnread "Не показывать не прочтенный статус">
 <!ENTITY chkIgnoreUnread.tooltip "Не показывать в закладке количество не прочтенных сообщений, в том числе и жирным шрифтом.">
 <!ENTITY chkIgnoreCounts "Не показывать количество сообщений">

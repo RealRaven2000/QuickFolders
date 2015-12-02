@@ -283,7 +283,7 @@ END LICENSE BLOCK */
        in striped mode, do not change color+background color when selecting a new color for inactive tab
     ## Postbox: when opening a single message window from search results, current folder bar is not initialized correctly
       
-  4.2 WIP
+  4.2 QuickFolders Pro - 20/10/2015
     ## added support for domain licenses!
     ## [Bug 26065] - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
                      of a message to a QF tab will not be shown again until Thunderbird is restarted. Probably caused 
@@ -296,6 +296,14 @@ END LICENSE BLOCK */
     ## [Bug 26071] = Hotkey to toggle folder pane  ( F9 )
     ## [Bug 26088] = quickJump/quickMove Added support for searching child folders - add / search for children
 
+  4.3 QuickFolders Pro - WIP
+    ## Allow Tab Category of "Never" - Folder Aliases that only show up in quickMove / quickJump
+    ## [Bug 25682] Allow displaying multiple categories concurrently  (Premium Feature)
+		## Advanced Tab Properties: allow choosing default identity, recipients (Premium Feature)
+		## Remember last Settings Tab, even when closing window with Cancel button
+		## Version History doesn't show Donate reminders for Pro Users anymore 
+		   (Javascript in browser / browser tabs must be enabled)
+		
 
       
 	Known Issues
@@ -613,9 +621,10 @@ var QuickFolders = {
    
 
 	init: function init() {
-    const util = QuickFolders.Util;
-		let that = this.isQuickFolders ? this : QuickFolders,
-		    myver = that.Util.Version, // will start VersionProxy
+    const util = QuickFolders.Util,
+		      that = this.isQuickFolders ? this : QuickFolders,
+					QI = that.Interface; // main window Interface!
+		let myver = that.Util.Version, // will start VersionProxy
 		    ApVer, ApName,
         prefs = that.Preferences; 
     try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
@@ -664,7 +673,7 @@ var QuickFolders = {
 		// only add event listener on startup if necessary as we don't
 		// want to consume unnecessary performance during keyboard presses!
 		if (prefs.isUseKeyboardShortcuts || prefs.isUseRebuildShortcut || prefs.isUseNavigateShortcuts) {
-			if(!that.Interface.boundKeyListener) {
+			if(!QI.boundKeyListener) {
 				that.win.addEventListener("keypress", this.keyListen = function(e) {
 					QuickFolders.Interface.windowKeyPress(e,'down');
 				}, true);
@@ -672,22 +681,34 @@ var QuickFolders = {
 					QuickFolders.Interface.windowKeyPress(e,'up');
 				}, true);
 
-				that.Interface.boundKeyListener = true;
+				QI.boundKeyListener = true;
 			}
 		}
 		let folderEntries = prefs.loadFolderEntries();
 
-		if (folderEntries.length) {
+		if (folderEntries.length) try {
 			that.Model.selectedFolders = folderEntries;
-			that.Interface.updateUserStyles();
+			QI.updateUserStyles();
 
-			let lastSelectedCategory = prefs.LastSelectedCategory;
-			that.Util.logDebug("last selected Category:" + lastSelectedCategory );
-
-			if(that.Model.isValidCategory(lastSelectedCategory))
-			  that.Interface.selectCategory(lastSelectedCategory, true);
-			  
+			let tabmail = document.getElementById("tabmail"),
+					idx = QuickFolders.tabContainer.selectedIndex || 0,
+			    tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
+			    tabMode = util.getTabMode(tab);
+			if (tab) {
+				let cats = tab.QuickFoldersCategory || QuickFolders.FolderCategory.ALL; // retrieve list!
+				util.logDebug('init: setting categories to ' + cats);
+				if (tabMode == util.mailFolderTypeName || tabMode == "message") {
+					// restore categories of first tab; set to "all" if not set
+					QI.currentActiveCategories = cats;
+				}
+			}
+			else
+				util.logDebug('init: could not retrieve tab / tabMode\n tab=' + tab + ' tabMode = ' + tabMode);
+				
 			QuickFolders.Interface.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+		}
+		catch(ex) {
+			util.logException('init: folderEntries', ex);
 		}
 		// only load in main window(?)
 		if (QuickFolders.FolderTree)
@@ -705,13 +726,13 @@ var QuickFolders = {
 		that.Util.logDebug("call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
     // default to folder view
-		that.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 
+		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 
 		// single Message
-		that.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
 
 		// new function to automatically main toolbar when it is not needed
 		that.Util.logDebug("call initToolbarHiding.");
-		that.Interface.initToolbarHiding();
+		QI.initToolbarHiding();
 		that.Util.logDebug("QF.init() ends.");
 		// now make it visible!
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
@@ -773,7 +794,7 @@ var QuickFolders = {
 		onDrop: function onDrop(evt,dropData,dragSession) {
  			function addFolder(src) {
 					if(src) {
-						let cat = QuickFolders.Interface.CurrentlySelectedCategoryName;
+						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
 						if (QuickFolders.Model.addFolder(src, cat)) {
 							let s = "Added shortcut " + src + " to QuickFolders"
 							if (cat !== null) s = s + " Category " + cat;
@@ -1866,8 +1887,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 
       if (folderIndex != null) {
         try {
-          util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..");
-          theTreeView.selectFolder (msgFolder);
+          util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
+					  msgFolder.URI);
+				  // added forceSelect = true
+          theTreeView.selectFolder (msgFolder, true);
           util.logDebugOptional("folders.select","ensureRowIsVisible()..");
           theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
         }

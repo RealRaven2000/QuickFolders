@@ -96,6 +96,7 @@
 						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
+						<preference id="QuickFolders-Preferences-MultiCategory" name="extensions.quickfolders.premium.categories.multiSelect" type="bool" />
 					</preferences>
 
 					<groupbox orient="horizontal" >
@@ -1045,12 +1046,20 @@
 												 instantApply="true"
 												 disabled="true"/>
 							</hbox>
+							<hbox>
+								<checkbox id="chkCategories"
+													label="&qf.categories.supportMultiple;"
+													tooltiptext="&qf.categories.supportMultiple.tooltip;"
+													preference="QuickFolders-Preferences-MultiCategory"
+													instantApply="true"
+													disabled="true" />
+							</hbox>
 						</groupbox>
 						<spacer flex="1" />
 						<vbox height="40">
 							<hbox pack="end">
 								<button id="btnLicense" 
-												label="get license"
+												label="Buy License"
 												oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
 							</hbox>
 						</vbox>

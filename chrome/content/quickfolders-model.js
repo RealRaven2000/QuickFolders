@@ -17,7 +17,7 @@ QuickFolders.Model = {
   paletteUpdated: false,
   paletteUpgraded: false,
 
-  addFolder: function addFolder(uri, categoryName) {
+  addFolder: function addFolder(uri, categories) {
     function unpackURI(URL) {
       if (!URL) return URL;
       // remove url(...) from Icon file name for storing in model.entry.icon
@@ -29,20 +29,25 @@ QuickFolders.Model = {
     if (entry) {
       // adding existing folder ...
       let category = entry.category || '',
-          currentCategory = QuickFolders.Interface.CurrentlySelectedCategoryName;
-
+          currentCategoryList = QuickFolders.Interface.CurrentlySelectedCategories,
+					newCats = currentCategoryList.split('|'),
+					oldCats = category.split('|'),
+					addCats = [];
+			for (let i=0; i<newCats.length; i++) {
+				if (oldCats.indexOf(newCats[i]) == -1) {
+					addCats.push(newCats[i]);
+				}
+			}
       // adding folder to a different category
-      if (currentCategory && currentCategory!= category) {
-          category = category
-          + ((category.length) ? '|' : '')
-          + currentCategory;
+      if (addCats.length) {
+        category = (oldCats.concat(addCats)).join('|');
         entry.category = category;
         this.update();
         return true;
       }
     }
     // Create entirely new QF Tab
-    if(!entry) {
+    else {
       let folder = this.getMsgFolderFromUri(uri, false),
           iconURI = null;
       // SeaMonkey: GetFolderTree().view
@@ -55,27 +60,26 @@ QuickFolders.Model = {
       this.selectedFolders.push({
         uri: uri,
         name: (folder==null) ? '' : folder.prettyName,
-        category: categoryName,
+        category: categories,
         tabColor: 0,
         icon: iconURI
       });
 
       this.update();
-      util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Category: " + categoryName);
+      util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Categories: " + categories);
       return true;
     }
-    else {
-      try {
-        util.alert(util.getBundleString("qfFolderAlreadyBookmarked","The folder " + uri  + " is already bookmarked."));
-      } catch (e) { 
-        let msg = "Folder already bookmarked: " + uri + "\nCan not display message - " + e; 
-        util.logToConsole (msg); 
-        util.alert(msg); 
-      }
+		// the entry exists in all categories
+		try {
+			util.alert(util.getBundleString("qfFolderAlreadyBookmarked", "The folder " + uri  + " is already bookmarked."));
+		} catch (e) { 
+			let msg = "Folder already bookmarked: " + uri + "\nCan not display message - " + e; 
+			util.logToConsole (msg); 
+			util.alert(msg); 
+		}
 
-      // switch to category if it exists
-      QuickFolders.Interface.selectCategory(entry.category,true);
-    }
+		// switch to category if it exists
+		QuickFolders.Interface.selectCategory(entry.category,true);
     return false;
   } ,
 
@@ -239,12 +243,17 @@ QuickFolders.Model = {
 
   getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
     let msgfolder = null;
+    const util = QuickFolders.Util;
     if (typeof MailUtils != 'undefined' && MailUtils.getFolderForURI) {
       return MailUtils.getFolderForURI(uri, checkFolderAttributes);
     }
     try {
       let mw = QuickFolders.win,
           resource = mw.GetMsgFolderFromUri ? mw.GetMsgFolderFromUri(uri, checkFolderAttributes) : mw.GetResourceFromUri(uri);
+      if (!resource) {
+        util.logToConsole('getMsgFolderFromUri() - no resource from uri ' + uri);
+        return null;
+      }
       msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
       if (checkFolderAttributes) {
         if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
@@ -306,15 +315,6 @@ QuickFolders.Model = {
     categories.sort(); // can we sort this? yes we can.
     this.categoriesList = categories;
     return this.categoriesList;
-  } ,
-
-  isValidCategory: function isValidCategory(category) {
-    return (
-         category == QuickFolders.FolderCategory.ALL
-      || category == QuickFolders.FolderCategory.UNCATEGORIZED 
-      || category == QuickFolders.FolderCategory.ALWAYS
-      || this.Categories.indexOf(category) != -1
-    );
   } ,
 
   renameFolderCategory: function renameFolderCategory(oldName, newName) {

@@ -64,7 +64,10 @@
 		<vbox id="QuickFolders-Tools-Pane">
 		
 			<hbox id="QuickFolders-Category-Box" >
-				<menulist id="QuickFolders-Category-Selection" oncommand="QuickFolders.Interface.selectCategory(this.value,false);" sizetopopup="none" collapsed="true">
+				<menulist id="QuickFolders-Category-Selection" 
+				          oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
+									sizetopopup="none" 
+									collapsed="true">
 						<menupopup>
 								<!-- filled dynamically from JS -->
 						</menupopup>

@@ -208,21 +208,11 @@ QuickFolders.Preferences = {
 		return this.getIntPref("buttonFontSizeN");
 	} ,
 
-	setLastSelectedCategory: function setLastSelectedCategory(category) {
-		// avoid error when no categories exist
-		if (category)
-			this.setCharPrefQF("lastSelectedCategory", category);
-	} ,
-
 	get TextQuickfoldersLabel() {
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 			return this.service.getComplexValue("extensions.quickfolders.textQuickfoldersLabel", Components.interfaces.nsISupportsString).data;
 		}
 		catch(e) { return 'QuickFolders'; }
-	},
-
-	get LastSelectedCategory() {
-		return this.getStringPref("lastSelectedCategory");
 	},
 
   get maxSubjectLength() {

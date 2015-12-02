@@ -4,9 +4,24 @@ QuickFolders.FolderCategory = {
 	window: null,
 	folder: null,
 	ALWAYS: "__ALWAYS",
+  NEVER: "__NEVER",
 	UNCATEGORIZED: "__UNCATEGORIZED",
 	ALL: "__ALL",
 	semaphorSel: null,
+  
+  // whether the category can be selected in the Categoires dropdown (excludes ALWAYS, NEVER)
+  isSelectableUI: function isSelectableUI(cat) {
+    return (cat != this.ALWAYS && cat != this.NEVER && cat != this.UNCATEGORIZED);
+  },
+
+  // does this Category exist?
+  isValidCategory: function isValidCategory(category) {
+    return (
+       !this.isSelectableUI(category)
+      || category == QuickFolders.FolderCategory.ALL
+      || QuickFolders.Model.Categories.indexOf(category) != -1
+    );
+  } ,  
 
 	init: function init(window, folder) {
 		this.window = window;
@@ -44,7 +59,7 @@ QuickFolders.FolderCategory = {
 
 		for (let i = 0; i < categories.length; i++) {
 			let category = categories[i];
-			if (category!=this.ALWAYS) {
+			if (category!=this.ALWAYS  && category!=this.NEVER) {
 				item = listBox.appendChild(this.createListItem(category, category));
 				// is the current folder in this category?
 				if (cats && cats.indexOf(category) >=0)
@@ -54,30 +69,31 @@ QuickFolders.FolderCategory = {
 		item = listBox.appendChild(this.createListItem(this.ALWAYS, QuickFolders.Util.getBundleString("qfShowAlways","Show Always!")))
 		if (cats && cats.indexOf(this.ALWAYS) >=0)
 			listBox.addItemToSelection(item);
+		item = listBox.appendChild(this.createListItem(this.NEVER, QuickFolders.Util.getBundleString("qfShowNever","Never Show (Folder Alias)")))
+		if (cats && cats.indexOf(this.NEVER) >=0)
+			listBox.addItemToSelection(item);
 		// highlight uncategorized if no categories are defined in folder
 		item = listBox.appendChild(this.createListItem("", QuickFolders.Util.getBundleString("qfUncategorized", "(Uncategorized)")))
 		if (!cats) // "" or null
 			listBox.addItemToSelection(item);
-
-
 	} ,
 
 	createListItem: function createListItem(value, label) {
 		let listItem = document.createElement("listitem");
 		listItem.setAttribute("label", label);
 		listItem.setAttribute("value", value);
-
 		return listItem;
 	} ,
 
 	addToNewCategory: function addToNewCategory() {
+    const model = QuickFolders.Model;
 		let categoryName = this.$('new-category-name').value;
 
-		QuickFolders.Model.setFolderCategory(this.folder.URI, categoryName);
+		model.setFolderCategory(this.folder.URI, categoryName);
 		//add new category to listbox
 		this.$('existing-categories').appendChild(this.createListItem(categoryName, categoryName));
 
-		QuickFolders.Model.resetCategories();
+		model.resetCategories();
 		this.populateCategories();
 	} ,
 
@@ -154,7 +170,8 @@ QuickFolders.FolderCategory = {
 			this.semaphorSel=true; // lock reentry to avoid recursion
 			i = listBox.selectedItems.length-1;
 
-			if (category == "" || category == this.ALWAYS) {  // this.UNCATEGORIZED
+      // Remove from all 'real' Categories
+			if (category == "" || category == this.ALWAYS || category == this.NEVER) {  // this.UNCATEGORIZED
 				sel = listBox.getSelectedItem(i);
 				while (sel) {
 					if (sel.value != category)
@@ -166,7 +183,8 @@ QuickFolders.FolderCategory = {
 			else {
 				sel = listBox.getSelectedItem(i);
 				while (sel) {
-					if (sel.value == "" || sel.value == this.ALWAYS) // this.UNCATEGORIZED
+          // Remove from special categories
+					if (sel.value == "" || sel.value == this.ALWAYS || category == this.NEVER) 
 						listBox.removeItemFromSelection(sel);
 					i--;
 					sel = listBox.getSelectedItem(i);
@@ -207,12 +225,18 @@ QuickFolders.FolderCategory = {
 	} ,
 
 	deleteSelectedCategory: function deleteSelectedCategory() {
-		QuickFolders.Util.logDebugOptional("categories","deleteSelectedCategory()");
+    const util = QuickFolders.Util,
+          model = QuickFolders.Model;
+		util.logDebugOptional("categories","deleteSelectedCategory()");
 		let selectedCategory = this.$('existing-categories').value;
-		QuickFolders.Util.logDebugOptional("categories","selectedCategory = " + selectedCategory);
+    if (!this.isSelectableUI(selectedCategory)) {
+      util.getBundleString("qf.prompt.categoryIsReadOnly", "This item cannot be deleted.");
+      return;
+    }
+		util.logDebugOptional("categories","selectedCategory = " + selectedCategory);
 		
-		QuickFolders.Model.deleteFolderCategory(selectedCategory)
-		QuickFolders.Model.resetCategories();
+		model.deleteFolderCategory(selectedCategory)
+		model.resetCategories();
 
 		this.populateCategories();
 		this.getCategoriesListBox().value = QuickFolders.FolderCategory.ALL;

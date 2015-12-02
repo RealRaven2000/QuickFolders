@@ -57,7 +57,6 @@ QuickFolders.TabListener = {
             util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
             let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
             util.logDebugOptional("listeners.tabmail", "After QuickFoldersCategory - isFolderUpdated =" + isFolderUpdated );
-            QI.updateCategories();
             // do not select folder if selectCategory had to be done
             if (!isFolderUpdated)
               QI.setFolderSelectTimer();	
@@ -82,7 +81,7 @@ QuickFolders.TabListener = {
           QI.lastTabSelected = null;
       }
     }
-    catch(e) {QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected: " + e)};
+    catch(e) {QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected:\n" + e)};
   },
   
   closeTab: function(evt) {

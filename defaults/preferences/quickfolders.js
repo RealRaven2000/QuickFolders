@@ -1,6 +1,5 @@
 pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
 // Model
-pref("extensions.quickfolders.lastSelectedCategory","");
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 // General Prefs
 pref("extensions.quickfolders.showShortcutNumber", false);
@@ -117,6 +116,7 @@ pref("extensions.quickfolders.debug.firstrun", false);
 pref("extensions.quickfolders.debug.buttonStyle", false);
 pref("extensions.quickfolders.debug.bookmarks", false);
 pref("extensions.quickfolders.debug.categories", false);
+pref("extensions.quickfolders.debug.composer", false);
 pref("extensions.quickfolders.debug.css", false);
 pref("extensions.quickfolders.debug.css.Detail", false);
 pref("extensions.quickfolders.debug.css.AddRule", false);
@@ -206,6 +206,7 @@ pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
 pref("extensions.quickfolders.premium.quickMove.usage", 0);
 pref("extensions.quickfolders.premium.tabIcons.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);
+pref("extensions.quickfolders.premium.categories.multiSelect",false);
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
 pref("extensions.quickfolders.LicenseKey", "");

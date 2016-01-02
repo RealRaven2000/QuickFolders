@@ -67,7 +67,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_EXTENSION_VERSION : "4.1",
+	HARDCODED_CURRENTVERSION : "4.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -230,7 +230,7 @@ QuickFolders.Util = {
 		//returns the current QF version number.
 		if (util.mExtensionVer)
 			return util.mExtensionVer;
-		let current = util.HARDCODED_EXTENSION_VERSION + util.HARDCODED_EXTENSION_TOKEN;
+		let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN;
 
 		if (!Cc["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
@@ -714,34 +714,35 @@ QuickFolders.Util = {
 
 	// find the first mail tab representing a folder and open it
 	ensureFolderViewTab: function ensureFolderViewTab() {
+		const util = QuickFolders.Util;
 		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
-		let found=false;
-		let tabmail = document.getElementById("tabmail");
+		let found=false,
+		    tabmail = document.getElementById("tabmail");
 		if (tabmail) {
-			let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+			let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
 
 			if (tab) {
 			  let tabMode = this.getTabMode(tab);
-				QuickFolders.Util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
-				if (tabMode != QuickFolders.Util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
+				util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
+				if (tabMode != util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					// iterate tabs
-					let tabInfoCount = QuickFolders.Util.getTabInfoLength(tabmail);
+					let tabInfoCount = util.getTabInfoLength(tabmail);
 					for (let i = 0; i < tabInfoCount; i++) {
-					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
-						if (info && this.getTabMode(info) == QuickFolders.Util.mailFolderTypeName) { 
-							QuickFolders.Util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
+					  let info = util.getTabInfoByIndex(tabmail, i);
+						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
+							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
 							tabmail.switchToTab(i);
-							found=true;
+							found = true;
 							break;
 						}
 					}
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
 					for (let i=0;(!found) && i < tabInfoCount; i++) {
-					  let info = QuickFolders.Util.getTabInfoByIndex(tabmail, i);
-						if (info && QuickFolders.Util.getTabMode(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
-							QuickFolders.Util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
+					  let info = util.getTabInfoByIndex(tabmail, i);
+						if (info && util.getTabMode(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+							util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
 							tabmail.switchToTab(i);
 						  break;
 						}
@@ -846,9 +847,9 @@ QuickFolders.Util = {
 
 	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function moveMessages(targetFolder, messageUris, makeCopy) {
-		let step = 0,
-        Ci = Components.interfaces,
-        util = QuickFolders.Util; 
+    const Ci = Components.interfaces,
+          util = QuickFolders.Util; 
+		let step = 0;
     if (!messageUris) 
       return null;
 		try {
@@ -1241,6 +1242,10 @@ QuickFolders.Util = {
 		if (QuickFolders.Preferences.isDebug)
 			this.logToConsole(msg);
 	},
+	
+	get isDebug() {
+		return QuickFolders.Preferences.isDebug;
+	},	
 
   /** 
 	* only logs if debug mode is set and specific debug option are active
@@ -1715,9 +1720,6 @@ QuickFolders.Util.FirstRun = {
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
 			    pureVersion = util.VersionSanitized;
 			util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
-			// change this depending on the branch
-			let versionPage = "http://quickfolders.mozdev.org/version.html#" + pureVersion;
-			util.logDebugOptional ("firstrun","finally - versionPage=" + versionPage);
 			
 			if (pureVersion >= '3.12' && prev < "3.12") {
 				QuickFolders.Model.upgradePalette(ssPrefs);
@@ -1749,6 +1751,9 @@ QuickFolders.Util.FirstRun = {
 				}
 			}
 			else { 
+        let isPremiumLicense = util.hasPremiumLicense(false),
+        		versionPage = "http://quickfolders.mozdev.org/version.html" +
+                          (isPremiumLicense ? "?user=pro" : "")  + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
         if ((pureVersion.indexOf('4.2.') == 0 && prev.indexOf("4.2") == 0)) {
@@ -1765,7 +1770,7 @@ QuickFolders.Util.FirstRun = {
         {
 					suppressDonationScreen = true;
 				}
-        if (!suppressDonationScreen && !util.hasPremiumLicense(false))
+        if (!suppressDonationScreen && !isPremiumLicense)
           suppressDonationScreen = true;
 				
 				let isThemeUpgrade = prefs.tidyUpBadPreferences();

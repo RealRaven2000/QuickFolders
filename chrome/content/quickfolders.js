@@ -298,11 +298,12 @@ END LICENSE BLOCK */
 
   4.3 QuickFolders Pro - WIP
     ## Allow Tab Category of "Never" - Folder Aliases that only show up in quickMove / quickJump
+		## [Bug 26116] Fixed: Tab Specific properties panel always jumps to primary screen.
     ## [Bug 25682] Allow displaying multiple categories concurrently  (Premium Feature)
-		## Advanced Tab Properties: allow choosing default identity, recipients (Premium Feature)
-		## Remember last Settings Tab, even when closing window with Cancel button
+		## Advanced Tab Properties: allow setting default identity and recipients (Premium Feature)
 		## Version History doesn't show Donate reminders for Pro Users anymore 
 		   (Javascript in browser / browser tabs must be enabled)
+		## Remember last Settings Tab, even when closing window with Cancel button
 		
 
       
@@ -348,7 +349,29 @@ if (!this.QuickFolders_CI)
 // THUNDERBIRD SPECIFIC CODE!!	
 // wrap function for session store: persist / restore categories	
 let QuickFolders_PrepareSessionStore = function () {
-	if (typeof mailTabType != "undefined") {
+	const util = QuickFolders.Util;
+	if (util.Application == "Postbox") {
+		// we have to wrap persistTabString() 
+		// so append  some script in order to restore the categories in Postbox
+		let tabMail = document.getElementById('tabmail');
+		if (tabMail && typeof tabMail.QuickFolders_persistTabString == 'undefined') {
+			tabMail.QuickFolders_persistTabString = tabMail.persistTabString; // backup old function
+			tabMail.persistTabString = function() {
+				var tString = tabMail.QuickFolders_persistTabString(),
+				    PostboxSessionRestoreScript = '';
+				
+				if (util && QuickFolders.Interface) {
+					PostboxSessionRestoreScript = QuickFolders.Interface.restoreSessionScript();
+					if (util.isDebug)  debugger;
+				}
+				return tString + PostboxSessionRestoreScript;
+			}
+		}
+		else window.setTimeout(function () {
+			QuickFolders_PrepareSessionStore();
+		}, 10000);
+	}
+	else if (typeof mailTabType != "undefined") { // Thunderbird
 		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
 		mailTabType.QuickFolders_SessionStore = true;
 		// overwrite persist 
@@ -384,7 +407,9 @@ let QuickFolders_PrepareSessionStore = function () {
 		}
 	}
 };
-QuickFolders_PrepareSessionStore(); // Tb only!
+window.setTimeout(function () {
+  QuickFolders_PrepareSessionStore();
+}, 5000);
 
 var QuickFolders_globalHidePopupId="";
 var QuickFolders_globalLastChildPopup=null;
@@ -684,18 +709,37 @@ var QuickFolders = {
 				QI.boundKeyListener = true;
 			}
 		}
+		debugger;
 		let folderEntries = prefs.loadFolderEntries();
-
 		if (folderEntries.length) try {
+			let currentFolder = util.CurrentFolder;
 			that.Model.selectedFolders = folderEntries;
 			QI.updateUserStyles();
 
 			let tabmail = document.getElementById("tabmail"),
 					idx = QuickFolders.tabContainer.selectedIndex || 0,
-			    tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
-			    tabMode = util.getTabMode(tab);
+			    tab = util.getTabInfoByIndex(tabmail, idx); // in Sm, this can return null!
 			if (tab) {
-				let cats = tab.QuickFoldersCategory || QuickFolders.FolderCategory.ALL; // retrieve list!
+				let tabMode = util.getTabMode(tab);
+				// is this a new Thunderbird window?
+				let cats;
+				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
+					if (currentFolder) {
+						// select first (or all?) category of any tab referencing this folder
+						// if there is an originating window, try to inherit the categories from the last one
+						let lc = QuickFolders.Preferences.lastActiveCats;
+						if (lc) {
+							cats = lc;
+						}
+						else
+							cats = QuickFolders.FolderCategory.ALL; // retrieve list!
+					}
+					else
+						cats = QuickFolders.FolderCategory.ALL; // retrieve list!
+				}
+				else
+				  cats = tab.QuickFoldersCategory
+				
 				util.logDebug('init: setting categories to ' + cats);
 				if (tabMode == util.mailFolderTypeName || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
@@ -2177,14 +2221,19 @@ QuickFolders.FolderListener = {
 					try {
             log("events","event: " + eString + " item:" + item.prettyName);
 						if (QI) {
+							if (util.isDebug) debugger;
               // make sure this event is not a "straggler"
-              let folders = GetSelectedMsgFolders(),
-                  itemFound = false;
+							try {
+								let folders = GetSelectedMsgFolders(),
+										itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
+								if (!itemFound) {
+									log("events", "FolderLoaded - belated on folder " + item.prettyName + " - NOT shown in current folder bar!");
+								}
+							}
+							catch (ex) {
+								// cannot  get selected folders: new windows maybe?
+							}
               // use shim to avoid foreach warning
-              itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
-              if (!itemFound) {
-                log("events", "FolderLoaded - belated on folder " + item.prettyName + " - NOT shown in current folder bar!");
-              }
             }
 					}
 					catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onTabSelected:\n" + e)};

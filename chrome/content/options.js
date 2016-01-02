@@ -40,13 +40,15 @@ QuickFolders.Options = {
   },
   
 	rememberLastTab: function rememberLastTab() {
+		let tabbox = document.getElementById("QuickFolders-Options-Tabbox");
+		QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', tabbox.selectedIndex);
 		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
 	
 	accept: function accept() {
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly" || this.optionsMode=="licenseKey")
-			return; // do not store any changes!
+			return;
     let getElement = document.getElementById.bind(document);
 		// persist colors
 		try {
@@ -85,11 +87,11 @@ QuickFolders.Options = {
 			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
 		};
 		this.rememberLastTab();
-		let tabbox = getElement("QuickFolders-Options-Tabbox");
-		QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', tabbox.selectedIndex);
 	} ,
 	
 	close: function close() {
+		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly" || this.optionsMode=="licenseKey")
+			return;
 		// let's remember the last open tab on cancel as well
 		this.rememberLastTab(); 
 	},
@@ -181,7 +183,8 @@ QuickFolders.Options = {
   } ,
   
 	load: function load() {
-		let util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -197,20 +200,20 @@ QuickFolders.Options = {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
 				if (this.optionsMode >= 0)
-					QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', this.optionsMode);
+					prefs.setIntPref('lastSelectedOptionsTab', this.optionsMode);
 			}
 			catch(e) {;}
     }
     
     // convert from string "24px" to number "24"
-    let minToolbarHeight = QuickFolders.Preferences.getStringPref('toolbar.minHeight'),
+    let minToolbarHeight = prefs.getStringPref('toolbar.minHeight'),
         mT = parseInt(minToolbarHeight);
     if (minToolbarHeight.indexOf('px' > 0)) {
-      QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', mT.toString()) 
+      prefs.setStringPref('toolbar.minHeight', mT.toString());
     }
     else if (minToolbarHeight.indexOf('em' > 0)) {
       // convert to px based on 12px default size (might be wrong for Mac+Linux)
-      QuickFolders.Preferences.setCharPrefQF('toolbar.minHeight', (mT*12).toString()) ;  // 12 px default font size.
+      prefs.setStringPref('toolbar.minHeight', (mT*12).toString()) ;  // 12 px default font size.
     }
 
 		if (version=="") version='version?';
@@ -225,7 +228,7 @@ QuickFolders.Options = {
     let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense", "Get License!");
     getElement("btnLicense").label=regBtn;
     // validate License key
-    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey');
+    QuickFolders.Licenser.LicenseKey = prefs.getStringPref('LicenseKey');
     getElement('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
     if (QuickFolders.Licenser.LicenseKey) {
       this.validateLicense(false);
@@ -276,7 +279,7 @@ QuickFolders.Options = {
     
     // .0 private license, .1 domain license
     // these are only for testing, so normal users shouldn't need them, default to '' via code
-    let EncryptionKey = QuickFolders.Preferences.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
+    let EncryptionKey = prefs.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
     if (EncryptionKey) {
       getElement('boxKeyGenerator').collapsed = false;
       QuickFolders.Licenser.RSA_encryption = EncryptionKey;
@@ -294,7 +297,7 @@ QuickFolders.Options = {
     /***** Menu Items / Labels *****/
 		// bundle strings
 		// getElement("chkShowFolderMenuButton").label = util.getBundleString("qfFolderPopup");
-		this.setCurrentToolbarBackground(QuickFolders.Preferences.getStringPref('currentFolderBar.background.selection'), false);  
+		this.setCurrentToolbarBackground(prefs.getStringPref('currentFolderBar.background.selection'), false);  
 
     /*****  Bling + Stuff  *****/
 		// initialize colorpickers
@@ -416,16 +419,17 @@ QuickFolders.Options = {
   } ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
-    let getElement    = document.getElementById.bind(document),
-        premiumConfig = getElement('premiumConfig'),
-        quickJump     = getElement('chkQuickJumpHotkey'),
-        quickMove     = getElement('chkQuickMoveHotkey'),
-        quickCopy     = getElement('chkQuickCopyHotkey'),
-        quickJumpTxt  = getElement('qf-QuickJumpShortcut'),
-        quickMoveTxt  = getElement('qf-QuickMoveShortcut'),
-        quickCopyTxt  = getElement('qf-QuickCopyShortcut'),
+    let getElement      = document.getElementById.bind(document),
+        premiumConfig   = getElement('premiumConfig'),
+        quickJump       = getElement('chkQuickJumpHotkey'),
+        quickMove       = getElement('chkQuickMoveHotkey'),
+        quickCopy       = getElement('chkQuickCopyHotkey'),
+        quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
+        quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
+        quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
         quickMoveFormat = getElement('menuQuickMoveFormat'),
-        quickMoveDepth = getElement('quickmove-path-depth');
+        quickMoveDepth  = getElement('quickmove-path-depth'),
+        multiCategories = getElement('chkCategories');
     premiumConfig.disabled = !isEnabled;
     quickJump.disabled = !isEnabled;
     quickMove.disabled = !isEnabled;
@@ -435,6 +439,7 @@ QuickFolders.Options = {
     quickCopyTxt.disabled = !isEnabled;
     quickMoveFormat.disabled = !isEnabled;
     quickMoveDepth.disabled = !isEnabled;
+    multiCategories.disabled = !isEnabled;
   },
   
   decryptLicense: function decryptLicense(testMode) {
@@ -459,7 +464,7 @@ QuickFolders.Options = {
           license = txtBox.value;
       // store new license key
       if (!testMode) // in test mode we do not store the license key!
-        QuickFolders.Preferences.setCharPrefQF('LicenseKey', license);
+        QuickFolders.Preferences.setStringPref('LicenseKey', license);
       
       let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
           result, LicenseKey,
@@ -705,7 +710,7 @@ QuickFolders.Options = {
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
 		  // store the new setting!
-			QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background.custom', setting.value);  
+			QuickFolders.Preferences.setStringPref('currentFolderBar.background.custom', setting.value);  
 			this.setCurrentToolbarBackground('custom', true);
 		}
 	} ,
@@ -719,7 +724,7 @@ QuickFolders.Options = {
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom && choice != 'custom') {
-			QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background.custom', setting.value);  
+			QuickFolders.Preferences.setStringPref('currentFolderBar.background.custom', setting.value);  
 		}
 	
 		switch (choice) {
@@ -746,8 +751,8 @@ QuickFolders.Options = {
 				break;
 		}
 		let styleValue = setting.value;
-		QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background', styleValue);
-		QuickFolders.Preferences.setCharPrefQF('currentFolderBar.background.selection', choice);
+		QuickFolders.Preferences.setStringPref('currentFolderBar.background', styleValue);
+		QuickFolders.Preferences.setStringPref('currentFolderBar.background.selection', choice);
 		if (withUpdate)
 			QuickFolders.Interface.updateMainWindow();
 	},
@@ -1188,7 +1193,9 @@ QuickFolders.Options = {
         pureVersion=util.VersionSanitized,
 		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
-			util.openURL(null, "http://quickfolders.mozdev.org/version.html" + "#" + pureVersion);
+			util.openURL(null, "http://quickfolders.mozdev.org/version.html" 
+			  + (util.hasPremiumLicense(false) ? "?user=pro" : "")
+				+ "#" + pureVersion);
 		}
 	},
 	

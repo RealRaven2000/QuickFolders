@@ -687,7 +687,7 @@ QuickFolders.FilterWorker = {
 	} ,
 	
 	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref) {
-		return QuickFolders.Preferences.setCharPrefQF("filters.currentTemplate", pref);
+		return QuickFolders.Preferences.setStringPref("filters.currentTemplate", pref);
 	} ,
 	
   getBundleString  : function getBundleString(id) {

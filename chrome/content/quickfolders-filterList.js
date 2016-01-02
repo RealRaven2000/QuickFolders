@@ -366,11 +366,12 @@ QuickFolders.FilterList = {
 	} ,
 	
 	rebuildFilterList: function() {
+		const util = QuickFolders.Util;
 		if (typeof gCurrentFilterList !== "undefined") {
 			rebuildFilterList(gCurrentFilterList);
 		}
 		else {
-			if (QuickFolders.Util.Application=='Postbox') {
+			if (util.Application=='Postbox') {
 				refresh();
 				this.updateCountBox();
 				return;
@@ -378,12 +379,12 @@ QuickFolders.FilterList = {
 			
 			// force a repaint through the BoxObject
 			let fl = this.getFilterListElement(),
-			    // from: SM's setServer(uri) function
+			    // from: SM's setServer(uri) function - no gRDF in Postbox!
 			    resource = gRDF.GetResource(gCurrentServerURI),
 			    msgFolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
 			
 			//Calling getFilterList will detect any errors in rules.dat, backup the file, and alert the user
-			switch(QuickFolders.Util.Application) {
+			switch(util.Application) {
 				case 'Postbox': 
 					this.gFilterTreeView().filterList = msgFolder.getFilterList(gFilterListMsgWindow);
 					break;
@@ -416,7 +417,7 @@ QuickFolders.FilterList = {
 			 // SeaMonkey (Postbox) vs Thunderbird - treeview vs listbox
 			if (filterList.nodeName == 'tree') 
 			{
-				// SeaMonkey
+				// SeaMonkey + Postbox
 				item = getFilter(i); // SM: defined in FilterListDialog.js (SM only)
 				title = item.filterName;
 				if (title.toLocaleLowerCase().indexOf(keyWord) == -1){

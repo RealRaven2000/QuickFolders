@@ -129,6 +129,7 @@ QuickFolders.Licenser = {
     const getElement = document.getElementById.bind(document),
           util = QuickFolders.Util;
         
+    let dropdownCount = 0;
     function appendIdentity(dropdown, id, account) {
       if (!id) {
         util.logDebug('appendIdentity failed for account = ' + account ? account.key : 'unknown');
@@ -139,18 +140,18 @@ QuickFolders.Licenser = {
           + 'appendIdentity [' + dropdownCount + ']\n'
           + '  identityName = ' + (id ? id.identityName : 'empty') + '\n'
           + '  fullName = ' + (id ? id.fullName : 'empty') + '\n' 
-          + '  email = ' + (id.email ? id.email : 'empty'));
+          + '  email = ' + (id.email ? id.email : 'empty'));					
         if (!id.email) {
           util.logToConsole('Omitting account ' + id.fullName + ' - no mail address');
           return;
         }
         let menuitem = document.createElement('menuitem');
-        menuitem.setAttribute("id", "id" + dropdownCount++);
-        // this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
-        menuitem.setAttribute("fullName", id.fullName);
-        menuitem.setAttribute("value", id.email);
-        menuitem.setAttribute("accountKey", account.key);
-        menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
+				menuitem.setAttribute("id", "id" + dropdownCount++);
+				// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
+				menuitem.setAttribute("fullName", id.fullName);
+				menuitem.setAttribute("value", id.email);
+				menuitem.setAttribute("accountKey", account.key);
+				menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
         dropdown.appendChild(menuitem);
       }
       catch (ex) {
@@ -158,8 +159,6 @@ QuickFolders.Licenser = {
       }
     }
     
-    let dropdownCount = 0;
-
 		if (window.arguments && window.arguments[1].inn.referrer) {
       let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
@@ -178,7 +177,7 @@ QuickFolders.Licenser = {
         appendIdentity(popup, ac.defaultIdentity, ac);
         continue;
       }
-      let ids = ac.identities; // array of nsIMsgIdentity 
+      let ids = ac.identities; // array of nsIMsgIdentity
       if (ids) {
         let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
@@ -191,8 +190,7 @@ QuickFolders.Licenser = {
         }
       }
       else {
-        util.logDebugOptional('identities', 
-          'Account: ' + account.key + ':\n - No identities.');
+        util.logDebugOptional('identities', 'Account: ' + ac.key + ':\n - No identities.');
       }  
     }
     // select first item

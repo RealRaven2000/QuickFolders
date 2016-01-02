@@ -183,7 +183,7 @@ QuickFolders.FolderTree = {
     //    JSON.stringify(Array.from(this.dictionary.entries()))
     //    this.dictionary.toJSON();
 		// no need for this anymore
-		// QuickFolders.Preferences.setCharPrefQF("folderIcons", myJson);
+		// QuickFolders.Preferences.getStringPref("folderIcons", myJson);
 		this.debugDictionary();
 	} ,
 	

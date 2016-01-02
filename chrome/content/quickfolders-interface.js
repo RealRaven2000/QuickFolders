@@ -771,10 +771,13 @@ QuickFolders.Interface = {
 
 	updateCategories: function updateCategories() {
     const util = QuickFolders.Util,
-          FCat = QuickFolders.FolderCategory;
+		      model = QuickFolders.Model,
+					prefs = QuickFolders.Preferences,
+          FCat = QuickFolders.FolderCategory,
+					isPostbox = (util.Application=='Postbox') ? true : false;
 
 		util.logDebugOptional("interface", "updateCategories()");
-		let bookmarkCategories = QuickFolders.Model.Categories,
+		let bookmarkCategories = model.Categories,
 		    lCatCount = bookmarkCategories ? bookmarkCategories.length : 0,
 		    menuList = this.CategoryMenu,
 		    menuPopup = menuList.menupopup;
@@ -794,23 +797,44 @@ QuickFolders.Interface = {
           'menuitem-iconic'));
         for (let i = 0; i < lCatCount; i++) {
           let category = bookmarkCategories[i];
-
-          if (bookmarkCategories[i] != FCat.ALWAYS) {
+          if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
             let menuItem = this.createMenuItem(category, category, 'menuitem-iconic');
             // add checkbox for multiple category selection
-            if (QuickFolders.Preferences.getBoolPref('premium.categories.multiSelect')) {
+            if (prefs.getBoolPref('premium.categories.multiSelect')) {
 							// multi selection
 							if (cats.indexOf(category)>=0)
 								menuItem.setAttribute("checked", true);
+							if (isPostbox)
+								menuItem.setAttribute("type","checkbox");
             }
             menuPopup.appendChild(menuItem);
           }
         }
-
-        menuPopup.appendChild(document.createElement('menuseparator'));
-        let s = this.getUIstring("qfUncategorized","(Uncategorized)");
-
-        menuPopup.appendChild(this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic'));
+				// iterate all entries to see if we have any uncategorized / show never types:
+				let isUncat = false,
+				    isNever = false;
+				for (let i = 0; i < model.selectedFolders.length; i++) {
+					// test mail folder for existence
+					let folderEntry = model.selectedFolders[i];
+					if (folderEntry.category == FCat.NEVER)
+						isNever = true; // at least one folder alias exists 
+					if (!folderEntry.category)
+						isUncat = true; // at least one folder without category exists
+				}
+				
+				/* the following category items are only shown when necessary */
+				if (isUncat || isNever) {
+					menuPopup.appendChild(document.createElement('menuseparator'));
+				}
+				if (isUncat) {
+					let s = this.getUIstring("qfUncategorized","(Uncategorized)");
+					menuPopup.appendChild(this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic'));
+				}
+				if (isNever) {
+					let s = this.getUIstring("qfShowNever","Never Show (Folder Alias)");
+					menuPopup.appendChild(this.createMenuItem(FCat.NEVER, s, 'menuitem-iconic'));
+				}
+				
         menuList.value = activeCatsList || FCat.ALL; // revise this for MULTI SELECTS
       }
       else {
@@ -907,8 +931,7 @@ QuickFolders.Interface = {
 		if (!confirm(sMsg))
 			return;
 		let isCancel = false;
-		for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++)
-		{
+		for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 			// test mail folder for existence
 			let folderEntry = QuickFolders.Model.selectedFolders[i],
 			    folder = null;
@@ -968,7 +991,6 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface", "repairTreeIcons()");
     
 		for (let i = 0; i < model.selectedFolders.length; i++) {
-      // if (util.isDebug)  debugger;
 			// test mail folder for existence
 			let folderEntry = model.selectedFolders[i],
 			    folder = null,
@@ -1037,26 +1059,35 @@ QuickFolders.Interface = {
     return this._selectedCategories;
   } ,
   set currentActiveCategories(v) {
+		const util = QuickFolders.Util;
     this._selectedCategories = v; // set menuitem value?
     let menulist = this.CategoryMenu,
         cats = v.split('|'),
 				txtDebug = '';
-    if (menulist) {
-      menulist.value = v;
-      // if multiple select, check all boxes
-      for (let i=0; i<menulist.itemCount; i++) {
-        let it = menulist.getItemAtIndex(i),
-				    isSelected = (cats.indexOf(it.value)>=0);
-				if (isSelected) {
-					txtDebug += 'Check menuitem: ' + it.value + '\n';
-          it.setAttribute('checked', isSelected); // check selected value
-			  }
-				else {
-					it.removeAttribute('checked');
+		try {
+			if (util.isDebug) debugger;
+			if (menulist) {
+				menulist.value = v;
+				// if multiple select, check all boxes
+				for (let i=0; i<menulist.itemCount; i++) {
+					let it = menulist.getItemAtIndex(i),
+							isSelected = (cats.indexOf(it.value)>=0);
+					if (isSelected) {
+						txtDebug += 'Check menuitem: ' + it.value + '\n';
+						it.setAttribute('checked', isSelected); // check selected value
+					}
+					else {
+						it.removeAttribute('checked');
+					}
 				}
-      }
-    }
-		QuickFolders.Util.logDebugOptional('categories','set currentActiveCategories()\n' + txtDebug);
+			}
+			util.logDebugOptional('categories','set currentActiveCategories()\n' + txtDebug);
+			if (v!=null)
+				QuickFolders.Preferences.lastActiveCats = v; // store in pref
+		}
+		catch (ex) {
+			util.logException('Error in setter: currentActiveCategories', ex);
+		}
   } ,
 	get CurrentlySelectedCategories() {
     const FCat = QuickFolders.FolderCategory;
@@ -1065,6 +1096,41 @@ QuickFolders.Interface = {
 		}
 		else {
 			return this.currentActiveCategories;
+		}
+	} ,
+	
+	// Postbox specific: build a string script for restoring tab categories
+  restoreSessionScript	: function restoreSessionScript() {
+    const util = QuickFolders.Util;
+		let tabmail = document.getElementById("tabmail"),
+		    tabInfoCount = util.getTabInfoLength(tabmail),
+				restoreScript = '';
+		for (let i = 0; i < tabInfoCount; i++) {
+			let info = util.getTabInfoByIndex(tabmail, i);
+			if (info && util.getTabMode(info) == util.mailFolderTypeName) { 
+			  // found a folder tab, with categories
+				let cats = info.QuickFoldersCategory;
+				if (cats) {
+          if (util.isDebug) debugger;
+					// escape any single quotes in category string:
+					let escaped = cats.replace(/\\([\s\S])|(')/g, "\\$1$2");
+					restoreScript += "QuickFolders.Interface.restoreCategories(" + i + ", '" + escaped + "');";
+				}
+			}
+		}
+		return restoreScript;
+	} ,
+	
+	// this is used on session restore currently only by Postbox
+	restoreCategories: function restoreCategories(tabIndex, categories) {
+    const util = QuickFolders.Util;
+		let tabmail = document.getElementById("tabmail"),
+		    info = util.getTabInfoByIndex(tabmail, tabIndex);
+		info.QuickFoldersCategory = categories;
+		let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+		if (tab == info) {
+			// current Tab:
+			QuickFolders.Interface.selectCategory(categories, false);
 		}
 	} ,
 
@@ -1080,7 +1146,9 @@ QuickFolders.Interface = {
 	selectCategory: function selectCategory(categoryName, rebuild, dropdown, event) {
     const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
-          FCat = QuickFolders.FolderCategory;
+          FCat = QuickFolders.FolderCategory,
+					prefs = QuickFolders.Preferences;
+		if (util.isDebug) debugger;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
 		// early exit. category is selected already! SPEED!
     if (QI.currentActiveCategories == categoryName)
@@ -1091,8 +1159,9 @@ QuickFolders.Interface = {
 		// add support for multiple categories
 		let cats = categoryName ? categoryName.split('|') : FCat.UNCATEGORIZED,  // QI.currentActiveCategories
 				currentCats = QI.currentActiveCategories ? (QI.currentActiveCategories.split('|')) : [],
-		    idx = 0;
-    if (event && event.shiftKey) {
+		    idx = 0,
+				multiEnabled = prefs.getBoolPref('premium.categories.multiSelect');
+    if (multiEnabled && event && event.shiftKey) {
 			let selectedCat = cats[0];
 			if (currentCats.indexOf(selectedCat)>=0) {
 				currentCats.splice(currentCats.indexOf(selectedCat), 1);
@@ -1106,14 +1175,24 @@ QuickFolders.Interface = {
 			}
 		}
     else {
-			util.logDebugOptional("categories","Selecting Categories: " + categoryName + "...");
-      QI.currentActiveCategories = categoryName;
+			let selectedCats = (cats.length>1 && !multiEnabled) ? cats[0] : categoryName;
+			util.logDebugOptional("categories","Selecting Categories: " + selectedCats + "...");
+			// if multiple categories is not enabled only select first one.
+			QI.currentActiveCategories = selectedCats;
 		}
 		QI.updateFolders(rebuild, false);
     // ###################################
     QI.lastTabSelected = null;
     QI.onTabSelected(); // update selected tab?
     // this.styleSelectedTab(selectedButton);
+		
+		try {
+			let cs = document.getElementById('QuickFolders-Category-Selection');
+			cs.label = QI.currentActiveCategories.split('|').join(' + ');
+		}
+		catch(ex) {
+			util.logException('Setting category label:',ex);
+		}
 
 		try {
 			// store info in tabInfo, so we can restore it easier later per mail Tab
@@ -1568,7 +1647,7 @@ QuickFolders.Interface = {
       util.logToConsole('Error in addFolderButton: ' + 'folder getStringProperty is missing.\n'
                         + 'Entry: ' + (entry ? entry.name : ' invalid entry') + '\n'
                         + 'URI: ' + (folder.URI || 'missing'));
-      util.logException('Error in addFolderButton', ex.toString);
+      util.logException('Error in addFolderButton', ex);
     }
     if (!theButton) isMinimal=false; // if we create new buttons from scratch, then we need a full creation including menu
 
@@ -1999,7 +2078,7 @@ QuickFolders.Interface = {
 						//localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
 						try {
 							//localFile.initWithPath(path); // get the default path
-							QuickFolders.Preferences.setCharPrefQF('tabIcons.defaultPath', file.path);
+							QuickFolders.Preferences.setStringPref('tabIcons.defaultPath', file.path);
 							let iconURL = fp.fileURL; 
 							if (folders) {
 							  for (let i=0; i<folders.length; i++) {
@@ -2093,18 +2172,22 @@ QuickFolders.Interface = {
 
   onAdvancedProperties: function onAdvancedProperties(evt, element) {
     let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder,
-        entry = QuickFolders.Model.getFolderEntry(folder.URI),
         button = util.getPopupNode(element),
+        folder = button.folder,
+        entry = QuickFolders.Model.getFolderEntry(folder.URI),
         x = button.boxObject.screenX,
         y = button.boxObject.screenY + button.boxObject.height;
     // attach to bottom of the Tab (like a popup menu)
-    util.popupProFeature("advancedTabProperties");
+    setTimeout(function() {
+			util.logDebug('onAdvancedProperties(evt)\n screenX = ' + x +'\n screenY = ' + y);
+			util.popupProFeature("advancedTabProperties");}
+		);
+		
+    // the window may correct its x position if cropped by screen's right edge
     let win = window.openDialog(
       'chrome://quickfolders/content/quickfolders-advanced-tab-props.xul',
-      'quickfilters-advanced','titlebar=no,close=no,chrome,alwaysRaised,top=' + y +',left=' + x, 
-      folder, entry);
-    // the window may correct its x position if cropped by screen's right edge
+      'quickfilters-advanced','alwaysRaised, titlebar=no,chrome,close=no,top=' + y +',left=' + x, 
+      folder, entry); // 
     win.focus();
   } ,
   
@@ -2739,13 +2822,10 @@ QuickFolders.Interface = {
           util = QuickFolders.Util;
 		let menupopup = document.createElement('menupopup'),
 		    menuitem,
-		    QuickFolderCmdMenu = null;
+		    QuickFolderCmdMenu = null,
+				xp = document.getElementById(popupId);
     if (!entry)
       entry = QuickFolders.Model.getFolderEntry(folder.URI);
-    if (!entry) {
-      debugger;
-    }
-    let xp = document.getElementById(popupId);
     if (xp && xp.parentNode)    
       xp.parentNode.removeChild(xp);
     
@@ -4057,7 +4137,8 @@ QuickFolders.Interface = {
 	onTabSelected: function onTabSelected(forceButton, forceFolder) {
 		let folder, selectedButton,
         util = QuickFolders.Util,
-        QI = QuickFolders.Interface; // let's not use _this_ in an event function
+        QI = QuickFolders.Interface,
+				prefs = QuickFolders.Preferences; // let's not use _this_ in an event function
 		try  {
 			// avoid TB logging unnecessary errors in Stack Trace
 			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
@@ -4072,9 +4153,21 @@ QuickFolders.Interface = {
       else
         folder = QI.getCurrentTabMailFolder();
       
-      util.logDebugOptional("interface", "onTabSelected(" + (forceButton || '') + ")\n folder = " + folder.prettyName);
+      util.logDebugOptional("interface", "onTabSelected("  
+			  + (forceButton || '') + ")\n folder = " 
+				+ (folder ? folder.prettyName : '<none>'));
 		}
-		catch (e) { return null; }
+		catch (e) { 
+		  util.logException("onTabSelected", e);
+			return null; 
+		}
+		
+		// new window: won't have active categories
+		if (QI.currentActiveCategories == null) {
+			let lc = prefs.lastActiveCats;
+			if (lc)
+				QI.currentActiveCategories = lc;
+		}
 		if (null == folder) return null; // cut out lots of unneccessary processing!
 		selectedButton = forceButton || QI.getButtonByFolder(folder);
     
@@ -4084,18 +4177,18 @@ QuickFolders.Interface = {
     }
 		
 		// update unread folder flag:
-		let showNewMail = QuickFolders.Preferences.isHighlightNewMail,
-		    newItalic = QuickFolders.Preferences.isItalicsNewMail,
-				tabStyle = QuickFolders.Preferences.ColoredTabStyle; // filled or striped
+		let showNewMail = prefs.isHighlightNewMail,
+		    newItalic = prefs.isItalicsNewMail,
+				tabStyle = prefs.ColoredTabStyle; // filled or striped
         
 		for (let i = 0; i < QI.buttonsByOffset.length; i++) {
 			let button = QI.buttonsByOffset[i];
 			// filled style, remove striped style
-			if ((tabStyle != QuickFolders.Preferences.TABS_STRIPED) && (button.className.indexOf("selected-folder")>=0))
+			if ((tabStyle != prefs.TABS_STRIPED) && (button.className.indexOf("selected-folder")>=0))
 				button.className = button.className.replace(/\s*striped/,"");
 
 			// striped style: make sure everyting is striped
-			if ((tabStyle == QuickFolders.Preferences.TABS_STRIPED) && (button.className.indexOf("striped")<0))
+			if ((tabStyle == prefs.TABS_STRIPED) && (button.className.indexOf("striped")<0))
 				button.className = button.className.replace(/(col[0-9]+)/,"$1striped");
 
 			button.className = button.className.replace(/\s*selected-folder/,"");
@@ -4132,7 +4225,7 @@ QuickFolders.Interface = {
     QuickFolders.Interface.styleSelectedTab(selectedButton);
 
 		QI.initCurrentFolderTab(QI.CurrentFolderTab, folder, selectedButton);
-    if (!QuickFolders.Preferences.supportsCustomIcon) {
+    if (!prefs.supportsCustomIcon) {
       let ic = util.$("context-quickFoldersIcon");
       if (ic) ic.collapsed = true;
       ic = util.$("context-quickFoldersRemoveIcon")
@@ -4143,7 +4236,7 @@ QuickFolders.Interface = {
     QI.lastTabSelected = folder;
     
 		// single message window:
-		if (QuickFolders.Preferences.isShowCurrentFolderToolbar('messageWindow')) {
+		if (prefs.isShowCurrentFolderToolbar('messageWindow')) {
 			let singleMessageWindow = util.getSingleMessageWindow();
 			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
 				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');

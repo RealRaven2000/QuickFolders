@@ -23,28 +23,45 @@ QuickFolders.Model = {
       // remove url(...) from Icon file name for storing in model.entry.icon
       return URL.substr(4, URL.length-5);
     }
-    let util = QuickFolders.Util;
+    const util = QuickFolders.Util,
+		      QI = QuickFolders.Interface;
     util.logDebug("model.addFolder");
     let entry = this.getFolderEntry(uri);
     if (entry) {
       // adding existing folder ...
       let category = entry.category || '',
-          currentCategoryList = QuickFolders.Interface.CurrentlySelectedCategories,
+          currentCategoryList = QI.CurrentlySelectedCategories,
 					newCats = currentCategoryList.split('|'),
 					oldCats = category.split('|'),
-					addCats = [];
+					addCats = [],
+					isVisible = false;
 			for (let i=0; i<newCats.length; i++) {
 				if (oldCats.indexOf(newCats[i]) == -1) {
-					addCats.push(newCats[i]);
+					// list of currently selected categories this entry is not currently part of
+					addCats.push(newCats[i]); 
 				}
+				else
+					isVisible = true; // we already see the tab
 			}
-      // adding folder to a different category
+      // adding folder to more categories
       if (addCats.length) {
         category = (oldCats.concat(addCats)).join('|');
         entry.category = category;
         this.update();
+				QuickFolders_MySelectFolder(entry.uri); // select folder to make more obvious
         return true;
       }
+			// the entry exists in all categories
+			try {
+				util.alert(util.getBundleString("qfFolderAlreadyBookmarked", "The folder " + uri  + " is already bookmarked."));
+				// select folder to make more obvious
+				QuickFolders_MySelectFolder(entry.uri);
+			} catch (e) { 
+				let msg = "Folder already bookmarked: " + uri + "\nCan not display message - " + e; 
+				util.logToConsole (msg); 
+				util.alert(msg); 
+			}
+		
     }
     // Create entirely new QF Tab
     else {
@@ -69,17 +86,7 @@ QuickFolders.Model = {
       util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Categories: " + categories);
       return true;
     }
-		// the entry exists in all categories
-		try {
-			util.alert(util.getBundleString("qfFolderAlreadyBookmarked", "The folder " + uri  + " is already bookmarked."));
-		} catch (e) { 
-			let msg = "Folder already bookmarked: " + uri + "\nCan not display message - " + e; 
-			util.logToConsole (msg); 
-			util.alert(msg); 
-		}
 
-		// switch to category if it exists
-		QuickFolders.Interface.selectCategory(entry.category,true);
     return false;
   } ,
 
@@ -279,7 +286,7 @@ QuickFolders.Model = {
   get Categories() {
     let categories = [];
     if (this.categoriesList.length>0)
-      return this.categoriesList;
+      return this.categoriesList; // return cached version of Categories list
 
     // can we add a color per category?
     for (let i = 0; i < this.selectedFolders.length; i++) {
@@ -301,10 +308,11 @@ QuickFolders.Model = {
         if (category) {
           let cats = category.split('|');
           for (let j=0; j<cats.length; j++) { // add it to list if it doesn't exist already.
-            if(  cats[j].length 
+            if  (cats[j].length 
               && cats[j] != '|' 
               && categories.indexOf(cats[j]) == -1) 
             {
+							// includes the special category "NEVER" (folder alias)
               categories.push(cats[j]);
             }
           }

@@ -66,9 +66,9 @@
 				          oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
 									sizetopopup="none" 
 									collapsed="true">
-						<menupopup>
-								<!-- filled dynamically from JS -->
-						</menupopup>
+					<menupopup>
+							<!-- filled dynamically from JS -->
+					</menupopup>
 				</menulist>
 				<hbox id="QuickFolders-oneButtonPanel">
 					<toolbarbutton id="QuickFolders-mainPopup"

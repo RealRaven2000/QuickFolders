@@ -17,15 +17,30 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
     -moz-appearance: none !important;
 }
 
-#QuickFolders-Toolbar.quickfolders-realTabs
-{
+#QuickFolders-Toolbar.quickfolders-realTabs {
   -moz-appearance: toolbar !important;
 }
-#QuickFolders-Toolbar.quickfolders-flat
-{
+#QuickFolders-Toolbar.quickfolders-flat {
   -moz-appearance: none !important; /* support coloring and bottom border */
 }
 
+#QuickFolders-Category-Selection menupopup menuitem[type="checkbox"] {
+	-moz-binding: url("chrome://global/content/bindings/menu.xml#menuitem-iconic");
+	-moz-appearance: checkmenuitem;
+}
+
+#QuickFolders-Category-Selection menupopup menuitem[checked=true]  {
+	font-weight: bold !important;
+}
+
+#QuickFolders-Category-Selection menupopup menuitem[type="checkbox"] .menu-iconic-left {
+  min-width: 1.45em;
+}
+
+#QuickFolders-Category-Selection menupopup menuitem[type="checkbox"] .menu-iconic-icon {
+  width: 16px;
+  height: 16px;
+}
 
 /** Postbox fixes */
 

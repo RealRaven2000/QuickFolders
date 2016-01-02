@@ -5,6 +5,13 @@ QuickFolders.Preferences = {
 	get isDebug() {
 		return this.getBoolPref("debug");
 	},
+	
+	set lastActiveCats(c) {
+		this.setStringPref('lastActiveCategories', c);
+	},
+	get lastActiveCats() {
+		return this.getStringPref('lastActiveCategories');
+	},
 
 	isDebugOption: function(option) { // granular debugging
 		if(!this.isDebug) return false;
@@ -407,7 +414,6 @@ QuickFolders.Preferences = {
 		return ans;
 	},
 	
-	
 	getStringPref: function getStringPref(p) {
     let prefString =''
     try {
@@ -421,7 +427,7 @@ QuickFolders.Preferences = {
     }
 	},
 	
-	setCharPrefQF: function setCharPrefQF(p, v) {
+	setStringPref: function setStringPref(p, v) {
 		return this.service.setCharPref("extensions.quickfolders." + p, v);
 	},
 
@@ -468,7 +474,7 @@ QuickFolders.Preferences = {
 	},
 
 	setCurrentThemeId: function setCurrentThemeId(t) {
-		return this.setCharPrefQF("style.theme",t);
+		return this.setStringPref("style.theme",t);
 	},
   
   get supportsCustomIcon() {

@@ -136,6 +136,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 					ComposeFields.bcc = targetString;
 					break;
 				case 'from':
+				  // ComposeFields.setAddressingHeader("From", [{name:'John Doe', email:'joe.doe@ttt.com'}], 1)
 					ComposeFields.from = targetString;
 					break;
 				case 'reply-to':
@@ -163,6 +164,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		
 		if (!entry) return; // no changes
 		
+		if (preferences.isDebugOption('composer')) debugger;
 		if (entry.toAddress)
 			modifyHeader('to', 'set', entry.toAddress);
 		if (entry.fromIdentity) {
@@ -170,8 +172,19 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 			    allIdentities = actMgr.allIdentities;
 			for (let i=0; i<allIdentities.length; i++) {
 				let identity = allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);
-				if (identity.identityName == entry.fromIdentity) {
-					modifyHeader('from', 'set', identity.email);
+				if (identity.key == entry.fromIdentity) {
+					let address = identity.fullName + " <" + identity.email +">";
+					// modifyHeader('from', 'set', address);
+					if (gMsgCompose.identity.key != identity.key) {
+						gMsgCompose.identity = identity;
+						// from MsgComposeCommands.js#4203
+						var identityList = document.getElementById("msgIdentity");
+						identityList.selectedItem =
+						 identityList.getElementsByAttribute("identitykey", identity.key)[0];
+						let event = document.createEvent('Events');
+						event.initEvent('compose-from-changed', false, true);
+						document.getElementById("msgcomposeWindow").dispatchEvent(event);
+					}
 					break;
 				}
 			}		
@@ -184,12 +197,19 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 
 
 QuickFolders.stateListener = {
-	NotifyComposeFieldsReady: function() {},
+	NotifyComposeFieldsReady: function() {
+		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'NotifyComposeFieldsReady');
+	},
 	NotifyComposeBodyReady: function() {
+		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'NotifyComposeBodyReady');
 		QuickFolders.notifyComposeBodyReady();
 	},
-	ComposeProcessDone: function(aResult) {},
-	SaveInFolderDone: function(folderURI) {}
+	ComposeProcessDone: function(aResult) {
+		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'ComposeProcessDone');
+	},
+	SaveInFolderDone: function(folderURI) {
+		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'SaveInFolderDone');
+	}
 };
 
 QuickFolders.initComposeListener = function QF_initListener() {

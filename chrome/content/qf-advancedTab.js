@@ -58,15 +58,16 @@ QuickFolders.AdvancedTab = {
     function appendIdentity(dropdown, id, account) {
       try {
         util.logDebugOptional('identities', 
-          'Account: ' + account.key + '...\n'  
+          'Account: ' + (account ? account.key : '0') + '...\n'  
           + 'appendIdentity [' + dropdownCount + ']\n'
           + '  identityName = ' + (id ? id.identityName : 'empty') + '\n'
           + '  fullName = ' + (id ? id.fullName : 'empty') + '\n' 
           + '  email = ' + (id.email ? id.email : 'empty'));
         let menuitem = document.createElement('menuitem');
 				if (id==-1) {
+					let defaultLabel = elem('defaultAccountAddress');
 					menuitem.setAttribute("value", "default");
-					menuitem.setAttribute("label", "not set");
+					menuitem.setAttribute("label", defaultLabel.getAttribute('value'));
 					menuitem.setAttribute("accountKey", 0);
 				}
 				else {
@@ -77,7 +78,7 @@ QuickFolders.AdvancedTab = {
 					menuitem.setAttribute("id", "id" + dropdownCount++);
 					// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
 					menuitem.setAttribute("fullName", id.fullName);
-					menuitem.setAttribute("value", id.email);
+					menuitem.setAttribute("value", id.key);
 					menuitem.setAttribute("accountKey", account.key);
 					menuitem.setAttribute("label", id.identityName ? id.identityName : id.email);
 				}
@@ -151,12 +152,15 @@ QuickFolders.AdvancedTab = {
         tabHeader = elem('myHeader');
     lbl.value = entry.category;
     tabHeader.setAttribute('description', entry.name);
+		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder.URI);
     
     // we wait as the width isn't correct on load
     // might be unnecessary as we react to WM_ONRESIZE
+		let win = window;
     setTimeout(
-      function () { QuickFolders.AdvancedTab.resize(); }, 
-      2000);  
+      function () {   
+			  QuickFolders.AdvancedTab.resize(win); 
+			});
   } ,
   
   close: function() {
@@ -247,25 +251,33 @@ QuickFolders.AdvancedTab = {
     elem('chkCustomPalette').checked = false;
     elem('txtColor').value = '';
     elem('txtBackground').value = '';
+		elem('txtToAddress').value = '';
+		elem('mailIdentity').value = 'default';
+		
     this.entry.flags = this.ADVANCED_FLAGS.NONE;
     // let's close the window with apply to unclunk it
     this.accept();
-    window.close();
+    // window.close();
   } ,
   
-  resize: function resize() {
+  resize: function resize(wd) {
+		const util = QuickFolders.Util;
+		if (util.isDebug) debugger;
     // make sure the window is placed below the referenced Tab, but not clipped by screen edge
-    let x = window.screenX,
-        y = window.screenY;
-    QuickFolders.Util.logDebug('Move window: \n' +
-      'Screen width      : ' + window.screen.width + '\n' +
-      'Window outer width: ' + window.outerWidth + '\n' +
-      'Current x position: ' + (x) + '\n' +
-      'Right hand edge   : ' + (x + window.outerWidth) + '\n'
+    let x = wd.screenX,
+        y = wd.screenY,
+				screen = wd.screen;
+    util.logDebug('Move window: \n' +
+      'Screen left, window left : ' + screen.left + ' , ' + x + '\n' +
+      'Screen width             : ' + screen.width + '\n' +
+      'Screen top,  window top  : ' + screen.top  + ' , '+ y + '\n' +
+      'Screen height            : ' + screen.height+ '\n' +
+      'Window outer width       : ' + wd.outerWidth + '\n' +
+      'Right hand edge          : ' + (x + wd.outerWidth) + '\n'
       );
-    let x2 = window.screen.width - window.outerWidth;
-    if (x+window.outerWidth > window.screen.width) {
-      window.moveTo(x2, y);
+    let x2 = screen.width + screen.left - wd.outerWidth; // multi monitor corrections
+    if (x + wd.outerWidth > screen.width + screen.left) {
+      wd.moveTo(x2, y);
     }
     
   } ,
@@ -312,6 +324,24 @@ QuickFolders.AdvancedTab = {
     // get selectedItem attributes
     let it = element.selectedItem,
         email = it.getAttribute('value');
+	} ,
+	
+	headerClick: function headerClick(event) {
+		const Cc = Components.classes,
+          Ci = Components.interfaces,
+					util = QuickFolders.Util;
+		let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+		event.stopPropagation();
+		switch (event.button) {
+			case 0: // default = left button
+			  break;
+			case 1: // middle button
+			  break;
+			case 2: // right button
+				clipboardhelper.copyString(this.folder.URI);
+			  util.slideAlert("QuickFolders", "Copied folder URI to clipboard\n" + this.folder.URI);
+			  break;
+		}
 	}
     
 }  // AdvancedTab

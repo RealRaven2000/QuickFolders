@@ -21,7 +21,6 @@
 	onload="QuickFolders.AdvancedTab.load();"
 	ondialogextra2="QuickFolders.AdvancedTab.defaults();"
 	ondialogextra1="QuickFolders.AdvancedTab.apply();"
-	onresize="QuickFolders.AdvancedTab.resize();"
 >
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
@@ -30,6 +29,7 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-advancedTab.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 
+	<label id="defaultAccountAddress" collapsed="true" value="&defaultAccountAddress.value;" />
 	<vbox>
 	  <hbox>
 			<dialogheader 
@@ -37,15 +37,19 @@
 				description="[Tab Name]"
 				id="myHeader"
 				flex="1"
+				onclick = "QuickFolders.AdvancedTab.headerClick(event);"
 				/>
-			<toolbarbutton
-			    class="close-icon"
-			    id="btnClose"
-					oncommand="QuickFolders.AdvancedTab.close();"
-				/>
+			<hbox>
+			  <spacer flex="1" />
+				<toolbarbutton
+						class="close-icon"
+						id="btnClose"
+						oncommand="QuickFolders.AdvancedTab.close();"
+					/>
+			</hbox>
 		</hbox>
 
-		<hbox align="center" >
+		<hbox align="center">
 		  <toolbarbutton label="&btnCategory;:"
 						oncommand="QuickFolders.AdvancedTab.configureCategory();"
 						tooltiptext="&btnCategory.tooltip;"
@@ -62,9 +66,9 @@
 					<column flex="2"/>
 				</columns>	
 				<rows>
-					<row>
+					<row align="center">
 						<label value="&fromAddress;"
-						       control="txtFromAddress"/>	
+						       control="mailIdentity"/>	
 						<menulist id="mailIdentity"
 											sizetopopup="none"
 											oncommand="QuickFolders.AdvancedTab.selectIdentity(this);"
@@ -73,7 +77,7 @@
 							</menupopup>
 						</menulist>
 					</row>
-					<row>
+					<row align="center">
 						<label value="&toAddress;"
 						       control="txtToAddress"/>	
 						<textbox id="txtToAddress" 

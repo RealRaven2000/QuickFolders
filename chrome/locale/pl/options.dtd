@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Dodatkowe elementy paska QuickFolders">
 <!ENTITY qf.checkbox.showRecentTab "Wyświetlaj przycisk „Ostatnio otwierane”">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Kliknij prawym przyciskiem, by zmienić konfigurację">
+<!ENTITY qf.group.navigation "Nawigacja wiadomościami">
+<!ENTITY qf.label.goNextUnread "Przejdź do następnej nieprzeczytanej wiadomości:">
+<!ENTITY qf.label.goNextUnread.tip "Zazwyczaj Thunderbird pyta, gdy użytkownik przechodzi do następnej nieprzeczytanej wiadomości, jeśli zachodzi potrzeba przejścia do innego folderu.">
+<!ENTITY qf.goNextUnread.auto "Przejdź do następnego folderu bez pytania (zalecane)">
+<!ENTITY qf.goNextUnread.prompt "Pytaj o przejście do następnego nieprzeczytanego folderu">
+<!ENTITY qf.goNextUnread.none "Nie rób nic, jeśli w folderze nie ma nieprzeczytanych wiadomości">
 <!ENTITY qf.checkbox.showQuickMove "Wyświetlaj przycisk QuickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Przycisk QuickMove może być używany do przeciągania wiadomości do folderu docelowego o określonej nazwie. Można zebrać wiadomości z wielu folderów. Po wybraniu pożądanych wiadomości, można wprowadzić nazwę folderu docelowego w panelu wyszukiwania.">
 <!ENTITY qf.checkbox.tabMenuIcon "Wyświetlaj ikonę menu na pasku QuickFolders">

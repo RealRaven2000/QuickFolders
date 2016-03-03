@@ -33,10 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Elementi della barra degli strumenti principale">
 <!ENTITY qf.checkbox.showRecentTab "Visualizza la scheda delle cartelle recenti">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Fare clic col pulsante destro del mouse per la configurazione">
-<!ENTITY qf.label.goNextUnread "Va al messaggio non letto seguente:">
-<!ENTITY qf.label.goNextUnread.tip "Quando si va al messaggio non letto successivo, solitamente Thunderbird chiede se deve spostarsi su un'altra cartella">
-<!ENTITY qf.goNextUnread.auto "Va alla cartella seguente senza chiedere (scelta consigliata)">
-<!ENTITY qf.goNextUnread.none "Non fare nulla se non ci sono messaggi non letti nella cartella">
+<!ENTITY qf.group.navigation "Navigazione fra i messaggi">
+<!ENTITY qf.label.goNextUnread "Va al messaggio non letto successivo:">
+<!ENTITY qf.label.goNextUnread.tip "Quando si va al messaggio non letto successivo, solitamente Thunderbird chiede se è necessario spostarsi su un'altra cartella">
+<!ENTITY qf.goNextUnread.auto "Va alla cartella successiva senza chiedere (scelta consigliata)">
+<!ENTITY qf.goNextUnread.prompt "Chiedi di andare al messaggio non letto successivo">
+<!ENTITY qf.goNextUnread.none "Non fare nulla qualora non ci siano messaggi non letti nella cartella">
 <!ENTITY qf.checkbox.showQuickMove "Pulsante quickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Il pulsante quickMove serve per trascinare messaggi di posta elettronica in una specifica cartella-destinazione. Si possono raccogliere messaggi provenienti da diverse cartelle. Una volta eseguita la raccolta, bisogna inserire nella casella di ricerca il nome della cartella-destinazione.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del menu della barra degli strumenti">

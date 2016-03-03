@@ -33,6 +33,13 @@
 <!ENTITY qf.label.mainToolbar "Elemente der Tableiste">
 <!ENTITY qf.checkbox.showRecentTab "Letzte Ordner Tab anzeigen">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklick für weitere Konfiguration">
+<!ENTITY qf.group.navigation "Mail Navigations Verhalten">
+<!ENTITY qf.label.goNextUnread "Gehe zur nächsten ungelesenen Nachricht:">
+<!ENTITY qf.label.goNextUnread.tip "Normalerweise fragt Thunderbird beim springen zur nächsten ungelesenen Nachricht wenn es in einen anderes Verzeichnis wechseln muss.">
+<!ENTITY qf.goNextUnread.auto "Ins nächste Verzeichnis springen ohne zu fragen (empfohlen)">
+<!ENTITY qf.goNextUnread.prompt "Vor Verzeichniswechsel fragen">
+<!ENTITY qf.goNextUnread.none "Nichts tun, wenn im aktuellen Verzeichnis keine ungelesene Mail übrig ist">
+
 <!ENTITY qf.checkbox.showQuickMove "quickMove Schaltfläche">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Diese Schaltfläche kann benutzt werden um Emails in einen beliebiges Verzeichnis zu ziehen; es können mails von verschiedenen Verzeichnissen angesammelt werden. Wenn die Liste komplett ist, einfach im Suchfeld den Verzeichnisnamen eingeben.">
 <!ENTITY qf.checkbox.tabMenuIcon "Tableisten Menü Icon">

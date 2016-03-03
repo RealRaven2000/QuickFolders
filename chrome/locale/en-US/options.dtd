@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Main Toolbar Elements">
 <!ENTITY qf.checkbox.showRecentTab "Display Recent Folders Tab">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Right click for configuration">
+<!ENTITY qf.group.navigation "Message Navigation">
+<!ENTITY qf.label.goNextUnread "Go to next unread email:">
+<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to fo to a different folder.">
+<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
+<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
+<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "quickMove Button">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box.">
 <!ENTITY qf.checkbox.tabMenuIcon "Toolbar Menu Icon">

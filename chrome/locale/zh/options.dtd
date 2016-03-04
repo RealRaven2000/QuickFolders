@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "主要工具列元件">
 <!ENTITY qf.checkbox.showRecentTab "顯示最近使用的資料夾標籤">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "以滑鼠右鍵點選來確認">
+<!ENTITY qf.group.navigation "訊息瀏覽">
+<!ENTITY qf.label.goNextUnread "跳至下一封未讀E-mail:">
+<!ENTITY qf.label.goNextUnread.tip "一般來說，Thunderbird會在您跳至下一封未讀郵件，且為不同資料夾時詢問。">
+<!ENTITY qf.goNextUnread.auto "跳至下一個資料夾而不詢問（建議）">
+<!ENTITY qf.goNextUnread.prompt "跳至下一個資料夾但要詢問">
+<!ENTITY qf.goNextUnread.none "如果在資料夾中沒有未讀郵件，將不進行動作">
 <!ENTITY qf.checkbox.showQuickMove "quickMove 按鈕">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "quickMove 按鈕可以使用在拖曳E-mail至已命名的目標資料夾。你可以從不同的資料夾來收集E-mail。當你有想找的E-mail，在搜尋列中輸入目標的資料夾名稱。">
 <!ENTITY qf.checkbox.tabMenuIcon "工具列選單圖示">

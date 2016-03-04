@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Элементы основной панели инструментов">
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
+<!ENTITY qf.group.navigation "Навигация по сообщениям">
+<!ENTITY qf.label.goNextUnread "Переходя к следующему непрочитанному сообщению:">
+<!ENTITY qf.label.goNextUnread.tip "Обычно Thunderbird спрашивает разрешение, если при переходе к следующему непрочитанному сообщению нужно сменить папку.">
+<!ENTITY qf.goNextUnread.auto "Менять папку не спрашивая (рекомендовано)">
+<!ENTITY qf.goNextUnread.prompt "Спрашивать разрешение на смену папки.">
+<!ENTITY qf.goNextUnread.none "Ничего не делать если в папке не осталось непрочитанных сообщений">
 <!ENTITY qf.checkbox.showQuickMove "Кнопка &quot;Быстрое перемещение&quot;">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Кнопка &quot;Быстрое перемещение&quot; позволяет переместить сообщения из различных папок в одну. После того как сообщения были собраны, введите название папки назначения в строке поиска.">
 <!ENTITY qf.checkbox.tabMenuIcon "Значок меню на панели инструментов">

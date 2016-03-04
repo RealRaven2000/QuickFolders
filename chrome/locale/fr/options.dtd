@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Éléments de la barre d'outils principale">
 <!ENTITY qf.checkbox.showRecentTab "Afficher l'onglet des dossiers récents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic droit pour la configuration">
+<!ENTITY qf.group.navigation "Parcours des messages">
+<!ENTITY qf.label.goNextUnread "Aller au courriel non lu suivant :">
+<!ENTITY qf.label.goNextUnread.tip "Habituellement, Thunderbird demande lorsque vous aller au courriel non lu suivant s'il doit passer dans le dossier si besoin.">
+<!ENTITY qf.goNextUnread.auto "Aller dans le dossier suivant sans demander (recommandé)">
+<!ENTITY qf.goNextUnread.prompt "Demander s'il faut passer au dossier non lu suivant">
+<!ENTITY qf.goNextUnread.none "Ne rien faire s'il n'y a plus de courriel non lu dans le dossier">
 <!ENTITY qf.checkbox.showQuickMove "Bouton déplacement rapide">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Le bouton de déplacement rapide peut être utilisé pour glisser des courriels vers un dossier de destination. Vous pouvez regrouper plusieurs messages à partir de différents dossiers. Une fois le déplacement vers la boîte de recherche effectué, indiquez le nom de dossier.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icône du menu de la barre d'outils">

@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "Elementos principales de la barra">
 <!ENTITY qf.checkbox.showRecentTab "Mostrar pestaña de carpetas recientes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic derecho para configurar">
+<!ENTITY qf.group.navigation "Navegación de mensajes">
+<!ENTITY qf.label.goNextUnread "Ir al siguiente mensaje no leído:">
+<!ENTITY qf.label.goNextUnread.tip "Usualmente Thunderbird pregunta si necesita pasar a otra carpeta cuando se va al siguiente mensaje no leído.">
+<!ENTITY qf.goNextUnread.auto "Ir a la siguiente carpeta sin preguntar (recomendado)">
+<!ENTITY qf.goNextUnread.prompt "Preguntar si ir a la siguiente carpeta no leída">
+<!ENTITY qf.goNextUnread.none "No hacer nada si en la carpeta no quedan mensajes sin leer">
 <!ENTITY qf.checkbox.showQuickMove "Botón quickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "El botón quickMove puede ser usado para arrastrar correos a una carpeta destino. Puedes recopilar correos de varias carpetas. Una vez que tenga los correos deseados en ella, introduzca el nombre de la carpeta de destino en el cuadro de búsqueda.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícono de menú de herramientas">

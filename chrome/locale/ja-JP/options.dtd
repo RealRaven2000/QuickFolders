@@ -33,6 +33,12 @@
 <!ENTITY qf.label.mainToolbar "メインツールバーの要素">
 <!ENTITY qf.checkbox.showRecentTab "最近開いたフォルダのタブを表示する">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "右クリックで設定を開きます">
+<!ENTITY qf.group.navigation "メッセージナビゲーション">
+<!ENTITY qf.label.goNextUnread "次の未読メールへ移動:">
+<!ENTITY qf.label.goNextUnread.tip "次の未読メールが別のフォルダにある場合、別のフォルダへ移動してよいか Thunderbird が確認します。">
+<!ENTITY qf.goNextUnread.auto "確認せずに次のフォルダへ移動する (推奨)">
+<!ENTITY qf.goNextUnread.prompt "次の未読フォルダへの移動を確認する">
+<!ENTITY qf.goNextUnread.none "フォルダ内に未読メールが無い場合は何もしない">
 <!ENTITY qf.checkbox.showQuickMove "quickMove ボタン">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "quickMove ボタンは、メールをドラッグして目的のフォルダへ移動するのに使用します。複数のフォルダから対象のメールを集め、検索ボックスに移動先のフォルダ名を入力してください。">
 <!ENTITY qf.checkbox.tabMenuIcon "ツールバーメニューアイコン">

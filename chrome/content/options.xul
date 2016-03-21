@@ -32,17 +32,22 @@
 		<box id="qf-header-container">
 			<vbox>
 				<spacer flex="1" />
-				<image id="qf-options-icon" src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" 
-				onclick="QuickFolders.Options.collapseHead();"/>
+				<image id="qf-options-icon" 
+				       src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" 
+				       onclick="QuickFolders.Options.collapseHead();"/>
 				<spacer flex="1" />
 			</vbox>
-			<hbox id="qf-options-header" class="paneSelector" flex="1">
+			<hbox id="qf-options-header" class="paneSelector" flex="1" align="center">
 				<label id="dialogProductTitle"
 							 class="dialogheader-title"
 							 value="&qf.label.quickfolders;" />
+				<image id="qf-youtube" 
+				       src="chrome://quickfolders/skin/ico/youtube.png" 
+							 tooltiptext="&qf.youtube.tbdaily;"
+				       onclick="QuickFolders.Util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
 				<spacer flex="1" />
 				<label id="qf-options-header-description"
-							 oncontextmenu="QuickFolders.Options.showVersionHistory(this, true);return false;"
+							 onclick="QuickFolders.Options.showVersionHistory(this, true);return false;"
 							 tooltiptext="&qf.options.versionnumber.tooltip;" />
 			</hbox>
 		</box>
@@ -85,6 +90,7 @@
 						<preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int" />
 						<preference id="QuickFolders-Preferences-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool" />
 						<preference id="QuickFolders-Preferences-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool" />
+						<preference id="Thunderbird-Preference-FolderCrossing" name="mailnews.nav_crosses_folders" type="int" />
 						<preference id="QuickFolders-Preferences-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool" />
 						<preference id="QuickFolders-Preferences-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickJumpShortcut" name="extensions.quickfolders.quickJump.useHotkey" type="bool" />
@@ -221,6 +227,29 @@
 												instantApply="true"
 												oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
+						</groupbox>
+					</hbox>
+					<hbox>
+						<groupbox flex="2">
+							<caption label="&qf.group.navigation;" />
+							<hbox align="center">
+								<label value="&qf.label.goNextUnread;"
+											 tooltiptext="&qf.label.goNextUnread.tip;"
+											 />
+								<menulist sizetopopup="none"
+													preference="Thunderbird-Preference-FolderCrossing"
+													instantApply="true"
+													oncommand="QuickFolders.Options.selectFolderCrossing(this);">
+									<menupopup>
+										<menuitem label="&qf.goNextUnread.auto;"
+															value="0" />
+										<menuitem label="&qf.goNextUnread.prompt;"
+															value="1" />
+										<menuitem label="&qf.goNextUnread.none;"
+															value="2" />
+									</menupopup>
+								</menulist>
+							</hbox>
 						</groupbox>
 					</hbox>
 				</tabpanel>
@@ -917,7 +946,7 @@
 								<div id="L4"
 								     class="button"
 											 tooltiptext="www.babelzilla.org?extension=5099"
-											 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099')">
+											 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099');">
 									<label>&qf.label.languagesLink;</label>
 								</div>
 							</row>

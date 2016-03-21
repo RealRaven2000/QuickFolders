@@ -184,7 +184,8 @@ QuickFolders.Options = {
   
 	load: function load() {
 		const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences;
+		      prefs = QuickFolders.Preferences,
+					licenser = util.Licenser;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -225,12 +226,13 @@ QuickFolders.Options = {
     /*****  License  *****/
     // licensing tab - we also need a "renew license"  label!
     util.logDebugOptional('options', 'QuickFolders.Options.load - check License...');
-    let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense", "Get License!");
-    getElement("btnLicense").label=regBtn;
+    let buyLabel = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!");
+
+    getElement("btnLicense").label = buyLabel;
     // validate License key
-    QuickFolders.Licenser.LicenseKey = prefs.getStringPref('LicenseKey');
-    getElement('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
-    if (QuickFolders.Licenser.LicenseKey) {
+    licenser.LicenseKey = prefs.getStringPref('LicenseKey');
+    getElement('txtLicenseKey').value = licenser.LicenseKey;
+    if (licenser.LicenseKey) {
       this.validateLicense(false);
     }
     
@@ -282,11 +284,11 @@ QuickFolders.Options = {
     let EncryptionKey = prefs.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
     if (EncryptionKey) {
       getElement('boxKeyGenerator').collapsed = false;
-      QuickFolders.Licenser.RSA_encryption = EncryptionKey;
+      licenser.RSA_encryption = EncryptionKey;
     }
     
     if (earlyExit) return;
-    if (QuickFolders.Licenser.isValidated)
+    if (licenser.isValidated)
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog...');
           QuickFolders.Interface.removeAnimations('quickfolders-options.css');
@@ -417,6 +419,14 @@ QuickFolders.Options = {
     QuickFolders.Util.logDebug('Setting quick move format pref[' + prefName1 + ']: ' + val + '...');
     QuickFolders.Preferences.setIntPreference(prefName1, parseInt(val));
   } ,
+	
+	selectFolderCrossing: function selectFolderCrossing(menuList) {
+    let prefString = menuList.getAttribute('preference'),
+        prefName = document.getElementById(prefString).getAttribute('name'),
+        val = menuList.value;
+    QuickFolders.Util.logDebug('Setting folder crossing pref[' + prefName1 + ']: ' + val + '...');
+    QuickFolders.Preferences.setIntPreference(prefName, parseInt(val));
+	} ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
     let getElement      = document.getElementById.bind(document),
@@ -443,6 +453,9 @@ QuickFolders.Options = {
   },
   
   decryptLicense: function decryptLicense(testMode) {
+		const util = QuickFolders.Util,
+		      licenser = util.Licenser,
+					State = licenser.ELicenseState;
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
         validationFailed       = getElement('validationFailed'),
@@ -450,7 +463,7 @@ QuickFolders.Options = {
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
         decryptedMail, decryptedDate,
-        util = QuickFolders.Util;
+				result = State.NotValidated;
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
     validationExpired.collapsed = true;
@@ -459,18 +472,17 @@ QuickFolders.Options = {
     this.enablePremiumConfig(false);
     try {
       this.trimLicense();
-      let State = QuickFolders.Licenser.ELicenseState,
-          txtBox = getElement('txtLicenseKey'),
+      let txtBox = getElement('txtLicenseKey'),
           license = txtBox.value;
       // store new license key
       if (!testMode) // in test mode we do not store the license key!
         QuickFolders.Preferences.setStringPref('LicenseKey', license);
       
       let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
-          result, LicenseKey,
-          crypto = QuickFolders.Licenser.getCrypto(license),
-          mail = QuickFolders.Licenser.getMail(license),
-          date = QuickFolders.Licenser.getDate(license);
+          LicenseKey,
+          crypto = licenser.getCrypto(license),
+          mail = licenser.getMail(license),
+          date = licenser.getDate(license);
       if (QuickFolders.Preferences.isDebug) {
         let test = 
             "┌───────────────────────────────────────────────────────────────┐\n"
@@ -484,12 +496,12 @@ QuickFolders.Options = {
         util.logDebug(test);
       }
       if (crypto)
-        [result, LicenseKey] = QuickFolders.Licenser.validateLicense(license, maxDigits);
+        [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
       else 
         result = State.Invalid;
-      decryptedDate = QuickFolders.Licenser.DecryptedDate;
+      decryptedDate = licenser.DecryptedDate;
       getElement('licenseDate').value = decryptedDate; // invalid ??
-      decryptedMail = QuickFolders.Licenser.DecryptedMail;
+      decryptedMail = licenser.DecryptedMail;
       switch(result) {
         case State.Valid:
           this.enablePremiumConfig(true);
@@ -536,6 +548,7 @@ QuickFolders.Options = {
     catch(ex) {
       util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
     }
+		return result;
   } ,
   
   pasteLicense: function pasteLicense() {
@@ -563,8 +576,31 @@ QuickFolders.Options = {
   } ,
   
   validateLicense: function validateLicense(testMode) {
+    let wd = window.document,
+        getElement = wd.getElementById.bind(wd),
+        btnLicense = getElement("btnLicense");
+		const util = QuickFolders.Util,
+					State = util.Licenser.ELicenseState,
+					QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
     try {
-      this.decryptLicense(testMode);
+			let result = this.decryptLicense(testMode);
+			switch(result) {
+				case State.Valid:
+				  btnLicense.collapsed = true;
+					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
+				  break;
+				case State.Expired:
+					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+					btnLicense.label = txtRenew;
+					QI.TitleLabel.label = txtRenew;
+				  btnLicense.collapsed = false;
+					break;
+				default:
+				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
+				  btnLicense.collapsed = false;
+					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
+			}
+			util.logDebug('validateLicense - result = ' + result);
     }
     catch(ex) {
       QuickFolders.Util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
@@ -572,8 +608,9 @@ QuickFolders.Options = {
   } ,
   
   restoreLicense: function restoreLicense() {
-    QuickFolders.Licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'); 
-    document.getElementById('txtLicenseKey').value = QuickFolders.Licenser.LicenseKey;
+		const licenser = QuickFolders.Util.Licenser;
+		licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'); 
+    document.getElementById('txtLicenseKey').value = licenser.LicenseKey;
   },
   
   // only for testing, hence no l10n !
@@ -597,16 +634,15 @@ QuickFolders.Options = {
         }
       }
     }
-    let encrypted = QuickFolders.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
+    let encrypted = QuickFolders.Util.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
     document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
   },
   
 	selectTheme: function selectTheme(wd, themeId) {
+		const util = QuickFolders.Util,
+				  QI = QuickFolders.Interface;
 		let myTheme = QuickFolders.Themes.Theme(themeId),
-        getElement = wd.getElementById.bind(wd),
-        util = QuickFolders.Util,
-        main = util.getMail3PaneWindow(),
-        QI = main.QuickFolders.Interface;
+        getElement = wd.getElementById.bind(wd);
 		if (myTheme) {
 		  try {
 				getElement("QuickFolders-Theme-Selector").value = themeId;
@@ -692,9 +728,11 @@ QuickFolders.Options = {
 		document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
     QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN', 4);
     QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN', 0);
-    let main = QuickFolders.Util.getMail3PaneWindow(),
-        QI = main.QuickFolders.Interface; 
-    QI.updateUserStyles();
+    let main = QuickFolders.Util.getMail3PaneWindow();
+		if (main) {
+      const QI = main.QuickFolders.Interface; 
+			QI.updateUserStyles();
+		}
 	},
 
 	colorPickerTranslucent: function colorPickerTranslucent(picker) {
@@ -1204,7 +1242,8 @@ QuickFolders.Options = {
 		let checked = chk.checked ? chk.checked : false,
         util = QuickFolders.Util,
         win = (selector=='messageWindow') ? util.getSingleMessageWindow() : util.getMail3PaneWindow();
-    win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
+		if (win)
+			win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
 	},
 	
   onTabSelect: function onTabSelect(element, event) {

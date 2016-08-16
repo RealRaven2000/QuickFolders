@@ -39,6 +39,11 @@
 	font-family: Calibri,sans-serif;
 }
 
+#qf-youtube {
+	cursor: pointer;
+	max-height: 24px;
+}
+
 #qf-options-header label {
   padding: 8px;
 }
@@ -53,13 +58,19 @@
 
 /* version number */
 #qf-options-header-description {
-	font-size: 11pt;
-	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
+	background-color: rgba(150,150,150,0.15);
+	border-radius: 6px;
 	color: white !important;
+	font-size: 11pt;
+	margin-bottom: 7px;
+  padding: 4px 8px !important;
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
 }
 
 #qf-options-header-description:hover {
 	cursor: pointer;
+	background-color: rgba(180,200,220,0.25);
+	border: 1px solid rgba(255,255,255,0.6);
 }
 
 /* preview container which represents the toolbar */

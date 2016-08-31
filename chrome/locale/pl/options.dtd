@@ -88,8 +88,10 @@
 <!ENTITY qf.checkbox.debug "Tryb debugowania">
 <!ENTITY qf.checkbox.debug.tooltip "Kliknij tutaj prawym przyciskiem, by wyświetlić zaawansowane opcje debugowania">
 <!ENTITY qf.label.initdelay "[ms] opóźnienie startu {1000 - wartość standardowa}:">
-<!ENTITY qf.label.folders "Foldery?">
-<!ENTITY qf.label.folders.tooltip "Kopiuje zapis konfiguracji folderów do schowka">
+<!ENTITY qf.copyfolders "Kopiuj zakładki">
+<!-- obsolete ?? double check in js code -->
+<!ENTITY qf.copyfolders.tooltip "Kopiuje zapis konfiguracji folderów do schowka">
+<!ENTITY qf.pastefolders.tooltip "Usuń całą konfigurację QuickFolders i odczytaj nową ze schowka">
 <!ENTITY qf.label.appearance "Wygląd">
 <!ENTITY qf.label.themes "Tematy:">
 <!ENTITY qf.themes.flatTabs.label "Flat Style">
@@ -179,7 +181,6 @@
 <!ENTITY qf.checkbox.readingList "Lista do odczytania">
 <!ENTITY qf.checkbox.readingList.tooltip "Lista wiadomości, które należy przeczytać później. Przeciągnij ważne wiadomości na ten przycisk.">
 <!ENTITY qf.label.donate "Przekaż dotację">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamkni], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">
 <!ENTITY qf.checkbox.usePalette "Użyj palety">
 <!ENTITY qf.options.theme.pastelColors "Kolory pastelowe">

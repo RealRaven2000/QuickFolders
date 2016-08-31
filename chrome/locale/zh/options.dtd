@@ -88,8 +88,9 @@
 <!ENTITY qf.checkbox.debug "除錯模式">
 <!ENTITY qf.checkbox.debug.tooltip "以滑鼠右鍵選取進階除錯選項">
 <!ENTITY qf.label.initdelay "初始延遲（1000是預設值）[毫秒]：">
-<!ENTITY qf.label.folders "資料夾？">
-<!ENTITY qf.label.folders.tooltip "複製資料夾設定於剪貼簿中">
+<!ENTITY qf.copyfolders "複製分頁">
+<!ENTITY qf.copyfolders.tooltip "複製資料夾設定於剪貼簿中">
+<!ENTITY qf.pastefolders.tooltip "刪除所有QuickFolders並且從剪貼簿讀取新的設定值">
 <!ENTITY qf.label.appearance "外觀">
 <!ENTITY qf.label.themes "佈景主題：">
 <!ENTITY qf.themes.flatTabs.label "平面風格">

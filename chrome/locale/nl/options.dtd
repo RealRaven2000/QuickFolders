@@ -88,8 +88,8 @@
 <!ENTITY qf.checkbox.debug "Foutopsporingsmodus">
 <!ENTITY qf.checkbox.debug.tooltip "rechtsklik dit aanvinkveld voor geavanceerde foutopsporingsopties">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
-<!ENTITY qf.label.folders "Mappen?">
-<!ENTITY qf.label.folders.tooltip "Kopieert de configuratie-string voor mappen bevat naar het klembord">
+<!-- obsolete ?? double check in js code -->
+<!ENTITY qf.copyfolders.tooltip "Kopieert de configuratie-string voor mappen bevat naar het klembord">
 <!ENTITY qf.label.appearance "Weergave">
 <!ENTITY qf.label.themes "Thema’s:">
 <!ENTITY qf.themes.flatTabs.label "Vlakke stijl">
@@ -179,7 +179,6 @@
 <!ENTITY qf.checkbox.readingList "Leeslijst">
 <!ENTITY qf.checkbox.readingList.tooltip "Een lijst met e-mailberichten die later gelezen moeten worden. Versleep uw belangrijke berichten naar deze knop.">
 <!ENTITY qf.label.donate "Doneren">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
 <!ENTITY qf.checkbox.usePalette "Palet gebruiken">
 <!ENTITY qf.options.theme.pastelColors "Pastelkleuren">

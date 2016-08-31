@@ -43,7 +43,6 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 }
 
 /** Postbox fixes */
-
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] .messageCloseButton {
    visibility: collapse !important;
  }
@@ -64,4 +63,3 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] button:nth-child(2) label {
    visibility: collapse !important;
  }
- 

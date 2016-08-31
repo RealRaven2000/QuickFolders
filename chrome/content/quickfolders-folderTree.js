@@ -32,7 +32,7 @@ QuickFolders.FolderTree = {
           }
           
           try {
-            let folderIcon = folder.getStringProperty("folderIcon");
+            let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
             if (folderIcon) {
               // save folder icon selector
               props += " " + folderIcon;
@@ -80,12 +80,7 @@ QuickFolders.FolderTree = {
 		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items...');
     if (util.supportsMap) { 
-      /*    NOT ALLOWED BECAUSE STUPID POSTBOX THROWS A SYNTAX ERROR
-            EVEN THOUGH THIS CODE IS NEVER EXECUTED
-      for (let [key, value] of theEntries) {
-        iterate(key,value);
-      }
-      */
+		  // should be for..of
       this.dictionary.forEach(
         function(value, key, map) {
           iterate(key,value);
@@ -101,7 +96,7 @@ QuickFolders.FolderTree = {
 	} ,
 	
   hasTreeItemFolderIcon: function(folder) {
-    let folderIcon = folder ? folder.getStringProperty("folderIcon") : '';
+    let folderIcon = (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
     if (!folder || folderIcon=='' || folderIcon=='noIcon') 
       return false;
     return true;
@@ -113,7 +108,7 @@ QuickFolders.FolderTree = {
     util.logDebugOptional('folderTree.icons', 'addFolderIconToElement(' + element.tagName + ', ' + folder.prettyName + ')');
 	  let hasIcon;
 	  try {
-			let folderIcon = folder ? folder.getStringProperty("folderIcon") : '';
+			let folderIcon =  (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
 			if (!folder || folderIcon=='' || folderIcon=='noIcon') {
 				// element.style.listStyleImage = '';
 				hasIcon = false;
@@ -145,6 +140,7 @@ QuickFolders.FolderTree = {
 		    iIcons = 0;
 		for (let folder in util.allFoldersIterator()) {
 		  iCount++;
+			if (typeof folder.getStringProperty == 'undefined') continue;
 			let key = folder.getStringProperty("folderIcon"),
 			    url = folder.getStringProperty("iconURL");
 		

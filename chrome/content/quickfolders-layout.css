@@ -8,8 +8,8 @@
 	background: transparent !important;
 	border-style: none !important;
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
-	min-height:16px;
-	height:16px !important; 
+	min-height: 16px;
+	height: 16px !important; 
 	background-size: 16px 16px !important;
 	padding-top: 0;
 	padding-bottom: 0;
@@ -153,14 +153,14 @@
 	vertical-align:top;
 }
 
-#QuickFolders-Toolbar toolbarbutton[biffState-NewItalics].has-unread > label,
-#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
-#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewItalics].has-unread > label,
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
 {
 	font-style: italic;
 }
 
-#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread > label
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread > label
 {
 	border-radius: 3px;
 	color: #fff;
@@ -172,14 +172,14 @@
 	border-width: 1px;
 }
 
-#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread, 
-#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
-#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
+#QuickFolders-FoldersBox toolbarbutton[biffState-NewMail].has-unread, 
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
 {
 	list-style-image: url("chrome://quickfolders/skin/ico/newUnread.png") !important;
 }
-#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread ,
-#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread 
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread ,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread 
 {
 	border: 1px dotted #aaa !important;
 	box-shadow: 1px 1px 2px 1px #111;
@@ -215,7 +215,7 @@
  {
 	margin: 0 !important;
 	padding: 0 !important;
-	min-height:0; max-height:0;height:0;
+	min-height:0; max-height:0; height:0;
 }
 
 #QuickFolders-Toolbar toolbarbutton.selected-folder > label {
@@ -289,9 +289,17 @@
 	min-width: 0px !important;
 }
 
-#QuickFolders-title-label {
-	line-height: 24px;
+#QuickFolders-Toolbar #QuickFolders-title-label {
+	-moz-appearance: none;
+	background: transparent !important;
+	border-radius: 0.4em !important;
 	font-weight: bold;
+	line-height: 24px;
+}
+#QuickFolders-Toolbar #QuickFolders-title-label:hover {
+	border-color: rgb(255, 255, 255);
+	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;	
+	color: rgb(255, 255, 255);
 }
 
 #QuickFolders-FoldersBox {
@@ -464,21 +472,22 @@ toolbar.quickfolders-flat {
 
 /** DRAG TOOLBARBUTTONS **/
 
-#QuickFolders-Toolbar .folderBarContainer toolbarbutton.dragRIGHT:-moz-drag-over,
-#QuickFolders-Toolbar .folderBarContainer toolbarbutton.dragRIGHT.pastel:-moz-drag-over,
-#QuickFolders-Toolbar .folderBarContainer toolbarbutton[label].dragRIGHT:-moz-drag-over,
-#QuickFolders-Toolbar .folderBarContainer toolbarbutton[label].dragRIGHT.pastel:-moz-drag-over
+#QuickFolders-FoldersBox.folderBarContainer toolbarbutton.dragRIGHT:-moz-drag-over,
+#QuickFolders-FoldersBox.folderBarContainer toolbarbutton.dragRIGHT.pastel:-moz-drag-over,
+#QuickFolders-FoldersBox.folderBarContainer toolbarbutton[label].dragRIGHT:-moz-drag-over,
+#QuickFolders-FoldersBox.folderBarContainer toolbarbutton[label].dragRIGHT.pastel:-moz-drag-over
 {
 	background-image: url("chrome://quickfolders/skin/ico/dropRight.gif") !important;
 	background-position: right center !important;
 	background-repeat: no-repeat !important;
 }
 
-#QuickFolders-Toolbar toolbarbutton.dragLEFT:-moz-drag-over {
+#QuickFolders-FoldersBox toolbarbutton.dragLEFT:-moz-drag-over {
 	list-style-image: url("chrome://quickfolders/skin/ico/dropLeft.gif") !important;
 }
 
-#QuickFolders-Toolbar toolbarbutton .toolbarbutton-icon,
+
+#QuickFolders-FoldersBox toolbarbutton .toolbarbutton-icon,
 #QuickFolders-CurrentFolderTools toolbarbutton .toolbarbutton-icon {
   margin-left: 2px;
   margin-right: 1px;
@@ -487,7 +496,7 @@ toolbar.quickfolders-flat {
 	min-height: 16px;
 }
 
-#QuickFolders-Toolbar.quickfolders-pills toolbarbutton .toolbarbutton-icon {
+#QuickFolders-FoldersBox.quickfolders-pills toolbarbutton .toolbarbutton-icon {
   margin-left: 0px;
 }
 
@@ -680,6 +689,7 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
 	text-decoration: underline;
 }
 
+
 menupopup.QuickFolders-folder-popup menuitem:hover,
 menupopup.QuickFolders-folder-popup menu:hover
 {
@@ -694,8 +704,9 @@ menupopup.QuickFolders-folder-popup menu.mailCmd:hover,
 }
 
 menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new , 
-menuitem#folderPaneContext-new, menuitem#folderPaneContext-new:-moz-drag-over {
-	list-style-image : url('chrome://quickfolders/skin/ico/folder-new.png');
+menuitem#folderPaneContext-new:-moz-drag-over, 
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new:-moz-drag-over {
+	list-style-image : url('chrome://quickfolders/skin/ico/folder-new.png') !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {

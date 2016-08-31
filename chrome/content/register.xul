@@ -39,7 +39,7 @@
 					<button id="btnEnterCode"
 									label="&enterLicenseKey.button;"
 									tooltiptext="&enterLicenseKey.tooltip;"
-									oncommand="QuickFolders.Interface.viewLicense();" />
+									oncommand="QuickFolders.Interface.viewLicense();window.close();" />
 				</hbox>
 			</vbox>
 			

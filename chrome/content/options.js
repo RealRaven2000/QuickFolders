@@ -52,36 +52,38 @@ QuickFolders.Options = {
     let getElement = document.getElementById.bind(document);
 		// persist colors
 		try {
-			QuickFolders.Preferences.setCurrentThemeId(getElement("QuickFolders-Theme-Selector").value);
+			const prefs = QuickFolders.Preferences;
+			prefs.setCurrentThemeId(getElement("QuickFolders-Theme-Selector").value);
 
-			QuickFolders.Preferences.setUserStyle("ActiveTab","background-color",
+			prefs.setUserStyle("ActiveTab","background-color",
 							getElement("activetab-colorpicker").color);
-			QuickFolders.Preferences.setUserStyle("ActiveTab","color",
+			prefs.setUserStyle("ActiveTab","color",
 							getElement("activetab-fontcolorpicker").color);
 
-			QuickFolders.Preferences.setUserStyle("InactiveTab","background-color",
+			prefs.setUserStyle("InactiveTab","background-color",
 							getElement("inactive-colorpicker").color);
-			QuickFolders.Preferences.setUserStyle("InactiveTab","color",
+			prefs.setUserStyle("InactiveTab","color",
 							getElement("inactive-fontcolorpicker").color);
 
-			QuickFolders.Preferences.setUserStyle("HoveredTab","background-color",
+			prefs.setUserStyle("HoveredTab","background-color",
 							getElement("hover-colorpicker").color);
-			QuickFolders.Preferences.setUserStyle("HoveredTab","color",
+			prefs.setUserStyle("HoveredTab","color",
 							getElement("hover-fontcolorpicker").color);
 
-			QuickFolders.Preferences.setUserStyle("DragTab","background-color",
+			prefs.setUserStyle("DragTab","background-color",
 							getElement("dragover-colorpicker").color);
-			QuickFolders.Preferences.setUserStyle("DragTab","color",
+			prefs.setUserStyle("DragTab","color",
 							getElement("dragover-fontcolorpicker").color);
 
-			QuickFolders.Preferences.setUserStyle("Toolbar","background-color",
+			prefs.setUserStyle("Toolbar","background-color",
 							getElement("toolbar-colorpicker").color);
-			QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN',
+			prefs.setIntPref('style.corners.customizedTopRadiusN',
 							getElement("QuickFolders-Options-CustomTopRadius").value);
-			QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN',
+			prefs.setIntPref('style.corners.customizedBottomRadiusN',
 							getElement("QuickFolders-Options-CustomBottomRadius").value);
 
 			// QuickFolders.Interface.setPaintButtonColor(-1);
+			QuickFolders.initListeners();
 		}
 		catch(e) {
 			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
@@ -107,6 +109,7 @@ QuickFolders.Options = {
 	 * @paletteColor: [optional] palette index; 0=no styling
 	 */
 	preparePreviewTab: function preparePreviewTab(colorPickerId, preference, previewId, paletteColor, paletteType) {
+		const prefs = QuickFolders.Preferences;
 		let wd = window.document,
 		    previewTab = wd.getElementById(previewId),
 		    colorPicker = colorPickerId ? wd.getElementById(colorPickerId) : null;
@@ -128,19 +131,19 @@ QuickFolders.Options = {
 					break;
 			}
 		}
-		let paletteKey = (typeof paletteType === 'undefined') ? QuickFolders.Preferences.getIntPref(preference + 'paletteType') : paletteType,
+		let paletteKey = (typeof paletteType === 'undefined') ? prefs.getIntPref(preference + 'paletteType') : paletteType,
 		    paletteClass = QuickFolders.Interface.getPaletteClassToken(paletteKey);
 		
 		
 		if (paletteKey) { // use a palette
 			let paletteIndex = (typeof paletteColor === 'undefined' || paletteColor === null) 
-			                   ? QuickFolders.Preferences.getIntPref(preference + 'paletteEntry') :
+			                   ? prefs.getIntPref(preference + 'paletteEntry') :
 			                   paletteColor;
 												 
 			// hide the color picker when not striped
 			if (colorPicker) {
 				if (colorPickerId=='inactive-colorpicker') {
-					if (QuickFolders.Preferences.ColoredTabStyle==QuickFolders.Preferences.TABS_STRIPED)
+					if (prefs.ColoredTabStyle==prefs.TABS_STRIPED)
 						paletteIndex = '' + paletteIndex + 'striped';
 				}
 				else {
@@ -159,7 +162,7 @@ QuickFolders.Options = {
 				colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
         let transcol =
           (previewId=='inactivetabs-label') 
-            ? this.getTransparent(colorPicker.color, QuickFolders.Preferences.getBoolPref("transparentButtons"))
+            ? this.getTransparent(colorPicker.color, prefs.getBoolPref("transparentButtons"))
             : colorPicker.color;
 				previewTab.style.backgroundColor = transcol;
       }
@@ -186,6 +189,7 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					licenser = util.Licenser;
+		if (prefs.isDebug) debugger;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -1129,13 +1133,75 @@ QuickFolders.Options = {
 		// open new message
 		MessageComposer.OpenComposeWindowWithURI (null, aURI);
 	},
+	
+	pasteFolderEntries: function pasteFolderEntries() {
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+		      service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+					util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences;
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable),
+				str       = {},
+        strLength = {},
+				strFoldersPretty = '';
+
+		 util.popupProFeature("pasteFolderEntries");
+				
+    trans.addDataFlavor("text/unicode");
+    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+    trans.getTransferData("text/unicode", str, strLength);
+		
+    if (strLength.value && str) {
+			let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
+			strFoldersPretty = pastetext.toString();
+    }
+		try {
+			let folders = strFoldersPretty.replace(/\r?\n|\r/, ''),
+			    entries = JSON.parse(folders),
+			    question = util.getBundleString('qf.prompt.pasteFolders', 
+					  "This will delete all QuickFolders tabs and replace with the items in your clipboard." +
+					  "\n{0} entries were found in clipboard." +
+						"\nAre you sure?");
+			if (Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
+				for (let i = 0; i < entries.length; i++) {
+					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
+						entries[i].tabColor = 0;
+					// default the name!!
+					if (!entries[i].name) {
+						// retrieve the name from the folder uri (prettyName)
+						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
+						if (f)
+							entries[i].name = f.prettyName;
+					}
+				}
+				if (!entries.length)
+					entries=[];
+				util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
+				question = util.getBundleString('qf.prompt.pasteFolders.confirm', "Keep resulting Tabs?");
+				if (Services.prompt.confirm(window, "QuickFolders", question)) {
+					// store
+					prefs.storeFolderEntries(entries);
+				}
+				else {
+					// roll back
+					util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
+				}
+				
+			}
+		}
+		catch (ex) {
+			util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
+			Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
+		}
+		
+	},
   
 	dumpFolderEntries: function dumpFolderEntries() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
     const Cc = Components.classes,
-          Ci = Components.interfaces;
-		let service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
-        util = QuickFolders.Util;
+          Ci = Components.interfaces,
+		      service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+					util = QuickFolders.Util;
 
 		try {
 			let sFolderString = service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data,
@@ -1229,10 +1295,11 @@ QuickFolders.Options = {
 	showVersionHistory: function showVersionHistory(label, ask) {
 		let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
-		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
+		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders"),
+				isProUser = util.hasPremiumLicense(false) || util.Licenser.isExpired;
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
 			util.openURL(null, "http://quickfolders.mozdev.org/version.html" 
-			  + (util.hasPremiumLicense(false) ? "?user=pro" : "")
+			  + (isProUser ? "?user=pro" : "")
 				+ "#" + pureVersion);
 		}
 	},

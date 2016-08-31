@@ -1,6 +1,7 @@
 pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
+pref("extensions.quickfolders.lastActiveCategories","");
 // General Prefs
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
@@ -29,6 +30,7 @@ pref("extensions.quickfolders.quickJump.useHotkey", true);
 pref("extensions.quickfolders.quickJump.Hotkey", 'J');
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
+pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickMove.folderLabel", true);
@@ -126,12 +128,15 @@ pref("extensions.quickfolders.debug.css.palette", false);
 pref("extensions.quickfolders.debug.dnd", false);
 pref("extensions.quickfolders.debug.folders", false);
 pref("extensions.quickfolders.debug.folders.select", false);
+pref("extensions.quickfolders.debug.getOrCreateFolder", false);
 pref("extensions.quickfolders.debug.popupmenus", false);
+pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);
 pref("extensions.quickfolders.debug.popupmenus.drag", false);
 pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.events", false);
+pref("extensions.quickfolders.debug.events.keyboard", false);
 pref("extensions.quickfolders.debug.identities", false);
 pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);
@@ -157,8 +162,8 @@ pref("extensions.quickfolders.debug.premium.rsa", false);
 
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3", true);
-pref("extensions.quickfolders.dragToCreateFolder.imap", false);
-pref("extensions.quickfolders.dragToCreateFolder.imap.delay", 400);
+pref("extensions.quickfolders.dragToCreateFolder.imap", true);
+pref("extensions.quickfolders.dragToCreateFolder.imap.delay", 400); // only relevant to Postbox
 pref("extensions.quickfolders.dragToCreateFolder.local", true);
 // Recent Folder Item
 pref("extensions.quickfolders.recentfolders.itemCount", 12);
@@ -168,6 +173,7 @@ pref("extensions.quickfolders.recentfolders.color", 10);
 pref("extensions.quickfolders.recentfolders.showIcon", true);
 pref("extensions.quickfolders.recentfolders.folderPathDetail", 3); /* fld path only */
 pref("extensions.quickfolders.recentfolders.maxPathItems", 3);
+pref("extensions.quickfolders.recentfolders.showTimeStamp", false);
 // new Folder Optimization
 pref("extensions.quickfolders.update.disableMinimal", false);
 // Tab Context Menu items

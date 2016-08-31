@@ -70,6 +70,13 @@ QuickFolders.Licenser = {
   get isValidated() {
     return (this.ValidationStatus == this.ELicenseState.Valid);
   },
+	get isExpired() {
+		let key = QuickFolders.Preferences.getStringPref('LicenseKey');
+		if (!key) return false;
+		if (this.ValidationStatus == this.ELicenseState.NotValidated)
+			this.validateLicense(key);
+    return (this.ValidationStatus == this.ELicenseState.Expired);
+	},
   ValidationStatus: 0,
   // enumeration for Validated state
   ELicenseState: {
@@ -163,7 +170,30 @@ QuickFolders.Licenser = {
       let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }
-    
+		// prepare renew license button?
+    let licenser = util.Licenser,
+        decryptedDate = licenser ? licenser.DecryptedDate : '';
+    if (decryptedDate) {
+			if (util.isDebug) {
+				util.logDebug('QuickFolders.Licenser.load()\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
+				debugger;
+			}
+			if (licenser.ValidationStatus == licenser.ELicenseState.NotValidated) {
+				licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey'));
+				util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
+			}
+				
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+			if (licenser.isExpired) {
+				let btnLicense = getElement('btnLicense');
+				btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+				btnLicense.removeAttribute('oncommand');
+				btnLicense.setAttribute('oncommand', 'QuickFolders.Licenser.goPro(2);');
+			}
+		}
+    else
+      getElement('licenseDate').collapsed = true;
+
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
@@ -197,14 +227,6 @@ QuickFolders.Licenser = {
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
     
-    let lic = util.getMail3PaneWindow().QuickFolders.Licenser,
-        decryptedDate = lic ? lic.DecryptedDate : '';
-    if (decryptedDate)
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-    else
-      getElement('licenseDate').collapsed = true;
-
-    
   } ,
   
   sanitizeName: function sanitizeName(name) {
@@ -227,26 +249,40 @@ QuickFolders.Licenser = {
   } ,
   
   goPro: function goPro(license_type) {
+    const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders",
+          util = QuickFolders.Util;
     // redirect to registration site; pass in the feature that brought user here
     // short order process
-    let shortOrder = 
-        (license_type == 0) ?
-       "https://sites.fastspring.com/quickfolders/instant/quickfolders" :
-       "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomain"
-       ;
+    if (util.isDebug) debugger;
+    let shortOrder,
+		    addQuery = '',
+				featureName = document.getElementById('referrer').value; // hidden field
+    switch	(license_type) {
+			case 0:  // personal license
+				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
+			  break;
+			case 1: // domain license
+				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
+			  break;
+			case 2: // license renewal
+				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
+				// addQuery = "&renewal=" + encodeURI(QuickFolders.Preferences.getStringPref('LicenseKey'));
+				featureName = encodeURI(QuickFolders.Preferences.getStringPref('LicenseKey'));
+				// should we autoselect the correct email address?
+			  break;
+		}
     // view product detail
-    const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders";
     let firstName = document.getElementById('firstName').value,
         lastName = document.getElementById('lastName').value,
         email = document.getElementById('email').value,
-        util = QuickFolders.Util,
         url = shortOrder 
             + "?contact_fname=" + firstName 
             + "&contact_lname=" + lastName 
+						+ addQuery
             + "&contact_email=" + email;
         
-    let queryString = '',  // action=adds
-        featureName = document.getElementById('referrer').value;
+    let queryString = '';  // action=adds
+        
     if (featureName) {
       queryString = "&referrer=" + featureName;
     }
@@ -345,7 +381,7 @@ QuickFolders.Licenser = {
           prefs = QuickFolders.Preferences,
           logIdentity = util.logIdentity.bind(util);
     if (prefs.isDebug) {
-      util.logDebug("validateLicense()");
+      util.logDebug("validateLicense(" + LicenseKey + ")");
     }
     if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;

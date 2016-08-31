@@ -1,6 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opzioni di QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
-<!ENTITY qf.youtube.tbdaily "Per trovare suggerimenti per discutere come usare QuickFolders, visitare il canale YouTube &quot;Thunderbird Daily&quot;">
+<!ENTITY qf.youtube.tbdaily "Visitare il canale YouTube &quot;Thunderbird Daily&quot; per trovare suggerimenti e una guida introduttiva a QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Per visualizzare la cronologia delle versioni fare clic col pulsante destro del mouse">
 <!ENTITY qf.tab.general "Generali">
 <!ENTITY qf.tab.advanced "Avanzate">
@@ -88,8 +88,9 @@
 <!ENTITY qf.checkbox.debug "Modalità di debug">
 <!ENTITY qf.checkbox.debug.tooltip "Per accedere ad opzioni avanzate di debug fare clic col pulsante destro del mouse su questa casella">
 <!ENTITY qf.label.initdelay "[ms] di ritardo iniziale {1000 è lo standard}:">
-<!ENTITY qf.label.folders "Cartelle QF?">
-<!ENTITY qf.label.folders.tooltip "Copia negli appunti la stringa di configurazione delle cartelle">
+<!ENTITY qf.copyfolders "Copia schede">
+<!ENTITY qf.copyfolders.tooltip "Copia negli appunti la configurazione delle schede di QuickFolders">
+<!ENTITY qf.pastefolders.tooltip "Cancella tutte le schede di QF e recupera la nuova configurazione dagli Appunti">
 <!ENTITY qf.label.appearance "Aspetto">
 <!ENTITY qf.label.themes "Temi:">
 <!ENTITY qf.themes.flatTabs.label "Stile uniforme">

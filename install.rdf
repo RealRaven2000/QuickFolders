@@ -7,7 +7,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:name="QuickFolders"
    em:id="quickfolders@curious.be"
-   em:version="4.1pre170"
+   em:version="4.6pre22"
    em:creator="Axel Grude"
    em:description="Bookmark your favorite mail folders in Thunderbird."
    em:iconURL="chrome://quickfolders/skin/ico/quickfolders-Icon.png"
@@ -42,6 +42,7 @@
     <em:translator>Marcelo Ghelman [ghelman.net] (pt-BR)</em:translator>
     <em:translator>Anton Pinsky (ru-RU)</em:translator>
     <em:translator>Mikael Hiort af Ornäs (se-SV)</em:translator>
+		<em:translator>Peter Klofutar(sl-SI)</em:translator>
     <em:translator>DakSrbija [babelzilla.org] (sr)</em:translator>
     <em:translator>Nguyen Hoang Long [timelinelive.blogspot.com] (vi)</em:translator>
     <em:translator>Loviny (zh-CN)</em:translator>
@@ -51,18 +52,18 @@
   <!-- Thunderbird -->
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-   em:minVersion="19.0"
-   em:maxVersion="36.0"/>
+   em:minVersion="34.0"
+   em:maxVersion="45.*"/>
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
-   em:minVersion="2.0.0"
-   em:maxVersion="3.*" />
+   em:minVersion="3.0.0"
+   em:maxVersion="4.0.*" />
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
-   em:minVersion="2.0"
-   em:maxVersion="2.36" />
+   em:minVersion="2.34"
+   em:maxVersion="2.44" />
    
 
   

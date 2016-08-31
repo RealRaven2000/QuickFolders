@@ -48,6 +48,7 @@ QuickFolders.Preferences = {
 				folders = this.service.getCharPref("QuickFolders.folders");
 
 			if(folders) {
+				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
 				let entries = JSON.parse(folders);
 				for (let i = 0; i < entries.length; i++) {
 					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
@@ -97,6 +98,15 @@ QuickFolders.Preferences = {
 
 	get isShowCategoryNewCount() {
 		return this.getBoolPref("showCategoryCounts");
+	} ,
+	
+	get isKeyboardListeners() {
+		return this.isUseNavigateShortcuts 
+		    || this.isUseKeyboardShortcuts 
+				|| this.isUseRebuildShortcut 
+		    || this.isQuickJumpShortcut 
+				|| this.isQuickMoveShortcut 
+				|| this.isQuickCopyShortcut;
 	} ,
 
 	get isUseNavigateShortcuts() {
@@ -216,10 +226,15 @@ QuickFolders.Preferences = {
 	} ,
 
 	get TextQuickfoldersLabel() {
+		const licenser = QuickFolders.Licenser;
+		let renewalLabel = (licenser.isExpired) 
+		     ? QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
+				 : "";
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
-			return this.service.getComplexValue("extensions.quickfolders.textQuickfoldersLabel", Components.interfaces.nsISupportsString).data;
+			let customTitle = this.service.getComplexValue("extensions.quickfolders.textQuickfoldersLabel", Components.interfaces.nsISupportsString).data;
+			return renewalLabel || customTitle;
 		}
-		catch(e) { return 'QuickFolders'; }
+		catch(e) { return renewalLabel || 'QuickFolders'; }
 	},
 
   get maxSubjectLength() {

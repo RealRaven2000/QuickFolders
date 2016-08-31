@@ -449,14 +449,18 @@
 											oncontextmenu="QuickFolders.Options.toggleBoolPreference(this,true);QuickFolders.Options.showAboutConfig(this,'quickfolders.debug',true);return false;" />
 						<label value="&qf.label.initdelay;"
 									 style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;" />
-						<textbox id="init-delay"
+						<textbox id="initdelay"
 										 preference="QuickFolders-init-delay"
 										 instantApply="true"
-										 style="vertical-align:text-bottom;max-width:70px;" />
-						<button label="&qf.label.folders;"
-										tooltiptext="&qf.label.folders.tooltip;"
-									 image="chrome://quickfolders/skin/ico/editcopy.png"
-									 oncommand="QuickFolders.Options.dumpFolderEntries();" />
+										 />
+						<button id="copyFolders"
+										label="&qf.copyfolders;"
+										tooltiptext="&qf.copyfolders.tooltip;"
+									  oncommand="QuickFolders.Options.dumpFolderEntries();" />
+						<button id="pasteFolders"
+										label=""
+						        tooltiptext="&qf.pastefolders.tooltip;"
+									  oncommand="QuickFolders.Options.pasteFolderEntries();" />
 					</hbox>
 				</tabpanel>
 
@@ -1022,7 +1026,9 @@
 													tooltiptext="&qf.checkbox.quickMove.tip;"
 													preference="QuickFolders-Preferences-QuickMoveShortcut"
 													instantApply="true"
-													disabled="true" />
+													disabled="true" 
+													oncontextmenu="QuickFolders.Options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
+													/>
 								<textbox id="qf-QuickMoveShortcut"
 												 preference="QuickFolders-Preferences-QuickMoveShortcutKey"
 												 class="shortCutKey"

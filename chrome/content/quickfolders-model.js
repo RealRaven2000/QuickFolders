@@ -29,8 +29,9 @@ QuickFolders.Model = {
     let entry = this.getFolderEntry(uri);
     if (entry) {
       // adding existing folder ...
+			// avoid current currentCategoryList is null
       let category = entry.category || '',
-          currentCategoryList = QI.CurrentlySelectedCategories,
+          currentCategoryList = QI.CurrentlySelectedCategories || '',
 					newCats = currentCategoryList.split('|'),
 					oldCats = category.split('|'),
 					addCats = [],
@@ -69,9 +70,9 @@ QuickFolders.Model = {
           iconURI = null;
       // SeaMonkey: GetFolderTree().view
       if (typeof gFilterTreeView !== "undefined" 
-          && 
-          gFolderTreeView.supportsIcons) {
-        iconURI = unpackURI(folder.getStringProperty("iconURL"));
+          && gFolderTreeView.supportsIcons
+					&& folder.getStringProperty) {
+        iconURI =  unpackURI(folder.getStringProperty("iconURL"));
       }
 
       this.selectedFolders.push({

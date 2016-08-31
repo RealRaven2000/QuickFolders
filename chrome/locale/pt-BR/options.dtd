@@ -1,5 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opções do QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visite o Diário Thunderbird - Canal do YouTube de dicas e tutoriais de uso do QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Botão direito do mouse para o histórico de versões.">
 <!ENTITY qf.tab.general "Geral">
 <!ENTITY qf.tab.advanced "Avançado">
@@ -33,6 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Elementos da barra de ferramentas principal">
 <!ENTITY qf.checkbox.showRecentTab "Exibir aba de pastas recentes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botão direito do mouse para configuração">
+<!ENTITY qf.group.navigation "Navegação de mensagens">
+<!ENTITY qf.label.goNextUnread "Ir para próximo email não lido:">
+<!ENTITY qf.label.goNextUnread.tip "Normalmente, quando você vai para o próximo email não lido, o Thunderbird pergunta ser precisa mudar para uma pasta diferente.">
+<!ENTITY qf.goNextUnread.auto "Ir para próxima pasta sem perguntar (recomendado)">
+<!ENTITY qf.goNextUnread.prompt "Perguntar se deve ir para próxima pasta não lida">
+<!ENTITY qf.goNextUnread.none "Não fazer nada se não houver mais nenhum email não lido na pasta">
 <!ENTITY qf.checkbox.showQuickMove "Botão quickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "O botão quickMove pode ser usado para arrastar emails para uma pasta de destino nomeada. Você pode juntar emails de diversas pastas. Quando tiver reunido os emails desejados, digite o nome da pasta de destino na caixa de busca.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ícone da barra de menu">
@@ -81,8 +88,7 @@
 <!ENTITY qf.checkbox.debug "Modo Debug">
 <!ENTITY qf.checkbox.debug.tooltip "clique com o botão direito nesta caixa para opções avançadas de depuração">
 <!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
-<!ENTITY qf.label.folders "Pastas?">
-<!ENTITY qf.label.folders.tooltip "Copia a configuração de pastas para a área de transferência">
+<!ENTITY qf.copyfolders.tooltip "Copia a configuração de pastas para a área de transferência">
 <!ENTITY qf.label.appearance "Aparência">
 <!ENTITY qf.label.themes "Temas:">
 <!ENTITY qf.themes.flatTabs.label "Estilo plano">
@@ -102,6 +108,8 @@
 <!ENTITY qf.label.Toolbar "Barra de ferramentas">
 <!ENTITY qf.label.ToolbarBackground "Fundo da barra de ferramentas:">
 <!ENTITY qf.checkbox.transparent "transparente">
+<!ENTITY qf.label.Toolbar.bottomLine "Largura da linha na base:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "A largura da linha sob as abas. Mudar sua cor abaixo com o seletor Cor da Aba Ativa.">
 <!ENTITY qf.label.colors "Cores">
 <!ENTITY qf.label.UncoloredTab "Aba não colorida">
 <!ENTITY qf.label.UncoloredTab.tooltip "Visual de abas (inativas) sem uma cor selecionada específica">
@@ -146,11 +154,29 @@
 <!ENTITY qf.button.validateLicense "validar">
 <!ENTITY qf.label.licenseValid "Sua licença é válida até:">
 <!ENTITY qf.licenseValidation.passed "Obrigado por registrar o QuickFolders Pro! Todas as funcionalidades premium estão agora desbloqueadas.">
+<!ENTITY qf.licenseValidation.failed "A chave de licença que você digitou não é válida. Consulte instruções no email recebido da FastSpring. Se ainda estiver com problemas, entre em contato pela aba de suporte.">
+<!ENTITY qf.licenseValidation.expired "A chave de licença que você digitou já expirou. Clique no botão abaixo para renovar sua licença.">
+<!ENTITY qf.licenseValidation.invalidMail "O endereço de email associado à chave de licença [{1}] atualmente não está listado em nenhuma de suas contas de email. Entre em contato pela aba de suporte para assistência.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Endereço de email criptografado não corresponde a um legível.">
 <!ENTITY qf.premiumConfig "Funcionalidades Premium">
 <!ENTITY qf.checkbox.quickJump "quickJump: Vai para qualquer pasta com atalho: Shift +">
 <!ENTITY qf.checkbox.quickJump.tip "Atalho para clique no botão quickJump para navegação mais rápida em qualquer lugar através de entrada de nome.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Move email para qualquer pasta com atalho: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Atalho para arrastar emails para o botão quickMove para arquivamento mais rápido para qualquer pasta via campo de nome.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Copia email para qualquer pasta com atalho: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy.tip "Atalho para arrastar emails para o botão quickCopy para cópia mais rápida para qualquer pasta via campo de nome.">
+<!ENTITY qf.quickMove.path.format "Formato de exibição:">
+<!ENTITY qf.pathFormat.folderName "Nome da pasta">
+<!ENTITY qf.pathFormat.folderAndAccount "Nome da pasta - Conta de email">
+<!ENTITY qf.pathFormat.AccountAndPath "Conta - Caminho da pasta">
+<!ENTITY qf.pathFormat.PathOnly "Caminho da pasta">
+<!ENTITY qf.pathFormat.URI "URI da pasta">
+<!ENTITY qf.pathFormat.maxDepth "Profundidade máxima do caminho:">
+<!ENTITY qf.pathFormat.tooltip "Número máximo de pastas exibidas no caminho da pasta.">
+<!ENTITY qf.categories.supportMultiple "Suportar selecionar múltiplas categorias de abas">
+<!ENTITY qf.categories.supportMultiple.tooltip "Use a tecla SHIFT para selecionar mais de uma categoria na lista suspensa.">
+<!ENTITY qf.checkbox.readingList "Lista de leitura">
+<!ENTITY qf.checkbox.readingList.tooltip "Uma lista de emails que devem ser lidos mais tarde. Arraste seus emails importantes para este botão.">
 <!ENTITY qf.label.donate "Doar">
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções… Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
 <!ENTITY qf.checkbox.usePalette "Usar palheta">

@@ -296,7 +296,7 @@ END LICENSE BLOCK */
     ## [Bug 26071] = Hotkey to toggle folder pane  ( F9 )
     ## [Bug 26088] = quickJump/quickMove Added support for searching child folders - add / search for children
 
-  4.3 QuickFolders Pro - WIP
+  4.3 QuickFolders Pro - 02/01/2016
     ## Allow Tab Category of "Never" - Folder Aliases that only show up in quickMove / quickJump
 		## [Bug 26116] Fixed: Tab Specific properties panel always jumps to primary screen.
     ## [Bug 25682] Allow displaying multiple categories concurrently  (Premium Feature)
@@ -305,14 +305,35 @@ END LICENSE BLOCK */
 		   (Javascript in browser / browser tabs must be enabled)
 		## Remember last Settings Tab, even when closing window with Cancel button
 		
-
-      
+  4.4.2 QuickFolders Pro - 21/02/2016
+	  ## Compatibility fixes for Thunderbird 44.0 - 46.0
+		## Increased minimum version to 34.0
+		## [Bug 25941] Implemented new method "Drag to New Folder..." on Tabs for IMAP accounts (Thunderbird only; Postbox doesn't support asynchronous tasks yet)
+		##             wrote some fix for the (timer-based) old code for Postbox
+		## [Bug 26149] New Folder should be shown in Recent Folders history
+		## Added selection box for not asking to go to next unread folder
+	  ## Stop showing donation screen on upgrade for Pro Users - the logic was reversed in previous version
+		## SeaMonkey: Fixed Error "Main is Null" when options is opened without visible mail window
+		## [Bug 26150] quickJump - create child folder command [Premium Feature]
+		## [Bug 26156] When creating a new subfolder it doesn't always show in Recent folder list
+		## [Bug 26157] Add special icon for Deleted folders in recent folders list
+		
+  4.5 QuickFolders Pro - 24/07/2016
+		## [Bug 26224] Dragging emails to quickfolder tab broken in Tb 48.0
+		## [Bug 26223] Thunderbird 45.0: Notification Window is Larger and in workspace 
+		## [Bug 26227] If none of the keyboard shortcuts in general settings are active, quickJump / quickMove keys will also not work.
+	  ## [Bug 26178] Creating a new folder using the quickMove method (POP3) doesn't add this to the top of the recent folder list
+		## [Bug 26202] Shift-[Key] shortcuts interferes with Thunderbird Conversations Addon
+		## [Bug 26258] Postbox: collapsed accounts are not switched when clicking account tab
+		
+	4.6 QuickFolders Pro -  WIP
+	  ## Make it possible to load a folder string that is prettified.
+	
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
 		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
-	
 	
 	
 ###VERSION###
@@ -348,8 +369,12 @@ if (!this.QuickFolders_CI)
 	
 // THUNDERBIRD SPECIFIC CODE!!	
 // wrap function for session store: persist / restore categories	
-let QuickFolders_PrepareSessionStore = function () {
+var QuickFolders_PrepareSessionStore = function () {
 	const util = QuickFolders.Util;
+	if (!util) {
+		debugger;
+		return;
+	}
 	if (util.Application == "Postbox") {
 		// we have to wrap persistTabString() 
 		// so append  some script in order to restore the categories in Postbox
@@ -644,73 +669,31 @@ var QuickFolders = {
     }
   } ,
    
-
-	init: function init() {
+	 initListeners: function () {
+			const util = QuickFolders.Util,
+			      win = util.getMail3PaneWindow(),
+			      prefs = QuickFolders.Preferences,
+						QI = win.QuickFolders.Interface;
+			// only add event listener on startup if necessary as we don't
+			// want to consume unnecessary performance during keyboard presses!
+			if (prefs.isKeyboardListeners) {
+				if(!QI.boundKeyListener) {
+					win.addEventListener("keypress", this.keyListen = function(e) {
+						QI.windowKeyPress(e,'down');
+					}, true);
+					win.addEventListener("keyup", function(e) {
+						QI.windowKeyPress(e,'up');
+					}, true);
+					QI.boundKeyListener = true;
+				}
+			}
+	},
+	
+	initTabsFromEntries: function initTabsFromEntries(folderEntries) {
     const util = QuickFolders.Util,
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface; // main window Interface!
-		let myver = that.Util.Version, // will start VersionProxy
-		    ApVer, ApName,
-        prefs = that.Preferences; 
-    try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
-    try{ ApName=that.Util.Application} catch(e){ApName="?"};
-
-    if (!QuickFolders.RenameFolders_Tb) {
-      util.logDebug("Wrapping renameFolder...");
-      // overwrite original function - we won't actualy use or restore this
-      switch (ApName) {
-        case 'SeaMonkey':
-        case 'Postbox':
-          QuickFolders.RenameFolders_Tb = RenameFolder;
-          RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
-          break;
-        case 'Thunderbird':
-            QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
-            gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
-          break;
-      }
-    }
-    else {
-      util.logDebug("gFolderTreeController not defined.");
-    }
-    
-		if (prefs && prefs.isDebug)
-			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
-
-		// moved into Version Proxy!
-		// that.Util.FirstRun.init();
-
-		that.addTabEventListener();
 		
-		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-                            .getService(Components.interfaces.nsIVersionComparator)
-		
-    // load legacy border radius + box-shadow rules
-		if (ApName == 'Thunderbird' && versionComparator.compare(ApVer, "4.0") < 0) {
-			let sE = QuickFolders.Styles;
-			util.logDebugOptional("css.styleSheets","Loading legacy style sheet... Ap Version=" + ApVer + "; styleEngine = " + sE);
-			let ss = QuickFolders.Interface.getStyleSheet(sE, 'chrome://quickfolders/content/quickfolders-pre4.css', "");
-		}
-		else
-			util.logDebugOptional("css.styleSheets","App Version {" + ApVer + "}>=4.0   => no legacy css rules loaded!");
-		
-
-		// only add event listener on startup if necessary as we don't
-		// want to consume unnecessary performance during keyboard presses!
-		if (prefs.isUseKeyboardShortcuts || prefs.isUseRebuildShortcut || prefs.isUseNavigateShortcuts) {
-			if(!QI.boundKeyListener) {
-				that.win.addEventListener("keypress", this.keyListen = function(e) {
-					QuickFolders.Interface.windowKeyPress(e,'down');
-				}, true);
-				that.win.addEventListener("keyup", function(e) {
-					QuickFolders.Interface.windowKeyPress(e,'up');
-				}, true);
-
-				QI.boundKeyListener = true;
-			}
-		}
-		debugger;
-		let folderEntries = prefs.loadFolderEntries();
 		if (folderEntries.length) try {
 			let currentFolder = util.CurrentFolder;
 			that.Model.selectedFolders = folderEntries;
@@ -754,11 +737,71 @@ var QuickFolders = {
 		catch(ex) {
 			util.logException('init: folderEntries', ex);
 		}
+	
+	},
+
+	init: function init() {
+    const util = QuickFolders.Util,
+		      that = this.isQuickFolders ? this : QuickFolders,
+					QI = that.Interface, // main window Interface!
+					Cc = Components.classes,
+					Ci = Components.interfaces;
+		let myver = that.Util.Version, // will start VersionProxy
+		    ApVer, ApName,
+        prefs = that.Preferences; 
+    try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
+    try{ ApName=that.Util.Application} catch(e){ApName="?"};
+
+    if (!QuickFolders.RenameFolders_Tb) {
+      util.logDebug("Wrapping renameFolder...");
+      // overwrite original function - we won't actualy use or restore this
+      switch (ApName) {
+        case 'SeaMonkey':
+        case 'Postbox':
+          QuickFolders.RenameFolders_Tb = RenameFolder;
+          RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
+          break;
+        case 'Thunderbird':
+            QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
+            gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
+          break;
+      }
+    }
+    else {
+      util.logDebug("gFolderTreeController not defined.");
+    }
+    
+		if (prefs && prefs.isDebug)
+			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+
+		// moved into Version Proxy!
+		// that.Util.FirstRun.init();
+
+		that.addTabEventListener();
+		
+		let versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
+                            .getService(Ci.nsIVersionComparator)
+		
+    // load legacy border radius + box-shadow rules
+		if (ApName == 'Thunderbird' && versionComparator.compare(ApVer, "4.0") < 0) {
+			let sE = QuickFolders.Styles;
+			util.logDebugOptional("css.styleSheets","Loading legacy style sheet... Ap Version=" + ApVer + "; styleEngine = " + sE);
+			let ss = QuickFolders.Interface.getStyleSheet(sE, 'chrome://quickfolders/content/quickfolders-pre4.css', "");
+		}
+		else
+			util.logDebugOptional("css.styleSheets","App Version {" + ApVer + "}>=4.0   => no legacy css rules loaded!");
+		
+		QuickFolders.initListeners();
+		
+		// move out to allow reload / editing feature
+		let folderEntries = prefs.loadFolderEntries();
+		this.initTabsFromEntries(folderEntries);
+		
 		// only load in main window(?)
 		if (QuickFolders.FolderTree)
 			QuickFolders.FolderTree.init();
 
-		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+		let observerService = Cc["@mozilla.org/observer-service;1"].getService(Ci.nsIObserverService);
 
 		observerService.addObserver({
 			observe: function() {
@@ -799,6 +842,14 @@ var QuickFolders = {
         util.logDebug ("Premium License found - removing Animations()...");
         QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
       }
+			else {
+				if (util.Licenser.isExpired) {
+					let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
+					if (menuRegister) {
+						menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
+					}
+				}
+			}
     }, 1000);
     
 	} ,
@@ -974,96 +1025,114 @@ var QuickFolders = {
 		},
 
 		// drop mails on popup: move mail, like in buttondragobserver
+		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.onDrop INSTEAD!
 		onDrop: function menuObs_onDrop(evt, dropData, dragSession) {
+			const Ci = Components.interfaces,
+				    util = QuickFolders.Util;
 			let isThread = evt.isThread,
-			    isCopy = (QuickFolders.popupDragObserver.dragAction === Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY),
+			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
 			    menuItem = evt.target,
-          messageUriList = QuickFolders.popupDragObserver.newFolderMsgUris,
-          util = QuickFolders.Util;
+          messageUriList = QuickFolders.popupDragObserver.newFolderMsgUris;
+          
+			let moveOrCopy = function moveOrCopy(newFolder) {
+				let	step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
+				util.logDebugOptional("dragToNew", step);
+				
+				if (QuickFolders.FilterWorker.FilterMode) {
+					sourceFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true);
+					let virtual = util.isVirtual(sourceFolder);
+					if (!sourceFolder || virtual)
+					{
+						let msgHdr = messenger.msgHdrFromURI(QuickFolders.popupDragObserver.newFolderMsgUris[0].toString());
+						sourceFolder = msgHdr.folder;
+					}
+				}
+				let msgList = util.moveMessages(newFolder, messageUriList, isCopy)
+
+				// have the filter created with a delay so that filters can adapt to the new folder!!
+				if (QuickFolders.FilterWorker.FilterMode) {
+					// if user has quickFilters installed, use that instead!!
+					QuickFolders.FilterWorker.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
+				}
+
+				util.logDebugOptional("dragToNew", "4. updateFolders...");
+				util.touch(newFolder);
+				QuickFolders.Interface.updateFolders(false, false); // update context menus   
+			}
+			
 			// helper function for creating a new subfolder => TODO implement filter learn for this case!
+			// FolderParam = parent folder [uri in Postbox] passed back by the create folder dialog
 			function newFolderCallback(aName, FolderParam) {
 				let step = '',
 				    isManyFolders = false,
 				    sourceFolder = null;
 				if (aName) try {
-					let currentURI, aFolder;
+					let currentURI, aFolder,
+					    uriName = encodeURI(aName);
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
 					if (util.Application=='Postbox') {
 						currentURI = GetSelectedFolderURI();
-						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}
 					else {
 						if (gFolderDisplay.displayedFolder)
 							currentURI = gFolderDisplay.displayedFolder.URI;
 						else
 							isManyFolders = true;
-						aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
+						aFolder = FolderParam.QueryInterface(Ci.nsIMsgFolder);
 					}
-
-          let deferredMove = function deferredMove(parentFolder) {
-            let newFolder;
-
-            // if folder creation is successful, we can continue with calling the
-            // other drop handler that takes care of dropping the messages!
-            step='2. find new sub folder';
-            util.logDebugOptional("dragToNew", step);
-            if (util.Application=='Postbox') {
-              newFolder = QuickFolders.Model.getMsgFolderFromUri(parentFolder.URI + "/" + aName, true).QueryInterface(Components.interfaces.nsIMsgFolder);
-            }
-            else {
-              newFolder = parentFolder.findSubFolder(aName); 
-            }
-            if (!newFolder) {
-              QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
-              if (QuickFolders.DeferredMoveCount<10) {  // async retry
-                setTimeout( deferredMove(parentFolder), 200);
-              }
-              else { // we give up
-                QuickFolders.DeferredMoveCount = 0;
-              }
-              return;
-            }
-            menuItem.folder = newFolder;
-
-            step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
-            util.logDebugOptional("dragToNew", step);
-            
-            if (QuickFolders.FilterWorker.FilterMode) {
-              sourceFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true);
-              let virtual = util.isVirtual(sourceFolder);
-              if (!sourceFolder || virtual)
-              {
-                let msgHdr = messenger.msgHdrFromURI(QuickFolders.popupDragObserver.newFolderMsgUris[0].toString());
-                sourceFolder = msgHdr.folder;
-              }
-            }
-            let msgList = util.moveMessages(newFolder, messageUriList, isCopy)
-
-            // have the filter created with a delay so that filters can adapt to the new folder!!
-            if (QuickFolders.FilterWorker.FilterMode) {
-              // if user has quickFilters installed, use that instead!!
-              QuickFolders.FilterWorker.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
-            }
-
-            util.logDebugOptional("dragToNew", "4. updateFolders...");
-            QuickFolders.Interface.updateFolders(false, false); // update context menus   
-            // check bookmarks?
-          }
           
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
-					aFolder.createSubfolder(aName, msgWindow);
-          
-          /* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
-          let server = aFolder.server.QueryInterface(Components.interfaces.nsIMsgIncomingServer),
-              timeOut = (server.type == 'imap') ? 
-                        QuickFolders.Preferences.getIntPref('dragToCreateFolder.imap.delay') : 0;
-          
-          setTimeout( function() {
-            deferredMove(aFolder);
-          }, timeOut);
+					if (util.Application == 'Postbox') {  // legacy code. Remove once Task.jsm lands in Postbox
+						aFolder.createSubfolder(uriName, msgWindow);
+						
+						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
+						let server = aFolder.server.QueryInterface(Ci.nsIMsgIncomingServer),
+								timeOut = (server.type == 'imap') ? 
+													QuickFolders.Preferences.getIntPref('dragToCreateFolder.imap.delay') : 0;
+						// Ugly legacy code. Remove once Task lands in Postbox
+						let deferredMove = function deferredMove_Postbox(parentFolder) {
+							// if folder creation is successful, we can continue with calling the
+							// other drop handler that takes care of dropping the messages!
+							step='2. find new sub folder';
+							util.logDebugOptional("dragToNew", step);
+							let newFolder = QuickFolders.Model.getMsgFolderFromUri(parentFolder.URI + "/" + uriName, true);
+							
+							if (!newFolder) {
+								QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
+								if (QuickFolders.DeferredMoveCount<10) {  // async retry
+									setTimeout( function() { deferredMove(parentFolder); }, 400);
+								}
+								else { // we give up
+									QuickFolders.DeferredMoveCount = 0;
+								}
+								return;
+							}
+							menuItem.folder = newFolder.QueryInterface(Ci.nsIMsgFolder);
+							moveOrCopy(newFolder);
+							// check bookmarks?
+						}						
+						setTimeout( function() { deferredMove(aFolder); }, timeOut);  // timeout for 1st try
+					}
+					else { // use async task for create folder and move
+					  let newFolderUri = aFolder.URI + "/" + uriName;
+						util.getOrCreateFolder(
+							newFolderUri, 
+							Ci.nsMsgFolderFlags.Mail).then(
+								function createFolderCallback() {
+									let fld = QuickFolders.Model.getMsgFolderFromUri(newFolderUri, true);
+									moveOrCopy(fld);
+									
+								},
+								function failedCreateFolder(ex) {
+									util.logException('getOrCreateFolder() ', ex);	
+									util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
+								}
+							);
+						
+					}
 					return true;
-
 				}
 				catch(ex) {
 					util.alert("Exception in newFolderCallback, step [" + step + "]: " + ex);
@@ -1074,14 +1143,14 @@ var QuickFolders = {
 			try {
 				util.logDebugOptional("dnd","popupDragObserver.onDrop " + dropData.flavour.contentType);
 				util.logDebugOptional("dnd","target's parent folder: " + menuItem.folder.URI);
-				let targetFolder = menuItem.folder.QueryInterface(Components.interfaces.nsIMsgFolder);
+				let targetFolder = menuItem.folder.QueryInterface(Ci.nsIMsgFolder);
 
 				if (!targetFolder.canCreateSubfolders) {
 					util.alert("You can not create a subfolder in " + targetFolder.prettiestName);
 					return false;
 				}
 
-				let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+				let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
 				trans.addDataFlavor("text/x-moz-message");
 
 				// let's store the Msg URIs from drag session before we do anything else!!
@@ -1089,22 +1158,39 @@ var QuickFolders = {
 				// reset in case there is already data there; only move mails of the last dnd operation!
 				while (QuickFolders.popupDragObserver.newFolderMsgUris.length)
 					QuickFolders.popupDragObserver.newFolderMsgUris.pop();
-				for (let i = 0; i < dragSession.numDropItems; i++) {
-					dragSession.getData (trans, i);
-					let dataObj = new Object(),
-					    flavor = new Object(),
-					    len = new Object();
-					try {
-						trans.getAnyTransferData(flavor, dataObj, len);
+				
+        let txtUris ='',
+						dt = evt.dataTransfer,
+					  types = dt.mozTypesAt(0);
 
-						if ((flavor.value === "text/x-moz-message") && dataObj) {
-							dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
-							let messageUri = dataObj.data.substring(0, len.value);
-							QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
-						}
+				if (Array.indexOf(types, "text/x-moz-message") != -1) {
+					for (let i=0; i < dt.mozItemCount; i++) {
+						let messageUri = dt.mozGetDataAt("text/x-moz-message", i);
+						txtUris += 'dataTransfer [' + i + '] ' + messageUri + '\n';
+						QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
 					}
-					catch (e) {
-						QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+					util.logDebugOptional('dnd', txtUris);
+				}				
+				else {
+					// LEGACY CODE!
+					util.logDebugOptional('dnd', 'LEGACY drag+drop code: using dragSession!');
+					for (let i = 0; i < dragSession.numDropItems; i++) {
+						dragSession.getData (trans, i);
+						let dataObj = new Object(),
+								flavor = new Object(),
+								len = new Object();
+						try {
+							trans.getAnyTransferData(flavor, dataObj, len);
+
+							if ((flavor.value === "text/x-moz-message") && dataObj) {
+								dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
+								let messageUri = dataObj.data.substring(0, len.value);
+								QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
+							}
+						}
+						catch (e) {
+							QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+						}
 					}
 				}
 
@@ -1118,15 +1204,15 @@ var QuickFolders = {
 **/
 
 				let dualUseFolders = true;
-				if (targetFolder.server instanceof Components.interfaces.nsIImapIncomingServer)
+				if (targetFolder.server instanceof Ci.nsIImapIncomingServer)
 					dualUseFolders = targetFolder.server.dualUseFolders;
 
-				util.logDebugOptional("window.openDialog (newFolderDialog.xul)\n"
+				util.logDebugOptional('dnd,dragToNew',
+				  "window.openDialog (newFolderDialog.xul)\n"
 					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
 					+ "dualUseFolders:" + dualUseFolders);
 				if (util.Application=='Postbox') {
 					// see newFolderDialog.js for when Callback is called.
-
 					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
                       "",
                       "chrome,titlebar,modal",
@@ -1285,16 +1371,30 @@ var QuickFolders = {
 						}
 					}
 
+					let dt = evt.dataTransfer,
+					    types = dt.mozTypesAt(0);
+					if (QuickFolders.Preferences.isDebugOption('dnd')) {
+						// http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#677
+						let txt = 'Drag types from event.dataTransfer:';
+						for (let i=0; i<types.length; i++) {
+							txt +='\n' + types[i];
+						}
+						util.logDebugOptional("dnd", "dragSession.isDataFlavorSupported(text/x-moz-message): " + dragSession.isDataFlavorSupported("text/x-moz-message")
+						                     +'\n' + txt);
+					}
+					
+					let isFlavorMail = (Array.indexOf(types, "text/x-moz-message")>=0),  // dragSession.isDataFlavorSupported("text/x-moz-message") 
+					    isFlavorFolder = (Array.indexOf(types, "text/x-moz-folder")>=0), // dragSession.isDataFlavorSupported("text/x-moz-folder")
+							isFlavorUnicode = (Array.indexOf(types, "text/unicode")>=0);   // context menu ??
+							
 
 					// only show popups when dragging messages!
 					// removed && targetFolder.hasSubFolders as we especially need the new folder submenu item for folders without subfolders!
 					// also add  treechildren when SHIFT is pressed => move a folder! ....  isShift && button.tagName === "treechildren"
-					if(dragSession.isDataFlavorSupported("text/x-moz-message") 
-					   || 
-					   dragSession.isDataFlavorSupported("text/x-moz-folder") )  // MOVE FOLDER support
+					if(isFlavorMail || isFlavorFolder)  // MOVE FOLDER support
 					try {
 						//close any other context menus
-						if (dragSession.isDataFlavorSupported("text/unicode" )) {
+						if (isFlavorUnicode) {
 							removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
 							return;  // don't show popup when reordering tabs
 						}
@@ -1459,13 +1559,16 @@ var QuickFolders = {
 			}
 		},
 
-		onDrop: function btnObs_onDrop(evt,dropData,dragSession) {
+		onDrop: function btnObs_onDrop(evt, dropData, dragSession) {
+			const util = QuickFolders.Util,
+          QI = QuickFolders.Interface,
+					Ci = Components.interfaces,
+					Cc = Components.classes;
 			let isShift = evt.shiftKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
 			    targetFolder = DropTarget.folder,
-          util = QuickFolders.Util,
-          QI = QuickFolders.Interface;
+					lastAction = "";
       try {
         util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
@@ -1487,39 +1590,57 @@ var QuickFolders = {
 					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.onDrop:" + e); };
 					break;
 				case  "text/x-moz-message":
-					let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
-					    messageUris = [],
-					    sourceFolder = null,
-					    lastAction = "iterate dragSession";
-          //alert('trans.addDataFlavor: trans=' + trans + '\n numDropItems=' + dragSession.numDropItems);
-					trans.addDataFlavor("text/x-moz-message");
-
-					for (let i = 0; i < dragSession.numDropItems; i++) {
-						//alert('dragSession.getData ... '+(i+1));
-						dragSession.getData (trans, i);
-						let dataObj = new Object(),
-						    flavor = new Object(),
-						    len = new Object();
-						if (debugDragging ) util.alert('trans.getAnyTransferData ... '+(i+1));
-						try {
-							trans.getAnyTransferData(flavor, dataObj, len);
-
-							if (flavor.value === "text/x-moz-message" && dataObj) {
-
-								dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
-								if (debugDragging ) util.alert('getting data from dataObj...');
-								let messageUri = dataObj.data.substring(0, len.value);
-
-								if (debugDragging ) util.alert('messageUris.push: messageUri=' + messageUri) ;
-								messageUris.push(messageUri);
-							}
+				  // use dropData to retrieve the messages!
+					// http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#823
+					let messageUris = [],
+							sourceFolder = null,
+							txtUris ='',
+							dt = evt.dataTransfer,
+					    types = dt.mozTypesAt(0);
+							
+					if (Array.indexOf(types, "text/x-moz-message") != -1) {
+					  lastAction = "get data from event.dataTransfer"
+						for (let i=0; i < dt.mozItemCount; i++) {
+							let messageUri = dt.mozGetDataAt("text/x-moz-message", i);
+							txtUris += 'dataTransfer [' + i + '] ' + messageUri + '\n';
+							messageUris.push(messageUri);
 						}
-						catch (e) {
-							QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+						util.logDebugOptional('dnd', txtUris);
+					}
+					else {  // legacy code
+						util.logDebugOptional('dnd', 'LEGACY drag+drop code: using dragSession!');
+						let trans = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+					  lastAction = "iterate dragSession"
+						//alert('trans.addDataFlavor: trans=' + trans + '\n numDropItems=' + dragSession.numDropItems);
+						trans.addDataFlavor("text/x-moz-message");
+
+						for (let i = 0; i < dragSession.numDropItems; i++) {
+							//alert('dragSession.getData ... '+(i+1));
+							dragSession.getData (trans, i);
+							let dataObj = new Object(),
+									flavor = new Object(),
+									len = new Object();
+							if (debugDragging ) util.alert('trans.getAnyTransferData ... '+(i+1));
+							try {
+								trans.getAnyTransferData(flavor, dataObj, len);
+
+								if (flavor.value === "text/x-moz-message" && dataObj) {
+
+									dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
+									if (debugDragging ) util.alert('getting data from dataObj...');
+									let messageUri = dataObj.data.substring(0, len.value);
+
+									if (debugDragging ) util.alert('messageUris.push: messageUri=' + messageUri) ;
+									messageUris.push(messageUri);
+								}
+							}
+							catch (e) {
+								QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+							}
 						}
 					}
           
-          lastAction = "Try to get sourceFolder";
+          lastAction = "Determine sourceFolder from 1st dropped mail";
           // note: get CurrentFolder fails when we are in a search results window!!
           // [Bug 25204] => fixed in 3.10
           
@@ -1531,7 +1652,7 @@ var QuickFolders = {
           }
           
 					// handler for dropping messages
-					lastAction = "drop handler";
+					lastAction = "drop action payload";
           
           // quickMove menu
           if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
@@ -1569,7 +1690,7 @@ var QuickFolders = {
 							let msgList = util.moveMessages(
 								targetFolder,
 								messageUris,
-								dragSession.dragAction === Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY
+								dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
 							);
 							if (QuickFolders.FilterWorker.FilterMode) {
                 lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
@@ -1737,6 +1858,11 @@ function QuickFolders_MyChangeSelection(tree, newIndex) {
 // the core function for selecting a folder
 // adding re-use of mail tabs if the folder is open in another mail tab, switch to that one!
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
+	const util = QuickFolders.Util,
+        prefs = QuickFolders.Preferences,
+        QI = QuickFolders.Interface,
+				Ci = Components.interfaces,
+				Cc = Components.classes;
 	function getTabURI(info) {
 	  // note: tabmail is declared further down - it is in scope.
 		if (!info)
@@ -1755,19 +1881,17 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 				return info._folderURI;  // Postbox
 		return '';
 	}
-	const util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        QFI = QuickFolders.Interface;
   //during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
+	if (!folderUri) return false;
 
 	let folderTree = QuickFolders.mailFolderTree,
-	    rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
+	    rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
 	    folderResource = rdf.GetResource(folderUri),
 	    msgFolder,
 	    isInvalid = false;
 	try {
-	  // msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+	  // msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
 	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
 		if (prefs.getBoolPref("autoValidateFolders")) {
 		  isInvalid = (!util.doesMailFolderExist(msgFolder));
@@ -1787,12 +1911,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       ; // do nothing. a pending rename invalidated this entry
     }
     else {
-			switch(QFI.deleteFolderPrompt(folderEntry, false)) {
+			switch(QI.deleteFolderPrompt(folderEntry, false)) {
 			  case 1: // delete 
 				  // save changes right away!
 					prefs.storeFolderEntries(QuickFolders.Model.selectedFolders);
           // update the model
-          QFI.updateFolders(true, true);
+          QI.updateFolders(true, true);
 				  break;
 				case 0: // don't delete
 				  break;
@@ -1838,11 +1962,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   }
 	// new behavior: OPEN NEW TAB
 	// if single message is shown, open folder in a new Tab...
-	if (QFI.CurrentTabMode == 'message' || QFI.CurrentTabMode =='glodaList') {
+	if (QI.CurrentTabMode == 'message' || QI.CurrentTabMode =='glodaList') {
 	  if (!isExistFolderInTab) {
 		  if (prefs.getBoolPref('behavior.nonFolderView.openNewTab')) {
         util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
-				QFI.openFolderInNewTab(msgFolder);
+				QI.openFolderInNewTab(msgFolder);
 			}
 			else {  // switch to first tab
         util.logDebugOptional("folders.select", "tab is not selected, openNewTab disabled, switching to tab 0");
@@ -1854,9 +1978,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	}
 
 	let Flags = util.FolderFlags,
-      theTreeView;
+      theTreeView,
+			isRoot = (msgFolder.rootFolder.URI == msgFolder.URI);
 
-  util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags);
+  util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags
+	  + (isRoot ? "\nThis is a ROOT folder" : ""));
 	switch (util.Application) {
     case 'Thunderbird':
       // TB 3
@@ -1899,9 +2025,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
             util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
             // toggle to smartfolder view and reinitalize folder variable!
             theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-            let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
+            let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
             folderResource = rdf.GetResource(folderUri);
-            msgFolder = folderResource.QueryInterface(Components.interfaces.nsIMsgFolder);
+            msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
             parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
           }
 
@@ -1982,11 +2108,22 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       QuickFolders_MyChangeSelection(folderTree, folderIndex);
       break;
     case 'Postbox': // TB 2, Postbox
+			if (isRoot) { // is this a root folder?
+			  let newAcIndex = gAccountView.getViewIndexForItem(msgFolder);
+				if (GetSelectedAccountIndex() != newAcIndex) {
+					util.logDebugOptional("folders.select", 'Postbox - need to select different account idx: ' + newAcIndex);
+					ChangeSelection(GetAccountTree(), gAccountView.getViewIndexForItem(msgFolder));
+				}
+				else
+					util.logDebugOptional("folders.select", 'Postbox - current account index: ' + newAcIndex);
+			}
+
       // before we can select a folder, we need to make sure it is "visible"
       // in the tree.	to do that, we need to ensure that all its
       // ancestors are expanded
+			util.logDebugOptional("folders.select", "Postbox: EnsureFolderIndex : " + msgFolder.URI);
       folderIndex = EnsureFolderIndex(msgFolder);
-      util.logDebugOptional("folders.select", "EnsureFolderIndex: " + msgFolder.URI);
+      util.logDebugOptional("folders.select", "result index = " + folderIndex);
       // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {
         util.ensureNormalFolderView();
@@ -2001,8 +2138,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	// could not find folder!
 	if (null == folderIndex || folderIndex<0) {
     util.logDebugOptional("folders.select", 'Could not find folder in tree (folderIndex = ' + folderIndex + ')');
-		if (!msgFolder || !msgFolder.filePath || !msgFolder.filePath.exists() || folderIndex<0)
-			return false;
+		return false;
 	}
 
 	if (prefs.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
@@ -2070,13 +2206,13 @@ QuickFolders.FolderListener = {
 
 	OnItemAdded: function fldListen_OnItemAdded(parent, item, viewString) {
 		try {
+			if (!QuickFolders) return;
       const util = QuickFolders.Util,
             Ci = Components.interfaces;
-            
-			if (!QuickFolders)
-        return;
       let f = item.QueryInterface(Ci.nsIMsgFolder);
       util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
+			let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
+			util.touch(fld || f); // set MRUTime
 			QuickFolders.FolderListener.lastAdded = f;
 		}
 		catch(e) { };
@@ -2196,12 +2332,8 @@ QuickFolders.FolderListener = {
 		catch(e) {this.ELog("Exception in Item OnItemIntPropertyChanged - TotalUnreadMessages: " + e);};
 	},
 	OnItemBoolPropertyChanged: function fldListen_OnItemBoolPropertyChanged(item, property, oldValue, newValue) {},
-	OnItemUnicharPropertyChanged: function fldListen_OnItemUnicharPropertyChanged(item, property, oldValue, newValue) {
-		// var x=prop;
-	},
-	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {
-    // NOP
-  },
+	OnItemUnicharPropertyChanged: function fldListen_OnItemUnicharPropertyChanged(item, property, oldValue, newValue) {},
+	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {},
 	OnItemEvent: function fldListen_OnItemEvent(item, event) {
     const listener = QuickFolders.FolderListener;
 		let eString = event.toString();

@@ -89,8 +89,9 @@
 <!ENTITY qf.checkbox.debug "Debug Modus">
 <!ENTITY qf.checkbox.debug.tooltip "Rechtsklick für zusätzliche Debug Optionen">
 <!ENTITY qf.label.initdelay "[ms] init Verzögerung {1000=standard}:">
-<!ENTITY qf.label.folders "Verzeichnisse?">
-<!ENTITY qf.label.folders.tooltip "Kopiert den kompletten String der Verzeichnis Konfiguration in die Zwischenablage">
+<!ENTITY qf.copyfolders "Tabs kopieren">
+<!ENTITY qf.copyfolders.tooltip "Kopiert die komplette Verzeichniskonfiguration in die Zwischenablage">
+<!ENTITY qf.pastefolders.tooltip "Alle QuickFolders löschen und neue Konfiguration aus der Zwischenablage einlesen">
 <!ENTITY qf.label.appearance "Aussehen">
 <!ENTITY qf.label.themes "Themes:">
 <!ENTITY qf.themes.flatTabs.label "Flat Style">

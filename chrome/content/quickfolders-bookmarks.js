@@ -432,10 +432,11 @@ QuickFolders.bookmarks = {
   } ,
   
   getBrowser: function getBrowser() {
-		const Ci = Components.interfaces;
-    let util = QuickFolders.Util,
-		    interfaceType = Ci.nsIDOMWindow,
-        mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
+		const Ci = Components.interfaces,
+		      Cc = Components.classes,
+					util = QuickFolders.Util,
+					interfaceType = Ci.nsIDOMWindow;
+    let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
         browsers = null,
         DomWindow = null,
         theBrowser = null;
@@ -858,14 +859,11 @@ QuickFolders.bookmarks = {
     
     let dirService = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties),
         file = dirService.get("ProfD", Ci.nsILocalFile),
-    // stateString = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
         entity = bookmarks.Entries.length ? bookmarks.Entries : '',
         outString = JSON.stringify(entity, null, '  '); // prettify
     
     file.append("extensions");
     file.append("quickFoldersBookmarks.json");
-    // stateString.data = aData;
-    // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
 
     // Initialize the file output stream.
     let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);

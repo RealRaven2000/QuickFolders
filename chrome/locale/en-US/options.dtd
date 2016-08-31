@@ -88,8 +88,10 @@
 <!ENTITY qf.checkbox.debug "Debug Mode">
 <!ENTITY qf.checkbox.debug.tooltip "Right click this checkbox for advanced debug options">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standard}:">
-<!ENTITY qf.label.folders "Folders?">
-<!ENTITY qf.label.folders.tooltip "Copies the folders configuration string to the clipboard">
+<!ENTITY qf.copyfolders "Copy Tabs">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
+<!ENTITY qf.copyfolders.tooltip "Copy the QuickFolders Tabs configuration to the clipboard">
+<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
 <!ENTITY qf.label.appearance "Appearance">
 <!ENTITY qf.label.themes "Themes:">
 <!ENTITY qf.themes.flatTabs.label "Flat Style">

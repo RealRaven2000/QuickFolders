@@ -9,6 +9,10 @@ QuickFolders.quickMove = {
   IsCopy: [],    // copy flag, false for move
   Origins: [],   // source folder array
   
+	get silent() {
+		return QuickFolders.Preferences.getBoolPref('quickMove.premium.silentMode');
+	},
+
   get isActive() {
     return (this.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
   },
@@ -56,7 +60,8 @@ QuickFolders.quickMove = {
             }, 1200);
         }
       }
-      util.slideAlert("QuickFolders",notify);
+			if (!QuickFolders.quickMove.silent)
+				util.slideAlert("QuickFolders",notify);
     }
     function copyList(uris, origins, isCopy) {
       if (!uris.length) return;
@@ -82,7 +87,7 @@ QuickFolders.quickMove = {
       let theAction = isCopy ? 'copy Messages' : 'move Messages';
       util.logDebugOptional('quickMove', 'After ' + theAction + ' actionCount: ' + actionCount + ' resetting menu');
       // ==================================================================
-      showFeedback(actionCount, messageIdList, isCopy);
+      showFeedback(actionCount, messageIdList, isCopy);  // .bind(QuickFolders.quickMove)
     }
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
     let util = QuickFolders.Util,
@@ -120,6 +125,7 @@ QuickFolders.quickMove = {
     this.resetList();
     this.update();
     QuickFolders.Interface.hideFindPopup();
+		util.touch(fld); // update MRUTime
     util.logDebugOptional('quickMove', 'After hideFindPopup');
   },
   

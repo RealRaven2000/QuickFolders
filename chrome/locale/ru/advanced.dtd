@@ -4,19 +4,19 @@
 <!ENTITY grpComposer "Стандартные значения полей сообщения">
 <!ENTITY fromAddress "От:">
 <!ENTITY fromAddress.tooltip "Стандартный адрес отправителя для новых сообщений">
-<!ENTITY defaultAccountAddress.value "Стандартный адрес учетной записи">
+<!ENTITY defaultAccountAddress.value "Стандартный адрес учётной записи">
 <!ENTITY toAddress "Кому:">
 <!ENTITY toAddress.tooltip "Стандартный адрес получателя для новых сообщений">
 <!ENTITY grpTabBehavior "Продвинутое поведение закладки">
-<!ENTITY chkIgnoreUnread "Не показывать не прочтенный статус">
-<!ENTITY chkIgnoreUnread.tooltip "Не показывать в закладке количество не прочтенных сообщений, в том числе и жирным шрифтом.">
+<!ENTITY chkIgnoreUnread "Не показывать непрочтённый статус">
+<!ENTITY chkIgnoreUnread.tooltip "Не показывать в закладке количество непрочтённых сообщений, в том числе и жирным шрифтом.">
 <!ENTITY chkIgnoreCounts "Не показывать количество сообщений">
 <!ENTITY chkIgnoreCounts.tooltip "Не показывать количество сообщений в папке.">
 <!ENTITY grpCustomCSS "Настроить CSS">
 <!ENTITY cssBackground "Фон">
-<!ENTITY cssBackground.tooltip "CSS описание фона, к примеру градиент(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">
+<!ENTITY cssBackground.tooltip "CSS-описание фона, например linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">
 <!ENTITY cssColor "Цвет текста">
-<!ENTITY cssColor.tooltip "CSS описание цвета, к примеру rgba(100,20,20,0.8)">
+<!ENTITY cssColor.tooltip "CSS-описание цвета, например rgba(100,20,20,0.8)">
 <!ENTITY lblCustomPalette "Настроить палитру:">
 <!ENTITY btnReset "По умолчанию">
 <!ENTITY btnApply "Применить">

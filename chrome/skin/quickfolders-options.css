@@ -251,6 +251,34 @@ hbox.quickhelp-dbg {
 	padding: 3px 8px 3px 8px;
 }
 
+#initdelay {
+	max-width: 4em;
+}
+
+#copyFolders {
+	list-style-image: url("chrome://quickfolders/skin/ico/copy-tabs.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#copyFolders label {
+	margin-left: 2px !important; 
+}
+
+#pasteFolders {
+	min-width: 18px;
+	list-style-image: url("chrome://quickfolders/skin/ico/paste-tabs.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#pasteFolders label {
+	display: none;
+}
+
+#pasteFolders:hover {
+	-moz-image-region: rect(16px, 16px, 32px, 0px); 
+}
+
+
 .shortCutKey {
 	width: 2em;
 	text-align: center;

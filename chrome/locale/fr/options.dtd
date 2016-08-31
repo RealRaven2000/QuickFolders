@@ -1,5 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Options de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visiter la chaîne YouTube Thunderbird Daily pour des astuces et des tutoriels sur QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Clic-droit pour l'historique des versions.">
 <!ENTITY qf.tab.general "Générales">
 <!ENTITY qf.tab.advanced "Avancées">
@@ -87,8 +88,9 @@
 <!ENTITY qf.checkbox.debug "Mode débogage">
 <!ENTITY qf.checkbox.debug.tooltip "Cliquez droit sur cette case à cocher pour des options de débogage avancées">
 <!ENTITY qf.label.initdelay "[ms] délai initial {1000 par défaut} :">
-<!ENTITY qf.label.folders "Dossiers ?">
-<!ENTITY qf.label.folders.tooltip "Copie la chaîne de caractères de configuration des dossiers vers le presse-papiers">
+<!ENTITY qf.copyfolders "Copier les onglets">
+<!ENTITY qf.copyfolders.tooltip "Copie la chaîne de caractères de configuration des dossiers vers le presse-papiers">
+<!ENTITY qf.pastefolders.tooltip "Supprimer tous les QuickFolders et prendre en compte la nouvelle configuration à partir du presse-papier">
 <!ENTITY qf.label.appearance "Apparence">
 <!ENTITY qf.label.themes "Thèmes :">
 <!ENTITY qf.themes.flatTabs.label "Style plat">

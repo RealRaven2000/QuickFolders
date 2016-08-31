@@ -1,5 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Настройки QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Посетите Thunderbird Daily - канал на YouTube с советами и пособиями по использованию QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Нажмите правой кнопкой мышки для получения истории изменений.">
 <!ENTITY qf.tab.general "Основные">
 <!ENTITY qf.tab.advanced "Дополнительные">
@@ -8,11 +9,11 @@
 <!ENTITY qf.tab.support "Поддержка">
 <!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.label.keyboard "Клавиатурные сокращения">
-<!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения(от Alt + 1 до Alt + 9)">
+<!ENTITY qf.checkbox.usekeyboardshortcuts "Использовать клавиатурные сокращения (от Alt + 1 до Alt + 9)">
 <!ENTITY qf.checkbox.showshortcutnumber "Показывать номер сокращения на закладках">
 <!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Использовать Ctrl вместо Alt">
-<!ENTITY qf.checkbox.useRebuildShortcut "Обновить все закладки:Ctrl + Alt +">
-<!ENTITY qf.checkbox.useNavigationShortcuts "ALT-Влево/ALT-Вправо для предыдущей/следующей закладки">
+<!ENTITY qf.checkbox.useRebuildShortcut "Обновить все закладки: Ctrl + Alt +">
+<!ENTITY qf.checkbox.useNavigationShortcuts "Alt-влево/Alt-вправо для предыдущей/следующей закладки">
 <!ENTITY qf.label.tabContent "Содержание закладок">
 <!ENTITY qf.checkbox.showUnreadBold "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом">
 <!ENTITY qf.checkbox.showNonEmptyItalics "Текст закладок для папок с сообщениями - курсивом">
@@ -29,7 +30,7 @@
 <!ENTITY qf.checkbox.sortMenusAlpha "Заставлять сортировать папки в папках по алфавиту.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Используйте только если нет правильной сортировки папок в папках.">
 <!ENTITY qf.checkbox.autoHideToolbar "Не показывать QuickFolders если он не нужен">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений, итд.">
+<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений и т.д.">
 <!ENTITY qf.label.mainToolbar "Элементы основной панели инструментов">
 <!ENTITY qf.checkbox.showRecentTab "Показывать закладку с последними папками">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Для конфигурирования нажмите правой кнопкой мышки">
@@ -44,12 +45,12 @@
 <!ENTITY qf.checkbox.tabMenuIcon "Значок меню на панели инструментов">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Это меню можно также вызвать нажатием правой кнопки мыши на самой панели инструментов">
 <!ENTITY qf.toolbarMinimumHeight "Минимальная высота:">
-<!ENTITY qf.toolbarMinimumHeight.tooltip "Для Mac систем страдающих от [Bug 25021]">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "Для Mac систем страдающих от [ошибка 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Панель инструментов текущей папки">
 <!ENTITY qf.checkbox.currentFolder.show "Показывать панель инструментов">
 <!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "И в новой вкладке с сообщением">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…также и в новом окне с сообщением">
-<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Показывать панель инструментов текущей папки в окне, если Вы открываете сообщение в новом окне.">
+<!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Показывать панель инструментов текущей папки в окне, если вы открываете сообщение в новом окне.">
 <!ENTITY qf.checkbox.showRecentButton "Кнопка с последними папками">
 <!ENTITY qf.checkbox.showMessageNavigation "Кнопки навигации между сообщениями">
 <!ENTITY qf.checkbox.showFolderNavigation "Кнопки навигации между папками">
@@ -76,19 +77,21 @@
 <!ENTITY qf.caption.currentFolderBackground "Фон панели инструментов текущей папки">
 <!ENTITY qf.button.currentFolderBackground.set "установить">
 <!ENTITY qf.currentFolderBackground.default "по умолчанию">
-<!ENTITY qf.currentFolderBackground.dark "темный">
+<!ENTITY qf.currentFolderBackground.dark "тёмный">
 <!ENTITY qf.currentFolderBackground.translucent "просвечивающий">
 <!ENTITY qf.currentFolderBackground.custom "собственный">
 <!ENTITY qf.label.misc "Разное">
 <!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Нажмите правой кнопкой мышки для изменения этого текста">
-<!ENTITY qf.checkbox.enableTransitions "Разрешить CSS трансформации">
+<!ENTITY qf.checkbox.enableTransitions "Разрешить CSS-трансформации">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Плавные переходы между цветами закладок.">
 <!ENTITY qf.checkbox.debug "Режим отладки">
 <!ENTITY qf.checkbox.debug.tooltip "Нажмите правой кнопкой мышки для получения дополнительных настроек">
-<!ENTITY qf.label.initdelay "Начальная задержка, мс (1000мс по умолчанию)">
-<!ENTITY qf.label.folders "Папки?">
-<!ENTITY qf.label.folders.tooltip "Копировать настройки в буфер обмена">
+<!ENTITY qf.label.initdelay "Начальная задержка, мс (1000 мс по умолчанию)">
+<!ENTITY qf.copyfolders "Копировать закладки">
+<!-- obsolete ?? double check in js code -->
+<!ENTITY qf.copyfolders.tooltip "Копировать настройки в буфер обмена">
+<!ENTITY qf.pastefolders.tooltip "Удалить все QuickFolders и прочитать новую конфигурацию из буфера обмена">
 <!ENTITY qf.label.appearance "Внешний вид">
 <!ENTITY qf.label.themes "Темы:">
 <!ENTITY qf.themes.flatTabs.label "Плоский стиль">
@@ -116,7 +119,7 @@
 <!ENTITY qf.palette.twoColors "2 цвета">
 <!ENTITY qf.palette.standard "Обычная палитра">
 <!ENTITY qf.palette.pastel "Пастельные цвета">
-<!ENTITY qf.palette.night "Ночное Видение">
+<!ENTITY qf.palette.night "Ночной вид">
 <!ENTITY qf.palette.inactive "Как неактивная закладка">
 <!ENTITY qf.label.ColoredTabPalette "Палитра цветных закладок:">
 <!ENTITY qf.label.ColoredTabPalette.tooltip "Палитра закладок с предопределенным цветом">
@@ -132,13 +135,13 @@
 <!ENTITY qf.description.linkNote "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:">
 <!ENTITY qf.label.homePage "Подробная информация на странице QuickFolders на Mozdev.org…">
 <!ENTITY qf.description.dragToAdd "Для создания новых закладок перетаскивайте папки на свободное место в новой панели инструментов. Для перемещения сообщений перетаскивайте их на закладки (удерживайте Ctrl для копирования). Нажмите на закладку, чтобы переместится в папку.">
-<!ENTITY qf.description.dragToPosition "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки Вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку).">
+<!ENTITY qf.description.dragToPosition "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку).">
 <!ENTITY qf.description.dragToPopup "Перетаскивайте сообщения на контекстное меню закладки для их перемещения в папки, находящиеся в этой папке.">
 <!ENTITY qf.description.changeCategory "Нажмите на закладке правой кнопкой мышки для присвоения ей категории. Список категорий будет показан в левой части панели инструментов.">
-<!ENTITY qf.description.rightClickOptions "Для вызова меню настроек, нажмите на свободном месте панели инструментов. В этом меню Вы можете выбрать обычный (занимает меньше места) или плоский(четче, показывает индикатор при перетаскивании) стиль.">
-<!ENTITY qf.description.tipMsg "Совет: Если у Вас много папок, попробуйте воспользоваться расширением 'Nostalgy' для навигации с помощью клавиатуры">
+<!ENTITY qf.description.rightClickOptions "Для вызова меню настроек, нажмите на свободном месте панели инструментов. В этом меню вы можете выбрать обычный (занимает меньше места) или плоский(четче, показывает индикатор при перетаскивании) стиль.">
+<!ENTITY qf.description.tipMsg "Совет: если у вас много папок, попробуйте воспользоваться расширением 'Nostalgy' для навигации с помощью клавиатуры">
 <!ENTITY qf.description.experimentalItems "Последующие функции - экспериментальные, надеюсь они будут работать в следующей версии!!">
-<!ENTITY qf.description.donate "Если QuickFolders Вам нравится также, как и нам, Вы можете поддержать деньгами дальнейшее развитие.">
+<!ENTITY qf.description.donate "Если QuickFolders вам нравится также, как и нам, вы можете поддержать деньгами дальнейшее развитие.">
 <!ENTITY qf.label.donateLink "Поддержать…">
 <!ENTITY qf.description.bugzilla "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях">
 <!ENTITY qf.label.bugzilla "Сообщить об ошибке/Запрос новых возможностей на Bugzilla…">
@@ -154,32 +157,31 @@
 <!ENTITY qf.button.validateLicense "проверить">
 <!ENTITY qf.label.licenseValid "Лицензионный ключ действителен до:">
 <!ENTITY qf.licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
-<!ENTITY qf.licenseValidation.failed "Лицензионный ключ недействителен. Еще раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
+<!ENTITY qf.licenseValidation.failed "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
 <!ENTITY qf.licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
 <!ENTITY qf.licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
-<!ENTITY qf.premiumConfig "Премиум функции">
-<!ENTITY qf.checkbox.quickJump "quickJump: Переход в любую папку по нажатию SHIFT +">
+<!ENTITY qf.premiumConfig "Премиум-функции">
+<!ENTITY qf.checkbox.quickJump "quickJump: переход в любую папку по нажатию Shift +">
 <!ENTITY qf.checkbox.quickJump.tip "Сочетания клавиш кнопки quickJump для быстрого перехода к папке по имени.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Перемещение сообщений в любую папку по нажатию SHIFT +">
+<!ENTITY qf.checkbox.quickMove "quickMove: перемещение сообщений в любую папку по нажатию Shift +">
 <!ENTITY qf.checkbox.quickMove.tip "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy: Копирование сообщений в любую папку по нажатию SHIFT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Копирование сообщений в любую папку по нажатию Shift +">
 <!ENTITY qf.checkbox.quickCopy.tip "Сочетания клавиш кнопки quickCopy для быстрого копирования сообщений в папку по имени.">
 <!ENTITY qf.quickMove.path.format "Формат отображения:">
 <!ENTITY qf.pathFormat.folderName "Имя папки">
 <!ENTITY qf.pathFormat.folderAndAccount "Имя папки - Учётная запись">
 <!ENTITY qf.pathFormat.AccountAndPath "Учётная запись - Путь к папке">
 <!ENTITY qf.pathFormat.PathOnly "Путь к папке">
-<!ENTITY qf.pathFormat.URI "URI папки">
+<!ENTITY qf.pathFormat.URI "URI-папки">
 <!ENTITY qf.pathFormat.maxDepth "Максимальная глубина пути:">
 <!ENTITY qf.pathFormat.tooltip "Максимальное количество имен папок показываемых в пути к папке.">
 <!ENTITY qf.categories.supportMultiple "Разрешить выбирать несколько категорий для закладки">
-<!ENTITY qf.categories.supportMultiple.tooltip "Удерживайте SHIFT для выбора более чем одной категории из списка.">
+<!ENTITY qf.categories.supportMultiple.tooltip "Удерживайте Shift для выбора более чем одной категории из списка.">
 <!ENTITY qf.checkbox.readingList "Список для чтения">
 <!ENTITY qf.checkbox.readingList.tooltip "Список сообщений для прочтения позже. Перетаскивайте важные сообщения на эту кнопку.">
 <!ENTITY qf.label.donate "Пожертвовать">
-<!-- obsolete ?? double check in js code -->
-<!ENTITY qf.label.instantApplyMsg "Если Вы видите только кнопку Close, возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку OK и сохранить цветовые настройки.">
+<!ENTITY qf.label.instantApplyMsg "Если вы видите только кнопку [Close], возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку [OK] и сохранить цветовые настройки.">
 <!ENTITY qf.checkbox.usePalette "Показ палитры">
 <!ENTITY qf.options.theme.pastelColors "Пастельные цвета">
 <!ENTITY qf.menu.tabColor "Без цвета!">

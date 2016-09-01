@@ -860,7 +860,7 @@ var QuickFolders = {
 
 	// handler for dropping folder shortcuts
 	toolbarDragObserver: {
-		get util() { return  QuickFolders.Util; } 
+		get util() { return  QuickFolders.Util; } ,
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
 

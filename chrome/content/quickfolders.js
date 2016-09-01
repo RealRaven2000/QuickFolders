@@ -860,6 +860,7 @@ var QuickFolders = {
 
 	// handler for dropping folder shortcuts
 	toolbarDragObserver: {
+		get util() { return  QuickFolders.Util; } 
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
 
@@ -872,21 +873,24 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		onDragEnter: function onDragEnter(evt,flavour,session){
+		onDragEnter: function onDragEnter(evt, flavour, session){
 			evt.preventDefault();
 			return false;
 		},
 
-		onDragOver: function onDragOver(evt,flavour,session){
-			if (flavour.contentType=="text/x-moz-folder" || flavour.contentType=="text/unicode" || flavour.contentType=="text/x-moz-newsfolder" || flavour.contentType=="text/currentfolder") // only allow folders or  buttons!
+		onDragOver: function onDragOver(evt, flavour, session){
+			let contentType = flavour.contentType;
+			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
+				this.util.logDebugOptional("dnd","toolbarDragObserver.onDragover - onDragOver " + contentType);
 				session.canDrop = true;
+			}
 			else {
-				QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + flavour.contentType);
+				this.util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + contentType);
 				session.canDrop = false;
 			}
 		},
 
-		onDrop: function onDrop(evt,dropData,dragSession) {
+		onDrop: function onDrop(evt, dropData, dragSession) {
  			function addFolder(src) {
 					if(src) {
 						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
@@ -898,7 +902,7 @@ var QuickFolders = {
 					}
 			};
 
-			QuickFolders.Util.logDebugOptional("dnd","toolbarDragObserver.onDrop " + dropData.flavour.contentType);
+			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.onDrop " + dropData.flavour.contentType);
 			let msgFolder, sourceUri;
 
 			switch (dropData.flavour.contentType) {

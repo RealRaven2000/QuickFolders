@@ -205,8 +205,8 @@ QuickFolders.Util = {
 			util.VersionProxyRunning = true;
 			util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
 			if (Components.utils.import) {
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-
+				if (typeof AddonManager != 'object')
+					Components.utils.import("resource://gre/modules/AddonManager.jsm");
 				AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
 					let versionLabel = window.document.getElementById("qf-options-header-description");
 					if (versionLabel) versionLabel.setAttribute("value", addon.version);

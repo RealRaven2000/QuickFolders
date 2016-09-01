@@ -1,0 +1,12 @@
+#alertImage[src$="quickfolders-Icon.png"] {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+	margin: 5px 5px;
+/*  margin: 0 7px 7px; */
+}
+
+#alertTitleBox label[value^="QuickFolders"].alertTitle {
+	font-size: 13px;
+}

@@ -79,7 +79,3 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 	}
 } 
 
-
-QuickFolders.Util.getOrCreateFolder = function dummy() {
-	alert("getOrCreateFolder() - this function is not supported because you are running an older version of Mozilla / Gecko.")
-};

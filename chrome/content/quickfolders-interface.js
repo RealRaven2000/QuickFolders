@@ -1145,7 +1145,6 @@ QuickFolders.Interface = {
 					QI = QuickFolders.Interface,
           FCat = QuickFolders.FolderCategory,
 					prefs = QuickFolders.Preferences;
-		if (util.isDebug) debugger;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
 		// early exit. category is selected already! SPEED!
     if (QI.currentActiveCategories == categoryName)
@@ -1752,7 +1751,7 @@ QuickFolders.Interface = {
 			this.FoldersBox.appendChild(button);
 			this.setEventAttribute(button, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
 			this.setEventAttribute(button, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-			this.setEventAttribute(button, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+			this.setEventAttribute(button, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 			button.setAttribute("flex",100);
 		}
     // we do this after appendChild, because labelElement needs to be generated in DOM
@@ -1924,7 +1923,7 @@ QuickFolders.Interface = {
 
 		this.setEventAttribute(button, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
 		this.setEventAttribute(button, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-		this.setEventAttribute(button, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+		this.setEventAttribute(button, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 		this.SpecialToolbar.appendChild(button);
 	} ,
 
@@ -2001,6 +2000,19 @@ QuickFolders.Interface = {
 			}
 		}
 	} ,
+	
+	// new function to open folder of current email!
+	// tooltip = &contextOpenContainingFolder.label;
+	openContainingFolder: function openContainingFolder(msg) {
+		if (!msg && typeof gFolderDisplay != "undefined")
+			msg = gFolderDisplay.selectedMessage;
+	
+	  if (!msg)
+			return;
+
+		MailUtils.displayMessageInFolderTab(msg);
+	} ,
+
 
 	onRemoveBookmark: function onRemoveBookmark(element) {
 		let util = QuickFolders.Util,
@@ -3336,7 +3348,7 @@ QuickFolders.Interface = {
 					
 					// use parent folder URI as each starting point
 					this.setEventAttribute(createFolderMenuItem, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(createFolderMenuItem, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
+					this.setEventAttribute(createFolderMenuItem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
 
 					popupMenu.appendChild(createFolderMenuItem);
 				}
@@ -3504,7 +3516,7 @@ QuickFolders.Interface = {
 				menuitem.folder = subfolder;
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
 				this.setEventAttribute(menuitem, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
-				this.setEventAttribute(menuitem, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+				this.setEventAttribute(menuitem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
 				// this.setEventAttribute(menuitem, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 				if (forceAlphaSort) {
@@ -3558,7 +3570,7 @@ QuickFolders.Interface = {
 					catch(ex) {;}
 
 					this.setEventAttribute(subMenu, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(subMenu, "ondragdrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+					this.setEventAttribute(subMenu, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
 					this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
@@ -3803,7 +3815,7 @@ QuickFolders.Interface = {
       return false;
     }
     
-    // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passes search string
+    // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passed search string
     function isParentMatch(folder, search, maxLevel, parentList) {
       if (!search) return true;
       let f = folder,
@@ -3888,8 +3900,8 @@ QuickFolders.Interface = {
 		// "parent/" no name given, only lists the direct children
 		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
     let maxParentLevel = searchString.length ? prefs.getIntPref('premium.findFolder.maxParentLevel') : 1; 
-		if (parentPos) maxParentLevel = 1; // no subfolders when SLASH is entered
-    if(util.Application == 'Postbox') {
+		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
+    if (util.Application == 'Postbox') {
       let AF = util.allFoldersIterator(isFiling);
       for (let fi=0; fi<AF.length; fi++) {
         let folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
@@ -3939,7 +3951,26 @@ QuickFolders.Interface = {
 			}
 		}
 		// special commands: if slash was entered, allow creating subfolders. Exclude Postbox.
-		if (parentPos && util.Application!='Postbox') {
+		if (parentPos>0 && util.Application!='Postbox') {
+			// [Bug 26283] add matches from quickfolders (if named differently)
+			let isFound = false;
+			for (let i=0; i<model.selectedFolders.length; i++) {
+				let folderEntry = model.selectedFolders[i],
+				    folderNameSearched = folderEntry.name.toLocaleLowerCase(),
+						matchPos = folderNameSearched.indexOf(parentString);
+					 
+				// 
+				if(matchPos == 0
+				   &&
+				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri - Postbox can't understand this.
+					let nsIfolder = model.getMsgFolderFromUri(folderEntry.uri, false); // determine the real folder name
+					// this folder does not exist (under its real name) - add it!
+					nsIfolder.setStringProperty("isQuickFolder", true); // add this flag
+					parents.push(nsIfolder);
+				}
+			}
+			
+			if (prefs.isDebugOption('quickMove')) debugger;			
 			while (parents.length) {
 				let menuitem = document.createElement('menuitem'),
 				    f = parents.pop(),
@@ -3952,6 +3983,10 @@ QuickFolders.Interface = {
 					}, false
 				);
 				menuitem.className = 'menuitem-iconic deferred'; // use 'deferred' to avoid selectFound handler
+				if (f.getStringProperty("isQuickFolder")) {
+					f.setStringProperty("isQuickFolder", ""); // remove this temporary property
+					menuitem.className += ' quickFolder';
+				}
 				if (menupopup.firstChild)
 					menupopup.insertBefore(menuitem, menupopup.firstChild);
 				else
@@ -4184,9 +4219,8 @@ QuickFolders.Interface = {
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {
-    QuickFolders.Util.testShim(); // test test test
 		window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
-						  'chrome,titlebar,toolbar,centerscreen,resizable,dependent',QuickFolders); // dependent = modeless
+						  'chrome,titlebar,toolbar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
 	} ,
 
   lastTabSelected: null,
@@ -5042,13 +5076,15 @@ QuickFolders.Interface = {
 	} ,
 	
 	updateUserStyles: function updateUserStyles() {
-    let util = QuickFolders.Util;
+    const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
 		try {
 			util.logDebugOptional ("interface","updateUserStyles()");
+			if (prefs.isDebugOption("interface")) debugger; // Postbox
 			// get MAIN STYLE SHEET
 			let styleEngine = QuickFolders.Styles,
-			    ss = this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
-          prefs = QuickFolders.Preferences;
+			    ss = this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
+          
 			if (!ss) return false;
 			
 			// get PALETTE STYLE SHEET
@@ -5069,9 +5105,14 @@ QuickFolders.Interface = {
 			// =================
 			// FONT COLORS
 			let theColorString = prefs.getUserStyle("InactiveTab","color","black"),
-			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight");
+			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
+					radSelector = '.quickfolders-flat toolbarbutton';
+					
+			if (util.Application == 'SeaMonkey') radSelector = 'toolbox toolbar' + radSelector;
 			if (tabStyle != prefs.TABS_STRIPED)  {
-				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
+				styleEngine.setElementStyle(ss, radSelector 
+				  + ((util.Application == 'SeaMonkey') ? '' : '[background-image]')
+					+ '.selected-folder','border-bottom-color', colActiveBG, true);
 			}
 
 			// =================
@@ -5083,11 +5124,13 @@ QuickFolders.Interface = {
 				bottomRadius = prefs.getIntPref('style.corners.customizedBottomRadiusN') + "px";
 			}
 			
-			let legacyRadius = !util.isCSSRadius;				
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
+			let legacyRadius = !util.isCSSRadius;
+			
+			if (util.Application == 'SeaMonkey') radSelector = radSelector + ':not(.plain)';
+			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
+			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
 
 			// ==================
 			// BORDERS & SHADOWS
@@ -5725,4 +5768,5 @@ QuickFolders.Interface = {
 	}
   
 }; // Interface
+
 

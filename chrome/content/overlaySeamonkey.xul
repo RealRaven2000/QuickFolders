@@ -13,6 +13,8 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<!-- modern platform specific code that breaks postbox -->
 	<script type="application/x-javascript;version=1.7" src="chrome://shimQF/content/quickfolders-shim.js" />
+	<!-- new / old ECMA code - Postbox / Fossamail 25 -->
+	<script type="application/x-javascript;version=1.7" src="chrome://shimECMA/content/quickfolders-shimEcma.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
@@ -49,7 +51,7 @@
 		toolbarname="QuickFolders Toolbar"
 		class="toolbar-primary chromeclass-toolbar"
 		ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver);"
-		ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver);"
+		ondrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver);"
 		ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver);"
 		dragdroparea="QuickFolders-FoldersBox"
 		customizable="false"

@@ -88,8 +88,10 @@
 <!ENTITY qf.checkbox.debug "Foutopsporingsmodus">
 <!ENTITY qf.checkbox.debug.tooltip "rechtsklik dit aanvinkveld voor geavanceerde foutopsporingsopties">
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
+<!ENTITY qf.copyfolders "Tabbladen kopiëren">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.copyfolders.tooltip "Kopieert de configuratie-string voor mappen bevat naar het klembord">
+<!ENTITY qf.pastefolders.tooltip "Alle QuickFolders verwidjeren en nieuwe configuratie van klembord inlezen">
 <!ENTITY qf.label.appearance "Weergave">
 <!ENTITY qf.label.themes "Thema’s:">
 <!ENTITY qf.themes.flatTabs.label "Vlakke stijl">

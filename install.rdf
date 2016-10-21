@@ -7,7 +7,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:name="QuickFolders"
    em:id="quickfolders@curious.be"
-   em:version="4.6pre22"
+   em:version="4.6pre73"
    em:creator="Axel Grude"
    em:description="Bookmark your favorite mail folders in Thunderbird."
    em:iconURL="chrome://quickfolders/skin/ico/quickfolders-Icon.png"
@@ -49,16 +49,16 @@
     <em:translator>José Huang (zh)</em:translator>
   </RDF:Description>
   
-  <!-- Thunderbird -->
+  <!-- Thunderbird minver should be 34 -->
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-   em:minVersion="34.0"
+   em:minVersion="25.0"
    em:maxVersion="45.*"/>
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="3.0.0"
-   em:maxVersion="4.0.*" />
+   em:maxVersion="5.0.*" />
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"

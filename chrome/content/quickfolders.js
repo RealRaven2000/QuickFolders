@@ -327,13 +327,20 @@ END LICENSE BLOCK */
 		## [Bug 26258] Postbox: collapsed accounts are not switched when clicking account tab
 		
 	4.6 QuickFolders Pro -  WIP
-	  ## Make it possible to load a folder string that is prettified.
+		## [Bug 26283] add matches from quickfolders tabs for creating new subfolders
+	  ## Support copying and pasting the folder tabs definitions in order to edit them in a text editor.
+		## Support for Postbox 5
+		## Made coloring + styling (flat style) more reliable in SeaMonkey
+		## Platform modernization: replaced old dragdrop events with drop events.
+		## Ensured Compatibility with Fossamail 26.
+		## New function for opening the folder of current mail
 	
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
 		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
+		## [Bug 26283] Allow using Tab alias name for quickmove / create subfolder
 	
 	
 ###VERSION###
@@ -861,6 +868,7 @@ var QuickFolders = {
 	// handler for dropping folder shortcuts
 	toolbarDragObserver: {
 		get util() { return  QuickFolders.Util; } ,
+		get prefs() { return QuickFolders.Preferences; } ,
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
 
@@ -873,15 +881,21 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		onDragEnter: function onDragEnter(evt, flavour, session){
+		onDragExit: function onDragExit(evt) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragExit");
+		} ,
+		
+		onDragEnter: function onDragEnter(evt, session) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - " + session.toString());
+			
 			evt.preventDefault();
 			return false;
 		},
 
 		onDragOver: function onDragOver(evt, flavour, session){
 			let contentType = flavour.contentType;
+			if (this.prefs.isDebugOption('dnd')) debugger;
 			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
-				this.util.logDebugOptional("dnd","toolbarDragObserver.onDragover - onDragOver " + contentType);
 				session.canDrop = true;
 			}
 			else {
@@ -889,8 +903,23 @@ var QuickFolders = {
 				session.canDrop = false;
 			}
 		},
+		
+		canDrop: function canDropHelper(e,s) {
+			try {
+				this.util.logDebugOptional("dnd","toolbarDragObserver.canDrop - Session.canDrop = " +  s.canDrop);
+				if (this.prefs.isDebugOption('dnd') && (!s || s && !s.canDrop)) debugger;
+				if (s) {
+					s.canDrop = true;
+				}
+			}
+			catch(ex) {};
+			return true;
+		},
 
 		onDrop: function onDrop(evt, dropData, dragSession) {
+			if (this.prefs.isDebugOption('dnd')) debugger;
+			let contentType = dropData.flavour.contentType;
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDrop - " + contentType);
  			function addFolder(src) {
 					if(src) {
 						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
@@ -902,16 +931,16 @@ var QuickFolders = {
 					}
 			};
 
-			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.onDrop " + dropData.flavour.contentType);
+			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.onDrop " + contentType);
 			let msgFolder, sourceUri;
 
-			switch (dropData.flavour.contentType) {
+			switch (contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
             let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
             for (let i=0; i<count; i++) { // allow multiple folder drops...
-              msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, i);
+              msgFolder = evt.dataTransfer.mozGetDataAt(contentType, i);
               if (msgFolder.QueryInterface)
                 sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
               else
@@ -1088,7 +1117,8 @@ var QuickFolders = {
           
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
-					if (util.Application == 'Postbox') {  // legacy code. Remove once Task.jsm lands in Postbox
+					let platform = util.PlatformVersion;
+					if (util.Application == 'Postbox' || platform < 26.0) {  // legacy code. Remove once Task.jsm lands in Postbox
 						aFolder.createSubfolder(uriName, msgWindow);
 						
 						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
@@ -1099,14 +1129,14 @@ var QuickFolders = {
 						let deferredMove = function deferredMove_Postbox(parentFolder) {
 							// if folder creation is successful, we can continue with calling the
 							// other drop handler that takes care of dropping the messages!
-							step='2. find new sub folder';
+							step = '2. find new sub folder - old platform code running on Gecko ' + platform;
 							util.logDebugOptional("dragToNew", step);
 							let newFolder = QuickFolders.Model.getMsgFolderFromUri(parentFolder.URI + "/" + uriName, true);
 							
 							if (!newFolder) {
 								QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
-								if (QuickFolders.DeferredMoveCount<10) {  // async retry
-									setTimeout( function() { deferredMove(parentFolder); }, 400);
+								if (QuickFolders.DeferredMoveCount<25) {  // async retry
+									setTimeout( function() { deferredMove(parentFolder); }, 500);
 								}
 								else { // we give up
 									QuickFolders.DeferredMoveCount = 0;
@@ -2357,7 +2387,6 @@ QuickFolders.FolderListener = {
 					try {
             log("events","event: " + eString + " item:" + item.prettyName);
 						if (QI) {
-							if (util.isDebug) debugger;
               // make sure this event is not a "straggler"
 							try {
 								let folders = GetSelectedMsgFolders(),

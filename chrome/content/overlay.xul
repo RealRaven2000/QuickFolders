@@ -14,6 +14,8 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<!-- modern platform specific code that breaks postbox -->
 	<script type="application/x-javascript;version=1.7" src="chrome://shimQF/content/quickfolders-shim.js" />
+	<!-- new / old ECMA code - Postbox / Fossamail 25 -->
+	<script type="application/x-javascript;version=1.7" src="chrome://shimECMA/content/quickfolders-shimEcma.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
@@ -49,7 +51,7 @@
 			toolbarname="QuickFolders Toolbar"
 			class="toolbar-primary chromeclass-toolbar"
 			ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
-			ondragdrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+			ondrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
 			ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
 			dragdroparea="QuickFolders-FoldersBox"
 			customizable="false"
@@ -95,7 +97,7 @@
 										 tooltiptext="&quickfolders.readingList.tooltip;"
 										 label=""
 										 onclick="QuickFolders.Interface.readingListClick(event,this);"
-										 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
 										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 										 context="QuickFolders-readingListMenu"
@@ -105,7 +107,7 @@
 										 tooltiptext="&qf.tooltip.quickMove;"
 										 label=""
 										 onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
-										 ondragdrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
 										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
 										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
 										 context="QuickFolders-quickMoveMenu"

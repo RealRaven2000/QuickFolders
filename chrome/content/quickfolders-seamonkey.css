@@ -33,3 +33,13 @@ toolbar[mode="icons"]#QuickFolders-Toolbar  .toolbarbutton-text
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup > * {
 	min-height: 16px;
 }
+
+toolbar.quickfolders-flat .folderBarContainer toolbarbutton:not(.plain) {
+	border-width: 1px !important;
+	border-style: solid !important;
+}
+
+#QuickFolders-Category-Selection {
+  vertical-align: top !important;
+	margin-top: 0px;
+}

@@ -189,7 +189,6 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					licenser = util.Licenser;
-		if (prefs.isDebug) debugger;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -925,7 +924,6 @@ QuickFolders.Options = {
 		}
     if (isUpdatePanelColor) {
       getElement('buttonTransparency').disabled = !isTransparentSupport;
-      if (prefs.isDebug) debugger;
       if (isStripable === null) {
           isStripable = this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'))
                         && 

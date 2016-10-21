@@ -20,6 +20,10 @@ QuickFolders.Preferences = {
       return true; // more info is probably better in this case - this is an illegal value after all.
     }
 	},
+	
+	setDebugOption: function setDebugOption(option, val) {
+		this.setBoolPref("debug." + option, val);
+	},
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {

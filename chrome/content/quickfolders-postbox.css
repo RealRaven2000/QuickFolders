@@ -54,12 +54,19 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
    min-width: 16px;
    background-image: none;
  }
+ 
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] button:nth-child(2) > hbox {
    padding: 0 !important;
    margin: 0 !important;
    max-width: 16px;
    background-image: none;
  }
+ 
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] button:nth-child(2) label {
    visibility: collapse !important;
  }
+ 
+#QuickFolders-CurrentFolderTools #QuickFoldersCurrentFolder.icon > image {
+	margin-right: 0.4em !important; /* in postbox this icon is glued to the label */
+}
+

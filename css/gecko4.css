@@ -1,0 +1,77 @@
+
+h2 {
+	-moz-box-shadow: 3px 3px 4px -1px rgba(0,0,0,0.7);
+	-moz-border-radius: 0.6em 0.6em 0.1em 0.1em;
+	-moz-transition-property: -moz-border-radius, -moz-box-shadow, margin;
+}
+
+h2:hover {
+	-moz-border-radius: 0.1em 0.6em 0.1em 0.6em;
+	-moz-box-shadow: 2px 2px 1px -1px rgba(0,0,0,0.9);
+}
+
+h2.newsflash {
+	-moz-border-radius: 5px;
+	-moz-box-shadow: 3px 3px 4px -1px rgba(0,0,0,0.9);
+}
+
+h3 {
+	-moz-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	-moz-border-radius: 0.5em;
+	background-image: -moz-linear-gradient(top,  rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%) !important;
+	-moz-transition-property: border-radius, -moz-box-shadow, margin;
+}
+
+h3:hover {
+	-moz-box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.9);
+	-moz-border-radius: 1em 0.3em 1em 0.3em;
+}
+
+h4 {
+	background:  -moz-linear-gradient(top, rgba(253,251,227,1) 0%, rgba(252,247,182,1) 50%, rgba(252,245,148,1) 51%, rgba(252,249,210,1) 100%);
+	-moz-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	-moz-border-radius: 0.3em;
+	-moz-transition-property: -moz-border-radius, background-image, -moz-box-shadow, margin;
+}
+
+h4:hover 
+{
+	background:  -moz-linear-gradient(top, rgba(249,229,173,1) 0%, rgba(250,220,132,1) 50%, rgba(251,213,101,1) 51%, rgba(248,226,158,1) 100%);
+	-moz-box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.9);
+	-moz-border-radius: 2px;
+}
+
+img.screenshot,
+img.gallery {
+	-moz-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7);
+}
+
+img.gallery {
+	-moz-border-radius: 10px;
+}
+
+p.mail_link a {
+	background: -moz-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%);
+	-moz-box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.7);
+	-moz-border-radius: 4px;
+	-moz-transition-property: background-image, -moz-box-shadow, margin;
+}
+
+p.mail_link a:hover,
+p.mail_link:hover a {
+	-moz-box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.7);
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+}
+
+#main-content-no-nav a[href]:hover {
+	-moz-border-radius: 0.5em;
+}
+
+#mozdev-date {
+	background:    -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+}
+
+.infoTab .infoHeader {
+	background:    -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+}
+

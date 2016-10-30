@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quickfolders: Menu On Top</title>
+    <!-- LOCAL HEAD.TXT -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="google-site-verification" content="LTKICtodcLDl0nhBl2mUiXWMJbOtmEJmhYXVAqm_mJM" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+    <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
+    <link rel="stylesheet" href="css/project_nav.css" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=17" type="text/css">
+    <link rel="stylesheet" href="css/infoBox.css" type="text/css">
+    <link rel="stylesheet" href="css/media.css?v=2" type="text/css">   
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="icon" href="images/QF16x16.png" type="image/png"> 
+    <script src="js/ga.js"> </script>
+
+    <!-- #### DONT KNOW WHICH FILE THIS COMES FROM #### -->
+    <style >
+      .censorship div *,
+      .censorship:hover div * {
+        text-decoration:none !important;
+        font-family: Calibri,Sans_Serif;
+        font-weight: normal;
+        font-size: 12pt;
+      }
+
+      .censorship {
+        width: 50%;
+        height: 30px;
+        vertical-align:middle;text-align:center;
+        background-color:#000;
+        position:absolute;
+        z-index:5555;
+        top:220px;
+        left:240px;
+        box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.4);
+        -moz-transition-property: width, height, min-height, left, top,  box-shadow;
+        -moz-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -webkit-transition-property: width, height, min-height, left, top,  box-shadow;
+        -webkit-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -o-transition-property: width, height, min-height, left, top,  box-shadow;
+        -o-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        opacity: 0.7;
+        -moz-border-radius: 2px;
+
+      }
+      .censorship div {
+        height: 100%;
+        background-image:url(http://americancensorship.org/images/stop-censorship-small.png);
+        background-position:center center;
+        background-repeat:no-repeat;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      .censorship:hover {
+        width:80%;
+        height:auto;
+        min-height:120px;
+        top:200px;
+        left:120px;
+        background-color: rgb(169,3,41);
+        background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1)));
+        background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
+        box-shadow: 0px 0px 30px 30px rgba(0, 0, 0, 0.9);
+        opacity: 0.9;
+        -moz-border-radius: 1em;
+      }
+      .censorship span { display:none; padding: 1em 2em;}
+      .censorship:hover span { display:block; text-decoration: none;}
+      .censorship:hover div {background-image:none;}
+      .stop { text-align:center; }
+    </style>
+    <!--
+    <a class="censorship" href="http://americancensorship.org" target=_blank 
+      title="On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass. If it does the Internet and free speech will never be the same. Join all of us to stop this bill.">
+      <div>
+        <span>On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass.<br/>
+          If it does, the Internet and free speech will never be the same. 
+          <br/><br/><div class="stop">Join all of us to stop this bill. STOP CENSORSHIP &#x25ba;</div></span>
+      </div>
+    </a>
+    --><link rel="stylesheet" href="css/index.css?v=8" type="text/css">
+
+  </head>  
+
+  <body>
+    <!-- ################### BEGIN TOP ################## -->
+
+    <!--<h1 id="mozdev-logo"><a accesskey="M" href=-->
+        <!--"http://www.mozdev.org/" tabindex="1"><img alt="mozdev.org"-->
+        <!--height="69" src="http://www.mozdev.org/sharedimages/mozdev.gif"-->
+        <!--title="" width="148"></a></h1>-->
+
+    <!--<div id="mozdev-date">-->
+      <!--<span class="mozdev-fries">Welcome to QuickFolders!</span><span class="mozdev-date"><?php print DATE;?></span>-->
+    <!--</div>-->
+
+
+    <!-- ####################### BEGIN MAIN CONTENT ########################## -->
+    <div id="main-content-no-nav">
+      <h1 class="project-name" id="content">quickfolders</h1>
+
+      <table id="project-navigation">
+
+        <!--
+        <tbody id="sub-projects" class="project-navigations">
+          <tr>
+            <th scope="row">subprojects:</th>
+            <td class="navigation-list">
+              <a class="first-item" href="/subprojectdir/index.html">subproject name</a>
+              <a href="/subprojectpage.html">subproject name</a>
+            </td>
+          </tr>
+        </tbody>
+        -->
+
+        <tbody id="resources" class="project-navigations">
+          <tr>
+            <th scope="row"></th>
+            <td class="navigation-list">
+              <a href="/index.html" class="first-item">Home</a>
+              <a href="/installation.html">Installation</a>
+              <a href="/version.html">Version&nbsp;History</a>
+              <a href="/faq_tips.html">FAQ&nbsp;+&nbsp;Tips</a>
+              <a href="/donate.html">Support&nbsp;QuickFolders!</a>
+              <a href="/screenshots.html">Screenshots</a>
+              <a href="/bugs.html">Bugs + Feature Requests</a>
+              <a href="/quickFilters.html">quickFilters</a>
+              <a href="/menuOnTop.html" class="active">Menu On Top</a>
+              <!--
+              <a href="/list.html">Mailing List</a>
+              <a href="/drupal/blog">Blog</a>
+              <a href="/drupal/wiki">Wiki</a>
+              -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+<!--- **************** START OF CONTENT *********** -->
+<!-- ***************** INFO/NEWS *************** -->
+<a name='news'> </a>
+<div id="infoTabs">
+	<div class="infoTab" id="whats-new">
+	<h5 class="infoHeader">News</h5>
+	<p>February 2016: I have created a new <a href="https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A">YouTube channel</a> with tips and tricks such has <a href="https://www.youtube.com/watch?v=dR_Xk-6M4oI">how to get started with Addons</a>.</p>
+	<ul class="infoItems">
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.12">3.12</a>Independent Palette types for tab states.</li>
+		<li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.8.1">3.8.1</a>Tabs remember the selected QuickFolders category</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.6">3.6</a> Palette rewrite and paint mode.</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.3">3.3</a> <a href='screenshots.html#filterList'>Filter List Enhancements</a></li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.1">3.1</a> Move Folders with SHIFT </li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.0">3.0</a> <a href="#messageFilterWizard">Filter Learning</a> Tool</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.12</a> New Icons</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.11</a> Multiple Category Support</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9.3">2.9.3</a> Finds and reuses open Tabs</li>
+	</ul>
+	</div>
+
+<!-- alternative image/table base tab works better in NS4 -->
+<!--images/checkbox.png
+<div class="infoTab" id="whats-new-image">
+<h5 class="infoHeader"><img src="http://www.mozdev.org/sharedimages/whatsnew_top.gif" width="154" alt="What's New"></h5>
+<div class="infoItems">
+<div>News item goes here</div>
+<div>More news item goes here</div>
+<div><a href="http://mozdev.org/">mozdev.org</a></div>
+</div>
+</div>
+-->
+</div>
+<link rel="stylesheet" href="/css/menuOnTop.css?v=5" type="text/css">
+<link rel="stylesheet" href="/css/version.css?v=12" type="text/css">
+
+<a name='main'></a>
+
+<script type="text/javascript">
+  var ProductName = 'MenuOnTop';
+</script>
+
+<h2 class="page-header">Menu On Top</h2>
+
+<p>Have a look at the quick tutorial here: <a href="https://youtu.be/dR_Xk-6M4oI?t=1m23s" target="_blank">How to install Menu On Top</a></p>
+
+<p>This is a small extension which makes it possible for Windows users to move the Thunderbird menu above the tabs, like it used to be in Thunderbird 10.
+     The main reason is usability; it is inspired by the excellent 
+     <a href="https://addons.mozilla.org/thunderbird/addon/nautipolis-for-thunderbird" target="_blank">Thunderbird themes</a> of 
+	 <a href="https://addons.mozilla.org/thunderbird/addon/nautipolis-for-thunderbird/developers" target="_blank">Alfred Kayser</a>.
+	 Please be sure to try them out! 
+</p>
+<a name="toc"></a>
+<h4>Table of Contents</h4>
+<p> 
+   <a href="#downloads">Downloads</a><br>
+   <a href="#where-is-my-menu">Where is my menu bar?</a><br>
+   <a href="#preferences">Preferences</a><br>
+   <a href="#style">Style Configuration</a><br>
+   <a href="#customMenu">Custom Menu</a><br>
+   <a href="#themes">Themes</a><br>
+   <a href="#contribute">Contributions</a><br>
+   <a href="menuOnTopHistory.html">Version History</a><br>
+   <a href="#contact">Feedback / contact me</a><br>
+</p>
+
+<p><img class="screenshot" src="images/MOT-Screenshot.png" alt="Preferences">
+</p>
+<p>
+	As you may notice on this screen shot, it uses the coloring of your Operating System's theme engine to display the caption + menu area.
+	This means you can use the addon with UI stylers such as Windowblinds - the screenshot shows the UIS2 theme 'Lantana'. 
+	It also means I had to add the possibility of making the menus more visible by styling the menu text background. 
+	Note that any toolbar buttons do not have backgrounds as it looks much nicer. You can move buttons that you need all the time (e.g. get Mail)
+    to the top which adds some more usability.
+</p>
+
+<a name='downloads'/>
+<h3>Downloads and Source</h3>
+<p>	 
+   Menu On Top can be <a href="https://addons.mozilla.org/en-US/thunderbird/addon/menu-on-top/">downloaded here</a>.
+	 The code is based on the addon 
+	 <a href="https://addons.mozilla.org/en-US/thunderbird/addon/rise-of-the-tools" target="_blank">Rise of the Tools</a>.
+</p>
+
+
+
+<a name='where-is-my-menu'></a>
+<h3>Where is my Menu bar?</h3>
+
+<p>Of course to enjoy the "Old school" menus on top, you might have to make the menu toolbar visible; if the menu isn't there at all, simply select from the menu button:<br>
+   Options... &#x25ba; Menu Bar</p>
+   
+   <p><img class="screenshot" src="images/menuOnTop/enable-Menu.png" alt="Enabling the Menu"></p>
+
+<a name='preferences'></a>
+<h3>Style Preferences</h3>
+   
+<p>
+  The addon is restartless and has a quite a few options; either click the toolbar / status bar icon 
+	<img src="images/menuOnTop/icon/mot-icon16.png" alt="MOT options button">, or 
+	click on <i>Tools &#x25ba; Addons &#x25ba; Extensions</i> and click the <i>Options</i> button of Menu on Top:
+</p>
+
+<a name='style'></a>
+<h4>Style Configuration</h4>
+	<p><img class="screenshot" src="images/menuOnTop/Preferences-lite.png" alt="Preferences"></p>
+	
+	<p>To get started, select a Theme from the dropdown. You can then tweak various things
+	   in the dialog - all changes are visible immediately. Use the <i>Only Change color Scheme</i>
+		 option once you are happy with the way it looks and only want to try different colors.</p>
+		 
+	<ul>
+		<li> <img src="images/checkbox.png" class="cb"><i>Paint menu in titlebar</i> - this is a space saver and paints 
+		     the menu "up there" - in Thunderbird you can only drag the window at the top where there is no menu, 
+				 therefore I added the <i>Drag area</i> at the right. It can also be used to restrict the 
+				 search box to a reasonable size if you add it to the menu toolbar:<br>
+				 <img class="screenshot" src="images/menuOnTop/drag-Area.png" alt="drag area" style="width:440px;"></li>
+	  <li> flavor dropdown: supports the most important Thunderbird themes. My favorites are 
+	       <a href="https://addons.mozilla.org/thunderbird/addon/nautipolis-for-thunderbird" target="_blank">Nautipolis</a> and
+	       <a href="https://addons.mozilla.org/thunderbird/addon/walnut2" target="_blank">Walnut 2</a> 
+		   by Alfred Kayser and 
+		   <a href="https://addons.mozilla.org/thunderbird/addon/tt-deepdark/" target="_blank">TT Deepdark.</a> by <a href="http://www.bloomind.net" target="_blank">Stefano Rosselli</a>
+		   </li>
+		<li> <img src="images/checkbox.png" class="cb"><i>Only change color scheme</i> Use this to change colors without affecting any other style settings, such as menu height.</li>
+		<li> Colors - various choices for the menu background + font colors. Note that some themes may ignore the <i>Hover</i> and <i>Active</i> background colors.<br>
+		   <ul class="sublist">
+			   <li><i>Font color</i>: enter a valid css color. This is only applied to the top level menu items.</li>
+	       <li><i>background</i>: enter a valid css background or backgrund color. For transparency, use the rgba() function. linear-gradient is also supported. Leave this string empty for setting a transparent background.</li>
+			 </ul> 
+		</li>
+		<li> Borders - style for border colors, width and roundness of corners. Use width=0 to hide the borders. </li>
+	  <li> Spacing<br>
+		   <ul class="sublist">
+		     <li><i>Negative toolbar margin</i>: pulls the toolbar closer to the top of the window. 
+	       Depending on your OS theme this might truncate the menu items so do not choose a value that is too high. I recommend between 3 and 16 pixels.</li>
+				 <li><i>Menu panel top margin</i>: Space between menu and top of toolbar. This may be needed for alignment if you add toolbar buttons to the menu bar.</li>
+				 <li><i>Menu panel left margin</i>: Space between menu and left of window.</li>
+				 <li><i>Maximum menu item height</i>: Affects height of the menu items. Depending on the theme you are using you might want a tall or low menu bar</li>
+		   </ul>
+		 </li>
+	  <li> <i>Button Icons</i> - use this to force big / small icons for any toolbar buttons that you move to the menu bar</li>
+				 
+	</ul>
+	
+<a name='customMenu'></a>
+<h4>Custom Menu / Avatar</h4>
+	<p><img class="screenshot" src="images/menuOnTop/MOT-Advanced.png" alt="Advanced Preferences"></p>
+	<p>Enable the <img src="images/checkbox.png" class="cb"><i>Custom Menu</i> in order to add bookmarks and an <img src="images/checkbox.png" class="cb"><i>Avatar</i> if you like.
+	   The supplied icons for avatars are 32px * 32px - I highly recommend setting the size to 32 or higher.
+	</p>
+	<p>The list ion the custom menu is looking at your current tab content, so if you click the
+	   <i>Current Page</i> button it may add a web page or the currently viewed email, depending
+		 on what you are viewing. Note that you can also add a bookmark to the menu by clicking 
+		 and chosing <i>Add Current Item</i> at the bottom of the menu.
+	</p>
+	<p>Tool buttons - these affect the items in the bookmarks list
+		<ul class="sublist">
+			<li>Add: added the currently edited bookmark to the menu</li>
+			<li>Remove: deletes the currently selected item from the menu</li>
+			<li>Up: Moves the currently selected menuitem up by one position</li>
+			<li>Down: Moves the currently selected menuitem down by one position</li>
+			<li>Save / Load: Menu On Top does this automatically, so these buttons might be removed, or rewritten to import/export.</li>
+		</ul>
+	</p>
+	<p>Bookmark - each menu item has 3 attributes:
+		<ul class="sublist">
+		  <li><i>label</i>: this is what is displayed on the menu. When you add a new item via the menu, you get a chance to edit this. To change it, edit this textbox and click on another item (e.g. URL)</li>
+		  <li><i>URL</i>: this is the "address" of the web page or email; only edit if you know what you are doing!</li>
+		  <li><i>type</i>: currently it is one of the following - {<i>browser, contentTab.about, message, calendar, folder, addon</i>}. 
+			  The first two are supported by Firefox + Thunderbird; the other ones are specific to Thunderbird. 
+				<i>contentTab.about</i> can be used to bookmark any "about:" URL, such as about:config. <i>addon</i> is specific to 
+				certain addons which support editing their settings in a tab. Currently supported are Stationery and ThunderStats.
+				<i>calendar</i> is a Lightning Tab.<i>message</i> is a URL for an email. Clicking the email link will jump to the 
+				mail, holding down CTRL will open the email in a new single message tab.
+			</li>
+		<ul>
+	</p>
+	
+
+
+<a name='themes'> </a>
+<h3>Theme Support</h3>
+<p>
+  Menu on Top supports a variety of themes; click the images to download the themes at addons.mozilla.org:
+</p>
+
+	<section>
+	<a name='avatars'> 
+	<h4>Avatar Themes</h4>
+	</a>
+	
+	<br><img src="images/menuOnTop/avatars/LOL-Chibis.png" alt="Chibis" style="box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7);">
+	<p>League of Legend Chibis, all created from the amazing artwork by <a href="http://justduet.tumblr.com/" target="_blank">justduet.tumblr</a>,
+	   except for tristana which is by <a href="http://skence.deviantart.com/" target="_blank">Skence</a>.
+		 If you are missing your favorite champion and have a suitable chibi, please <a href="#mailto">send me an email</a> with a link.</p>
+	<p>The new "Custom Menu"  can be used to personalize your Thunderbird / Firefox profile with an icon (recommended 32px).
+	   I added some "Chibi" characters from the games League of Legends and Borderlands 2 to get started.
+		 Here are a few examples using different colot choices some of these use lightweight themes with 
+		 matching characters.
+	</p>
+	<img class="screenshot" src="images/menuOnTop/avatars/BL2-jack-Tb.png" alt="Jack"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/BL2-lilith-Tb.png" alt="Lilith"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-ashe-Tb.png" alt="Ashe"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-akali-Tb.png" alt="Akali"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-ahri-FX.png" alt="Ahri"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-Jinx-Tb.png" alt="Jinx"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-Lucian-Fx.png" alt="Lucian"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-elise-Tb.png" alt="Elise"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-GNAR-Walnut2-FX.png" alt="Gnar + Walnut2"><br>
+	<img class="screenshot" src="images/menuOnTop/avatars/LOL-Leona-Fx.png" alt="Leona"><br>
+	<p>This top left menu can be named anything and can be used to bookmark emails (Tb) and various tabs,
+	such as Calendar, about:config, Stationery Options or any web page. This is also handy for quickly accessing 
+	the most used web pages in Firefox (such as intranet projects) when we do not want to display the personal bookmarks
+	toolbar or sidebar all the time.
+	</p>
+	<img class="screenshot" src="images/menuOnTop/MOT-bookmarks.png" alt="Bookmarks Menu"><br>
+	</section>
+	
+	
+	<h4>Default Theme - Australis</h4><br>
+	<img class="screenshot" src="images/menuOnTop/Themes/Australis.png" alt="Australis"></section>
+
+	<section>
+	<h4>Charamel</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/charamel">
+	<img class="screenshot" src="images/menuOnTop/Themes/Charamel.png" alt="Charamel"></a>
+	</section>
+
+	<section>
+	<h4>Nautipolis</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/nautipolis-for-thunderbird" target="_blank">
+	<img class="screenshot" src="images/menuOnTop/Themes/Nautipolis.png" alt="Nautipolis"></a>
+	</section>
+
+	<section><h4>Nuvola TB</h4><br/>
+	small icons, with tabs in titlebar enabled:<br>
+	<a href="https://addons.mozilla.org/thunderbird/addon/nuvola-tb">
+	<img class="screenshot" src="images/menuOnTop/Themes/Nuvola.png" alt="Nuvola"></a><br>
+	large icons, with with clean titlebar:<br>
+	<a href="https://addons.mozilla.org/thunderbird/addon/nuvola-tb">
+	<img class="screenshot" src="images/menuOnTop/Themes/Nuvola-Large.png" alt="Nuvola"></a>
+	</section>
+
+	<section>
+	<h4>TT deepdark</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/tt-deepdark">
+	<img class="screenshot" src="images/menuOnTop/Themes/tt-deepdark.png" alt="TT deepdark"></a>
+	</section>
+
+	<section>
+	<h4>Walnut 2</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/walnut2-for-thunderbird">
+	<img class="screenshot" src="images/menuOnTop/Themes/Walnut2.png" alt="Walnut 2"></a>
+	</section>
+
+	<section>
+	<h4>Littlebird (with small icons)</h4><br/>
+	<a href="https://addons.mozilla.org/en-US/thunderbird/addon/littlebird-for-thunderbird">
+	<img class="screenshot" src="images/menuOnTop/Themes/Littlebird.png" alt="Littlebird for Thunderbird"></a>
+	</section>
+
+	<section>
+	<h4>Noia Fox</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/noia-fox">
+	<img class="screenshot" src="images/menuOnTop/Themes/Noia.png" alt="Noia Fox"></a>
+	</section>
+
+	<section>
+	<h4>Noia eXtreme</h4><br/>
+	<a href="https://addons.mozilla.org/thunderbird/addon/noia-20-extreme-v3x">
+	<img class="screenshot" src="images/menuOnTop/Themes/Noia_black.png" alt="Noia"></a>
+	</section>
+
+<a name="contribute"> </a>
+<h3> Contribute </h3>
+<p>If you find Menu On Top useful, I would happily accept your contribution to the tip jar:
+<br>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="EA6LHFNRHJ3VY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</p>
+
+<h3>Version Details</h3>
+
+<a name='history'> </a>
+<a name="1.2">&nbsp;</a>
+<a name="1.1.1-let-fixed">&nbsp;</a>
+<a name="1.1">&nbsp;</a>
+<a name="1.0">&nbsp;</a>
+<a name="0.9.7">&nbsp;</a>
+<a name="0.9.8.1">&nbsp;</a>
+<a name="0.9.6">&nbsp;</a>
+v<p>
+  Version history <a href="menuOnTopHistory.html">has moved here</a>.
+</p>
+
+<a name="contact"></a>
+
+
+	
+        <!-- FOOTER.HTML -->
+        <div id="footer">
+          <script type="text/javascript">
+            function productName() {
+              if (typeof ProductName == 'undefined')
+                return 'QuickFolders';
+              return ProductName;
+            }
+          </script>
+          <p>For questions or comments about 
+          <span id="product"><script type="text/javascript">document.write(productName());</script></span>, 
+          please send a message to </p>
+          <a name="mailto"></a>
+          <p class=mail_link>
+          <script type="text/javascript">
+            var u1 = '&#97;&#120;&#101;l.gru',
+            u2 = 'de@',
+            u3 = 'gma',
+            u4 = 'il.com';
+            document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[' + productName() + '] - &lt;your subject line here&gt;\">');
+            document.write('Mail To Axel Grude</a>');
+        </script>
+
+        <NOSCRIPT>You need to enable javascript for the email link to work!</NOSCRIPT>
+        </p>
+
+        <!-- For general site related questions or comments, -->
+        For questions or comments <em>not</em> about a specific project,
+        please read our <a href="http://www.mozdev.org/feedback.html">feedback</a> page.<br>
+        <a href="http://www.mozdev.org/copyright.html">Copyright</a> © 2000-2011. All rights reserved.
+        <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a> &amp;
+        <a href="http://www.mozdev.org/community/privacy.html">Privacy Policy</a>.
+        </p>
+
+        <div class=attribution> Attributions:
+          <BR>bullets, mailto, key and mouse icons by Yusuke Kamiyamane under Creative Commons, see: <a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>
+        </div>
+        </div><!-- CLOSE <div id="footer"> -->
+
+        </div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
+        <div id="downPusher"></div><!-- push down the black main background -->
+      </body>
+    </html>

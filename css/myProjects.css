@@ -1,0 +1,42 @@
+/*** PROJECT LINKS - links to my other projects **/
+
+#myProjects p > a:before {
+	content: url('/ico/arrowRight.png');
+	margin: 0.2em 0.5em 0em 0.2em;
+	vertical-align: top;
+}
+
+h4.QuickFolders:before {
+  content: url('/ico/QF-Icon24.png'); 
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; /* added 02.09.12 to center font in box */
+}
+
+h4.QuickFilters:before {
+  content: url('/ico/QuickFilters_24.png'); 
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; /* added 02.09.12 to center font in box */
+}
+
+h4.QuickPasswords:before {
+  content: url('/ico/QuickPasswords-24x24.png');
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; /* added 02.09.12 to center font in box */
+}
+
+h4.ZombieKeys:before {
+  content: url('/ico/zombie24.png');
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; /* added 02.09.12 to center font in box */
+}
+
+h4.SmartTemplate:before {
+  content: url('/ico/smartTemplate24.png'); /* IE8 or higher */
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; /* added 02.09.12 to center font in box */
+}

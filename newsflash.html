@@ -1,0 +1,26 @@
+<style type="text/css" >
+h2.newsflash {
+  color: #FFF !important;
+  background-color: #F00;
+  border: 2px double #00F;
+  -moz-border-radius: 2px;
+  margin 6px 0px;
+  padding: 8px;
+  display: inline;
+}
+</style>
+
+<h2 class="newsflash"><a name="TB541052">Important News Flash!</a></h2>
+<p>There is a Bug in the current version of Thunderbird 3.0.1 that causes QuickFolders not to be able to expand for multiple rows anymore;
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=541052">Click here for the bug description</a> and to get updated once it is fixed.</p>
+<p>
+Workaround: insert the following rules into your userChrome.css:
+  <div class=cssCode>
+      #mail-toolbox { overflow-x:visible !important; overflow-y:visible !important;}
+  </div>
+or reinstall the previous version of Thunderbird (3.0). Please note that this is just a workaround and doesn't fix the Thunderbird bug itself.
+</p>
+<p>
+Since this bug affects ALL extensions that create toolbars, my assumption is that it should be fixed until the next TB release.
+</p>
+

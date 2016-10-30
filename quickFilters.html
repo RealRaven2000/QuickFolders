@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quickfolders: QuickFilters</title>
+    <!-- LOCAL HEAD.TXT -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="google-site-verification" content="LTKICtodcLDl0nhBl2mUiXWMJbOtmEJmhYXVAqm_mJM" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+    <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
+    <link rel="stylesheet" href="css/project_nav.css" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=17" type="text/css">
+    <link rel="stylesheet" href="css/infoBox.css" type="text/css">
+    <link rel="stylesheet" href="css/media.css?v=2" type="text/css">   
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="icon" href="images/QF16x16.png" type="image/png"> 
+    <script src="js/ga.js"> </script>
+
+    <!-- #### DONT KNOW WHICH FILE THIS COMES FROM #### -->
+    <style >
+      .censorship div *,
+      .censorship:hover div * {
+        text-decoration:none !important;
+        font-family: Calibri,Sans_Serif;
+        font-weight: normal;
+        font-size: 12pt;
+      }
+
+      .censorship {
+        width: 50%;
+        height: 30px;
+        vertical-align:middle;text-align:center;
+        background-color:#000;
+        position:absolute;
+        z-index:5555;
+        top:220px;
+        left:240px;
+        box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.4);
+        -moz-transition-property: width, height, min-height, left, top,  box-shadow;
+        -moz-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -webkit-transition-property: width, height, min-height, left, top,  box-shadow;
+        -webkit-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -o-transition-property: width, height, min-height, left, top,  box-shadow;
+        -o-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        opacity: 0.7;
+        -moz-border-radius: 2px;
+
+      }
+      .censorship div {
+        height: 100%;
+        background-image:url(http://americancensorship.org/images/stop-censorship-small.png);
+        background-position:center center;
+        background-repeat:no-repeat;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      .censorship:hover {
+        width:80%;
+        height:auto;
+        min-height:120px;
+        top:200px;
+        left:120px;
+        background-color: rgb(169,3,41);
+        background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1)));
+        background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
+        box-shadow: 0px 0px 30px 30px rgba(0, 0, 0, 0.9);
+        opacity: 0.9;
+        -moz-border-radius: 1em;
+      }
+      .censorship span { display:none; padding: 1em 2em;}
+      .censorship:hover span { display:block; text-decoration: none;}
+      .censorship:hover div {background-image:none;}
+      .stop { text-align:center; }
+    </style>
+    <!--
+    <a class="censorship" href="http://americancensorship.org" target=_blank 
+      title="On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass. If it does the Internet and free speech will never be the same. Join all of us to stop this bill.">
+      <div>
+        <span>On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass.<br/>
+          If it does, the Internet and free speech will never be the same. 
+          <br/><br/><div class="stop">Join all of us to stop this bill. STOP CENSORSHIP &#x25ba;</div></span>
+      </div>
+    </a>
+    --><link rel="stylesheet" href="css/index.css?v=8" type="text/css">
+
+  </head>  
+
+  <body>
+    <!-- ################### BEGIN TOP ################## -->
+
+    <!--<h1 id="mozdev-logo"><a accesskey="M" href=-->
+        <!--"http://www.mozdev.org/" tabindex="1"><img alt="mozdev.org"-->
+        <!--height="69" src="http://www.mozdev.org/sharedimages/mozdev.gif"-->
+        <!--title="" width="148"></a></h1>-->
+
+    <!--<div id="mozdev-date">-->
+      <!--<span class="mozdev-fries">Welcome to QuickFolders!</span><span class="mozdev-date"><?php print DATE;?></span>-->
+    <!--</div>-->
+
+
+    <!-- ####################### BEGIN MAIN CONTENT ########################## -->
+    <div id="main-content-no-nav">
+      <h1 class="project-name" id="content">quickfolders</h1>
+
+      <table id="project-navigation">
+
+        <!--
+        <tbody id="sub-projects" class="project-navigations">
+          <tr>
+            <th scope="row">subprojects:</th>
+            <td class="navigation-list">
+              <a class="first-item" href="/subprojectdir/index.html">subproject name</a>
+              <a href="/subprojectpage.html">subproject name</a>
+            </td>
+          </tr>
+        </tbody>
+        -->
+
+        <tbody id="resources" class="project-navigations">
+          <tr>
+            <th scope="row"></th>
+            <td class="navigation-list">
+              <a href="/index.html" class="first-item">Home</a>
+              <a href="/installation.html">Installation</a>
+              <a href="/version.html">Version&nbsp;History</a>
+              <a href="/faq_tips.html">FAQ&nbsp;+&nbsp;Tips</a>
+              <a href="/donate.html">Support&nbsp;QuickFolders!</a>
+              <a href="/screenshots.html">Screenshots</a>
+              <a href="/bugs.html">Bugs + Feature Requests</a>
+              <a href="/quickFilters.html" class="active">quickFilters</a>
+              <a href="/menuOnTop.html">Menu On Top</a>
+              <!--
+              <a href="/list.html">Mailing List</a>
+              <a href="/drupal/blog">Blog</a>
+              <a href="/drupal/wiki">Wiki</a>
+              -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+<!--- **************** START OF CONTENT *********** -->
+<!-- ***************** INFO/NEWS *************** -->
+<a name='news'> </a>
+<div id="infoTabs">
+	<div class="infoTab" id="whats-new">
+	<h5 class="infoHeader">News</h5>
+	<p>February 2016: I have created a new <a href="https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A">YouTube channel</a> with tips and tricks such has <a href="https://www.youtube.com/watch?v=dR_Xk-6M4oI">how to get started with Addons</a>.</p>
+	<ul class="infoItems">
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.12">3.12</a>Independent Palette types for tab states.</li>
+		<li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.8.1">3.8.1</a>Tabs remember the selected QuickFolders category</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.6">3.6</a> Palette rewrite and paint mode.</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.3">3.3</a> <a href='screenshots.html#filterList'>Filter List Enhancements</a></li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.1">3.1</a> Move Folders with SHIFT </li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.0">3.0</a> <a href="#messageFilterWizard">Filter Learning</a> Tool</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.12</a> New Icons</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.11</a> Multiple Category Support</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9.3">2.9.3</a> Finds and reuses open Tabs</li>
+	</ul>
+	</div>
+
+<!-- alternative image/table base tab works better in NS4 -->
+<!--images/checkbox.png
+<div class="infoTab" id="whats-new-image">
+<h5 class="infoHeader"><img src="http://www.mozdev.org/sharedimages/whatsnew_top.gif" width="154" alt="What's New"></h5>
+<div class="infoItems">
+<div>News item goes here</div>
+<div>More news item goes here</div>
+<div><a href="http://mozdev.org/">mozdev.org</a></div>
+</div>
+</div>
+-->
+</div>
+<link rel="stylesheet" href="/css/quickFilters.css" type="text/css">
+
+<a name='main'></a>
+<h2 class="page-header">QuickFilters</h2>
+
+<p>This is a new extension of mine that extends some of the new filter behavior already seen in QuickFolders and brings it to the folder tree. 
+It can be used independantly of, or in conjunction with quickFolders.</p>
+
+<a name='messageFilterAssistant'> 
+<h3>The Filter Assistant</h3>
+</a>
+<p>
+With this, it is very easy to create new filters very quickly. 
+</p>
+<p>I actually invested 2 weeks of work over the last Christmas Holidays in order to write the "Filter Wizard"; this will 
+prefill the destination folder for you after you have dragged the email into one of the folders in the folder tree.
+</p>
+<ol>
+	<li> Click on the quickFilters button on the main toolbar<br/>
+	<img class="screenshot" src="images/filters/quickFilters-ToolbarButton.png" alt="main menu: filter assistant">
+
+	<li>The button will change depicting a glowing wheel instead of the mail icon and there will be sliding notification:<br/>
+	<img class="screenshot" src="images/filters/quickFilters-Notification.png" alt="filter notification" title="filter notification assistant">
+
+	<li>Drag an email into a folder on the left hand folder tree. This will trigger the Create Filter Assistant.<br/>
+	<img class="screenshot" src="images/filters/quickFilters-Assistant.png" alt="filter wizard" title="filter wizard">
+	
+	<li>select a template (e.g. "based on Sender") and click [Create Filter...] - in the example I have pulled an email into the QuickFolders folder
+
+	<li>Next, the Edit Filter dialog is displayed - as you can see it already tries to "guess" what  you want the filter to do when it should be applied, 
+	<u>based on the email that you dragged to the folder</u>:<br/>
+	<img class="screenshot" src="images/filters/filter-Rules.png" alt="filter rules">
+	<br/>Since in this case I chose "Based on Sender", it will pull all conversations from and to <i>joe@quickFolders.com</i> into the QuickFolders folder. 
+	No need to select the folder (as it has been done automatically) or to enter any condition (this is based on the template that you have chosen).
+
+	<li>Now tweak the filter as usual and click Ok to save it (and try it out in the Filter List)
+	<li>You can also click Cancel to not create the filter
+	
+	<li> in the last step Thundebird's list of filters is shown. <br/>
+	<img class="screenshot" src="images/filters/filters-List.png" alt="list of filters">
+
+	<li>You can repeat the process from step 2 to create more filters
+
+	<li>When you're done, click the filter button again to disable "Filter Wizard" mode.
+</ol>
+
+<a name='messageFilterList'> 
+<h3>The Message Filter List</h3>
+</a>
+
+<p>
+I also created additional functions that I added to the filter list dialog - I created these after it had
+become a simple thing to create many filters (as the list became too long to handle without the search function). 
+</p>
+<img src="images/messageFilters-5.png" alt="Message Filters: new features"/><br/>
+<p>The biggest new feature here is the addition of a Search box, which allows filtering the number of results</p>
+<p>Also you can now move the filter to the top of the bottom of the list. This is actually significant as the 
+order you see on screen is the same as the order in which the filters are executed. This also means, if a filter
+on the top moves a message from the inbox then the filters below will not get a chance to execute on this message;
+as the filters are only executed on messages in the inbox, they will simply be ignored. Therefore it is very important 
+that it remains easy to re-order the relative positions of the filters. This also works while the search box is active.</p>
+
+
+<a name='donate'>
+<div class="h2container">
+	<h2 class="page-header" style="vertical-align:top;">Contributions</h2>
+</div>
+</a>
+
+<p>Keep <a href="#freesoftware">free, open source software</a> independent. <br>
+Important note: the donations for quickFilters will currently go via the QuickFolders project. 
+This is until the extension has been fully reviewed and I get a new Mozdev site for it. 
+If you want to help accelerate this process, please spread the word and leave positive reviews
+on the AMO page for quickFilters.</p>
+
+
+<table border=0>
+	<tr>
+		<td style="vertical-align:top;">
+
+			<table id="paymentForm">
+			<tr>
+				<th class="payLabel">In &euro;:</th>
+				<td class="payLink">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="on0" value="currency"><input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+					<input type="image" src="http://quickfolders.mozdev.org/images/donatemini-100.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<!--	<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"> -->
+				</form>
+				</td>
+			</tr>
+			<tr>
+				<th class="payLabel">In US $:</th>
+				<td class="payLink">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="EKW375NPBALPA">
+					<input type="image" src="http://quickfolders.mozdev.org/images/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" id="usDonate">
+	<!--	<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"> -->
+				</form>
+				</td>
+			</tr>
+			</table>
+			<p style="text-align:center;"><a href="#noPaypal">Don't like paypal?</a></p>
+		</td>
+		<td style="padding-left: 25px;">
+			<p><i>I love quickFilters - it makes working with filters a breeze! Yes! It makes me more <b>productive</b>
+			so I want to buy you a coffee!</i> <a href="#amount">Any Questions?</a></p>
+			<p class="mini">If you actually have donated already or only like freebies (yes, there is them...) you can also <a href="#noDonationScreen" style="color: #266; !important">disable this page.</a></p>
+		</td>
+
+
+	</tr>
+
+	</table>
+<br><br>
+<h3><a name="amount"></a>Do you suggest any amount?</h3>
+<p>US$ donations: we suggest 10$ as that seems to be be a what most people like to donate - but of course smaller and greater amounts are always welcome. <br/>
+Euro donations: 10 Euros will be considered generous. Some people have given 50$ some 2$, but anything is welcome.
+</p>
+<p>Your tip is important to make QuickFilters even more excellent!</p>
+<!-- <p>You can also add some feature requests here: <a href="http://quickfolders.mozdev.org/bugs.html">Bugs + Features</a>.</p> 
+<p>And if you are very happy with quickFilters, why not <a href="https://addons.mozilla.org/thunderbird/addon/quickfilters/reviews/add">leave a good review at Addons at Mozilla.org?</a>. Spread the word!</p>
+-->
+
+
+<a name="noPaypal"></a>
+<h3>But I don't like / never use Paypal!</h3>
+<p>Just <a href="#mailto">send me an email</a>, and I give you my address for a cheque or note.</p>
+
+
+
+<h2 class="page-header"><a name="freesoftware"></a>Free Software, Yayh!!</h2>
+<p>What's the meaning of this <em>free software</em> ??</p>
+<h3><em>Free</em> as in <em>Free Speech</em>, not as in <em>Free Beer</em>.</h3>
+ <p>I think the most important aspect on free software is that it is a political statement to avoid the pitfalls of
+ proprietary, monopoly driven software that coined terms such as "Embrace, Extend and Extinguish" and the innovation crippling
+  model of patenting software (for further reading, please see links below).
+ At the moment there is a conflict (I almost wrote war) between the old proprietary model of software and the Free Software Concept,
+ and its you, the users who will really decide where the future will take us. By downloading the Mozilla products and extensions by
+ independant software developers, like QuickFolders, you are actively helping the cause.
+ </p>
+
+
+
+<div id="infoTabs">
+	<div class="infoTab" id="free-pigs">
+		<h5 class="infoHeader">The "free" Model</h5>
+	  <a href="#freesoftware"><img src="images/Pigs_Free_Model.jpg" class="gallery" alt="the free model." title="the free model..."></a>
+	  <br/>
+	  <p class="miniquote">As users, we like to use the software the way we want, and we more or less expect it to be free of charge. The question is what
+	     do the commercial software vendors make of this? Since the advent of facebook is a shift of users (and their data) from being the customers
+	     becoming the merchandise, and the corporations becoming the customer. This is because even the best community sites cannot operate without
+	     profit. The web is already overfraught with advertisement and data mining - The alternative is truly <a href="#freesoftware">Free software</a> that is
+	     funded by donations.
+	     </p>
+	</div>
+
+</div>
+
+
+<br/>there is an excellent description of this concept here:
+
+
+<div class="quote">
+<ul>
+	<li><a href="http://www.gnu.org/philosophy/free-sw.html" target="_blank">http://www.gnu.org/philosophy/free-sw.html</a></li>
+</ul>
+<br/>Quote: “Free software” is a matter of liberty, not price. To understand the concept, you should think of “free” as in “free speech,” not as in “free beer.”
+<br/>Free software is a matter of the users' freedom to run, distribute, study, change and improve the software.
+</div>
+
+
+
+<h3>Some Further Reading</h3>
+
+<ul>
+<li>
+	<a href="http://www.youtube.com/watch?v=uJi2rkHiNqg" target="_blank">
+	Richard Stallman - What is free software? - Youtube
+	</a>
+</li>
+
+<li>
+	<a href="http://www.gnu.org/philosophy/free-sw.html" target="_blank">
+	Free Software Definition
+	</a>
+</li>
+
+<li>
+	<a href="http://en.wikipedia.org/wiki/Embrace_extend_extinguish" target="_blank">
+	Embrace, Extend and Extinguish - Wikipedia
+	</a>
+</li>
+
+<li>
+	<a href="http://patentabsurdity.com/watch.html" target="_blank">
+	Patent Absurdity - How software patents broke the system
+	</a>
+</li>
+
+<li>
+	<a href="http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/index.html" target="_blank">
+	The Cathedral and the Bazaar - an article about the philosphy behind the Open Source development model
+	</a>
+</li>
+
+<li>
+	<a href="http://www.youtube.com/watch?v=b3uX5XwdN_8&feature=related" target="_blank">
+	An in depth Stallman interview on free software and software patent - Youtube
+	</a>
+</li>
+
+<li>
+	<a href="http://en.wikipedia.org/wiki/Open_source" target="_blank">
+	Open Source - Wikipedia
+	</a>
+</li>
+
+<li>
+	<a href="http://en.wikipedia.org/wiki/Browser_Wars" target="_blank">
+	The Browser Wars - Wikipedia
+	</a>
+</li>
+
+
+</ul>
+
+<br/><br/>
+        <!-- FOOTER.HTML -->
+        <div id="footer">
+          <script type="text/javascript">
+            function productName() {
+              if (typeof ProductName == 'undefined')
+                return 'QuickFolders';
+              return ProductName;
+            }
+          </script>
+          <p>For questions or comments about 
+          <span id="product"><script type="text/javascript">document.write(productName());</script></span>, 
+          please send a message to </p>
+          <a name="mailto"></a>
+          <p class=mail_link>
+          <script type="text/javascript">
+            var u1 = '&#97;&#120;&#101;l.gru',
+            u2 = 'de@',
+            u3 = 'gma',
+            u4 = 'il.com';
+            document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[' + productName() + '] - &lt;your subject line here&gt;\">');
+            document.write('Mail To Axel Grude</a>');
+        </script>
+
+        <NOSCRIPT>You need to enable javascript for the email link to work!</NOSCRIPT>
+        </p>
+
+        <!-- For general site related questions or comments, -->
+        For questions or comments <em>not</em> about a specific project,
+        please read our <a href="http://www.mozdev.org/feedback.html">feedback</a> page.<br>
+        <a href="http://www.mozdev.org/copyright.html">Copyright</a> © 2000-2011. All rights reserved.
+        <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a> &amp;
+        <a href="http://www.mozdev.org/community/privacy.html">Privacy Policy</a>.
+        </p>
+
+        <div class=attribution> Attributions:
+          <BR>bullets, mailto, key and mouse icons by Yusuke Kamiyamane under Creative Commons, see: <a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>
+        </div>
+        </div><!-- CLOSE <div id="footer"> -->
+
+        </div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
+        <div id="downPusher"></div><!-- push down the black main background -->
+      </body>
+    </html>

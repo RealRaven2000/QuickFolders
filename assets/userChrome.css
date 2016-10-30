@@ -1,0 +1,56 @@
+
+/* Quickfolders hacks */
+/* thick borders */
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+    border-top-width: 2px !important;
+    border-left-width: 2px !important;
+    border-right-width: 2px !important;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+   -moz-border-radius: 4px 4px 0 0 !important;
+}
+
+
+
+
+/* Icons:
+   1. find your profile folder - the folder where this file (userChrome.css) is stored
+   2. create a folder QF-Icons
+   3. copy in 16*16 images (either gif or png files, preferably with transparency)
+   4. insert rules, as below - start with rule (^=) - matches text contained in name of tab */
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="eBay"]
+{
+    list-style-image: url("QF-Icons/ebay.gif") !important;
+}
+
+/* note: you can add similar rules for the folder tree icons as well:
+treechildren::-moz-tree-image(folderNameCol, name-eBay)
+{
+    list-style-image: url("QF-Icons/ebay.gif") !important;
+}
+*/
+
+
+/* separating distances - inserts a gap after folder.
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^="Inbox"]
+{
+    margin-right:10px !important;
+}
+*/
+
+
+
+/*  space saving popup folder menus
+menupopup.QuickFolders-folder-popup menuitem {
+  line-height: 18px !important;
+  max-height: 22px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size:8px;
+}
+*/
+
+
+
+

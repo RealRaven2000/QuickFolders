@@ -1,0 +1,81 @@
+@import url("/css/myProjects.css") screen;
+
+h4#settingsGeneral:before {
+  content: url('/ico/settings-general.png');
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; 
+}
+ 
+h4#settingsAdvanced:before {
+  content: url('/ico/settings-advanced.png');
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  vertical-align: middle;
+  display: inline-block; 
+}
+
+.optionlist h5 {
+	background: rgb(242,246,248);
+	background: linear-gradient(to bottom,  rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%);
+	background: -webkit-linear-gradient(top , rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%);
+	background: -o-linear-gradient(top, rgba(241,231,103,1) 0%,rgba(241,231,103,1) 37%,rgba(254,182,69,1) 100%);
+	background: -ms-linear-gradient(top, rgba(241,231,103,1) 0%,rgba(241,231,103,1) 37%,rgba(254,182,69,1) 100%);
+	border: 1px rgba(80,80,80,0.3) !important;
+	border-radius: 5px 5px 0 0;
+  color: rgb (0,0,0);
+	display: inline-block;
+	font-size: 10pt;
+	margin: 0.7em 10px;
+	margin-right: auto !important;
+	padding: 0.1em 0.8em;
+  text-transform: capitalize;
+}
+
+.optionlist li {
+  padding-top: 0.1em;
+}
+
+.optionlist ol > li {
+	display: list-item;
+	list-style-image: none !important;
+	list-style-type: decimal !important;
+}
+
+.settingsBox {
+	font-size: 10pt;
+	background: rgba(250,250,250,100%);
+  border: 2px solid rgba(60,60,60,0.5);
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px rgba(20,20,20,0.3);
+	margin: 10px 30px;
+	max-width: 600px;
+	padding: 0.5em 0.8em;
+}
+
+.settingsBox tt {
+  display: inline-block;
+  background: rgba(60, 60, 60, 0.2);
+	border-radius: 4px;
+	font-size: 9pt;
+	font-weight: bold;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-shadow: 1px 1px 1px rgba(256, 256, 256, 0.7);
+}
+
+.settingsBox ol {
+  -moz-padding-start: 20px;
+}
+
+td.navigation-list a.active {
+	background-color: rgb(255,193,193); 
+	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
+	border-bottom-color:  #900000 !important;
+	color: #FFF !important;
+	height: 27px !important;
+	font-weight: bold;
+}
+
+h1#content{
+font-size: 1.25em;
+}

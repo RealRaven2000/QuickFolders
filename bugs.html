@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quickfolders: BUGS</title>
+    <!-- LOCAL HEAD.TXT -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="google-site-verification" content="LTKICtodcLDl0nhBl2mUiXWMJbOtmEJmhYXVAqm_mJM" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+    <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
+    <link rel="stylesheet" href="css/project_nav.css" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=17" type="text/css">
+    <link rel="stylesheet" href="css/infoBox.css" type="text/css">
+    <link rel="stylesheet" href="css/media.css?v=2" type="text/css">   
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="icon" href="images/QF16x16.png" type="image/png"> 
+    <script src="js/ga.js"> </script>
+
+    <!-- #### DONT KNOW WHICH FILE THIS COMES FROM #### -->
+    <style >
+      .censorship div *,
+      .censorship:hover div * {
+        text-decoration:none !important;
+        font-family: Calibri,Sans_Serif;
+        font-weight: normal;
+        font-size: 12pt;
+      }
+
+      .censorship {
+        width: 50%;
+        height: 30px;
+        vertical-align:middle;text-align:center;
+        background-color:#000;
+        position:absolute;
+        z-index:5555;
+        top:220px;
+        left:240px;
+        box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.4);
+        -moz-transition-property: width, height, min-height, left, top,  box-shadow;
+        -moz-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -webkit-transition-property: width, height, min-height, left, top,  box-shadow;
+        -webkit-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        -o-transition-property: width, height, min-height, left, top,  box-shadow;
+        -o-transition-duration: 0.8s,  0.5s,   0.5s,       1.2s, 0.8s, 2s;
+        opacity: 0.7;
+        -moz-border-radius: 2px;
+
+      }
+      .censorship div {
+        height: 100%;
+        background-image:url(http://americancensorship.org/images/stop-censorship-small.png);
+        background-position:center center;
+        background-repeat:no-repeat;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      .censorship:hover {
+        width:80%;
+        height:auto;
+        min-height:120px;
+        top:200px;
+        left:120px;
+        background-color: rgb(169,3,41);
+        background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1)));
+        background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        background: linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
+        box-shadow: 0px 0px 30px 30px rgba(0, 0, 0, 0.9);
+        opacity: 0.9;
+        -moz-border-radius: 1em;
+      }
+      .censorship span { display:none; padding: 1em 2em;}
+      .censorship:hover span { display:block; text-decoration: none;}
+      .censorship:hover div {background-image:none;}
+      .stop { text-align:center; }
+    </style>
+    <!--
+    <a class="censorship" href="http://americancensorship.org" target=_blank 
+      title="On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass. If it does the Internet and free speech will never be the same. Join all of us to stop this bill.">
+      <div>
+        <span>On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass.<br/>
+          If it does, the Internet and free speech will never be the same. 
+          <br/><br/><div class="stop">Join all of us to stop this bill. STOP CENSORSHIP &#x25ba;</div></span>
+      </div>
+    </a>
+    --><link rel="stylesheet" href="css/index.css?v=8" type="text/css">
+
+  </head>  
+
+  <body>
+    <!-- ################### BEGIN TOP ################## -->
+
+    <!--<h1 id="mozdev-logo"><a accesskey="M" href=-->
+        <!--"http://www.mozdev.org/" tabindex="1"><img alt="mozdev.org"-->
+        <!--height="69" src="http://www.mozdev.org/sharedimages/mozdev.gif"-->
+        <!--title="" width="148"></a></h1>-->
+
+    <!--<div id="mozdev-date">-->
+      <!--<span class="mozdev-fries">Welcome to QuickFolders!</span><span class="mozdev-date"><?php print DATE;?></span>-->
+    <!--</div>-->
+
+
+    <!-- ####################### BEGIN MAIN CONTENT ########################## -->
+    <div id="main-content-no-nav">
+      <h1 class="project-name" id="content">quickfolders</h1>
+
+      <table id="project-navigation">
+
+        <!--
+        <tbody id="sub-projects" class="project-navigations">
+          <tr>
+            <th scope="row">subprojects:</th>
+            <td class="navigation-list">
+              <a class="first-item" href="/subprojectdir/index.html">subproject name</a>
+              <a href="/subprojectpage.html">subproject name</a>
+            </td>
+          </tr>
+        </tbody>
+        -->
+
+        <tbody id="resources" class="project-navigations">
+          <tr>
+            <th scope="row"></th>
+            <td class="navigation-list">
+              <a href="/index.html" class="first-item">Home</a>
+              <a href="/installation.html">Installation</a>
+              <a href="/version.html">Version&nbsp;History</a>
+              <a href="/faq_tips.html">FAQ&nbsp;+&nbsp;Tips</a>
+              <a href="/donate.html">Support&nbsp;QuickFolders!</a>
+              <a href="/screenshots.html">Screenshots</a>
+              <a href="/bugs.html" class="active">Bugs + Feature Requests</a>
+              <a href="/quickFilters.html">quickFilters</a>
+              <a href="/menuOnTop.html">Menu On Top</a>
+              <!--
+              <a href="/list.html">Mailing List</a>
+              <a href="/drupal/blog">Blog</a>
+              <a href="/drupal/wiki">Wiki</a>
+              -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+<!--- **************** START OF CONTENT *********** -->
+<!-- ***************** INFO/NEWS *************** -->
+<a name='news'> </a>
+<div id="infoTabs">
+	<div class="infoTab" id="whats-new">
+	<h5 class="infoHeader">News</h5>
+	<p>February 2016: I have created a new <a href="https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A">YouTube channel</a> with tips and tricks such has <a href="https://www.youtube.com/watch?v=dR_Xk-6M4oI">how to get started with Addons</a>.</p>
+	<ul class="infoItems">
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.12">3.12</a>Independent Palette types for tab states.</li>
+		<li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.8.1">3.8.1</a>Tabs remember the selected QuickFolders category</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.6">3.6</a> Palette rewrite and paint mode.</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.3">3.3</a> <a href='screenshots.html#filterList'>Filter List Enhancements</a></li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.1">3.1</a> Move Folders with SHIFT </li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/3.0">3.0</a> <a href="#messageFilterWizard">Filter Learning</a> Tool</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.12</a> New Icons</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">2.11</a> Multiple Category Support</li>
+	  <li>Version <a href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9.3">2.9.3</a> Finds and reuses open Tabs</li>
+	</ul>
+	</div>
+
+<!-- alternative image/table base tab works better in NS4 -->
+<!--images/checkbox.png
+<div class="infoTab" id="whats-new-image">
+<h5 class="infoHeader"><img src="http://www.mozdev.org/sharedimages/whatsnew_top.gif" width="154" alt="What's New"></h5>
+<div class="infoItems">
+<div>News item goes here</div>
+<div>More news item goes here</div>
+<div><a href="http://mozdev.org/">mozdev.org</a></div>
+</div>
+</div>
+-->
+</div>
+<link rel="stylesheet" href="/css/bugs.css" type="text/css">
+
+<h2 class="page-header">QuickFolders :: Bugs + Feature Requests</h2>
+
+<p>
+QuickFolders uses Bugzilla to maintain information on all bugs.
+It is relatively easy to submit a bug report or upload screen shots,
+you will have to create a free account with bugzilla to do this. As
+with a lot of the Software under the Mozilla development envelope this is also
+a very community driven experience, the more people contribute the better
+and more efficient work on future versions of QuickFolders will be.
+</P>
+<h2 class="newsflash">Important News Flash!</h2>
+<p>Make sure to visit our <a href="https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A" target="_blank">YouTube channel</a> 
+   with tips and tricks such has <a href="https://www.youtube.com/watch?v=dR_Xk-6M4oI"  target="_blank">how to get started with Addons</a>.
+</p>
+
+<a name="Requests"></a>
+<ul>
+<li>Request a <a href="http://bugzilla.mozdev.org/enter_bug.cgi?product=quickfolders&bug_severity=enhancement&priority=P3">new feature</a> for QuickFolders (same as bug, just mark as feature request!)</li>
+<li>Enter a <a href="http://bugzilla.mozdev.org/enter_bug.cgi?product=quickfolders">new bug</a> for QuickFolders</li>
+<li>View <a href="http://bugzilla.mozdev.org/buglist.cgi?product=quickfolders">all bugs</a></li>
+<li>See all <a href="http://bugzilla.mozdev.org/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;emailtype1=substring&amp;emailassigned_to1=1&amp;emailtype2=substring&amp;emailreporter2=1&amp;bugidtype=include&amp;chfieldto=Now&amp;product=quickfolders&amp;short_desc_type=allwordssubstr&amp;long_desc_type=allwordssubstr&amp;bug_file_loc_type=allwordssubstr&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;cmdtype=doit&amp;order=Bug+Number">open bugs</a></li>
+<li>Search by Bug Number<br>
+<form action="http://bugzilla.mozdev.org/show_bug.cgi" method="get">
+<p><input type="submit" value="Find"><input size="6" name="id"></p>
+</form>
+</li>
+</ul>
+        <!-- FOOTER.HTML -->
+        <div id="footer">
+          <script type="text/javascript">
+            function productName() {
+              if (typeof ProductName == 'undefined')
+                return 'QuickFolders';
+              return ProductName;
+            }
+          </script>
+          <p>For questions or comments about 
+          <span id="product"><script type="text/javascript">document.write(productName());</script></span>, 
+          please send a message to </p>
+          <a name="mailto"></a>
+          <p class=mail_link>
+          <script type="text/javascript">
+            var u1 = '&#97;&#120;&#101;l.gru',
+            u2 = 'de@',
+            u3 = 'gma',
+            u4 = 'il.com';
+            document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[' + productName() + '] - &lt;your subject line here&gt;\">');
+            document.write('Mail To Axel Grude</a>');
+        </script>
+
+        <NOSCRIPT>You need to enable javascript for the email link to work!</NOSCRIPT>
+        </p>
+
+        <!-- For general site related questions or comments, -->
+        For questions or comments <em>not</em> about a specific project,
+        please read our <a href="http://www.mozdev.org/feedback.html">feedback</a> page.<br>
+        <a href="http://www.mozdev.org/copyright.html">Copyright</a> © 2000-2011. All rights reserved.
+        <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a> &amp;
+        <a href="http://www.mozdev.org/community/privacy.html">Privacy Policy</a>.
+        </p>
+
+        <div class=attribution> Attributions:
+          <BR>bullets, mailto, key and mouse icons by Yusuke Kamiyamane under Creative Commons, see: <a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>
+        </div>
+        </div><!-- CLOSE <div id="footer"> -->
+
+        </div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
+        <div id="downPusher"></div><!-- push down the black main background -->
+      </body>
+    </html>

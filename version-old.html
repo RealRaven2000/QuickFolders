@@ -1,0 +1,1039 @@
+<link rel="stylesheet" href="/css/version.css?v=16" type="text/css">
+<style type="text/css">
+td.navigation-list a[href$='version.html'] {
+	background-color: rgb(255,193,193);
+	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
+	border-bottom-color:  #900000 !important;
+	color: #FFF !important;
+	height: 27px !important;
+	font-weight: bold;
+}
+
+</style>
+
+<h2 class="page-header">QuickFolders :: Old Version History</h2> <br>
+
+<h3>Older Versions</h3>
+
+<p>This is the older verison history from 0.2 until 2.0 </p>
+
+<p class=note>
+All dates are displayed in UK format: dd/mm/yyyy - you can request any version that is marked as not released or any old version listed; just send me a personal email from the quickfolders options dialog / on the Support tab - [(<a href="#Contact">Jump to Screen Shot</a>)].
+</p>
+
+<style type="text/css">
+	.importantQuestion {
+		padding-left: 2em;
+		font-style: italic;
+		font-size: 12pt;
+		color: rgb(158, 30, 24);
+		text-decoration:underline;
+		font-weight: bold;
+	}
+</style>
+
+
+
+<ul id="version-history">
+
+
+    <a name="2.10"></a><a name="2.11"></a><a name="2.12"></a>
+<li>
+    <h4>
+	<a name="2.13" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.12">Version 2.13 - 17/01/2012</a>
+	</h4>
+<br/>
+  <div />
+  <h4 class="inList"><a>2.13 (important bugfix for 2.12)</a></h4><br/>
+  <ul>
+		<li>Fixed: Rename categories or delete categories can fail when there are tabs without a valid category.</li>
+  </ul>
+  <h4 class="inList"><a>2.12 (important bugfix for 2.11)</a></h4><br/>
+  <ul>
+		<li>Fixed a bug that caused the current Folder toolbar to be missing on Thunderbird3 - Thunderbird7 </li>
+  </ul>
+  <h4 class="inList"><a>2.11 (important bugfixes for 2.10)</a></h4><br/>
+  <ul>
+		<li>improvements for showing correct folder size results after compact / empty trash etc.</li>
+		<li>Inbox Folders =&gt; added "Get Mail" menu item</li>
+		<li>fixed issues from 2.10 with winstripe / qute theme on windows 7 causing all menu items to be shifted left. </li>
+  </ul>
+  <h4 class="inList"><a>2.10</a></h4>
+  <ul>
+		<li>Added hidden Option for disabling drag to New folder in local accounts <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22812" target="_blank">[Bug 22812]</a> </li>
+		<li>Made compatible with Thunderbird 10.0 (new overlay because of structural changes) </li>
+		<li>Replaced Mostly Crystal Icons with the original ones from Everaldo Crystal Project (version from 2003); Crystal Icons are released under GNU General Public License </li>
+		<li>Renamed 'bookmark' to 'tab' to make descriptions easier to understand </li>
+		<li>Tab Categories - Highlight "uncategorized" item if a folder has no category; optimized category retrieval by caching cat array. </li>
+		<li>Tab Categories - fixed Category Remove / Rename which was broken due to introduction of "use strict"<br/>
+			<img class="screenshot" src="images/Categories-Multi.png" alt="Multiple Categories in action. Use CTRL to add more..."/> </li>
+		<li>Tab Categories - added logic to unselect other items if show ALWAYS or UNCATEGORIZED are selected </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="2.9.4" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9.4" >Version 2.9.4 - 11/12/2011</a>
+	</h4>
+  <ul>
+	<li>Pushed Postbox Compatibility to 3.0 </li>
+	<li>Supports multiple categories per tab (please use CTRL or SHIFT for multiple selection)
+	<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22812" target="_blank">[Bug 22812]</a> </li>
+	<li>height fixes in Apple Pills style </li>
+  </ul>
+</li>
+
+
+<li>
+<a name="2.9.2" href="#"></a>
+
+    <h4>
+    <a name="2.9.3" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9.3">Version 2.9.3 - Released 18/10/2011</a>
+    </h4>
+  <ul>
+	  <li>Fixed - Go to Parent Folder was not working </li>
+	  <li>Improved - Tab text color to white / black on applePill layout selected folder </li>
+	  <li>Improved Font coloring for native tabs, apple pills and flat style; made background color for apple pills configurable, for use also with dark themes </li>
+	  <li>Fixed striped pastel style </li>
+	  <li>Improved collapsing behavior of "Pimp My Tabs" page </li>
+	  <li>Improved theme integration of Current Folder Bar by making background transparent </li>
+	  <li>added some transition effects </li>
+	  <li>New Feature - <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24435" target="_blank">[Bug 24435]</a> On clicking a QF tab, activate corresponding mail Tab (Thunderbird + SeaMonkey only) </li>
+	  <li>Fixed bug in SeaMonkey that changed current folder URI when new mail Tab was opened by CTRL+Click on QF Tab </li>
+	  <li>Experimental feature "animated" transitions between tabs - currently you can <a href="faq_tips.html#noTransitions">turn them off</a> with userChrome.css </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="2.9.1" href="#">Version 2.9.1 - Released 03/10/2011</a>
+	</h4>
+  <ul>
+	<li>Special release for older versions of Thunderbird (3 and 2) - fixes<br/>
+	<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24451" target="_blank">[Bug 24451]</a>
+	 On these systems the folder string would not load when starting Thunderbird, displaying an empty QuickFolders toolbar.<br/>
+     <emp>Important note</emp>:
+     <br/>If QuickFolders doesn't load completely due to a bug (so that no or incomplete tabs are displayed) adding the folders manually won't fix it - chances are that this might have the opposite effect - adding folders when the folder string has not been loaded unfortunately will save an empty folders string. In these cases, it is usually better to wait for a patch or revert to an older version. </li>
+  </ul>
+</li>
+
+<li>
+<a name="2.8.3" ></a>
+    <h4>
+    <a name="2.9" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.9">Version 2.9 - Released 30/09/2011</a>
+	</h4>
+  <ul>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24389" target="_blank">[Bug 24389]</a>version history and update popup happen always<br/>
+			Stability fixes on version updates - firstRun check is now only run _after_ extension version number was retrieved from AddonManager </li>
+		<li> Removed popup "successfully upgraded to version..." and replaced with a sliding notification panel </li>
+		<li> added "use strict" for better namespace pollution control </li>
+		<li> added hidden option to suppress version history on update </li>
+  </ul>
+	<a name="oldTBbug"><h4 class="inList">Known Issues</h4></a>
+  <ul>
+	<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24451" target="_blank">[Bug 24451]</a> On older versions of Thunderbird (pre 4.2) the
+	     folders are not displayed as QuickFolders can not be loaded completely. Patched version is available <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7091">here.</a> </li>
+  </ul> 
+</li>
+
+<li>
+    <h4>
+    <a name="2.8" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.8">Version 2.8 - Released: 07/09/2011</a>
+	</h4>
+  <ul>
+		<li> Bumped up max Compatibility for Thunderbird to 6.* to better align with Mozilla's new rapid release cycle </li>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24361" target="_blank">[Bug 24361] QuickFolders 2.7.2 incompatible with Thunderbird 6.0.1</a> </li>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24365" target="_blank">[Bug 24365] QF folders disappear after viewing email</a> </li>
+		<li> Moved Current Folder Bar position in Thunderbird for compatibility with Conversation View and to support multiple messages </li>
+		<li> Using new version algorithm provided by AddonManager (caused by new Mozilla versions). </li>
+	</ul>
+  <a><h4 class="inList">Known Issues</h4></a>
+	<ul>
+		<li> Some users experience the update dialog and version/donation pages being opened repeatedly -
+		this is the new  <a href='https://www.mozdev.org/bugs/show_bug.cgi?id=24389'>[Bug 24389]</a> I am currently working on a fix, look for the latest
+		pre-release versions at </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.7.2" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.7.2">Version 2.7.2 - Released: 10/08/2011</a>
+	</h4>
+  <ul>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24223" target="_blank">[Bug 24223]</a> - In Postbox, after displaying the calender. the message pane could not be displayed by clicking on the messages tab </li>
+		<li> Added checkbox for option to hide QF toolbar when not needed </li>
+		<li> Avoid TB logging unnecessary errors in Stack Trace during unnecessary FolderLoaded events <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24223" target="_blank">[Bug 24223]</a> </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.7.1" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.7.1">Version 2.7.1 - Released: 07/07/2011</a>
+	</h4>
+  <ul>
+	<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24143" target="_blank">[Bug 24143]</a> - In Linux, the folder disappear and ALT+N shortcuts disabled on upgrade to 2.7 - renamed Current Folder XUL files. </li>
+	<li> Added [about:config] option to hide QF toolbar when it is not needed (e.g. Calendar view) <br>
+	     to set go to tools &gt; options &gt; advanced &gt; general, click [Config Editor...] and set <i>extensions.quickfolders.toolbar.onlyShowInMailWindows</i> to <b>true</b> </li>
+	<li> Fixed: In Postbox could not drag new folders to toolbar (Error: msgFolder.QueryInterface is not a function) </li>
+	<li> Fixed a bug that caused folders to disappear on TB2 on Mac Systems (related to new Current Folder Bar) </li>
+	<li> Right dropmarker did not display correctly when reordering tabs </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.7" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.7">Version 2.7 - Released: 22/06/2007</a>
+	</h4>
+  <ul>
+	  <li>Added pastel color choice and customizable radius<br/>
+	  <img class="screenshot" src="images/Pastel+Rounded-example.png" alt="Pastel Rounded Styles"/> </li>
+	  <li>First Run tidy ups:replace "QuickFolders.ActiveTab.Style.background-color" with "extensions.quickfolders.style.ActiveTab.background-color" etc. </li>
+	  <li>Added Mac Theme (Chris White-Design + Testing, AG prototype implementation)<br/>
+	  <img class="screenshot" src="images/Mac-Theme.png" alt="Mac Theme"/> </li>
+	  <li>Added checkbox for disabling toolbar menu (cogwheel) </li>
+	  <li>Added dropdown for theming and theming dependant customization </li>
+	  <li>Improved native tabs and split Native Theme into Tabs and Buttons<br/>
+	  <img class="screenshot" src="images/native_xp_small.png" alt="Native Tabs Look in Windows XP"/> </li>
+	  <li>Renamed toxic preferences </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.6" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.6">Version 2.6 - Released: 06/06/2011</a>
+	</h4>
+  <ul>
+	  <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24071" target="_blank">[Bug 24071]</a> removed Current Folder toolbar in message fullscreen mode </li>
+	  <li>Bugfix - Category dropdown was invisible in Thunderbird 2.0 </li>
+	  <li>added option extensions.quickfolders.showToolIcon for hiding tools menu icon </li>
+	  <li>Bugfix - on SeaMonkey 2.1 adding folders to the QuickFolders toolbar from the folderpane did not work anymore </li>
+	  <li>Style improvements for unstyled tabs, fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24070" target="_blank">[Bug 24070]</a> </li>
+	  <li>Expanded more options for Recent Folder menu (right-click Display Recent Folders in Options window) </li>
+	  <li>Repaired "Purge Junk" command in Current Folder Toolbar </li>
+	  <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24073" target="_blank">[Bug 24073]</a> SeaMonkey does not open Version History in internal browser. </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.5" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.5">Version 2.5 - Released: 24/05/2011</a>
+	</h4>
+  <ul>
+	  <li> Added Tools Menu dropdown button on main toolbar<br/>
+	  <img class="screenshot" src="images/QF-ContextMenuButton-small.png" alt="Menu button"/> </li>
+	  <li> Added <a href="#CurrentFolderToolbar">Current Folder Toolbar</a> (single message view)<br/>
+	  <img class="screenshot" src="images/QF-CurrentFolderToolbar-small.png" alt="Current Folder Toolbar"/> </li>
+	  <li> Added (configurable) Hotkey for rebuilding folders </li>
+	  <li> Added option for disabling recent folders button on QuickFolders toolbar </li>
+	  <li> Support for Postbox 2.5beta! </li>
+	  <li> Added new folder command: "Delete junk in current folder" </li>
+	  <li> Tabs in Options Dialog now have Icons </li>
+	  <li> Category Dropdown now saves space by using menulist attribute sizetopopup=none </li>
+  </ul>
+ <a><h4 class="inList">Bugfixes</h4></a>
+  <ul>
+	  <li> Fixed issues with font colors on dark colored Tabs </li>
+	  <li> Replaced deprecated popupNode with triggerNode and workaround code for modern Gecko Versions </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.4" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.4">Version 2.4 - Released: 03/02/2011</a>
+	</h4>
+  <ul>
+	<li>Improved Performance during lengthy mail downloads by not _completely_ rebuilding the visible tabs
+	      (now only updating labels and popupmenus of the existing tabs so that counts & "unread style" are up to date </li>
+	<li>added "repair folder" command (mail folder menu) </li>
+	<li>added "folder properties" command (mail folder menu) </li>
+	<li>added toolbar context menu items for rebuilding the tabs and for removing orphaned tabs </li>
+</ul>
+	<a><h4 class="inList">Known Issues</h4></a>
+<ul>
+	<li>QF toolbar does not show in Tb3.3 - see <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23701">[Bug 23701]</a> for a fixed version. </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="2.3" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.3">Version 2.3 - Released: 02/01/2011</a>
+	</h4>
+  <ul>
+	<li>Update the timestamp of target folder even when moving unread emails - this will make Recent Folders tab more useful. </li>
+	<li>(Postbox) Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23542">[Bug 23542]</a> which caused Move (& passwordManager) Messages to fail in Postbox version > 2.0 </li>
+	<li>(Postbox) Fixed display of Version history after upgrade </li>
+  </ul>
+</li>
+
+
+<li><a name="2.2" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.2">Version 2.2 - Released: 16/12/2010</a>
+  <ul>
+	<li>Fixed Bug <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23379">[Bug 23379]</a> Tab Shortcuts began counting at "2" when using Recent Folders tab. </li>
+	<li>Expanded compatibility with Postbox 2.*. Thanks to the Dev Team at Postbox for providing a free Developer License! </li>
+</ul>
+	<a><h4 class="inList">Known Issues</h4></a>
+<ul>
+	<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23542">[Bug 23542]</a> using Postbox 2.1 you can not currently move an email to a subfolder via a context menu item. We have reported this to the POstbox development team (because it worked in 2.0.2) </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="2.1" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.1">Version 2.1 - Released: 07/11/2010</a>
+	</h4>
+  <ul>
+	<li>Added Recent Folders Tab <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23379">on user request</a>. By default this is disabled, because it adds a slight overhead when changing categories.<br/>
+		<img class="screenshot" src="images/Recent-Folders.png" alt="Recent Folders"><br/>
+		To enable, check the option on the General Options Page. Right click the option for more settings:
+		<p>
+		<ul>
+			<li>show/hide "Recent Folders" Label </li>
+			<li>sort alphabetically </li>
+			<li>max number of recent folders displayed </li>
+		</ul>
+		</p> 
+	</li>
+	<li>current limitations:<br/>
+		<ul>
+			<li>color hardcoded (yellow) </li>
+			<li>position: this is always the left-most tab </li>
+		</ul>
+	</li>
+
+	<li>Fixed a problem when dragging to New Folder from find result list (error message: no source folder) </li>
+	<li>Added locale sv-SE by Mikael Hiort af Ornaes </li>
+	<li>Fixed Positioning problems of Folder Menus - now they attach properly to the bottom of the tabs (as they did in TB2) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="2.0" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/2.0">Version 2.0 - Released: 19/09/2010</a>
+	</h4>
+	<ul>
+		<li>Added drag and drop from folder submenu to add new QF tab<br/>
+		<img class="screenshot" src="images/animation/drag_fromMenu2.gif" alt="promoting a menu item to a new tab"> </li>
+		<li>New Right-click Tab context menu layout, added folder commands (Mark read, compact, rename, delete, empty trash, empty junk, search properties)<br/>
+		<img class="screenshot" src="images/menus/MailFolder_Search.gif" alt="Split Commands Submenus">
+		<img class="screenshot" src="images/menus/MailFolder_Junk.gif" alt="Empty Junk Menu Item">
+		<img class="screenshot" src="images/menus/MailFolder_Trash.gif" alt="Empty Trash Menu Item"> </li>
+		<li>On Special request: Drag to New Folder Command - similar to a feature in Eudora, enables creating new folders "on the fly" while dragging your messages - currently not supported in TB2 and IMAP folders.<br/>
+		<img class="screenshot" src="images/Drag-Example.png" alt="Drag to a new Sub Folder">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img class="screenshot" src="images/Drag-Example-NewFolderDlg.png" alt="Create new subfolder Bob"> </li>
+		<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23209" target="_blank">[Bug 23209]</a>  CTRL+Number Shortcut opens new content tabs </li>
+		<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21317" target="_blank">[Bug 21317]</a>  During drag & drop, the top item in subfolders list is not sorted alphabetically </li>
+		<li>Fixed CTRL+Shift+Number did not move selected messages </li>
+		<li>Compatible with Postbox 2.0.b3 </li>
+		<li>Fixed a bug that made reordering quicktabs to the right of their current position fail sometimes </li>
+		<li>TB2 - Fixed - hidden shadows option and made icons option visible again </li>
+	</ul>
+</li>
+ 
+<li>
+    <h4>
+    <a name="1.9.7.3" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.7.3">Version 1.9.7.3 - 19/08/2010</a>
+	</h4>
+<ul>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23091" target="_blank">[Bug 23091]</a> TB2 only: sub-subfolder clicks navigate to parent menu node instead. </li>
+</ul>
+</li>
+
+<li><a name="1.9.7.1" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.7.1">Version 1.9.7.1 - 19/08/2010</a>
+<ul>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23147" target="_blank">[Bug 23147]</a> Dragging emails onto a Tab with subfolders does not open popup (1.9.7) </li>
+</ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.9.7" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.7">Version 1.9.7 - 16/08/2010</a>
+	</h4>
+<ul>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23121" target="_blank">[Bug 23121]</a> Using Japanese characters in tab, "moji-bake" Problem after restart </li>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23129" target="_blank">[Bug 23129]</a> popup menu points with subfolders ignored click (since 1.9.3) </li>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23077" target="_blank">[Bug 23077]</a> Active/Hovered/Drag colors do not override filled style </li>
+</ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.9.5.3" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.5.3">Version 1.9.5.3 - 13/08/2010</a>
+	</h4>
+<ul>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23118" target="_blank">[Bug 23118]</a> which caused some Thunderbird 2 users not to be able to see their tabs. Bugfix does not affect users of TB3</li>
+</ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.9.5" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.5">Version 1.9.5 - 06/08/2010</a>
+	</h4>
+	<ul>
+		<li> improved spacing around Category Dropdown</li>
+		<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22902" target="_blank">[Bug 22902]</a> Added ensureStyleSheetLoaded method for testing</li>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23091" target="_blank">[Bug 23091]</a> this caused parent subfolder to be opened instead of subfolder (if not visible in folder tree)</li>
+		<li> Added deep scanning of folder counts and display for all sub menu items. menus with unread nested subfolders also bold.</li>
+		<li> Fixed missing translation in french options screen</li>
+		<li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23078" target="_blank">[Bug 23078]</a> the (black) font on the filled style pimped tabs was unreadeable. Font color hardcoded to white for dark backgrounds
+		- this overrides the user set font color, by design.<br/>
+		The 20 different colors of "Filled Mode", before and after:<br/>
+		<img class="screenshot" src="images/Bug23078_before_and_after.png" alt="before">
+		</li>
+		<li> Renamed style sheet files and title to avoid referencing clashes</li>
+		<li> Refactored code from main module into Interface.collapseParentMenus</li>
+	</ul>
+  <a><h4 class="inList">Known Issues</h4></a>
+  <ul>
+	<li>Side effect of the improvement "Simplified folder navigation" in version 1.9.3: <br />
+		Currently a folder that expands into sub folders can not be opened by clicking on it - I will be releasing a bug fix for this soon.</li>
+
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.9.3" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.3">Version 1.9.3 - 19/07/2010</a>
+	</h4>
+  <ul>
+		<li>Simplified folder navigation - you will be able to click / drag on expanding popup nodes, similar to the Firefox bookmark menus - no more duplication / right dragging for these. 
+		<table  style="border-collapse: collapse;" bgcolor="#ffffcc" border="1" cellpadding="5"><tbody>
+		<tr><td align="center" bgcolor="#cc6600" valign="top" style="color:#ffff99;font-weight:bold;">before: unnecessary duplication <span class="moz-smiley-s2"><span> :-( </span></span></td>
+			<td align="center" bgcolor="#cc6600" valign="top" style="color:#ffff99;font-weight:bold;">after: <span class="moz-smiley-s11"><span> 8-) </span></span><br></td></tr>
+		<tr><td valign="top"><img class="screenshot" src="images/popup-simple-before.gif" alt="before"></td>
+			<td valign="top"><img class="screenshot" src="images/popup-simple-after.gif" alt="after"></td></tr></tbody></table>
+		</li>
+		<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22901" target="_blank">[Bug 22901]</a> - Position of subfolder within submenu should be always on top, even with alphabetical sorting enabled.</li>
+		<li>Added Version History link to Options / Support</li>
+		<li>Feature Request link on Support Panel (uses Bugzilla)</li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.9.1" href="https://addons.mozilla.org/thunderbird/addon/3254/versions/1.9.1" >Version 1.9.1 - 22/05/2010</a>
+	</h4>
+  <ul>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22585" target="_blank">[Bug 22585]</a> - Smart Folders view erratically switched to standard folder if clicked folder is in a collapsed tree branch </li>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21054" target="_blank">[Bug 21054]</a> - Enabled scrolling long menus while dragging by using code from Robert Gibson's "Scroll Menus On Drag" extension https://addons.mozilla.org/firefox/addon/1411 </li>
+	<li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22695" target="_blank">[Bug 22695]</a> - now folders can be moved within the folder tree without QuickFolders losing track of them </li>
+	<li>Added code for displaying counts of subfolders (suggested by Pavel) </li>
+	<li>Added code for customizing the "QuickFolders" label (suggested by Pavel) </li>
+	<li>Added an option for sorting subfolders in menus alphabetically </li>
+	<li>On Upgrade of an existing version, now shows version history and donation page. </li>
+	<li>Added locale sr by DakSrbija </li>
+	<li>various tooltips in options dialog </li>
+	<li>tightened up namespace pollution issues </li>
+	<li>Added version history jump to options dialog (right-click from version number) </li>
+
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.8.8" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.8">Version 1.8.8 - 09/03/2010</a>
+	</h4>
+  <ul>
+	<li>fixed missing Icons in options and reorder tabs dialogs. </li>
+	<li>Added locale zh-CN by Loviny </li>
+	<li>Added CTRL+Click tab shortcut for opening a new mail tab. </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.8.7" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.7">Version 1.8.7 - 22/02/2010</a>
+	</h4>
+  <ul>
+	<li>added tooltiptext with full folder name + server </li>
+	<li>Fixed some layout issues in Options screen (linux case sensitivity, vertical spacing) </li>
+	<li>localized Add-Ons description </li>
+	<li>added hidden option for not changing the folder tree view (extensions.quickfolders.disableFolderSwitching) </li>
+	<li>further reduced namespace pollution </li>
+	<li>moved all picture resources to skin folder and packaged into a jar file to conserve resources (1 file handle instead of 81) </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.8.5.3" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.5.3">Version 1.8.5.3 - 06/02/2010</a>
+	</h4>
+  <ul>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22295" target="_blank">[Bug 22295]</a> (TB3, selecting a QuickFolder closes single Message Tab) => now opens a folder view tab </li>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22144" target="_blank">[Bug 22144]</a> - Highlighting not updated when switching Tabs in TB3 - now also selects Category if necessary! </li>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22316" target="_blank">[Bug 22316]</a> - added Transparency options for toolbar (Personas friendly) and tabs (translucently colored, use white for almost complete transparency) </li>
+    <li>Fixed Broken Dutch locale leading to crashes for the users of this language </li>
+    <li>Added Help menu item for popup menu </li>
+    <li>Added Shadows option </li>
+    <li>Added ca-AD locale (Catalan) by Jordi Benaiges; Improvements to Russian, Italian and Dutch locales. </li>
+    <li>Improved toggling between flat style and native style tabs </li>
+    <li>Improved following external support links in TB3 (done) and SeaMonkey (WIP) </li>
+    <li>Bumped up max version number for Thunderbird to 3.1.0 </li>
+    <li>Improved: tried to resolve as many name space conflicts with other extensions as possible by using QF_ prefix for global objects </li>
+	  <li>bundled locales into jar file </li>
+  </ul>
+  <a><h4 class="inList">Known Issues</h4></a>
+  <ul>
+    <li>Thunderbird2: does not support Shadows but still displays the checkbox </li>
+    <li>Font for the link on help screen is a bit big... </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.8.3" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.3">Version 1.8.3 - 19/01/2010</a>
+	</h4>
+  <ul>
+    <li>IMPORTANT PATCH: fixed code which made branching code fail in Linux - replaced Application Name (Mozilla-Thunderbird) with ID . </li>
+    <li>Fixed (TB3): External Support links in Options dialog now shown in new content Tabs. </li>
+    <li>(TB3 only): More selection improvements for virtual folders (such as search / smart folders) </li>
+    <li>Added special icons for Junk, Drafts, Outbox and Templates </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.8.2" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.2">Version 1.8.2 - 14/01/2010</a>
+	</h4>
+  <ul>
+    <li>Fixed (TB3): The folder view did not switch to "Smart Folders" when a Smart Folder was clicked on a QuickFolder. </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.8.1" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8.1">Version 1.8.1 - 13/01/2010</a>
+	</h4>
+  <ul>
+    <li>Fixed (TB3): Smart Folders did not expand when clicking one of the child folders (Sent / Inbox / Drafts...).
+    I programmed a workaround - the bug itself can be found <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=539392">here</a>. </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.8" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.8">Version 1.8 - 08/01/2010</a>
+	</h4>
+  <ul>
+    <li>Added: Smart Folders Support (TB3 only) </li>
+    <li>Added: Newsgroup Folders Support </li>
+  </ul>
+</li>
+
+
+
+<li>
+    <h4>
+    <a name="1.7.2"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.7.2">Version 1.7.2 - 05/01/2010</a>
+	</h4>
+  <ul>
+    <li>Added: mail tab support for TB3, SeaMonkey and Postbox. Changing tabs will also affect current QF selection (and Categories) </li>
+    <li>Added: separate debug options for mailTabs, folders, CSS, Drag and Drop, popup menus and (folder) events
+    by creating various extensions.quickfolders.debug... these can be now easily changed by Right-clicking the Debug Checkbox on the first Options screen.
+    This will display all debug options in the about:config window where they can be toggled by simple double-clicking. </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.7"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.7">Version 1.7 - 22/12/2010</a>
+	</h4>
+  <ul>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22098" target="_blank">[Bug 22098]</a> (compact menu item missing) </li>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22067" target="_blank">[Bug 22067]</a> (no colors in tab colors submenu in TB3) </li>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22121" target="_blank">[Bug 22121]</a> (Re-ordering QF tabs via Drag'n'Drop was broken in TB3) </li>
+    <li>Fixed drag & drop layout issues for the new versions of TB3, SeaMonkey and Postbox 1.1 </li>
+    <li>Fixed: In SeaMonkey 2.0.2pre a problem with some CSS rules made the folder label text invisible </li>
+    <li>Added: Vietnamese Locale </li>
+    <li> also added time measurements </li>
+    <li>Native Tab Style Option (native tabs instead of button look, without color support) </li>
+  </ul>
+  <a><h4 class="inList">Known issues specific to TB3</h4></a>
+  <ul>
+    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22122" target="_blank">[Bug 22122]</a>: External links in QF settings to not work anymore due to changes in TB 3.0.1 </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.6.4" href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.6.4">Version 1.6.4 - 21/11/2009</a>
+	</h4>
+  <ul>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21960" target="_blank">[Bug 21960]</a> icon for inbox not visible in postbox </li>
+    <li>Fixed disabled dropping emails to virtual (search) folders </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.6.3"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.6.3">Version 1.6.3 - 09/11/2009</a>
+	</h4>
+  <ul>
+    <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21919" target="_blank">[Bug 21919]</a>: (TB2) In Linux Ubuntu (9.04) and OpenSuse when
+the users drag amessage into a quickfolder tab and then try to move it
+to a subfolder on the subfolder popup menu, thunderbird just closes.
+Resolved by bypassing the code that removes the popup (TB2 only, as bug
+is not confirmed for TB3) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.6.2"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.6.2">Version 1.6.2 - 07/11/2009</a>
+	</h4>
+  <ul>
+    <li>Branched SeaMonkey overlay file for future CSS fixes. </li>
+    <li>Bumped up Postbox Compatibility to 1.1 </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.6.1"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.6.1">Version 1.6.1 - 28/10/2009</a>
+	</h4>
+  <ul>
+    <li>Added <a href="http://www.seamonkey-project.org/">SeaMonkey</a> Compatibility. </li>
+    <li>Verified Compatibility for Postbox 1.0.2 </li>
+    <li>Less noise in the debug window. </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.6"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.6">Version 1.6 - 23/10/2009</a>
+	</h4>
+  <ul>
+    <li>added locales for Japanese (Masahiko Imanaka), Portuguese (Marcelo Ghelman), Russian (Anton Pinsky) </li>
+    <li>fixed: <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21919" target="_blank">[Bug 21919]</a> TB not displaying the colors on start up </li>
+    <li>fixed: in Postbox - the color sub menu now displays colors </li>
+    <li>added: error handling in Drag-Drop </li>
+  </ul>
+  <a><h4 class="inList">Known issues specific to Linux</h4></a>
+  <ul>
+    <li>In certain Linux environments, such as Ubuntu Jounty when the users drag a
+        message into a quickfolder tab and then try to move it to a subfolder on the
+        subfolder popup menu, thunderbird just closes. </li>
+  </ul>
+
+</li>
+
+
+
+<li>
+    <h4>
+    <a name="1.5pre2"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.5pre2">Version 1.5pre2 - 30/09/2009</a>
+	</h4>
+  <ul>
+    <li>fixed: slowdown of operations that change the number of Total / Unread emails because QF was updated every time - now done asynchronously with a 1000ms timer. </li>
+    <li>fixed: TB3 folder tree did not scroll to correct position </li>
+    <li>added: Option to show subfolders in popup menus </li>
+    <li>added: whole / striped tab option and backgrounds </li>
+    <li>fixed: no more accidental menu popups when customizing toolbars </li>
+    <li>improved: "Change the order of bookmarks " dialog (scrollbars, animation) </li>
+    <li>bumped: <u>Thunderbird Compatibility to 3.0Beta4</u> </li>
+    <li>added: Postbox support </li>
+  </ul>
+  <a><h4 class="inList">Known issues specific to Thunderbird</h4></a>
+  <ul>
+    <li>sometimes the colors do not show up on program startup. Any folder modification (e.g. unread/read) or Category selection will make the color appear </li>
+    <li>tweaks in whole tab coloring (active, hover consistency) </li>
+    <li>popup menus might close delayed </li>
+    <li>Change the order of bookmarks has the wrong height (should be 80% of its parent) </li>
+  </ul>
+  <a><h4 class="inList">Known issues specific to Postbox</h4></a>
+  <ul>
+    <li>color submenu still has no colors </li>
+    <li>some minor CSS errors </li>
+  </ul>
+</li>
+
+
+
+<li>
+    <h4>
+    <a name="1.2"  href="https://addons.mozilla.org/thunderbird/addons/versions/3254#version-1.2">Version 1.2 - 28/07/2009</a>
+	</h4>
+  <ul>
+    <li>added: Categories are sorted alphabetically </li>
+    <li>added: Compatibility for Tb3.0b3 </li>
+    <li>fixed: Quickfolders label floats to right when switched on via options dialog </li>
+    <li>fixed: warning "QuickFOlders is not defined" in quickfolders.js </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.1">Version 1.1.1 - Sandboxed 28/07/2009</a>
+	</h4>
+  <ul>
+    <li>added: individual Tab Color feature </li>
+    <li>added: automatically switch to folder when trying to add it and it already exists </li>
+    <li>added: email developer link to options dialog </li>
+    <li>added: made options dialog resizable </li>
+    <li>fixed: renaming bug for (shortcut) numbered folders </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.0.3">Version 1.0.3 - Released 26/05/2009</a>
+	</h4>
+  <ul>
+    <li>fixed: tried to fix an issue with TB3 b2 (winxp) with GetMsgFolderFromUri and removed IMAP specific code </li>
+    <li>added: language resource for passwordManager folders to clipboard message </li>
+    <li>added: colored panels to category screen </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="1.0.2">Version 1.0.2 - sandboxed 20/05/2009</a>
+	</h4>
+  <ul>
+    <li>fixed: intermittent problem on startup when shortening the startup delay - The Mozilla helper function GetMsgFolderFromUri did not work! </li>
+    <li>improved: speed of changing folders (Categories dropdown is not unneccessarily rebuilt on each operation) </li>
+    <li>known issue: some users with TB3 could not add any categories </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="1.0">Version 1.0.1 - Released 14/05/2009</a>
+	</h4>
+  <ul>
+    <li>added: link to new homepage on mozdev </li>
+    <li>added: multiple line support (wrapping lines similar to tabmix plus) </li>
+    <li>added: option for focusing message pane after selecting a tab </li>
+    <li>added: Delete and Rename Categories </li>
+    <li>fixed: focus problem after changing of categories </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="0.9.13">Version 0.9.13</a>
+  	</h4>
+  <ul>
+    <li>removed constant debug output of keyboard handler (now only visible in debug mode and when relevant) </li>
+    <li>increased width of options window to avoid truncation of italian quickhelp texts </li>
+    <li>language resources for debug items </li>
+    <li>added icon for folder to clipboard </li>
+    <li>added Code to remove dynamic "subfolder" popup menus that act as drop targets. this should also deal with resource issues
+       made sorting with mouse more persistant (it sometimes jumped back!) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.12">Version 0.9.12 - Released 17/04/2009</a>
+  	</h4>
+  <ul>
+    <li>Fixed some problems with keyboard handler </li>
+    <li>added italian locale (provided by Leopoldo Saggin) </li>
+    <li>added option to use CTRL instead of ALT for keyboard shortcuts </li>
+    <li>suppress event bubbling (for better Lightning compatibility) </li>
+    <li>added button for copying folder string to clipboard </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="0.9.10">Version 0.9.10 - Released  20/03/2009</a>
+  	</h4>
+  <ul>
+    <li>Official support for TB3 b2 </li>
+    <li>renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox </li>
+    <li>storing of colors </li>
+    <li>rounded tabs (flat style)! (0.9.8) </li>
+    <li>added Dutch locale (0.9.8) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9.7">Version 0.9.9.7 - Released  08/03/2009</a>
+  	</h4>
+  <ul>
+    <li>Experimental Version with first support for TB b2 </li>
+    <li>renamed global instances of Compontents.classes & interfaces to QF_CC, QF_CI to allow for release from sandbox </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9.6">Version 0.9.9.6 - Remains in Sandbox</a>
+  	</h4>
+  <ul>
+    <li>fixed: used to display the folders of category "ALWAYS" when "Uncategorized" was selected </li>
+    <li>fixed: on some systems, the colors of the flat style "pimp my tabs" options did not show up </li>
+    <li>added: an option for changing color of inactive tabs </li>
+    <li>added: translations for special categories </li>
+    <li>added: Debug mode with configurable init Delay and better error logging </li>
+    <li>added: better stylesheet error logging </li>
+
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9.5">Version 0.9.9.5 - Released  19/02/2009</a>
+  	</h4>
+  <ul>
+    <li>added: Display Number of unread messages in popup menus </li>
+    <li>added: Default Color button </li>
+    <li>added: Debug Mode for trouble shooting </li>
+    <li>fixed: some users could not save folders </li>
+    <li>Changed the behavior of switching the folder pane to "All Folders" view (reported by Gant51) this is now only done if the selected folder does not exist in the current vi </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9.2">Version 0.9.9.2 - Released  19/02/2009</a>
+  	</h4>
+  <ul>
+    <li>added: menu icons </li>
+    <li>added: gradient display for menu item highlights </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9.1">Version 0.9.9.1 - Sandboxed</a>
+  	</h4>
+  <ul>
+    <li>Addresses an issue with instantApply which ignored settings in the layout ("pimp my tabs!") tab.<br>
+    (by forcing display of OK / Cancel button for applying color options) </li>
+    <li>Also improved recognizing of special folders for Icon option. (Previous version falsely identified sub folders of Inbox etc.) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.9">Version 0.9.9 - Released  28/01/2009</a>
+  	</h4>
+  <ul>
+    <li>Fixes breaking problem introduced in 0.9.8 (in combination with another add-on ). </li>
+    <li>Adds icons to bookmarks for known folder types. You can enable this in the aptly named "Pimp my tabs!" tab of the options panel. </li>
+    <li>Improved layout of flat style - tested under Mostly Crystal, default and outlook themes. </li>
+    <li>added "show icons" option which displays special icons for Inbox, Sent, Trash and current folder </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.7">Version 0.9.7 - Released  21/01/2009</a>
+  	</h4>
+  <ul>
+    <li>Added Locale Support (thanks to Jean-Bernard Marcon for his assistance)+ German Locale </li>
+    <li>Several Layout Improvements: </li>
+    <li>Drag feedback in subfolder menus and Tabs </li>
+    <li>coloring of active, hovered tab and tabbar background </li>
+    <li>Rounded Corners (Yay!) </li>
+    <li>Please note: the color pickers are not doing anything [yet], wait for the next release! </li>
+    <li>Split main options dialog into 3 tabs and added Layout tab </li>
+    <li>Added Color Picker to Layout tab (not functional yet) </li>
+    <li>Added accelerator keys to popup menus </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.5">Version 0.9.5 - Released  12/01/2009</a>
+  	</h4>
+  <ul>
+    <li>Added "Always Show" option in Categories </li>
+    <li>Tidied Categories Catalog by adding a separate Ok button </li>
+    <li>reintroduced Icon into install.rdf </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="0.9.4">Version 0.9.4 - Sandbox</a>
+  	</h4>
+  <ul>
+    <li>added folder category feature </li>
+    <li>added font size option </li>
+    <li>dev:split sources into more manageable portions </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.3">Version 0.9.3 - Released  20/11/2009</a>
+  	</h4>
+  <ul>
+    <li>Fixed: Popup menus sometimes drifted down when dragging messages on them </li>
+    <li>Fixed: If the same quickfolder was dragged to after the first drag operation was not completed, the popup would not display again (until dragging onto a different quickfolder) </li>
+    <li>Fixed: The layout of flat style was tidied up to take up less screen space and look better. </li>
+    <li>Added: Display current QuickFolder version number in options dialog </li>
+  </ul>
+</li>
+
+<li>
+    <h4>
+    <a name="0.9.2">Version 0.9.2 - Released  01/10/2009</a>
+  	</h4>
+  <ul>
+    <li>Added: Quick Help </li>
+    <li>Added: Official support for Flat (Tabs) Style; </li>
+    <li>Visual Indicator Markers for drag reordering feature (flat style only). </li>
+    <li>Tidied up on sub folder popups & resource issues. </li>
+    <li>brought Color schemes closer to User's desktop settings - no white on white </li>
+    <li>Added: New Icon. </li>
+  </ul>
+</li>
+
+
+<li>
+    <h4>
+    <a name="0.8.1">Version 0.8.1 - Released  29/08/2008</a>
+  	</h4>
+  <ul>
+    <li>Rolls back the layout update from 0.8, as it caused visibility problems for some people. </li>
+    <li>Axel Grude joined the QuickFolders team </li>
+    <li>Added: reorder the bookmark buttons by just dragging them along the toolbar </li>
+    <li>Added: compact a folder via context menu </li>
+    <li>removed 'toolbar' style from option window to support tabbed interface </li>
+  </ul>
+</li>
+
+<li>
+    <h4><a name="0.7">Version 0.7 - Released  25/05/2008</a></h4>
+  <ul>
+    <li>Added: keyboard shortcut for moving mails (ALT+SHIFT+ShortCut Number) </li>
+  </ul>
+</li>
+
+<li>
+    <h4><a name="0.6">Version 0.6 - Released  25/05/2008</a></h4>
+  <ul>
+    <li>Added: keyboard shortcuts for navigating first 10 folders. </li>
+    <li>Added: options buttpm in addons list. </li>
+    <li>Added: option to display the total number of messages in a folder </li>
+  </ul>
+</li>
+
+<li>
+    <h4> <a name="0.4">Version 0.4 - Released 24/06/2007</a>	</h4>
+  <ul>
+    <li>Fixed: correctly updates the number of unread messages on the folder buttons when new mail arrives or mail has been read. </li>
+    <li>Added: Display folders which have new mail in bold </li>
+  </ul>
+</li>
+
+<li>
+    <h4><a name="0.3.2">Version 0.3.2 - Released 22/06/2007</a></h4>
+  <ul>
+    <li>Added: Lets you install Quickfolders in TB 2.0.0.4 </li>
+  </ul>
+</li>
+
+<li>
+    <h4><a name="0.3.1">Version 0.3.1 - Released 28/04/2007</a></h4>
+  <ul>
+    <li>Added: Compatibility with Thunderbird 2.0 (no other modifications) </li>
+  </ul>
+</li>
+
+<li>
+    <h4>	<a name="0.3">Version 0.3 - Released 30/09/2006</a>  	</h4>
+  <ul>
+    <li>Added: Change the order of the bookmarks: right click on the toolbar itself (not a folder button), and click &quot;change the order of bookmarks&quot; </li>
+    <li>Added: Remove the QuickFolders label from the toolbar </li>
+    <li>Added: Display the number of unread messages in a folder on the bookmark button </li>
+    <li>Options dialog </li>
+  </ul>
+</li>
+
+<li>
+    <h4><a name="0.2">Version 0.2 - Released 27/08/2007</a></h4>
+  <ul>
+    <li><strong>First version</strong>. Still todo: Adjust the order of bookmarks </li>
+  </ul>
+</li>
+
+</ul>
+<!-- end version history -->
+
+
+
+<h3><a name="contactMe">Contact Me Directly</a></h3>
+<p>The quickest way to contact me (apart from filing a bug report): Right-click the QuickFolders toolbar, select QuickFolders support, then click the last button:</p>
+<p class=note>
+<a name="Contact">
+<img src="images/ContactMe-Small.png" alt="Contact Me!">
+</a>
+<p>Or click below to send an email</p>
+<p class=mail_link>
+<SCRIPT LANGUAGE="JavaScript">
+u1 = '&#97;&#120;&#101;l.gru';
+u2 = 'de@'
+u3 = 'gma';
+u4 = 'il.com';
+document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[QuickFolders] - &lt;your subject line here&gt;\">');
+document.write('Mail To Axel Grude</a>');
+</SCRIPT>
+
+<NOSCRIPT>You need to enable javascript for this thing to work!</NOSCRIPT>
+</p>
+
+
+
+<h3><a name="other">My other Extensions - highly recommended</a></h3>
+<br/>
+
+<h4 class="quickFilters">quickFilters</h4>
+<p>
+<a href="https://addons.mozilla.org/thunderbird/addon/quickfilters/">quickFilters</a>
+(Thunderbird) Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.
+</p>
+
+
+<h4 class="ZombieKeys">Zombie Keys</h4>
+<p>
+<a href="https://addons.mozilla.org/firefox/addon/zombie-keys/">Zombie Keys for Firefox / SeaMonkey</a> ; 
+<a href="https://addons.mozilla.org/thunderbird/addon/zombie-keys/">Zombie Keys for Thunderbird / Postbox</a>
+<br>
+<p>Entering European languages (which include diacritics (accented characters, diaeresis, umlauts, etc.), ligatures, the Euro sign, etc.) 
+into Mozilla applications using a non-native keyboards doesn't have to be a pain any more! 
+</p>
+<h4 class="QuickPasswords">QuickPasswords</h4>
+<p>
+<a href="https://addons.mozilla.org/firefox/addon/quickpasswords">QuickPasswords for Firefox / SeaMonkey</a>;
+<a href="https://addons.mozilla.org/thunderbird/addon/quickpasswords">QuickPasswords for Thunderbird / Postbox</a>
+<br>
+this is a very neat and quick way to retrieve and use a growing number
+of passwords, without displaying them on screen or having to re-type them. 
+Also supports renaming of multiple passwords!
+</p>
+
+
+<h4 class="SmartTemplate">SmartTemplate4</h4>
+<p>
+<a href="https://addons.mozilla.org/thunderbird/addon/smarttemplate4/">SmartTemplate4</a>
+ offers an easy way to customize Thunderbirds default quote header by using templates. 
+Templates can be created for every account as well as for global settings (for all email accounts).
+</p>
+ 
+
+

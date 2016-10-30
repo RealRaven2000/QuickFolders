@@ -1,0 +1,47 @@
+td.navigation-list a[href$='faq_tips.html'] {
+	background-color: rgb(255,193,193);
+	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
+	border-bottom-color:  #900000 !important;
+	color: #FFF !important;
+	height: 27px !important;
+	font-weight: bold;
+}
+
+.cssCode {
+	background: linear-gradient(from bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(224,239,249,1) 100%);
+	border: #DDD 1px solid;
+	font-family: Courier New;
+	font-size: small;
+	margin: 1em 3em 1em 0em;
+	padding: 0.7em;
+	overflow-x: scroll;
+	white-space: pre;
+	-moz-border-radius: 2px;
+}
+
+ul.Tweaks > li:first-line {
+	color: #504B67 !important;
+	font-weight: bold;
+	font-size: medium;
+	text-decoration: underline;
+	margin-bottom: 1.2em;
+}
+ul.Tweaks > li > a {
+	color: #504B67 !important;
+}
+
+h2.newsflash {
+	-moz-border-radius: 2px;
+	background-color: #F00;
+	border: 2px double #00F;
+	color:#FFF !important;
+	display: inline;
+	margin: 6px 0px;
+	padding: 8px;
+}
+h2.newsflash a {
+	color:#FFF !important;
+	cursor: pointer;
+}
+
+span.specialFolder { font-style: italic; color: #0F5BFF; }

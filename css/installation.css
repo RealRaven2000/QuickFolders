@@ -1,0 +1,10 @@
+@import url("/css/myProjects.css") screen;
+
+td.navigation-list a[href$='installation.html'] {
+	background-color: rgb(255,193,193); 
+	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
+    border-bottom-color:  #900000 !important;
+    color: #FFF !important;
+    height: 27px !important;
+    font-weight: bold;
+}

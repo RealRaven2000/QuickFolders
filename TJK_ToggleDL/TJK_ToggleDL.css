@@ -1,0 +1,38 @@
+/* Copyright 2006 | Thierry Koblentz - www.TJKDesign.com All Rights reserved
+ * TJK_ToggleDL() Version 1.5.5 (this file has changed from previous version) report bugs or errors to thierry@tjkdesign.com
+ */
+#TJK_ToggleON,#TJK_ToggleOFF {border:1px solid #333;padding:0 5px;margin-right:5px}
+/* zeroing out padding and margin */
+#TJK_DL dd,#TJK_DL dt {margin:0;padding:0}
+/* margin for the DTs (shorthand) */
+#TJK_DL dt {margin:7px 0}
+/* image and left padding for DDs */
+#TJK_DL dd {background:url(answer.gif) no-repeat;padding-left:55px}
+dl[tag]#TJK_DL dd {background:url(Spacer.gif) no-repeat;padding-left:35px}
+
+/* styling all anchors in the DTs */
+#TJK_DL dt a[href] {
+	background:0 50% no-repeat;
+	padding-left:32px !important;
+	color:#000;
+	text-decoration:none
+}
+	
+#TJK_DL dt a[href]:visited {color:#666}
+#TJK_DL dt a[href]:visited:hover,
+#TJK_DL dt a[href]:hover,
+#TJK_DL dt a[href]:active,
+#TJK_DL dt a[href]:focus {
+	font-weight:bold
+}
+/* the + and - gif in the anchors */
+#TJK_DL .DTplus a[href] {background-image:url(toggleDLplus.gif)}
+#TJK_DL .DTminus a[href] {background-image:url(toggleDLminus.gif)}
+/**********************************/
+/**********************************/
+#TJK_DL .showDD {position:static;}
+#TJK_DL dd,.hideDD{top:-9999px;position:absolute}
+#TJK_ToggleON,#TJK_ToggleOFF {
+	display:inline;
+	cursor:pointer;
+}

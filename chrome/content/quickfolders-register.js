@@ -313,7 +313,7 @@ QuickFolders.Licenser = {
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    QuickFolders.Util.openURL(event,'http://quickfolders.mozdev.org/premium.html');
+    QuickFolders.Util.openURL(event,'http://quickfolders.org/premium.html');
   },
   
   // format QF-EMAIL:DATE;CRYPTO

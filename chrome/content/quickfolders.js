@@ -353,7 +353,7 @@ END LICENSE BLOCK */
   ============
 
 
-	A complete list of bugs can be viewed at http://quickfolders.mozdev.org/bugs.html
+	A complete list of bugs can be viewed at http://quickfolders.org/bugs.html
   PLANNED FEATURES
   ================
 	- persist categories in separate JSON list for more flexibility (e.g. rename)
@@ -379,7 +379,6 @@ if (!this.QuickFolders_CI)
 var QuickFolders_PrepareSessionStore = function () {
 	const util = QuickFolders.Util;
 	if (!util) {
-		debugger;
 		return;
 	}
 	if (util.Application == "Postbox") {

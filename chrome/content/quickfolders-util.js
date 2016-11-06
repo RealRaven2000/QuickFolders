@@ -1773,13 +1773,13 @@ QuickFolders.Util.FirstRun = {
 					// on very first run, we go to the index page - welcome blablabla
 					util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
 					window.setTimeout(function() {
-						util.openURL(null, "http://quickfolders.mozdev.org/index.html");
+						util.openURL(null, "http://quickfolders.org/index.html");
 					}, 1500); 
 				}
 			}
 			else { 
         let isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired,
-        		versionPage = "http://quickfolders.mozdev.org/version.html" +
+        		versionPage = "http://quickfolders.org/version.html" +
                           (isPremiumLicense ? "?user=pro" : "")  + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
@@ -1821,7 +1821,7 @@ QuickFolders.Util.FirstRun = {
 							}
 							else {
 								util.logDebugOptional ("firstrun","setTimeout for donation link");
-								window.setTimeout(function() {util.openURL(null, "http://quickfolders.mozdev.org/donate.html");}, 2000);
+								window.setTimeout(function() {util.openURL(null, "http://quickfolders.org/donate.html");}, 2000);
 							}
 						}
 

@@ -12,7 +12,7 @@ Components.utils.import('resource://gre/modules/Services.jsm');
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
+		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.org/");
 	}
 };
 
@@ -1296,7 +1296,7 @@ QuickFolders.Options = {
 		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders"),
 				isProUser = util.hasPremiumLicense(false) || util.Licenser.isExpired;
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
-			util.openURL(null, "http://quickfolders.mozdev.org/version.html" 
+			util.openURL(null, "http://quickfolders.org/version.html" 
 			  + (isProUser ? "?user=pro" : "")
 				+ "#" + pureVersion);
 		}

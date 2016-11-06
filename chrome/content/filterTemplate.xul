@@ -15,7 +15,7 @@
 	buttonlabelextra1="&qf.continueFilter.label;"
 	buttonaccesskeyextra1="&qf.continueFilter.shortcut;"
 	buttonlabelextra2="&qf.label.donate;"
-	ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.mozdev.org/donate.html')"
+	ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
 	ondialogcancel="return QuickFolders.FilterWorker.cancelTemplate();"
 	ondialogextra1="return QuickFolders.FilterWorker.acceptTemplate();"
 	onload="QuickFolders.FilterWorker.loadTemplate();"

@@ -151,8 +151,7 @@ h3 {
 	font-weight: 600;
 	font-size: 1.2em;
 	padding:  0.4em 1em 0.4em 0.8em;
-	height: 1.4em;
-	vertical-align: middle;
+/*	vertical-align: middle; */
 	margin: 1em 1em 1em 0;
 	transition-property: border-radius, box-shadow, margin;
 	transition-duration: 0.7s, 0.2s, 0.2s;

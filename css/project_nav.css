@@ -53,11 +53,12 @@ td.navigation-list {
 }
 
 td.navigation-list a {
-	background-image:    linear-gradient(to bottom, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%);
-	background-image: -webkit-linear-gradient(center bottom, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%);
+	background-image: linear-gradient(to bottom, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%);
 	background-color: ButtonFace;
 	border: 1px solid #AAA;
+	border-radius: 4px 4px 0 0;
 	color: #111;
+	display: inline-block;
 	font-family: verdana,arial,sans-serif;
 	font-size: 11px;
 	font-weight: normal;
@@ -66,8 +67,6 @@ td.navigation-list a {
 	margin: 3px 0px 0px 2px;
 	padding: 1px 5px 0px 2px;
 	white-space: no-wrap !important;
-	border-radius: 4px 4px 0 0;
-	box-shadow: 2px -2px 2px -1px rgba(0,0,0,0.9);
 }
 
 td.navigation-list a * {
@@ -91,7 +90,6 @@ td.navigation-list a:hover
     height: 21px;
     margin-top: 2px !important;
     text-decoration: underline;
-	box-shadow: 2px -2px 2px -1px rgba(120,40,40,0.9);
 }
 td.navigation-list a:selected {
     padding: 0px 5px 2px 2px !important;
@@ -104,3 +102,13 @@ td.navigation-list a:selected {
     margin-top: 2px !important;
     margin-bottom: -1px !important;
 }
+
+
+td.navigation-list a.active {
+	background-color: rgb(255,193,193); 
+	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
+	border-bottom-color:  #900000 !important;
+	color: #FFF !important;
+	font-weight: bold;
+}
+

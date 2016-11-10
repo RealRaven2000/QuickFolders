@@ -1,14 +1,5 @@
 @import url("/css/infoBox.css") screen;
 
-td.navigation-list a[href$='quickFilters.html'] {
-	background-color: rgb(255,193,193); 
-	background: -moz-linear-gradient(top, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
-	border-bottom-color:  #900000 !important;
-	color: #FFF !important;
-	height: 27px !important;
-	font-weight: bold;
-}
-
 h2.page-header:before {
 	content: url('/ico/QuickFilters_32.png');
 	margin: 0.2em 0.5em 0em 0.2em;

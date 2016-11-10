@@ -86,10 +86,9 @@ td.navigation-list a:hover
 	background: rgb(254,204,177);
 	background:    linear-gradient(to bottom, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
 	background: -webkit-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
-    color: #000 !important;
-    height: 21px;
-    margin-top: 2px !important;
-    text-decoration: underline;
+	color: #000 !important;
+	margin-top: 2px !important;
+	text-decoration: none;
 }
 td.navigation-list a:selected {
     padding: 0px 5px 2px 2px !important;

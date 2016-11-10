@@ -296,13 +296,15 @@ ul li ul li {
 }
 
 #main-content-no-nav a[href]:hover {
-	color: #FFB2A2;  /* pink */
+	color: #FFB2A2; 
 	background-color: rgba(102, 0, 22, 0.8);
-	border-radius: 0.5em;
 	border-color: rgba(255, 178, 162, 0.8);
 	border-style: dotted;
-	border-width: 2px;
-	margin-right: -2px;
+	border-top-width: 2px;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	margin-right: -1px;
+	margin-left: 1px;
 }
 
 #main-content-no-nav a[href]:active {

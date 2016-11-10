@@ -1,11 +1,3 @@
-td.navigation-list a[href$='faq_tips.html'] {
-	background-color: rgb(255,193,193);
-	background: linear-gradient(to bottom, rgba(255,193,193,1) 0%, rgba(255,48,25,1) 28%, rgba(219,43,4,1) 75%, rgba(196,23,23,1) 100%);
-	border-bottom-color:  #900000 !important;
-	color: #FFF !important;
-	height: 27px !important;
-	font-weight: bold;
-}
 
 .cssCode {
 	background: linear-gradient(from bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(224,239,249,1) 100%);

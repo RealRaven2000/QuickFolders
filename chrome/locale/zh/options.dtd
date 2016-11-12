@@ -89,6 +89,7 @@
 <!ENTITY qf.checkbox.debug.tooltip "以滑鼠右鍵選取進階除錯選項">
 <!ENTITY qf.label.initdelay "初始延遲（1000是預設值）[毫秒]：">
 <!ENTITY qf.copyfolders "複製分頁">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "複製資料夾設定於剪貼簿中">
 <!ENTITY qf.pastefolders.tooltip "刪除所有QuickFolders並且從剪貼簿讀取新的設定值">
 <!ENTITY qf.label.appearance "外觀">
@@ -180,6 +181,7 @@
 <!ENTITY qf.checkbox.readingList "閱讀清單">
 <!ENTITY qf.checkbox.readingList.tooltip "計畫稍後閱讀的郵件清單。拉動你的重要郵件到這個按鈕上。">
 <!ENTITY qf.label.donate "捐助">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "注意：如果您只在下面看到「關閉」的按鈕，表示色彩的設定未能正常運作，解決方法是，試著以滑鼠右鍵點選快捷資料夾工具列的空白區域來選擇選項，這能使「確定」按鈕顯示，以便儲存顏色設定。">
 <!ENTITY qf.checkbox.usePalette "使用調色盤">
 <!ENTITY qf.options.theme.pastelColors "淡雅的色彩">

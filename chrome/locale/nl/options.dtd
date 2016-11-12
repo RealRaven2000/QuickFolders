@@ -34,12 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Hoofdwerkbalkelementen">
 <!ENTITY qf.checkbox.showRecentTab "Tabblad Recente mappen weergeven">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklik voor instellingen">
-<!ENTITY qf.group.navigation "Bericht Navigatie">
-<!ENTITY qf.label.goNextUnread "Ga naar de volgende ongelezen email:">
-<!ENTITY qf.label.goNextUnread.tip "Gewoonlijk vraagt Thunderbird het je wanneer je naar een andere folder zou gaan om naar de volgende ongelezen boodschap te gaan.">
-<!ENTITY qf.goNextUnread.auto "Ga naar de volgende folder zonder bevestiging (aanbevolen)">
-<!ENTITY qf.goNextUnread.prompt "Vragen om naar de volgende ongelezen folder te gaan">
-<!ENTITY qf.goNextUnread.none "Niks doen als geen ongelezen mails over blijven in de folder">
+<!ENTITY qf.group.navigation "Berichtnavigatie">
+<!ENTITY qf.label.goNextUnread "Naar volgende ongelezen e-mailbericht:">
+<!ENTITY qf.label.goNextUnread.tip "Gewoonlijk vraagt Thunderbird bevestiging wanneer u naar een andere map zou gaan om naar het volgende ongelezen bericht te gaan.">
+<!ENTITY qf.goNextUnread.auto "Naar de volgende map zonder bevestiging (aanbevolen)">
+<!ENTITY qf.goNextUnread.prompt "Vragen om naar de volgende ongelezen map te gaan">
+<!ENTITY qf.goNextUnread.none "Niks doen als er geen ongelezen berichten in de map zijn">
 <!ENTITY qf.checkbox.showQuickMove "Knop snelVerplaatsen">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "De knop snelVerplaatsen kan worden gebruikt om e-mailberichten naar een aangewezen bestemmingsmap te verplaatsen. U kunt berichten uit meerdere mappen verzamelen. Als u eenmaal de gewenste berichten er in hebt staan, voer dan de naam van de bestemmingsmap in in het zoekveld.">
 <!ENTITY qf.checkbox.tabMenuIcon "Pictogram Werkbalkmenu">
@@ -52,7 +52,7 @@
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…ook in losse berichtvensters">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Werkbalk huidige map weergeven in het venster dat opent wanneer u selecteert om een e-mailbericht te openen in een nieuw venster">
 <!ENTITY qf.checkbox.showRecentButton "Knop Recente mappen">
-<!ENTITY qf.checkbox.showMessageNavigation "Bericht-navigatieknoppen">
+<!ENTITY qf.checkbox.showMessageNavigation "Berichtnavigatieknoppen">
 <!ENTITY qf.checkbox.showFolderNavigation "Mapnavigatieknoppen">
 <!ENTITY qf.checkbox.showMailFolderCommands "E-mailmapopdrachten">
 <!ENTITY qf.checkbox.showIconButtons "Pictogramknoppen aanpassen">
@@ -81,7 +81,7 @@
 <!ENTITY qf.currentFolderBackground.translucent "doorschijnend">
 <!ENTITY qf.currentFolderBackground.custom "aangepast">
 <!ENTITY qf.label.misc "Diversen">
-<!ENTITY qf.checkbox.displaylabel "Het label ‘QuickFolders’ weergeven in de werkbalk">
+<!ENTITY qf.checkbox.displaylabel "Het label ‘QuickFolders’ in de werkbalk weergeven">
 <!ENTITY qf.checkbox.displaylabel.tooltip "rechtsklik om de tekst van dit label te wijzigen">
 <!ENTITY qf.checkbox.enableTransitions "CSS-transities inschakelen">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Toont vloeiende overgangen tussen de verschillende aspecten van de tabbladkleuren.">
@@ -90,8 +90,8 @@
 <!ENTITY qf.label.initdelay "[ms] init delay {1000 is standaard}:">
 <!ENTITY qf.copyfolders "Tabbladen kopiëren">
 <!-- obsolete ?? double check in js code -->
-<!ENTITY qf.copyfolders.tooltip "Kopieert de configuratie-string voor mappen bevat naar het klembord">
-<!ENTITY qf.pastefolders.tooltip "Alle QuickFolders verwidjeren en nieuwe configuratie van klembord inlezen">
+<!ENTITY qf.copyfolders.tooltip "Kopieert de configuratiestring voor mappen bevat naar het klembord">
+<!ENTITY qf.pastefolders.tooltip "Alle QuickFolders verwijderen en nieuwe configuratie van klembord inlezen">
 <!ENTITY qf.label.appearance "Weergave">
 <!ENTITY qf.label.themes "Thema’s:">
 <!ENTITY qf.themes.flatTabs.label "Vlakke stijl">
@@ -156,11 +156,11 @@
 <!ENTITY qf.button.pasteLicense "plakken">
 <!ENTITY qf.button.validateLicense "valideren">
 <!ENTITY qf.label.licenseValid "Uw licentie is geldig tot:">
-<!ENTITY qf.licenseValidation.passed "Bedankt voor uw registratie van QucikFolders Pro! Alle premium-functies kunnen nu worden gebruikt.">
+<!ENTITY qf.licenseValidation.passed "Bedankt voor uw registratie van QuickFolders Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
 <!ENTITY qf.licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het ondersteuningstabblad.">
 <!ENTITY qf.licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Druk op onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY qf.licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Geëncrypteerd e-mail adres komt niet overeen met het leesbare e-mail adres.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Versleuteld e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY qf.premiumConfig "Premiumfuncties">
 <!ENTITY qf.checkbox.quickJump "quickJump: Mappen zoeken met sneltoets: Shift +">
 <!ENTITY qf.checkbox.quickJump.tip "Sneltoets voor aanklikken van de knop quickJump voor de snelste navigatie via naamingave.">
@@ -168,19 +168,20 @@
 <!ENTITY qf.checkbox.quickMove.tip "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in elke map via naamingave.">
 <!ENTITY qf.checkbox.quickCopy "snelKopiëren: E-mail naar elke map kopiëren met sneltoets: SHIFT +">
 <!ENTITY qf.checkbox.quickCopy.tip "Sneltoets voor het slepen van e-mailberichten naar de knop snelKopiëren voor het snelste kopiëren naar elke map via ingave van de naam.">
-<!ENTITY qf.quickMove.path.format "Formaat Weergave:">
-<!ENTITY qf.pathFormat.folderName "Folder Naam">
-<!ENTITY qf.pathFormat.folderAndAccount "Folder Naam - Mail Account">
-<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder pad">
-<!ENTITY qf.pathFormat.PathOnly "Folder pad">
-<!ENTITY qf.pathFormat.URI "Folder URI">
-<!ENTITY qf.pathFormat.maxDepth "Maximale diepte van pad:">
-<!ENTITY qf.pathFormat.tooltip "Maximaal aantal folders weergegeven in folder pad.">
-<!ENTITY qf.categories.supportMultiple "Ondersteunt het selecteren van meerde tab categorieën">
-<!ENTITY qf.categories.supportMultiple.tooltip "Gebruik de Shift knop om meer dan één categorie te selecteren in de dropdown.">
+<!ENTITY qf.quickMove.path.format "Weergave:">
+<!ENTITY qf.pathFormat.folderName "Mapnaam">
+<!ENTITY qf.pathFormat.folderAndAccount "Mapnaam - E-mailaccount">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Mappad">
+<!ENTITY qf.pathFormat.PathOnly "Mappad">
+<!ENTITY qf.pathFormat.URI "Map-URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximale paddiepte:">
+<!ENTITY qf.pathFormat.tooltip "Maximaal aantal mappen in mappad.">
+<!ENTITY qf.categories.supportMultiple "Ondersteunt het selecteren van meerdere tabbladcategorieën">
+<!ENTITY qf.categories.supportMultiple.tooltip "Gebruik de Shifttoets om meer dan één categorie in het dropdownmenu te selecteren.">
 <!ENTITY qf.checkbox.readingList "Leeslijst">
 <!ENTITY qf.checkbox.readingList.tooltip "Een lijst met e-mailberichten die later gelezen moeten worden. Versleep uw belangrijke berichten naar deze knop.">
 <!ENTITY qf.label.donate "Doneren">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
 <!ENTITY qf.checkbox.usePalette "Palet gebruiken">
 <!ENTITY qf.options.theme.pastelColors "Pastelkleuren">

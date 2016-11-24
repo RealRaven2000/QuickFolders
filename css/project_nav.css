@@ -12,21 +12,12 @@
 	margin-right: 3px;
 }
 
-.project-name {
-	margin-botton: 0.5em;
-	padding: 0;
-}
 
 .project-navigations th {
 	color: #C51816 !important;
 	font-weight: normal;
 }
 
-
-.project-name:after {
-	content: url(http://www.mozdev.org/sharedimages/boxes.gif);
-	padding-left: 1.1em;
-}
 
 .project-navigations {
 	border: none; /* work around weird ns4 bug */
@@ -35,11 +26,11 @@
 
 #project-navigation th {
 	background-color: inherit;
-	background-image: url(http://www.mozdev.org/sharedimages/nav-icon.png);
+	/* background-image: url(http://www.mozdev.org/sharedimages/nav-icon.png); */
 	background-repeat: no-repeat;
 	color: #900;
-	padding-left: 18px;
-	padding-top: 0;
+	/* padding-left: 18px;
+	padding-top: 0; */
 	margin-bottom: 0;
 	margin-top: 0;
 	vertical-align: middle;

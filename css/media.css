@@ -1,11 +1,20 @@
+/* max width of 1000px */
+@media only screen and (min-width: 850px) and (max-width: 1000px) {
+  #main-content-no-nav {
+    margin-left: 9%  !important;
+    margin-right: 9% !important;
+  }
+}
+
+
 /*** screen size support ***/
 @media only screen and (max-width: 850px){
   #infoTabs {
     margin-right: -8% !important; 
   }
   #main-content-no-nav {
-    margin-left: 5%  !important;
-    margin-right: 5% !important;
+    margin-left: 0  !important;
+    margin-right: 0 !important;
   }
   .infoTab {
     margin-left: 10px;  
@@ -13,10 +22,11 @@
 }
 
 @media only screen and (max-width: 700px){
+	iframe.video,
   #infoTabs { display: none; }
-}
-
-@media only screen and (max-width: 700px){
+  .copyright {
+    text-align: left !important; /* we have center as default but this looks horrible on mobile devices */
+  }
   h3 { font-size: 1.2em; }
   h2.page-header {
     font-size: 1.5em;
@@ -39,5 +49,40 @@
     margin: 0 !important;
 	border-radius:0;
 	box-shadow:0;
+  }
+}
+
+/* max width of 360px (e.g. portrait mode s3) */
+@media only screen and (max-width: 360px) {
+  #project-navigation a.version,
+  #project-navigation a.templates,
+  .tip.query  {
+    display: none;
+  }
+  .templateBlock {
+    margin-left: 10px;
+  }
+  h5.templateBlock {
+    margin-left: 10px !important;
+    margin-top: 0;
+    max-width: 10em;
+    text-align: center;
+    font-size: 10pt;
+    padding: 0;
+  }
+  blockquote.code_block,
+  pre.code_block,
+  pre.code_block.bad_example {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    width: auto;
+    min-width: 290px !important; /* here we need the important to overwrite the size for examples tab */
+  }
+  ul > li {
+    margin-left: 15px;
+  }
+  .collapsible li {
+    margin-bottom: 0;
+    padding-bottom: 0.5em;
   }
 }

@@ -28,10 +28,11 @@
 				removeClassItems('QuickFoldersFreeUser');
 				var navMenu = document.getElementsByClassName('navigation-list');
 				if (navMenu.length) {
-					for (var i=0; i<navMenu[0].children.length; i++) {
-						var href = navMenu[i].getAttribute("href");
+					var links = navMenu[0].children;
+					for (var i=0; i<links.length; i++) {
+						var href = links[i].getAttribute("href");
 						if (href && href.indexOf("user="==-1))
-							navMenu[i].setAttribute("href", href + "&user=pro");
+							links[i].setAttribute("href", href + "&user=pro");
 					}
 					
 				}

@@ -32,7 +32,7 @@
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
 						if (href && href.indexOf("user="==-1))
-							links[i].setAttribute("href", href + "&user=pro");
+							links[i].setAttribute("href", href + "?user=pro");
 					}
 					
 				}

@@ -399,6 +399,12 @@ code {
 	/* make sure background expands to edge of main-content-no-nav wrapper! */
 	margin: -35px -20px;
   padding: 35px 20px;
+/*	position: fixed;
+	z-index:1000; */
+}
+
+#content {
+	/* margin-top:50px; */
 }
 
 #main-content-no-nav {

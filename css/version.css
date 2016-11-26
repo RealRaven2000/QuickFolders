@@ -118,7 +118,7 @@ ul#version-history > li ul li {
 }
 
 /* inject the product name because we most likely do in-page links */
-#version-history li > h4 > a:before {
+#version-history li > h4 > a:not([href="donate.html"]):before {
 	content: "QuickFolders ";
 }
 

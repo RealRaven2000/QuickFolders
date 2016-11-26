@@ -26,7 +26,7 @@
 			if (user=='pro') {
 				removeClassItems('donateButton');
 				removeClassItems('QuickFoldersFreeUser');
-				var navMenu = document.getElementsByClassName(navigation-list);
+				var navMenu = document.getElementsByClassName('navigation-list');
 				if (navMenu.length) {
 					for (var a in navMenu[0].children) {
 						var href = a.getAttribute("href");

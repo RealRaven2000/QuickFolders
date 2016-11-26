@@ -26,6 +26,16 @@
 			if (user=='pro') {
 				removeClassItems('donateButton');
 				removeClassItems('QuickFoldersFreeUser');
+				var navMenu = document.getElementsByClassName(navigation-list);
+				if (navMenu.length) {
+					for (var a in navMenu[0].children) {
+						var href = a.getAttribute("href");
+						if (href && href.indexOf("user="==-1))
+							a.setAttribute("href", href + "&user=pro");
+					}
+					
+				}
+				
 			}
 			else
 				removeClassItems('QuickFoldersProUser');

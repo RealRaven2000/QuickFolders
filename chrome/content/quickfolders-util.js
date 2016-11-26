@@ -35,6 +35,7 @@ if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.inte
 var QuickFolders_TabURIopener = {
 	openURLInTab: function openURLInTab(URL) {
     let util = QuickFolders.Util;
+		URL = util.makeUriPremium(URL);
 		try {
 			let sTabMode="",
 			    tabmail;
@@ -75,19 +76,19 @@ QuickFolders.Util = {
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_NEWSHOST  : 0x0002,
-		MSG_FOLDER_FLAG_MAIL    : 0x0004,
+		MSG_FOLDER_FLAG_MAIL      : 0x0004,
 		MSG_FOLDER_FLAG_TRASH 	  : 0x0100,
 		MSG_FOLDER_FLAG_SENTMAIL	: 0x0200,
-		MSG_FOLDER_FLAG_DRAFTS	: 0x0400,
-		MSG_FOLDER_FLAG_QUEUE 	: 0x0800,
-		MSG_FOLDER_FLAG_INBOX 	: 0x1000,
+		MSG_FOLDER_FLAG_DRAFTS  	: 0x0400,
+		MSG_FOLDER_FLAG_QUEUE 	  : 0x0800,
+		MSG_FOLDER_FLAG_INBOX 	  : 0x1000,
 		MSG_FOLDER_FLAG_TEMPLATES : 0x400000,
-		MSG_FOLDER_FLAG_JUNK		: 0x40000000,
-		MSG_FOLDER_FLAG_SMART 	: 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
-		MSG_FOLDER_FLAG_ARCHIVE	: 0x4004, // another guess ?
-		MSG_FOLDER_FLAG_VIRTUAL : 0x0020,
-		MSG_FOLDER_FLAG_GOTNEW  : 0x00020000,
-    MSG_FOLDER_FLAG_OFFLINE : 0x08000000
+		MSG_FOLDER_FLAG_JUNK		  : 0x40000000,
+		MSG_FOLDER_FLAG_SMART 	  : 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
+		MSG_FOLDER_FLAG_ARCHIVE  	: 0x4004, // another guess ?
+		MSG_FOLDER_FLAG_VIRTUAL   : 0x0020,
+		MSG_FOLDER_FLAG_GOTNEW    : 0x00020000,
+    MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
 	},
 	// avoid these global objects
 	Cc: Components.classes,
@@ -1348,14 +1349,37 @@ QuickFolders.Util = {
       QuickFolders_TabURIopener.openURLInTab(linkURI);
     }
 	},
+	
+	makeUriPremium: function makeUriPremium(URL) {
+		const util = QuickFolders.Util,
+					isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired;
+		try {
+			// make sure we can sanitize all pages for our premium users!
+			if (   isPremiumLicense 
+			    && URL.indexOf("user=")==-1 
+					&& URL.indexOf("quickfolders.org")>0 ) {
+				if (URL.indexOf("?")==-1)
+					URL = URL + "?user=pro";
+				else
+					URL = URL + "&user=pro";
+			}
+		}
+		catch(ex) {
+		}
+		finally {
+			return URL;
+		}
+	} ,
 
 	// moved from options.js
 	// use this to follow a href that did not trigger the browser to open (from a XUL file)
 	openLinkInBrowser: function openLinkInBrowser(evt, linkURI) {
-		let Cc = Components.classes,
-		    Ci = Components.interfaces;
+		const Cc = Components.classes,
+					Ci = Components.interfaces,
+					util = QuickFolders.Util;
+		linkURI = util.makeUriPremium(linkURI);
 		try {
-      if (QuickFolders.Util.Application=='Thunderbird') {
+      if (util.Application=='Thunderbird') {
         let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
             ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
         service.loadURI(ioservice.newURI(linkURI, null, null));

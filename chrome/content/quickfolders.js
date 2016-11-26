@@ -326,8 +326,9 @@ END LICENSE BLOCK */
 		## [Bug 26202] Shift-[Key] shortcuts interferes with Thunderbird Conversations Addon
 		## [Bug 26258] Postbox: collapsed accounts are not switched when clicking account tab
 		
-	4.6 QuickFolders Pro -  WIP
+	4.6 QuickFolders Pro -  26/11/2016
 		## [Bug 26283] add matches from quickfolders tabs for creating new subfolders
+		## Relinked to new support site at quickfolder.org
 	  ## Support copying and pasting the folder tabs definitions in order to edit them in a text editor.
 		## Support for Postbox 5
 		## Made coloring + styling (flat style) more reliable in SeaMonkey

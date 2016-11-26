@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
     <link rel="stylesheet" href="css/footer.css" type="text/css">
     <link rel="stylesheet" href="css/censorship.css" type="text/css">
+		<link rel="stylesheet" href="css/index.css?v=8" type="text/css">
     <link rel="icon" href="images/QF16x16.png" type="image/png"> 
     <script src="js/ga.js"> </script>
+    <script src="js/premium.js"> </script>
 
-<link rel="stylesheet" href="css/index.css?v=8" type="text/css">
 
   </head>  
   <body>
@@ -87,11 +88,11 @@
 				</div> <!-- #infoTabs -->
 
 				<div class="h2container">
-					<h2 class="page-header QuickFoldersFree" style="vertical-align:top;">Get QuickFolders Pro in 2017!</h2>
-					<h2 class="page-header QuickFoldersPro" style="vertical-align:top;">Donate to Support QuickFolders</h2>
+					<h2 class="page-header QuickFoldersFreeUser" style="vertical-align:top;">Get QuickFolders Pro in 2017!</h2>
+					<h2 class="page-header QuickFoldersProUser" style="vertical-align:top;">Donate to Support QuickFolders</h2>
 				</div>
 
-				<div class="QuickFoldersFree">
+				<div class="QuickFoldersFreeUser">
 					<p>Keep <a href="#freesoftware">free, open source software</a> independent! I have finally managed to package 
 					the awesome new <a href="premium.html">premium features</a> in order to offer an alternative to donations and so give back to people 
 					who support this software.</p>
@@ -108,7 +109,7 @@
 
 					<p> If you want to think about it you can of course still donate below: </p>
 				</div>
-				<div class="QuickFoldersPro">
+				<div class="QuickFoldersProUser">
 				  <p>Thanks for supporting QuickFolders through your Premium License. If you want to buy me a beer as well,
 					   you can donate below - many many thanks!</p>
 				</div>
@@ -402,41 +403,6 @@
 				</p>
 			</div>
 			
-				<script type="text/javascript">
-
-					document.addEventListener("DOMContentLoaded", function(event) { 
-						var user = getQueryVariable("user");
-						if (typeof user!='undefined') {
-							if (user=='pro') {
-								removeClassItems('QuickFoldersFree');
-								
-							}
-							else
-								removeClassItems('QuickFoldersPro');
-						}
-					});
-
-					function getQueryVariable(variable)	{
-						var query = window.location.search.substring(1),
-								vars = query.split("&");
-						for (var i=0;i<vars.length;i++) {
-							var pair = vars[i].split("=");
-							if (pair[0] == variable) 
-								return pair[1];
-						}
-						return(null);
-					}
-
-					function removeClassItems(name) {
-						var dbuttons = document.getElementsByClassName(name);
-						for (var i=dbuttons.length-1; i>=0; i--) {
-							// dbuttons[i].style.display='none';
-							dbuttons[i].parentNode.removeChild(dbuttons[i]);
-						}
-					}
-					
-
-				</script>
 
 				
 			<!-- FOOTER.HTML -->

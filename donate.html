@@ -395,6 +395,43 @@
 				<i>Please note that there might be a disclaimer about "voiding the warranty on Thunderbird", so make sure you only change settings you know about...</i>
 				</p>
 			</div>
+			
+				<script type="text/javascript">
+
+					document.addEventListener("DOMContentLoaded", function(event) { 
+						var user = getQueryVariable("user");
+						if (typeof user!='undefined') {
+							if (user=='pro') {
+								removeClassItems('QuickFoldersFree');
+							}
+							else
+								removeClassItems('QuickFoldersPro');
+						}
+					});
+
+					function getQueryVariable(variable)	{
+						var query = window.location.search.substring(1),
+								vars = query.split("&");
+						for (var i=0;i<vars.length;i++) {
+							var pair = vars[i].split("=");
+							if (pair[0] == variable) 
+								return pair[1];
+						}
+						return(null);
+					}
+
+					function removeClassItems(name) {
+						var dbuttons = document.getElementsByClassName(name);
+						for (var i=dbuttons.length-1; i>=0; i--) {
+							// dbuttons[i].style.display='none';
+							dbuttons[i].parentNode.removeChild(dbuttons[i]);
+						}
+					}
+					
+
+				</script>
+
+				
 			<!-- FOOTER.HTML -->
 			<div id="footer">
 				<script type="text/javascript">

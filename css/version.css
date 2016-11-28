@@ -192,9 +192,9 @@ li tt {
 	padding-right: 3px;
 	text-shadow: 1px 1px 1px rgba(256, 256, 256, 0.7);
 }
-p.QuickFoldersPro,
-p.QuickFoldersRenew,
-table.QuickFoldersPro  {
+p.QuickFoldersFreeUser,
+p.QuickFoldersProUser,
+table.QuickFoldersFreeUser  {
 	background: rgba(250,250,250,0.6);
   border: 2px solid rgba(60,60,60,0.5);
 	border-radius: 10px;
@@ -205,9 +205,9 @@ table.QuickFoldersPro  {
 	padding: 0.5em 0.8em;
 }
 
-.QuickFoldersPro {
+.QuickFoldersFreeUser {
   font-size: 1.3em !important;
 }
-.QuickFoldersPro em {
+.QuickFoldersFreeUser em {
   font-weight: bold;
 }

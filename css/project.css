@@ -315,11 +315,12 @@ ul li ul li {
 	background-color: rgba(102, 0, 22, 0.8);
 	border-color: rgba(255, 178, 162, 0.8);
 	border-style: dotted;
+	border-radius: 0.5em;
 	border-top-width: 2px;
 	border-right-width: 2px;
 	border-left-width: 2px;
-	margin-right: -1px;
-	margin-left: 1px;
+	margin-right: -0.15em;
+	margin-left: -0.15em;
 }
 
 #main-content-no-nav a[href]:active {
@@ -327,7 +328,6 @@ ul li ul li {
 	background-color: #C9083D;
 	border-radius: 0.5em;
 	border-color: #FFFFFF;
-	border-width: 1px;
 	border-style: solid;
 	font-weight: normal;
 }

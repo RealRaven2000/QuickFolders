@@ -9,10 +9,6 @@
 table.BZ-table {
  	background: rgb(254,204,177);
 	background:    linear-gradient(to bottom, rgb(254, 204, 177) 0%, rgb(241, 116, 50) 50%, rgb(234, 85, 7) 51%, rgb(251, 149, 94) 100%);
-	background: -webkit-linear-gradient(center top , rgb(254, 204, 177) 0%, rgb(241, 116, 50) 50%, rgb(234, 85, 7) 51%, rgb(251, 149, 94) 100%);
-	background: -o-linear-gradient(top, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
-	background: -ms-linear-gradient(top, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#ea5507',GradientType=0 );
 	border: 2px solid rgba(80,80,80,0.8);
 	box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7); /* CSS3= IE9 / Firefox 4+ */ 
 	-webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7); /* Safari / Chrome (Webkit) */
@@ -41,11 +37,6 @@ table.BZ-table td {
 .BZ-th-bug, .BZ-th-desc {
 	background: rgb(203,96,179);
 	background: linear-gradient(to bottom, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 100%);
-	background:      -o-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 100%);
-	background:     -ms-linear-gradient(top, rgba(203,96,179,1) 0%,rgba(193,70,161,1) 50%,rgba(168,0,119,1) 51%,rgba(219,54,164,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb60b3', endColorstr='#a80077',GradientType=0 );
 	border: 2px solid #EEE;
 	color: #ffffff !important;
 	text-shadow: #C0C0C0 0px 0px 1px;

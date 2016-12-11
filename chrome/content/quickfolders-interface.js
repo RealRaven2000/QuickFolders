@@ -1,11 +1,11 @@
 "use strict";
 /* BEGIN LICENSE BLOCK
 
-QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
-Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
-For details, please refer to license.txt in the root folder of this extension
+	QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
 
-END LICENSE BLOCK */
+  END LICENSE BLOCK */
 
 
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -462,7 +462,6 @@ QuickFolders.Interface = {
 						button.setAttribute('position','after_start');
 						// button.addEventListener("contextmenu", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, false); }, true);
 						button.addEventListener("click", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, true); return false; }, false);
-
 						button.addEventListener("dragenter", function(event) { nsDragAndDrop.dragEnter(event, QuickFolders.buttonDragObserver); }, false);
 						button.addEventListener("dragover", function(event) { nsDragAndDrop.dragOver(event, QuickFolders.buttonDragObserver); return false; }, false);
 					}
@@ -592,11 +591,21 @@ QuickFolders.Interface = {
     if (this.QuickMoveButton) 
       this.QuickMoveButton.collapsed = !prefs.isShowQuickMove;
 		
-		// was QuickFolders-Category-Box
-		if (this.CategoryMenu)
-			this.CategoryMenu.style.display =
+		let cat = this.CategoryMenu;
+		if (cat) {
+			cat.style.display =
 		    (!showToolIcon && QuickFolders.Model.Categories.length == 0)
 		    ? 'none' : '-moz-inline-box';
+			if (prefs.getBoolPref('collapseCategories')) {
+				if (cat.className.indexOf('autocollapse')==-1)
+					cat.className += ' autocollapse';
+			}
+			else {
+				if (cat.className.indexOf('autocollapse')>=0)
+					cat.className.replace ('autocollapse', '');
+			}
+				
+	  }
 
 		if (rebuildCategories || prefs.isMinimalUpdateDisabled)
 			minimalUpdate = false;
@@ -697,13 +706,13 @@ QuickFolders.Interface = {
 		// current message dragging
 		let button = this.MailButton;
 		if (button)
-			this.setEventAttribute(button, "ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
+			this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
 
 		// current thread dragging; let's piggyback "isThread"...
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
 		button = util.$('QuickFolders-CurrentThread'); 
 		if (button)
-			this.setEventAttribute(button, "ondraggesture","event.isThread=true; nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
+			this.setEventAttribute(button, "ondragstart","event.isThread=true; nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
 		if (prefs.isShowCategoryNewCount) {
 			
 		}
@@ -1731,8 +1740,8 @@ QuickFolders.Interface = {
       this.setEventAttribute(button, "oncontextmenu",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
       if (buttonId == 'QuickFoldersCurrentFolder') {
         this.setEventAttribute(button, "onclick",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
-        this.setEventAttribute(button, "ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
-        this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+        this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+        this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
       }
     }
 
@@ -1764,8 +1773,8 @@ QuickFolders.Interface = {
 
 		if (!theButton) {
 			// AG add dragging of buttons
-			this.setEventAttribute(button, "ondraggesture","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
-			this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+			this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+			this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 
@@ -3517,7 +3526,7 @@ QuickFolders.Interface = {
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
 				this.setEventAttribute(menuitem, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
 				this.setEventAttribute(menuitem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-				// this.setEventAttribute(menuitem, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+				// this.setEventAttribute(menuitem, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
@@ -3571,7 +3580,7 @@ QuickFolders.Interface = {
 
 					this.setEventAttribute(subMenu, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(subMenu, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-					this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+					this.setEventAttribute(subMenu, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;
@@ -5075,6 +5084,7 @@ QuickFolders.Interface = {
 		
 	} ,
 	
+	// Get all blingable elements and make them look user defined.
 	updateUserStyles: function updateUserStyles() {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;

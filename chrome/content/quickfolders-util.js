@@ -1,12 +1,11 @@
 "use strict";
 /* BEGIN LICENSE BLOCK
 
-QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
-Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
-For details, please refer to license.txt in the root folder of this extension
+	QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
 
-END LICENSE BLOCK */
-
+  END LICENSE BLOCK */
 
 Components.utils.import('resource://gre/modules/Services.jsm');
 
@@ -71,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.6",
+	HARDCODED_CURRENTVERSION : "4.6.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,

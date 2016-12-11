@@ -18,6 +18,7 @@ pref("extensions.quickfolders.showCategoryCounts", false);
 pref("extensions.quickfolders.showNewMailHighlight", true); // better visibility of new mail
 pref("extensions.quickfolders.showRecentTab", false);
 pref("extensions.quickfolders.showQuickMove", true);
+pref("extensions.quickfolders.collapseCategories", false);
 pref("extensions.quickfolders.autoFocusPreview", true);
 pref("extensions.quickfolders.showSubfolders", true);
 pref("extensions.quickfolders.disableFolderSwitching", false);

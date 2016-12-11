@@ -67,7 +67,7 @@
 			
 			<vbox id="QuickFolders-Tools-Pane">
 				<hbox id="QuickFolders-Category-Box"
-						 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver)">
+						  ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver)">
 					<menulist id="QuickFolders-Category-Selection" 
 										oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
 										sizetopopup="none" 

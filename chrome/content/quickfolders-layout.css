@@ -278,6 +278,12 @@
 	margin-right: 1px;
 	margin-left:  3px;
 	padding: 0;
+	transition-property: max-width;
+	transition-duration: 0.2s;
+}
+
+#QuickFolders-Category-Selection.autocollapse:not(:hover) {
+	max-width:0;
 }
 
 #QuickFolders-LabelBox {

@@ -60,7 +60,7 @@
 			document.addEventListener("dragenter", function (evt) {
 				function removeRepeat (evt) {
 					el.removeEventListener("dragover", repeatOnDragover, true);
-					el.removeEventListener("dragexit", removeRepeat, false);
+					el.removeEventListener("dragend", removeRepeat, false);
 				}
 				var el = evt.originalTarget, hierarchyLimit = 3;
 				while (el && !REPEAT_RE.test(el.nodeName)) {
@@ -71,7 +71,7 @@
 					fnRepeat = function(){ el.doCommand.call(el); };
 
 					el.addEventListener("dragover", repeatOnDragover, true);
-					el.addEventListener("dragexit", removeRepeat, false);
+					el.addEventListener("dragend", removeRepeat, false);
 					repeatOnDragover({timeStamp: evt.timeStamp});
 
 				}

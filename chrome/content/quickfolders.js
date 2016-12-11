@@ -335,6 +335,10 @@ END LICENSE BLOCK */
 		## Platform modernization: replaced old dragdrop events with drop events.
 		## Ensured Compatibility with Fossamail 26.
 		## New function for opening the folder of current mail
+		
+	4.7 QuickFolders Pro - WIP
+	  ## [Bug 26313] Dragging quickfolder tabs (to re-order) broken in Tb 50.0b3
+	  ## Added (hidden) autocollapse function for Categories dropdown
 	
 	Known Issues
 	============
@@ -881,8 +885,8 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		onDragExit: function onDragExit(evt) {
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragExit");
+		onDragEnd: function onDragEnd(evt) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnd");
 		} ,
 		
 		onDragEnter: function onDragEnter(evt, session) {
@@ -1035,17 +1039,17 @@ var QuickFolders = {
 		},
 
 		// deal with old folder popups
-		onDragExit: function menuObs_onDragExit(evt, dragSession) {
+		onDragEnd: function menuObs_onDragEnd(evt, dragSession) {
 			let popupStart = evt.target;
 			// find parent node!
-			QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDragEnd " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				if (popupStart.nodeName=='menu') {
 					QuickFolders_globalLastChildPopup=popupStart; // remember to destroy!
 				}
 			}
 			catch (e) {
-				QuickFolders.Util.logDebugOptional("dnd","CATCH popupDragObserver.onDragExit: \n" + e);
+				QuickFolders.Util.logDebugOptional("dnd","CATCH popupDragObserver.onDragEnd: \n" + e);
 			}
 		} ,
 
@@ -1282,7 +1286,7 @@ var QuickFolders = {
 	buttonDragObserver: {
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
-		getSupportedFlavours : function btnObs_onDragStart() {
+		getSupportedFlavours : function btnObs_getFlavors() {
 			let flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-message"); // emails
 			flavours.appendFlavour("text/unicode");  // tabs
@@ -1382,7 +1386,7 @@ var QuickFolders = {
                   let dx = (box.x - button.boxObject.x);
                   if (dx !== 0) {
                     sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT")
-                    button.className += (" " + sDirection); // add style for drop arrow (remove onDragExit)
+                    button.className += (" " + sDirection); // add style for drop arrow (remove onDragEnd)
                   }
                 }
 							}
@@ -1438,7 +1442,7 @@ var QuickFolders = {
 
 						// instead of using the full popup menu (containing the 3 top commands)
 						// try to create droptarget menu that only contains the target subfolders "on the fly"
-						// haven't found a way to tidy these up, yet (should be done in onDragExit?)
+						// haven't found a way to tidy these up, yet (should be done in onDragEnd?)
 						// Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
 						// no menus necessary for folders without subfolders!
 						let popupset = this.doc.createElement('popupset'),
@@ -1540,21 +1544,22 @@ var QuickFolders = {
 				util.logException ("EXCEPTION buttonDragObserver.onDragEnter: ", ex);
 			}
 		} ,
-
+		
 		// deal with old folder popups
-		onDragExit: function btnObs_onDragExit(event, dragSession) {
+		onDragEnd: function btnObs_onDragEnd(event, dragSession) {
+			const util = QuickFolders.Util;
 			if (!dragSession.sourceNode) { 
-				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - session without sourceNode! exiting dragExit handler...");
+				util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)
 				  event.preventDefault();
 				return; 
 			}
 			try {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
-				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - sourceNode = " + src);
-			} catch(e) { QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - " + e); }
+				util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - sourceNode = " + src);
+			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - " + e); }
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
-				QuickFolders.Util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
+				util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
 				dragSession.canDrop=false;
 				return;
 			}
@@ -1755,6 +1760,8 @@ var QuickFolders = {
 		},
 		// new handler for starting drag of buttons (re-order)
 		onDragStart: function btnObs_onDragStart(event, transferData, action) {
+			const util = QuickFolders.Util;
+			util.logDebugOptional('dnd', 'buttonDragObserver.onDragStart');
 			let button = event.target;
 			if(!button.folder)
 				 return;

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quickfolders: BUGS</title>
+    <!-- LOCAL HEAD.TXT -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="google-site-verification" content="LTKICtodcLDl0nhBl2mUiXWMJbOtmEJmhYXVAqm_mJM" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+    <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
+    <link rel="stylesheet" href="css/project_nav.css?v=3" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=20" type="text/css">
+    <link rel="stylesheet" href="css/infoBox.css" type="text/css">
+    <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="stylesheet" href="css/censorship.css" type="text/css">
+    <link rel="icon" href="images/QF16x16.png" type="image/png"> 
+    <link rel="stylesheet" href="css/index.css?v=9" type="text/css">
+    <script src="js/ga.js"> </script>
+    <script src="js/premium.js"> </script>
+
+  </head>  
+
+  <body>
+<!--
+    <a class="censorship" href="http://americancensorship.org" target=_blank 
+      title="On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass. If it does the Internet and free speech will never be the same. Join all of us to stop this bill.">
+      <div>
+        <span>On Thur. Nov. 16th, the U.S. Congress holds hearings on the first American Internet censorship system. This bill can pass.<br/>
+          If it does, the Internet and free speech will never be the same. 
+          <br/><br/><div class="stop">Join all of us to stop this bill. STOP CENSORSHIP &#x25ba;</div></span>
+      </div>
+    </a>
+-->	
+		
+    <!-- ################### BEGIN TOP ################## -->
+
+
+    <!-- ####################### BEGIN MAIN CONTENT ########################## -->
+    <div id="main-content-no-nav">
+		  <div id="header">
+				<h1 class="project-name" id="content">QuickFolders.org</h1>
+
+				<table id="project-navigation">
+					<tbody id="resources" class="project-navigations">
+						<tr>
+							<th scope="row"></th>
+							<td class="navigation-list">
+								<a href="index.html" class="first-item">Home</a>
+								<a href="installation.html">Installation</a>
+								<a href="version.html">Version&nbsp;History</a>
+								<a href="faq_tips.html">FAQ&nbsp;+&nbsp;Tips</a>
+								<a href="donate.html">Support&nbsp;QuickFolders!</a>
+								<a href="screenshots.html">Screenshots</a>
+								<a href="bugs.html">Bugs + Feature Requests</a>
+								<a href="support.html" class="active">Troubleshooting</a>
+								<a href="menuOnTop.html">Menu On Top</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<!--- **************** START OF CONTENT *********** -->
+
+			<link rel="stylesheet" href="css/bugs.css?v=3" type="text/css">
+
+			<h2 class="page-header">Troubleshooting</h2>
+
+			<div id="infoTabs">
+				<div class="infoTab" id="breaking-news">
+					<h5 class="infoHeader">Bugzilla - why, and how?</h5>
+					  <p class="miniquote">Bugzilla is free and open to anyone who registers with it.
+						The big advantage here is that many users can share bug information, or view feature requests
+						or planned new features and track these, in true open source fashion. From time to time we will also
+						publish patched prerelease versions by attaching them to their relevant bugs.
+						</p>
+						<p>
+						When <a href="bugs.html">submitting new bug reports</a>, please search first whether the bug
+						is already submitted to avoid yours being marked as duplicate.<br>
+						For feature requests, submit a bug and select "enhancement" in the severity dropdown:
+					 </p>
+					<p style="text-align:center;"><!-- aligns the nested image -->
+						<img class="screenshot" src="images/bugzilla-feature.png" alt="feature request">
+					</p>
+				</div>
+			</div>
+
+			<p>No Software is without trouble.</p>
+			<p>
+				We try to publish software with less of trouble for you but if you have some, we 
+				<i>highly recommend</i> to install the 
+				<a href="https://addons.mozilla.org/thunderbird/addon/1815/" title="Console&#178; Add-on on AMO" target="_blank">Console&#178;  Extension</a> 
+				first. Or use this 
+				<a href="download/console2-1.0a4.xpi">patched version</a> by right-clicking / save as and then dragging the file into your Extensions list.
+				<br>
+				Console&#178; has more detailed options for the logging process than the default error console of Thunderbird.</p>
+
+			<h3>Console&#178; Configuration</h3>
+			<p><b>1.</b> Click on "<u>O</u>ptions" in the top right corner of Console&#178; Window and select the following options:<br>
+				<img src="images/support/console2Options.png" class="screenshot" title="Console2 Options" alt="">
+			</p>
+			<p><b>2.</b> Click the "<u>A</u>ll" button on top left of Console&#178; Window to see those entries inside the Log Window only<br>
+			</p>
+
+			<p><b>3.</b> Disable the  "<u>C</u>ontent" logging using the 5th button on the second toolbar below. This will make sure to remove any "noise"
+						introduced by errors in the emails themselves. Usually we do not need these error messages as they only muddy the waters<br>
+				<img src="images/support/console-optimal-settings.png" class="screenshot" title="Console2 Window Options" alt="">
+			</p>
+			
+
+			<p><b>4.</b> Often it is necessary to provide more context - you can tell QuickFolders to log more information of what it does. 
+			</p>
+			<ul>
+			<li>
+				Please activate the debug option on the bottom of QuickFolders &#8658; Advanced &#8658; Settings Tab.<br>
+			<img src="images/support/qf4AdvancedSettingsTab.png" class="screenshot" title="QuickFolders Advanced Settings" alt="">
+			</li>
+			<a name ="debugOptions"> </a>
+			<li> You can create additional more specific messages by right-clicking the debug checkbox and activating additional options (double click on the entry).
+					 Please do not activate everything as this will make the log unreadable also - if you send us a support email
+					 we can usually advise what debug options to activate.<br>
+			<img src="images/support/qfDebugOptions.png" class="screenshot" title="QuickFolders Debug Options" alt="">
+			</li>
+			</ul>
+
+			<h3>Investigating the Error Log</h3>
+
+			<p>So once you have Console&#178; configured, what can you do it? 
+				Remember you have to always open the log window to start logging errors / activity so make sure you do this
+				with Options > Error Console just before you do the trouble shooting. For convenience, you can also add 
+				a toolbar button by right-clicking thunderbird toolbar and selecting <i>customize toolbar...</i>. The icon
+				is a red hexagon.</p>
+
+			<h4>STEP 1 - Setting up the Investigation</h4>
+
+			<p>If you want to start a fresh clean log it is always good to click the "Clear" button at the top immediately
+				 before you carry out the actions you investigate. Also make sure to not repeat the action do it once until
+				 the problem happens. </p>
+
+			<h4>STEP 2 - Saving the Error Log</h4>
+
+			<p>
+				 Then you need to copy the error log into a text file or email. Simply use the console
+				 right-click menu and choose "Select All". Then "Copy". Do not take a screenshot of the error log as it is much 
+				 harder to investigate - text is nice as you can search and order it!
+				 You can always send us error logs in an email if you are having problems.	<br>
+				 <img src="images/support/errorCopy.png" class="screenshot" title="Error Rightclick" alt=""><br>
+				 <p>A note on typical Error messages: If there is a problem somewhere in Thunderbird code or an Addon
+				 then warnings and errors usually provide a location of where this happened.
+				 If the location starts with "chrome://" you will know this happens in THunderbird or and Addon and not 
+				 in a web page or within an email. The line number is also very helpful in tracking down particular issues.
+				 </p>
+				 <p>Any messages that we generate during "debug" logging typically look like this:
+				 </p>
+			<pre class="code_block">QuickFolders {FUNCTIONS.INSERTTEMPLATE} 14:2:39.705  [0 ms]	 
+			Add Signature... 
+			</pre>
+			<p>As you can see we start all our debug logs with the name of the addon (QuickFolders).
+				 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
+				 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 
+				 This makes it possible to pin point any operations that take unusually longe. Underneath we show 
+				 additional information about what QuickFolders is doing at the moment.
+			</p>
+
+			<h4>STEP 3 - Looking for Particular Problems</h4>
+			<p>When you have completed the logging phase, you can now use the "Errors", "Warnings" and "Messages" buttons 
+				 to filter out particular problems. You can also use the Search box if you like, e.g. you could type a keyword 
+				 like "quickfolders":<br>
+				<img src="images/support/console2Search.png" class="screenshot" title="Console2 Search" alt="">
+				<br>
+				Note however this might actually hide the real cause of the problem so this is only for advanced users. 
+				If you decide to send us a log, do not remove anything from it. To help us, just follow the initial instructions
+				above and disable content logging and start with an empty log (only test one thing at a time).
+			</p>
+
+			<p>Now you get error entries inside Log Window listed like this example<br>
+			&#8658; This example shows a warning "yellow triangle" as result of JavaScript strict mode ("use strict"; &#8658; ECMAScript5) which we use<br>
+				<img src="images/support/errorExample.png" class="screenshot" title="Error Example" alt="">
+			</p>
+
+			<p class="tip">
+				<em>TIP:</em> By selecting Edit &#8658; Paste, these log entries can be inserted directly from your clipboard into your e-Mail to us or into a bug report on Bugzilla.
+			</p>
+
+			<p class="attention">
+				<em>ATTENTION:</em> Please send us error entries with "chrome://<u>QuickFolders</u>/.." only, all other log entries are probably unrelated.
+			</p>
+			<!-- END SUPPORT.HTML -->
+			
+
+
+        <!-- FOOTER.HTML -->
+        <div id="footer">
+          <script type="text/javascript">
+            function productName() {
+              if (typeof ProductName == 'undefined')
+                return 'QuickFolders';
+              return ProductName;
+            }
+          </script>
+          <p>For questions or comments about 
+          <span id="product"><script type="text/javascript">document.write(productName());</script></span>, 
+          please send a message to </p>
+          <a name="mailto"></a>
+          <p class=mail_link>
+          <script type="text/javascript">
+            var u1 = '&#97;&#120;&#101;l.gru',
+            u2 = 'de@',
+            u3 = 'gma',
+            u4 = 'il.com';
+            document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[' + productName() + '] - &lt;your subject line here&gt;\">');
+            document.write('Mail To Axel Grude</a>');
+        </script>
+
+        <NOSCRIPT>You need to enable javascript for the email link to work!</NOSCRIPT>
+        </p>
+
+        <!-- For general site related questions or comments, -->
+        For questions or comments <em>not</em> about a specific project,
+        please read our <a href="http://www.mozdev.org/feedback.html">feedback</a> page.<br>
+        <a href="http://www.mozdev.org/copyright.html">Copyright</a> © 2000-2011. All rights reserved.
+        <a href="http://www.mozdev.org/community/terms.html">Terms of Use</a> &amp;
+        <a href="http://www.mozdev.org/community/privacy.html">Privacy Policy</a>.
+        </p>
+
+        <div class=attribution> Attributions:
+          <BR>bullets, mailto, key and mouse icons by Yusuke Kamiyamane under Creative Commons, see: <a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>
+        </div>
+        </div><!-- CLOSE <div id="footer"> -->
+
+        </div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
+        <div id="downPusher"></div><!-- push down the black main background -->
+      </body>
+    </html>

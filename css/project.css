@@ -353,7 +353,7 @@ code {
 	border-left: #ccc 1px;
 	border-right: #ccc 1px;
 	box-shadow: 12px 12px 10px 2px rgba(0, 0, 0, 0.5); /* Firefox 1-4 */
-	margin: 0 120px !important;
+	margin: 0 auto !important;
 	max-width: 1200px;
 	padding: 1em 20px;
 	transition-property: margin;

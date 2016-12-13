@@ -1,3 +1,10 @@
+
+@media only screen (max-width: 1400px) {
+  #main-content-no-nav {
+    margin-left:  120px !important;
+    margin-right: 120px !important;
+	}
+}
 /* max width of 1000px */
 @media only screen and (min-width: 850px) and (max-width: 1000px) {
   #main-content-no-nav {
@@ -5,6 +12,7 @@
     margin-right: 9% !important;
   }
 }
+
 
 
 /*** screen size support ***/

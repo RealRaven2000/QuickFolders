@@ -374,3 +374,21 @@ body {
 #community-links {
 	font-size: 10pt;
 }
+
+/* bubble used to display code */
+.code_block {
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px; 
+  border-width: 1px;
+  color:black;
+  display:block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size:10pt;
+  margin-left: 30px;
+  max-height: 220px;
+  overflow: auto; 
+  padding: 10px;
+  width: 75%;
+}

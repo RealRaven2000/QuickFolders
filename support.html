@@ -8,7 +8,7 @@
     <meta content="text/css" http-equiv="Content-Style-Type" />
     <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
     <link rel="stylesheet" href="css/project_nav.css?v=3" type="text/css">
-    <link rel="stylesheet" href="css/project.css?v=20" type="text/css">
+    <link rel="stylesheet" href="css/project.css?v=21" type="text/css">
     <link rel="stylesheet" href="css/infoBox.css" type="text/css">
     <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
     <link rel="stylesheet" href="css/footer.css" type="text/css">
@@ -153,9 +153,17 @@
 				 </p>
 				 <p>Any messages that we generate during "debug" logging typically look like this:
 				 </p>
-			<pre class="code_block">QuickFolders {FUNCTIONS.INSERTTEMPLATE} 14:2:39.705  [0 ms]	 
-			Add Signature... 
-			</pre>
+<pre class="code_block">
+QuickFolders {EVENTS} 12:46:52.393  [0 ms]	 
+clearChildren(withCategories= true)
+ ----------
+QuickFolders 12:46:52.530  [137 ms]	 
+26 of 225 tabs rendered on toolbar.
+ ----------
+QuickFolders {INTERFACE} 12:46:52.530  [0 ms]	 
+onTabSelected()
+ folder = QF-bugs
+</pre>
 			<p>As you can see we start all our debug logs with the name of the addon (QuickFolders).
 				 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
 				 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 

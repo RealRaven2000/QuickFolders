@@ -1,4 +1,4 @@
- a.tooltip[href] {outline:none !important; background: none !important; padding: 0 !important; border-style: none !important;}
+
  a.tooltip strong {line-height:30px;}
  a.tooltip:hover {text-decoration:none;}
  a.tooltip span { z-index:10;display:none; padding:14px 20px; margin-top:60px; margin-left:-160px; width:240px; line-height:16px; }

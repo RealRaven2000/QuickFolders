@@ -142,7 +142,7 @@
 			<h4>STEP 1 - Setting up the Investigation</h4>
 
 			<p>If you want to start a fresh clean log it is always good to click the "Clear" button at the top immediately
-				 before you carry out the actions you investigate. Also make sure to not repeat the action do it once until
+				 before you carry out the actions you investigate. Also make sure to <b>not repeat the action</b> do it once until
 				 the problem happens. </p>
 
 			<h4>STEP 2 - Saving the Error Log</h4>
@@ -171,41 +171,32 @@ QuickFolders {INTERFACE} 12:46:52.530  [0 ms]
 onTabSelected()
  folder = QF-bugs
 </pre>
-			<p>As you can see we start all our debug logs with the name of the addon (QuickFolders).
-				 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
-				 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 
-				 This makes it possible to pin point any operations that take unusually longe. Underneath we show 
-				 additional information about what QuickFolders is doing at the moment.
-			</p>
+				<p>As you can see we start all our debug logs with the name of the addon (QuickFolders).
+					 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
+					 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 
+					 This makes it possible to pin point any operations that take unusually longe. Underneath we show 
+					 additional information about what QuickFolders is doing at the moment.
+				</p>
 
-			<h4>STEP 3 - Looking for Particular Problems</h4>
-			<p>When you have completed the logging phase, you can now use the "Errors", "Warnings" and "Messages" buttons 
-				 to filter out particular problems. You can also use the Search box if you like, e.g. you could type a keyword 
-				 like "quickfolders":<br>
-				<img src="images/support/console2Search.png" class="screenshot" title="Console2 Search" alt="">
-				<br>
-				Note however this might actually hide the real cause of the problem so this is only for advanced users. 
-				If you decide to send us a log, do not remove anything from it. To help us, just follow the initial instructions
-				above and disable content logging and start with an empty log (only test one thing at a time).
-			</p>
+				<h4>STEP 3 - Looking for Particular Problems</h4>
+				<p>When you have completed the logging phase, you can now use the "Errors", "Warnings" and "Messages" buttons 
+					 to filter out particular problems. You can also use the Search box if you like, e.g. you could type a keyword 
+					 like "quickfolders":<br>
+					<img src="images/support/console2Search.png" class="screenshot" title="Console2 Search" alt="">
+					<br>
+					Note however this might actually hide the real cause of the problem so this is only for advanced users. 
+					If you decide to send us a log, <b>do not remove anything from it</b>. To help us, just follow the initial instructions
+					above and disable content logging and start with an empty log (only test one thing at a time).
+				</p>
 
-			<p>Now you get error entries inside Log Window listed like this example<br>
-			&#8658; This example shows a warning "yellow triangle" as result of JavaScript strict mode ("use strict"; &#8658; ECMAScript5) which we use<br>
-				<img src="images/support/errorExample.png" class="screenshot" title="Error Example" alt="">
-			</p>
+				<p>Now you get error entries inside Log Window listed like this example<br>
+				&#8658; This example shows a warning "yellow triangle" as result of JavaScript strict mode ("use strict"; &#8658; ECMAScript5) which we use<br>
+					<img src="images/support/errorExample.png" class="screenshot" title="Error Example" alt="">
+				</p>
 
-			<p class="tip">
-				<em>TIP:</em> By selecting Edit &#8658; Paste, these log entries can be inserted directly from your clipboard into your e-Mail to us or into a bug report on Bugzilla.
-			</p>
+<!-- END SUPPORT.HTML -->
 
-			<p class="attention">
-				<em>ATTENTION:</em> Please send us error entries with "chrome://<u>QuickFolders</u>/.." only, all other log entries are probably unrelated.
-			</p>
-			<!-- END SUPPORT.HTML -->
-			
-
-
-        <!-- FOOTER.HTML -->
+<!-- FOOTER.HTML -->
         <div id="footer">
           <script type="text/javascript">
             function productName() {

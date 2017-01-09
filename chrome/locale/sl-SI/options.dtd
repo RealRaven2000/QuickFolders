@@ -89,7 +89,6 @@
 <!ENTITY qf.checkbox.debug.tooltip "Desni klik na to označno polje za napredne razhroščevalne možnosti">
 <!ENTITY qf.label.initdelay "[ms] zakasnitev vzp. {običajno je 1000}:">
 <!ENTITY qf.copyfolders "Kopiraj zavihke">
-<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Kopira nastavitveni niz map na odložišče">
 <!ENTITY qf.pastefolders.tooltip "Izbriši vse hitre mape in preberi novo nastavitev z odložišča">
 <!ENTITY qf.label.appearance "Videz">
@@ -181,7 +180,6 @@
 <!ENTITY qf.checkbox.readingList "Bralni seznam">
 <!ENTITY qf.checkbox.readingList.tooltip "Seznam pošte za kasnejše branje. Povlecite svojo pomembno pošto na ta gumb.">
 <!ENTITY qf.label.donate "Prispevaj">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Opomba: V primeru, da spodaj vidite gumb [Zapri], morda barvne nastavitve ne bodo delovale - za obideneje tega poskusite z desnim klikom na prazen prostor vrstice hitrih map, da izberete možnosti ... to bo vsililo prikaz gumba [V redu], ki bi moral imeti barve.">
 <!ENTITY qf.checkbox.usePalette "Uporabi paleto">
 <!ENTITY qf.options.theme.pastelColors "Pastelne barve">

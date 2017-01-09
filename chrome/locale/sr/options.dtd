@@ -1,6 +1,5 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders - опције">
 <!ENTITY qf.label.quickfolders "QuickFolders">
-<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Притисните десни клик да бисте видели историјат верзија.">
 <!ENTITY qf.tab.general "Основно">
 <!ENTITY qf.tab.advanced "Напредно">
@@ -34,12 +33,6 @@
 <!ENTITY qf.label.mainToolbar "Елементи главне траке са алаткама">
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Притисните десни клик да бисте подесили">
-<!ENTITY qf.group.navigation "Message Navigation">
-<!ENTITY qf.label.goNextUnread "Go to next unread email:">
-<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
-<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
-<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
-<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "Дугме за брзо премештање">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Дугме за брзо премештање може бити коришћено за премештање порука у одабрану фасциклу. Можете премештати поруке из више фасцикли. Када у њему имате поруке, унесите назив одредишне фасцикле у поље за претрагу.">
 <!ENTITY qf.checkbox.tabMenuIcon "Икона менија траке са алаткама">
@@ -88,10 +81,8 @@
 <!ENTITY qf.checkbox.debug "Начин приказивања грешака">
 <!ENTITY qf.checkbox.debug.tooltip "притисните десни клик на ово поље да бисте приступили напредним опцијама извештавања о грешкама">
 <!ENTITY qf.label.initdelay "[мс] почетна пауза {стандардно је 1000}:">
-<!ENTITY qf.copyfolders "Copy Tabs">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.copyfolders.tooltip "Копирање подешавања фасцикле у оставу">
-<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
 <!ENTITY qf.label.appearance "Изглед">
 <!ENTITY qf.label.themes "Теме:">
 <!ENTITY qf.themes.flatTabs.label "Равни стил">
@@ -176,12 +167,9 @@
 <!ENTITY qf.pathFormat.URI "URI фасцикле">
 <!ENTITY qf.pathFormat.maxDepth "Највиша дубина путање:">
 <!ENTITY qf.pathFormat.tooltip "Највиши број порука које се приказују у путањи фасцикле.">
-<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
-<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
 <!ENTITY qf.checkbox.readingList "Списак читања">
 <!ENTITY qf.checkbox.readingList.tooltip "Списак порука које би требало да прочитате касније. Превуците важне поруке на ово дугме.">
 <!ENTITY qf.label.donate "Донирај">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Напомена: ако испод видите само дугме [Затвори], подешавања боја можда неће радити. Како бисте решили овај проблем, пробајте да притиснете десни клик на празну површину фасцикле за брзи приступ. То ће присилити дугме [У реду] да се појави, па ће боје тиме бити сачуване.">
 <!ENTITY qf.checkbox.usePalette "Користи палету">
 <!ENTITY qf.options.theme.pastelColors "Пастелне боје">

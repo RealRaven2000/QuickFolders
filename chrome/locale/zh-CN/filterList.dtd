@@ -1,11 +1,11 @@
-<!ENTITY qf.label.filterCountN_of_M "{0} of {1}">
-<!ENTITY qf.label.filterEntities "items">
-<!ENTITY qf.label.filterSingleEntity "1 item">
-<!ENTITY qf.textbox.searchBox.emptyText "Search filters by name…">
-<!ENTITY qf.textbox.searchBox.toolTip "enter a keyword to search filters by name">
-<!ENTITY qf.button.reorderButtonTop "Move to top">
+<!ENTITY qf.label.filterCountN_of_M "{0} / {1}">
+<!ENTITY qf.label.filterEntities "项">
+<!ENTITY qf.label.filterSingleEntity "1 项">
+<!ENTITY qf.textbox.searchBox.emptyText "按名称搜索过滤器…">
+<!ENTITY qf.textbox.searchBox.toolTip "请输入关键词以按名称搜索过滤器">
+<!ENTITY qf.button.reorderButtonTop "移动到顶部">
 <!ENTITY qf.button.reorderButtonTop.accessKey "o">
-<!ENTITY qf.button.reorderButtonTop.toolTip "Rearrange filter so it executes before all others">
-<!ENTITY qf.button.reorderButtonBottom "Move to bottom">
+<!ENTITY qf.button.reorderButtonTop.toolTip "重排过滤器，使其最先执行">
+<!ENTITY qf.button.reorderButtonBottom "移动到底部">
 <!ENTITY qf.button.reorderButtonBottom.accessKey "b">
-<!ENTITY qf.button.reorderButtonBottom.toolTip "Rearrange filter so it executes after all others">
+<!ENTITY qf.button.reorderButtonBottom.toolTip "重排过滤器，使其最后执行">

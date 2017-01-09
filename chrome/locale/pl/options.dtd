@@ -83,6 +83,8 @@
 <!ENTITY qf.label.misc "Różne">
 <!ENTITY qf.checkbox.displaylabel "Wyświetlaj nazwę QuickFolders na pasku folderów">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Kliknij prawym przyciskiem, aby zmienić tekst tej etykiety">
+<!ENTITY qf.checkbox.hideCategoryBox "Zwiń Kategorie">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimalizuj menu Kategorie aby zajmowało mniej miejsca.">
 <!ENTITY qf.checkbox.enableTransitions "Włącz przemiany CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Wyświetla płynne przemiany między różnymi aspektami kolorowania etykiet folderów">
 <!ENTITY qf.checkbox.debug "Tryb debugowania">
@@ -181,6 +183,7 @@
 <!ENTITY qf.checkbox.readingList "Lista do odczytania">
 <!ENTITY qf.checkbox.readingList.tooltip "Lista wiadomości, które należy przeczytać później. Przeciągnij ważne wiadomości na ten przycisk.">
 <!ENTITY qf.label.donate "Przekaż dotację">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Informacja. Jeśli poniżej widoczny jest tylko przycisk Zamkni], ustawienia kolorów mogą nie działać. Aby obejść problem, należy kliknąć prawym przyciskiem pusty obszar paska QuickFolders i wybrać element … Wymusi to wyświetlanie przycisku OK, za pomocą którego będzie można zapisać dokonane ustawieniach kolorów.">
 <!ENTITY qf.checkbox.usePalette "Użyj palety">
 <!ENTITY qf.options.theme.pastelColors "Kolory pastelowe">

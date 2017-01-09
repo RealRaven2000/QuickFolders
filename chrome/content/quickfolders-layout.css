@@ -110,6 +110,13 @@
   text-shadow: none;
 }
 
+/* allow extra long paths. default is 42em  #QuickFolders-quickMoveMenu */
+menupopup.widerMenu menu,
+menupopup.widerMenu menuitem,
+menupopup.widerMenu menucaption {
+	max-width: 100em !important;
+}
+
 
 #QuickFolders-FoldersBox-PushDown {
   max-height: 12px !important;
@@ -197,8 +204,8 @@
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
-	padding-right: 0.5em !important;
-	padding-left: 0.1em !important;
+	padding-right: 0.4em !important;
+	padding-left: 0.4em !important;
 	padding-top: 0px !important; /* Noia Extreme Fix */
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
@@ -230,10 +237,6 @@
 	font-style: italic;
 }
 
-
-#QuickFolders-FoldersBox toolbarbutton label {
-  padding-left: 0.2em;
-}
 
 /* container for categories drop down*/
 #QuickFolders-Category-Box {
@@ -278,12 +281,22 @@
 	margin-right: 1px;
 	margin-left:  3px;
 	padding: 0;
-	transition-property: max-width;
-	transition-duration: 0.2s;
 }
 
+#QuickFolders-Category-Selection, #QuickFolders-Category-Selection .menulist-label {
+	transition: max-width 0.5s, width 0.7s;
+}
+
+#QuickFolders-Category-Selection.autocollapse:not(:hover) .menulist-dropmarker {
+	display: none;
+}
+
+
 #QuickFolders-Category-Selection.autocollapse:not(:hover) {
-	max-width:0;
+	background-image: url('chrome://quickfolders/skin/ico/fugue-balloons.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	max-width: 20px;
 }
 
 #QuickFolders-LabelBox {
@@ -493,10 +506,9 @@ toolbar.quickfolders-flat {
 }
 
 
-#QuickFolders-FoldersBox toolbarbutton .toolbarbutton-icon,
-#QuickFolders-CurrentFolderTools toolbarbutton .toolbarbutton-icon {
-  margin-left: 2px;
-  margin-right: 1px;
+#QuickFolders-FoldersBox toolbarbutton.icon .toolbarbutton-icon,
+#QuickFolders-CurrentFolderTools toolbarbutton.icon .toolbarbutton-icon {
+  margin-right: 0.4em;
 	/* give enough space to icons even in smaller themes */
 	box-sizing: content-box;
 	min-height: 16px;
@@ -643,7 +655,8 @@ menuitem.cmd[tag="qfBreak"] { list-style-image : url('chrome://quickfolders/skin
 menuitem.cmd[tag="qfBreakDel"] { list-style-image : url('chrome://quickfolders/skin/ico/fugue-linebreak-delete.png') !important; }
 menuitem.cmd[tag="qfSeparator"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-add.png') !important; }
 menuitem.cmd[tag="qfSeparatorDel"] { list-style-image : url('chrome://quickfolders/skin/ico/separator-delete.png') !important; }
-menuitem.mailCmd[tag="qfFolderRepair"] { list-style-image : url('chrome://quickfolders/skin/ico/wrench.png') !important; }
+menuitem.mailCmd[tag="qfFolderRepair"],
+#QuickFolders-RepairFolderBtn { list-style-image : url('chrome://quickfolders/skin/ico/wrench.png') !important; }
 
 
 #QuickFolders-FoldersBox toolbarseparator {

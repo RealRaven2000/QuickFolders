@@ -719,61 +719,81 @@ QuickFolders.Interface = {
 	} ,
 	
 	updateCurrentFolderBar: function updateCurrentFolderBar(styleSheet) {
+    const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
 		function collapseConfigItem(id, isShownSetting, checkParent) {
-			let element = QuickFolders.Util.$(id);
+			let element = util.$(id);
 			// safeguard for copied ids (such as button-previous / button-next)
 			if (checkParent && element.parentNode.id.indexOf('QuickFolders') < 0)
 				return;
 			if (element)
-				element.setAttribute('collapsed', !QuickFolders.Preferences.getBoolPref(isShownSetting));
+				element.setAttribute('collapsed', !prefs.getBoolPref(isShownSetting));
+			return element;
 		}
 		
-		collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
-		collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
-		collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
-		collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
-		collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
-		
-		let toolbar2 = this.CurrentFolderBar;
-		if (toolbar2) {
-			let prefs = QuickFolders.Preferences,
-          theme = prefs.CurrentTheme,
-			    styleEngine = QuickFolders.Styles,
-			    ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
-			    background = prefs.getStringPref('currentFolderBar.background');
-			styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
-
-			// find (and move) button if necessary
-			let cF = this.CurrentFolderTab;
+		util.logDebugOptional("interface", "updateCurrentFolderBar()");
+		try {
+			collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
+			collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
+			collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
+			collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
+			collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
+			let repairBtn = collapseConfigItem("QuickFolders-RepairFolderBtn", "currentFolderBar.showRepairFolderButton");
+			if (repairBtn && repairBtn.getAttribute('collapsed')=='false')
+			  repairBtn.setAttribute('tooltiptext', this.getUIstring("qfFolderRepair","Repair Folder"));
 			
-			// add styling to current folder via a fake container
-			if (cF && cF.parentNode)
-				cF.parentNode.className = theme.cssToolbarClassName;
-      
-      // support larger fonts - should have a knock-on effect for min-height
-      let fontSize = prefs.ButtonFontSize;
-      fontSize = fontSize ? (fontSize+"px") : "11px"; // default size
-      toolbar2.style.fontSize = fontSize;
-      cF.style.fontSize = fontSize;
+			let toolbar2 = this.CurrentFolderBar;
+			if (toolbar2) {
+				let theme = prefs.CurrentTheme,
+						styleEngine = QuickFolders.Styles,
+						ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
+						background = prefs.getStringPref('currentFolderBar.background');
+				styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
 
-			let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
-          hideFolderNavigation = !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons"),
-          hideNavToggle = !prefs.getBoolPref("currentFolderBar.navigation.showToggle");
-			for (let n=0; n< toolbar2.childNodes.length; n++)
-			{
-				let node = toolbar2.childNodes[n],
-				    special = node.getAttribute ? node.getAttribute('special') : null;
-				if (special && special=="qfMsgFolderNavigation") {
-					node.collapsed = (hideMsgNavigation
-                           ||
-                          (node.id == 'quickFoldersNavToggle') && hideNavToggle);
+				// find (and move) button if necessary
+				let cF = this.CurrentFolderTab;
+				
+				// add styling to current folder via a fake container
+				if (cF && cF.parentNode)
+					cF.parentNode.className = theme.cssToolbarClassName;
+				
+				// support larger fonts - should have a knock-on effect for min-height
+				let fontSize = prefs.ButtonFontSize;
+				fontSize = fontSize ? (fontSize+"px") : "11px"; // default size
+				toolbar2.style.fontSize = fontSize;
+				cF.style.fontSize = fontSize;
+
+				let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
+						hideFolderNavigation = !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons"),
+						hideNavToggle = !prefs.getBoolPref("currentFolderBar.navigation.showToggle");
+				util.logDebugOptional("interface",
+          "Current Folder Bar: Collapsing optional Navigation Elements:" +
+				  "hideMsgNavigation=" + hideMsgNavigation + "\n" +
+				  "hideFolderNavigation=" + hideFolderNavigation + "\n" +
+				  "hideNavToggle=" + hideNavToggle + "\n"
+				);
+						
+				for (let n=0; n< toolbar2.childNodes.length; n++)
+				{
+					let node = toolbar2.childNodes[n],
+							special = node.getAttribute || '';
+					if (special && special=="qfMsgFolderNavigation") {
+						node.collapsed = (hideMsgNavigation
+														 ||
+														(node.id == 'quickFoldersNavToggle') && hideNavToggle);
+					}
+					else if (node.id && node.id.indexOf('QuickFolders-Navigate')==0) {
+						// hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
+						node.collapsed = hideFolderNavigation;
+					}
 				}
-        else if (node.id && node.id.indexOf('QuickFolders-Navigate')==0) {
-          // hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
-          node.collapsed = hideFolderNavigation;
-        }
-			}
-		}	
+			}	
+			
+		}
+    catch (ex) {
+      util.logException("updateCurrentFolderBar()", ex);
+    }
+		
 	} ,
 
 	updateCategories: function updateCategories() {
@@ -1680,7 +1700,7 @@ QuickFolders.Interface = {
 		// find out whether this is a special button and add specialFolderType
 		// for (optional) icon display
 		let specialFolderType="",
-		    sDisplayIcons = prefs.isShowToolbarIcons ? ' icon': '',
+		    sDisplayIcons = (prefs.isShowToolbarIcons) ? ' icon': '',
         // if the tab is colored, use the new palette setting "ColoredTab"
         // if it is uncolored use the old "InActiveTab"
 		    paletteClass = (tabColor!='0') ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); 
@@ -1708,12 +1728,8 @@ QuickFolders.Interface = {
 			specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
 		else if (folder.flags == FLAGS.MSG_FOLDER_FLAG_ARCHIVE)
 			specialFolderType="archives" + sDisplayIcons;
-		else {
-			if (sDisplayIcons.trim)
-				specialFolderType=sDisplayIcons.trim();
-			else
-				specialFolderType=sDisplayIcons;
-		}
+		else if (tabIcon) 
+			specialFolderType='icon'; // independant of option, customized icons are always shown
 
 		specialFolderType += paletteClass;
     let gotNew = folder.hasNewMessages;
@@ -2568,7 +2584,7 @@ QuickFolders.Interface = {
 
 	onRepairFolder: function onRepairFolder(element) {
 		let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder;
+        folder = element ? util.getPopupNode(element).folder : this.getCurrentTabMailFolder();
     util.logDebugOptional("interface", "QuickFolders.Interface.onRepairFolder()");
 		this.rebuildSummary(folder);
 	} ,
@@ -2866,7 +2882,7 @@ QuickFolders.Interface = {
 		menuitem.setAttribute("id","quickFoldersFolderRepair");
 		menuitem.setAttribute("tag","qfFolderRepair");
 		this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onRepairFolder(this);");
-		menuitem.setAttribute('label',this.getUIstring("qfFolderRepair","Repair Folder..."));
+		menuitem.setAttribute('label',this.getUIstring("qfFolderRepair","Repair Folder"));
 		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderRepairAccess","F"));
 		MailCommands.appendChild(menuitem);
 

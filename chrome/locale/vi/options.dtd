@@ -1,11 +1,13 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Tùy chọn QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Nhấp chuột phải để xem các phiên bản trước.">
 <!ENTITY qf.tab.general "Tổng quan">
 <!ENTITY qf.tab.advanced "Nâng cao">
 <!ENTITY qf.tab.layout "Sắp xếp các thẻ!">
 <!ENTITY qf.tab.quickhelp "Trợ giúp">
 <!ENTITY qf.tab.support "Hỗ trợ">
+<!ENTITY qf.tab.gopro "QuickFolders Pro">
 <!ENTITY qf.label.keyboard "Phím tắt">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Sử dụng phím tắt (Alt + 1 đến Alt + 9)">
 <!ENTITY qf.checkbox.showshortcutnumber "Hiển thị số phím tắt trên nhãn thư mục">
@@ -32,6 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Các phần tử Thanh Công Cụ chính">
 <!ENTITY qf.checkbox.showRecentTab "Hiển thị thẻ các thư mục gần đây nhất">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Nhấp chuột phải để chỉnh cấu hình">
+<!ENTITY qf.group.navigation "Message Navigation">
+<!ENTITY qf.label.goNextUnread "Go to next unread email:">
+<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
+<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
+<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
+<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "quickMove Button">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box.">
 <!ENTITY qf.checkbox.tabMenuIcon "Biểu tượng thanh công cụ">
@@ -40,10 +48,13 @@
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Thanh công cụ thư mục hiện tại">
 <!ENTITY qf.checkbox.currentFolder.show "Hiển thị Thanh Công Cụ">
+<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "…cả trong các cửa sổ Tin Nhắn Đơn">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Hiển thị thanh thư mục hiện tại trong cửa sổ khi bạn mở một Thư ở cửa sổ mới">
 <!ENTITY qf.checkbox.showRecentButton "Nút thư mục hiện tại">
 <!ENTITY qf.checkbox.showMessageNavigation "Nút Điều Hướng Tin Nhắn">
+<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
+<!ENTITY qf.checkbox.showMailFolderCommands "Mail Folder Commands">
 <!ENTITY qf.checkbox.showIconButtons "Customize Icon buttons">
 <!ENTITY qf.checkbox.showFilterButton "Nút 'Tạo Bộ Lọc'">
 <!ENTITY qf.checkbox.showFilterButton.tooltip "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders.">
@@ -72,12 +83,17 @@
 <!ENTITY qf.label.misc "Linh tinh">
 <!ENTITY qf.checkbox.displaylabel "Hiển thị 'QuickFolders' trên thanh công cụ">
 <!ENTITY qf.checkbox.displaylabel.tooltip "ấn chuột phải để thay đổi chữ của nhãn này">
+<!ENTITY qf.checkbox.hideCategoryBox "Collapse Categories">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizes the Categories menu to take up less space.">
 <!ENTITY qf.checkbox.enableTransitions "Cho phép chuyển tiếp CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Hiển thị chuyển tiếp mượt giữa các màu sắc của thẻ.">
 <!ENTITY qf.checkbox.debug "Chế độ sửa lỗi">
 <!ENTITY qf.checkbox.debug.tooltip "ấn chuột phải vào ô kiểm này cho các tùy chọn sửa lỗi nâng cao">
 <!ENTITY qf.label.initdelay "[mili giây] thời gian trễ ban đầu {1000 là chuẩn}:">
+<!ENTITY qf.copyfolders "Copy Tabs">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Sao chép chuỗi cấu hình vào bộ nhớ tạm">
+<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
 <!ENTITY qf.label.appearance "Appearance">
 <!ENTITY qf.label.themes "Themes:">
 <!ENTITY qf.themes.flatTabs.label "Phong cách phẳng">
@@ -87,14 +103,18 @@
 <!ENTITY qf.themes.flatButtons.label "Các nút công cụ">
 <!ENTITY qf.options.label.themeAuthor "Tác giả giao diện:">
 <!ENTITY qf.checkbox.showIcons "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)">
+<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "điểm ảnh">
 <!ENTITY qf.options.themes.showBorders.checkbox "Luôn hiển thị các đường biên">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Tùy chỉnh bán kính góc">
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Trên cùng:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Dưới cùng:">
 <!ENTITY qf.button.default "Defaults">
+<!ENTITY qf.label.Toolbar "Toolbar">
 <!ENTITY qf.label.ToolbarBackground "Nền thanh công cụ:">
 <!ENTITY qf.checkbox.transparent "hiệu ứng trong suốt">
+<!ENTITY qf.label.Toolbar.bottomLine "Bottom Line Width:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "The width of the line under tabs. Change its color with the Active Tab Color picker below.">
 <!ENTITY qf.label.colors "Colors">
 <!ENTITY qf.label.UncoloredTab "Uncolored Tab">
 <!ENTITY qf.label.UncoloredTab.tooltip "Look of (inactive) tabs without a specifically selected color">
@@ -133,7 +153,37 @@
 <!ENTITY qf.label.languagesLink "Thêm ngôn ngữ…">
 <!ENTITY qf.description.contactMe "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:">
 <!ENTITY qf.label.contactLink "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)…">
+<!ENTITY qf.label.insertLicense "Insert your personal License key here:">
+<!ENTITY qf.label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
+<!ENTITY qf.button.pasteLicense "paste">
+<!ENTITY qf.button.validateLicense "validate">
+<!ENTITY qf.label.licenseValid "Your license is valid until:">
+<!ENTITY qf.licenseValidation.passed "Thanks for registering QuickFolders Pro! All premium features are now unlocked.">
+<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
+<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
+<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Copy mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
+<!ENTITY qf.quickMove.path.format "Display Format:">
+<!ENTITY qf.pathFormat.folderName "Folder Name">
+<!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder Path">
+<!ENTITY qf.pathFormat.PathOnly "Folder Path">
+<!ENTITY qf.pathFormat.URI "Folder URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
+<!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
+<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
+<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
+<!ENTITY qf.checkbox.readingList "Reading List">
+<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
 <!ENTITY qf.label.donate "Quyên góp">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn… làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại.">
 <!ENTITY qf.checkbox.usePalette "Dùng bảng màu">
 <!ENTITY qf.options.theme.pastelColors "Phấn màu">

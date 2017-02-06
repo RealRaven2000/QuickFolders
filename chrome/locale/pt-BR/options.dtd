@@ -83,12 +83,15 @@
 <!ENTITY qf.label.misc "Diversos">
 <!ENTITY qf.checkbox.displaylabel "Mostrar o 'QuickFolders' na barra de ferramentas">
 <!ENTITY qf.checkbox.displaylabel.tooltip "clique com o botão direito para alterar o texto deste rótulo">
+<!ENTITY qf.checkbox.hideCategoryBox "Collapse Categories">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizes the Categories menu to take up less space.">
 <!ENTITY qf.checkbox.enableTransitions "Habilitar transições CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Exibir transições suaves entre diversos aspectos de cores de abas.">
 <!ENTITY qf.checkbox.debug "Modo Debug">
 <!ENTITY qf.checkbox.debug.tooltip "clique com o botão direito nesta caixa para opções avançadas de depuração">
 <!ENTITY qf.label.initdelay "[ms] atraso inicial {1000 é o padrão}:">
 <!ENTITY qf.copyfolders "Copiar abas">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copia a configuração de pastas para a área de transferência">
 <!ENTITY qf.pastefolders.tooltip "Excluir todos os QuickFolders e ler nova configuração da área de transferência">
 <!ENTITY qf.label.appearance "Aparência">
@@ -180,6 +183,7 @@
 <!ENTITY qf.checkbox.readingList "Lista de leitura">
 <!ENTITY qf.checkbox.readingList.tooltip "Uma lista de emails que devem ser lidos mais tarde. Arraste seus emails importantes para este botão.">
 <!ENTITY qf.label.donate "Doar">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Se você ver apenas um botão [Fechar] abaixo, a configuração de cores pode não funcionar. Para contornar esta situação, tente clicar com o botão direito em uma área vazia da barra do QuickFolders para selecionar Opções… Isto forçará a exibição do botão [Ok], que deve salvar as cores.">
 <!ENTITY qf.checkbox.usePalette "Usar palheta">
 <!ENTITY qf.options.theme.pastelColors "Cores pastel">

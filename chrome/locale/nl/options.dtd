@@ -83,6 +83,8 @@
 <!ENTITY qf.label.misc "Diversen">
 <!ENTITY qf.checkbox.displaylabel "Het label ‘QuickFolders’ in de werkbalk weergeven">
 <!ENTITY qf.checkbox.displaylabel.tooltip "rechtsklik om de tekst van dit label te wijzigen">
+<!ENTITY qf.checkbox.hideCategoryBox "Categorieën inklappen">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimaliseert het menu van categorieën om minder plaats in te nemen">
 <!ENTITY qf.checkbox.enableTransitions "CSS-transities inschakelen">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Toont vloeiende overgangen tussen de verschillende aspecten van de tabbladkleuren.">
 <!ENTITY qf.checkbox.debug "Foutopsporingsmodus">
@@ -181,6 +183,7 @@
 <!ENTITY qf.checkbox.readingList "Leeslijst">
 <!ENTITY qf.checkbox.readingList.tooltip "Een lijst met e-mailberichten die later gelezen moeten worden. Versleep uw belangrijke berichten naar deze knop.">
 <!ENTITY qf.label.donate "Doneren">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "NB: als u hieronder enkel een knop [Sluiten] ziet, zullen de kleurinstellingen wellicht niet werken - als oplossing kunt u rechts klikken op een leeg gebied in de QuickFolders-werkbalk om opties te selecteren… hierdoor zal de knop [OK] worden weergegeven, waardoor kleuren zouden moeten worden opgeslagen.">
 <!ENTITY qf.checkbox.usePalette "Palet gebruiken">
 <!ENTITY qf.options.theme.pastelColors "Pastelkleuren">

@@ -1,5 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opcions de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Clic amb el boto dret per a l'històric de versions.">
 <!ENTITY qf.tab.general "General">
 <!ENTITY qf.tab.advanced "Advanced">
@@ -33,6 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Elements de la barra d'Eines Principal">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botó dret per configurar">
+<!ENTITY qf.group.navigation "Message Navigation">
+<!ENTITY qf.label.goNextUnread "Go to next unread email:">
+<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
+<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
+<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
+<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "Botó quickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "El botó quickmove es pot utilitzar per moure correus a una carpeta determinada. Podeu recopilar correus de diferents carpetes. Quan hi tingueu els correus desitjats, entreu el nom de la carpeta destinació a la barra de cerca.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del Menú de la Barra d'eines">
@@ -41,10 +48,12 @@
 <!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Barra d'Eines de la Carpeta Actual">
 <!ENTITY qf.checkbox.currentFolder.show "Mostra la Barra d'Eines">
+<!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.show "… i també a la Finestra de Missatge">
 <!ENTITY qf.checkbox.singleMessage.currentFolder.tooltip "Mostra la barra d'eines de la carpeta actual a la finestra que s'obre quan trieu obrir un correu a una nova finestra">
 <!ENTITY qf.checkbox.showRecentButton "Botó de Carpetes Recents">
 <!ENTITY qf.checkbox.showMessageNavigation "Botons de Navegació de Missatges">
+<!ENTITY qf.checkbox.showFolderNavigation "Folder Navigation buttons">
 <!ENTITY qf.checkbox.showMailFolderCommands "Ordres de la Carpeta de Correu">
 <!ENTITY qf.checkbox.showIconButtons "Personalitza Icones dels botons">
 <!ENTITY qf.checkbox.showFilterButton "Botó 'Crea Filtres'">
@@ -74,12 +83,17 @@
 <!ENTITY qf.label.misc "Miscel·lània">
 <!ENTITY qf.checkbox.displaylabel "Mostra 'QuickFolders' a la barra d'eines">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Feu clic amb el botó dret per canviar el text d'aquesta etiqueta">
+<!ENTITY qf.checkbox.hideCategoryBox "Collapse Categories">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizes the Categories menu to take up less space.">
 <!ENTITY qf.checkbox.enableTransitions "Activa transicions CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Mostra transicions suaus entre diferents coloracions de les pestanyes.">
 <!ENTITY qf.checkbox.debug "Mode de Depuració">
 <!ENTITY qf.checkbox.debug.tooltip "Feu clic amb el botó dret a aquesta casella per a les opcions avançades de depuració">
 <!ENTITY qf.label.initdelay "[ms] retard a l'inici {1000 es l'estàndard}:">
+<!ENTITY qf.copyfolders "Copy Tabs">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copia la cadena de configuració de les carpetes al portapapers">
+<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
 <!ENTITY qf.label.appearance "Aparença">
 <!ENTITY qf.label.themes "Temes:">
 <!ENTITY qf.themes.flatTabs.label "Estil Pla">
@@ -89,14 +103,18 @@
 <!ENTITY qf.themes.flatButtons.label "Botons de la Barra d'Eines">
 <!ENTITY qf.options.label.themeAuthor "Autor del Tema:">
 <!ENTITY qf.checkbox.showIcons "Mostrar Icones (Safata d'entrada, Enviats, Brossa, Escombraries, Esborranys, Arxivat, Plantilles)">
+<!ENTITY qf.label.buttonFontSizeNumeric "Button font size (0 for default):">
 <!ENTITY qf.label.pixels "píxels">
 <!ENTITY qf.options.themes.showBorders.checkbox "Mostra Sempre els Costats">
 <!ENTITY qf.options.themes.customCornerRadius.checkbox "Radi de les cantonades Personalitzat">
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "A dalt:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "A baix:">
 <!ENTITY qf.button.default "Valors per defecte">
+<!ENTITY qf.label.Toolbar "Toolbar">
 <!ENTITY qf.label.ToolbarBackground "Fons de la barra d'eines">
 <!ENTITY qf.checkbox.transparent "transparent">
+<!ENTITY qf.label.Toolbar.bottomLine "Bottom Line Width:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "The width of the line under tabs. Change its color with the Active Tab Color picker below.">
 <!ENTITY qf.label.colors "Colors">
 <!ENTITY qf.label.UncoloredTab "Pestanya sense color assignat.">
 <!ENTITY qf.label.UncoloredTab.tooltip "Vista de Pestanyes (inactives) sense color seleccionat">
@@ -143,7 +161,29 @@
 <!ENTITY qf.licenseValidation.passed "Gràcies per registrar QuickFolders Pro! S'han desbloquejat totes les característiques Premium.">
 <!ENTITY qf.licenseValidation.failed "La clau de llicència que heu entrat no és vàlida. Comproveu el vostre email de FastSpring per obtenir més instruccions. Si continueu tenint problemes, contacteu amb mi des de la pestanya Suport.">
 <!ENTITY qf.licenseValidation.expired "La clau de llicència que heu entrat ja ha expirat. Polseu el següent botó per renovar-la.">
+<!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
+<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Copy mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
+<!ENTITY qf.quickMove.path.format "Display Format:">
+<!ENTITY qf.pathFormat.folderName "Folder Name">
+<!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder Path">
+<!ENTITY qf.pathFormat.PathOnly "Folder Path">
+<!ENTITY qf.pathFormat.URI "Folder URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
+<!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
+<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
+<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
+<!ENTITY qf.checkbox.readingList "Reading List">
+<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
 <!ENTITY qf.label.donate "Fer una Donació">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors.">
 <!ENTITY qf.checkbox.usePalette "Utilitza la paleta">
 <!ENTITY qf.options.theme.pastelColors "Colors Pastel">

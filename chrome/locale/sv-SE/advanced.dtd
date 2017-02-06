@@ -1,6 +1,13 @@
 <!ENTITY windowTitle "Avancerade egenskaper">
 <!ENTITY btnCategory "Kategorier">
 <!ENTITY btnCategory.tooltip "Definiera flikkategorier">
+<!ENTITY grpComposer "Default Email Fields">
+<!ENTITY fromAddress "From:">
+<!ENTITY fromAddress.tooltip "Default Identity when composing emails">
+<!ENTITY defaultAccountAddress.value "Account Default Identity">
+<!ENTITY toAddress "To:">
+<!ENTITY toAddress.tooltip "Default To Address when composing new mails">
+<!ENTITY grpTabBehavior "Advanced Tab Behavior">
 <!ENTITY chkIgnoreUnread "Dölj information om olästa meddelanden">
 <!ENTITY chkIgnoreUnread.tooltip "Visa aldrig text i fetstil eller antalet olästa meddelanden även om mappen innehåller sådana.">
 <!ENTITY chkIgnoreCounts "Dölj antalet olästa meddelanden">

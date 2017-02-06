@@ -83,6 +83,8 @@
 <!ENTITY qf.label.misc "Разное">
 <!ENTITY qf.checkbox.displaylabel "Показывать текст в панели инструментов">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Нажмите правой кнопкой мышки для изменения этого текста">
+<!ENTITY qf.checkbox.hideCategoryBox "Свернуть категории">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Свернуть меню категорий, чтобы оно занимало меньше места">
 <!ENTITY qf.checkbox.enableTransitions "Разрешить CSS-трансформации">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Плавные переходы между цветами закладок.">
 <!ENTITY qf.checkbox.debug "Режим отладки">
@@ -181,6 +183,7 @@
 <!ENTITY qf.checkbox.readingList "Список для чтения">
 <!ENTITY qf.checkbox.readingList.tooltip "Список сообщений для прочтения позже. Перетаскивайте важные сообщения на эту кнопку.">
 <!ENTITY qf.label.donate "Пожертвовать">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Если вы видите только кнопку [Close], возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку [OK] и сохранить цветовые настройки.">
 <!ENTITY qf.checkbox.usePalette "Показ палитры">
 <!ENTITY qf.options.theme.pastelColors "Пастельные цвета">

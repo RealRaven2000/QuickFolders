@@ -83,12 +83,15 @@
 <!ENTITY qf.label.misc "Varie">
 <!ENTITY qf.checkbox.displaylabel "Visualizza l'etichetta 'QuickFolders' sulla sua barra degli strumenti">
 <!ENTITY qf.checkbox.displaylabel.tooltip "Per modificare il testo di questa etichetta fare clic col pulsante destro del mouse">
+<!ENTITY qf.checkbox.hideCategoryBox "Contrazione Categorie">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizza il menu delle Categorie per occupare meno spazio">
 <!ENTITY qf.checkbox.enableTransitions "Abilita le transizioni dei CSS">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Mostra transizioni regolari tra i molti aspetti di colorazione delle schede">
 <!ENTITY qf.checkbox.debug "Modalità di debug">
 <!ENTITY qf.checkbox.debug.tooltip "Per accedere ad opzioni avanzate di debug fare clic col pulsante destro del mouse su questa casella">
 <!ENTITY qf.label.initdelay "[ms] di ritardo iniziale {1000 è lo standard}:">
 <!ENTITY qf.copyfolders "Copia schede">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copia negli appunti la configurazione delle schede di QuickFolders">
 <!ENTITY qf.pastefolders.tooltip "Cancella tutte le schede di QF e recupera la nuova configurazione dagli Appunti">
 <!ENTITY qf.label.appearance "Aspetto">
@@ -136,7 +139,7 @@
 <!ENTITY qf.description.dragToAdd "Trascinare le cartelle di posta in un'area vuota della nuova barra degli strumenti per creare un nuovo 'QuickFolder' (di seguito anche abbreviato in 'QF') che funziona come una scorciatoia/alias. Trascinare dei messaggi in un QF per spostarli (o copiarli) nella cartella corrispondente. Fare clic su di un QF per saltare alla cartella di posta.">
 <!ENTITY qf.description.dragToPosition "Trascinare lateralmente e rilasciare i QF per modificare le loro posizioni. Facendo clic col pulsante destro del mouse su di un QF compare un menu contestuale: selezionandone un elemento ci si può spostare direttamente nelle sottocartelle. Inoltre: 'Rinomina scheda' = cambia l'etichetta del QF. 'Rimuovi scheda' = cancella il QF ma non la cartella di posta.">
 <!ENTITY qf.description.dragToPopup "Per spostare dei messaggi all'interno delle sottocartelle, trascinarli sul menu a pop-up di un QF.">
-<!ENTITY qf.description.changeCategory "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posto a sinistra delle schede.">
+<!ENTITY qf.description.changeCategory "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posizionato a sinistra delle schede.">
 <!ENTITY qf.description.rightClickOptions "Fare clic col pulsante destro del mouse in un'area vuota per aprire il menu Opzioni il che consente di scegliere lo stile nativo (più piccolo) o quello flat (più nitido; supporta l'indicatore di trascinamento).">
 <!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un elevato numero di cartelle, si può provare l'estensione Nostalgy per disporre di un'organizzazione dei messaggi guidata da tastiera.">
 <!ENTITY qf.description.experimentalItems "I seguenti elementi sono sperimentali. È auspicabile che funzionino nella prossima versione!">
@@ -180,6 +183,7 @@
 <!ENTITY qf.checkbox.readingList "Da leggere">
 <!ENTITY qf.checkbox.readingList.tooltip "Elenco di messaggi di posta elettronica da leggere successivamente. Trascinare i propri messaggi di posta elettronica importanti su questo pulsante.">
 <!ENTITY qf.label.donate "Dona">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante destro del mouse in un'area vuota della barra 'QuickFolders' per selezionare 'Opzioni di QuickFolders…' Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori.">
 <!ENTITY qf.checkbox.usePalette "Usa tavolozza">
 <!ENTITY qf.options.theme.pastelColors "Colori pastello">

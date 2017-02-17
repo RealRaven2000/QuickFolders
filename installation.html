@@ -74,8 +74,6 @@
 <p><a href="https://addons.mozilla.org/thunderbird/downloads/latest/3254/addon-3254-latest.xpi">Download current Version</a> of Quickfolders</p>
 
 
-<p><a href="https://addons.mozilla.org/thunderbird/addons/versions/3254">Download latest Releases</a> of Quickfolders</p>
-
 <p>Please note that the review process is done by volunteers at Mozilla,
 so it can take weeks until the latest version is actually visible on the the
 <a href:"https://addons.mozilla.org/thunderbird/addon/3254">main Mozilla Addons page</a>.
@@ -84,12 +82,24 @@ On the Mozilla Addons Page, you can always scroll down and look for the
 <a href="https://addons.mozilla.org/thunderbird/addon/quickfolders-tabbed-folders/versions/">View all versions</a> link to find the latest version :)
 </p>
 
+<h3 class="page-header">Source Code</h2>
 
-<h3>Old Versions and Prereleases of QuickFolders</h3>
+<p id="src-intro">
+The QuickFolders source code can be accessed through one of the following ways:
+</p>
 
-<p>Older versions and preReleases can be downloaded here, in order to work around open bugs; I usually fix bugs fairly quickly but you might find some of these buggy - you have been warned:</p>
+<ol id="get-the-src" class="get-src-cvs">
+	<li>View the source at <a href="https://github.com/RealRaven2000/QuickFolders/">GitHub</a></li>
+	<li>Use Git or checkout with SVN using the web URL</li>
+</ol>
 
-<a href="http://downloads.mozdev.org/quickfolders/" target="_blank">http://downloads.mozdev.org/quickfolders/</a>
+<p>If you build your own version, make sure to create a zip archive of all files and folders including install.rdf. 
+   Rename the file with the extension xpi (instead of zip). Pull the extension into your Application's addon Manager.
+	 To avoid confusion, it is a good idea to change the following entry in install.rdf every time you build a new version:
+	 </p>
+<p>em:version="4.7pre10"</p>
+<p>I typically increase the prerelease number (after pre) every time I build, in this way I know which other changes are 
+   already included.</p>
 
 <hr />
 

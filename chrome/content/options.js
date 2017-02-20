@@ -188,6 +188,7 @@ QuickFolders.Options = {
 	load: function load() {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
+					QI = QuickFolders.Interface,
 					licenser = util.Licenser;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
@@ -224,7 +225,8 @@ QuickFolders.Options = {
     // Error: TypeError: 'getElementById' called on an object that does not implement interface Document.
 		getElement("qf-options-header-description").setAttribute("value", version);
 		let tabbox = getElement("QuickFolders-Options-Tabbox");
-        
+		
+		getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder")
 		
     /*****  License  *****/
     // licensing tab - we also need a "renew license"  label!
@@ -294,7 +296,7 @@ QuickFolders.Options = {
     if (licenser.isValidated)
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog...');
-          QuickFolders.Interface.removeAnimations('quickfolders-options.css');
+          QI.removeAnimations('quickfolders-options.css');
         }
       );
     
@@ -1000,6 +1002,8 @@ QuickFolders.Options = {
 	
 	// doing what instantApply really should provide...
 	toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
+		const util = QuickFolders.Util,
+		      QI = util.getMail3PaneWindow().QuickFolders.Interface;
 		let prefString = cb.getAttribute("preference"),
 		    pref = document.getElementById(prefString);
 		
@@ -1007,7 +1011,12 @@ QuickFolders.Options = {
 			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
 		if (noUpdate)
 			return true;
-		return QuickFolders.Interface.updateMainWindow(false); // force full updated
+		switch (pref) {
+			case 'extensions.quickfolders.collapseCategories':
+			  QI.updateCategoryLayout();
+			  return;
+		}
+		return QI.updateMainWindow(false); // force full updated
 	},
 	
 	toggleColorTranslucent: function toggleColorTranslucent(cb, pickerId, label, userStyle) {
@@ -1120,8 +1129,9 @@ QuickFolders.Options = {
         check = {value: false},
         result = prompts.prompt(window, title, text, input, null, check); 
     if (!result) return;
-    
-    let sURL="mailto:" + mailto + "?subject=[QuickFolders]" + encodeURI(" " + input.value), // urlencode
+		
+    let subjectline = "[QuickFolders] " + util.Version + " " + input.value,
+		    sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline), // urlencode
 		    MessageComposer=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService),
 		    // make the URI
 		    ioService = Components.classes["@mozilla.org/network/io-service;1"]

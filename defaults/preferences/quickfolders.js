@@ -61,6 +61,7 @@ pref("extensions.quickfolders.currentFolderBar.showRecentButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFilterButton", true);
 pref("extensions.quickfolders.currentFolderBar.showFolderMenuButton", false);
 pref("extensions.quickfolders.currentFolderBar.showIconButtons", true);
+pref("extensions.quickfolders.currentFolderBar.showRepairFolderButton", false);
 pref("extensions.quickfolders.currentFolderBar.navigation.showButtons", true);
 pref("extensions.quickfolders.currentFolderBar.navigation.showToggle", true);
 pref("extensions.quickfolders.currentFolderBar.folderNavigation.showButtons", false);

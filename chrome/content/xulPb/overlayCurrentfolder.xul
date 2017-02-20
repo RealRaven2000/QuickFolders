@@ -80,6 +80,12 @@
 					             onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
 					             oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
 					             collapsed="true"/>
+				<toolbarbutton id="QuickFolders-RepairFolderBtn"
+											 class="icon"
+											 tooltiptext="Repair Folder..."
+											 oncommand="QuickFolders.Interface.onRepairFolder(null);"
+											 tag="qfIconRepairFolders"
+											 collapsed="true"/>
 				<toolbarbutton id="QuickFolders-currentFolderFilterActive"
 					             class="icon"
 					             tooltiptext="&qf.tooltip.filterStart;"

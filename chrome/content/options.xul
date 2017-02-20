@@ -263,6 +263,7 @@
 						<preference id="QuickFolders-Preferences-ShowRecentButton" name="extensions.quickfolders.currentFolderBar.showRecentButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowFilterButton" name="extensions.quickfolders.currentFolderBar.showFilterButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowFolderMenuButton" name="extensions.quickfolders.currentFolderBar.showFolderMenuButton" type="bool" />
+						<preference id="QuickFolders-Preferences-ShowRepairFolderButton" name="extensions.quickfolders.currentFolderBar.showRepairFolderButton" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowMsgNavButton" name="extensions.quickfolders.currentFolderBar.navigation.showButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowFolderNavButton" name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool" />
@@ -280,6 +281,7 @@
 						<preference id="QuickFolders-Preferences-CommandMenu-Help" name="extensions.quickfolders.commandMenu.help" type="bool" />
 						<preference id="QuickFolders-Preferences-CommandMenu-Options" name="extensions.quickfolders.commandMenu.options" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" />
+						<preference id="QuickFolders-Preferences-CollapseCategory" name="extensions.quickfolders.collapseCategories" type="bool" />
 						<preference id="QuickFolders-Preferences-Transitions" name="extensions.quickfolders.style.transitions" type="bool" />
 					</preferences>
 
@@ -327,6 +329,11 @@
 							<checkbox id="chkShowFolderMenuButton"
 												label="&qf.checkbox.showMailFolderCommands;"
 												preference="QuickFolders-Preferences-ShowFolderMenuButton"
+												instantApply="true"
+												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowRepairFolderButton"
+												label="Repair Folder"
+												preference="QuickFolders-Preferences-ShowRepairFolderButton"
 												instantApply="true"
 												oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 							<checkbox id="chkShowIconButtons"
@@ -433,6 +440,11 @@
 											preference="QuickFolders-Preferences-ShowQuickFoldersLabel"
 											instantApply="true"
 											oncontextmenu="QuickFolders.Options.showAboutConfig(this,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
+											oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
+						<checkbox label="&qf.checkbox.hideCategoryBox;"
+											tooltiptext="&qf.checkbox.hideCategoryBox.tooltip;"
+											preference="QuickFolders-Preferences-CollapseCategory"
+											instantApply="true"
 											oncommand="QuickFolders.Options.toggleBoolPreference(this);" />
 						<checkbox label="&qf.checkbox.enableTransitions;"
 											tooltiptext="&qf.checkbox.enableTransitions.tooltip;"

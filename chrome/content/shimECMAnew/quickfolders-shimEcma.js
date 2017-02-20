@@ -8,7 +8,11 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
           util = QuickFolders.Util,
 	        prefs = QuickFolders.Preferences,
 					isDebug = prefs.isDebugOption('getOrCreateFolder');
-		if (isDebug) logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
+    function logDebug(text) {
+      if (isDebug) 
+        util.logDebugOptional('getOrCreateFolder', text);
+    }					
+		logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
     // In theory, we should query our map first to see if we have the folder.
     // However, the way you create a new folder anyways presently requires
     // hitting up the RDF service in the first place, so there's no point trying
@@ -18,7 +22,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
     // a promise rejection.
         folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
 
-		if (isDebug) logDebug('folder = ' + folder);		
+		logDebug('folder = ' + folder);		
     // Now try to ask the server if it has the folder. This will force folder
     // discovery, so if the folder exists, its properties will be properly
     // fleshed out if it didn't exist. This also catches folders on servers
@@ -26,7 +30,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
     try {
       folder = folder.server.getMsgFolderFromURI(folder, aUrl);
     } catch (e) {
-			if (isDebug) logException('getMsgFolderFromURI ', ex);		
+			util.logException('getMsgFolderFromURI ', ex);		
       throw Cr.NS_ERROR_INVALID_ARG;
     }
 
@@ -34,7 +38,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
     // ensuring creation in this manner is to be able to query or manipulate
     // messages in the folder, and root folders don't have that property.
     if (folder.rootFolder == folder) {
-			if (isDebug) logDebug('root folder, not allowed');		
+			logDebug('root folder, not allowed');		
       throw Cr.NS_ERROR_INVALID_ARG;
 		}
 
@@ -51,7 +55,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
       let isAsync = folder.server.protocolInfo.foldersCreatedAsync,
           needToCreate = isAsync || !folder.filePath.exists();
 					
-			if (isDebug) logDebug('no folder parent. needToCreate = ' + needToCreate + ' async = ' + isAsync);		
+			logDebug('no folder parent. needToCreate = ' + needToCreate + ' async = ' + isAsync);		
 					
       if (needToCreate) {
 				// throws PromiseUtils not defined
@@ -70,7 +74,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
 
         // If any error happens, it will throw--causing the outer promise to
         // reject.
-				if (isDebug) logDebug('folder.createStorageIfMissing()...');		
+				logDebug('folder.createStorageIfMissing()...');		
         folder.createStorageIfMissing(isAsync ? listener : null);
         if (!isAsync || !needToCreate)
           deferred.resolve();
@@ -79,7 +83,7 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
     }
 
     if (folder.parent == null || folder.rootFolder == folder) {
-			if (isDebug) logDebug('unexpected: no folder.parent or folder is its own root');		
+			logDebug('unexpected: no folder.parent or folder is its own root');		
       throw Cr.NS_ERROR_UNEXPECTED;
     }
 

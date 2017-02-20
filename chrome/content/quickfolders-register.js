@@ -6,6 +6,7 @@
 	For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
+Components.utils.import('resource://gre/modules/Services.jsm');	
 
 QuickFolders.Crypto = {
   get key_type() {
@@ -391,7 +392,8 @@ QuickFolders.Licenser = {
     if (LicenseKey.indexOf('QFD')==0) {
        if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
          let txt = util.getBundleString("qf.prompt.switchDomainLicense", "Switch to Domain License?");
-         if (confirm(txt)) {
+				  
+         if (Services.prompt.confirm(null, "QuickFolders", txt)) {
            QuickFolders.Crypto.key_type=1; // switch to volume license
          }
        }

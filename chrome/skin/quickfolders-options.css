@@ -92,6 +92,7 @@
 }
 #chkShowIconButtons .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture.png"); -moz-image-region: rect(0px, 16px, 16px, 0px); }
 #chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/folderCommand.png"); }
+#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/wrench.png"); }
 #chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/Filter.png"); }
 #chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png"); }
 #chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon { 

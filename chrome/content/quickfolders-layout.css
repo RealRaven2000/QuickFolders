@@ -283,7 +283,12 @@ menupopup.widerMenu menucaption {
 	padding: 0;
 }
 
-#QuickFolders-Category-Selection, #QuickFolders-Category-Selection .menulist-label {
+#QuickFolders-Category-Selection.autocollapse:hover {
+	max-width: 60em; /* try to force transition */
+}
+
+#QuickFolders-Category-Selection.autocollapse, 
+#QuickFolders-Category-Selection.autocollapse:hover {
 	transition: max-width 0.5s, width 0.7s;
 }
 

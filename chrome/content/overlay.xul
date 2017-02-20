@@ -129,7 +129,7 @@
 				<!-- created in Interface code -->
 			</menupopup>
 			<menupopup id="QuickFolders-FindPopup" 
-			           class="menu-iconic" 
+			           class="menu-iconic widerMenu" 
 					   position="after_start"
 					   oncommand="QuickFolders.Interface.selectFound(this, event);"
 					   onkeypress="QuickFolders.Interface.foundInput(this, event);"
@@ -163,7 +163,7 @@
 		</popupset>	
 		
 		<popupset id="QuickFolders-ReadingListPopupSet">
-			<menupopup id="QuickFolders-readingListMenu">
+			<menupopup id="QuickFolders-readingListMenu" class="widerMenu">
 				<menuitem id="QuickFolders-readingList-reset"
 				          label="&quickfolders.readingList.clear;"
 									class="cmd"

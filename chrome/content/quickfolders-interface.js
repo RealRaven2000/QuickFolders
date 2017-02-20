@@ -573,6 +573,27 @@ QuickFolders.Interface = {
 		button.checked = !button.checked;
 	} ,
 
+	updateCategoryLayout: function updateCategoryLayout() {
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util;
+		let cat = this.CategoryMenu,
+		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+		if (prefs.isDebugOption("categories")) debugger;
+		if (cat) {
+			cat.style.display =
+		    (!showToolIcon && QuickFolders.Model.Categories.length == 0)
+		    ? 'none' : '-moz-inline-box';
+			if (prefs.getBoolPref('collapseCategories')) {
+				if (cat.className.indexOf('autocollapse')==-1)
+					cat.className += ' autocollapse';
+			}
+			else {
+				if (cat.className.indexOf('autocollapse')>=0)
+					cat.className = cat.className.replace ('autocollapse', '');
+			}
+	  }
+	} ,
+	
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
 	updateFolders: function updateFolders(rebuildCategories, minimalUpdate) {
@@ -591,21 +612,7 @@ QuickFolders.Interface = {
     if (this.QuickMoveButton) 
       this.QuickMoveButton.collapsed = !prefs.isShowQuickMove;
 		
-		let cat = this.CategoryMenu;
-		if (cat) {
-			cat.style.display =
-		    (!showToolIcon && QuickFolders.Model.Categories.length == 0)
-		    ? 'none' : '-moz-inline-box';
-			if (prefs.getBoolPref('collapseCategories')) {
-				if (cat.className.indexOf('autocollapse')==-1)
-					cat.className += ' autocollapse';
-			}
-			else {
-				if (cat.className.indexOf('autocollapse')>=0)
-					cat.className.replace ('autocollapse', '');
-			}
-				
-	  }
+		this.updateCategoryLayout();
 
 		if (rebuildCategories || prefs.isMinimalUpdateDisabled)
 			minimalUpdate = false;

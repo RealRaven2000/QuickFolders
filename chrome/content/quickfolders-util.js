@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.6.1",
+	HARDCODED_CURRENTVERSION : "4.7",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -1563,37 +1563,9 @@ QuickFolders.Util = {
 		}
 		else {
 		  // jcranmer's method. Just check for the parent, and we are done.
-			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService);
-		  let folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
+			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
+		      folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
 			return folder.parent != null;
-			
-		  /*** legacy unused code [[[ ***/
-		  let oldPath = msgFolder.filePath.path.toString();
-			//  see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
-			if (typeof oldPath.endsWith != 'function')
-				QuickFolders.Util.polyFillEndsWidth();
-			QuickFolders.Util.logDebug('doesMailFolderExist() 1. path does not exist [' + oldPath + ']');
-			let testPath = '';
-			if (oldPath.endsWith('.sbd')) {
-			  testPath = oldPath.substr(0, oldPath.length-4);
-			}
-			else {
-			  testPath = oldPath + ".sbd";
-			}
-			let localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			localFile.initWithPath(testPath);
-			if (localFile.exists())
-				return true;
-			QuickFolders.Util.logDebug('doesMailFolderExist() 2. path does not exist [' + testPath + ']');
-			if (testPath.endsWith('.sbd'))
-			  testPath = oldPath + ".msf";
-			else
-			  testPath = testPath + ".msf";
-			localFile.initWithPath(testPath);
-			if (localFile.exists())
-				return true;
-			QuickFolders.Util.logDebug('doesMailFolderExist() 3. path does not exist [' + testPath + '] - returning false');
-		  /*** ]]] legacy unused code ***/
 		}
 		return false;
 	},
@@ -1605,8 +1577,7 @@ QuickFolders.Util = {
 					configurable: false,
 					writable: false,
 					value: function (searchString, position) {
-							position = position || this.length;
-							position = position - searchString.length;
+							position = (position || this.length) - searchString.length;
 							let lastIndex = this.lastIndexOf(searchString);
 							return lastIndex !== -1 && lastIndex === position;
 					}

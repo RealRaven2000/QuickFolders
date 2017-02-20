@@ -336,16 +336,22 @@ END LICENSE BLOCK */
 		## Ensured Compatibility with Fossamail 26.
 		## New function for opening the folder of current mail
 		
-	4.7 QuickFolders Pro - WIP
+	4.7 QuickFolders Pro - 20/02/2017
 	  ## [Bug 26313] Dragging quickfolder tabs (to re-order) broken in Tb 50.0b3
-	  ## Added (hidden) autocollapse function for Categories dropdown
+	  ## Added autocollapse function for Categories dropdown (Options > Advanced)
+		## [Bug 25764] Add Configurable Button to Repair the Current Folder
+		## [Bug 26268] Make popup menus for quickMove path wider
+		## Completed Simplified Chinese Locale - thanks to YFdyh000 and Loviny at Babelzilla.org
+		## [Bug 26321] 'Unreachable code after return statement'
+		## [Bug 26323] Remove unnecessary padding on left of QuickFolders tab labels
+		## Added Version number to subject line in Options / Support Tab / Contact Me
+		## [Bug 26336] Confirmation to "Switch to Domain license?" is hidden behind options dialog.
 	
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
 		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
-		## [Bug 26283] Allow using Tab alias name for quickmove / create subfolder
 	
 	
 ###VERSION###
@@ -2297,7 +2303,7 @@ QuickFolders.FolderListener = {
 	},
 
 	// parent, item, viewString
-	OnItemPropertyChanged: function fldListen_OnItemPropertyChanged(property, oldValue, newValue) {
+	OnItemPropertyChanged: function fldListen_OnItemPropertyChanged(item, property, oldValue, newValue) {
 		//var x=property.toString();
 	},
 

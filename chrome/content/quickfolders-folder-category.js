@@ -107,6 +107,7 @@ QuickFolders.FolderCategory = {
 
 	// select Category into model
 	setSelectedCategory: function setSelectedCategory() {
+		const util = QuickFolders.Util;
 		try {
 			let listBox = this.$('existing-categories'),
 			    category = '',
@@ -121,11 +122,11 @@ QuickFolders.FolderCategory = {
 			   i++;
 			   sel=listBox.getSelectedItem(i);
 			}
-			QuickFolders.Util.logDebugOptional("categories","set Selected Category for " + this.folder.prettyName + ": " + category + "...");
+			util.logDebugOptional("categories","set Selected Category for " + this.folder.prettyName + ": " + category + "...");
 
 			QuickFolders.Model.setFolderCategory(this.folder.URI, category);
 		}
-		catch(e) {QuickFolders.Util.logDebug(e); }
+		catch(e) {util.logDebug(e); }
 
 		this.window.close();
 	},

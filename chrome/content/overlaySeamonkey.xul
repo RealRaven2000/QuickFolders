@@ -139,7 +139,7 @@
 		</popupset>
 		
 		<popupset id="QuickFolders-QuickMovePopupSet">
-			<menupopup id="QuickFolders-quickMoveMenu">
+			<menupopup id="QuickFolders-quickMoveMenu" class="widerMenu">
 				<menuitem id="QuickFolders-quickMove-suspend"
 				          label="&quickfolders.quickMove.menu.suspend;"
 				          oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 

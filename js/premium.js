@@ -23,24 +23,37 @@
 	document.addEventListener("DOMContentLoaded", function(event) { 
 		var user = getQueryVariable("user");
 		if (typeof user!='undefined') {
-			if (user=='pro') {
-				removeClassItems('donateButton');
-				removeClassItems('QuickFoldersFreeUser');
+			// propagate user type to all internal links
+			if (user) {
 				var navMenu = document.getElementsByClassName('navigation-list');
 				if (navMenu.length) {
 					var links = navMenu[0].children;
 					for (var i=0; i<links.length; i++) {
 						var href = links[i].getAttribute("href");
 						if (href && href.indexOf("user="==-1))
-							links[i].setAttribute("href", href + "?user=pro");
+							links[i].setAttribute("href", href + "?user=" + user);
 					}
-					
 				}
-				
 			}
-			else
-				removeClassItems('QuickFoldersProUser');
+			
+			switch (user) {
+				case 'pro':
+					removeClassItems('donateButton');
+					removeClassItems('QuickFoldersFreeUser');
+				  removeClassItems('QuickFoldersProRenew');
+					break;
+				case 'proRenew':
+					removeClassItems('donateButton');
+					removeClassItems('QuickFoldersFreeUser');
+				  break;
+				default:
+				  removeClassItems('QuickFoldersProRenew');
+				  removeClassItems('QuickFoldersProUser');
+			}
+			
 		}
 	});
+	
+	
 
 	

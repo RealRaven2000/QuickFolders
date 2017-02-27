@@ -173,24 +173,47 @@
 					</ul>
 			</li>
 			-->
+			<style>
+				#bargainStar {
+					position: relative;
+					top: -100px;
+					left: -100px;
+					z-index:1000;
+				}
+			</style>
 			
       <a name="4.7.1"></a>
       <a name="4.7"></a>
 			<li>
 				<h4>
-					<a name="4.6.1" href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.7 - 20/02/2017</a>
+					<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.7">Version 4.7 - 20/02/2017</a>
 					<a href="donate.html" class="donateButton"><img src="images/btn_donate_LG.gif" alt="Support QuickFolders" class="inline-donate"></a>
 				</h4>
+				<p class="QuickFoldersProRenew">QuickFolder Pro users: If your license is expired there will be renewal links and buttons
+					in the application. Using them you can buy a new license at a reduced price.</p>
+					
+				<table class="QuickFoldersProRenew bargain"> 
+					<tr>
+						<td style="vertical-align:top;">HELD OVER UNTIL MARCH 7th - 20% cheaper renewal!
+						    QuickFolder Pro users: If your license is expired there will be renewal links and buttons
+					      in the application. Using them you can buy a new license at a reduced price.
+								In this period it is further reduced by 20%.<br>
+								Support the future development of QuickFolders and save money while enjoying 
+								unlimited <a href="premium.html">Premium Features</a>. 
+								The Renewal can only be bought by clicking the [renew license] button from 
+								within QuickFolders. For Renewal of a Domain license please contact
+								me directly.
+								</td>
+						<td><img src="images/menus/QuickFoldersProMenu.png" 
+								alt="quickfolders pro" style="width:180px; height:auto; margin-left:20px;"/>
+						</td>
+						<td style="vertical-align:top; max-width:0">
+								<img id="bargainStar" src="images/bargain-20.png" />
+						</td>
+					</tr>
+				</table>						
 
-				<style>
-				  #bargainStar {
-					  position: relative;
-						top: -100px;
-						left: -100px;
-						z-index:1000;
-					}
-				</style>
-				
+				<!-- use bargain class to style star on corner -->
 				<table class="QuickFoldersFreeUser bargain"> 
 					<tr>
 						<td style="vertical-align:top;">ONLY UNTIL END OF FEBRUARY 2017 -  get QuickFolders Pro 4.7 at a reduced price! 
@@ -216,7 +239,7 @@
 							This was caused by falsely renaming a function to onDragEnd because of impending changes 
 							in the Mozilla main code base; unfortunately the convenience wrapper 
 							<a href="https://dxr.mozilla.org/comm-central/source/suite/mailnews/nsDragAndDrop.js#293">nsDragAndDrop</a>
-							in Thunderbird's comm-cnetrla database doesa not yet follow the new naming conventions and 
+							in Thunderbird's comm-central database does not yet follow the new naming conventions and 
 							<a href="https://dxr.mozilla.org/comm-central/source/suite/mailnews/nsDragAndDrop.js#495">checks for 
 							the existence</a> of a function onDragExit in the drag observer.
 					</li>
@@ -264,7 +287,7 @@
 					<a name="4.6" href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.6">Version 4.6 - 26/11/2016</a>
 					<a href="donate.html" class="donateButton"><img src="images/btn_donate_LG.gif" alt="Support QuickFolders" class="inline-donate"></a>
 				</h4>
-					<p class="QuickFoldersProUser">QuickFolder Pro users: If your license is expired there will be renewal links and buttons
+					<p class="QuickFoldersProRenew">QuickFolder Pro users: If your license is expired there will be renewal links and buttons
 						in the application. Using them you can buy a new license at a reduced price.</p>
 					<table class="QuickFoldersFreeUser"> 
 						<tr>
@@ -1123,42 +1146,6 @@
 				Templates can be created for every account as well as for global settings (for all email accounts).
 				</p>
 				 
-				<script type="text/javascript">
-
-					document.addEventListener("DOMContentLoaded", function(event) { 
-						var user = getQueryVariable("user");
-						if (typeof user != 'undefined') {
-							if (user=='pro') {
-								removeClassItems('QuickFoldersFreeUser');
-							}
-							else
-								removeClassItems('QuickFoldersProUser');
-						}
-					});
-
-					function getQueryVariable(variable)	{
-						var query = window.location.search.substring(1),
-								vars = query.split("&");
-						for (var i=0;i<vars.length;i++) {
-							var pair = vars[i].split("=");
-							if (pair[0] == variable) 
-								return pair[1];
-						}
-						return(null);
-					}
-
-					function removeClassItems(name) {
-						var dbuttons = document.getElementsByClassName(name);
-						for (var i=dbuttons.length-1; i>=0; i--) {
-							// dbuttons[i].style.display='none';
-							dbuttons[i].parentNode.removeChild(dbuttons[i]);
-						}
-					}
-					
-
-				</script>
-
-
 		<!-- FOOTER.HTML -->
 		<div id="footer">
 			<script type="text/javascript">

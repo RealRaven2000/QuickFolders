@@ -396,6 +396,7 @@ body {
 p.QuickFoldersFreeUser,
 p.QuickFoldersProUser,
 table.QuickFoldersFreeUser,
+table.QuickFoldersProRenew,
 .flashBox  {
 	background: rgba(250,250,250,0.6);
   border: 2px solid rgba(60,60,60,0.5);
@@ -407,9 +408,11 @@ table.QuickFoldersFreeUser,
 	padding: 0.5em 0.8em;
 }
 
+.QuickFoldersProRenew,
 .QuickFoldersFreeUser {
   font-size: 1.3em !important;
 }
+.QuickFoldersProRenew em,
 .QuickFoldersFreeUser em {
   font-weight: bold;
 }

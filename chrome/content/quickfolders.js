@@ -346,7 +346,13 @@ END LICENSE BLOCK */
 		## [Bug 26323] Remove unnecessary padding on left of QuickFolders tab labels
 		## Added Version number to subject line in Options / Support Tab / Contact Me
 		## [Bug 26336] Confirmation to "Switch to Domain license?" is hidden behind options dialog.
-	
+
+	4.7.1 QuickFolders Pro - 01/03/2017
+    ## [Bug 26346] On drag & drop, mouserollovered tabs' submenus do not close
+		## [Bug 26348] Striped Style was permanently disabled.
+		
+	4.7.2 
+		
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
@@ -453,12 +459,13 @@ window.setTimeout(function () {
   QuickFolders_PrepareSessionStore();
 }, 5000);
 
-var QuickFolders_globalHidePopupId="";
-var QuickFolders_globalLastChildPopup=null;
-var QuickFolders_globalWin=Components.classes["@mozilla.org/appshell/window-mediator;1"]
+/* GLOBAL VARIABLES */
+var QuickFolders_globalHidePopupId="",
+    QuickFolders_globalLastChildPopup=null,
+    QuickFolders_globalWin=Components.classes["@mozilla.org/appshell/window-mediator;1"]
 				.getService(Components.interfaces.nsIWindowMediator)
-				.getMostRecentWindow("mail:3pane");
-var QuickFolders_globalDoc=document;
+				.getMostRecentWindow("mail:3pane"),
+    QuickFolders_globalDoc=document;
 
 var QuickFolders_getWindow = function() {
 	return QuickFolders_globalWin;
@@ -891,12 +898,17 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		onDragEnd: function onDragEnd(evt) {
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnd");
+		onDragExit: function onDragExit(evt) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragExit");
+			if (QuickFolders_globalHidePopupId) {
+				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+			}
 		} ,
 		
 		onDragEnter: function onDragEnter(evt, session) {
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - " + session.toString());
+			let t = evt.currentTarget;
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - " + session.toString() +
+			  "\ntarget" + t.nodeName + "  " + t.id);
 			
 			evt.preventDefault();
 			return false;
@@ -916,7 +928,7 @@ var QuickFolders = {
 		
 		canDrop: function canDropHelper(e,s) {
 			try {
-				this.util.logDebugOptional("dnd","toolbarDragObserver.canDrop - Session.canDrop = " +  s.canDrop);
+				// this.util.logDebugOptional("dnd","toolbarDragObserver.canDrop - Session.canDrop = " +  s.canDrop);
 				if (this.prefs.isDebugOption('dnd') && (!s || s && !s.canDrop)) debugger;
 				if (s) {
 					s.canDrop = true;
@@ -1045,17 +1057,18 @@ var QuickFolders = {
 		},
 
 		// deal with old folder popups
-		onDragEnd: function menuObs_onDragEnd(evt, dragSession) {
+		onDragExit: function menuObs_onDragExit(evt, dragSession) {
+			const util = QuickFolders.Util;
 			let popupStart = evt.target;
 			// find parent node!
-			QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDragEnd " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd","popupDragObserver.onDragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				if (popupStart.nodeName=='menu') {
-					QuickFolders_globalLastChildPopup=popupStart; // remember to destroy!
+					QuickFolders_globalLastChildPopup = popupStart; // remember to destroy!
 				}
 			}
 			catch (e) {
-				QuickFolders.Util.logDebugOptional("dnd","CATCH popupDragObserver.onDragEnd: \n" + e);
+				util.logDebugOptional("dnd","CATCH popupDragObserver.onDragExit: \n" + e);
 			}
 		} ,
 
@@ -1304,30 +1317,10 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		onDragEnter: function btnObs_onDragEnter(evt, dragSession) {
-			function removeLastPopup(p, theDoc) {
-				if (!p) return;
-				let popup = theDoc.getElementById(p),
-            util = QuickFolders.Util;
-				if (popup) {
-					try {
-						if (util.Application === 'SeaMonkey')
-							popup.parentNode.removeChild(popup);
-						else
-							popup.hidePopup(); // parentNode.removeChild(popup)
-						util.logDebugOptional("dnd", "removed popup:" + p );
-					}
-					catch (e) {
-						util.logDebugOptional("dnd", "removing popup:  [" + p.toString() + "]  failed!\n" + e + "\n");
-					}
-				}
-				else
-					util.logDebugOptional("dnd", "removeLastPopup could not find element: " + p);
-				if (p === QuickFolders_globalHidePopupId)
-					QuickFolders_globalHidePopupId = '';
-				
-			}
-
-      let util = QuickFolders.Util;
+      const util = QuickFolders.Util,
+						prefs = QuickFolders.Preferences,
+			      QI = QuickFolders.Interface,
+			      removeLastPopup = QI.removeLastPopup.bind(QI);
 			try {
 				if (null==dragSession.sourceNode) {
 					util.logDebugOptional("dnd", "UNEXPECTED ERROR QuickFolders.OnDragEnter - empty sourceNode!");
@@ -1358,7 +1351,7 @@ var QuickFolders = {
           else {
             dragSession.canDrop=false;
           }
-          if (QuickFolders.Preferences.isShowRecentTab)
+          if (prefs.isShowRecentTab)
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
           return;
         }
@@ -1401,7 +1394,7 @@ var QuickFolders = {
 
 					//show context menu if dragged over a button which has subfolders
 					let targetFolder = button.folder || null,
-					    otherPopups = QuickFolders.Interface.menuPopupsByOffset;
+					    otherPopups = QI.menuPopupsByOffset;
 					for (let i = 0; i < otherPopups.length; i++) {
 						if (otherPopups[i].folder) {
 							if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup)
@@ -1417,7 +1410,7 @@ var QuickFolders = {
 
 					let dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
-					if (QuickFolders.Preferences.isDebugOption('dnd')) {
+					if (prefs.isDebugOption('dnd')) {
 						// http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#677
 						let txt = 'Drag types from event.dataTransfer:';
 						for (let i=0; i<types.length; i++) {
@@ -1448,13 +1441,13 @@ var QuickFolders = {
 
 						// instead of using the full popup menu (containing the 3 top commands)
 						// try to create droptarget menu that only contains the target subfolders "on the fly"
-						// haven't found a way to tidy these up, yet (should be done in onDragEnd?)
+						// haven't found a way to tidy these up, yet (should be done in onDragExit?)
 						// Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
 						// no menus necessary for folders without subfolders!
 						let popupset = this.doc.createElement('popupset'),
 						    menupopup = this.doc.createElement('menupopup'),
 						    popupId;
-						QuickFolders.Interface.FoldersBox.appendChild(popupset);
+						QI.FoldersBox.appendChild(popupset);
 
 						if (targetFolder) {
 							popupId = 'moveTo_'+targetFolder.URI;
@@ -1470,7 +1463,7 @@ var QuickFolders = {
 								menupopup.folder = targetFolder;
 								popupset.appendChild(menupopup);
 								removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-								QuickFolders.Interface.addSubFoldersPopup(menupopup, targetFolder, true);
+								QI.addSubFoldersPopup(menupopup, targetFolder, true);
 							}
 						}
 						else { // special folderbutton: recent
@@ -1480,11 +1473,11 @@ var QuickFolders = {
                   menupopup.setAttribute('id', popupId);
                   popupset.appendChild(menupopup);
                   removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-                  QuickFolders.Interface.createRecentTab(menupopup, true, button);
+                  QI.createRecentTab(menupopup, true, button);
                 }
               }
               else {
-                if (QuickFolders.Preferences.isShowRecentTab)
+                if (prefs.isShowRecentTab)
                   removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
               }
 						}
@@ -1503,11 +1496,11 @@ var QuickFolders = {
 						if (p && p.childNodes && p.childNodes.length) {
 						
 							// from a certain size, make sure to shift menu to right to allow clicking the tab
-							let minRealign = QuickFolders.Preferences.getIntPref("folderMenu.realignMinTabs"),
+							let minRealign = prefs.getIntPref("folderMenu.realignMinTabs"),
                   isShift = false;
 							if (minRealign) {
 							  let c,
-                    isDebug = QuickFolders.Preferences.isDebugOption('popupmenus.drag');
+                    isDebug = prefs.isDebugOption('popupmenus.drag');
 								// count top level menu items
 								for (c = 0; c < p.childNodes.length; c++) {
 									if (isDebug) {
@@ -1536,9 +1529,10 @@ var QuickFolders = {
               }
 							else
 								p.showPopup(button, -1,-1,"context","bottomleft","topleft"); // deprecated
+							QuickFolders_globalHidePopupId = popupId;
 						}
 
-						if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
+						// if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
 
 					}
 					catch(e) { util.logException("Exception creating folder popup: ", e);};
@@ -1552,32 +1546,40 @@ var QuickFolders = {
 		} ,
 		
 		// deal with old folder popups
-		onDragEnd: function btnObs_onDragEnd(event, dragSession) {
+		onDragExit: function btnObs_onDragExit(event, dragSession) {
 			const util = QuickFolders.Util;
 			if (!dragSession.sourceNode) { 
-				util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - session without sourceNode! exiting dragExit handler...");
+				util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)
 				  event.preventDefault();
 				return; 
 			}
 			try {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
-				util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - sourceNode = " + src);
-			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.onDragEnd - " + e); }
+				util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - sourceNode = " + src);
+			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - " + e); }
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
 				util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
 				dragSession.canDrop=false;
 				return;
 			}
 			let button = event.target;
-			QuickFolders_globalHidePopupId="";
-			if (dragSession.isDataFlavorSupported("text/unicode" )) // drag buttons
-			{
+			if (dragSession.isDataFlavorSupported("text/unicode" )) { // drag buttons
 				// remove dragdrop marker:
 				button.className = button.className.replace(/\s*dragLEFT/,"");
 				button.className = button.className.replace(/\s*dragRIGHT/,"");
+				QuickFolders_globalHidePopupId = "";
 				return;  // don't remove popup when reordering tabs
 			}
+			else {
+				//  the target of the complementary event (the mouseleave target in the case of a mouseenter event). null otherwise.
+				let rt = event.relatedTarget;
+				util.logDebugOptional("dnd", "relatedTarget = " + (rt ? (rt.nodeName + "  " + rt.id) : "null" ) + "\n"
+				  + "QuickFolders_globalHidePopupId = " + QuickFolders_globalHidePopupId);
+				if (rt && (rt.nodeName=='box' || rt.nodeName=='hbox'))
+					QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+			}
+
 			// problem: event also fires when dragging into the menu, so we can not remove it then!
 			let targetFolder = button.folder,
 			    popupId = 'moveTo_'+targetFolder.URI;
@@ -1586,6 +1588,8 @@ var QuickFolders = {
 			try {
 				if (this.doc.getElementById(popupId))
 					QuickFolders_globalHidePopupId = popupId; // arm for hiding! GLOBAL VAR!!
+				else
+					QuickFolders_globalHidePopupId = ""; // consume?
 			}
 			catch(ex) {
 				window.dump("Cannot setup for delete: popup \n" + ex);
@@ -1617,7 +1621,7 @@ var QuickFolders = {
       try {
         util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
-			QuickFolders_globalHidePopupId="";
+			QuickFolders_globalHidePopupId = "";
 
 			switch (dropData.flavour.contentType) {
 				case  "text/x-moz-folder": // not supported! You can not drop a folder from foldertree on a tab!
@@ -1764,6 +1768,7 @@ var QuickFolders = {
 					break;
 			}
 		},
+
 		// new handler for starting drag of buttons (re-order)
 		onDragStart: function btnObs_onDragStart(event, transferData, action) {
 			const util = QuickFolders.Util;

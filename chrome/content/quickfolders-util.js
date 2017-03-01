@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.7",
+	HARDCODED_CURRENTVERSION : "4.7.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -1349,18 +1349,24 @@ QuickFolders.Util = {
     }
 	},
 	
+	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
 		const util = QuickFolders.Util,
 					isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired;
 		try {
+			let uType = "";
+			if (util.Licenser.isExpired) 
+				uType = "proRenew"
+			else if (util.hasPremiumLicense(false))
+			  uType = "pro";
 			// make sure we can sanitize all pages for our premium users!
-			if (   isPremiumLicense 
+			if (   uType
 			    && URL.indexOf("user=")==-1 
 					&& URL.indexOf("quickfolders.org")>0 ) {
 				if (URL.indexOf("?")==-1)
-					URL = URL + "?user=pro";
+					URL = URL + "?user=" + uType;
 				else
-					URL = URL + "&user=pro";
+					URL = URL + "&user=" + uType;
 			}
 		}
 		catch(ex) {
@@ -1773,8 +1779,7 @@ QuickFolders.Util.FirstRun = {
 			}
 			else { 
         let isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired,
-        		versionPage = "http://quickfolders.org/version.html" +
-                          (isPremiumLicense ? "?user=pro" : "")  + "#" + pureVersion;
+        		versionPage = util.makeUriPremium("http://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
         if ((pureVersion.indexOf('4.2.') == 0 && prev.indexOf("4.2") == 0)) {
@@ -1787,7 +1792,9 @@ QuickFolders.Util.FirstRun = {
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
 				//  same for 3.14.1, 3.14.2 etc - no donation screen
 				if ((pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) ||
-				    (pureVersion.indexOf('3.14.') == 0 && prev.indexOf("3.14") == 0))
+				    (pureVersion.indexOf('3.14.') == 0 && prev.indexOf("3.14") == 0) ||
+						(pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
+						)
         {
 					suppressDonationScreen = true;
 				}

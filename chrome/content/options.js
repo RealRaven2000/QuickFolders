@@ -180,7 +180,7 @@ QuickFolders.Options = {
         return true;
       case 2: // Pastel Palette
         return true;
-      default:
+      default: // 2 colors or  night vision do not support "striped" style
         return false;
     }
   } ,
@@ -397,8 +397,9 @@ QuickFolders.Options = {
     this.initPreviewTabStyles();
     
     let paletteType = prefs.getIntPref('style.InactiveTab.paletteType'),
-        disableStriped = !(this.stripedSupport(paletteType) && 
-                           this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')));
+        disableStriped = !(this.stripedSupport(paletteType) || 
+                           this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')) ||
+													 this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType')));
     
     getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
     getElement('qf-individualColors').disabled = disableStriped;
@@ -761,13 +762,14 @@ QuickFolders.Options = {
 	// change background color for current folder bar
 	// 4 choices: default, dark, custom, translucent
 	setCurrentToolbarBackground: function setCurrentToolbarBackground(choice, withUpdate) {
-    let util = QuickFolders.Util,
-		    setting = document.getElementById('currentFolderBackground'),
+    const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
+		let setting = document.getElementById('currentFolderBackground'),
 		    // store custom value, when going away from custom selection
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom && choice != 'custom') {
-			QuickFolders.Preferences.setStringPref('currentFolderBar.background.custom', setting.value);  
+			prefs.setStringPref('currentFolderBar.background.custom', setting.value);  
 		}
 	
 		switch (choice) {
@@ -790,12 +792,12 @@ QuickFolders.Options = {
 			case 'custom':
 				backgroundCombo.selectedIndex = this.BGCHOICE.custom;
 				// restore custom value
-				setting.value = QuickFolders.Preferences.getStringPref('currentFolderBar.background.custom');  
+				setting.value = prefs.getStringPref('currentFolderBar.background.custom');  
 				break;
 		}
 		let styleValue = setting.value;
-		QuickFolders.Preferences.setStringPref('currentFolderBar.background', styleValue);
-		QuickFolders.Preferences.setStringPref('currentFolderBar.background.selection', choice);
+		prefs.setStringPref('currentFolderBar.background', styleValue);
+		prefs.setStringPref('currentFolderBar.background.selection', choice);
 		if (withUpdate)
 			QuickFolders.Interface.updateMainWindow();
 	},
@@ -903,12 +905,12 @@ QuickFolders.Options = {
         isTransparentSupport = false;
 		switch(buttonState) {
 		  case 'colored':
-        isStripable = this.stripedSupport(paletteType) && this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType'));
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'));
 				break;
 			case 'standard':
 				idPreview = 'inactivetabs-label';
 				colorPicker = 'inactive-colorpicker';
-        isStripable = this.stripedSupport(paletteType) && this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'));
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'));
         isTransparentSupport = (paletteType==0);
 				break;
 			case 'active':
@@ -924,11 +926,14 @@ QuickFolders.Options = {
 				colorPicker = 'dragover-colorpicker';
 				break;
 		}
+		if (isStripable && paletteType==3) isStripable = false;
     if (isUpdatePanelColor) {
       getElement('buttonTransparency').disabled = !isTransparentSupport;
+			// do not allow striped style if Night Vision is selected
+			// [Bug 26348] 
       if (isStripable === null) {
           isStripable = this.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType'))
-                        && 
+                        ||
                         this.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType'));
       }
       
@@ -1303,11 +1308,10 @@ QuickFolders.Options = {
 	showVersionHistory: function showVersionHistory(label, ask) {
 		let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
-		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders"),
-				isProUser = util.hasPremiumLicense(false) || util.Licenser.isExpired;
+		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
-			util.openURL(null, "http://quickfolders.org/version.html" 
-			  + (isProUser ? "?user=pro" : "")
+			util.openURL(null, 
+			  util.makeUriPremium("http://quickfolders.org/version.html")
 				+ "#" + pureVersion);
 		}
 	},

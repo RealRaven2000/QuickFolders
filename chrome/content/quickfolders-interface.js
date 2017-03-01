@@ -1764,6 +1764,7 @@ QuickFolders.Interface = {
       if (buttonId == 'QuickFoldersCurrentFolder') {
         this.setEventAttribute(button, "onclick",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
         this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+        this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
         this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
       }
     }
@@ -1781,9 +1782,9 @@ QuickFolders.Interface = {
 			  this.FoldersBox.appendChild(sep);
 			}
 			this.FoldersBox.appendChild(button);
-			this.setEventAttribute(button, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
-			this.setEventAttribute(button, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-			this.setEventAttribute(button, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+			this.setEventAttribute(button, "ondragenter", "nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
+			this.setEventAttribute(button, "ondragover", "nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
+			this.setEventAttribute(button, "ondrop", "nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 			button.setAttribute("flex",100);
 		}
     // we do this after appendChild, because labelElement needs to be generated in DOM
@@ -1797,6 +1798,7 @@ QuickFolders.Interface = {
 		if (!theButton) {
 			// AG add dragging of buttons
 			this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+			this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
 			this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
@@ -3549,7 +3551,7 @@ QuickFolders.Interface = {
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
 				this.setEventAttribute(menuitem, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
 				this.setEventAttribute(menuitem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-				// this.setEventAttribute(menuitem, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+				this.setEventAttribute(menuitem, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
@@ -3603,7 +3605,8 @@ QuickFolders.Interface = {
 
 					this.setEventAttribute(subMenu, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(subMenu, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-					this.setEventAttribute(subMenu, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+					this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+					// this.setEventAttribute(subMenu, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;
@@ -3682,14 +3685,14 @@ QuickFolders.Interface = {
 				break;
 
 			case 'toolbarbutton':
-				QuickFolders_globalHidePopupId='moveTo_'+Target.folder.URI;
+				QuickFolders_globalHidePopupId = 'moveTo_' + Target.folder.URI;
 				util.logDebugOptional ("popupmenus.collapse", "set QuickFolders_globalHidePopupId to " + QuickFolders_globalHidePopupId);
 
 				let popup = document.getElementById(QuickFolders_globalHidePopupId);
 				if (popup)
 					try {
 						popup.parentNode.removeChild(popup); //was popup.hidePopup()
-						QuickFolders_globalHidePopupId='';
+						QuickFolders_globalHidePopupId = '';
 					}
 					catch(e) {
 						util.logDebugOptional ("popupmenus.collapse", "Could not remove popup of " + QuickFolders_globalHidePopupId );
@@ -5797,8 +5800,30 @@ QuickFolders.Interface = {
 		else { // get context Menu as normal
 			QuickFolders.Interface.showPopup(btn, 'QuickFolders-ToolbarPopup');
 		}
+	} ,
+
+	removeLastPopup: function removeLastPopup(p, theDoc) {
+		if (!p) return;
+		let popup = theDoc.getElementById(p),
+				util = QuickFolders.Util;
+		if (popup) {
+			try {
+				if (util.Application === 'SeaMonkey')
+					popup.parentNode.removeChild(popup);
+				else
+					popup.hidePopup(); // parentNode.removeChild(popup)
+				util.logDebugOptional("dnd", "removed popup:" + p );
+			}
+			catch (e) {
+				util.logDebugOptional("dnd", "removing popup:  [" + p.toString() + "]  failed!\n" + e + "\n");
+			}
+		}
+		else
+			util.logDebugOptional("dnd", "removeLastPopup could not find element: " + p);
+		if (p === QuickFolders_globalHidePopupId)
+			QuickFolders_globalHidePopupId = '';
 		
-	}
+	}	
   
 }; // Interface
 

@@ -70,14 +70,14 @@
 
 				<li>
 					<h4>
-						<a name="1.4" href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">1.4</a>
+						<a name="1.4" href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">1.4 - WIP</a>
 						<a href="menuOnTopDonate.html"><img src="images/btn_donate_LG.gif" alt="Support MenuOnTop" class="inline-donate"></a>
 					</h4>
 						<ul>
 							<li>Added spacing to caption bar when in maximized mode</li>
 							<li>Added Pale Moon support</li>
 							<li>Added setting for decreasing top space above tab bar in Thunderbird</li>
-							<li>Added localisation and German locale</li>
+							<li>Added localisation and German locale - please contact me below if you want to add your own language</li>
 							<li>Moved support pages to <a href="http://quickfolders.org/index.html">quickfolders.org</a></li>
 						</ul>
 				</li>
@@ -280,7 +280,37 @@
 			</ul>
 
 			<a name="contact"></a>
-    </div>
+			
+			<!-- FOOTER.HTML -->
+			<div id="footer">
+				<script type="text/javascript">
+					function productName() {
+						if (typeof ProductName == 'undefined')
+							return 'MenuOnTop';
+						return ProductName;
+					}
+				</script>
+				<p>For questions or comments about 
+				<span id="product"><script type="text/javascript">document.write(productName());</script></span>, 
+				please send a message to </p>
+				<a name="mailto"></a>
+				<p class=mail_link>
+				<script type="text/javascript">
+					var u1 = '&#97;&#120;&#101;l.gru',
+					u2 = 'de@',
+					u3 = 'gma',
+					u4 = 'il.com';
+					document.write('<a href=\"mailto:' + u1 + u2 + u3 +  u4 +'?subject=[' + productName() + '] - &lt;your subject line here&gt;\">');
+					document.write('Mail To Axel Grude</a>');
+        </script>
+
+        <NOSCRIPT>You need to enable javascript for the email link to work!</NOSCRIPT>
+        </p>
+
+			</div><!-- "footer" -->
+			
+		</div>
+		<div id="downPusher"></div><!-- push down the black main background -->
 	</body>
 </html>
 	

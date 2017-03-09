@@ -15,12 +15,20 @@
     <link rel="stylesheet" href="css/footer.css" type="text/css">
     <link rel="stylesheet" href="css/censorship.css" type="text/css">
 		<link rel="stylesheet" href="css/index.css?v=8" type="text/css">
-		<link rel="stylesheet" href="css/version.css?v=13" type="text/css">
+		<link rel="stylesheet" href="css/version.css?v=35" type="text/css">
 		<link rel="stylesheet" href="css/menuOnTop.css?v=5" type="text/css">
     <link rel="icon" href="images/QF16x16.png" type="image/png"> 
     <script src="js/ga.js"> </script>
     <script src="js/premium.js"> </script>
 
+		
+		<style type="text/css">
+		/* inject the product name because we most likely do in-page links */
+		#version-history li > h4 > a:not([href="menuOnTopDonate.html"]):before {
+			content: "Menu On Top ";
+		}
+		</style>
+		
 
   </head>  
   <body>
@@ -68,8 +76,9 @@
 						<ul>
 							<li>Added spacing to caption bar when in maximized mode</li>
 							<li>Added Pale Moon support</li>
-							<li>Added setting for decreasing top spaca above tab bar in Thunderbird</li>
+							<li>Added setting for decreasing top space above tab bar in Thunderbird</li>
 							<li>Added localisation and German locale</li>
+							<li>Moved support pages to <a href="http://quickfolders.org/index.html">quickfolders.org</a></li>
 						</ul>
 				</li>
 

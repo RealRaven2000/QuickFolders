@@ -17,12 +17,17 @@
 		
 		<link rel="stylesheet" href="css/index.css?v=8" type="text/css">
 
-		<link rel="stylesheet" href="css/version.css?v=34" type="text/css">
+		<link rel="stylesheet" href="css/version.css?v=35" type="text/css">
 		<link rel="stylesheet" href="css/survey.css?v=1" type="text/css">
 
 		<style type="text/css">
 		td > p {
 			margin: 0 0 1.2em;
+		}
+		
+		/* inject the product name because we most likely do in-page links */
+		#version-history li > h4 > a:not([href="donate.html"]):before {
+			content: "QuickFolders ";
 		}
 		</style>
 

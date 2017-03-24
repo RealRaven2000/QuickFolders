@@ -82,12 +82,12 @@ QuickFolders.Util = {
 		MSG_FOLDER_FLAG_QUEUE 	  : 0x0800,
 		MSG_FOLDER_FLAG_INBOX 	  : 0x1000,
 		MSG_FOLDER_FLAG_TEMPLATES : 0x400000,
-		MSG_FOLDER_FLAG_JUNK		  : 0x40000000,
-		MSG_FOLDER_FLAG_SMART 	  : 0x4000, // just a guess, as this was MSG_FOLDER_FLAG_UNUSED3
-		MSG_FOLDER_FLAG_ARCHIVE  	: 0x4004, // another guess ?
+		MSG_FOLDER_FLAG_JUNK	  : 0x40000000,
+		MSG_FOLDER_FLAG_ARCHIVES  : 0x4000, // just a guess, used to be for category container
+		//MSG_FOLDER_FLAG_SMART   : 0x10000, // another guess, used to be for categories, use MSG_FOLDER_FLAG_VIRTUAL instead
 		MSG_FOLDER_FLAG_VIRTUAL   : 0x0020,
 		MSG_FOLDER_FLAG_GOTNEW    : 0x00020000,
-    MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
+        MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
 	},
 	// avoid these global objects
 	Cc: Components.classes,

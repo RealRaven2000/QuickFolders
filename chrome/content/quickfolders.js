@@ -362,6 +362,12 @@ END LICENSE BLOCK */
 	
 ###VERSION###
 
+  PRESS
+	=====
+ 
+  www.makeuseof.com/tag/10-must-have-thunderbird-addons-25-more/
+
+
   KNOWN ISSUES
   ============
 
@@ -2070,7 +2076,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
         // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
         let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
                          + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
-                         + Flags.MSG_FOLDER_FLAG_JUNK ;
+                         + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
         if (msgFolder.flags & specialFlags) {
           // is this folder a smartfolder?
           if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
@@ -2084,7 +2090,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
           }
 
           // a special folder, its parent is a smart folder?
-          if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_SMART || "smart" === theTreeView.mode) {
+          if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || "smart" === theTreeView.mode) {
             if (null === folderIndex || parentIndex > folderIndex) {
               // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
               let smartIndex=0;

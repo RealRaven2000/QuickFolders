@@ -798,8 +798,11 @@ QuickFolders.Options = {
 		let styleValue = setting.value;
 		prefs.setStringPref('currentFolderBar.background', styleValue);
 		prefs.setStringPref('currentFolderBar.background.selection', choice);
+		//if (withUpdate)
+		//	QuickFolders.Interface.updateMainWindow();
+		// need to update current folder bar
 		if (withUpdate)
-			QuickFolders.Interface.updateMainWindow();
+			util.getMail3PaneWindow().QuickFolders.Interface.updateCurrentFolderBar();
 	},
 	
 	styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {

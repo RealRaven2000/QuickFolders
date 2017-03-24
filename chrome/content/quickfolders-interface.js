@@ -1342,7 +1342,7 @@ QuickFolders.Interface = {
 					||
 					(eventTarget.baseURI 
 					  &&
-					 eventTarget.baseURI.toString().startsWith("chrome://conversations")) // Bug 26202
+					 eventTarget.baseURI.toString().lastIndexOf("chrome://conversations",0)===0) // Bug 26202. replaced startswith
 				)
        )            
     {
@@ -1731,10 +1731,10 @@ QuickFolders.Interface = {
 			specialFolderType="draft" + sDisplayIcons;
 		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP)
 			specialFolderType="news" + sDisplayIcons;
+		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_ARCHIVES) // Dillinger Bug
+			specialFolderType="archive" + sDisplayIcons;
 		else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_VIRTUAL)
 			specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
-		else if (folder.flags == FLAGS.MSG_FOLDER_FLAG_ARCHIVE)
-			specialFolderType="archives" + sDisplayIcons;
 		else if (tabIcon) 
 			specialFolderType='icon'; // independant of option, customized icons are always shown
 

@@ -27,6 +27,13 @@
 		#version-history li > h4 > a:not([href="menuOnTopDonate.html"]):before {
 			content: "Menu On Top ";
 		}
+		.alert {
+		  color: white !important;
+			background: linear-gradient(to bottom, #feb2ec 0%,#f133c5 50%,#eb07b6 51%,#fb5fd7 100%) !important;
+			border-radius: 0.3em;
+			margin: 0.3em 1px;
+			border-shadow: 3px 3px 3px rgba(50,50,50,0.3);
+		}
 		</style>
 		
 
@@ -92,19 +99,19 @@
 						<a href="https://addons.mozilla.org/en-US/thunderbird/addon/menu-on-top/versions/1.5">1.5 - Released shortly</a>
 						<a href="menuOnTopDonate.html"><img src="images/btn_donate_LG.gif" alt="Support MenuOnTop" class="inline-donate"></a>
 					</h4>
-						<ul>
-							<li>Important news: This addon will not work from Firefox version 57 as XUL / XPCOM based addons are officially not supported anymore.
-							    If you want to keep using this addon in browsers, you can use SeaMonkey or the 
-									older Firefox fork <a href="http://www.palemoon.org/">Pale Moon</a>
-							</li>
-							<li>Added Italian Locale - (thanks to Leopoldo Saggin at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
-							<li>Added Chinese Locale (thanks to YFdyh000 at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
-							<li>Added Swedish Locale (thanks to YFdyh000 at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
-							<li>Added option for font shadows</li>
-							<li>Firefox Pale Moon: fix tab opener for bookmarks</li>
-							<li>In Firefox: If a tab is already open in the current window, set focus to it instead of opening a duplicate.</li>
-							<li>Made sure the new tabbar top-spacing setting from version 1.4 works in Firefox too.</li>
-						</ul>
+					<div class="alert">
+						Important news: This addon will not work from Firefox version 57 as XUL / XPCOM based addons are officially not supported anymore.
+						If you want to keep using this addon in browsers, you can use SeaMonkey or the 
+						older Firefox fork <a href="http://www.palemoon.org/">Pale Moon</a>						</div>
+					<ul>
+						<li>Added Italian Locale - (thanks to Leopoldo Saggin at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
+						<li>Added Chinese Locale (thanks to YFdyh000 at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
+						<li>Added Swedish Locale (thanks to A. Regnander at <a href="http://www.babelzilla.org/">Babelzilla</a>)</li>
+						<li>Added option for font shadows</li>
+						<li>Firefox Pale Moon: fix tab opener for bookmarks</li>
+						<li>In Firefox: If a tab is already open in the current window, set focus to it instead of opening a duplicate.</li>
+						<li>Made sure the new tabbar top-spacing setting from version 1.4 works in Firefox too.</li>
+					</ul>
 				</li>
 				
 				<a name="1.4"> </a>

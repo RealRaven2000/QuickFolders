@@ -333,6 +333,7 @@ QuickFolders.Interface = {
         // folders for every account.
 		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
 					  getService(Components.interfaces.nsIMsgAccountManager);
+		// Postbox only:
 		for (let acct in fixIterator(acctMgr.accounts, Components.interfaces.nsIMsgAccount)) {
 		  addIfRecent(acct.incomingServer.rootFolder);
 		  checkSubFolders(acct.incomingServer.rootFolder);
@@ -1309,7 +1310,8 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
         tabmode = QuickFolders.Interface.CurrentTabMode,
         eventTarget = e.target,
-        isConsumed = false; 
+        isConsumed = false, 
+				isShortcutMatched = false; 
 
 		if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')
         &&
@@ -1354,9 +1356,15 @@ QuickFolders.Interface = {
 			logKey(e);
       let QuickMove = QuickFolders.quickMove;
       if (util.hasPremiumLicense(false)) {
+				util.logDebugOptional("premium.quickJump", "hasPremiumLicense returned true.\n" +
+				  "quickJump\n" +
+				  "Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
+				  "Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickMoveShortcutKey + "\n"
+				);
         /** SHIFT-J  Jump **/
         if (!isAlt && !isCtrl && isShift && dir!='up' && prefs.isQuickJumpShortcut) {
           if ((String.fromCharCode(e.charCode)).toLowerCase() == prefs.QuickJumpShortcutKey.toLowerCase()) {
+						isShortcutMatched = true;
             logEvent(eventTarget);
             if (QuickMove.isActive && QuickMove.hasMails) {
               if (!QuickMove.suspended)
@@ -1367,6 +1375,8 @@ QuickFolders.Interface = {
             isConsumed = true;
           }
         }
+				else
+					util.logDebugOptional("premium.quickJump","jump conditions not fullfilled");
         
         /** SHIFT-M  Move **/
         /** SHIFT-T  Copy **/
@@ -1378,6 +1388,7 @@ QuickFolders.Interface = {
           if (ismove && prefs.isQuickMoveShortcut
               ||
               iscopy && prefs.isQuickCopyShortcut) {
+						isShortcutMatched = true;
             logEvent(eventTarget);
             QuickMove.suspended = false;
             // QuickFolders.Interface.findFolder(true);
@@ -1397,6 +1408,9 @@ QuickFolders.Interface = {
           }
         }
       }
+			else {
+				util.logDebugOptional("premium.quickJump", "hasPremiumLicense returned false");
+			}
     } // quickMove / quickJump
     
     if (tabmode == 'folder' || tabmode == '3pane') { // only allow these shortcuts on the 3pane window!
@@ -1451,6 +1465,10 @@ QuickFolders.Interface = {
       e.preventDefault();
       e.stopPropagation();
     }
+		else if (isShortcutMatched) {
+			util.logDebugOptional("events.keyboard", "quickJump / quickMove Shortcut was matched but not consumed.\n"
+			  + "suspended=" + QuickFolders.quickMove.suspended);
+		}
 	} ,
 
 	getButtonByFolder: function getButtonByFolder(folder) {
@@ -2000,7 +2018,8 @@ QuickFolders.Interface = {
 		catch (ex) { util.logToConsole(ex); };
 		if (button.folder) {
 			// [Bug 26190] - already selected = drill down on second click
-			if (button.folder === util.CurrentFolder) {
+			// [Bug 26389] - Single Mail Tab should always open the folder!
+			if (button.folder === util.CurrentFolder & QI.CurrentTabMode != 'message') {
 				let popupId = button.getAttribute('popupId');
 				// show only subfolders, without commands!
 				QI.showPopup(button, popupId, evt, true);
@@ -3338,7 +3357,8 @@ QuickFolders.Interface = {
 	} ,
 	
 	addDragToNewFolderItem: function addDragToNewFolderItem(popupMenu, folder) {
-    let util = QuickFolders.Util;
+    const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
 		try {
       if (typeof folder.server === 'undefined') return;
       
@@ -3349,19 +3369,19 @@ QuickFolders.Interface = {
 			let server=folder.server.QueryInterface(Components.interfaces.nsIMsgIncomingServer);// check server.type!!
 			switch(server.type) {
 				case 'pop3':
-					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.pop3"))
+					if (!prefs.getBoolPref("dragToCreateFolder.pop3"))
 						return;
 					break;
 				case 'imap':
-					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.imap"))
+					if (!prefs.getBoolPref("dragToCreateFolder.imap"))
 						return;
 					break;
 				case 'none': // allow all local folders!
-					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder.local"))
+					if (!prefs.getBoolPref("dragToCreateFolder.local"))
 						return;
 					break;
 				default:
-					if (!QuickFolders.Preferences.getBoolPref("dragToCreateFolder." + server.type)) {
+					if (!prefs.getBoolPref("dragToCreateFolder." + server.type)) {
 						util.logDebugOptional("dragToNew","Not enabled: drag & create new folder for server's of type: " + server.type);
 						return;
 					}
@@ -3383,8 +3403,12 @@ QuickFolders.Interface = {
 					// use parent folder URI as each starting point
 					this.setEventAttribute(createFolderMenuItem, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(createFolderMenuItem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
-
-					popupMenu.appendChild(createFolderMenuItem);
+					
+					// [Bug 26425] option to put 'create new subfolder' on top
+					if (prefs.getBoolPref('dragToCreateFolder.menutop'))
+						popupMenu.insertBefore(createFolderMenuItem, popupMenu.firstChild);
+					else
+						popupMenu.appendChild(createFolderMenuItem);
 				}
 			}
 			
@@ -3640,8 +3664,11 @@ QuickFolders.Interface = {
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
 	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag) {
-		const util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
 		util.logDebugOptional('popupmenus', 'addSubFoldersPopup(' + folder.prettyName + ', drag=' + isDrag + ')' );
+		let isDragNew = isDrag && prefs.getBoolPref('folderMenu.dragToNew');
+		
 		if (folder.hasSubFolders) {
 			util.logDebugOptional('popupmenus.subfolders', 'Adding folders...');
 			let subfolders;
@@ -3650,12 +3677,12 @@ QuickFolders.Interface = {
 			else
 				subfolders = folder.GetSubFolders();
 
-			let isAlphaSorted = QuickFolders.Preferences.isSortSubfolderMenus;
+			let isAlphaSorted = prefs.isSortSubfolderMenus;
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, false);
 		}
 
 		// append the "Create New Folder" menu item!
-		if (isDrag && QuickFolders.Preferences.getBoolPref('folderMenu.dragToNew')) {
+		if (isDragNew) {
 			QuickFolders.Interface.addDragToNewFolderItem(popupMenu, folder);
 		}
 	} ,
@@ -3852,7 +3879,7 @@ QuickFolders.Interface = {
     
     // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passed search string
     function isParentMatch(folder, search, maxLevel, parentList) {
-      if (!search) return true;
+      if (!search) return true; // ??? should be false?
       let f = folder,
 			    pLevel = 1;
       while (f.parent && maxLevel) {
@@ -3869,6 +3896,15 @@ QuickFolders.Interface = {
       }
       return false;
     }
+		
+		function addIfMatch(folder, search, parentList) {
+			if (folder.prettyName.toLowerCase().indexOf(search)==0) {
+				if (parentList.indexOf(folder)<0)
+					parentList.push(folder);
+				return true;
+			}
+			return false;
+		}
     
     let util = QuickFolders.Util,
         model = QuickFolders.Model,
@@ -3912,6 +3948,7 @@ QuickFolders.Interface = {
 		// SLASH command - list child folders !
     let parentPos = searchString.indexOf('/');
     if (parentPos>0) { // we have a parent folder
+			if (prefs.isDebugOption('quickMove')) debugger;
       parentString = searchString.substr(0, parentPos);
       searchString = searchString.substr(parentPos+1);
 			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
@@ -3944,14 +3981,34 @@ QuickFolders.Interface = {
         addMatchingFolder(matches, folder);
       }
     }
-    else
+    else {
+			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
+/*
       for (let folder in util.allFoldersIterator(isFiling)) {
         if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
         addMatchingFolder(matches, folder);
       }
+			*/			
+		}
+			
+		// no parent matches - Add one for a folder without children.
+		if (!matches.length && parentPos>0) {
+			if (util.Application == 'Postbox') {
+				let AF = util.allFoldersIterator(isFiling);
+				for (let fi=0; fi<AF.length; fi++) {
+					let folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
+					addIfMatch(folder, parentString, parents);
+				}
+			}
+			else
+				for (let folder in util.allFoldersIterator(isFiling)) {
+					addIfMatch(folder, parentString, parents);
+				}
+		}
 		
 		// rebuild popup
-		let menupopup;
+		let menupopup,
+		    ELLIPSIS = "\u2026".toString();
 		if (true) {
 			matches.sort(function (a,b) { if (b.rank - a.rank == 0) return b.lname - a.lname; return b.rank - a.rank; });
 			
@@ -3968,7 +4025,8 @@ QuickFolders.Interface = {
 				menupopup.removeChild(menupopup.firstChild);
 		  if (matches.length == 0) {
 			  let menuitem = document.createElement('menuitem');
-				menuitem.setAttribute('label', '...'); // just one dummy to show we were searching
+				menuitem.setAttribute('label', ELLIPSIS); // just one dummy to show we were searching
+				menuitem.setAttribute("tag", "dummy");
 				menupopup.appendChild(menuitem);
 			}
 			else {
@@ -3995,6 +4053,7 @@ QuickFolders.Interface = {
 						matchPos = folderNameSearched.indexOf(parentString);
 					 
 				// 
+				if (matchPos == 0 && prefs.isDebugOption('quickMove')) debugger;			
 				if(matchPos == 0
 				   &&
 				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri - Postbox can't understand this.
@@ -4009,7 +4068,7 @@ QuickFolders.Interface = {
 			while (parents.length) {
 				let menuitem = document.createElement('menuitem'),
 				    f = parents.pop(),
-				    label = this.getUIstring('qfNewSubFolder', 'Create subfolder {0} ' + "\u00BB".toString() + ' {1}...');
+				    label = this.getUIstring('qfNewSubFolder', 'Create subfolder {0} ' + "\u00BB".toString() + ' {1}' + ELLIPSIS);
 						
 				menuitem.setAttribute('label', label.replace('{0}', f.rootFolder.name + ": " + f.prettyName).replace('{1}', enteredSearch));
 				menuitem.addEventListener('command', function(event) { 
@@ -4026,6 +4085,15 @@ QuickFolders.Interface = {
 					menupopup.insertBefore(menuitem, menupopup.firstChild);
 				else
 					menupopup.appendChild(menuItem);
+			}
+		}
+		
+		if (menupopup.childElementCount>1) {
+			// remove dummy!
+			for (let i = menupopup.childNodes.length-1; i>0; i--) {
+				let item = menupopup.childNodes[i];
+				if (item.getAttribute("tag") == "dummy")
+				 menupopup.removeChild(item);
 			}
 		}
 		

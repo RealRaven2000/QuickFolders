@@ -96,9 +96,7 @@ QuickFolders.FolderTree = {
       );
     }
     else {
-      for (let [key, value] in this.dictionary.items) {
-        iterate(key,value);
-      }
+			util.iterateDictionary(this.dictionary, iterate);
     }
 		this.forceRedraw();
 	} ,
@@ -171,10 +169,8 @@ QuickFolders.FolderTree = {
 	  let service = QuickFolders.Preferences.service;
 
 		if (debug) {
-      util.logDebugOptional('folderTree.icons','calling debugDictionary()...');
 			this.debugDictionary();
     }
-    util.logDebugOptional('folderTree.icons','calling restoreStyles...');
 		this.restoreStyles();
     util.logDebugOptional('folderTree.icons','loadDictionary() finished.');
 	} ,
@@ -192,6 +188,9 @@ QuickFolders.FolderTree = {
 	} ,
 	
 	debugDictionary: function(withAlert) {
+		function appendKeyValue(key,value,t) {
+			t.txt += '\n' + key + ': ' + value;
+		}
     let util = QuickFolders.Util;
 	  if (!this.dictionary) {
 			util.logDebug('no FolderTree.dictionary');
@@ -202,10 +201,13 @@ QuickFolders.FolderTree = {
       this.dictionary.forEach( function(value, key, map) {
         txt += '\n' + key + ': ' + value;
       });
-    else
-      for (let [key, value] in this.dictionary.items) {
-        txt += '\n' + key + ': ' + value;
-      }
+    else {
+			var t;
+			t.txt = "";
+			util.iterateDictionaryObject(this.dictionary, appendKeyValue, t);
+			txt += t.txt;
+		}
+		
 	  util.logDebugOptional('folderTree', txt);
 		if (withAlert) util.alert(txt);
 	} ,

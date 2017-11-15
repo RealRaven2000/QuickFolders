@@ -1,3 +1,4 @@
+// NEW CODE
 // Task.jsm: function generators (function*)
 Components.utils.import("resource://gre/modules/Task.jsm");
 

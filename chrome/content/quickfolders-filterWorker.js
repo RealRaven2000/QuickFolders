@@ -203,26 +203,16 @@ QuickFolders.FilterWorker = {
 
 	getSourceFolder: function getSourceFolder(msg) {
     let accountCount = 0,
-        aAccounts,
         sourceFolder = null,
         Cc = Components.classes,
         Ci = Components.interfaces,
         util = QuickFolders.Util,
-        accounts = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
-
-    for (let ab in fixIterator(accounts, Ci.nsIMsgAccount)) { 
-      if (ab.defaultIdentity)
+				aAccounts = util.Accounts;
+				
+		for (let a=0; a<aAccounts.length; a++) {
+      if (aAccounts[a].defaultIdentity)
         accountCount++; 
-    }
-    
-    if (util.Application == 'Postbox') 
-      aAccounts = util.getAccountsPostbox();
-    else {
-      aAccounts = [];
-      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
-        aAccounts.push(ac);
-      };
-    }
+		}
 
     // Get inbox from original account key - or use the only account if a SINGLE one exists
     // (Should we count LocalFolders? typically no filtering on that inbox occurs?)

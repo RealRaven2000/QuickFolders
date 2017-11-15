@@ -16,16 +16,18 @@
 						ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
 						tooltiptextextra2="&qf.label.donateLink;">
 
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/qf-styles.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-util.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-model.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-preferences.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-themes.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/options.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-rsa.js" />
-	<script type="application/x-javascript;version=1.7" src="chrome://quickfolders/content/quickfolders-register.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+		<!--  for..of fixes -->
+		<script type="application/x-javascript" src="chrome://shimQF/content/quickfolders-shim.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
 
 	
 	<prefpane id="qf-options-prefpane">
@@ -1030,7 +1032,9 @@
 												 preference="QuickFolders-Preferences-QuickJumpShortcutKey"
 												 class="shortCutKey"
 												 instantApply="true"
-												 disabled="true" />
+												 disabled="true"
+												 maxLength="1"
+												 />
 							</hbox>
 							<hbox>
 								<checkbox id="chkQuickMoveHotkey"
@@ -1045,6 +1049,7 @@
 												 preference="QuickFolders-Preferences-QuickMoveShortcutKey"
 												 class="shortCutKey"
 												 instantApply="true" 
+												 maxLength="1"
 												 disabled="true" />
 							</hbox>
 							<hbox>
@@ -1058,6 +1063,7 @@
 												 preference="QuickFolders-Preferences-QuickCopyShortcutKey"
 												 class="shortCutKey"
 												 instantApply="true" 
+												 maxLength="1"
 												 disabled="true" />
 							</hbox>
 							<hbox align="center">

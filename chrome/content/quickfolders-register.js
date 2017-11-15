@@ -110,19 +110,7 @@ QuickFolders.Licenser = {
   } ,
   // list of eligible accounts
   get Accounts() {
-    const Ci = Components.interfaces;
-    let util = QuickFolders.Util, 
-        aAccounts=[],
-        accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
-    if (util.Application == 'Postbox') 
-      aAccounts = util.getAccountsPostbox();
-    else {
-      aAccounts = [];
-      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
-        aAccounts.push(ac);
-      };
-    }
-    return aAccounts;
+		return QuickFolders.Util.Accounts;
   },
   
   accept: function accept() {
@@ -360,19 +348,25 @@ QuickFolders.Licenser = {
                      + parent.licenseDescription(parent.ValidationStatus)
                      + '   [' + parent.ValidationStatus + ']');
     }
+		
     function isIdMatchedLicense(idMail, licenseMail) {
-      switch(QuickFolders.Crypto.key_type) {
-        case 0: // private license
-          return (idMail.toLowerCase()==licenseMail);
-        case 1: // domain matching 
-          // only allow one *
-          if ((licenseMail.match(/\*/g)||[]).length != 1)
-            return false;
-          // replace * => .*
-          let r = new RegExp(licenseMail.replace("*",".*"));
-          let t = r.test(idMail);
-          return t;
-      }
+			try {
+				switch(QuickFolders.Crypto.key_type) {
+					case 0: // private license
+						return (idMail.toLowerCase()==licenseMail);
+					case 1: // domain matching 
+						// only allow one *
+						if ((licenseMail.match(/\*/g)||[]).length != 1)
+							return false;
+						// replace * => .*
+						let r = new RegExp(licenseMail.replace("*",".*"));
+						let t = r.test(idMail);
+						return t;
+				}
+			}
+			catch (ex) {
+				util.logException('validateLicense.isIdMatchedLicense() failed: ', ex);				
+			}
       return false;
     }
     
@@ -504,6 +498,8 @@ QuickFolders.Licenser = {
       if (ac.defaultIdentity && !ForceSecondaryMail) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
+				if (!ac.defaultIdentity || !ac.defaultIdentity.email)
+					continue;
         if (isIdMatchedLicense(ac.defaultIdentity.email, licensedMail)) {
           isMatched = true;
           break;
@@ -525,7 +521,7 @@ QuickFolders.Licenser = {
             // use ac.defaultIdentity ??
             // populate the dropdown with nsIMsgIdentity details
             let id = util.getIdentityByIndex(ids, i);
-            if (!id) {
+            if (!id || !id.email) {
               util.logDebugOptional("premium.licenser", "Invalid nsIMsgIdentity: " + i);
               continue;
             }

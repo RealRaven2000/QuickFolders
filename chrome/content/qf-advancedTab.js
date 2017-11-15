@@ -36,19 +36,8 @@ QuickFolders.AdvancedTab = {
   
   // list of accounts
   get Accounts() {
-    const Ci = Components.interfaces;
-    let util = this.MainQuickFolders.Util, 
-        aAccounts=[],
-        accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
-    if (util.Application == 'Postbox') 
-      aAccounts = util.getAccountsPostbox();
-    else {
-      aAccounts = [];
-      for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
-        aAccounts.push(ac);
-      };
-    }
-    return aAccounts;
+    let util = this.MainQuickFolders.Util;
+    return util.Accounts;
   },
 	
   load: function load() {

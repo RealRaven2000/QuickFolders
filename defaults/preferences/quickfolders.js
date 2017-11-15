@@ -158,6 +158,7 @@ pref("extensions.quickfolders.debug.folderTree", false);
 pref("extensions.quickfolders.debug.folderTree.icons", false);
 pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.premium", false);
+pref("extensions.quickfolders.debug.premium.quickJump", false);
 pref("extensions.quickfolders.debug.premium.licenser", false);
 pref("extensions.quickfolders.debug.premium.rsa", false);
 
@@ -167,6 +168,8 @@ pref("extensions.quickfolders.dragToCreateFolder.pop3", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap.delay", 400); // only relevant to Postbox
 pref("extensions.quickfolders.dragToCreateFolder.local", true);
+pref("extensions.quickfolders.dragToCreateFolder.menutop", false);
+
 // Recent Folder Item
 pref("extensions.quickfolders.recentfolders.itemCount", 12);
 pref("extensions.quickfolders.recentfolders.showLabel", true);

@@ -79,3 +79,46 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 	}
 } 
 
+QuickFolders.Util.iterateDictionary = function iterateKeys(dictionary, iterateFunction) {
+	for (let [key, value] in dictionary.items) {
+		iterateFunction(key,value);
+	}
+};
+
+QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, iterateFunction, obj) {
+	for (let [key, value] in dictionary.items) {
+		iterateFunction(key,value,obj);
+	}
+};
+
+QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
+	for (let folder in QuickFolders.Util.allFoldersIterator(isFiling)) {
+		if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
+		addMatchingFolder(matches, folder);
+	}
+};
+
+
+if (QuickFolders.Util.Application == 'Postbox') {
+	QuickFolders.Util.Accounts = QuickFolders.Util.getAccountsPostbox();
+}
+else
+	Object.defineProperty(QuickFolders.Util, "Accounts",
+{ get: function() {
+    const Ci = Components.interfaces,
+		      Cc = Components.classes;
+    let util = QuickFolders.Util, 
+        aAccounts=[],
+		    accounts = Cc["@mozilla.org/messenger/account-manager;1"]
+								 .getService(Ci.nsIMsgAccountManager).accounts;
+		aAccounts = [];
+		for (let ac in fixIterator(accounts, Ci.nsIMsgAccount)) {
+			aAccounts.push(ac);
+		};
+    return aAccounts;
+  }
+});
+
+
+
+

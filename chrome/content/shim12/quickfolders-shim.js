@@ -145,3 +145,43 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
   return items;
 }
 
+QuickFolders.Util.iterateDictionary = function iterateKeys(dictionary, iterateFunction) {
+	for (let [key, value] of dictionary.items) {
+		iterateFunction(key,value);
+	}
+};
+
+QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, iterateFunction, obj) {
+	for (let [key, value] of dictionary.items) {
+		iterateFunction(key,value,obj);
+	}
+};
+
+QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
+	for (let folder of QuickFolders.Util.allFoldersIterator(isFiling)) {
+		if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
+		addMatchingFolder(matches, folder);
+	}
+};
+
+Object.defineProperty(QuickFolders.Util, "Accounts",
+{ get: function() {
+    const Ci = Components.interfaces,
+		      Cc = Components.classes;
+    let util = QuickFolders.Util, 
+        aAccounts=[];
+    if (util.Application == 'Postbox') 
+      aAccounts = util.getAccountsPostbox();
+    else {
+			let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
+				           .getService(Ci.nsIMsgAccountManager).accounts;
+      aAccounts = [];
+      for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+        aAccounts.push(ac);
+      };
+    }
+    return aAccounts;
+  }
+});
+
+

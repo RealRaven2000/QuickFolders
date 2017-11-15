@@ -23,13 +23,12 @@ locale quickfolders zh-TW  chrome/locale/zh/
 locale quickfolders hu-HU  chrome/locale/hu-HU/
 locale quickfolders sv-SE  chrome/locale/sv-SE/
 
-
-#platform specific content -> allow additional platform specific rules
-content quickfolders-pl    content/ platform
+#platforms specific content - allow additional platforms specific rules
+content quickfolders-pl    content/   platform
 skin    quickfolders       classic/1.0  chrome/skin/
 skin    quickfolders-pl    classic/1.0  chrome/skin/
 
-# shim-JS for platform>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
+# shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
 # while also avoid Postbox crashing us for syntax when we use for..of
 #tb (for..of)
 content shimQF chrome://quickfolders/content/shim12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
@@ -43,7 +42,7 @@ content  shimECMA  chrome://quickfolders/content/shimECMAold/ platformversion<26
 content  shimECMA  chrome://quickfolders/content/shimECMAnew/ platformversion>=26
 
 # Thunderbird >=12
-content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>11.99
+content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 # SeaMonkey
 content myXUL chrome://quickfolders/content/xulSM/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 # Postbox
@@ -52,19 +51,16 @@ content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-i
 #ALL
 overlay chrome://messenger/content/messenger.xul          chrome://myXUL/content/overlayCurrentfolder.xul
 overlay chrome://messenger/content/messageWindow.xul      chrome://myXUL/content/currentFolderSingleMessage.xul
-# overlay chrome://messenger/content/messageWindow.xul      chrome://quickfolders/content/quickfolders-layout.css
-overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
 overlay chrome://messenger/content/SearchDialog.xul       chrome://quickfolders/content/overlaySearchDialog.xul
-
+overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
 
 # messengercompose.xul (MailCompose Window)
 overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://quickfolders/content/overlayComposer.xul
 
-
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=3.0
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 
 #Postbox - we need to keep overlaying mailWindowOverlay at the moment or we loose the styling
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlayPostbox.xul application=postbox@postbox-inc.com
@@ -81,11 +77,10 @@ style chrome://quickfolders/content/options.xul chrome://quickfolders/content/qu
 style chrome://mozapps/content/extensions/about.xul chrome://quickfolders-pl/skin/about.css
 style chrome://global/content/alerts/alert.xul          chrome://quickfolders/content/quickfolders-alert.css
 #Tb # appversion<4.0  = before gecko2
-style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-pre4.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<4.0
 style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-widgets.css
 style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-filters.css
 style chrome://messenger/content/messenger.xul     chrome://quickfolders/content/qf-foldertree.css
-# platform overlay for linux / mac fixes
+# platforms overlay for linux / mac fixes
 style chrome://quickfolders/content/overlay.xul   chrome://quickfolders-pl/skin/style.css
 style chrome://quickfolders/content/options.xul   chrome://quickfolders-pl/skin/style.css
 
@@ -93,27 +88,13 @@ style chrome://quickfolders/content/options.xul   chrome://quickfolders-pl/skin/
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com
 
 #SeaMonkey # appversion<2.2  = before gecko2
-style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-pre4.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} appversion<2.2
 style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-filters.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 
 ####### LEGACY RULES - these list deprecated css styles, for backwards compatibility with older versions of Gecko
 #######                should be ignored by the validator (but probably aren't)
 #Tb legacy
-style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
-style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
-style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
-style chrome://messenger/content/messenger.xul              chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<16.0
 
 #SM legacy
-style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://messenger/content/messenger.xul              chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
-style chrome://quickfolders/content/register.xul            chrome://quickfolders/skin/quickfolders-palettes-legacy.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} platformversion<16
 
 #Postbox - still all legacy styles for linear-gradients!
 style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6

@@ -519,6 +519,11 @@ toolbar.quickfolders-flat {
 	min-height: 16px;
 }
 
+#QuickFolders-FoldersBox toolbarbutton:not(.icon) .toolbarbutton-icon {
+  margin-right: 0 !important;
+	-moz-margin-end: 0;
+}
+
 #QuickFolders-FoldersBox.quickfolders-pills toolbarbutton .toolbarbutton-icon {
   margin-left: 0px;
 }

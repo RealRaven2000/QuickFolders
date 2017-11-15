@@ -351,7 +351,21 @@ END LICENSE BLOCK */
     ## [Bug 26346] On drag & drop, mouserollovered tabs' submenus do not close
 		## [Bug 26348] Striped Style was permanently disabled.
 		
-	4.7.2 
+	4.7.2 QuickFolders Pro - WIP
+	  ## [Bug 26372] After entering License Key Tabs are not displayed anymore
+		## [Bug 26389] Single Mail Tab: clicking the current folder on Toolbar should open it.
+		## [Bug 26387] 'Color is null' error in Linux when options window is opened.
+		## [Bug 26409] quickMove - create new subfolder not working in empty parent. 
+								   make it possible to create new subfolders using quickMove by 
+									 entering parentFolder/New Folder even if the parent Folder has 
+									 no child folders yet.
+		## Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
+		## Known Issues: 
+		## [Bug 26439]
+		##    Thunderbird 57 does not show it's main window if any of my XUL based addons are loaded
+		##    This is most likeley a side effect from mozilla-central codebase which deprecated XUL addons
+		##    for Firefox 57 (quantum) as of November 14th 2017.
+		##    I am currently working with the #maildev channel to fix the issues that may lead to this
 		
 	Known Issues
 	============

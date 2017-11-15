@@ -450,10 +450,13 @@ QuickFolders.FilterList = {
 		// fix any filters that might still point to the moved folder.
 		// 1. nsIMsgAccountManager  loop through list of servers
 		try {
-			let Ci = Components.interfaces;
-			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-	                        .getService(Ci.nsIMsgAccountManager);  
-			for (let account in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+			const Ci = Components.interfaces,
+			      util = QuickFolders.Util;
+			let Accounts = util.Accounts;,
+			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+	                        .getService(Ci.nsIMsgAccountManager); 
+			for (let a=0; a<Accounts.length; a++) {
+				let account = Accounts[a];
 				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
 				{ 
 					let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);

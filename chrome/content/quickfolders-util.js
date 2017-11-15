@@ -554,20 +554,27 @@ QuickFolders.Util = {
 				return div;
 			return QuickFolders.Util.$('qf-options-prefpane');
 		}
-		let theColor, // convert system colors such as menubackground etc. to hex
-		    d = document.createElement("div");
-		d.style.color = sColorString;
-		getContainer().appendChild(d)
-		theColor = window.getComputedStyle(d,null).color;
-		getContainer().removeChild(d);
+		
+		try {
+			let theColor, // convert system colors such as menubackground etc. to hex
+					d = document.createElement("div");
+			d.style.color = sColorString;
+			getContainer().appendChild(d)
+			theColor = window.getComputedStyle(d,null).color;
+			getContainer().removeChild(d);
 
-    if (theColor.search("rgb") == -1)
-      return theColor;
-    else {
-      theColor = theColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-      let hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
-      return hexColor;
-    }
+			if (theColor.search("rgb") == -1)
+				return theColor;
+			else {
+				theColor = theColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+				let hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
+				return hexColor;
+			}
+		}
+		catch(ex) { // Bug 26387
+			this.logException('getSystemColor(' + sColorString + ') failed', ex);
+			return "#000000";
+		}
 
 	},
 
@@ -1148,8 +1155,8 @@ QuickFolders.Util = {
 	},
 
 	debugVar: function debugVar(value) {
-		str = "Value: " + value + "\r\n";
-		for (prop in value) {
+		let str = "Value: " + value + "\r\n";
+		for (let prop in value) {
 			str += prop + " => " + value[prop] + "\r\n";
 		}
 		this.logDebug(str);

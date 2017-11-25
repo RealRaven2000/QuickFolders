@@ -452,7 +452,7 @@ QuickFolders.FilterList = {
 		try {
 			const Ci = Components.interfaces,
 			      util = QuickFolders.Util;
-			let Accounts = util.Accounts;,
+			let Accounts = util.Accounts,
 			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
 	                        .getService(Ci.nsIMsgAccountManager); 
 			for (let a=0; a<Accounts.length; a++) {

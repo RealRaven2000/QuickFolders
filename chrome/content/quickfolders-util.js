@@ -811,7 +811,7 @@ QuickFolders.Util = {
       return null;
 		try {
 			try {
-        util.logDebugOptional('dnd,quickMove', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettiestName + ', makeCopy=' + makeCopy);
+        util.logDebugOptional('dnd,quickMove', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
       }
 			catch(e) { util.alert('QuickFolders.Util.moveMessages:' + e); }
 

@@ -9,7 +9,7 @@
 
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("resource://gre/modules/ISO8601DateUtils.jsm");
+// Components.utils.import("resource://gre/modules/ISO8601DateUtils.jsm");
 Components.utils.import("resource://gre/modules/PluralForm.jsm");
 
 if (!QuickFolders.StringBundle)
@@ -3362,7 +3362,7 @@ QuickFolders.Interface = {
 		try {
       if (typeof folder.server === 'undefined') return;
       
-			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettiestName
+			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettyName
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
 				+ "\nserver.type = " + folder.server.type);
 			if (!folder.canCreateSubfolders) return;

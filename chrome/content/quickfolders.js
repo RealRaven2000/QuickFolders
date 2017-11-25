@@ -1223,7 +1223,7 @@ var QuickFolders = {
 				let targetFolder = menuItem.folder.QueryInterface(Ci.nsIMsgFolder);
 
 				if (!targetFolder.canCreateSubfolders) {
-					util.alert("You can not create a subfolder in " + targetFolder.prettiestName);
+					util.alert("You can not create a subfolder in " + targetFolder.prettyName);
 					return false;
 				}
 

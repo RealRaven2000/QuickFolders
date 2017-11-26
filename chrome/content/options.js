@@ -1220,8 +1220,11 @@ QuickFolders.Options = {
 					util = QuickFolders.Util;
 
 		try {
-			let sFolderString = service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data,
-			    clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+			let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper),
+					sFolderString = 
+					  util.PlatformVersion < 57.0 ?
+					  service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data :
+						service.getStringPref("QuickFolders.folders")
 
 			util.logToConsole("Folder String: " & sFolderString);
       try {

@@ -35,13 +35,17 @@ QuickFolders.Preferences = {
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
-		let json = JSON.stringify(folderEntries),
-		    str = Components.classes["@mozilla.org/supports-string;1"]
-			.createInstance(Components.interfaces.nsISupportsString);
-		str.data = json;
+			const util = QuickFolders.Util;
+			let json = JSON.stringify(folderEntries),
+					str = Components.classes["@mozilla.org/supports-string;1"]
+				.createInstance(Components.interfaces.nsISupportsString);
+			str.data = json;
 
-		this.service.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
-		//this.service.setCharPref("QuickFolders.folders",json)
+			if (util.PlatformVersion < 57.0)
+				this.service.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
+			else
+				this.service.setStringPref("QuickFolders.folders", json);
+			//this.service.setCharPref("QuickFolders.folders",json)
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("storeFolderEntries()" + e);
@@ -49,12 +53,17 @@ QuickFolders.Preferences = {
 	} ,
 
 	loadFolderEntries: function loadFolderEntries() {
-		if (!this.service.prefHasUserValue("QuickFolders.folders")) {
+		const setting = "QuickFolders.folders",
+		      util = QuickFolders.Util;
+		if (!this.service.prefHasUserValue(setting)) {
 			return [];
 		}
 
 		try {
-			let folders = this.service.getComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString).data;
+			let folders = 
+			  util.PlatformVersion < 57.0 ?
+			  this.service.getComplexValue(setting, Components.interfaces.nsISupportsString).data :
+				this.service.getStringPref(setting);
 			// fall back for old version
 			if (folders.length<3)
 				folders = this.service.getCharPref("QuickFolders.folders");
@@ -238,12 +247,17 @@ QuickFolders.Preferences = {
 	} ,
 
 	get TextQuickfoldersLabel() {
-		const licenser = QuickFolders.Licenser;
+		const licenser = QuickFolders.Licenser,
+		      util = QuickFolders.Util;
 		let renewalLabel = (licenser.isExpired) 
-		     ? QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
+		     ? util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
 				 : "";
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
-			let customTitle = this.service.getComplexValue("extensions.quickfolders.textQuickfoldersLabel", Components.interfaces.nsISupportsString).data;
+		  const url = "extensions.quickfolders.textQuickfoldersLabel";
+			let customTitle = 
+			  util.PlatformVersion < 57.0 ?
+			  this.service.getComplexValue(url, Components.interfaces.nsISupportsString).data :
+				this.service.getStringPref(url);
 			return renewalLabel || customTitle;
 		}
 		catch(e) { return renewalLabel || 'QuickFolders'; }

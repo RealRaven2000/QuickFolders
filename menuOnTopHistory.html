@@ -27,6 +27,7 @@
 		#version-history li > h4 > a:not([href="menuOnTopDonate.html"]):before {
 			content: "Menu On Top ";
 		}
+		/*
 		.alert {
 			color: white !important;
 			background: linear-gradient(to bottom, #e703b2 0%,#940a74 50%,#7e0462 51%,#b6048c 100%) !important;
@@ -41,6 +42,33 @@
 		.alert a { 
 		  color: yellow !important;
 		}
+		*/
+		
+		div.alert {
+			background: rgba(0,0,0,0.9) !important;
+			color: white !important;
+			border-radius: 10px;
+			box-shadow: 4px 4px 3px rgba(20,20,20,0.3);
+			margin-left: 30px;
+			margin-bottom: 1.3em;
+			max-width: 800px;
+			padding: 0.5em 0.8em;
+			line-height: 1.7em;
+		}
+
+		.alert {
+			font-size: 1.3em !important;
+		}
+		.alert em {
+			font-weight: bold;
+		}		
+		
+		.alert a[href]:visited, 
+		.alert a[href] {
+			color: rgb(249, 113, 39) !important;
+			white-space: nowrap; 
+		}
+		
 		</style>
 		
 
@@ -110,14 +138,14 @@
 					Important news: This addon will not work from Firefox version 57 as XUL / XPCOM based addons are officially <a href="https://blog.mozilla.org/addons/2015/08/21/the-future-of-developing-firefox-add-ons/">not supported anymore</a>.
 					If you want to keep using this addon in browsers, you can use SeaMonkey or the 
 					older Firefox fork <a href="http://www.palemoon.org/">Pale Moon</a>
+					<br>
+					Some more information what changed in Firefox Quantum and how to get your Addons back:<br>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/4xWn5NWlLmE" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<ul>
 					<li>Removed obsolete references to nsIPrefBranch2. These would break when reading settings in Thunderbird 57.</li>
 					<li>Removed version options from script tags which also broke settings in Thunderbird 57 and later.</li>
 					<li>Fixed storage of some default settings (top margin, left margin)</li>
-					<li> Some more information what changed in Firefox Quantum and how to get your Addons back:<br>
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/4xWn5NWlLmE" frameborder="0" allowfullscreen></iframe>
-					</li>
 				</ul>
 			</li>			
 			

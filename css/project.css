@@ -416,11 +416,11 @@ table.QuickFoldersProRenew,
 .QuickFoldersFreeUser em {
   font-weight: bold;
 }
-.bargain {
+.bargain, .psa {
 	background: rgba(0,0,0,0.9) !important;
 	color: white !important;
 }
-.bargain a[href]:visited, .bargain a[href] {
+.bargain, .psa a[href]:visited, .bargain a[href] {
 	color: rgb(249, 113, 39) !important;
 	white-space: nowrap; 
 }

@@ -351,7 +351,9 @@ END LICENSE BLOCK */
     ## [Bug 26346] On drag & drop, mouserollovered tabs' submenus do not close
 		## [Bug 26348] Striped Style was permanently disabled.
 		
-	4.7.2 QuickFolders Pro - WIP
+	4.8 QuickFolders Pro - 27/11/2017
+    ## [Bug 26439] Thunderbird 57 hangs on start with quickFilters enabled
+		## [Bug 26452] Moving Mail to new folder fails when the (quickFilters) Filter Assistant is enabled.
 	  ## [Bug 26372] After entering License Key Tabs are not displayed anymore
 		## [Bug 26389] Single Mail Tab: clicking the current folder on Toolbar should open it.
 		## [Bug 26387] 'Color is null' error in Linux when options window is opened.
@@ -359,13 +361,8 @@ END LICENSE BLOCK */
 								   make it possible to create new subfolders using quickMove by 
 									 entering parentFolder/New Folder even if the parent Folder has 
 									 no child folders yet.
-		## Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
-		## Known Issues: 
-		## [Bug 26439]
-		##    Thunderbird 57 does not show it's main window if any of my XUL based addons are loaded
-		##    This is most likeley a side effect from mozilla-central codebase which deprecated XUL addons
-		##    for Firefox 57 (quantum) as of November 14th 2017.
-		##    I am currently working with the #maildev channel to fix the issues that may lead to this
+		## [Bug 26453] Seamonkey: The last selected QuickFolders Category is not Remembered.						 
+		## ONGOING: Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
 		
 	Known Issues
 	============
@@ -751,21 +748,18 @@ var QuickFolders = {
 				// is this a new Thunderbird window?
 				let cats;
 				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
-					if (currentFolder) {
+					let lc = QuickFolders.Preferences.lastActiveCats;
+					// if (currentFolder) {
 						// select first (or all?) category of any tab referencing this folder
 						// if there is an originating window, try to inherit the categories from the last one
-						let lc = QuickFolders.Preferences.lastActiveCats;
-						if (lc) {
+						if (lc) 
 							cats = lc;
-						}
 						else
 							cats = QuickFolders.FolderCategory.ALL; // retrieve list!
-					}
-					else
-						cats = QuickFolders.FolderCategory.ALL; // retrieve list!
+					// }
 				}
 				else
-				  cats = tab.QuickFoldersCategory
+				  cats = tab.QuickFoldersCategory;
 				
 				util.logDebug('init: setting categories to ' + cats);
 				if (tabMode == util.mailFolderTypeName || tabMode == "message") {
@@ -1110,12 +1104,13 @@ var QuickFolders = {
 			    menuItem = evt.target,
           messageUriList = QuickFolders.popupDragObserver.newFolderMsgUris;
           
-			let moveOrCopy = function moveOrCopy(newFolder) {
-				let	step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
+			let moveOrCopy = function moveOrCopy(newFolder, sourceURI) {
+				let sourceFolder,
+				   	step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
 				util.logDebugOptional("dragToNew", step);
 				
 				if (QuickFolders.FilterWorker.FilterMode) {
-					sourceFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true);
+					sourceFolder = QuickFolders.Model.getMsgFolderFromUri(sourceURI, true);
 					let virtual = util.isVirtual(sourceFolder);
 					if (!sourceFolder || virtual)
 					{
@@ -1187,7 +1182,7 @@ var QuickFolders = {
 								return;
 							}
 							menuItem.folder = newFolder.QueryInterface(Ci.nsIMsgFolder);
-							moveOrCopy(newFolder);
+							moveOrCopy(newFolder, currentURI);
 							// check bookmarks?
 						}						
 						setTimeout( function() { deferredMove(aFolder); }, timeOut);  // timeout for 1st try
@@ -1199,7 +1194,7 @@ var QuickFolders = {
 							Ci.nsMsgFolderFlags.Mail).then(
 								function createFolderCallback() {
 									let fld = QuickFolders.Model.getMsgFolderFromUri(newFolderUri, true);
-									moveOrCopy(fld);
+									moveOrCopy(fld, currentURI);
 									
 								},
 								function failedCreateFolder(ex) {

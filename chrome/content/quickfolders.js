@@ -364,6 +364,12 @@ END LICENSE BLOCK */
 		## [Bug 26453] Seamonkey: The last selected QuickFolders Category is not Remembered.						 
 		## ONGOING: Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
 		
+	4.8.1 QuickFolders Pro - 
+	  ## [Bug 26454] Pro License screen - account dropdown not populated
+		## [Bug 26455] Cannot paste folder tabs in Postbox
+		## (Thunderbird & Postbox only) Improved Premium Feature Notifications to always show 
+		## in a sliding notification bar on main window and not as Messagebox 
+		
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
@@ -876,16 +882,26 @@ var QuickFolders = {
     
     // Force Registration key check (if key is entered) in order to update interface
     setTimeout( function() {
-      if (util.hasPremiumLicense(false)) {
+			if (util.isDebug)  debugger;
+			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register'),
+			    State = util.Licenser.ELicenseState;
+      if (util.hasPremiumLicense(true)) {  // reset licenser (e.g. in new window)
         util.logDebug ("Premium License found - removing Animations()...");
         QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
       }
-			else {
-				if (util.Licenser.isExpired) {
-					let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
-					if (menuRegister) {
+			if (menuRegister) {
+				switch (util.Licenser.ValidationStatus) {
+					case State.Valid:
+						menuRegister.classList.add('paid');
+						menuRegister.classList.remove('free');
+						break;
+					case State.Expired:
 						menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
-					}
+						menuRegister.classList.add('expired');
+						menuRegister.classList.remove('free');
+						break;
+					default:
+						menuRegister.classList.add('free');
 				}
 			}
     }, 1000);

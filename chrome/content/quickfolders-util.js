@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.8",
+	HARDCODED_CURRENTVERSION : "4.8.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -105,7 +105,7 @@ QuickFolders.Util = {
 			return util.getMail3PaneWindow().QuickFolders.Licenser;
 		}
 		catch(ex) {
-			util.logException('Revtrieve Licenser failed: ', ex);
+			util.logException('Retrieve Licenser failed: ', ex);
 		}
 		return QuickFolders.Licenser;
 	} ,
@@ -445,6 +445,8 @@ QuickFolders.Util = {
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
       licenser.validateLicense(licenseKey);
+			// store license key in this object
+			licenser.LicenseKey = licenseKey;
     }
     if (licenser.isValidated) 
       return true;
@@ -454,7 +456,8 @@ QuickFolders.Util = {
 	popupProFeature: function popupProFeature(featureName, text) {
 		let notificationId,
         util = QuickFolders.Util,
-				prefs = QuickFolders.Preferences;
+				prefs = QuickFolders.Preferences,
+				maindoc = util.getMail3PaneWindow().document;
     if (util.hasPremiumLicense(false))
       return;
     util.logDebugOptional("premium", "popupProFeature(" + featureName + ", " + text + ")");
@@ -475,7 +478,7 @@ QuickFolders.Util = {
 				notificationId = null;
 				break;
 		}
-		let notifyBox = document.getElementById (notificationId);
+		let notifyBox = maindoc.getElementById (notificationId);
     if (notifyBox)
       util.logDebugOptional("premium", "notificationId = " + notificationId + ", found" + notifyBox);
 		let title=util.getBundleString("qf.notification.premium.title", "Premium Feature"),
@@ -507,8 +510,8 @@ QuickFolders.Util = {
         {
           label: regBtn,
           accessKey: hotKey, 
-          callback: function() { 
-            QuickFolders.Util.Licenser.showDialog(featureName); 
+          callback: function() {
+						util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog(featureName); 
           },
           popup: null
         }

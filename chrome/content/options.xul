@@ -20,14 +20,13 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
-		<!--  for..of fixes -->
-		<script type="application/x-javascript" src="chrome://shimQF/content/quickfolders-shim.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
+	<script type="application/x-javascript" src="chrome://shimQF/content/quickfolders-shim.js" />
 
 	
 	<prefpane id="qf-options-prefpane">
@@ -67,7 +66,7 @@
 				<tab id="QuickFolders-Layout" label="&qf.tab.layout;" />
 				<tab id="QuickFolders-Help" label="&qf.tab.quickhelp;" />
 				<tab id="QuickFolders-Support" label="&qf.tab.support;" />
-				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" />
+				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" class="free" />
 			</tabs>
 			<tabpanels id="QuickFolders-Panels"  onselect="QuickFolders.Options.onTabSelect(this,event);">
 				<tabpanel id="QuickFolders-Options-general" orient="vertical">
@@ -470,7 +469,7 @@
 						<button id="copyFolders"
 										label="&qf.copyfolders;"
 										tooltiptext="&qf.copyfolders.tooltip;"
-									  oncommand="QuickFolders.Options.dumpFolderEntries();" />
+									  oncommand="QuickFolders.Options.copyFolderEntries();" />
 						<button id="pasteFolders"
 										label=""
 						        tooltiptext="&qf.pastefolders.tooltip;"
@@ -998,7 +997,7 @@
 											oncommand="QuickFolders.Options.pasteLicense();" />
 							<button id="btnValdidateLicense"
 											label="&qf.button.validateLicense;"
-											oncommand="QuickFolders.Options.validateLicense(false);" />
+											oncommand="QuickFolders.Options.validateLicenseInOptions(false);" />
 						</vbox>
 					</hbox>
 					<separator class="licenseSeparator" />

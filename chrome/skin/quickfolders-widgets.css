@@ -1,16 +1,46 @@
 /* SEPARATED ANIMATION RULES TO DISABLE IN PRO VERSION */
-menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon {
-  animation-name: qfIconRotateY;
+@keyframes qfIconRotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
+menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon, 
+#QuickFolders-Pro.free .tab-icon {
+  animation: qfIconRotateY 3s linear 0.3s infinite;
 	height: 19px;
 	width: 30px;
-  animation-delay: 0.3s;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
 }
+
+@keyframes quickfoldersPulse {
+    0% { transform: scale(0.75) !important; opacity: 0.5; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.75) !important; opacity: 0.5; }
+}
+
+#QuickFolders-Pro.expired .tab-icon,
+#btnLicense.expired,
+#btnLicense.register {
+  animation: quickfoldersPulse 3s 1s ease-in-out infinite;
+}
+
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
-menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro {
+menuitem.cmd[tagName="qfRegister"].free, 
+tab#QuickFolders-Pro {
 	list-style-image : url('chrome://quickfolders/skin/ico/pro.png') !important;
 }
+menuitem.cmd[tagName="qfRegister"].paid,
+tab#QuickFolders-Pro.paid {
+	list-style-image : url('chrome://quickfolders/skin/ico/pro-paid.png') !important;
+}
+menuitem.cmd[tagName="qfRegister"].expired,
+tab#QuickFolders-Pro.expired {
+	list-style-image : url('chrome://quickfolders/skin/ico/pro-expired.png') !important;
+}
+
 
 tab#QuickFolders-Advanced {
 	list-style-image: url('chrome://quickfolders/skin/ico/settings-advanced.png');
@@ -35,15 +65,6 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 	margin-right: -7px;
 }
 	
-@keyframes qfIconRotateY {
-  from {
-	  transform: rotateY(0deg);
-	}
-	to {
-	  transform: rotateY(359deg);
-	}
-}
-
 
 menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
 	list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important;

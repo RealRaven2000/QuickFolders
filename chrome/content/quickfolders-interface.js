@@ -595,11 +595,30 @@ QuickFolders.Interface = {
 	  }
 	} ,
 	
+	updateQuickFoldersLabel: function updateQuickFoldersLabel() {
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util;
+		// force label when there are no folders or license is in expired state!
+		try {
+			let showLabelBox = prefs.isShowQuickFoldersLabel || util.Licenser.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
+					quickFoldersLabel = this.TitleLabel,
+					qfLabelBox = this.TitleLabelBox;
+
+			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
+			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
+			qfLabelBox.collapsed = !showLabelBox;
+			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
+		}
+		catch(ex) {
+			util.logException("updateQuickFoldersLabel()", ex);
+		}
+	} ,
+	
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
 	updateFolders: function updateFolders(rebuildCategories, minimalUpdate) {
-    let prefs = QuickFolders.Preferences,
-        util = QuickFolders.Util;
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util;
 		util.logDebugOptional("interface", "updateFolders(rebuildCategories=" + rebuildCategories + ", minimalUpdate=" + minimalUpdate + ")");
 		this.TimeoutID=0;
 
@@ -633,16 +652,8 @@ QuickFolders.Interface = {
 			this.menuPopupsByOffset = [];
 
 			util.clearChildren(this.FoldersBox, rebuildCategories);
-
-			// force label when there are no folders!
-			let showLabelBox = prefs.isShowQuickFoldersLabel || (0==QuickFolders.Model.selectedFolders.length),
-			    quickFoldersLabel = this.TitleLabel,
-					qfLabelBox = this.TitleLabelBox;
-
-			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
-			quickFoldersLabel.collapsed = !showLabelBox;
-			qfLabelBox.collapsed = !showLabelBox;
-			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
+			
+			this.updateQuickFoldersLabel();
 
 			if (rebuildCategories || null==this.CategoryMenu)
 				this.updateCategories();
@@ -1099,7 +1110,6 @@ QuickFolders.Interface = {
         cats = v.split('|'),
 				txtDebug = '';
 		try {
-			if (util.isDebug) debugger;
 			if (menulist) {
 				menulist.value = v;
 				// if multiple select, check all boxes
@@ -5827,12 +5837,11 @@ QuickFolders.Interface = {
           styleEngine = QuickFolders.Styles;
     // win = util.getMail3PaneWindow();
     styleSheetName = styleSheetName || 'quickfolders-layout.css';
-    let prefixedAni = ((util.PlatformVersion <16.0) ? '-moz-' : '')  + 'animation-name',
-        ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
+    let ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
         iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';
     styleEngine.removeElementStyle(ss, 
                                    iconSelector, 
-                                   [prefixedAni, 'height', 'width']);
+                                   ['animation-name', 'height', 'width']);
     styleEngine.setElementStyle(ss, 
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',  
                                 'list-style-image', 

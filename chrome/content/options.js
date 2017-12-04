@@ -238,7 +238,7 @@ QuickFolders.Options = {
     licenser.LicenseKey = prefs.getStringPref('LicenseKey');
     getElement('txtLicenseKey').value = licenser.LicenseKey;
     if (licenser.LicenseKey) {
-      this.validateLicense(false);
+      this.validateLicenseInOptions(false);
     }
     
     /*****  Help / Support Mode  *****/
@@ -297,6 +297,7 @@ QuickFolders.Options = {
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog...');
           QI.removeAnimations('quickfolders-options.css');
+					
         }
       );
     
@@ -503,8 +504,11 @@ QuickFolders.Options = {
       }
       if (crypto)
         [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
-      else 
+      else { // reset internal state of object if no crypto can be found!
         result = State.Invalid;
+				licenser.DecryptedDate = "";
+				licenser.DecryptedMail = "";
+			}
       decryptedDate = licenser.DecryptedDate;
       getElement('licenseDate').value = decryptedDate; // invalid ??
       decryptedMail = licenser.DecryptedMail;
@@ -558,12 +562,20 @@ QuickFolders.Options = {
   } ,
   
   pasteLicense: function pasteLicense() {
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
         str       = {},
         strLength = {},
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
-    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+		if (Services.clipboard)
+			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+		else {
+			// Postbox code
+			let cb = Cc["@mozilla.org/widget/clipboard;1"].getService(Ci.nsIClipboard);
+			cb.getData(trans, cb.kGlobalClipboard);
+		}
 
     trans.getTransferData("text/unicode", str, strLength);
     if (strLength.value) {
@@ -577,39 +589,59 @@ QuickFolders.Options = {
     }
     if (finalLicense) {
       let testMode = !document.getElementById('boxKeyGenerator').collapsed;
-      this.validateLicense(testMode);
+      this.validateLicenseInOptions(testMode);
     }
   } ,
   
-  validateLicense: function validateLicense(testMode) {
-    let wd = window.document,
-        getElement = wd.getElementById.bind(wd),
-        btnLicense = getElement("btnLicense");
+  validateLicenseInOptions: function validateLicenseInOptions(testMode) {
+		function replaceCssClass(el,addedClass) {
+			if (!el) return;
+			el.classList.add(addedClass);
+			if (addedClass!='paid')	el.classList.remove('paid');
+			if (addedClass!='expired')	el.classList.remove('expired');
+			if (addedClass!='free')	el.classList.remove('free');
+		}
 		const util = QuickFolders.Util,
 					State = util.Licenser.ELicenseState,
 					QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
+    let wd = window.document,
+        getElement = wd.getElementById.bind(wd),
+        btnLicense = getElement("btnLicense"),
+				proTab = getElement("QuickFolders-Pro");
     try {
-			let result = this.decryptLicense(testMode);
+			let result = this.decryptLicense(testMode),
+			    menuProLicense = util.getMail3PaneWindow().QuickFolders.Util.$('QuickFolders-ToolbarPopup-register');
+					
+			QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
 			switch(result) {
 				case State.Valid:
 				  btnLicense.collapsed = true;
+					replaceCssClass(proTab, 'paid');
+					replaceCssClass(btnLicense, 'paid');
+					replaceCssClass(menuProLicense, 'paid');
 					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
 				  break;
 				case State.Expired:
 					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 					btnLicense.label = txtRenew;
 					QI.TitleLabel.label = txtRenew;
+					replaceCssClass(proTab, 'expired');
+					replaceCssClass(btnLicense, 'expired');
+					replaceCssClass(menuProLicense, 'expired');
 				  btnLicense.collapsed = false;
 					break;
 				default:
 				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
 				  btnLicense.collapsed = false;
+					replaceCssClass(proTab, 'free');
+					replaceCssClass(menuProLicense, 'free');
 					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
 			}
+			
 			util.logDebug('validateLicense - result = ' + result);
     }
     catch(ex) {
-      QuickFolders.Util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
+      util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
     }
   } ,
   
@@ -1161,11 +1193,18 @@ QuickFolders.Options = {
         strLength = {},
 				strFoldersPretty = '';
 
-		 util.popupProFeature("pasteFolderEntries");
+		util.popupProFeature("pasteFolderEntries");
 				
-    trans.addDataFlavor("text/unicode");
-    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-    trans.getTransferData("text/unicode", str, strLength);
+		trans.addDataFlavor("text/unicode");
+		if (Services.clipboard) 
+			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+		else {
+			// Postbox code
+			let cb = Cc["@mozilla.org/widget/clipboard;1"].getService(Ci.nsIClipboard);
+			cb.getData(trans, cb.kGlobalClipboard);
+		}
+		trans.getTransferData("text/unicode", str, strLength);
+		
 		
     if (strLength.value && str) {
 			let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
@@ -1212,7 +1251,7 @@ QuickFolders.Options = {
 		
 	},
   
-	dumpFolderEntries: function dumpFolderEntries() {
+	copyFolderEntries: function copyFolderEntries() {
 		// debug function for checking users folder string (about:config has trouble with editing JSON strings)
     const Cc = Components.classes,
           Ci = Components.interfaces,

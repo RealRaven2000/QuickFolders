@@ -96,7 +96,7 @@ QuickFolders.Licenser = {
       case ELS.NotValidated: return 'Not Validated';
       case ELS.Valid: return 'Valid';
       case ELS.Invalid: return 'Invalid';
-      case ELS.Expired: return 'Invalid';
+      case ELS.Expired: return 'Invalid (expired)';
       case ELS.MailNotConfigured: return 'Mail Not Configured';
       case ELS.MailDifferent: return 'Mail Different';
       case ELS.Empty: return 'Empty';
@@ -123,7 +123,9 @@ QuickFolders.Licenser = {
   
   load: function load() {
     const getElement = document.getElementById.bind(document),
-          util = QuickFolders.Util;
+          util = QuickFolders.Util,
+					licenser = util.Licenser,
+          ELS = licenser.ELicenseState;
         
     let dropdownCount = 0;
     function appendIdentity(dropdown, id, account) {
@@ -160,14 +162,13 @@ QuickFolders.Licenser = {
       ref.value = window.arguments[1].inn.referrer;
     }
 		// prepare renew license button?
-    let licenser = util.Licenser,
-        decryptedDate = licenser ? licenser.DecryptedDate : '';
+    let decryptedDate = licenser ? licenser.DecryptedDate : '';
     if (decryptedDate) {
 			if (util.isDebug) {
 				util.logDebug('QuickFolders.Licenser.load()\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
 				debugger;
 			}
-			if (licenser.ValidationStatus == licenser.ELicenseState.NotValidated) {
+			if (licenser.ValidationStatus == ELS.NotValidated) {
 				licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey'));
 				util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
 			}
@@ -182,6 +183,10 @@ QuickFolders.Licenser = {
 		}
     else
       getElement('licenseDate').collapsed = true;
+		
+		if (licenser.ValidationStatus != ELS.Valid && licenser.ValidationStatus != ELS.Expired)
+			getElement('licenseDateLabel').value = " ";
+		
 
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
@@ -233,7 +238,7 @@ QuickFolders.Licenser = {
         email = it.getAttribute('value'),
         names = fName.split(' ');
     document.getElementById('firstName').value = names[0];
-    document.getElementById('lastName').value = names[names.length-1];
+    document.getElementById('lastName').value = names.length > 1 ? names[names.length-1] : "";
     document.getElementById('email').value = email;
   } ,
   
@@ -398,7 +403,6 @@ QuickFolders.Licenser = {
     let maxDigits = QuickFolders.Crypto.maxDigits, // will be 67 for Domain License
         encrypted = this.getCrypto(LicenseKey),
         clearTextEmail = this.getMail(LicenseKey),
-        clearTextDate = this.getDate(LicenseKey),
         RealLicense = '';
     if (!encrypted) {
       this.ValidationStatus = ELS.Invalid;

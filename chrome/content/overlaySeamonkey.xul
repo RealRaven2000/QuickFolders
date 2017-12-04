@@ -257,7 +257,7 @@
 				<menuitem id="QuickFolders-ToolbarPopup-register"
 				          label="&qf.menuitem.quickfolders.register;"
 				          oncommand="QuickFolders.Licenser.showDialog('mainPopup');"
-				          class="cmd menuitem-iconic"
+				          class="cmd menuitem-iconic free"
 				          tagName="qfRegister"
 				          />
 			</menupopup>

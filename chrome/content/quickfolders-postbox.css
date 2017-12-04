@@ -70,3 +70,16 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 	margin-right: 0.4em !important; /* in postbox this icon is glued to the label */
 }
 
+notification[value="quickfolders-proFeature"] .notification-button[accesskey] {
+	background: -moz-linear-gradient(top, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
+  -moz-animation: quickfoldersPulse 3s 1s ease-in-out infinite;
+}
+
+notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover {
+	background: -moz-linear-gradient(top, #fedeb2 0%, #f1a233 46%, #eb8c07 57%, #fbba5f 100%) !important;
+}
+
+
+#QuickFolders-Toolbar #QuickFolders-title-label:hover {
+	background-image: -moz-linear-gradient(top, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;	
+}

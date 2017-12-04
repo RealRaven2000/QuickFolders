@@ -19,6 +19,7 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
+	<script type="application/x-javascript" src="chrome://shimQF/content/quickfolders-shim.js" />
 
 	
 	<vbox id="thePage">
@@ -27,10 +28,11 @@
 			<spacer flex="1" />
 			<vbox align="center">
 				<hbox id="qfLicenseTerm" class="para">
-					<label >&qf.label.licenseValid;</label>
+					<label id="licenseDateLabel">&qf.label.licenseValid;</label>
 					<label id="licenseDate" value="-" />
 				</hbox>
 			</vbox>
+			<spacer flex="1"/>
 			<vbox>
 				<spacer flex="1"/>
 				<!-- align buttons bottom right -->
@@ -133,6 +135,7 @@
 				</td>
 				<td>
 					<button id="btnLicense"
+					  class="register"
 						label="&buyPersonalLicense.button;"
 						oncommand="QuickFolders.Licenser.goPro(0);" />
 				</td>

@@ -1108,13 +1108,14 @@
 							</hbox>
 						</groupbox>
 						<spacer flex="1" />
-						<vbox height="40">
-							<hbox pack="end">
-								<button id="btnLicense" 
-												label="Buy License"
-												oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
-							</hbox>
+						<vbox height="40" >
+							<spacer flex="1" />
+							<button id="btnLicense" 
+											label="Buy License"
+											oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+							<spacer flex="1" />
 						</vbox>
+						<spacer flex="1" />
 					</hbox>
 					<separator flex="1" />
 					<groupbox id="boxKeyGenerator" collapsed="true">

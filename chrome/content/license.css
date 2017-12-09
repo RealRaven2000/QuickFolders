@@ -1,4 +1,31 @@
 /* special style for license button */
+#QuickFolders-Options-goPro #btnLicense {
+	position: fixed;
+	top:   10px;
+	right: 20px;
+	max-width: 30em;
+	cursor: pointer;
+	outline: 1px solid rgba(0,0,0,0.0);
+	transition: outline-color 1.6s ease-out, outline-width 1.2s ease;
+}
+
+#QuickFolders-Options-goPro #btnLicense:hover {
+	animation: none !important;
+	outline: 580px solid rgba(0,0,0,0.4); /* dim background on hover */
+	transition: outline-color 1s ease;
+}
+
+@keyframes QuickFoldersPulse {
+    0% { transform: scale(0.75) !important; opacity: 0.5; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.75) !important; opacity: 0.5; }
+}
+
+#btnLicense {
+  animation: QuickFoldersPulse 2.5s 1s ease-in-out infinite;
+}
+
+
 #btnLicense label,
 #btnDomainLicense label,
 #btnEnterCode label

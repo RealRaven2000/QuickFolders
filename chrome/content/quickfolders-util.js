@@ -1808,8 +1808,12 @@ QuickFolders.Util.FirstRun = {
         {
 					suppressDonationScreen = true;
 				}
-        if (isPremiumLicense)
+        if (isPremiumLicense) {
           suppressDonationScreen = true;
+					if (pureVersion.indexOf('4.8.1')==0 && prev.indexOf("4.8") == 0) {
+						suppressVersionScreen = true;
+					}
+				}
 				
 				let isThemeUpgrade = prefs.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();

@@ -8,6 +8,7 @@
 	}
 }
 
+#QuickFolders-Pro.expired .tab-icon,
 menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon, 
 #QuickFolders-Pro.free .tab-icon {
   animation: qfIconRotateY 3s linear 0.3s infinite;
@@ -15,13 +16,28 @@ menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon,
 	width: 30px;
 }
 
-@keyframes quickfoldersPulse {
-    0% { transform: scale(0.75) !important; opacity: 0.5; }
-    50% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0.75) !important; opacity: 0.5; }
+@keyframes qfIconRotateX {
+  from {
+	  transform: rotateX(0deg);
+	}
+	to {
+	  transform: rotateX(359deg);
+	}
 }
 
-#QuickFolders-Pro.expired .tab-icon,
+menuitem.cmd[tagName="qfRegister"].expired .menu-iconic-icon,
+#QuickFolders-Pro.expired .tab-icon {
+  animation: qfIconRotateX 3s linear 0.3s infinite;
+}
+
+
+
+@keyframes quickfoldersPulse {
+    0% { transform: scale(1); font-size: 1em; opacity: 0.6; }
+    50% { transform: scale(1.2); font-size: 1.25em; opacity: 1; }
+    100% { transform: scale(1); font-size: 1em; opacity: 0.6; }
+}
+
 #btnLicense.expired,
 #btnLicense.register {
   animation: quickfoldersPulse 3s 1s ease-in-out infinite;

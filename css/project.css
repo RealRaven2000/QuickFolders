@@ -454,10 +454,12 @@ table.QuickFoldersProRenew,
 }
 
 a.nohover:hover {
-	background-color: none !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	border-color: transparent !important;
 	border-radius: 0 !important;
 	padding: 0 !important;
-	border-color: transparent !important;
+	margin: 0 !important;
 } 
 
 h3.shillBox {

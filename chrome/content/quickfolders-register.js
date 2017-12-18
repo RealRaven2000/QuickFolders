@@ -67,6 +67,7 @@ QuickFolders.Licenser = {
   DecryptedMail: '',
   DecryptedDate: '',
   AllowSecondaryMails: false,
+	ExpiredDays: 0,
   wasValidityTested: false, // save time do not validate again and again
   get isValidated() {
     return (this.ValidationStatus == this.ELicenseState.Valid);
@@ -184,9 +185,16 @@ QuickFolders.Licenser = {
     else
       getElement('licenseDate').collapsed = true;
 		
-		if (licenser.ValidationStatus != ELS.Valid && licenser.ValidationStatus != ELS.Expired)
-			getElement('licenseDateLabel').value = " ";
-		
+		switch(licenser.ValidationStatus) {
+			case ELS.Expired:
+			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
+				getElement('qfLicenseTerm').classList.add('expired');
+			  break;
+			default:
+			  if (licenser.ValidationStatus != ELS.Valid)
+					getElement('licenseDateLabel').value = " ";			
+		}
+			
 
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
@@ -464,6 +472,8 @@ QuickFolders.Licenser = {
         dateString = today.toISOString().substr(0, 10);
     if (this.DecryptedDate < dateString) {
       this.ValidationStatus = ELS.Expired;
+			let date1 = new Date(this.DecryptedDate);
+			this.ExpiredDays = parseInt((today - date1) / (1000 * 60 * 60 * 24)); 
       logResult(this);
       return [this.ValidationStatus, RealLicense];
     }

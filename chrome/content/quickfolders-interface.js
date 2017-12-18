@@ -606,6 +606,17 @@ QuickFolders.Interface = {
 
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
+			if (util.Licenser.isExpired) {
+				quickFoldersLabel.classList.add('expired');
+				let txtExpired = 
+				  util.getBundleString('qf.premium.renewLicense.tooltip',"Your license expired {1} days ago")
+					.replace("{1}", util.Licenser.ExpiredDays);
+				quickFoldersLabel.setAttribute('tooltiptext', txtExpired);
+			}
+			else {
+				quickFoldersLabel.removeAttribute('tooltiptext');
+				quickFoldersLabel.classList.remove('expired');
+			}
 			qfLabelBox.collapsed = !showLabelBox;
 			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
 		}

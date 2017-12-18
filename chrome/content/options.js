@@ -612,6 +612,7 @@ QuickFolders.Options = {
 			let result = this.decryptLicense(testMode),
 			    menuProLicense = util.getMail3PaneWindow().QuickFolders.Util.$('QuickFolders-ToolbarPopup-register');
 					
+			// this the updating the first button on the toolbar via the main instance
 			QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
 			switch(result) {
 				case State.Valid:
@@ -619,7 +620,6 @@ QuickFolders.Options = {
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
 					replaceCssClass(menuProLicense, 'paid');
-					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
 				  break;
 				case State.Expired:
 					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
@@ -635,7 +635,6 @@ QuickFolders.Options = {
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');
 					replaceCssClass(menuProLicense, 'free');
-					QI.TitleLabel.label = QuickFolders.Preferences.TextQuickfoldersLabel;
 			}
 			
 			util.logDebug('validateLicense - result = ' + result);

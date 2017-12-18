@@ -8,13 +8,13 @@
 	}
 }
 
-#QuickFolders-Pro.expired .tab-icon,
 menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon, 
 #QuickFolders-Pro.free .tab-icon {
   animation: qfIconRotateY 3s linear 0.3s infinite;
 	height: 19px;
 	width: 30px;
 }
+
 
 @keyframes qfIconRotateX {
   from {

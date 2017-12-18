@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.8.1",
+	HARDCODED_CURRENTVERSION : "4.8.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -1810,7 +1810,8 @@ QuickFolders.Util.FirstRun = {
 				}
         if (isPremiumLicense) {
           suppressDonationScreen = true;
-					if (pureVersion.indexOf('4.8.1')==0 && prev.indexOf("4.8") == 0) {
+					if ((pureVersion.indexOf('4.8.1')==0  || pureVersion.indexOf('4.8.2')==0 )
+					    && prev.indexOf("4.8") == 0) {
 						suppressVersionScreen = true;
 					}
 				}

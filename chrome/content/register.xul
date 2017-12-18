@@ -23,14 +23,16 @@
 
 	
 	<vbox id="thePage">
-		<hbox>
+		<hbox style="vertical-align:middle;">
 			<div class="product">&getQuickFolders;</div>
 			<spacer flex="1" />
 			<vbox align="center">
+				<spacer flex="1" />
 				<hbox id="qfLicenseTerm" class="para">
 					<label id="licenseDateLabel">&qf.label.licenseValid;</label>
 					<label id="licenseDate" value="-" />
 				</hbox>
+				<spacer flex="1" />
 			</vbox>
 			<spacer flex="1"/>
 			<vbox>

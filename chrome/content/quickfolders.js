@@ -364,11 +364,16 @@ END LICENSE BLOCK */
 		## [Bug 26453] Seamonkey: The last selected QuickFolders Category is not Remembered.						 
 		## ONGOING: Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
 		
-	4.8.1 QuickFolders Pro - 
+	4.8.1 QuickFolders Pro - 14/12/2017
 	  ## [Bug 26454] Pro License screen - account dropdown not populated
 		## [Bug 26455] Cannot paste folder tabs in Postbox
 		## (Thunderbird & Postbox only) Improved Premium Feature Notifications to always show 
 		## in a sliding notification bar on main window and not as Messagebox 
+
+	4.8.2 QuickFolders Pro - 
+	  ## emphasize Renew button (dark purple background, slight animation of background opacity)
+		## improved display of expiry date better, days expired in tooltip
+
 		
 	Known Issues
 	============

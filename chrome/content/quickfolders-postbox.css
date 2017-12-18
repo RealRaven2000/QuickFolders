@@ -83,3 +83,7 @@ notification[value="quickfolders-proFeature"] .notification-button[accesskey]:ho
 #QuickFolders-Toolbar #QuickFolders-title-label:hover {
 	background-image: -moz-linear-gradient(top, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;	
 }
+
+#QuickFolders-Toolbar #QuickFolders-title-label.expired {
+	background-image: -moz-linear-gradient(top, #bf376b 0%,#990038 51%,#700029 100%) !important; 
+}

@@ -453,6 +453,10 @@ table.QuickFoldersProRenew,
 	opacity: 1 !important;
 }
 
+a.nohover {
+	padding: 0 !important;
+}
+
 a.nohover:hover {
 	background-color: transparent !important;
 	background-image: none !important;

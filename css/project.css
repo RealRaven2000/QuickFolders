@@ -460,7 +460,7 @@ a[href].nohover {
 a[href].nohover:hover {
 	background-color: transparent !important;
 	background-image: none !important;
-	border-color: transparent !important;
+	border-style: none !important;
 	border-radius: 0 !important;
 	padding: 0 !important;
 	margin: 0 !important;

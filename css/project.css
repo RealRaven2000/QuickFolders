@@ -448,6 +448,18 @@ table.QuickFoldersProRenew,
 	z-index:1000;
 }
 
+#bargainStar:hover {
+	animation-play-state: paused;
+	opacity: 1 !important;
+}
+
+a.nohover:hover {
+	background-color: none !important;
+	border-radius: 0 !important;
+	padding: 0 !important;
+	border-color: transparent !important;
+} 
+
 h3.shillBox {
 	background-image: linear-gradient(to bottom, #ee0a11 0%,#b70306 37%,#8c0002 55%,#d9070b 100%) !important;
 	font-size: 1.1em;

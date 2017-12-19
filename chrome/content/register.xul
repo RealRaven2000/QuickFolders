@@ -135,7 +135,7 @@
 				<td>
 					<label class="shilling">&buyLicense.instruct;</label>
 				</td>
-				<td>
+				<td class="btnLicenseContainer">
 					<button id="btnLicense"
 					  class="register"
 						label="&buyPersonalLicense.button;"

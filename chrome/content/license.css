@@ -21,8 +21,18 @@
 	100% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
 }
 
-#btnLicense {
+.btnLicenseContainer {
+	height: 60px;
+}
+
+#btnLicense.register, #btnLicense.expired {
   animation: QuickFoldersPulse 2.5s 1s ease-in-out infinite;
+}
+
+#btnLicense.register:hover, #btnLicense.expired:hover {
+	animation-play-state: paused;
+	opacity: 1 !important;
+	font-size: 1.3em !important;
 }
 
 
@@ -38,6 +48,7 @@
 }
 
 #btnLicense, #btnEnterCode, #btnDomainLicense {
+	cursor: pointer;
   font-family: cambria, Georgia, serif; /* see also .niceFont in quickfolders-options.css */
   font-size: 10.2pt;
 	font-style: normal;

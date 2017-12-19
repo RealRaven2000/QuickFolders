@@ -190,9 +190,14 @@ QuickFolders.Licenser = {
 			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
 				getElement('qfLicenseTerm').classList.add('expired');
 			  break;
-			default:
-			  if (licenser.ValidationStatus != ELS.Valid)
-					getElement('licenseDateLabel').value = " ";			
+			case ELS.Valid:
+			  getElement('btnLicense').classList.remove('register'); // remove the "breathing effect" if license is valid.
+			  break;
+			case ELS.Empty:
+				getElement('licenseDateLabel').value =" ";
+			  break;
+			default: // default class=registere will animate the button
+			  getElement('licenseDateLabel').value = licenser.licenseDescription(licenser.ValidationStatus) + ":";
 		}
 			
 

@@ -1,6 +1,9 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Opcions de QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Clic amb el boto dret per a l'històric de versions.">
+<!ENTITY qf.tab.general "General">
+<!ENTITY qf.tab.advanced "Advanced">
 <!ENTITY qf.tab.layout "Pimp My Tabs!">
 <!ENTITY qf.tab.quickhelp "Ajuda Ràpida">
 <!ENTITY qf.tab.support "Suport">
@@ -31,10 +34,18 @@
 <!ENTITY qf.label.mainToolbar "Elements de la barra d'Eines Principal">
 <!ENTITY qf.checkbox.showRecentTab "Mostra les Últimes Carpetes">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Botó dret per configurar">
+<!ENTITY qf.group.navigation "Message Navigation">
+<!ENTITY qf.label.goNextUnread "Go to next unread email:">
+<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
+<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
+<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
+<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "Botó quickMove">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "El botó quickmove es pot utilitzar per moure correus a una carpeta determinada. Podeu recopilar correus de diferents carpetes. Quan hi tingueu els correus desitjats, entreu el nom de la carpeta destinació a la barra de cerca.">
 <!ENTITY qf.checkbox.tabMenuIcon "Icona del Menú de la Barra d'eines">
 <!ENTITY qf.checkbox.tabMenuIcon.tooltip "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines">
+<!ENTITY qf.toolbarMinimumHeight "Minimum height:">
+<!ENTITY qf.toolbarMinimumHeight.tooltip "For Mac systems who encounter [Bug 25021]">
 <!ENTITY qf.label.currentFolderToolbar "Barra d'Eines de la Carpeta Actual">
 <!ENTITY qf.checkbox.currentFolder.show "Mostra la Barra d'Eines">
 <!ENTITY qf.checkbox.singleMessageTab.currentFolder.show "Toolbar in Single Message Tabs">
@@ -153,7 +164,24 @@
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
+<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Copy mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
+<!ENTITY qf.quickMove.path.format "Display Format:">
 <!ENTITY qf.pathFormat.folderName "Folder Name">
+<!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">
+<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder Path">
+<!ENTITY qf.pathFormat.PathOnly "Folder Path">
+<!ENTITY qf.pathFormat.URI "Folder URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
+<!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
+<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
+<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
+<!ENTITY qf.checkbox.readingList "Reading List">
+<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
 <!ENTITY qf.label.donate "Fer una Donació">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors.">

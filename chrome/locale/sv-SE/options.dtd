@@ -1,6 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "Inställningar för QuickFolders">
 <!ENTITY qf.label.quickfolders "QuickFolders">
-<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Besök Thunderbird Daily - YouTube-kanalen för tips och guider om hur man använder QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Högerklicka för versionshistorik.">
 <!ENTITY qf.tab.general "Allmänt">
 <!ENTITY qf.tab.advanced "Avancerat">
@@ -34,12 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Element i huvudverktygsfältet">
 <!ENTITY qf.checkbox.showRecentTab "Visa Nyligen använda mappar-fliken">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Högerklicka för inställningar">
-<!ENTITY qf.group.navigation "Message Navigation">
-<!ENTITY qf.label.goNextUnread "Go to next unread email:">
-<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
-<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
-<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
-<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
+<!ENTITY qf.group.navigation "Meddelandenavigering">
+<!ENTITY qf.label.goNextUnread "Gå till nästa olästa e-postmeddelande:">
+<!ENTITY qf.label.goNextUnread.tip "Vanligtvis frågar Thunderbird dig om du vill gå till nästa olästa e-postmeddelande om den behöver hoppa till en annan mapp.">
+<!ENTITY qf.goNextUnread.auto "Gå till nästa mapp utan att fråga (rekommenderas)">
+<!ENTITY qf.goNextUnread.prompt "Fråga om att gå till nästa olästa mapp">
+<!ENTITY qf.goNextUnread.none "Gör ingenting om inga olästa e-postmeddelanden finns i mappen">
 <!ENTITY qf.checkbox.showQuickMove "quickMove-knapp">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "quickMove-knappen kan användas för att dra e-brev till en namngiven målmapp. Du kan samla in e-brev från flera mappar. När du har samlat ihop alla e-brev du vill flytta, skriver du in målmappens namn i sökrutan.">
 <!ENTITY qf.checkbox.tabMenuIcon "Ikon för verktygsfältsmenyn">
@@ -83,17 +83,17 @@
 <!ENTITY qf.label.misc "Övrigt">
 <!ENTITY qf.checkbox.displaylabel "Visa &quot;QuickFolders&quot;-etiketten i verktygsfältet">
 <!ENTITY qf.checkbox.displaylabel.tooltip "högerklicka för att ändra etikettexten">
-<!ENTITY qf.checkbox.hideCategoryBox "Collapse Categories">
-<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizes the Categories menu to take up less space.">
+<!ENTITY qf.checkbox.hideCategoryBox "Stäng kategorier">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimerar kategorimenyn för att frigöra mer utrymme.">
 <!ENTITY qf.checkbox.enableTransitions "Aktivera CSS-övergångar">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Visar mjuka övergångar mellan olika typer av flikfärgning.">
 <!ENTITY qf.checkbox.debug "Felsökningsläge">
 <!ENTITY qf.checkbox.debug.tooltip "högerklicka på den här kryssrutan för avancerade felsökningsalternativ">
 <!ENTITY qf.label.initdelay "Inledande fördröjning (ms) {standardvärdet är 1000}:">
-<!ENTITY qf.copyfolders "Copy Tabs">
+<!ENTITY qf.copyfolders "Kopiera flikar">
 <!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Kopierar mapparnas konfigurationssträng till Urklipp">
-<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
+<!ENTITY qf.pastefolders.tooltip "Radera alla QuickFolders och läs nya konfigurationer från urklipp">
 <!ENTITY qf.label.appearance "Utseende">
 <!ENTITY qf.label.themes "Teman:">
 <!ENTITY qf.themes.flatTabs.label "Platt stil">
@@ -110,11 +110,11 @@
 <!ENTITY qf.options.themes.customCornerRadius.Top.label "Överst:">
 <!ENTITY qf.options.themes.customCornerRadius.Bottom.label "Nederst:">
 <!ENTITY qf.button.default "Standard">
-<!ENTITY qf.label.Toolbar "Toolbar">
+<!ENTITY qf.label.Toolbar "Verktygsfält">
 <!ENTITY qf.label.ToolbarBackground "Verktygsfältets bakgrund:">
 <!ENTITY qf.checkbox.transparent "transparent">
-<!ENTITY qf.label.Toolbar.bottomLine "Bottom Line Width:">
-<!ENTITY qf.label.Toolbar.bottomLine.tip "The width of the line under tabs. Change its color with the Active Tab Color picker below.">
+<!ENTITY qf.label.Toolbar.bottomLine "Bredd för nedre kant:">
+<!ENTITY qf.label.Toolbar.bottomLine.tip "Bredden för kanten under flikar. Ändra dess färg med färgväljare för aktiv flik nedan.">
 <!ENTITY qf.label.colors "Färger">
 <!ENTITY qf.label.UncoloredTab "Ofärgad flik">
 <!ENTITY qf.label.UncoloredTab.tooltip "Utseendet på flikar som inte tilldelats en särskild färg">
@@ -168,20 +168,20 @@
 <!ENTITY qf.checkbox.quickJump.tip "Kortkommando för quickJump-knappen ger snabb navigering via namnposter.">
 <!ENTITY qf.checkbox.quickMove "quickMove: Flytta e-brev till vilken mapp som helst via kortkommando: Skift+">
 <!ENTITY qf.checkbox.quickMove.tip "Kortkommando för att dra e-brev till quickMove-knappen ger snabb arkivering till vilken mapp som helst via namnposter.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy: Copy mail to any folder with Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
-<!ENTITY qf.quickMove.path.format "Display Format:">
-<!ENTITY qf.pathFormat.folderName "Folder Name">
-<!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">
-<!ENTITY qf.pathFormat.AccountAndPath "Account - Folder Path">
-<!ENTITY qf.pathFormat.PathOnly "Folder Path">
-<!ENTITY qf.pathFormat.URI "Folder URI">
-<!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
-<!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
-<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
-<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
-<!ENTITY qf.checkbox.readingList "Reading List">
-<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
+<!ENTITY qf.checkbox.quickCopy "quickCopy: Kopiera e-post till valfri mapp med kortkommandot: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy.tip "Kortkommando för att dra e-post till quickCopy-knappen för snabbaste kopieringen till valfri mapp via namninmatningen.">
+<!ENTITY qf.quickMove.path.format "Visningsformat:">
+<!ENTITY qf.pathFormat.folderName "Mappnamn">
+<!ENTITY qf.pathFormat.folderAndAccount "Mappnamn - E-postkonto">
+<!ENTITY qf.pathFormat.AccountAndPath "Konto - Mappsökväg">
+<!ENTITY qf.pathFormat.PathOnly "Mappsökväg">
+<!ENTITY qf.pathFormat.URI "Mapp-URI">
+<!ENTITY qf.pathFormat.maxDepth "Maximalt sökvägsdjup:">
+<!ENTITY qf.pathFormat.tooltip "Maximalt antal mappar som visas i mappsökvägen.">
+<!ENTITY qf.categories.supportMultiple "Stöd för att välja flera flikkategorier">
+<!ENTITY qf.categories.supportMultiple.tooltip "Använd SHIFT-tangenten för att välja fler än en kategori i rullgardinslisten.">
+<!ENTITY qf.checkbox.readingList "Läslista">
+<!ENTITY qf.checkbox.readingList.tooltip "En lista över e-post som bör läsas senare. Dra dina viktigaste e-postmeddelande till denna knapp.">
 <!ENTITY qf.label.donate "Donera">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">

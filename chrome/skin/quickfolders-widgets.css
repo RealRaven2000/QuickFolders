@@ -30,8 +30,6 @@ menuitem.cmd[tagName="qfRegister"].expired .menu-iconic-icon,
   animation: qfIconRotateX 3s linear 0.3s infinite;
 }
 
-
-
 @keyframes quickfoldersPulse {
     0% { transform: scale(1); font-size: 1em; opacity: 0.6; }
     50% { transform: scale(1.2); font-size: 1.25em; opacity: 1; }

@@ -370,10 +370,13 @@ END LICENSE BLOCK */
 		## (Thunderbird & Postbox only) Improved Premium Feature Notifications to always show 
 		## in a sliding notification bar on main window and not as Messagebox 
 
-	4.8.2 QuickFolders Pro - 
+	4.8.2 QuickFolders Pro - 20/12/2017
 	  ## emphasize Renew button (dark purple background, slight animation of background opacity)
 		## improved display of expiry date better, days expired in tooltip
 
+	4.8.3 QuickFolders Pro - 25/12/2017
+	  ## translation updates
+		## xmas days special sale 25% off
 		
 	Known Issues
 	============

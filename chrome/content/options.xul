@@ -1112,6 +1112,7 @@
 							<spacer flex="1" />
 							<button id="btnLicense" 
 											label="Buy License"
+											class="register"
 											oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
 							<spacer flex="1" />
 						</vbox>

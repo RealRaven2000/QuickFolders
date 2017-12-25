@@ -633,6 +633,7 @@ QuickFolders.Options = {
 				default:
 				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
 				  btnLicense.collapsed = false;
+					replaceCssClass(btnLicense, 'register');
 					replaceCssClass(proTab, 'free');
 					replaceCssClass(menuProLicense, 'free');
 			}

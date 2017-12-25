@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.8.2",
+	HARDCODED_CURRENTVERSION : "4.8.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -1792,23 +1792,21 @@ QuickFolders.Util.FirstRun = {
         		versionPage = util.makeUriPremium("http://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
-        if ((pureVersion.indexOf('4.2.') == 0 && prev.indexOf("4.2") == 0)) {
-          // completely silent install  
+				suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
+				
+				/** minor version upgrades / sales  **/
+				if (pureVersion.indexOf('4.8.3') == 0 && prev.indexOf("4.8") == 0)
           suppressVersionScreen = true;
-					suppressDonationScreen = true;
-        }
-        else
-          suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
+				
+				
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
 				//  same for 3.14.1, 3.14.2 etc - no donation screen
-				if ((pureVersion.indexOf('3.12.') == 0 && prev.indexOf("3.12") == 0) ||
-				    (pureVersion.indexOf('3.14.') == 0 && prev.indexOf("3.14") == 0) ||
-						(pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
-						)
+				if ((pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0))
         {
 					suppressDonationScreen = true;
 				}
         if (isPremiumLicense) {
+					util.logDebugOptional ("firstrun","has premium license - suppress donation screen");
           suppressDonationScreen = true;
 					if ((pureVersion.indexOf('4.8.1')==0  || pureVersion.indexOf('4.8.2')==0 )
 					    && prev.indexOf("4.8") == 0) {
@@ -1836,7 +1834,7 @@ QuickFolders.Util.FirstRun = {
 								util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
 							}
 							else {
-								util.logDebugOptional ("firstrun","setTimeout for donation link");
+								util.logDebugOptional ("firstrun","setTimeout for showing donation link");
 								window.setTimeout(function() {util.openURL(null, "http://quickfolders.org/donate.html");}, 2000);
 							}
 						}

@@ -26,7 +26,7 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
-	<script type="application/x-javascript" src="chrome://shimQF/content/quickfolders-shim.js" />
+	<script type="application/x-javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
 
 	
 	<prefpane id="qf-options-prefpane">

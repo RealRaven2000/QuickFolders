@@ -65,11 +65,16 @@ notification[value="quickfolders-filter"] hbox.notification-inner {
 	background-image: linear-gradient(to bottom, rgba(251,28,3,1) 0%, rgba(161,26,11,1) 42%, rgba(138,18,4,1) 51%, rgba(199,24,5,1) 100%);
 	padding-top: 0.75em;
 	padding-bottom: 0.75em;
+	min-height: 80px; /* workaround for a box size issue in postbox (red background gets clipped at bottom) */
 }
 
 #mail-notification-box,
 #pbSearchThresholdNotifcationBar {
 	height: auto;
+}
+
+#displayDeck {
+	
 }
 
 /* fix some accidental truncations */

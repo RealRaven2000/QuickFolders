@@ -378,11 +378,26 @@ END LICENSE BLOCK */
 	  ## translation updates
 		## xmas days special sale 25% off
 		
+  4.9 WIP
+		## Make compatible with Postbox beta 5.52 (modern Gecko build)
+		## tidy up (don't show) own filter notification when quickFilters is installed.
+		## Postbox: fix displaying advanced / debug settings when right-clicking some options / debug checkbox 
+		## [Bug 26473] Added toolbar button to create subfolder (within the current folder)
+		## Allow asynchronous creation of subfolders during quickMove / quickJump in 
+		##       new Postbox builds (5.52 and later, supporting Task)
+		## Added Spanish locale {thanks to strel - Babelzilla.org}
+		## Filter Assistant: remove unnecessary notification box if quickFilters is installed
+		## Advanced Tab colors (postbox) temporary fixes with !important - see Interface.addCustomStyles()
+		## Stability fixes around Util.CurrentFolder
+		
 	Known Issues
 	============
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.
 		## when using the DOWN key to go to the search results of find folder, DOWN has to be pressed twice. (Tb+Pb only)
 		## search in SeaMonkey delays highlighting the current tab when switching to the folder.
+		## when deleting the current folder we should change into the parent folder to avoid confusion 
+		##      at the moment we are in the folder after it's moved to trash which makes it look as if 
+		##      it still a useful folder (Postbox)
 	
 	
 ###VERSION###
@@ -807,20 +822,14 @@ var QuickFolders = {
     if (!QuickFolders.RenameFolders_Tb) {
       util.logDebug("Wrapping renameFolder...");
       // overwrite original function - we won't actualy use or restore this
-      switch (ApName) {
-        case 'SeaMonkey':
-        case 'Postbox':
-          QuickFolders.RenameFolders_Tb = RenameFolder;
-          RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
-          break;
-        case 'Thunderbird':
-            QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
-            gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
-          break;
-      }
-    }
-    else {
-      util.logDebug("gFolderTreeController not defined.");
+			if (typeof gFolderTreeController !== 'undefined' && gFolderTreeController.renameFolder) {
+				QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
+				gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
+			}
+			else {
+				QuickFolders.RenameFolders_Tb = RenameFolder;  // SeaMonkey, legacy Postbox 
+				RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
+			}
     }
     
 		if (prefs && prefs.isDebug)
@@ -1165,7 +1174,7 @@ var QuickFolders = {
 					let currentURI, aFolder,
 					    uriName = encodeURI(aName);
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
-					if (util.Application=='Postbox') {
+					if (util.Application=='Postbox' &&  typeof GetSelectedFolderURI !== 'undefined') {
 						currentURI = GetSelectedFolderURI();
 						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}
@@ -1180,7 +1189,7 @@ var QuickFolders = {
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
 					let platform = util.PlatformVersion;
-					if (util.Application == 'Postbox' || platform < 26.0) {  // legacy code. Remove once Task.jsm lands in Postbox
+					if (typeof Task != 'object') {  // legacy code. Remove once Task.jsm lands in Postbox
 						aFolder.createSubfolder(uriName, msgWindow);
 						
 						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
@@ -1307,7 +1316,7 @@ var QuickFolders = {
 				  "window.openDialog (newFolderDialog.xul)\n"
 					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
 					+ "dualUseFolders:" + dualUseFolders);
-				if (util.Application=='Postbox') {
+				if (util.Application=='Postbox' && util.PlatformVersion<52) {
 					// see newFolderDialog.js for when Callback is called.
 					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
                       "",
@@ -2213,7 +2222,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       // in the tree.	to do that, we need to ensure that all its
       // ancestors are expanded
 			util.logDebugOptional("folders.select", "Postbox: EnsureFolderIndex : " + msgFolder.URI);
-      folderIndex = EnsureFolderIndex(msgFolder);
+			if (typeof EnsureFolderIndex !== 'undefined')
+				folderIndex = EnsureFolderIndex(msgFolder); // legacy
+			else {
+				if (gFolderView.selectFolder(msgFolder))
+					return true; // modern Postbox shortcut
+			}
       util.logDebugOptional("folders.select", "result index = " + folderIndex);
       // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
       if (folderIndex<0) {

@@ -40,103 +40,107 @@ QuickFolders.FilterWorker = {
         QI = QuickFolders.Interface,
         prefs = QuickFolders.Preferences,
 		    notificationId,
-        notifyBox;
+        notifyBox,
+				isQuickFilters = typeof window.quickFilters !== 'undefined';
         
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
-		switch(util.Application) {
-			case 'Postbox': 
-				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-				break;
-			case 'Thunderbird': 
-				notificationId = 'mail-notification-box'
-				break;
-			case 'SeaMonkey':
-				notificationId = null;
-				break;
-				
-		}
-		let notificationKey = "quickfolders-filter";
-
-		if (notificationId) {
-			notifyBox = document.getElementById (notificationId);
-			let item=notifyBox.getNotificationWithValue(notificationKey)
-			if(item)
-				notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
-		}
 		
-		if (active 
-			&& 
-			!QuickFolders.FilterWorker.FilterMode 
-			&&
-			prefs.getBoolPref("filters.showMessage")) 
-		{
-			
-			let title = util.getBundleString("qf.filters.toggleMessage.title",
-                  "Creating Filters"),
-			    theText = util.getBundleString("qf.filters.toggleMessage.notificationText",
-            "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
-            +" To end the filter learning mode, press the filter button on the top left of QuickFolders bar."),
-			    dontShow = util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
+		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
+			switch(util.Application) {
+				case 'Postbox': 
+					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
+					break;
+				case 'Thunderbird': 
+					notificationId = 'mail-notification-box'
+					break;
+				case 'SeaMonkey':
+					notificationId = null;
+					break;
+					
+			}
+			let notificationKey = "quickfolders-filter";
 
+			if (notificationId) {
+				notifyBox = document.getElementById (notificationId);
+				let item=notifyBox.getNotificationWithValue(notificationKey)
+				if(item)
+					notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+			}
 			
-			if (notifyBox) {
-				// button for disabling this notification in the future
-					let nbox_buttons;
-					// the close button in Postbox is broken: skipAnimation defaults to false and 
-					// creates a invisible label with margin = (-height) pixeles, covering toolbars above
-					// therefore we implement our own close button in Postbox!!
-					if (util.Application == 'Postbox') {
-						nbox_buttons = [
-							{
-								label: dontShow,
-								accessKey: null,
-								callback: function() { QuickFolders.FilterWorker.showMessage(false); },
-								popup: null
-							},
-							{
-								label: 'X',
-								accessKey: 'x',
-								callback: function() { util.onCloseNotification(null, notifyBox, notificationKey); },
-								popup: null
-							}
-						];
-					}
-					else {
-						nbox_buttons = [
-							{
-								label: dontShow,
-								accessKey: null,
-								callback: function() { QuickFolders.FilterWorker.showMessage(false); },
-								popup: null
-							}
-						];
-					}
+			if (active 
+				&& 
+				!QuickFolders.FilterWorker.FilterMode 
+				&&
+				prefs.getBoolPref("filters.showMessage")) 
+			{
+				
+				let title = util.getBundleString("qf.filters.toggleMessage.title",
+										"Creating Filters"),
+						theText = util.getBundleString("qf.filters.toggleMessage.notificationText",
+							"Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
+							+" To end the filter learning mode, press the filter button on the top left of QuickFolders bar."),
+						dontShow = util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
+
+				
+				if (notifyBox) {
+					// button for disabling this notification in the future
+						let nbox_buttons;
+						// the close button in Postbox is broken: skipAnimation defaults to false and 
+						// creates a invisible label with margin = (-height) pixeles, covering toolbars above
+						// therefore we implement our own close button in Postbox!!
+						if (util.Application == 'Postbox') {
+							nbox_buttons = [
+								{
+									label: dontShow,
+									accessKey: null,
+									callback: function() { QuickFolders.FilterWorker.showMessage(false); },
+									popup: null
+								},
+								{
+									label: 'X',
+									accessKey: 'x',
+									callback: function() { util.onCloseNotification(null, notifyBox, notificationKey); },
+									popup: null
+								}
+							];
+						}
+						else {
+							nbox_buttons = [
+								{
+									label: dontShow,
+									accessKey: null,
+									callback: function() { QuickFolders.FilterWorker.showMessage(false); },
+									popup: null
+								}
+							];
+						}
+						
 					
 				
-			
-				notifyBox.appendNotification( theText, 
-						notificationKey , 
-						"chrome://quickfolders/skin/ico/filterTemplate.png" , 
-						notifyBox.PRIORITY_INFO_LOW, 
-              nbox_buttons,
-							function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
-							); 
+					notifyBox.appendNotification( theText, 
+							notificationKey , 
+							"chrome://quickfolders/skin/ico/filterTemplate.png" , 
+							notifyBox.PRIORITY_INFO_LOW, 
+								nbox_buttons,
+								function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
+								); 
+							
+					if (util.Application == 'Postbox') {
+						util.fixLineWrap(notifyBox, notificationKey);
+					}						
+							
+				}
+				else {
+					// fallback for systems that do not support notification (currently: SeaMonkey)
+					let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
+																	.getService(Components.interfaces.nsIPromptService);  
 						
-				if (util.Application == 'Postbox') {
-					util.fixLineWrap(notifyBox, notificationKey);
-				}						
+					let check = {value: false};   // default the checkbox to true  
 						
-			}
-			else {
-				// fallback for systems that do not support notification (currently: SeaMonkey)
-				let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
-				                        .getService(Components.interfaces.nsIPromptService);  
-				  
-				let check = {value: false};   // default the checkbox to true  
-				  
-				let result = prompts.alertCheck(null, title, theText, dontShow, check);
-				if (check.value==true)
-					QuickFolders.FilterWorker.showMessage(false);
+					let result = prompts.alertCheck(null, title, theText, dontShow, check);
+					if (check.value==true)
+						QuickFolders.FilterWorker.showMessage(false);
+				}
 			}
 		}
 
@@ -156,15 +160,17 @@ QuickFolders.FilterWorker = {
 			btnFilterToggle.setAttribute('mode', active ? 'filter' : '');
       
 			
-		// tidy up notifications
-		if (!active && notifyBox) {
-			let item = notifyBox.getNotificationWithValue(notificationKey);
-			if(item)
-				notifyBox.removeNotification(item, true);
+		if (!isQuickFilters) {
+			// tidy up notifications
+			if (!active && notifyBox) {
+				let item = notifyBox.getNotificationWithValue(notificationKey);
+				if(item)
+					notifyBox.removeNotification(item, true);
+			}
 		}
 			
 		// sync with quickFilters
-		if (typeof window.quickFilters != 'undefined') {
+		if (isQuickFilters) {
 			if (active != window.quickFilters.Worker.FilterMode) {
 				window.quickFilters.Worker.toggleFilterMode(active);
 				if (!active && notifyBox) {

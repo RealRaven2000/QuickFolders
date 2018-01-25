@@ -34,14 +34,9 @@ QuickFolders.AdvancedTab = {
     return false;
   } ,
   
-  // list of accounts
-  get Accounts() {
-    let util = this.MainQuickFolders.Util;
-    return util.Accounts;
-  },
-	
   load: function load() {
-		const util = this.MainQuickFolders.Util;
+		const util = this.MainQuickFolders.Util,
+		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || QuickFolders.AdvancedTab.ADVANCED_FLAGS;
     let dropdownCount = 0;
 		
     function appendIdentity(dropdown, id, account) {
@@ -78,7 +73,7 @@ QuickFolders.AdvancedTab = {
       }
     }
 		
-    let entry = this.entry,
+    let entry = this.entry || QuickFolders.AdvancedTab.entry,
         elem = document.getElementById.bind(document);
     if (entry.flags) {
       let ig = elem('chkIgnoreUnread'),
@@ -87,27 +82,27 @@ QuickFolders.AdvancedTab = {
           ip = elem('chkCustomPalette'),
 					cboIdentity = elem('mailIdentity');
       // ignore unread counts
-      ig.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
+      ig.checked = (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
       // ignore all counts
-      ic.checked = (entry.flags & this.ADVANCED_FLAGS.SUPPRESS_COUNTS) && true;
+      ic.checked = (entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS) && true;
       // custom css rules
-      iss.checked = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_CSS) && true;
+      iss.checked = (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS) && true;
       elem('txtColor').value = entry.cssColor || '';
       elem('txtColorPicker').color = elem('txtColor').value;
       elem('txtBackground').value = entry.cssBack || '';
       // custom palette
-      let isPalette = (entry.flags & this.ADVANCED_FLAGS.CUSTOM_PALETTE) && true;
+      let isPalette = (entry.flags & ADVANCED_FLAGS.CUSTOM_PALETTE) && true;
       ip.checked = isPalette;
       if (isPalette) {
         let menuList = elem('menuCustomTabPalette');
-        menuList.value = this.entry.customPalette.toString();
+        menuList.value = entry.customPalette.toString();
       }
     }
 		// Addressing
 		// iterate accounts for From Address dropdown
 		let cboIdentity = elem('mailIdentity'),
 		    popup = cboIdentity.menupopup,
-				myAccounts = this.Accounts,
+				myAccounts = util.Accounts,
 				acCount = myAccounts.length;
 		appendIdentity(popup, -1, 0); // not set (id0)
 		util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
@@ -141,7 +136,7 @@ QuickFolders.AdvancedTab = {
         tabHeader = elem('myHeader');
     lbl.value = entry.category;
     tabHeader.setAttribute('description', entry.name);
-		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder.URI);
+		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder ? this.folder.URI : QuickFolders.AdvancedTab.folder.URI);
     
     // we wait as the width isn't correct on load
     // might be unnecessary as we react to WM_ONRESIZE
@@ -163,8 +158,10 @@ QuickFolders.AdvancedTab = {
   } ,
   
   apply: function apply() {
-		const util = this.MainQuickFolders.Util;
-		let elem = document.getElementById.bind(document);
+		const util = this.MainQuickFolders.Util,
+		      ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+		let elem = document.getElementById.bind(document),
+		    entry = this.entry || QuickFolders.AdvancedTab.entry;
     function addFlag(checkboxId, setFlag) {
       let isFlagged = document.getElementById(checkboxId).checked;
       if (isFlagged) {
@@ -173,33 +170,33 @@ QuickFolders.AdvancedTab = {
       return isFlagged;
     }
     
-    let f = this.folder,
+    let f = this.folder || QuickFolders.AdvancedTab.folder,
         isChange = false,
-        flags = this.ADVANCED_FLAGS.NONE;
+        flags = ADVANCED_FLAGS.NONE;
     
-    addFlag('chkIgnoreUnread', this.ADVANCED_FLAGS.SUPPRESS_UNREAD);
-    addFlag('chkIgnoreCounts', this.ADVANCED_FLAGS.SUPPRESS_COUNTS);
-    if (addFlag('chkCustomCSS', this.ADVANCED_FLAGS.CUSTOM_CSS)) {
-      this.entry.cssColor = elem('txtColor').value;
-      this.entry.cssBack = elem('txtBackground').value;
+    addFlag('chkIgnoreUnread', ADVANCED_FLAGS.SUPPRESS_UNREAD);
+    addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
+    if (addFlag('chkCustomCSS', ADVANCED_FLAGS.CUSTOM_CSS)) {
+      entry.cssColor = elem('txtColor').value;
+      entry.cssBack = elem('txtBackground').value;
     }
-    if (addFlag('chkCustomPalette', this.ADVANCED_FLAGS.CUSTOM_PALETTE)) {
-      this.entry.customPalette = elem('menuCustomTabPalette').value;
+    if (addFlag('chkCustomPalette', ADVANCED_FLAGS.CUSTOM_PALETTE)) {
+      entry.customPalette = elem('menuCustomTabPalette').value;
     }
     else {
-      delete this.entry.customPalette;
+      delete entry.customPalette;
     }
     
     // .. add more special properties
     
     if (flags)
-      this.entry.flags = flags;
+      entry.flags = flags;
     else {
-      if (this.entry.flags || this.entry.flags === 0) try {
-        delete this.entry.flags; // minimize storage space.
-        delete this.entry.cssBack;
-        delete this.entry.cssColor;
-        delete this.entry.customPalette;
+      if (entry.flags || entry.flags === 0) try {
+        delete entry.flags; // minimize storage space.
+        delete entry.cssBack;
+        delete entry.cssColor;
+        delete entry.customPalette;
       } catch(ex) {
         util.logException('QuickFolders.AdvancedTab.accept()', ex);
       }
@@ -210,21 +207,21 @@ QuickFolders.AdvancedTab = {
 				toAddress = elem('txtToAddress').value;
 		if (fromId == 'default') {
 			try {
-				delete this.entry.fromIdentity; // default 'From:' identity 
+				delete entry.fromIdentity; // default 'From:' identity 
 			}
 			catch (e) { ; }
 		}
 		else
-			this.entry.fromIdentity = fromId;
+			entry.fromIdentity = fromId;
 		
 		if (!toAddress) {
 			try {
-				delete this.entry.toAddress;
+				delete entry.toAddress;
 			}
 			catch (e) { ; }
 		}
 		else
-			this.entry.toAddress = toAddress;
+			entry.toAddress = toAddress;
 		
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);

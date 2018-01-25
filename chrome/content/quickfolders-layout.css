@@ -884,6 +884,10 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
 	 -moz-image-region: auto; /* trash inheritance */
 }
 
+#QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder.png");
+}
+
 #QuickFolders-toolbar-button.toolbarbutton-1,
 #mail-toolbox > toolbar[brighttext] #QuickFolders-toolbar-button.toolbarbutton-1
 {

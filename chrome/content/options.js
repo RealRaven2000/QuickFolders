@@ -1299,15 +1299,19 @@ QuickFolders.Options = {
 	
 	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
     const Cc = Components.classes,
-          Ci = Components.interfaces;
+          Ci = Components.interfaces,
+					util = QuickFolders.Util;
 	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
-    let util = QuickFolders.Util;
+    
 	  util.logDebug('showAboutConfig(clickedElement: ' 
       + (clickedElement ? clickedElement.tagName : 'none') 
       + ', filter: ' + filter 
       + ', readOnly: ' + readOnly +')');
+			// "chrome://global/content/config.xul?debug"
 		const name = "Preferences:ConfigManager";
-		const uri = "chrome://global/content/config.xul";
+		let uri = "chrome://global/content/config.xul";
+		if (util.Application == 'Postbox')
+			uri += "?debug";
 
 		let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
 		    w = mediator.getMostRecentWindow(name),

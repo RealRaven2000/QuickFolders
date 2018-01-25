@@ -742,7 +742,7 @@ QuickFolders.bookmarks = {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks; // "this" didn't work
     util.logDebug ('bookmarks.load...'); 
-    if (util.Application == 'Postbox') {
+    if (util.Application == 'Postbox' && util.PlatformVersion < 52) {
       try {
         let data = this.Postbox_readFile();
         bookmarks.readBookmarksFromJson(data);
@@ -800,7 +800,7 @@ QuickFolders.bookmarks = {
   save: function save()  {
     let util = QuickFolders.Util;
     util.logDebug("bookmarks.save()...");
-    if (util.Application == "Postbox") {
+    if (util.Application == "Postbox" && util.PlatformVersion < 52) {
       this.Postbox_writeFile(this);  // pass bookmarks object
       return;
     }

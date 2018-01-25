@@ -41,6 +41,12 @@
 			oncommand="QuickFolders.Interface.toggleToolbar(this);"
 			checked="true"
 			/>
+	  <toolbarbutton id="QuickFolders-createfolder" 
+			class="toolbarbutton-1 chromeclass-toolbar-additional"
+			label="&quickfolders.toolbar.newsubfolder;" 
+			tooltiptext="&quickfolders.toolbar.newsubfolder;" 
+			oncommand="QuickFolders.Interface.onCreateInstantFolder();"
+		  />
 	</toolbarpalette>
 
 

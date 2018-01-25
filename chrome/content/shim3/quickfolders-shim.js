@@ -99,7 +99,7 @@ QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentM
 };
 
 
-if (QuickFolders.Util.Application == 'Postbox') {
+if (QuickFolders.Util.Application == 'Postbox' && QuickFolders.Util.PlatformVersion<52) {
 	QuickFolders.Util.Accounts = QuickFolders.Util.getAccountsPostbox();
 }
 else

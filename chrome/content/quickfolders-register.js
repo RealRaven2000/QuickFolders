@@ -109,10 +109,6 @@ QuickFolders.Licenser = {
 		let params = {inn:{referrer:featureName, instance: QuickFolders}, out:null};
     window.openDialog('chrome://quickfolders/content/register.xul','quickfolders-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',QuickFolders,params).focus();
   } ,
-  // list of eligible accounts
-  get Accounts() {
-		return QuickFolders.Util.Accounts;
-  },
   
   accept: function accept() {
   
@@ -204,7 +200,7 @@ QuickFolders.Licenser = {
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
-        myAccounts = this.Accounts,
+        myAccounts = util.Accounts,
         acCount = myAccounts.length;
     util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
     for (let a=0; a < myAccounts.length; a++) { 
@@ -490,7 +486,7 @@ QuickFolders.Licenser = {
         iAccount=0,
         isDbgAccounts = prefs.isDebugOption('premium.licenser'),
         hasDefaultIdentity = false,
-        myAccounts = this.Accounts,
+        myAccounts = util.Accounts,
         ForceSecondaryMail = prefs.getBoolPref('licenser.forceSecondaryIdentity');
     if (ForceSecondaryMail) {
       // switch for secondary email licensing

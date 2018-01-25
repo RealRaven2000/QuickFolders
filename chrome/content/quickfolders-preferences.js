@@ -60,13 +60,14 @@ QuickFolders.Preferences = {
 		}
 
 		try {
+			const PS = this.service;
 			let folders = 
-			  util.PlatformVersion < 57.0 ?
-			  this.service.getComplexValue(setting, Components.interfaces.nsISupportsString).data :
-				this.service.getStringPref(setting);
+			  (typeof PS.getStringPref === 'function') ?
+				PS.getStringPref(setting) :
+			  PS.getComplexValue(setting, Components.interfaces.nsISupportsString).data;
 			// fall back for old version
 			if (folders.length<3)
-				folders = this.service.getCharPref("QuickFolders.folders");
+				folders = PS.getCharPref("QuickFolders.folders");
 
 			if(folders) {
 				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
@@ -253,11 +254,12 @@ QuickFolders.Preferences = {
 		     ? util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
 				 : "";
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
-		  const url = "extensions.quickfolders.textQuickfoldersLabel";
+		  const url = "extensions.quickfolders.textQuickfoldersLabel",
+					  PS = this.service;
 			let customTitle = 
-			  util.PlatformVersion < 57.0 ?
-			  this.service.getComplexValue(url, Components.interfaces.nsISupportsString).data :
-				this.service.getStringPref(url);
+			  (typeof PS.getStringPref === 'function') ?
+				this.service.getStringPref(url) :
+			  this.service.getComplexValue(url, Components.interfaces.nsISupportsString).data;
 			return renewalLabel || customTitle;
 		}
 		catch(e) { return renewalLabel || 'QuickFolders'; }

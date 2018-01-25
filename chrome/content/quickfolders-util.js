@@ -82,12 +82,12 @@ QuickFolders.Util = {
 		MSG_FOLDER_FLAG_QUEUE 	  : 0x0800,
 		MSG_FOLDER_FLAG_INBOX 	  : 0x1000,
 		MSG_FOLDER_FLAG_TEMPLATES : 0x400000,
-		MSG_FOLDER_FLAG_JUNK	  : 0x40000000,
+		MSG_FOLDER_FLAG_JUNK	    : 0x40000000,
 		MSG_FOLDER_FLAG_ARCHIVES  : 0x4000, // just a guess, used to be for category container
 		//MSG_FOLDER_FLAG_SMART   : 0x10000, // another guess, used to be for categories, use MSG_FOLDER_FLAG_VIRTUAL instead
 		MSG_FOLDER_FLAG_VIRTUAL   : 0x0020,
 		MSG_FOLDER_FLAG_GOTNEW    : 0x00020000,
-        MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
+    MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
 	},
 	// avoid these global objects
 	Cc: Components.classes,
@@ -983,7 +983,9 @@ QuickFolders.Util = {
 		return "";
 	},
 	
+	// of folder is deleted we should not throw an error!
 	get CurrentFolder() {
+		const util = QuickFolders.Util;
 		let aFolder;
 		if (typeof(GetLoadedMsgFolder) != 'undefined') {
 			aFolder = GetLoadedMsgFolder();
@@ -991,20 +993,23 @@ QuickFolders.Util = {
 		else
 		{
 			let currentURI;
-			if (QuickFolders.Util.Application=='Postbox') {
+			if (gFolderDisplay && gFolderDisplay.displayedFolder)
+				currentURI = gFolderDisplay.displayedFolder.URI;
+			else  if (util.Application=='Postbox') { //legacy
 				currentURI = GetSelectedFolderURI();
-			}
-			else {
-				if (gFolderDisplay.displayedFolder)
-					currentURI = gFolderDisplay.displayedFolder.URI;
 				// aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
 			}
 			// in search result folders, there is no current URI!
 			if (!currentURI)
 				return null;
-			aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+			try {
+				aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+			}
+			catch(ex) {
+				util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
+				return null;
+			}
 		}
-
 		return aFolder;
 	} ,
 
@@ -1137,7 +1142,7 @@ QuickFolders.Util = {
 				this.suggestUniqueFileName_Old(subject.substr(0,124), ".eml", fileNames);
 			fileNames.add(uniqueFileName);
 			try {
-				aEvent.dataTransfer.mozSetDataAt("text/x-moz-url",msgUrls.value.spec, i);
+				aEvent.dataTransfer.mozSetDataAt("text/x-moz-url", msgUrls.value.spec, i);
 				aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", 
 																				 msgUrls.value.spec + "&fileName=" + 
 																				 uniqueFileName, i);

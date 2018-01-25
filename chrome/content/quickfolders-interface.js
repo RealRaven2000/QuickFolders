@@ -1937,6 +1937,7 @@ QuickFolders.Interface = {
 	} ,
   
   addCustomStyles: function addCustomStyles(button, entry) {
+		const util = QuickFolders.Util;
     function getLabel(button) {
         let anonChildren = document.getAnonymousNodes(button);
         if (!anonChildren) return null;
@@ -1950,10 +1951,13 @@ QuickFolders.Interface = {
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
-        button.style.setProperty('background-image', entry.cssBack, ''); 
+				if (util.Application != 'Postbox')
+					button.style.setProperty('background-image', entry.cssBack, ''); 
+				else
+					button.style.setProperty('background', entry.cssBack, 'important'); 
         let l = getLabel(button);
         if (l) 
-          l.style.setProperty('color', entry.cssColor, '');  
+          l.style.setProperty('color', entry.cssColor, util.Application == 'Postbox' ? 'important' : '');  
       }
       catch(ex) {
         QuickFolders.Util.logException('custom CSS failed',ex);
@@ -2340,7 +2344,9 @@ QuickFolders.Interface = {
 		    result = null;
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
     
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
+		if (((util.Application == 'Postbox') || (util.Application == 'SeaMonkey'))
+			  && typeof MsgDeleteFolder === 'function'
+			 ) {
 			QuickFolders_MySelectFolder(folderButton.folder.URI);
 			MsgDeleteFolder();
 		}
@@ -2640,52 +2646,79 @@ QuickFolders.Interface = {
 
 	onNewFolder: function onNewFolder(element,evt) {
 		let util = QuickFolders.Util,
+				QI = QuickFolders.Interface,
         folder = util.getPopupNode(element).folder;
     if (evt) evt.stopPropagation();
+		
     util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgNewFolder(NewFolder);
+		if (util.getOrCreateFolder) {
+			QI.onCreateInstantFolder(folder);  // async function
 		}
-		else
-			this.globalTreeController.newFolder(folder);
+		else { // legacy code - uses "classic" dialog.
+			if ((util.Application == 'SeaMonkey') ||
+          (util.Application == 'Postbox' && typeof MsgNewFolder === 'function'))
+			{
+				QuickFolders_MySelectFolder(folder.URI);
+				MsgNewFolder(NewFolder); // NewFolder() = global function - doesn't exist in Postbox!
+			}
+			else {
+				QI.globalTreeController.newFolder(folder);
+			}
+		}
 	},
 	
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
 	// currently not used in Postbox build because it requires Tasc.async
-	onCreateInstantFolder: function onCreateInstantFolder(parent, folderName) {
+	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
 		      Ci = Components.interfaces,
 					Cc = Components.classes,
-          prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
-					isQuickMove = (QuickFolders.quickMove.isActive);;
-    util.logDebugOptional('interface', 'QuickFolders.Interface.onCreateInstantFolder(' + parent.prettyName + ', ' + folderName + ')');
+          prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+		let isQuickMove = (QuickFolders.quickMove.isActive),
+				isFindFolder = true;  // flag for coming from the quickMove / quickJump popup menu
+					
+		// replace onNewCurrentFolder for new folder toolbar button:
+		if (!parentFolder) {
+			parentFolder = util.CurrentFolder;
+			folderName = "";
+			isQuickMove = false; // irrelevant in this case
+			isFindFolder = false;
+		}
+					
+    util.logDebugOptional('interface', 'QuickFolders.Interface.onCreateInstantFolder(' + parentFolder.prettyName + ', ' + folderName + ')');
     let title = util.getBundleString('qf.prompt.newFolder.title', "New Folder"),
         text = util.getBundleString('qf.prompt.newFolder.newChildName', "Enter name for new child folder under {0}") + ":",
-        input = {value: folderName},
-        check = {value: false},
-        result = prompts.prompt(window, title, text.replace('{0}', parent.prettyName), input, null, check); 
-    if (!result) return;	
-
-    if (!parent.canCreateSubfolders) throw ("cannot create a subfolder for: " + parent.prettyName);
-		let newFolderUri = parent.URI + "/" + encodeURI(input.value);
+        checkBoxText = util.getBundleString('qf.prompt.newFolder.createQFtab', "Also create a QuickFolders Tab"),
+        input = { value: folderName },
+        check = { value: false },
+        result = prompts.prompt(window, title, text.replace('{0}', parentFolder.prettyName), input, checkBoxText, check); 
+    if (!result) return;
+    if (!parentFolder.canCreateSubfolders) throw ("cannot create a subfolder for: " + parentFolder.prettyName);
+		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
 				
 		// this asynchronous function is in quickfolders-shim as Postbox doesn't support the new syntax
 		util.getOrCreateFolder(
 		  newFolderUri, 
 		  util.FolderFlags.MSG_FOLDER_FLAG_MAIL).then(  // avoiding nsMsgFolderFlags for postbox...
 			  function createFolderCallback() {
+					// create QuickFolders Tab?
+					if (check.value) {
+						let cat = QI.CurrentlySelectedCategories;
+						QuickFolders.Model.addFolder(newFolderUri, cat);
+					}
 					// move emails or jump to folder after creation
 					if (isQuickMove) {
 						QuickFolders.quickMove.execute(newFolderUri); 
 					}
-					else {
+					else if (isFindFolder) { // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
 						QuickFolders_MySelectFolder(newFolderUri, true);
 					}
-					QI.findFolder(false);
-					QI.hideFindPopup();
+					if (isFindFolder) { // tidy up quickMove menu
+						QI.findFolder(false);
+						QI.hideFindPopup();
+					}
 		    },
 				function failedCreateFolder(ex) {
 					util.logException('getOrCreateFolder() ', ex);				
@@ -2894,8 +2927,8 @@ QuickFolders.Interface = {
 			menuitem = document.createElement('menuitem');
 			menuitem.className='mailCmd menuitem-iconic';
 			menuitem.setAttribute("id","folderPaneContext-new");
-			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onNewFolder(this,event);");
-			menuitem.setAttribute('label',this.getUIstring("qfNewFolder","New Folder"));
+			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onNewFolder(this,event);"); // 
+			menuitem.setAttribute('label',this.getUIstring("qfNewFolder","New Subfolder…"));
 			menuitem.setAttribute("accesskey",this.getUIstring("qfNewFolderAccess","N"));
 			MailCommands.appendChild(menuitem);
 		}
@@ -4064,8 +4097,11 @@ QuickFolders.Interface = {
 				}
 			}
 		}
-		// special commands: if slash was entered, allow creating subfolders. Exclude Postbox.
-		if (parentPos>0 && util.Application!='Postbox') {
+		// special commands: if slash was entered, allow creating subfolders. Exclude _old_ Postbox.
+		if (parentPos>0 && 
+		    (util.Application!='Postbox' ||
+				 util.Application=='Postbox' && typeof Task === 'object')
+				) {
 			// [Bug 26283] add matches from quickfolders (if named differently)
 			let isFound = false;
 			for (let i=0; i<model.selectedFolders.length; i++) {

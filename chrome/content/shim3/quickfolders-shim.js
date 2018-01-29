@@ -88,22 +88,26 @@ QuickFolders.Util.getNextUnreadFolder = function getNextUnreadFolder(currentFold
 	let found = false,
 	    isUnread = false,
 		  lastFolder,
+			folder,
 			firstUnread = null; // remember this one for turnaround!
 		// progress the folder variable to the next sibling
 		// if no next sibling available to next sibling of parent folder (recursive)
 		// question: should own child folders also be included?
 		
-	for (folder in util.allFoldersIterator(false)) {
+	let AF = util.allFoldersIterator(false);
+  for (let fi=0; fi<AF.length; fi++) {
+		folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
+		let unreadCount = (typeof folder.getNumUnread=='undefined') ? 0 : folder.getNumUnread(false);
 		if (!found && !firstUnread) {
 			// get first unread folder (before current folder)
-			if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+			if (unreadCount && !(folder.flags & unwantedFolders)) {
 				firstUnread = folder; // remember the first unread folder before we hit current folder
 				util.logDebugOptional("navigation", "first unread folder: " + firstUnread.prettyName);
 			}
 		}
 		if (found) {
 			// after current folder: unread folders only
-			if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+			if (unreadCount && !(folder.flags & unwantedFolders)) {
 				isUnread = true;
 				util.logDebugOptional("navigation", "Arrived in next unread after found current: " + folder.prettyName);
 				break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder

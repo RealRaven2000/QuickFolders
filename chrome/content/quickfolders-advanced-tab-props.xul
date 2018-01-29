@@ -83,14 +83,27 @@
 						<textbox id="txtToAddress" 
 						         tooltiptext="&toAddress.tooltip;"/>
 					</row>
+					<!-- non-row elements span the whole width -->
+					<hbox>
+						<checkbox 
+							id="chkComposerSubFolders"
+							label="&chkComposerSubfolders;" 
+							/>	
+						<button class="proFeature" 
+						        id="proRecursiveIcon" 
+										collapsed="true" 
+										tooltiptext=""
+										label="  "/>
+					</hbox>
 				</rows>
 			</grid>
 		</groupbox>
+		
 		<groupbox>
 		  <caption label="&grpTabBehavior;"/>
 			<hbox>
 				<checkbox
-						id="chkIgnoreUnread"
+					id="chkIgnoreUnread"
 					label="&chkIgnoreUnread;"
 					tooltiptext="&chkIgnoreUnread.tooltip;"
 				/>

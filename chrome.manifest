@@ -2,26 +2,27 @@ content quickfolders       chrome/content/
 #jsm modules
 resource quickfolders  chrome://quickfolders/content/
 locale quickfolders en-US  chrome/locale/en-US/
-locale quickfolders de     chrome/locale/de/
-locale quickfolders nl     chrome/locale/nl/
-locale quickfolders it     chrome/locale/it/
-locale quickfolders fr     chrome/locale/fr/
-locale quickfolders ja-JP  chrome/locale/ja-JP/
-locale quickfolders pt-BR  chrome/locale/pt-BR/
-locale quickfolders pl     chrome/locale/pl/
-locale quickfolders sl-SI  chrome/locale/sl-SI/
-locale quickfolders ru     chrome/locale/ru/
-locale quickfolders sr     chrome/locale/sr/
-locale quickfolders vi     chrome/locale/vi/
 locale quickfolders ca     chrome/locale/ca/
+locale quickfolders de     chrome/locale/de/
 locale quickfolders es-MX  chrome/locale/es-MX/
+locale quickfolders es     chrome/locale/es/
+locale quickfolders fr     chrome/locale/fr/
+locale quickfolders hu-HU  chrome/locale/hu-HU/
+locale quickfolders it     chrome/locale/it/
+locale quickfolders ja-JP  chrome/locale/ja-JP/
+locale quickfolders nl     chrome/locale/nl/
+locale quickfolders pl     chrome/locale/pl/
+locale quickfolders pt-BR  chrome/locale/pt-BR/
+locale quickfolders ru     chrome/locale/ru/
+locale quickfolders sl-SI  chrome/locale/sl-SI/
+locale quickfolders sr     chrome/locale/sr/
+locale quickfolders sv-SE  chrome/locale/sv-SE/
+locale quickfolders vi     chrome/locale/vi/
 locale quickfolders zh-CN  chrome/locale/zh-CN/
 locale quickfolders zh-CHS chrome/locale/zh-CN/
 locale quickfolders zh     chrome/locale/zh/
 locale quickfolders zh-CHT chrome/locale/zh/
 locale quickfolders zh-TW  chrome/locale/zh/
-locale quickfolders hu-HU  chrome/locale/hu-HU/
-locale quickfolders sv-SE  chrome/locale/sv-SE/
 
 #platforms specific content - allow additional platforms specific rules
 content quickfolders-pl    content/   platform
@@ -37,12 +38,12 @@ content quickfoldersShim chrome://quickfolders/content/shim12/ application={9265
 
 #postbox (for in) (for..of)
 ## for old postbox, we can't combine application & platformversion 
- content quickfoldersShim chrome://quickfolders/content/shim3/ application=postbox@postbox-inc.com 
+content quickfoldersShim chrome://quickfolders/content/shim3/ application=postbox@postbox-inc.com 
 content quickfoldersShim chrome://quickfolders/content/shim12/ application=postbox@postbox-inc.com platformversion>51
 
 # ECMA.next code (function*) etc.
-content  quickfoldersShimECMA  chrome://quickfolders/content/shimECMAold/ platformversion<26
-content  quickfoldersShimECMA  chrome://quickfolders/content/shimECMAnew/ platformversion>=26
+content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAold/ platformversion<26
+content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAnew/ platformversion>=26
 
 # Thunderbird >=12
 content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} 

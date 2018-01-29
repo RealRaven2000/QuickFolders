@@ -20,3 +20,24 @@
 #btnClose {
   -moz-appearance: -moz-window-button-close;
 }
+
+@keyframes qfIconRotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
+button.proFeature {
+	-moz-appearance: none;
+  animation: qfIconRotateY 2s linear 0.3s infinite;
+	background-image: url('chrome://quickfolders/skin/ico/pro.png') !important;
+	display: inline-block;
+	height: 19px;
+	min-width: auto;	
+	min-height: auto;	
+	margin: 0 !important;
+	width: 30px !important;
+}

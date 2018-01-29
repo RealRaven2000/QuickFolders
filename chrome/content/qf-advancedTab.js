@@ -5,6 +5,7 @@ QuickFolders.AdvancedTab = {
     NONE : 0x0000,
     SUPPRESS_UNREAD : 0x0001,
     SUPPRESS_COUNTS : 0x0002,
+		EMAIL_RECURSIVE : 0x0004,
     CUSTOM_CSS :      0x0100,
     CUSTOM_PALETTE :  0x0200
   } ,
@@ -80,6 +81,7 @@ QuickFolders.AdvancedTab = {
           ic = elem('chkIgnoreCounts'),
           iss = elem('chkCustomCSS'),
           ip = elem('chkCustomPalette'),
+					isRecursive = elem('chkComposerSubFolders'),
 					cboIdentity = elem('mailIdentity');
       // ignore unread counts
       ig.checked = (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
@@ -97,6 +99,16 @@ QuickFolders.AdvancedTab = {
         let menuList = elem('menuCustomTabPalette');
         menuList.value = entry.customPalette.toString();
       }
+			// apply email settings to all child folders
+			isRecursive.checked = (entry.flags & ADVANCED_FLAGS.EMAIL_RECURSIVE) && true;
+			if (!util.hasPremiumLicense(false)) {
+				isRecursive.disabled = true;
+				let proImg1 = elem('proRecursiveIcon'),
+				    theText=util.getBundleString("qf.notification.premium.text",
+				        "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently.");
+				proImg1.collapsed = false;
+				proImg1.setAttribute('tooltiptext', theText.replace ("{1}", "[" + isRecursive.label + "]"));
+			}
     }
 		// Addressing
 		// iterate accounts for From Address dropdown
@@ -176,6 +188,7 @@ QuickFolders.AdvancedTab = {
     
     addFlag('chkIgnoreUnread', ADVANCED_FLAGS.SUPPRESS_UNREAD);
     addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
+    addFlag('chkComposerSubFolders', ADVANCED_FLAGS.EMAIL_RECURSIVE);
     if (addFlag('chkCustomCSS', ADVANCED_FLAGS.CUSTOM_CSS)) {
       entry.cssColor = elem('txtColor').value;
       entry.cssBack = elem('txtBackground').value;

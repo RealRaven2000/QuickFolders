@@ -160,42 +160,76 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		}
 		return ''; // consume
 	}
-			
+					
+	function setMailHeaders(folder, options) {
+		if (!folder.URI) return;
+		entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
+		
+		if (entry) {
+			let entryName = entry.name,
+			    txt = 'Overriding {2} from QuickFolder [{0}] with {1}'.replace('{0}', entryName);
+			// child folder settings are not overwritten by parents!
+			if (entry.toAddress && !options.toAddress) {
+				options.toAddress = entry.toAddress;
+				let dbg = txt.replace('{1}', entry.toAddress);
+				util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+			}
+			if (entry.fromIdentity && !options.identity) {
+				let dbg = txt.replace('{1}', entry.fromIdentity);
+				let actMgr = MailServices.accounts,
+						allIdentities = actMgr.allIdentities;
+				for (let i=0; i<allIdentities.length; i++) {
+					let identity = allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);
+					if (identity.key == entry.fromIdentity) {
+						util.logDebugOptional('composer', dbg.replace('{2}',"identity") + "\n" + (identity.identityName || identity.email ));
+						options.identity = identity; // use the object, not the string [entry.fromIdentity is only a string]
+						break;
+					}
+				}		
+			}
+		}
+		
+		// no need to recurse if both are set (child folders override parents)
+		if (folder.parent && (!options.toAddress || !options.identity))
+			setMailHeaders(folder.parent, options);
+	}
+	
+	// check for advanced properties (rules) for overriding To: or Identity (From:)
 	try {
 		let currentFolder = util.CurrentFolder,
-		    entry;
+		    entry,
+				options = {
+				  identity: null,
+					toAddress: ''
+				};
+		if (preferences.isDebugOption('composer')) debugger;
+		
+		// we need to check all parent folders for entries as well.
 		if (currentFolder && currentFolder.URI)
-			entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(currentFolder.URI)
+			setMailHeaders(currentFolder, options);
 		else 
 			return;
 		
-		if (!entry) return; // no changes
-		
-		if (preferences.isDebugOption('composer')) debugger;
-		if (entry.toAddress)
-			modifyHeader('to', 'set', entry.toAddress);
-		if (entry.fromIdentity) {
-		  let actMgr = MailServices.accounts,
-			    allIdentities = actMgr.allIdentities;
-			for (let i=0; i<allIdentities.length; i++) {
-				let identity = allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);
-				if (identity.key == entry.fromIdentity) {
-					let address = identity.fullName + " <" + identity.email +">";
-					// modifyHeader('from', 'set', address);
-					if (gMsgCompose.identity.key != identity.key) {
-						gMsgCompose.identity = identity;
-						// from MsgComposeCommands.js#4203
-						var identityList = document.getElementById("msgIdentity");
-						identityList.selectedItem =
-						 identityList.getElementsByAttribute("identitykey", identity.key)[0];
-						let event = document.createEvent('Events');
-						event.initEvent('compose-from-changed', false, true);
-						document.getElementById("msgcomposeWindow").dispatchEvent(event);
-					}
-					break;
-				}
-			}		
+		if (options.toAddress)
+			modifyHeader('to', 'set', options.toAddress);
+		if (options.identity) {
+			let identity = options.identity,
+			    address = identity.fullName + " <" + identity.email +">";
+			// modifyHeader('from', 'set', address);
+			if (gMsgCompose.identity.key != identity.key) {
+				gMsgCompose.identity = identity;
+				// from MsgComposeCommands.js#4203
+				var identityList = document.getElementById("msgIdentity");
+				identityList.selectedItem =
+					identityList.getElementsByAttribute("identitykey", identity.key)[0];
+				let event = document.createEvent('Events');
+				event.initEvent('compose-from-changed', false, true);
+				document.getElementById("msgcomposeWindow").dispatchEvent(event);
+			}
 		}
+
+		
+		
 	}
 	catch(ex) {
 		util.logException("notifyComposeBodyReady", ex);

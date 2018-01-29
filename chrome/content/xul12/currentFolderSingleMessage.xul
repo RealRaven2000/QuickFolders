@@ -50,6 +50,12 @@
 					             special="qfMsgFolderNavigation" 
 											 oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
 					             tooltiptext="&qf.tooltip.conversationRead;" />
+				<!-- skip folder -->
+				<toolbarbutton id="quickFoldersSkipFolder"
+											 class="icon"
+											 special="qfMsgFolderNavigation" 
+											 oncommand="QuickFolders.Interface.onSkipFolder(this);"
+											 tooltiptext="&qf.tooltip.skipUnreadFolder;" />
 				<toolbarseparator id="QuickFolders-Navigate-Separator" />
 				<toolbarbutton id="QuickFolders-NavigateUp"
 					             class="icon"

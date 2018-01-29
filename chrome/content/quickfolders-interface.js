@@ -573,6 +573,32 @@ QuickFolders.Interface = {
 	onToggleNavigation: function onToggleNavigation(button) {
 		button.checked = !button.checked;
 	} ,
+	
+	// exit unread folder skip to next...
+	onSkipFolder: function onSkipFolder(button) {
+		const util = QuickFolders.Util,
+				  prefs = QuickFolders.Preferences;
+		let currentFolder = QuickFolders.Util.CurrentFolder,
+				folder;
+				
+		if (prefs.isDebugOption('navigation')) debugger;
+		folder = util.getNextUnreadFolder(currentFolder);
+		
+		if (folder) {
+			util.logDebug("selecting next unread folder:" + folder.prettyName + '\n' + folder.URI);
+			QuickFolders_MySelectFolder(folder.URI);
+			if (currentFolder == folder) { // wrap around case
+			  let txt = util.getBundleString("qfNavigationWrapped", "No other unread folders found, continuing in {1}.")
+				util.slideAlert("QuickFolders",  txt.replace('{1}', folder.prettyName));
+			}
+			// find next sibling, of parent, then trigger onGoNextMsg  
+			// navigation types of nsMsgNavigationType are defined in nsIMsgDBView.idl
+			// GoNextMessage is defined  in msgViewNavigation.js
+			// GoNextMessage(1, true); // nsMsgNavigationType.firstMessage
+			// GoNextMessage(7, true); // nsMsgNavigationType.nextUnreadMessage
+			goDoCommand('button_next');
+		} 
+	} ,
 
 	updateCategoryLayout: function updateCategoryLayout() {
     const prefs = QuickFolders.Preferences,

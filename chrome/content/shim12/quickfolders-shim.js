@@ -19,6 +19,8 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
   return found;
 }
 
+
+
   // iterate all folders
   // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
 QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
@@ -32,7 +34,7 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 		allFolders = acctMgr.allFolders;
 		for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
-			// filter out non-filable folders (newsgroups...)
+			// filter out non-fileable folders (newsgroups...)
 			if (writable && 
 					 (!aFolder.canFileMessages || 
 					 (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) ||
@@ -62,6 +64,56 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
 	}
 } 
+
+
+// find next unread folder
+QuickFolders.Util.getNextUnreadFolder = function getNextUnreadFolder(currentFolder) {
+	const util = QuickFolders.Util,
+				unwantedFolders = util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS   // skip drafts
+					                   | util.FolderFlags.MSG_FOLDER_FLAG_TRASH // skip trash
+					                   | util.FolderFlags.MSG_FOLDER_FLAG_QUEUE // skip queue
+					                   | util.FolderFlags.MSG_FOLDER_FLAG_JUNK; // skip spam
+	let found = false,
+	    isUnread = false,
+		  lastFolder,
+			firstUnread = null; // remember this one for turnaround!
+		// progress the folder variable to the next sibling
+		// if no next sibling available to next sibling of parent folder (recursive)
+		// question: should own child folders also be included?
+
+
+	for (folder of util.allFoldersIterator(false)) {
+		if (!found && !firstUnread) {
+			// get first unread folder (before current folder)
+			if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+				firstUnread = folder; // remember the first unread folder before we hit current folder
+				util.logDebugOptional("navigation", "first unread folder: " + firstUnread.prettyName);
+			}
+		}
+		if (found) {
+			// after current folder: unread folders only
+			if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+				isUnread = true;
+				util.logDebugOptional("navigation", "Arrived in next unread after found current: " + folder.prettyName);
+				break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
+			}
+		} 
+		if (folder.URI === currentFolder.URI) {
+			util.logDebugOptional("navigation", "Arrived in current folder. ");
+			found = true; // found current folder
+		}
+		lastFolder = folder;
+	}
+	if (!isUnread) {
+		if (firstUnread && firstUnread!=currentFolder) {
+			util.logDebugOptional("navigation", "no folder found. ");
+			return firstUnread;
+		}
+		util.logDebug("Could not find another unread folder after:" + lastFolder ? lastFolder.URI : currentFolder.URI);
+		return currentFolder;
+	}
+	return folder;
+}
 
 
 QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) { 

@@ -383,6 +383,11 @@ END LICENSE BLOCK */
 		## tidy up (don't show) own filter notification when quickFilters is installed.
 		## Postbox: fix displaying advanced / debug settings when right-clicking some options / debug checkbox 
 		## [Bug 26473] Added toolbar button to create subfolder (within the current folder)
+		## [Bug 26474] "Tab-Specific Properties ..." Add Option to apply mail settings to subfolders
+		## [Bug 26475]  Added Navigation Button "Skip to next Unread Folder" on Current Folder Toolbar.
+		##     Leaves current folder even if it has unread 
+		##     messages and continues to the next unread message in the next unread folder.
+
 		## Allow asynchronous creation of subfolders during quickMove / quickJump in 
 		##       new Postbox builds (5.52 and later, supporting Task)
 		## Added Spanish locale {thanks to strel - Babelzilla.org}
@@ -901,8 +906,9 @@ var QuickFolders = {
     setTimeout( function() {
 			if (util.isDebug)  debugger;
 			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register'),
-			    State = util.Licenser.ELicenseState;
-      if (util.hasPremiumLicense(true)) {  // reset licenser (e.g. in new window)
+			    State = util.Licenser.ELicenseState,
+					hasLicense = util.hasPremiumLicense(true);
+      if (hasLicense) {  // reset licenser (e.g. in new window)
         util.logDebug ("Premium License found - removing Animations()...");
         QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
       }
@@ -921,6 +927,9 @@ var QuickFolders = {
 						menuRegister.classList.add('free');
 				}
 			}
+			let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
+			quickFoldersSkipFolder.collapsed = !hasLicense;
+
     }, 1000);
     
 	} ,

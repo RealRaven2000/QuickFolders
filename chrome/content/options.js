@@ -609,9 +609,10 @@ QuickFolders.Options = {
         btnLicense = getElement("btnLicense"),
 				proTab = getElement("QuickFolders-Pro");
     try {
+			const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
 			let result = this.decryptLicense(testMode),
-			    menuProLicense = util.getMail3PaneWindow().QuickFolders.Util.$('QuickFolders-ToolbarPopup-register');
-					
+			    menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
+			    quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
 			// this the updating the first button on the toolbar via the main instance
 			QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
 			switch(result) {
@@ -620,6 +621,7 @@ QuickFolders.Options = {
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
 					replaceCssClass(menuProLicense, 'paid');
+					quickFoldersSkipFolder.collapsed = false;
 				  break;
 				case State.Expired:
 					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
@@ -629,6 +631,7 @@ QuickFolders.Options = {
 					replaceCssClass(btnLicense, 'expired');
 					replaceCssClass(menuProLicense, 'expired');
 				  btnLicense.collapsed = false;
+					quickFoldersSkipFolder.collapsed = true;
 					break;
 				default:
 				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
@@ -636,6 +639,7 @@ QuickFolders.Options = {
 					replaceCssClass(btnLicense, 'register');
 					replaceCssClass(proTab, 'free');
 					replaceCssClass(menuProLicense, 'free');
+					quickFoldersSkipFolder.collapsed = true;
 			}
 			
 			util.logDebug('validateLicense - result = ' + result);

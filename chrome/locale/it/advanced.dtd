@@ -7,9 +7,10 @@
 <!ENTITY defaultAccountAddress.value "Identità predefinita dell'account">
 <!ENTITY toAddress "A:">
 <!ENTITY toAddress.tooltip "Destinatario predefinito durante la composizione di nuovi messaggi di posta elettronica">
+<!ENTITY chkComposerSubfolders "Si applica anche alle sottocartelle">
 <!ENTITY grpTabBehavior "Comportamento della scheda avanzata">
 <!ENTITY chkIgnoreUnread "Nasconde lo stato di 'Messaggio non letto'">
-<!ENTITY chkIgnoreUnread.tooltip "Anche se la cartella contiene messaggi non letti, non usa mai né il carattere grassetto, né qualsiasi numero">
+<!ENTITY chkIgnoreUnread.tooltip "Anche se la cartella contiene messaggi non letti, non usare mai né il carattere grassetto, né qualsiasi numero">
 <!ENTITY chkIgnoreCounts "Nasconde il numero dei messaggi">
 <!ENTITY chkIgnoreCounts.tooltip "Non mostra mai il numero dei messaggi presenti">
 <!ENTITY grpCustomCSS "CSS personalizzato">

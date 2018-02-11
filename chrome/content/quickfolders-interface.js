@@ -2422,7 +2422,8 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-		if (util.Application == 'Postbox') { 
+		if (typeof GetSelectedFolderURI === 'function') { 
+		  // old Postbox Code
 			let getSelFunction;
 			try {
 			  // functions from folderPaneContext

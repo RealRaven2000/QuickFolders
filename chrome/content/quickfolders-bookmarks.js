@@ -139,9 +139,12 @@ QuickFolders.bookmarks = {
         case 'currentTab':
           let mode = QuickFolders.Interface.CurrentTabMode,
               isInTab = (mode == "3pane" || mode == "folder");
-              
+					
           switch(util.Application) {
             case 'Thunderbird':
+							// [Bug 26481] make sure to switch to another tab if that folder is open:
+							if (util.CurrentFolder!=msgHdr.folder)
+								QuickFolders_MySelectFolder(msgHdr.folder.URI);
               MailUtils.displayMessageInFolderTab(msgHdr);
               break;
             case 'SeaMonkey':

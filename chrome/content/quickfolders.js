@@ -379,7 +379,7 @@ END LICENSE BLOCK */
 		## xmas days special sale 25% off
 		
   4.9 WIP
-		## Make compatible with Postbox beta 5.52 (modern Gecko build)
+		## [Bug 26470] Make QuickFolders compatible with Postbox beta 5.52 (modern Gecko build)
 		## tidy up (don't show) own filter notification when quickFilters is installed.
 		## Postbox: fix displaying advanced / debug settings when right-clicking some options / debug checkbox 
 		## [Bug 26473] Added toolbar button to create subfolder (within the current folder)
@@ -394,6 +394,7 @@ END LICENSE BLOCK */
 		## Filter Assistant: remove unnecessary notification box if quickFilters is installed
 		## Advanced Tab colors (postbox) temporary fixes with !important - see Interface.addCustomStyles()
 		## Stability fixes around Util.CurrentFolder
+		## [Bug 26481] Reading List: click on bookmarked mail should switch to already open mail Tab
 		
 	Known Issues
 	============
@@ -1183,7 +1184,8 @@ var QuickFolders = {
 					let currentURI, aFolder,
 					    uriName = encodeURI(aName);
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
-					if (util.Application=='Postbox' &&  typeof GetSelectedFolderURI !== 'undefined') {
+					if (typeof GetSelectedFolderURI === 'function') {
+						// old Postbox
 						currentURI = GetSelectedFolderURI();
 						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}

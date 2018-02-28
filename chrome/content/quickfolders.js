@@ -380,6 +380,7 @@ END LICENSE BLOCK */
 		
   4.9 WIP
 		## [Bug 26470] Make QuickFolders compatible with Postbox beta 5.52 (modern Gecko build)
+		## [Bug 26489] ESR 2018 readiness - Make QuickFolders compatible with Thunderbird 60
 		## tidy up (don't show) own filter notification when quickFilters is installed.
 		## Postbox: fix displaying advanced / debug settings when right-clicking some options / debug checkbox 
 		## [Bug 26473] Added toolbar button to create subfolder (within the current folder)
@@ -545,10 +546,14 @@ var QuickFolders = {
 	_tabContainer: null,
 	get tabContainer() {
 		if (!this._tabContainer) {
-			if (QuickFolders.Util.Application=='Postbox')
+			const util = QuickFolders.Util;
+			if (util.Application=='Postbox')
 				this._tabContainer = this.doc.getElementById('tabmail').mTabContainer;
-			else
+			else {
+				// from v59 this element is called 'tabmail-tabs' and not 'tabcontainer'
 				this._tabContainer = this.doc.getElementById('tabmail').tabContainer;
+			}
+				
 		}
 		return this._tabContainer;
 	},

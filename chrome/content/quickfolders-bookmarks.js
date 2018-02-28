@@ -692,13 +692,15 @@ QuickFolders.bookmarks = {
 
   readStringFile: function readStringFile() {
     // To read content from file
-    const {TextDecoder,OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
+		const {OS} = (typeof ChromeUtils.import == "undefined") ?
+		  Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
+		  ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
     // To read & write content to file
     // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
     
     let profileDir = OS.Constants.Path.profileDir,
         path = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
-        decoder = new TextDecoder(),        // This decoder can be reused for several reads
+        // decoder = new TextDecoder(),        // This decoder can be reused for several reads
         promise = OS.File.read(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
     return promise;
   } ,
@@ -808,7 +810,10 @@ QuickFolders.bookmarks = {
       return;
     }
     try {
-      const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
+			const {OS} = (typeof ChromeUtils.import == "undefined") ?
+				Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
+				ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+
       let bookmarks = this, // closure this
           profileDir = OS.Constants.Path.profileDir,
           path = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
@@ -858,10 +863,11 @@ QuickFolders.bookmarks = {
   
   Postbox_writeFile: function Pb_writeFile(bookmarks) {
     const Ci = Components.interfaces,
-          Cc = Components.classes;
+          Cc = Components.classes,
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;;
     
     let dirService = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties),
-        file = dirService.get("ProfD", Ci.nsILocalFile),
+        file = dirService.get("ProfD", NSIFILE),
         entity = bookmarks.Entries.length ? bookmarks.Entries : '',
         outString = JSON.stringify(entity, null, '  '); // prettify
     
@@ -891,9 +897,10 @@ QuickFolders.bookmarks = {
   
   Postbox_readFile: function Pb_readFile() {
     const Ci = Components.interfaces,
-          Cc = Components.classes;
+          Cc = Components.classes,
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
     let dirService = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties),
-        file = dirService.get("ProfD", Ci.nsILocalFile);
+        file = dirService.get("ProfD", NSIFILE);
     file.append("extensions");
     file.append("quickFoldersBookmarks.json");
           

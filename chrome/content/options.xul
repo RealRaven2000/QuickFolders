@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
@@ -29,7 +31,7 @@
 	<script type="application/x-javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
 
 	
-	<prefpane id="qf-options-prefpane">
+	<prefpane id="qf-options-prefpane" orient="vertical">
 		<box id="qf-header-container">
 			<vbox>
 				<spacer flex="1" />
@@ -1110,10 +1112,12 @@
 						<spacer flex="1" />
 						<vbox height="40" >
 							<spacer flex="1" />
-							<button id="btnLicense" 
-											label="Buy License"
-											class="register"
-											oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+							<box class="btnLicenseContainer">
+								<button id="btnLicense" 
+												label="Buy License"
+												class="register"
+												oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+							</box>
 							<spacer flex="1" />
 						</vbox>
 						<spacer flex="1" />

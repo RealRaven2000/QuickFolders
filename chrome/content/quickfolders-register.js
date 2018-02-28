@@ -176,6 +176,7 @@ QuickFolders.Licenser = {
 				btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 				btnLicense.removeAttribute('oncommand');
 				btnLicense.setAttribute('oncommand', 'QuickFolders.Licenser.goPro(2);');
+				btnLicense.classList.add('expired');
 			}
 		}
     else

@@ -76,7 +76,8 @@ QuickFolders.Util.getNextUnreadFolder = function getNextUnreadFolder(currentFold
 	let found = false,
 	    isUnread = false,
 		  lastFolder,
-			firstUnread = null; // remember this one for turnaround!
+			firstUnread = null,
+			folder; // remember this one for turnaround!
 		// progress the folder variable to the next sibling
 		// if no next sibling available to next sibling of parent folder (recursive)
 		// question: should own child folders also be included?

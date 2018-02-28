@@ -260,11 +260,11 @@ QuickFolders.Interface = {
 			while (!done) {
 				let folder;
 				if (typeof myenum.currentItem!='undefined')
-					folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
+					folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
 				else // SeaMonkey
 				{
 					if (myenum.hasMoreElements())
-						folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+						folder = myenum.getNext().QueryInterface(Ci.nsIMsgFolder);
 					else {
 						done=true;
 						break;
@@ -331,10 +331,9 @@ QuickFolders.Interface = {
 	      menu = this,
         // Start iterating at the top of the hierarchy, that is, with the root
         // folders for every account.
-		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
-					  getService(Components.interfaces.nsIMsgAccountManager);
+		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
 		// Postbox only:
-		for (let acct in fixIterator(acctMgr.accounts, Components.interfaces.nsIMsgAccount)) {
+		for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
 		  addIfRecent(acct.incomingServer.rootFolder);
 		  checkSubFolders(acct.incomingServer.rootFolder);
 		}
@@ -344,6 +343,8 @@ QuickFolders.Interface = {
 	} ,
 
 	createRecentPopup: function createRecentPopup(passedPopup, isDrag, isCreate, isCurrentFolderButton) {
+		const Cc = Components.classes,
+		      Ci = Components.interfaces;
 		let menupopup,
 		    popupId = isCurrentFolderButton ? this.RecentPopupIdCurrentFolderTool : this.RecentPopupId,
         prefs = QuickFolders.Preferences,
@@ -375,8 +376,7 @@ QuickFolders.Interface = {
 
 		// convert array into nsISimpleEnumerator
 		let recentFolders,
-		    FoldersArray = Components.classes["@mozilla.org/array;1"]
-							.createInstance(Components.interfaces.nsIMutableArray),
+		    FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray),
 		    isOldFolderList = false;
 		if (typeof gFolderTreeView=='undefined')
 		{
@@ -1065,9 +1065,13 @@ QuickFolders.Interface = {
           Cc = Components.classes,
           Cu = Components.utils,
           Ci = Components.interfaces,
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
           model = QuickFolders.Model,
-          {OS} = Cu.import("resource://gre/modules/osfile.jsm", {}),
-          ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+          ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
+					{OS} = (typeof ChromeUtils.import == "undefined") ?
+						Cu.import("resource://gre/modules/osfile.jsm", {}) :
+						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+
     let missingIcons = [],
         ctRepaired = 0, ctMissing = 0;
 		util.logDebugOptional("interface", "repairTreeIcons()");
@@ -1083,7 +1087,7 @@ QuickFolders.Interface = {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
         let fileSpec = folderEntry.icon,
             path = OS.Path.fromFileURI(fileSpec),
-            localFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+            localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
 			  localFile.initWithPath(path);
 			  if (!localFile.exists())  { 
           missingIcons.push({path:path, name:this.folderPathLabel(1, folder, 2)} );
@@ -2171,6 +2175,7 @@ QuickFolders.Interface = {
 		const Ci = Components.interfaces,
           Cc = Components.classes,
           nsIFilePicker = Ci.nsIFilePicker,
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
           MAX_ICONS = 12;
 		let folderButton, entry,
 		    folders = null,
@@ -2204,15 +2209,15 @@ QuickFolders.Interface = {
         return;
     }
     
-    let fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
     
 		// callback, careful, no "this"
     let fpCallback = function fpCallback_done(aResult) {
       if (aResult == nsIFilePicker.returnOK) {
         try {
           if (fp.file) {
-					  let file = fp.file.parent.QueryInterface(Ci.nsILocalFile);
-						//localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+					  let file = fp.file.parent.QueryInterface(NSIFILE);
+						//localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
 						try {
 							//localFile.initWithPath(path); // get the default path
 							QuickFolders.Preferences.setStringPref('tabIcons.defaultPath', file.path);
@@ -2252,7 +2257,7 @@ QuickFolders.Interface = {
 		// needs to be initialized with something that makes sense (UserProfile/QuickFolders)
 		
 //Error: NS_ERROR_XPC_BAD_CONVERT_JS: Could not convert JavaScript argument arg 0 [nsIFilePicker.displayDirectory]
-		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE),
 		    lastPath = QuickFolders.Preferences.getStringPref('tabIcons.defaultPath');
 		if (lastPath)
 			localFile.initWithPath(lastPath);
@@ -2494,6 +2499,9 @@ QuickFolders.Interface = {
 	
 	getLocalFileFromNativePathOrUrl: function getLocalFileFromNativePathOrUrl(aPathOrUrl) {
 	  try {
+			const Ci = Components.interfaces,
+						Cc = Components.classes,
+			      NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
 			if (aPathOrUrl.substring(0,7) == "file://") {
 				// if this is a URL, get the file from that
 				let ioSvc = Cc["@mozilla.org/network/io-service;1"].
@@ -2502,10 +2510,10 @@ QuickFolders.Interface = {
 				// XXX it's possible that using a null char-set here is bad
 				const fileUrl = ioSvc.newURI(aPathOrUrl, null, null).
 												QueryInterface(Ci.nsIFileURL);
-				return fileUrl.file.clone().QueryInterface(Ci.nsILocalFile);
+				return fileUrl.file.clone().QueryInterface(NSIFILE);
 			} else {
 				// if it's a pathname, create the nsILocalFile directly
-				let f = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				let f = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
 				f.initWithPath(aPathOrUrl);
 				return f;
 			}
@@ -2517,8 +2525,9 @@ QuickFolders.Interface = {
 	}	,	
 	
 	onFolderOpenLocation: function onFolderOpenLocation(element) {
-		let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder;
+		const util = QuickFolders.Util,
+		      NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
+    let folder = util.getPopupNode(element).folder;
 		// code from gDownloadViewController.showDownload(folder);
     util.logDebug('onFolderOpenLocation()\nfolder: ' + folder.name +'\nPath: ' + folder.filePath.path);
 		let f = this.getLocalFileFromNativePathOrUrl(folder.filePath.path); // aDownload.getAttribute("file")
@@ -2529,7 +2538,7 @@ QuickFolders.Interface = {
       util.logDebug('onFolderOpenLocation() - localfile.reveal failed: ' + e);
 			// If reveal fails for some reason (e.g., it's not implemented on unix or
 			// the file doesn't exist), try using the parent if we have it.
-			let parent = f.parent.QueryInterface(Ci.nsILocalFile);
+			let parent = f.parent.QueryInterface(NSIFILE);
 			if (!parent) {
         util.logDebug('onFolderOpenLocation() - no folder parent - giving up.');
 				return;
@@ -2586,6 +2595,8 @@ QuickFolders.Interface = {
   } ,
   
 	rebuildSummary: function rebuildSummary(folder) {
+		const Ci = Components.interfaces,
+					Cc = Components.classes;
 		let isCurrent=false;
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
@@ -2612,9 +2623,8 @@ QuickFolders.Interface = {
 
 			// Send a notification that we are triggering a database rebuild.
 			let notifier =
-				Components.classes["@mozilla.org/messenger/msgnotificationservice;1"]
-						.getService(
-							Components.interfaces.nsIMsgFolderNotificationService);
+				Cc["@mozilla.org/messenger/msgnotificationservice;1"]
+						.getService(Ci.nsIMsgFolderNotificationService);
 
 			notifier.notifyItemEvent(folder, "FolderReindexTriggered", null);
 			folder.msgDatabase.summaryValid = false;
@@ -2645,7 +2655,7 @@ QuickFolders.Interface = {
 				}
 			}
 			catch (ex) {
-				Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage("failed to remove offline store: " + ex);
+				Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).logStringMessage("failed to remove offline store: " + ex);
 			}
 
 			msgDB.summaryValid = false;
@@ -3029,6 +3039,7 @@ QuickFolders.Interface = {
 	// noCommands suppress all command menu items + submenus
 	addPopupSet: function addPopupSet(popupId, folder, entry, offset, button, noCommands) {
 		const prefs = QuickFolders.Preferences,
+		      Ci = Components.interfaces,
           util = QuickFolders.Util;
 		let menupopup = document.createElement('menupopup'),
 		    menuitem,
@@ -3226,7 +3237,7 @@ QuickFolders.Interface = {
       }
     }
 
-		let fi = folder.QueryInterface(Components.interfaces.nsIMsgFolder),
+		let fi = folder.QueryInterface(Ci.nsIMsgFolder),
         MailCommands, isRootMenu;
 
 		/* In certain cases, let's append mail folder commands to the root menu */
@@ -3439,7 +3450,8 @@ QuickFolders.Interface = {
 	
 	addDragToNewFolderItem: function addDragToNewFolderItem(popupMenu, folder) {
     const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences;
+		      prefs = QuickFolders.Preferences,
+					Ci = Components.interfaces;
 		try {
       if (typeof folder.server === 'undefined') return;
       
@@ -3447,7 +3459,7 @@ QuickFolders.Interface = {
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
 				+ "\nserver.type = " + folder.server.type);
 			if (!folder.canCreateSubfolders) return;
-			let server=folder.server.QueryInterface(Components.interfaces.nsIMsgIncomingServer);// check server.type!!
+			let server=folder.server.QueryInterface(Ci.nsIMsgIncomingServer);// check server.type!!
 			switch(server.type) {
 				case 'pop3':
 					if (!prefs.getBoolPref("dragToCreateFolder.pop3"))
@@ -3560,7 +3572,8 @@ QuickFolders.Interface = {
 						  "\xF9":"u", "\xFA":"u", "\xFB":"u", "\xFC":"ue", "\xFF":"y",
 						  "\xDF":"ss", "_":"/", ":":"."},
 					prefs = QuickFolders.Preferences,
-					util = QuickFolders.Util;
+					util = QuickFolders.Util,
+					Ci = Components.interfaces;
     let killDiacritics = function(s) {
 			    return s.toLowerCase().replace(/[_\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF\x3A]/gi, function($0) { return tr[$0] })
 		    },
@@ -3582,10 +3595,10 @@ QuickFolders.Interface = {
 		while (!done) {
 			// TB2 and Postbox:
 			if (typeof subfolders.currentItem!='undefined')
-				subfolder = subfolders.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+				subfolder = subfolders.currentItem().QueryInterface(Ci.nsIMsgFolder);
 			else {
 				if (subfolders.hasMoreElements())
-					subfolder = subfolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+					subfolder = subfolders.getNext().QueryInterface(Ci.nsIMsgFolder);
 				else {
 					done=true;
 					break;
@@ -3987,11 +4000,11 @@ QuickFolders.Interface = {
 			return false;
 		}
     
-    let util = QuickFolders.Util,
-        model = QuickFolders.Model,
-        prefs = QuickFolders.Preferences,
-        Ci = Components.interfaces,
-		    isSelected = false,
+    const util = QuickFolders.Util,
+          model = QuickFolders.Model,
+          prefs = QuickFolders.Preferences,
+          Ci = Components.interfaces;
+		let isSelected = false,
 				enteredSearch = searchBox.value,
 	      searchString = enteredSearch.toLocaleLowerCase(),
         parentString = '';        
@@ -4057,7 +4070,7 @@ QuickFolders.Interface = {
     if (util.Application == 'Postbox') {
       let AF = util.allFoldersIterator(isFiling);
       for (let fi=0; fi<AF.length; fi++) {
-        let folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
+        let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
         if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
         addMatchingFolder(matches, folder);
       }
@@ -4077,7 +4090,7 @@ QuickFolders.Interface = {
 			if (util.Application == 'Postbox') {
 				let AF = util.allFoldersIterator(isFiling);
 				for (let fi=0; fi<AF.length; fi++) {
-					let folder = AF.queryElementAt(fi,Components.interfaces.nsIMsgFolder);
+					let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
 					addIfMatch(folder, parentString, parents);
 				}
 			}
@@ -4998,15 +5011,15 @@ QuickFolders.Interface = {
   },  
 
 	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(Name, Title)	{
+    const Cc = Components.classes,
+		      Ci = Components.interfaces;
 		try {
 			QuickFolders.Util.logDebugOptional("css","ensureStyleSheetLoaded(Name: " + Name + ", Title: " + Title + ")" );
 
 			QuickFolders.Styles.getMyStyleSheet(Name, Title); // just to log something in console window
 
-			let sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-								.getService(Components.interfaces.nsIStyleSheetService),
-			    ios = Components.classes["@mozilla.org/network/io-service;1"]
-								.getService(Components.interfaces.nsIIOService),
+			let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService),
+			    ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
 			    fileUri = (Name.length && Name.indexOf("chrome://")<0) ? "chrome://quickfolders/content/" + Name : Name,
 			    uri = ios.newURI(fileUri, null, null);
 			if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
@@ -5441,6 +5454,8 @@ QuickFolders.Interface = {
 	} ,
 
 	goPreviousSiblingFolder: function goPreviousSiblingFolder() {
+    const Cc = Components.classes,
+		      Ci = Components.interfaces;
 		let aFolder = QuickFolders.Util.CurrentFolder,
 		    parentFolder = aFolder.parent,
 		    myenum; // force instanciation for SM
@@ -5457,7 +5472,7 @@ QuickFolders.Interface = {
 		while (!done) {
 			target = folder;
 			if (typeof myenum.currentItem!='undefined') {
-				folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
+				folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
 				if (typeof myenum.next != 'undefined') {
 					try { myenum.next(); }
 					catch(e) {
@@ -5468,7 +5483,7 @@ QuickFolders.Interface = {
 			else // SeaMonkey
 			{
 				if (myenum.hasMoreElements())
-					folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+					folder = myenum.getNext().QueryInterface(Ci.nsIMsgFolder);
 				else {
 					done=true;
 					break;
@@ -5482,7 +5497,7 @@ QuickFolders.Interface = {
 					if (typeof myenum.currentItem!='undefined') {
 						try {
 							myenum.next();
-							x = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder);
+							x = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder);
 						} // no next: end of list
 						catch(e) {
 							target = x;
@@ -5493,7 +5508,7 @@ QuickFolders.Interface = {
 							x = myenum.getNext();
 						else {
 							if (!x) break; // only 1 item present
-							target = x.QueryInterface(Components.interfaces.nsIMsgFolder);
+							target = x.QueryInterface(Ci.nsIMsgFolder);
 						}
 					}
 				}

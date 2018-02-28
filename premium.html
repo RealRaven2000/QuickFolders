@@ -43,6 +43,22 @@
 			background: -ms-linear-gradient(top,  rgba(251,245,245,1) 0%,rgba(237,210,201,1) 31%,rgba(209,189,191,1) 100%);
 			background: linear-gradient(to bottom,  rgba(251,245,245,1) 0%,rgba(237,210,201,1) 31%,rgba(209,189,191,1) 100%);
 		} 
+		.featureList td h4,
+		.featureList td h4:hover
+		{
+		  background: transparent !important;
+			border: none !important;
+			border-radius: 0;
+			box-shadow: none;
+			color: rgba(20,20,20,0.9);
+			display: block;
+			font-size: 1.1em;
+			font-weight: 500;
+		  margin: 0 0 4px;
+			padding: 0 0 2px;
+			text-decoration: underline;
+		}
+		
 		.inlineImage {
 			display: inline-block; 
 			float: left; 
@@ -143,15 +159,15 @@
 			My aim is that instead of very few people trying to carry the project with sometimes large
 			donations to try involving more supporters. It is a lot of work to keep the project 
 			going and up to date with all the latest code changes which happen every 6 weeks on the Mozilla code base.
-			Staying in sync with the three applications (Thunderbird, Postbox and SeaMonkey) and to support multiple 
-			platforms (Windows, Linux and Mac) and languages and writing support emails and fixing bugs is actually a lot of work. 
+			Staying in sync with the three complex applications (Thunderbird, Postbox and SeaMonkey) and to support 
+			multiple OS platforms (Windows, Linux and Mac) and languages and writing support emails and fixing bugs is actually a lot of work. 
 			I would rather actually spend more time on this as opposed to maybe 6 to 12 hours / week, but for this it 
 			needs to be financially viable.
 			</p>
 			<p> See the <a href="donate.html">support page</a> on how to obtain a licensee. </p>
 
 			<a name="featureList"></a>
-			<h3>What Premium Features exist?</h3>
+			<h3>Which Premium Features exist?</h3>
 			<p>Here is a list of Premium features that are unrestricted to licensed users.</p> 
 			<p>For non-licensed users, the premium features can be restricted and, when used, will show a notification bar
 				in order to promote buying a license. I feel this is the best way as it gives you a chance to try them out and 
@@ -159,9 +175,10 @@
 
 			<table class="featureList">
 			 <tr>
-					<th>Premium Feature</th>
-					<th>What does it do?</th>
+					<th>Feature</th>
+					<th>Description</th>
 			 </tr>
+			 
 			 <tr>
 					<td>quickMove</td>
 					<td>
@@ -179,6 +196,7 @@
 						 </p>
 						 </td>
 			 </tr>
+			 
 			 <tr>
 					<td>quickCopy (4.2)</td>
 					<td>
@@ -206,14 +224,31 @@
 						 </p>
 							</td>
 			 </tr>
+			 
+			 <tr>
+					<td>Skip Folder</td>
+					<td>
+						<h4>Skip an unread folder with a single click</h4>
+						<p><img src="ico/exit-folder.png" alt="Reading List" class="inlineImage"/>
+						  This new button makes navigating the unread emails a breeze.
+							No time to look at your social media subscriptions, you just want to move on
+							to the next important unread email? Simply click this button and jump onwards.
+							Only when everything else is done, hurray, watch the next video or read the next tweet!<br>
+							(v3.9 and later)
+						</p>
+					</td>
+			 </tr>
+			 
 			 <tr>
 					<td>Tab Icons</td>
-					<td><img src="images/tab-Icons.png" alt="Tab Icons"/><br>
+					<td>
+					  <h4>Some help for the eyes</h4>
+					  <img src="images/tab-Icons.png" alt="Tab Icons"/><br>
 						You can now add customized icons to every QuickFolder tab. In Thunderbird this icon will also be shown in the folder tree.
 						The easiest way to do this is using the yellow "Image Icon" on the current folder tab while are in the folder:<br>
 						<img src="images/select-icon.png" alt="Select Icon from Current Folder"><br>
 							<p>
-							To get started, you can download a selection of (16px²) icons here:
+							To get started, you can download a selection of (16px<sup>2</sup>) icons here:
 							<a href="http://downloads.mozdev.org/quickfolders/4.9/quickFoldersIcons.zip">http://downloads.mozdev.org/quickfolders/4.9/</a>
 							- these are mostly favicons from websites but also some of the fabulous  fugue icon set by 
 							<a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>. These are shared under fair
@@ -224,41 +259,12 @@
 							<p class="smaller">With the free version of QuickFolders, the number of icons is restricted to 12.</p>
 						</td>
 			 </tr>
-			 <tr>
-					<td>Line Breaks</td>
-					<td><img src="images/linebreak.png" alt="Line Break"/><br>
-							You can now insert a line break before any tab in order to show another row of tabs. 
-							To remove the line break, you right-click the first tab in the line and select QuickFolders Commands &gt; Remove Line Break</td>
-			 </tr>
-			 <tr>
-					<td>Separators</td>
-					<td><img src="images/separator.png" alt="Separator"/><br>
-							You can now insert a separator before any tab in order to indicate a new group of tabs. 
-							To remove the line separator, you right-click the tab to the right of it and select 
-							QuickFolders Commands &gt; Remove Separator</td>
-			 </tr>
-			 <tr>
-					<td>Tab-specific Properties</td>
-					<td><img src="images/advancedTabProperties.png" 
-									 alt="advanced Tab Properties"
-									 class="inlineImage"/>
-					<p>This powerful feature allows you to determine specific exceptions to invidual tabs:
-					You can hide its unread status or mail count (which might be helpful for draft and sent folders) set default mail addresses
-					and add other specific features such as a different palette or customized colors.
-					For a customized background I highly recommend using a linear gradient CSS rule - 
-					for your convenience I added a link to the 
-					<a href="http://www.colorzilla.com/gradient-editor/#_">Ultimate CSS Gradient Generator</a> from Colorzilla. 
-					Simply click the button beside the text field to create your own gradient and then insert the W3C specific rule e.g.
-					<code>linear-gradient(to bottom, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(125,185,232,1) 100%)</code>
-					</p>
-					<p>Setting default To Email address and From Identity for creating new mails when in a folder makes it easier when we store email from different identities in the same mailbox (e.g. Local Folders). For example: You can now configure your desired sender identity for each of your mailing lists. Or select a default recipient for when you write a new email from a folder. 
-					</p>
-					</td>
-			 </tr>
 			 
 			 <tr>
 					<td>Reading List<a name="ReadingList" href="#">&nbsp;</a></td>
-					<td><img src="ico/fugue-bookmark.png" alt="Reading List" class="inlineImage"/>
+					<td>
+					  <h4>A bookmark for the whole library</h4>
+					  <img src="ico/fugue-bookmark.png" alt="Reading List" class="inlineImage"/>
 							"Reading List" Icon for storing bookmarks for important mails. 
 							Drag an email to this button and QuickFolders remembers it for you, without having to keep a mail
 							tab permanently open. 
@@ -268,24 +274,75 @@
 								 Right-click any entry you want to remove. </p>	
 							<p class="smaller">To test drive this feature, the free version allows adding up to 5 of these.</p>
 					</td>
+			 </tr>			 
+			 
+			 <tr>
+					<td>Line Breaks</td>
+					<td><img src="images/linebreak.png" alt="Line Break"/><br>
+							You can now insert a line break before any tab in order to show another row of tabs. 
+							To remove the line break, you right-click the first tab in the line and select QuickFolders Commands &gt; Remove Line Break</td>
+			 </tr>
+			 
+			 <tr>
+					<td>Separators</td>
+					<td><img src="images/separator.png" alt="Separator"/><br>
+							You can now insert a separator before any tab in order to indicate a new group of tabs. 
+							To remove the line separator, you right-click the tab to the right of it and select 
+							QuickFolders Commands &gt; Remove Separator</td>
 			 </tr>
 			 <tr>
-					<td>Folder Tree</td>
+					<td>Tab-specific Properties</td>
+					<td>
+					  <h4>Supercharge your most important folders</h4>
+					  <img src="images/advancedTabProperties.png" 
+									 alt="advanced Tab Properties"
+									 class="inlineImage"/>
+					<p>This powerful feature allows you to determine specific exceptions to invidual tabs:
+					You can hide its unread status or mail count (which might be helpful for draft and sent folders) set default mail addresses
+					and add other specific features such as a different palette or customized colors.
+					For a customized background I highly recommend using a linear gradient CSS rule - 
+					for your convenience I added a link to the 
+					<a href="http://www.colorzilla.com/gradient-editor/#_">Ultimate CSS Gradient Generator</a> from Colorzilla. 
+					Simply click the button beside the text field to create your own gradient and then copy the W3C specific rule e.g.
+					<code>linear-gradient(to bottom, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(125,185,232,1) 100%)</code>
+					- and insert the code into the background field. Pick a text color, and you get your own personalized color scheme:
+					</p>
+					<div style="background: linear-gradient(to bottom, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(125,185,232,1) 100%); display: inline-block; border-radius: 4px 4px 0 0;padding:1px 4px;color: white;"> Customized Folder </div>
+					<p>Or select a different palette from what you are using for your other colored tabs, 
+					   for that super important VIP folder, and then select that satisfying, bright red:</p>
+						 <img src="images/important-folder.png" alt="night mode with important folder" title="night mode with important folder"/>
+						 
+					<p>Setting default To Email address and From Identity for creating new mails when in a 
+					   folder makes it easier when we store email from different identities in the same mailbox 
+						 (e.g. Local Folders). For example: You can now configure your desired sender identity 
+						 for each of your mailing lists. Or select a default recipient for when you write a 
+						 new email from a folder. 
+					</p>
+					</td>
+			 </tr>
+			 
+			 <tr>
+					<td>Tree Key</td>
 					<td>
 						 Use the new folder tree shortcut [F9] in order to hide / show the folder tree
 					</td>
 			 </tr>
 			 
 			 <tr>
-					<td>Create Child Folder</td>
-					<td><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26150">[Bug 26150]</a> 
-								quickJump / quickMove - create child folder command [Thunderbird / SeaMonkey only]. 
-								Enter parent folder name (or partial) then press slash [/] to type child folder.
-								See <a href="https://youtu.be/ndUamqfCKos?t=2m18s">this video</a> for a detailed demonstration.
-								</td>
+					<td>Child Folders</td>
+					<td>
+						<h4>An easy &amp; quick way to create / navigate child folders</h4>
+						<p>Using the 
+						<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26150">quickJump / quickMove</a> functions - create child folder command. 
+						Enter parent folder name (or partially) then press the forward slash key [/] to type 
+						name of the child folder.
+						</p>
+						<p>In QuickFolders Pro it's as simple as hitting <i>SHIFT+M</i> (<b>M</b>ove) or <i>SHIFT+J</i> (<b>J</b>ump) - here is a detailed demonstration:
+						</p>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/ndUamqfCKos?rel=0&amp;start=138" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					</td>
 			 </tr>
 
-			 
 			 <tr>
 					<td>...</td>
 					<td>More premium features will be added over time - you can also 

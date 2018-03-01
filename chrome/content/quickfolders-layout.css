@@ -889,6 +889,15 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
   list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder.png");
 }
 
+#QuickFolders-skipfolder {
+	list-style-image: url("//quickfolders/skin/ico/skip-54.png");
+}
+
+toolbar[brighttext="true"] #QuickFolders-skipfolder {
+	list-style-image: url("//quickfolders/skin/ico/skip-54-bright.png");
+}
+
+
 #QuickFolders-toolbar-button.toolbarbutton-1,
 #mail-toolbox > toolbar[brighttext] #QuickFolders-toolbar-button.toolbarbutton-1
 {

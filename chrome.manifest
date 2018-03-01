@@ -25,7 +25,7 @@ locale quickfolders zh-CHT chrome/locale/zh/
 locale quickfolders zh-TW  chrome/locale/zh/
 
 #platforms specific content - allow additional platforms specific rules
-content quickfolders-pl    content/   platform
+#content quickfolders-pl    content/   platform
 skin    quickfolders       classic/1.0  chrome/skin/
 skin    quickfolders-pl    classic/1.0  chrome/skin/
 
@@ -76,7 +76,11 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 
 ##Style Tweaks
 #All
-style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css
+style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
+## modern styles
+style chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0a1
 style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets.css
 style chrome://mozapps/content/extensions/about.xul chrome://quickfolders-pl/skin/about.css
 style chrome://global/content/alerts/alert.xul      chrome://quickfolders/content/quickfolders-alert.css

@@ -493,18 +493,19 @@ hbox.quickhelp-dbg {
 }
 
 #advancedConfig > groupbox {
-  max-height: 230px;
+  /* max-height: 230px; */
 	min-height: 50px;
 }
 
 #currentFolderCustomize {
-	overflow-y: scroll;
-	max-height: 194px;
 	/* -moz-appearance: listbox; */
 	/* for textured themes */
 	background-color: rgba(255, 255, 255, 0.4);  
 	backface-visibility: visible;
 	box-shadow: 1px 1px 1px threedshadow inset;
+	height: 250px;
+	max-height: 250px;
+	overflow-y: scroll;
 }
 
 #mailCommandsCustomize {

@@ -517,8 +517,6 @@ QuickFolders.Options = {
           this.enablePremiumConfig(true);
           validationPassed.collapsed=false;
           getElement('dialogProductTitle').value = "QuickFolders Pro";
-          // test code
-          getElement('txtEncrypt').value = LicenseKey;
           break;
         case State.Invalid:
           validationFailed.collapsed=false;
@@ -539,8 +537,8 @@ QuickFolders.Options = {
           Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
           break;
       }
-      if (testMode) {
-        getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
+      if (testMode) {  // removed in 4.9
+        // getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
       }
       else {
         // reset License status of main instance
@@ -659,6 +657,8 @@ QuickFolders.Options = {
   // if we add the secret encryption string(s) to our config db
   // we will be able to generate new license keys...
   encryptLicense: function encryptLicense() {
+		throw('Encryption is not supported!');
+		/*
     let encryptThis = document.getElementById('txtEncrypt').value;
     if (encryptThis.indexOf('*')>0) {
       if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
@@ -678,6 +678,7 @@ QuickFolders.Options = {
     }
     let encrypted = QuickFolders.Util.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
     document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
+		*/
   },
   
 	selectTheme: function selectTheme(wd, themeId) {

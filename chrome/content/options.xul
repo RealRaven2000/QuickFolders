@@ -1123,6 +1123,7 @@
 						<spacer flex="1" />
 					</hbox>
 					<separator flex="1" />
+					<!--
 					<groupbox id="boxKeyGenerator" collapsed="true">
 					  <caption label="CREATE REGISTRATION KEY: REMOVE IN PRODUCTION - TRANSLATION UNNECESSARY!" />
 						<hbox>
@@ -1148,6 +1149,7 @@
 						</hbox>
 					</groupbox>
 					<separator flex="1" />
+					-->
 				</tabpanel>
 			</tabpanels>
 		</tabbox>

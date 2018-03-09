@@ -1,0 +1,17 @@
+
+/* modern look thunderbird 60 */
+#QuickFolders-skipfolder {
+  list-style-image: url("//quickfolders/skin/ico/skip-60.png") !important;
+}
+
+toolbar[brighttext="true"] #QuickFolders-skipfolder {
+  list-style-image: url("//quickfolders/skin/ico/skip-60-bright.png") !important;
+}
+
+#QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60.png");
+}
+
+toolbar[brighttext="true"] #QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60-bright.png");
+}

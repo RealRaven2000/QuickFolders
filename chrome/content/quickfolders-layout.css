@@ -886,8 +886,13 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
 }
 
 #QuickFolders-createfolder {
-  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder.png");
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-57.png");
 }
+
+toolbar[brighttext="true"] #QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-57-bright.png");
+}
+
 
 #QuickFolders-skipfolder {
 	list-style-image: url("//quickfolders/skin/ico/skip-54.png");

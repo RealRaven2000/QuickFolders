@@ -287,10 +287,12 @@ QuickFolders.Options = {
     // .0 private license, .1 domain license
     // these are only for testing, so normal users shouldn't need them, default to '' via code
     let EncryptionKey = prefs.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
+		/*
     if (EncryptionKey) {
       getElement('boxKeyGenerator').collapsed = false;
       licenser.RSA_encryption = EncryptionKey;
     }
+		*/
     
     if (earlyExit) return;
     if (licenser.isValidated)
@@ -585,10 +587,11 @@ QuickFolders.Options = {
         finalLicense = this.trimLicense();
       }    
     }
-    if (finalLicense) {
+		this.validateLicenseInOptions(false);
+    /* if (finalLicense) {
       let testMode = !document.getElementById('boxKeyGenerator').collapsed;
       this.validateLicenseInOptions(testMode);
-    }
+    } */
   } ,
   
   validateLicenseInOptions: function validateLicenseInOptions(testMode) {

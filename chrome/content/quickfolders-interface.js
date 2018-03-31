@@ -577,9 +577,13 @@ QuickFolders.Interface = {
 	// exit unread folder skip to next...
 	onSkipFolder: function onSkipFolder(button) {
 		const util = QuickFolders.Util,
-				  prefs = QuickFolders.Preferences;
+				  prefs = QuickFolders.Preferences,
+					Ci = Components.interfaces;
 		let currentFolder = QuickFolders.Util.CurrentFolder,
 				folder;
+				
+		if (!util.hasPremiumLicense(false))
+			util.popupProFeature("skipUnreadFolder");
 				
 		if (prefs.isDebugOption('navigation')) debugger;
 		folder = util.getNextUnreadFolder(currentFolder);
@@ -587,6 +591,12 @@ QuickFolders.Interface = {
 		if (folder) {
 			util.logDebug("selecting next unread folder:" + folder.prettyName + '\n' + folder.URI);
 			QuickFolders_MySelectFolder(folder.URI);
+			// we need to jump to the top (first mail) for the 
+			if (GoNextMessage)
+				GoNextMessage(Ci.nsMsgNavigationType.firstMessage, false);
+			else
+				ScrollToMessage(Ci.nsMsgNavigationType.firstMessage, true, true); // SeaMonkey
+			
 			if (currentFolder == folder) { // wrap around case
 			  let txt = util.getBundleString("qfNavigationWrapped", "No other unread folders found, continuing in {1}.")
 				util.slideAlert("QuickFolders",  txt.replace('{1}', folder.prettyName));
@@ -943,7 +953,7 @@ QuickFolders.Interface = {
 		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 			
 		// update the theme type - based on theme selection in options window, if this is open, else use the id from preferences
-		prefs.setCurrentThemeId(themeSelector ? themeSelector.value : prefs.CurrentThemeId);
+		prefs.CurrentThemeId = themeSelector ? themeSelector.value : prefs.CurrentThemeId;
 		let style =  prefs.ColoredTabStyle,
 		    // refresh main window
 		    mail3PaneWindow = util.getMail3PaneWindow();
@@ -2771,31 +2781,46 @@ QuickFolders.Interface = {
 		MsgSearchMessages(folder);
 	} ,
 	
-	buildPaletteMenu: function buildPaletteMenu(currentColor, existingPopupMenu) {
-		let util = QuickFolders.Util,
-        logLevel = (typeof existingPopupMenu === 'undefined') ? "interface.tabs" : "interface",
+	buildPaletteMenu: function buildPaletteMenu(currentColor, existingPopupMenu, ignoreTheme) {
+		const Themes = QuickFolders.Themes.themes,
+		      util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences;   
+		let logLevel = (typeof existingPopupMenu === 'undefined') ? "interface.tabs" : "interface",
         popupTitle = existingPopupMenu ? existingPopupMenu.id : 'none';
 		util.logDebugOptional(
 			logLevel, 
 			"buildPaletteMenu(" + currentColor + ", existingPopupMenu=" + popupTitle + ")");
 		let menuColorPopup = existingPopupMenu ? existingPopupMenu : document.createElement("menupopup");
 		try {
-			// create color pick items
-			for (let jCol=0; jCol<=20;jCol++) {
-				let menuitem = document.createElement('menuitem');
-				menuitem.className='color menuitem-iconic';
-				menuitem.setAttribute("tag","qfColor"+jCol);
-				if (jCol) {
-					menuitem.setAttribute('label',this.getUIstring("qfMenuColor", "Color") + " "+ jCol);
-					//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
-					if (currentColor == jCol)
-						menuitem.selected = true;
+			// only flat style + apple pills support palette color
+			if (ignoreTheme 
+			    || prefs.CurrentThemeId == Themes.ApplePills.Id
+					|| prefs.CurrentThemeId == Themes.Flat.Id) {
+				for (let jCol=0; jCol<=20;jCol++) {
+					let menuitem = document.createElement('menuitem');
+					menuitem.className='color menuitem-iconic';
+					menuitem.setAttribute("tag","qfColor"+jCol);
+					if (jCol) {
+						menuitem.setAttribute('label',this.getUIstring("qfMenuColor", "Color") + " "+ jCol);
+						//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
+						if (currentColor == jCol)
+							menuitem.selected = true;
+					}
+					else
+						menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
+					this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
+					menuColorPopup.appendChild(menuitem);
 				}
-				else
-					menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
-				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
+			}
+			else {
+				const ELLIPSIS = "\u2026".toString();
+				let menuitem = document.createElement('menuitem');
+				menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorDisabledInTheme", "Select different Theme to support coloring" + ELLIPSIS));
+				// open "bling my tabs"
+				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.viewOptions(2)");
 				menuColorPopup.appendChild(menuitem);
 			}
+			// create color pick items
 			util.logDebugOptional("popupmenus","Colors Menu created.\n-------------------------");
 		}
 		catch(ex) {
@@ -2810,10 +2835,10 @@ QuickFolders.Interface = {
 	//   folder = related folder
 	//   button = parent button
 	appendMailFolderCommands: function appendMailFolderCommands(MailCommands, folder, isRootMenu, button, menupopup) {
-		let topShortCuts = 0,
-		    util = QuickFolders.Util,
-		    prefs = QuickFolders.Preferences,
-        menuitem;
+		const util = QuickFolders.Util,
+		      prefs = QuickFolders.Preferences;
+    let topShortCuts = 0,
+		    menuitem;
 		// Empty Trash
 		if (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH
 			&&

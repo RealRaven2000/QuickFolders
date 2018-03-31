@@ -209,17 +209,20 @@ pref("extensions.quickfolders.filters.showMessage", true);
 pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
 pref("extensions.quickfolders.licenseType", 0); // private license, 1-domain
+pref("extensions.quickfolders.premium.categories.multiSelect",false);
 pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
+/* popupProFeature( ) counts how often these features are used */
+pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
+pref("extensions.quickfolders.premium.bookmarks.usage", 0);
 pref("extensions.quickfolders.premium.findFolder.usage", 0);
 pref("extensions.quickfolders.premium.lineBreaks.usage", 0);
-pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
+pref("extensions.quickfolders.premium.pasteFolderEntries.usage", 0);
 pref("extensions.quickfolders.premium.quickMove.usage", 0);
+pref("extensions.quickfolders.premium.skipUnreadFolder.usage", 0);
 pref("extensions.quickfolders.premium.tabIcons.usage", 0);
-pref("extensions.quickfolders.premium.bookmarks.usage", 0);
-pref("extensions.quickfolders.premium.categories.multiSelect",false);
-pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
+pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
 pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
 pref("extensions.quickfolders.LicenseKey", "");
 pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */

@@ -47,6 +47,12 @@
 			tooltiptext="&quickfolders.toolbar.newsubfolder;" 
 			oncommand="QuickFolders.Interface.onCreateInstantFolder();"
 		  />
+		<toolbarbutton id="QuickFolders-skipfolder"
+			class="toolbarbutton-1 chromeclass-toolbar-additional"
+			label="&quickfolders.toolbar.skip;" 
+			tooltiptext="&qf.tooltip.skipUnreadFolder;" 
+			oncommand="QuickFolders.Interface.onSkipFolder(null);"
+		  />
 	</toolbarpalette>
 
 

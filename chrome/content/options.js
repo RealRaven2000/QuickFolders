@@ -53,7 +53,7 @@ QuickFolders.Options = {
 		// persist colors
 		try {
 			const prefs = QuickFolders.Preferences;
-			prefs.setCurrentThemeId(getElement("QuickFolders-Theme-Selector").value);
+			prefs.CurrentThemeId = getElement("QuickFolders-Theme-Selector").value;
 
 			prefs.setUserStyle("ActiveTab","background-color",
 							getElement("activetab-colorpicker").color);
@@ -331,6 +331,8 @@ QuickFolders.Options = {
 	},
   
   initBling: function initBling (tabbox) {
+		const util = QuickFolders.Util,
+		      QI =  QuickFolders.Interface;
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
         prefs = QuickFolders.Preferences,
@@ -346,7 +348,7 @@ QuickFolders.Options = {
 
     //support transparency and shadow
     let transcol  =  this.getTransparent(bcol, prefs.getBoolPref("transparentButtons"));
-    QuickFolders.Util.logDebug('inactivetabs-label: setting background color to ' + transcol);
+    util.logDebug('inactivetabs-label: setting background color to ' + transcol);
     getElement("inactivetabs-label").style.backgroundColor = transcol;
     // this.showButtonShadow(prefs.getBoolPref("buttonShadows"));
 
@@ -394,7 +396,7 @@ QuickFolders.Options = {
     catch(e) { ; }
     
     let menupopup = getElement("QuickFolders-Options-PalettePopup");
-    QuickFolders.Interface.buildPaletteMenu(0, menupopup);
+    QI.buildPaletteMenu(0, menupopup, true);
     
     // customized coloring support
     this.initPreviewTabStyles();
@@ -622,7 +624,7 @@ QuickFolders.Options = {
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
 					replaceCssClass(menuProLicense, 'paid');
-					quickFoldersSkipFolder.collapsed = false;
+					// quickFoldersSkipFolder.collapsed = false;
 				  break;
 				case State.Expired:
 					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
@@ -632,7 +634,7 @@ QuickFolders.Options = {
 					replaceCssClass(btnLicense, 'expired');
 					replaceCssClass(menuProLicense, 'expired');
 				  btnLicense.collapsed = false;
-					quickFoldersSkipFolder.collapsed = true;
+					// quickFoldersSkipFolder.collapsed = true;
 					break;
 				default:
 				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
@@ -640,7 +642,7 @@ QuickFolders.Options = {
 					replaceCssClass(btnLicense, 'register');
 					replaceCssClass(proTab, 'free');
 					replaceCssClass(menuProLicense, 'free');
-					quickFoldersSkipFolder.collapsed = true;
+					// quickFoldersSkipFolder.collapsed = true;
 			}
 			
 			util.logDebug('validateLicense - result = ' + result);

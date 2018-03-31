@@ -342,12 +342,12 @@ QuickFolders.Preferences = {
 				let theme = QuickFolders.Themes;
 
 				if (this.getBoolPref("showFlatStyle"))
-					this.setCurrentThemeId(theme.themes.Flat.Id);
+					this.CurrentThemeId = theme.themes.Flat.Id;
 				else {
 					if (this.getBoolPref("showNativeTabStyle"))
-						this.setCurrentThemeId(theme.themes.NativeTabs.Id);
+						this.CurrentThemeId = theme.themes.NativeTabs.Id;
 					else
-						this.setCurrentThemeId(theme.themes.ApplePills.Id); // Pills style
+						this.CurrentThemeId = theme.themes.ApplePills.Id; // Pills style
 				}
 
 				try {
@@ -516,7 +516,7 @@ QuickFolders.Preferences = {
 		return this.getStringPref("style.theme");
 	},
 
-	setCurrentThemeId: function setCurrentThemeId(t) {
+	set CurrentThemeId(t) {
 		return this.setStringPref("style.theme",t);
 	},
   

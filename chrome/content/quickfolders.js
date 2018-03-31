@@ -378,7 +378,7 @@ END LICENSE BLOCK */
 	  ## translation updates
 		## xmas days special sale 25% off
 		
-  4.9 WIP
+  4.9 QuickFolders Pro - 11/03/2018
 		## [Bug 26470] Make QuickFolders compatible with Postbox beta 5.52 (modern Gecko build)
 		## [Bug 26489] ESR 2018 readiness - Make QuickFolders compatible with Thunderbird 60
 		## tidy up (don't show) own filter notification when quickFilters is installed.
@@ -396,6 +396,16 @@ END LICENSE BLOCK */
 		## Advanced Tab colors (postbox) temporary fixes with !important - see Interface.addCustomStyles()
 		## Stability fixes around Util.CurrentFolder
 		## [Bug 26481] Reading List: click on bookmarked mail should switch to already open mail Tab
+		
+	4.9.1 QuickFolders Pro - 13/03/2018
+	  ## Decided to leave button on screen but serve premium notification on use
+		## [Bug 26475] Improved toolbar icon for Tb 54.*
+		
+	4.9.2 QuickFolders Pro - WIP
+	  ## [Bug 26475] Improved go to next unread folder to always go to first unread email 
+		   (and not last current position in folder)
+		## [Bug 26507] Colors menu should only be available on themes supporting it
+	
 		
 	Known Issues
 	============
@@ -933,8 +943,9 @@ var QuickFolders = {
 						menuRegister.classList.add('free');
 				}
 			}
-			let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
-			quickFoldersSkipFolder.collapsed = !hasLicense;
+			// 4.9.1 decided to leave button on screen but serve premium notification on use
+			// let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
+			// quickFoldersSkipFolder.collapsed = !hasLicense;
 
     }, 1000);
     

@@ -419,7 +419,7 @@
 											sizetopopup="none"
 											oncommand="QuickFolders.Interface.updateMainWindow();">
 							<menupopup>
-								<!-- values in this list are QuickFolders.Themes.themes.id values -->
+								<!-- values in this list are arbitrary -->
 								<menuitem label="&qf.currentFolderBackground.default;"
 													oncommand="QuickFolders.Options.setCurrentToolbarBackground('default', true);"
 													value="default" />
@@ -1003,7 +1003,7 @@
 						</vbox>
 					</hbox>
 					<separator class="licenseSeparator" />
-					<hbox>
+					<hbox id="validationDate">
 						<label>&qf.label.licenseValid;</label>
 						<label id="licenseDate" value="-" />
 					</hbox>
@@ -1011,10 +1011,11 @@
 					<hbox id="validationResults">
 					  <vbox>
 							<description id="validationPassed" class="niceFont" collapsed="true">&qf.licenseValidation.passed;</description>
-							<description id="validationFailed" class="niceFont" collapsed="true">&qf.licenseValidation.failed;</description>
-							<description id="validationExpired" class="niceFont" collapsed="true">&qf.licenseValidation.expired;</description>
-							<description id="validationInvalidEmail" class="niceFont" collapsed="true">&qf.licenseValidation.invalidMail;</description>
-							<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+							<description id="validationFailed" class="niceFont licenseError" collapsed="true">&qf.licenseValidation.failed;</description>
+							<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.expired;</description>
+							<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.invalidMail;</description>
+							<description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+							<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">&qf.licenseValidation.invalidAddon;</description>
 					  </vbox>
 						<spacer flex="1"/>
 					</hbox>

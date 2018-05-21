@@ -163,7 +163,7 @@ h2:before {
 	list-style-image: url('/images/menuOnTop/flavors/photon-bright.png') !important;
 }
 .styleFlavors .photon-bright span {
-	background-image: rgba(255,255,255,0.4);
+	background: rgba(255,255,255,0.4);
 	color: #000000;
 }
 
@@ -175,6 +175,6 @@ h2:before {
 	padding: 3px 0;
 }
 .styleFlavors .photon-dark span {
-	background-image: rgba(255,255,255,0.4);
+	background: rgba(255,255,255,0.4);
 	color: #FFFFFF;
 }

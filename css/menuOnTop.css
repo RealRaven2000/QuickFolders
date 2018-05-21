@@ -161,7 +161,7 @@ h2:before {
 .styleFlavors .photon-bright {
 	/* default photon - Thunderbird 60 */
 	list-style-image: url('/images/menuOnTop/flavors/photon-bright.png') !important;
-	background-image: linear-gradient(to bottom, #E9F2FB 0%,#DCEAF9 100%);
+	background-image: linear-gradient(to bottom, #E9F2FB 0%, #DCEAF9 100%);
 	padding: 3px 0;
 }
 .styleFlavors .photon-bright span {

@@ -207,10 +207,10 @@
 				<ul>
 					<li>
 						<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26514" target="_blank">[Bug 26514]</a> 
-						Remove the QuickFolders Tab when deleting folder from its menu.
-					</li>
-					<li>
-						Fixed version links from Options dialog to support site to show more relevant information to Premium Users.
+						Remove the QuickFolders Tab when deleting folder from its menu: The QuickFolders tab of a deleted
+						folder used to be re-pointed to the folder that was moved to Trash, which could create the impression
+						of the folder still being in place. With this fix, Thunderbird will move to the parent of the deleted 
+						folder after the folder deletion and delete the QuickFolder Tab as well.
 					</li>
 					<li> 
 						Improved "Skip Folder" function to wrap around and go to the <i>first</i> unread 
@@ -224,6 +224,12 @@
 						<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26517" target="_blank">[Bug 26517]</a> 
 						Support moving multiple folders using Drag + Drop.
 					</li>
+					<li>
+						Fixed version links from Options dialog to support site to show more relevant information to Premium Users.
+					</li>
+					<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26489" target="_blank">[Bug 26489]</a> 
+							ESR 2018 readiness - Make QuickFolders compatible with Thunderbird 60</li>
+							
 				  <h4 class="inList">Various Styling Improvements</h4><br>
 					<li>
 						Improved brighttext support in "Flat Tabs" and coloring behavior for "Apple Pills" Theme.
@@ -238,7 +244,11 @@
 					<li>
 						Fixed font color on colored Current Folder tab when Striped Style is used.
 					</li>
-					
+					<li>
+					  Added a preview panel to advanced folder properties - this will be visible if the 
+						custom css option is activated. Note that any colorings can be different on the QuickFolder tab
+						if the folder is currently selected. (Current folder coloring overrides everything else for consistency)
+					</li>
 				</ul>
 			</li>
 			

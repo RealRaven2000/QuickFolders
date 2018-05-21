@@ -9,3 +9,106 @@ h2:before {
 	content: url('/ico/mot-icon16.png') !important;
 	padding-right: 6px;
 }
+
+.styleFlavors .australis {
+	list-style-image: url("images/menuOnTop/flavors/australis.png");
+}
+
+.styleFlavors .australis-redesign {
+	list-style-image: url("images/menuOnTop/flavors/australis2.png");	
+}
+
+.styleFlavors .deepdark {
+	list-style-image: url("images/menuOnTop/flavors/tt-deepdark.png");
+}
+
+.styleFlavors .naval {
+	list-style-image: url("images/menuOnTop/flavors/naval.png");
+}
+
+.styleFlavors .silver {
+	list-style-image: url("images/menuOnTop/flavors/silver.png");
+}
+
+.styleFlavors .lantana {
+	list-style-image: url("images/menuOnTop/flavors/lantana.png");
+}
+
+.styleFlavors .fudge {
+	list-style-image: url("images/menuOnTop/flavors/fudge.png");
+}
+
+.styleFlavors .whiteglass {
+	list-style-image: url("images/menuOnTop/flavors/white-glass.png");
+}
+
+.styleFlavors .walnut {
+	list-style-image: url("images/menuOnTop/flavors/walnut.png");
+}
+
+.styleFlavors .littlebird {
+	list-style-image: url("images/menuOnTop/flavors/littlebird.png");
+}
+
+.styleFlavors .phoenity {
+	list-style-image: url("images/menuOnTop/flavors/phoenity.png");
+}
+
+.styleFlavors .morgana {
+	list-style-image: url("images/menuOnTop/flavors/morgana.png");
+}
+
+.styleFlavors .mountain {
+	list-style-image: url("images/menuOnTop/flavors/mountain.png");
+}
+
+.styleFlavors .parakeet {
+	list-style-image: url("images/menuOnTop/flavors/parakeet.png");
+}
+.styleFlavors .tangerine {
+	list-style-image: url("images/menuOnTop/flavors/tangerine.png");
+}
+
+.styleFlavors .lime {
+	list-style-image: url("images/menuOnTop/flavors/lime.png");
+}
+
+.styleFlavors .may {
+	list-style-image: url("images/menuOnTop/flavors/may.png");
+}
+
+.styleFlavors .cloud {
+	list-style-image: url("images/menuOnTop/flavors/cloud.png");
+}
+
+.styleFlavors .rose {
+	list-style-image: url("images/menuOnTop/flavors/rose.png");
+}
+
+
+.styleFlavors .sunflower {
+	list-style-image: url("images/menuOnTop/flavors/sunflower.png");
+}
+
+.styleFlavors .robin {
+	list-style-image: url("images/menuOnTop/flavors/robin.png");
+}
+
+.styleFlavors .oak {
+	list-style-image: url("images/menuOnTop/flavors/oak.png");
+}
+
+.styleFlavors .leather {
+	list-style-image: url("images/menuOnTop/flavors/mahogany.png");
+}
+ 
+.styleFlavors .photon-bright {
+	/* default photon - Thunderbird 60 */
+	list-style-image: url("images/menuOnTop/flavors/photon-bright.png");
+}
+
+
+.styleFlavors .photon-dark {
+	/* bright-text. dark background - Thunderbird 60 brighttext */
+	list-style-image: url("images/menuOnTop/flavors/photon-dark.png");
+}

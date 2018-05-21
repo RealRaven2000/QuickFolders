@@ -11,7 +11,9 @@ h2:before {
 }
 
 .styleFlavors li span {
+	border-radius: 0 0.4em 0.4em 0;
 	margin: 1px 2em 2px;
+	padding: 4px 1em;
 }
 
 .styleFlavors .australis {
@@ -144,7 +146,7 @@ h2:before {
 	list-style-image: url('/images/menuOnTop/flavors/oak.png') !important;
 }
 .styleFlavors .oak span {
-	background-image: linear-gradient(to bottom, #b27237 0%,#7d492e 34%,#774121 56%,#c48b56 100%);
+	background-image: linear-gradient(to bottom, #b27237 0%, #7d492e 34%, #774121 56%,#c48b56 100%);
 	color: #FFCC66;
 }
 
@@ -162,7 +164,7 @@ h2:before {
 }
 .styleFlavors .photon-bright span {
 	background-image: rgba(255,255,255,0.4);
-	color: #9C9C9C;
+	color: #000000;
 }
 
 
@@ -174,5 +176,5 @@ h2:before {
 }
 .styleFlavors .photon-dark span {
 	background-image: rgba(255,255,255,0.4);
-	color: #333333;
+	color: #FFFFFF;
 }

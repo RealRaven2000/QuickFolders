@@ -11,104 +11,106 @@ h2:before {
 }
 
 .styleFlavors .australis {
-	list-style-image: url("images/menuOnTop/flavors/australis.png");
+	list-style-image: url('/images/menuOnTop/flavors/australis.png') !important;
 }
 
 .styleFlavors .australis-redesign {
-	list-style-image: url("images/menuOnTop/flavors/australis2.png");	
+	list-style-image: url('/images/menuOnTop/flavors/australis2.png') !important;	
 }
 
 .styleFlavors .deepdark {
-	list-style-image: url("images/menuOnTop/flavors/tt-deepdark.png");
+	list-style-image: url('/images/menuOnTop/flavors/tt-deepdark.png') !important;
 }
 
 .styleFlavors .naval {
-	list-style-image: url("images/menuOnTop/flavors/naval.png");
+	list-style-image: url('/images/menuOnTop/flavors/naval.png') !important;
 }
 
 .styleFlavors .silver {
-	list-style-image: url("images/menuOnTop/flavors/silver.png");
+	list-style-image: url('/images/menuOnTop/flavors/silver.png') !important;
 }
 
 .styleFlavors .lantana {
-	list-style-image: url("images/menuOnTop/flavors/lantana.png");
+	list-style-image: url('/images/menuOnTop/flavors/lantana.png') !important;
 }
 
 .styleFlavors .fudge {
-	list-style-image: url("images/menuOnTop/flavors/fudge.png");
+	list-style-image: url('/images/menuOnTop/flavors/fudge.png') !important;
 }
 
 .styleFlavors .whiteglass {
-	list-style-image: url("images/menuOnTop/flavors/white-glass.png");
+	list-style-image: url('/images/menuOnTop/flavors/white-glass.png') !important;
 }
 
 .styleFlavors .walnut {
-	list-style-image: url("images/menuOnTop/flavors/walnut.png");
+	list-style-image: url('/images/menuOnTop/flavors/walnut.png') !important;
 }
 
 .styleFlavors .littlebird {
-	list-style-image: url("images/menuOnTop/flavors/littlebird.png");
+	list-style-image: url('/images/menuOnTop/flavors/littlebird.png') !important;
 }
 
 .styleFlavors .phoenity {
-	list-style-image: url("images/menuOnTop/flavors/phoenity.png");
+	list-style-image: url('/images/menuOnTop/flavors/phoenity.png') !important;
 }
 
 .styleFlavors .morgana {
-	list-style-image: url("images/menuOnTop/flavors/morgana.png");
+	list-style-image: url('/images/menuOnTop/flavors/morgana.png') !important;
+	background-image: url('/images/menuOnTop/flavors/morgana.png') !important;
+	background-size: 100%;
 }
 
 .styleFlavors .mountain {
-	list-style-image: url("images/menuOnTop/flavors/mountain.png");
+	list-style-image: url('/images/menuOnTop/flavors/mountain.png') !important;
 }
 
 .styleFlavors .parakeet {
-	list-style-image: url("images/menuOnTop/flavors/parakeet.png");
+	list-style-image: url('/images/menuOnTop/flavors/parakeet.png') !important;
 }
 .styleFlavors .tangerine {
-	list-style-image: url("images/menuOnTop/flavors/tangerine.png");
+	list-style-image: url('/images/menuOnTop/flavors/tangerine.png') !important;
 }
 
 .styleFlavors .lime {
-	list-style-image: url("images/menuOnTop/flavors/lime.png");
+	list-style-image: url('/images/menuOnTop/flavors/lime.png') !important;
 }
 
 .styleFlavors .may {
-	list-style-image: url("images/menuOnTop/flavors/may.png");
+	list-style-image: url('/images/menuOnTop/flavors/may.png') !important;
 }
 
 .styleFlavors .cloud {
-	list-style-image: url("images/menuOnTop/flavors/cloud.png");
+	list-style-image: url('/images/menuOnTop/flavors/cloud.png') !important;
 }
 
 .styleFlavors .rose {
-	list-style-image: url("images/menuOnTop/flavors/rose.png");
+	list-style-image: url('/images/menuOnTop/flavors/rose.png') !important;
 }
 
 
 .styleFlavors .sunflower {
-	list-style-image: url("images/menuOnTop/flavors/sunflower.png");
+	list-style-image: url('/images/menuOnTop/flavors/sunflower.png') !important;
 }
 
 .styleFlavors .robin {
-	list-style-image: url("images/menuOnTop/flavors/robin.png");
+	list-style-image: url('/images/menuOnTop/flavors/robin.png') !important;
 }
 
 .styleFlavors .oak {
-	list-style-image: url("images/menuOnTop/flavors/oak.png");
+	list-style-image: url('/images/menuOnTop/flavors/oak.png') !important;
 }
 
 .styleFlavors .leather {
-	list-style-image: url("images/menuOnTop/flavors/mahogany.png");
+	list-style-image: url('/images/menuOnTop/flavors/mahogany.png') !important;
 }
  
 .styleFlavors .photon-bright {
 	/* default photon - Thunderbird 60 */
-	list-style-image: url("images/menuOnTop/flavors/photon-bright.png");
+	list-style-image: url('/images/menuOnTop/flavors/photon-bright.png') !important;
 }
 
 
 .styleFlavors .photon-dark {
 	/* bright-text. dark background - Thunderbird 60 brighttext */
-	list-style-image: url("images/menuOnTop/flavors/photon-dark.png");
+	list-style-image: url('/images/menuOnTop/flavors/photon-dark.png') !important;
 }

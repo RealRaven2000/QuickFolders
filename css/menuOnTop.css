@@ -56,61 +56,88 @@ h2:before {
 
 .styleFlavors .morgana {
 	list-style-image: url('/images/menuOnTop/flavors/morgana.png') !important;
-	background-image: url('/images/menuOnTop/flavors/morgana.png') !important;
-	background-size: 100%;
+	background-image: linear-gradient(to bottom, #c040a4 0%,#961072 50%,#d5279b 100%);
+	color: #F0F0FF;
 }
 
 .styleFlavors .mountain {
 	list-style-image: url('/images/menuOnTop/flavors/mountain.png') !important;
+	background-image: linear-gradient(to bottom, rgba(4,160,238,0.8) 0%,rgba(2,79,138,0.8) 47%,rgba(0,53,118,0.8) 100%);
+	color: #F0F0FF;
 }
 
 .styleFlavors .parakeet {
 	list-style-image: url('/images/menuOnTop/flavors/parakeet.png') !important;
-}
-.styleFlavors .tangerine {
-	list-style-image: url('/images/menuOnTop/flavors/tangerine.png') !important;
+	background-image: linear-gradient(to bottom, rgba(3,185,173,0.8) 0%,rgba(2,105,108,0.8) 47%,rgba(0,78,92,0.8) 100%);
+	color: rgba(225, 255, 250, 0.95);
 }
 
 .styleFlavors .lime {
 	list-style-image: url('/images/menuOnTop/flavors/lime.png') !important;
+	background-image: linear-gradient(to bottom, rgba(223,242,84,0.86) 0%,rgba(155,239,76,0.81) 53%,rgba(135,174,68,0.81) 100%);
+	color: #003300;
+}
+
+.styleFlavors .tangerine {
+	list-style-image: url('/images/menuOnTop/flavors/tangerine.png') !important;
+	background-image: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 11%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%);
+	color: rgba(225, 255, 250, 0.99);
 }
 
 .styleFlavors .may {
 	list-style-image: url('/images/menuOnTop/flavors/may.png') !important;
+	background-image: linear-gradient(to bottom, #b8d31b 0%,#7aa612 50%,#5c8a00 51%,#87b513 100%);
+	color: #F0F0F0;
 }
 
 .styleFlavors .cloud {
 	list-style-image: url('/images/menuOnTop/flavors/cloud.png') !important;
+	background-image: linear-gradient(to bottom, rgba(149,248,253,0.8) 0%,rgba(109,231,253,0.8) 47%,rgba(99,213,255,0.8) 100%);
+	color: #000066;
 }
 
 .styleFlavors .rose {
 	list-style-image: url('/images/menuOnTop/flavors/rose.png') !important;
+	background-image: linear-gradient(to bottom, rgba(255,93,177,1) 0%,rgba(239,1,124,1) 100%);
+	color: #FFFFFF;
 }
 
 
 .styleFlavors .sunflower {
 	list-style-image: url('/images/menuOnTop/flavors/sunflower.png') !important;
+	background-image: linear-gradient(to bottom, rgba(249,248,146,0.86) 0%,rgba(247,247,44,0.81) 50%,rgba(234,184,18,0.81) 100%);
+	color: #330000;
 }
 
 .styleFlavors .robin {
 	list-style-image: url('/images/menuOnTop/flavors/robin.png') !important;
+	background-image: linear-gradient(to bottom, rgba(237,4,8,0.8) 0%,rgba(137,13,2,0.8) 45%,rgba(117,23,0,0.8) 100%);
+	color: rgba(255, 240, 255, 1);
 }
 
 .styleFlavors .oak {
 	list-style-image: url('/images/menuOnTop/flavors/oak.png') !important;
+	background-image: linear-gradient(to bottom, #b27237 0%,#7d492e 34%,#774121 56%,#c48b56 100%);
+	color: #FFCC66;
 }
 
 .styleFlavors .leather {
 	list-style-image: url('/images/menuOnTop/flavors/mahogany.png') !important;
+	background-image: linear-gradient(to bottom, #a95f4a 0%,#4f0b0b 29%,#6e272b 64%,#9e5b45 100%);
+	color: #F2D0BB;
 }
  
 .styleFlavors .photon-bright {
 	/* default photon - Thunderbird 60 */
 	list-style-image: url('/images/menuOnTop/flavors/photon-bright.png') !important;
+	background-image: rgba(255,255,255,0.4);
+	color: #9C9C9C;
 }
 
 
 .styleFlavors .photon-dark {
 	/* bright-text. dark background - Thunderbird 60 brighttext */
 	list-style-image: url('/images/menuOnTop/flavors/photon-dark.png') !important;
+	background-image: rgba(255,255,255,0.4);
+	color: #333333;
 }

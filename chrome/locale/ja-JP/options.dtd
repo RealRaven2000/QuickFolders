@@ -160,9 +160,9 @@
 <!ENTITY qf.label.licenseValid "ライセンスの有効期限:">
 <!ENTITY qf.licenseValidation.passed "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
 <!ENTITY qf.licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
+<!ENTITY qf.licenseValidation.invalidAddon "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。">
 <!ENTITY qf.licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
 <!ENTITY qf.licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">
-<!ENTITY qf.licenseValidation.invalidAddon "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。">
 <!ENTITY qf.licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY qf.premiumConfig "有料機能">
 <!ENTITY qf.checkbox.quickJump "quickJump: 次のショートカットキーで任意のフォルダを開きます: Shift +">

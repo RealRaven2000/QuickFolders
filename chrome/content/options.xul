@@ -16,7 +16,9 @@
 						ondialogcancel="QuickFolders.Options.close();"
 						onload="QuickFolders.Options.load();"
 						ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
-						tooltiptextextra2="&qf.label.donateLink;">
+						tooltiptextextra2="&qf.label.donateLink;"
+						lightweightthemes="true"
+						>
 
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
@@ -411,10 +413,12 @@
 						<textbox id="currentFolderBackground"
 										 flex="1"
 										 preference="QuickFolders-Preferences-CurrentFolder-Background"
+										 onblur="QuickFolders.Options.sanitizeCSS(this);"
 										 instantApply="true" />
 						<button label="&qf.button.currentFolderBackground.set;"
 										class="narrow"
-										onclick="QuickFolders.Options.setCurrentToolbarBackgroundCustom();" />
+										onclick="QuickFolders.Options.setCurrentToolbarBackgroundCustom();" 
+										/>
 						<menulist id="QuickFolders-CurrentFolder-Background-Select"
 											sizetopopup="none"
 											oncommand="QuickFolders.Interface.updateMainWindow();">
@@ -484,6 +488,8 @@
 						<preference id="QuickFolders-Preferences-CustomizedRadius" name="extensions.quickfolders.style.corners.customizedRadius" type="bool" />
 						<preference id="QuickFolders-Preferences-TopRadius" name="extensions.quickfolders.style.corners.customizedTopRadiusN" type="int" />
 						<preference id="QuickFolders-Preferences-BottomRadius" name="extensions.quickfolders.style.corners.customizedBottomRadiusN" type="int" />
+						<preference id="QuickFolders-Preferences-ButtonMinimalHeight" name="extensions.quickfolders.style.button.minHeight" type="int" />
+						<preference id="QuickFolders-Preferences-ButtonTopPadding" name="extensions.quickfolders.style.button.paddingTop" type="int" />
 						<preference id="QuickFolders-Preferences-Theme" name="extensions.quickfolders.style.theme" type="string" />
 						<preference id="QuickFolders-Preferences-ShowIcons" name="extensions.quickfolders.showIcons" type="bool" />
 						<preference id="QuickFolders-Preferences-ButtonFontSize" name="extensions.quickfolders.buttonFontSizeN" type="int" />
@@ -575,6 +581,27 @@
 											 instantApply="true"
 											 onchange="QuickFolders.Options.changeTextPreference(this);" />
 							<label value="px" />
+							<separator flex="1" />
+							<hbox id="btnHeightTweaks">
+								<label value="&qf.toolbarMinimumHeight;" />
+								<textbox id="buttonMinHeight"
+												 type="number"
+												 preference="QuickFolders-Preferences-ButtonMinimalHeight"
+												 instantApply="true"
+												 style="max-width:5em; width:auto;"
+												 onchange="QuickFolders.Options.changeTextPreference(this);"/>
+								<label value="px" />
+								<separator flex="1" />
+								<label value="Top padding:" />
+								<textbox id="buttonPaddingTop"
+												 type="number"
+												 preference="QuickFolders-Preferences-ButtonTopPadding"
+												 instantApply="true"
+												 style="max-width:5em; width:auto;"
+												 onchange="QuickFolders.Options.changeTextPreference(this);"/>
+								<label value="px" />
+							</hbox>
+							
 							<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
 							<hbox id="qf-tweakBorders" align="center">
 								<label value="&qf.label.pixels;" />
@@ -659,10 +686,12 @@
 					<groupbox id="qf-tweakColors">
 						<caption label="&qf.label.colors;" />
 						<!-- styling hacks, we need these for the rules to apply to our preview 'tabs' -->
-						<hbox flex="1" class='quickfolders-flat'>
+						<hbox id="qf-flat-toolbar"
+									flex="1" 
+						      class='quickfolders-flat'>
 							<vbox>
 								<!-- pretend toolbar -->
-								<hbox style="margin-top: .2em;" id="qf-StandardColors">
+								<hbox style="margin-top: .2em;" id="qf-StandardColors" lwtheme-image="true">
 									<vbox>
 										<hbox align="center">
 											<label id="inactivetabs-label"

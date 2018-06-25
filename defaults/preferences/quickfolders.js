@@ -86,6 +86,8 @@ pref("extensions.quickfolders.pastelColors", true); // legacy, now obsolete
 pref("extensions.quickfolders.style.corners.customizedRadius", false);
 pref("extensions.quickfolders.style.corners.customizedTopRadiusN", 4);
 pref("extensions.quickfolders.style.corners.customizedBottomRadiusN", 0);
+pref("extensions.quickfolders.style.button.minHeight", 20);
+pref("extensions.quickfolders.style.button.paddingTop", 1);
 pref("extensions.quickfolders.style.borders", true);
 // Special State colors
 pref("extensions.quickfolders.style.Toolbar.bottomLineWidth", 3);

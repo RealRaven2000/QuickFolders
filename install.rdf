@@ -13,7 +13,7 @@
    em:icon64URL="chrome://quickfolders/skin/ico/QF64x64.png"
    em:optionsURL="chrome://quickfolders/content/options.xul">
     <em:type>2</em:type>
-	  <em:version>4.9.2pre16</em:version>
+	  <em:version>4.10.1pre1</em:version>
     <em:homepageURL>http://quickfolders.mozdev.org/index.html</em:homepageURL>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomt2"/>
@@ -59,7 +59,7 @@
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="3.0.0"
-   em:maxVersion="5.52.*" />
+   em:maxVersion="5.52b6" />
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"

@@ -26,6 +26,7 @@ QuickFolders.Themes = {
 				,buttonInnerShadows: false
 				,supportsFontSelection: false
 				,supportsFontSize: true
+				,supportsHeightTweaks: true
         ,toolbarBorder: true
 				,cornerRadius: true
 				,borderToggle: false
@@ -48,6 +49,7 @@ QuickFolders.Themes = {
 				,buttonInnerShadows: true
 				,supportsFontSelection: false
 				,supportsFontSize: false
+				,supportsHeightTweaks: false
         ,toolbarBorder: false
 				,cornerRadius: false
 				,borderToggle: false
@@ -70,6 +72,7 @@ QuickFolders.Themes = {
 				,buttonInnerShadows: false
 				,supportsFontSelection: false
 				,supportsFontSize: true
+				,supportsHeightTweaks: false
         ,toolbarBorder: false
 				,cornerRadius: false
 				,borderToggle: false
@@ -92,6 +95,7 @@ QuickFolders.Themes = {
 				,buttonInnerShadows: false
 				,supportsFontSelection: false
 				,supportsFontSize: true
+				,supportsHeightTweaks: false
         ,toolbarBorder: false
 				,cornerRadius: false
 				,borderToggle: false
@@ -114,6 +118,7 @@ QuickFolders.Themes = {
 				,buttonInnerShadows: false
 				,supportsFontSelection: false
 				,supportsFontSize: true
+				,supportsHeightTweaks: false
         ,toolbarBorder: false
 				,cornerRadius: false
 				,borderToggle: false

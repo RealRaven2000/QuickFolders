@@ -78,9 +78,12 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 #All
 style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
-## modern styles
-style chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0a1
-style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0a1
+
+## modern styles - new monochrome icons for Thunderbird 60
+style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>59
+style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0
+
+
 style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets.css
 style chrome://mozapps/content/extensions/about.xul chrome://quickfolders-pl/skin/about.css
 style chrome://global/content/alerts/alert.xul      chrome://quickfolders/content/quickfolders-alert.css

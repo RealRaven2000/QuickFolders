@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-tab-advanced.css" title="QuickFolderAdvancedStyles" type="text/css"?>
 
 <!-- multiple language resources, so we get palette titles -->
@@ -32,21 +34,23 @@
 	<label id="defaultAccountAddress" collapsed="true" value="&defaultAccountAddress.value;" />
 	<vbox>
 	  <hbox>
-			<dialogheader 
+			<hbox 
 				title="&windowTitle;" 
+				defaultTitle="&windowTitle;" 
 				description="[Tab Name]"
 				id="myHeader"
 				flex="1"
 				onclick = "QuickFolders.AdvancedTab.headerClick(event);"
-				/>
-			<hbox>
-			  <spacer flex="1" />
-				<toolbarbutton
-						class="close-icon"
-						id="btnClose"
-						oncommand="QuickFolders.AdvancedTab.close();"
-					/>
+				>
+				<label class="dialogheader-title" value="&windowTitle;" />
+				<spacer flex="1" />
+				<label class="dialogheader-description" id="tabName" value="[Tab Name]" />
 			</hbox>
+			<toolbarbutton
+					class="close-icon"
+					id="btnClose"
+					oncommand="QuickFolders.AdvancedTab.close();"
+				/>
 		</hbox>
 
 		<hbox align="center">
@@ -118,7 +122,8 @@
 		  <caption label="&grpCustomCSS;"/>
 		  <hbox>
 			  
-			  <checkbox id="chkCustomCSS"/>	
+			  <checkbox id="chkCustomCSS"
+				          onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"/>	
 			  
 			  <grid>
 				<columns>
@@ -131,7 +136,8 @@
 						        oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
 										class="textLink"/>	
 						<textbox id="txtBackground" 
-						         tooltiptext="&cssBackground.tooltip;"/>
+						         tooltiptext="&cssBackground.tooltip;"
+										 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
 					</row>
 					<row>
 						<button label="&cssColor;"
@@ -140,10 +146,14 @@
 						<hbox>
 							<textbox id="txtColor" 
 											 tooltiptext="&cssColor.tooltip;"
-											 onblur="QuickFolders.AdvancedTab.updatePicker(this);"/>
+											 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
 							<colorpicker id="txtColorPicker" 
 											 type="button"
 											 onchange="return QuickFolders.AdvancedTab.pickColor(this.color);"/>
+							<spacer flex="1"/>
+							<label id="cssPreview" 
+										 value="Preview"
+										 tooltiptext="Current selected folder colors will always override this."/>
 						</hbox>
 					</row>
 				</rows>

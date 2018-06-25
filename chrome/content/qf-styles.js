@@ -37,10 +37,10 @@ QuickFolders.Styles = {
       }
       return (ssFirstMatch) ? true : false;
     }
-    let href; // closured
-		let ssFirstMatch = null; // closured
-		let sList = '';
-		let styleSheetList = document.styleSheets;
+    let href, // closured
+		    ssFirstMatch = null, // closured
+		    sList = '',
+		    styleSheetList = document.styleSheets;
 		for (let i = 0; i < styleSheetList.length; i++) {
 			let ss = styleSheetList[i];
 			href = ss.href || "";
@@ -80,6 +80,7 @@ QuickFolders.Styles = {
 	},
 
 	getElementStyle: function(ss, rule, attribute) {
+		const util = QuickFolders.Util;
 	  function getRuleFromList(rulesList, rule, attribute, recurse) {
 			let leftTrim = function(S) { return S ? S.replace(/^\s+/,"") : ''; };
 			try {
@@ -109,13 +110,13 @@ QuickFolders.Styles = {
 							}
 							if (match) {
 								let st = theRule.style; // CSSStyleDeclaration
-								QuickFolders.Util.logDebugOptional("css.Detail", "found relevant style: " + theRule.selectorText + " searching rule " + attribute);
+								util.logDebugOptional("css.Detail", "found relevant style: " + theRule.selectorText + " searching rule " + attribute);
 
 								//iterate rules!
 								for (let k=0;k<st.length;k++) {
 									if (attribute == st.item(k)) {
 										let val = st.getPropertyValue(attribute);
-										QuickFolders.Util.logDebugOptional ("css.Detail", "attribute Found:\n" + attribute + " : " + val);
+										util.logDebugOptional ("css.Detail", "attribute Found:\n" + attribute + " : " + val);
 										return val;
 									}
 								}
@@ -129,12 +130,12 @@ QuickFolders.Styles = {
 				return null; // not found
 			}
 			catch(e) {
-				QuickFolders.Util.logException ("getElementStyle( " + rule + ", " + attribute + ")", e);
+				util.logException ("getElementStyle( " + rule + ", " + attribute + ")", e);
 			};
 			return null;  // not found
 		}
 	
-		QuickFolders.Util.logDebugOptional("css.Detail", "getElementStyle( " + rule + ", " + attribute + ")");
+		util.logDebugOptional("css.Detail", "getElementStyle( " + rule + ", " + attribute + ")");
 		
 		// get rule recusrsively (includes imported style sheets)
 		return getRuleFromList(ss.cssRules, rule, attribute, true);
@@ -216,9 +217,7 @@ QuickFolders.Styles = {
 		// load on startup
 		try {
 			if (!ss || ss==null) {
-				// fallback style sheet retrieval
-				// ss = this.getMyStyleSheet("QuickFolderStyles", 'quickfolders-layout.css'); // not always 100% right but we hope that it is being passed in correctly
-				// if (!ss || ss==null)
+				logDebug("failed loading stylesheet, empty parameter.")
 				return false;
 			}
 			if (typeof ss.cssRules == 'undefined')

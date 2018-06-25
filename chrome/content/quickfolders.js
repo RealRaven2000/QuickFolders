@@ -401,10 +401,18 @@ END LICENSE BLOCK */
 	  ## Decided to leave button on screen but serve premium notification on use
 		## [Bug 26475] Improved toolbar icon for Tb 54.*
 		
-	4.9.2 QuickFolders Pro - WIP
-	  ## [Bug 26475] Improved go to next unread folder to always go to first unread email 
+	4.10 QuickFolders Pro - WIP
+	  ## Improved go to next unread folder to always go to first unread email 
 		   (and not last current position in folder)
 		## [Bug 26507] Colors menu should only be available on themes supporting it
+		## [Bug 26514] Remove the QuickFolders Tab when deleting folder from its menu.
+		## Fixed version links from Options dialog to support site to avoid showing promotions to Premium Users
+		## [Bug 26517] Support moving multiple folders using Drag + Drop
+		## Moderenised icon for photon look (Thunderbird 60)
+		## Improved brighttext behavior + Apple Pills theming
+		## Automatic Sanitizing of CSS values for Tab Specific custom CSS and current folder toolbar CSS strings
+		
+		
 	
 		
 	Known Issues
@@ -560,8 +568,9 @@ var QuickFolders = {
 			if (util.Application=='Postbox')
 				this._tabContainer = this.doc.getElementById('tabmail').mTabContainer;
 			else {
-				// from v59 this element is called 'tabmail-tabs' and not 'tabcontainer'
-				this._tabContainer = this.doc.getElementById('tabmail').tabContainer;
+				// from Tb59 this element is called 'tabmail-tabs' and not 'tabcontainer'
+				this._tabContainer = 
+				  this.doc.getElementById('tabmail').tabContainer || this.doc.getElementById('tabmail-tabs');
 			}
 				
 		}
@@ -1687,7 +1696,8 @@ var QuickFolders = {
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
 					Ci = Components.interfaces,
-					Cc = Components.classes;
+					Cc = Components.classes,
+					prefs = QuickFolders.Preferences;
 			let isShift = evt.shiftKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
@@ -1697,9 +1707,10 @@ var QuickFolders = {
         util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + dropData.flavour.contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
+			if (prefs.isDebugOption("dnd")) debugger;
 
 			switch (dropData.flavour.contentType) {
-				case  "text/x-moz-folder": // not supported! You can not drop a folder from foldertree on a tab!
+				case  "text/x-moz-folder": 
 					if (!isShift) {
 						let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
 								"Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
@@ -1708,8 +1719,21 @@ var QuickFolders = {
 					}
 					// handler for dropping folders
 					try {
-						let sourceFolder = util.getFolderFromDropData(evt, dropData, dragSession);
-						QI.moveFolder(sourceFolder, targetFolder);
+						if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
+							let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1,
+									foldersArray = [];
+							for (let i=0; i<count; i++) { // allow multiple folder drops...
+								let msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, i);
+								if (!msgFolder.QueryInterface) // Postbox
+									msgFolder = QuickFolders.Model.getMsgFolderFromUri(util.getFolderUriFromDropData(evt, dropData, dragSession), false);
+								foldersArray.push(msgFolder);
+							}
+							QI.moveFolder(foldersArray, targetFolder, count);
+						}					
+						else {
+							let sourceFolder = util.getFolderFromDropData(evt, dropData, dragSession);
+							QI.moveFolder(sourceFolder, targetFolder);
+						}
 					}
 					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.onDrop:" + e); };
 					break;
@@ -2355,6 +2379,7 @@ QuickFolders.FolderListener = {
 			if (!QuickFolders)
 				return;
       const util = QuickFolders.Util,
+			      model = QuickFolders.Model,
             listener = QuickFolders.FolderListener;
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder),
 			    fromURI = f.URI,
@@ -2368,11 +2393,18 @@ QuickFolders.FolderListener = {
 			if (fromURI !== toURI) {
 				if (listener.lastAdded && (f.name === listener.lastAdded.name)) {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
-					logDebugOptional("folders,listeners.folder","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
 					if (toURI)  {
-            let ct = QuickFolders.Model.moveFolderURI(fromURI, toURI);
-						logDebug ("Successfully updated " + ct + " URIs for folder " + f.name);
-						QuickFolders.Interface.updateFolders(true, true);
+						// we should not do this when deleting, we need to delete the Tab!
+						let newParent = model.getMsgFolderFromUri(toURI).parent;
+						if (newParent && (newParent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)) {
+							logDebug ("Folder  " + f.name + " moved to Trash. Leaving Tab URI unchanged for deletion.");
+						}
+						else {
+							logDebugOptional("folders,listeners.folder","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
+							let ct = model.moveFolderURI(fromURI, toURI);
+							logDebug ("Successfully updated " + ct + " URIs for folder " + f.name);
+							QuickFolders.Interface.updateFolders(true, true);
+						}
 					}
 					else {
 						let s = "Failed to update URI of folder: " + f.name + " please remove it manually and add to QuickFolders bar";

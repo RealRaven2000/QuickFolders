@@ -145,10 +145,14 @@ QuickFolders.AdvancedTab = {
 		elem('txtToAddress').value = entry.toAddress ? entry.toAddress : '';
     
     let lbl = elem('lblCategories'),
-        tabHeader = elem('myHeader');
+        tabHeader = elem('myHeader'),
+				tabName = elem('tabName');
     lbl.value = entry.category;
-    tabHeader.setAttribute('description', entry.name);
+    tabHeader.setAttribute('description', entry.name); // not working anymore, dialogheader is not displayed
 		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder ? this.folder.URI : QuickFolders.AdvancedTab.folder.URI);
+		tabName.value = entry.name;
+		
+		this.updateCSSpreview();
     
     // we wait as the width isn't correct on load
     // might be unnecessary as we react to WM_ONRESIZE
@@ -190,7 +194,9 @@ QuickFolders.AdvancedTab = {
     addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
     addFlag('chkComposerSubFolders', ADVANCED_FLAGS.EMAIL_RECURSIVE);
     if (addFlag('chkCustomCSS', ADVANCED_FLAGS.CUSTOM_CSS)) {
+			elem('txtColor').value = util.sanitizeCSSvalue(elem('txtColor').value);
       entry.cssColor = elem('txtColor').value;
+			elem('txtBackground').value = util.sanitizeCSSvalue(elem('txtBackground').value);
       entry.cssBack = elem('txtBackground').value;
     }
     if (addFlag('chkCustomPalette', ADVANCED_FLAGS.CUSTOM_PALETTE)) {
@@ -239,7 +245,8 @@ QuickFolders.AdvancedTab = {
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);
     QuickFolders.Interface.updateMainWindow();
-    this.MainQuickFolders.Model.store();  
+    this.MainQuickFolders.Model.store(); 
+		this.updateCSSpreview();
   } ,
   
   defaults: function defaults() {
@@ -303,6 +310,23 @@ QuickFolders.AdvancedTab = {
     this.apply();
     return true;
   } ,
+	
+	updateCSSpreview: function updateCSSpreview() {
+		try {
+			let preview = document.getElementById('cssPreview');
+			if (preview) {
+				preview.style.color = document.getElementById('txtColor').value;
+				preview.style.background = document.getElementById('txtBackground').value;
+				preview.style.visibility = document.getElementById('chkCustomCSS').checked ? "visible" : "hidden";
+			}
+		} catch(ex) {;}
+	} ,
+	
+	sanitizeCSS: function sanitizeCSS(el) {
+		const util = QuickFolders.Util;
+		el.value = util.sanitizeCSSvalue(el.value);
+		this.updateCSSpreview();
+	},	
   
   updatePicker: function updatePicker(textbox) {
     if (textbox.length) {

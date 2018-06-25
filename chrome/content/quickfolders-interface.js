@@ -92,7 +92,7 @@ QuickFolders.Interface = {
 		this._paletteStyleSheet = 'chrome://quickfolders/' + ss;
 		if (!this._paletteStyleSheetOfOptions)  {
       if (QuickFolders.Util.Application != 'Postbox')
-        this._paletteStyleSheetOfOptions = 'chrome://quickfolders/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
+        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
       else
         this._paletteStyleSheetOfOptions = 'chrome://quickfolders/skin/quickfolders-palettes-legacy.css';
     }  
@@ -2382,7 +2382,9 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folderButton = util.getPopupNode(element),
 		    uri = folderButton.folder.URI,
+				parent = folderButton.folder.parent,
 		    result = null;
+		if (QuickFolders.Preferences.isDebugOption("interface")) debugger;
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
     
 		if (((util.Application == 'Postbox') || (util.Application == 'SeaMonkey'))
@@ -2393,10 +2395,12 @@ QuickFolders.Interface = {
 		}
 		else
 			this.globalTreeController.deleteFolder(folderButton.folder);
+		if (parent) 
+			QuickFolders_MySelectFolder(parent.URI)
 
-		// if folder is gone, delete quickFolder
-		if (!QuickFolders.Model.getMsgFolderFromUri(uri, false))
-			QuickFolders.Interface.onRemoveBookmark(folderButton);
+		// if folder is gone, delete quickFolder [Bug 26514]
+		// if (!QuickFolders.Model.getMsgFolderFromUri(uri, false))
+		QuickFolders.Interface.onRemoveBookmark(folderButton);
 	} ,
 
 	onRenameFolder: function onRenameFolder(element) {
@@ -4894,6 +4898,7 @@ QuickFolders.Interface = {
 		let parent = menuitem,
         prefs = QuickFolders.Preferences,
 		    ssPalettes;
+		debugger;
 		while (!parent.folder && parent.parentNode) {
 			parent=parent.parentNode;
 			switch(parent.id) {
@@ -5066,6 +5071,8 @@ QuickFolders.Interface = {
 		}
 
 		if (!sheet) {
+			debugger;
+			sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title); 
 			QuickFolders.Util.logToConsole("updateUserStyles() - missing style sheet '" +  Name + "' - not found = not attempting any style modifications.");
 		}
 		return sheet;
@@ -5242,9 +5249,10 @@ QuickFolders.Interface = {
 	
 	// INACTIVE STATE (DEFAULT)
 	initDefaultStyle: function initDefaultStyle(ss, ssPalettes, tabStyle) {
+		const util = QuickFolders.Util;
 	  if (ssPalettes == null)
 		  ssPalettes = ss;
-		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initDefaultStyle()");
+		util.logDebugOptional("interface.buttonStyles", "initDefaultStyle()");
 		let engine = QuickFolders.Styles,
         prefs = QuickFolders.Preferences,
         inactiveGradientColor = null,
@@ -5258,7 +5266,7 @@ QuickFolders.Interface = {
 
 		// transparent buttons: means translucent background! :))
 		if (prefs.getBoolPref('transparentButtons')) 
-			inactiveBackground = QuickFolders.Util.getRGBA(inactiveBackground, 0.25) ; 
+			inactiveBackground = util.getRGBA(inactiveBackground, 0.25) ; 
 
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton','background-color', inactiveBackground, true);
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder','background-color', inactiveBackground, true);
@@ -5289,9 +5297,15 @@ QuickFolders.Interface = {
 
 		// Coloring all striped tabbed buttons that have individual colors 
     let coloredPaletteClass = this.getPaletteClassCss('ColoredTab');
-		if (isTabsStriped) {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ' > label','color', inactiveColor, false);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + coloredPaletteClass + ' > label','color', inactiveColor, false);
+		if (isTabsStriped) { // paletteClass = plastic, pastel, "", apple
+			// fallback for uncolored current folder (striped style)
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder.col0' + paletteClass + ' > label','color', inactiveColor, false);
+		  // throws 'An invalid or illegal string was specified' in Postbox:
+			if (util.Application != 'Postbox' || util.Appversion > 5.4) {
+				// avoid for current folder button as it always will be completely colored
+				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not[#QuickFoldersCurrentFolder]' + coloredPaletteClass + ' > label','color', inactiveColor, false);
+				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not[#QuickFoldersCurrentFolder]' + paletteClass + ' > label','color', inactiveColor, false);
+			}
 		}
 		else {
 			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ' > label','color');
@@ -5332,11 +5346,11 @@ QuickFolders.Interface = {
 			// FONT COLORS
 			let theColorString = prefs.getUserStyle("InactiveTab","color","black"),
 			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
-					radSelector = '.quickfolders-flat toolbarbutton';
+					btnSelector = '.quickfolders-flat toolbarbutton';
 					
-			if (util.Application == 'SeaMonkey') radSelector = 'toolbox toolbar' + radSelector;
+			if (util.Application == 'SeaMonkey') btnSelector = 'toolbox toolbar' + btnSelector;
 			if (tabStyle != prefs.TABS_STRIPED)  {
-				styleEngine.setElementStyle(ss, radSelector 
+				styleEngine.setElementStyle(ss, btnSelector 
 				  + ((util.Application == 'SeaMonkey') ? '' : '[background-image]')
 					+ '.selected-folder','border-bottom-color', colActiveBG, true);
 			}
@@ -5352,11 +5366,19 @@ QuickFolders.Interface = {
 			
 			let legacyRadius = !util.isCSSRadius;
 			
-			if (util.Application == 'SeaMonkey') radSelector = radSelector + ':not(.plain)';
-			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
-			styleEngine.setElementStyle(ss, radSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
+			if (util.Application == 'SeaMonkey') btnSelector = btnSelector + ':not(.plain)';
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
+			
+			// QuickFolders Toolbar only
+			let btnInToolbarSelector = '.quickfolders-flat .folderBarContainer toolbarbutton',
+			    buttonHeight = prefs.getIntPref('style.button.minHeight') + "px",
+			    topPadding =  prefs.getIntPref('style.button.paddingTop') + "px";
+			styleEngine.setElementStyle(ss, btnInToolbarSelector, 'min-height', buttonHeight, true);
+			styleEngine.setElementStyle(ss, btnInToolbarSelector, 'padding-top', topPadding, true);
+			
 
 			// ==================
 			// BORDERS & SHADOWS
@@ -5779,62 +5801,71 @@ QuickFolders.Interface = {
 		QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
 	
-	moveFolder: function moveFolder(fromFolder, targetFolder) {
-		let sPrompt = QuickFolders.Util.getBundleString("qfConfirmMoveFolder", "Really move folder {0} to {1}?"),
-		    fromURI = fromFolder.URI;
-		sPrompt = sPrompt.replace("{0}", fromFolder.prettyName);
+	moveFolder: function moveFolder(fromFolder, targetFolder, arrCount) {
+		// [Bug 26517] support multiple folder moves - addeed "count" and transmitting URIs
+		const Cc = Components.classes,
+		      Ci = Components.interfaces,
+					util = QuickFolders.Util;
+					
+		let lastFolder,
+		    sPrompt = util.getBundleString("qfConfirmMoveFolder", "Really move folder {0} to {1}?"),
+				whatIsMoved = arrCount ? 
+				             (arrCount==1 ? fromFolder[0].prettyName : "[" + arrCount + " folders]") : fromFolder.prettyName;
+				
+		sPrompt = sPrompt.replace("{0}", whatIsMoved);
 		sPrompt = sPrompt.replace("{1}", targetFolder.prettyName);
-		let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-		if (promptService.confirm(window, "QuickFolders", sPrompt)) {
-			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"]
-				.getService(Components.interfaces.nsIMsgCopyService);
-
-			try {
-				let count = 1, // for the moment only support dragging one folder.
-				    ap = QuickFolders.Util.Application,
-				    isNewArray = (ap == 'Thunderbird' || ap == 'SeaMonkey');
-				for (let i = 0; i < count; i++) {
-					let folders = new Array;
-					folders.push(fromFolder); // dt.mozGetDataAt("text/x-moz-folder", i).QueryInterface(Ci.nsIMsgFolder)
-					let array = isNewArray ?
-						  toXPCOMArray(folders, Components.interfaces.nsIMutableArray)
-						: Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
-					
-					if (!isNewArray)
-						array.AppendElement(fromFolder);
-					
-					// cannot move if the target Folder is in a different account?
-					// folders[0]\ == targetFolder.server
-					let isMove = (!fromFolder.locked && fromFolder.canRename && fromFolder.deletable
-					              	&&
-					               (fromFolder.server.type == 'pop3' || fromFolder.server.type == 'imap' || fromFolder.server.type == 'none')),
-					    listener = null;
-					cs.CopyFolders(array, 
-					               targetFolder,
-					               isMove, 
-					               listener,
-					               msgWindow);
-					// in case it has a Tab, fix the uri
-					//  see also OnItemRemoved
-					// get encoded folder Name:
-					let slash = fromURI.lastIndexOf('/'),
-					    encName = fromURI.substring(slash),
-					    newURI = targetFolder.URI + encName,
-              countChanges = QuickFolders.Model.moveFolderURI(fromURI, newURI);
-          if (countChanges)
-            this.updateFolders(true, true);
-					
-					// Filter Validation!
-					setTimeout(function() {  QuickFolders.FilterList.validateFilterTargets(fromURI, newURI); });
-				}
+		let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+		if (!promptService.confirm(window, "QuickFolders", sPrompt)) return;
+		
+		let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+		try {
+			let toCount = arrCount || 1, // for the moment only support dragging one folder.
+					ap = util.Application,
+					isNewArray = (ap == 'Thunderbird' || ap == 'SeaMonkey');
+			for (let i = 0; i < toCount; i++) {
+				let folders = new Array,
+				    fld = arrCount ? fromFolder[i] : fromFolder,
+				    fromURI = fld.URI;
+				lastFolder = fld; // keep track of last folder in case of a problem.
+				folders.push(fld); // dt.mozGetDataAt("text/x-moz-folder", i).QueryInterface(Ci.nsIMsgFolder)
+				let array = isNewArray ?
+						toXPCOMArray(folders, Ci.nsIMutableArray)
+					: Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
+				
+				if (!isNewArray)
+					array.AppendElement(fld);
+				
+				// cannot move if the target Folder is in a different account?
+				// folders[0]\ == targetFolder.server
+				let isMove = (!fld.locked && fld.canRename && fld.deletable
+												&&
+											 (fld.server.type == 'pop3' || fld.server.type == 'imap' || fld.server.type == 'none')),
+						listener = null;
+				cs.CopyFolders(array, 
+											 targetFolder,
+											 isMove, 
+											 listener,
+											 msgWindow);
+				// in case it has a Tab, fix the uri
+				//  see also OnItemRemoved
+				// get encoded folder Name:
+				let slash = fromURI.lastIndexOf('/'),
+						encName = fromURI.substring(slash),
+						newURI = targetFolder.URI + encName,
+						countChanges = QuickFolders.Model.moveFolderURI(fromURI, newURI);
+				if (countChanges)
+					this.updateFolders(true, true);
+				
+				// Filter Validation!
+				setTimeout(function() {  QuickFolders.FilterList.validateFilterTargets(fromURI, newURI); });
 			}
-			catch(ex) {
-				sPrompt = QuickFolders.Util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");
-				sPrompt = sPrompt.replace("{0}", fromFolder.prettyName);
-				Services.prompt.alert(null,"QuickFolders", sPrompt + "\n" + ex);
-				QuickFolders.Util.logException("Exception in movefolder ", ex);
-			}			
 		}
+		catch(ex) {
+			sPrompt = util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");
+			sPrompt = sPrompt.replace("{0}", lastFolder.prettyName);
+			Services.prompt.alert(null,"QuickFolders", sPrompt + "\n" + ex);
+			util.logException("Exception in movefolder ", ex);
+		}			
 	} ,
 
 	showPalette: function showPalette(button) {

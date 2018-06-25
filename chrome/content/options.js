@@ -736,6 +736,9 @@ QuickFolders.Options = {
 					= !(myTheme.supportsFeatures.supportsFontSize);
 				getElement("button-font-size-label").disabled
 					= !(myTheme.supportsFeatures.supportsFontSize);
+				
+				getElement("btnHeightTweaks").collapsed
+					= !(myTheme.supportsFeatures.supportsHeightTweaks);
 
 				getElement("qf-tweakRadius").collapsed
 					= !(myTheme.supportsFeatures.cornerRadius);
@@ -815,6 +818,11 @@ QuickFolders.Options = {
       this.getTransparent(picker.color, document.getElementById('buttonTransparency').checked);
 		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
 		return QuickFolders.Interface.updateMainWindow();
+	},
+	
+	sanitizeCSS: function sanitizeCSS(el) {
+		const util = QuickFolders.Util;
+		el.value = util.sanitizeCSSvalue(el.value);
 	},
 
   // set the custom value entered by user (only if custom is actually selected)

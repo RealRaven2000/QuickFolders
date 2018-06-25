@@ -39,6 +39,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor1"] {
 	background-image: linear-gradient(to bottom, rgba(226,251,255,1) 0%, rgba(153,255,255,1) 34%, rgba(153,255,255,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 
 /* 1 - ice blue - night vision */
@@ -49,6 +50,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(100, 246, 255);
+	text-shadow: none;
 }
 
 
@@ -60,6 +62,7 @@
 	background-image: linear-gradient(to bottom, rgba(4, 160, 238, 0.8) 0%, rgba(2, 79, 138, 0.8) 47%, rgba(0, 53, 118, 0.8) 100%);
 	/* linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 14%, rgba(10,119,213,1) 33%, rgba(8,78,175,1) 60%, rgba(10,119,213,1) 100%);  */
 	color:#F0F0F0 ;
+	text-shadow: none;
 }
 /* 2 - sky */
 .quickfolders-pills .pastel.col2.selected-folder, 
@@ -68,6 +71,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor2"] {
 	background-image: linear-gradient(to bottom, rgb(229, 239, 249) 0%, rgb(153, 204, 255) 11%, rgb(124, 189, 255) 100%); 
 	color:#000033 ;
+	text-shadow: none;
 }
 
 /* 2 - LED blue - night vision */
@@ -78,6 +82,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(0, 173, 238);
+	text-shadow: none;
 }
 
 /* 3 - dark blue */
@@ -88,6 +93,7 @@
 	background-image: linear-gradient(to bottom, rgba(39,135,219,0.9) 0%,rgba(7,81,145,0.93) 30%,rgba(4,30,86,0.96) 57%,rgba(0,1,86,1) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(161,208,244,1) 0%, rgba(39,135,219,1) 10%, rgba(7,81,145,1) 21%, rgba(4,30,86,1) 49%, rgba(0,1,86,1) 100%); */
 	color: rgb(220, 235, 245) ;
+	text-shadow: none;
 }
 /* 3 - slate */
 .quickfolders-pills .pastel.col3.selected-folder, 
@@ -96,6 +102,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor3"] {
 	background-image: linear-gradient(to bottom, rgb(234, 246, 255) 0%, rgb(155, 190, 210) 10%, rgb(102, 153, 204) 100%);
 	color: rgb(25, 25, 107);
+	text-shadow: none;
 }
 /* 3 - blue panel - night vision */
 .quickfolders-flat .night.col3, 
@@ -114,6 +121,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor4"] { 
 	background-image: linear-gradient(to bottom, rgba(144,232,237,1) 0%, rgba( 4,176,178,1)  3%, rgba( 7,68,76,1) 32%, rgba( 8,79,89,1) 100%); 
 	color: rgb(215, 255, 230);
+	text-shadow: none;
 }
 /* 4 - pale green */
 .quickfolders-pills .pastel.col4.selected-folder, 
@@ -122,6 +130,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor4"] {
 	background-image: linear-gradient(to bottom, rgb(189, 239, 226) 0%, rgb(92, 143, 147) 10%, rgb(82, 123, 127) 100%);
 	color: rgb(225, 255, 240);
+	text-shadow: none;
 }
 /* 4 - tormato - night vision */
 .quickfolders-flat .night.col4, 
@@ -140,6 +149,7 @@
 .plastic menuitem[tag="qfColor5"] { 
 	background-image: linear-gradient(to bottom, rgba(37,245,231,1) 0%, rgba(9,205,188,1) 15%, rgba(2,136,125,1) 51%, rgba(5,108,117,1) 100%); 
 	color:#FFFFFF ;
+	text-shadow: none;
 }
 /* 5 - spring */
 .quickfolders-pills .pastel.col5.selected-folder, 
@@ -148,6 +158,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor5"] {
 	background-image: linear-gradient(to bottom, rgb(127, 255, 231) 0%, rgb(82, 206, 169) 13%, rgb(72, 181, 162) 100%);
 	color: rgb(220, 255, 245);
+	text-shadow: none;
 }
 /* 5 - caustic caverns - night vision */
 .quickfolders-flat .night.col5, 
@@ -157,6 +168,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(114, 255, 0);
+	text-shadow: none;
 }
 
 /* 6 - Olive Green */
@@ -166,6 +178,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor6"]  { 
 	background-image: linear-gradient(to bottom, rgba(184,205,65,1) 0%, rgba(132,171,39,1) 30%, rgba(104,156,0,1) 31%, rgba(145,186,42,1) 100%); 
 	color:#FFFFFF ;
+	text-shadow: none;
 }
 /* 6 - moss */
 .quickfolders-pills .pastel.col6.selected-folder, 
@@ -174,6 +187,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor6"] {
 	background-image: linear-gradient(to bottom, rgb(222, 247, 111) 0%, rgb(150, 197, 56) 8%, rgb(120, 167, 16) 40%, rgb(120, 167, 16) 100%);
 	color:rgb(230, 255, 235) ;
+	text-shadow: none;
 }
 /* 6 - bright olive - night vision */
 .quickfolders-flat .night.col6, 
@@ -183,6 +197,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(196, 255, 104);
+	text-shadow: none;
 }
 
 /* 7 - neon lime */
@@ -193,6 +208,7 @@
 	/* background-image: linear-gradient(to bottom, rgba(200,255,50,0.8) 0%, rgba(152,253,21,1) 10%, rgba(0,192,0,1) 50%); */
 	background-image: linear-gradient(to bottom, rgba(200,255,50,0.8) 0%,rgba(152,253,21,1) 20%,rgba(0,224,22,1) 50%);
 	color:#223311;
+	text-shadow: none;
 }
 .quickfolders-pills .pastel.col7.selected-folder, 
 .quickfolders-pills .pastel.col7:hover,
@@ -200,6 +216,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor7"]  {
 	background-image: linear-gradient(to bottom, rgb(244, 255, 197) 0%, rgb(203, 242, 106) 11%, rgb(201, 242, 96) 100%);
 	color: rgb(0, 100, 0) ;
+	text-shadow: none;
 }
 /* 7 - wellie boots - night vision */
 .quickfolders-flat .night.col7, 
@@ -208,6 +225,7 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor7"] {
 	background-image:  linear-gradient(to bottom, rgba(202,234,75,1) 0%,rgba(140,154,70,1) 15%,rgba(97,114,10,1) 100%);
 	color: rgb(202, 234, 75);
+	text-shadow: none;
 }
 
 
@@ -218,6 +236,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor8"] { 
 	background-image: linear-gradient(to bottom, rgba(255,255,136,1) 0%, rgba(226,255,40,1) 8%, rgba(206,221,35,1) 28%, rgba(206,221,35,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 8 - ocre */
 .quickfolders-pills .pastel.col8.selected-folder, 
@@ -226,6 +245,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor8"] {
 	background-image: linear-gradient(to bottom, rgb(246, 234, 26) 0%, rgb(200, 190, 66) 10%, rgb(188, 176, 66) 33%, rgb(186, 172, 44) 100%);
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 8 - bananas - night vision */
 .quickfolders-flat .night.col8, 
@@ -234,6 +254,7 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor8"] {
 	background-image: linear-gradient(to bottom, rgba(255,249,165,1) 2%,rgba(255,207,53,1) 14%,rgba(252,223,5,1) 100%);
 	color: rgb(56, 38, 6);
+	text-shadow: none;
 }
 
 
@@ -244,6 +265,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor9"] {
 	background-image: linear-gradient(to bottom, rgba(252,251,239,1) 0%, rgba(255,246,122,1) 33%, rgba(255,255,127,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 9 - daffodil */
 .quickfolders-pills .pastel.col9.selected-folder, 
@@ -252,6 +274,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor9"] {
 	background-image: linear-gradient(to bottom, rgba(254,252,234,1) 0%, rgba(255,255,153,1) 22%, rgba(255,255,153,1) 100%); 
 	color: rgb(25, 25, 0) ;
+	text-shadow: none;
 }
 /* 9 - light yellow - night vision */
 .quickfolders-flat .night.col9, 
@@ -261,6 +284,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(253, 255, 97);
+	text-shadow: none;
 }
 
 
@@ -271,6 +295,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor10"] { 
 	background-image:  linear-gradient(to bottom, rgba(255,255,50,0.95) 0%, rgba(255,228,16,0.96) 10%, rgba(255,193,5,0.98) 50%, rgba(255,193,5,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 10 - sunset */
 .quickfolders-pills .pastel.col10.selected-folder, 
@@ -279,6 +304,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor10"] {
 	background-image:  linear-gradient(to bottom, rgba(255,240,219,1) 0%, rgba(255,204,102,1) 10%, rgba(255,204,102,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 10 - custard - night vision */
 .quickfolders-flat .night.col10, 
@@ -288,6 +314,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(255, 252, 0);
+	text-shadow: none;
 }
 
 /* 11 - orange */
@@ -298,6 +325,7 @@
 	background-image: linear-gradient(to bottom, rgba(255,176,117,1) 0%,rgba(250,133,15,1) 37%,rgba(240,96,0,1) 61%,rgba(240,96,0,1) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(255,190,140,1) 0%, rgba(250,133,15,1) 20%, rgba(240,96,0,1) 40%, rgba(240,96,0,1) 100%); */
 	color:#FFFFFF ;
+	text-shadow: none;
 }
 /* 11 - peach */
 .quickfolders-pills .pastel.col11.selected-folder, 
@@ -306,6 +334,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor11"] {
 	background-image: linear-gradient(to bottom, rgb(255, 240, 219) 0%, rgb(234, 149, 86) 10%, rgb(245, 160, 130) 60%, rgb(254, 169, 106) 100%);
 	color:rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 11 - mandarin - night vision */
 .quickfolders-flat .night.col11, 
@@ -315,8 +344,8 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(255, 150, 0);
+	text-shadow: none;
 }
-
 	
 /* 12 - Mars Red */
 .quickfolders-pills .plastic.col12.selected-folder, 
@@ -326,6 +355,7 @@
 	background-image: linear-gradient(to bottom, rgba(237,4,8,0.8) 0%, rgba(137,13,2,0.8) 45%, rgba(117,23,0,0.8) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(255,229,229,1) 0%, rgba(209,27,0,1) 21%, rgba(206,0,0,1) 49%, rgba(190,24,0,1) 100%); */
 	color: #FFFFFF ;
+	text-shadow: none;
 }
 /* 12 - petal */
 .quickfolders-flat .pastel.col12,
@@ -334,6 +364,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor12"] {
 	background-image: linear-gradient(to bottom, rgba(255,221,221,1) 0%, rgba(255,204,204,1) 41%, rgba(255,204,204,1) 100%); 
 	color: rgb(0, 0, 0);	
+	text-shadow: none;
 }
 /* 12 - bright red - night vision */
 .quickfolders-flat .night.col12, 
@@ -355,6 +386,7 @@
   /*	background-image: linear-gradient(to bottom, rgba(248,181,154,1) 0%, rgba(148,48,8,1) 25%, rgba(118,34,0,1) 44%, rgba(157,27,27,1) 100%); */
 	background-image: 	linear-gradient(to bottom, rgba(196,132,84,0.9) 0%,rgba(129,62,7,0.95) 36%,rgba(109,30,4,0.97) 59%,rgba(122,32,18,1) 100%);
 	color: rgb(250, 235, 250) ;
+	text-shadow: none;
 }
 /* 13 - rose */
 .quickfolders-pills .pastel.col13.selected-folder, 
@@ -363,6 +395,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor13"] {
 	background-image: linear-gradient(to bottom, rgba(255,209,209,1) 0%, rgba(236,158,166,1) 52%, rgba(236,158,166,1) 100%); 
 	color: rgb(75, 0, 0) ;
+	text-shadow: none;
 }
 /* 13 - ocre - night vision */
 .quickfolders-flat .night.col13, 
@@ -383,6 +416,7 @@
   background: linear-gradient(to bottom, rgba(200,86,175,0.9) 0%,rgba(140,15,106,0.9) 48%,rgba(109,5,76,0.8) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(239,213,233,1) 0%, rgba(200,86,175,1) 16%, rgba(140,15,106,1) 32%, rgba(109,5,76,1) 100%); */
 	color: rgb(255, 255, 255);
+	text-shadow: none;
 }
 /* 14 - violet */
 .quickfolders-flat .pastel.col14,
@@ -391,6 +425,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor14"] {
 	background-image: linear-gradient(to bottom, rgb(221, 221, 255) 0%, rgb(146, 146, 218) 11%, rgb(150, 150, 250) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 14 - ultra violet - night vision */
 .quickfolders-flat .night.col14, 
@@ -409,9 +444,8 @@
 .quickfolders-flat .plastic.col15,  
 .plastic menuitem[tag="qfColor15"] { 
 	background-image: linear-gradient(to bottom, rgba(249,132,212,1) 19%,rgba(252,40,181,1) 55%,rgba(255,58,196,1) 100%);
-  /*	background-image: linear-gradient(to bottom, rgba(252,236,252,1) 0%, rgba(251,166,225,1) 13%, rgba(252,40,181,1) 32%, rgba(255,58,196,1) 100%); */
-	
 	color: rgb(255, 255, 255);
+	text-shadow: none;
 }
 /* 15 - blanched almond */
 .quickfolders-flat .pastel.col15,
@@ -420,6 +454,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor15"] {
 	background-image: linear-gradient(to bottom, rgba(252,198,106,1) 0%, rgba(254,235,202,1) 30%, rgba(254,235,202,1) 100%); 
 	color:#100000 ;	
+	text-shadow: none;
 }
 /* 15 - pink light - night vision */
 .quickfolders-flat .night.col15, 
@@ -429,6 +464,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color: rgb(254, 122, 234);
+	text-shadow: none;
 }
 
 
@@ -439,6 +475,7 @@
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor16"] { 
 	background-image: linear-gradient(to bottom, rgba(204,204,204,1) 0%, rgba(237,237,237,1) 20%, rgba(255,255,255,1) 85%, rgba(234,234,234,1) 100%); 
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 16 - white - pastel */
 .quickfolders-flat .pastel.col16,
@@ -448,6 +485,7 @@
   background-image: linear-gradient(to bottom, rgb(237, 237, 237) 0%, rgb(255, 255, 255) 85%, rgb(234, 234, 234) 100%);
 	color: rgb(0, 0, 0);
 	box-shadow: 1px 0px 1px rgba(50, 50, 50, 0.3) inset, -1px 0px 1px rgba(50, 50, 50, 0.3) inset, 0px -1px 1px rgba(50, 50, 50, 0.3) inset !important;
+	text-shadow: none;
 }
 /* 16 - white - night */
 .quickfolders-flat .night.col16,
@@ -456,8 +494,8 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor16"] {
 	/* ## standard ## */
   background-image: linear-gradient(to bottom, rgba(237,237,237,0.85) 0%,rgba(255,255,255,0.86) 7%,rgba(255,255,255,1) 100%);
-/*  background-image: linear-gradient(to bottom, rgb(237, 237, 237) 0%, rgb(255, 255, 255) 85%, rgb(234, 234, 234) 100%); */
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 
 
@@ -469,6 +507,7 @@
 	/* background-image: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(175,175,175,1) 22%, rgba(204,204,204,1) 100%); */
 	background-image: linear-gradient(to bottom, rgba(208,208,208,0.9) 0%,rgba(194,194,194,0.95) 47%,rgba(185,185,185,0.95) 50%,rgba(190,190,190,1) 100%);
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 17 - light gray - pastel */
 .quickfolders-flat .pastel.col17,
@@ -477,6 +516,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor17"] { 
 	background-image: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(188,188,188,1) 5%,rgba(151,151,151,1) 100%);
 	color: rgb(0, 0, 0); 
+	text-shadow: none;
 }
 /* 17 - light gray - night */
 .quickfolders-flat .night.col17,
@@ -485,6 +525,7 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor17"] { 
 	background-image: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(188,188,188,1) 5%,rgba(151,151,151,1) 100%);
 	color: rgb(0, 0, 0); 
+	text-shadow: none;
 }
 
 
@@ -497,6 +538,7 @@
 	/* background-image: linear-gradient(to bottom, rgba(201,201,201,1) 0%, rgba(130,130,130,1) 22%, rgba(151,151,151,1) 100%); */
 	background-image: linear-gradient(to bottom, rgba(164,164,164,0.9) 0%,rgba(153,153,153,0.95) 47%,rgba(132,132,132,0.95) 50%,rgba(142,142,142,1) 100%);
 	color: rgb(0, 0, 0);
+	text-shadow: none;
 }
 /* 18 - medium gray - pastel */
 .quickfolders-flat .pastel.col18,
@@ -505,6 +547,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor18"] { 
 	background-image: linear-gradient(to bottom, rgb(250, 250, 253) 0%, rgb(127, 127, 127) 9%, rgb(90, 90, 90) 100%);
 	color:#D8D8D8;
+	text-shadow: none;
 }
 /* 18 - medium gray - night */
 .quickfolders-flat .night.col18,
@@ -513,6 +556,7 @@
 .QuickFolders-folder-popup.night menuitem[tag="qfColor18"] { 
 	background-image: linear-gradient(to bottom, rgb(250, 250, 253) 0%, rgb(127, 127, 127) 9%, rgb(90, 90, 90) 100%);
 	color:#D8D8D8;
+	text-shadow: none;
 }
 
 /* 19 - dark gray */
@@ -523,6 +567,7 @@
 	background-image: linear-gradient(to bottom, rgba(127,127,127,1) 0%,rgba(89,89,89,1) 47%,rgba(66,66,66,1) 50%,rgba(79,79,79,1) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(239,239,239,1) 0%, rgba(183,183,183,1) 7%, rgba(66,66,66,1) 25%, rgba(79,79,79,1) 100%);  */
 	color:#C0C0C0;
+	text-shadow: none;
 }
 /* 19 - dark gray - pastel */
 .quickfolders-flat .pastel.col19,
@@ -531,6 +576,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor19"] { 
 	background-image: linear-gradient(to bottom, rgb(250, 250, 250) 0%, rgb(128, 128, 128) 9%, rgb(28, 28, 28) 100%);
 	color:#C0C0C0;
+	text-shadow: none;
 }
 /* 19 - night gray - night */
 .quickfolders-flat .night.col19,
@@ -540,6 +586,7 @@
 	/* ## standard ## */
 	background: linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 0%, rgb(68, 68, 68) 8%, rgb(28, 28, 28) 100%);
 	color:#C0C0C0;
+	text-shadow: none;
 }
 
 /* 20 - black */
@@ -550,6 +597,7 @@
 	background: linear-gradient(to bottom, rgba(66,66,66,0.8) 0%,rgba(51,51,51,0.9) 50%,rgba(19,19,19,1) 100%);
 	/* background-image: linear-gradient(to bottom, rgba(69,69,69,0.9) 0%,rgba(51,51,51,0.9) 30%,rgba(0,0,0,0.93) 54%,rgba(20,20,20,1) 100%); */
 	color:#E0E0E0 ;
+	text-shadow: none;
 }
 /* 20 - black  - pastel */
 .quickfolders-flat .pastel.col20,
@@ -558,6 +606,7 @@
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor20"] { 
 	background-image: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(90, 90, 90) 10%, rgb(0, 0, 0) 100%);
 	color:rgb(200,200,200);
+	text-shadow: none;
 }
 /* 20 - black  - night */
 .quickfolders-flat .night.col20,
@@ -588,35 +637,50 @@
 }
 
 /** PILLS **/
+.quickfolders-pills #QuickFolders-Folders-Pane toolbarbutton:not(.selected-folder) {
+	color: rgb(40, 40, 40); /* if it is selected we might neeed the color class to override this */
+	background-color: rgba(250,250,250,0.05); /* let's try with dark themes */
+	text-shadow: 0px 1px rgb(202, 202, 202);
+	border-style: solid;
+	border-color: rgba(200,200,200,0.2);
+}
+
+.quickfolders-pills[brighttext] #QuickFolders-Folders-Pane toolbarbutton {
+	text-shadow: none !important;
+}
+
+.quickfolders-pills[brighttext] #QuickFolders-Folders-Pane toolbarbutton:not(.selected-folder), 
+.quickfolders-pills[brighttext] toolbarbutton:hover,
+.quickfolders-pills[brighttext] toolbarbutton:active,
+.quickfolders-pills[brighttext] toolbarbutton.selected-folder.col0 {
+	color: var(--lwt-text-color); /* let colored buttons decide their text color */
+}
+
 .quickfolders-pills #QuickFolders-Folders-Pane toolbarbutton,
 .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;
 	-moz-box-sizing:   border-box; /* draw borders on inside; gecko 29 without prefix */
-	border-style: solid;
-	border-color: rgba(200,200,200,0.1);
 	/* text: bold, near-black, dark-silver shadow */
 	/* the font and font size to use on Mac for the bar is Lucida Grande size 11px */
 	font-size: 11px;
 	font-family: "Lucida Grande",Helvetica,Arial;
 	font-weight: bold;
-	color: rgb(40, 40, 40);
-	text-shadow: 0px 1px rgb(202, 202, 202);
-	
 	/* the correct padding for mac-style buttons 0 10 0 10 */
 	/* correction for label margin-start 6px and label margin-end 5px */
-	padding: 0px 7px 1px 7px !important; /* Thunderbird 3 */
-	margin-top: 1px !important;
-	margin-bottom: 1px !important;
+	padding: 0px 0.75em 1px; 
+	margin-top: 1px ;
+	margin-bottom: 1px;
 	min-height: 19px;
 }
 
 .quickfolders-pills toolbarbutton:hover,
 .quickfolders-pills toolbarbutton:active,
 .quickfolders-pills toolbarbutton.selected-folder {
-	border-style: inset;
-	color: rgb(40, 40, 40);
+	border: 1px inset;
+	color: rgb(40, 40, 40); /* will be overwritten by color classes if needed */
 }
+
 
 .quickfolders-pills toolbarbutton:active {
 	box-shadow:inset 0 0 8px #111;

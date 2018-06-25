@@ -91,6 +91,7 @@
 <!ENTITY qf.checkbox.debug.tooltip "Haga clic secundario en esta casilla para opciones de depuración avanzadas">
 <!ENTITY qf.label.initdelay "[ms] de retardo de inicialización {1000 es el estándar}:">
 <!ENTITY qf.copyfolders "Copiar pestañas">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copiar la configuración de Pestañas de QuickFolders al portapapeles">
 <!ENTITY qf.pastefolders.tooltip "Borrar todas las carpetas de QuickFolders y leer la nueva configuración del portapapeles">
 <!ENTITY qf.label.appearance "Apariencia">
@@ -159,6 +160,7 @@
 <!ENTITY qf.label.licenseValid "Su licencia es válida hasta:">
 <!ENTITY qf.licenseValidation.passed "¡Gracias por registrar QuickFolders Pro! Todas las características premium ahora están desbloqueadas.">
 <!ENTITY qf.licenseValidation.failed "La clave de licencia que ha introducido no es válida. Compruebe su correo electrónico de FastSpring en busca de instrucciones. Si aún tiene problemas, por favor, contacte conmigo desde la pestaña de Soporte.">
+<!ENTITY qf.licenseValidation.invalidAddon "La clave de licencia introducida puede pertenecer a otra extensión. Las claves de licencia para {0} comienzan por {1}.">
 <!ENTITY qf.licenseValidation.expired "La clave de licencia que introdujo ha expirado. Por favor, pulse el botón de debajo para renovar su licencia.">
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico ligada a la clave de licencia [{1}] actualmente no está listada en ninguna de sus cuentas de correo. Por favor, contacte conmigo desde la pestaña de Soporte para asistencia.">
 <!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo cifrada no coincide con la legible.">
@@ -182,6 +184,7 @@
 <!ENTITY qf.checkbox.readingList "Lista de lectura">
 <!ENTITY qf.checkbox.readingList.tooltip "Una lista para correos que se debe leer más tarde. Arrastre sus correos importantes en este botón.">
 <!ENTITY qf.label.donate "Donar">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Si debajo sólo ve un botón [Cerrar], las configuraciones de color podrían no funcionar - como apaño, pruebe a hacer clic secundario en un área vacía de la barra de QuickFolders para seleccionar Opciones... esto forzará que se muestre el botón [Aceptar], que debería guardar los colores.">
 <!ENTITY qf.checkbox.usePalette "Usar paleta">
 <!ENTITY qf.options.theme.pastelColors "Colores pastel">

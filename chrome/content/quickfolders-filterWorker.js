@@ -244,7 +244,7 @@ QuickFolders.FilterWorker = {
           else {
             util.logDebugOptional('filters', "Account - No incoming Server or cannot have filters!");
             let wrn = 'Account [{1}] of mail origin cannot have filters!\nUsing current Inbox instead.';
-            util.popupAlert(wrn.replace('{1}', ac.key));
+            util.slideAlert("QuickFolders", wrn.replace('{1}', ac.key));
           }
           break;
         }

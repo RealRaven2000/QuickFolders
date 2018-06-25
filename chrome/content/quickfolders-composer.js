@@ -163,7 +163,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 					
 	function setMailHeaders(folder, options) {
 		if (!folder.URI) return;
-		entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
+		let entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
 		
 		if (entry) {
 			let entryName = entry.name,

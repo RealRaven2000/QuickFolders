@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.9.2",
+	HARDCODED_CURRENTVERSION : "4.10",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -143,7 +143,7 @@ QuickFolders.Util = {
 		return appInfo.version;
 	},
 
-	Appver: function Appver() {
+	get Appversion() {
 		if (null == this.mAppver) {
 		let appVer=this.ApplicationVersion.substr(0,6);
 			this.mAppver = parseFloat(appVer); // quick n dirty!
@@ -1378,6 +1378,13 @@ QuickFolders.Util = {
 			if (   uType
 			    && URL.indexOf("user=")==-1 
 					&& URL.indexOf("quickfolders.org")>0 ) {
+				// remove #NAMED anchors
+				let x = URL.indexOf("#"),
+				    anchor = '';
+				if (x>0) {
+					anchor = URL.substr(x);
+					URL = URL.substr(0, x)
+				}
 				if (URL.indexOf("?")==-1)
 					URL = URL + "?user=" + uType;
 				else
@@ -1569,6 +1576,16 @@ QuickFolders.Util = {
 			this._isCSSShadow = (versionComparator.compare(QuickFolders.Util.PlatformVersion, "2.0") >= 0);
 		}
 		return this._isCSSShadow;
+	} ,
+	
+	// helper function for css value entries - strips off rule part and semicolon (end)
+	sanitizeCSSvalue: function sanitizeCSSvalue(val) {
+		let colon = val.indexOf(':');
+		if (colon>=0) val = val.substr(colon+1);
+		let semicolon = val.indexOf(';');
+		if (semicolon>0) val = val.substr(0,semicolon);
+		val = val.trim ? val.trim() : val;
+		return val;
 	} ,
 	
 	doesMailFolderExist: function checkExists(msgFolder) {

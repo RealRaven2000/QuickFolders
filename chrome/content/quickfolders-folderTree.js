@@ -270,7 +270,7 @@ QuickFolders.FolderTree = {
 					+ 'propName:   ' + propName + '\n'
 					+ 'cssUri:     ' + cssUri + '\n'
 					+ 'GUID:       ' + GUID);
-				util.logDebugOptional('folderTree.icons', 'ADDING:\n' + selector + ' {\n' + 'list-style-image' + cssUri + '\n}');
+				util.logDebugOptional('folderTree.icons', 'ADDING:\n' + selector + ' {\n' + 'list-style-image:' + cssUri + '\n}');
 				folder.setStringProperty("iconURL", cssUri);
 				styleEngine.setElementStyle(ss, selector, 'list-style-image', cssUri); 
 				styleEngine.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 

@@ -198,9 +198,53 @@
 			</li>
 			-->
 			
-			
-			
 			<a name="4.10.1">&nbsp;</a>
+			<li>
+				<h4>
+				<a name="4.10.1" href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.10.1 - WIP</a>
+				</h4>
+					<ul>
+						<li>
+						  <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26565" target="_blank">[Bug 26565]</a> Execute quickJump / quickMove with [Enter] if unique match
+						</li>
+						<li>
+						  Redesigned (mostly monochrome) toolbar icons for Photon look; includes improved brighttext support.<br>
+							<table>
+							  <tr>
+								  <td>
+										<img src="images/toolbar57.png" alt="classic icons" class="screenshots"/>
+								  </td>
+								  <td>
+									  "Classic" Design: Shown on Thundebird 59 and before + all other Mail Apps.
+										Toolbar toggle, New Folder, Skip unread folder.
+								  </td>
+							  </tr>
+								  <td>
+										<img src="images/toolbar60.png" alt="photon icons" class="screenshots"/>
+								  </td>
+								  <td>
+									  New Layout: displayed from Thunderbird 60 forward
+								  </td>
+							  <tr>
+							  </tr>
+								  <td>
+										<img src="images/toolbar60-dark.png" alt="photon icons for dark themes" class="screenshots"/>
+								  </td>
+								  <td>
+									  New Layout: with brighttext support (dark themes)
+								  </td>
+							  <tr>
+							  </tr>
+							</table>
+							
+						</li>
+						<li>
+							Fixed: Some full themes (e.g. Nuvola) do not display the check mark for advanced tab properties
+						</li>
+					</ul>
+			</li>
+			
+			
 			<a name="4.10">&nbsp;</a>
 			<li>
 				<h4>
@@ -436,6 +480,13 @@
 						    quickMove - create new subfolder not working in empty parent. 
 								make it possible to create new subfolders using quickMove by entering 
 								<i>parentFolder</i>/<i>New Folder</i> even if the parent Folder has no children.
+						</li>
+						<li>
+							<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26425">[Bug 26425]</a>
+						  Add setting to move "drag to new subfolder" to top of subfolders menu. 
+							This can be configured by right-clicking QuickFolders Advanced Options | 
+							<i>Menu Configuration</i> | <i>"Drag to New Subfolder"</i> and then setting
+							<tt>extensions.quickfolders.dragToCreateFolder.menutop = true</tt>
 						</li>
 						<li>WIP: Removing / Forking Deprecated code in preparation for the next big Thunderbird 
 						    release (57+). Tested current version with Thunderbird 57.0 beta2.

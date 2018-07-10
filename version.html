@@ -120,21 +120,23 @@
 			<a name="quickJump"> </a>
 			<h4>Premium Feature: quickJump</h4>
 			<p>A super quick way to find folders and Tabs by entering part of their name:</p>
-			<p>Click on the quickJump button (or use the configurable keyboard shortcut SHIFT+J in the Pro version of QuickFolders):<br>
+			<p>Click on the quickJump button (or use the configurable keyboard shortcut SHIFT+J 
+			   in QuickFolders Pro):<br>
 							 <img src="images/quickJump-Button.png" alt="quick Jump"/><br>
 							 A Search box opens where you can type a folder name and hit [Enter]. Or hit the [Down] key
 							 or mouse to select from the list of suggestions.<br>
 							 <img src="images/FindFolder-box.png" alt="Find Folder results"/><br>
 							 If exactly one matching folder is found Thunderbird will jump to it immediately. If multiple folders match a dropdown will show.
 							 Selecting the folder (or tab) name will jump to the folder.<br>
-							 Select Find Folder from the menu again if you want to hide the search box.				 
+							 Select Find Folder from the menu again if you want to hide the search box.
 			</p>
 			<a name="quickMove"> </a>
 			<h4>Premium Feature: quickMove</h4>
 			<p>Uses the same button for moving mails to any folder:</p>
-			<p>Simply drag some mails up to the quickJump button, and then type the name of the 
-				 target folder. The name is shown in red to show that mail is going to be moved. 
-				 Note that you can drag mails multiple times and even from different folders - 
+			<p>Simply drag some mails up to the quickJump button (or use the configurable keyboard shortcut SHIFT+M in 
+			   QuickFolders Pro), and then type the name of the 
+				 target folder. The name is shown in red to indicate that mails are going to be moved. 
+				 Note that you can gather mails multiple times and even from different folders - 
 				 the mails won't be moved to the destination until you click on the suggestion on 
 				 the search box.</p>
 			<p><img src="images/quickMove-drag.png" /><br/>
@@ -205,10 +207,14 @@
 				</h4>
 					<ul>
 						<li>
-						  <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26565" target="_blank">[Bug 26565]</a> Execute quickJump / quickMove with [Enter] if unique match
+						  <p><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26565" target="_blank">[Bug 26565]</a> 
+							Execute <a href="#quickMove">quickJump / quickMove</a> with [Enter] if unique match</p>
+							This means if you execute a <a href="#quickMove">quickJump</a> / <a href="#quickMove">quickMove</a> operation using the keyboard shortcuts (SHIFT-J and SHIFT-M)
+							you can now simply use the [Enter] key to jump / move mail if there is only one folder result in the list.
+							To select from multiple matches, use the [Down] key or mouse as before.
 						</li>
 						<li>
-						  Redesigned (mostly monochrome) toolbar icons for Photon look; includes improved brighttext support.<br>
+						  <p>Redesigned (mostly monochrome) toolbar icons for Photon look; includes improved brighttext support.</p>
 							<table>
 							  <tr>
 								  <td>
@@ -219,6 +225,12 @@
 										Toolbar toggle, New Folder, Skip unread folder.
 								  </td>
 							  </tr>
+								  <td colspan="2">
+									  <hr>
+								  </td>
+							  <tr>
+							  </tr>
+							  <tr>
 								  <td>
 										<img src="images/toolbar60.png" alt="photon icons" class="screenshots"/>
 								  </td>

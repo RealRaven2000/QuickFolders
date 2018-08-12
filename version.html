@@ -254,7 +254,10 @@
 						</li>
 						<li>
 						  <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26570" target="_blank">[Bug 26570]</a> 
-							Only show "Mark Folder Read" command if folder has unread mails.
+							Remove "Mark Folder Read" command if a folder contains no unread mails.
+						</li>
+						<li>
+						  Changed delimiter between unread mails and unread mails in subfolders from [+] to down arrow [&#9662;]
 						</li>
 						<li>
 						  <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26571" target="_blank">[Bug 26571]</a> 
@@ -267,7 +270,23 @@
 							while holding down CTRL.
 						</li>
 						<li>
+						  <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26566" target="_blank">[Bug 26566]</a> 
+							Thunderbird 60 doesn't show custom icons in folder tree. 
+							To fix this QuickFolders will now start a timer that repairs the icons after initialisation.
+							The waiting time can be adjusted through the configuration setting 
+							extensions.quickfolders.treeIconsDelay							
+						</li>
+						<li>
 							Fixed: Some full themes (e.g. Nuvola) do not display the check mark for advanced tab properties
+						</li>
+						<li>
+							Fixed getOrCreateFolder (creating folders asynchronously) for Thunderbird 60
+						</li>
+						<h4 class="inList">>Work in Progress / known Issues: </h4><br>
+						<li>
+							<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26575" target="_blank">[Bug 26575]</a> 
+							Thunderbird 60: QuickFolders context menus broken. I am still working on this, but I believe it is
+							caused by a regression in the source code of Thunderbird.
 						</li>
 					</ul>
 			</li>

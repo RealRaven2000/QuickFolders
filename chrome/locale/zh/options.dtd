@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "清空垃圾桶">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "拖曳到新的子資料夾">
 <!ENTITY qf.label.menus.quickFolder "QuickFolders 指令">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "只有在按住 CTRL 鍵時顯示">
 <!ENTITY qf.label.menus.separator "插入間隔">
 <!ENTITY qf.label.menus.lineBreak "插入斷行">
 <!ENTITY qf.label.menus.customIcon "自訂圖示">
@@ -171,6 +172,8 @@
 <!ENTITY qf.checkbox.quickMove.tip "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - 使用快速鍵 SHIFT + 複製信件到任何的資料夾">
 <!ENTITY qf.checkbox.quickCopy.tip "拖曳信件到quickCopy按鈕上，可快速地透過選擇信件夾名稱來複製。">
+<!ENTITY qf.checkbox.skipFolder "略過未讀的資料夾 - 使用快捷鍵: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "跳到下一個未讀資料夾的捷徑">
 <!ENTITY qf.quickMove.path.format "顯示格式：">
 <!ENTITY qf.pathFormat.folderName "資料夾名稱">
 <!ENTITY qf.pathFormat.folderAndAccount "資料夾名稱 - 信件帳號">

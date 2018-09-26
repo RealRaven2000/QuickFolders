@@ -11,7 +11,7 @@
 <!ENTITY qf.label.keyboard "Sneltoetsen">
 <!ENTITY qf.checkbox.usekeyboardshortcuts "Sneltoetsen gebruiken (Alt + 1 t/m Alt + 9)">
 <!ENTITY qf.checkbox.showshortcutnumber "Sneltoetsnummer op maplabels weergeven">
-<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Control in plaats van Alt gebruiken">
+<!ENTITY qf.checkbox.usekeyboardshortcutsCTRL "Ctrl in plaats van Alt gebruiken">
 <!ENTITY qf.checkbox.useRebuildShortcut "Tabbladen opnieuw opbouwen met sneltoets: Ctrl + Alt +">
 <!ENTITY qf.checkbox.useNavigationShortcuts "Alt+Links / Alt+Rechts voor vorige / volgende tabblad">
 <!ENTITY qf.label.tabContent "Tabbladinhoud">
@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Prullenbak leegmaken">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Naar nieuwe submap slepen">
 <!ENTITY qf.label.menus.quickFolder "QuickFolders-opdrachten">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Alleen weergeven met Ctrl-toets ingedrukt">
 <!ENTITY qf.label.menus.separator "Scheidingsteken invoegen">
 <!ENTITY qf.label.menus.lineBreak "Regeleinde invoegen">
 <!ENTITY qf.label.menus.customIcon "Pictogram aanpassen">
@@ -165,11 +166,11 @@
 <!ENTITY qf.licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met mij op via het tabblad Ondersteuning.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY qf.premiumConfig "Premiumfuncties">
-<!ENTITY qf.checkbox.quickJump "quickJump: mappen zoeken met sneltoets: Shift +">
+<!ENTITY qf.checkbox.quickJump "quickJump - mappen zoeken met sneltoets: Shift +">
 <!ENTITY qf.checkbox.quickJump.tip "Sneltoets voor aanklikken van de knop quickJump voor de snelste navigatie via naamingave.">
-<!ENTITY qf.checkbox.quickMove "quickMove: e-mail naar een map verplaatsen met sneltoets: Shift +">
+<!ENTITY qf.checkbox.quickMove "quickMove - e-mail naar een map verplaatsen met sneltoets: Shift +">
 <!ENTITY qf.checkbox.quickMove.tip "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in een map via invoer van naam.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy: e-mail naar een map kopiëren met sneltoets: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - e-mail naar een map kopiëren met sneltoets: SHIFT +">
 <!ENTITY qf.checkbox.quickCopy.tip "Sneltoets voor het slepen van e-mailberichten naar de knop quickCopy voor het snelste kopiëren naar een map via invoer van naam.">
 <!ENTITY qf.quickMove.path.format "Weergave:">
 <!ENTITY qf.pathFormat.folderName "Mapnaam">

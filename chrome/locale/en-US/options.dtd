@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
 <!ENTITY qf.label.menus.quickFolder "QuickFolders Commands">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "Insert Separator">
 <!ENTITY qf.label.menus.lineBreak "Insert Line Break">
 <!ENTITY qf.label.menus.customIcon "Customize Icon">
@@ -165,12 +166,14 @@
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY qf.premiumConfig "Premium Features">
-<!ENTITY qf.checkbox.quickJump "quickJump: Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickJump "quickJump - Go to any folder with Shortcut: SHIFT +">
 <!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove: Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Move mail to any folder with Shortcut: SHIFT +">
 <!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy: Copy mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Copy mail to any folder with Shortcut: SHIFT +">
 <!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Display Format:">
 <!ENTITY qf.pathFormat.folderName "Folder Name">
 <!ENTITY qf.pathFormat.folderAndAccount "Folder Name - Mail Account">

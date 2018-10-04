@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Очистить «Удалённые»">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Перетащить, создавая под-папку">
 <!ENTITY qf.label.menus.quickFolder "Команды QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Показывать только при нажатой клавише Ctrl">
 <!ENTITY qf.label.menus.separator "Вставить разделитель">
 <!ENTITY qf.label.menus.lineBreak "Вставить перевод строк">
 <!ENTITY qf.label.menus.customIcon "Настроить иконку">
@@ -171,6 +172,8 @@
 <!ENTITY qf.checkbox.quickMove.tip "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени.">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - Копирование сообщений в любую папку по нажатию Shift +">
 <!ENTITY qf.checkbox.quickCopy.tip "Сочетания клавиш кнопки quickCopy для быстрого копирования сообщений в папку по имени.">
+<!ENTITY qf.checkbox.skipFolder "Пропуск непрочитанной папки: Shift +">
+<!ENTITY qf.checkbox.skipFolder.tip "Комбинация клавиш для перехода к следующей непрочитанной папке.">
 <!ENTITY qf.quickMove.path.format "Формат отображения:">
 <!ENTITY qf.pathFormat.folderName "Имя папки">
 <!ENTITY qf.pathFormat.folderAndAccount "Имя папки - Учётная запись">

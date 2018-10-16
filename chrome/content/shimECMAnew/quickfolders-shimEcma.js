@@ -1,8 +1,12 @@
 // NEW CODE
 // Task.jsm: function generators (function*)
 Components.utils.import("resource://gre/modules/Task.jsm");
+// throws PromiseUtils not defined
+Components.utils.import("resource://gre/modules/PromiseUtils.jsm");
+// ChromeUtils.defineModuleGetter(this, "PromiseUtils", "resource://gre/modules/PromiseUtils.jsm");
 
-QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
+// refactored from async Task with help of @freaktechnik
+QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,
 					Cr = Components.results,
@@ -57,10 +61,34 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
           needToCreate = isAsync || !folder.filePath.exists();
 					
 			logDebug('no folder parent. needToCreate = ' + needToCreate + ' async = ' + isAsync);		
-					
+			
+			
       if (needToCreate) {
-				// throws PromiseUtils not defined
-				Components.utils.import("resource://gre/modules/PromiseUtils.jsm");
+        const deferred = new Promise((resolve, reject) => {
+          const listener = {
+            OnStartRunningUrl(url) {},
+            OnStopRunningUrl(url, aExitCode) {
+              if (aExitCode == Cr.NS_OK)
+                resolve();
+              else
+                reject(aExitCode);
+            },
+            QueryInterface: XPCOMUtils.generateQI([Ci.nsIUrlListener])
+          };
+   
+          // If any error happens, it will throw--causing the outer promise to
+          // reject.
+                                  logDebug('folder.createStorageIfMissing()...'); 
+          folder.createStorageIfMissing(isAsync ? listener : null);
+          if (!isAsync || !needToCreate)
+            resolve();
+        });
+        await deferred;
+      }			
+			
+				
+/*				
+      if (needToCreate) {
         let deferred = PromiseUtils.defer();
         let listener = {
           OnStartRunningUrl(url) {},
@@ -81,6 +109,9 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
           deferred.resolve();
         yield deferred.promise;
       }
+*/
+			
+			
     }
 
     if (folder.parent == null || folder.rootFolder == folder) {
@@ -90,5 +121,5 @@ QuickFolders.Util.getOrCreateFolder = Task.async(function* (aUrl, aFlags) {
 
     // Finally, we have a valid folder. Return it.
     return folder;
-  }) ;
+  };
 	

@@ -717,7 +717,7 @@ QuickFolders.FilterWorker = {
   },
   
   showQuickFilters: function showQuickFilters(event) {
-    QuickFolders.Util.openURL(event,'https://addons.mozilla.org/thunderbird/addon/quickfilters');
+    QuickFolders.Util.openURL(event,'https://addons.thunderbird.net/thunderbird/addon/quickfilters');
   }
   
 

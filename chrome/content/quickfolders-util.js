@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.10",
+	HARDCODED_CURRENTVERSION : "4.11",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -758,7 +758,7 @@ QuickFolders.Util = {
 
 		let dataObj = new Object(),
 		    len = new Object(),
-		    flavor = dropData.flavour.contentType;
+		    flavor =  dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
 		try {
 			trans.getTransferData(flavor, dataObj, len);
 
@@ -1606,6 +1606,11 @@ QuickFolders.Util = {
 			return folder.parent != null;
 		}
 		return false;
+	},
+	
+	doesMailUriExist: function checkUriExists(URI) {
+		let f = QuickFolders.Model.getMsgFolderFromUri(URI);
+		return (f.parent) ? true : false;
 	},
 	
 	polyFillEndsWidth: function polyFillEndsWidth() {

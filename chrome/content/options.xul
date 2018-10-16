@@ -21,11 +21,11 @@
 						>
 
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
@@ -104,6 +104,8 @@
 						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickCopyShortcut" name="extensions.quickfolders.quickCopy.useHotkey" type="bool" />
 						<preference id="QuickFolders-Preferences-QuickCopyShortcutKey" name="extensions.quickfolders.quickCopy.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-skipFolderShortcut" name="extensions.quickfolders.skipFolder.useHotkey" type="bool" />
+						<preference id="QuickFolders-Preferences-skipFolderShortcutKey" name="extensions.quickfolders.skipFolder.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" />
 						<preference id="QuickFolders-Preferences-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" />
@@ -273,6 +275,7 @@
 						<preference id="QuickFolders-Preferences-ShowFolderNavButton" name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool" />
 						<preference id="QuickFolders-Preferences-CurrentFolder-Background" name="extensions.quickfolders.currentFolderBar.background" type="string" />
+						<preference id="QuickFolders-Preferences-FolderMenu-openNewTab" name="extensions.quickfolders.folderMenu.openNewTab" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-markAllRead" name="extensions.quickfolders.folderMenu.markAllRead" type="bool" />
@@ -280,6 +283,7 @@
 						<preference id="QuickFolders-Preferences-FolderMenu-emptyTrash" name="extensions.quickfolders.folderMenu.emptyTrash" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-newFolder" name="extensions.quickfolders.folderMenu.dragToNew" type="bool" />
 						<preference id="QuickFolders-Preferences-CommandMenu-Icons" name="extensions.quickfolders.commandMenu.icon" type="bool" />
+						<preference id="QuickFolders-Preferences-CommandMenu-CTRL" name="extensions.quickfolders.commandMenu.CTRL" type="bool" />
 						<preference id="QuickFolders-Preferences-CommandMenu-Separator" name="extensions.quickfolders.commandMenu.separator" type="bool" />
 						<preference id="QuickFolders-Preferences-CommandMenu-LineBreak" name="extensions.quickfolders.commandMenu.lineBreak" type="bool" />
 						<preference id="QuickFolders-Preferences-CommandMenu-Support" name="extensions.quickfolders.commandMenu.support" type="bool" />
@@ -364,6 +368,9 @@
 							<caption label="&qf.label.menus;" />
 							<groupbox id="mailCommandsCustomize" flex="1">
 								<caption label="&qf.label.menus.mailFolder;" />
+								<checkbox id="qfOpenInNewTab" 
+													label="Open In New Tab"
+													preference="QuickFolders-Preferences-FolderMenu-openNewTab" />
 								<checkbox id="qfGetMail" label="&qf.checkbox.menus.getMailForInbox;"
 													preference="QuickFolders-Preferences-FolderMenu-getMailForInbox" />
 								<checkbox id="qfGetMail"
@@ -386,6 +393,9 @@
 
 							<groupbox id="contextMenuCommandsCustomize" >
 								<caption label="&qf.label.menus.quickFolder;" />
+								<checkbox id="qfHideQFcommandsUnlessCTRL"
+								          label="&qf.label.menus.hideQFunlessCTRL;"
+													preference="QuickFolders-Preferences-CommandMenu-CTRL" />
 								<checkbox id="qfInsertSeparator"
 													label="&qf.label.menus.separator;"
 													preference="QuickFolders-Preferences-CommandMenu-Separator" />
@@ -1097,6 +1107,21 @@
 												 maxLength="1"
 												 disabled="true" />
 							</hbox>
+							<hbox>
+								<checkbox id="chkSkipFolderHotkey"
+													label="&qf.checkbox.skipFolder;"
+													tooltiptext="&qf.checkbox.skipFolder.tip;"
+													preference="QuickFolders-Preferences-skipFolderShortcut"
+													instantApply="true"
+													disabled="true" />
+								<textbox id="qf-SkipFolderShortcut"
+												 preference="QuickFolders-Preferences-skipFolderShortcutKey"
+												 class="shortCutKey"
+												 instantApply="true" 
+												 maxLength="1"
+												 disabled="true" />
+							</hbox>
+							
 							<hbox align="center">
 								<label control="menuQuickMoveFormat"
 								       value="&qf.quickMove.path.format;"/>

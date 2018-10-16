@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Eliminar la basura">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
 <!ENTITY qf.label.menus.quickFolder "Comandos de QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "Agregar separador">
 <!ENTITY qf.label.menus.lineBreak "Agregar un cambio de línea">
 <!ENTITY qf.label.menus.customIcon "Personalizar ícono">
@@ -171,6 +172,8 @@
 <!ENTITY qf.checkbox.quickMove.tip "Acceso directo para arrastrar correos al botón QuickMove para archivar más rápido a cualquier carpeta vía entrada de nombre.">
 <!ENTITY qf.checkbox.quickCopy "Para copiar correos a cualquier carpeta usar el atajo MAYUS+ (botón copia rápida)">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón de copia rápida para un copiado más rápido a cualquier carpeta mediante ingreso de nombre.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Formato de despliegue:">
 <!ENTITY qf.pathFormat.folderName "Nombre de la carpeta">
 <!ENTITY qf.pathFormat.folderAndAccount "Nombre de carpeta - Cuenta de correo">

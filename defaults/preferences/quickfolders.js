@@ -34,6 +34,8 @@ pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
+pref("extensions.quickfolders.skipFolder.useHotkey", false);
+pref("extensions.quickfolders.skipFolder.Hotkey", 'S');
 pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.bookmarks.folderLabel", true);
@@ -52,6 +54,7 @@ pref("extensions.quickfolders.tooltips.serverName", true);
 pref("extensions.quickfolders.tooltips.virtualFlag", true);
 pref("extensions.quickfolders.tooltips.msgFolderFlags", false);
 pref("extensions.quickfolders.autoValidateFolders", true); // check if folder exists when clicking a tab
+pref("extensions.quickfolders.treeIconsDelay", 7500); // repair icons [Bug 26566]
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar", true);
 pref("extensions.quickfolders.showCurrentFolderToolbar.messageWindow", false);
@@ -152,6 +155,10 @@ pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.navigation", false);
 pref("extensions.quickfolders.debug.options", false);
 pref("extensions.quickfolders.debug.popupmenus", false);
+pref("extensions.quickfolders.debug.popupmenus.verticalOffset",0);
+pref("extensions.quickfolders.debug.popupmenus.isCommandListeners", false);
+pref("extensions.quickfolders.debug.popupmenus.isOnCommandAttr", false);
+pref("extensions.quickfolders.debug.popupmenus.folderEventType", "onclick");
 pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);
@@ -165,6 +172,7 @@ pref("extensions.quickfolders.debug.recentFolders", false);
 pref("extensions.quickfolders.debug.recentFolders.detail", false);
 pref("extensions.quickfolders.debug.toolbarHiding", false);
 
+pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
 
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3", true);
@@ -191,10 +199,11 @@ pref("extensions.quickfolders.folderMenu.markAllRead", true);
 pref("extensions.quickfolders.folderMenu.emptyJunk", true);
 pref("extensions.quickfolders.folderMenu.emptyTrash", true);
 pref("extensions.quickfolders.folderMenu.dragToNew", true);
-pref("extensions.quickfolders.folderMenu.openNewTab", true);
+pref("extensions.quickfolders.folderMenu.openNewTab", false);
 pref("extensions.quickfolders.folderMenu.realignMinTabs", 25);
 pref("extensions.quickfolders.commandMenu.options", true);
 pref("extensions.quickfolders.commandMenu.separator", true);
+pref("extensions.quickfolders.commandMenu.CTRL", false); // Bug 26571 
 pref("extensions.quickfolders.commandMenu.lineBreak", true);
 pref("extensions.quickfolders.commandMenu.icon", false);
 pref("extensions.quickfolders.tabIcons.defaultPath","");

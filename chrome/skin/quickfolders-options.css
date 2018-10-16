@@ -117,19 +117,26 @@
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(64px, 16px, 80px, 0px); 
 }
-#chkQuickJumpHotkey .checkbox-icon
-{ 
+#chkQuickJumpHotkey .checkbox-icon { 
 	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(48px, 16px, 64px, 0px);
 }
-#chkBookmarks .checkbox-icon 
-{
+
+#chkSkipFolderHotkey .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/skin/ico/exit-folder.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#chkBookmarks .checkbox-icon {
 	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
-#chkCategories  .checkbox-icon
-{
+#chkCategories .checkbox-icon {
 	list-style-image: url("chrome://quickfolders/skin/ico/fugue-balloons.png"); 
+}
+
+#qfOpenInNewTab .checkbox-icon {
+  list-style-image : url('chrome://quickfolders/skin/ico/promote-Tab.png');
 }
 
 hbox > textbox:not([multiline="true"]) {

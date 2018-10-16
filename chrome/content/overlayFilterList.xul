@@ -7,8 +7,8 @@
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/x-javascript"             src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-filterList.js" />

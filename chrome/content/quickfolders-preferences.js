@@ -128,7 +128,8 @@ QuickFolders.Preferences = {
 				|| this.isUseRebuildShortcut 
 		    || this.isQuickJumpShortcut 
 				|| this.isQuickMoveShortcut 
-				|| this.isQuickCopyShortcut;
+				|| this.isQuickCopyShortcut
+				|| this.isSkipFolderShortcut;
 	} ,
 
 	get isUseNavigateShortcuts() {
@@ -170,6 +171,15 @@ QuickFolders.Preferences = {
 	get QuickCopyShortcutKey() {
 		return this.getStringPref("quickCopy.Hotkey");
 	} ,
+	
+	get isSkipFolderShortcut() {
+		return this.getBoolPref("skipFolder.useHotkey");
+	} ,
+  
+	get SkipFolderShortcutKey() {
+		return this.getStringPref("skipFolder.Hotkey");
+	} ,
+	
 
 	get isUseKeyboardShortcutsCTRL() {
 		return this.getBoolPref("useKeyboardShortcutCTRL");
@@ -527,6 +537,15 @@ QuickFolders.Preferences = {
       default:
         return false; // SeaMonkey and Postbox - custom icons not supported!
     }
-  }
+  },
+	
+	unhideSmallIcons() {
+		// option: make "small icons" option visible again in customize toolbar palette
+		if (this.getBoolPref("toolbarpalette.showSmallIcons")) {
+			let option = document.getElementById('smallicons');
+			if (option)
+				option.style.setProperty('display','block'); // by default this has been set to 'none' for ages
+		}
+	}
   
 }

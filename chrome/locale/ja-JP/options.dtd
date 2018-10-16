@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "ごみ箱を空にする">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "新しいサブフォルダにドラッグする">
 <!ENTITY qf.label.menus.quickFolder "QuickFolders コマンド">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "区切りを挿入">
 <!ENTITY qf.label.menus.lineBreak "改行を挿入">
 <!ENTITY qf.label.menus.customIcon "アイコンをカスタマイズ">
@@ -171,6 +172,8 @@
 <!ENTITY qf.checkbox.quickMove.tip "quickMove ボタンは、このボタンにメールをドラッグすると任意の名前エントリにメールを移動できるショートカットです。">
 <!ENTITY qf.checkbox.quickCopy "クイックコピー - ショートカットキーで任意のフォルダにメールをコピーする: Shift +">
 <!ENTITY qf.checkbox.quickCopy.tip "クイックコピーボタンにメールをドラッグして、任意のフォルダに名前エントリ経由ですばやくコピーします。">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "表示形式:">
 <!ENTITY qf.pathFormat.folderName "フォルダ名">
 <!ENTITY qf.pathFormat.folderAndAccount "フォルダ名 - メールアカウント">

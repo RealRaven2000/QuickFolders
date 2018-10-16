@@ -328,6 +328,9 @@ QuickFolders.Options = {
     
     util.logDebugOptional('options', 'QuickFolders.Options.load - end with sizeToContent()');
     sizeToContent();
+		
+		let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
+		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
 	},
   
   initBling: function initBling (tabbox) {
@@ -396,7 +399,7 @@ QuickFolders.Options = {
     catch(e) { ; }
     
     let menupopup = getElement("QuickFolders-Options-PalettePopup");
-    QI.buildPaletteMenu(0, menupopup, true);
+    QI.buildPaletteMenu(0, menupopup, true, true); // added parameter to force oncommand attributes back
     
     // customized coloring support
     this.initPreviewTabStyles();
@@ -445,9 +448,11 @@ QuickFolders.Options = {
         quickJump       = getElement('chkQuickJumpHotkey'),
         quickMove       = getElement('chkQuickMoveHotkey'),
         quickCopy       = getElement('chkQuickCopyHotkey'),
+				skipFolder      = getElement('chkSkipFolderHotkey'),
         quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
         quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
         quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
+				skipFolderTxt   = getElement('qf-SkipFolderShortcut'),
         quickMoveFormat = getElement('menuQuickMoveFormat'),
         quickMoveDepth  = getElement('quickmove-path-depth'),
         multiCategories = getElement('chkCategories');
@@ -455,9 +460,11 @@ QuickFolders.Options = {
     quickJump.disabled = !isEnabled;
     quickMove.disabled = !isEnabled;
     quickCopy.disabled = !isEnabled;
+		skipFolder.disabled = !isEnabled;
     quickJumpTxt.disabled = !isEnabled;
     quickMoveTxt.disabled = !isEnabled;
     quickCopyTxt.disabled = !isEnabled;
+		skipFolderTxt.disabled = !isEnabled;
     quickMoveFormat.disabled = !isEnabled;
     quickMoveDepth.disabled = !isEnabled;
     multiCategories.disabled = !isEnabled;

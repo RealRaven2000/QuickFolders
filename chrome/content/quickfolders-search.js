@@ -17,7 +17,6 @@ QuickFolders.SearchDialog = {
           utils = QuickFolders.Util,
           typeAttrib = Ci.nsMsgSearchAttrib,
           typeOperator = Ci.nsMsgSearchOp;
-    if (utils.Debug) debugger;
     utils.logDebug('addSearchTerm(attrib = ' + searchTerm.attrib + ')');
     // let's try and clone the term using the proper session
     let rowIndex = gSearchTermList.getRowCount();

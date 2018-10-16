@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Opróżnij kosz">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Przeciągnij do nowego subfolderu">
 <!ENTITY qf.label.menus.quickFolder "Polecenia w menu paska QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Wyświetlany tylko z przytrzymanym klawiszem CTRL">
 <!ENTITY qf.label.menus.separator "Wstaw separator">
 <!ENTITY qf.label.menus.lineBreak "Przenieś foldery do następnego rzędu">
 <!ENTITY qf.label.menus.customIcon "Zmień ikony">
@@ -171,6 +172,8 @@
 <!ENTITY qf.checkbox.quickMove.tip "Skrót do przycisku quickMove do szybszego przenoszenia do dowolnego folderu za pomocą wprowadzonej nazwy.">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - Kopiuj wiadomość do dowolnego folderu za pomocą skrótu Shift+">
 <!ENTITY qf.checkbox.quickCopy.tip "Skrót klawiszowy do przeciągania wiadomości do przycisku quickCopy w celu szybkiego kopiowania do dowolnego folderu.">
+<!ENTITY qf.checkbox.skipFolder "Pomiń nieprzeczytany folder - użyj skrótu: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Skrót do przechodzenia do następnego nieprzeczytanego folderu">
 <!ENTITY qf.quickMove.path.format "Format wyświetlania:">
 <!ENTITY qf.pathFormat.folderName "Nazwa folderu">
 <!ENTITY qf.pathFormat.folderAndAccount "Nazwa folderu – Konto pocztowe">

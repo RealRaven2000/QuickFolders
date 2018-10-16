@@ -662,6 +662,7 @@
 }
 
 /* some experimental color labels, injected via content */
+/*
 .QuickFolders-folder-popup menuitem[tag="qfColor1"]::after { content:"light blue"; margin-left:0;}
 .QuickFolders-folder-popup.pastel menuitem[tag="qfColor1"]::after { content:"aqua"; margin-left:0;}
 .QuickFolders-folder-popup.night menuitem[tag="qfColor1"]::after { content:"ice blue"; margin-left:0;}
@@ -712,6 +713,7 @@
 .QuickFolders-folder-popup menuitem[tag="qfColor18"]::after { content:"medium gray"; margin-left:0;}
 .QuickFolders-folder-popup menuitem[tag="qfColor19"]::after { content:"dark gray"; margin-left:0;}
 .QuickFolders-folder-popup menuitem[tag="qfColor20"]::after { content:"black"; margin-left:0;}
+*/
 
 
 /* STRIPED STYLE GRADIENTS */

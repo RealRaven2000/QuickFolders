@@ -119,6 +119,14 @@ QuickFolders.FolderTree = {
 				// element.style.listStyleImage = '';
 				hasIcon = false;
         util.logDebugOptional('folderTree.icons','no icon:' + folderIcon);
+				if(!folder)
+					util.logDebugOptional('folderTree.icons', 'folder=null');
+				else if(folderIcon=='')
+					util.logDebugOptional('folderTree.icons', 'folderIcon=empty');
+				else if(folderIcon=='noIcon')
+					util.logDebugOptional('folderTree.icons', 'folderIcon=noIcon');
+				else
+					util.logDebugOptional('folder.getStringProperty=', 'folder.getStringProperty');
 			}
 			else {
 				let iconURL = folder.getStringProperty("iconURL");
@@ -260,13 +268,23 @@ QuickFolders.FolderTree = {
 		try {
 		  if (iconURI) {
 				fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
-				util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + fileURL.path + ")");
+				let fPath = fileURL.filePath,
+				    parts = fPath.split('/'),
+						shortenedPath = fPath;
+				if (parts.length>4) { // buid shortened path.
+					const start = parts[0] || parts[1],  // if path starts with /
+					      tri = " \u25B9 ";
+					parts.shift(); // remove 1st (empty?) item
+					while (parts.length>3) parts.shift(); // remove first element.
+					shortenedPath = start + tri + " \u2026 " + tri + parts.join(tri);
+				}
+				util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
 				fileSpec = fileURL.asciiSpec;
 				folder.setStringProperty("folderIcon", propName);
 				let cssUri = 'url(' + fileSpec + ')';
 				util.logDebugOptional('folderTree.icons', 'setFolderTreeIcon()\n'
 					+ 'folder.URI: ' + folder.URI + '\n'
-					+ 'fileURL:    ' + fileURL.path + '\n'
+					+ 'fileURL:    ' + fPath + '\n'
 					+ 'propName:   ' + propName + '\n'
 					+ 'cssUri:     ' + cssUri + '\n'
 					+ 'GUID:       ' + GUID);

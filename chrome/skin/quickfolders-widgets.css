@@ -78,11 +78,11 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 	
 
 menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
-	list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important;
+	list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png');
 }
 
 menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
-	list-style-image : url('chrome://quickfolders/skin/ico/folder_open.png') !important;
+	list-style-image : url('chrome://quickfolders/skin/ico/folder_open.png');
 }
 
 tab#QuickFolders-General  {

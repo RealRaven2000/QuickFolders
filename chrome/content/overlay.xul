@@ -3,6 +3,7 @@
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-layout.css"  title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-thunderbird.css"  title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-filters.css" title="QuickFoldersFilters" type="text/css"?>
+<!-- <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?> -->
 
 <!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 
@@ -137,8 +138,11 @@
 			</vbox>
 		</hbox>
 		
-		<popupset id="QuickFolders-Palette">
-			<menupopup id="QuickFolders-PalettePopup" class="QuickFolders-folder-popup">
+		<popupset id="QuickFolders-Palette" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+			<menupopup id="QuickFolders-PalettePopup" 
+			           class="QuickFolders-folder-popup" 
+								 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+								 onclick="QuickFolders.Interface.clickHandler(event,this);">
 				<!-- created in Interface code -->
 			</menupopup>
 			<menupopup id="QuickFolders-FindPopup" 
@@ -283,13 +287,17 @@
 		</popupset>
 
 
+		<!-- -->
 		<vbox id="QuickFolders-Folders-Pane"  flex="1">
 			<spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
+			
 			<box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
 				<label id="QuickFolders-Instructions-Label" crop="end">&qf.label.dragFolderLabel;</label>
 				<!-- Filled dynamically by the script -->
 			</box>
+<!-- 		-->		
 		</vbox>
+	
 
 		</toolbar>
 	</toolbox>

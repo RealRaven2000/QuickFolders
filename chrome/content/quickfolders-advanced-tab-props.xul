@@ -25,11 +25,11 @@
 	ondialogextra1="QuickFolders.AdvancedTab.apply();"
 >
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-advancedTab.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 
 	<label id="defaultAccountAddress" collapsed="true" value="&defaultAccountAddress.value;" />
 	<vbox>

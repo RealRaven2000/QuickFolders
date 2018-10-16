@@ -29,7 +29,7 @@ locale quickfolders zh-TW  chrome/locale/zh/
 skin    quickfolders       classic/1.0  chrome/skin/
 skin    quickfolders-pl    classic/1.0  chrome/skin/
 
-# shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
+# shim-JS for platforms>11 - this section will avoid the pesky errors in Thunderbird about for..in being outdated
 # while also avoid Postbox crashing us for syntax when we use for..of
 #tb (for..of)
 content quickfoldersShim chrome://quickfolders/content/shim12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
@@ -78,10 +78,16 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 #All
 style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
+# hidden option for revealing small icons checkbox:
+overlay chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion<59.0a1
+overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion>59.0a1
 
 ## modern styles - new monochrome icons for Thunderbird 60
-style chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>59
-style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout-60.css appversion>=60.0
+## new flexible layout path quickfoldersLayout/content
+content quickfoldersLayout  chrome://quickfolders/content/layoutClassic/ appversion<60.0
+content quickfoldersLayout  chrome://quickfolders/content/layout60/ appversion>59.99
+style chrome://messenger/content/customizeToolbar.xul chrome://quickfoldersLayout/content/quickfolders-mods.css 
+
 
 
 style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets.css

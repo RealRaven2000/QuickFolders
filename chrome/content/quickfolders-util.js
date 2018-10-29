@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.11",
+	HARDCODED_CURRENTVERSION : "4.11.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -1824,6 +1824,10 @@ QuickFolders.Util.FirstRun = {
 				/** minor version upgrades / sales  **/
 				if (pureVersion.indexOf('4.8.3') == 0 && prev.indexOf("4.8") == 0)
           suppressVersionScreen = true;
+				
+				/** version upgrades   **/
+				if (pureVersion.indexOf('4.11.') == 0 && prev.indexOf("4.11") == 0)
+          suppressDonationScreen = true;
 				
 				// SILENT UPDATES
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)

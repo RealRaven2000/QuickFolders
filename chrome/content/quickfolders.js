@@ -413,18 +413,25 @@ END LICENSE BLOCK */
 		## Automatic Sanitizing of CSS values for Tab Specific custom CSS and current folder toolbar CSS strings
 		
 		
-  4.11 - WIP
+  4.11 QuickFolders Pro - 16/10/2018
 		## [Bug 26565] Execute quickJump / quickMove with [Enter] if unique match
 		## Added configurable shortcut for "Skip Unread Folder" (Premium Feature)
 		## Some full themes (e.g. Nuvola) do not display the check mark for advanced tab properties
 		## Redesigned (largely monochrome) toolbar icons for Photon look; includes improved brighttext support
 		## Moved links from addons.mozilla.org to addons.thunderbird.net
+		## Improved "unread email count" display by using Triangle instead of Plus sign [+]
 		## [Bug 26570] only show "Mark Folder Read" command if folder has unread mails
 		## [Bug 26571] option to hide QuickFolderes command submenu. 
+		## Added an option to disable the "Open in New Tab" function.
 		## Fixed getOrCreateFolder (creating folders asynchronously) for Thunderbird 60
 		## [Bug 26566] Thunderbird 60 doesn't show custom icons in folder tree
 		## [Bug 26575] Thunderbird 60: QF context menus broken.
-		
+		## Removed palette color names for stability
+	
+  4.11.1 - WIP
+	  ## [Bug 26592] 	Recent Folder items not working in Thunderbird 52 
+		## [Bug 26590] 	Broken context menu command/s (Empty Junk...) 
+	
 	Known Issues
 	============
 	

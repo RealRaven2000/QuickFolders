@@ -31,8 +31,8 @@ QuickFolders.Interface = {
 	RecentPopupId: 'QuickFolders-folder-popup-Recent',
 	_paletteStyleSheet: null,
 	_paletteStyleSheetOfOptions: null,
-	isCommandListeners: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isCommandListeners'),
-	isOncommandAttributes: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isOnCommandAttr'),
+	isCommandListeners: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isCommandListeners'), // [false] remove these later
+	isOncommandAttributes: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isOnCommandAttr'), // [false] remove these later
 	_verticalMenuOffset: QuickFolders.Preferences.getIntPref('debug.popupmenus.verticalOffset'),
 	get verticalMenuOffset() { return this._verticalMenuOffset; },
 	set verticalMenuOffset(o) { this._verticalMenuOffset = o; QuickFolders.Preferences.setIntPref('debug.popupmenus.verticalOffset', o)},
@@ -484,6 +484,8 @@ QuickFolders.Interface = {
 	},
 
 	onClickRecent: function onClickRecent(button, evt, forceDisplay) {
+		const QI = QuickFolders.Interface,
+		      prefs = QuickFolders.Preferences;
 		// refresh the recent menu on right click
 		evt.stopPropagation();
 
@@ -496,11 +498,23 @@ QuickFolders.Interface = {
 			QuickFolders.Preferences.setIntPref( 'recentfolders.color',  color)
 			return;
 		}
+		// Thunderbird 52 fix for [Bug 26592] - recent folder clicks not working
+		if (button && (button.tagName == 'menuitem' || button.tagName == 'menupopup')) {
+			if (prefs.isDebugOption('popupmenus')) debugger;
+
+			let menuitem = button;
+			if (menuitem.folder) {
+				evt.preventDefault();
+				// addSubFoldersPopupFromList is ultimately responsible for creating this menuitems
+        QI.onSelectSubFolder(menuitem.folder.URI, evt);
+				return;
+			}
+		}
 
 		if (forceDisplay) {
 			// left click: open context menu through code
 			this.createRecentTab(null, false, button);
-			QuickFolders.Interface.showPopup(button, this.menuPopupsByOffset[0].id, null); // this.RecentPopupId
+			QI.showPopup(button, this.menuPopupsByOffset[0].id, null); // this.RecentPopupId
 		}
 	} ,
 
@@ -1598,7 +1612,6 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
 					prefs = QuickFolders.Preferences;
-    if (prefs.isDebugOption('popupmenus')) debugger;
     let folder = button ? (button.folder || null)  : null;
     if (evt) {
       let evtText;
@@ -3597,6 +3610,9 @@ QuickFolders.Interface = {
 					case "deleteJunk":
 						QI.onDeleteJunk(menuitem);
 						break;
+			    case "folderPaneContext-emptyJunk": // [Bug 26590]
+						QI.onEmptyJunk(menuitem);
+					  break;
 					case "folderPaneContext-new":
 					  QI.onNewFolder(menuitem, evt);
 					  break;
@@ -3627,6 +3643,7 @@ QuickFolders.Interface = {
 					case "quickFolders-folderSearchMessages":
 						QI.onSearchMessages(menuitem);
 					  break;
+						
 					default: 
 					  isIdHandler = false;
 				}
@@ -3840,8 +3857,8 @@ QuickFolders.Interface = {
 		      id = "folderPaneContext-emptyJunk";
 	  let menuitem = this.createIconicElement('menuitem');
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label',this.getUIstring("qfEmptyJunk", "Empty Junk"));
-		menuitem.setAttribute('accesskey',this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
+		menuitem.setAttribute('label', this.getUIstring("qfEmptyJunk", "Empty Junk"));
+		menuitem.setAttribute('accesskey', this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEmptyJunk(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -4087,6 +4104,7 @@ QuickFolders.Interface = {
 						  "\xDF":"ss", "_":"/", ":":"."},
 					prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,
+					Cc = Components.classes, // [Bug 26593]
 					Ci = Components.interfaces,
 					QI = QuickFolders.Interface;
     let killDiacritics = function(s) {
@@ -4176,6 +4194,7 @@ QuickFolders.Interface = {
 					// additional click event for safety in Thunderbird 60
 					let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator),
 					    eventType;
+					// for the new Thunderbird (60+) 
 					if (vc.compare(util.ApplicationVersion, "60.0") >= 0) { 
 						eventType = prefs.getStringPref('debug.popupmenus.folderEventType'); // "onclick" or "oncommand" - default is onclick
 						if (eventType) {
@@ -4191,14 +4210,9 @@ QuickFolders.Interface = {
 						*/
 					}
 					else {
-						eventType = "command";
-						if (QI.isOncommandAttributes)
-							this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
-						if (QI.isCommandListeners) 
-							menuitem.addEventListener("command", 
-								function(event) { 
-									QuickFolders.Interface.onSelectSubFolder(subfolder.URI, event); 
-								}, false); 
+						// [Bug 26592] recent folder menus stopped working in THunderbird 52.9 
+						eventType = "oncommand";
+						this.setEventAttribute(menuitem, eventType,"QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
 					}
 					if (isRecentFolderList)
 						util.logDebugOptional("popupmenus", "Added " + eventType + " event to " + menuLabel + " for " + subfolder.URI );

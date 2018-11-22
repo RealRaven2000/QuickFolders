@@ -92,7 +92,6 @@
 <!ENTITY qf.checkbox.debug.tooltip "högerklicka på den här kryssrutan för avancerade felsökningsalternativ">
 <!ENTITY qf.label.initdelay "Inledande fördröjning (ms) {standardvärdet är 1000}:">
 <!ENTITY qf.copyfolders "Kopiera flikar">
-<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Kopierar mapparnas konfigurationssträng till Urklipp">
 <!ENTITY qf.pastefolders.tooltip "Radera alla QuickFolders och läs nya konfigurationer från urklipp">
 <!ENTITY qf.label.appearance "Utseende">
@@ -187,7 +186,6 @@
 <!ENTITY qf.checkbox.readingList "Läslista">
 <!ENTITY qf.checkbox.readingList.tooltip "En lista över e-post som bör läsas senare. Dra dina viktigaste e-postmeddelande till denna knapp.">
 <!ENTITY qf.label.donate "Donera">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">
 <!ENTITY qf.checkbox.usePalette "Använd palett">
 <!ENTITY qf.options.theme.pastelColors "Pastellfärger">

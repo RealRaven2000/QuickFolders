@@ -68,7 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Vider la corbeille">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Glisser vers un nouveau sous-dossier">
 <!ENTITY qf.label.menus.quickFolder "Commandes QuickFolders">
-<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Affichage uniquement avec la touche CTRL enfoncée">
 <!ENTITY qf.label.menus.separator "Insérer un séparateur">
 <!ENTITY qf.label.menus.lineBreak "Insérer un retour à la ligne">
 <!ENTITY qf.label.menus.customIcon "Icône personnalisée">
@@ -172,8 +172,6 @@
 <!ENTITY qf.checkbox.quickMove.tip "Raccourci pour glisser les courriels vers le bouton quickMove pour dépose express dans tout dossier via la saisie d'un nom.">
 <!ENTITY qf.checkbox.quickCopy "Copie express - copier le courriel vers un dossier avec le raccourci : Maj +">
 <!ENTITY qf.checkbox.quickCopy.tip "Raccourci pour déplacer les messages vers le bouton de copie express pour une copie rapide vers tout dossier via le nom de l'élément.">
-<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Format d'affichage :">
 <!ENTITY qf.pathFormat.folderName "Nom de dossier">
 <!ENTITY qf.pathFormat.folderAndAccount "Nom de dossier - compte courrier">

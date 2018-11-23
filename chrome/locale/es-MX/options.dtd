@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Eliminar la basura">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
 <!ENTITY qf.label.menus.quickFolder "Comandos de QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Solo muestra con la tecla CRTL presionada">
 <!ENTITY qf.label.menus.separator "Agregar separador">
 <!ENTITY qf.label.menus.lineBreak "Agregar un cambio de línea">
 <!ENTITY qf.label.menus.customIcon "Personalizar ícono">
@@ -171,6 +172,10 @@
 <!ENTITY qf.checkbox.quickMove.tip "Acceso directo para arrastrar correos al botón QuickMove para archivar más rápido a cualquier carpeta vía entrada de nombre.">
 <!ENTITY qf.checkbox.quickCopy "Para copiar correos a cualquier carpeta usar el atajo MAYUS+ (botón copia rápida)">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón de copia rápida para un copiado más rápido a cualquier carpeta mediante ingreso de nombre.">
+<!ENTITY qf.checkbox.quickmove.autofill "Ejecutada instrucción de insertar última carpeta">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "La última carpeta utilizada exitosamente será insertada. Presione INTRO para usarla, o implemente reescriba para otros destinos.">
+<!ENTITY qf.checkbox.skipFolder "Brincar carpeta No leída - utilice atajo MAYUS +">
+<!ENTITY qf.checkbox.skipFolder.tip "Atajo para brincar a la siguiente carpeta no leída.">
 <!ENTITY qf.quickMove.path.format "Formato de despliegue:">
 <!ENTITY qf.pathFormat.folderName "Nombre de la carpeta">
 <!ENTITY qf.pathFormat.folderAndAccount "Nombre de carpeta - Cuenta de correo">

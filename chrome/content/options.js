@@ -452,6 +452,7 @@ QuickFolders.Options = {
         quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
         quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
         quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
+				quickMoveAutoFill = getElement('chkQuickMoveAutoFill'),
 				skipFolderTxt   = getElement('qf-SkipFolderShortcut'),
         quickMoveFormat = getElement('menuQuickMoveFormat'),
         quickMoveDepth  = getElement('quickmove-path-depth'),
@@ -468,6 +469,7 @@ QuickFolders.Options = {
     quickMoveFormat.disabled = !isEnabled;
     quickMoveDepth.disabled = !isEnabled;
     multiCategories.disabled = !isEnabled;
+		quickMoveAutoFill.disabled = !isEnabled;
   },
   
   decryptLicense: function decryptLicense(testMode) {

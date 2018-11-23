@@ -104,6 +104,8 @@
 						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickCopyShortcut" name="extensions.quickfolders.quickCopy.useHotkey" type="bool" />
 						<preference id="QuickFolders-Preferences-QuickCopyShortcutKey" name="extensions.quickfolders.quickCopy.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" />
+						<preference id="QuickFolders-Preferences-QuickMoveAutoFill" name="extensions.quickfolders.quickMove.autoFill" type="bool" />
 						<preference id="QuickFolders-Preferences-skipFolderShortcut" name="extensions.quickfolders.skipFolder.useHotkey" type="bool" />
 						<preference id="QuickFolders-Preferences-skipFolderShortcutKey" name="extensions.quickfolders.skipFolder.Hotkey" type="string" />
 						<preference id="QuickFolders-Preferences-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" />
@@ -1107,6 +1109,16 @@
 												 maxLength="1"
 												 disabled="true" />
 							</hbox>
+							<hbox>
+								<spacer style="width: 16px;" />
+								<checkbox id="chkQuickMoveAutoFill"
+								          label = "&qf.checkbox.quickmove.autofill;"
+													tooltiptext="&qf.checkbox.quickmove.autofill.tip;"
+													preference="QuickFolders-Preferences-QuickMoveAutoFill" 
+													disabled="true"
+													/>
+							</hbox>
+							<spacer style="height: 0.5em;" />
 							<hbox>
 								<checkbox id="chkSkipFolderHotkey"
 													label="&qf.checkbox.skipFolder;"

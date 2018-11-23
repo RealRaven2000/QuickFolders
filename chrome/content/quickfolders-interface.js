@@ -58,6 +58,7 @@ QuickFolders.Interface = {
 	get FoldersBox() { return QuickFolders.Util.$('QuickFolders-FoldersBox'); },
 	get Toolbar() { return QuickFolders.Util.$('QuickFolders-Toolbar'); },
 	get PalettePopup() { return QuickFolders.Util.$('QuickFolders-PalettePopup');},
+	get FindFolderBox() { return QuickFolders.Util.$('QuickFolders-FindFolder');},
 	
   getPreviewButtonId: function getPreviewButtonId(previewId) {
 		switch(previewId) {
@@ -1833,7 +1834,8 @@ QuickFolders.Interface = {
     }
     try {
 			let isMsgFolder = (typeof folder.getStringProperty != 'undefined');
-      if (!tabIcon && isMsgFolder && folder.getStringProperty('folderIcon')) {
+			// SeaMonkey: getStringProperty throws error if folder is in trash. it has no parent in this case.
+      if (!tabIcon && isMsgFolder && folder.parent && folder.getStringProperty('folderIcon')) {
         // folder icon, but no quickFolders tab!
         let tI = folder.getStringProperty('iconURL');
         if (tI)
@@ -2904,7 +2906,7 @@ QuickFolders.Interface = {
 					}
 					// move emails or jump to folder after creation
 					if (isQuickMove) {
-						QuickFolders.quickMove.execute(newFolderUri); 
+						QuickFolders.quickMove.execute(newFolderUri, parentFolder.name); 
 					}
 					else if (isFindFolder) { // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
 						QuickFolders_MySelectFolder(newFolderUri, true);
@@ -4464,7 +4466,7 @@ QuickFolders.Interface = {
 					util.logDebugOptional("interface.findFolder","1. show Popup…");
           // remove and add the popup to register ignorekeys removal
           menupopup = palette.appendChild(palette.removeChild(menupopup));
-					let searchBox = document.getElementById('QuickFolders-FindFolder');
+					let searchBox = QI.FindFolderBox;
 					if (typeof menupopup.openPopup == 'undefined')
 						menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 					else
@@ -4784,16 +4786,19 @@ QuickFolders.Interface = {
 			menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 		if (matches.length == 1) { 
       if (wordStartMatch(matches[0].lname, searchString) && forceFind) {
+				let finalURI = matches[0].uri;
 				if (!isFiling) {
 					// go to folder
-					isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+					isSelected = QuickFolders_MySelectFolder(finalURI);
+					QuickFolders.quickMove.rememberLastFolder(finalURI);
+					
 					setTimeout(function() {
 						QuickFolders.Interface.tearDownSearchBox();
 					}, 400);
 				}
 				else { // move mails?
 					setTimeout(function() {
-						QuickFolders.quickMove.execute(matches[0].uri);
+						QuickFolders.quickMove.execute(finalURI);
 						QuickFolders.Interface.tearDownSearchBox();
 					});
 				}
@@ -4843,7 +4848,8 @@ QuickFolders.Interface = {
 	} ,
 	
 	selectFound: function selectFound(element, event) {
-    let util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+		      QI = QuickFolders.Interface;
 		util.logDebug("selectFound - " + event);
 	  let el = event.target,
 		    URI = el.getAttribute('value'),
@@ -4854,12 +4860,22 @@ QuickFolders.Interface = {
 		if (el.className && el.className.indexOf('deferred')>=0) return;
 		element.setAttribute('ignorekeys', 'true');
     util.logDebugOptional('quickMove', 'QuickFolders.quickMove.isActive = ' + isQuickMove);
+		let searchTerm = QI.FindFolderBox.value,
+		    slashPos = searchTerm.indexOf('/'),
+		    parentName = "";
+		if (slashPos>0) {
+			// determine name of parent folder
+			let target = QuickFolders.Model.getMsgFolderFromUri(URI);
+			parentName = target.parent.name;
+		}
     if (isQuickMove) { 
-      QuickFolders.quickMove.execute(URI); // folder.uri
+      QuickFolders.quickMove.execute(URI, parentName); // folder.uri
       return;
     } /**************  quickMove End  **************/
-    else
+    else {
       isSelected = QuickFolders_MySelectFolder(URI, true);
+			QuickFolders.quickMove.rememberLastFolder(URI, parentName);
+		}
 		if (isSelected) {
 			// success: collapses the search box! 
       this.findFolder(false);
@@ -4922,10 +4938,11 @@ QuickFolders.Interface = {
 	findFolder: function findFolder(show, actionType) {
     let util = QuickFolders.Util,
         QI = QuickFolders.Interface,
+				prefs = QuickFolders.Preferences,
         QuickMove = QuickFolders.quickMove;
     util.logDebugOptional("interface.findFolder,quickMove", "findFolder(" + show + ", " + actionType + ")");
 		try {
-			let ff = util.$("QuickFolders-FindFolder");
+			let ff = QI.FindFolderBox;
 			ff.collapsed = !show;
 			if (show) {
 				if (actionType) {
@@ -4938,6 +4955,11 @@ QuickFolders.Interface = {
 				}
         QI.updateFindBoxMenus(show);
         
+				let autofill = (ff.value == "") && util.hasPremiumLicense(false) && prefs.getBoolPref('quickMove.autoFill');
+				if (autofill) {
+					ff.value = prefs.getStringPref('quickMove.lastFolderName'); // should [ESC] delete contents?
+					ff.select();
+				}
 				ff.focus();
 			}
 			else {
@@ -6524,19 +6546,20 @@ QuickFolders.Interface = {
   // make a special style visible to show that [Enter] will move the mails in the list (and not just jump to the folder)
   toggleMoveModeSearchBox: function toggleMoveModeSearchBox(toggle) {
     QuickFolders.Util.logDebug('toggleMoveModeSearchBox(' + toggle + ')');
-    let searchBox = QuickFolders.Util.$('QuickFolders-FindFolder');
+    let searchBox = QuickFolders.Interface.FindFolderBox;
     searchBox.className = toggle ? "quickMove" : "";
   } ,
   
   quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
-	  let searchBox = document.getElementById('QuickFolders-FindFolder');
+		const QI = QuickFolders.Interface;
+	  let searchBox = QI.FindFolderBox;
     if (searchBox && !searchBox.collapsed && evt.button==0)  // hide only on left click
       QuickFolders.quickMove.hideSearch(); // hide search box if shown
     else {
       if (QuickFolders.quickMove.hasMails)
-        QuickFolders.Interface.showPopup(el,'QuickFolders-quickMoveMenu');
+        QI.showPopup(el,'QuickFolders-quickMoveMenu');
       else
-        QuickFolders.Interface.findFolder(true,'quickJump'); // show jump to folder box
+        QI.findFolder(true,'quickJump'); // show jump to folder box
     }
   },
   

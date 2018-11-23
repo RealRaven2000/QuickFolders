@@ -864,7 +864,7 @@ QuickFolders.bookmarks = {
   Postbox_writeFile: function Pb_writeFile(bookmarks) {
     const Ci = Components.interfaces,
           Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;;
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
     
     let dirService = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties),
         file = dirService.get("ProfD", NSIFILE),

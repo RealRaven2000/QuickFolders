@@ -38,8 +38,24 @@ QuickFolders.quickMove = {
     }
   },
   
+	
+	rememberLastFolder: function rememberLastFolder(URIorFolder, parentName) {
+		const prefs = QuickFolders.Preferences;
+		let fld;
+		if (URIorFolder.name) {
+			fld = URIorFolder;
+		}
+		else {
+			fld = QuickFolders.Model.getMsgFolderFromUri(URIorFolder);
+		}
+		prefs.setStringPref("quickMove.lastFolderName", 
+		  (parentName) ?  parentName + "/" + fld.name : fld.name);
+	},
+	
   // move or copy mails (or both at the same time!)
-  execute: function execute(targetFolderUri) {
+	// parentName = optional parameter for remembering for autofill - 
+	// only pass this when search was done in the format parent/folder
+  execute: function execute(targetFolderUri, parentName) {
     function showFeedback(actionCount, messageIdList, isCopy) {
       // show notification
       if (!actionCount) 
@@ -99,12 +115,16 @@ QuickFolders.quickMove = {
       showFeedback(actionCount, messageIdList, isCopy);  // .bind(QuickFolders.quickMove)
     }
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
-    let util = QuickFolders.Util,
-        actionCount,
+		const util = QuickFolders.Util,
+		      QI = QuickFolders.Interface,
+		      prefs = QuickFolders.Preferences;
+    let actionCount,
         fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
-        tabMode = QuickFolders.Interface.CurrentTabMode,    
+        tabMode = QI.CurrentTabMode,    
         tabmail = document.getElementById("tabmail"),
-        currentTab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+        currentTab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+				
+		this.rememberLastFolder(fld);
         
     let hasMove = (this.IsCopy.indexOf(false)>=0); // are any message moved, close in case this is a single message tab
     if (tabMode == 'message' && !hasMove) {
@@ -133,7 +153,7 @@ QuickFolders.quickMove = {
     
     this.resetList();
     this.update();
-    QuickFolders.Interface.hideFindPopup();
+    QI.hideFindPopup();
 		util.touch(fld); // update MRUTime
     util.logDebugOptional('quickMove', 'After hideFindPopup');
   },

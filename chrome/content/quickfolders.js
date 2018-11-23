@@ -428,13 +428,24 @@ END LICENSE BLOCK */
 		## [Bug 26575] Thunderbird 60: QF context menus broken.
 		## Removed palette color names for stability
 	
-  4.11.1 - WIP
+  4.11.1 QuickFolders Pro - 29/10/2018
 	  ## [Bug 26592] 	Recent Folder items not working in Thunderbird 52 
-		## [Bug 26590] 	Broken context menu command/s (Empty Junk...) 
+		## [Bug 26590] 	Broken context menu command/s (Empty Junk...)
+
+  4.12 QuickFolders Pro - WIP
+		## [Bug 26602] PREMIUM FUNCTION: quickMove - prefill last folder option
+	  ## Folder Tree Icons not shown in Thunderbird 52.9.1
+		## [Bug 26600] Newly created folders should show up in Recent folders.
+		## SeaMonkey: Added Repair Tree icons command to tools menu, changeed position of Current Folder Bar
+		
+		
 	
 	Known Issues
 	============
-	
+		## in some themes / languages the icons on the advanced options tab may appear stretched vertically
+		   styling max-height for #mailCommandsCustomize .checkbox-icon will also negativeely affect the
+			 height for the attached .checkbox-label causing vertical overflows
+	  ## changing palette of uncolored folder doesn't update font color (test with TT deepdark)
     ## [Bug 26559] Drag Menu Item to toolbar not creating new QF tab  (Phoenity)
     ## [Bug 26560] Drag Current folder to toolbar not creating new QF tab  (Phoenity)
 		## currently you can only drag single emails to a file using the envelope icon in Current Folder Toolbar.

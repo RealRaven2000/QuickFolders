@@ -18,7 +18,7 @@
 
 	<vbox id="messagepanebox">
 		<hbox id="QuickFolders-PreviewToolbarPanel" 
-          insertafter="msgHeaderView">
+          position="1">
 			<spacer flex="5" id="QF-CurrentLeftSpacer"/>
 			<toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
 				<toolbarbutton id="QuickFolders-CurrentMail"

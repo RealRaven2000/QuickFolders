@@ -253,6 +253,14 @@
 				          class="cmd menuitem-iconic"
 				          tagName="qfRebuild"
 				          />
+				<!-- obsolete
+				<menuitem id="QuickFolders-ToolbarPopup-repair"
+				          label="&qf.menuitem.quickfolders.repairTreeIcons;"
+				          oncommand="QuickFolders.Interface.repairTreeIcons();" 
+				          class="cmd menuitem-iconic"
+				          tagName="qfRepairTreeIcons"
+				          />		
+           -->									
 				<menuitem id="QuickFolders-ToolbarPopup-tidy"
 				          label="&qf.menuitem.quickfolders.deleteDeadTabs;"
 				          accesskey="&qf.menuitem.quickfolders.deleteDeadTabsAccess;"

@@ -708,7 +708,7 @@ QuickFolders.Interface = {
 		let sDebug = 'updateFolders(rebuildCategories: ' + rebuildCategories + ', minimal: ' + minimalUpdate +')',
 		    toolbar = this.Toolbar,
 		    theme = prefs.CurrentTheme;
-		toolbar.className = theme.cssToolbarClassName + " chromeclass-toolbar";
+		toolbar.className = theme.cssToolbarClassName; //  + " chromeclass-toolbar" [Bug 26612]
 		
 		this.FoldersBox.className = "folderBarContainer " + theme.cssToolbarClassName; // [Bug 26575]
 

@@ -63,7 +63,7 @@
 		insertafter="MailToolbarPalette"
 		id="QuickFolders-Toolbar"
 		toolbarname="QuickFolders Toolbar"
-		class="toolbar-primary chromeclass-toolbar"
+		class="toolbar-primary"
 		ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver);"
 		ondrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver);"
 		ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver);"

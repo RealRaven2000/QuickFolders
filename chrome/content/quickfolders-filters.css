@@ -13,7 +13,7 @@ menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon {
 	-moz-image-region: rect(16px, 16px, 32px, 0px)  !important; 
 }
 
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive {
+#QuickFolders-Category-Box[mode="filter"] toolbarbutton#QuickFolders-filterActive {
 	background-color: transparent !important;
 	padding: 0px 2px;
 	margin: 0;

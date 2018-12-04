@@ -432,13 +432,23 @@ END LICENSE BLOCK */
 	  ## [Bug 26592] 	Recent Folder items not working in Thunderbird 52 
 		## [Bug 26590] 	Broken context menu command/s (Empty Junk...)
 
-  4.12 QuickFolders Pro - WIP
+  4.12 QuickFolders Pro - 23/11/2018
 		## [Bug 26602] PREMIUM FUNCTION: quickMove - prefill last folder option
 	  ## Folder Tree Icons not shown in Thunderbird 52.9.1
 		## [Bug 26600] Newly created folders should show up in Recent folders.
 		## SeaMonkey: Added Repair Tree icons command to tools menu, changeed position of Current Folder Bar
 		
+	4.12.1	
+	  ## [Bug 26612] Tb 60.3.2 only displays first row of tabs
+		## Russian Translation complete - thanks to Anton Pinsky and Solokot @ Babelzilla
 		
+  4.13 QuickFolders Pro - WIP
+		
+		## To Do: without quickFilters installed - the filter mode icon is not 
+		          working with full themes (TT deepdark) and neither is filter assistant triggered when a mail
+							is dropped in the folder tree.
+							
+		## To Do Next: [Bug 26616] folder tree icons of folders without tab don't persist between sessions
 	
 	Known Issues
 	============

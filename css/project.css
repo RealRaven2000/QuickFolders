@@ -282,7 +282,7 @@ ul li ul li {
 	border-left-width: 2px;
 }
 
-#main-content-no-nav a[href]:hover:not(.project-navigation) {
+#main-content-no-nav a[href]:not(.project-navigation):not(.renewButton):hover {
 	margin-right: -0.15em;
 	margin-left: -0.15em;
 }

@@ -30,6 +30,7 @@
 	outline: 1600px solid rgba(0,0,0,0.4); /* dim background on hover */
 	transition: outline-color 1.5s ease !important;
 	opacity: 1 !important;
+	margin: 0.1em 1.5em !important;
 	border-radius: 0;
 }
 

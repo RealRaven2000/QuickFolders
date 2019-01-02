@@ -6,6 +6,34 @@
 	margin-left: 2em;
 }
 
+/* donate button - renewal */
+@keyframes quickfiltersPulse {
+	to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.12)};
+}
+
+#main-content-no-nav  a[href].renewButton {
+  animation: quickfiltersPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	background-color: rgb(7, 97, 48) !important;
+	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
+	box-shadow: 0 0 0 0px rgba(40, 40, 40, 0.0);
+	border: 1px solid #fff;
+	display: inline-block;
+	margin: 0.1em 1.5em;
+	max-height: 2em; /* slimmer donate button */
+	outline: 1px solid rgba(0,0,0,0.0);
+  padding: 0.3em 1em 1.5em 1em;
+	transition: outline-color 1.6s ease-out, outline-width 1.2s ease;
+}
+
+#main-content-no-nav a[href].renewButton:hover {
+	animation-play-state: paused;
+	outline: 1600px solid rgba(0,0,0,0.4); /* dim background on hover */
+	transition: outline-color 1.5s ease !important;
+	opacity: 1 !important;
+	border-radius: 0;
+}
+
+
 /* inline checkbox */
 .cb {
 	margin-right: 5px;

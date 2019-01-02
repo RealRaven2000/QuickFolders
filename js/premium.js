@@ -12,11 +12,18 @@
 		return(null);
 	}
 
-	function removeClassItems(name) {
+	function removeClassItems(name, replaceItem) {
 		var dbuttons = document.getElementsByClassName(name);
 		for (var i=dbuttons.length-1; i>=0; i--) {
-			// dbuttons[i].style.display='none';
-			dbuttons[i].parentNode.removeChild(dbuttons[i]);
+			if (replaceItem) {
+				var renewButton = document.createElement("a");
+				renewButton.setAttribute("href", "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew&referrer=quickfolders-site");
+				renewButton.className = "renewButton";
+				renewButton.innerHTML = "Renew License";
+				dbuttons[i].parentNode.replaceWith(renewButton); // replace anchor tag (containing donate button)
+			}
+			else
+				dbuttons[i].parentNode.removeChild(dbuttons[i]);
 		}
 	}
 	
@@ -43,7 +50,7 @@
 				  removeClassItems('QuickFoldersProRenew');
 					break;
 				case 'proRenew':
-					removeClassItems('donateButton');
+					removeClassItems('donateButton', true);
 					removeClassItems('QuickFoldersFreeUser');
 				  break;
 				default:

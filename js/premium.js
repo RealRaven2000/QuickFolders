@@ -20,7 +20,7 @@
 				renewButton.setAttribute("href", "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew&referrer=quickfolders-site");
 				renewButton.className = "renewButton";
 				renewButton.innerHTML = "Renew License";
-				dbuttons[i].parentNode.replaceWith(renewButton); // replace anchor tag (containing donate button)
+				dbuttons[i].replaceWith(renewButton); // replace anchor tag (containing donate button)
 			}
 			else
 				dbuttons[i].parentNode.removeChild(dbuttons[i]);

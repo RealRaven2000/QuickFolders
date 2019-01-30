@@ -93,7 +93,7 @@
 <!ENTITY qf.label.initdelay "[ms] di ritardo iniziale {1000 è lo standard}:">
 <!ENTITY qf.copyfolders "Copia schede">
 <!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
-<!ENTITY qf.copyfolders.tooltip "Copia negli appunti la configurazione delle schede di QuickFolders">
+<!ENTITY qf.copyfolders.tooltip "Copia la configurazione delle schede di QuickFolders negli appunti">
 <!ENTITY qf.pastefolders.tooltip "Cancella tutte le schede di QF e recupera la nuova configurazione dagli Appunti">
 <!ENTITY qf.label.appearance "Aspetto">
 <!ENTITY qf.label.themes "Temi:">
@@ -144,6 +144,8 @@
 <!ENTITY qf.description.rightClickOptions "Fare clic col pulsante destro del mouse in un'area vuota per aprire il menu Opzioni il che consente di scegliere lo stile nativo (più piccolo) o quello flat (più nitido; supporta l'indicatore di trascinamento).">
 <!ENTITY qf.description.tipMsg "Suggerimento: qualora si abbia un elevato numero di cartelle, si può provare l'estensione Nostalgy per disporre di un'organizzazione dei messaggi guidata da tastiera.">
 <!ENTITY qf.description.experimentalItems "I seguenti elementi sono sperimentali. È auspicabile che funzionino nella prossima versione!">
+<!ENTITY qf.youtube.description "Per trovare dei video dettagliati riguardanti le estensioni di Thunderbird e come usare QuickFolders visitate il mio canale YouTube &quot;Thunderbird Daily&quot;">
+<!ENTITY qf.youtube.link "Guarda i video su QuickFolders…">
 <!ENTITY qf.description.donate "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo">
 <!ENTITY qf.label.donateLink "Visita la pagina delle donazioni…">
 <!ENTITY qf.description.bugzilla "Usa Bugzilla per richiedere l'aggiunta di nuove caratteristiche e per segnalare bug">

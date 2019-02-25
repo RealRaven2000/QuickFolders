@@ -82,6 +82,7 @@ QuickFolders.Interface = {
 	} ,
 	
 	get PaletteStyleSheet() {
+		const util = QuickFolders.Util;
 	  let isOptionsScreen = (document.location.href.toString() == 'chrome://quickfolders/content/options.xul');
 	
 		if (isOptionsScreen) {
@@ -93,17 +94,18 @@ QuickFolders.Interface = {
 				return this._paletteStyleSheet;
 		}
 		let ss = 
-			QuickFolders.Util.isCSSGradients ?
+			util.isCSSGradients ?
 			'skin/quickfolders-palettes.css' : 
 			'skin/quickfolders-palettes-legacy.css';
+			
 		this._paletteStyleSheet = 'chrome://quickfolders/' + ss;
 		if (!this._paletteStyleSheetOfOptions)  {
-      if (QuickFolders.Util.Application != 'Postbox')
-        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
-      else
+      if (util.Application == 'Postbox')
         this._paletteStyleSheetOfOptions = 'chrome://quickfolders/skin/quickfolders-palettes-legacy.css';
+      else
+        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
     }  
-      
+		util.logDebugOptional('css,css.Detail',"My Palette Stylesheet = " + ss);
 		
 		// now let's return the correct thing.
 		if (isOptionsScreen) {
@@ -340,9 +342,11 @@ QuickFolders.Interface = {
         // folders for every account.
 		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
 		// Postbox only:
-		for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-		  addIfRecent(acct.incomingServer.rootFolder);
-		  checkSubFolders(acct.incomingServer.rootFolder);
+		if (util.PlatformVersion<13) {
+			for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+				addIfRecent(acct.incomingServer.rootFolder);
+				checkSubFolders(acct.incomingServer.rootFolder);
+			}
 		}
 
 		recentFolders.sort(sorter);
@@ -1091,6 +1095,45 @@ QuickFolders.Interface = {
 		Services.prompt.alert(null,"QuickFolders",sLabelFound + ' ' + countOrphans + '\n' + sLabelDeleted + ' ' + countDeleted);
 	} ,
 
+	
+	testTreeIcons: function testTreeIcons() {
+    const util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
+					Cc = Components.classes,
+          Ci = Components.interfaces;
+		util.logDebug("testTreeIcons()...");
+		try {
+			const winType = "global:console";
+			prefs.setBoolPref("debug.folderTree.icons",true);
+			// Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).clear();
+			toOpenWindowByType(winType, "chrome://console2/content/console2.xul");
+			let win = Services.wm.getMostRecentWindow(winType);
+			// win.clearConsole();
+		} 
+		catch(e) {util.logException("testTreeIcons - ", e);}
+		
+		setTimeout(function() {
+			const separator = "==============================\n";
+			let f = 0, affected = 0;
+			util.logDebug(separator + "loading Dictionary...");
+			//let allFolders = util.allFoldersIterator(false);
+			util.logDebug(separator + "Iterating all folders...");
+			for (let folder of util.allFoldersIterator(false)) {
+				//let folder = allFolders[i];
+				let folderIcon = folder.getStringProperty("folderIcon"),
+						iconURL =folder.getStringProperty("iconURL");
+				if (folderIcon || iconURL) {
+					affected++;
+					util.logDebug(folder.prettyName + "\nfolderIcon: " + folderIcon + "\niconURL: " + iconURL);
+				}
+				f++;
+				// folder.setForcePropertyEmpty("folderIcon", false); // remove property
+			}			
+			util.logDebug(separator + "...testTreeIcons() ENDS\nIterated " + f + " folders with " + affected + " having a folderIcon property.\n" + separator);
+		},200);
+
+		
+	}, 
 	// workaround for [Bug 26566]
   repairTreeIcons: function repairTreeIcons(silent) {
     // repair all tree icons based on Tab Icons
@@ -1712,6 +1755,18 @@ QuickFolders.Interface = {
 				return;
 			}
 			
+			// debug menu items (only visible if SHIFT held during click.)
+			if (popupId=="QuickFolders-ToolbarPopup" && evt) {
+				// find all menu items with class "dbgMenu" and uncollapse them
+				let nodes = p.childNodes;
+				for (let i=0; i<nodes.length; i++) {
+					if(nodes[i].classList.contains('dbgMenu')) {
+						nodes[i].collapsed=!evt.shiftKey;
+					}
+				}
+			}
+			
+			
 			util.logDebugOptional("popupmenus", "Open popup menu: " + p.tagName + "\nid: " + p.id);
 			// make it easy to find calling button / label / target element
 			p.targetNode = button; 
@@ -2220,9 +2275,16 @@ QuickFolders.Interface = {
 			// [Bug 26190] - already selected = drill down on second click
 			// [Bug 26389] - Single Mail Tab should always open the folder!
 			if (button.folder === util.CurrentFolder & QI.CurrentTabMode != 'message') {
-				let popupId = button.getAttribute('popupId');
-				// show only subfolders, without commands!
-				QI.showPopup(button, popupId, evt, true);
+				if (evt.type=="click" && evt.button==2) { // right click
+					let popupId = button.getAttribute('popupId');
+					if (popupId) { // linux avoid this getting triggered twice
+					  let activePopup = document.getElementById(popupId);
+					 
+						if (document.getElementById(popupId))
+						// show only subfolders, without commands!
+						QI.showPopup(button, popupId, evt, true);
+					}
+				}
 			}
 			else {
 				// rule out right clicks - we do not want to change folder for these
@@ -3404,7 +3466,7 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('tag', 'qfIconAdd');
 			menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Customize Icon…'));
 			if (QI.isOncommandAttributes)
-				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this)');
+				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
 				function(event) { 
 					if (!QI.checkIsDuplicateEvent({tag:'qfIconAdd'}))
@@ -3415,7 +3477,7 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('tag', 'qfIconRemove');
 			menuitem.setAttribute('label',this.getUIstring('qfRemoveIcon','Remove Customized Icon…'));
 			if (QI.isOncommandAttributes)
-				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveIcon(this)');
+				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
 				function(event) { 
 					if (!QI.checkIsDuplicateEvent({tag:'qfIconRemove'}))
@@ -3543,6 +3605,8 @@ QuickFolders.Interface = {
 			if (lbl) msg += "\n label=" + lbl;
 			if (tag) msg += "\n tag=" + tag;
 			util.logDebug(msg);
+			if (menuitem.tagName=="menupopup" && evt)
+				menuitem = evt.originalTarget;
 			// emergency code for Tb60
 			if (tag) {
 				if (QI.checkIsDuplicateEvent({tag:tag}))
@@ -3576,10 +3640,10 @@ QuickFolders.Interface = {
 						QI.onSeparatorToggle(menuitem);
 						break;
 					case "qfIconAdd":
-						QI.onSelectIcon(menuitem);
+						QI.onSelectIcon(menuitem,evt);
 					  break;
 					case "qfIconRemove":
-						QI.onRemoveIcon(menuitem);
+						QI.onRemoveIcon(menuitem,evt);
 					  break;
 					case "qfTabAdvanced":
 					  QI.onAdvancedProperties(evt, menuitem);
@@ -3941,8 +4005,8 @@ QuickFolders.Interface = {
 		return menuitem;
 	} ,
 	
-	// create menu items / elements anbd forcee inject XUL tgo deal with menu problems.
-	// use wildcard * for omitting classname (the exception)
+	// create menu items / elements anbd force inject XUL to deal with menu problems.
+	// @cl: [class] use wildcard * for omitting classname (the exception)
 	createIconicElement: function createIconicElement(tagName, cl) {
 		let el =  document.createElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
@@ -4644,7 +4708,7 @@ QuickFolders.Interface = {
 		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
     let maxParentLevel = searchString.length ? prefs.getIntPref('premium.findFolder.maxParentLevel') : 1; 
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
-    if (util.Application == 'Postbox') {
+    if (util.PlatformVersion<13) {
       let AF = util.allFoldersIterator(isFiling);
       for (let fi=0; fi<AF.length; fi++) {
         let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
@@ -4653,18 +4717,12 @@ QuickFolders.Interface = {
       }
     }
     else {
-			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
-/*
-      for (let folder in util.allFoldersIterator(isFiling)) {
-        if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
-        addMatchingFolder(matches, folder);
-      }
-			*/			
+			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);		
 		}
 			
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-			if (util.Application == 'Postbox') {
+			if (util.PlatformVersion<13) {  // util.Application == 'Postbox'
 				let AF = util.allFoldersIterator(isFiling);
 				for (let fi=0; fi<AF.length; fi++) {
 					let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
@@ -4672,7 +4730,7 @@ QuickFolders.Interface = {
 				}
 			}
 			else
-				for (let folder in util.allFoldersIterator(isFiling)) {
+				for (let folder of util.allFoldersIterator(isFiling)) {
 					addIfMatch(folder, parentString, parents);
 				}
 		}

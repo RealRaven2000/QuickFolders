@@ -32,6 +32,7 @@ menuitem.cmd[tagName="qfRegister"].expired .menu-iconic-icon,
 
 @keyframes qfDlgPulse {	to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.12);}}
 
+button.dialog-button[dlgtype=extra2],
 #btnLicense.expired,
 #btnLicense.register {
   animation: qfDlgPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
@@ -97,6 +98,11 @@ tab#QuickFolders-General  {
 	list-style-image : url('chrome://quickfolders/skin/ico/tb-anchor.png') !important;
 	text-decoration: underline;
 }	
+
+menu.dbgMenu menuitem:hover,
+menu#QuickFolders-debug, menu.dbgMenu {
+	list-style-image : url('chrome://quickfolders/skin/ico/fugue-bug.png') !important;
+}
 
 
 menuitem.cmd[tagName="qfFindFolder"] { list-style-image : url('chrome://quickfolders/skin/ico/folder-search.png') !important; }

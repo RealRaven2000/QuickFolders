@@ -438,20 +438,24 @@ END LICENSE BLOCK */
 		## [Bug 26600] Newly created folders should show up in Recent folders.
 		## SeaMonkey: Added Repair Tree icons command to tools menu, changeed position of Current Folder Bar
 		
-	4.12.1	
+	4.12.1	QuickFolders Pro - 03/12/2018
 	  ## [Bug 26612] Tb 60.3.2 only displays first row of tabs
 		## Russian Translation complete - thanks to Anton Pinsky and Solokot @ Babelzilla
 		
-  4.13 QuickFolders Pro - WIP
-		
-		## To Do: without quickFilters installed - the filter mode icon is not 
-		          working with full themes (TT deepdark) and neither is filter assistant triggered when a mail
-							is dropped in the folder tree.
-							
-		## To Do Next: [Bug 26616] folder tree icons of folders without tab don't persist between sessions
+  4.13.2 QuickFolders Pro - 25/02/2019
+		## [Bug 26616] folder tree icons of folders without tab don't persist between sessions
+		## removed code that automatically showed donation tab on update. Repurposed donate buttons for selling licenses.
+		## [Bug 26644] High CPU usage caused by "Renew License" button.
+		## fixed gradients to show correctly in Interlink Mail Client.
+		## Added logic for extending license before expiry
+		## Added platform specific style loading routine
+		## Improved license parsing to make resilient against bad line break conversions
 	
 	Known Issues
 	============
+		## To Do: without quickFilters installed - the filter mode icon is not 
+		          working with full themes (TT deepdark) and neither is filter assistant triggered when a mail
+							is dropped in the folder tree.
 		## in some themes / languages the icons on the advanced options tab may appear stretched vertically
 		   styling max-height for #mailCommandsCustomize .checkbox-icon will also negativeely affect the
 			 height for the attached .checkbox-label causing vertical overflows
@@ -653,6 +657,13 @@ var QuickFolders = {
 		if (mainWindow) {
 			QuickFolders.doc = mainWindow.document;
 			QuickFolders.win = mainWindow;
+			// Fix position of QuickFolders toolbar underneath the tabs-toolbar
+			if (util.ApplicationName == 'Interlink') {
+				let toolbar = QuickFolders.doc.getElementById("QuickFolders-Toolbar"),
+				    navBox = QuickFolders.doc.getElementById("navigation-toolbox");
+				toolbar.parentNode.removeChild(toolbar);
+				navBox.appendChild(toolbar);
+			}
 		}
 		else {
 			QuickFolders.doc = document;
@@ -1495,35 +1506,25 @@ var QuickFolders = {
 					return;
 				}
 				let button = evt.target;
+				
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
-        if (button.id && button.id =="QuickFolders-quickMove") {
-          util.logDebug("DragEnter - quickMove button");
-          if (dragSession.isDataFlavorSupported("text/x-moz-message")) {
-            dragSession.canDrop=true;
-            removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-          }
-          else {
-            dragSession.canDrop=false;
-          }
+        if (button.id && button.id =="QuickFolders-quickMove" || button.id =="QuickFolders-readingList") {
+					if (prefs.isDebugOption('dnd')) debugger;
+					dragSession.canDrop = false;
+					if (dragSession.dataTransfer.items.length) {
+						let firstItem = dragSession.dataTransfer.items[0];
+						if (firstItem.type == "text/x-moz-message") {
+							dragSession.canDrop=true;
+							removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
+						}
+					}
           if (prefs.isShowRecentTab)
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
           return;
         }
-        // Reading List
-        if (button.id && button.id =="QuickFolders-readingList") {
-          util.logDebug("DragEnter - reading list button");
-          if (dragSession.isDataFlavorSupported("text/x-moz-message")) {
-            dragSession.canDrop=true;
-            removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-          }
-          else {
-            dragSession.canDrop=false;
-          }
-          return;
-        }
 
-				if(button.tagName === "toolbarbutton") {
+				if (button.tagName === "toolbarbutton") {
           // new quickMove
 					// highlight drop target
 					if (dragSession.numDropItems==1) {
@@ -1686,6 +1687,8 @@ var QuickFolders = {
               }
 							else
 								p.showPopup(button, -1,-1,"context","bottomleft","topleft"); // deprecated
+							
+							util.logDebugOptional("dnd", "set global popup id = " + popupId);
 							QuickFolders_globalHidePopupId = popupId;
 						}
 
@@ -1705,6 +1708,9 @@ var QuickFolders = {
 		// deal with old folder popups
 		onDragExit: function btnObs_onDragExit(event, dragSession) {
 			const util = QuickFolders.Util;
+			util.logDebugOptional("dnd", "buttonDragObserver.onDragExit\n" + 
+			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
+				"event.target=" + event.target || "[none]");
 			if (!dragSession.sourceNode) { 
 				util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)

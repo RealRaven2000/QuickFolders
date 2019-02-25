@@ -4,6 +4,7 @@
 /* version specific styling */
 @import url('chrome://quickfoldersLayout/content/quickfolders-mods.css');
 
+
 #QuickFolders-Toolbar toolbarbutton.popupButton {
 	background: transparent !important;
 	border-style: none !important;
@@ -327,8 +328,13 @@ menupopup.widerMenu menucaption {
 
 /** notifications **/
 @keyframes quickfoldersRenew {
-	to {box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.15);}
+	to {box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.20);}
 }
+
+@keyframes quickfoldersRenewBright {
+	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
+}
+
 
 #QuickFolders-Toolbar #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
@@ -339,6 +345,11 @@ menupopup.widerMenu menucaption {
 	margin: 0 4px 1px 7px;
 	padding: 2px 3px;
 }
+
+#QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
+	animation: quickfoldersRenewBright 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
 #QuickFolders-Toolbar #QuickFolders-title-label.expired:hover {
 	animation-play-state: paused;
 	opacity: 1;

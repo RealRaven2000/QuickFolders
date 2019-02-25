@@ -95,7 +95,7 @@
 										 class="popupButton"
 										 tooltiptext="&qf.tooltip.mainOptions;"
 										 context="QuickFolders-ToolbarPopup"
-										 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup');"/>
+										 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup',event);"/>
 						<toolbarbutton id="QuickFolders-filterActive"
 										 tooltiptext="&qf.tooltip.filters;"
 										 oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
@@ -197,6 +197,38 @@
 		
 		<popupset id="QuickFolders-MainPopupSet">
 			<menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
+			  <!-- debug submenu -->
+			  <menu class="menu-iconic dbgMenu"  
+							collapsed="true"
+							id="QuickFolders-debug" 
+				      label="Debug">
+					<menupopup class="dbgMenu">
+					
+						<menuitem id="QuickFolders-ToolbarPopup-dbg1"
+											label="Test Tree only Icons"
+											oncommand="QuickFolders.Interface.testTreeIcons();" 
+											class="menuitem-iconic"
+											/>
+											
+						<menuitem id="QuickFolders-ToolbarPopup-dbg2"
+											label="Load FolderTree Dictionary"
+											oncommand="QuickFolders.FolderTree.loadDictionary();" 
+											class="menuitem-iconic"
+											/>														
+					  <menuitem id="QuickFolders-ToolbarPopup-dbg3"
+						          label="Platform info - aboutHost()"
+											oncommand="QuickFolders.Util.aboutHost();"
+											class="menuitem-iconic"
+											/>
+					  <menuitem id="QuickFolders-ToolbarPopup-dbg4"
+						          label="Load Platform CSS"
+											oncommand="QuickFolders.Util.loadPlatformStylesheet();"
+											class="menuitem-iconic"
+											/>
+
+
+					</menupopup>
+				</menu>
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"

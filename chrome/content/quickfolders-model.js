@@ -174,25 +174,31 @@ QuickFolders.Model = {
   } ,
 
   setTabIcon: function setTabIcon(button, entry, iconURI, menuItem) {
+		const QI = QuickFolders.Interface;
     let fileSpec = '';
     if (iconURI) {
       let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
-      QuickFolders.Util.logDebug("Model.setTabIcon(" + entry.name + "," + fileURL.path + ")");
+			try {
+				QuickFolders.Util.logDebug("Model.setTabIcon(" + entry.name + "," + fileURL.asciiSpec + ")");
+			} catch(ex) {;}
       fileSpec = fileURL.asciiSpec;
     }
     
-    if (fileSpec)  {
-      entry.icon = fileSpec; 
-      if (button) 
-        QuickFolders.Interface.applyIcon(button, entry.icon);
-      if (menuItem)
-        menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon
-    }
-    else {
-      if (entry.icon) delete entry.icon;
-      if (button)
-        QuickFolders.Interface.applyIcon(button, '');
-    }
+		try { // [Bug 26616] - didn't store icons because menuItem.nextSibling was not set
+			if (fileSpec)  {
+				entry.icon = fileSpec; 
+				if (button) 
+					QI.applyIcon(button, entry.icon);
+				if (menuItem && menuItem.nextSibling)
+					menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon
+			}
+			else {
+				if (entry.icon) delete entry.icon;
+				if (button)
+					QI.applyIcon(button, '');
+			}
+		}
+		catch (ex) {;}
       
     // store the icon path
     QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);

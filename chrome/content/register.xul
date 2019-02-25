@@ -10,8 +10,8 @@
 	id="qf-register"
 	buttons="none"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	ondialogcancel="QuickFolders.Licenser.cancel();"
-	onload="QuickFolders.Licenser.load();"
+	ondialogcancel="var cancel=QuickFolders.Licenser.cancel.bind(QuickFolders.Licenser); cancel();"
+	onload="var load=QuickFolders.Licenser.load.bind(QuickFolders.Licenser); load();"
 >
 
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -63,7 +63,7 @@
 					<description class="para">&yearlyLicense.premiumFeatures;</description>
 					<label class="para link" 
 					onclick="QuickFolders.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
-					<description class="para">&yearlyLicense.usageTerm;</description>
+					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
 				</td>
 			</tr>	
 			<tr>	

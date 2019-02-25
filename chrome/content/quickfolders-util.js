@@ -69,8 +69,8 @@ var QuickFolders_TabURIopener = {
 QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
-	_isCSSShadow: -1,
-	HARDCODED_CURRENTVERSION : "4.12.1",
+	_isCSSShadow: true,
+	HARDCODED_CURRENTVERSION : "4.13.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -95,6 +95,7 @@ QuickFolders.Util = {
 	VersionProxyRunning: false,
 	mAppver: null,
 	mAppName: null,
+	mAppNameFull: '',
 	mHost: null,
 	mPlatformVer: null,
 	mExtensionVer: null,
@@ -158,6 +159,7 @@ QuickFolders.Util = {
 			const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
 			const SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
 			const POSTBOX_ID = "postbox@postbox-inc.com";
+			this.mAppNameFull = appInfo.name;
 			switch(appInfo.ID) {
 				case THUNDERBIRD_ID:
 					return this.mAppName='Thunderbird';
@@ -174,7 +176,14 @@ QuickFolders.Util = {
 		}
 		return this.mAppName;
 	},
-
+	
+	get ApplicationName() {
+		if (!this.mAppName) {
+			let dummy = this.Application;
+		}
+		return this.mAppNameFull;
+	} ,
+	
 	get HostSystem() {
 		if (null==this.mHost) {
 			let osString = Components.classes["@mozilla.org/xre/app-info;1"]
@@ -1319,8 +1328,7 @@ QuickFolders.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					// focus on tabmail ?
-					
+					info.browser.loadURI(URL);
 					return true;
 				}
 			}
@@ -1540,13 +1548,21 @@ QuickFolders.Util = {
 	
 	get isCSSGradients() {
 	  try {
+			const util = QuickFolders.Util;
 		  if (this._isCSSGradients !== -1)
 				return this._isCSSGradients;
 			this._isCSSGradients = false;
-			let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-												.getService(Components.interfaces.nsIXULAppInfo);		
-			if (appInfo && appInfo.platformVersion && parseFloat(appInfo.platformVersion)>=16.0) {
+			if (util.Application == 'Thunderbird') 
 				this._isCSSGradients = true;
+			else {
+				let appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);		
+				if (appInfo && (parseFloat(appInfo.platformVersion)>=16.0
+												||
+												appInfo.name == 'Interlink')
+				) {
+					this._isCSSGradients = true;
+				}
+				
 			}
 		}
 		catch(ex) {
@@ -1555,26 +1571,38 @@ QuickFolders.Util = {
 		return this._isCSSGradients;
 	},
 	
+	aboutHost: function aboutHost() {
+		const util = QuickFolders.Util;
+		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
+		   "PlatformVersion: " + util.PlatformVersion + "\nname: " + util.ApplicationName;
+		util.logToConsole(txt);
+		  
+	} ,
+	
 	get isCSSRadius() {
 	  if (this._isCSSRadius === -1) {
+			const util = QuickFolders.Util,
+			      application = util.Application,
+						appVer = util.ApplicationVersion;
 			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
 																	.getService(Components.interfaces.nsIVersionComparator);
 			this._isCSSRadius =																
-				((QuickFolders.Util.Application == 'Thunderbird') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "4.0") >= 0))
+				((application == 'Thunderbird') && (versionComparator.compare(appVer, "4.0") >= 0))
 				 ||
-				((QuickFolders.Util.Application == 'SeaMonkey') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "2.2") >= 0))
+				((application == 'SeaMonkey') && (versionComparator.compare(appVer, "2.2") >= 0))
 				 ||
-				((QuickFolders.Util.Application == 'Postbox') && (versionComparator.compare(QuickFolders.Util.ApplicationVersion, "3.0") >= 0));
+				((application == 'Postbox') && (versionComparator.compare(appVer, "3.0") >= 0));
 		}
 		return this._isCSSRadius;
 	},
 	
 	get isCSSShadow() {
+		/*
 		if (this._isCSSShadow === -1) {
 			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
                               .getService(Components.interfaces.nsIVersionComparator);
 			this._isCSSShadow = (versionComparator.compare(QuickFolders.Util.PlatformVersion, "2.0") >= 0);
-		}
+		}*/
 		return this._isCSSShadow;
 	} ,
 	
@@ -1719,7 +1747,25 @@ QuickFolders.Util = {
 	    dump("GetSelectedMessages ex = " + ex + "\n");
 	    return null;
 	  }
-	} 
+	} ,
+	
+	loadPlatformStylesheet: function loadPlatformStylesheet() {
+		const QI = QuickFolders.Interface,
+		      util = QuickFolders.Util;
+		util.logDebug("Loading platform styles for " + util.HostSystem + "...");
+		debugger;
+		switch (util.HostSystem) {
+			case "linux":
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
+				break;
+			case "winnt":
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
+				break;
+			case "darwin":
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
+				break;
+		}
+	}
   
 };  // QuickFolders.Util
 
@@ -1779,8 +1825,7 @@ QuickFolders.Util.FirstRun = {
 		}
 		finally {
 			util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
-      let suppressDonationScreen = false,
-          suppressVersionScreen = false,
+      let suppressVersionScreen = false,
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
 			    pureVersion = util.VersionSanitized;
 			util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
@@ -1825,9 +1870,6 @@ QuickFolders.Util.FirstRun = {
 				if (pureVersion.indexOf('4.8.3') == 0 && prev.indexOf("4.8") == 0)
           suppressVersionScreen = true;
 				
-				/** version upgrades   **/
-				if (pureVersion.indexOf('4.11.') == 0 && prev.indexOf("4.11") == 0)
-          suppressDonationScreen = true;
 				
 				// SILENT UPDATES
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
@@ -1838,11 +1880,9 @@ QuickFolders.Util.FirstRun = {
 					  )
         {
 					suppressVersionScreen = true;
-					suppressDonationScreen = true;
 				}
         if (isPremiumLicense) {
-					util.logDebugOptional ("firstrun","has premium license - suppress donation screen");
-          suppressDonationScreen = true;
+					util.logDebugOptional ("firstrun","has premium license.");
 					if ((pureVersion.indexOf('4.8.1')==0  || pureVersion.indexOf('4.8.2')==0 )
 					    && prev.indexOf("4.8") == 0) {
 						suppressVersionScreen = true;
@@ -1861,18 +1901,7 @@ QuickFolders.Util.FirstRun = {
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
 
-						// DONATION PAGE
-						// display donation page - disable by right-clicking label above version jump panel
-						if (suppressDonationScreen) { ; }
-						else {
-							if ((prefs.getBoolPrefSilent("extensions.quickfolders.donateNoMore"))) {
-								util.logDebugOptional ("firstrun","Jump to donations page disabled by user");
-							}
-							else {
-								util.logDebugOptional ("firstrun","setTimeout for showing donation link");
-								window.setTimeout(function() {util.openURL(null, "http://quickfolders.org/donate.html");}, 2000);
-							}
-						}
+						// DONATION PAGE - REMOVED
 
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
@@ -1899,6 +1928,8 @@ QuickFolders.Util.FirstRun = {
 
 
 				}
+				
+				util.loadPlatformStylesheet();
 			}
 			util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally

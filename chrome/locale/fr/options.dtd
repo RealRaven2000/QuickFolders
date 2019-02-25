@@ -144,6 +144,8 @@
 <!ENTITY qf.description.rightClickOptions "Cliquez droit sur un espace vide pour ouvrir le menu des options. Dans les options, vous pouvez choisir le style natif (plus petit sous forme de bouton) ou le style « onglet » (plus clair et permettant l'affichage des indicateurs de clic-glisser).">
 <!ENTITY qf.description.tipMsg "Astuce : si vous avez beaucoup de dossiers, essayez l'extension Nostalgy pour organiser vos messages à partir du clavier.">
 <!ENTITY qf.description.experimentalItems "Les éléments suivants sont en phase expérimentale, ils fonctionneront, espérons-le, dans la prochaine version !!!">
+<!ENTITY qf.youtube.description "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily.">
+<!ENTITY qf.youtube.link "Watch Videos about QuickFolders…">
 <!ENTITY qf.description.donate "Si vous aimez QuickFolders autant que nous et que vous souhaitez soutenir son développement, vous pouvez faire un don pour faire évoluer QuickFolders.">
 <!ENTITY qf.label.donateLink "Se rendre à la page de donation…">
 <!ENTITY qf.description.bugzilla "Veuillez utiliser Bugzilla pour toute demande de fonctionnalité et de signalement de bogues officiels">
@@ -172,6 +174,10 @@
 <!ENTITY qf.checkbox.quickMove.tip "Raccourci pour glisser les courriels vers le bouton quickMove pour dépose express dans tout dossier via la saisie d'un nom.">
 <!ENTITY qf.checkbox.quickCopy "Copie express - copier le courriel vers un dossier avec le raccourci : Maj +">
 <!ENTITY qf.checkbox.quickCopy.tip "Raccourci pour déplacer les messages vers le bouton de copie express pour une copie rapide vers tout dossier via le nom de l'élément.">
+<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Format d'affichage :">
 <!ENTITY qf.pathFormat.folderName "Nom de dossier">
 <!ENTITY qf.pathFormat.folderAndAccount "Nom de dossier - compte courrier">

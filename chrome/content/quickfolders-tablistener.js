@@ -7,7 +7,7 @@
 
   END LICENSE BLOCK */
 
-///// tab listener watches tabmail
+///// tab listener watches tabmail (mail tabs)
 QuickFolders.TabListener = {
   select: function(evt){
     try {
@@ -23,7 +23,18 @@ QuickFolders.TabListener = {
 				if (!info)
 					return;
         let tabMode = util.getTabMode(info);
-        util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode);
+				
+				let isToggleToolbar = (util.ApplicationName == 'Interlink'),
+				    toolbarElement = isToggleToolbar ? document.getElementById("QuickFolders-Toolbar") : null;
+        util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
+				
+				if (isToggleToolbar) {
+					let isCollapsed = 
+						!(tabMode == 'message' || tabMode == 'folder' || tabMode == '3pane' || tabMode == 'glodaList');
+					util.logDebugOptional("listeners.tabmail", "Setting Toolbar collapsed to " + isCollapsed);
+					toolbarElement.collapsed = isCollapsed;
+				}
+				
         if (tabMode == 'message') {
           // Tb / Pb
           let msg = null, fld = null;

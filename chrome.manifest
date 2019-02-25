@@ -25,9 +25,8 @@ locale quickfolders zh-CHT chrome/locale/zh/
 locale quickfolders zh-TW  chrome/locale/zh/
 
 #platforms specific content - allow additional platforms specific rules
-#content quickfolders-pl    content/   platform
+#skin    quickfolders-pl    classic/1.0  chrome/skin/
 skin    quickfolders       classic/1.0  chrome/skin/
-skin    quickfolders-pl    classic/1.0  chrome/skin/
 
 # shim-JS for platforms>11 - this section will avoid the pesky errors in Thunderbird about for..in being outdated
 # while also avoid Postbox crashing us for syntax when we use for..of
@@ -63,8 +62,8 @@ overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome:
 
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
+overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 
 #Postbox - we need to keep overlaying mailWindowOverlay at the moment or we loose the styling
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlayPostbox.xul application=postbox@postbox-inc.com
@@ -82,6 +81,7 @@ style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/cont
 overlay chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion<59.0a1
 overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion>59.0a1
 
+
 ## modern styles - new monochrome icons for Thunderbird 60
 ## new flexible layout path quickfoldersLayout/content
 content quickfoldersLayout  chrome://quickfolders/content/layoutClassic/ appversion<60.0
@@ -91,16 +91,12 @@ style chrome://messenger/content/customizeToolbar.xul chrome://quickfoldersLayou
 
 
 style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets.css
-style chrome://mozapps/content/extensions/about.xul chrome://quickfolders-pl/skin/about.css
 style chrome://global/content/alerts/alert.xul      chrome://quickfolders/content/quickfolders-alert.css
 style chrome://quickfolders/content/register.xul    chrome://quickfolders/skin/quickfolders-widgets.css
 style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/skin/quickfolders-widgets.css
 style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/content/quickfolders-filters.css
 style chrome://messenger/content/messenger.xul      chrome://quickfolders/content/qf-foldertree.css
-# platforms overlay for linux / mac fixes
-style chrome://quickfolders/content/overlay.xul     chrome://quickfolders-pl/skin/style.css
-style chrome://quickfolders/content/options.xul     chrome://quickfolders-pl/skin/style.css
-
+ 
 
 #Postbox
 style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com

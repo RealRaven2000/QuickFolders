@@ -1,5 +1,6 @@
 <!ENTITY qf.prefwindow.quickfolders.options "QuickFolders - опције">
 <!ENTITY qf.label.quickfolders "QuickFolders">
+<!ENTITY qf.youtube.tbdaily "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders">
 <!ENTITY qf.options.versionnumber.tooltip "Притисните десни клик да бисте видели историјат верзија.">
 <!ENTITY qf.tab.general "Основно">
 <!ENTITY qf.tab.advanced "Напредно">
@@ -33,6 +34,12 @@
 <!ENTITY qf.label.mainToolbar "Елементи главне траке са алаткама">
 <!ENTITY qf.checkbox.showRecentTab "Прикажи јазичак са недавно отвореним фасциклама">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Притисните десни клик да бисте подесили">
+<!ENTITY qf.group.navigation "Message Navigation">
+<!ENTITY qf.label.goNextUnread "Go to next unread email:">
+<!ENTITY qf.label.goNextUnread.tip "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder.">
+<!ENTITY qf.goNextUnread.auto "Go to next folder without asking (recommended)">
+<!ENTITY qf.goNextUnread.prompt "Ask to go to next unread folder">
+<!ENTITY qf.goNextUnread.none "Do nothing if no unread email is left in folder">
 <!ENTITY qf.checkbox.showQuickMove "Дугме за брзо премештање">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Дугме за брзо премештање може бити коришћено за премештање порука у одабрану фасциклу. Можете премештати поруке из више фасцикли. Када у њему имате поруке, унесите назив одредишне фасцикле у поље за претрагу.">
 <!ENTITY qf.checkbox.tabMenuIcon "Икона менија траке са алаткама">
@@ -61,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Обриши смеће">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Превуци у нову подфасицклу">
 <!ENTITY qf.label.menus.quickFolder "QuickFolders - наредбе">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "Уметни раздвајач">
 <!ENTITY qf.label.menus.lineBreak "Уметни нови ред">
 <!ENTITY qf.label.menus.customIcon "Прилагоди икону">
@@ -76,13 +84,17 @@
 <!ENTITY qf.label.misc "Разно">
 <!ENTITY qf.checkbox.displaylabel "Прикажи натпис „QuickFolders” на траци са алаткама">
 <!ENTITY qf.checkbox.displaylabel.tooltip "притисните десни клик на бисте изменили текст овог натписа">
+<!ENTITY qf.checkbox.hideCategoryBox "Collapse Categories">
+<!ENTITY qf.checkbox.hideCategoryBox.tooltip "Minimizes the Categories menu to take up less space.">
 <!ENTITY qf.checkbox.enableTransitions "Омогући CSS прелазе">
 <!ENTITY qf.checkbox.enableTransitions.tooltip "Приказује благе прелазе између мењања разних боја језичака.">
 <!ENTITY qf.checkbox.debug "Начин приказивања грешака">
 <!ENTITY qf.checkbox.debug.tooltip "притисните десни клик на ово поље да бисте приступили напредним опцијама извештавања о грешкама">
 <!ENTITY qf.label.initdelay "[мс] почетна пауза {стандардно је 1000}:">
+<!ENTITY qf.copyfolders "Copy Tabs">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.copyfolders.tooltip "Копирање подешавања фасцикле у оставу">
+<!ENTITY qf.pastefolders.tooltip "Delete all QuickFolders and read new configuration from clipboard">
 <!ENTITY qf.label.appearance "Изглед">
 <!ENTITY qf.label.themes "Теме:">
 <!ENTITY qf.themes.flatTabs.label "Равни стил">
@@ -132,6 +144,8 @@
 <!ENTITY qf.description.rightClickOptions "Притисните десни клик на празан простор да бисте отворили мени са опцијама. У њима можете да одаберете подразумевани стил (мањи) или раван стил (прегледнији и подржава показивач приликом премештања).">
 <!ENTITY qf.description.tipMsg "Савет: ако имате много фасцикли, испробајте додатак Nostalgy за организовање порука помоћу тастатуре.">
 <!ENTITY qf.description.experimentalItems "Следеће ставке су пробне, па се надамо да ће бити уграђене у наредно издање!">
+<!ENTITY qf.youtube.description "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily.">
+<!ENTITY qf.youtube.link "Watch Videos about QuickFolders…">
 <!ENTITY qf.description.donate "Ако волите додатак QuickFolders као и ми, а желели бисте да подржите његов развој, можете да донирате нешто новца.">
 <!ENTITY qf.label.donateLink "Посети страницу за донирање">
 <!ENTITY qf.description.bugzilla "Користите Багзилу за све званичне захтеве и пријављивање грешака">
@@ -149,6 +163,7 @@
 <!ENTITY qf.label.licenseValid "Ваша лиценца важи до:">
 <!ENTITY qf.licenseValidation.passed "Хвала што сте регистровали QuickFolders про! Све могућности су сада откључане.">
 <!ENTITY qf.licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
+<!ENTITY qf.licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
 <!ENTITY qf.licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
 <!ENTITY qf.licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
@@ -159,6 +174,10 @@
 <!ENTITY qf.checkbox.quickMove.tip "Пречица за превлачење порука у дугме брзоПремештање служи за најбрже премештање у било коју фасциклу, помоћу уноса назива.">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - копирајте поруку у било коју фасциклу помоћу пречице ШИФТ +">
 <!ENTITY qf.checkbox.quickCopy.tip "Пречица за превлачење порука на quickCopy дугме, ради брзог копирања у било коју фасциклу.">
+<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Облик приказа:">
 <!ENTITY qf.pathFormat.folderName "Назив фасцикле">
 <!ENTITY qf.pathFormat.folderAndAccount "назив фасцикле - налог поште">
@@ -167,6 +186,8 @@
 <!ENTITY qf.pathFormat.URI "URI фасцикле">
 <!ENTITY qf.pathFormat.maxDepth "Највиша дубина путање:">
 <!ENTITY qf.pathFormat.tooltip "Највиши број порука које се приказују у путањи фасцикле.">
+<!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
+<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
 <!ENTITY qf.checkbox.readingList "Списак читања">
 <!ENTITY qf.checkbox.readingList.tooltip "Списак порука које би требало да прочитате касније. Превуците важне поруке на ово дугме.">
 <!ENTITY qf.label.donate "Донирај">

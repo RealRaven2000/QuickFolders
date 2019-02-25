@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Izprazni Koš">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Povleci v novo podmapo">
 <!ENTITY qf.label.menus.quickFolder "Ukazi QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "Vstavi ločilo">
 <!ENTITY qf.label.menus.lineBreak "Vstavi prelom vrstice">
 <!ENTITY qf.label.menus.customIcon "Prilagodi ikono">
@@ -143,6 +144,8 @@
 <!ENTITY qf.description.rightClickOptions "Desni klik na prazen prostor odpre meni možnosti. V možnostih lahko izberete izvirni slog (manjši) ali ploski slog (čistejši, podpira kazalnik vlečenja).">
 <!ENTITY qf.description.tipMsg "Nasvet: V primeru, da imate veliko količino map, poskusite razširitev Nostalgy za organiziranje sporočil s tipkovnico.">
 <!ENTITY qf.description.experimentalItems "Naslednji predmeti so preskusni, upajmo, da bodo delovali v naslednji izdaji!!">
+<!ENTITY qf.youtube.description "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily.">
+<!ENTITY qf.youtube.link "Watch Videos about QuickFolders…">
 <!ENTITY qf.description.donate "Če vam je QuickFolders všeč toliko, kot nam in bi radi podprli njegov razvoj, lahko prispevate nekaj denarja za nadaljnji razvoj razširitve.">
 <!ENTITY qf.label.donateLink "Obišči stran za prispevke ...">
 <!ENTITY qf.description.bugzilla "Uporabite Bugzillo za vse uradne zahteve po značilnostih in poročilih o hroščih">
@@ -171,6 +174,10 @@
 <!ENTITY qf.checkbox.quickMove.tip "Bližnjica za vlečenje pošte na gumb za hitri premik za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa.">
 <!ENTITY qf.checkbox.quickCopy "Hitro kopiranje - Kopirajte pošto v katerokoli mapo z bližnjico: SHIFT +">
 <!ENTITY qf.checkbox.quickCopy.tip "Bližnjica za vlečenje pošte na gumb za hitro kopiranje za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa.">
+<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Oblika prikaza:">
 <!ENTITY qf.pathFormat.folderName "Ime mape">
 <!ENTITY qf.pathFormat.folderAndAccount "Ime mape - poštni račun">

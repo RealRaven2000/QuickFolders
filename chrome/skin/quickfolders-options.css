@@ -1,4 +1,3 @@
-@import url('chrome://quickfolders-pl/skin/style.css');
 @import url('chrome://quickfolders/content/quickfolders-layout.css');
 @import url('chrome://quickfolders/skin/quickfolders-palettes.css'); 
 @import url('chrome://quickfolders/content/contribute.css');
@@ -387,11 +386,18 @@ hbox.quickhelp-dbg {
   /* min-height: 425px; */
 }
 
+#QuickFolders-Options-support {
+	background-image: url("chrome://quickfolders/skin/thunderbird-earlybird.png") !important;
+	background-repeat: no-repeat;
+}
+
 
 #supportgrid {
   margin-left: 1.5em;
   margin-right: 1.5em;
 }
+
+
 
 #supportgrid columns,
 #supportgrid rows {

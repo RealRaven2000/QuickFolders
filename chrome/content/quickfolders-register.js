@@ -1,11 +1,13 @@
 "use strict";
-/* BEGIN LICENSE BLOCK
+/* 
+  BEGIN LICENSE BLOCK
 
 	QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
-  END LICENSE BLOCK */
+  END LICENSE BLOCK 
+*/
 Components.utils.import('resource://gre/modules/Services.jsm');	
 
 QuickFolders.Crypto = {
@@ -15,6 +17,7 @@ QuickFolders.Crypto = {
   set  key_type(t) {
     QuickFolders.Preferences.setIntPref('licenseType', t);
   },
+	/* note the encryption key is private. Do not reverse engineer */
   get decryption_key() {
     switch (this.key_type) {
       case 0:  // private
@@ -121,6 +124,7 @@ QuickFolders.Licenser = {
   load: function load() {
     const getElement = document.getElementById.bind(document),
           util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
 					licenser = util.Licenser,
           ELS = licenser.ELicenseState;
         
@@ -166,17 +170,29 @@ QuickFolders.Licenser = {
 				debugger;
 			}
 			if (licenser.ValidationStatus == ELS.NotValidated) {
-				licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey'));
+				licenser.validateLicense(prefs.getStringPref('LicenseKey'));
 				util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
-			if (licenser.isExpired) {
+			if (licenser.isExpired || licenser.isValidated) {
 				let btnLicense = getElement('btnLicense');
-				btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+				if(licenser.isExpired)
+					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+				else {
+					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
+					// add tooltip
+					btnLicense.setAttribute('tooltiptext',
+					  util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
+						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+				}
+
 				btnLicense.removeAttribute('oncommand');
 				btnLicense.setAttribute('oncommand', 'QuickFolders.Licenser.goPro(2);');
 				btnLicense.classList.add('expired');
+				// hide the "Enter License Key..." button + label
+				getElement('haveLicense').collapsed=true;
+				getElement('btnEnterCode').collapsed=true;
 			}
 		}
     else
@@ -188,12 +204,13 @@ QuickFolders.Licenser = {
 				getElement('qfLicenseTerm').classList.add('expired');
 			  break;
 			case ELS.Valid:
-			  getElement('btnLicense').classList.remove('register'); // remove the "breathing effect" if license is valid.
+			  getElement('btnLicense').classList.remove('register'); // remove the "pulsing effect" if license is valid.
 			  break;
 			case ELS.Empty:
-				getElement('licenseDateLabel').value =" ";
+			case ELS.NotValidated:
+				getElement('licenseDateLabel').value = " ";
 			  break;
-			default: // default class=registere will animate the button
+			default: // default class=register will animate the button
 			  getElement('licenseDateLabel').value = licenser.licenseDescription(licenser.ValidationStatus) + ":";
 		}
 			
@@ -230,6 +247,7 @@ QuickFolders.Licenser = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
+		if (prefs.isDebugOption('premium.licenser')) getElement('referrer').collapsed=false;
     
   } ,
   
@@ -254,6 +272,7 @@ QuickFolders.Licenser = {
   
   goPro: function goPro(license_type) {
     const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders",
+					prefs =  QuickFolders.Preferences,
           util = QuickFolders.Util;
     // redirect to registration site; pass in the feature that brought user here
     // short order process
@@ -270,8 +289,8 @@ QuickFolders.Licenser = {
 			  break;
 			case 2: // license renewal
 				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
-				// addQuery = "&renewal=" + encodeURI(QuickFolders.Preferences.getStringPref('LicenseKey'));
-				featureName = encodeURI(QuickFolders.Preferences.getStringPref('LicenseKey'));
+				// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
+				featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 				// should we autoselect the correct email address?
 			  break;
 		}
@@ -587,4 +606,4 @@ QuickFolders.Licenser = {
     
   }
 
-}
+};

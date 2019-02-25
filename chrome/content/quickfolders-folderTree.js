@@ -38,17 +38,33 @@ QuickFolders.FolderTree = {
           if (!treeView.qfIconsEnabled) {
             return props;
           }
-          
+					/*
+					if (folder.isServer) {
+						util.logDebugOptional('folderTree.icons',"getCellProperties(" + folder.prettyName  + ") - Custom Icons not supported on Server node.")
+						return props;
+					}
+					*/
+					
           try {
-            let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
-            if (folderIcon) {
-              // save folder icon selector
-              props += " " + folderIcon;
-            }
+						if (treeView.supportsIcons) {
+							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
+							if (folderIcon) {
+								// save folder icon selector
+								props += " " + folderIcon;
+							}
+						}
+						else
+							util.logToConsole("treeView.supportsIcons = false!")
           }
           catch(ex) {
-            if (QuickFolders)
-              util.logException('QuickFolders.FolderTree.getCellProperties()',ex);
+            if (QuickFolders) {
+							let txt;
+							try {
+								txt = "returning unchanged props for folder [" + folder.prettyName + "] : " + props;
+							}
+							catch(x) { txt="problem with reading props for folder " + folder.prettyName; }
+              util.logException('QuickFolders.FolderTree.getCellProperties()\n' + txt, ex);
+						}
           }
         }
         return props;
@@ -58,7 +74,9 @@ QuickFolders.FolderTree = {
       // then inject the style rules for the icons...
       this.loadDictionary();
     }
-    catch(ex) { util.logException('QuickFolders.FolderTree.init()',ex); };
+    catch(ex) { 
+			util.logException('QuickFolders.FolderTree.init()',ex); 
+		};
   } ,
 	
 	restoreStyles: function() {
@@ -147,14 +165,14 @@ QuickFolders.FolderTree = {
     const util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
           debug = prefs.isDebugOption('folderTree');
-		util.logDebugOptional('folderTree', 'QuickFolders.FolderTree.loadDictionary()');
+		util.logDebugOptional('folderTree,folderTree.icons', 'QuickFolders.FolderTree.loadDictionary()');
     
     this.dictionary = util.supportsMap ? new Map() : new Dict(); // Tb / ES6 = Map; Postbox ES5 = dictionary		
 		let txtList = 'Folders without Icon\n',
 		    txtWithIcon = 'Folders with Icon\n',
 		    iCount = 0,
 		    iIcons = 0;
-		for (let folder in util.allFoldersIterator()) {
+		for (let folder of util.allFoldersIterator()) {  // [Bug 26612] - we may need to abandon early Postbox versions for this.
 		  iCount++;
 			if (typeof folder.getStringProperty == 'undefined') continue;
 			let key = folder.getStringProperty("folderIcon"),

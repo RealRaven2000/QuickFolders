@@ -1,11 +1,13 @@
 "use strict";
-/* BEGIN LICENSE BLOCK
+/* 
+  BEGIN LICENSE BLOCK
 
-QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
-Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
-For details, please refer to license.txt in the root folder of this extension
+	QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
 
-END LICENSE BLOCK */
+  END LICENSE BLOCK 
+*/
 
 Components.utils.import('resource://gre/modules/Services.jsm');
 
@@ -189,6 +191,7 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					QI = QuickFolders.Interface,
+					options = QuickFolders.Options,
 					licenser = util.Licenser;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
@@ -231,9 +234,9 @@ QuickFolders.Options = {
     /*****  License  *****/
     // licensing tab - we also need a "renew license"  label!
     util.logDebugOptional('options', 'QuickFolders.Options.load - check License...');
-    let buyLabel = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!");
-
-    getElement("btnLicense").label = buyLabel;
+		
+		options.labelLicenseBtn(getElement("btnLicense"), "buy");
+		
     // validate License key
     licenser.LicenseKey = prefs.getStringPref('LicenseKey');
     getElement('txtLicenseKey').value = licenser.LicenseKey;
@@ -331,6 +334,9 @@ QuickFolders.Options = {
 		
 		let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
 		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+		options.configExtra2Button();
+		
+		util.loadPlatformStylesheet();
 	},
   
   initBling: function initBling (tabbox) {
@@ -416,14 +422,19 @@ QuickFolders.Options = {
   },
 
   trimLicense: function trimLicense() {
+		const util = QuickFolders.Util;
     let txtBox = document.getElementById('txtLicenseKey'),
         strLicense = txtBox.value.toString();
-    QuickFolders.Util.logDebug('trimLicense() : ' + strLicense);
-    strLicense = strLicense.replace(/^\s+|\s+$/g, ''); // remove line breaks
-    strLicense = strLicense.replace('\[at\]','@');
-    txtBox.value = strLicense;
-    QuickFolders.Util.logDebug('trimLicense() result : ' + strLicense);
-    return strLicense;
+    util.logDebug('trimLicense() : ' + strLicense);
+    // Remove line breaks and extra spaces:
+		let trimmedLicense =  
+		  strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
+				.replace(/\s\s+/g, ' ')            // collapse multiple spaces
+        .replace('\[at\]','@')
+				.trim();
+    txtBox.value = trimmedLicense;
+    util.logDebug('trimLicense() result : ' + trimmedLicense);
+    return trimmedLicense;
   } ,
   
   selectQuickMoveFormat: function selectQuickMoveFormat(menuList) {
@@ -642,6 +653,7 @@ QuickFolders.Options = {
 		}
 		const util = QuickFolders.Util,
 					State = util.Licenser.ELicenseState,
+					options = QuickFolders.Options,
 					QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
@@ -656,31 +668,35 @@ QuickFolders.Options = {
 			QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
 			switch(result) {
 				case State.Valid:
-				  btnLicense.collapsed = true;
+					let today = new Date(),
+					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+							dateString = later.toISOString().substr(0, 10);
+					// if we were a month ahead would this be expired?
+					if (util.Licenser.DecryptedDate < dateString) {
+						options.labelLicenseBtn(btnLicense, "extend");
+					}
+					else
+						btnLicense.collapsed = true;
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
 					replaceCssClass(menuProLicense, 'paid');
-					// quickFoldersSkipFolder.collapsed = false;
 				  break;
 				case State.Expired:
-					let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
-					btnLicense.label = txtRenew;
-					QI.TitleLabel.label = txtRenew;
+					QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
 					replaceCssClass(menuProLicense, 'expired');
 				  btnLicense.collapsed = false;
-					// quickFoldersSkipFolder.collapsed = true;
 					break;
 				default:
-				  btnLicense.label = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
+					options.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(btnLicense, 'register');
 					replaceCssClass(proTab, 'free');
 					replaceCssClass(menuProLicense, 'free');
-					// quickFoldersSkipFolder.collapsed = true;
 			}
 			
+			options.configExtra2Button();
 			util.logDebug('validateLicense - result = ' + result);
     }
     catch(ex) {
@@ -1428,23 +1444,106 @@ QuickFolders.Options = {
 			win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
 	},
 	
+	get currentOptionsTab() {
+		let tabpanels = document.getElementById('QuickFolders-Panels');
+		switch (tabpanels.selectedPanel.id) {
+			case 'QuickFolders-Options-general':
+			  return 'generalTab';
+			case 'QuickFolders-Options-advanced':
+			  return 'advancedTab';
+			case 'QuickFolders-Options-layout':
+			  return 'defaultTab';
+			case 'QuickFolders-Options-quickhelp':
+			  return 'quickhelpTab';
+			case 'QuickFolders-Options-support':
+				return 'supportTab';
+			case 'QuickFolders-Options-goPro':
+			default:
+			  return 'licenseTab';
+		}
+	},
+		
   onTabSelect: function onTabSelect(element, event) {
     let el = event.target;
     if (el.selectedPanel) {
-      // let v = el.ownerDocument.defaultView;
-      // el.ownerDocument.getElementsByTagName('pushbutton');
-      let donateButton = document.documentElement.getButton('extra2');
-      switch (el.selectedPanel.id) {
-        case 'QuickFolders-Options-goPro':
-          donateButton.collapsed = true;
-          break;
-        default:
-          donateButton.collapsed = false;
-          break;
-      }
+			QuickFolders.Options.configExtra2Button(el);
       QuickFolders.Util.logDebug('Tab Select: ' + element.id + ' selected panel = ' + el.selectedPanel.id);
     }
-  }
+  },
+	
+	configExtra2Button: function configExtra2Button(el) {
+		const prefs = QuickFolders.Preferences,
+		      util = QuickFolders.Util,
+					options = QuickFolders.Options,
+		      licenser = util.Licenser,
+					State = licenser.ELicenseState;
+		let donateButton = document.documentElement.getButton('extra2');
+		if(!el) el = document.getElementById("QuickFolders-Panels");
+		switch (el.selectedPanel.id) {
+			case 'QuickFolders-Options-goPro':
+				donateButton.collapsed = true;
+				break;
+			default:
+				donateButton.collapsed = false;
+				if (!prefs.getStringPref('LicenseKey')) {
+					options.labelLicenseBtn(donateButton, "buy");
+					donateButton.addEventListener(
+						"click", 
+					  function(event) { 
+							licenser.showDialog('licenseTab'); 
+						}, 
+						false);
+					
+				}
+				else {
+					switch (licenser.ValidationStatus) {
+						case State.NotValidated:
+						  // options.labelLicenseBtn(donateButton, "buy"); // hide?
+						  break;
+						case State.Expired:
+						  options.labelLicenseBtn(donateButton, "renew");
+						  break;
+						case State.Valid:
+							donateButton.collapsed = true;
+							break;
+						case State.Invalid:
+							options.labelLicenseBtn(donateButton, "buy");
+							break;
+						default:
+						  options.labelLicenseBtn(donateButton, "buy");
+							break;
+					}
+					
+				}
+		}
+	},
+	
+	// put appropriate label on the license button and pass back the label text as well
+	labelLicenseBtn: function labelLicenseBtn(btnLicense, validStatus) {
+		const prefs = QuickFolders.Preferences,
+		      util = QuickFolders.Util;
+		switch(validStatus) {
+			case  "extend":
+				let txtExtend = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
+				btnLicense.collapsed = false
+				btnLicense.label = txtExtend; // text should be extend not renew
+				btnLicense.setAttribute('tooltiptext',
+					util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
+						"This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+				return txtExtend;
+			case "renew":
+				let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+				btnLicense.label = txtRenew;
+			  return txtRenew;
+			case "buy":
+				let buyLabel = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!");
+				btnLicense.label = buyLabel;
+			  return buyLabel;
+		}
+		return "";
+	}
+
+	
 }
 
 

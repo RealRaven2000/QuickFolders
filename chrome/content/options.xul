@@ -15,10 +15,10 @@
 						ondialogaccept="QuickFolders.Options.accept();"
 						ondialogcancel="QuickFolders.Options.close();"
 						onload="QuickFolders.Options.load();"
-						ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
-						tooltiptextextra2="&qf.label.donateLink;"
+						ondialogextra2="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });"
 						lightweightthemes="true"
 						>
+<!-- tooltiptextextra2="&qf.label.donateLink;" -->
 
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
@@ -968,13 +968,12 @@
 						</columns>
 						<rows>
 							<row>
-								<description
-									oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','stop displaying donation page on update'));return false;">&qf.description.donate;</description>
+								<description>&qf.youtube.description;</description>
 								<div id="L1"
 								     class="button"
-										 tooltiptext="quickfolders.org/donate.html"
-										 onclick="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')">
-									<label>&qf.label.donateLink;</label>
+										 tooltiptext="https://www.youtube.com/c/thunderbirddaily"
+										 onclick="QuickFolders.Util.openLinkInBrowser(event,'https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89')">
+									<label>&qf.youtube.link;</label>
 								</div>
 							</row>
 							<separator class="thin" />
@@ -1024,8 +1023,7 @@
 				</tabpanel>
 				<!-- Licensing tab -->
 				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
-					<description
-						oncontextmenu="QuickFolders.Util.addConfigFeature('extensions.quickfolders.donateNoMore', true, QuickFolders.Util.getBundleString('qfDonateDisableOnUpdate','Stop displaying donation page on update?'));return false;">
+					<description>
 						&qf.label.insertLicense;</description>
 					<hbox id="licenseContainer" align="start">
 						<textbox id="txtLicenseKey"
@@ -1183,7 +1181,7 @@
 								<button id="btnLicense" 
 												label="Buy License"
 												class="register"
-												oncommand="QuickFolders.Licenser.showDialog('licenseTab');" />
+												oncommand="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });" />
 							</box>
 							<spacer flex="1" />
 						</vbox>

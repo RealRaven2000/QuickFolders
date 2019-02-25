@@ -194,6 +194,19 @@
 		
 		<popupset id="QuickFolders-MainPopupSet">
 			<menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
+			  <!-- debug submenu -->
+			  <menu class="menu-iconic dbgMenu"  
+							collapsed="true"
+							id="QuickFolders-debug" 
+				      label="Debug">
+					<menupopup class="dbgMenu">
+						<menuitem id="QuickFolders-ToolbarPopup-repair1"
+											label="Test Tree only Icons"
+											oncommand="QuickFolders.Interface.testTreeIcons();" 
+											class="cmd menuitem-iconic dbgMenu"
+											/>														
+					</menupopup>
+				</menu>
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"

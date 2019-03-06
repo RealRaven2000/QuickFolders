@@ -6,24 +6,25 @@ a.tooltip:hover {
 	text-decoration:none;
 }
 a.tooltip span { 
-	display:none; 
-	line-height:16px; 
-	margin-top:50px; 
+	border: 0;
+	display: none; 
+	line-height: 20px; 
+	margin-top: 5px; 
 	margin-left:-160px; 
 	padding:14px 20px; 
-	border:0;
   z-index:1010;
 }
 a.tooltip:hover span { 
 	border:2px solid #FFF; 
 	color:#EEE; 
   display:inline; 
-	position:absolute; 
-	background:#000 url(src/css-tooltip-gradient-bg.png) repeat-x 0 0; 
+	position: absolute; 
+	background: #000 url(src/css-tooltip-gradient-bg.png) repeat-x 0 0; 
 } 
+/* arrow */
 .callout {
 	border:0;
-	position:absolute;
+	position: absolute;
 	left:120px;
 	top:-14px;
 	z-index: 1020;
@@ -36,8 +37,8 @@ a.tooltip span {
 }
  
 .bargain .tooltip span {
-	margin-left: -315px !important; 
-	margin-top:-10px !important; 
+	margin-left: -245px !important; 
+	margin-top: -100px !important; 
 	white-space: normal;
 	width: 430px; 
 }

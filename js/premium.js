@@ -50,8 +50,9 @@
 				  removeClassItems('QuickFoldersProRenew');
 					break;
 				case 'proRenew':
-					removeClassItems('donateButton', true);
+					removeClassItems('donateButton');
 					removeClassItems('QuickFoldersFreeUser');
+				  removeClassItems('QuickFoldersProUser');
 				  break;
 				default:
 				  removeClassItems('QuickFoldersProRenew');

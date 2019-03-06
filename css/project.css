@@ -412,6 +412,12 @@ table.QuickFoldersProRenew,
 .QuickFoldersFreeUser {
   font-size: 1.3em !important;
 }
+h3.QuickFoldersProRenew,
+h3.QuickFoldersFreeUser {
+  font-size: 1.6em;
+}
+
+
 .QuickFoldersProRenew em,
 .QuickFoldersFreeUser em {
   font-weight: bold;

@@ -35,3 +35,14 @@ a.tooltip span {
 	opacity: 0.8; 
 }
  
+.bargain .tooltip span {
+	margin-left: -315px !important; 
+	margin-top:-10px !important; 
+	white-space: normal;
+	width: 430px; 
+}
+ 
+.bargain .tooltip span .callout {
+	left: 215px !important;
+}
+ 

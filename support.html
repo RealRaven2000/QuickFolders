@@ -156,17 +156,21 @@
 			<h4>STEP 2 - Saving the Error Log</h4>
 
 			<p>
-				 Then you need to copy the error log into a text file or email. Simply use the console
-				 right-click menu and choose "Select All". Then "Copy". Do not take a screenshot of the error log as it is much 
-				 harder to investigate - text is nice as you can search and order it!
-				 You can always send us error logs in an email if you are having problems.	<br>
-				 <img src="images/support/errorCopy.png" class="screenshot" title="Error Rightclick" alt=""><br>
-				 <p>A note on typical Error messages: If there is a problem somewhere in Thunderbird code or an Addon
-				 then warnings and errors usually provide a location of where this happened.
-				 If the location starts with "chrome://" you will know this happens in THunderbird or and Addon and not 
-				 in a web page or within an email. The line number is also very helpful in tracking down particular issues.
+				 Then you need to copy the error log into a text file or email. Simply use the console window's
+				 right-click menu and choose "<i>Select All</i>", then "<i>Copy</i>". 
+				 <u>Do not take a screenshot</u> of the error log as it is much 
+				 harder to investigate - text is nice as I can search and filter it!
+				 You can always send me such error logs in an email if you are having problems.	<br>
+				 <img src="images/support/errorCopy.png" class="screenshot" title="Error Rightclick" alt="">
+			</p>
+			<p>A note on typical Error messages: If there is a problem somewhere in Thunderbird code or an Add-on,
+				 warnings and errors usually provide a location of where this happened.
+				 If the location starts with "chrome://" we know this happens in Thunderbird or and Add-on and <i>not</i>
+				 in a web page or within an email. Disabling <i>Content</i> is also helpful in filtering out
+				 such irrelevant lines.
+				 The line number is also very helpful in tracking down particular issues.
 				 </p>
-				 <p>Any messages that we generate during "debug" logging typically look like this:
+				 <p>Any additional messages that QuickFolders generatess during "debug" logging typically look like this:
 				 </p>
 <pre class="code_block">
 QuickFolders {EVENTS} 12:46:52.393  [0 ms]	 
@@ -179,11 +183,10 @@ QuickFolders {INTERFACE} 12:46:52.530  [0 ms]
 onTabSelected()
  folder = QF-bugs
 </pre>
-				<p>As you can see we start all our debug logs with the name of the addon (QuickFolders).
+				<p>All our debug logs start with the name of the add-on (QuickFolders).
 					 This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
 					 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since our previous output. 
-					 This makes it possible to pin point any operations that take unusually longe. Underneath we show 
-					 additional information about what QuickFolders is doing at the moment.
+					 Underneath it may show additional information about what QuickFolders is doing at the moment.
 				</p>
 
 				<h4>STEP 3 - Looking for Particular Problems</h4>

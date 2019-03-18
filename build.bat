@@ -6,5 +6,5 @@ REM replace previous rev with new
 pwsh -Command "(gc -en UTF8NoBOM install.rdf) -replace 'pre%oldRev%'.trim(), 'pre%quickFoldersRev%' | Out-File install.rdf"
 "C:\Program Files\7-Zip\7z" a -xr!.svn quickFolders.zip install.rdf chrome.manifest chrome defaults license.txt
 echo %quickFoldersRev% > revision.txt
-move *.xpi "..\..\Release\_Test Versions\4.13\"
-rename quickFolders.zip QuickFolders-tb-pb-sm-4.13.2pre%quickFoldersRev%.xpi
+move *.xpi "..\..\Release\_Test Versions\4.14\"
+rename quickFolders.zip QuickFolders-tb-pb-sm-4.14pre%quickFoldersRev%.xpi

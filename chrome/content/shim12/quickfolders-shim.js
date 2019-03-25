@@ -136,7 +136,7 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
 				time = Number(aFolder.getStringProperty("MRUTime")) || 0;
 			} catch (ex) {return;}
 			if (time <= oldestTime)
-				return 0;
+				return -time;
 			if (recent.length == MAXRECENT) {
 				recent.sort(sorter);
 				recent.pop();
@@ -162,14 +162,14 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
      * @param aFolder the folder to check
      */
 
-		let debugTxt = prefs.isDebugOption('recentFolders.detail') ? 'Recent Folders List' : '';
+		let debugTxt = prefs.isDebugOption('recentFolders.detail') ? 'Recent Folders List\n' : '';
     for (let folder of ftv._enumerateFolders) {
 			let t = addIfRecent(folder);
 			if (debugTxt) {
-				if (t)
-					debugTxt += 'ADDED ' + folder.prettyName + ':\ntime = ' + t + ' = ' + util.getMruTime(folder) + '\n';
+				if (t>0)
+					debugTxt += '--- ADDED: ' + folder.prettyName.padEnd(23, " ") + ' - : time = ' + t + ' = ' + util.getMruTime(folder) + '\n';
 				else
-					debugTxt += 'NOT ADDED: '  + folder.prettyName + '\n';
+					debugTxt += 'NOT ADDED: '  + folder.prettyName.padEnd(25, " ") + ' : time = ' + (-t) + ' = ' + util.getMruTime(folder) + '\n';;
 			}
 		}
 		if (debugTxt)
@@ -211,7 +211,9 @@ QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, it
 };
 
 QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
-	for (let folder of QuickFolders.Util.allFoldersIterator(isFiling)) {
+	const util = QuickFolders.Util;
+	util.logDebugOptional("interface.findFolder","shim12 / allFoldersMatch()");
+	for (let folder of util.allFoldersIterator(isFiling)) {
 		if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
 		addMatchingFolder(matches, folder);
 	}

@@ -146,10 +146,56 @@ QuickFolders.Model = {
     // [Bug 260965]
     // we must iterate all entries to check for any tabs that 
     // point to subfolders that might be affected!
+		let decodedUri = decodeURI(fromUri);
     for (let i = 0; i < this.selectedFolders.length; i++) {
       let entry = this.selectedFolders[i];
-      if(entry.uri.indexOf(fromUri)==0) {
-        entry.uri = entry.uri.replace(fromUri, toUri);
+      if(decodeURI(entry.uri).indexOf(decodedUri)==0) {
+				entry.uri = entry.uri.replace(fromUri, toUri);
+/*				
+				// instead of replace do a mechanical substrings replacement.
+				// this will honor changes caused by server side encoding / decoding
+				let newUri = [],
+						src = entry.uri.split("/"),
+				    targ = toUri.split("/"),
+						srcPos = 0,
+						targPos = 0; // source string can have more parts, as it can be a subfolder.
+				// find where path diverges:
+				while (src[srcPos] == targ[targPos] && srcPos<src.length && targPos<targ.length) {
+					newUri.push(toUri[targPos]);
+					srcPos++; 
+					targPos++;
+				}
+				// find the last slash in the URI string that matches, remove the front and insert the new path string
+				srcPos--;
+				let startPath = newUri.join("/");
+				
+				// find next match:
+				{
+					let k = srcPos, 
+					    isMatch = false;
+					while (!isMatch && k<src.length) {
+						if (src[srcPos] == targ[k])
+							isMatch = true;
+						else k++;
+					}
+					if (isMatch) { // target longer than src.
+						// remove extra stuff from src - continue at k
+						while (k<targ.length) {
+							newUri.push(targ[k]);
+							k++;
+						}
+					}
+					else {
+						if (targ[srcPos] == src[k])
+					}
+				}
+				
+						
+				for (let x=0; x<targ.length; x++) {
+					src[x] = targ[x]; // overwrite with correctly encoded parts. keep the rest (any following parts).
+				}
+        entry.uri = src.join("/");// entry.uri.replace(fromUri, toUri);
+*/				
         entry.disableValidation = true; // disable validation (IMAP only?)
         changeLog += "\n  " + entry.name + ": "+ entry.uri;
         countUris++;
@@ -306,8 +352,7 @@ QuickFolders.Model = {
           if (!this.getMsgFolderFromUri(entry.uri, false)) continue;
         }
         catch(e) {
-          QuickFolders.Util.logException("Exception while checking folder existence: ", e)
-
+          QuickFolders.Util.logException("Exception while checking folder existence: ", e);
           continue;
         }
 
@@ -361,7 +406,7 @@ QuickFolders.Model = {
     this.update()
   } ,
 
-  deleteFolderCategory: function deleteFolderCategory(category) {
+  deleteFolderCategory: function deleteFolderCategory(category, noUpdate) {
     QuickFolders.Util.logDebugOptional("categories","Model.deleteFolderCategory(" + category + ")");
     let folderList = '';
     for (let i = 0; i < this.selectedFolders.length; i++) {
@@ -389,7 +434,8 @@ QuickFolders.Model = {
     QuickFolders.Util.logDebugOptional("categories","removed folders from category " + category + ":\n"
       + folderList);
 
-    this.update()
+    if (!noUpdate) // avoid multiple updates when deleting multiple categories!
+			this.update();
   } ,
   
   colorName: function colorName(paletteVersion, id) {

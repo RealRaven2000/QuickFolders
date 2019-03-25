@@ -51,7 +51,8 @@
 				<spacer id="bottomLogo" />
 			</vbox>
 
-			<listbox id="qf-filter-templates"
+			<richlistbox 
+			  id="qf-filter-templates"
 			  ondblclick="QuickFolders.FilterWorker.selectTemplate(this);"
 			  onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
 			  preference="QuickFolders-Preferences-SelectedFilterTemplate"
@@ -61,7 +62,7 @@
 			    <listitem label='&qf.filters.template.list;' value='list' />
 			    <listitem label='&qf.filters.template.topic;' value='topic' />
 			    <listitem label='&qf.filters.template.tag;' value='tag' />
-			</listbox>
+			</richlistbox>
 			<vbox id="quickFiltersPromoBox">
 			  <description id="getQuickFilters">&qf.label.getQuickFilters;</description>
 				<label id="quickFiltersLink"

@@ -68,7 +68,7 @@
 				<toolbarbutton id="QuickFolders-NavigateLeft"
 					             class="icon"
 					             onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
-				<hbox class="folderBarContainer">
+				<hbox class="folderBarContainer" xulPlatform="xulSM">
            <toolbarbutton id="QuickFoldersCurrentFolder"
                           label="Current Folder"
                           class="selected-folder"

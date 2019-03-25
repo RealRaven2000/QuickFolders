@@ -29,6 +29,7 @@ pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.quickJump.useHotkey", true);
 pref("extensions.quickfolders.quickJump.Hotkey", 'J');
+pref("extensions.quickfolders.quickMove.createFolderOnTop", false);
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.lastFolderName","");

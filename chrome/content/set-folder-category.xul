@@ -26,12 +26,12 @@
         <vbox>
             <label>&qf.label.existingcategories;</label>
 
-            <listbox id="existing-categories"
+            <richlistbox id="existing-categories"
               ondblclick="QuickFolders.FolderCategory.setSelectedCategory();"
               onselect="QuickFolders.FolderCategory.onSelectionChange(event);"
               seltype="multiple">
                 <!-- added by script -->
-            </listbox>
+            </richlistbox>
         </vbox>
         <vbox>
             <vbox class="gradientpanel"  id="green">
@@ -59,7 +59,7 @@
             </vbox>
 
             <vbox style="margin-top: 20px; min-height:50px; vertical-align:middle;" class="gradientpanel" id="red">
-                <button label="&qf.button.deleteselectedcategory;" oncommand="QuickFolders.FolderCategory.deleteSelectedCategory()"
+                <button label="&qf.button.deleteselectedcategory;" oncommand="QuickFolders.FolderCategory.deleteSelectedCategory(event)"
                 style="vertical-align:middle;margin-top:10px;"/>
             </vbox>
         </vbox>

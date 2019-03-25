@@ -124,7 +124,7 @@ QuickFolders.quickMove = {
         tabmail = document.getElementById("tabmail"),
         currentTab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
 				
-		this.rememberLastFolder(fld);
+		this.rememberLastFolder(fld, parentName);
         
     let hasMove = (this.IsCopy.indexOf(false)>=0); // are any message moved, close in case this is a single message tab
     if (tabMode == 'message' && !hasMove) {
@@ -135,27 +135,32 @@ QuickFolders.quickMove = {
         
     util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
 
-    // split mails to copy / move:   
-    let uriCopy=[], uriMove=[],
-        originCopy=[], originMove=[];
-    for (let j=this.Uris.length-1; j>=0; j--) {
-      if (this.IsCopy[j]) {
-        uriCopy.push(this.Uris[j]);
-        originCopy.push(this.Origins[j]);
-      }
-      else {
-        uriMove.push(this.Uris[j]);
-        originMove.push(this.Origins[j]);
-      }
-    }
-    copyList(uriCopy, originCopy, true);
-    copyList(uriMove, originMove, false);
-    
-    this.resetList();
-    this.update();
-    QI.hideFindPopup();
-		util.touch(fld); // update MRUTime
-    util.logDebugOptional('quickMove', 'After hideFindPopup');
+		try {
+			// split mails to copy / move:   
+			let uriCopy=[], uriMove=[],
+					originCopy=[], originMove=[];
+			for (let j=this.Uris.length-1; j>=0; j--) {
+				if (this.IsCopy[j]) {
+					uriCopy.push(this.Uris[j]);
+					originCopy.push(this.Origins[j]);
+				}
+				else {
+					uriMove.push(this.Uris[j]);
+					originMove.push(this.Origins[j]);
+				}
+			}
+			copyList(uriCopy, originCopy, true);
+			copyList(uriMove, originMove, false);
+			
+			this.resetList();
+			this.update();
+			QI.hideFindPopup();
+		}
+		catch(ex) { logException('quickMove.execute()', ex); }
+		finally {
+			util.touch(fld); // update MRUTime
+			util.logDebugOptional('quickMove', 'After hideFindPopup');
+		}
   },
   
   resetList: function resetList() {

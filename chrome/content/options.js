@@ -336,7 +336,7 @@ QuickFolders.Options = {
 		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
 		options.configExtra2Button();
 		
-		util.loadPlatformStylesheet();
+		util.loadPlatformStylesheet(window);
 	},
   
   initBling: function initBling (tabbox) {
@@ -1477,45 +1477,47 @@ QuickFolders.Options = {
 					options = QuickFolders.Options,
 		      licenser = util.Licenser,
 					State = licenser.ELicenseState;
+		try {
 		let donateButton = document.documentElement.getButton('extra2');
 		if(!el) el = document.getElementById("QuickFolders-Panels");
-		switch (el.selectedPanel.id) {
-			case 'QuickFolders-Options-goPro':
-				donateButton.collapsed = true;
-				break;
-			default:
-				donateButton.collapsed = false;
-				if (!prefs.getStringPref('LicenseKey')) {
-					options.labelLicenseBtn(donateButton, "buy");
-					donateButton.addEventListener(
-						"click", 
-					  function(event) { 
-							licenser.showDialog('licenseTab'); 
-						}, 
-						false);
-					
-				}
-				else {
-					switch (licenser.ValidationStatus) {
-						case State.NotValidated:
-						  // options.labelLicenseBtn(donateButton, "buy"); // hide?
-						  break;
-						case State.Expired:
-						  options.labelLicenseBtn(donateButton, "renew");
-						  break;
-						case State.Valid:
-							donateButton.collapsed = true;
-							break;
-						case State.Invalid:
-							options.labelLicenseBtn(donateButton, "buy");
-							break;
-						default:
-						  options.labelLicenseBtn(donateButton, "buy");
-							break;
+			switch (el.selectedPanel.id) {
+				case 'QuickFolders-Options-goPro':
+					donateButton.collapsed = true;
+					break;
+				default:
+					donateButton.collapsed = false;
+					if (!prefs.getStringPref('LicenseKey')) {
+						options.labelLicenseBtn(donateButton, "buy");
+						donateButton.addEventListener(
+							"click", 
+							function(event) { 
+								licenser.showDialog('licenseTab'); 
+							}, 
+							false);
+						
 					}
-					
-				}
-		}
+					else {
+						switch (licenser.ValidationStatus) {
+							case State.NotValidated:
+								// options.labelLicenseBtn(donateButton, "buy"); // hide?
+								break;
+							case State.Expired:
+								options.labelLicenseBtn(donateButton, "renew");
+								break;
+							case State.Valid:
+								donateButton.collapsed = true;
+								break;
+							case State.Invalid:
+								options.labelLicenseBtn(donateButton, "buy");
+								break;
+							default:
+								options.labelLicenseBtn(donateButton, "buy");
+								break;
+						}
+						
+					}
+			}
+		} catch(ex) {util.logException("configExtra2Button()",ex);}
 	},
 	
 	// put appropriate label on the license button and pass back the label text as well

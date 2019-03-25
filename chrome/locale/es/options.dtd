@@ -68,6 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Vaciar Papelera">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
 <!ENTITY qf.label.menus.quickFolder "Comandos de QuickFolders">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
 <!ENTITY qf.label.menus.separator "Insertar separador">
 <!ENTITY qf.label.menus.lineBreak "Insertar salto de línea">
 <!ENTITY qf.label.menus.customIcon "Personalizar icono">
@@ -91,6 +92,7 @@
 <!ENTITY qf.checkbox.debug.tooltip "Haga clic secundario en esta casilla para opciones de depuración avanzadas">
 <!ENTITY qf.label.initdelay "[ms] de retardo de inicialización {1000 es el estándar}:">
 <!ENTITY qf.copyfolders "Copiar pestañas">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copiar la configuración de Pestañas de QuickFolders al portapapeles">
 <!ENTITY qf.pastefolders.tooltip "Borrar todas las carpetas de QuickFolders y leer la nueva configuración del portapapeles">
 <!ENTITY qf.label.appearance "Apariencia">
@@ -142,6 +144,8 @@
 <!ENTITY qf.description.rightClickOptions "Haga clic secundario en un área vacía para abrir el menú de opciones. En las opciones, puede seleccionar el 'estilo nativo' (más pequeño) o el estilo plano (más claro; soporta indicador de arrastre).">
 <!ENTITY qf.description.tipMsg "Sugerancia: Si tiene una cantidad extensa de carpetas, pruebe la extensión Nostalgy para organización de mensajes mediante teclado.">
 <!ENTITY qf.description.experimentalItems "¡¡Los siguientes elementos son experimentales, con suerte estarán funcionando en la próxima versión!!">
+<!ENTITY qf.youtube.description "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily.">
+<!ENTITY qf.youtube.link "Watch Videos about QuickFolders…">
 <!ENTITY qf.description.donate "Si adora QuickFolders tanto como nosotros y le gustaría apoyar su desarrollo, puede donar algo de dinero en favor de la continuidad del desarrollo de QuickFolders.">
 <!ENTITY qf.label.donateLink "Visitar la página de donaciones...">
 <!ENTITY qf.description.bugzilla "Por favor, utilice Bugzilla para todas las solicitudes de características e informes de fallos">
@@ -170,6 +174,10 @@
 <!ENTITY qf.checkbox.quickMove.tip "Atajo para arrastrar correos al botón quickMove para realizar para el rellenado más rápido hacia cualquier carpeta de correo mediante la introducción de su nombre.">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - Copia correo a cualquier carpeta con el atajo Mayús +">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón quickCopy para un copiado más rápido a cualquier carpeta mediante la instroducción del nombre.">
+<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
+<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
 <!ENTITY qf.quickMove.path.format "Mostrar formato:">
 <!ENTITY qf.pathFormat.folderName "Nombre de carpeta">
 <!ENTITY qf.pathFormat.folderAndAccount "Nombre de carpeta - Cuenta de correo">
@@ -183,6 +191,7 @@
 <!ENTITY qf.checkbox.readingList "Lista de lectura">
 <!ENTITY qf.checkbox.readingList.tooltip "Una lista para correos que se debe leer más tarde. Arrastre sus correos importantes en este botón.">
 <!ENTITY qf.label.donate "Donar">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Si debajo sólo ve un botón [Cerrar], las configuraciones de color podrían no funcionar - como apaño, pruebe a hacer clic secundario en un área vacía de la barra de QuickFolders para seleccionar Opciones... esto forzará que se muestre el botón [Aceptar], que debería guardar los colores.">
 <!ENTITY qf.checkbox.usePalette "Usar paleta">
 <!ENTITY qf.options.theme.pastelColors "Colores pastel">

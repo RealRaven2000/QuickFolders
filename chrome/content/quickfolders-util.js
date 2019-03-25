@@ -70,7 +70,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.13.2",
+	HARDCODED_CURRENTVERSION : "4.14",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
@@ -963,7 +963,7 @@ QuickFolders.Util = {
 	} ,
 	
 	getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
-		if (tabmail.tabInfo)
+		if (tabmail.tabInfo && tabmail.tabInfo.length)
 			return tabmail.tabInfo[idx];
 		if (tabmail.tabOwners)
 		  return tabmail.tabOwners[idx];
@@ -1571,6 +1571,14 @@ QuickFolders.Util = {
 		return this._isCSSGradients;
 	},
 	
+	// use legacy iterator code
+	get isLegacyIterator() {
+		const util = QuickFolders.Util;
+		if (util.PlatformVersion<13 && util.ApplicationName != 'Interlink')
+			return true;
+		return false;
+	} ,
+	
 	aboutHost: function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
@@ -1749,9 +1757,10 @@ QuickFolders.Util = {
 	  }
 	} ,
 	
-	loadPlatformStylesheet: function loadPlatformStylesheet() {
+	loadPlatformStylesheet: function loadPlatformStylesheet(win) {
 		const QI = QuickFolders.Interface,
-		      util = QuickFolders.Util;
+		      util = QuickFolders.Util,
+					styleEngine = QuickFolders.Styles;
 		util.logDebug("Loading platform styles for " + util.HostSystem + "...");
 		debugger;
 		switch (util.HostSystem) {
@@ -1764,6 +1773,16 @@ QuickFolders.Util = {
 			case "darwin":
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
+		}
+		if (util.ApplicationName =="Interlink") {
+			let url = win.document.URL,
+			    isMainWindow = url.endsWith("messenger.xul");
+			if (isMainWindow) {
+				util.logDebug("Interlink - Main window: loading toolbar fix...");
+				let ss = QI.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
+				// fixes missing colored bottom line under QT tabs
+				styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat", '-moz-appearance', 'none');
+			}
 		}
 	}
   
@@ -1929,7 +1948,7 @@ QuickFolders.Util.FirstRun = {
 
 				}
 				
-				util.loadPlatformStylesheet();
+				util.loadPlatformStylesheet(window);
 			}
 			util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally

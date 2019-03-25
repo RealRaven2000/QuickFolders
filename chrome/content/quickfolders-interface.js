@@ -342,7 +342,7 @@ QuickFolders.Interface = {
         // folders for every account.
 		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
 		// Postbox only:
-		if (util.PlatformVersion<13) {
+		if (util.isLegacyIterator) {
 			for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
 				addIfRecent(acct.incomingServer.rootFolder);
 				checkSubFolders(acct.incomingServer.rootFolder);
@@ -408,7 +408,7 @@ QuickFolders.Interface = {
 				f = recentFolders[i]._folder;
 			FoldersArray.appendElement(f, false);
       if (prefs.isDebugOption('recentFolders.detail')) {
-        debugText += '\n' + i + '. appended ' +  f.prettyName + '   ' + f.URI;
+        debugText += '\n' + i + '. appended ' +  f.prettyName.padEnd(25, " ") + ' ' + f.URI;
       }
 		}
 		util.logDebugOptional('recentFolders.detail','Recent Folders Array appended: ' +  debugText);
@@ -635,27 +635,6 @@ QuickFolders.Interface = {
 		} 
 	} ,
 
-	updateCategoryLayout: function updateCategoryLayout() {
-    const prefs = QuickFolders.Preferences,
-					util = QuickFolders.Util;
-		let cat = this.CategoryMenu,
-		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
-		if (prefs.isDebugOption("categories")) debugger;
-		if (cat) {
-			cat.style.display =
-		    (!showToolIcon && QuickFolders.Model.Categories.length == 0)
-		    ? 'none' : '-moz-inline-box';
-			if (prefs.getBoolPref('collapseCategories')) {
-				if (cat.className.indexOf('autocollapse')==-1)
-					cat.className += ' autocollapse';
-			}
-			else {
-				if (cat.className.indexOf('autocollapse')>=0)
-					cat.className = cat.className.replace ('autocollapse', '');
-			}
-	  }
-	} ,
-	
 	updateQuickFoldersLabel: function updateQuickFoldersLabel() {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
@@ -704,7 +683,8 @@ QuickFolders.Interface = {
     if (this.QuickMoveButton) 
       this.QuickMoveButton.collapsed = !prefs.isShowQuickMove;
 		
-		this.updateCategoryLayout();
+		if (minimalUpdate)
+			this.updateCategoryLayout();
 
 		if (rebuildCategories || prefs.isMinimalUpdateDisabled)
 			minimalUpdate = false;
@@ -889,6 +869,38 @@ QuickFolders.Interface = {
 		
 	} ,
 
+	updateCategoryLayout: function updateCategoryLayout() {
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util,
+					FCat = QuickFolders.FolderCategory,
+					model = QuickFolders.Model;
+		let cat = this.CategoryMenu,
+		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+		if (prefs.isDebugOption("categories")) debugger;
+		if (cat) {
+			// don't show if ALWAYS and NEVER are the only ones that are references by tabs
+			let catArray = model.Categories,
+			    isCustomCat = false;
+			for (let i=0; i<catArray.length; i++) {
+				if (FCat.isSelectableUI(catArray[i])) {
+					isCustomCat = true;
+					break;
+				}
+			}
+			cat.style.display = (showToolIcon || isCustomCat) ? '-moz-inline-box' : 'none';
+			cat.collapsed = (!isCustomCat);
+				
+			if (prefs.getBoolPref('collapseCategories')) {
+				if (cat.className.indexOf('autocollapse')==-1)
+					cat.className += ' autocollapse';
+			}
+			else {
+				if (cat.className.indexOf('autocollapse')>=0)
+					cat.className = cat.className.replace ('autocollapse', '');
+			}
+	  }
+	} ,
+	
 	updateCategories: function updateCategories() {
     const util = QuickFolders.Util,
 		      model = QuickFolders.Model,
@@ -902,14 +914,13 @@ QuickFolders.Interface = {
 		    menuList = this.CategoryMenu,
 		    menuPopup = menuList.menupopup;
 		util.logDebug("updateCategories() - [" + lCatCount + " Categories]");
+		if (prefs.isDebugOption("categories")) debugger;
 
     try { 
       if (lCatCount > 0 && menuList && menuPopup) {
 				let activeCatsList = this.currentActiveCategories,
 				    cats = activeCatsList ? activeCatsList.split('|') : [];
         util.clearChildren(menuPopup,true);
-        menuList.collapsed = false;
-        menuList.style.display = '-moz-box';
 
         menuPopup.appendChild(this.createMenuItem(
           FCat.ALL, 
@@ -959,13 +970,12 @@ QuickFolders.Interface = {
       }
       else {
         util.logDebug("No Categories defined, hiding Categories box.");
-        menuList.collapsed = true;
-        menuList.style.display = 'none';
       }
     }
     catch (ex) {
       util.logException("updateCategories()", ex);
     }
+		QuickFolders.Interface.updateCategoryLayout(); // hide or show.
 	} ,
 	
 	// moved from options.js!
@@ -1256,6 +1266,7 @@ QuickFolders.Interface = {
 			util.logException('Error in setter: currentActiveCategories', ex);
 		}
   } ,
+	
 	get CurrentlySelectedCategories() {
     const FCat = QuickFolders.FolderCategory;
 		if (this.currentActiveCategories == FCat.ALL || this.currentActiveCategories == FCat.UNCATEGORIZED ) {
@@ -1392,6 +1403,9 @@ QuickFolders.Interface = {
         if (currentCat == FCat.NEVER) return true; // shows all Aliases
         return false; // otherwise hide!
       }
+			if (currentCat == FCat.NEVER && folderCat != FCat.NEVER) {
+				return false;
+			}
 			if (currentCat == null || currentCat == FCat.ALL) {
 				return true;
 			}
@@ -1740,12 +1754,12 @@ QuickFolders.Interface = {
 				if (menupopup) {
 					p = menupopup;
 					p.id = "QuickFoldersCommandsOnly"; // for debugging purposes
-				}
-				let mps = menupopup.getElementsByTagName('menupopup');
-				if (mps.length) {
-					// add event handler for color commands (for some reason color submenu stops working otherwise)
-					this.setEventAttribute(mps[0], 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
-					this.setEventAttribute(mps[0], 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
+					let mps = menupopup.getElementsByTagName('menupopup');
+					if (mps.length) {
+						// add event handler for color commands (for some reason color submenu stops working otherwise)
+						this.setEventAttribute(mps[0], 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
+						this.setEventAttribute(mps[0], 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
+					}
 				}
 				
 			} // CTRL KEY HELD
@@ -1989,6 +2003,7 @@ QuickFolders.Interface = {
 				button.addEventListener("contextmenu", 
 					function(event) { 
 						QI.showPopup(button,popupId,event); 
+						// only hstop handling event when popup is shown!
 						event.preventDefault();
 						event.stopPropagation();
 					}, false); 
@@ -2000,10 +2015,11 @@ QuickFolders.Interface = {
 					button.addEventListener("click", 
 						function(event) { 
 						  // right-click is already handled by contextmenu event
-						  if (event.button == 0)
+						  if (event.button == 0) {
 								QI.showPopup(button,popupId,event); 
-							event.preventDefault();
-							event.stopPropagation();
+								event.preventDefault();
+								event.stopPropagation();
+							}
 						}, false); 
 					button.hasClickEventListener = true;
 					this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
@@ -4612,30 +4628,53 @@ QuickFolders.Interface = {
     }
     
     // [Bug 26088] check if folder has a parent (or grand parent) which starts with the passed search string
+		// 4.14 - extend parent to allow / within string to specify grandparent / parent
     function isParentMatch(folder, search, maxLevel, parentList) {
       if (!search) return true; // ??? should be false?
       let f = folder,
-			    pLevel = 1;
+			    pLevel = 1,
+			    ancestors = search.split("/"),
+					directParent = null;
+					
+			maxLevel = ancestors.length;
       while (f.parent && maxLevel) {
         maxLevel--;
         f = f.parent;
-        if (f.prettyName.toLowerCase().indexOf(search)==0) {
-					if (pLevel==1) {  // direct parent? Add to collection in case we want to create child (slash)
-						if (parentList.indexOf(f)<0)
-							parentList.push(f);
+				
+        if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+					// 1st (top level) match
+					if (!directParent) directParent = f;
+					
+					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
+						if (parentList.indexOf(directParent)<0)
+							parentList.push(directParent);
+						return true;
 					}
-          return true;
 				}
+				else return false;
 				pLevel++;
       }
       return false;
     }
 		
 		function addIfMatch(folder, search, parentList) {
-			if (folder.prettyName.toLowerCase().indexOf(search)==0) {
-				if (parentList.indexOf(folder)<0)
-					parentList.push(folder);
-				return true;
+			let ancestors = search.split("/"),
+			    maxLevel = ancestors.length,
+					f = folder,
+					directParent = null;
+			while (f && maxLevel) {
+				maxLevel--;
+				if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+					if (!directParent) directParent = folder;
+					if (maxLevel == 0) {
+						if (parentList.indexOf(directParent)<0)
+							parentList.push(directParent);
+						return true;
+					}
+				}
+				else
+					return false;
+				f=f.parent;
 			}
 			return false;
 		}
@@ -4643,7 +4682,10 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           model = QuickFolders.Model,
           prefs = QuickFolders.Preferences,
-          Ci = Components.interfaces;
+          Ci = Components.interfaces,
+					ELLIPSIS = "\u2026".toString(),
+					CHEVRON = "\u00BB".toString();
+					
 		let isSelected = false,
 				enteredSearch = searchBox.value,
 	      searchString = enteredSearch.toLocaleLowerCase(),
@@ -4680,7 +4722,7 @@ QuickFolders.Interface = {
 			}
 		}
 		// SLASH command - list child folders !
-    let parentPos = searchString.indexOf('/');
+    let parentPos = searchString.lastIndexOf('/');
     if (parentPos>0) { // we have a parent folder
 			if (prefs.isDebugOption('quickMove')) debugger;
       parentString = searchString.substr(0, parentPos);
@@ -4708,8 +4750,15 @@ QuickFolders.Interface = {
 		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
     let maxParentLevel = searchString.length ? prefs.getIntPref('premium.findFolder.maxParentLevel') : 1; 
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
-    if (util.PlatformVersion<13) {
+		
+		// multiple slashes?
+		if (parentString && searchString.indexOf("/")>1) debugger;
+		
+		let isLegacyIterator = util.isLegacyIterator;
+    if (isLegacyIterator) {
+			util.logDebugOptional("interface.findFolder", "Using old folder iterator for Platform=" + util.PlatformVersion);
       let AF = util.allFoldersIterator(isFiling);
+			util.logDebugOptional("Assigned AllFolders = " + AF);
       for (let fi=0; fi<AF.length; fi++) {
         let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
         if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
@@ -4722,7 +4771,7 @@ QuickFolders.Interface = {
 			
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-			if (util.PlatformVersion<13) {  // util.Application == 'Postbox'
+			if (isLegacyIterator) {  // util.Application == 'Postbox'
 				let AF = util.allFoldersIterator(isFiling);
 				for (let fi=0; fi<AF.length; fi++) {
 					let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
@@ -4736,8 +4785,7 @@ QuickFolders.Interface = {
 		}
 		
 		// rebuild popup
-		let menupopup,
-		    ELLIPSIS = "\u2026".toString();
+		let menupopup;
 		if (true) {
 			matches.sort(function (a,b) { if (b.rank - a.rank == 0) return b.lname - a.lname; return b.rank - a.rank; });
 			
@@ -4752,13 +4800,7 @@ QuickFolders.Interface = {
 			//rebuild the popup menu
 			while (menupopup.firstChild)
 				menupopup.removeChild(menupopup.firstChild);
-		  if (matches.length == 0) {
-			  let menuitem = this.createIconicElement('menuitem','*');
-				menuitem.setAttribute('label', ELLIPSIS); // just one dummy to show we were searching
-				menuitem.setAttribute("tag", "dummy");
-				menupopup.appendChild(menuitem);
-			}
-			else {
+		  if (matches.length) {
 				// restrict results to 25
 				let count = Math.min(matches.length,25);
 				for (let j=0; j<count; j++) {
@@ -4798,7 +4840,8 @@ QuickFolders.Interface = {
 				}
 			}
 			
-			if (prefs.isDebugOption('quickMove')) debugger;			
+			if (prefs.isDebugOption('quickMove')) debugger;	
+			let isInsertNewFolderTop = prefs.getBoolPref('quickMove.createFolderOnTop');
 			while (parents.length) {
 				let f = parents.pop();
 				
@@ -4808,9 +4851,20 @@ QuickFolders.Interface = {
 					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch).toLocaleLowerCase())
 					continue; // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
 				let menuitem = this.createIconicElement('menuitem','*'),
-				    label = this.getUIstring('qfNewSubFolder', 'Create subfolder {0} ' + "\u00BB".toString() + ' {1}' + ELLIPSIS);
+				    label = this.getUIstring('qfNewSubFolder', 'Create subfolder {0} ' + CHEVRON + ' {1}' + ELLIPSIS);
 						
-				menuitem.setAttribute('label', label.replace('{0}', f.rootFolder.name + ": " + f.prettyName).replace('{1}', enteredSearch));
+				let parCount = parentString.split("/").length+1,
+				    parFld = "",
+						atom = null;
+				while (parCount) {
+					atom = atom ? atom.parent : f;
+					if (!parFld) 
+						parFld = atom.prettyName;
+					else
+						parFld = atom.prettyName + ' ' + CHEVRON + ' ' + parFld; // prepend ancestor
+					parCount--;
+				}
+				menuitem.setAttribute('label', label.replace('{0}', f.rootFolder.name + ": " + parFld).replace('{1}', enteredSearch));
 				menuitem.addEventListener('command', function(event) { 
 						QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch); 
 						return false; 
@@ -4821,10 +4875,17 @@ QuickFolders.Interface = {
 					f.setStringProperty("isQuickFolder", ""); // remove this temporary property
 					menuitem.className += ' quickFolder';
 				}
-				if (menupopup.firstChild)
+				
+				if (menupopup.firstChild && isInsertNewFolderTop)
 					menupopup.insertBefore(menuitem, menupopup.firstChild);
 				else
-					menupopup.appendChild(menuItem);
+					menupopup.appendChild(menuitem);
+			}
+			if (!menupopup.childElementCount) {
+				let menuitem = this.createIconicElement('menuitem','*');
+				menuitem.setAttribute('label', ELLIPSIS); // just one dummy to show we were searching
+				menuitem.setAttribute("tag", "dummy");
+				menupopup.appendChild(menuitem);
 			}
 		}
 		
@@ -5396,7 +5457,6 @@ QuickFolders.Interface = {
 
   configureCategory: function configureCategory(folder, quickfoldersPointer) {
 		let retval = {btnClicked:null};
-		debugger;
 		window.openDialog('chrome://quickfolders/content/set-folder-category.xul',
 			'quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal=no,resizable,alwaysRaised', quickfoldersPointer, folder,retval);
 		if (retval.btnClicked!=null)
@@ -5686,9 +5746,10 @@ QuickFolders.Interface = {
 
 	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(Name, Title)	{
     const Cc = Components.classes,
-		      Ci = Components.interfaces;
+		      Ci = Components.interfaces,
+					util = QuickFolders.Util;
 		try {
-			QuickFolders.Util.logDebugOptional("css","ensureStyleSheetLoaded(Name: " + Name + ", Title: " + Title + ")" );
+			util.logDebugOptional("css","ensureStyleSheetLoaded(Name: " + Name + ", Title: " + Title + ")" );
 
 			QuickFolders.Styles.getMyStyleSheet(Name, Title); // just to log something in console window
 
@@ -5697,13 +5758,14 @@ QuickFolders.Interface = {
 			    fileUri = (Name.length && Name.indexOf("chrome://")<0) ? "chrome://quickfolders/content/" + Name : Name,
 			    uri = ios.newURI(fileUri, null, null);
 			if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
-				QuickFolders.Util.logDebugOptional("css", "=============================================================\n"
+				util.logDebugOptional("css", "=============================================================\n"
 				                                 + "style sheet not registered - now loading: " + uri);
 				sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
 			}
 		}
 		catch(e) {
-			Services.prompt.alert(null,"QuickFolders",'ensureStyleSheetLoaded failed: ' + e);
+			// removed alert - loading the platform specific code seems to be a problem on some systems
+			util.logException("QuickFolders.Interface.ensureStyleSheetLoaded failed: ", e);
 		}
 	} ,
 
@@ -6348,8 +6410,12 @@ QuickFolders.Interface = {
 							tabMode = "glodaSearch-result";
 						}
 					}
-					else
-						tabMode = ""; // Sm -- [Bug 25585] this was in the wrong place!
+					else {
+						if (!tabmail.tabInfo.length)
+							tabMode =  '3pane';
+						else
+							tabMode = ""; // Sm -- [Bug 25585] this was in the wrong place!
+					}
 				}
 			}
 		}

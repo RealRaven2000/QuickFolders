@@ -450,6 +450,30 @@ END LICENSE BLOCK */
 		## Added logic for extending license before expiry
 		## Added platform specific style loading routine
 		## Improved license parsing to make resilient against bad line break conversions
+		
+	4.13.3 Interlink only release - 27/02/2019
+	  ## Fixed issue with legacy Iterator which is called for Application with Platform Version < 13
+		##   which caused the quickMove / quickJump search function to malfunction - Interlink Only.
+		
+  4.13.4 QuickFolder Pro - 02/03/2019
+    ## [Bug 26646] Error on Thunderbird start: ensureStyleSheetLoaded failed.
+
+	4.14 QuickFolder Pro - 25/03/2019
+	  ## [Bug 26645] Moving IMAP folders within the tree cuts off QF tabs
+		## Fixed: No context menu was shown When right-clicking the current folder tab in Thunderbird 52
+		   unless user executed double click .
+		## Improved quickMove / quickJump actions: you can now enter multiple forward slashes to determine a chain of parent folders. 
+		## Also moved "create new subfolder" entry to bottom and removed ... entry when any other entries are available.
+	  ## Show the "already have a license" button on the registration screen when the license key is expired.
+		## Tab Categories: replaced deprecated listbox with richlistbox
+		## When selecting Folder Aliases (Never Show) from the Categories box, items that are categorized "Always show" 
+		   are also displayed. from now on QuickFolders will not show the "Always" Item when "Folder Aliases" Category
+			 is selected.
+		## Support deleting multiple Categories from Category box. please only select Categories
+		   you have defined yourself - you cannot select the built in categoires (Always / Never / Uncategorized)
+			 in a multiple selection/
+		## When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up
+		   routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)
 	
 	Known Issues
 	============
@@ -468,7 +492,6 @@ END LICENSE BLOCK */
 		## when deleting the current folder we should change into the parent folder to avoid confusion 
 		##      at the moment we are in the folder after it's moved to trash which makes it look as if 
 		##      it still a useful folder (Postbox)
-	
 	
 ###VERSION###
 
@@ -2454,7 +2477,9 @@ QuickFolders.FolderListener = {
       let f = item.QueryInterface(Ci.nsIMsgFolder);
       util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
 			let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
-			util.touch(fld || f); // set MRUTime
+			if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
+				util.touch(fld || f); // set MRUTime, unless folder was deleted.
+			}
 			QuickFolders.FolderListener.lastAdded = f;
 		}
 		catch(e) { };
@@ -2477,7 +2502,7 @@ QuickFolders.FolderListener = {
 			logDebugOptional("listeners.folder", "OnItemRemoved\n" + f.prettyName + "\nFROM " + fromURI);
 			listener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
-			if (fromURI !== toURI) {
+			if (fromURI !== toURI && toURI) {
 				if (listener.lastAdded && (f.name === listener.lastAdded.name)) {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
 					if (toURI)  {
@@ -2507,7 +2532,7 @@ QuickFolders.FolderListener = {
 				}
 			}
 			listener.lastAdded = null;
-      listener.lastRemoved = null;
+      // listener.lastRemoved = null;
 		}
 		catch(e) { };
 	},
@@ -2631,14 +2656,25 @@ QuickFolders.FolderListener = {
           
           let newFolderName = listener.newFolderName || '',
               oldUri = listener.oldFolderUri;
-          log("events,listeners.folder","event: " + eString + 
-              "\nitem.URI = " + (item && item.URI ? item.URI : "?") +
-              "\nold URI = " + oldUri +
-              "\nstored newFolderName = " + newFolderName);
-					if (newFolderName) {
+					if (!item || (item.URI == oldUri && newFolderName)) {
+						log("events,listeners.folder","event: " + eString + 
+								"\nNEW item.URI = " + (item && item.URI ? item.URI : "?") +
+								"\nold URI = " + oldUri +
+								"\nstored newFolderName = " + newFolderName);
 						QuickFolders.Model.moveFolderURI(oldUri, newFolderName);
             listener.newFolderName = null;
             listener.oldFolderUri = null;
+					}
+					else { // [Bug 26645]  moving folders in IMAP tree - check referential integrity of model
+					  let movedFolder = listener.lastRemoved || item;
+						if (movedFolder) {
+							// if folder was moved, the prettyName is the same:
+							// if (movedFolder.prettyName == item.prettyName ) { // && item.server.type=='imap'
+								QuickFolders.Model.moveFolderURI(movedFolder.URI, item.URI);
+							// }
+						}
+						listener.lastRemoved = null;
+						listener.oldFolderUri = null;
 					}
 					break;
         default:

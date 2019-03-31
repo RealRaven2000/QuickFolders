@@ -20,7 +20,12 @@ a.tooltip:hover span {
   display:inline; 
 	position: absolute; 
 	background: #000 url(src/css-tooltip-gradient-bg.png) repeat-x 0 0; 
+	margin-top: 55px;
 } 
+ a.tooltip.nohover:hover span {
+	margin-top: 5px; /* bargain star */
+}
+
 /* arrow */
 .callout {
 	border:0;

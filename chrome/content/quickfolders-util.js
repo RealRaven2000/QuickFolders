@@ -7,7 +7,10 @@
 
   END LICENSE BLOCK */
 
-Components.utils.import('resource://gre/modules/Services.jsm');
+if (typeof ChromeUtils.import == "undefined")
+	Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
+else
+	ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_ConsoleService=null;
 
@@ -24,7 +27,10 @@ if (!QuickFolders.Filter)
 if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo).ID != "postbox@postbox-inc.com")
 {
   // Here, Postbox declares fixIterator
-  Components.utils.import("resource:///modules/iteratorUtils.jsm");  
+	if (typeof ChromeUtils.import == "undefined")
+		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
+	else
+		ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
 }
 
 	
@@ -70,8 +76,9 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.14",
+	HARDCODED_CURRENTVERSION : "4.14.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
+	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_NEWSHOST  : 0x0002,
@@ -213,10 +220,15 @@ QuickFolders.Util = {
 				return;
 			util.VersionProxyRunning = true;
 			util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
-			if (Components.utils.import) {
-				if (typeof AddonManager != 'object')
-					Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				AddonManager.getAddonByID("quickfolders@curious.be", function(addon) {
+			if (Components.utils.import || ChromeUtils.import) {
+				if (typeof AddonManager != 'object') {
+					if (ChromeUtils.import)
+						ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
+					else
+						Components.utils.import("resource://gre/modules/AddonManager.jsm");
+				}
+				
+				let versionCallback = function(addon) {
 					let versionLabel = window.document.getElementById("qf-options-header-description");
 					if (versionLabel) versionLabel.setAttribute("value", addon.version);
 
@@ -226,7 +238,12 @@ QuickFolders.Util = {
 					// make sure we are not in options window
 					if (!versionLabel)
 						util.FirstRun.init();
-				});
+				}
+				
+				if (util.versionGreaterOrEqual(util.ApplicationVersion, "61")) 
+					AddonManager.getAddonByID(util.ADDON_ID).then(versionCallback); // this function is now a promise
+				else
+					AddonManager.getAddonByID("quickfolders@curious.be", versionCallback);
 			}
 
 			util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
@@ -242,39 +259,15 @@ QuickFolders.Util = {
 	},
 
 	get Version() {
-    const Cc = Components.classes,
-          Ci = Components.interfaces;
     let util = QuickFolders.Util;
-		//returns the current QF version number.
+		// returns the current QuickFolders (full) version number.
 		if (util.mExtensionVer)
-			return util.mExtensionVer;
+			return util.mExtensionVer; // set asynchronously
 		let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN;
-
-		if (!Cc["@mozilla.org/extensions/manager;1"]) {
-			// Addon Manager: use Proxy code to retrieve version asynchronously
-			util.VersionProxy(); // modern Mozilla builds.
-											  // these will set mExtensionVer (eventually)
-											  // also we will delay FirstRun.init() until we _know_ the version number
-		}
-		else  // --- older code: extensions manager.
-		{
-			try {
-				if (Cc["@mozilla.org/extensions/manager;1"]) {
-					let gExtensionManager = Cc["@mozilla.org/extensions/manager;1"]
-						                        .getService(Ci.nsIExtensionManager);
-					current = gExtensionManager.getItemForID("quickfolders@curious.be").version;
-				}
-				else {
-					current = current + "(?)";
-				}
-				util.mExtensionVer = current;
-				util.FirstRun.init();
-			}
-			catch(ex) {
-				current = current + "(?ex?)" // hardcoded, program this for Tb 3.3 later
-				util.logToConsole("QuickFolder Version retrieval failed - are you using an old version of " + util.Application + "?");
-			}
-		}
+		// Addon Manager: use Proxy code to retrieve version asynchronously
+		util.VersionProxy(); // modern Mozilla builds.
+											// these will set mExtensionVer (eventually)
+											// also we will delay FirstRun.init() until we _know_ the version number
 		return current;
 
 	} ,
@@ -294,6 +287,19 @@ QuickFolders.Util = {
 		return strip(pureVersion, '.hc');
 	},
   
+	versionGreaterOrEqual: function(a, b) {
+		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+														.getService(Components.interfaces.nsIVersionComparator);
+		return (versionComparator.compare(a, b) >= 0);
+	} ,
+
+	versionSmaller: function(a, b) {
+		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+														.getService(Components.interfaces.nsIVersionComparator);
+		 return (versionComparator.compare(a, b) < 0);
+	} ,	
+		
+	
 	getMail3PaneWindow: function getMail3PaneWindow() {
 		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
 				.getService(Components.interfaces.nsIWindowMediator),
@@ -567,23 +573,33 @@ QuickFolders.Util = {
 			return QuickFolders.Util.$('qf-options-prefpane');
 		}
 		
+		const prefs = QuickFolders.Preferences;
+		
 		try {
+			if (sColorString.startsWith('rgb')) {
+				// rgb colors.
+				let components = sColorString.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/),
+				    hexColor = "#" + hex(components[1]) + hex(components[2]) + hex(components[3]); // ignore transparency
+				return hexColor;
+			}
 			let theColor, // convert system colors such as menubackground etc. to hex
-					d = document.createElement("div");
+			    d = document.createElement("div");
 			d.style.color = sColorString;
 			getContainer().appendChild(d)
 			theColor = window.getComputedStyle(d,null).color;
 			getContainer().removeChild(d);
 
 			if (theColor.search("rgb") == -1)
-				return theColor;
+				return theColor; // unchanged
 			else {
-				theColor = theColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+				// rgb colors.
+				theColor = theColor.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 				let hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
 				return hexColor;
 			}
 		}
 		catch(ex) { // Bug 26387
+			if (prefs.isDebug) debugger;
 			this.logException('getSystemColor(' + sColorString + ') failed', ex);
 			return "#000000";
 		}
@@ -1762,7 +1778,6 @@ QuickFolders.Util = {
 		      util = QuickFolders.Util,
 					styleEngine = QuickFolders.Styles;
 		util.logDebug("Loading platform styles for " + util.HostSystem + "...");
-		debugger;
 		switch (util.HostSystem) {
 			case "linux":
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');

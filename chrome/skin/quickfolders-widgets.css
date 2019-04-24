@@ -217,3 +217,12 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 #quickFoldersSkipFolder:hover { 
 	-moz-image-region: rect(16px, 16px, 32px, 0px);
 }
+
+/* colorpicker replacement */
+input[type="color"] {
+	width: 40px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}

@@ -9,7 +9,10 @@
   END LICENSE BLOCK 
 */
 
-Components.utils.import('resource://gre/modules/Services.jsm');
+if (typeof ChromeUtils.import == "undefined") 
+	Components.utils.import('resource://gre/modules/Services.jsm');
+else
+	ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -48,37 +51,38 @@ QuickFolders.Options = {
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
 	
-	accept: function accept() {
+	accept: function accept(evt) {
+		const prefs = QuickFolders.Preferences;
+		
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly" || this.optionsMode=="licenseKey")
 			return;
     let getElement = document.getElementById.bind(document);
 		// persist colors
 		try {
-			const prefs = QuickFolders.Preferences;
 			prefs.CurrentThemeId = getElement("QuickFolders-Theme-Selector").value;
 
 			prefs.setUserStyle("ActiveTab","background-color",
-							getElement("activetab-colorpicker").color);
+							getElement("activetab-colorpicker").value);
 			prefs.setUserStyle("ActiveTab","color",
-							getElement("activetab-fontcolorpicker").color);
+							getElement("activetab-fontcolorpicker").value);
 
 			prefs.setUserStyle("InactiveTab","background-color",
-							getElement("inactive-colorpicker").color);
+							getElement("inactive-colorpicker").value);
 			prefs.setUserStyle("InactiveTab","color",
-							getElement("inactive-fontcolorpicker").color);
+							getElement("inactive-fontcolorpicker").value);
 
 			prefs.setUserStyle("HoveredTab","background-color",
-							getElement("hover-colorpicker").color);
+							getElement("hover-colorpicker").value);
 			prefs.setUserStyle("HoveredTab","color",
-							getElement("hover-fontcolorpicker").color);
+							getElement("hover-fontcolorpicker").value);
 
 			prefs.setUserStyle("DragTab","background-color",
-							getElement("dragover-colorpicker").color);
+							getElement("dragover-colorpicker").value);
 			prefs.setUserStyle("DragTab","color",
-							getElement("dragover-fontcolorpicker").color);
+							getElement("dragover-fontcolorpicker").value);
 
 			prefs.setUserStyle("Toolbar","background-color",
-							getElement("toolbar-colorpicker").color);
+							getElement("toolbar-colorpicker").value);
 			prefs.setIntPref('style.corners.customizedTopRadiusN',
 							getElement("QuickFolders-Options-CustomTopRadius").value);
 			prefs.setIntPref('style.corners.customizedBottomRadiusN',
@@ -91,6 +95,7 @@ QuickFolders.Options = {
 			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
 		};
 		this.rememberLastTab();
+		return true;
 	} ,
 	
 	close: function close() {
@@ -164,8 +169,8 @@ QuickFolders.Options = {
 				colorPicker.collapsed = false; // paletteKey = 0  ->  no palette
         let transcol =
           (previewId=='inactivetabs-label') 
-            ? this.getTransparent(colorPicker.color, prefs.getBoolPref("transparentButtons"))
-            : colorPicker.color;
+            ? this.getTransparent(colorPicker.value, prefs.getBoolPref("transparentButtons"))
+            : colorPicker.value;
 				previewTab.style.backgroundColor = transcol;
       }
 			
@@ -187,12 +192,41 @@ QuickFolders.Options = {
     }
   } ,
   
+	loadPreferences: function qf_loadPreferences() {
+		const util = QuickFolders.Util;
+		util.logDebug("loadPreferences - start:");
+		debugger;
+		let myprefs = document.getElementsByTagName("preference");
+		if (myprefs.length) {
+			let prefArray = [];
+			for (let it of myprefs) {
+				let p = new Object({ id: it.id, 
+						      name: it.getAttribute('name'),
+						      type: it.getAttribute('type') });
+				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+				prefArray.push(p);
+			}
+			util.logDebug("Adding " + prefArray.length + " preferences to Preferences loader...")
+			if (Preferences)
+				Preferences.addAll(prefArray);
+		}
+		util.logDebug("loadPreferences - finished.");
+	} ,
+	
 	load: function load() {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					QI = QuickFolders.Interface,
 					options = QuickFolders.Options,
 					licenser = util.Licenser;
+					
+		util.logDebug("QuickFolders.Options.load()");
+		
+		if (util.versionGreaterOrEqual(util.ApplicationVersion, "61")) {
+			options.loadPreferences();
+		}
+		
+		if (prefs.isDebugOption('options')) debugger;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
@@ -337,23 +371,25 @@ QuickFolders.Options = {
 		options.configExtra2Button();
 		
 		util.loadPlatformStylesheet(window);
+		util.logDebug("QuickFolders.Options.load() - COMPLETE");
+		
 	},
   
   initBling: function initBling (tabbox) {
 		const util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
 		      QI =  QuickFolders.Interface;
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
-        prefs = QuickFolders.Preferences,
-        col = prefs.getUserStyle("ActiveTab","color","#FFFFFF"), 
-        bcol = prefs.getUserStyle("ActiveTab","background-color","#000090");
-    getElement("activetab-colorpicker").color = bcol;
-    getElement("activetab-fontcolorpicker").color = col;
+        col = util.getSystemColor(prefs.getUserStyle("ActiveTab","color","#FFFFFF")), 
+        bcol = util.getSystemColor(prefs.getUserStyle("ActiveTab","background-color","#000090"));
+    getElement("activetab-colorpicker").value = bcol;
+    getElement("activetab-fontcolorpicker").value = col;
     getElement("activetabs-label").style.setProperty('color', col, 'important');
     getElement("activetabs-label").style.backgroundColor = bcol;
 
-    bcol = prefs.getUserStyle("InactiveTab","background-color","buttonface");
-    getElement("inactive-colorpicker").color = bcol;
+    bcol = util.getSystemColor(prefs.getUserStyle("InactiveTab","background-color","buttonface"));
+    getElement("inactive-colorpicker").value = bcol;
 
     //support transparency and shadow
     let transcol  =  this.getTransparent(bcol, prefs.getBoolPref("transparentButtons"));
@@ -361,25 +397,25 @@ QuickFolders.Options = {
     getElement("inactivetabs-label").style.backgroundColor = transcol;
     // this.showButtonShadow(prefs.getBoolPref("buttonShadows"));
 
-    col = prefs.getUserStyle("InactiveTab","color","buttontext");
-    getElement("inactive-fontcolorpicker").color = col;
+    col = util.getSystemColor(prefs.getUserStyle("InactiveTab","color","buttontext"));
+    getElement("inactive-fontcolorpicker").value = col;
     getElement("inactivetabs-label").style.setProperty('color', col, 'important');
 
 
-    bcol = prefs.getUserStyle("HoveredTab","background-color","#FFFFFF");
-    getElement("hover-colorpicker").color = bcol;
-    col = prefs.getUserStyle("HoveredTab","color","Black");
-    getElement("hover-fontcolorpicker").color = col;
+    bcol = util.getSystemColor(prefs.getUserStyle("HoveredTab","background-color","#FFFFFF"));
+    getElement("hover-colorpicker").value = bcol;
+    col = util.getSystemColor(prefs.getUserStyle("HoveredTab","color","Black"));
+    getElement("hover-fontcolorpicker").value = col;
     getElement("hoveredtabs-label").style.setProperty('color', col, 'important');
     getElement("hoveredtabs-label").style.backgroundColor = bcol;
 
-    bcol = prefs.getUserStyle("DragTab","background-color", "#E93903");
-    getElement("dragover-colorpicker").color = bcol;
-    col = prefs.getUserStyle("DragTab","color", "White");
-    getElement("dragover-fontcolorpicker").color = col;
+    bcol = util.getSystemColor(prefs.getUserStyle("DragTab","background-color", "#E93903"));
+    getElement("dragover-colorpicker").value = bcol;
+    col = util.getSystemColor(prefs.getUserStyle("DragTab","color", "White"));
+    getElement("dragover-fontcolorpicker").value = col;
     getElement("dragovertabs-label").style.setProperty('color', col, 'important');
     getElement("dragovertabs-label").style.backgroundColor = bcol;
-    getElement("toolbar-colorpicker").color = prefs.getUserStyle("Toolbar","background-color", "White");
+    getElement("toolbar-colorpicker").value = util.getSystemColor(prefs.getUserStyle("Toolbar","background-color", "White"));
     // disable folder tree icons - not supported on Postbox+SeaMonkey
     getElement("chkShowIconButtons").collapsed = !prefs.supportsCustomIcon; 
 
@@ -486,6 +522,7 @@ QuickFolders.Options = {
   decryptLicense: function decryptLicense(testMode) {
 		const util = QuickFolders.Util,
 		      licenser = util.Licenser,
+					prefs = QuickFolders.Preferences,
 					State = licenser.ELicenseState;
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
@@ -511,14 +548,14 @@ QuickFolders.Options = {
           license = txtBox.value;
       // store new license key
       if (!testMode) // in test mode we do not store the license key!
-        QuickFolders.Preferences.setStringPref('LicenseKey', license);
+        prefs.setStringPref('LicenseKey', license);
       
       let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
           LicenseKey,
           crypto = licenser.getCrypto(license),
           mail = licenser.getMail(license),
           date = licenser.getDate(license);
-      if (QuickFolders.Preferences.isDebug) {
+      if (prefs.isDebug) {
         let test = 
             "┌───────────────────────────────────────────────────────────────┐\n"
           + "│ QuickFolders.Licenser found the following License components:\n"
@@ -627,14 +664,13 @@ QuickFolders.Options = {
 		}
 
     trans.getTransferData("text/unicode", str, strLength);
-    if (strLength.value) {
-      if (str) {
-        let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data,
-            txtBox = document.getElementById('txtLicenseKey'),
-            strLicense = pastetext.toString();
-        txtBox.value = strLicense;
-        finalLicense = this.trimLicense();
-      }    
+		// Tb 66 strLength doesn't have a value attribute
+    if (str && (strLength.value || str.value)) {
+			let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data,
+					txtBox = document.getElementById('txtLicenseKey'),
+					strLicense = pastetext.toString();
+			txtBox.value = strLicense;
+			finalLicense = this.trimLicense();
     }
 		this.validateLicenseInOptions(false);
     /* if (finalLicense) {
@@ -814,23 +850,25 @@ QuickFolders.Options = {
 	} ,
 
 	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
+		const prefs = QuickFolders.Preferences;
 		let prefString1 = cbox.getAttribute('preference'),
 		    prefName1 = document.getElementById(prefString1).getAttribute('name'),
 		    cbox2 = document.getElementById(cbox2Name);
-		if(!QuickFolders.Preferences.getBoolPrefVerbose(prefName1)) { // not yet checked but will be after event is propagated.
+		if(!prefs.getBoolPrefVerbose(prefName1)) { // not yet checked but will be after event is propagated.
 			let prefString2 = cbox2.getAttribute('preference'),
 			    prefName2 = document.getElementById(prefString2).getAttribute('name');
 			// uncheck the other checkbox
-			if (QuickFolders.Preferences.getBoolPrefVerbose(prefName2))
-				QuickFolders.Preferences.setBoolPrefVerbose(prefName2, false);
+			if (prefs.getBoolPrefVerbose(prefName2))
+				prefs.setBoolPrefVerbose(prefName2, false);
 		}
 	},
 
 	setDefaultButtonRadius: function setDefaultButtonRadius() {
+		const prefs = QuickFolders.Preferences;
 		document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4";
 		document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
-    QuickFolders.Preferences.setIntPref('style.corners.customizedTopRadiusN', 4);
-    QuickFolders.Preferences.setIntPref('style.corners.customizedBottomRadiusN', 0);
+    prefs.setIntPref('style.corners.customizedTopRadiusN', 4);
+    prefs.setIntPref('style.corners.customizedBottomRadiusN', 0);
     let main = QuickFolders.Util.getMail3PaneWindow();
 		if (main) {
       const QI = main.QuickFolders.Interface; 
@@ -840,8 +878,8 @@ QuickFolders.Options = {
 
 	colorPickerTranslucent: function colorPickerTranslucent(picker) {
 		document.getElementById('inactivetabs-label').style.backgroundColor=
-      this.getTransparent(picker.color, document.getElementById('buttonTransparency').checked);
-		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
+      this.getTransparent(picker.value, document.getElementById('buttonTransparency').checked);
+		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.value);
 		return QuickFolders.Interface.updateMainWindow();
 	},
 	
@@ -934,8 +972,8 @@ QuickFolders.Options = {
   
 	// select: striped style / filled style
 	setColoredTabStyle: function setColoredTabStyle(styleId, force) {
-    let prefs = QuickFolders.Preferences,
-        QI = QuickFolders.Interface;
+    const prefs = QuickFolders.Preferences,
+					QI = QuickFolders.Interface;
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
 		prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
@@ -990,8 +1028,9 @@ QuickFolders.Options = {
 	 */	 
 	toggleUsePalette: function toggleUsePalette(mnuNode, buttonState, paletteType, isUpdatePanelColor) {
 		//let isChecked = checkbox.checked;
+    const prefs = QuickFolders.Preferences,
+					QI = QuickFolders.Interface;
 		let paletteTypeMenu = null,
-        prefs = QuickFolders.Preferences,
         getElement = document.getElementById.bind(document);
 		if (mnuNode.tagName) {
 		  switch(mnuNode.tagName) {
@@ -1060,10 +1099,10 @@ QuickFolders.Options = {
         if (m) {
           // if (!m.targetNode)
           m.targetNode = (buttonState == 'colored') ? 
-                         null : getElement(QuickFolders.Interface.getPreviewButtonId(buttonState));
+                         null : getElement(QI.getPreviewButtonId(buttonState));
           // retrieve palette index
-          let col = QuickFolders.Preferences.getIntPref('style.' + stylePref + '.paletteEntry');
-          QuickFolders.Interface.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item!
+          let col = prefs.getIntPref('style.' + stylePref + '.paletteEntry');
+          QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item!
         }
       }
     }
@@ -1079,8 +1118,8 @@ QuickFolders.Options = {
 	showPalette: function showPalette(label, buttonState) {
 		let id = label ? label.id : label.toString(),
         paletteMenuId = this.getButtonMenuId(buttonState),
-		    paletteMenu = document.getElementById(paletteMenuId),
-        QI = QuickFolders.Interface;
+		    paletteMenu = document.getElementById(paletteMenuId);
+    const QI = QuickFolders.Interface;
 		QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
 		if (paletteMenu) {
 		  if (paletteMenu.value == "0") {
@@ -1132,9 +1171,9 @@ QuickFolders.Options = {
 	toggleColorTranslucent: function toggleColorTranslucent(cb, pickerId, label, userStyle) {
 		let picker = document.getElementById(pickerId);
 		document.getElementById(label).style.backgroundColor=
-			this.getTransparent(picker.color, cb.checked);
+			this.getTransparent(picker.value, cb.checked);
 		if (userStyle)
-			QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.color);
+			QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.value);
 
 		// problems with instantapply?
 		let prefString = cb.getAttribute("preference"),
@@ -1177,8 +1216,8 @@ QuickFolders.Options = {
 		let picker = getElement('inactive-colorpicker');
 	
 		getElement('activetabs-label').style.backgroundColor=
-			this.getTransparent(picker.color, isPastel);
-		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.color);
+			this.getTransparent(picker.value, isPastel);
+		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.value);
 		QuickFolders.Preferences.setBoolPref('pastelColors', isPastel);
 		
 		this.initPreviewTabStyles();
@@ -1206,25 +1245,25 @@ QuickFolders.Options = {
 		    buttontextColor = util.getSystemColor("buttontext"),
         getElement = document.getElementById.bind(document);
 
-		getElement("activetab-colorpicker").color = highlightColor;
+		getElement("activetab-colorpicker").value = highlightColor;
 		getElement("activetabs-label").style.backgroundColor = highlightColor;
-		getElement("activetab-fontcolorpicker").color = highlightTextColor;
+		getElement("activetab-fontcolorpicker").value = highlightTextColor;
 		getElement("activetabs-label").style.color = highlightTextColor;
 
-		getElement("hover-colorpicker").color = util.getSystemColor("orange");
-		getElement("hover-fontcolorpicker").color = "#FFF";
+		getElement("hover-colorpicker").value = util.getSystemColor("orange");
+		getElement("hover-fontcolorpicker").value = "#FFF";
 		getElement("hoveredtabs-label").style.color = "#FFF";
 		getElement("hoveredtabs-label").style.backgroundColor = util.getSystemColor("orange");
 
-		getElement("dragover-colorpicker").color = "#E93903";
-		getElement("dragover-fontcolorpicker").color = "#FFF";
+		getElement("dragover-colorpicker").value = "#E93903";
+		getElement("dragover-fontcolorpicker").value = "#FFF";
 		getElement("dragovertabs-label").style.color = "#FFF";
 		getElement("dragovertabs-label").style.backgroundColor = "#E93903";
 
-		getElement("toolbar-colorpicker").color = buttonfaceColor;
-		getElement("inactive-colorpicker").color = buttonfaceColor;
+		getElement("toolbar-colorpicker").value = buttonfaceColor;
+		getElement("inactive-colorpicker").value = buttonfaceColor;
 		getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
-		getElement("inactive-fontcolorpicker").color = buttontextColor;
+		getElement("inactive-fontcolorpicker").value = buttontextColor;
 		getElement("inactivetabs-label").style.color = buttontextColor;
 		return QuickFolders.Interface.updateMainWindow();
 	},

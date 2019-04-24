@@ -8,7 +8,16 @@
   END LICENSE BLOCK */
 
 if (QuickFolders.Util.Application != 'Postbox') {
-  Components.utils.import("resource:///modules/MailUtils.js");
+	  if (typeof ChromeUtils.import !== "undefined") {
+			try { // Tb 61
+				ChromeUtils.import("resource:///modules/MailUtils.jsm");
+			}
+			catch (ex) {
+				ChromeUtils.import("resource:///modules/MailUtils.js");
+			}  
+		}
+		else
+			Components.utils.import("resource:///modules/MailUtils.js");
 }
 
 QuickFolders.Model = {
@@ -304,8 +313,11 @@ QuickFolders.Model = {
   getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
     let msgfolder = null;
     const util = QuickFolders.Util;
-    if (typeof MailUtils != 'undefined' && MailUtils.getFolderForURI) {
-      return MailUtils.getFolderForURI(uri, checkFolderAttributes);
+    if (typeof MailUtils != 'undefined') {
+			if (MailUtils.getExistingFolder)
+				return MailUtils.getExistingFolder(uri, checkFolderAttributes);
+			else
+				return MailUtils.getFolderForURI(uri, checkFolderAttributes);
     }
     try {
       let mw = QuickFolders.win,

@@ -1,15 +1,11 @@
-<b>Version 4.14</b>
+<b>Version 4.14.1</b>
 <ul>
-<li> Improved quickMove / quickJump actions: you can now enter multiple forward slashes to determine a chain of parent folders. The entered parent folder names will be displayed in full even when only entered partially. Also moved <i>create new subfolder</i> entry to bottom.</li>
-<li> <a name="26645" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26645" target="_blank">[Bug 26645]</a> Move IMAP folders within the tree cuts off QF tabs.
-
-When a folder is moved from one tree location to another in a synchronised IMAP account, the folder location (URL) is not updated in the QuickFolders Tab pointing to the moved folder. Workaround: move the folder from the tree to a QuickFolders Tab (or folder submenu thereof) while holding down the SHIFT key.</li>
-<li> Fixed: No context menu was shown When right-clicking the current folder tab in Thunderbird 52 unless user executed double click.</li>
-<li> Show the "already have a license" button on the registration screen when the license key is expired.</li>
+<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26654" target="_blank">[Bug 26654]</a> quickMove shortcuts triggered during in-mail search</li>
+<li> quickMove: Improve remembering all entered parent folders when only a single match is found.</li>
+<li> Replaced className logic with classList, where possible</li>
+<li> Removed deprecated getCharPref function: make remembering folder tabs preferences backwards compatible for older clients (Interlink) by using getComplexValue / getStringPref instead (getCharPref could lead to faulty characters when using extended character sets)</li>
+<li> Japanese locale completed - thanks to Masahiko Imanaka. </li>
+<li> Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.</li>
+<li> Prepared code base for compatibility with Thunderbird 66 - this will be released as a separate version because it is currently impossible to release a version that is compatible with Thunderbird 60. </li>
+<li> Replaced color pickers with HTML elements - these call the System Specific color pickers of your operating system.</li>
 </ul>
-<b>Tab Categories</b>
-<ul>
-<li> When selecting Folder Aliases (Never Show) from the Categories box, items that are categorized "Always show" are also displayed. from now on QuickFolders will not show the "Always" Item when "Folder Aliases" Category is selected.</li>
-<li> Support deleting multiple Categories from Category box. please only select Categories you have defined yourself - you cannot select the built in categoires (Always / Never / Uncategorized) in a multiple selection.</li>
-<li> When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)</li>
-</ul> 

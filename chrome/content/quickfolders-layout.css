@@ -913,6 +913,7 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
 /** notifications **/
 @keyframes quickFoldersPulse1 {to {box-shadow: 0 0 0 10px rgba(190, 80, 60, 0.1);}}
 
+xbl-notification[value="quickfolders-proFeature"] .notification-button[accesskey], /* temporary Tb 64+ */
 notification[value="quickfolders-proFeature"] .notification-button[accesskey] {
 	-moz-appearance: none;
   animation: quickFoldersPulse1 2s infinite cubic-bezier(0.66, 0, 0, 1);
@@ -926,13 +927,14 @@ notification[value="quickfolders-proFeature"] .notification-button[accesskey] {
 	font-weight: bold;
 }
 
+xbl-notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover, /* temporary Tb 64+ */
 notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover {
 	background: linear-gradient(to bottom, #fedeb2 0%,#f1a233 46%,#eb8c07 57%,#fbba5f 100%) !important;
 	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.5);
 }
 
 
-
+xbl-notification[value="quickfolders-proFeature"] image.messageImage, /* temporary Tb 64+ */
 notification[value="quickfolders-proFeature"] image.messageImage {
 	/* proFeature.png */
 	min-width: 72px !important;
@@ -941,12 +943,14 @@ notification[value="quickfolders-proFeature"] image.messageImage {
 	height: 32px !important;
 	margin-bottom: 1em;
 }
+
+xbl-notification[value="quickfolders-proFeature"] .messageCloseButton,  /* temporary Tb 64+ */
 notification[value="quickfolders-proFeature"] .messageCloseButton {
 	min-width: 20px;
 	min-height: 20px;
-	border: 2px solid green;
 }
 
+xbl-notification[value="quickfolders-proFeature"] description.messageText, /* temporary Tb 64+ */
 notification[value="quickfolders-proFeature"] description.messageText 
 {
 	white-space: normal !important;

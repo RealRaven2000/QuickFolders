@@ -7,10 +7,13 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 //QuickFolders.Util.logDebug('Defining QuickFolders.bookmarks...');
-Components.utils.import("resource://gre/modules/Services.jsm");
+if (typeof ChromeUtils.import == "undefined") 
+	Components.utils.import("resource://gre/modules/Services.jsm");
+else
+	ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
-if (QuickFolders.Util.Application == 'Postbox'){ 
+if (QuickFolders.Util.Application == 'Postbox') { 
   if (typeof XPCOMUtils != 'undefined') {
     XPCOMUtils.defineLazyGetter(this, "NetUtil", function() {
     Components.utils.import("resource://gre/modules/NetUtil.jsm");
@@ -22,7 +25,16 @@ if (QuickFolders.Util.Application == 'Postbox'){
   }
 }
 else {
-  Components.utils.import("resource:///modules/MailUtils.js");
+	if (typeof ChromeUtils.import == "undefined") 
+		Components.utils.import("resource:///modules/MailUtils.js");
+	else {
+		try { // Tb 61
+			ChromeUtils.import("resource:///modules/MailUtils.jsm");
+		}
+		catch (ex) {
+			ChromeUtils.import("resource:///modules/MailUtils.js");
+		}
+	}
 }
 
 
@@ -220,8 +232,7 @@ QuickFolders.bookmarks = {
           
         if (!this.openMessage(entry, method)) {
           entry.invalid = true; // make sure this propagates to this.Entries!
-          if (menuItem.className.indexOf('invalid')<0)
-            menuItem.className+= ' invalid';
+					menuItem.classList.add('invalid');
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
           let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
               search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
@@ -250,7 +261,7 @@ QuickFolders.bookmarks = {
     let menu = QuickFolders.Util.$('QuickFolders-readingListMenu');
     for (let i = menu.childNodes.length-1; i>0; i--) {
       let item = menu.childNodes[i];
-      if (item.className.indexOf('cmd')<0 || item.tagName=='menuseparator')
+      if (!item.classList.contains('cmd') || item.tagName=='menuseparator')
         menu.removeChild(item);
     }
   } , 
@@ -275,7 +286,7 @@ QuickFolders.bookmarks = {
       menu.appendChild(document.createElement('menuseparator'));
     menuitem.setAttribute("label", entry.label);
     menuitem.className = 'msgUri menuitem-iconic';
-    if (entry.invalid) menuitem.className += ' invalid';
+    if (entry.invalid) menuitem.classList.add('invalid');
     menuitem.addEventListener("click", function(event) { 
       QuickFolders.bookmarks.onClick(event.target, event, entry); return false; }, false);
     menu.appendChild(menuitem);
@@ -694,7 +705,7 @@ QuickFolders.bookmarks = {
     // To read content from file
 		const {OS} = (typeof ChromeUtils.import == "undefined") ?
 		  Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-		  ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+		  ChromeUtils.import("resource://gre/modules/osfile.jsm");		
     // To read & write content to file
     // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
     
@@ -812,7 +823,7 @@ QuickFolders.bookmarks = {
     try {
 			const {OS} = (typeof ChromeUtils.import == "undefined") ?
 				Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-				ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+				ChromeUtils.import("resource://gre/modules/osfile.jsm");		
 
       let bookmarks = this, // closure this
           profileDir = OS.Constants.Path.profileDir,

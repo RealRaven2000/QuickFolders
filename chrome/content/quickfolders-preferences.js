@@ -37,17 +37,17 @@ QuickFolders.Preferences = {
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
-			const util = QuickFolders.Util;
+			const util = QuickFolders.Util,
+			      PS = this.service;
 			let json = JSON.stringify(folderEntries),
 					str = Components.classes["@mozilla.org/supports-string;1"]
 				.createInstance(Components.interfaces.nsISupportsString);
 			str.data = json;
 
-			if (util.PlatformVersion < 57.0)
-				this.service.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
+			if (PS.setStringPref)
+				PS.setStringPref("QuickFolders.folders", json);
 			else
-				this.service.setStringPref("QuickFolders.folders", json);
-			//this.service.setCharPref("QuickFolders.folders",json)
+				PS.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("storeFolderEntries()" + e);
@@ -470,12 +470,18 @@ QuickFolders.Preferences = {
 	},
 	
 	getStringPref: function getStringPref(p) {
-    let prefString =''
+    let prefString ='',
+		    key = "extensions.quickfolders." + p;        
+		  
     try {
-      prefString = this.service.getCharPref("extensions.quickfolders." + p);
+		  const Ci = Components.interfaces, Cc = Components.classes;
+			prefString = 
+				this.service.getStringPref ?
+				this.service.getStringPref(key) :
+				this.service.getComplexValue(key, Ci.nsISupportsString).data;			
     }
     catch(ex) {
-      QuickFolders.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
+      QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
     }
     finally {
       return prefString;
@@ -483,7 +489,16 @@ QuickFolders.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-		return this.service.setCharPref("extensions.quickfolders." + p, v);
+		if (this.service.setStringPref)
+			return this.service.setStringPref("extensions.quickfolders." + p, v);
+		else {
+		  const Ci = Components.interfaces, 
+			      Cc = Components.classes;
+			if (this.isDebug) debugger;
+			var str = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
+			str.data = v;
+			Services.prefs.setComplexValue("extensions.quickfolders." + p, Ci.nsISupportsString, str);
+		}
 	},
 
 	getIntPref: function getIntPref(p) {

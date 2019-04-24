@@ -1,8 +1,15 @@
 // NEW CODE
-// Task.jsm: function generators (function*)
-Components.utils.import("resource://gre/modules/Task.jsm");
-// throws PromiseUtils not defined
-Components.utils.import("resource://gre/modules/PromiseUtils.jsm");
+if (typeof ChromeUtils.import == "undefined") {
+	// Task.jsm: function generators (function*)
+	Components.utils.import("resource://gre/modules/Task.jsm");
+	// throws PromiseUtils not defined
+	Components.utils.import("resource://gre/modules/PromiseUtils.jsm");
+}
+else {
+	ChromeUtils.import("resource://gre/modules/Task.jsm");
+	ChromeUtils.import("resource://gre/modules/PromiseUtils.jsm");
+}
+
 // ChromeUtils.defineModuleGetter(this, "PromiseUtils", "resource://gre/modules/PromiseUtils.jsm");
 
 // refactored from async Task with help of @freaktechnik

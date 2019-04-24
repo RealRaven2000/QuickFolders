@@ -474,9 +474,23 @@ END LICENSE BLOCK */
 			 in a multiple selection/
 		## When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up
 		   routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)
+			 
+	4.14.1 QuickFolder Pro - WIP
+	  ## [Bug 26654] quickMove shortcuts triggered during in-mail search
+		## replaced className logic with classList, where possible
+		## quickMove: Improve remembering all entered parent folders when only a single match is found
+		## Removed deprecated getCharPref: make remembering folder tabs preferences backwards 
+		   compatible for older clients (Interlink) by using getComplexValue / getStringPref instead 
+			 (getCharPref could lead to faulty characters when using extended character sets)
+		## Japanese locale completed - thanks to Masahiko Imanaka 
+		## Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.		
+		
+		
 	
 	Known Issues
 	============
+		Thunderbird 66 compatibility - more to do for 67! https://privatebin.net/?2c1a1bcc9bebca9c#9Z15ZXr7zj+AOM4CUMDyQBasYCRPb8or+X0nvYcxzHM=
+	
 		## To Do: without quickFilters installed - the filter mode icon is not 
 		          working with full themes (TT deepdark) and neither is filter assistant triggered when a mail
 							is dropped in the folder tree.
@@ -1566,7 +1580,7 @@ var QuickFolders = {
                   let dx = (box.x - button.boxObject.x);
                   if (dx !== 0) {
                     sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT")
-                    button.className += (" " + sDirection); // add style for drop arrow (remove onDragEnd)
+                    button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
                   }
                 }
 							}
@@ -1752,8 +1766,8 @@ var QuickFolders = {
 			let button = event.target;
 			if (dragSession.isDataFlavorSupported("text/unicode") || dragSession.isDataFlavorSupported("text/plain")) { // drag buttons
 				// remove dragdrop marker:
-				button.className = button.className.replace(/\s*dragLEFT/,"");
-				button.className = button.className.replace(/\s*dragRIGHT/,"");
+				button.classList.remove("dragLEFT");
+				button.classList.remove("dragRIGHT");
 				QuickFolders_globalHidePopupId = "";
 				return;  // don't remove popup when reordering tabs
 			}
@@ -2146,12 +2160,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (!folderUri) return false;
 
 	let folderTree = QuickFolders.mailFolderTree,
-	    rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
-	    folderResource = rdf.GetResource(folderUri),
 	    msgFolder,
 	    isInvalid = false;
 	try {
-	  // msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
 	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
 		if (prefs.getBoolPref("autoValidateFolders")) {
 		  isInvalid = (!util.doesMailFolderExist(msgFolder));
@@ -2285,8 +2296,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
             util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
             // toggle to smartfolder view and reinitalize folder variable!
             theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-            let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
-            folderResource = rdf.GetResource(folderUri);
+            let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
+                folderResource = rdf.GetResource(folderUri);
             msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
             parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
           }

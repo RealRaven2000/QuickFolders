@@ -64,8 +64,9 @@ overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome:
 
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
-overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion<61
 overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
+overlay chrome://messenger/content/messenger.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion>=61
 
 #Postbox - we need to keep overlaying mailWindowOverlay at the moment or we loose the styling
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlayPostbox.xul application=postbox@postbox-inc.com
@@ -93,6 +94,7 @@ style chrome://messenger/content/customizeToolbar.xul chrome://quickfoldersLayou
 
 
 style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets.css
+style chrome://quickfolders/content/options.xul     chrome://quickfolders/skin/quickfolders-widgets64.css  appversion>=61.0
 style chrome://global/content/alerts/alert.xul      chrome://quickfolders/content/quickfolders-alert.css
 style chrome://quickfolders/content/register.xul    chrome://quickfolders/skin/quickfolders-widgets.css
 style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/skin/quickfolders-widgets.css

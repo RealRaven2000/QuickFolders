@@ -40,16 +40,15 @@ QuickFolders.quickMove = {
   
 	
 	rememberLastFolder: function rememberLastFolder(URIorFolder, parentName) {
-		const prefs = QuickFolders.Preferences;
-		let fld;
-		if (URIorFolder.name) {
-			fld = URIorFolder;
+		const prefs = QuickFolders.Preferences,
+		      util = QuickFolders.Util;
+		if (prefs.isDebugOption('quickMove')) {
+			util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
 		}
-		else {
-			fld = QuickFolders.Model.getMsgFolderFromUri(URIorFolder);
-		}
-		prefs.setStringPref("quickMove.lastFolderName", 
-		  (parentName) ?  parentName + "/" + fld.name : fld.name);
+		let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
+		    sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
+		prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
+		util.logDebugOptional('quickMove',"Storing: " + sRememberFolder)
 	},
 	
   // move or copy mails (or both at the same time!)

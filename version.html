@@ -200,22 +200,31 @@
 			-->
 
 			<a name="4.15">&nbsp;</a>
+			<a name="4.15.1">&nbsp;</a>
 			<li>
 				<h4>
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.15 - WIP</a>
 				</h4>
 					<ul>
+					  <li>
+						  Added lightweight theme support for current folder bar<br>
+						  <img src="images/current-folder-lightweight.png" alt="lightweight theme support" class="screenshots"/>
+							<p>
+							  For best result, select the "lighweight" option on the background dropdown on the <i>Advanced</i> tab.
+								I also slimmed down the layout for retrieving some added vertical space.<br>
+								<img src="images/lightweight-settings.png" alt="lightweight settings" class="screenshots"/><br>
+								You can further tweak ergonomics of the central navigation panel by decreasing the "Left Spacer" value.
+							</p>
+						</li>
 						<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> 
 								 ESR 2019 Readiness - compatibility with Thunderbird 67
-								 <p>Made quickFilters compatible with Thunderbird 67 - part of the ongoing effort to 
+							 <p>Made quickFilters compatible with Thunderbird 67 - part of the ongoing effort to 
 								 future proof quickFilters for 2020.  For now, this also means making the minimum requirement 
 								 using Thunderbird version 60. </p>
-								 <p>
+							 <p>
 								 I may back-port new features to older versions on demand - these will be handled on 
 								 a <a href="https://github.com/RealRaven2000/quickFilters/tree/Tb-52">separate Github branch</a>.
-								 </p>
-						</li>
-						<li> 
+							 </p>
 							<ul> 
 								<li> Replaced prefwindows with dialogs.</li>
 								<li> Use newer preferences script.</li>

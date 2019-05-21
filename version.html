@@ -204,62 +204,12 @@
 				<h4>
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.15 - WIP</a>
 				</h4>
-					<ul>
-					  <li>
-						  Added lightweight theme support for current folder bar<br>
-						  <img src="images/current-folder-lightweight.png" alt="lightweight theme support" class="screenshots"/>
-							<p>
-							  For best result, select the "lighweight" option on the background dropdown on the <i>Advanced</i> tab.
-								I also slimmed down the layout for retrieving some added vertical space.<br>
-								<img src="images/lightweight-settings.png" alt="lightweight settings" class="screenshots"/><br>
-								You can further tweak ergonomics of the central navigation panel by decreasing the "Left Spacer" value.
-							</p>
-						</li>
-						<li> <a name="26659" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26659" target="_blank">[Bug 26659]</a>
-						   Advanced Tab Props - falsely always applies to subfolders
-							<p>
-							 Setting From Identity or To To Address was always applied to all subfolders even 
-							 if the option "[x] Also apply to subfolders" was not selected. From now on, this 
-							 option will work.
-							</p>
-						</li>
-						<li> <a name="26665" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26665" target="_blank">[Bug 26665]</a>
-  						Cancel quickmove and erase list of messages with SHIFT+Escape.</li>
-						<li> <a name="26660" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26660" target="_blank">[Bug 26660]</a>
-  						quickMove: support pressing [Enter] to always select the top item, not just when 
-							there is only one item in the dropdown menu.</li>						<li> Support 'Cursor Up' key to jump to bottom of search results in quickJump / quickMove function. </li>
-						
-						<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> 
-								 ESR 2019 Readiness - compatibility with Thunderbird 68
-							 <p>Made QuickFolders compatible with Thunderbird 68 - part of the ongoing effort to 
-								 future proof QuickFolders for 2020.  For now, this also means making the minimum requirement 
-								 using Thunderbird version 60. </p>
-							 <p>
-								 I may back-port new features to older versions on demand - these will be handled on 
-								 a <a href="https://github.com/RealRaven2000/quickFilters/tree/Tb-52">separate Github branch</a>.
-							 </p>
-							<ul> 
-								<li> Replaced prefwindows with dialogs.</li>
-								<li> Use newer preferences script.</li>
-								<li> Replace groupbox elements with html fieldsets.</li>
-								<li> Use new promise-based AddonManager object.</li>
-							</ul> 
-						</li>
-					</ul>
-			</li>
-
-		
-			<a name="4.14.1">&nbsp;</a>
-			<li>
-				<h4>
-				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.14.1">Version 4.14.1 - 24/04/2019</a>
-				</h4>
 				<table class="QuickFoldersProRenew bargain"> 
 					<tr>
 						<td style="vertical-align:top;" colspan="2">
-							<h3 class="shillBox">QUICKFOLDERS PRO - RENEW YOUR LICENSE WITHIN APRIL AND SAVE:</h3>
-							<p>SPRING RENEWAL 33% off from April 29th to May 1st. Renew or extend your license and pay 9$ instead of 12$ for renewing your QuickFolders Pro license.
-								 <i>As of 26/02/2019, my web shop simplified the ordering by removing unnecessary address and telephone forms.</i></p> 
+							<h3 class="shillBox">QUICKFOLDERS PRO - RENEW YOUR LICENSE WITHIN MAY AND SAVE:</h3>
+							<p>MAY DAYS 25% off from May 21st to May 31st. Renew or extend your license and pay 9$ instead of 12$ for renewing your QuickFolders Pro license.
+							</p> 
 						</td>
 						<td style="vertical-align:top; max-width:0;" rowspan="3">
 							<a class="nohover tooltip" href="">
@@ -305,10 +255,10 @@
 				<table class="QuickFoldersFreeUser bargain"> 
 					<tr>
 						<td style="vertical-align:top;">
-							<h3 class="shillBox">QUICKFOLDERS PRO - END OF APRIL SALE!</h3>
-							<p>Get the Spring Sale Price for <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-donate-bargain">25% off</a> 
-							   from April 29th to May 1st. 
-								 <i>As of 26/02/2019, my web shop simplified the ordering by removing unnecessary address and telephone forms.</i></p> 
+							<h3 class="shillBox">QUICKFOLDERS PRO - END OF MAY SALE!</h3>
+							<p>Get the May Days Sale Price for <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-donate-bargain">25% off</a> 
+							   from May 21st to May 31st. 
+							</p> 
 						  <p>
 								Support the future of QuickFolders and enjoy unlimited <a href="premium.html">Premium Features</a>. 
 								You can purchase a license from QuickFolders options, using the QuickFolders Pro tab. 
@@ -332,6 +282,57 @@
 						</td>
 					</tr>
 				</table>
+				
+				<ul>
+					<li>
+						Added lightweight theme support for current folder bar<br>
+						<img src="images/current-folder-lightweight.png" alt="lightweight theme support" class="screenshots"/>
+						<p>
+							For best result, select the "lighweight" option on the background dropdown on the <i>Advanced</i> tab.
+							I also slimmed down the layout for retrieving some added vertical space.<br>
+							<img src="images/lightweight-settings.png" alt="lightweight settings" class="screenshots"/><br>
+							You can further tweak ergonomics of the central navigation panel by decreasing the "Left Spacer" value.
+						</p>
+					</li>
+					<li> <a name="26659" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26659" target="_blank">[Bug 26659]</a>
+						 Advanced Tab Props - falsely always applies to subfolders
+						<p>
+						 Setting From Identity or To To Address was always applied to all subfolders even 
+						 if the option "[x] Also apply to subfolders" was not selected. From now on, this 
+						 option will work.
+						</p>
+					</li>
+					<li> <a name="26665" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26665" target="_blank">[Bug 26665]</a>
+						Cancel quickmove and erase list of messages with SHIFT+Escape.</li>
+					<li> <a name="26660" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26660" target="_blank">[Bug 26660]</a>
+						quickMove: support pressing [Enter] to always select the top item, not just when 
+						there is only one item in the dropdown menu.</li>						<li> Support 'Cursor Up' key to jump to bottom of search results in quickJump / quickMove function. </li>
+					
+					<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> 
+							 ESR 2019 Readiness - compatibility with Thunderbird 68
+						 <p>Made QuickFolders compatible with Thunderbird 68 - part of the ongoing effort to 
+							 future proof QuickFolders for 2020.  For now, this also means making the minimum requirement 
+							 using Thunderbird version 60. </p>
+						 <p>
+							 I may back-port new features to older versions on demand - these will be handled on 
+							 a <a href="https://github.com/RealRaven2000/quickFilters/tree/Tb-52">separate Github branch</a>.
+						 </p>
+						<ul> 
+							<li> Replaced prefwindows with dialogs.</li>
+							<li> Use newer preferences script.</li>
+							<li> Replace groupbox elements with html fieldsets.</li>
+							<li> Use new promise-based AddonManager object.</li>
+						</ul> 
+					</li>
+				</ul>
+			</li>
+
+		
+			<a name="4.14.1">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.14.1">Version 4.14.1 - 24/04/2019</a>
+				</h4>
 				<ul>
 					<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26654" target="_blank">[Bug 26654]</a>
 							 quickMove shortcuts triggered during in-mail search</li>

@@ -71,12 +71,41 @@ var QuickFolders_TabURIopener = {
 	}
 };
 
+
+try {
+	// override version number - retrieves QUICKFOLDERS_HC_VERSION
+	Components.utils.import("resource://quickfoldersShim60/quickfolders-util2.jsm"); 
+}
+catch (ex) {
+	let msg = "couldn't import quickfolders-util2.jsm";
+	debugger;
+	try {
+		var Ci1 = Components.interfaces,
+		    Cc2 = Components.classes;
+		let consoleService = Cc2["@mozilla.org/consoleservice;1"].getService(Ci1.nsIConsoleService),
+				scriptError = Cc2["@mozilla.org/scripterror;1"].createInstance(Ci1.nsIScriptError),
+				Category = 'system javascript',
+		    stack = '';
+		if (typeof ex.stack!='undefined')
+			stack = ex.stack.replace("@","\n  ");
+
+		scriptError.init(msg, ex.fileName || "?", stack, ex.lineNumber, 0, 0x2, Category);
+		if (this.Application == 'Postbox') {
+			this.logToConsole(scriptError, 'EXCEPTION');
+		}
+		consoleService.logMessage(scriptError);
+	}
+	catch(ex) { 
+	  debugger;
+	}
+}
+
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.14.1",
+	HARDCODED_CURRENTVERSION : QUICKFOLDERS_HC_VERSION || "4.15", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -96,6 +125,14 @@ QuickFolders.Util = {
 		MSG_FOLDER_FLAG_GOTNEW    : 0x00020000,
     MSG_FOLDER_FLAG_OFFLINE   : 0x08000000
 	},
+  ADVANCED_FLAGS: {
+    NONE : 0x0000,
+    SUPPRESS_UNREAD : 0x0001,
+    SUPPRESS_COUNTS : 0x0002,
+		EMAIL_RECURSIVE : 0x0004,
+    CUSTOM_CSS :      0x0100,
+    CUSTOM_PALETTE :  0x0200
+  } ,	
 	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
@@ -212,7 +249,7 @@ QuickFolders.Util = {
 	// detect current QuickFolders version and storing it in mExtensionVer
 	// this is done asynchronously, so it respawns itself
 	VersionProxy: function VersionProxy() {
-    let util = QuickFolders.Util;
+    const util = QuickFolders.Util;
 		try {
 			if (util.mExtensionVer // early exit, we got the version!
 				||
@@ -220,13 +257,7 @@ QuickFolders.Util = {
 				return;
 			util.VersionProxyRunning = true;
 			util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
-			if (Components.utils.import || ChromeUtils.import) {
-				if (typeof AddonManager != 'object') {
-					if (ChromeUtils.import)
-						ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
-					else
-						Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				}
+			if (Components.utils.import) {
 				
 				let versionCallback = function(addon) {
 					let versionLabel = window.document.getElementById("qf-options-header-description");
@@ -240,10 +271,13 @@ QuickFolders.Util = {
 						util.FirstRun.init();
 				}
 				
+				Components.utils.import("resource://gre/modules/AddonManager.jsm");
+				const addonId = util.ADDON_ID.toString();
+				
 				if (util.versionGreaterOrEqual(util.ApplicationVersion, "61")) 
-					AddonManager.getAddonByID(util.ADDON_ID).then(versionCallback); // this function is now a promise
+					AddonManager.getAddonByID(addonId).then(function(addonId) { versionCallback(addonId); } ); // this function is now a promise
 				else
-					AddonManager.getAddonByID("quickfolders@curious.be", versionCallback);
+					AddonManager.getAddonByID(addonId, versionCallback);
 			}
 
 			util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
@@ -738,9 +772,10 @@ QuickFolders.Util = {
 		return found;
 	 } ,
 
-	showStatusMessage: function showStatusMessage(s) {
+	showStatusMessage: function showStatusMessage(s, isTimeout) {
 		try {
-			let sb = QuickFolders_getDocument().getElementById('status-bar'),
+			let win = QuickFolders_getWindow(),
+			    sb = QuickFolders_getDocument().getElementById('status-bar'),
 			    el, sbt;
 			if (sb) {
 				for (let i = 0; i < sb.childNodes.length; i++)
@@ -759,7 +794,15 @@ QuickFolders.Util = {
 					el = sbt.childNodes[i];
 					if (el.nodeType == 1 && el.id == 'statusText') {
 					    el.label = s;
-					    break;
+							if (isTimeout) {
+								// erase my status message after 5 secs
+								win.setTimeout(function() { 
+								    if (el.label == s) // remove my message if it is still there
+											el.label = "";
+									}, 
+									5000);
+							}
+							break;
 					}
 				}
 			}

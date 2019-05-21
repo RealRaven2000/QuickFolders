@@ -392,10 +392,11 @@ menupopup.widerMenu menucaption {
 /* Styles for Message Preview Navigation */
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView {
-	background-color:transparent;
+	/* background-color: transparent; */
+	margin-bottom: -3px;
 	overflow-y: visible !important;
 	padding-top: 0 !important;
-	padding-bottom: 3px;
+	padding-bottom: 1px;
 	vertical-align: top;
 	width: 100%;
 }
@@ -421,14 +422,14 @@ menupopup.widerMenu menucaption {
 toolbar#QuickFolders-CurrentFolderTools {
 	-moz-appearance: none;
 	border-radius: 0 0 6px 6px !important;
-	box-shadow: 1px 2px 4px -1px rgba(0,0,0,0.8);
+	box-shadow: 1px 2px 4px -1px rgba(0,0,0,0.7);
 	background: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
 	border-style: solid  !important;
 	border-color: #666;
 	height: 1.8em; /* large font support, test on Mac / Linux! */
-	min-height: 25px;
+	min-height: 22px;
 	overflow: visible;
-	padding: 0 2px 3px 2px;
+	padding: 0 2px 1px 2px;
 	border-width: 0px 1px 1px 1px !important;
 }
 
@@ -484,6 +485,10 @@ toolbar.quickfolders-flat {
 	margin: 0;
 	padding: 0;
 	border: 1px solid transparent;
+}
+
+
+toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 	border-bottom-width: 3px; /* overwrite in options: style.Toolbar.bottomLineWidth */
 	border-bottom-style: solid !important;
 }

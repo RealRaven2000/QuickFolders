@@ -1,0 +1,29 @@
+{
+  "author": "Axel Grude",
+  "manifest_version": 2,
+  "name": "QuickFolders",
+	"description": "Bookmark your favorite mail folders in Thunderbird.",
+  "version": "4.15",
+  "developer": {
+	  "name": "Axel Grude",
+    "url": "http://quickfolders.org/index.html"
+	},
+  "applications": {
+    "gecko": {
+      "id": "quickfolders@curious.be",
+      "strict_min_version": "60.0"
+    }
+  },
+  "icons": {
+	  "16": "chrome/skin/ico/QF16x16.png",
+    "32": "chrome/skin/ico/quickfolders-Icon.png",
+    "64": "chrome/skin/ico/QF64x64.png"
+  },
+	
+  "legacy": {
+    "options": {
+      "page": "chrome://quickfolders/content/options.xul",
+      "open_in_tab": false
+    }
+  }	
+}

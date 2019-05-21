@@ -1,18 +1,25 @@
 // NEW CODE
 if (typeof ChromeUtils.import == "undefined") {
-	// Task.jsm: function generators (function*)
-	Components.utils.import("resource://gre/modules/Task.jsm");
+	if (QuickFolders.Util.versionSmaller(util.ApplicationVersion, "67")) {
+		// Task.jsm: function generators (function*)
+		Components.utils.import("resource://gre/modules/Task.jsm"); // adds Deferred() function
+	}
+	
 	// throws PromiseUtils not defined
 	Components.utils.import("resource://gre/modules/PromiseUtils.jsm");
 }
 else {
-	ChromeUtils.import("resource://gre/modules/Task.jsm");
+	let util = QuickFolders.Util;
+	if (util.versionSmaller(util.ApplicationVersion, "67")) {
+		ChromeUtils.import("resource://gre/modules/Task.jsm");
+	}
 	ChromeUtils.import("resource://gre/modules/PromiseUtils.jsm");
 }
 
 // ChromeUtils.defineModuleGetter(this, "PromiseUtils", "resource://gre/modules/PromiseUtils.jsm");
 
 // refactored from async Task with help of @freaktechnik
+// asyunc function should be fine for Tb52.
 QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,

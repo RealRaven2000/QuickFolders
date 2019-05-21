@@ -475,7 +475,7 @@ END LICENSE BLOCK */
 		## When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up
 		   routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)
 			 
-	4.14.1 QuickFolder Pro - WIP
+	4.14.1 QuickFolder Pro - 24/04/2019
 	  ## [Bug 26654] quickMove shortcuts triggered during in-mail search
 		## replaced className logic with classList, where possible
 		## quickMove: Improve remembering all entered parent folders when only a single match is found
@@ -485,7 +485,17 @@ END LICENSE BLOCK */
 		## Japanese locale completed - thanks to Masahiko Imanaka 
 		## Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.		
 		
+	4.15 QuickFolder Pro - WIP
+	  ## Option for lightweight theme integration - current folder bar can be skinned by theme
+		## options for tweaking spacings around current folder bar
+		## [Bug 26659] Advanced Tab Props - address options falsely always applies to subfolders 
+		## [Bug 26665] quickMove: always support [Enter] to select the top item
+		## quickMove: added [Up] key for immediately jumping to bottom of the list
 		
+	
+	Future Work
+	===========
+	  ## [Bug 26400] Option to show QquickFolders toolbar at bottom of mail window
 	
 	Known Issues
 	============

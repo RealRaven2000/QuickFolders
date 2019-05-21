@@ -826,9 +826,27 @@ QuickFolders.Interface = {
 						ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
 						background = prefs.getStringPref('currentFolderBar.background');
 				styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
+				
+				let mw = util.$('messengerWindow');
+				if (mw) {
+					let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
+					if (backImage && prefs.getBoolPref('currentFolderBar.background.lightweight')) {
+						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', backImage);
+						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-position', "right top");
+						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '0.98');
+					}
+					else {
+						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', 'none');
+						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '1.0');
+					}
+				}
 
 				// find (and move) button if necessary
-				let cF = this.CurrentFolderTab;
+				let cF = this.CurrentFolderTab,
+				    leftSpace = document.getElementById('QF-CurrentLeftSpacer'),
+				    rightSpace = document.getElementById('QF-CurrentRightSpacer');
+				leftSpace.setAttribute('flex',prefs.getIntPref('currentFolderBar.flexLeft'));
+				rightSpace.setAttribute('flex',prefs.getIntPref('currentFolderBar.flexRight'));
 				
 				// add styling to current folder via a fake container
 				if (cF && cF.parentNode)
@@ -1323,7 +1341,8 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
           FCat = QuickFolders.FolderCategory,
-					prefs = QuickFolders.Preferences;
+					prefs = QuickFolders.Preferences,
+					isShift = (event && event.shiftKey) || false;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
 		// early exit. category is selected already! SPEED!
     if (QI.currentActiveCategories == categoryName)
@@ -1336,7 +1355,7 @@ QuickFolders.Interface = {
 				currentCats = QI.currentActiveCategories ? (QI.currentActiveCategories.split('|')) : [],
 		    idx = 0,
 				multiEnabled = prefs.getBoolPref('premium.categories.multiSelect');
-    if (multiEnabled && event && event.shiftKey) {
+    if (multiEnabled && isShift) {
 			let selectedCat = cats[0];
 			if (currentCats.indexOf(selectedCat)>=0) {
 				currentCats.splice(currentCats.indexOf(selectedCat), 1);
@@ -1467,7 +1486,7 @@ QuickFolders.Interface = {
 					util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
 					    + (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '')
 					    + prefs.RebuildShortcutKey);
-					util.showStatusMessage('QuickFolders tabs were rebuilt');
+					util.showStatusMessage('QuickFolders tabs were rebuilt', true);
 				} catch(e) {;};
 			}
 		}
@@ -2360,7 +2379,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.onRemoveBookmark()");
 		QuickFolders.Model.removeFolder(folder.URI, true);
 		// this.updateFolders(true); already done!
-		try { util.showStatusMessage(msg); } catch(e) {;};
+		try { util.showStatusMessage(msg, true); } catch(e) {;};
 	} ,
 	
 	onRemoveIcon: function onRemoveIcon(element) {
@@ -4514,12 +4533,15 @@ QuickFolders.Interface = {
 	
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
 	findFolderKeyPress: function findFolderKeyPress(event) {
+	  const VK_UP = 0x26;
 	  const VK_DOWN = 0x28;
 		const VK_ESCAPE = 0x1B;
     const VK_ENTER = 0x0D;
+		let isShift = (event && event.shiftKey) || false;
+		
     function makeEvent(evtType, evt) {
       let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
-      keypress_event.initKeyEvent(evtType, true, true, null,   // typeArg, canBubble, cancelable
+      keypress_event.initKeyEvent(evtType, true, true, null,      // typeArg, canBubble, cancelable
                false, false, false, false,                        // ctrl, alt, shift, meta
                evt, 0);                                           // keyCode, charcode
       return keypress_event;
@@ -4534,7 +4556,8 @@ QuickFolders.Interface = {
         event.preventDefault();
         break;
 		  case VK_DOWN:
-			  util.logDebugOptional("interface.findFolder","VK_DOWN");
+			case VK_UP:
+			  util.logDebugOptional("interface.findFolder", (event.keyCode==VK_DOWN) ? "VK_DOWN" : "VK_UP");
 				menupopup = document.getElementById('QuickFolders-FindPopup');
 				let fC = menupopup.firstChild;
 				if (!fC) {
@@ -4558,16 +4581,18 @@ QuickFolders.Interface = {
           
 					setTimeout( function() {
 						util.logDebugOptional("interface.findFolder","creating Keyboard Events…");
-						if (menupopup.dispatchEvent(makeEvent('keydown',VK_DOWN))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent('keydown', event.keyCode))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
 						}
-						if (menupopup.dispatchEvent(makeEvent('keyup',VK_DOWN))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent('keyup', event.keyCode))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keyup event was dispatched.");
             }
 					});
 				} // palette
 				break;
 			case VK_ESCAPE:
+			  if (isShift) // [Bug 26660] SHIFT + ESC resets move list
+					QuickFolders.quickMove.resetList();
 			  QI.findFolder(false);
 			  QI.hideFindPopup();
         QI.updateFindBoxMenus(false);
@@ -4751,11 +4776,12 @@ QuickFolders.Interface = {
     }
 		let isFiling = QuickFolders.quickMove.isActive;
     /********* old jump point *********/
+		/*
 		// [Bug 26565] if 1 unique full match is found - without children!, we can automatically jump there
-		if ((matches.length == 1) 
-			  && (!isFiling) && (matches[0].folder && !matches[0].folder.hasSubFolders)
-        && (matches[0].lname == searchString      // one exact match
-           || (wordStartMatch(matches[0].lname) && forceFind)) // match starts with search string + [Enter] key was pressed
+		if (     (matches.length == 1) 
+			    && (!isFiling) && (matches[0].folder && !matches[0].folder.hasSubFolders)
+          && (matches[0].lname == searchString)      // one exact FULL match
+				|| (wordStartMatch(matches[0].lname) && forceFind)) // match starts with search string + [Enter] key was pressed
        ) {
 			// go to folder
 			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
@@ -4766,6 +4792,7 @@ QuickFolders.Interface = {
       }, 400);
       return; // ????
 		}
+		*/
 		
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
 		// "parent/" no name given, only lists the direct children
@@ -4941,8 +4968,9 @@ QuickFolders.Interface = {
 			menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 		else
 			menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
-		if (matches.length == 1) { 
-			util.logDebugOptional('quickMove','single match found...');
+		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
+		if (matches.length == 1 || (matches.length>0 && forceFind) ) { 
+			util.logDebugOptional('quickMove', forceFind ? 'Enter key forces match' : 'single match found...');
       if (wordStartMatch(matches[0].lname, searchString) && forceFind) {
 				let finalURI = matches[0].uri;
 				if (!isFiling) {
@@ -6151,7 +6179,7 @@ QuickFolders.Interface = {
 			}
 
 			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
-			styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat','border-bottom-color', colActiveBG, true); // only in main toolbar!
+			styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane','border-bottom-color', colActiveBG, true); // only in main toolbar!
 
 			let theInit = '';
 			try {
@@ -6177,7 +6205,7 @@ QuickFolders.Interface = {
       // restrict to toolbar only (so as not to affect the panel in currentFolder bar!)
 			styleEngine.setElementStyle(ss, 'toolbar.' + theme.cssToolbarClassName, 'background-color', theColorString,true);
       let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
-      styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat', 'border-bottom-width', tbBottom, true);
+      styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane', 'border-bottom-width', tbBottom, true);
 			
 			this.updateCurrentFolderBar(ss);
 			
@@ -6707,12 +6735,13 @@ QuickFolders.Interface = {
 	} ,
   
   updateFindBoxMenus: function updateFindBoxMenus(toggle) {
+		const util = QuickFolders.Util;
     try {
-      QuickFolders.Util.$('QuickFolders-quickMove-showSearch').collapsed = toggle;
-      QuickFolders.Util.$('QuickFolders-quickMove-hideSearch').collapsed = !toggle;
+      util.$('QuickFolders-quickMove-showSearch').collapsed = toggle;
+      util.$('QuickFolders-quickMove-hideSearch').collapsed = !toggle;
     }
     catch (ex) {
-			QuickFolders.Util.logException('Exception during updateFindBoxMenus(' + toggle + ') ', ex);
+			util.logException('Exception during updateFindBoxMenus(' + toggle + ') ', ex);
     }
   } ,
   

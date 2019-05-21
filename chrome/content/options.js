@@ -57,7 +57,7 @@ QuickFolders.Options = {
 		if (this.optionsMode=="helpOnly" || this.optionsMode=="supportOnly" || this.optionsMode=="licenseKey")
 			return;
     let getElement = document.getElementById.bind(document);
-		// persist colors
+		// persist color / text values
 		try {
 			prefs.CurrentThemeId = getElement("QuickFolders-Theme-Selector").value;
 
@@ -88,6 +88,8 @@ QuickFolders.Options = {
 			prefs.setIntPref('style.corners.customizedBottomRadiusN',
 							getElement("QuickFolders-Options-CustomBottomRadius").value);
 
+      prefs.setStringPref('currentFolderBar.background', 
+			          getElement("currentFolderBackground").value);
 			// QuickFolders.Interface.setPaintButtonColor(-1);
 			QuickFolders.initListeners();
 		}
@@ -194,8 +196,16 @@ QuickFolders.Options = {
   
 	loadPreferences: function qf_loadPreferences() {
 		const util = QuickFolders.Util;
+		if (typeof Preferences == 'undefined') {
+			Components.utils.import('resource://gre/modules/Services.jsm');
+			let context={};
+			Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", context, "UTF-8" /* The script's encoding */); 
+			if (typeof Preferences == 'undefined') {
+				util.logDebug("Skipping loadPreferences - Preferences object not defined");
+				return; // older versions of Thunderbird do not need this.
+			}
+		}	
 		util.logDebug("loadPreferences - start:");
-		debugger;
 		let myprefs = document.getElementsByTagName("preference");
 		if (myprefs.length) {
 			let prefArray = [];
@@ -222,10 +232,6 @@ QuickFolders.Options = {
 					
 		util.logDebug("QuickFolders.Options.load()");
 		
-		if (util.versionGreaterOrEqual(util.ApplicationVersion, "61")) {
-			options.loadPreferences();
-		}
-		
 		if (prefs.isDebugOption('options')) debugger;
     // version number must be copied over first!
 		if (window.arguments && window.arguments[1].inn.instance) {
@@ -235,6 +241,8 @@ QuickFolders.Options = {
 		let version = util.Version,
         wd = window.document,
         getElement = wd.getElementById.bind(wd);
+		
+		if (!version) debugger;
 		
     util.logDebugOptional('options', 'QuickFolders.Options.load()');
 		if (window.arguments) {
@@ -369,6 +377,26 @@ QuickFolders.Options = {
 		let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
 		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
 		options.configExtra2Button();
+		
+		let main = util.getMail3PaneWindow(),
+		    getMainElement = main.QuickFolders.Util.$,
+		    mainToolbox = getMainElement('mail-toolbox'),
+		    messengerWin = getMainElement('messengerWindow'),
+		    backColor = main.getComputedStyle(mainToolbox).getPropertyValue("background-color"),
+				backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image");
+				
+		// where theme styling fails.		
+		if (backColor) {
+			if (prefs.isDebugOption('options')) debugger;
+			getElement('qf-flat-toolbar').style.setProperty('background-color', backColor);			
+			getElement('qf-header-container').style.setProperty('background-color', backColor);
+		}
+		if (backImage) {
+			getElement('qf-flat-toolbar').style.setProperty('background-image', backImage);			
+			getElement('qf-flat-toolbar').style.setProperty("background-position","right bottom");
+			getElement('qf-header-container').style.setProperty('background-image', backImage);
+			getElement('qf-header-container').style.setProperty("background-position","right top")
+		}
 		
 		util.loadPlatformStylesheet(window);
 		util.logDebug("QuickFolders.Options.load() - COMPLETE");
@@ -846,7 +874,8 @@ QuickFolders.Options = {
 	  default: 0,
 		dark: 1,
 		translucent: 2,
-		custom: 3
+		custom: 3,
+		lightweight: 4
 	} ,
 
 	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
@@ -890,17 +919,23 @@ QuickFolders.Options = {
 
   // set the custom value entered by user (only if custom is actually selected)
 	setCurrentToolbarBackgroundCustom: function setCurrentToolbarBackgroundCustom() {
+    const prefs = QuickFolders.Preferences;		
+		if (prefs.isDebugOption('options')) debugger;
 		let setting = document.getElementById('currentFolderBackground'),
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
 		  // store the new setting!
-			QuickFolders.Preferences.setStringPref('currentFolderBar.background.custom', setting.value);  
+			prefs.setStringPref('currentFolderBar.background.custom', setting.value);  
 			this.setCurrentToolbarBackground('custom', true);
+		}
+		else {
+			let item = backgroundCombo.getItemAtIndex( backgroundCombo.selectedIndex );
+			options.setCurrentToolbarBackground(item.value, true);
 		}
 	} ,
 	
 	// change background color for current folder bar
-	// 4 choices: default, dark, custom, translucent
+	// 5 choices [string]: default, dark, custom, translucent, lightweight
 	setCurrentToolbarBackground: function setCurrentToolbarBackground(choice, withUpdate) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
@@ -929,6 +964,10 @@ QuickFolders.Options = {
 				backgroundCombo.selectedIndex = this.BGCHOICE.translucent;
 				setting.value = 'rgba(255, 255, 255, 0.2)';  // Gecko 1.9+
 				break;
+			case 'lightweight':
+				backgroundCombo.selectedIndex = this.BGCHOICE.lightweight;
+				setting.value = 'linear-gradient(to bottom, rgba(255, 255, 255, .4), transparent)';  
+				break;
 			case 'custom':
 				backgroundCombo.selectedIndex = this.BGCHOICE.custom;
 				// restore custom value
@@ -938,11 +977,20 @@ QuickFolders.Options = {
 		let styleValue = setting.value;
 		prefs.setStringPref('currentFolderBar.background', styleValue);
 		prefs.setStringPref('currentFolderBar.background.selection', choice);
+		if(Preferences) {
+			Preferences.get('qfp-CurrentFolder-Background')._value=styleValue;
+		}
 		//if (withUpdate)
 		//	QuickFolders.Interface.updateMainWindow();
 		// need to update current folder bar
 		if (withUpdate)
-			util.getMail3PaneWindow().QuickFolders.Interface.updateCurrentFolderBar();
+			this.updateCurrentFolderBar();
+	},
+	
+	updateCurrentFolderBar: function updateCurrentFolderBar() {
+		const util = QuickFolders.Util;
+		// call update in main window
+		util.getMail3PaneWindow().QuickFolders.Interface.updateCurrentFolderBar();
 	},
 	
 	styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {
@@ -1315,7 +1363,7 @@ QuickFolders.Options = {
 		trans.getTransferData("text/unicode", str, strLength);
 		
 		
-    if (strLength.value && str) {
+    if (str) {
 			let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
 			strFoldersPretty = pastetext.toString();
     }
@@ -1410,7 +1458,7 @@ QuickFolders.Options = {
     const Cc = Components.classes,
           Ci = Components.interfaces,
 					util = QuickFolders.Util;
-	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
+	  updateFolders = (typeof updateFolders != 'undefined') ? updateFolders : false;
     
 	  util.logDebug('showAboutConfig(clickedElement: ' 
       + (clickedElement ? clickedElement.tagName : 'none') 
@@ -1471,7 +1519,9 @@ QuickFolders.Options = {
 			util.openURL(null, 
 			  util.makeUriPremium("http://quickfolders.org/version.html")
 				+ "#" + pureVersion);
+			return true;
 		}
+		return false;
 	},
 	
   // 3pane window only?

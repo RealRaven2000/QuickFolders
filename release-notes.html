@@ -1,11 +1,14 @@
-<b>Version 4.14.1</b>
+<b>Version 4.15</b>
 <ul>
-<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26654" target="_blank">[Bug 26654]</a> quickMove shortcuts triggered during in-mail search</li>
-<li> quickMove: Improve remembering all entered parent folders when only a single match is found.</li>
-<li> Replaced className logic with classList, where possible</li>
-<li> Removed deprecated getCharPref function: make remembering folder tabs preferences backwards compatible for older clients (Interlink) by using getComplexValue / getStringPref instead (getCharPref could lead to faulty characters when using extended character sets)</li>
-<li> Japanese locale completed - thanks to Masahiko Imanaka. </li>
-<li> Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.</li>
-<li> Prepared code base for compatibility with Thunderbird 66 - this will be released as a separate version because it is currently impossible to release a version that is compatible with Thunderbird 60. </li>
-<li> Replaced color pickers with HTML elements - these call the System Specific color pickers of your operating system.</li>
+<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> ESR 2019 Readiness - compatibility with Thunderbird 68.
+
+Made QuickFolders compatible with Thunderbird 68 - part of the ongoing effort to future proof QuickFolders for 2020.  For now, this also means making the minimum requirement using Thunderbird version 60.</li>
+<li> Added lightweight theme support for current folder bar. 
+
+For best result, select the "lighweight" option on the background dropdown on the <i>Advanced</i> tab. I also slimmed down the layout for retrieving some added vertical space. You can further tweak ergonomics of the central navigation panel by decreasing the "Left Spacer" value.</li>
+<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26659" target="_blank">[Bug 26659]</a>  Advanced Tab Props - falsely always applies to subfolders. 
+
+Setting From Identity or To To Address was always applied to all subfolders even if the option "[x] Also apply to subfolders" was not selected. From now on, this option will work. </li>
+<li> Support 'Cursor Up' key to jump to bottom of search results in quickJump / quickMove function.</li>
+<li> <a name="26665" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26665" target="_blank">[Bug 26665]</a> Cancel quickmove and erase list of messages with SHIFT+Escape.</li>
 </ul>

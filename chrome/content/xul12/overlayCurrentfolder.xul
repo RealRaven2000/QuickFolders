@@ -131,7 +131,7 @@
 												 tooltiptext="&qf.tooltip.closeToolbar;"
 												 oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'?');" />
 				</toolbar>
-				<spacer flex="10" id="QF-CurrentRightSpacer" />
+				<spacer flex="5" id="QF-CurrentRightSpacer" />
 			</hbox>
 	
 	

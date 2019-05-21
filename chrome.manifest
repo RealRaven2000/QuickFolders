@@ -1,6 +1,10 @@
 content quickfolders       chrome/content/
 #jsm modules
 resource quickfolders  chrome://quickfolders/content/
+# Thunderbird 61 new old legacy
+resource quickfoldersShim60  chrome/content/shim60/ platformversion<61
+resource quickfoldersShim60  chrome/content/shim61/ platformversion>=61
+
 locale quickfolders en-US  chrome/locale/en-US/
 locale quickfolders ca     chrome/locale/ca/
 locale quickfolders de     chrome/locale/de/
@@ -37,7 +41,6 @@ content quickfoldersShim chrome://quickfolders/content/shim12/ application={9265
 
 #postbox (for in) (for..of)
 ## for old postbox, we can't combine application & platformversion 
-content quickfoldersShim chrome://quickfolders/content/shim3/ application=postbox@postbox-inc.com 
 content quickfoldersShim chrome://quickfolders/content/shim12/ application=postbox@postbox-inc.com platformversion>51
 
 # ECMA.next code (function*) etc.
@@ -45,6 +48,7 @@ content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAold/ platfor
 content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAnew/ platformversion>=26
 # override for Interlink application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAnew/ 
+
 
 # Thunderbird >=12
 content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} 

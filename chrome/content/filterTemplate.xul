@@ -41,7 +41,7 @@
 	<prefpane id="qf-template-prefpane" >
 
 		<preferences>
-			<preference id="QuickFolders-Preferences-SelectedFilterTemplate" name="extensions.quickfolders.filters.currentTemplate" type="string" />
+			<preference id="qfp-SelectedFilterTemplate" name="extensions.quickfolders.filters.currentTemplate" type="string" />
 		</preferences>
 	
 	
@@ -55,7 +55,7 @@
 			  id="qf-filter-templates"
 			  ondblclick="QuickFolders.FilterWorker.selectTemplate(this);"
 			  onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
-			  preference="QuickFolders-Preferences-SelectedFilterTemplate"
+			  preference="qfp-SelectedFilterTemplate"
 			  rows="6">
 			    <listitem label='&qf.filters.template.from;' value='from' />
 			    <listitem label='&qf.filters.template.to;' value='to' />

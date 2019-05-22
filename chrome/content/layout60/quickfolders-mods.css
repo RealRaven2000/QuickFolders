@@ -100,4 +100,6 @@ toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button:not([checked="true"
 /* [Bug 26612] Tb 60.3.2 only displays first row of tabs - caused by .chromeclass-toolbar */
 toolbar#QuickFolders-Toolbar {
 	/* overflow-x: initial; */
+	moz-appearance: none;
+	border-collapse: separate;
 }

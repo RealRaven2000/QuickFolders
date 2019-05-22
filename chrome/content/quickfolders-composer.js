@@ -161,37 +161,46 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		return ''; // consume
 	}
 					
-	function setMailHeaders(folder, options) {
+	function setMailHeaders(folder, options, isOrigin) {
+		const ADVANCED_FLAGS = util.ADVANCED_FLAGS;
 		if (!folder.URI) return;
+		if (preferences.isDebugOption('composer')) debugger;		
 		let entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
 		
 		if (entry) {
 			let entryName = entry.name,
+			    entryFlags = entry.flags || 0,
 			    txt = 'Overriding {2} from QuickFolder [{0}] with {1}'.replace('{0}', entryName);
-			// child folder settings are not overwritten by parents!
-			if (entry.toAddress && !options.toAddress) {
-				options.toAddress = entry.toAddress;
-				let dbg = txt.replace('{1}', entry.toAddress);
-				util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+					
+			if (!isOrigin && !(entryFlags & ADVANCED_FLAGS.EMAIL_RECURSIVE)) {
+				// parent folder - do nothing - recursive flag is not engaged
 			}
-			if (entry.fromIdentity && !options.identity) {
-				let dbg = txt.replace('{1}', entry.fromIdentity);
-				let actMgr = MailServices.accounts,
-						allIdentities = actMgr.allIdentities;
-				for (let i=0; i<allIdentities.length; i++) {
-					let identity = allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);
-					if (identity.key == entry.fromIdentity) {
-						util.logDebugOptional('composer', dbg.replace('{2}',"identity") + "\n" + (identity.identityName || identity.email ));
-						options.identity = identity; // use the object, not the string [entry.fromIdentity is only a string]
-						break;
-					}
-				}		
+			else {
+				// already explicitely set child folder settings are not overwritten by parents!
+				if (entry.toAddress && !options.toAddress) {
+					options.toAddress = entry.toAddress;
+					let dbg = txt.replace('{1}', entry.toAddress);
+					util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+				}
+				if (entry.fromIdentity && !options.identity) {
+					let dbg = txt.replace('{1}', entry.fromIdentity);
+					let actMgr = MailServices.accounts,
+							allIdentities = actMgr.allIdentities;
+					for (let i=0; i<allIdentities.length; i++) {
+						let identity = allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);
+						if (identity.key == entry.fromIdentity) {
+							util.logDebugOptional('composer', dbg.replace('{2}',"identity") + "\n" + (identity.identityName || identity.email ));
+							options.identity = identity; // use the object, not the string [entry.fromIdentity is only a string]
+							break;
+						}
+					}		
+				}
 			}
 		}
 		
 		// no need to recurse if both are set (child folders override parents)
 		if (folder.parent && (!options.toAddress || !options.identity))
-			setMailHeaders(folder.parent, options);
+			setMailHeaders(folder.parent, options, false);
 	}
 	
 	// check for advanced properties (rules) for overriding To: or Identity (From:)
@@ -206,7 +215,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		
 		// we need to check all parent folders for entries as well.
 		if (currentFolder && currentFolder.URI)
-			setMailHeaders(currentFolder, options);
+			setMailHeaders(currentFolder, options, true);
 		else 
 			return;
 		

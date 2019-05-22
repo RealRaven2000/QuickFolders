@@ -88,6 +88,9 @@ QuickFolders.Options = {
 			prefs.setIntPref('style.corners.customizedBottomRadiusN',
 							getElement("QuickFolders-Options-CustomBottomRadius").value);
 
+      prefs.setStringPref('currentFolderBar.background', 
+			          getElement("currentFolderBackground").value);
+
 			// QuickFolders.Interface.setPaintButtonColor(-1);
 			QuickFolders.initListeners();
 		}
@@ -369,6 +372,26 @@ QuickFolders.Options = {
 		let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
 		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
 		options.configExtra2Button();
+		
+		let main = util.getMail3PaneWindow(),
+		    getMainElement = main.QuickFolders.Util.$,
+		    mainToolbox = getMainElement('mail-toolbox'),
+		    messengerWin = getMainElement('messengerWindow'),
+		    backColor = main.getComputedStyle(mainToolbox).getPropertyValue("background-color"),
+				backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image");
+				
+		// where theme styling fails.		
+		if (backColor) {
+			if (prefs.isDebugOption('options')) debugger;
+			getElement('qf-flat-toolbar').style.setProperty('background-color', backColor);			
+			getElement('qf-header-container').style.setProperty('background-color', backColor);
+		}
+		if (backImage) {
+			getElement('qf-flat-toolbar').style.setProperty('background-image', backImage);			
+			getElement('qf-flat-toolbar').style.setProperty("background-position","right bottom");
+			getElement('qf-header-container').style.setProperty('background-image', backImage);
+			getElement('qf-header-container').style.setProperty("background-position","right top")
+		}
 		
 		util.loadPlatformStylesheet(window);
 		util.logDebug("QuickFolders.Options.load() - COMPLETE");
@@ -846,7 +869,8 @@ QuickFolders.Options = {
 	  default: 0,
 		dark: 1,
 		translucent: 2,
-		custom: 3
+		custom: 3,
+		lightweight: 4
 	} ,
 
 	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
@@ -890,17 +914,23 @@ QuickFolders.Options = {
 
   // set the custom value entered by user (only if custom is actually selected)
 	setCurrentToolbarBackgroundCustom: function setCurrentToolbarBackgroundCustom() {
+    const prefs = QuickFolders.Preferences;		
+		if (prefs.isDebugOption('options')) debugger;
 		let setting = document.getElementById('currentFolderBackground'),
 		    backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');		
 		if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
 		  // store the new setting!
-			QuickFolders.Preferences.setStringPref('currentFolderBar.background.custom', setting.value);  
+			prefs.setStringPref('currentFolderBar.background.custom', setting.value);  
 			this.setCurrentToolbarBackground('custom', true);
+		}
+		else {
+			let item = backgroundCombo.getItemAtIndex( backgroundCombo.selectedIndex );
+			options.setCurrentToolbarBackground(item.value, true);
 		}
 	} ,
 	
 	// change background color for current folder bar
-	// 4 choices: default, dark, custom, translucent
+	// 5 choices [string]: default, dark, custom, translucent, lightweight
 	setCurrentToolbarBackground: function setCurrentToolbarBackground(choice, withUpdate) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
@@ -928,6 +958,10 @@ QuickFolders.Options = {
 			case 'translucent':
 				backgroundCombo.selectedIndex = this.BGCHOICE.translucent;
 				setting.value = 'rgba(255, 255, 255, 0.2)';  // Gecko 1.9+
+				break;
+			case 'lightweight':
+				backgroundCombo.selectedIndex = this.BGCHOICE.lightweight;
+				setting.value = 'linear-gradient(to bottom, rgba(255, 255, 255, .4), transparent)';  
 				break;
 			case 'custom':
 				backgroundCombo.selectedIndex = this.BGCHOICE.custom;
@@ -1315,7 +1349,7 @@ QuickFolders.Options = {
 		trans.getTransferData("text/unicode", str, strLength);
 		
 		
-    if (strLength.value && str) {
+    if (str) {
 			let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
 			strFoldersPretty = pastetext.toString();
     }
@@ -1410,7 +1444,7 @@ QuickFolders.Options = {
     const Cc = Components.classes,
           Ci = Components.interfaces,
 					util = QuickFolders.Util;
-	  updateFolders = (typeof updateFolders != undefined) ? updateFolders : false;
+	  updateFolders = (typeof updateFolders != 'undefined') ? updateFolders : false;
     
 	  util.logDebug('showAboutConfig(clickedElement: ' 
       + (clickedElement ? clickedElement.tagName : 'none') 

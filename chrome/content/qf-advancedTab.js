@@ -1,14 +1,7 @@
 "use strict";
 
 QuickFolders.AdvancedTab = {
-  ADVANCED_FLAGS: {
-    NONE : 0x0000,
-    SUPPRESS_UNREAD : 0x0001,
-    SUPPRESS_COUNTS : 0x0002,
-		EMAIL_RECURSIVE : 0x0004,
-    CUSTOM_CSS :      0x0100,
-    CUSTOM_PALETTE :  0x0200
-  } ,
+  ADVANCED_FLAGS: QuickFolders.Util.ADVANCED_FLAGS,
   get folder() {
     return window.arguments[0];
   } ,
@@ -37,7 +30,7 @@ QuickFolders.AdvancedTab = {
   
   load: function load() {
 		const util = this.MainQuickFolders.Util,
-		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || util.ADVANCED_FLAGS;
     let dropdownCount = 0;
 		
     function appendIdentity(dropdown, id, account) {
@@ -175,7 +168,7 @@ QuickFolders.AdvancedTab = {
   
   apply: function apply() {
 		const util = this.MainQuickFolders.Util,
-		      ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+		      ADVANCED_FLAGS = util.ADVANCED_FLAGS;
 		let elem = document.getElementById.bind(document),
 		    entry = this.entry || QuickFolders.AdvancedTab.entry;
     function addFlag(checkboxId, setFlag) {

@@ -280,6 +280,9 @@
 						<preference id="QuickFolders-Preferences-ShowFolderNavButton" name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons" type="bool"  instantApply="true"/>
 						<preference id="QuickFolders-Preferences-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool"  instantApply="true"/>
 						<preference id="QuickFolders-Preferences-CurrentFolder-Background" name="extensions.quickfolders.currentFolderBar.background" type="string"  instantApply="true"/>
+						<preference id="qfp-CurrentFolder-Lightweight" name="extensions.quickfolders.currentFolderBar.background.lightweight" type="bool"  instantApply="true"/>
+						<preference id="qfp-flexLeft" name="extensions.quickfolders.currentFolderBar.flexLeft" type="int" />
+						<preference id="qfp-flexRight" name="extensions.quickfolders.currentFolderBar.flexRight" type="int" />
 						<preference id="QuickFolders-Preferences-FolderMenu-openNewTab" name="extensions.quickfolders.folderMenu.openNewTab" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
 						<preference id="QuickFolders-Preferences-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool" />
@@ -420,34 +423,62 @@
 
 					<html:fieldset	orient="horizontal" id="grpCurrentFolderBackground">
 						<html:legend>&qf.caption.currentFolderBackground;</html:legend>
+						<vbox id="currentFolderBackgroundContainer">
+							<hbox flex="1" id="currentFolderStyle">
 						<textbox id="currentFolderBackground"
 										 flex="1"
 										 preference="QuickFolders-Preferences-CurrentFolder-Background"
 										 onblur="options.sanitizeCSS(this);"
 										 />
-						<button label="&qf.button.currentFolderBackground.set;"
-										class="narrow"
-										onclick="options.setCurrentToolbarBackgroundCustom();" 
-										/>
 						<menulist id="QuickFolders-CurrentFolder-Background-Select"
 											sizetopopup="none"
 											oncommand="QI.updateMainWindow();">
 							<menupopup>
-								<!-- values in this list are arbitrary -->
+										<!-- list order must correspond with BGCHOICE enum -->
 								<menuitem label="&qf.currentFolderBackground.default;"
 													oncommand="options.setCurrentToolbarBackground('default', true);"
 													value="default" />
 								<menuitem label="&qf.currentFolderBackground.dark;"
 													oncommand="options.setCurrentToolbarBackground('dark', true);"
-													value="default" />
+															value="dark" />
 								<menuitem label="&qf.currentFolderBackground.translucent;"
 													oncommand="options.setCurrentToolbarBackground('translucent', true);"
-													value="default" />
+															value="translucent" />
 								<menuitem label="&qf.currentFolderBackground.custom;"
 													oncommand="options.setCurrentToolbarBackground('custom', true);"
-													value="default" />
+															value="custom" />
+										<menuitem label="lightweight"
+															oncommand="options.setCurrentToolbarBackground('lightweight', true);"
+															value="lightweight" />
 							</menupopup>
 						</menulist>
+								<button label="&qf.button.currentFolderBackground.set;"
+												class="narrow"
+												onclick="options.setCurrentToolbarBackgroundCustom();" 
+												/>
+							</hbox>
+							<hbox flex="1">
+								<checkbox label="&qf.checkbox.currentfolder.lightweight;"
+													preference="qfp-CurrentFolder-Lightweight"
+													oncommand="options.toggleBoolPreference(this,false); options.updateCurrentFolderBar();" />
+								<spacer flex="1" />
+								<label control="leftSpacer"
+											 value ="&qf.currentfolder.leftSpacer;" />
+								<textbox id="leftSpacer"
+								         type="number"
+												 size="1"
+												 preference="qfp-flexLeft"
+												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<label control="rightSpacer"
+											 value ="&qf.currentfolder.rightSpacer;" />
+								<textbox id="rightSpacer"
+								         type="number"
+												 size="1"
+												 preference="qfp-flexRight"
+												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<spacer flex="2" />
+							</hbox>
+						</vbox>
 					</html:fieldset>
 
 					<html:fieldset orient="horizontal" >

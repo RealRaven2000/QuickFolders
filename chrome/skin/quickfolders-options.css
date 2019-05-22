@@ -29,18 +29,20 @@
 }
 
 #qf-options-header {
-	margin: 5px 5px 5px 5px;
-	background-image: linear-gradient(var(--toolbarHighlight), transparent), var(--lwt-header-image);
+	margin: 15px 5px 15px 5px;
+	background-image:  linear-gradient(var(--toolbarHighlight), transparent), var(--lwt-header-image);
 	border: 1px solid;
 	border-radius: 6px;
 	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
 	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
 	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
 	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
-	padding: 5px 8px;
+	padding: 1px 8px;
 	color: white;
 	font-family: Calibri,sans-serif;
+	opacity: 0.85;
 }
+
 
 #qf-youtube {
 	cursor: pointer;
@@ -561,6 +563,15 @@ hbox.quickhelp-dbg {
 	color: var(--lwt-text-color);
 }
 
+#qf-flat-toolbar {
+	padding: 5px 20px;
+}
+
+#currentFolderBackgroundContainer,
+#currentFolderBackground,
+#currentFolderStyle {
+	width: -moz-available;
+}
 
 /* from messenger
 :root:-moz-lwtheme[lwtheme-image] {

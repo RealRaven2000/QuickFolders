@@ -226,3 +226,12 @@ input[type="color"] {
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
+
+/* tools menu addon popup icon - shows 64px version at the moment :( */
+#addonPrefs menuitem[label="QuickFolders"] {
+	list-style-image: url('chrome://quickfolders/skin/ico/QF16x16.png') !important;
+}
+
+#addonPrefs menuitem[label="QuickFolders"] .menu-iconic-left {
+	/* opacity: 0.5; */
+}

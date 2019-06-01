@@ -438,6 +438,11 @@ h3.QuickFoldersFreeUser {
 	white-space: nowrap; 
 }
 
+.bargain .emphasis {
+	color: yellow; 
+	font-weight: bold;
+}
+
 @keyframes quickfoldersPulse {
     0% { transform: scale(1.25); opacity: 0.6; }
     50% { transform: scale(1); opacity: 1; }

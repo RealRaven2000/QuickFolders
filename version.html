@@ -204,34 +204,6 @@
 				<h4>
 				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.15.1">Version 4.15.1 - 04/06/2019</a>
 				</h4>
-				<ul>
-					<li>Premium Function: 
-					  <a name="24468" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a>
-						Added backup and restore functions on the QuickFolders Pro Tab. 
-						<i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.
-						The later includes advanced settings except for the license key.
-						<i>Load Configuration</i> will only load whatever option you select.<br>
-						<img src="images/backup-restore.png" alt="backup and restore" class="screenshots"/>
-					</li>
-					<li>
-					  <a name="26670" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26670" target="_blank">[Bug 26670]</a>
-						<p>Improved keyboard navigation</p>
-						<p>Use the cursor key shortcut ALT+[DOWN] for opening the QuickFolder Tab dropdown menu.</p>
-						<p>If the current folder is not on an active tab (a folder displayed on the QuickFolders toolbar), 
-						   the shortcut will drop down the context menu of the current folder tab 
-							 (navigation bar, center screen) instead - this way child folders can be easily navigated 
-							 using keyboard only.</p>
-						<p>To close the menu, hit the [ESCAPE] key.</p>
-					</li>
-				</ul>
-			</li>			
-
-			<a name="4.15">&nbsp;</a>
-			<a name="4.14.2">&nbsp;</a>
-			<li>
-				<h4>
-				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.15">Version 4.15 - 21/05/2019</a>
-				</h4>
 				<table class="QuickFoldersProRenew bargain"> 
 					<tr>
 						<td style="vertical-align:top;" colspan="2">
@@ -312,7 +284,56 @@
 						</td>
 					</tr>
 				</table>
-				
+				<ul>
+					<li>Premium Function: 
+					  <a name="24468" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a>
+						Added backup and restore functions on the QuickFolders Pro Tab. 
+						<i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.
+						The later includes advanced settings except for the license key.
+						<i>Load Configuration</i> will only load whatever option you select.<br>
+						<img src="images/backup-restore.png" alt="backup and restore" class="screenshots"/>
+						<p>If a tab is found that points to a non-existing folder destinaion this will be highlighted with
+						  a "broom" icon - bad icons can be removed using the "Find orphaned Tabs" command on the tool
+							menu.</p>
+					</li>
+					<li>
+					  <a name="26670" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26670" target="_blank">[Bug 26670]</a>
+						<p>Improved keyboard navigation</p>
+						<p>Use the cursor key shortcut ALT+[DOWN] for opening the QuickFolder Tab dropdown menu.</p>
+						<p>If the current folder is not on an active tab (a folder displayed on the QuickFolders toolbar), 
+						   the shortcut will drop down the context menu of the current folder tab 
+							 (navigation bar, center screen) instead - this way child folders can be easily navigated 
+							 using keyboard only.</p>
+						<p>To close the menu, hit the [ESCAPE] key.</p>
+					</li>
+					<li>Improved the behavior of the "Find orphaned Tabs" command. This now includes an option to
+					  reuse the answer (delete remaining faulty tabs - Yes / No) rather than clicking once for
+						each invalid tab.
+					</li>
+					<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a>
+					  (WIP) ESR Compatibility for 2020 - more ongoing changes to make compatible with latest Thundeerbird versions:
+						<ul>
+						  <li>nsITreeBoxObject was deprecated - causing refresh of folder tree icons to fail</li>
+							<li>document.createElement deprecated - replaced with the new document.createXULelement</li>
+							<li>Improved new HTML color picker behavior when changing background color for inactive tab
+							  (live preview was broken)</li>
+							<li>ongoing changes to preferences in dialog system. Lots of moving parts here, so 
+							   please test rigorously if you are using a "bleeding edge" version of Thunderbird</li>
+							<li>removed all instances of nsIPrefService.getCharPref(..)</li>
+						  <li>known issue - in Thunderbird 69 the labels of the Tabs vanish when right-clicked. I will
+							  fix as soon as I know that it's a deprecation cause by XUL changes and not a regression in
+								Thunderbird.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>			
+
+			<a name="4.15">&nbsp;</a>
+			<a name="4.14.2">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.15">Version 4.15 - 21/05/2019</a>
+				</h4>
 				<ul>
 					<li>
 						Added lightweight theme support for current folder bar<br>

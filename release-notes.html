@@ -1,14 +1,19 @@
-<b>Version 4.15</b>
+<b>Version 4.15.1</b>
 <ul>
-<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> ESR 2019 Readiness - compatibility with Thunderbird 68.
+<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a> Added backup and restore functions on the QuickFolders Pro Tab. 
 
-Made QuickFolders compatible with Thunderbird 68 - part of the ongoing effort to future proof QuickFolders for 2020.  For now, this also means making the minimum requirement using Thunderbird version 60.</li>
-<li> Added lightweight theme support for current folder bar. 
+<i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.The later includes advanced settings except for the license key. <i>Load Configuration</i> will only load whatever option is selected.</li>
+<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26670" target="_blank">[Bug 26670]</a></li>
 
-For best result, select the "lighweight" option on the background dropdown on the <i>Advanced</i> tab. I also slimmed down the layout for retrieving some added vertical space. You can further tweak ergonomics of the central navigation panel by decreasing the "Left Spacer" value.</li>
-<li> <a name="26654" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26659" target="_blank">[Bug 26659]</a>  Advanced Tab Props - falsely always applies to subfolders. 
+<li>Improved the behavior of the "Find orphaned Tabs" command. This now includes an option to reuse the answer (delete remaining faulty tabs - Yes / No) rather than clicking once for each invalid tab.</li>
 
-Setting From Identity or To To Address was always applied to all subfolders even if the option "[x] Also apply to subfolders" was not selected. From now on, this option will work. </li>
-<li> Support 'Cursor Up' key to jump to bottom of search results in quickJump / quickMove function.</li>
-<li> <a name="26665" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26665" target="_blank">[Bug 26665]</a> Cancel quickmove and erase list of messages with SHIFT+Escape.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> More ongoing changes to make compatible with latest Thundeerbird versions:
+<ul>
+<li>nsITreeBoxObject was deprecated - causing refresh of folder tree icons to fail</li>
+<li>document.createElement deprecated - replaced with the new document.createXULelement</li>
+<li>Improved new HTML color picker behavior when changing background color for inactive tab	(live preview was broken)</li>
+<li>ongoing changes to preferences in dialog system. Lots of moving parts here, so please test rigorously if you are using a "bleeding edge" version of Thunderbird</li>
+<li>known issue - in Thunderbird 69 the labels of the Tabs vanish when right-clicked. I will fix as soon as I knwo that it's a deprecation cause by XUL changes and not a regression in	Thunderbird.</li>
+</ul>
+</li>
 </ul>

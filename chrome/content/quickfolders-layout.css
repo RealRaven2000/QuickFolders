@@ -598,6 +598,7 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 #QuickFolders-Toolbar toolbarbutton.draft.icon, #QuickFolders-CurrentFolderTools toolbarbutton.draft.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-drafts-gnome.png");}
 #QuickFolders-Toolbar toolbarbutton.news.icon, #QuickFolders-CurrentFolderTools toolbarbutton.news.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-news-gnome.png");}
 #QuickFolders-Toolbar toolbarbutton.archive.icon, #QuickFolders-CurrentFolderTools toolbarbutton.archive.icon {list-style-image: url("chrome://quickfolders/skin/ico/folder-archive.png");}
+#QuickFolders-Toolbar toolbarbutton.invalid.icon, #QuickFolders-CurrentFolderTools toolbarbutton.invalid.icon {list-style-image: url("chrome://quickfolders/skin/ico/broom.png");}
 
 toolbarbutton.inbox .toolbarbutton-icon,
 toolbarbutton.junk .toolbarbutton-icon,

@@ -88,8 +88,8 @@ QuickFolders.bookmarks = {
         util = QuickFolders.Util,
         searchSession = Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
-        serverScope = folder.server.searchScope,
         offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual, // Postbox doesn't like nsMsgFolderFlags.Offline?
+        serverScope = (folder.server ? folder.server.searchScope : null),
         preferredUri = QuickFolders.Preferences.getStringPref('bookmarks.searchUri'),
         targetFolder = (preferredUri ? getFolder(preferredUri) : null)  // preferred start point for finding missing emails. could be localhost.
                        ||               
@@ -220,7 +220,7 @@ QuickFolders.bookmarks = {
 		    isShift = evt.shiftKey;  
     evt.stopPropagation();
     switch(evt.button) {
-      case 0: // left button
+      case 0: // left-click
         let method = null;
         // default will be user configured.
         if (isShift) 
@@ -241,7 +241,7 @@ QuickFolders.bookmarks = {
           }
         }
         break;
-      case 2: // right button
+      case 2: // right-click
         // remove item!
         let question = util.getBundleString('qf.prompt.readingList.removeItem', "Remove this item?");
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
@@ -281,9 +281,9 @@ QuickFolders.bookmarks = {
   addMenuItem: function addMenuItem(entry) {
     let util = QuickFolders.Util,
         menu = util.$('QuickFolders-readingListMenu'),
-        menuitem = document.createElement("menuitem");
+        menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
     if (this.Entries.length==1)
-      menu.appendChild(document.createElement('menuseparator'));
+      menu.appendChild(document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator"));
     menuitem.setAttribute("label", entry.label);
     menuitem.className = 'msgUri menuitem-iconic';
     if (entry.invalid) menuitem.classList.add('invalid');

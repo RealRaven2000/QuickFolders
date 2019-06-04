@@ -219,12 +219,12 @@ QuickFolders.quickMove = {
       // now add to menu!
       let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
       if (this.Uris.length==1)
-        menu.appendChild(document.createElement('menuseparator'));
+        menu.appendChild(document.createXULElement ? document.createXULElement('menuseparator') : document.createElement('menuseparator'));
       let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
-              menuitem = document.createElement("menuitem");
+              menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
           if (showFolder && sourceFolder)
             label = sourceFolder.prettyName + chevron + label;
           menuitem.setAttribute("label", label);

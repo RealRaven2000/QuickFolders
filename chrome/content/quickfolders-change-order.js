@@ -59,12 +59,12 @@ QuickFolders.ChangeOrder = {
 			this.downString = this.getUIstring("qfDown","Down");
 
 		let rows = this.$('QuickFolders-change-order-grid-rows'),
-		    row = document.createElement("row"),
-		    folderLabel = document.createElement("label");
+		    row = document.createXULElement ? document.createXULElement("row") : document.createElement("row"),
+		    folderLabel = document.createXULElement("label");
 		folderLabel.appendChild(document.createTextNode(label));
 		row.appendChild(folderLabel);
 
-		let buttonUp = document.createElement("button");
+		let buttonUp = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
 		buttonUp.className = "order-button-up"
 
 		buttonUp.setAttribute("label",this.upString);
@@ -72,7 +72,7 @@ QuickFolders.ChangeOrder = {
 		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
 		row.appendChild(buttonUp);
 
-		let buttonDown = document.createElement("button");
+		let buttonDown = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
 		buttonDown.className = "order-button-down"
 		buttonDown.setAttribute("label",this.downString);
 		buttonDown.linkedFolder = folder;

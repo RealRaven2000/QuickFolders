@@ -311,31 +311,33 @@ QuickFolders.Model = {
   } ,
 
   getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
-    let msgfolder = null;
     const util = QuickFolders.Util;
+    let msgfolder = null;
     if (typeof MailUtils != 'undefined') {
 			if (MailUtils.getExistingFolder)
-				return MailUtils.getExistingFolder(uri, checkFolderAttributes);
+				msgfolder = MailUtils.getExistingFolder(uri, checkFolderAttributes);
 			else
-				return MailUtils.getFolderForURI(uri, checkFolderAttributes);
+				msgfolder = MailUtils.getFolderForURI(uri, checkFolderAttributes);
     }
-    try {
-      let mw = QuickFolders.win,
-          resource = mw.GetMsgFolderFromUri ? mw.GetMsgFolderFromUri(uri, checkFolderAttributes) : mw.GetResourceFromUri(uri);
-      if (!resource) {
-        util.logToConsole('getMsgFolderFromUri() - no resource from uri ' + uri);
-        return null;
-      }
-      msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
-      if (checkFolderAttributes) {
-        if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
-          msgfolder = null;
-        }
-      }
-    }
-    catch (ex) {
-       QuickFolders.Util.logException("getMsgFolderFromUri( " + uri + ")", ex);
-    }
+		else 
+			try {
+				let mw = QuickFolders.win,
+						resource = mw.GetMsgFolderFromUri ? mw.GetMsgFolderFromUri(uri, checkFolderAttributes) : mw.GetResourceFromUri(uri);
+				if (!resource) {
+					util.logToConsole('getMsgFolderFromUri() - no resource from uri ' + uri);
+					return null;
+				}
+				msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
+				if (checkFolderAttributes) {
+					if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
+						msgfolder = null;
+					}
+				}
+			}
+			catch (ex) {
+				 QuickFolders.Util.logException("getMsgFolderFromUri( " + uri + ")", ex);
+			}
+		if (msgfolder && !msgfolder.parent && !msgfolder.isServer) return null; // invalid folder
     return msgfolder;
   } ,
 
@@ -359,7 +361,9 @@ QuickFolders.Model = {
           category = entry.category;
 
       if (category) {
+				// CHANGE restore tabs allows for invalid folder URLs. caregories must still be added.
         // if the folder doesn't exist anymore, ignore this category
+				/*
         try {
           if (!this.getMsgFolderFromUri(entry.uri, false)) continue;
         }
@@ -367,6 +371,7 @@ QuickFolders.Model = {
           QuickFolders.Util.logException("Exception while checking folder existence: ", e);
           continue;
         }
+				*/
 
         // allow multiple categories - comma separated list
         if (category) {

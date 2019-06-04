@@ -41,7 +41,7 @@ QuickFolders.AdvancedTab = {
           + '  identityName = ' + (id ? id.identityName : 'empty') + '\n'
           + '  fullName = ' + (id ? id.fullName : 'empty') + '\n' 
           + '  email = ' + (id.email ? id.email : 'empty'));
-        let menuitem = document.createElement('menuitem');
+        let menuitem = document.createXULElement ? document.createXULElement('menuitem') : document.createElement('menuitem');
 				if (id==-1) {
 					let defaultLabel = elem('defaultAccountAddress');
 					menuitem.setAttribute("value", "default");

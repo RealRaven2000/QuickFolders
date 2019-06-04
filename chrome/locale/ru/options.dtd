@@ -77,6 +77,9 @@
 <!ENTITY qf.label.menus.options "Настройки">
 <!ENTITY qf.caption.currentFolderBackground "Фон панели инструментов текущей папки">
 <!ENTITY qf.button.currentFolderBackground.set "установить">
+<!ENTITY qf.checkbox.currentfolder.lightweight "integrate with lightweight theme">
+<!ENTITY qf.currentfolder.leftSpacer "Left Spacer:">
+<!ENTITY qf.currentfolder.rightSpacer "Right Spacer:">
 <!ENTITY qf.currentFolderBackground.default "по умолчанию">
 <!ENTITY qf.currentFolderBackground.dark "тёмный">
 <!ENTITY qf.currentFolderBackground.translucent "просвечивающий">
@@ -178,6 +181,12 @@
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Будет вставлено имя последней успешно использованной папки. Нажмите Enter, чтобы использовать его, или введите имя другой папки.">
 <!ENTITY qf.checkbox.skipFolder "Пропуск непрочитанной папки: Shift +">
 <!ENTITY qf.checkbox.skipFolder.tip "Комбинация клавиш для перехода к следующей непрочитанной папке.">
+<!ENTITY qf.backupAndRestore "Backup / Restore">
+<!ENTITY qf.storeConfig "Save Configuration…">
+<!ENTITY qf.loadConfig "Load Configuration…">
+<!ENTITY qf.checkbox.storeConfig.tabs "Include QuickFolders Tabs">
+<!ENTITY qf.checkbox.storeConfig.general "Include general settings">
+<!ENTITY qf.checkbox.storeConfig.layout "Include advanced and layout">
 <!ENTITY qf.quickMove.path.format "Формат отображения:">
 <!ENTITY qf.pathFormat.folderName "Имя папки">
 <!ENTITY qf.pathFormat.folderAndAccount "Имя папки - Учётная запись">

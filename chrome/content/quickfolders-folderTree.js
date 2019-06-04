@@ -257,9 +257,20 @@ QuickFolders.FolderTree = {
 	
 	forceRedraw: function() {
 		// force redrawing the folder pane
+		const util = QuickFolders.Util;
 		var box = document.getElementById("folderTree").boxObject;
-		box.QueryInterface(Components.interfaces.nsITreeBoxObject);
-		box.invalidate();
+		// nsITreeBoxObject will be deprecated from Tb69
+		try {
+			if (Components.interfaces.nsITreeBoxObject) {
+				box.QueryInterface(Components.interfaces.nsITreeBoxObject);
+				box.invalidate();
+			}
+			else 
+				box.element.invalidate();
+		}
+		catch (ex) {
+			util.logException('forceRedraw',ex);
+		}
 	} ,
 	/*									 
 	Adds following styles to a folder tree item:

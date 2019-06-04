@@ -78,6 +78,8 @@
 <!ENTITY qf.caption.currentFolderBackground "Tło paska narzędzi folderu">
 <!ENTITY qf.button.currentFolderBackground.set "Zastosuj">
 <!ENTITY qf.checkbox.currentfolder.lightweight "integracja z lekkim motywem">
+<!ENTITY qf.currentfolder.leftSpacer "Left Spacer:">
+<!ENTITY qf.currentfolder.rightSpacer "Right Spacer:">
 <!ENTITY qf.currentFolderBackground.default "Domyślne">
 <!ENTITY qf.currentFolderBackground.dark "Ciemne">
 <!ENTITY qf.currentFolderBackground.translucent "Przezroczyste">
@@ -179,6 +181,12 @@
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Zostanie wstawiony ostatni pomyślnie użyty folder. Naciśnij Enter, aby go użyć lub po prostu wpisz inne lokalizacje.">
 <!ENTITY qf.checkbox.skipFolder "Pomiń nieprzeczytany folder - użyj skrótu: SHIFT +">
 <!ENTITY qf.checkbox.skipFolder.tip "Skrót do przechodzenia do następnego nieprzeczytanego folderu">
+<!ENTITY qf.backupAndRestore "Backup / Restore">
+<!ENTITY qf.storeConfig "Save Configuration…">
+<!ENTITY qf.loadConfig "Load Configuration…">
+<!ENTITY qf.checkbox.storeConfig.tabs "Include QuickFolders Tabs">
+<!ENTITY qf.checkbox.storeConfig.general "Include general settings">
+<!ENTITY qf.checkbox.storeConfig.layout "Include advanced and layout">
 <!ENTITY qf.quickMove.path.format "Format wyświetlania:">
 <!ENTITY qf.pathFormat.folderName "Nazwa folderu">
 <!ENTITY qf.pathFormat.folderAndAccount "Nazwa folderu – Konto pocztowe">

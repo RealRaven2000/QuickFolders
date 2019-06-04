@@ -69,7 +69,7 @@ QuickFolders.Preferences = {
 			  PS.getComplexValue(setting, Components.interfaces.nsISupportsString).data;
 			// fall back for old version
 			if (folders.length<3)
-				folders = PS.getCharPref("QuickFolders.folders");
+				folders = PS.getStringPref("QuickFolders.folders");
 
 			if(folders) {
 				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
@@ -294,7 +294,7 @@ QuickFolders.Preferences = {
 		try {
 			if(this.service.prefHasUserValue(pref))
 				return true;
-			if (this.service.getCharPref(pref))
+			if (this.service.getStringPref(pref))
 				return true;
 		}
 		catch (e) {return false; }
@@ -327,9 +327,9 @@ QuickFolders.Preferences = {
 					    sValue = "";
 					// save value set by user (if none, default will create it)
 					if (service.prefHasUserValue(origPref)) {
-						sValue = service.getCharPref(origPref);
+						sValue = service.getStringPref(origPref);
 						let newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
-						service.setCharPref(newPref, sValue);
+						service.setStringPref(newPref, sValue);
 						util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
 					}
 					// delete bad preference
@@ -387,7 +387,7 @@ QuickFolders.Preferences = {
     try {
 			let localPref = 
         (typeof sDefault == "string") ?
-        this.service.getCharPref(sStyleName) :
+        this.service.getStringPref(sStyleName) :
         this.service.getIntPref(sStyleName);
 			if (localPref || (localPref===0))
 				sReturnValue = localPref;
@@ -405,7 +405,7 @@ QuickFolders.Preferences = {
 
 	setUserStyle: function setUserStyle(sId, sType, sValue) {
 		let sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
-		this.service.setCharPref(sStyleName, sValue);
+		this.service.setStringPref(sStyleName, sValue);
 	},
 
 	getIntPreference: function getIntPreference(p) {

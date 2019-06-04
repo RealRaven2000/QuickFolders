@@ -1,6 +1,14 @@
 <!ENTITY windowTitle "Напредна својства">
 <!ENTITY btnCategory "Категорије">
 <!ENTITY btnCategory.tooltip "Одреди категорије језичака">
+<!ENTITY grpComposer "Default Email Fields">
+<!ENTITY fromAddress "From:">
+<!ENTITY fromAddress.tooltip "Default Identity when composing emails">
+<!ENTITY defaultAccountAddress.value "Account Default Identity">
+<!ENTITY toAddress "To:">
+<!ENTITY toAddress.tooltip "Default To Address when composing new mails">
+<!ENTITY chkComposerSubfolders "Also apply to subfolders">
+<!ENTITY grpTabBehavior "Advanced Tab Behavior">
 <!ENTITY chkIgnoreUnread "Сакриј стање непрочитаних">
 <!ENTITY chkIgnoreUnread.tooltip "Никада не приказуј подебљани или број непрочитаних, чак ни када фасцикла садржи непрочитане поруке.">
 <!ENTITY chkIgnoreCounts "Сакриј бројач порука">

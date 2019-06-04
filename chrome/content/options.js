@@ -531,7 +531,11 @@ QuickFolders.Options = {
 				skipFolderTxt   = getElement('qf-SkipFolderShortcut'),
         quickMoveFormat = getElement('menuQuickMoveFormat'),
         quickMoveDepth  = getElement('quickmove-path-depth'),
-        multiCategories = getElement('chkCategories');
+        multiCategories = getElement('chkCategories'),
+				chkConfigIncludeTabs = getElement('chkConfigIncludeTabs'),
+				chkConfigGeneral= getElement('chkConfigIncludeGeneral'),
+				chkConfigLayout = getElement('chkConfigIncludeLayout'),
+				btnLoadConfig   = getElement('btnLoadConfig');
     premiumConfig.disabled = !isEnabled;
     quickJump.disabled = !isEnabled;
     quickMove.disabled = !isEnabled;
@@ -545,6 +549,10 @@ QuickFolders.Options = {
     quickMoveDepth.disabled = !isEnabled;
     multiCategories.disabled = !isEnabled;
 		quickMoveAutoFill.disabled = !isEnabled;
+		chkConfigGeneral.disabled = !isEnabled;
+		chkConfigIncludeTabs.disabled = !isEnabled;
+		chkConfigLayout.disabled = !isEnabled;
+		btnLoadConfig.disabled = !isEnabled;
   },
   
   decryptLicense: function decryptLicense(testMode) {
@@ -908,8 +916,7 @@ QuickFolders.Options = {
 	colorPickerTranslucent: function colorPickerTranslucent(picker) {
 		document.getElementById('inactivetabs-label').style.backgroundColor=
       this.getTransparent(picker.value, document.getElementById('buttonTransparency').checked);
-		QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.value);
-		return QuickFolders.Interface.updateMainWindow();
+		this.styleUpdate('InactiveTab','background-color', picker.value);
 	},
 	
 	sanitizeCSS: function sanitizeCSS(el) {
@@ -977,8 +984,8 @@ QuickFolders.Options = {
 		let styleValue = setting.value;
 		prefs.setStringPref('currentFolderBar.background', styleValue);
 		prefs.setStringPref('currentFolderBar.background.selection', choice);
-		if(Preferences) {
-			Preferences.get('qfp-CurrentFolder-Background')._value=styleValue;
+		if (Preferences) {
+			Preferences.get('qfpa-CurrentFolder-Background')._value=styleValue;
 		}
 		//if (withUpdate)
 		//	QuickFolders.Interface.updateMainWindow();

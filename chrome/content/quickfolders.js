@@ -455,10 +455,10 @@ END LICENSE BLOCK */
 	  ## Fixed issue with legacy Iterator which is called for Application with Platform Version < 13
 		##   which caused the quickMove / quickJump search function to malfunction - Interlink Only.
 		
-  4.13.4 QuickFolder Pro - 02/03/2019
+  4.13.4 QuickFolders Pro - 02/03/2019
     ## [Bug 26646] Error on Thunderbird start: ensureStyleSheetLoaded failed.
 
-	4.14 QuickFolder Pro - 25/03/2019
+	4.14 QuickFolders Pro - 25/03/2019
 	  ## [Bug 26645] Moving IMAP folders within the tree cuts off QF tabs
 		## Fixed: No context menu was shown When right-clicking the current folder tab in Thunderbird 52
 		   unless user executed double click .
@@ -475,7 +475,7 @@ END LICENSE BLOCK */
 		## When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up
 		   routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)
 			 
-	4.14.1 QuickFolder Pro - 24/04/2019
+	4.14.1 QuickFolders Pro - 24/04/2019
 	  ## [Bug 26654] quickMove shortcuts triggered during in-mail search
 		## replaced className logic with classList, where possible
 		## quickMove: Improve remembering all entered parent folders when only a single match is found
@@ -485,18 +485,22 @@ END LICENSE BLOCK */
 		## Japanese locale completed - thanks to Masahiko Imanaka 
 		## Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.		
 		
-	4.15 QuickFolder Pro - WIP
+	4.15 QuickFolders Pro - 21/05/2019
 	  ## Option for lightweight theme integration - current folder bar can be skinned by theme
 		## options for tweaking spacings around current folder bar
 		## [Bug 26659] Advanced Tab Props - address options falsely always applies to subfolders 
 		## [Bug 26665] quickMove: always support [Enter] to select the top item
 		## quickMove: added [Up] key for immediately jumping to bottom of the list
 		
+		## => backported features into 4.12.2 for Interlink
+		
+	4.15.1 QuickFolders Pro - WIP
+	  ## [Bug 24468] backup & restore functions
 	
 	Future Work
 	===========
-	  ## [Bug 26400] Option to show QquickFolders toolbar at bottom of mail window
-	
+	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
+	  ## [Bug 26670] Improve keyboard navigation: ALT-DOWN for tab context menu. 
 	Known Issues
 	============
 		Thunderbird 66 compatibility - more to do for 67! https://privatebin.net/?2c1a1bcc9bebca9c#9Z15ZXr7zj+AOM4CUMDyQBasYCRPb8or+X0nvYcxzHM=
@@ -952,7 +956,7 @@ var QuickFolders = {
 			else
 				util.logDebug('init: could not retrieve tab / tabMode\n tab=' + tab + ' tabMode = ' + tabMode);
 				
-			QuickFolders.Interface.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
 		}
 		catch(ex) {
 			util.logException('init: folderEntries', ex);
@@ -1649,8 +1653,8 @@ var QuickFolders = {
 						// haven't found a way to tidy these up, yet (should be done in onDragExit?)
 						// Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
 						// no menus necessary for folders without subfolders!
-						let popupset = this.doc.createElement('popupset'),
-						    menupopup = this.doc.createElement('menupopup'),
+						let popupset = this.doc.createXULElement ? this.doc.createXULElement('popupset') : this.doc.createElement('popupset'),
+						    menupopup = this.doc.createXULElement ? this.doc.createXULElement('menupopup') : this.doc.createElement('menupopup'),
 						    popupId;
 						QI.FoldersBox.appendChild(popupset);
 

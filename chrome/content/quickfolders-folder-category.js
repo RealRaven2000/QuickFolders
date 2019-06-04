@@ -55,8 +55,8 @@ QuickFolders.FolderCategory = {
 		const util = QuickFolders.Util;
 		let listBox = this.CategoriesListBox,
         item,
-        folderEntry = QuickFolders.Model.getFolderEntry(this.folder.URI),
-        cat = folderEntry.category,
+        folderEntry = this.folder ? QuickFolders.Model.getFolderEntry(this.folder.URI) : null,
+        cat = folderEntry ? folderEntry.category : this.ALWAYS,
         // get array of categories for the folder
         cats = cat ? cat.split('|') : ''; // will be "" if no category is defined
 
@@ -88,7 +88,7 @@ QuickFolders.FolderCategory = {
 	} ,
 
 	createListItem: function createListItem(value, label) {
-		let listItem = document.createElement("listitem");
+		let listItem = document.createXULElement ? document.createXULElement("listitem") : document.createElement("listitem");
 		listItem.setAttribute("label", label);
 		listItem.setAttribute("value", value);
 		return listItem;

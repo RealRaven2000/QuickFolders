@@ -95,6 +95,7 @@
 <!ENTITY qf.checkbox.debug.tooltip "högerklicka på den här kryssrutan för avancerade felsökningsalternativ">
 <!ENTITY qf.label.initdelay "Inledande fördröjning (ms) {standardvärdet är 1000}:">
 <!ENTITY qf.copyfolders "Kopiera flikar">
+<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Kopierar mapparnas konfigurationssträng till Urklipp">
 <!ENTITY qf.pastefolders.tooltip "Radera alla QuickFolders och läs nya konfigurationer från urklipp">
 <!ENTITY qf.label.appearance "Utseende">
@@ -180,6 +181,12 @@
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Den senast använda mappen kommer att infogas. Tryck på Enter för att använda den eller skriv över för andra platser.">
 <!ENTITY qf.checkbox.skipFolder "Hoppa över oläst mapp - använd kortkommando: SHIFT +">
 <!ENTITY qf.checkbox.skipFolder.tip "Kortkommando för att hoppa till nästa olästa mapp.">
+<!ENTITY qf.backupAndRestore "Backup / Restore">
+<!ENTITY qf.storeConfig "Save Configuration…">
+<!ENTITY qf.loadConfig "Load Configuration…">
+<!ENTITY qf.checkbox.storeConfig.tabs "Include QuickFolders Tabs">
+<!ENTITY qf.checkbox.storeConfig.general "Include general settings">
+<!ENTITY qf.checkbox.storeConfig.layout "Include advanced and layout">
 <!ENTITY qf.quickMove.path.format "Visningsformat:">
 <!ENTITY qf.pathFormat.folderName "Mappnamn">
 <!ENTITY qf.pathFormat.folderAndAccount "Mappnamn - E-postkonto">
@@ -193,6 +200,7 @@
 <!ENTITY qf.checkbox.readingList "Läslista">
 <!ENTITY qf.checkbox.readingList.tooltip "En lista över e-post som bör läsas senare. Dra dina viktigaste e-postmeddelande till denna knapp.">
 <!ENTITY qf.label.donate "Donera">
+<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna.">
 <!ENTITY qf.checkbox.usePalette "Använd palett">
 <!ENTITY qf.options.theme.pastelColors "Pastellfärger">

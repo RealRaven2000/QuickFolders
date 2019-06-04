@@ -77,6 +77,9 @@
 <!ENTITY qf.label.menus.options "Opties">
 <!ENTITY qf.caption.currentFolderBackground "Werkbalkachtergrond van huidige map">
 <!ENTITY qf.button.currentFolderBackground.set "instellen">
+<!ENTITY qf.checkbox.currentfolder.lightweight "integreren met lichtgewicht-thema">
+<!ENTITY qf.currentfolder.leftSpacer "Inspringing links:">
+<!ENTITY qf.currentfolder.rightSpacer "Inspringing rechts:">
 <!ENTITY qf.currentFolderBackground.default "standaard">
 <!ENTITY qf.currentFolderBackground.dark "donker">
 <!ENTITY qf.currentFolderBackground.translucent "doorschijnend">
@@ -178,6 +181,12 @@
 <!ENTITY qf.checkbox.quickmove.autofill.tip "De laatste met succes gebruikte map wordt ingevoegd. Druk op Enter om deze te gebruiken, of typ iets anders voor andere bestemmingen.">
 <!ENTITY qf.checkbox.skipFolder "Ongelezen map overslaan - sneltoets gebruiken: SHIFT +">
 <!ENTITY qf.checkbox.skipFolder.tip "Sneltoets voor het springen naar de volgende ongelezen map.">
+<!ENTITY qf.backupAndRestore "Back-up / Herstel">
+<!ENTITY qf.storeConfig "Configuratie opslaan…">
+<!ENTITY qf.loadConfig "Configuratie laden…">
+<!ENTITY qf.checkbox.storeConfig.tabs "QuickFolders-tabbladen opnemen">
+<!ENTITY qf.checkbox.storeConfig.general "Algemene instellingen opnemen">
+<!ENTITY qf.checkbox.storeConfig.layout "Geeavanceerd en opmaak opnemen">
 <!ENTITY qf.quickMove.path.format "Weergave:">
 <!ENTITY qf.pathFormat.folderName "Mapnaam">
 <!ENTITY qf.pathFormat.folderAndAccount "Mapnaam - E-mailaccount">

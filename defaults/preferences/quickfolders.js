@@ -78,6 +78,11 @@ pref("extensions.quickfolders.currentFolderBar.flexLeft", 3);
 pref("extensions.quickfolders.currentFolderBar.flexRight", 6);
 // off the wall German flag style:
 pref("extensions.quickfolders.currentFolderBar.background.custom","linear-gradient(140deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 12%,rgba(0,0,0,1) 14%,rgba(214,40,40,1) 24%,rgba(255,231,50,1) 32%,rgba(255,231,50,0.0) 34%,rgba(0,0,0,0) 100%)"); 
+// backup / restore
+pref("extensions.quickfolders.files.path", "");
+pref("extensions.quickfolders.restoreConfig.general", true);
+pref("extensions.quickfolders.restoreConfig.tabs", true);
+pref("extensions.quickfolders.restoreConfig.layout", true);
 // note: in old Gecko versions it would be -moz-linear-gradient(-30deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 12%,rgba(0,0,0,1) 14%,rgba(214,40,40,1) 24%,rgba(255,231,50,1) 32%,rgba(255,231,50,0.0) 34%,rgba(0,0,0,0) 100%)
 // Layout
 pref("extensions.quickfolders.style.theme", "flatTabs");

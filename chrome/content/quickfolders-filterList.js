@@ -278,12 +278,12 @@ QuickFolders.FilterList = {
 			
 			// create a container that holds list label and count...
 			let rowAbove = filterList.parentNode.parentNode.previousSibling,
-			    hbox = document.createElement('hbox');
+			    hbox = document.createXULElement ? document.createXULElement('hbox') : document.createElement('hbox');
       filterHeader = rowAbove.firstChild;
 			filterHeader.id='filterHeader';
 			rowAbove.appendChild(hbox);
 			hbox.appendChild(filterHeader);
-			hbox.appendChild(document.createElement('spacer'));
+			hbox.appendChild(document.createXULElement ? document.createXULElement('spacer') : document.createElement('spacer'));
 			countBox.flex="1"; // make sure this is never obscured by the label
 			hbox.appendChild(countBox);
 			 
@@ -312,11 +312,11 @@ QuickFolders.FilterList = {
 			
 			filterHeader = document.getElementById("filterHeader");
 			let row=filterHeader.parentNode,
-			    hbox = document.createElement('hbox');
+			    hbox = document.createXULElement ? document.createXULElement('hbox') : document.createElement('hbox');
 			row.appendChild(hbox);
 			
 			hbox.appendChild(countBox);
-			hbox.appendChild(document.createElement('spacer'));
+			hbox.appendChild(document.createXULElement ? document.createXULElement('spacer') : document.createElement('spacer'));
 			countBox.flex="1"; // make sure this is never obscured by the label
 			hbox.appendChild(countBox);
 			

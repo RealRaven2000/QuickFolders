@@ -494,9 +494,13 @@ END LICENSE BLOCK */
 		
 		## => backported features into 4.12.2 for Interlink
 		
-	4.15.1 QuickFolders Pro - WIP
+	4.15.1 QuickFolders Pro - 21/05/2019
 	  ## [Bug 24468] backup & restore functions
-	
+	  ## [Bug 26670] Improved keyboard navigation: ALT+DOWN for context menu
+		
+	4.15.3	QuickFolders Pro - WIP
+	  ## [Bug 26671] Only one row of tabs after update to QuickFolders 4.15.1 - this can also lead to trailing tabs missing on screen.
+		
 	Future Work
 	===========
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
@@ -1588,13 +1592,14 @@ var QuickFolders = {
 
               // find out whether drop target button is right or left from source button:
               if (node.hasAttributes()) {
-                let sDirection,
-                    box = node.boxObject;
+                let box = node.boxObject;
                 if (box) {
                   let dx = (box.x - button.boxObject.x);
                   if (dx !== 0) {
-                    sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT")
+                    let sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT"),
+                        sOther=(dx>0 ? "dragRIGHT" : "dragLEFT");
                     button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
+										button.classList.remove(sOther);
                   }
                 }
 							}

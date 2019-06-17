@@ -2154,7 +2154,7 @@ QuickFolders.Interface = {
 		  // line break?
 			if (entry && entry.breakBefore && !isFirst) { // no line break if this is the first button on a line
 			  // without explicitely adding this namespace, the break doesnt show up!
-			  let LF = createElementNS("http://www.w3.org/1999/xhtml", "br");
+			  let LF = document.createElementNS("http://www.w3.org/1999/xhtml", "br");
 			  this.FoldersBox.appendChild(LF);
 			}
 			
@@ -3190,7 +3190,7 @@ QuickFolders.Interface = {
 						menuitem.setAttribute('label', colorText + " "+ jCol);
 						//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
 						if (currentColor == jCol)
-							menuitem.selected = true;
+							menuitem.checked = true;
 					}
 					else
 						menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));

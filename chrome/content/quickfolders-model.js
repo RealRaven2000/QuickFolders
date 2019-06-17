@@ -362,17 +362,7 @@ QuickFolders.Model = {
 
       if (category) {
 				// CHANGE restore tabs allows for invalid folder URLs. caregories must still be added.
-        // if the folder doesn't exist anymore, ignore this category
-				/*
-        try {
-          if (!this.getMsgFolderFromUri(entry.uri, false)) continue;
-        }
-        catch(e) {
-          QuickFolders.Util.logException("Exception while checking folder existence: ", e);
-          continue;
-        }
-				*/
-
+        // if the folder doesn't exist anymore, we still show category (because of restore function)
         // allow multiple categories - comma separated list
         if (category) {
           let cats = category.split('|');

@@ -1,20 +1,9 @@
-<b>Version 4.15.1</b>
+<b>Version 4.15.3</b>
 <ul>
-<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a> Added backup and restore functions on the QuickFolders Pro Tab. 
+<li> <a name="26671" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26671" target="_blank">[Bug 26671]</a> Only one row of tabs after update to QuickFolders 4.15.1 - this can also lead  to trailing tabs missing on screen.
 
-<i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.The later includes advanced settings except for the license key. <i>Load Configuration</i> will only load whatever option is selected.</li>
-<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26670" target="_blank">[Bug 26670]</a></li>
+I had uploaded a fix in 4.15.2 but something rolleed back the code, so it's now officially fixed with version 4.15.3.
 
-<li>Improved the behavior of the "Find orphaned Tabs" command. This now includes an option to reuse the answer (delete remaining faulty tabs - Yes / No) rather than clicking once for each invalid tab.</li>
-
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26658" target="_blank">[Bug 26658]</a> More ongoing changes to make compatible with latest Thundeerbird versions:
-<ul>
-<li>nsITreeBoxObject was deprecated - causing refresh of folder tree icons to fail</li>
-<li>document.createElement deprecated - replaced with the new document.createXULelement</li>
-<li>Improved new HTML color picker behavior when changing background color for inactive tab	(live preview was broken)</li>
-<li>ongoing changes to preferences in dialog system. Lots of moving parts here, so please test rigorously if you are using a "bleeding edge" version of Thunderbird</li>
-<li>removed all instances of nsIPrefService.getCharPref(..)</li>
-<li>known issue - in Thunderbird 69 the labels of the Tabs vanish when right-clicked. I will fix as soon as I knwo that it's a deprecation cause by XUL changes and not a regression in	Thunderbird.</li>
-</ul>
-</li>
+The new backup / restore tool will also display tabs which have no valid folders. If you have problems with outdated tabs being shown, you may additionally want to  execute the <i>find orphaned tabs</i> command.</li>
+<li> Rounded out pt-br (Portuguese Brazilian) locale - thanks to Marcelo Ghelman </li>
 </ul>

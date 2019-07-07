@@ -10,7 +10,7 @@ END LICENSE BLOCK */
 if (typeof ChromeUtils.import == "undefined") 
 	Components.utils.import("resource://gre/modules/Services.jsm");
 else
-	ChromeUtils.import("resource://gre/modules/Services.jsm");
+	var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
 if (QuickFolders.Util.Application == 'Postbox') { 

@@ -4,9 +4,7 @@
 <!--  tb 59 -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
-<!--  tb 64 
-<?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-widgets64.css" title="QuickFolderStyles" type="text/css"?>
--->
+
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
 
@@ -16,13 +14,13 @@
 				title="&qf.prefwindow.quickfolders.options;"
 				buttons="extra2,accept,cancel"
 				buttonlabelextra2="&qf.label.donate;"
-				ondialogaccept="QuickFolders.Options.accept();"
-				ondialogcancel="QuickFolders.Options.close();"
 				onload="QuickFolders.Options.load();"
-				ondialogextra2="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });"
 				lightweightthemes="true"
 				>
 <!-- tooltiptextextra2="&qf.label.donateLink;" -->
+<!--  	ondialogaccept="QuickFolders.Options.accept();"
+				ondialogcancel="QuickFolders.Options.close();"
+				ondialogextra2="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });" -->
 
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
@@ -80,7 +78,7 @@
 				<tab id="QuickFolders-Support" label="&qf.tab.support;" />
 				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" class="free" />
 			</tabs>
-			<tabpanels id="QuickFolders-Panels"  onselect="options.onTabSelect(this,event);">
+			<tabpanels id="QuickFolders-Panels">
 				<tabpanel id="QuickFolders-Options-general" orient="vertical">
 					<preferences id="prefsGeneral">
 						<preference id="qfpg-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" instantApply="true"/>

@@ -494,17 +494,20 @@ END LICENSE BLOCK */
 		
 		## => backported features into 4.12.2 for Interlink
 		
-	4.15.1 QuickFolders Pro - 21/05/2019
+	4.15.1 QuickFolders Pro - 04/06/2019
 	  ## [Bug 24468] backup & restore functions
 	  ## [Bug 26670] Improved keyboard navigation: ALT+DOWN for context menu
 		
-	4.15.3	QuickFolders Pro - WIP
+	4.15.3 QuickFolders Pro - 17/06/2019
 	  ## [Bug 26671] Only one row of tabs after update to QuickFolders 4.15.1 - this can also lead to trailing tabs missing on screen.
+		
+	4.15.4 QuickFolders Pro - WIP
+	  ## [Bug 26680] Create subfolder command with "/" stopped working
 		
 	Future Work
 	===========
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
-	  ## [Bug 26670] Improve keyboard navigation: ALT-DOWN for tab context menu. 
+		
 	Known Issues
 	============
 		Thunderbird 66 compatibility - more to do for 67! https://privatebin.net/?2c1a1bcc9bebca9c#9Z15ZXr7zj+AOM4CUMDyQBasYCRPb8or+X0nvYcxzHM=

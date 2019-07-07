@@ -34,6 +34,7 @@ menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon {
 
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */
+notification[value="quickfolders-filter"] image.messageImage,
 notificationbox *[value="quickfolders-filter"] image.messageImage {
 	/* filterTemplate.png */
 	min-width: 73px !important;
@@ -42,6 +43,7 @@ notificationbox *[value="quickfolders-filter"] image.messageImage {
 	height: 32px !important;
 }
 
+notification[value="quickfolders-filter"] .messageCloseButton,
 notificationbox *[value="quickfolders-filter"] .messageCloseButton {
 	background-color: rgba(255, 255, 255, 0.8);
 	border-radius: 3px;
@@ -49,6 +51,7 @@ notificationbox *[value="quickfolders-filter"] .messageCloseButton {
 	margin: 1em 1.5em;
 }
 
+notification[value="quickfolders-filter"] .messageCloseButton:hover,
 notificationbox *[value="quickfolders-filter"] .messageCloseButton:hover {
 	background-color: rgba(255, 255, 255, 1);
 }

@@ -12,7 +12,7 @@
 if (typeof ChromeUtils.import == "undefined") 
 	Components.utils.import('resource://gre/modules/Services.jsm');
 else
-	ChromeUtils.import('resource://gre/modules/Services.jsm');
+	var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -197,7 +197,11 @@ QuickFolders.Options = {
 	loadPreferences: function qf_loadPreferences() {
 		const util = QuickFolders.Util;
 		if (typeof Preferences == 'undefined') {
-			Components.utils.import('resource://gre/modules/Services.jsm');
+			if (typeof ChromeUtils.import == "undefined") 
+				Components.utils.import('resource://gre/modules/Services.jsm');
+			else
+				var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+			
 			let context={};
 			Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", context, "UTF-8" /* The script's encoding */); 
 			if (typeof Preferences == 'undefined') {
@@ -376,7 +380,6 @@ QuickFolders.Options = {
 		
 		let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
 		if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
-		options.configExtra2Button();
 		
 		let main = util.getMail3PaneWindow(),
 		    getMainElement = main.QuickFolders.Util.$,
@@ -399,6 +402,30 @@ QuickFolders.Options = {
 		}
 		
 		util.loadPlatformStylesheet(window);
+		
+		let panels = getElement('QuickFolders-Panels');
+		window.addEventListener('dialogaccept', function () { QuickFolders.Options.accept(); });
+		window.addEventListener('dialogcancel', function () { QuickFolders.Options.close(); });
+		window.addEventListener('dialogextra2', function (event) { 
+		  setTimeout(
+			  function() { 
+				  QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); 
+					window.close(); 
+				}
+			);
+		});
+		try {
+			let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
+			if (selectOptionsPane >=0) {
+				panels.selectedIndex = selectOptionsPane; // for some reason the tab doesn't get selected
+				panels.tabbox.selectedTab = panels.tabbox.tabs.childNodes[selectOptionsPane];
+			}
+		}
+		catch(e) { ; }
+		panels.addEventListener('select', function(evt) { QuickFolders.Options.onTabSelect(panels,evt); } );
+		options.configExtra2Button();
+		
+		
 		util.logDebug("QuickFolders.Options.load() - COMPLETE");
 		
 	},
@@ -461,13 +488,6 @@ QuickFolders.Options = {
         }
       }
 
-    try {
-      let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
-      if (selectOptionsPane >=0)
-        tabbox.selectedIndex = selectOptionsPane; // 1 for pimp my tabs
-    }
-    catch(e) { ; }
-    
     let menupopup = getElement("QuickFolders-Options-PalettePopup");
     QI.buildPaletteMenu(0, menupopup, true, true); // added parameter to force oncommand attributes back
     
@@ -691,6 +711,11 @@ QuickFolders.Options = {
         strLength = {},
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
+		if (typeof ChromeUtils.import == "undefined") 
+			Components.utils.import('resource://gre/modules/Services.jsm');
+		else
+			var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+		
 		if (Services.clipboard)
 			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
 		else {
@@ -1360,6 +1385,12 @@ QuickFolders.Options = {
 		util.popupProFeature("pasteFolderEntries");
 				
 		trans.addDataFlavor("text/unicode");
+		if (typeof ChromeUtils.import == "undefined") 
+			Components.utils.import('resource://gre/modules/Services.jsm');
+		else
+			var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+		
+		
 		if (Services.clipboard) 
 			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
 		else {
@@ -1556,6 +1587,25 @@ QuickFolders.Options = {
 			case 'QuickFolders-Options-goPro':
 			default:
 			  return 'licenseTab';
+		}
+	},
+	
+	tabIdFromIndex : function tabIdFromIndex(idx) {
+		switch (tabpanels.selectedPanel.id) {
+			case 0:
+			  return 'QuickFolders-Options-general';
+			case 1:
+			  return 'QuickFolders-Options-advanced';
+			case 2:
+			  return 'QuickFolders-Options-layout';
+			case 3:
+			  return 'QuickFolders-Options-quickhelp';
+			case 4:
+				return 'QuickFolders-Options-support';
+			case 5:
+			  return 'QuickFolders-Options-goPro';
+			default:
+			  return '';
 		}
 	},
 		

@@ -10,7 +10,7 @@
 if (typeof ChromeUtils.import == "undefined")
 	Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
 else
-	ChromeUtils.import('resource://gre/modules/Services.jsm');
+	var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_ConsoleService=null;
 
@@ -23,16 +23,6 @@ if (!QuickFolders.Properties)
 
 if (!QuickFolders.Filter)
 	QuickFolders.Filter = {};
-
-if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo).ID != "postbox@postbox-inc.com")
-{
-  // Here, Postbox declares fixIterator
-	if (typeof ChromeUtils.import == "undefined")
-		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
-	else
-		ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
-}
-
 	
 // code moved from options.js
 // open the new content tab for displaying support info, see
@@ -504,6 +494,7 @@ QuickFolders.Util = {
   
 	popupProFeature: function popupProFeature(featureName, text) {
 		let notificationId,
+		    notifyBox,
         util = QuickFolders.Util,
 				prefs = QuickFolders.Preferences,
 				maindoc = util.getMail3PaneWindow().document;
@@ -527,9 +518,15 @@ QuickFolders.Util = {
 				notificationId = null;
 				break;
 		}
-		let notifyBox = maindoc.getElementById (notificationId);
-    if (notifyBox)
-      util.logDebugOptional("premium", "notificationId = " + notificationId + ", found" + notifyBox);
+		
+		if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+			notifyBox = specialTabs.msgNotificationBar;
+		}
+		else {
+			notifyBox = maindoc.getElementById (notificationId);
+			if (notifyBox)
+				util.logDebugOptional("premium", "notificationId = " + notificationId + ", found" + notifyBox);
+		}
 		let title=util.getBundleString("qf.notification.premium.title", "Premium Feature"),
 		    theText=util.getBundleString("qf.notification.premium.text",
 				        "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently.");
@@ -904,15 +901,6 @@ QuickFolders.Util = {
 			step = 2;
 
 			// copy what we need...
-			// let myInfos = [{ recipient: x.mime2DecodedRecipients, subject: x.subject}
-			//		for each ([, x] in fixIterator(myMessages))];
-
-			// OR
-			// let q = Gloda.newQuery(Gloda.NOUN_MSG);
-			// q.headerMessageID(messageId);
-			// q.run(listener) => async
-			// q.getCollection(listener)
-
 			let messageIdList = [],
           isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
           bookmarks = QuickFolders.bookmarks;
@@ -1709,7 +1697,7 @@ QuickFolders.Util = {
 	
 	doesMailUriExist: function checkUriExists(URI) {
 		let f = QuickFolders.Model.getMsgFolderFromUri(URI);
-		return (f.parent) ? true : false;
+		return (f && f.parent) ? true : false;
 	},
 	
 	polyFillEndsWidth: function polyFillEndsWidth() {

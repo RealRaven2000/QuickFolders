@@ -51,7 +51,7 @@ QuickFolders.FilterWorker = {
 					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
 					break;
 				case 'Thunderbird': 
-					notificationId = 'mail-notification-box'
+					notificationId = 'mail-notification-box';
 					break;
 				case 'SeaMonkey':
 					notificationId = null;
@@ -61,7 +61,11 @@ QuickFolders.FilterWorker = {
 			let notificationKey = "quickfolders-filter";
 
 			if (notificationId) {
-				notifyBox = document.getElementById (notificationId);
+			  if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+					notifyBox = specialTabs.msgNotificationBar;
+				}
+			  else
+					notifyBox = document.getElementById (notificationId);
 				let item=notifyBox.getNotificationWithValue(notificationKey)
 				if(item)
 					notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation

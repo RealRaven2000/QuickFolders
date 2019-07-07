@@ -9,12 +9,9 @@
 
 if (typeof ChromeUtils.import == "undefined") {
 	Components.utils.import("resource://gre/modules/Services.jsm");
-	Components.utils.import("resource://gre/modules/PluralForm.jsm");
 }
-else {
-	ChromeUtils.import("resource://gre/modules/Services.jsm");
-	ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
-}
+else 
+	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);

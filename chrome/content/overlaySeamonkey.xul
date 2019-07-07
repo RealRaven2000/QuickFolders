@@ -129,7 +129,7 @@
 											 />
 						<textbox id="QuickFolders-FindFolder" 
 								 oncommand="QuickFolders.Interface.findFolderName(this);"
-									 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
+								 onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
 								 type="search"
 								 collapsed="true"
 								 placeholder="&quickfolders.findFolder.placeHolder;"/>

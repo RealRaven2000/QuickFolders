@@ -30,6 +30,11 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 			FoldersArray, allFolders,
 			util = QuickFolders.Util;
 	
+	if (typeof ChromeUtils.import == "undefined")
+		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
+	else
+		var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
+	
   if (acctMgr.allFolders) { // Thunderbird & modern builds
 		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 		allFolders = acctMgr.allFolders;
@@ -228,6 +233,7 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
     if (util.Application == 'Postbox') 
       aAccounts = util.getAccountsPostbox();
     else {
+			Components.utils.import("resource:///modules/iteratorUtils.jsm");
 			let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
 				           .getService(Ci.nsIMsgAccountManager).accounts;
       aAccounts = [];

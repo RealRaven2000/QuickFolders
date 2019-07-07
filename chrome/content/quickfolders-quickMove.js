@@ -117,6 +117,13 @@ QuickFolders.quickMove = {
 		const util = QuickFolders.Util,
 		      QI = QuickFolders.Interface,
 		      prefs = QuickFolders.Preferences;
+					
+		if (typeof ChromeUtils.import == "undefined") {
+			ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
+		}
+		else
+			var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
+					
     let actionCount,
         fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
         tabMode = QI.CurrentTabMode,    

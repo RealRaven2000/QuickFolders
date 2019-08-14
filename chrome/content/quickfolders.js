@@ -501,8 +501,18 @@ END LICENSE BLOCK */
 	4.15.3 QuickFolders Pro - 17/06/2019
 	  ## [Bug 26671] Only one row of tabs after update to QuickFolders 4.15.1 - this can also lead to trailing tabs missing on screen.
 		
-	4.15.4 QuickFolders Pro - WIP
+	4.15.4 QuickFolders Pro - 09/07/2019
 	  ## [Bug 26680] Create subfolder command with "/" stopped working
+		
+	4.15.5 QuickFolders Pro - WIP
+		## [Bug 26681] On Current Folder Tab, "Mark Folder Read" is not displayed
+		## Thunderbird 68 - the categories dialog does not show any categories
+		   deleting the last one can make the folder tabs invisible if it is currently selected
+		## removed 1px gap under QF tabs that shows in Thunderbird 68
+		## Fixed some problems with deleting categories - 
+		## Domain license renewal gave the wrong link when the green button (renew license)  was clicked
+		   fixed to direct to https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew
+		
 		
 	Future Work
 	===========

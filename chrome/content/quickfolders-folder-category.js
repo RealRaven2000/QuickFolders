@@ -44,6 +44,15 @@ QuickFolders.FolderCategory = {
 		window.setTimeout(function() {
 			this.document.title = this.document.title + ": " + QuickFolders.FolderCategory.folder.prettyName;
 		}, 200);
+		
+		// Tb68 - replace broken ondialogaccept
+		window.addEventListener('dialogaccept', 
+		  function () { 
+				QuickFolders.FolderCategory.setSelectedCategory(); 
+				var rv= window.arguments[2]; 
+				rv.btnClicked='ok';
+			});
+		
 	} ,
 
 	$: function(id) {
@@ -60,35 +69,38 @@ QuickFolders.FolderCategory = {
         // get array of categories for the folder
         cats = cat ? cat.split('|') : ''; // will be "" if no category is defined
 
-		util.clearChildren(listBox);
 		let categories = QuickFolders.Model.Categories;
 
 		//deselect all
-		listBox.selectedIndex=-1;
+		// listBox.selectedIndex=-1; // this will cause focus event listener in richlistbox.js to select first item!
+		listBox.clearSelection();
+		util.clearChildren(listBox);
 
 		for (let i = 0; i < categories.length; i++) {
 			let category = categories[i];
 			if (category!=this.ALWAYS  && category!=this.NEVER) {
-				item = listBox.appendChild(this.createListItem(category, category));
+				item = listBox.appendItem(category, category);
 				// is the current folder in this category?
 				if (cats && cats.indexOf(category) >=0)
 					listBox.addItemToSelection(item);
 			}
 		}
-		item = listBox.appendChild(this.createListItem(this.ALWAYS, util.getBundleString("qfShowAlways","Show Always!")))
+		item = listBox.appendItem(util.getBundleString("qfShowAlways","Show Always!"), this.ALWAYS);
 		if (cats && cats.indexOf(this.ALWAYS) >=0)
 			listBox.addItemToSelection(item);
-		item = listBox.appendChild(this.createListItem(this.NEVER, util.getBundleString("qfShowNever","Never Show (Folder Alias)")))
+		item = listBox.appendItem(util.getBundleString("qfShowNever","Never Show (Folder Alias)"), this.NEVER);
 		if (cats && cats.indexOf(this.NEVER) >=0)
 			listBox.addItemToSelection(item);
 		// highlight uncategorized if no categories are defined in folder
-		item = listBox.appendChild(this.createListItem("", util.getBundleString("qfUncategorized", "(Uncategorized)")))
+		item = listBox.appendItem(util.getBundleString("qfUncategorized", "(Uncategorized)"), this.UNCATEGORIZED);
 		if (!cats) // "" or null
 			listBox.addItemToSelection(item);
+		// Tb68 glitch: make sure the focus box is on the first selected index, to avoid always highlighting top item:
+		listBox.currentIndex = listBox.selectedIndex;
 	} ,
 
 	createListItem: function createListItem(value, label) {
-		let listItem = document.createXULElement ? document.createXULElement("listitem") : document.createElement("listitem");
+		let listItem = document.createXULElement ? document.createXULElement("richlistitem") : document.createElement("richlistitem");
 		listItem.setAttribute("label", label);
 		listItem.setAttribute("value", value);
 		return listItem;
@@ -97,10 +109,14 @@ QuickFolders.FolderCategory = {
 	addToNewCategory: function addToNewCategory() {
     const model = QuickFolders.Model;
 		let categoryName = this.$('new-category-name').value;
+		
+		if(!categoryName) return; // do nothing to avoid accidentally removing category box if only one category is defined.
 
 		model.setFolderCategory(this.folder.URI, categoryName);
 		//add new category to listbox
-		this.CategoriesListBox.appendChild(this.createListItem(categoryName, categoryName));
+		this.CategoriesListBox.appendItem(categoryName, categoryName);
+		//this.CategoriesListBox.appendChild(this.createListItem(categoryName, categoryName));
+		                    
 
 		model.resetCategories();
 		this.populateCategories();

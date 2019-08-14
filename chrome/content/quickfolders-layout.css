@@ -368,7 +368,7 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-FoldersBox {
-	display: -moz-inline-box;
+	display: inline-box;
 	float:right;
 	max-height:25em;
 	margin-bottom: 0px;

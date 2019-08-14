@@ -19,10 +19,7 @@
 	buttonlabelextra2="&btnReset;"
 	buttonlabelextra1="&btnApply;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	ondialogaccept="QuickFolders.AdvancedTab.accept();"
 	onload="QuickFolders.AdvancedTab.load();"
-	ondialogextra2="QuickFolders.AdvancedTab.defaults();"
-	ondialogextra1="QuickFolders.AdvancedTab.apply();"
 >
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />

@@ -29,7 +29,7 @@ else {
 		Components.utils.import("resource:///modules/MailUtils.js");
 	else {
 		try { // Tb 61
-			ChromeUtils.import("resource:///modules/MailUtils.jsm");
+			var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 		}
 		catch (ex) {
 			ChromeUtils.import("resource:///modules/MailUtils.js");

@@ -293,7 +293,11 @@ QuickFolders.Licenser = {
 				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
 			  break;
 			case 2: // license renewal
-				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
+				if (QuickFolders.Crypto.key_type==1) { // domain license!
+					shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
+				}
+				else
+					shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
 				// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 				featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 				// should we autoselect the correct email address?
@@ -513,6 +517,11 @@ QuickFolders.Licenser = {
         hasDefaultIdentity = false,
         myAccounts = util.Accounts,
         ForceSecondaryMail = prefs.getBoolPref('licenser.forceSecondaryIdentity');
+				
+		if (QuickFolders.Crypto.key_type==1) {
+			ForceSecondaryMail = false;
+			util.logToConsole	("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
+		}
     if (ForceSecondaryMail) {
       // switch for secondary email licensing
       this.AllowSecondaryMails = true;
@@ -538,8 +547,12 @@ QuickFolders.Licenser = {
       if (ac.defaultIdentity && !ForceSecondaryMail) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
-				if (!ac.defaultIdentity || !ac.defaultIdentity.email)
+				if (!ac.defaultIdentity || !ac.defaultIdentity.email) {
+					if (ac.incomingServer.username != "nobody") {
+						logDebug("Account " + ac.incomingServer.prettyName + " has no default identity!");
+					}
 					continue;
+				}
         if (isIdMatchedLicense(ac.defaultIdentity.email, licensedMail)) {
           isMatched = true;
           break;

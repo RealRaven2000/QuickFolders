@@ -61,41 +61,12 @@ var QuickFolders_TabURIopener = {
 	}
 };
 
-
-try {
-	// override version number - retrieves QUICKFOLDERS_HC_VERSION
-	Components.utils.import("resource://quickfoldersShim60/quickfolders-util2.jsm"); 
-}
-catch (ex) {
-	let msg = "couldn't import quickfolders-util2.jsm";
-	debugger;
-	try {
-		var Ci1 = Components.interfaces,
-		    Cc2 = Components.classes;
-		let consoleService = Cc2["@mozilla.org/consoleservice;1"].getService(Ci1.nsIConsoleService),
-				scriptError = Cc2["@mozilla.org/scripterror;1"].createInstance(Ci1.nsIScriptError),
-				Category = 'system javascript',
-		    stack = '';
-		if (typeof ex.stack!='undefined')
-			stack = ex.stack.replace("@","\n  ");
-
-		scriptError.init(msg, ex.fileName || "?", stack, ex.lineNumber, 0, 0x2, Category);
-		if (this.Application == 'Postbox') {
-			this.logToConsole(scriptError, 'EXCEPTION');
-		}
-		consoleService.logMessage(scriptError);
-	}
-	catch(ex) { 
-	  debugger;
-	}
-}
-
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : QUICKFOLDERS_HC_VERSION || "4.15", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.15.5", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -689,7 +660,7 @@ QuickFolders.Util = {
 		}
 	},
 
-	clearChildren: function clearChildren(element,withCategories) {
+	clearChildren: function clearChildren(element, withCategories) {
     if (!element) return;
 		QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
 		if (withCategories)

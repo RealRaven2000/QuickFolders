@@ -7,9 +7,9 @@
 <dialog title="&qf.dialog.setcategory;"
 	buttons="accept,cancel"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"
     onload="QuickFolders.FolderCategory.init(this, window.arguments[1]);"
 >
+<!--  ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"   borked in Thunderbird 68 -->
 
     <script type="text/javascript">
 		var QuickFolders = window.arguments[0];
@@ -29,7 +29,8 @@
             <richlistbox id="existing-categories"
               ondblclick="QuickFolders.FolderCategory.setSelectedCategory();"
               onselect="QuickFolders.FolderCategory.onSelectionChange(event);"
-              seltype="multiple">
+              seltype="multiple"
+							flex="2">
                 <!-- added by script -->
             </richlistbox>
         </vbox>

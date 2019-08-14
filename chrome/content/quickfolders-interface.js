@@ -918,6 +918,11 @@ QuickFolders.Interface = {
 			}
 			cat.style.display = (showToolIcon || isCustomCat) ? '-moz-inline-box' : 'none';
 			cat.collapsed = (!isCustomCat);
+			if (this.currentActiveCategories && !catArray.includes(this.currentActiveCategories)) {
+				// make sure all tabs are visible in case we delete the last category!
+				this.selectCategory(FCat.ALL);
+			}
+
 				
 			if (prefs.getBoolPref('collapseCategories')) 
 				cat.classList.add('autocollapse');
@@ -4074,7 +4079,8 @@ QuickFolders.Interface = {
 			button.removeChild(button.firstChild);
 		button.appendChild(menupopup); 
 
-		QI.appendMailFolderCommands(menupopup, folder, true, button, null);
+    // last parameter: pass in menupopup for "promoting" top level items such as "Mark Folder as Read"
+		QI.appendMailFolderCommands(menupopup, folder, true, button, menupopup); 
 		QI.showPopup(button, menupopup.id, null);
 	} ,
 

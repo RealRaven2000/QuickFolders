@@ -10,7 +10,7 @@
 if (QuickFolders.Util.Application != 'Postbox') {
 	  if (typeof ChromeUtils.import !== "undefined") {
 			try { // Tb 61
-				ChromeUtils.import("resource:///modules/MailUtils.jsm");
+				var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 			}
 			catch (ex) {
 				ChromeUtils.import("resource:///modules/MailUtils.js");
@@ -279,6 +279,8 @@ QuickFolders.Model = {
     let entry;
 
     if((entry = this.getFolderEntry(uri))) {
+			if (name == QuickFolders.FolderCategory.UNCATEGORIZED)
+				name=null;
       entry.category = name;
       this.update();
     }

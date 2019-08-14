@@ -1,20 +1,15 @@
-<b>Version 4.15.4</b>
+<b>Version 4.15.5</b>
 <ul>
-<li> Fixed <a name="26680" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26680" target="_blank">[Bug 26680]</a>
-quickMove / quickJump: Create subfolder command with "/" stopped working. 
-
-When entering a folder name followed by a forward slash [/] the expected behavior is to not only show suggestions for matching subfolders but also a suggestion to create a new subfolder based on the characters entered after the slash:
-
-https://i.imgur.com/yeIO9mM.png
-<img src="https://i.imgur.com/yeIO9mM.png" alt="create new subfolder" class="screenshots"/>
-</li>
+<li> <href="https://www.mozdev.org/bugs/show_bug.cgi?id=26681" target="_blank">[Bug 26681]</a> On Current Folder Tab, "Mark Folder Read" is not displayed. </li>
+<li> Fixed some problems with deleting categories - deleting the last one can make the folder tabs invisible if it is currently selected.</li>
+<li> Domain license renewal gave the wrong link when the green button (renew license)  was clicked. Now fixed to redirect to https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew.</li>
 </ul>
 
-<b>Thunderbird 68 Fixes</b>
+<b>Thunderbird 68 specific Fixes</b>
 <ul>
-<li> Fixed broken functionality of dialog buttons (Cancel, Ok didn't close dialog). </li>
-<li> Remember last opened panel in options dialog. </li>
-<li> Fixed syntax for module import (Services.jsm, PluralForm). </li>
-<li> Fixed broken notification panels. </li>
+<li> Thunderbird 68 - the categories dialog does not show any categories. </li>
+<li> In Thunderbird 68 there was a bottom 1px gap between the QuickFolder Tabs and the colored bar, which is now fixed
+.</li>
+<li> Use new required Syntax for importing the code of JavaScript modules such as MailUtils.jsm.</li>
 </ul>
 

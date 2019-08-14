@@ -67,6 +67,11 @@ QuickFolders.AdvancedTab = {
       }
     }
 		
+		
+		window.addEventListener('dialogaccept', function () { QuickFolders.AdvancedTab.accept(); });
+		window.addEventListener('dialogextra1', function (event) { QuickFolders.AdvancedTab.apply(); });
+		window.addEventListener('dialogextra2', function (event) { QuickFolders.AdvancedTab.defaults(); });
+		
     let entry = this.entry || QuickFolders.AdvancedTab.entry,
         elem = document.getElementById.bind(document);
     if (entry.flags) {

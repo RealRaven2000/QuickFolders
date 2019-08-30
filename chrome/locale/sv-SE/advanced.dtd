@@ -13,6 +13,8 @@
 <!ENTITY chkIgnoreUnread.tooltip "Visa aldrig text i fetstil eller antalet olästa meddelanden även om mappen innehåller sådana.">
 <!ENTITY chkIgnoreCounts "Dölj antalet olästa meddelanden">
 <!ENTITY chkIgnoreCounts.tooltip "Visa aldrig antalet olästa meddelanden för mappar.">
+<!ENTITY chkHideFromQuickJump "Omit from quickJump / quickMove">
+<!ENTITY chkHideFromQuickJump.tooltip "Omit this folder and its children in quickJump / quickMove results">
 <!ENTITY grpCustomCSS "Egen CSS">
 <!ENTITY cssBackground "Bakgrund">
 <!ENTITY cssBackground.tooltip "Ange bakgrundsegenskaper i CSS, t.ex. &quot;linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)&quot;.">

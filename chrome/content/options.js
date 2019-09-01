@@ -220,7 +220,7 @@ QuickFolders.Options = {
 				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
 				prefArray.push(p);
 			}
-			util.logDebug("Adding " + prefArray.length + " preferences to Preferences loader...")
+			util.logDebug("Adding " + prefArray.length + " preferences to Preferences loader…")
 			if (Preferences)
 				Preferences.addAll(prefArray);
 		}
@@ -279,7 +279,7 @@ QuickFolders.Options = {
 		
     /*****  License  *****/
     // licensing tab - we also need a "renew license"  label!
-    util.logDebugOptional('options', 'QuickFolders.Options.load - check License...');
+    util.logDebugOptional('options', 'QuickFolders.Options.load - check License…');
 		
 		options.labelLicenseBtn(getElement("btnLicense"), "buy");
 		
@@ -309,9 +309,9 @@ QuickFolders.Options = {
             break;
 				}
 				for (let i=this.QF_PREF_LAST; i>=0; i--) {
-					if (keep.indexOf(i)<0) {
+					if (!keep.includes(i)) {
             let panel = tabbox.tabpanels.children[i];
-            util.logDebugOptional('options', 'collapsing panel: ' + panel.id + '...');
+            util.logDebugOptional('options', 'collapsing panel: ' + panel.id + '…');
             panel.collapsed = true;
 						// tabbox.tabpanels.removeChild(panel);
             tabbox.tabs.getItemAtIndex(i).collapsed = true; // removeItemAt();
@@ -346,7 +346,7 @@ QuickFolders.Options = {
     if (earlyExit) return;
     if (licenser.isValidated)
       setTimeout(function() { 
-          util.logDebug('Remove animations in options dialog...');
+          util.logDebug('Remove animations in options dialog…');
           QI.removeAnimations('quickfolders-options.css');
 					
         }
@@ -525,7 +525,7 @@ QuickFolders.Options = {
     let prefString1 = menuList.getAttribute('preference'),
         prefName1 = document.getElementById(prefString1).getAttribute('name'),
         val = menuList.value;
-    QuickFolders.Util.logDebug('Setting quick move format pref[' + prefName1 + ']: ' + val + '...');
+    QuickFolders.Util.logDebug('Setting quick move format pref[' + prefName1 + ']: ' + val + '…');
     QuickFolders.Preferences.setIntPreference(prefName1, parseInt(val));
   } ,
 	
@@ -533,7 +533,7 @@ QuickFolders.Options = {
     let prefString = menuList.getAttribute('preference'),
         prefName = document.getElementById(prefString).getAttribute('name'),
         val = menuList.value;
-    QuickFolders.Util.logDebug('Setting folder crossing pref[' + prefName1 + ']: ' + val + '...');
+    QuickFolders.Util.logDebug('Setting folder crossing pref[' + prefName1 + ']: ' + val + '…');
     QuickFolders.Preferences.setIntPreference(prefName, parseInt(val));
 	} ,
   

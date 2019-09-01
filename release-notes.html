@@ -1,15 +1,14 @@
-<b>Version 4.15.5</b>
+<b>Version 4.16</b>
 <ul>
-<li> <href="https://www.mozdev.org/bugs/show_bug.cgi?id=26681" target="_blank">[Bug 26681]</a> On Current Folder Tab, "Mark Folder Read" is not displayed. </li>
-<li> Fixed some problems with deleting categories - deleting the last one can make the folder tabs invisible if it is currently selected.</li>
-<li> Domain license renewal gave the wrong link when the green button (renew license)  was clicked. Now fixed to redirect to https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew.</li>
+<li> New option to hide folder from results in quickump / quickMove</li>
+<li> Improved look of search box especially in dark themes.</li>
+<li> Improved look of current folder bar background by better matching standard theme background colors.</li>
 </ul>
 
 <b>Thunderbird 68 specific Fixes</b>
 <ul>
-<li> Thunderbird 68 - the categories dialog does not show any categories. </li>
-<li> In Thunderbird 68 there was a bottom 1px gap between the QuickFolder Tabs and the colored bar, which is now fixed
-.</li>
-<li> Use new required Syntax for importing the code of JavaScript modules such as MailUtils.jsm.</li>
+<li> As Mozilla removed xbl bindings for most xul elements, the quickMove / quickJump box had stopped working. This version fixes it and brings back the automatic suggestions that are shown during typing a folder name.</li>
+<li><a name="26694" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26694" target="_blank">[Bug 26694]</a> Subfolder menus do not expand - A regression has caused subfolders (2nd and higher level) not to be expanded on the drag / click context menus of the folder tabs.</li>
+<li> Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed.</li>
 </ul>
 

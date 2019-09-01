@@ -42,7 +42,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 				modType = ''; 
 		try {
 			util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument + ")");
-			if (whiteList.indexOf(hdr)<0) {
+			if (!whiteList.includes(hdr)) {
 				util.logToConsole("invalid header - no permission to modify: " + hdr);
 				return '';
 			}

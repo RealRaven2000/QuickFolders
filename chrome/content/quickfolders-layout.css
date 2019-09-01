@@ -133,6 +133,7 @@ menupopup.widerMenu menucaption {
 	margin-bottom: 0px;
 	margin-top: 0px;
 	min-height: 20px !important;
+	width: -moz-min-content;
 }
 
 #QuickFolders-FindFolder.quickMove,
@@ -393,6 +394,8 @@ menupopup.widerMenu menucaption {
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView {
 	/* background-color: transparent; */
+	background-color: var(--chrome-secondary-background-color) !important;
+  color: var(--lwt-toolbar-field-color, black);
 	margin-bottom: -3px;
 	overflow-y: visible !important;
 	padding-top: 0 !important;

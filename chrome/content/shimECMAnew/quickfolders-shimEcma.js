@@ -30,7 +30,10 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     function logDebug(text) {
       if (isDebug) 
         util.logDebugOptional('getOrCreateFolder', text);
-    }					
+    }			
+		// Thunderbird 68
+		var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+		
 		logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
     // In theory, we should query our map first to see if we have the folder.
     // However, the way you create a new folder anyways presently requires
@@ -78,6 +81,8 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 			
 			
       if (needToCreate) {
+				const GP = 
+				  ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils;
         const deferred = new Promise((resolve, reject) => {
           const listener = {
             OnStartRunningUrl(url) {},
@@ -87,12 +92,14 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
               else
                 reject(aExitCode);
             },
-            QueryInterface: XPCOMUtils.generateQI([Ci.nsIUrlListener])
+            QueryInterface:  // Tb 68 XPCOMUtils.generateQI doesn't exist anymore
+						  GP.generateQI([Ci.nsIUrlListener])
+							
           };
    
           // If any error happens, it will throw--causing the outer promise to
           // reject.
-                                  logDebug('folder.createStorageIfMissing()...'); 
+          logDebug('folder.createStorageIfMissing()...'); 
           folder.createStorageIfMissing(isAsync ? listener : null);
           if (!isAsync || !needToCreate)
             resolve();

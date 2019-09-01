@@ -383,8 +383,8 @@
 .quickfolders-pills .plastic.col13:hover,
 .quickfolders-flat .plastic.col13,  
 .QuickFolders-folder-popup.plastic menuitem[tag="qfColor13"] { 
-  /*	background-image: linear-gradient(to bottom, rgba(248,181,154,1) 0%, rgba(148,48,8,1) 25%, rgba(118,34,0,1) 44%, rgba(157,27,27,1) 100%); */
-	background-image: 	linear-gradient(to bottom, rgba(196,132,84,0.9) 0%,rgba(129,62,7,0.95) 36%,rgba(109,30,4,0.97) 59%,rgba(122,32,18,1) 100%);
+  /*!background-image: linear-gradient(to bottom, rgba(248,181,154,1) 0%, rgba(148,48,8,1) 25%, rgba(118,34,0,1) 44%, rgba(157,27,27,1) 100%); */
+	 background-image: 	linear-gradient(to bottom, rgba(196,132,84,0.9) 0%,rgba(129,62,7,0.95) 36%,rgba(109,30,4,0.97) 59%,rgba(122,32,18,1) 100%);
 	color: rgb(250, 235, 250) ;
 	text-shadow: none;
 }
@@ -414,7 +414,7 @@
 .quickfolders-flat .plastic.col14, 
 .plastic menuitem[tag="qfColor14"] { 
   background: linear-gradient(to bottom, rgba(200,86,175,0.9) 0%,rgba(140,15,106,0.9) 48%,rgba(109,5,76,0.8) 100%);
-	/* background-image: linear-gradient(to bottom, rgba(239,213,233,1) 0%, rgba(200,86,175,1) 16%, rgba(140,15,106,1) 32%, rgba(109,5,76,1) 100%); */
+	/*background-image: linear-gradient(to bottom, rgba(239,213,233,1) 0%, rgba(200,86,175,1) 16%, rgba(140,15,106,1) 32%, rgba(109,5,76,1) 100%);*/
 	color: rgb(255, 255, 255);
 	text-shadow: none;
 }

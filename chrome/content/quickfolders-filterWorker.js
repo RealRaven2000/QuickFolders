@@ -534,8 +534,8 @@ QuickFolders.FilterWorker = {
 							if (label)
 							{
 								let labelKey = "$label" + label;
-								if (msgKeyArray.indexOf(labelKey) < 0)
-								msgKeyArray.unshift(labelKey);
+								if (msgKeyArray.includes(labelKey))
+									msgKeyArray.unshift(labelKey);
 							}
 							
 							// Rebuild the keywords string with just the keys that are actual tags or

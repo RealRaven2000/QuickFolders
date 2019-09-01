@@ -7,6 +7,10 @@ resource quickfoldersShim60  chrome/content/shim61/ platformversion>=61
 
 locale quickfolders en-US  chrome/locale/en-US/
 locale quickfolders de     chrome/locale/de/
+locale quickfolders it     chrome/locale/it/
+locale quickfolders fr     chrome/locale/fr/
+locale quickfolders pl     chrome/locale/pl/
+locale quickfolders ru     chrome/locale/ru/
 
 #platforms specific content - allow additional platforms specific rules
 #skin    quickfolders-pl    classic/1.0  chrome/skin/
@@ -64,6 +68,8 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 #All
 style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
+style chrome://messenger/content/messenger.xul   chrome://quickfolders/content/quickfolders-68.css appversion>67
+
 # hidden option for revealing small icons checkbox:
 overlay chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion<59.0a1
 overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion>59.0a1

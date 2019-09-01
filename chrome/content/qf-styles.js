@@ -164,7 +164,7 @@ QuickFolders.Styles = {
 						if (!recurse) // don't allow deep recursion (break circular @import refs!)
 							continue;
             let styleSheetName = theRule.styleSheet.href;
-            if (visitedStyleSheetList.indexOf(styleSheetName)>=0) // don't parse the same sheet twice :)
+            if (visitedStyleSheetList.includes(styleSheetName)) // don't parse the same sheet twice :)
               continue;
             logDebug('setting CSS rule in ' + styleSheetName);
 						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true))

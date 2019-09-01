@@ -9,7 +9,6 @@ rem only package german and english locale
 "C:\Program Files\7-Zip\7z" a -xr!.svn QuickFoldersWeb.zip manifest.json install.rdf chrome-min.manifest chrome/content chrome/skin chrome/locale/en-US chrome/locale/de defaults license.txt
 "C:\Program Files\7-Zip\7z" rn QuickFoldersWeb.zip chrome-min.manifest chrome.manifest
 echo %quickFoldersRev% > revision.txt
-move QuickFolders*.xpi "..\..\Release\_Test Versions\4.15.5\"
+move QuickFolders*.xpi "..\..\Release\_Test Versions\4.16\"
 pwsh -Command "Start-Sleep -m 150"
-rem rename quickFolders.zip QuickFolders-tb-pb-sm-4.15pre%quickFoldersRev%.xpi
-rename QuickFoldersWeb.zip QuickFolders-min-4.15.5pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-min-4.16pre%quickFoldersRev%.xpi

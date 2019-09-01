@@ -84,7 +84,7 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 #All
 style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
-style chrome://messenger/content/messenger.xul chrome://quickfolders/content/quickfolders-68.css appversion>=67.0
+style chrome://messenger/content/messenger.xul   chrome://quickfolders/content/quickfolders-68.css appversion>67
 
 # hidden option for revealing small icons checkbox:
 overlay chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion<59.0a1

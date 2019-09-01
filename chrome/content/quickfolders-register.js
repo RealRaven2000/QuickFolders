@@ -225,18 +225,18 @@ QuickFolders.Licenser = {
         popup = idSelector.menupopup,
         myAccounts = util.Accounts,
         acCount = myAccounts.length;
-    util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
+    util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')…');
     for (let a=0; a < myAccounts.length; a++) { 
       let ac = myAccounts[a];
       if (ac.defaultIdentity) {
-        util.logDebugOptional('identities', ac.key + ': appending default identity...');
+        util.logDebugOptional('identities', ac.key + ': appending default identity…');
         appendIdentity(popup, ac.defaultIdentity, ac);
         continue;
       }
       let ids = ac.identities; // array of nsIMsgIdentity
       if (ids) {
         let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
-        util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
+        util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
         for (let i=0; i<idCount; i++) {
           // use ac.defaultIdentity ??
           // populate the dropdown with nsIMsgIdentity details
@@ -568,7 +568,7 @@ QuickFolders.Licenser = {
         // ... allow using non default identities 
         let ids = ac.identities, // array of nsIMsgIdentity 
             idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
-        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids...");
+        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids…");
         if (ids) {
           for (let i=0; i<idCount; i++) {
             // use ac.defaultIdentity ??
@@ -616,7 +616,7 @@ QuickFolders.Licenser = {
       this.RSA_modulus,
       this.RSA_keylength
     );
-    QuickFolders.Util.logDebug ('encryptLicense - starting encryption...');
+    QuickFolders.Util.logDebug ('encryptLicense - starting encryption…');
     let Encrypted = QuickFolders.RSA.encryptedString(key, LicenseKey, 'OHDave');
     QuickFolders.Util.logDebug ('encryptLicense - finished encrypting registration key of length: ' + Encrypted.length + '\n'
       + Encrypted);

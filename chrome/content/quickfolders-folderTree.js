@@ -105,7 +105,7 @@ QuickFolders.FolderTree = {
     if (!prefs.getBoolPref('folderTree.icons.injectCSS')) return;
 		let styleEngine = QuickFolders.Styles,
 		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
-    util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items...');
+    util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
     if (util.supportsMap) { 
 		  // should be for..of
       this.dictionary.forEach(

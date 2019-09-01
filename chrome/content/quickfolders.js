@@ -504,7 +504,7 @@ END LICENSE BLOCK */
 	4.15.4 QuickFolders Pro - 09/07/2019
 	  ## [Bug 26680] Create subfolder command with "/" stopped working
 		
-	4.15.5 QuickFolders Pro - WIP
+	4.15.5 QuickFolders Pro - 14/08/2019
 		## [Bug 26681] On Current Folder Tab, "Mark Folder Read" is not displayed
 		## Thunderbird 68 - the categories dialog does not show any categories
 		   deleting the last one can make the folder tabs invisible if it is currently selected
@@ -512,11 +512,20 @@ END LICENSE BLOCK */
 		## Fixed some problems with deleting categories - 
 		## Domain license renewal gave the wrong link when the green button (renew license)  was clicked
 		   fixed to direct to https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew
+			 
+	4.16 QuickFolders Pro - WIP
+	  ## [Bug 26692] Advanced tab property - Option to omit specific folders from quickMove / quickJump results
+		## Improved look of search box and current folder bar background to match standard theme backgrounds
+		## Fixed: quickJump stopped working in Thunderbird 68
+		## [Bug 26694] Subfolder menus do not expand in Thunderbird 68
+		## Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed in Thunderbird 68
+
 		
 		
 	Future Work
 	===========
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
+		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
 		
 	Known Issues
 	============
@@ -775,10 +784,26 @@ var QuickFolders = {
 				w.setTimeout(
 					function () {
 						util.logDebug("Repair Icons:");
-						QuickFolders.Interface.repairTreeIcons(true); // silently
+						QI.repairTreeIcons(true); // silently
 					}, time
 				);
 			}
+			// add input event handler to search box (xbl binding for type=search was removed)
+			if (util.versionGreaterOrEqual(util.ApplicationVersion, "68")) {
+				util.logDebug("Adding Search Input event handler...")
+			  let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
+				if (findFolderBox) {
+					findFolderBox.addEventListener("input", function() {
+						  QI.findFolderName(findFolderBox);
+						}
+					);
+				}
+				else{
+					util.logDebug("element not found: QuickFolders-FindFolder");
+				}
+			}
+			
+			
 			this.initDone=true;
 		}
 		else {
@@ -1136,7 +1161,7 @@ var QuickFolders = {
 		onDragEnter: function onDragEnter(evt, session) {
 			let t = evt.currentTarget;
 			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - " + session.toString() +
-			  "\ntarget" + t.nodeName + "  " + t.id);
+			  "\ntarget: " + t.nodeName + "  '" + t.id + "'");
 			
 			evt.preventDefault();
 			return false;
@@ -1252,33 +1277,39 @@ var QuickFolders = {
 		dragOverTimer: null,
 		onDragEnter: function menuObs_onDragEnter(evt, dragSession) {
 			let popupStart = evt.target;
-			QuickFolders.Util.logDebugOptional("dnd","popupDragObserver.onDragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			const prefs = QuickFolders.Preferences,
+			      util = QuickFolders.Util;
+			util.logDebugOptional("dnd","popupDragObserver.onDragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				evt.preventDefault(); // fix layout issues in TB3 + Postbox!
 
-				let pchild = popupStart.firstChild;
+				let pchild = 
+				  Array.from(popupStart.children).find(e => e.tagName.toLowerCase()=="menupopup");
+				  // popupStart.firstChild; Thunderbird 60
 				if (pchild) {
-					if (pchild.nodeName === 'menupopup') {
-						// hide all sibling popup menus
-						let psib = popupStart.nextSibling;
-						while (psib) {
-							if (psib.nodeName === 'menu' && popupStart !== psib && psib.firstChild && psib.firstChild.hidePopup)
-								psib.firstChild.hidePopup();
-							psib = psib.nextSibling;
+					// hide all sibling popup menus
+					let psib = popupStart.nextSibling;
+					while (psib) {
+						if (psib.label) util.logDebugOptional("dnd", "check next sibling + " + psib.nodeName + " '" + psib.label +"' ...");
+						if (psib.nodeName === 'menu' && popupStart !== psib) {
+							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
+							psib.childNodes.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
 						}
-						psib = popupStart.previousSibling;
-						while (psib) {
-							if (psib.nodeName === 'menu' && popupStart !== psib && psib.firstChild && psib.firstChild.hidePopup) 
-								psib.firstChild.hidePopup();
-							psib = psib.previousSibling;
-						}
-						// only show popup if they have at least one menu item!
-						if (pchild.childNodes && pchild.childNodes.length > 0)
-							pchild.showPopup();
-						QuickFolders.Util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
+						psib = psib.nextSibling;
 					}
-					else
-						QuickFolders.Util.logDebugOptional("dnd","Ignoring DragEnter with child node: " + pchild.nodeName);
+					psib = popupStart.previousSibling;
+					while (psib) {
+						if (psib.label) util.logDebugOptional("dnd", "check previous sibling + " + psib.nodeName + " '" + psib.label +"' ...");
+						if (psib.nodeName === 'menu' && popupStart !== psib) {
+							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
+							psib.childNodes.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
+						}
+						psib = psib.previousSibling;
+					}
+					// only show popup if they have at least one menu item!
+					if (pchild.childNodes && pchild.childNodes.length > 0)
+						pchild.openPopup(popupStart, 'end_before', 0, -1, "context", false);  // showPopup() has been deprecated ages ago!!
+					util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
 				}
 			}
 			catch(e) {
@@ -1453,7 +1484,8 @@ var QuickFolders = {
 						dt = evt.dataTransfer,
 					  types = dt.mozTypesAt(0);
 
-				if (Array.indexOf(types, "text/x-moz-message") != -1) {
+        // types is a DOMStringList not an Arry, use contains, not includes
+				if (types.contains("text/x-moz-message")) {
 					for (let i=0; i < dt.mozItemCount; i++) {
 						let messageUri = dt.mozGetDataAt("text/x-moz-message", i);
 						txtUris += 'dataTransfer [' + i + '] ' + messageUri + '\n';
@@ -1647,9 +1679,9 @@ var QuickFolders = {
 						                     +'\n' + txt);
 					}
 					
-					let isFlavorMail = (Array.indexOf(types, "text/x-moz-message")>=0),  // dragSession.isDataFlavorSupported("text/x-moz-message") 
-					    isFlavorFolder = (Array.indexOf(types, "text/x-moz-folder")>=0), // dragSession.isDataFlavorSupported("text/x-moz-folder")
-							isFlavorUnicode = (Array.indexOf(types, "text/unicode")>=0) || (Array.indexOf(types, "text/plain")>=0);   // context menu ??
+					let isFlavorMail = types.contains("text/x-moz-message"),  // dragSession.isDataFlavorSupported("text/x-moz-message") 
+					    isFlavorFolder = types.contains("text/x-moz-folder"), // dragSession.isDataFlavorSupported("text/x-moz-folder")
+							isFlavorUnicode = types.contains("text/unicode") || types.contains("text/plain");   // context menu ??
 							
 
 					// only show popups when dragging messages!
@@ -1897,7 +1929,7 @@ var QuickFolders = {
 							dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
 							
-					if (Array.indexOf(types, "text/x-moz-message") != -1) {
+					if (types.contains("text/x-moz-message")) {
 					  lastAction = "get data from event.dataTransfer"
 						for (let i=0; i < dt.mozItemCount; i++) {
 							let messageUri = dt.mozGetDataAt("text/x-moz-message", i);
@@ -2155,7 +2187,10 @@ function QuickFolders_MyChangeSelection(tree, newIndex) {
   {
 		QuickFolders.Util.logDebugOptional("folders.select", "ChangeSelection of folder tree.index " + tree.currentIndex + " to " + newIndex);
 		tree.view.selection.select(newIndex);
-		tree.treeBoxObject.ensureRowIsVisible(newIndex);
+		if (tree.ensureRowIsVisible)
+			tree.ensureRowIsVisible(newIndex);  // Tb 68
+		else
+			tree.treeBoxObject.ensureRowIsVisible(newIndex);
   }
 }
 
@@ -2365,7 +2400,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 				  // added forceSelect = true
           theTreeView.selectFolder (msgFolder, true);
           util.logDebugOptional("folders.select","ensureRowIsVisible()..");
-          theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+					
+					if (theTreeView._treeElement.ensureRowIsVisible)
+					  theTreeView._treeElement.ensureRowIsVisible(folderIndex); // Thunderbird 68
+					else
+						theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
         }
         catch(e) { util.logException("Exception selecting via treeview: ", e);};
       }

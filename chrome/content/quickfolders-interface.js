@@ -966,7 +966,7 @@ QuickFolders.Interface = {
             // add checkbox for multiple category selection
             if (prefs.getBoolPref('premium.categories.multiSelect')) {
 							// multi selection
-							if (cats.indexOf(category)>=0)
+							if (cats.includes(category))
 								menuItem.setAttribute("checked", true);
 							if (isPostbox)
 								menuItem.setAttribute("type","checkbox");
@@ -1188,7 +1188,7 @@ QuickFolders.Interface = {
 					prefs = QuickFolders.Preferences,
 					Cc = Components.classes,
           Ci = Components.interfaces;
-		util.logDebug("testTreeIcons()...");
+		util.logDebug("testTreeIcons()…");
 		try {
 			const winType = "global:console";
 			prefs.setBoolPref("debug.folderTree.icons",true);
@@ -1202,9 +1202,9 @@ QuickFolders.Interface = {
 		setTimeout(function() {
 			const separator = "==============================\n";
 			let f = 0, affected = 0;
-			util.logDebug(separator + "loading Dictionary...");
+			util.logDebug(separator + "loading Dictionary…");
 			//let allFolders = util.allFoldersIterator(false);
-			util.logDebug(separator + "Iterating all folders...");
+			util.logDebug(separator + "Iterating all folders…");
 			for (let folder of util.allFoldersIterator(false)) {
 				//let folder = allFolders[i];
 				let folderIcon = folder.getStringProperty("folderIcon"),
@@ -1216,7 +1216,7 @@ QuickFolders.Interface = {
 				f++;
 				// folder.setForcePropertyEmpty("folderIcon", false); // remove property
 			}			
-			util.logDebug(separator + "...testTreeIcons() ENDS\nIterated " + f + " folders with " + affected + " having a folderIcon property.\n" + separator);
+			util.logDebug(separator + "…testTreeIcons() ENDS\nIterated " + f + " folders with " + affected + " having a folderIcon property.\n" + separator);
 		},200);
 
 		
@@ -1325,7 +1325,7 @@ QuickFolders.Interface = {
 				// if multiple select, check all boxes
 				for (let i=0; i<menulist.itemCount; i++) {
 					let it = menulist.getItemAtIndex(i),
-							isSelected = (cats.indexOf(it.value)>=0);
+							isSelected = (cats.includes(it.value));
 					if (isSelected) {
 						txtDebug += 'Check menuitem: ' + it.value + '\n';
 						it.setAttribute('checked', isSelected); // check selected value
@@ -1417,7 +1417,7 @@ QuickFolders.Interface = {
 				multiEnabled = prefs.getBoolPref('premium.categories.multiSelect');
     if (multiEnabled && isShift) {
 			let selectedCat = cats[0];
-			if (currentCats.indexOf(selectedCat)>=0) {
+			if (currentCats.includes(selectedCat)) {
 				currentCats.splice(currentCats.indexOf(selectedCat), 1);
 				util.logDebugOptional("categories", "Removing Category: " + selectedCat + "…");
 				QI.currentActiveCategories = currentCats.join('|');
@@ -4776,9 +4776,36 @@ QuickFolders.Interface = {
 			}
 			return pS;
 		}
+
+    // [Bug 26692] omit folders with this tab
+    function checkFolderFlag(folder, flag, includeParents) {
+			if (!folder) return false;
+			let fName = folder.prettyName;
+			let tabEntry = model.getFolderEntry(folder.URI);
+			if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
+				util.logDebugOptional("quickMove", "checkFolderFlag(" + fName + ") will omit - flags = " + tabEntry.flags);
+				return true;
+			}
+			if (!includeParents)
+				return false;
+			// check whether parent folder entries may have the flag set.
+			while (folder.parent)	{
+				debugger;
+				folder = folder.parent;
+				tabEntry = model.getFolderEntry(folder.URI);
+				if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
+					util.logDebugOptional("quickMove", "checkFolderFlag(" + fName + ") will omit.\n" +
+					  "Parent tab: " + tabEntry.name + " - flags = " + tabEntry.flags);
+					return true;
+				}
+			}
+			return false;
+		}
+		
 		function addMatchingFolder(matches, folder) {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
 			    matchPos = folderNameSearched.indexOf(searchString);
+					
       // add all child folders if "parentName/" entered
       if (searchString=='' && parentString!='') matchPos = 0;
 			if (matchPos >= 0) {
@@ -4792,10 +4819,17 @@ QuickFolders.Interface = {
 						if (" .-,_".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
 							return;  // skip if not starting with single letter
 					}
+					
+					// [Bug 26692] skip if they are flagged for ignoring
+					if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) 
+						return; 
+					
 					let pS = buildParentString(folder, parentCount),
               maxFindSearch = parentCount || QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
               detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail"),
               fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
+					// omit certain folders from quickJump:
+					
 					matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:'folder', folder:folder, parentString: pS } );
 				}
 			}
@@ -4856,8 +4890,10 @@ QuickFolders.Interface = {
 				if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {
-						if (parentList.indexOf(directParent)<0)
-							parentList.push(directParent);
+						if (parentList.indexOf(directParent)<0) {
+							if (!checkFolderFlag(directParent, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) // [Bug 26692]
+								parentList.push(directParent);
+						}
 						return true;
 					}
 				}
@@ -4905,6 +4941,9 @@ QuickFolders.Interface = {
 				  if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
 					  continue;  // skip if not starting with single letter
 				}
+				let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
+				if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) // [Bug 26692]
+					continue;
 				// avoid duplicates
 				if (!matches.some( function(a) { return (a.uri == folderEntry.uri); })) {
 					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:'quickFolder' } );
@@ -4956,11 +4995,13 @@ QuickFolders.Interface = {
       for (let fi=0; fi<AF.length; fi++) {
         let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
         if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
-        addMatchingFolder(matches, folder);
+				addMatchingFolder(matches, folder);
       }
     }
     else {
+			util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
 			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);		
+			util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
 		}
 			
 		// no parent matches - Add one for a folder without children.
@@ -4977,6 +5018,7 @@ QuickFolders.Interface = {
 					addIfMatch(folder, matches.parentString || parentString, parents);
 				}
 		}
+		util.logDebugOptional("interface.findFolder", "built list: " + matches.length + " matches found. Building menu…");
 		
 		// rebuild popup
 		let menupopup, txtDebugMenu = '';
@@ -5012,11 +5054,14 @@ QuickFolders.Interface = {
 				}
 			}
 		}
+		util.logDebugOptional("interface.findFolder", "built menu.");
+		
 		// special commands: if slash was entered, allow creating subfolders. Exclude _old_ Postbox.
 		if (parentPos>0 && 
 		    (util.Application!='Postbox' ||
 				 util.Application=='Postbox' && typeof Task === 'object')
 				) {
+			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
 			// [Bug 26283] add matches from quickfolders (if named differently)
 			let isFound = false;
 			for (let i=0; i<model.selectedFolders.length; i++) {
@@ -5024,6 +5069,12 @@ QuickFolders.Interface = {
 				    folderNameSearched = folderEntry.name.toLocaleLowerCase(),
 						matchPos = folderNameSearched.indexOf(parentString);
 					 
+				if (folderEntry.flags && folderEntry.flags & util.ADVANCED_FLAGS.IGNORE_QUICKJUMP) { 
+				  // [Bug 26692]
+					util.logDebugOptional("quickMove", "Omitting tab " + folderEntry.name + " - flags = " + folderEntry.flags);
+					continue;
+				}
+					
 				// 
 				if (matchPos == 0 && prefs.isDebugOption('quickMove')) debugger;			
 				if (matchPos == 0
@@ -5037,10 +5088,12 @@ QuickFolders.Interface = {
 			}
 			
 			let isInsertNewFolderTop = prefs.getBoolPref('quickMove.createFolderOnTop');
-			    
-			
+			if (parents.length)			
+				util.logDebugOptional("interface.findFolder", "/ create subfolder entries ");
+
 			// create new subfolder case
 			while (parents.length) {
+				
 				let f = parents.pop();
 				
 				if (util.doesMailUriExist(f.URI + "/" + enteredSearch))
@@ -5109,6 +5162,7 @@ QuickFolders.Interface = {
 				 menupopup.removeChild(item);
 			}
 		}
+		util.logDebugOptional("interface.findFolder", "showPopup:");
 		
 		menupopup.setAttribute('ignorekeys', 'true');
 		if (typeof menupopup.openPopup == 'undefined')
@@ -5117,7 +5171,7 @@ QuickFolders.Interface = {
 			menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
 		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
 		if (matches.length == 1 || (matches.length>0 && forceFind) ) { 
-			util.logDebugOptional('quickMove', forceFind ? 'Enter key forces match' : 'single match found...');
+			util.logDebugOptional('quickMove', forceFind ? 'Enter key forces match' : 'single match found…');
       if (wordStartMatch(matches[0].lname, searchString) && forceFind) {
 				let finalURI = matches[0].uri;
 				if (!isFiling) {
@@ -5208,7 +5262,7 @@ QuickFolders.Interface = {
       return;
     } /**************  quickMove End  **************/
     else {
-			util.logDebugOptional('quickMove','selectFound: quickMove End...');
+			util.logDebugOptional('quickMove','selectFound: quickMove End…');
       isSelected = QuickFolders_MySelectFolder(URI, true);
 			QuickFolders.quickMove.rememberLastFolder(URI, parentName);
 		}
@@ -6849,7 +6903,7 @@ QuickFolders.Interface = {
 					// create context menu
 					let menupopup = this.PalettePopup;
 					if (!menupopup.firstChild) {
-						util.logDebugOptional("interface","build palette menu...");
+						util.logDebugOptional("interface","build palette menu…");
 						this.buildPaletteMenu(tabColor, menupopup);
 						// a menu item to end this mode
 						let mItem = this.createMenuItem("qfPaint", this.getUIstring("qfPaintToggle", "Finish Paint Mode"));
@@ -6861,7 +6915,7 @@ QuickFolders.Interface = {
 					}
 					else
 						util.logDebugOptional("interface","palette already built (firstChild exists)");
-					util.logDebugOptional("interface","initElementPaletteClass...");
+					util.logDebugOptional("interface","initElementPaletteClass…");
 					this.initElementPaletteClass(menupopup);
 				}
 				catch(ex) {
@@ -6896,7 +6950,11 @@ QuickFolders.Interface = {
   toggleMoveModeSearchBox: function toggleMoveModeSearchBox(toggle) {
     QuickFolders.Util.logDebug('toggleMoveModeSearchBox(' + toggle + ')');
     let searchBox = QuickFolders.Interface.FindFolderBox;
-    searchBox.className = toggle ? "quickMove" : "";
+		if (toggle)
+			searchBox.classList.add("quickMove");
+		else
+			searchBox.classList.remove("quickMove");
+    
   } ,
   
   quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
@@ -7274,7 +7332,7 @@ QuickFolders.Interface = {
               util.logDebug ('Setting up promise Delete');
               promiseDelete.then (
                 function saveJSON() {
-                  util.logDebug ('saveJSON()...'); 
+                  util.logDebug ('saveJSON()…'); 
                   // force appending correct file extension!
                   if (!path.toLowerCase().endsWith('.json'))
                     path += '.json';

@@ -351,7 +351,7 @@ QuickFolders.Model = {
     this.categoriesList=[];
   } ,
 
-  // get the list of Categories from the current Folder Array
+  // get a sorted arrau of Categories from the current Folder Array
   get Categories() {
     let categories = [];
     if (this.categoriesList.length>0)

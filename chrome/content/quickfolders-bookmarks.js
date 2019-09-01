@@ -94,7 +94,7 @@ QuickFolders.bookmarks = {
         targetFolder = (preferredUri ? getFolder(preferredUri) : null)  // preferred start point for finding missing emails. could be localhost.
                        ||               
                        (folder.server ? folder.server.rootFolder : folder);
-    util.logDebug("Search messages @ folder URI: " + targetFolder.URI + " ... ");
+    util.logDebug("Search messages @ folder URI: " + targetFolder.URI + " … ");
     searchSession.addScopeTerm(serverScope, targetFolder);
     
     let realTerm = searchSession.createTerm(),
@@ -395,7 +395,7 @@ QuickFolders.bookmarks = {
       uris.push(actUris); // create array
     }
     
-    util.logDebugOptional("bookmarks", "Adding + " + uris.length + " bookmarks...");
+    util.logDebugOptional("bookmarks", "Adding + " + uris.length + " bookmarks…");
     // iterate the array
     for (let i=0; i< uris.length; i++) {
       let uriObject = uris[i]; 
@@ -598,7 +598,7 @@ QuickFolders.bookmarks = {
               try {
                 // are multiple mails selected?
                 let selectionCount =
-                  (['Postbox', 'SeaMonkey'].indexOf(util.Application)>=0) ? GetNumSelectedMessages() :
+                  (['Postbox', 'SeaMonkey'].includes(util.Application)) ? GetNumSelectedMessages() :
                   ((tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0);
                 util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);
                 if (selectionCount>=1) { 
@@ -757,7 +757,7 @@ QuickFolders.bookmarks = {
   load: function load() {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks; // "this" didn't work
-    util.logDebug ('bookmarks.load...'); 
+    util.logDebug ('bookmarks.load…'); 
     if (util.Application == 'Postbox' && util.PlatformVersion < 52) {
       try {
         let data = this.Postbox_readFile();
@@ -793,7 +793,7 @@ QuickFolders.bookmarks = {
       
       promise3 = promise2.then(
         function populateMenu() {
-          util.logDebug ('populateMenu() ...'); 
+          util.logDebug ('populateMenu() …'); 
           let win = QuickFolders.Util.getMail3PaneWindow(),
               doc = win.document;
           // QuickFolders.populateMenu(doc);
@@ -815,7 +815,7 @@ QuickFolders.bookmarks = {
 
   save: function save()  {
     let util = QuickFolders.Util;
-    util.logDebug("bookmarks.save()...");
+    util.logDebug("bookmarks.save()…");
     if (util.Application == "Postbox" && util.PlatformVersion < 52) {
       this.Postbox_writeFile(this);  // pass bookmarks object
       return;
@@ -832,7 +832,7 @@ QuickFolders.bookmarks = {
           promiseDelete = OS.File.remove(backPath),  // only if it exists
           promiseBackup = promiseDelete.then(
         function () { 
-          util.logDebug ('OS.File.move is next...'); 
+          util.logDebug ('OS.File.move is next…'); 
           OS.File.move(path, backPath); 
         },
         function failedDelete(fileError) { 

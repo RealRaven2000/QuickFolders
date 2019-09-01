@@ -114,13 +114,21 @@
 					tooltiptext="&chkIgnoreCounts.tooltip;"
 				/>	
 			</hbox>
+			<hbox>
+				<checkbox
+						id="chkHideFromQuickJump"
+					label="&chkHideFromQuickJump;"
+					tooltiptext="&chkHideFromQuickJump.tooltip;"
+				/>	
+			</hbox>
 		</groupbox>
 		<groupbox>
 		  <caption label="&grpCustomCSS;"/>
 		  <hbox>
 			  
 			  <checkbox id="chkCustomCSS"
-				          onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"/>	
+				          onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"
+									/>	
 			  
 			  <grid>
 				<columns>

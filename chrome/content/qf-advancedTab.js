@@ -77,6 +77,7 @@ QuickFolders.AdvancedTab = {
     if (entry.flags) {
       let ig = elem('chkIgnoreUnread'),
           ic = elem('chkIgnoreCounts'),
+					ixjQ = elem('chkHideFromQuickJump'),
           iss = elem('chkCustomCSS'),
           ip = elem('chkCustomPalette'),
 					isRecursive = elem('chkComposerSubFolders'),
@@ -87,6 +88,8 @@ QuickFolders.AdvancedTab = {
       ic.checked = (entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS) && true;
       // custom css rules
       iss.checked = (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS) && true;
+			// ignore from quickJump
+			ixjQ.checked = (entry.flags & ADVANCED_FLAGS.IGNORE_QUICKJUMP) && true;
       elem('txtColor').value = entry.cssColor || '';
       elem('txtColorPicker').color = elem('txtColor').value;
       elem('txtBackground').value = entry.cssBack || '';
@@ -115,13 +118,13 @@ QuickFolders.AdvancedTab = {
 				myAccounts = util.Accounts,
 				acCount = myAccounts.length;
 		appendIdentity(popup, -1, 0); // not set (id0)
-		util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')...');
+		util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')…');
 		for (let a=0; a < myAccounts.length; a++) { 
 			let ac = myAccounts[a],
 			    ids = ac.identities; // array of nsIMsgIdentity 
 			if (ids) {
 				let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
-				util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
+				util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
 				for (let i=0; i<idCount; i++) {
 					// use ac.defaultIdentity ??
 					// populate the dropdown with nsIMsgIdentity details
@@ -191,6 +194,7 @@ QuickFolders.AdvancedTab = {
     addFlag('chkIgnoreUnread', ADVANCED_FLAGS.SUPPRESS_UNREAD);
     addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
     addFlag('chkComposerSubFolders', ADVANCED_FLAGS.EMAIL_RECURSIVE);
+		addFlag('chkHideFromQuickJump', ADVANCED_FLAGS.IGNORE_QUICKJUMP);
     if (addFlag('chkCustomCSS', ADVANCED_FLAGS.CUSTOM_CSS)) {
 			elem('txtColor').value = util.sanitizeCSSvalue(elem('txtColor').value);
       entry.cssColor = elem('txtColor').value;
@@ -251,6 +255,7 @@ QuickFolders.AdvancedTab = {
     let elem = document.getElementById.bind(document);
     elem('chkIgnoreUnread').checked = false;
     elem('chkIgnoreCounts').checked = false;
+    elem('chkHideFromQuickJump').checked = false;
     elem('chkCustomCSS').checked = false;
     elem('chkCustomPalette').checked = false;
     elem('txtColor').value = '';

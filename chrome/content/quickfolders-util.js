@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.15.5", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.16", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -92,7 +92,8 @@ QuickFolders.Util = {
     SUPPRESS_COUNTS : 0x0002,
 		EMAIL_RECURSIVE : 0x0004,
     CUSTOM_CSS :      0x0100,
-    CUSTOM_PALETTE :  0x0200
+    CUSTOM_PALETTE :  0x0200,
+		IGNORE_QUICKJUMP: 0x0400
   } ,	
 	// avoid these global objects
 	Cc: Components.classes,
@@ -521,7 +522,7 @@ QuickFolders.Util = {
 				regBtn = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 		if (notifyBox) {
 			let notificationKey = "quickfolders-proFeature";
-      util.logDebugOptional("premium", "configure buttons...");
+      util.logDebugOptional("premium", "configure buttons…");
 			// button for disabling this notification in the future
       nbox_buttons = [
         {
@@ -540,7 +541,7 @@ QuickFolders.Util = {
 					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
 			}
 		
-      util.logDebugOptional("premium", "notifyBox.appendNotification()...");
+      util.logDebugOptional("premium", "notifyBox.appendNotification()…");
 			notifyBox.appendNotification( theText, 
 					notificationKey , 
 					"chrome://quickfolders/skin/ico/proFeature.png" , 
@@ -553,7 +554,7 @@ QuickFolders.Util = {
 		else {
       // code should not be called, on SM we would have a sliding notification for now
 			// fallback for systems that do not support notification (currently: SeaMonkey)
-      util.logDebugOptional("premium", "fallback for systems without notification-box...");
+      util.logDebugOptional("premium", "fallback for systems without notification-box…");
 			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
 															.getService(Components.interfaces.nsIPromptService),
 			    // check = {value: false},   // default the checkbox to true  
@@ -1783,7 +1784,7 @@ QuickFolders.Util = {
 		const QI = QuickFolders.Interface,
 		      util = QuickFolders.Util,
 					styleEngine = QuickFolders.Styles;
-		util.logDebug("Loading platform styles for " + util.HostSystem + "...");
+		util.logDebug("Loading platform styles for " + util.HostSystem + "…");
 		switch (util.HostSystem) {
 			case "linux":
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
@@ -1799,7 +1800,7 @@ QuickFolders.Util = {
 			let url = win.document.URL,
 			    isMainWindow = url.endsWith("messenger.xul");
 			if (isMainWindow) {
-				util.logDebug("Interlink - Main window: loading toolbar fix...");
+				util.logDebug("Interlink - Main window: loading toolbar fix…");
 				let ss = QI.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
 				// fixes missing colored bottom line under QT tabs
 				styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat", '-moz-appearance', 'none');

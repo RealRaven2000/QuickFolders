@@ -31,7 +31,7 @@ QuickFolders.FolderCategory = {
     return (
        !this.isSelectableUI(category)
       || category == QuickFolders.FolderCategory.ALL
-      || QuickFolders.Model.Categories.indexOf(category) != -1
+      || QuickFolders.Model.Categories.includes(category)
     );
   } ,  
 
@@ -81,15 +81,15 @@ QuickFolders.FolderCategory = {
 			if (category!=this.ALWAYS  && category!=this.NEVER) {
 				item = listBox.appendItem(category, category);
 				// is the current folder in this category?
-				if (cats && cats.indexOf(category) >=0)
+				if (cats && cats.includes(category))
 					listBox.addItemToSelection(item);
 			}
 		}
 		item = listBox.appendItem(util.getBundleString("qfShowAlways","Show Always!"), this.ALWAYS);
-		if (cats && cats.indexOf(this.ALWAYS) >=0)
+		if (cats && cats.includes(this.ALWAYS))
 			listBox.addItemToSelection(item);
 		item = listBox.appendItem(util.getBundleString("qfShowNever","Never Show (Folder Alias)"), this.NEVER);
-		if (cats && cats.indexOf(this.NEVER) >=0)
+		if (cats && cats.includes(this.NEVER))
 			listBox.addItemToSelection(item);
 		// highlight uncategorized if no categories are defined in folder
 		item = listBox.appendItem(util.getBundleString("qfUncategorized", "(Uncategorized)"), this.UNCATEGORIZED);

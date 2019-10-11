@@ -96,7 +96,7 @@ tab#QuickFolders-General  {
 
 #QuickFolders-FindPopup[tag=quickMove] menuitem:hover {
 	list-style-image : url('chrome://quickfolders/skin/ico/tb-anchor.png') !important;
-	text-decoration: underline;
+	/* text-decoration: underline; */
 }	
 
 menu.dbgMenu menuitem:hover,

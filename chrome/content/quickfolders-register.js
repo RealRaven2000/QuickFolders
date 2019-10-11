@@ -549,7 +549,7 @@ QuickFolders.Licenser = {
           + logIdentity(ac.defaultIdentity));
 				if (!ac.defaultIdentity || !ac.defaultIdentity.email) {
 					if (ac.incomingServer.username != "nobody") {
-						logDebug("Account " + ac.incomingServer.prettyName + " has no default identity!");
+						util.logDebug("Account " + ac.incomingServer.prettyName + " has no default identity!");
 					}
 					continue;
 				}

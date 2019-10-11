@@ -163,6 +163,12 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 					
 	function setMailHeaders(folder, options, isOrigin) {
 		const ADVANCED_FLAGS = util.ADVANCED_FLAGS;
+		
+		var {MailServices} = 
+		  (util.versionGreaterOrEqual(util.AppverFull, "64")) ?
+				ChromeUtils.import("resource:///modules/MailServices.jsm") : // new module spelling
+				Components.utils.import("resource:///modules/mailServices.js", {});
+		
 		if (!folder.URI) return;
 		if (preferences.isDebugOption('composer')) debugger;		
 		let entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);

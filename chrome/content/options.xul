@@ -271,6 +271,7 @@
 						<preference id="qfpa-CurrentFolder-Lightweight" name="extensions.quickfolders.currentFolderBar.background.lightweight" type="bool"  instantApply="true"/>
 						<preference id="qfpa-flexLeft" name="extensions.quickfolders.currentFolderBar.flexLeft" type="int" />
 						<preference id="qfpa-flexRight" name="extensions.quickfolders.currentFolderBar.flexRight" type="int" />
+						<preference id="qfpa-FolderMenu-CTRL" name="extensions.quickfolders.folderMenu.CTRL" type="bool" />
 						<preference id="qfpa-FolderMenu-openNewTab" name="extensions.quickfolders.folderMenu.openNewTab" type="bool" />
 						<preference id="qfpa-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
 						<preference id="qfpa-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool" />
@@ -356,6 +357,9 @@
 							<html:fieldset id="mailCommandsCustomize" flex="1">
 								<html:legend>&qf.label.menus.mailFolder;</html:legend>
 								<vbox>
+									<checkbox id="qfHideMailcommandsUnlessCTRL"
+														label="&qf.label.menus.hideQFunlessCTRL;"
+														preference="qfpa-FolderMenu-CTRL" />
 									<checkbox id="qfOpenInNewTab" 
 														label="Open In New Tab"
 														preference="qfpa-FolderMenu-openNewTab" />
@@ -456,6 +460,7 @@
 								<textbox id="leftSpacer"
 								         type="number"
 												 size="1"
+												 class="num1digit"
 												 preference="qfpa-flexLeft"
 												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
 								<label control="rightSpacer"
@@ -463,6 +468,7 @@
 								<textbox id="rightSpacer"
 								         type="number"
 												 size="1"
+												 class="num1digit"
 												 preference="qfpa-flexRight"
 												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
 								<spacer flex="2" />
@@ -602,6 +608,7 @@
 								<textbox id="button-font-size"
 												 type="number"
 												 size="3"
+												 class="num2digits"
 												 preference="qfpl-ButtonFontSize"
 												 onchange="options.changeTextPreference(this);" />
 								<label value="px" />
@@ -611,15 +618,16 @@
 									<textbox id="buttonMinHeight"
 													 type="number"
 													 preference="qfpl-ButtonMinimalHeight"
-													 style="max-width:5em; width:auto;"
+													 class="num2digits"
 													 onchange="options.changeTextPreference(this);"/>
 									<label value="px" />
 									<separator flex="1" />
 									<label value="Top padding:" />
 									<textbox id="buttonPaddingTop"
 													 type="number"
+													 class="num2digits"
 													 preference="qfpl-ButtonTopPadding"
-													 style="max-width:5em; width:auto;"
+													 style="max-width:4em; width:auto;"
 													 onchange="options.changeTextPreference(this);"/>
 									<label value="px" />
 								</hbox>
@@ -644,6 +652,7 @@
 								<textbox id="QuickFolders-Options-CustomTopRadius"
 												 type="number"
 												 size="3"
+												 class="num1digit"
 												 preference="qfpl-TopRadius"
 												 onchange="options.changeTextPreference(this);" />
 								<label value="px" />
@@ -652,6 +661,7 @@
 								<textbox id="QuickFolders-Options-CustomBottomRadius"
 												 type="number"
 												 size="3"
+												 class="num1digit"
 												 preference="qfpl-BottomRadius"
 												 onchange="options.changeTextPreference(this);" />
 								<label value="px" />
@@ -682,6 +692,7 @@
 								<textbox id="toolbar-bottom-size"
 												 tooltiptext="&qf.label.Toolbar.bottomLine.tip;"
 												 type="number"
+												 class="num1digit"
 												 size="3"
 												 preference="qfpl-ToolbarBottom"
 												 onchange="options.changeTextPreference(this);" />										 
@@ -695,8 +706,8 @@
 											 style = "text-decoration:underline;cursor:pointer;" />
 								<textbox id="toolbarMinHeight"
 												 type="number"
-												 preference="qfpl-ToolbarMinimalHeight"
-												 style="max-width:5em; width:auto;" />
+												 class="num2digits"
+												 preference="qfpl-ToolbarMinimalHeight" />
 								<label value="px" />
 							</hbox>
 						</hbox>						
@@ -1202,6 +1213,7 @@
 									<textbox id="quickmove-path-depth"
 													 tooltiptext="&qf.pathFormat.tooltip;"
 													 type="number"
+													 class="num1digit"
 													 size="3"
 													 preference="qfpp-QuickMove-PathDepth"
 													 disabled="true"/>

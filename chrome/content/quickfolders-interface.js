@@ -1826,8 +1826,8 @@ QuickFolders.Interface = {
 				
         evt.stopPropagation();
         util.logDebugOptional("interface", 
-          "addPopupSet(" + popupId + ", " + folder.prettyName + ", " + entry + ", o= " + offset + ", " + button.id ? button.id : button);
-        QI.addPopupSet(popupId, folder, entry, offset, button, noCommands);
+          "addPopupSet(" + popupId + ", " + folder.prettyName + ", " + entry + ", o= " + offset + ", " + button.id ? button.id : button +", noCommands=" + noCommands + ")");
+        QI.addPopupSet( {popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:noCommands, event:evt} );
       }
     }
     else
@@ -1870,16 +1870,24 @@ QuickFolders.Interface = {
 					}
 				}
 				if (menupopup) {
-					p = menupopup;
-					p.id = "QuickFoldersCommandsOnly"; // for debugging purposes
+					menupopup.id = "QuickFoldersCommandsOnly"; // for debugging purposes
 					let mps = menupopup.getElementsByTagName('menupopup');
 					if (mps.length) {
 						// add event handler for color commands (for some reason color submenu stops working otherwise)
 						this.setEventAttribute(mps[0], 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
 						this.setEventAttribute(mps[0], 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
 					}
+          // [Bug 26703] add folder command popup if it was hidden
+          let nodes = p.childNodes;
+          for (let i=0; i<nodes.length; i++) {
+            if(nodes[i].id == 'quickFoldersMailFolderCommands') {
+              menupopup.insertBefore(nodes[i], menupopup.firstChild);
+              break;
+            }
+          }
+          p = menupopup;
 				}
-				
+        
 			} // CTRL KEY HELD
 			
 			if (!p) {
@@ -2177,7 +2185,7 @@ QuickFolders.Interface = {
 
     if (!isMinimal) {
       // popupset is NOT re-done on minimal update - save time!
-      this.addPopupSet(popupId, folder, entry, offset, button, false);
+      this.addPopupSet({popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:false, event:null});
     }
 
 		if (!theButton) {
@@ -3919,7 +3927,16 @@ QuickFolders.Interface = {
 	},
 	
 	// noCommands suppress all command menu items + submenus
-	addPopupSet: function addPopupSet(popupId, folder, entry, offset, button, noCommands) {
+	addPopupSet: function addPopupSet(popupSetInfo) {
+    let folder = popupSetInfo.folder,
+        popupId = popupSetInfo.popupId, 
+        entry = popupSetInfo.entry, 
+        offset = popupSetInfo.offset || 0, 
+        button = popupSetInfo.button, 
+        noCommands = popupSetInfo.noCommands,
+        evt = popupSetInfo.event || null; // new for [Bug 26703]
+    
+    
 		const prefs = QuickFolders.Preferences,
 		      Ci = Components.interfaces,
           util = QuickFolders.Util,
@@ -3933,129 +3950,131 @@ QuickFolders.Interface = {
     if (xp && xp.parentNode)  {
       this.tearDownMenu(xp);
 		}
-		// else 
-		{
-			let menupopup = document.createXULElement ? document.createXULElement('menupopup') : document.createElement('menupopup'),
-					menuitem;
-				
-			menupopup.setAttribute('id', popupId);
-			menupopup.setAttribute('position', 'after_start'); //
-			// [Bug 26575] (safety?) - seems to be only triggered on non folder commands
-			this.setEventAttribute(menupopup, 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
-			this.setEventAttribute(menupopup, 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
-			menupopup.className = 'QuickFolders-folder-popup';
-			menupopup.folder = folder;
-			let MailCommands, 
-			    isRootMenu=false,
-			    fi = null;
+    
+		// else { ...see below...  }
+    let menupopup = document.createXULElement ? document.createXULElement('menupopup') : document.createElement('menupopup'),
+        menuitem;
+      
+    menupopup.setAttribute('id', popupId);
+    menupopup.setAttribute('position', 'after_start'); //
+    // [Bug 26575] (safety?) - seems to be only triggered on non folder commands
+    this.setEventAttribute(menupopup, 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
+    this.setEventAttribute(menupopup, 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
+    menupopup.className = 'QuickFolders-folder-popup';
+    menupopup.folder = folder;
+    let MailCommands, 
+        isRootMenu=false,
+        fi = null,
+        isHideMailCommands = evt ? (!evt.ctrlKey && prefs.getBoolPref('folderMenu.CTRL')) : false;
 
+    if (folder) {
+      util.logDebugOptional("popupmenus","Creating Popup Set for " + folder.name + "\nId: " + popupId);
+      fi = folder.QueryInterface(Ci.nsIMsgFolder);
+
+      /* In certain cases, let's append mail folder commands to the root menu */
+      if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
+        // newsgroups have no subfolders anyway
+        MailCommands = menupopup;
+        isRootMenu = true;
+      }
+      else {
+        MailCommands = this.createIconicElement('menupopup', 'QuickFolders-folder-popup');
+        // removed mailCmd menu-iconic from class [Bug 26575]
+        isRootMenu = false;
+      }			
+    }
+    
+
+    if (showCommandsSubmenus) {
+      // [Bug 26703] Add option to hide mail commands popup menu
       if (folder) {
-				util.logDebugOptional("popupmenus","Creating Popup Set for " + folder.name + "\nId: " + popupId);
-				fi = folder.QueryInterface(Ci.nsIMsgFolder);
+        /***  MAIL FOLDER COMMANDS	 ***/
+        // 0. BUILD MAIL FOLDER COMMANDS
+        this.appendMailFolderCommands(MailCommands, fi, isRootMenu, button, menupopup);
+        
+        // special folder commands: at top, as these are used most frequently!
+        // 1. TOP LEVEL SPECIAL COMMANDS
+        let topShortCuts = 0;
+        if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
+          menuitem = this.createMenuItem_EmptyTrash();
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }
 
-				/* In certain cases, let's append mail folder commands to the root menu */
-				if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
-					// newsgroups have no subfolders anyway
-					MailCommands = menupopup;
-					isRootMenu = true;
-				}
-				else {
-					MailCommands = this.createIconicElement('menupopup', 'QuickFolders-folder-popup');
-					// removed mailCmd menu-iconic from class [Bug 26575]
-					isRootMenu = false;
-				}			
-			}
-			
+        if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
+          menuitem = this.createMenuItem_EmptyJunk();
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }
+      
+        if (prefs.getBoolPref("folderMenu.openNewTab")) {
+          let newTabMenuItem = document.getElementById('folderPaneContext-openNewTab');		
+          // folder listener sometimes throws here?
+          let label = newTabMenuItem && newTabMenuItem.label ? newTabMenuItem.label.toString() : "Open in New Tab";
+          let menuitem = this.createMenuItem('', label);
+          // oncommand="gFolderTreeController.newFolder();"			
+          menuitem.className = 'cmd menuitem-iconic';
+          menuitem.setAttribute("tag", "openNewTab");
+          menuitem.addEventListener('command', 
+            function(event) {
+              if (!QI.checkIsDuplicateEvent({tag:'openNewTab', id:'folderPaneContext-openNewTab'}))
+                QI.openFolderInNewTab(fi);
+            } , true);
+          // this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.openFolderInNewTab();");
+          
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }
 
-			if (showCommandsSubmenus) {
-				if (folder) {
-					/***  MAIL FOLDER COMMANDS	 ***/
-					// 0. BUILD MAIL FOLDER COMMANDS
-					this.appendMailFolderCommands(MailCommands, fi, isRootMenu, button, menupopup);
-					
-					// special folder commands: at top, as these are used most frequently!
-					// 1. TOP LEVEL SPECIAL COMMANDS
-					let topShortCuts = 0;
-					if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
-						menuitem = this.createMenuItem_EmptyTrash();
-						menupopup.appendChild(menuitem);
-						topShortCuts ++ ;
-					}
+        if (topShortCuts>0 && fi.hasSubFolders) // separator only if necessary
+          menupopup.appendChild(this.createIconicElement('menuseparator','*'));
+      }
 
-					if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
-						menuitem = this.createMenuItem_EmptyJunk();
-						menupopup.appendChild(menuitem);
-						topShortCuts ++ ;
-					}
-				
-					if (prefs.getBoolPref("folderMenu.openNewTab")) {
-						let newTabMenuItem = document.getElementById('folderPaneContext-openNewTab');		
-						// folder listener sometimes throws here?
-						let label = newTabMenuItem && newTabMenuItem.label ? newTabMenuItem.label.toString() : "Open in New Tab";
-						let menuitem = this.createMenuItem('', label);
-						// oncommand="gFolderTreeController.newFolder();"			
-						menuitem.className = 'cmd menuitem-iconic';
-						menuitem.setAttribute("tag", "openNewTab");
-						menuitem.addEventListener('command', 
-							function(event) {
-								if (!QI.checkIsDuplicateEvent({tag:'openNewTab', id:'folderPaneContext-openNewTab'}))
-									QI.openFolderInNewTab(fi);
-							} , true);
-						// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.openFolderInNewTab();");
-						
-						menupopup.appendChild(menuitem);
-						topShortCuts ++ ;
-					}
+      // 2. QUICKFOLDERS COMMANDS
+      if (button.id != "QuickFoldersCurrentFolder" && showCommandsSubmenus) {
+        let qfCmdsMenu = this.buildQuickFoldersCommands( {util, prefs, entry, folder, button} );
+        if (qfCmdsMenu) menupopup.appendChild(qfCmdsMenu);
+      }
+      
+      // 3. APPEND MAIL FOLDER COMMANDS
+      if (folder && menupopup != MailCommands && !isHideMailCommands) {
+        // Append the Mail Folder Context Menu...
+        let MailFolderCmdMenu = this.createIconicElement('menu');
+        MailFolderCmdMenu.setAttribute('id','quickFoldersMailFolderCommands');
+        MailFolderCmdMenu.setAttribute('label', this.getUIstring("qfFolderPopup",'Mail Folder Commands'));
+        MailFolderCmdMenu.setAttribute("accesskey", this.getUIstring("qfFolderAccess","F"));
 
-					if (topShortCuts>0 && fi.hasSubFolders) // separator only if necessary
-						menupopup.appendChild(this.createIconicElement('menuseparator','*'));
-				}
+        MailFolderCmdMenu.appendChild(MailCommands);
+        menupopup.appendChild(MailFolderCmdMenu);
+      }
+    }
 
-				// 2. QUICKFOLDERS COMMANDS
-				if (button.id != "QuickFoldersCurrentFolder" && showCommandsSubmenus) {
-					let qfCmdsMenu = this.buildQuickFoldersCommands( {util, prefs, entry, folder, button} );
-					if (qfCmdsMenu) menupopup.appendChild(qfCmdsMenu);
-				}
-				
-				// 3. APPEND MAIL FOLDER COMMANDS
-				if (folder && menupopup != MailCommands) {
-					// Append the Mail Folder Context Menu...
-					let MailFolderCmdMenu = this.createIconicElement('menu');
-					MailFolderCmdMenu.setAttribute('id','quickFoldersMailFolderCommands');
-					MailFolderCmdMenu.setAttribute('label', this.getUIstring("qfFolderPopup",'Mail Folder Commands'));
-					MailFolderCmdMenu.setAttribute("accesskey", this.getUIstring("qfFolderAccess","F"));
+    // 3. APPEND SUBFOLDERS
+    //moved this out of addSubFoldersPopup for recursive menus
+    if (fi && fi.hasSubFolders) {
+      util.logDebugOptional("popupmenus","Creating SubFolder Menu for " + folder.name + "…");
+      if (showCommandsSubmenus)
+        menupopup.appendChild(this.createIconicElement('menuseparator','*'));
+      this.debugPopupItems=0;
+      this.addSubFoldersPopup(menupopup, folder, false);
+      util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
+    }
 
-					MailFolderCmdMenu.appendChild(MailCommands);
-					menupopup.appendChild(MailFolderCmdMenu);
-				}
-			}
+    if (offset>=0) {
+      // should we discard the old one if it exists?
+      this.menuPopupsByOffset[offset] = menupopup;
+    }
+    
+    // remove last popup menu (if button is reused and not created from fresh!)
+    // this needed in minimal rebuild as we reuse the buttons!
+    if (button.firstChild)
+      button.removeChild(button.firstChild);
+    
+    // we might have created an empty popup so only append it if it has child Nodes
+    if (menupopup.childNodes && menupopup.childNodes.length) {
+      button.appendChild(menupopup); 
+    }
 
-			// 3. APPEND SUBFOLDERS
-			//moved this out of addSubFoldersPopup for recursive menus
-			if (fi && fi.hasSubFolders) {
-				util.logDebugOptional("popupmenus","Creating SubFolder Menu for " + folder.name + "…");
-				if (showCommandsSubmenus)
-					menupopup.appendChild(this.createIconicElement('menuseparator','*'));
-				this.debugPopupItems=0;
-				this.addSubFoldersPopup(menupopup, folder, false);
-				util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
-			}
-
-			if (offset>=0) {
-				// should we discard the old one if it exists?
-				this.menuPopupsByOffset[offset] = menupopup;
-			}
-			
-			// remove last popup menu (if button is reused and not created from fresh!)
-			// this needed in minimal rebuild as we reuse the buttons!
-			if (button.firstChild)
-				button.removeChild(button.firstChild);
-			
-			// we might have created an empty popup so only append it if it has child Nodes
-			if (menupopup.childNodes && menupopup.childNodes.length) {
-				button.appendChild(menupopup); 
-			}
-		}
 
 	} ,
 	
@@ -4790,7 +4809,6 @@ QuickFolders.Interface = {
 				return false;
 			// check whether parent folder entries may have the flag set.
 			while (folder.parent)	{
-				debugger;
 				folder = folder.parent;
 				tabEntry = model.getFolderEntry(folder.URI);
 				if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
@@ -6287,8 +6305,9 @@ QuickFolders.Interface = {
 		  // throws 'An invalid or illegal string was specified' in Postbox:
 			if (util.Application != 'Postbox' || util.Appversion > 5.4) {
 				// avoid for current folder button as it always will be completely colored
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not[#QuickFoldersCurrentFolder]' + coloredPaletteClass + ' > label','color', inactiveColor, false);
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not[#QuickFoldersCurrentFolder]' + paletteClass + ' > label','color', inactiveColor, false);
+        // #issue 7 these rules didn't work due to a syntax error
+				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + coloredPaletteClass + ' > label','color', inactiveColor, false);
+				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + paletteClass + ' > label','color', inactiveColor, false);
 			}
 		}
 		else {

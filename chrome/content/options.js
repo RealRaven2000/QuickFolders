@@ -751,6 +751,7 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 					State = util.Licenser.ELicenseState,
 					options = QuickFolders.Options,
+					prefs = QuickFolders.Preferences,
 					QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
@@ -769,7 +770,7 @@ QuickFolders.Options = {
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
 					// if we were a month ahead would this be expired?
-					if (util.Licenser.DecryptedDate < dateString) {
+					if (util.Licenser.DecryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
 						options.labelLicenseBtn(btnLicense, "extend");
 					}
 					else

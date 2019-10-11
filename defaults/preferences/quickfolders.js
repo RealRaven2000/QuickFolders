@@ -177,6 +177,7 @@ pref("extensions.quickfolders.debug.popupmenus.drag", false);
 pref("extensions.quickfolders.debug.premium", false);
 pref("extensions.quickfolders.debug.premium.quickJump", false);
 pref("extensions.quickfolders.debug.premium.licenser", false);
+pref("extensions.quickfolders.debug.premium.forceShowExtend", false);
 pref("extensions.quickfolders.debug.premium.rsa", false);
 pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.recentFolders", false);
@@ -204,6 +205,7 @@ pref("extensions.quickfolders.recentfolders.showTimeStamp", false);
 // new Folder Optimization
 pref("extensions.quickfolders.update.disableMinimal", false);
 // Tab Context Menu items
+pref("extensions.quickfolders.folderMenu.CTRL", false); // Bug 26703
 pref("extensions.quickfolders.folderMenu.getMessagesForInbox", true);
 pref("extensions.quickfolders.folderMenu.getMessagesForNews", true);
 pref("extensions.quickfolders.folderMenu.markAllRead", true);

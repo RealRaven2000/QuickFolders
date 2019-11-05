@@ -66,9 +66,16 @@ QuickFolders.FilterWorker = {
 				}
 			  else
 					notifyBox = document.getElementById (notificationId);
-				let item=notifyBox.getNotificationWithValue(notificationKey)
-				if(item)
-					notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+        if (notifyBox) {
+          let item=notifyBox.getNotificationWithValue(notificationKey)
+          if(item)
+            notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
+        }
+        else {
+          util.logToConsole("Sorry - I cannot show notifyBox, cannot find element '" + notificationId + "'\n" +
+            "toggle_FilterMode(active=" + active + ");");
+        }
+        
 			}
 			
 			if (active 
@@ -690,6 +697,22 @@ QuickFolders.FilterWorker = {
 	setCurrentFilterTemplate : function setCurrentFilterTemplate(pref) {
 		return QuickFolders.Preferences.setStringPref("filters.currentTemplate", pref);
 	} ,
+  
+	// Tb 66 compatibility.
+	loadPreferences: function qf_loadPreferences() {
+		let myprefs = document.getElementsByTagName("preference");
+		if (myprefs.length) {
+			let prefArray = [];
+			for (let i=0; i<myprefs.length; i++) {
+				let it = myprefs.item(i),
+				    p = { id: it.id, name: it.getAttribute('name'), type: it.getAttribute('type') };
+				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+				prefArray.push(p);
+			}
+			if (Preferences)
+				Preferences.addAll(prefArray);
+		}							
+	},
 	
   getBundleString  : function getBundleString(id) {
     //let bundle = document.getElementById("bundle_filter");

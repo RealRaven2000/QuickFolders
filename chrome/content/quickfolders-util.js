@@ -93,7 +93,8 @@ QuickFolders.Util = {
 		EMAIL_RECURSIVE : 0x0004,
     CUSTOM_CSS :      0x0100,
     CUSTOM_PALETTE :  0x0200,
-		IGNORE_QUICKJUMP: 0x0400
+		IGNORE_QUICKJUMP: 0x0400,
+    SETMAIL_UNREAD:   0x0800         // [Bug 26683]
   } ,	
 	// avoid these global objects
 	Cc: Components.classes,
@@ -859,7 +860,6 @@ QuickFolders.Util = {
         util.slideAlert (util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
-			let targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
 			step = 1;
 
 			let messageList,
@@ -915,8 +915,7 @@ QuickFolders.Util = {
         return null;
       }
 			step = 5;
-			let sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource),
-			    cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
 			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;

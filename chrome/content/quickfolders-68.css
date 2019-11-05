@@ -1,0 +1,11 @@
+/* Thunderbird 68 specific fixes 
+   increasing specificity through parent id, not !important
+*/
+#QuickFolders-Folders-Pane #QuickFolders-FoldersBox {
+  margin-bottom: -1px;  /* fix the 1px gap underneath the tabs */
+}
+
+#QuickFolders-FindFolder {
+	background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
+  color: var(--lwt-toolbar-field-color, black) !important;
+}

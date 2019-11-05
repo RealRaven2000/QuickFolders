@@ -15,6 +15,8 @@
 <!ENTITY chkIgnoreCounts.tooltip "Liczba wiadomości nigdy nie będzie wyświetlana">
 <!ENTITY chkHideFromQuickJump "Omit from quickJump / quickMove">
 <!ENTITY chkHideFromQuickJump.tooltip "Omit this folder and its children in quickJump / quickMove results">
+<!ENTITY chkSetMailsUnread "Set mail to unread">
+<!ENTITY chkSetMailsUnread.tooltip "If you move mail into this folder it is set to unread.">
 <!ENTITY grpCustomCSS "Niestandardowe CSS">
 <!ENTITY cssBackground "Tło">
 <!ENTITY cssBackground.tooltip "Podaj tło w formacie CSS, np. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">

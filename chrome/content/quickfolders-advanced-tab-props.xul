@@ -116,11 +116,18 @@
 			</hbox>
 			<hbox>
 				<checkbox
-						id="chkHideFromQuickJump"
+					id="chkHideFromQuickJump"
 					label="&chkHideFromQuickJump;"
 					tooltiptext="&chkHideFromQuickJump.tooltip;"
 				/>	
 			</hbox>
+			<hbox>
+				<checkbox
+          id="chkSetMailsUnread"
+          label="&chkSetMailsUnread;"
+          tooltiptext="&chkSetMailsUnread.tooltip;"
+				/>	
+      </hbox>
 		</groupbox>
 		<groupbox>
 		  <caption label="&grpCustomCSS;"/>

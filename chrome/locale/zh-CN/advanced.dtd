@@ -15,6 +15,8 @@
 <!ENTITY chkIgnoreCounts.tooltip "不显示包含的邮件数量。">
 <!ENTITY chkHideFromQuickJump "Omit from quickJump / quickMove">
 <!ENTITY chkHideFromQuickJump.tooltip "Omit this folder and its children in quickJump / quickMove results">
+<!ENTITY chkSetMailsUnread "Set mail to unread">
+<!ENTITY chkSetMailsUnread.tooltip "If you move mail into this folder it is set to unread.">
 <!ENTITY grpCustomCSS "自定义 CSS">
 <!ENTITY cssBackground "背景">
 <!ENTITY cssBackground.tooltip "请输入一个 CSS 背景，例如 linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">

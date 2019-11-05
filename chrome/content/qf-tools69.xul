@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://quickfolders/content/quickfolders-layout.css"  title="QuickFolderStyles" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/quickfolders-thunderbird.css"  title="QuickFolderStyles" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
+
+<overlay 
+  id="QuickFolders-Tools" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+>
+
+    <hbox id="QuickFolders-left">
+			<vbox id="QuickFolders-Tools-Pane" 
+            insertafter="QuickFolders-LabelBox">
+				<hbox id="QuickFolders-Category-Box"
+						  ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver)">
+					<menulist id="QuickFolders-Category-Selection" 
+										oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
+										sizetopopup="none" 
+										collapsed="true">
+						<menupopup>
+							<!-- filled dynamically from JS -->
+						</menupopup>
+					</menulist>
+					<hbox id="QuickFolders-oneButtonPanel">
+						<toolbarbutton id="QuickFolders-mainPopup"
+										 class="popupButton"
+										 tooltiptext="&qf.tooltip.mainOptions;"
+										 context="QuickFolders-ToolbarPopup"
+										 onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup',event);"/>
+						<toolbarbutton id="QuickFolders-filterActive"
+										 tooltiptext="&qf.tooltip.filters;"
+										 oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
+										 collapsed="true"/>
+						<toolbarbutton id="QuickFolders-paintBucketActive"
+										 label="ABC"
+										 tooltiptext="&qf.tooltip.paintCanActive;"
+										 context="QuickFolders-PalettePopup" 
+										 oncommand="QuickFolders.Interface.showPalette(this);"
+										 collapsed="true"/>
+						<toolbarbutton id="QuickFolders-readingList"
+										 class="popupButton"
+										 tooltiptext="&quickfolders.readingList.tooltip;"
+										 label=""
+										 onclick="QuickFolders.Interface.readingListClick(event,this);"
+										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+										 context="QuickFolders-readingListMenu"
+										 collapsed="true"/>
+						<toolbarbutton id="QuickFolders-quickMove"
+										 class="popupButton"
+										 tooltiptext="&qf.tooltip.quickMove;"
+										 label=""
+										 onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
+										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+										 context="QuickFolders-quickMoveMenu"
+										 />
+						<!-- removed searchbutton=true so pressing [Enter] is not necessary -->
+						<search-textbox
+              id="QuickFolders-FindFolder" 
+              oncommand="QuickFolders.Interface.findFolderName(this);"
+              onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
+              class="searchBox"
+              is="search-textbox"
+              collapsed="true"
+              placeholder="&quickfolders.findFolder.placeHolder;"/>
+					 </hbox>
+				</hbox>
+			</vbox>
+    </hbox>
+</overlay>    

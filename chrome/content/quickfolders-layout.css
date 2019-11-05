@@ -67,13 +67,13 @@
 
 #QuickFolders-quickMove > label, #QuickFolders-readingList > label {
   border-radius: 4px;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
-  color: #ffffff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset !important;
   padding: 0px 2px;
 }
 
 #QuickFolders-quickMove > label {
   background-color: rgba(220, 0, 0, 0.9);
+	color: #ffffff !important;
 	border: 1px solid rgba(128,128,128,0.5);
   margin-left: 2px !important;
   text-decoration: none;
@@ -81,6 +81,7 @@
 }
 #QuickFolders-readingList > label {
   background-color: rgba(180, 180, 180, 0.9);
+	color: white !important;
 	border: 1px solid rgba(128,128,128,0.5);
 	margin-left: 0px;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
@@ -134,6 +135,8 @@ menupopup.widerMenu menucaption {
 	margin-top: 0px;
 	min-height: 20px !important;
 	width: -moz-min-content;
+  /* Tb 70+ */
+  min-width: 50px;
 }
 
 #QuickFolders-FindFolder.quickMove,

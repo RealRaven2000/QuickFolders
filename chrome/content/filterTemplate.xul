@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- tb 64 -->
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 <!--  tb 59 -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/content/filterTemplate.css" type="text/css"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/filters.dtd" >
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/filters.dtd" >
 
 
 
-<prefwindow title="&qf.filters.title;"
+<dialog title="&qf.filters.title;"
 	id="qf-template"
 	buttons="extra2,cancel,extra1"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -24,13 +25,13 @@
 >
 <!--	tooltiptextextra2="&qf.donate.tooltip;" -->
 
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
-	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
-	<script type="application/x-javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
+	<script type="application/javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
 	
 	<!-- Thunderbird 63: replace with Services.strings.createBundle(..) -->
   <stringbundleset id="stringbundleset">
@@ -41,7 +42,9 @@
 	<prefpane id="qf-template-prefpane" >
 
 		<preferences>
-			<preference id="qfp-SelectedFilterTemplate" name="extensions.quickfolders.filters.currentTemplate" type="string" />
+			<preference id="qfp-SelectedFilterTemplate" 
+        name="extensions.quickfolders.filters.currentTemplate" 
+        type="string" />
 		</preferences>
 	
 	
@@ -57,11 +60,11 @@
 			  onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
 			  preference="qfp-SelectedFilterTemplate"
 			  rows="6">
-			    <listitem label='&qf.filters.template.from;' value='from' />
-			    <listitem label='&qf.filters.template.to;' value='to' />
-			    <listitem label='&qf.filters.template.list;' value='list' />
-			    <listitem label='&qf.filters.template.topic;' value='topic' />
-			    <listitem label='&qf.filters.template.tag;' value='tag' />
+			    <richlistitem label='&qf.filters.template.from;' value='from' />
+			    <richlistitem label='&qf.filters.template.to;' value='to' />
+			    <richlistitem label='&qf.filters.template.list;' value='list' />
+			    <richlistitem label='&qf.filters.template.topic;' value='topic' />
+			    <richlistitem label='&qf.filters.template.tag;' value='tag' />
 			</richlistbox>
 			<vbox id="quickFiltersPromoBox">
 			  <description id="getQuickFilters">&qf.label.getQuickFilters;</description>
@@ -72,11 +75,15 @@
 			</vbox>
 		</hbox>
 
-		<groupbox id="boxDescription">
+		<hbox id="boxDescription">
 			<description id="templateDescription"></description>
-		</groupbox>
+		</hbox>
 		
 		<description id="qf-whatToDo">&qf.filters.instructions;</description>
     </prefpane>
-</prefwindow>
+	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+	<script>
+	  QuickFolders.FilterWorker.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
+	</script>
+</dialog>
 

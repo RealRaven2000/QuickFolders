@@ -15,6 +15,8 @@
 <!ENTITY chkIgnoreCounts.tooltip "フォルダに含まれるメールの数を表示しないようにします">
 <!ENTITY chkHideFromQuickJump "Omit from quickJump / quickMove">
 <!ENTITY chkHideFromQuickJump.tooltip "Omit this folder and its children in quickJump / quickMove results">
+<!ENTITY chkSetMailsUnread "Set mail to unread">
+<!ENTITY chkSetMailsUnread.tooltip "If you move mail into this folder it is set to unread.">
 <!ENTITY grpCustomCSS "カスタム CSS">
 <!ENTITY cssBackground "背景">
 <!ENTITY cssBackground.tooltip "背景を CSS で指定します。 linear-gradient(下方向へグラデーション rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)">

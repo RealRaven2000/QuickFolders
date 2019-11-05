@@ -78,6 +78,7 @@ QuickFolders.AdvancedTab = {
       let ig = elem('chkIgnoreUnread'),
           ic = elem('chkIgnoreCounts'),
 					ixjQ = elem('chkHideFromQuickJump'),
+          iUnread = elem('chkSetMailsUnread'),
           iss = elem('chkCustomCSS'),
           ip = elem('chkCustomPalette'),
 					isRecursive = elem('chkComposerSubFolders'),
@@ -90,6 +91,9 @@ QuickFolders.AdvancedTab = {
       iss.checked = (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS) && true;
 			// ignore from quickJump
 			ixjQ.checked = (entry.flags & ADVANCED_FLAGS.IGNORE_QUICKJUMP) && true;
+      // set mail to unread [Bug 26683]
+      iUnread.checked = (entry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) && true;
+      
       elem('txtColor').value = entry.cssColor || '';
       elem('txtColorPicker').color = elem('txtColor').value;
       elem('txtBackground').value = entry.cssBack || '';
@@ -195,6 +199,7 @@ QuickFolders.AdvancedTab = {
     addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
     addFlag('chkComposerSubFolders', ADVANCED_FLAGS.EMAIL_RECURSIVE);
 		addFlag('chkHideFromQuickJump', ADVANCED_FLAGS.IGNORE_QUICKJUMP);
+    addFlag('chkSetMailsUnread', ADVANCED_FLAGS.SETMAIL_UNREAD);
     if (addFlag('chkCustomCSS', ADVANCED_FLAGS.CUSTOM_CSS)) {
 			elem('txtColor').value = util.sanitizeCSSvalue(elem('txtColor').value);
       entry.cssColor = elem('txtColor').value;

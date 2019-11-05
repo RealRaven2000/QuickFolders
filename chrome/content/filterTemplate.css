@@ -14,6 +14,11 @@ image#logo {
   max-width: 600px; 
 }
 
+#qf-filter-templates {
+  min-width: 15em;
+	max-height: 19.2em;
+}
+
 hbox.myWizard {
   max-width: 500px; 
 }
@@ -21,9 +26,11 @@ hbox.myWizard {
 #qf-template-prefpane {
   min-height:280px; 
   min-width: 550px;
+  max-width: inherit;
 }
 #boxDescription {
   min-height: 5em; 
+  max-width: 520px !important;
 }
 #templateLabel { padding-top: 0.5em; }
 #templateDescription {

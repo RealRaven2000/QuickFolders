@@ -80,6 +80,10 @@ overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/c
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlaySeamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 
+#Toolbox - moved to  separate file to re-implement quickmove in Tb70+
+overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul platformversion<69.0
+overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools69.xul platformversion>=69.0
+
 ##Style Tweaks
 #All
 style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1

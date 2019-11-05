@@ -333,14 +333,16 @@ END LICENSE BLOCK */
 		##             this was caused by removed xbl bindings for search boxes
 
   4.17 QuickFolders Pro - WIP
-	  ## Tb68 regression: number fields are displayed too wide after preferences.css had to he removed
     ## [Bug 26703] Add option to hide mail commands popup menu
     ## [issue 7] font color in striped mode ignored on colored tabs
+		## [Bug 26683] Advanced tab property: set moved emails to UNREAD. 
+	  ## Tb68 regression: number fields are displayed too wide after preferences.css had to he removed
+    ## The filter template dialog isn't shown properly in Thunderbird 68 - generally 
+       I would recommend to install quickFilters instead.
 	
 		
 	Future Work
 	===========
-		## [Bug 26683] WIP: Advanced tab property - Option to set dragged / moved emails to UNREAD. 
     
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
@@ -610,7 +612,7 @@ var QuickFolders = {
 			// [Issue 4] Entering text in quickJump doesn't show suggestions while typing
 			// add input event handler to search box (xbl binding for type=search was removed)
 			if (util.versionGreaterOrEqual(util.ApplicationVersion, "68")) {
-				util.logDebug("Adding Search Input event handler...")
+				util.logDebug("Adding Search Input event handler...");
 			  let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
 				if (findFolderBox) {
 					findFolderBox.addEventListener("input", function() {
@@ -2375,14 +2377,32 @@ QuickFolders.FolderListener = {
 		try {
 			if (!QuickFolders) return;
       const util = QuickFolders.Util,
-            Ci = Components.interfaces;
-      let f = item.QueryInterface(Ci.nsIMsgFolder);
-      util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
-			let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
-			if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
-				util.touch(fld || f); // set MRUTime, unless folder was deleted.
-			}
-			QuickFolders.FolderListener.lastAdded = f;
+            Ci = Components.interfaces,
+            Model = QuickFolders.Model,
+            ADVANCED_FLAGS = util.ADVANCED_FLAGS;
+            
+      if (item.hasOwnProperty('folderURL')) {
+        let f = item.QueryInterface(Ci.nsIMsgFolder);
+        util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
+        let fld = Model.getMsgFolderFromUri(f.URI, true);
+        if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
+          util.touch(fld || f); // set MRUTime, unless folder was deleted.
+        }
+        QuickFolders.FolderListener.lastAdded = f;
+      }
+      
+      // [Bug 26683] flag to set moved mail to unread.
+      if (item.hasOwnProperty('subject')) {
+        let m = item.QueryInterface(Components.interfaces.nsIMsgDBHdr),
+            tabEntry = Model.getFolderEntry(parent.folderURL);
+            
+        if (tabEntry &&  tabEntry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) {
+          let messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+          messageList.appendElement(item , false);
+          parent.markMessagesRead(messageList, false);
+        }
+        
+      }
 		}
 		catch(e) { };
 	},
@@ -2392,7 +2412,7 @@ QuickFolders.FolderListener = {
 			if (!QuickFolders)
 				return;
       const util = QuickFolders.Util,
-			      model = QuickFolders.Model,
+			      Model = QuickFolders.Model,
             listener = QuickFolders.FolderListener,
 						QI = QuickFolders.Interface;
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder),
@@ -2409,13 +2429,13 @@ QuickFolders.FolderListener = {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
 					if (toURI)  {
 						// we should not do this when deleting, we need to delete the Tab!
-						let newParent = model.getMsgFolderFromUri(toURI).parent;
+						let newParent = Model.getMsgFolderFromUri(toURI).parent;
 						if (newParent && (newParent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)) {
 							logDebug ("Folder  " + f.name + " moved to Trash. Leaving Tab URI unchanged for deletion.");
 						}
 						else {
 							logDebugOptional("folders,listeners.folder","Trying to move Tab " + f.name + " from URI \n" + fromURI + "\n to URI \n" + toURI);
-							let ct = model.moveFolderURI(fromURI, toURI);
+							let ct = Model.moveFolderURI(fromURI, toURI);
 							logDebug ("Successfully updated " + ct + " URIs for folder " + f.name);
 							QuickFolders.Interface.updateFolders(true, true);
 						}
@@ -2427,7 +2447,7 @@ QuickFolders.FolderListener = {
 					}
 				}
 				else {
-					let entry = model.getFolderEntry(folderUri);
+					let entry = Model.getFolderEntry(folderUri);
 					if (entry) {
 						QI.deleteFolderPrompt(entry);
 					}

@@ -15,6 +15,8 @@
 <!ENTITY chkIgnoreCounts.tooltip "永不顯示包含的郵件數量">
 <!ENTITY chkHideFromQuickJump "從 quickJump / quickMove 捨棄">
 <!ENTITY chkHideFromQuickJump.tooltip "在 quickJump / quickMove 結果中捨棄這個資料夾及其子目錄">
+<!ENTITY chkSetMailsUnread "把信件標記成未讀">
+<!ENTITY chkSetMailsUnread.tooltip "如果你移動信件到這個資料夾，將會把它標記成未讀。">
 <!ENTITY grpCustomCSS "自訂CSS">
 <!ENTITY cssBackground "背景">
 <!ENTITY cssBackground.tooltip "輸入一個CSS背景，例如線性梯度（到底部，rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;）">

@@ -4067,7 +4067,7 @@ QuickFolders.Interface = {
     
     // remove last popup menu (if button is reused and not created from fresh!)
     // this needed in minimal rebuild as we reuse the buttons!
-    if (button.firstChild)
+    if (button.firstChild && button.firstChild.tagName=="menupopup")
       button.removeChild(button.firstChild);
     
     // we might have created an empty popup so only append it if it has child Nodes
@@ -4799,8 +4799,8 @@ QuickFolders.Interface = {
     // [Bug 26692] omit folders with this tab
     function checkFolderFlag(folder, flag, includeParents) {
 			if (!folder) return false;
-			let fName = folder.prettyName;
-			let tabEntry = model.getFolderEntry(folder.URI);
+			let fName = folder.prettyName,
+			    tabEntry = model.getFolderEntry(folder.URI);
 			if (tabEntry && tabEntry.flags && (tabEntry.flags & flag)) {
 				util.logDebugOptional("quickMove", "checkFolderFlag(" + fName + ") will omit - flags = " + tabEntry.flags);
 				return true;

@@ -1538,6 +1538,7 @@ QuickFolders.Interface = {
         isHandled = false, 
 				isShortcutMatched = false; 
 
+    // Ctrl+Alt+F for refresh, should always work.
 		if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')
         &&
         isCtrl && isAlt && dir!='up' && prefs.isUseRebuildShortcut) {
@@ -1550,7 +1551,7 @@ QuickFolders.Interface = {
 					util.showStatusMessage('QuickFolders tabs were rebuilt', true);
 				} catch(e) {;};
 			}
-		}
+		}    
 		
     // shortcuts should only work in thread tree, folder tree and email preview (exclude conversations as it might be in edit mode)
     let tag = eventTarget.tagName ? eventTarget.tagName.toLowerCase() : '';
@@ -1563,6 +1564,8 @@ QuickFolders.Interface = {
             (tag == 'textarea'  // Postbox quick reply
             ||
             tag == 'textbox'    // any textbox
+            ||
+            tag == 'input'      // Thunderbird 68 textboxes.
 						||
 						tag == 'findbar')   // [Bug 26654] in-mail search
           )
@@ -1576,6 +1579,8 @@ QuickFolders.Interface = {
       logEvent(eventTarget);
       return;
     }
+    
+
 		
 		// tag = body for CTRL+F (in mail search)
     

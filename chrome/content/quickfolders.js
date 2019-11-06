@@ -332,14 +332,21 @@ END LICENSE BLOCK */
 		## [Issue 4] - Thunderbird 68 - Entering text in quickMove / quickJump field doesn't show suggestions while typing 
 		##             this was caused by removed xbl bindings for search boxes
 
-  4.17 QuickFolders Pro - WIP
+  4.17 QuickFolders Pro - 04/11/2019
     ## [Bug 26703] Add option to hide mail commands popup menu
     ## [issue 7] font color in striped mode ignored on colored tabs
 		## [Bug 26683] Advanced tab property: set moved emails to UNREAD. 
 	  ## Tb68 regression: number fields are displayed too wide after preferences.css had to he removed
     ## The filter template dialog isn't shown properly in Thunderbird 68 - generally 
        I would recommend to install quickFilters instead.
-	
+       
+  4.17.1 QuickFolders Pro - WIP
+	  ## Tb68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in 
+       the quick filter search field, they are accidentally executed. This is because some 
+       input types have changed in Thunderbird 68 following deprecation of XUL elements.
+	  ## [Issue 11] - in 4.17, Thunderbird 60.* the quickMove / quickJump function did not
+       bring  up any search results. Caused by swapping out the type="search" attribute
+       for is="search-textbox" (usage with the newer search-textbox control)
 		
 	Future Work
 	===========

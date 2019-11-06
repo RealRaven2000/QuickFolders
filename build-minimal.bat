@@ -11,4 +11,4 @@ rem only package german and english locale
 echo %quickFoldersRev% > revision.txt
 move QuickFolders*.xpi "..\..\Release\_Test Versions\4.17\"
 pwsh -Command "Start-Sleep -m 150"
-rename QuickFoldersWeb.zip QuickFolders-min-4.17pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-min-4.17.1pre%quickFoldersRev%.xpi

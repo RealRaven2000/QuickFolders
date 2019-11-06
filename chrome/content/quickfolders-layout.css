@@ -340,7 +340,7 @@ menupopup.widerMenu menucaption {
 }
 
 
-#QuickFolders-Toolbar #QuickFolders-title-label.expired {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
 	background-color: #990038 !important; /* dark purple */

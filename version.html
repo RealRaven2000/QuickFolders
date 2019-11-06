@@ -229,20 +229,19 @@
 				<h4>
 				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.17.1">Version 4.17.1 - 06/11/2019</a>
 				</h4>
-        
+        <ul>
         <h4 class="inList">Maintenance release 4.17.1 - for main changes <a href="#417">see below</a> </h4>        
-					<ul>
-						<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/11">[Issue 11]</a>
-              Thunderbird 60 regression: 4.17 - No results are shown in quickJump / quickMove when typing in Thunderbird 60.9; 
-              this s a regression caused by moving the search panel to a separate xul file (necessary for 
-              compatibility with Thunderbird 70, where search boxes are replaced by an new XUL element).
-            </li>
-						<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/9">[Issue 9]</a> 
-             Thunderbird 68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in 
-             the quick filter search field, they are accidentally executed and do not enter as uppercase letters
-             in the search box as expected. This is caused by some 
-             input types have changed in Thunderbird 68 following deprecation of XUL elements.</li>
-					</ul>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/11">[Issue 11]</a>
+            Thunderbird 60 regression: 4.17 - No results are shown in quickJump / quickMove when typing in Thunderbird 60.9; 
+            this s a regression caused by moving the search panel to a separate xul file (necessary for 
+            compatibility with Thunderbird 70, where search boxes are replaced by an new XUL element).
+          </li>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/9">[Issue 9]</a> 
+           Thunderbird 68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in 
+           the quick filter search field, they are accidentally executed and do not enter as uppercase letters
+           in the search box as expected. This is caused by some 
+           input types have changed in Thunderbird 68 following deprecation of XUL elements.</li>
+        </ul>
         
 				<table class="QuickFoldersProRenew bargain"> 
 					<tr>
@@ -333,36 +332,36 @@
 				</table>
 
         <a name="417">&nbsp;</a>
-        <h4 class="inList">Release 4.17 - published on 05/11/2019</h4>        
         
         <ul>
-						<li> <a name="26683" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26683" target="_blank">[Bug 26683]</a> 
-                New Advanced tab property - Option to set dragged / moved emails to UNREAD. </li>
-						<li> <a name="26703" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26703" target="_blank">[Bug 26703]</a> 
-                 Add option to hide mail commands popup menu. </li>
-            <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/10">[Issue 10]</a> 
-               QuickFolders 4.16 doesn't validate the license if no default identity is defined.
-               Normally we will see an error message but in this case we only see the following messages in 
-               the Javascript error console:
-               <br>
-               <tt>Error in QuickFolders.Options.decryptLicense():</tt><br>
-               <tt>logDebug is not defined  quickfolders-register.js:552</tt></li>
-            <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/7">[issue 7]</a>
-              font color in striped mode ignored on colored tabs. </li>
-						<li> Tb68 regression: number fields are displayed too wide and with unnecessary paddings which may 
-                 lead to legibility issues after preferences.css had to he removed.</li>
-            <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/8">[issue 8]</a> 
-              in Thunderbird 70, the label is removed on right-clicking a tab.
-              Also, the quickJump and quickMove functions stopped working. I highly recommend
-              using the current release version Thunderbird 68.* and not a beta version on your 
-              daily mail profile as there will be many breaking changes in the next months.
-              <p>If you want to use betas, make sure to use a test profile and regularly back up
-                your mail to avoid data loss.</p>
+          <h4 class="inList">Release 4.17 - published on 05/11/2019</h4>        
+          <li> <a name="26683" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26683" target="_blank">[Bug 26683]</a> 
+              New Advanced tab property - Option to set dragged / moved emails to UNREAD. </li>
+          <li> <a name="26703" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26703" target="_blank">[Bug 26703]</a> 
+               Add option to hide mail commands popup menu. </li>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/10">[Issue 10]</a> 
+             QuickFolders 4.16 doesn't validate the license if no default identity is defined.
+             Normally we will see an error message but in this case we only see the following messages in 
+             the Javascript error console:
+             <br>
+             <tt>Error in QuickFolders.Options.decryptLicense():</tt><br>
+             <tt>logDebug is not defined  quickfolders-register.js:552</tt></li>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/7">[issue 7]</a>
+            font color in striped mode ignored on colored tabs. </li>
+          <li> Tb68 regression: number fields are displayed too wide and with unnecessary paddings which may 
+               lead to legibility issues after preferences.css had to he removed.</li>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/8">[issue 8]</a> 
+            in Thunderbird 70, the label is removed on right-clicking a tab.
+            Also, the quickJump and quickMove functions stopped working. I highly recommend
+            using the current release version Thunderbird 68.* and not a beta version on your 
+            daily mail profile as there will be many breaking changes in the next months.
+            <p>If you want to use betas, make sure to use a test profile and regularly back up
+              your mail to avoid data loss.</p>
+          </li>
+          <li> The filter template dialog isn't shown properly in Thunderbird 68 - generally 
+            I would recommend to install the <a href="https://addons.thunderbird.net/thunderbird/addon/quickfilters/">quickFilters Add-on</a> instead, as it has more advanced
+            functions for managing and creating mail filters.  
             </li>
-            <li> The filter template dialog isn't shown properly in Thunderbird 68 - generally 
-              I would recommend to install the <a href="https://addons.thunderbird.net/thunderbird/addon/quickfilters/">quickFilters Add-on</a> instead, as it has more advanced
-              functions for managing and creating mail filters.  
-              </li>
 					</ul>
 			</li>			
 			

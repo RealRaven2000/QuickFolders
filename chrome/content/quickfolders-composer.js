@@ -152,8 +152,16 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 			}
 			// try to update headers - ComposeFieldsReady()
 			// http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
-			if (modType == 'address')
+			if (modType == 'address') {
+        // we need to prep the addressing widget to avoid inserting an empty line on top
+        // rebuild all addresses - for this we need to remove all [dummy] rows
+        // except for the very first one.
+        let listbox = document.getElementById("addressingWidget");
+        while (listbox.itemCount>1) { // remove everything apart from first item:
+          listbox.getItemAtIndex(listbox.itemCount-1).remove();
+        }
 				CompFields2Recipients(ComposeFields);
+      }
 		}
 		catch(ex) {
 			util.logException('modifyHeader()', ex);
@@ -165,7 +173,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		const ADVANCED_FLAGS = util.ADVANCED_FLAGS;
 		
 		var {MailServices} = 
-		  (util.versionGreaterOrEqual(util.AppverFull, "64")) ?
+		  (util.versionGreaterOrEqual(util.ApplicationVersion, "64")) ?
 				ChromeUtils.import("resource:///modules/MailServices.jsm") : // new module spelling
 				Components.utils.import("resource:///modules/mailServices.js", {});
 		

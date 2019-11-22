@@ -340,7 +340,7 @@ END LICENSE BLOCK */
     ## The filter template dialog isn't shown properly in Thunderbird 68 - generally 
        I would recommend to install quickFilters instead.
        
-  4.17.1 QuickFolders Pro - WIP
+  4.17.1 QuickFolders Pro - 06/11/2019
 	  ## Tb68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in 
        the quick filter search field, they are accidentally executed. This is because some 
        input types have changed in Thunderbird 68 following deprecation of XUL elements.
@@ -348,6 +348,11 @@ END LICENSE BLOCK */
        bring  up any search results. Caused by swapping out the type="search" attribute
        for is="search-textbox" (usage with the newer search-textbox control)
 		
+    
+  4.17.2 QuickFolders Pro - WIP
+    ## [issue 13] Setting Mail Headers according to advanced tab settings (such as from or to address)
+       is not working since Thunderbird 68
+    
 	Future Work
 	===========
     

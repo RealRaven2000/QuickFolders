@@ -151,6 +151,7 @@ QuickFolders.Styles = {
       else
         util.logDebugOptional("css.Detail", text);
     }
+    
 		function setRuleFromList(rulesList, rule, attribute, value, important, recurse) {
 			let found = false,
 			    foundRule = false,
@@ -176,28 +177,52 @@ QuickFolders.Styles = {
 							continue;
 
 						if (rule == selectors) {
+              // theRule = CSSStyleRule interface
 							st = theRule.style; // CSSStyleDeclaration
               logDebug("Found relevant selector: " + theRule.selectorText + "\n" +
                        "  ... searching rule:    " + attribute);
-							for (let k = 0; k < st.length; k++) {  //iterate rules!
-								try {
-									if (attribute == st.item(k)) {
-										foundRule = true;
-										logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
-										        + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
-													  + "\n                .parentRule = " + theRule.style.parentRule
-													  + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
-												  	+ "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));
-										st.removeProperty(attribute);
-										if (null!=value) {
-											st.setProperty(attribute,value,((important) ?	"important" : ""));
-										}
-										break;
-									}
-								}
-								catch (e) { util.logToConsole ("(error) " + e) };
-								break;
-							}
+                       
+              // if rule already exists, let's take a shortcut here
+              let origProperty = st.getPropertyValue(attribute);
+              if (origProperty) {
+                foundRule = true;
+                st.removeProperty(attribute);
+                st.setProperty(attribute, value, ((important) ?	"important" : ""));
+              }
+              else {
+                if (origProperty=="");
+                st.setProperty(attribute, value, ((important) ?	"important" : ""));
+                foundRule = true;
+              }
+              
+              logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
+                + "\noriginal value=" + origProperty
+                + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
+                + "\n                .parentRule = " + theRule.style.parentRule
+                + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
+                + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));              
+              /*
+              else
+                for (let k = 0; k < st.length; k++) {  //iterate rules!
+                  try {
+                    if (attribute == st.item(k)) {
+                      foundRule = true;
+                      logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
+                              + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
+                              + "\n                .parentRule = " + theRule.style.parentRule
+                              + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
+                              + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));
+                      st.removeProperty(attribute);
+                      if (null!=value) {
+                        st.setProperty(attribute,value,((important) ?	"important" : ""));
+                      }
+                      break;
+                    }
+                  }
+                  catch (e) { util.logToConsole ("(error) " + e) };
+                  break;
+                }
+                */
 						}
 						if (foundRule) // keep searching if exact rule was not found!
 							return true; // if rule found, early exit
@@ -238,7 +263,8 @@ QuickFolders.Styles = {
         let at = attributes[a];
         // reset recursion list
         while (visitedStyleSheetList.length>1) visitedStyleSheetList.pop();
-        if (!setRuleFromList(rulesList, rule, at, value, important, true)) {
+        let isSet = setRuleFromList(rulesList, rule, at, value, important, true);
+        if (!isSet) {
           // not found:
           if (null!=value) {
             let sRule=rule +"{" + at + ":" + value + ((important) ? " !important" : "") + ";}";

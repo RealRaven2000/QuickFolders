@@ -8,6 +8,6 @@ pwsh -Command "(gc -en UTF8NoBOM manifest.json) -replace 'pre%oldRev%', 'pre%qui
 rem "C:\Program Files\7-Zip\7z" a -xr!.svn quickFolders.zip install.rdf chrome.manifest chrome defaults license.txt
 "C:\Program Files\7-Zip\7z" a -xr!.svn QuickFoldersWeb.zip manifest.json install.rdf chrome.manifest chrome defaults license.txt
 echo %quickFoldersRev% > revision.txt
-move QuickFolders*.xpi "..\..\Release\_Test Versions\4.17\"
+move QuickFolders*.xpi "..\..\Release\_Test Versions\4.17.3\"
 pwsh -Command "Start-Sleep -m 150"
-rename QuickFoldersWeb.zip QuickFolders-wx-4.17.2pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-wx-4.17.3pre%quickFoldersRev%.xpi

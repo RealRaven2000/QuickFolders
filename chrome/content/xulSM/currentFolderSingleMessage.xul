@@ -20,85 +20,83 @@
 	<menupopup id = "QuickFolders-currentContextMenuSingle">
 		<menuitem  label="Thunderbird11-currentFolderSingleMessage" />
 	</menupopup>
-	<vbox id="messagesBox">
-		<vbox id="messagepanebox">
-			<hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="messagepane" style="display:none;">
-				<spacer flex="5" id="QF-CurrentLeftSpacer" style="min-width:5px;" />
-				<toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
-					<toolbarbutton id="QuickFolders-CurrentMail"
-					               class="icon draggable"
-					               tooltiptext="&qf.tooltip.emailIcon;" />
-				<toolbarseparator special="qfMsgFolderNavigation"  />
-				<toolbarbutton id="quickFoldersPreviousUnread"
-								       class="icon"
-					             special="qfMsgFolderNavigation" 
-					             tooltiptext="&qf.tooltip.goPreviousFolder;"
-					             onclick="QuickFolders.Interface.onGoPreviousMsg(this, true);" />
-					<toolbarbutton id="quickFoldersNavToggle" 
-					               special="qfMsgFolderNavigation" 
-					               tooltiptext="&qf.tooltip.quickFoldersNavToggle;"
-					               onclick="QuickFolders.Interface.onToggleNavigation(this);" />
-					<toolbarbutton id="quickFoldersNextUnread"
-								       class="icon"
-												 special="qfMsgFolderNavigation" 
-					               tooltiptext="&qf.tooltip.goNextFolder;"
-					               onclick="QuickFolders.Interface.onGoNextMsg(this, true);" />
-					<toolbarbutton id="QuickFolders-CurrentThread"
-					               class="icon"
-												 special="qfMsgFolderNavigation" 
-												 oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
-					               tooltiptext="&qf.tooltip.conversationRead;" />
-					<!-- skip folder -->
-					<toolbarbutton id="quickFoldersSkipFolder"
-												 class="icon"
-												 special="qfMsgFolderNavigation" 
-												 oncommand="QuickFolders.Interface.onSkipFolder(this);"
-												 tooltiptext="&qf.tooltip.skipUnreadFolder;" />
-												 
-					<toolbarseparator id="QuickFolders-Navigate-Separator" />	
-					<toolbarbutton id="QuickFolders-NavigateUp"
-					               class="icon"
-					               onclick="QuickFolders.Interface.goUpFolder();"
-					               tooltiptext="&qf.tooltip.folderUp;"
-					               collapsed="true"/>
-					<toolbarbutton id="QuickFolders-NavigateLeft"
-					               class="icon"
-					               onclick="QuickFolders.Interface.goPreviousSiblingFolder();"
-					               collapsed="true"/>
-					<hbox class="folderBarContainer xulPlatform="xulSM">
-						<toolbarbutton id="QuickFoldersCurrentFolder"
-						               label="Current Folder"
-						               class="selected-folder"
-						               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-						               ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
-					</hbox>
-					<toolbarbutton id="QuickFolders-NavigateRight"
-					               class="icon"
-					               onclick="QuickFolders.Interface.goNextSiblingFolder();"
-					               collapsed="true"/>
-					<toolbarseparator id="QuickFolders-Navigate-Separator2" />
-					<toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
-					               class="icon"
-					               tooltiptext="&qf.tooltip.mailFolderCommands;"
-					               onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
-					               oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
-					               collapsed="true"/>
-					<toolbarbutton id="QuickFolders-Options"
-					               class="icon"
-					               tooltiptext="&qf.menuitem.quickfolders.options;"
-					               oncommand="QuickFolders.Interface.viewOptions(-1);"
-					               tagName="qfOptions"
-					               context="QuickFolders-currentContextMenuSingle"
-					               oncontextmenu="QuickFolders.Interface.showPopup(this,this.getAttribute('context'));"/>
-					<toolbarbutton id="QuickFolders-Close"
-					               class="icon"
-					               tooltiptext="&qf.tooltip.closeToolbar;"
-					             oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'messageWindow');" />
-				</toolbar>
-				<spacer flex="5" id="QF-CurrentRightSpacer" style="min-width:5px !important;" />
-			</hbox>
-		</vbox>
-	</vbox>
+  <vbox id="messagepanebox">
+    <hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="messagepane" style="display:none;">
+      <spacer flex="5" id="QF-CurrentLeftSpacer" style="min-width:5px;" />
+      <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
+        <toolbarbutton id="QuickFolders-CurrentMail"
+                       class="icon draggable"
+                       tooltiptext="&qf.tooltip.emailIcon;" />
+      <toolbarseparator special="qfMsgFolderNavigation"  />
+      <toolbarbutton id="quickFoldersPreviousUnread"
+                     class="icon"
+                     special="qfMsgFolderNavigation" 
+                     tooltiptext="&qf.tooltip.goPreviousFolder;"
+                     onclick="QuickFolders.Interface.onGoPreviousMsg(this, true);" />
+        <toolbarbutton id="quickFoldersNavToggle" 
+                       special="qfMsgFolderNavigation" 
+                       tooltiptext="&qf.tooltip.quickFoldersNavToggle;"
+                       onclick="QuickFolders.Interface.onToggleNavigation(this);" />
+        <toolbarbutton id="quickFoldersNextUnread"
+                     class="icon"
+                       special="qfMsgFolderNavigation" 
+                       tooltiptext="&qf.tooltip.goNextFolder;"
+                       onclick="QuickFolders.Interface.onGoNextMsg(this, true);" />
+        <toolbarbutton id="QuickFolders-CurrentThread"
+                       class="icon"
+                       special="qfMsgFolderNavigation" 
+                       oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
+                       tooltiptext="&qf.tooltip.conversationRead;" />
+        <!-- skip folder -->
+        <toolbarbutton id="quickFoldersSkipFolder"
+                       class="icon"
+                       special="qfMsgFolderNavigation" 
+                       oncommand="QuickFolders.Interface.onSkipFolder(this);"
+                       tooltiptext="&qf.tooltip.skipUnreadFolder;" />
+                       
+        <toolbarseparator id="QuickFolders-Navigate-Separator" />	
+        <toolbarbutton id="QuickFolders-NavigateUp"
+                       class="icon"
+                       onclick="QuickFolders.Interface.goUpFolder();"
+                       tooltiptext="&qf.tooltip.folderUp;"
+                       collapsed="true"/>
+        <toolbarbutton id="QuickFolders-NavigateLeft"
+                       class="icon"
+                       onclick="QuickFolders.Interface.goPreviousSiblingFolder();"
+                       collapsed="true"/>
+        <hbox class="folderBarContainer xulPlatform="xulSM">
+          <toolbarbutton id="QuickFoldersCurrentFolder"
+                         label="Current Folder"
+                         class="selected-folder"
+                         ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+                         ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
+        </hbox>
+        <toolbarbutton id="QuickFolders-NavigateRight"
+                       class="icon"
+                       onclick="QuickFolders.Interface.goNextSiblingFolder();"
+                       collapsed="true"/>
+        <toolbarseparator id="QuickFolders-Navigate-Separator2" />
+        <toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
+                       class="icon"
+                       tooltiptext="&qf.tooltip.mailFolderCommands;"
+                       onclick="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);"
+                       oncontextmenu="QuickFolders.Interface.showCurrentFolderMailContextMenu(event.target);" 
+                       collapsed="true"/>
+        <toolbarbutton id="QuickFolders-Options"
+                       class="icon"
+                       tooltiptext="&qf.menuitem.quickfolders.options;"
+                       oncommand="QuickFolders.Interface.viewOptions(-1);"
+                       tagName="qfOptions"
+                       context="QuickFolders-currentContextMenuSingle"
+                       oncontextmenu="QuickFolders.Interface.showPopup(this,this.getAttribute('context'));"/>
+        <toolbarbutton id="QuickFolders-Close"
+                       class="icon"
+                       tooltiptext="&qf.tooltip.closeToolbar;"
+                     oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'messageWindow');" />
+      </toolbar>
+      <spacer flex="5" id="QF-CurrentRightSpacer" style="min-width:5px !important;" />
+    </hbox>
+  </vbox>
 
 	
 </overlay>

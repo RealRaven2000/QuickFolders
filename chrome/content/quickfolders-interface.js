@@ -835,7 +835,7 @@ QuickFolders.Interface = {
 						styleEngine = QuickFolders.Styles,
 						ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
 						background = prefs.getStringPref('currentFolderBar.background');
-				styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background', background);
+				styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background-image', background, true);
 				
 				let mw = util.$('messengerWindow');
 				if (mw) {
@@ -7221,7 +7221,7 @@ QuickFolders.Interface = {
 								changePref(data.premium[i]);
 							}
 						}
-						// load custom cuolors and restore color pickers
+						// load custom colors and restore color pickers
 						// options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
 						if (data.userStyle) {
 							let elements = document.getElementsByTagName('html:input');

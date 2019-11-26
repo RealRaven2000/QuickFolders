@@ -349,9 +349,15 @@ END LICENSE BLOCK */
        for is="search-textbox" (usage with the newer search-textbox control)
 		
     
-  4.17.2 QuickFolders Pro - WIP
-    ## [issue 13] Setting Mail Headers according to advanced tab settings (such as from or to address)
-       is not working since Thunderbird 68
+  4.17.2 QuickFolders Pro - 21/11/2019
+    ## [issue 13] Setting Mail Headers according to advanced tab settings (such as from or to address) is not working since Thunderbird 68
+       
+  4.17.3 QuickFolders Pro - WIP
+    ## [issue 14] Gray area shown below email list when starting Thunderbird in wide view
+       with Current FOlder Toolbar hidden
+    ## [issue 15] Current Folder Bar background styling is ignored in Thunderbird 68
+    ## [issue 16] Avoid showing current folder toolbar at bottom of screen in column view
+       ideally it should be shown as vertical bar between thread pane and preview.
     
 	Future Work
 	===========
@@ -993,10 +999,24 @@ var QuickFolders = {
 		} ,
 		
 		onDragEnter: function onDragEnter(evt, session) {
-			let t = evt.currentTarget;
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - " + session.toString() +
-			  "\ntarget: " + t.nodeName + "  '" + t.id + "'");
-			
+      // session = nsIDragSession
+			let t = evt.currentTarget,
+          dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
+          ot = evt.originalTarget;
+      if (ot) {
+        dTxt += "\noriginal target:" + ot.nodeName + "  '" + ot.id + "'";
+      }
+			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - \n" + dTxt);
+			if (ot && ot.nodeName.includes('arrowscrollbox')) {
+        this.util.logDebugOptional("dnd","dragEnter on arrowscrollbox - creating scroll event");
+        let event = document.createEvent('Event');
+        setTimeout(
+          function() {
+            event.initEvent('scroll', true, true);
+            ot.dispatchEvent(event);
+          });
+        return true;
+      }
 			evt.preventDefault();
 			return false;
 		},

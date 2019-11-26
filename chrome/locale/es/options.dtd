@@ -68,7 +68,7 @@
 <!ENTITY qf.checkbox.menus.emptyTrash "Vaciar Papelera">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
 <!ENTITY qf.label.menus.quickFolder "Comandos de QuickFolders">
-<!ENTITY qf.label.menus.hideQFunlessCTRL "Only display with CTRL key held">
+<!ENTITY qf.label.menus.hideQFunlessCTRL "Solo se muestra con la tecla CTRL presionada">
 <!ENTITY qf.label.menus.separator "Insertar separador">
 <!ENTITY qf.label.menus.lineBreak "Insertar salto de línea">
 <!ENTITY qf.label.menus.customIcon "Personalizar icono">
@@ -77,9 +77,9 @@
 <!ENTITY qf.label.menus.options "Opciones">
 <!ENTITY qf.caption.currentFolderBackground "Fondo de la barra de herramientas de la carpeta actual">
 <!ENTITY qf.button.currentFolderBackground.set "aplicar">
-<!ENTITY qf.checkbox.currentfolder.lightweight "integrate with lightweight theme">
-<!ENTITY qf.currentfolder.leftSpacer "Left Spacer:">
-<!ENTITY qf.currentfolder.rightSpacer "Right Spacer:">
+<!ENTITY qf.checkbox.currentfolder.lightweight "integrar con tema ligero">
+<!ENTITY qf.currentfolder.leftSpacer "Espaciador izquierdo:">
+<!ENTITY qf.currentfolder.rightSpacer "Espaciador derecho:">
 <!ENTITY qf.currentFolderBackground.default "predeterminado">
 <!ENTITY qf.currentFolderBackground.dark "oscuro">
 <!ENTITY qf.currentFolderBackground.translucent "traslúcido">
@@ -147,8 +147,8 @@
 <!ENTITY qf.description.rightClickOptions "Haga clic secundario en un área vacía para abrir el menú de opciones. En las opciones, puede seleccionar el 'estilo nativo' (más pequeño) o el estilo plano (más claro; soporta indicador de arrastre).">
 <!ENTITY qf.description.tipMsg "Sugerancia: Si tiene una cantidad extensa de carpetas, pruebe la extensión Nostalgy para organización de mensajes mediante teclado.">
 <!ENTITY qf.description.experimentalItems "¡¡Los siguientes elementos son experimentales, con suerte estarán funcionando en la próxima versión!!">
-<!ENTITY qf.youtube.description "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily.">
-<!ENTITY qf.youtube.link "Watch Videos about QuickFolders…">
+<!ENTITY qf.youtube.description "Para ver videos detallados sobre complementos de Thunderbird y cómo usar QuickFolders, visite mi canal de YouTube Thunderbird Daily.">
+<!ENTITY qf.youtube.link "Ver videos sobre QuickFolders ...">
 <!ENTITY qf.description.donate "Si adora QuickFolders tanto como nosotros y le gustaría apoyar su desarrollo, puede donar algo de dinero en favor de la continuidad del desarrollo de QuickFolders.">
 <!ENTITY qf.label.donateLink "Visitar la página de donaciones...">
 <!ENTITY qf.description.bugzilla "Por favor, utilice Bugzilla para todas las solicitudes de características e informes de fallos">
@@ -177,16 +177,16 @@
 <!ENTITY qf.checkbox.quickMove.tip "Atajo para arrastrar correos al botón quickMove para realizar para el rellenado más rápido hacia cualquier carpeta de correo mediante la introducción de su nombre.">
 <!ENTITY qf.checkbox.quickCopy "quickCopy - Copia correo a cualquier carpeta con el atajo Mayús +">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón quickCopy para un copiado más rápido a cualquier carpeta mediante la instroducción del nombre.">
-<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
-<!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
-<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
-<!ENTITY qf.backupAndRestore "Backup / Restore">
-<!ENTITY qf.storeConfig "Save Configuration…">
-<!ENTITY qf.loadConfig "Load Configuration…">
-<!ENTITY qf.checkbox.storeConfig.tabs "Include QuickFolders Tabs">
-<!ENTITY qf.checkbox.storeConfig.general "Include general settings">
-<!ENTITY qf.checkbox.storeConfig.layout "Include advanced and layout">
+<!ENTITY qf.checkbox.quickmove.autofill "Insertar el último nombre de carpeta ejecutado">
+<!ENTITY qf.checkbox.quickmove.autofill.tip "Se insertará la última carpeta utilizada con éxito. Presiona Enter para usarlo, o simplemente escribe sobre él para otros destinos.">
+<!ENTITY qf.checkbox.skipFolder "Omitir carpeta no leída - usar acceso directo: MAYÚS +">
+<!ENTITY qf.checkbox.skipFolder.tip "Atajo para saltar a la siguiente carpeta no leída.">
+<!ENTITY qf.backupAndRestore "Copia de seguridad de restauracion">
+<!ENTITY qf.storeConfig "Guardar configuración…">
+<!ENTITY qf.loadConfig "Cargar configuración…">
+<!ENTITY qf.checkbox.storeConfig.tabs "Incluir pestañas de QuickFolders">
+<!ENTITY qf.checkbox.storeConfig.general "Incluir configuraciones generales">
+<!ENTITY qf.checkbox.storeConfig.layout "Incluye avanzado y diseño">
 <!ENTITY qf.quickMove.path.format "Mostrar formato:">
 <!ENTITY qf.pathFormat.folderName "Nombre de carpeta">
 <!ENTITY qf.pathFormat.folderAndAccount "Nombre de carpeta - Cuenta de correo">

@@ -17,7 +17,6 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/options.js" />
 
 
-	<box id="messagesBox">
 	<hbox id="messagepaneboxwrapper">
 	<vbox id="messagepanebox">
 
@@ -142,10 +141,7 @@
 		</hbox>
 	-->
 	
-	
 	</vbox>
-
 	</hbox>
-	</box>
 
 </overlay>

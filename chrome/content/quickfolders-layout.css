@@ -345,9 +345,12 @@ menupopup.widerMenu menucaption {
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
 	background-color: #990038 !important; /* dark purple */
 	background-image: linear-gradient(to bottom, #bf376b 0%,#990038 51%,#700029 100%) !important; 
-	color: white !important;
 	margin: 0 4px 1px 7px;
 	padding: 2px 3px;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {	
+	color: rgb(245, 235, 185) !important;
 }
 
 #QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
@@ -429,7 +432,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	-moz-appearance: none;
 	border-radius: 0 0 6px 6px !important;
 	box-shadow: 1px 2px 4px -1px rgba(0,0,0,0.7);
-	background: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
+	background-image: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
 	border-style: solid  !important;
 	border-color: #666;
 	height: 1.8em; /* large font support, test on Mac / Linux! */

@@ -352,12 +352,19 @@ END LICENSE BLOCK */
   4.17.2 QuickFolders Pro - 21/11/2019
     ## [issue 13] Setting Mail Headers according to advanced tab settings (such as from or to address) is not working since Thunderbird 68
        
-  4.17.3 QuickFolders Pro - WIP
+  4.17.3 QuickFolders Pro - 26/11/2019
     ## [issue 14] Gray area shown below email list when starting Thunderbird in wide view
        with Current FOlder Toolbar hidden
     ## [issue 15] Current Folder Bar background styling is ignored in Thunderbird 68
     ## [issue 16] Avoid showing current folder toolbar at bottom of screen in column view
        ideally it should be shown as vertical bar between thread pane and preview.
+
+  4.17.4 QuickFolders Pro - WIP
+    ## Removed unnecessary error console warning from simplified setElementStyle() function
+    ## Added Alt + Up as navigation shortcut to go to parent folder.
+    ## Sometimes the current folder bar shows an incorrect subfolder menu (from a previously 
+       visited folder) - fixed by forcing it to rebuild every time a differnt folder is visited.
+
     
 	Future Work
 	===========

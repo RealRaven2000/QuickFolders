@@ -195,13 +195,13 @@ QuickFolders.Styles = {
                 foundRule = true;
               }
               
+              /*
               logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
                 + "\noriginal value=" + origProperty
                 + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
                 + "\n                .parentRule = " + theRule.style.parentRule
                 + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
-                + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));              
-              /*
+                + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));      
               else
                 for (let k = 0; k < st.length; k++) {  //iterate rules!
                   try {

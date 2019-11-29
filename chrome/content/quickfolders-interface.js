@@ -1525,7 +1525,8 @@ QuickFolders.Interface = {
 			if (!prefs.isDebugOption('events.keyboard')) return;
       util.logDebugOptional("events.keyboard", 
 				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
-			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n");
+			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n" +
+        "keyCode = " + e.keyCode);
 		}
     const QI = QuickFolders.Interface,
 					util = QuickFolders.Util,
@@ -1655,13 +1656,21 @@ QuickFolders.Interface = {
     
     if (tabmode == 'folder' || tabmode == '3pane') { // only allow these shortcuts on the 3pane window!
       if (!isCtrl && isAlt && (dir != 'up') && prefs.isUseNavigateShortcuts) {
+        // Alt + Left
+        if (e.keyCode == 38) { // ALT + up
+          this.goUpFolder();
+          isHandled = true;
+        }
+        
         if (e.keyCode == 37) { // ALT + left
-          this.goPreviousQuickFolder();
+          if (!this.goPreviousQuickFolder())
+            this.goPreviousSiblingFolder();
           isHandled = true;
         }    
 
         if (e.keyCode == 39)  { // ALT + right
-          this.goNextQuickFolder();
+          if (!this.goNextQuickFolder())
+            this.goNextSiblingFolder();
           isHandled = true;
         }
 				
@@ -1689,6 +1698,7 @@ QuickFolders.Interface = {
 							else {
 								if (btn.hasContextListener) {
 									let event = document.createEvent('mouseevent');
+                  event.QFtype="NavDown"; // use this to signal popup menu to focus on first subfolder
 									event.initEvent('contextmenu', true, true);
 									btn.dispatchEvent(event);
 								}
@@ -1924,6 +1934,24 @@ QuickFolders.Interface = {
 			else
 				p.showPopup(button, 0, verticalOffset,"context","bottomleft","topleft"); // deprecated method
 		}
+    
+    // Alt+Down highlight the first folder
+    if (evt.hasOwnProperty("QFtype")) {
+      // skip focus to first folder!
+      if (evt.QFtype == "NavDown" && p.childNodes) {
+        for (let m of p.childNodes) {
+          if (m.getAttribute("tag") == "sub") {
+            /*
+            setTimeout( function() { 
+              // let bo = p.boxObject;
+              // how do we set the focus to this menuitem m?
+            }, 30);
+            */
+            break;
+          }
+        }
+      }
+    }
 		
 		// paint bucket pulls color on right-click
 		if (QI.PaintModeActive && button && button.parentNode.id == "QuickFolders-FoldersBox" ) {
@@ -2127,8 +2155,7 @@ QuickFolders.Interface = {
     if (!isMinimal) {
 			popupId = this.makePopupId(folder, buttonId); 
 			if (buttonId == 'QuickFoldersCurrentFolder') {
-				button.setAttribute('popupId', popupId);  // let's store popupId in the button!
-				//  toolbarbutton-menubutton-button
+				button.setAttribute('popupId', popupId);  
 			}
 
       button.setAttribute('context',''); // overwrites the parent context menu
@@ -2137,8 +2164,11 @@ QuickFolders.Interface = {
 			if (!button.hasContextListener) {
 				// 
 				button.addEventListener("contextmenu", 
-					function(event) { 
-						QI.showPopup(button,popupId,event); 
+					function(event) {
+            // there is a problem with the closure on popupId in current folder button,
+            // which could lead to it showing previous folders' menus
+            let pId = button.getAttribute('popupId') || popupId;
+						QI.showPopup(button, pId, event); 
 						// only hstop handling event when popup is shown!
 						event.preventDefault();
 						event.stopPropagation();
@@ -6459,6 +6489,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+  // return true if the next tab was successfully selected.
 	goNextQuickFolder: function goNextQuickFolder() {
 		let aFolder = QuickFolders.Util.CurrentFolder,
 		    found = false,
@@ -6474,15 +6505,19 @@ QuickFolders.Interface = {
 			if (found) {
 				// select the QuickFolder
 				QuickFolders_MySelectFolder(folderEntry.uri);
-				return;
+				return true;
 			}
 			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false))
 				found=true;
 		}
-		if (found)
+		if (found) {
 			QuickFolders_MySelectFolder(firstOne.uri);
+      return true;
+    }
+    return false;
 	} ,
 
+  // return true if the previous tab was successfully selected.
 	goPreviousQuickFolder: function goPreviousQuickFolder() {
 		let aFolder = QuickFolders.Util.CurrentFolder,
 		    found = false,
@@ -6498,13 +6533,16 @@ QuickFolders.Interface = {
 			if (found) {
 				// select the QuickFolder
 				QuickFolders_MySelectFolder(folderEntry.uri);
-				return;
+				return true;
 			}
 			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false))
 				found=true;
 		}
-		if (found)
+		if (found) {
 			QuickFolders_MySelectFolder(lastOne.uri);
+      return true;
+    }
+    return false;
 	} ,
 
 	goPreviousSiblingFolder: function goPreviousSiblingFolder() {

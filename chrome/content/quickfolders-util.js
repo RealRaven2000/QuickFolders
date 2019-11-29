@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.17.3", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.17.4", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -1983,6 +1983,8 @@ QuickFolders.Util.FirstRun = {
 				if ((pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
 					  ||
 					  (pureVersion.indexOf('4.9.') == 0 && prev.indexOf("4.9") == 0)
+            ||
+            (pureVersion.indexOf('4.17.4') == 0 && prev.indexOf("4.17.3") == 0)
 					  )
         {
 					suppressVersionScreen = true;

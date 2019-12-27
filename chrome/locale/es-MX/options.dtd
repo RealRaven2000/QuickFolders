@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Recibir mensajes (Cuentas de correo)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Recibir mensajes (Cuentas de Noticias)">
 <!ENTITY qf.checkbox.menus.markAllRead "Marca la carpeta como leída">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Marca la carpeta como leída (recursiva)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Eliminar la basura">
 <!ENTITY qf.checkbox.menus.emptyTrash "Eliminar la basura">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico asociada a esta licencia [{1}] no está ligada a ninguna de sus cuentas de correo. Póngase en contacto conmigo desde la pestaña de Soporte para obtener ayuda.">
 <!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo electrónico cifrada no corresponde a la legible.">
 <!ENTITY qf.premiumConfig "Opciones Premium">
-<!ENTITY qf.checkbox.quickJump "quickJump - Carpetas con acceso directo: Shift +">
+<!ENTITY qf.checkbox.shift "Mayús">
+<!ENTITY qf.checkbox.quickJump "quickJump - Carpetas con acceso directo:">
 <!ENTITY qf.checkbox.quickJump.tip "Acceso directo para hacer clic en el botón quickJump para una navegación más rápida en cualquier lugar vía entrada de nombre.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Mover correo a cualquier carpeta con acceso directo: Mayús +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Mover correo a cualquier carpeta con acceso directo:">
 <!ENTITY qf.checkbox.quickMove.tip "Acceso directo para arrastrar correos al botón QuickMove para archivar más rápido a cualquier carpeta vía entrada de nombre.">
-<!ENTITY qf.checkbox.quickCopy "Para copiar correos a cualquier carpeta usar el atajo MAYUS+ (botón copia rápida)">
+<!ENTITY qf.checkbox.quickCopy "Para copiar correos a cualquier carpeta usar el atajo (botón copia rápida)">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón de copia rápida para un copiado más rápido a cualquier carpeta mediante ingreso de nombre.">
 <!ENTITY qf.checkbox.quickmove.autofill "Ejecutada instrucción de insertar última carpeta">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "La última carpeta utilizada exitosamente será insertada. Presione INTRO para usarla, o implemente reescriba para otros destinos.">

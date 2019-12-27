@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Pobierz wiadomości (w menu kont)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Pobierz wiadomości (w menu grup dysk.)">
 <!ENTITY qf.checkbox.menus.markAllRead "Oznacz folder jako przeczytany">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Oznacz folder jako przeczytany (rekurencyjny)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Opróżnij niechciane">
 <!ENTITY qf.checkbox.menus.emptyTrash "Opróżnij kosz">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Przeciągnij do nowego subfolderu">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY qf.premiumConfig "Funkcje premium">
-<!ENTITY qf.checkbox.quickJump "quickJump - Wyszukuj foldery za pomocą skrótu: Shift+">
+<!ENTITY qf.checkbox.shift "Shift">
+<!ENTITY qf.checkbox.quickJump "quickJump - Wyszukuj foldery za pomocą skrótu:">
 <!ENTITY qf.checkbox.quickJump.tip "Skrót do przycisku quickJump do szybszej nawigacji do dowolnego miejsca za pomocą wprowadzonej nazwy.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Przenoś wiadomość do dowolnego folderu za pomocą skrótu Shift+">
+<!ENTITY qf.checkbox.quickMove "quickMove - Przenoś wiadomość do dowolnego folderu za pomocą skrótu">
 <!ENTITY qf.checkbox.quickMove.tip "Skrót do przycisku quickMove do szybszego przenoszenia do dowolnego folderu za pomocą wprowadzonej nazwy.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Kopiuj wiadomość do dowolnego folderu za pomocą skrótu Shift+">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Kopiuj wiadomość do dowolnego folderu za pomocą skrótu">
 <!ENTITY qf.checkbox.quickCopy.tip "Skrót klawiszowy do przeciągania wiadomości do przycisku quickCopy w celu szybkiego kopiowania do dowolnego folderu.">
 <!ENTITY qf.checkbox.quickmove.autofill "Wstaw ostatnio wykonaną nazwę folderu">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Zostanie wstawiony ostatni pomyślnie użyty folder. Naciśnij Enter, aby go użyć lub po prostu wpisz inne lokalizacje.">

@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Receber mensagens (contas de email)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Receber mensagens (contas de notícias)">
 <!ENTITY qf.checkbox.menus.markAllRead "Marcar pasta como lida">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Marcar pasta como lida (recursiva)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Esvaziar lixeira">
 <!ENTITY qf.checkbox.menus.emptyTrash "Esvaziar lixeira">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastar para nova subpasta">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "O endereço de email associado à chave de licença [{1}] atualmente não está listado em nenhuma de suas contas de email. Entre em contato pela aba de suporte para assistência.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Endereço de email criptografado não corresponde a um legível.">
 <!ENTITY qf.premiumConfig "Funcionalidades Premium">
-<!ENTITY qf.checkbox.quickJump "quickJump - Vai para qualquer pasta com atalho: Shift +">
+<!ENTITY qf.checkbox.shift "Maiusc">
+<!ENTITY qf.checkbox.quickJump "quickJump - Vai para qualquer pasta com atalho:">
 <!ENTITY qf.checkbox.quickJump.tip "Atalho para clique no botão quickJump para navegação mais rápida em qualquer lugar através de entrada de nome.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Move email para qualquer pasta com atalho: SHIFT +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Move email para qualquer pasta com atalho:">
 <!ENTITY qf.checkbox.quickMove.tip "Atalho para arrastar emails para o botão quickMove para arquivamento mais rápido para qualquer pasta via campo de nome.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Copia email para qualquer pasta com atalho: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Copia email para qualquer pasta com atalho:">
 <!ENTITY qf.checkbox.quickCopy.tip "Atalho para arrastar emails para o botão quickCopy para cópia mais rápida para qualquer pasta via campo de nome.">
 <!ENTITY qf.checkbox.quickmove.autofill "Executada inserção do nome da pasta mais recente">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "A pasta mais recente usada com sucesso será inserida. Tecle Enter para usá-la, ou simplesmente digite sobre ela para outros destinos.">

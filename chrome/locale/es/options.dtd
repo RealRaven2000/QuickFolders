@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Obtener mensajes (cuentas de correo)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Obtener mensajes (cuentas de grupos de noticias)">
 <!ENTITY qf.checkbox.menus.markAllRead "Marcar carpeta como leída">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Marcar carpeta como leída (recursiva)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Vaciar Desechados">
 <!ENTITY qf.checkbox.menus.emptyTrash "Vaciar Papelera">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Arrastrar a una nueva subcarpeta">
@@ -95,7 +96,6 @@
 <!ENTITY qf.checkbox.debug.tooltip "Haga clic secundario en esta casilla para opciones de depuración avanzadas">
 <!ENTITY qf.label.initdelay "[ms] de retardo de inicialización {1000 es el estándar}:">
 <!ENTITY qf.copyfolders "Copiar pestañas">
-<!-- please review this string (formerly called qf.label.folders.tooltip) as I made it clearer: -->
 <!ENTITY qf.copyfolders.tooltip "Copiar la configuración de Pestañas de QuickFolders al portapapeles">
 <!ENTITY qf.pastefolders.tooltip "Borrar todas las carpetas de QuickFolders y leer la nueva configuración del portapapeles">
 <!ENTITY qf.label.appearance "Apariencia">
@@ -171,11 +171,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "La dirección de correo electrónico ligada a la clave de licencia [{1}] actualmente no está listada en ninguna de sus cuentas de correo. Por favor, contacte conmigo desde la pestaña de Soporte para asistencia.">
 <!ENTITY qf.licenseValidation.notMatchedMail "La dirección de correo cifrada no coincide con la legible.">
 <!ENTITY qf.premiumConfig "Características premium">
-<!ENTITY qf.checkbox.quickJump "quickJump - Ir cualquier carpeta con el atajo: Mayús +">
+<!ENTITY qf.checkbox.shift "Mayús">
+<!ENTITY qf.checkbox.quickJump "quickJump - Ir cualquier carpeta con el atajo: ">
 <!ENTITY qf.checkbox.quickJump.tip "Atajo para pulsar el botón de quickJump para lograr la navegación más rápida en cualquier parte mediante la entrada la introducción del nombre.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Mover el correo a cualquier carpeta con el atajo: Mayús +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Mover el correo a cualquier carpeta con el atajo: ">
 <!ENTITY qf.checkbox.quickMove.tip "Atajo para arrastrar correos al botón quickMove para realizar para el rellenado más rápido hacia cualquier carpeta de correo mediante la introducción de su nombre.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Copia correo a cualquier carpeta con el atajo Mayús +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Copia correo a cualquier carpeta con el atajo ">
 <!ENTITY qf.checkbox.quickCopy.tip "Atajo para arrastrar correos al botón quickCopy para un copiado más rápido a cualquier carpeta mediante la instroducción del nombre.">
 <!ENTITY qf.checkbox.quickmove.autofill "Insertar el último nombre de carpeta ejecutado">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Se insertará la última carpeta utilizada con éxito. Presiona Enter para usarlo, o simplemente escribe sobre él para otros destinos.">
@@ -200,7 +201,6 @@
 <!ENTITY qf.checkbox.readingList "Lista de lectura">
 <!ENTITY qf.checkbox.readingList.tooltip "Una lista para correos que se debe leer más tarde. Arrastre sus correos importantes en este botón.">
 <!ENTITY qf.label.donate "Donar">
-<!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Nota: Si debajo sólo ve un botón [Cerrar], las configuraciones de color podrían no funcionar - como apaño, pruebe a hacer clic secundario en un área vacía de la barra de QuickFolders para seleccionar Opciones... esto forzará que se muestre el botón [Aceptar], que debería guardar los colores.">
 <!ENTITY qf.checkbox.usePalette "Usar paleta">
 <!ENTITY qf.options.theme.pastelColors "Colores pastel">

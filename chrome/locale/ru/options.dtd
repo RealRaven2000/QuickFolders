@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Получить сообщения (почта)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Получить сообщения (новости)">
 <!ENTITY qf.checkbox.menus.markAllRead "Отметить папку как прочитанную">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Отметить папку как прочитанную (рекурсивно)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Удалить спам">
 <!ENTITY qf.checkbox.menus.emptyTrash "Очистить «Удалённые»">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Перетащить, создавая под-папку">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY qf.premiumConfig "Премиальные функции">
-<!ENTITY qf.checkbox.quickJump "quickJump - переход в любую папку по нажатию Shift +">
+<!ENTITY qf.checkbox.shift "Shift">
+<!ENTITY qf.checkbox.quickJump "quickJump - переход в любую папку по нажатию">
 <!ENTITY qf.checkbox.quickJump.tip "Сочетания клавиш кнопки quickJump для быстрого перехода к папке по имени.">
-<!ENTITY qf.checkbox.quickMove "quickMove - перемещение сообщений в любую папку по нажатию Shift +">
+<!ENTITY qf.checkbox.quickMove "quickMove - перемещение сообщений в любую папку по нажатию">
 <!ENTITY qf.checkbox.quickMove.tip "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Копирование сообщений в любую папку по нажатию Shift +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Копирование сообщений в любую папку по нажатию">
 <!ENTITY qf.checkbox.quickCopy.tip "Сочетания клавиш кнопки quickCopy для быстрого копирования сообщений в папку по имени.">
 <!ENTITY qf.checkbox.quickmove.autofill "Вставить имя последней папки">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Будет вставлено имя последней успешно использованной папки. Нажмите Enter, чтобы использовать его, или введите имя другой папки.">

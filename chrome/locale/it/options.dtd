@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Scarica messaggi (Account di posta)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Scarica messaggi (Account dei gruppi di discussione)">
 <!ENTITY qf.checkbox.menus.markAllRead "Segna la cartella come già letta">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Segna la cartella come già letta (ricorsiva)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Svuota posta indesiderata">
 <!ENTITY qf.checkbox.menus.emptyTrash "Svuota cestino">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Trascina nella nuova sottocartella">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY qf.licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY qf.premiumConfig "Caratteristiche Premium">
-<!ENTITY qf.checkbox.quickJump "quickJump - spostamento in qualsiasi cartella mediante la scorciatoia MAIUSC +">
+<!ENTITY qf.checkbox.shift "Masiusc">
+<!ENTITY qf.checkbox.quickJump "quickJump - spostamento in qualsiasi cartella mediante la scorciatoia ">
 <!ENTITY qf.checkbox.quickJump.tip "Scorciatoia per attivare il pulsante quickJump che consente di spostarsi ovunque alla massima velocità in base al nome">
-<!ENTITY qf.checkbox.quickMove "quickMove - spostamento dei messaggi di posta in qualsiasi cartella mediante la scorciatoia MAIUSC +">
+<!ENTITY qf.checkbox.quickMove "quickMove - spostamento dei messaggi di posta in qualsiasi cartella mediante la scorciatoia ">
 <!ENTITY qf.checkbox.quickMove.tip "Scorciatoia per trascinare i messaggi di posta sul pulsante quickMove che consente una loro archiviazione in qualsiasi cartella alla massima velocità in base al nome">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - copia dei messaggi di posta in qualsiasi cartella mediante la scorciatoia MAIUSC +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - copia dei messaggi di posta in qualsiasi cartella mediante la scorciatoia ">
 <!ENTITY qf.checkbox.quickCopy.tip "Scorciatoia per trascinare i messaggi di posta sul pulsante quickCopy che consente una loro copia in qualsiasi cartella alla massima velocità in base al nome">
 <!ENTITY qf.checkbox.quickmove.autofill "Inserisce il nome dell'ultima cartella usata">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Verrà inserita l'ultima cartella usata con successo. Premere il tasto Invio per usarla o sovrascrivere il nome per usare altre cartelle">

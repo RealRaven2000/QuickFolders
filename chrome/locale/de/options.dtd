@@ -40,7 +40,6 @@
 <!ENTITY qf.goNextUnread.auto "Ins nächste Verzeichnis springen ohne zu fragen (empfohlen)">
 <!ENTITY qf.goNextUnread.prompt "Vor Verzeichniswechsel fragen">
 <!ENTITY qf.goNextUnread.none "Nichts tun, wenn im aktuellen Verzeichnis keine ungelesene Mail übrig ist">
-
 <!ENTITY qf.checkbox.showQuickMove "quickMove Schaltfläche">
 <!ENTITY qf.checkbox.showQuickMove.tooltip "Diese Schaltfläche kann benutzt werden um Emails in einen beliebiges Verzeichnis zu ziehen; es können mails von verschiedenen Verzeichnissen angesammelt werden. Wenn die Liste komplett ist, einfach im Suchfeld den Verzeichnisnamen eingeben.">
 <!ENTITY qf.checkbox.tabMenuIcon "Tableisten Menü Icon">
@@ -65,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Nachrichten abrufen (Mailkonto)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Nachrichten abrufen (Newskonto)">
 <!ENTITY qf.checkbox.menus.markAllRead "Ordner as gelesen markieren">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Ordner as gelesen markieren (rekursiv)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Junk löschen">
 <!ENTITY qf.checkbox.menus.emptyTrash "Papierkorb Leeren">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag+Drop in Neues Verzeichnis">
@@ -171,11 +171,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY qf.premiumConfig "Premium Funktionen">
-<!ENTITY qf.checkbox.quickJump "quickJump - Springe in beliebiges Verzeichnis mit UMSCHALT +">
+<!ENTITY qf.checkbox.shift "Umschalt">
+<!ENTITY qf.checkbox.quickJump "quickJump - Springe in beliebiges Verzeichnis mit ">
 <!ENTITY qf.checkbox.quickJump.tip "Schnelltaste für den Sprung in ein beliebiges Verzeichnis per Namenseingabe.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Verschiebe Mails in beliebiges Ziel mit UMSCHALT +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Verschiebe Mails in beliebiges Ziel mit ">
 <!ENTITY qf.checkbox.quickMove.tip "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Kopiere Mails in beliebiges Ziel mit UMSCHALT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Kopiere Mails in beliebiges Ziel mit ">
 <!ENTITY qf.checkbox.quickCopy.tip "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu kopieren.">
 <!ENTITY qf.checkbox.quickmove.autofill "Letztes benutztes Verzeichnis einfügen">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "Das zuletzt angesprungene Verzeichnis wird eingefügt. Drücken Sie [Return] zum bestätigen, oder überschreiben Sie ihn für andere Zielverzeichnisse.">

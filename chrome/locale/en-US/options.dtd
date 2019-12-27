@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "Get Messages (Mail Accounts)">
 <!ENTITY qf.checkbox.menus.getMailForNews "Get Messages (News Accounts)">
 <!ENTITY qf.checkbox.menus.markAllRead "Mark Folder Read">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "Mark Folder Read (recursive)">
 <!ENTITY qf.checkbox.menus.emptyJunk "Empty Junk">
 <!ENTITY qf.checkbox.menus.emptyTrash "Empty Trash">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "Drag to new Subfolder">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY qf.premiumConfig "Premium Features">
-<!ENTITY qf.checkbox.quickJump "quickJump - Go to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.shift "Shift">
+<!ENTITY qf.checkbox.quickJump "quickJump - Go to any folder with Shortcut:">
 <!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
-<!ENTITY qf.checkbox.quickMove "quickMove - Move mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickMove "quickMove - Move mail to any folder with Shortcut:">
 <!ENTITY qf.checkbox.quickMove.tip "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry.">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - Copy mail to any folder with Shortcut: SHIFT +">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - Copy mail to any folder with Shortcut:">
 <!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
 <!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">

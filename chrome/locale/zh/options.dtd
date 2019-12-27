@@ -64,6 +64,7 @@
 <!ENTITY qf.checkbox.menus.getMailForInbox "取得信件（信箱帳號）">
 <!ENTITY qf.checkbox.menus.getMailForNews "取得訊息（新聞帳號）">
 <!ENTITY qf.checkbox.menus.markAllRead "標記資料夾為已讀取">
+<!ENTITY qf.checkbox.menus.markAllReadRecursive "標記資料夾為已讀取（递归）">
 <!ENTITY qf.checkbox.menus.emptyJunk "清空垃圾郵件">
 <!ENTITY qf.checkbox.menus.emptyTrash "清空垃圾桶">
 <!ENTITY qf.checkbox.menus.dragToNewFolder "拖曳到新的子資料夾">
@@ -171,11 +172,12 @@
 <!ENTITY qf.licenseValidation.invalidMail "這個跟購買證明[{1}]連結的E-mail信箱，並沒有列於任何您現在的信箱帳號中。請從支援分頁內容中跟我聯絡來尋求幫助。">
 <!ENTITY qf.licenseValidation.notMatchedMail "加密的E-mail位址無法符合辨識。">
 <!ENTITY qf.premiumConfig "特殊功能">
-<!ENTITY qf.checkbox.quickJump "quickJump - 使用快捷鍵來跳到任何資料夾：SHIFT +">
+<!ENTITY qf.checkbox.shift "Shift">
+<!ENTITY qf.checkbox.quickJump "quickJump - 使用快捷鍵來跳到任何資料夾：">
 <!ENTITY qf.checkbox.quickJump.tip "透過點選資料夾名稱的quickJump按鈕捷徑快速地來瀏覽任何資料夾">
-<!ENTITY qf.checkbox.quickMove "quickMove - 使用快捷鍵來將信件移動到任何資料夾：SHIFT +">
+<!ENTITY qf.checkbox.quickMove "quickMove - 使用快捷鍵來將信件移動到任何資料夾：">
 <!ENTITY qf.checkbox.quickMove.tip "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾">
-<!ENTITY qf.checkbox.quickCopy "quickCopy - 使用快速鍵 SHIFT + 複製信件到任何的資料夾">
+<!ENTITY qf.checkbox.quickCopy "quickCopy - 使用快速鍵 複製信件到任何的資料夾">
 <!ENTITY qf.checkbox.quickCopy.tip "拖曳信件到quickCopy按鈕上，可快速地透過選擇信件夾名稱來複製。">
 <!ENTITY qf.checkbox.quickmove.autofill "插入最後執行資料夾名稱">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "將插入最後成功使用的資料夾。按Enter來使用，或簡單打字來選擇其他目的地。">

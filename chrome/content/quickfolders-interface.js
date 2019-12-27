@@ -1590,15 +1590,19 @@ QuickFolders.Interface = {
       let QuickMove = QuickFolders.quickMove;
       if (util.hasPremiumLicense(false)) {
 				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!='up',
+            isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!='up',
 				    theKeyPressed = (String.fromCharCode(e.charCode)).toLowerCase();
 				util.logDebugOptional("premium.quickJump", "hasPremiumLicense = true\n" +
 				  "quickJump Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
 				  "quickMove Shortcut = " + prefs.isQuickMoveShortcut + ", " + prefs.QuickMoveShortcutKey + "\n" +
 					"Key Pressed: [" + theKeyPressed + "]");
 					
-        /** SHIFT-J  Jump **/
-        if (isShiftOnly && prefs.isQuickJumpShortcut) {
-          if (theKeyPressed == prefs.QuickJumpShortcutKey.toLowerCase()) {
+        /** [SHIFT-]J  Jump to Folder **/
+        if ((isShiftOnly || isNoAccelerator) && prefs.isQuickJumpShortcut) {
+          let requireShift = prefs.isQuickJumpShift;
+          if (theKeyPressed == prefs.QuickJumpShortcutKey.toLowerCase()
+              && (isShiftOnly && requireShift || !isShiftOnly && !requireShift)
+              ) {
 						isShortcutMatched = true;
             logEvent(eventTarget);
             if (QuickMove.isActive && QuickMove.hasMails) {
@@ -1613,32 +1617,35 @@ QuickFolders.Interface = {
 				else
 					util.logDebugOptional("premium.quickJump","jump conditions not fullfilled");
         
-        /** SHIFT-M  Move **/
-        /** SHIFT-T  Copy **/
+        /** [SHIFT-]M  Move to Folder **/
+        /** [SHIFT-]T  Copy to Folder **/
         /** SHIFT-S  Skip Folder **/
-        if (isShiftOnly && !isHandled) {
+        if ((isShiftOnly || isNoAccelerator) && !isHandled) {
           let ismove = (theKeyPressed == prefs.QuickMoveShortcutKey.toLowerCase()),
               iscopy = (theKeyPressed == prefs.QuickCopyShortcutKey.toLowerCase());
           if (ismove && prefs.isQuickMoveShortcut
               ||
               iscopy && prefs.isQuickCopyShortcut) {
-						isShortcutMatched = true;
-            logEvent(eventTarget);
-            QuickMove.suspended = false;
-            // QuickFolders.Interface.findFolder(true);
-            if (tabmode == 'message') {
-              // first let's reset anything in the quickMove if we are in single message mode:
-              QuickMove.resetList();
-            }
-            let messageUris  = util.getSelectedMsgUris();
-            if (messageUris) {
-              let currentFolder = util.CurrentFolder;
-              while (messageUris.length) {
-                QuickMove.add(messageUris.pop(), currentFolder, iscopy);
+            let requireShift = (ismove && prefs.isQuickMoveShift) || (iscopy && prefs.isQuickCopyShift);
+						isShortcutMatched = (isShiftOnly && requireShift || !isShiftOnly && !requireShift);
+            if (isShortcutMatched) {
+              logEvent(eventTarget);
+              QuickMove.suspended = false;
+              // QuickFolders.Interface.findFolder(true);
+              if (tabmode == 'message') {
+                // first let's reset anything in the quickMove if we are in single message mode:
+                QuickMove.resetList();
               }
-              QuickMove.update();
+              let messageUris  = util.getSelectedMsgUris();
+              if (messageUris) {
+                let currentFolder = util.CurrentFolder;
+                while (messageUris.length) {
+                  QuickMove.add(messageUris.pop(), currentFolder, iscopy);
+                }
+                QuickMove.update();
+              }
+              isHandled = true;
             }
-            isHandled = true;
           }
 					else {
 						if (prefs.isSkipFolderShortcut && (theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase())) {
@@ -1930,9 +1937,9 @@ QuickFolders.Interface = {
 			// if (prefs.isDebugOption('popupmenus')) debugger;
 			var isContextMenu = true; // was true; test for [Bug 26575]
 			if (p.openPopup)
-				p.openPopup(button,'after_start', 0, verticalOffset, isContextMenu, false, evt);
+				p.openPopup(button, 'after_start', 0, verticalOffset, isContextMenu, false, evt);
 			else
-				p.showPopup(button, 0, verticalOffset,"context","bottomleft","topleft"); // deprecated method
+				p.showPopup(button, 0, verticalOffset, "context", "bottomleft", "topleft"); // deprecated method
 		}
     
     // Alt+Down highlight the first folder
@@ -2777,17 +2784,38 @@ QuickFolders.Interface = {
 		this.compactFolder(folder, command);
 	} ,
 
-	onMarkAllRead: function onMarkAllRead(element,evt) {
+	onMarkAllRead: function onMarkAllRead(element,evt,recursive) {
     let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
+    // check whether f has folder as parent
+    function hasAsParent(child, p) {
+      debugger;
+      if (!child.parent || !p) return false;
+      if (child.parent == p) return true;
+      if (p.isServer || !p.parent) return false;
+      return hasAsParent(child, p.parent);
+    }
+    
     evt.stopPropagation();
     util.logDebugOptional("interface", "QuickFolders.Interface.onMarkAllRead()");
 		try {
 			let f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-			if (util.Application == 'Postbox')
-				f.markAllMessagesRead();
-			else
-				f.markAllMessagesRead(msgWindow);
+      if (util.Application == 'Postbox')
+        f.markAllMessagesRead();
+      else {
+        f.markAllMessagesRead(msgWindow);
+        if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
+          // iterate all folders and mark all children as read:
+          for (let folder of util.allFoldersIterator(false)) {
+            // check unread
+            if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
+              setTimeout(
+                function() { folder.markAllMessagesRead(msgWindow); }
+              )
+            }
+          }
+        }
+      }
 		}
 		catch(e) {
 			util.logToConsole("QuickFolders.Interface.onMarkAllRead " + e);
@@ -3375,14 +3403,21 @@ QuickFolders.Interface = {
       // MarkAllRead (always on top)
       if (!(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
         && 
-        !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK)
-        &&
-        prefs.getBoolPref("folderMenu.markAllRead"))
-        // && folder.getNumUnread(false)>0
+        !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK))
       {
-        menuitem = this.createMenuItem_MarkAllRead((folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)==true);
-        menupopup.appendChild(menuitem);
-        topShortCuts ++ ;
+        let isVirtual = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)==true;
+        if (prefs.getBoolPref("folderMenu.markAllRead")) // && folder.getNumUnread(false)>0
+        {
+          menuitem = this.createMenuItem_MarkAllRead(isVirtual);
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }
+        // add mark folder + subfolders as read. [issue 3] - need to check for subfolders being unread status!!
+        if (prefs.getBoolPref("folderMenu.markAllReadRecursive")) {
+          menuitem = this.createMenuItem_MarkAllRead(isVirtual, true);
+          menupopup.appendChild(menuitem);
+          topShortCuts ++ ;
+        }
       }
     }
 
@@ -3889,7 +3924,10 @@ QuickFolders.Interface = {
 						QI.onEmptyTrash(menuitem);
 					  break;
 					case "folderPaneContext-markMailFolderAllRead":
-					  QI.onMarkAllRead(menuitem, evt)
+					  QI.onMarkAllRead(menuitem, evt);
+					  break;
+					case "folderPaneContext-markMailFolderAllReadRecursive":
+					  QI.onMarkAllRead(menuitem, evt, true);
 					  break;
 					case "deleteJunk":
 						QI.onDeleteJunk(menuitem);
@@ -4223,19 +4261,26 @@ QuickFolders.Interface = {
 		return menuitem;
 	} ,
 
-	createMenuItem_MarkAllRead: function createMenuItem_MarkAllRead(disabled) {
+	createMenuItem_MarkAllRead: function createMenuItem_MarkAllRead(disabled, recursive = false) {
 		const QI = QuickFolders.Interface,
-				  id = "folderPaneContext-markMailFolderAllRead";
-		let menuitem = this.createIconicElement('menuitem');
+				  id = recursive ? "folderPaneContext-markMailFolderAllReadRecursive" : "folderPaneContext-markMailFolderAllRead";
+    let menuitem = this.createIconicElement('menuitem');
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label',this.getUIstring("qfMarkAllRead","Mark Folder Read"));
-		menuitem.setAttribute('accesskey',this.getUIstring("qfMarkAllReadAccess","M"));
-		if (QI.isOncommandAttributes)
-			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onMarkAllRead(this, event);");
+		menuitem.setAttribute('label',
+      recursive ? 
+        this.getUIstring("qfMarkAllReadRecursive","Mark folder + subfolders as Read") : 
+        this.getUIstring("qfMarkAllRead","Mark Folder Read")
+    );
+    if (!recursive)
+      menuitem.setAttribute('accesskey',this.getUIstring("qfMarkAllReadAccess","M"));
+		if (QI.isOncommandAttributes) {
+      let t = recursive ? "true" : "false";
+			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onMarkAllRead(this, event, "+ t +");");
+    }
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
 			function(event) { 
 				if (!QI.checkIsDuplicateEvent({id:id}))
-					QI.onMarkAllRead(menuitem, event); 
+					QI.onMarkAllRead(menuitem, event, recursive); 
 				}, false); 
 		if (disabled)
 			menuitem.setAttribute("disabled", true);

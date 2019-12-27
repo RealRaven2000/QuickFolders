@@ -153,9 +153,13 @@ QuickFolders.Preferences = {
 	get isQuickJumpShortcut() {
 		return this.getBoolPref("quickJump.useHotkey");
 	} ,
-	
+  
 	get QuickJumpShortcutKey() {
 		return this.getStringPref("quickJump.Hotkey");
+	} ,
+  
+  get isQuickJumpShift() {
+		return this.getBoolPref("quickJump.Hotkey.Shift");
 	} ,
 
 	get isQuickMoveShortcut() {
@@ -166,6 +170,11 @@ QuickFolders.Preferences = {
 		return this.getStringPref("quickMove.Hotkey");
 	} ,
   
+  get isQuickMoveShift() {
+		return this.getBoolPref("quickMove.Hotkey.Shift");
+	} ,
+  
+  
 	get isQuickCopyShortcut() {
 		return this.getBoolPref("quickCopy.useHotkey");
 	} ,
@@ -173,6 +182,12 @@ QuickFolders.Preferences = {
 	get QuickCopyShortcutKey() {
 		return this.getStringPref("quickCopy.Hotkey");
 	} ,
+  
+  get isQuickCopyShift() {
+		return this.getBoolPref("quickCopy.Hotkey.Shift");
+	} ,
+  
+  
 	
 	get isSkipFolderShortcut() {
 		return this.getBoolPref("skipFolder.useHotkey");
@@ -182,7 +197,6 @@ QuickFolders.Preferences = {
 		return this.getStringPref("skipFolder.Hotkey");
 	} ,
 	
-
 	get isUseKeyboardShortcutsCTRL() {
 		return this.getBoolPref("useKeyboardShortcutCTRL");
 	} ,
@@ -457,6 +471,8 @@ QuickFolders.Preferences = {
 		return this.service.setBoolPref("extensions.quickfolders." + p, v);
 	},
 	
+  // reading prefs across extensions will be forbidden, check:
+  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal
 	getFiltersBoolPref: function getFiltersBoolPref(p, defaultV) {
 	  let ans;
 	  try {

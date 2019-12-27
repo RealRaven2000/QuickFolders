@@ -276,6 +276,7 @@
 						<preference id="qfpa-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
 						<preference id="qfpa-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool" />
 						<preference id="qfpa-FolderMenu-markAllRead" name="extensions.quickfolders.folderMenu.markAllRead" type="bool" />
+						<preference id="qfpa-FolderMenu-markAllReadRecursive" name="extensions.quickfolders.folderMenu.markAllReadRecursive" type="bool" />
 						<preference id="qfpa-FolderMenu-emptyJunk" name="extensions.quickfolders.folderMenu.emptyJunk" type="bool" />
 						<preference id="qfpa-FolderMenu-emptyTrash" name="extensions.quickfolders.folderMenu.emptyTrash" type="bool" />
 						<preference id="qfpa-FolderMenu-newFolder" name="extensions.quickfolders.folderMenu.dragToNew" type="bool" />
@@ -368,14 +369,13 @@
 									<checkbox id="qfGetMail"
 														label="&qf.checkbox.menus.getMailForNews;"
 														preference="qfpa-FolderMenu-getMailForNews" />
-									<checkbox id="qfGetMail"
-														label="&qf.checkbox.menus.markAllRead;"
+									<checkbox label="&qf.checkbox.menus.markAllRead;"
 														preference="qfpa-FolderMenu-markAllRead" />
-									<checkbox id="qfGetMail"
-														label="&qf.checkbox.menus.emptyJunk;"
+									<checkbox label="&qf.checkbox.menus.markAllReadRecursive;"
+														preference="qfpa-FolderMenu-markAllReadRecursive" />
+									<checkbox label="&qf.checkbox.menus.emptyJunk;"
 														preference="qfpa-FolderMenu-emptyJunk" />
-									<checkbox id="qfGetMail"
-														label="&qf.checkbox.menus.emptyTrash;"
+									<checkbox label="&qf.checkbox.menus.emptyTrash;"
 														preference="qfpa-FolderMenu-emptyTrash" />
 									<checkbox id="qfNewFolder"
 														label="&qf.checkbox.menus.dragToNewFolder;"
@@ -1059,11 +1059,17 @@
 				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
 					<preferences id="prefsPremium">
 						<preference id="qfpp-QuickJumpShortcut" name="extensions.quickfolders.quickJump.useHotkey" type="bool"   instantApply="true"/>
+            <preference id="qfpp-QuickJumpShortcutShift" name="extensions.quickfolders.quickJump.Hotkey.Shift" type="bool"   instantApply="true"/>
 						<preference id="qfpp-QuickJumpShortcutKey" name="extensions.quickfolders.quickJump.Hotkey" type="string" instantApply="true"/>
+            
 						<preference id="qfpp-QuickMoveShortcut" name="extensions.quickfolders.quickMove.useHotkey" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickMoveShortcutShift" name="extensions.quickfolders.quickMove.Hotkey.Shift" type="bool"   instantApply="true"/>
 						<preference id="qfpp-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" instantApply="true"/>
+            
 						<preference id="qfpp-QuickCopyShortcut" name="extensions.quickfolders.quickCopy.useHotkey" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickCopyShortcutShift" name="extensions.quickfolders.quickCopy.Hotkey.Shift" type="bool"   instantApply="true"/>
 						<preference id="qfpp-QuickCopyShortcutKey" name="extensions.quickfolders.quickCopy.Hotkey" type="string" instantApply="true"/>
+            
 						<preference id="qfpp-QuickMoveAutoFill" name="extensions.quickfolders.quickMove.autoFill" type="bool" />
 						<preference id="qfpp-skipFolderShortcut" name="extensions.quickfolders.skipFolder.useHotkey" type="bool" instantApply="true"/>
 						<preference id="qfpp-skipFolderShortcutKey" name="extensions.quickfolders.skipFolder.Hotkey" type="string" instantApply="true"/>
@@ -1130,6 +1136,8 @@
 														tooltiptext="&qf.checkbox.quickJump.tip;"
 														preference="qfpp-QuickJumpShortcut"
 														disabled="true" />
+                  <checkbox preference="qfpp-QuickJumpShortcutShift"
+                            label="&qf.checkbox.shift;+" />
 									<textbox id="qf-QuickJumpShortcut"
 													 preference="qfpp-QuickJumpShortcutKey"
 													 class="shortCutKey"
@@ -1145,6 +1153,8 @@
 														disabled="true" 
 														oncontextmenu="options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
 														/>
+                  <checkbox preference="qfpp-QuickMoveShortcutShift"
+                            label="&qf.checkbox.shift;+" />
 									<textbox id="qf-QuickMoveShortcut"
 													 preference="qfpp-QuickMoveShortcutKey"
 													 class="shortCutKey"
@@ -1157,6 +1167,8 @@
 														tooltiptext="&qf.checkbox.quickCopy.tip;"
 														preference="qfpp-QuickCopyShortcut"
 														disabled="true" />
+                  <checkbox preference="qfpp-QuickCopyShortcutShift"
+                            label="&qf.checkbox.shift;+" />
 									<textbox id="qf-QuickCopyShortcut"
 													 preference="qfpp-QuickCopyShortcutKey"
 													 class="shortCutKey"

@@ -899,7 +899,9 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 }
 
 /* [Bug 26570] only show mark folder read if it has unread items in it */
-toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead {
+toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead,
+toolbarbutton:not(.has-unread):not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive,
+toolbarbutton:not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive {
 	display: none;
 }
 

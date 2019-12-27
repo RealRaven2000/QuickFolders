@@ -359,15 +359,21 @@ END LICENSE BLOCK */
     ## [issue 16] Avoid showing current folder toolbar at bottom of screen in column view
        ideally it should be shown as vertical bar between thread pane and preview.
 
-  4.17.4 QuickFolders Pro - WIP
+  4.17.4 QuickFolders Pro - 29/11/2019
     ## Removed unnecessary error console warning from simplified setElementStyle() function
     ## Added Alt + Up as navigation shortcut to go to parent folder.
     ## Sometimes the current folder bar shows an incorrect subfolder menu (from a previously 
        visited folder) - fixed by forcing it to rebuild every time a differnt folder is visited.
 
+  4.17.5 QuickFolders Pro - WIP
+    ## [issue 18] Allow single-key keyboard shortcuts for Navigation
+    ## [issue 3] Mark messages READ in folder and all its subfolders tree "in one click"
+    
     
 	Future Work
 	===========
+  
+  4.18.* QuickFolders Pro - WIP
     
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"

@@ -65,7 +65,7 @@ QuickFolders.ChangeOrder = {
 		row.appendChild(folderLabel);
 
 		let buttonUp = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
-		buttonUp.className = "order-button-up"
+		buttonUp.className = "order-button-up";
 
 		buttonUp.setAttribute("label",this.upString);
 		buttonUp.linkedFolder = folder;
@@ -73,7 +73,7 @@ QuickFolders.ChangeOrder = {
 		row.appendChild(buttonUp);
 
 		let buttonDown = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
-		buttonDown.className = "order-button-down"
+		buttonDown.className = "order-button-down";
 		buttonDown.setAttribute("label",this.downString);
 		buttonDown.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");

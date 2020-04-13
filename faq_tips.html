@@ -104,14 +104,21 @@ To get started, click on [All] (to log errors, warnings and messages) then disab
 	<dt>Can QuickFolders open a new mail tab for me?</dt>
 	<dd>From version 1.8.8, you can hold down [CTRL] while clicking a QuickFolder tab, this will open the folder in a new tab. (Does not apply to TB 2).</dd>
 	<dt>Is there a debug mode?</dt>
-	<dd>There are several debug options that cause more information message in the
-they can be set in about:config - or by right clicking the "Debug" checkbox on the first Options page: The Debug checkbox must
-be checked for any of the other debug options to be effective.
-<br>
-<img class="screenshot" src="images/about-config-debug-2.png">
-<br>
-This will minimize the amount of reading / copying / pasting of error messages.
-As of version 1.8 the following debug "types"  are available: css, DragAndDrop, Events, Folders, Popup menus, mail Tabs.
+	<dd>There are numerous debug options that cause more information message in the javascript error console.
+  Error console can be shown using the shortcut Ctrl+Shift+J or via the Thunderbird <i>tools</i> menu 
+  under <i>Developer Tools</i> / <i>Error Console</i>. 
+  <br>
+  The additional debug options for QuickFolders can be set 
+  in about:config - or by right clicking the "Debug" checkbox on the QuickFolders Options <i>Advanced</i> tab: 
+  <br>
+  <img class="screenshot" src="images/debug-options-rightclick.png"/>
+  <br>
+  The Debug checkbox must be activated for any of the other debug options to be effective.
+  <br>
+  <img class="screenshot" src="images/about-config-debug-2.png">
+  <br> This will minimize the amount of reading / copying / pasting of error messages.
+     Do not activate all of them because you will be flooded with messages, if in doubt
+     you can contact me for suggestions for relevant ones for a specific problem.
 	</dd>
 	<dt>Can I contact you directly?</dt>
 	<dd>Yes, any feedback regarding QuickFolders is strongly encouraged - the easiest way is from the options / support dialog:<br><br>
@@ -119,17 +126,10 @@ As of version 1.8 the following debug "types"  are available: css, DragAndDrop, 
 	</dd>
 
 	<dt>I can see no colors on my Folder Tabs. Why is this?</dt>
-	<dd>In Options, on the "Pimp my Tabs" page, activate "Display Tabs as Flat style" and make sure not to select "Shell Style Tabs".
-Without this the QuickFolders are just displayed as ordinary toolbar buttons, which takes away a lot of their style-ability.
+	<dd>In Options, on the "Bling my Tabs!" page, activate the "Flat Style" theme and make sure not to select "Native Tabs".
+    Without this the QuickFolders are just displayed as ordinary toolbar buttons, which takes away a lot of their style-ability.
 	</dd>
 
-	<dt>Can I use other colors than the ones in the palette?</dt>
-	<dd>There is actually a plugin that allows you to pick from more colors; it is
-called <a href="https://addons.mozilla.org/thunderbird/addon/1693">rainbowpicker</a> and overwrites the default color picker. You can pick
-colors from a color area or enter Hex values<br>
-
-One that is compatible with TB2+TB3 can be found <a href=https://addons.mozilla.org/thunderbird/addon/1693>here</a>
-	</dd>
 	<dt>QuickFolders is great <emp>but</emp>... it looks <emp>ugly</emp>. How can I change that?</dt>
 	<dd>Scroll down to the <a href="#Tweaks">Layout Tweaks</a> section for some handy CSS and more UI teaking.</dd>
 

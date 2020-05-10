@@ -147,7 +147,7 @@ ul#version-history > li ul li {
 */
 
 #version-history li > h4:before {
-  content: url("ico/QF-Icon24.png");
+  content: url("../ico/QF-Icon24.png");
   margin-left: 0.5em;
   margin-right: 0.5em;
   margin-top: 0.5em;

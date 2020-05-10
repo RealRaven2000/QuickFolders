@@ -223,6 +223,47 @@
 			</li>
 			-->
       
+			<a name="4.18">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.18</a>
+				</h4>
+					<ul>
+						<li>
+              <p>
+                I am currently hiring somebody to migrate all Add-ons sites away from the free
+                host on mozdev.org, which will take some time. To keep having support sites, please
+                buy a license (the migration will cost around 1000$, currently I am discussing with
+                a web designer on how to do this as cheaply and efficiently as possible).
+              </p>
+              <p> 
+                I will also have to rewrite all mail Add-ons as web extensions, which is currently 
+                not yet possible as all necessary APIs to replace the deprecated tech has not been implemented.
+                As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+
+                but this will take a few weeks of work. If you are interested in using a version of 
+                QuickFolders that works with Thunderbird 78, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders">buy a license</a> to support the project.
+              </p>
+            </li>
+						<li> 
+              <p>
+               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> 
+                 Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name 
+                 contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics), 
+                 would be url encoded (Space = %20) and could lead to failure of moving the mail or duplicated folders
+                 or non-working QuickFolders tabs.
+              </p>
+              <p> This problem was nefly reported during the thunderbird 68.* release cycle so the fix may affect older
+                versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be
+                reverted by using the configuration setting:
+                <tt>extensions.quickfolders.newFolderCallback.encodeURI  = true</tt>
+              </p>
+            </li>
+						<li> New hidden setting <tt>extensions.quickfolders.toolbar.ordinalPosition</tt> can be used 
+                 to change the order of toolbars to push the QuickFolders bar further up / down in case other 
+                 3rd party toolbars are used.</li>
+					</ul>
+			</li>      
+      
 			<a name="4.17.5">&nbsp;</a>
 			<li>
 				<h4>

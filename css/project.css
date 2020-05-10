@@ -6,7 +6,7 @@ li > h4 {
 }
 
 .optionlist > li {
-	list-style-image: url('/images/checkbox.png') !important;
+	list-style-image: url('../images/checkbox.png') !important;
 	list-style-position: outside;
 	list-style-type: square;
 	margin-bottom: 10px;
@@ -29,7 +29,7 @@ li > h4 {
 #main-content ul {
   font-size: 9pt;
   list-style-type: square;
-  list-style-image: url('/images/square-orange-small.png');
+  list-style-image: url('../images/square-orange-small.png');
   list-style-position: inside;
   padding-left: 0;
   margin-left: 0;
@@ -90,12 +90,12 @@ h2 a {
 }
 
 h2:before {
-	content: url('/ico/QF16x16.png');
+	content: url('ico/QF16x16.png');
 	margin: 0.2em 0.5em 0em 0.2em;
 }
 
 h2.page-header:before {
-	content: url('/ico/quickfolders-Icon.png');
+	content: url('ico/quickfolders-Icon.png');
 	margin: 0.2em 0.5em 0em 0.2em;
 	vertical-align: top;
 }
@@ -134,7 +134,7 @@ h2.newsflash a {
 
 
 h3:before {
-	content: url('/ico/QF-Icon24.png');
+	content: url('ico/QF-Icon24.png');
 	margin: 0.2em 0.5em 0em 0em;
 	vertical-align: bottom;
 }
@@ -218,7 +218,7 @@ img.gallery {
 
 
 .mail_link a:before {
-	content: url('/images/mail-open-document.png');
+	content: url('../images/mail-open-document.png');
 	margin: 0.2em 0.3em 0em 0.1em;
 	vertical-align: top;
 }
@@ -400,8 +400,8 @@ table.QuickFoldersProRenew,
 .flashBox  {
 	background: rgba(250,250,250,0.6);
   border: 2px solid rgba(60,60,60,0.5);
-	border-radius: 10px;
-	box-shadow: 4px 4px 3px rgba(20,20,20,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0.5em 0.5em 10px rgba(0,0,0,0.7);
 	margin-left: 30px;
 	margin-bottom: 1.3em;
 	max-width: 800px;
@@ -425,7 +425,7 @@ h3.QuickFoldersFreeUser {
 
 .bargain,
 .psa {
-	background: rgba(0,0,0,0.9) !important;
+	background: #3A3D41 !important;
 	color: white !important;
 }
 

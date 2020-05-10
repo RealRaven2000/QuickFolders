@@ -1,4 +1,4 @@
-@import url("/css/myProjects.css") screen;
+@import url("css/myProjects.css") screen;
 
 .inline-donate {
 	display: inline-block;
@@ -57,7 +57,7 @@ ul.sublist {
 }
 ul.sublist li {
 	margin-left: 4em;
-	list-style: outside url("/images/triangle.png") square;
+	list-style: outside url("../images/triangle.png") square;
 }
 
 ul#version-history {
@@ -72,7 +72,7 @@ ul#version-history > li ul {
 }
 
 ul#version-history > li ul li {
-  list-style: square outside url('/images/square-orange-small.png');
+  list-style: square outside url('../images/square-orange-small.png');
   font-size: 11pt;
   padding-bottom: 0.4em;
   padding-top: 0.4em;
@@ -147,7 +147,7 @@ ul#version-history > li ul li {
 */
 
 #version-history li > h4:before {
-  content: url("/ico/QF-Icon24.png");
+  content: url("ico/QF-Icon24.png");
   margin-left: 0.5em;
   margin-right: 0.5em;
   margin-top: 0.5em;

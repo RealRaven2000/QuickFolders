@@ -238,50 +238,6 @@
 				<h4>
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.18</a>
 				</h4>
-					<ul>
-						<li class="psa">
-              <p>
-                I am currently paying somebody to migrate all my Add-on support sites away from the free
-                host on mozdev.org, which is going to close operation end of June. 
-                To keep having support sites and ongoing development, please 
-                <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a>
-                (the migration and improved design will cost around $1000, currently I am discussing 
-                with a web designer on how to do this as cheaply and efficiently as possible).
-              </p>
-              <p> 
-                I will also have to rewrite all mail Add-ons as web extensions, which is currently 
-                not yet possible as all necessary APIs to replace the deprecated tech has not been implemented.
-                As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+
-                but this will take a few weeks of work. If you are interested in using a version of 
-                QuickFolders that works with Thunderbird 78, 
-                <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> to support the project.
-              </p>
-            </li>
-						<li> 
-              <p>
-               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> 
-                 Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name 
-                 contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics), 
-                 would be url encoded (Space = %20) and could lead to failure of moving the mail or duplicated folders
-                 or non-working QuickFolders tabs.
-              </p>
-              <p> This problem was nefly reported during the thunderbird 68.* release cycle so the fix may affect older
-                versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be
-                reverted by using the configuration setting:
-                <tt>extensions.quickfolders.newFolderCallback.encodeURI  = true</tt>
-              </p>
-            </li>
-						<li> New hidden setting <tt>extensions.quickfolders.toolbar.ordinalPosition</tt> can be used 
-                 to change the order of toolbars to push the QuickFolders bar further up / down in case other 
-                 3rd party toolbars are used.</li>
-					</ul>
-			</li>      
-      
-			<a name="4.17.5">&nbsp;</a>
-			<li>
-				<h4>
-				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.17.5">Version 4.17.5 - 27/12/2019</a>
-				</h4>
         
 				<table class="QuickFoldersFreeUser bargain"> 
 					<tr>
@@ -289,8 +245,8 @@
 							<h3 class="shillBox">QUICKFOLDERS PRO - BLACK FRIDAY WEEK SALE</h3>
 <!--  -->							
            <p><span class="emphasis">Save 40%</span> on the regular price and support the QuickFolders project on 
-           <span class="emphasis">2020 new years week</span>
-           December 27th - extended to <span class="emphasis">January 12th</span> by popular demand. 
+           <span class="emphasis">Summer Fortnight</span>
+           <span class="emphasis">June 4th</span> to <span class="emphasis">June 17th</span>. 
            This is a great deal which will only be offered for
            this limited time period, to give you too a chance to support the QuickFolders Project.
 					 </p>
@@ -324,10 +280,9 @@
 					<tr>
 						<td style="vertical-align:top;" colspan="2">
 						  <p class="emphasis">If you can see this box then your QuickFolders Pro license has expired!</p>
-							<h3 class="shillBox">QUICKFOLDERS PRO - NEW YEAR SALE - RENEW FOR <u>33% OFF</u></h3>
+							<h3 class="shillBox">QUICKFOLDERS PRO - SUMMER SALE - RENEW FOR <u>33% OFF</u></h3>
 							<p>On popular demand, I have extended the Black Friday offer which reduces a third from the price 
-								 from <span class="emphasis">December 27th</span> 
-                 extended to <span class="emphasis">January 12th</span> by popular demand!
+								 from <span class="emphasis">June 4th</span> to <span class="emphasis">June 17th</span>.
  							   Renew or extend your license and pay 6.66$ instead of 10$ for your new QuickFolders Pro license.
 							</p> 
 						</td>
@@ -367,6 +322,52 @@
 						</td>
 					</tr>
 				</table>
+        
+					<ul>
+						<li class="psa">
+              <p>
+                I am currently paying somebody to migrate all my Add-on support sites away from the free
+                host on mozdev.org, which is going to close operation end of June. 
+                To keep having support sites and ongoing development, please 
+                <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a>
+                (the migration and improved design will cost around $1000, currently I am discussing 
+                with a web designer on how to do this as cheaply and efficiently as possible).
+              </p>
+              <p> 
+                I will also have to rewrite all mail Add-ons as web extensions, which is currently 
+                not yet possible as all necessary APIs to replace the deprecated tech has not been implemented.
+                As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+
+                but this will take a few weeks of work. If you are interested in using a version of 
+                QuickFolders that works with Thunderbird 78, 
+                <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> to support the project.
+              </p>
+            </li>
+						<li> 
+              <p>
+               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> 
+                 Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name 
+                 contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics), 
+                 would be url encoded (Space = <tt>%20</tt>) and could lead to failure of moving the mail or duplicated folders
+                 or non-working QuickFolders tabs.
+              </p>
+              <p> This problem was reported during the thunderbird 68.* release cycle so the fix may affect older
+                versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be
+                reverted by using the configuration setting:
+                <tt>extensions.quickfolders.newFolderCallback.encodeURI  = true</tt>
+              </p>
+            </li>
+						<li> New hidden setting <tt>extensions.quickfolders.toolbar.ordinalPosition</tt> can be used 
+                 to change the order of toolbars to push the QuickFolders bar further up / down in case other 
+                 3rd party toolbars are used.</li>
+					</ul>
+			</li>      
+      
+			<a name="4.17.5">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.17.5">Version 4.17.5 - 27/12/2019</a>
+				</h4>
+        
         
 					<ul>
             <li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/18">[issue 18]</a> 

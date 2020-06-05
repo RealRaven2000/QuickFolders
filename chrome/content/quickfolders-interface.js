@@ -6515,6 +6515,10 @@ QuickFolders.Interface = {
         let mT = parseInt(minToolbarHeight);
         styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar', 'min-height', mT.toString()+"px", false);
       }
+      
+      // main toolbar position
+      let ordinalGroup = prefs.getIntPref('toolbar.ordinalPosition') || 0;
+      styleEngine.setElementStyle(ss,'#QuickFolders-Toolbar', '-moz-box-ordinal-group', ordinalGroup.toString());
 
 			util.logDebugOptional ("css","updateUserStyles(): success");
 			return true;

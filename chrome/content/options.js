@@ -1493,11 +1493,11 @@ QuickFolders.Options = {
 			} );	
 	},
 	
-	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateFolders) {
+	showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI) {
     const Cc = Components.classes,
           Ci = Components.interfaces,
 					util = QuickFolders.Util;
-	  updateFolders = (typeof updateFolders != 'undefined') ? updateFolders : false;
+	  updateUI = (typeof updateUI != 'undefined') ? updateUI : false;
     
 	  util.logDebug('showAboutConfig(clickedElement: ' 
       + (clickedElement ? clickedElement.tagName : 'none') 
@@ -1525,7 +1525,7 @@ QuickFolders.Options = {
       else
         w = win.openDialog(uri, name, features);
 		}
-		if (updateFolders) {
+		if (updateUI) {
 		  // make sure QuickFolders UI is updated when about:config is closed.
 			w.addEventListener('unload', function(event) { QuickFolders.Interface.updateMainWindow(); });
 		}

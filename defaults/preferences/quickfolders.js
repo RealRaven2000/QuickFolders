@@ -53,6 +53,7 @@ pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
+pref("extensions.quickfolders.toolbar.ordinalPosition", 0);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
 pref("extensions.quickfolders.tooltips.parentFolder", false);
@@ -196,6 +197,7 @@ pref("extensions.quickfolders.dragToCreateFolder.imap", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap.delay", 400); // only relevant to Postbox
 pref("extensions.quickfolders.dragToCreateFolder.local", true);
 pref("extensions.quickfolders.dragToCreateFolder.menutop", false);
+pref("extensions.quickfolders.newFolderCallback.encodeURI",false);
 
 // Recent Folder Item
 pref("extensions.quickfolders.recentfolders.itemCount", 12);

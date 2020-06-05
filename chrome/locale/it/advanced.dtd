@@ -3,18 +3,18 @@
 <!ENTITY btnCategory.tooltip "Definisce le categorie della scheda">
 <!ENTITY grpComposer "Campi predefiniti del messaggio di posta elettronica">
 <!ENTITY fromAddress "Da:">
-<!ENTITY fromAddress.tooltip "Identità predefinita durante la composizione dei messaggi di posta elettronica">
+<!ENTITY fromAddress.tooltip "Quando si compongono messaggi di posta elettronica usa l'identità predefinita">
 <!ENTITY defaultAccountAddress.value "Identità predefinita dell'account">
 <!ENTITY toAddress "A:">
-<!ENTITY toAddress.tooltip "Destinatario predefinito durante la composizione di nuovi messaggi di posta elettronica">
+<!ENTITY toAddress.tooltip "Quando si compoongono nuovi messaggi di posta elettronica usa il destinatario predefinito">
 <!ENTITY chkComposerSubfolders "Si applica anche alle sottocartelle">
-<!ENTITY grpTabBehavior "Comportamento avanzato della scheda">
-<!ENTITY chkIgnoreUnread "Nasconde lo stato di 'Messaggio non letto'">
-<!ENTITY chkIgnoreUnread.tooltip "Anche se la cartella contiene messaggi non letti, non usare mai né il carattere grassetto, né qualsiasi numero">
-<!ENTITY chkIgnoreCounts "Nasconde il numero dei messaggi">
-<!ENTITY chkIgnoreCounts.tooltip "Non mostra mai il numero dei messaggi presenti">
-<!ENTITY chkHideFromQuickJump "Toglie da quickJump/quickMove">
-<!ENTITY chkHideFromQuickJump.tooltip "Toglie questa cartella e le relative sottocartelle da risultati di quickJump/quickMove">
+<!ENTITY grpTabBehavior "Scheda in modalità avanzata">
+<!ENTITY chkIgnoreUnread "Stato di 'Messaggio non letto' nascosto">
+<!ENTITY chkIgnoreUnread.tooltip "Anche se la cartella contiene messaggi non letti, non usa mai né il carattere grassetto, né qualsiasi numero">
+<!ENTITY chkIgnoreCounts "Numero di messaggi nascosto">
+<!ENTITY chkIgnoreCounts.tooltip "Il numero dei messaggi presenti non viene mai mostrato">
+<!ENTITY chkHideFromQuickJump "Esclusione da quickJump/quickMove">
+<!ENTITY chkHideFromQuickJump.tooltip "Esclude questa cartella e le relative sottocartelle da risultati di quickJump/quickMove">
 <!ENTITY chkSetMailsUnread "Segna i messaggi come 'Non letti'">
 <!ENTITY chkSetMailsUnread.tooltip "Se si spostano messaggi in questa cartella vengono segnati come 'Non letti'">
 <!ENTITY grpCustomCSS "CSS personalizzato">

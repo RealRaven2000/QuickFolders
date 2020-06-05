@@ -192,7 +192,9 @@
 								<checkbox	label="&qf.checkbox.autoHideToolbar;"
 													tooltiptext="&qf.checkbox.autoHideToolbar.tooltip;"
 													preference="qfpg-HideToolbarWhenNotNeeded"
-													instantApply="true" />
+													instantApply="true"
+                          oncontextmenu="options.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
+                          />
 							</vbox>
 						</html:fieldset>
 

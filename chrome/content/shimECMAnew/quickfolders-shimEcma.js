@@ -27,22 +27,31 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
           util = QuickFolders.Util,
 	        prefs = QuickFolders.Preferences,
 					isDebug = prefs.isDebugOption('getOrCreateFolder');
+    let folder = null;
     function logDebug(text) {
       if (isDebug) 
         util.logDebugOptional('getOrCreateFolder', text);
     }			
 		// Thunderbird 68
 		var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-		
+    
 		logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
-    // In theory, we should query our map first to see if we have the folder.
-    // However, the way you create a new folder anyways presently requires
-    // hitting up the RDF service in the first place, so there's no point trying
-    // to force a double-query of the map in this error scenario.
-    let rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService),
-    // Unlike above, we don't want to catch the exception--it will propagate to
-    // a promise rejection.
-        folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
+    
+    let fls = Cc["@mozilla.org/mail/folder-lookup;1"].getService(
+      Ci.nsIFolderLookupService
+    );
+    if (fls)
+      folder = fls.getOrCreateFolderForURL(aUrl); 
+    else {
+      // In theory, we should query our map first to see if we have the folder.
+      // However, the way you create a new folder anyways presently requires
+      // hitting up the RDF service in the first place, so there's no point trying
+      // to force a double-query of the map in this error scenario.
+      let rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
+      // Unlike above, we don't want to catch the exception--it will propagate to
+      // a promise rejection.
+      folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
+    }
 
 		logDebug('folder = ' + folder);		
     // Now try to ask the server if it has the folder. This will force folder
@@ -105,7 +114,6 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
             resolve();
         });
         await deferred;
-      }			
 			
 				
 /*				
@@ -133,11 +141,13 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 */
 			
 			
-    }
-
-    if (folder.parent == null || folder.rootFolder == folder) {
-			logDebug('unexpected: no folder.parent or folder is its own root');		
-      throw Cr.NS_ERROR_UNEXPECTED;
+      }
+/*
+      if (needToCreate && (folder.parent == null || folder.rootFolder == folder)) {
+        logDebug('unexpected: no folder.parent or folder is its own root');		
+        throw Cr.NS_ERROR_UNEXPECTED;
+      }
+      */
     }
 
     // Finally, we have a valid folder. Return it.

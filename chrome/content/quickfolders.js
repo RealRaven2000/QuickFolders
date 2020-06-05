@@ -365,19 +365,27 @@ END LICENSE BLOCK */
     ## Sometimes the current folder bar shows an incorrect subfolder menu (from a previously 
        visited folder) - fixed by forcing it to rebuild every time a differnt folder is visited.
 
-  4.17.5 QuickFolders Pro - WIP
+  4.17.5 QuickFolders Pro - 27/12/2019
     ## [issue 18] Allow single-key keyboard shortcuts for Navigation
     ## [issue 3] Mark messages READ in folder and all its subfolders tree "in one click"
+    
+  4.18.* QuickFolders Pro - WIP
+    ## [issue 27] Drag to Create New Subfolders from tab, folder names with space fail, (encoded as %20 / leading to duplicates) 
+    ## I also added trim() function to cut off spaces at end / start when email names are pasted
     
     
 	Future Work
 	===========
   
-  4.18.* QuickFolders Pro - WIP
+    ## [issue 20] Add option to show QuickFolders tabs below main toolbar
     
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
 		
+    ## [issue 23] quickMove fails if first mail is already in target folder (open in conversation)
+    ##            probably similar to a virtual search folder.
+    
+    
 	Known Issues
 	============
 		Thunderbird 66 compatibility - more to do for 67! https://privatebin.net/?2c1a1bcc9bebca9c#9Z15ZXr7zj+AOM4CUMDyQBasYCRPb8or+X0nvYcxzHM=
@@ -426,14 +434,17 @@ END LICENSE BLOCK */
 */
 
 
-// Components.utils.import("resource://quickfolders/quickfolders-tablistener.jsm");
-
-//QuickFolders.gFolderTree = null;
-
 if (!this.QuickFolders_CC)
 	this.QuickFolders_CC = Components.classes;
 if (!this.QuickFolders_CI)
 	this.QuickFolders_CI = Components.interfaces;
+
+// not sure whether (and how) to use defineModuleGetter() - does it work in Tb68??
+if (typeof DeferredTask == "undefined")
+  var {DeferredTask} = ChromeUtils.import("resource://gre/modules/DeferredTask.jsm");  
+if (typeof DeferredTask == "undefined")
+  var {Task} = ChromeUtils.import("resource://gre/modules/Task.jsm");  
+
 	
 // THUNDERBIRD SPECIFIC CODE!!	
 // wrap function for session store: persist / restore categories	
@@ -1212,7 +1223,10 @@ var QuickFolders = {
 		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.onDrop INSTEAD!
 		onDrop: function menuObs_onDrop(evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
-				    util = QuickFolders.Util;
+				    util = QuickFolders.Util,
+            model = QuickFolders.Model,
+            QI = QuickFolders.Interface,
+            QFFW = QuickFolders.FilterWorker;
 			let isThread = evt.isThread,
 			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
 			    menuItem = evt.target,
@@ -1224,8 +1238,8 @@ var QuickFolders = {
 				   	step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
 				util.logDebugOptional("dragToNew", step);
 				
-				if (QuickFolders.FilterWorker.FilterMode) {
-					sourceFolder = QuickFolders.Model.getMsgFolderFromUri(sourceURI, true);
+				if (QFFW.FilterMode) {
+					sourceFolder = model.getMsgFolderFromUri(sourceURI, true);
 					let virtual = util.isVirtual(sourceFolder);
 					if (!sourceFolder || virtual)
 					{
@@ -1236,30 +1250,38 @@ var QuickFolders = {
 				let msgList = util.moveMessages(newFolder, messageUriList, isCopy)
 
 				// have the filter created with a delay so that filters can adapt to the new folder!!
-				if (QuickFolders.FilterWorker.FilterMode) {
+				if (QFFW.FilterMode) {
 					// if user has quickFilters installed, use that instead!!
-					QuickFolders.FilterWorker.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
+					QFFW.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
 				}
 
 				util.logDebugOptional("dragToNew", "4. updateFolders...");
 				util.touch(newFolder);
-				QuickFolders.Interface.updateFolders(false, false); // update context menus   
+				QI.updateFolders(false, false); // update context menus   
 			}
 			
 			// helper function for creating a new subfolder => TODO implement filter learn for this case!
 			// FolderParam = parent folder [uri in Postbox] passed back by the create folder dialog
 			function newFolderCallback(aName, FolderParam) {
+        const model = QuickFolders.Model,
+              prefs = QuickFolders.Preferences,
+              isEncodeUri = prefs.getBoolPref("newFolderCallback.encodeURI");
+              
+        
 				let step = '',
 				    isManyFolders = false,
 				    sourceFolder = null;
+            
+        aName = aName.trim(); 
 				if (aName) try {
+          
 					let currentURI, aFolder,
-					    uriName = encodeURI(aName);
+					    uriName = isEncodeUri ? encodeURI(aName) : aName;
 					// we're dragging, so we are interested in the folder currently displayed in the threads pane
 					if (typeof GetSelectedFolderURI === 'function') {
 						// old Postbox
 						currentURI = GetSelectedFolderURI();
-						aFolder = QuickFolders.Model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+						aFolder = model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}
 					else {
 						if (gFolderDisplay.displayedFolder)
@@ -1272,20 +1294,20 @@ var QuickFolders = {
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
 					let platform = util.PlatformVersion;
-					if (typeof Task != 'object') {  // legacy code. Remove once Task.jsm lands in Postbox
+					if (typeof DeferredTask == 'undefined' && typeof Task != 'object') {  // legacy code. Remove once Task.jsm lands in Postbox
 						aFolder.createSubfolder(uriName, msgWindow);
 						
 						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
 						let server = aFolder.server.QueryInterface(Ci.nsIMsgIncomingServer),
 								timeOut = (server.type == 'imap') ? 
-													QuickFolders.Preferences.getIntPref('dragToCreateFolder.imap.delay') : 0;
+													prefs.getIntPref('dragToCreateFolder.imap.delay') : 0;
 						// Ugly legacy code. Remove once Task lands in Postbox
 						let deferredMove = function deferredMove_Postbox(parentFolder) {
 							// if folder creation is successful, we can continue with calling the
 							// other drop handler that takes care of dropping the messages!
 							step = '2. find new sub folder - old platform code running on Gecko ' + platform;
 							util.logDebugOptional("dragToNew", step);
-							let newFolder = QuickFolders.Model.getMsgFolderFromUri(parentFolder.URI + "/" + uriName, true);
+							let newFolder = model.getMsgFolderFromUri(parentFolder.URI + "/" + isEncodeUri ? uriName : encodeURI(uriName), true);
 							
 							if (!newFolder) {
 								QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
@@ -1304,12 +1326,13 @@ var QuickFolders = {
 						setTimeout( function() { deferredMove(aFolder); }, timeOut);  // timeout for 1st try
 					}
 					else { // use async task for create folder and move
-					  let newFolderUri = aFolder.URI + "/" + uriName;
+					  let newFolderUri = aFolder.URI + "/" + uriName,
+                encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
 						util.getOrCreateFolder(
 							newFolderUri, 
 							Ci.nsMsgFolderFlags.Mail).then(
-								function createFolderCallback() {
-									let fld = QuickFolders.Model.getMsgFolderFromUri(newFolderUri, true);
+								function createFolderCallback(f) {
+									let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
 									moveOrCopy(fld, currentURI);
 									
 								},
@@ -1743,9 +1766,10 @@ var QuickFolders = {
 		onDrop: function btnObs_onDrop(evt, dropData, dragSession) {
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
+          prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces,
-					Cc = Components.classes,
-					prefs = QuickFolders.Preferences;
+					Cc = Components.classes;
+          
 			let isShift = evt.shiftKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
@@ -1989,10 +2013,10 @@ var QuickFolders = {
 		try {
 		  let tabContainer = QuickFolders.tabContainer;
 			tabContainer.addEventListener("select", function(event) { QuickFolders.TabListener.select(event); }, false);
-			let tabmail = document.getElementById("tabmail");
-			tabmail.addEventListener("TabClose", function(event) { QuickFolders.TabListener.closeTab(event); }, false);
-			tabmail.addEventListener("TabOpen", function(event) { QuickFolders.TabListener.newTab(event); }, false);
-			tabmail.addEventListener("TabMove", function(event) { QuickFolders.TabListener.moveTab(event); }, false);
+			// let tabmail = document.getElementById("tabmail");
+			tabContainer.addEventListener("TabClose", function(event) { QuickFolders.TabListener.closeTab(event); }, false);
+			tabContainer.addEventListener("TabOpen", function(event) { QuickFolders.TabListener.newTab(event); }, false);
+			tabContainer.addEventListener("TabMove", function(event) { QuickFolders.TabListener.moveTab(event); }, false);
 		}
 		catch (e) {
 			QuickFolders.LocalErrorLogger("No tabContainer available! " + e);
@@ -2000,6 +2024,8 @@ var QuickFolders = {
 		}
 	}
 };
+
+
 
 function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
 	// try to get the index of the folder in the tree

@@ -76,6 +76,9 @@
 <!ENTITY qf.label.menus.help "Aide QuickFolders">
 <!ENTITY qf.label.menus.support "Dépannage QuickFolders">
 <!ENTITY qf.label.menus.options "Options">
+<!ENTITY qf.label.toolbarPosition "Barre d'outils QuickFolders Position">
+<!ENTITY qf.toolbarPosition.tooltip "0 = au-dessus des autres barres d'outils; 100 = bas. Une valeur élevée dépend d'autres modules complémentaires.">
+<!ENTITY qf.btn.applyPosition "Appliquer la valeur de position!">
 <!ENTITY qf.caption.currentFolderBackground "Fond de la barre d'outils du dossier courant">
 <!ENTITY qf.button.currentFolderBackground.set "défini">
 <!ENTITY qf.checkbox.currentfolder.lightweight "intégrer avec le thème léger">

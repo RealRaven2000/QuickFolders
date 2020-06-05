@@ -77,6 +77,9 @@
 <!ENTITY qf.label.menus.support "QuickFolders Support">
 <!ENTITY qf.label.menus.options "Optionen">
 <!ENTITY qf.caption.currentFolderBackground "Hintergrund Aktiv-Verzeichnis">
+<!ENTITY qf.label.toolbarPosition "Position der QuickFolders Leiste">
+<!ENTITY qf.toolbarPosition.tooltip "0 = oberhalb anderer Werkzeugleisten; 100 = unterhalb. Der höhere Wert hängt von anderen Add-ons ab.">
+<!ENTITY qf.btn.applyPosition "Positionswert anwenden!">
 <!ENTITY qf.button.currentFolderBackground.set "aktualisieren">
 <!ENTITY qf.checkbox.currentfolder.lightweight "Mit lightweight Theme integrieren">
 <!ENTITY qf.currentfolder.leftSpacer "Abstand links:">

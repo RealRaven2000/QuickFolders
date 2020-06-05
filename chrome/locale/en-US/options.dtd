@@ -76,6 +76,9 @@
 <!ENTITY qf.label.menus.help "QuickFolders Help">
 <!ENTITY qf.label.menus.support "QuickFolders Support">
 <!ENTITY qf.label.menus.options "Options">
+<!ENTITY qf.label.toolbarPosition "QuickFolders Bar Position">
+<!ENTITY qf.toolbarPosition.tooltip "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons.">
+<!ENTITY qf.btn.applyPosition "Apply position value!">
 <!ENTITY qf.caption.currentFolderBackground "Current Folder Toolbar background">
 <!ENTITY qf.button.currentFolderBackground.set "apply">
 <!ENTITY qf.checkbox.currentfolder.lightweight "integrate with lightweight theme">

@@ -369,9 +369,13 @@ END LICENSE BLOCK */
     ## [issue 18] Allow single-key keyboard shortcuts for Navigation
     ## [issue 3] Mark messages READ in folder and all its subfolders tree "in one click"
     
-  4.18.* QuickFolders Pro - WIP
+  4.18 QuickFolders Pro - 04/06/2020
     ## [issue 27] Drag to Create New Subfolders from tab, folder names with space fail, (encoded as %20 / leading to duplicates) 
     ## I also added trim() function to cut off spaces at end / start when email names are pasted
+    
+  4.18.1 QuickFolders Pro - WIP
+    ## [issue 20] Change default for QuickFolders Toolbar to be on the bottom
+    ## [issue 34] {Create Option to} make QuickFolders appear at the Bottom of Other Toolbars
     
     
 	Future Work

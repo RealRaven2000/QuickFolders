@@ -2,8 +2,14 @@
 <li class="psa"> I am currently paying somebody to migrate all my Add-on support sites away from the free host on mozdev.org, which is going to close operation end of June. To keep having support sites and ongoing development, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> (the migration will cost around $500, so there are some expense I hope to recover from the user community).
 
 I will also have to rewrite all mail Add-ons as web extensions, which is currently not yet possible as all necessary APIs to replace the deprecated tech has not been implemented. As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+ but this will take a few weeks of work. If you are interested in using a version of  QuickFolders that works with Thunderbird 78, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> to support the project.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics),  would be url encoded (Space = <tt>%20</tt>) and could lead to failure of moving the mail or duplicated folders or non-working QuickFolders tabs.
 
-This problem was reported during the thunderbird 68.* release cycle so the fix may affect older versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be reverted by using the configuration setting: <tt>extensions.quickfolders.newFolderCallback.encodeURI  = true</tt></li>
-<li> New hidden setting <tt>extensions.quickfolders.toolbar.ordinalPosition</tt> can be used to change the order of toolbars to push the QuickFolders bar further up / down in case other 3rd party toolbars are used.</li>
+<li> IMPROVEMENT IN 4.18:<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics),  would be url encoded (Space = <code>%20</code>) and could lead to failure of moving the mail or duplicated folders or non-working QuickFolders tabs.
+
+This problem was reported during the thunderbird 68.* release cycle so the fix may affect older versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be reverted by using the configuration setting: <code>extensions.quickfolders.newFolderCallback.encodeURI  = true</code></li>
+
+<li> FIXED IN 4.18.1:<br><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/34">[issue 34]</a> Option to make QuickFolders appear at the Bottom of Other Toolbars
+
+The new setting <i>Advanced / QuickFolders Bar Position</i> can be used to change the order of toolbars to push the QuickFolders bar further up / down in case other 3rd party toolbars are used. Set to 0 to have the toolbar at the top, 100 should work to push it below all other toolbars.
+
+The default is now set to make QuickFolders appear at the bottom of the mail tools again.</li>
 </ul>

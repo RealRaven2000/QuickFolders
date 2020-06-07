@@ -13,6 +13,10 @@
 <!ENTITY chkIgnoreUnread.tooltip "Nikoli ne prikaži števila v krepkem slogu ali št. neprebranih, tudi če mapa vsebuje neprebrano pošto.">
 <!ENTITY chkIgnoreCounts "Skrij števce pošte">
 <!ENTITY chkIgnoreCounts.tooltip "Nikoli ne prikaži števila vsebujočih sporočil.">
+<!ENTITY chkHideFromQuickJump "Omit from quickJump / quickMove">
+<!ENTITY chkHideFromQuickJump.tooltip "Omit this folder and its children in quickJump / quickMove results">
+<!ENTITY chkSetMailsUnread "Set mail to unread">
+<!ENTITY chkSetMailsUnread.tooltip "If you move mail into this folder it is set to unread.">
 <!ENTITY grpCustomCSS "CSS po meri">
 <!ENTITY cssBackground "Ozadje">
 <!ENTITY cssBackground.tooltip "Vnesite ozadje CSS, npr. premo sorazmerni preliv (na dno, rgba(254,252,234,1) 0&#37;, rgba(241,218,54,1) 100&#37;)">

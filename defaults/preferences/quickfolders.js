@@ -53,7 +53,7 @@ pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
-pref("extensions.quickfolders.toolbar.ordinalPosition", 0);
+pref("extensions.quickfolders.toolbar.ordinalPosition", 100);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
 pref("extensions.quickfolders.tooltips.parentFolder", false);

@@ -293,6 +293,7 @@
 						<preference id="qfpa-CollapseCategory" name="extensions.quickfolders.collapseCategories" type="bool" />
 						<preference id="qfpa-Transitions" name="extensions.quickfolders.style.transitions" type="bool" instantApply="true" />
 						<preference id="qfpa-Debug" name="extensions.quickfolders.debug" type="bool" instantApply="true"/>
+            <preference id="qfpa-ToolbarPosition" name="extensions.quickfolders.toolbar.ordinalPosition" type="int" instantApply="true" />
 					</preferences>
 
 					<hbox id="advancedConfig">
@@ -415,6 +416,20 @@
 							</hbox>
 						</html:fieldset>
 					</hbox>
+          
+          <html:fieldset	orient="horizontal" id="grpToolbarPosition">
+            <html:legend>&qf.label.toolbarPosition;</html:legend>
+            <hbox>
+              <textbox id="toolbarPosition"
+                       flex="1"
+                       preference="qfpa-ToolbarPosition"
+                       tooltiptext="&qf.toolbarPosition.tooltip;"
+                       />
+              <button label="&qf.btn.applyPosition;"
+                onclick="options.applyOrdinalPosition();" 
+								/>
+            </hbox>
+          </html:fieldset>
 
 					<html:fieldset	orient="horizontal" id="grpCurrentFolderBackground">
 						<html:legend>&qf.caption.currentFolderBackground;</html:legend>
@@ -494,6 +509,7 @@
 											preference="qfpa-Transitions"
 											oncommand="options.toggleBoolPreference(this);" />
 					</html:fieldset>
+
 					<separator class="thin" />
 					<hbox align="center" class="quickhelp-dbg" >
 						<checkbox label="&qf.checkbox.debug;"

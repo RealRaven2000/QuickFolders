@@ -966,6 +966,11 @@ QuickFolders.Options = {
 			options.setCurrentToolbarBackground(item.value, true);
 		}
 	} ,
+  
+  applyOrdinalPosition: function applyOrdinalPosition() {
+    // refresh the toolbar button in main window(s)
+    QuickFolders.Interface.updateMainWindow(true);
+  } ,
 	
 	// change background color for current folder bar
 	// 5 choices [string]: default, dark, custom, translucent, lightweight

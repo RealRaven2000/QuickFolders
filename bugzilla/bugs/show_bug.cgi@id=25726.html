@@ -1,0 +1,2219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25726 &ndash; When right-clicking a tab and selecting a subfolder, I'm being directed to the wrong folder</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25726&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25726">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25726">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25726">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25726">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25726</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">When right-clicking a tab and selecting a subfolder, I'm being directed to the wrong folder</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-11-28 13:13:05</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25726&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-11-28 13:13:05">
+  <input type="hidden" name="longdesclength" value="21">
+  <input type="hidden" name="id" value="25726">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="When right-clicking a tab and selecting a subfolder, I'm being directed to the wrong folder">
+        <span title="When right-clicking a tab and selecting a subfolder, I'm being directed to the wrong folder">When right-clicking a tab and selecting a subfolder, I'm ...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25726.html">25726</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25726&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25726">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Menu.png"
+               title="View the content of the attachment">
+          <b>Reply to comment 5</b></a>
+
+          <span class="bz_attach_extra_info">
+              (12.68 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25726.html#attach_7808"
+               title="Go to the comment associated with the attachment">2014-03-12 23:57</a>,
+
+            <a href="mailto:nischwartz&#64;yahoo.com"
+               title="Write an email to the creator of the attachment">nischwartz&#64;yahoo.com
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7808&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.15pre173.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.15 prerelease 173</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (521.33 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25726.html#attach_7810"
+               title="Go to the comment associated with the attachment">2014-03-13 19:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7810&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.15pre175.xpi"
+               title="View the content of the attachment">
+          <b>3.15 prerelease 175</b></a>
+
+          <span class="bz_attach_extra_info">
+              (521.40 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25726.html#attach_7811"
+               title="Go to the comment associated with the attachment">2014-03-13 21:11</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7811&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25726.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25726&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25726&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25726">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25726">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25726">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25726">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25726.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-03-12 22:05
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >This happens continuously now, but if I &quot;refresh visible tabs!&quot; it will work
+again for a period of time.  It's almost like the links get offset by a folder
+or two so when I select one, it goes to the wrong place.
+
+This is happening to me everyday now, especially when drilling down a few
+subfolders in the right-click menu.
+
+Windows 7 64bit
+TB 24.3.0
+QuickFolders 3.14.1
+
+I also have:
+MinimizeToTray revived (MinTrayR) 1.1.2
+Mouse Gestures Redox 3.2pre.20120202
+Send Later 4.2.2
+SmartTemplate 0.9.4
+
+Disabled:
+Deselect on Delete 1.1
+Duplicate Contact Manager (0.9.2)
+SmoothWheel 0.45.8.20130519.3
+Stylish 1.4.2
+Xpunge 0.6
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25726.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-12 22:23:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This is very *very* _very_ unusual - whjen I create the submenu items I create
+both jump targets (folder URIs) and menu item labels. Can you be more specific?
+Let's say you have parent folder
+
+A, B, C
+
+And each has subfolders
+AA AB AC
+BA BB BC
+CA CB CC
+
+if you select the menu item AB, which folder do you get? is it one of the
+siblings or one of its parents? When it goes wrong is it consistent across
+sessions? Or is the folder you go to always completely random?
+
+You can also try toggling QF Options &gt; General &gt; Behavior Force alphabetic
+sorting of menus with subfolders.
+
+Also, please enable [x] debug mode (QuickFolders Options &gt; Advanced). And
+right-click debug mode and then enable the debug setting
+extensions.quickfolders.debug.popupmenus
+
+Then please install console² for a complete error log. 
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/</a>
+
+Then Open Tools &gt; Error console.
+
+With console2 enabled enable Errors, Warnings, Messages, JS, XML, Chrome and
+Resource. DISABLE CONTENT
+
+Clear the error log before you click on the submenu. Once the error happens use
+the console context menu to CTRL+A (Select ALl) CTLR+C (Copy errors as text).
+Please attach to the bug.
+
+(With the special debug option above you should see items like this):
+
+QuickFolders {POPUPMENUS} 21:24:13.499  [1 ms]   
+add click listener for subMenu _Test-Japanese
+onSelectParentFolder(mailbox://axel.grude@localhost/LAB-Testing/Alpha-Sort/_Test-Japanese)
+ ----------
+QuickFolders {POPUPMENUS} 21:24:13.499  [0 ms]   
+add oncommand event for menuitem test3-あいうえお
+onSelectSubFolder(mailbox://axel.grude@localhost/LAB-Testing/Alpha-Sort/_Test-Japanese/0e641855)
+etc.
+
+...as you can see the menu item is created together with the matching command
+&quot;onSelectSubFolder&quot;.
+
+you should also see events like this when you click on the menu item:
+QuickFolders {POPUPMENUS} 21:26:46.399  [152895 ms]      
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://<a href="mailto:axelg@pop.vodafone.ie">axelg@pop.vodafone.ie</a>/Development/Mozilla/Addons
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 21:26:48.507  [2108 ms]        
+onSelectSubFolder:
+mailbox://<a href="mailto:axelg@pop.vodafone.ie">axelg@pop.vodafone.ie</a>/Development/Mozilla/Addons/CopySent2Current
+
+
+This should give us some clarity as to what exactly is happening.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25726.html#c2">
+            #2</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-12 22:43:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c1">comment #1</a>)
+
+I've installed the Console and setup the settings.  Just tried it and it worked
+as expected, but TB also just restarted due to the add-on install.  I'll paste
+what you requested when it happens next.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25726.html#c3">
+            #3</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-12 23:13:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c1">comment #1</a>)
+
+So it just happened and I was wrong about the action a bit:  It started to open
+the folder tree, but didn't get all the way to the subfolder and essentially
+stopped.  I still see my inbox in the main pane, not the folder I selected. 
+When I do this a second time (with the folder tree opened up) it works fine.
+
+Here is what the console shows (only the results from the first time which
+didn't work):
+
+QuickFolders {POPUPMENUS} 15:16:45.840  [11885 ms]       
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 15:16:46.165  [325 ms]         
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 15:16:46.167  [2 ms]   
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 15:16:49.983  [3816 ms]        
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 15:16:52.71  [2088 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders 15:16:52.96  [25 ms]        
+switched TreeView mode= all
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25726.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-12 23:49:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c3">comment #3</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c1">comment #1</a>)
+&gt; 
+&gt; So it just happened and I was wrong about the action a bit:  It started to open
+&gt; the folder tree, but didn't get all the way to the subfolder and essentially
+&gt; stopped.  I still see my inbox in the main pane, not the folder I selected. 
+&gt; When I do this a second time (with the folder tree opened up) it works fine.</span >
+
+When you do it for the first time what does the top of the folder pane read? My
+guess is it doesn't say &quot;all folders&quot; right?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25726.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-12 23:50:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c3">comment #3</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25726.html#c1">comment #1</a>)
+&gt; &gt; 
+&gt; &gt; So it just happened and I was wrong about the action a bit:  It started to open
+&gt; &gt; the folder tree, but didn't get all the way to the subfolder and essentially
+&gt; &gt; stopped.  I still see my inbox in the main pane, not the folder I selected. 
+&gt; &gt; When I do this a second time (with the folder tree opened up) it works fine.
+&gt; 
+&gt; When you do it for the first time what does the top of the folder pane read? My
+&gt; guess is it doesn't say &quot;all folders&quot; right?
+&gt; </span >
+
+Or better check the Menu: View &gt; FOlders &gt; ...
+
+what is selected?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25726.html#c6">
+            #6</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-12 23:57:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Menu.png" name="attach_7808" title="Reply to comment 5">Created an attachment (id=7808)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7808&amp;action=edit" title="Reply to comment 5">[details]</a></span>
+Reply to <a href="show_bug.cgi@id=25726.html#c5">comment 5</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25726.html#c7">
+            #7</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-12 23:58:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c5">comment #5</a>)
+
+Not sure what you are asking about with the all folders.  I can add that I'm
+going from my inbox on gmail to a local folder, but you likely can see that in
+the console.  Under View, there is no folder option unless I'm looking in the
+wrong place.  Under the folders menu, all is selected. See the attachment.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25726.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 10:15:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c5">comment #5</a>)
+&gt; 
+&gt; Not sure what you are asking about with the all folders.  I can add that I'm
+&gt; going from my inbox on gmail to a local folder, but you likely can see that in
+&gt; the console.  Under View, there is no folder option unless I'm looking in the
+&gt; wrong place.  Under the folders menu, all is selected. See the attachment.
+&gt; </span >
+
+That's what I meant. I forgot since THunderbird removed the menu there is a
+second way of accessing the folder view (the way I described is still valid if
+you make the menu bar visible)
+
+The question is what happened (apart from the log) when you clicked for the
+first time:
+
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+
+If you did not jump to the folder &quot;Z - Travel&quot; where did you end up?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25726.html#c9">
+            #9</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-13 16:39:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c8">comment #8</a>)
+
+I didn't go anywhere, the main view pane just stayed in the inbox.  The left
+side pane started to open the folder tree, but not all the way to the folder I
+selected.  Maybe hitting some sort of limit of subfolders?  I was going from
+the Gmail IMAP inbox to a deeper local subfolder (Local Folders &gt; Events &gt; 2014
+<span class="quote">&gt; 03.26 SBDR XIII &gt; Z - Travel).</span >
+
+Should I try installing an older version of QuickFolders to see if it was
+QuickFolders vs. a TB update?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25726.html#c10">
+            #10</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-13 17:50:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c9">comment #9</a>)
+
+It just happened again this morning, here is the console:
+
+QuickFolders {POPUPMENUS} 9:46:31.890  [9413 ms]         
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 9:46:34.71  [2181 ms]  
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders 9:46:34.97  [26 ms]         
+switched TreeView mode= all
+
+
+I also noticed, that instead of opening the 2014 Events subfolder, it opened
+one named, &quot;Z - 2010 Events&quot;.  That may be the issue - It's getting stuck since
+it's going to the wrong subfolder in the string and then can't find the &quot;03.26
+SBDR XIII&quot; folder since it's not in the subfolder that seems to be opening.
+
+Maybe the root of the issue is that I use the &quot;Z - [name]&quot; to push older
+folders to the bottom and &quot;1 - [name]&quot; to bring others to the top.  For
+instance, the Events folder has the following subfolders in it:
+
+1 - Conference Council
+1 - Event Management System
+1 - Green Meetings
+2013 Events
+2014 Events
+Z - 2009 Events
+Z - 2010 Events
+Z - 2011 Events
+Z - 2012 Events
+
+Do you think it should matter if the names are like this vs. not having the &quot;Z
+- [name]&quot; and &quot;1 - [name]&quot; convention?  I checked in the file system and they
+show up as listed (with the Zs and the 1s).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25726.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 18:12:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c9">comment #9</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c8">comment #8</a>)
+&gt; 
+&gt; I didn't go anywhere, the main view pane just stayed in the inbox.  The left
+&gt; side pane started to open the folder tree, but not all the way to the folder I
+&gt; selected.  Maybe hitting some sort of limit of subfolders?  I was going from
+&gt; the Gmail IMAP inbox to a deeper local subfolder (Local Folders &gt; Events &gt; 2014
+&gt; &gt; 03.26 SBDR XIII &gt; Z - Travel).
+&gt; 
+&gt; Should I try installing an older version of QuickFolders to see if it was
+&gt; QuickFolders vs. a TB update?
+&gt; </span >
+
+No I don't think so. For performance reasons, the way QF works is that it
+actually opens the folder in the folder tree first (it might also re-paint the
+tab) and only updates its internal model when it gets a signal that the folder
+was actually changed. I am working on some more detailed logging methods for
+this case, and will shortly upload a version for you.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25726.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 19:01:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.15pre173.xpi" name="attach_7810" title="3.15 prerelease 173">Created an attachment (id=7810)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7810&amp;action=edit" title="3.15 prerelease 173">[details]</a></span>
+3.15 prerelease 173
+
+Can you install the attached version and then right-click debug mode and
+enable:
+
+extensions.quickfolders.debug.popupmenus        = true
+extensions.quickfolders.debug.folders.select    = true
+
+(I have banished some of the unecessary details into the new settings
+extensions.quickfolders.debug.popupmenus.items
+extensions.quickfolders.debug.popupmenus.collapse
+which you should let switched off for this test)
+
+Also there is such a load of information in console2 that I found it sometimes
+doesn't react at all, so you might have to not only clear the log output but
+close and reopen error console. I highly recommend adding the &quot;Display Error
+Console&quot; button to your toolbar as it is always useful to have that handy.
+
+Expected example output with above settings, if Parent Tab is not selected and
+we select a subfolder (direct child) via right-click:
+
+QuickFolders {POPUPMENUS} 18:3:34.851  [3565 ms]         
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://axelg{at}pop.vodafone.ie/Development/Mozilla/Addons/quickFilters
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 18:3:38.224  [3373 ms]         
+onSelectSubFolder:
+mailbox://axelg{at}pop.vodafone.ie/Development/Mozilla/Addons/quickFilters/Support
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.224  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://axelg{at}pop.vodafone.ie/Development/Mozilla/Addons/quickFilters/Support
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.224  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.225  [1 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.225  [0 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.225  [0 ms]        
+parent index: 38
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.225  [0 ms]        
+Selecting folder via treeview.select(Support)..
+ ----------
+QuickFolders {POPUPMENUS} 18:3:38.270  [45 ms]   
+Creating Popup Set for Support
+ ----------
+QuickFolders {POPUPMENUS} 18:3:38.272  [2 ms]    
+Creating Popup Set for Support
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.301  [29 ms]       
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 18:3:38.301  [0 ms]        
+setFocusThreadPane()
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25726.html#c13">
+            #13</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-13 19:13:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c12">comment #12</a>)
+
+I did what you asked and it took a few tries, but here is the log from the most
+recent failure:
+
+QuickFolders {POPUPMENUS} 11:17:12.261  [6312 ms]        
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 11:17:12.263  [2 ms]   
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 11:17:15.399  [3136 ms]        
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 11:17:17.73  [1674 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.73  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.73  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.73  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.76  [3 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders 11:17:17.94  [18 ms]        
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+parent index: null
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+setFocusThreadPane()
+
+
+This time, it opened up the Events folder, but didn't go any further than that.
+ The main pane stayed on the inbox.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25726.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 19:26:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c13">comment #13</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c12">comment #12</a>)</span >
+
+<span class="quote">&gt; QuickFolders {FOLDERS.SELECT} 11:17:17.73  [0 ms]        
+&gt; QuickFolders_MySelectFolder:
+&gt; mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+&gt;  ----------</span >
+
+<span class="quote">&gt;  ----------
+&gt; QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+&gt; parent index: null
+&gt;  ----------
+&gt; QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+&gt; Could not find folder in tree (folderIndex = null)
+&gt;  ----------
+&gt; QuickFolders {FOLDERS.SELECT} 11:17:17.94  [0 ms]        
+&gt; setFocusThreadPane()
+&gt; </span >
+so there is the problem right there: neither the folder nor the parent folder
+can be found:
+
+so there is a problem with resolving the folder uri
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+just as an experiment, what happens if you pull the folder 
+&quot;03.26 SBDR XIII&quot;
+to QuickFolders as a new Tab and click on it?
+
+My theory is that there is a regexp mismatch caused by the characters .
+followed by the letters sbd, but I might be wrong about that...
+
+(there is a naming convention for folders which contain subfolders so be named
+something.sbd)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25726.html#c15">
+            #15</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-13 19:41:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c14">comment #14</a>)
+
+Again, not happening everytime, but here is the failure by only clicking on the
+tab in the row for &quot;03.26 SBDR XIII&quot;:
+
+QuickFolders {POPUPMENUS} 11:40:25.666  [1760 ms]        
+Creating Popup Set for 03.26 SBDR XIII
+ ----------
+QuickFolders {POPUPMENUS} 11:40:25.667  [1 ms]   
+Creating SubFolder Menu for 03.26 SBDR XIII...
+ ----------
+QuickFolders {POPUPMENUS} 11:40:25.672  [5 ms]   
+Created Menu 03.26 SBDR XIII: 15 items.
+-------------------------
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.673  [1 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.673  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.673  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.676  [3 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders 11:40:25.694  [18 ms]       
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.694  [0 ms]       
+parent index: 28
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.694  [0 ms]       
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:40:25.694  [0 ms]       
+setFocusThreadPane()
+
+
+The interesting thing is that I have a tab for the Events folder and I also
+have a tab for the 03.26 SBDR XIII folder.  They have both been up there for a
+while.
+
+I also tried with another folder (different year, no SBDR in the name) and got
+this:
+
+QuickFolders {POPUPMENUS} 11:45:44.839  [1738 ms]        
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 11:45:47.712  [2873 ms]        
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/01.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.712  [0 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/01.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.712  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.712  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.714  [2 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders 11:45:47.725  [11 ms]       
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.725  [0 ms]       
+parent index: 52
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.725  [0 ms]       
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 11:45:47.726  [1 ms]       
+setFocusThreadPane()
+
+
+Same results...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25726.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 20:13:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c15">comment #15</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25726.html#c14">comment #14</a>)
+&gt; 
+&gt; mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/01.31%20Bissell%20Nomination
+&gt;  ----------
+&gt; QuickFolders {FOLDERS.SELECT} 11:45:47.712  [0 ms]       
+&gt; QuickFolders_MySelectFolder:
+&gt; mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/01.31%20Bissell%20Nomination</span >
+
+
+<span class="quote">&gt;  ----------
+&gt; QuickFolders {FOLDERS.SELECT} 11:45:47.725  [0 ms]       
+&gt; parent index: 52
+&gt;  ----------</span >
+
+do you notice how it finds the parent folder &quot;Z - 2012 Events&quot; without any
+problem? If you count down from the top this should be the 53rd item in the
+folder tree. (I am not sure but I think the account would count as 0)
+
+<span class="quote">&gt; QuickFolders {FOLDERS.SELECT} 11:45:47.725  [0 ms]       
+&gt; Could not find folder in tree (folderIndex = null)
+&gt;  ----------</span >
+
+again, did not find the folder &quot;01.31 Bissell Nomination&quot;
+
+the guess with the sbd was a bit of a shot from the hip anyway :-) but both
+folders that weren't working for you start with a number, so I shoot again:
+
+JavaScript can occasionally typecast a variable as number that really should be
+a string. What happens if you rename the folder (not the QF tab)
+&quot;01.31 Bissell Nomination&quot;
+to
+&quot;O1.31 Bissell Nomination&quot;
+
+(using the letter O) ?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25726.html#c17">
+            #17</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-13 20:38:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c16">comment #16</a>)
+
+Just renamed it and was able to replicate the same result:
+
+QuickFolders {POPUPMENUS} 12:37:28.964  [3426 ms]        
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:37:31.846  [2882 ms]        
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.846  [0 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.847  [1 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.847  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.852  [5 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders 12:37:31.878  [26 ms]       
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.879  [1 ms]       
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.879  [0 ms]       
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:37:31.879  [0 ms]       
+setFocusThreadPane()
+
+
+I'm noticing a pattern that if I start at the inbox and use the right-click on
+the tab it will either work or not find the folder in tree, but if I
+immediately collapse the folder, go back to the inbox and do it again, the
+opposite happens, repeat again and the opposite happens again:
+
+Works &gt; Fails &gt; Works &gt; Fails, etc...
+
+I'm not sure why it would go back and forth like that.  Here is a log of that
+happening if it helps (Sorry that it's long and note that there is no return to
+the inbox when it fails since the view doesn't change from the inbox):
+
+QuickFolders {POPUPMENUS} 12:41:8.464  [5907 ms]         
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:41:11.34  [2570 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.34  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.34  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.34  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {POPUPMENUS} 12:41:11.94  [60 ms]   
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {POPUPMENUS} 12:41:11.95  [1 ms]    
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.102  [7 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.102  [0 ms]       
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.102  [0 ms]       
+Selecting folder via treeview.select(O1.31 Bissell Nomination)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.103  [1 ms]       
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:11.103  [0 ms]       
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.725  [2622 ms]        
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.726  [1 ms]   
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.753  [27 ms]  
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.754  [1 ms]   
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.754  [0 ms]   
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 12:41:13.779  [25 ms]  
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:41:15.315  [1536 ms]        
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:41:15.317  [2 ms]   
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:41:16.495  [1178 ms]        
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:41:18.777  [2282 ms]        
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.777  [0 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.777  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.778  [1 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.780  [2 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders 12:41:18.799  [19 ms]       
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.799  [0 ms]       
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.799  [0 ms]       
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:18.799  [0 ms]       
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 12:41:22.809  [4010 ms]        
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.811  [2 ms]       
+QuickFolders_MySelectFolder: imap://<a href="mailto:nischwartz@www.google.com">nischwartz@www.google.com</a>/INBOX
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.811  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.811  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.811  [0 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.812  [1 ms]       
+parent index: 0
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.812  [0 ms]       
+Selecting folder via treeview.select(Inbox)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.812  [0 ms]       
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:22.812  [0 ms]       
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 12:41:24.815  [2003 ms]        
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:41:27.144  [2329 ms]        
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.144  [0 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.144  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.144  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {POPUPMENUS} 12:41:27.193  [49 ms]  
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {POPUPMENUS} 12:41:27.194  [1 ms]   
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.201  [7 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.201  [0 ms]       
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.201  [0 ms]       
+Selecting folder via treeview.select(O1.31 Bissell Nomination)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.201  [0 ms]       
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:27.201  [0 ms]       
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.228  [3027 ms]        
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.228  [0 ms]   
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.254  [26 ms]  
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.255  [1 ms]   
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.255  [0 ms]   
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 12:41:30.280  [25 ms]  
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:41:31.572  [1292 ms]        
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:41:31.575  [3 ms]   
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:41:32.560  [985 ms]         
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:41:35.65  [2505 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.65  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.65  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.65  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.68  [3 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders 12:41:35.88  [20 ms]        
+switched TreeView mode= all
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.89  [1 ms]        
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.89  [0 ms]        
+Could not find folder in tree (folderIndex = null)
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:35.89  [0 ms]        
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 12:41:40.79  [4990 ms]         
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 12:41:42.683  [2604 ms]        
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.683  [0 ms]       
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/Z%20-%202012%20Events/O1.31%20Bissell%20Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.683  [0 ms]       
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.683  [0 ms]       
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {POPUPMENUS} 12:41:42.728  [45 ms]  
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {POPUPMENUS} 12:41:42.730  [2 ms]   
+Creating Popup Set for O1.31 Bissell Nomination
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.737  [7 ms]       
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.737  [0 ms]       
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.737  [0 ms]       
+Selecting folder via treeview.select(O1.31 Bissell Nomination)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.737  [0 ms]       
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 12:41:42.737  [0 ms]       
+setFocusThreadPane()
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25726.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-13 21:11:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.15pre175.xpi" name="attach_7811" title="3.15 prerelease 175">Created an attachment (id=7811)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7811&amp;action=edit" title="3.15 prerelease 175">[details]</a></span>
+3.15 prerelease 175
+
+try this version... there is a slight chance of it working better and if not
+gives slightly more information about folderIndex...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25726.html#c19">
+            #19</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-14 16:16:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25726.html#c18">comment #18</a>)
+
+I was out of the office yesterday PM, so I couldn't get to this, but I just
+tested it out and it seems to be working fine so far.  I'll keep testing it
+throughout the day and will let you know how it is as the end of the day.
+
+I'm hoping that this is fixed now!
+
+Here is the log of repeatedly going to that &quot;Z - Travel&quot; folder and back to the
+Inbox while it is working every time:
+
+QuickFolders {POPUPMENUS} 8:19:25.777  [6927 ms]         
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 8:19:28.202  [2425 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.202  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.203  [1 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.203  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.203  [0 ms]        
+theTreeView.selectFolder(Z - Travel, true)
+ ----------
+QuickFolders {POPUPMENUS} 8:19:28.256  [53 ms]   
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {POPUPMENUS} 8:19:28.257  [1 ms]    
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [4 ms]        
+folderIndex = 38
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [0 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [0 ms]        
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [0 ms]        
+Selecting folder via treeview.select(Z - Travel)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [0 ms]        
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:28.261  [0 ms]        
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.479  [2218 ms]         
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.480  [1 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.513  [33 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.514  [1 ms]    
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.514  [0 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:30.539  [25 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:31.854  [1315 ms]         
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:31.857  [3 ms]    
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:32.929  [1072 ms]         
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 8:19:34.82  [1153 ms]  
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.82  [0 ms]         
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.83  [1 ms]         
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.83  [0 ms]         
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.83  [0 ms]         
+theTreeView.selectFolder(Z - Travel, true)
+ ----------
+QuickFolders {POPUPMENUS} 8:19:34.133  [50 ms]   
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {POPUPMENUS} 8:19:34.134  [1 ms]    
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [4 ms]        
+folderIndex = 38
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [0 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [0 ms]        
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [0 ms]        
+Selecting folder via treeview.select(Z - Travel)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [0 ms]        
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:34.138  [0 ms]        
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.684  [1546 ms]         
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.684  [0 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.709  [25 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.710  [1 ms]    
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.710  [0 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:35.735  [25 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:36.935  [1200 ms]         
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:36.938  [3 ms]    
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:37.761  [823 ms]  
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 8:19:38.818  [1057 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.818  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.818  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.818  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.819  [1 ms]        
+theTreeView.selectFolder(Z - Travel, true)
+ ----------
+QuickFolders {POPUPMENUS} 8:19:38.853  [34 ms]   
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {POPUPMENUS} 8:19:38.854  [1 ms]    
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [4 ms]        
+folderIndex = 38
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [0 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [0 ms]        
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [0 ms]        
+Selecting folder via treeview.select(Z - Travel)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [0 ms]        
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:38.858  [0 ms]        
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.411  [1553 ms]         
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.412  [1 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.443  [31 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.444  [1 ms]    
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.444  [0 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:40.469  [25 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:41.530  [1061 ms]         
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:41.533  [3 ms]    
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:42.537  [1004 ms]         
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII
+label: 
+ ----------
+QuickFolders {POPUPMENUS} 8:19:43.554  [1017 ms]         
+onSelectSubFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.554  [0 ms]        
+QuickFolders_MySelectFolder:
+mailbox://nobody@Local%20Folders/Events/2014%20Events/03.26%20SBDR%20XIII/Z%20-%20Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.554  [0 ms]        
+try to find open tab with folder...
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.554  [0 ms]        
+...folder is currently not open in any Tab.
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.555  [1 ms]        
+theTreeView.selectFolder(Z - Travel, true)
+ ----------
+QuickFolders {POPUPMENUS} 8:19:43.596  [41 ms]   
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {POPUPMENUS} 8:19:43.598  [2 ms]    
+Creating Popup Set for Z - Travel
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [4 ms]        
+folderIndex = 38
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [0 ms]        
+ensureFolderViewTab()
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [0 ms]        
+parent index: 32
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [0 ms]        
+Selecting folder via treeview.select(Z - Travel)..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [0 ms]        
+ensureRowIsVisible()..
+ ----------
+QuickFolders {FOLDERS.SELECT} 8:19:43.602  [0 ms]        
+setFocusThreadPane()
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.359  [1757 ms]         
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.360  [1 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.392  [32 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.393  [1 ms]    
+Creating Popup Set for Events
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.393  [0 ms]    
+Creating SubFolder Menu for Events...
+ ----------
+QuickFolders {POPUPMENUS} 8:19:45.418  [25 ms]   
+Created Menu Events: 248 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 8:19:46.483  [1065 ms]         
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 8:19:46.485  [2 ms]    
+Creating Popup Set for Inbox
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25726.html#c20">
+            #20</a> From 
+          <a href="mailto:nischwartz&#64;yahoo.com">nischwartz&#64;yahoo.com</a>
+          2014-03-14 22:40:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I can confirm that this version (prerelease 175) has been working properly all
+day today.  Thanks for all the work on this one and it looks like this one is
+fixed.  I'll let you close the bug if you feel confident that it's solved.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25726&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

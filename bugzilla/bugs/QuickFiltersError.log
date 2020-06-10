@@ -1,0 +1,85 @@
+quickFilters 15:2:35.552  [113032 ms]   
+toggleFilterMode(true)
+ ----------
+quickFilters 15:2:49.376  [13824 ms]   
+onDrop: 1 messageUris to imap://brown.backup@192.168.3.2/INBOX/Test
+ ----------
+quickFilters 15:2:49.377  [1 ms]   
+quickFilters.Util.moveMessages: target = Test
+ ----------
+quickFilters 15:2:49.687  [310 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:49.687  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:49.688  [1 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:49.688  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:50.63  [375 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:50.63  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:50.63  [0 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:50.63  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:50.458  [395 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:50.459  [1 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:50.459  [0 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:50.459  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:50.862  [403 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:50.862  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:50.863  [1 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:50.863  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:51.263  [400 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:51.263  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:51.263  [0 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:51.263  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:51.658  [395 ms]   
+server of sourceFolder Inbox can have filters
+ ----------
+quickFilters 15:2:51.658  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters 15:2:51.659  [1 ms]   
+No targetFolder.msgDatabase!
+ ----------
+quickFilters 15:2:51.659  [0 ms]   
+No messageHeader - attempting rerun()...
+ ----------
+quickFilters 15:2:51.659  [0 ms]   
+popupAlert(QuickFilters, Tried to create a filter 7 times, but it didn't work out.
+Try to move a different message. Otherwise, updating Thunderbird to a newer version might help)
+

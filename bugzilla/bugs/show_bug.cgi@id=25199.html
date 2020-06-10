@@ -1,0 +1,1471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25199 &ndash; Add Rules to existing filters</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25199&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25199">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25199">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25199">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25199">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25199</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Add Rules to existing filters</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-04-06 09:29:12</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25199&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-04-06 09:29:12">
+  <input type="hidden" name="longdesclength" value="9">
+  <input type="hidden" name="id" value="25199">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Add Rules to existing filters">Add Rules to existing filters
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25199.html">25199</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25199&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25199">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:brettz9&#64;yahoo.com">Brett Zamir &lt;brettz9&#64;yahoo.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="quickFilters-tb-sm-1.6.2pre21.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.6.2, prerelease 21</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (131.58 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25199.html#attach_7526"
+               title="Go to the comment associated with the attachment">2013-02-21 05:14</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7526&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="quickFilters-tb-sm-1.6.2pre36.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.6.2 prerelease 36</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (133.49 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25199.html#attach_7532"
+               title="Go to the comment associated with the attachment">2013-02-25 08:37</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7532&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-sm-1.6.2pre45.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.6.2 pre 46</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (134.00 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25199.html#attach_7535"
+               title="Go to the comment associated with the attachment">2013-02-26 10:13</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7535&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="quickFilters-tb-sm-1.6.2pre48.xpi"
+               title="View the content of the attachment">
+          <b>1.6.2 pre 48</b></a>
+
+          <span class="bz_attach_extra_info">
+              (132.53 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25199.html#attach_7536"
+               title="Go to the comment associated with the attachment">2013-02-27 05:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7536&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25199.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25199&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25199&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25199">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25199">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25199">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25199">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25199.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-10-30 18:13
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >if, e.g., for my work, I have one filter already, when I drag a new message to
+my work folder, it will look for the rule I created previously with
+quickFilters and add the details there... (suggestion: this could be based on
+the target folder; if filters already move mail to my work folder they are
+candidates to add this new rule)
+
+I don't know whether the template assistant screen would be necessary (though
+maybe not bad for an option). I kind of like just being brought directly to the
+filter and would like that page to dynamically update so when I choose, e.g.,
+Subject, it grabs the current subject.
+
+I think I would find it easier if the &quot;template assistant&quot; could instead be a
+preference which controlled which fields were populated by default. E.g., if I
+didn't want both the To and From populating, I could control that. Maybe these
+prefs could moreover be sensitive to context, so that if say adding a Work
+filter, it would use the sender, but when adding a Junk filter, it would look
+by default at the subject.
+
+Also, not sure whether to file a new issue, and I haven't even confirmed it
+carefully, but it seems that when I am inside a Saved Search folder (as is
+common for me--no matter with Inbox, Drafts, or aggregating other folders),
+dragging doesn't seem to be aware of original location (it instead adds the
+filter to Local Folders where the filter is never used). That would be very
+helpful.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25199.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-10-31 06:34:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Accepted - sounds good. Potentially it is complex, but initially it can be just
+based on the target folder. We need to flesh out what it does exactly:
+
+1. if one match is found - it is still important which criteria of the original
+email is relevant (that's the whole point of the Template Screen); so I would
+not (at least initially) try to do anything clever and parse the existing
+filter rules to &quot;guess&quot; what other criteria to use. Also what if the user wants
+to create a separate rule, should there be a choice in this case?
+
+2. if two or more matches are found - well ideally it would try to consolidate
+them all into one, but again, too much work for the one try, so I propose I
+display a listbox with just the matching filter names; and the user can select
+which one to choose.
+
+3. As regards  higher granularity for the criteria - this is a bit of a sticky
+one, as one the one hand I want to keep the template screen &quot;light weight&quot; so
+there is not too much thinking &amp; clicking involved; overcrowding with many
+checkboxes / options would do just that. On the other hand it would be dead
+handy if the user could make her own templates - so maybe that is something for
+another bug. As regards &quot;merging&quot; the rules, the existing Templates would
+already be quite good, e.g. if I have post from a mailing list which uses
+different keywords in subject lines, e.g.
+1. [mozilla reviews]
+2. [AMO editors]
+say I have created a filter with rule 1. (using the subject rule)
+later I decide I want a filter based on 2 - again using the subject rule it
+would open the existing filter and add if subject contains [AMO editors] (using
+the or condition)
+
+======================
+Lastly, regarding the &quot;Saved Search folder&quot; or &quot;Local Folder&quot; not recognizing
+the source folder correctly, can you please file a separate bug? I don't want
+to mix several things into the same bug, rather split them up into manageable
+chunks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25199.html#c2">
+            #2</a> From 
+          <a href="mailto:brettz9&#64;yahoo.com">Brett Zamir</a>
+          2012-11-05 05:35:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry for the long discussion, but I've tried to give it a fair bit of thought.
+I think I really prefer configuring things by folder, as this seems it would
+work well with the already-existing QuickFolders context menu.
+
+Also pardon me, if I may sometimes have confused QuickFilters with
+QuickFolders, but I tend to find them most useful together (and I am talking
+about the filtering behavior here).
+
+In my reply below, I've reordered your replies to group similar subfeatures
+together (in order from general to specific):
+1) Rule merging discussion
+2) Target folder discussion
+3) Criteria discussion
+
+1) RULE MERGING DISCUSSION
+
+<span class="quote">&gt; &quot;Also what if the user wants
+&gt; to create a separate rule, should there be a choice in this case?&quot;&quot;</span >
+
+Maybe the best solution (both allowing UI visibility as well as &quot;set and
+forget&quot; convenience) would be to have the default behavior be folder-specific
+with the choice between merging or not merging by default being changeable when
+right-clicking the folder in the toolbar. So if I drag to my Junk folder, it
+could say merge by default (assuming a target folder filter exists), but
+dragging to Work would create separate rules. 
+
+The latter could be helpful in cases when the Criteria Template (see below) for
+the given folder involved multiple AND criteria which could not be readily
+merged (e.g., if I had two Trash folders on the toolbar, one for single-rule
+junk, and one for multiple rules, e.g., to confirm that the user was not in my
+address book before deleting a message with the subject &quot;Hello&quot;).
+
+Maybe a meta key could allow override of the default (e.g., dragging with
+&quot;shift&quot; could either merge or avoid merging). The toolbar text could ideally
+change temporarily during the drag to indicate what the behavior was going to
+be.
+
+2) TARGET FOLDER DISCUSSION
+
+<span class="quote">&gt; &quot;Potentially it is complex, but initially it can be just based on the target 
+&gt; folder...&quot;</span >
+
+Yes, sounds good. I think you'd also have to decide whether to support Move to
+Folder, Copy to Folder, etc. as options. 
+
+Hopefully, it could find the target even if it is not the first step (since,
+e.g., I like to mark junk as read before moving it to the Trash, so it doesn't
+alert me in the same way as there are new messages, but so that it isn't fully
+deleted in case someone later informs me that a message was missing).
+
+<span class="quote">&gt; &quot;if two or more matches are found - well ideally it would try to consolidate
+&gt; them all into one, but again, too much work for the one try, so I propose I
+&gt; display a listbox with just the matching filter names; and the user can select
+&gt; which one to choose.&quot;</span >
+
+Good idea. The dialog might be subdivided perhaps by &quot;Copy to Folder&quot;, &quot;Move to
+Folder&quot;, &quot;Forward to Folder&quot; filters depending on how the Target folder was
+specified for quicker identification.
+
+I think a &quot;Use this choice for future filters&quot; checkbox could help users avoid
+the need for a dialog in future cases (though holding down say the control key
+when dragging could always require it). 
+
+As above, holding down the key when dragging might ideally change the text of
+the toolbar so one knew what was going to happen after dropping.
+
+Alternatively, or better yet, in addition, right-clicking a folder in the
+toolbar could indicate what the active filter was for this merge mode and allow
+resetting it.
+
+3) CRITERIA DISCUSSION
+
+<span class="quote">&gt; &quot;if one match is found - it is still important which criteria of the original
+&gt; email is relevant (that's the whole point of the Template Screen); so I would
+&gt; not (at least initially) try to do anything clever and parse the existing
+&gt; filter rules to &quot;guess&quot; what other criteria to use.&quot;</span >
+
+In my view, the fight against spam via filters is only effective to the extent
+that extra steps can be avoided, at least after one has set some default
+behavior.
+
+But I am not envisaging any complex parsing here.
+
+The first idea does not involve any parsing. When you are in Mozilla's normal
+&quot;Filter Rules&quot; dialog, the default behavior when you switch from say &quot;Subject&quot;
+to &quot;From&quot; is to erase whatever you already started typing in that area.  My
+idea here is to override this behavior to retrieve the currently highlighted
+email's properties. So if I switch to &quot;From&quot;, it will pull the &quot;From&quot; from the
+current email. I think this is a far more useful behavior than the default in
+TB which simply empties the text, or requiring an intermediate dialog. (I would
+also like to see this work with the useful Filtaquilla extesion items, e.g.,
+Subject Regex would pull the current Subject, though escaping for regex special
+chars. by default.) 
+
+If one wanted a new behavior (e.g., to copy from one highlighted field to
+another), I think they can be added as new criteria rules in this Filter Rules
+dialog--e.g., &quot;To (based on From)&quot;.
+
+Note that your template behavior of setting both &quot;From&quot; and &quot;To&quot; can be
+replicated here as well since there is an option (added by Filtaquilla?) for
+&quot;From, To, Cc, or Bcc&quot;.
+
+But when one really does need to group multiple rules into a template (e.g.,
+checking address book and the subject), I think this can be achieved by another
+option available on the toolbar folder-specific context-menu, allowing you to
+choose which filter pattern is chosen by default (if any) when in non-merge
+mode and dragging to that folder.
+
+And when one is not in merge mode, and does not have any filters specified for
+non-merge mode, I still think it is useful to be able to be brought to the
+filters dialog without needing to go through the Assistant (at least if
+changing the criteria in the TB Filter Rules dialog could work as described
+above to grab from the current email's contents as relevant by any change or
+addition of criteria). Rather than requiring one to temporarily disable the
+QuickFilters Assistant, the toolbar folder context menu (and/or a global
+preference) could determine whether the Template dialog appears when no filter
+is set for merge mode or non-merge mode.
+
+<span class="quote">&gt; &quot;As regards  higher granularity for the criteria - this is a bit of a sticky
+&gt; one, as one the one hand I want to keep the template screen &quot;light weight&quot; so
+&gt; there is not too much thinking &amp; clicking involved; overcrowding with many
+&gt; checkboxes / options would do just that. On the other hand it would be dead
+&gt; handy if the user could make her own templates - so maybe that is something
+&gt; for another bug.&quot;</span >
+
+I think the above folder-aware proposals would avoid my need for additional
+templates, but I think this ought to be possible without too much complexity by
+patterning it after the Message Filters dialog: just list the choices, but also
+have buttons to Add New, Edit, etc.
+
+<span class="quote">&gt; &quot;As regards &quot;merging&quot; the rules, the existing Templates would
+&gt; already be quite good, e.g. if I have post from a mailing list which uses
+&gt; different keywords in subject lines, e.g.
+&gt; 1. [mozilla reviews]
+&gt; 2. [AMO editors]
+&gt; say I have created a filter with rule 1. (using the subject rule)
+&gt; later I decide I want a filter based on 2 - again using the subject rule it
+&gt; would open the existing filter and add if subject contains [AMO editors] 
+&gt; (using the or condition)&quot;</span >
+
+Sure, though I don't understand the part about the brackets. There don't appear
+to be any brackets when creating such a Subject rule though the Assistant seems
+to suggest there will be. I guess if the Assistant allows editing of templates,
+only single-filter rules or rules exclusively using OR could be available when
+in merge mode.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25199.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-05 07:29:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >A few replies, off-the cuff. Hopefully we will be able to discuss these in more
+detail. Just as a general comment; I will still need to balance your
+suggestions with the need of keeping the tool simple enough for the average
+user and the limited amount of time that I can give to developing and
+supporting complicated features - so if i have a choice of 2 solutions to
+resolve a particular requirement, I will usually pick the &quot;simpler&quot; / more
+efficient one. 
+
+That said, let me get to on to some detail...
+
+(In reply to <a href="show_bug.cgi@id=25199.html#c2">comment #2</a>)
+<span class="quote">&gt; Sorry for the long discussion, but I've tried to give it a fair bit of thought.
+&gt; I think I really prefer configuring things by folder, as this seems it would
+&gt; work well with the already-existing QuickFolders context menu.</span >
+
+hmm, not sure what you mean, I do not intend to introduce &quot;Meta&quot;-behavior that
+shows different options depending on which folder you drag mail to; (If this is
+what you mean) to program and configure this would simply be more work than
+benefit.
+
+<span class="quote">&gt; 1) RULE MERGING DISCUSSION
+&gt; 
+&gt; &gt; &quot;Also what if the user wants
+&gt; &gt; to create a separate rule, should there be a choice in this case?&quot;&quot;
+&gt; 
+&gt; Maybe the best solution (both allowing UI visibility as well as &quot;set and
+&gt; forget&quot; convenience) would be to have the default behavior be folder-specific
+&gt; with the choice between merging or not merging by default being changeable when
+&gt; right-clicking the folder in the toolbar. So if I drag to my Junk folder, it
+&gt; could say merge by default (assuming a target folder filter exists), but
+&gt; dragging to Work would create separate rules. </span >
+
+So what you are saying is that I only suggest certain templates based on target
+folder type. This might be beneficial if there were a lot of different
+templates (not just 5) but even then I am not to sure whether it would not just
+overcomplicate things. I would put that at the bottom of the priority list.
+
+<span class="quote">&gt; ... in cases when the Criteria Template (see below) for
+&gt; the given folder involved multiple AND criteria which could not be readily
+&gt; merged (e.g., if I had two Trash folders on the toolbar, one for single-rule
+&gt; junk, and one for multiple rules, e.g., to confirm that the user was not in my
+&gt; address book before deleting a message with the subject &quot;Hello&quot;).</span >
+
+There needs to be a discussion of AND versus OR anyway, initially I would only
+attempt to merge using the OR rule. This would also mean avoiding merging with
+any rule that contains &quot;AND&quot; as operator - for this case I prefer the user to
+go and edit the rule manually. There _could_ be an alert for such filters but
+not sure how beneficial it would be.
+
+I know that filters do actually support &quot;mixing&quot; AND and OR, but currently
+there is no user interface to &quot;build&quot; or edit such rules. For the moment, let's
+concentrate on the OR case. More complicated behavior could be discussed in
+separate bugs (after initial implementation or beta)
+
+<span class="quote">&gt; 2) TARGET FOLDER DISCUSSION
+&gt; 
+&gt; &gt; &quot;Potentially it is complex, but initially it can be just based on the target 
+&gt; &gt; folder...&quot;
+&gt; 
+&gt; Yes, sounds good. I think you'd also have to decide whether to support Move to
+&gt; Folder, Copy to Folder, etc. as options. </span >
+
+True, and this can be based on the action of the user (whether [s]he moves or
+copied the mails). There is a plan to also create filters based on adding Tags,
+but that one is for the future and out of scope for this bug.
+
+<span class="quote">&gt; Hopefully, it could find the target even if it is not the first step (since,
+&gt; e.g., I like to mark junk as read before moving it to the Trash, so it doesn't
+&gt; alert me in the same way as there are new messages, but so that it isn't fully
+&gt; deleted in case someone later informs me that a message was missing).</span >
+
+Sorry, that went over my head :) Anyway, the action that creates the merge is
+&quot;move to folder&quot; so marking as junk is not even detected. But if &quot;Mark as Junk&quot;
+would move mail to the Junk folder automatically this might be something that
+qF wants to detect (out of scope for this bug)
+
+<span class="quote">&gt; 
+&gt; &gt; &quot;if two or more matches are found - well ideally it would try to consolidate
+&gt; &gt; them all into one, but again, too much work for the one try, so I propose I
+&gt; &gt; display a listbox with just the matching filter names; and the user can select
+&gt; &gt; which one to choose.&quot;
+&gt; 
+&gt; Good idea. The dialog might be subdivided perhaps by &quot;Copy to Folder&quot;, &quot;Move to
+&gt; Folder&quot;, &quot;Forward to Folder&quot; filters depending on how the Target folder was
+&gt; specified for quicker identification.</span >
+
+sounds complicated. I imagine a simple listbox with names, and when you click
+on an item you get a detail pane summarizing the conditions of the selected
+one. imo, the filter action (move/copy/fwd) is not really so important (but
+could be displayed as part of the named list if you think it is valuable)
+
+<span class="quote">&gt; I think a &quot;Use this choice for future filters&quot; checkbox could help users avoid
+&gt; the need for a dialog in future cases (though holding down say the control key
+&gt; when dragging could always require it). </span >
+
+It already does this with the template (selects last template chose, e.g. by
+subject). As regards merging, the manual step of selecting the filter should
+also always be there to avoid nasty surprises.  If the user learns &quot;to trust&quot;
+the process [s]he can simply click [Continue&gt;] always.
+
+I am all for making things easy but also don't want to take away control from
+the users.
+
+<span class="quote">&gt; 
+&gt; As above, holding down the key when dragging might ideally change the text of
+&gt; the toolbar so one knew what was going to happen after dropping.</span >
+
+I wouldn't propose to look at modifiers as a source for different &quot;templating /
+merging&quot; behavior as there is already an abundance of key modifiers attached to
+drag'n drop for emails (move / copy) and QuickFolders. This would just
+complicate the issue too much and wouldn't be worth the effort.
+
+<span class="quote">&gt; 
+&gt; Alternatively, or better yet, in addition, right-clicking a folder in the
+&gt; toolbar could indicate what the active filter was for this merge mode and allow
+&gt; resetting it.</span >
+
+I think this is a good idea - right-click a folder (from folder-tree) to find
+any related filters (target and source). Can you suggest this as a separate bug
+please? It could then also be integrated into QuickFolders. Potentially this is
+a complicated one, but it is definitely valuable!
+
+<span class="quote">&gt; 
+&gt; 3) CRITERIA DISCUSSION
+&gt; 
+&gt; &gt; &quot;if one match is found - it is still important which criteria of the original
+&gt; &gt; email is relevant (that's the whole point of the Template Screen); so I would
+&gt; &gt; not (at least initially) try to do anything clever and parse the existing
+&gt; &gt; filter rules to &quot;guess&quot; what other criteria to use.&quot;
+&gt; 
+&gt; In my view, the fight against spam via filters is only effective to the extent
+&gt; that extra steps can be avoided, at least after one has set some default
+&gt; behavior.
+&gt; 
+&gt; But I am not envisaging any complex parsing here.
+&gt; 
+&gt; The first idea does not involve any parsing. When you are in Mozilla's normal
+&gt; &quot;Filter Rules&quot; dialog, the default behavior when you switch from say &quot;Subject&quot;
+&gt; to &quot;From&quot; is to erase whatever you already started typing in that area.  My
+&gt; idea here is to override this behavior to retrieve the currently highlighted
+&gt; email's properties.</span >
+
+Yes, you are mirroring my ideas exactly - I was thinking about this for a long
+time - dropping down a different filter criteria _should_ auto-populate the
+value field. Again, please raise a separate bug in quickFilters, as this is
+independant from the &quot;Merge&quot; discussion. I am trying to compartmentalize this
+work in order to track and implement everything faster and with less regression
+issues.
+
+<span class="quote">&gt; So if I switch to &quot;From&quot;, it will pull the &quot;From&quot; from the
+&gt; current email. I think this is a far more useful behavior than the default in
+&gt; TB which simply empties the text, or requiring an intermediate dialog. </span >
+
+Did you notice the parsing I have implemented for the &quot;Subject&quot; template? It
+parses out {bracketed expressions}, which I find quite useful... but I am open
+to more ideas in the field of retrieving valid info from the mail headers.
+
+
+<span class="quote">&gt; (I would also like to see this work with the useful Filtaquilla extesion items, e.g.,
+&gt; Subject Regex would pull the current Subject, though escaping for regex special
+&gt; chars. by default.) </span >
+
+Regex behavior is complicated, and not well understood by many users. So let's
+put that one on the back burner.
+
+<span class="quote">&gt; 
+&gt; If one wanted a new behavior (e.g., to copy from one highlighted field to
+&gt; another), I think they can be added as new criteria rules in this Filter Rules
+&gt; dialog--e.g., &quot;To (based on From)&quot;.
+&gt; 
+&gt; Note that your template behavior of setting both &quot;From&quot; and &quot;To&quot; can be
+&gt; replicated here as well since there is an option (added by Filtaquilla?) for
+&gt; &quot;From, To, Cc, or Bcc&quot;.
+&gt; 
+&gt; But when one really does need to group multiple rules into a template (e.g.,
+&gt; checking address book and the subject), I think this can be achieved by another
+&gt; option available on the toolbar folder-specific context-menu, allowing you to
+&gt; choose which filter pattern is chosen by default (if any) when in non-merge
+&gt; mode and dragging to that folder.</span >
+
+that's way complicated; even I find this hard to understand, how would a mere
+mortal [read &quot;user&quot;]? :)
+
+<span class="quote">&gt; 
+&gt; And when one is not in merge mode, and does not have any filters specified for
+&gt; non-merge mode, I still think it is useful to be able to be brought to the
+&gt; filters dialog without needing to go through the Assistant (at least if
+&gt; changing the criteria in the TB Filter Rules dialog could work as described
+&gt; above to grab from the current email's contents as relevant by any change or
+&gt; addition of criteria). Rather than requiring one to temporarily disable the
+&gt; QuickFilters Assistant, the toolbar folder context menu (and/or a global
+&gt; preference) could determine whether the Template dialog appears when no filter
+&gt; is set for merge mode or non-merge mode.</span >
+
+If I understand you correctly, you say you want to disable the Filter Template
+behavior for certain folders? Not sure, this means you would like to leave on
+Filter Teach mode for a long time (I usually only have it on for 2 or 3 emails,
+when I tidy up my inbox). 
+
+Or do you mean we only activate the filter assistant &quot;If there is already a
+filter with this target folder defined&quot;? Not sure I follow you there. But I am
+reluctant (for the reasons outlined above) to expose different behaviors (and
+configuration options) for qF on a per folder basis. The behavior should be
+purely based on whether there are already filters defined or not - if not, the
+step of &quot;choose filter to merge&quot; will simply be omitted.
+
+<span class="quote">&gt; 
+&gt; &gt; &quot;As regards  higher granularity for the criteria - this is a bit of a sticky
+&gt; &gt; one, as one the one hand I want to keep the template screen &quot;light weight&quot; so
+&gt; &gt; there is not too much thinking &amp; clicking involved; overcrowding with many
+&gt; &gt; checkboxes / options would do just that. On the other hand it would be dead
+&gt; &gt; handy if the user could make her own templates - so maybe that is something
+&gt; &gt; for another bug.&quot;
+&gt; 
+&gt; I think the above folder-aware proposals would avoid my need for additional
+&gt; templates, but I think this ought to be possible without too much complexity by
+&gt; patterning it after the Message Filters dialog: just list the choices, but also
+&gt; have buttons to Add New, Edit, etc.</span >
+
+Can you be more concrete? Again I am not sure which dialog or page you refer
+to, maybe talk me through one example? Or attach a screenshot...
+
+<span class="quote">&gt; 
+&gt; &gt; &quot;As regards &quot;merging&quot; the rules, the existing Templates would
+&gt; &gt; already be quite good, e.g. if I have post from a mailing list which uses
+&gt; &gt; different keywords in subject lines, e.g.
+&gt; &gt; 1. [mozilla reviews]
+&gt; &gt; 2. [AMO editors]
+&gt; &gt; say I have created a filter with rule 1. (using the subject rule)
+&gt; &gt; later I decide I want a filter based on 2 - again using the subject rule it
+&gt; &gt; would open the existing filter and add if subject contains [AMO editors] 
+&gt; &gt; (using the or condition)&quot;
+&gt; 
+&gt; Sure, though I don't understand the part about the brackets. There don't appear
+&gt; to be any brackets when creating such a Subject rule though the Assistant seems
+&gt; to suggest there will be. </span >
+
+Quite a few mailing lists (and also a bunch of support hotlines) use bracketed
+prefixes to make their emails easy to find. Here are some example subject lines
+from my inbox:
+
+Re: [amo-editors] [amo-admin-reviews] Mozilla Add-ons: Image Assistant 0.2.8.16
+Preliminary Reviewed
+[beta.babelzilla.org] Approved to join translation team: French
+[QuickFolders] [<a href="show_bug.cgi@id=25209.html" title="NEW - Grouping of Tabs - categories vs. groups">Bug 25209</a>] Grouping of Tabs - categories vs. groups
+
+I find it handy that I do not need to delete the (changing parts of the
+subject) every time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25199.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-21 05:14:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-sm-1.6.2pre21.xpi" name="attach_7526" title="1.6.2, prerelease 21">Created an attachment (id=7526)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7526&amp;action=edit" title="1.6.2, prerelease 21">[details]</a></span>
+1.6.2, prerelease 21
+
+Here is a very rough version of what I hope will be usable for this feature
+request. If a matching filter is found the list of matches is displayed. It is
+possible to select _one_ or no entry from the list, then the button [Next] has
+to be clicked.
+
+If an item is selected the button text changes to [Edit Filter...]
+If no item is selected the button text changes to [Create Filter...]
+
+On [Edit Filter...] the selected filter will be opened for editing and the new
+conditions are added automatically. At this stage, I do not check for
+duplicated conditions and they shouldn't really happen as a matching filter
+should already have moved the mail.
+
+There are 2 known problems at the moment: changes to the Edited Filter are
+immediate, so if in Edit Filter the [Cancel] button is clicked the new
+conditions are still added and not rolled back. Also, on leaving the dialog,
+the edited filter is not highlighted in the filters list. Note that all new
+strings are currently hard coded in English.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25199.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-22 01:48:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25199.html#c4">comment #4</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="quickFilters-tb-sm-1.6.2pre21.xpi" name="attach_7526" title="1.6.2, prerelease 21">attachment (id=7526)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7526&amp;action=edit" title="1.6.2, prerelease 21">[details]</a></span> [details]
+&gt; 1.6.2, prerelease 21
+&gt; 
+&gt; Here is a very rough version of what I hope will be usable for this feature
+&gt; request. If a matching filter is found the list of matches is displayed. It is
+&gt; possible to select _one_ or no entry from the list, then the button [Next] has
+&gt; to be clicked.
+&gt; 
+&gt; If an item is selected the button text changes to [Edit Filter...]
+&gt; If no item is selected the button text changes to [Create Filter...]
+&gt; </span >
+One thing I would like to start thinking about, how would you provide this
+functionality (merge one filter with another) from the filter list dialog? One
+problem is that it is already a very overcrowded dialog, so any new tools added
+would likely require a toolbar (e.g. something similar to Firefox History /
+Bookmarks layout).
+
+Then there are the following problems to solve:
+
+1. how to find out duplicates
+2. how to select which duplicates to merge (the new page on the filter
+assistant might come into play here or serve as a template)
+3. special rules for (re)naming the filter - this is lower priority as I would
+display the Edit Filter dialog after a merge operation anyway.
+
+Another thought is that merging filters with same action(s) usually only would
+make sense if existing conditions are &quot;or-ed&quot; together. It usually wouldn't
+make sense to &quot;extend&quot; a filter that has &quot;and&quot; conditions, e.g.
+
+old rule
+&quot;if sender is x and subject is t&quot;
+new rule
+&quot;if sender is yy&quot;
+
+the UI does not support building
+(&quot;if sender is x and subject is t&quot;) OR (&quot;if sender is yy&quot;)
+and building a new condition
+&quot;if sender is x and subject is t AND if sender is yy&quot;
+won't work either.
+
+So for the moment, should merging filters exclude filters with an &quot;and&quot;
+condition?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25199.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-25 08:37:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-sm-1.6.2pre36.xpi" name="attach_7532" title="1.6.2 prerelease 36">Created an attachment (id=7532)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7532&amp;action=edit" title="1.6.2 prerelease 36">[details]</a></span>
+1.6.2 prerelease 36
+
+This version includes a [Merge] button on the filters list; it should only work
+for filters that have the same _first_ action (usually move to folder).
+
+I will probably simplify the interface a little but not take out the second
+step.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25199.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-26 10:13:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-sm-1.6.2pre45.xpi" name="attach_7535" title="1.6.2 pre 46">Created an attachment (id=7535)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7535&amp;action=edit" title="1.6.2 pre 46">[details]</a></span>
+1.6.2 pre 46
+
+This one has the Merge button doing a real merge, including the deletion of the
+merged folders. It will insert the new filter at the position of the &quot;Target&quot;
+Filter that you get to select on the assistant screen. 
+
+ON the list you can now select multiple filters even if they do not move to the
+same folder - the ones that do not match will generate a warning and then once
+confirmed they will be removed from the selection and only matching ones are
+submitted to the assistant screen.
+
+The merged filter will be named after the one selected on the assistant, adding
+the string &quot; +m&quot;. After successful creation the Filter List is refreshed, so
+that the new filter will be visible.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25199.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-27 05:49:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-sm-1.6.2pre48.xpi" name="attach_7536" title="1.6.2 pre 48">Created an attachment (id=7536)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7536&amp;action=edit" title="1.6.2 pre 48">[details]</a></span>
+1.6.2 pre 48
+
+Fixes some minor bugs with the checkboxes.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25199&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

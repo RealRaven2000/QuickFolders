@@ -1,0 +1,138 @@
+Warning: TypeError: anonymous function does not always return a value
+Source file: chrome://messenger/content/messengercompose/bigFileObserver.js
+Line: 209
+ ----------
+Warning: TypeError: anonymous function does not always return a value
+Source file: chrome://messenger/content/messengercompose/bigFileObserver.js
+Line: 237
+ ----------
+Warning: SyntaxError: test for equality (==) mistyped as assignment (=)?
+Source file: chrome://smilie/content/smilieDialog.js
+Line: 36, Column: 22
+Source code:
+ if (dir = chooseDir()){ 
+ ----------
+Warning: TypeError: function loadImages does not always return a value
+Source file: chrome://smilie/content/smilieDialog.js
+Line: 43
+ ----------
+Warning: SyntaxError: test for equality (==) mistyped as assignment (=)?
+Source file: chrome://smilie/content/smilieConfig.js
+Line: 16, Column: 22
+Source code:
+ if (dir = chooseDir()){ 
+ ----------
+Warning: SyntaxError: test for equality (==) mistyped as assignment (=)?
+Source file: chrome://autoresizeimage/content/AutoResizeImage0.js
+Line: 299, Column: 39
+Source code:
+   while ( elt = results.iterateNext() ) { 
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 564, Column: 60
+Source code:
+.createUnique(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764); // ensures name is unique 
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 564, Column: 60
+Source code:
+.createUnique(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764); // ensures name is unique 
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 564, Column: 60
+Source code:
+.createUnique(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764); // ensures name is unique 
+ ----------
+Warning: TypeError: function isToResize does not always return a value
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 900
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 2319, Column: 60
+Source code:
+reateUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664); // ensures name is unique 
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 2319, Column: 60
+Source code:
+reateUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664); // ensures name is unique 
+ ----------
+Warning: SyntaxError: octal literals and octal escape sequences are deprecated
+Source file: chrome://autoresizeimage/content/AutoResizeImage.js
+Line: 2319, Column: 60
+Source code:
+reateUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664); // ensures name is unique 
+ ----------
+Warning: TypeError: anonymous function does not always return a value
+Source file: chrome://sendlater3/content/composeToolbar.js
+Line: 95
+ ----------
+Warning: SyntaxError: applying the 'delete' operator to an unqualified name is deprecated
+Source file: chrome://stationery/content/stationery-composer.js
+Line: 404, Column: 11
+Source code:
+    delete converter; 
+ ----------
+Warning: function get_fastFind does not always return a value
+Source file: chrome://stationery/content/bindings/editor.xml
+Line: 26
+ ----------
+Warning: function get_finder does not always return a value
+Source file: chrome://stationery/content/bindings/editor.xml
+Line: 49
+ ----------
+SmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 8:53:58.693  [0 ms]	 
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 8:53:58.693  [0 ms]	 
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 8:53:58.693  [0 ms]	 
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 8:53:58.693  [0 ms]	 
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 8:53:58.693  [0 ms]	 
+SmartTemplate4.init() ends.
+ ----------
+Warning: ReferenceError: reference to undefined property a[1]
+Source file: resource://sendlater3/dateparse.jsm -> resource://sendlater3/sugar.min.js
+Line: 69
+ ----------
+Warning: ReferenceError: reference to undefined property g.ampm
+Source file: resource://sendlater3/dateparse.jsm -> resource://sendlater3/sugar.min.js
+Line: 60
+ ----------
+Warning: ReferenceError: reference to undefined property b[g]
+Source file: resource://sendlater3/dateparse.jsm -> resource://sendlater3/sugar.min.js
+Line: 67
+ ----------
+SmartTemplate4 8:54:0.312  [1619 ms]	 
+NotifyComposeBodyReady: Stationery 0.8+ - no action required.
+ ----------
+SmartTemplate4 8:54:0.654  [342 ms]	 
+AddonManager: SmartTemplate4 extension's version is 0.9.4
+ ----------
+SmartTemplate4 8:54:0.654  [0 ms]	 
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 0.9.4
+Running on Thunderbird Version 24.3.0
+ ----------
+SmartTemplate4 8:54:0.654  [0 ms]	 
+AddonManager: SmartTemplate4 extension's version is 0.9.4
+ ----------
+Warning: ReferenceError: reference to undefined property maxContacts.value
+Source file: chrome://gcontactsync/content/Sync.js
+Line: 410
+ ----------
+Warning: ReferenceError: reference to undefined property this.mRemote.mConflicted
+Source file: chrome://gcontactsync/content/SyncSummaryData.js
+Line: 83

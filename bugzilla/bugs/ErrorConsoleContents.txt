@@ -1,0 +1,1456 @@
+SmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 10:54:37.169  [0 ms]	 
+SmartTemplate4.init() ends.
+ ----------
+SmartTemplate4 {FUNCTIONS} 10:54:37.192  [23 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 10:54:37.406  [214 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 10:54:37.406  [0 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.410  [4 ms]	 
+SmartTemplate4.regularize(%X:=today%<br>--------------Original Message--------------%X:=today%<br>Subject: %subject%%X:=today%<br>Date: %date%%X:=today%<br>From: %from%%X:=today%<br>To: %to%{<br>CC: %cc%})  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [61 ms]	 
+regularize.chkRw(%cc%, cc, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%subject%, subject, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%date%, date, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.471  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.472  [1 ms]	 
+regularize.chkRw(%from%, from, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.472  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.472  [0 ms]	 
+regularize.chkRw(%to%, to, )
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.472  [0 ms]	 
+regularize.chkRw(%cc%, cc, )
+ ----------
+SmartTemplate4 {MIME} 10:54:37.472  [0 ms]	 
+mimeDecoder.split()
+ ----------
+SmartTemplate4 {MIME} 10:54:37.472  [0 ms]	 
+mimeDecoder.split()
+ ----------
+SmartTemplate4 {MIME} 10:54:37.472  [0 ms]	 
+mimeDecoder.split()
+ ----------
+SmartTemplate4 {REGULARIZE} 10:54:37.472  [0 ms]	 
+SmartTemplate4.regularize(<br>--------------Original Message--------------<br>Subject: RE: GenProductID, SynonymID and SynonymTypeID question<br>Date: Mon, 25 Jun 2012 12:51:46 -0400 (EDT)<br>From: Aaron DeBerry &lt;aaron.deberry@lexi.com&gt;<br>To: 'Michael Rothaus' &lt;MRothaus@ReliableEmail.com&gt;<br>CC: 'Integration Support' &lt;integration.support@lexi.com&gt;)  ...ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS} 10:54:37.473  [1 ms]	 
+SmartTemplate4.delReplyHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.473  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.473  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.473  [0 ms]	 
+deleteNodeTextOrBR() - deletes node div class matched: moz-cite-prefix  div
+_________DIV_________
+innerHTML: On 2012.06.25 12:51, Aaron DeBerry wrote:<br>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.474  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.474  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.474  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Good afternoon Michael,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.474  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.474  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I apologize for the long delay in getting back to you on this.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.475  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.476  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.476  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > We have been able to duplicate this issue, and we are working on a fix.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.476  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.477  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.477  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.477  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Currently, I am anticipating an updated .NET dll that should correct this
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.477  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.477  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > to be available in our July release, but I will have more information
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > available for you when we are closer to our release date (which is
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > scheduled for July 13th).
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.478  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.479  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.480  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.480  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Thank you.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.480  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.480  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.480  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Aaron DeBerry
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > CDS Implementation Support
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Wolters Kluwer Health | Clinical Solutions
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.481  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Lexicomp / Medi-Span / Facts & Comparisons
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.482  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.483  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.483  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.483  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.483  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.483  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > -----Original Message-----
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > From: Michael Rothaus [mailto:MRothaus@ReliableEmail.com]
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Sent: Sunday, June 24, 2012 11:23 PM
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.484  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > To: Aaron DeBerry
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Subject: Re: GenProductID, SynonymID and SynonymTypeID question
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.485  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Hi Aaron,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > What is the status of your research?
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.486  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I'd be happy to discuss it further with you or any of your staff by phone.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.487  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Thanks,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Mike Rothaus
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > phone: 610-308-8488
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.488  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > --------------Original Message--------------
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Subject: RE: GenProductID, SynonymID and SynonymTypeID question
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.489  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Date: Mon, 11 Jun 2012 16:27:15 -0400 (EDT)
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > From: Aaron DeBerry <aaron.deberry@lexi.com>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > To: 'Michael Rothaus' <MRothaus@ReliableEmail.com>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.490  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > CC: 'Mark Dachille' <mark.dachille@lexi.com>, 'Integration Support'
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > <integration.support@lexi.com>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.491  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Good afternoon Mike,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > My name is Aaron DeBerry, and I am an Implementation Support engineer here
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.492  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > at Lexicomp.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I apologize for the difficulty you are experiencing with our product.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.493  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > We are researching this now, and I hope to have more information for you
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > soon.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.494  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.495  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.495  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Thank you.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.495  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.495  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.495  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Aaron DeBerry
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > -----Original Message-----
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.496  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > From: Michael Rothaus [mailto:MRothaus@ReliableEmail.com]
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Sent: Friday, June 08, 2012 9:21 AM
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > To: Mark Dachille
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.497  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Subject: Re: GenProductID, SynonymID and SynonymTypeID question
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I think I see the problem with GetPackagedProduct.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.498  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > It should have returned a SynonymTypeID of 60, not 59 for
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > PackagedProductID=00173069600
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.499  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > --------------Original Message--------------
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Subject: GenProductID, SynonymID and SynonymTypeID question
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.500  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Date: Fri, 08 Jun 2012 08:41:32 -0400
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > From: Michael Rothaus <MRothaus@ReliableEmail.com>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > To: Mark Dachille <mark.dachille@lexi.com>
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.501  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Hi Mark,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.502  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I have a technical question for you. We offer a drug selection for our
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > users. After they select the drug, we store the GenProductID,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > SynonymTypeID and SynonymID to our database.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.503  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Later on, when we have to retrieve the drug name (Description), we make a
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > call to:
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.504  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.505  [1 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.505  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.505  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > GetGenericProductSynonyms(GenProductID, SynonymTypeID)
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.505  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.505  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > which returns all the synonyms. So we loop through the synonyms until we
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > match the SynonymID from our database, and then display the synonym's
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.506  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > "Description" as our Drug Name field in our EMR.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > First question...is this the right way to get the displayed drug name? Is
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.507  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > there some other API call which can return us the drug name directly (e.g.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > that takes GenProductID, SynonymTypeID and SynonymID as parameters)?
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.508  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Next, and more important question...we just recently added e-prescribe
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > functionality to our EMR. We use a 3rd-party vendor. When the doctor
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > e-prescribes a medication, we get back the NDCID (called PackagedProductID
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.509  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > in LexiComp).
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > I then call GetPackagedProduct(packagedProductId) to get the returned
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.510  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > GenProductID, SynonymTypeID and SynonymID so we can store it in our
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > database.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.511  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Unfortunately, I have come across examples where GetGenericProductSynonyms
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > does not have the SynonymID in its list. I think it is a problem with
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > LexiComp. Here is a concrete example:
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.512  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > PackagedProductID = 00173069600
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.513  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > GetPackagedProduct returns:
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > GenProductID = 7828
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > SynonymTypeID = 59
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.514  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > SynonymID = 38134
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > however, calling GetGenericProductSynonyms(GenProductID, SynonymTypeID)
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.515  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > only returns with a SynonymID = 38061. I would have expected 38134 to be
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > one of the returned records but it is not.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.516  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > What am I doing wrong? Or is this a problem with the consistency of the
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > data in LexiComp?
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.517  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Thanks,
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > Mike
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > phone: 610-308-8488 (in case it is easier to discuss interactively)
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.518  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > This E-mail message, including all attachments,  is for the sole use of the intended recipient(s) and may contain confidential and privileged information. Any unauthorized review, use, disclosure or distribution is prohibited. If you are not the intended recipient, please contact the sender by reply E-mail, and destroy all copies of the original message.
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.519  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.520  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.520  [0 ms]	 
+deleteNodeTextOrBR() - deletes node #text
+_________#text_________
+nodeValue: > 
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.520  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.520  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 10:54:37.520  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS} 10:54:37.521  [1 ms]	 
+SmartTemplate4.delReplyHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 10:54:37.522  [1 ms]	 
+identityName:   Michael Rothaus <MRothaus@ReliableEmail.com>
+key:            id2
+------------------------------------------------
+sigOnReply:     false
+sigOnForward:   false
+sigBottom:      true
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    false
+replyOnTop:     1
+SmartTemplate4.sigIsDefined: false

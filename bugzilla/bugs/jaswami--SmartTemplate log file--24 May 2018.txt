@@ -1,0 +1,45 @@
+VSmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 15:41:32.566  [0 ms]	 
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 15:41:32.566  [0 ms]	 
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 15:41:32.570  [4 ms]	 
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 15:41:32.570  [0 ms]	 
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 15:41:32.570  [0 ms]	 
+SmartTemplate4.init() ends.
+ ----------
+SmartTemplate4 15:41:32.572  [2 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.5.2pre45
+ ----------
+SmartTemplate4 15:41:32.572  [0 ms]	 
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 1.5.2pre45
+Running on Thunderbird Version 52.7.0
+ ----------
+SmartTemplate4 15:41:32.572  [0 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.5.2pre45
+ ----------
+SmartTemplate4 15:41:32.784  [212 ms]	 
+NotifyComposeBodyReady
+ ----------
+Thu May 24 2018 15:41:32
+Error: TypeError: this.NotifyComposeBodyReadyNew is not a function
+Source file: chrome://messenger/content/messengercompose/MsgComposeCommands.js
+Line: 309
+ ----------
+SmartTemplate4 15:41:32.868  [84 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+Thu May 24 2018 15:41:32
+Warning: editor.selectionController completeMove(forward = false) failed
+Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsISelectionController.completeMove]
+Source code:
+insertTemplate   chrome://smarttemplate4/content/smartTemplate-compose.js:1377:11 notifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:557:5 SmartTemplate4.stateListener.NotifyComposeBodyReady/<@chrome://smarttemplate4/content/smartTemplate-main.js:399:18 
+

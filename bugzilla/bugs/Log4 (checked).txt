@@ -1,0 +1,149 @@
+SmartTemplate4 {FUNCTIONS} [logTime init]
+onLoad() ...
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.295  [1 ms]	 
+addIdentity(id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.295  [0 ms]	 
+prefCloneAndSetup([object XULElement], .id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.296  [1 ms]	 
+prefCloneAndSetup COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.321  [25 ms]	 
+addIdentity COMPLETE
+ ----------
+SmartTemplate4 18:11:17.321  [0 ms]	 
+cleanupUnusedPrefs ()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.325  [4 ms]	 
+switchIdentity(common) COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:17.351  [26 ms]	 
+onLoad() COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.660  [63295 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 18:11:24.719  [59 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.719  [0 ms]	 
+insertTemplate(startup: true, flags: [object Object])
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.720  [1 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.720  [0 ms]	 
+testSignatureVar() match = null
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.720  [0 ms]	 
+extractSignature()
+START==========  extractSignature([nsIMsgIdentity: id1],defined=, compose type=fwd)  ========
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.721  [1 ms]	 
+getSmartTemplate(fwd, id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.721  [0 ms]	 
+classGetHeaders(imap-message://joaosilva%40ambitermo.com@mail.ambitermo.com/INBOX#834)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.920  [199 ms]	 
+classGetHeaders(imap-message://joaosilva%40ambitermo.com@mail.ambitermo.com/INBOX#834)
+ ----------
+SmartTemplate4 18:11:24.966  [46 ms]	 
+getLocale() returns: pt-PT
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.969  [3 ms]	 
+SmartTemplate4.delForwardHeader()
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.969  [0 ms]	 
+Retrieved Delimiter Token from mime properties: -------- Mensagem Original --------
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.970  [1 ms]	 
+Running Loop to remove unnecessary whitespace..
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.970  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.970  [0 ms]	 
+deleting node: null
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.971  [1 ms]	 
+deleting node: null
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.971  [0 ms]	 
+deleting node: -------- Mensagem Original --------
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.971  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.971  [0 ms]	 
+Remove the original header...
+ ----------
+SmartTemplate4 {FUNCTIONS.DELFORWARDHEADER} 18:11:24.972  [1 ms]	 
+found moz-email-headers-table; deleting
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.972  [0 ms]	 
+deleteHeaderNode() - deleting TABLE
+<tbody><tr><th nowrap="" valign="BASELINE" align="RIGHT">Assunto: </th><td>Re: Cargas</td></tr><tr><th nowrap="" valign="BASELINE" align="RIGHT">Data: </th><td>Mon, 22 Sep 2014 10:39:14 +0100</td></tr><tr><th nowrap="" valign="BASELINE" align="RIGHT">De: </th><td>Eli Abreu &lt;eliabreu@ambitermo.com&gt;</td></tr><tr><th nowrap="" valign="BASELINE" align="RIGHT">Para: </th><td>Marcelo Tome &lt;marcelotome@ambitermo.com&gt;</td></tr><tr><th nowrap="" valign="BASELINE" align="RIGHT">CC: </th><td>João Silva &lt;joaosilva@ambitermo.com&gt;</td></tr></tbody>
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.972  [0 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+#text	
+
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.972  [0 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+BR	null
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.973  [1 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+BR	null
+ ----------
+SmartTemplate4 {DELETENODES} 18:11:24.973  [0 ms]	 
+deleteWhiteSpaceNodes() - deleted 0 nodes.
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.973  [0 ms]	 
+SmartTemplate4.delForwardHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:11:24.987  [14 ms]	 
+ search %cursor% in template: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:11:24.987  [0 ms]	 
+identityName:   João Silva <joaosilva@ambitermo.com>
+key:            id1 (uses Common)
+server{?}:      mail.ambitermo.com [imap]
+ ------------------------------------------------
+sigOnReply:     false
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.isSignatureSetup:false
+SmartTemplate4.sigInTemplate: false
+%sig% type: []
+compose case, is active? : forward, true
+------------------------------------------------
+SmartTemplate4: 0.9.6.1pre1
+Application: Thunderbird v24.6.0
+HostSystem: Windows NT 6.3; WOW64
+Stationery used: false
+
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.992  [5 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:11:24.992  [0 ms]	 
+ finished. 
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.992  [0 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:11:24.992  [0 ms]	 
+insertTemplate(startup) complete.

@@ -1,0 +1,1549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 21054 &ndash; Dragging msg to a Quickfolder with lots of Subfolders</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21054&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21054">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=21054">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21054">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_VERIFIED bz_component_General bz_bug_21054">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;21054</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Dragging msg to a Quickfolder with lots of Subfolders</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-12-23 13:59:39</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21054&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-12-23 13:59:39">
+  <input type="hidden" name="longdesclength" value="27">
+  <input type="hidden" name="id" value="21054">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Dragging msg to a Quickfolder with lots of Subfolders">Dragging msg to a Quickfolder with lots of Subfolders
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=21054.html">21054</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>VERIFIED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21054&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21054">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:info&#64;optitas.de">Tilman Jurk &lt;info&#64;optitas.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+            <option value="info&#64;optitas.de">info&#64;optitas.de</option>
+            <option value="luisalbondigas&#64;waitaminute.us">luisalbondigas&#64;waitaminute.us</option>
+            <option value="roberto.melino&#64;bassnet.it">roberto.melino&#64;bassnet.it</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="Small&#32;Menus.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Small Menus for big folder lists</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (44.62 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=21054.html#attach_5951"
+               title="Go to the comment associated with the attachment">2009-07-12 11:21</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=5951&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-1.9pre1.xpi"
+               title="View the content of the attachment">
+          <b>QuickFolders 1.9 Prerelease 1</b></a>
+
+          <span class="bz_attach_extra_info">
+              (177.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=21054.html#attach_6364"
+               title="Go to the comment associated with the attachment">2010-03-18 03:22</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6364&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=21054.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=21054&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21054&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=21054">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21054">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=21054">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=21054">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=21054.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2009-06-12 00:48
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+first of all thks for this great AddOn.
+I've encountered a (small) bug:
+If you have setup a QuickFolder which has a lot of subfolders and you want to
+drag'n drop a mail to a sub-folder which is not visible in the initial
+Sub-Folder list of the selected QuickFolder(-Tab) you cannot scroll down using
+the scroll-arrows shown on bottom of the list.
+Scrolling through the list if no mail is selected for drop works fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=21054.html#c1">
+            #1</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-07-11 17:17:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I've been meaning to report this myself. Thanks for reporting this, Tilman. 
+
+This is a great add-on, but this bug substantially reduces utility. 
+
+It would also be nice to be able to navigate and drop messages into
+sub-subfolders. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=21054.html#c2">
+            #2</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2009-07-11 21:41:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Found out that the QuickFolder bar will not hide when switching to Lightning
+(Calendar view)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=21054.html#c3">
+            #3</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2009-07-12 00:53:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for reporting - somebody reported this bug well before QuickFolders was
+added to Bugzilla. At that time I did not manage to resolve it, but I will look
+into it again - which version of TB is relevant for this one?
+
+As a workaround, you can add the following rule to userchrome.css:
+
+menupopup.QuickFolders-folder-popup menuitem {
+  line-height: 4px !important;
+  max-height: 14px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+you can also add a rule for font-size as well. This might remove the need for
+scrolling.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=21054.html#c4">
+            #4</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2009-07-12 00:55:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm currently using TB 2.0.0.22
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=21054.html#c5">
+            #5</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-07-12 02:05:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks Axel. 
+
+I'm also using TB 2.0.0.22.
+
+Unfortunately, I created a userchrome.css in
+..\[profile]\extensions\<a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>\chrome and added the css
+declaration that you so kindly shared but, no joy. 
+
+I'm working with years of mail and tons of subfolders and sub-subfolders. Yes,
+I could subdivide some of the longer branches. But even if I do that, then I'd
+be wanting to navigate down into the new sub-subfolders..
+
+Thanks very much though. I appreciate the effort in any case.
+
+(NB - I think that <a href="show_bug.cgi@id=21054.html#c2">Comment #2</a>, Tilman, may be a different bug, no?)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=21054.html#c6">
+            #6</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2009-07-12 11:21:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Small&#32;Menus.png" name="attach_5951" title="Small Menus for big folder lists">Created an attachment (id=5951)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=5951&amp;action=edit" title="Small Menus for big folder lists">[details]</a></span>
+Small Menus for big folder lists
+
+/*  tiny popup menus */
+menupopup.QuickFolders-folder-popup menuitem {
+  line-height: 4px !important;
+  max-height: 14px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size:8px;
+}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=21054.html#c7">
+            #7</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2009-07-12 11:24:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Craig, I think the location for userChrome.css should be here:
+
+C:\Documents and Settings\&lt;User Profile&gt;\Application
+Data\Thunderbird\Profiles\&lt;TB profile name&gt;\chrome
+
+and you are right, Tilman's bug from <a href="show_bug.cgi@id=21054.html#c2">Comment #2</a> should be submitted as new bug.
+Although you might argue that its a missing feature (to make QF invisible in
+LIghtning view) - personally I quite like the ability to click on a quick
+folder while I am in calendar view. Who knows, there might be new features
+possible that deal with dragging appointments to QF? I could imagine folders
+for appointments or somehow tying appointments to a customer folder might be
+helpful (??).
+
+I am open to suggestions there :-)
+
+I am attaching  a screen shot of my QF submenu after inserting the CSS above (+
+font-size:8px) in userChrome. When you expand a submenu, do you actually see
+the menu icons? I found that they do _not_ show up with the default theme (I
+use mostly crystal) - in TB2, something in most themes seems to actually enable
+the &quot;list-style-image:&quot; rules that I am using for styling icons; I haven't yet
+found out what that is. Please comment back when you have edited the userchrome
+file in the correct location.
+
+thanks,
+  Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=21054.html#c8">
+            #8</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-07-12 17:51:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for the screen shot. Makes it easier to compare and discuss behaviors. 
+
+You gave me some homework here, so I've done my best to try the suggested
+implementations, and have broken up the result reports here with a few upper
+case headings. Sorry for the verbosity.
+
+TRYING CSS SOLUTIONS:
+
+I've now moved my manually created userChrome.css from down in
+'..\extensions\<a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>\chrome' to a manually created 'chrome'
+folder in the location you suggested:
+
+C:\Documents and Settings\&lt;User Profile&gt;\Application
+Data\Thunderbird\Profiles\&lt;TB profile name&gt;\chrome
+
+The entire content of userChrome.css is the code you provided, revised to the
+latest CSS content you supplied.
+
+I still cannot drag a message from the thread pane to a subfolder located below
+current display height by using the scroll-arrows shown on bottom of the list.
+
+I wondered if the CSS required some kind of opening declaration in addition to
+the code you (so kindly) provided, I found this, and tried adding it as the
+first line of userChrome.css:
+
+@namespace
+url(&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;);
+/* set default namespace to XUL */
+
+(I found it here: <a href="http://www.linnhe2.free-online.co.uk/thunderbird/chrome.html">http://www.linnhe2.free-online.co.uk/thunderbird/chrome.html</a>)
+(And here: <a href="http://www.tom-cat.com/mozilla/firefox/userchromehowto.html">http://www.tom-cat.com/mozilla/firefox/userchromehowto.html</a>)
+
+Unfortunately, the CSS manipulation did not help. Still no scrolling. I've got
+teeny tiny subfolder names on the dropdowns, but now scrolling.
+
+Is the idea of these CSS manipulations to make the subfolder names and
+(containing rows) appear so small that scrolling is not required? If so, I'm
+sure that would work for smaller subfolder populations. Unfortunately, I've got
+a lot of subfolders. So, still not working. (This is not a disaster, it's just
+not optimal.)
+
+
+FOLDER ICONS:
+
+Regarding folder icons IN the QuickFolder subfolder drop-downs, I have not been
+seeing them. I didn't even realize they were missing. I don't require them, but
+it's interesting to know they are not rendering. I've added a TB theme to help
+with troubleshooting and dev (see note below). It's not something I'd planned
+on doing otherwise. Default's been OK so far, and I find the colorful folder
+icons unnecessary and distracting (hey, just saying!).
+
+TRYING A TB THEME:
+
+OK, to be complete, I've tried a non-default theme. Up to now I've just been
+using the default TB theme. So, what the heck, I have tried applying a theme,
+using Mostly Crystal to be similar to your setup. Very colorful. Unfortunately,
+no scrolling QuickFolders subfolder drop-down lists. Unless required for a fix
+to this bug, I will probably uninstall the theme - I don't find that the colors
+and theme icons to add information not provided in the plainer default view.
+(Added graphics without added information equal distraction and reduced
+utility, imho of course.)
+
+SORRY FOR THE SCREED
+
+I figure you've asked for some user action here in the effort to fix the bug,
+and since I can't pay you otherwise, at least i can (try) to help!
+
+Thanks Axel
+
+PS - Re Tilman's bug. I am all for treating these differing information objects
+as shareable. Being able to drag a calendar event into an email message sounds
+like a good thing to me. I have not installed Lightning since I'm waiting for
+something more robust (one can hope), but if I were to do so, I'd like the
+ability to move/copy message and calendar objects back and forth. Good idea.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=21054.html#c9">
+            #9</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2009-07-14 01:57:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >HI Craig,
+
+first of all thanks for your efforts + detailed replies. To answer the first
+question, making the menu items smaller is indeed a workaround that assumes the
+number of folders would fit without the need for the scroll chevrons. [Another
+more crude version would be to buy a bigger screen ;) ]
+
+When you tried the mostly crystal theme, did you see the icons? I am sure there
+are other less colorful themes that add this functionality as well (or maybe
+the cutemenus plugin, this does essentially the same) - my hope was that
+whatever CSS overloads these themes supply would also fix the menu scrolling
+behavior. My perspective on this is that it is probably a TB2 bug rather than
+one of QF - I haven't got the time at the moment to research this. 
+
+What I will do is to check whether it can be reproduced on TB3! Which brings me
+to your last question about lightning - the plan is to integrate the calendar
+into Thunderbird - either 3.1 or 3.5 so long term there will be no need for the
+lightning plugin. My other hope is that these bugs will be fixed (but there
+will be new ones) with the next major version of TB.
+
+Another problem I find is with the scroll chevrons that they are very hard to
+use, especially when dragging objects to the menu, so a &quot;self-expanding&quot; menu
+that multi-pages (like the standard Windows XP start menu) might be an easier
+solution? In any case I reckon that this solution is easier to implement than
+trying to fix the buggy chevrons - it is a standard popup menu, so there are
+not many ways to &quot;fix&quot; this unless I would &quot;roll my own&quot; by completely
+rewriting the whole menu with customized code. Don't wanna go there. Lets leave
+this bug open and when I have a bit more time I will add my findings - you
+could try TB3beta2 which is already running quite stable, if you don't mind
+that it might disable some of your extensions.
+
+thanks for your input!
+ regards, Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=21054.html#c10">
+            #10</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-07-14 15:44:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+I'm already running twin 24-inch displays at 1920 x 1200, each, here. So unless
+I get some kind of financial windfall, I'm about luxed-out on display size.
+
+Yep, apply the Mostly Crystal theme caused icons to appear that either were not
+there before, or didn't pop so much. But, yes, no effect on menu scrolling
+behavior. I tried both with and without the font-size declaration. Oh well. 
+
+It will be very nice if the menu scrolling under QuickFolders is fixed in TB3.
+I'm handling tons of personal, business, and community (yeah, nonprofit)
+correspondence on this particular TB install, so I won't be using any betas
+here. But if the time and a spare machine appear, I might just try a sandbox
+install of a stable TB3 beta, as you suggest. If I can get around to that, I'll
+certainly report back here and let you know of whatever results.
+
+Yep, 100% navigational access on drag'n'drop through all menus on the dropdowns
+would be the desired functionality. Let's hope we get there.
+
+Thanks for all your work on this great extension, Alex.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=21054.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-10-02 12:14:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21054.html#c10">comment #10</a>)
+<span class="quote">&gt; I'm already running twin 24-inch displays at 1920 x 1200, each, here. So unless
+&gt; I get some kind of financial windfall, I'm about luxed-out on display size.
+&gt; 
+&gt; Yep, apply the Mostly Crystal theme caused icons to appear that either were not
+&gt; there before, or didn't pop so much. But, yes, no effect on menu scrolling
+&gt; behavior. I tried both with and without the font-size declaration. Oh well. 
+&gt; 
+&gt; It will be very nice if the menu scrolling under QuickFolders is fixed in TB3.
+&gt; I'm handling tons of personal, business, and community (yeah, nonprofit)
+&gt; correspondence on this particular TB install, so I won't be using any betas
+&gt; here. But if the time and a spare machine appear, I might just try a sandbox
+&gt; install of a stable TB3 beta, as you suggest. If I can get around to that, I'll
+&gt; certainly report back here and let you know of whatever results.
+&gt; 
+&gt; Yep, 100% navigational access on drag'n'drop through all menus on the dropdowns
+&gt; would be the desired functionality. Let's hope we get there.
+&gt; 
+&gt; Thanks for all your work on this great extension, Alex.
+&gt; </span >
+
+It's Axel,actually! :)
+
+There is a new version (1.5pre2) out, and while that doesn't do anything in
+particular to address the menu scrolling it has been reported by somebody that
+the same bug was fixed on TB3.0b4 - it might well be a TB bug after all. Can
+you confirm whether upgrading TB makes the bug go away? On top of that my new
+version supports a new option of having recursive sub &amp; sub-sub folders, which
+was asked for in another bug. I had implemented the recursive menus for a while
+but they would not react to dragging, which I fixed last week in a marathon
+programming / debugging session.
+
+I am setting the bug to the status LATER for the moment until it comes up again
+with the new TB version.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=21054.html#c12">
+            #12</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-11-05 20:28:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel, (yes, oops, not Alex!, heh)
+
+Sorry for the delay on response. Been underwater.
+
+I'm still running TB 2.0.0.23. Since I'm running such a large archive and am in
+the middle of projects, I'm a bit scared to try any release candidates on this
+working machine. And, sorry, have not made time to try on any other machines.
+I'm a bad helper..
+
+Using QuickFolders 1.5pre2, i'm really liking the new 'recursive sub &amp; sub-sub
+folders' feature. It's a huge and needed feature. (The tabs really need to
+provide access to any folder children they may have. That's what I think!) So,
+thanks again. The pop-up menus for the subordinate folders tend to remain
+rendered even when I move the cursor away and over other sub-folders, remaining
+until another folder with children is hovered over. Do I need to report this in
+a separate bug?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=21054.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-06 00:34:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Louis,
+
+good to hear from you again - you are right about the sub folders feature I am
+coming around to that as well. There might still be some minor problems with
+performance on slow machines but the feature is optional anyway.
+
+You can safely download the latest QF version (1.6.1) it works like a charm
+with TB 2.0.0.23! The only reason it has not been released officially is the
+fact that there is a big backlog with the AMO reviewers at the moment. I
+believe this might have to do with the fact that SeaMonkey (which QF supports
+also, as of the latest version) is getting ready for release of a new version
+and TB is getting ready to release the first RC. 
+
+I believe the &quot;sticky menus&quot; bug is resolved in any version &gt;= 1.6.
+
+Seems like everybody at Mozilla is real busy right now :) I am also wondering
+whether I should change this bug to WONTFIX because I do not think that I can
+fix it - its really a problem of the Mozilla core code.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=21054.html#c14">
+            #14</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2009-11-06 01:50:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+thks for all your work.
+Could you pl.s provide a link to the releaaes 1.6 and above?
+Thks.
+Tilman
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=21054.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-06 03:15:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21054.html#c14">comment #14</a>)
+<span class="quote">&gt; Hi Axel,
+&gt; thks for all your work.
+&gt; Could you pl.s provide a link to the releaaes 1.6 and above?
+&gt; Thks.
+&gt; Tilman
+&gt; </span >
+Sure, I have just updated the Installation page:
+
+<a href="http://quickfolders.mozdev.org/installation.html">http://quickfolders.mozdev.org/installation.html</a>
+
+and click on the new link
+
+&quot;Download latest Releases of Quickfolders&quot;.
+
+Then select the top item (QF 1.6.1).
+
+hope this helps.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=21054.html#c16">
+            #16</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2009-11-06 03:48:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Scrolling through large folder lists still does not work with Rel 1.6.1
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=21054.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-06 03:56:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21054.html#c16">comment #16</a>)
+<span class="quote">&gt; Scrolling through large folder lists still does not work with Rel 1.6.1
+&gt; </span >
+
+I know, (as I think it is a Mozilla bug, and likely not [easily/at all] fixable
+in QF - there should be a bug on Mozilla / SeaMonkey from me complaining about
+the issue). That's why I consider changing it to WONTFIX.
+
+Does it solve the other issue of Popup-Menus &quot;sticking around&quot; on screen
+though?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=21054.html#c18">
+            #18</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-11-07 19:33:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Whoa, I just installed QF 1.6.2 on Thunderbird 2.0.0.23 (20090812). 
+
+Initial TB load and display of QF tabs is the fastest I've ever seen. (Up to
+now, I had resigned myself to waiting awhile for everything to render.)
+
+Drag and drop into a sub-subfolder, works!
+
+The annoying persistent popup-Menus, now go away after a few moments.
+(Is that the &quot;[ms] init delay&quot; option value on the QuickFolders Optoins General
+tab? Mine's currently set to '5000'.)
+
+Recently, before this QF 1.6.2, I was frequently getting weird javascript
+errors. Sorry, i have not noted the exact text. It was somethign like
+&quot;javascript is taking a long time. Cancel? Continue?&quot; And, there were weird
+information messages on the TB Error Console. Just &quot;i&quot; messages mentioning
+subfolder pathnames. Now both these errors are not appearing. (crossing
+fingers)
+
+Yes, unfortunately, &quot;Scrolling through large folder lists still does not work&quot;.
+I think I understand why you might move that to WONTFIX. I think, it's not
+quite a fatal flaw, but it's a significant loss of usability. I believe that no
+doorways to internal storage schemes should end in dead ends. It's frustrating,
+and breaks the metaphor (or is it a paradigm? eh..). But I also think I
+understand that this is not something you can efficiently solve in the QF code.
+I think that QuickFolders should, eventually, become part of the default
+Thunderbird feature set. Once this little scrolling issue goes away, i think
+that default incorporation comes much closer to being a practical reality. Yes,
+I'm blathering here and really should go find dinner....
+
+Anyway, thanks for the fixes. Really nice.
+
+(Sorry for being all over your bug, Tilman.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=21054.html#c19">
+            #19</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2010-01-07 08:03:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Will there be a version which works w TB 3 ?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=21054.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-07 09:19:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21054.html#c19">comment #19</a>)
+<span class="quote">&gt; Will there be a version which works w TB 3 ?
+&gt; </span >
+
+Sure, 1.7.2 runs stable with TB3. Get it here:
+<a href="https://addons.mozilla.org/en-US/thunderbird/addons/versions/3254#version-1.7.2">https://addons.mozilla.org/en-US/thunderbird/addons/versions/3254#version-1.7.2</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=21054.html#c21">
+            #21</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2010-01-07 09:28:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, thks, did the trick.
+Why couldn't find TB 3 this version while running the update check for the
+AddOns?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=21054.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-14 00:38:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=21974.html" title="RESOLVED DUPLICATE - Scroll disabled on e-mail dragging">Bug 21974</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=21054.html#c23">
+            #23</a> From 
+          <a href="mailto:roberto.melino&#64;bassnet.it">Roberto Melino</a>
+          2010-01-15 02:34:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I've just installed 1.8.2 version, but &quot;Scrolling through large folder lists&quot;
+still does not work.
+Do you think it will be fixed in a future release?
+At the moment I work around the problem using Nostalgy (another very good
+add-on), as you suggest in your guide.
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=21054.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-15 03:05:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Roberto, 
+
+its still an actual Mozilla bug (not specific to QuickFolders) so I can not
+say, when - please also see:
+
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=194319">https://bugzilla.mozilla.org/show_bug.cgi?id=194319</a>
+
+Once the Mozilla team thinks dragging into menus is important enough, they will
+fix it. Eventually they will, just for the sake of the Firefox bookmarks.
+
+In the meantime, another workaround is making the menus less high:
+<a href="http://quickfolders.mozdev.org/faq_tips.html">http://quickfolders.mozdev.org/faq_tips.html</a>
+
+look for the Tweak &quot;Tiny Popup Menus&quot; at least that will fit a few more items.
+You can experiment with line-height and max-height some more to get your
+optimal height...
+try:
+  line-height: 4px !important;
+  max-height: 14px !important;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=21054.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-02-24 10:29:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have added some comments to Mozilla Bug 341830 which is the appropriate one
+for this. Please add any follow ups (and possibly vote for it) there.
+see
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=341830">https://bugzilla.mozilla.org/show_bug.cgi?id=341830</a>
+for detail
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=21054.html#c26">
+            #26</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-18 03:22:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-1.9pre1.xpi" name="attach_6364" title="QuickFolders 1.9 Prerelease 1">Created an attachment (id=6364)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6364&amp;action=edit" title="QuickFolders 1.9 Prerelease 1">[details]</a></span>
+QuickFolders 1.9 Prerelease 1
+
+This fix is using code from the Firefox extension &quot;Scroll Menus On Drag&quot; by
+Robert Gibson. According to him, it is just a hack (written in 2005) to tide
+anybody over from the scroll to bookmark menu bug:
+
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=194319">https://bugzilla.mozilla.org/show_bug.cgi?id=194319</a>
+
+- see <a href="show_bug.cgi@id=21054.html#c21">comment #21</a>.
+
+Only tested on TB3 under Windows, currently. Please test on your OS / mail
+client to verify that it works there as well.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21054&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

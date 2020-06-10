@@ -1,0 +1,104 @@
+Composing email and switching id
+
+SmartTemplate4 {FUNCTIONS} 15:49:7.356  [298350 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 15:49:7.367  [11 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:7.367  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:7.368  [1 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:7.368  [0 ms]	 
+identityName:   user1 <user1@xxx.xx>
+key:            id2
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:7.368  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:9.727  [2359 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:9.727  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:9.728  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:9.730  [2 ms]	 
+identityName:   user2 <user2@xxx.xx>
+key:            id1
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:9.730  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:11.575  [1845 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:11.575  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:11.576  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:11.578  [2 ms]	 
+identityName:   user3 <user3@xxx.xx>
+key:            id3
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:14.231  [2653 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:14.232  [1 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:14.232  [0 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:49:14.234  [2 ms]	 
+identityName:   user4 <user4@xxx.xx>
+key:            id4
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:15.295  [1061 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:49:15.295  [0 ms]	 
+insertTemplate(false)

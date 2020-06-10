@@ -1,0 +1,1465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 21317 &ndash; unsorted ordering in subfolders</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21317&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21317">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=21317">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21317">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_21317">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;21317</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">unsorted ordering in subfolders</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-09-07 09:36:26</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21317&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-09-07 09:36:26">
+  <input type="hidden" name="longdesclength" value="23">
+  <input type="hidden" name="id" value="21317">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="unsorted ordering in subfolders">unsorted ordering in subfolders
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=21317.html">21317</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="minor">minor
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21317&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21317">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alex&#64;bartl.net">alex&#64;bartl.net</option>
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="g.zeilstra&#64;pepr.com">g.zeilstra&#64;pepr.com</option>
+            <option value="hodhoutex&#64;netscape.net">hodhoutex&#64;netscape.net</option>
+            <option value="info&#64;optitas.de">info&#64;optitas.de</option>
+            <option value="m.duelli&#64;web.de">m.duelli&#64;web.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QF_Tabs_unsorted&#32;(by&#32;creation&#32;date&#32;and&#32;time&#32;not&#32;alphabetical).PNG"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Folders unsorted (or better said incorrect sorting criterea is used)</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (6.23 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6128"
+               title="Go to the comment associated with the attachment">2009-11-25 01:55</a>,
+
+            <a href="mailto:g.zeilstra&#64;pepr.com"
+               title="Write an email to the creator of the attachment">GJZ
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6128&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QF_Tabs_unsorted&#32;also&#32;in&#32;1.6.4.PNG"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Sorting changes with 1.6.4 but is still incorrect</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.95 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6129"
+               title="Go to the comment associated with the attachment">2009-11-25 12:01</a>,
+
+            <a href="mailto:g.zeilstra&#64;pepr.com"
+               title="Write an email to the creator of the attachment">GJZ
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6129&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-1.9pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">QuickFolders 1.9 Prerelease 2</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (177.74 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6374"
+               title="Go to the comment associated with the attachment">2010-03-21 16:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6374&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="Sorted-Menu.gif"
+               title="View the content of the attachment">
+          <b>Screenshot of modified folder menu sorting</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.39 KB,
+                image/gif)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6375"
+               title="Go to the comment associated with the attachment">2010-03-21 16:54</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6375&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-1.9pre3.xpi"
+               title="View the content of the attachment">
+          <b> QuickFolders 1.9 Prerelease 3</b></a>
+
+          <span class="bz_attach_extra_info">
+              (177.90 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6376"
+               title="Go to the comment associated with the attachment">2010-03-22 03:48</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6376&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="quickfolders.settings.20100907.jpg"
+               title="View the content of the attachment">
+          <b>Screenshot to comment of 2010-09-07</b></a>
+
+          <span class="bz_attach_extra_info">
+              (77.67 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6594"
+               title="Go to the comment associated with the attachment">2010-09-07 01:07</a>,
+
+            <a href="mailto:f.dierich&#64;overspeed.de"
+               title="Write an email to the creator of the attachment">f.dierich&#64;overspeed.de
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6594&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="QF-1.9.8.pre7.xpi"
+               title="View the content of the attachment">
+          <b>QuickFolders 1.9.8 Prerelease 7</b></a>
+
+          <span class="bz_attach_extra_info">
+              (192.07 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=21317.html#attach_6595"
+               title="Go to the comment associated with the attachment">2010-09-07 05:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6595&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=21317.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=21317&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21317&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=21317">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21317">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=21317">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=21317">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=21317.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2009-07-29 07:21
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >In a certain installation with TB 2.0.0.22 and previous 2.0.0.x, the subfolders
+displayed in the context menu of a folder tab appear in a &quot;random&quot; (but
+constant) order instead of appearing alphabetically sorted. Happens with
+QuickFolders 1.0.3 (and previous) as well as 1.2. It is not yet known what is
+special in this installation. 
+
+(Issue was communicated in more detail between user and Axel Grude.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=21317.html#c1">
+            #1</a> From 
+          <a href="mailto:g.zeilstra&#64;pepr.com">GJZ</a>
+          2009-11-25 01:55:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF_Tabs_unsorted&#32;(by&#32;creation&#32;date&#32;and&#32;time&#32;not&#32;alphabetical).PNG" name="attach_6128" title="Folders unsorted (or better said incorrect sorting criterea is used)">Created an attachment (id=6128)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6128&amp;action=edit" title="Folders unsorted (or better said incorrect sorting criterea is used)">[details]</a></span>
+Folders unsorted (or better said incorrect sorting criterea is used)
+
+Created with new folders to proof the case that where created in the order that
+is shown in the attachment. The order does not seem to be totally random
+because they are sorted by creation data and time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=21317.html#c2">
+            #2</a> From 
+          <a href="mailto:g.zeilstra&#64;pepr.com">GJZ</a>
+          2009-11-25 01:59:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can report that the same problem exist also with Thunderbird 2.0.0.23. For the
+rest I love this Add-on, keep up the good work. I hope you fix this soon
+because it is a very good addition to have quick access to project data.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=21317.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-25 03:15:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21317.html#c2">comment #2</a>)
+<span class="quote">&gt; Can report that the same problem exist also with Thunderbird 2.0.0.23. For the
+&gt; rest I love this Add-on, keep up the good work. I hope you fix this soon
+&gt; because it is a very good addition to have quick access to project data.
+&gt; </span >
+
+I have done some deep deep deep digging into the Mozilla source code and I am
+coming to the conclusion that the GetSubFolders( ) function,  [which is
+replaced by subFolders in TB version 3 and SeaMonkey 2], that returns a
+nsISimpleEnumerator which iterates the (sub)folders - seems to be either buggy
+or there is some hidden configuration somewhere that allows to change the
+default sorting. Also have investigated aobut:config to no avail. There is a
+small number of users affected, I can not reproduce the problem; when a new
+folder is added in a session, it is appended to the bottom of the menu, but
+after TB restarts, all folder menus are sorted alphabetically.
+
+GetSubFolders calls a &quot;dir&quot; function further down in the hierarchy, but I did
+not find any documentation about what methods can be used to assure it returns
+folders in the desired (alphabetical) order. 
+
+I have posted a query to the mozilla.dev.extensions group how to work around
+the issue...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=21317.html#c4">
+            #4</a> From 
+          <a href="mailto:g.zeilstra&#64;pepr.com">GJZ</a>
+          2009-11-25 12:01:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF_Tabs_unsorted&#32;also&#32;in&#32;1.6.4.PNG" name="attach_6129" title="Sorting changes with 1.6.4 but is still incorrect">Created an attachment (id=6129)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6129&amp;action=edit" title="Sorting changes with 1.6.4 but is still incorrect">[details]</a></span>
+Sorting changes with 1.6.4 but is still incorrect
+
+This was expected but just updating the bug report because sorting has changed
+between the two versions. Double checked with multiple application restarts.
+Consistent behavior.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=21317.html#c5">
+            #5</a> From 
+          <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+          2009-12-17 04:43:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >First of all thanks a lot for your investigation, Axel! 
+I'm somewhat relieved that I'm not the only person with this issue any more (so
+thanks GJZ). 
+Anyway, bad news: Error persisted for me after updating to Thunderbird 3. I
+have used the built-in update function. The order changed, but it is still not
+alphabetical. This is currently Quickfolders 1.6.4.
+This is all on my work PC, on my home PC I never had the issue, neither with
+TB2 or TB3. 
+What might be special about my work PC installation is, that it's entire
+profile is on a network share (Linux Samba) via a mapped drive letter. (I think
+I send this information by mail originally.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=21317.html#c6">
+            #6</a> From 
+          <a href="mailto:alex&#64;bartl.net">Alex Bartl</a>
+          2010-03-09 21:54:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I experienced the same issue on Fedora 12, QF 1.8.7:
+The order does seem unsorted, but is different for the same IMAP folders
+viewing it from different machines, so it *does not* look like they are getting
+sorted by QS, otherwise the order should be the same, even if wrong.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=21317.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-10 01:45:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Still no joy with this - I have put in another few hours trying to resolve this
+problem, but there is no easy way to sort the subfolders array. There was a
+helper function GetSubFoldersInFolderPaneOrder that looked hopeful but the
+problem here is it only returns an ordinary Array, which does not support the
+interfaces necessary for recursive checking of sub folders so a full sub  menu
+can be built.
+
+I am still hoping there is a workaround in the settings of Linux itself, after
+all when the folder string is built it gets the list from the OS... hard one to
+fix. I was considering creating a bug in Thunderbird, but I think nobody
+guarantees that the folders are in a specific order.
+
+I am leaving this bug assigned to me but its one of the harder ones to crack.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=21317.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-19 01:15:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=22635.html" title="RESOLVED DUPLICATE - Sorting Folders">Bug 22635</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=21317.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-21 16:44:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-1.9pre2.xpi" name="attach_6374" title="QuickFolders 1.9 Prerelease 2">Created an attachment (id=6374)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6374&amp;action=edit" title="QuickFolders 1.9 Prerelease 2">[details]</a></span>
+QuickFolders 1.9 Prerelease 2
+
+Added a sorting algorithm, tested in Tb 3.0.3, SM 2.0.3 and Postbox 1.1 - all
+under Windows. Please test under Ubuntu as well...
+
+Not tested in Thunderbird 2!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=21317.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-21 16:54:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Sorted-Menu.gif" name="attach_6375" title="Screenshot of modified folder menu sorting">Created an attachment (id=6375)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6375&amp;action=edit" title="Screenshot of modified folder menu sorting">[details]</a></span>
+Screenshot of modified folder menu sorting
+
+The new folder menus will sort Numbers, &quot;_&quot; and mixed case as expected, but any
+Diacritics / Umlauts will be sorted according to their ASCII values (at the end
+of the &quot;standard&quot; alphabet).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=21317.html#c11">
+            #11</a> From 
+          <a href="mailto:alex&#64;bartl.net">Alex Bartl</a>
+          2010-03-21 17:02:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Seems to work fine with Fedora 12 (thunderbird-3.0.3-1.fc12.i686), thanks a
+lot!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=21317.html#c12">
+            #12</a> From 
+          <a href="mailto:info&#64;optitas.de">Tilman Jurk</a>
+          2010-03-22 00:52:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Still no working as expected:
+Numbers are not sorted the right way.
+QuickFolders:
+123
+_bla
+bla
+
+TB:
+_bla
+123
+bla
+
+TB is doing it the correct way (as shown in the ASCII table)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=21317.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-22 01:33:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yep, I have seen that Problem. It is the way Javascript compares two strings, I
+presume they get turned back into numbers of something. If I just knew how
+Thunderbird sorts the folders... well I will keep looking,. have posted an
+email on mozilla.dev.extensions to find out if there is any built in library
+for string sorting in Mozilla. 
+
+JavaScript on its own is too dumb to do proper lexicographical sorting.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=21317.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-22 02:58:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21317.html#c12">comment #12</a>)
+<span class="quote">&gt; Still no working as expected:
+&gt; Numbers are not sorted the right way.
+&gt; 
+&gt; TB is doing it the correct way </span >
+
+yes, but how ?
+
+<span class="quote">&gt; (as shown in the ASCII table)</span >
+
+, not quite - actually, according to the ASCII table:
+0 &lt; A &lt; _ &lt; a &lt; z &lt; ä,
+because:
+0 : 48
+A : 65
+_ : 95
+a : 97
+z : 122
+ä : 228
+
+that's what makes correct lexicographical sorting using plain JavaScript a
+nightmare. Gotta do some paid work now, but I will revisit this again... :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=21317.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-03-22 03:48:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-1.9pre3.xpi" name="attach_6376" title=" QuickFolders 1.9 Prerelease 3">Created an attachment (id=6376)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6376&amp;action=edit" title=" QuickFolders 1.9 Prerelease 3">[details]</a></span>
+ QuickFolders 1.9 Prerelease 3
+
+Added regexp replacements of some of the diacritics / umlauts and also
+underscore (replacing it with /). This list is not complete but should cover
+most bases especially for hispanic / french / scandinavian languages. Sorts:
+any diacritical variation of a, e, i, o, u, such as { á,à,ä,ã,â,æ,
+è,é,ê,ë, ì,í,î,ï, ò,ó,ô,õ,ö, ù,ú,û,ü }
+ä and æ are treated as ae
+ö is treated as oe
+ü is treated as ue
+Uppercase diacritics should be converted correctly (but no guarantee)
+
+here is the replacement function
+tr = {&quot;\xE0&quot;:&quot;a&quot;, &quot;\xE1&quot;:&quot;a&quot;, &quot;\xE2&quot;:&quot;a&quot;, &quot;\xE3&quot;:&quot;a&quot;, &quot;\xE4&quot;:&quot;ae&quot;, &quot;\xE5&quot;:&quot;ae&quot;,
+&quot;\xE6&quot;:&quot;a&quot;,
+&quot;\xE8&quot;:&quot;e&quot;, &quot;\xE9&quot;:&quot;e&quot;, &quot;\xEA&quot;:&quot;e&quot;, &quot;\xEB&quot;:&quot;e&quot;,
+&quot;\xF2&quot;:&quot;o&quot;, &quot;\xF3&quot;:&quot;o&quot;, &quot;\xF4&quot;:&quot;o&quot;, &quot;\xF5&quot;:&quot;o&quot;, &quot;\xF6&quot;:&quot;oe&quot;,
+&quot;\xEC&quot;:&quot;i&quot;, &quot;\xED&quot;:&quot;i&quot;, &quot;\xEE&quot;:&quot;i&quot;, &quot;\xEF&quot;:&quot;i&quot;,
+&quot;\xF9&quot;:&quot;u&quot;, &quot;\xFA&quot;:&quot;u&quot;, &quot;\xFB&quot;:&quot;u&quot;, &quot;\xFC&quot;:&quot;ue&quot;, &quot;\xFF&quot;:&quot;y&quot;,
+&quot;\xDF&quot;:&quot;ss&quot;, &quot;_&quot;:&quot;/&quot;};
+killDiacritics = function(s) {
+  return
+s.toLowerCase().replace(/[_\xE0\xE1\xE2\xE3\xE4\xF6\xF2\xF3\xF4\xF5\xF6\xEC\xED\xEE\xEF\xF9\xFA\xFB\xFC\xFF\xDF\xE8\xE9\xEA\xEB]/gi,
+function($0) { return tr[$0] })
+}
+
+a slight performance penalty is expected, but I don't know how critical this
+will be for people with lesser PCs (AMD X64 6000 here).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=21317.html#c16">
+            #16</a> From 
+          <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+          2010-09-07 01:05:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Bug is actually still (half) there for me: 
+
+When I right-click on a tab I see the subfolders correctly ordered
+alphabetically (fixed there), but when I drag a message to the tab, the
+subfolders pop up in unsorted order (the old behaviour). My collegue has
+exactly the same behaviour on his PC. We both have in common, that the profile
+folder is on a fileshare (Samba). This happens for local folders with
+subfolders (those folders thus being on fileshare), can't test for IMAP
+folders, as the IMAP server does not allow subfolders. 
+
+I have alphabetical sorting enabled in the Quickfolders options. I have
+Quickfolders 1.9.7.3 in TB 3.1.2 (all up-to-date). I have disabled other
+extensions (two dictionarys and display MUA), but the behaviour is still the
+same. 
+
+I'm not reopening the bug for now, in case we are just simply being stupid and
+having the wrong settings (will attach screenshot of settings, localized in
+German though), leaving this to the author. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=21317.html#c17">
+            #17</a> From 
+          <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+          2010-09-07 01:07:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolders.settings.20100907.jpg" name="attach_6594" title="Screenshot to comment of 2010-09-07">Created an attachment (id=6594)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6594&amp;action=edit" title="Screenshot to comment of 2010-09-07">[details]</a></span>
+Screenshot to comment of 2010-09-07
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=21317.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-09-07 01:21:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21317.html#c16">comment #16</a>)
+<span class="quote">&gt; Bug is actually still (half) there for me: 
+&gt; 
+&gt; When I right-click on a tab I see the subfolders correctly ordered
+&gt; alphabetically (fixed there), but when I drag a message to the tab, the
+&gt; subfolders pop up in unsorted order (the old behaviour). My collegue has
+&gt; exactly the same behaviour on his PC. We both have in common, that the profile
+&gt; folder is on a fileshare (Samba). This happens for local folders with
+&gt; subfolders (those folders thus being on fileshare), can't test for IMAP
+&gt; folders, as the IMAP server does not allow subfolders. 
+&gt; 
+&gt; I have alphabetical sorting enabled in the Quickfolders options. I have
+&gt; Quickfolders 1.9.7.3 in TB 3.1.2 (all up-to-date). I have disabled other
+&gt; extensions (two dictionarys and display MUA), but the behaviour is still the
+&gt; same. 
+&gt; 
+&gt; I'm not reopening the bug for now, in case we are just simply being stupid and
+&gt; having the wrong settings (will attach screenshot of settings, localized in
+&gt; German though), leaving this to the author. 
+&gt; </span >
+
+Can you create a screen shot of the unordered list while dragging? It is a
+strange one, as I build the folder submenu using the exact same function
+addSubFoldersPopup, in the quickfolders-interface.js  module; this contains the
+sorting function. For me this is hard to reproduce as Thunderbird automatically
+provides the correct sorting order...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=21317.html#c19">
+            #19</a> From 
+          <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+          2010-09-07 03:15:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21317.html#c18">comment #18</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=21317.html#c16">comment #16</a>)
+&gt; ...
+&gt; Can you create a screen shot of the unordered list while dragging? It is a
+&gt; strange one, as I build the folder submenu using the exact same function
+&gt; addSubFoldersPopup, in the quickfolders-interface.js  module; this contains the
+&gt; sorting function. For me this is hard to reproduce as Thunderbird automatically
+&gt; provides the correct sorting order...</span >
+
+Screenshots sent by email. Very strange that the behaviour is then different.
+(As mentioned my collegue has the same issue on his PC. On my PC at home I
+don't have the problem by the way, there the profile is on local disc.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=21317.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-09-07 04:40:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=23169.html" title="RESOLVED DUPLICATE - Folder Order - Open vs Move">Bug 23169</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=21317.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-09-07 05:20:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-1.9.8.pre7.xpi" name="attach_6595" title="QuickFolders 1.9.8 Prerelease 7">Created an attachment (id=6595)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6595&amp;action=edit" title="QuickFolders 1.9.8 Prerelease 7">[details]</a></span>
+QuickFolders 1.9.8 Prerelease 7
+
+Should fix the bug. I think it usually affects only the left-most (or
+chronologically first) folder that was added; this is a side effect of the
+bugfix for <span class="bz_closed"><a href="show_bug.cgi@id=22901.html" title="RESOLVED FIXED - Keep the folder aside the sort of the subfolders' list">Bug 22901</a></span>, which is now obsolete due to the subfolder list
+simplification.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=21317.html#c22">
+            #22</a> From 
+          <a href="mailto:f.dierich&#64;overspeed.de">f.dierich&#64;overspeed.de</a>
+          2010-09-07 09:36:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Great, the patch works for me! (and my collegue)
+Thanks a lot for fixing!
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21317&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

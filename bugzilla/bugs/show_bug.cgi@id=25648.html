@@ -1,0 +1,1736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25648 &ndash; CTRL+&gt; and CTRL+&lt; modify font sizes</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25648&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25648">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25648">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25648">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25648">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25648</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">CTRL+&gt; and CTRL+&lt; modify font sizes</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-08-15 03:56:22</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25648&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-08-15 03:56:22">
+  <input type="hidden" name="longdesclength" value="24">
+  <input type="hidden" name="id" value="25648">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="CTRL+&gt; and CTRL+&lt; modify font sizes">CTRL+&gt; and CTRL+&lt; modify font sizes
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25648.html">25648</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="zombiekeys">zombiekeys
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=zombiekeys">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25648&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25648">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="Kittel&#64;colorado.edu">Kittel&#64;colorado.edu</option>
+            <option value="thomas&#64;cintegrity.com">thomas&#64;cintegrity.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="zombie_keys_multilanguage_keyboard-2.16pre22.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.16 prerelease 22</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (238.54 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7740"
+               title="Go to the comment associated with the attachment">2013-11-30 15:08</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7740&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="zombie_keys_multilanguage_keyboard-2.16pre40.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.16 prerelease 40</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (239.00 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7741"
+               title="Go to the comment associated with the attachment">2013-12-02 10:26</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7741&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="zombie_keys_multilanguage_keyboard-2.16pre46.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.16 prerelease 46</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (239.08 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7742"
+               title="Go to the comment associated with the attachment">2013-12-02 15:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7742&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="zombie_keys_multilanguage_keyboard-2.16pre51.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.16 prerelease 51</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (239.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7743"
+               title="Go to the comment associated with the attachment">2013-12-03 01:58</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7743&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="ErrorConsole.txt.html"
+               title="View the content of the attachment">
+          <b>Requested output from Error Console</b></a>
+
+          <span class="bz_attach_extra_info">
+              (3.23 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7745"
+               title="Go to the comment associated with the attachment">2013-12-03 08:40</a>,
+
+            <a href="mailto:thomas&#64;cintegrity.com"
+               title="Write an email to the creator of the attachment">Thomas Mercer-Hursh
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7745&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="ErrorConsole_20131204.txt"
+               title="View the content of the attachment">
+          <b>Error console output with detailed</b></a>
+
+          <span class="bz_attach_extra_info">
+              (8.85 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_7746"
+               title="Go to the comment associated with the attachment">2013-12-04 14:20</a>,
+
+            <a href="mailto:thomas&#64;cintegrity.com"
+               title="Write an email to the creator of the attachment">Thomas Mercer-Hursh
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7746&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="zombie_keys_multilanguage_keyboard-2.17pre40.xpi"
+               title="View the content of the attachment">
+          <b>2.17 prerelease 40</b></a>
+
+          <span class="bz_attach_extra_info">
+              (242.84 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25648.html#attach_8195"
+               title="Go to the comment associated with the attachment">2016-05-22 10:28</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8195&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25648.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (4)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25648&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25648&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25648">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25648">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25648">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25648">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25648.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-11-28 10:37
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Thunderbird's new built-in font size shortcuts CTRL+&lt; and CTRL+&gt; are triggered
+by certain ZK combinations. Make it possible to disable these.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25648.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-30 15:08:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.16pre22.xpi" name="attach_7740" title="2.16 prerelease 22">Created an attachment (id=7740)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7740&amp;action=edit" title="2.16 prerelease 22">[details]</a></span>
+2.16 prerelease 22
+
+This took a fair few hours as I noticed that this again locale dependant (so it
+depends on your keyboard language on whether this has an impact). I made a
+generic function that matches the keyboard accelerators of the editor against
+that active in the current zombie keys locale; this also made it necessary to
+add &quot;alternative&quot; keys to all mappings of all locales, but the good thing is it
+should be future-proof even if Thunderbird decide to add more key shortcuts in
+the future: these will all be detected (if my mappings for the locale are
+correct) and removed. I tested it on the IRL keyboard (so should work also on
+UK locale). I mapped all other locales based on the key layouts on
+
+<a href="http://zombiekeys.mozdev.org/layouts.html">http://zombiekeys.mozdev.org/layouts.html</a>
+
+so it _should_ work in other keyboard layouts as well - provided the correct
+layout is selected in Zombie Keys &gt; configuration. Please test in your own
+locale.
+
+For full debugging, or in case of problems, I recommend activating debug and
+the setting
+extensions.zombiekeys.debug.accelerators = true
+extensions.zombiekeys.debug.defaults = false
+(to configure this, right-click the debug checkbox in Zombie Keys Options
+window) - this will give details on all attempts to remove accelerators during
+opening of the Editor window. (In Tools &gt; Error Console)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25648.html#c2">
+            #2</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-01 08:42:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have installed the pre-release and in very limited testing it is not now
+displaying the behavior it did previously, i.e., it is working again!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25648.html#c3">
+            #3</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-01 09:30:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In testing, I find that neither the macron or circled letters are working for
+me.
+E.g., a macron gives me a and circled c gives me c
+This is in Fixed Width font.  If I switch to Arial Unicode MS, I get a and c
+I also don't get anything for the Euro symbol.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25648.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 10:26:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.16pre40.xpi" name="attach_7741" title="2.16 prerelease 40">Created an attachment (id=7741)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7741&amp;action=edit" title="2.16 prerelease 40">[details]</a></span>
+2.16 prerelease 40
+
+Had some troubles with removing the (o) shortcut apparently there are some
+other addons (or maybe code in Thunderbird beta) that leads to a message box
+saying &quot;TypeError: document.getElementById(...) is null&quot;
+
+I am not sure what generates this message but it only happens on my production
+profile, with Thunderbird  26.0 (beta) and only if I close the first composer
+and open a fresh one.
+
+I encourage anybody testing this to try the same. OPen a new composer window
+after closing the first one (or after sending off the first email). Other than
+that, this version is able to recognize (and remove) both the accelerators for
+increase/decrease font and &quot;paste as quotation&quot;, should they intersect with the
+ones the currently selected ZombieKeys locale is using. (This would usually be
+CTRL+&lt; CTRL+&gt; and CTRL+O, although it may also have additional modifiers (such
+as SHIFT / ALT). I only remove those which use the same the Zombie Keys needs
+to function. 
+
+Note: I currently only do this in Thunderbird Composer, not in any other window
+or applications. (ZK also supports Firefox / SeaMonkey / Postbox and also is
+usable in most search / filter / text entry boxes and the browser content
+windows, unless a website hijacks keyboard input (gmail?)). 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25648.html#c5">
+            #5</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-02 11:29:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >With prerelease 40, I now get ā and ⓒ as I should.
+€ still doesn't work (except with ALT-0128
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25648.html#c6">
+            #6</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-02 11:35:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >With 40, Ctrl-R for rewrap seems to be broken :(  .... I use it a lot.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25648.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 13:07:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >PLease (In reply to <a href="show_bug.cgi@id=25648.html#c6">comment #6</a>)
+<span class="quote">&gt; With 40, Ctrl-R for rewrap seems to be broken :(  .... I use it a lot.
+&gt; </span >
+I can't find that on the menu, do you mean Edit &gt; Rewrap?
+
+Check the shortcuts on the Zombiekey button menu: is there a combination that
+uses Ctrl+R?
+
+You can check which shortcuts are disabled by toggling to true the following
+debug settings:
+extensions.zombiekeys.debug = true
+extensions.zombiekeys.debug.accelerators = true
+
+# (first display Zombiekeys Menu &gt; Configuration...) or Addons Manager &gt;
+ZombieKeys &gt; Options
+# in the options window enable [x] debug
+# right-click debug
+# in the about:config window, double click on the
+extensions.zombiekeys.debug.accelerators line to activate it
+
+Open Tools &gt; error console and enable All errors (except for content, if you
+have console2 installed disable content)
+Open Composer.
+
+take note of all errors following the first line
+[ZombieKeys] 20:33:10.549  [0 ms]        
+cleanKeySet(...) ..
+=&gt; /// 
+find an an entry that reads
+
+[ZombieKeys] 20:33:10.552  [1 ms]        
+Matched key {R}   ...
+
+or any errors / warnings. The new prerelease is designed to remove shortcuts
+that collide with Zombiekeys shortcuts.
+
+<span class="quote">&gt;&gt; € still doesn't work </span >
+please don't piggyback other bugs into this one, please raise a separate bug,
+as this is unrelated to side effects introduced by new Thunderbird shortcuts.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25648.html#c8">
+            #8</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-02 13:59:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yes, the equivalent of edit&gt;rewrap.  The functionality is still there, just
+less convenient to access.
+
+No, there is no Zombiekey combination that should be getting in the way.  This
+has worked consistently for years until I installed 40.
+
+I finally found the debug settings ... not much affordance for the right click
+on the word.
+
+I see no errors when I try the Ctrl-R.  Just nothing happens.  I get three
+messages when I first open the compose window about waiting to clean,
+cleanKeySet, 0 items modified, but that is before any keystrokes.
+
+But, nothing from using any Zombiekeys patterns and nothing from Ctrl-R.
+
+Ah, OK, I went back to the mail where you talked about changing some of those
+debug settings that I couldn't find before and changed those.  Now I am getting
+messages.  For the Ctrl-R I get two:
+
+[ZombieKeys] 15:54:37.526  [4336 ms]     
+press: keyCode=0 charCode=114 shiftKey=false altKey=false ctrlKey=true   cC [r]
+
+[ZombieKeys] 15:54:37.694  [168 ms]      
+up: keyCode=82 charCode=0 shiftKey=false altKey=false ctrlKey=true   kC [R]
+
+I currently have the following settings true.   debug, debug.accelerators,
+keyPressHandler, keyUpHandler.  All others are false.
+
+BTW, every time I look at these settings, I get the two pages of stuff about
+Zombiekeys in Thunderbird reappearing.
+
+I wasn't aware that the euro was a different issue as I had not used that
+recently (didn't remember it was there, actually).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25648.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 14:12:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25648.html#c8">comment #8</a>)
+<span class="quote">&gt; Yes, the equivalent of edit&gt;rewrap.  The functionality is still there, just
+&gt; less convenient to access.
+&gt; 
+&gt; No, there is no Zombiekey combination that should be getting in the way.  This
+&gt; has worked consistently for years until I installed 40.
+&gt; 
+&gt; I finally found the debug settings ... not much affordance for the right click
+&gt; on the word.
+&gt; 
+&gt; I see no errors when I try the Ctrl-R.  Just nothing happens.  I get three
+&gt; messages when I first open the compose window about waiting to clean,
+&gt; cleanKeySet, 0 items modified, but that is before any keystrokes.
+&gt; 
+&gt; But, nothing from using any Zombiekeys patterns and nothing from Ctrl-R.</span >
+
+You have to do it the _first_ time you open a composer, so restart Thunderbird
+and try again. (Apparently ZK can only find &amp; remove the shortcuts the first
+time, and then COmposer seems to reuse the key shortcuts from first time
+around, so ZK doesn't find anything that time around). Also there is peculiar
+side effect that the shortcuts are not displayed in the menus of the very first
+Composer Window. Since I already spent about 5 hours on the bug today I am not
+sure whether I even want to fix that issue though.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25648.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 14:14:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Also, to make this easier and so you don't have to re-type all the output from
+your error console, I recommend you install console2 and then use right-cick
+and the clipbaord, then you can attach the whole error log (I would prefer you
+disable content logging, after clicking All in the error console) I would also
+prefer that you disable the key up / key down handlers for this test and start
+from an empty console, just before you open Composer for the first time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25648.html#c11">
+            #11</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-02 14:31:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >OK, I restarted Thunderbird and opened the Error Console.  Before opening the
+composer window there are a whole bunch of Zombiekey errors, mostly about error
+in parsing value for background and error in parsing value for filter.
+
+When I open the composer window, I get the same three messages from before.
+
+There is no Matched Key {R} or {R} anything.
+
+Way back near the beginning there is 
+Timestamp: 12/2/2013 4:17:43 PM
+Warning: Selector expected.  Ruleset ignored due to bad selector.
+Source File: about:blank
+Line: 81
+Source Code:
+&lt;Frankel&gt;
+
+Timestamp: 12/2/2013 4:17:43 PM
+Warning: Found unclosed string '&quot;publicly&gt;'.  Unexpected end of file while
+searching for closing } of invalid rule set.
+Source File: about:blank
+Line: 518, Column: 4
+Source Code:
+&lt;id=&quot;publicly&gt;
+
+But, that doesn't say anything about Zombiekeys.
+
+So, let me be clear about what you would like me to do:
+1. Download and install console2.
+2. Turn the KeyUp KeyDown options to false.
+3. Restart Thunderbird
+4. Open the error console
+5. Select all and disable content.
+6. Open a composer window.
+7. Capture the output to the clipboard, put it in file, and attach the output
+here.
+
+Right?
+
+At this point, it will be tomorrow before I can try this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25648.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 14:39:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25648.html#c11">comment #11</a>)
+<span class="quote">&gt; OK, I restarted Thunderbird and opened the Error Console.  Before opening the
+&gt; composer window there are a whole bunch of Zombiekey errors, mostly about error
+&gt; in parsing value for background and error in parsing value for filter.</span >
+
+These are &quot;content&quot; errors from the web page. Caused by old styles for old
+browsers. This is exactly the reason why you need console2 - you do not really
+want to debug web pages or content of emails that were sent to you possibly
+created on mail clients such as Outlook which create broken HTML. With console2
+you can disable content logging.
+
+
+<span class="quote">&gt; 
+&gt; When I open the composer window, I get the same three messages from before.
+&gt; 
+&gt; Timestamp: 12/2/2013 4:17:43 PM
+&gt; Warning: Found unclosed string '&quot;publicly&gt;'.  Unexpected end of file while
+&gt; searching for closing } of invalid rule set.
+&gt; Source File: about:blank
+&gt; Line: 518, Column: 4
+&gt; Source Code:
+&gt; &lt;id=&quot;publicly&gt;</span >
+
+pretty sure this is &quot;content&quot; - means mails, and web pages. We are interested
+in &quot;chrome&quot; (which is the Application level itself)
+
+<span class="quote">&gt; But, that doesn't say anything about Zombiekeys.</span >
+
+Exactly. Except that the current version has some trouble with the update check
+to it always shows the version / donate pages. Expect another version until the
+next test that doesn't have this problem.
+
+
+<span class="quote">&gt; 
+&gt; So, let me be clear about what you would like me to do:
+&gt; 1. Download and install console2.
+&gt; 2. Turn the KeyUp KeyDown options to false.
+&gt; 3. Restart Thunderbird
+&gt; 4. Open the error console
+&gt; 5. Select all and disable content.
+&gt; 6. Open a composer window.
+&gt; 7. Capture the output to the clipboard, put it in file, and attach the output
+&gt; here.</span >
+
+perfect. Don't forget:
+
+0. check for new version on this bug first and install if pre 40 is marked as
+obsolete.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25648.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 14:48:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Expected output (with some comments)
+
+When opening the Composer for the first time, ZK waits for its own keyboard
+layout to be loaded (in your case US int), so there should be a couple of
+these:
+
+[ZombieKeys] 22:40:48.777  [624 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:49.69  [292 ms]       
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:49.319  [250 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:49.569  [250 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:49.820  [251 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:50.70  [250 ms]       
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:50.320  [250 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:50.570  [250 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:50.820  [250 ms]      
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:51.71  [251 ms]       
+Waiting to clean keysets...
+ ----------
+[ZombieKeys] 22:40:51.321  [250 ms]      
+Waiting to clean keysets...
+
+
+Now ZK will start to go through all keysets that are in the Composer Window.
+
+First Keyset is basically stuff in the Edit Menu:
+
+ ----------
+[ZombieKeys] 22:40:51.322  [1 ms]        
+cleanKeySet(tasksKeys) ..
+ ----------
+[ZombieKeys] 22:40:51.323  [1 ms]        
+Matched key {o}   mods:accel, shift   (pastequotationkb)
+ ----------
+[ZombieKeys] 22:40:51.323  [0 ms]        
+modify key - Deleted observes attribute - Readded key element: o  
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.323  [0 ms]        
+Matched key {G}   mods:accel   (key_findNext)
+ ----------
+[ZombieKeys] 22:40:51.323  [0 ms]        
+Matched key {G}   mods:accel, shift   (key_findPrev)
+ ----------
+[ZombieKeys] 22:40:51.323  [0 ms]        
+1 items modified from keyset tasksKeys.
+=======================
+
+
+Second Keyset is basically stuff in the Format Menu:
+
+ ----------
+[ZombieKeys] 22:40:51.324  [1 ms]        
+cleanKeySet(editorKeys) ..
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+Matched key {&lt;}   mods:accel   (decreasefontsizekb)
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+modify key - Deleted observes attribute - Readded key element: &lt;  
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+Matched key {&lt;}   mods:accel, shift   ((unnamed))
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+modify key - Overwrote oncommand attribute - Deleted observes attribute -
+Readded key element: &lt;  accel, shift
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+Matched key {&gt;}   mods:accel   (increasefontsizekb)
+ ----------
+[ZombieKeys] 22:40:51.324  [0 ms]        
+modify key - Deleted observes attribute - Readded key element: &gt;  
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.325  [1 ms]        
+Matched key {&gt;}   mods:accel, shift   ((unnamed))
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+modify key - Overwrote oncommand attribute - Deleted observes attribute -
+Readded key element: &gt;  accel, shift
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+Matched key {&lt;}   mods:accel, shift   ((unnamed))
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+modify key : &lt;  accel, shift
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+Matched key {&gt;}   mods:accel, shift   ((unnamed))
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+modify key : &gt;  accel, shift
+ command: 
+ ----------
+[ZombieKeys] 22:40:51.325  [0 ms]        
+6 items modified from keyset editorKeys.
+=======================
+
+there might be more keysets after this, and they might be even unnamed. Make
+sure to pay attention in case there are any warnings or errors in between!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25648.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-02 15:09:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.16pre46.xpi" name="attach_7742" title="2.16 prerelease 46">Created an attachment (id=7742)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7742&amp;action=edit" title="2.16 prerelease 46">[details]</a></span>
+2.16 prerelease 46
+
+Like previously mentioned a better version without all the unintended &quot;version
+information&quot; nag screens.
+
+Also, you can now switch back on this:
+extensions.zombiekeys.debug.accelerators.detail = true
+
+(right-click Debug for it)
+
+this will list _all_ accelerators (not just the ones that match ZK), at least
+it will show whether the {R} + accel shortcut exists on your system.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25648.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-03 01:58:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.16pre51.xpi" name="attach_7743" title="2.16 prerelease 51">Created an attachment (id=7743)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7743&amp;action=edit" title="2.16 prerelease 51">[details]</a></span>
+2.16 prerelease 51
+
+Added charCode number and a speed improvement for &lt;keus&gt; with empty 'key'
+attribute
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25648.html#c16">
+            #16</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-03 08:40:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ErrorConsole.txt.html" name="attach_7745" title="Requested output from Error Console">Created an attachment (id=7745)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7745&amp;action=edit" title="Requested output from Error Console">[details]</a></span>
+Requested output from Error Console
+
+This capture is after the upgrade to 51.  Ctrl-R still doesn't work.  Other
+things seem to work.
+
+While I know it is separate, euro now works (didn't the key combo change?)
+
+During testing some key combinations ... which included not always pushing the
+right buttons, I did get the following error twice ... but I can't tell you
+exactly what produced it.
+
+[ZombieKeys] 10:36:39.154  [367768 ms]   
+Exception in insertAtCaret; (nodeName=HTML)
+[Exception... &quot;Index or size is negative or greater than the allowed amount&quot; 
+code: &quot;1&quot; nsresult: &quot;0x80530001 (IndexSizeError)&quot;  location:
+&quot;chrome://zombiekeys/content/zombiekeys-overlay.js Line: 1147&quot;]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25648.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-12-03 08:53:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25648.html#c16">comment #16</a>)
+<span class="quote">&gt; Created an <span class=""><a href="ErrorConsole.txt.html" name="attach_7745" title="Requested output from Error Console">attachment (id=7745)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7745&amp;action=edit" title="Requested output from Error Console">[details]</a></span> [details]
+&gt; Requested output from Error Console
+&gt; 
+&gt; This capture is after the upgrade to 51.  Ctrl-R still doesn't work.  Other
+&gt; things seem to work.
+&gt; 
+&gt; While I know it is separate, euro now works (didn't the key combo change?)</span >
+I changed it from @ to E, yes.
+<span class="quote">&gt; 
+&gt; During testing some key combinations ... which included not always pushing the
+&gt; right buttons, I did get the following error twice ... but I can't tell you
+&gt; exactly what produced it.
+&gt; 
+&gt; [ZombieKeys] 10:36:39.154  [367768 ms]   
+&gt; Exception in insertAtCaret; (nodeName=HTML)
+&gt; [Exception... &quot;Index or size is negative or greater than the allowed amount&quot; 
+&gt; code: &quot;1&quot; nsresult: &quot;0x80530001 (IndexSizeError)&quot;  location:
+&gt; &quot;chrome://zombiekeys/content/zombiekeys-overlay.js Line: 1147&quot;]
+&gt; </span >
+
+Can you please now switch back on this:
+extensions.zombiekeys.debug.accelerators.detail = true
+
+and run the test again?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25648.html#c18">
+            #18</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-04 14:20:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ErrorConsole_20131204.txt" name="attach_7746" title="Error console output with detailed">Created an attachment (id=7746)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7746&amp;action=edit" title="Error console output with detailed">[details]</a></span>
+Error console output with detailed
+
+Sorry, I didn't seem to get your message requesting the output with detailed =
+true.  Here it is.
+
+When I use Zombiekey patterns correctly, no additional messages are added in
+the console.  I presume this is because we have the up and down turned off.
+
+Yeah, yeah, I know this is separate, but since it now works from the keys, I'm
+not sure there is a point of a separate bug report.
+Euro works from the key patterns, but not from the menu.  If I try it from the
+menu I get 
+[ZombieKeys] 16:19:3.880  [306330 ms]    
+insertAtCaret for chr '€' cannot be done - no element passed!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25648.html#c19">
+            #19</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2013-12-13 13:11:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >FWIW, I am using ALT-E, ALT-W for the rewrap now.  Not quite as handy as
+Ctrl-R, but not as bad as having to go to the menus.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25648.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-28 09:49:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am still working on this, the problem is that I cannot just remove the keys
+from the keyset when the composer window is ready as at that point the key
+listeners have already been established.
+
+It might be possible to use the keyconfig extension as a workaround, I just
+have to find a way to list the shortcuts used in composer.
+
+You can download it here: <a href="http://mozilla.dorando.at/keyconfig.xpi">http://mozilla.dorando.at/keyconfig.xpi</a>
+
+See also:
+<a href="http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=72994&amp;sid=9d6e0b3967c9b36a328a9a3f8734b498">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=72994&amp;sid=9d6e0b3967c9b36a328a9a3f8734b498</a>
+
+I haven't tested this yet. I am hoping that I can re-use some of its code for
+disabling these built in shortcuts from Thunderbird while leaving the Zombie
+Keys Combinations in place.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25648.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-22 10:28:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="zombie_keys_multilanguage_keyboard-2.17pre40.xpi" name="attach_8195" title="2.17 prerelease 40">Created an attachment (id=8195)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8195&amp;action=edit" title="2.17 prerelease 40">[details]</a></span>
+2.17 prerelease 40
+
+Added a mechanism that filters out the keystroke based on charcCode - for this
+the charCode has to be added to the mpa for the country. Works for me on Irish
+locale; to test it try the debug mode and enable 
+
+extensions.zombiekeys.debug.accelerators = true
+extensions.zombiekeys.debug.keyPressHandler = true
+
+this will capture the charcode you are using and which m ay have ot be added
+for your country specific map.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25648.html#c22">
+            #22</a> From 
+          <a href="mailto:thomas&#64;cintegrity.com">Thomas Mercer-Hursh</a>
+          2016-05-29 14:16:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Finally got around to trying this.  Based on very limited testing so far, it
+seems to work.
+
+I will note as an aside, since I am sure it has nothing to do with ZombieKeys,
+that some time back the behavior of Rewrap changed such that if I Rewrap and
+compose a perfectly reasonable looking message with blank lines between quoted
+material and my response, the recipient receives text where the lines are
+rewrapped and the blank lines missing.  Very hard to read.  Consequently, I am
+often forced to reply in HTML, but this is not allowed for one of the important
+lists I participate in.  But, obviously not your fault.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25648.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-15 03:56:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in Release 2.17
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25648&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

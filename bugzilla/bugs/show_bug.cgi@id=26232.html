@@ -1,0 +1,1309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26232 &ndash; Tagging fault: ToggleMessageTag is not a function</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26232&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26232">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26232">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26232">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26232">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26232</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Tagging fault: ToggleMessageTag is not a function</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-03-24 07:23:27</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26232&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-03-24 07:23:27">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="26232">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Tagging fault: ToggleMessageTag is not a function">Tagging fault: ToggleMessageTag is not a function
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26232.html">26232</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26232&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26232">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:thoikix&#64;gmail.com">Al &lt;thoikix&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="thoikix&#64;gmail.com">thoikix&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Screenshot&#32;-&#32;2016_05_20,&#32;14_48_04.png"
+               title="View the content of the attachment">
+          <b>Extract from TB Error Console</b></a>
+
+          <span class="bz_attach_extra_info">
+              (53.87 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8189"
+               title="Go to the comment associated with the attachment">2016-05-20 17:36</a>,
+
+            <a href="mailto:thoikix&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Al
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8189&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="console2-1.0a4.xpi.3"
+               title="View the content of the attachment">
+          <b>better error console</b></a>
+
+          <span class="bz_attach_extra_info">
+              (135.70 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8190"
+               title="Go to the comment associated with the attachment">2016-05-21 03:35</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8190&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-3.2pre12.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">quickFilters 3.2 Prerelease 12</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (288.20 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8191"
+               title="Go to the comment associated with the attachment">2016-05-21 03:53</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8191&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="quickFilters-tb-pb-sm-3.2pre13.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">quickFilters 3.2 Prerelease 13</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (288.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8192"
+               title="Go to the comment associated with the attachment">2016-05-21 07:02</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8192&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="quickFilters-tb-pb-sm-3.2pre17.xpi.1"
+               title="View the content of the attachment">
+          <b>quickFilters 3.2 Prerelease 17</b></a>
+
+          <span class="bz_attach_extra_info">
+              (288.37 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8193"
+               title="Go to the comment associated with the attachment">2016-05-22 04:25</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8193&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="TB&#32;console&#32;-&#32;quickFilters&#32;-&#32;Comment&#32;6&#32;-&#32;tests&#32;A,B&#32;(no&#32;content,&#32;subset&#32;Quick).txt"
+               title="View the content of the attachment">
+          <b>TB console2 output for tests (a) &amp; (b)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (3.32 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=26232.html#attach_8194"
+               title="Go to the comment associated with the attachment">2016-05-22 08:01</a>,
+
+            <a href="mailto:thoikix&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Al
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8194&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26232.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26232&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26232&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26232">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26232">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26232">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26232">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26232.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2016-05-20 17:36
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Screenshot&#32;-&#32;2016_05_20,&#32;14_48_04.png" name="attach_8189" title="Extract from TB Error Console">Created an attachment (id=8189)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8189&amp;action=edit" title="Extract from TB Error Console">[details]</a></span>
+Extract from TB Error Console
+
+When an email message has been selected and an attempt is made to assign a Tag
+to the message using the Tag icon in the Mail Toolbar, or Message,Tag from the
+Main Menu, or right-click,Tag from the context menu, then the attempt fails and
+the tag is not added.
+
+Examination of the Error Console contains the following message:
+
+      TypeError:quickFilters.ToggleMessageTag is not a function&quot;
+
+and includes a hyperlink to chrome://quickfilters/content/quickFilters.js
+
+Following the hyperlink points to 1298 of the quickFilters.js file, the content
+of that line being:
+
+      quickFilters.ToggleMessageTag(tag, checked);
+
+The tagging function works again when the quickFilters addon is disabled and TB
+is restarted.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26232.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-21 03:35:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="console2-1.0a4.xpi.3" name="attach_8190" title="better error console">Created an attachment (id=8190)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8190&amp;action=edit" title="better error console">[details]</a></span>
+better error console
+
+This is a patched version of error console which may come in useful. The
+console has context menus for select all / copy to clipboard so we can have
+text logs. It also has a filter for the Addons context (chrome) so you can
+leave out any &quot;Content&quot; related logs that may be created by invalid HTML in
+emails + web pages.
+
+I will also upload a newer version of quickFilters soon so we are on the same
+page. I assume the current error relates to quickFilters v3.1 released on
+28/02/2016
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26232.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-21 03:53:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.2pre12.xpi" name="attach_8191" title="quickFilters 3.2 Prerelease 12">Created an attachment (id=8191)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8191&amp;action=edit" title="quickFilters 3.2 Prerelease 12">[details]</a></span>
+quickFilters 3.2 Prerelease 12
+
+Added a fallback for when the ToggleMessageTag function could not be retrieved
+via util.getMail3PaneWindow()
+
+Please install and switch on the &quot;debug&quot; setting in quickFilters options,
+Advanced tab bottom right. Then toggle filter assistant and tag a message.
+
+I might add more debug messages to the next patched version if we still
+encounter the error
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26232.html#c3">
+            #3</a> From 
+          <a href="mailto:thoikix&#64;gmail.com">Al</a>
+          2016-05-21 05:34:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+Many thanks for your very quick response on this, and yes, the version of
+quickFilters I was using was 3.1 - my apologies for omitting that important
+detail from the original bug text.
+
+I have downloaded and installed console2-1.0a4.xpi and
+quickFilters-tb-pb-sm-3.2pre12.xpi as suggested, and restarted TB.
+
+I ticked the check box on the Advanced tab of the quickFilters preferences to
+enable debug mode, tiggled Filter Assistant, and tried tagging an email. With
+&quot;All&quot; options enabled in the error console, the only message logged was:
+
+  Sat May 21 2016 13:08:00
+  Error: too much recursion
+  Source file: chrome://quickfilters/content/quickFilters.js
+  Line: 1312
+
+which appears to be the same issue as described in <span class="bz_closed"><a href="show_bug.cgi@id=26163.html" title="RESOLVED FIXED - Tagging broken: &quot;too much recursion&quot;">Bug 26163</a></span>.
+
+Following the link to the JavaScript file shows line 1312 as:
+
+  quickFilters.ToggleMessageTag(tag, checked);
+
+which, from looking at the surrounding code, appears to be the same line of
+code as I noted in my initial comments.
+
+I am more than happy to run any further diagnostics or provide any additional
+information which you may need, just let me know.
+
+Best regards,
+Al
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26232.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-21 07:02:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.2pre13.xpi" name="attach_8192" title="quickFilters 3.2 Prerelease 13">Created an attachment (id=8192)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8192&amp;action=edit" title="quickFilters 3.2 Prerelease 13">[details]</a></span>
+quickFilters 3.2 Prerelease 13
+
+Try this one. I think somehow the wrapped function is wrapped again which leads
+to recursion. Shouldn't really happen though. Can you try and capture / attach
+a full log (from Thunderbird startup) if it happens again. with console2 it
+should be no problem to catch it, quickFilters debug mode will ensure that I
+see better what's happening.
+
+If there are no relevant messages for qF, try opening any mail folder in a new
+window, this will restart the initialisation process for that &quot;instance&quot; of
+Thunderbird.
+
+thanks in advance
+  Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26232.html#c5">
+            #5</a> From 
+          <a href="mailto:thoikix&#64;gmail.com">Al</a>
+          2016-05-21 17:09:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Still no luck this time either, unfortunately.
+
+I installed the Prerelease 13 xpi file, and restarted TB from a DOS command
+line, using the -jsconsole switch.
+
+The error message generated on this occasion is back to the original message,
+namely:
+
+  Error: TypeError: quickFilters.ToggleMessageTag is not a function
+
+I have extracted the error console contents, filtered using the text &quot;quick&quot;,
+and saved them to a text file. As the text file contains some mildly personal
+information, I will email that file to you separately, if that is ok.
+
+Regards,
+Al
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26232.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-22 04:25:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-3.2pre17.xpi.1" name="attach_8193" title="quickFilters 3.2 Prerelease 17">Created an attachment (id=8193)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8193&amp;action=edit" title="quickFilters 3.2 Prerelease 17">[details]</a></span>
+quickFilters 3.2 Prerelease 17
+
+New version with more detailed debug log. 
+
+I need 2 tests
+a) starting up Thunderbird and just getting that log. Makes sure you disable
+debug mode in QuickFolders. Also, please right-click the debug option in
+quickFilters and only toggle the setting
+
+extensions.quickfilters.debug.listeners = true
+
+important: make sure to disable &quot;Content&quot; in Error Console, because that's a
+bunch of noise. being able to switch that off is one of my primary reason for
+using console2.
+
+b) with the same console settings as above:
+   clear the log
+   enable quickFilters assistant
+   tag any email
+
+Again, full unfiltered log is appreciated.
+
+EXPECTED OUTPUT (a):
+quickFilters {LISTENERS} [logTime init]
+addTagListener()
+ ----------
+quickFilters {LISTENERS} 12:7:41.882  [0 ms]   
+Wrapping ToggleMessageTag...
+ ----------
+quickFilters {LISTENERS} 12:7:41.883  [1 ms]   
+typeof ToggleMessageTag =function
+ adding flag...
+ ----------
+quickFilters {LISTENERS} 12:7:41.883  [0 ms]   
+typeof ToggleMessageTag =function
+ ----------
+quickFilters {LISTENERS} 12:7:42.44  [161 ms]   
+addTagListener()
+ ----------
+quickFilters 12:7:42.970  [466 ms]   
+Util.VersionProxy() started.
+ ----------
+quickFilters 12:7:42.971  [1 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+quickFilters 12:7:42.971  [0 ms]   
+toggleCurrentFolderButtons()
+ ----------
+quickFilters {EVENTS} 12:7:42.972  [1 ms]   
+quickFilters.onload - ends
+ ----------
+quickFilters 12:7:43.200  [228 ms]   
+Util.VersionProxy() started.
+ ----------
+quickFilters 12:7:43.201  [1 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+quickFilters {EVENTS} 12:7:43.201  [0 ms]   
+quickFilters.onload - starts
+ ----------
+quickFilters {EVENTS} 12:7:43.201  [0 ms]   
+setTimeout() - checkFirstRun
+ ----------
+quickFilters 12:7:43.201  [0 ms]   
+toggleCurrentFolderButtons()
+ ----------
+quickFilters {EVENTS} 12:7:43.201  [0 ms]   
+quickFilters.onload - ends
+ ----------
+quickFilters 12:7:43.595  [394 ms]   
+AddonManager: quickFilters extension's version is 3.2.pre16
+ ----------
+quickFilters 12:7:43.633  [38 ms]   
+AddonManager: quickFilters extension's version is 3.2.pre16
+ ----------
+quickFilters 12:7:44.44  [411 ms]   
+=================quickFilters==============
+   checkFirstRun() - attempt 1
+ ----------
+quickFilters 12:7:44.44  [0 ms]   
+firstRun = false  - currentVersion = 3.2.pre16  - installed = 3.2.
+ ----------
+quickFilters 12:7:44.45  [1 ms]   
+store installedVersion: 3.2.
+
+
+EXPECTED OUTPUT (b):
+quickFilters {LISTENERS} 12:16:45.495  [498919 ms]   
+ToggleMessageTagWrapped()
+contextWin == win: true
+contextWin.quickFilters == quickFilters: true
+originalTagToggler == contextWin.quickFilters.ToggleMessageTag: true
+ToggleMessageTag == contextWin.quickFilters.ToggleMessageTag: false
+ ----------
+quickFilters [logTime init]
+remove replyto item from template list...
+ ----------
+quickFilters {LISTENERS} 12:16:46.526  [957 ms]   
+addTagListener()
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26232.html#c7">
+            #7</a> From 
+          <a href="mailto:thoikix&#64;gmail.com">Al</a>
+          2016-05-22 08:01:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="TB&#32;console&#32;-&#32;quickFilters&#32;-&#32;Comment&#32;6&#32;-&#32;tests&#32;A,B&#32;(no&#32;content,&#32;subset&#32;Quick).txt" name="attach_8194" title="TB console2 output for tests (a) &amp; (b)">Created an attachment (id=8194)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8194&amp;action=edit" title="TB console2 output for tests (a) &amp; (b)">[details]</a></span>
+TB console2 output for tests (a) &amp; (b)
+
+Hi Axel,
+
+When I right-clicked the quickFilters debug option, the
+extensions.quickfilters.debug.listeners item did not exit, so I created it with
+a value of true.
+
+I ran the two tests as requested, with console2 Content disabled, and
+displaying only messages containing the string &quot;quick&quot; - text file with the
+content of both tests is attached.
+
+For test (a), I did notice some differences between my results and your
+expected results, the most notable being the absence of &quot;setTimeout() -
+checkFirstRun&quot; in my results.
+
+For test (b), my results showed
+
+  originalTagToggler == contextWin.quickFilters.ToggleMessageTag: false
+
+whereas your expected results show 
+
+  originalTagToggler == contextWin.quickFilters.ToggleMessageTag: true
+
+Then my results throw up the message
+
+  Error: TypeError: contextWin.quickFilters.ToggleMessageTag is not a function
+
+Hope this helps.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26232.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-05-22 08:32:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26232.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class=""><a href="TB&#32;console&#32;-&#32;quickFilters&#32;-&#32;Comment&#32;6&#32;-&#32;tests&#32;A,B&#32;(no&#32;content,&#32;subset&#32;Quick).txt" name="attach_8194" title="TB console2 output for tests (a) &amp; (b)">attachment (id=8194)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8194&amp;action=edit" title="TB console2 output for tests (a) &amp; (b)">[details]</a></span> [details]
+&gt; TB console2 output for tests (a) &amp; (b)
+&gt; 
+&gt; Hi Axel,
+&gt; 
+&gt; When I right-clicked the quickFilters debug option, the
+&gt; extensions.quickfilters.debug.listeners item did not exit, so I created it with
+&gt; a value of true.</span >
+
+:( :( :(
+
+if it doesn't exist then I must not have uploaded the correct test version.
+Because it needs to exist for testing as a default in the version I
+specifically created for this test. There are some additional optional logs
+that start with
+
+quickFilters {LISTENERS} 
+
+which are switched on using that setting. But only if you have the correct
+revision of quickFilters. (are you sure you ran prerelease 17?)
+
+
+
+<span class="quote">&gt; 
+&gt; For test (b), my results showed
+&gt; 
+&gt;   originalTagToggler == contextWin.quickFilters.ToggleMessageTag: false
+&gt; 
+&gt; whereas your expected results show 
+&gt; 
+&gt;   originalTagToggler == contextWin.quickFilters.ToggleMessageTag: true
+&gt; </span >
+
+this one is significant. Will review in detail later.
+
+<span class="quote">&gt; Then my results throw up the message
+&gt; 
+&gt;   Error: TypeError: contextWin.quickFilters.ToggleMessageTag is not a function
+&gt; 
+&gt; Hope this helps.
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26232.html#c9">
+            #9</a> From 
+          <a href="mailto:thoikix&#64;gmail.com">Al</a>
+          2016-05-22 10:37:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I can confirm that it is definitely quickFilters 3.2pre17 which is installed,
+though I did notice in the expected output in <a href="show_bug.cgi@id=26232.html#c6">Comment #6</a> that prerelease 16 was
+in use.
+
+Could that be the difference?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26232.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-03-24 07:23:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in Release 3.2
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26232&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

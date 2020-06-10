@@ -1,0 +1,1217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26370 &ndash; From version 52 replies and forwarded emails have paragraphs even in &lt;br&gt; is set in general TB prefs</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26370&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26370">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26370">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26370">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26370">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26370</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">From version 52 replies and forwarded emails have paragraphs even in &lt;br&gt; is set in general TB prefs</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-05-25 15:43:45</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26370&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-05-25 15:43:45">
+  <input type="hidden" name="longdesclength" value="16">
+  <input type="hidden" name="id" value="26370">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="From version 52 replies and forwarded emails have paragraphs even in &lt;br&gt; is set in general TB prefs">
+        <span title="From version 52 replies and forwarded emails have paragraphs even in &lt;br&gt; is set in general TB prefs">From version 52 replies and forwarded emails have paragra...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26370.html">26370</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>REMIND
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="Macintosh">Macintosh
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Mac OS X 10.4">Mac OS X 10.4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26370&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26370">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:stefano.marchesin&#64;gmail.com">S &lt;stefano.marchesin&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-1.5pre33.xpi"
+               title="View the content of the attachment">
+          <b>1.5 prerelease 33</b></a>
+
+          <span class="bz_attach_extra_info">
+              (389.36 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26370.html#attach_8289"
+               title="Go to the comment associated with the attachment">2017-05-21 16:22</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8289&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="screenshot.jpg.1"
+               title="View the content of the attachment">
+          <b>screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (516.54 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26370.html#attach_8292"
+               title="Go to the comment associated with the attachment">2017-05-25 13:24</a>,
+
+            <a href="mailto:stefano.marchesin&#64;gmail.com"
+               title="Write an email to the creator of the attachment">S
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8292&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="screenshot1.jpeg"
+               title="View the content of the attachment">
+          <b>screenshot with smarttemplate on</b></a>
+
+          <span class="bz_attach_extra_info">
+              (484.46 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26370.html#attach_8293"
+               title="Go to the comment associated with the attachment">2017-05-25 14:28</a>,
+
+            <a href="mailto:stefano.marchesin&#64;gmail.com"
+               title="Write an email to the creator of the attachment">S
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8293&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="screenshot2.jpeg"
+               title="View the content of the attachment">
+          <b>screenshot with smarttemplate off</b></a>
+
+          <span class="bz_attach_extra_info">
+              (546.60 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26370.html#attach_8294"
+               title="Go to the comment associated with the attachment">2017-05-25 14:29</a>,
+
+            <a href="mailto:stefano.marchesin&#64;gmail.com"
+               title="Write an email to the creator of the attachment">S
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8294&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="SmartTemplate4&#32;settings&#32;(en-US).png"
+               title="View the content of the attachment">
+          <b>SmartTemplate Settings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (94.12 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26370.html#attach_8295"
+               title="Go to the comment associated with the attachment">2017-05-25 14:46</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8295&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26370&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26370&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26370">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26370">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26370">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26370">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26370.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2017-05-21 15:25
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+
+Since versione 52, even if in TB general preferences I disable the use of
+paragraphs when clicking &quot;enter&quot; composing a message, when I reply or forward a
+message with smarttemplate it acts like the TB prefs is ignored and the body of
+the email has only paragraphs when typing &quot;enter&quot;.
+
+When composing a new message, so without the interaction of smarttemplate,
+everything works fine.
+
+Hope quick fix.
+Thanks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26370.html#c1">
+            #1</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2017-05-21 16:03:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Try disabling Advanced Settins &gt; Force Paragraph Mode.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26370.html#c2">
+            #2</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-21 16:09:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Tried, nothing changes...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26370.html#c3">
+            #3</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2017-05-21 16:22:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.5pre33.xpi" name="attach_8289" title="1.5 prerelease 33">Created an attachment (id=8289)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8289&amp;action=edit" title="1.5 prerelease 33">[details]</a></span>
+1.5 prerelease 33
+
+Try the latest version first to see if it is different please, there were some
+changes dealing with the newline replacement rules...
+
+I understand that you always start off in Paragraph mode when you use
+SmartTemplate4 but there is no Paragraph when you disable it?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26370.html#c4">
+            #4</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2017-05-21 16:40:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Make sure you do not have a &lt;p&gt; &lt;/p&gt; in your template or around your %cursor%
+variable. 
+
+Once you are in a Paragraph Enter will split the paragraph in 2 - seems to be
+default behavior of THunderbird, making sense to me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26370.html#c5">
+            #5</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 13:24:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot.jpg.1" name="attach_8292" title="screenshot">Created an attachment (id=8292)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8292&amp;action=edit" title="screenshot">[details]</a></span>
+screenshot
+
+Hi, tried new version nothing changes.
+It seems that replies with smart template on make TB to set &quot;Paragraph&quot; instead
+of &quot;Body&quot; and use fixed width font instead of the specified Arial.
+I attach screenshots.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26370.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-05-25 14:21:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26370.html#c5">comment #5</a>)
+<span class="quote">&gt; Created an <span class=""><a href="screenshot.jpg.1" name="attach_8292" title="screenshot">attachment (id=8292)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8292&amp;action=edit" title="screenshot">[details]</a></span> [details]
+&gt; screenshot
+&gt; 
+&gt; Hi, tried new version nothing changes.
+&gt; It seems that replies with smart template on make TB to set &quot;Paragraph&quot; instead
+&gt; of &quot;Body&quot; and use fixed width font instead of the specified Arial.
+&gt; I attach screenshots.
+&gt; </span >
+Your screenshot shows the highlighted cursor / space at the top. 
+The Style is  &quot;Corpo del testo&quot; (Is this not body?)
+The Font is &quot;Largehezza variabile&quot; (is this not proportional font?)
+
+It looks to me like if you are already in &quot;body&quot; and hit Enter you should stay
+in &quot;body&quot; mode. Once the email is shown smartTempalte4 does NOTHING so if you
+see any strange behavior afterwards then this is from Thunderbird. Make sure
+THunderbird Options &gt; Composition &gt; General has the setting &quot;Use Paragraph
+format insteead of Body Text by default&quot;  switched OFF.
+
+Can you explain the additional toolbar underneath (Firme, Variables, Other) ?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26370.html#c7">
+            #7</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 14:28:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot1.jpeg" name="attach_8293" title="screenshot with smarttemplate on">Created an attachment (id=8293)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8293&amp;action=edit" title="screenshot with smarttemplate on">[details]</a></span>
+screenshot with smarttemplate on
+
+This is the screenshot of when I click &quot;reply&quot; with smarttemplate on.
+Then I post the second screenshot with smarttemplate off where everything works
+fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26370.html#c8">
+            #8</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 14:29:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot2.jpeg" name="attach_8294" title="screenshot with smarttemplate off">Created an attachment (id=8294)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8294&amp;action=edit" title="screenshot with smarttemplate off">[details]</a></span>
+screenshot with smarttemplate off
+
+Second screenshot: how it is with smarttemplate off
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26370.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-05-25 14:46:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="SmartTemplate4&#32;settings&#32;(en-US).png" name="attach_8295" title="SmartTemplate Settings">Created an attachment (id=8295)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8295&amp;action=edit" title="SmartTemplate Settings">[details]</a></span>
+SmartTemplate Settings
+
+I cannot reproduce the behavior - please make sure you have the Advanced
+settings set as show in the screenshot:
+
+Global Settings
+[ ] Force Paragraph  Mode OFF
+
+Also make sure the default paragraph mode of Thunderbird &gt; Composition is off.
+
+If this doesn't work, open Thunderbird tools &gt; developer tools &gt; Error Console
+
+make sure you have all errors / warnins / messages on
+
+clear contents and reply to an email. Any error messages / warnings?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26370.html#c10">
+            #10</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 14:52:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Here we go with the error. It looks it is smarttemplate:
+TypeError: this.NotifyComposeBodyReadyReply is not a function[Ulteriori
+informazioni]  MsgComposeCommands.js:315:7
+        stateListener.NotifyComposeBodyReady
+chrome://messenger/content/messengercompose/MsgComposeCommands.js:315:7
+        initListener/stateListener.NotifyComposeBodyReady
+chrome://smarttemplate4/content/smartTemplate-main.js:379:8
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26370.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-05-25 15:34:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26370.html#c10">comment #10</a>)
+<span class="quote">&gt; Here we go with the error. It looks it is smarttemplate:
+&gt; TypeError: this.NotifyComposeBodyReadyReply is not a function[Ulteriori
+&gt; informazioni]  MsgComposeCommands.js:315:7
+&gt;         stateListener.NotifyComposeBodyReady
+&gt; chrome://messenger/content/messengercompose/MsgComposeCommands.js:315:7
+&gt;         initListener/stateListener.NotifyComposeBodyReady
+&gt; chrome://smarttemplate4/content/smartTemplate-main.js:379:8
+&gt; </span >
+Need more info:
+
+which version - did you use the patched prerelease version (1.5pre33) I
+attached in <a href="show_bug.cgi@id=26370.html#c3">comment #3</a>
+
+I do not find any references to 
+NotifyComposeBodyReadyReply 
+in this version.
+
+I see it is references in Thunderbird Core code at:
+<a href="https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#315">https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#315</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26370.html#c12">
+            #12</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 15:38:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I use 1.33pre33 you attached to this bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26370.html#c13">
+            #13</a> From 
+          <a href="mailto:stefano.marchesin&#64;gmail.com">S</a>
+          2017-05-25 15:38:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26370.html#c12">comment #12</a>)
+<span class="quote">&gt; I use 1.33pre33 you attached to this bug.</span >
+
+1.5pre33
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26370.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-05-25 15:40:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26370.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26370.html#c10">comment #10</a>)
+&gt; &gt; Here we go with the error. It looks it is smarttemplate:
+&gt; &gt; TypeError: this.NotifyComposeBodyReadyReply is not a function[Ulteriori
+&gt; &gt; informazioni]  MsgComposeCommands.js:315:7
+&gt; &gt;         stateListener.NotifyComposeBodyReady
+&gt; &gt; chrome://messenger/content/messengercompose/MsgComposeCommands.js:315:7
+&gt; &gt;         initListener/stateListener.NotifyComposeBodyReady
+&gt; &gt; chrome://smarttemplate4/content/smartTemplate-main.js:379:8
+&gt; &gt; 
+&gt; Need more info:
+&gt; 
+&gt; which version - did you use the patched prerelease version (1.5pre33) I
+&gt; attached in <a href="show_bug.cgi@id=26370.html#c3">comment #3</a>
+&gt; 
+&gt; I do not find any references to 
+&gt; NotifyComposeBodyReadyReply 
+&gt; in this version.
+&gt; 
+&gt; I see it is references in Thunderbird Core code at:
+&gt; <a href="https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#315">https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#315</a>
+&gt; </span >
+Can you Make a debug log (you can use consol2) with smartTemplate debug enabled
+and the option 
+extensions.smartTemplate4.debug.composer = true
+(you can set this through right-clicking the debug box on ST4 Advanced &gt; [Advan
+ced Settings] tab - this will give additional debug detail in the error
+console.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26370.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-05-25 15:43:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have a feeling you might have anothe raddons installed that does something
+with the NoteifyComposeBodyReady / NotifyComposeBodyReadyReply listeners . what
+other addons are you running?  maybe it is the one that gives you the extra
+toolbar I mentioned before...
+
+(Firme, Variables, Other) 
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26370&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,618 @@
+GNU gdb (GDB) 7.0-ubuntu
+Copyright (C) 2009 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+(gdb) 
+(gdb) handle SIG33 pass nostop noprint
+Signal        Stop	Print	Pass to program	Description
+SIG33         No	No	Yes		Real-time event 33
+(gdb) set pagination 0
+(gdb) attach 30560
+Attaching to process 30560
+Reading symbols from /usr/lib/thunderbird/thunderbird-bin...(no debugging symbols found)...done.
+Reading symbols from /usr/lib/thunderbird/libmozjs.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libmozjs.so
+Reading symbols from /usr/lib/thunderbird/libxpcom.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libxpcom.so
+Reading symbols from /usr/lib/thunderbird/libxpcom_core.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libxpcom_core.so
+Reading symbols from /usr/lib/thunderbird/libplds4.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libplds4.so
+Reading symbols from /usr/lib/thunderbird/libplc4.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libplc4.so
+Reading symbols from /usr/lib/thunderbird/libnspr4.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libnspr4.so
+Reading symbols from /lib/libpthread.so.0...(no debugging symbols found)...done.
+[Thread debugging using libthread_db enabled]
+[New Thread 0x7f23ea2c5910 (LWP 30570)]
+[New Thread 0x7f23eaac6910 (LWP 30569)]
+[New Thread 0x7f23f6812910 (LWP 30563)]
+[New Thread 0x7f23f7ac1910 (LWP 30562)]
+[New Thread 0x7f23fd89f910 (LWP 30561)]
+Loaded symbols for /lib/libpthread.so.0
+Reading symbols from /lib/libdl.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib/libdl.so.2
+Reading symbols from /usr/lib/libgtk-x11-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgtk-x11-2.0.so.0
+Reading symbols from /usr/lib/libgdk-x11-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgdk-x11-2.0.so.0
+Reading symbols from /usr/lib/libatk-1.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libatk-1.0.so.0
+Reading symbols from /usr/lib/libpangoft2-1.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libpangoft2-1.0.so.0
+Reading symbols from /usr/lib/libgdk_pixbuf-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgdk_pixbuf-2.0.so.0
+Reading symbols from /usr/lib/libpangocairo-1.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libpangocairo-1.0.so.0
+Reading symbols from /usr/lib/libgio-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgio-2.0.so.0
+Reading symbols from /usr/lib/libcairo.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libcairo.so.2
+Reading symbols from /usr/lib/libpango-1.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libpango-1.0.so.0
+Reading symbols from /usr/lib/libfreetype.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libfreetype.so.6
+Reading symbols from /usr/lib/libfontconfig.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libfontconfig.so.1
+Reading symbols from /usr/lib/libgobject-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgobject-2.0.so.0
+Reading symbols from /usr/lib/libgmodule-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgmodule-2.0.so.0
+Reading symbols from /lib/libglib-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /lib/libglib-2.0.so.0
+Reading symbols from /usr/lib/libX11.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libX11.so.6
+Reading symbols from /usr/lib/libgthread-2.0.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgthread-2.0.so.0
+Reading symbols from /lib/libm.so.6...(no debugging symbols found)...done.
+Loaded symbols for /lib/libm.so.6
+Reading symbols from /usr/lib/libstdc++.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libstdc++.so.6
+Reading symbols from /lib/libgcc_s.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libgcc_s.so.1
+Reading symbols from /lib/libc.so.6...(no debugging symbols found)...done.
+Loaded symbols for /lib/libc.so.6
+Reading symbols from /lib64/ld-linux-x86-64.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib64/ld-linux-x86-64.so.2
+Reading symbols from /usr/lib/libXcomposite.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXcomposite.so.1
+Reading symbols from /usr/lib/libXdamage.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXdamage.so.1
+Reading symbols from /usr/lib/libXfixes.so.3...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXfixes.so.3
+Reading symbols from /usr/lib/libXext.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXext.so.6
+Reading symbols from /usr/lib/libXrender.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXrender.so.1
+Reading symbols from /usr/lib/libXinerama.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXinerama.so.1
+Reading symbols from /usr/lib/libXi.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXi.so.6
+Reading symbols from /usr/lib/libXrandr.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXrandr.so.2
+Reading symbols from /usr/lib/libXcursor.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXcursor.so.1
+Reading symbols from /lib/libz.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libz.so.1
+Reading symbols from /lib/libpcre.so.3...(no debugging symbols found)...done.
+Loaded symbols for /lib/libpcre.so.3
+Reading symbols from /lib/libresolv.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib/libresolv.so.2
+Reading symbols from /lib/libselinux.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libselinux.so.1
+Reading symbols from /usr/lib/libpixman-1.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libpixman-1.so.0
+Reading symbols from /usr/lib/libdirectfb-1.2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libdirectfb-1.2.so.0
+Reading symbols from /usr/lib/libfusion-1.2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libfusion-1.2.so.0
+Reading symbols from /usr/lib/libdirect-1.2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libdirect-1.2.so.0
+Reading symbols from /usr/lib/libpng12.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libpng12.so.0
+Reading symbols from /usr/lib/libxcb-render-util.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libxcb-render-util.so.0
+Reading symbols from /usr/lib/libxcb-render.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libxcb-render.so.0
+Reading symbols from /usr/lib/libxcb.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libxcb.so.1
+Reading symbols from /lib/libexpat.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libexpat.so.1
+Reading symbols from /lib/librt.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/librt.so.1
+Reading symbols from /usr/lib/libXau.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXau.so.6
+Reading symbols from /usr/lib/libXdmcp.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXdmcp.so.6
+Reading symbols from /lib/libnss_compat.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib/libnss_compat.so.2
+Reading symbols from /lib/libnsl.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libnsl.so.1
+Reading symbols from /lib/libnss_nis.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib/libnss_nis.so.2
+Reading symbols from /lib/libnss_files.so.2...(no debugging symbols found)...done.
+Loaded symbols for /lib/libnss_files.so.2
+Reading symbols from /usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so
+Reading symbols from /usr/lib/libcanberra-gtk.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libcanberra-gtk.so.0
+Reading symbols from /usr/lib/libcanberra.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libcanberra.so.0
+Reading symbols from /usr/lib/libvorbisfile.so.3...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libvorbisfile.so.3
+Reading symbols from /usr/lib/libvorbis.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libvorbis.so.0
+Reading symbols from /usr/lib/libogg.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libogg.so.0
+Reading symbols from /usr/lib/libtdb.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libtdb.so.1
+Reading symbols from /usr/lib/libltdl.so.7...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libltdl.so.7
+Reading symbols from /usr/lib/gtk-2.0/2.10.0/engines/libmurrine.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gtk-2.0/2.10.0/engines/libmurrine.so
+Reading symbols from /usr/lib/gconv/UTF-16.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gconv/UTF-16.so
+Reading symbols from /usr/lib/thunderbird/components/libmail.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmail.so
+Reading symbols from /usr/lib/thunderbird/libxpcom_compat.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libxpcom_compat.so
+Reading symbols from /usr/lib/thunderbird/components/libmyspell.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmyspell.so
+Reading symbols from /usr/lib/libhunspell-1.2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libhunspell-1.2.so.0
+Reading symbols from /usr/lib/thunderbird/components/libchrome.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libchrome.so
+Reading symbols from /usr/lib/thunderbird/components/libpref.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libpref.so
+Reading symbols from /usr/lib/thunderbird/components/libnecko.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libnecko.so
+Reading symbols from /usr/lib/thunderbird/components/libi18n.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libi18n.so
+Reading symbols from /usr/lib/thunderbird/components/libjar50.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libjar50.so
+Reading symbols from /usr/lib/thunderbird/components/librdf.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/librdf.so
+Reading symbols from /usr/lib/thunderbird/components/libhtmlpars.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libhtmlpars.so
+Reading symbols from /usr/lib/thunderbird/components/libuconv.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libuconv.so
+Reading symbols from /usr/lib/thunderbird/components/libdocshell.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libdocshell.so
+Reading symbols from /usr/lib/libgconf-2.so.4...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgconf-2.so.4
+Reading symbols from /usr/lib/libORBit-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libORBit-2.so.0
+Reading symbols from /usr/lib/libdbus-glib-1.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libdbus-glib-1.so.2
+Reading symbols from /lib/libdbus-1.so.3...(no debugging symbols found)...done.
+Loaded symbols for /lib/libdbus-1.so.3
+Reading symbols from /usr/lib/libgnome-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnome-2.so.0
+Reading symbols from /usr/lib/libgnomevfs-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnomevfs-2.so.0
+Reading symbols from /usr/lib/libbonobo-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libbonobo-2.so.0
+Reading symbols from /usr/lib/libbonobo-activation.so.4...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libbonobo-activation.so.4
+Reading symbols from /usr/lib/libesd.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libesd.so.0
+Reading symbols from /usr/lib/libaudiofile.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libaudiofile.so.0
+Reading symbols from /lib/libpopt.so.0...(no debugging symbols found)...done.
+Loaded symbols for /lib/libpopt.so.0
+Reading symbols from /usr/lib/libxml2.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libxml2.so.2
+Reading symbols from /usr/lib/libgnutls.so.26...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnutls.so.26
+Reading symbols from /usr/lib/libavahi-glib.so.1...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libavahi-glib.so.1
+Reading symbols from /usr/lib/libavahi-common.so.3...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libavahi-common.so.3
+Reading symbols from /usr/lib/libavahi-client.so.3...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libavahi-client.so.3
+Reading symbols from /lib/libutil.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libutil.so.1
+Reading symbols from /usr/lib/libORBitCosNaming-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libORBitCosNaming-2.so.0
+Reading symbols from /usr/lib/libasound.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libasound.so.2
+Reading symbols from /usr/lib/libtasn1.so.3...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libtasn1.so.3
+Reading symbols from /lib/libgcrypt.so.11...(no debugging symbols found)...done.
+Loaded symbols for /lib/libgcrypt.so.11
+Reading symbols from /lib/libgpg-error.so.0...(no debugging symbols found)...done.
+Loaded symbols for /lib/libgpg-error.so.0
+Reading symbols from /usr/lib/thunderbird/components/libxpconnect.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libxpconnect.so
+Reading symbols from /usr/lib/thunderbird/components/libwidget_gtk2.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libwidget_gtk2.so
+Reading symbols from /usr/lib/thunderbird/libgkgfx.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libgkgfx.so
+Reading symbols from /usr/lib/thunderbird/libgtkxtbin.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libgtkxtbin.so
+Reading symbols from /usr/lib/libXt.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXt.so.6
+Reading symbols from /usr/lib/libSM.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libSM.so.6
+Reading symbols from /usr/lib/libICE.so.6...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libICE.so.6
+Reading symbols from /lib/libuuid.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libuuid.so.1
+Reading symbols from /usr/lib/thunderbird/components/libtoolkitcomps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libtoolkitcomps.so
+Reading symbols from /usr/lib/thunderbird/components/libembedcomponents.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libembedcomponents.so
+Reading symbols from /usr/lib/thunderbird/components/libcaps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libcaps.so
+Reading symbols from /usr/lib/thunderbird/components/libsystem-pref.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libsystem-pref.so
+Reading symbols from /usr/lib/thunderbird/components/libappcomps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libappcomps.so
+Reading symbols from /usr/lib/thunderbird/components/libnsappshell.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libnsappshell.so
+Reading symbols from /usr/lib/thunderbird/components/libstoragecomps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libstoragecomps.so
+Reading symbols from /usr/lib/thunderbird/libsqlite3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libsqlite3.so
+Reading symbols from /usr/lib/thunderbird/components/libcommandlines.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libcommandlines.so
+Reading symbols from /usr/lib/thunderbird/components/libgfx_gtk.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libgfx_gtk.so
+Reading symbols from /usr/lib/libXft.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libXft.so.2
+Reading symbols from /usr/lib/thunderbird/libgfxpsshar.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/libgfxpsshar.so
+Reading symbols from /usr/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xpm.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xpm.so
+Reading symbols from /usr/lib/thunderbird/components/libimglib2.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libimglib2.so
+Reading symbols from /usr/lib/libjpeg.so.62...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libjpeg.so.62
+Reading symbols from /usr/lib/thunderbird/components/libgklayout.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libgklayout.so
+Reading symbols from /usr/lib/thunderbird/components/libwebbrwsr.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libwebbrwsr.so
+Reading symbols from /usr/lib/thunderbird/components/libpipboot.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libpipboot.so
+Reading symbols from /usr/lib/pango/1.6.0/modules/pango-basic-fc.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/pango/1.6.0/modules/pango-basic-fc.so
+Reading symbols from /usr/lib/thunderbird/components/libremoteservice.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libremoteservice.so
+Reading symbols from /usr/lib/thunderbird/components/libeditor.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libeditor.so
+Reading symbols from /usr/lib/thunderbird/components/libtxmgr.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libtxmgr.so
+Reading symbols from /usr/lib/thunderbird/components/libspellchecker.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libspellchecker.so
+Reading symbols from /usr/lib/thunderbird/components/libcomposer.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libcomposer.so
+Reading symbols from /usr/lib/thunderbird/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}/components/libcalbasecomps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}/components/libcalbasecomps.so
+Reading symbols from /usr/lib/thunderbird/components/libimgicon.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libimgicon.so
+Reading symbols from /usr/lib/libgnomeui-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnomeui-2.so.0
+Reading symbols from /usr/lib/libbonoboui-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libbonoboui-2.so.0
+Reading symbols from /usr/lib/libgnomecanvas-2.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnomecanvas-2.so.0
+Reading symbols from /usr/lib/libart_lgpl_2.so.2...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libart_lgpl_2.so.2
+Reading symbols from /usr/lib/libgnome-keyring.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgnome-keyring.so.0
+Reading symbols from /usr/lib/libgailutil.so.18...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libgailutil.so.18
+Reading symbols from /usr/lib/gtk-2.0/2.10.0/immodules/im-cedilla.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gtk-2.0/2.10.0/immodules/im-cedilla.so
+Reading symbols from /usr/lib/gnome-vfs-2.0/modules/libfile.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/gnome-vfs-2.0/modules/libfile.so
+Reading symbols from /lib/libacl.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libacl.so.1
+Reading symbols from /usr/lib/libfam.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libfam.so.0
+Reading symbols from /lib/libattr.so.1...(no debugging symbols found)...done.
+Loaded symbols for /lib/libattr.so.1
+Reading symbols from /usr/lib/thunderbird/extensions/{2e1b75f1-6b5a-4f1d-89b4-424f636e4fba}/components/libtraybiff.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/extensions/{2e1b75f1-6b5a-4f1d-89b4-424f636e4fba}/components/libtraybiff.so
+Reading symbols from /usr/lib/thunderbird/components/libmork.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmork.so
+Reading symbols from /usr/lib/thunderbird/components/libpipnss.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libpipnss.so
+Reading symbols from /usr/lib/libssl3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libssl3.so
+Reading symbols from /usr/lib/libsmime3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libsmime3.so
+Reading symbols from /usr/lib/libnss3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libnss3.so
+Reading symbols from /usr/lib/libnssutil3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libnssutil3.so
+Reading symbols from /usr/lib/nss/libsoftokn3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/nss/libsoftokn3.so
+Reading symbols from /usr/lib/libsqlite3.so.0...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/libsqlite3.so.0
+Reading symbols from /usr/lib/nss/libnssdbm3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/nss/libnssdbm3.so
+Reading symbols from /usr/lib/nss/libfreebl3.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/nss/libfreebl3.so
+Reading symbols from /usr/lib/nss/libnssckbi.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/nss/libnssckbi.so
+Reading symbols from /usr/lib/thunderbird/components/libmailcomps.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmailcomps.so
+Reading symbols from /usr/lib/thunderbird/components/libmozgnome.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmozgnome.so
+Reading symbols from /usr/lib/thunderbird/components/libmsgsmime.so...(no debugging symbols found)...done.
+Loaded symbols for /usr/lib/thunderbird/components/libmsgsmime.so
+0x00007f2404014373 in poll () from /lib/libc.so.6
+(gdb) continue
+Continuing.
+[New Thread 0x7f23f5810910 (LWP 30650)]
+[New Thread 0x7f23f6011910 (LWP 30651)]
+[New Thread 0x7f23e9294910 (LWP 30652)]
+[New Thread 0x7f23e8468910 (LWP 30655)]
+
+Program received signal SIGABRT, Aborted.
+0x00007f2403f744b5 in raise () from /lib/libc.so.6
+(gdb) backtrace full
+#0  0x00007f2403f744b5 in raise () from /lib/libc.so.6
+No symbol table info available.
+#1  0x00007f2403f77f50 in abort () from /lib/libc.so.6
+No symbol table info available.
+#2  0x00007f240458fcc5 in __gnu_cxx::__verbose_terminate_handler() () from /usr/lib/libstdc++.so.6
+No symbol table info available.
+#3  0x00007f240458e0f6 in ?? () from /usr/lib/libstdc++.so.6
+No symbol table info available.
+#4  0x00007f240458e123 in std::terminate() () from /usr/lib/libstdc++.so.6
+No symbol table info available.
+#5  0x00007f240458e9ff in __cxa_pure_virtual () from /usr/lib/libstdc++.so.6
+No symbol table info available.
+#6  0x00007f23f8e0bfea in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+No symbol table info available.
+#7  0x00007f23f8e0c572 in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+No symbol table info available.
+#8  0x00007f23f8e0c64b in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+No symbol table info available.
+#9  0x00007f2406f32f54 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#10 0x00007f240546e5ae in g_closure_invoke () from /usr/lib/libgobject-2.0.so.0
+No symbol table info available.
+#11 0x00007f2405483983 in ?? () from /usr/lib/libgobject-2.0.so.0
+No symbol table info available.
+#12 0x00007f2405484bcc in g_signal_emit_valist () from /usr/lib/libgobject-2.0.so.0
+No symbol table info available.
+#13 0x00007f24054850a4 in g_signal_emit_by_name () from /usr/lib/libgobject-2.0.so.0
+No symbol table info available.
+#14 0x00007f240705cc09 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#15 0x00007f240705b41e in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#16 0x00007f240705b5a0 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#17 0x00007f240705c9b3 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#18 0x00007f2406f2ce8c in gtk_main_do_event () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#19 0x00007f2406ba1cdc in ?? () from /usr/lib/libgdk-x11-2.0.so.0
+No symbol table info available.
+#20 0x00007f2404fd1bbe in g_main_context_dispatch () from /lib/libglib-2.0.so.0
+No symbol table info available.
+#21 0x00007f2404fd5588 in ?? () from /lib/libglib-2.0.so.0
+No symbol table info available.
+#22 0x00007f2404fd59e5 in g_main_loop_run () from /lib/libglib-2.0.so.0
+No symbol table info available.
+#23 0x00007f2406f2d177 in gtk_main () from /usr/lib/libgtk-x11-2.0.so.0
+No symbol table info available.
+#24 0x00007f23f8e0db00 in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+No symbol table info available.
+#25 0x00007f23f7f1c05e in ?? () from /usr/lib/thunderbird/components/libtoolkitcomps.so
+No symbol table info available.
+#26 0x0000000000408c9e in ?? ()
+No symbol table info available.
+#27 0x00007f2403f5fabd in __libc_start_main () from /lib/libc.so.6
+No symbol table info available.
+#28 0x00000000004039e9 in ?? ()
+No symbol table info available.
+#29 0x00007fffe65f5118 in ?? ()
+No symbol table info available.
+#30 0x000000000000001c in ?? ()
+No symbol table info available.
+#31 0x0000000000000001 in ?? ()
+No symbol table info available.
+#32 0x00007fffe65f64e9 in ?? ()
+No symbol table info available.
+#33 0x0000000000000000 in ?? ()
+No symbol table info available.
+(gdb) info registere[Ks
+rax            0x0	0
+rbx            0x4196630	68773424
+rcx            0xffffffffffffffff	-1
+rdx            0x6	6
+rsi            0x7760	30560
+rdi            0x7760	30560
+rbp            0x7fffe65f4020	0x7fffe65f4020
+rsp            0x7fffe65f3df8	0x7fffe65f3df8
+r8             0x7f2404599970	139792668531056
+r9             0x7f24087e97b0	139792738064304
+r10            0x8	8
+r11            0x206	518
+r12            0x35abe80	56278656
+r13            0x2987959	43546969
+r14            0x4196630	68773424
+r15            0x7fffe65f40e0	140737058390240
+rip            0x7f2403f744b5	0x7f2403f744b5 <raise+53>
+eflags         0x206	[ PF IF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+fctrl          0x37f	895
+fstat          0x20	32
+ftag           0xffff	65535
+fiseg          0x7f24	32548
+fioff          0x83931eb	137966059
+foseg          0x7fff	32767
+fooff          0xe65f2378	-429972616
+fop            0x55c	1372
+mxcsr          0x1fa3	[ IE DE PE IM DM ZM OM UM PM ]
+(gdb) x/16i %[K$pc
+0x7f2403f744b5 <raise+53>:	cmp    $0xfffffffffffff000,%rax
+0x7f2403f744bb <raise+59>:	ja     0x7f2403f744d2 <raise+82>
+0x7f2403f744bd <raise+61>:	repz retq 
+0x7f2403f744bf <raise+63>:	nop
+0x7f2403f744c0 <raise+64>:	test   %eax,%eax
+0x7f2403f744c2 <raise+66>:	jg     0x7f2403f744a5 <raise+37>
+0x7f2403f744c4 <raise+68>:	test   $0x7fffffff,%eax
+0x7f2403f744c9 <raise+73>:	jne    0x7f2403f744e2 <raise+98>
+0x7f2403f744cb <raise+75>:	mov    %esi,%eax
+0x7f2403f744cd <raise+77>:	nopl   (%rax)
+0x7f2403f744d0 <raise+80>:	jmp    0x7f2403f744a5 <raise+37>
+0x7f2403f744d2 <raise+82>:	mov    0x335abf(%rip),%rdx        # 0x7f24042a9f98
+0x7f2403f744d9 <raise+89>:	neg    %eax
+0x7f2403f744db <raise+91>:	mov    %eax,%fs:(%rdx)
+0x7f2403f744de <raise+94>:	or     $0xffffffffffffffff,%eax
+0x7f2403f744e1 <raise+97>:	retq   
+(gdb) thread apply all backtrace
+
+Thread 10 (Thread 0x7f23e8468910 (LWP 30655)):
+#0  0x00007f240760c82d in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240783f689 in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f240784027c in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#3  0x00007f23fdb0d21c in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#4  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#5  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#6  0x00007f24040207bd in clone () from /lib/libc.so.6
+#7  0x0000000000000000 in ?? ()
+
+Thread 9 (Thread 0x7f23e9294910 (LWP 30652)):
+#0  0x00007f240760c82d in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240783f689 in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f240784027c in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#3  0x00007f23fdb3b923 in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#4  0x00007f23fdb3c0fb in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#5  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#6  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#7  0x00007f24040207bd in clone () from /lib/libc.so.6
+#8  0x0000000000000000 in ?? ()
+
+Thread 8 (Thread 0x7f23f6011910 (LWP 30651)):
+#0  0x00007f240760c82d in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240783f689 in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f240784027c in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#3  0x00007f23fdb0d21c in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#4  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#5  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#6  0x00007f24040207bd in clone () from /lib/libc.so.6
+#7  0x0000000000000000 in ?? ()
+
+Thread 7 (Thread 0x7f23f5810910 (LWP 30650)):
+#0  0x00007f240760c82d in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240783f689 in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f240784027c in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#3  0x00007f2407840386 in PR_Wait () from /usr/lib/thunderbird/libnspr4.so
+#4  0x00007f23fea980d5 in ?? () from /usr/lib/thunderbird/components/libmail.so
+#5  0x00007f23fea9822f in ?? () from /usr/lib/thunderbird/components/libmail.so
+#6  0x00007f2407ee13db in ?? () from /usr/lib/thunderbird/libxpcom_core.so
+#7  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#8  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#9  0x00007f24040207bd in clone () from /lib/libc.so.6
+#10 0x0000000000000000 in ?? ()
+
+Thread 6 (Thread 0x7f23fd89f910 (LWP 30561)):
+#0  0x00007f2404014373 in poll () from /lib/libc.so.6
+#1  0x00007f2407841cff in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f23fdb30205 in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#3  0x00007f23fdb30410 in ?? () from /usr/lib/thunderbird/components/libnecko.so
+#4  0x00007f2407ee13db in ?? () from /usr/lib/thunderbird/libxpcom_core.so
+#5  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#6  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#7  0x00007f24040207bd in clone () from /lib/libc.so.6
+#8  0x0000000000000000 in ?? ()
+
+Thread 5 (Thread 0x7f23f7ac1910 (LWP 30562)):
+#0  0x00007f240760c82d in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240783f689 in ?? () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f240784027c in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#3  0x00007f2407ee3068 in ?? () from /usr/lib/thunderbird/libxpcom_core.so
+#4  0x00007f2407ee13db in ?? () from /usr/lib/thunderbird/libxpcom_core.so
+#5  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#6  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#7  0x00007f24040207bd in clone () from /lib/libc.so.6
+#8  0x0000000000000000 in ?? ()
+
+Thread 4 (Thread 0x7f23f6812910 (LWP 30563)):
+#0  0x00007f240760c5a9 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240784031a in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f23f6a758c9 in ?? () from /usr/lib/thunderbird/components/libstoragecomps.so
+#3  0x00007f23f6a76d0a in ?? () from /usr/lib/thunderbird/components/libstoragecomps.so
+#4  0x00007f2407ee13db in ?? () from /usr/lib/thunderbird/libxpcom_core.so
+#5  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#6  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#7  0x00007f24040207bd in clone () from /lib/libc.so.6
+#8  0x0000000000000000 in ?? ()
+
+Thread 3 (Thread 0x7f23eaac6910 (LWP 30569)):
+#0  0x00007f240760c5a9 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240784031a in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f23ec061c25 in ?? () from /usr/lib/thunderbird/components/libpipnss.so
+#3  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#4  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#5  0x00007f24040207bd in clone () from /lib/libc.so.6
+#6  0x0000000000000000 in ?? ()
+
+Thread 2 (Thread 0x7f23ea2c5910 (LWP 30570)):
+#0  0x00007f240760c5a9 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#1  0x00007f240784031a in PR_WaitCondVar () from /usr/lib/thunderbird/libnspr4.so
+#2  0x00007f23ec062ec4 in ?? () from /usr/lib/thunderbird/components/libpipnss.so
+#3  0x00007f2407845e3a in ?? () from /usr/lib/thunderbird/libnspr4.so
+#4  0x00007f2407607a04 in start_thread () from /lib/libpthread.so.0
+#5  0x00007f24040207bd in clone () from /lib/libc.so.6
+#6  0x0000000000000000 in ?? ()
+
+Thread 1 (Thread 0x7f24087e97b0 (LWP 30560)):
+#0  0x00007f2403f744b5 in raise () from /lib/libc.so.6
+#1  0x00007f2403f77f50 in abort () from /lib/libc.so.6
+#2  0x00007f240458fcc5 in __gnu_cxx::__verbose_terminate_handler() () from /usr/lib/libstdc++.so.6
+#3  0x00007f240458e0f6 in ?? () from /usr/lib/libstdc++.so.6
+#4  0x00007f240458e123 in std::terminate() () from /usr/lib/libstdc++.so.6
+#5  0x00007f240458e9ff in __cxa_pure_virtual () from /usr/lib/libstdc++.so.6
+#6  0x00007f23f8e0bfea in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+#7  0x00007f23f8e0c572 in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+#8  0x00007f23f8e0c64b in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+#9  0x00007f2406f32f54 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+#10 0x00007f240546e5ae in g_closure_invoke () from /usr/lib/libgobject-2.0.so.0
+#11 0x00007f2405483983 in ?? () from /usr/lib/libgobject-2.0.so.0
+#12 0x00007f2405484bcc in g_signal_emit_valist () from /usr/lib/libgobject-2.0.so.0
+#13 0x00007f24054850a4 in g_signal_emit_by_name () from /usr/lib/libgobject-2.0.so.0
+#14 0x00007f240705cc09 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+#15 0x00007f240705b41e in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+#16 0x00007f240705b5a0 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+#17 0x00007f240705c9b3 in ?? () from /usr/lib/libgtk-x11-2.0.so.0
+#18 0x00007f2406f2ce8c in gtk_main_do_event () from /usr/lib/libgtk-x11-2.0.so.0
+#19 0x00007f2406ba1cdc in ?? () from /usr/lib/libgdk-x11-2.0.so.0
+#20 0x00007f2404fd1bbe in g_main_context_dispatch () from /lib/libglib-2.0.so.0
+#21 0x00007f2404fd5588 in ?? () from /lib/libglib-2.0.so.0
+#22 0x00007f2404fd59e5 in g_main_loop_run () from /lib/libglib-2.0.so.0
+#23 0x00007f2406f2d177 in gtk_main () from /usr/lib/libgtk-x11-2.0.so.0
+#24 0x00007f23f8e0db00 in ?? () from /usr/lib/thunderbird/components/libwidget_gtk2.so
+#25 0x00007f23f7f1c05e in ?? () from /usr/lib/thunderbird/components/libtoolkitcomps.so
+#26 0x0000000000408c9e in ?? ()
+#27 0x00007f2403f5fabd in __libc_start_main () from /lib/libc.so.6
+#28 0x00000000004039e9 in ?? ()
+#29 0x00007fffe65f5118 in ?? ()
+#30 0x000000000000001c in ?? ()
+#31 0x0000000000000001 in ?? ()
+#32 0x00007fffe65f64e9 in ?? ()
+#33 0x0000000000000000 in ?? ()
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 30560] will be detached.
+
+Quit anyway? (y or n) LND: Sending signal 6 to Thread 0x7f24087e97b0 (LWP 30560)
+Detaching from program: /usr/lib/thunderbird/thunderbird-bin, process 30560

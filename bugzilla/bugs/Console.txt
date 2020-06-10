@@ -1,0 +1,153 @@
+LOG addons.xpi: startup
+ ----------
+LOG addons.xpi: Skipping unavailable install location app-system-local
+ ----------
+LOG addons.xpi: Skipping unavailable install location app-system-share
+ ----------
+LOG addons.xpi: checkForChanges
+ ----------
+LOG addons.xpi: No changes found
+ ----------
+Could not read chrome manifest file 'C:\Internet\Profiles\MauThunderbird\extensions\es-es@dictionaries.addons.mozilla.org\chrome.manifest'.
+ ----------
+Could not read chrome manifest file 'C:\Internet\Profiles\MauThunderbird\extensions\it-IT@dictionaries.addons.mozilla.org\chrome.manifest'.
+ ----------
+While registering XPCOM module C:\Internet\Profiles\MauThunderbird\extensions\{847b3a00-7ab1-11d4-8f02-006008948af5}\platform\WINNT_x86-msvc\gecko-10\enigmime-x86-msvc.dll, trying to re-register CID '{847b3a21-7ab1-11d4-8f02-006008948af5}' already registered by C:\Internet\Profiles\MauThunderbird\extensions\{847b3a00-7ab1-11d4-8f02-006008948af5}\platform\WINNT_x86-msvc\gecko-10\enigmime-x86-msvc.dll.
+ ----------
+While registering XPCOM module C:\Internet\Profiles\MauThunderbird\extensions\{847b3a00-7ab1-11d4-8f02-006008948af5}\platform\WINNT_x86-msvc\gecko-10\enigmime-x86-msvc.dll, trying to re-register CID '{847b3a51-7ab1-11d4-8f02-006008948af5}' already registered by C:\Internet\Profiles\MauThunderbird\extensions\{847b3a00-7ab1-11d4-8f02-006008948af5}\platform\WINNT_x86-msvc\gecko-10\enigmime-x86-msvc.dll.
+ ----------
+Sun Feb 26 2012 13:56:48
+Warning: Warning: Ignoring obsolete chrome registration modifier 'xpcnativewrappers=no'.
+Source file: C:\Internet\Profiles\MauThunderbird\extensions\inspector@mozilla.org.xpi:chrome.manifest
+Line: 17
+ ----------
+Sun Feb 26 2012 13:56:48
+Warning: Error in parsing value for 'clip'.  Declaration dropped.
+Source file: resource://gre-resources/ua.css
+Line: 274
+ ----------
+Sun Feb 26 2012 13:56:49
+Warning: assignment to undeclared variable hideDispMUABox
+Source file: chrome://compactheader/content/toolbar.js
+Line: 359
+ ----------
+Sun Feb 26 2012 13:56:49
+Warning: assignment to undeclared variable removeButtonDispMUA
+Source file: chrome://compactheader/content/toolbar.js
+Line: 383
+ ----------
+LOG addons.xpi: Opening database
+ ----------
+Sun Feb 26 2012 13:56:49
+Warning: XUL box for toolbarbutton element contained an inline #text child, forcing all its children to be wrapped in a block.
+Source file: chrome://messenger/content/messenger.xul
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property node.id
+Source file: chrome://messenger/content/folderWidgets.xml
+Line: 56
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property aTabType.panelId
+Source file: chrome://messenger/content/tabmail.xml
+Line: 409
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: assignment to undeclared variable acct
+Source file: chrome://messenger/content/folderPane.js
+Line: 955
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: assignment to undeclared variable folderWithFlag
+Source file: chrome://messenger/content/folderPane.js
+Line: 959
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: assignment to undeclared variable smartChild
+Source file: chrome://messenger/content/folderPane.js
+Line: 1583
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property 2
+Source file: chrome://messenger/content/folderPane.js
+Line: 1500
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property hdrButton.type
+Source file: chrome://compactheader/content/toolbar.js
+Line: 129
+ ----------
+Sun Feb 26 2012 13:56:50 GMT+0100 (ora solare Europa occidentale) CH: Current logLevel: 1
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: assignment to undeclared variable i
+Source file: chrome://compactheader/content/toolbar.js
+Line: 76
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property button.type
+Source file: chrome://compactheader/content/toolbar.js
+Line: 199
+ ----------
+QuickFolders [logTime init]
+initDocAndWindow
+QuickFolders.doc = chrome://messenger/content/messenger.xul
+this.doc = chrome://messenger/content/messenger.xul
+ ----------
+QuickFolders 13:56:50.622  [34 ms]	 
+initDelayed ==== correct window: chrome://messenger/content/messenger.xul - - Mozilla Thunderbird
+wait 1000 msec until init()...
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: reference to undefined property aTabIndexNodeOrInfo.tagName
+Source file: chrome://messenger/content/tabmail.xml
+Line: 450
+ ----------
+Sun Feb 26 2012 13:56:50
+Warning: Use of getAttributeNodeNS() is deprecated. Use getAttributeNS() instead.
+Source file: chrome://messenger/content/messenger.xul
+ ----------
+QuickFolders 13:56:51.53  [431 ms]	 
+================================================
+================================================
+ ----------
+QuickFolders 13:56:51.53  [0 ms]	 
+AddonManager: QuickFolders extension's version is 3.0.2
+ ----------
+QuickFolders 13:56:51.53  [0 ms]	 
+QuickFolders.VersionProxy() - DETECTED QuickFolders Version 3.0.2
+Running on Thunderbird Version 10.0.2
+ ----------
+QuickFolders 13:56:51.53  [0 ms]	 
+================================================
+================================================
+ ----------
+QuickFolders 13:56:51.53  [0 ms]	 
+Current QuickFolders Version: 3.0.2
+ ----------
+QuickFolders:QuickFolders.init() - QuickFolders Version 3.0.2
+Running on Thunderbird Version 10.0.2
+ ----------
+QuickFolders 13:56:51.632  [579 ms]	 
+last selected Category:__ALL
+ ----------
+QuickFolders 13:56:51.633  [1 ms]	 
+updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 26
+ ----------
+QuickFolders 13:56:51.634  [1 ms]	 
+updateCategories() - [0 Categories]
+ ----------
+QuickFolders 13:56:51.634  [0 ms]	 
+No Categories defined, hiding Categories box.
+ ----------
+QuickFolders 13:56:51.770  [136 ms]	 
+26 of 26 tabs  created on Toolbar.
+ ----------
+QuickFolders 13:56:51.770  [0 ms]	 
+call displayNavigationToolbar.
+ ----------
+QuickFolders 13:56:51.770  [0 ms]	 
+call initToolbarHiding.
+ ----------
+QuickFolders 13:56:51.770  [0 ms]	 
+QF.init() ends.

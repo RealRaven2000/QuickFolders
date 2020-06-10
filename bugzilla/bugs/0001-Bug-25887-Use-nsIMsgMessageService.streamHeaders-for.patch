@@ -1,0 +1,136 @@
+From 0afc99373ef1d126f3d265dec4677d10bc84cf75 Mon Sep 17 00:00:00 2001
+From: arai <arai_a@mac.com>
+Date: Sat, 6 Dec 2014 21:56:55 +0900
+Subject: Bug 25887 - Use nsIMsgMessageService.streamHeaders for downloading
+ message headers if available.
+
+
+diff --git a/content/smartTemplate-overlay.js b/content/smartTemplate-overlay.js
+index 66649db..f09ec3f 100644
+--- a/content/smartTemplate-overlay.js
++++ b/content/smartTemplate-overlay.js
+@@ -279,39 +279,62 @@ SmartTemplate4.classGetHeaders = function(messageURI)
+     yield false;
+   }
+   // ==
+   let msgContent = new String(streamListenerST4._data);
+   headers.initialize(msgContent, msgContent.length);
+ */  
+   
+ 	inputStream.init(messageStream);
++	var isHeaders = false;
+ 	try {
+-		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
++		messageService.streamHeaders(messageURI, messageStream, null, false);
++		isHeaders = true;
+ 	}
+ 	catch (ex) {
+-		SmartTemplate4.Util.logException('classGetHeaders - constructor - messageService.streamMessage failed', ex);
+-		return null;
++		SmartTemplate4.Util.logDebug('messageService.streamHeaders failed, fallback to messageService.streamMessage');
++		try {
++			messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
++		}
++		catch (ex) {
++			SmartTemplate4.Util.logException('classGetHeaders - constructor - messageService.streamHeaders and messageService.streamMessage failed', ex);
++			return null;
++		}
+ 	}
+ 
+ 	var msgContent = "";
+ 	var contentCache = "";
++	var contentStreamInitialized = false;
++	var contentInputStream = null;
+   try {
+-    while (inputStream.available()) { 
+-      msgContent = msgContent + inputStream.read(2048); 
+-      var p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
+-      if (p > 0) {
+-        contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
+-        msgContent = msgContent.substr(0, p) + "\r\n";
+-        break;
++    if (isHeaders) {
++      while (inputStream.available()) { 
++        msgContent = msgContent + inputStream.read(2048); 
++        if (msgContent.length > 2048 * 8) {
++          SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
++          return null;
++        }
+       }
+-      if (msgContent.length > 2048 * 8) {
+-        SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
+-        return null;
++    }
++    else {
++      while (inputStream.available()) { 
++        msgContent = msgContent + inputStream.read(2048); 
++        var p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
++        if (p > 0) {
++          contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
++          msgContent = msgContent.substr(0, p) + "\r\n";
++          break;
++        }
++        if (msgContent.length > 2048 * 8) {
++          SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
++          return null;
++        }
+       }
++      contentInputStream = inputStream;
++      contentStreamInitialized = true;
+     }
+   }
+   catch(ex) {
+     SmartTemplate4.Util.logException('Reading inputStream failed:', ex);
+     if (!msgContent) throw(ex);
+   }
+   
+ 	headers.initialize(msgContent, msgContent.length);
+@@ -334,17 +357,47 @@ SmartTemplate4.classGetHeaders = function(messageURI)
+       retValue = str ? str : "";
+     SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
+     return retValue;
+ 	};
+ 	
+ 	// -----------------------------------
+ 	// Get content
+ 	function content(size) {
+-	  while (inputStream.available() && contentCache.length < size) 
++	  if (!contentStreamInitialized) {
++	    contentStreamInitialized = true;
++	    contentInputStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
++	      createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
++	    let messageStream = Components.classes["@mozilla.org/network/sync-stream-listener;1"].
++	        createInstance().QueryInterface(Components.interfaces.nsIInputStream);
++	    contentInputStream.init(messageStream);
++	    try {
++	      messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
++	    }
++	    catch (ex) {
++	      SmartTemplate4.Util.logException('classGetHeaders - constructor - content - messageService.streamMessage failed', ex);
++	      return null;
++	    }
++	    let tmp = "";
++	    try {
++	      while (contentInputStream.available()) { 
++	        tmp = tmp + contentInputStream.read(2048); 
++	        var p = tmp.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
++	        if (p > 0) {
++	          contentCache = tmp.substr(p + (tmp[p] == tmp[p+1] ? 2 : 4));
++	          break;
++	        }
++	      }
++	    }
++	    catch(ex) {
++	      SmartTemplate4.Util.logException('Reading contentInputStream failed:', ex);
++	    }
++	  }
++	  while (contentInputStream.available() && contentCache.length < size) 
++	    contentCache += contentInputStream.read(2048);
+ 	    contentCache += inputStream.read(2048);
+ 	  if (contentCache.length > size) return contentCache.substr(0, size);
+ 	  else return contentCache;
+ 	};
+ 
+ 	// -----------------------------------
+ 	// Public methods
+ 	this.get = get;

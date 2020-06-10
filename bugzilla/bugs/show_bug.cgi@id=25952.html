@@ -1,0 +1,2222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25952 &ndash; ST4 places quote header at top of reply despite Seamonkey settings for certain address formats</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25952&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25952">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25952">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25952">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25952">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25952</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">ST4 places quote header at top of reply despite Seamonkey settings for certain address formats</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-07-09 04:00:58</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25952&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-07-09 04:00:58">
+  <input type="hidden" name="longdesclength" value="33">
+  <input type="hidden" name="id" value="25952">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">
+        <span title="ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">ST4 places quote header at top of reply despite Seamonkey...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25952.html">25952</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="minor">minor
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25952&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25952">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:subscribe&#64;shiftmail.com">Mike &lt;subscribe&#64;shiftmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-0.9.6.1pre48.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 48</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.70 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_7999"
+               title="Go to the comment associated with the attachment">2015-01-26 17:11</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7999&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.6.1pre53.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 53</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.92 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8000"
+               title="Go to the comment associated with the attachment">2015-01-27 01:30</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8000&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="smartTemplate-0.9.6.1pre54.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 54</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.96 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8002"
+               title="Go to the comment associated with the attachment">2015-01-27 01:53</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8002&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="52]&#32;ST4&#32;places&#32;quote&#32;header&#32;at&#32;top&#32;of&#32;reply&#32;despite&#32;Seamonkey&#32;settings&#32;for&#32;certain&#32;address&#32;form.html"
+               title="View the content of the attachment">
+          <b>Original message used as an example of the Forwarding headers</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.80 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8003"
+               title="Go to the comment associated with the attachment">2015-01-27 05:22</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8003&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="g&#32;25952]&#32;ST4&#32;places&#32;quote&#32;header&#32;at&#32;top&#32;of&#32;reply&#32;despite&#32;Seamonkey&#32;settings&#32;for&#32;certain&#32;address.html"
+               title="View the content of the attachment">
+          <b>Forwarded message showing forwarding headers generated by Seamonkey.</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.48 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8004"
+               title="Go to the comment associated with the attachment">2015-01-27 05:26</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8004&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="smartTemplate-0.9.6.1pre59.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 59</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.09 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8005"
+               title="Go to the comment associated with the attachment">2015-01-29 07:58</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8005&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="smartTemplate-0.9.6.1pre60.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 60</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.11 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8006"
+               title="Go to the comment associated with the attachment">2015-02-02 16:05</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8006&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a8" href="SmartTemplate-Tests.html.1.html"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">test file</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.70 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8009"
+               title="Go to the comment associated with the attachment">2015-02-03 01:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8009&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a9" href="smartTemplate-0.9.6.1pre63.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 63</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.15 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8010"
+               title="Go to the comment associated with the attachment">2015-02-03 01:50</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8010&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a10" href="SmartTemplate-Tests.html.1.1.html"
+               title="View the content of the attachment">
+          <b>New Test File</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.94 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8012"
+               title="Go to the comment associated with the attachment">2015-02-03 11:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8012&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a11" href="smartTemplate-0.9.6.1pre71.xpi"
+               title="View the content of the attachment">
+          <b>0.9.6.1 prerelease 71</b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25952.html#attach_8013"
+               title="Go to the comment associated with the attachment">2015-02-03 11:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8013&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25952.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (7)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25952&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25952&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25952">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25952">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25952">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25952">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25952.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-01-26 12:59
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Versions: Windows 7, Smarttemplate 0.9.6.1pre38, Seamonkey 2.32
+
+Certain address formats cause ST4 to ignore the Quote header placement setting
+and places the header at the top of the Reply regardless of the setting.
+
+In particular, an example of the email address format that causes such an error
+is:
+---------- Original Message ----------
+Subject: [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25951.html" title="RESOLVED FIXED - ST4 not working in SeaMonkey 2.32 - Temporal Deadzone">Bug 25951</a></span>] ST4 not working in SeaMonkey 2.32 -
+Temporal Deadzone
+Date: 1/26/2015 10:39:57 AM
+From: <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+To: <a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>
+
+
+The From: address format seems to impact the placement of the quoted original
+message to always be at the top even though quoted original messages are
+configured to be placed at the bottom of the reply in Seamonkey.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25952.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 14:14:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >how does this address:
+  <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+happen?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25952.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 17:11:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre48.xpi" name="attach_7999" title="0.9.6.1 prerelease 48">Created an attachment (id=7999)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7999&amp;action=edit" title="0.9.6.1 prerelease 48">[details]</a></span>
+0.9.6.1 prerelease 48
+
+In this version, I have completely re-written the address replacement routine
+in order to make the formatting of %to()% %from()% %cc()% etc. more easy and
+configurable
+
+you can now put together the different parts in your order of choice, simply
+concatenating the different needed parts.
+
+For example:
+
+%to(lastname,firstname,mail,linked)%
+%from(name,bracketMail(round))%
+%from(firstname,lastname,bracketMail(square))%
+
+bracketMail is a new &quot;subfunction&quot; expression that &quot;wraps&quot; the mail part as
+follows:
+
+bracketMail(square)%      [email]  - square brackets
+bracketMail(round)%       (email)   - round brackets
+bracketMail(angle)%       &lt;email&gt;   - angled brackets
+bracketMail(D1;D2)%       D1emailD2 - D1 and D2 represent wrapping characters
+
+.. when using the wrapping delimiter syntax, you can use any character apart
+from the special characters ,;()[]
+the wrapping characters are separated by ;
+empty characters are allowed (;)
+
+bracketMail(&lt;;&gt;)%    &lt;email&gt;
+bracketMail(&quot;;&quot;)%    &quot;email&quot;
+bracketMail(- ;)%     - email
+
+default when using %to% / %from% / %cc% etc (without any parameters) is
+(name,mail)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25952.html#c3">
+            #3</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 17:33:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c1">comment #1</a>)
+<span class="quote">&gt; how does this address:
+&gt;   <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+&gt; happen?
+&gt; </span >
+
+It is a redirected email through an anonymous mailer at 
+<a href="http://www.sharpmail.co.uk/">http://www.sharpmail.co.uk/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25952.html#c4">
+            #4</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 17:36:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c1">comment #1</a>)
+<span class="quote">&gt; how does this address:
+&gt;   <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+&gt; happen?
+&gt; </span >
+
+It is a redirected email through an anonymous mailer at 
+<a href="http://www.sharpmail.co.uk/(In">http://www.sharpmail.co.uk/(In</a> reply to <a href="show_bug.cgi@id=25952.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre48.xpi" name="attach_7999" title="0.9.6.1 prerelease 48">attachment (id=7999)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7999&amp;action=edit" title="0.9.6.1 prerelease 48">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 48
+&gt; 
+&gt; In this version, I have completely re-written the address replacement routine
+&gt; in order to make the formatting of %to()% %from()% %cc()% etc. more easy and
+&gt; configurable
+&gt; 
+&gt; you can now put together the different parts in your order of choice, simply
+&gt; concatenating the different needed parts.
+&gt; 
+&gt; For example:
+&gt; 
+&gt; %to(lastname,firstname,mail,linked)%
+&gt; %from(name,bracketMail(round))%
+&gt; %from(firstname,lastname,bracketMail(square))%
+&gt; 
+&gt; bracketMail is a new &quot;subfunction&quot; expression that &quot;wraps&quot; the mail part as
+&gt; follows:
+&gt; 
+&gt; bracketMail(square)%      [email]  - square brackets
+&gt; bracketMail(round)%       (email)   - round brackets
+&gt; bracketMail(angle)%       &lt;email&gt;   - angled brackets
+&gt; bracketMail(D1;D2)%       D1emailD2 - D1 and D2 represent wrapping characters
+&gt; 
+&gt; .. when using the wrapping delimiter syntax, you can use any character apart
+&gt; from the special characters ,;()[]
+&gt; the wrapping characters are separated by ;
+&gt; empty characters are allowed (;)
+&gt; 
+&gt; bracketMail(&lt;;&gt;)%    &lt;email&gt;
+&gt; bracketMail(&quot;;&quot;)%    &quot;email&quot;
+&gt; bracketMail(- ;)%     - email
+&gt; 
+&gt; default when using %to% / %from% / %cc% etc (without any parameters) is
+&gt; (name,mail)
+&gt; </span >
+
+Awesome.  Does this relate more to
+<span class="bz_closed"><a href="show_bug.cgi@id=25951.html" title="RESOLVED FIXED - ST4 not working in SeaMonkey 2.32 - Temporal Deadzone">https://www.mozdev.org/bugs/show_bug.cgi?id=25951</a></span> then to this bug?
+
+I'm not sure how this controls placement of the quote header in the reply
+window.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25952.html#c5">
+            #5</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 17:45:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Prior to this add-on, I used to Forward the message to which I wanted to reply,
+copy the Forwarded Message header and paste it in the Reply message to get the
+Quote header.
+
+The forwarded message header is still the template that looks best to me.
+It is in an html 2-column table.
+
+Is there any possibility of performing that copy of the Forwarded header and
+insertion into the Reply programmatically via some flag setting to indicate to
+use this method instead of a template?
+
+Just a suggestion.
+
+Thanks for such great responsiveness.
+I'm definitely donating to your effort.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25952.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 23:46:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c5">comment #5</a>)
+<span class="quote">&gt; Prior to this add-on, I used to Forward the message to which I wanted to reply,
+&gt; copy the Forwarded Message header and paste it in the Reply message to get the
+&gt; Quote header.
+&gt; 
+&gt; The forwarded message header is still the template that looks best to me.
+&gt; It is in an html 2-column table.
+&gt; 
+&gt; Is there any possibility of performing that copy of the Forwarded header and
+&gt; insertion into the Reply programmatically via some flag setting to indicate to
+&gt; use this method instead of a template?
+&gt; 
+&gt; Just a suggestion.
+&gt; 
+&gt; Thanks for such great responsiveness.
+&gt; I'm definitely donating to your effort.
+&gt; </span >
+
+Can you post the html source code you are using for he forward header?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25952.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-27 00:05:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c1">comment #1</a>)
+&gt; 
+&gt; I'm not sure how this controls placement of the quote header in the reply
+&gt; window.
+&gt; </span >
+Me neither. ST4 uses the settings in account settings &gt; composition &amp;
+addressing for placement &quot;Automatically quote the original message when
+replying&quot;... it uses the same placement settings when formatting.
+
+Let's say I always found the logic in the &quot;Adress-processing&quot; cumbersome and
+instable, and the fact that there was no way (other than the out of the box
+method of using %to% which just copies the whole address as is) to have a list
+of firstname + email, or firstname + lastname or other combinations. 
+
+
+One inherent problem of the %to% variables is that they all expand to lists
+individually, so %to(name)% %to(mail)% expands to a list of names followed by a
+list of mail addresses.
+I have several requests for making it possible to generate a &quot;composite&quot; list,
+and the only way I can do this while allowing full freedom of placement is by
+merging all arguments in the same command; hence
+%to(firstname,lastname,mail,linked)% should be possible. It would also be a
+good starting point for generating a HTML (or csv) table of addressees by
+adding more &quot;formatting options&quot;. The new algorithm simply breaks down the list
+into an array and then builds the desired addresses using the &quot;recipy&quot; given.
+
+<span class="quote">&gt; Awesome.  Does this relate more to
+&gt; <span class="bz_closed"><a href="show_bug.cgi@id=25951.html" title="RESOLVED FIXED - ST4 not working in SeaMonkey 2.32 - Temporal Deadzone">https://www.mozdev.org/bugs/show_bug.cgi?id=25951</a></span> then to this bug?
+&gt; </span >
+very likely. I don't think the different placement is caused by ST4 (or its
+address processing) directly; sounds more like an HTML error to me. Please post
+your template + quote header.
+
+Also I highly recommend using Stationery for a higher degree of placement
+options - you can then use %quotePlaceholder% and %quoteHeader% to insert what
+you need within a HTML file template which is easier to test.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25952.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-27 01:30:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre53.xpi" name="attach_8000" title="0.9.6.1 prerelease 53">Created an attachment (id=8000)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8000&amp;action=edit" title="0.9.6.1 prerelease 53">[details]</a></span>
+0.9.6.1 prerelease 53
+
+Did some bug fixing on the address resolution to deal with email addresses
+without names better and to fix the ,link modifier
+
+It should be now possible to use:
+
+%to(name,link,mail,link)%
+
+or 
+%to(firstname,bracketMail(square),link)%
+
+&quot;,link&quot; always refers to the previous format string only and will add a mailto
+link with the email address for convenient replying
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25952.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-27 01:53:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre54.xpi.1" name="attach_8002" title="0.9.6.1 prerelease 54">Created an attachment (id=8002)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8002&amp;action=edit" title="0.9.6.1 prerelease 54">[details]</a></span>
+0.9.6.1 prerelease 54
+
+Fixed a problem with %to% not showing email address.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25952.html#c10">
+            #10</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-27 05:20:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c5">comment #5</a>)
+&gt; &gt; Prior to this add-on, I used to Forward the message to which I wanted to reply,
+&gt; &gt; copy the Forwarded Message header and paste it in the Reply message to get the
+&gt; &gt; Quote header.
+&gt; &gt; 
+&gt; &gt; The forwarded message header is still the template that looks best to me.
+&gt; &gt; It is in an html 2-column table.
+&gt; &gt; 
+&gt; &gt; Is there any possibility of performing that copy of the Forwarded header and
+&gt; &gt; insertion into the Reply programmatically via some flag setting to indicate to
+&gt; &gt; use this method instead of a template?
+&gt; &gt; 
+&gt; &gt; Just a suggestion.
+&gt; &gt; 
+&gt; &gt; Thanks for such great responsiveness.
+&gt; &gt; I'm definitely donating to your effort.
+&gt; &gt; 
+&gt; 
+&gt; Can you post the html source code you are using for he forward header?
+&gt; </span >
+
+I've attached the an original message and the forwarded message so you can see
+the headers I copy right after the ------- Forewarded Message -------- section.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25952.html#c11">
+            #11</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-27 05:22:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="52]&#32;ST4&#32;places&#32;quote&#32;header&#32;at&#32;top&#32;of&#32;reply&#32;despite&#32;Seamonkey&#32;settings&#32;for&#32;certain&#32;address&#32;form.html" name="attach_8003" title="Original message used as an example of the Forwarding headers">Created an attachment (id=8003)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8003&amp;action=edit" title="Original message used as an example of the Forwarding headers">[details]</a></span>
+Original message used as an example of the Forwarding headers
+
+This message is prior to forwarding.  Another attachment will show the
+forwarded headers.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25952.html#c12">
+            #12</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-27 05:26:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="g&#32;25952]&#32;ST4&#32;places&#32;quote&#32;header&#32;at&#32;top&#32;of&#32;reply&#32;despite&#32;Seamonkey&#32;settings&#32;for&#32;certain&#32;address.html" name="attach_8004" title="Forwarded message showing forwarding headers generated by Seamonkey.">Created an attachment (id=8004)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8004&amp;action=edit" title="Forwarded message showing forwarding headers generated by Seamonkey.">[details]</a></span>
+Forwarded message showing forwarding headers generated by Seamonkey.
+
+Prior to ST4, I would forward a message to be able to copy the forwarded
+headers into a reply message.  If this technique could be performed
+programmatically, it would be a neat addition.
+
+I once submitted a bug to Mozilla to provide a configuration option for reply
+headers similar to the forward headers, but it was rejected as improper email
+standards.  In my professional life, we always used reply headers similar to
+forwarded headers for proper audit trails.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25952.html#c13">
+            #13</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 04:52:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre54.xpi.1" name="attach_8002" title="0.9.6.1 prerelease 54">attachment (id=8002)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8002&amp;action=edit" title="0.9.6.1 prerelease 54">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 54
+&gt; 
+&gt; Fixed a problem with %to% not showing email address.
+&gt; </span >
+
+I've noticed that when the default 
+(name, mail) is implied with the use of %to% %from% %cc% and the name is not in
+the original email, the quote header repeats the email address in the form
+
+<a href="mailto:name@email.com">name@email.com</a> &lt;<a href="mailto:name@email.com">name@email.com</a>&gt;
+
+Is there anyway to stop the email address from repeating if a name is not
+present?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25952.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-29 07:50:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c13">comment #13</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c9">comment #9</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre54.xpi.1" name="attach_8002" title="0.9.6.1 prerelease 54">attachment (id=8002)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8002&amp;action=edit" title="0.9.6.1 prerelease 54">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.6.1 prerelease 54
+&gt; &gt; 
+&gt; &gt; Fixed a problem with %to% not showing email address.
+&gt; &gt; 
+&gt; 
+&gt; I've noticed that when the default 
+&gt; (name, mail) is implied with the use of %to% %from% %cc% and the name is not in
+&gt; the original email, the quote header repeats the email address in the form
+&gt; 
+&gt; <a href="mailto:name@email.com">name@email.com</a> &lt;<a href="mailto:name@email.com">name@email.com</a>&gt;
+&gt; 
+&gt; Is there anyway to stop the email address from repeating if a name is not
+&gt; present?
+&gt; 
+&gt; Thanks
+&gt; </span >
+
+No that's a bug. it should be
+
+name &lt;<a href="mailto:name@email.com">name@email.com</a>&gt; will post a fix here shortly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25952.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-29 07:58:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre59.xpi" name="attach_8005" title="0.9.6.1 prerelease 59">Created an attachment (id=8005)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8005&amp;action=edit" title="0.9.6.1 prerelease 59">[details]</a></span>
+0.9.6.1 prerelease 59
+
+Please try the attached version, I could not reproduce the problem, using
+
+From: %from%
+
+I get
+
+From: Bugzilla-daemon &lt;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>&gt; 
+
+so I might have already fixed this in the meantime.
+
+
+There is still a Problem with Capitalize function for mail addresses like this:
+
+Jonathan Bloggs (Joe) &lt;<a href="mailto:jblog@example.com">jblog@example.com</a>&gt;
+%from(name)% turns this into:
+Jonathan Bloggs (joe) 
+because the algorithm doesn't see the j in joe as the start of the word.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25952.html#c16">
+            #16</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 09:51:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre59.xpi" name="attach_8005" title="0.9.6.1 prerelease 59">attachment (id=8005)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8005&amp;action=edit" title="0.9.6.1 prerelease 59">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 59
+&gt; 
+&gt; Please try the attached version, I could not reproduce the problem, using
+&gt; 
+&gt; From: %from%
+&gt; 
+&gt; I get
+&gt; 
+&gt; From: Bugzilla-daemon &lt;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>&gt; 
+&gt; 
+&gt; so I might have already fixed this in the meantime.
+&gt; 
+&gt; 
+&gt; There is still a Problem with Capitalize function for mail addresses like this:
+&gt; 
+&gt; Jonathan Bloggs (Joe) &lt;<a href="mailto:jblog@example.com">jblog@example.com</a>&gt;
+&gt; %from(name)% turns this into:
+&gt; Jonathan Bloggs (joe) 
+&gt; because the algorithm doesn't see the j in joe as the start of the word.
+&gt; </span >
+
+I think this latest has a problem.  Lost the email address in the quoted
+header.
+
+============== Template ===============
+---------- Original Message ----------
+&lt;b&gt;Subject&lt;/b&gt;: %subject%
+&lt;b&gt;Date:&lt;/b&gt; %X:=sent% %n%/%d%/%Y% %l%:%M%:%S% %p%
+&lt;b&gt;From:&lt;/b&gt; %from%
+&lt;b&gt;To:&lt;/b&gt; %to%
+[[&lt;b&gt;Cc:&lt;/b&gt; %cc%]]
+============ End Template ===============
+
+=============  Original Header Example ==================
+-------- Forwarded Message --------
+Subject:        [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25952.html" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">Bug 25952</a></span>] ST4 places quote header at top of
+reply despite Seamonkey settings for certain address formats
+Date:   Thu, 29 Jan 2015 15:58:20 +0000
+From:   <a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>
+&lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&gt;
+Reply-To:       <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+To:     <a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>
+=============  End Original Email Header Example ==================
+
+
+=============  Quoted Header Example ==================
+---------- Original Message ----------
+Subject: [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25952.html" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">Bug 25952</a></span>] ST4 places quote header at top of reply
+despite Seamonkey settings for certain address formats
+Date: 1/29/2015 10:58:20 AM
+From: <a href="mailto:Bugzilla-daemon@mozdev.mozdev.org">Bugzilla-daemon@mozdev.mozdev.org</a>
+&amp;lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&amp;gt;
+To: Leishirsute &amp;lt;<a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>&amp;gt;
+=============  End Quoted Header Example ==================
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25952.html#c17">
+            #17</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 09:53:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c16">comment #16</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre59.xpi" name="attach_8005" title="0.9.6.1 prerelease 59">attachment (id=8005)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8005&amp;action=edit" title="0.9.6.1 prerelease 59">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.6.1 prerelease 59
+&gt; &gt; 
+&gt; &gt; Please try the attached version, I could not reproduce the problem, using
+&gt; &gt; 
+&gt; &gt; From: %from%
+&gt; &gt; 
+&gt; &gt; I get
+&gt; &gt; 
+&gt; &gt; From: Bugzilla-daemon &lt;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>&gt; 
+&gt; &gt; 
+&gt; &gt; so I might have already fixed this in the meantime.
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; There is still a Problem with Capitalize function for mail addresses like this:
+&gt; &gt; 
+&gt; &gt; Jonathan Bloggs (Joe) &lt;<a href="mailto:jblog@example.com">jblog@example.com</a>&gt;
+&gt; &gt; %from(name)% turns this into:
+&gt; &gt; Jonathan Bloggs (joe) 
+&gt; &gt; because the algorithm doesn't see the j in joe as the start of the word.
+&gt; &gt; 
+&gt; 
+&gt; I think this latest has a problem.  Lost the email address in the quoted
+&gt; header.
+&gt; 
+&gt; ============== Template ===============
+&gt; ---------- Original Message ----------
+&gt; &lt;b&gt;Subject&lt;/b&gt;: %subject%
+&gt; &lt;b&gt;Date:&lt;/b&gt; %X:=sent% %n%/%d%/%Y% %l%:%M%:%S% %p%
+&gt; &lt;b&gt;From:&lt;/b&gt; %from%
+&gt; &lt;b&gt;To:&lt;/b&gt; %to%
+&gt; [[&lt;b&gt;Cc:&lt;/b&gt; %cc%]]
+&gt; ============ End Template ===============
+&gt; 
+&gt; =============  Original Header Example ==================
+&gt; -------- Forwarded Message --------
+&gt; Subject:        [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25952.html" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">Bug 25952</a></span>] ST4 places quote header at top of
+&gt; reply despite Seamonkey settings for certain address formats
+&gt; Date:   Thu, 29 Jan 2015 15:58:20 +0000
+&gt; From:   <a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>
+&gt; &lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&gt;
+&gt; Reply-To:       <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+&gt; To:     <a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>
+&gt; =============  End Original Email Header Example ==================
+&gt; 
+&gt; 
+&gt; =============  Quoted Header Example ==================
+&gt; ---------- Original Message ----------
+&gt; Subject: [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25952.html" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">Bug 25952</a></span>] ST4 places quote header at top of reply
+&gt; despite Seamonkey settings for certain address formats
+&gt; Date: 1/29/2015 10:58:20 AM
+&gt; From: <a href="mailto:Bugzilla-daemon@mozdev.mozdev.org">Bugzilla-daemon@mozdev.mozdev.org</a>
+&gt; &amp;lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&amp;gt;
+&gt; To: Leishirsute &amp;lt;<a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>&amp;gt;
+&gt; =============  End Quoted Header Example ==================
+&gt; </span >
+ Okay, didn't lose the email address.  It's just that &lt;&gt; symbols now show as
+&amp;lt and &amp;gt in the quoted reply.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25952.html#c18">
+            #18</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 10:05:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre59.xpi" name="attach_8005" title="0.9.6.1 prerelease 59">attachment (id=8005)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8005&amp;action=edit" title="0.9.6.1 prerelease 59">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 59
+&gt; 
+&gt; Please try the attached version, I could not reproduce the problem, using
+&gt; 
+&gt; From: %from%
+&gt; 
+&gt; I get
+&gt; 
+&gt; From: Bugzilla-daemon &lt;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>&gt; 
+&gt; 
+&gt; so I might have already fixed this in the meantime.
+&gt; 
+&gt; 
+&gt; There is still a Problem with Capitalize function for mail addresses like this:
+&gt; 
+&gt; Jonathan Bloggs (Joe) &lt;<a href="mailto:jblog@example.com">jblog@example.com</a>&gt;
+&gt; %from(name)% turns this into:
+&gt; Jonathan Bloggs (joe) 
+&gt; because the algorithm doesn't see the j in joe as the start of the word.
+&gt; </span >
+
+Another example:
+================ Original Email Header ================
+Subject:        Library Notice
+Date:   Tue, 27 Jan 2015 21:27:16 -0500 (EST)
+From:   Library Application &lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&gt;
+To:     <a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>
+==========================================================
+
+=============== Quoted header =========================
+---------- Original Message ----------
+Subject: Library Notice
+Date: 1/27/2015 9:27:16 PM
+From: Library Application &amp;lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&amp;gt;
+To: Pellegrinomd &amp;lt;<a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>&amp;gt;
+===========================================================
+
+Problems with quoted header:
+-  &amp;lt; and &amp;gt; showing instead of &lt; and &gt;
+- To: address has no name, so name has portion of email address instead of
+being left blank.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25952.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-29 12:31:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c18">comment #18</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+&gt; Another example:
+&gt; ================ Original Email Header ================
+&gt; Subject:        Library Notice
+&gt; Date:   Tue, 27 Jan 2015 21:27:16 -0500 (EST)
+&gt; From:   Library Application &lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&gt;
+&gt; To:     <a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>
+&gt; ==========================================================
+&gt; 
+&gt; =============== Quoted header =========================
+&gt; ---------- Original Message ----------
+&gt; Subject: Library Notice
+&gt; Date: 1/27/2015 9:27:16 PM
+&gt; From: Library Application &amp;lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&amp;gt;
+&gt; To: Pellegrinomd &amp;lt;<a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>&amp;gt;
+&gt; ===========================================================
+&gt; 
+&gt; Problems with quoted header:
+&gt; -  &amp;lt; and &amp;gt; showing instead of &lt; and &gt;
+&gt; - To: address has no name, so name has portion of email address instead of
+&gt; being left blank.
+&gt; </span >
+
+You are working in text only mode?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25952.html#c20">
+            #20</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 12:37:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c19">comment #19</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c18">comment #18</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+&gt; &gt; Another example:
+&gt; &gt; ================ Original Email Header ================
+&gt; &gt; Subject:        Library Notice
+&gt; &gt; Date:   Tue, 27 Jan 2015 21:27:16 -0500 (EST)
+&gt; &gt; From:   Library Application &lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&gt;
+&gt; &gt; To:     <a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>
+&gt; &gt; ==========================================================
+&gt; &gt; 
+&gt; &gt; =============== Quoted header =========================
+&gt; &gt; ---------- Original Message ----------
+&gt; &gt; Subject: Library Notice
+&gt; &gt; Date: 1/27/2015 9:27:16 PM
+&gt; &gt; From: Library Application &amp;lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&amp;gt;
+&gt; &gt; To: Pellegrinomd &amp;lt;<a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>&amp;gt;
+&gt; &gt; ===========================================================
+&gt; &gt; 
+&gt; &gt; Problems with quoted header:
+&gt; &gt; -  &amp;lt; and &amp;gt; showing instead of &lt; and &gt;
+&gt; &gt; - To: address has no name, so name has portion of email address instead of
+&gt; &gt; being left blank.
+&gt; &gt; 
+&gt; 
+&gt; You are working in text only mode?
+&gt; </span >
+
+I am working in html mode.  The latest patch started making the headers with
+the &amp;lt; and &amp;gt; .
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25952.html#c21">
+            #21</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-29 12:45:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c19">comment #19</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c18">comment #18</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25952.html#c15">comment #15</a>)
+&gt; &gt; Another example:
+&gt; &gt; ================ Original Email Header ================
+&gt; &gt; Subject:        Library Notice
+&gt; &gt; Date:   Tue, 27 Jan 2015 21:27:16 -0500 (EST)
+&gt; &gt; From:   Library Application &lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&gt;
+&gt; &gt; To:     <a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>
+&gt; &gt; ==========================================================
+&gt; &gt; 
+&gt; &gt; =============== Quoted header =========================
+&gt; &gt; ---------- Original Message ----------
+&gt; &gt; Subject: Library Notice
+&gt; &gt; Date: 1/27/2015 9:27:16 PM
+&gt; &gt; From: Library Application &amp;lt;<a href="mailto:sirsi@oz.coj.net">sirsi@oz.coj.net</a>&amp;gt;
+&gt; &gt; To: Pellegrinomd &amp;lt;<a href="mailto:pellegrinomd@mailcan.com">pellegrinomd@mailcan.com</a>&amp;gt;
+&gt; &gt; ===========================================================
+&gt; &gt; 
+&gt; &gt; Problems with quoted header:
+&gt; &gt; -  &amp;lt; and &amp;gt; showing instead of &lt; and &gt;
+&gt; &gt; - To: address has no name, so name has portion of email address instead of
+&gt; &gt; being left blank.
+&gt; &gt; 
+&gt; 
+&gt; You are working in text only mode?
+&gt; </span >
+I reverted back to 0.9.6.1pre54 and the quoted reply is better.
+
+Example:
+---------- Original Message ----------
+Subject: [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25952.html" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">Bug 25952</a></span>] ST4 places quote header at top of reply
+despite Seamonkey settings for certain address formats
+Date: 1/29/2015 3:31:03 PM
+From: <a href="mailto:Bugzilla-daemon@mozdev.mozdev.org">Bugzilla-daemon@mozdev.mozdev.org</a>
+&lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&gt;
+To: Leishirsute &lt;<a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25952.html#c22">
+            #22</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-02-02 14:32:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+I don't know if you saw my last post on this.
+I had to revert to 0.9.6.1pre54 because 0.9.6.1pre59 was incorrectly handling
+the &lt; and &gt; symbols in the header.
+
+Reference post: 
+<span class="bz_closed"><a href="show_bug.cgi@id=25952.html#c21" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">https://www.mozdev.org/bugs/show_bug.cgi?id=25952#c21</a></span>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25952.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-02 15:47:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c22">comment #22</a>)
+<span class="quote">&gt; Hi,
+&gt; I don't know if you saw my last post on this.
+&gt; I had to revert to 0.9.6.1pre54 because 0.9.6.1pre59 was incorrectly handling
+&gt; the &lt; and &gt; symbols in the header.
+&gt; 
+&gt; Reference post: 
+&gt; <span class="bz_closed"><a href="show_bug.cgi@id=25952.html#c21" title="RESOLVED FIXED - ST4 places quote header at top of reply despite Seamonkey settings for certain address formats">https://www.mozdev.org/bugs/show_bug.cgi?id=25952#c21</a></span>
+&gt; </span >
+
+I have seen this and will upload a fix shortly.
+
+I understand you are using
+
+%to%
+
+examples of where the &lt;&gt; characters are displayed incorrectly (false html
+encoding):
+
+(in header - obfuscated the addresses for privacy)
+<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+LeishirsutXX &lt;<a href="mailto:leishirsutXX@yahoo.com">leishirsutXX@yahoo.com</a>&gt;
+Library Application &lt;<a href="mailto:sirXXX@oz.coj.net">sirXXX@oz.coj.net</a>&gt;
+PellegrinoXXXX &lt;<a href="mailto:pellegrinoXXXX@mailcan.com">pellegrinoXXXX@mailcan.com</a>&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25952.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-02 16:05:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre60.xpi" name="attach_8006" title="0.9.6.1 prerelease 60">Created an attachment (id=8006)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8006&amp;action=edit" title="0.9.6.1 prerelease 60">[details]</a></span>
+0.9.6.1 prerelease 60
+
+Fixing the &amp;lt; &amp;gt; issue caused by double-escaping the HTML. We are now
+guarding against this - if the HTML already contains &amp;lt; it will not be
+escaped again (causing the HTML entity &amp;lt; to be encoded so that it becomes
+visible). 
+
+Before this was only done if the %to(params)% parameter would contain the
+string link or mail or if a closing &lt;/a&gt; tag was found. Now having &amp;lt; or &amp;gt;
+will also short-circuit against escaping.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25952.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-03 01:49:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="SmartTemplate-Tests.html.1.html" name="attach_8009" title="test file">Created an attachment (id=8009)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8009&amp;action=edit" title="test file">[details]</a></span>
+test file
+
+Here is a html file with lots of test cases. Easiest use with Stationery and
+just select it as template from the &quot;Reply-To&quot; dropdown.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25952.html#c26">
+            #26</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-03 01:50:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre63.xpi.1" name="attach_8010" title="0.9.6.1 prerelease 63">Created an attachment (id=8010)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8010&amp;action=edit" title="0.9.6.1 prerelease 63">[details]</a></span>
+0.9.6.1 prerelease 63
+
+Fixing most bugs regarding %to% %from% %cc% and %identity%
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25952.html#c27">
+            #27</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-02-03 04:55:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c26">comment #26</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre63.xpi.1" name="attach_8010" title="0.9.6.1 prerelease 63">attachment (id=8010)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8010&amp;action=edit" title="0.9.6.1 prerelease 63">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 63
+&gt; 
+&gt; Fixing most bugs regarding %to% %from% %cc% and %identity%
+&gt; </span >
+
+This looks good. 
+However, 
+%from% creates a name even though there isn't one.
+
+For example, if
+
+From: <a href="mailto:someone@email.com">someone@email.com</a>
+
+then %from% creates
+
+someone &lt;<a href="mailto:someone@email.com">someone@email.com</a>&gt;
+
+when there was no name called &quot;someone&quot;.
+
+Shouldn't the name be left blank in this case, or the %from% create
+
+<a href="mailto:someone@email.com">someone@email.com</a>
+
+without the brackets?
+
+Checking
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25952.html#c28">
+            #28</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-03 07:15:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c27">comment #27</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25952.html#c26">comment #26</a>)
+&gt; &gt; 0.9.6.1 prerelease 63
+&gt; %from% creates a name even though there isn't one.
+&gt; 
+&gt; For example, if 
+&gt;     From: <a href="mailto:someone@email.com">someone@email.com</a>
+&gt; then %from% creates
+&gt;     someone &lt;<a href="mailto:someone@email.com">someone@email.com</a>&gt;
+&gt; when there was no name called &quot;someone&quot;.
+&gt; 
+&gt; Shouldn't the name be left blank in this case, or the %from% create
+&gt; <a href="mailto:someone@email.com">someone@email.com</a>
+&gt; without the brackets?</span >
+
+I am not sure, but I am trying to keep the logic &quot;light&quot; for this release, this
+means that one gets what one asks for. Default (without parameters) is
+
+%to(name,bracketMail(angle))%
+
+and name is &quot;automagically&quot; determined by the first part of the email address
+(before @) if nothing else is given. ST4 even tries to determine first and
+lastname from that bit, which can be more or less successful depending on its
+format. it could be
+
+firstname.lastname
+
+also 
+
+Mr. lastname (lastname, firstname) &lt;emailAddress&gt;
+
+there are many things that can go wrong here as we always get the whole lot in
+just one field. The safest way is to have the email address in your address
+book and to use the advanced setting &quot;Resolve Names from address book&quot;,
+
+Which reminds me, there is an option to &quot;Remove email address unless format
+parameter is specified&quot;, I guess that needs to be tested yet. Because it would
+mean that 
+%to% should turn
+ <a href="mailto:someone@email.com">someone@email.com</a>
+into
+ someone
+in this case.
+
+The rules can become quite complex quickly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25952.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-03 11:44:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="SmartTemplate-Tests.html.1.1.html" name="attach_8012" title="New Test File">Created an attachment (id=8012)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8012&amp;action=edit" title="New Test File">[details]</a></span>
+New Test File
+
+Another variable test file, with more test cases
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25952.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-02-03 11:49:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.6.1pre71.xpi" name="attach_8013" title="0.9.6.1 prerelease 71">Created an attachment (id=8013)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8013&amp;action=edit" title="0.9.6.1 prerelease 71">[details]</a></span>
+0.9.6.1 prerelease 71
+
+More stable name resolutions after using a more relentless test file.
+
+Special note: if you use a address lioke this
+
+&quot;<a href="mailto:alex.grand@gmail.com">alex.grand@gmail.com</a>&quot; &lt;<a href="mailto:axel.grand@gmail.com">axel.grand@gmail.com</a>&gt;
+
+FirstName will still resolve to Alex and LastName to Grand. So the @domain part
+will be removed also in this case. Not sure whether this might be perceived as
+a &quot;bug&quot; by some people. I think it is pointless to repeat the email address in
+a &quot;name&quot; portion.
+
+Also: If only one name can be resolved then it is shown once only, 
+if firstname is asked for and only one name given it shows the whole name,
+if lastname  is asked for and only one name given it shows the whole name
+(once).
+
+So I think it is pretty stable right now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25952.html#c31">
+            #31</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-02-03 12:07:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25952.html#c30">comment #30</a>)
+<span class="quote">&gt; Created an <span class=""><a href="smartTemplate-0.9.6.1pre71.xpi" name="attach_8013" title="0.9.6.1 prerelease 71">attachment (id=8013)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8013&amp;action=edit" title="0.9.6.1 prerelease 71">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 71
+&gt; 
+&gt; More stable name resolutions after using a more relentless test file.
+&gt; 
+&gt; Special note: if you use a address lioke this
+&gt; 
+&gt; &quot;<a href="mailto:alex.grand@gmail.com">alex.grand@gmail.com</a>&quot; &lt;<a href="mailto:axel.grand@gmail.com">axel.grand@gmail.com</a>&gt;
+&gt; 
+&gt; FirstName will still resolve to Alex and LastName to Grand. So the @domain part
+&gt; will be removed also in this case. Not sure whether this might be perceived as
+&gt; a &quot;bug&quot; by some people. I think it is pointless to repeat the email address in
+&gt; a &quot;name&quot; portion.
+&gt; 
+&gt; Also: If only one name can be resolved then it is shown once only, 
+&gt; if firstname is asked for and only one name given it shows the whole name,
+&gt; if lastname  is asked for and only one name given it shows the whole name
+&gt; (once).
+&gt; 
+&gt; So I think it is pretty stable right now.
+&gt; </span >
+
+It looks good.  Thanks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25952.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:00:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in 1.0.1
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25952&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

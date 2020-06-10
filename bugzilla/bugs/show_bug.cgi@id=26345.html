@@ -1,0 +1,1173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26345 &ndash; Unexpected &quot;Â&quot; character in mail body</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26345&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26345">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26345">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26345">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26345">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26345</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Unexpected &quot;Â&quot; character in mail body</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-02-28 22:55:44</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26345&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-02-28 22:55:44">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="26345">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Unexpected &quot;Â&quot; character in mail body">Unexpected &quot;Â&quot; character in mail body
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26345.html">26345</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26345&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26345">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice &lt;BTJustice&#64;gmx.net&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-1.5pre17.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">SmartTemplate 1.5 pre 17</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (388.63 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26345.html#attach_8274"
+               title="Go to the comment associated with the attachment">2017-02-27 10:52</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8274&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-1.5pre20.xpi.1"
+               title="View the content of the attachment">
+          <b>SmartTemplate 1.5 pre 20</b></a>
+
+          <span class="bz_attach_extra_info">
+              (388.73 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26345.html#attach_8276"
+               title="Go to the comment associated with the attachment">2017-02-28 09:36</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8276&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26345.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26345&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26345&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26345">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26345">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26345">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26345">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26345.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2017-02-23 08:11
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >When I use the latest version of SmartTemplate4 with a reply or forward at the
+top of the original message, I see there is some extra line breaks and
+double-spacing.  If I save any draft and then look at the Message Source of the
+draft, I see this code:
+
+ &lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;
+      &lt;p&gt;Â &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+
+This &lt;p&gt;Â &lt;/p&gt; code is doing it.  It is not in either of my reply or forward
+codes which are both:
+
+&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#000000&quot; face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;&lt;hr
+color=&quot;#000000&quot; size=&quot;1&quot;&gt;&lt;b&gt;Subject:&lt;/b&gt; %subject%
+&lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %a%. %n%/%e%/%Y% %l%:%M%:%S% %p% %tz_name% %date_tz%
+&lt;b&gt;From:&lt;/b&gt; %from(name,bracketMail(angle))%
+&lt;b&gt;To:&lt;/b&gt; %to(name,bracketMail(angle))%
+[[&lt;b&gt;Cc:&lt;/b&gt; %cc(name,bracketMail(angle))%]]&lt;/font&gt;&lt;/div&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26345.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-23 13:21:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thunderbird has (by default)  enabled the paragraph mode. What you call &quot;double
+spacing&quot; is proper spacing for paragraphs (all paragraphs have extra space at
+the bottom, just like in word processors or outlook) - which means that
+paragraphs do not need two line breaks &lt;br&gt;&lt;br&gt; like in a plain text file. The
+advantage is proper layout and only having to hit [Enter] once for a paragraph.
+I do not know where the Â character comes from. By default, Thunderbird enters
+
+&lt;p&gt; &lt;br/&gt;&lt;p&gt;
+
+in an empty email.
+
+To disable paragraph mode (but I recommend to ave it enabled) go to Thunderbird
+Options &gt; Composition &gt; General and uncheck 
+
+&quot;When using paragraph format the enter key creates a new paragraph&quot;
+
+In SmartTemplate options (advanced) click the Global Settings tab.
+
+in the &quot;Advanced Functions&quot; group, disable &quot;Force Paragraph Mode&quot;.
+
+I usually recommend having both options enabled and using something like this
+as Template text:
+
+&lt;p&gt;Dear %from(firstname)%,&lt;/p&gt;
+&lt;p&gt;%cursor%&lt;/p&gt;
+
+This is easy to use and creates paragraphs that are pleasant to the eye. Single
+line breaks are usually not needed (emails are automatically wrapped) but can
+be created by using SHIFT+Enter.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26345.html#c2">
+            #2</a> From 
+          <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice</a>
+          2017-02-24 10:37:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >That got rid of the double-spacing issue.  If I want a new paragraph, I'll hit
+the ENTER key twice.
+
+There is still a weird single character being caused by this &quot;Â &quot; after
+disabling paragraph mode:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;Â &lt;/div&gt;
+    &lt;br&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26345.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-24 11:28:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26345.html#c2">comment #2</a>)
+<span class="quote">&gt; That got rid of the double-spacing issue.  If I want a new paragraph, I'll hit
+&gt; the ENTER key twice.</span >
+
+good. that's two line breaks though. technically a paragraph is one object with
+certain properties (margin is one of the, and it is not necessarily exactly
+line height *2), but to each their own. 
+
+<span class="quote">&gt; There is still a weird single character being caused by this &quot;Â &quot; after
+&gt; disabling paragraph mode:
+&gt; 
+&gt; &lt;html&gt;
+&gt;   &lt;head&gt;
+&gt;     &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&gt;   &lt;/head&gt;
+&gt;   &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+&gt;     &lt;div id=&quot;smartTemplate4-template&quot;&gt;Â &lt;/div&gt;
+&gt;     &lt;br&gt;
+&gt; </span >
+
+Weird - no idea, are you sure your &quot;template&quot; field is empty? Maybe put
+something inside of it instead, e.g. 
+xx%cursor%
+
+to see where the character is created (before or after xx). Are you using any
+other extensions that mess with composer?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26345.html#c4">
+            #4</a> From 
+          <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice</a>
+          2017-02-26 01:46:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26345.html#c3">comment #3</a>)
+<span class="quote">&gt; Weird - no idea, are you sure your &quot;template&quot; field is empty? Maybe put
+&gt; something inside of it instead, e.g. 
+&gt; xx%cursor%
+&gt; 
+&gt; to see where the character is created (before or after xx). Are you using any
+&gt; other extensions that mess with composer?
+&gt; </span >
+
+Putting xx%cursor% in the Template field (which was entirely empty) puts the xx
+before the cursor and the space of the missing character highlights the space
+immediately after.
+
+The only extensions I have in Thunderbird are:
+
+- Lightning.
+- Send Later.
+- SmartTemplate4.
+- uBlock Origin.
+- Enigmail (disabled).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26345.html#c5">
+            #5</a> From 
+          <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice</a>
+          2017-02-26 01:58:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I just sent you an email with a picture of the cursor to hopefully show what i
+am trying to explain better.
+
+Here is the code from the email:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;xxÂ &lt;/div&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+      &lt;div align=&quot;left&quot;&gt;&lt;font face=&quot;Tahoma&quot; color=&quot;#000000&quot; size=&quot;2&quot;&gt;
+          &lt;hr color=&quot;#000000&quot; size=&quot;1&quot;&gt;&lt;b&gt;Subject:&lt;/b&gt; [smarttemplate4]
+          [<span class="bz_closed"><a href="show_bug.cgi@id=26345.html" title="RESOLVED FIXED - Unexpected &quot;Â&quot; character in mail body">Bug 26345</a></span>] Uneexpected &quot;Ã‚&quot; character in mail body&lt;br&gt;
+          &lt;b&gt;Sent:&lt;/b&gt; Fri. 2/24/2017 1:28:42 PM CST -0600&lt;br&gt;
+          &lt;b&gt;From:&lt;/b&gt; bugzilla-daemon
+          &lt;a class=&quot;moz-txt-link-rfc2396E&quot;
+href=&quot;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">mailto:bugzilla-daemon@mozdev.mozdev.org</a>&quot;&gt;&amp;lt;<a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>&amp;gt;&lt;/a&gt;&lt;br&gt;
+          &lt;b&gt;To:&lt;/b&gt; SNIP &lt;a class=&quot;moz-txt-link-rfc2396E&quot;
+href=&quot;<a href="mailto:SNIP@SNIP.net">mailto:SNIP@SNIP.net</a>&quot;&gt;&amp;lt;<a href="mailto:SNIP@SNIP.net">SNIP@SNIP.net</a>&amp;gt;&lt;/a&gt;&lt;br&gt;
+        &lt;/font&gt;&lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26345.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-27 10:52:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.5pre17.xpi.1" name="attach_8274" title="SmartTemplate 1.5 pre 17">Created an attachment (id=8274)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8274&amp;action=edit" title="SmartTemplate 1.5 pre 17">[details]</a></span>
+SmartTemplate 1.5 pre 17
+
+please test the original test case (with paragaph mode enabled) whether this
+removes the strange character. Make sure you have the SmartTemplate4 Global
+Setting &quot;Insert space to highlight %cursor%&quot; disabled.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26345.html#c7">
+            #7</a> From 
+          <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice</a>
+          2017-02-28 09:26:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >With the attached file and the settings you asked to be enabled, I get a new
+paragraph under the xx.  At the start of the new paragraph is where the cursor
+is.  Here is the HTML code from the email:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;xx
+      &lt;p&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+
+With &quot;Force Paragraph Mode&quot; in SmartTemplate disabled:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;xx&lt;/div&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+
+With &quot;When using paragraph format,...&quot; disabled in TB Composition settings
+(SAME AS ABOVE):
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;xx&lt;/div&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+
+And with xx%cursor% removed from the Template section:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;&lt;/div&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+
+So I think this is good fix, but might I suggest:
+
+1) Have another &lt;br&gt; so the last code I posted would look like this:
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;&lt;/div&gt;
+    &lt;br&gt;
+    &lt;br&gt;
+    &lt;div id=&quot;smartTemplate4-quoteHeader&quot;&gt;
+
+2) Have Force Paragraph Mode turned off by default.  That is kind of a weird
+option.  I have been using email since Pine in the mid 1990s, lol.
+
+Speaking of the &lt;br&gt; in #1 above, on my reply and forward headers, I had to add
+a &lt;br&gt; to get a line break bewtween my reply and the header so now I am using:
+
+&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#000000&quot; face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;&lt;hr
+color=&quot;#000000&quot; size=&quot;1&quot;&gt;&lt;b&gt;Subject:&lt;/b&gt; %subject%
+&lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %a%. %n%/%e%/%Y% %l%:%M%:%S% %p% %tz_name% %date_tz%
+&lt;b&gt;From:&lt;/b&gt; %from(name,bracketMail(angle))%
+&lt;b&gt;To:&lt;/b&gt; %to(name,bracketMail(angle))%
+[[&lt;b&gt;Cc:&lt;/b&gt; %cc(name,bracketMail(angle))%]]&lt;/font&gt;&lt;/div&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26345.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-28 09:36:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.5pre20.xpi.1" name="attach_8276" title="SmartTemplate 1.5 pre 20">Created an attachment (id=8276)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8276&amp;action=edit" title="SmartTemplate 1.5 pre 20">[details]</a></span>
+SmartTemplate 1.5 pre 20
+
+Supersedes pre 17 by making the &lt;p&gt; visible if paragraph mode is selected.
+Composer removes empty &lt;p&gt;&lt;/p&gt; their workaround is creating
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+which st4 now does if you specify an empty paragraph with cursor in it
+
+&lt;p&gt;%cursor%&lt;/p&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26345.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-28 09:51:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Is the Â problem resolved?
+
+(In reply to <a href="show_bug.cgi@id=26345.html#c7">comment #7</a>)
+<span class="quote">&gt; 
+&gt; 2) Have Force Paragraph Mode turned off by default.  That is kind of a weird
+&gt; option.  I have been using email since Pine in the mid 1990s, lol.</span >
+
+No. 
+
+There are lots of users who come from word processing programs or have used
+HTML editors which have default paragraphs. I like it to work this way and get
+readable emails from people who are used to Word or Outlook. Also constantly
+hitting [Enter Enter] sucks and user shouldn't be forced to do that all the
+time (a single &lt;br&gt; is barely ever needed, so the inconvenient SHIFT-Enter is
+the logical choice for the 10% use case)
+
+Also writing text content straight into &lt;body&gt; can create all sorts of problems
+with styling, and most people don't bother wrapping everything into a &lt;div&gt;.
+
+<span class="quote">&gt; Speaking of the &lt;br&gt; in #1 above, on my reply and forward headers, I had to add
+&gt; a &lt;br&gt; to get a line break between my reply and the header so now I am using:
+&gt; 
+&gt; &lt;br&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#000000&quot; face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;&lt;hr
+&gt; color=&quot;#000000&quot; size=&quot;1&quot;&gt;&lt;b&gt;Subject:&lt;/b&gt; %subject%
+&gt; &lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %a%. %n%/%e%/%Y% %l%:%M%:%S% %p% %tz_name% %date_tz%
+&gt; &lt;b&gt;From:&lt;/b&gt; %from(name,bracketMail(angle))%
+&gt; &lt;b&gt;To:&lt;/b&gt; %to(name,bracketMail(angle))%
+&gt; [[&lt;b&gt;Cc:&lt;/b&gt; %cc(name,bracketMail(angle))%]]&lt;/font&gt;&lt;/div&gt;</span >
+
+A better way to fix this and getting rid of the deprecated &lt;font&gt; tag (you know
+that font cannot contain any block level elements?):
+
+&lt;div style=&quot;text-align:left; font: 12px Tahoma; margin-top: 1em;&quot;&gt;
+&lt;hr color=&quot;#000000&quot; size=&quot;1&quot;&gt;
+&lt;b&gt;Subject:&lt;/b&gt; %subject%&lt;br&gt;
+&lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %a%. %n%/%e%/%Y% %l%:%M%:%S% %p% %tz_name% %date_tz%&lt;br&gt;
+&lt;b&gt;From:&lt;/b&gt; %from(name,bracketMail(angle))%&lt;br&gt;
+&lt;b&gt;To:&lt;/b&gt; %to(name,bracketMail(angle))%&lt;br&gt;
+[[&lt;b&gt;Cc:&lt;/b&gt; %cc(name,bracketMail(angle))%]]
+&lt;/div&gt;
+
+Since div is block level it will always take 100% of the width and begin in a
+new line. margin-top is the best way to add spacing before.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26345.html#c10">
+            #10</a> From 
+          <a href="mailto:BTJustice&#64;gmx.net">Buford T. Justice</a>
+          2017-02-28 22:55:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Looks good.  Thanks for all your help!
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26345&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

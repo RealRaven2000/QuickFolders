@@ -1,0 +1,246 @@
+Forwarding and switching id
+
+SmartTemplate4 {FUNCTIONS} 15:54:53.648  [273901 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 15:54:53.660  [12 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:53.660  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:53.660  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:54:53.661  [1 ms]	 
+identityName:   user1 <user1@xxx.xx>
+key:            id2
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:54:53.661  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.544  [3883 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 15:54:57.557  [13 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.557  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.557  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.557  [0 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.614  [57 ms]	 
+SmartTemplate4.delForwardHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.615  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.615  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.616  [1 ms]	 
+deleteHeaderNode() - deleting TABLE
+<tbody><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Pøedmìt: </th><td>[smarttemplate4] [Bug 25104] When switching identities, old signatures are not removed</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Datum: </th><td>Tue, 28 Aug 2012 05:36:27 -0700 (PDT)</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Od: </th><td>bugzilla-daemon@mozdev.mozdev.org</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Komu: </th><td>jirka.svacina@gmail.com</td></tr></tbody>
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.616  [0 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+#text	
+
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.616  [0 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+BR	null
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.616  [0 ms]	 
+deleteWhiteSpaceNodes() - deletes node 
+BR	null
+ ----------
+SmartTemplate4 {DELETENODES} 15:54:57.616  [0 ms]	 
+deleteWhiteSpaceNodes() - deleted 0 nodes.
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:54:57.616  [0 ms]	 
+SmartTemplate4.delForwardHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:54:57.617  [1 ms]	 
+identityName:   user3 <user3@xxx.xx>
+key:            id3
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.660  [4043 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.660  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.661  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.664  [3 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.687  [23 ms]	 
+SmartTemplate4.delForwardHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:1.687  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:1.688  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:1.688  [0 ms]	 
+deleteNodeTextOrBR() - ignored nonmatching table
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.688  [0 ms]	 
+deleteHeaderNode() - deleting TABLE
+<tbody><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Pøedmìt: </th><td>[smarttemplate4] [Bug 25104] When switching identities, old signatures are not removed</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Datum: </th><td>Tue, 28 Aug 2012 05:36:27 -0700 (PDT)</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Od: </th><td>bugzilla-daemon@mozdev.mozdev.org</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Komu: </th><td>jirka.svacina@gmail.com</td></tr></tbody>
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:1.688  [0 ms]	 
+deleteWhiteSpaceNodes() - deleted 0 nodes.
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:1.688  [0 ms]	 
+SmartTemplate4.delForwardHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:55:1.688  [0 ms]	 
+identityName:   user1 <user1@xxx.xx>
+key:            id2
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.763  [1075 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.763  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.764  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.766  [2 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.796  [30 ms]	 
+SmartTemplate4.delForwardHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:2.796  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:2.796  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:2.796  [0 ms]	 
+deleteNodeTextOrBR() - ignored nonmatching table
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.796  [0 ms]	 
+deleteHeaderNode() - deleting TABLE
+<tbody><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Pøedmìt: </th><td>[smarttemplate4] [Bug 25104] When switching identities, old signatures are not removed</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Datum: </th><td>Tue, 28 Aug 2012 05:36:27 -0700 (PDT)</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Od: </th><td>bugzilla-daemon@mozdev.mozdev.org</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Komu: </th><td>jirka.svacina@gmail.com</td></tr></tbody>
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:2.797  [1 ms]	 
+deleteWhiteSpaceNodes() - deleted 0 nodes.
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:2.797  [0 ms]	 
+SmartTemplate4.delForwardHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:55:2.797  [0 ms]	 
+identityName:   user2 <user2@xxx.xx>
+key:            id1
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.859  [1062 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.859  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.860  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.863  [3 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.867  [4 ms]	 
+SmartTemplate4.delForwardHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:3.868  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:3.868  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:3.869  [1 ms]	 
+deleteNodeTextOrBR() - ignored nonmatching table
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.869  [0 ms]	 
+deleteHeaderNode() - deleting TABLE
+<tbody><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Pøedmìt: </th><td>[smarttemplate4] [Bug 25104] When switching identities, old signatures are not removed</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Datum: </th><td>Tue, 28 Aug 2012 05:36:27 -0700 (PDT)</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Od: </th><td>bugzilla-daemon@mozdev.mozdev.org</td></tr><tr><th nowrap="nowrap" align="RIGHT" valign="BASELINE">Komu: </th><td>jirka.svacina@gmail.com</td></tr></tbody>
+ ----------
+SmartTemplate4 {DELETENODES} 15:55:3.869  [0 ms]	 
+deleteWhiteSpaceNodes() - deleted 0 nodes.
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:55:3.870  [1 ms]	 
+SmartTemplate4.delForwardHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:55:3.871  [1 ms]	 
+identityName:   user4 <user4@xxx.xx>
+key:            id4
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false

@@ -1,0 +1,1182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25279 &ndash; Unable to create filter to move message to different imap email account</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25279&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25279">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25279">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25279">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25279">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25279</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Unable to create filter to move message to different imap email account</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-01-09 09:40:41</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25279&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-01-09 09:40:41">
+  <input type="hidden" name="longdesclength" value="14">
+  <input type="hidden" name="id" value="25279">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Unable to create filter to move message to different imap email account">
+        <span title="Unable to create filter to move message to different imap email account">Unable to create filter to move message to different imap...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25279.html">25279</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25279&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25279">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:compdave7681&#64;gmail.com">Dave Brown &lt;compdave7681&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="madabug&#64;madarasz.nl">madabug&#64;madarasz.nl</option>
+            <option value="mark&#64;orrom.com">mark&#64;orrom.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFiltersError.log"
+               title="View the content of the attachment">
+          <b>Error.log</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.44 KB,
+                text/x-log)
+
+            <br>
+            <a href="show_bug.cgi@id=25279.html#attach_7467"
+               title="Go to the comment associated with the attachment">2012-12-23 12:04</a>,
+
+            <a href="mailto:compdave7681&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Dave Brown
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7467&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="quickFilters-tb-sm-1.8pre5.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.8 prerelease 5</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (138.76 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25279.html#attach_7563"
+               title="Go to the comment associated with the attachment">2013-04-15 03:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7563&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-2.9pre26.xpi"
+               title="View the content of the attachment">
+          <b>2.9 prerelease 26</b></a>
+
+          <span class="bz_attach_extra_info">
+              (253.51 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25279.html#attach_8030"
+               title="Go to the comment associated with the attachment">2015-04-06 09:36</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8030&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25279.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25279&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25279&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25279">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25279">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25279">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25279">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25279.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-12-22 00:45
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >While trying to create a filter to move a message to a different email account
+I receive this error:
+
+quickFilters 3:30:55.696  [651221 ms]   
+popupAlert(QuickFilters, Tried to create a filter 7 times, but it didn't work
+out.
+Try to move a different message. Otherwise, updating Thunderbird to a newer
+version might help)
+
+I am running a personal email server with ClearOS 5.2 (Linux version
+2.6.32.26-175.timb1.i686 (<a href="mailto:devel@server.timburgess.net">devel@server.timburgess.net</a>) (gcc version 4.1.2
+20080704 (Red Hat 4.1.2-48)) #1 SMP Wed Jan 19 22:50:45 GMT 2011) with Postfix
+2.5.1. 
+
+On the desktop side I am running Ubuntu 12.10 (Linux version 3.5.0-21-generic
+(buildd@roseapple) (gcc version 4.7.2 (Ubuntu/Linaro 4.7.2-2ubuntu1) )
+#32-Ubuntu SMP Tue Dec 11 18:52:46 UTC 2012). Thunderbird 17 is set to connect
+to the local address with each account.
+
+When I create the filter manually it works fine.
+
+Any other information that is needed I will be happy to help out.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25279.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-22 01:49:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(If you want me to fix this) ... this will need some in depth testing, possibly
+with debug mode enabled. To get started, can you install console2 and disable
+content logging in tools &gt; error console.
+
+then, in quickFilters options, switch on debug mode, right click debug mode and
+enable the other three options. With console2 you can create a text-only error
+dump and copy to the clipboard using right-click menu; then save that as text
+file and attach to the bug. You can clear the error log before you do the
+filter / drag operation. IN error console, You need to enable:
+Errors, Warnings, Messages, css and chrome.
+You must DISABLE:
+content, xml.
+
+(otherwise you will get a huge bunch of irrelevant crap)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25279.html#c2">
+            #2</a> From 
+          <a href="mailto:compdave7681&#64;gmail.com">Dave Brown</a>
+          2012-12-23 12:04:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFiltersError.log" name="attach_7467" title="Error.log">Created an attachment (id=7467)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7467&amp;action=edit" title="Error.log">[details]</a></span>
+Error.log
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25279.html#c3">
+            #3</a> From 
+          <a href="mailto:mark&#64;orrom.com">MarkO</a>
+          2013-04-14 13:22:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have the same problem. Works perfectly for filters to folders within the same
+IMAP account, but any filters to move an email from the Inbox one account to a
+folder in another, throws this error.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25279.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-04-15 01:30:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25279.html#c3">comment #3</a>)
+<span class="quote">&gt; I have the same problem. Works perfectly for filters to folders within the same
+&gt; IMAP account, but any filters to move an email from the Inbox one account to a
+&gt; folder in another, throws this error.
+&gt; </span >
+
+Do you also get 
+
+No targetFolder.msgDatabase!
+
+this is the core of the problem. The first thing I would think is that GLODA is
+not enabled for that account.
+
+Account &gt; Settings &gt; Synchronization &amp; Storage
+[x] Keep messages for this account on this computer 
+[Advanced...]
+select all folders you want to filter for offline use
+
+remember that the filter runs on your local machine, not on the IMAP server.
+
+As a workaround, you can also try to right-click the message _after_ you have
+moved it and select 
+QuickFilters: create Filter from Message...
+
+this will try to determine the original inbox it has been moved from after the
+fact; it might be easier for Thunderbird to come up with the info on the target
+folder once the message has successfully registered in the global database
+(GLODA).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25279.html#c5">
+            #5</a> From 
+          <a href="mailto:mark&#64;orrom.com">MarkO</a>
+          2013-04-15 02:04:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Neither works. When I move the email myself and then run Quickfilters as you
+suggest, the rule is created, but in the filters for the account I have moved
+it to, not the account it cam from.
+The error I get was: &quot;Exception in quickFilters.Worker.createFilter: messageId
+is not defined&quot;
+
+(In reply to <a href="show_bug.cgi@id=25279.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25279.html#c3">comment #3</a>)
+&gt; &gt; I have the same problem. Works perfectly for filters to folders within the same
+&gt; &gt; IMAP account, but any filters to move an email from the Inbox one account to a
+&gt; &gt; folder in another, throws this error.
+&gt; &gt; 
+&gt; 
+&gt; Do you also get 
+&gt; 
+&gt; No targetFolder.msgDatabase!
+&gt; 
+&gt; this is the core of the problem. The first thing I would think is that GLODA is
+&gt; not enabled for that account.
+&gt; 
+&gt; Account &gt; Settings &gt; Synchronization &amp; Storage
+&gt; [x] Keep messages for this account on this computer 
+&gt; [Advanced...]
+&gt; select all folders you want to filter for offline use
+&gt; 
+&gt; remember that the filter runs on your local machine, not on the IMAP server.
+&gt; 
+&gt; As a workaround, you can also try to right-click the message _after_ you have
+&gt; moved it and select 
+&gt; QuickFilters: create Filter from Message...
+&gt; 
+&gt; this will try to determine the original inbox it has been moved from after the
+&gt; fact; it might be easier for Thunderbird to come up with the info on the target
+&gt; folder once the message has successfully registered in the global database
+&gt; (GLODA).
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25279.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-04-15 02:56:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25279.html#c5">comment #5</a>)
+<span class="quote">&gt; Neither works. When I move the email myself and then run Quickfilters as you
+&gt; suggest, the rule is created, but in the filters for the account I have moved
+&gt; it to, not the account it cam from.
+&gt; The error I get was: &quot;Exception in quickFilters.Worker.createFilter: messageId
+&gt; is not defined&quot;</span >
+
+hmm, that is an unrelated error, caused by another error message that cannot be
+displayed. I will upload a fix for that one so you can run the test again.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25279.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-04-15 03:01:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-sm-1.8pre5.xpi" name="attach_7563" title="1.8 prerelease 5">Created an attachment (id=7563)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7563&amp;action=edit" title="1.8 prerelease 5">[details]</a></span>
+1.8 prerelease 5
+
+This won't fix the original bug, but the one you reported in the previous
+comment (messageId not defined).
+
+You will now see a different error 
+
+&quot;Cannot get messageHeader for messageId [xxx]- attempting rerun()...&quot;
+
+to provide more context (rather than just one isolated error message), please
+install console2 (so you can copy error console messages as text) and then
+enabled quickFilters Options &gt; Debug mode
+right click debug mode and enable 
+
+extensions.quickfilters.debug.filters
+
+this will turn on additional messages during error logging. in error console,
+switch off (!) content (!!!) and switch on errors, warnings, messages and
+chrome. Make sure to clear all error outputs before you run the test.
+
+Also: Are you running Thunderbird or another mail client (Postbox / SeaMonkey)
+?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25279.html#c8">
+            #8</a> From 
+          <a href="mailto:mark&#64;orrom.com">MarkO</a>
+          2013-04-15 04:00:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Running latest Thunderbird
+
+(In reply to <a href="show_bug.cgi@id=25279.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="quickFilters-tb-sm-1.8pre5.xpi" name="attach_7563" title="1.8 prerelease 5">attachment (id=7563)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7563&amp;action=edit" title="1.8 prerelease 5">[details]</a></span> [details]
+&gt; 1.8 prerelease 5
+&gt; 
+&gt; This won't fix the original bug, but the one you reported in the previous
+&gt; comment (messageId not defined).
+&gt; 
+&gt; You will now see a different error 
+&gt; 
+&gt; &quot;Cannot get messageHeader for messageId [xxx]- attempting rerun()...&quot;
+&gt; 
+&gt; to provide more context (rather than just one isolated error message), please
+&gt; install console2 (so you can copy error console messages as text) and then
+&gt; enabled quickFilters Options &gt; Debug mode
+&gt; right click debug mode and enable 
+&gt; 
+&gt; extensions.quickfilters.debug.filters
+&gt; 
+&gt; this will turn on additional messages during error logging. in error console,
+&gt; switch off (!) content (!!!) and switch on errors, warnings, messages and
+&gt; chrome. Make sure to clear all error outputs before you run the test.
+&gt; 
+&gt; Also: Are you running Thunderbird or another mail client (Postbox / SeaMonkey)
+&gt; ?
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25279.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-04-19 03:01:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can you please supply us with the console2 text as requested in <a href="show_bug.cgi@id=25279.html#c7">Comment #7</a>,
+based on the latest prerelease (5)?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25279.html#c10">
+            #10</a> From 
+          <a href="mailto:madabug&#64;madarasz.nl">Lewis</a>
+          2013-11-05 06:36:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I experience the same error:
+While trying to create a filter to move a message to a different email account
+I receive this error:
+
+quickFilters  
+popupAlert(QuickFilters, Tried to create a filter 7 times, but it didn't work
+out.
+Try to move a different message. Otherwise, updating Thunderbird to a newer
+version might help)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25279.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-06 09:32:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25279.html#c10">comment #10</a>)
+<span class="quote">&gt; I experience the same error:
+&gt; While trying to create a filter to move a message to a different email account
+&gt; I receive this error:
+&gt; 
+&gt; quickFilters  
+&gt; popupAlert(QuickFilters, Tried to create a filter 7 times, but it didn't work
+&gt; out.
+&gt; Try to move a different message. Otherwise, updating Thunderbird to a newer
+&gt; version might help)
+&gt; </span >
+
+I think this is now fixed with the latest version of quickFilters. Using a
+different method for retrying / getting folder information; I will upload the
+very latest prerelease to be sure and then close the bug unless you can still
+reproduce it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25279.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-06 09:36:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-2.9pre26.xpi" name="attach_8030" title="2.9 prerelease 26">Created an attachment (id=8030)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8030&amp;action=edit" title="2.9 prerelease 26">[details]</a></span>
+2.9 prerelease 26
+
+The &quot;retried 7 times&quot; error should be fixed for most cases by now, please try
+the attached prerelease so I can close this bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25279.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-01-09 09:40:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed: Version 2.7 - 18/08/2014
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25279&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

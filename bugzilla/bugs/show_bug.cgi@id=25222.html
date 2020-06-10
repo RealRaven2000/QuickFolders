@@ -1,0 +1,1147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25222 &ndash; Make New Mail alert stand out for selected folders</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25222&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25222">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25222">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25222">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25222">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25222</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Make New Mail alert stand out for selected folders</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-12-11 12:20:47</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25222&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-12-11 12:20:47">
+  <input type="hidden" name="longdesclength" value="8">
+  <input type="hidden" name="id" value="25222">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Make New Mail alert stand out for selected folders">Make New Mail alert stand out for selected folders
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25222.html">25222</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25222&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25222">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:fpgemma&#64;gmail.com">Frank &lt;fpgemma&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="new-mail-alert-manu.png"
+               title="View the content of the attachment">
+          <b>minimal solution</b></a>
+
+          <span class="bz_attach_extra_info">
+              (30.99 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25222.html#attach_7419"
+               title="Go to the comment associated with the attachment">2012-11-17 13:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7419&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25222&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25222&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25222">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25222">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25222">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25222">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25222.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-11-17 09:42
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel:
+
+A while ago I had requested a feature on Quickfilters and you responded that
+the feature would be better suited to Quickfolders.
+
+The feature I had requested was a mail alert that would remain &quot;pending&quot; until
+it was acknowledged.  I think the ability to route incoming mail to specific
+folders is a great idea however, on certain folders it is almost imperative
+that a notice of the arrival of such mail stays visible until it is
+acknowledge.  I have an alert add on now but if I'm not at my PC when mail
+arrives I obviously miss seeing i.
+
+Now, I really hope that I don't embarrass myself if you write back and inform
+me that it is in there already.   I always apply the upgrades but sometimes do
+not get to read all of the changes with each release.  If it's not there yet I
+really hope it makes it to your &quot;to do&quot; list.
+
+Your add=ons are great, thank you for your efforts.
+
+Regards,
+
+Frank
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25222.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-17 13:40:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have renamed the title slightly, I think what you mean is that (over an above
+showing that a folder has unread mail), you want a persistant flag &quot;more unread
+mail has arrived&quot; that should only be reset
+
+a) manually (e.g. by a click on a context menu command such as &quot;clear new mail
+alert&quot;
+b) by reading all email in the folder or using the &quot;mark all mail as read&quot;
+command
+
+This is something that could be stored in the quickFolder tab itself as a
+special property. As a first working draft I would suggest that it should be
+shown by a special &quot;flag&quot; icon, I will attach a screenshot later.
+
+I think this is a valuable suggestion, the difficult part here is to design a
+simple User Interface in a way that the ordinary user understands what this
+feature is about.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25222.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-17 13:59:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="new-mail-alert-manu.png" name="attach_7419" title="minimal solution">Created an attachment (id=7419)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7419&amp;action=edit" title="minimal solution">[details]</a></span>
+minimal solution
+
+Here is a very minimal solution, which would add a &quot;flag&quot; to a QF tab when new
+mail arrives. The reset could happen via right-click - QuickFolders Commands &gt;
+Clear Flag!
+
+the behavior would be on a per tab basis and could be toggle with the option
+
+QuickFolders Commands &gt; flag new mail permanently
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25222.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-17 14:02:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25222.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class=""><a href="new-mail-alert-manu.png" name="attach_7419" title="minimal solution">attachment (id=7419)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7419&amp;action=edit" title="minimal solution">[details]</a></span> [details]
+&gt; minimal solution
+&gt; 
+&gt; Here is a very minimal solution, which would add a &quot;flag&quot; to a QF tab when new
+&gt; mail arrives. The reset could happen via right-click - QuickFolders Commands &gt;
+&gt; Clear Flag!
+&gt; 
+&gt; the behavior would be on a per tab basis and could be toggle with the option
+&gt; 
+&gt; QuickFolders Commands &gt; flag new mail permanently
+&gt; </span >
+
+The flag should beside a menuitem folder if 
+
+The next obvious question is whether the flag should &quot;bubble up&quot; to parent
+folders? Which is a lot more tricky to achieve but it might be necessary. The
+problem is, we only store this &quot;magic property&quot; per quickFolder tab, so
+currently I do not have a way to store properties without you adding the folder
+as tab to at least one quickFolders category.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25222.html#c4">
+            #4</a> From 
+          <a href="mailto:fpgemma&#64;gmail.com">Frank</a>
+          2012-11-17 14:04:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25222.html#c1">comment #1</a>)
+<span class="quote">&gt; I have renamed the title slightly, I think what you mean is that (over an above
+&gt; showing that a folder has unread mail), you want a persistant flag &quot;more unread
+&gt; mail has arrived&quot; that should only be reset
+&gt; 
+&gt; a) manually (e.g. by a click on a context menu command such as &quot;clear new mail
+&gt; alert&quot;
+&gt; b) by reading all email in the folder or using the &quot;mark all mail as read&quot;
+&gt; command
+&gt; 
+&gt; This is something that could be stored in the quickFolder tab itself as a
+&gt; special property. As a first working draft I would suggest that it should be
+&gt; shown by a special &quot;flag&quot; icon, I will attach a screenshot later.
+&gt; 
+&gt; I think this is a valuable suggestion, the difficult part here is to design a
+&gt; simple User Interface in a way that the ordinary user understands what this
+&gt; feature is about.
+&gt; </span >
+
+That's one possible way.  I was thinking about slightly differently.  Rather
+than have alerts on a folder basis (all emails going to a specific folder fall
+into this category) that somehow in conjunction with quickfilters that incoming
+emails could be scanned on whatever criteria the user desired and an &quot;Alert&quot;
+flag be assigned to be handled by Quickfolders.  
+
+A special Qfolders Alerts tab could be used to keep track (with links) to
+whatever email(s) had the Alert flag assigned.  Clicking on the link could open
+the email and reset the flag.  One would only have to look at the Alerts tab to
+see if there were new emails with alerts and go to the tab and click on the
+desired link.  The email would be in the target folder and not have to be moved
+where ever one wants it stored.  The reasoning here is that all emails that are
+stored in a specific folder do not need alerts and by leaving the alert
+mechanism independent of where the email gets stored is the best of both
+worlds.
+
+I fully realize that it's easy to think of lots of ways of doing things when
+one doesn't need to be concerned about implementation details.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25222.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-17 14:24:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25222.html#c4">comment #4</a>)
+
+<span class="quote">&gt; 
+&gt; That's one possible way.  I was thinking about slightly differently.  Rather
+&gt; than have alerts on a folder basis (all emails going to a specific folder fall
+&gt; into this category) that somehow in conjunction with quickfilters that incoming
+&gt; emails could be scanned on whatever criteria the user desired and an &quot;Alert&quot;
+&gt; flag be assigned to be handled by Quickfolders.  </span >
+
+When you put up requirements, please be careful using sentences with &quot;somehow&quot;.
+I cannot (yet) read minds.
+
+So what you are saying is that you want the filter action to determine &quot;what&quot;
+gets flagged, and you're not flagging a whole folder, but the individual email,
+based on a filter? In that case, you can already do this - you do not need any
+extension for it; in your filter, under &quot;Perform these actions&quot;, select &quot;Tag
+Message&quot; and then select &quot;Important&quot; in the drop down beside it. (You can
+create your own flags, so you can also name it &quot;Alert&quot; or whatever) 
+
+<span class="quote">&gt; A special Qfolders Alerts tab could be used to keep track (with links) to
+&gt; whatever email(s) had the Alert flag assigned.  </span >
+
+Again, this is already possible, based on your &quot;tagged&quot; emails from above you
+can simply make a global search based on that &quot;Important&quot; Tag and save it as
+saved search folder. Move the folder to the QuickFolders bar, and voila!
+Obviously this is a (search) folder full of emails, and not an individual link
+to ONE email. QuickFolders currently does not support linking &quot;single emails&quot;
+to it, and I am not sure if it is ever going to support it.
+
+<span class="quote">&gt; Clicking on the link could open the email and reset the flag.  
+&gt; One would only have to look at the Alerts tab to
+&gt; see if there were new emails with alerts and go to the tab and click on the
+&gt; desired link.</span >
+
+So this is a little more tricky, basically what you want is to remove the
+&quot;Important&quot; Tag automagically as soon as the email is viewed (when it looses
+its readonly status). Not sure whether it is possible but there might be also a
+way to do this with a filter... you should also download FiltaQuilla and look
+at the additional options that this gives you.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25222.html#c6">
+            #6</a> From 
+          <a href="mailto:fpgemma&#64;gmail.com">Frank</a>
+          2012-11-17 16:08:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25222.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25222.html#c4">comment #4</a>)
+&gt; 
+&gt; &gt; 
+&gt; &gt; That's one possible way.  I was thinking about slightly differently.  Rather
+&gt; &gt; than have alerts on a folder basis (all emails going to a specific folder fall
+&gt; &gt; into this category) that somehow in conjunction with quickfilters that incoming
+&gt; &gt; emails could be scanned on whatever criteria the user desired and an &quot;Alert&quot;
+&gt; &gt; flag be assigned to be handled by Quickfolders.  
+&gt; 
+&gt; When you put up requirements, please be careful using sentences with &quot;somehow&quot;.
+&gt; I cannot (yet) read minds.
+&gt; 
+&gt; So what you are saying is that you want the filter action to determine &quot;what&quot;
+&gt; gets flagged, and you're not flagging a whole folder, but the individual email,
+&gt; based on a filter?</span >
+
+Correct.  I can then use regular expressions or the standard TB filters to flag
+only the ones I want regardless of their source.
+
+ In that case, you can already do this - you do not need any
+<span class="quote">&gt; extension for it; in your filter, under &quot;Perform these actions&quot;, select &quot;Tag
+&gt; Message&quot; and then select &quot;Important&quot; in the drop down beside it. (You can
+&gt; create your own flags, so you can also name it &quot;Alert&quot; or whatever)</span >
+
+<span class="quote">&gt; 
+&gt; &gt; A special Qfolders Alerts tab could be used to keep track (with links) to
+&gt; &gt; whatever email(s) had the Alert flag assigned.  
+&gt; 
+&gt; Again, this is already possible, based on your &quot;tagged&quot; emails from above you
+&gt; can simply make a global search based on that &quot;Important&quot; Tag and save it as
+&gt; saved search folder. Move the folder to the QuickFolders bar, and voila!
+&gt; Obviously this is a (search) folder full of emails, and not an individual link
+&gt; to ONE email. QuickFolders currently does not support linking &quot;single emails&quot;
+&gt; to it, and I am not sure if it is ever going to support it.
+&gt; 
+&gt; &gt; Clicking on the link could open the email and reset the flag.  
+&gt; &gt; One would only have to look at the Alerts tab to
+&gt; &gt; see if there were new emails with alerts and go to the tab and click on the
+&gt; &gt; desired link.
+&gt; 
+&gt; So this is a little more tricky, basically what you want is to remove the
+&gt; &quot;Important&quot; Tag automagically as soon as the email is viewed (when it looses
+&gt; its readonly status). Not sure whether it is possible but there might be also a
+&gt; way to do this with a filter... you should also download FiltaQuilla and look
+&gt; at the additional options that this gives you.
+&gt; </span >
+
+You mean you failed Mindreading 101 too?  I keep telling my wife the same thing
+and here I do it too.
+
+
+&quot;So what you are saying is that you want the filter action to determine &quot;what&quot;
+ gets flagged, and you're not flagging a whole folder, but the individual
+email,
+ based on a filter?&quot;
+
+Correct.  I can then use regular expressions or the standard TB filters to flag
+only the ones I want regardless of their source.  I realize I can tag an email
+and create any label I want, however what I was referring to is to have a
+special &quot;Alert&quot; (or any other appropriately named tag or a special QFilter
+&quot;flag&quot; not associated with a TB tag) to recorded by Quickfolders in a single
+place (i.e., the &quot;Alert&quot; QF Tab).  This QF special tab would know of all of the
+alerts that occurred and where (folder) they were put and either be able to
+open them or position me to the appropriate folder where the email was stored.
+
+In other words, Qfolders would know about all of the Alerts that were created
+via Quickfilters , have them in one place (the special &quot;QF &quot;Alerts&quot; tab or
+such) and be able to &quot;magically&quot; get the user to the email when directed to do
+so, however that can be done.
+
+I'm attempting to avoid doing anymore rerouting of email than what already was
+done via the filtering,  deleting dups, or keeping multiple emails around
+because they went to multiple places which I believe happens with the Important
+folder.
+
+Please realize that when I opened this request it was because I remembered that
+I made a request a while ago via email not through this Bugzilla so I figured
+it got lost in the mill.  I didn't expect to be doing a requirements definition
+right at this moment and only meant it more as an inquiry.  Had I though we
+would get this far into it I would have thought it through some more.  I
+apologize for that.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25222.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-11 12:20:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25222.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25222.html#c5">comment #5</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25222.html#c4">comment #4</a>)
+&gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; That's one possible way.  I was thinking about slightly differently.  Rather
+&gt; &gt; &gt; than have alerts on a folder basis (all emails going to a specific folder fall
+&gt; &gt; &gt; into this category) that somehow in conjunction with quickfilters that incoming
+&gt; &gt; &gt; emails could be scanned on whatever criteria the user desired and an &quot;Alert&quot;
+&gt; &gt; &gt; flag be assigned to be handled by Quickfolders.  
+&gt; &gt; 
+&gt; &gt; When you put up requirements, please be careful using sentences with &quot;somehow&quot;.
+&gt; &gt; I cannot (yet) read minds.
+&gt; &gt; 
+&gt; &gt; So what you are saying is that you want the filter action to determine &quot;what&quot;
+&gt; &gt; gets flagged, and you're not flagging a whole folder, but the individual email,
+&gt; &gt; based on a filter?
+&gt; 
+&gt; Correct.  I can then use regular expressions or the standard TB filters to flag
+&gt; only the ones I want regardless of their source.
+&gt; 
+&gt;  In that case, you can already do this - you do not need any
+&gt; &gt; extension for it; in your filter, under &quot;Perform these actions&quot;, select &quot;Tag
+&gt; &gt; Message&quot; and then select &quot;Important&quot; in the drop down beside it. (You can
+&gt; &gt; create your own flags, so you can also name it &quot;Alert&quot; or whatever)
+&gt; 
+&gt; &gt; 
+&gt; &gt; &gt; A special Qfolders Alerts tab could be used to keep track (with links) to
+&gt; &gt; &gt; whatever email(s) had the Alert flag assigned.  
+&gt; &gt; 
+&gt; &gt; Again, this is already possible, based on your &quot;tagged&quot; emails from above you
+&gt; &gt; can simply make a global search based on that &quot;Important&quot; Tag and save it as
+&gt; &gt; saved search folder. Move the folder to the QuickFolders bar, and voila!
+&gt; &gt; Obviously this is a (search) folder full of emails, and not an individual link
+&gt; &gt; to ONE email. QuickFolders currently does not support linking &quot;single emails&quot;
+&gt; &gt; to it, and I am not sure if it is ever going to support it.
+&gt; &gt; 
+&gt; &gt; &gt; Clicking on the link could open the email and reset the flag.  
+&gt; &gt; &gt; One would only have to look at the Alerts tab to
+&gt; &gt; &gt; see if there were new emails with alerts and go to the tab and click on the
+&gt; &gt; &gt; desired link.
+&gt; &gt; 
+&gt; &gt; So this is a little more tricky, basically what you want is to remove the
+&gt; &gt; &quot;Important&quot; Tag automagically as soon as the email is viewed (when it looses
+&gt; &gt; its readonly status). Not sure whether it is possible but there might be also a
+&gt; &gt; way to do this with a filter... you should also download FiltaQuilla and look
+&gt; &gt; at the additional options that this gives you.
+&gt; &gt; 
+&gt; 
+&gt; You mean you failed Mindreading 101 too?  I keep telling my wife the same thing
+&gt; and here I do it too.
+&gt; 
+&gt; 
+&gt; &quot;So what you are saying is that you want the filter action to determine &quot;what&quot;
+&gt;  gets flagged, and you're not flagging a whole folder, but the individual
+&gt; email,
+&gt;  based on a filter?&quot;
+&gt; 
+&gt; Correct.  I can then use regular expressions or the standard TB filters to flag
+&gt; only the ones I want regardless of their source.  I realize I can tag an email
+&gt; and create any label I want, however what I was referring to is to have a
+&gt; special &quot;Alert&quot; (or any other appropriately named tag or a special QFilter
+&gt; &quot;flag&quot; not associated with a TB tag) to recorded by Quickfolders in a single
+&gt; place (i.e., the &quot;Alert&quot; QF Tab).  This QF special tab would know of all of the
+&gt; alerts that occurred and where (folder) they were put and either be able to
+&gt; open them or position me to the appropriate folder where the email was stored.
+&gt; 
+&gt; In other words, Qfolders would know about all of the Alerts that were created
+&gt; via Quickfilters , have them in one place (the special &quot;QF &quot;Alerts&quot; tab or
+&gt; such) and be able to &quot;magically&quot; get the user to the email when directed to do
+&gt; so, however that can be done.
+&gt; 
+&gt; I'm attempting to avoid doing anymore rerouting of email than what already was
+&gt; done via the filtering,  deleting dups, or keeping multiple emails around
+&gt; because they went to multiple places which I believe happens with the Important
+&gt; folder.
+&gt; </span >
+
+If it is a flag that is driven by selected emails, have a think on how this
+could be implemented using the &quot;reading list&quot; function. the problem with that
+feature is (while I thing it was a good idea in principle) is that I never
+actually use it because it somewhat &quot;removes&quot; the important emails from my
+usual flow of {go to Next unread email} =&gt; {Read or forget}
+
+Somehow already having read the emails makes every additional reading feel like
+a superfluous chore - but at the same time, if it is not unread anymore I
+forget about re-visiting the reading list. I really have no idea to resolve
+this at the moment. But I feel that it could somehow be connected to your idea.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25222&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24176 &ndash; stack trace: gFolderTreeView is not defined</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24176&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24176">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24176">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24176">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_24176">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24176</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">stack trace: gFolderTreeView is not defined</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-04-04 02:33:48</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24176&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-04-04 02:33:48">
+  <input type="hidden" name="longdesclength" value="14">
+  <input type="hidden" name="id" value="24176">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="stack trace: gFolderTreeView is not defined">stack trace: gFolderTreeView is not defined
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24176.html">24176</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Mac OS X 10.6">Mac OS X 10.6
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24176&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24176">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:js&#64;betabox.de">Jochen Schnürle &lt;js&#64;betabox.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="js&#64;betabox.de">js&#64;betabox.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-2.7.2pre3.xpi"
+               title="View the content of the attachment">
+          <b>This avoids the call when not necessary</b></a>
+
+          <span class="bz_attach_extra_info">
+              (238.83 KB,
+                patch)
+
+            <br>
+            <a href="show_bug.cgi@id=24176.html#attach_6996"
+               title="Go to the comment associated with the attachment">2011-07-24 11:57</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6996&amp;action=edit">Details</a>
+            | <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6996&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24176&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24176&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24176">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24176">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24176">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24176">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24176.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2011-07-06 03:07
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >This lines repeat every time QuickFolders is active:
+------------------------------------------
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: -- Stack Trace
+--
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]:
+GetSelectedMsgFolders()@chrome://messenger/content/msgMail3PaneWindow.js:1148
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]:
+GetFirstSelectedMsgFolder()@chrome://messenger/content/mailWindowOverlay.js:1115
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]:
+()@chrome://quickfolders/content/quickfolders-interface.js:2130
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: ([object
+XPCWrappedNative_NoHelper],[object
+XPCWrappedNative_NoHelper])@chrome://quickfolders/content/quickfolders.js:1592
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: -- Exception
+object --
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: + message
+(string) 'gFolderTreeView is not defined'
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: + fileName
+(string) 'chrome://messenger/content/msgMail3PaneWindow.js'
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: + lineNumber
+(number) 1148
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: + stack
+(string) 346 chars
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: + name (string)
+'ReferenceError'
+Jul  6 11:51:20 nbmac [0x0-0x3b03b].org.mozilla.thunderbird[0]: *
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24176.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-06 04:23:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >which version of Thunderbird are you running?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24176.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-06 05:01:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Also, I would need the exact version number of QF - at the moment, it looks
+like GetFirstSelectedMsgFolder is failing (a helper function in Mozilla), which
+might point to a Thunderbird bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24176.html#c3">
+            #3</a> From 
+          <a href="mailto:js&#64;betabox.de">Jochen Schnürle</a>
+          2011-07-07 05:54:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24176.html#c1">comment #1</a>)
+<span class="quote">&gt; which version of Thunderbird are you running?</span >
+
+since today 5.0, but the error still exist (in past I used 3.x).
+
+-js
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24176.html#c4">
+            #4</a> From 
+          <a href="mailto:js&#64;betabox.de">Jochen Schnürle</a>
+          2011-07-07 05:57:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24176.html#c2">comment #2</a>)
+<span class="quote">&gt; Also, I would need the exact version number of QF</span >
+
+em:name=&quot;QuickFolders&quot;
+em:version=&quot;2.7&quot;
+
+-js
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24176.html#c5">
+            #5</a> From 
+          <a href="mailto:js&#64;betabox.de">Jochen Schnürle</a>
+          2011-07-13 06:42:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24176.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24176.html#c2">comment #2</a>)
+&gt; &gt; Also, I would need the exact version number of QF
+&gt; em:name=&quot;QuickFolders&quot;
+&gt; em:version=&quot;2.7&quot;</span >
+
+with the new version 2.71 the problem still exist. 
+
+Is this a mac os x - thunderbird only problem ?
+
+-js
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24176.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 06:49:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24176.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24176.html#c4">comment #4</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=24176.html#c2">comment #2</a>)
+&gt; &gt; &gt; Also, I would need the exact version number of QF
+&gt; &gt; em:name=&quot;QuickFolders&quot;
+&gt; &gt; em:version=&quot;2.7&quot;
+&gt; 
+&gt; with the new version 2.71 the problem still exist. 
+&gt; 
+&gt; Is this a mac os x - thunderbird only problem ?
+&gt; 
+&gt; -js
+&gt; </span >
+
+I would strongly believe this. Can you post another console2 output, this time
+from QF 2.7.1?
+
+I am especially interested in the line
+
+@chrome://quickfolders/content/quickfolders.js:1592
+
+what line number and what error message have you got now?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24176.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 06:54:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Do you want to arrange a screen sharing session on join.me? Email me directly
+if you're interested.
+
+prerequisites for Mac:
+<a href="https://secure.join.me/welcome/webhelp/joinme/join.me/jm_faq_mac.html">https://secure.join.me/welcome/webhelp/joinme/join.me/jm_faq_mac.html</a>
+
+You should install the current Javascript Debugger beforehand:
+<a href="https://addons.mozilla.org/en-US/firefox/addon/javascript-debugger/">https://addons.mozilla.org/en-US/firefox/addon/javascript-debugger/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24176.html#c8">
+            #8</a> From 
+          <a href="mailto:js&#64;betabox.de">Jochen Schnürle</a>
+          2011-07-13 07:06:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; @chrome://quickfolders/content/quickfolders.js:1592
+&gt; what line number and what error message have you got now?
+&gt; </span >
+
+Jul 13 15:49:38 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: ([object
+XPCWrappedNative_NoHelper],[object
+XPCWrappedNative_NoHelper])@chrome://quickfolders/content/quickfolders.js:1607
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: -- Exception
+object --
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: + message
+(string) 'gFolderTreeView is not defined'
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: + fileName
+(string) 'chrome://messenger/content/msgMail3PaneWindow.js'
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: + lineNumber
+(number) 1148
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: + stack
+(string) 346 chars
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: + name
+(string) 'ReferenceError'
+Jul 13 15:49:42 nbmac [0x0-0x2e02e].org.mozilla.thunderbird[299]: *
+
+-js
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24176.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 07:21:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+according to ...
+   @chrome://quickfolders/content/quickfolders.js:1607
+
+This error happens in the 3rd line for the following section:
+
+try {
+  if(QuickFolders.Interface)
+    QuickFolders.Interface.onFolderSelected();
+}
+catch(e) {
+  this.ELog(
+    &quot;Exception in FolderListener.OnItemEvent {&quot; 
+    + event 
+    + &quot;} during calling  onFolderSelected:\n&quot; 
+    + e)
+};
+
+on the line onFolderSelected. 
+
+From there:
+ onFolderSelected: function() {
+  var folder;
+  try  { folder = GetFirstSelectedMsgFolder(); }
+  catch (e) { return; }
+
+I would guess that the Thunderbird function GetFirstSelectedMsgFolder() fails
+for some reason on Mac. I do not use gFolderTreeView in this function directly,
+so I would guess its the system itself.
+
+The exception is definitely caught but it seems to be set up on the Mac systems
+to show up anyway.
+
+The only instance where I use gFolderTreeView I actually do guard against it
+not being defined. Pretty sure at this stage that you have found a thunderbird
+bug specific to the Mac build.
+
+The other instance I use the function above (GetFirstSelected..) is
+tabSelectUpdate, which is called every time you click another QF tab- do you
+get a similar error message every time you do this?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24176.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 07:43:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >If you have mnehny installed, try removing that. This seemed to have worked for
+other Mac users before you.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24176.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 07:45:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24176.html#c10">comment #10</a>)
+<span class="quote">&gt; If you have mnehny installed, try removing that. This seemed to have worked for
+&gt; other Mac users before you.
+&gt; </span >
+
+It is possible that GetFirstSelectedMsgFolder is overwritten by mnehny, not too
+sure what's happening here exactly. (And cannot debug it as I have no access to
+a Mac test system)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=24176.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-13 08:00:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Please also check what actions exactly make this happen - can you enable 
+Debug Mode (on the main options page)
+- right click Debug Mode and set the option
+extensions.quickfolders.debug.events to true.
+- activate Debug Mode
+
+Make sure Debug Mode is enabled, it should tell you whenever a new folder is
+loaded (changing the folder); this can be caused by QF clicking or selecting a
+folder from the folder tree. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=24176.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-07-24 11:57:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-2.7.2pre3.xpi" name="attach_6996" title="This avoids the call when not necessary">Created an attachment (id=6996)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6996&amp;action=edit" title="This avoids the call when not necessary">[details]</a></span>
+This avoids the call when not necessary
+
+Although this is a Thunderbird bug, I can avoid the call to
+GetFirstSelectedMsgFolder by checking the existence of gFolderTreeView
+beforehand, so I was able to avoid this problem (*). To really get this fixed
+raising a bug in Thunderbird itself might be the correct cause of action. Stack
+Trace reports usually are more about the platform (Gecko / NMozilla / FIrefox /
+Thunderbird / Postbox) itself, and errors in extensions typically will show up
+in Tools / Javascript Error Console.
+
+(*) Note: this fixes the problem exclusively in Thunderbird 3 and later. It
+does not apply to postbox / SeaMonkey or TB 2.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24176&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

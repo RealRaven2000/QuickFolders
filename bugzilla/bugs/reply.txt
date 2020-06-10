@@ -1,0 +1,200 @@
+Replying and switching id
+
+SmartTemplate4 {FUNCTIONS} 15:50:9.139  [53844 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 15:50:9.193  [54 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:9.193  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:9.193  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:9.193  [0 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:9.213  [20 ms]	 
+SmartTemplate4.delReplyHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:9.213  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:9.213  [0 ms]	 
+deleteNodeTextOrBR() - deletes node div class matched: moz-cite-prefix  div
+_________DIV_________
+innerHTML: bugzilla-daemon@mozdev.mozdev.org napsal(a):<br>
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:9.213  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:9.214  [1 ms]	 
+SmartTemplate4.delReplyHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:9.214  [0 ms]	 
+identityName:   user3 <user3@xxx.xx>
+key:            id3
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.647  [7433 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.647  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.648  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.651  [3 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.675  [24 ms]	 
+SmartTemplate4.delReplyHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:16.675  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:16.676  [1 ms]	 
+deleteNodeTextOrBR() - deletes node div class matched: moz-cite-prefix  div
+_________DIV_________
+innerHTML: bugzilla-daemon@mozdev.mozdev.org napsal(a):<br>
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:16.676  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:16.677  [1 ms]	 
+SmartTemplate4.delReplyHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:16.678  [1 ms]	 
+identityName:   user1 <user1@xxx.xx>
+key:            id2
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:16.678  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.31  [1353 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.31  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.32  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.35  [3 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.65  [30 ms]	 
+SmartTemplate4.delReplyHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:18.65  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:18.65  [0 ms]	 
+deleteNodeTextOrBR() - deletes node div class matched: moz-cite-prefix  div
+_________DIV_________
+innerHTML: bugzilla-daemon@mozdev.mozdev.org napsal(a):<br>
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:18.65  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:18.65  [0 ms]	 
+deleteNodeTextOrBR() - ignored nonmatching div
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:18.65  [0 ms]	 
+SmartTemplate4.delReplyHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:18.66  [1 ms]	 
+identityName:   user2 <user2@xxx.xx>
+key:            id1
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:18.66  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.711  [1645 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.711  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.711  [0 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.714  [3 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.746  [32 ms]	 
+SmartTemplate4.delReplyHeader()
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:19.746  [0 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:19.746  [0 ms]	 
+deleteNodeTextOrBR() - deletes node div class matched: moz-cite-prefix  div
+_________DIV_________
+innerHTML: bugzilla-daemon@mozdev.mozdev.org napsal(a):<br>
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:19.747  [1 ms]	 
+deleteNodeTextOrBR() - deletes node br
+_________BR_________
+EMPTY
+ ----------
+SmartTemplate4 {DELETENODES} 15:50:19.747  [0 ms]	 
+deleteNodeTextOrBR() - ignored nonmatching div
+ ----------
+SmartTemplate4 {FUNCTIONS} 15:50:19.747  [0 ms]	 
+SmartTemplate4.delReplyHeader() ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 15:50:19.747  [0 ms]	 
+identityName:   user4 <user4@xxx.xx>
+key:            id4
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false

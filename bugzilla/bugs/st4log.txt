@@ -1,0 +1,389 @@
+SmartTemplate4 {FUNCTIONS} 12:31:59.216  [54149 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 12:31:59.242  [26 ms]	 
+NotifyComposeBodyReady: Stationery 0.8+ - no action required.
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.250  [8 ms]	 
+SmartTemplate4.regularize(
+%X:=today%
+<html>
+%X:=today%
+<head>
+%X:=today%
+<title></title>
+%X:=today%
+ <style type="text/css">
+%X:=today%
+  html, body, p, ul, ol, table, tr, td, #text { 
+%X:=today%
+    font-family: 'Trebuchet MS', sans-serif, Arial, Helvetica; 
+%X:=today%
+    font-size: 11pt;
+%X:=today%
+  }
+%X:=today%
+  body { 
+%X:=today%
+    background: #FFFFFF;
+%X:=today%
+    color: #000000; 
+%X:=today%
+  } 
+%X:=today%
+ </style>
+%X:=today%
+</head>
+%X:=today%
+<body>
+%X:=today%
+<span id="_AthCaret">%cursor%<!-- initial cursor placement --></span>
+%X:=today%
+%sig(2)%
+%X:=today%
+</body>
+%X:=today%
+</html>)  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.251  [1 ms]	 
+simplify()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.251  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.251  [0 ms]	 
+regularize.chkRw(%cursor%, cursor, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.252  [1 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.252  [0 ms]	 
+regularize.chkRw(%sig(2)%, sig, (2))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.252  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.253  [1 ms]	 
+SmartTemplate4.regularize(
+<html>
+<head>
+<title></title>
+ <style type="text/css">
+  html, body, p, ul, ol, table, tr, td, #text { 
+    font-family: 'Trebuchet MS', sans-serif, Arial, Helvetica; 
+    font-size: 11pt;
+  }
+  body { 
+    background: #FFFFFF;
+    color: #000000; 
+  } 
+ </style>
+</head>
+<body>
+<span id="_AthCaret"><div class="st4cursor">&nbsp;</div><!-- initial cursor placement --></span>
+<sig class="st4-signature" removeDashes=true>%sig(2)%</sig>
+</body>
+</html>)  ...ENDS
+ ----------
+SmartTemplate4 12:31:59.258  [5 ms]	 
+EVENT: stationery-template-loaded
+ ----------
+SmartTemplate4 12:31:59.258  [0 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+Stationery is active
+Template used is:D:\stationary_neu.htm
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.258  [0 ms]	 
+insertTemplate(startup: true, flags: [object Object])
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.258  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 12:31:59.258  [0 ms]	 
+readSignatureFile() 
+Trying to read attached signature file: creative-feat signatur.htm
+at: D:\signatur.htm
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.259  [1 ms]	 
+SmartTemplate4.regularize(<html>
+%X:=today%
+	<head>
+%X:=today%
+		<title></title>
+%X:=today%
+	</head>
+%X:=today%
+	<body>
+%X:=today%
+		<p>
+%X:=today%
+			<a href="www.domain.tld" target="_blank"><img alt="Signatur" src="http://ftp.domain.tld/cf_signatur.jpg" style="width: 500px; height: 135px;" /></a></p>
+%X:=today%
+		<p>
+%X:=today%
+			<span style="font-family:trebuchet ms,arial,helvetica,sans-serif;font-size:13;"><b>company</b><br />
+%X:=today%
+			street<br />
+%X:=today%
+			city<br />
+%X:=today%
+			<br />
+%X:=today%
+			Telefon 123456<br />
+%X:=today%
+			Telefax 456789<br />
+%X:=today%
+			E-Mail <a href="mailto:frederik@domain.tld">frederik@domain.tld</a><br />
+%X:=today%
+			<a href="http://www.domain.tld">www.domain.tld</a><br />
+%X:=today%
+			<br />
+%X:=today%
+			Gesch&auml;ftsf&uuml;hrung: ceoname<br />
+%X:=today%
+			Amtsgericht legal<br />
+%X:=today%
+			USt-IdNr: 123456789</span></p>
+%X:=today%
+	</body>
+%X:=today%
+</html>
+%X:=today%
+)  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.259  [0 ms]	 
+simplify()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.259  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [1 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+regularize.chkRw(%X:=today%, X:=today, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+SmartTemplate4.regularize(<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<p>
+			<a href="www.domain.tld" target="_blank"><img alt="Signatur" src="http://ftp.domain.tld/creative/cf_signatur.jpg" style="width: 500px; height: 135px;" /></a></p>
+		<p>
+			<span style="font-family:trebuchet ms,arial,helvetica,sans-serif;font-size:13;"><b>company</b><br />
+			street<br />
+			city<br />
+			<br />
+			Telefon 123456<br />
+			Telefax 456789<br />
+			E-Mail <a href="mailto:frederik@domain.tld">frederik@domain.tld</a><br />
+			<a href="http://www.domain.tld">www.domain.tld</a><br />
+			<br />
+			Gesch&auml;ftsf&uuml;hrung: ceoname<br />
+			Amtsgericht legal<br />
+			USt-IdNr: 123456789</span></p>
+	</body>
+</html>
+)  ...ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.260  [0 ms]	 
+getSmartTemplate(new, id2)
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+SmartTemplate4.regularize(%sig(2)%)  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+simplify()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+regularize.chkRw(%sig(2)%, sig, (2))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+getSignatureInner(true)
+ ----------
+SmartTemplate4 {REGULARIZE} 12:31:59.260  [0 ms]	 
+SmartTemplate4.regularize(<pre>	<br>		<title></title><br>	<br>	<br>		<p><br>			<a href="www.domain.tld" target="_blank"><img alt="Signatur" src="http://ftp.domain.tld/creative/cf_signatur.jpg" style="width: 500px; height: 135px;"></a></p><br>		<p><br>			<span style="font-family:trebuchet ms,arial,helvetica,sans-serif;font-size:13;"><b>company</b><br><br>			Bad Meinberger Straße 1<br><br>			city<br><br>			<br><br>			Telefon 123456<br><br>			Telefax 456789<br><br>			E-Mail <a href="mailto:frederik@domain.tld">frederik@domain.tld</a><br><br>			<a href="http://www.domain.tld">www.domain.tld</a><br><br>			<br><br>			Geschäftsführung: Bastian Schröder<br><br>			Amtsgericht legal<br><br>			USt-IdNr: 123456789</span></p><br>	<br><br></pre>)  ...ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 12:31:59.261  [1 ms]	 
+ search %cursor% in template: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 12:31:59.261  [0 ms]	 
+identityName:   Frederik Niedernolte <frederik@domain.tld>
+key:            id2 (uses Common)
+server{?}:      imap.domain.tld [imap]
+ ------------------------------------------------
+sigOnReply:     true
+sigOnForward:   true
+sigBottom:      false
+attachSignature:true
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.isSignatureSetup:true
+SmartTemplate4.sigInTemplate: true
+%sig% type: [true]
+compose case, is active? : new, true
+------------------------------------------------
+SmartTemplate4: 0.9.4pre20
+Application: Thunderbird v17.0.8
+HostSystem: Windows NT 6.1; WOW64
+Stationery used: true
+
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.262  [1 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 12:31:59.262  [0 ms]	 
+ finished. 
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.262  [0 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:31:59.262  [0 ms]	 
+insertTemplate(startup) complete.
+ ----------
+SmartTemplate4 12:31:59.262  [0 ms]	 
+smartTemplateInserted is already set
+ ----------
+SmartTemplate4 12:31:59.262  [0 ms]	 
+EVENT: stationery-template-loaded
+ ----------
+SmartTemplate4 12:31:59.262  [0 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+Stationery is active
+Template used is:D:\stationary_neu.htm
+ ----------
+SmartTemplate4 12:31:59.263  [1 ms]	 
+smartTemplateInserted is already set
+ ----------
+SmartTemplate4 12:31:59.263  [0 ms]	 
+EVENT: stationery-template-loaded
+ ----------
+SmartTemplate4 12:31:59.263  [0 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+Stationery is active
+Template used is:D:\stationary_neu.htm
+ ----------
+SmartTemplate4 12:31:59.263  [0 ms]	 
+smartTemplateInserted is already set
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:32:5.384  [6121 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:32:5.385  [1 ms]	 
+insertTemplate(startup: false, flags: (none))
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:32:5.386  [1 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:32:5.390  [4 ms]	 
+getSmartTemplate(new, id1)
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.390  [0 ms]	 
+SmartTemplate4.regularize(%sig(2)%)  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.391  [1 ms]	 
+simplify()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.391  [0 ms]	 
+regularize.chkRw(%sig(2)%, sig, (2))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.391  [0 ms]	 
+getSignatureInner(true)
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.391  [0 ms]	 
+getSignatureInner(): signature has no child relements.
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:5.392  [1 ms]	 
+SmartTemplate4.regularize(<div class="moz-signature"></div>)  ...ENDS
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 12:32:5.394  [2 ms]	 
+ search %cursor% in template: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 12:32:5.394  [0 ms]	 
+identityName:   Frederik Niedernolte <f.niedernolte@gmail.com>
+key:            id1 (uses Common)
+server{?}:      imap.googlemail.com [imap]
+ ------------------------------------------------
+sigOnReply:     true
+sigOnForward:   true
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.isSignatureSetup:false
+SmartTemplate4.sigInTemplate: true
+%sig% type: [auto]
+compose case, is active? : new, true
+------------------------------------------------
+SmartTemplate4: 0.9.4pre20
+Application: Thunderbird v17.0.8
+HostSystem: Windows NT 6.1; WOW64
+Stationery used: false
+
+ ----------
+Fehler: TypeError: flags is undefined
+Quelldatei: chrome://smarttemplate4/content/smartTemplate-compose.js
+Zeile: 1109
+ ----------
+SmartTemplate4 {FUNCTIONS} 12:32:6.985  [1591 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 12:32:6.986  [1 ms]	 
+readSignatureFile() 
+Trying to read attached signature file: creative-feat signatur.htm
+at: D:\signatur.htm
+ ----------
+SmartTemplate4 {REGULARIZE} 12:32:6.988  [2 ms]	 
+SmartTemplate4.regularize(<html>
+%X:=today%
+	<head>
+%X:=today%
+		<title></title>
+%X:=today%
+	</head>
+%X:=today%
+	<body>
+%X:=today%
+		<p>
+%X:=today%
+			<a href="www.domain.tld" target="_blank"><img alt="Signatur" src="http://ftp.domain.tld/creative/cf_signatur.jpg" style="width: 500px; height: 135px;" /></a></p>
+%X:=today%
+		<p>
+%X:=today%
+			<span style="font-family:trebuchet ms,arial,helvetica,sans-serif;font-size:13;"><b>company</b><br />
+%X:=today%
+			street<br />
+%X:=today%
+			city<br />
+%X:=today%
+			<br />
+%X:=today%
+			Telefon 123456<br />
+%X:=today%
+			Telefax 456789<br />
+%X:=today%
+			E-Mail <a href="mailto:frederik@domain.tld">frederik@domain.tld</a><br />
+%X:=today%
+			<a href="http://www.domain.tld">www.domain.tld</a><br />
+%X:=today%
+			<br />
+%X:=today%
+			Gesch&auml;ftsf&uuml;hrung: ceoname<br />
+%X:=today%
+			Amtsgericht legal<br />
+%X:=today%
+			USt-IdNr: 123456789</span></p>
+%X:=today%
+	</body>
+%X:=today%
+</html>
+%X:=today%
+)  STARTS...
+ ----------
+Fehler: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIMessenger.msgHdrFromURI]
+Quelldatei: chrome://smarttemplate4/content/smartTemplate-overlay.js
+Zeile: 600

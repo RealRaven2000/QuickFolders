@@ -1,0 +1,1433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25750 &ndash; OK,Cancel missing in Options Dialog on Mac</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25750&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25750">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25750">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25750">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25750">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25750</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">OK,Cancel missing in Options Dialog on Mac</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-04-19 20:51:34</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25750&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-04-19 20:51:34">
+  <input type="hidden" name="longdesclength" value="18">
+  <input type="hidden" name="id" value="25750">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="OK,Cancel missing in Options Dialog on Mac">OK,Cancel missing in Options Dialog on Mac
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25750.html">25750</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickpasswords">quickpasswords
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickpasswords">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="Macintosh">Macintosh
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Mac OS X 10.7">Mac OS X 10.7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25750&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25750">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:atlanx&#64;focx.de">Markus Stadler &lt;atlanx&#64;focx.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axel.grude&#64;gmail.com">axel.grude&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="missing_keys.png"
+               title="View the content of the attachment">
+          <b>Picture which shows the missing buttons</b></a>
+
+          <span class="bz_attach_extra_info">
+              (113.09 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7839"
+               title="Go to the comment associated with the attachment">2014-04-17 14:49</a>,
+
+            <a href="mailto:atlanx&#64;focx.de"
+               title="Write an email to the creator of the attachment">Markus Stadler
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7839&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickPasswords3.2.1pre16.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.2.1 prerelease 16</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (212.83 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7840"
+               title="Go to the comment associated with the attachment">2014-04-18 16:27</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7840&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="qp_settingdiff.jpg"
+               title="View the content of the attachment">
+          <b>Different Settings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (169.90 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7841"
+               title="Go to the comment associated with the attachment">2014-04-19 09:10</a>,
+
+            <a href="mailto:atlanx&#64;focx.de"
+               title="Write an email to the creator of the attachment">Markus Stadler
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7841&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;10.40.10.png"
+               title="View the content of the attachment">
+          <b>Example for fading out window</b></a>
+
+          <span class="bz_attach_extra_info">
+              (55.84 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7842"
+               title="Go to the comment associated with the attachment">2014-04-19 09:29</a>,
+
+            <a href="mailto:atlanx&#64;focx.de"
+               title="Write an email to the creator of the attachment">Markus Stadler
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7842&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="QuickPasswords3.2.1pre20.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.2.1 prerelease 20</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (212.90 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7843"
+               title="Go to the comment associated with the attachment">2014-04-19 11:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7843&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;13.26.29.png"
+               title="View the content of the attachment">
+          <b>3.2.1 pr20 test</b></a>
+
+          <span class="bz_attach_extra_info">
+              (176.08 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7844"
+               title="Go to the comment associated with the attachment">2014-04-19 12:19</a>,
+
+            <a href="mailto:atlanx&#64;focx.de"
+               title="Write an email to the creator of the attachment">Markus Stadler
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7844&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;13.34.11.png"
+               title="View the content of the attachment">
+          <b>Masschange</b></a>
+
+          <span class="bz_attach_extra_info">
+              (108.66 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7845"
+               title="Go to the comment associated with the attachment">2014-04-19 12:26</a>,
+
+            <a href="mailto:atlanx&#64;focx.de"
+               title="Write an email to the creator of the attachment">Markus Stadler
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7845&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a8" href="QuickPasswords3.2.1pre27.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.2.1 prerelease 27</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (213.04 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7847"
+               title="Go to the comment associated with the attachment">2014-04-19 18:43</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7847&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a9" href="QuickPasswords3.2.1pre30.xpi.1"
+               title="View the content of the attachment">
+          <b>3.2.1 prerelease 30</b></a>
+
+          <span class="bz_attach_extra_info">
+              (213.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25750.html#attach_7848"
+               title="Go to the comment associated with the attachment">2014-04-19 20:51</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7848&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25750.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25750&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25750&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25750">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25750">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25750">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25750">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25750.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-04-17 14:47
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >If you open the settings of Quickpasswords its missing the saving button.
+
+This probably only happens at Macintosh PCs.
+
+Firefox 28.0
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25750.html#c1">
+            #1</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-17 14:49:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="missing_keys.png" name="attach_7839" title="Picture which shows the missing buttons">Created an attachment (id=7839)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7839&amp;action=edit" title="Picture which shows the missing buttons">[details]</a></span>
+Picture which shows the missing buttons
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25750.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-17 15:14:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Strange one - do you get the same behvaior when you open options from the
+Addons Manager? The prefwindow is defined to have (at least) an Ok button which
+should work on Mac as well:
+
+&lt;prefwindow
+xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+        buttons=&quot;accept,cancel,extra2&quot;
+        id=&quot;QuickPasswords-preferences&quot; 
+
+etc.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25750.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-18 16:26:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25750.html#c2">comment #2</a>)
+<span class="quote">&gt; Strange one - do you get the same behvaior when you open options from the
+&gt; Addons Manager? The prefwindow is defined to have (at least) an Ok button which
+&gt; should work on Mac as well:
+&gt; 
+&gt; &lt;prefwindow
+&gt; xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+&gt;         buttons=&quot;accept,cancel,extra2&quot;
+&gt;         id=&quot;QuickPasswords-preferences&quot; 
+&gt; 
+&gt; etc.
+&gt; </span >
+
+From what I have asked around on IRC not having any Ok / Cancel buttons on Mac
+is supposedly default behavior (and all settings automatically are instant
+applied) on Mec but I am more worried about the fact that the titlebar is also
+missing although I have specified it in my code when I open the window from the
+toolbar button / context menu:
+
+window.openDialog('chrome://quickpasswords/content/quickpassword_options.xul',
+  'quickpasswords-passwords',
+  'dialog,chrome,titlebar,centerscreen,modal,resizable',
+  params)
+
+I can upload a test version that doesn't have the resizable flag, maybe that
+helps...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25750.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-18 16:27:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickPasswords3.2.1pre16.xpi" name="attach_7840" title="3.2.1 prerelease 16">Created an attachment (id=7840)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7840&amp;action=edit" title="3.2.1 prerelease 16">[details]</a></span>
+3.2.1 prerelease 16
+
+try the attached, without the resizable flag.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25750.html#c5">
+            #5</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 08:44:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Probably it is releated to the setting
+
+browser.preferences.instantApply=false (which is the default for Windows)
+browser.preferences.instantApply=true (which is the default for Macs/Linux)
+
+which is only activated under MacOS but not under Windows.
+
+For reference see this bug: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=641288">https://bugzilla.mozilla.org/show_bug.cgi?id=641288</a>
+
+I test now your 3.2.1 prerelease 16.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25750.html#c6">
+            #6</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 08:52:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Strange one - do you get the same behvaior when you open options from the
+Addons Manager?
+
+Confirm. Same problem when i open it from the Addons Manager.
+
+- - - 
+
+And i tested now with 
+
+browser.preferences.instantApply=false (which is the default for Windows)
+
+Then both buttons are there [Cancel] [OK]
+
+So, it is depending on this setting which has to be
+browser.preferences.instantApply=true under MacOs.
+
+
+p.s. You are not the only one who has this problem.
+The Add-on from AVM/FritzBox (FRITZ!Box Add-on 1.7.0) shows the same problem -
+missing buttons.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25750.html#c7">
+            #7</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 09:03:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Technically it is no problem because the settings you change in the window are
+saved, even if you press [ESC] which is the only option to close this
+&quot;fade-out&quot; window.
+
+But for a user it feels very strange.
+
+I add another attachement which shows the differences of the setting window in
+3.2.1 pre 14 (didnt you upload pre 16?)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25750.html#c8">
+            #8</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 09:10:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="qp_settingdiff.jpg" name="attach_7841" title="Different Settings">Created an attachment (id=7841)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7841&amp;action=edit" title="Different Settings">[details]</a></span>
+Different Settings
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25750.html#c9">
+            #9</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 09:26:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >&quot;From what I have asked around on IRC not having any Ok / Cancel buttons on Mac
+is supposedly default behavior&quot;
+
+Yes, thats right.
+
+And it's ok, when you open the settings from the Add-On Manager because then
+the Settings window has red yellow and green Window Buttons.
+
+But, when opened from website &gt; rightclick &gt; Passwort abrufen... &gt; Settings
+Button
+
+the settings fade out with grayed out red and yellow button.
+
+Then it feels strange because only [ESC] is working.
+
+
+I still trying to find an example where other program is using the fade out
+window......i thought in this case this kind of window has a button.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25750.html#c10">
+            #10</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 09:29:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;10.40.10.png" name="attach_7842" title="Example for fading out window">Created an attachment (id=7842)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7842&amp;action=edit" title="Example for fading out window">[details]</a></span>
+Example for fading out window
+
+Found an example for an fading out window
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25750.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 10:08:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25750.html#c10">comment #10</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;10.40.10.png" name="attach_7842" title="Example for fading out window">attachment (id=7842)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7842&amp;action=edit" title="Example for fading out window">[details]</a></span> [details]
+&gt; Example for fading out window
+&gt; 
+&gt; Found an example for an fading out window
+&gt; </span >
+
+OK, I get it. so there seems to be a problem with the window being a child of
+password manager, I think I can probably make a workaround (by making the
+settings a child of the main window always). What's more important though:
+there is another &quot;extension&quot; window that I open and that must be related to
+password manager in this specific way when you click on the right button
+(Unified Password Change...) - it is supposed to show the &quot;change Passwords&quot;
+image to the right of the manager. Could you try this out and post a screenshot
+on what it looks like on Mac? I will work on a patch for the preferences window
+in the meantime.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25750.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 11:31:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickPasswords3.2.1pre20.xpi" name="attach_7843" title="3.2.1 prerelease 20">Created an attachment (id=7843)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7843&amp;action=edit" title="3.2.1 prerelease 20">[details]</a></span>
+3.2.1 prerelease 20
+
+This version tries to determine the OS and in Macs case (OS_TARGET=Darwin)
+opens the window from the main browser as parent. It should probably alsobe
+tested on Thunderbird, SeaMonkey and Postbox in a Mac environment, as do not
+have a Mac platform for testing myself.
+
+If Preferences works as expected please also test the unified password change;
+this should show the change window side by side. NOrmally you select an entry,
+then click [Unified Password Change...], which opens the window to change
+Passwords. Then click [Select all entires that match...] and finally click [Ok]
+in order to reset the paasswords of all selected items.
+
+(note this will only change passwords where the domain names match as a
+precaution; it is mainly for people who have to use SSO sites which require
+regular password changes - it is a great time saver as my employer can request
+changing 30 or 40 identical passwords every few months)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25750.html#c13">
+            #13</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 12:19:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;13.26.29.png" name="attach_7844" title="3.2.1 pr20 test">Created an attachment (id=7844)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7844&amp;action=edit" title="3.2.1 pr20 test">[details]</a></span>
+3.2.1 pr20 test
+
+-3.2.1 prerelease 20
+
+- This version tries to determine the OS and in Macs case (OS_TARGET=Darwin)
+- opens the window from the main browser as parent. 
+
+It is working in Firefox. Look at the picture.
+(In add-on manager just a window, on page like you described)
+
+It is not working in Thunderbird.
+(In add-on manager just a window, on page the click at the gear has no effect)
+
+What is Postbox?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25750.html#c14">
+            #14</a> From 
+          <a href="mailto:atlanx&#64;focx.de">Markus Stadler</a>
+          2014-04-19 12:26:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;13.34.11.png" name="attach_7845" title="Masschange">Created an attachment (id=7845)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7845&amp;action=edit" title="Masschange">[details]</a></span>
+Masschange
+
+- If Preferences works as expected please also test the unified password
+change;
+this should show the change window side by side. NOrmally you select an entry,
+then click [Unified Password Change...], which opens the window to change
+Passwords. Then click [Select all entires that match...] and finally click [Ok]
+in order to reset the paasswords of all selected items.
+
+Hm, i'm not sure if i doing it right but looks like it is not working(FF).
+Nothing happens after clicking [OK].
+
+I tried to change bugzilla.mozdev.org and www.mozdev.org with it.
+No change happening. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25750.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 13:35:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+(In reply to <a href="show_bug.cgi@id=25750.html#c14">comment #14</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Bildschirmfoto&#32;2014-04-19&#32;um&#32;13.34.11.png" name="attach_7845" title="Masschange">attachment (id=7845)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7845&amp;action=edit" title="Masschange">[details]</a></span> [details]
+&gt; Masschange
+&gt; </span >
+
+<span class="quote">&gt; Hm, i'm not sure if i doing it right but looks like it is not working(FF).
+&gt; Nothing happens after clicking [OK].
+&gt; 
+&gt; I tried to change bugzilla.mozdev.org and www.mozdev.org with it.
+&gt; No change happening. 
+&gt; </span >
+
+:( 
+Ok, can you check the Error console output when you do it? there should have
+been a message box which confirms the change.
+
+&quot;modify the password for the following sites?&quot; ....
+
+if you turn on the debug setting (activate debug checkbox then right-click in
+settings)
+
+extensions.quickpasswords.debug.changePasswords.detail
+
+you should see some additional messages so I see what's happening. Remember
+console2 is the best addon for logging relevant errors (it allows selective
+logging and copying logs to the clipboard)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25750.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 18:43:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickPasswords3.2.1pre27.xpi.1" name="attach_7847" title="3.2.1 prerelease 27">Created an attachment (id=7847)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7847&amp;action=edit" title="3.2.1 prerelease 27">[details]</a></span>
+3.2.1 prerelease 27
+
+this should fix the problem in <a href="show_bug.cgi@id=25750.html#c13">comment #13</a> (mass change in Thunderbird) and
+generally Thunderbird problems. Not sure about Mac specific stuff though, can
+you please test?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25750.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 20:51:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickPasswords3.2.1pre30.xpi.1" name="attach_7848" title="3.2.1 prerelease 30">Created an attachment (id=7848)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7848&amp;action=edit" title="3.2.1 prerelease 30">[details]</a></span>
+3.2.1 prerelease 30
+
+Better window determination for Linux, so hopefully this will also work better
+in Mac. This will affect the efficiency of opening the Options window directly
+from the Password Manager without it becoming a child window of the later which
+should hopefully also resolve the (Mac) bug. Tested with Fx20.0a2 in Windows 7
+and Fx27.1 in Ubuntu 12.4
+
+Also made the options modeless but always on top of the main window which
+should make for a friendlier experience.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25750&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

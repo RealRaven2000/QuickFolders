@@ -1,0 +1,1050 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24448 &ndash; QF borked on TBird 7.0 Update</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24448&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24448">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24448">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24448">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_24448">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24448</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QF borked on TBird 7.0 Update</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2011-10-01 02:55:38</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24448&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2011-10-01 02:55:38">
+  <input type="hidden" name="longdesclength" value="12">
+  <input type="hidden" name="id" value="24448">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QF borked on TBird 7.0 Update">QF borked on TBird 7.0 Update
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24448.html">24448</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24448&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24448">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis &lt;luisalbondigas&#64;waitaminute.us&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24448&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24448&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24448">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24448">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24448">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24448">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24448.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2011-09-28 16:22
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Running QF 2.8.3pre16 on TBird 7.0, WinXP SrvIII.
+
+After TBird update to version 7.0, Add-ons Mangler reporting &quot;QuickFolders is
+incompatible with Thunderbird 7.0&quot;, &quot;QuickFolders 2.8.3pre16 (disabled)&quot;.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24448.html#c1">
+            #1</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-29 02:31:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:10.0a1) Gecko/20110928 Firefox/10.0a1
+SeaMonkey/2.7a1 ID:20110928003003
+
+Even after the recent version chenge, QuickFolders 2.8.3pre16 works for me with
+a version override, it should work even on Thuhnderbird 10.0a1 except for
+&quot;paperwork incompatibility&quot;.
+
+As a workaround, you can install the Add-on Compatibility Reporter extension
+(and restart Thunderbird twice in the process) but beware that it will then
+become your responsibility to manually disable any actually misbehaving
+extension: maxVersion mismatches will be mentioned in the addons manager but
+not acted upon.
+
+The ACR suppresses auto-disabling of paperwork-incompatible extensions, and it
+also allows the user to report that an add-on still works despite paperwork
+incompatibility, or that an add-on has problems even though it boasts
+compatibility.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24448.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-29 03:35:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >2.9 is compatible until 8.0 and it is in the review queue for 5 days. I don't
+want to push up maxVersion too high as I wouldn't have time to test all my
+extensions so far ahead. I will try to stay one version number ahead of the
+rapid release so we should be safe for another 6 weeks from now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24448.html#c3">
+            #3</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-29 10:43:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+Which is the best user course of action here? Install ACR or wait for QF2.9? 
+
+If I'm accurately interpreting Tony's explanation, ACR will foil TBird's
+programmatic Add-on version checking, allowing QF 2.8.3pre16 but requiring user
+attention as updates are issued going forward, and further incurring some risk
+as normal interoperability checking is removed. Correct? No? Add-on's might not
+work, but the data's safe? Sorry, but these things are not clear to me.
+
+Also, can we assume that when QF9 is issued, ACR can then be non-destructively
+removed, and indeed must be removed if we want TB and (QF) Add-on updating to
+return to normal; ie, normal being proper exchange of the &quot;paperwork&quot; at update
+time?
+
+I don't understand how this bug can be changed to Fixed at this point, as QF is
+borked on the TB7.0 update, and this is a pretty much plain vanilla
+installation here, but as long as I get QF back, I'll be happy!
+
+Thanks to both of you for the help, in any case. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24448.html#c4">
+            #4</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-29 12:03:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In reply to <a href="show_bug.cgi@id=24448.html#c3">comment #3</a>:
+I see QuickFolders 2.9 at AMO,
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/</a>
+and by unfolding the &quot;Versions&quot; foldout near the bottom of the page, I see that
+it supports Thunderbird 2.0 to 8.* and SeaMonkey 2.0 to 2.6a1.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24448.html#c5">
+            #5</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-29 12:05:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. However I cannot yet install it because releases.mozilla.org is
+unreachable by IPv4 at the moment: see
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=690452">https://bugzilla.mozilla.org/show_bug.cgi?id=690452</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24448.html#c6">
+            #6</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-29 12:21:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24448.html#c4">comment #4</a>)
+<span class="quote">&gt; In reply to <a href="show_bug.cgi@id=24448.html#c3">comment #3</a>:
+&gt; I see QuickFolders 2.9 at AMO,
+&gt; <a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/</a>
+&gt; and by unfolding the &quot;Versions&quot; foldout near the bottom of the page, I see that
+&gt; it supports Thunderbird 2.0 to 8.* and SeaMonkey 2.0 to 2.6a1.
+&gt; </span >
+
+Thanks Tony. I've performed the download and will install over the current
+installation.
+
+That being said, there's no sign of QF 2.9 at:
+<a href="http://quickfolders.mozdev.org/index.html">http://quickfolders.mozdev.org/index.html</a>
+Nor at:
+<a href="http://quickfolders.mozdev.org/version.html">http://quickfolders.mozdev.org/version.html</a>
+
+And running &quot;Check for Updates&quot; in TBird Add-ons Manager yields &quot;No updates
+found&quot;. 
+
+<span class="bz_closed"><a href="show_bug.cgi@id=24448.html" title="RESOLVED FIXED - QF borked on TBird 7.0 Update">Bug 24448</a></span> might be Fixed, but there's definitely a bug in here somewhere. At
+least this one appears at:
+<a href="http://quickfolders.mozdev.org/bugs.html">http://quickfolders.mozdev.org/bugs.html</a>
+so users experiencing loss of QF on this update can find there way here, if
+they poke around.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24448.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 05:55:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+<span class="quote">&gt; 
+&gt; That being said, there's no sign of QF 2.9 at:
+&gt; <a href="http://quickfolders.mozdev.org/index.html">http://quickfolders.mozdev.org/index.html</a></span >
+
+not true - reload the page while holding down SHIFT or empty your cache:
+<a href="http://quickfolders.mozdev.org/version.html#2.9">http://quickfolders.mozdev.org/version.html#2.9</a>
+
+
+<span class="quote">&gt; Nor at:
+&gt; <a href="http://quickfolders.mozdev.org/version.html">http://quickfolders.mozdev.org/version.html</a>
+&gt; 
+&gt; And running &quot;Check for Updates&quot; in TBird Add-ons Manager yields &quot;No updates
+&gt; found&quot;. </span >
+
+I think there might be a rolling time window of 24 hours or something on the
+AMO servers.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24448.html#c8">
+            #8</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-30 12:38:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24448.html#c7">comment #7</a>)
+<span class="quote">&gt; &gt; 
+&gt; &gt; That being said, there's no sign of QF 2.9 at:
+&gt; &gt; <a href="http://quickfolders.mozdev.org/index.html">http://quickfolders.mozdev.org/index.html</a>
+&gt; 
+&gt; not true - reload the page while holding down SHIFT or empty your cache:
+&gt; <a href="http://quickfolders.mozdev.org/version.html#2.9">http://quickfolders.mozdev.org/version.html#2.9</a>
+&gt; </span >
+&lt;snip&gt;
+
+Hmmmm. Well, even when the QF 2.9 did appear down in the Version Details on
+that page, it didn't appear in the Latest News summary on top. The previous
+version was there. Sorry, it didn't occur to me to grab a screen shot (didn't
+think it would become an issue....). Of course, it is possible that I was
+hallucinating. I'll consult my therapist, <a href="http://www-ai.ijs.si/eliza/eliza.html">http://www-ai.ijs.si/eliza/eliza.html</a>
+
+Anyway, what matters now is that the new QF version is now  available, and the
+Add-on is again functioning.  
+
+Going forward, can we now expect QF updating to track TBird updates? Or has the
+main program rapid revision regime made that rather too difficult? If so, do
+you advise users to hold off on implementing TBird updates for a few days? 
+
+And, bonus question, do you foresee getting back into synchronization with the
+main program updating regime, or does the new rapid updating make it impossible
+for Add-ons to keep up?
+
+Thanks as always. I know five and ten buck donations are not building you a
+chalet in the Alps.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24448.html#c9">
+            #9</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-30 13:43:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24448.html#c8">comment #8</a>)
+[...]
+<span class="quote">&gt; Going forward, can we now expect QF updating to track TBird updates? Or has the
+&gt; main program rapid revision regime made that rather too difficult? If so, do
+&gt; you advise users to hold off on implementing TBird updates for a few days? 
+&gt; 
+&gt; And, bonus question, do you foresee getting back into synchronization with the
+&gt; main program updating regime, or does the new rapid updating make it impossible
+&gt; for Add-ons to keep up?</span >
+[...]
+
+Once addons.mozilla.org get their bugs ironed out, add-ons hosted there will
+see their maxVersion bumped automatically every six weeks, unless there is a
+reason not to do it (such as use of a recently removed entry point, or use of
+binary libraries over XPCOM). IIUC, this already applies to Firefox maxVersion
+settings, and the intention is to do it for Thunderbird and SeaMonkey too. I
+think (but I may be wrong) that it has been done for Thunderbird and will soon
+be done for SeaMonkey.
+
+For addons not hosted at AMO, bumping the maxVersion remains the addon
+developer's job.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24448.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 13:57:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24448.html#c8">comment #8</a>)
+
+<span class="quote">&gt; 
+&gt; Hmmmm. Well, even when the QF 2.9 did appear down in the Version Details on
+&gt; that page, it didn't appear in the Latest News summary on top. The previous
+&gt; version was there. Sorry, it didn't occur to me to grab a screen shot (didn't
+&gt; think it would become an issue....). Of course, it is possible that I was
+&gt; hallucinating. I'll consult my therapist, <a href="http://www-ai.ijs.si/eliza/eliza.html">http://www-ai.ijs.si/eliza/eliza.html</a>
+&gt; 
+&gt; Anyway, what matters now is that the new QF version is now  available, and the
+&gt; Add-on is again functioning.  
+&gt; 
+&gt; Going forward, can we now expect QF updating to track TBird updates? Or has the
+&gt; main program rapid revision regime made that rather too difficult? </span >
+
+No its just something to be aware off. it's a 6 weeks window, I release once 
+a month on average. My new policy is to bump maxVersion to current+2, so my
+next release should be maxVer=9.0, This way I can stay ahead of the game even
+if I miss out on 2 releases.
+
+<span class="quote">&gt; If so, do you advise users to hold off on implementing TBird updates for a few days? </span >
+
+Probably not a bad idea, or install the Addon Compatibility Reporter extension
+and re-enable what you cannot live without. If a developer is caught out and
+wants to release a new version you usually get a 10 day delay through the
+review process.
+
+<span class="quote">&gt; 
+&gt; And, bonus question, do you foresee getting back into synchronization with the
+&gt; main program updating regime, or does the new rapid updating make it impossible
+&gt; for Add-ons to keep up?</span >
+
+Its not impossible, just means we can't slack. It is also motiviation in a way,
+it got me to take up development on QuickPasswords and Zombiekeys again,
+implementing some features that I wanted to add for a long time. Guess a simple
+version bump isn't good enough in my eyes :-)
+
+<span class="quote">&gt; 
+&gt; Thanks as always. I know five and ten buck donations are not building you a
+&gt; chalet in the Alps.</span >
+
+Depends, if everybody would do it ... ;) well one can always dream.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24448.html#c11">
+            #11</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-10-01 02:55:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Gah, what a headache for you. 
+Thanks again, fwiw.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24448&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2166 @@
+X-Apparently-To: cbroult@yahoo.com; Mon, 30 Sep 2019 17:25:17 +0000
+Return-Path: <sentto-90120274-2057-1569864310-@returns.groups.yahoo.com>
+Authentication-Results: mta4145.mail.ne1.yahoo.com; 
+ dkim=pass (ok) header.i=@yahoogroups.com header.s=echoe;
+ spf=pass smtp.mailfrom=@returns.groups.yahoo.com;
+ dmarc=pass(p=none sp=NULL dis=none) header.from=yahoogroups.com;
+Received-SPF: pass (domain of returns.groups.yahoo.com designates 74.6.134.91 as permitted sender)
+X-YMailISG: K2Rv1PsWLDueHDpcOUwlnXDVmqzLUWZ2yG9NRtdTe4.EsMHw
+ KvDiTmru5_m1D28lNFbzEcTx8YYSQaRqTxOvpHZ5fYQzThraxGiwlKt5ClTu
+ 7fQxevXN24EEGzidfWvd8uq.0Qj62dQuaWnQ.7lDe0yWRzQM6Jy1bMyIYpgG
+ 0i0GNmac0PxZxOBW4dVA7ewgxcPGLq1XwQFFoQi2MFbse5r.r5DhGjN8Odug
+ 6bgjNgfgTgHcb.3gyzKc58r.WpKhZMMNyPlh6Q2h5XBWXiQvYrO4Sywc4DAV
+ 54TctjfXBsPaRBoa66sZPr0Yp.NBBKcIRVH88lcpnqmbglIIV1vwHZV6nQrc
+ rn0KzlRe9V2cfGAYq7qYjAYDE3Xmi320f11DxbFpsRvoqdqlP.pZSl9D1AQl
+ cQh3B3MoMXYde1jFqfStoRk3LsmWq3AAfyqBZHi1uVtVd_gNx2li.9lPFZPx
+ VYCCPrAOq4tRMfGNTsLjh8.M3zTJuruHf9y5QAuCWL2OG3SiIkq09Ca1deVK
+ xWsTWjLFe_pn83icKdqmcTGAYlr5pDlEfehhoSMbHt8yCRcERq.OK2gtV7zs
+ Bu8xuNlYMhJpTV4NaSwoGw2uIm6VdK7bDVvQGzLadrHP6N6RZr5tYulCd.8W
+ HixswLcyOhb_TlZ0npbscHB.AiGhK4VedA1B5HQCJGrcc.9BKD4QaXREV0c_
+ 3SSvuLqeDsOJjfmVvfd5BQjI_qj7cxKljx2LrmXI1XTvsFgH22ty2R4hAWU7
+ DIQVDqkZf3_hdX99Gg_wseXrWxh5BpEEXGThh5YLZle1TQRnL6fm9JMZxka4
+ XI1rvaoGnpL7t5ORFWipCA.4amtOZU_1Gp8rAFomWxQBE8B8bVG4xVOcsX0t
+ lQVEtDP5AV.kR.PMzMa36MSBtZ_wxwHDu4j2p4Vz7I4DeWrCXf8fQseUz0Ez
+ ju.mIXSiRXT5T88_ldkOpECc6mF8v6JHLufYDqNJO6ye7u2eNkRwAqYgvJaB
+ lIFsg7uA3teABYtZzM_nfZ5B.BW2JyVIrqAE_.i_F4X.uzUp7Ojq0pBmkTem
+ LiOi6BCsmRXXoyOmfdLXHNYEjamJqh0UqW_dZYEKpg6R3FLsd0WHkPOOewXq
+ xZmfKynE5iVywDpXpUygxYTdblToDvhWuayY48f7sucW.OtYBqubz2wANdmA
+ mJ42pYA2J.YViYsyxL0zZtJ9dQ.BiLkz64PsulgW.ghph_niZX7u3hQTz8Wc
+ pm3dRD5.uwr3Tpj4SR.JeFfEdAJcu1wkjgUy07gcZgWlhFb8CMCIYJZkkQNg
+ gBjONKN6LD.4dxDi
+X-Originating-IP: [74.6.134.91]
+Received: from 10.217.150.202  (EHLO sonic323-36.consmr.mail.bf2.yahoo.com) (74.6.134.91)
+  by mta4145.mail.ne1.yahoo.com with SMTPS; Mon, 30 Sep 2019 17:25:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoogroups.com; s=echoe; t=1569864316; bh=q5yRsFm0FEZ5+bzzXv0ld16ZhBi7LhwI8Ztvnf5JZsc=; h=To:From:List-Id:List-Unsubscribe:Date:Subject:Reply-To:From:Subject; b=L4kZZx6BNwXybK6IgcnjfeLsoIpLnFtR4JZlHv0xgqKGV2m9Gp+fWVLzZCLDMEh/CS9mnEYUVaAxe2J0Jq2Vz4oyKnjcUwl3kSPU7R/YeW0qLlfq73OdtQolmuGAnumoEOcpIinV/hn5EqvG4YcjuWd/Qo6GVEMXnx0XaZPPRQg=
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic323.consmr.mail.bf2.yahoo.com with HTTP; Mon, 30 Sep 2019 17:25:16 +0000
+X-Yahoo-Newman-Id: 90120274-m2057
+X-Sender: report@ecoinform.de
+X-Apparently-To: broult_hoenicke_family@yahoogroups.com
+X-Received: (qmail 28381 invoked by uid 102); 30 Sep 2019 17:25:10 -0000
+X-Received: from unknown (HELO mtaq6.grp.bf1.yahoo.com) (10.198.29.79)
+  by m5.grp.bf1.yahoo.com with SMTP; 30 Sep 2019 17:25:10 -0000
+X-Received: (qmail 5281 invoked from network); 30 Sep 2019 17:05:10 -0000
+X-Received: from unknown (HELO mta4001.groups.mail.bf1.yahoo.com) (10.201.194.219)
+  by mtaq6.grp.bf1.yahoo.com with SMTP; 30 Sep 2019 17:05:10 -0000
+Authentication-Results: mta4001.groups.mail.bf1.yahoo.com; 
+ dkim=neutral (no sig) header.i=@landkorb.de;
+ spf=none smtp.mailfrom=@ecoinform.de;
+ dmarc=NULL(p=NULL sp=NULL dis=NULL) header.from=landkorb.de;
+X-Received-SPF: none (domain of ecoinform.de does not designate permitted sender hosts)
+X-YMailISG: WZUFwkkWLDveExr9qvpsG35OYA0iM8Bkn08EVsyanZOrN5Ay
+ xFBEjRTZh0V1n7kg70FPuHPD6pEd2beovkmJJ7ynkbi6YI7mZOeLpMmR_LKq
+ IIpmtWWQBUNfWN8b6r7HyFIQxoJbNbS2jLMbERXdkbPluzasEW3nuUiQbRWy
+ x_881yKBIR2SXcrb94QIFhf5GoNjUjRMHYtize9H0vXypJeBVgScAIu4qHQ.
+ k_bQFfOcTF4nrWT9k0AXzGA5AyNjZYt5mk6N5tZYX4ZEj_2XoPCdylsEj62x
+ 6pwUc1KZdfUgscDjAy3GAPO739Nf9Sw6o.rnv9O.7YmAeBw6cr89DYmE7yNR
+ o9OAyYRZOMISXL94LYJgMuxyNF348RGGvD6vBL3nK3F.6dCdnWq4M_C4wgsH
+ 61U3rZk.qBs6N8WpgXlgKCbHl7ouKwvMwPd30QYwK5lvTas7Gihe1YMq0I1W
+ P0DJu1HnhjXEFnE7pp5y01GcKbImIP5ADtRul79GMox2kgSRd539HybJ9CYK
+ uF54hvpNS4SxaIJLy50pFgIcrn6sHyMeG7cVR9nU8UN_lWr7IivsjLP8tGMB
+ eRAPUrAF_0Om6XRaoWswt1O3BC0avT63R4szLDtgEPUOlXXV6dHCEx8.4F7u
+ ff3LrZsyOuNM_Hj_KzpwnCHRcNSBoD6U84aS0Co4ZK0oWB7R1SdQ01Sf9TZy
+ YfgF.wiRs0A5ErmZSD7MuIPpTzsOi8.9IO4tKi195bf3nEef7JzdvnXcfYji
+ 6FkFCamfyJnYylHlgUWrmIHdZkddL7n4yJyNqGiQ6Y8FV1N_Inl.DRSjVhLl
+ F4FizQ2Gef2H6VNSyoq16JoHbWBG7I9OoAxruwbzUBbQX64g8YmcbzQwpLHw
+ 3X1hlBrG1IIyl4w08kdXtUCc2LWG3_LRovQ0H1n71K4l0RPh3KBDtMKeeq5Y
+ fwqT4HrOOgvn3rDecHemTAbAGj09DX0erB1E2qc_7yZGINw7RL..RZP6inWt
+ .CTMdHn5n6nZcLcSdoQf63sBw.iq8xAtRPe2EqaryArfHDcwWPTc49_y2J1A
+ 2SAc7yuRG7z8mMncJfKD4hCx
+X-Received: from 127.0.0.1  (EHLO web.ecoinform.de) (88.198.68.27)
+  by mta4001.groups.mail.bf1.yahoo.com with SMTPS; Mon, 30 Sep 2019 17:05:09 +0000
+X-Received: from www-data by web.ecoinform.de with local (Exim 4.80)
+	(envelope-from <report@ecoinform.de>)
+	id 1iEz6h-00074D-6R
+	for broult_hoenicke_family@yahoogroups.com; Mon, 30 Sep 2019 19:05:07 +0200
+To: broult_hoenicke_family@yahoogroups.com
+X-PHP-Originating-Script: 33:htmlMimeMail5.php
+X-Mailer: htmlMimeMail5 <http://www.phpguru.org/>
+Message-ID: <pynm4j.kvmx64@www.landkorb-shop.de>
+X-Originating-IP: 10.201.194.219
+X-Original-From: Landkorb <info@landkorb.de>
+From: "Landkorb info@landkorb.de [broult_hoenicke_family]" <broult_hoenicke_family@yahoogroups.com>
+Sender: broult_hoenicke_family@yahoogroups.com
+MIME-Version: 1.0
+Mailing-List: list broult_hoenicke_family@yahoogroups.com; contact broult_hoenicke_family-owner@yahoogroups.com
+Delivered-To: mailing list broult_hoenicke_family@yahoogroups.com
+List-Id: <broult_hoenicke_family.yahoogroups.com>
+Precedence: bulk
+List-Unsubscribe: <mailto:broult_hoenicke_family-unsubscribe@yahoogroups.com>
+Date: Mon, 30 Sep 2019 19:05:07 +0200
+Subject: [broult_hoenicke_family] Landkorb: Ihr Warenkorb
+Reply-To: broult_hoenicke_family@yahoogroups.com
+X-Yahoo-Newman-Property: groups-email-ff-m
+Content-Type: multipart/alternative;
+ boundary="=_565b74227b8700586254181a848f029f"
+Content-Length: 116734
+
+--=_565b74227b8700586254181a848f029f
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Familie Christophe Broult,
+
+
+
+Sie haben Ihre Lieferung  zum 03.10.2019 Eigene Liefertour bestätigt
+Hier nochmal der letzte Stand Ihrer Bestellung:
+
+Ihr Warenkorb am 03.10.2019 Eigene Liefertour
+
+2 x Apfel Holsteiner Cox, Kilo (741) - 7,10 EUR
+1 x Avocado Hass, Stück (4235) - 2,19 EUR
+1 x Birne Kaiser Alexander, Kilo (4192) - 3,69 EUR
+1 x Birne Köstliche von Charneux, Kilo (9934) - 4,19 EUR
+1 x Buschbohnen, Kilo (955) - 6,15 EUR
+1 x Chinakohl ca. 1kg, Kilo (815) - 3,99 EUR
+1 x Clementinen, Kilo (710) - 4,45 EUR
+1 x DEMETER-Bananen, Kilo (8571) - 3,15 EUR
+1 x Dinkelflocken, 1kg Pack (4048795720662) - 4,69 EUR
+1 x Eichblattsalat rot, Stück (861) - 1,59 EUR
+1 x Emmentaler, St&uuml;ck (4827) - 2,34 EUR
+1 x Fassbutter, natur, 250g Stück (4250017300914) - 2,49 EUR
+1 x Feine Bitter 92%, 80g Stück (4044889002249) - 2,15 EUR
+1 x Feine Bitterkuvertüre, 200g Stück (4044889002225) - 3,15 EUR
+1 x Fenchel, St&uuml;ck (817) - 1,10 EUR
+1 x Frecher Riegel Birne, Pflaume & Brombeere, 4x23g Pack (4260249144408) - 1,99 EUR
+1 x Frecher Riegel Mango & Orange, 4x23g Pack (4260249144347) - 1,99 EUR
+1 x FruchtGarten Heidelbeere, 225g Glas (4019736008163) - 2,59 EUR
+1 x FruchtGarten Sauerkirsche, 225g Glas (4019736004608) - 2,59 EUR
+1 x FruchtGarten Schwarze Johannisbeere, 225g Glas (4019736004622) - 2,59 EUR
+1 x Fruchtschnitte Banane-Mandel, 30g Stück (4016249130596) - 0,99 EUR
+1 x Frühstücksjoghurtalternative Soja Natur, 750g Pack (5411188112143) - 2,35 EUR
+2 x Haferflocken, fein, 1kg Pack (4048795721171) - 6,58 EUR
+1 x Hähnchenkeulen, St&uuml;ck (280432) - 6,45 EUR
+1 x Heublumen Rebell, St&uuml;ck (1727) - 3,74 EUR
+1 x Ingwer, St&uuml;ck (769) - 0,22 EUR
+0,5 x Kiwi, lose Hayward, ca. 80g, Kilo (704) - 3,08 EUR
+1 x Kohlrabi, ca. 350 g, Stück (832) - 1,59 EUR
+2 x Königshofer 10 Eier, 10 Stück (4021851185445) - 7,58 EUR
+1 x Koriander, Bund, Stück (967) - 1,69 EUR
+1 x Kürbis Butternut 1-2,5 kg AKTION, St&uuml;ck (833) - 2,89 EUR
+1 x Mini Avocado Hass ca. 130g, St&uuml;ck (835) - 0,93 EUR
+1 x Möhren gewaschen, Kilo (840) - 2,19 EUR
+1 x Nordsee Käse, St&uuml;ck (8763) - 3,44 EUR
+1 x Orangen klein Kal. 4, Kilo (705) - 4,85 EUR
+1 x Paprika gelb, St&uuml;ck (970) - 0,86 EUR
+1 x Paprika grün ca. 150g, St&uuml;ck (921) - 0,64 EUR
+1 x Paprika orange, ca. 150 g, St&uuml;ck (9839) - 1,16 EUR
+1 x Paprika rot ca. 150g, St&uuml;ck (844) - 0,85 EUR
+1 x Parmigiano Reggiano, St&uuml;ck (6001) - 4,64 EUR
+1 x Pecorino Rio Coghinas, St&uuml;ck (3612) - 2,84 EUR
+0,2 x Peperoni rot, Kilo (9244) - 1,43 EUR
+1 x Pflaumen, blau/rot, Kilo (729) - 2,99 EUR
+1 x Pflaumen, gelb, Kilo (8104) - 4,39 EUR
+1 x Porree/Lauch LINDENHOF, St&uuml;ck (847) - 1,05 EUR
+1 x Reisflocken, 500g Pack (4022381308205) - 2,85 EUR
+3 x Rinder-Countrysteak, natur, St&uuml;ck (284070) - 16,62 EUR
+1 x Roquefort Roquebelle, St&uuml;ck (547) - 5,69 EUR
+1 x Rote Beete, St&uuml;ck (853) - 0,64 EUR
+1 x Salatgurken, Stück (917) - 1,25 EUR
+0,3 x Satsumas, Kilo (731) - 0,90 EUR
+1 x Sojadrink mit Calcium, 1ltr Pack (4021851101438) - 0,99 EUR
+1 x Sultaninen, 1kg Pack (4006040776376) - 6,29 EUR
+1 x Süßkartoffeln ca. 400g /St., St&uuml;ck (954) - 1,20 EUR
+1 x Thymian getrocknet, 25g Pack (2029) - 1,99 EUR
+1 x Trauben, blau, Kilo (744) - 3,79 EUR
+1 x Trauben, blau, kernlos, Kilo (6109) - 5,99 EUR
+1 x Trauben, rot, Kilo (873) - 3,69 EUR
+1 x Trendjoghurt Smooth Mango, 500g Glas (4008471493587) - 1,99 EUR
+1 x Vollmilchkuvertüre, 200g Stück (4044889002218) - 3,15 EUR
+3 x Weidemilch 3,8 %, länger haltbar, 1ltr Pack (4260026430991) - 3,87 EUR
+1 x Ziegen-Bergsennkäse, St&uuml;ck (9286) - 4,19 EUR
+1 x Ziegencamembert, 100g Stück (4104060011917) - 1,99 EUR
+0,2 x Zwiebeln, rot, Kilo (855) - 0,55 EUR
+
+Summe: 201,22 EUR
+enthaltene MwSt: 13,35 EUR
+Gesamtpreis: 201,22 EUR
+
+Ihr Kommentar: 
+
+Ihre Bestellung wird an folgende Adresse geliefert:
+
+Christophe Broult
+Brandenburger Strasse 1
+
+14641 Nauen
+
+Allgemeine Lieferhinweise:
+
+Pflichtangaben zu den Produkten:
+Alle Produkte stammen - soweit nicht anders gekennzeichnet - aus kontrolliert biologischem Anbau. 
+Bitte beachten Sie vor der Bestellung: Die Pflichtangaben gemäß der Lebensmittelinformationsverordnung VO (EU) Nr. 1169/2011 finden Sie in der Detailansicht der Artikel und / oder auf der Seite: http://www.landkorb.de/artikelinfo.html. 
+Alle Pflichtangaben - insbesondere Herstelleradresse, Zutaten und Allergene - auch auf Anfrage, sofern hier nicht verfügbar.
+
+Zahlungsart: 
+Der Rechnungsbetrag wird am ##LT+2## per Sepa-Lastschrift von dem angegebenen Bankkonto abgebucht (siehe AGB Abs. 2.5). Mit Abgabe der Bestellung erklären Sie sich damit einverstanden, dass dem Kontoinhaber zum jeweiligen Liefertag eine Kopie der aktuellen Rechnung per E-Mail zugesandt wird, damit er für ausreichende Deckung des Kontos sorgen kann.
+
+Gesamtpreis:
+Der abgebuchte Betrag entspricht dem Betrag auf Ihrer Rechnung und kann von dem hier aufgeführten Gesamtpreis des Warenkorbes abweichen. Die Gründe dafür liegen in der Beschaffenheit der gelieferten Waren, insbesondere von Obst- und Gemüse (siehe AGB Punkt 4.3). Erstens werden Artikel, die nach Gewicht verkauft werden, grammgenau abgerechnet. Zweitens ist eine Entscheidung darüber, wie viele Pfand-Klappkisten für Ihre Lieferung benötigt werden, erst während des Packvorgangs möglich. Der Inhalt der Landkörbe (Obst-, Gemüse- & Käsekörbe) kann sich ändern und der gelieferte Wert um +/- 10% vom pauschalen Preis des Sortimentskorbes abweichen. 
+
+Pfand und Treppengeld / Servicegebühr: 
+Eigene Touren: Der Gesamtpreis versteht sich zuzüglich Pfand in Höhe von 10,00 € pro Klappkiste (im Warenkorb nicht aufgeführt) sowie zuzüglich 1,90 € Treppengeld ab dem 3. Stock. Das Treppengeld entfällt ab 41,90 € Bestellwert. Auf den Touren von Next-Day beträgt die Servicegebühr 1,90 €. Getränkekästen werden mit 3 € Pfand belastet. 
+
+Lieferkosten (siehe AGB, Abs. 3): 
+Für die Next-Day-Lieferung berechnen wir 4,90 €. Diese Lieferkosten entfallen ab einem Bestellwert von 49,90 €. Für die Firmentour am Montag berechnen wir 2,95 €, diese entfallen ebenfalls ab einem Bestellwert von 40,- €. Für die eigenen Touren von Dienstag bis Samstag entstehen keine Lieferkosten. 
+
+Mindestbestellwert und Kündigung: 
+Der Mindestbestellwert beträgt 18,90 €. Unter 18,90 € erfolgt keine Auslieferung, auch nicht bei Dauerbestellungen. 
+Die Kündigung einer Dauerbestellung - einer regelmäßigen Bestellung - ist beiderseitig bis zwei Werktage vor der nächsten Lieferung 10 Uhr möglich (siehe AGB, Abs. 5.2).
+
+Das Beginn- und Enddatum der Aktionen bezieht sich jeweils auf den Liefertag und nicht auf das Bestelldatum.
+Mit freundlichen Grüßen
+Landkorb
+Der Bio-Lieferservice vom Lindenhof
+Dorfstr. 18, 16845 Rohrlack
+
+Telefon: 
+E-Mail: info@landkorb.de
+Internet: www.landkorb-shop.de
+https://www.landkorb-shop.de/Impressum_977.html
+
+
+--=_565b74227b8700586254181a848f029f
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">
+<html>
+<head>
+</head>
+
+
+
+
+
+
+=20
+<body style=3D"background-color: #fff;">
+<span style=3D"display:none">&nbsp;</span>
+
+<!--~-|**|PrettyHtmlStartT|**|-~-->
+<div id=3D"ygrp-mlmsg" style=3D"position:relative;">
+  <div id=3D"ygrp-msg" style=3D"z-index: 1;">
+<!--~-|**|PrettyHtmlEndT|**|-~-->
+
+    <div id=3D"ygrp-text" >
+=20=20=20=20=20=20
+=20=20=20=20=20=20
+      <p>
+=20=20=20=20=20=20=20=20
+
+
+
+=20=20=20=20=20=20=20=20
+        <b>Familie Christophe Broult,</b>
+        <br><br>Sie haben Ihre Lieferung  zum 03.10.2019 Eigene Liefertour =
+best&auml;tigt<br>Hier nochmal der letzte Stand Ihrer Bestellung:<br><br>
+        <div class=3D"mailCart">
+
+<h2>Ihr Warenkorb am 03.10.2019 Eigene Liefertour </h2>
+<table cellspacing=3D"0" cellpadding=3D"1" class=3D"editCart" width=3D"100%=
+">
+<tr><th style=3D"width:40px;">Menge</th><th>Name</th><th>Lieferrhythmus</th=
+><th align=3D"right">Pfand</th><th align=3D"right">Einzelpreis &euro;</th><=
+th align=3D"right">Betrag &euro;</th><th align=3D"right"></th></tr>
+<tr><td colspan=3D"6" style=3D"border-bottom:1px solid #ccc;">&nbsp;</td></=
+tr>
+<tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">2=
+</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Apfel Holstei=
+ner Cox Diverse Lieferanten, Kilo<span> (741)</span> <span class=3D"comment=
+"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ei=
+nmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">3,55</td><td style=3D"border-left=
+:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">7,10</td></tr=
+><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">=
+1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Avocado Hass=
+ Naturkost Schramm, St=C3=BCck<span> (4235)</span> <span class=3D"comment">=
+</span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einm=
+alig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #cc=
+c;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border=
+-right:1px solid #ccc;" align=3D"right">2,19</td><td style=3D"border-left:1=
+px solid #ccc;border-right:1px solid #ccc;" align=3D"right">2,19</td></tr><=
+tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1<=
+/td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Birne Kaiser A=
+lexander =C3=96ko Bo GmbH, Kilo<span> (4192)</span> <span class=3D"comment"=
+></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ein=
+malig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #c=
+cc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">3,69</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,69</td></tr>=
+<tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1=
+</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Birne K=C3=B6=
+stliche von Charneux Bio-Obsthof Augustin, Kilo<span> (9934)</span> <span c=
+lass=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" alig=
+n=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-ri=
+ght:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px =
+solid #ccc;border-right:1px solid #ccc;" align=3D"right">4,19</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">4,19</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" al=
+ign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"lef=
+t">Buschbohnen Diverse Lieferanten, Kilo<span> (955)</span> <span class=3D"=
+comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"cen=
+ter">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px =
+solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #c=
+cc;border-right:1px solid #ccc;" align=3D"right">6,15</td><td style=3D"bord=
+er-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">6,15</=
+td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"c=
+enter">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">China=
+kohl ca. 1kg G=C3=A4rtnerei Watzgendorf, Kilo<span> (815)</span> <span clas=
+s=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=
+=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-rig=
+ht:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px s=
+olid #ccc;border-right:1px solid #ccc;" align=3D"right">3,99</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">3,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" al=
+ign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"lef=
+t">Clementinen Naturkost Schramm, Kilo<span> (710)</span> <span class=3D"co=
+mment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"cente=
+r">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px so=
+lid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">4,45</td><td style=3D"border=
+-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">4,45</td=
+></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cen=
+ter">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">DEMETER=
+-Bananen Bio Tropic , Kilo<span> (8571)</span> <span class=3D"comment"></sp=
+an></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig=
+</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" =
+align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-rig=
+ht:1px solid #ccc;" align=3D"right">3,15</td><td style=3D"border-left:1px s=
+olid #ccc;border-right:1px solid #ccc;" align=3D"right">3,15</td></tr><tr><=
+td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td>=
+<td style=3D"border-left:1px solid #ccc;" align=3D"left">Dinkelflocken =C3=
+=96kohof Kuhhorst, 1kg Pack<span> (4048795720662)</span> <span class=3D"com=
+ment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center=
+">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px sol=
+id #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;=
+border-right:1px solid #ccc;" align=3D"right">4,69</td><td style=3D"border-=
+left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">4,69</td>=
+</tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cent=
+er">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Eichblat=
+tsalat rot Lindenhof, St=C3=BCck<span> (861)</span> <span class=3D"comment"=
+></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ein=
+malig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #c=
+cc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">1,59</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,59</td></tr>=
+<tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1=
+</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Emmentaler De=
+nnree, St&uuml;ck<span> (4827)</span> <span class=3D"comment"></span></td><=
+td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td =
+style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"=
+right">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px so=
+lid #ccc;" align=3D"right">2,34</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">2,34</td></tr><tr><td style=
+=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td styl=
+e=3D"border-left:1px solid #ccc;" align=3D"left">Fassbutter, natur Gl=C3=A4=
+serne Molkerei, 250g St=C3=BCck<span> (4250017300914)</span> <span class=3D=
+"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"ce=
+nter">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px=
+ solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #=
+ccc;border-right:1px solid #ccc;" align=3D"right">2,49</td><td style=3D"bor=
+der-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">2,49<=
+/td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"=
+center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Fein=
+e Bitter 92% Vivani, 80g St=C3=BCck<span> (4044889002249)</span> <span clas=
+s=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=
+=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-rig=
+ht:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px s=
+olid #ccc;border-right:1px solid #ccc;" align=3D"right">2,15</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">2,15</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" al=
+ign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"lef=
+t">Feine Bitterkuvert=C3=BCre Vivani, 200g St=C3=BCck<span> (4044889002225)=
+</span> <span class=3D"comment"></span></td><td style=3D"border-left:1px so=
+lid #ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid=
+ #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"b=
+order-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,1=
+5</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;"=
+ align=3D"right">3,15</td></tr><tr><td style=3D"width:40px;border-left:1px =
+solid #ccc;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc=
+;" align=3D"left">Fenchel Diverse Lieferanten, St&uuml;ck<span> (817)</span=
+> <span class=3D"comment"></span></td><td style=3D"border-left:1px solid #c=
+cc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;=
+border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-=
+left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,10</td>=
+<td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=
+=3D"right">1,10</td></tr><tr><td style=3D"width:40px;border-left:1px solid =
+#ccc;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" ali=
+gn=3D"left">Frecher Riegel Birne, Pflaume  Brombeere erdb=C3=A4r Freche Fre=
+unde, 4x23g Pack<span> (4260249144408)</span> <span class=3D"comment"></spa=
+n></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig<=
+/td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" a=
+lign=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-righ=
+t:1px solid #ccc;" align=3D"right">1,99</td><td style=3D"border-left:1px so=
+lid #ccc;border-right:1px solid #ccc;" align=3D"right">1,99</td></tr><tr><t=
+d style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><=
+td style=3D"border-left:1px solid #ccc;" align=3D"left">Frecher Riegel Mang=
+o  Orange erdb=C3=A4r Freche Freunde, 4x23g Pack<span> (4260249144347)</spa=
+n> <span class=3D"comment"></span></td><td style=3D"border-left:1px solid #=
+ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border=
+-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,99</td=
+><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" alig=
+n=3D"right">1,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid=
+ #ccc;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" al=
+ign=3D"left">FruchtGarten Heidelbeere Zwergenwiese, 225g Glas<span> (401973=
+6008163)</span> <span class=3D"comment"></span></td><td style=3D"border-lef=
+t:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1=
+px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td><td st=
+yle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"ri=
+ght">2,59</td><td style=3D"border-left:1px solid #ccc;border-right:1px soli=
+d #ccc;" align=3D"right">2,59</td></tr><tr><td style=3D"width:40px;border-l=
+eft:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-left:1px so=
+lid #ccc;" align=3D"left">FruchtGarten Sauerkirsche Zwergenwiese, 225g Glas=
+<span> (4019736004608)</span> <span class=3D"comment"></span></td><td style=
+=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D=
+"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0=
+,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc=
+;" align=3D"right">2,59</td><td style=3D"border-left:1px solid #ccc;border-=
+right:1px solid #ccc;" align=3D"right">2,59</td></tr><tr><td style=3D"width=
+:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"bord=
+er-left:1px solid #ccc;" align=3D"left">FruchtGarten Schwarze Johannisbeere=
+ Zwergenwiese, 225g Glas<span> (4019736004622)</span> <span class=3D"commen=
+t"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">e=
+inmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid =
+#ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;bor=
+der-right:1px solid #ccc;" align=3D"right">2,59</td><td style=3D"border-lef=
+t:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">2,59</td></t=
+r><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center"=
+>1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Fruchtschni=
+tte Banane-Mandel Allos , 30g St=C3=BCck<span> (4016249130596)</span> <span=
+ class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" al=
+ign=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-=
+right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1p=
+x solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,99</td><td sty=
+le=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"rig=
+ht">0,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" =
+align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"l=
+eft">Fr=C3=BChst=C3=BCcksjoghurtalternative Soja Natur Provamel, 750g Pack<=
+span> (5411188112143)</span> <span class=3D"comment"></span></td><td style=
+=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D=
+"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0=
+,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc=
+;" align=3D"right">2,35</td><td style=3D"border-left:1px solid #ccc;border-=
+right:1px solid #ccc;" align=3D"right">2,35</td></tr><tr><td style=3D"width=
+:40px;border-left:1px solid #ccc;" align=3D"center">2</td><td style=3D"bord=
+er-left:1px solid #ccc;" align=3D"left">Haferflocken, fein =C3=96kohof Kuhh=
+orst, 1kg Pack<span> (4048795721171)</span> <span class=3D"comment"></span>=
+</td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</t=
+d><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" ali=
+gn=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:=
+1px solid #ccc;" align=3D"right">3,29</td><td style=3D"border-left:1px soli=
+d #ccc;border-right:1px solid #ccc;" align=3D"right">6,58</td></tr><tr><td =
+style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td=
+ style=3D"border-left:1px solid #ccc;" align=3D"left">H=C3=A4hnchenkeulen F=
+reiland Puten Fahrenzh., St&uuml;ck<span> (280432)</span> <span class=3D"co=
+mment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"cente=
+r">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px so=
+lid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">6,45</td><td style=3D"border=
+-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">6,45</td=
+></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cen=
+ter">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Heublum=
+en Rebell K=C3=A4se Rebellen, St&uuml;ck<span> (1727)</span> <span class=3D=
+"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"ce=
+nter">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px=
+ solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #=
+ccc;border-right:1px solid #ccc;" align=3D"right">3,74</td><td style=3D"bor=
+der-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,74<=
+/td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"=
+center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Ingw=
+er Bio Tropic , St&uuml;ck<span> (769)</span> <span class=3D"comment"></spa=
+n></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig<=
+/td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" a=
+lign=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-righ=
+t:1px solid #ccc;" align=3D"right">0,22</td><td style=3D"border-left:1px so=
+lid #ccc;border-right:1px solid #ccc;" align=3D"right">0,22</td></tr><tr><t=
+d style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">0,5</td=
+><td style=3D"border-left:1px solid #ccc;" align=3D"left">Kiwi, lose Haywar=
+d, ca. 80g Diverse Lieferanten, Kilo<span> (704)</span> <span class=3D"comm=
+ent"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center"=
+>einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px soli=
+d #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;b=
+order-right:1px solid #ccc;" align=3D"right">6,15</td><td style=3D"border-l=
+eft:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,08</td><=
+/tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cente=
+r">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Kohlrabi,=
+ ca. 350 g Lindenhof, St=C3=BCck<span> (832)</span> <span class=3D"comment"=
+></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ein=
+malig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #c=
+cc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">1,59</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,59</td></tr>=
+<tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">2=
+</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">K=C3=B6nigsho=
+fer 10 Eier K=C3=B6nigshofer, 10 St=C3=BCck<span> (4021851185445)</span> <s=
+pan class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;"=
+ align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left=
+:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,79</td><td =
+style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"=
+right">7,58</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc=
+;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=
+=3D"left">Koriander, Bund Lindenhof, St=C3=BCck<span> (967)</span> <span cl=
+ass=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=
+=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-rig=
+ht:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px s=
+olid #ccc;border-right:1px solid #ccc;" align=3D"right">1,69</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">1,69</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" al=
+ign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"lef=
+t">K=C3=BCrbis Butternut 1-2,5 kg AKTION Lindenhof, St&uuml;ck<span> (833)<=
+/span> <span class=3D"comment"></span></td><td style=3D"border-left:1px sol=
+id #ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid =
+#ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"bo=
+rder-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">2,89=
+</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" =
+align=3D"right">2,89</td></tr><tr><td style=3D"width:40px;border-left:1px s=
+olid #ccc;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;=
+" align=3D"left">Mini Avocado Hass ca. 130g Diverse Lieferanten, St&uuml;ck=
+<span> (835)</span> <span class=3D"comment"></span></td><td style=3D"border=
+-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"border-le=
+ft:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td><t=
+d style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=
+=3D"right">0,93</td><td style=3D"border-left:1px solid #ccc;border-right:1p=
+x solid #ccc;" align=3D"right">0,93</td></tr><tr><td style=3D"width:40px;bo=
+rder-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-left:=
+1px solid #ccc;" align=3D"left">M=C3=B6hren gewaschen =C3=96kodorf Brodowin=
+, Kilo<span> (840)</span> <span class=3D"comment"></span></td><td style=3D"=
+border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"bor=
+der-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00<=
+/td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" a=
+lign=3D"right">2,19</td><td style=3D"border-left:1px solid #ccc;border-righ=
+t:1px solid #ccc;" align=3D"right">2,19</td></tr><tr><td style=3D"width:40p=
+x;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-l=
+eft:1px solid #ccc;" align=3D"left">Nordsee K=C3=A4se Thise Mejeri, St&uuml=
+;ck<span> (8763)</span> <span class=3D"comment"></span></td><td style=3D"bo=
+rder-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"borde=
+r-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</t=
+d><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" ali=
+gn=3D"right">3,44</td><td style=3D"border-left:1px solid #ccc;border-right:=
+1px solid #ccc;" align=3D"right">3,44</td></tr><tr><td style=3D"width:40px;=
+border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-lef=
+t:1px solid #ccc;" align=3D"left">Orangen klein Kal. 4 Diverse Lieferanten,=
+ Kilo<span> (705)</span> <span class=3D"comment"></span></td><td style=3D"b=
+order-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"bord=
+er-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</=
+td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" al=
+ign=3D"right">4,85</td><td style=3D"border-left:1px solid #ccc;border-right=
+:1px solid #ccc;" align=3D"right">4,85</td></tr><tr><td style=3D"width:40px=
+;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-le=
+ft:1px solid #ccc;" align=3D"left">Paprika gelb Naturkost Schramm, St&uuml;=
+ck<span> (970)</span> <span class=3D"comment"></span></td><td style=3D"bord=
+er-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=3D"border-=
+left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td>=
+<td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=
+=3D"right">0,86</td><td style=3D"border-left:1px solid #ccc;border-right:1p=
+x solid #ccc;" align=3D"right">0,86</td></tr><tr><td style=3D"width:40px;bo=
+rder-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"border-left:=
+1px solid #ccc;" align=3D"left">Paprika gr=C3=BCn ca. 150g Naturkost Schram=
+m, St&uuml;ck<span> (921)</span> <span class=3D"comment"></span></td><td st=
+yle=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">0,64</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">0,64</td></tr><tr><td style=3D"wi=
+dth:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"b=
+order-left:1px solid #ccc;" align=3D"left">Paprika orange, ca. 150 g Divers=
+e Lieferanten, St&uuml;ck<span> (9839)</span> <span class=3D"comment"></spa=
+n></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig<=
+/td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" a=
+lign=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-righ=
+t:1px solid #ccc;" align=3D"right">1,16</td><td style=3D"border-left:1px so=
+lid #ccc;border-right:1px solid #ccc;" align=3D"right">1,16</td></tr><tr><t=
+d style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><=
+td style=3D"border-left:1px solid #ccc;" align=3D"left">Paprika rot ca. 150=
+g Naturkost Schramm, St&uuml;ck<span> (844)</span> <span class=3D"comment">=
+</span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einm=
+alig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #cc=
+c;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border=
+-right:1px solid #ccc;" align=3D"right">0,85</td><td style=3D"border-left:1=
+px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,85</td></tr><=
+tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1<=
+/td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Parmigiano Reg=
+giano Montanari, St&uuml;ck<span> (6001)</span> <span class=3D"comment"></s=
+pan></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmali=
+g</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;"=
+ align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-ri=
+ght:1px solid #ccc;" align=3D"right">4,64</td><td style=3D"border-left:1px =
+solid #ccc;border-right:1px solid #ccc;" align=3D"right">4,64</td></tr><tr>=
+<td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td=
+><td style=3D"border-left:1px solid #ccc;" align=3D"left">Pecorino Rio Cogh=
+inas Fogu, St&uuml;ck<span> (3612)</span> <span class=3D"comment"></span></=
+td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td>=
+<td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=
+=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1p=
+x solid #ccc;" align=3D"right">2,84</td><td style=3D"border-left:1px solid =
+#ccc;border-right:1px solid #ccc;" align=3D"right">2,84</td></tr><tr><td st=
+yle=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">0,2</td><td=
+ style=3D"border-left:1px solid #ccc;" align=3D"left">Peperoni rot Naturkos=
+t Schramm, Kilo<span> (9244)</span> <span class=3D"comment"></span></td><td=
+ style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td st=
+yle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"ri=
+ght">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px soli=
+d #ccc;" align=3D"right">7,15</td><td style=3D"border-left:1px solid #ccc;b=
+order-right:1px solid #ccc;" align=3D"right">1,43</td></tr><tr><td style=3D=
+"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td style=
+=3D"border-left:1px solid #ccc;" align=3D"left">Pflaumen, blau/rot Diverse =
+Lieferanten, Kilo<span> (729)</span> <span class=3D"comment"></span></td><t=
+d style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td s=
+tyle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"r=
+ight">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px sol=
+id #ccc;" align=3D"right">2,99</td><td style=3D"border-left:1px solid #ccc;=
+border-right:1px solid #ccc;" align=3D"right">2,99</td></tr><tr><td style=
+=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td styl=
+e=3D"border-left:1px solid #ccc;" align=3D"left">Pflaumen, gelb Naturkost S=
+chramm, Kilo<span> (8104)</span> <span class=3D"comment"></span></td><td st=
+yle=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">4,39</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">4,39</td></tr><tr><td style=3D"wi=
+dth:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"b=
+order-left:1px solid #ccc;" align=3D"left">Porree/Lauch LINDENHOF Lindenhof=
+, St&uuml;ck<span> (847)</span> <span class=3D"comment"></span></td><td sty=
+le=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">1,05</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">1,05</td></tr><tr><td style=3D"wi=
+dth:40px;border-left:1px solid #ccc;" align=3D"center">1</td><td style=3D"b=
+order-left:1px solid #ccc;" align=3D"left">Reisflocken Spielberger, 500g Pa=
+ck<span> (4022381308205)</span> <span class=3D"comment"></span></td><td sty=
+le=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">0,00</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">2,85</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">2,85</td></tr><tr><td style=3D"wi=
+dth:40px;border-left:1px solid #ccc;" align=3D"center">3</td><td style=3D"b=
+order-left:1px solid #ccc;" align=3D"left">Rinder-Countrysteak, natur Chiem=
+gauer Natur, St&uuml;ck<span> (284070)</span> <span class=3D"comment"></spa=
+n></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig<=
+/td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" a=
+lign=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-righ=
+t:1px solid #ccc;" align=3D"right">5,54</td><td style=3D"border-left:1px so=
+lid #ccc;border-right:1px solid #ccc;" align=3D"right">16,62</td></tr><tr><=
+td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td>=
+<td style=3D"border-left:1px solid #ccc;" align=3D"left">Roquefort Roquebel=
+le Franz. K=C3=A4sespezialit=C3=A4ten, St&uuml;ck<span> (547)</span> <span =
+class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" ali=
+gn=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-r=
+ight:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px=
+ solid #ccc;border-right:1px solid #ccc;" align=3D"right">5,69</td><td styl=
+e=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"righ=
+t">5,69</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" a=
+lign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"le=
+ft">Rote Beete Neue M=C3=BChle Dahnsdorf, St&uuml;ck<span> (853)</span> <sp=
+an class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" =
+align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,64</td><td s=
+tyle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"r=
+ight">0,64</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;=
+" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"left">Salatgurken Diverse Lieferanten, St=C3=BCck<span> (917)</span> <span=
+ class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" al=
+ign=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-=
+right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1p=
+x solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,25</td><td sty=
+le=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"rig=
+ht">1,25</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" =
+align=3D"center">0,3</td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"left">Satsumas Bio Tropic , Kilo<span> (731)</span> <span class=3D"comment=
+"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ei=
+nmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">2,99</td><td style=3D"border-left=
+:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,90</td></tr=
+><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">=
+1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Sojadrink mi=
+t Calcium Dennree, 1ltr Pack<span> (4021851101438)</span> <span class=3D"co=
+mment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"cente=
+r">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px so=
+lid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">0,99</td><td style=3D"border=
+-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">0,99</td=
+></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cen=
+ter">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Sultani=
+nen Rapunzel , 1kg Pack<span> (4006040776376)</span> <span class=3D"comment=
+"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">ei=
+nmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #=
+ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;bord=
+er-right:1px solid #ccc;" align=3D"right">6,29</td><td style=3D"border-left=
+:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">6,29</td></tr=
+><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">=
+1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">S=C3=BC=C3=
+=9Fkartoffeln ca. 400g /St. Diverse Lieferanten, St&uuml;ck<span> (954)</sp=
+an> <span class=3D"comment"></span></td><td style=3D"border-left:1px solid =
+#ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid #cc=
+c;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"borde=
+r-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,20</t=
+d><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" ali=
+gn=3D"right">1,20</td></tr><tr><td style=3D"width:40px;border-left:1px soli=
+d #ccc;" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" a=
+lign=3D"left">Thymian getrocknet Sternhof, 25g Pack<span> (2029)</span> <sp=
+an class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" =
+align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,99</td><td s=
+tyle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"r=
+ight">1,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;=
+" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"left">Trauben, blau Diverse Lieferanten, Kilo<span> (744)</span> <span cla=
+ss=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=
+=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-rig=
+ht:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px s=
+olid #ccc;border-right:1px solid #ccc;" align=3D"right">3,79</td><td style=
+=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right=
+">3,79</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" al=
+ign=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"lef=
+t">Trauben, blau, kernlos Diverse Lieferanten, Kilo<span> (6109)</span> <sp=
+an class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" =
+align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">5,99</td><td s=
+tyle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"r=
+ight">5,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;=
+" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"left">Trauben, rot Bio Tropic , Kilo<span> (873)</span> <span class=3D"com=
+ment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D"center=
+">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:1px sol=
+id #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;=
+border-right:1px solid #ccc;" align=3D"right">3,69</td><td style=3D"border-=
+left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,69</td>=
+</tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=3D"cent=
+er">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">Trendjog=
+hurt Smooth Mango S=C3=B6bbeke , 500g Glas<span> (4008471493587)</span> <sp=
+an class=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" =
+align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc;borde=
+r-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:=
+1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,99</td><td s=
+tyle=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"r=
+ight">1,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;=
+" align=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"left">Vollmilchkuvert=C3=BCre Vivani, 200g St=C3=BCck<span> (4044889002218=
+)</span> <span class=3D"comment"></span></td><td style=3D"border-left:1px s=
+olid #ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px soli=
+d #ccc;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"=
+border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">3,=
+15</td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;=
+" align=3D"right">3,15</td></tr><tr><td style=3D"width:40px;border-left:1px=
+ solid #ccc;" align=3D"center">3</td><td style=3D"border-left:1px solid #cc=
+c;" align=3D"left">Weidemilch 3,8 %, l=C3=A4nger haltbar Gl=C3=A4serne Molk=
+erei, 1ltr Pack<span> (4260026430991)</span> <span class=3D"comment"></span=
+></td><td style=3D"border-left:1px solid #ccc;" align=3D"center">einmalig</=
+td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" al=
+ign=3D"right">0,00</td><td style=3D"border-left:1px solid #ccc;border-right=
+:1px solid #ccc;" align=3D"right">1,29</td><td style=3D"border-left:1px sol=
+id #ccc;border-right:1px solid #ccc;" align=3D"right">3,87</td></tr><tr><td=
+ style=3D"width:40px;border-left:1px solid #ccc;" align=3D"center">1</td><t=
+d style=3D"border-left:1px solid #ccc;" align=3D"left">Ziegen-Bergsennk=C3=
+=A4se Landk=C3=A4serei Herzog, St&uuml;ck<span> (9286)</span> <span class=
+=3D"comment"></span></td><td style=3D"border-left:1px solid #ccc;" align=3D=
+"center">einmalig</td><td style=3D"border-left:1px solid #ccc;border-right:=
+1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border-left:1px soli=
+d #ccc;border-right:1px solid #ccc;" align=3D"right">4,19</td><td style=3D"=
+border-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">4,=
+19</td></tr><tr><td style=3D"width:40px;border-left:1px solid #ccc;" align=
+=3D"center">1</td><td style=3D"border-left:1px solid #ccc;" align=3D"left">=
+Ziegencamembert Andechser Natur, 100g St=C3=BCck<span> (4104060011917)</spa=
+n> <span class=3D"comment"></span></td><td style=3D"border-left:1px solid #=
+ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid #ccc=
+;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"border=
+-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">1,99</td=
+><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" alig=
+n=3D"right">1,99</td></tr><tr><td style=3D"width:40px;border-left:1px solid=
+ #ccc;" align=3D"center">0,2</td><td style=3D"border-left:1px solid #ccc;" =
+align=3D"left">Zwiebeln, rot Neue M=C3=BChle Dahnsdorf, Kilo<span> (855)</s=
+pan> <span class=3D"comment"></span></td><td style=3D"border-left:1px solid=
+ #ccc;" align=3D"center">einmalig</td><td style=3D"border-left:1px solid #c=
+cc;border-right:1px solid #ccc;" align=3D"right">0,00</td><td style=3D"bord=
+er-left:1px solid #ccc;border-right:1px solid #ccc;" align=3D"right">2,75</=
+td><td style=3D"border-left:1px solid #ccc;border-right:1px solid #ccc;" al=
+ign=3D"right">0,55</td></tr><tr><th colspan=3D"6">&nbsp;</th></tr><tr><td c=
+olspan=3D"5">&nbsp;</td></tr><tr><th colspan=3D"6" align=3D"right">201,22 &=
+euro;</th></tr><tr><td colspan=3D"3">enthaltene MwSt</td><td colspan=3D"3" =
+align=3D"right">13,35 &euro;</td></tr><tr><th colspan=3D"6" align=3D"right"=
+>Gesamtpreis: 201,22 &euro;</th></tr><tr><th colspan=3D"6" align=3D"left">I=
+hr Kommentar: </th></tr></table><br>
+Ihre Bestellung wird an folgende Adresse geliefert:<br>
+<br>
+Christophe Broult<br>
+Brandenburger Strasse 1<br>
+<br>
+14641 Nauen<br>
+</div>
+        <br>
+        <br><b>Allgemeine Lieferhinweise</b>:<br><br>Pflichtangaben zu den =
+Produkten:<br>
+Alle Produkte stammen - soweit nicht anders gekennzeichnet - aus kontrollie=
+rt biologischem Anbau. <br>
+Bitte beachten Sie vor der Bestellung: Die Pflichtangaben gem=C3=A4=C3=9F d=
+er Lebensmittelinformationsverordnung VO (EU) Nr. 1169/2011 finden Sie in d=
+er Detailansicht der Artikel und / oder auf der Seite: http://www.landkorb.=
+de/artikelinfo.html. <br>
+Alle Pflichtangaben - insbesondere Herstelleradresse, Zutaten und Allergene=
+ - auch auf Anfrage, sofern hier nicht verf=C3=BCgbar.<br>
+<br>
+Zahlungsart: <br>
+Der Rechnungsbetrag wird am  per Sepa-Lastschrift von dem angegebenen Bankk=
+onto abgebucht (siehe AGB Abs. 2.5). Mit Abgabe der Bestellung erkl=C3=A4re=
+n Sie sich damit einverstanden, dass dem Kontoinhaber zum jeweiligen Liefer=
+tag eine Kopie der aktuellen Rechnung per E-Mail zugesandt wird, damit er f=
+=C3=BCr ausreichende Deckung des Kontos sorgen kann.<br>
+<br>
+Gesamtpreis:<br>
+Der abgebuchte Betrag entspricht dem Betrag auf Ihrer Rechnung und kann von=
+ dem hier aufgef=C3=BChrten Gesamtpreis des Warenkorbes abweichen. Die Gr=
+=C3=BCnde daf=C3=BCr liegen in der Beschaffenheit der gelieferten Waren, in=
+sbesondere von Obst- und Gem=C3=BCse (siehe AGB Punkt 4.3).=C2=A0Erstens we=
+rden Artikel, die nach Gewicht verkauft werden, grammgenau abgerechnet. Zwe=
+itens=C2=A0ist eine Entscheidung dar=C3=BCber, wie viele Pfand-Klappkisten =
+f=C3=BCr Ihre Lieferung ben=C3=B6tigt werden, erst=C2=A0w=C3=A4hrend des=C2=
+=A0Packvorgangs m=C3=B6glich. Der Inhalt der Landk=C3=B6rbe (Obst-, Gem=C3=
+=BCse-  K=C3=A4sek=C3=B6rbe) kann sich =C3=A4ndern und der gelieferte Wert =
+um &#43;/- 10% vom pauschalen Preis des Sortimentskorbes abweichen. <br>
+<br>
+Pfand und Treppengeld / Servicegeb=C3=BChr: <br>
+Eigene Touren: Der Gesamtpreis versteht sich zuz=C3=BCglich Pfand in H=C3=
+=B6he von 10,00 =E2=82=AC pro Klappkiste (im Warenkorb nicht aufgef=C3=BChr=
+t) sowie zuz=C3=BCglich 1,90 =E2=82=AC Treppengeld ab dem 3. Stock. Das Tre=
+ppengeld entf=C3=A4llt ab 41,90 =E2=82=AC Bestellwert. Auf den Touren von N=
+ext-Day betr=C3=A4gt die Servicegeb=C3=BChr 1,90 =E2=82=AC. Getr=C3=A4nkek=
+=C3=A4sten werden mit 3 =E2=82=AC Pfand belastet. <br>
+<br>
+Lieferkosten (siehe AGB, Abs. 3): <br>
+F=C3=BCr die Next-Day-Lieferung berechnen wir 4,90 =E2=82=AC. Diese Lieferk=
+osten entfallen ab einem Bestellwert von 49,90 =E2=82=AC. F=C3=BCr die Firm=
+entour am Montag berechnen wir 2,95 =E2=82=AC, diese entfallen ebenfalls ab=
+ einem Bestellwert von 40,- =E2=82=AC. F=C3=BCr die eigenen Touren von Dien=
+stag bis Samstag entstehen keine Lieferkosten. <br>
+<br>
+Mindestbestellwert und K=C3=BCndigung: <br>
+Der Mindestbestellwert betr=C3=A4gt 18,90 =E2=82=AC. Unter 18,90 =E2=82=AC =
+erfolgt keine Auslieferung, auch nicht bei Dauerbestellungen. <br>
+Die K=C3=BCndigung einer Dauerbestellung - einer regelm=C3=A4=C3=9Figen Bes=
+tellung - ist beiderseitig bis zwei Werktage vor der n=C3=A4chsten Lieferun=
+g 10 Uhr m=C3=B6glich (siehe AGB, Abs. 5.2).<br>
+<br>
+Das Beginn- und Enddatum der Aktionen bezieht sich jeweils auf den Lieferta=
+g und nicht auf das Bestelldatum.<br><br>
+Mit freundlichen Gr&uuml;&szlig;en<br><br>
+<br>Impressum<br>
+<br>
+Landkorb GmbH  Co. KG<br>
+Dorfstr.18, 16845 Rohrlack<br>
+<br>
+Telefon: 033928 / 9041-0<br>
+Fax: 033928 / 9041-30<br>
+E-Mail: info@landkorb.de<br>
+Website: www.landkorb.de<br>
+<br>
+Kontrollstellennummer: DE-=C3=96KO-037<br>
+Umsatzsteuer-Identifikationsnummer:<br>
+(gem=C3=A4=C3=9F =C2=A727a Umsatzsteuergesetz) DE189219198<br>
+<br>
+Bankverbindung: GLS-Bank   <br>
+IBAN DE66 4306 0967 4002 9481 00   <br>
+BIC GENODEM1GLS<br>
+Gl=C3=A4ubiger-Identifikationsnummer: DE55ZZZ00000267378<br>
+<br>
+Registergericht: Amtsgericht Neuruppin<br>
+Registernummer: HRA 2734 NP<br>
+Online-Schlichtung: <a href=3D"http://ec.europa.eu/consumers/odr/">http://e=
+c.europa.eu/consumers/odr/</a><br><br><p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><strong>Allgemeine Gesch&auml;ftsbedingungen</strong=
+></p>
+<p class=3D"MsoNormal">Die nachfolgenden Bedingungen gelten f&uuml;r alle B=
+estellungen aus dem Produktangebot auf der Webseite www.landkorb-shop.de. D=
+iensteanbieter und Verwender dieser AGB ist Landkorb GmbH &amp; Co. KG, ver=
+treten durch die LK-Bio VerwaltungsgesellschaftmbH, Gesch&auml;ftsf&uuml;hr=
+er Kirsten Sattler, Daniel Sperberg, Christoph Sperberg, Dorfstr.18, 16845 =
+Temnitztal, OT Rohrlack [im Folgenden: Landkorb]. Die AGB sind auf der Inte=
+rnetseite www.landkorb-shop.de jederzeit zur Ansicht oder zum Ausdruck abru=
+fbar.</p>
+<p class=3D"MsoNormal">&nbsp;1.Vertragsgegenstand</p>
+<p class=3D"MsoNormal">&nbsp;(1.1) Gegenstand des Vertrages ist der Verkauf=
+ von Lebensmitteln, Getr&auml;nken oder sonstigen Haushaltsgegenst&auml;nde=
+n, die wir Ihnen entsprechend unserem w&ouml;chentlichen Lieferplan an Ihre=
+n Wohnort bzw. eine Lieferadresse Ihrer Wahl liefern. Die Produktauswahl ka=
+nn in Form vorgegebener Produktpakete (&bdquo;Landk&ouml;rbe"), durch geson=
+derte Bestellung nach Bedarf oder durch eine Kombination dieser beiden M&ou=
+ml;glichkeiten erfolgen.</p>
+<p class=3D"MsoNormal">&nbsp;(1.2) &bdquo;Landk&ouml;rbe" sind Standardkist=
+en mit w&ouml;chentlich wechselndem Inhalt und abwechslungsreichen, saisona=
+len Mischungen, die im Abonnement zum regelm&auml;&szlig;igen Bezug bestell=
+t werden.</p>
+<p class=3D"MsoNormal">&nbsp;(1.3) Die Einzelheiten, insbesondere die wesen=
+tliche Merkmale der Produkte und die Kaufinformationen finden sich in der P=
+roduktbeschreibung und den erg&auml;nzenden Angaben auf unserer Internetsei=
+te.</p>
+<p class=3D"MsoNormal">&nbsp;2. Vertragsschluss, Zahlung</p>
+<p class=3D"MsoNormal">&nbsp;(2.1) Die von Ihnen &uuml;ber den Button (&bdq=
+uo;In den Warenkorb") ausgew&auml;hlten Produkte werden zun&auml;chst nur i=
+n einer Bestell&uuml;bersicht zusammengefasst. Um zur eigentlichen Bestella=
+bwicklung zu gelangen m&uuml;ssen Sie sich einmalig in unserem Onlineshop r=
+egistrieren und bei jeder Bestellung mit Ihrer E-Mail-Adresse und dem hinte=
+rlegten Passwort einloggen. Durch Bet&auml;tigung des Buttons &gt;Zum Waren=
+korb&lt; bzw. &gt;Bestellung abschlie&szlig;en&lt; gelangen Sie zur abschli=
+e&szlig;enden Bestell&uuml;bersicht, auf welcher Sie Ihre pers&ouml;nlichen=
+ Daten und Bestelldaten durch Bet&auml;tigung des Buttons &gt;zahlungspflic=
+htig bestellen&lt; an uns absenden k&ouml;nnen. Bitte beachten Sie den Mind=
+estbestellwert von 18,90 &euro;.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Sie haben bis zur Absendung Ihrer Daten jederz=
+eit die M&ouml;glichkeit, Ihre Eingaben inklusive Ihrer pers&ouml;nlichen D=
+aten im Warenkorb zu bearbeiten. Hierzu nutzen Sie in der Warenkorb&uuml;be=
+rsicht einfach die entsprechend beschrifteten Bearbeitungsoptionen. Die erf=
+olgreiche &Uuml;bermittlung Ihrer Bestellung wird Ihnen abschlie&szlig;end =
+durch das &Ouml;ffnen eines Best&auml;tigungsfensters best&auml;tigt. Weite=
+re umfangreiche Informationen zur Bedienung unseres Onlineshops erhalten Si=
+e &uuml;ber den Men&uuml;punkt &gt;Shop Bedienung&lt;, den Sie in der linke=
+n Leiste unserer Webseite finden.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(2.2) Mit Absendung Ihrer Bestellung geben Sie=
+ ein verbindliches Angebot auf Abschluss eines Kaufvertrages an uns ab. Wir=
+ erkl&auml;ren bereits jetzt die Annahme dieses Angebotes unter der Bedingu=
+ng, dass Sie den Mindestbestellwert von 18,90 &euro; erreicht haben und die=
+ an uns &uuml;bermittelten bzw. bei uns hinterlegten Zahlungsdaten korrekt =
+und aktuell sind. Sollte nur letztere Bedingung nicht erf&uuml;llt sein, ne=
+hmen wir Ihr Vertragsangebot an, sobald Sie Ihre korrekten Zahlungsdaten &u=
+uml;bermitteln, sp&auml;testens jedoch mit der Auslieferung der bestellten =
+Ware.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Bei der Bestellung eines unserer Landk&ouml;rb=
+e oder anderer Artikel zur regelm&auml;&szlig;igen Belieferung beinhaltet i=
+hr Vertragsangebot die regelm&auml;&szlig;ig wiederkehrende Lieferung des e=
+ntsprechenden Landkorbes bzw. Artikels in Form eines Abonnements. Die jewei=
+ligen Inhalte des Landkorbes k&ouml;nnen Sie in der w&ouml;chentlich wechse=
+lnden Detailansicht des Landkorbs einsehen oder f&uuml;r ihre gebuchten Lan=
+dk&ouml;rbe auch unter dem jeweiligen Liefertermin im Men&uuml;punkt &gt;Li=
+efertermin w&auml;hlen&lt; in der rechten Leiste unserer Internetseite, wo =
+Sie auch ihre zum n&auml;chsten Liefertermin bestellten Waren einsehen und =
+bis Bestellschluss bearbeiten k&ouml;nnen. Dort k&ouml;nnen Sie durch einen=
+ Klick auf das Produkt, weitere Informationen abrufen. An dieser Stelle k&o=
+uml;nnen Sie auch das Lieferintervall von w&ouml;chentlich auf zwei-w&ouml;=
+chentlich, drei-w&ouml;chentlich oder vier-w&ouml;chentlich &auml;ndern und=
+ bestellte Einzelwaren zur regelm&auml;&szlig;igen Lieferung vorsehen. Die =
+Landkorbinhalte k&ouml;nnen sich bis zum jeweiligen Liefertermin &auml;nder=
+n. Abneigungen k&ouml;nnen abgew&auml;hlt und Lieblingsgem&uuml;se dazu bes=
+tellt werden.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">Sie k&ouml;nnen die regelm&auml;&szlig;ige Belieferu=
+ng innerhalb der unter Ziffer 3.2 genannten Fristen f&uuml;r einzelne Termi=
+ne oder auch l&auml;ngere Zeitr&auml;ume aussetzen. Hierf&uuml;r nutzen sie=
+ die Lieferpausenverwaltung unter dem Men&uuml;punkt Benutzerdaten/Lieferpa=
+usen in der rechten Leiste unserer Internetseite. W&auml;hrend der Lieferpa=
+usen werden Ihnen selbstverst&auml;ndlich keine Kosten berechnet.</p>
+<p class=3D"MsoNormal">&nbsp;(2.3) Eine Bestellung ist au&szlig;erhalb unse=
+res Online-Bestellsystems auch telefonisch oder per Telefax m&ouml;glich. F=
+&uuml;r den Vertragsschluss gelten die Regelungen in Ziff. 2.2 entsprechend=
+..</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Der Text Ihrer Bestellung wird bei uns nicht g=
+espeichert und kann nach Abschluss der Bestellung von Ihnen nicht mehr abge=
+rufen werden. Sie erhalten nach Abschluss der Bestellung per E-Mail eine Be=
+stellbest&auml;tigung, in der die Details Ihrer Bestellung aufgef&uuml;hrt =
+sind.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Als Vertragssprache steht Ihnen Deutsch zur Ve=
+rf&uuml;gung.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp; (2.5) Die Zahlung der Ware erfolgt per SEPA-E=
+URO-Lastschrift. Dazu erteilt der Kunde der Firma Landkorb GmbH &amp; Co. K=
+G bis auf Widerruf ein SEPA-Basismandat f&uuml;r das bei der Registrierung =
+hinterlegte Girokonto. Der Einzug der Lastschrift erfolgt zwei Tage nach Er=
+halt der Rechnung (F&auml;lligkeitsdatum), auf welcher dem Kunden der einzu=
+ziehende Betrag sowie das F&auml;lligkeitsdatum mitgeteilt werden. Die Fris=
+t zur Vorabank&uuml;ndigung (Pre-Notification) der Lastschrift wird auf zwe=
+i Tage verk&uuml;rzt. Die Vorabank&uuml;ndigung erfolgt durch &Uuml;bergabe=
+ der Rechnung zusammen mit ihrem Lieferkorb.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Der Kunde sichert zu, f&uuml;r die ausreichend=
+e Deckung des registrierten Kontos zum F&auml;lligkeitsdatum zu sorgen. Kos=
+ten, die aufgrund einer Nichteinl&ouml;sung oder R&uuml;ckabbuchung entsteh=
+en, gehen zu Lasten des Kunden, soweit er die Nichteinl&ouml;sung bzw. R&uu=
+ml;ckbuchung zu vertreten hat.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(2.6) Soweit Sie nicht selbst Inhaber des im R=
+ahmen der Registrierung angegebenen Lastschriftkontos sind, garantieren Sie=
+, durch den Kontoinhaber zur Angabe seiner Kontodaten als Lastschriftkonto =
+f&uuml;r Ihre Bestellungen auf www.landkorb-shop.de und zur Vereinbarung de=
+r Verk&uuml;rzung der Vorabank&uuml;ndigungsfrist auf zwei Tage erm&auml;ch=
+tigt zu sein. Bitte informieren Sie den Kontoinhaber &uuml;ber die verk&uum=
+l;rzte Vorabank&uuml;ndigungsfrist von zwei Tagen. &Uuml;ber die obenstehen=
+den F&auml;lle eigenen Vertretenm&uuml;ssens hinaus, tragen Sie die Kosten,=
+ die aufgrund einer Nichteinl&ouml;sung oder R&uuml;ckabbuchung entstehen, =
+auch dann gesamtschuldnerisch mit dem Kontoinhaber, wenn der von Ihnen ange=
+gebene Kontoinhaber die Nichteinl&ouml;sung bzw. R&uuml;ckbuchung zu vertre=
+ten hat.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Der Kontoinhaber wird parallel zu Ihrer Liefer=
+ung durch &Uuml;bermittlung einer Kopie Ihrer Rechnung auf elektronischem W=
+eg &uuml;ber den ausstehenden Rechnungsbetrag und das Datum der F&auml;llig=
+keit informiert (Pre-Notification). Wir bitten um Ihr Verst&auml;ndnis, das=
+s wir f&uuml;r den Fall, dass Sie Ihr Einverst&auml;ndnis zur &Uuml;bermitt=
+lung Ihrer Rechnungsdaten an den Kontoinhaber nicht geben m&ouml;chten bzw.=
+ dieses im Nachhinein widerrufen, keine Lieferung an Sie ausf&uuml;hren k&o=
+uml;nnen. In diesem Fall bitten wir Sie um die Angabe einer eigenen Kontove=
+rbindung.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;&Uuml;berschreitet der Bestellwert Ihrer Liefe=
+rung 1.000,- &euro;, ist eine Anzahlung in H&ouml;he von 50% des Bestellwer=
+tes erforderlich. Die Anzahlung k&ouml;nnen Sie durch &Uuml;berweisung auf =
+das Ihnen bekannte Bankkonto t&auml;tigen.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;3. Lieferung, Lieferkosten</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(3.1) Eigene Touren: Die Lieferung erfolgt nac=
+h unserem w&ouml;chentlichen Lieferplan am Montag von 11-18 Uhr (nur Firmen=
+kunden), von Dienstag bis Freitag von 8 Uhr bis 20 Uhr sowie am Samstag von=
+ 9 Uhr bis 18 Uhr. Jeder Bezirk wird einmal in der Woche an festen Tagen be=
+liefert. Ihren pers&ouml;nlichen Liefertag und den Lieferzeitraum, der von =
+Ihrem Wohnort abh&auml;ngig ist, teilen wir Ihnen rechtzeitig vor der erste=
+n Auslieferung mit. Next-Day: Die Belieferung erfolgt nach Wunsch von Monta=
+g bis Freitag in der Zeit von 9 bis 20 Uhr.&nbsp;</p>
+<p class=3D"MsoNormal">(3.2) Eigene Touren: Der Bestellschluss f&uuml;r den=
+ Liefertag Montag ist Freitag 15 Uhr, f&uuml;r Dienstag ist der Bestelltag =
+Montag, 10 Uhr. F&uuml;r die Liefertage Mittwoch, Donnerstag, Freitag und S=
+amstag ben&ouml;tigen wir Ihre Bestellung jeweils 2 Werktage vor der Liefer=
+ung um 10 Uhr.</p>
+<p class=3D"MsoNormal">&nbsp;Next-Day: Der Bestellschluss f&uuml;r den Lief=
+ertag Montag ist Freitag bis 15 Uhr. F&uuml;r die Liefertage Dienstag bis F=
+reitag ben&ouml;tigen wir Ihre Bestellung einen Tag vor der Lieferung bis 1=
+0 Uhr.</p>
+<p class=3D"MsoNormal">&nbsp;F&uuml;r Fleischaktionen gelten gesonderte Bes=
+tellzeiten, die Sie bitte unmittelbar der jeweiligen Aktionsbeschreibung en=
+tnehmen.</p>
+<p class=3D"MsoNormal">Im Zusammenhang mit anstehenden gesetzlichen Feierta=
+gen (z.B. Ostern, Pfingsten, Weihnachten) kann es zu Abweichungen sowohl de=
+n &uuml;blichen Liefertermin, als auch den entsprechenden Bestellschluss be=
+treffend kommen. &Uuml;ber solche Abweichungen werden wir Sie mindestens zw=
+ei Wochen vor dem entsprechenden Feiertag auf unserer Webseite und durch ei=
+ne schriftliche Beilage zu Ihrer Lieferung informieren.</p>
+<p class=3D"MsoNormal">Unser Kundentelefon ist Montag bis Donnerstag von 8.=
+00 Uhr bis 19.00 Uhr besetzt, am Freitag von 8.00 Uhr bis 18.00 Uhr. Au&szl=
+ig;erhalb dieser Zeiten nimmt unser Anrufbeantworter Ihre Bestellung entgeg=
+en.</p>
+<p class=3D"MsoNormal">&nbsp;(3.3) Eigene Touren &amp; Next-Day Lieferung: =
+Wenn Sie nicht zu Hause sind, stellt der Fahrer den Korb am gew&uuml;nschte=
+n Ort ab. Bei Mehrparteienh&auml;usern ist es sinnvoll, dem Fahrer einen Ha=
+ust&uuml;rschl&uuml;ssel zur Verf&uuml;gung zu stellen. Die Schl&uuml;ssel =
+werden sicher verwahrt. Bitte achten Sie darauf, dass Sie eine Schl&uuml;ss=
+elquittung von uns erhalten.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">(3.4) Eigene Touren &amp; Next-Day Lieferung: Sollte=
+n wir Ihre Ware nicht zustellen k&ouml;nnen, rufen wir Sie an und liefern e=
+inmal nach. Bei erneuter Nichtzustellbarkeit wird Ihnen die Ware berechnet,=
+ wenn ein Verschulden unsererseits ausgeschlossen ist und soweit uns durch =
+die Nichtlieferung keine anderweitigen Aufwendungen erspart blieben.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;(3.5) Eigene Touren &amp; Next-Day Liefe=
+rung: Wir garantieren einen gek&uuml;hlten Transport bis vor Ihre Wohnungst=
+&uuml;r. Ab dort sind Sie f&uuml;r die Ware verantwortlich. Bei l&auml;nger=
+er Abwesenheit an sehr hei&szlig;en bzw. sehr kalten Tagen empfiehlt es sic=
+h, durch bereitgestellte K&uuml;hlbeh&auml;lter und frostfreie Abstellpl&au=
+ml;tze vorzusorgen.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(3.6) Eigene Touren: F&uuml;r die Firmenkunden=
+-Tour am Montag berechnen wir 2,95 &euro;. Die Lieferkosten entfallen ab 40=
+,- &euro; Bestellwert. Von Dienstag bis Samstag erfolgt die Lieferung &uuml=
+;ber unsere eigenen Touren grunds&auml;tzlich kostenfrei.</p>
+<p class=3D"MsoNormal">Ab dem 3. Stock ohne Aufzug berechnen wir ein Treppe=
+ngeld in H&ouml;he von 1,90 &euro;. Erreichen Sie einen Bestellwert von 41,=
+90 &euro;, entf&auml;llt das Treppengeld.</p>
+<p class=3D"MsoNormal">Next-Day: F&uuml;r die Next-Day-Lieferung berechnen =
+wir eine Servicegeb&uuml;hr von 1,90 &euro; sowie Lieferkosten in H&ouml;he=
+ von 4,90 &euro;. Die Lieferkosten entfallen ab einem Bestellwert von 49,90=
+ &euro;.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(3.7) Wir liefern nur haushalts&uuml;bliche Be=
+stellmengen aus, das hei&szlig;t Landkorb beh&auml;lt sich vor, die Bestell=
+ung des Kunden zu k&uuml;rzen oder nicht zu liefern, wenn er haushaltsun&uu=
+ml;bliche Mengen bestellt hat. F&uuml;r Getr&auml;nkek&auml;sten besteht ei=
+ne Lieferbeschr&auml;nkung: Pro Bestellung sind 2 Getr&auml;nkek&auml;sten =
+zul&auml;ssig. Bestellungen mit mehr als 2 Getr&auml;nkek&auml;sten k&uuml;=
+rzen wir entsprechend. Sie erhalten dar&uuml;ber eine Mitteilung.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;4. Preise/ &Auml;nderungsvorbehalt</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(4.1) Nach Ma&szlig;gabe der Regelung in diese=
+r Ziffer sind alle in unserem Onlineshop angegebenen Preise Endpreise in Eu=
+ro einschlie&szlig;lich MwSt. und sonstiger Preisbestandteile. Unter den in=
+ Ziff. 3.6 genannten Umst&auml;nden k&ouml;nnen zus&auml;tzlich Liefergeb&u=
+uml;hren und Servicegeb&uuml;hren anfallen. Hinzu kommt Pfand f&uuml;r die =
+&Uuml;berlassung von Pfandkisten (vgl. Ziff. 6).&nbsp; F&uuml;r den Beginn =
+und das Ende von Sonderaktionen ist der Liefertag ma&szlig;geblich und nich=
+t das Bestelldatum.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(4.3) Obst- und Gem&uuml;se w&auml;chst nicht =
+in exakt genormten Gewichtsklassen und l&auml;sst sich auch nicht auf das G=
+ramm genau teilen. Der Preis der Landk&ouml;rbe und losen Waren wird deshal=
+b entsprechend der auf unserer Internetseite hinterlegten Produktpreise nac=
+h Gewicht exakt an den gelieferten Inhalt angepasst. Dadurch ergeben sich S=
+chwankungen von plus / minus 10 % im Vergleich zu den angegebenen Preisen. =
+Sollten Sie selbst manuelle &Auml;nderungen am Inhalt eines Landkorbes vorn=
+ehmen, k&ouml;nnen die daraus resultierenden Kosten&auml;nderungen plus / m=
+inus 10 % &uuml;bersteigen.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(4.4) Wir handeln ausschlie&szlig;lich mit fri=
+schem Obst- und Gem&uuml;se, welches aufgrund seiner Bio-Qualit&auml;t eine=
+ beschr&auml;nkte Haltbarkeit aufweist. Um Ihnen die entsprechende Frische =
+der Ware garantieren zu k&ouml;nnen, sind wir deshalb darauf angewiesen, di=
+e von unseren Kunden bestellten Waren erst kurzfristig vor der Auslieferung=
+ von unseren Zulieferern zu beziehen. Obwohl die Obst- und Gem&uuml;sepreis=
+e deshalb abh&auml;ngig von den Witterungsbedingungen und der Verf&uuml;gba=
+rkeit sind, bem&uuml;hen wir uns, Preis- und Leistungs&auml;nderungen zu ve=
+rmeiden. Sollte doch einmal der Fall eintreten, dass ein angek&uuml;ndigter=
+ Artikel z.B. aufgrund von Engp&auml;ssen eines unserer Zulieferer am Liefe=
+rtag nicht verf&uuml;gbar ist, werden wir diesen nach M&ouml;glichkeit mit =
+gleichwertiger Ware ersetzen. Sollten Sie das nicht w&uuml;nschen und liebe=
+r ganz auf einen nicht verf&uuml;gbaren Artikel verzichten, haben Sie die M=
+&ouml;glichkeit uns dies im Rahmen des Bestellvorgangs im Feld &bdquo;Ihre =
+Mitteilung zu dieser Bestellung" mitzuteilen. Selbstverst&auml;ndlich k&oum=
+l;nnen Sie uns diese Entscheidung auch noch nach Abgabe Ihrer Bestellung bi=
+s zum jeweiligen Bestellschluss mitteilen oder Ihre zun&auml;chst getroffen=
+e Entscheidung f&uuml;r die Zukunft &auml;ndern.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;5. Abbestellung/ Urlaub/ K&uuml;ndigung</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;Bei Abbestellungen nach Bestellschluss erheben=
+ wir eine pauschalisierte Geb&uuml;hr von 50 % des Warenwertes. Der Kunde k=
+ann jedoch im Einzelfall nachweisen, dass ein Schaden &uuml;berhaupt nicht =
+entstanden oder dass er wesentlich niedriger ist, als diese Pauschale. Flei=
+schbestellungen sind verbindlich und k&ouml;nnen nicht abbestellt werden. B=
+itte beachten Sie die f&uuml;r Fleischaktionen abweichend geltenden Bestell=
+zeitr&auml;ume.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(5.2) Die K&uuml;ndigung eines Landkorbes bzw.=
+ einer sonstigen einmaligen oder regelm&auml;&szlig;igen Bestellung ist bei=
+derseitig bis zwei Werktage vor der n&auml;chsten Lieferung bis 10 Uhr m&ou=
+ml;glich. Bei Next-Day Belieferung ist die K&uuml;ndigung bis zum jeweilige=
+n Bestellschluss m&ouml;glich. Nach Absprache holen wir alle Pfandkisten ab=
+ und &uuml;berweisen Ihnen den Pfandbetrag abz&uuml;glich einer Pauschale i=
+n H&ouml;he von 2,49 &euro; f&uuml;r die Abholung. Die Abholungspauschale e=
+ntf&auml;llt, wenn die K&uuml;ndigung von Landkorb ausgeht und nicht durch =
+schuldhaftes Verhalten des Kunden veranlasst war. Bitte beachten Sie, dass =
+wir Leergut nur einmal abholen k&ouml;nnen.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;6. Pfandkisten</p>
+<p class=3D"MsoNormal">F&uuml;r die Pfandkisten, in denen die Lieferung erf=
+olgt, berechnen wir 10 &euro; Pfand pro Kiste. Getr&auml;nkek&auml;sten wer=
+den mit 3 &euro; Pfand belastet. Bei jeder Lieferung vermerkt der Fahrer di=
+e R&uuml;ckgabe des Leergutes. Dieses wird auf der n&auml;chsten Rechnung g=
+utgeschrieben. Bitte geben Sie uns das Leergut inklusive aller Pfandgl&auml=
+;ser und -flaschen vollst&auml;ndig zur&uuml;ck.&nbsp;&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;7. Haftung/ Reklamation</p>
+<p class=3D"MsoNormal">&nbsp;(7.1) Landkorb haftet, soweit im Folgenden nic=
+hts anderes bestimmt wird, nur in F&auml;llen grob fahrl&auml;ssigen oder v=
+ors&auml;tzlichen Verhaltens.</p>
+<p class=3D"MsoNormal">&nbsp;(7.2) F&uuml;r Sch&auml;den aus einer Verletzu=
+ng des Lebens, des K&ouml;rpers oder der Gesundheit haftet Landkorb auch, w=
+enn diese durch eigenes einfach fahrl&auml;ssiges Verhalten bzw. einfach fa=
+hrl&auml;ssiges Verhalten eines Vertreters oder Erf&uuml;llungsgehilfen ver=
+ursacht wurden. Das Gleiche gilt, wenn eine f&uuml;r das Erreichen des Vert=
+ragszwecks wesentliche Pflicht (Kardinalpflicht) verletzt wurde.</p>
+<p class=3D"MsoNormal">&nbsp;(7.3) Die Haftung basierend auf dem Produkthaf=
+tungsgesetz sowie die gesetzlich bestehende M&auml;ngelgew&auml;hrleistung =
+bleiben von den vorstehenden Ziffern unber&uuml;hrt.</p>
+<p class=3D"MsoNormal">&nbsp;(7.4) Durch den gro&szlig;en Anteil an Frischw=
+are lassen sich Qualit&auml;tsm&auml;ngel nicht immer ausschlie&szlig;en. U=
+m eine zeitnahe Bearbeitung von Reklamationen zu gew&auml;hrleisten, bitten=
+ wir Sie, uns Reklamationen am Tag der Lieferung mitzuteilen und die Ware z=
+ur Abholung bereitzuhalten.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;8. R&uuml;ckgabe/ Widerruf</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">(8.1) Ein Widerrufsrecht besteht nicht bei Lieferung=
+ von Waren, die schnell verderben k&ouml;nnen oder deren Verfallsdatum schn=
+ell &uuml;berschritten w&uuml;rde.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(8.2) Nach &sect; 312 BGB findet die Regelung =
+zum Widerruf bei Fernabsatzvertr&auml;gen keine Anwendung bei der Lieferung=
+ von Lebensmitteln, Getr&auml;nken oder sonstigen Haushaltsgegenst&auml;nde=
+n des t&auml;glichen Bedarfs, die am Wohnsitz, am Aufenthaltsort oder am Ar=
+beitsplatz eines Verbrauchers von Unternehmern im Rahmen h&auml;ufiger und =
+regelm&auml;&szlig;iger Fahrten geliefert werden.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;&nbsp;9. Rechtswahl/ &Auml;nderungsvorbehalt</=
+p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;((9.1) Es gilt deutsches Recht unter Ausschlus=
+s des UN-Kaufrechts. Die vorstehende Rechtswahl erfolgt unter der Ma&szlig;=
+gabe, dass dem Kunden nicht der Schutz entzogen wird, der ihm durch diejeni=
+gen Bestimmungen gew&auml;hrt wird, von denen nach dem Recht, das am Ort se=
+ines gew&ouml;hnlichen Aufenthaltes gilt, nicht durch Vereinbarung abgewich=
+en werden darf.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(9.2) Landkorb ist jederzeit berechtigt, diese=
+ Allgemeinen Gesch&auml;ftsbedingungen einschlie&szlig;lich aller eventuell=
+en Anlagen mit Wirkung f&uuml;r k&uuml;nftige Vertragsschl&uuml;sse zu &aum=
+l;ndern oder zu erg&auml;nzen. Vorher abgesendete Bestellungen werden nach =
+den dann noch g&uuml;ltigen alten Allgemeinen Gesch&auml;ftsbedingungen bea=
+rbeitet.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">&nbsp;(9.3) F&uuml;r die im Rahmen der Bestellung na=
+ch Ziff. 2.2 bestehenden Abonnementvertr&auml;ge werden &Auml;nderungen die=
+ser Gesch&auml;ftsbedingungen dem Kunden sp&auml;testens zwei Monate vor de=
+m vorgeschlagenen Zeitpunkt ihres Wirksamwerdens in Textform mitgeteilt. Di=
+e Zustimmung des Kunden gilt als erteilt, wenn er seine Ablehnung nicht vor=
+ dem vorgeschlagenen Zeitpunkt des Wirksamwerdens der &Auml;nderungen mitge=
+teilt hat. Der Kunde wird auf diese Folge seines Schweigens zusammen mit de=
+r Mitteilung der geplanten &Auml;nderung ebenso noch einmal hingewiesen, wi=
+e auf sein jederzeitiges K&uuml;ndigungsrecht.</p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal">Stand: 01.02.2019</p>
+<p>&nbsp;</p><br><br><p>&nbsp;</p>
+<p class=3D"MsoNormal"><strong><span>Datenschutzrechtliche Hinweise</span><=
+/strong></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Mit den nachfolgenden Hinweisen i=
+nformieren wir Sie &uuml;ber Einzelheiten im Zusammenhang mit der Verarbeit=
+ung personenbezogener Daten bei der Nutzung des Internetauftritts unter &nb=
+sp;<a href=3D"https://www.landkorb-shop.de/">https://www.landkorb-shop.de/<=
+/a> sowie Ihre diesbez&uuml;glichen Rechte. F&uuml;r die Nutzung unseres On=
+lineshops unter <a href=3D"https://www.landkorb.de/">https://www.landkorb.d=
+e/</a> gelten separate Datenschutzhinweise, die Sie <a href=3D"https://www.=
+landkorb.de/index.php?option=3Dcom_content&amp;view=3Darticle&amp;id=3D64&a=
+mp;Itemid=3D384">hier</a> finden.</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><strong><span><span>1.<span=
+>&nbsp;&nbsp; </span></span></span></strong><!--[endif]--><strong><span>Ver=
+antwortlicher </span></strong></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Die verantwortliche Stelle f&uuml=
+;r die Datenerhebung, Datenverarbeitung und Datennutzung im Zusammenhang mi=
+t der Benutzung unseres Internetangebotes ist</p>
+<p class=3D"MsoNormal">Landkorb GmbH &amp; Co. KG,</p>
+<p class=3D"MsoNormal"><span>Dorfstr.18, </span></p>
+<p class=3D"MsoNormal"><span>16845 Rohrlack, </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Tel.: 033928 / 9041-0,</p>
+<p class=3D"MsoNormal"><span>Fax: 033928 / 9041-30, </span></p>
+<p class=3D"MsoNormal"><span>E-Mail: info@landkorb.de</span>&nbsp;&nbsp;</p=
+>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><strong><span><span>2.<span=
+>&nbsp; </span></span></span></strong><!--[endif]--><strong><span>Begriffse=
+rl&auml;uterungen</span></strong><span style=3D"font-weight: bold;">&nbsp;<=
+/span></p>
+<p class=3D"MsoNormal"><strong><span style=3D"text-decoration: underline;">=
+<span>Personenbezogene Daten</span></span></strong><span> sind s&auml;mtlic=
+he Informationen, die sich auf eine identifizierte oder identifizierbare na=
+t&uuml;rliche Person (&bdquo;betroffene Person&ldquo;) beziehen. Als identi=
+fizierbar wird eine nat&uuml;rliche Person angesehen, die direkt oder indir=
+ekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu ei=
+ner Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem ode=
+r mehreren besonderen Merkmalen identifiziert werden kann, die Ausdruck der=
+ physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, k=
+ulturellen oder sozialen Identit&auml;t dieser nat&uuml;rlichen Person sind=
+..</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><strong><span style=3D"text-decoration: underline;">=
+<span>Cookies</span></span></strong><strong><span> </span></strong><span>si=
+nd </span><span>kleine Textdateien, die bei einem Besuch einer Webseite auf=
+ dem Endger&auml;t des Besuchers (z. B. PC, Smartphone, Tablet-PC) lokal ge=
+speichert werden. Sie k&ouml;nnen verschiedene Informationen &uuml;ber das =
+benutzte Endger&auml;t und das Nutzungsverhalten beinhalten und<span>&nbsp;=
+ </span>werden bei einer erneuten Verbindung an den Cookie-setzenden Webser=
+ver mit dem Ziel zur&uuml;ckgesendet, den Nutzer und seine Einstellungen wi=
+ederzuerkennen. </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><strong><span style=3D"text-decoration: underline;">=
+<span>DSGVO</span></span></strong><strong><span> </span></strong><span>ist =
+die Abk&uuml;rzung f&uuml;r die VERORDNUNG (EU) 2016/679 DES EUROP&Auml;ISC=
+HEN PARLAMENTS UND DES RATES vom 27. April 2016 zum Schutz nat&uuml;rlicher=
+ Personen bei der Verarbeitung personenbezogener Daten, zum freien Datenver=
+kehr und zur Aufhebung der Richtlinie 95/46/EG (Datenschutz-Grundverordnung=
+).</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>&nbsp;</p>
+<p class=3D"MsoNormal"><a><!--[if !supportLists]--><strong><span><span>3.<s=
+pan>&nbsp; </span></span></span></strong><!--[endif]--><strong><span>Automa=
+tisiert erfasste Daten bei der Benutzung des Internetauftritts </span></str=
+ong></a><span class=3D"MsoCommentReference"><span><!--[if !supportAnnotatio=
+ns]--><a name=3D"_msoanchor_1"></a><!--[endif]--><span>&nbsp;</span></span>=
+</span><strong></strong></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoListParagraph"><a><!--[if !supportLists]--><strong><span><sp=
+an>3.1.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+</span></span></strong><!--[endif]--><strong><span>IP-Adresse und Logfiles =
+</span></strong></a></p>
+<p class=3D"MsoNormal"><span><strong><span style=3D"text-decoration: underl=
+ine;"><span><span>&nbsp;</span></span></span></strong></span></p>
+<p class=3D"MsoNormal"><span><!--[if !supportLists]--><span><span>a)<span>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span styl=
+e=3D"text-decoration: underline;"><span>Erl&auml;uterung und Verarbeitungsz=
+weck:</span></span></span><span><span> </span></span></p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<p class=3D"MsoNormal"><span><span>Bei jedem Zugriff auf unsere Webseite ve=
+rarbeiten wir die folgenden Informationen automatisiert: </span></span></p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<ul>
+<li>die IP-Adresse Ihres Computers bzw. sonstigen Endger&auml;tes (z. B. Ta=
+blet-PC oder Smartphone) und die Anfrage(n) Ihres Browsers</li>
+<li>die &uuml;bertragene Datenmenge, den Browsertyp und die Browserversion,=
+ die Bildschirmaufl&ouml;sung und das verwendete Betriebssystem.&nbsp;&nbsp=
+;</li>
+</ul>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span>Die IP-Adresse sowie=
+ die Informationen zu der/den Anfrage(n) Ihres Internetbrowsers ist f&uuml;=
+r den Aufruf und Benutzung der Internetseite technisch erforderlich; ohne V=
+erarbeitung dieser Daten kann ein Internetseitenzugriff nicht erfolgen und =
+Internetseiten nicht dargestellt werden. Die Verarbeitung der IP-Adresse wi=
+rd, nachdem sie f&uuml;r den Aufruf/die Benutzung des Internetangebotes nic=
+ht mehr technisch erforderlich ist, durch eine Verk&uuml;rzung anonymisiert=
+ oder gel&ouml;scht.</p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span>Die oben genannten D=
+aten werden durch uns im &Uuml;brigen zu folgenden Zwecken verarbeitet:</p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<ul>
+<li>Gew&auml;hrleistung eines reibungslosen Verbindungsaufbaus der Website,=
+</li>
+<li>Gew&auml;hrleistung einer komfortablen Nutzung unserer Website,</li>
+<li>Auswertung der Systemsicherheit und -Stabilit&auml;t sowie</li>
+<li>zu weiteren administrativen Zwecken.</li>
+</ul>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<p class=3D"MsoNormal"><span><span>Die Informationen zu der &uuml;bertragen=
+en Datenmenge, den Browsertyp und die Browserversion, die Bildschirmaufl&ou=
+ml;sung und das verwendete Betriebssystem werden erhoben und verarbeitet, u=
+m die Darstellung der Inhalte zu optimieren, Auslastungen des Systems festz=
+ustellen und in Zukunft Anpassungen und Verbesserungen an dem Internetauftr=
+itt vorzunehmen, ggf. auf der Grundlage statistischer Auswertungen.</span><=
+/span></p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<p class=3D"MsoNormal"><span><!--[if !supportLists]--><span><span>b)<span>&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Rechtsgrundlage:</span></span></span></p>
+<p class=3D"MsoNormal"><span><span style=3D"text-decoration: underline;"><s=
+pan><span>&nbsp;</span></span></span></span></p>
+<p class=3D"MsoNormal"><span><span>Rechtsgrundlage f&uuml;r die Verarbeitun=
+g ist Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO. Das berechtigte Interesse an =
+der Verarbeitung liegt in der technischen Erm&ouml;glichung des Aufrufs des=
+ Internetauftritts, der optimierten Darstellung der Inhalte bei dem Benutze=
+r und der k&uuml;nftigen weiteren Verbesserung/Optimierung des Internetange=
+botes.</span></span></p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<p class=3D"MsoNormal"><span><!--[if !supportLists]--><span><span>c)<span>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span styl=
+e=3D"text-decoration: underline;"><span>Widerspruchsrecht:</span></span></s=
+pan></p>
+<p class=3D"MsoNormal"><span><span style=3D"text-decoration: underline;"><s=
+pan><span>&nbsp;</span></span></span></span></p>
+<p class=3D"MsoNormal"><span><span>Bei einer Datenverarbeitung auf der Grun=
+dlage von Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO steht Ihnen, unbeschadet w=
+eiterer Rechte, ein Widerspruchsrecht zu. Siehe hierzu unten (Ziffer 6: &bd=
+quo;Betroffenenrechte&ldquo;)</span></span><span class=3D"MsoCommentReferen=
+ce"><span><!--[if !supportAnnotations]--><a name=3D"_msoanchor_2"></a><!--[=
+endif]--><span>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoListParagraph"><!--[if !supportLists]--><strong><span><span>=
+3.2.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></=
+span></strong><!--[endif]--><strong><span>Einsatz von Cookies durch unseren=
+ Server</span></strong>&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>a)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Erl&auml;uterung und Verarbeitungszweck:<=
+/span></span></p>
+<p class=3D"MsoNormal"><a><span>&nbsp;</span></a>Bei unseren Internetseiten=
+ kommen von unserem Webserver gesetzte Cookies (Erl&auml;uterung s. oben) z=
+um Einsatz, worauf Sie mindestens bei Ihrem ersten Aufruf unserer Internets=
+eite durch eine Bannereinblendung hingewiesen werden.<span class=3D"MsoComm=
+entReference"><a name=3D"_msoanchor_3"></a>&nbsp;</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><span>Die von unserem Server verwendeten Session-Coo=
+kies sind f&uuml;r die Darstellung dynamischer Seiten erforderlich und dien=
+en z.B. dazu, Zwischenst&auml;nde wie den Warenkorb zu speichern und die Nu=
+tzung unserer Seite in einer auf Ihr Endger&auml;t optimierten Form zu erm&=
+ouml;glichen. Dies ist Voraussetzung f&uuml;r die Nutzung verschiedener Fun=
+ktionalit&auml;ten unserer Seiten. Session-Cookies werden unmittelbar nach =
+Beendigung der Session automatisch gel&ouml;scht.</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>b)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"text-de=
+coration: underline;"><span>Verhinderung der Speicherung der Cookies:</span=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Das Speichern von Cookies kann durch entsprech=
+ende &Auml;nderungen der <strong>Browsereinstellungen</strong> verhindert w=
+erden; im &Uuml;brigen k&ouml;nnen gespeicherte Cookies von Ihnen &uuml;ber=
+ Ihren Browser gel&ouml;scht werden. Dies kann u. U. zur Folge haben, dass =
+bestimmte Funktionalit&auml;ten der aufgerufenen Webseite gar nicht oder ni=
+cht komfortabel genutzt werden k&ouml;nnen. </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>c)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Rechtsgrundlage:</span></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Rechtsgrundlage f&uuml;r diese Verarbeitung is=
+t Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO. Das berechtigte Interesse an der =
+Verarbeitung liegt in der Erm&ouml;glichung der Benutzung des Internetauftr=
+itts und dessen Funktionalit&auml;ten. </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>d)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"text-de=
+coration: underline;"><span>Widerspruchsrecht:</span></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Bei einer Datenverarbeitung auf der Grundlage =
+von Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO steht Ihnen, unbeschadet weitere=
+r Rechte, ein Widerspruchsrecht zu. Siehe hierzu unten (Ziffer 6: &bdquo;Be=
+troffenenrechte&ldquo;)</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>&nbsp;</p>
+<p class=3D"MsoListParagraphCxSpFirst"><!--[if !supportLists]--><strong><sp=
+an><span>4.<span>&nbsp; </span></span></span></strong><!--[endif]--><strong=
+><span>Kundendaten bei Bestellung</span></strong></p>
+<p class=3D"MsoListParagraphCxSpLast"><strong><span>&nbsp;</span></strong><=
+/p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>a)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Erl&auml;uterung und Verarbeitungszweck:<=
+/span></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Im Rahmen der Bestellung m&uuml;ssen Sie eine =
+Reihe personenbezogener Daten angeben, um eine Bestellung &uuml;ber unseren=
+ Shop durchf&uuml;hren zu k&ouml;nnen (&bdquo;Bestandsdaten"). Hierunter fa=
+llen Anrede, Name, Rechnungs- und Lieferanschrift, E-Mail-Adresse, Telefonn=
+ummer, Faxnummer (optional), Kommentare (optional) und Kontodaten. Wir erhe=
+ben, verarbeiten und benutzen die in diesem Zusammenhang von Ihnen angegebe=
+nen Daten ohne Ihre ausdr&uuml;ckliche Einwilligung nur zur Erf&uuml;llung,=
+ Durchf&uuml;hrung und Beendigung des Vertragsverh&auml;ltnisses zwischen I=
+hnen und uns. Um Bestellungen &uuml;ber unseren Shop auszuf&uuml;hren, ist =
+es zwingend erforderlich ein Kundenkonto einzurichten, welches Ihnen eine n=
+achtr&auml;gliche Anpassung Ihres Warenkorbes bis zum Bestellschluss erm&ou=
+ml;glicht. Der Zugang zu Ihrem Kundenkonto erfolgt &uuml;ber die von Ihnen =
+angegebene E-Mail-Adresse und das selbstgew&auml;hlte Passwort. <a>Die Einr=
+ichtung eines Kundenkontos setzt Ihre Einwilligung voraus, dass Ihre im Rah=
+men der Einrichtung angegebenen Bestandsdaten (Anrede, Name, Rechnungs- und=
+ Lieferanschrift, E-Mail-Adresse, Telefon- und Faxnummer und Kontodaten) zu=
+ Ihrem Kundenkonto gespeichert und mit Ihren Bestelldaten zu Erstellung ein=
+er Bestellhistorie verkn&uuml;pft werden. Diese Einwilligung k&ouml;nnen Si=
+e jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen (vgl. unten Ziffer =
+9). Wir weisen Sie aber darauf hin, dass eine Bestellung &uuml;ber unseren =
+Shop dann nicht mehr m&ouml;glich ist.</a></span><span class=3D"MsoCommentR=
+eference"><span><!--[if !supportAnnotations]--><a name=3D"_msoanchor_4"></a=
+><!--[endif]--><span>&nbsp;</span></span></span><span> </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Wir speichern die zu Ihrem Kunden=
+konto gespeicherten Daten grunds&auml;tzlich nur bis Sie Ihre Einwilligung =
+widerrufen bzw. Ihr Kundenkonto l&ouml;schen. Wir sind jedoch teilweise ges=
+etzlich zur l&auml;ngerfristigen Aufbewahrung von Bestelldaten und gesch&au=
+ml;ftlicher Kommunikation verpflichtet. In diesem Fall werden wir die von u=
+ns entsprechend aufzubewahrenden Daten nach einem Widerruf Ihrer <a>Einwill=
+igung f&uuml;r andere Zwecke </a><span class=3D"MsoCommentReference"><a nam=
+e=3D"_msoanchor_5"></a>&nbsp;</span>sperren.</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>b)&nbsp;&nbsp;&nbsp;&nbsp; <span =
+style=3D"text-decoration: underline;">Rechtsgrundlage:</span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Rechtsgrundlage f&uuml;r diese Verarbeitung is=
+t Art. 6 Abs. 1 Satz 1 lit. a&nbsp;DSGVO.</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoListParagraphCxSpFirst"><!--[if !supportLists]--><span><span=
+>c)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]-->=
+<span style=3D"text-decoration: underline;"><span>Text der Einwilligungserk=
+l&auml;rung</span></span></p>
+<p class=3D"MsoListParagraphCxSpLast"><span style=3D"text-decoration: under=
+line;"><span><span>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><a><em><span>Ich bin damit einverstanden, dass meine=
+ oben stehenden Daten bis auf Widerruf zu meinem Kundenkonto gespeichert un=
+d von Landkorb zur Bearbeitung, Erf&uuml;llung und Durchf&uuml;hrung meiner=
+ Bestellungen sowie zu der hierf&uuml;r erforderlichen Kommunikation verwen=
+det werden. Ich bin auch damit einverstanden, dass meine Bestelldaten in Fo=
+rm einer Bestellhistorie zu meinem Kundenkonto gespeichert werden. Diese Ei=
+nwilligung kann ich gegen&uuml;ber Landkorb (zum Beispiel per E-Mail an </s=
+pan></em></a><a href=3D"mailto:info@landkorb.de"><span><em><span>info@landk=
+orb.de</span></em></span></a><span><em><span> ) jederzeit mit Wirkung f&uum=
+l;r die Zukunft widerrufen, wobei mir eine Bestellung &uuml;ber den Landkor=
+bshop dann nicht mehr m&ouml;glich ist.</span></em></span><span class=3D"Ms=
+oCommentReference"><span><!--[if !supportAnnotations]--><a name=3D"_msoanch=
+or_6"></a><!--[endif]--><span>&nbsp;</span></span></span><em></em></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><strong><span><span>5.<span=
+>&nbsp; </span></span></span></strong><!--[endif]--><strong><span>Newslette=
+r</span></strong>&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>a)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Erl&auml;uterung und Verarbeitungszweck:<=
+/span></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Sie haben (zum Beispiel im Zusammenhang mit de=
+r Registrierung eines Kundenkontos) die M&ouml;glichkeit, laufende Informat=
+ionen zu Obst- und Gem&uuml;seangeboten oder allgemeine Aktionsangebote per=
+ E-Mail zu bestellen. Im Rahmen der Bestellung erteilen Sie uns die Einwill=
+igung, Ihren Vor- und Nachnamen sowie Ihre E-Mail-Adresse zum Versand entsp=
+rechende E-Mail Newsletter zu nutzen, welche in der Regel etwa einmal pro W=
+oche versandt werden. Ihre Einwilligung k&ouml;nnen Sie jederzeit mit Wirku=
+ng f&uuml;r die Zukunft widerrufen (vgl. unten Ziffer 9).</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Wir nutzen die umstehenden Daten =
+im Falle eines Widerrufs nicht weiter f&uuml;r den Versand eines Newsletter=
+s. Soweit die Daten nicht noch auf Grundlage einer Einwilligung nach Ziffer=
+ 4 dieser Datenschutzhinweise gespeichert und genutzt werden, werden die Da=
+ten nach Eingang Ihres Widerrufs gel&ouml;scht.</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>b)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"text-de=
+coration: underline;"><span>Rechtsgrundlage:</span></span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Rechtsgrundlage f&uuml;r diese Verarbeitung is=
+t Art. 6 Abs. 1 Satz 1 lit. a&nbsp;DSGVO.</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoListParagraphCxSpFirst"><!--[if !supportLists]--><span><span=
+>c)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]-->=
+<span style=3D"text-decoration: underline;"><span>Text der Einwilligungserk=
+l&auml;rung</span></span></p>
+<p class=3D"MsoListParagraphCxSpLast"><span style=3D"text-decoration: under=
+line;"><span><span>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><a><span>Newsletter zu Obst- und Gem&uuml;seangebote=
+n:</span></a></p>
+<p class=3D"MsoNormal"><span><em><span>Ich bin damit einverstanden, dass me=
+in Vor- und Nachname sowie meine E-Mail-Adresse von Landkorb genutzt werden=
+, um mir regelm&auml;&szlig;ig Obst- und Gem&uuml;seangebote von Landkorb p=
+er E-Mail zuzusenden. Diese Einwilligung kann ich gegen&uuml;ber Landkorb (=
+zum Beispiel per E-Mail an </span></em></span><a href=3D"mailto:info@landko=
+rb.de"><span><em><span>info@landkorb.de</span></em></span></a><span><em><sp=
+an> <span>&nbsp;</span>oder &uuml;ber den in jedem Newsletter enthaltenen L=
+ink) jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.</span></em></sp=
+an>&nbsp;</p>
+<p class=3D"MsoNormal"><span><span>Newsletter zu allgemeinen Aktionsangebot=
+en:</span></span></p>
+<p class=3D"MsoNormal"><span><em><span>Ich bin damit einverstanden, dass me=
+in Vor- und Nachname sowie meine E-Mail-Adresse von Landkorb genutzt werden=
+, um mir regelm&auml;&szlig;ig Aktionsangebote von Landkorb per E-Mail zuzu=
+senden. Diese Einwilligung kann ich gegen&uuml;ber Landkorb (zum Beispiel p=
+er E-Mail an </span></em></span><a href=3D"mailto:info@landkorb.de"><span><=
+em><span>info@landkorb.de</span></em></span></a><span><em><span> oder &uuml=
+;ber den in jedem Newsletter enthaltenen Link) jederzeit mit Wirkung f&uuml=
+;r die Zukunft widerrufen.</span></em></span><span class=3D"MsoCommentRefer=
+ence"><span><!--[if !supportAnnotations]--><a name=3D"_msoanchor_7"></a><!-=
+-[endif]--><span>&nbsp;</span></span></span><em></em></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><strong><span><span>6.<span=
+>&nbsp;&nbsp;&nbsp; </span></span></span></strong><!--[endif]--><strong><sp=
+an>Kontaktaufnahme (z.B. &uuml;ber Telefon, E-Mail oder Post)</span></stron=
+g></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+<span style=3D"text-decoration: underline;">Erl&auml;uterung und Verarbeitu=
+ngszweck:</span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Wenn Sie direkt mit uns in Kontakt treten, erh=
+eben wir die von Ihnen dabei an uns freiwillig &uuml;bermittelten Informati=
+onen (z.B. E-Mail-Adresse, Adresse, Name und sonstige Kontaktdaten). Wir nu=
+tzen diese Daten um Anfragen zuzuordnen, zu bearbeiten und zu beantworten u=
+nd speichern sie bis zur endg&uuml;ltigen Erledigung der Anfrage. Die mit I=
+hnen gef&uuml;hrte Kommunikation unterliegt gegebenenfalls gesetzlichen Auf=
+bewahrungsfristen und muss in diesem Fall im Rahmen der gesetzlichen Vorgab=
+en von uns auch nach Beendigung der Kommunikation aufbewahrt werden. In die=
+sem Fall werden die darin enthaltenen Informationen nach Abschluss der Komm=
+unikation f&uuml;r eine dar&uuml;ber hinausgehende Verarbeitung gesperrt. <=
+/span></p>
+<p class=3D"MsoNormal">b)&nbsp;&nbsp;&nbsp;&nbsp; <span style=3D"text-decor=
+ation: underline;">Rechtsgrundlage:</span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Rechtsgrundlage f&uuml;r die Verarbeitung ist =
+Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO. Das berechtigte Interesse an der Ve=
+rarbeitung liegt in der Bearbeitung und Beantwortung Ihrer Anfragen und der=
+ Erm&ouml;glichung einer Kontaktm&ouml;glichkeit f&uuml;r die Nutzer unsere=
+r Webseite. </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+<span style=3D"text-decoration: underline;">Widerspruchsrecht:</span></p>
+<p class=3D"MsoNormal"><span style=3D"text-decoration: underline;"><span><s=
+pan>&nbsp;</span></span></span></p>
+<p class=3D"MsoNormal"><span>Bei einer Datenverarbeitung auf der Grundlage =
+von Art. 6 Abs. 1 Satz 1 lit. f&nbsp;DSGVO steht Ihnen, unbeschadet weitere=
+r Rechte, ein Widerspruchsrecht zu. Siehe hierzu unten (Ziffer 9: &bdquo;Be=
+troffenenrechte&ldquo;)</span></p>
+<p class=3D"MsoNormal"><strong><span>&nbsp;</span></strong><strong>&nbsp;</=
+strong><strong>7.&nbsp;&nbsp; </strong><strong>Empf&auml;nger der personenb=
+ezogenen Daten</strong></p>
+<p class=3D"MsoNormal"><strong><span>&nbsp;</span></strong>Es <a>bestehen V=
+ertr&auml;ge zur zweckgebundenen Auftragsverarbeitung mit den folgenden Die=
+nstleistern, die als Empf&auml;nger (Art. 4 Nr. 8 DSGVO) personenbezogene D=
+aten auf der Grundlage von Art. 28 DSGVO als Auftragsverarbeiter verarbeite=
+n: </a><span class=3D"MsoCommentReference"><a name=3D"_msoanchor_8"></a>&nb=
+sp;</span></p>
+<ul>
+<li>Strato STRATO AG, Pascalstra&szlig;e 10, 10587 Berlin (Webhosting)</li>
+<li>Ecoinform, ecoinform GmbH, Kleinhaderner Weg 6, 82166 Gr&auml;felfing (=
+Shopprovider)&nbsp;</li>
+<li>Bits &amp; Bytes GmbH, Breisgauer Str. 5, 14129 Berlin (Softwaredienstl=
+eistungen)</li>
+</ul>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><strong><span><span>8.<span=
+>&nbsp; </span></span></span></strong><!--[endif]--><strong><span>Links zu =
+Social Media Plattformen </span></strong></p>
+<p class=3D"MsoNormal"><strong><span>&nbsp;</span></strong>Auf unserer Webs=
+eite verlinken wir auf unsere Unternehmensseiten auf Socialmediaplattformen=
+ der folgenden Unternehmen:</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span><span lang=3D"EN-US">&middot;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=3D"EN-US">Facebook: Face=
+book, Inc., 1601 Willow Road, Menlo Park, California 94025, USA</span></p>
+<p class=3D"MsoNormal"><span>Datenschutzhinweise: </span><a href=3D"https:/=
+/de-de.facebook.com/policy.php"><span>https://de-de.facebook.com/policy.php=
+</span></a></p>
+<p class=3D"MsoListParagraph"><!--[if !supportLists]--><span lang=3D"EN-US"=
+><span>&middot;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></s=
+pan><!--[endif]--><span lang=3D"EN-US">Instagram: Instagram LLC, 1601 Willo=
+w Road, Menlo Park, California 94025, USA</span></p>
+<p class=3D"MsoNormal"><span>Datenschutzhinweise: </span><a href=3D"https:/=
+/help.instagram.com/155833707900388"><span>https://help.instagram.com/15583=
+3707900388</span></a><span> </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Bitte beachten Sie, dass f&uuml;r=
+ den Fall, dass Sie diese verlinkten Seiten aufsuchen, gegebenenfalls Infor=
+mationen durch den jeweiligen Plattformanbieter erhoben und verarbeitet wer=
+den, welche dort ggf. Ihrem jeweiligen Nutzerkonto zugeordnet und nach Ma&s=
+zlig;gabe der Datenschutzbedingungen des jeweiligen Plattformbetreibers ges=
+peichert und genutzt werden. Bitte informieren Sie sich vor einem Besuch de=
+r verlinkten Seiten deshalb beim jeweiligen Plattformbetreiber &uuml;ber Ar=
+t und Umfang der Datennutzung.&nbsp;</p>
+<p class=3D"MsoNormal"><a name=3D"_Ref511473811"></a>&nbsp;</p>
+<p class=3D"MsoNormal"><strong><strong>9.&nbsp;&nbsp;</strong><strong>Betro=
+ffenenrechte</strong></strong></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+Sie haben das Recht, von uns eine Best&auml;tigung dar&uuml;ber zu verlange=
+n, ob wir Sie betreffende personenbezogene Daten verarbeiten. Ist dies der =
+Fall, haben Sie ein Recht auf Auskunft &uuml;ber diese personenbezogenen Da=
+ten in dem gesetzlichen Umfang (Art. 15 DSGVO i. V. m. &sect; 34 BDSG). Die=
+s gilt nicht, wenn&nbsp;</p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>&middot;<span>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><spa=
+n>die Daten nur noch deshalb gespeichert sind, weil sie aufgrund gesetzlich=
+er oder satzungsm&auml;&szlig;iger Aufbewahrungsvorschriften nicht gel&ouml=
+;scht werden d&uuml;rfen oder&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>&middot;<span>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><spa=
+n>ausschlie&szlig;lich Zwecken der Datensicherung oder der Datenschutzkontr=
+olle dienen</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>und die Auskunftserteilung einen =
+unverh&auml;ltnism&auml;&szlig;igen Aufwand erfordern w&uuml;rde sowie eine=
+ Verarbeitung zu anderen Zwecken durch geeignete technische und organisator=
+ische Ma&szlig;nahmen ausgeschlossen ist. <span lang=3D"EN-US"> </span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>b)&nbsp;&nbsp;&nbsp;&nbsp; Sie ha=
+ben ferner das Recht, die Berichtigung Sie betreffender unrichtiger persone=
+nbezogener Daten und ggf. &ndash;&nbsp; unter Ber&uuml;cksichtigung der Zwe=
+cke der Verarbeitung &ndash; die Vervollst&auml;ndigung unvollst&auml;ndige=
+r personenbezogener Daten, auch mittels einer erg&auml;nzenden Erkl&auml;ru=
+ng, zu verlangen (Artikel 16 DSGVO). In den in Artikel 17 Abs. 1 lit. a bis=
+ f DSGVO genannten F&auml;llen steht Ihnen &uuml;berdies ein Recht auf L&ou=
+ml;schung der personenbezogenen Daten zu, sofern keine Ausnahme gem&auml;&s=
+zlig; Artikel 17 Abs. 3 DSGVO gegeben ist, sowie in den F&auml;llen des Art=
+ikel 18 Abs. 1 DSGVO ein Recht auf Einschr&auml;nkung der Verarbeitung. In =
+den F&auml;llen des Artikel 20 Abs. 1 DSGVO besteht im &Uuml;brigen ein Rec=
+ht auf Daten&uuml;bertragbarkeit.</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><!--[if !supportLists]--><span><span>c)<span>&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span>Ihnen steh=
+t ein Recht auf Beschwerde bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde z=
+u, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden pe=
+rsonenbezogenen Daten gegen die DSGVO verst&ouml;&szlig;t.<a name=3D"_Ref50=
+5853478"></a></span></p>
+<p class=3D"MsoNormal"><span><span>&nbsp;</span></span></p>
+<p class=3D"MsoNormal"><span><!--[if !supportLists]--><span><span>d)<span>&=
+nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=3D"t=
+ext-decoration: underline;"><span>Widerspruchsrecht bei der Verarbeitung au=
+f der Grundlage berechtigten Interesses</span></span></span></p>
+<p class=3D"MsoNormal">&nbsp;</p>
+<p class=3D"MsoNormal"><span>Soweit die Verarbeitung der Daten auf der Grun=
+dlage des Art. 6 Abs. 1 lit. f DSGVO (&bdquo;<span style=3D"text-decoration=
+: underline;">berechtigtes Interesse</span>&ldquo;) beruht, steht Ihnen das=
+ Recht zu, gegen die Verarbeitung Sie betreffender personenbezogener Daten =
+aus Gr&uuml;nden, die sich aus Ihrer besonderen Situation ergeben, jederzei=
+t <span style=3D"text-decoration: underline;">Widerspruch</span> einzulegen=
+.. Die Aus&uuml;bung des Widerspruchsrechts kann dazu f&uuml;hren, dass unse=
+r Internetangebot insgesamt oder einzelne Dienste oder Funktionen nur einge=
+schr&auml;nkt oder gar nicht mehr von Ihnen genutzt werden kann.</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Zur Wahrnehmung Ihrer Betroffenen=
+rechte k&ouml;nnen Sie sich per E-Mail an <a href=3D"mailto:info@landkorb.d=
+e">info@landkorb.de</a> <span class=3D"MsoHyperlink">&nbsp;wenden.</span></=
+p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<p class=3D"MsoNormal"><span>&nbsp;</span>Stand: 25.05.2018</p>
+<p class=3D"MsoNormal"><span>&nbsp;</span></p>
+<div><!--[if !supportAnnotations]-->=20
+<hr class=3D"msocomoff" size=3D"1">
+<!--[endif]-->
+<div><!--[if !supportAnnotations]-->
+<div id=3D"_com_1" class=3D"msocomtxt"><!--[endif]--><span><!--[if !support=
+Annotations]--><a name=3D"_msocom_1"></a><!--[endif]--></span>
+<p class=3D"MsoCommentText">&nbsp;</p>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+=20=20=20=20=20=20=20=20
+
+
+=20=20
+        </p>
+
+    </div>
+=20=20=20=20=20
+
+    <!--~-|**|PrettyHtmlStart|**|-~-->
+    <div style=3D"color: #fff; height: 0;">__._,_.___</div>
+
+=20=20=20=20=20=20=20=20=20=20
+=20=20
+=20
+
+=20=20=20=20
+    <div style=3D"clear:both"> </div>
+
+    <div id=3D"fromDMARC" style=3D"margin-top: 10px;">
+        <hr style=3D"height:2px ; border-width:0; color:#E3E3E3; background=
+-color:#E3E3E3;">
+        Posted by: Landkorb &lt;info@landkorb.de&gt;        <hr style=3D"he=
+ight:2px ; border-width:0; color:#E3E3E3; background-color:#E3E3E3;">
+     </div>
+    <div style=3D"clear:both"> </div>
+
+    <table cellspacing=3D4px style=3D"margin-top: 10px; margin-bottom: 10px=
+; color: #2D50FD;">
+      <tbody>
+        <tr>
+          <td style=3D"font-size: 12px; font-family: arial; font-weight: bo=
+ld; padding: 7px 5px 5px;"  >
+                          <a style=3D"text-decoration: none; color: #2D50FD=
+" href=3D"https://groups.yahoo.com/neo/groups/broult_hoenicke_family/conver=
+sations/messages/2057;_ylc=3DX3oDMTJxOTR1dGFxBF9TAzk3MzU5NzE0BGdycElkAzkwMT=
+IwMjc0BGdycHNwSWQDMTcwNTAzODA2NARtc2dJZAMyMDU3BHNlYwNmdHIEc2xrA3JwbHkEc3Rpb=
+WUDMTU2OTg2NDMxMA--?act=3Dreply&messageNum=3D2057">Reply via web post</a>
+                      </td>
+          <td>&bull;</td>
+          <td style=3D"font-size: 12px; font-family: arial; padding: 7px 5p=
+x 5px;" >
+            <a href=3D"mailto:info@landkorb.de?subject=3DRe%3A%20Landkorb%3=
+A%20Ihr%20Warenkorb" style=3D"text-decoration: none; color: #2D50FD;">
+               Reply to sender            </a>
+          </td>
+          <td>&bull;</td>
+          <td style=3D"font-size: 12px; font-family: arial; padding: 7px 5p=
+x 5px;">
+            <a href=3D"mailto:broult_hoenicke_family@yahoogroups.com?subjec=
+t=3DRe%3A%20Landkorb%3A%20Ihr%20Warenkorb" style=3D"text-decoration: none; =
+color: #2D50FD">
+              Reply to group            </a>
+          </td>
+          <td>&bull;</td>
+          <td style=3D"font-size: 12px; font-family: arial; padding: 7px 5p=
+x 5px;" >
+            <a href=3D"https://groups.yahoo.com/neo/groups/broult_hoenicke_=
+family/conversations/newtopic;_ylc=3DX3oDMTJmcjk1NXVxBF9TAzk3MzU5NzE0BGdycE=
+lkAzkwMTIwMjc0BGdycHNwSWQDMTcwNTAzODA2NARzZWMDZnRyBHNsawNudHBjBHN0aW1lAzE1N=
+jk4NjQzMTA-" style=3D"text-decoration: none; color: #2D50FD">Start a New To=
+pic</a>
+          </td>
+          <td>&bull;</td>
+          <td style=3D"font-size: 12px; font-family: arial; padding: 7px 5p=
+x 5px;color: #2D50FD;" >
+                            <a href=3D"https://groups.yahoo.com/neo/groups/=
+broult_hoenicke_family/conversations/topics/12;_ylc=3DX3oDMTMzNzdkN3RkBF9TA=
+zk3MzU5NzE0BGdycElkAzkwMTIwMjc0BGdycHNwSWQDMTcwNTAzODA2NARtc2dJZAMyMDU3BHNl=
+YwNmdHIEc2xrA3Z0cGMEc3RpbWUDMTU2OTg2NDMxMAR0cGNJZAMxMg--" style=3D"text-dec=
+oration: none; color: #2D50FD;">Messages in this topic</a>
+                (141)
+                      </td>
+        </tr>
+      </tbody>
+    </table>
+
+=20=20=20=20=20=20=20=20
+
+<!------- Start Nav Bar ------>
+<!-- |**|begin egp html banner|**| -->
+<!-- |**|end egp html banner|**| -->
+
+
+
+
+=20
+
+<!-- |**|begin egp html banner|**| -->
+<div id=3D"ygrp-vital" style=3D"background-color: #f2f2f2; font-family: Ver=
+dana; font-size: 10px; margin-bottom: 10px; padding: 10px;">
+
+    <span id=3D"vithd" style=3D"font-weight: bold; color: #333; text-transf=
+orm: uppercase; "><a href=3D"https://groups.yahoo.com/neo/groups/broult_hoe=
+nicke_family/info;_ylc=3DX3oDMTJmaHI5bDVkBF9TAzk3MzU5NzE0BGdycElkAzkwMTIwMj=
+c0BGdycHNwSWQDMTcwNTAzODA2NARzZWMDdnRsBHNsawN2Z2hwBHN0aW1lAzE1Njk4NjQzMTA-"=
+ style=3D"text-decoration: none;">Visit Your Group</a></span>
+
+     <ul style=3D"list-style-type: none; margin: 0; padding: 0; display: in=
+line;">
+                                                    </ul>
+  </div>
+
+
+<div id=3D"ft" style=3D"font-family: Arial; font-size: 11px; margin-top: 5p=
+x; padding: 0 2px 0 0; clear: both;">
+  <a href=3D"https://groups.yahoo.com/neo;_ylc=3DX3oDMTJlZWRmdWMzBF9TAzk3Mz=
+U5NzE0BGdycElkAzkwMTIwMjc0BGdycHNwSWQDMTcwNTAzODA2NARzZWMDZnRyBHNsawNnZnAEc=
+3RpbWUDMTU2OTg2NDMxMA--" style=3D"float: left;"><img src=3D"https://s.yimg.=
+com/ru/0.9.12/min/css/yahoo_en-US_f_pw_101x21.png" height=3D"21" width=3D"1=
+01" alt=3D"Yahoo! Groups" style=3D"border: 0;"/></a>
+  <div style=3D"color: #747575; float: right;"> &bull; <a href=3D"https://i=
+nfo.yahoo.com/privacy/us/yahoo/groups/details.html" style=3D"text-decoratio=
+n: none;">Privacy</a> &bull; <a href=3D"mailto:broult_hoenicke_family-unsub=
+scribe@yahoogroups.com?subject=3DUnsubscribe" style=3D"text-decoration: non=
+e;">Unsubscribe</a> &bull; <a href=3D"https://info.yahoo.com/legal/us/yahoo=
+/utos/terms/" style=3D"text-decoration: none;">Terms of Use</a> </div>
+</div>
+<br>
+
+<!-- |**|end egp html banner|**| -->
+
+  </div> <!-- ygrp-msg -->
+
+=20
+  <!-- Sponsor -->
+  <!-- |**|begin egp html banner|**| -->
+  <div id=3D"ygrp-sponsor" style=3D"width:160px; float:right; clear:none; m=
+argin:0 0 25px 0; background: #fff;">
+
+<!-- Start Recommendations -->
+<div id=3D"ygrp-reco">
+     </div>
+<!-- End Recommendations -->
+
+
+
+  </div>   <!-- |**|end egp html banner|**| -->
+
+  <div style=3D"clear:both; color: #FFF; font-size:1px;">.</div>
+</div>
+
+  <img src=3D"http://geo.yahoo.com/serv?s=3D97359714/grpId=3D90120274/grpsp=
+Id=3D1705038064/msgId=3D2057/stime=3D1569864310" width=3D"1" height=3D"1"> =
+<br>
+
+<img src=3D"http://y.analytics.yahoo.com/fpc.pl?ywarid=3D515FB27823A7407E&a=
+=3D10001310322279&js=3Dno&resp=3Dimg" width=3D"1" height=3D"1">=20
+
+<div style=3D"color: #fff; height: 0;">__,_._,___</div>
+<!--~-|**|PrettyHtmlEnd|**|-~-->
+
+</body>
+
+<!--~-|**|PrettyHtmlStart|**|-~-->
+<head>
+  <style type=3D"text/css">
+  <!--
+  #ygrp-mkp {
+  border: 1px solid #d8d8d8;
+  font-family: Arial;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+#ygrp-mkp hr {
+  border: 1px solid #d8d8d8;
+}
+
+#ygrp-mkp #hd {
+  color: #628c2a;
+  font-size: 85%;
+  font-weight: 700;
+  line-height: 122%;
+  margin: 10px 0;
+}
+
+#ygrp-mkp #ads {
+  margin-bottom: 10px;
+}
+
+#ygrp-mkp .ad {
+  padding: 0 0;
+}
+
+#ygrp-mkp .ad p {
+  margin: 0;
+}
+
+#ygrp-mkp .ad a {
+  color: #0000ff;
+  text-decoration: none;
+}
+  #ygrp-sponsor #ygrp-lc {
+  font-family: Arial;
+}
+
+#ygrp-sponsor #ygrp-lc #hd {
+  margin: 10px 0px;
+  font-weight: 700;
+  font-size: 78%;
+  line-height: 122%;
+}
+
+#ygrp-sponsor #ygrp-lc .ad {
+  margin-bottom: 10px;
+  padding: 0 0;
+}
+
+  #actions {
+    font-family: Verdana;
+    font-size: 11px;
+    padding: 10px 0;
+  }
+
+  #activity {
+    background-color: #e0ecee;
+    float: left;
+    font-family: Verdana;
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  #activity span {
+    font-weight: 700;
+  }
+
+  #activity span:first-child {
+    text-transform: uppercase;
+  }
+
+  #activity span a {
+    color: #5085b6;
+    text-decoration: none;
+  }
+
+  #activity span span {
+    color: #ff7900;
+  }
+
+  #activity span .underline {
+    text-decoration: underline;
+  }
+
+  .attach {
+    clear: both;
+    display: table;
+    font-family: Arial;
+    font-size: 12px;
+    padding: 10px 0;
+    width: 400px;
+  }
+
+  .attach div a {
+    text-decoration: none;
+  }
+
+  .attach img {
+    border: none;
+    padding-right: 5px;
+  }
+
+  .attach label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .attach label a {
+    text-decoration: none;
+  }
+=20=20
+  blockquote {
+    margin: 0 0 0 4px;
+  }
+
+  .bold {
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .bold a {
+    text-decoration: none;
+  }
+
+  dd.last p a {
+    font-family: Verdana;
+    font-weight: 700;
+  }
+
+  dd.last p span {
+    margin-right: 10px;
+    font-family: Verdana;
+    font-weight: 700;
+  }
+
+  dd.last p span.yshortcuts {
+    margin-right: 0;
+  }
+
+  div.attach-table div div a {
+    text-decoration: none;
+  }
+
+  div.attach-table {
+    width: 400px;
+  }
+
+  div.file-title a, div.file-title a:active, div.file-title a:hover, div.fi=
+le-title a:visited {
+    text-decoration: none;
+  }
+
+  div.photo-title a, div.photo-title a:active, div.photo-title a:hover, div=
+..photo-title a:visited {
+    text-decoration: none;
+  }
+
+  div#ygrp-mlmsg #ygrp-msg p a span.yshortcuts {
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: normal;
+  }
+
+  .green {
+    color: #628c2a;
+  }
+
+  .MsoNormal {
+    margin: 0 0 0 0;
+  }
+
+  o {
+    font-size: 0;
+  }
+
+  #photos div {
+    float: left;
+    width: 72px;
+  }
+
+  #photos div div {
+    border: 1px solid #666666;
+    height: 62px;
+    overflow: hidden;
+    width: 62px;
+  }
+
+  #photos div label {
+    color: #666666;
+    font-size: 10px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    width: 64px;
+  }
+
+  #reco-category {
+    font-size: 77%;
+  }
+
+  #reco-desc {
+    font-size: 77%;
+  }
+
+  .replbq {
+    margin: 4px;
+  }
+
+  #ygrp-actbar div a:first-child {
+   /* border-right: 0px solid #000;*/
+    margin-right: 2px;
+    padding-right: 5px;
+  }
+
+  #ygrp-mlmsg {
+    font-size: 13px;
+    font-family: Arial, helvetica,clean, sans-serif;
+    *font-size: small;
+    *font: x-small;
+  }
+
+  #ygrp-mlmsg table {
+    font-size: inherit;
+    font: 100%;
+  }
+
+  #ygrp-mlmsg select, input, textarea {
+    font: 99% Arial, Helvetica, clean, sans-serif;
+  }
+
+  #ygrp-mlmsg pre, code {
+    font:115% monospace;
+    *font-size:100%;
+  }
+
+  #ygrp-mlmsg * {
+    line-height: 1.22em;
+  }
+
+  #ygrp-mlmsg #logo {
+    padding-bottom: 10px;
+  }
+
+
+  #ygrp-msg p a {
+    font-family: Verdana;
+  }
+
+  #ygrp-msg p#attach-count span {
+    color: #1E66AE;
+    font-weight: 700;
+  }
+
+  #ygrp-reco #reco-head {
+    color: #ff7900;
+    font-weight: 700;
+  }
+
+  #ygrp-reco {
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+
+  #ygrp-sponsor #ov li a {
+    font-size: 130%;
+    text-decoration: none;
+  }
+
+  #ygrp-sponsor #ov li {
+    font-size: 77%;
+    list-style-type: square;
+    padding: 6px 0;
+  }=20
+
+  #ygrp-sponsor #ov ul {
+    margin: 0;
+    padding: 0 0 0 8px;
+  }
+
+  #ygrp-text {
+    font-family: Georgia;
+  }
+
+  #ygrp-text p {
+    margin: 0 0 1em 0;
+  }
+
+  #ygrp-text tt {
+    font-size: 120%;
+  }
+
+  #ygrp-vital ul li:last-child {
+    border-right: none !important;=20
+  }=20
+  -->
+  </style>
+</head>
+
+<!--~-|**|PrettyHtmlEnd|**|-~-->
+</html>
+<!-- end group email -->
+
+
+--=_565b74227b8700586254181a848f029f--

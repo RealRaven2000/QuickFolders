@@ -1,0 +1,2118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25104 &ndash; When switching identities, old signatures are not removed</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25104&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25104">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25104">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25104">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25104">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25104</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">When switching identities, old signatures are not removed</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-07-10 09:56:54</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25104&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-07-10 09:56:54">
+  <input type="hidden" name="longdesclength" value="40">
+  <input type="hidden" name="id" value="25104">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="When switching identities, old signatures are not removed">When switching identities, old signatures are not removed
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25104.html">25104</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>WORKSFORME
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25104&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25104">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina &lt;jirka.svacina&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-0.9.2pre23.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 prerelease 23</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (246.72 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7348"
+               title="Go to the comment associated with the attachment">2012-08-23 02:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7348&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.2pre40.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9.1 pre 40</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (247.53 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7354"
+               title="Go to the comment associated with the attachment">2012-08-24 15:22</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7354&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="st4_091.pdf"
+               title="View the content of the attachment">
+          <b>SmartTemplate 0.9.1 settings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (145.56 KB,
+                application/pdf)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7358"
+               title="Go to the comment associated with the attachment">2012-08-27 06:04</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7358&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.2pre44.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 pre 44</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (247.65 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7359"
+               title="Go to the comment associated with the attachment">2012-08-27 08:00</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7359&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="compose.txt"
+               title="View the content of the attachment">
+          <b>Composing email and switching id</b></a>
+
+          <span class="bz_attach_extra_info">
+              (3.12 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7364"
+               title="Go to the comment associated with the attachment">2012-08-28 23:02</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7364&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="reply.txt"
+               title="View the content of the attachment">
+          <b>Replying and switching id</b></a>
+
+          <span class="bz_attach_extra_info">
+              (6.24 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7365"
+               title="Go to the comment associated with the attachment">2012-08-28 23:03</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7365&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="forward.txt"
+               title="View the content of the attachment">
+          <b>Forwarding and switching id</b></a>
+
+          <span class="bz_attach_extra_info">
+              (9.33 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7366"
+               title="Go to the comment associated with the attachment">2012-08-28 23:03</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7366&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="new-mail.txt"
+               title="View the content of the attachment">
+          <b>new mail log, how it should look</b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.50 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7367"
+               title="Go to the comment associated with the attachment">2012-08-29 00:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7367&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a9" href="smartTemplate-0.9.2pre48.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 pre48</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (246.31 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7368"
+               title="Go to the comment associated with the attachment">2012-08-29 04:28</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7368&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a10" href="0.9.2pre48_compose_switch_id_1-3-1_without_%25sig%25.txt"
+               title="View the content of the attachment">
+          <b>Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.52 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7369"
+               title="Go to the comment associated with the attachment">2012-08-29 05:03</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7369&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a11" href="0.9.2pre48_compose_switch_id_1-3-1_with_%25sig%25.txt"
+               title="View the content of the attachment">
+          <b>Log 0.9.2pre48_compose_switch_id_1-3-1_with_%sig%</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.51 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7370"
+               title="Go to the comment associated with the attachment">2012-08-29 05:06</a>,
+
+            <a href="mailto:jirka.svacina&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Jiri Svacina
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7370&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a12" href="smartTemplate-0.9.2pre51.xpi.1"
+               title="View the content of the attachment">
+          <b>0.9.2 pre 51</b></a>
+
+          <span class="bz_attach_extra_info">
+              (246.41 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25104.html#attach_7376"
+               title="Go to the comment associated with the attachment">2012-08-30 01:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7376&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25104.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (4)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25104&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25104&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25104">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25104">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25104">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25104">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25104.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-08-22 23:41
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hello,
+
+I'm using SmartTemplate4 v0.9.1 in TB 14.0. I have following problem:
+I have set up 4 email accounts. For 2 of them I'm using various signatures
+(they are set up in TB account settings and I'm also using %sig% in
+SmartTemplate setting for &quot;Write&quot; and &quot;Reply&quot;). 2 remaining accounts don't use
+signatures.
+Simply it is like this:
+Account 1 – Signature 1 (default email account)
+Account 2 – Signature 2
+Account 3 – no Signature
+Account 4 – no Signature
+
+When I compose new message in TB, everything is OK – I see predefined
+Signature 1 for my default account in message window.
+I.e. I see
+Signature 1
+
+But when I change my default email account to Account 2, I see twice Signature
+2.
+In mail window there is
+Signature 2
+Signature 2
+
+When I change account back to Account 1, I see following
+Signature 2
+Signature 2
+Signature 1
+
+When I change account e.g. to Account 3 (no signature is defined for this
+account), I see following
+Signature 2
+Signature 1
+
+When I change account e.g. back to Account 1, I see following
+Signature 2
+Signature 1
+Signature 2
+Signature 1
+Signature 1
+
+Note: &quot;Change account&quot; means that I have still opened compose message window
+and I'm changing account in field &quot;From&quot;.
+
+Is there any way how to resolve this problem? 
+Thank you for your hard work on this extension.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25104.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-23 02:44:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre23.xpi" name="attach_7348" title="0.9.2 prerelease 23">Created an attachment (id=7348)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7348&amp;action=edit" title="0.9.2 prerelease 23">[details]</a></span>
+0.9.2 prerelease 23
+
+This version should behave a lot better. We had some fundamental problems
+parsing the email, so it took a lot of rewriting.
+
+Please bear in mind that switching identities in composer will only replace the
+old header templates and quote header if you didn't do any manual modifications
+yet. But this version should remove the old signature, template and quote
+header when you switch accounts (and haven't typed / deleted anything) on a
+brand new email.
+
+Note that we have decided to split the template (where you put salutation and
+other elements of your email template) and the quote header (the part that
+introduces the original email, such as &quot;on 12/04/2012, Axel wrote:&quot;, into 2
+separate text fields in order to better support &quot;reply at bottom&quot;. I haven't
+fully tested identity switching in plain text mode, yet; but it seems to work
+well in HTML mode.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25104.html#c2">
+            #2</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-23 04:00:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thank you for your quick answer. I tried the version you provided but it still
+not works for me. Still the same problem with signatures when switching
+identity...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25104.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-23 05:52:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c2">comment #2</a>)
+<span class="quote">&gt; Thank you for your quick answer. I tried the version you provided but it still
+&gt; not works for me. Still the same problem with signatures when switching
+&gt; identity...
+&gt; </span >
+
+Are you using plain text or html?
+is your signature plain text or html?
+is the signature given as text or as attached file?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25104.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-23 05:54:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c2">comment #2</a>)
+<span class="quote">&gt; Thank you for your quick answer. I tried the version you provided but it still
+&gt; not works for me. Still the same problem with signatures when switching
+&gt; identity...
+&gt; </span >
+
+also which position setting for sig did you configure.
+
+[ ] reply above + sig below quote
+[ ] reply above + sig below reply + above quote
+[ ] reply below
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25104.html#c5">
+            #5</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-23 06:07:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm using HTML. Signature is also HTML. The signature is given as text but I
+tried to insert signature from file as well - no difference.
+Position setting in TB I use reply above + sig below reply + above quote.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25104.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-24 15:22:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre40.xpi.1" name="attach_7354" title="2.9.1 pre 40">Created an attachment (id=7354)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7354&amp;action=edit" title="2.9.1 pre 40">[details]</a></span>
+2.9.1 pre 40
+
+0.9.2, prerelease 40
+
+This one behaves much better again, by removing templates it has added more
+reliably, but also when you change identities (before editing in composer) it
+will not run the original Thunderbird code (LoadIdentity function) anymore,
+because that also messed with the position of the signature. This is not yet
+tested without signatures and in plain text, but I was able to switch between
+several different profiles which had various settings for reply position (above
+quote with sig below quote, above quote with sig below reply, below quote) and
+managed to remove the previous message template and signature and citation
+header, without residues, each time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25104.html#c7">
+            #7</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-27 05:27:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thank you, but still no luck with this version. When I change identity no.1 to
+identity no.2, it works - signature no.2 is shown and signature no.1 is
+deleted. But when I change it back to identity no.1, in the message still stays
+signature no.2.
+But I resolved it by this way - I'm using SmartTemplate for headers (reply,
+forward) and signature is set by TB (I'm not using %sig% in SmartTemplate). It
+looks that it works fine. But it works only with ST4 version 0.9.1.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25104.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-27 05:40:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c7">comment #7</a>)
+<span class="quote">&gt; Thank you, but still no luck with this version. When I change identity no.1 to
+&gt; identity no.2, it works - signature no.2 is shown and signature no.1 is
+&gt; deleted. But when I change it back to identity no.1, in the message still stays
+&gt; signature no.2.</span >
+
+Can you attach both templates &amp; headers?
+
+<span class="quote">&gt; But I resolved it by this way - I'm using SmartTemplate for headers (reply,
+&gt; forward) and signature is set by TB (I'm not using %sig% in SmartTemplate). </span >
+
+Yes, that is the cases I tested it for, as well. I haven't tested against the
+%sig% variable at all.
+
+<span class="quote">&gt; It looks that it works fine. But it works only with ST4 version 0.9.1.</span >
+
+If you say 0.9.2 prerelease 40 does not work removing sig from id2 to id1 I
+would like to see what exactly these templates are, so i can reproduce the
+issue. There were a numerous fundamental changes to the way the message is put
+together in pre40, and these are _not_ likely pr planned to be changed back -
+they will be in 0.9.2 final release, so it is important to me that they work in
+your test case. You can send me the templates directly if you do not want them
+on the bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25104.html#c9">
+            #9</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-27 06:04:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="st4_091.pdf" name="attach_7358" title="SmartTemplate 0.9.1 settings">Created an attachment (id=7358)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7358&amp;action=edit" title="SmartTemplate 0.9.1 settings">[details]</a></span>
+SmartTemplate 0.9.1 settings
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25104.html#c10">
+            #10</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-27 06:05:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >So as mentioned, I'm currently using ST4 0.9.1. My current ST setting is
+attached (not sure if it will help you).
+I tried again version 0.9.2 and there is problem that there is still the same
+signature no.1. It doesn't matter if I switch id to no.2 or 3. Sig stays always
+from id no.1. In 0.9.1 there is not this problem.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25104.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-27 07:58:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can you check your error console. Make sure &quot;content&quot; logging and warnings are
+enabled.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25104.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-27 08:00:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre44.xpi" name="attach_7359" title="0.9.2 pre 44">Created an attachment (id=7359)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7359&amp;action=edit" title="0.9.2 pre 44">[details]</a></span>
+0.9.2 pre 44
+
+This version makes a better job of deleting deep level elements (previous
+versions would only delete them if they were direct children of the root
+element &lt;body&gt;). I was able to reproduce the problem when forwarding and fix it
+with this version.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25104.html#c13">
+            #13</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-27 23:58:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >There is something strange. I installed your latest version. I tried to compose
+new email and change identity. Signatures were changed according to selected
+identity – it worked. Then I tried reply for email and again tried switch
+identity. It didn't work. There was still sig from id.1. Then I tried again
+composing new email and change identity. But it already didn't work. There
+always stays sig from id 1. I tried uninstall and reinstall last ST but it
+already doesn't work – when switching id there is still the same sig. I don't
+know if there is some problem in my TB.
+
+Re error console. Please could you let me know whether it is possible somehow
+export it to TXT file? There is quite a lot of errors. I also noticed that
+there are some errors already during installation of this extension. And second
+thing – my TB is in Czech language and error console too. I didn't find a way
+how to change it to English for you.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25104.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-28 04:05:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c13">comment #13</a>)
+<span class="quote">&gt; 
+&gt; Re error console. Please could you let me know whether it is possible somehow
+&gt; export it to TXT file? There is quite a lot of errors. I also noticed that
+&gt; there are some errors already during installation of this extension. And second
+&gt; thing – my TB is in Czech language and error console too. I didn't find a way
+&gt; how to change it to English for you.</span >
+
+Doesn't matter... I can read them in Czech as well.
+
+Install console2 extension.
+
+Once it is installed, open console and click on All button (top left)
+enable Options (right hand of error log window)
+  Report Strict Warnings (3rd item in options menu)
+  Report all JS exceptions (5th item)
+
+For testing, make sure you clear the output (there are always &quot;Noise&quot; messages
+there) before you test.
+
+When you have done a test step select all text in error console (right-click or
+CTRL+A)
+Copy the text to the clipboard (CTRL+C)
+
+no need for screen shots!!!!!!!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25104.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-28 04:07:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c14">comment #14</a>)
+
+<span class="quote">&gt; 
+&gt; When you have done a test step select all text in error console (right-click or
+&gt; CTRL+A)</span >
+
+Whenever you do a new test, make sure you clear the old error output, so there
+are less messages for me to read.
+
+I am especially interested in errors (red icon) and warnings (yellow icon). CSS
+errors are unimportant for this error.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25104.html#c16">
+            #16</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-28 05:02:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >During my testing there were following errors shown in error console in version
+0.9.2pre44.
+
+Varování: ReferenceError: reference to undefined property img.className
+Zdrojový soubor: chrome://messenger/content/mailWindowOverlay.js
+Řádka: 2948
+ ----------
+Varování: ReferenceError: reference to undefined property
+Components.classes['@mozilla.org/privatebrowsing;1']
+Zdrojový soubor: chrome://global/content/globalOverlay.js
+Řádka: 17
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25104.html#c17">
+            #17</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-08-28 05:16:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)
+this errors are NOT from SmartTemplate4 add-on!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25104.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-28 05:36:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)
+<span class="quote">&gt; During my testing there were following errors shown in error console in version
+&gt; 0.9.2pre44.
+&gt; 
+&gt; Varování: ReferenceError: reference to undefined property img.className
+&gt; Zdrojový soubor: chrome://messenger/content/mailWindowOverlay.js
+&gt; Řádka: 2948
+&gt;  ----------
+&gt; Varování: ReferenceError: reference to undefined property
+&gt; Components.classes['@mozilla.org/privatebrowsing;1']
+&gt; Zdrojový soubor: chrome://global/content/globalOverlay.js
+&gt; Řádka: 17
+&gt; </span >
+
+Ok, although these were not from SMartTemplate4, you can add some context to
+these by enabling the [x]Debug option in the st4 options window; this way st4
+will tell you &quot;what it does&quot; during identity switching - you can add even more
+detail to the output if you right-click the debug checkbox and enable the
+following settings:
+
+debug.deleteNodes
+debug.events
+debug.functions
+debug.functions.delReplyHeader
+debug.functions.insertTemplate
+debug.identities
+
+It should only show messages (no warnings or errors). But it might still help
+to see _when_ the two errors you mentioned happen. Since I expect the output to
+be lengthy, can you paste it into a text file and attach that to the bug
+please?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25104.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-28 05:38:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)
+<span class="quote">&gt; During my testing there were following errors shown in error console in version
+&gt; 0.9.2pre44.
+&gt; 
+&gt; Varování: ReferenceError: reference to undefined property img.className
+&gt; Zdrojový soubor: chrome://messenger/content/mailWindowOverlay.js
+&gt; Řádka: 2948
+&gt;  ----------
+&gt; Varování: ReferenceError: reference to undefined property
+&gt; Components.classes['@mozilla.org/privatebrowsing;1']
+&gt; Zdrojový soubor: chrome://global/content/globalOverlay.js
+&gt; Řádka: 17
+&gt; </span >
+
+Also, can you try a test without using %sig% ? with the new more flexible
+separate interface (Template + Quote Header) and the Thunderbird Account
+Settings you should be able to achieve pretty much any positioning even without
+using %sig%.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25104.html#c20">
+            #20</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-08-28 05:41:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)
+Example: this is an error log of smarttemplate4
+
+Error: headerParam is not defined
+File: chrome://smarttemplate4/content/messengercomposeOverlay.js
+Line: 181
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25104.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-28 05:49:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c20">comment #20</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)
+&gt; Example: this is an error log of smarttemplate4
+&gt; 
+&gt; Error: headerParam is not defined
+&gt; File: chrome://smarttemplate4/content/messengercomposeOverlay.js
+&gt; Line: 181
+&gt; </span >
+
+I almost answered that one :)
+
+Note: Mark meant
+
+&quot;this is what an error log of st4 would look like&quot;
+
+in the example an error gets thrown in the source code of one of the files by
+st4 - which can be seen by looking at its chrome address:
+
+chrome://smarttemplate4/
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25104.html#c22">
+            #22</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-08-28 05:59:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c21">comment #21</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25104.html#c20">comment #20</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a>)</span >
+exactly this i mean Axel :)
+my reply to <a href="show_bug.cgi@id=25104.html#c16">comment #16</a> was the first one but i have to search an old log for
+the example here and this i would like clear with <a href="show_bug.cgi@id=25104.html#c20">comment #20</a> as reply to
+#16...
+Sorry for confusing :)
+You know sometimes i'm too fast :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25104.html#c23">
+            #23</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-28 06:32:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hello guys, I understand what you need from me but I have to leave my PC now.
+Will go back to you later today or at latest tomorrow. BTW I'm not using %sig%
+in my templates. It is mentioned earlier. I'm using ST only for headers in RE
+and FW messages. Signatures are placed automatically by TB.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25104.html#c24">
+            #24</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-28 23:02:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="compose.txt" name="attach_7364" title="Composing email and switching id">Created an attachment (id=7364)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7364&amp;action=edit" title="Composing email and switching id">[details]</a></span>
+Composing email and switching id
+
+I did following:
+1. Run TB, clear error console and start composing message and switching id -&gt;
+save console log (see compose.txt)
+2. Clear error console and start replying message and switching id -&gt; save
+console log (see reply.txt)
+3. Clear error console and start forwarding message and switching id -&gt; save
+console log (see forward.txt)
+
+I also changed name and email of my identities which I have set up in TB. I
+replaced them by &quot;user1&quot; etc. I made this change in TB so there is no editing
+in logs.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25104.html#c25">
+            #25</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-28 23:03:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="reply.txt" name="attach_7365" title="Replying and switching id">Created an attachment (id=7365)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7365&amp;action=edit" title="Replying and switching id">[details]</a></span>
+Replying and switching id
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25104.html#c26">
+            #26</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-28 23:03:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="forward.txt" name="attach_7366" title="Forwarding and switching id">Created an attachment (id=7366)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7366&amp;action=edit" title="Forwarding and switching id">[details]</a></span>
+Forwarding and switching id
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25104.html#c27">
+            #27</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-29 00:55:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="new-mail.txt" name="attach_7367" title="new mail log, how it should look">Created an attachment (id=7367)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7367&amp;action=edit" title="new mail log, how it should look">[details]</a></span>
+new mail log, how it should look
+
+I have looked at the first log, and it is interesting to see that some messages
+appear to be missing altogether. From what I can see you have 4 identities, and
+you were opening a new mail with id1, then switched to 2, 3, and 4.
+
+One thing I am missing is the call to 
+SmartTemplate4.extractSignature()
+after SmartTemplate4.clearTemplate()
+
+I hope you had warning and errors switched on during the logging as well. The
+only reason (apart from an error) that this might not have been called is that
+the setting:
+
+extensions.smartTemplate4.id1.def
+
+is set to &quot;false&quot;. If this is the case, set them to true and test again.
+
+can you check in your configuration settings, by filtering for:
+extensions.smartTemplate4.id*.def
+
+and check whether it is set to true for the 4 test accounts?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25104.html#c28">
+            #28</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-29 02:24:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Axel, you will probably want to kill me...
+
+extensions.smartTemplate4.id*.def for all 4 identities is set to &quot;TRUE&quot;.
+
+BUT:
+As I mentioned, I don't use %sig% in my template. It causes me problem which I
+will report you soon. But when I again add %sig% into my template, signatures
+where almost correctly switched according to selected id. Procedure
+SmartTemplate4.extractSignature() was already in log.
+
+I'm mentioning &quot;almost correctly switched&quot; because of following:
+1. I start composing new msg with default id1, default sig1 is there.
+2. I switch id to 2, sig2 is there (sig1 is deleted).
+3. I switch id to 3, sig3 is there (sig2 is deleted) etc.
+
+But when I want to change id back to default id1, in the msg still remains sig
+from last tested id (in this example it is sig3). It is not possible to get
+into msg again default signature. All other (non default) signatures are
+changed correctly according to selected id. I tried also change default
+identity but still the same result. After I change id from default to another,
+default id (signature) is not possible to get back.
+
+I hope you understand what I mean. Please let me know whether you want me to
+send you new log.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25104.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-29 04:24:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c28">comment #28</a>)
+<span class="quote">&gt; Axel, you will probably want to kill me...
+&gt; 
+&gt; extensions.smartTemplate4.id*.def for all 4 identities is set to &quot;TRUE&quot;.
+&gt; 
+&gt; BUT:
+&gt; As I mentioned, I don't use %sig% in my template. It causes me problem which I
+&gt; will report you soon. But when I again add %sig% into my template, signatures
+&gt; where almost correctly switched according to selected id. Procedure
+&gt; SmartTemplate4.extractSignature() was already in log.</span >
+
+SmartTemplate4.extractSignature() should be called always (no matter whether
+%sig% is used)
+
+currently I was only looking at the first file (compose.txt) and there is no
+extractSignature mentioned. I will upload a new version which will mention this
+in the log. Also in the log you switch from 1-&gt;2-&gt;3-&gt;4
+
+but the error occurs when you switch back from X-&gt;1, correct? So this is the
+only case we are interested in.
+
+For a new test-case, just switch 1-&gt;3-&gt;1. Wait at least 5 seconds before you
+switch back, that will make it easier for me to find the start of the switch. I
+will attach a new test version shortly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25104.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-29 04:28:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre48.xpi" name="attach_7368" title="0.9.2 pre48">Created an attachment (id=7368)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7368&amp;action=edit" title="0.9.2 pre48">[details]</a></span>
+0.9.2 pre48
+
+Ok, can you test again, make sure all debug settings are active as detailed
+above. It is ok just to work with the compose-new case for the moment; do not
+use %sig%.
+
+Is there something special about the default identity? Is it using the &quot;Common&quot;
+template or has is got its own?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25104.html#c31">
+            #31</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-29 05:03:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="0.9.2pre48_compose_switch_id_1-3-1_without_%25sig%25.txt" name="attach_7369" title="Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%">Created an attachment (id=7369)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7369&amp;action=edit" title="Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%">[details]</a></span>
+Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%
+
+Still the same, when I don't use %sig%, there is always the same sig from
+default id in the email.
+
+My identities have the same setting in TB. All use &quot;common&quot; settings in ST.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25104.html#c32">
+            #32</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-29 05:06:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="0.9.2pre48_compose_switch_id_1-3-1_with_%25sig%25.txt" name="attach_7370" title="Log 0.9.2pre48_compose_switch_id_1-3-1_with_%sig%">Created an attachment (id=7370)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7370&amp;action=edit" title="Log 0.9.2pre48_compose_switch_id_1-3-1_with_%sig%">[details]</a></span>
+Log 0.9.2pre48_compose_switch_id_1-3-1_with_%sig%
+
+When I use %sig%, sig is changed correctly but it is not possible to go back to
+default id. In case of identity changing in order 1-3-1, there stays signature
+from id 3. Log is also attached.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=25104.html#c33">
+            #33</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-30 01:24:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.2pre51.xpi.1" name="attach_7376" title="0.9.2 pre 51">Created an attachment (id=7376)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7376&amp;action=edit" title="0.9.2 pre 51">[details]</a></span>
+0.9.2 pre 51
+
+A newer version, this time including fixes for top-reply (and sig below repl,
+but above quote). Previous versions would put the sig to the very top of the
+Email. Also, I included a fix for displaying the correct mail identity when
+opening st4 settings from the statusbar icon.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=25104.html#c34">
+            #34</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-30 01:26:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c31">comment #31</a>)
+<span class="quote">&gt; Created an <span class=""><a href="0.9.2pre48_compose_switch_id_1-3-1_without_%25sig%25.txt" name="attach_7369" title="Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%">attachment (id=7369)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7369&amp;action=edit" title="Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%">[details]</a></span> [details]
+&gt; Log 0.9.2pre48_compose_switch_id_1-3-1_without_%sig%
+&gt; 
+&gt; Still the same, when I don't use %sig%, there is always the same sig from
+&gt; default id in the email.
+&gt; 
+&gt; My identities have the same setting in TB. All use &quot;common&quot; settings in ST.
+&gt; </span >
+
+Pretty sure the answer is because you use Common settings. This is probably one
+of the worst tested areas in st4 as we do not use this setting normally (I have
+a separate st4 template for each identity). You could try this yourself to see
+whether it is a valid workaround for the problem.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=25104.html#c35">
+            #35</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-30 01:50:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >No change with this version. There is still the same problem.
+Of course I tried use also non common settings in ST, but result was the same.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=25104.html#c36">
+            #36</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-08-30 02:52:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Would(In reply to <a href="show_bug.cgi@id=25104.html#c35">comment #35</a>)
+<span class="quote">&gt; No change with this version. There is still the same problem.
+&gt; Of course I tried use also non common settings in ST, but result was the same.
+&gt; </span >
+
+Fair enough. Would you be available for a screen sharing session via join.me?
+If I can reproduce it on your machine using the Javascript debugger I will be
+able to find out what it happening. You can contact me via EMail if you are
+interested.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c37" href="show_bug.cgi@id=25104.html#c37">
+            #37</a> From 
+          <a href="mailto:jirka.svacina&#64;gmail.com">Jiri Svacina</a>
+          2012-08-30 03:58:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm sorry, I don't want to share my screen...
+
+But I still would like to tell you this.
+I asked my colleague to make the same test of ST. He did following:
+1. Install clean WinXP SP3 into VirtualBox.
+2. Install clean TB15.
+3. Install last ST which you provided. No other extensions were installed.
+4. Set up 4 testing email account.
+
+Result?
+Exactly the same as in my case.
+
+If he didn't use %sig% in ST, when you create new message there is always
+signature from default id. It doesn't matter which id you switch.
+
+If he used %sig%, after changing id it was not possible to get back sig from
+default id.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c38" href="show_bug.cgi@id=25104.html#c38">
+            #38</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-30 04:00:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25104.html#c37">comment #37</a>)
+<span class="quote">&gt; I'm sorry, I don't want to share my screen...
+&gt; 
+&gt; But I still would like to tell you this.
+&gt; I asked my colleague to make the same test of ST. He did following:
+&gt; 1. Install clean WinXP SP3 into VirtualBox.
+&gt; 2. Install clean TB15.
+&gt; 3. Install last ST which you provided. No other extensions were installed.
+&gt; 4. Set up 4 testing email account.
+&gt; 
+&gt; Result?
+&gt; Exactly the same as in my case.
+&gt; 
+&gt; If he didn't use %sig% in ST, when you create new message there is always
+&gt; signature from default id. It doesn't matter which id you switch.
+&gt; 
+&gt; If he used %sig%, after changing id it was not possible to get back sig from
+&gt; default id.
+&gt; </span >
+Did this get resolved with the 0.9.2 official release? I would like to close
+this bug...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c39" href="show_bug.cgi@id=25104.html#c39">
+            #39</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-07-10 09:56:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >FOr the moment I will mark this as WORKSFORME. Switching Identities is not
+perfect by any means, but should do the job if you only do once or twice and
+not dozens of times. Also, once you edit the email, Thunderbird itself takes
+over, and it will have _big_ problems replacing the signature then.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25104&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

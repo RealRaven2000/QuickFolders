@@ -1,0 +1,1619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25844 &ndash; Add Backup + Restore Feature</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25844&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25844">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25844">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25844">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25844">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25844</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Add Backup + Restore Feature</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2019-05-17 04:39:15</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25844&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2019-05-17 04:39:15">
+  <input type="hidden" name="longdesclength" value="21">
+  <input type="hidden" name="id" value="25844">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Add Backup + Restore Feature">Add Backup + Restore Feature
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25844.html">25844</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P1">P1
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25844&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25844">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="david.r.southall&#64;gmail.com">david.r.southall&#64;gmail.com</option>
+            <option value="dread_k2002&#64;yahoo.co.uk">dread_k2002&#64;yahoo.co.uk</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="quickFilters-tb-pb-sm-3.5pre25.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.5 prerelease 25</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (390.52 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25844.html#attach_8356"
+               title="Go to the comment associated with the attachment">2018-01-07 04:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8356&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="quickFilters-tb-pb-sm-3.5pre38.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.5 prerelease 38</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (382.12 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25844.html#attach_8357"
+               title="Go to the comment associated with the attachment">2018-01-07 12:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8357&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-3.5pre68.xpi"
+               title="View the content of the attachment">
+          <b>3.5 prerelease 68</b></a>
+
+          <span class="bz_attach_extra_info">
+              (384.02 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25844.html#attach_8371"
+               title="Go to the comment associated with the attachment">2018-02-02 11:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8371&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25844.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25844&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25844&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25844">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25844">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25844">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25844">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25844.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-09-08 01:14
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Original Request:
+
+One thing about TB that always bothered me is that so much work is lost when
+you need to reinstall from scratch because filters are so hard to back up, you
+might want to consider a way of backing up and restoring filter rules.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25844.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-09-08 01:27:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Additional questions to answer
+
+there are 2 use case scenarios: 
+a) restoring the complete mail profile without changing anything
+b) manual reinstallation on a new machine. In this case things like root folder
+and account name are very likely to differ.
+
+
+1 - on restore: should the existing filters be deleted or the restored filters
+&quot;Merged&quot; into existing filters? In the case of &quot;merge&quot; how do we determine
+whether it is a duplicate, and which one should we keep (existing filter or the
+one from the backup)
+
+2 - on restore: if the filters use &quot;Tag as xyz&quot; or &quot;move to folder abc&quot; as
+actions, should they validate whether these folders / tags already exist? 
+
+2a) What should they do if this validation fails?
+
+especially in the case of folders there are a number of actions (with varying
+difficulty)
+- create the folder (based on the assumption that the target account is the
+same as the source account, even if its name has changed)
+- look for a similarly named folder and try to &quot;transpose&quot; the rule (this is
+difficult to do because folder names are not unique, so there would have to be
+a manual step which asks the user to confirm the &quot;Matched&quot; rules). The UI might
+become complex.
+- flag unmatched / non-functional filters via their name
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25844.html#c2">
+            #2</a> From 
+          <a href="mailto:dread_k2002&#64;yahoo.co.uk">Cosmin Blaga</a>
+          2016-03-02 10:34:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c1">comment #1</a>)
+<span class="quote">&gt; Additional questions to answer
+&gt; 
+&gt; there are 2 use case scenarios: 
+&gt; a) restoring the complete mail profile without changing anything
+&gt; b) manual reinstallation on a new machine. In this case things like root folder
+&gt; and account name are very likely to differ.
+&gt; 
+&gt; 
+&gt; 1 - on restore: should the existing filters be deleted or the restored filters
+&gt; &quot;Merged&quot; into existing filters? In the case of &quot;merge&quot; how do we determine
+&gt; whether it is a duplicate, and which one should we keep (existing filter or the
+&gt; one from the backup)
+&gt; 
+&gt; 2 - on restore: if the filters use &quot;Tag as xyz&quot; or &quot;move to folder abc&quot; as
+&gt; actions, should they validate whether these folders / tags already exist? 
+&gt; 
+&gt; 2a) What should they do if this validation fails?
+&gt; 
+&gt; especially in the case of folders there are a number of actions (with varying
+&gt; difficulty)
+&gt; - create the folder (based on the assumption that the target account is the
+&gt; same as the source account, even if its name has changed)
+&gt; - look for a similarly named folder and try to &quot;transpose&quot; the rule (this is
+&gt; difficult to do because folder names are not unique, so there would have to be
+&gt; a manual step which asks the user to confirm the &quot;Matched&quot; rules). The UI might
+&gt; become complex.
+&gt; - flag unmatched / non-functional filters via their name
+&gt; </span >
+
+I think the restore filters should be treated separately from the restore
+profile, but as a component of it.
+Import profile settings
+ - import filters (checkbox)
+ - anything else you were thinking of (another checkbox)
+The idea of import as I see it requires to overwrite the previous filters, so
+no merging, bad costly idea, but when you export, you can choose a file that
+you add in a drop down menu for the import.
+Look at Eclipse's import settings for an example:
+<a href="http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png">http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png</a>
+
+As for 2, yes they should be validated and created if they don't exist (I want
+to have the same folder tree as I have on the other computer, not to create
+them manually - that's the point). Of course if the folder exists, with the
+same name, at the same place, it won't be created (but the contents will be
+overwritten).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25844.html#c3">
+            #3</a> From 
+          <a href="mailto:dread_k2002&#64;yahoo.co.uk">Cosmin Blaga</a>
+          2016-03-02 11:09:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I've thought more about 2. I understand now what you are saying. What if the
+user created different folders on his other computer and now wants the mails to
+be redirected to the new ones?
+
+Current folders         Imported folders
+folderA                 folderD
+folderB                 folderE
+folderC                 folderF
+
+If the folders are different the user could opt out to: 
+1) use the rules he has imported and keep all folders (the mails in A,B,C stay
+there, and I will use the other folders from now on)
+2) want folderA to be replaced by folderF (folderF is created and all mails
+from folderA are moved to folderF and the rule is kept) - this is a bit more
+difficult
+3) don't want the new folders D,E and F, but the rules should use A,B,C
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25844.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-03-02 13:27:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25844.html#c1">comment #1</a>)
+&gt; &gt; Additional questions to answer
+&gt; &gt; 
+&gt; &gt; there are 2 use case scenarios: 
+&gt; &gt; a) restoring the complete mail profile without changing anything
+&gt; &gt; b) manual reinstallation on a new machine. In this case things like root folder
+&gt; &gt; and account name are very likely to differ.
+&gt; &gt; 
+&gt; I think the restore filters should be treated separately from the restore
+&gt; profile, but as a component of it.</span >
+
+This is out of scope for quickFilters. I don't want to program a full profile
+restore, just import a list of filters. Also I am currently not interested in
+even storing the quickFilters options as they are fairly trivial to set up.
+Filters on the other hand can be numerous and complex.
+
+<span class="quote">&gt; Import profile settings
+&gt;  - import filters (checkbox)
+&gt;  - anything else you were thinking of (another checkbox)
+&gt; The idea of import as I see it requires to overwrite the previous filters, so
+&gt; no merging, bad costly idea, but when you export, you can choose a file that
+&gt; you add in a drop down menu for the import.</span >
+Again, I am not sure that I agree.
+
+If the user wants to start fresh it is in their digression to delete all
+filters on the target account / mailbox before importing. it could however
+delete all the filters that have the same name within a given mailbox.
+
+
+
+<span class="quote">&gt; Look at Eclipse's import settings for an example:
+&gt; <a href="http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png">http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png</a></span >
+
+Looks a little complicated. I am not sure that I want to create a separate UI
+that comes up when importing (your screenshot shows IMport prefs) without a
+really important reason.
+
+
+
+<span class="quote">&gt; As for 2, yes they should be validated and created if they don't exist (I want
+&gt; to have the same folder tree as I have on the other computer, not to create
+&gt; them manually - that's the point). Of course if the folder exists, with the
+&gt; same name, at the same place, it won't be created (but the contents will be
+&gt; overwritten).</span >
+
+Creating folder trees is not the point of quickFilters. Folders should be
+either downloaded from IMAP or recreated by copying the Mail and ImapMail
+folders. The filters should not generate folders.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25844.html#c5">
+            #5</a> From 
+          <a href="mailto:dread_k2002&#64;yahoo.co.uk">Cosmin Blaga</a>
+          2016-03-04 00:24:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c4">comment #4</a>)
+First you say:
+<span class="quote">&gt; &gt; &gt; there are 2 use case scenarios: 
+&gt; &gt; &gt; a) restoring the complete mail profile without changing anything</span >
+Then you say
+<span class="quote">&gt; This is out of scope for quickFilters. I don't want to program a full profile
+&gt; restore, just import a list of filters. </span >
+Are you not contradicting yourself?
+
+So you just import/export the filters, ok.
+
+<span class="quote">&gt; &gt; Import profile settings
+&gt; &gt;  - import filters (checkbox)
+&gt; &gt;  - anything else you were thinking of (another checkbox)
+&gt; &gt; The idea of import as I see it requires to overwrite the previous filters, so
+&gt; &gt; no merging, bad costly idea, but when you export, you can choose a file that
+&gt; &gt; you add in a drop down menu for the import.
+&gt; Again, I am not sure that I agree.
+&gt; 
+&gt; If the user wants to start fresh it is in their digression to delete all
+&gt; filters on the target account / mailbox before importing. it could however
+&gt; delete all the filters that have the same name within a given mailbox.</span >
+I think this is not that much of a problem - you can either give the user a
+choise (1. replace - wich deletes everything he has and writes the new ones or
+2. overwrite - wich keeeps his original filters and overwrites the ones with
+the same name) or notify the user that you will do the second one (overwrite).
+
+
+<span class="quote">&gt; &gt; Look at Eclipse's import settings for an example:
+&gt; &gt; <a href="http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png">http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png</a>
+&gt; 
+&gt; Looks a little complicated. I am not sure that I want to create a separate UI
+&gt; that comes up when importing (your screenshot shows IMport prefs) without a
+&gt; really important reason.</span >
+Ok, if you only need to just import/export the filters you don't need all that,
+but what exactly is your idea, how do you want to achieve this?
+
+
+<span class="quote">&gt; &gt; As for 2, yes they should be validated and created if they don't exist (I want
+&gt; &gt; to have the same folder tree as I have on the other computer, not to create
+&gt; &gt; them manually - that's the point). Of course if the folder exists, with the
+&gt; &gt; same name, at the same place, it won't be created (but the contents will be
+&gt; &gt; overwritten).
+&gt; 
+&gt; Creating folder trees is not the point of quickFilters. Folders should be
+&gt; either downloaded from IMAP or recreated by copying the Mail and ImapMail
+&gt; folders. The filters should not generate folders.</span >
+This is probably case 1) from my <a href="show_bug.cgi@id=25844.html#c3">comment #3</a>. It will keep all folders (but you
+should probably notify the user that this will happen).
+If the user had filter rule 
+- if &quot;A&quot; is contained in from then go to Folder A
+and he imports
+- if &quot;A&quot; is contained in from then go to Folder D
+then probably all will go do Folder D after the import, so he should know this
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25844.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-03-04 01:47:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25844.html#c4">comment #4</a>)
+&gt; First you say:
+&gt; &gt; &gt; &gt; there are 2 use case scenarios: 
+&gt; &gt; &gt; &gt; a) restoring the complete mail profile without changing anything
+&gt; Then you say
+&gt; &gt; This is out of scope for quickFilters. I don't want to program a full profile
+&gt; &gt; restore, just import a list of filters. 
+&gt; Are you not contradicting yourself?</span >
+
+No. I didn't say quickFilters is going to restore the mail. The use case is
+valid for moving all mail to another machine or profile - and then wondering
+&quot;where are my filters gone&quot;? Again, these file copy operations are not trivial,
+so I am not going to create a full backup/restore utility (there is MozBackup
+for this) when all the extension is about are filters. I would say the majority
+of users at this stage use IMAP and have the folder structure sitting on a
+server. In that case, the most important step is mapping the root folder to the
+correct account. This means if you have 10 maili accounts the filters need to
+be mapped to the correct ones when they are restored on the new system.
+
+
+
+<span class="quote">&gt; 
+&gt; So you just import/export the filters, ok.
+&gt; 
+&gt; &gt; &gt; Import profile settings
+&gt; &gt; &gt;  - import filters (checkbox)
+&gt; &gt; &gt;  - anything else you were thinking of (another checkbox)
+&gt; &gt; &gt; The idea of import as I see it requires to overwrite the previous filters, so
+&gt; &gt; &gt; no merging, bad costly idea, but when you export, you can choose a file that
+&gt; &gt; &gt; you add in a drop down menu for the import.
+&gt; &gt; Again, I am not sure that I agree.
+&gt; &gt; 
+&gt; &gt; If the user wants to start fresh it is in their digression to delete all
+&gt; &gt; filters on the target account / mailbox before importing. it could however
+&gt; &gt; delete all the filters that have the same name within a given mailbox.
+&gt; I think this is not that much of a problem - you can either give the user a
+&gt; choice </span >
+
+<span class="quote">&gt; 1. replace - which deletes everything he has and writes the new ones </span >
+
+TO be honest I am scared to do that - if the user chooses to delete all at
+least it was their action if it goes wrong.
+
+
+<span class="quote">&gt; 2. overwrite - which keeps his original filters and overwrites the ones with
+&gt; the same name) or notify the user that you will do the second one (overwrite).</span >
+
+sounds better - although currently the filters do not have date stamps so they
+might overwrite updated filters with older versions, which might be a minor
+inconvenience.
+
+
+<span class="quote">&gt; 
+&gt; &gt; &gt; Look at Eclipse's import settings for an example:
+&gt; &gt; &gt; <a href="http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png">http://help.eclipse.org/juno/topic/org.eclipse.platform.doc.user/tips/images/preference-transfer-compiler.png</a>
+&gt; &gt; 
+&gt; &gt; Looks a little complicated. I am not sure that I want to create a separate UI
+&gt; &gt; that comes up when importing (your screenshot shows Import prefs) without a
+&gt; &gt; really important reason.
+&gt; Ok, if you only need to just import/export the filters you don't need all that,
+&gt; but what exactly is your idea, how do you want to achieve this?</span >
+
+the idea is to add the missing filters that they are looking for. You idea on
+name matching may be helpful (even though I cannot assume that the filter
+hasn't changed in the meantime and we are actually overwriting good changes
+with older bad ones)
+
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt; &gt; As for 2, yes they should be validated 
+&gt; &gt; 
+&gt; &gt; Creating folder trees is not the point of quickFilters. Folders should be
+&gt; &gt; either downloaded from IMAP or recreated by copying the Mail and ImapMail
+&gt; &gt; folders. The filters should not generate folders.
+&gt; This is probably case 1) from my <a href="show_bug.cgi@id=25844.html#c3">comment #3</a>. It will keep all folders (but you
+&gt; should probably notify the user that this will happen).</span >
+
+quote: &quot;(the mails in A,B,C stay there, and I will use the other folders from
+now on)&quot;
+
+which leaves the user with invalid rules - the point is remapping the target
+folders which is the tricky bit:
+
+how to find out that these should be remapped
+
+Rule  =&gt; New Folder
+D        A
+E        B
+F        C
+
+the only thing we can know for sure during import is that the expected folders
+D,E,F do not exist. I could develop a mapping algorithm that tries to trace
+back from the child folder as many folders as possible in order to establish
+with reasonable certainty that the new folder is D instead of A.
+
+E.g.
+
+Rule target URL:
+mailbox://<a href="mailto:user@pop.vodafone.ie">user@pop.vodafone.ie</a>/Development/Mozilla/Addons/SmartTemplate/Support
+1) search for all folders containing
+&quot;Development/Mozilla/Addons/SmartTemplate/Support&quot; (URL minus account name) - 
+  if matches are found assume 1st is a match
+  no matches =&gt; continue with next step
+
+2) search for all folders containing &quot;Mozilla/Addons/SmartTemplate/Support&quot;
+(shortened URL minus account name)
+  if matches are found assume 1st is a match
+  no matches =&gt; continue with next step
+
+..etc
+
+5) search for all folders name &quot;Support&quot;
+  if only 1 match is found =&gt; success
+
+Each step is terminal but also if we have multiple matches then auto-mapping
+might become problematic, so I need some UI for this or somehow mark these
+filters as invalid - also if we cannot match the account with these, then I
+need to carefully consider where to import them (maybe they could be imported
+into Local Folder)
+
+As you can see I still need to flesh out the algorithm some more but also, more
+importantly, consider whether I can build a UI for the &quot;Manual remapping&quot; for
+the filters that cannot be mapped to any folder on the system. 
+
+One workaround could be not to import all filters for all accounts but let the
+user pick the account first and then only backup / import the filters for that
+account.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25844.html#c7">
+            #7</a> From 
+          <a href="mailto:dread_k2002&#64;yahoo.co.uk">Cosmin Blaga</a>
+          2016-03-06 23:48:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Probably the best, user friendly thing would be to present all folders to the
+user and let him decide.
+
+Local                     Import
+
+ImapMail                  ImapMail
+1  imap.googlemail.com    2   imap.something
+2  imap.mail.yahoo.com    1   imap.something.else
+
+And let him do the remapping somehow (like assigning a number to each one).
+And then you can compare every msgFilterRules.dat by the rules he gave.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25844.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-03-07 02:20:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c7">comment #7</a>)
+<span class="quote">&gt; Probably the best, user friendly thing would be to present all folders to the
+&gt; user and let him decide.
+&gt; 
+&gt; Local                     Import
+&gt; 
+&gt; ImapMail                  ImapMail
+&gt; 1  imap.googlemail.com    2   imap.something
+&gt; 2  imap.mail.yahoo.com    1   imap.something.else
+&gt; 
+&gt; And let him do the remapping somehow (like assigning a number to each one).
+&gt; And then you can compare every msgFilterRules.dat by the rules he gave.
+&gt; </span >
+
+Yes - listing all accounts is a good idea. I think the main decisions could
+probably be made before the export - one &quot;quick&quot; way would be to have the
+choice of having all filters in one file and conversely a choice of &quot;one file
+per mailbox&quot; which could just be named after the account name. The file itself
+can store whether it is is a &quot;single account&quot; or has multiple account rules.
+Then when reading the file I will probably read in the raw data and give a
+choice (if it contains multiple account rules).
+
+So remapping the _source_ folder can be done manually that way. Still as I
+often filter moving files across to another mailbox I need to gather all
+possible account destinations and have them mapped as well in the way you
+described.
+
+ Examples from my own msgFilterRules.dat files:
+
+
+actionValue=&quot;imap://user.name%<a href="mailto:40gmail.com@imap.googlemail.com">40gmail.com@imap.googlemail.com</a>/[QuickFolders]&quot;
+actionValue=&quot;imap://thunderbirddaily%<a href="mailto:40gmail.com@imap.gmail.com">40gmail.com@imap.gmail.com</a>/[Gmail]/Social/Twitter&quot;
+actionValue=&quot;mailbox://<a href="mailto:user_name40hotmail.com@pop3.live.com">user_name40hotmail.com@pop3.live.com</a>/Inbox/SQLServer%20Central&quot;
+actionValue=&quot;mailbox://<a href="mailto:user@pop.vodafone.ie">user@pop.vodafone.ie</a>/Development/Mozilla/AMO/Zig%20Boom&quot;
+actionValue=&quot;mailbox://<a href="mailto:user@pop.iol.ie">user@pop.iol.ie</a>/Jobs/_Surpass/Gerard&quot;
+actionValue=&quot;exquilla://<a href="mailto:user@eumail.avaya.com">user@eumail.avaya.com</a>/Inbox/Server%20Errors/BECS/Open%20Claims%20Reports&quot;
+
+
+From this, I could just gather a list of protocols+mailboxes and then let the
+user choose which ones they should be mapped to, using multiple account
+drop-downs.
+
+After this a list of matching (&amp; unmatched) folders for each account can be
+generated. A percentage of &quot;good&quot; folder matches would also give some security
+as to whether the imported rules will be successful. I wouldn't attempt to
+&quot;fix&quot; all the bad folders but could potentially use the filter names to flag
+invalid rules. E.g. by appending [it] (for invalid target) to the name. A
+(semi) automatic fix routine for these could then be written as a phase 2.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25844.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-12-12 12:30:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have assigned this feature as the next major feature to be added to
+quickFilters pro (3.5) as a premium function. Adding the freemium model helps
+pushing through difficult features like this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25844.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-05 04:59:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c9">comment #9</a>)
+<span class="quote">&gt; I have assigned this feature as the next major feature to be added to
+&gt; quickFilters pro (3.5) as a premium function. Adding the freemium model helps
+&gt; pushing through difficult features like this.
+&gt; </span >
+
+So a follow up - the premium version is released 
+( see  quickfilters.mozdev.org/version.html#3.4.2 )
+
+and also has sold a decent amount of licenses for Christmas, I am now actually
+activaly working on the backup / restore feature. I still would like to be able
+to merge in opld backups (to avoid losing newer filters) with the main problem
+of filters not having a unique identifier (nor a date stamp) which means if a
+filter is renamed in the meantime and I use the filter name as id then you will
+likely end up with duplicates. 
+
+Apart from that, overwriting the existing filters with their backed up versions
+(regardless of their age) may be good behavior for a strictly backup / restore
+scenario. For syncing, it may also be sufficient but it would be better if I
+could figure out a way to save date stamps with each filter (as it is done with
+passwords in firefox) so that we could give the users a choice of keeping more
+recent edits of their filters especially when syncing filters across two
+machines.
+
+The date stamp mechanism in my QuickPasswords addon makes sure to only
+overwrite entries with the same / older date stamp than in the backup file, so
+that recently changed passwords are not affected.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25844.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-07 04:09:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.5pre25.xpi" name="attach_8356" title="3.5 prerelease 25">Created an attachment (id=8356)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8356&amp;action=edit" title="3.5 prerelease 25">[details]</a></span>
+3.5 prerelease 25
+
+First test version, only SAVE works! load still needs to be implemented.
+
+I decided to store the filters as JSON format for readability and not the very
+convoluted way of msgFilterRules.dat
+
+To Do: 
+figure out a way of generating UID for each filter
+force Thunderbird to store date stamps in its own storage system
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25844.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-07 04:14:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >changed priority to P1 so we can implement this feature for the next official
+release of quickFilters
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25844.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-07 12:16:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.5pre38.xpi" name="attach_8357" title="3.5 prerelease 38">Created an attachment (id=8357)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8357&amp;action=edit" title="3.5 prerelease 38">[details]</a></span>
+3.5 prerelease 38
+
+Added some UI elements and logging ad improved file naming (added date stamp)
+
+note: only English AND German Locale are complete!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25844.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-02 11:59:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-3.5pre68.xpi" name="attach_8371" title="3.5 prerelease 68">Created an attachment (id=8371)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8371&amp;action=edit" title="3.5 prerelease 68">[details]</a></span>
+3.5 prerelease 68
+
+Added &quot;Load&quot; feature, first working version.
+
+I didn't test quite a few cases, so use at your own risk. Definitely don't know
+what is going to happen if a custom action is used. Old filters are currently
+not deleted, and restored filters are added at the top. So you can delete the
+original filters before import or go to the end of the &quot;new&quot; list and delete
+the &quot;remaining&quot; items.
+
+There is no &quot;intelligent merge&quot; or checking for existing filter names - filters
+will simply be duplicated for now if you load the same list twice.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25844.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-04-01 05:35:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c14">comment #14</a>)
+<span class="quote">&gt; Created an <span class=""><a href="quickFilters-tb-pb-sm-3.5pre68.xpi" name="attach_8371" title="3.5 prerelease 68">attachment (id=8371)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8371&amp;action=edit" title="3.5 prerelease 68">[details]</a></span> [details]
+&gt; 3.5 prerelease 68
+&gt; 
+&gt; Added &quot;Load&quot; feature, first working version.
+&gt; </span >
+Just a note: new filters are added at the TOP of the list, so existing filters
+will be shifted down and executed last. If you keep old filters in order to
+&quot;merge&quot; in a backup, make a note of the first existing filter name so you can
+find it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25844.html#c16">
+            #16</a> From 
+          <a href="mailto:david.r.southall&#64;gmail.com">Dave Southall</a>
+          2018-04-01 07:03:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi not sure if anyone has covered this but have you considered making the file
+format for the backup Gmail compatible as mailFilters.xml
+
+Regards Dave
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25844.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-04-01 07:48:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c16">comment #16</a>)
+<span class="quote">&gt; Hi not sure if anyone has covered this but have you considered making the file
+&gt; format for the backup Gmail compatible as mailFilters.xml
+&gt; 
+&gt; Regards Dave
+&gt; </span >
+
+no, not so far. It may be a little difficult at this stage (if you expect
+Thunderbird to read gmail filters that may be too much work...) but I am not
+currently aware of this format. How do you create them?
+
+Ideally I would like an option to sync across different accounts automatically
+but I wouldn't like to restrict this to gmail accounts only. Which means it
+would need a new mail filter standard or my own server (realistically about 3
+man months of development + investment, so this is high risk for me and very
+unlikely). AFAIK there is no syncable server supported filter standard outside
+of Outlook / Exchange.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25844.html#c18">
+            #18</a> From 
+          <a href="mailto:david.r.southall&#64;gmail.com">Dave Southall</a>
+          2018-04-01 07:56:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c17">comment #17</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25844.html#c16">comment #16</a>)
+&gt; &gt; Hi not sure if anyone has covered this but have you considered making the file
+&gt; &gt; format for the backup Gmail compatible as mailFilters.xml
+&gt; &gt; 
+&gt; &gt; Regards Dave
+&gt; &gt; 
+&gt; 
+&gt; no, not so far. It may be a little difficult at this stage (if you expect
+&gt; Thunderbird to read gmail filters that may be too much work...) but I am not
+&gt; currently aware of this format. How do you create them?
+&gt; 
+&gt; Ideally I would like an option to sync across different accounts automatically
+&gt; but I wouldn't like to restrict this to gmail accounts only. Which means it
+&gt; would need a new mail filter standard or my own server (realistically about 3
+&gt; man months of development + investment, so this is high risk for me and very
+&gt; unlikely). AFAIK there is no syncable server supported filter standard outside
+&gt; of Outlook / Exchange.
+&gt; </span >
+
+Yeah in Gmail under settings filters there is export and import options.
+Just a thought as you would need to change the format of the backup file from
+the json to the xml and the import to xml rather than json so it works both in
+your plugin and in gmail.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25844.html#c19">
+            #19</a> From 
+          <a href="mailto:david.r.southall&#64;gmail.com">Dave Southall</a>
+          2018-04-01 08:29:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25844.html#c18">comment #18</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25844.html#c17">comment #17</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25844.html#c16">comment #16</a>)
+&gt; &gt; &gt; Hi not sure if anyone has covered this but have you considered making the file
+&gt; &gt; &gt; format for the backup Gmail compatible as mailFilters.xml
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Regards Dave
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; no, not so far. It may be a little difficult at this stage (if you expect
+&gt; &gt; Thunderbird to read gmail filters that may be too much work...) but I am not
+&gt; &gt; currently aware of this format. How do you create them?
+&gt; &gt; 
+&gt; &gt; Ideally I would like an option to sync across different accounts automatically
+&gt; &gt; but I wouldn't like to restrict this to gmail accounts only. Which means it
+&gt; &gt; would need a new mail filter standard or my own server (realistically about 3
+&gt; &gt; man months of development + investment, so this is high risk for me and very
+&gt; &gt; unlikely). AFAIK there is no syncable server supported filter standard outside
+&gt; &gt; of Outlook / Exchange.
+&gt; &gt; 
+&gt; 
+&gt; Yeah in Gmail under settings filters there is export and import options.
+&gt; Just a thought as you would need to change the format of the backup file from
+&gt; the json to the xml and the import to xml rather than json so it works both in
+&gt; your plugin and in gmail.
+&gt; </span >
+
+By the way is this the standard you are looking for?
+<a href="https://en.wikipedia.org/wiki/Sieve_(mail_filtering_language">https://en.wikipedia.org/wiki/Sieve_(mail_filtering_language</a>)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25844.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-05-17 04:39:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ìmplemented: Version 3.5 Released May 3, 2018
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25844&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

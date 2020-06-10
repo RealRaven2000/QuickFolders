@@ -1,0 +1,63 @@
+Visible Interactions
+
+Alert
+Please add the term 'list-id' as a custom header to use this in a filter.
+
+Alert
+Exception in quickFilters.Worker.createFilter: searchTermList is null
+
+Console log
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+ Starting source folder validation for [xpconnect wrapped (nsISupports, nsIMsgFolder, nsIRDFResource, nsIMsgImapMailFolder)]
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+Validation passed: server of sourceFolder Inbox can have filters
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+messageList.length = 1
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+got msg; messageKey=423
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+Message(
+messageKey=423
+ target folder=A Games
+ message Id=E1grWa6-0009yL-Ds@smtp-04-tuk1.steampowered.com
+ author="Steam" <noreply@steampowered.com>
+ subject=An item on your Steam wishlist is on sale!
+ recipients=*edited*
+ filterAction=1
+ cc=
+ bcc=
+ author="Steam" <noreply@steampowered.com>)
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.474  [0 ms]   
+parsing msg header...
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.475  [1 ms]   
+emailAddress = noreply@steampowered.com, ccAddress = , bccAddress=
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.475  [0 ms]   
+message header parsed.
+ ----------
+quickFilters {CREATEFILTER} 14:42:44.475  [0 ms]   
+previewText=
+ ----------
+quickFilters [logTime init]
+remove replyto item from template list...
+ ----------
+quickFilters 14:42:44.674  [0 ms]   
+selectTemplateFromListTimer()
+ ----------
+quickFilters 14:42:52.801  [8326 ms]   
+getIdentityMailAddresses()
+ ----------
+quickFilters 14:42:52.802  [1 ms]   
+getIdentityMailAddresses() found account without identities: account2
+ ----------
+quickFilters {DEFAULT} 14:42:52.802  [0 ms]   
+getIdentityMailAddresses - retrieved 1 Addresses
+ ----------
+quickFilters {CREATEFILTER} 14:43:32.652  [39850 ms]   
+createFilterAsync - createFilter returned: -1

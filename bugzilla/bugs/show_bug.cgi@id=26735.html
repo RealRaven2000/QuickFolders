@@ -1,0 +1,1577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26735 &ndash; Mails list is limited to 3 rows and has whitespace below it.</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26735&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26735">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26735">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26735">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_26735">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26735</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Mails list is limited to 3 rows and has whitespace below it.</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2019-11-22 06:52:29</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26735&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2019-11-22 06:52:29">
+  <input type="hidden" name="longdesclength" value="25">
+  <input type="hidden" name="id" value="26735">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Mails list is limited to 3 rows and has whitespace below it.">Mails list is limited to 3 rows and has whitespace below it.
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26735.html">26735</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26735&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26735">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:panos.michalo&#64;gmail.com">Panos &lt;panos.michalo&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Screenshot.jpg.1"
+               title="View the content of the attachment">
+          <b>Max mails list and whitespace below it.</b></a>
+
+          <span class="bz_attach_extra_info">
+              (177.64 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8708"
+               title="Go to the comment associated with the attachment">2019-11-19 13:00</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8708&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="p1.jpg"
+               title="View the content of the attachment">
+          <b>p1 (grey area picked)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (498.86 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8709"
+               title="Go to the comment associated with the attachment">2019-11-20 06:21</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8709&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="p2.jpg"
+               title="View the content of the attachment">
+          <b>p2 (grey area enlarged)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (322.94 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8710"
+               title="Go to the comment associated with the attachment">2019-11-20 06:22</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8710&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="p3.jpg"
+               title="View the content of the attachment">
+          <b>p3 (grey area &#64; Inspector)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (534.65 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8711"
+               title="Go to the comment associated with the attachment">2019-11-20 06:23</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8711&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="messagepanebox.jpg"
+               title="View the content of the attachment">
+          <b>messagepanebox picked</b></a>
+
+          <span class="bz_attach_extra_info">
+              (357.91 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8712"
+               title="Go to the comment associated with the attachment">2019-11-20 07:11</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8712&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="singlemessage.jpg"
+               title="View the content of the attachment">
+          <b>singlemessage picked</b></a>
+
+          <span class="bz_attach_extra_info">
+              (346.03 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8713"
+               title="Go to the comment associated with the attachment">2019-11-20 07:12</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8713&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="messagepanewrapper.jpg"
+               title="View the content of the attachment">
+          <b>messagepanewrapper picked</b></a>
+
+          <span class="bz_attach_extra_info">
+              (363.50 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26735.html#attach_8714"
+               title="Go to the comment associated with the attachment">2019-11-20 07:12</a>,
+
+            <a href="mailto:panos.michalo&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Panos
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8714&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26735&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26735&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26735">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26735">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26735">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26735">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26735.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2019-11-19 13:00
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Screenshot.jpg.1" name="attach_8708" title="Max mails list and whitespace below it.">Created an attachment (id=8708)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8708&amp;action=edit" title="Max mails list and whitespace below it.">[details]</a></span>
+Max mails list and whitespace below it.
+
+Right after Thunderbird's update to v.68.2.2, QuickFolders causes the mails
+list to be limited to only 3 rows. If I try to increase them by dragging down
+the list's low border, an empty space appears, up to the message pane. If
+QuickFolders is disabled or removed, the problem disappears.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26735.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-19 13:32:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, very strange - I had another user repoting a &quot;gray area&quot; like this, cannot
+reproduce it right now - is there any way we could arrange a remote desktop
+session for some testing?
+
+Alternatively, if you know how to use developer tools / inspector, I would be
+very interested in the id / location of the &quot;gray element&quot; above the email
+header.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26735.html#c2">
+            #2</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-19 22:38:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26735.html#c1">comment #1</a>)
+<span class="quote">&gt; Ok, very strange - I had another user repoting a &quot;gray area&quot; like this, cannot
+&gt; reproduce it right now - is there any way we could arrange a remote desktop
+&gt; session for some testing?
+&gt; 
+&gt; Alternatively, if you know how to use developer tools / inspector, I would be
+&gt; very interested in the id / location of the &quot;gray element&quot; above the email
+&gt; header.
+&gt; </span >
+
+Hello Axel,
+I can use an inspector tool, if you give a few instructions.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26735.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 05:12:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >To inspect THunderbird open Tools &gt; Developer Tools &gt; Developer Toolbox (or
+press CTRL+Shift+I)
+Click the Inspector tab, and the &quot;Picker&quot; tool on the top left.
+Click on the gray area, making sure it is highlighted with a red dashed line
+around it. If you hit a child element and can't access the exact element, you
+can use the breadcrumb tree at the bottom, e.g.
+
+
+rows &gt; row#CompatHeader_collapsed2LtoCcBccRow &gt;
+mail-multi-emailheaderfiel#CompactHeader... &gt; hbox.headerBlueBox &gt;
+description.headerValue
+
+you can click any of these items to highlight the appropriate element
+
+On the right hand side you will see tabs for
+- CSS Rules (most likely containing the reason for behavior either in the
+element or a parent or a sibling element. Finding the correct one is often
+difficult. It sometimes helps testing by adding new rules into the element{ ...
+} are on top, such as min-height / max-height etc.)
+- Layout  (shows box model = dimensions and margin / padding)
+- Computed Styles ... shows (mostly) the rules that are actually applied and
+maybe rules that are overriden by others.
+
+Note, you may have to enable &quot;Show Browser Styles&quot; in global settings (three
+dots top right) in order to see all style rules that Thunderbird applies.
+
+For me the most important information is
+- which element is the gray area
+- what kind of box model valus has it got (height / width / paddings / margin)
+- What's its parent? And what's the parent of the parent.
+- does it have a sibling before it or is it the first Child?
+- what's the next sibling (if any)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26735.html#c4">
+            #4</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 06:21:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="p1.jpg" name="attach_8709" title="p1 (grey area picked)">Created an attachment (id=8709)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8709&amp;action=edit" title="p1 (grey area picked)">[details]</a></span>
+p1 (grey area picked)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26735.html#c5">
+            #5</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 06:22:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="p2.jpg" name="attach_8710" title="p2 (grey area enlarged)">Created an attachment (id=8710)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8710&amp;action=edit" title="p2 (grey area enlarged)">[details]</a></span>
+p2 (grey area enlarged)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26735.html#c6">
+            #6</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 06:23:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="p3.jpg" name="attach_8711" title="p3 (grey area @ Inspector)">Created an attachment (id=8711)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8711&amp;action=edit" title="p3 (grey area @ Inspector)">[details]</a></span>
+p3 (grey area @ Inspector)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26735.html#c7">
+            #7</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 06:24:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+Following your instructions, I used the Picker to select the grey area (see
+p1.jpg).
+
+I also noticed that if I drag down the top of the Message Pane, the grey area
+increases its height up to 405 pixels and then the Mails list starts showing
+more rows (see p2.jpg).
+
+In the Inspector, I located the following info (see p3.jpg):
+  a.  the gray area is element “messagepaneboxwrapper”
+  b.  its values are: height=405, width=953, paddings=border=margins=0 (all
+around)
+  c.  its parents seem to be:
+       “tabmail-container”-&gt;
+       “tabmail”-&gt;
+        “tabmail-tabbox”-&gt;
+        “tabpanelcontainer”-&gt;
+        “mailContent”-&gt;
+        “messengerBox”-&gt;
+        “messagesBox”-&gt;
+        (grey area)
+  d.  it seems to be the 4th (last) out of 4 siblings
+       the 1st seems to be “quick-filter-bar”
+       the 2nd seems to be “displayDeck”
+       the 3rd seems to be “messenger-notification-footer”
+
+After that, I changed the height of the grey area from 405 to 4 and the problem
+seemed to be solved. However, when I restarted Thunderbird, the problem
+reappeared and the area’s height was now 460. I tried to locate this setting
+in Rules and Computed, but found nothing.
+
+How can I save my change?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26735.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 06:47:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26735.html#c7">comment #7</a>)
+<span class="quote">&gt; 
+&gt; After that, I changed the height of the grey area from 405 to 4 and the problem
+&gt; seemed to be solved. However, when I restarted Thunderbird, the problem
+&gt; reappeared and the area’s height was now 460. I tried to locate this setting
+&gt; in Rules and Computed, but found nothing.
+&gt; 
+&gt; How can I save my change?
+&gt; </span >
+
+You can't &quot;save&quot; positions, they are determined by CSS rules. We need to find
+out what rules cause this to be broken on your system.
+the #messagepaneboxwrapper element should go from the top of the header to the
+bottom of the preview box. In your case it seems to be &quot;shifted up&quot;.
+
+It contains a child element #messagepanebox which again should cover the same
+area. 
+
+Within that there are a few children, normally you should see only the
+#singlemessage (unless you have multiple emails highlighted)
+
+#singlemessage contains the #msgHeaderView (header area) and the
+#messagepanewrapper which is the mail preview area. underneath the preview area
+are a few elements that are normally hidden, such as #attachmentView,
+#attachment-splitter, #FindToolbar
+
+do any of the three above (messagepanebox,singlemessage, messagepanewrapper)
+extend to the bottom of the main window? Or are they all shifted &quot;up&quot;?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26735.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 06:50:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >once you have investigated messageapanewrapper, make sure none of the elements
+underneath it (attachmentView, FindToolbar) take up any height (or are
+highlighted visibly with the dashed red line when you click on them)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26735.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 06:54:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;   d.  it seems to be the 4th (last) out of 4 siblings
+&gt;        the 1st seems to be “quick-filter-bar”
+&gt;        the 2nd seems to be “displayDeck”
+&gt;        the 3rd seems to be “messenger-notification-footer”</span >
+
+in my system messenger-notification-footer is _after_ the
+messagepaneboxwrapper. what happens when you delete it? (don't worry it's not
+permanent)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26735.html#c11">
+            #11</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 07:11:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="messagepanebox.jpg" name="attach_8712" title="messagepanebox picked">Created an attachment (id=8712)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8712&amp;action=edit" title="messagepanebox picked">[details]</a></span>
+messagepanebox picked
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26735.html#c12">
+            #12</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 07:12:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="singlemessage.jpg" name="attach_8713" title="singlemessage picked">Created an attachment (id=8713)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8713&amp;action=edit" title="singlemessage picked">[details]</a></span>
+singlemessage picked
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26735.html#c13">
+            #13</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 07:12:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="messagepanewrapper.jpg" name="attach_8714" title="messagepanewrapper picked">Created an attachment (id=8714)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8714&amp;action=edit" title="messagepanewrapper picked">[details]</a></span>
+messagepanewrapper picked
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26735.html#c14">
+            #14</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 07:15:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >messagepanebox,singlemessage, messagepanewrapper seem to be ok (see pics).
+attachmentView, FindToolbar take up no height (are not highlighted visibly).
+I deleted &quot;messenger-notification-footer&quot;, but nothing seems to change.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26735.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 07:19:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >So it looks like messagepanebox is in the correct position (what height is
+shown in Layout? Does it have margin? Are there any elements before it?), but
+its parent element messagepaneboxwrapper isn't? Does its next sibling
+#messenger-notification-footer have any height?(In reply to <a href="show_bug.cgi@id=26735.html#c14">comment #14</a>)
+<span class="quote">&gt; messagepanebox,singlemessage, messagepanewrapper seem to be ok (see pics).
+&gt; attachmentView, FindToolbar take up no height (are not highlighted visibly).
+&gt; I deleted &quot;messenger-notification-footer&quot;, but nothing seems to change.
+&gt; </span >
+
+So it looks like messagepanebox is in the correct position (what height is
+shown in Layout? Does it have margin? Are there any elements before it?), but
+its parent element messagepaneboxwrapper isn't? Does its next sibling
+#messenger-notification-footer have any height?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=26735.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 07:20:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >are you using a very small screen? is there any way you can open Thunderbird
+with a bigger window? I believe THunderbird does some &quot;optimisations&quot; on small
+screens / windows that may mess things up... (these are all long shots, not
+sure what's going on)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=26735.html#c17">
+            #17</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 10:12:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Let me back up a bit.
+This is maybe a stupid observation, but I am seeing two &quot;messagepaneboxwrapper&quot;
+elements. The one I found using the Picker highlights the shifted-up grey area
+and the second one highlights the Message pane.
+The first one has the parents and siblings I described before.
+The second one has &quot;mailContent&quot; as a direct parent. It is the 3rd out of 3
+siblings, the other two being &quot;mail-toolbox&quot; and &quot;messengerBox&quot;. Is that
+relevant?
+
+Now, replying again to your previous messages:
+The first &quot;messagepaneboxwrapper&quot; (the one highlighting the grey area) has a
+child named &quot;messagepanebox&quot;, which highlights nothing when clicked. The later
+has no child named &quot;singlemessage&quot; and therefore no &quot;messagepanewrapper&quot;.
+
+The second &quot;messagepaneboxwrapper&quot; (the one highlighting the Message pane) has
+a child named &quot;messagepanebox&quot;, which highlights the same area (Message pane).
+This does have a child named &quot;singlemessage&quot; also highlighting the Message pane
+and the later also has a child named &quot;messagepanewrapper&quot; highlighting the
+Message pane, too.
+
+As mentioned before, there is only one instance of &quot;attachmentView&quot; and
+&quot;FindToolbar&quot; and none of them highlights anything.
+
+&quot;messenger-notification-footer&quot;, in my system, is before both
+&quot;messagepaneboxwrapper&quot;'s.
+
+As to your last messages:
+The first &quot;messagepanebox&quot; is 0x363 and the second is 1039x395.5. Both have 0
+padding, border and margins and no siblings 
+
+&quot;messenger-notification-footer&quot; is 1038x0 and is a sibling only to the first
+&quot;messagepaneboxwrapper&quot;.
+
+I am trying this on a laptop with an additional monitor, both 1080p.
+Maximizing Thunderbird does not rectify the problem.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=26735.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 11:36:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >+(In reply to <a href="show_bug.cgi@id=26735.html#c17">comment #17</a>)
+<span class="quote">&gt; Let me back up a bit.
+&gt; This is maybe a stupid observation, but I am seeing two &quot;messagepaneboxwrapper&quot;
+&gt; elements. The one I found using the Picker highlights the shifted-up grey area
+&gt; and the second one highlights the Message pane.
+&gt; The first one has the parents and siblings I described before.
+&gt; The second one has &quot;mailContent&quot; as a direct parent. It is the 3rd out of 3
+&gt; siblings, the other two being &quot;mail-toolbox&quot; and &quot;messengerBox&quot;. Is that
+&gt; relevant?
+&gt; 
+&gt; Now, replying again to your previous messages:
+&gt; The first &quot;messagepaneboxwrapper&quot; (the one highlighting the grey area) has a
+&gt; child named &quot;messagepanebox&quot;, which highlights nothing when clicked. The later
+&gt; has no child named &quot;singlemessage&quot; and therefore no &quot;messagepanewrapper&quot;.
+&gt; 
+&gt; The second &quot;messagepaneboxwrapper&quot; (the one highlighting the Message pane) has
+&gt; a child named &quot;messagepanebox&quot;, which highlights the same area (Message pane).
+&gt; This does have a child named &quot;singlemessage&quot; also highlighting the Message pane
+&gt; and the later also has a child named &quot;messagepanewrapper&quot; highlighting the
+&gt; Message pane, too.</span >
+
+Are both messagepaneboxwrapper elements children of
+&lt;box id=&quot;messagesBox&quot;&gt; ?
+
+When I overlay my elements these (thunderbird) elements have to exist. The
+elements are nested like this:
+&lt;box id=&quot;messagesBox&quot;&gt;
+  &lt;hbox id=&quot;messagepaneboxwrapper&quot;&gt;
+    &lt;vbox id=&quot;messagepanebox&quot;&gt;
+    &lt;/vbox&gt;
+  &lt;/hbox&gt;
+&lt;/box&gt;
+
+the element names (box, hbox, vbox) and the ids are crucial for this to work.
+If you find different parents then these are not elements that QuickFolders
+overlay has added or somthing went wrong during the overlay process.
+
+
+<span class="quote">&gt; 
+&gt; As mentioned before, there is only one instance of &quot;attachmentView&quot; and
+&gt; &quot;FindToolbar&quot; and none of them highlights anything.</span >
+
+They are only visible when needed.
+
+<span class="quote">&gt; 
+&gt; &quot;messenger-notification-footer&quot;, in my system, is before both
+&gt; &quot;messagepaneboxwrapper&quot;'s.</span >
+
+which is a bit strange, sounds like a second messagepaneboxwrapper was inserted
+by an overlay (have you got any themes / other Add-ons).
+
+I am not sure about the #mailContent element, need to investigate that.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=26735.html#c19">
+            #19</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 12:03:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+The first one (highlighting the grey area) is indeed a child of &quot;messagesBox&quot;.
+&lt;box id=&quot;messagesBox&quot;&gt;
+  &lt;hbox id=&quot;messagepaneboxwrapper&quot;&gt;
+    &lt;vbox id=&quot;messagepanebox&quot;&gt;
+    &lt;/vbox&gt;
+  &lt;/hbox&gt;
+&lt;/box&gt;
+
+The second one (highlighting the Message pane) is a child of &quot;mailContent&quot;.
+&lt;box id=&quot;mailContent&quot;&gt;
+  &lt;hbox id=&quot;messagepaneboxwrapper&quot;&gt;
+    &lt;vbox id=&quot;messagepanebox&quot;&gt;
+    &lt;/vbox&gt;
+  &lt;/hbox&gt;
+&lt;/box&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=26735.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-20 12:22:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26735.html#c19">comment #19</a>)
+<span class="quote">&gt; The first one (highlighting the grey area) is indeed a child of &quot;messagesBox&quot;.
+&gt; &lt;box id=&quot;messagesBox&quot;&gt;
+&gt;   &lt;hbox id=&quot;messagepaneboxwrapper&quot;&gt;
+&gt;     &lt;vbox id=&quot;messagepanebox&quot;&gt;
+&gt;     &lt;/vbox&gt;
+&gt;   &lt;/hbox&gt;
+&gt; &lt;/box&gt;
+&gt; 
+&gt; The second one (highlighting the Message pane) is a child of &quot;mailContent&quot;.
+&gt; &lt;box id=&quot;mailContent&quot;&gt;
+&gt;   &lt;hbox id=&quot;messagepaneboxwrapper&quot;&gt;
+&gt;     &lt;vbox id=&quot;messagepanebox&quot;&gt;
+&gt;     &lt;/vbox&gt;
+&gt;   &lt;/hbox&gt;
+&gt; &lt;/box&gt;
+&gt; </span >
+
+I found this:
+
+<a href="https://dxr.mozilla.org/comm-release/source/mail/base/content/messenger.xul#489">https://dxr.mozilla.org/comm-release/source/mail/base/content/messenger.xul#489</a>
+
+with the following comment:
+  &quot;mailContent is the container used for the &quot;wide&quot; layout. Normally, all it
+contains is the &quot;messengerBox&quot; box.  However, in &quot;wide&quot; mode the message pane
+and its splitter transplant themselves into the box (respectively,
+messagepanebox and threadpane-splitter).  This gives us the folder pane next to
+the thread view, with the message pane/reader beneath both of them&quot;
+
+are you in wide mode? what happens when you toggle the folder pane (view  -
+Layout - folder pane) is the folder pane cut off by the preview / gray area?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=26735.html#c21">
+            #21</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-20 12:37:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+All my results were under wide mode, as seen in the screeshots.
+The problem still exists with the folder pane on.
+In this case, the folder pane is mixed with the message headers and the grey
+area does not go into the folder pane.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=26735.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-22 05:58:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am moving this issue to github:
+
+<a href="https://github.com/RealRaven2000/QuickFolders/issues/14">https://github.com/RealRaven2000/QuickFolders/issues/14</a>
+
+I already had a successful test with another user, and will upload a test
+version there shortly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=26735.html#c23">
+            #23</a> From 
+          <a href="mailto:panos.michalo&#64;gmail.com">Panos</a>
+          2019-11-22 06:25:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+QuickFolders-wx-4.17.2pre6 worked great for me, too.
+Should I mark the bug as &quot;fixed&quot;?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=26735.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-11-22 06:52:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26735.html#c23">comment #23</a>)
+<span class="quote">&gt; QuickFolders-wx-4.17.2pre6 worked great for me, too.
+&gt; Should I mark the bug as &quot;fixed&quot;?
+&gt; </span >
+
+No it's fine - I will mark as fixed when I release it officially!
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26735&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

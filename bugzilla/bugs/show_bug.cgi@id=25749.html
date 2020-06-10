@@ -1,0 +1,1691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25749 &ndash; &quot;Fill search box when opening password manager&quot; does not work</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25749&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25749">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25749">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25749">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25749">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25749</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">&quot;Fill search box when opening password manager&quot; does not work</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-04-22 17:18:39</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25749&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-04-22 17:18:39">
+  <input type="hidden" name="longdesclength" value="17">
+  <input type="hidden" name="id" value="25749">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="&quot;Fill search box when opening password manager&quot; does not work">
+        <span title="&quot;Fill search box when opening password manager&quot; does not work">&quot;Fill search box when opening password manager&quot; does not ...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25749.html">25749</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickpasswords">quickpasswords
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickpasswords">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25749&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25749">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:archangel179&#64;gmail.com">a &lt;archangel179&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axel.grude&#64;gmail.com">axel.grude&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="debug.PNG"
+               title="View the content of the attachment">
+          <b>debug window</b></a>
+
+          <span class="bz_attach_extra_info">
+              (67.20 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25749.html#attach_7837"
+               title="Go to the comment associated with the attachment">2014-04-16 11:40</a>,
+
+            <a href="mailto:archangel179&#64;gmail.com"
+               title="Write an email to the creator of the attachment">a
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7837&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickPasswords3.3pre11.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.3 prerelease 11</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (211.86 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25749.html#attach_7838"
+               title="Go to the comment associated with the attachment">2014-04-16 13:35</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7838&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickPasswords3.2.1pre27.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.2.1 prerelease 27</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (213.04 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25749.html#attach_7846"
+               title="Go to the comment associated with the attachment">2014-04-19 17:48</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7846&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QuickPasswords3.2.1pre30.xpi"
+               title="View the content of the attachment">
+          <b>3.2.1 prerelease 30</b></a>
+
+          <span class="bz_attach_extra_info">
+              (213.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25749.html#attach_7849"
+               title="Go to the comment associated with the attachment">2014-04-19 20:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7849&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25749.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25749&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25749&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25749">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25749">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25749">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25749">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25749.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-04-15 11:27
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >In preferences, &quot;Fill search box when opening password manager&quot; option exists.
+
+Though it is checked, serach box not filled when opening.
+
+after opening, manually hitting the button works.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25749.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-15 11:59:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >As a workaround for the  moment, can you try to increase the &quot;Delay time for
+password manager&quot; to 2000? 
+
+If it doesn't work please install console2 and look at the tools &gt; developer &gt;
+error console.
+
+Enable &quot;chrome&quot; logging and disable &quot;content&quot; logging. You can select and copy
+the output from the error console vie right-click menu.
+
+
+Also click on QuickPasswords Options &gt; Support tab and enable the [x] Debug
+checkbox. Rightclick the checkbox and enable the debug setting
+
+extensions.quickpasswords.debug.Manager
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25749.html#c2">
+            #2</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-16 10:52:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >sorry for delay.
+
+Increasing delay time made no difference.
+
+Here is console2 log.
+-------------------------------------------------------------------
+
+QuickPasswords {DEFAULT} 19:1:18.869  [1397642478869 ms]   
+QuickPasswords 3.1-AddonManagerVersionPending running on Firefox Version 28.0.
+OS: winnt
+ ----------
+QuickPasswords {MANAGER} 19:1:18.869  [0 ms]   
+QuickPasswords.Manager.init()
+ ----------
+QuickPasswords {MANAGER} 19:1:18.869  [0 ms]   
+Adding event listeners to signonsTree
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.0  [131 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+AddonManager: QuickPasswords extension's version is 3.1
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+QuickPasswords.VersionProxy() - DETECTED QuickPasswords Version 3.1
+Running on Firefox Version 28.0
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [1 ms]   
+AddonManager retrieved Version number: 3.1
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+checkfirstRun
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+Current QuickPasswords Version: 3.1
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+AddonManager retrieved Version number: 3.1
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+checkfirstRun
+ ----------
+QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+Current QuickPasswords Version: 3.1
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25749.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-16 11:32:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25749.html#c2">comment #2</a>)
+<span class="quote">&gt; sorry for delay.
+&gt; 
+&gt; Increasing delay time made no difference.
+&gt; 
+&gt; Here is console2 log.
+&gt; -------------------------------------------------------------------
+&gt; 
+&gt; QuickPasswords {DEFAULT} 19:1:18.869  [1397642478869 ms]   
+&gt; QuickPasswords 3.1-AddonManagerVersionPending running on Firefox Version 28.0.
+&gt; OS: winnt
+&gt;  ----------
+&gt; QuickPasswords {MANAGER} 19:1:18.869  [0 ms]   
+&gt; QuickPasswords.Manager.init()
+&gt;  ----------
+&gt; QuickPasswords {MANAGER} 19:1:18.869  [0 ms]   
+&gt; Adding event listeners to signonsTree
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.0  [131 ms]   
+&gt; ================================================
+&gt; ================================================
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+&gt; AddonManager: QuickPasswords extension's version is 3.1
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+&gt; QuickPasswords.VersionProxy() - DETECTED QuickPasswords Version 3.1
+&gt; Running on Firefox Version 28.0
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.0  [0 ms]   
+&gt; ================================================
+&gt; ================================================
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [1 ms]   
+&gt; AddonManager retrieved Version number: 3.1
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+&gt; checkfirstRun
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+&gt; Current QuickPasswords Version: 3.1
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+&gt; AddonManager retrieved Version number: 3.1
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+&gt; checkfirstRun
+&gt;  ----------
+&gt; QuickPasswords {DEFAULT} 19:1:19.1  [0 ms]   
+&gt; Current QuickPasswords Version: 3.1
+&gt; </span >
+I don't see any &quot;Manager&quot; message here, are you sure you enabled 
+extensions.quickpasswords.debug.Manager ?
+
+Also I would suggest you update your Addon to the latest version (3.2) - go to
+Fiurefox Menu &gt; Addons, find QuickPasswords and click [Update]
+
+The Debug checkbox is now on the second tab of the options dialog, right-click
+it for advanced debugging options.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25749.html#c4">
+            #4</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-16 11:40:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="debug.PNG" name="attach_7837" title="debug window">Created an attachment (id=7837)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7837&amp;action=edit" title="debug window">[details]</a></span>
+debug window
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25749.html#c5">
+            #5</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-16 11:45:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, I updated QuickPasswords to 3.2.
+And the bug still remains.
+
+I attached image of debug window. I set extensions.quickpasswords.debug.manager
+as true. Is it OK?
+
+Here is log of 3.2 version.
+
+I think &quot;QuickPasswords {MANAGER}&quot; is a message of &quot;Manager&quot;... Am I right?
+------------------------------------------------------------------------------
+
+QuickPasswords  19:46:52.325  [1397645212325 ms]   
+QuickPasswords.onLoad()
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.325  [0 ms]   
+QuickPasswords 3.2-AddonManagerVersionPending running on Firefox Version 28.0.
+OS: winnt
+ ----------
+QuickPasswords {MANAGER} 19:46:52.325  [0 ms]   
+QuickPasswords.Manager.init()
+ ----------
+QuickPasswords {MANAGER} 19:46:52.325  [0 ms]   
+Adding event listeners to signonsTree
+ ----------
+QuickPasswords {MANAGER} 19:46:52.326  [1 ms]   
+initProtectionButton() - protection = false
+ ----------
+QuickPasswords  19:46:52.326  [0 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=chrome://passwordmgr/content/passwordManager.xul
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [133 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+AddonManager: QuickPasswords extension's version is 3.2
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+QuickPasswords.VersionProxy() - DETECTED QuickPasswords Version 3.2
+Running on Firefox Version 28.0
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+AddonManager retrieved Version number: 3.2
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+checkfirstRun
+ ----------
+QuickPasswords {DEFAULT} 19:46:52.459  [0 ms]   
+Current QuickPasswords Version: 3.2
+ ----------
+QuickPasswords  19:46:53.327  [868 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=null
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25749.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-16 13:32:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25749.html#c5">comment #5</a>)
+<span class="quote">&gt; Ok, I updated QuickPasswords to 3.2.
+&gt; And the bug still remains.
+&gt; 
+&gt; I attached image of debug window. I set extensions.quickpasswords.debug.manager
+&gt; as true. Is it OK?</span >
+
+yes it is - I will upload a test version with more debugging output shortly
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25749.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-16 13:35:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickPasswords3.3pre11.xpi" name="attach_7838" title="3.3 prerelease 11">Created an attachment (id=7838)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7838&amp;action=edit" title="3.3 prerelease 11">[details]</a></span>
+3.3 prerelease 11
+
+Here is a version with more debug information
+
+please also enable the new debug setting:
+extensions.quickpasswords.debug.uriContext
+
+Looks like I am only interested in the log up until QuickPasswords.onLoad().
+The URI is retrieved before the window is loaded. Make sure you do not have
+&quot;Private Browsing&quot; switched on, otherwise QuickPasswords won't give you a
+complete log.
+
+Expected results:
+
+QuickPasswords {DEFAULT} 13:41:33.3  [31941 ms]   
+getURIcontext()
+ ----------
+QuickPasswords {URICONTEXT} 13:41:33.3  [0 ms]   
+content.location = <span class="bz_closed"><a href="show_bug.cgi@id=25749.html" title="RESOLVED FIXED - &quot;Fill search box when opening password manager&quot; does not work">https://www.mozdev.org/bugs/show_bug.cgi?id=25749</a></span>
+ ----------
+QuickPasswords {URICONTEXT} 13:41:33.3  [0 ms]   
+content.location.host = www.mozdev.org
+ ----------
+QuickPasswords {URICONTEXT} 13:41:33.3  [0 ms]   
+lastContentLocation = www.mozdev.org
+ ----------
+QuickPasswords {DEFAULT} 13:41:33.3  [0 ms]   
+Determined Domain from Host String:mozdev.org
+ ----------
+QuickPasswords {URICONTEXT} 13:41:33.3  [0 ms]   
+returning sBaseDomain = mozdev.org
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25749.html#c8">
+            #8</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-16 17:00:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This is test version log.
+
+It seems uricontext does not occurs...
+
+btw, I found an workaround.
+
+disable all extension, enable quickpasswords, and enable the others.
+
+I think a kind of conflict might occured during Firefox syncing.
+
+-------------------------------------------------------------------------------
+QuickPasswords  1:2:31.426  [1397664151426 ms]   
+QuickPasswords.onLoad()
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.426  [0 ms]   
+QuickPasswords 3.2-AddonManagerVersionPending running on Firefox Version 28.0.
+OS: winnt
+ ----------
+QuickPasswords {MANAGER} 1:2:31.426  [0 ms]   
+QuickPasswords.Manager.init()
+ ----------
+QuickPasswords {MANAGER} 1:2:31.426  [0 ms]   
+Adding event listeners to signonsTree
+ ----------
+QuickPasswords {MANAGER} 1:2:31.426  [0 ms]   
+initProtectionButton() - protection = false
+ ----------
+QuickPasswords  1:2:31.427  [1 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=chrome://passwordmgr/content/passwordManager.xul
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [77 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+AddonManager: QuickPasswords extension's version is 3.2
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+QuickPasswords.VersionProxy() - DETECTED QuickPasswords Version 3.2
+Running on Firefox Version 28.0
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+================================================
+================================================
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+AddonManager retrieved Version number: 3.2
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+checkfirstRun
+ ----------
+QuickPasswords {DEFAULT} 1:2:31.504  [0 ms]   
+Current QuickPasswords Version: 3.2
+ ----------
+QuickPasswords  1:2:32.437  [933 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=null
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25749.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-16 21:12:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25749.html#c8">comment #8</a>)
+<span class="quote">&gt; This is test version log.
+&gt; 
+&gt; It seems uricontext does not occurs...
+&gt; 
+&gt; btw, I found an workaround.
+&gt; 
+&gt; disable all extension, enable quickpasswords, and enable the others.
+&gt; 
+&gt; I think a kind of conflict might occured during Firefox syncing.
+&gt; </span >
+that is really strange, can you tell me exactly
+
+1. Which version of Firefox are you using
+2. What other addons (that might be related to passwords / sync or context
+menu)
+3. How do you get the password manager, button or via right-click menu?
+
+Try an alternative version of starting the password manager (right-click
+textbox if you were using the toolbar buttons or vice versa)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25749.html#c10">
+            #10</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-19 16:27:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >1. FF 28.0 (win x86)
+
+2. activated extensions:
+adblock plus
+add to amazon wish button
+amazon price tracker - keepa.com
+autopager
+cacheviewer
+cheevos
+firebug
+firegestures
+flashgot
+ie tab 2
+image search options
+location bar enhancer
+mozilla archive format
+noscript
+pwgen - password generator
+quick translator
+quickpasswords
+saved password editor
+session manager
+show file size2
+tab mix plus
+tab scope
+textareacache
+thumbnail zoom plus
+twitter address bar search 1
+user agent overrider
+
+3. usally I use it by button. but right-clicking had same problem...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25749.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 17:48:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickPasswords3.2.1pre27.xpi" name="attach_7846" title="3.2.1 prerelease 27">Created an attachment (id=7846)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7846&amp;action=edit" title="3.2.1 prerelease 27">[details]</a></span>
+3.2.1 prerelease 27
+
+Can you please try with this newer version? Maybe you onbly need to disable the
+passwords generator to see if it helps
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25749.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-19 20:55:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickPasswords3.2.1pre30.xpi" name="attach_7849" title="3.2.1 prerelease 30">Created an attachment (id=7849)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7849&amp;action=edit" title="3.2.1 prerelease 30">[details]</a></span>
+3.2.1 prerelease 30
+
+Better window determination routine. Should work a little better than previous
+prerelease (27), although not sure if it will fix this issue in your case yet.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25749.html#c13">
+            #13</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-22 06:46:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >prerelease 30 has same problem.
+
+I found that after disabling &quot;Saved password editor&quot;, quickpasswords works OK.
+
+I think saved password editor makes some conflict when installed by syncing.
+(may it because While syncing, quick passwords and saved password editor are
+intalled at the same time...)
+
+----------------------------------------------
+
+QuickPasswords {FIRSTRUN} 14:49:39.974  [1398145779974 ms]   
+Util.checkVersionFirstRun() - mExtensionVer = null
+ ----------
+QuickPasswords  14:49:39.974  [0 ms]   
+QuickPasswords.onLoad()
+ ----------
+QuickPasswords {CONTEXTMENU} 14:49:39.974  [0 ms]   
+searched contentArea context menu: not found.
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:39.975  [1 ms]   
+Util.VersionProxy() started.
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:39.975  [0 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+QuickPasswords {MANAGER} 14:49:39.975  [0 ms]   
+QuickPasswords.Manager.init()
+ ----------
+QuickPasswords {MANAGER} 14:49:39.975  [0 ms]   
+Adding event listeners to signonsTree
+ ----------
+QuickPasswords {MANAGER} 14:49:39.975  [0 ms]   
+initProtectionButton() - protection = false
+ ----------
+QuickPasswords  14:49:39.975  [0 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=chrome://passwordmgr/content/passwordManager.xul
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [70 ms]   
+try to get setting: getCharPref(version)
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+try to get setting: getBoolPref(firstRun)
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+try to get setting: getBoolPref(enablefirstRuns)
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+Settings retrieved:
+previous version=3.2.1
+current version=3.2.1pre30
+firstRun=false
+debugfirstRun=false
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+finally - firstRun=false
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+finally - pureVersion=3.2.1
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+finally - versionPage=<a href="http://quickpasswords.mozdev.org/version.html#3.2.1">http://quickpasswords.mozdev.org/version.html#3.2.1</a>
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+checkfirstRun: previous=3.2.1, current = 3.2.1pre30
+ ----------
+QuickPasswords {FIRSTRUN} 14:49:40.45  [0 ms]   
+prev!=current -&gt; just a reload of same version - prev=3.2.1, current =
+3.2.1pre30
+ ----------
+QuickPasswords  14:49:40.975  [930 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=null
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25749.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-22 09:14:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25749.html#c13">comment #13</a>)
+<span class="quote">&gt; prerelease 30 has same problem.
+&gt; 
+&gt; I found that after disabling &quot;Saved password editor&quot;, quickpasswords works OK.
+&gt; </span >
+It must be another addon - I have always ran Saved Password Editor alongside
+QuickPasswords. Maybe one of your other addons in conjunction with SPE +
+QuickPasswords. As far as I know SPE doesn't add any &quot;syncing&quot; code.
+
+the main thing that I do not get is that my function
+
+getURIcontext()
+
+is ever called on your system. Also the debug log you have given just shows
+QuickPasswords being started either from a new window or when Firefox starts -
+please make sure that both:
+
+extensions.quickpasswords.debug.uriContext
+extensions.quickpasswords.debug.default
+
+are set to true. IN error console options, also enable &quot;report Strict Warnings&quot;
+and &quot;Report all JS exceptions&quot; just in case. Make sure you clear the error
+output completely before you invoke QuickPasswords.
+
+Once you right-click in a web page and choose &quot;Retrieve a passwords...&quot; I would
+expect at least the following new messages:
+
+QuickPasswords {CONTEXTMENU} 9:22:46.447  [165907 ms]   
+contextPopupShowing() ...
+ ----------
+QuickPasswords {CONTEXTMENU} 9:22:46.447  [0 ms]   
+contextPopupShowing: visible = true
+ ----------
+QuickPasswords {DEFAULT} 9:22:58.3  [11556 ms]   
+getURIcontext()
+ ----------
+QuickPasswords {URICONTEXT} 9:22:58.3  [0 ms]   
+content.location = <a href="https://www.mozdev.org/bugs/show_bug.cgi#add_comment">https://www.mozdev.org/bugs/show_bug.cgi#add_comment</a>
+ ----------
+QuickPasswords {URICONTEXT} 9:22:58.3  [0 ms]   
+content.location.host = www.mozdev.org
+ ----------
+QuickPasswords {URICONTEXT} 9:22:58.3  [0 ms]   
+lastContentLocation = www.mozdev.org
+ ----------
+QuickPasswords {DEFAULT} 9:22:58.3  [0 ms]   
+Determined Domain from Host String:mozdev.org
+ ----------
+QuickPasswords {URICONTEXT} 9:22:58.3  [0 ms]   
+returning sBaseDomain = mozdev.org
+
+only *after* this the password dialog is loaded and the initalization for QF on
+the password dialog begins:
+
+QuickPasswords  9:22:58.791  [1398154978791 ms]   
+QuickPasswords.onLoad()
+...
+
+
+<span class="quote">&gt; I think saved password editor makes some conflict when installed by syncing.
+&gt; (may it because While syncing, quick passwords and saved password editor are
+&gt; installed at the same time...)</span >
+&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25749.html#c15">
+            #15</a> From 
+          <a href="mailto:archangel179&#64;gmail.com">a</a>
+          2014-04-22 16:24:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >There is some news.
+I found that there is some various way to open &quot;Saved passwords&quot; dialog.
+
+way 1. &quot;right-clicking&quot;-retrieve a password. It works. It seems get fixed since
+v3.2
+
+In toolbar, there is 2 ToolItems. one is &quot;QuickPasswords&quot;, and the other is
+&quot;Saved passwords&quot;. Latter one automatically added to toolbar, (while former one
+does not.)
+
+way 2. By clicking &quot;Saved passwords&quot; in toolbar. filling does not works.
+way 3. by clicking &quot;QuickPasswords&quot; in toolbar. filling works OK. (It seems
+equivalent to way 1)
+way 4. By menu: Clicking &quot;Firefox&quot;(which is located in left-top)-saved
+passwords. It does not works (It seems equivalent to 2)
+way 5. Preference-security-saved passwords. but this one is not interesting.
+
+way 2 works OK after re-enabling &quot;saved passwords&quot;. (and maybe 4)
+
+follwing is log of &quot;way 2&quot;. 
+------------------------------------------------------------------------------
+note:
+1. I enabled all debug settings.
+2. I cleared console before open the dialog.
+3. (added since this report) I enabled &quot;report strictly warning&quot; in console 2
+
+------------------------------------------------------------------------------
+
+경고: ReferenceError: reference to undefined property this.treeBoxObject.view
+원본 파일:chrome://global/content/bindings/tree.xml
+줄:53
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.285  [1398179777285 ms]   
+Util.checkVersionFirstRun() - mExtensionVer = null
+ ----------
+QuickPasswords  0:16:17.285  [0 ms]   
+QuickPasswords.onLoad()
+ ----------
+QuickPasswords {CONTEXTMENU} 0:16:17.285  [0 ms]   
+searched contentArea context menu: not found.
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.285  [0 ms]   
+Util.VersionProxy() started.
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.285  [0 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+QuickPasswords {MANAGER} 0:16:17.285  [0 ms]   
+QuickPasswords.Manager.init()
+ ----------
+QuickPasswords {MANAGER} 0:16:17.285  [0 ms]   
+Adding event listeners to signonsTree
+ ----------
+QuickPasswords {MANAGER} 0:16:17.286  [1 ms]   
+initProtectionButton() - protection = false
+ ----------
+QuickPasswords  0:16:17.286  [0 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=chrome://passwordmgr/content/passwordManager.xul
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [86 ms]   
+try to get setting: getCharPref(version)
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+try to get setting: getBoolPref(firstRun)
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+try to get setting: getBoolPref(enablefirstRuns)
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+Settings retrieved:
+previous version=3.2
+current version=3.2
+firstRun=false
+debugfirstRun=false
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+finally - firstRun=false
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+finally - pureVersion=3.2
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.372  [0 ms]   
+finally - versionPage=<a href="http://quickpasswords.mozdev.org/version.html#3.2">http://quickpasswords.mozdev.org/version.html#3.2</a>
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.373  [1 ms]   
+checkfirstRun: previous=3.2, current = 3.2
+ ----------
+QuickPasswords {FIRSTRUN} 0:16:17.373  [0 ms]   
+prev!=current -&gt; just a reload of same version - prev=3.2, current = 3.2
+ ----------
+QuickPasswords  0:16:18.285  [912 ms]   
+QuickPasswords.prepareAustralis()
+isAustralis=true
+doc=null
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25749.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-22 17:18:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25749.html#c15">comment #15</a>)
+<span class="quote">&gt; There is some news.
+&gt; I found that there is some various way to open &quot;Saved passwords&quot; dialog.
+&gt; 
+&gt; way 1. &quot;right-clicking&quot;-retrieve a password. It works. It seems get fixed since
+&gt; v3.2</span >
+
+ok, good news.
+
+
+<span class="quote">&gt; 
+&gt; In toolbar, there is 2 ToolItems. one is &quot;QuickPasswords&quot;, and the other is
+&gt; &quot;Saved passwords&quot;. Latter one automatically added to toolbar, (while former one does not.)</span >
+
+
+<span class="quote">&gt; 
+&gt; way 2. By clicking &quot;Saved passwords&quot; in toolbar. filling does not works.</span >
+
+Ok, this is probably a menu item which was added by Saved Password Editor,  and
+it is not supposed to do the automatic filtering 
+
+<span class="quote">&gt; way 3. by clicking &quot;QuickPasswords&quot; in toolbar. filling works OK. (It seems
+&gt; equivalent to way 1)</span >
+
+Yes this is a toolbar item that I added. It does the same as the
+QuickPasswords... link on toolbar (opens Password Manager and fills the search
+box automatically)
+
+
+<span class="quote">&gt; way 4. By menu: Clicking &quot;Firefox&quot;(which is located in left-top)-saved
+&gt; passwords. It does not works (It seems equivalent to 2)</span >
+
+again, this is probably a menu item which the Saved Passwords Editor added. If
+you use this QuickPasswords doesn't know about it and doesn't automatically
+filter the passwords.
+
+<span class="quote">&gt; way 5. Preference-security-saved passwords. but this one is not interesting.</span >
+(same as 4, but this is the standard way and it is too slow; it was one of the
+reasons I wrote QuickPasswords as opening the Manager was simply too
+long-winded for me)
+
+For now I will mark the bug as fixed. I would highly recommend to add the
+quickPasswords button to the toolbar button - you have a choice for the new
+Australis look or the old (yellow) button on the second tab of the options
+dialog. Note that from Firefox 29 on you can also move the button into the new
+side-menu panel (Australis Integration).
+
+You can also open the options dialog by right-clicking the QuickPasswords
+button.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25749&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

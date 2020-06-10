@@ -1,0 +1,9 @@
+Could not read chrome manifest 'file:///usr/lib/thunderbird/extensions/%7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D/chrome.manifest'.
+
+While creating services from category 'profile-after-change', could not create service for entry 'Disk Space Watcher Service', contract ID '@mozilla.org/toolkit/disk-space-watcher;1'
+Метка времени: 29.09.2013 13:56:28
+
+Предупреждение: function XPIDB_openConnection does not always return a value
+Источник: resource://gre/modules/XPIProvider.jsm -> resource://gre/modules/XPIProviderUtils.js
+Строка: 524
+

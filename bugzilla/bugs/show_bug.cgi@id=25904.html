@@ -1,0 +1,1524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25904 &ndash; Populate Mail Headers: To, Cc, Bcc, Subject and Others</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25904&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25904">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25904">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25904">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25904">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25904</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Populate Mail Headers: To, Cc, Bcc, Subject and Others</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-10-10 10:43:40</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-10-10 10:43:40">
+  <input type="hidden" name="longdesclength" value="20">
+  <input type="hidden" name="id" value="25904">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Populate Mail Headers: To, Cc, Bcc, Subject and Others">Populate Mail Headers: To, Cc, Bcc, Subject and Others
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25904.html">25904</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25904&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25904">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:fredistic&#64;gmail.com">Fred Seltzer &lt;fredistic&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="craig.pattillo&#64;gmail.com">craig.pattillo&#64;gmail.com</option>
+            <option value="jkadash&#64;rocketmail.com">jkadash&#64;rocketmail.com</option>
+            <option value="public&#64;beloved.name">public&#64;beloved.name</option>
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="diebfiic.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Explains use of %addressee</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (88.94 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25904.html#attach_7965"
+               title="Go to the comment associated with the attachment">2014-11-27 06:27</a>,
+
+            <a href="mailto:fredistic&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Fred Seltzer
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7965&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-1.1pre18.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Version 1.1 pre 18</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (353.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25904.html#attach_8077"
+               title="Go to the comment associated with the attachment">2015-07-27 14:22</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8077&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="smartTemplate-1.1pre19.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Version 1.1 pre 19</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (353.47 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25904.html#attach_8078"
+               title="Go to the comment associated with the attachment">2015-07-28 01:14</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8078&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-1.1pre22.xpi"
+               title="View the content of the attachment">
+          <b>Version 1.1 pre 22</b></a>
+
+          <span class="bz_attach_extra_info">
+              (353.73 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25904.html#attach_8079"
+               title="Go to the comment associated with the attachment">2015-07-28 04:46</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8079&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25904.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25904&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25904">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25904">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25904">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25904">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25904.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-11-27 06:27
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="diebfiic.png" name="attach_7965" title="Explains use of %addressee">Created an attachment (id=7965)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7965&amp;action=edit" title="Explains use of %addressee">[details]</a></span>
+Explains use of %addressee
+
+For sending email to a list of email addresses and/or Mailing Lists from, for
+example, the Personal Address Book or the Collected Addresses.
+
+Proposed new fields would be something like this:
+        %addressee(to, &lt;email address&gt;)%
+        %addressee(cc, &lt;email address&gt;)% 
+        %addressee(bcc, &lt;email address&gt;)% 
+
+        %addressee(bcc, SmithFamily)% 
+        %addressee(bcc, WorkBuddies)% 
+        %addressee(to,  WarmFusionProjectMembers)% 
+
+Choosing the appropriate stationery would set the content and format of the
+e-letter and also fill in the destination.  This implies using both stationery
+and st4.
+
+It would also be useful to fill in the subject field as follows:
+
+        %subject(&quot;Warm Fusioneers: %cursor%&quot;)%
+After that, typing a tab character would jump the cursor to the %cursor% in the
+body of the e-letter.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25904.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-11-27 07:40:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Renaming the bug. Please do not combine 2 feature requests in the same bug, if
+you want a way to auto-fill the subject field from the template, please raise a
+separate bug, as this is a completely different task for development. The
+various address fields are reasonably similar and can use the same programming
+logic.
+
+My suggestion is that the first version will take single _email addresses_ as
+arguments, like so:
+
+
+        %addressee(bcc, <a href="mailto:fred@smith.com">fred@smith.com</a>)% 
+        %addressee(bcc, <a href="mailto:george@smith.com">george@smith.com</a>)% 
+        %addressee(bcc, <a href="mailto:martha@smith.com">martha@smith.com</a>)% 
+
+so *one email address* per line. Supporting groups or lists is a lot more
+difficult. But you can add as many lines as you like into one template. Later
+on I might be able to discuss supporting lists / groups (or maybe even reading
+a list from file?) but that's strictly &quot;version 2&quot; for this feature.
+
+<span class="quote">&gt; Choosing the appropriate stationery would set the content and format of the</span >
+e-letter and also fill in the destination.  This implies using both stationery
+and st4.
+
+There is no reason to not support this from the template fields as well. If you
+have an email identity that you share with a group, cc'ing or bcc'ing a person
+or number of people would still make sense. Also, you can have multiple
+identities on the same mail account.
+
+I personally prefer Stationery as it is easy to select the template from the
+Reply button.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25904.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-11-27 07:46:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c1">comment #1</a>)
+<span class="quote">&gt; 
+&gt; so *one email address* per line. Supporting groups or lists is a lot more
+&gt; difficult. But you can add as many lines as you like into one template. Later
+&gt; on I might be able to discuss supporting lists / groups (or maybe even reading
+&gt; a list from file?) but that's strictly &quot;version 2&quot; for this feature.
+&gt; 
+&gt; &gt; Choosing the appropriate stationery would set the content and format of the
+&gt; e-letter and also fill in the destination.  This implies using both stationery
+&gt; and st4.
+&gt; </span >
+
+Additional requirements:
+
+1 - when Replying, the original To / Cc list will be *reused* and merged with
+the email addresses from the new feature
+
+2 - the original mail addresses (and their use in the respective fields
+to/cc/bcc) have preference over the ones added by the template
+
+
+this means that if you &quot;reply all&quot; to an email that was sent to &quot;fred&quot; then
+adding the same &quot;fred&quot; (based on email address) with cc or bcc using the
+feature will be ignored (as he already is in the to field). Likewise, if &quot;fred&quot;
+is on the cc or bcc list of the original mail, adding
+
+   %addressee(to, <a href="mailto:fred@smith.com">fred@smith.com</a>)%
+
+will be ignored. In corporate email it is usually important to keep Cc and To
+in the original hierarchy, so the feature must honor and not override this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25904.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 03:59:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Let's make this one a little more universal. Let us say we want to be able to
+modify multiple mail headers by adding (in the case of to / cc / bcc) or
+changing the information (subject line, tags?, list-id etc.)
+
+so I would propose a more universal variable called
+
+%header% 
+
+which could be used according to these examples
+
+%header(to, &lt;email address&gt;)%
+%header(from, &lt;email address&gt;)%
+%header(cc, &lt;email address&gt;)%
+%header(bcc, &lt;email address&gt;)%
+
+%header(subject, &quot;New Subject line&quot;)%
+%header(Newsgroups, &quot;mozilla.support.thunderbird&quot;)%
+%header(List-Id, &quot;Thunderbird help community
+&lt;support-thunderbird.lists.mozilla.org&gt;&quot;)%
+
+Extended Behavior
+-----------------
+
+an optional extension parameter (for AB groups) could be placed at the end:
+%header(to, &lt;group name&gt;, group)%
+
+Subject line should probably allow quoting the original subject when replying
+%header(subject, &quot;New Subject&quot;, prefix)%  - could pre-pend the new subject to
+the original subject line
+%header(subject, &quot;New Subject&quot;, postfix)%  - could append the new subject to
+the original subject line
+
+All header variables will have to be parsed before any other processing in
+composer, appropriate mail headers modified / inserted and then obviously
+removed from the body of the email.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25904.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:11:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25981.html" title="RESOLVED DUPLICATE - Version 0.9.6 inserts blank line and space">Bug 25981</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25904.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:14:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Another special use case would be
+
+%header(subject, &quot;&quot;)% 
+
+in order to force an empty subject line which has been requested in [<span class="bz_closed"><a href="show_bug.cgi@id=2581.html" title="RESOLVED FIXED - In the makefile you need 2 backslashes:">bug 2581</a></span>]
+(a 'nice to have' would be also disabling the message that warns you about an
+empty subject line)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25904.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:51:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25152.html" title="RESOLVED DUPLICATE - Feature Request: Ability to set &quot;Subject&quot; field for new messages">Bug 25152</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25904.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:58:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >According to the merged [<span class="bz_closed"><a href="show_bug.cgi@id=25152.html" title="RESOLVED DUPLICATE - Feature Request: Ability to set &quot;Subject&quot; field for new messages">Bug 25152</a></span>] we might need a way of including other
+headers in the subject line. This will yet again require a special syntax - we
+saw the problem of nesting variables as arguments of other variables before.
+
+The problem is that the recursive pattern
+
+%foo(%bar()%)%
+
+is fairly difficult to parse with a Regular Expression, which is what ST4
+currently does in order to resolve variables. I will have to think about this
+and might have to come up with a different syntax for included headers, such as
+
+%header(subject, &quot;some text - {from(mail)}&quot;)%
+
+this would have to detect (and resolve) the bracketed expression(s) within the
+%...% block first
+
+{from(mail)}  ==&gt; <a href="mailto:email@domain.com">email@domain.com</a>
+
+and then continue with 
+%header(subject, &quot;some text - <a href="mailto:email@domain.com">email@domain.com</a>&quot;)% as normal. A general
+mechanism like this that would work in all parameter fields of the format
+
+%var(parameters)%
+
+would be desirable. Please comment.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25904.html#c8">
+            #8</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2015-07-09 05:47:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c7">comment #7</a>)
+<span class="quote">&gt; According to the merged [<span class="bz_closed"><a href="show_bug.cgi@id=25152.html" title="RESOLVED DUPLICATE - Feature Request: Ability to set &quot;Subject&quot; field for new messages">Bug 25152</a></span>] we might need a way of including other
+&gt; headers in the subject line. This will yet again require a special syntax - we
+&gt; saw the problem of nesting variables as arguments of other variables before.
+&gt; 
+&gt; The problem is that the recursive pattern
+&gt; 
+&gt; %foo(%bar()%)%
+&gt; 
+&gt; is fairly difficult to parse with a Regular Expression, which is what ST4
+&gt; currently does in order to resolve variables. I will have to think about this
+&gt; and might have to come up with a different syntax for included headers, such as
+&gt; 
+&gt; %header(subject, &quot;some text - {from(mail)}&quot;)%
+&gt; 
+&gt; this would have to detect (and resolve) the bracketed expression(s) within the
+&gt; %...% block first
+&gt; 
+&gt; {from(mail)}  ==&gt; <a href="mailto:email@domain.com">email@domain.com</a>
+&gt; 
+&gt; and then continue with 
+&gt; %header(subject, &quot;some text - <a href="mailto:email@domain.com">email@domain.com</a>&quot;)% as normal. A general
+&gt; mechanism like this that would work in all parameter fields of the format
+&gt; 
+&gt; %var(parameters)%
+&gt; 
+&gt; would be desirable. Please comment.
+&gt; </span >
+
+Axel we have such a option, take a look in our help ;-)
+Here it is Called %...% = Any Header Field and this means if your header have
+the Field eg &quot;Reply-To:&quot; you can use %Reply-To% and this results its Value.
+Note: not all senders set the same headers so it can happen that mail1 has such
+a field and mail2 don't have this field!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25904.html#c9">
+            #9</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2015-07-09 05:55:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25904.html#c7">comment #7</a>)
+&gt; &gt; According to the merged [<span class="bz_closed"><a href="show_bug.cgi@id=25152.html" title="RESOLVED DUPLICATE - Feature Request: Ability to set &quot;Subject&quot; field for new messages">Bug 25152</a></span>] we might need a way of including other
+&gt; &gt; headers in the subject line. This will yet again require a special syntax - we
+&gt; &gt; saw the problem of nesting variables as arguments of other variables before.
+&gt; &gt; 
+&gt; &gt; The problem is that the recursive pattern
+&gt; &gt; 
+&gt; &gt; %foo(%bar()%)%
+&gt; &gt; 
+&gt; &gt; is fairly difficult to parse with a Regular Expression, which is what ST4
+&gt; &gt; currently does in order to resolve variables. I will have to think about this
+&gt; &gt; and might have to come up with a different syntax for included headers, such as
+&gt; &gt; 
+&gt; &gt; %header(subject, &quot;some text - {from(mail)}&quot;)%
+&gt; &gt; 
+&gt; &gt; this would have to detect (and resolve) the bracketed expression(s) within the
+&gt; &gt; %...% block first
+&gt; &gt; 
+&gt; &gt; {from(mail)}  ==&gt; <a href="mailto:email@domain.com">email@domain.com</a>
+&gt; &gt; 
+&gt; &gt; and then continue with 
+&gt; &gt; %header(subject, &quot;some text - <a href="mailto:email@domain.com">email@domain.com</a>&quot;)% as normal. A general
+&gt; &gt; mechanism like this that would work in all parameter fields of the format
+&gt; &gt; 
+&gt; &gt; %var(parameters)%
+&gt; &gt; 
+&gt; &gt; would be desirable. Please comment.
+&gt; &gt; 
+&gt; 
+&gt; Axel we have such a option, take a look in our help ;-)
+&gt; Here it is Called %...% = Any Header Field and this means if your header have
+&gt; the Field eg &quot;Reply-To:&quot; you can use %Reply-To% and this results its Value.
+&gt; Note: not all senders set the same headers so it can happen that mail1 has such
+&gt; a field and mail2 don't have this field!
+&gt; </span >
+IGNORE THIS COMMENT PLEASE, I HAVE MISUNDERSTAND!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25904.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 05:57:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25904.html#c7">comment #7</a>)
+&gt; &gt; According to the merged [<span class="bz_closed"><a href="show_bug.cgi@id=25152.html" title="RESOLVED DUPLICATE - Feature Request: Ability to set &quot;Subject&quot; field for new messages">Bug 25152</a></span>] we might need a way of including other
+&gt; &gt; headers in the subject line. This will yet again require a special syntax - we
+&gt; &gt; saw the problem of nesting variables as arguments of other variables before.
+&gt; &gt; 
+&gt; &gt; The problem is that the recursive pattern
+&gt; &gt; 
+&gt; &gt; %foo(%bar()%)%
+&gt; &gt; 
+&gt; &gt; is fairly difficult to parse with a Regular Expression, which is what ST4
+&gt; &gt; currently does in order to resolve variables. I will have to think about this
+&gt; &gt; and might have to come up with a different syntax for included headers, such as
+&gt; &gt; 
+&gt; &gt; %header(subject, &quot;some text - {from(mail)}&quot;)%
+&gt; &gt; 
+&gt; &gt; this would have to detect (and resolve) the bracketed expression(s) within the
+&gt; &gt; %...% block first
+&gt; &gt; 
+&gt; &gt; {from(mail)}  ==&gt; <a href="mailto:email@domain.com">email@domain.com</a>
+&gt; &gt; 
+&gt; &gt; and then continue with 
+&gt; &gt; %header(subject, &quot;some text - <a href="mailto:email@domain.com">email@domain.com</a>&quot;)% as normal. A general
+&gt; &gt; mechanism like this that would work in all parameter fields of the format
+&gt; &gt; 
+&gt; &gt; %var(parameters)%
+&gt; &gt; 
+&gt; &gt; would be desirable. Please comment.
+&gt; &gt; 
+&gt; 
+&gt; Axel we have such a option, take a look in our help ;-)
+&gt; Here it is Called %...% = Any Header Field and this means if your header have
+&gt; the Field eg &quot;Reply-To:&quot; you can use %Reply-To% and this results its Value.
+&gt; Note: not all senders set the same headers so it can happen that mail1 has such
+&gt; a field and mail2 don't have this field!
+&gt; </span >
+You misunderstood the purpose of this bug:
+
+%var% reads the header and inserts it into the body of the email
+%header(var)% is supposed to *write* to the header of the email (not the body)
+It should also be allowed to create any non-standard header. E.g.
+
+%header(x-hobbyGroup, &quot;Stamp Collectors&quot;)%
+
+This would create a new mail header &quot;x-hobbygroup&quot; and set its value to &quot;Stamp
+Collectors&quot;. It would not show up in the email body itself.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25904.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-27 11:59:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Let's extend this a little, for the purpose of _modifying_ rather than just
+setting the field, in order to accommodate the requirements of [<span class="bz_closed"><a href="show_bug.cgi@id=26057.html" title="RESOLVED DUPLICATE - Feature request: adding a fixed string to the original subject subject">Bug 26057</a></span>]. So
+instead of only setting a field we should also allow changing via prefixing or
+appending.
+
+%header.set(subject,&quot;string&quot;)%
+%header.prefix(subject,&quot;string&quot;)%
+%header.append(subject,&quot;string&quot;)%
+
+prefix and append could be &quot;intelligent&quot; by avoiding prefixing the string
+multiple time (if it starts with &quot;string&quot; I wont prefix &quot;string&quot; again)
+
+I have marked [<span class="bz_closed"><a href="show_bug.cgi@id=26057.html" title="RESOLVED DUPLICATE - Feature request: adding a fixed string to the original subject subject">Bug 26057</a></span>] as duplicate of this one.
+
+Note: the first argument of the header function (the affected field) will be
+vetted by me and Mark in order to avoid any abuses. So initially we will only
+allow modifying a handful of headers.
+
+address fields:
+
+%header.set(to, &quot;<a href="mailto:a@b.com">a@b.com</a>&quot;)%  - will replace the current to address
+%header.append(to, &quot;<a href="mailto:a@b.com">a@b.com</a>&quot;)% - will add another address
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25904.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-27 11:59:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=26057.html" title="RESOLVED DUPLICATE - Feature request: adding a fixed string to the original subject subject">Bug 26057</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25904.html#c13">
+            #13</a> From 
+          <a href="mailto:jkadash&#64;rocketmail.com">jkadash</a>
+          2015-07-27 12:19:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >My request was marked as a duplicate of this.  This combines a lot of issues,
+and the discussion appears to address more difficult issues than I need to
+accomplish. 
+
+I want the subject field in the header (not the body) to be modified.
+I want to be able to preserve the old subject line and insert a fixed string of
+text in from of the old header.
+
+Example:
+Original message has a subject:
+Help me with Java problem
+
+What I want the reply to look like is, (inserting a fixed string&quot;[Support
+reply&quot;])
+[Support reply] Help me with Java problem
+
+Please include an example of how to do it, if it is already possible.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25904.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-27 12:41:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c13">comment #13</a>)
+<span class="quote">&gt; My request was marked as a duplicate of this.  This combines a lot of issues,
+&gt; and the discussion appears to address more difficult issues than I need to
+&gt; accomplish. 
+&gt; 
+&gt; I want the subject field in the header (not the body) to be modified.
+&gt; I want to be able to preserve the old subject line and insert a fixed string of
+&gt; text in from of the old header.
+&gt; </span >
+I understand this.  It is not currently possible to _modify_ _any_ headers with
+ST4. You can only write to the _body_ of the email. Changing the Email headers
+is an entirely different class of problems and deviates from anything that
+SmartTemplate4 has done so far. Setting the subject is just as difficult / easy
+as setting to, from or cc; it is not a simple string replacement in the body of
+the email. 
+
+So this is the correct bug to handle this problem. Subject might well end up
+being the first header that this feature supports but there is no need to do
+all the work and restrict it to just the one special case when we can use it of
+adding bcc or cc addresses or possibly other useful things.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25904.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-27 14:22:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.1pre18.xpi" name="attach_8077" title="Version 1.1 pre 18">Created an attachment (id=8077)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8077&amp;action=edit" title="Version 1.1 pre 18">[details]</a></span>
+Version 1.1 pre 18
+
+Here is a test version. Successful tests I did so far:
+
+
+%header.prefix(subject,&quot;test: &quot;)%
+
+- added the string &quot;test: &quot; at the start of the subject line
+
+%header.append(to,&quot;<a href="mailto:realraven@hotmail.com">realraven@hotmail.com</a>&quot;)%
+
+- added the email address <a href="mailto:realraven@hotmail.com">realraven@hotmail.com</a> as a recipient. 
+
+both examples will avoid &quot;duplications&quot;.
+
+List of supported headers (so far):
+ subject
+ to
+ from
+ cc
+ bcc
+ reply-to
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25904.html#c16">
+            #16</a> From 
+          <a href="mailto:jkadash&#64;rocketmail.com">jkadash</a>
+          2015-07-27 15:34:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fantastic!  I downloaded 1.1 pre 18 and it works exactly as I need. Thank you
+so much!  
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25904.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-28 01:01:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25904.html#c16">comment #16</a>)
+<span class="quote">&gt; Fantastic!  I downloaded 1.1 pre 18 and it works exactly as I need. Thank you
+&gt; so much!  
+&gt; </span >
+
+Not too fast :) wait until you have tested it in a conversation with some back
+and forth; you might still find unnecessary duplication of the prefixed term.
+Consider this example. Let's say your term is [key] which you want prefixed.
+You would have the following behavior in a conversation, starting from the
+original subject.
+
+Inquiry about your Software
+[key] Re: Inquiry about your Software
+Re: [key] Re: Inquiry about your Software
+[key] Re: Re: [key] Re: Inquiry about your Software
+Re: [key] Re: Re: [key] Re: Inquiry about your Software
+[key] Re: Re: [key] Re: Re: [key] Re: Inquiry about your Software
+
+etc.
+an improved behavior for prefix would be to only mention the term _once_ like
+this:
+Inquiry about your Software
+[key] Re: Inquiry about your Software
+Re: [key] Re: Inquiry about your Software
+Re: Re: [key] Re: Inquiry about your Software
+Re: Re: Re: [key] Re: Inquiry about your Software
+Re: Re: Re: Re: [key] Re: Inquiry about your Software
+
+This would be the more &quot;natural&quot; behavior and would prevent your subject
+growing into a &quot;monster&quot; with the same keyword over and over. I am currently
+testing an improved version for prefixing the subject only _once_...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25904.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-28 01:14:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.1pre19.xpi" name="attach_8078" title="Version 1.1 pre 19">Created an attachment (id=8078)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8078&amp;action=edit" title="Version 1.1 pre 19">[details]</a></span>
+Version 1.1 pre 19
+
+Improved version which avoids term duplication in subject.
+
+For prefixing subject, this pretty much behaves as described in <a href="show_bug.cgi@id=25904.html#c18">comment #18</a>
+
+I have already edited all my Addon Templates to force prefixing [addonName] to
+my correspondence to test drive this for a while.
+
+Example (note the space after [SmartTemplate4] ):
+
+%header.prefix(subject,&quot;[SmartTemplate4] &quot;)%
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25904.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-28 04:46:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.1pre22.xpi" name="attach_8079" title="Version 1.1 pre 22">Created an attachment (id=8079)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8079&amp;action=edit" title="Version 1.1 pre 22">[details]</a></span>
+Version 1.1 pre 22
+
+1) (header.append) Fixed duplications on %headers.append% command for subject.
+2) (header.append) Omits adding Cc addresses that are already in To
+3) (header.append) Omits adding To addresses that are already in Cc
+
+This version also manages to avoid duplications when appending a term.
+
+usage:
+%header.append(subject,&quot;term&quot;)%
+
+to and cc will suppress adding email addresses to &quot;the other&quot; field. The
+question is, should bcc also suppress &quot;accidental&quot; cc's? Probably no - my
+reasoning is if a recipient is already on the official to/cc list adding him
+(automatically) to bcc should not change that.
+
+usage:
+%header.append(to,&quot;<a href="mailto:name@domain.com">name@domain.com</a>&quot;)%
+%header.append(cc,&quot;<a href="mailto:name@domain.com">name@domain.com</a>&quot;)%
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+SmartTemplate4 {FUNCTIONS} 13:54:2.102  [58909 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 13:54:2.113  [11 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:2.113  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:2.113  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:2.113  [0 ms]	 
+insertTemplate - processing is not active for id id2
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 13:54:2.113  [0 ms]	 
+identityName:   user1 <user1@xxx.xx>
+key:            id2
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: true
+SmartTemplate4.isSignatureSetup:true
+ ----------
+Varování: XUL box prvku _moz_generated_content_before obsahuje vloženého potomka #text, èímž musí být všichni jeho potomci zalomeni do bloku.
+Zdrojový soubor: chrome://messenger/content/messenger.xul
+ ----------
+Varování: XUL box prvku _moz_generated_content_before obsahuje vloženého potomka #text, èímž musí být všichni jeho potomci zalomeni do bloku.
+Zdrojový soubor: chrome://messenger/content/messenger.xul
+ ----------
+Varování: XUL box prvku _moz_generated_content_before obsahuje vloženého potomka #text, èímž musí být všichni jeho potomci zalomeni do bloku.
+Zdrojový soubor: chrome://messenger/content/messengercompose/messengercompose.xul
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:14.31  [11918 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:14.31  [0 ms]	 
+insertTemplate(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:14.31  [0 ms]	 
+SmartTemplate4.removePreviousTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:14.32  [1 ms]	 
+insertTemplate - processing is not active for id id3
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 13:54:14.32  [0 ms]	 
+identityName:   user3 <user3@xxx.xx>
+key:            id3
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  true
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: true
+SmartTemplate4.isSignatureSetup:true
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:25.47  [11015 ms]	 
+SmartTemplate4.loadIdentity(false)
+ ----------
+SmartTemplate4 {FUNCTIONS} 13:54:25.47  [0 ms]	 
+insertTemplate(false)

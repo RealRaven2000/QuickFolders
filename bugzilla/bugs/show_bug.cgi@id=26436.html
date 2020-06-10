@@ -1,0 +1,1494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26436 &ndash; shortcut for searching folders is not functional</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26436&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26436">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26436">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26436">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26436">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26436</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">shortcut for searching folders is not functional</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-10-25 12:47:05</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26436&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-10-25 12:47:05">
+  <input type="hidden" name="longdesclength" value="18">
+  <input type="hidden" name="id" value="26436">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="shortcut for searching folders is not functional">shortcut for searching folders is not functional
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26436.html">26436</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P1">P1
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="critical">critical
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26436&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26436">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira &lt;miroslav.kokrda&#64;seznam.cz&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders&#32;Options&#32;-&#32;quickJump.png"
+               title="View the content of the attachment">
+          <b>Premium settings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (18.02 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8326"
+               title="Go to the comment associated with the attachment">2017-10-24 10:14</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8326&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-4.7.2pre24.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.7.2 prerelease 24</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (706.76 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8327"
+               title="Go to the comment associated with the attachment">2017-10-24 10:15</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8327&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="quickfolder.001.png"
+               title="View the content of the attachment">
+          <b>valid license and text-boxes</b></a>
+
+          <span class="bz_attach_extra_info">
+              (27.27 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8328"
+               title="Go to the comment associated with the attachment">2017-10-24 13:34</a>,
+
+            <a href="mailto:miroslav.kokrda&#64;seznam.cz"
+               title="Write an email to the creator of the attachment">Numira
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8328&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="quickfolder.debug.001.png"
+               title="View the content of the attachment">
+          <b>debug settings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (38.11 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8329"
+               title="Go to the comment associated with the attachment">2017-10-24 13:35</a>,
+
+            <a href="mailto:miroslav.kokrda&#64;seznam.cz"
+               title="Write an email to the creator of the attachment">Numira
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8329&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="quickfolder.main.window.thunderbird.png"
+               title="View the content of the attachment">
+          <b>main windows with mailbox</b></a>
+
+          <span class="bz_attach_extra_info">
+              (64.71 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8330"
+               title="Go to the comment associated with the attachment">2017-10-24 13:36</a>,
+
+            <a href="mailto:miroslav.kokrda&#64;seznam.cz"
+               title="Write an email to the creator of the attachment">Numira
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8330&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="QuickFolders-tb-pb-sm-4.7.2pre25.xpi"
+               title="View the content of the attachment">
+          <b>4.7.2 prerelease 25</b></a>
+
+          <span class="bz_attach_extra_info">
+              (706.85 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26436.html#attach_8331"
+               title="Go to the comment associated with the attachment">2017-10-25 05:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8331&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26436.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26436&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26436&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26436">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26436">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26436">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26436">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26436.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2017-10-23 05:50
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >quickfolders pro 4.7.1, valid license to 2017-12-19, thunderbird 52.3.0
+(64-bit), debian 9 
+
+Is not possible to use/define shortcut for quickjump.
+
+I used SHIFT+g to quick jump to folder, but now shortcut is not functional and
+in Options -&gt; Premium features is not possible to insert character to define
+&quot;g&quot; or some another character for using in shortcut.
+
+Without this shortcut is quickfolder unnusable for me ...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26436.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-23 06:04:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Are you saying the shortcut stopped working?  And can you not enter /try a
+different letter?
+
+Default combination for Thunderbird is SHIFT+J
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26436.html#c2">
+            #2</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-23 07:27:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yes, as you say.
+
+No, SHIFT+J not working too.
+
+Only way to use quickjump is click to QuickMove button.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26436.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-23 10:53:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Are any other addons installed?
+
+Try the advanced tab
+Activate Debug Mode
+Then right click Debug mode and enable:
+extensions.quickfolders.debug.events.keyboard = true
+
+use console2
+(see <a href="http://quickfolders.org/support.html">http://quickfolders.org/support.html</a>)
+make sure Error Warnings Messages &amp; Chrome are enabled
+
+Expected output
+
+QuickFolders {EVENTS.KEYBOARD} 18:53:25.882  [69890 ms]  
+SHIFT + charcode = 74 = j
+
+ ----------
+QuickFolders {QUICKMOVE} 18:53:25.882  [0 ms]    
+findFolder(true, quickJump)
+ ----------
+QuickFolders 18:53:25.883  [1 ms]        
+toggleMoveModeSearchBox(false)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26436.html#c4">
+            #4</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-23 11:59:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >QuickFolders {EVENTS.KEYBOARD} 20:57:12.68  [23785 ms]   
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:14.163  [2095 ms]   
+CTRL + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:14.241  [78 ms]     
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:14.892  [651 ms]    
+CTRL + SHIFT + charcode = 74 = j
+
+QuickFolders {EVENTS.KEYBOARD} 20:57:15.894  [1002 ms]   
+CTRL + SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:15.896  [2 ms]      
+CTRL + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:15.897  [1 ms]      
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:26.124  [10227 ms]  
+SHIFT + charcode = 74 = j
+
+Security Error: Content at
+moz-nullprincipal:{3c833345-4813-46e2-8b57-6e2446e400ad} may not load or link
+to
+mailbox:///home/kokrda/.icedove/ly1o621p.default/Mail/localhost-2/Inbox?number=449809867&amp;header=filter&amp;part=1.2.2.
+QuickFolders {EVENTS.KEYBOARD} 20:57:26.282  [158 ms]    
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:26.473  [191 ms]    
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:27.265  [792 ms]    
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:41.726  [14461 ms]  
+SHIFT + charcode = 71 = g
+
+QuickFolders {EVENTS.KEYBOARD} 20:57:41.845  [119 ms]    
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:42.86  [241 ms]     
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 20:57:42.720  [634 ms]    
+charcode = 0 = 
+
+Console opened, tried to press SHIFT+j and next tried SHIFT+g
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26436.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-24 10:11:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26436.html#c4">comment #4</a>)
+<span class="quote">&gt; QuickFolders {EVENTS.KEYBOARD} 20:57:12.68  [23785 ms]   
+&gt; charcode = 0 = 
+&gt; QuickFolders {EVENTS.KEYBOARD} 20:57:14.163  [2095 ms]   
+&gt; CTRL + charcode = 0 = 
+&gt; QuickFolders {EVENTS.KEYBOARD} 20:57:14.241  [78 ms]     
+&gt; charcode = 0 = 
+&gt; QuickFolders {EVENTS.KEYBOARD} 20:57:14.892  [651 ms]    
+&gt; CTRL + SHIFT + charcode = 74 = j
+&gt; </span >
+...
+<span class="quote">&gt; 
+&gt; Console opened, tried to press SHIFT+j and next tried SHIFT+g
+&gt; </span >
+
+thanks, this is helpful. So it looks like the events actually _do_ arrive -
+also no error is issued... (The wsecurity error is a side effect of console I
+don't think it is releevant). I will investigate further.
+
+Can you make sure  that Premium Features are eenabled (checkbox beside
+quickJump is activated) and the letter in the text-box / option is an UPPERCASE
+J ?
+
+I will post a screenshot of my settings to make sure. Finally you can try the
+test again and additionally eenable tghe settings
+
+
+extensions.quickfolders.debug.quickMove = true
+extensions.quickfolders.debug.interface = true
+extensions.quickfolders.debug.interface.findFolder = true
+
+Also, can you tell me which part of the window has the keyboard focus when you
+press?
+
+The shortcuts should only work when you are either in the thread tree, folder
+tree and email preview 
+(I am excluding the conversations pane as they may be in edit mode with
+undesired side effects). However in that case I log that the keystroke was
+omitted.
+
+After thesee criteria aree met, QuickFolders checks whether the ePremium
+License is installed and the accelerators tested (SHIFT = On, ALT + CTRL = Off)
+- only in this case QuickFolders.Interface.findFolder is executed.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26436.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-24 10:14:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders&#32;Options&#32;-&#32;quickJump.png" name="attach_8326" title="Premium settings">Created an attachment (id=8326)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8326&amp;action=edit" title="Premium settings">[details]</a></span>
+Premium settings
+
+Make sure settings are like this (quickJump shortcut enabled, uppercase J)
+license still valid (green writing / date later than current).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26436.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-24 10:15:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.7.2pre24.xpi" name="attach_8327" title="4.7.2 prerelease 24">Created an attachment (id=8327)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8327&amp;action=edit" title="4.7.2 prerelease 24">[details]</a></span>
+4.7.2 prerelease 24
+
+test version with additional debug outputs.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26436.html#c8">
+            #8</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:33:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yes, Premium Features are enabled ... 
+
+Its not possible write any letter to text-boxes and text-boxes are empty ...
+
+Debug is set as you requested ...
+
+In time when I pressed SHIFT+J, and after some time SHIFT+G, was focus on main
+window of thunderbird, and in time of third press (SHIFT+j) on left panel,
+containig mailboxes and tree of folders.
+
+Images are appended ...
+
+Output in console:
+QuickFolders {EVENTS.KEYBOARD} 22:21:2.967  [43468 ms]
+SHIFT + charcode = 74 = j
+
+QuickFolders {EVENTS.KEYBOARD} 22:21:3.197  [230 ms]
+SHIFT + charcode = 0 =
+QuickFolders {EVENTS.KEYBOARD} 22:21:3.397  [200 ms]
+charcode = 0 =
+QuickFolders {EVENTS.KEYBOARD} 22:21:13.570  [10173 ms]
+charcode = 0 =
+QuickFolders {EVENTS.KEYBOARD} 22:21:15.345  [1775 ms]
+SHIFT + charcode = 71 = g
+
+QuickFolders {EVENTS.KEYBOARD} 22:21:15.515  [170 ms]
+SHIFT + charcode = 0 =
+QuickFolders {EVENTS.KEYBOARD} 22:21:15.806  [291 ms]
+charcode = 0 =
+
+QuickFolders {EVENTS.KEYBOARD} 22:21:41.308  [25502 ms]
+charcode = 0 =
+QuickFolders {INTERFACE} 22:22:37.510  [56202 ms]
+onTabSelected()
+ folder = <a href="mailto:miroslav.kokrda@i.cz">miroslav.kokrda@i.cz</a>
+QuickFolders 22:22:37.533  [23 ms]
+Parent panel {QuickFolders-PreviewToolbarPanel} is not on screen; moving
+current folder button for tabMode: folder
+QuickFolders {EVENTS.KEYBOARD} 22:22:39.111  [1578 ms]
+SHIFT + charcode = 71 = g
+
+QuickFolders {EVENTS.KEYBOARD} 22:22:39.221  [110 ms]
+SHIFT + charcode = 0 =
+QuickFolders {EVENTS.KEYBOARD} 22:22:39.431  [210 ms]
+charcode = 0 =
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26436.html#c9">
+            #9</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:34:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolder.001.png" name="attach_8328" title="valid license and text-boxes">Created an attachment (id=8328)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8328&amp;action=edit" title="valid license and text-boxes">[details]</a></span>
+valid license and text-boxes
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26436.html#c10">
+            #10</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:35:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolder.debug.001.png" name="attach_8329" title="debug settings">Created an attachment (id=8329)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8329&amp;action=edit" title="debug settings">[details]</a></span>
+debug settings
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26436.html#c11">
+            #11</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:36:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolder.main.window.thunderbird.png" name="attach_8330" title="main windows with mailbox">Created an attachment (id=8330)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8330&amp;action=edit" title="main windows with mailbox">[details]</a></span>
+main windows with mailbox
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26436.html#c12">
+            #12</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:40:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am sorry, in third time I was press SHIFT+g, but now I tested again and no
+change ...
+
+And, I see prerelease of quickfolder now. I will install it and do test again
+...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26436.html#c13">
+            #13</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-24 13:49:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >So, prerelease installed.
+
+I cleared console, keyborad focus on main window and my mailbox.
+
+Pressed SHIFT+j, SHOFT+g, muse click on miniicon of quickjump, searched &quot;farn&quot;,
+jumped to folder &quot;p.farny.martin&quot;, SHIFT+j, SHOFT+g.
+
+Only when I using mouse and quickjump over miniicon is search textbox arrived.
+
+QuickFolders {EVENTS.KEYBOARD} 22:43:14.582  [11359 ms]  
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:15.118  [536 ms]    
+SHIFT + charcode = 74 = j
+
+QuickFolders {EVENTS.KEYBOARD} 22:43:15.307  [189 ms]    
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:15.416  [109 ms]    
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:18.368  [2952 ms]   
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:19.791  [1423 ms]   
+SHIFT + charcode = 71 = g
+
+QuickFolders {EVENTS.KEYBOARD} 22:43:19.931  [140 ms]    
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:20.108  [177 ms]    
+charcode = 0 = 
+QuickFolders {INTERFACE.FINDFOLDER} 22:43:37.259  [17151 ms]     
+findFolder(true, quickJump)
+QuickFolders 22:43:37.259  [0 ms]        
+toggleMoveModeSearchBox(false)
+QuickFolders 22:43:40.875  [3616 ms]     
+findFolder (farn)
+QuickFolders 22:43:43.150  [2275 ms]     
+selectFound - [object XULCommandEvent]
+QuickFolders {QUICKMOVE} 22:43:43.150  [0 ms]    
+QuickFolders.quickMove.isActive = false
+QuickFolders {INTERFACE} 22:43:43.379  [229 ms]  
+onTabSelected()
+ folder = p.farny.martin
+QuickFolders {INTERFACE} 22:43:43.403  [24 ms]   
+onTabSelected()
+ folder = p.farny.martin
+QuickFolders {INTERFACE.FINDFOLDER} 22:43:43.433  [30 ms]        
+findFolder(false, undefined)
+Error in parsing value for ‘box-sizing’.  Declaration dropped. 
+start-style.css:96:14
+Error in parsing value for ‘box-sizing’.  Declaration dropped. 
+start-style.css:152:14
+Error in parsing value for ‘box-sizing’.  Declaration dropped. 
+start-style.css:212:14
+Expected media feature name but found ‘-webkit-min-device-pixel-ratio’. 
+start-style.css:339:8
+QuickFolders {EVENTS.KEYBOARD} 22:43:47.540  [4107 ms]   
+SHIFT + charcode = 71 = g
+
+QuickFolders {EVENTS.KEYBOARD} 22:43:47.667  [127 ms]    
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:47.936  [269 ms]    
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:43:59.257  [11321 ms]  
+charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:44:0.150  [893 ms]     
+SHIFT + charcode = 74 = j
+
+QuickFolders {EVENTS.KEYBOARD} 22:44:0.329  [179 ms]     
+SHIFT + charcode = 0 = 
+QuickFolders {EVENTS.KEYBOARD} 22:44:0.498  [169 ms]     
+charcode = 0 = 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26436.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-25 04:44:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26436.html#c8">comment #8</a>)
+<span class="quote">&gt; Yes, Premium Features are enabled ... 
+&gt; 
+&gt; Its not possible write any letter to text-boxes and text-boxes are empty ...
+&gt; </span >
+
+It looks like you have very large fonts in some settings so maybe there is a
+side-effect there. Can you open the config editor 
+
+1) Thunderbird Tools &gt; Options
+2) Advanced Pane
+3) General Tab
+4) [Config Editor...]
+
+and find the following settings:
+extensions.quickfolders.quickJump.Hotkey =  J
+extensions.quickfolders.quickJump.useHotkey = true
+extensions.quickfolders.quickMove.Hotkey = M
+extensions.quickfolders.quickMove.useHotkey = true
+
+(You can also reset them to these values via right-click &gt; Reset)
+
+I am also creating as new version with an additional debug setting for this
+case - expect an attachment shortly
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26436.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-25 05:24:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.7.2pre25.xpi" name="attach_8331" title="4.7.2 prerelease 25">Created an attachment (id=8331)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8331&amp;action=edit" title="4.7.2 prerelease 25">[details]</a></span>
+4.7.2 prerelease 25
+
+Test version
+use the new debug setting, then test quickJump
+
+extensions.quickfolders.debug.premium.quickJump = true
+
+expected output:
+
+QuickFolders 13:23:10.697  [73310 ms]    
+showAboutConfig(clickedElement: checkbox, filter: quickfolders.debug, readOnly:
+true)
+ ----------
+QuickFolders 13:23:10.760  [63 ms]       
+showAboutConfig() : setting config Filter.
+readonly = true
+ ----------
+QuickFolders {EVENTS.KEYBOARD} 13:23:44.717  [114142 ms]         
+SHIFT + charcode = 74 = j
+
+ ----------
+QuickFolders {PREMIUM.QUICKJUMP} 13:23:44.718  [1 ms]    
+hasPremiumLicense returned true.
+quickJump
+Shortcut = true, J
+Shortcut = true, M
+
+ ----------
+QuickFolders {INTERFACE.FINDFOLDER} 13:23:44.718  [0 ms]         
+findFolder(true, quickJump)
+ ----------
+QuickFolders 13:23:44.718  [0 ms]        
+toggleMoveModeSearchBox(false)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=26436.html#c16">
+            #16</a> From 
+          <a href="mailto:miroslav.kokrda&#64;seznam.cz">Numira</a>
+          2017-10-25 12:30:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >WOW!  There's the rub !
+
+content of extensions.quickfolders.quickMove.Hotkey:
+
+&quot;GaggggasdM&quot;
+
+content of extensions.quickfolders.quickJump.Hotkey:
+
+&quot;asJjGJjjJgGa123+ěšsdf456dfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggGasdggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggasdfgghjggggggfddsdsgggGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGgsdfGGGGGGGGgggggggggggggggG1234gggggggggggghjklpoiuytrewqqwggggggggGGGGGGGgggGGGgGggsdegggsdr4gGGG&quot;
+
+It seems, that textbox in configuration is not limited to one letter, and at
+every my attempt to change letter to G, or J was added to settings.
+
+But, problems started abruptly, when I normally worked in Thunderbird, so
+initital start of this trouble is mystery for me.
+
+Now, I cleaned content of extensions.quickfolders.quickJump.Hotkey to &quot;G&quot; and
+it work as is expected.
+
+Many thanks ...
+
+PS&gt; If you need some additional tests, I am ready for help
+PS2&gt; 4.7.2 prerelease 25 is not installed, I am using 24 now
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=26436.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-10-25 12:47:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26436.html#c16">comment #16</a>)
+<span class="quote">&gt; WOW!  There's the rub !
+&gt; 
+&gt; content of extensions.quickfolders.quickMove.Hotkey:
+&gt; 
+&gt; &quot;GaggggasdM&quot;
+&gt; 
+&gt; content of extensions.quickfolders.quickJump.Hotkey:
+&gt; 
+&gt; &quot;asJjGJjjJgGa123+ěšsdf456dfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggGasdggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggasdfgghjggggggfddsdsgggGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGgsdfGGGGGGGGgggggggggggggggG1234gggggggggggghjklpoiuytrewqqwggggggggGGGGGGGgggGGGgGggsdegggsdr4gGGG&quot;
+&gt; 
+&gt; It seems, that textbox in configuration is not limited to one letter, and at
+&gt; every my attempt to change letter to G, or J was added to settings.
+&gt; 
+&gt; But, problems started abruptly, when I normally worked in Thunderbird, so
+&gt; initital start of this trouble is mystery for me.
+&gt; 
+&gt; Now, I cleaned content of extensions.quickfolders.quickJump.Hotkey to &quot;G&quot; and
+&gt; it work as is expected.
+&gt; 
+&gt; Many thanks ...
+&gt; </span >
+
+interesting - I made thee textbox 2 characters wide but obviously you choose
+such a big font that it did not even fit one character. I will try and change
+it to 3 to make it more obvious in the future. Not sure if I can restrict to 1
+char entry but I may well add this too.,,,
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26436&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

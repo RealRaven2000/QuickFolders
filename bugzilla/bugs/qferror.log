@@ -1,0 +1,686 @@
+﻿QuickFolders 4:8:37.575  [4780 ms]	 
+Theme [flatTabs] selected
+ ----------
+QuickFolders 4:8:32.795  [0 ms]	 
+QuickFolders.VersionProxy() - DETECTED QuickFolders Version 3.9
+Running on SeaMonkey Version 2.17a1
+ ----------
+QuickFolders 4:8:32.795  [267 ms]	 
+AddonManager: QuickFolders extension's version is 3.9
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.659  [1 ms]	 
+getElementStyle( .quickfolders-flat .col5, background-image)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.658  [0 ms]	 
+
+theRule.style[k]=border-bottom-color
+theRule.style[k].parentRule=[object CSSStyleRule]
+theRule.style.getPropertyPriority=important
+st.getPropertyValue(border-bottom-color):rgb(102, 255, 255)
+theRule.style.getPropertyValue=rgb(102, 255, 255)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.658  [0 ms]	 
+
+=============
+Modify item: border-bottom-color
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.658  [7 ms]	 
+found relevant style: toolbar.quickfolders-flat searching rule border-bottom-color
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.651  [1 ms]	 
+setElementStyle( toolbar.quickfolders-flat, border-bottom-color, #66FFFF)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.650  [0 ms]	 
+
+theRule.style[k]=box-shadow
+theRule.style[k].parentRule=[object CSSStyleRule]
+theRule.style.getPropertyPriority=important
+st.getPropertyValue(box-shadow):0px 0px 2px -1px rgba(0, 0, 0, 0.9)
+theRule.style.getPropertyValue=0px 0px 2px -1px rgba(0, 0, 0, 0.9)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.650  [0 ms]	 
+
+=============
+Modify item: box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.650  [7 ms]	 
+found relevant style: .quickfolders-flat .folderBarContainer toolbarbutton:hover searching rule box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.643  [0 ms]	 
+setElementStyle( .quickfolders-flat .folderBarContainer toolbarbutton:hover, box-shadow, 0px 0px 2px -1px rgba(0,0,0,0.9))
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.643  [1 ms]	 
+
+theRule.style[k]=box-shadow
+theRule.style[k].parentRule=[object CSSStyleRule]
+theRule.style.getPropertyPriority=important
+st.getPropertyValue(box-shadow):0px 0px 2px -1px rgba(0, 0, 0, 0.9)
+theRule.style.getPropertyValue=0px 0px 2px -1px rgba(0, 0, 0, 0.9)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.642  [0 ms]	 
+
+=============
+Modify item: box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.642  [9 ms]	 
+found relevant style: .quickfolders-flat .folderBarContainer toolbarbutton.selected-folder searching rule box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.633  [0 ms]	 
+setElementStyle( .quickfolders-flat .folderBarContainer toolbarbutton.selected-folder, box-shadow, 0px 0px 2px -1px rgba(0,0,0,0.9))
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.633  [0 ms]	 
+
+theRule.style[k]=box-shadow
+theRule.style[k].parentRule=[object CSSStyleRule]
+theRule.style.getPropertyPriority=important
+st.getPropertyValue(box-shadow):1px -1px 3px -1px rgba(0, 0, 0, 0.7)
+theRule.style.getPropertyValue=1px -1px 3px -1px rgba(0, 0, 0, 0.7)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.633  [0 ms]	 
+
+=============
+Modify item: box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.633  [9 ms]	 
+found relevant style: .quickfolders-flat .folderBarContainer toolbarbutton searching rule box-shadow
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.624  [8 ms]	 
+setElementStyle( .quickfolders-flat .folderBarContainer toolbarbutton, box-shadow, 1px -1px 3px -1px rgba(0,0,0,0.7))
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.616  [0 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton[background-image].selected-folder, border-bottom-color, #66FFFF)
+ ----------
+Warning: Unknown property '-moz-border-radius-bottomright'.  Declaration dropped.
+Source file: chrome://quickfolders/content/quickfolders-seamonkey.css
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.616  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.615  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.614  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.613  [8 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.605  [0 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-border-radius-bottomright, 0px)
+ ----------
+Warning: Unknown property '-moz-border-radius-bottomleft'.  Declaration dropped.
+Source file: chrome://quickfolders/content/quickfolders-seamonkey.css
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.605  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.605  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.604  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.603  [8 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-bottomleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [0 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-border-radius-bottomleft, 0px)
+ ----------
+Warning: Unknown property '-moz-border-radius-topright'.  Declaration dropped.
+Source file: chrome://quickfolders/content/quickfolders-seamonkey.css
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.595  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.594  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.593  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.593  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.593  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.593  [8 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topright
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.585  [1 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-border-radius-topright, 4px)
+ ----------
+Warning: Unknown property '-moz-border-radius-topleft'.  Declaration dropped.
+Source file: chrome://quickfolders/content/quickfolders-seamonkey.css
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.584  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.583  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.582  [7 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-border-radius-topleft
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.575  [8 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-border-radius-topleft, 4px)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.567  [0 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton[background-image].selected-folder, border-bottom-color, #66FFFF)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.567  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.567  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.566  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.565  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.565  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.565  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.565  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.565  [8 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-property
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.557  [1 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-transition-property, null)
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.556  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.556  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.556  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.556  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.555  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.555  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.555  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.555  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.554  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.554  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.554  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.554  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.553  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.553  [0 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.553  [1 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.552  [15 ms]	 
+found relevant style: .quickfolders-flat toolbarbutton searching rule -moz-transition-duration
+ ----------
+QuickFolders {CSS.DETAIL} 4:8:32.537  [0 ms]	 
+setElementStyle( .quickfolders-flat toolbarbutton, -moz-transition-duration, null)
+ ----------
+QuickFolders 4:8:32.537  [0 ms]	 
+updateUserStyles() - missing style sheet 'chrome://quickfolders/content/qf_palette_legacy16.css' - not found = not attempting any style modifications.
+ ----------
+QuickFolders 4:8:32.537  [0 ms]	 
+Can not find style sheet: chrome://quickfolders/content/qf_palette_legacy16.css -  in chrome://messenger/content/messenger.xul
+win.doc.title=[QuickFolders] [Bug 25277] Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null” - zMozdev - Local Folders - SeaMonkey
+doc.documentURI=chrome://messenger/content/messenger.xul
+ ----------
+QuickFolders {CSS.STYLESHEETS} 4:8:32.537  [2 ms]	 
+37 StyleSheets found:
+0. chrome://messenger/skin/mailWindow1.css
+1. chrome://messenger/skin/threadPane.css
+2. chrome://messenger/skin/threadPaneExtras.css
+3. chrome://messenger/skin/threadPaneLabels.css
+4. chrome://messenger/skin/folderPane.css
+5. chrome://messenger/skin/folderPaneExtras.css
+6. chrome://messenger/skin/folderMenus.css
+7. chrome://communicator/skin/tasksOverlay.css
+8. chrome://charpick/content/style.css
+9. chrome://messenger/skin/messageHeader.css
+10. chrome://messenger/skin/messageKeywords.css
+11. chrome://messenger/skin/smime/msgReadSMIMEOverlay.css
+12. chrome://sqlitemanager/skin/smoverlay.css
+13. chrome://inspectorwidget/skin/inspectorwidget_tb.css
+14. chrome://quickmenu/skin/overlay.css
+15. chrome://console2/skin/toolbar.css
+16. chrome://console2/skin/toolbar.css
+17. chrome://console2/content/seamonkey.css
+18. chrome://dispmua/skin/dismua.css
+19. chrome://replytolist/skin/replytolist.css
+20. chrome://quickfolders/content/quickfolders-seamonkey.css [QuickFolderStyles]
+21. chrome://quickfolders/skin/quickfolders-palettes.css [QuickFolderPalettes]
+22. chrome://livehttpheaders/skin/livehttpheaders.css
+23. chrome://venkman/skin/venkman-overlay.css
+24. chrome://messenger/skin/smime/msgHdrViewSMIMEOverlay.css
+25. chrome://mailinglistheader/skin/mailinglistheader.css
+26. chrome://viewsourcewith/skin/viewsourcewith.css
+27. chrome://chatzilla/skin/chatzillaOverlay.css
+28. chrome://viewsourcewith/skin/viewsourcewith.css
+29. chrome://launchy/skin/main.css
+30. chrome://nightly/skin/browser.css
+31. chrome://removedupes/skin/removedupes-button.css
+32. chrome://removedupes/skin/removedupes-messenger.css
+33. chrome://savedpasswordeditor/skin/overlay.css
+34. chrome://savedpasswordeditor/skin/overlay-sm.css
+35. chrome://elemhidehelper/skin/overlay.css
+36. chrome://adblockplus/skin/overlay.css
+
+ ----------
+QuickFolders 4:8:32.535  [0 ms]	 
+Can not find style sheet: chrome://quickfolders/content/qf_palette_legacy16.css -  in chrome://messenger/content/messenger.xul
+win.doc.title=[QuickFolders] [Bug 25277] Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null” - zMozdev - Local Folders - SeaMonkey
+doc.documentURI=chrome://messenger/content/messenger.xul
+ ----------
+QuickFolders {CSS.STYLESHEETS} 4:8:32.535  [2 ms]	 
+37 StyleSheets found:
+0. chrome://messenger/skin/mailWindow1.css
+1. chrome://messenger/skin/threadPane.css
+2. chrome://messenger/skin/threadPaneExtras.css
+3. chrome://messenger/skin/threadPaneLabels.css
+4. chrome://messenger/skin/folderPane.css
+5. chrome://messenger/skin/folderPaneExtras.css
+6. chrome://messenger/skin/folderMenus.css
+7. chrome://communicator/skin/tasksOverlay.css
+8. chrome://charpick/content/style.css
+9. chrome://messenger/skin/messageHeader.css
+10. chrome://messenger/skin/messageKeywords.css
+11. chrome://messenger/skin/smime/msgReadSMIMEOverlay.css
+12. chrome://sqlitemanager/skin/smoverlay.css
+13. chrome://inspectorwidget/skin/inspectorwidget_tb.css
+14. chrome://quickmenu/skin/overlay.css
+15. chrome://console2/skin/toolbar.css
+16. chrome://console2/skin/toolbar.css
+17. chrome://console2/content/seamonkey.css
+18. chrome://dispmua/skin/dismua.css
+19. chrome://replytolist/skin/replytolist.css
+20. chrome://quickfolders/content/quickfolders-seamonkey.css [QuickFolderStyles]
+21. chrome://quickfolders/skin/quickfolders-palettes.css [QuickFolderPalettes]
+22. chrome://livehttpheaders/skin/livehttpheaders.css
+23. chrome://venkman/skin/venkman-overlay.css
+24. chrome://messenger/skin/smime/msgHdrViewSMIMEOverlay.css
+25. chrome://mailinglistheader/skin/mailinglistheader.css
+26. chrome://viewsourcewith/skin/viewsourcewith.css
+27. chrome://chatzilla/skin/chatzillaOverlay.css
+28. chrome://viewsourcewith/skin/viewsourcewith.css
+29. chrome://launchy/skin/main.css
+30. chrome://nightly/skin/browser.css
+31. chrome://removedupes/skin/removedupes-button.css
+32. chrome://removedupes/skin/removedupes-messenger.css
+33. chrome://savedpasswordeditor/skin/overlay.css
+34. chrome://savedpasswordeditor/skin/overlay-sm.css
+35. chrome://elemhidehelper/skin/overlay.css
+36. chrome://adblockplus/skin/overlay.css
+
+ ----------
+QuickFolders {CSS} 4:8:32.533  [0 ms]	 
+ensureStyleSheetLoaded(Name: chrome://quickfolders/content/qf_palette_legacy16.css, Title: )
+ ----------
+QuickFolders 4:8:32.533  [0 ms]	 
+Can not find style sheet: chrome://quickfolders/content/qf_palette_legacy16.css -  in chrome://messenger/content/messenger.xul
+win.doc.title=[QuickFolders] [Bug 25277] Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null” - zMozdev - Local Folders - SeaMonkey
+doc.documentURI=chrome://messenger/content/messenger.xul
+ ----------
+QuickFolders {CSS.STYLESHEETS} 4:8:32.533  [2 ms]	 
+37 StyleSheets found:
+0. chrome://messenger/skin/mailWindow1.css
+1. chrome://messenger/skin/threadPane.css
+2. chrome://messenger/skin/threadPaneExtras.css
+3. chrome://messenger/skin/threadPaneLabels.css
+4. chrome://messenger/skin/folderPane.css
+5. chrome://messenger/skin/folderPaneExtras.css
+6. chrome://messenger/skin/folderMenus.css
+7. chrome://communicator/skin/tasksOverlay.css
+8. chrome://charpick/content/style.css
+9. chrome://messenger/skin/messageHeader.css
+10. chrome://messenger/skin/messageKeywords.css
+11. chrome://messenger/skin/smime/msgReadSMIMEOverlay.css
+12. chrome://sqlitemanager/skin/smoverlay.css
+13. chrome://inspectorwidget/skin/inspectorwidget_tb.css
+14. chrome://quickmenu/skin/overlay.css
+15. chrome://console2/skin/toolbar.css
+16. chrome://console2/skin/toolbar.css
+17. chrome://console2/content/seamonkey.css
+18. chrome://dispmua/skin/dismua.css
+19. chrome://replytolist/skin/replytolist.css
+20. chrome://quickfolders/content/quickfolders-seamonkey.css [QuickFolderStyles]
+21. chrome://quickfolders/skin/quickfolders-palettes.css [QuickFolderPalettes]
+22. chrome://livehttpheaders/skin/livehttpheaders.css
+23. chrome://venkman/skin/venkman-overlay.css
+24. chrome://messenger/skin/smime/msgHdrViewSMIMEOverlay.css
+25. chrome://mailinglistheader/skin/mailinglistheader.css
+26. chrome://viewsourcewith/skin/viewsourcewith.css
+27. chrome://chatzilla/skin/chatzillaOverlay.css
+28. chrome://viewsourcewith/skin/viewsourcewith.css
+29. chrome://launchy/skin/main.css
+30. chrome://nightly/skin/browser.css
+31. chrome://removedupes/skin/removedupes-button.css
+32. chrome://removedupes/skin/removedupes-messenger.css
+33. chrome://savedpasswordeditor/skin/overlay.css
+34. chrome://savedpasswordeditor/skin/overlay-sm.css
+35. chrome://elemhidehelper/skin/overlay.css
+36. chrome://adblockplus/skin/overlay.css
+
+ ----------
+QuickFolders {CSS.STYLESHEETS} 4:8:32.531  [1 ms]	 
+37 StyleSheets found:
+0. chrome://messenger/skin/mailWindow1.css
+1. chrome://messenger/skin/threadPane.css
+2. chrome://messenger/skin/threadPaneExtras.css
+3. chrome://messenger/skin/threadPaneLabels.css
+4. chrome://messenger/skin/folderPane.css
+5. chrome://messenger/skin/folderPaneExtras.css
+6. chrome://messenger/skin/folderMenus.css
+7. chrome://communicator/skin/tasksOverlay.css
+8. chrome://charpick/content/style.css
+9. chrome://messenger/skin/messageHeader.css
+10. chrome://messenger/skin/messageKeywords.css
+11. chrome://messenger/skin/smime/msgReadSMIMEOverlay.css
+12. chrome://sqlitemanager/skin/smoverlay.css
+13. chrome://inspectorwidget/skin/inspectorwidget_tb.css
+14. chrome://quickmenu/skin/overlay.css
+15. chrome://console2/skin/toolbar.css
+16. chrome://console2/skin/toolbar.css
+17. chrome://console2/content/seamonkey.css
+18. chrome://dispmua/skin/dismua.css
+19. chrome://replytolist/skin/replytolist.css
+20. chrome://quickfolders/content/quickfolders-seamonkey.css [QuickFolderStyles]
+
+ ----------
+QuickFolders {CSS.STYLESHEETS} 4:8:32.530  [3 ms]	 
+============================================
+getMyStyleSheet (quickfolders-layout.css,QuickFolderStyles) [20, QuickFolderStyles] =chrome://quickfolders/content/quickfolders-seamonkey.css
+win.doc.title   =[QuickFolders] [Bug 25277] Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null” - zMozdev - Local Folders - SeaMonkey
+doc.title       =[QuickFolders] [Bug 25277] Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null” - zMozdev - Local Folders - SeaMonkey
+window.location =chrome://messenger/content/messenger.xul
+============================================
+ ----------
+QuickFolders {CSS} 4:8:32.528  [183 ms]	 
+updateMainWindow: update User Styles...
+ ----------
+QuickFolders 4:8:32.527  [18 ms]	 
+14 of 14 tabs rendered on toolbar.
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.509  [11 ms]	 
+initElementPastel(element: menupopup
+target: moz-be (23))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.498  [15 ms]	 
+initElementPastel(element: menupopup
+target: a)  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.483  [11 ms]	 
+initElementPastel(element: menupopup
+target: zzV (16))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.472  [10 ms]	 
+initElementPastel(element: menupopup
+target: zzBz (77))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.462  [10 ms]	 
+initElementPastel(element: menupopup
+target: zMz (1))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.452  [11 ms]	 
+initElementPastel(element: menupopup
+target: FF:Bz)  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.441  [10 ms]	 
+initElementPastel(element: menupopup
+target: J&L)  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.431  [9 ms]	 
+initElementPastel(element: menupopup
+target: T (4))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.422  [10 ms]	 
+initElementPastel(element: menupopup
+target: J)  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.412  [9 ms]	 
+initElementPastel(element: menupopup
+target: In (2))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.403  [9 ms]	 
+initElementPastel(element: menupopup
+target: RWW (1676))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.394  [8 ms]	 
+initElementPastel(element: menupopup
+target: mozP (1156))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.386  [11 ms]	 
+initElementPastel(element: menupopup
+target: B1 (5))  Pastel = false
+ ----------
+QuickFolders {CSS.PALETTE} 4:8:32.375  [8 ms]	 
+initElementPastel(element: menupopup
+target: mM)  Pastel = false
+ ----------
+QuickFolders 4:8:32.367  [1 ms]	 
+No Categories defined, hiding Categories box.
+ ----------
+QuickFolders 4:8:32.366  [17 ms]	 
+updateCategories() - [0 Categories]
+ ----------
+QuickFolders 4:8:32.349  [172872 ms]	 
+updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 14
+ ----------
+QuickFolders {CSS} 4:8:32.345  [1 ms]	 
+updateMainWindow: update Folders...
+ ----------
+QuickFolders {CSS} [logTime init]
+============================
+updateMainWindow...
+

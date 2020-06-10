@@ -1,0 +1,1095 @@
+QuickFolders {POPUPMENUS} 12:29:10.926  [88739 ms]	 
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/HU/Meetings/UK%20ALL/UK%202014
+label: 
+ ----------
+QuickFolders {DND} 12:29:49.238  [38312 ms]	 
+buttonDragObserver.onDragEnter - sourceNode = treechildren
+  ALT = false  CTRL = false  SHIFT = false
+ ----------
+QuickFolders {DND} 12:29:49.241  [3 ms]	 
+showPopup with id moveTo_mailbox://nobody@Local%20Folders/HU/Meetings/South%20Africa/SA%202014
+ ----------
+QuickFolders {DND} 12:29:49.370  [129 ms]	 
+buttonDragObserver.onDragExit - sourceNode = treechildren
+ ----------
+QuickFolders {DND} 12:29:49.386  [16 ms]	 
+buttonDragObserver.onDragEnter - sourceNode = treechildren
+  ALT = false  CTRL = false  SHIFT = false
+ ----------
+QuickFolders {DND} 12:29:49.388  [2 ms]	 
+removed popup:moveTo_mailbox://nobody@Local%20Folders/HU/Meetings/South%20Africa/SA%202014
+ ----------
+QuickFolders {DND} 12:29:49.389  [1 ms]	 
+showPopup with id moveTo_mailbox://nobody@Local%20Folders/HU/Store/Orders
+ ----------
+QuickFolders {DND} 12:29:49.404  [15 ms]	 
+buttonDragObserver.onDragExit - sourceNode = treechildren
+ ----------
+QuickFolders {DND} 12:29:49.476  [72 ms]	 
+buttonDragObserver.onDragEnter - sourceNode = treechildren
+  ALT = false  CTRL = false  SHIFT = false
+ ----------
+QuickFolders {DND} 12:29:49.477  [1 ms]	 
+showPopup with id moveTo_mailbox://nobody@Local%20Folders/HU/Store/Orders
+ ----------
+QuickFolders {DND} 12:29:49.482  [5 ms]	 
+buttonDragObserver.onDragEnter - sourceNode = treechildren
+  ALT = false  CTRL = false  SHIFT = false
+ ----------
+QuickFolders {DND} 12:29:49.485  [3 ms]	 
+showPopup with id moveTo_mailbox://nobody@Local%20Folders/HU/Store/Orders
+ ----------
+QuickFolders {DND} 12:29:50.482  [997 ms]	 
+buttonDragObserver.onDrop flavor=text/x-moz-message
+ ----------
+QuickFolders {DND} 12:29:50.483  [1 ms]	 
+onDrop: 2 messageUris to mailbox://nobody@Local%20Folders/HU/Store/Orders
+ ----------
+QuickFolders {DND} 12:29:50.483  [0 ms]	 
+QuickFolders.Util.moveMessages: target = Orders, makeCopy=false
+ ----------
+QuickFolders 12:29:50.743  [260 ms]	 
+buttonDragObserver.onDrop DropTarget = toolbarbutton0  Target Folder:Orders
+ ----------
+QuickFolders 12:29:51.165  [422 ms]	 
+Folder Tab Select Timer ID: 70
+ ----------
+QuickFolders 12:29:51.165  [0 ms]	 
+Setting Update Timer (after timer 66 expired), new Timer: 70
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.165  [0 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.165  [0 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.166  [1 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.167  [1 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.167  [0 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.168  [1 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders 12:29:51.169  [129449 ms]	 
+Folder Tab Select Timer ID: 10
+ ----------
+QuickFolders 12:29:51.169  [0 ms]	 
+Setting Update Timer (after timer 9 expired), new Timer: 10
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.173  [5 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.173  [0 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.173  [0 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.174  [1 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.175  [1 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.175  [0 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders 12:29:51.720  [545 ms]	 
+updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 57
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.720  [0 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.720  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.720  [0 ms]	 
+Creating Colors Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.721  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.722  [1 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.723  [1 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.724  [1 ms]	 
+Creating Popup Set for Drafts
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.724  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.724  [0 ms]	 
+Creating Colors Menu for Drafts...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.725  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.726  [1 ms]	 
+Creating Popup Set for Sent
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.726  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.726  [0 ms]	 
+Creating Colors Menu for Sent...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.727  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.729  [2 ms]	 
+Creating Popup Set for Advertisers
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.729  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.729  [0 ms]	 
+Creating Colors Menu for Advertisers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.730  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.731  [1 ms]	 
+Creating SubFolder Menu for Advertisers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.750  [19 ms]	 
+Created Menu Advertisers: 135 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.751  [1 ms]	 
+Creating Popup Set for Advertisers-Potential
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.751  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.751  [0 ms]	 
+Creating Colors Menu for Advertisers-Potential...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.752  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.753  [1 ms]	 
+Creating SubFolder Menu for Advertisers-Potential...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.759  [6 ms]	 
+Created Menu Advertisers-Potential: 40 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.760  [1 ms]	 
+Creating Popup Set for Affiliate deals
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.760  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.760  [0 ms]	 
+Creating Colors Menu for Affiliate deals...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.761  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.762  [1 ms]	 
+Creating SubFolder Menu for Affiliate deals...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.768  [6 ms]	 
+Created Menu Affiliate deals: 46 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.770  [2 ms]	 
+Creating Popup Set for Blog Requests etc
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.770  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.770  [0 ms]	 
+Creating Colors Menu for Blog Requests etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.771  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.773  [2 ms]	 
+Creating SubFolder Menu for Blog Requests etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.774  [1 ms]	 
+Created Menu Blog Requests etc: 4 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.774  [0 ms]	 
+Creating Popup Set for Orders
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.774  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.774  [0 ms]	 
+Creating Colors Menu for Orders...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.775  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.776  [1 ms]	 
+Creating SubFolder Menu for Orders...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.777  [1 ms]	 
+Created Menu Orders: 6 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.778  [1 ms]	 
+Creating Popup Set for Purchases, orders, tracking
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.778  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.778  [0 ms]	 
+Creating Colors Menu for Purchases, orders, tracking...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.779  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.781  [2 ms]	 
+Creating Popup Set for Community
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.781  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.781  [0 ms]	 
+Creating Colors Menu for Community...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.782  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.783  [1 ms]	 
+Creating SubFolder Menu for Community...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.785  [2 ms]	 
+Created Menu Community: 12 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.786  [1 ms]	 
+Creating Popup Set for TO communities
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.786  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.786  [0 ms]	 
+Creating Colors Menu for TO communities...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.787  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.788  [1 ms]	 
+Creating SubFolder Menu for TO communities...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.788  [0 ms]	 
+Created Menu TO communities: 1 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.789  [1 ms]	 
+Creating Popup Set for MEMBERS info
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.789  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.789  [0 ms]	 
+Creating Colors Menu for MEMBERS info...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.790  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.791  [1 ms]	 
+Creating Popup Set for E-ZINE
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.792  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.792  [0 ms]	 
+Creating Colors Menu for E-ZINE...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.792  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.794  [2 ms]	 
+Creating SubFolder Menu for E-ZINE...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.796  [2 ms]	 
+Created Menu E-ZINE: 18 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.797  [1 ms]	 
+Creating Popup Set for 2013Photo
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.797  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.797  [0 ms]	 
+Creating Colors Menu for 2013Photo...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.798  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.800  [2 ms]	 
+Creating Popup Set for 2014 contest for 15
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.800  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.800  [0 ms]	 
+Creating Colors Menu for 2014 contest for 15...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.801  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.803  [2 ms]	 
+Creating Popup Set for Bot mail stuff 11-2012
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.803  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.803  [0 ms]	 
+Creating Colors Menu for Bot mail stuff 11-2012...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.803  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.804  [1 ms]	 
+Creating SubFolder Menu for Bot mail stuff 11-2012...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.805  [1 ms]	 
+Created Menu Bot mail stuff 11-2012: 5 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.806  [1 ms]	 
+Creating Popup Set for HUBB
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.806  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.806  [0 ms]	 
+Creating Colors Menu for HUBB...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.807  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.808  [1 ms]	 
+Creating SubFolder Menu for HUBB...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.812  [4 ms]	 
+Created Menu HUBB: 23 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.813  [1 ms]	 
+Creating Popup Set for Meetings
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.813  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.813  [0 ms]	 
+Creating Colors Menu for Meetings...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.813  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.815  [2 ms]	 
+Creating SubFolder Menu for Meetings...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.868  [53 ms]	 
+Created Menu Meetings: 374 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.870  [2 ms]	 
+Creating Popup Set for Greece 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.870  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.870  [0 ms]	 
+Creating Colors Menu for Greece 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.871  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.873  [2 ms]	 
+Creating Popup Set for Thai 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.873  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.873  [0 ms]	 
+Creating Colors Menu for Thai 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.873  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.875  [2 ms]	 
+Creating Popup Set for Brazil 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.875  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.875  [0 ms]	 
+Creating Colors Menu for Brazil 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.876  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.878  [2 ms]	 
+Creating Popup Set for Touratech Events
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.878  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.878  [0 ms]	 
+Creating Colors Menu for Touratech Events...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.879  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.881  [2 ms]	 
+Creating Popup Set for France 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.881  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.881  [0 ms]	 
+Creating Colors Menu for France 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.881  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.883  [2 ms]	 
+Creating Popup Set for UK 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.883  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.883  [0 ms]	 
+Creating Colors Menu for UK 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.884  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.887  [3 ms]	 
+Creating Popup Set for Montenegro 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.887  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.887  [0 ms]	 
+Creating Colors Menu for Montenegro 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.888  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.890  [2 ms]	 
+Creating Popup Set for Maritimes
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.890  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.890  [0 ms]	 
+Creating Colors Menu for Maritimes...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.890  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.892  [2 ms]	 
+Creating Popup Set for Colorado 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.892  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.892  [0 ms]	 
+Creating Colors Menu for Colorado 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.893  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.895  [2 ms]	 
+Creating Popup Set for Germany Summer 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.895  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.895  [0 ms]	 
+Creating Colors Menu for Germany Summer 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.896  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.898  [2 ms]	 
+Creating Popup Set for Ireland 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.898  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.898  [0 ms]	 
+Creating Colors Menu for Ireland 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.899  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.901  [2 ms]	 
+Creating Popup Set for CanWest 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.901  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.901  [0 ms]	 
+Creating Colors Menu for CanWest 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.901  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.903  [2 ms]	 
+Creating Popup Set for NC 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.903  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.903  [0 ms]	 
+Creating Colors Menu for NC 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.904  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.906  [2 ms]	 
+Creating Popup Set for Ontario 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.906  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.906  [0 ms]	 
+Creating Colors Menu for Ontario 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.907  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.909  [2 ms]	 
+Creating Popup Set for Haggs Bank 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.909  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.909  [0 ms]	 
+Creating Colors Menu for Haggs Bank 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.910  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.912  [2 ms]	 
+Creating Popup Set for California 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.912  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.912  [0 ms]	 
+Creating Colors Menu for California 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.913  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.915  [2 ms]	 
+Creating Popup Set for Australia Qsld 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.915  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.915  [0 ms]	 
+Creating Colors Menu for Australia Qsld 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.915  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.917  [2 ms]	 
+Creating Popup Set for Perth 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.918  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.918  [0 ms]	 
+Creating Colors Menu for Perth 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.918  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.920  [2 ms]	 
+Creating Popup Set for Vic 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.920  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.920  [0 ms]	 
+Creating Colors Menu for Vic 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.921  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.923  [2 ms]	 
+Creating Popup Set for NSW 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.923  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.923  [0 ms]	 
+Creating Colors Menu for NSW 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.924  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.926  [2 ms]	 
+Creating Popup Set for SA 2014
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.926  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.926  [0 ms]	 
+Creating Colors Menu for SA 2014...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.927  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.929  [2 ms]	 
+Creating Popup Set for India
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.929  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.929  [0 ms]	 
+Creating Colors Menu for India...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.929  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.931  [2 ms]	 
+Creating Popup Set for Press, Stories on us etc
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.932  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.932  [0 ms]	 
+Creating Colors Menu for Press, Stories on us etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.932  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.933  [1 ms]	 
+Creating SubFolder Menu for Press, Stories on us etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.937  [4 ms]	 
+Created Menu Press, Stories on us etc: 24 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.938  [1 ms]	 
+Creating Popup Set for Iain Harper
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.938  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.938  [0 ms]	 
+Creating Colors Menu for Iain Harper...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.938  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.940  [2 ms]	 
+Creating Popup Set for Staff =======
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.941  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.941  [0 ms]	 
+Creating Colors Menu for Staff =======...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.941  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.942  [1 ms]	 
+Creating SubFolder Menu for Staff =======...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.951  [9 ms]	 
+Created Menu Staff =======: 56 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.952  [1 ms]	 
+Creating Popup Set for Suppliers
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.952  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.952  [0 ms]	 
+Creating Colors Menu for Suppliers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.952  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.954  [2 ms]	 
+Creating SubFolder Menu for Suppliers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.957  [3 ms]	 
+Created Menu Suppliers: 24 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.958  [1 ms]	 
+Creating Popup Set for Travellers
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.958  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.958  [0 ms]	 
+Creating Colors Menu for Travellers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.959  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:51.960  [1 ms]	 
+Creating SubFolder Menu for Travellers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.6  [46 ms]	 
+Created Menu Travellers: 333 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.8  [2 ms]	 
+Creating Popup Set for UK - Travellers
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.8  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.8  [0 ms]	 
+Creating Colors Menu for UK - Travellers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.9  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.10  [1 ms]	 
+Creating SubFolder Menu for UK - Travellers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.15  [5 ms]	 
+Created Menu UK - Travellers: 36 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.17  [2 ms]	 
+Creating Popup Set for TO DO - Website
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.17  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.17  [0 ms]	 
+Creating Colors Menu for TO DO - Website...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.17  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.19  [2 ms]	 
+Creating SubFolder Menu for TO DO - Website...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.29  [10 ms]	 
+Created Menu TO DO - Website: 70 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.30  [1 ms]	 
+Creating Popup Set for Design Team
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.30  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.30  [0 ms]	 
+Creating Colors Menu for Design Team...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.31  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.32  [1 ms]	 
+Creating SubFolder Menu for Design Team...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.32  [0 ms]	 
+Created Menu Design Team: 4 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.33  [1 ms]	 
+Creating Popup Set for Deeson
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.33  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.33  [0 ms]	 
+Creating Colors Menu for Deeson...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.34  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.35  [1 ms]	 
+Creating SubFolder Menu for Deeson...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.36  [1 ms]	 
+Created Menu Deeson: 5 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.37  [1 ms]	 
+Creating Popup Set for Internet, ISP, Internic
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.37  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.37  [0 ms]	 
+Creating Colors Menu for Internet, ISP, Internic...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.38  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.39  [1 ms]	 
+Creating SubFolder Menu for Internet, ISP, Internic...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.41  [2 ms]	 
+Created Menu Internet, ISP, Internic: 17 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.42  [1 ms]	 
+Creating Popup Set for Mail Lists, Memberships, Groups etc
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.42  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.43  [1 ms]	 
+Creating Colors Menu for Mail Lists, Memberships, Groups etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.43  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.44  [1 ms]	 
+Creating SubFolder Menu for Mail Lists, Memberships, Groups etc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.57  [13 ms]	 
+Created Menu Mail Lists, Memberships, Groups etc: 85 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.58  [1 ms]	 
+Creating Popup Set for Facebook
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.58  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.58  [0 ms]	 
+Creating Colors Menu for Facebook...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.59  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.61  [2 ms]	 
+Creating Popup Set for Jupiters Travellers
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.61  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.62  [1 ms]	 
+Creating Colors Menu for Jupiters Travellers...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.62  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.64  [2 ms]	 
+Creating Popup Set for Medical
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.64  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.64  [0 ms]	 
+Creating Colors Menu for Medical...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.65  [1 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.66  [1 ms]	 
+Creating SubFolder Menu for Medical...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.66  [0 ms]	 
+Created Menu Medical: 1 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.67  [1 ms]	 
+Creating Popup Set for Google everything
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.68  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.68  [0 ms]	 
+Creating Colors Menu for Google everything...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.68  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.69  [1 ms]	 
+Creating SubFolder Menu for Google everything...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.70  [1 ms]	 
+Created Menu Google everything: 1 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.71  [1 ms]	 
+Creating Popup Set for Spam misc
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.71  [0 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.71  [0 ms]	 
+Creating Colors Menu for Spam misc...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.71  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.73  [2 ms]	 
+Creating Popup Set for Margaret
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.74  [1 ms]	 
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.74  [0 ms]	 
+Creating Colors Menu for Margaret...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.74  [0 ms]	 
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders 12:29:52.76  [2 ms]	 
+57 of 57 tabs rebuilt.
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.78  [2 ms]	 
+Creating Popup Set for Inbox
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.78  [0 ms]	 
+Creating SubFolder Menu for Inbox...
+ ----------
+QuickFolders {POPUPMENUS} 12:29:52.79  [1 ms]	 
+Created Menu Inbox: 2 items.
+-------------------------
+ ----------
+QuickFolders 12:29:52.80  [911 ms]	 
+updateFolders(rebuildCategories: false, minimal: true)
+ ----------
+QuickFolders {POPUPMENUS} 12:30:9.686  [17607 ms]	 
+Open popup menu: menupopup
+id: QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/HU/Store/Orders
+label: 

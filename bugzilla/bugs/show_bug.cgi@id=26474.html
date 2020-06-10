@@ -1,0 +1,1116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26474 &ndash; &quot;Tab-Specific Properties ...&quot; Add Option to apply mail settings to subfolders</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26474&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26474">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26474">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26474">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_26474">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26474</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">&quot;Tab-Specific Properties ...&quot; Add Option to apply mail settings to subfolders</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-01-28 12:11:13</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26474&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-01-28 12:11:13">
+  <input type="hidden" name="longdesclength" value="9">
+  <input type="hidden" name="id" value="26474">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="&quot;Tab-Specific Properties ...&quot; Add Option to apply mail settings to subfolders">
+        <span title="&quot;Tab-Specific Properties ...&quot; Add Option to apply mail settings to subfolders">&quot;Tab-Specific Properties ...&quot; Add Option to apply mail se...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26474.html">26474</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26474&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26474">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:pgnet.dev&#64;gmail.com">pgnd &lt;pgnet.dev&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="axel.grude&#64;gmail.com">axel.grude&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-4.9pre67.xpi"
+               title="View the content of the attachment">
+          <b>4.7.2 prerelease 67</b></a>
+
+          <span class="bz_attach_extra_info">
+              (714.93 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26474.html#attach_8366"
+               title="Go to the comment associated with the attachment">2018-01-28 05:18</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8366&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26474&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26474&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26474">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26474">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26474">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26474">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26474.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-01-27 17:50
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >&gt;
+<span class="quote">&gt; So, for that ONE identity, as above, that's 8 tabs created, 7 of them hidden ...</span >
+&gt;
+<span class="quote">&gt; Perhaps an option in a given tab's PerTabSettings to propagate the From:/ReplyTo: address to ALL subfolders in the hierarchy below the Tab's folder?</span >
+
+QF's &quot;Tab-Specific Properties ...&quot; dialog enables setting a QF Tab's associated
+account folder's &quot;From:&quot; header address from the account's default
+
+        Default Email Fields
+                From: Account Default Identity
+
+to any existing/valid secondary account identity
+
+        Default Email Fields
+                From: <a href="mailto:Some.other.identity.for.this.account@example.com">Some.other.identity.for.this.account@example.com</a>
+
+For a use case where, for example one has a folder hierarchy
+
+        <a href="mailto:MAIN_ACCOUNT_IDENTITY@mydomain.com">MAIN_ACCOUNT_IDENTITY@mydomain.com</a>
+                Inbox     &lt;======= QF Tab #1
+                Sent
+                Folder A1
+                Folder A2
+                ...
+                <a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>
+                        Inbox      &lt;===== QF Tab #2
+                                Subfolder B1
+                        Sent
+                        Folder B2
+                                Subfolder B21
+                        Folder B3
+
+with two tabs associated with the MAIN &amp; 2nd-ary IDs' Inboxes, it's useful to
+be able to extend the association of the 2nd-ary email to all other ID-related
+folders.
+
+So, here, checkboxes/functionality that allow selection of
+
+        [x] also apply to subfolders
+        [x] also apply to siblings/subfolders
+
+would 'set' all of
+
+                                Subfolder B1
+                        Sent
+                        Folder B2
+                                Subfolder B21
+                        Folder B3
+
+in addition to the Tab-associated folder, Inbox.
+
+One issue ... inheritance can get complicated.
+
+It's not immediately clear to be how best to ensure that NEW sibling/child
+folders inherit those properties.  Perhaps the immediate PARENT folder
+&quot;<a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>&quot; gets set as well ... Like I said, not sure yet.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26474.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-27 18:18:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26474.html#c0">comment #0</a>)
+<span class="quote">&gt; &gt;
+&gt; &gt; So, for that ONE identity, as above, that's 8 tabs created, 7 of them hidden ...
+&gt; &gt;
+&gt; &gt; Perhaps an option in a given tab's PerTabSettings to propagate the From:/ReplyTo: address to ALL subfolders in the hierarchy below the Tab's folder?
+&gt; 
+&gt; So, here, checkboxes/functionality that allow selection of
+&gt; 
+&gt;         [x] also apply to subfolders
+&gt;         [x] also apply to siblings/subfolders</span >
+
+subfolders its pretty clear, but siblings is very unclear. you could
+potentially set up 2 folders with contradicting &quot;siblings&quot; rules and wouldn't
+even know which one was applicable. With a pareent / child relationship it is
+pretty clear: the rule is inherited by child folders but can be overwritten.
+
+So for the moment I propose only to implement the &quot;apply to subfolders&quot; rule.
+
+As regards &quot;root folders&quot; (direct descendants from an account) you can already
+set their default identity (in account settings) so it is not so important for
+now. Clarity is sometimes more important than versatility.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26474.html#c2">
+            #2</a> From 
+          <a href="mailto:pgnet.dev&#64;gmail.com">pgnd</a>
+          2018-01-27 18:56:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26474.html#c1">comment #1</a>)
+<span class="quote">&gt; subfolders its pretty clear, but siblings is very unclear. you could
+&gt; potentially set up 2 folders with contradicting &quot;siblings&quot; rules and wouldn't
+&gt; even know which one was applicable. With a pareent / child relationship it is
+&gt; pretty clear: the rule is inherited by child folders but can be overwritten.
+&gt; 
+&gt; So for the moment I propose only to implement the &quot;apply to subfolders&quot; rule.</span >
+
+Fair enuf
+
+<span class="quote">&gt; As regards &quot;root folders&quot; (direct descendants from an account) you can already
+&gt; set their default identity (in account settings) so it is not so important for
+&gt; now. Clarity is sometimes more important than versatility.</span >
+
+I'm not seeing what you're referring to ...
+
+
+If in the example above, I open ONE QF-Tab, for folder:
+
+  <a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>
+<span class="quote">&gt;&gt;  Inbox</span >
+
+and set THAT Inbox-tab's folder to use the 2nd-ary identity in its Tab
+settings,
+how &amp; where does one set *its* parent folder &quot;<a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>&quot; -- NOT
+the account root folder, &quot;<a href="mailto:MAIN_ACCOUNT_IDENTITY@mydomain.com">MAIN_ACCOUNT_IDENTITY@mydomain.com</a>&quot; ! -- to the
+2nd-ary ID as well?
+
+Afaict, currently, the only option is to 
+ (1) create an additional/separate TAB for folder == &quot;<a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>&quot;
+ (2) change its IDENTITY in tab settings,
+ (3) add the tab to the &quot;Hide ALways&quot; group so it's no longer seen
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26474.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-28 00:54:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26474.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26474.html#c1">comment #1</a>)
+&gt; &gt; ...
+&gt; &gt;  Clarity is sometimes more important than versatility.
+&gt; 
+&gt; I'm not seeing what you're referring to ...
+&gt; 
+&gt; 
+&gt; If in the example above, I open ONE QF-Tab, for folder:
+&gt; 
+&gt;   <a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>
+&gt; &gt;&gt;  Inbox
+&gt; 
+&gt; and set THAT Inbox-tab's folder to use the 2nd-ary identity in its Tab
+&gt; settings,
+&gt; how &amp; where does one set *its* parent folder &quot;<a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>&quot; -- NOT
+&gt; the account root folder, &quot;<a href="mailto:MAIN_ACCOUNT_IDENTITY@mydomain.com">MAIN_ACCOUNT_IDENTITY@mydomain.com</a>&quot; ! -- to the
+&gt; 2nd-ary ID as well?
+&gt; 
+&gt; Afaict, currently, the only option is to 
+&gt;  (1) create an additional/separate TAB for folder == &quot;<a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a>&quot;
+&gt;  (2) change its IDENTITY in tab settings,
+&gt;  (3) add the tab to the &quot;Hide ALways&quot; group so it's no longer seen
+&gt; </span >
+This I correct. Just to expand on the concept of &quot;clarity&quot;:
+
+Step  (3) is a great workaround if you don't want too many tabs but it's
+optional, so let's assume we don't hide it. Imagine thus folder has 50
+subfolders and you set one of them to use the &quot;siblings&quot; rule.
+
+At a later stage you might forget which of the 50 child folders has the
+siblings rule defined, and hem you might even be tempted to create another rule
+on a different sibling to override the behavior (and this might not work as
+there 8d no intuitive rule for &quot;more important siblings&quot;, unless we invent that
+as well). To look at the parent folders seems a lot more intuitive then
+visiting all siblings. I am holding to the k.i.s.s. principle because the
+siblings rule opens up these uncertainties and needs for the explanation in the
+UI so it's too &quot;cluttery&quot;.
+
+There me also be a general advantage to creating the parent tab to see whether
+any subfolder <a href="mailto:IDENTITY_2@mydomain.com">IDENTITY_2@mydomain.com</a> has received new mail.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26474.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-28 01:06:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >So just to summarise the algorithm for the new option &quot;apply to subfolders&quot;:
+
+Expand the existing code that checks for the identity / &quot;override To: header&quot;
+to also go up to the folders parent and iterate the array of QF TABS to check 
+for the same rule and then (if no such rule is found)  do this recursively for
+the parent's parent folder.
+
+The implementation of this looks relatively straightforward; the main work is
+in designing the UI (trying to make the advanced properties tab as compact as
+possible) and the usual work for my 17 translators.
+
+(Unrelated to these requiremets) While I am there I might revisit the &quot;To:&quot;
+rule: that currently overwrites the recipient even when I hit &quot;reply&quot; which may
+not be helpful. In this case, I think of inserting a message box which asks:
+do you want to override &quot;to X&quot; with &quot;to Y&quot; 
+   [yes] [no] 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26474.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-28 05:18:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.9pre67.xpi" name="attach_8366" title="4.7.2 prerelease 67">Created an attachment (id=8366)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8366&amp;action=edit" title="4.7.2 prerelease 67">[details]</a></span>
+4.7.2 prerelease 67
+
+Here is a test version, feature added (only English and German locales are
+complete)
+
+To test, you can enable QuickFolders Advanced Settings / Debug Mode and also
+the special debug switch (right-click debug checkbox):
+
+extensions.quickfolders.debug.composer = true
+
+this will display additional information in the error console / browser toolbox
+console.
+
+Note that in the release I will probably define this feature as Premium content
+only (you will need a QF Pro license to use recursive subfolders). Free (as in
+beer) users can enable it on subfolders instead. Also note: non premium
+versions can only define tab-specific properties on a maximum of 5 QF tabs.
+Sorry, I have to live from something :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26474.html#c6">
+            #6</a> From 
+          <a href="mailto:pgnet.dev&#64;gmail.com">pgnd</a>
+          2018-01-28 09:06:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26474.html#c5">comment #5</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-4.9pre67.xpi" name="attach_8366" title="4.7.2 prerelease 67">attachment (id=8366)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8366&amp;action=edit" title="4.7.2 prerelease 67">[details]</a></span> [details]
+&gt; 4.7.2 prerelease 67
+&gt; 
+&gt; Here is a test version, feature added (only English and German locales are
+&gt; complete)
+&gt; 
+&gt; To test, you can enable QuickFolders Advanced Settings / Debug Mode and also
+&gt; the special debug switch (right-click debug checkbox):
+&gt; 
+&gt; extensions.quickfolders.debug.composer = true
+&gt; 
+&gt; this will display additional information in the error console / browser toolbox
+&gt; console.</span >
+
+DL'd/installed WIP ext
+unHID all HiddenTabs
+reset all TabSpecificSettings to defaults
+for
+
+        ACCOUNT_FOLDER
+                folder1
+                folder2
+                        inbox
+                        test
+
+created a Tab for ACCOUNT_FOLDER
+set the From: identity to a 2nd-ary ID
+checked [X] Apply to subfolders
+hid the tab
+selected in folder nav pane
+
+        ACCOUNT_FOLDER&gt;folder2&gt;inbox
+
+clicked-to-compose new message
+        VERIFIED that From: == 2nd-ary ID
+
+create a NEW folder
+
+        ACCOUNT_FOLDER
+                folder1
+                folder2
+                        inbox
+                        test
+                                testsub &lt;=========
+
+selected in folder nav pane
+
+        ACCOUNT_FOLDER&gt;folder2&gt;test&gt;testsub
+
+clicked-to-compose new message
+        VERIFIED that From: == 2nd-ary ID
+
+so inheritance of new subs is working
+
+looks good!
+
+<span class="quote">&gt; Note that in the release I will probably define this feature as Premium content</span >
+
++1 WORKSFORME, I've paid for years!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26474.html#c7">
+            #7</a> From 
+          <a href="mailto:pgnet.dev&#64;gmail.com">pgnd</a>
+          2018-01-28 10:47:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >fyi, with the WIP xpi, a Categories pull down appears in my TBird toolbar,
+displaying FULL text in the menubar:
+
+<a href="https://imgur.com/a/FS3FQ">https://imgur.com/a/FS3FQ</a>
+
+rather than a (preferred) icon, as with the other QF items next to it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26474.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-28 12:11:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26474.html#c7">comment #7</a>)
+<span class="quote">&gt; fyi, with the WIP xpi, a Categories pull down appears in my TBird toolbar,
+&gt; displaying FULL text in the menubar:
+&gt; 
+&gt; <a href="https://imgur.com/a/FS3FQ">https://imgur.com/a/FS3FQ</a>
+&gt; 
+&gt; rather than a (preferred) icon, as with the other QF items next to it.
+&gt; </span >
+
+Go to Advanced Settings, Miscellaneus and check the box
+
+&quot;Collapse Categories&quot;
+
+As reward I'll give you some balloons!
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26474&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

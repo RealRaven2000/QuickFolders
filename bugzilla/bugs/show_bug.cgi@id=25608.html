@@ -1,0 +1,1600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25608 &ndash; In single message view, QF tabs should do something useful</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25608&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25608">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25608">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25608">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25608">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25608</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">In single message view, QF tabs should do something useful</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-01-29 10:26:38</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25608&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-01-29 10:26:38">
+  <input type="hidden" name="longdesclength" value="23">
+  <input type="hidden" name="id" value="25608">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="In single message view, QF tabs should do something useful">In single message view, QF tabs should do something useful
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25608.html">25608</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25608&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25608">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:alberto&#64;marconenet.it">Alberto Marcone &lt;alberto&#64;marconenet.it&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alberto&#64;marconenet.it">alberto&#64;marconenet.it</option>
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="eringath&#64;gmail.com">eringath&#64;gmail.com</option>
+            <option value="hoagcommunications&#64;comcast.net">hoagcommunications&#64;comcast.net</option>
+            <option value="sjpschmid&#64;comcast.net">sjpschmid&#64;comcast.net</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.12.2pre37.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.12.2 prerelease 37</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (495.80 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7712"
+               title="Go to the comment associated with the attachment">2013-10-20 05:21</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7712&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.12.2pre38.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.12.2 prerelease 38</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (495.94 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7713"
+               title="Go to the comment associated with the attachment">2013-10-20 05:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7713&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.14pre4.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 4</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (496.39 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7719"
+               title="Go to the comment associated with the attachment">2013-11-07 01:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7719&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-3.14pre14.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 14</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.36 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7728"
+               title="Go to the comment associated with the attachment">2013-11-18 03:37</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7728&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-3.14pre16.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 16</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.57 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7730"
+               title="Go to the comment associated with the attachment">2013-11-18 04:28</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7730&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="QuickFolders-tb-pb-sm-3.14pre17.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 17</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.76 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7731"
+               title="Go to the comment associated with the attachment">2013-11-18 06:18</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7731&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="QuickFolders-tb-pb-sm-3.14beta1.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 beta 1</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (502.59 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7767"
+               title="Go to the comment associated with the attachment">2014-01-10 03:50</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7767&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="QuickFolders-tb-pb-sm-3.14pre77.xpi"
+               title="View the content of the attachment">
+          <b>3.14 prerelease 77</b></a>
+
+          <span class="bz_attach_extra_info">
+              (502.88 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25608.html#attach_7771"
+               title="Go to the comment associated with the attachment">2014-01-29 10:26</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7771&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25608.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (7)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25608&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25608&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25608">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25608">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25608">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25608">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25608.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-10-11 22:50
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I typically read mesages in their own tab. The following behavior is not what I
+expect.
+
+Suppose I am reading message x, which is in folder a, in its own tab and I
+realize that to better understand it I need to have a look at message y which I
+know is in folder b. The natural thing to do for me is to click on the
+quickfolder tab for folder b, and look there for message y. If I do so, message
+x closes and I see folder a, clicking a second time I get to folder b (as I
+wanted).
+
+I think that until a while ago with a single click on the quickfolder tab for
+folder b I did move to folder b and still had message x open under its tab, so
+that I could easily go back to it after reading whatever I needed from message
+y.
+
+I am running QuickFolders 3.12.1 on Thunderbird 24.0 under Windows 7 pro.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25608.html#c1">
+            #1</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-10-18 21:26:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c0">comment #0</a>)
+<span class="quote">&gt; I typically read mesages in their own tab. The following behavior is not what I
+&gt; expect.
+&gt; 
+&gt; Suppose I am reading message x, which is in folder a, in its own tab and I
+&gt; realize that to better understand it I need to have a look at message y which I
+&gt; know is in folder b. The natural thing to do for me is to click on the
+&gt; quickfolder tab for folder b, and look there for message y. If I do so, message
+&gt; x closes and I see folder a, clicking a second time I get to folder b (as I
+&gt; wanted).
+&gt; 
+&gt; I think that until a while ago with a single click on the quickfolder tab for
+&gt; folder b I did move to folder b and still had message x open under its tab, so
+&gt; that I could easily go back to it after reading whatever I needed from message
+&gt; y.
+&gt; 
+&gt; I am running QuickFolders 3.12.1 on Thunderbird 24.0 under Windows 7 pro.
+&gt; </span >
+
+What happens if you right-click folder a on the tab bar, then &quot;Open in new
+tab&quot;? Or if you don't want folder a in a new tab, you could click the tab for
+the 3-pane view, then folder a.
+
+I would expect that (left-)clicking a folder would open it in the current tab,
+even if ATM it's a message tab.
+
+What I see is that left-clicking a folder tab when in a message tab goes to the
+tab where that folder is open, if there is one; but if there isn't, the 3-pane
+tab is duplicated in the current tab (not going to the folder I clicked) but
+the tab title on the tab bar doesn't change (it remains the Subject of message
+x). … :-?
+
+I'm using:
+Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0
+SeaMonkey/2.24a1 ID:20130919003001 c-c:1ea1fc3586db m-c:803189f35921
+QF 3.12.2pre9
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25608.html#c2">
+            #2</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-10-18 21:32:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Oops: in the first paragraph of my reply in <a href="show_bug.cgi@id=25608.html#c1">comment #1</a>, replace everywhere
+&quot;folder a&quot; by &quot;folder b&quot;.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25608.html#c3">
+            #3</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-10-18 21:36:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.P.S. Which mailer (Thunderbird or SeaMonkey) are you using, and which version
+of the mailer and of QuickFolders? IIUC you're on Windows.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25608.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-10-20 05:21:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.12.2pre37.xpi" name="attach_7712" title="3.12.2 prerelease 37">Created an attachment (id=7712)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7712&amp;action=edit" title="3.12.2 prerelease 37">[details]</a></span>
+3.12.2 prerelease 37
+
+This fix modifies the behavior slightly - I am still switching your current
+folder on the QuickFolders bar and the current folder toolbar (if visible above
+the single messge) to the selected folder. However I do not want to open a new
+tab by this action alone. Rather I now stay on the single message, but give you
+a chance to pull the message using the envelope of the current message into a
+new folder (the folder displayed in the middle of the current folder tab). This
+should also work if you select a subfolder from one of the popup menus. I think
+switching away from the tab might not be the intended action for most people
+reading a single email (and there is the &quot;open in new tab&quot; command for this)
+although it might be handy to open a mail tab that already displays the
+selected Folder. (so it could be used for switching back to the inbox etc). 
+
+Opening new mail tabs by default seems a little against the conventions of how
+the rest of the program works, and so does closing the message (which was
+unintended). I hope this is a good compromise.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25608.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-10-20 05:59:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.12.2pre38.xpi" name="attach_7713" title="3.12.2 prerelease 38">Created an attachment (id=7713)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7713&amp;action=edit" title="3.12.2 prerelease 38">[details]</a></span>
+3.12.2 prerelease 38
+
+fixing a typo-caused bug in prerelease 37 that completely broke changing folder
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25608.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-06 12:48:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25610.html" title="RESOLVED DUPLICATE - Clicking on tab does not switch to that tab most of the time">Bug 25610</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25608.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-06 12:54:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Renamed the bug in order to make it clearer what the intention actually is. I
+think the expectation of the bug reporters (Becky, Alberto) is that
+QuickFolders _should_ in fact do something (navigate to a folder / open /
+recycle existing Thunderbird tabs, open a 3pane folder view) when single
+clicked. 
+
+While you already can have this behavior by using CTRL+Click (open in new tab)
+this is hardly intuitive. I will experiment with some test versions that behave
+differently.
+
+New intended behavior:
+
+1. If (while in Single Message view) a QF Tab is clicked that points to a
+folder that is already open on one of the other Thunderbird tabs, switch to
+that THunderbird tab.
+
+2. If (while in Single Message view) a QF Tab is clicked that isn't open, then
+open a new Thunderbird tab with a 3pane view showing the contents of that
+folder.
+
+
+PS: If you claim that QuickFolder did this (or a similar behavior) before, then
+this was by accident and not intended behavior. This doesn't make it easier to
+implement.
+
+PPS: solution may contain traces of nuts. Bug Assigned.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25608.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-06 14:12:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c7">comment #7</a>)
+
+<span class="quote">&gt; 
+&gt; 1. If (while in Single Message view) a QF Tab is clicked that points to a
+&gt; folder that is already open on one of the other Thunderbird tabs, switch to
+&gt; that Thunderbird tab.</span >
+
+that part, apparently, works for me already! So if I want to return to a folder
+that I have previously viewed in a 3pane tab clicking on its corresponding QF
+tab will actually put that Thunderbird tab in the foreground.
+
+Which only leaves:
+<span class="quote">&gt; 
+&gt; 2. If (while in Single Message view) a QF Tab is clicked that isn't open, then
+&gt; open a new Thunderbird tab with a 3pane view showing the contents of that
+&gt; folder.</span >
+
+to implement: open a new tab if that folder is not already open in another
+THunderbird tab.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25608.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-07 01:49:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre4.xpi" name="attach_7719" title="3.14 prerelease 4">Created an attachment (id=7719)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7719&amp;action=edit" title="3.14 prerelease 4">[details]</a></span>
+3.14 prerelease 4
+
+I attached this to the wrong bug (the one I marked as duplicate)
+
+so here goes:
+
+This kind of / almost does it (opens a new tab if necessary) but it doesn't
+alkways switch to &quot;read messages&quot; mode so it might still require an additional
+unwanted click. But it is a good step towards the desired behavior.
+
+Please test relentlessly!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25608.html#c10">
+            #10</a> From 
+          <a href="mailto:hoagcommunications&#64;comcast.net">Becky Hoag</a>
+          2013-11-07 15:29:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The fix that I was sent has worked well for the past 24 hours. I am able to
+click on and switch using my top tabs (which are links to my several email
+accounts)easily. No more issues with having to double-click to get them to
+open, or not being able to switch to a different tab from an email view. Thanks
+for the tech support.  I've been using QF for years and wouldn't want to use
+Thunderbird without it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25608.html#c11">
+            #11</a> From 
+          <a href="mailto:alberto&#64;marconenet.it">Alberto Marcone</a>
+          2013-11-09 12:59:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I tried the fix for the last couiple of days and it seems a fair solution to my
+original problem.
+
+Thanks a lot,
+Alberto
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25608.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-18 03:37:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre14.xpi" name="attach_7728" title="3.14 prerelease 14">Created an attachment (id=7728)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7728&amp;action=edit" title="3.14 prerelease 14">[details]</a></span>
+3.14 prerelease 14
+
+Same as previous, but also works when in a glodaList tab (Search Messages &gt;
+Open Email As List), so one can easily open a folder even when looking at
+search results.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25608.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-18 04:28:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre16.xpi" name="attach_7730" title="3.14 prerelease 16">Created an attachment (id=7730)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7730&amp;action=edit" title="3.14 prerelease 16">[details]</a></span>
+3.14 prerelease 16
+
+The previous prerelease had a different GUID (I wanted to avoid pinging AMO's
+update server which creates a lot of single entries in my user statistics). The
+problem with this was that it leads to 2 versions of QuickFolders being
+installed in about:addons.
+
+So I am marking 3.14 prerelease 14 as obsolete. If you have pre 14 installed
+(and consequently have 2 QuickFolders showing up in your installed Addons
+list), remove pre 14 using about:addons. This will not affect any of the
+settings you have stored.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25608.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-18 06:18:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre17.xpi" name="attach_7731" title="3.14 prerelease 17">Created an attachment (id=7731)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7731&amp;action=edit" title="3.14 prerelease 17">[details]</a></span>
+3.14 prerelease 17
+
+Fixed behavior in SeaMOnkey: in single message view the sinlge message was
+simply closed and the tab reused for 3pane voew - the problem is that SeaMOnkey
+doesn't seem to have a concept of a separate &quot;single message mode&quot; it always
+uses the &quot;3pane&quot; mode and simply hides folder and thread pane:
+
+see also:
+<a href="http://mxr.mozilla.org/comm-central/source/suite/mailnews/tabmail.js#16">http://mxr.mozilla.org/comm-central/source/suite/mailnews/tabmail.js#16</a>
+
+Therefore I added some SM-specific code which checks for the absence of the
+folder pane and opens a new tab if there is a single message displayed (with or
+without thread pane open) if this is the case. I would consider not leaving the
+single message in its own tab as disruptive behavior. 
+
+Now SeaMonkey Messenger window just has to fix the problem of not remembering
+the opened tabs and then it would be as useful as Thunderbird. I haven't found
+any setting to do this (the browser component has &quot;Restore previous session&quot;
+but there is no such thing for the Mail &amp; Newsgroups)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25608.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-07 01:15:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25681.html" title="RESOLVED DUPLICATE - clicking on QuickFolder tabs doesn't always work">Bug 25681</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25608.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-10 03:50:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14beta1.xpi" name="attach_7767" title="3.14 beta 1">Created an attachment (id=7767)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7767&amp;action=edit" title="3.14 beta 1">[details]</a></span>
+3.14 beta 1
+
+Adds some folder verification (does the folder file exist). I might add a
+hidden setting to disable this in case it fails.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25608.html#c17">
+            #17</a> From 
+          <a href="mailto:eringath&#64;gmail.com">eringath&#64;gmail.com</a>
+          2014-01-28 20:21:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I was experiencing a similar problem to those described by Alberto and Becky;
+so I installed the 3.14 beta 1 update, hoping it would solve my problem.
+
+I am now able to click on any of my Quickfolders tabs and have that folder come
+up, even if I'm currently reading a message in its own tab.
+
+However, if I'm in a message tab, and click on the Quickfolder tab for say mail
+folder x, instead of overwriting the left-hand-most 3-pane mail tab (like
+Quickfolders used to do) it now opens up a *new* 3-pane tab for folder x
+(unless folder x is already open, in which case Quickfolders just switches to
+that tab).
+
+Is there a way to prevent Quickfolders from creating new tabs for my
+mailfolders, just because I click on them while in a mail message tab?
+
+I am running Quickfolders 3.14 beta 1 on Thunderbird 24.2.0 on Windows 7 x64
+Pro
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25608.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-28 20:41:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c17">comment #17</a>)
+<span class="quote">&gt; 
+&gt; However, if I'm in a message tab, and click on the Quickfolder tab for say mail
+&gt; folder x, instead of overwriting the left-hand-most 3-pane mail tab (like
+&gt; Quickfolders used to do) it now opens up a *new* 3-pane tab for folder x
+&gt; (unless folder x is already open, in which case Quickfolders just switches to
+&gt; that tab).
+&gt; 
+&gt; Is there a way to prevent Quickfolders from creating new tabs for my
+&gt; mailfolders, just because I click on them while in a mail message tab?</span >
+
+Not at the moment - you have to activate the leftmost (Thunderbird) tab if you
+want it to change to a different folder. Like you said if you click any other
+tab a new folder tab will be opened (or the appropriate folder tab will be
+activated if it is already open)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25608.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-28 20:45:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c0">comment #0</a>)
+<span class="quote">&gt; I typically read mesages in their own tab. The following behavior is not what I
+&gt; expect.
+&gt; 
+&gt; Suppose I am reading message x, which is in folder a, in its own tab and I
+&gt; realize that to better understand it I need to have a look at message y which I
+&gt; know is in folder b. The natural thing to do for me is to click on the
+&gt; quickfolder tab for folder b, and look there for message y. If I do so, message
+&gt; x closes and I see folder a, clicking a second time I get to folder b (as I
+&gt; wanted).
+&gt; 
+&gt; I think that until a while ago with a single click on the quickfolder tab for
+&gt; folder b I did move to folder b and still had message x open under its tab, so
+&gt; that I could easily go back to it after reading whatever I needed from message
+&gt; y.
+&gt; </span >
+
+Alberto, does the last prerelease work as you expected it?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25608.html#c20">
+            #20</a> From 
+          <a href="mailto:alberto&#64;marconenet.it">Alberto Marcone</a>
+          2014-01-29 08:11:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c19">comment #19</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25608.html#c0">comment #0</a>)
+&gt; &gt; I typically read mesages in their own tab. The following behavior is not what I
+&gt; &gt; expect.
+&gt; &gt; 
+&gt; &gt; Suppose I am reading message x, which is in folder a, in its own tab and I
+&gt; &gt; realize that to better understand it I need to have a look at message y which I
+&gt; &gt; know is in folder b. The natural thing to do for me is to click on the
+&gt; &gt; quickfolder tab for folder b, and look there for message y. If I do so, message
+&gt; &gt; x closes and I see folder a, clicking a second time I get to folder b (as I
+&gt; &gt; wanted).
+&gt; &gt; 
+&gt; &gt; I think that until a while ago with a single click on the quickfolder tab for
+&gt; &gt; folder b I did move to folder b and still had message x open under its tab, so
+&gt; &gt; that I could easily go back to it after reading whatever I needed from message
+&gt; &gt; y.
+&gt; &gt; 
+&gt; 
+&gt; Alberto, does the last prerelease work as you expected it?
+&gt; </span >
+
+It did not work in the way I expected (which was closer to what 
+<a href="mailto:eringath@gmail.com">eringath@gmail.com</a> asks for), but I got used to it and now appreciate the
+possibility of having tabs for different folders opened at the same time.
+The leftmost tab is still &quot;special&quot; (you cannot close it, nor move another tab
+to the left of it), while I think it would be nice if it behaved as all other
+tabs.
+
+Best wishes,
+Alberto
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25608.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-29 10:12:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25608.html#c20">comment #20</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25608.html#c19">comment #19</a>)
+&gt; &gt; 
+&gt; &gt; Alberto, does the last prerelease work as you expected it?
+&gt; &gt; 
+&gt; 
+&gt; It did not work in the way I expected (which was closer to what 
+&gt; <a href="mailto:eringath@gmail.com">eringath@gmail.com</a> asks for), but I got used to it and now appreciate the
+&gt; possibility of having tabs for different folders opened at the same time.
+&gt; The leftmost tab is still &quot;special&quot; (you cannot close it, nor move another tab
+&gt; to the left of it), while I think it would be nice if it behaved as all other
+&gt; tabs.</span >
+
+One of the problems of &quot;nuking&quot; the originating Tab by clicking on any
+QuickFolder tab is that we a losing the context of where we came from when we
+opened the (presumably important) email in a single tab. So if we are in a very
+deeply nested folder structure, e.g. mailbox1&gt;private&gt;friends&gt;special&gt;fred and
+then click another QuickFolder tab, we actually loose the place we started
+from. This is what I wanted to avoid when I decided to open a new tab (if
+folder is not already displayed in a tab). 
+
+Current Algorithm:
+Tab is clicked -&gt; the function QuickFolders_MySelectFolder(folderUri) is
+executed. The function is 217 lines long, so it is quite complex.
+1. check if folderUri exists. If not suggest to fix the tab.
+2. store folderUri
+3. get tabmail element and check if folder already open, if this is the case
+switch to that tab
+4. check if the current mode is single message or search result list, if this
+is the case
+4a if it is not open already (3) open a new tab
+4b exit the function
+5. Application specific code (SeaMonkey, Thunderbird and Postbox are all
+different here) to select the folder in the folder tree. This is actually the
+largest portion of the code (123 lines).
+6. If folder could not be found in tree exit the function
+7. Focus the thread pane
+8. speed up code for highlighting the QF tab
+
+I realize that there is people who don't even know that it is possible to open
+more than one folder (although this can be very productive, especially when you
+work with QF Categories), so if I introduced a (configurable) rule that allows
+to ignore whatever is shown in the &quot;targeted&quot; Thunderbird Folder Tab, how
+should this work if more than one Folder tab is open? Should it always target
+the leftmost (first) folder tab? This might not be what the user desires. Or
+should it target the first folder tab to the left of the current tab? 
+
+Although the requirement (don't ever open a new folder tab) sounds simple, it
+will actually make it more difficult for me to program, but let's work on some
+solid requirements first.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25608.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-29 10:26:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.14pre77.xpi" name="attach_7771" title="3.14 prerelease 77">Created an attachment (id=7771)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7771&amp;action=edit" title="3.14 prerelease 77">[details]</a></span>
+3.14 prerelease 77
+
+Here is a version that adds a hidden option to never open a new tab. Instead
+the very first tab will be switched to the clicked folder. to test this, go to
+tools &gt; options. Click Advanced. Select the General Tab. Click [Config
+Editor...]
+
+In the search  box enter &quot;quickfolders.behavior&quot;.
+toggle
+extensions.quickfolders.behavior.nonFolderView.openNewTab
+to false (by double clicking)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25608&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

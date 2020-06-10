@@ -1,0 +1,1254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26088 &ndash; Expand quickJump (Move/Copy) results to child folders</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26088&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26088">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26088">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26088">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26088">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26088</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Expand quickJump (Move/Copy) results to child folders</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-10-31 03:45:54</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26088&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-10-31 03:45:54">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="26088">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Expand quickJump (Move/Copy) results to child folders">Expand quickJump (Move/Copy) results to child folders
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26088.html">26088</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26088&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26088">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:wiledsch&#64;web.de">wiledsch&#64;web.de</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="wiledsch&#64;web.de">wiledsch&#64;web.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Nostalgy&#32;Preferences&#32;-&#32;Screenshot&#32;2015.10.04.jpg"
+               title="View the content of the attachment">
+          <b>Preferences for listing search results in Nostalgy</b></a>
+
+          <span class="bz_attach_extra_info">
+              (26.05 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26088.html#attach_8107"
+               title="Go to the comment associated with the attachment">2015-10-04 11:27</a>,
+
+            <a href="mailto:wiledsch&#64;web.de"
+               title="Write an email to the creator of the attachment">wiledsch&#64;web.de
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8107&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="parent-search.png"
+               title="View the content of the attachment">
+          <b>example screenshot - parent search</b></a>
+
+          <span class="bz_attach_extra_info">
+              (71.38 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26088.html#attach_8108"
+               title="Go to the comment associated with the attachment">2015-10-06 05:43</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8108&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-4.2pre106.xpi"
+               title="View the content of the attachment">
+          <b>4.2 pre 106</b></a>
+
+          <span class="bz_attach_extra_info">
+              (648.42 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26088.html#attach_8109"
+               title="Go to the comment associated with the attachment">2015-10-06 05:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8109&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="parent-search-2.png"
+               title="View the content of the attachment">
+          <b>example for child in-string searching </b></a>
+
+          <span class="bz_attach_extra_info">
+              (10.06 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26088.html#attach_8110"
+               title="Go to the comment associated with the attachment">2015-10-06 05:56</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8110&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26088&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26088&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26088">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26088">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26088">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26088">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26088.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-10-04 11:27
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Nostalgy&#32;Preferences&#32;-&#32;Screenshot&#32;2015.10.04.jpg" name="attach_8107" title="Preferences for listing search results in Nostalgy">Created an attachment (id=8107)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8107&amp;action=edit" title="Preferences for listing search results in Nostalgy">[details]</a></span>
+Preferences for listing search results in Nostalgy
+
+Copied from <span class="bz_closed"><a href="show_bug.cgi@id=26071.html" title="RESOLVED FIXED - Hotkey to toggle folder pane">bug 26071</a></span> as new bug (from Start to Stop) - New below:
+
+- - - Start - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+I used QuickFolders functions &quot;move to&quot; &quot;copy to&quot; and &quot;go to&quot; for some time now
+and it worked really perfect! 
+Thank you for this.
+
+Nevertheless I'm missing one thing wich was very helpful for me in Nostalgy:
+If I want to move an e-mail to a subfolder named &quot;2015&quot; e.g. but I don't know
+the name exactly and therefore search its parent named &quot;archive&quot; there will be
+shown  path and / or name (depending on choice in preferences) of the parent
+only but not the names of subfolders. That is what I am missing very often -
+even if then a long list of folders might be shown.
+
+Is there a chance to put an option to preferences?
+
+------- <a href="show_bug.cgi@id=26088.html#c8">Comment #8</a> From Axel Grude 2015-10-04 10:39:49 [reply] -------
+
+(In reply to <a href="show_bug.cgi@id=26088.html#c7">comment #7</a>)
+<span class="quote">&gt; I used QuickFolders functions &quot;move to&quot; &quot;copy to&quot; and &quot;go to&quot; for some time now
+&gt; and it worked really perfect! 
+&gt; Thank you for this.
+&gt; 
+&gt; Nevertheless I'm missing one thing wich was very helpful for me in Nostalgy:
+&gt; If I want to move an e-mail to a subfolder named &quot;2015&quot; e.g. but I don't know
+&gt; the name exactly and therefore search its parent named &quot;archive&quot; there will be
+&gt; shown  path and / or name (depending on choice in preferences) of the parent
+&gt; only but not the names of subfolders. That is what I am missing very often -
+&gt; even if then a long list of folders might be shown.
+&gt; 
+&gt; Is there a chance to put an option to preferences?
+&gt; </span >
+
+I think it could be done, it just might slow down operation. In any you please
+case raise a fresh bug on it?
+
+I would suggest instead of listing candidates + all possible subfolders in one
+long flat list (is this what Nostalgy does?) it would be good to have a tree
+node arrow ► and then potentially only show 1st or 2nd level children,
+(similar to the behavior of the recent folders list). It would be slightly more
+awkward from navigation POV as we would need arrow down and arrow right, but
+you would probably learn the names of the important subfolders quickly if you
+had to do it more often.
+
+One problem with features that are &quot;More powerful&quot; for one set of tasks is that
+they often are seen as &quot;cluttery&quot; for others. But let's discuss on the new bug.
+
+------- <a href="show_bug.cgi@id=26088.html#c9">Comment #9</a> From Axel Grude 2015-10-04 10:42:57 [reply] -------
+
+(In reply to <a href="show_bug.cgi@id=26088.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26088.html#c7">comment #7</a>)
+&gt; &gt; 
+&gt; &gt; Nevertheless I'm missing one thing wich was very helpful for me in Nostalgy:
+&gt; &gt; If I want to move an e-mail to a subfolder named &quot;2015&quot; e.g. but I don't know
+&gt; &gt; the name exactly and therefore search its parent named &quot;archive&quot; there will be</span >
+
+- also one more thing, the name matching only matches the start of words in the
+folder when you enter 2 letters, from 3 letters on it will match the string
+&quot;within&quot;, so if you have a folder called
+
+letters2015
+
+it will be shown as soon as you type &quot;201&quot;. I am avoiding showing it when you
+only type &quot;20&quot; as I want to keep the results as short + quick as possible.
+Again, that sort of search behavior is open for discussion (and maybe make it
+more flexible).
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - Stop - - -
+
+
+NEW:
+In Nostalgy the search happens in the full path - and the results have been
+shown fast but sometimes in one very long list indeed. But the function to
+select the number of the last recent folders was very helpful than, sometimes
+other options there too.
+I like your suggestion Alex, that with the tree nodes. Maybe one could select
+how deep the subfolders are shown? So everybody could influence the speed of
+showing the list.
+Might this be an option?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26088.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-04 14:00:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Renamed the bug.
+
+Just to understand the requirements first of all
+
+You know the name of the parent folder (and may know or recognize the name of
+the &quot;child&quot; folder that you are actually looking for). This would mean entering
+the parent folder name (e.g. &quot;archive&quot;) and you would get either of:
+
+1) the parent name and a way to expand into its direct children
+
+2) all child folders underneath the parent with in the list.
+
+In order not to slow down (and unnecessarily blow up the search results) we
+could compromise by accepting a special character (Let's say, forward slash
+&quot;/&quot;) after the &quot;parent&quot; name:
+
+e.g. 
+&quot;archive/&quot;
+
+this could be taken as a sign to expand child (or all descendant) folders of
+any folder named archive. Alternatively (to save time one could allow entering
+the first n (say 3 minimum) characters followed by &quot;*&quot;, such as &quot;arc*&quot; as a
+sign that we are looking for all subfolders for any folder starting with these
+letters.
+
+I think this might be a good compromise on speed vs ease of use? Please think
+it through with a view on the examples where you would like to use it and how
+much typing / previous knowledge of your  folder structure this would be
+require.
+
+A &quot;nice to have&quot; would be:
+
+arc*/2015
+where arc* is the start of the parent folder and 2015 partially matched any
+subfolder. Not too easy to implement though.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26088.html#c2">
+            #2</a> From 
+          <a href="mailto:wiledsch&#64;web.de">wiledsch&#64;web.de</a>
+          2015-10-04 14:48:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >There is not so much to think about: That is a good suggestion!
+Both ways would work but the second one would be faster: e.g. &quot;arc*&quot;
+
+And an additional idea:
+You already programmed the recent folders. Couldn't you show them if one opens
+/ jumps to the search field below thies field and than after input attached
+below the list of search results for example? So one could reach this folders
+by cursor too.
+But anyway I have now idea what great deal of work this would mean for you and
+if anyone else is interested in this feature too... I'm just thinking that
+anyone else needs this very urgent ;-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26088.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-04 15:01:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26088.html#c2">comment #2</a>)
+
+<span class="quote">&gt; You already programmed the recent folders. Couldn't you show them if one opens
+&gt; / jumps to the search field below this field and than after input attached
+&gt; below the list of search results for example? So one could reach this folders
+&gt; by cursor too.</span >
+
+I don't quite understand to be honest. If you use quickJump to go to any folder
+of course that folder will show up on the Recent Folders list. Anything that
+receives new mail or is jumped into is &quot;timestamped&quot; and thus bubbles up to the
+top of the recent folders list. (Hope I understood you correctly)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26088.html#c4">
+            #4</a> From 
+          <a href="mailto:wiledsch&#64;web.de">wiledsch&#64;web.de</a>
+          2015-10-04 15:18:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry, right you are - it is difficult to explain for me: 
+
+Using quickJump: Exactly that moment one jumps to the search field the recent
+folders appear at the lower edge (maybe the upper edge) of the search field and
+one could move the cursor with the arrow keys! directly there. 
+In other words: Using quickJump I have the list of results AND the recent
+folders right at hand than.
+Could I explain it this time? I hope not to make it worse...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26088.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-05 00:27:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26088.html#c4">comment #4</a>)
+<span class="quote">&gt; Sorry, right you are - it is difficult to explain for me: 
+&gt; 
+&gt; Using quickJump: Exactly that moment one jumps to the search field the recent
+&gt; folders appear at the lower edge (maybe the upper edge) of the search field and
+&gt; one could move the cursor with the arrow keys! directly there. 
+&gt; In other words: Using quickJump I have the list of results AND the recent
+&gt; folders right at hand than.
+&gt; Could I explain it this time? I hope not to make it worse...
+&gt; </span >
+
+I think I understand. Now I want to avoid showing a very long list (e.g. recent
+folders and search results combined) and I assume you are using the keyboard
+shortcut (Shift+J). It would be possible to pop up the recent folders menu
+_before_ the first letter is typed. Once the user starts typing, the results
+are shown as normal. 
+
+I might try making some prototypes on this as there is definitely an argument
+that a quick &quot;Jump&quot; feature could be combined with recent folders. There might
+be some inconsistency in the drag + drop case, which is supposed to only make
+the textbox visible and put in keyboard focus to start typing. For the moment,
+let's concentrate on this feature (expanding search results to child folders)
+and maybe create a separate bug on your other suggestion later - having
+multiple changes in the same bug usually gets messy.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26088.html#c6">
+            #6</a> From 
+          <a href="mailto:wiledsch&#64;web.de">wiledsch&#64;web.de</a>
+          2015-10-05 01:14:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Wonderful that my explanation helped now :-)
+Your suggestion sounds good. This could be a good solution. Thanks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26088.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-06 05:43:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="parent-search.png" name="attach_8108" title="example screenshot - parent search">Created an attachment (id=8108)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8108&amp;action=edit" title="example screenshot - parent search">[details]</a></span>
+example screenshot - parent search
+
+Here is the behavior of the patch, test case:
+
+searching for the folder QF-bugs which is in the tree below
+
+Addons
+Addons / QuickFolders
+Addons / QuickFolders / QF-bugs
+
+We know the (grand)parent is Addons, and there is a bugs folder for the
+QuickFolders addon further down (not necessarily a direct child of Addons)
+
+starting to enter Ad brings up our Addons folder, so we decide to go for
+children by pressing '/':
+
+(1) Ad/
+    For simplicity's sake I am assuming you are only interested in direct
+children of the parent folders starting  with Ad (e.g. Addons/QuickFolders)
+etc. the list is potentially still long
+(2) Ad/q
+    The search algorithm will now look at all child folders down to a hierarchy
+level of N  (default is 2, which means grandchildren) by matching folders
+starting with q
+(2) Ad/qf
+    Same as above, for folders starting with qf
+(3) Ad/qfb
+    Same as above, for folders _containing_ the string qfb
+
+N levels: the maximum level of searched parents can be configured via the
+config setting
+extensions.quickfolders.premium.findFolder.maxParentLevel
+which can be configured via right-clicking the quickJump option checkbox in
+QuickFolders Options &gt; General &gt; Main Toolbar Elements
+Default is 2 (Grandchildren)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26088.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-06 05:44:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.2pre106.xpi" name="attach_8109" title="4.2 pre 106">Created an attachment (id=8109)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8109&amp;action=edit" title="4.2 pre 106">[details]</a></span>
+4.2 pre 106
+
+Test Version. Enjoy!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26088.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-06 05:51:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Additional Comment:
+
+There is a slight problem with the quickJump's default behavior of
+&quot;auto-jumping&quot; to a folder as soon as you enter a unique folder name
+completely.
+
+e.g. if there is only one folder that is exactly named &quot;Addons&quot; and I enter the
+string: 
+
+addons
+
+quickJump will automatically jump to the folder without waiting for return.
+This would prevent me from entering 
+
+addons/
+
+in order to investigate its subfolders. Workaround, enter the name before /
+incompletely or enter  / first and then go back 1 cursor to enter the name
+
+add/
+
+or
+/
+a/
+ad/
+add/
+...
+addons/
+
+I might consider allowing to enter the slash as _first_ character and
+automatically move it to the end when the next character is entered.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26088.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-06 05:56:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="parent-search-2.png" name="attach_8110" title="example for child in-string searching ">Created an attachment (id=8110)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8110&amp;action=edit" title="example for child in-string searching ">[details]</a></span>
+example for child in-string searching 
+
+here is another example for searching a string (&gt;2 characters) within all child
+folders:
+
+quick/view
+
+searches for any folder which contains the substring &quot;view&quot; and has a
+[grand]parent folder starting with &quot;quick&quot;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26088.html#c11">
+            #11</a> From 
+          <a href="mailto:wiledsch&#64;web.de">wiledsch&#64;web.de</a>
+          2015-10-07 08:03:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I installed the test version:
+- It feels a little unfamiliar by now ;-)
+- Child in-string serch seems to be a good functionalty
+I'll work with it for the next days and see what happens :-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26088.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-10-31 03:45:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Released in version 4.2.2, 20/11/2015
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26088&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

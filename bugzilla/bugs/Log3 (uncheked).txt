@@ -1,0 +1,92 @@
+SmartTemplate4 {FUNCTIONS} [logTime init]
+onLoad() ...
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.32  [1 ms]	 
+addIdentity(id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.33  [1 ms]	 
+prefCloneAndSetup([object XULElement], .id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.34  [1 ms]	 
+prefCloneAndSetup COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.57  [23 ms]	 
+addIdentity COMPLETE
+ ----------
+SmartTemplate4 18:10:14.57  [0 ms]	 
+cleanupUnusedPrefs ()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.61  [4 ms]	 
+switchIdentity(common) COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:14.85  [24 ms]	 
+onLoad() COMPLETE
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.129  [85361 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 18:10:21.167  [38 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.167  [0 ms]	 
+insertTemplate(startup: true, flags: [object Object])
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.167  [0 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.167  [0 ms]	 
+testSignatureVar() match = null
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.168  [1 ms]	 
+extractSignature()
+START==========  extractSignature([nsIMsgIdentity: id1],defined=, compose type=fwd)  ========
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.168  [0 ms]	 
+getSmartTemplate(fwd, id1)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.168  [0 ms]	 
+classGetHeaders(imap-message://joaosilva%40ambitermo.com@mail.ambitermo.com/INBOX#834)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.323  [155 ms]	 
+classGetHeaders(imap-message://joaosilva%40ambitermo.com@mail.ambitermo.com/INBOX#834)
+ ----------
+SmartTemplate4 18:10:21.355  [32 ms]	 
+getLocale() returns: pt-PT
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:10:21.362  [7 ms]	 
+ search %cursor% in template: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:10:21.362  [0 ms]	 
+identityName:   João Silva <joaosilva@ambitermo.com>
+key:            id1 (uses Common)
+server{?}:      mail.ambitermo.com [imap]
+ ------------------------------------------------
+sigOnReply:     false
+sigOnForward:   false
+sigBottom:      false
+attachSignature:false
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.isSignatureSetup:false
+SmartTemplate4.sigInTemplate: false
+%sig% type: []
+compose case, is active? : forward, true
+------------------------------------------------
+SmartTemplate4: 0.9.6.1pre1
+Application: Thunderbird v24.6.0
+HostSystem: Windows NT 6.3; WOW64
+Stationery used: false
+
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.365  [3 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 18:10:21.365  [0 ms]	 
+ finished. 
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.365  [0 ms]	 
+ resetting Undo... 
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:10:21.365  [0 ms]	 
+insertTemplate(startup) complete.

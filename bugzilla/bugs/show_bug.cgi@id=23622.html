@@ -1,0 +1,1297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 23622 &ndash; QuickFolders' Display Recent Folders Tab Doesn't Work.</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23622&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23622">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=23622">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23622">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_23622">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;23622</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QuickFolders' Display Recent Folders Tab Doesn't Work.</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2011-01-19 12:57:08</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23622&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2011-01-19 12:57:08">
+  <input type="hidden" name="longdesclength" value="16">
+  <input type="hidden" name="id" value="23622">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QuickFolders' Display Recent Folders Tab Doesn't Work.">QuickFolders' Display Recent Folders Tab Doesn't Work.
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=23622.html">23622</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23622&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23622">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:martineau&#64;linxure.net">Martin Miller &lt;martineau&#64;linxure.net&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="martineau&#64;linxure.net">martineau&#64;linxure.net</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="Highlighted&#32;Recent&#32;Folder&#32;Tab&#32;in&#32;TB2.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Screenshot showing how Recent Folders tab is always highlighted.</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (47.12 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=23622.html#attach_6748"
+               title="Go to the comment associated with the attachment">2011-01-13 07:23</a>,
+
+            <a href="mailto:martineau&#64;linxure.net"
+               title="Write an email to the creator of the attachment">Martin Miller
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6748&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QF-2.4pre7.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Test Version With new method for popup</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (213.39 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23622.html#attach_6751"
+               title="Go to the comment associated with the attachment">2011-01-15 13:04</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6751&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QF-2.4pre9.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">fixing TB2 problem of prerelease7</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (217.74 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23622.html#attach_6752"
+               title="Go to the comment associated with the attachment">2011-01-17 05:11</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6752&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QF-2.4pre12.xpi"
+               title="View the content of the attachment">
+          <b>Another Test veriosn for TB2</b></a>
+
+          <span class="bz_attach_extra_info">
+              (222.25 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23622.html#attach_6757"
+               title="Go to the comment associated with the attachment">2011-01-18 17:38</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6757&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=23622.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=23622&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23622&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=23622">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23622">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=23622">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=23622">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=23622.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2011-01-12 19:16
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >When I enable this General option a new QuickFolders tab appears, but it never
+contains anything when I click (or right-click) on it -- even though there is a
+fairly long list of recent folders shown when I cause the display of them in
+the folder bar by using the TB View | Folders | Recent menu item. AFAIK,
+QuickFolders' is working properly otherwise on my system.
+
+Don't know if it's related or not, but the Recent Folders tab is always
+highlighted except when my mouse cursor hovers over it.
+
+I'm using TB 2.0.0.24 and QF 2.3
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=23622.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-13 01:23:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I can not reproduce this using Thunderbird 2.0.0.24 - the Recent Folder tab
+behaves as it should. Maybe a side effect from another extension.
+
+Can you install console2 and check the debug output? Make sure to disable
+logging content errors, everything else can be turned on.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=23622.html#c2">
+            #2</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-13 07:23:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Highlighted&#32;Recent&#32;Folder&#32;Tab&#32;in&#32;TB2.png" name="attach_6748" title="Screenshot showing how Recent Folders tab is always highlighted.">Created an attachment (id=6748)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6748&amp;action=edit" title="Screenshot showing how Recent Folders tab is always highlighted.">[details]</a></span>
+Screenshot showing how Recent Folders tab is always highlighted.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=23622.html#c3">
+            #3</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-13 07:31:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry Axel, I am unable reproduce the problem with Console2 installed. Somehow
+installing that extension fixes the problem. If I uninstall Console2, the
+Recent Folders tab stops working again and never displays anything.
+
+Perhaps you could try uninstalling it (Console2) yourself and see if you then
+are able reproduce the problem...
+
+BTW, I've also attached a .png image file showing how the Recent Folders tab is
+always staying highlighted (which I am not sure is related or is something done
+by-design).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=23622.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-13 11:21:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for the screen shot. The yellow background is by design (at the moment
+it is hard coded), so this is not part of the bug. If you want to make it less
+obvious, select 
+
+QuickFolders Options &gt; Pimp My Tabs! &gt; Individual Tab Color Appearance (Striped
+Style)
+
+=======
+
+So the popup not showing is not related to the bug. Can you try to right-click
+the option 
+QuickFolders Options &gt; General &gt; Display Recent Folders Tab 
+and check what setting is under 
+
+extensions.quickfolders.recentfolders.itemCount
+
+it should be 12 or 10 or around that.
+
+, also 
+extensions.quickfolders.recentfolders.sortAlphabetical
+
+should be false
+
+
+Since I can not reproduce the problem, I think we will only be able to solve
+this bug if you look at your Error Console output. (Best install console2 for
+this)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=23622.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-15 13:04:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF-2.4pre7.xpi" name="attach_6751" title="Test Version With new method for popup">Created an attachment (id=6751)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6751&amp;action=edit" title="Test Version With new method for popup">[details]</a></span>
+Test Version With new method for popup
+
+Here is a new test version that looks if there is already a popup Menu attached
+and removes that. It might resolve your problem as well.
+
+
+Note: there are 2 new menu items
+1. Rebuild Tabs (on the main QuickFolders context menu); will just force a
+refresh on all tabs
+2. Repair Folder... (on the Mail Folder Commands Context menu). This one
+doesn't do anything (yet)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=23622.html#c6">
+            #6</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-17 03:59:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I tried your QF-2.4pre7.xpi test version, but it did not resolve the Recent
+Folders display problem. In fact it doesn't display any of my QuickFolders at
+all. The bar for the folder tabs is visible and I can right-click on it and see
+the QF context menu. 
+
+I tried the new &quot;Rebuild Tabs&quot; menu item but it did nothing. My previous QF
+tabs are still defined, because if I attempt to add one of them again I get an
+error message saying that the Folder is already bookmarked plus all them are
+still listed when I select the &quot;Change the Order of the Bookmarks&quot; context menu
+item. There is no error message if I add a completely new one, but the newly
+added one is not displayed either.
+
+BTW, I don't understand how there could be another popup Menu already attached
+-- although I'm not sure what to object you're talking about it being attached
+to.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=23622.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-17 04:53:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23622.html#c6">comment #6</a>)
+<span class="quote">&gt; I tried your QF-2.4pre7.xpi test version, but it did not resolve the Recent
+&gt; Folders display problem. In fact it doesn't display any of my QuickFolders at
+&gt; all. The bar for the folder tabs is visible and I can right-click on it and see
+&gt; the QF context menu. 
+&gt; </span >
+there is probably some other incompatibility with TB2 but I am afraid without
+looking at your error console output I won't be able to fix any issues. I can
+fix errors one at a time, when I know what errors are actually happening.
+
+If you want to help, please install console2, enable &quot;All Errors&quot; and the
+&quot;Strict&quot; Option and then disable &quot;Content&quot;.
+
+With this you will actually be able to see the errors and in most cases a file
+and line number as well.
+
+console2 can be got here.
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/</a>
+
+once installed, you can use Tools / Error Console for easy bug investigation.
+
+Console2 supports copying and pasting the error output.
+
+thanks for your help.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=23622.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-17 05:11:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF-2.4pre9.xpi" name="attach_6752" title="fixing TB2 problem of prerelease7">Created an attachment (id=6752)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6752&amp;action=edit" title="fixing TB2 problem of prerelease7">[details]</a></span>
+fixing TB2 problem of prerelease7
+
+This one should fix the previous problem (trim not defined in older javascript
+used by TB2). No guarantee on the Recent Tab though, for this we still need the
+error console output.
+
+I was able to run this version on TB2.0.4 and it shows the recent tab items.
+
+Note: version supports only English and German locale, if  you need another
+one, shout!
+
+thx
+Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=23622.html#c9">
+            #9</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-18 15:33:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class="bz_obsolete"><a href="Highlighted&#32;Recent&#32;Folder&#32;Tab&#32;in&#32;TB2.png" name="attach_6748" title="Screenshot showing how Recent Folders tab is always highlighted.">attachment 6748</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6748&amp;action=edit" title="Screenshot showing how Recent Folders tab is always highlighted.">[details]</a></span>)
+Not a bug...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=23622.html#c10">
+            #10</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-18 16:20:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Prerelease QF-2.4pre9.xpi does display my QuickFolders, so the issue with the
+previous prerelease has been resolved. At first I thought the it also corrected
+the Recent Folders tab problem because after the initial restart following
+installation some contents was appearing on that tab. However, after quitting
+TB2 normally and then restarting it later nothing is now displayed again. I
+have seen the behavior before (Recent Folders working immediately after
+installing an extension, but not again afterwards -- it's also why I initially
+thought installing the console2 extension fixed the problem in QF 2.3).
+
+Anyway, since the Recent Folders tab problem is still there, I have gone ahead
+done as you requested and (re)installed the console2 extension and followed
+your further instructions on using it. Below is what appears in the Error
+Console window each time I right-click on the Recent Folders tab but see no
+contents (using QF-2.4pre9.xpi):
+
+<span class="quote">&gt; Error: Exception during createRecentTab:
+&gt; oldestTime is not defined
+&gt; Source file: chrome://quickfolders/content/quickfolders-interface.js
+&gt; Line: 247
+&gt; Source code:
+&gt; addIfRecent([object XPCWrappedNative_NoHelper])   chrome://quickfolders/content/quickfolders-interface.js:247 checkSubFolders([object XPCWrappedNative_NoHelper])@chrome://quickfolders/content/quickfolders-interface.js:216 ()@chrome://quickfolders/content/quickfolders-interface.js:274 ([object XULElement],false,false)@chrome://quickfolders/content/quickfolders-interface.js:324 ([object XULElement],false,[object XULElement])@chrome://quickfolders/content/quickfolders-interface.js:371 ([object XULElement],[object MouseEvent],true)@chrome://quickfolders/content/quickfolders-interface.js:403 onclick([object MouseEvent])@chrome://messenger/content/messenger.xul:1 @:0</span >
+
+Hope that helps...and thanks again for your support.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=23622.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-18 17:33:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23622.html#c10">comment #10</a>)
+
+<span class="quote">&gt; Anyway, since the Recent Folders tab problem is still there, I have gone ahead
+&gt; done as you requested and (re)installed the console2 extension and followed
+&gt; your further instructions on using it. Below is what appears in the Error
+&gt; Console window each time I right-click on the Recent Folders tab but see no
+&gt; contents (using QF-2.4pre9.xpi):
+&gt; 
+&gt; &gt; Error: Exception during createRecentTab:
+&gt; &gt; oldestTime is not defined
+&gt; &gt; Source file: chrome://quickfolders/content/quickfolders-interface.js
+&gt; &gt; Line: 247
+&gt; &gt; Source code:
+&gt; &gt; addIfRecent([object XPCWrappedNative_NoHelper])   chrome://quickfolders/content/quickfolders-interface.js:247 checkSubFolders([object XPCWrappedNative_NoHelper])@chrome://quickfolders/content/quickfolders-interface.js:216 ()@chrome://quickfolders/content/quickfolders-interface.js:274 ([object XULElement],false,false)@chrome://quickfolders/content/quickfolders-interface.js:324 ([object XULElement],false,[object XULElement])@chrome://quickfolders/content/quickfolders-interface.js:371 ([object XULElement],[object MouseEvent],true)@chrome://quickfolders/content/quickfolders-interface.js:403 onclick([object MouseEvent])@chrome://messenger/content/messenger.xul:1 @:0</span >
+
+Hi Martin,
+
+that looks like a Thunderbird bug. You see I am using modern Javascript, which
+sets the variable oldestTime like this:
+
+let oldestTime = 0;
+
+In older versions of Javascript, the &quot;let&quot; keyword was not recognized.
+
+for this to work I am including the module in my overlay like this:
+
+&lt;script type=&quot;application/x-javascript;version=1.7&quot; 
+src=&quot;chrome://quickfolders/content/quickfolders-interface.js&quot; /&gt;
+
+The &quot;version=1.7&quot; should make sure that the old version of Thunderbird (2.x)
+understands the newer Javascript). I will need to ask around on the forums to
+see what could confuse TB so that it switches back to the old Javascript mode.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=23622.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-18 17:38:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-2.4pre12.xpi" name="attach_6757" title="Another Test veriosn for TB2">Created an attachment (id=6757)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6757&amp;action=edit" title="Another Test veriosn for TB2">[details]</a></span>
+Another Test veriosn for TB2
+
+Try this version it tries to address the specific bug you posted.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=23622.html#c13">
+            #13</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-18 19:46:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+Good news! Whatever you changed in the QF-2.4pre12.xpi prerelease seems to
+(consistently) fix the Recent Folder tab's contents not displaying problem I
+reported -- and it has continued work even after I shutdown and restarted TB2
+several times just to make sure.
+
+From what you wrote, it sounds like the issue was related to the &quot;let&quot;
+statement in Javascript 1.7 problem.
+
+Nice work!
+
+Not sure if I'm supposed to set the bug's resolution to FIXED or whether that
+is something you, the developer, is supposed to do.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=23622.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-01-19 00:10:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Don't worry, I will usually do it. As you can see, a quick look at Error
+Console usually is the fastest way for resolving problems like this. But it
+still let's me wonder in which other places the &quot;let&quot; statement fails in
+Thunderbird2? So there might be other places affected by the same bug.
+
+I fixed it by simply replacing &quot;Let&quot; with &quot;Var&quot; for this particular variable.
+
+&quot;Let&quot; is important as it forces a separate instance of the variable to be
+created so that the same function can be called several times with different
+contexts, each having its own copy. In this particular case it (probably)
+doesn't matter. But I am using let at other places as in the same module well,
+so I am still a bit stumped about it.
+
+If something is wrong with the Javascript version when a module is interpreted
+by the Mozilla engine it usually will throw a syntax error on the line 
+
+&quot;let foo=bar;&quot;
+
+itself, but specifying the newer version should have worked. Which makes me
+think that maybe something outside of QF could have mad TB behave this way,
+maybe another extension or something. Were there any other error messages
+before the one you copied?
+
+In any case this fix is going to go in the next official release, thanks for
+reporting the bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=23622.html#c15">
+            #15</a> From 
+          <a href="mailto:martineau&#64;linxure.net">Martin Miller</a>
+          2011-01-19 12:57:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Greetings Axel,
+
+Yes, using console2 certainly helped in this case. One minor problem I ran into
+obtaining the extension was the fact that the current version from
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2</a> only supports
+TB3. In order to get an older version of it for TB2 (Console² 0.6) I had to
+visit the extension's website at <a href="http://console2.mozdev.org">http://console2.mozdev.org</a>.
+
+I believe I understand what you wrote regarding the JS 1.7 &quot;let&quot; statement and
+what it does -- I also found a good description of it on the MDN website.
+Sounds like a useful language enhancement and am very glad to hear that just
+changing it to &quot;var&quot; was possible (and all that) was needed in this case.
+
+The only other error message I've seen while using it with your QF-2.4pre12.xpi
+prerelease was the following (which comes from console2 itself):
+<span class="quote">&gt; Error: Components.classes['@mozilla.org/dom/json;1'] has no properties
+&gt; Source file: chrome://console2/content/console2.js
+&gt; Line: 409</span >
+
+Which is the starred line in the following block of code in console2.js:
+<span class="quote">&gt;   saveBlocklist: function()
+&gt;   {
+&gt;     * var nativeJSON = Components.classes[&quot;@mozilla.org/dom/json;1&quot;].createInstance(Components.interfaces.nsIJSON);
+&gt;       var blist = &quot;(&quot; + nativeJSON.encode(this.mBlocking) + &quot;)&quot;;
+&gt;       gBooleanPrefObserver.mPrefBranch.setCharPref(this.mBlocklistPref, bList);
+&gt;   },</span >
+
+That being the case, the &quot;let&quot; problem does not seem to be affecting any other
+parts of your extension's code.
+
+Your quick response and successful correction of the problem reported is
+greatly appreciated. I think the Recent Folders tab will be very handy to have
+in certain circumstances.
+
+Mit freundlichen Grüßen,
+Martin
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23622&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

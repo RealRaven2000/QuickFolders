@@ -1,0 +1,1181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25634 &ndash; Long menus obscure tabs</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25634&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25634">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25634">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25634">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25634">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25634</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Long menus obscure tabs</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-02-27 09:07:29</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25634&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-02-27 09:07:29">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="25634">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Long menus obscure tabs">Long menus obscure tabs
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25634.html">25634</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Mac OS X 10.4">Mac OS X 10.4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25634&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25634">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:bob.jansen&#64;turtlelane.com.au">BobJ &lt;bob.jansen&#64;turtlelane.com.au&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="mw&#64;vandyke.com">mw&#64;vandyke.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.14pre5.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 5</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (496.71 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25634.html#attach_7723"
+               title="Go to the comment associated with the attachment">2013-11-10 01:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7723&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="ShiftedMenu.png"
+               title="View the content of the attachment">
+          <b>example screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (52.10 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25634.html#attach_7724"
+               title="Go to the comment associated with the attachment">2013-11-11 00:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7724&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.15pre11.xpi"
+               title="View the content of the attachment">
+          <b>3.15 prerelease 11</b></a>
+
+          <span class="bz_attach_extra_info">
+              (509.64 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25634.html#attach_7798"
+               title="Go to the comment associated with the attachment">2014-02-26 18:15</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7798&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25634.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25634&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25634&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25634">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25634">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25634">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25634">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25634.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-11-09 15:44
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I have noticed what appears to be a problem with Quickfolders PopUp menus.
+
+I have a folder that has many subfolders. On my laptop, when I try and drag
+something into the parent folder, the popup menu fills the complete height of
+the window and the parent folder is obscured by the popup menu. Essentially,
+the popup menu needs a vertical scroll bar to cater for these situations. 
+
+bobj
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25634.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-10 01:44:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre5.xpi" name="attach_7723" title="3.14 prerelease 5">Created an attachment (id=7723)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7723&amp;action=edit" title="3.14 prerelease 5">[details]</a></span>
+3.14 prerelease 5
+
+This is a prerelease with a hidden setting that is based on the minimum number
+of menu items, once this number has been reached the menu will not cover the
+whole area of the clicked tab.
+
+In the test version I the threshold is hidden in the Tb configuration setting -
+E.g. you can set the threshold to 40 using Tools &gt; options (Edit &gt; PReferences
+on Mac)  &gt;&gt; Advanced &gt; General &gt; Config Editor:
+
+in the search box above enter realignMinTabs to show a new setting:
+
+extensions.quickfolders.folderMenu.realignMinTabs
+
+(default would be zero which disables the new behavior)
+
+change this to the appropriate number (e.g. 40). Consequently if the popup menu
+has 40 items, the popup Menu is shifted to the right by 24px, so there is some
+space to drop the mail into the parent folder itself.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25634.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-11 00:20:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ShiftedMenu.png" name="attach_7724" title="example screenshot">Created an attachment (id=7724)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7724&amp;action=edit" title="example screenshot">[details]</a></span>
+example screenshot
+
+This screen shot shows how a long menu will be shifted to the right when
+dragging an Email onto it so that part of the tab remains available as drop
+target.
+
+Note that by (Mozilla's) design the menu will show a &quot;down&quot; button at the
+bottom if there are more menu items than can be displayed on screen - to reach
+them you have to drag the mail on top of this button. It is probably a good
+idea not to have that many sub folders if you find that you have to drop mails
+like this often as finding a drop target in a very long list will always slow
+you down. A viable and recommended workaround would be some interim alphabetic
+child folders, such as:
+
+A-E
+F-K
+L-Q
+R-X
+
+in this way you can break up the tedious long Alphabetic list into 4 or more
+parts making for a nicer experience.
+
+By the way a scrollbar on the menu item is not the solution as it is not
+designed for drag+drop. Scrollbars are only useful when you can click (there
+are 5 different click targets on the scrollbar, and it has its own drag handler
+for the &quot;elevator&quot;).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25634.html#c3">
+            #3</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-11 09:09:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25634.html#c0">comment #0</a>)
+<span class="quote">&gt; I have noticed what appears to be a problem with Quickfolders PopUp menus.
+&gt; 
+&gt; I have a folder that has many subfolders. On my laptop, when I try and drag
+&gt; something into the parent folder, the popup menu fills the complete height of
+&gt; the window and the parent folder is obscured by the popup menu. Essentially,
+&gt; the popup menu needs a vertical scroll bar to cater for these situations. 
+&gt; 
+&gt; bobj
+&gt; </span >
+
+I have a userChrome.css snippet to give long menus a scrollbar instead of the
+default scrollbuttons, but as Axel said at the end of <a href="show_bug.cgi@id=25634.html#c2">comment #2</a>, a scrollbar
+needs dragging, and if you are already dragging something when you decide you
+need to scroll the menu in order to make your drag target visible, you have a
+problem.
+
+Here's the snippet anyway (it works in all current versions of SeaMonkey, and I
+have found it useful in other circumstances); it is meant for the file
+userChrome.css in the chrome/ subfolder of your profile, a file which does not
+exist by defult. For more info, see <a href="http://kb.mozillazine.org/UserChrome.css">http://kb.mozillazine.org/UserChrome.css</a>
+and <a href="http://kb.mozillazine.org/UserChrome-example.css">http://kb.mozillazine.org/UserChrome-example.css</a>
+
+/*
+ * give the menus a scrollbar when they are too high to be
+ * displayed in full
+ */
+menupopup scrollbox, #contentAreaContextMenu scrollbox
+  { overflow-y:         auto                    !important
+  }
+/*
+ * eliminate scroll buttons at top and bottom of the menus
+ */
+menupopup autorepeatbutton, #contentAreaContextMenu autorepeatbutton
+  { display:            none                    !important
+  }
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25634.html#c4">
+            #4</a> From 
+          <a href="mailto:mw&#64;vandyke.com">Mark Walker</a>
+          2014-02-26 17:53:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The fix/workaround is still problematic for long folder lists.
+
+The list of folders with the offset now typically cuts the tab into two parts,
+one visible and one obscured by the folder list. Unless one is careful to
+always point to the left 1/4&quot; or so of the tab it is still possible to drop the
+message in the wrong location.
+
+I suggest that the folder list should always be shifted to the left (or right)
+edge of the tab. That way none of the tab is ever obscured. And when the folder
+list won't fit to the right, just shift it to the left side.
+
+It might also be worth considering using the Move To mechanism in Tb to access
+the subfolders. It has the shortcoming of having to use the &quot;File Here&quot; item at
+the top of a folder list, rather than just being able to drop on the current
+subfolder list, but the folder lists are well behaved.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25634.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-26 18:15:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.15pre11.xpi" name="attach_7798" title="3.15 prerelease 11">Created an attachment (id=7798)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7798&amp;action=edit" title="3.15 prerelease 11">[details]</a></span>
+3.15 prerelease 11
+
+Version using the end_before argument according to:
+<a href="https://developer.mozilla.org/en-US/docs/XUL/PopupGuide/Positioning#The_position_attribute">https://developer.mozilla.org/en-US/docs/XUL/PopupGuide/Positioning#The_position_attribute</a>
+
+works for me. When I move the tab so far to the right that the menu would be
+truncated by screen edge the menu will pop over to the left edge of the tab.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25634.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-26 18:24:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25634.html#c4">comment #4</a>)
+<span class="quote">&gt; It might also be worth considering using the Move To mechanism in Tb to access
+&gt; the subfolders. </span >
+Can you elaborate how &amp; where this would fit into QuickFolders? The &quot;Move To&quot;
+command is a context command based on the Message (menu) so I do not see how it
+could be integrated into QuickFolders in an intuitive way...
+
+<span class="quote">&gt; It has the shortcoming of having to use the &quot;File Here&quot; item at
+&gt; the top of a folder list, rather than just being able to drop on the current
+&gt; subfolder list, but the folder lists are well behaved.</span >
+Yes this is one or the problems with manu-based folder hierarchie's which I
+solved by completely re-programming my context menus displayed in the
+QuickFolders multiverse. I wanted it to behave more like the Personal Bookmarks
+toolbar...
+
+You can even drag menu items to the QuickFolders bar so it is pretty universal.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25634.html#c7">
+            #7</a> From 
+          <a href="mailto:mw&#64;vandyke.com">Mark Walker</a>
+          2014-02-26 20:28:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Regarding the Move To suggestion:
+
+Dragging a message to a Qf tab is logically equivalent to Move To on the
+menubar.
+
+The advantage of Move To is the smooth way it traverses the hierarchy of
+sub-folders.
+
+One downside to the Move To, folder &quot;running&quot;, is the two ways of referencing
+the target folder (1 - during navigation, 2 - &quot;File Here&quot; drop target
+in list of sub-folders). It's also clumsy to get started.
+
+It isn't clear to me why Move To doesn't just accept the mouse button release
+on any folder as Qf does. Move To understands a folder icon is the target when
+no folders are contained in the target folder.
+
+I wouldn't care about the Move To issue if I didn't want to see change in
+the Drop Over behavior in Qf don't see how to navigate a hierarchy via
+initially &quot;Drag Over&quot; to a Qf tab.
+
+So I was suggesting that drag and drop on a tab with subfolders just use the
+code of Move To (with an improvement). 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25634.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-26 21:21:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25634.html#c7">comment #7</a>)
+<span class="quote">&gt; Regarding the Move To suggestion:
+&gt; 
+&gt; Dragging a message to a Qf tab is logically equivalent to Move To on the
+&gt; menubar. The advantage of Move To is the smooth way it traverses the hierarchy of
+&gt; sub-folders.</span >
+
+When you use the term 'smooth', what do you exactly mean? The mechanism is
+exactly the same, but drag &amp; drop is harder than going through a menu with the
+keyboard.
+
+<span class="quote">&gt; One downside to the Move To, folder &quot;running&quot;, is the two ways of referencing
+&gt; the target folder (1 - during navigation, 2 - &quot;File Here&quot; drop target
+&gt; in list of sub-folders). It's also clumsy to get started.</span >
+
+I think the biggest problem with &quot;Move To&quot; is that you might have to
+potentially go through 4 or 5 levels before you hit the place where your target
+folder is and that may feel cumbersome or slow compared to dragging to the
+direct parent or even grandparent folder (less operations, less sideways
+dragging). In my experience it is way easier to hit a vertical target than a
+horizontal one that's why having the direct parent on the QF bar is the most
+painless way of dragging to a child folder.
+
+<span class="quote">&gt; It isn't clear to me why Move To doesn't just accept the mouse button release
+&gt; on any folder as Qf does. </span >
+
+??? it is not a drag &amp; drop operation, so if you use the mouse you will need a
+full mouse click (down+up) for selecting a move target.
+
+<span class="quote">&gt; Move To understands a folder icon is the target when no folders are contained in the target folder.</span >
+
+I think what you are trying to say is that menuitems accept drop but menupopups
+(these are menuitems that have subitems and a little triangle on the side) do
+not. Well that's the nature of the beast, they only do in my case because I am
+such a talented hacker :P
+
+<span class="quote">&gt; I wouldn't care about the Move To issue if I didn't want to see change in
+&gt; the Drop Over behavior in Qf don't see how to navigate a hierarchy via
+&gt; initially &quot;Drag Over&quot; to a Qf tab.</span >
+
+I look at it that way: Using Move to I generally have a much longer and
+laborious journey for my files to get to their final destination (almost as bad
+as using the folder tree), so I would only use it as an exception. If I find I
+need the folder tree often (more than 2 times a day) then I know that I haven't
+arranged my QuickFolders or mail filters correctly. I'd say the same goes for
+using the &quot;Move To&quot; menu - you might find that you use it often for moving
+files to related (sibling) folders, and often adding the father or grandfather
+folder to the QF bar is a more efficient way to deal with this.
+
+<span class="quote">&gt; So I was suggesting that drag and drop on a tab with subfolders just use the
+&gt; code of Move To (with an improvement). </span >
+
+&quot;use the code of&quot; - that doesn't sound like a tangible requirement to me, as
+far as I understand move to - you select one or more messages and use the
+keyboard to show the complete acounts &gt; folder tree.
+
+So unlike what I do in QuickFolders, &quot;move to&quot; is not a drag and drop
+operation, although it also shows folders. The only advantage that it has is
+that it gives all accounts as top level folders - is this what you mean by &quot;use
+the code of&quot;? It is better to make no assumptions on &quot;how&quot; something is coded,
+easier to describe what you would like it to do. Are you suggesting a starting
+point / drop target that expands into all accounts (and from there into all
+folders)? Also, this discussion becomes increasingly off topic for this bug so
+if it's not related to &quot;long menu obscures QF tabs so they are not available as
+drop targets&quot;, I would suggest to add a new bug, or contact me via email first
+to help me find out what you actually mean.
+
+I will leave the bug as RESOLVED FIXED for now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25634.html#c9">
+            #9</a> From 
+          <a href="mailto:mw&#64;vandyke.com">Mark Walker</a>
+          2014-02-26 23:47:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yes, 3.15 prerelease 11 has just the behavior I was looking for.
+
+I had a bit more trouble with drag over not doing it's color with the 2-color
+setting (after a few restarts for password adjustment tests), but with Standard
+Palette setting it seems stable.
+
+So, with these resolved I think I can trust the 4 row Qf tabs arrangement I was
+using. It was just too easy to drop something in the wrong place before.
+
+Thanks, top notch work.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25634.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-27 09:07:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25634.html#c9">comment #9</a>)
+<span class="quote">&gt; Yes, 3.15 prerelease 11 has just the behavior I was looking for.
+&gt; 
+&gt; So, with these resolved I think I can trust the 4 row Qf tabs arrangement I was
+&gt; using. It was just too easy to drop something in the wrong place before.</span >
+
+Great. To avoid picking the wrong drop targets you can also try the new &quot;folder
+icon&quot; feature - see [<span class="bz_closed"><a href="show_bug.cgi@id=25708.html" title="RESOLVED FIXED - Customizable Icons in Foldertree">Bug 25708</a></span>] for a bunch of icons:
+
+<a href="quickFoldersIcons.zip">https://www.mozdev.org/bugs/attachment.cgi?id=7799</a>
+
+
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25634&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

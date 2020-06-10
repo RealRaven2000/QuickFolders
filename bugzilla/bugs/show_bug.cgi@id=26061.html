@@ -1,0 +1,1475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26061 &ndash; Thunderbird doesn't remember to disable Icon on status bar</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26061&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26061">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26061">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26061">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_26061">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26061</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Thunderbird doesn't remember to disable Icon on status bar</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-04-02 15:56:33</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26061&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-04-02 15:56:33">
+  <input type="hidden" name="longdesclength" value="15">
+  <input type="hidden" name="id" value="26061">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Thunderbird doesn't remember to disable Icon on status bar">Thunderbird doesn't remember to disable Icon on status bar
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26061.html">26061</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="Macintosh">Macintosh
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Mac OS X 10.7">Mac OS X 10.7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26061&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26061">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:elikemc2&#64;gmail.com">Massimo &lt;elikemc2&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Schermata&#32;2015-08-26&#32;alle&#32;17.58.41.jpg"
+               title="View the content of the attachment">
+          <b>Screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (98.83 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8083"
+               title="Go to the comment associated with the attachment">2015-08-26 09:02</a>,
+
+            <a href="mailto:elikemc2&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Massimo
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8083&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-1.1pre38.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.1 pre 38 Latest Version, please try first</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (367.20 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8086"
+               title="Go to the comment associated with the attachment">2015-08-26 11:42</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8086&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="Schermata&#32;2015-08-30&#32;alle&#32;16.33.53.png"
+               title="View the content of the attachment">
+          <b>screenshot 2</b></a>
+
+          <span class="bz_attach_extra_info">
+              (177.75 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8090"
+               title="Go to the comment associated with the attachment">2015-08-30 07:40</a>,
+
+            <a href="mailto:elikemc2&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Massimo
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8090&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="screenshot3.png"
+               title="View the content of the attachment">
+          <b>screenshot3</b></a>
+
+          <span class="bz_attach_extra_info">
+              (279.26 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8093"
+               title="Go to the comment associated with the attachment">2015-08-31 06:05</a>,
+
+            <a href="mailto:elikemc2&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Massimo
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8093&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="screenshot4.png"
+               title="View the content of the attachment">
+          <b>screenshot4</b></a>
+
+          <span class="bz_attach_extra_info">
+              (59.90 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8094"
+               title="Go to the comment associated with the attachment">2015-08-31 06:06</a>,
+
+            <a href="mailto:elikemc2&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Massimo
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="console2-1.0a4.xpi.1"
+               title="View the content of the attachment">
+          <b>patched error console (console²)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (135.70 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8095"
+               title="Go to the comment associated with the attachment">2015-09-01 00:05</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8095&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="smartTemplate-1.2pre44.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">1.2 prerelease 44</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (373.12 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8160"
+               title="Go to the comment associated with the attachment">2016-04-01 16:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8160&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="smartTemplate-1.2pre46.xpi"
+               title="View the content of the attachment">
+          <b>1.2 prerelease 46</b></a>
+
+          <span class="bz_attach_extra_info">
+              (374.25 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26061.html#attach_8161"
+               title="Go to the comment associated with the attachment">2016-04-02 15:56</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8161&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26061.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26061&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26061&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26061">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26061">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26061">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26061">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26061.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-08-26 09:02
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Schermata&#32;2015-08-26&#32;alle&#32;17.58.41.jpg" name="attach_8083" title="Screenshot">Created an attachment (id=8083)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8083&amp;action=edit" title="Screenshot">[details]</a></span>
+Screenshot
+
+When i disable the icon on the status bar it works but when i restart Postbox
+it comes again.
+How i can resolve this?
+
+Thanks
+
+Mac osx 10.10
+Postbox 4.0.3
+SmartTemplate4 1.0.1
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26061.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-08-26 11:42:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.1pre38.xpi" name="attach_8086" title="1.1 pre 38 Latest Version, please try first">Created an attachment (id=8086)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8086&amp;action=edit" title="1.1 pre 38 Latest Version, please try first">[details]</a></span>
+1.1 pre 38 Latest Version, please try first
+
+Can you try the attached version first. If it still doesn't work please your
+config setting for
+
+extensions.smartTemplate4.statusIconLabelMode
+
+To see this setting, go to Thunderbird Options &gt; Advanced &gt; General  and click
+[Config Editor...]
+
+and copy the term above into the Search box. The value is either 0, 1 or 2.
+0 - label hidden
+1 - label shown on hover
+2 - label shown always
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26061.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-08-26 11:44:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c1">comment #1</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-1.1pre38.xpi" name="attach_8086" title="1.1 pre 38 Latest Version, please try first">attachment (id=8086)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8086&amp;action=edit" title="1.1 pre 38 Latest Version, please try first">[details]</a></span> [details]
+&gt; 1.1 pre 38 Latest Version, please try first
+&gt; 
+&gt; Can you try the attached version first. If it still doesn't work please your
+&gt; config setting for
+&gt; 
+&gt; extensions.smartTemplate4.statusIconLabelMode
+&gt; 
+&gt; To see this setting, go to Thunderbird Options &gt; Advanced &gt; General  and click
+&gt; [Config Editor...]
+&gt; 
+&gt; and copy the term above into the Search box. The value is either 0, 1 or 2.
+&gt; 0 - label hidden
+&gt; 1 - label shown on hover
+&gt; 2 - label shown always
+&gt; </span >
+
+Sorry I was bit too fast, it is actually this setting:
+
+extensions.smartTemplate4.showStatusIcon
+
+true = show icon
+false = hide icon
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26061.html#c3">
+            #3</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-08-30 07:39:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26061.html#c1">comment #1</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-1.1pre38.xpi" name="attach_8086" title="1.1 pre 38 Latest Version, please try first">attachment (id=8086)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8086&amp;action=edit" title="1.1 pre 38 Latest Version, please try first">[details]</a></span> [details] [details]
+&gt; &gt; 1.1 pre 38 Latest Version, please try first
+&gt; &gt; 
+&gt; &gt; Can you try the attached version first. If it still doesn't work please your
+&gt; &gt; config setting for
+&gt; &gt; 
+&gt; &gt; extensions.smartTemplate4.statusIconLabelMode
+&gt; &gt; 
+&gt; &gt; To see this setting, go to Thunderbird Options &gt; Advanced &gt; General  and click
+&gt; &gt; [Config Editor...]
+&gt; &gt; 
+&gt; &gt; and copy the term above into the Search box. The value is either 0, 1 or 2.
+&gt; &gt; 0 - label hidden
+&gt; &gt; 1 - label shown on hover
+&gt; &gt; 2 - label shown always
+&gt; &gt; 
+&gt; 
+&gt; Sorry I was bit too fast, it is actually this setting:
+&gt; 
+&gt; extensions.smartTemplate4.showStatusIcon
+&gt; 
+&gt; true = show icon
+&gt; false = hide icon
+&gt; </span >
+
+I've tried the 1.1 version but the icon still remains
+In the editor &quot;extensions.smartTemplate4.showStatusIcon&quot; is false
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26061.html#c4">
+            #4</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-08-30 07:40:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Schermata&#32;2015-08-30&#32;alle&#32;16.33.53.png" name="attach_8090" title="screenshot 2">Created an attachment (id=8090)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8090&amp;action=edit" title="screenshot 2">[details]</a></span>
+screenshot 2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26061.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-08-30 23:14:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >could not reproduce this one - I only see that you are using a Mac, which
+version of SmartTemplate4 are you running?
+
+Just to recap: you are stating that
+extensions.smartTemplate4.showStatusIcon = false
+but on startup it is not made invisible.
+
+Check the error log (tools &gt; error console or CTRL+J) and see what happens when
+you do a folder &gt; open in new window
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26061.html#c6">
+            #6</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-08-31 06:04:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c5">comment #5</a>)
+<span class="quote">&gt; could not reproduce this one - I only see that you are using a Mac, which
+&gt; version of SmartTemplate4 are you running?</span >
+
+I use SmartTemplate4 1.1pre38
+
+<span class="quote">&gt; 
+&gt; Just to recap: you are stating that
+&gt; extensions.smartTemplate4.showStatusIcon = false
+&gt; but on startup it is not made invisible.</span >
+
+Yep!
+<span class="quote">&gt; 
+&gt; Check the error log (tools &gt; error console or CTRL+J) and see what happens when
+&gt; you do a folder &gt; open in new window
+&gt; </span >
+
+See screenshot3 and screenshot4
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26061.html#c7">
+            #7</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-08-31 06:05:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot3.png" name="attach_8093" title="screenshot3">Created an attachment (id=8093)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8093&amp;action=edit" title="screenshot3">[details]</a></span>
+screenshot3
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26061.html#c8">
+            #8</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-08-31 06:06:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot4.png" name="attach_8094" title="screenshot4">Created an attachment (id=8094)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit" title="screenshot4">[details]</a></span>
+screenshot4
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26061.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-08-31 08:09:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c8">comment #8</a>)
+<span class="quote">&gt; Created an <span class=""><a href="screenshot4.png" name="attach_8094" title="screenshot4">attachment (id=8094)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit" title="screenshot4">[details]</a></span> [details]
+&gt; screenshot4
+&gt; </span >
+Sorry but these error messages are not useful. Like I said, please install
+console2 which I attached in the first attachment and set it up the way I told
+you.
+
+Make sure to diable &quot;Content&quot;, we are only interested in &quot;Chrome&quot; and &quot;JS&quot;
+messages. Also,  screenshots are unfriendly for logging - you can use the
+right-click menu to
+- Select All
+- Copy All messages
+
+and then simply copy the text into the next bug reply. 
+
+Make sure to clear the messages (empty list) first, then right-click any folder
+in the folder tree (left hand side) and &quot;open in new window&quot;. This will open a
+new Thunderbird Window / Process and we will get a glimpse at the errors that
+would also happen at start-up [unfortunately logging the errors on the &quot;real&quot;
+Thunderbird start often times does not work, that's why we use the &quot;open in new
+window&quot; workaround.
+
+You should get one log after opening the window. You can also add  more error
+detail by opening ST4 settings &gt; advanced functions and enabling [x] Debug
+mode. Additional messages are logged when you right-click that check box and
+toggle the settings:
+
+extensions.smartTemplate4.debug.functions = true
+
+If this doesn't come up with any warnings or errors, check Thunderbird Options
+<span class="quote">&gt; Advanced &gt; General [Config Editor...]</span >
+
+in search, enter: 
+
+extensions.smartTemplate4.showStatusIcon
+
+is it shown more than one time?
+
+
+
+
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26061.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-09-01 00:05:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="console2-1.0a4.xpi.1" name="attach_8095" title="patched error console (console²)">Created an attachment (id=8095)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8095&amp;action=edit" title="patched error console (console²)">[details]</a></span>
+patched error console (console²)
+
+(In reply to <a href="show_bug.cgi@id=26061.html#c9">comment #9</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26061.html#c8">comment #8</a>)
+&gt; &gt; Created an <span class=""><a href="screenshot4.png" name="attach_8094" title="screenshot4">attachment (id=8094)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit" title="screenshot4">[details]</a></span> [details] [details]
+&gt; &gt; screenshot4
+&gt; &gt; 
+&gt; Sorry but these error messages are not useful. Like I said, please install
+&gt; console² which I attached in the first attachment and set it up the way I told
+&gt; you.
+&gt; </span >
+Sorry I got mixed up about another bug where I already had sent console²
+(patched version) with instructions. Install the attached version of error
+console and open it with tools &gt; error console (or CTRL+SHIFT+J)and configure
+as follows:
+
+1st toolbar: activate errors,warnings,messages
+2nd toolbar: activate JS and chrome (DISABLE everything else, especially
+CONTENT)
+
+clear all messages and open folder in new window (does the icon show up on that
+one as well?)
+to get error log, right-click menu to
+ - Select All
+ - Copy All messages
+
+thanks
+
+<span class="quote">&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26061.html#c11">
+            #11</a> From 
+          <a href="mailto:elikemc2&#64;gmail.com">Massimo</a>
+          2015-09-01 06:31:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c10">comment #10</a>)
+<span class="quote">&gt; Created an <span class=""><a href="console2-1.0a4.xpi.1" name="attach_8095" title="patched error console (console²)">attachment (id=8095)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8095&amp;action=edit" title="patched error console (console²)">[details]</a></span> [details]
+&gt; patched error console (console²)
+&gt; 
+&gt; (In reply to <a href="show_bug.cgi@id=26061.html#c9">comment #9</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=26061.html#c8">comment #8</a>)
+&gt; &gt; &gt; Created an <span class=""><a href="screenshot4.png" name="attach_8094" title="screenshot4">attachment (id=8094)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit" title="screenshot4">[details]</a></span> [details] [details] [details]
+&gt; &gt; &gt; screenshot4
+&gt; &gt; &gt; 
+&gt; &gt; Sorry but these error messages are not useful. Like I said, please install
+&gt; &gt; console² which I attached in the first attachment and set it up the way I told
+&gt; &gt; you.
+&gt; &gt; 
+&gt; Sorry I got mixed up about another bug where I already had sent console²
+&gt; (patched version) with instructions. Install the attached version of error
+&gt; console and open it with tools &gt; error console (or CTRL+SHIFT+J)and configure
+&gt; as follows:
+&gt; 
+&gt; 1st toolbar: activate errors,warnings,messages
+&gt; 2nd toolbar: activate JS and chrome (DISABLE everything else, especially
+&gt; CONTENT)
+&gt; 
+&gt; clear all messages and open folder in new window (does the icon show up on that
+&gt; one as well?)
+&gt; to get error log, right-click menu to
+&gt;  - Select All
+&gt;  - Copy All messages
+&gt; 
+&gt; thanks
+&gt; 
+&gt; &gt; 
+&gt; </span >
+
+I'm not sure if i've done it right. It's correct?
+
+
+MailSessionStore: new SessionStoreService
+
+ ----------
+SearchIntegration: init
+ ----------
+loadStartFolder() with []
+ ----------
+calling StartUpWithTabs() with
+[imap://massimo%<a href="mailto:40ribano.it@imap.ribano.it">40ribano.it@imap.ribano.it</a>/INBOX,]
+ ----------
+MailSessionStore: new SessionStoreService
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26061.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-09-01 10:09:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26061.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26061.html#c10">comment #10</a>)
+&gt; &gt; Created an <span class=""><a href="console2-1.0a4.xpi.1" name="attach_8095" title="patched error console (console²)">attachment (id=8095)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8095&amp;action=edit" title="patched error console (console²)">[details]</a></span> [details] [details]
+&gt; &gt; patched error console (console²)
+&gt; &gt; 
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=26061.html#c9">comment #9</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=26061.html#c8">comment #8</a>)
+&gt; &gt; &gt; &gt; Created an <span class=""><a href="screenshot4.png" name="attach_8094" title="screenshot4">attachment (id=8094)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8094&amp;action=edit" title="screenshot4">[details]</a></span> [details] [details] [details] [details]
+&gt; &gt; &gt; &gt; screenshot4
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; Sorry but these error messages are not useful. Like I said, please install
+&gt; &gt; &gt; console² which I attached in the first attachment and set it up the way I told
+&gt; &gt; &gt; you.
+&gt; &gt; &gt; 
+&gt; &gt; Sorry I got mixed up about another bug where I already had sent console²
+&gt; &gt; (patched version) with instructions. Install the attached version of error
+&gt; &gt; console and open it with tools &gt; error console (or CTRL+SHIFT+J)and configure
+&gt; &gt; as follows:
+&gt; &gt; 
+&gt; &gt; 1st toolbar: activate errors,warnings,messages
+&gt; &gt; 2nd toolbar: activate JS and chrome (DISABLE everything else, especially
+&gt; &gt; CONTENT)
+&gt; &gt; 
+&gt; &gt; clear all messages and open folder in new window (does the icon show up on that
+&gt; &gt; one as well?)
+&gt; &gt; to get error log, right-click menu to
+&gt; &gt;  - Select All
+&gt; &gt;  - Copy All messages
+&gt; &gt; 
+&gt; &gt; thanks
+&gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; 
+&gt; I'm not sure if i've done it right. It's correct?
+&gt; 
+&gt; 
+&gt; MailSessionStore: new SessionStoreService
+&gt; 
+&gt;  ----------
+&gt; SearchIntegration: init
+&gt;  ----------
+&gt; loadStartFolder() with []
+&gt;  ----------
+&gt; calling StartUpWithTabs() with
+&gt; [imap://massimo%<a href="mailto:40ribano.it@imap.ribano.it">40ribano.it@imap.ribano.it</a>/INBOX,]
+&gt;  ----------
+&gt; MailSessionStore: new SessionStoreService
+&gt; </span >
+
+Almost!
+
+If you have enabled [x] Debug on the SmartTempalte4 Advancesd settings you
+should see at least this when you open a new window. If you did it right you
+should see both 
+extensions.smartTemplate4.debug  = true
+extensions.smartTemplate4.debug.functions  = true
+
+after right-clicking the debug checkbox.
+
+Typical output, captured from my Thunderbird  under windows - the last 2
+messages are *key* to this:
+
+SmartTemplate4 [logTime init]
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 18:6:22.366  [0 ms]       
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 18:6:22.367  [1 ms]       
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 18:6:22.367  [0 ms]       
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 18:6:22.368  [1 ms]       
+AddonManager: SmartTemplate4 extension's version is 1.1
+ ----------
+SmartTemplate4 18:6:22.368  [0 ms]       
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 1.1
+Running on Thunderbird Version 38.2.0
+ ----------
+SmartTemplate4 18:6:22.368  [0 ms]       
+Util.firstRun.init()
+ ----------
+SmartTemplate4 18:6:22.368  [0 ms]       
+Current SmartTemplate4 Version: 1.1
+ ----------
+SmartTemplate4 18:6:22.369  [1 ms]       
+AddonManager: SmartTemplate4 extension's version is 1.1
+ ----------
+SmartTemplate4 18:6:29.545  [7176 ms]    
+SmartTemplate4.updateStatusBar(default)
+ ----------
+SmartTemplate4 {FUNCTIONS} 18:6:29.545  [0 ms]   
+SmartTemplate4Messenger btn.className = statusbarpanel-iconic-text hidden ,
+collapsed = false
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26061.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-04-01 16:31:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.2pre44.xpi" name="attach_8160" title="1.2 prerelease 44">Created an attachment (id=8160)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8160&amp;action=edit" title="1.2 prerelease 44">[details]</a></span>
+1.2 prerelease 44
+
+Patched version should take care of the bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26061.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-04-02 15:56:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.2pre46.xpi" name="attach_8161" title="1.2 prerelease 46">Created an attachment (id=8161)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8161&amp;action=edit" title="1.2 prerelease 46">[details]</a></span>
+1.2 prerelease 46
+
+fixed a problem with the %cursor% variable of previous test version
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26061&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

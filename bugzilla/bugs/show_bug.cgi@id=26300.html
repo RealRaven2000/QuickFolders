@@ -1,0 +1,1095 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26300 &ndash; %cursor% leaves a space</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26300&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26300">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26300">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26300">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26300">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26300</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">%cursor% leaves a space</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-02-27 14:25:48</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26300&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-02-27 14:25:48">
+  <input type="hidden" name="longdesclength" value="12">
+  <input type="hidden" name="id" value="26300">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="%cursor% leaves a space">%cursor% leaves a space
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26300.html">26300</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26300&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26300">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:reaganf2&#64;gmail.com">reaganf2 &lt;reaganf2&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="Shawn.Lipscomb&#64;EWRInc.com">Shawn.Lipscomb&#64;EWRInc.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-1.5pre17.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">SmartTemplate 1.5 pre 17</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (388.63 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26300.html#attach_8273"
+               title="Go to the comment associated with the attachment">2017-02-27 10:40</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8273&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-1.5pre20.xpi"
+               title="View the content of the attachment">
+          <b>SmartTemplate 1.5 pre 20</b></a>
+
+          <span class="bz_attach_extra_info">
+              (388.73 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26300.html#attach_8275"
+               title="Go to the comment associated with the attachment">2017-02-27 12:47</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8275&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26300.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26300&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26300&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26300">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26300">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26300">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26300">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26300.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2016-11-03 13:09
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I'm using the following SmartTemplate4 to create a template just to define a
+Google Web Font for my email and place a signature at the bottom.
+
+&lt;link href=&quot;<a href="https://fonts.googleapis.com/css?family=Roboto">https://fonts.googleapis.com/css?family=Roboto</a>&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;font style=&quot;font-family: 'Roboto', serif&quot;&gt;
+&lt;p&gt;%cursor%&lt;/p&gt;
+&lt;p&gt;%sig%&lt;/p&gt;
+&lt;/font&gt;
+
+The %cursor% command, however, results in a blank space being inserted at the
+top of the email, which propagates as I type causing minor annoyances. Is there
+any way this space could be removed? The HTML output when I start writing a new
+email is as follows: (Note the space between the &lt;p&gt; and &lt;/p&gt; above Name)
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+  &lt;/head&gt;
+  &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+    &lt;div id=&quot;smartTemplate4-template&quot;&gt;
+      &lt;link href=&quot;<a href="https://fonts.googleapis.com/css?family=Roboto">https://fonts.googleapis.com/css?family=Roboto</a>&quot;
+        rel=&quot;stylesheet&quot;&gt;
+      &lt;font style=&quot;font-family: 'Roboto', serif&quot;&gt;
+        &lt;p&gt; &lt;/p&gt;
+        &lt;p&gt;Name&lt;/p&gt;
+      &lt;/font&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26300.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-11-05 13:51:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The space shouldn't matter much once you start typing as it doesn't reallly
+show up at the end of the line. However your HTML is invalid, you cannot have
+&lt;p&gt; elements within a &lt;font&gt; tag. instead please use this:
+
+&lt;div style=&quot;font-family: 'Roboto', serif&quot;&gt;
+  &lt;p&gt;%cursor%&lt;/p&gt;
+  &lt;p&gt;%sig%&lt;/p&gt;
+&lt;/div&gt;
+
+
+(In reply to <a href="show_bug.cgi@id=26300.html#c0">comment #0</a>)
+<span class="quote">&gt; I'm using the following SmartTemplate4 to create a template just to define a
+&gt; Google Web Font for my email and place a signature at the bottom.
+&gt; 
+&gt; &lt;link href=&quot;<a href="https://fonts.googleapis.com/css?family=Roboto">https://fonts.googleapis.com/css?family=Roboto</a>&quot; rel=&quot;stylesheet&quot;&gt;
+&gt; &lt;font style=&quot;font-family: 'Roboto', serif&quot;&gt;
+&gt; &lt;p&gt;%cursor%&lt;/p&gt;
+&gt; &lt;p&gt;%sig%&lt;/p&gt;
+&gt; &lt;/font&gt;
+&gt; 
+&gt; The %cursor% command, however, results in a blank space being inserted at the
+&gt; top of the email, which propagates as I type causing minor annoyances. Is there
+&gt; any way this space could be removed? The HTML output when I start writing a new
+&gt; email is as follows: (Note the space between the &lt;p&gt; and &lt;/p&gt; above Name)
+&gt; 
+&gt; &lt;html&gt;
+&gt;   &lt;head&gt;
+&gt;     &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&gt;   &lt;/head&gt;
+&gt;   &lt;body smarttemplateinserted=&quot;true&quot; bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;
+&gt;     &lt;div id=&quot;smartTemplate4-template&quot;&gt;
+&gt;       &lt;link href=&quot;<a href="https://fonts.googleapis.com/css?family=Roboto">https://fonts.googleapis.com/css?family=Roboto</a>&quot;
+&gt;         rel=&quot;stylesheet&quot;&gt;
+&gt;       &lt;font style=&quot;font-family: 'Roboto', serif&quot;&gt;
+&gt;         &lt;p&gt; &lt;/p&gt;
+&gt;         &lt;p&gt;Name&lt;/p&gt;
+&gt;       &lt;/font&gt;&lt;/div&gt;
+&gt;   &lt;/body&gt;
+&gt; &lt;/html&gt;
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26300.html#c2">
+            #2</a> From 
+          <a href="mailto:reaganf2&#64;gmail.com">reaganf2</a>
+          2016-11-05 14:05:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >:-) Thanks for pointing out the error in my HTML code. I've now corrected it.
+
+Just to clarify, the space doesn't really matter as long as it ends up at the
+end of the sentence I'm typing. If, however, I click into the email body field
+of the Thundebird composition window and then start typing, there are times it
+ends up at the beginning of the sentence, which causes a funny indent on the
+first line.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26300.html#c3">
+            #3</a> From 
+          <a href="mailto:Shawn.Lipscomb&#64;EWRInc.com">Shawn Lipscomb</a>
+          2017-02-27 08:32:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I use this simple template for new messages (dashed lines not included):
+============
+%cursor%
+
+- Shawn
+============
+
+These are plain text emails.  Smart Template replaces the %cursor% with a
+space, which looks bad if I end up clicking inside of the email body instead of
+tabbing to it, because then my email starts with a space.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26300.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-27 10:40:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-1.5pre17.xpi" name="attach_8273" title="SmartTemplate 1.5 pre 17">Created an attachment (id=8273)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8273&amp;action=edit" title="SmartTemplate 1.5 pre 17">[details]</a></span>
+SmartTemplate 1.5 pre 17
+
+try this version with the global setting &quot;insert space to highlight cursor&quot;
+disabled. Just tested in plain text mode on Tb 52.0b3
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26300.html#c5">
+            #5</a> From 
+          <a href="mailto:reaganf2&#64;gmail.com">reaganf2</a>
+          2017-02-27 10:54:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26300.html#c4">comment #4</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-1.5pre17.xpi" name="attach_8273" title="SmartTemplate 1.5 pre 17">attachment (id=8273)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8273&amp;action=edit" title="SmartTemplate 1.5 pre 17">[details]</a></span> [details]
+&gt; SmartTemplate 1.5 pre 17
+&gt; 
+&gt; try this version with the global setting &quot;insert space to highlight cursor&quot;
+&gt; disabled. Just tested in plain text mode on Tb 52.0b3
+&gt; </span >
+
+This version does something different altogether. My Compose template reads:
+
+&lt;div style=&quot;font-family:serif; font-size: 17px;&quot;&gt;
+  &lt;p&gt;%cursor%&lt;/p&gt;
+  &lt;p&gt;Reagan&lt;/p&gt; (inserted using %sig%)
+&lt;/div&gt;
+
+When I open a compose window, however, I see my name on the first line, with
+the first &lt;p&gt;&lt;/p&gt; completely ignored.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26300.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-27 12:13:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26300.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26300.html#c4">comment #4</a>)</span >
+
+<span class="quote">&gt; This version does something different altogether. My Compose template reads:
+&gt; 
+&gt; &lt;div style=&quot;font-family:serif; font-size: 17px;&quot;&gt;
+&gt;   &lt;p&gt;%cursor%&lt;/p&gt;
+&gt;   &lt;p&gt;Reagan&lt;/p&gt; (inserted using %sig%)
+&gt; &lt;/div&gt;</span >
+
+
+what's your template? is it this:
+
+&lt;div style=&quot;font-family:serif; font-size: 17px;&quot;&gt;
+  &lt;p&gt;%cursor%&lt;/p&gt;
+  %sig%
+&lt;/div&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26300.html#c7">
+            #7</a> From 
+          <a href="mailto:reaganf2&#64;gmail.com">reaganf2</a>
+          2017-02-27 12:18:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >That's right. Sorry if I wasn't clear earlier.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26300.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-27 12:24:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26300.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26300.html#c4">comment #4</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-1.5pre17.xpi" name="attach_8273" title="SmartTemplate 1.5 pre 17">attachment (id=8273)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8273&amp;action=edit" title="SmartTemplate 1.5 pre 17">[details]</a></span> [details] [details]
+&gt; &gt; SmartTemplate 1.5 pre 17
+&gt; &gt; 
+&gt; &gt; try this version with the global setting &quot;insert space to highlight cursor&quot;
+&gt; &gt; disabled. Just tested in plain text mode on Tb 52.0b3
+&gt; &gt; 
+&gt; 
+&gt; This version does something different altogether. My Compose template reads:
+&gt; 
+&gt; &lt;div style=&quot;font-family:serif; font-size: 17px;&quot;&gt;
+&gt;   &lt;p&gt;%cursor%&lt;/p&gt;
+&gt;   &lt;p&gt;Reagan&lt;/p&gt; (inserted using %sig%)
+&gt; &lt;/div&gt;
+&gt; 
+&gt; When I open a compose window, however, I see my name on the first line, with
+&gt; the first &lt;p&gt;&lt;/p&gt; completely ignored.
+&gt; </span >
+It's a bug in Thunderbird's (Mozilla's) HTML editor, in order to show a
+completely empty paragraph you must add a &lt;br&gt; inside it (at the end):
+
+&lt;div style=&quot;font-family:serif; font-size: 17px;&quot;&gt;
+   &lt;p&gt;%cursor%&lt;br&gt;&lt;/p&gt;
+   %sig%
+&lt;/div&gt;
+
+Inadvertently this bug fix (removing the space) makes the paragraph disappear
+as well. Not sure how to fix this (yet). Apparently it's &quot;Fix one thing for 2
+users, break another for 500.&quot;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26300.html#c9">
+            #9</a> From 
+          <a href="mailto:reaganf2&#64;gmail.com">reaganf2</a>
+          2017-02-27 12:27:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Brilliant! The &lt;br&gt; fixes the problem. Thanks so much for this!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26300.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-02-27 12:47:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.5pre20.xpi" name="attach_8275" title="SmartTemplate 1.5 pre 20">Created an attachment (id=8275)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8275&amp;action=edit" title="SmartTemplate 1.5 pre 20">[details]</a></span>
+SmartTemplate 1.5 pre 20
+
+I added some code that avoids the edge case you found:
+
+if the space (which I have created temporarily replacing the %cursor% tag) is
+the only thing contained within the &lt;p&gt; tag I will now insert a &lt;br&gt; after it.
+Once you edit this will look the same as if you were within a &lt;p&gt;&lt;/p&gt; pair:
+
+&lt;p&gt;type text at cursor position&lt;br&gt;
+&lt;/p&gt;
+
+in composer (and other email clients) this will look the same as:
+
+&lt;p&gt;type text at cursor position&lt;/p&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26300.html#c11">
+            #11</a> From 
+          <a href="mailto:reaganf2&#64;gmail.com">reaganf2</a>
+          2017-02-27 14:25:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Works like a charm! Thanks so much!
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26300&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

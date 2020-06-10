@@ -1,0 +1,47 @@
+SmartTemplate4 {FUNCTIONS} 8:35:45.928  [33 ms]	 
+SmartTemplate4.loadIdentity(true)
+ ----------
+SmartTemplate4 {EVENTS} 8:35:46.930  [1002 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {FUNCTIONS} 8:35:46.930  [0 ms]	 
+insertTemplate(true)
+ ----------
+SmartTemplate4 {FUNCTIONS} 8:35:46.931  [1 ms]	 
+SmartTemplate4.clearTemplate()
+ ----------
+SmartTemplate4 {FUNCTIONS} 8:35:46.931  [0 ms]	 
+SmartTemplate4.extractSignature()
+ ----------
+SmartTemplate4 8:35:46.931  [0 ms]	 
+readSignatureFile() 
+Trying to read attached signature file: sig-ag-amo-2012.html
+at: K:\AG_Docs\My Mail\2012\Signatures\sig-ag-amo-2012.html
+ ----------
+SmartTemplate4 8:35:46.933  [2 ms]	 
+getLocale() returns: en-IE
+ ----------
+SmartTemplate4 {FUNCTIONS} 8:35:46.933  [0 ms]	 
+Util.getIsoWeek(Wed Aug 29 2012 08:35:46 GMT+0100 (GMT Daylight Time), 0)
+ ----------
+SmartTemplate4 {FUNCTIONS} 8:35:46.933  [0 ms]	 
+Util.getIsoWeek() returns weeknum: 35
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 8:35:46.934  [1 ms]	 
+identityName:   Axel Grude <xxxxxxxxxx@gmail.com>
+key:            id3
+------------------------------------------------
+sigOnReply:     true
+sigOnForward:   true
+sigBottom:      true
+attachSignature:true
+htmlSigFormat:  false
+composeHtml:    true
+replyOnTop:     1
+SmartTemplate4.sigInTemplate: false
+ ----------
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 8:35:46.934  [0 ms]	 
+ Add Signature... 
+ ----------
+SmartTemplate4 [logTime init]
+cleanupUnusedPrefs ()

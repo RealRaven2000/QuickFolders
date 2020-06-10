@@ -1,0 +1,1104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25937 &ndash; Backup / Restore Logins feature</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25937&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25937">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25937">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25937">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25937">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25937</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Backup / Restore Logins feature</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-02-01 05:23:59</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25937&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-02-01 05:23:59">
+  <input type="hidden" name="longdesclength" value="9">
+  <input type="hidden" name="id" value="25937">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Backup / Restore Logins feature">Backup / Restore Logins feature
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25937.html">25937</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickpasswords">quickpasswords
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickpasswords">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25937&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25937">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:steve.ingle1949&#64;gmail.com">Steve Ingle &lt;steve.ingle1949&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axel.grude&#64;gmail.com">axel.grude&#64;gmail.com</option>
+            <option value="steve.ingle1949&#64;gmail.com">steve.ingle1949&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickPasswords3.7pre139.xpi"
+               title="View the content of the attachment">
+          <b>3.7 prerelease 139 - 1st official version with backup/restore</b></a>
+
+          <span class="bz_attach_extra_info">
+              (258.84 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25937.html#attach_8143"
+               title="Go to the comment associated with the attachment">2016-01-25 12:34</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8143&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25937&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25937&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25937">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25937">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25937">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25937">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25937.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-01-09 04:42
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+Using QuickPasswords version 3.5
+
+I need backup/restore functionality for QuickPasswords. This will greatly
+simplify a couple of tasks I face frequently:-
+
+1 - Rebuilding a local, corrupted installation of Firefox;
+2 - Cloning the password setup for a different profile;
+3 - Cloning a Firefox installation to a different PC.
+
+I look forward to hearing your comments.
+
+Regards,
+
+Steve
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25937.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-09 06:22:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Accepted the bug.
+
+As I understand it, as backup / restore function would entail in its minimum:
+
+1- INFORMATION STORED
+
+Saving all information of the password manager into a file includes
+    Form Submission URL
+    host name
+    password field name
+    user field name 
+    user id (encrypted or unencrypted)[*]
+    password (encrypted or unencrypted)[*]
+    last login date
+    last changed date
+
+In a later stage we should allow encrypting the information in this file.
+
+[*] these encrypted field values are actually available but I am not sure
+whether they use the master password for encryption so it might or might not be
+usable for import into a *fresh* profile
+
+FILE FORMAT
+
+there is a choice of using
+1 a) a comma separated files
+it would have an option to include a header line so it can be easily opened /
+edited in a spreadsheet editor (Excel etc). This is fairly straight forward as
+I would choose a manual file target (in the beginning no automatic backup)
+1 b) a JSON object file
+this is harder to edit externally but has the advantage that various
+information can be stored (annotated and web form logins). It is ideal for
+storing structured information such as different objects. I might actually
+prefer this format but I will play with both.
+
+2 - IMPORT
+
+Two fundamental use cases
+2 a) importing into an *empty* profile. Should not be a major problem as there
+is no danger to loose information
+2 b) importing into an existing profile which already has password information
+stored. this is a much more complex use case and should provide a safe way of
+resolving duplicates - ideally it should only overwrite passwords when the
+change date is higher. This might still not be 100% safe; for safety a backup
+file should be generated before overwriting existing information.
+
+Please feedback / reply in-line
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25937.html#c2">
+            #2</a> From 
+          <a href="mailto:steve.ingle1949&#64;gmail.com">Steve Ingle</a>
+          2015-01-09 07:28:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25937.html#c1">comment #1</a>)
+<span class="quote">&gt; Accepted the bug.
+&gt; 
+&gt; As I understand it, as backup / restore function would entail in its minimum:
+&gt; 
+&gt; 1- INFORMATION STORED
+&gt; 
+&gt; Saving all information of the password manager into a file includes
+&gt;     Form Submission URL
+&gt;     host name
+&gt;     password field name
+&gt;     user field name 
+&gt;     user id (encrypted or unencrypted)[*]
+&gt;     password (encrypted or unencrypted)[*]
+&gt;     last login date
+&gt;     last changed date
+&gt; 
+&gt; In a later stage we should allow encrypting the information in this file.
+&gt; 
+&gt; [*] these encrypted field values are actually available but I am not sure
+&gt; whether they use the master password for encryption so it might or might not be
+&gt; usable for import into a *fresh* profile
+&gt; 
+&gt; FILE FORMAT
+&gt; 
+&gt; there is a choice of using
+&gt; 1 a) a comma separated files
+&gt; it would have an option to include a header line so it can be easily opened /
+&gt; edited in a spreadsheet editor (Excel etc). This is fairly straight forward as
+&gt; I would choose a manual file target (in the beginning no automatic backup)
+&gt; 1 b) a JSON object file
+&gt; this is harder to edit externally but has the advantage that various
+&gt; information can be stored (annotated and web form logins). It is ideal for
+&gt; storing structured information such as different objects. I might actually
+&gt; prefer this format but I will play with both.
+&gt; 
+&gt; 2 - IMPORT
+&gt; 
+&gt; Two fundamental use cases
+&gt; 2 a) importing into an *empty* profile. Should not be a major problem as there
+&gt; is no danger to loose information
+&gt; 2 b) importing into an existing profile which already has password information
+&gt; stored. this is a much more complex use case and should provide a safe way of
+&gt; resolving duplicates - ideally it should only overwrite passwords when the
+&gt; change date is higher. This might still not be 100% safe; for safety a backup
+&gt; file should be generated before overwriting existing information.
+&gt; 
+&gt; Please feedback / reply in-line
+&gt; </span >
+
+​Hi Alex,
+
+1 - Exported file format: both suggestions seem good to me. If there is a
+concern over editing ​JSON objects, maybe XML would be OK. In any case,
+security may be an issue for some users (although this may only be a problem in
+very few cases).
+
+​2 - Importing: ​I agree that possible duplicates would be an issue. In my
+own coding, I have usually popped up a warning, offering an replace/clone
+option. This would only be relevant if the record fields were NOT all exact
+duplicates. Otherwise, you are correct in your approach to overwriting existing
+passwords.
+
+I don't know in what format you are storing the password data, so I won't make
+any technical suggestions at this time.
+
+Regards,
+
+Steve Ingle
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25937.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-09 09:05:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25937.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25937.html#c1">comment #1</a>)
+&gt; &gt; Accepted the bug.
+&gt; &gt; 
+&gt; 
+&gt; 1 - Exported file format: both suggestions seem good to me. If there is a
+&gt; concern over editing ​JSON objects, maybe XML would be OK. In any case,
+&gt; security may be an issue for some users (although this may only be a problem in
+&gt; very few cases).</span >
+
+Yes, I will see.  editing passwords in bulk isn't necessarily safe so
+spreadsheet might actually not be ideal. I tend to think pretty-fied JSON is
+best as it is future proof and can easily accommodate additional metadata.
+
+<span class="quote">&gt; ​2 - Importing: ​I agree that possible duplicates would be an issue. In my
+&gt; own coding, I have usually popped up a warning, offering an replace/clone
+&gt; option. This would only be relevant if the record fields were NOT all exact
+&gt; duplicates. Otherwise, you are correct in your approach to overwriting existing
+&gt; passwords.</span >
+
+alert popups (one per conflict) are typically not ideal for this sort of thing,
+so either would have to build a UI (with a list of conflicts) or for the start
+only allow modifying (the complete bulk of) passwords which have newer _change_
+date. In the first approach this could be an alert
+
+A number of passwords [11] exist but were changed, overwrite?
+[Yes] [No]
+
+The other thing that can happen is that the field names change (it would be
+likely that the modified date would be different in this case as well). 
+
+So alternatively all modified data could be summed together.
+
+A number of logins were modified [11], overwrite with the newer data?
+
+this would then update field names and passwords provided the restored
+information was fresher. 
+
+After this step it might be necessary to display a list of conflicts that could
+not be resolved (e.g. different passwords / field names with the same
+username/url without a conclusive date difference) - however the likely
+assumption here would be that the data in the backup file is outdated. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25937.html#c4">
+            #4</a> From 
+          <a href="mailto:steve.ingle1949&#64;gmail.com">Steve Ingle</a>
+          2015-01-14 08:16:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Alex,
+
+I agree with all your statements &amp; conclusions so far.
+
+I would just point out the
+at my own requirements are not as complex as your proposals could cope with...
+
+Regards
+
+Steve
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25937.html#c5">
+            #5</a> From 
+          <a href="mailto:steve.ingle1949&#64;gmail.com">Steve Ingle</a>
+          2015-01-14 08:18:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Alex,
+
+I agree with all your statements &amp; conclusions so far.
+
+I would just point out the
+at my own requirements are not as complex as your proposals could cope with...
+
+Regards
+
+Steve
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25937.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-01-11 08:03:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(Simplified title of bug) 
+
+This is currently work in progress, with much luck we will have it in the next
+release!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25937.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-01-25 12:34:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickPasswords3.7pre139.xpi" name="attach_8143" title="3.7 prerelease 139 - 1st official version with backup/restore">Created an attachment (id=8143)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8143&amp;action=edit" title="3.7 prerelease 139 - 1st official version with backup/restore">[details]</a></span>
+3.7 prerelease 139 - 1st official version with backup/restore
+
+Here is the very first (!) version with functional backup / restore
+functionality. There is quite a big blurb including screen shots on the version
+notes site at
+<a href="http://quickpasswords.mozdev.org/version.html#3.7">http://quickpasswords.mozdev.org/version.html#3.7</a>
+
+Here be a copy for your convenience:
+
+I started to write this after I managed to delete all my sync'ed passwords one
+night when I visited a friend and tried to log in from his machine. Somehow
+this propagated quickly to my home machine from the Sync store so I had to
+restore an older profile. Since Sync doesn't explain where it takes &quot;the latest
+password state&quot; from and there is no &quot;yesterday's good logins&quot; I decided it was
+time to support a local backup.
+
+However there are some stipulations. First of all I never want QuickPasswords
+to be the one simple way to steal your friend's passwords, so the backup /
+restore features are protected with the master password. If you haven't set
+one, that's too bad, no backup for you. Secondly, we cannot have files full of
+unencrypted passwords on some local storage. It's just not safe at all. So by
+default, I am using Firefox built in keystore which is a unique personalized
+encryption platform generated when you create a new Firefox profile or install
+Firefox for the first time. 
+
+This also means that you won't be able to restore the passwords unless you have
+a copy of the same keystore. This is stored in a file called key3.db and should
+be backed up somewhere to read the passwords again. If you loose or break this
+file you will also simply not be able to read your passwords on your Firefox
+anymore. these are my conditions for backing up passwords.
+
+All of these stipulations aside, there as a couple of things that the new
+backup restore does well (and may be better than others). First of all, when
+you restore your passwords, there is one thing it does NOT do: it will not
+DELETE all your passwords. Instead it will merge in the passwords, carefully
+checking the backed up logins and the time stamps (when was it last changed).
+If you want to start from zero, you have to delete all passwords manually.
+(Make sure you back up beforehand!)
+
+Modified passwords: Restore will only change a password if it wasn't changed in
+the meantime. This way you won't accidentally overwrite a password you may have
+changed online into an older version. However, if this is what you actually
+want to do with a particular login, [maybe because a password change online
+didn't propagate into the web] you can simply delete that one manually before
+doing the restore.
+
+File handling: you can store your files wherever you like, but I would still
+recommend not putting them on a public folder or shared drive, unless you have
+set up correct access permissions. Better safe than sorry! 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25937.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-02-01 05:23:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Feature Complete -  Just released in version 3.7
+
+Addendum: If you want to force plain text passwords, hold down SHIFT while
+clicking the Backup button. This is _not_ recommended. While I do not
+responsibility for your password store, if you must use plain text storage for
+login information make sure it is at least on an encrypted disk that only you
+have access to.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25937&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

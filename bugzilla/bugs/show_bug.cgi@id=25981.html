@@ -1,0 +1,1217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25981 &ndash; Version 0.9.6 inserts blank line and space</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25981&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25981">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25981">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25981">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25981">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25981</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Version 0.9.6 inserts blank line and space</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-07-09 04:11:14</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25981&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-07-09 04:11:14">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="25981">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Version 0.9.6 inserts blank line and space">Version 0.9.6 inserts blank line and space
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25981.html">25981</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>DUPLICATE
+          of bug <span class="bz_closed"><a href="show_bug.cgi@id=25904.html" title="RESOLVED FIXED - Populate Mail Headers: To, Cc, Bcc, Subject and Others">25904</a></span>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25981&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25981">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:public&#64;beloved.name">David Hedlund &lt;public&#64;beloved.name&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="template.txt"
+               title="View the content of the attachment">
+          <b>Template</b></a>
+
+          <span class="bz_attach_extra_info">
+              (12 bytes,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25981.html#attach_8021"
+               title="Go to the comment associated with the attachment">2015-03-09 13:24</a>,
+
+            <a href="mailto:public&#64;beloved.name"
+               title="Write an email to the creator of the attachment">David Hedlund
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8021&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25981&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25981&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25981">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25981">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25981">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25981">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25981.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-03-09 01:42
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >There's a blank line inserted automatically when I use templates. And a space
+in the end.
+
+Example
+
+[Template begins after ------ in the next line]
+------
+Subject: &lt;-- note the space here
+
+
+------
+[Templates ends before ------ in the previous line]
+
+
+results in:
+
+[Template begins after ------ in the next line]
+------
+&lt;-- Why is this blank line inserted?
+Subject: &lt;-- note the space here
+
+ &lt;-- space inserted here, why?
+------
+[Templates ends before ------ in the previous line]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25981.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-09 03:11:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >1. this is not a P1
+2. what's your exact template? Attach as text file. Which case, Write / Reply?
+3. what's your quote header. Other settings? 
+   [x] Use HTML. [x] Replace line breaks etc. ...
+4. quote type (reply on top / reply at bottom / on top with sig at bottom)?
+5. html or plain text mode?
+6. What is your setting in Global Settings / Number of line breaks at top?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25981.html#c2">
+            #2</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 13:24:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="template.txt" name="attach_8021" title="Template">Created an attachment (id=8021)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8021&amp;action=edit" title="Template">[details]</a></span>
+Template
+
+Template
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25981.html#c3">
+            #3</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 13:29:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c1">comment #1</a>)
+<span class="quote">&gt; 1. this is not a P1</span >
+
+Sorry.
+
+<span class="quote">&gt; 2. what's your exact template? Attach as text file. Which case, Write / Reply?</span >
+
+The template is attached in the next post. Its in Write case.
+
+<span class="quote">&gt; 3. what's your quote header. Other settings? 
+&gt;    [x] Use HTML. [x] Replace line breaks etc. ...
+&gt; 4. quote type (reply on top / reply at bottom / on top with sig at bottom)?</span >
+
+No replys or signatures are involved.
+
+<span class="quote">&gt; 5. html or plain text mode?</span >
+
+Plain text mode.
+
+<span class="quote">&gt; 6. What is your setting in Global Settings / Number of line breaks at top?</span >
+
+How do I find out about that?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25981.html#c4">
+            #4</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 13:31:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c3">comment #3</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c1">comment #1</a>)
+&gt; &gt; 1. this is not a P1
+&gt; 
+&gt; Sorry.
+&gt; 
+&gt; &gt; 2. what's your exact template? Attach as text file. Which case, Write / Reply?
+&gt; 
+&gt; The template is attached in the next post. Its in Write case.
+&gt; 
+&gt; &gt; 3. what's your quote header. Other settings? 
+&gt; &gt;    [x] Use HTML. [x] Replace line breaks etc. ...
+&gt; &gt; 4. quote type (reply on top / reply at bottom / on top with sig at bottom)?
+&gt; 
+&gt; No replys or signatures are involved.
+&gt; 
+&gt; &gt; 5. html or plain text mode?
+&gt; 
+&gt; Plain text mode.
+&gt; 
+&gt; &gt; 6. What is your setting in Global Settings / Number of line breaks at top?
+&gt; </span >
+No line breaks at top are added when I disable your addon.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25981.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-09 14:13:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c3">comment #3</a>)
+
+<span class="quote">&gt; 
+&gt; &gt; 6. What is your setting in Global Settings / Number of line breaks at top?
+&gt; 
+&gt; How do I find out about that?
+&gt; </span >
+1. Click on the Advanced button on the ST4 settings window.
+2. Click the second tab (Global Settings)
+there is a group called &quot;Mail Content&quot; with a setting
+Number of line breaks at top (I believe the default is 1 line). set it to 0.
+
+Unfortunately, we do not (yet) support having %subject% in the &quot;New Email&quot;
+template, but that might happen yet. We would just have to be clever enough
+about replacing it when you leave the subject line above the actual Email.
+
+For the moment, you can do:
+
+subject: %cursor%
+
+I would also recommend using &lt;br&gt; for line breaks and NOT using the [x] replace
+line breaks with &lt;br&gt; option instead.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25981.html#c6">
+            #6</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 14:18:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c3">comment #3</a>)
+&gt; 
+&gt; &gt; 
+&gt; &gt; &gt; 6. What is your setting in Global Settings / Number of line breaks at top?
+&gt; &gt; 
+&gt; &gt; How do I find out about that?
+&gt; &gt; 
+&gt; 1. Click on the Advanced button on the ST4 settings window.
+&gt; 2. Click the second tab (Global Settings)
+&gt; there is a group called &quot;Mail Content&quot; with a setting
+&gt; Number of line breaks at top (I believe the default is 1 line). set it to 0.
+&gt; 
+&gt; Unfortunately, we do not (yet) support having %subject% in the &quot;New Email&quot;
+&gt; template, but that might happen yet. We would just have to be clever enough
+&gt; about replacing it when you leave the subject line above the actual Email.
+&gt; 
+&gt; For the moment, you can do:
+&gt; 
+&gt; subject: %cursor%
+&gt; 
+&gt; I would also recommend using &lt;br&gt; for line breaks and NOT using the [x] replace
+&gt; line breaks with &lt;br&gt; option instead.
+&gt; </span >
+
+Why is it set to &quot;1&quot;? If I want to use a top text as in my case its a bad
+thing.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25981.html#c7">
+            #7</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 14:23:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c3">comment #3</a>)
+&gt; 
+&gt; &gt; 
+&gt; &gt; &gt; 6. What is your setting in Global Settings / Number of line breaks at top?
+&gt; &gt; 
+&gt; &gt; How do I find out about that?
+&gt; &gt; 
+&gt; 1. Click on the Advanced button on the ST4 settings window.
+&gt; 2. Click the second tab (Global Settings)
+&gt; there is a group called &quot;Mail Content&quot; with a setting
+&gt; Number of line breaks at top (I believe the default is 1 line). set it to 0.
+&gt; 
+&gt; Unfortunately, we do not (yet) support having %subject% in the &quot;New Email&quot;
+&gt; template, but that might happen yet. We would just have to be clever enough
+&gt; about replacing it when you leave the subject line above the actual Email.
+&gt; </span >
+
+Can you please add it?
+
+More people use &quot;No subject&quot; in the subject field to get anonymous by not
+sharing meta data to spying eyes. Using &quot;Subject: &quot; in the message field
+instead is very useful.
+
+
+<span class="quote">&gt; For the moment, you can do:
+&gt; 
+&gt; subject: %cursor%
+&gt; 
+&gt; I would also recommend using &lt;br&gt; for line breaks and NOT using the [x] replace
+&gt; line breaks with &lt;br&gt; option instead.
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25981.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-09 14:54:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+&gt; 
+&gt; Can you please add it?</span >
+
+I would, but it is difficult. Can you add a new feature request to Bugzilla? At
+least so I get a reminder. By the way it would only work if you write the
+subject in the subject line first and then jump into the email. So if you leave
+the subject line empty then ST4 won't be able to &quot;invent&quot; one for you :)
+
+<span class="quote">&gt; 
+&gt; More people use &quot;No subject&quot; in the subject field to get anonymous by not
+&gt; sharing meta data to spying eyes. Using &quot;Subject: &quot; in the message field
+&gt; instead is very useful.
+&gt; </span >
+Thay's not a good reason to use it. If you are using no Subject you are bound
+to piss off the person you send it to, but maybe that is what you want?
+
+I get hundreds of emails every week, emails with no (or non-desciptive) subject
+are not welcome, as nobody is so important that their name only just jumps into
+my eyes when I review my messages. Subjects are important. Also, who do you
+send your emails to? If you don't trust them with your information maybe you
+shouldn't send them mail ...
+
+...and if you are using a free / public mail server such as google, chances are
+they are also reading the contents of your Email anyway (and not just the
+header fields)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25981.html#c9">
+            #9</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 15:00:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c7">comment #7</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+&gt; &gt; 
+&gt; &gt; Can you please add it?
+&gt; 
+&gt; I would, but it is difficult. Can you add a new feature request to Bugzilla? At
+&gt; least so I get a reminder. By the way it would only work if you write the
+&gt; subject in the subject line first and then jump into the email. So if you leave
+&gt; the subject line empty then ST4 won't be able to &quot;invent&quot; one for you :)
+&gt; 
+&gt; &gt; 
+&gt; &gt; More people use &quot;No subject&quot; in the subject field to get anonymous by not
+&gt; &gt; sharing meta data to spying eyes. Using &quot;Subject: &quot; in the message field
+&gt; &gt; instead is very useful.
+&gt; &gt; 
+&gt; Thay's not a good reason to use it. If you are using no Subject you are bound
+&gt; to piss off the person you send it to, but maybe that is what you want?
+&gt; 
+&gt; I get hundreds of emails every week, emails with no (or non-desciptive) subject
+&gt; are not welcome, as nobody is so important that their name only just jumps into
+&gt; my eyes when I review my messages. Subjects are important. Also, who do you
+&gt; send your emails to? If you don't trust them with your information maybe you
+&gt; shouldn't send them mail ...
+&gt; 
+&gt; ...and if you are using a free / public mail server such as google, chances are
+&gt; they are also reading the contents of your Email anyway (and not just the
+&gt; header fields)
+&gt; </span >
+
+&quot;No subject&quot; is de-facto standard in anonymous communication circles.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25981.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-09 15:19:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c9">comment #9</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c8">comment #8</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c7">comment #7</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Can you please add it?
+&gt; &gt; 
+&gt; &gt; I would, but it is difficult. Can you add a new feature request to Bugzilla? At
+&gt; &gt; least so I get a reminder. By the way it would only work if you write the
+&gt; &gt; subject in the subject line first and then jump into the email. So if you leave
+&gt; &gt; the subject line empty then ST4 won't be able to &quot;invent&quot; one for you :)
+&gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; More people use &quot;No subject&quot; in the subject field to get anonymous by not
+&gt; &gt; &gt; sharing meta data to spying eyes. Using &quot;Subject: &quot; in the message field
+&gt; &gt; &gt; instead is very useful.
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; 
+&gt; &quot;No subject&quot; is de-facto standard in anonymous communication circles.
+&gt; </span >
+That's news to me. I have a lot of mailing lists and also private and
+professional email exchanges, I would usually think somebody rude or just a
+complete newbie when they use &quot;No subject&quot;.
+
+So what does one discuss under that heading? :-)
+
+I honestly couldn't imagine...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25981.html#c11">
+            #11</a> From 
+          <a href="mailto:public&#64;beloved.name">David Hedlund</a>
+          2015-03-09 15:29:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c9">comment #9</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c8">comment #8</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c7">comment #7</a>)
+&gt; &gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c5">comment #5</a>)
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Can you please add it?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I would, but it is difficult. Can you add a new feature request to Bugzilla? At
+&gt; &gt; &gt; least so I get a reminder. By the way it would only work if you write the
+&gt; &gt; &gt; subject in the subject line first and then jump into the email. So if you leave
+&gt; &gt; &gt; the subject line empty then ST4 won't be able to &quot;invent&quot; one for you :)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; More people use &quot;No subject&quot; in the subject field to get anonymous by not
+&gt; &gt; &gt; &gt; sharing meta data to spying eyes. Using &quot;Subject: &quot; in the message field
+&gt; &gt; &gt; &gt; instead is very useful.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; &quot;No subject&quot; is de-facto standard in anonymous communication circles.
+&gt; &gt; 
+&gt; That's news to me. I have a lot of mailing lists and also private and
+&gt; professional email exchanges, I would usually think somebody rude or just a
+&gt; complete newbie when they use &quot;No subject&quot;.
+&gt; 
+&gt; So what does one discuss under that heading? :-)
+&gt; 
+&gt; I honestly couldn't imagine...
+&gt; </span >
+
+That is the whole point, they want it to look like faulty/uninteresting/no clue
+emails. The persons who communicate make sure that they read their &quot;No subject&quot;
+emails.
+
+I think you should dig a bit deeper on this as I'm sure it will inspire you to
+something good.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25981.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:11:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25981.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25981.html#c10">comment #10</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25981.html#c9">comment #9</a>)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &quot;No subject&quot; is de-facto standard in anonymous communication circles.
+&gt; &gt; &gt; 
+&gt; 
+&gt; That is the whole point, they want it to look like faulty/uninteresting/no clue
+&gt; emails. The persons who communicate make sure that they read their &quot;No subject&quot;
+&gt; emails.
+&gt; 
+&gt; I think you should dig a bit deeper on this as I'm sure it will inspire you to
+&gt; something good.
+&gt; </span >
+I am going to include this requirement in [<span class="bz_closed"><a href="show_bug.cgi@id=25904.html" title="RESOLVED FIXED - Populate Mail Headers: To, Cc, Bcc, Subject and Others">Bug 25904</a></span>] which is going to handle
+setting various mail headers from the template and will also include ability to
+set subject = &quot;&quot;. Currently proposed usage would be
+
+%header(subject, &quot;&quot;)%
+
+Marking this one as duplicate of 25904, more detail to follow on there...
+
+
+*** This bug has been marked as a duplicate of <span class="bz_closed"><a href="show_bug.cgi@id=25904.html" title="RESOLVED FIXED - Populate Mail Headers: To, Cc, Bcc, Subject and Others">bug 25904</a></span> ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25981&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1685 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25277 &ndash; Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null”</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25277&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25277">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25277">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25277">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_VERIFIED bz_component_General bz_bug_25277">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25277</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null”</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-01-10 14:51:22</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25277&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-01-10 14:51:22">
+  <input type="hidden" name="longdesclength" value="34">
+  <input type="hidden" name="id" value="25277">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null”">
+        <span title="Error at startup: “Quickfolders.updateUserStyles - error TypeError: ss is null”">Error at startup: “Quickfolders.updateUserStyles - erro...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25277.html">25277</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>VERIFIED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="minor">minor
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25277&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25277">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck &lt;antoine.mechelynck&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alan&#64;ludeca.com">alan&#64;ludeca.com</option>
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="alwayshopeful&#64;gmail.com">alwayshopeful&#64;gmail.com</option>
+            <option value="axel.grude&#64;gmail.com">axel.grude&#64;gmail.com</option>
+            <option value="luisalbondigas&#64;waitaminute.us">luisalbondigas&#64;waitaminute.us</option>
+            <option value="nellypledge&#64;gmail.com">nellypledge&#64;gmail.com</option>
+            <option value="TestObb-SW13&#64;yahoo.de">TestObb-SW13&#64;yahoo.de</option>
+            <option value="the_green_monstrosity&#64;clearwire.net">the_green_monstrosity&#64;clearwire.net</option>
+            <option value="werbung&#64;bytekiller.net">werbung&#64;bytekiller.net</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.10pre1.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">QF 3.10 prerelease 1 - quick fix</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (448.26 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7460"
+               title="Go to the comment associated with the attachment">2012-12-21 16:48</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7460&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.10pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">QF 3.10 prerelease 2 </span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (448.35 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7461"
+               title="Go to the comment associated with the attachment">2012-12-21 17:12</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7461&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="qferror.log"
+               title="View the content of the attachment">
+          <b>error console log (QF 3.9, when opening prefs dialog)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (31.93 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7463"
+               title="Go to the comment associated with the attachment">2012-12-21 19:17</a>,
+
+            <a href="mailto:antoine.mechelynck&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Tony Mechelynck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7463&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="qferror.3.10pre2.log"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">error console log (QF 3.10pre2, on restart)</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (87.98 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7464"
+               title="Go to the comment associated with the attachment">2012-12-21 19:54</a>,
+
+            <a href="mailto:antoine.mechelynck&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Tony Mechelynck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7464&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="qferr.nocontent.log"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">error console mail startup log without &quot;content&quot; messages</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (117.28 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7465"
+               title="Go to the comment associated with the attachment">2012-12-22 09:41</a>,
+
+            <a href="mailto:antoine.mechelynck&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Tony Mechelynck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7465&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="qferror.nopalette.log"
+               title="View the content of the attachment">
+          <b>QF 3.10pre2 startup chrome log without &quot;palette&quot; messages</b></a>
+
+          <span class="bz_attach_extra_info">
+              (54.90 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7469"
+               title="Go to the comment associated with the attachment">2012-12-24 20:37</a>,
+
+            <a href="mailto:antoine.mechelynck&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Tony Mechelynck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7469&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="QuickFolders-tb-pb-sm-3.10pre5.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">QF 3.10 prerelease 5</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (449.96 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7470"
+               title="Go to the comment associated with the attachment">2012-12-30 14:57</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7470&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="QuickFolders-tb-pb-sm-3.10pre53.xpi"
+               title="View the content of the attachment">
+          <b>latest beta</b></a>
+
+          <span class="bz_attach_extra_info">
+              (459.41 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25277.html#attach_7481"
+               title="Go to the comment associated with the attachment">2013-01-09 17:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7481&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25277.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (5)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25277&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25277&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25277">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25277">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25277">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25277">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25277.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-12-21 10:04
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:20.0) Gecko/20100101 Firefox/20.0
+SeaMonkey/2.17a1 ID:20121219180903 c-c:68dcb9af22fb m-c:21195f52311c
+
+Since the recent upgrade to QuickFolders 3.9, at every startup I get the
+following alert twice over the 3-pane mail window:
+
+Quickfolders.updateUserStyles - error TypeError: ss is null
+
+The QuickFolders tabbar is displayed (normally AFAICT) once I dismiss the popup
+for the second time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25277.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-21 13:01:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, so you are running SeaMonkey - I got one more bug request with the same
+error message I will try to find out what he is running.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25277.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-21 16:48:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre1.xpi" name="attach_7460" title="QF 3.10 prerelease 1 - quick fix">Created an attachment (id=7460)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7460&amp;action=edit" title="QF 3.10 prerelease 1 - quick fix">[details]</a></span>
+QF 3.10 prerelease 1 - quick fix
+
+here is a quick fix. This one will only log the error to TOols &gt; error console.
+
+It would still be great to get more context of the bug, so if you could check
+there, especially with QuickFolders debug mode (advanced tab) enabled, and also
+the detailed options
+
+extensions.quickfolders.debug.css
+extensions.quickfolders.debug.css.palette
+extensions.quickfolders.debug.css.styleSheets
+extensions.quickfolders.debug.css.Detail
+
+switched to true
+
+(these can be reached by right-clicking the debug mode option)
+
+I need to know where exactly this error is happening, it must be one of the
+functions called by quickFolders-interface.updateUserStyles (it might be
+setElementStyle in qf-styles), but it is hard to tel without being able to
+reproduce and debug this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25277.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-21 17:12:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre2.xpi" name="attach_7461" title="QF 3.10 prerelease 2 ">Created an attachment (id=7461)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7461&amp;action=edit" title="QF 3.10 prerelease 2 ">[details]</a></span>
+QF 3.10 prerelease 2 
+
+A slightly better version of the fix, trying to use the default style sheet
+instead of the palette sheet. Probably not quite perfect yet but hopefully
+working without any major styling loss.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25277.html#c4">
+            #4</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-21 19:14:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In reply to <a href="show_bug.cgi@id=25277.html#c2">comment #2</a>:
+
+Trying to open the QF preferences dialog triggers the same error popup. After
+dismissing the popup by OK, the dialog opens. Clicking &quot;Cancel&quot; in the QF prefs
+dialog also triggers the error.
+
+The tick mark in the &quot;Debug Mode&quot; checkbox is in dark grey on black, hard to
+tell if it is on or off. I'll set those prefs via about:config, and also
+extensions.quickfolders.debug
+
+Opening the Error Console (with Console²) displays nothing for errors which
+happened before. I'll attach the error console log produced when opening the QF
+prefs after opening the error console. Then I'll install <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre2.xpi" name="attach_7461" title="QF 3.10 prerelease 2 ">attachment #7461</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7461&amp;action=edit" title="QF 3.10 prerelease 2 ">[details]</a></span> and
+restart.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25277.html#c5">
+            #5</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-21 19:17:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="qferror.log" name="attach_7463" title="error console log (QF 3.9, when opening prefs dialog)">Created an attachment (id=7463)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7463&amp;action=edit" title="error console log (QF 3.9, when opening prefs dialog)">[details]</a></span>
+error console log (QF 3.9, logging on)
+
+This error log was produced by clicking the QF &quot;Preferences&quot; button in the
+addons manager.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25277.html#c6">
+            #6</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-21 19:54:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="qferror.3.10pre2.log" name="attach_7464" title="error console log (QF 3.10pre2, on restart)">Created an attachment (id=7464)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7464&amp;action=edit" title="error console log (QF 3.10pre2, on restart)">[details]</a></span>
+error console log (QF 3.10pre2, on restart)
+
+On restart, I launched the browser first, then opened the error console and
+only then the mailer 3-pane window. The annoying popup did not appear but I got
+a lot of fast-flowing error console messages. Here they are, after editing them
+to remove any message not containing the (caseless) string &quot;quick&quot;.
+
+IIUC the latest messages appear first. I cannot guarantee that some &quot;early&quot;
+messages weren't lost.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25277.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-21 23:56:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >thanks for the error  log,
+ it would be even more helpful if you could only switch on chrome logging 
+
+if you use console2 for the log simply disable the content option.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25277.html#c8">
+            #8</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-22 09:41:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="qferr.nocontent.log" name="attach_7465" title="error console mail startup log without &quot;content&quot; messages">Created an attachment (id=7465)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7465&amp;action=edit" title="error console mail startup log without &quot;content&quot; messages">[details]</a></span>
+error console log without &quot;content&quot; messages
+
+Again, on mail startup after having started the browser and the error console.
+
+Messages still went past so fast, it was hard to select them in the error
+console.
+
+This time I didn't edit the list but it seems no non-QF messages slipped by.
+Once a few non-QF messages appeared, the error console stabilized long enough
+for me to &quot;copy&quot; the list without them.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25277.html#c9">
+            #9</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-22 10:03:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. AFAICT there are no QF-related lines on the sysout/syserr log other than
+addon-update messages for <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a> (queries to
+versioncheck.addons.mozilla.org and replies that version 3.9 was found on the
+update server).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25277.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-22 15:01:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c9">comment #9</a>)
+<span class="quote">&gt; P.S. AFAICT there are no QF-related lines on the sysout/syserr log other than
+&gt; addon-update messages for <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a> (queries to
+&gt; versioncheck.addons.mozilla.org and replies that version 3.9 was found on the
+&gt; update server).
+&gt; </span >
+
+hmm on seeing that log I start to doubt that enabling
+
+extensions.quickfolders.debug.css.palette
+
+is useful, it just fills up the log so far that it is truncated; can you please
+try again without it?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25277.html#c11">
+            #11</a> From 
+          <a href="mailto:alwayshopeful&#64;gmail.com">Rebekah</a>
+          2012-12-22 15:58:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I just started getting this error today.  I just click &quot;OK&quot; twice (the error
+pops up a second time, just as described.) I also haven't noticed (so far) any
+&quot;problems&quot; while using Thunderbird (Version 16.0.2) with QuickFolders. 
+
+OS = Windows 7 Professional N 
+(64-bit operating system)
+
+Don't know what other information you might want. Let me know.
+
+Great add-on! Thank you very much for your efforts. 
+
+~Rebekah
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25277.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-23 04:15:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25278.html" title="RESOLVED WONTFIX - Display problems in TB 3.1.20">Bug 25278</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25277.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-23 09:27:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c11">comment #11</a>)
+<span class="quote">&gt; I just started getting this error today.  I just click &quot;OK&quot; twice (the error
+&gt; pops up a second time, just as described.) I also haven't noticed (so far) any
+&gt; &quot;problems&quot; while using Thunderbird (Version 16.0.2) with QuickFolders. 
+&gt; 
+&gt; 
+&gt; </span >
+Rebekah, does the patched version above (QF 3.10 prerelease 2) resolve the
+issue for you?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25277.html#c14">
+            #14</a> From 
+          <a href="mailto:alwayshopeful&#64;gmail.com">Rebekah</a>
+          2012-12-23 11:44:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c13">comment #13</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25277.html#c11">comment #11</a>)
+&gt; &gt; I just started getting this error today.  I just click &quot;OK&quot; twice (the error
+&gt; &gt; pops up a second time, just as described.) I also haven't noticed (so far) any
+&gt; &gt; &quot;problems&quot; while using Thunderbird (Version 16.0.2) with QuickFolders. 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; Rebekah, does the patched version above (QF 3.10 prerelease 2) resolve the
+&gt; issue for you?
+&gt; </span >
+
+
+Thank you, Axel. Yes, installing the QF 3.10 prerelease 2 DID FIX the error.
+Seems back to &quot;normal&quot; now. 
+
+Thank you very much!
+
+~Rebekah
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25277.html#c15">
+            #15</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-24 19:23:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c10">comment #10</a>)
+<span class="quote">&gt; hmm on seeing that log I start to doubt that enabling
+&gt; 
+&gt; extensions.quickfolders.debug.css.palette
+&gt; 
+&gt; is useful, it just fills up the log so far that it is truncated; can you please
+&gt; try again without it?
+&gt; </span >
+
+OK, I just toggled it back to false. I'll try to remember to start the error
+console before the mailer on next restart, but that may be tomorrow
+(Wednesday), my 25 December afternoon is booked for the family Christmas feast
+at my nephew's.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25277.html#c16">
+            #16</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-24 20:37:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="qferror.nopalette.log" name="attach_7469" title="QF 3.10pre2 startup chrome log without &quot;palette&quot; messages">Created an attachment (id=7469)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7469&amp;action=edit" title="QF 3.10pre2 startup chrome log without &quot;palette&quot; messages">[details]</a></span>
+QF 3.10pre2 startup chrome log without &quot;palette&quot; messages
+
+You got &quot;lucky&quot; :-/ My system locked up and I had to reboot.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25277.html#c17">
+            #17</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-12-24 20:47:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. somehow .debug.css got toggled too. Please say if you want it &quot;true&quot;.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25277.html#c18">
+            #18</a> From 
+          <a href="mailto:TestObb-SW13&#64;yahoo.de">TestObb-SW13&#64;yahoo.de</a>
+          2012-12-26 00:06:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >bug also in SeaMonkey 2.14.1
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25277.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-30 14:57:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre5.xpi" name="attach_7470" title="QF 3.10 prerelease 5">Created an attachment (id=7470)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7470&amp;action=edit" title="QF 3.10 prerelease 5">[details]</a></span>
+QF 3.10 prerelease 5
+
+Fixes behavior on SeaMonkey. Problems were caused by bad version comparator and
+(in previous prerelease) missing curly brackets :-O
+
+Note: this version only has a full English and German locale, other locales
+won't work (because of some yet untranslated additions on the 2nd options
+page).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25277.html#c20">
+            #20</a> From 
+          <a href="mailto:arcormail22000-forum&#64;yahoo.de">Peter Mueller</a>
+          2013-01-08 12:10:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+since the bug is filed for Linux this is just to add that it also happened to
+me today on Lion after TB was auto-updated to 17.0.2. No problems before that.
+Same behaviour as with the other users.  
+
+Best 
+Peter
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25277.html#c21">
+            #21</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2013-01-08 15:15:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Now seeing this in Windows XP Srv3 after the update to TB 17.0.2.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25277.html#c22">
+            #22</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-08 20:49:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >OS =&gt; All in the light of <a href="show_bug.cgi@id=25277.html#c20">comment #20</a> and #21.
+
+<span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre5.xpi" name="attach_7470" title="QF 3.10 prerelease 5">Attachment 7470</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7470&amp;action=edit" title="QF 3.10 prerelease 5">[details]</a></span> (which is an installable XPI for QuickFolders) is supposed to
+fix the problem, so it is recommended that anyone bit by the bug should install
+that.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25277.html#c23">
+            #23</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-08 20:52:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >...P.S. if using English or German locale.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25277.html#c24">
+            #24</a> From 
+          <a href="mailto:alan&#64;ludeca.com">alan&#64;ludeca.com</a>
+          2013-01-09 07:36:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm now getting this error also, after updating to Thunderbird version 17.0.2.
+I'm running Windows7 Professional, 32-bit.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25277.html#c25">
+            #25</a> From 
+          <a href="mailto:alan&#64;ludeca.com">alan&#64;ludeca.com</a>
+          2013-01-09 07:37:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm now getting this error also, upon starting Thunderbird, after updating to
+version 17.0.2. I'm running Windows7 Professional, 32-bit.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25277.html#c26">
+            #26</a> From 
+          <a href="mailto:alan&#64;ludeca.com">alan&#64;ludeca.com</a>
+          2013-01-09 07:46:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c25">comment #25</a>)
+<span class="quote">&gt; I'm now getting this error also, upon starting Thunderbird, after updating to
+&gt; version 17.0.2. I'm running Windows7 Professional, 32-bit.
+&gt; </span >
+
+Note: The error occurs twice: After I press 'OK' twice everything seems to work
+fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25277.html#c27">
+            #27</a> From 
+          <a href="mailto:alan&#64;ludeca.com">alan&#64;ludeca.com</a>
+          2013-01-09 07:59:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >PROBLEM SOLVED!!! :-))
+I was running QF version 3.9. I discovered, deeply buried under QuickFolders
+Options, Version History, that there was a new version 3.10 that solves this
+problem. I wasn't expecting this because QF is good about auto-updating. I
+downloaded the update and carefully followed the instructions to install from
+Thunderbird --&gt; Tools --&gt; Add-Ons --&gt; [Click gear icon next to search window]
+--&gt; Install Add-ons From File. Everything okay now. I think I will now click on
+the 'Donate' button--it's a new year!!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25277.html#c28">
+            #28</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-09 17:22:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25299.html" title="RESOLVED DUPLICATE - Quickfolders.updateUserStyles - error TypeError: ss is null">Bug 25299</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25277.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-09 17:24:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.10pre53.xpi" name="attach_7481" title="latest beta">Created an attachment (id=7481)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7481&amp;action=edit" title="latest beta">[details]</a></span>
+latest beta
+
+latest beta. 3.10 release currently awaits review by AMP editors.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25277.html#c30">
+            #30</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-09 18:46:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yes, 3.10 release is findable at AMO, though not obviously, and (at the moment)
+still has the warning saying that it has only been preliminarily reviewed. The
+following is a Thunderbird page from which (unlike from the SeaMonkey page) I
+could install it into SeaMonkey:
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/</a>
+
+I don't see the bug with this &quot;release&quot; (any more, in fact, than with
+<span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.10pre5.xpi" name="attach_7470" title="QF 3.10 prerelease 5">attachment 7470</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7470&amp;action=edit" title="QF 3.10 prerelease 5">[details]</a></span>) but my locale is en-US. I see on the AMO page that the release
+also includes Polish locale (in addition to English and German already present
+in the pre-release attached to this bug). :-)
+
+Axel, you're my hero (well, one of them ;-) ). Once you set this bug to
+RESOLVED FIXED, I'll mark it VERIFIED by my own experience on SeaMonkey/Linux64
+plus the enthusiastic <a href="show_bug.cgi@id=25277.html#c27">comment #27</a> for Thunderbird/Win32.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25277.html#c31">
+            #31</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2013-01-09 18:53:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Glad to hear the good news. 
+
+Axel, can we assume that after the QA process is complete, the fix will flow to
+your TBird installations through the regular QF update process, or do we need
+to manually install an update xpi or something?
+
+Please accept my enthusiastic repetition of the Tony's, Rebekah's, Alan's, and
+everyone's accolades. QF is indeed a great add-on.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25277.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-10 02:02:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25277.html#c31">comment #31</a>)
+<span class="quote">&gt; Glad to hear the good news. 
+&gt; 
+&gt; Axel, can we assume that after the QA process is complete, the fix will flow to
+&gt; your TBird installations through the regular QF update process, or do we need
+&gt; to manually install an update xpi or something?</span >
+
+no, if you have 3.10preXXX installed this will also be automagically updated by
+3.10
+
+(3.10pre1 &lt; 3.10) Mozilla have written an API specifically for intelligent
+version testing like this.
+
+I am marking the bug as fixed now as 3.10 has just been reviewed and will be
+available for normal download. Don't forget to leave a positive review, so QF
+can be on top of the ratings again (currently we are #2)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=25277.html#c33">
+            #33</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-10 14:51:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25302.html" title="RESOLVED DUPLICATE - Quckfolders Error">Bug 25302</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25277&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

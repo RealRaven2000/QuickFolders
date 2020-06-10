@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26572 &ndash; Tab Context Menus close prematurely</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26572&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26572">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26572">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26572">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26572">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26572</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Tab Context Menus close prematurely</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-08-06 07:44:12</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26572&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-08-06 07:44:12">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="26572">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Tab Context Menus close prematurely">Tab Context Menus close prematurely
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26572.html">26572</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26572&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26572">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:nikilet2&#64;kadokatelco.com">Cindy &lt;nikilet2&#64;kadokatelco.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QF&#32;context&#32;menus.jpg"
+               title="View the content of the attachment">
+          <b>QuickFolders context menus</b></a>
+
+          <span class="bz_attach_extra_info">
+              (114.13 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26572.html#attach_8505"
+               title="Go to the comment associated with the attachment">2018-08-04 23:50</a>,
+
+            <a href="mailto:nikilet2&#64;kadokatelco.com"
+               title="Write an email to the creator of the attachment">Cindy
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8505&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26572&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26572&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26572">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26572">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26572">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26572">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26572.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-08-04 23:44
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I love QuickFolders, but am having a terrible time using the context menus to
+make my selections. I right click on a tab, the context menu drops down and
+before I can make a selection I lose it. If I do happen to be able to get down
+into the context menu where another one opens to the right, as show in the
+screenshot, once again before I can move my cursor over to select I lose it.
+
+I've never had this happen before; only when using QuickFolders on my laptop.
+Windows 10 Home, 64-bit.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26572.html#c1">
+            #1</a> From 
+          <a href="mailto:nikilet2&#64;kadokatelco.com">Cindy</a>
+          2018-08-04 23:50:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF&#32;context&#32;menus.jpg" name="attach_8505" title="QuickFolders context menus">Created an attachment (id=8505)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8505&amp;action=edit" title="QuickFolders context menus">[details]</a></span>
+QuickFolders context menus
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26572.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-05 04:41:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >That is strange, haven't heard of this one before. You say that the menu closes
+after a short while, does it even close when you stop moving the mouse?
+
+Try the latest version from [<span class="bz_closed"><a href="show_bug.cgi@id=26571.html" title="RESOLVED FIXED - Add Option to hide QF command submenu">Bug 26571</a></span>]
+
+<a href="QuickFolders-tb-pb-sm-4.11pre55.xpi">https://www.mozdev.org/bugs/attachment.cgi?id=8504</a>
+
+and disable the QuickFolders Commands menu through 
+ Advanced Tab » Menu Configuration » QF Commands (right hand side).
+
+(You can still force the QuickFolders commands by right-clicking &amp; holding down
+the CTRL key)
+
+If the problem still persists you can make a log file using the console²
+Add-on following the instructions here:
+
+<a href="http://quickfolders.org/support.html">http://quickfolders.org/support.html</a>
+
+then enable [x]Debug mode on the Advanced Tab in QuickFolders
+
+right=click debug and switch 
+extensions.quickfolders.debug.popupmenus = true
+extensions.quickfolders.debug.popupmenus.collapse = true
+
+open console with CTRL+SHIFT+J
+Enable Errors, Warnings, Message, JS, Chrome
+Disable Content
+
+Hit Clear before you start logging
+right-click a QF tab with some submeenus
+
+expected result:
+
+QuickFolders {POPUPMENUS} 12:23:59.666  [8464 ms]        
+Creating Popup Set for SmartTemplate
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.668  [2 ms]   
+Popup set created..
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.668  [0 ms]   
+Creating Colors Menu for SmartTemplate...
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.668  [0 ms]   
+Colors Menu created.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.668  [0 ms]   
+Creating SubFolder Menu for SmartTemplate...
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.668  [0 ms]   
+addSubFoldersPopup(SmartTemplate, drag=false)
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.670  [2 ms]   
+Created Menu SmartTemplate: 7 items.
+-------------------------
+ ----------
+QuickFolders {POPUPMENUS} 12:23:59.670  [0 ms]   
+Open popup menu: menupopup
+id:
+QuickFolders-folder-popup-mailbox://*****/Development/Mozilla/Addons/SmartTemplate
+label: 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26572.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-05 04:44:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; Disable Content
+&gt; 
+&gt; Hit Clear before you start logging
+&gt; right-click a QF tab with some submeenus
+&gt; </span >
+
+Important Note: you can copy the log text from console² with 
+  right-click / select all
+  right-click / copy
+
+(this feature and the simple &quot;chrome only&quot; configuration are the main reason
+why I advise using this over the built in error console in developer tools) -
+no need for screenshots of the log, b/c they are hard to read.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26572.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-05 04:49:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26572.html#c0">comment #0</a>)
+<span class="quote">&gt; I love QuickFolders, but am having a terrible time using the context menus to
+&gt; make my selections. I right click on a tab, the context menu drops down and
+&gt; before I can make a selection I lose it. If I do happen to be able to get down
+&gt; into the context menu where another one opens to the right, as show in the
+&gt; screenshot, once again before I can move my cursor over to select I lose it.
+&gt; 
+&gt; I've never had this happen before; only when using QuickFolders on my laptop.
+&gt; Windows 10 Home, 64-bit.
+&gt; </span >
+
+one more thing came to mind - try connecting a mouse. if you are using a
+trackpad it may interpret mouse movements as clicks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26572.html#c5">
+            #5</a> From 
+          <a href="mailto:nikilet2&#64;kadokatelco.com">Cindy</a>
+          2018-08-05 10:11:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >That link given to try the new version: Tab opens for a split second and then
+closes. I've tried over and over. I even tried copying and pasting it into the
+address bar and same thing happened.
+
+I have version 4.10.
+
+I don't have a plug-in mouse.
+
+I downloaded that Console and when I tried to install in Thunderbird it said
+can't do because it's not compatible.
+
+I feel like a real idiot, but I can't seem to follow these instructions at all.
+Is there supposed to be some kind of button that says &quot;Disable&quot; for that
+QuickFolder Commands Menu (because there is none), or are you meaning to
+uncheck everything in that menu?
+
+<span class="quote">&gt;&gt;&gt;&gt;&gt;&gt; I just tried something because of what you said about the trackpad and interpreting mouse movements as clicks. I removed the pad I was using and got a different one. Can't hardly believe it but that seems to have dome the trick. </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26572.html#c6">
+            #6</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-08-05 11:49:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In reply to <a href="show_bug.cgi@id=26572.html#c5">comment #5</a>:
+
+To install (or upgrade) an extension in Thunderbird:
+1. Make sure you have downloaded the XPI somewhere on your hard disk (e.g. by
+using &quot;Save Link As…&quot; after right-clicking the link in your browser).
+2. Open the Add-ons Manager.
+3. Near the top, there is a button which looks like a cogwheel. Click that.
+4. A rolldown menu opens. Select &quot;Install Add-on from File…&quot;
+5. A file selector popup menu opens. Browse to the XPI and click it.
+6. An &quot;are you sure&quot; popup opens; the &quot;Install Now&quot; button is greyed-out at
+first, but after a few seconds you can click it.
+7. Thunderbird installs the (new version of the) add-on, then tells you that
+you will have to restart the application to complete the upgrade.
+8. Restart Thunderbird.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26572.html#c7">
+            #7</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-08-05 12:02:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. Console² has not been updated in a long time, it doesn't know about
+recent versions of Thunderbird. But that can be helped.
+
+1. An XPI is just a zip with a different name. You may have to temporarily
+rename it (to e.g. console2.zip) in order to unpack it.
+2. After unpacking it, edit the install.xpi. Find the &lt;maxVersion&gt; or
+&lt;em:maxVersion&gt; for SeaMonkey (in the &lt;targetApplication&gt; block for
+&lt;em:id&gt;{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}&lt;/em:id&gt;). Change the maxVersion
+value to something equal or greater than the Thunderbird version you're using.
+3. Repack the zipfile, then rename it back to console2.xpi
+4. Now it will install.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26572.html#c8">
+            #8</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-08-05 12:03:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >oops... Imeant install.rdf, not install.xpi
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26572.html#c9">
+            #9</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-08-05 12:11:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.P.S. I really need some coffee.
+
+For Thunderbird, the relevant &lt;targetApplication&gt; block is the one for
+&lt;em:id&gt;{3550f703-e582-4d05-9a08-453d09bdfdc6}&lt;/em:id&gt;. That set of hex digits
+and dashes is the &quot;internal name&quot; by which the mailer knows itself.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26572.html#c10">
+            #10</a> From 
+          <a href="mailto:nikilet2&#64;kadokatelco.com">Cindy</a>
+          2018-08-05 12:30:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry, Tony. I very much appreciate your time and advice, but I don't have the
+computer knowledge to follow the kind of information you are giving me. So I an
+only say thank the Lord that the simple act of changing mouse pads seemed to
+have worked.
+
+I wonder if you would have a simple solution of another extension, Theme Font
+and Size Changer for Thunderbird.
+
+I really NEED this extension, but can't make it work on my laptop. It works on
+my old desktop. I got no errors while installing, but I can't reach the
+settings where I would be able to change font sizes. The extension shows up
+under Tools/Add-On Options. When I click it I get a little window labeled
+&quot;Preferences&quot; where I can check the boxes beside 3 options: Hide Tools Menu;
+Hide App Menu; Abbreviate Toolbar Button text. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26572.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-05 15:45:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26572.html#c10">comment #10</a>)
+<span class="quote">&gt; Sorry, Tony. I very much appreciate your time and advice, but I don't have the
+&gt; computer knowledge to follow the kind of information you are giving me.</span >
+.... and you don't need to - I have uploaded a patched version of console²
+
+<a href="http://quickfolders.org/support.html">http://quickfolders.org/support.html</a>
+theere is a link that says &quot;patched versioen&quot;, you can right-=click and save as
+file then drag it into Thunderbird extensions. Note this will work with
+Thunderbird Release (52.9.1) bit most likely not with the beta veersions 
+(Thunderbid 60 and higher)
+
+<span class="quote">&gt; So I an
+&gt; only say thank the Lord that the simple act of changing mouse pads seemed to
+&gt; have worked.</span >
+
+how did you do that?
+
+<span class="quote">&gt; 
+&gt; I wonder if you would have a simple solution of another extension, Theme Font
+&gt; and Size Changer for Thunderbird.
+&gt; 
+&gt; I really NEED this extension, but can't make it work on my laptop. It works on
+&gt; my old desktop. I got no errors while installing, but I can't reach the</span >
+
+can you please check your Thunderbird version on your laptop:
+
+Open Help &gt;&gt; about Thunderbird
+and see what version number you have. If you are on the release channel it
+should be 52.9.1
+
+<span class="quote">&gt; settings where I would be able to change font sizes. The extension shows up
+&gt; under Tools/Add-On Options. When I click it I get a little window labeled
+&gt; &quot;Preferences&quot; where I can check the boxes beside 3 options: Hide Tools Menu;
+&gt; Hide App Menu; Abbreviate Toolbar Button text.</span >
+
+Sorry I don't know anything about &quot;Theme and Font sizer&quot;. It's hard enough
+supporting my own Add-ons (quickFilters, QuickFolders, SmartTemplate⁴,
+QuickPasswords, Zombie Keys, Menu On Top) 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26572.html#c12">
+            #12</a> From 
+          <a href="mailto:nikilet2&#64;kadokatelco.com">Cindy</a>
+          2018-08-06 07:44:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I learned a lot through this post. For instance, I did not know anything about
+these &quot;channels&quot; for updates in Firefox/Thunderbird. I now have version 52.9.1
+of Thunderbird, and my Theme Font &amp; Size Changer extension works. 
+
+Thank you for the help and knowledge you shared.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26572&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

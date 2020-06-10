@@ -1,0 +1,1215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25762 &ndash; Address variables To and Cc replaced with ??</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25762&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25762">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25762">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25762">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25762">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25762</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Address variables To and Cc replaced with ??</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-05-14 14:13:45</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25762&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-05-14 14:13:45">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="25762">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Address variables To and Cc replaced with ??">Address variables To and Cc replaced with ??
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25762.html">25762</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25762&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25762">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="aabousteit&#64;yahoo.com">aabousteit&#64;yahoo.com</option>
+            <option value="flakrat&#64;yahoo.com">flakrat&#64;yahoo.com</option>
+            <option value="wojciech.razik+mozdev&#64;gmail.com">wojciech.razik+mozdev&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-0.9.5.2pre1.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.5.2 prerelease 1</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (331.75 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25762.html#attach_7859"
+               title="Go to the comment associated with the attachment">2014-04-28 10:40</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7859&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.5.2pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.5.2 prerelease 2</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (331.75 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25762.html#attach_7860"
+               title="Go to the comment associated with the attachment">2014-04-28 11:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7860&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="smartTemplate-0.9.5.2pre4.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Postbox fix</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (332.10 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25762.html#attach_7861"
+               title="Go to the comment associated with the attachment">2014-04-30 10:58</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7861&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.5.2pre12.xpi"
+               title="View the content of the attachment">
+          <b>0.9.5.2 prerelease 12</b></a>
+
+          <span class="bz_attach_extra_info">
+              (328.16 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25762.html#attach_7864"
+               title="Go to the comment associated with the attachment">2014-05-06 11:28</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7864&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25762.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25762&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25762&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25762">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25762">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25762">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25762">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25762.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-04-28 10:36
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >In some cases the variables %to%, %cc% and %from% are replaced with ??
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25762.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-28 10:39:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >relevant lines from user's Error log:
+
+Warning: replaceReservedWords(dmy, from, (mail,islinkable)) failed - unknown
+token?
+Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED)
+[nsIAbDirectory.cardForEmailAddress]
+ ----------
+
+Warning: replaceReservedWords(dmy, to, ) failed - unknown token?
+Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED)
+[nsIAbDirectory.cardForEmailAddress]
+ ----------
+
+
+
+This points to a problem in the address book. See function getCardFromAB() in
+smartTemplate-overlay.js
+
+this iterates through all address books using 
+
+nsIAbManager.directories
+
+by using .getNext().QueryInterface(Components.interfaces.nsIAbDirectory)
+
+and then attempts to retrieve address card object:
+let card = addressBook.cardForEmailAddress(mail);
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25762.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-28 10:40:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.5.2pre1.xpi" name="attach_7859" title="0.9.5.2 prerelease 1">Created an attachment (id=7859)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7859&amp;action=edit" title="0.9.5.2 prerelease 1">[details]</a></span>
+0.9.5.2 prerelease 1
+
+Added code guarding against this problem
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25762.html#c3">
+            #3</a> From 
+          <a href="mailto:wojciech.razik+mozdev&#64;gmail.com">wrazik</a>
+          2014-04-28 11:05:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Problem still occurs:
+Here are logs:
+
+SmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 12:14:53.584  [0 ms]      
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 12:14:53.584  [0 ms]      
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 12:14:53.585  [1 ms]      
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 12:14:53.585  [0 ms]      
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 12:14:53.585  [0 ms]      
+SmartTemplate4.init() ends.
+ ----------
+SmartTemplate4 12:14:53.589  [4 ms]      
+AddonManager: SmartTemplate4 extension's version is 0.9.5.1
+ ----------
+SmartTemplate4 12:14:53.589  [0 ms]      
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 0.9.5.1
+Running on Thunderbird Version 24.4.0
+ ----------
+SmartTemplate4 12:14:53.589  [0 ms]      
+AddonManager: SmartTemplate4 extension's version is 0.9.5.1
+ ----------
+Ostrzeżenie: Nieprawidłowy selektor funkcyjny.  Zbiór reguł zignorowany z
+powodu błędnego selektora.
+Plik źródłowy: about:blank
+Wiersz: 19, Kolumna: 23
+Kod źródłowy:
+.myName:hover, .myName &amp;gt; a:hover { font-size:13pt; text-shadow: 3px 3px 4px
+rgba(200,250,200,0.7);}
+ ----------
+Ostrzeżenie: Nieprawidłowy selektor funkcyjny.  Zbiór reguł zignorowany z
+powodu błędnego selektora.
+Plik źródłowy: about:blank
+Wiersz: 195, Kolumna: 23
+Kod źródłowy:
+.myName:hover, .myName &amp;gt; a:hover { font-size:13pt; text-shadow: 3px 3px 4px
+rgba(200,250,200,0.7);}
+ ----------
+SmartTemplate4 12:14:53.844  [255 ms]    
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.846  [2 ms]         
+SmartTemplate4.regularize(&lt;br&gt; &lt;br&gt; &lt;hr&gt;&lt;b&gt;From:&lt;/b&gt; %from(name)% &lt;br&gt;
+&lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)% &lt;br&gt; &lt;b&gt;To:&lt;/b&gt;
+%to(name)%[[ &lt;br&gt;&lt;b&gt;Cc:&lt;/b&gt; %cc(name)%]] &lt;br&gt; &lt;b&gt;Subject:&lt;/b&gt; %subject% &lt;br&gt;
+&lt;br&gt;)  STARTS...
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [60 ms]        
+simplify()
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%cc(name)%, cc, (name))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%from(name)%, from, (name))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%X:=sent%, X:=sent, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%A%, A, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%B%, B, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%d%, d, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%Y%, Y, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%l%, l, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%M%, M, )
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%p(3)%, p, (3))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%to(name)%, to, (name))
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.906  [0 ms]         
+regularize.chkRw(%subject%, subject, )
+ ----------
+Ostrzeżenie: replaceReservedWords(dmy, from, (name)) failed - unknown token?
+smartTemplate is not defined
+Plik źródłowy: chrome://smarttemplate4/content/smartTemplate-overlay.js
+Wiersz: 380
+Kod źródłowy:
+getCardFromAB   chrome://smarttemplate4/content/smartTemplate-overlay.js:380
+SmartTemplate4.mimeDecoder.split@chrome://smarttemplate4/content/smartTemplate-overlay.js:428
+replaceReservedWords@chrome://smarttemplate4/content/smartTemplate-overlay.js:1155
+SmartTemplate4.regularize@chrome://smarttemplate4/content/smartTemplate-overlay.js:1285
+getProcessedText@chrome://smarttemplate4/content/smartTemplate-compose.js:709
+getQuoteHeader@chrome://smarttemplate4/content/smartTemplate-compose.js:722
+insertTemplate@chrome://smarttemplate4/content/smartTemplate-compose.js:873
+SmartTemplate4.notifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:342
+SmartTemplate4.stateListener.NotifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:244 
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [1 ms]       
+replaceReservedWords( %A% ) = Poniedziałek
+cal.dayName(1)
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %B% ) = Kwiecień
+cal.monthName(3)
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %d% ) = 28
+d02(tm.getMonth()+1)
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %Y% ) = 2014
+tm.getFullYear
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %l% ) = 12
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %M% ) = 11
+d02(tm.getMinutes())
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.907  [0 ms]       
+replaceReservedWords( %p% ) = PM
+ ----------
+Ostrzeżenie: replaceReservedWords(dmy, to, (name)) failed - unknown token?
+smartTemplate is not defined
+Plik źródłowy: chrome://smarttemplate4/content/smartTemplate-overlay.js
+Wiersz: 380
+Kod źródłowy:
+getCardFromAB   chrome://smarttemplate4/content/smartTemplate-overlay.js:380
+SmartTemplate4.mimeDecoder.split@chrome://smarttemplate4/content/smartTemplate-overlay.js:428
+replaceReservedWords@chrome://smarttemplate4/content/smartTemplate-overlay.js:1155
+SmartTemplate4.regularize@chrome://smarttemplate4/content/smartTemplate-overlay.js:1285
+getProcessedText@chrome://smarttemplate4/content/smartTemplate-compose.js:709
+getQuoteHeader@chrome://smarttemplate4/content/smartTemplate-compose.js:722
+insertTemplate@chrome://smarttemplate4/content/smartTemplate-compose.js:873
+SmartTemplate4.notifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:342
+SmartTemplate4.stateListener.NotifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:244 
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.908  [1 ms]         
+getSubject(false)
+ ----------
+SmartTemplate4 {REPLACERESERVEDWORDS} 12:14:53.908  [0 ms]       
+replaceReservedWords( %subject% ) = Re: [SmartTemplate4] - Broken after update
+(from, to and cc fields)
+ ----------
+SmartTemplate4 {REGULARIZE} 12:14:53.908  [0 ms]         
+SmartTemplate4.regularize(&lt;br&gt; &lt;br&gt; &lt;hr&gt;&lt;b&gt;From:&lt;/b&gt; ?? &lt;br&gt; &lt;b&gt;Sent:&lt;/b&gt; 
+Poniedziałek, Kwiecień 28, 2014 12:11PM &lt;br&gt; &lt;b&gt;To:&lt;/b&gt; ?? &lt;br&gt;
+&lt;b&gt;Subject:&lt;/b&gt; Re: [SmartTemplate4] - Broken after update (from, to and cc
+fields) &lt;br&gt; &lt;br&gt;)  ...ENDS
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25762.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-28 11:20:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.5.2pre2.xpi" name="attach_7860" title="0.9.5.2 prerelease 2">Created an attachment (id=7860)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7860&amp;action=edit" title="0.9.5.2 prerelease 2">[details]</a></span>
+0.9.5.2 prerelease 2
+
+Fixes a typo in the previous release.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25762.html#c5">
+            #5</a> From 
+          <a href="mailto:wojciech.razik+mozdev&#64;gmail.com">wrazik</a>
+          2014-04-28 11:34:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi, 
+0.9.5.2 prerelease 2 worked for me. Thanks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25762.html#c6">
+            #6</a> From 
+          <a href="mailto:flakrat&#64;yahoo.com">Mike Hanby</a>
+          2014-04-28 18:09:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25762.html#c5">comment #5</a>)
+<span class="quote">&gt; Hi, 
+&gt; 0.9.5.2 prerelease 2 worked for me. Thanks.
+&gt; </span >
+
+Howdy, I'm encountering the same issue with Thunderbird 24.4.0 after updating
+SmartTemplate4 to 0.9.5.1 on Linux.
+
+Here's my template for both reply and forward:
+
+&lt;hr /&gt;
+&lt;b&gt;From: &lt;/b&gt; %from%
+&lt;b&gt;Sent:&lt;/b&gt; %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)%
+&lt;b&gt;To: &lt;/b&gt; %to%
+&lt;b&gt;Subject: &lt;/b&gt; %subject%
+
+smartTemplate-0.9.5.2pre2.xpi resolved the issue for me as well
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25762.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-30 10:58:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.5.2pre4.xpi" name="attach_7861" title="Postbox fix">Created an attachment (id=7861)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7861&amp;action=edit" title="Postbox fix">[details]</a></span>
+Postbox fix
+
+Fixes Address book lookup on Postbox.
+
+I still need to improve the lookup for Thunderbird so that it can also work
+with LDAP address books.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25762.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-05-06 11:28:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.5.2pre12.xpi" name="attach_7864" title="0.9.5.2 prerelease 12">Created an attachment (id=7864)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7864&amp;action=edit" title="0.9.5.2 prerelease 12">[details]</a></span>
+0.9.5.2 prerelease 12
+
+Added a tool tip and also guards against activating the option in Postbox.
+
+Missing locales:
+Dutch French Serbian Ukrainian Occitan Swedish
+
+(do not install if you use one of the locales above as this version hasn't got
+the replaced strings for the listed languages). All other languages are
+complete.
+
+For detailed info, please refer:
+<a href="http://beta.babelzilla.org/projects/p/smarttemplate4/">http://beta.babelzilla.org/projects/p/smarttemplate4/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25762.html#c9">
+            #9</a> From 
+          <a href="mailto:aabousteit&#64;yahoo.com">Ash Abousteit</a>
+          2014-05-06 22:42:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+Tried out 0.9.5.2 prerelease 12. 
+
+It fixed the bug for me.
+
+FYI, I do use and LDAP Address Book. 
+
+Thx!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25762.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-05-14 14:13:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed with release 0.9.5.2
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25762&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

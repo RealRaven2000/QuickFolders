@@ -1,0 +1,1108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 22036 &ndash; Category Change Lag</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=22036&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=22036">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=22036">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=22036">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_22036">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;22036</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Category Change Lag</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-09-06 15:40:23</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22036&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-09-06 15:40:23">
+  <input type="hidden" name="longdesclength" value="12">
+  <input type="hidden" name="id" value="22036">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Category Change Lag">Category Change Lag
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=22036.html">22036</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>REMIND
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=22036&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=22036">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis &lt;luisalbondigas&#64;waitaminute.us&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders_1.6.5pre1-tb-pb.xpi"
+               title="View the content of the attachment">
+          <b>test version with time stamps</b></a>
+
+          <span class="bz_attach_extra_info">
+              (145.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=22036.html#attach_6120"
+               title="Go to the comment associated with the attachment">2009-11-22 05:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6120&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="QF_1.6.5pre1_Errors_20091205a.txt"
+               title="View the content of the attachment">
+          <b>Post QF 1.5.5pre1 install TB Error Console QF Category Switch Results</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.21 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=22036.html#attach_6154"
+               title="Go to the comment associated with the attachment">2009-12-05 18:14</a>,
+
+            <a href="mailto:luisalbondigas&#64;waitaminute.us"
+               title="Write an email to the creator of the attachment">Craig Louis
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6154&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=22036&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22036&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=22036">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=22036">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=22036">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=22036">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=22036.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2009-11-18 19:25
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Running QuickFolders 1.6.2 on Thunderbird 2.0.0.23 (20090812), on an older
+WinXP Home box with a Northwood Celeron running at 2.60Ghz, 1GB of DDR-SDRAM
+and a couple of 'ultra ATA' 250GB Seagate Barracudas running at 7200 RPM with
+8MB caches. Not a screemer, but pretty fast for office work.
+
+The problem is that when I pull down the QF category selector drop down menu,
+upon clicking a selection the menu hangs open and TB freezes for approx. 5
+seconds. 
+
+Sorry, another bug Axel! Loving the add on, but figured I'd better mention
+this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=22036.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-19 02:02:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Weeell.... I am worried :-(  Even on my machine which is an Ahtlon X2 6000
+there is a noticable lag (about 1 second) when I switch Categories. Guess it
+has to do with the styling rules that are applied - I guess if you enable Debug
+mode and look at the javascript console (Tools - error console) you could see
+the activity but I think TB2 only updates this after everything is done. What I
+need to do to find out where all that time goes is adding a timestamp to the
+log... leave it with me I will have a look at this over the next couple of
+weeks. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=22036.html#c2">
+            #2</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-11-19 16:47:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks, Axel. 
+
+fwiw, I'm seeing _many_ of the following weird Warning msgs in the TB Error
+Console:
+
+Warning: Unexpected end of file while searching for end of declaration. 
+Unexpected end of file while searching for closing } of declaration block.
+Source File: chrome://quickfolders/content/layout.css
+Line: 0
+
+I just tried various actions to see if I could see what's going on when these
+messages are fired. None of the following seemed to fire the error mesg. QF
+Category change, folder change through QF tab selection, adding a new QF folder
+tab shortcut (adding a new tab does also take a LONG time, but that's probably
+a different bug, I guess....)
+
+OK, I'll leave you alone now. Thanks again for your work in these things.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=22036.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-20 01:41:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=22036.html#c2">comment #2</a>)
+<span class="quote">&gt; Thanks, Axel. 
+&gt; 
+&gt; fwiw, I'm seeing _many_ of the following weird Warning msgs in the TB Error
+&gt; Console:
+&gt; 
+&gt; Warning: Unexpected end of file while searching for end of declaration. 
+&gt; Unexpected end of file while searching for closing } of declaration block.
+&gt; Source File: chrome://quickfolders/content/layout.css
+&gt; Line: 0</span >
+
+Hi Louis!
+
+I am aware of these CSS warnings - problem is: they appear to be wrong. The css
+fine is file, so it must be happening in Thunderbird internally, haven't found
+a solution against this. If you like add a fresh bug for this one, its bound to
+be fixed one of the days - its a minor issue.
+
+
+<span class="quote">&gt; I just tried various actions to see if I could see what's going on when these
+&gt; messages are fired. None of the following seemed to fire the error mesg. QF
+&gt; Category change, folder change through QF tab selection, adding a new QF folder
+&gt; tab shortcut (adding a new tab does also take a LONG time, but that's probably
+&gt; a different bug, I guess....)</span >
+
+Nope I think these are related, the problem is you won't know which of the
+actions took all the time without seeing timestamps in the warnings, so I
+intend to add this to QF's debug output for better error diagnostics. Might add
+an appropriate attachment later.
+
+The prime suspect for eating up all that time is the adding of all the
+(sub)folder menus - just for laughs, can you try disabling the option &quot;Expand
+Subfolders in popup menus&quot; to see whether that improves the situation for you?]
+
+thanks in advance,
+  Axel
+
+BTW kudos for having so many Barracudas I just ordered another 1.5 TB, using
+them for years now, they're very handy for studio recording &amp; work as they make
+no noise in my silentmaxx tower!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=22036.html#c4">
+            #4</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-11-21 17:18:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+(In reply to <a href="show_bug.cgi@id=22036.html#c3">comment #3</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=22036.html#c2">comment #2</a>)
+&gt; &gt; Thanks, Axel. </span >
+&lt;snip&gt;
+<span class="quote">&gt; intend to add this to QF's debug output for better error diagnostics. Might
+&gt; add an appropriate attachment later.
+&gt; </span >
+
+I'll try it if you post it. Between this and the lag in dragging and dropping
+messages into QT tabs, it is a real annoyance. Bummer. Sorry you're dealing
+with this.
+
+<span class="quote">&gt; The prime suspect for eating up all that time is the adding of all the
+&gt; (sub)folder menus - just for laughs, can you try disabling the option &quot;Expand
+&gt; Subfolders in popup menus&quot; to see whether that improves the situation for you?]
+&gt; </span >
+
+Tried it, turning off &quot;Expand Subfolders in popup menus&quot;. 
+No change in the lag.
+Oh well.
+
+
+<span class="quote">&gt; BTW kudos for having so many Barracudas I just ordered another 1.5 TB, using
+&gt; them for years now, they're very handy for studio recording &amp; work as they make
+&gt; no noise in my silentmaxx tower!
+&gt; </span >
+
+They're just a better value proposition. i know none of them will last forever,
+but I've had good experience with Seagate, and it seems meaningful that they
+still have that five year warranty (some Seagates reduced to three years now, I
+believe. Even so, that's better than those scary short term warranties. Drives,
+they're all about trust! heh). 
+
+Take care Axel. Yer work, it's most appreciated. QuickTabs, I don't know how i
+could make efficient use of TB without it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=22036.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-22 05:01:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders_1.6.5pre1-tb-pb.xpi" name="attach_6120" title="test version with time stamps">Created an attachment (id=6120)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6120&amp;action=edit" title="test version with time stamps">[details]</a></span>
+test version with time stamps
+
+Hi Craig - here is a new test version which adds time stamps to the debug
+output in the Error Console. 
+Example:
+
+QuickFolders 12:54:27.453  [16 ms]   
+qfFolderListener: TotalUnreadMessages
+
+
+after the QuickFolders label it displays the current time, then the elapsed
+milliseconds in brackets - counted from the previous debug message. So if you
+find a particular high value around 4000 to 5000 ms, then most likely it is the
+operation logged _before_ that takes that long. This will be helpful for me to
+determine where all that lag time actually goes :)
+
+thanks for your help - just post the part of the debug output that you suspect
+is relevant to the bug...
+
+Instructions:
+Install and enable QF debug option.
+
+
+Smoke tests: 
+Installed on Windows XP Postbox 1.1beta2, SeaMonkey 2.0, Tb 2.0.0.23 and
+checked debug output with debug option enabled.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=22036.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-11-22 05:05:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; is relevant to the bug...
+&gt; 
+&gt; Instructions:
+&gt; Install and enable QF debug option.</span >
+
+- a bit terse here are more complete instructions
+
+- Install and enable QF debug option. (QF Options / General / Debug)
+- Tools / Error Console / Clear (to reset output)
+- select a new QF category
+- check output of Error Console
+
+thanks in advance for your help!
+ Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=22036.html#c7">
+            #7</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-11-23 19:12:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel, I'm away from my TB system for the week, so I probably won't be able
+to install the QF test version and perform the tests until Monday, 30 November.
+Sorry for the delay. I'll come back to this as soon as I'm back on deck. Unless
+you've posted subsequent instructions in the meantime, I'll perform the install
+using the attachment here now, and tests. Happy Yankee Thanksgiving &quot;-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=22036.html#c8">
+            #8</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-12-01 20:21:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Greetings Axel. I'm back. While gone I handled most of my email tasks through a
+webmail service. On my return to my TB install system, when I started up TB the
+QF version 1.6.4 update presented itself. I accepted the update. Is the test
+version with timestamps that you posted here on 22 November still appropriate,
+or do you need to tweak it so it won't bork QF 1.6.4 on install? Sorry, my
+finger jerked greedily and accepted the update. Post Thanksgiving gluttony.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=22036.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-12-02 03:22:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The posted version (1.6.5pre1) includes all changes from 1.6.4 so its safe to
+install over. In fact it was created one day after releasing 1.6.4 (I usually
+respect the succession of version numbers)...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=22036.html#c10">
+            #10</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-12-05 18:14:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF_1.6.5pre1_Errors_20091205a.txt" name="attach_6154" title="Post QF 1.5.5pre1 install TB Error Console QF Category Switch Results">Created an attachment (id=6154)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6154&amp;action=edit" title="Post QF 1.5.5pre1 install TB Error Console QF Category Switch Results">[details]</a></span>
+Post QF 1.5.5pre1 install TB Error Console QF Category Switch Results
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=22036.html#c11">
+            #11</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2009-12-05 18:20:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm back. Sorry for the delay.
+
+1) OK, I installed QF 1.6.5pre1, 
+2) made sure QF debug option enabled,
+3) opened and cleared the TB Error Console, and 
+4) switched to another QF category. 
+
+Error Console was immediately populated with, let's see... 35 'i' Messages.
+Time's recorded span from 0 - 121578 ms.
+
+It's difficult for me to discern which are germane and which are not. So rather
+than attempt ignorantly to select likely culprits, I've copied them all to a
+text file, which I've uploaded and attached as:
+QF_1.6.5pre1_Errors_20091205a.txt
+
+Let me know if you'd like me to do anything else. Anything to help fix the
+category change delay, or anything else. Thanks Axel. 
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22036&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

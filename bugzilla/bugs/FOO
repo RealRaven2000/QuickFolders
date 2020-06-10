@@ -1,0 +1,140 @@
+Index: bug_form.pl
+===================================================================
+RCS file: /cvs/sandbox/issuezilla/bug_form.pl,v
+retrieving revision 1.1
+diff -u -r1.1 bug_form.pl
+--- bug_form.pl 2000/09/28 04:28:27     1.1
++++ bug_form.pl 2000/11/08 18:25:58
+@@ -173,14 +173,21 @@
+ <INPUT TYPE=HIDDEN NAME=\"delta_ts\" VALUE=\"$issue{'delta_ts'}\">
+ <INPUT TYPE=HIDDEN NAME=\"longdesclength\" VALUE=\"$longdesclength\">
+ <INPUT TYPE=HIDDEN NAME=\"id\" VALUE=$id>
+-  <TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0><TR>
+-    <TD ALIGN=RIGHT><B>Issue#:</B></TD><TD><A HREF=\"show_bug.cgi?id=$issue{'issue_id'}\">$issue{'issue_id'}</A></TD>
++  <TABLE CELLSPACING=0 CELLPADDING=0 BORDER=0>
++<!-- ######## -->
++<TR>
++    <TD ALIGN=RIGHT><B>Issue#:</B></TD>
++       <TD><A HREF=\"show_bug.cgi?id=$issue{'issue_id'}\">$issue{'issue_id'}</A></TD>
+   <TD>&nbsp;</TD>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html#rep_platform\">Platform:</A></B></TD>
+     <TD><SELECT NAME=rep_platform>$platform_popup</SELECT></TD>
+   <TD>&nbsp;</TD>
+     <TD ALIGN=RIGHT><B>Reporter:</B></TD><TD>$issue{'reporter'}</TD>
+-</TR><TR>
++</TR>
++<!-- ######## -->
++
++<!-- ######## -->
++<TR>
+     <TD ALIGN=RIGHT><B>Product:</B></TD>
+     <TD><SELECT NAME=product>" .
+     make_options(\@::legal_product, $issue{'product'}) .
+@@ -193,7 +200,11 @@
+   <TD>&nbsp;</TD>
+     <TD ALIGN=RIGHT NOWRAP><b>Add CC:</b></TD>
+     <TD><INPUT NAME=newcc SIZE=30 VALUE=\"\"></TD>
+-</TR><TR>
++</TR>
++<!-- ######## -->
++
++<!-- ######## -->
++<TR>
+     <TD ALIGN=RIGHT><B><A HREF=\"describecomponents.cgi?product=" .
+     url_quote($issue{'product'}) . "\">Component:</A></B></TD>
+       <TD><SELECT NAME=component>$component_popup</SELECT></TD>
+@@ -205,21 +216,33 @@
+   <TD>&nbsp;</TD>
+     <TD ROWSPAN=4 ALIGN=RIGHT VALIGN=TOP><B>Cc:</B></TD>
+     <TD ROWSPAN=4 VALIGN=TOP> $cc_element </TD>
+-</TR><TR>
++</TR>
++<!-- ######## -->
++
++<!-- ######## -->
++<TR>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html\">Status:</A></B></TD>
+       <TD>$issue{'issue_status'}</TD>
+   <TD>&nbsp;</TD>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html#priority\">Priority:</A></B></TD>
+       <TD><SELECT NAME=priority>$priority_popup</SELECT></TD>
+   <TD>&nbsp;</TD>
+-</TR><TR>
++</TR>
++<!-- ######## -->
++
++<!-- ######## -->
++<TR>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html\">Resolution:</A></B></TD>
+       <TD>$issue{'resolution'}</TD>
+   <TD>&nbsp;</TD>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html#issue_type\">Issue type:</A></B></TD>
+       <TD><SELECT NAME=issue_type>$issuetype_popup</SELECT></TD>
+   <TD>&nbsp;</TD>
+-</TR><TR>
++</TR>
++<!-- ######## -->
++
++<!-- ######## -->
++<TR>
+     <TD ALIGN=RIGHT><B><A HREF=\"bug_status.html#assigned_to\">Assigned&nbsp;To:
+         </A></B></TD>
+       <TD>$issue{'assigned_to'}</TD>
+@@ -245,15 +268,14 @@
+   <TD>&nbsp;</TD>";
+ } else { print "<TD></TD><TD></TD><TD>&nbsp;</TD>"; }
+
+-print "
+-</TR>";
++print "</TR>\n\n";
+
+ if (Param("useqacontact")) {
+     my $name = $issue{'qa_contact'} > 0 ? DBID_to_name($issue{'qa_contact'}) : "";
+     print "
+   <TR>
+-    <TD ALIGN=\"RIGHT\"><B>QA Contact:</B>
+-    <TD COLSPAN=7>
++    <TD ALIGN=\"RIGHT\"><B>QA Contact:</B></TD>
++    <TD COLSPAN=6>
+       <INPUT NAME=qa_contact VALUE=\"" .
+     value_quote($name) .
+     "\" SIZE=60></TD>
+@@ -263,12 +285,12 @@
+
+ print "
+   <TR>
+-    <TD ALIGN=\"RIGHT\">$URL
+-    <TD COLSPAN=7>
++    <TD ALIGN=\"RIGHT\">$URL</TD>
++    <TD COLSPAN=5>
+       <INPUT NAME=issue_file_loc VALUE=\"$issue{'issue_file_loc'}\" SIZE=60></TD>
+   </TR><TR>
+-    <TD ALIGN=\"RIGHT\"><B>Summary:</B>
+-    <TD COLSPAN=7>
++    <TD ALIGN=\"RIGHT\"><B>Summary:</B></TD>
++    <TD COLSPAN=6>
+       <INPUT NAME=short_desc VALUE=\"" .
+     value_quote($issue{'short_desc'}) .
+     "\" SIZE=60></TD>
+@@ -277,8 +299,8 @@
+ if (Param("usestatuswhiteboard")) {
+     print "
+   <TR>
+-    <TD ALIGN=\"RIGHT\"><B>Status Whiteboard:</B>
+-    <TD COLSPAN=7>
++    <TD ALIGN=\"RIGHT\"><B>Status Whiteboard:</B></TD>
++    <TD COLSPAN=6>
+       <INPUT NAME=status_whiteboard VALUE=\"" .
+     value_quote($issue{'status_whiteboard'}) .
+     "\" SIZE=60></TD>
+@@ -297,8 +319,8 @@
+     my $value = value_quote(join(', ', @list));
+     print qq{
+ <TR>
+-<TD ALIGN=right><B><A HREF="describekeywords.cgi">Keywords:</A></B>
+-<TD COLSPAN=7><INPUT NAME="keywords" VALUE="$value" SIZE=60></TD>
++<TD ALIGN=right><B><A HREF="describekeywords.cgi">Keywords:</A></B></TD>
++<TD COLSPAN=6><INPUT NAME="keywords" VALUE="$value" SIZE=60></TD>
+ </TR>
+ };
+ }

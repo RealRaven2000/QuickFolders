@@ -1,0 +1,1854 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26602 &ndash; quickMove - autofill with last executed quickJump / quickMove</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26602&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26602">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26602">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26602">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26602">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26602</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">quickMove - autofill with last executed quickJump / quickMove</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-12-01 09:02:39</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26602&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-12-01 09:02:39">
+  <input type="hidden" name="longdesclength" value="24">
+  <input type="hidden" name="id" value="26602">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="quickMove - autofill with last executed quickJump / quickMove">
+        <span title="quickMove - autofill with last executed quickJump / quickMove">quickMove - autofill with last executed quickJump / quick...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26602.html">26602</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26602&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26602">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz &lt;hugh.gunz&#64;utoronto.ca&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-4.11.2pre21.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11.2 prerelease 21</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (767.15 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26602.html#attach_8555"
+               title="Go to the comment associated with the attachment">2018-11-19 05:27</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8555&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-4.11.2pre24.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11.2 prerelease 24</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (767.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26602.html#attach_8556"
+               title="Go to the comment associated with the attachment">2018-11-19 07:12</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8556&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="AutoFill-example-multiple-results.png"
+               title="View the content of the attachment">
+          <b>edge case?</b></a>
+
+          <span class="bz_attach_extra_info">
+              (12.85 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26602.html#attach_8557"
+               title="Go to the comment associated with the attachment">2018-11-21 08:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8557&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-4.12pre35.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.12 prerelease 35</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (753.79 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26602.html#attach_8558"
+               title="Go to the comment associated with the attachment">2018-11-21 09:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8558&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-4.12pre37.xpi"
+               title="View the content of the attachment">
+          <b>4.12 prerelease 37</b></a>
+
+          <span class="bz_attach_extra_info">
+              (768.84 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26602.html#attach_8560"
+               title="Go to the comment associated with the attachment">2018-11-23 03:40</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8560&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26602.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26602&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26602&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26602">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26602">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26602">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26602">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26602.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-11-16 08:17
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I've got three suggestions:
+
+1. In the &quot;Folder name&quot; box attached to the quickMove button, show the last
+folder used so that the user can move a message (and any others sitting in the
+quickMove button) to that folder by hitting Shift+M and then Enter. If the user
+starts typing instead of hitting Enter, then the current folder name box
+functionality applies (i.e. QuickFolders starts searching for folders with that
+string in the name). 
+
+2. Add a hotkey that moves messages to the Reading List.
+
+3. Add a hotkey that moves messages to a default folder (this was an extremely
+useful feature of the add-on Quicker Filer, which doesn't seem to be under
+development any more and it's broken by Thunderbird 60).
+
+Thanks for considering these suggestions.
+
+Hugh Gunz
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26602.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-16 08:34:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for the suggestions - let's not have 3 different features in one bug,
+because it makes it hard to track and implement / push it into the release
+train.
+
+let's keep this one for suggestion 1 - please open separate feature requests
+for 2 and 3. This will increase the chance of implementation and uploading
+prerelease versions for testing.
+
+(In reply to <a href="show_bug.cgi@id=26602.html#c0">comment #0</a>)
+<span class="quote">&gt; 1. In the &quot;Folder name&quot; box attached to the quickMove button, show the last
+&gt; folder used so that the user can move a message (and any others sitting in the
+&gt; quickMove button) to that folder by hitting Shift+M and then Enter. If the user
+&gt; starts typing instead of hitting Enter, then the current folder name box
+&gt; functionality applies (i.e. QuickFolders starts searching for folders with that
+&gt; string in the name). 
+&gt; </span >
+
+You are probably aware of the &quot;Recent Folders&quot; function which I am sure have
+tried out. but rolling in some of that &quot;recent&quot; related stuff into quickmove /
+quickjump  may be an idea anyway.
+
+By default, when entering a foldername (or the start / part of it) then the
+dropdown shows possible matches. With the &quot;unique match&quot; feature this could
+potentially prefill the textbox with the last folder name and dropdown the
+(unique) suggestion - so that hitting &quot;Enter&quot; would exeecute the operation on
+the last folder. 
+
+I would also have to auto-select the text so that typing would automatically
+overwrite this suggestion. Is that roughly the way you imagined this?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26602.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-16 08:38:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c1">comment #1</a>)
+<span class="quote">&gt; 
+&gt; You are probably aware of the &quot;Recent Folders&quot; function which I am sure have
+&gt; tried out. but rolling in some of that &quot;recent&quot; related stuff into quickmove /
+&gt; quickjump  may be an idea anyway.
+&gt; 
+&gt; By default, when entering a foldername (or the start / part of it) then the
+&gt; dropdown shows possible matches. With the &quot;unique match&quot; feature this could
+&gt; potentially prefill the textbox with the last folder name and dropdown the
+&gt; (unique) suggestion - so that hitting &quot;Enter&quot; would exeecute the operation on
+&gt; the last folder. 
+&gt; 
+&gt; I would also have to auto-select the text so that typing would automatically
+&gt; overwrite this suggestion. Is that roughly the way you imagined this?
+&gt; </span >
+
+An alternative way (which would be even less configuration work, because I
+would make the first suggestion configurable to not confuse users) would be a
+shortcut: hitting Cursor Down on the empty textbox could bring up the recent
+folder(s) and _then_ hitting Enter could move to the most recent one (top
+entry). It would be one keystroke more but also more flexible (empty textbox =
+show recent folders)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26602.html#c3">
+            #3</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-16 08:54:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c1">comment #1</a>)
+&gt; &gt; 
+&gt; &gt; You are probably aware of the &quot;Recent Folders&quot; function which I am sure have
+&gt; &gt; tried out. but rolling in some of that &quot;recent&quot; related stuff into quickmove /
+&gt; &gt; quickjump  may be an idea anyway.
+&gt; &gt; 
+&gt; &gt; By default, when entering a foldername (or the start / part of it) then the
+&gt; &gt; dropdown shows possible matches. With the &quot;unique match&quot; feature this could
+&gt; &gt; potentially prefill the textbox with the last folder name and dropdown the
+&gt; &gt; (unique) suggestion - so that hitting &quot;Enter&quot; would exeecute the operation on
+&gt; &gt; the last folder. 
+&gt; &gt; 
+&gt; &gt; I would also have to auto-select the text so that typing would automatically
+&gt; &gt; overwrite this suggestion. Is that roughly the way you imagined this?
+&gt; &gt; </span >
+
+Yes, that's what I had in mind. So it would be a two-key operation: (1) Shift+M
+to put the message in the quickMove button, and (2) Enter to select the last
+folder used. If the user starts typing at step 2, the typing would
+automatically overwrite the suggestion.
+
+<span class="quote">&gt; An alternative way (which would be even less configuration work, because I
+&gt; would make the first suggestion configurable to not confuse users) would be a
+&gt; shortcut: hitting Cursor Down on the empty textbox could bring up the recent
+&gt; folder(s) and _then_ hitting Enter could move to the most recent one (top
+&gt; entry). It would be one keystroke more but also more flexible (empty textbox =
+&gt; show recent folders)</span >
+
+Isn't that the way it works right now? Right now, if I select a message and hit
+Shift+M and then cursor down, the dropdown list appears and the most
+recently-used folder is selected. I guess my suggestion is simply to eliminate
+one step from this process (and I agree that it would be wise to have the
+feature as an option).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26602.html#c4">
+            #4</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-16 09:18:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Would the following be easier to implement? 
+
+1. When the user selects a message and hits Shift+M, both the text box and the
+drop-down list of recent folders appear, and the last-used folder is selected. 
+
+2a. If the user hits Enter, the message is moved to the last-used folder. 
+
+2b. If the user cursors down, another folder on the drop-down list is selected. 
+
+2c. If the user starts typing, the box behaves as it does now by searching for
+a match.
+
+Because this doesn't really change the current functionality, it may not be
+necessary to make it optional (although there's no harm in having it optional,
+apart from the work of coding it).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26602.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-16 14:02:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c3">comment #3</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c2">comment #2</a>)
+&gt; &gt; show recent folders)
+&gt; 
+&gt; Isn't that the way it works right now? Right now, if I select a message and hit
+&gt; Shift+M and then cursor down, the dropdown list appears and the most
+&gt; recently-used folder is selected. </span >
+no. nothing shows unless you type at least one letter. the letters are not
+sorted by date (most recent) but by relevance.
+
+<span class="quote">&gt; I guess my suggestion is simply to eliminate
+&gt; one step from this process (and I agree that it would be wise to have the
+&gt; feature as an option).</span >
+
+not quite - as you are not entering letters there is nothing to go from. (It's
+not possible to sort by relevance without input) - as I said the list is
+currently _not_ sorted by date. And a list displaying all folders wouldn't be
+all that useful. In fact, if you only enter 2 letters I only show folders with
+words that start with these 2 letters (I do not &quot;in-string&quot; matching) in order
+to avoid too many irrelevant results.
+
+again there is a separate function (recent folders tab) which is based on per
+folder timestamps. Things like moving email (even from filters) can affect date
+these timestamps. IIRC going to a folder also sets it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26602.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-16 14:15:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c4">comment #4</a>)
+<span class="quote">&gt; Would the following be easier to implement? 
+&gt; 
+&gt; 1. When the user selects a message and hits Shift+M, both the text box and the
+&gt; drop-down list of recent folders appear, and the last-used folder is selected. </span >
+
+&quot;and the last-used folder is selected.&quot;
+how? You do not &quot;select&quot; a folder but you click on the menuitem representing
+it; there is no &quot;selected state&quot; and no UI feedback for such a mechanism. This
+happens immediately. therefore the sentence &quot;a folder is selected&quot; doesn't make
+any sense. It's not possible.
+
+OTTOH &quot;selection&quot; of a folder (to do quickMove) simply means a user action: the
+input focus is on the menu so you can hit enter: you cannot type then and would
+have to hit &quot;Cursor Up&quot; to get back into the text box. 
+
+To &quot;select&quot; an item at the moment you hit &quot;Cursor Down&quot; (and then you cannot
+type anymore). So this would be bad because it would slow you down - you
+couldn't just keep typing anymore.
+
+That's why I said (without wanting to rewrite the whole very hard to program
+and test input logic I created) I would just copy the folder name into the
+textbox and select thee text in the textbox (so that typing would replace it)
+
+
+<span class="quote">&gt; 2a. If the user hits Enter, the message is moved to the last-used folder. </span >
+
+Again - I want visual feedback - since there is no &quot;selected state&quot; possible as
+of your suggestion above, the user will not know that the first item (of many
+recent folders) is the target right now.
+
+<span class="quote">&gt; 
+&gt; 2b. If the user cursors down, another folder on the drop-down list is selected. </span >
+If you want multiple recent folders then that would be possible with my first
+suggestion (hit down on an empty textbox) but you would have to delete the
+default text (last folder) first. Then cursor down (without having entered
+anything) could bring up all recent folders in a dropdown.
+
+So that would be 2 things
+a) prefill with ONE recent folder
+b) user hits [DEL] to empty the box, then [DOWN] to bring up all recent
+folders. I know this is clunky, maybe I can think of a way to do this in a
+single keystroke (not ESCAPE, as that's used to cancel quickjump)
+
+
+<span class="quote">&gt; 
+&gt; 2c. If the user starts typing, the box behaves as it does now by searching for
+&gt; a match.</span >
+
+on this one - 100% agreed :) I don't want to change or complicate current
+behavior as it is important to get to any folder very quickly.
+
+<span class="quote">&gt; Because this doesn't really change the current functionality, it may not be
+&gt; necessary to make it optional (although there's no harm in having it optional,
+&gt; apart from the work of coding it).</span >
+
+Again, it all falls down on your (impossible) suggestion of &quot;selecting&quot; the
+default folder from a dropdown which has no keyboard focus. You can't type once
+the focus is on a menu - you will just get error sounds from the system - the
+menu captures all input and reacts only to certain keystrokes.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26602.html#c7">
+            #7</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-16 14:39:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c6">comment #6</a>)
+
+I think I'm confusing things by using misleading words, because I don't
+understand well enough the terminology that you've developed as part of
+developing QuickFolders. I'll try to avoid using words like &quot;select&quot; and
+&quot;focus&quot;.
+
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c4">comment #4</a>)
+&gt; &gt; Would the following be easier to implement? 
+&gt; &gt; 
+&gt; &gt; 1. When the user selects a message and hits Shift+M, both the text box and the
+&gt; &gt; drop-down list of recent folders appear, and the last-used folder is selected. 
+&gt; 
+&gt; &quot;and the last-used folder is selected.&quot;
+&gt; how? You do not &quot;select&quot; a folder but you click on the menuitem representing
+&gt; it; there is no &quot;selected state&quot; and no UI feedback for such a mechanism. This
+&gt; happens immediately. therefore the sentence &quot;a folder is selected&quot; doesn't make
+&gt; any sense. It's not possible.
+&gt; 
+&gt; OTTOH &quot;selection&quot; of a folder (to do quickMove) simply means a user action: the
+&gt; input focus is on the menu so you can hit enter: you cannot type then and would
+&gt; have to hit &quot;Cursor Up&quot; to get back into the text box. 
+&gt; 
+&gt; To &quot;select&quot; an item at the moment you hit &quot;Cursor Down&quot; (and then you cannot
+&gt; type anymore). So this would be bad because it would slow you down - you
+&gt; couldn't just keep typing anymore.
+&gt; 
+&gt; That's why I said (without wanting to rewrite the whole very hard to program
+&gt; and test input logic I created) I would just copy the folder name into the
+&gt; textbox and select thee text in the textbox (so that typing would replace it)
+&gt; </span >
+
+I'm sure I was using misleading language here. Let me try again. Right now,
+when I select a message, hit Shift+M, and then hit the cursor down key, a red
+&quot;Folder name&quot; box appears, and below it appears a list of folders, with the
+most recently-used one at the top. That folder appears to have the focus such
+that if I now hit Enter, the message is moved to that folder. What I'm
+suggesting here is that the first step in the new process combines what happens
+now when the user hits Shift+M and cursor down. Does that make any more sense?
+
+<span class="quote">&gt; &gt; 2a. If the user hits Enter, the message is moved to the last-used folder. 
+&gt; 
+&gt; Again - I want visual feedback - since there is no &quot;selected state&quot; possible as
+&gt; of your suggestion above, the user will not know that the first item (of many
+&gt; recent folders) is the target right now.</span >
+
+I quite agree that visual feedback is important. But I actually get it when the
+drop-down list appears -- the most recent folder at the top is very clearly
+selected.
+
+<span class="quote">&gt; 
+&gt; &gt; 
+&gt; &gt; 2b. If the user cursors down, another folder on the drop-down list is selected. 
+&gt; If you want multiple recent folders then that would be possible with my first
+&gt; suggestion (hit down on an empty textbox) but you would have to delete the
+&gt; default text (last folder) first. Then cursor down (without having entered
+&gt; anything) could bring up all recent folders in a dropdown.
+&gt; 
+&gt; So that would be 2 things
+&gt; a) prefill with ONE recent folder
+&gt; b) user hits [DEL] to empty the box, then [DOWN] to bring up all recent
+&gt; folders. I know this is clunky, maybe I can think of a way to do this in a
+&gt; single keystroke (not ESCAPE, as that's used to cancel quickjump)</span >
+
+I wasn't clear. What I meant by 2b was that, once the drop-down list of recent
+folders is visible under the red text box, the user can cursor down the list to
+pick another folder. That's all.
+
+
+<span class="quote">&gt; &gt; 
+&gt; &gt; 2c. If the user starts typing, the box behaves as it does now by searching for
+&gt; &gt; a match.
+&gt; 
+&gt; on this one - 100% agreed :) I don't want to change or complicate current
+&gt; behavior as it is important to get to any folder very quickly.</span >
+
+Yep :)
+
+<span class="quote">&gt; &gt; Because this doesn't really change the current functionality, it may not be
+&gt; &gt; necessary to make it optional (although there's no harm in having it optional,
+&gt; &gt; apart from the work of coding it).
+&gt; 
+&gt; Again, it all falls down on your (impossible) suggestion of &quot;selecting&quot; the
+&gt; default folder from a dropdown which has no keyboard focus. You can't type once
+&gt; the focus is on a menu - you will just get error sounds from the system - the
+&gt; menu captures all input and reacts only to certain keystrokes.
+&gt; </span >
+
+I hope my explanation above clarifies what I meant by &quot;selecting&quot; from the
+drop-down list. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26602.html#c8">
+            #8</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-16 14:40:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c6">comment #6</a>)
+
+I think I'm confusing things by using misleading words, because I don't
+understand well enough the terminology that you've developed as part of
+developing QuickFolders. I'll try to avoid using words like &quot;select&quot; and
+&quot;focus&quot;.
+
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c4">comment #4</a>)
+&gt; &gt; Would the following be easier to implement? 
+&gt; &gt; 
+&gt; &gt; 1. When the user selects a message and hits Shift+M, both the text box and the
+&gt; &gt; drop-down list of recent folders appear, and the last-used folder is selected. 
+&gt; 
+&gt; &quot;and the last-used folder is selected.&quot;
+&gt; how? You do not &quot;select&quot; a folder but you click on the menuitem representing
+&gt; it; there is no &quot;selected state&quot; and no UI feedback for such a mechanism. This
+&gt; happens immediately. therefore the sentence &quot;a folder is selected&quot; doesn't make
+&gt; any sense. It's not possible.
+&gt; 
+&gt; OTTOH &quot;selection&quot; of a folder (to do quickMove) simply means a user action: the
+&gt; input focus is on the menu so you can hit enter: you cannot type then and would
+&gt; have to hit &quot;Cursor Up&quot; to get back into the text box. 
+&gt; 
+&gt; To &quot;select&quot; an item at the moment you hit &quot;Cursor Down&quot; (and then you cannot
+&gt; type anymore). So this would be bad because it would slow you down - you
+&gt; couldn't just keep typing anymore.
+&gt; 
+&gt; That's why I said (without wanting to rewrite the whole very hard to program
+&gt; and test input logic I created) I would just copy the folder name into the
+&gt; textbox and select thee text in the textbox (so that typing would replace it)
+&gt; </span >
+
+I'm sure I was using misleading language here. Let me try again. Right now,
+when I select a message, hit Shift+M, and then hit the cursor down key, a red
+&quot;Folder name&quot; box appears, and below it appears a list of folders, with the
+most recently-used one at the top. That folder appears to have the focus such
+that if I now hit Enter, the message is moved to that folder. What I'm
+suggesting here is that the first step in the new process combines what happens
+now when the user hits Shift+M and cursor down. Does that make any more sense?
+
+<span class="quote">&gt; &gt; 2a. If the user hits Enter, the message is moved to the last-used folder. 
+&gt; 
+&gt; Again - I want visual feedback - since there is no &quot;selected state&quot; possible as
+&gt; of your suggestion above, the user will not know that the first item (of many
+&gt; recent folders) is the target right now.</span >
+
+I quite agree that visual feedback is important. But I actually get it when the
+drop-down list appears -- the most recent folder at the top is very clearly
+selected.
+
+<span class="quote">&gt; 
+&gt; &gt; 
+&gt; &gt; 2b. If the user cursors down, another folder on the drop-down list is selected. 
+&gt; If you want multiple recent folders then that would be possible with my first
+&gt; suggestion (hit down on an empty textbox) but you would have to delete the
+&gt; default text (last folder) first. Then cursor down (without having entered
+&gt; anything) could bring up all recent folders in a dropdown.
+&gt; 
+&gt; So that would be 2 things
+&gt; a) prefill with ONE recent folder
+&gt; b) user hits [DEL] to empty the box, then [DOWN] to bring up all recent
+&gt; folders. I know this is clunky, maybe I can think of a way to do this in a
+&gt; single keystroke (not ESCAPE, as that's used to cancel quickjump)</span >
+
+I wasn't clear. What I meant by 2b was that, once the drop-down list of recent
+folders is visible under the red text box, the user can cursor down the list to
+pick another folder. That's all.
+
+
+<span class="quote">&gt; &gt; 
+&gt; &gt; 2c. If the user starts typing, the box behaves as it does now by searching for
+&gt; &gt; a match.
+&gt; 
+&gt; on this one - 100% agreed :) I don't want to change or complicate current
+&gt; behavior as it is important to get to any folder very quickly.</span >
+
+Yep :)
+
+<span class="quote">&gt; &gt; Because this doesn't really change the current functionality, it may not be
+&gt; &gt; necessary to make it optional (although there's no harm in having it optional,
+&gt; &gt; apart from the work of coding it).
+&gt; 
+&gt; Again, it all falls down on your (impossible) suggestion of &quot;selecting&quot; the
+&gt; default folder from a dropdown which has no keyboard focus. You can't type once
+&gt; the focus is on a menu - you will just get error sounds from the system - the
+&gt; menu captures all input and reacts only to certain keystrokes.
+&gt; </span >
+
+I hope my explanation above clarifies what I meant by &quot;selecting&quot; from the
+drop-down list. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26602.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-16 15:01:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c6">comment #6</a>)</span >
+
+<span class="quote">&gt; 
+&gt; I'm sure I was using misleading language here. Let me try again. Right now,
+&gt; when I select a message, hit Shift+M, and then hit the cursor down key, a red
+&gt; &quot;Folder name&quot; box appears, and below it appears a list of folders, with the
+&gt; most recently-used one at the top. </span >
+No, that doesn't happen for me. SHIFT+M and then cursor down brings up nothing.
+I need to type some letters first. I think you are not describing what you are
+doing :) 
+
+It is very important not to leave out a single step otherwise you are
+describing assumption but not reality. At the moment you always have at least
+three key strokes. 
+# SHIFT+M
+# [one] letter
+# CURSOR DOWN
+
+If you only have ONE folder that starts with the letter, then you are lucky and
+it will only find one result and you can hit ENTER straight away. Usually you
+will have 2 or more folders and hence keep typing or use CURSOR DOWN to select
+the correct one. Note: once you hit CURSOR DOWN you cannot type anymore.
+
+<span class="quote">&gt; That folder appears to have the focus when you are on the MENU then it has focus. </span >
+Yes, that's what you called &quot;selection&quot;. Bear in mind that this &quot;highlighted
+state&quot; goes away as soon as you click into the text box again, so it's not a
+&quot;Selected Status&quot; as such.
+
+<span class="quote">&gt; The menu shows folders containing the letters you typed. it does NOT display recent folders.
+&gt; such that if I now hit Enter, the message is moved to that folder. What I'm
+&gt; suggesting here is that the first step in the new process combines what happens
+&gt; now when the user hits Shift+M and cursor down. Does that make any more sense?</span >
+
+no, because then you cannot type anymore. it would completely break quickMove /
+quickJump :)
+we need to be able to hit quickMove and just type as much as we like / need.
+Also you can select chidl folders using the slash key:
+
+FR/A
+suggest all subfolders of parents that start with fr where the child folders
+start with a. e.g. friends/alex, freunde/adam etc.
+
+selection through typing is superfast and powerful. but you have to keep in
+mind it has *nothing* to do with recent folders. If you are seeing recent
+folders that's just because you use these folders a lot. quickMove is currently
+100% reliant on *what* you enter. it ignores any &quot;time&quot; history :)
+
+<span class="quote">&gt; 
+&gt; &gt; &gt; 2a. If the user hits Enter, the message is moved to the last-used folder. 
+&gt; &gt; 
+&gt; &gt; Again - I want visual feedback - since there is no &quot;selected state&quot; possible as
+&gt; &gt; of your suggestion above, the user will not know that the first item (of many
+&gt; &gt; recent folders) is the target right now.
+&gt; 
+&gt; I quite agree that visual feedback is important. But I actually get it when the
+&gt; drop-down list appears -- the most recent folder at the top is very clearly
+&gt; selected.</span >
+
+no - the &quot;top folder&quot; is selected, (after hitting cursor down) and it is based
+on your entry of some letter(s). unless your system works completely different
+from mine :)
+
+
+<span class="quote">&gt; &gt; &gt; 
+&gt; &gt; &gt; 2b. If the user cursors down, another folder on the drop-down list is selected. 
+&gt; &gt; If you want multiple recent folders then that would be possible with my first
+&gt; &gt; suggestion (hit down on an empty textbox) but you would have to delete the
+&gt; &gt; default text (last folder) first. Then cursor down (without having entered
+&gt; &gt; anything) could bring up all recent folders in a dropdown.
+&gt; &gt; 
+&gt; &gt; So that would be 2 things
+&gt; &gt; a) prefill with ONE recent folder
+&gt; &gt; b) user hits [DEL] to empty the box, then [DOWN] to bring up all recent
+&gt; &gt; folders. I know this is clunky, maybe I can think of a way to do this in a
+&gt; &gt; single keystroke (not ESCAPE, as that's used to cancel quickjump)
+&gt; 
+&gt; I wasn't clear. What I meant by 2b was that, once the drop-down list of recent
+&gt; folders is visible under the red text box, the user can cursor down the list to
+&gt; pick another folder. That's all.</span >
+
+it just means that the complete recent folder dropdown is shown - but you would
+still need the cursor down key for selecting the top item. At the moment the
+recent folders are only shown if you use a different button / tab (the recent
+folders tab). 
+
+As regards showing the whole recent list automatically: Personally I wouldn't
+like that as it would feel like &quot;visual clutter&quot; in most cases (when I want to
+start typing a folder I do not use often). So the only thing that would feel
+right to bring up automatically is a single folder (the most recent one). But
+that is included in my suggestion already (which auto-fills the textbox with
+the name and then will do exactly that). Also hitting [Enter] will jump or move
+as long as there is only a single item in the dropdown, so that part is also
+already coded. This would save me a lot of work.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26602.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-19 05:25:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Changed bug title for clarity: the folder is only remember when the quickJump /
+quickMove is actually carried out. This makes sure users can still check other
+folders for existence (or whether they have unread mail) using the tool while
+still remembering where they actually jumped / moved mails to.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26602.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-19 05:27:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11.2pre21.xpi" name="attach_8555" title="4.11.2 prerelease 21">Created an attachment (id=8555)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8555&amp;action=edit" title="4.11.2 prerelease 21">[details]</a></span>
+4.11.2 prerelease 21
+
+Works for me :)
+# It saves the full folder name (rather than what was entered) to make &quot;one
+jump&quot; more likely.
+# The name is persisted between sessions (remembered when Thunderbird restarts)
+
+? Should the text be erasable (e.g. by clicking ESC) ?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26602.html#c12">
+            #12</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-19 05:51:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c11">comment #11</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11.2pre21.xpi" name="attach_8555" title="4.11.2 prerelease 21">attachment (id=8555)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8555&amp;action=edit" title="4.11.2 prerelease 21">[details]</a></span> [details]
+&gt; 4.11.2 prerelease 21
+&gt; 
+&gt; Works for me :)
+&gt; # It saves the full folder name (rather than what was entered) to make &quot;one
+&gt; jump&quot; more likely.
+&gt; # The name is persisted between sessions (remembered when Thunderbird restarts)
+&gt; 
+&gt; ? Should the text be erasable (e.g. by clicking ESC) ?
+&gt; </span >
+Works for me, too :) The full folder name is a good idea -- it removes any
+possibility of ambiguity. And I really like the way the name persists between
+sessions. Thanks!
+
+The text does seem erasable with ESC at the moment, and I think that's a good
+idea. I'd keep it. We're all habituated now to using ESC to cancel things, so
+I'm sure users will find themselves automatically using it here if they want to
+cancel the name (which they can also do by starting to type in the box). 
+
+So far, this seems great to me. Thanks again!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26602.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-19 07:12:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11.2pre24.xpi" name="attach_8556" title="4.11.2 prerelease 24">Created an attachment (id=8556)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8556&amp;action=edit" title="4.11.2 prerelease 24">[details]</a></span>
+4.11.2 prerelease 24
+
+Ok - I made this a premium feature. Also added an option (on the QF Pro tab) to
+disable the autofill.
+
+ESC doesn't actually delete the (stored) entry it only hides the box, which was
+already built in behavior. The question is if there should be a key to reset /
+delete the folder name for good.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26602.html#c14">
+            #14</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-19 07:26:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c13">comment #13</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11.2pre24.xpi" name="attach_8556" title="4.11.2 prerelease 24">attachment (id=8556)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8556&amp;action=edit" title="4.11.2 prerelease 24">[details]</a></span> [details]
+&gt; 4.11.2 prerelease 24
+&gt; 
+&gt; Ok - I made this a premium feature. Also added an option (on the QF Pro tab) to
+&gt; disable the autofill.</span >
+
+Good move
+
+
+<span class="quote">&gt; ESC doesn't actually delete the (stored) entry it only hides the box, which was
+&gt; already built in behavior. The question is if there should be a key to reset /
+&gt; delete the folder name for good.</span >
+
+Oh -- sorry, I misunderstood. I guess there might be occasions on which a user
+might want to do this, so what about using the backspace and delete keys? That
+feels to me like a &quot;natural&quot; thing to do if I wanted to reset/delete the folder
+name for good, as opposed to hitting ESC.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26602.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-19 07:44:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c14">comment #14</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26602.html#c13">comment #13</a>)
+&gt; &gt; The question is if there should be a key to reset /
+&gt; &gt; delete the folder name for good.
+&gt; 
+&gt; Oh -- sorry, I misunderstood. I guess there might be occasions on which a user
+&gt; might want to do this, so what about using the backspace and delete keys? That
+&gt; feels to me like a &quot;natural&quot; thing to do if I wanted to reset/delete the folder
+&gt; name for good, as opposed to hitting ESC.
+&gt; </span >
+I thought about that but then you couldn't &quot;look up&quot; other folders while still
+having the name stored for the &quot;real jump&quot; later (as I described). I don't
+think it's a huge problem anyway.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=26602.html#c16">
+            #16</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-19 08:03:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c15">comment #15</a>)
+<span class="quote">&gt; &gt; 
+&gt; I thought about that but then you couldn't &quot;look up&quot; other folders while still
+&gt; having the name stored for the &quot;real jump&quot; later (as I described). I don't
+&gt; think it's a huge problem anyway.
+&gt; </span >
+
+I see what you mean. Yes, I agree, it isn't a huge problem. I certainly
+wouldn't change the action of the ESC key -- that works very well as it is now.
+And another key or key combination might be a bit difficult to remember given
+that the user isn't likely to want to reset/delete the folder very often. 
+
+So far, the change is proving very useful.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=26602.html#c17">
+            #17</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-20 11:55:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I think this feature is working pretty well -- I haven't encountered any
+problems, and I've been using it a lot.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=26602.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-21 08:55:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="AutoFill-example-multiple-results.png" name="attach_8557" title="edge case?">Created an attachment (id=8557)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8557&amp;action=edit" title="edge case?">[details]</a></span>
+edge case?
+
+here is an example where it doesn't work so well:
+
+If I use the entry 
+
+qu/support
+
+to move mails to the &quot;Quickfolders\support&quot; folder, the repeat action will only
+remember the folder name (support) and not the parent. I wonder if we should
+remember the full parent name in this case (it would make the result unique and
+guarantee less work in scrolling through lots of results if we have a common
+folder name used in a lot of instances). 
+
+Note: I could try and only have this behavior when the search format
+
+parentFolder/childFolder was used.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=26602.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-21 09:44:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.12pre35.xpi" name="attach_8558" title="4.12 prerelease 35">Created an attachment (id=8558)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8558&amp;action=edit" title="4.12 prerelease 35">[details]</a></span>
+4.12 prerelease 35
+
+Added the behavior of memorizing the parent folder name if it was used as part
+of the entered search.
+
+if you enter qu/test and the subsequently jump to Quickfolders/Test, then the
+string Quickfolders/Test is stored. This will better honor the previous effort
+to distinguish a subfolder name that may not be unique.
+
+Example - you might have a folder structure like this:
+
+customer1/orders
+customer1/payments
+customer1/invoices
+customer2/orders
+customer2/payments
+customer2/invoices
+customer3/orders
+customer3/payments
+customer3/invoices
+
+just storing the string &quot;invoices&quot; after entering &quot;customer1/inv&quot;  to get to a
+unique folder would bring up 3 results. The use of the &quot;/&quot; character (as 2nd or
+higher-numbered letter) will also remember the full parent name. This will
+ensure much simpler re-use during autofill (ideally again just 1 result and
+[ENTER] for going there; no selection from a submenu necessary)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=26602.html#c20">
+            #20</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-21 10:49:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c19">comment #19</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.12pre35.xpi" name="attach_8558" title="4.12 prerelease 35">attachment (id=8558)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8558&amp;action=edit" title="4.12 prerelease 35">[details]</a></span> [details]
+&gt; 4.12 prerelease 35
+&gt; 
+&gt; Added the behavior of memorizing the parent folder name if it was used as part
+&gt; of the entered search.
+&gt; 
+&gt; if you enter qu/test and the subsequently jump to Quickfolders/Test, then the
+&gt; string Quickfolders/Test is stored. This will better honor the previous effort
+&gt; to distinguish a subfolder name that may not be unique.
+&gt; 
+&gt; Example - you might have a folder structure like this:
+&gt; 
+&gt; customer1/orders
+&gt; customer1/payments
+&gt; customer1/invoices
+&gt; customer2/orders
+&gt; customer2/payments
+&gt; customer2/invoices
+&gt; customer3/orders
+&gt; customer3/payments
+&gt; customer3/invoices
+&gt; 
+&gt; just storing the string &quot;invoices&quot; after entering &quot;customer1/inv&quot;  to get to a
+&gt; unique folder would bring up 3 results. The use of the &quot;/&quot; character (as 2nd or
+&gt; higher-numbered letter) will also remember the full parent name. This will
+&gt; ensure much simpler re-use during autofill (ideally again just 1 result and
+&gt; [ENTER] for going there; no selection from a submenu necessary)
+&gt; </span >
+
+I think I get it, and yes, that makes good sense to me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=26602.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-11-23 03:40:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.12pre37.xpi" name="attach_8560" title="4.12 prerelease 37">Created an attachment (id=8560)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8560&amp;action=edit" title="4.12 prerelease 37">[details]</a></span>
+4.12 prerelease 37
+
+I noticed if I use &quot;Drag-and-drop&quot; for moving emails the autofill doesn't focus
+on the textbox like it does when using the keyboard shortcut (SHIFT+M).
+
+This version fixes the problem so that we can also use the [Enter] key in this
+case.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=26602.html#c22">
+            #22</a> From 
+          <a href="mailto:hugh.gunz&#64;utoronto.ca">Hugh Gunz</a>
+          2018-11-23 13:46:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26602.html#c21">comment #21</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-4.12pre37.xpi" name="attach_8560" title="4.12 prerelease 37">attachment (id=8560)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8560&amp;action=edit" title="4.12 prerelease 37">[details]</a></span> [details]
+&gt; 4.12 prerelease 37
+&gt; 
+&gt; I noticed if I use &quot;Drag-and-drop&quot; for moving emails the autofill doesn't focus
+&gt; on the textbox like it does when using the keyboard shortcut (SHIFT+M).
+&gt; 
+&gt; This version fixes the problem so that we can also use the [Enter] key in this
+&gt; case.
+&gt; </span >
+Hadn't noticed that, because I don't do much dragging and dropping. The new
+version seems fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=26602.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-12-01 09:02:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Feature landed in QuickFolders 4.12 Release on 23/11/2018
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26602&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

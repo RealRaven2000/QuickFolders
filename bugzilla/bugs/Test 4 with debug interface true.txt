@@ -1,0 +1,132 @@
+I get this on any right-click QF tab:
+
+QuickFolders {INTERFACE} 12:16:55.433  [9405 ms]	 
+showPopup(, QuickFolders-folder-popup-mailbox://nobody@Local%20Folders/HU/TO%20DO%20-%20Website, evt=[object MouseEvent])
+ ----------
+QuickFolders {INTERFACE} 12:16:55.451  [18 ms]	 
+setPaintButtonColor(20)
+
+====then, with extensions.quickfolders.debug.dnd false: ===================================
+
+Dragged one file to QF folder:
+
+QuickFolders 12:20:28.670  [28889 ms]	 
+buttonDragObserver.onDrop DropTarget = toolbarbutton0  Target Folder:Deeson
+ ----------
+QuickFolders 12:20:28.909  [239 ms]	 
+Folder Tab Select Timer ID: 90
+ ----------
+QuickFolders 12:20:28.909  [0 ms]	 
+Setting Update Timer (after timer 78 expired), new Timer: 90
+ ----------
+QuickFolders {INTERFACE} 12:20:28.909  [0 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:20:28.911  [2 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders 12:20:28.915  [302900 ms]	 
+Folder Tab Select Timer ID: 17
+ ----------
+QuickFolders 12:20:28.915  [0 ms]	 
+Setting Update Timer (after timer 16 expired), new Timer: 17
+ ----------
+QuickFolders 12:20:28.916  [302900 ms]	 
+Folder Tab Select Timer ID: 16
+ ----------
+QuickFolders 12:20:28.916  [0 ms]	 
+Setting Update Timer (after timer 15 expired), new Timer: 16
+ ----------
+QuickFolders {INTERFACE} 12:20:28.923  [12 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:20:28.924  [1 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:20:29.413  [489 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:20:29.414  [1 ms]	 
+updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 57
+ ----------
+QuickFolders 12:20:29.762  [348 ms]	 
+57 of 57 tabs rebuilt.
+ ----------
+QuickFolders {INTERFACE} 12:20:29.763  [1 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:20:29.771  [856 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:20:29.771  [0 ms]	 
+updateFolders(rebuildCategories: false, minimal: true)
+ ----------
+QuickFolders {INTERFACE} 12:20:29.771  [855 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:20:29.772  [1 ms]	 
+updateFolders(rebuildCategories: false, minimal: true)
+
+
+======Right Click continued to work. ====================
+
+So, did another one:
+
+QuickFolders 12:23:16.993  [31678 ms]	 
+buttonDragObserver.onDrop DropTarget = toolbarbutton0  Target Folder:TO communities
+ ----------
+QuickFolders 12:23:17.262  [269 ms]	 
+Folder Tab Select Timer ID: 105
+ ----------
+QuickFolders 12:23:17.262  [0 ms]	 
+Setting Update Timer (after timer 101 expired), new Timer: 105
+ ----------
+QuickFolders {INTERFACE} 12:23:17.262  [0 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:23:17.264  [2 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders 12:23:17.267  [31939 ms]	 
+Folder Tab Select Timer ID: 21
+ ----------
+QuickFolders 12:23:17.268  [1 ms]	 
+Setting Update Timer (after timer 20 expired), new Timer: 21
+ ----------
+QuickFolders 12:23:17.268  [31940 ms]	 
+Folder Tab Select Timer ID: 20
+ ----------
+QuickFolders 12:23:17.268  [0 ms]	 
+Setting Update Timer (after timer 19 expired), new Timer: 20
+ ----------
+QuickFolders {INTERFACE} 12:23:17.272  [8 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:23:17.274  [2 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:23:17.768  [494 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:23:17.769  [1 ms]	 
+updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 57
+ ----------
+QuickFolders 12:23:18.110  [341 ms]	 
+57 of 57 tabs rebuilt.
+ ----------
+QuickFolders {INTERFACE} 12:23:18.112  [2 ms]	 
+initCurrentFolderTab(Inbox)
+ ----------
+QuickFolders {INTERFACE} 12:23:18.114  [846 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:23:18.114  [0 ms]	 
+updateFolders(rebuildCategories: false, minimal: true)
+ ----------
+QuickFolders {INTERFACE} 12:23:18.114  [846 ms]	 
+updateFolders(rebuildCategories=false, minimalUpdate=true)
+ ----------
+QuickFolders 12:23:18.115  [1 ms]	 
+updateFolders(rebuildCategories: false, minimal: true)
+
+================and right click did NOT work after.=================

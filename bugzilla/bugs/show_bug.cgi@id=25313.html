@@ -1,0 +1,2229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25313 &ndash; &quot;Highlight folders with new mail&quot; should use better default and possibly be customizable</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25313&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25313">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25313">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25313">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25313">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25313</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">&quot;Highlight folders with new mail&quot; should use better default and possibly be customizable</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-03-24 15:46:01</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25313&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-03-24 15:46:01">
+  <input type="hidden" name="longdesclength" value="27">
+  <input type="hidden" name="id" value="25313">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="&quot;Highlight folders with new mail&quot; should use better default and possibly be customizable">
+        <span title="&quot;Highlight folders with new mail&quot; should use better default and possibly be customizable">&quot;Highlight folders with new mail&quot; should use better defau...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25313.html">25313</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25313&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25313">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro &lt;tmetro-mozilla&#64;tommetro.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="highlight-new-mail.png"
+               title="View the content of the attachment">
+          <b>tabs showing: new mail, unread, and no unread</b></a>
+
+          <span class="bz_attach_extra_info">
+              (5.60 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7490"
+               title="Go to the comment associated with the attachment">2013-01-21 14:15</a>,
+
+            <a href="mailto:tmetro-mozilla&#64;tommetro.com"
+               title="Write an email to the creator of the attachment">Tom Metro
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7490&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="stock-folder-tree.png"
+               title="View the content of the attachment">
+          <b>Thumderbird folder tree showing unread, no unread, and new mail folders</b></a>
+
+          <span class="bz_attach_extra_info">
+              (7.64 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7491"
+               title="Go to the comment associated with the attachment">2013-01-21 14:17</a>,
+
+            <a href="mailto:tmetro-mozilla&#64;tommetro.com"
+               title="Write an email to the creator of the attachment">Tom Metro
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7491&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="new-mail-example.png"
+               title="View the content of the attachment">
+          <b>new mail appearance when colors are used</b></a>
+
+          <span class="bz_attach_extra_info">
+              (24.92 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7494"
+               title="Go to the comment associated with the attachment">2013-01-22 00:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7494&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="new-mail-striped.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">striped style</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (20.48 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7496"
+               title="Go to the comment associated with the attachment">2013-01-22 02:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7496&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="prototype.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">prototype style with both options enabled</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (147.85 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7497"
+               title="Go to the comment associated with the attachment">2013-01-22 06:00</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7497&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="QuickFolders-tb-pb-sm-3.11pre3.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.11 prerelease 3</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (460.13 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7498"
+               title="Go to the comment associated with the attachment">2013-01-22 06:02</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7498&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="new-mail-striped2.png"
+               title="View the content of the attachment">
+          <b>another less confusing example</b></a>
+
+          <span class="bz_attach_extra_info">
+              (19.85 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_7501"
+               title="Go to the comment associated with the attachment">2013-01-23 00:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7501&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="QuickFolders-tb-pb-sm-4.1pre6.xpi"
+               title="View the content of the attachment">
+          <b>4.1 prerelease 6</b></a>
+
+          <span class="bz_attach_extra_info">
+              (602.07 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25313.html#attach_8025"
+               title="Go to the comment associated with the attachment">2015-03-19 12:13</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8025&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25313.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25313&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25313&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25313">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25313">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25313">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25313">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25313.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-01-21 14:15
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="highlight-new-mail.png" name="attach_7490" title="tabs showing: new mail, unread, and no unread">Created an attachment (id=7490)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7490&amp;action=edit" title="tabs showing: new mail, unread, and no unread">[details]</a></span>
+tabs showing: new mail, unread, and no unread
+
+Running QuickFolders 3.10 on Thunderbird 17.0.2 on Ubuntu 12.04.
+
+I have the &quot;Highlight folders with new mail&quot; option enabled, but the appearance
+difference between folders with and without new mail is hardly noticeable. It
+appears as if folders with new mail have a sort of gray outline around the tab
+label. See attached screen shot.
+
+I thought it was simply a display artifact until I started playing with the
+&quot;Highlight folders with new mail&quot; option and did an A-B comparison.
+
+Is there any reason why you didn't simply echo the new mail highlighting scheme
+used by Thunderbird itself? They use bold for unread and bold red for new mail.
+See second attached screen shot.
+
+Is there a way to customize the highlight appearance?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25313.html#c1">
+            #1</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2013-01-21 14:17:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="stock-folder-tree.png" name="attach_7491" title="Thumderbird folder tree showing unread, no unread, and new mail folders">Created an attachment (id=7491)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7491&amp;action=edit" title="Thumderbird folder tree showing unread, no unread, and new mail folders">[details]</a></span>
+Thumderbird folder tree showing unread, no unread, and new mail folders
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25313.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 00:16:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="new-mail-example.png" name="attach_7494" title="new mail appearance when colors are used">Created an attachment (id=7494)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7494&amp;action=edit" title="new mail appearance when colors are used">[details]</a></span>
+new mail appearance when colors are used
+
+Here is an example of the &quot;new mail highlighting&quot; style, when used with colored
+tabs. I needed to go for a style that did not use color itself as that would
+get lost, also I didn't necessarily want to overwrite icons (as you can see I
+use them quite extensively). Therefore I want for the &quot;inner shadow&quot; solution.
+Can you suggest a way of styling that is color and icon independent?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25313.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 00:24:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Here is the current css rule-set from quickfolders-layout.css; you can add
+additional rules in your userChrome.css (profile/chrome folder)
+
+/*** inset shadow on the label ***/
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label
+{
+        border-radius: 3px;
+        color: #fff;
+        box-shadow: inset 0 0 6px #080808;
+        padding: 0 3px;
+        border-style: dotted;
+        border-color: #aaa; 
+        border-width: 1px;
+}
+
+/*** The following rule didn't work (I would have liked a &quot;green circle&quot; on the
+label  ***/
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label, 
+#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
+#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
+{
+        list-style-image: url(&quot;chrome://quickfolders/skin/ico/newUnread.png&quot;)
+!important;
+}
+
+/*** styles the subfolder popups ***/
+#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread ,
+#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread 
+{
+        border: 1px dotted #aaa !important;
+        box-shadow: 1px 1px 2px 1px #111;
+        border-radius: 2px;
+}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25313.html#c4">
+            #4</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2013-01-22 00:36:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c2">comment #2</a>)
+<span class="quote">&gt; Here is an example of the &quot;new mail highlighting&quot; style, when used with 
+&gt; colored tabs.</span >
+
+Wow, that's busy looking. I looked at it for a while and I think &quot;GMail&quot; is the
+folder that's supposed to be indicating new mail?
+
+
+
+<span class="quote">&gt; I needed to go for a style that did not use color itself as that would
+&gt; get lost...</span >
+
+Ah, I see the challenge.
+
+
+<span class="quote">&gt; ...also I didn't necessarily want to overwrite icons...
+&gt; Can you suggest a way of styling that is color and icon independent?</span >
+
+One obvious solution is the one TB uses itself. You place a red asterisk in the
+upper right corner of the tab, as it once did (2.0-era) on folders with new
+mail. (Want a screen shot? I still have a TB 2.0 installation available.) The
+graphic could overlay and partially obscure the label, and thus not require a
+width change.
+
+Another option is to get annoying with blinking text or background color.
+
+But what I'm wondering is whether you necessarily need a universal mechanism.
+If you provided a few options, including font and coloring style changes, then
+the user could pick whatever worked best with the color scheme they used.
+
+I would add a button to the &quot;Bling my Tabs!&quot; dialog for &quot;New Mail Tab Color&quot;
+below active, hover, and drag. (More thoughts on &quot;Bling my Tabs!&quot; in a separate
+ticket.)
+
+In my opinion, the default display of tabs in a newly installed QuickFolders
+should replicate the standard styling of TB's folder tree as much as possible
+(if it doesn't already do so; I don't recall), which should result in a
+functional combination of colors.
+
+The custom colored tabs are more of a special case.
+
+
+<span class="quote">&gt; you can add additional rules in your userChrome.css (profile/chrome folder)</span >
+
+I'll give that a spin. Thanks.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25313.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 02:27:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c2">comment #2</a>)
+&gt; &gt; Here is an example of the &quot;new mail highlighting&quot; style, when used with 
+&gt; &gt; colored tabs.
+&gt; 
+&gt; Wow, that's busy looking. I looked at it for a while and I think &quot;GMail&quot; is the
+&gt; folder that's supposed to be indicating new mail?</span >
+
+yep. I must say, I am used to it though :)
+
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt; ...also I didn't necessarily want to overwrite icons...
+&gt; &gt; Can you suggest a way of styling that is color and icon independent?
+&gt; 
+&gt; One obvious solution is the one TB uses itself. You place a red asterisk in the
+&gt; upper right corner of the tab, as it once did (2.0-era) on folders with new
+&gt; mail. </span >
+
+Sounds good to me, as long as I can implement it css-only. I have a fairly
+powerful styling engine under the QuickFolders bonnet with which I can insert /
+modify css rules &quot;on the fly&quot;. It gets much more tricky if you want to insert
+new DOM elements. So if it can be solved with background-image or
+list-style-image I would be willing to upload a test version.
+
+
+<span class="quote">&gt; (Want a screen shot? I still have a TB 2.0 installation available.) The
+&gt; graphic could overlay and partially obscure the label, and thus not require a
+&gt; width change.</span >
+
+no its fine - I would have went for the green circle (which is the default for
+new mail at least on the windows theme) as it is fairly universal. But a golden
+star would be possible as well.
+<span class="quote">&gt; 
+&gt; Another option is to get annoying with blinking text or background color.</span >
+ah, actually I tried that once but these css attribute values are deprecated.
+maybe its for the best :)
+
+<span class="quote">&gt; 
+&gt; But what I'm wondering is whether you necessarily need a universal mechanism.
+&gt; If you provided a few options, including font and coloring style changes, then
+&gt; the user could pick whatever worked best with the color scheme they used.</span >
+
+true. italics might be an option as well?
+
+<span class="quote">&gt; 
+&gt; I would add a button to the &quot;Bling my Tabs!&quot; dialog for &quot;New Mail Tab Color&quot;
+&gt; below active, hover, and drag. (More thoughts on &quot;Bling my Tabs!&quot; in a separate
+&gt; ticket.)</span >
+
+Yes that whole tab is a bit of a mess (and I dare say about 85% of the
+development time went into that for the last 2 releases). It is already quite
+complicated, and one of my goals for the future would be to support mixing
+different color palettes (at the moment normal and pastel) per tab to make them
+&quot;stand out&quot; more. But that will not only add complexity to the code (which is
+manageable) but to the User Interface, which is much harder to implement
+elegantly. And I'd rather have less features than an unusable UI.
+
+<span class="quote">&gt; 
+&gt; In my opinion, the default display of tabs in a newly installed QuickFolders
+&gt; should replicate the standard styling of TB's folder tree as much as possible
+&gt; (if it doesn't already do so; I don't recall), which should result in a
+&gt; functional combination of colors.</span >
+It _should_, but: One thing that is tricky about this is that it is both OS
+dependent and dependent on the theme. On top of that, each theme has a
+different way of implementing things like icons (some use image maps, some
+list-style-image, some background, etc.) it is almost impossible to do this in
+a meaningful manner without a huge amount of theme / OS specific hard-coding.
+
+
+<span class="quote">&gt; 
+&gt; The custom colored tabs are more of a special case.</span >
+
+yep; the original layout was only striped colors, a fairly unique layout I came
+up with when I took over  n I will upload a screenshot of that as well, so you
+get idea what that would look like.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25313.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 02:31:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="new-mail-striped.png" name="attach_7496" title="striped style">Created an attachment (id=7496)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7496&amp;action=edit" title="striped style">[details]</a></span>
+striped style
+
+same with striped style, normal colors (not pastel)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25313.html#c7">
+            #7</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-22 04:14:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class=""><a href="new-mail-example.png" name="attach_7494" title="new mail appearance when colors are used">attachment (id=7494)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7494&amp;action=edit" title="new mail appearance when colors are used">[details]</a></span> [details]
+&gt; new mail appearance when colors are used
+&gt; 
+&gt; Here is an example of the &quot;new mail highlighting&quot; style, when used with colored
+&gt; tabs. I needed to go for a style that did not use color itself as that would
+&gt; get lost, also I didn't necessarily want to overwrite icons (as you can see I
+&gt; use them quite extensively). Therefore I want for the &quot;inner shadow&quot; solution.
+&gt; Can you suggest a way of styling that is color and icon independent?
+&gt; </span >
+
+What about using either or both of bold and italic text for the tab title
+depending on circumstances? For instance, bold for unread, bold italic for new
+mail (which is always unread)? — Ah, wait, italic is already used if the
+folder isn't empty (or if it is empty except for a subfolder). Underlined,
+then? Or somehow customize via the options dialog (with defaults being what is
+in use now) what to use bold, italic, and underline for?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25313.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 04:55:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c2">comment #2</a>)
+&gt; 
+&gt; What about using either or both of bold and italic text for the tab title
+&gt; depending on circumstances? For instance, bold for unread, bold italic for new
+&gt; mail (which is always unread)? — Ah, wait, italic is already used if the
+&gt; folder isn't empty (or if it is empty except for a subfolder). Underlined,
+&gt; then? </span >
+
+underlined = current folder.
+
+I never liked italic for &quot;not empty&quot;, that's one of the original options from
+Alex - what's the point of bookmarking an empty folder? I would almost like to
+scrap &quot;italics&quot; for that purpose and reuse it for &quot;new unread mail&quot;.
+
+<span class="quote">&gt; Or somehow customize via the options dialog (with defaults being what is
+&gt; in use now) what to use bold, italic, and underline for?</span >
+
+that would be possible since none of them are mutex. it would mean adding 3
+dropdowns (instead of checkboxes); and I could possibly also add the &quot;inset
+shadow&quot; that I am currently using for &quot;new unread&quot;, although that one is a
+little more complex. Also, I don't want to totally frighten my users with
+complexity on the General tab.
+
+
+For the moment, I prefer scrapping 
+&quot;Display tabs for folders which contain messages italic&quot;
+for
+&quot;Display tabs with newly arrived mail italic&quot;
+
+(I am open to suggestions for better wordings)
+
+of course I wouldn't know what the pushback from existing users would be :]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25313.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 06:00:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="prototype.png" name="attach_7497" title="prototype style with both options enabled">Created an attachment (id=7497)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7497&amp;action=edit" title="prototype style with both options enabled">[details]</a></span>
+prototype style with both options enabled
+
+ok here is a screenshot from a prototype, which will follow shortly
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25313.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-22 06:02:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.11pre3.xpi" name="attach_7498" title="3.11 prerelease 3">Created an attachment (id=7498)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7498&amp;action=edit" title="3.11 prerelease 3">[details]</a></span>
+3.11 prerelease 3
+
+test version with independent options for new mail
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25313.html#c11">
+            #11</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2013-01-22 14:01:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >My thoughts on italics...
+
+Axel Grude wrote:
+<span class="quote">&gt; italics might be an option as well?</span >
+
+The problem with italics is that it is subtle. More so than bold, and much more
+so than bold + red.
+
+In my opinion, styling of the following attributes should go from most visible
+to least visible:
+
+new mail
+unread mail
+normal, and everything else.
+
+When I look at the TB folder tree, I can easily spot folders with new mail from
+10 feet away from my monitor. If they were italics instead of red bold text, I
+couldn't.
+
+
+Tony Mechelynck wrote:
+<span class="quote">&gt; ...italic is already used if the folder isn't empty (or if it is
+&gt; empty except for a subfolder).</span >
+
+Axel Grude wrote:
+<span class="quote">&gt; I never liked italic for &quot;not empty&quot;...what's the point of bookmarking
+&gt; an empty folder?</span >
+
+I don't see much value in that particular indicator, though it does appear to
+be replicating a styling cue used by TB in its folder tree.
+
+Identifying an empty folder is a low importance attribute, and thus italic is a
+good fit.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25313.html#c12">
+            #12</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2013-01-22 14:19:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c5">comment #5</a>)
+<span class="quote">&gt; I would have went for the green circle (which is the default for
+&gt; new mail at least on the windows theme) as it is fairly universal. But a
+&gt; golden star would be possible as well.</span >
+
+I guess my TB (17) theme uses a golden star. Unfortunately its more subtle than
+the red star used in TB 2.0 and thus I hadn't really noticed it until I went
+looking for it today.
+
+But whatever matches the TB theme would make sense.
+
+I looked at your posting with the CSS after suggesting the image idea, and I
+see your in-line comments indicate that you weren't able to get it to work. If
+that's the case, then there doesn't seem to be a point in further discussing
+the particular graphic choice until the underlying CSS problem can be figured
+out.
+
+
+<span class="quote">&gt;&gt; ...default display...should replicate the standard styling
+&gt;&gt; of TB's folder tree...
+&gt; It _should_, but: One thing that is tricky about this is that it is both OS
+&gt; dependent and dependent on the theme.</span >
+
+Yeah, I figured it wouldn't be easy.
+
+Assuming theming works by applying styles to CSS selectors tagged onto various
+UI elements, like say folder labels, what problems do you run into when you try
+and inherit those same styles for equivalent UI elements?
+
+Can you poke into TB's UI and extract the applied styling and then replicate
+it?
+
+
+<span class="quote">&gt; same with striped style, normal colors (not pastel)</span >
+
+So &quot;GMail&quot; and &quot;SmartTemplates&quot; are the tabs showing new mail? They do stand
+out, but the white on gray text is poorly legible.
+
+
+<span class="quote">&gt; here is a screenshot from a prototype</span >
+
+So this shows new mail in &quot;GMail.&quot; The tab does stand out, but not for the
+italic text, but because the whole background is green, while all other tabs
+just have color stripes.
+
+The colorful, busy nature of the tab style you are using pretty much makes it
+an uphill battle to make any indicator stand out.
+
+I get the appeal of using color to coordinate things, but seeing it in use does
+make me wonder if there is a better way to accomplish the same thing. Visually,
+categorization should be at a more subtle level than status indicator.
+
+For example, use physical positioning. Insert separators between groups of
+tabs, and/or put them on different rows in a user controlled way.
+
+If the user needs extensive categorization, then QuikFolders, at least as
+implemented as tabs, is going to hit a limit. One can imagine an alternate
+implementation for QuickFolders where it is shown as a custom hierarchy of
+folders that replace the main folder tree. This would essentially be the same
+idea as &quot;favorite folders&quot; that was implemented in earlier versions of TB (no
+sign of it in 17), which I tried for a while, but something about it fell
+short.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25313.html#c13">
+            #13</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-22 16:35:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c7">comment #7</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25313.html#c2">comment #2</a>)
+&gt; &gt; 
+&gt; &gt; What about using either or both of bold and italic text for the tab title
+&gt; &gt; depending on circumstances? For instance, bold for unread, bold italic for new
+&gt; &gt; mail (which is always unread)? — Ah, wait, italic is already used if the
+&gt; &gt; folder isn't empty (or if it is empty except for a subfolder). Underlined,
+&gt; &gt; then? 
+&gt; 
+&gt; underlined = current folder.
+&gt; 
+&gt; I never liked italic for &quot;not empty&quot;, that's one of the original options from
+&gt; Alex - what's the point of bookmarking an empty folder? I would almost like to
+&gt; scrap &quot;italics&quot; for that purpose and reuse it for &quot;new unread mail&quot;.
+&gt; 
+&gt; &gt; Or somehow customize via the options dialog (with defaults being what is
+&gt; &gt; in use now) what to use bold, italic, and underline for?
+&gt; 
+&gt; that would be possible since none of them are mutex. it would mean adding 3
+&gt; dropdowns (instead of checkboxes); and I could possibly also add the &quot;inset
+&gt; shadow&quot; that I am currently using for &quot;new unread&quot;, although that one is a
+&gt; little more complex. Also, I don't want to totally frighten my users with
+&gt; complexity on the General tab.
+&gt; 
+&gt; 
+&gt; For the moment, I prefer scrapping 
+&gt; &quot;Display tabs for folders which contain messages italic&quot;
+&gt; for
+&gt; &quot;Display tabs with newly arrived mail italic&quot;
+&gt; 
+&gt; (I am open to suggestions for better wordings)
+&gt; 
+&gt; of course I wouldn't know what the pushback from existing users would be :]
+&gt; </span >
+Sounds OK to me, and neither can I predict the pushback.
+
+Of course it is already possible to show unread and total messages by
+displaying their numbers (there are two checkboxes for that in the options
+dialog — and a third one for &quot;totals of subfolders&quot;) but it takes up room: I
+used to have both on, but nowadays I don't display the total number of messages
+per folder so that all my QF tabs remain on one row. It may be less of a
+problem for other people depending on how many QF tabs they use.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25313.html#c14">
+            #14</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-22 17:05:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c10">comment #10</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.11pre3.xpi" name="attach_7498" title="3.11 prerelease 3">attachment (id=7498)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7498&amp;action=edit" title="3.11 prerelease 3">[details]</a></span> [details]
+&gt; 3.11 prerelease 3
+&gt; 
+&gt; test version with independent options for new mail
+&gt; </span >
+
+Seems to make the SeaMonkey browser window unusable (no content, and no tab bar
+AFAICT). I have a lot of extensions though: don't know if it's intrinsic to QF
+3.11pre3, or a conflict with some other extension (such as Session Manager
+0.7.9.4). Disabling QF makes the browser usable again.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25313.html#c15">
+            #15</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-22 17:15:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. Going back to 3.10 (as found at AMO) also fixes the problem described in
+<a href="show_bug.cgi@id=25313.html#c14">comment #14</a>, of course, even with QF enabled.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25313.html#c16">
+            #16</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-01-22 17:25:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.P.S. Forgot to check the error console when seeing the problem in <a href="show_bug.cgi@id=25313.html#c14">comment
+#14</a>. Sysout/syserr were being logged, and nothing relevant there.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25313.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-23 00:09:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="new-mail-striped2.png" name="attach_7501" title="another less confusing example">Created an attachment (id=7501)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7501&amp;action=edit" title="another less confusing example">[details]</a></span>
+another less confusing example
+
+here is a better version of <span class="bz_obsolete"><a href="new-mail-striped.png" name="attach_7496" title="striped style">attachment 7496</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7496&amp;action=edit" title="striped style">[details]</a></span>:
+AMO-Editors has new mail
+Mozilla (+18), AMO (+9) and QuickFolders (+6) have unread subfolders.
+
+I tried to walk away from my desk about 3.5 meters (then I hit the hallway
+wall, sorry got a smaller house than you) but I cannot recognize anything.
+Guess your eye seight is better than mine. But I must say that, if sitting in
+front of the monitor, a quick scan reveals all unread folders to me - I really
+think an additional, unique (and maybe color configurable, with a choice of red
+gold and blue) icon on the top right of the label would be the best solution;
+everything else just doesn't stick out enough to me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25313.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-23 00:28:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c12">comment #12</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c5">comment #5</a>)
+&gt; 
+&gt; &gt; here is a screenshot from a prototype
+&gt; 
+&gt; So this shows new mail in &quot;GMail.&quot; The tab does stand out, but not for the
+&gt; italic text, but because the whole background is green, while all other tabs
+&gt; just have color stripes.</span >
+
+that was the currently open folder, which is one feature of the striped theme.
+To me knowing the current folder has even higher priority than any of the other
+styles, as it is really important to the user to answer &quot;where am I?&quot; at a
+glance.
+
+<span class="quote">&gt; 
+&gt; The colorful, busy nature of the tab style you are using pretty much makes it
+&gt; an uphill battle to make any indicator stand out.
+&gt; 
+&gt; I get the appeal of using color to coordinate things, but seeing it in use does
+&gt; make me wonder if there is a better way to accomplish the same thing. Visually,
+&gt; categorization should be at a more subtle level than status indicator.
+&gt; 
+&gt; For example, use physical positioning. Insert separators between groups of
+&gt; tabs, and/or put them on different rows in a user controlled way.</span >
+
+there are some bugs relating to this:
+[<span class="bz_closed"><a href="show_bug.cgi@id=23039.html" title="RESOLVED FIXED - Support Line Breaks to force multiple tab rows">bug 23039</a></span>] - Control of multiple rows of tabs
+[<a href="show_bug.cgi@id=25209.html" title="NEW - Grouping of Tabs - categories vs. groups">bug 25209</a>] - grouping of tabs
+
+<span class="quote">&gt; 
+&gt; If the user needs extensive categorization, then QuickFolders, at least as
+&gt; implemented as tabs, is going to hit a limit. One can imagine an alternate
+&gt; implementation for QuickFolders where it is shown as a custom hierarchy of
+&gt; folders that replace the main folder tree. This would essentially be the same
+&gt; idea as &quot;favorite folders&quot; that was implemented in earlier versions of TB (no
+&gt; sign of it in 17), which I tried for a while, but something about it fell
+&gt; short.</span >
+
+well, tabs are tabs, and they are much easier to drag &amp; drop to, they will
+always have that advantage precisely because they are larger and easier hit due
+to the horizontal orientation.
+
+as regards categories, that's precisely the reason why Alex implemented
+categories, when he still contributed to the project as programmer. You
+probably noticed the dropdown on the left hand side of my other screenshots. I
+am using the following categories:
+
+Addons
+Family
+Friends
+Groups+Registrations
+IMAP
+Inboxes
+Mozilla
+Music, Studio
+Shopping
+Work
+[Smart Folders]
+
+, and a couple of test ones.
+
+Since each tab can be member of multiple groups you can tailor QuickFolders to
+show tabs that are suited to certain work task without loosing view on your
+most important ones [WORKSFORME {tm}]. I have to say though that I hardly ever
+leave email unread and I am using the navigation keys, mainly [N], to jump to
+the next unread email about 50% of the time to make sure I did not &quot;miss&quot; any
+folder that has new mail. 
+
+I believe there is another bug that requests &quot;pinning&quot; certain tabs if they
+contain unread mail, regardless of their category, but that's a different
+discussion.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25313.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-01-23 01:41:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c12">comment #12</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c5">comment #5</a>)
+&gt; 
+&gt; &gt; here is a screenshot from a prototype
+&gt; 
+&gt; So this shows new mail in &quot;GMail.&quot; The tab does stand out, but not for the
+&gt; italic text, but because the whole background is green, while all other tabs
+&gt; just have color stripes.</span >
+
+that was the currently open folder, which is one feature of the striped theme.
+To me knowing the current folder has even higher priority than any of the other
+styles, as it is really important to the user to answer &quot;where am I?&quot; at a
+glance.
+
+<span class="quote">&gt; 
+&gt; The colorful, busy nature of the tab style you are using pretty much makes it
+&gt; an uphill battle to make any indicator stand out.
+&gt; 
+&gt; I get the appeal of using color to coordinate things, but seeing it in use does
+&gt; make me wonder if there is a better way to accomplish the same thing. Visually,
+&gt; categorization should be at a more subtle level than status indicator.
+&gt; 
+&gt; For example, use physical positioning. Insert separators between groups of
+&gt; tabs, and/or put them on different rows in a user controlled way.</span >
+
+there are some bugs relating to this:
+[<span class="bz_closed"><a href="show_bug.cgi@id=23039.html" title="RESOLVED FIXED - Support Line Breaks to force multiple tab rows">bug 23039</a></span>] - Control of multiple rows of tabs
+[<a href="show_bug.cgi@id=25209.html" title="NEW - Grouping of Tabs - categories vs. groups">bug 25209</a>] - grouping of tabs
+
+<span class="quote">&gt; 
+&gt; If the user needs extensive categorization, then QuickFolders, at least as
+&gt; implemented as tabs, is going to hit a limit. One can imagine an alternate
+&gt; implementation for QuickFolders where it is shown as a custom hierarchy of
+&gt; folders that replace the main folder tree. This would essentially be the same
+&gt; idea as &quot;favorite folders&quot; that was implemented in earlier versions of TB (no
+&gt; sign of it in 17), which I tried for a while, but something about it fell
+&gt; short.</span >
+
+well, tabs are tabs, and they are much easier to drag &amp; drop to, they will
+always have that advantage precisely because they are larger and easier hit due
+to the horizontal orientation.
+
+as regards categories, that's precisely the reason why Alex implemented
+categories, when he still contributed to the project as programmer. You
+probably noticed the dropdown on the left hand side of my other screenshots. I
+am using the following categories:
+
+Addons
+Family
+Friends
+Groups+Registrations
+IMAP
+Inboxes
+Mozilla
+Music, Studio
+Shopping
+Work
+[Smart Folders]
+
+, and a couple of test ones.
+
+Since each tab can be member of multiple groups you can tailor QuickFolders to
+show tabs that are suited to certain work task without loosing view on your
+most important ones [WORKSFORME {tm}]. I have to say though that I hardly ever
+leave email unread and I am using the navigation keys, mainly [N], to jump to
+the next unread email about 50% of the time to make sure I did not &quot;miss&quot; any
+folder that has new mail. 
+
+I believe there is another bug that requests &quot;pinning&quot; certain tabs if they
+contain unread mail, regardless of their category, but that's a different
+discussion.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25313.html#c20">
+            #20</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2015-03-19 07:58:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I see something change in the styling of the &quot;Highlight folders with new mail&quot;
+option recently. (Actually the styling of the tabs in general changed, so I
+spent some time resetting them back to what I had.)
+
+(I can't say I recall the new mail notification working at all in recent years.
+Maybe the styling replicated my default styling, and thus no change was
+visible.)
+
+Now when a tab has new mail, I see a black background with a gradient, and the
+folder label in white, bold text, that has poor legibility (due to the
+gradient).
+
+I headed over to the &quot;Bling My Tabs!&quot; settings expecting to find an option to
+customize this, but didn't find anything relevant.
+
+Reading through this ticket, I see customizing for mail state was never an
+option. Only options for default, active, hover, and drag states. Isn't
+customization of the appearance of mail states equally important, if not more
+so? Day-to-day, I rarely ever encounter or care about the appearance of hover
+and drag states.
+
+Is this still something I can customize via CSS? If so, I'll replicate the
+current styling TB (31.5) uses, which is using red text for the folder name
+when there is new mail present (applied in addition to the bold text styling
+indicating there is unread mail present).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25313.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-19 11:57:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c20">comment #20</a>)
+<span class="quote">&gt; I see something change in the styling of the &quot;Highlight folders with new mail&quot;
+&gt; option recently. (Actually the styling of the tabs in general changed, so I
+&gt; spent some time resetting them back to what I had.)</span >
+
+We could add a configurable font color for this case, but it might not be a
+good &quot;catch-all&quot; solution when we have a mix of dark and bright-colored tabs.
+
+<span class="quote">&gt; 
+&gt; (I can't say I recall the new mail notification working at all in recent years.
+&gt; Maybe the styling replicated my default styling, and thus no change was
+&gt; visible.)</span >
+
+I have seen the &quot;New mail&quot; notification on other systems but not too often on
+my own.
+
+COlored folder:
+<a href="http://i.imgur.com/yOB6gQT.png">http://i.imgur.com/yOB6gQT.png</a>
+Same on uncolored folder:
+<a href="http://i.imgur.com/pXbbTTn.png">http://i.imgur.com/pXbbTTn.png</a>
+
+the question is, will there be a color that will look sufficiently readable for
+darkly colored and bright colored folders alike? I fear neithe a white nor a
+black font will cut it for all cases.
+
+
+One thing I could think of is adding a text-shadow rule:
+<a href="http://i.imgur.com/7yxV5Xd.png">http://i.imgur.com/7yxV5Xd.png</a>
+
+this should increase legibility and work equally on dark and bright
+backgrounds.
+
+To try it out:
+
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label
+{
+  text-shadow: 1px 1px 1px rgba(40, 40, 40, 0.8) !important;
+}
+
+
+
+<span class="quote">&gt; 
+&gt; Now when a tab has new mail, I see a black background with a gradient, and the
+&gt; folder label in white, bold text, that has poor legibility (due to the
+&gt; gradient).</span >
+the background is actually an &quot;inner shadow&quot; which was meant to make the label
+visible without completely changing its color.
+
+<span class="quote">&gt; 
+&gt; I headed over to the &quot;Bling My Tabs!&quot; settings expecting to find an option to
+&gt; customize this, but didn't find anything relevant.
+&gt; 
+&gt; Reading through this ticket, I see customizing for mail state was never an
+&gt; option. Only options for default, active, hover, and drag states. Isn't
+&gt; customization of the appearance of mail states equally important, if not more
+&gt; so? Day-to-day, I rarely ever encounter or care about the appearance of hover
+&gt; and drag states.</span >
+
+I think the main problem with this one (mail status) is that it should not
+change the &quot;Main color&quot; of the tabs as these are important orientation pointers
+for people to quickly find the correct tab. That's why this styling was added
+via the &quot;Inner&quot; label and a yellow star icon, which I am currently missing as
+well. This could replace the customized icon or maybe (?) be shown inside the
+label.
+
+
+<span class="quote">&gt; 
+&gt; Is this still something I can customize via CSS? If so, I'll replicate the
+&gt; current styling TB (31.5) uses, which is using red text for the folder name
+&gt; when there is new mail present (applied in addition to the bold text styling
+&gt; indicating there is unread mail present).</span >
+
+=&gt; there is &quot;Display tabs with newly arrived mail in italics&quot; already as an
+option on the General Tab!!
+
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label
+{
+  text-shadow: 1px 1px 1px rgba(40, 40, 40, 0.8) !important;
+  /* add your rules here */
+}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25313.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-19 12:10:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c21">comment #21</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25313.html#c20">comment #20</a>)</span >
+
+
+also try this:
+
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread {
+list-style-image: url(&quot;chrome://quickfolders/skin/ico/newUnread.png&quot;)
+!important;
+}
+
+it should add the &quot;diamond&quot; that can already be seen in popup menus
+<a href="http://i.imgur.com/5tr3R7f.png">http://i.imgur.com/5tr3R7f.png</a>
+(here: in QF-bugs)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25313.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-19 12:13:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.1pre6.xpi" name="attach_8025" title="4.1 prerelease 6">Created an attachment (id=8025)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8025&amp;action=edit" title="4.1 prerelease 6">[details]</a></span>
+4.1 prerelease 6
+
+Ok here is one where I coded my above suggestions. Also made teh text-shadow
+even darker and re-enabled the diamond. Works well for me.
+
+Thanks to QuckFOlders Pro finally being alive I can return to more civilized
+version numbers (prereleases were notoriously 3digits. 4.0.* had over 1200 test
+builds !!)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25313.html#c24">
+            #24</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2015-03-22 11:11:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c21">comment #21</a>)
+<span class="quote">&gt; Same on uncolored folder:
+&gt; <a href="http://i.imgur.com/pXbbTTn.png">http://i.imgur.com/pXbbTTn.png</a></span >
+
+Yes, that's what I was seeing.
+
+
+<span class="quote">&gt; One thing I could think of is adding a text-shadow rule:
+&gt; <a href="http://i.imgur.com/7yxV5Xd.png">http://i.imgur.com/7yxV5Xd.png</a>
+&gt; this should increase legibility and work equally on dark and bright
+&gt; backgrounds.</span >
+
+Sure, that's an improvement, but still is not ideal from a legibility
+perspective, and doesn't match TB's styling.
+
+
+<span class="quote">&gt; We could add a configurable font color for this case, but it might not be a
+&gt; good &quot;catch-all&quot; solution when we have a mix of dark and bright-colored tabs.
+&gt; 
+&gt; the question is, will there be a color that will look sufficiently readable 
+&gt; for darkly colored and bright colored folders alike? I fear neithe a white 
+&gt; nor a black font will cut it for all cases.</span >
+
+I understand your concern for a universal styling, and I think we discussed it
+at length in this ticket in past years.
+
+
+<span class="quote">&gt; I think the main problem with this one (mail status) is that it should not
+&gt; change the &quot;Main color&quot; of the tabs as these are important orientation 
+&gt; pointers for people to quickly find the correct tab.</span >
+
+For the subset of people who use colored tabs as an organizational tool. (I
+don't happen to be one of them. In my opinion, colored tabs should be an
+advance or non-default setting, and it should be the responsibility of the user
+selecting colors to work around conflicts with stock styling, or be willing to
+alter the stock styling. Much the same way someone choosing to use all dark
+background colors would need to switch to a light font color. Hey, don't you
+support the concept of palettes? Couldn't each pallet include complementary
+attribute styling to match?)
+
+
+<span class="quote">&gt; That's why this styling was added
+&gt; via the &quot;Inner&quot; label and a yellow star icon...</span >
+
+Using the graphic icon exclusively as the default way to show new mail would
+get my vote, as far as a least-effort solution. It accomplishes the job is a
+highly visible way and works with all background colors.
+
+If you want to put more time into it, adding the ability to configure the
+styling from the bling dialog would be a welcome improvement.
+
+And requiring yet more effort: having QuickFolders introspect TB's styling and
+replicate it for the tabs, including the new mail notification, would be ideal.
+This way if I recommend QuickFolders to a colleague, I can have confidence that
+when they first install it, it will seamlessly blend in with TBs styling
+without requiring any appearance customization effort.
+
+
+<span class="quote">&gt; =&gt; there is &quot;Display tabs with newly arrived mail in italics&quot; already as an
+&gt; option on the General Tab!!</span >
+
+Ah, I overlooked that. But it is applied in addition to the other styling
+changes for new mail, and compared to the background change and shadowing
+effect, italics are pretty subtle.
+
+
+(In reply to <a href="show_bug.cgi@id=25313.html#c23">comment #23</a>)
+<span class="quote">&gt; Ok here is one where I coded my above suggestions. Also made the text-shadow
+&gt; even darker and re-enabled the diamond. Works well for me.</span >
+
+That works as intended. I see the star and the label text is more legible.
+
+I'd still prefer an unaltered background with red text. (With or without the
+star.) If that doesn't fit your vision, that's fine. It looks like the CSS
+hooks are adequate that I can customize that way, which I don't mind doing.
+
+I appreciate the quick turn-around on the tweaked version.
+
+ -Tom
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25313.html#c25">
+            #25</a> From 
+          <a href="mailto:tmetro-mozilla&#64;tommetro.com">Tom Metro</a>
+          2015-03-24 14:26:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >FYI, I loaded up my userChrome.css to make the customizations of QuickFolders,
+and I see I had entries there for the main TB folder tree:
+
+/* Folder Pane Color for New Mail */
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true) {
+color: #A51010 !important;
+}
+
+This causes folders with new mail to show as a shade of red. I don't recall
+when I added that. It looks like he default is to show folders with new mail in
+a shade of blue.
+
+I mention this because I referenced this styling in my prior comments. The idea
+of having QuickFolders replicate the styling used by TB is obviously more
+complicated if those default style has been customized via userChrome.css.
+(Although if TB provides adequate access to the DOM nodes or computed CSS, QF
+could still replicate the styles actually in use.)
+
+
+I ended up adding the following rules to userChrome.css to have QF replicate
+the style used in my folder tree:
+
+#QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label,
+#QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
+#QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
+{
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border-style: none !important;
+  color: #A51010 !important;
+}
+
+I didn't feel strongly for or against the star icon, so I left it. It's
+superfluous, but having it is consistent with what TB does, which is to alter
+the folder icon to show a star.
+
+
+I'm just glad to see the new mail notification working in QF now, which it
+hadn't been for a long time. (Not sure if that's because the default styling
+resulted in no visible change, or an incompatibility with Linux, but whatever
+the case, it hadn't been working prior to the last QF update.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25313.html#c26">
+            #26</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-24 15:46:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25313.html#c25">comment #25</a>)
+<span class="quote">&gt; FYI, I loaded up my userChrome.css to make the customizations of QuickFolders,
+&gt; and I see I had entries there for the main TB folder tree:
+&gt; 
+&gt; /* Folder Pane Color for New Mail */
+&gt; treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true) {
+&gt; color: #A51010 !important;
+&gt; }
+&gt; 
+&gt; This causes folders with new mail to show as a shade of red. I don't recall
+&gt; when I added that. It looks like he default is to show folders with new mail in a shade of blue.
+&gt; 
+&gt; I mention this because I referenced this styling in my prior comments. The idea
+&gt; of having QuickFolders replicate the styling used by TB is obviously more
+&gt; complicated if those default style has been customized via userChrome.css.</span >
+
+Well that's one case. I meant to reply earlier - it is actually very very
+difficult when you are also throw in full themes into the mix. I would like my
+interfaces to be usable at least in my favorite themes Nautipolis, Walnut2 and
+TT deepdark. So what might look great on Windows with Aero enabled might not
+actually be a great choice for Mac OS or Ubuntu with a dark skin. Themes have
+no standard mechanism for coloring backgrounds some use background image on a
+lower level or various gradients overlapping each other, everybody uses
+slightly different selectors so it is extremely difficult to find out the exact
+style that needs to be undone. 
+
+Lazy UI designers will resort to attaching an !important rule to any and all of
+their styles, I try to avoid this as much as possible so that themes can
+override these settings and are able to blend in my own designs better with
+their vision / color choice. 
+
+That's also why I chose not to use the &quot;color channel&quot; for this important new
+mail status and was looking for something that would override and work with all
+custom colors; shadows and sometimes borders are really a good choice here as
+they integrate very well with all color choices. A dark shadow (for bright
+text) might be invisible on a dark background but it may just be the saving
+grace when using a bright one. 
+
+Another problem is that you often cannot even trust the OS-specific colose
+(such as menu highlight) as they can be abused by the OS skin for other
+purposes. From my own experience I would rather have the user decide for a
+color chocie for certain things (like active folder) and pick the color
+themselves. A lot of &quot;clever&quot; system color choices make assumptions based on OS
+such as bright blue transparent background in Windows Aero - and so they might
+think that dark text will always work. They do not take into acocunt that the
+Aero engine can be completely restyled (I am using Windowblinds) to look like
+Mac or Unix or any fantasy UI (e.g. Startrek). 
+
+
+<span class="quote">&gt; (Although if TB provides adequate access to the DOM nodes or computed CSS, QF
+&gt; could still replicate the styles actually in use.)</span >
+
+Computed CSS may help with certain things like font color; but sadly background
+appearance is much more complicated than this. You have multiple layers which
+can be transparent, so although your label element might be rgba(20,90,180,0.3)
+it will still let the background color of a button (which might have a
+transparent linear gradient) shine through. that button might be partly
+translucent and depend on the hbox (or canvas) that it is one, which might be
+bright yellow. So who is to say what resulting &quot;background color&quot; this label
+will have? This is a highly complex beast, and the longer I worked with it the
+more certain I can say that nothing is predictable.
+
+<span class="quote">&gt; 
+&gt; 
+&gt; I ended up adding the following rules to userChrome.css to have QF replicate
+&gt; the style used in my folder tree:
+&gt; 
+&gt; #QuickFolders-Toolbar toolbarbutton[biffState-NewMail].has-unread &gt; label,
+&gt; #QuickFolders-Toolbar menu[biffState-NewMail].hasUnread,
+&gt; #QuickFolders-Toolbar menuitem[biffState-NewMail].hasUnread
+&gt; {
+&gt;   box-shadow: none !important;
+&gt;   text-shadow: none !important;
+&gt;   border-style: none !important;
+&gt;   color: #A51010 !important;
+&gt; }</span >
+
+[biffState-NewMail] is definitely the correct track. I would suggest you look
+at styling background-color or background-image as well in order to avoid &quot;bad
+surprises&quot;. It is always problematic to define a text color without specifying
+background with it. However you have a choice whether you doe this on the
+button (menu) level or lower down on the actual textnode. (Enable anonymous
+nodes in DOM inspector to take your pick)
+
+
+<span class="quote">&gt; 
+&gt; I didn't feel strongly for or against the star icon, so I left it. It's
+&gt; superfluous, but having it is consistent with what TB does, which is to alter
+&gt; the folder icon to show a star.</span >
+
+I agree. The one I chose is a little &quot;clunky&quot; so at some stage I might make
+this configurable. I kind of like a fixed color (like gold in this case) as it
+is a good anchoring point when I change themes often.
+
+
+<span class="quote">&gt; I'm just glad to see the new mail notification working in QF now, which it
+&gt; hadn't been for a long time. (Not sure if that's because the default styling
+&gt; resulted in no visible change, or an incompatibility with Linux, but whatever
+&gt; the case, it hadn't been working prior to the last QF update.)</span >
+
+I think it had to do with CSS specificity - but also I might have made a
+leveling mistake with that icon. The fix is definitely going into the next
+release, rather sooner than later.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25313&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

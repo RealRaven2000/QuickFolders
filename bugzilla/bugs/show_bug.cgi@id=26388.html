@@ -1,0 +1,937 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26388 &ndash; Fail to insert header under some circumstances</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26388&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26388">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26388">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26388">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26388">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26388</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Fail to insert header under some circumstances</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2017-07-29 14:33:33</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26388&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2017-07-29 14:33:33">
+  <input type="hidden" name="longdesclength" value="7">
+  <input type="hidden" name="id" value="26388">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Fail to insert header under some circumstances">Fail to insert header under some circumstances
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26388.html">26388</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26388&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26388">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:stan&#64;thinkon.us">Stan McClellan &lt;stan&#64;thinkon.us&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="henkvc&#64;fastmail.nl">henkvc&#64;fastmail.nl</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-1.5pre45.xpi"
+               title="View the content of the attachment">
+          <b>1.5 prerelease 45</b></a>
+
+          <span class="bz_attach_extra_info">
+              (389.52 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26388.html#attach_8307"
+               title="Go to the comment associated with the attachment">2017-07-26 08:21</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8307&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26388&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26388&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26388">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26388">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26388">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26388">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26388.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2017-07-06 15:52
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >The header insertion fails under some circumstances, most commonly seems to be
+when the sender is Outlook.com, which don't seem to be normal SMTP emails ...
+there's never a &quot;normal body&quot;.
+
+From Thunderbird error console:
+
+[.. happy .. ]
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 17:36:8.106  [2 ms]    retrieving
+Template: getSmartTemplate(rsp, id8)
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 17:36:8.106  [0 ms]    retrieving
+quote Header: getQuoteHeader(rsp, id8)
+SmartTemplate4 17:36:8.180  [74 ms]      classGetHeaders - early exit -
+msgContent length&gt;16kB: 18432
+insertTemplate - exception during parsing. Continuing with inserting template!
+hdr.get is not a function  smartTemplate-overlay.js:1100
+SmartTemplate4 {FUNCTIONS.INSERTTEMPLATE} 17:36:8.194  [14 ms]   search
+%cursor% in template: false
+[.. continuing with standard header .. ]
+
+From Thunderbird view message source:
+
+[.. bunch of headers .. ]
+X-Microsoft-Exchange-Diagnostics:
+       
+1;SN2PR11MB0112;27:MHyFKDeQAZxc/+jscZR7jr78Y4iZLVe0wr6kDWb7qQRQQAVeQC1lUhFlKz1jbQgfPBEQ0O0BpF6h8DnXoywt+hBekodPZslUD+uI5qeRHPUJmea7BieZOi4v1L0E6Mo7ai1TZyFGc9/bcri/jEvhLA==
+MIME-Version: 1.0
+
+--_000_MWHPR11MB1598CAEA998349B156C7B65AD6D50MWHPR11MB1598namp_
+Content-Type: text/plain; charset=&quot;utf-8&quot;
+Content-Transfer-Encoding: base64
+X-Microsoft-Exchange-Diagnostics:
+       
+1;SN2PR11MB0112;27:MHyFKDeQAZxc/+jscZR7jr78Y4iZLVe0wr6kDWb7qQRQQAVeQC1lUhFlKz1jbQgfPBEQ0O0BpF6h8DnXoywt+hBekodPZslUD+uI5qeRHPUJmea7BieZOi4v1L0E6Mo7ai1TZyFGc9/bcri/jEvhLA==
+
+SGkgU3RhbiwNCg0KU29ycnkgZm9yIG15IGRlbGF5ZWQgcmVwbHkuICBJIHdhcyBvdXQgb2YgdGhl
+IG9mZmljZSBmb3IgYSBmZXcgZGF5cyBlbmpveWluZyB0aGUgY29vbCwgY2xlYXIgd2F0ZXIgb24g
+dGhlIEZyaW8gUml2ZXIuDQoNClRoYW5rcyBhZ2FpbiBmb3IgaGF2aW5nIG1lIGF0IHRoZSBwYW5l
+bC4gIEnigJlkIGJlIGhhcHB5IHRvIHByb3ZpZGUgYSBsZXR0ZXIgb2Ygc3VwcG9ydC4gIFRoZSB2
+aXNpb24gb2YgeW91ciBwcm9ncmFtIGlzIHZlcnkgZXhjaXRpbmcgdG8gbWUuICBOZXcgYXBwcm9h
+Y2hlcyB0byBwcm90ZWN0aW5nIHdhdGVyIHJlc291cmNlcyBhcmUgbmVlZGVkIHRvIGFjY29tbW9k
+[.. rest of MIME attachment .. ]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26388.html#c1">
+            #1</a> From 
+          <a href="mailto:henkvc&#64;fastmail.nl">Henk VC</a>
+          2017-07-24 16:33:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have the same problem using Thunderbird + SmartTemplate4 on Win 10 and
+discovered that since about the mid of June 2017 Microsoft is adding the next
+lines to the mailheader:
+
+X-Microsoft-Exchange-Diagnostics:
+=?us-ascii?Q?1;AM5EUR02HT071;25:7rINGs0qwSJGGcBbwzBSDPICm4hI9DjnXBp5AXiTA?=
+ =?us-ascii?Q?Y/nTxbbGoI59VYAe2r7/KlL5T2UxRjmIAe4OOeuD86gh0gCs3dN0ZTTImJmZ?=
+ =?us-ascii?Q?QQX1Xt7VnOxfk/0n9Ua8B9Ud5Ze6WnkeqGEQVd/fSduzvQP3CtKJvwXgv8H0?=
+ =?us-ascii?Q?Q80ixB98IOTxx0h1hhAfZ9ksinMmKLCzE592ZJE+3FxhjhIJGmwb4nenReTw?=
+ =?us-ascii?Q?OZR3uvOOUHiVVyCoFtS2yZx//mVYekQruph6B3tDMBxSU1lJemQ7e2svOJV7?=
+ =?us-ascii?Q?2lMP+E7t7DgY5n6brR8FeoZ63zMPRg9h8t2MRAjTJ3Nwa8NL3ps4dH+F78Iv?=
+ =?us-ascii?Q?642za9ISMjRiePIFsahFvDAs8IpcD5/TaGFwY0QBoFOtmbcAyDqswgs3M14b?=
+ =?us-ascii?Q?zcLexQDNSSucJ0plPcFS+QqfF2B2oDO7R9UjRoMfD5gl6x0NzvMMCxhj8CEi?=
+ =?us-ascii?Q?YPr/Te8WFs+wuIRNCMpbO04GfPuBeZ57piEtMUlD+BZMpxWQwi0zp458wsFK?=
+ =?us-ascii?Q?ivnmGp6Xv61YNGZgKe4cZdSSoYiXlja42dKizeEsBwyAfB9msicMscUiAVFW?=
+ =?us-ascii?Q?FFWzIGVMYHSCF5MDmB4OoI/oolr9gHw15J0AG7NBhJIVSswj0CyynJ5ldXgh?=
+ =?us-ascii?Q?yhONhqR1KWsYE/PL3TSKFiN5M1ectioBv9T5xprhs6q5iXE2xanmSHEhTbNz?=
+ =?us-ascii?Q?Alqpei2MLaWcafeg6SV8io6iqSOsj44/pszAGOMaw7uJKCIlbwVvC8BfUZwa?=
+ =?us-ascii?Q?6PUAdh18acnPAeEmD5CnGc+j7wWZxI1BV+W+Q2U/n6YSE17jTWMRyVd6sAyh?=
+ =?us-ascii?Q?jXWkO584B5jGsPPKdSp+VXnffrg20fX9LHEpuWNf2M3wVC3OadbuaOh62Wb2?=
+ =?us-ascii?Q?eZHn19wh2uDl+luk9z0pessL3Fcu/u3t5b16J9vedypIYcYGXT0l/LF0ZBVM?=
+ =?us-ascii?Q?Zaxe3VpkrFW7sb+fGEMHSb64CL+tQOgT9Ub0WWa5iMKRUuKcimnMzRTMd+/K?=
+ =?us-ascii?Q?6p1WrlwqPu+DVIHwnHfXCsx?=
+
+When I remove this from the original .eml file and put the new file back into
+Thunderbird then the intended mail text is inserted again.
+SmartTemplate 4 should somehow ingnore these Microsoft Exchange Diagnostics
+lines.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26388.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-07-25 02:36:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Would it be possible to send me a test email to my address so I can test it?
+The 16kB limit may be something that affects more emails (not just the ones
+with that MS header) One big problem with the addon is that it needs to load a
+full stream of the email in order to parse certain headers. 
+
+See also [<a href="show_bug.cgi@id=25887.html" title="ASSIGNED - Offline Attachments can slow down Composer startup">Bug 25887</a>] - problems may be caused by attachments in offline emails
+on SMTP servers. Streaming the message may fail in these cases.
+
+
+
+(In reply to <a href="show_bug.cgi@id=26388.html#c1">comment #1</a>)
+<span class="quote">&gt; I have the same problem using Thunderbird + SmartTemplate4 on Win 10 and
+&gt; discovered that since about the mid of June 2017 Microsoft is adding the next
+&gt; lines to the mailheader:</span >
+&lt;snip&gt;
+<span class="quote">&gt; When I remove this from the original .eml file and put the new file back into
+&gt; Thunderbird then the intended mail text is inserted again.
+&gt; SmartTemplate 4 should somehow ingnore these Microsoft Exchange Diagnostics
+&gt; lines.
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26388.html#c3">
+            #3</a> From 
+          <a href="mailto:henkvc&#64;fastmail.nl">Henk VC</a>
+          2017-07-25 04:10:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+You are right it is not related to some specific code in the header but to the
+header size.
+I tried to reproduce this issue by creating a testmail between my own accounts
+including some forwarding and I had troubles to reproduce the problem, just
+because I did just not pass that limit of about 16k in the header.
+
+I'll send you an example of a .eml file that causes the problem due to it's
+header size. For privacy reasons I'll send it to your private email address.
+
+Best regards,
+Henk
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26388.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-07-26 08:21:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-1.5pre45.xpi" name="attach_8307" title="1.5 prerelease 45">Created an attachment (id=8307)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8307&amp;action=edit" title="1.5 prerelease 45">[details]</a></span>
+1.5 prerelease 45
+
+I was able to open the email successfully with this version (I increased the
+header size to 64kbyte to be sure)
+
+The stream is read in 2kB chunks and I will abort reading after 32 of these
+chunks (instead of 8).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26388.html#c5">
+            #5</a> From 
+          <a href="mailto:henkvc&#64;fastmail.nl">Henk VC</a>
+          2017-07-29 03:36:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+I tested version 1.5 prerelease 45 and for me it solves the problem.
+I did not notice any slow down by processing 64kB instead of 16kB header size.
+
+Best regards,
+Henk
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26388.html#c6">
+            #6</a> From 
+          <a href="mailto:stan&#64;thinkon.us">Stan McClellan</a>
+          2017-07-29 14:33:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I tested v-1.5 pre-1.45 on Ubuntu 16.04 with Thunderbird 52.2.1, and it works
+great.  Excellent add-on.  Donation on the way.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26388&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

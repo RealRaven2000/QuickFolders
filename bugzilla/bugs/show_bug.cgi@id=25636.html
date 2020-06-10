@@ -1,0 +1,1332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25636 &ndash; Make tab tooltips configurable</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25636&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25636">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25636">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25636">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_VERIFIED bz_component_General bz_bug_25636">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25636</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Make tab tooltips configurable</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-01-03 14:27:01</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25636&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-01-03 14:27:01">
+  <input type="hidden" name="longdesclength" value="15">
+  <input type="hidden" name="id" value="25636">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Make tab tooltips configurable">Make tab tooltips configurable
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25636.html">25636</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>VERIFIED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25636&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25636">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck &lt;antoine.mechelynck&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="NTT_options.png"
+               title="View the content of the attachment">
+          <b>screenshot of Nightly Tester Tools UI</b></a>
+
+          <span class="bz_attach_extra_info">
+              (60.70 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25636.html#attach_7726"
+               title="Go to the comment associated with the attachment">2013-11-16 00:05</a>,
+
+            <a href="mailto:antoine.mechelynck&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Tony Mechelynck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7726&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.14pre12.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 12</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.08 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25636.html#attach_7727"
+               title="Go to the comment associated with the attachment">2013-11-17 03:05</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7727&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.14pre16.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 16</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.57 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25636.html#attach_7729"
+               title="Go to the comment associated with the attachment">2013-11-18 04:23</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7729&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-3.14pre20.xpi"
+               title="View the content of the attachment">
+          <b>3.14 prerelease 20</b></a>
+
+          <span class="bz_attach_extra_info">
+              (497.81 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25636.html#attach_7735"
+               title="Go to the comment associated with the attachment">2013-11-22 01:26</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7735&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25636.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25636&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25636&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25636">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25636">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25636">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25636">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25636.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-11-16 00:05
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="NTT_options.png" name="attach_7726" title="screenshot of Nightly Tester Tools UI">Created an attachment (id=7726)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7726&amp;action=edit" title="screenshot of Nightly Tester Tools UI">[details]</a></span>
+screenshot of Nightly Tester Tools UI
+
+Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0
+SeaMonkey/2.24a1 ID:20130919003001 c-c:1ea1fc3586db m-c:803189f35921
+
+QF 3.14 pre4
+
+When I hover the mouse over a tab, here are a few examples of what I get:
+
+Inbox @ Movemail account [localhost]
+Inbox @ Local Folders [Local Folders]
+Trash @ Local Folders [Local Folders]
+Planet Mozilla @ News &amp; Blogs [Feeds]
+mozilla.community.belgium @ Mozilla News [news.mozilla.org]
+
+The part between [] seems to me to be redundant with the part between it
+(excluded) and the @ sign (included). Would it be very hard to have a
+preference to customize that tooltip, allowing e.g. to drop one or the other of
+those redundant parts, and maybe to add the number of messages (unread / all)?
+I imagine the UI could be similar to what the Nightly Tester Tools extension
+(for Firefox, Thunderbird and SeaMonkey) uses to customize the window title and
+the &quot;Build ID&quot; which I pasted (in my non-default customization) at top of this
+bug description. (Of course the choices would be different.)
+
+See the attached snapshot for the UI used in NTT 3.7pre20131013 (a &quot;beta&quot;
+versions with more options than the current &quot;stable&quot; version). All rows are
+clickable to append the concerned item at the end of the titlebar. The &quot;Build
+ID&quot; string can still only be customized via about:config (or the Thunderbird
+&quot;Config Editor&quot;), see the &quot;Settings and &quot;Variables&quot; sections of
+<a href="https://wiki.mozilla.org/Auto-tools/Automation_Development/Projects/Addons/NightlyTesterTools">https://wiki.mozilla.org/Auto-tools/Automation_Development/Projects/Addons/NightlyTesterTools</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25636.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-17 02:04:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >OK, I can make it configurable to a degree. not sure if I care to build a whole
+big interface + string parser like in the customize titlebar screenshot you
+showed - seems a bit overkill. Also note that I would rather not add the counts
+to the tooltips as I do not refresh tooltips as often as the tab labels for
+performance reasons. I build them once when the toolbar is refreshed (usually
+when you select a different category or add a new tab).
+
+Since counts are already there as an option on the tabs themselves it seems
+like an unnecessary duplication. The main reason for the tooltips is to avoid
+confusion when you add multiple folders of the same name, so the current format
+is:
+
+Folder Name @ Base Folder [server name]  (virtual)
+
+- the (virtual) part is shown when  the folder's MSG_FOLDER_FLAG_VIRTUAL is
+set, e.g. you have a search folder or unified folder.
+
+usually base folder and server name are different but you have a point when you
+say this feels like unnecessary duplication. While we are there we could add an
+optional parent folder so it could be:
+
+parent/folder @ Base Folder [server] (virtual)
+1.     2.       3.           4.       5.
+
+with the parts 1. 3. 4. 5. as optional. As regards UI, I think I will be lazy
+and employ the same technique as when you right-click the debug checkbox (opens
+a filtered about:config window). This way I can add new options later without
+the need for getting my translators involved.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25636.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-17 03:05:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre12.xpi" name="attach_7727" title="3.14 prerelease 12">Created an attachment (id=7727)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7727&amp;action=edit" title="3.14 prerelease 12">[details]</a></span>
+3.14 prerelease 12
+
+Here is a quick test version - if you want additional information from the
+folder, here are some attributes that could be got:
+
+<a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgFolder#Attributes">https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgFolder#Attributes</a>
+
+The button [Configure Tooltips...]  (in Tab Contents) should open about:config
+to only display these 4 new options:
+
+extensions.quickfolders.tooltips.baseFolder
+extensions.quickfolders.tooltips.parentFolder
+extensions.quickfolders.tooltips.serverName
+extensions.quickfolders.tooltips.virtualFlag
+
+there is a problem with the new button for some reason this filter doesn't work
+all the time, if you see a lot more options simply close the config window and
+try clicking the button again. Also, for the changes to be applied you
+currently have to click [Ok] on the QF preferences dialog or select &quot;Refresh
+Visible Tabs&quot; from the context menu. (to be fixed)
+
+Only contains German and English locale (opening QuickFolders Options in other
+languages will fail).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25636.html#c3">
+            #3</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-17 13:16:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25636.html#c1">comment #1</a>)
+<span class="quote">&gt; OK, I can make it configurable to a degree. not sure if I care to build a whole
+&gt; big interface + string parser like in the customize titlebar screenshot you
+&gt; showed - seems a bit overkill.</span >
+
+I just posted one possible UI as a kind of &quot;maximum&quot; example. Between that and
+WONTFIX (which would be &quot;the minimum&quot;), you (as the module's owner) have a wide
+latitude of choice.
+
+<span class="quote">&gt; Also note that I would rather not add the counts
+&gt; to the tooltips as I do not refresh tooltips as often as the tab labels for
+&gt; performance reasons. I build them once when the toolbar is refreshed (usually
+&gt; when you select a different category or add a new tab).
+&gt; 
+&gt; Since counts are already there as an option on the tabs themselves it seems
+&gt; like an unnecessary duplication. The main reason for the tooltips is to avoid
+&gt; confusion when you add multiple folders of the same name, so the current format
+&gt; is:
+&gt; 
+&gt; Folder Name @ Base Folder [server name]  (virtual)
+&gt; 
+&gt; - the (virtual) part is shown when  the folder's MSG_FOLDER_FLAG_VIRTUAL is
+&gt; set, e.g. you have a search folder or unified folder.
+&gt; 
+&gt; usually base folder and server name are different but you have a point when you
+&gt; say this feels like unnecessary duplication. While we are there we could add an
+&gt; optional parent folder so it could be:
+&gt; 
+&gt; parent/folder @ Base Folder [server] (virtual)
+&gt; 1.     2.       3.           4.       5.
+&gt; 
+&gt; with the parts 1. 3. 4. 5. as optional. As regards UI, I think I will be lazy
+&gt; and employ the same technique as when you right-click the debug checkbox (opens
+&gt; a filtered about:config window). This way I can add new options later without
+&gt; the need for getting my translators involved.
+&gt; </span >
+OK. I just downloaded the attachment you created with <a href="show_bug.cgi@id=25636.html#c2">comment #2</a>, it will be
+installed at next restart. Stay tuned to this channel for future developments
+on this subject.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25636.html#c4">
+            #4</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-17 15:25:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25636.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre12.xpi" name="attach_7727" title="3.14 prerelease 12">attachment (id=7727)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7727&amp;action=edit" title="3.14 prerelease 12">[details]</a></span> [details]
+&gt; 3.14 prerelease 12
+&gt; 
+&gt; Here is a quick test version - if you want additional information from the
+&gt; folder, here are some attributes that could be got:
+&gt; 
+&gt; <a href="https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgFolder#Attributes">https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgFolder#Attributes</a>
+&gt; 
+&gt; The button [Configure Tooltips...]  (in Tab Contents) should open about:config
+&gt; to only display these 4 new options:</span >
+
+I found the button after attentively rereading this comment. (Approximating
+from memory wasn't enough.) On first try it showed all possible prefs, so as
+you said I closed the window and reclicked the button. This worked as
+advertised.
+
+<span class="quote">&gt; 
+&gt; extensions.quickfolders.tooltips.baseFolder
+&gt; extensions.quickfolders.tooltips.parentFolder
+&gt; extensions.quickfolders.tooltips.serverName
+&gt; extensions.quickfolders.tooltips.virtualFlag
+&gt; 
+&gt; there is a problem with the new button for some reason this filter doesn't work
+&gt; all the time, if you see a lot more options simply close the config window and
+&gt; try clicking the button again. Also, for the changes to be applied you
+&gt; currently have to click [Ok] on the QF preferences dialog or select &quot;Refresh
+&gt; Visible Tabs&quot; from the context menu. (to be fixed)
+&gt; 
+&gt; Only contains German and English locale (opening QuickFolders Options in other
+&gt; languages will fail).
+&gt; </span >
+
+These four preferences are all boolean, their use feels really friendly:
+toggling each of them does what one would naturally think that it should do.
+For a minimum solution, I think you have outdone yourself.
+
+I see that Mozdev only proposes &quot;review ? - +&quot; as flag on an attachment, and I
+don't feel qualified as a reviewer. If we were at bugzilla.mozilla.org I would
+give you feedback+ even if not asked for it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25636.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-18 04:23:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre16.xpi.1" name="attach_7729" title="3.14 prerelease 16">Created an attachment (id=7729)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7729&amp;action=edit" title="3.14 prerelease 16">[details]</a></span>
+3.12.2 prerelease 16
+
+Fixed a couple of things: Now the QuickFolders toolbar is (and tooltips are) 
+refreshed when the about:config window is closed (however not instantly when
+you change the setting). Also the readonly portion of the filter was fixed
+(before you could delete the filter contents and inadvertently change other
+unrelated settings). Finally, the window now stays on top of the QF options
+window (even when you click that).
+
+I am not sure if the filter reliability problem is fixed, but so far it worked
+for me every time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25636.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-18 04:24:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >changed title for clarity.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25636.html#c7">
+            #7</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-18 17:28:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre16.xpi.1" name="attach_7729" title="3.14 prerelease 16">attachment 7729</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7729&amp;action=edit" title="3.14 prerelease 16">[details]</a></span>)
+typo in attachment title
+
+Thanks for your attention to detail in an already excellent enhancement to this
+outstanding product.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25636.html#c8">
+            #8</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-21 17:42:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0
+SeaMonkey/2.24a1 ID:20130919003001 c-c:1ea1fc3586db m-c:803189f35921
+
+QF 3.14pre17 from <span class="bz_closed"><a href="show_bug.cgi@id=25608.html" title="RESOLVED FIXED - In single message view, QF tabs should do something useful">bug 25608</a></span> <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre17.xpi" name="attach_7731" title="3.14 prerelease 17">attachment 7731</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7731&amp;action=edit" title="3.14 prerelease 17">[details]</a></span>
+
+Clicking the button still brought up (at first) an about:config window with all
+prefs shown; OK on retry.
+
+Maybe the fact that I have an about:config tab in the Browser, with a different
+filter set (&quot;ghtth&quot; to get the preferences concerning lightweight themes) is
+relevant.
+
+Apart from this small quirk, the fix is all right for me. I propose to declare
+this bug FIXED, document the possible need to close and retry as a known
+problem, and (if you think it's worth it) open it as a low-priority followup
+bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25636.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-22 01:26:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.14pre20.xpi" name="attach_7735" title="3.14 prerelease 20">Created an attachment (id=7735)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7735&amp;action=edit" title="3.14 prerelease 20">[details]</a></span>
+3.14 prerelease 20
+
+I replaced the timer in charge of filtering (which is obviously to hit and
+miss) with a load event listener for the about:config window in order to make
+sure the filter works. Having the filter unreliable defeats the whole purpose
+of loading a subset of configuration settings. I also added another tooltip
+part:
+
+extensions.quickfolders.tooltips.msgFolderFlags
+
+This appends a hexadecimal representation of all folder flags, as documented
+in:
+
+<a href="https://developer.mozilla.org/en-US/docs/nsMsgFolderFlags.idl">https://developer.mozilla.org/en-US/docs/nsMsgFolderFlags.idl</a>
+
+hope this resolves the config filtering problem even on SeaMonkey. THis version
+also includes some SeaMonkey specific fixes regarding &quot;single message&quot; tabs;
+since SM always uses the 3pane mode (even when opening a message in a tab) it
+clicking a QuickFolder Tab used to be unreliable then. Now it is able to open a
+new tab (or reuse existing one if the folder is already open) while viewing a
+single mail.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25636.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-11-22 01:32:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25636.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-3.14pre20.xpi" name="attach_7735" title="3.14 prerelease 20">attachment (id=7735)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7735&amp;action=edit" title="3.14 prerelease 20">[details]</a></span> [details]
+&gt; 3.14 prerelease 20
+&gt; </span >
+PS: the following locales are included in this version:
+de
+nl
+ca
+en-US
+es-MX
+it
+pl
+pt-BR
+sr
+sv-SE
+
+these locales are yet incomplete (lead to error when opening options):
+fr
+hu-HU
+ja-JP
+ru
+vi
+zh
+zh-CN
+
+Will mark this as fixed as soon as the about:config filter is reported back as
+reliable.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25636.html#c11">
+            #11</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-23 05:00:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25636.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-3.14pre20.xpi" name="attach_7735" title="3.14 prerelease 20">attachment (id=7735)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7735&amp;action=edit" title="3.14 prerelease 20">[details]</a></span> [details]
+&gt; 3.14 prerelease 20
+&gt; 
+&gt; I replaced the timer in charge of filtering (which is obviously to hit and
+&gt; miss) with a load event listener for the about:config window in order to make
+&gt; sure the filter works. Having the filter unreliable defeats the whole purpose
+&gt; of loading a subset of configuration settings.</span >
+
+yes, an onload listener sounds more reliable than a timer.
+
+<span class="quote">&gt; I also added another tooltip
+&gt; part:
+&gt; 
+&gt; extensions.quickfolders.tooltips.msgFolderFlags
+&gt; 
+&gt; This appends a hexadecimal representation of all folder flags, as documented
+&gt; in:
+&gt; 
+&gt; <a href="https://developer.mozilla.org/en-US/docs/nsMsgFolderFlags.idl">https://developer.mozilla.org/en-US/docs/nsMsgFolderFlags.idl</a>
+&gt; 
+&gt; hope this resolves the config filtering problem even on SeaMonkey.</span >
+
+ah, interesting
+
+<span class="quote">&gt; This version
+&gt; also includes some SeaMonkey specific fixes regarding &quot;single message&quot; tabs;
+&gt; since SM always uses the 3pane mode (even when opening a message in a tab) it
+&gt; clicking a QuickFolder Tab used to be unreliable then. Now it is able to open a
+&gt; new tab (or reuse existing one if the folder is already open) while viewing a
+&gt; single mail.
+&gt; </span >
+
+I'll restart shortly in order to complete the installation of this new version,
+and then I'm going to test it under high load conditions (such as at startup,
+when my 100+ browser tabs are being loaded three at a time and my mail servers
+are all being checked for new mail) which is when a timer would be most likely
+to fail. And of course I'll report back here.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25636.html#c12">
+            #12</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-23 05:17:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; I'll restart shortly in order to complete the installation of this new version,
+&gt; and then I'm going to test it under high load conditions (such as at startup,
+&gt; when my 100+ browser tabs are being loaded three at a time and my mail servers
+&gt; are all being checked for new mail) which is when a timer would be most likely
+&gt; to fail. And of course I'll report back here.
+&gt; </span >
+
+Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0
+SeaMonkey/2.24a1 ID:20130919003001 c-c:1ea1fc3586db m-c:803189f35921
+
+QF 3.14pre20
+
+No need to close and reopen this time: the QF prefs were &quot;filtered&quot; on first
+attempt.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25636.html#c13">
+            #13</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-11-23 05:19:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >P.S. I toggled the new hex field and saw it at work.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25636.html#c14">
+            #14</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-12-11 12:56:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25636.html#c10">comment #10</a>)
+[...]
+<span class="quote">&gt; Will mark this as fixed as soon as the about:config filter is reported back as
+&gt; reliable.
+&gt; </span >
+
+AFAICT it's been reliable since 23 November (<a href="show_bug.cgi@id=25636.html#c12">comment #12</a>). I would have marked
+it as FIXED some time ago except you said you would.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25636&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

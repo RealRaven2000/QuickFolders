@@ -1,0 +1,104 @@
+==========================================================================
+COMMENT: THIS IS THE console2 OUTPUT FOR TEST (a)
+==========================================================================
+
+
+Sun May 22 2016 15:16:17
+Warning: unreachable code after return statement
+Source file: chrome://quickfolders/content/quickfolders-util.js
+Line: 1527, Column: 4
+Source code:
+    let oldPath = msgFolder.filePath.path.toString(); 
+ ----------
+quickFilters {LISTENERS} [logTime init]
+addTagListener()
+ ----------
+quickFilters {LISTENERS} 15:16:21.486  [0 ms]   
+Wrapping ToggleMessageTag...
+ ----------
+quickFilters {LISTENERS} 15:16:21.487  [1 ms]   
+typeof ToggleMessageTag =function
+ adding flag...
+ ----------
+quickFilters {LISTENERS} 15:16:21.487  [0 ms]   
+typeof ToggleMessageTag =function
+ ----------
+quickFilters {LISTENERS} [logTime init]
+addTagListener()
+ ----------
+quickFilters {LISTENERS} 15:16:24.656  [1 ms]   
+Wrapping ToggleMessageTag...
+ ----------
+quickFilters 15:16:24.656  [0 ms]   
+quickFilters.addTagListener: ToggleMessageTag.fromQuickFilters already is set
+
+ ----------
+quickFilters 15:17:4.659  [40003 ms]   
+Util.VersionProxy() started.
+ ----------
+quickFilters 15:17:4.665  [6 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+quickFilters {LISTENERS} 15:17:4.665  [0 ms]   
+quickFilters.onload - starts
+ ----------
+quickFilters 15:17:4.666  [1 ms]   
+toggleCurrentFolderButtons()
+ ----------
+quickFilters {LISTENERS} 15:17:4.668  [2 ms]   
+quickFilters.onload - ends
+ ----------
+quickFilters 15:17:4.692  [24 ms]   
+Util.VersionProxy() started.
+ ----------
+quickFilters 15:17:4.696  [4 ms]   
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+quickFilters {LISTENERS} 15:17:4.696  [0 ms]   
+quickFilters.onload - starts
+ ----------
+quickFilters 15:17:4.696  [0 ms]   
+toggleCurrentFolderButtons()
+ ----------
+quickFilters {LISTENERS} 15:17:4.697  [1 ms]   
+quickFilters.onload - ends
+ ----------
+quickFilters 15:17:8.740  [4043 ms]   
+AddonManager: quickFilters extension's version is 3.2.pre17
+ ----------
+quickFilters 15:17:8.752  [12 ms]   
+AddonManager: quickFilters extension's version is 3.2.pre17
+ ----------
+quickFilters 15:17:16.719  [7967 ms]   
+=================quickFilters==============
+   checkFirstRun() - attempt 1
+ ----------
+quickFilters 15:17:16.719  [0 ms]   
+firstRun = false  - currentVersion = 3.2.pre17  - installed = 3.2.
+ ----------
+quickFilters 15:17:16.720  [1 ms]   
+store installedVersion: 3.2.
+
+
+
+
+
+==========================================================================
+COMMENT: THIS IS THE console2 OUTPUT FOR TEST (b)
+==========================================================================
+
+
+quickFilters {LISTENERS} 15:35:0.323  [1118836 ms]   
+ToggleMessageTagWrapped()
+contextWin == win: true
+contextWin.quickFilters == quickFilters: true
+originalTagToggler == contextWin.quickFilters.ToggleMessageTag: false
+ToggleMessageTag == contextWin.quickFilters.ToggleMessageTag: false
+ ----------
+Sun May 22 2016 15:35:00
+Error: TypeError: contextWin.quickFilters.ToggleMessageTag is not a function
+Source file: chrome://quickfilters/content/quickFilters.js
+Line: 1323
+ ----------
+quickFilters 15:35:12.433  [1075713 ms]   
+onCloseNotification(quickfilters-filter)

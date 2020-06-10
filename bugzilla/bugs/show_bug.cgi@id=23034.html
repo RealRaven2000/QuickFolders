@@ -1,0 +1,1210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 23034 &ndash; Jitterbug: Toolbar Height changes on hover</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23034&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23034">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=23034">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23034">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_23034">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;23034</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Jitterbug: Toolbar Height changes on hover</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-08-09 13:23:11</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23034&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-08-09 13:23:11">
+  <input type="hidden" name="longdesclength" value="15">
+  <input type="hidden" name="id" value="23034">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Jitterbug: Toolbar Height changes on hover">Jitterbug: Toolbar Height changes on hover
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=23034.html">23034</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="minor">minor
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23034&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23034">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:CLweb&#64;comcast.net">Charlie &lt;CLweb&#64;comcast.net&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="CLweb&#64;comcast.net">CLweb&#64;comcast.net</option>
+            <option value="darren&#64;darrenturpin.me.uk">darren&#64;darrenturpin.me.uk</option>
+            <option value="jpf321&#64;gmail.com">jpf321&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="before.png"
+               title="View the content of the attachment">
+          <b>before hovering over a tab</b></a>
+
+          <span class="bz_attach_extra_info">
+              (7.06 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=23034.html#attach_6523"
+               title="Go to the comment associated with the attachment">2010-07-21 01:05</a>,
+
+            <a href="mailto:andrew.jack&#64;tenastic.com"
+               title="Write an email to the creator of the attachment">Andrew Jack
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6523&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="after.png"
+               title="View the content of the attachment">
+          <b>while hovering over a tab</b></a>
+
+          <span class="bz_attach_extra_info">
+              (8.81 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=23034.html#attach_6524"
+               title="Go to the comment associated with the attachment">2010-07-21 01:05</a>,
+
+            <a href="mailto:andrew.jack&#64;tenastic.com"
+               title="Write an email to the creator of the attachment">Andrew Jack
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6524&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="v1.93&#32;Hover&#32;Jitter&#32;Animation.gif"
+               title="View the content of the attachment">
+          <b>Animated GIF of the Effect</b></a>
+
+          <span class="bz_attach_extra_info">
+              (26.56 KB,
+                image/gif)
+
+            <br>
+            <a href="show_bug.cgi@id=23034.html#attach_6525"
+               title="Go to the comment associated with the attachment">2010-07-21 08:08</a>,
+
+            <a href="mailto:CLweb&#64;comcast.net"
+               title="Write an email to the creator of the attachment">Charlie
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6525&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QF-1.9.4.pre7.xpi"
+               title="View the content of the attachment">
+          <b>Integrates the patch by  Darren Turpin </b></a>
+
+          <span class="bz_attach_extra_info">
+              (182.21 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23034.html#attach_6530"
+               title="Go to the comment associated with the attachment">2010-07-27 15:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6530&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=23034&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23034&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=23034">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23034">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=23034">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=23034">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=23034.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2010-07-20 05:20
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >v1.93 has some new features re hovering over a tab, such as the orange color
+and a small change in the tab's height.  One annoying consequence is that the
+height of the whole QF toolbar also changes a little as you pass the mouse on
+and off of it, making the whole window below it &quot;jitter.&quot;  It's not a major
+problem, but it always catches my attention when it happens, and the question
+&quot;What was that?&quot; comes into my head.  A possible fix would be to have the
+toolbar display the larger height at all times, but still let the tab change
+height if that's what you want it to do.
+
+   I suppose you already know that the tab's color does NOT change to the
+&quot;hover&quot; color when if the tab has previously been manually colored by the user,
+so I won't enter that as a separate bug.  That may have been your design re
+color priorities.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=23034.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-07-20 06:16:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Charlie,
+
+I can't reproduce this, need more info.
+
+On my system there is a 4 pixel gap between the tabs (not counting shadows).
+When hovering / dragging the tabs expand by 1 pixel to the top and the bottom,
+this is to &quot;fuse&quot; the background of the active tab into the colored bar at the
+bottom of the toolbar. Kind of a &quot;cheap&quot; way to get a tabbed effect.
+
+Are you using Shadows? What font size? Which theme and Operating System? Which
+version of Thunderbird.
+
+Also do you get same behavior on standard hover or only on dragged hover?
+
+A screen shot would be also helpful. I can post some of mine for reference.
+
+tx, 
+    Axel
+
+Re <a href="show_bug.cgi@id=2.html" title="NEW - fix on status">Bug2</a>: 
+<span class="quote">&gt;&gt;  I suppose you already know that the tab's color does NOT change to the</span >
+&quot;hover&quot; color when if the tab has previously been manually colored by the user,
+so I won't enter that as a separate bug.
+
+yes - a technical limitation of background image overriding background color;
+which isn't apparent when you use &quot;striped style&quot; - if you want me to do
+something about it please open a new bug. Easier to admin then!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=23034.html#c2">
+            #2</a> From 
+          <a href="mailto:andrew.jack&#64;tenastic.com">Andrew Jack</a>
+          2010-07-21 01:05:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="before.png" name="attach_6523" title="before hovering over a tab">Created an attachment (id=6523)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6523&amp;action=edit" title="before hovering over a tab">[details]</a></span>
+before hovering over a tab
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=23034.html#c3">
+            #3</a> From 
+          <a href="mailto:andrew.jack&#64;tenastic.com">Andrew Jack</a>
+          2010-07-21 01:05:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="after.png" name="attach_6524" title="while hovering over a tab">Created an attachment (id=6524)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6524&amp;action=edit" title="while hovering over a tab">[details]</a></span>
+while hovering over a tab
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=23034.html#c4">
+            #4</a> From 
+          <a href="mailto:andrew.jack&#64;tenastic.com">Andrew Jack</a>
+          2010-07-21 01:08:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class=""><a href="before.png" name="attach_6523" title="before hovering over a tab">attachment 6523</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6523&amp;action=edit" title="before hovering over a tab">[details]</a></span>)
+Sorry I'm new to Bugzilla. I'm using puppy linux 4.3 on Dell Inspiron510m.
+These are my before/after screenshots
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=23034.html#c5">
+            #5</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-07-21 08:08:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="v1.93&#32;Hover&#32;Jitter&#32;Animation.gif" name="attach_6525" title="Animated GIF of the Effect">Created an attachment (id=6525)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6525&amp;action=edit" title="Animated GIF of the Effect">[details]</a></span>
+Animated GIF of the Effect
+
+Note how everything below the tabs bar moves up and down a bit when the hover
+goes on and off.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=23034.html#c6">
+            #6</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-07-21 08:39:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Axel,
+
+   Thanks for thinking about this.
+
+   I forgot to mention: this &quot;jitter&quot; does not happen in QF v1.91.  The tab
+itself moves up a bit (as it does in 1.93), but the lines under it do not move
+down.
+
+   To answer your other questions:
+
+* My tab font size is default (option box is blank).
+
+* The animation I posted was done in Windows 7 Home Premium, but I use the
+&quot;Windows Classic&quot; theme.  If I change to an Aero theme, however, the jitter
+effect disappears.  This may be why you couldn't reproduce it, and probably
+means that it doesn't affect many users.
+
+* Trials and animation are from Thunderbird 3.6.6 and 3.6.7 (no difference
+observed).
+
+* I'm not aware of using &quot;Shadows.&quot;  Indeed, I don't know where to look for
+that option.  Aero themes?  The tabs do not appear to have any shadows.
+
+* Occurrence: the situation is actually the opposite of what you suggested --
+the jitter occurs on standard hovering, but not on dragged hovering.  I usually
+notice it when I'm just sliding the cursor from above to below or below to
+above and accidentally cross a tab.  It's only a small annoyance, not an
+obstacle, and now I realize that most users won't even see it.
+
+
+Charlie
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=23034.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-07-21 11:36:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I actually managed to reproduce the behavior in SeaMonkey, so at least I have
+something to test against. 
+
+&lt;rant about Windows 7&gt;
+
+I am still using my trusty Retail Windows XP (and intend to do so for the next
+decade) as I am not prepared to shell out money with an OS that has digital
+restrictions management built in. Once MS drops support for XP I'd be the first
+to undertake a lawsuit against them forcing people to buy into their &quot;Big
+Brother&quot; attitude. For the same reason I have also managed to stay away from
+Blue-Ray, so far :) Even if it was soo much better than DVDs, is it not another
+artificial reason to once again raise prices, like with the invention of the
+&quot;indestructible&quot; CDs? I have many more working Vinyl records if I look at 7 or
+8 years of usage.
+
+&lt;/rant off&gt;
+
+However, I am able to run my XP with the same UI shell as you, as I am a
+Windowblinds user (Off to download a Windows 7 skin for testing)...
+
+Changing the bug status to assigned, do expect a fix for the next version! For
+the moment, you can do a patch in your userChrome.css, just add this rule:
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton:hover {
+    margin-bottom: 0px !important;
+}
+(not tested [yet])
+
+PS: You can set shadows in QuickFolders / Options / Pimp my Tabs underneath the
+&quot;Standard Tab Color&quot; setting.
+
+that should neutralize my silly idea!  hope this helps! :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=23034.html#c8">
+            #8</a> From 
+          <a href="mailto:darren&#64;darrenturpin.me.uk">Darren Turpin</a>
+          2010-07-27 00:16:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I was having the same problem with v1.93 on my installation, but I think I
+found a fix (for my Win XP machine, at least):
+
+Via: c:\Documents and Settings\Owner\Application
+Data\Thunderbird\Profiles\[blah].default\extensions\<a href="mailto:quickfolder@curious.be">quickfolder@curious.be</a>\chrome\content
+
+Open layout.css to editor
+
+On line 141, change 
+
+padding: 0px 5px 2px 2px;
+
+to
+
+padding: 0px 5px 0px 2px;
+
+Save layout.css and re-start Thunderbird.
+
+No more jitter (not on my machine, anyhow).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=23034.html#c9">
+            #9</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-07-27 15:02:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Axel,
+   I don't have a userChrome.css file anywhere on my hard drive, so I couldn't
+try the patch you suggested.
+
+Darren,
+   Your fix by patching layout.css worked on my Win 7 machine, too.  Thanks for
+posting the details (path, line number, etc.).
+
+ -- Charlie
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=23034.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-07-27 15:38:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23034.html#c9">comment #9</a>)
+<span class="quote">&gt; Axel,
+&gt;    I don't have a userChrome.css file anywhere on my hard drive, so I couldn't
+&gt; try the patch you suggested.
+&gt; 
+&gt; Darren,
+&gt;    Your fix by patching layout.css worked on my Win 7 machine, too.  Thanks for
+&gt; posting the details (path, line number, etc.).
+&gt; 
+&gt;  -- Charlie
+&gt; </span >
+
+userChrome doesn't exist by itself but there is a description on my web page:
+
+<a href="http://quickfolders.mozdev.org/faq_tips.html#UserChrome">http://quickfolders.mozdev.org/faq_tips.html#UserChrome</a>
+
+Please note that the path of your TB profile is different in Windows 7 - so the
+example patg &quot;C:\Documents and Settings\JohnDoe\Application Data&quot; might be
+actually shorter in Windows 7.
+
+
+The reason why editing layout.css is not such a good idea is that all your
+changes will be overwritten as soon as you upgrade QuickFolders - so anything
+you hack in there has to be hacked again. Tthe styles in userChrome.css are
+more persistent. Anyway I will include the fix in the next version, might even
+upload a test version here, so you might not have to do anything but install
+the patched version...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=23034.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-07-27 15:49:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-1.9.4.pre7.xpi" name="attach_6530" title="Integrates the patch by  Darren Turpin ">Created an attachment (id=6530)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6530&amp;action=edit" title="Integrates the patch by  Darren Turpin ">[details]</a></span>
+Integrates the patch by  Darren Turpin 
+
+Just added the changes to the new layout file. Also please note layout.css was
+renamed to quickfolders-layout.css to address another bug. (This means any
+changes to layout.css will be ignored.) Gonna rename the bug to Jitterbug!!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=23034.html#c12">
+            #12</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-07-27 16:42:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+   I confirm that the jitter is gone in 1.9.4.pre7.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=23034.html#c13">
+            #13</a> From 
+          <a href="mailto:darren&#64;darrenturpin.me.uk">Darren Turpin</a>
+          2010-07-28 00:24:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >1.9.4 pre7 works fine for me as well, thanks for the speedy roll-out.
+
+And great plugin btw, so handy and productivity-friendly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=23034.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-08-09 13:23:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=23100.html" title="RESOLVED DUPLICATE - Hover causes screen jitter">Bug 23100</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23034&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

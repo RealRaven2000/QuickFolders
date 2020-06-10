@@ -1,0 +1,1247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26649 &ndash; Creating a new &quot;mailllist&quot; filter throws undeclared variable exception</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26649&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26649">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26649">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26649">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26649">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26649</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Creating a new &quot;mailllist&quot; filter throws undeclared variable exception</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2019-04-01 08:44:09</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26649&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2019-04-01 08:44:09">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="26649">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Creating a new &quot;mailllist&quot; filter throws undeclared variable exception">
+        <span title="Creating a new &quot;mailllist&quot; filter throws undeclared variable exception">Creating a new &quot;mailllist&quot; filter throws undeclared varia...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26649.html">26649</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26649&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26649">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:john&#64;jpoki.plus.com">jpoku &lt;john&#64;jpoki.plus.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="quickFilters-tb-pb-sm-3.10pre17.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.10 prerelease 17</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (423.91 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26649.html#attach_8604"
+               title="Go to the comment associated with the attachment">2019-03-11 11:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8604&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="quickFilters-tb-pb-sm-3.10pre31.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.7.1 prerelease 31</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (409.51 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26649.html#attach_8608"
+               title="Go to the comment associated with the attachment">2019-03-12 05:44</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8608&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="logA.txt"
+               title="View the content of the attachment">
+          <b>Console log A</b></a>
+
+          <span class="bz_attach_extra_info">
+              (2.01 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=26649.html#attach_8609"
+               title="Go to the comment associated with the attachment">2019-03-12 07:59</a>,
+
+            <a href="mailto:john&#64;jpoki.plus.com"
+               title="Write an email to the creator of the attachment">jpoku
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8609&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="quickFilters-tb-pb-sm-3.10pre34.xpi"
+               title="View the content of the attachment">
+          <b>3.7.1 prerelease 34</b></a>
+
+          <span class="bz_attach_extra_info">
+              (426.21 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26649.html#attach_8610"
+               title="Go to the comment associated with the attachment">2019-03-12 09:08</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8610&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26649.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26649&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26649&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26649">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26649">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26649">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26649">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26649.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2019-03-11 04:18
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Latest releases of QF and Thunderbird 60.5.3 
+
+When creating a new filter the following error is thrown:
+
+&quot;Exception in quickFilters.Worker.createFilter: assignment to undeclared
+variable txt&quot;
+
+This occurs just after the initial Filter Assistant screen, but before the
+filter preview. Manually creating a filter works fine. 
+
+I have reinstalled Thunderbird, including a fresh profile, cleared out existing
+filters and the issue persists.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26649.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-11 11:09:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.10pre17.xpi" name="attach_8604" title="3.10 prerelease 17">Created an attachment (id=8604)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8604&amp;action=edit" title="3.10 prerelease 17">[details]</a></span>
+3.10 prerelease 17
+
+declares the (debug) variable txt in local context. Should fix the issue.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26649.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-11 12:08:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26649.html#c0">comment #0</a>)
+<span class="quote">&gt; Latest releases of QF and Thunderbird 60.5.3 
+&gt; 
+&gt; When creating a new filter the following error is thrown:
+&gt; 
+&gt; &quot;Exception in quickFilters.Worker.createFilter: assignment to undeclared
+&gt; variable txt&quot;
+&gt; 
+&gt; This occurs just after the initial Filter Assistant screen, but before the
+&gt; filter preview. Manually creating a filter works fine. 
+&gt; 
+&gt; I have reinstalled Thunderbird, including a fresh profile, cleared out existing
+&gt; filters and the issue persists.
+&gt; </span >
+
+The error only happens if the &quot;list-id&quot; choice isn't already added to custom
+headers drop down.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26649.html#c3">
+            #3</a> From 
+          <a href="mailto:john&#64;jpoki.plus.com">jpoku</a>
+          2019-03-11 12:54:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Axel thanks for looking at this.
+
+I removed 3.9 and installed 3.10 prerelease 17. 
+
+The error still occurred but now, helpfully, points to requirements for list-id
+in custom header.
+
+So I added list-id to headers (using customise... from existing filter.) This
+lets the dialog proceed to filter preview but now a popup notifacation says
+&quot;can't replace list-id token, message header unavailable&quot;. It seems to only be
+occurring with 'mailing-list' type filter.
+
+Whats odd is I never touched any of these settings recently - the error just
+started up between creating one filter and the next.
+
+If you can point me at something to try I will attempt to resolve but depth
+Thunderbird configs is not an area i'm used to. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26649.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-11 15:15:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26649.html#c3">comment #3</a>)
+<span class="quote">&gt; Axel thanks for looking at this.
+&gt; 
+&gt; I removed 3.9 and installed 3.10 prerelease 17. 
+&gt; 
+&gt; The error still occurred but now, helpfully, points to requirements for list-id
+&gt; in custom header.
+&gt; </span >
+
+<span class="quote">&gt; Whats odd is I never touched any of these settings recently - the error just
+&gt; started up between creating one filter and the next.
+&gt; </span >
+
+There was a change to an existing filter template &quot;mailing list&quot; - see [<a href="show_bug.cgi@id=26192.html" title="REOPENED - Filter on mailing list List-id header">Bug
+26192</a>] -  Improved &quot;mailing list&quot; template to use the &quot;List-id&quot; header, where
+available. This header is often used by mailing lists. If the List-id header
+doesn't exist, the filter uses the sender's address, as in previous versions of
+quickFilters.
+
+This will happen when a new filter is creating based on mailing lists.
+
+<span class="quote">&gt; So I added list-id to headers (using customise... from existing filter.) This
+&gt; lets the dialog proceed to filter preview but now a popup notifacation says
+&gt; &quot;can't replace list-id token, message header unavailable&quot;. It seems to only be
+&gt; occurring with 'mailing-list' type filter.</span >
+
+I need to look into this - at what step does it happen? If you can create a log
+file this would be helpful (see <a href="http://quickfolders.org/support.html">http://quickfolders.org/support.html</a> on how to
+install and use console2 to generate a error log)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26649.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-12 05:28:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26649.html#c3">comment #3</a>)
+<span class="quote">&gt; Axel thanks for looking at this.
+&gt; 
+&gt; I removed 3.9 and installed 3.10 prerelease 17. 
+&gt; 
+&gt; The error still occurred but now, helpfully, points to requirements for list-id
+&gt; in custom header.
+&gt; 
+&gt; So I added list-id to headers (using customise... from existing filter.) This
+&gt; lets the dialog proceed to filter preview but now a popup notifacation says
+&gt; &quot;can't replace list-id token, message header unavailable&quot;. It seems to only be
+&gt; occurring with 'mailing-list' type filter.
+&gt; </span >
+
+The &quot;mailing list template&quot; tries to extract a list-id from the current email
+which may not contain a list-id header. I think the alert is only a &quot;sliding
+box&quot; it does not stop you from proceeding (doesn't require to click an [Ok]
+button or close an alert box), is this correct?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26649.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-12 05:44:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.10pre31.xpi" name="attach_8608" title="3.7.1 prerelease 31">Created an attachment (id=8608)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8608&amp;action=edit" title="3.7.1 prerelease 31">[details]</a></span>
+3.7.1 prerelease 31
+
+I am now ignoring if list-id is missing (no alert) just like I do with cc and
+bcc headers.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26649.html#c7">
+            #7</a> From 
+          <a href="mailto:john&#64;jpoki.plus.com">jpoku</a>
+          2019-03-12 07:54:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; There was a change to an existing filter template &quot;mailing list&quot; - see [Bug
+&gt; 26192] -  Improved &quot;mailing list&quot; template to use the &quot;List-id&quot; header, where
+&gt; available. This header is often used by mailing lists. If the List-id header
+&gt; doesn't exist, the filter uses the sender's address, as in previous versions of
+&gt; quickFilters.
+&gt; 
+&gt; This will happen when a new filter is creating based on mailing lists.
+&gt; </span >
+
+Ok. The error in my context now makes sense. I have always used mailing list
+for its original functionality not the new. i.e. I used it for senders address
+only. The new approach makes more sense for new users but I didn't notice the
+revision. Though in prerelease 31 it doesn't default to senders address if a
+list-id template isn't present so that may need checking further. It does this:
+
+Alert
+Please add the term 'list-id' as a custom header to use this in a filter.
+
+Alert
+Exception in quickFilters.Worker.createFilter: searchTermList is null
+
+<span class="quote">&gt; &gt; So I added list-id to headers (using customise... from existing filter.) This
+&gt; &gt; lets the dialog proceed to filter preview but now a popup notifacation says
+&gt; &gt; &quot;can't replace list-id token, message header unavailable&quot;. It seems to only be
+&gt; &gt; occurring with 'mailing-list' type filter.
+&gt; 
+&gt; I need to look into this - at what step does it happen? If you can create a log
+&gt; file this would be helpful (see <a href="http://quickfolders.org/support.html">http://quickfolders.org/support.html</a> on how to
+&gt; install and use console2 to generate a error log)
+&gt; </span >
+
+This turns out my error sorry, not a bug - I used the Thunderbird customise...
+rather than QF custom headers. Creating a List-id template as per [<a href="show_bug.cgi@id=26192.html" title="REOPENED - Filter on mailing list List-id header">Bug 26192</a>]
+instructions is fine. 
+
+I can replicate the expected behaviour now - made a new template &quot;Newsletters&quot;
+to capture what I want to happen. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26649.html#c8">
+            #8</a> From 
+          <a href="mailto:john&#64;jpoki.plus.com">jpoku</a>
+          2019-03-12 07:59:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="logA.txt" name="attach_8609" title="Console log A">Created an attachment (id=8609)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8609&amp;action=edit" title="Console log A">[details]</a></span>
+Console log A
+
+If list-id custom template isn't available it requires an Ok then throws an
+Exception. Log attached
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26649.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-12 08:33:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26649.html#c7">comment #7</a>)
+<span class="quote">&gt; &gt; There was a change to an existing filter template &quot;mailing list&quot; - see [Bug
+&gt; &gt; 26192] -  Improved &quot;mailing list&quot; template to use the &quot;List-id&quot; header, where
+&gt; &gt; available. This header is often used by mailing lists. If the List-id header
+&gt; &gt; doesn't exist, the filter uses the sender's address, as in previous versions of
+&gt; &gt; quickFilters.
+&gt; &gt; 
+&gt; &gt; This will happen when a new filter is creating based on mailing lists.
+&gt; &gt; 
+&gt; 
+&gt; Ok. The error in my context now makes sense. I have always used mailing list
+&gt; for its original functionality not the new. i.e. I used it for senders address
+&gt; only. The new approach makes more sense for new users but I didn't notice the
+&gt; revision. Though in prerelease 31 it doesn't default to senders address if a
+&gt; list-id template isn't present so that may need checking further. It does this:
+&gt; 
+&gt; Alert
+&gt; Please add the term 'list-id' as a custom header to use this in a filter.</span >
+This is fine, but the problem is that at this stage the &quot;Edit Filter&quot; window is
+not open so it may be a little misleading to show the message at this stage. In
+any case you fixed it the correct way (add it from the drop down when editing
+any filter)
+
+<span class="quote">&gt; 
+&gt; Alert
+&gt; Exception in quickFilters.Worker.createFilter: searchTermList is null</span >
+
+I think this one is avoidable from my side - I am trying to load the list of
+custom terms from a context where it doesn't exist - outside the edit filter
+window
+(I can fix it automatically by adding &quot;list-id&quot; only when it happens from
+within there.)
+
+<span class="quote">&gt; This turns out my error sorry, not a bug - I used the Thunderbird customise...
+&gt; rather than QF custom headers. Creating a List-id template as per [<a href="show_bug.cgi@id=26192.html" title="REOPENED - Filter on mailing list List-id header">Bug 26192</a>]
+&gt; instructions is fine. </span >
+I think that's correct though. The custom template thing is only for creating
+new templates (advanced feature) and not new filters. In order to use list-id
+and the new funcitonality of &quot;mailing list&quot; the &quot;List-id&quot; must be enabled in
+the filter conditions, which is the customize in the edit filter window, as you
+described it (I think).
+
+
+<span class="quote">&gt; I can replicate the expected behaviour now - made a new template &quot;Newsletters&quot;
+&gt; to capture what I want to happen. 
+&gt; </span >
+Cool. still I would expect &quot;maillist&quot; should now fall back to the old behavior
+if the message does not contain a list-id header. I will upload another patched
+version shortly
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26649.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-03-12 09:08:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-3.10pre34.xpi" name="attach_8610" title="3.7.1 prerelease 34">Created an attachment (id=8610)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8610&amp;action=edit" title="3.7.1 prerelease 34">[details]</a></span>
+3.7.1 prerelease 34
+
+Added code guarding against the exception &quot;searchTermList is null&quot; (shouldn't
+happen, but there you go).
+if no list-id is found (or the custom header for list id is not defined) then
+it will use the message.author field for the &quot;from&quot; condition. It will also add
+any ccs of the message to the cc condition.
+
+Once list-id is defined for any other filter there should now be no warnings at
+all using the &quot;mailing list&quot; template.
+
+- note there is a new warning when you &quot;create filters from message&quot; on an
+email that still sits in the inbox and has no labels attached. This an
+additional feature unrelated to this change.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26649.html#c11">
+            #11</a> From 
+          <a href="mailto:john&#64;jpoki.plus.com">jpoku</a>
+          2019-03-12 10:23:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26649.html#c10">comment #10</a>)
+<span class="quote">&gt; Created an <span class=""><a href="quickFilters-tb-pb-sm-3.10pre34.xpi" name="attach_8610" title="3.7.1 prerelease 34">attachment (id=8610)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8610&amp;action=edit" title="3.7.1 prerelease 34">[details]</a></span> [details]
+&gt; 3.7.1 prerelease 34
+&gt; 
+&gt; Added code guarding against the exception &quot;searchTermList is null&quot; (shouldn't
+&gt; happen, but there you go).
+&gt; if no list-id is found (or the custom header for list id is not defined) then
+&gt; it will use the message.author field for the &quot;from&quot; condition. It will also add
+&gt; any ccs of the message to the cc condition.
+&gt; 
+&gt; Once list-id is defined for any other filter there should now be no warnings at
+&gt; all using the &quot;mailing list&quot; template.
+&gt; 
+&gt; - note there is a new warning when you &quot;create filters from message&quot; on an
+&gt; email that still sits in the inbox and has no labels attached. This an
+&gt; additional feature unrelated to this change.
+&gt; </span >
+
+Ok. The above comments all seem good. So testing it out here's what now
+happens...
+
+1)No custom filter headers (clean install):
+
+Selecting the mailing list template generates an alert:
+&quot;Please add the term 'list-id' as a custom header to use this in a filter.&quot;
+Assistant ended - back to inbox, no filter preview, no filter was created, no
+exceptions thrown.
+
+
+2)Custom filter header 'list-id' added:
+Selecting the mailing list template generates a filter preview.
+As 'list-id' was not present in the email header, the filter was a &quot;From
+Contains [message.author]&quot; rule.
+
+I assume, if the email did contain a 'list-id' header, the filter would be a
+&quot;List-id Contains [message.list-id] &quot; rule.
+------------------
+
+I wonder if the label for the mailing list template description should have a
+note like (Advanced Template) in it? The rest are all more intuitive and don't
+require extra customization. 
+
+Personally, the mailing lists I care about are more newsletters without
+list-ids. I'm unlikely to ever reply to the list. I use quickfilters to drop
+them in topic folders and ensure they only live for a few days.
+
+I suppose you could have Newsletter and Mailing List as alternatives.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26649.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-04-01 08:44:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in Release 3.10 - 30/03/2019
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26649&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

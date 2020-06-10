@@ -1,0 +1,1118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25672 &ndash; Pastel and &quot;Inactive Tab&quot; colors don't work for Active, Hover, or Drag Over colors</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25672&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25672">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25672">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25672">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25672">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25672</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Pastel and &quot;Inactive Tab&quot; colors don't work for Active, Hover, or Drag Over colors</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-01-07 11:43:06</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25672&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-01-07 11:43:06">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="25672">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Pastel and &quot;Inactive Tab&quot; colors don't work for Active, Hover, or Drag Over colors">
+        <span title="Pastel and &quot;Inactive Tab&quot; colors don't work for Active, Hover, or Drag Over colors">Pastel and &quot;Inactive Tab&quot; colors don't work for Active, H...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25672.html">25672</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25672&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25672">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:gnkaras&#64;gmail.com">George Karas &lt;gnkaras&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Active-Palette-Examples.png"
+               title="View the content of the attachment">
+          <b>screenshot of active palette</b></a>
+
+          <span class="bz_attach_extra_info">
+              (37.99 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25672.html#attach_7757"
+               title="Go to the comment associated with the attachment">2014-01-03 02:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7757&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.14pre59.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14 prerelease 59</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (501.52 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25672.html#attach_7760"
+               title="Go to the comment associated with the attachment">2014-01-05 07:34</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7760&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.14pre65.xpi"
+               title="View the content of the attachment">
+          <b>3.14 prerelease 65</b></a>
+
+          <span class="bz_attach_extra_info">
+              (502.34 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25672.html#attach_7764"
+               title="Go to the comment associated with the attachment">2014-01-07 11:43</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7764&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25672.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25672&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25672&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25672">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25672">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25672">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25672">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25672.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-01-02 18:00
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >In QuickFolders Settings-&gt;Bling My Tabs! tab, the bottom section allows you
+change the color settings for your QuickFolder tabs.  In addition to settings
+for tabs you've created, there are three special color settings, for the Active
+tab, for when the mouse hovers over a tab, and for when you drag another tab
+over a tab.
+
+For each of these, you can choose one of four color palette settings:
+
+1. Like inactive tab, in which case the color will be whatever color the
+inactive tab is set to.
+2. 2 Colors, where you choose the background and foreground colors.
+3. Standard Palette, where you can choose from the predefined standard color
+palette.
+4. Pastel Colors, where you choose from the predefined pastel color palette.
+
+Choices 1 and 4 are broken.  Whatever your color settings are for inactive tabs
+or whichever color you choose from the Pastel color palette, it doesn't work.
+
+To recreate this bug, using Active Tab Color as an example:
+
+1. Open QuickFolder settings and go the the Bling My Tabs! tab.
+2. Go to &quot;Active Tab Color&quot; and select Standard Palette from the pulldown menu.
+3. Click on &quot;Active Tab Color&quot; and select Color 13, &quot;rust&quot;.
+4. Go to your QuickFolders bar and click on Inbox.  The Inbox tab will turn the
+rust red defined in the Standard Palette.
+5. Go back to the same setting and choose Pastel Colors from the pulldown menu.
+6. Click on &quot;Active Tab Color&quot; again and choose Color 6, &quot;moss&quot;.
+7. Go to your mail folders list, and select any folder other than the Inbox.
+8. Go back to the QuickFolders bar and click on Inbox again.
+
+The Inbox tab will turn RUST RED, NOT moss green.  Whatever color you last
+chose from the Standard Palette, it will remain in effect.  The active tab
+won't use the pastel color you chose.
+
+Similarly, if you chose to use the inactive tab color, instead of the pastel
+colors, it will STILL remain rust red.
+
+Finally, the 2 Colors setting does work.  If you choose the 2 Colors setting
+and then switch to Pastel or Like Inactive Tab, the 2 color setting will remain
+in effect, just like the Standard Palette setting.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25672.html#c1">
+            #1</a> From 
+          <a href="mailto:gnkaras&#64;gmail.com">George Karas</a>
+          2014-01-02 18:02:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >System wouldn't let me enter the version number.  I'm using the latest,
+13.12.4.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25672.html#c2">
+            #2</a> From 
+          <a href="mailto:gnkaras&#64;gmail.com">George Karas</a>
+          2014-01-02 18:04:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25672.html#c1">comment #1</a>)
+<span class="quote">&gt; System wouldn't let me enter the version number.  I'm using the latest,
+&gt; 13.12.4.
+&gt; </span >
+
+Typo:  That should have been 3.12.4!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25672.html#c3">
+            #3</a> From 
+          <a href="mailto:gnkaras&#64;gmail.com">George Karas</a>
+          2014-01-02 18:18:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >UPDATE:  It turns out that, if you change the color palette of your tabs, the
+color palette of the three special settings changes as well!
+
+I changed the color palette of my tabs to Pastel.  Suddenly, the active tab
+changed to MOSS.  And NOW, If I try to use the Standard Palette for the Active
+Tab, THAT doesn't work.
+
+When I changed the color palette of my tabs back to Standard, the active tab
+turned rust colored.
+
+The &quot;2 Colors&quot; setting still works, while &quot;Like inactive Tabs&quot; remains broken
+regardless of which palette your use.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25672.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-03 02:01:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Active-Palette-Examples.png" name="attach_7757" title="screenshot of active palette">Created an attachment (id=7757)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7757&amp;action=edit" title="screenshot of active palette">[details]</a></span>
+screenshot of active palette
+
+Tried to reproduce this, but at least setting pastel palette or two colors mode
+on the active tab works for me as you can see on the screen shot. If a palette
+change does not work I recommend restarting Thunderbird to see if that clears
+the issue. 
+
+I know there are sometimes problems removing the &quot;pastel&quot; flag from the style
+sheet rules due to style sheet duplications (but that would only apply if you
+select standard palette which seems to work for you) in which case restarting
+Tb solves the problem. 
+
+Can you open Tools &gt; Error Console to see what happens when you switch the
+active tabs palette to pastel colors?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25672.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-03 02:21:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25672.html#c0">comment #0</a>)
+<span class="quote">&gt; Choices 1 and 4 are broken.  Whatever your color settings are for inactive tabs
+&gt; or whichever color you choose from the Pastel color palette, it doesn't work.
+&gt; 
+&gt; To recreate this bug, using Active Tab Color as an example:
+&gt; 
+&gt; 1. Open QuickFolder settings and go the the Bling My Tabs! tab.
+&gt; 2. Go to &quot;Active Tab Color&quot; and select Standard Palette from the pulldown menu.
+&gt; 3. Click on &quot;Active Tab Color&quot; and select Color 13, &quot;rust&quot;.
+&gt; 4. Go to your QuickFolders bar and click on Inbox.  The Inbox tab will turn the
+&gt; rust red defined in the Standard Palette.
+&gt; 5. Go back to the same setting and choose Pastel Colors from the pulldown menu.
+&gt; 6. Click on &quot;Active Tab Color&quot; again and choose Color 6, &quot;moss&quot;.
+&gt; 7. Go to your mail folders list, and select any folder other than the Inbox.
+&gt; 8. Go back to the QuickFolders bar and click on Inbox again.
+&gt; 
+&gt; The Inbox tab will turn RUST RED, NOT moss green. </span >
+
+I was able to set active tab to moss green and it works on my Inboxes (or any
+other folder that is active) as well. Are you saying you only have this problem
+in inbox or does it affect all folders when they are active?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25672.html#c6">
+            #6</a> From 
+          <a href="mailto:gnkaras&#64;gmail.com">George Karas</a>
+          2014-01-04 19:26:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It's ALL folders.  I just used Inbox as an example.
+
+OH, this just got SO much weirder!
+
+I don't know why I didn't try this, but, as you suggested, restarting TB helps,
+but only in ONE DIRECTION!
+
+If my tabs are using the Pastel palette, and I choose the Standard palette for
+the Active Tab, it does exactly what I said in the bug description.
+
+If, however, I restart TB, THEN the Active Tab starts using the Standard color
+I chose!
+
+IF, on the other hand, my tabs are using the Standard palette, and I set the
+Active Tab to a Pastel entry, when I restart TB, the Active Tab gets the
+INACTIVE TAB COLOR!
+
+To put that in table format (&quot;AT&quot; = &quot;Active Tab&quot;:
+
+Tabs        AT Setting    AT pre-Restart     AT post-Restart
+----        ----------    --------------     ---------------
+Pastel      Standard      Pastel             Standard
+Standard    Pastel        Standard           INACTIVE
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25672.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-05 07:34:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14pre59.xpi" name="attach_7760" title="3.14 prerelease 59">Created an attachment (id=7760)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7760&amp;action=edit" title="3.14 prerelease 59">[details]</a></span>
+3.14 prerelease 59
+
+Ok, I after I tested that special case I was able to reproduce it.
+
+Here is a test version with some coloring improvements. This will also affect
+the font colors on hovered and drag over tabs, so it should be better overall.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25672.html#c8">
+            #8</a> From 
+          <a href="mailto:gnkaras&#64;gmail.com">George Karas</a>
+          2014-01-06 17:11:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >That fixed the pastel vs. standard palette problem.  However, choosing &quot;Like
+inactive tab&quot; doesn't work.  Strangely, &quot;Like inactive tab&quot; shows the
+foreground/background selectors, the same as &quot;2 colors&quot; does.  And it seems you
+can choose the foreground and background colors for that tab, &quot;Active tab&quot; in
+our case, just like you can when you select 2 colors!
+
+I've sorta lost track of all of the different combinations at this point.  I'll
+try to go through them all and make a list.
+
+BTW, I know it's just a beta, but there's something wrong with this version.  I
+have my Inbox, Drafts, and Sent folders on my QF bar.  After upgrading to this
+version, it's telling me that my Drafts folder is invalid and asks if I want to
+get rid of the tab.
+
+I use Gmail, so my Drafts and Sent folders are in the [Gmail] subfolder.  It
+understands my Sent mail tab, but thinks my Drafts tab  points to a nonexistent
+folder!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25672.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 23:42:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25672.html#c8">comment #8</a>)
+<span class="quote">&gt; That fixed the pastel vs. standard palette problem.  However, choosing &quot;Like
+&gt; inactive tab&quot; doesn't work.  Strangely, &quot;Like inactive tab&quot; shows the
+&gt; foreground/background selectors, the same as &quot;2 colors&quot; does.  And it seems you
+&gt; can choose the foreground and background colors for that tab, &quot;Active tab&quot; in
+&gt; our case, just like you can when you select 2 colors!</span >
+
+This would be correct behaviour is the inactive tabs setting was also set to 2
+colours. &quot;Like&quot; refers to choice of palette not to the colour itself. 
+<span class="quote">&gt; 
+&gt; I've sorta lost track of all of the different combinations at this point.  I'll
+&gt; try to go through them all and make a list.</span >
+Maybe focus on the ones you want to use....
+
+
+<span class="quote">&gt; 
+&gt; BTW, I know it's just a beta, but there's something wrong with this version.  I
+&gt; have my Inbox, Drafts, and Sent folders on my QF bar.  After upgrading to this
+&gt; version, it's telling me that my Drafts folder is invalid and asks if I want to
+&gt; get rid of the tab.</span >
+
+This is important: I have added a validation function that checks whether the
+folder exists. looks like in your case it has a Problem with these special imap
+folders that Google invented. I will try to send a fix for that but raising a
+separate bug would be really helpful. if you don't want to we can also address
+that one via email.
+
+<span class="quote">&gt; 
+&gt; I use Gmail, so my Drafts and Sent folders are in the [Gmail] subfolder.  It
+&gt; understands my Sent mail tab, but thinks my Drafts tab  points to a nonexistent
+&gt; folder!</span >
+Are there files in it? hope I can reproduce it...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25672.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-07 11:43:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.14pre65.xpi" name="attach_7764" title="3.14 prerelease 65">Created an attachment (id=7764)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7764&amp;action=edit" title="3.14 prerelease 65">[details]</a></span>
+3.14 prerelease 65
+
+updated version which should fix the bogus &quot;invalid tabs&quot; messages
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25672&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

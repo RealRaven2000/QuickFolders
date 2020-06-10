@@ -1,0 +1,1182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 22217 &ndash; Possibility to add newsgroup folders to the quick bar</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=22217&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=22217">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=22217">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=22217">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_22217">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;22217</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Possibility to add newsgroup folders to the quick bar</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-01-08 07:01:30</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22217&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-01-08 07:01:30">
+  <input type="hidden" name="longdesclength" value="16">
+  <input type="hidden" name="id" value="22217">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Possibility to add newsgroup folders to the quick bar">Possibility to add newsgroup folders to the quick bar
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=22217.html">22217</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=22217&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=22217">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:lubi&#64;danielgander.com">Jack_Steel &lt;lubi&#64;danielgander.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="lubi&#64;danielgander.com">lubi&#64;danielgander.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-1.8pre3.xpi.2"
+               title="View the content of the attachment">
+          <b>QF 1.8pre3</b></a>
+
+          <span class="bz_attach_extra_info">
+              (153.53 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=22217.html#attach_6214"
+               title="Go to the comment associated with the attachment">2010-01-07 09:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6214&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=22217&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22217&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=22217">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=22217">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=22217">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=22217">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=22217.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2010-01-06 23:13
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi Alex,
+
+there is one thing I miss from the beginning of using QuickFolders in TB: The
+possibility to add newsgroup folders to the QF-Toolbar. Could it be possible to
+add this feature?
+
+Cheers from Austria
+Daniel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=22217.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-07 02:15:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Daniel,
+
+Sorry, but that is just not (easily) possible (don't even know if it is
+possible at all) :( 
+
+By default, the newsgroup folders do not support drag and drop (*). All other
+folders supply drag and drop &quot;out of the box&quot; (although handling the drag over
+and drop events was tricky enough, there's about 1.5 man-week worth of work
+that was spent on them, including the automatic category switch when the folder
+already exists etc.) 
+
+I wouldn't completely rule out newgroup support in the future, but the main
+thrust of development for the next releases will be to focus on better support
+for the smart / search folders. Once this is done, integrated Icon support
+might be a good area. 
+
+Servus, Axel
+
+(*) wait, I might have told a lie there seems to be some rudimentary drag
+support in TB3 (as long as TB3 is not officially released, I still use TB2 as
+my main development / mail platform), so I might look into it sooner... I am
+getting a drag message but there is no data in it - this might well be a bug in
+TB3 so the released version might have this, so do not hold your breath. I will
+set the bug status to Resolved LATER and will reopen it once I get more
+information.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=22217.html#c2">
+            #2</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-07 02:18:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thank you for investigation, it's not a &quot;must have&quot; it's a &quot;nice to have&quot; wish
+:-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=22217.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-07 09:09:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-1.8pre3.xpi.2" name="attach_6214" title="QF 1.8pre3">Created an attachment (id=6214)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6214&amp;action=edit" title="QF 1.8pre3">[details]</a></span>
+QF 1.8pre3
+
+Okay, here is the deal: it is possible to support newsgroups, but not in TB
+version 2. Here is a version for testing; NG support was tested in TB3 [A],
+SeaMonkey 2.0.1 [B], Postbox 1.1.0 [C].
+
+[A](Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5) Gecko/20091204
+Thunderbird/3.0, SeaMonkey 2.0.1 - Mozilla/5.0 
+
+[B] (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5) Gecko/20091204
+Thunderbird/3.0, and Postbox 1.1.0 - Mozilla/5.0 
+
+[C] (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5) Gecko/20091201
+Lightning/0.9.4 Postbox/1.1.0
+
+Thunderbird 2 does not seam to support NG dragging at all.
+I also added Support for Smart Folders (TB3 only)
+
+Enjoy Daniel! How's the snow situation in Austria? We even have a little snow
+here in Ireland.
+Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=22217.html#c4">
+            #4</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-07 15:46:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Wow, that's SO nice to have, I can't tell you! Now I don't need the folder pane
+anymore and I can use TB on smaller screen resolutions. It's possible to
+specify a max tab with or changing the tab title because usually newsgroup
+names are very long and so a lot of space is used for them. But if it's not
+easy to implement, don't worry, I love it anyway :-)
+
+Little snow here, could be more! But cold, really cold...
+
+Cheers and good night!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=22217.html#c5">
+            #5</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 00:23:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >No need for renaming ore changing tab with anymore :-) I reorganized my tabs by
+using bookmark categories!
+
+Now we have more snow and seems to be coming even more...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=22217.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-08 01:15:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=22217.html#c5">comment #5</a>)
+<span class="quote">&gt; No need for renaming ore changing tab with anymore :-) I reorganized my tabs by
+&gt; using bookmark categories!
+&gt; </span >
+
+That's cool to hear! Max width would of course have been possible as well (but
+the strings would have been truncated, not nicely abbreviated like in the
+folder pane) - all you need is a little rule in userChrome.css:
+
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+  max-width: 50px !important;
+}
+
+you could also have icons for each individual tab, based on the name (16*16 pix
+works best):
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton[label^=&quot;Paypal&quot;] {
+    list-style-image: url(&quot;QF-Icons/paypal.gif&quot;);
+}
+
+(you would have to create a folder QF-Icons in your chrome folder, and have the
+icons in that. the &quot;label^=&quot; rule matches on the start of the tab name, in this
+example, Paypal); in combination with the max-width rule you could even omit
+the text altogether.
+
+I will have to add a &quot;QuickFolders tweaks&quot; page to the Mozdev pages soon!
+
+Servus, Axel 
+
+PS:
+
+<span class="quote">&gt; Now we have more snow and seems to be coming even more...</span >
+
+- we very rarely have proper snow in Ireland, but there is an unusual cold snap
+at the moment, and at least once we had thick snow flakes, of course after
+X-Mas. My kids have the rest of the week off school, so I am grounded back in
+SOHO :)
+(I am originally from Bavaria, so luckily I still remember what Real Snow looks
+like)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=22217.html#c7">
+            #7</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 01:26:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Is there a possibility to change the height of the QuickFolders tabbar, too? I
+need a little more height for my Silvermel-Theme (blue line cropped on the
+bottom):
+
+<a href="http://dl.dropbox.com/u/816807/QuickFolders.png">http://dl.dropbox.com/u/816807/QuickFolders.png</a>
+
+Cheers
+Daniel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=22217.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-08 02:50:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=22217.html#c7">comment #7</a>)
+<span class="quote">&gt; Is there a possibility to change the height of the QuickFolders tabbar, too? I
+&gt; need a little more height for my Silvermel-Theme (blue line cropped on the
+&gt; bottom):
+&gt; 
+&gt; <a href="http://dl.dropbox.com/u/816807/QuickFolders.png">http://dl.dropbox.com/u/816807/QuickFolders.png</a>
+&gt; 
+&gt; Cheers
+&gt; Daniel
+&gt; </span >
+
+Sure, this is possible:
+
+#QuickFolders-Category-Box {
+    margin: 0;
+    padding: 0;
+    vertical-align: center !important;
+    overflow: visible;
+}
+
+#QuickFolders-Category-Selection {
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+As you see, with CSS just about anything is possible.
+
+I will probably include these rules in the next release, thanks for pointing
+that one out (probably should have raised a new bug for that one).
+
+I also noticed you're not using the &quot;Display Tabs as Flat Style&quot; option, is
+this purely to save screen space? You're missing out on a lot of functionality
+without it (individually colored tabs, correct drag feedback).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=22217.html#c9">
+            #9</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 03:48:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I used the flat style a long time, with colored tabs, too:
+
+<a href="http://dl.dropbox.com/u/816807/QuickFolders_ColoredTabs.png">http://dl.dropbox.com/u/816807/QuickFolders_ColoredTabs.png</a>
+
+But I don't like the thick black line below the tabs, in my opinion my specific
+theme is looking better without this thick line. The colored tabs are a nice
+feature, i would use it again if I could remove this line.
+
+You're right, next time I open a new enhancement request.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=22217.html#c10">
+            #10</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 04:02:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Oh. I can change the color of the black line by changing default tab colors :-)
+I'm so stupid. Thank you again!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=22217.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-08 04:55:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=22217.html#c10">comment #10</a>)
+<span class="quote">&gt; Oh. I can change the color of the black line by changing default tab colors :-)
+&gt; I'm so stupid. Thank you again!
+&gt; </span >
+
+Yes, its not all that obvious, but by default QF uses the highlighting colors
+of your OS theme (usually white on blue) which corresponds to the appearance of
+your Active Menu Items. The colored line is supposed to connect with the active
+tab to add a more &quot;tab-like&quot; feel.
+
+I guess to make it less intrusive you could try something like
+
+#QuickFolders-Toolbar.toolbar-flat {
+    border-bottom-width: 1px !important;
+}
+
+in your userChrome.css. Or use 0px to make it invisible.
+
+You can change about any visual aspect of Thunderbird by editing that file. It
+takes a little bit of knowledge but you can find out what the screen elements
+are named by using the DOM inspector to make up more rules.
+
+e.g. transparent background (to use the default for toolbars):
+#QuickFolders-Toolbar.toolbar-flat {
+    background-color: transparent !important;
+}
+
+without getting in too much detail here the # is for element's Id, the . is for
+classes.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=22217.html#c12">
+            #12</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 05:45:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Great! I'm familiar with CSS. The DOM inspector is not compatible with TB3. I
+have to try it with TB2. I want to make the toolbar buttons transparent (not
+the active one) and I want to use more colors, too :-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=22217.html#c13">
+            #13</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 06:04:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, i tried it with:
+
+#QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+    background-color: transparent !important;
+}
+
+Unfortunatly doing this I'm loosing hover feature when dragging mails to the
+tabs. Maybe it would be better if I could spedify more colors (RGB or HEX) for
+active and inactive tabs :-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=22217.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-01-08 06:59:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=22217.html#c13">comment #13</a>)
+<span class="quote">&gt; Ok, i tried it with:
+&gt; 
+&gt; #QuickFolders-Toolbar.toolbar-flat toolbarbutton {
+&gt;     background-color: transparent !important;
+&gt; }
+&gt; 
+&gt; Unfortunatly doing this I'm loosing hover feature when dragging mails to the
+&gt; tabs. Maybe it would be better if I could specify more colors (RGB or HEX) for
+&gt; active and inactive tabs :-)
+&gt; </span >
+
+Obviously, transparent overrides any background color settings, so its probably
+not so useful for the buttons themselves. For better OS integration, I also
+experimented with the option &quot;Shell Style Tabs&quot; (which is only working when
+disabling flat style). The main problem with this is that since these tabs are
+really push-buttons they can not retain their &quot;selected&quot; status. Also the tab
+look seems to be resistant to any background images that I apply (for
+coloring).
+
+Implementation with actual, real tabs would effectively mean a rewrite of the
+whole extension.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=22217.html#c15">
+            #15</a> From 
+          <a href="mailto:lubi&#64;danielgander.com">Jack_Steel</a>
+          2010-01-08 07:01:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Don't worry. I love your actual tabs. I need only a little more colors for the
+background :-)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=22217&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

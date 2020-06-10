@@ -1,0 +1,134 @@
+SmartTemplate4 23:10:49.608  [119470 ms]	 
+ComposeProcessDone
+ ----------
+SmartTemplate4 23:10:49.622  [14 ms]	 
+SaveInFolderDone
+ ----------
+Mon Aug 13 2018 23:10:49
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-bottom-left-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:49
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-bottom-right-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:49
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-top-left-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:49
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-top-right-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:52
+Error: ReferenceError: gComposeRecyclingListener is not defined
+Source file: chrome://mnenhy-headers/content/mnenhy-headers-messengercompose.js
+Line: 51
+ ----------
+SmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 23:10:52.110  [0 ms]	 
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 23:10:52.110  [0 ms]	 
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 23:10:52.112  [2 ms]	 
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 23:10:52.112  [0 ms]	 
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 23:10:52.112  [0 ms]	 
+SmartTemplate4.init() ends.
+ ----------
+SmartTemplate4 23:10:52.114  [2 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.5.1
+ ----------
+SmartTemplate4 23:10:52.114  [0 ms]	 
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 1.5.1
+Running on Thunderbird Version 52.9.1
+ ----------
+SmartTemplate4 23:10:52.114  [0 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.5.1
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: ReferenceError: assignment to undeclared variable elt
+Source file: chrome://sendlater3/content/composeToolbar.js
+Line: 18
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-bottom-left-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-bottom-right-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-top-left-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: Property contained reference to invalid variable.  Error in parsing value for ‘border-top-right-radius’.  Falling back to ‘initial’.
+Source file: chrome://smarttemplate4/skin/common/smartTemplate-overlay.css
+Line: 31, Column: 1277
+Source code:
+ var(--toolbarbutton-border-radius)
+ ----------
+SmartTemplate4 23:10:52.798  [684 ms]	 
+NotifyComposeBodyReady
+ ----------
+Mon Aug 13 2018 23:10:52
+Error: TypeError: this.NotifyComposeBodyReadyReply is not a function
+Source file: chrome://messenger/content/messengercompose/MsgComposeCommands.js
+Line: 319
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: ReferenceError: reference to undefined property "EditTemplate"
+Source file: chrome://enigmail/content/enigmailMsgComposeOverlay.js
+Line: 630
+ ----------
+SmartTemplate4 23:10:52.824  [26 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 23:10:52.860  [36 ms]	 
+Removing non-reserved word: %date%
+ ----------
+SmartTemplate4 23:10:52.860  [0 ms]	 
+Removing non-reserved word: %Message-ID%
+ ----------
+Mon Aug 13 2018 23:10:52
+Warning: insertTemplate - exception during parsing. Continuing with inserting template!
+dText1 is null
+Source file: chrome://smarttemplate4/content/smartTemplate-overlay.js
+Line: 974
+Source code:
+SmartTemplate4.parseModifier   chrome://smarttemplate4/content/smartTemplate-overlay.js:974:1 getProcessedText@chrome://smarttemplate4/content/smartTemplate-compose.js:792:13 getQuoteHeader@chrome://smarttemplate4/content/smartTemplate-compose.js:817:10 insertTemplate@chrome://smarttemplate4/content/smartTemplate-compose.js:1004:19 notifyComposeBodyReady@chrome://smarttemplate4/content/smartTemplate-main.js:550:5 SmartTemplate4.stateListener.NotifyComposeBodyReady/<@chrome://smarttemplate4/content/smartTemplate-main.js:393:18 
+ ----------
+Mon Aug 13 2018 23:10:56
+Error: TypeError: gBlacklist is undefined
+Source file: chrome://console2/content/console2.js
+Line: 729

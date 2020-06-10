@@ -1,0 +1,24 @@
+15:42:06.946 DEPRECATION WARNING: The arguments you're passing to viewSource.xul are using an out-of-date API.
+You may find more details about this deprecation at: https://developer.mozilla.org/en-US/Add-ons/Code_snippets/View_Source_for_XUL_Applications
+chrome://global/content/viewSource.js 329 _loadViewSourceDeprecated
+chrome://global/content/viewSource.js 309 onXULLoaded
+chrome://global/content/viewSource.js 175 handleEvent
+chrome://smarttemplate4/content/smartTemplate-overlay.js 289 SmartTemplate4.classGetHeaders
+chrome://smarttemplate4/content/smartTemplate-overlay.js 1087 regularize
+chrome://smarttemplate4/content/smartTemplate-compose.js 772 getProcessedText
+chrome://smarttemplate4/content/smartTemplate-compose.js 785 getQuoteHeader
+chrome://smarttemplate4/content/smartTemplate-compose.js 954 insertTemplate
+chrome://smarttemplate4/content/smartTemplate-main.js 452 notifyComposeBodyReady
+chrome://smarttemplate4/content/smartTemplate-main.js 337 SmartTemplate4.stateListener.NotifyComposeBodyReady
+ 1 Deprecated.jsm:79
+	this.Deprecated.warning resource://gre/modules/Deprecated.jsm:79:5
+	_loadViewSourceDeprecated chrome://global/content/viewSource.js:329:5
+	onXULLoaded chrome://global/content/viewSource.js:309:14
+	handleEvent chrome://global/content/viewSource.js:175:9
+	SmartTemplate4.classGetHeaders chrome://smarttemplate4/content/smartTemplate-overlay.js:289:12
+	regularize chrome://smarttemplate4/content/smartTemplate-overlay.js:1087:36
+	getProcessedText chrome://smarttemplate4/content/smartTemplate-compose.js:772:17
+	getQuoteHeader chrome://smarttemplate4/content/smartTemplate-compose.js:785:10
+	insertTemplate chrome://smarttemplate4/content/smartTemplate-compose.js:954:19
+	notifyComposeBodyReady chrome://smarttemplate4/content/smartTemplate-main.js:452:5
+	SmartTemplate4.stateListener.NotifyComposeBodyReady chrome://smarttemplate4/content/smartTemplate-main.js:337:5

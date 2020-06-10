@@ -1,0 +1,9 @@
+ReferenceError: reference to undefined property "resume"[Learn More]  node-properties.js:134:15
+ReferenceError: reference to undefined property "r"[Learn More]  node-properties.js:124:7
+ReferenceError: reference to undefined property "r"[Learn More]  node-properties.js:130:7
+ReferenceError: reference to undefined property "_handshakeTimeout"[Learn More]  socket.js:779:5
+DebuggeeWouldRun: debuggee `resource://gre/modules/commonjs/toolkit/loader.js:748' would run  builtin-modules.js:155:11
+window.controllers is deprecated. Do not use it for UA detection.  blank
+TypeError: this.NotifyComposeBodyReadyNew is not a function[Learn More]  MsgComposeCommands.js:309:7
+editor.selectionController completeMove(forward = false) failed
+Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsISelectionController.completeMove]  (unknown):1377

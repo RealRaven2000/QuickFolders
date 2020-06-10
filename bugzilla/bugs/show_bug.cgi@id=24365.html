@@ -1,0 +1,1902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24365 &ndash; QF folders disappear after viewing email</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24365&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24365">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24365">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24365">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_24365">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24365</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QF folders disappear after viewing email</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2011-09-10 16:37:54</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24365&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2011-09-10 16:37:54">
+  <input type="hidden" name="longdesclength" value="22">
+  <input type="hidden" name="id" value="24365">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QF folders disappear after viewing email">QF folders disappear after viewing email
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24365.html">24365</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24365&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24365">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:pythagorus.theorem1&#64;gmail.com">Michael &lt;pythagorus.theorem1&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="luisalbondigas&#64;waitaminute.us">luisalbondigas&#64;waitaminute.us</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-2.8patch.xpi"
+               title="View the content of the attachment">
+          <b>Patched Version 2.8</b></a>
+
+          <span class="bz_attach_extra_info">
+              (241.35 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24365.html#attach_7055"
+               title="Go to the comment associated with the attachment">2011-09-05 08:45</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7055&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="beforeandafter.jpg"
+               title="View the content of the attachment">
+          <b>Shows before and after QF disappears</b></a>
+
+          <span class="bz_attach_extra_info">
+              (38.57 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=24365.html#attach_7056"
+               title="Go to the comment associated with the attachment">2011-09-05 21:00</a>,
+
+            <a href="mailto:pythagorus.theorem1&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Michael
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7056&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="CurrentFolderBar-I_want_it_back.png"
+               title="View the content of the attachment">
+          <b>how to get to see current folder bar</b></a>
+
+          <span class="bz_attach_extra_info">
+              (54.21 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24365.html#attach_7063"
+               title="Go to the comment associated with the attachment">2011-09-09 10:25</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7063&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QF-2.8.1pre2.xpi"
+               title="View the content of the attachment">
+          <b>A prototype with the current folder bar (disfunctional)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (243.41 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24365.html#attach_7064"
+               title="Go to the comment associated with the attachment">2011-09-09 14:33</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7064&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24365&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24365&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24365">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24365">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24365">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24365">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24365.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2011-09-04 20:54
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >I have TB6.0.1 and have just installed QF 2.8. When TB is first opened the QF
+folder tabs are there. If I open a message the QF tabs disappear. I do not have
+the &quot;Hide QF Folders when not needed&quot; checkbox ticked so I think they should
+always be there but they disappear after reading any email.
+
+I'm running Win 7 Pro 32bit.
+
+Cheers
+Michael
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24365.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 01:55:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi, can you attach a screenshot. You need to define how you open emails
+
+1) In the Preview pane (this would the standard for quickly reading and
+answering emails, in this case QuickFolders is the most useful as you can move
+emails while reading them and then move on to the next mail
+
+2) In a new mail tab (this is the default for all Thunderbird clients from 3.0
+upwards). Still handy as you still have the main toolbar and also QuickFolders
+to change back to another view. Doesn't clutter the desktop.
+
+3) In its own window. I don't use this way anymore since Tb supports tabs, but
+there was a bug in earlier versions that shows an empty QF toolbar (not talking
+about the new Current Folder bar which is an entirely different beast). Since
+it doesn't really add much value I removed this one on user request. 
+So the EXPECTED BEHAVIOR in case 3 is that there is _NO_ Qf toolbar visible. I
+think this might be the bug you are describing, but I will only know for sure
+if you add a screen shot.
+
+If that is it then it shouldn't be there and hasn't been for the last 20 or so
+releases; so the fix would be to remove it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24365.html#c2">
+            #2</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-05 01:59:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:9.0a1) Gecko/20110904 Firefox/9.0a1
+SeaMonkey/2.6a1 ID:20110904003014
+
+I cannot reproduce this problem (viewing incoming emails in the preview pane).
+Let's see what Michael (reporter) answers to <a href="show_bug.cgi@id=24365.html#c1">comment #1</a>.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24365.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 02:32:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This is funny, because just after I had answered the email I saw the behavior
+once, but I do not know what I did exactly to cause it. I checked the error
+console and I found this one:
+
+OnItemIntPropertyChanged
+ - QuickFolders is not defined.
+
+I think QF gets confused when you open separate mail windows. The was
+Javascript handles global object instances is very confusing to me, e.g. there
+is a disconnect between the QuickFolders object in Thunderbird (3pane window)
+and the QF options window, which I recently coded around by passing in the main
+instance in a window parameter, in order to get the correct extension version
+number. [Couldn't do it the old way anymore as the service call to the service
+@mozilla.org/extensions/manager was deprecated in favor of a nastier
+asynchronous model. 
+
+This might have something to do with the QF instance breaking in the main code
+line, but this is going to be hard to prove unless I get a reproducable way of
+making this happen.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24365.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 02:34:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, I got it. It actually happens as soon as you open a message in its own
+window (who does this nowadays anyway ?)  ;)  so its reproducable, let's fix it
+...
+Will post a fix in an attachment and probably update the installer without
+changing the version number as it hasn't been reviewed yet!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24365.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 08:45:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-2.8patch.xpi" name="attach_7055" title="Patched Version 2.8">Created an attachment (id=7055)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7055&amp;action=edit" title="Patched Version 2.8">[details]</a></span>
+Patched Version 2.8
+
+try this one, if it works I will upload it before the official release of 2.8
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24365.html#c6">
+            #6</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-05 14:11:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel,
+
+I'm one of those who view and handle mail in separate windows instead of
+opening in tabs. Perhaps it's because I'm using a large multi-monitor
+installation, or perhaps it has to do with the TB focus not changing to the
+spawned open message tab. In any case, it would be great if QF didn't vanish
+upon opening a message. 
+
+I sent you a screen grab and some query answers in an email response to you
+three days ago. Not having received an ack response, I figured I should look
+here. I'm glad the problem is being addressed. Would you like  me to replicate
+the information and grab I sent to you in email here?
+
+Also, can I assume that installing your attached
+QuickFolders-tb-pb-sm-2.8patch.xpi would be an appropriate step to take now?
+
+Thanks again, Axel.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24365.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 15:17:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c6">comment #6</a>)
+<span class="quote">&gt; Hi Axel,
+&gt; 
+&gt; I'm one of those who view and handle mail in separate windows instead of
+&gt; opening in tabs. Perhaps it's because I'm using a large multi-monitor
+&gt; installation, or perhaps it has to do with the TB focus not changing to the
+&gt; spawned open message tab. In any case, it would be great if QF didn't vanish
+&gt; upon opening a message. </span >
+
+It is still hard to imagine which of the many features of the normal QF toolbar
+would make sense in a window that does not display any other message (lists);
+that by design does not allow to switch to another folder. Since it does not
+display any other messages, clicking on a new Folder Tab would not make sense.
+Likewise clicking a tab in order to open another folder would IMHO not make
+sense in a single message window. 
+
+
+<span class="quote">&gt; I sent you a screen grab and some query answers in an email response to you
+&gt; three days ago. </span >
+Hmm I read it and thought I had sent a read receipt. Did not get around to
+replying it yet.
+
+
+<span class="quote">&gt; Not having received an ack response, I figured I should look
+&gt; here. I'm glad the problem is being addressed. Would you like  me to replicate
+&gt; the information and grab I sent to you in email here?</span >
+
+try the patch first :)
+<span class="quote">&gt; 
+&gt; Also, can I assume that installing your attached
+&gt; QuickFolders-tb-pb-sm-2.8patch.xpi would be an appropriate step to take now?</span >
+
+yes. I hope it works for you. As regards the errors you attached you have quite
+a few in there that are not related to QuickFolders which might also lead tp
+problems in QF. I will reply to the email in more detail at a later stage when
+I get time.
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24365.html#c8">
+            #8</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-05 15:32:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24365.html#c6">comment #6</a>)
+&gt; &gt; Hi Axel,
+&gt; &gt; 
+&gt; &gt; I'm one of those who view and handle mail in separate windows instead of
+&gt; &gt; opening in tabs. Perhaps it's because I'm using a large multi-monitor
+&gt; &gt; installation, or perhaps it has to do with the TB focus not changing to the
+&gt; &gt; spawned open message tab. In any case, it would be great if QF didn't vanish
+&gt; &gt; upon opening a message. 
+&gt; 
+&gt; It is still hard to imagine which of the many features of the normal QF toolbar
+&gt; would make sense in a window that does not display any other message (lists);
+&gt; that by design does not allow to switch to another folder. Since it does not
+&gt; display any other messages, clicking on a new Folder Tab would not make sense.
+&gt; Likewise clicking a tab in order to open another folder would IMHO not make
+&gt; sense in a single message window. </span >
+&lt;SNIP&gt; 
+
+Has someone asserted that the normal QF toolbar makes a great deal of sense in
+a window displaying a single message? (I presume that is what you mean, Axel,
+by &quot;a window that does not display any other message (lists)&quot;.) About the only
+real utility I've found is the current folder identification. The nav to
+next/prev unread message is not something I find useful. Perhaps others do. The
+icon drag-handle might be very useful for dragging the message-in-tab to
+another folder, but I've not gotten it to work yet. (sorry, that's a separate
+bug.) 
+
+Anyway, I'll backup and try the patch!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24365.html#c9">
+            #9</a> From 
+          <a href="mailto:pythagorus.theorem1&#64;gmail.com">Michael</a>
+          2011-09-05 21:00:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="beforeandafter.jpg" name="attach_7056" title="Shows before and after QF disappears">Created an attachment (id=7056)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7056&amp;action=edit" title="Shows before and after QF disappears">[details]</a></span>
+Shows before and after QF disappears
+
+I tend to use TB in Classic view and have the preview pane turned off. I open
+the email by double-clicking on the message in the email list panel. The email
+is displayed in a separate window rather than a tab. It seems to be that QF
+disappears when the email opens.
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24365.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-05 23:44:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24365.html#c7">comment #7</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=24365.html#c6">comment #6</a>)
+&gt; &gt; &gt; ... In any case, it would be great if QF didn't vanish
+&gt; &gt; &gt; upon opening a message. 
+&gt; &gt; 
+&gt; &gt; It is still hard to imagine which of the many features of the normal QF toolbar
+&gt; &gt; would make sense in a window that does not display any other message (lists);
+&gt; &lt;SNIP&gt; 
+&gt; 
+&gt; Has someone asserted that the normal QF toolbar makes a great deal of sense in
+&gt; a window displaying a single message? (I presume that is what you mean, Axel,
+&gt; by &quot;a window that does not display any other message (lists)&quot;.) </span >
+
+Sorry I misread your first post because I think some other user asked about
+having the regular QF toolbar (not the curent folder bar) in the single message
+window. Of course the Toolbar vanishing in the main (3pane) window is the bug
+we have to concentrate on here.
+
+<span class="quote">&gt; About the only
+&gt; real utility I've found is the current folder identification. The nav to
+&gt; next/prev unread message is not something I find useful. </span >
+
+This really depends on which way you read your mail; for the purpose of newly
+arrived emails, I am usually using the [N] key after reading an email in order
+to get to the next unread email (and much less often click on an email in the
+list)
+
+<span class="quote">&gt; The
+&gt; icon drag-handle might be very useful for dragging the message-in-tab to
+&gt; another folder, but I've not gotten it to work yet. (sorry, that's a separate
+&gt; bug.) </span >
+
+Again, I did not test this feature from a single message window (and I should
+have). Did you try to drag it into the Recent Folders list on the left hand
+side?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24365.html#c11">
+            #11</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-09 09:00:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Today's auto-update installed automatically. Thanks Axel!
+
+(In reply to <a href="show_bug.cgi@id=24365.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24365.html#c8">comment #8</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=24365.html#c7">comment #7</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=24365.html#c6">comment #6</a>)
+&gt; &gt; &gt; &gt; ... In any case, it would be great if QF didn't vanish
+&gt; &gt; &gt; &gt; upon opening a message. 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; It is still hard to imagine which of the many features of the normal QF </span >
+&lt;SNIP SNIP SNIP&gt;
+
+<span class="quote">&gt; Sorry I misread your first post because I think some other user asked about
+&gt; having the regular QF toolbar (not the curent folder bar) in the single
+&gt; message window. Of course the Toolbar vanishing in the main (3pane) window
+&gt; is the bug we have to concentrate on here.
+&gt; </span >
+
+Well, in email I asked about the regular QF toolbar appearing in single message
+windows, without tabs and including the intro 'what's this for' text. It's gone
+now. The QF Current Folder Bar is also gone.
+
+fwiw, for me, I turn off preview panes, so the main (3 pane) window is a 2 pane
+window. see below..
+
+
+<span class="quote">&gt; &gt; About the only
+&gt; &gt; real utility I've found is the current folder identification. The nav to
+&gt; &gt; next/prev unread message is not something I find useful. 
+&gt; 
+&gt; This really depends on which way you read your mail; for the purpose of newly
+&gt; arrived emails, I am usually using the [N] key after reading an email in order
+&gt; to get to the next unread email (and much less often click on an email in the
+&gt; list)
+&gt; </span >
+
+Yes, provision of different UI paths to the same commands implies differing
+ways of employing them. And you can bet that the users will discover them, and
+that we'll be surprised by how many do. It's a hassle, I'm sure. Sorry. I know
+you cannot provide for every oddball use case permutation. But, I'm sure I'm
+not alone in this particular pattern. Witness the report above by Michael.
+Frankly, I think many prefer to use mail  clients in this  way. Check out
+GMail's Classic view....
+
+Me, I use [F] and [B], as I prefer to just monitor read/unread status by the
+bold/regular font states in the list view. Once in awhile I'll use [N], but
+normally not. 
+
+
+<span class="quote">&gt; &gt; The
+&gt; &gt; icon drag-handle might be very useful for dragging the message-in-tab to
+&gt; &gt; another folder, but I've not gotten it to work yet. (sorry, that's a separate
+&gt; &gt; bug.) 
+&gt; 
+&gt; Again, I did not test this feature from a single message window (and I should
+&gt; have). Did you try to drag it into the Recent Folders list on the left hand
+&gt; side?
+&gt; </span >
+
+Well, the QF Current Folder Bar now doesn't appear anywhere on my installation
+here, whether a message is loaded in a tab or separate window. I even
+re-enabled the TB Message Preview pane. It's not there either. It's been gone
+since the earlier patch. (sorry, like many users I learned to not use mail
+preview panes as a protection against malware payloads. Hard habit to beat.
+Also, large desktop real estates make it kind of redundant and
+anti-multi-tasky; as many tab implementations seem to be). 
+
+Anyway, I see you've closed this, but I figured I'd better respond. Sorry it
+took a couple of days. Sorry for the complications, Axel. I would very much
+hate to have to do without QF. We luvs you man! heh
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=24365.html#c12">
+            #12</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-09 09:05:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24365.html#c8">comment #8</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=24365.html#c7">comment #7</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=24365.html#c6">comment #6</a>)</span >
+&lt;SNIP SNIP SNIP&gt;
+<span class="quote">&gt; &gt; The
+&gt; &gt; icon drag-handle might be very useful for dragging the message-in-tab to
+&gt; &gt; another folder, but I've not gotten it to work yet. (sorry, that's a separate
+&gt; &gt; bug.) 
+&gt; 
+&gt; Again, I did not test this feature from a single message window (and I should
+&gt; have). Did you try to drag it into the Recent Folders list on the left hand
+&gt; side?
+&gt; </span >
+
+oops, missed this.
+
+Yes, I tried dragging to the Recent Folders tab. The list didn't launch, I
+think the cursor mode didn't change either. 
+
+Now that the QF Current Folder Bar is entirely absent, I cannot test it again,
+obviously.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=24365.html#c13">
+            #13</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-09 10:17:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c11">comment #11</a>)
+[...]
+<span class="quote">&gt; Well, the QF Current Folder Bar now doesn't appear anywhere on my installation
+&gt; here, whether a message is loaded in a tab or separate window. I even
+&gt; re-enabled the TB Message Preview pane. It's not there either. It's been gone
+&gt; since the earlier patch. (sorry, like many users I learned to not use mail
+&gt; preview panes as a protection against malware payloads. Hard habit to beat.
+&gt; Also, large desktop real estates make it kind of redundant and
+&gt; anti-multi-tasky; as many tab implementations seem to be). </span >
+[...]
+
+In the Config Editor (acessed by a button in Thunderbird's &quot;Advanced&quot;
+preferences), what is the value of
+extensions.quickfolders.showCurrentFolderToolbar ? If false, try
+double-clicking it to make it true and see if the current folder toolbar
+reappears. I'm not sure if it is visible immediately after the change in
+windows and tabs which were already opened.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=24365.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-09 10:25:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="CurrentFolderBar-I_want_it_back.png" name="attach_7063" title="how to get to see current folder bar">Created an attachment (id=7063)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7063&amp;action=edit" title="how to get to see current folder bar">[details]</a></span>
+how to get to see current folder bar
+
+This screenshot would show the official way of getting the current folder bar
+displayed again (In case it was closed from the Preview Pane, which you don't
+use 8P ). Unfortunately, it doesn't work on the Single Message Window. An
+obvious oversight, which should clearly be easy to fix :p
+
+(famous last words) - I will try and follow up with a patch in this bug.
+
+Basically its just another overlay...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=24365.html#c15">
+            #15</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-09 10:36:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c14">comment #14</a>)
+<span class="quote">&gt; Created an <span class=""><a href="CurrentFolderBar-I_want_it_back.png" name="attach_7063" title="how to get to see current folder bar">attachment (id=7063)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7063&amp;action=edit" title="how to get to see current folder bar">[details]</a></span> [details]
+&gt; how to get to see current folder bar
+&gt; 
+&gt; This screenshot would show the official way of getting the current folder bar
+&gt; displayed again (In case it was closed from the Preview Pane, which you don't
+&gt; use 8P ). [...]</span >
+
+Ah, thanks: he doesn't but I do, and (in some earlier version maybe?) I clicked
+the (X) at the right end of the current folder toolbar by mistake and then had
+a h??? of a time finding out how to display it again.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=24365.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-09 13:08:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am open to suggestions. Where else did you look? Maybe the view menu would be
+the right place... not too sure myself.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=24365.html#c17">
+            #17</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-09 13:28:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c16">comment #16</a>)
+<span class="quote">&gt; I am open to suggestions. Where else did you look? Maybe the view menu would be
+&gt; the right place... not too sure myself.
+&gt; </span >
+
+I don't remember exactly where else I looked. But maybe a menuitem somewhere in
+the View menu and/or a button on the headers bar (of the preview pane and
+mail-read tab and mail-read window) and/or a customizable button... I suppose
+there are endless possibilities; but the menuitem highlighted in <span class=""><a href="CurrentFolderBar-I_want_it_back.png" name="attach_7063" title="how to get to see current folder bar">attachment
+7063</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7063&amp;action=edit" title="how to get to see current folder bar">[details]</a></span> isn't bad. Oh, I know: a checkbox in the addon's preferences popup; I
+think that's one of the first places I looked.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=24365.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-09 14:33:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-2.8.1pre2.xpi" name="attach_7064" title="A prototype with the current folder bar (disfunctional)">Created an attachment (id=7064)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7064&amp;action=edit" title="A prototype with the current folder bar (disfunctional)">[details]</a></span>
+A prototype with the current folder bar (disfunctional)
+
+Here is a first version with a current folder toolbar in the standalone Message
+Window.
+
+Most of the elements on it are unusable though, as the &quot;normal&quot; current folder
+toolbar is very much reliant on the main toolbar to provide most of its
+functionality. That is, mechanisms like folder navigation, a listener for
+changes (rename / number of emails), &quot;who am I (current folder)&quot; etc etc etc
+
+Now the nay impossible thing is to communicate with the QF toolbar from the
+main (three pane window) as it is in a completely different independant scope.
+
+Bearing that and the difficulties this brings to the developers table in mind,
+the first question, before even blindly diving into implementation would be
+
+&quot;which of the functions on the Current Folder Toolbar would make sense in the
+single message window? Which ones can be lost / don't even make sense here?&quot;
+
+I would say the following ones would possibly valuable
+1. (dragable) mail icon
+2. recent folders icon (as a drag target)
+3. Previous / Next (unread) message - possibly
+4. Next / Previous Sibling Folder - probably not (?)
+5. Parent FOlder - probably not (?)
+6. Current Folder context menu
+6.1 Folder Commands
+   - Mark Folder Read - probably not (as we cannot see the other emails in the
+folder)
+   - Compact Folder / Purge Junk / New Subfolder / Repair Folder - possibly not
+   - Folder Properties - maybe, maybe not
+6.2 SubFolders 
+   - possibly as drag targets.
+7. QuickFolders options - yes, as its cheap :) works already.
+8. Close toolbar - maybe but needs a way to re-display the toolbar
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=24365.html#c19">
+            #19</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-09 18:47:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+I lost the QF Current Folder Bar the same way that Tony did, by clicking the
+[X], and not finding the UI control to restore it. Now that you, Axel, have
+pointed out the top level QF context menu selection, I've got it back in the
+tabbed message view, &quot;Display Current Folder Tools.&quot;
+
+Since the tabbed view conceals the (vital) TBird folder tree, the navigation
+and orientation controls you've put in the QF Current Folder Bar do provide
+helpful info. (One of the really cool things about QF is how changing a folder
+tab changes the selected TBird folder in the tree - that's vital context. As
+the tabbed view covers that up - for small display installations (17-inch and
+below), I can really understand why people would want to go for the reduced
+windowing complexity of the tabbed view, in a real-estate starved environment -
+specially true as we're going through a period where microscopic mobile device
+displays are popular (give it, oh, two to five years more, max...), heh. So,
+you're faced with providing UX context in three use cases: windowed, tabbed,
+and windowed with preview. A bit complex. I'm glad you are coding it and not
+me, hehehe. 
+
+(In reply to <a href="show_bug.cgi@id=24365.html#c18">comment #18</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QF-2.8.1pre2.xpi" name="attach_7064" title="A prototype with the current folder bar (disfunctional)">attachment (id=7064)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7064&amp;action=edit" title="A prototype with the current folder bar (disfunctional)">[details]</a></span> [details]
+&gt; A prototype with the current folder bar (disfunctional)
+&gt; 
+&gt; Here is a first version with a current folder toolbar in the standalone 
+&gt; Message Window.
+&gt; </span >
+
+Sorry, can't install it locally right now. I'll evaluate it in the tabbed view
+and imagine the separate window case, in answer to your query points below.
+
+<span class="quote">&gt; Most of the elements on it are unusable though, as the &quot;normal&quot; current folder
+&gt; toolbar is very much reliant on the main toolbar to provide most of its
+&gt; functionality. That is, mechanisms like folder navigation, a listener for
+&gt; changes (rename / number of emails), &quot;who am I (current folder)&quot; etc etc etc
+&gt; 
+&gt; Now the nay impossible thing is to communicate with the QF toolbar from the
+&gt; main (three pane window) as it is in a completely different independant scope.
+&gt; </span >
+
+By &quot;QF toolbar&quot; here, I assume you mean the QF Current Folder Bar (or whatever
+you settle on calling it).
+
+The communication problem makes sense (to this ignorant lay person), as I would
+assume some context disconnect between separate Windows windows. The tabbed
+view QF Current Folder Bar, however, manifests cool communication between the
+main (primary tab) view and the spawned (message loaded) tab - when I click on
+&quot;Go to Parent Folder&quot; on the QF Current Folder Bar, magic happens as the
+primary tab comes forward, the message tab goes to the back, and the parent
+folder is selected in the TBird folder tree. Very cool. 
+
+This is the kind of communication you're talking about, yes Axel?
+
+For me, if such a nav control is going to appear in a separate Windows TBird
+message window, I'd expect the TBird folder selection/nav to follow. Otherwise,
+what's  it going to do, in the context of a single message in a window?
+(perhaps I'm missing something..)
+
+<span class="quote">&gt; Bearing that and the difficulties this brings to the developers table in mind,
+&gt; the first question, before even blindly diving into implementation would be
+&gt; 
+&gt; &quot;which of the functions on the Current Folder Toolbar would make sense in the
+&gt; single message window? Which ones can be lost / don't even make sense here?&quot;
+&gt; 
+&gt; I would say the following ones would possibly valuable
+&gt; 1. (dragable) mail icon</span >
+
+YES, or make the [{current folder name}] button in the center of the QF Current
+Folder Bar draggable. That might not be as easily discoverable though, unless
+you juice up the tool tip.
+
+<span class="quote">&gt; 2. recent folders icon (as a drag target)</span >
+
+If I'm seeing the main QF bar, with all my QF shortcut tabs including the main
+Recent Folders tab, having it again in the QF Current Folder Bar is redundant.
+I don't think it's damaging though. Multiple paths to the same destination are
+OK by me as long as the metaphor's not broken.
+
+So, this is ok with me for both tabbed and windowed message view.
+
+<span class="quote">&gt; 3. Previous / Next (unread) message - possibly</span >
+
+Me, I prefer absolute Previous / Next, not previous-unread / next-unread. But
+that's me. I can see use for  this, anyway. Just not one I'd use much
+(specially since [f] and [b] still work.
+
+<span class="quote">&gt; 4. Next / Previous Sibling Folder - probably not (?)</span >
+
+I'm not seeing an immediate use, right now. It's clever, but I don't see any
+utility for it. I'd want to use the tree for this level of nav from a message
+view context, I think....
+
+<span class="quote">&gt; 5. Parent FOlder - probably not (?)</span >
+
+This is a funny one. The utility I'm finding is a an easy lazy way to flop back
+to the primary tab and see a nav context in the folder tree. That's not really
+what you  intended, I think. Also, it's just lazy, as it's just as easy to
+click on the primary tab, mere millimeters further north-west. 
+
+I dunno. It's cool, but... eh.
+
+<span class="quote">&gt; 6. Current Folder context menu</span >
+
+That's the QuickFolders Options 'blue gear on letter' icon menu? Or, is it the
+context menu on the current folder dealy-bob in the middle of  the QF Current
+Folder Bar? 
+
+Anyway, whichever, I like context menus! I think I'd sink that Mark Folder Read
+command down into the Mail Folder Commands submenu though. An inadvertant
+float-selection of that one could yield crying, tears, or other emotional
+distress.
+
+
+<span class="quote">&gt; 6.1 Folder Commands
+&gt;    - Mark Folder Read - probably not (as we cannot see the other emails in the
+&gt; folder)
+&gt;    - Compact Folder / Purge Junk / New Subfolder / Repair Folder - possibly not
+&gt;    - Folder Properties - maybe, maybe not
+&gt; 6.2 SubFolders 
+&gt;    - possibly as drag targets.
+&gt; 7. QuickFolders options - yes, as its cheap :) works already.
+&gt; 8. Close toolbar - maybe but needs a way to re-display the toolbar
+&gt; </span >
+
+I'm greedy. A greedy user. I like  all those folder commands. 
+
+The &quot;Display Current Folder Tools&quot; command you've already provided on the main
+QF blue gear options icon on the main QF menu bar provides this. I'd also add
+it to the General tab of the QuickFolders Options menu. It's pretty basic; more
+than pimping.
+
+I hope this  blathering feedback is of some use. And I hope that the others
+here will also comment on this, Michael, Tony, other!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=24365.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-10 12:43:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c19">comment #19</a>)
+
+<span class="quote">&gt; The communication problem makes sense (to this ignorant lay person), as I would
+&gt; assume some context disconnect between separate Windows windows. The tabbed
+&gt; view QF Current Folder Bar, however, manifests cool communication between the
+&gt; main (primary tab) view and the spawned (message loaded) tab - when I click on
+&gt; &quot;Go to Parent Folder&quot; on the QF Current Folder Bar, magic happens as the
+&gt; primary tab comes forward, the message tab goes to the back, and the parent
+&gt; folder is selected in the TBird folder tree. Very cool. 
+&gt; 
+&gt; This is the kind of communication you're talking about, yes Axel?</span >
+
+Well yes sort of. ONe thing you must think of  is now matter how many tabs you
+have on the 3pane window, they are all just views of the same thing. They may
+have a message list or not, a message preview or not or even just a web page.
+So when you click on a different Thunderbird tab, you are really just changing
+the location of the one instance of the folder tree (whether you see it or
+not).
+
+Making the navigation work in such a way that it is synced with the (visible or
+invisible) folder tree, was one of the main challenges in the UI design
+process, and I am quite proud of it; especially when you start working with
+folder categories, you can have one tab for working and one for private stuff.
+
+
+<span class="quote">&gt; 
+&gt; For me, if such a nav control is going to appear in a separate Windows TBird
+&gt; message window, I'd expect the TBird folder selection/nav to follow. Otherwise,
+&gt; what's  it going to do, in the context of a single message in a window?
+&gt; (perhaps I'm missing something..)</span >
+
+The single message window does not communicate with anyt of the the 3pane
+windows, and I do not intend to add any functionality that is &quot;folder related&quot;. 
+The three pane windows always have a current folder.
+
+
+<span class="quote">&gt; YES, or make the [{current folder name}] button in the center of the QF Current
+&gt; Folder Bar draggable. </span >
+
+What do you mean, it already is! :-) it represents the folder and you drag it
+to a QuickFolder toolbar as a new tab.
+
+<span class="quote">&gt; That might not be as easily discoverable though, unless
+&gt; you juice up the tool tip.</span >
+
+Aw, no I let the users discover it. In QF, you can drag almost everything to
+everywhere else. (months of development)
+
+<span class="quote">&gt; 
+&gt; &gt; 2. recent folders icon (as a drag target)
+&gt; 
+&gt; If I'm seeing the main QF bar, with all my QF shortcut tabs including the main
+&gt; Recent Folders tab, having it again in the QF Current Folder Bar is redundant.</span >
+
+Well you could hide the main folder toolbar using the view menu, and still use
+the Current Folder bar. :-)
+
+<span class="quote">&gt; &gt; 3. Previous / Next (unread) message - possibly
+&gt; 
+&gt; Me, I prefer absolute Previous / Next, not previous-unread / next-unread. But
+&gt; that's me. I can see use for  this, anyway. Just not one I'd use much
+&gt; (specially since [f] and [b] still work.</span >
+
+to each his own; I have about 1000 (perceived) emails in my inbox I simply
+don't have the time to  go from one to the next to find the unread ones :P
+
+<span class="quote">&gt; 
+&gt; &gt; 4. Next / Previous Sibling Folder - probably not (?)
+&gt; 
+&gt; I'm not seeing an immediate use, right now. It's clever, but I don't see any
+&gt; utility for it. I'd want to use the tree for this level of nav from a message
+&gt; view context, I think....</span >
+
+Lets say you have invited 20 friends to a party and you have one folder for
+each in a parent folder &quot;friends&quot; so you can just go from alex to bertha to
+doris to eugene to joe; I think in the Current Folder bar, that actually makes
+sense as you can go navigate the whole folder tree without displaying it. As
+much as you can go to the next email, you can go to the next folder.
+
+<span class="quote">&gt; 
+&gt; &gt; 5. Parent FOlder - probably not (?)
+&gt; 
+&gt; This is a funny one. The utility I'm finding is a an easy lazy way to flop back
+&gt; to the primary tab and see a nav context in the folder tree. That's not really
+&gt; what you  intended, I think. Also, it's just lazy, as it's just as easy to
+&gt; click on the primary tab, mere millimeters further north-west. </span >
+
+erm, no. The liswt of emails is in between. And with my monitor (and 2 to 3
+rows of tabs) there is considerable effort in finding the correct one. So this
+is definitely a time saver in my book. What i basically try to achieve is not
+to hunt for folders or tabs, just go one up without thinking about it. And my
+folder hierarchies are little more involved, they have 4 or 5 levels.
+
+E.g.:
+Mozilla
+- AMO
+- - AMO Editors
+- - AMO Internal
+- - AMO Reviews
+- - - Stefano (Bloomind)
+- - AMO UPdates
+- - MOzilla UPdaes
+- - Mozilla Addons
+- BUgzilla
+- Catthief
+- KB
+- Mozdev.org
+- - BOard
+- - Feedback
+- - Mailing Listg
+- - My own donations
+- - Sysadmin
+- QuickFolders
+- - AMO-Editors
+- - Chris White
+- - Donations
+- - L10n
+- - POstbox
+- - - Tech Support
+- - QF-Bugs
+- - - Accounts
+- - - Current Bugs
+
+etc.etc.etc. so oit makes sense to have tghe &quot;One-ups&quot; as I only have a few out
+of these on my QF toolbar.
+
+
+<span class="quote">&gt; &gt; 6. Current Folder context menu
+&gt; 
+&gt; That's the QuickFolders Options 'blue gear on letter' icon menu? Or, is it the
+&gt; context menu on the current folder dealy-bob in the middle of  the QF Current
+&gt; Folder Bar? </span >
+
+It is the later. Current Folder is the thingy-bob in the middle (A tab
+representing the current folder). And it is fully dragable!
+
+Context menu is what you get when you click it (left or right).
+
+<span class="quote">&gt; 
+&gt; Anyway, whichever, I like context menus! I think I'd sink that Mark Folder Read
+&gt; command down into the Mail Folder Commands submenu though. An inadvertant
+&gt; float-selection of that one could yield crying, tears, or other emotional
+&gt; distress.</span >
+
+Yeah, but this one SOOO important, I use it all the time for mailing lists etc.
+in future versions this will be configurable.
+
+<span class="quote">&gt; 
+&gt; &gt; 6.1 Folder Commands
+&gt; &gt;    - Mark Folder Read - probably not (as we cannot see the other emails in the
+&gt; &gt; folder)
+&gt; &gt;    - Compact Folder / Purge Junk / New Subfolder / Repair Folder - possibly not
+&gt; &gt;    - Folder Properties - maybe, maybe not
+&gt; &gt; 6.2 SubFolders 
+&gt; &gt;    - possibly as drag targets.
+&gt; &gt; 7. QuickFolders options - yes, as its cheap :) works already.
+&gt; &gt; 8. Close toolbar - maybe but needs a way to re-display the toolbar
+&gt; &gt; 
+&gt; 
+&gt; I'm greedy. A greedy user. I like  all those folder commands. </span >
+
+But they do not make sense in a &quot;one message only window&quot; because I imagine as
+a user when you open ONE and ONE message ONLY, you're not really interested in
+navigating folders. That's what 3pane window is for. And what is the point in
+having folders in the &quot;one message only&quot; window, when I cannot see a list of
+message once I go to another? That's why it doesn't make much sense to me to
+add Folder navigation or context to that window. And I do NOT want reinvent the
+wheel or confuse my users or show how clever I am. Main objective is to just
+provide convenience to the existing folder metaphor.
+
+
+<span class="quote">&gt; 
+&gt; The &quot;Display Current Folder Tools&quot; command you've already provided on the main
+&gt; QF blue gear options icon on the main QF menu bar provides this. I'd also add
+&gt; it to the General tab of the QuickFolders Options menu. It's pretty basic; more
+&gt; than pimping.</span >
+
+Yes I agree. I think it would be cool in the View menu as well.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=24365.html#c21">
+            #21</a> From 
+          <a href="mailto:luisalbondigas&#64;waitaminute.us">Craig Louis</a>
+          2011-09-10 16:37:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24365.html#c20">comment #20</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24365.html#c19">comment #19</a>)
+&gt; 
+&gt; &gt; The communication problem makes sense (to this ignorant lay person), as I would
+&gt; &gt; assume some context disconnect between separate Windows windows. The tabbed
+&gt; &gt; view QF Current Folder Bar, however, manifests cool communication between the
+&gt; &gt; main (primary tab) view and the spawned (message loaded) tab - when I click on
+&gt; &gt; &quot;Go to Parent Folder&quot; on the QF Current Folder Bar, magic happens as the
+&gt; &gt; primary tab comes forward, the message tab goes to the back, and the parent
+&gt; &gt; folder is selected in the TBird folder tree. Very cool. 
+&gt; &gt; 
+&gt; &gt; This is the kind of communication you're talking about, yes Axel?
+&gt; 
+&gt; Well yes sort of. ONe thing you must think of  is now matter how many tabs you
+&gt; have on the 3pane window, they are all just views of the same thing. They may
+&gt; have a message list or not, a message preview or not or even just a web page.
+&gt; So when you click on a different Thunderbird tab, you are really just changing
+&gt; the location of the one instance of the folder tree (whether you see it or
+&gt; not).
+&gt; </span >
+
+Yep, I get it. Multiple views of  the same data/structure. This understanding
+is not an issue in my case. It may be for other users. Well, actually and fwiw,
+QF does a better job of reinforcing the tree branch folder leaf metaphor than
+does off the shelf TBird. With multiple message tabs open on the main TB window
+(3pane window, if you insist, :-), switching TBird tabs does NOT change the
+currently selected folder in the TBird folder tree. However, switching those
+tabs through use of the QF controls DOES. 
+
+Anyway, so, yes QF implements perceived communication when views are changed in
+ways OTS TBird does not. In a good way. To the degree you can continue this in
+the (not unusually employed) separate window single message view in a way that
+reinforces the metaphor, it's a good thing. 
+
+The question is, what's the opportunity cost? And, if it's high, what's the
+risk to the metaphor of just blowing off the QF Current Folder Bar in the
+separate individual message window view? 
+
+Right now, as I use today's QF version*, I can easily live WITHOUT coordination
+between the separate msg window and both the TBird folder tree AND the main QF
+Toolbar folder shortcuts. Spawning a separate Windows window, I think, elicits
+an impression of disconnection; so Windows users don't expect robust
+intra-window context coms. We do expect such coms between windows or menus
+(palettes et al) captured within or dependent on a main prog window (vis,
+Photoshop, etc). Separate TBird message windows are not main window dependent
+(close main TBird window: separate open msg windows do NOT also close; QED). 
+
+HOWEVER, IF future QF does add folder manipulation controls to the separate
+independent message window view, than the some attention should be paid to
+metaphor maint, imho. Thus, imho, invoking &quot;Go to parent folder,&quot; for example,
+should change the currently selected TBird folder in the TBird folder tree
+(yes, imho). So, it might be wiser to just not go there... or, at least, to be
+aware of the cost to the metaphor. My feelings are mixed.
+
+
+<span class="quote">&gt; Making the navigation work in such a way that it is synced with the (visible or
+&gt; invisible) folder tree, was one of the main challenges in the UI design
+&gt; process, and I am quite proud of it; especially when you start working with
+&gt; folder categories, you can have one tab for working and one for private stuff.
+&gt; </span >
+&lt;SNIP&gt; 
+
+We are not worthy. Seriously. This should be in TBird (or Mozilla mail
+whateveritscalled) core.
+
+I'm going to stop this particular feedback here. It's enough, and I think we're
+talking past each other a bit. eg, you're saying there's not going to be any
+communication between separate windows. OK. But, we're talking about feature
+load in the QF Current Folder Bar that MAY be employed in the separate message
+window view - which themselves are rife with coms modalities between windows
+(Go to parent folder, current folder name drag handle [which as of last update
+does not crash TBird here, yes!], Recent Folders, these all suggest connections
+between the windows).
+
+I tell you one thing gratuitously, Axel, if your QF shortcut tab/categories
+population and basic TBird folder hierarchy is one bit more complex than what
+I've got here, I'll be surprised. This local installation is certainly among
+the more heavily loaded in the TBird world. Hundreds of folders (probably
+thousands) in hierarchies commonly going down to five levels. (You can try a
+remote drive sometime if you don't believe me.)
+
+Anyway, if you're going to place the QF Current Folder Bar controls in the
+separate TBird message window, you  might as well employ the folder commands.
+That's what I think. When I've got a message open, it's nice to be able to move
+it to another folder without closing it and dragging from the main window
+message list.
+
+OK, ok, enough. 
+
+*(THANKS for your frequent updates and banging on the code, Axel. I like the
+new Display Recent Folders Tab in QF Options | General. And trying to drag a
+message with the QF Current Folder Bar now doesn't crash TBird, yay.)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24365&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

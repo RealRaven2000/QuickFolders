@@ -1,0 +1,1267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25751 &ndash; Right click stops working after dragging email to a quickfolder</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25751&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25751">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25751">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25751">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25751">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25751</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Right click stops working after dragging email to a quickfolder</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2014-07-12 00:56:17</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25751&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2014-07-12 00:56:17">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="25751">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Right click stops working after dragging email to a quickfolder">
+        <span title="Right click stops working after dragging email to a quickfolder">Right click stops working after dragging email to a quick...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25751.html">25751</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25751&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25751">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant &lt;mozdev&#64;horizonsunlimited.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.15pre258.xpi"
+               title="View the content of the attachment">
+          <b>2.15 prerelease 258</b></a>
+
+          <span class="bz_attach_extra_info">
+              (515.41 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7850"
+               title="Go to the comment associated with the attachment">2014-04-21 11:19</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7850&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="test1-rightclick-qfbug.txt"
+               title="View the content of the attachment">
+          <b>Test 1</b></a>
+
+          <span class="bz_attach_extra_info">
+              (63.73 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7851"
+               title="Go to the comment associated with the attachment">2014-04-21 20:22</a>,
+
+            <a href="mailto:mozdev&#64;horizonsunlimited.com"
+               title="Write an email to the creator of the attachment">Grant
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7851&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="test2-rightclick-qfbug.txt"
+               title="View the content of the attachment">
+          <b>Test 2</b></a>
+
+          <span class="bz_attach_extra_info">
+              (33.99 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7852"
+               title="Go to the comment associated with the attachment">2014-04-21 20:24</a>,
+
+            <a href="mailto:mozdev&#64;horizonsunlimited.com"
+               title="Write an email to the creator of the attachment">Grant
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7852&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="Test2&#32;with&#32;debugpopumenus-false-rightclickstillworking.txt"
+               title="View the content of the attachment">
+          <b>Test2 with debugpopumenus-false-rightclickstillworking</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.88 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7854"
+               title="Go to the comment associated with the attachment">2014-04-23 23:33</a>,
+
+            <a href="mailto:mozdev&#64;horizonsunlimited.com"
+               title="Write an email to the creator of the attachment">Grant
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7854&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="Test3&#32;with&#32;debugpopumenus-false&#32;-&#32;after&#32;this&#32;rightclick&#32;stopped&#32;working.txt"
+               title="View the content of the attachment">
+          <b>Test3 with debugpopumenus-false - after this, rightclick stopped working</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.88 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7855"
+               title="Go to the comment associated with the attachment">2014-04-23 23:35</a>,
+
+            <a href="mailto:mozdev&#64;horizonsunlimited.com"
+               title="Write an email to the creator of the attachment">Grant
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7855&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="Test&#32;4&#32;with&#32;debug&#32;interface&#32;true.txt"
+               title="View the content of the attachment">
+          <b>Test 4 with debug interface true</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.42 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=25751.html#attach_7856"
+               title="Go to the comment associated with the attachment">2014-04-24 20:15</a>,
+
+            <a href="mailto:mozdev&#64;horizonsunlimited.com"
+               title="Write an email to the creator of the attachment">Grant
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7856&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25751&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25751&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25751">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25751">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25751">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25751">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25751.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-04-20 20:22
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Consistently, on 4 computers - all Win 7 and latest Thunderbird. Right click
+works fine until dragging an email to a Quickfolder. Dragging an email to a
+folder in the left column - not using QF - works fine, and right click
+consistently continues to work after.
+
+Exiting main window and reloading, right click then continues to work - until
+dragging to QF again.
+
+This has been a consistent problem for us on all 4 computers for at least a
+couple of years.
+
+LOVE QF otherwise!
+
+Other extensions we've used for a long time:
+
+Lightning 2.6.4
+Lightning month tabs 1,9
+QuickText Pro .9.11.5
+Stationery .8.4
+Tasks and mails 2.4
+Toolbar buttons 1.0
+
+thanks, Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25751.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-21 11:19:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.15pre258.xpi" name="attach_7850" title="2.15 prerelease 258">Created an attachment (id=7850)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7850&amp;action=edit" title="2.15 prerelease 258">[details]</a></span>
+2.15 prerelease 258
+
+before you do any more testing please install the latest prerelease (this
+attachment) to make sure we are working from the same starting point. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25751.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-21 11:22:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25751.html#c0">comment #0</a>)
+<span class="quote">&gt; Consistently, on 4 computers - all Win 7 and latest Thunderbird. Right click
+&gt; works fine until dragging an email to a Quickfolder. Dragging an email to a
+&gt; folder in the left column - not using QF - works fine, and right click
+&gt; consistently continues to work after.
+&gt; 
+&gt; Exiting main window and reloading, right click then continues to work - until
+&gt; dragging to QF again.
+&gt; 
+&gt; This has been a consistent problem for us on all 4 computers for at least a
+&gt; couple of years.
+&gt; 
+&gt; LOVE QF otherwise!
+&gt; 
+&gt; Other extensions we've used for a long time:
+&gt; 
+&gt; Lightning 2.6.4
+&gt; Lightning month tabs 1,9
+&gt; QuickText Pro .9.11.5
+&gt; Stationery .8.4
+&gt; Tasks and mails 2.4
+&gt; Toolbar buttons 1.0
+&gt; 
+&gt; thanks, Grant</span >
+
+
+First of all, try it without QuickText pro to see if that makes a difference.
+Then I would suggest to use console2 to generate an error log to see what
+happens 
+
+1. at the end of the drag &amp; drop to a QF tab
+2. when you right-click on the QF tab after the drag operation
+
+# In QuickFolders options, enable Advanced / Debug Mode
+# Right-click Debug mode and switch on
+  @ extensions.quickfolders.debug.dnd
+  @ extensions.quickfolders.debug.folders.select
+  @ extensions.quickfolders.debug.mouseclicks
+  @ extensions.quickfolders.debug.popupmenus
+
+
+
+
+Install 
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/</a>
+
+Open Tools &gt; Error Console
+Activate [all]
+Deactivate [content]  - very important to avoid spamming the log with
+unimportant stuff like errors badly formatted emails
+
+Hit [Clear] and do the first test. You can use the Error Console right-click
+menu for Select All / Copy to copy the log to this bug.
+
+Hit [Clear] and do the second test. Copy log as above.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25751.html#c3">
+            #3</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-04-21 20:22:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="test1-rightclick-qfbug.txt" name="attach_7851" title="Test 1">Created an attachment (id=7851)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7851&amp;action=edit" title="Test 1">[details]</a></span>
+Test 1
+
+Test 1 as requested
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25751.html#c4">
+            #4</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-04-21 20:24:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="test2-rightclick-qfbug.txt" name="attach_7852" title="Test 2">Created an attachment (id=7852)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7852&amp;action=edit" title="Test 2">[details]</a></span>
+Test 2
+
+This was interesting, right clicking on the QF folder after dragging email to
+it RE-ACTIVATED the right click in TBird!
+
+So a &quot;fix&quot; is just that - drag to the QF folder then right click the folder and
+go back to work as normal. 
+
+There are TWO drag and drops in the second log because I wanted to double check
+what I thought I saw.
+
+thanks, Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25751.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-23 11:19:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25751.html#c4">comment #4</a>)
+<span class="quote">&gt; Created an <span class=""><a href="test2-rightclick-qfbug.txt" name="attach_7852" title="Test 2">attachment (id=7852)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7852&amp;action=edit" title="Test 2">[details]</a></span> [details]
+&gt; Test 2
+&gt; 
+&gt; This was interesting, right clicking on the QF folder after dragging email to
+&gt; it RE-ACTIVATED the right click in TBird!
+&gt; 
+&gt; So a &quot;fix&quot; is just that - drag to the QF folder then right click the folder and
+&gt; go back to work as normal. 
+&gt; 
+&gt; There are TWO drag and drops in the second log because I wanted to double check
+&gt; what I thought I saw.
+&gt; 
+&gt; thanks, Grant
+&gt; </span >
+Ok, can you please set to FALSE:
+
+extensions.quickfolders.debug.popupmenus
+
+and then start a fresh log and do two consecutive drag-and-drops please? I
+should only see DND related messages and mayb be able to figure out what goes
+wrong. Btw, it is easier if you drag to the target tab right away and don't go
+over a lot of other tabs as it only makes the log longer and harder to read.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25751.html#c6">
+            #6</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-04-23 23:33:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Test2&#32;with&#32;debugpopumenus-false-rightclickstillworking.txt" name="attach_7854" title="Test2 with debugpopumenus-false-rightclickstillworking">Created an attachment (id=7854)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7854&amp;action=edit" title="Test2 with debugpopumenus-false-rightclickstillworking">[details]</a></span>
+Test2 with debugpopumenus-false-rightclickstillworking
+
+As requested, log attached. Interestingly, right click STILL worked after this!
+
+So I did another test, see next attachment
+
+Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25751.html#c7">
+            #7</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-04-23 23:35:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Test3&#32;with&#32;debugpopumenus-false&#32;-&#32;after&#32;this&#32;rightclick&#32;stopped&#32;working.txt" name="attach_7855" title="Test3 with debugpopumenus-false - after this, rightclick stopped working">Created an attachment (id=7855)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7855&amp;action=edit" title="Test3 with debugpopumenus-false - after this, rightclick stopped working">[details]</a></span>
+Test3 with debugpopumenus-false - after this, rightclick stopped working
+
+Single drag, but after this right click stopped working, whereas after the
+previous two drags in a row, it still worked!
+Hope that helps!
+Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25751.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-24 11:51:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >OK, still hard to see what happens here, however if you enable
+
+extensions.quickfolders.debug.interface
+
+you should at least get this on right-click on any QF tab:
+
+QuickFolders {INTERFACE} 11:57:59.405  [62325 ms]        
+showPopup(,
+QuickFolders-folder-popup-mailbox://<a href="mailto:axelg@pop.vodafone.ie">axelg@pop.vodafone.ie</a>/Development/Mozilla/Addons/quickFilters,
+evt=[object MouseEvent])
+
+possibly followed by 
+QuickFolders {INTERFACE} 11:57:59.416  [11 ms]   
+setPaintButtonColor(10)
+
+do the drag, then right-click. Only interested in the log that is created after
+the last onDrop, so I guess you can disable logging
+
+extensions.quickfolders.debug.dnd
+
+as well. I need to understand whether the right-click event is actually still
+happening in the error case.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25751.html#c9">
+            #9</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-04-24 20:15:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Test&#32;4&#32;with&#32;debug&#32;interface&#32;true.txt" name="attach_7856" title="Test 4 with debug interface true">Created an attachment (id=7856)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7856&amp;action=edit" title="Test 4 with debug interface true">[details]</a></span>
+Test 4 with debug interface true
+
+Details in txt file.
+
+Essentially, after first drag drop, right click continued to work, after
+second, did not.
+
+Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25751.html#c10">
+            #10</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-07-11 19:11:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Still the same problem, right-click on messages disappears after a few drags to
+Quickfolders. Right clicking on any Quickfolder brings back right click on
+messages. SAME on BOTH of my AND my wife's' computers - that's FOUR Win 7
+computers!
+Any hope of solving this?
+thanks, Grant
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25751.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-07-11 21:58:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25751.html#c10">comment #10</a>)
+<span class="quote">&gt; Still the same problem, right-click on messages disappears after a few drags to
+&gt; Quickfolders. Right clicking on any Quickfolder brings back right click on
+&gt; messages. SAME on BOTH of my AND my wife's' computers - that's FOUR Win 7
+&gt; computers!
+&gt; Any hope of solving this?
+&gt; thanks, Grant
+&gt; </span >
+
+I might have missed this, but I think this is the first time that I read you
+meant the messages context menu. are there any log messages when you
+right-click on the messages?
+
+When you drag and drop, do you single click, drag and let go?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25751.html#c12">
+            #12</a> From 
+          <a href="mailto:mozdev&#64;horizonsunlimited.com">Grant</a>
+          2014-07-12 00:56:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >You said:
+
+&quot;I might have missed this, but I think this is the first time that I read you
+meant the messages context menu. are there any log messages when you
+right-click on the messages?
+
+When you drag and drop, do you single click, drag and let go?&quot;
+
+Sorry I thought that was clear!
+
+I haven't checked for log messages yet, but as that is what I was doing before
+it should be in the previous logs.
+
+Yes, single click and drag and drop.
+
+Then, I go to a message/email and right click, and nothing. Right-Click on a
+quickfolders tab, then go back to messages and right click, and context menu on
+messages works again.
+
+It is NOT absolutely consistent, so far as I can see, but most of the time
+that's it.
+
+Grant
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25751&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

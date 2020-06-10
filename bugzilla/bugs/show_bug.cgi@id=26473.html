@@ -1,0 +1,1243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26473 &ndash; Toolbar button to create subfolder</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26473&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26473">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26473">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26473">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26473">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26473</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Toolbar button to create subfolder</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-05-20 03:08:06</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26473&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-05-20 03:08:06">
+  <input type="hidden" name="longdesclength" value="13">
+  <input type="hidden" name="id" value="26473">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Toolbar button to create subfolder">Toolbar button to create subfolder
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26473.html">26473</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26473&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26473">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:Gunnar.Freiherr&#64;googlemail.com">Gunnar Scott Freiherr von Brandenstein &lt;Gunnar.Freiherr&#64;googlemail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="Gunnar.Freiherr&#64;googlemail.com">Gunnar.Freiherr&#64;googlemail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-4.9pre28.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.9 prerelease 28</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (702.80 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26473.html#attach_8364"
+               title="Go to the comment associated with the attachment">2018-01-24 07:00</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8364&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-4.9pre32.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.9 prerelease 32</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (700.36 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26473.html#attach_8365"
+               title="Go to the comment associated with the attachment">2018-01-25 07:04</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8365&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-4.9pre136.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.9 prerelease 136</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (727.21 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26473.html#attach_8405"
+               title="Go to the comment associated with the attachment">2018-03-09 07:13</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8405&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-4.9pre137.xpi"
+               title="View the content of the attachment">
+          <b>4.9 prerelease 137</b></a>
+
+          <span class="bz_attach_extra_info">
+              (727.22 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26473.html#attach_8408"
+               title="Go to the comment associated with the attachment">2018-03-11 01:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8408&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26473.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26473&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26473&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26473">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26473">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26473">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26473">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26473.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-01-20 16:28
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Ich habe den Button gefunden:
+
+unterordner erstellen. In der Quickfolders Werkzeugleiste.
+
+Könnte man es möglich machen, dass diese werkzeugleiste als normale
+symbolleiste funktionstüchtig wäre?
+
+So dass ich mir dort auch eine auswahl an icons rauszeiehen kann so wie das bei
+jedem anderen der abertausend Addons üblich ist, oder ist das mal wieder so
+eine
+&quot;wie-sie-nur-in-deutschland-üblich-ist-(geht-nicht/haben-wir-nicht/Ich-zeige-mal-meinem-mitmenschen-was-ich-für-eine-große-macht-habe-und-wie-scheißwertlos-er
+oder-sie-für-mich-ist/Ich-zeige-dem-jetzt-mal-wo-der-hammer-hängt)-marrote&quot;
+???
+
+Sorry, aber habe ich alle schon erlebt, und dann waren es 2 mausklicks, und
+plötzlich ging es doch.
+
+Sorry, aber wenn die funktion schon vorhanden ist, dann macht man sie seinem
+gegenüber auch zugänglich. alles andere ist einfach dummtun.
+
+der button ist schon da, der programmiercode(quellcode existiert schon, also wo
+liegt da das problem?
+
+sorry, ich verstehs einfach nicht.
+
+Mit freundlichen grüßen
+
+
+Gunnar
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26473.html#c1">
+            #1</a> From 
+          <a href="mailto:Gunnar.Freiherr&#64;googlemail.com">Gunnar Scott Freiherr von Brandenstein</a>
+          2018-01-21 15:26:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Tja, und nun hätte ich gerne bitte meinen &quot;Neuer Ordner Button&quot; in meiner
+symbolleiste oben und ich möchte ihn wieder in der filterfunktion haben, so
+wie es  mal war.
+
+So dass ich diesen ohne langes suchen sofort finden kann, und ihn auch benutzen
+kann, ansonsten ist unser geschäft nichtig.
+
+Sie haben Zeit bis zum 01.04.2018, danach storniere ich meine Zahlung.
+
+Betrügen lasse ich mich nicht ok?
+
+Mit (noch) Freundlichen Grüßen
+
+
+Gunnar Scott Freiherr von Brandenstein
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26473.html#c2">
+            #2</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-01-21 16:15:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Wenn Sie auf Englisch sprechen könnten, wäre es besser — nicht für Axel,
+er ist deutschsprächich, aber fur andere Benützer, die das selbste Problem
+haben können würden.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26473.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-21 16:56:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; Sie haben Zeit bis zum 01.04.2018, danach storniere ich meine Zahlung. Betrügen lasse ich mich nicht ok?</span >
+
+So geht das nicht - man macht keine Funktions Requests mit Drohungen. 
+
+Von neuen Funktionen sollen die anderen 20000 Benutzer profitieren daher der
+öffentliche Bug tracker mit Bugzilla. Dazu gehört mindestens eine ordentliche
+Beschreibung der Requirements. Und die fängt man auch nicht mit irgendwelchen
+Unterstellungen über böswillige Entwickler und überflüssigen Ultimatum an. 
+
+Neue Funktionen können auch von Benutzern der Freiversion vorgeschlagen
+werden.  Die lizenz werde ich daher morgen zurück erstatten da hier
+offensichtlich ein falscher Eindruck besteht. 
+
+------
+
+<span class="quote">&gt; unterordner erstellen. In der Quickfolders Werkzeugleiste. </span >
+
+Wie schon in privater Email angefragt, wo in der Werkzeugleiste? Ein Screenshot
+wäre hilfreich.
+
+Alle Tabs (auch der Tab im Current folder bar - in der Mitte vom Bildschirm)
+haben eine Menüeintrag (im Moment kein Button so viel ich weiss) um einen
+Unterordner im related folder (dem Ordner der den Tab repräsentiert) zu
+erzeugen. 
+
+Ein globaler Knopf ohne Kontext hat bisher nicht existiert. Screenshots kannst
+als  attachments anfügen.
+
+
+<span class="quote">&gt; Könnte man es möglich machen, dass diese werkzeugleiste als normale symbolleiste funktionstüchtig wäre?</span >
+
+Welche Werkzeugleiste, die in der Mitte (Current Folder Bar - zwischen thread
+pane &amp; mail Vorschau) 
+Diese repliziert viele Befehle die schon als Toolbar Buttons erhältlich sind
+z.B. &quot;go to next unread email&quot; - die Meisten sollten nicht als Toolbar Buttons
+verdoppelt werden. Das sollten wie als erstes klarstellen. 
+
+Welche werkzeugleiste genau, welcher Button &quot;neues Verzeichnis&quot;? Screenshot
+oder Bitte gemauer erklären. Wo soll das neue Verzeichnis angelegt werden, im
+aktuellen Verzeichnis? [Note: Bei Requirements gibt es keine überflüssigen
+Fragen was nicht dokumentiert ist kam auch nicht implementiert werden.]
+
+Ausserdem besteht ein unterschied zwischen einem toolbar-Knopf und einem
+Menüeintrag, wenn geht dann bitte das richtige Wort benutzen damit ich weiss
+was gemeint ist.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26473.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-21 17:10:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26473.html#c2">comment #2</a>)
+<span class="quote">&gt; Wenn Sie auf Englisch sprechen könnten, wäre es besser — nicht für Axel,
+&gt; er ist deutschsprächich, aber fur andere Benützer, die das selbste Problem
+&gt; haben können würden.
+&gt; </span >
+
+The OP is looking for a button for the main toolbar for Creating a new
+subfolder.  He claims that he has seen such a button In the QuickFolders
+toolbar (OP also suggested to turn all buttons on the QF toolbar into main
+toolbar items). He is also anxious to point out that he bought a pro license
+and that I may defraud him unless I implement whatever he wants. 
+
+I am trying to find out what exactly he is looking for so that we can find out
+whether new function benefits significant number of QuickFolders users. I am
+also going 5o reimburse his license fee because I do not want him to assume I
+only do his fir money.  There is a responsibility to all users to get the best
+Add-ons possible. This also includes thorough planning for new functionality
+and avoiding cluttering up the user interface with unnecessary stuff.
+
+I will implement whatever I think is necessary and helpful as soon as I am
+convinced that it benefits a substantial number of users. This cannot be
+changed or skewed by money.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26473.html#c5">
+            #5</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-01-21 17:27:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26473.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26473.html#c2">comment #2</a>)
+&gt; &gt; Wenn Sie auf Englisch sprechen könnten, wäre es besser — nicht für Axel,
+&gt; &gt; er ist deutschsprächich, aber fur andere Benützer, die das selbste Problem
+&gt; &gt; haben können würden.
+&gt; &gt; 
+&gt; 
+&gt; The OP is looking for a button for the main toolbar for Creating a new
+&gt; subfolder.  He claims that he has seen such a button In the QuickFolders
+&gt; toolbar (OP also suggested to turn all buttons on the QF toolbar into main
+&gt; toolbar items). He is also anxious to point out that he bought a pro license
+&gt; and that I may defraud him unless I implement whatever he wants.</span >
+[...]
+
+OK - he told me by private email that he has forgotten most of the English he
+learnt.
+
+Ich selbst lernte Deutsch zwei Jahr als optionaler Kurs in der Mittelschule
+(mein Muttersprache ist Französisch), aber das ist mehr als fünfzig Jahr
+vorbei, und *davon* habe ich viel vergessen.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26473.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-22 02:25:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >After having thought it over and thinking on how it may be valuable but also be
+better integrated into QuickFolders (by adding an option to create a QF tab)
+here is a suggestion on how to implement (Deutsche Übersetzung darunter):
+
+A configurable toolbar button which opens a Inputbox style dialog.
+
+Dialog Description
+==================
+
+Text field: Enter Folder name
+Checkbox: [x] create QuickFolder Tab
+Dropdown to select QuickFOlders Category.
+Buttons: [Ok], [Cancel]
+
+The dropdown is only shown if Categories are defined. (Happens automatically as
+soon as a QuickFolder is sorted into a new Category)
+
+If shown, the current Category is preselected.
+If shown, the category dropdown is initially disabled.
+Once the checkbox &quot;create QF Tab&quot; is selected the drop down becomes enabled.
+
+GERMAN TRANSLATION
+
+Eine optionale Schaltfläche die einen Dialog mit Eingabefeld 
+
+Eingabefeld: Verzeichnisnam
+Checkbox: [x] QF Tab erzeugen
+Dropdown Menue fuer QF Kategorie
+Schaltflaechen: [Ok] [Abbrechen]
+
+Das menue wird nur gezeigt wenn QF Kategorien definiert sind und ist anfangs
+gesperrt, aktuelle Kategorie ist ausgewaehlt. durch aktivieren der checkbox
+wird die dropdown freigegeben.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26473.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-24 07:00:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.9pre28.xpi" name="attach_8364" title="4.9 prerelease 28">Created an attachment (id=8364)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8364&amp;action=edit" title="4.9 prerelease 28">[details]</a></span>
+4.9 prerelease 28
+
+Here is a barebones Version with the main feature (create subfolder, using the
+standard thunderbird dialog) as optional toolbarbutton. right-click the toolbar
+and select customize, then add the button.
+
+The new Tab / Category UI will be added later (which will also remove the
+dropdown &quot;subfolder of&quot; because it clutters the interface)
+
+(Translation)
+
+Minimalversion mit der Hauptfunktion (unterverzeichnis erzeugen, im Moment der
+standard dialog von Tb). Spaeter werde ich die optionale checkbox QF Tab und
+Kategorie dropdown hinzufuegen. (die jetzige dropdown mit dem Elternverzeichnis
+wird dann entfernt, da sie nur verwirrt)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26473.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-24 07:03:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26473.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.9pre28.xpi" name="attach_8364" title="4.9 prerelease 28">attachment (id=8364)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8364&amp;action=edit" title="4.9 prerelease 28">[details]</a></span> [details]
+&gt; 4.9 prerelease 28
+&gt; 
+&gt; Here is a barebones Version with the main feature (create subfolder, using the
+&gt; standard thunderbird dialog) as optional toolbarbutton. right-click the toolbar
+&gt; and select customize, then add the button.</span >
+
+Detail:
+
+Right-click the mail toolbar and select customize, then add the button &quot;new
+Subfolder...&quot;
+== (Translation)
+Thunderbird Symbolleiste mit rechts anklicken und den Befehl &quot;Anpassen...&quot;
+waehlen, dann diee Schaltflaechee &quot;Neuere Unterordner...&quot; auf die Leiste
+ziehen.
+
+
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26473.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-01-25 07:04:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.9pre32.xpi" name="attach_8365" title="4.9 prerelease 32">Created an attachment (id=8365)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8365&amp;action=edit" title="4.9 prerelease 32">[details]</a></span>
+4.9 prerelease 32
+
+Removed the parent folder selection and added the optional checkbox for
+creating an QuickFolders tab. This uses the same dialog as the quickMove /
+quickJump buttons, so the checkbox will also be added to there (it should only
+show in the create case nopt the quickJump case, so I need to refine this a
+little bit).
+
+As regards Categories, if a category (or group of categories) is selected this
+will apply to the new Tab. If &quot;Show all&quot; is selected [or no categories are
+defined at all], then the new tab will not have any Category.
+
+Keeping it simple is best.
+
+Translation:
+
+Neue Version: diesee benutzt den selbeen Dialog wie die quickMove / quickJump
+Funktionen. (ohne Elternverzeichnis dropdown). Die Option für ein neues
+QuickFolders Tab wurde hinzugefügt. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26473.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-03-09 07:13:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.9pre136.xpi" name="attach_8405" title="4.9 prerelease 136">Created an attachment (id=8405)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8405&amp;action=edit" title="4.9 prerelease 136">[details]</a></span>
+4.9 prerelease 136
+
+Added proper toolbar Icons for current 52.6 and future versions (59,60) of
+Thunderbird
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26473.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-03-11 01:59:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.9pre137.xpi" name="attach_8408" title="4.9 prerelease 137">Created an attachment (id=8408)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8408&amp;action=edit" title="4.9 prerelease 137">[details]</a></span>
+4.9 prerelease 137
+
+Fixed a regression in options dialog that caused &quot;Bling my tabs&quot; to load
+incompletely
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26473.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-05-20 03:08:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This was fully implemented in Release 4.9.1.
+
+Diese Funktion wurde in Version 4.9.1 implementiert.
+
+Zum anderen Vorschlag: 
+
+Die QuickFolders Funktionsleiste kann nicht &quot;einfach&quot; in normale Werkzeugleiste
+umfunktioniert werden. Das setzt viel Arbeit und eine unnötige
+Verkomplizierung der Benutzeroberfläche voraus. QuickFolders ist in erster
+Linie als Erleichterung für Leute mit vielen Verzeichnissen gedacht. Das
+heißt das der Platz dort schon sehr stark von den existierenden Funktionen
+eingenommen ist. (das auf Deutsch zu schreiben ist so viel schwieriger als
+Englisch, ich hoffe der Original-Poster liest dies wenigstens.)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26473&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

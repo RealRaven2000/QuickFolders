@@ -1,0 +1,1009 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26135 &ndash; Provide a user-customizable &quot;Move To&quot; button</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26135&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26135">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26135">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26135">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26135">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26135</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Provide a user-customizable &quot;Move To&quot; button</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-12-11 11:49:25</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26135&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-12-11 11:49:25">
+  <input type="hidden" name="longdesclength" value="5">
+  <input type="hidden" name="id" value="26135">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Provide a user-customizable &quot;Move To&quot; button">Provide a user-customizable &quot;Move To&quot; button
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26135.html">26135</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>WONTFIX
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26135&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26135">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:mozdev.org&#64;codexit.com">Michael Blake &lt;mozdev.org&#64;codexit.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26135&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26135&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26135">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26135">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26135">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26135">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26135.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2016-01-11 17:36
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Suggest providing a &quot;Move To&quot; button in the main toolbar that allows the user
+to move email to a folder quickly and easily by selecting the destination
+folder from a short, inline dropdown list.
+
+This enhancement is essentially to implement Gmail's well designed &quot;Move To&quot;
+button, with the addition of integration and user configurability suitable to
+enhance QuickFolders. (The Gmail &quot;Move To&quot; button appears at the top of the
+screen, above the email, when you're reading an email in Gmail).
+
+Both Thunderbird and Postbox already contain a &quot;File&quot; button, which provides
+the ability to move files to a folder. However the interface for it is not
+streamlined like the &quot;Move To&quot; button. As it is currently implemented, the
+&quot;File&quot; button is too cumbersome to use like a &quot;Move To&quot; button on a regular
+basis. The default installations of the email clients don't even place the
+&quot;File&quot; button on the toolbar. However, with a little tweaking and user
+configuration it could become a superstar of user convenience for filing
+emails, and provide an additional convenient workflow for users to manage their
+emails using QuickFolders. 
+
+The enhancement doesn't necessarily need to be implemented by modifying the
+File button, though building on the existing functionality of the File button
+may (or may not) be the better approach.
+
+Some suggested upgrades, when viewed as an enhancement to the existing &quot;File&quot;
+button in the main toolbar:
+
+1. Allow the user to configure the File button to specify:
+a. What folders it will display.
+b. The order that the folders are listed.
+
+2. Allow the user to modify the File button so that the list of displayed
+folders are displayed inline - in a single column, rather than (the current)
+nested hierarchy that requires the user/mouse to move to the right, search
+through sublists, and navigate the entire folder structure in order to find the
+one they're interested in. That is often not necessary, and makes the File
+button too cumbersome to use for typical users who file their emails to a small
+set of folders.
+
+3. When the file button is clicked, in the drop down list that displays the
+file names, display each file name highlighted by the color of the
+corresponding folder (Applicable whenever the user has assigned a color to the
+folder on the QuickFolders bar).
+
+4. For users with multiple accounts or for other use cases that might benefit,
+allow the user to instantiate more than one &quot;File&quot;/&quot;Move To&quot; button on the main
+toolbar (with unique names, icons, and/or colors), in order to provide quick
+access to the folders they use most.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26135.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-01-12 01:59:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26135.html#c0">comment #0</a>)
+<span class="quote">&gt; Suggest providing a &quot;Move To&quot; button in the main toolbar that allows the user
+&gt; to move email to a folder quickly and easily by selecting the destination
+&gt; folder from a short, inline dropdown list.
+&gt; 
+&gt; This enhancement is essentially to implement Gmail's well designed &quot;Move To&quot;
+&gt; button, with the addition of integration and user configurability suitable to
+&gt; enhance QuickFolders. (The Gmail &quot;Move To&quot; button appears at the top of the
+&gt; screen, above the email, when you're reading an email in Gmail).</span >
+
+For the moment:
+
+I suggest you have a look at quickMove and Recent Folders buttons for quick
+navigation. But essentially it seems what you need is a &quot;favorites&quot; list which
+replaces QuickFolder tabs. The point of QuickFolders Tabs is to give you the
+most used (favorite) folders as easy to hit targets in your toolbar. 
+
+If you have too many to show without growing the toolbar &gt; 3 rows of tabs, I
+would suggest starting to use Categories: Generate at least 2 categories (*),
+main and favorites and then use the dropdown to toggle between them.
+
+(*) 
+   context menu: QuickFolders Commands &gt; Set Tab Category
+   enter new Category and click [Add!]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26135.html#c2">
+            #2</a> From 
+          <a href="mailto:mozdev.org&#64;codexit.com">Michael Blake</a>
+          2016-01-12 05:19:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26135.html#c1">comment #1</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26135.html#c0">comment #0</a>)
+&gt; &gt; Suggest providing a &quot;Move To&quot; button in the main toolbar that allows the user
+&gt; &gt; to move email to a folder quickly and easily by selecting the destination
+&gt; &gt; folder from a short, inline dropdown list.
+&gt; &gt; 
+&gt; &gt; This enhancement is essentially to implement Gmail's well designed &quot;Move To&quot;
+&gt; &gt; button, with the addition of integration and user configurability suitable to
+&gt; &gt; enhance QuickFolders. (The Gmail &quot;Move To&quot; button appears at the top of the
+&gt; &gt; screen, above the email, when you're reading an email in Gmail).
+&gt; 
+&gt; For the moment:
+&gt; 
+&gt; I suggest you have a look at quickMove and Recent Folders buttons for quick
+&gt; navigation. But essentially it seems what you need is a &quot;favorites&quot; list which
+&gt; replaces QuickFolder tabs. The point of QuickFolders Tabs is to give you the
+&gt; most used (favorite) folders as easy to hit targets in your toolbar. 
+&gt; 
+&gt; If you have too many to show without growing the toolbar &gt; 3 rows of tabs, I
+&gt; would suggest starting to use Categories: Generate at least 2 categories (*),
+&gt; main and favorites and then use the dropdown to toggle between them.
+&gt; 
+&gt; (*) 
+&gt;    context menu: QuickFolders Commands &gt; Set Tab Category
+&gt;    enter new Category and click [Add!]
+&gt; </span >
+
+Where are the quickMove and Recent Folders buttons? Looking at Thunderbird
+38.5.1 and Postbox 4.0.8, I don't see them in the list of available buttons to
+customize the mail bar. I have found the File button, which falls far short of
+the Move To button's usability.
+
+QuickFolders users who, like me, prefer to drag and drop emails to the
+QuickFolders bar will primarily find a Move To button useful for quickly filing
+email when in the &quot;open message in new window&quot; window, where the QuickFolders
+toolbar is not available.
+
+In the main email client window, seasoned QuickFolders drag-and-drop users
+would use the Move To button much less. However, as a prominent and well
+designed feature of Gmail, it would be well received by Gmail users as a
+convenient and familiar way to quickly file emails to folders from the main
+window, as well as from the &quot;open message in new window&quot; window. 
+
+If the purpose of QuickFolders is to focus on only providing the
+drag-and-drop-to-folder functionality in the main program window, which is does
+so well, then this enhancement is clearly beyond its scope. If the purpose of
+QuickFolders comes to include providing quick folder access in the separately
+opened email windows and/or providing quick folder access in the main window
+more generally, then this would be a good enhancement to consider. It is a well
+designed interface with legions of Gmail users who would be happy to have it
+for quick folder access.
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26135.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-01-12 09:34:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26135.html#c2">comment #2</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26135.html#c1">comment #1</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=26135.html#c0">comment #0</a>)
+&gt; &gt; &gt; Suggest providing a &quot;Move To&quot; button in the main toolbar that allows the user
+&gt; &gt; &gt; to move email to a folder quickly and easily by selecting the destination
+&gt; &gt; &gt; folder from a short, inline dropdown list.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; This enhancement is essentially to implement Gmail's well designed &quot;Move To&quot;
+&gt; &gt; &gt; button, with the addition of integration and user configurability suitable to
+&gt; &gt; &gt; enhance QuickFolders. (The Gmail &quot;Move To&quot; button appears at the top of the
+&gt; &gt; &gt; screen, above the email, when you're reading an email in Gmail).
+&gt; &gt; 
+&gt; &gt; For the moment:
+&gt; &gt; 
+&gt; &gt; I suggest you have a look at quickMove and Recent Folders buttons for quick
+&gt; &gt; navigation. But essentially it seems what you need is a &quot;favorites&quot; list which
+&gt; &gt; replaces QuickFolder tabs. The point of QuickFolders Tabs is to give you the
+&gt; &gt; most used (favorite) folders as easy to hit targets in your toolbar. 
+&gt; &gt; 
+&gt; &gt; If you have too many to show without growing the toolbar &gt; 3 rows of tabs, I
+&gt; &gt; would suggest starting to use Categories: Generate at least 2 categories (*),
+&gt; &gt; main and favorites and then use the dropdown to toggle between them.
+&gt; &gt; 
+&gt; &gt; (*) 
+&gt; &gt;    context menu: QuickFolders Commands &gt; Set Tab Category
+&gt; &gt;    enter new Category and click [Add!]
+&gt; &gt; 
+&gt; 
+&gt; Where are the quickMove and Recent Folders buttons? Looking at Thunderbird
+&gt; 38.5.1 and Postbox 4.0.8, I don't see them in the list of available buttons to
+&gt; customize the mail bar. I have found the File button, which falls far short of
+&gt; the Move To button's usability.</span >
+
+They are not on the mail bar; they are part of the QuickFolders toolbar. I
+don't know a &quot;move to&quot; button, but you probably mean the same functionality
+that you get when right-clicking any email and choose Move To / Copy To. This
+has a full folder tree and that's exactly the reason why it is a nightmare to
+use when you have many subfolders. Navigating to a subfolder of the 4th or 5th
+generation takes way too long as you have to navigate through many different
+menus. 
+
+<a href="https://i.imgur.com/erGC7lG.png">https://i.imgur.com/erGC7lG.png</a>
+
+The quickMove / quickJump button is based on text entry and exposes folders and
+tabs based on their name (just click or drag and start typing). You can also
+list all subfolders of a folder with entering foldername/
+
+<span class="quote">&gt; 
+&gt; QuickFolders users who, like me, prefer to drag and drop emails to the
+&gt; QuickFolders bar will primarily find a Move To button useful for quickly filing
+&gt; email when in the &quot;open message in new window&quot; window, where the QuickFolders
+&gt; toolbar is not available.</span >
+
+When you are in a single message window, what do you usually drag? Normally we
+drag mails from the list in the 3pane window - not sure what to drag when in
+single message mode. I don't use it very much as having windows for the 100+
+emails I look at daily is too much clutter for my taste, so I am interested in
+how you use it. It is technically difficult as every window makes a completely
+new copy of all global variables (including addons) - it is not always easy to
+cater for this correctly. 
+
+At the moment the current folder toolbar (which can be displayed in single
+message mode) has a restricted feature set, but maybe we can add a button or
+menu there if we think it through.
+
+<span class="quote">&gt; In the main email client window, seasoned QuickFolders drag-and-drop users
+&gt; would use the Move To button much less. However, as a prominent and well
+&gt; designed feature of Gmail, it would be well received by Gmail users as a
+&gt; convenient and familiar way to quickly file emails to folders from the main
+&gt; window, as well as from the &quot;open message in new window&quot; window. </span >
+
+Again I never use Gmail (the web interface) so whatever &quot;Google MoveTo&quot; does is
+new to me. Apparently it is a drop down with a search box (like my quickMove)
+and a combined MRU (most recent used) list - the later of which is more like my
+&quot;Recent folders&quot; tab / button. 
+
+Once you click &quot;Google MoveTo&quot; and start typing it pretty much works like my
+quickMove button. The only difference is the LRU list and the (create new)
+function. 
+
+However I was thinking about expanding that at some stage with &quot;Create new
+folder&quot; functionality.
+
+As I am using POP3 for my gmail (and thus do not have 100s of folders on the
+google interface) I cannot do a complete comparison, but apart from the
+slightly different looks they appear to do the same thing. (click / or drag
+mails, then type to navigate)
+
+
+
+<span class="quote">&gt; 
+&gt; If the purpose of QuickFolders is to focus on only providing the
+&gt; drag-and-drop-to-folder functionality in the main program window, which is does
+&gt; so well, then this enhancement is clearly beyond its scope. </span >
+
+The main purpose of QuickFolders is to navigate folders and file emails with
+the least amount of mouse movements and strain on difficult to reach
+subfolders. Also to give an overview on the folders (or parents) which have new
+email - the objective is always to have no unread email before closing
+Thunderbird. 
+
+Finally the premium version also has a &quot;Reading List&quot; which can be used for
+bookmarking important emails.
+
+
+<span class="quote">&gt; If the purpose of
+&gt; QuickFolders comes to include providing quick folder access in the separately
+&gt; opened email windows</span >
+
+not really. If I had a choice I would get rid of single message windows as they
+waste time ;) So I am treating them a little like step children. But let's see
+what we can do to improve this.
+
+<span class="quote">&gt; and/or providing quick folder access in the main window
+&gt; more generally, then this would be a good enhancement to consider. It is a well
+&gt; designed interface with legions of Gmail users who would be happy to have it
+&gt; for quick folder access.</span >
+
+Once you have tested quickMove / quickJump (make it visible in QF Options &gt;
+General &gt; Main Toolbar Elements &gt; quickMove Button) for a while I would like an
+opinion on how the google one is better and what could be added. Bear in mind
+that I want to keep the UI as simple as possible so I and avoid overloading it
+with features (well to be honest not with great success, it is already a rather
+daunting thing to learn about all its configuration options)
+
+If you have QuickFolders Pro, you can use the shortcuts SHIFT+M and SHIFT+J 
+(Thunderbird) for moving mail and jumping to folders.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26135.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-11 11:49:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >marking as wontfix unless you can suggest improvements to quickMove / quickJump
+functions
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26135&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

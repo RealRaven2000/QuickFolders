@@ -1,0 +1,1373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25241 &ndash; 0.9.2: signature displayed indented to right</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25241&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25241">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25241">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25241">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25241">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25241</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">0.9.2: signature displayed indented to right</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-06-10 02:09:26</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25241&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-06-10 02:09:26">
+  <input type="hidden" name="longdesclength" value="15">
+  <input type="hidden" name="id" value="25241">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="0.9.2: signature displayed indented to right">0.9.2: signature displayed indented to right
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25241.html">25241</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25241&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25241">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:mozdev&#64;lichtjager.nl">Johan &lt;mozdev&#64;lichtjager.nl&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="mozdev&#64;lichtjager.nl">mozdev&#64;lichtjager.nl</option>
+            <option value="richard&#64;richardhess.com">richard&#64;richardhess.com</option>
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="general-settings.png"
+               title="View the content of the attachment">
+          <b>settings screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (37.65 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7439"
+               title="Go to the comment associated with the attachment">2012-11-29 05:27</a>,
+
+            <a href="mailto:mozdev&#64;lichtjager.nl"
+               title="Write an email to the creator of the attachment">Johan
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7439&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="compose-settings.png"
+               title="View the content of the attachment">
+          <b>settings screenshot 2</b></a>
+
+          <span class="bz_attach_extra_info">
+              (37.21 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7440"
+               title="Go to the comment associated with the attachment">2012-11-29 05:28</a>,
+
+            <a href="mailto:mozdev&#64;lichtjager.nl"
+               title="Write an email to the creator of the attachment">Johan
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7440&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="smarttemplate-settings.png"
+               title="View the content of the attachment">
+          <b>settings screenshot 3</b></a>
+
+          <span class="bz_attach_extra_info">
+              (44.64 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7441"
+               title="Go to the comment associated with the attachment">2012-11-29 05:28</a>,
+
+            <a href="mailto:mozdev&#64;lichtjager.nl"
+               title="Write an email to the creator of the attachment">Johan
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7441&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.3pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.3 prerelease2</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (297.94 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7442"
+               title="Go to the comment associated with the attachment">2012-11-29 15:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7442&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="smartTemplate-0.9.3pre155.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">prerelease 155</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (327.40 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7595"
+               title="Go to the comment associated with the attachment">2013-06-05 05:07</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7595&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="smartTemplate-0.9.3pre161.xpi.1"
+               title="View the content of the attachment">
+          <b>0.9.3 Prerelease 161</b></a>
+
+          <span class="bz_attach_extra_info">
+              (328.51 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25241.html#attach_7602"
+               title="Go to the comment associated with the attachment">2013-06-10 02:00</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7602&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25241.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25241&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25241&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25241">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25241">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25241">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25241">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25241.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-11-29 02:47
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Previously I had installed version 0.9.2pre24; now on all PCs the new version
+is installed and messes up the signature. for example:
+
+&lt;span style=&quot;font-family: Trebuchet MS,Arial,verdana; font-size: 12px; color:
+#000;&quot;&gt;Beste ,&lt;br /&gt;&lt;br /&gt;
+Met vriendelijke groet,&lt;br /&gt;
+%ownname%&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;%sig%
+
+is what I have for 'new message'. The piece %sig% added loads of white space
+before and to the left of the signature and it seems it does not parse the html
+in my signature file, also none of the images are shown.
+
+And the strangest thing of all is that at my own pc the new version works, but
+on all the other PCs it does not work (problems as described above) How can it
+be that the new version works for me? Are there somewhere some settings saved
+locally which are necessary to make the new version work??
+
+I would also be helped if you could create a 0.9.2pre24 version which my
+thunderbird thinks is newer than the 0.9.2 and will not update back; But of
+course it would be best it the new version could be fixed!   
+
+Thanks,
+Best regards,
+Johan
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25241.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-29 04:48:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+
+
+<span class="quote">&gt;I would also be helped if you could create a 0.9.2pre24 version 
+&gt; which my thunderbird thinks is newer than the 0.9.2 and will not update back; &gt; But of course it would be best it the new version could be fixed!   </span >
+you can always download any version manually and drag it into the addons
+manager, there is nothing stopping you from installing older / newer versions.
+
+<span class="quote">&gt; The piece %sig% added loads of white space
+&gt; before and to the left of the signature and it seems it does not parse the html
+&gt; in my signature file, also none of the images are shown.</span >
+
+what settings have you got in account manager &gt; main as regards signatures
+
+signature file or signature text?
+is &quot;HTML&quot; checked? (If you _attach_ a html file, please still check this box)
+
+Try not using %sig% and use the signature settings in 
+&quot;Composition and Addressing&quot; instead.
+
+e.g. &quot;start my above the quote&quot; and &quot;place my signature below my reply&quot;; then
+simply leave out the %sig% variable. Also at the end of your template you have
+2*&lt;br&gt; which will account for some of the extra speace (at least vertically).
+
+You can send me an email using the settings you have so I can see what kind of
+mail is created?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25241.html#c2">
+            #2</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-11-29 05:27:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="general-settings.png" name="attach_7439" title="settings screenshot">Created an attachment (id=7439)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7439&amp;action=edit" title="settings screenshot">[details]</a></span>
+settings screenshot
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25241.html#c3">
+            #3</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-11-29 05:28:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="compose-settings.png" name="attach_7440" title="settings screenshot 2">Created an attachment (id=7440)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7440&amp;action=edit" title="settings screenshot 2">[details]</a></span>
+settings screenshot 2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25241.html#c4">
+            #4</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-11-29 05:28:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smarttemplate-settings.png" name="attach_7441" title="settings screenshot 3">Created an attachment (id=7441)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7441&amp;action=edit" title="settings screenshot 3">[details]</a></span>
+settings screenshot 3
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25241.html#c5">
+            #5</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-11-29 05:33:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25241.html#c1">comment #1</a>)
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt;I would also be helped if you could create a 0.9.2pre24 version 
+&gt; &gt; which my thunderbird thinks is newer than the 0.9.2 and will not update back; &gt; But of course it would be best it the new version could be fixed!   
+&gt; you can always download any version manually and drag it into the addons
+&gt; manager, there is nothing stopping you from installing older / newer versions.</span >
+
+Yes, I did so already, but after a day the automatic update process again
+installed the 0.9.2 version. I am reluctant to disable auto-updates because
+other add-ons need to be updated as well. So if this is the fix I need a
+version of 0.9.2pre24, with a version number higher than 0.9.2.
+
+<span class="quote">&gt; 
+&gt; &gt; The piece %sig% added loads of white space
+&gt; &gt; before and to the left of the signature and it seems it does not parse the html
+&gt; &gt; in my signature file, also none of the images are shown.
+&gt; 
+&gt; what settings have you got in account manager &gt; main as regards signatures
+&gt; 
+&gt; signature file or signature text?</span >
+
+I added some screenshots; this should clarify all used settings
+
+<span class="quote">&gt; is &quot;HTML&quot; checked? (If you _attach_ a html file, please still check this box)</span >
+
+as you can see; Yes
+<span class="quote">&gt; 
+&gt; Try not using %sig% and use the signature settings in 
+&gt; &quot;Composition and Addressing&quot; instead.
+&gt; 
+&gt; e.g. &quot;start my above the quote&quot; and &quot;place my signature below my reply&quot;; then
+&gt; simply leave out the %sig% variable. Also at the end of your template you have
+&gt; 2*&lt;br&gt; which will account for some of the extra speace (at least vertically).
+&gt; </span >
+
+This is strange; I have this &quot;start my above the quote&quot; and &quot;place my signature
+below my reply&quot;, in the previous version this was the way to enable the
+signiture; both the %sig% and the &quot;start my above the quote&quot; and &quot;place my
+signature below my reply&quot;. 
+<span class="quote">&gt; You can send me an email using the settings you have so I can see what kind of
+&gt; mail is created?
+&gt; </span >
+
+I will sent you a mail from both my account where it works with the new
+version; and from an other account - with exactly the same settings - where it
+does not work.
+
+thanks for looking into this!
+Best regards,
+Johan 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25241.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-29 06:24:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25241.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25241.html#c1">comment #1</a>)
+&gt; &gt; &gt;there is nothing stopping you from installing older / newer versions.
+&gt; 
+&gt; Yes, I did so already, but after a day the automatic update process again
+&gt; installed the 0.9.2 version. I am reluctant to disable auto-updates because
+&gt; other add-ons need to be updated as well. So if this is the fix I need a
+&gt; version of 0.9.2pre24, with a version number higher than 0.9.2.</span >
+
+You mean 0.9.3pre1 - 0.9.2 is already in production, so no more prereleases :)
+
+<span class="quote">&gt; &gt; &gt; The piece %sig% added loads of white space
+&gt; &gt; &gt; before and to the left of the signature and it seems it does not parse the html
+&gt; &gt; &gt; in my signature file, also none of the images are shown.
+&gt; &gt; 
+&gt; &gt; what settings have you got in account manager &gt; main as regards signatures
+&gt; &gt; 
+&gt; &gt; signature file or signature text?
+&gt; 
+&gt; I added some screenshots; this should clarify all used settings</span >
+
+I presume &quot;boven&quot; means above? Sorry my dutch isn't great. I would suggest
+remove the %sig% and use &quot;below my reply (above the quote)&quot; instead - you are
+currently using &quot;below the quote (recommended)&quot;
+
+<span class="quote">&gt; 
+&gt; &gt; is &quot;HTML&quot; checked? (If you _attach_ a html file, please still check this box)
+&gt; 
+&gt; as you can see; Yes</span >
+
+Ok, can you please also attach the signature file? You can overtype personal
+information with *** if you like, just make sure you leave the HTML parts as
+they are in the original.
+
+
+<span class="quote">&gt; &gt; 
+&gt; &gt; Try not using %sig% and use the signature settings in 
+&gt; &gt; &quot;Composition and Addressing&quot; instead.
+&gt; &gt; 
+&gt; &gt; e.g. &quot;start my above the quote&quot; and &quot;place my signature below my reply&quot;; then
+&gt; &gt; simply leave out the %sig% variable. Also at the end of your template you have
+&gt; &gt; 2*&lt;br&gt; which will account for some of the extra speace (at least vertically).
+&gt; &gt; 
+&gt; 
+&gt; This is strange; I have this &quot;start my above the quote&quot; and &quot;place my signature
+&gt; below my reply&quot;, in the previous version this was the way to enable the
+&gt; signiture; both the %sig% and the &quot;start my above the quote&quot; and &quot;place my
+&gt; signature below my reply&quot;. </span >
+
+No I only introduced %sig% in order to have more freedom of placement and
+because I had trouble following the Account Settings. Now it should be fine
+(better) without it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25241.html#c7">
+            #7</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-11-29 07:02:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25241.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25241.html#c5">comment #5</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25241.html#c1">comment #1</a>)
+&gt; &gt; &gt; &gt;there is nothing stopping you from installing older / newer versions.
+&gt; &gt; 
+&gt; &gt; Yes, I did so already, but after a day the automatic update process again
+&gt; &gt; installed the 0.9.2 version. I am reluctant to disable auto-updates because
+&gt; &gt; other add-ons need to be updated as well. So if this is the fix I need a
+&gt; &gt; version of 0.9.2pre24, with a version number higher than 0.9.2.
+&gt; 
+&gt; You mean 0.9.3pre1 - 0.9.2 is already in production, so no more prereleases :)</span >
+
+Yes, this is exactly what I meant. Or maybe even 99.9.3, so it will never
+automatically update. But of course I rather have the latest version, with this
+bug fixed :-)
+
+<span class="quote">&gt; 
+&gt; &gt; &gt; &gt; The piece %sig% added loads of white space
+&gt; &gt; &gt; &gt; before and to the left of the signature and it seems it does not parse the html
+&gt; &gt; &gt; &gt; in my signature file, also none of the images are shown.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; what settings have you got in account manager &gt; main as regards signatures
+&gt; &gt; &gt; 
+&gt; &gt; &gt; signature file or signature text?
+&gt; &gt; 
+&gt; &gt; I added some screenshots; this should clarify all used settings
+&gt; 
+&gt; I presume &quot;boven&quot; means above? Sorry my dutch isn't great. I would suggest
+&gt; remove the %sig% and use &quot;below my reply (above the quote)&quot; instead - you are
+&gt; currently using &quot;below the quote (recommended)&quot;</span >
+
+yes, boven means above. I did all you proposed but it still does not work. Only
+when I include the html of my signature directly into the template it works,
+but this is not a good work around. 
+
+<span class="quote">&gt; 
+&gt; &gt; 
+&gt; &gt; &gt; is &quot;HTML&quot; checked? (If you _attach_ a html file, please still check this box)
+&gt; &gt; 
+&gt; &gt; as you can see; Yes
+&gt; 
+&gt; Ok, can you please also attach the signature file? You can overtype personal
+&gt; information with *** if you like, just make sure you leave the HTML parts as
+&gt; they are in the original.
+&gt; 
+&gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Try not using %sig% and use the signature settings in 
+&gt; &gt; &gt; &quot;Composition and Addressing&quot; instead.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; e.g. &quot;start my above the quote&quot; and &quot;place my signature below my reply&quot;; then
+&gt; &gt; &gt; simply leave out the %sig% variable. Also at the end of your template you have
+&gt; &gt; &gt; 2*&lt;br&gt; which will account for some of the extra speace (at least vertically).
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; This is strange; I have this &quot;start my above the quote&quot; and &quot;place my signature
+&gt; &gt; below my reply&quot;, in the previous version this was the way to enable the
+&gt; &gt; signiture; both the %sig% and the &quot;start my above the quote&quot; and &quot;place my
+&gt; &gt; signature below my reply&quot;. 
+&gt; 
+&gt; No I only introduced %sig% in order to have more freedom of placement and
+&gt; because I had trouble following the Account Settings. Now it should be fine
+&gt; (better) without it.
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25241.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-29 15:16:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.3pre2.xpi" name="attach_7442" title="0.9.3 prerelease2">Created an attachment (id=7442)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7442&amp;action=edit" title="0.9.3 prerelease2">[details]</a></span>
+0.9.3 prerelease2
+
+The problem is probably caused by the type of signature file being
+misinterpreted as &quot;text&quot; although it is html. This new version has some special
+variations on %sig% which can force either way:
+
+%sig% - tries to determine whether there are html tags in it &quot;auto&quot;
+%sig(html)% - always interpret sig as &quot;html&quot;. 
+%sig(text)% - always interpret sig as &quot;plain text&quot;
+
+what you want to try is the second option.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25241.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-03 00:57:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25241.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25241.html#c6">comment #6</a>)
+&gt; &gt; I presume &quot;boven&quot; means above? Sorry my dutch isn't great. I would suggest
+&gt; &gt; remove the %sig% and use &quot;below my reply (above the quote)&quot; instead - you are
+&gt; &gt; currently using &quot;below the quote (recommended)&quot;
+&gt; 
+&gt; yes, boven means above. I did all you proposed but it still does not work. Only
+&gt; when I include the html of my signature directly into the template it works,
+&gt; but this is not a good work around. 
+&gt; </span >
+Johan, did you try the prerelease? Some feedback would be great!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25241.html#c10">
+            #10</a> From 
+          <a href="mailto:mozdev&#64;lichtjager.nl">Johan</a>
+          2012-12-03 01:25:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25241.html#c9">comment #9</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25241.html#c7">comment #7</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25241.html#c6">comment #6</a>)
+&gt; &gt; &gt; I presume &quot;boven&quot; means above? Sorry my dutch isn't great. I would suggest
+&gt; &gt; &gt; remove the %sig% and use &quot;below my reply (above the quote)&quot; instead - you are
+&gt; &gt; &gt; currently using &quot;below the quote (recommended)&quot;
+&gt; &gt; 
+&gt; &gt; yes, boven means above. I did all you proposed but it still does not work. Only
+&gt; &gt; when I include the html of my signature directly into the template it works,
+&gt; &gt; but this is not a good work around. 
+&gt; &gt; 
+&gt; Johan, did you try the prerelease? Some feedback would be great!</span >
+&gt;
+Hi Axel,
+Due to our email correspondence, I forgot to place some feedback here as well.
+But the prerelease (0.9.3pre2), using %sig(html)% worked great; the only thing
+I had to change was adding the '(html)'. Leaving out the (html) bit the
+signature still didn't display correctly, but a lot better than using 0.9.2.
+Html was shown and also images; but there was too much spacing. If you like I
+could test this some more (just like I asked per mail, but I didn't receive a
+response to that mail).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25241.html#c11">
+            #11</a> From 
+          <a href="mailto:richard&#64;richardhess.com">Richard L Hess</a>
+          2012-12-03 06:00:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In my case the signature disappeared completely.
+
+It could be repaired by making certain each template in SmartTemplate had a
+carriage return in it.
+
+0.9.3 prerelease2 seems to have solved the problem. I removed the carriage
+returns (actually, I guess technically they are CR/LF pairs as this is Windows)
+and signatures seem to be adding normally now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25241.html#c12">
+            #12</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2013-01-05 05:32:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >have added me to the bcc list
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25241.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-06-05 05:07:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.3pre155.xpi" name="attach_7595" title="prerelease 155">Created an attachment (id=7595)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7595&amp;action=edit" title="prerelease 155">[details]</a></span>
+prerelease 155
+
+please re-test with this latest pre-release. I haven't encountered any Problems
+with my signatures using this version.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25241.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-06-10 02:00:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.3pre161.xpi.1" name="attach_7602" title="0.9.3 Prerelease 161">Created an attachment (id=7602)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7602&amp;action=edit" title="0.9.3 Prerelease 161">[details]</a></span>
+0.9.3 Prerelease 161
+
+Newer beta, supersedes 155. the cursor position is made more explicit by moving
+the cursor backwards + forward one character, this should also remove the
+problem with the cursor being at the end of the line.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25241&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

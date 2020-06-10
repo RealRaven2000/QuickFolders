@@ -1,0 +1,1073 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 21808 &ndash; Conflict with Additional Folders View extension</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21808&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21808">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=21808">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21808">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_21808">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;21808</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Conflict with Additional Folders View extension</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2009-10-02 15:05:12</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21808&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2009-10-02 15:05:12">
+  <input type="hidden" name="longdesclength" value="8">
+  <input type="hidden" name="id" value="21808">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Conflict with Additional Folders View extension">Conflict with Additional Folders View extension
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=21808.html">21808</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>WONTFIX
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=21808&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=21808">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:jjohnson&#64;library.berkeley.edu">Jeff &lt;jjohnson&#64;library.berkeley.edu&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="bugzilla&#64;prof-hitchcock.net">bugzilla&#64;prof-hitchcock.net</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=21808&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21808&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=21808">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=21808">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=21808">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=21808">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=21808.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2009-10-01 17:01
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Using both Quickfolders and Additional Folders View causes Quickfolders to not
+respond when tabs are clicked on.
+
+Additional Folders View divides the Folder Pane in two so that one pane can
+show All Folders and the other can show Unread Folders, etc. If a folder is
+opened that is shown in the upper (additional) folder view, then the
+Quickfolders tabs become inoperable. You can re-enable them by clicking on a
+non-tab folder in the lower folder pane, then the tabs work again.
+
+If Additional Folders View is disabled Quickfolders works without problems.
+
+I am using Quickfolders 1.5pre1 and Additional Folders View 0.2.3 with Firefox
+3.5.3 on a Windows XP PC.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=21808.html#c1">
+            #1</a> From 
+          <a href="mailto:bugzilla&#64;prof-hitchcock.net">Michael H.</a>
+          2009-10-02 08:49:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Also using Quickfolders 1.5pre1 and Additional Folders View 0.2.3 with TB
+2.0.0.23 under Windows XP Pro SP3 and experiencing this problem. 
+
+Additional info:
+When QF seems to refuse to work as mentioned previously, one can see in the
+lower pane of AFV that the correct folder is highlighted (light gray using
+default TB theme) but does not receive the focus, which stays on the
+highlighted (dark blue) folder in the upper AFV pane! As a result, the email
+list remains 'glued' on the highlighted upper pane folder. So, QF is attempting
+to do its job, but is not able to move the focus out of the upper pane of AFV. 
+
+Please team-up with the AFV folks to resolve this! These two add-ons really
+work otherwise well together and enhance each other!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=21808.html#c2">
+            #2</a> From 
+          <a href="mailto:bugzilla&#64;prof-hitchcock.net">Michael H.</a>
+          2009-10-02 09:04:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Oh. AFV is no longer being maintained, but all is not lost. The source code can
+be found at the link below, so feasibly one could implement a check for which
+pane of AFV has the focus and moving it accordingly and effectively when a QF
+tab is clicked.
+
+<a href="http://code.google.com/p/afview/source/browse/trunk/src/chrome/content/">http://code.google.com/p/afview/source/browse/trunk/src/chrome/content/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=21808.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-10-02 12:05:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21808.html#c1">comment #1</a>)
+<span class="quote">&gt; Also using Quickfolders 1.5pre1 and Additional Folders View 0.2.3 with TB
+&gt; 2.0.0.23 under Windows XP Pro SP3 and experiencing this problem. 
+&gt; 
+&gt; Additional info:
+&gt; When QF seems to refuse to work as mentioned previously, one can see in the
+&gt; lower pane of AFV that the correct folder is highlighted (light gray using
+&gt; default TB theme) but does not receive the focus, which stays on the
+&gt; highlighted (dark blue) folder in the upper AFV pane! As a result, the email
+&gt; list remains 'glued' on the highlighted upper pane folder. So, QF is attempting
+&gt; to do its job, but is not able to move the focus out of the upper pane of AFV. 
+&gt; 
+&gt; Please team-up with the AFV folks to resolve this! These two add-ons really
+&gt; work otherwise well together and enhance each other!
+&gt; </span >
+
+Hi Michael,
+
+can you activate the option &quot;Focus on Message List When Changing Tabs&quot; on the
+first options page? If that doesn't affect the bug I would be interested in the
+output on the Error Console with this option enabled.
+
+regards
+Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=21808.html#c4">
+            #4</a> From 
+          <a href="mailto:bugzilla&#64;prof-hitchcock.net">Michael H.</a>
+          2009-10-02 12:47:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21808.html#c3">comment #3</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=21808.html#c1">comment #1</a>)
+&gt; &gt; Also using Quickfolders 1.5pre1 and Additional Folders View 0.2.3 with TB
+&gt; &gt; 2.0.0.23 under Windows XP Pro SP3 and experiencing this problem. 
+&gt; &gt; 
+&gt; &gt; Additional info:
+&gt; &gt; When QF seems to refuse to work as mentioned previously, one can see in the
+&gt; &gt; lower pane of AFV that the correct folder is highlighted (light gray using
+&gt; &gt; default TB theme) but does not receive the focus, which stays on the
+&gt; &gt; highlighted (dark blue) folder in the upper AFV pane! As a result, the email
+&gt; &gt; list remains 'glued' on the highlighted upper pane folder. So, QF is attempting
+&gt; &gt; to do its job, but is not able to move the focus out of the upper pane of AFV. </span >
+
+<span class="quote">&gt; 
+&gt; Hi Michael,
+&gt; 
+&gt; can you activate the option &quot;Focus on Message List When Changing Tabs&quot; on the
+&gt; first options page? If that doesn't affect the bug I would be interested in the
+&gt; output on the Error Console with this option enabled.
+&gt; 
+&gt; regards
+&gt; Axel
+&gt; </span >
+
+HI Axel,
+&quot;Focus on Message List When Changing Tabs&quot; was originally activated (default
+setting, I believe) when the problem occurred. Activating it and deactivating
+it has no apparent effect.
+
+The Error Console spits out the following sequence. I've denoted the triggering
+actions and results with #. Two cases follow, Case 1 for navigation exclusively
+in the lower AFV pane; Case 2 for for navigation exclusively in the upper AFV
+pane. In Case 2 
+
+Case 1: Lower AFV pane
+# clicked on Inbox folder in lower AFV pane
+QuickFolders:event: FolderLoaded
+
+# clicked on QF Tab Michelle
+QuickFolders:MyEnsureFolderIndex - index of Michelle: 11
+QuickFolders:event: FolderLoaded # email list successfully
+
+# clicked on QF Tab Samba
+QuickFolders:MyEnsureFolderIndex - index of Samba: 13
+QuickFolders:event: FolderLoaded # email list successfully updated 
+
+-------------------
+Case 2: Upper AFV pane
+# clicked on Inbox folder in upper AFV pane
+QuickFolders:event: FolderLoaded # email list successfully updated
+
+# clicked on QF Tab Michelle
+QuickFolders:MyEnsureFolderIndex - index of Michelle: 11
+# email list FAILED to update, missing 'FolderLoaded' event
+
+# clicked on QF Tab Samba
+QuickFolders:MyEnsureFolderIndex - index of Samba: 13 
+# email list FAILED to update, missing 'FolderLoaded' event
+-------------------
+
+That any help?
+Michael
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=21808.html#c5">
+            #5</a> From 
+          <a href="mailto:bugzilla&#64;prof-hitchcock.net">Michael H.</a>
+          2009-10-02 12:50:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(Please disregard the dangling, copy-paste remnant &quot;In Case 2&quot;. :-|)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=21808.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2009-10-02 14:52:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=21808.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=21808.html#c3">comment #3</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=21808.html#c1">comment #1</a>)
+&gt; &gt; &gt; Also using Quickfolders 1.5pre1 and Additional Folders View 0.2.3 with TB
+&gt; &gt; &gt; 2.0.0.23 under Windows XP Pro SP3 and experiencing this problem. 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Additional info:
+&gt; &gt; &gt; When QF seems to refuse to work as mentioned previously, one can see in the
+&gt; &gt; &gt; lower pane of AFV that the correct folder is highlighted (light gray using
+&gt; &gt; &gt; default TB theme) but does not receive the focus, which stays on the
+&gt; &gt; &gt; highlighted (dark blue) folder in the upper AFV pane! As a result, the email
+&gt; &gt; &gt; list remains 'glued' on the highlighted upper pane folder. So, QF is attempting
+&gt; &gt; &gt; to do its job, but is not able to move the focus out of the upper pane of AFV. 
+&gt; 
+&gt; &gt; 
+&gt; &gt; Hi Michael,
+&gt; &gt; 
+&gt; &gt; can you activate the option &quot;Focus on Message List When Changing Tabs&quot; on the
+&gt; &gt; first options page? If that doesn't affect the bug I would be interested in the
+&gt; &gt; output on the Error Console with this option enabled.
+&gt; &gt; 
+&gt; &gt; regards
+&gt; &gt; Axel
+&gt; &gt; 
+&gt; 
+&gt; HI Axel,
+&gt; &quot;Focus on Message List When Changing Tabs&quot; was originally activated (default
+&gt; setting, I believe) when the problem occurred. Activating it and deactivating
+&gt; it has no apparent effect.
+&gt; 
+&gt; The Error Console spits out the following sequence. I've denoted the triggering
+&gt; actions and results with #. Two cases follow, Case 1 for navigation exclusively
+&gt; in the lower AFV pane; Case 2 for for navigation exclusively in the upper AFV
+&gt; pane. In Case 2 
+&gt; 
+&gt; Case 1: Lower AFV pane
+&gt; # clicked on Inbox folder in lower AFV pane
+&gt; QuickFolders:event: FolderLoaded
+&gt; 
+&gt; # clicked on QF Tab Michelle
+&gt; QuickFolders:MyEnsureFolderIndex - index of Michelle: 11
+&gt; QuickFolders:event: FolderLoaded # email list successfully
+&gt; 
+&gt; # clicked on QF Tab Samba
+&gt; QuickFolders:MyEnsureFolderIndex - index of Samba: 13
+&gt; QuickFolders:event: FolderLoaded # email list successfully updated 
+&gt; </span >
+
+What you refer to as &quot;lower AFV pane&quot; is actually the original Folder view, I
+think this one works pretty flawless (as you have reported here).
+
+AFV instantiates a new one on top:
+
+<span class="quote">&gt; -------------------
+&gt; Case 2: Upper AFV pane
+&gt; # clicked on Inbox folder in upper AFV pane
+&gt; QuickFolders:event: FolderLoaded # email list successfully updated
+&gt; 
+&gt; # clicked on QF Tab Michelle
+&gt; QuickFolders:MyEnsureFolderIndex - index of Michelle: 11
+&gt; # email list FAILED to update, missing 'FolderLoaded' event</span >
+
+when I am trying this from here,  I get the following behavior:
+# clicked on QF Tab 'test'
+  List of email shows contents of 'test' folder
+  AFV pane (top) does not update its currently selected folder
+
+# clicked on 'IOL Inbox' in AVF pane
+  clicking on QF tabs changes the selection in the (bottom) all folders  view
+  the message list remains at displaying the contents of 'IOL Inbox'
+  once one clicks on the bottom (original) folder view again, QF is synced with
+the message pane once again.
+
+
+I have just ran some more tests and put in a ton of debug output and have come
+to the conclusion that the 
+
+I have also checked the code on 
+<a href="http://mxr.mozilla.org/mozilla/source/mail/base/content/msgMail3PaneWindow.js#1462">http://mxr.mozilla.org/mozilla/source/mail/base/content/msgMail3PaneWindow.js#1462</a>
+
+to see whether I am changing the folder according to the way the new Helper
+method SelectFolder does it (this does not exist in TB2) and it seems like the
+code is indeed correct. It begs the question what happens to the FolderLoaded
+event, when AFV has the focus?
+
+I have also looked at the source code of AFV, which seems to sometimes have the
+(slightly nasty) habit of overwriting a global helper function (GetFolderTree)
+
+    onSelect: function(aEvent) {
+      var tmp = GetFolderTree;
+      GetFolderTree = gAFViewOverlay.additionalFolderTree.ref;
+      FolderPaneSelectionChange(aEvent);
+      GetFolderTree = tmp;
+    },
+
+... in order to manipulate the behavior of the function
+FolderPaneSelectionChange via a nasty global side effect so that it instead
+applied to the new additional Folder view. 
+
+<a href="http://mxr.mozilla.org/mozilla/source/mail/base/content/commandglue.js#815">http://mxr.mozilla.org/mozilla/source/mail/base/content/commandglue.js#815</a>
+
+Should this code be ran during the folder change (and I am 90% sure it is) then
+I could well imagine that QuickFolder could be failing. In fact QF will
+dutyfully try to set the new folder (and manage this, as I can see the folder
+selection shifts to the correct folder), but the original Folder tree can not
+for some reason update the message pane - could be that the message pane or
+whatever other function creates the ItemEvent &quot;folder loaded&quot; is using just
+that global helper function &quot;GetFolderTree&quot; to tell it to notify the message
+pane; instead this message would be redirected to AFV and AFV probably ignores
+this message and also does not pass it on to the original Folder Pane (??)
+
+The onus would be on the owners of AFV to fix this behavior (I don't know
+whether it is permissible to overwrite global helper functions in this way).
+What's more important I don't know how I can easily fix this for you, even if I
+have the full source code of AFV available. Maybe he could somehow wrap the
+onSelect action in a Semaphore so that GetFolderTree delays any other
+extensions that use it until the original value is restored (?quickfix? I do
+not know whether it is actually possible). If this would lead to a lockup then
+at least we would know that overwriting GetFolderTree in the way described
+above is indeed damaging.
+
+that would be my first guess... you can submit more info if you think it helps,
+but realistically the only way to resolve the bug is by debugging AFV (using
+Venkman) or better asking the owner of that extension to do it.
+
+regards
+  Axel
+
+
+
+
+<span class="quote">&gt; 
+&gt; # clicked on QF Tab Samba
+&gt; QuickFolders:MyEnsureFolderIndex - index of Samba: 13 
+&gt; # email list FAILED to update, missing 'FolderLoaded' event
+&gt; -------------------
+&gt; 
+&gt; That any help?
+&gt; Michael
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=21808.html#c7">
+            #7</a> From 
+          <a href="mailto:bugzilla&#64;prof-hitchcock.net">Michael H.</a>
+          2009-10-02 15:05:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Agreed, Axel!
+
+Thanks for the thorough analysis, from which it seems that the the AFV
+developers/maintainers should resolve this. 
+
+I will forward this problem to them and perhaps they will be inspired or nice
+enough to go to work on the problem. I have my doubts and can not get into the
+nuts and bolts myself, but it's worth a try!
+
+Case closed... for now, and thanks for the prompt reaction!
+Michael
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=21808&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

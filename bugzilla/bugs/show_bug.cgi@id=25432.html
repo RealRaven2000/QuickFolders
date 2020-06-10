@@ -1,0 +1,1217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25432 &ndash; gap below folders using Silvermel theme</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25432&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25432">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25432">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25432">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25432">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25432</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">gap below folders using Silvermel theme</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-12-11 11:47:47</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25432&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-12-11 11:47:47">
+  <input type="hidden" name="longdesclength" value="12">
+  <input type="hidden" name="id" value="25432">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="gap below folders using Silvermel theme">gap below folders using Silvermel theme
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25432.html">25432</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>WORKSFORME
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="trivial">trivial
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25432&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25432">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:neil.anthony&#64;bath.edu">Neil Anthony &lt;neil.anthony&#64;bath.edu&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-Silvermel.png"
+               title="View the content of the attachment">
+          <b>gap highlighted by arrow</b></a>
+
+          <span class="bz_attach_extra_info">
+              (37.33 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7577"
+               title="Go to the comment associated with the attachment">2013-05-04 09:26</a>,
+
+            <a href="mailto:neil.anthony&#64;bath.edu"
+               title="Write an email to the creator of the attachment">Neil Anthony
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7577&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.12pre39.xpi"
+               title="View the content of the attachment">
+          <b>QF 3.12, prerelease 39</b></a>
+
+          <span class="bz_attach_extra_info">
+              (471.72 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7578"
+               title="Go to the comment associated with the attachment">2013-05-04 10:53</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7578&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="Silvermel&#32;-&#32;Mozilla&#32;Thunderbird.png"
+               title="View the content of the attachment">
+          <b>Using Silvermel, on my system</b></a>
+
+          <span class="bz_attach_extra_info">
+              (35.15 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7579"
+               title="Go to the comment associated with the attachment">2013-05-04 10:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7579&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="DOM&#32;Inspector.png"
+               title="View the content of the attachment">
+          <b>DOM Inspector menus</b></a>
+
+          <span class="bz_attach_extra_info">
+              (31.63 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7580"
+               title="Go to the comment associated with the attachment">2013-05-04 13:34</a>,
+
+            <a href="mailto:neil.anthony&#64;bath.edu"
+               title="Write an email to the creator of the attachment">Neil Anthony
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7580&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="Add-ons.png"
+               title="View the content of the attachment">
+          <b>Add-ons</b></a>
+
+          <span class="bz_attach_extra_info">
+              (70.95 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7581"
+               title="Go to the comment associated with the attachment">2013-05-04 13:34</a>,
+
+            <a href="mailto:neil.anthony&#64;bath.edu"
+               title="Write an email to the creator of the attachment">Neil Anthony
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7581&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="Error&#32;Images&#32;&amp;&#32;Details.zip"
+               title="View the content of the attachment">
+          <b>error images - zipped</b></a>
+
+          <span class="bz_attach_extra_info">
+              (262.04 KB,
+                application/zip)
+
+            <br>
+            <a href="show_bug.cgi@id=25432.html#attach_7583"
+               title="Go to the comment associated with the attachment">2013-05-07 04:36</a>,
+
+            <a href="mailto:neil.anthony&#64;bath.edu"
+               title="Write an email to the creator of the attachment">Neil Anthony
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7583&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25432&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25432&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25432">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25432">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25432">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25432">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25432.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-05-04 09:26
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-Silvermel.png" name="attach_7577" title="gap highlighted by arrow">Created an attachment (id=7577)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7577&amp;action=edit" title="gap highlighted by arrow">[details]</a></span>
+gap highlighted by arrow
+
+A gap below the quick folders (see attachment) appears on reading new,
+previously unread mail.  I have reported this problem to Silvermel also.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25432.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-04 10:46:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Silvermel has been known to cause problems with the layout before, one thing
+you might try is to install &quot;Rise Of The Tabs&quot;. I will upload the latest beta
+just to make sure it isn't something that is already fixed.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25432.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-04 10:53:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.12pre39.xpi" name="attach_7578" title="QF 3.12, prerelease 39">Created an attachment (id=7578)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7578&amp;action=edit" title="QF 3.12, prerelease 39">[details]</a></span>
+QF 3.12, prerelease 39
+
+I cannot reproduce the problem using SilverMel under Windows 7. To find out
+more, I would recommend installing DOM inspector to see what element exactly is
+displayed too high. Also, a list of other installed addons might be helpful.
+
+With DOM inspector, using File &gt; Inspect Chrome Document and view CSS Rules /
+Computed Styles, you can find out which element exactly is too high (Probably
+QuickFolders-FoldersBox) and if there are any elements inside that cause it to
+use extra space. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25432.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-04 10:55:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Silvermel&#32;-&#32;Mozilla&#32;Thunderbird.png" name="attach_7579" title="Using Silvermel, on my system">Created an attachment (id=7579)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7579&amp;action=edit" title="Using Silvermel, on my system">[details]</a></span>
+Using Silvermel, on my system
+
+Here is what I get with SIlvermel and a tabgroup that causes only 1 row of tabs
+(most of my groups have more than 20 tabs, so they go over 2 rows)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25432.html#c4">
+            #4</a> From 
+          <a href="mailto:neil.anthony&#64;bath.edu">Neil Anthony</a>
+          2013-05-04 13:34:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="DOM&#32;Inspector.png" name="attach_7580" title="DOM Inspector menus">Created an attachment (id=7580)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7580&amp;action=edit" title="DOM Inspector menus">[details]</a></span>
+DOM Inspector menus
+
+Hey thanks for the speedy reply.
+I tried the DOM Inspector but didn't get that option in the menus (see
+attached).
+I checked and it only happens when switching to a email that hasn't been read
+before.  Switching between already read messages is fine.  To reset to normal I
+open the quick folder options.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25432.html#c5">
+            #5</a> From 
+          <a href="mailto:neil.anthony&#64;bath.edu">Neil Anthony</a>
+          2013-05-04 13:34:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Add-ons.png" name="attach_7581" title="Add-ons">Created an attachment (id=7581)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7581&amp;action=edit" title="Add-ons">[details]</a></span>
+Add-ons
+
+also, here attached shows my add-ons
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25432.html#c6">
+            #6</a> From 
+          <a href="mailto:neil.anthony&#64;bath.edu">Neil Anthony</a>
+          2013-05-04 13:39:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Actually, I found that if I unclicked the Toolbar Menu Icon in the Main Toolbar
+Elements section of the General Tab it fixes the problem.  I can live with
+that, and just right click when I need options - don't change them much.
+Please consider solved in my opinion.  If you need more info I'm happy to try
+things and report back.
+
+Thanks
+Neil
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25432.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-05 02:03:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25432.html#c6">comment #6</a>)
+<span class="quote">&gt; Actually, I found that if I unclicked the Toolbar Menu Icon in the Main Toolbar
+&gt; Elements section of the General Tab it fixes the problem.</span >
+Okay, that took me a while to understand :-)
+
+So you are saying that it is caused by the blue cogwheel button; that is
+interesting and might provide a pointer for a fix - the button is contained in
+a horizontal panel that has (now) 3 buttons, in your version there were 2, the
+tools icon and the paint bucket. With DOMi you can show an outline around the
+actual element to see how much space it takes up.
+
+
+What happens when you switch on &quot;paint mode&quot; via the right click menu? (I would
+suspect the bug will return while the paint bucket is visible) What happens if
+the tools icon is visible while you do it?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25432.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-05 02:09:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25432.html#c4">comment #4</a>)
+<span class="quote">&gt; Created an <span class=""><a href="DOM&#32;Inspector.png" name="attach_7580" title="DOM Inspector menus">attachment (id=7580)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7580&amp;action=edit" title="DOM Inspector menus">[details]</a></span> [details]
+&gt; DOM Inspector menus
+&gt; 
+&gt; Hey thanks for the speedy reply.
+&gt; I tried the DOM Inspector but didn't get that option in the menus (see
+&gt; attached).</span >
+
+Well you were on the right track in your case you would have chosen the first
+item Inspect Chrome Document - Inbox. (Inbox would have been the title of your
+mail 3-pane window at the time. Then use the inspect button (top left) to point
+to the DOM element you are interested in - in your case probably the tool icon
+or its container box.
+
+On the right hand side (where is says Object - DOM Node) you can drop down to
+CSS Rules (which shows all rules that apply and their origin) or to Computed
+Style (which shows the &quot;winning&quot; rules which apply to the DOM element and are
+actually in force. Remember you can have multiple conflicting rules via
+multiple style sheets and parent inheritance, the one with the highest
+specificity wins)
+
+
+<span class="quote">&gt; I checked and it only happens when switching to a email that hasn't been read
+&gt; before.  Switching between already read messages is fine.  To reset to normal I
+&gt; open the quick folder options.</span >
+Very strange. Do you mean if you remain in the same folder? That shouldn't
+change anything at all. Or is it when you switch to a different folder?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25432.html#c9">
+            #9</a> From 
+          <a href="mailto:neil.anthony&#64;bath.edu">Neil Anthony</a>
+          2013-05-07 04:36:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Error&#32;Images&#32;&amp;&#32;Details.zip" name="attach_7583" title="error images - zipped">Created an attachment (id=7583)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7583&amp;action=edit" title="error images - zipped">[details]</a></span>
+error images - zipped
+
+Hi Axle.
+
+I have attached a few images:
+
+read 1, and read 2 show selecting mail in sequence in one of my mailboxes
+(doesn't matter which one).  unread shows the gap appear on selecting the
+unread mail.
+
+toolbar_hbox and toolbar_box show the DOM inspector and the section of the
+Thunderbird window that was clicked
+
+I tried the paint box as you suggested, and it doesn't immediately open the gap
+(whether the toolbar icon is there or not), but does when I select an unread
+message.  It appears that the read message is a key part.  If I reset the gap
+by opening the options, and then mark the message that I'm on as read, it
+instantly opens the gap again.
+
+Again, let me know if you need any more checks or tests.
+
+Neil
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25432.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-05-07 11:44:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25432.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Error&#32;Images&#32;&amp;&#32;Details.zip" name="attach_7583" title="error images - zipped">attachment (id=7583)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7583&amp;action=edit" title="error images - zipped">[details]</a></span> [details]
+&gt; error images - zipped
+&gt; 
+&gt; Hi Axle.
+&gt; 
+&gt; I have attached a few images:
+&gt; 
+&gt; read 1, and read 2 show selecting mail in sequence in one of my mailboxes
+&gt; (doesn't matter which one).  unread shows the gap appear on selecting the
+&gt; unread mail.</span >
+I had a look at these 3 screen shots, and really the only difference appears to
+be that you clicked on an unread email, while staying in the same folder.
+Another thing that is even more telling is the fact that the folder you appear
+to be in is not even a tab on your quickfolders toolbar? Is my assumption
+correct that the folder you were in was none of the 5 (Saved Stuff, Shana, Lynn
+Lab, Newsletters, Emory Grad School) shown?
+
+
+The quickfolders toolbar shouldn't really change if it is not affected (it
+would be if it showed the number of unread emails), the only reason it would
+change is if the count of [unread] emails of a contained or displayed folder
+was changing. This event is caught and causes a redraw of the toolbar.
+
+<span class="quote">&gt; toolbar_hbox and toolbar_box show the DOM inspector and the section of the
+&gt; Thunderbird window that was clicked</span >
+
+Screenshots of the DOMi are not really helpful as you have to go through a lot
+of detail to find the correct rule, and this is even hard for me although I
+program extensions for 4 years. So please no more screenshots of this unless
+you are certain you found the responsible rule (if it is even a rule), it has
+something to do with the way the buttons flow within the toolbar pane.
+
+<span class="quote">&gt; 
+&gt; I tried the paint box as you suggested, and it doesn't immediately open the gap
+&gt; (whether the toolbar icon is there or not), but does when I select an unread
+&gt; message.  It appears that the read message is a key part.  If I reset the gap
+&gt; by opening the options, and then mark the message that I'm on as read, it
+&gt; instantly opens the gap again.
+&gt; 
+&gt; Again, let me know if you need any more checks or tests.</span >
+You could check if there are warnings or errors in the error console, but
+please do not attach screenshots of it. Instead, install console2 (a better
+version of it) and copy the stream of errors as text via right-click.
+
+After installing console2 go to tools &gt; error console. There, enable errors,
+warnings and messages; in the second row enable chrome and css, DISABLE
+CONTENT!!!! 
+
+In QuickFolders &gt; Options &gt; Advanced enable [x]Debug Mode and then right-click
+Debug and enable the following details:
+extensions.quickfolders.debug.events
+extensions.quickfolders.debug.interface
+extensions.quickfolders.debug.listeners.tabmail
+
+Don't forget to disable content in error console.
+
+Delete all contents of the error console before starting your test and capture
+the output (using right-click, select all, right-click, copy) you can then put
+the output into a text file and attach to this bug.
+
+Oh, did I mention you must disable Content logging? 
+
+ :0)
+Thanks, Axel
+PS: disable content.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25432.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-11 11:47:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Tried again on Thunderbird beta 50.03b and cannot reproduce it at the moment so
+I am closing this for now unless you can provide a method where I can recreate
+the bug
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25432&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24451 &ndash; QuickFolders disappeared upon installation of 2.9</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24451&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24451">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24451">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24451">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_24451">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24451</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QuickFolders disappeared upon installation of 2.9</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2011-10-02 10:50:00</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24451&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2011-10-02 10:50:00">
+  <input type="hidden" name="longdesclength" value="20">
+  <input type="hidden" name="id" value="24451">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QuickFolders disappeared upon installation of 2.9">QuickFolders disappeared upon installation of 2.9
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24451.html">24451</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24451&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24451">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:pvong&#64;sri.com">Philip &lt;pvong&#64;sri.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="bugzilla&#64;mjr.so">bugzilla&#64;mjr.so</option>
+            <option value="info&#64;bakpakguide.com">info&#64;bakpakguide.com</option>
+            <option value="Jochen.Bern&#64;LINworks.de">Jochen.Bern&#64;LINworks.de</option>
+            <option value="jon&#64;webindexing.biz">jon&#64;webindexing.biz</option>
+            <option value="natysh&#64;actcom.net.il">natysh&#64;actcom.net.il</option>
+            <option value="pvong&#64;sri.com">pvong&#64;sri.com</option>
+            <option value="westend89&#64;gmail.com">westend89&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-2.9.1pre3.xpi"
+               title="View the content of the attachment">
+          <b>Patched for older TB versions</b></a>
+
+          <span class="bz_attach_extra_info">
+              (244.26 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24451.html#attach_7091"
+               title="Go to the comment associated with the attachment">2011-09-30 07:36</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7091&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="VERSION2.9.Png"
+               title="View the content of the attachment">
+          <b>Current Version Jump (expected behavior)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (105.29 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24451.html#attach_7092"
+               title="Go to the comment associated with the attachment">2011-09-30 09:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7092&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="QF-Pre-Releases.png"
+               title="View the content of the attachment">
+          <b>list of pre-releases</b></a>
+
+          <span class="bz_attach_extra_info">
+              (220.17 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24451.html#attach_7093"
+               title="Go to the comment associated with the attachment">2011-09-30 10:13</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7093&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24451&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24451&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24451">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24451">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24451">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24451">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24451.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2011-09-29 18:09
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24451.html#c1">
+            #1</a> From 
+          <a href="mailto:pvong&#64;sri.com">Philip</a>
+          2011-09-29 18:11:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Running Thunderbird 3.1.12
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24451.html#c2">
+            #2</a> From 
+          <a href="mailto:pvong&#64;sri.com">Philip</a>
+          2011-09-29 18:17:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Running Thunderbird 3.1.12
+
+From the prefs.js file:
+
+user_pref(&quot;extensions.quickfolders.firstrun&quot;, false);
+user_pref(&quot;extensions.quickfolders.lastSelectedCategory&quot;, &quot;__UNCATEGORIZED&quot;);
+user_pref(&quot;extensions.quickfolders.lastSelectedOptionsTab&quot;, 0);
+user_pref(&quot;extensions.quickfolders.showCurrentFolderToolbar&quot;, false);
+user_pref(&quot;extensions.quickfolders.showQuickfoldersLabel&quot;, false);
+user_pref(&quot;extensions.quickfolders.style.ActiveTab.background-color&quot;,
+&quot;HighLight&quot;);
+user_pref(&quot;extensions.quickfolders.style.DragTab.color&quot;, &quot;White&quot;);
+user_pref(&quot;extensions.quickfolders.style.HoveredTab.background-color&quot;,
+&quot;Orange&quot;);
+user_pref(&quot;extensions.quickfolders.style.HoveredTab.color&quot;, &quot;Black&quot;);
+user_pref(&quot;extensions.quickfolders.style.InactiveTab.background-color&quot;,
+&quot;ButtonFace&quot;);
+user_pref(&quot;extensions.quickfolders.style.InactiveTab.color&quot;, &quot;black&quot;);
+user_pref(&quot;extensions.quickfolders.style.Toolbar.background-color&quot;, &quot;White&quot;);
+user_pref(&quot;extensions.quickfolders.useKeyboardShortcutCTRL&quot;, true);
+user_pref(&quot;extensions.quickfolders.version&quot;, &quot;2.8&quot;);
+
+Strange to see 2.8 there ...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24451.html#c3">
+            #3</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2011-09-29 20:21:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >If you don't see QuickFolders in the add-ons manager at all (not even lower
+down), this sounds like <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=680802">https://bugzilla.mozilla.org/show_bug.cgi?id=680802</a> —
+see also
+<a href="http://support.mozilla.com/en-US/kb/add-ons-hidden-after-updating-firefox-7">http://support.mozilla.com/en-US/kb/add-ons-hidden-after-updating-firefox-7</a> and
+<a href="https://addons.mozilla.org/en-US/firefox/addon/fx7-recovery/">https://addons.mozilla.org/en-US/firefox/addon/fx7-recovery/</a>
+
+That Mozilla bug exists in all Toolkit applications based on Gecko 7; it will
+be fixed by Firefox 7.0.1, SeaMonkey 2.4.1, and (I suppose) Thunderbird 7.0.1.
+The same fix has also been applied to the beta, aurora and trunk repositories.
+
+The extension is not uninstalled, only hidden. The recovery tool will bring it
+back up, and it will also be found back if you install, uninstall, enable or
+disable any add-on then restart Thunderbird.
+
+If QuickFolders is listed in the add-ons manager, but lower down and as
+(disabled), that is a different issue, which ought not to happen with QF 2.9
+and Tb 3.x
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24451.html#c4">
+            #4</a> From 
+          <a href="mailto:pvong&#64;sri.com">Philip</a>
+          2011-09-29 22:09:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >QuickFolders 2.9 is listed in the add-ons manager under TB 3.1.12, it shows as
+enabled, none of the folders are showing. They were showing under 2.8 earlier
+today before the upgrade.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24451.html#c5">
+            #5</a> From 
+          <a href="mailto:info&#64;bakpakguide.com">David</a>
+          2011-09-29 22:45:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >My folders disappeared also when I installed 2.9. I then added the folders back
+and next time I opened up Thunderbird, they were gone again. I am using
+thunderbird 3.1.13
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24451.html#c6">
+            #6</a> From 
+          <a href="mailto:natysh&#64;actcom.net.il">Naty</a>
+          2011-09-30 01:12:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Also on WIN XP SP3 with TB 3.1.15
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24451.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 05:50:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can I have a debug output please? Preferrably done with console2 as its text
+only.
+
+Tools / Error Console
+
+Disable Content 
+Enabled all other options.
+
+Just attach it to this bug and I will have a look.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24451.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 05:57:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=24452.html" title="RESOLVED DUPLICATE - Thunderbird 3.1.11 forgets settings in new Quickfolders version">Bug 24452</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24451.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 05:59:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24451.html#c2">comment #2</a>)
+<span class="quote">&gt; Running Thunderbird 3.1.12
+&gt; 
+&gt; user_pref(&quot;extensions.quickfolders.version&quot;, &quot;2.8&quot;);
+&gt; 
+&gt; Strange to see 2.8 there ...
+&gt; </span >
+
+And that's at the heart of the bug - it doesn't seem to start up fully or the
+firstRun function fails in old versions of Thunderbird. The version number is
+updated during first run (and if an update happened shows the donation page
+_ONCE_).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24451.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 07:36:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-2.9.1pre3.xpi" name="attach_7091" title="Patched for older TB versions">Created an attachment (id=7091)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7091&amp;action=edit" title="Patched for older TB versions">[details]</a></span>
+Patched for older TB versions
+
+I tested this one with Thunderbird 2.0.0.24 and 3.1.11. Should probably work
+with version 4.* as well.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24451.html#c11">
+            #11</a> From 
+          <a href="mailto:Jochen.Bern&#64;LINworks.de">Jochen Bern</a>
+          2011-09-30 07:49:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Please note the caveat I posted over at <span class="bz_closed"><a href="show_bug.cgi@id=24452.html" title="RESOLVED DUPLICATE - Thunderbird 3.1.11 forgets settings in new Quickfolders version">bug 24452</a></span>:
+
+<span class="quote">&gt; Do *NOT* try to manually rebuild your folders when you &quot;lost&quot; them. The
+&gt; QuickFolders.folders configuration, which contains your folder settings,
+&gt; apparently *DOES* survive upgrade+restart, but is rewritten as soon as you
+&gt; modify the &quot;empty&quot; folder pane.</span >
+
+I installed a copy of 2.8 over the installed 2.9 (in Linux, with
+
+cd ~/.thunderbird/*.default/extensions/quickfolders\@curious.be
+tar cf $BACKUPS/QF.tar .
+unzip $DOWNLOADS/quickfolders_tabbed_folders-2.8-sm+tb.xpi
+
+and the *.xpi downloaded from
+<a href="https://addons.mozilla.org/en-US/thunderbird/addons/versions/3254">https://addons.mozilla.org/en-US/thunderbird/addons/versions/3254</a> ) and it
+seems that all my settings are back - *except* for the actual bookmarks, which
+I already had overwritten, and the settings (color, name etc.) pertinent to
+them.
+
+Which means that I *indeed* still had all (?) the non-default settings in the
+TB options. I still have the screenshots here (couldn't upload yet 'cause
+mozdev.org was lethally slow), do you need them?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=24451.html#c12">
+            #12</a> From 
+          <a href="mailto:Jochen.Bern&#64;LINworks.de">Jochen Bern</a>
+          2011-09-30 08:04:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24451.html#c10">comment #10</a>)
+<span class="quote">&gt; Patched for older TB versions
+&gt; I tested this one with Thunderbird 2.0.0.24 and 3.1.11. Should probably work
+&gt; with version 4.* as well.</span >
+
+Seems to work for me (TB 3.1.10, openSUSE 11.2, i686).
+
+| $ diff prefs.fixed-20110930-1654 prefs.js
+| 118c118
+| &lt; user_pref(&quot;extensions.enabledItems&quot;,
+&quot;[...],<a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>:2.8,[...]&quot;);
+| ---
+| &gt; user_pref(&quot;extensions.enabledItems&quot;,
+&quot;[...],<a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>:2.9.1pre3,[...]&quot;);
+| 155c155
+| &lt; user_pref(&quot;extensions.quickfolders.version&quot;, &quot;2.8&quot;);
+| ---
+| &gt; user_pref(&quot;extensions.quickfolders.version&quot;, &quot;2.9.1pre3&quot;);
+
+(The version history page displayed upon first start *still* ends with 2.8. ;-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=24451.html#c13">
+            #13</a> From 
+          <a href="mailto:pvong&#64;sri.com">Philip</a>
+          2011-09-30 08:40:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24451.html#c10">comment #10</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-2.9.1pre3.xpi" name="attach_7091" title="Patched for older TB versions">attachment (id=7091)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7091&amp;action=edit" title="Patched for older TB versions">[details]</a></span> [details]
+&gt; Patched for older TB versions
+&gt; 
+&gt; I tested this one with Thunderbird 2.0.0.24 and 3.1.11. Should probably work
+&gt; with version 4.* as well.
+&gt; </span >
+
+That fixes the problem. Thank you!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=24451.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 09:09:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="VERSION2.9.Png" name="attach_7092" title="Current Version Jump (expected behavior)">Created an attachment (id=7092)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7092&amp;action=edit" title="Current Version Jump (expected behavior)">[details]</a></span>
+Current Version Jump (expected behavior)
+
+This should be the version displayed after the update. Especially since it is
+logging 2.9.1pre3 in about:config.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=24451.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 09:15:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=24455.html" title="RESOLVED DUPLICATE - all tabs forgotten in 2.9 on Tbird 2.0.0.24">Bug 24455</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=24451.html#c16">
+            #16</a> From 
+          <a href="mailto:Jochen.Bern&#64;LINworks.de">Jochen Bern</a>
+          2011-09-30 09:34:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24451.html#c14">comment #14</a>)
+<span class="quote">&gt; This should be the version displayed after the update. Especially since it is
+&gt; logging 2.9.1pre3 in about:config.</span >
+
+Hmmmmm that's a Firefox showing <a href="http://quickfolders.mozdev.org/version.html#2.9">http://quickfolders.mozdev.org/version.html#2.9</a>
+on Windows, I got a tab *within Linux Thunderbird* showing me the *top* of that
+page (where it still says &quot;Latest News (01/09/2011) - The latest released
+Version 2.8 ...&quot;), as well as another tab showing the Donation Page.
+
+[Looks into chrome/content/quickfolders-util.js] Seems like the pureVersion
+variable didn't get filled correctly.
+
+[Notes similar code line in chrome/content/options.js]
+[Exercises link to open TB tab, then right-click -&gt; Open in Browser]
+
+Ah. I'm apparently taken to .../version.html#2.9.1 instead ... well, that *is*
+what you get when you truncate extensions.quickfolders.version=&quot;2.9.1pre3&quot; at
+the &quot;pre&quot; ...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=24451.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 09:39:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24451.html#c16">comment #16</a>)
+
+<span class="quote">&gt; 
+&gt; [Notes similar code line in chrome/content/options.js]
+&gt; [Exercises link to open TB tab, then right-click -&gt; Open in Browser]
+&gt; 
+&gt; Ah. I'm apparently taken to .../version.html#2.9.1 instead ... well, that *is*
+&gt; what you get when you truncate extensions.quickfolders.version=&quot;2.9.1pre3&quot; at
+&gt; the &quot;pre&quot; ...
+&gt; </span >
+
+hmm, not caused by this, but yes there was no anchor for 2.9.1 :) try now, I
+just fixed it.
+
+And take a look at view source to see how I did that. Thanks for the
+observations though! :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=24451.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-09-30 10:13:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-Pre-Releases.png" name="attach_7093" title="list of pre-releases">Created an attachment (id=7093)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7093&amp;action=edit" title="list of pre-releases">[details]</a></span>
+list of pre-releases
+
+These are the pre-Releases I have kept on my hard-drive for historical reasons.
+I do not make notes on the Mozdev site on what is included in each, that's what
+the &quot;full&quot; releases are for. Before that (back in 2009) I used to call them
+&quot;betas&quot; for a short while.
+
+When I work on bugfixes I increase the minor version number and add a number
+and a pre-release, e.g.
+
+2.9
+=&gt;
+2.9.1pre1
+2.9.1pre2
+
+etc. Adding version notes is then referring to 2.9.1 (but can be renamed to
+higher numbers before release). Usually, to tidy up and make sure everybody who
+has pre-releases installed I would increase the &quot;main&quot; version number once more
+like so:
+2.9.1pre23
+=&gt;
+2.9.2  (or higher). I generally aim for increasing the minor though, was hoping
+to release 3.0 next. But that needs a few new features to earn the &quot;0&quot;. 
+
+Current Feature/bugfix Candidates for 3.0 are
+- folder backup + restore [sic!]
+- icon support
+- fixed colors of striped mode
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=24451.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-10-02 10:50:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=24461.html" title="RESOLVED DUPLICATE - In QF version 2.9 Bookmarked folders do not stay after TB restarts">Bug 24461</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24451&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

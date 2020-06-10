@@ -1,0 +1,4346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26263 &ndash; Create Hungarian Locale</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26263&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26263">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26263">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26263">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_26263">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26263</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Create Hungarian Locale</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-11-29 02:31:54</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26263&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-11-29 02:31:54">
+  <input type="hidden" name="longdesclength" value="70">
+  <input type="hidden" name="id" value="26263">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Create Hungarian Locale">Create Hungarian Locale
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26263.html">26263</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="zombiekeys">zombiekeys
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=zombiekeys">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td><a href="show_bug.cgi@id=26278.html" title="NEW - AltGr (also Alt Graph, Alt Graphic, Alt Graphics, Alt Car, or Right Alt) modifier key">26278</a> 
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="26278">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26263&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26263">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="ovari123&#64;zoho.com">ovari123&#64;zoho.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="KeyboardMagyar.png"
+               title="View the content of the attachment">
+          <b>Keyboard Magyar (Hungarian)</b></a>
+
+          <span class="bz_attach_extra_info">
+              (396.78 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8209"
+               title="Go to the comment associated with the attachment">2016-07-27 14:27</a>,
+
+            <a href="mailto:ovari123&#64;zoho.com"
+               title="Write an email to the creator of the attachment">Óvári
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8209&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="Zombie&#32;key&#32;mapping&#32;for&#32;Hungarian&#32;Keyboard.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Zombie key mapping for Hungarian keyboard</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (93.07 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8210"
+               title="Go to the comment associated with the attachment">2016-07-27 14:43</a>,
+
+            <a href="mailto:ovari123&#64;zoho.com"
+               title="Write an email to the creator of the attachment">Óvári
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8210&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="Zombie-key-mapping-for-Hung.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Revised Hungarian Zombie Keys Layout</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (96.64 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8213"
+               title="Go to the comment associated with the attachment">2016-08-01 09:56</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8213&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="Zombie-key-mapping-for-Hung.png.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Revision 3 - Zombiekey Layout</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (90.77 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8214"
+               title="Go to the comment associated with the attachment">2016-08-01 10:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8214&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="zombie_keys_multilanguage_keyboard-2.18pre9.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 9</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (262.02 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8215"
+               title="Go to the comment associated with the attachment">2016-08-01 12:45</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8215&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="zombie_keys_multilanguage_keyboard-2.18pre11.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 11</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (262.06 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8216"
+               title="Go to the comment associated with the attachment">2016-08-01 13:12</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8216&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="Zombie-key-mapping-for-Hung.png.2"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Revision 4 - Zombiekey Layout</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (90.39 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8217"
+               title="Go to the comment associated with the attachment">2016-08-02 04:23</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8217&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a8" href="kb_hungary.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Improved version of the hungarian keymap shown in the options dialog</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (18.73 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8218"
+               title="Go to the comment associated with the attachment">2016-08-02 04:27</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8218&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a9" href="kb_hungary.png.1"
+               title="View the content of the attachment">
+          <b>resized layout 400x133</b></a>
+
+          <span class="bz_attach_extra_info">
+              (23.77 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8219"
+               title="Go to the comment associated with the attachment">2016-08-02 04:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8219&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a10" href="zombie_keys_multilanguage_keyboard-2.18pre13.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 13</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (267.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8220"
+               title="Go to the comment associated with the attachment">2016-08-02 04:45</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8220&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a11" href="ZK-mapping-for-Hungary.png"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Revision 5 - Zombiekey Layout</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (91.73 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8221"
+               title="Go to the comment associated with the attachment">2016-08-03 07:32</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8221&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a12" href="zombie_keys_multilanguage_keyboard-2.18pre17.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 17</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (267.34 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8222"
+               title="Go to the comment associated with the attachment">2016-08-03 19:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8222&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a13" href="ZK-mapping-for-Hungary.png.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Revision 6 - Zombiekey Layout</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (102.36 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8223"
+               title="Go to the comment associated with the attachment">2016-08-06 06:19</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8223&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a14" href="zombie_keys_multilanguage_keyboard-2.18pre20.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 20</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (267.36 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8224"
+               title="Go to the comment associated with the attachment">2016-08-06 07:12</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8224&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a15" href="ZK-mapping-for-Hungary.png.2"
+               title="View the content of the attachment">
+          <b>Revision 7 - Zombiekey Layout</b></a>
+
+          <span class="bz_attach_extra_info">
+              (107.34 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8226"
+               title="Go to the comment associated with the attachment">2016-08-23 10:23</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8226&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a16" href="zombie_keys_multilanguage_keyboard-2.18pre24.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.18 prerelease 24</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (267.42 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8227"
+               title="Go to the comment associated with the attachment">2016-08-23 10:41</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8227&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a17" href="zombie_keys_multilanguage_keyboard-2.18pre25.xpi"
+               title="View the content of the attachment">
+          <b>2.18 prerelease 25</b></a>
+
+          <span class="bz_attach_extra_info">
+              (267.42 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26263.html#attach_8228"
+               title="Go to the comment associated with the attachment">2016-08-27 02:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8228&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26263.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (13)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26263&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26263&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26263">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26263">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26263">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26263">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26263.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2016-07-23 03:50
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >create a Hungarian (standard) keyboard layout for Zombiekeys
+
+I am assuming the term &quot;standard&quot; which is based on  a QWERTZ keyboard layout
+is the most common one used in Hungary so I am going to base the layout on
+this. There apopears to also be a variant Hungarian Hungarian
+(101/qwertz/comma/dead keys) which has the Pipe | character at the bottom left,
+not too sure how common this one is so there may have to be a discussion on
+which one exactly has the most merit.
+
+According to the anonymous usage statistics there are only 1-2 users of the
+
+magyar (hu)
+
+locale, so it is a little difficult to decide for the correct one. It may well
+be that the usage would increase once the locale is added.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26263.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-07-23 04:00:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >From <a href="https://en.wikipedia.org/wiki/QWERTZ#Hungary">https://en.wikipedia.org/wiki/QWERTZ#Hungary</a>
+
+Note that on some keyboards &quot;ű&quot; is found to the right of the right Shift key,
+or the right of the &quot;ó&quot; key with a smaller backspace key and larger Enter key.
+Also, many Hungarians who were not exposed to typewriters, but started using
+computers when Hungarian keyboards were uncommon or unavailable, still prefer
+the layout with the y/z keys in their QWERTY locations because that is what
+they are used to. The same applies to Hungarians who frequently switch between
+a QWERTY and a Hungarian layout (for example because they write in several
+different languages).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26263.html#c2">
+            #2</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-27 14:27:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="KeyboardMagyar.png" name="attach_8209" title="Keyboard Magyar (Hungarian)">Created an attachment (id=8209)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8209&amp;action=edit" title="Keyboard Magyar (Hungarian)">[details]</a></span>
+Keyboard Magyar (Hungarian)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26263.html#c3">
+            #3</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-27 14:43:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Zombie&#32;key&#32;mapping&#32;for&#32;Hungarian&#32;Keyboard.png" name="attach_8210" title="Zombie key mapping for Hungarian keyboard">Created an attachment (id=8210)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8210&amp;action=edit" title="Zombie key mapping for Hungarian keyboard">[details]</a></span>
+Zombie key mapping for Hungarian keyboard
+
+The following have been kindly worked out by Axel.
+
+Attached is a possible layout.
+
+Need to decide on the shortcuts for the 4 types listed at the top right yet of
+the attached image:
+CTRL+SHIFT+ampersand = æ…
+CTRL+SHIFT+grave = àèìòù
+CTRL+acute = áéíóú
+CTRL+SHIFT+? = 
+
+Open to discuss / change where appropriate. 
+
+Rules: 
+
+1) A key combo that is not obviously used by a typical shortcut that may be
+used by a Mozillla application or another Addon (not always easy to find free
+ones)
+
+2) Using a key label that looks similar to the diacritic so it is easier to
+remember.
+
+3) If the key has an AltGr use with one of the actual target characters it may
+also be used. Note that this may lead to confusion, e.g. if you have multiple
+keys such as ÄÖÜ then it will be harder to remember which one to use.
+Therefore I prefer CTRL+SHIFT+: even in this case.
+
+
+Suggestion:
+
+Please add to àèìòù:
+&lt; → «
+<span class="quote">&gt; → »</span >
+These characters are used in Spanish (es), eg:
+4. En el apartado «Propiedades» de la barra lateral, el panel «Diapositiva»
+permite modificar con rapidez el formato, la orientación y la imagen de fondo
+de una diapositiva.
+<a href="https://wiki.documentfoundation.org/Videos/5.2_New_Features_Script#Spanish_.28es.29_4">https://wiki.documentfoundation.org/Videos/5.2_New_Features_Script#Spanish_.28es.29_4</a>
+
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26263.html#c4">
+            #4</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-27 14:46:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=71176">https://bugs.documentfoundation.org/show_bug.cgi?id=71176</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26263.html#c5">
+            #5</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-29 18:41:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c3">comment #3</a>)
+<span class="quote">&gt; 3) If the key has an AltGr use with one of the actual target characters it may
+&gt; also be used. Note that this may lead to confusion, e.g. if you have multiple
+&gt; keys such as ÄÖÜ then it will be harder to remember which one to use.
+&gt; Therefore I prefer CTRL+SHIFT+: even in this case.</span >
+
+Perhaps is is preferable that the right AltGr is used as letters on the magyar
+(Hungarian) keyboard are on the lower right that are typed using AltGr. This
+would be easy to remember and reduces a possible future conflict as described
+below.
+
+
+
+(In reply to <a href="show_bug.cgi@id=26263.html#c3">comment #3</a>)
+<span class="quote">&gt; Need to decide on the shortcuts for the 4 types listed at the top right yet of
+&gt; the attached image:
+&gt; CTRL+SHIFT+ampersand = æ…</span >
+
+CTRL+ALTGr+C (as the letter C has the ampersand), the key = æß
+As CTRL+ALT+C is used for inserting a comment in LibreOffice (Future-proofing
+your add-on: once your Zombie Keys in implemented?)
+
+
+<span class="quote">&gt; CTRL+SHIFT+grave = àèìòù</span >
+
+Change to:
+CTRL+ALTGr+7, the key = àèìòù«»
+
+
+<span class="quote">&gt; CTRL+acute = áéíóú</span >
+
+Ctrl + Shift + 1 (as the number 1 has the ’), the key = áéióú
+This would be consistant with CTRL+SHIFT+2, the key = őű
+However, this would change your suggestion:
+CTRL+SHIFT+1, the key = ãẽĩõũñ
+to:
+CTRL+ALTGr+1, the key = ãẽĩõũñ
+
+
+<span class="quote">&gt; CTRL+SHIFT+? = </span >
+
+CTRL+ALTGr+6, the key
+
+
+<span class="quote">&gt; Open to discuss / change where appropriate.</span >
+
+It is excellent that you have not used the key between the “Left_Shift” and
+“Y” as this key is missing on some keyboards with a magyar (Hungarian)
+layout.
+
+
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26263.html#c6">
+            #6</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-29 18:44:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Suggestion to change &quot;Caron&quot; from:
+  CTRL+SHIFT+&gt;
+to
+  CTRL+ALTGr+2
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26263.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-07-30 03:56:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c3">comment #3</a>)
+&gt; &gt; 3) If the key has an AltGr use with one of the actual target characters it may
+&gt; &gt; also be used. Note that this may lead to confusion, e.g. if you have multiple
+&gt; &gt; keys such as ÄÖÜ then it will be harder to remember which one to use.
+&gt; &gt; Therefore I prefer CTRL+SHIFT+: even in this case.
+&gt; 
+&gt; Perhaps is is preferable that the right AltGr is used as letters on the magyar
+&gt; (Hungarian) keyboard are on the lower right that are typed using AltGr. This
+&gt; would be easy to remember and reduces a possible future conflict as described
+&gt; below.</span >
+
+I am not sure if I can easily detect the difference between ALT and ALT Gr.
+that might be a change too fundamental and out of scope for this bug. If you
+have additional ideas that are not related to the Hungarian Layout (Remember
+many European keyboards have an ALtGr functionality) please raise separate
+bugs.
+
+<span class="quote">&gt; 
+&gt; 
+&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c3">comment #3</a>)
+&gt; &gt; Need to decide on the shortcuts for the 4 types listed at the top right yet of
+&gt; &gt; the attached image:
+&gt; &gt; CTRL+SHIFT+ampersand = æ…</span >
+
+<span class="quote">&gt; 
+&gt; CTRL+ALTGr+C (as the letter C has the ampersand), the key = æß
+&gt; As CTRL+ALT+C is used for inserting a comment in LibreOffice (Future-proofing
+&gt; your add-on: once your Zombie Keys in implemented?)</span >
+
+I only recently found out a way to &quot;defeat&quot; shortcuts like this but I need to
+do it explicitely. It's almost impossible to completely avoid all possible key
+shortcuts.
+
+
+
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt; CTRL+SHIFT+grave = àèìòù
+&gt; 
+&gt; Change to:
+&gt; CTRL+ALTGr+7, the key = àèìòù«»</span >
+
+again, not sure about ALTGr, also that is an awkward combination as there are 2
+keys in between AltGr and CTRL (at least on my keyboard).. even CTRL+ALT is
+hard because of the windows key.
+
+CTRL+SHIFT is a lot easier as the keys are on top of each other and sop can be
+pressed with just one finger.
+
+I will make alternative suggestions based on the four you gave. possibly based
+on CTRL+SHIFT. will update the bug shortly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26263.html#c8">
+            #8</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-07-30 05:30:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c7">comment #7</a>)
+<span class="quote">&gt; I am not sure if I can easily detect the difference between ALT and ALT Gr.
+&gt; that might be a change too fundamental and out of scope for this bug. If you
+&gt; have additional ideas that are not related to the Hungarian Layout (Remember
+&gt; many European keyboards have an ALtGr functionality) please raise separate
+&gt; bugs.</span >
+
+The following is the output from Console² 1.0a4 by Philip Chee:
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/</a>
+
+
+ALT_LEFT
+
+[ZombieKeys XML]up: keyCode=18 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+ALTGR_RIGHT
+
+[ZombieKeys] 22:21:23.503  [6368 ms]     
+up: keyCode=225 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [á]
+
+ ----------
+[ZombieKeys XML]up: keyCode=225 charCode=0 shiftKey=false altKey=false
+ctrlKey=false
+
+
+Hope this helps.
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26263.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 06:17:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c7">comment #7</a>)
+&gt; &gt; I am not sure if I can easily detect the difference between ALT and ALT Gr.
+&gt; &gt; that might be a change too fundamental and out of scope for this bug. If you
+&gt; &gt; have additional ideas that are not related to the Hungarian Layout (Remember
+&gt; &gt; many European keyboards have an ALtGr functionality) please raise separate
+&gt; &gt; bugs.
+&gt; 
+&gt; The following is the output from Console² 1.0a4 by Philip Chee:
+&gt; <a href="https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/">https://addons.mozilla.org/en-US/thunderbird/addon/console%C2%B2/</a>
+&gt; 
+&gt; </span >
+...
+
+Actually I will need the key codes of the non-numbered zombie keys instead. The
+keycodes for the ALT / ALTGR keys are not helpful as this is not the event that
+Zombiekeys  listens for. It is the _Status_ of the ALT / CTRL+ SHIFT key which
+is part of the event when the key up event of the accelerator (etc the .: key)
+that is read in during that key. the modifier keys (alt,shift,ctrl) are usually
+pressed _before_ the actual key is pushed.
+
+I will complete the mapping image and upload it and then upload a test version.
+Thankfully we have bank holiday in Ireland so I can tgakee a few hours during
+the day time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26263.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 09:56:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Zombie-key-mapping-for-Hung.png" name="attach_8213" title="Revised Hungarian Zombie Keys Layout">Created an attachment (id=8213)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8213&amp;action=edit" title="Revised Hungarian Zombie Keys Layout">[details]</a></span>
+Revised Hungarian Zombie Keys Layout
+
+I had some trouble at first recognizing the many different diacritics that are
+mapped already on an Hungarian keyboard, my general experience is that there is
+almost a complete mapping in the form of ALT GR symbols, so I decided to
+largely use these keys for the mapping instead.
+
+For instance accent grave and acute are now mapped to the [7] and [9] keys as
+they depict these.
+
+Note that I am using CTRL+SHIFT for the first 4 number keys as the  shortcuts
+CTLRL+1 .. CTRL+4 are actually use for the tabs in Thunderbird. The SHIFT key
+is not necessary for the many extra diacritic keys specific to Hungarian
+keyboard which are unlikely to be used for existing shortcuts.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26263.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 10:24:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Zombie-key-mapping-for-Hung.png.1" name="attach_8214" title="Revision 3 - Zombiekey Layout">Created an attachment (id=8214)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8214&amp;action=edit" title="Revision 3 - Zombiekey Layout">[details]</a></span>
+Revision 3 - Zombiekey Layout
+
+A final Revision, before starting to code...
+
+note that I changed around shortcut keys for:
+
+ạḍẹḥḳḷņọṣṭṿẉ  =&gt;  CTRL+.
+
+ȧċėİṁṗṙṡẇẋẏ   =&gt;  CTRL+SHIFT+;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26263.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 10:54:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c11">comment #11</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="Zombie-key-mapping-for-Hung.png.1" name="attach_8214" title="Revision 3 - Zombiekey Layout">attachment (id=8214)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8214&amp;action=edit" title="Revision 3 - Zombiekey Layout">[details]</a></span> [details]
+&gt; Revision 3 - Zombiekey Layout
+&gt; 
+&gt; A final Revision, before starting to code...
+&gt; 
+&gt; note that I changed around shortcut keys for:
+&gt; 
+&gt; ạḍẹḥḳḷņọṣṭṿẉ  =&gt;  CTRL+.
+&gt; 
+&gt; ȧċėİṁṗṙṡẇẋẏ   =&gt;  CTRL+SHIFT+;
+&gt; </span >
+
+Just trying to find out the mapping codes and I am finding a strange anomaly
+with the Ű key: it is actually missing a key-up event? I am testing this by
+using the Microsoft languae bar and switching my layout to Hungarian, so this
+may just be an anomaly. This is the log I am getting:
+
+[ZombieKeys] 18:50:10.582  [1450 ms]     
+press: keyCode=0 charCode=368 shiftKey=true altKey=false ctrlKey=true   cC [Ű]
+
+If you have a physical hungarian keyboard can you check what happens when you
+press this key.
+
+Make sure ZK debug mode is enabled and the following settings are set:
+
+extensions.zombiekeys.debug.keyPressHandler = true
+extensions.zombiekeys.debug.keyUpHandler = true
+
+(just right-click the Debug checkbox and then open console - best console2)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26263.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 11:20:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c12">comment #12</a>)
+
+<span class="quote">&gt; Just trying to find out the mapping codes and I am finding a strange anomaly
+&gt; with the Ű key: it is actually missing a key-up event? I am testing this by
+&gt; using the Microsoft languae bar and switching my layout to Hungarian, so this
+&gt; may just be an anomaly. This is the log I am getting:
+&gt; </span >
+
+There are three entries that are doubtful - they don't generate keyup events.
+
+The Á key - this is needed for the ßæœ combos
+
+The Ű key - needed for the åůẙẘ letters
+
+The Ö key - required for the Űőű letters
+
+Can you find out whether these have a keyup event with a physical Hungarian
+keyboard and what charCode and keyCode values are logged?
+
+I am not certain I can incorporate completely new behavior that drives of an
+insolated / single keyPress event.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26263.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 12:45:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre9.xpi" name="attach_8215" title="2.18 prerelease 9">Created an attachment (id=8215)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8215&amp;action=edit" title="2.18 prerelease 9">[details]</a></span>
+2.18 prerelease 9
+
+Assuming that there doesn't exist a key-up event for the three mentioned keys I
+have written a hack  that consumes the key down if it matches, based on a
+keyCode=0 in the hungarian key-locale definition. Here is the current map,
+notice the entries of id 6,7 and 16:
+
+{ &quot;locale&quot; : &quot;hu&quot;,
+        &quot;map_deadKeys&quot; : [
+         {&quot;id&quot; : 1, &quot;keyCode&quot;:  55, &quot;key&quot;: &quot;7&quot;, &quot;otherKey&quot;:&quot;=&quot;,
+&quot;shiftKey&quot;:true} /* grave */
+        ,{&quot;id&quot; : 2, &quot;keyCode&quot;:  57, &quot;key&quot;: &quot;9&quot;, &quot;otherKey&quot;:&quot;)&quot;} /* acute */
+        ,{&quot;id&quot; : 3, &quot;keyCode&quot;:  51, &quot;key&quot;: &quot;3&quot;, &quot;otherKey&quot;:&quot;6&quot;} /* circumflex ^
+*/
+        ,{&quot;id&quot; : 4, &quot;keyCode&quot;:  49, &quot;key&quot;: &quot;1&quot;, &quot;otherKey&quot;:&quot;'&quot;} /* #~ tilde */
+        ,{&quot;id&quot; : 5, &quot;keyCode&quot;:  59, &quot;key&quot;: &quot;:&quot;, &quot;otherKey&quot;:&quot;;&quot;} /* umlaut */
+        ,{&quot;id&quot; : 6, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 368, &quot;key&quot;: &quot;ű&quot;,
+&quot;shiftKey&quot;:true} /* ring - no key up event */
+        ,{&quot;id&quot; : 7, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 225, &quot;key&quot;: &quot;Á&quot;,
+&quot;shiftKey&quot;:false} /* sharp s - no key up event */
+        ,{&quot;id&quot; : 8, &quot;keyCode&quot;:  68, &quot;key&quot;: &quot;D&quot;, &quot;shiftKey&quot;:true} /* stroke */
+        ,{&quot;id&quot; : 9, &quot;keyCode&quot;:  50, &quot;key&quot;: &quot;2&quot;, &quot;shiftKey&quot;:true} /* caron */
+        ,{&quot;id&quot; :10, &quot;keyCode&quot;: 188, &quot;charCode&quot;: 44, &quot;key&quot;: &quot;comma&quot;,
+&quot;otherKey&quot;:&quot;?&quot;}  /* cedilla */
+        ,{&quot;id&quot; :11, &quot;keyCode&quot;:  52, &quot;key&quot;: &quot;4&quot;, &quot;otherKey&quot;:&quot;!&quot;} /* breve */
+        ,{&quot;id&quot; :12, &quot;keyCode&quot;:  54, &quot;key&quot;: &quot;6&quot;, &quot;otherKey&quot;:&quot;/&quot;} /* ogonek
+little tail */
+        ,{&quot;id&quot; :13, &quot;keyCode&quot;: 173, &quot;charCode&quot;: 95, &quot;key&quot;: &quot;-&quot;, &quot;otherKey&quot;:&quot;_&quot;}
+/* macron bar over */
+        ,{&quot;id&quot; :14, &quot;keyCode&quot;: 188, &quot;charCode&quot;: 44, &quot;key&quot;: &quot;,&quot;, &quot;otherKey&quot;:&quot;?&quot;}
+/* overdot */
+        ,{&quot;id&quot; :15, &quot;keyCode&quot;: 190, &quot;charCode&quot;: 44, &quot;key&quot;: &quot;.&quot;, &quot;otherKey&quot;:&quot;:&quot;}
+/* underdot */
+        ,{&quot;id&quot; :16, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 214, &quot;key&quot;: &quot;\&quot;&quot;,
+&quot;otherKey&quot;:&quot;|&quot;} /* double accute - no key up event*/
+        ,{&quot;id&quot; :17, &quot;keyCode&quot;:  79, &quot;key&quot;: &quot;O&quot;, &quot;otherKey&quot;:&quot;o&quot;} /* o - circle
+(ctrlshift c is taken by lightning)*/
+        ,{&quot;id&quot; :18, &quot;keyCode&quot;:  71, &quot;key&quot;: &quot;G&quot;, &quot;otherKey&quot;:&quot;g&quot;} /* greek */
+        ],
+        &quot;map_liveKeys&quot; : [
+                {&quot;id&quot;: 1, &quot;charCode&quot;:   0, &quot;keyCode&quot;: 191, &quot;key&quot;: &quot;?&quot;}
+         ,{&quot;id&quot;: 2, &quot;charCode&quot;:  33, &quot;keyCode&quot;:  49, &quot;key&quot;: &quot;!&quot;}
+         ,{&quot;id&quot;: 3, &quot;charCode&quot;: 101, &quot;keyCode&quot;:  36, &quot;key&quot;: &quot;$&quot;}
+        ]
+}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26263.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-01 13:12:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre11.xpi" name="attach_8216" title="2.18 prerelease 11">Created an attachment (id=8216)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8216&amp;action=edit" title="2.18 prerelease 11">[details]</a></span>
+2.18 prerelease 11
+
+Improved version - revision 9 ignored normal accelerators (such as CTRL+i for
+italics) and required them to be pressed twice.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=26263.html#c16">
+            #16</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-01 23:50:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Please refer to:
+Revision 3 - Zombiekey Layout (image/png)
+
+1. Suggestion (Tilde):
+change : CTRL+SHIFT+'
+to     : CTRL+SHIFT+1
+This is the same location just the image needs to be updated to be consistent
+with the other description along the number row.
+
+[ZombieKeys] 16:38:5.74  [1470119885074 ms]      
+press: keyCode=0 charCode=39 shiftKey=true altKey=false ctrlKey=true   cC [']
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=39 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys] 16:38:5.219  [145 ms]       
+up: keyCode=49 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [1]
+
+ ----------
+[ZombieKeys XML]up: keyCode=49 charCode=0 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=true altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:38:8.28  [2809 ms]       
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=97 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:38:8.139  [111 ms]       
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+2. Suggestion (Combining Ring Above)
+change : CTRL+SHIFT+Ű = 
+to     : CTRL+SHIFT+5 = 
+
+[ZombieKeys] 16:39:5.835  [85024 ms]     
+press: keyCode=0 charCode=37 shiftKey=true altKey=false ctrlKey=true   cC [%]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=37 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys] 16:39:5.929  [94 ms]        
+up: keyCode=53 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [5]
+
+ ----------
+[ZombieKeys XML]up: keyCode=53 charCode=0 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:39:7.68  [1139 ms]       
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=97 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:39:7.163  [95 ms]        
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+3. Suggestion (Grave Accent)
+change : CTRL+7 = áéíóúý...
+to     : CTRL+SHIFT+7 = àèìòù...
+
+[ZombieKeys] 16:39:37.339  [30176 ms]    
+press: keyCode=0 charCode=61 shiftKey=true altKey=false ctrlKey=true   cC [=]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=61 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys] 16:39:37.393  [54 ms]       
+up: keyCode=55 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [7]
+
+ ----------
+[ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:39:39.675  [2282 ms]     
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys] 16:39:39.738  [63 ms]       
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+4. Suggestion (Dot Above (Overdot))
+change : CTRL+SHIFT+; = 
+to     : CTRL+SHIFT+8 = 
+
+[ZombieKeys] 16:40:12.481  [32743 ms]    
+press: keyCode=0 charCode=40 shiftKey=true altKey=false ctrlKey=true   cC [(]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=40 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys] 16:40:12.544  [63 ms]       
+up: keyCode=56 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [8]
+
+ ----------
+[ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:40:13.778  [1234 ms]     
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys] 16:40:13.857  [79 ms]       
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+5. Suggestion (Acute Accent)
+change : CTRL+SHIFT+9 = àèìòù...
+to     : CTRL+SHIFT+9 = áéíóúý...
+
+[ZombieKeys] 16:40:49.705  [18237 ms]    
+press: keyCode=0 charCode=41 shiftKey=true altKey=false ctrlKey=true   cC [)]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=41 shiftKey=true altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys] 16:40:49.760  [55 ms]       
+up: keyCode=57 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [9]
+
+ ----------
+[ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:40:51.922  [2162 ms]     
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys] 16:40:51.986  [64 ms]       
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false
+
+
+(In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+<span class="quote">&gt; There are three entries that are doubtful - they don't generate keyup events.
+&gt; 
+&gt; The Á key - this is needed for the ßæœ combos</span >
+
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=true 
+
+ ----------
+[ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:43:13.359  [141373 ms]   
+press: keyCode=0 charCode=97 shiftKey=false altKey=false ctrlKey=false   cC [a]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=97 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys] 16:43:13.365  [6 ms]        
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=false   kC [A]
+
+ ----------
+[ZombieKeys XML]up: keyCode=65 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+<span class="quote">&gt; The Ű key - needed for the åůẙẘ letters</span >
+
+CTRL+Ü = - (minus)
+Please see suggestion 4
+
+<span class="quote">&gt; The Ö key - required for the Űőű letters</span >
+
+CTRL+Ö = 0 (zero)
+
+<span class="quote">&gt; Can you find out whether these have a keyup event with a physical Hungarian
+&gt; keyboard and what charCode and keyCode values are logged?
+&gt; 
+&gt; I am not certain I can incorporate completely new behavior that drives of an
+&gt; insolated / single keyPress event.</span >
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=26263.html#c17">
+            #17</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-01 23:53:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c16">comment #16</a>)
+<span class="quote">&gt; 2. Suggestion (Combining Ring Above)
+&gt; change : CTRL+SHIFT+Ű = 
+&gt; to     : CTRL+SHIFT+5 = </span >
+
+(In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+<span class="quote">&gt; &gt; The Ű key - needed for the åůẙẘ letters
+&gt; 
+&gt; CTRL+Ü = - (minus)
+&gt; Please see suggestion 5</span >
+Sorry, should have been please refer to suggestion 2. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=26263.html#c18">
+            #18</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-01 23:56:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+<span class="quote">&gt; There are three entries that are doubtful - they don't generate keyup events.
+&gt; 
+&gt; The Á key - this is needed for the ßæœ combos</span >
+
+CTRL+Á = '
+CTRL+SHIFT+Á = &quot;
+
+Seems to default to the English keyboard layout-
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=26263.html#c19">
+            #19</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-02 02:08:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Have done some further testing with Linux Mint 18 Xfce.
+
+In the Terminal and in LibreOffice with the magyar (Hungarian) keyboard:
+AltGr+1, a = ~a
+AltGr+2, a = ǎ
+AltGr+3, a = å
+AltGr+4, a = ă
+AltGr+5, a = å
+AltGr+6, a = ą
+AltGr+7, a = `a
+AltGr+8, a = ȧ
+AltGr+9, a = á
+
+Have not tried Windows or any other linux distribution.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=26263.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-02 04:20:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c16">comment #16</a>)
+<span class="quote">&gt; Please refer to:
+&gt; Revision 3 - Zombiekey Layout (image/png)
+&gt; </span >
+
+Thanks for the in depth reply. 
+
+One important thing, can you try and only log the accelerator key (e.g.
+CTRL+SHIFT+1) and not the keys press after, they are not relevant. Ideally I
+should only see 2 entries, a keydown and keyup event. example:
+
+If I am pressing CTRL+SHIFT+1 (using the Irish layout) I am getting only these
+2 messages
+
+[ZombieKeys] 9:36:22.303  [9222 ms]      
+press: keyCode=0 charCode=33 shiftKey=true altKey=false ctrlKey=true   cC [!]
+
+ ----------
+[ZombieKeys] 9:36:22.350  [47 ms]        
+up: keyCode=49 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [1]
+
+
+That's *all* I need for programming. Whatever key you press afterwards is not
+relevant as it is usually an alphanumeric character, and I know the (ASCII)
+codes connected to these. Also these do not change depending on locale /
+keyboard.
+
+
+<span class="quote">&gt; 1. Suggestion (Tilde):
+&gt; change : CTRL+SHIFT+'
+&gt; to     : CTRL+SHIFT+1
+&gt; This is the same location just the image needs to be updated to be consistent
+&gt; with the other description along the number row.</span >
+
+amended
+<span class="quote">&gt; 
+&gt; 2. Suggestion (Combining Ring Above)
+&gt; change : CTRL+SHIFT+Ű = 
+&gt; to     : CTRL+SHIFT+5 = </span >
+
+Ok, will do I didn't actually recognize that it contains the symbol as the
+pictures I had were too pixellated.
+
+
+<span class="quote">&gt;  ----------
+&gt; [ZombieKeys] 16:39:5.929  [94 ms]        
+&gt; up: keyCode=53 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [5]
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys XML]up: keyCode=53 charCode=0 shiftKey=true altKey=false
+&gt; ctrlKey=true </span >
+
+{&quot;id&quot; : 6, &quot;keyCode&quot;:  53, &quot;key&quot;: &quot;5&quot;, &quot;otherKey&quot;:&quot;%&quot;, &quot;shiftKey&quot;:true} /* ring
+*/
+
+
+<span class="quote">&gt; 3. Suggestion (Grave Accent)
+&gt; change : CTRL+7 = áéíóúý...
+&gt; to     : CTRL+SHIFT+7 = àèìòù...</span >
+
+actually I mislabeled you did it right:
+
+
+<span class="quote">&gt; 
+&gt;  ----------
+&gt; [ZombieKeys] 16:39:37.393  [54 ms]       
+&gt; up: keyCode=55 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [7]
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+&gt; ctrlKey=true 
+&gt; </span >
+
+{&quot;id&quot; : 1, &quot;keyCode&quot;:  55, &quot;key&quot;: &quot;7&quot;, &quot;otherKey&quot;:&quot;=&quot;, &quot;shiftKey&quot;:true} /*
+grave */
+
+
+<span class="quote">&gt; 4. Suggestion (Dot Above (Overdot))
+&gt; change : CTRL+SHIFT+; = 
+&gt; to     : CTRL+SHIFT+8 = 
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys XML]press: keyCode=0 charCode=40 shiftKey=true altKey=false
+&gt; ctrlKey=true 
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys] 16:40:12.544  [63 ms]       
+&gt; up: keyCode=56 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [8]
+&gt; </span >
+
+{&quot;id&quot; :14, &quot;keyCode&quot;:  56, &quot;charCode&quot;: 40, &quot;key&quot;: &quot;8&quot;, &quot;otherKey&quot;:&quot;(&quot;} /*
+overdot */
+
+
+<span class="quote">&gt; 5. Suggestion (Acute Accent)
+&gt; change : CTRL+SHIFT+9 = àèìòù...
+&gt; to     : CTRL+SHIFT+9 = áéíóúý...</span >
+
+(amended picture)
+
+<span class="quote">&gt;  ----------
+&gt; [ZombieKeys] 16:40:49.760  [55 ms]       
+&gt; up: keyCode=57 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [9]
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys XML]up: keyCode=16 charCode=0 shiftKey=false altKey=false
+&gt; ctrlKey=true 
+&gt; </span >
+
+{&quot;id&quot; : 2, &quot;keyCode&quot;:  57, &quot;key&quot;: &quot;9&quot;, &quot;otherKey&quot;:&quot;)&quot;, &quot;shiftKey&quot;:true} /*
+acute */
+
+
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+&gt; &gt; There are three entries that are doubtful - they don't generate keyup events.
+&gt; &gt; 
+&gt; &gt; The Á key - this is needed for the ßæœ combos
+&gt; 
+&gt; [ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+&gt; ctrlKey=true 
+&gt; 
+&gt;  ----------
+&gt; [ZombieKeys XML]up: keyCode=17 charCode=0 shiftKey=false altKey=false
+&gt; ctrlKey=false 
+&gt; 
+&gt;  ----------</span >
+
+I am missing keydown events in this log? I think these keyups come from your
+shift / ctrl keys so they are not helpful.
+strangely on my system these keys are never logged.
+
+I will be amending the mapping picture shortly then upload a new prerelease for
+testing.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=26263.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-02 04:23:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="Zombie-key-mapping-for-Hung.png.2" name="attach_8217" title="Revision 4 - Zombiekey Layout">Created an attachment (id=8217)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8217&amp;action=edit" title="Revision 4 - Zombiekey Layout">[details]</a></span>
+Revision 4 - Zombiekey Layout
+
+Revised Layout, according to <a href="show_bug.cgi@id=26263.html#c16">Comment #16</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=26263.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-02 04:27:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="kb_hungary.png" name="attach_8218" title="Improved version of the hungarian keymap shown in the options dialog">Created an attachment (id=8218)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8218&amp;action=edit" title="Improved version of the hungarian keymap shown in the options dialog">[details]</a></span>
+Improved version of the hungarian keymap shown in the options dialog
+
+Just an asset that depicts the Hungarian keyboard in the options dialog, I
+tried to improve readability of the blue symbols. Should probably do similar
+work on the other ones, where they show ALT Gr symbols.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=26263.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-02 04:31:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="kb_hungary.png.1" name="attach_8219" title="resized layout 400x133">Created an attachment (id=8219)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8219&amp;action=edit" title="resized layout 400x133">[details]</a></span>
+resized layout 400x133
+
+Had to resize to be in sync with the others and fit into options dialog
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=26263.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-02 04:45:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre13.xpi" name="attach_8220" title="2.18 prerelease 13">Created an attachment (id=8220)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8220&amp;action=edit" title="2.18 prerelease 13">[details]</a></span>
+2.18 prerelease 13
+
+Revised version, based on new key bindings.
+
+KNOWN ISSUES:
+I notice there is still an issue with the labels on the dropdown menu on the
+button - where I &quot;force&quot; the SHIFTkey (which disagrees with the original layout
+specified for the US locale) the it is actually missing on the menu label, so
+that is separate issue, which I will also address once I know how. So evcen
+though the menu says it is CTRL+7, CTRL+8 or CTRL+9, it is actually correctly
+
+CTRL+SHIFT+7
+CTRL+SHIFT+8
+CTRL+SHIFT+9
+
+like we stipulated in previous comments.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=26263.html#c25">
+            #25</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-02 20:45:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c24">comment #24</a>)
+Suggestion, image shows:
+  CTRL+6 = ąęįǫų
+should it show:
+  CTRL+SHIFT+6 = ąęįǫų
+
+also works with:
+  AltGr+6 = ąęįǫų
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=26263.html#c26">
+            #26</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-02 21:08:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c20">comment #20</a>)
+<span class="quote">&gt; &gt; (In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+&gt; &gt; &gt; The Á key - this is needed for the ßæœ combos
+&gt; I am missing keydown events in this log? I think these keyups come from your
+&gt; shift / ctrl keys so they are not helpful.
+&gt; strangely on my system these keys are never logged.</span >
+
+
+
+Á
+
+[ZombieKeys] 14:6:20.941  [19361 ms]     
+press: keyCode=0 charCode=193 shiftKey=false altKey=false ctrlKey=false   cC
+[Á]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=193 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+á
+
+[ZombieKeys] 14:6:38.401  [17460 ms]     
+press: keyCode=0 charCode=225 shiftKey=false altKey=false ctrlKey=false   cC
+[á]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=225 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=26263.html#c27">
+            #27</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-02 21:15:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+<span class="quote">&gt; There are three entries that are doubtful - they don't generate keyup events.
+&gt; 
+&gt; The Á key - this is needed for the ßæœ combos</span >
+
+Á
+
+[ZombieKeys] 14:6:20.941  [19361 ms]     
+press: keyCode=0 charCode=193 shiftKey=false altKey=false ctrlKey=false   cC
+[Á]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=193 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+á
+
+[ZombieKeys] 14:6:38.401  [17460 ms]     
+press: keyCode=0 charCode=225 shiftKey=false altKey=false ctrlKey=false   cC
+[á]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=225 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+<span class="quote">&gt; The Ű key - needed for the åůẙẘ letters</span >
+
+Ű
+
+[ZombieKeys] 14:12:2.878  [324477 ms]    
+press: keyCode=0 charCode=368 shiftKey=false altKey=false ctrlKey=false   cC
+[Ű]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=368 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+ű
+
+[ZombieKeys] 14:12:28.436  [25558 ms]    
+press: keyCode=0 charCode=369 shiftKey=false altKey=false ctrlKey=false   cC
+[ű]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=369 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+
+<span class="quote">&gt; The Ö key - required for the Űőű letters</span >
+
+Ö
+
+[ZombieKeys] 14:13:3.497  [35061 ms]     
+press: keyCode=0 charCode=214 shiftKey=false altKey=false ctrlKey=false   cC
+[Ö]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=214 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+
+
+ö
+
+[ZombieKeys] 14:13:23.380  [19883 ms]    
+press: keyCode=0 charCode=246 shiftKey=false altKey=false ctrlKey=false   cC
+[ö]
+
+ ----------
+[ZombieKeys XML]press: keyCode=0 charCode=246 shiftKey=false altKey=false
+ctrlKey=false 
+
+ ----------
+[ZombieKeys XML]up: keyCode=0 charCode=0 shiftKey=false altKey=false
+ctrlKey=false 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=26263.html#c28">
+            #28</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-02 21:18:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Suggestion:
+change : CTRL+SHIFT+:
+to     : CTRL+SHIFT+¨
+
+This is also labeled Ü
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=26263.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-03 07:24:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c27">comment #27</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c13">comment #13</a>)
+&gt; &gt; There are three entries that are doubtful - they don't generate keyup events.
+&gt; &gt; 
+&gt; &gt; The Á key - this is needed for the ßæœ combos
+&gt; 
+&gt; Á
+&gt; 
+&gt; [ZombieKeys] 14:6:20.941  [19361 ms]     
+&gt; press: keyCode=0 charCode=193 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [Á]
+&gt; 
+&gt; á
+&gt; 
+&gt; [ZombieKeys] 14:6:38.401  [17460 ms]     
+&gt; press: keyCode=0 charCode=225 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [á]
+&gt; </span >
+
+
+couple of things: I think we can use CTRL + á here (as the key is unlikely to
+be used as an accelerator by any opther Addon / Thunderbird)
+
+secondly, the [ZombieKeys XML] log lines come from typing in some control,
+which one? The best way to test is in THunderbird composer, which willl give
+you a cleaner log.
+
+thirdly, you could just use the CTRL+á during the test which would give me all
+necessary information in one (or 2) logs.
+
+
+<span class="quote">&gt; &gt; The Ű key - needed for the åůẙẘ letters
+&gt; 
+&gt; Ű
+&gt; 
+&gt; [ZombieKeys] 14:12:2.878  [324477 ms]    
+&gt; press: keyCode=0 charCode=368 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [Ű]
+&gt; 
+&gt; ű
+&gt; 
+&gt; [ZombieKeys] 14:12:28.436  [25558 ms]    
+&gt; press: keyCode=0 charCode=369 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [ű]
+&gt; </span >
+
+that was changed to CTRL+SHIFT+[5] as per your earlier request.
+
+{&quot;id&quot; : 6, &quot;keyCode&quot;:  53, &quot;key&quot;: &quot;5&quot;, &quot;otherKey&quot;:&quot;%&quot;, &quot;shiftKey&quot;:true}
+
+
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt; The Ö key - required for the Űőű letters
+&gt; 
+&gt; Ö
+&gt; 
+&gt; [ZombieKeys] 14:13:3.497  [35061 ms]     
+&gt; press: keyCode=0 charCode=214 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [Ö]
+&gt; 
+&gt; 
+&gt; ö
+&gt; 
+&gt; [ZombieKeys] 14:13:23.380  [19883 ms]    
+&gt; press: keyCode=0 charCode=246 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; [ö]
+&gt; </span >
+
+CTRL + [Ű]
+{&quot;id&quot; :16, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 214, &quot;key&quot;: &quot;Ű&quot;, &quot;otherKey&quot;:&quot;˝&quot;}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=26263.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-03 07:26:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c29">comment #29</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c27">comment #27</a>)
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; &gt; The Ö key - required for the Űőű letters
+&gt; &gt; 
+&gt; &gt; Ö
+&gt; &gt; 
+&gt; &gt; [ZombieKeys] 14:13:3.497  [35061 ms]     
+&gt; &gt; press: keyCode=0 charCode=214 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; &gt; [Ö]
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; ö
+&gt; &gt; 
+&gt; &gt; [ZombieKeys] 14:13:23.380  [19883 ms]    
+&gt; &gt; press: keyCode=0 charCode=246 shiftKey=false altKey=false ctrlKey=false   cC
+&gt; &gt; [ö]
+&gt; &gt; 
+&gt; 
+&gt; CTRL + [Ű]
+&gt; {&quot;id&quot; :16, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 214, &quot;key&quot;: &quot;Ű&quot;, &quot;otherKey&quot;:&quot;˝&quot;}
+&gt; </span >
+
+Errata: I meant to write
+
+CTRL + [Ő]
+
+{&quot;id&quot; :16, &quot;keyCode&quot;:   0, &quot;charCode&quot;: 214, &quot;key&quot;: &quot;Ő&quot;, &quot;otherKey&quot;:&quot;˝&quot;} 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=26263.html#c31">
+            #31</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-03 07:32:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="ZK-mapping-for-Hungary.png" name="attach_8221" title="Revision 5 - Zombiekey Layout">Created an attachment (id=8221)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8221&amp;action=edit" title="Revision 5 - Zombiekey Layout">[details]</a></span>
+Revision 5 - Zombiekey Layout
+
+Another revision of the Hungarian Layout, see previous comment.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=26263.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-03 19:20:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre17.xpi" name="attach_8222" title="2.18 prerelease 17">Created an attachment (id=8222)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8222&amp;action=edit" title="2.18 prerelease 17">[details]</a></span>
+2.18 prerelease 17
+
+Implementation based on Rev5 layout
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=26263.html#c33">
+            #33</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-04 06:06:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Suggestion:
+change : CTRL+SHIFT+:
+to     : CTRL+SHIFT+Ü
+
+Ü has two dots (..) not the double quote (&quot;).
+
+This would be consistent with the behaviour on Linux Mint Xfce, i.e.
+AltGr+Ü
+
+Sorry if the picture, Keyboard Magyar (Hungarian) (396.78 KB, image/png), is
+not clear enough.
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=26263.html#c34">
+            #34</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-04 06:14:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Suggestion (Cedilla):
+change: CTRL+,
+to    : CTRL+SHIFT+Ó
+
+Ó has Cedilla (¸) not the dot (.).
+
+This would be consistent with the behaviour on Linux Mint Xfce, i.e. AltGr+Ó
+
+Sorry if the picture, Keyboard Magyar (Hungarian) (396.78 KB, image/png), is
+not clear enough.
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=26263.html#c35">
+            #35</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-04 06:29:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c29">comment #29</a>)
+<span class="quote">&gt; couple of things: I think we can use CTRL + á here (as the key is unlikely to
+&gt; be used as an accelerator by any opther Addon / Thunderbird)</span >
+
+Not used by Thunderbird; however on Linux Mint 18 Xfce it is used to get the
+default English keyboard layout at that letter. Recommend we find a different
+key.
+
+Seems that this key sequence is not a dead key as:
+CTRL+á produces an apostrophe (')
+CTRL+SHIFT+á produces a quote (&quot;)
+There is no output on the Error Console; however, the apostrophe shows in
+Thunderbird composer.
+
+<span class="quote">&gt; secondly, the [ZombieKeys XML] log lines come from typing in some control,
+&gt; which one? The best way to test is in THunderbird composer, which willl give
+&gt; you a cleaner log.</span >
+
+The Search &lt;Ctrl+K&gt; control.
+
+<span class="quote">&gt; thirdly, you could just use the CTRL+á during the test which would give me all
+&gt; necessary information in one (or 2) logs.</span >
+
+See response above.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=26263.html#c36">
+            #36</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-05 04:53:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Does this need testing with th Windows operating system?
+
+Please advise what you require from me next? Thank you
+
+The tests below are with Linux Mint 18 Xfce in the body of writing an email.
+
+CTRL+SHIFT+1
+No change in the character
+[ZombieKeys] 21:9:2.427  [69262 ms]      
+press: keyCode=0 charCode=39 shiftKey=true altKey=false ctrlKey=true   cC [']
+ ----------
+[ZombieKeys] 21:9:2.499  [72 ms]         
+up: keyCode=49 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [1]
+
+
+CTRL+SHIFT+2
+Produced “Combining Ring Above”, i.e. åbcdefghijklmnopqrstůvẘxẙz
+Not “Caron (Hácek)”
+[ZombieKeys] 21:16:24.297  [58041 ms]    
+press: keyCode=0 charCode=34 shiftKey=true altKey=false ctrlKey=true   cC [&quot;]
+ ----------
+[ZombieKeys] 21:16:24.368  [71 ms]       
+up: keyCode=50 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [2]
+
+
+CTRL+SHIFT+3
+No change in the character
+[ZombieKeys] 21:10:56.619  [6133 ms]     
+press: keyCode=0 charCode=43 shiftKey=true altKey=false ctrlKey=true   cC [+]
+ ----------
+[ZombieKeys] 21:10:56.683  [64 ms]       
+up: keyCode=51 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [3]
+
+
+CTRL+SHIFT+4
+No change in the character
+[ZombieKeys] 21:11:55.588  [4878 ms]     
+press: keyCode=0 charCode=33 shiftKey=true altKey=false ctrlKey=true   cC [!]
+ ----------
+[ZombieKeys] 21:11:55.650  [62 ms]       
+up: keyCode=52 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [4]
+
+
+CTRL+SHIFT+5
+No change in the character
+[ZombieKeys] 21:12:39.716  [2762 ms]     
+press: keyCode=0 charCode=37 shiftKey=true altKey=false ctrlKey=true   cC [%]
+ ----------
+[ZombieKeys] 21:12:39.769  [53 ms]       
+up: keyCode=53 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [5]
+
+
+CTRL+SHIFT+6
+Produced “Circumflex Accent”, i.e. âbcdêfghîjklmnôpqrstûvŵxŷz
+Not “Ogonek”
+[ZombieKeys] 21:15:26.210  [84977 ms]    
+press: keyCode=0 charCode=47 shiftKey=true altKey=false ctrlKey=true   cC [/]
+ ----------
+[ZombieKeys] 21:15:26.256  [46 ms]       
+up: keyCode=54 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [6]
+
+
+CTRL+SHIFT+7
+The text size or zoom increased and produced æbcdefghijklmnœpqrßtuvwxyz
+Not “Grave Accent”
+[ZombieKeys] 21:19:16.961  [28794 ms]    
+press: keyCode=0 charCode=61 shiftKey=true altKey=false ctrlKey=true   cC [=]
+ ----------
+[ZombieKeys] 21:19:17.22  [61 ms]        
+up: keyCode=55 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [7]
+
+
+CTRL+SHIFT+8
+Produced “Ogonek”, i.e. ąbcdęfghįjklmnǫpqrstųvwxyz
+Not “Dot Above (Overdot)”
+[ZombieKeys] 21:21:4.648  [44970 ms]     
+press: keyCode=0 charCode=40 shiftKey=true altKey=false ctrlKey=true   cC [(]
+ ----------
+[ZombieKeys] 21:21:4.702  [54 ms]        
+up: keyCode=56 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [8]
+
+
+CTRL+SHIFT+9
+Produced ăbcdefğḫĭjklmnŏpqrstŭvwӂyz
+Not “Acute Accent”
+Note the letter to the left of the 9 is a Ö, not Ő (as shown in Rev5 layout).
+They key has both Ö and ˝. The key with Ő also has the ÷.
+CTRL+Ö
+2016-08-05 21:24:25     gloda.datastore ERROR   got error in
+_asyncTrackerListener.handleError(): 19: constraint failed
+ ----------
+[ZombieKeys] 21:24:26.278  [153311 ms]   
+press: keyCode=0 charCode=41 shiftKey=true altKey=false ctrlKey=true   cC [)]
+ ----------
+[ZombieKeys] 21:24:26.332  [54 ms]       
+up: keyCode=57 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [9]
+
+
+CTRL+SHIFT+Đ
+No change in the character
+[ZombieKeys] 21:26:9.500  [9097 ms]      
+press: keyCode=0 charCode=68 shiftKey=true altKey=false ctrlKey=true   cC [D]
+ ----------
+[ZombieKeys] 21:26:9.595  [95 ms]        
+up: keyCode=68 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [D]
+
+
+CTRL+,
+Produced abçḑȩfģḩijķļmņopqŗşţuvwxyz
+[ZombieKeys] 21:28:5.91  [34394 ms]      
+press: keyCode=0 charCode=44 shiftKey=false altKey=false ctrlKey=true   cC [,]
+ ----------
+[ZombieKeys] 21:28:5.138  [47 ms]        
+up: keyCode=188 charCode=0 shiftKey=false altKey=false ctrlKey=true   kC [¼]
+
+
+CTRL+.
+Produced “Dot Above (Overdot)”, i.e.
+ȧbċdėfghijklṁṅȯṗqṙṡtuvẇẋẏż
+Not “Combining Dot Below (Underdot)”
+[ZombieKeys] 21:33:1.187  [63912 ms]     
+press: keyCode=0 charCode=46 shiftKey=false altKey=false ctrlKey=true   cC [.]
+ ----------
+[ZombieKeys] 21:33:1.249  [62 ms]        
+up: keyCode=190 charCode=0 shiftKey=false altKey=false ctrlKey=true   kC [¾]
+
+
+CTRL+SHIFT+:
+Produced “Caron (Hácek)”, i.e. ǎbčďěfǧȟǐǰǩľmňȯpqřšťǔvwxyž
+Not “Combining Diaresis (Umlaut)”
+[ZombieKeys] 21:33:51.1  [5744 ms]       
+press: keyCode=0 charCode=58 shiftKey=true altKey=false ctrlKey=true   cC [:]
+ ----------
+[ZombieKeys] 21:33:51.65  [64 ms]        
+up: keyCode=190 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [¾]
+
+
+CTRL+SHIFT+_
+No change in the character
+[ZombieKeys] 21:40:20.47  [4432 ms]      
+press: keyCode=0 charCode=95 shiftKey=true altKey=false ctrlKey=true   cC [_]
+ ----------
+[ZombieKeys] 21:40:20.102  [55 ms]       
+up: keyCode=173 charCode=0 shiftKey=true altKey=false ctrlKey=true   kC [­]
+
+
+CTRL+Á
+Produced a quote (&quot;)
+No output in Error Console
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c37" href="show_bug.cgi@id=26263.html#c37">
+            #37</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-05 05:54:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c36">comment #36</a>)
+<span class="quote">&gt; Does this need testing with the Windows operating system?</span >
+
+no I don't think so. I think LInux has additional deadkeys though, so you might
+find some problems related to that.
+
+<span class="quote">&gt; 
+&gt; Please advise what you require from me next? Thank you</span >
+
+Test again, but go to Zombiekeys configuration (ZK button &gt; Configuration)
+
+Select *Hungarian Layout*. I believe you tested using the US layout.
+You can also activate the checkbox &quot;Display mapping in Error console&quot; to get
+suggestions on what keys should word after the deadkey combo is pressed.
+
+You don't need to do a full test of all characters supported, if you can prove
+that the first one works. 
+
+Here is what I did to unit test:
+
+- select Hungarian layout in ZK
+- with the Windows language bar select hungarian layout
+
+Pressed CTRL+SHIFT+1 then a ... CTRL+SHIFT+8 then a
+Result: ãǎâăåąàȧ
+
+CTRL+ö , then o
+Result:ő
+
+CTRL+á, then a
+Result:æ
+
+CTRL+SHIFT+D, then d
+Result:ð
+(In Thunderbird Composer, I also got a message saying &quot;No Recipients were
+specified.&quot; so I need to consume the accelerator on the key down, new version
+will come soon. (Note to self, set charCode=68 so the event will be consumed)
+
+CTRL+comma, then c
+Result: ç
+[note the font was not decreased as in older versions of ZK. the event is
+consumed so that Composer doesn't mistake it for font--)
+
+CTRL+. , then a
+Result: ạ
+
+CTRL+SHIFT+O, then a
+Result: ⓐ
+
+CTRL+ALT+G, then a
+Result: α
+
+Can you get the same with a real Hungarian keyboard?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c38" href="show_bug.cgi@id=26263.html#c38">
+            #38</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-05 17:27:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c37">comment #37</a>)
+<span class="quote">&gt; Test again, but go to Zombiekeys configuration (ZK button &gt; Configuration)
+&gt; 
+&gt; Select *Hungarian Layout*. I believe you tested using the US layout.
+&gt; You can also activate the checkbox &quot;Display mapping in Error console&quot; to get
+&gt; suggestions on what keys should word after the deadkey combo is pressed.
+&gt; 
+&gt; You don't need to do a full test of all characters supported, if you can prove
+&gt; that the first one works. 
+&gt; 
+&gt; Here is what I did to unit test:
+&gt; 
+&gt; - select Hungarian layout in ZK
+&gt; - with the Windows language bar select hungarian layout
+&gt; Can you get the same with a real Hungarian keyboard?</span >
+
+Unfortunately no. Steps done are below:
+
+ 1. Turn on Linux Mint 18 Xfce
+ 2. Insert real Hungarian keyboard (USB); however all steps were done with the
+mouse
+ 3. Open Thunderbird 45.2.0
+ 4. Select Hungarian keyboard layout from the Linux keyboard layouts
+ 5. Click ZK button (using ZombieKeys 2.18pre17)
+ 6. Click Configuragion…
+ 7. Select “Hungarian” from “Please select the layout most miliar to your
+own keyboard:”
+(a) Double clicking on “Hungarian” does not select and close the dialog
+either
+ 8. Activate checkbox “Display Mapping (Error Console) after shortcut combo
+is pressed”
+ 9. Click “Close”
+ 10. Click ZK button
+(a) “US English” keyboard is *incorrectly* selected, not “Hungarian”
+(b) “Display Mapping (Error Console) after shortcut combo is pressed” is
+correctly still selected.
+
+Please advise what you require from me next? Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c39" href="show_bug.cgi@id=26263.html#c39">
+            #39</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-05 17:39:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Interesting behavior as Hungarian can be selected in ZK with Windows 8.1, but
+not Linux Mint 18 Xfce
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c40" href="show_bug.cgi@id=26263.html#c40">
+            #40</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 02:08:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c37">comment #37</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c36">comment #36</a>)
+&gt; &gt; Does this need testing with the Windows operating system?
+&gt; 
+&gt; no I don't think so. I think LInux has additional deadkeys though, so you might
+&gt; find some problems related to that.</span >
+
+Windows works while unfortunately Linux does not.
+
+<span class="quote">&gt; &gt; 
+&gt; &gt; Please advise what you require from me next? Thank you
+&gt; 
+&gt; Test again, but go to Zombiekeys configuration (ZK button &gt; Configuration)
+&gt; 
+&gt; Select *Hungarian Layout*. I believe you tested using the US layout.
+&gt; You can also activate the checkbox &quot;Display mapping in Error console&quot; to get
+&gt; suggestions on what keys should word after the deadkey combo is pressed.
+&gt; 
+&gt; You don't need to do a full test of all characters supported, if you can prove
+&gt; that the first one works. 
+&gt; 
+&gt; Here is what I did to unit test:
+&gt; 
+&gt; - select Hungarian layout in ZK
+&gt; - with the Windows language bar select hungarian layout
+&gt; 
+&gt; Pressed CTRL+SHIFT+1 then a ... CTRL+SHIFT+8 then a
+&gt; Result: ãǎâăåąàȧ
+&gt; 
+&gt; CTRL+ö , then o
+&gt; Result:ő
+&gt; 
+&gt; CTRL+á, then a
+&gt; Result:æ
+&gt; 
+&gt; CTRL+SHIFT+D, then d
+&gt; Result:ð
+&gt; (In Thunderbird Composer, I also got a message saying &quot;No Recipients were
+&gt; specified.&quot; so I need to consume the accelerator on the key down, new version
+&gt; will come soon. (Note to self, set charCode=68 so the event will be consumed)
+&gt; 
+&gt; CTRL+comma, then c
+&gt; Result: ç
+&gt; [note the font was not decreased as in older versions of ZK. the event is
+&gt; consumed so that Composer doesn't mistake it for font--)
+&gt; 
+&gt; CTRL+. , then a
+&gt; Result: ạ
+&gt; 
+&gt; CTRL+SHIFT+O, then a
+&gt; Result: ⓐ
+&gt; 
+&gt; CTRL+ALT+G, then a
+&gt; Result: α
+&gt; 
+&gt; Can you get the same with a real Hungarian keyboard?
+&gt; </span >
+
+Tested with:
+* Windows 8.1
+* Using a real Hungarian keyboard as shown in:
+  Keyboard Magyar (Hungarian) (396.78 KB, image/png) 2016-07-27 14:27
+* Checked only with the first character.
+
+1. CTRL+Ö (the key immediately to the right of 9) works if CapsLock if off;
+   however, it does *not* work if CapsLock is *on*.
+   Suggestion:
+   Change your labelling in ZK mapping for Hungarian diagram from:
+     CTRL+Ő
+   to:
+     CTRL+Ö
+   (the location is correct, just the label is incorrect).
+
+
+2. Suggestion:
+   Add CTRL+SHIFT+O to your ZK mapping for Hungarian diagram.
+
+
+3. Suggestion:
+   Add CTRL+ALT+G to your ZK mapping for Hungarian diagram.
+
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c41" href="show_bug.cgi@id=26263.html#c41">
+            #41</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 02:12:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c7">comment #7</a>)
+<span class="quote">&gt; &gt; Perhaps is is preferable that the right AltGr is used as letters on the magyar
+&gt; &gt; (Hungarian) keyboard are on the lower right that are typed using AltGr. This
+&gt; &gt; would be easy to remember and reduces a possible future conflict as described
+&gt; &gt; below.
+&gt; 
+&gt; I am not sure if I can easily detect the difference between ALT and ALT Gr.
+&gt; that might be a change too fundamental and out of scope for this bug. If you
+&gt; have additional ideas that are not related to the Hungarian Layout (Remember
+&gt; many European keyboards have an ALtGr functionality) please raise separate
+&gt; bugs.</span >
+
+Tried to list an enhancement (bug) report to distinguish between Alt and AltGr
+under
+Product: zombiekeys
+but could not find zombiekeys in the list.
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c42" href="show_bug.cgi@id=26263.html#c42">
+            #42</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-06 06:16:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c39">comment #39</a>)
+<span class="quote">&gt; Interesting behavior as Hungarian can be selected in ZK with Windows 8.1, but
+&gt; not Linux Mint 18 Xfce
+&gt; </span >
+
+My guesis that the dialogs in Linux do not have an [Ok] button? I can probably
+fix this in the next patch. (Not by adding the ok button but by accepting the
+Hungarian selection immediately.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c43" href="show_bug.cgi@id=26263.html#c43">
+            #43</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-06 06:19:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="ZK-mapping-for-Hungary.png.1" name="attach_8223" title="Revision 6 - Zombiekey Layout">Created an attachment (id=8223)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8223&amp;action=edit" title="Revision 6 - Zombiekey Layout">[details]</a></span>
+Revision 6 - Zombiekey Layout
+
+Updated, according to suggestions from <a href="show_bug.cgi@id=26263.html#c40">Comment #40</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c44" href="show_bug.cgi@id=26263.html#c44">
+            #44</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-06 06:21:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class="bz_obsolete"><a href="ZK-mapping-for-Hungary.png" name="attach_8221" title="Revision 5 - Zombiekey Layout">attachment 8221</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8221&amp;action=edit" title="Revision 5 - Zombiekey Layout">[details]</a></span>)
+marked as obsolete. Now that I am putting so much work in the Hungarian layout
+I probably have to revisit all my other locales - they were all done in
+Paintshop a program I don't have anymore, so lots of work ahead if I do it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c45" href="show_bug.cgi@id=26263.html#c45">
+            #45</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-06 07:12:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre20.xpi" name="attach_8224" title="2.18 prerelease 20">Created an attachment (id=8224)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8224&amp;action=edit" title="2.18 prerelease 20">[details]</a></span>
+2.18 prerelease 20
+
+Forcing the options dialog to accept your choice (Hungarian Layout)
+immediately, without having to press Ok.
+
+Basically a fix for the Operating systems that hide the [Ok] button. (Normally
+accepting the values on closing the dialog should be the default behavior but
+it doesn't seem to apply to Linux in your case) You should be able to
+permanently select the [Hu] layout through this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c46" href="show_bug.cgi@id=26263.html#c46">
+            #46</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 19:22:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thank you for &quot;2.18pre20&quot; and &quot;Rev6 - ZK Layout&quot; updates.
+
+
+
+Suggestion (if possible):
+Change: CTRL+SHIFT+:
+To    : CTRL+SHIFT+Ü
+
+CapsLock off
+[ZombieKeys] 11:55:20.958  [6215 ms]     
+press: keyCode=0 charCode=220 shiftKey=true altKey=false ctrlKey=true   cC [Ü]
+
+CapsLock on
+[ZombieKeys] 11:55:58.101  [8368 ms]     
+press: keyCode=0 charCode=252 shiftKey=true altKey=false ctrlKey=true   cC [ü]
+
+
+
+Suggestion:
+Update &quot;ZK mapping for Hungary&quot; picture so the blue text on the Ü button looks
+like a umlaut
+¨
+Currently it looks like a double quote.
+Please refer to real Hungarian keyboard picture.
+
+
+
+Suggestion:
+Update &quot;ZK mapping for Hungary&quot; picture so the blue text on the Ó button looks
+like a cedilla/cedilha/cédille
+¸
+Please refer to real Hungarian keyboard picture.
+
+
+
+Suggestion:
+List &quot;Keyboard Layout&quot; in alphabetical order at:
+<a href="http://zombiekeys.mozdev.org/layouts.html">http://zombiekeys.mozdev.org/layouts.html</a>
+
+
+
+Suggestion:
+List &quot;Keyboard layouts&quot; in alphabetical order in:
+ZK &gt; Configuration…
+
+
+
+Suggestions:
+Change: CTRL+SHIFT+O = ⓐⓑⓒⓔ..ⓍⓎⓏ
+        (ⓓ is missing)
+to    : CTRL+SHIFT+O = ⓐⓑⓒ…ⓍⓎⓏ01…9
+        (Remove ⓔ)
+        (Add circled numbers if possible)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c47" href="show_bug.cgi@id=26263.html#c47">
+            #47</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 19:29:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c44">comment #44</a>)
+<span class="quote">&gt; I probably have to revisit all my other locales - they were all done in
+&gt; Paintshop a program I don't have anymore, so lots of work ahead if I do it.</span >
+
+You might like to try the Draw program in LibreOffice. It may have an import
+filter for your Paintshop file type.
+<a href="https://www.libreoffice.org/">https://www.libreoffice.org/</a>
+
+Another option which may work is GIMP:
+<a href="https://www.gimp.org/">https://www.gimp.org/</a>
+
+Further, you could try Inkscape:
+<a href="https://inkscape.org/">https://inkscape.org/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c48" href="show_bug.cgi@id=26263.html#c48">
+            #48</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 19:32:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c45">comment #45</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre20.xpi" name="attach_8224" title="2.18 prerelease 20">attachment (id=8224)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8224&amp;action=edit" title="2.18 prerelease 20">[details]</a></span> [details]
+&gt; 2.18 prerelease 20
+&gt; 
+&gt; Forcing the options dialog to accept your choice (Hungarian Layout)
+&gt; immediately, without having to press Ok.
+&gt; 
+&gt; Basically a fix for the Operating systems that hide the [Ok] button. (Normally
+&gt; accepting the values on closing the dialog should be the default behavior but
+&gt; it doesn't seem to apply to Linux in your case) You should be able to
+&gt; permanently select the [Hu] layout through this.
+&gt; </span >
+
+Thank you, it now works on Linux Mint 18 Xfce.
+
+Should the &quot;Close&quot; button be renamed to &quot;Save&quot;?
+Perhaps another button could be added called &quot;Cancel&quot;?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c49" href="show_bug.cgi@id=26263.html#c49">
+            #49</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-06 19:48:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c48">comment #48</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c45">comment #45</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre20.xpi" name="attach_8224" title="2.18 prerelease 20">attachment (id=8224)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8224&amp;action=edit" title="2.18 prerelease 20">[details]</a></span> [details] [details]
+&gt; &gt; 2.18 prerelease 20
+&gt; &gt; 
+&gt; &gt; Forcing the options dialog to accept your choice (Hungarian Layout)
+&gt; &gt; immediately, without having to press Ok.
+&gt; &gt; 
+&gt; &gt; Basically a fix for the Operating systems that hide the [Ok] button. (Normally
+&gt; &gt; accepting the values on closing the dialog should be the default behavior but
+&gt; &gt; it doesn't seem to apply to Linux in your case) You should be able to
+&gt; &gt; permanently select the [Hu] layout through this.
+&gt; &gt; 
+&gt; 
+&gt; Thank you, it now works on Linux Mint 18 Xfce.
+&gt; 
+&gt; Should the &quot;Close&quot; button be renamed to &quot;Save&quot;?
+&gt; Perhaps another button could be added called &quot;Cancel&quot;?
+&gt; </span >
+
+Or perhaps:
+OK    Cancel    Reset
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c50" href="show_bug.cgi@id=26263.html#c50">
+            #50</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-09 02:33:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c41">comment #41</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c7">comment #7</a>)
+&gt; &gt; &gt; Perhaps is is preferable that the right AltGr is used as letters on the magyar
+&gt; &gt; &gt; (Hungarian) keyboard are on the lower right that are typed using AltGr. This
+&gt; &gt; &gt; would be easy to remember and reduces a possible future conflict as described
+&gt; &gt; &gt; below.
+&gt; &gt; 
+&gt; &gt; I am not sure if I can easily detect the difference between ALT and ALT Gr.
+&gt; &gt; that might be a change too fundamental and out of scope for this bug. If you
+&gt; &gt; have additional ideas that are not related to the Hungarian Layout (Remember
+&gt; &gt; many European keyboards have an ALtGr functionality) please raise separate
+&gt; &gt; bugs.
+&gt; 
+&gt; Tried to list an enhancement (bug) report to distinguish between Alt and AltGr
+&gt; under
+&gt; Product: zombiekeys
+&gt; but could not find zombiekeys in the list.
+&gt; 
+&gt; Thank you
+&gt; </span >
+
+Does this help to easilz detect the difference between Alt and AltGr?
+Alt   =  18
+AltGr = 255
+If found this using Mozilla Firefox at a website called:
+JavaScript Event KeyCodes
+<a href="http://keycode.info/">http://keycode.info/</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c51" href="show_bug.cgi@id=26263.html#c51">
+            #51</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-14 03:45:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Suggestion:
+Change: ZombieKeys image and name ‘ZombieKeys’ on the Thunderbird Mail
+Toolbar
+to: Picture of flag representing keyboard layout and when hovering above image
+a tooltip could show with the flag and the words of the keyboard layout
+selected in ZombieKeys
+
+This could be also applied to the Firefox implementation? Not sure what its
+Toolbar is called.
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c52" href="show_bug.cgi@id=26263.html#c52">
+            #52</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-14 05:16:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c51">comment #51</a>)
+<span class="quote">&gt; Suggestion:
+&gt; Change: ZombieKeys image and name ‘ZombieKeys’ on the Thunderbird Mail
+&gt; Toolbar
+&gt; to: Picture of flag representing keyboard layout and when hovering above image
+&gt; a tooltip could show with the flag and the words of the keyboard layout
+&gt; selected in ZombieKeys
+&gt; 
+&gt; This could be also applied to the Firefox implementation? Not sure what its
+&gt; Toolbar is called.
+&gt; 
+&gt; Thank you
+&gt; </span >
+
+Please,
+
+Submit a new bug for this. This one is getting to long and I want to close it
+at some stage. 
+
+Thanks
+  Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c53" href="show_bug.cgi@id=26263.html#c53">
+            #53</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-14 14:55:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c52">comment #52</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c51">comment #51</a>)
+&gt; &gt; Suggestion:
+&gt; &gt; Change: ZombieKeys image and name ‘ZombieKeys’ on the Thunderbird Mail
+&gt; &gt; Toolbar
+&gt; &gt; to: Picture of flag representing keyboard layout and when hovering above image
+&gt; &gt; a tooltip could show with the flag and the words of the keyboard layout
+&gt; &gt; selected in ZombieKeys
+&gt; &gt; 
+&gt; &gt; This could be also applied to the Firefox implementation? Not sure what its
+&gt; &gt; Toolbar is called.
+&gt; &gt; 
+&gt; &gt; Thank you
+&gt; &gt; 
+&gt; 
+&gt; Please,
+&gt; 
+&gt; Submit a new bug for this. This one is getting to long and I want to close it
+&gt; at some stage. 
+&gt; 
+&gt; Thanks
+&gt;   Axel
+&gt; </span >
+
+How do you do that?
+
+ZombieKeys is not listed:
+<a href="https://www.mozdev.org/bugs/enter_bug.cgi">https://www.mozdev.org/bugs/enter_bug.cgi</a>
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c54" href="show_bug.cgi@id=26263.html#c54">
+            #54</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-15 03:52:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c53">comment #53</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c52">comment #52</a>)
+&gt; &gt; 
+&gt; &gt; Please,
+&gt; &gt; 
+&gt; &gt; Submit a new bug for this. This one is getting to long and I want to close it
+&gt; &gt; at some stage. 
+&gt; &gt; 
+&gt; &gt; Thanks
+&gt; &gt;   Axel
+&gt; &gt; 
+&gt; 
+&gt; How do you do that?
+&gt; 
+&gt; ZombieKeys is not listed:
+&gt; <a href="https://www.mozdev.org/bugs/enter_bug.cgi">https://www.mozdev.org/bugs/enter_bug.cgi</a>
+&gt; 
+&gt; Thanks
+&gt; </span >
+A direct link is on the zombiekeys support page:
+
+<a href="http://zombiekeys.mozdev.org/bugs.html">http://zombiekeys.mozdev.org/bugs.html</a>
+
+please click the &quot;Request a new feature&quot; link and fill in Summary (headline)
+and description fields.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c55" href="show_bug.cgi@id=26263.html#c55">
+            #55</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-15 03:56:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c54">comment #54</a>)
+<span class="quote">&gt; A direct link is on the zombiekeys support page:
+&gt; 
+&gt; <a href="http://zombiekeys.mozdev.org/bugs.html">http://zombiekeys.mozdev.org/bugs.html</a>
+&gt; 
+&gt; please click the &quot;Request a new feature&quot; link and fill in Summary (headline)
+&gt; and description fields.
+&gt; </span >
+
+Thank you, I tried that and got the message:
+Sorry, either the product /zombiekeys/ does not exist or you aren't authorized
+to enter a bug into it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c56" href="show_bug.cgi@id=26263.html#c56">
+            #56</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-15 04:29:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c55">comment #55</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c54">comment #54</a>)
+&gt; &gt; A direct link is on the zombiekeys support page:
+&gt; &gt; 
+&gt; &gt; <a href="http://zombiekeys.mozdev.org/bugs.html">http://zombiekeys.mozdev.org/bugs.html</a>
+&gt; &gt; 
+&gt; &gt; please click the &quot;Request a new feature&quot; link and fill in Summary (headline)
+&gt; &gt; and description fields.
+&gt; &gt; 
+&gt; 
+&gt; Thank you, I tried that and got the message:
+&gt; Sorry, either the product /zombiekeys/ does not exist or you aren't authorized
+&gt; to enter a bug into it.
+&gt; </span >
+
+I added you to the group &quot;product-zombiekeys&quot; just now, can you try again
+please? I think there is a configuration problem only with this particular
+addon, the other ones are not that iffy. Not sure if that will actually resolve
+it, but that's the only configuration UI for mozdev that I could find
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c57" href="show_bug.cgi@id=26263.html#c57">
+            #57</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-15 15:18:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c56">comment #56</a>)
+<span class="quote">&gt; I added you to the group &quot;product-zombiekeys&quot; just now, can you try again
+&gt; please? I think there is a configuration problem only with this particular
+&gt; addon, the other ones are not that iffy. Not sure if that will actually resolve
+&gt; it, but that's the only configuration UI for mozdev that I could find</span >
+
+Thank you, added <a href="show_bug.cgi@id=26274.html" title="NEW - UI: Show flag for keyboard selection instead of ZombieKeys image and name">bug 26274</a>:
+UI: Show flag for keyboard selection instead of ZombieKeys image and name
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c58" href="show_bug.cgi@id=26263.html#c58">
+            #58</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-23 08:48:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c48">comment #48</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c45">comment #45</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre20.xpi" name="attach_8224" title="2.18 prerelease 20">attachment (id=8224)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8224&amp;action=edit" title="2.18 prerelease 20">[details]</a></span> [details] [details]
+&gt; &gt; 2.18 prerelease 20
+&gt; &gt; 
+&gt; &gt; Forcing the options dialog to accept your choice (Hungarian Layout)
+&gt; &gt; immediately, without having to press Ok.
+&gt; &gt; 
+&gt; &gt; Basically a fix for the Operating systems that hide the [Ok] button. (Normally
+&gt; &gt; accepting the values on closing the dialog should be the default behavior but
+&gt; &gt; it doesn't seem to apply to Linux in your case) You should be able to
+&gt; &gt; permanently select the [Hu] layout through this.
+&gt; &gt; 
+&gt; 
+&gt; Thank you, it now works on Linux Mint 18 Xfce.
+&gt; 
+&gt; Should the &quot;Close&quot; button be renamed to &quot;Save&quot;?
+&gt; Perhaps another button could be added called &quot;Cancel&quot;?
+&gt; </span >
+
+I don't see a &quot;close&quot; button. only Ok and Cancel (that's windows) I guess Linux
+behaves differently. It think the close button you are seeing does the same as
+closing the window with the top right (close window) control. I will try to add
+the &quot;dialog&quot; flag to the arguments when opening the window.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c59" href="show_bug.cgi@id=26263.html#c59">
+            #59</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-23 10:10:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c46">comment #46</a>)
+<span class="quote">&gt; Thank you for &quot;2.18pre20&quot; and &quot;Rev6 - ZK Layout&quot; updates.
+&gt; 
+&gt; 
+&gt; 
+&gt; Suggestion (if possible):
+&gt; Change: CTRL+SHIFT+:
+&gt; To    : CTRL+SHIFT+Ü
+&gt; 
+&gt; CapsLock off
+&gt; [ZombieKeys] 11:55:20.958  [6215 ms]     
+&gt; press: keyCode=0 charCode=220 shiftKey=true altKey=false ctrlKey=true   cC [Ü]
+&gt; 
+&gt; CapsLock on
+&gt; [ZombieKeys] 11:55:58.101  [8368 ms]     
+&gt; press: keyCode=0 charCode=252 shiftKey=true altKey=false ctrlKey=true   cC [ü]
+&gt; </span >
+
+what is the keycode without shift please?
+
+<span class="quote">&gt; 
+&gt; 
+&gt; Suggestion:
+&gt; Update &quot;ZK mapping for Hungary&quot; picture so the blue text on the Ü button looks
+&gt; like a umlaut
+&gt; ¨
+&gt; Currently it looks like a double quote.
+&gt; Please refer to real Hungarian keyboard picture.</span >
+
+Done
+
+<span class="quote">&gt; 
+&gt; 
+&gt; 
+&gt; Suggestion:
+&gt; Update &quot;ZK mapping for Hungary&quot; picture so the blue text on the Ó button looks
+&gt; like a cedilla/cedilha/cédille</span >
+
+I tried. not easy to get that right from Unicode.
+
+<span class="quote">&gt; ¸
+&gt; Please refer to real Hungarian keyboard picture.
+&gt; 
+&gt; 
+&gt; 
+&gt; Suggestion:
+&gt; List &quot;Keyboard Layout&quot; in alphabetical order at:
+&gt; <a href="http://zombiekeys.mozdev.org/layouts.htm">http://zombiekeys.mozdev.org/layouts.htm</a>
+&gt; 
+&gt; 
+&gt; 
+&gt; Suggestion:
+&gt; List &quot;Keyboard layouts&quot; in alphabetical order in:
+&gt; ZK &gt; Configuration…</span >
+
+I would rather do it by number of users. There are only 2 users from the
+Hungarian locale, so it will probably remain at the bottom.
+
+<span class="quote">&gt; 
+&gt; 
+&gt; 
+&gt; Suggestions:
+&gt; Change: CTRL+SHIFT+O = ⓐⓑⓒⓔ..ⓍⓎⓏ
+&gt;         (ⓓ is missing)
+&gt; to    : CTRL+SHIFT+O = ⓐⓑⓒ…ⓍⓎⓏ01…9
+&gt;         (Remove ⓔ)
+&gt;         (Add circled numbers if possible)</span >
+&gt;
+There are no circled numbers in Unicode. Also, please don't add more requests
+to the same bug if you need additional functionality raise a separate bug. This
+has  nothing to do with thee Hungarian localee.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c60" href="show_bug.cgi@id=26263.html#c60">
+            #60</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-23 10:23:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ZK-mapping-for-Hungary.png.2" name="attach_8226" title="Revision 7 - Zombiekey Layout">Created an attachment (id=8226)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8226&amp;action=edit" title="Revision 7 - Zombiekey Layout">[details]</a></span>
+Revision 7 - Zombiekey Layout
+
+Improvements based on previous comment
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c61" href="show_bug.cgi@id=26263.html#c61">
+            #61</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-23 10:41:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="zombie_keys_multilanguage_keyboard-2.18pre24.xpi" name="attach_8227" title="2.18 prerelease 24">Created an attachment (id=8227)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8227&amp;action=edit" title="2.18 prerelease 24">[details]</a></span>
+2.18 prerelease 24
+
+Changes: relegated Umlaut to the dedicated key  (without shift)
+
+CTRL+Ü
+
+using the keydown event oinly with charcode 252. (the picture was wrong as I
+found out when I tested it for the 3rd time. This stuff is difficult to test
+without a real Hungarian keyboard.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c62" href="show_bug.cgi@id=26263.html#c62">
+            #62</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-26 16:00:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c61">comment #61</a>)
+Tests with Zombiekeys 2.18pre24:
+
+---
+
+A. On Linux Mint does not work as CTRL+ü defaults to English keyboard layout.
+
+---
+
+B. On Windows 8.1, Caps Lock off:
+
+[ZombieKeys] 8:49:27.807  [71032 ms]     
+press: keyCode=0 charCode=252 shiftKey=false altKey=false ctrlKey=true   cC
+[ü]
+
+ ----------
+[ZombieKeys]{KEYPRESSHANDLER}  8:49:27.810  [3 ms]     
+Special case: no keyCode - activating deadKey[4]
+ ----------
+[ZombieKeys] 8:49:27.812  [2 ms]     
+created zombie id 5 you can now press:
+A (65) =&gt; Ä (196) a (97) =&gt; ä (228) E (69) =&gt; Ë (203) e (101) =&gt; ë (235) I
+(73) =&gt; Ï (207) i (105) =&gt; ï (239) O (79) =&gt; Ö (214) o (111) =&gt; ö (246) U
+(85) =&gt; Ü (220) u (117) =&gt; ü (252) Y (89) =&gt; Ÿ (376) y (121) =&gt; ÿ (255)
+
+---
+
+C. On Windows 8.1, Caps Lock on:
+[ZombieKeys] 8:53:40.645  [5854 ms]     
+press: keyCode=0 charCode=368 shiftKey=false altKey=false ctrlKey=true   cC
+[Ű]
+
+---
+
+D. Would it be best to keep as CTRL+SHIFT+Ü as:
+1. Linux has overwritten Ctrl+Ü to the English keyboard layout;
+2. Enable the same Zombiekeys for Linux and Windows; and
+3. Consistent with other CTRL+SHIFT along the top row of the keyboard.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c63" href="show_bug.cgi@id=26263.html#c63">
+            #63</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-27 00:53:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c62">comment #62</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c61">comment #61</a>)
+&gt; Tests with Zombiekeys 2.18pre24:
+&gt; 
+&gt; ---
+&gt; 
+&gt; A. On Linux Mint does not work as CTRL+ü defaults to English keyboard layout.</span >
+&gt;
+
+
+<span class="quote">&gt; D. Would it be best to keep as CTRL+SHIFT+Ü as:
+&gt; 1. Linux has overwritten Ctrl+Ü to the English keyboard layout;
+&gt; 2. Enable the same Zombiekeys for Linux and Windows; and
+&gt; 3. Consistent with other CTRL+SHIFT along the top row of the keyboard.</span >
+
+General question first: Is Linux configured for Hungarian layout and is this
+the only exception? Because if it was configured for another locale you would
+have to configure that by picking same from Zombiekeys configuration.
+
+As regards preference for CTRL+SHIFT+[:] over [Ü] it is faster as lower on the
+keyboard but I understand if you prefer the other for easier memorising. On top
+CTRL without SHIFT is also preferred as it is easier to type.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c64" href="show_bug.cgi@id=26263.html#c64">
+            #64</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-08-27 02:16:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="zombie_keys_multilanguage_keyboard-2.18pre25.xpi" name="attach_8228" title="2.18 prerelease 25">Created an attachment (id=8228)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8228&amp;action=edit" title="2.18 prerelease 25">[details]</a></span>
+2.18 prerelease 25
+
+Using CTRL+SHIFT+Ü (charcode=220) for Umlauts.
+
+Please verify that it is consistent across Windows and Linux. Once you okay it
+I will update the mapping image accordingly.
+
+Note: If you change locale in composer the change is not immediate (it
+propagates only to the main window) so you need to re-open composer. (separate
+bug)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c65" href="show_bug.cgi@id=26263.html#c65">
+            #65</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-27 02:59:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c63">comment #63</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26263.html#c62">comment #62</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=26263.html#c61">comment #61</a>)
+&gt; &gt; Tests with Zombiekeys 2.18pre24:
+&gt; &gt; 
+&gt; &gt; ---
+&gt; &gt; 
+&gt; &gt; A. On Linux Mint does not work as CTRL+ü defaults to English keyboard layout.
+&gt; &gt;
+&gt; 
+&gt; 
+&gt; &gt; D. Would it be best to keep as CTRL+SHIFT+Ü as:
+&gt; &gt; 1. Linux has overwritten Ctrl+Ü to the English keyboard layout;
+&gt; &gt; 2. Enable the same Zombiekeys for Linux and Windows; and
+&gt; &gt; 3. Consistent with other CTRL+SHIFT along the top row of the keyboard.
+&gt; 
+&gt; General question first: Is Linux configured for Hungarian layout and is this
+&gt; the only exception? Because if it was configured for another locale you would
+&gt; have to configure that by picking same from Zombiekeys configuration.</span >
+
+Yes, Linux was configured for Hungarian layout.
+
+Some exceptions using the Hungarian keyboard layout with Linux Mint 18 are:
+CTRL+ö produces 0
+CTRL+ü produces -
+CTRL+ó produces =
+CTRL+é produces ;
+CTRL+á produces '
+
+
+<span class="quote">&gt; As regards preference for CTRL+SHIFT+[:] over [Ü] it is faster as lower on the
+&gt; keyboard but I understand if you prefer the other for easier memorising. On top
+&gt; CTRL without SHIFT is also preferred as it is easier to type.</span >
+
+Yes, I agree with you that CTRL without SHIFT is preferred as it is easier to
+type.
+
+However, if using your Zombiekeys on different computers which have Windows and
+Linux having the same one combination that works would be easier to remember.
+
+
+Perhaps you are already aware of this suggestion for image:
+Change: CTRL+: = äëïöüÿ
+to:     CTRL+SHIFT+Ü = äëïöüÿ
+
+
+Thank you
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c66" href="show_bug.cgi@id=26263.html#c66">
+            #66</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-27 03:30:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c64">comment #64</a>)
+1. 2.18pre25, Linux, Caps Lock off:
+
+a. CTRL+SHIFT+3 increases the zoom (I think, if not increases the font size).
+
+b. CTRL+SHIFT+7 increases the zoom (I think, if not increases the font size).
+
+c. CTRL+Ö produces an 0
+   Not a dead key
+   No output on Error Console
+
+d. CTRL+SHIFT+Ö produces an )
+   Not a dead key either
+   No output on Error Console
+
+e. CTRL+Á produces '
+   Not a dead key
+   No output on Error Console
+
+f. CTRL+SHIFT+Á produces &quot;
+   Not a dead key
+   No output on Error Console
+
+---
+
+2. 2.18pre25, Linux, Caps Lock ON:
+
+A. CTRL+A no longer selects all (not sure if it is a bug in Zombiekeys).
+   Checked and it works correctly in LibreOffice Writer.
+[ZombieKeys] 20:22:41.386  [8169 ms]     
+press: keyCode=0 charCode=65 shiftKey=false altKey=false ctrlKey=true   cC [A]
+ ----------
+[ZombieKeys] 20:22:41.497  [111 ms]      
+up: keyCode=65 charCode=0 shiftKey=false altKey=false ctrlKey=true   kC [A]
+
+B. CTRL+SHIFT+Ö produces an )
+   Not a dead key either
+   No output on Error Console
+
+C. CTRL+SHIFT+Ü 
+[ZombieKeys] 20:24:48.194  [6470 ms]     
+press: keyCode=0 charCode=252 shiftKey=true altKey=false ctrlKey=true   cC [ü]
+
+D. CTRL+Á produces '
+   Not a dead key
+   No output on Error Console
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c67" href="show_bug.cgi@id=26263.html#c67">
+            #67</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-27 15:26:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c7">comment #7</a>)
+<span class="quote">&gt; &gt; Perhaps is is preferable that the right AltGr is used as letters on the magyar
+&gt; &gt; (Hungarian) keyboard are on the lower right that are typed using AltGr. This
+&gt; &gt; would be easy to remember and reduces a possible future conflict as described
+&gt; &gt; below.
+&gt; 
+&gt; I am not sure if I can easily detect the difference between ALT and ALT Gr.
+&gt; that might be a change too fundamental and out of scope for this bug. If you
+&gt; have additional ideas that are not related to the Hungarian Layout (Remember
+&gt; many European keyboards have an ALtGr functionality) please raise separate
+&gt; bugs.</span >
+
+Done at <a href="show_bug.cgi@id=26278.html" title="NEW - AltGr (also Alt Graph, Alt Graphic, Alt Graphics, Alt Car, or Right Alt) modifier key">bug 26278</a>:
+<a href="show_bug.cgi@id=26278.html" title="NEW - AltGr (also Alt Graph, Alt Graphic, Alt Graphics, Alt Car, or Right Alt) modifier key">https://www.mozdev.org/bugs/show_bug.cgi?id=26278</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c68" href="show_bug.cgi@id=26263.html#c68">
+            #68</a> From 
+          <a href="mailto:ovari123&#64;zoho.com">Óvári</a>
+          2016-08-27 17:24:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Some further testing of the Hungarian locale keyboard with Linux
+
+Hungarian locale
+================
+
+Linux: default in Linux Mint 18 (works with Caps Lock ON or off)
+ZK: could be added by Zombiekeys
+Windows: add dead keys from Linux version for platform independence
+
+Linux: AltGr+SHIFT+1[~] = ãẽõñ
+
+Linux: AltGr+2[ˇ] = ǎčďěǧǐǰǒǍČĚǦǏǑ
+Linux: AltGr+SHIFT+á = ǎčďěǧȟǐǰǩľňǒřšťǔǚž
+
+Linux: AltGr+SHIFT+3[^] = âĉîîôû
+
+Linux: AltGr+4[˘] = ăĕĭŏŭ
+Linux: AltGr+SHIFT+ű = ăĕĭŏŭ
+ZK: AltGr+4 = hx
+
+Linux: AltGr+5[°] = åůẘẙ
+Linux: AltGr+SHIFT+ő = åůẘẙ
+
+Linux: AltGr+6[˛] = ąęįǫųĄĘĮǪŲ
+
+Linux: AltGr+SHIFT+7[`] = àèìòù
+
+Linux: AltGr+8[˙] = ȧḃċḋėḟġḣıȷŀṁṅȯṗṙṡṫẇẋẏż
+
+Linux: AltGr+9[´] = áćéǵíj́ḱĺḿńóṕŕśúǘẃýź
+
+Linux: AltGr+Ö[˝] = őű
+
+Linux: AltGr+Ü[¨] = äëḧïöẗüẅẍÿ
+
+Linux: AltGr+Ó[¸] = çḑģḩķļņŗşţ
+
+Linux: AltGr+SHIFT+Ú[¯] = āēīōūȳḡ
+
+Linux: AltGr+h = ħ
+Linux: AltGr+, = ;
+Linux: AltGr+. = &gt;
+Linux: AltGr+- = *
+Linux: AltGr+é = $
+Linux: AltGr+á = ß
+Linux: AltGr+ő = ÷
+Linux: AltGr+ú = ×
+Linux: AltGr+ű = ¤
+Linux: AltGr+ó AltGr+ó = ¸
+Linux: AltGr+ó Spacebar = ¸
+Linux: AltGr+2 AltGr+2 = ˇ
+Linux: AltGr+2 Spacebar = ˇ
+Linux: AltGr+4 AltGr+4 = ˘
+Linux: AltGr+4 Spacebar = ˘
+Linux: AltGr+5 AltGr+5 = °
+Linux: AltGr+5 Spacebar = °
+Linux: AltGr+6 AltGr+6 = ˛
+Linux: AltGr+6 Spacebar = ˛
+Linux: AltGr+7 = `
+Linux: AltGr+8 AltGr+8 = ˙
+Linux: AltGr+9 AltGr+9 = ´
+Linux: AltGr+ö AltGr+ö = ˝
+Linux: AltGr+ü AltGr+ü = ¨
+Linux: AltGr+ó AltGr+ó = ¸
+Linux: AltGr+ó Spacebar = ¸
+Linux: AltGr+SHIFT+ú AltGr+SHIFT+ú = ¯
+Linux: AltGr+SHIFT+ú Spacebar = ¯
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c69" href="show_bug.cgi@id=26263.html#c69">
+            #69</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-11-29 02:31:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26263.html#c68">comment #68</a>)
+<span class="quote">&gt; Some further testing of the Hungarian locale keyboard with Linux
+&gt; 
+&gt; Hungarian locale
+&gt; ================
+&gt; 
+&gt; Linux: default in Linux Mint 18 (works with Caps Lock ON or off)
+&gt; ZK: could be added by Zombiekeys
+&gt; Windows: add dead keys from Linux version for platform independence
+&gt; </span >
+
+Thanks for the list, but like I said before, detecting the ALTGr Key is not a
+standard of the Javascript keydown / keyup events and as such is out of scope
+for Zombiekeys without a fundamental and difficult rewrite. It _can_ detect the
+state of ALT, CTRL and SHIFT keys.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26263&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

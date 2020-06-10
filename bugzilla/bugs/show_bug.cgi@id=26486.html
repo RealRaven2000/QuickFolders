@@ -1,0 +1,1628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26486 &ndash; quickfilters-3.4.2 can't create Filter in Thunderbird versions &lt; 47</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26486&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26486">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26486">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26486">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26486">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26486</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">quickfilters-3.4.2 can't create Filter in Thunderbird versions &lt; 47</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-05-20 12:09:05</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26486&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-05-20 12:09:05">
+  <input type="hidden" name="longdesclength" value="16">
+  <input type="hidden" name="id" value="26486">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="quickfilters-3.4.2 can't create Filter in Thunderbird versions &lt; 47">
+        <span title="quickfilters-3.4.2 can't create Filter in Thunderbird versions &lt; 47">quickfilters-3.4.2 can't create Filter in Thunderbird ver...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26486.html">26486</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26486&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26486">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:recyclemail&#64;free.fr">Bob Gluck &lt;recyclemail&#64;free.fr&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Troubleshooting&#32;Information.mht"
+               title="View the content of the attachment">
+          <b>Thunderbird Troubleshooting Information</b></a>
+
+          <span class="bz_attach_extra_info">
+              (100.94 KB,
+                message/rfc822)
+
+            <br>
+            <a href="show_bug.cgi@id=26486.html#attach_8389"
+               title="Go to the comment associated with the attachment">2018-02-21 14:39</a>,
+
+            <a href="mailto:recyclemail&#64;free.fr"
+               title="Write an email to the creator of the attachment">Bob Gluck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8389&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="quickFilters-tb-pb-sm-3.5pre76.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.5 prerelease 76</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (384.23 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26486.html#attach_8390"
+               title="Go to the comment associated with the attachment">2018-02-22 11:15</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8390&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-3.5pre84.xpi"
+               title="View the content of the attachment">
+          <b>3.5 prerelease 84</b></a>
+
+          <span class="bz_attach_extra_info">
+              (384.50 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26486.html#attach_8391"
+               title="Go to the comment associated with the attachment">2018-02-23 11:19</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8391&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="Screenshot.jpg"
+               title="View the content of the attachment">
+          <b>Summary Screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (227.38 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=26486.html#attach_8392"
+               title="Go to the comment associated with the attachment">2018-02-24 08:14</a>,
+
+            <a href="mailto:recyclemail&#64;free.fr"
+               title="Write an email to the creator of the attachment">Bob Gluck
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8392&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26486.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26486&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26486&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26486">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26486">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26486">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26486">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26486.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-02-21 14:39
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Troubleshooting&#32;Information.mht" name="attach_8389" title="Thunderbird Troubleshooting Information">Created an attachment (id=8389)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8389&amp;action=edit" title="Thunderbird Troubleshooting Information">[details]</a></span>
+Thunderbird Troubleshooting Information
+
+Using quickfilters-3.4.2-sm+tb in Thunderbird 38.8.0, Windows 8.1 64bits
+
+I have 4 accounts in Thunderbird (POP accounts on SSL/TLS port 995)
+
+(note :
+in Account Setting&gt;Server Settings&gt;Message Storage&gt;Advanced
+inbox is set to 'Inbox for different account:Local Folders', for all my
+accounts,
+so only local folders are displayed on the left side)
+
+If I right click a received message in any local folder, including the local
+inbox folder :
+&quot;QuickFilters : create filter from message...&quot;
+I get an error : &quot;Tried to create a filter 7 times, but didn't work out [and
+more text]&quot;
+
+Drag and drop gives the same error message.
+
+Attachment : Thunderbird Troubleshooting Information
+
+Also my extensions :
+
+Account Colors  9.1     true    accountcolors@DW-dev
+Address Close Button    1.3     true    <a href="mailto:address_close_button@emak.org">address_close_button@emak.org</a>
+Allow HTML Temp 3.7.4   true    {532269cf-a10e-4396-8613-b5d9a9a516d4}
+Classic Toolbar Buttons 1.4.8   true    CSTBB@NArisT2_Noia4dev
+Color Folders   1.1     true    <a href="mailto:colorfolders@fisheater.com">colorfolders@fisheater.com</a>
+ColumnsWizard   6.0.4   true    <a href="mailto:columnswizard@micz.it">columnswizard@micz.it</a>
+CompactHeader   2.1.0   true    {58D4392A-842E-11DE-B51A-C7B855D89593}
+ConfirmBeforeDelete     0.3.5   true    {51fff70c-0f33-4769-b411-67bd86836012}
+ConfirmFolderMove       1.1.2   true    {c267db80-8a57-11da-a8d5-000a95be0946}
+Custom Address Sidebar  1.1.1-let-fixed true    <a href="mailto:asbcustom@gmail.com">asbcustom@gmail.com</a>
+DOM Inspector   2.0.15.1-signed true    <a href="mailto:inspector@mozilla.org">inspector@mozilla.org</a>
+Get All Mail Button Thunderbird 0.1     true   
+{0D4D76B0-657A-41b0-B3ED-60C638F4D97D}
+Identity Chooser        1.9.3   true    <a href="mailto:identitychooser@janek.org">identitychooser@janek.org</a>
+Image Zoom      0.6.3.1-signed  true    {1A2D0EC4-75F5-4c91-89C4-3656F6E44B68}
+ImportExportTools       3.2.4.1 true    {3ed8cc52-86fc-4613-9026-c1ef969da4c3}
+IsAdmin 2.5.1-signed    true    <a href="mailto:isadmin@vdtsoftware.ffext">isadmin@vdtsoftware.ffext</a>
+Manually sort folders   1.1     true    <a href="mailto:tbsortfolders@xulforum.org">tbsortfolders@xulforum.org</a>
+NewScrollbars (aka NoiaScrollbars)      1.2.6   true   
+NoiaScrollbars@ArisT2_Noia4dev
+No Message Pane Sorting by Mouse        1.2     true   
+<a href="mailto:nomessagepanesort@janek.org">nomessagepanesort@janek.org</a>
+Phoenity Buttons        0.57    true    buttons@dillinger
+quickFilters    3.4.2   true    <a href="mailto:quickFilters@axelg.com">quickFilters@axelg.com</a>
+Restartless Restart     9.1-signed      true   
+<a href="mailto:restartless.restart@erikvold.com">restartless.restart@erikvold.com</a>
+Show Address Only       0.1.9   true    <a href="mailto:showaddressonly@rip238.selfip.com">showaddressonly@rip238.selfip.com</a>
+Show InOut      1.1.4   true    <a href="mailto:showInOut@ggbs.de">showInOut@ggbs.de</a>
+Signature Switch        1.6.13  true    {2ab1b709-ba03-4361-abf9-c50b964ff75d}
+Slim Add-ons Manager    14.1    true    <a href="mailto:slimaddonmanager@opendfki.de">slimaddonmanager@opendfki.de</a>
+Thin Tabs       1.5.3   true    <a href="mailto:thintabs@bonsaimind.org">thintabs@bonsaimind.org</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26486.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-22 11:11:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c0">comment #0</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Troubleshooting&#32;Information.mht" name="attach_8389" title="Thunderbird Troubleshooting Information">attachment (id=8389)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8389&amp;action=edit" title="Thunderbird Troubleshooting Information">[details]</a></span> [details]
+&gt; Thunderbird Troubleshooting Information
+&gt; 
+&gt; Using quickfilters-3.4.2-sm+tb in Thunderbird 38.8.0, Windows 8.1 64bits
+&gt; 
+&gt; I have 4 accounts in Thunderbird (POP accounts on SSL/TLS port 995)
+&gt; 
+&gt; (note :
+&gt; in Account Setting&gt;Server Settings&gt;Message Storage&gt;Advanced
+&gt; inbox is set to 'Inbox for different account:Local Folders', for all my
+&gt; accounts,
+&gt; so only local folders are displayed on the left side)
+&gt; 
+&gt; If I right click a received message in any local folder, including the local
+&gt; inbox folder :
+&gt; &quot;QuickFilters : create filter from message...&quot;
+&gt; I get an error : &quot;Tried to create a filter 7 times, but didn't work out [and
+&gt; more text]&quot;
+&gt; 
+&gt; Drag and drop gives the same error message.
+&gt; 
+&gt; Attachment : Thunderbird Troubleshooting Information
+&gt; 
+&gt; Also my extensions :
+&gt; 
+&gt; Account Colors  9.1     true    accountcolors@DW-dev
+&gt; Address Close Button    1.3     true    <a href="mailto:address_close_button@emak.org">address_close_button@emak.org</a>
+&gt; Allow HTML Temp 3.7.4   true    {532269cf-a10e-4396-8613-b5d9a9a516d4}
+&gt; Classic Toolbar Buttons 1.4.8   true    CSTBB@NArisT2_Noia4dev
+&gt; Color Folders   1.1     true    <a href="mailto:colorfolders@fisheater.com">colorfolders@fisheater.com</a>
+&gt; ColumnsWizard   6.0.4   true    <a href="mailto:columnswizard@micz.it">columnswizard@micz.it</a>
+&gt; CompactHeader   2.1.0   true    {58D4392A-842E-11DE-B51A-C7B855D89593}
+&gt; ConfirmBeforeDelete     0.3.5   true    {51fff70c-0f33-4769-b411-67bd86836012}
+&gt; ConfirmFolderMove       1.1.2   true    {c267db80-8a57-11da-a8d5-000a95be0946}
+&gt; Custom Address Sidebar  1.1.1-let-fixed true    <a href="mailto:asbcustom@gmail.com">asbcustom@gmail.com</a>
+&gt; DOM Inspector   2.0.15.1-signed true    <a href="mailto:inspector@mozilla.org">inspector@mozilla.org</a>
+&gt; Get All Mail Button Thunderbird 0.1     true   
+&gt; {0D4D76B0-657A-41b0-B3ED-60C638F4D97D}
+&gt; Identity Chooser        1.9.3   true    <a href="mailto:identitychooser@janek.org">identitychooser@janek.org</a>
+&gt; Image Zoom      0.6.3.1-signed  true    {1A2D0EC4-75F5-4c91-89C4-3656F6E44B68}
+&gt; ImportExportTools       3.2.4.1 true    {3ed8cc52-86fc-4613-9026-c1ef969da4c3}
+&gt; IsAdmin 2.5.1-signed    true    <a href="mailto:isadmin@vdtsoftware.ffext">isadmin@vdtsoftware.ffext</a>
+&gt; Manually sort folders   1.1     true    <a href="mailto:tbsortfolders@xulforum.org">tbsortfolders@xulforum.org</a>
+&gt; NewScrollbars (aka NoiaScrollbars)      1.2.6   true   
+&gt; NoiaScrollbars@ArisT2_Noia4dev
+&gt; No Message Pane Sorting by Mouse        1.2     true   
+&gt; <a href="mailto:nomessagepanesort@janek.org">nomessagepanesort@janek.org</a>
+&gt; Phoenity Buttons        0.57    true    buttons@dillinger
+&gt; quickFilters    3.4.2   true    <a href="mailto:quickFilters@axelg.com">quickFilters@axelg.com</a>
+&gt; Restartless Restart     9.1-signed      true   
+&gt; <a href="mailto:restartless.restart@erikvold.com">restartless.restart@erikvold.com</a>
+&gt; Show Address Only       0.1.9   true    <a href="mailto:showaddressonly@rip238.selfip.com">showaddressonly@rip238.selfip.com</a>
+&gt; Show InOut      1.1.4   true    <a href="mailto:showInOut@ggbs.de">showInOut@ggbs.de</a>
+&gt; Signature Switch        1.6.13  true    {2ab1b709-ba03-4361-abf9-c50b964ff75d}
+&gt; Slim Add-ons Manager    14.1    true    <a href="mailto:slimaddonmanager@opendfki.de">slimaddonmanager@opendfki.de</a>
+&gt; Thin Tabs       1.5.3   true    <a href="mailto:thintabs@bonsaimind.org">thintabs@bonsaimind.org</a>
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26486.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-22 11:15:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.5pre76.xpi" name="attach_8390" title="3.5 prerelease 76">Created an attachment (id=8390)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8390&amp;action=edit" title="3.5 prerelease 76">[details]</a></span>
+3.5 prerelease 76
+
+created a modifieed manifest files that uses the older codebase for selecting
+backwards compatible SHIM code for Platform versions older than 47:
+
+content shimQuickFilters chrome://quickfilters/content/shimEcmaOld/
+application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+content shimQuickFilters chrome://quickfilters/content/shimEcma/
+application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion&gt;=47
+
+kind of tricky to test but ultimately the problem wasn't using local folders
+but my use of Object.entries which only exists in Gecko 47 and later.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26486.html#c3">
+            #3</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-23 01:03:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.5pre76.xpi" name="attach_8390" title="3.5 prerelease 76">attachment (id=8390)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8390&amp;action=edit" title="3.5 prerelease 76">[details]</a></span> [details]
+&gt; 3.5 prerelease 76
+&gt; 
+&gt; created a modifieed manifest files that uses the older codebase for selecting
+&gt; backwards compatible SHIM code for Platform versions older than 47:
+&gt; 
+&gt; content shimQuickFilters chrome://quickfilters/content/shimEcmaOld/
+&gt; application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+&gt; content shimQuickFilters chrome://quickfilters/content/shimEcma/
+&gt; application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion&gt;=47
+&gt; 
+&gt; kind of tricky to test but ultimately the problem wasn't using local folders
+&gt; but my use of Object.entries which only exists in Gecko 47 and later.
+&gt; </span >
+
+With quickFilters-tb-pb-sm-3.5pre76.xpi :
+
+* drag and drop now correctly displays the dialog window 'Create Filter', where
+a predefined or a custom filter can be selected.
+(and also the merging window if needed)
+
+Is it normal that without Pro version, 'Custom Variables' %from%, %from(mail)%,
+%to%, %to(mail)% etc...
+do not pre-fill the filter rules with the appropriate datas when selecting a
+custom template filter ?
+(the filtering rule appears but the third field, on the right, is empty)
+
+* right-click on a message 'QuickFilters : create filter from message...' still
+does nothing (not even an error message)
+
+Error console : error after triggering this context menu
+<span class="quote">&gt;Error: ReferenceError: e is not defined
+&gt;Source File: chrome://quickfilters/content/qFilters-worker.js
+&gt;Line: 1385</span >
+failing line 1385 in qFilters-worker.js :
+util.logException(&quot;createFilterAsync_New() failed: &quot;, e);
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26486.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-23 01:59:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c3">comment #3</a>)
+<span class="quote">&gt; 
+&gt; With quickFilters-tb-pb-sm-3.5pre76.xpi :
+&gt; 
+&gt; * drag and drop now correctly displays the dialog window 'Create Filter', where
+&gt; a predefined or a custom filter can be selected.
+&gt; (and also the merging window if needed)</span >
+
+\o/
+
+<span class="quote">&gt; 
+&gt; Is it normal that without Pro version, 'Custom Variables' %from%, %from(mail)%,
+&gt; %to%, %to(mail)% etc...
+&gt; do not pre-fill the filter rules with the appropriate datas when selecting a
+&gt; custom template filter ?
+&gt; (the filtering rule appears but the third field, on the right, is empty)</span >
+
+no - if you have created a custom filter it should fill (provided you work from
+an email in the list and not email file; the email file has the limitations
+mentioned in <a href="show_bug.cgi@id=26486.html#c2">comment #2</a> and isn't well tested at the moment.
+
+<span class="quote">&gt; 
+&gt; * right-click on a message 'QuickFilters : create filter from message...' still
+&gt; does nothing (not even an error message)</span >
+
+ok, I will investigate this. Haven't worked with Thunderbird 38 for maybe 2
+years... there are so many test versions of Thunderdbird / SeaMonkey / Postbox
+for testing my 6 mail-compatible Add-ons I could turn this into an (unpaid)
+full time job.
+
+<span class="quote">&gt; 
+&gt; Error console : error after triggering this context menu
+&gt; &gt;Error: ReferenceError: e is not defined
+&gt; &gt;Source File: chrome://quickfilters/content/qFilters-worker.js
+&gt; &gt;Line: 1385
+&gt; failing line 1385 in qFilters-worker.js :
+&gt; util.logException(&quot;createFilterAsync_New() failed: &quot;, e);</span >
+&gt;
+
+that's a typo should have been
+  catch(ex) {
+     util.logException(&quot;createFilterAsync_New() failed: &quot;, ex);
+  }
+there is an underlying exception which would have logged correctly. I will try
+to reproduce it and upload a fix.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26486.html#c5">
+            #5</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-23 09:51:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c4">comment #4</a>)
+I don't see what is an 'email file'...
+
+I'm trying to right-click a message (which is in a local folder) &gt;
+'QuickFilters : create filter from message...',
+for a message in the message list (to the right of the folder tree, on the main
+Thunderbird Tab)
+
+After applying your fix on line [util.logException(&quot;createFilterAsync_New()
+failed: &quot;, ex);] in qFilters-worker.js
+error console now logs :
+<span class="quote">&gt;Warning: createFilterAsync_New() failed: 
+&gt;undefined</span >
+At least the error logging works.
+
+My two following options were set to False :
+extensions.quickfilters.debug.nostalgy
+extensions.quickfilters.nostalgySupport
+(I looked at function 'createFilterAsync_New' in 'qFilters-worker.js' which
+uses 'nostalgySupport' option...)
+However, setting them to True does NOT change the result, or the logging.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26486.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-23 11:05:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26486.html#c4">comment #4</a>)
+&gt; I don't see what is an 'email file'...</span >
+
+neveer mind - I was referring to a different bug I was working on yesterday.
+(so a brain fart from me)
+
+your bug is quite more involved because of the way you have set up Local Inbox
+being the root folder for the other (POP mail) accounts. This actually leads to
+propblems finding filters that are defined on the POP mail account. Thereefore
+it took me the whole day to fix the filter search routine after I had fixed the
+issue you described in <a href="show_bug.cgi@id=26486.html#c4">comment #4</a>.
+
+I will upload a fixed version in the next attachment.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26486.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-23 11:19:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-3.5pre84.xpi" name="attach_8391" title="3.5 prerelease 84">Created an attachment (id=8391)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8391&amp;action=edit" title="3.5 prerelease 84">[details]</a></span>
+3.5 prerelease 84
+
+I found the problem earlier today - the account iteration didn't work because I
+assumed the old code for Thunderbird needn't be there in the Shim (Mozilla
+dropped support of &quot;for..in&quot; in favor of &quot;for..of&quot; which makes older Gecko
+versions (Postbox) fail a syntax test even if they do not execute these lines.
+
+I found another problem though - when I determine the &quot;source folder&quot; which
+also puts the Filter in either of the Servers (specific mailbox, Local
+Folders), with this version if grabs the folder from the currently stored email
+(which is always the Local Folders Inbox). I believe it should use the correct
+originating Inbox (even though this is not visible in the folder tree)
+instead...
+
+I just noticed it when I tested the merge feature after installing the fixed
+version and it created a new filter in Local Folders (after I already had one
+in the real Inbox account) - you can see the accounts in the Message Filters
+list dialog. Local Folders might be neater if you want all your filters in the
+same place, even though the &quot;original inbox&quot; may be more correct. Normally the
+original accountKey is stored in the message header.
+
+The other question is whether the filters will actually *work* on incoming
+email if they are stored in Local Folders. If they do, they probably are
+executed *after* any filters in the original Inbox. 
+
+If you pull an email from Local Folder/Inbox to another folder with assistant
+active it should now be created in the Local Folder server, however if you pull
+it from the POP3mailbox Inbox (if this is visible to you) then it should
+probably create the filter in that server. At least that was the behavior I
+observed on my mailbox, but I am not sure whether I created that filter before
+changing the advanced settings to storee in the other INbox and the &quot;pop3 inbox
+/ pop3 node&quot; just vanished from the folder tree. So it may not bee an issue for
+you you might see all your filters under the &quot;Local Folder&quot; item in the filters
+list.
+
+The other thing which took me many hours to fix was the &quot;find filters for this
+folder&quot; functionality because it couldn't switch back to the correct account
+(the pop3 account) even though it showed up in the &quot;Filters for&quot; selection and
+had filters stored against it; it turned out I was using account.rootMsgFolder
+which always points to the Local Folders URI, thus I was never able to change
+to the pop3 server when I selected a search result. I solved it with the
+following snippet in the function selectFoundFilter(..) 
+[qFilters-list.js:1932]
+
+let item = el.selectedItem,
+    account = item.targetAccount,  
+    // change server to correct account (originating inbox)
+    aFolder = account ?
+      (MailUtils ? MailUtils.getFolderForURI(account.serverURI) :
+account.rootMsgFolder) 
+      : null;
+
+It works in thunderbird 38, obviously I still have to teset it in Postbox and
+modren Tb versions...
+
+The other thing is that I am using rootMsgFolder in quite a few places in code
+so I might have to do more sanity testing for your special case. Again nothing
+to worry if you store all your filters in the &quot;Local Folders&quot; account, but
+that's somehow untypical for the average Thunderbird user with multiple
+accounts.
+
+I still have to do some investigations on the custom filters, so let's leave
+the bug open until all issues are fixed.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26486.html#c8">
+            #8</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-23 14:15:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Using quickFilters-tb-pb-sm-3.5pre84.xpi
+
+You solved 80% of the issues, from the user point of view.
+
+Tested with &quot;Separated Message Storage&quot; and &quot;All Message Storage in Local
+Folders&quot;
+
+*Context menu and drag and drop dialogs work :
+I get the 'create filter(merge)' dialog, and the 'create filter(new filter)'
+dialog
+
+*From context menu :
+the %from%, %to%... variables are correctly filled
+the new filter is created in the original receiving account (which seems the
+best), not in the Local Folders
+
+*BUT from drag and drop, from some Local Folder to some Local Folder :
+the %from%, %to%... variables are NOT filled (something is still missing here)
+the new filter is created in the Local Folders (could be logic since I'm moving
+a mail from a Local Folder to a Local Folder)
+
+***
+
+Puting all message storage in Local Folders saves a lot of vertical space if
+you have many accounts.
+(It creates really unified Inbox/Draft/Sent/Trash/Outbox folders and removes
+useless Account lines in the tree)
+But indeed it's probably not a widely used trick.
+
+***
+
+Personal opinion :
+*it should be made impossible to edit the prefix 'quickFilterCustomTemplate:',
+otherwise the filter stops to act as a template.
+(I guess quickFilters also prevent prefixed templates to be applied as if they
+were real active filters,
+or should the 'enabled' checkbox remain always unchecked for the templates ? I
+did that just in case...)
+*there could be a toolbar button to toggle drag-drop catching, without having
+to open the 'Message Filters' dialog window.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26486.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-23 14:52:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c8">comment #8</a>)
+<span class="quote">&gt; Using quickFilters-tb-pb-sm-3.5pre84.xpi
+&gt; 
+&gt; You solved 80% of the issues, from the user point of view.
+&gt; 
+&gt; Tested with &quot;Separated Message Storage&quot; and &quot;All Message Storage in Local
+&gt; Folders&quot;
+&gt; 
+&gt; *Context menu and drag and drop dialogs work :
+&gt; I get the 'create filter(merge)' dialog, and the 'create filter(new filter)'
+&gt; dialog
+&gt; 
+&gt; *From context menu :
+&gt; the %from%, %to%... variables are correctly filled
+&gt; the new filter is created in the original receiving account (which seems the
+&gt; best), not in the Local Folders
+&gt; 
+&gt; *BUT from drag and drop, from some Local Folder to some Local Folder :
+&gt; the %from%, %to%... variables are NOT filled (something is still missing here)
+&gt; the new filter is created in the Local Folders (could be logic since I'm moving
+&gt; a mail from a Local Folder to a Local Folder)
+&gt; 
+&gt; ***</span >
+
+ok, I gotta obviously fix that one. Thanks for following up.
+
+
+
+<span class="quote">&gt; Puting all message storage in Local Folders saves a lot of vertical space if
+&gt; you have many accounts.</span >
+
+(I guess you are talking about the folder tree. I don't use it anymore as
+scrolling through it is a waste of time. I suggest using my Add-on QuickFolders
+and the quickJump/quickMove functionality instead - then there are no
+limitation about the number of folders and we can build a meaningful hierarchy,
+such as Customers/A-Z etc. I have made it my habit to never move mail to the
+folder tree anymore and also to not use it for folder navigation, which saves a
+lot of time. The hierarchy of storage should not be hindered by the need for
+navigation, a single vertical list is just not a good model for this.)
+
+
+<span class="quote">&gt; (It creates really unified Inbox/Draft/Sent/Trash/Outbox folders and removes
+&gt; useless Account lines in the tree)
+&gt; But indeed it's probably not a widely used trick.
+&gt; 
+&gt; ***
+&gt; 
+&gt; Personal opinion :
+&gt; *it should be made impossible to edit the prefix 'quickFilterCustomTemplate:',
+&gt; otherwise the filter stops to act as a template.</span >
+
+I agree - but it is difficult. As I haven't implemented my own automatic
+storage system for filters I had to piggyback on what was available within the
+current (C++ determined = hard coded via compilation) model of filters; this is
+also a problem for my backup / restore functionality as I currently cannot
+implement timestamps. As regards hiding the custom templates in &quot;Local Folders&quot;
+I didn't actually know about the way you were using advanced account settings
+so I thought no &quot;real&quot; filters would be stored there in any &quot;reasonable&quot; setup.
+personally I am using another (dead) pop account for local storage (instead of
+Local Folders which I found counter intuitive for a long time. As I have local
+folders for all my mail accounts anyway, which are mirrored on IMAP or local
+only for POP3), but that's just a quirk of my particular mail setup.
+
+<span class="quote">&gt; (I guess quickFilters also prevent prefixed templates to be applied as if they
+&gt; were real active filters,
+&gt; or should the 'enabled' checkbox remain always unchecked for the templates ? </span >
+It should stay unchecked - I haven't found a way of making this read-only but I
+think it is acceptable for an advanced user.
+
+<span class="quote">&gt; *there could be a toolbar button to toggle drag-drop catching, without having
+&gt; to open the 'Message Filters' dialog window.</span >
+There is. It is called &quot;Activate the Filter assistant&quot;. Unless I misunderstood
+you.
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26486.html#c10">
+            #10</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-24 08:14:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Screenshot.jpg" name="attach_8392" title="Summary Screenshot">Created an attachment (id=8392)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8392&amp;action=edit" title="Summary Screenshot">[details]</a></span>
+Summary Screenshot
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26486.html#c11">
+            #11</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-24 08:16:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;&gt; *there could be a toolbar button to toggle drag-drop catching, without having to open the 'Message Filters' dialog window.
+&gt;There is. It is called &quot;Activate the Filter assistant&quot;. Unless I misunderstood you.</span >
+OK solved : the button was present in the 'Mail Toolbar' (I hide this toolbar),
+but I was looking for the button in the 'Customize Toolbar' dialog...
+Also the button works as intended.
+
+<span class="quote">&gt;&gt; *it should be made impossible to edit the prefix 'quickFilterCustomTemplate:', otherwise the filter stops to act as a template.
+&gt;I agree - but it is difficult</span >
+
+You can't change the name of the CustomTemplate, *just after it was edited*, to
+ensure that 'quickFilterCustomTemplate:' is still at the beginning of its name
+?
+It would be even better to remove the prefix just before the CustomTemplate is
+edited, and re-add the prefix just after.
+Since you modify the 'Edit Filter' dialog, I thought it would be easy to take
+control of the input/output of '#FilterEditor #filterName .textbox-input-box'
+But I don't know much about programming Mozilla addons.
+
+<span class="quote">&gt;I thought no &quot;real&quot; filters would be stored [in &quot;Local Folders&quot;] in any &quot;reasonable&quot; setup</span >
+With all my Addons, Userchrome, UserContent customizations, and other tweaks,
+my setup is certainly not reasonable,
+that's why I'm cautions while reporting a problem from an AddOn because it can
+be caused by my own setup.
+
+QuickFolders seems a much bigger AddOn than quickFilters, however my folder
+tree is not so big/complex that I would need it I think.
+I updated my review for quickFilters at
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfilters/reviews/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfilters/reviews/</a>
+
+I guess you will mark the BUG as fixed when you are satisfied with the fixes.
+(or will I have to do it myself ?)
+
+Attachment : a screenshot as a summary.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26486.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-24 11:55:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c11">comment #11</a>)
+<span class="quote">&gt; &gt;&gt; *there could be a toolbar button to toggle drag-drop catching, without having to open the 'Message Filters' dialog window.
+&gt; &gt;There is. It is called &quot;Activate the Filter assistant&quot;. Unless I misunderstood you.
+&gt; OK solved : the button was present in the 'Mail Toolbar' (I hide this toolbar),
+&gt; but I was looking for the button in the 'Customize Toolbar' dialog...
+&gt; Also the button works as intended.</span >
+
+Yes: I add it to that toolbar automatically on installation. So this kind of
+backfired for your case. (Maybe it is possiblee to check whether that toolbar
+is visible and omit it in that case)
+
+<span class="quote">&gt; 
+&gt; &gt;&gt; *it should be made impossible to edit the prefix 'quickFilterCustomTemplate:', otherwise the filter stops to act as a template.
+&gt; &gt;I agree - but it is difficult
+&gt; 
+&gt; You can't change the name of the CustomTemplate, *just after it was edited*, to
+&gt; ensure that 'quickFilterCustomTemplate:' is still at the beginning of its name
+&gt; ?</span >
+
+yes it would be possible (with some pain) I was thinking about that. Of course
+hiding it on the edit dialog (like you suggested in the screenshot) would be
+the best way.
+
+<span class="quote">&gt; It would be even better to remove the prefix just before the CustomTemplate is
+&gt; edited, and re-add the prefix just after.
+&gt; Since you modify the 'Edit Filter' dialog, I thought it would be easy to take
+&gt; control of the input/output of '#FilterEditor #filterName .textbox-input-box'</span >
+
+One of the problems is that I cannot fully control when the filters are saved
+(I have seen the &quot;Cancel&quot; button to be completely ignored so I would need to do
+intensive testing in order to avoid the string getting lost in some exceptional
+case. The safest way would be a separate edit box that and hide the original
+one and update it automatically from the active one.
+
+<span class="quote">&gt; But I don't know much about programming Mozilla addons.</span >
+
+It's not pretty :) There are quite a few changes to the source code to remain
+compatible with versions 57,58,59, so I have to keep maintaining the code so
+the Add-ons keep working in newer versions. See also [<span class="bz_closed"><a href="show_bug.cgi@id=26488.html" title="RESOLVED FIXED - ESR 2018 readiness - Make quickFilters compatible tB 60">Bug 26488</a></span>] and [<span class="bz_closed"><a href="show_bug.cgi@id=26441.html" title="RESOLVED FIXED - Thunderbird 57 hangs on start with quickFilters enabled">Bug
+26441</a></span>]
+
+<span class="quote">&gt; 
+&gt; &gt;I thought no &quot;real&quot; filters would be stored [in &quot;Local Folders&quot;] in any &quot;reasonable&quot; setup
+&gt; With all my Addons, Userchrome, UserContent customizations, and other tweaks,
+&gt; my setup is certainly not reasonable,
+&gt; that's why I'm cautions while reporting a problem from an AddOn because it can
+&gt; be caused by my own setup.
+&gt; 
+&gt; QuickFolders seems a much bigger AddOn than quickFilters, however my folder
+&gt; tree is not so big/complex that I would need it I think.
+&gt; I updated my review for quickFilters at
+&gt; <a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfilters/reviews/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfilters/reviews/</a>
+&gt; 
+&gt; I guess you will mark the BUG as fixed when you are satisfied with the fixes.
+&gt; (or will I have to do it myself ?)</span >
+
+I mark as fixed once I release the new version to the public (soon). that way I
+can keep it in the version history as &quot;fixed&quot; without losing sleep over it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26486.html#c13">
+            #13</a> From 
+          <a href="mailto:recyclemail&#64;free.fr">Bob Gluck</a>
+          2018-02-25 08:13:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;I have seen the &quot;Cancel&quot; button to be completely ignored</span >
+Indeed, if I right-click a message 'create filter from message',
+then (in the first dialog) merge with a filter, then (in the second dialog)
+edit the filter,
+then in 'filter rules' (where a new rule has been added as expected, according
+to the chosen template) choose to 'Cancel',
+the filter is however modified with the new rule being added, despite my
+'Cancel'.
+
+<span class="quote">&gt;The safest way would be a separate edit box that and hide the original one and update it automatically from the active one.</span >
+Yes, I suppose a custom edit box for the filter name would give you complete
+control on its input/output content.
+I hope you would not have to recreate the whole 'Filter Rules' window, but only
+the edit name field within it.
+
+<span class="quote">&gt;Mozilla dropped support of &quot;for..in&quot; in favor of &quot;for..of&quot;
+&gt;It's not pretty :) There are quite a few changes to the source code to remain compatible</span >
+I would not like a script engine to change this kind of thing (language
+keywords or basic syntax)
+I only do amateur programming in VB, VBS, AutoIt, and I would not be happy to
+have to update all my loops some day.
+
+Note :
+your 'Create Filter' dialog window (the second one) auto-resize
+un-aesthetically when selecting different templates.
+Probably caused by the #templateDescription field auto-resizing with its
+content.
+It's unusual to have a top-level window auto-resizing while you are working
+inside it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26486.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-02-25 10:47:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26486.html#c13">comment #13</a>)
+<span class="quote">&gt; &gt;I have seen the &quot;Cancel&quot; button to be completely ignored
+&gt; Indeed, if I right-click a message 'create filter from message',
+&gt; then (in the first dialog) merge with a filter, then (in the second dialog)
+&gt; edit the filter,
+&gt; then in 'filter rules' (where a new rule has been added as expected, according
+&gt; to the chosen template) choose to 'Cancel',
+&gt; the filter is however modified with the new rule being added, despite my
+&gt; 'Cancel'.</span >
+Yes not quite sure but I believe it is a bug in the window by Thunderbird. They
+probably didn't test it much in windows. Mac / Linux di not have ok buttons,
+all changes are immediate.
+
+<span class="quote">&gt; 
+&gt; &gt;The safest way would be a separate edit box that and hide the original one and update it automatically from the active one.
+&gt; Yes, I suppose a custom edit box for the filter name would give you complete
+&gt; control on its input/output content.
+&gt; I hope you would not have to recreate the whole 'Filter Rules' window, but only
+&gt; the edit name field within it.</span >
+
+Definitely; I won't waste time re-inventing the wheel, that would take way too
+long. 
+
+<span class="quote">&gt; 
+&gt; &gt;Mozilla dropped support of &quot;for..in&quot; in favor of &quot;for..of&quot;
+&gt; &gt;It's not pretty :) There are quite a few changes to the source code to remain compatible
+&gt; I would not like a script engine to change this kind of thing (language
+&gt; keywords or basic syntax)
+&gt; I only do amateur programming in VB, VBS, AutoIt, and I would not be happy to
+&gt; have to update all my loops some day.</span >
+
+Well, the underlying language itself (ECMAscript 1.7) has been updated. Also
+there are  things like multiprocess browsing and tons of streamlining that
+makes it necessary to write a lot of &quot;shim&quot; code in order to satisfy all hosts
+/ language flavors.
+
+
+<span class="quote">&gt; 
+&gt; Note :
+&gt; your 'Create Filter' dialog window (the second one) auto-resize
+&gt; un-aesthetically when selecting different templates.
+&gt; Probably caused by the #templateDescription field auto-resizing with its
+&gt; content.
+&gt; It's unusual to have a top-level window auto-resizing while you are working
+&gt; inside it.</span >
+Yes but still better than having scroll bars. It's pureley cosmetic so it
+dopesn't bother me too much right now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26486.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-05-20 12:09:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >fixed in Release 3.5 - 03/05/2018
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26486&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

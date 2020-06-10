@@ -1,0 +1,2329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25871 &ndash; Insert html or text from a file</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25871&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25871">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25871">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25871">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25871">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25871</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Insert html or text from a file</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-07-09 04:43:35</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25871&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-07-09 04:43:35">
+  <input type="hidden" name="longdesclength" value="43">
+  <input type="hidden" name="id" value="25871">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Insert html or text from a file">Insert html or text from a file
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25871.html">25871</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="mail">mail
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25871&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25871">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:joaosilva&#64;ambitermo.com">João &lt;joaosilva&#64;ambitermo.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="SmartTemplate4&#32;Signature&#32;Definitions.html"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Signature example</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.26 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_7967"
+               title="Go to the comment associated with the attachment">2014-12-04 01:57</a>,
+
+            <a href="mailto:joaosilva&#64;ambitermo.com"
+               title="Write an email to the creator of the attachment">João
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7967&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="SmartTemplate4&#32;Signature&#32;Definitions.html.1.html"
+               title="View the content of the attachment">
+          <b>Signature example</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.38 KB,
+                text/html)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_7968"
+               title="Go to the comment associated with the attachment">2014-12-04 06:48</a>,
+
+            <a href="mailto:joaosilva&#64;ambitermo.com"
+               title="Write an email to the creator of the attachment">João
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7968&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="amb_logo.png"
+               title="View the content of the attachment">
+          <b>amb_logo</b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.63 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_7969"
+               title="Go to the comment associated with the attachment">2014-12-04 06:48</a>,
+
+            <a href="mailto:joaosilva&#64;ambitermo.com"
+               title="Write an email to the creator of the attachment">João
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7969&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="ambiente.png"
+               title="View the content of the attachment">
+          <b>ambiente</b></a>
+
+          <span class="bz_attach_extra_info">
+              (21.72 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_7970"
+               title="Go to the comment associated with the attachment">2014-12-04 06:49</a>,
+
+            <a href="mailto:joaosilva&#64;ambitermo.com"
+               title="Write an email to the creator of the attachment">João
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7970&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="info_amb.png"
+               title="View the content of the attachment">
+          <b>info_amb</b></a>
+
+          <span class="bz_attach_extra_info">
+              (50.21 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_7971"
+               title="Go to the comment associated with the attachment">2014-12-04 06:49</a>,
+
+            <a href="mailto:joaosilva&#64;ambitermo.com"
+               title="Write an email to the creator of the attachment">João
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7971&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="smartTemplate-0.9.7pre109.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 109</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (340.70 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8042"
+               title="Go to the comment associated with the attachment">2015-04-29 03:17</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8042&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="smartTemplate-0.9.7pre111.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 111</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (340.84 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8043"
+               title="Go to the comment associated with the attachment">2015-04-29 10:32</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8043&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a8" href="smartTemplate-0.9.7pre113.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 113</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (340.88 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8044"
+               title="Go to the comment associated with the attachment">2015-04-29 11:50</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8044&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a9" href="smartTemplate-0.9.7pre115.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 115</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (341.15 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8045"
+               title="Go to the comment associated with the attachment">2015-04-30 03:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8045&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a10" href="smartTemplate-0.9.7pre126.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 126</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (342.19 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8046"
+               title="Go to the comment associated with the attachment">2015-04-30 08:36</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8046&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a11" href="smartTemplate-0.9.7pre129.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.7 prerelease 129</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (344.33 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8047"
+               title="Go to the comment associated with the attachment">2015-04-30 08:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8047&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a12" href="smartTemplate-0.9.7pre131.xpi"
+               title="View the content of the attachment">
+          <b>0.9.7 prerelease 131</b></a>
+
+          <span class="bz_attach_extra_info">
+              (344.27 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25871.html#attach_8048"
+               title="Go to the comment associated with the attachment">2015-05-02 05:56</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8048&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25871.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (7)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25871&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25871&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25871">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25871">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25871">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25871">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25871.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-10-06 06:41
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+
+One feature that would be awsome is the ability of load the signature content
+from a .txt or .html file.
+For people that have the signature use in several places when changing one it
+would change all, and by the default way that is know i have to go to all
+thunderbird to change the signature.
+
+Thanks for your attencion
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25871.html#c1">
+            #1</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-03 07:14:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Have made any comments about this matther?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25871.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-03 14:50:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It is possible, as long as the file is locally available (not a web link).
+Let's draw up some syntax. Since you could insert pretty much anything from a
+file (and not just a signature) we could go for something like this:
+
+%file(type, path)%
+
+%file(txt, C:/Test/foo.txt)%
+%file(html, C:/Test/bar.html)%
+
+This could potentially be used for other file types as well. 
+
+one complication is that for a signature (and html) file you would still expect
+the internal %variables% to be processed, correct?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25871.html#c3">
+            #3</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 00:50:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+
+Yes it could be anything like that.
+I want to be able to load signatures from a local file, but also with the
+corresponding internal %variables% from smarttemplate4.
+I have diferente signatures for nem message, reply and forward is the same, and
+have a header template also and they have both html code and smattemplate
+variables at the same time.
+
+It could be like that or if load from an html file and give the code line for
+reference for the beginning and end of signature code.
+
+The easy way to do it that you think is best.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25871.html#c4">
+            #4</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 01:28:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c3">comment #3</a>)
+<span class="quote">&gt; Hi,
+&gt; 
+&gt; Yes it could be anything like that.
+&gt; I want to be able to load signatures from a local file, but also with the
+&gt; corresponding internal %variables% from smarttemplate4.
+&gt; I have diferente signatures for nem message, reply and forward is the same, and
+&gt; have a header template also and they have both html code and smattemplate
+&gt; variables at the same time.
+&gt; 
+&gt; It could be like that or if load from an html file and give the code line for
+&gt; reference for the beginning and end of signature code.
+&gt; 
+&gt; The easy way to do it that you think is best.
+&gt; </span >
+
+I have said the code is in .html, but all the html code can be on a .txt i
+believe its the same.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25871.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-04 01:48:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c3">comment #3</a>)
+&gt; &gt; It could be like that or if load from an html file and give the code line for
+&gt; &gt; reference for the beginning and end of signature code.
+&gt; &gt; 
+&gt; &gt; The easy way to do it that you think is best.
+&gt; &gt; 
+&gt; 
+&gt; I have said the code is in .html, but all the html code can be on a .txt i
+&gt; believe its the same.
+&gt; </span >
+The file type doesn't really matter too much, but you must specify what kind of
+*content* is in the file using the first parameter:
+
+%file(txt, ...)%
+
+= the content of the file is interpreted as &quot;text only&quot;. line breaks have to be
+typed in
+
+%file(html, ...)%
+
+= the content is interpreted as &quot;html&quot;. Spaces are collapsed, new lines have to
+be entered as &lt;br&gt;. You can also use block level elements such as &lt;h1&gt; &lt;h2&gt; &lt;p&gt;
+&lt;div&gt; etc. or &lt;table&gt; and &lt;style&gt; elements to add css. Use of &lt;header&gt; and
+&lt;html&gt; tags is not supported.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25871.html#c6">
+            #6</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 01:57:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="SmartTemplate4&#32;Signature&#32;Definitions.html" name="attach_7967" title="Signature example">Created an attachment (id=7967)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7967&amp;action=edit" title="Signature example">[details]</a></span>
+Signature example
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25871.html#c7">
+            #7</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 01:59:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have uploaded an example of my signature code.
+
+The first group is the replacemnt header on reply and forward.
+
+The second group os for new messages.
+
+The third group is the signature for reply and forward messages.
+
+
+Does it fit the example?
+
+Thanks for all your help!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25871.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-04 04:42:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c7">comment #7</a>)
+<span class="quote">&gt; I have uploaded an example of my signature code.
+&gt; 
+&gt; The first group is the replacemnt header on reply and forward.
+&gt; 
+&gt; The second group os for new messages.
+&gt; 
+&gt; The third group is the signature for reply and forward messages.
+&gt; 
+&gt; 
+&gt; Does it fit the example?
+&gt; 
+&gt; Thanks for all your help!
+&gt; </span >
+
+Yes, can you also upload an archive with the images that you refer to for
+testing?
+
+Also, when the image doesn't work, the &quot;email&quot; line in the first signature is
+moved to the left (under image place holder). Consider using a invisible
+&lt;table&gt; or a &lt;div&gt; with style=&quot;display: inline-block;&quot; for the text block
+beside the image instead.
+
+Also I believe you have a unicode issue with this line:
+
+telemÃ³vel: +351 xxx xxx xxx   |  telefone: +351 xxx xxx xxx   |    email:
+<a href="mailto:XXXX@XXXX.com">XXXX@XXXX.com</a>
+In the signature file, do not insert the ó character directly, use a unicode
+entity instead:
+<a href="http://www.fileformat.info/info/unicode/char/f3/index.htm">http://www.fileformat.info/info/unicode/char/f3/index.htm</a>
+
+In HTML, you can use &amp;oacute; for this letter to ensure it not being &quot;garbled&quot;
+by the recipient's mail clients.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25871.html#c9">
+            #9</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 06:48:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="SmartTemplate4&#32;Signature&#32;Definitions.html.1.html" name="attach_7968" title="Signature example">Created an attachment (id=7968)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7968&amp;action=edit" title="Signature example">[details]</a></span>
+Signature example
+
+Signature Example
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25871.html#c10">
+            #10</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 06:48:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="amb_logo.png" name="attach_7969" title="amb_logo">Created an attachment (id=7969)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7969&amp;action=edit" title="amb_logo">[details]</a></span>
+amb_logo
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25871.html#c11">
+            #11</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 06:49:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ambiente.png" name="attach_7970" title="ambiente">Created an attachment (id=7970)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7970&amp;action=edit" title="ambiente">[details]</a></span>
+ambiente
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25871.html#c12">
+            #12</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 06:49:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="info_amb.png" name="attach_7971" title="info_amb">Created an attachment (id=7971)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7971&amp;action=edit" title="info_amb">[details]</a></span>
+info_amb
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25871.html#c13">
+            #13</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-04 06:50:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for the correction to my code.
+I apreciate and i have made all the sugested corrections.
+
+I also have uploaded the images as asked.
+
+Hope it fits and you can help me out.
+
+Thanks 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25871.html#c14">
+            #14</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-01-22 10:06:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Any development on this subject?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25871.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-22 14:35:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c14">comment #14</a>)
+<span class="quote">&gt; Any development on this subject?
+&gt; 
+&gt; Thanks
+&gt; </span >
+
+eventually, I will work on this. Just have a lot on my plate at the moment, but
+I will get around to it. send me an email in a week's time as a reminder
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25871.html#c16">
+            #16</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-01-28 01:54:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >As a reminder for this subject!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25871.html#c17">
+            #17</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-02-11 02:04:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi!
+
+How is the update for this funcionality?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25871.html#c18">
+            #18</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-02-20 00:55:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c17">comment #17</a>)
+<span class="quote">&gt; Hi!
+&gt; 
+&gt; How is the update for this funcionality?
+&gt; </span >
+
+??
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25871.html#c19">
+            #19</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2015-02-20 01:12:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c18">comment #18</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c17">comment #17</a>)
+&gt; &gt; Hi!
+&gt; &gt; 
+&gt; &gt; How is the update for this funcionality?
+&gt; &gt; 
+&gt; 
+&gt; ??
+&gt; </span >
+
+not yet. At the moment I am focusing on my release of QuickFolders, then more
+work on ST4 can be next.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25871.html#c20">
+            #20</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-29 02:09:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c19">comment #19</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c18">comment #18</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c17">comment #17</a>)
+&gt; &gt; &gt; Hi!
+&gt; &gt; &gt; 
+&gt; &gt; &gt; How is the update for this funcionality?
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; ??
+&gt; &gt; 
+&gt; 
+&gt; not yet. At the moment I am focusing on my release of QuickFolders, then more
+&gt; work on ST4 can be next.
+&gt; </span >
+
+Hi,
+
+Any news about this update?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25871.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 03:17:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre109.xpi" name="attach_8042" title="0.9.7 prerelease 109">Created an attachment (id=8042)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8042&amp;action=edit" title="0.9.7 prerelease 109">[details]</a></span>
+0.9.7 prerelease 109
+
+Try this version. 
+
+syntax: 
+%file(local path)%
+
+example:
+%file(E:\Dev\Mozilla\DEV\SmartTemplate\Test\file\testFile.html)%
+
+---- HTML / text Files ------
+The path may only contain ASCII characters!
+it has to be a local file (I haven't tested network / UNC paths)
+
+file extensions: html, htm and txt
+
+--- Pictures ----------
+If you want to insert an image instead, use the platform agnostic (html) way of
+defining the path as I am using a simple text replacement at the moment:
+
+ html = &quot;&lt;img src='file:///&quot; + path + &quot;'\\&gt;&quot;;
+
+file extensions: png, apng, jpg, jpeg, jp2k, gif, tif, bmp, dib, rle, ico, svg,
+webp
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25871.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 03:26:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This is a possible workaround to what you are actually looking for. %file% is a
+bit like %sig% in that it inserts the html file in place. However it doesn't
+currently expand other %variables% (like %sig% does) and also it obviously
+doesn't replace the default signature, so you will still have to use
+%sign(none)% to suppress the default signature.
+
+I am thinking about whether we should also create a new variable for
+&quot;re-pointing&quot; the signature file so it overrides the settings in the main mail
+account settings. something like %sigPath(path)% maybe... I feel this might
+actually be closer to your ogirinal request (and I only realize it now that I
+am actually changing the title of this bug).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25871.html#c23">
+            #23</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-29 03:37:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c21">comment #21</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.7pre109.xpi" name="attach_8042" title="0.9.7 prerelease 109">attachment (id=8042)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8042&amp;action=edit" title="0.9.7 prerelease 109">[details]</a></span> [details]
+&gt; 0.9.7 prerelease 109
+&gt; 
+&gt; Try this version. 
+&gt; 
+&gt; syntax: 
+&gt; %file(local path)%
+&gt; 
+&gt; example:
+&gt; %file(E:\Dev\Mozilla\DEV\SmartTemplate\Test\file\testFile.html)%
+&gt; 
+&gt; ---- HTML / text Files ------
+&gt; The path may only contain ASCII characters!
+&gt; it has to be a local file (I haven't tested network / UNC paths)
+&gt; 
+&gt; file extensions: html, htm and txt
+&gt; 
+&gt; --- Pictures ----------
+&gt; If you want to insert an image instead, use the platform agnostic (html) way of
+&gt; defining the path as I am using a simple text replacement at the moment:
+&gt; 
+&gt;  html = &quot;&lt;img src='file:///&quot; + path + &quot;'\\&gt;&quot;;
+&gt; 
+&gt; file extensions: png, apng, jpg, jpeg, jp2k, gif, tif, bmp, dib, rle, ico, svg,
+&gt; webp
+&gt; </span >
+
+Using the %file(local path)% it gives me the error &quot;undefined&quot; on the message
+text, both for .txt or .html
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25871.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 04:44:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c23">comment #23</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c21">comment #21</a>)
+&gt; 
+&gt; Using the %file(local path)% it gives me the error &quot;undefined&quot; on the message
+&gt; text, both for .txt or .html
+&gt; </span >
+Please enable ST4 debug mode and take a look at tools..error console. ALso,
+what path are you using, and which OS are you on?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25871.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 05:11:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c24">comment #24</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c23">comment #23</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c21">comment #21</a>)
+&gt; &gt; 
+&gt; &gt; Using the %file(local path)% it gives me the error &quot;undefined&quot; on the message
+&gt; &gt; text, both for .txt or .html
+&gt; &gt; 
+&gt; Please enable ST4 debug mode and take a look at tools..error console. ALso,
+&gt; what path are you using, and which OS are you on?
+&gt; </span >
+
+Remember to follow our instructions at our troubleshooting page:
+<a href="http://smarttemplate4.mozdev.org/support.html">http://smarttemplate4.mozdev.org/support.html</a>
+
+use console2, set it up to show all but &quot;content&quot; and maybe &quot;css&quot; errors.
+(Needs at least Errors, Warning, Messages, Chrome enabled)
+
+then copy the error log using the error console right click menu. My guess is
+that there is a problem with the path you were passing in between the (...)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25871.html#c26">
+            #26</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-29 09:09:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c25">comment #25</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c24">comment #24</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c23">comment #23</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c21">comment #21</a>)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Using the %file(local path)% it gives me the error &quot;undefined&quot; on the message
+&gt; &gt; &gt; text, both for .txt or .html
+&gt; &gt; &gt; 
+&gt; &gt; Please enable ST4 debug mode and take a look at tools..error console. ALso,
+&gt; &gt; what path are you using, and which OS are you on?
+&gt; &gt; 
+&gt; 
+&gt; Remember to follow our instructions at our troubleshooting page:
+&gt; <a href="http://smarttemplate4.mozdev.org/support.html">http://smarttemplate4.mozdev.org/support.html</a>
+&gt; 
+&gt; use console2, set it up to show all but &quot;content&quot; and maybe &quot;css&quot; errors.
+&gt; (Needs at least Errors, Warning, Messages, Chrome enabled)
+&gt; 
+&gt; then copy the error log using the error console right click menu. My guess is
+&gt; that there is a problem with the path you were passing in between the (...)
+&gt; </span >
+
+Hi,
+
+The log is:
+
+Erro: TypeError: imgs is undefined
+Arquivo fonte: chrome://communicator/content/contentAreaClick.js
+Linha: 62
+ ----------
+Erro: TypeError: imgs is undefined
+Arquivo fonte: chrome://communicator/content/contentAreaClick.js
+Linha: 62
+ ----------
+SmartTemplate4 [logTime init]
+cleanupUnusedPrefs ()
+ ----------
+SmartTemplate4 17:4:23.648  [146847 ms]  
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 17:4:23.650  [2 ms]       
+insertFileLink
+(D:\SRV\80.Informática\0System_Files\Thunderbird\assinaturas\joaosilva-new.txt)
+ ----------
+SmartTemplate4 17:4:23.651  [1 ms]       
+insertFile - type detected: txt
+ ----------
+SmartTemplate4 17:4:23.651  [0 ms]       
+localFile.initWithPath(
+D:\SRV\80.Informática\0System_Files\Thunderbird\assinaturas\joaosilva-new.txt)
+ ----------
+Aviso: insertFileLink()
+Component returned failure code: 0x8050000e (NS_ERROR_ILLEGAL_INPUT)
+[nsIConverterInputStream.readString]
+
+
+The signature file is:
+
+%cursor%
+&lt;br&gt;
+&lt;br&gt;
+&lt;p style=&quot;font-size:14px&quot;&gt;&lt;font face=&quot;Century Gothic&quot;&gt;
+&lt;font color=&quot;#000000&quot;&gt;Com os melhores cumprimentos | Best regards&lt;/font&gt;&lt;br&gt;
+&lt;div style=&quot;line-height:16px; margin:6px 0; padding:8px 8px 8px 8px;
+border-top:1px #aeb1a6 dotted; border-bottom:1px #aeb1a6 dotted; font-family:
+'Lucida Sans', Lucida Grande, Verdana, Arial, Sans-Serif; font-size:11px;
+color:#555555;&quot;&gt;
+&lt;div style=&quot;display: inline-block;&quot;&gt;&lt;img
+src=&quot;file:///D:/Shares/0System_Comuns/Thunderbird/amb_logo.png&quot;
+style=&quot;float:left; padding:15px 12px 15px 0;&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;display: inline-block;&quot;&gt;&lt;font face=&quot;Century Gothic&quot;&gt;&lt;strong
+style=&quot;color:#333333; font-size:14px;&quot;&gt;João Silva&lt;/strong&gt;&lt;br&gt;Dpto. Engenharia
+e
+Desenvolvimento&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;|&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;xxxxxxxxxxxxxxxxx&lt;/i&gt;&lt;br&gt;xxxxxxxxxxxxxxxxxxxxxxxxxxxx&lt;/a&gt;&lt;br&gt;
+telefone:&amp;nbsp;&lt;a href=&quot;callto:+351 xxx xxx xxx&quot; style=&quot;color:rgb(0, 136, 204)
+!important; text-decoration:none !important;&quot;&gt;+351 xxx xxx
+xxx&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&amp;nbsp;
+fax:&amp;nbsp;&lt;a href=&quot;fax:+351 xxx xxx xxx&quot; style=&quot;color:rgb(0, 136, 204)
+!important; text-decoration:none !important;&quot;&gt;+351 xxx xxx xxx&lt;/a&gt;&lt;br&gt;
+email:&amp;nbsp;&lt;a href=&quot;<a href="mailto:joaosilva@xxxxxxxxxx.com">mailto:joaosilva@xxxxxxxxxx.com</a>&quot; style=&quot;color:rgb(0, 136,
+204) !important; text-decoration:none
+!important;&quot;&gt;<a href="mailto:JoaoSilva@xxxxxxxxx.com">JoaoSilva@xxxxxxxxx.com</a>&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&amp;nbsp;
+web:&amp;nbsp;&lt;a href=&quot;<a href="http://www.xxxxxxxx.com">http://www.xxxxxxxx.com</a>&quot; style=&quot;color:rgb(0, 136, 204)
+!important; text-decoration:none !important;&quot;&gt;www.xxxxxxxxx.com&lt;/a&gt;&lt;br&gt;
+&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;font size=&quot;1px&quot;&gt;&lt;a href=&quot;<a href="http://www.xxxxxxxxx.com/email.jpg">http://www.xxxxxxxxx.com/email.jpg</a>&quot;
+style=&quot;color:rgb(137, 20, 20) !important; text-decoration:none
+!important;&quot;size=&quot;2px&quot; title=&quot;Aviso Legal / Disclaimer   xxxxxxxxx&quot;&gt;&lt;u&gt;Aviso
+Legal / Disclaimer&lt;/u&gt;&lt;/a&gt;&lt;/font&gt;&lt;br&gt;
+&lt;div style=&quot;line-height:19px; margin:2px 0; padding:4px 4px 4px 4px;&quot;&gt;
+&lt;img src=&quot;file:///D:/Shares/0System_Comuns/Thunderbird/ambiente.png&quot;
+style=&quot;float:left; padding:0px 0px 0px 0;&quot; width=&quot;40&quot; height=&quot;45&quot;&gt;&lt;br&gt;
+&lt;font color=&quot;#009900&quot; size=&quot;1.5px&quot; style=&quot;line-height:10px&quot;&gt;Antes de imprimir,
+pense na sua responsabilidade e compromisso para com o ambiente!&lt;br&gt;Before you
+print it think about your responsibility and commitment to the
+environment!&lt;/font&gt;
+&lt;/font&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;img alt=&quot;&quot; src=&quot;file:///D:/Shares/0System_Comuns/Thunderbird/info_amb.png&quot;&gt;
+&lt;br&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25871.html#c27">
+            #27</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-29 09:54:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The OS is Windows Server 2012 R2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25871.html#c28">
+            #28</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 10:09:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can you try an link to an ASCII(In reply to <a href="show_bug.cgi@id=25871.html#c26">comment #26</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c25">comment #25</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c24">comment #24</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c23">comment #23</a>)</span >
+
+<span class="quote">&gt; &gt; 
+&gt; &gt; Remember to follow our instructions at our troubleshooting page:
+&gt; &gt; <a href="http://smarttemplate4.mozdev.org/support.html">http://smarttemplate4.mozdev.org/support.html</a>
+&gt; &gt; 
+&gt; &gt; use console2, set it up to show all but &quot;content&quot; and maybe &quot;css&quot; errors.
+&gt; &gt; (Needs at least Errors, Warning, Messages, Chrome enabled)
+&gt; &gt; 
+&gt; &gt; then copy the error log using the error console right click menu. My guess is
+&gt; &gt; that there is a problem with the path you were passing in between the (...)
+&gt; &gt; 
+&gt; 
+&gt; Hi,
+&gt; 
+&gt; The log is:
+&gt; </span >
+
+<span class="quote">&gt;  ----------
+&gt; SmartTemplate4 17:4:23.650  [2 ms]       
+&gt; insertFileLink
+&gt; (D:\SRV\80.Informática\0System_Files\Thunderbird\assinaturas\joaosilva-new.txt)</span >
+
+please try a path that contains only ASCII characters. &quot;Informática&quot; will
+likely not work because it contains an non-ASCII &quot;á&quot;. In the meantime, I will
+upload a version the uses the newer &quot;FileUtil&quot; object.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25871.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 10:32:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre111.xpi" name="attach_8043" title="0.9.7 prerelease 111">Created an attachment (id=8043)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8043&amp;action=edit" title="0.9.7 prerelease 111">[details]</a></span>
+0.9.7 prerelease 111
+
+Using FileUtil instead. I was able to insert the text from your signature as
+you suggested. Note that this version currently does _not_ support using
+variables _within_ the file.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25871.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 11:50:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre113.xpi" name="attach_8044" title="0.9.7 prerelease 113">Created an attachment (id=8044)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8044&amp;action=edit" title="0.9.7 prerelease 113">[details]</a></span>
+0.9.7 prerelease 113
+
+This version includes expansion of other variables within the html file. Make
+sure to use the file extension htm or html.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25871.html#c31">
+            #31</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-30 01:21:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c30">comment #30</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.7pre113.xpi" name="attach_8044" title="0.9.7 prerelease 113">attachment (id=8044)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8044&amp;action=edit" title="0.9.7 prerelease 113">[details]</a></span> [details]
+&gt; 0.9.7 prerelease 113
+&gt; 
+&gt; This version includes expansion of other variables within the html file. Make
+&gt; sure to use the file extension htm or html.
+&gt; </span >
+
+Hi,
+
+I have done what you said about the path but is still gives me this error:
+
+SmartTemplate4 9:19:9.446  [0 ms]        
+insertFile - type detected: html
+ ----------
+SmartTemplate4 9:19:9.446  [0 ms]        
+localFile.initWithPath( D:\SRV\09.Comuns\joaosilva-new.html)
+ ----------
+Aviso: insertFileLink()
+Component returned failure code: 0x8050000e (NS_ERROR_ILLEGAL_INPUT)
+[nsIConverterInputStream.readString]
+
+On the email it shows also:
+Component returned failure code: 0x8050000e (NS_ERROR_ILLEGAL_INPUT)
+[nsIConverterInputStream.readString] 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25871.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-30 02:31:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c31">comment #31</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c30">comment #30</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.7pre113.xpi" name="attach_8044" title="0.9.7 prerelease 113">attachment (id=8044)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8044&amp;action=edit" title="0.9.7 prerelease 113">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.7 prerelease 113
+&gt; &gt; 
+&gt; &gt; This version includes expansion of other variables within the html file. Make
+&gt; &gt; sure to use the file extension htm or html.
+&gt; &gt; 
+&gt; 
+&gt; Hi,
+&gt; 
+&gt; I have done what you said about the path but is still gives me this error:
+&gt; 
+&gt; SmartTemplate4 9:19:9.446  [0 ms]        
+&gt; insertFile - type detected: html
+&gt;  ----------
+&gt; SmartTemplate4 9:19:9.446  [0 ms]        
+&gt; localFile.initWithPath( D:\SRV\09.Comuns\joaosilva-new.html)
+&gt;  ----------
+&gt; Aviso: insertFileLink()
+&gt; Component returned failure code: 0x8050000e (NS_ERROR_ILLEGAL_INPUT)
+&gt; [nsIConverterInputStream.readString]
+&gt; 
+&gt; On the email it shows also:
+&gt; Component returned failure code: 0x8050000e (NS_ERROR_ILLEGAL_INPUT)
+&gt; [nsIConverterInputStream.readString] 
+&gt; </span >
+I found this, which points to the fact that this is an encoding issue:
+
+<a href="http://stackoverflow.com/questions/13564592/ns-error-illegal-input-error-while-trying-to-read-local-txt-file-using-xul">http://stackoverflow.com/questions/13564592/ns-error-illegal-input-error-while-trying-to-read-local-txt-file-using-xul</a>
+
+can you encode the file with UTF-8 instead? The easiest way on windows is by
+using notepad++ and then choosing Encoding/&quot;Encode in UTF-8 without BOM&quot;(*). I
+believe I sent you a html file with your signature via mail, did you receive
+this or do you want me to append it to this bug?
+
+
+(*) If you are using notepad (not notepad++) there is an option on the Save as
+dialog at the bottom right &quot;Encoding: &quot; - select UTF-8. This is the standard
+which will work with all Latin and Eastern European Languages.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=25871.html#c33">
+            #33</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-30 03:20:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre115.xpi" name="attach_8045" title="0.9.7 prerelease 115">Created an attachment (id=8045)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8045&amp;action=edit" title="0.9.7 prerelease 115">[details]</a></span>
+0.9.7 prerelease 115
+
+Here is a new version with an added optional &quot;charset&quot; parameter.
+usage:
+%file(fileName)%
+%file(fileName,charset)%  (no spaces allowed!)
+
+if charset is omitted, ST4 will assume UTF-8 as character set.
+
+If you are using a Windows (ANSI) encoded file try &quot;Windows-1252&quot;
+
+Example:
+
+%file(E:\Dev\Mozilla\DEV\SmartTemplate\Test\file\testFileANSI.html,Windows-1252)%
+
+works for me after I encoded your signature as ANSI (windows notepad standard)
+
+You may also try: ISO-8859-1
+both worked for me after re-encoding the HTML as ANSI.
+
+UTF-8 is the best one though as it supports the most languages.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=25871.html#c34">
+            #34</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-30 04:33:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c33">comment #33</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.7pre115.xpi" name="attach_8045" title="0.9.7 prerelease 115">attachment (id=8045)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8045&amp;action=edit" title="0.9.7 prerelease 115">[details]</a></span> [details]
+&gt; 0.9.7 prerelease 115
+&gt; 
+&gt; Here is a new version with an added optional &quot;charset&quot; parameter.
+&gt; usage:
+&gt; %file(fileName)%
+&gt; %file(fileName,charset)%  (no spaces allowed!)
+&gt; 
+&gt; if charset is omitted, ST4 will assume UTF-8 as character set.
+&gt; 
+&gt; If you are using a Windows (ANSI) encoded file try &quot;Windows-1252&quot;
+&gt; 
+&gt; Example:
+&gt; 
+&gt; %file(E:\Dev\Mozilla\DEV\SmartTemplate\Test\file\testFileANSI.html,Windows-1252)%
+&gt; 
+&gt; works for me after I encoded your signature as ANSI (windows notepad standard)
+&gt; 
+&gt; You may also try: ISO-8859-1
+&gt; both worked for me after re-encoding the HTML as ANSI.
+&gt; 
+&gt; UTF-8 is the best one though as it supports the most languages.
+&gt; </span >
+
+I have used UTF-8, and its working great!
+Now even works on a path with non-ASCII &quot;D:\SRV\80.Informática&quot;.
+
+Your app is getting more awesome every time.
+
+Now the only problem is the assyncronous mode, but that is another story.
+
+About the signature programing  i have used your changes that you have done on
+the html, with some adjust and is working great also.
+You are top!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=25871.html#c35">
+            #35</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-30 08:36:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre126.xpi" name="attach_8046" title="0.9.7 prerelease 126">Created an attachment (id=8046)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8046&amp;action=edit" title="0.9.7 prerelease 126">[details]</a></span>
+0.9.7 prerelease 126
+
+Added support for inserting a &quot;%file%&quot; variable into the template.
+
+Note: Only the German and English locale are currently in this, I need to make
+a trip to babelzilla.org to get the defaults for the other languages. Do not
+test in Tb of any other language.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=25871.html#c36">
+            #36</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-30 08:49:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.7pre129.xpi" name="attach_8047" title="0.9.7 prerelease 129">Created an attachment (id=8047)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8047&amp;action=edit" title="0.9.7 prerelease 129">[details]</a></span>
+0.9.7 prerelease 129
+
+Same as previous version (includes  %file()% interface) but with missing
+strings replaced (English). So this one works in all languages again.
+Descriptions will be in English until translators have provided localized
+versions.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c37" href="show_bug.cgi@id=25871.html#c37">
+            #37</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-05-02 05:56:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.7pre131.xpi" name="attach_8048" title="0.9.7 prerelease 131">Created an attachment (id=8048)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8048&amp;action=edit" title="0.9.7 prerelease 131">[details]</a></span>
+0.9.7 prerelease 131
+
+Turns out there was a problem with replacing \ with / for the file link in
+Windows (Image worked though). This version addresses this problem and is now
+also compatible and tested with Postbox and SeaMonkey.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c38" href="show_bug.cgi@id=25871.html#c38">
+            #38</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-05-04 01:28:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+
+Is the option:
+%file(imagePath,altText)%
+Working?
+
+I have try and i only get a broken link, not the alternative text.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c39" href="show_bug.cgi@id=25871.html#c39">
+            #39</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-05-04 04:23:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c38">comment #38</a>)
+<span class="quote">&gt; Hi,
+&gt; 
+&gt; Is the option:
+&gt; %file(imagePath,altText)%
+&gt; Working?
+&gt; 
+&gt; I have try and i only get a broken link, not the alternative text.
+&gt; </span >
+
+Yes it is working for me. You cannot see the alt text in composer, but if you
+save the email and look in drafts / preview it shows.
+
+the alt text may not contain the following characters: ( ) ,
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c40" href="show_bug.cgi@id=25871.html#c40">
+            #40</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-05-04 04:28:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c39">comment #39</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c38">comment #38</a>)
+&gt; &gt; Hi,
+&gt; &gt; 
+&gt; &gt; Is the option:
+&gt; &gt; %file(imagePath,altText)%
+&gt; &gt; Working?
+&gt; &gt; 
+&gt; &gt; I have try and i only get a broken link, not the alternative text.
+&gt; &gt; 
+&gt; 
+&gt; Yes it is working for me. You cannot see the alt text in composer, but if you
+&gt; save the email and look in drafts / preview it shows.
+&gt; 
+&gt; the alt text may not contain the following characters: ( ) ,
+&gt; </span >
+
+Ok.
+In the editor while writing the email if the image dont show it apears the
+broken link image, and only after send the email it changes for the alternative
+text.
+And i havent send it to try.
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c41" href="show_bug.cgi@id=25871.html#c41">
+            #41</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-05-04 05:37:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25871.html#c40">comment #40</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25871.html#c39">comment #39</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25871.html#c38">comment #38</a>)
+&gt; &gt; &gt; Hi,
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Is the option:
+&gt; &gt; &gt; %file(imagePath,altText)%
+&gt; &gt; &gt; Working?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I have try and i only get a broken link, not the alternative text.
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Yes it is working for me. You cannot see the alt text in composer, but if you
+&gt; &gt; save the email and look in drafts / preview it shows.
+&gt; &gt; 
+&gt; &gt; the alt text may not contain the following characters: ( ) ,
+&gt; &gt; 
+&gt; 
+&gt; Ok.
+&gt; In the editor while writing the email if the image dont show it apears the
+&gt; broken link image, and only after send the email it changes for the alternative
+&gt; text.
+&gt; And i havent send it to try.</span >
+
+yes or you save, navigate to the &quot;drafts&quot; folder and look at the last saved
+version (preview). As soon as you Edit the mail you will see the &quot;beoken image&quot;
+placeholder instead.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c42" href="show_bug.cgi@id=25871.html#c42">
+            #42</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 04:43:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25058.html" title="RESOLVED DUPLICATE - Feature Request: make it possible to use external Mailtemplates">Bug 25058</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25871&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+Tue Aug 14 2018 09:00:27
+Warning: ReferenceError: assignment to undeclared variable st4Load
+Source file: chrome://smarttemplate4/content/settings.xul
+Line: 1
+ ----------
+SmartTemplate4 [logTime init]
+cleanupUnusedPrefs ()
+ ----------
+SmartTemplate4 9:0:28.194  [312 ms]	 
+trimLicense() : *****
+ ----------
+SmartTemplate4 9:0:28.194  [0 ms]	 
+trimLicense() result : *****
+ ----------
+SmartTemplate4 9:0:28.194  [132970 ms]	 
+Creating RSA key + decrypting
+ ----------
+SmartTemplate4 9:0:28.226  [32 ms]	 
+Decryption Complete : decrypted string = ST-*****:2019-08-09
+ ----------
+SmartTemplate4 9:0:28.230  [4 ms]	 
+validateLicense() - successful.
+ ----------
+SmartTemplate4 9:0:28.230  [0 ms]	 
+validateLicense()
+ returns Valid   [1]
+ ----------
+SmartTemplate4 9:0:28.232  [38 ms]	 
+validateLicense - result = 1
+ ----------
+SmartTemplate4 [logTime init]
+SmartTemplate4.init()
+ ----------
+SmartTemplate4 9:0:57.374  [0 ms]	 
+Util.VersionProxy()...
+ ----------
+SmartTemplate4 9:0:57.374  [0 ms]	 
+Util.VersionProxy() started.
+ ----------
+SmartTemplate4 9:0:57.376  [2 ms]	 
+AddonManager.getAddonByID .. added callback for setting extensionVer.
+ ----------
+SmartTemplate4 9:0:57.376  [0 ms]	 
+Util.VersionProxy ends()
+ ----------
+SmartTemplate4 9:0:57.376  [0 ms]	 
+SmartTemplate4.init() ends.
+ ----------
+SmartTemplate4 9:0:57.378  [2 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.6pre91
+ ----------
+SmartTemplate4 9:0:57.378  [0 ms]	 
+SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version 1.6pre91
+Running on Thunderbird Version 52.9.1
+ ----------
+SmartTemplate4 9:0:57.378  [0 ms]	 
+AddonManager: SmartTemplate4 extension's version is 1.6pre91
+ ----------
+Tue Aug 14 2018 09:00:57
+Warning: ReferenceError: assignment to undeclared variable elt
+Source file: chrome://sendlater3/content/composeToolbar.js
+Line: 18
+ ----------
+SmartTemplate4 9:0:57.958  [580 ms]	 
+NotifyComposeBodyReady
+ ----------
+Tue Aug 14 2018 09:00:57
+Error: TypeError: this.NotifyComposeBodyReadyReply is not a function
+Source file: chrome://messenger/content/messengercompose/MsgComposeCommands.js
+Line: 319
+ ----------
+Tue Aug 14 2018 09:00:57
+Warning: ReferenceError: reference to undefined property "EditTemplate"
+Source file: chrome://enigmail/content/enigmailMsgComposeOverlay.js
+Line: 630
+ ----------
+SmartTemplate4 9:0:57.984  [26 ms]	 
+SmartTemplate4.notifyComposeBodyReady()
+ ----------
+SmartTemplate4 9:0:58.18  [34 ms]	 
+Removing non-reserved word: %date%
+ ----------
+SmartTemplate4 9:0:58.18  [0 ms]	 
+Removing non-reserved word: %Message-ID%
+ ----------
+SmartTemplate4 9:0:58.24  [6 ms]	 
+Splitting replaceText(a,b) arguments could not be parsed.
+ 1st argument missing.
+ Arguments have to be enclosed in double quotes.
+ ----------

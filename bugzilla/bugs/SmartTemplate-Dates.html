@@ -1,0 +1,99 @@
+<h2>SmartTemplate4 - Date/Time Tests</h2>
+
+<style type="text/css">
+  .testBlock {
+	  display: inline-block;
+	  padding: 10px;
+		margin-bottom: 12px;
+		margin-right: 12px;
+		border-radius: 5px;
+		border: 1px solid rgb(140,140,140);
+		box-shadow: 4px 4px 4px rgba(160,160,160,0.4);
+	}
+  .testBlock b {
+	  color: rgb(120,0,20);
+	  display: inline-block;
+		min-width: 12em;
+		margin-right: 2em;
+	}
+	.testBlock h2 {
+	  font-size: 1.3em;
+		margin-top: 0.2em;
+		margin-bottom: 0.5em;
+	}
+	th {
+	  text-align:center;
+	}
+</style>
+
+<div class="testBlock">
+
+	<h2>Subject / Date</h2>
+	<b>Message-ID:</b>%Message-ID%<br>
+	<b>Subject:</b>%subject%<br>
+	<b>Subject(2):</b>%subject(2)%<br>
+	<hr>
+	<p><u>calculated test</u>
+		<br>days added:  2
+		<br>hours added: 5:30
+	</p>
+			
+<table>
+  <tr>
+		<th>
+			<h3> X = sent </h3>	
+		</th>
+		<th>
+			<h3> X = today </h3>	
+	  </th>
+  </tr>		
+  <tr>
+		<td>
+			%X:=sent% 
+			%X:=calculated(2,5:30)%
+			<b>tz_name:</b>%tz_name%<br>
+			<b>date_tz:</b>%date_tz%<br><br>
+			<b>date:</b>%date%<br>
+			<b>datelocal:</b>%datelocal%<br>
+			<b>dateshort:</b>%dateshort%<br>
+			<b>hh:mm:ss</b>%H%:%M%:%S%<br>
+			<b>(forced sent) hh:mm:ss</b>%H%:%X:=sent%%M%:%X:=sent%%S%<br>
+			<b>X time</b>%X%<br>
+		</td>
+	  <td>
+			%X:=today% 
+			<b>tz_name:</b>%tz_name%<br>
+			<b>date_tz:</b>%date_tz%<br><br>
+			<b>date:</b>%date%<br>
+			<b>datelocal:</b>%datelocal%<br>
+			<b>dateshort:</b>%dateshort%<br>
+			<b>hh:mm:ss</b>%H%:%M%:%S%<br>
+			<b>X time</b>%X%<br>
+	  </td>
+  </tr>
+
+  <tr>
+		<td>
+			%X:=sent% 
+			%X:=calculated(0)%
+			<p><u>calculated reset</u><br>
+				<b>date:</b>%date%<br>
+				<b>datelocal:</b>%datelocal%<br>
+				<b>dateshort:</b>%dateshort%<br>
+				<b>hh:mm:ss</b>%H%:%M%:%S%<br>
+				<b>X time</b>%X%<br>
+			</p>
+		</td>
+	  <td>
+			<p><u>calculated reset</u><br>
+			%X:=today% 
+				<b>date:</b>%date%<br>
+				<b>datelocal:</b>%datelocal%<br>
+				<b>dateshort:</b>%dateshort%<br>
+				<b>hh:mm:ss</b>%H%:%M%:%S%<br>
+				<b>X time</b>%X%<br>
+			</p>
+	  </td>
+	</tr>
+	
+</div class="testBlock">

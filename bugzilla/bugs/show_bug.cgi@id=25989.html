@@ -1,0 +1,1277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25989 &ndash; Support Creation of Custom Templates</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25989&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25989">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25989">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25989">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25989">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25989</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Support Creation of Custom Templates</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-09-03 10:25:34</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25989&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-09-03 10:25:34">
+  <input type="hidden" name="longdesclength" value="11">
+  <input type="hidden" name="id" value="25989">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Support Creation of Custom Templates">Support Creation of Custom Templates
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25989.html">25989</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25989&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25989">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:patdohle&#64;yahoo.de">Pat &lt;patdohle&#64;yahoo.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Custom&#32;Template-Rules.png"
+               title="View the content of the attachment">
+          <b>Custom Template Rules - Example</b></a>
+
+          <span class="bz_attach_extra_info">
+              (30.10 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8031"
+               title="Go to the comment associated with the attachment">2015-04-08 05:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8031&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="Custom-Filters-Examples.png"
+               title="View the content of the attachment">
+          <b>How to define a filter</b></a>
+
+          <span class="bz_attach_extra_info">
+              (85.53 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8032"
+               title="Go to the comment associated with the attachment">2015-04-09 06:07</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8032&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-2.9pre80.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9 prerelease 80</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (263.70 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8033"
+               title="Go to the comment associated with the attachment">2015-04-09 06:17</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8033&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="quickFilters-tb-pb-sm-2.9pre82.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9 prerelease 82</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (263.81 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8034"
+               title="Go to the comment associated with the attachment">2015-04-09 09:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8034&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="quickFilters-tb-pb-sm-2.9pre108.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9 prerelease 108</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (268.35 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8036"
+               title="Go to the comment associated with the attachment">2015-04-10 04:11</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8036&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="quickFilters-tb-pb-sm-2.9pre116.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9 prerelease 116</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (268.95 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8037"
+               title="Go to the comment associated with the attachment">2015-04-10 09:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8037&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="quickFilters-tb-pb-sm-2.9pre130.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">2.9 prerelease 130</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (270.37 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8038"
+               title="Go to the comment associated with the attachment">2015-04-11 14:28</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8038&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="quickFilters-tb-pb-sm-2.9pre180.xpi"
+               title="View the content of the attachment">
+          <b>2.9 prerelease 180</b></a>
+
+          <span class="bz_attach_extra_info">
+              (274.95 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25989.html#attach_8055"
+               title="Go to the comment associated with the attachment">2015-05-16 05:37</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8055&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25989.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (5)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25989&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25989&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25989">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25989">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25989">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25989">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25989.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-03-18 06:52
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Make it possible to define custom filter templates that can be selected on the
+first page of the filter assistant. The users should be able to define any
+email header field and
+1) whether it should be pre-filled from the currently selected  email (Subject
+is a special case; should it do keyword recognition or simply use the whole
+subject)
+2) what operator to use (less than, is, contains, is not etc.)
+3) whether to use a hard coded value (exanple: age is less than _2_ days)
+
+Example:
+
+from - ends with - domain of email's from field (<a href="mailto:fred@yahoo.com">fred@yahoo.com</a>) =&gt; yahoo.com
+status is read
+status is Not Starred
+age in days is Greater than 1
+
+Thank you!
+Greeting
+Patrick
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25989.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-08 04:48:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Setting to Assigned to move this forward. I am still agonizing over UI, and
+where to store the templates, but I think it would be best to store them as
+&quot;extended&quot; filters (maybe at the end of the normal filter list). 
+
+For creating a new template I might just add a new button to the Filter
+Assistant Selection screen. We will need some &quot;special values&quot; as place holders
+for the prefill ones.
+
+To start, we will basically need a place holder for each possible mail header,
+and also an expansion rule for the ones that have lists such as cc, bcc and to.
+
+For the moment I am tempted to use similar syntax like in my addon
+SmartTemplate4,k so we could have
+
+%subject% = entire subject
+%to(mail)% = mail portion of &quot;to&quot; header. if multiple recipients are in the
+&quot;to&quot; field break this up into multiple conditions
+%to(name)% = name portion of &quot;to&quot; header.
+%to(domain)% = domain is same as email address
+%to% = complete &quot;to&quot; header broken up into multiple conditions if necessary
+from, cc, bcc = same rules as to
+%tag% = tag words broken up into multiple rules
+
+these would be placed into the value fields for the condition and then expanded
+from the selected email once this particular template has been chosen.
+
+We might also need to store the name of the template somewhere; filter name
+might not be the best place for this unless it adheres to a standard like
+
+quickFiltersTemplate1: &lt;user defined template name&gt;
+
+I intend to re-use Thunderbird's existing &quot;edit filter&quot; dialog for editing the
+templates, so I might need to overlay some restrictions / logic around naming
+conventions. We might also need additional controls for inserting the
+appropriate keywords (see above) into the corresponding condition values.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25989.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-08 05:09:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Custom&#32;Template-Rules.png" name="attach_8031" title="Custom Template Rules - Example">Created an attachment (id=8031)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8031&amp;action=edit" title="Custom Template Rules - Example">[details]</a></span>
+Custom Template Rules - Example
+
+Using the standard interface for defining a template as a starting point. I
+noticed that there is a rule that forces me to check either Manual Running or
+&quot;when getting new mail&quot;, although effectively the template should never be run
+as it is only going to be used to generate new templates. It can however be
+deactivated in the filter list screen, so this should happen automatically. 
+
+Also the template will have to be automatically listed in the assistant, and if
+we use the filter name to list it we have to enforce strict naming rules (e.g.
+all templates start with quickFilterCustomTemplate followed by a unique number
+and ':') they could then be listed while dropping this &quot;prefix&quot; and show the
+user specific title in the templates list.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25989.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-08 05:16:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25989.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Custom&#32;Template-Rules.png" name="attach_8031" title="Custom Template Rules - Example">attachment (id=8031)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8031&amp;action=edit" title="Custom Template Rules - Example">[details]</a></span> [details]
+&gt; Custom Template Rules - Example
+&gt; 
+&gt; Using the standard interface for defining a template as a starting point. I
+&gt; noticed that there is a rule that forces me to check either Manual Running or
+&gt; &quot;when getting new mail&quot;, although effectively the template should never be run
+&gt; as it is only going to be used to generate new templates. It can however be
+&gt; deactivated in the filter list screen, so this should happen automatically. 
+&gt; </span >
+
+And here follows another important problem: should templates be stored &quot;per
+mail account&quot; (like filters are currently) or should they be stored globally? I
+would tend to prefer &quot;globally&quot; and have them visible from everywhere to avoid
+complications.
+
+Or alternatively, maybe we can _store_ them under Local Folders, so this would
+also be a nice compartmentalization against all &quot;real&quot; filters. They would only
+be listed there.
+
+I was able to cut / paste my prototype filter from the previous screen shot
+into the &quot;Local Folders&quot; account, so I guess this is what I need to enumerate
+when populating the assistant in order to display these templates. I also
+assume that the user defined ones should be at the top of the list.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25989.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-09 06:07:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Custom-Filters-Examples.png" name="attach_8032" title="How to define a filter">Created an attachment (id=8032)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8032&amp;action=edit" title="How to define a filter">[details]</a></span>
+How to define a filter
+
+create a new filter in Local Folders named
+
+quickFilterCustomTemplate: XXXXX
+
+For string values, you can use the placeholder variables (representing the
+following mail headers)
+%from%
+%to%
+%cc%
+%bcc%
+%return-receipt-to%
+%reply-to%
+%resent-to%
+%mail-followup-to%
+%mail-reply-to%
+%subject%
+%list-id%
+
+address parameters (from, to, cc, bcc) allow modifiers such as 
+%to(name)%
+
+name: full name or name portion before email
+firstname: first name (following the pattern <a href="mailto:firstName.LastName@domain.com">firstName.LastName@domain.com</a>)
+lastname: last name (following the pattern <a href="mailto:firstName.LastName@domain.com">firstName.LastName@domain.com</a>)
+mail: mail portion of email address
+
+---------
+planned: domain  (for domain-name after email address)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25989.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-09 06:17:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-2.9pre80.xpi" name="attach_8033" title="2.9 prerelease 80">Created an attachment (id=8033)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8033&amp;action=edit" title="2.9 prerelease 80">[details]</a></span>
+2.9 prerelease 80
+
+First Prototype
+
+1 - added Advanced checkbox to activate feature 
+2 - basic features for creating custom filter templates
+
+I also successfully tested %from(firstname)%
+
+not bad so far...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25989.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-09 09:16:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-2.9pre82.xpi" name="attach_8034" title="2.9 prerelease 82">Created an attachment (id=8034)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8034&amp;action=edit" title="2.9 prerelease 82">[details]</a></span>
+2.9 prerelease 82
+
+# Added domain switch for matching sender's domain:
+  %from(domain)%
+# Added a function for calculating the current message URI [via
+nsIMsgFolder.getUriForMsg()]
+
+  therefore it should now also be more reliable when used with QuickFolders'
+&quot;quickMove&quot; function. And possibly work with the tag listener.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25989.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-10 04:11:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-2.9pre108.xpi" name="attach_8036" title="2.9 prerelease 108">Created an attachment (id=8036)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8036&amp;action=edit" title="2.9 prerelease 108">[details]</a></span>
+2.9 prerelease 108
+
+Added UI to get to existing custom templates quickly
+Added UI that shows we are editing a custom template when we open an existing
+one
+
+To do: provide function to create a custom template automatically
+(naming and UI) either from mail context menu or some other place (?)
+
+If possible I do not want to overburden the existing context menu in the thread
+pane... there is a lot going on in that already.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25989.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-10 09:55:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-2.9pre116.xpi" name="attach_8037" title="2.9 prerelease 116">Created an attachment (id=8037)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8037&amp;action=edit" title="2.9 prerelease 116">[details]</a></span>
+2.9 prerelease 116
+
+Added a &quot;Create New...&quot; button in advanced options to make generation of Custom
+Templates a little easier. I supposed you could also use an existing filter,
+cut it from its normal accounts and paste into Local Folders, then rename to
+&quot;quickFilterCustomTemplate: &lt;my filtername&gt;&quot; and then edit it, but I think this
+is slightly less painful. Also, this way I will be able to inject some UI to
+help with the special variables that are possible (as I now know that the
+Editor was opened for editing a Custom filter)
+
+As a default term I chose 
+  Sender contains &quot;%from(mail)%&quot;
+As default action I chose 
+  Set Priority to Normal
+
+When a new filter is created based on this, %from(mail)% would be expanded to
+the email portion of the mail address. The target Folder will be added, as per
+usual. Priority = Normal was chosen as an &quot;unobstructive dummy&quot; as we cannot
+edit a filter without at least one action.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25989.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-11 14:28:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-2.9pre130.xpi" name="attach_8038" title="2.9 prerelease 130">Created an attachment (id=8038)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8038&amp;action=edit" title="2.9 prerelease 130">[details]</a></span>
+2.9 prerelease 130
+
+Added a drop down with suggestions for common mail headers. This is currently
+not localised (all labels are in English) and will copy the appropriate
+variable to the clipboard so it can be pasted in the filter term.
+
+Clipboard is the &quot;quick-and-dirty&quot; approach so this might be a little more
+elegant in the final version, depending on how much more time I want to invest
+into this feature. There are some newsgroup specific mail headers that might be
+helpful, but all of them need to be tested.
+
+So I will leave that with you from some practice testing. Note that creating
+the filters will be more successful for smaller / local / POP3 mails, as the
+whole mail needs to be streamed (at the moment this is done synchronously).
+This method is known to be super slow in some cases on IMAP when big mails
+(especially those with attachment or lots of inline images) are only kept on
+the server. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25989.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-05-16 05:37:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-2.9pre180.xpi" name="attach_8055" title="2.9 prerelease 180">Created an attachment (id=8055)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8055&amp;action=edit" title="2.9 prerelease 180">[details]</a></span>
+2.9 prerelease 180
+
+Added / fixed code to add the new filter rule through the dropdown
+automatically. One problem that is still unsolved is that custom headers such
+as &quot;list-id&quot; have to be added to the left hand dropdown with the &quot;customize...&quot;
+link first in order to be used, so that's a bit of a disadvantage unless you
+create a lot of filters using this method.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25989&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

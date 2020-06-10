@@ -1,0 +1,1395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 23379 &ndash; Access to &quot;Recent Folders&quot; List</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23379&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23379">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=23379">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23379">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_23379">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;23379</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Access to &quot;Recent Folders&quot; List</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2010-11-08 23:44:22</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23379&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2010-11-08 23:44:22">
+  <input type="hidden" name="longdesclength" value="15">
+  <input type="hidden" name="id" value="23379">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Access to &quot;Recent Folders&quot; List">Access to &quot;Recent Folders&quot; List
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=23379.html">23379</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="All">All
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23379&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23379">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:CLweb&#64;comcast.net">Charlie &lt;CLweb&#64;comcast.net&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="CLweb&#64;comcast.net">CLweb&#64;comcast.net</option>
+            <option value="mcp63&#64;cornell.edu">mcp63&#64;cornell.edu</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Recent&#32;Folder&#32;List&#32;after&#32;Drag&#32;Msg&#32;to&#32;QuickFolders&#32;Tab.gif"
+               title="View the content of the attachment">
+          <b>Recent Folders Lists - Two Different?</b></a>
+
+          <span class="bz_attach_extra_info">
+              (294.87 KB,
+                image/gif)
+
+            <br>
+            <a href="show_bug.cgi@id=23379.html#attach_6666"
+               title="Go to the comment associated with the attachment">2010-10-19 06:16</a>,
+
+            <a href="mailto:CLweb&#64;comcast.net"
+               title="Write an email to the creator of the attachment">Charlie
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6666&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QF-2.1a.pre1.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">alpha version with recent tab</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (198.19 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23379.html#attach_6669"
+               title="Go to the comment associated with the attachment">2010-10-24 06:33</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6669&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QF-2.1a.pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">alpha version 2 with recent tab</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (199.46 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23379.html#attach_6671"
+               title="Go to the comment associated with the attachment">2010-10-27 03:17</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6671&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="QF-2.1a.pre5.xpi"
+               title="View the content of the attachment">
+          <b>2.1 Preview 5</b></a>
+
+          <span class="bz_attach_extra_info">
+              (205.79 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23379.html#attach_6674"
+               title="Go to the comment associated with the attachment">2010-10-29 03:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6674&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="QF-2.1a.pre5.xpi.1"
+               title="View the content of the attachment">
+          <b>2.1 Preview 5</b></a>
+
+          <span class="bz_attach_extra_info">
+              (205.79 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=23379.html#attach_6675"
+               title="Go to the comment associated with the attachment">2010-10-29 03:31</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6675&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=23379.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=23379&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23379&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=23379">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23379">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=23379">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=23379">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=23379.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2010-10-16 06:28
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >It would be nice to be able to access Thunderbird's &quot;Recent Folders&quot; list
+through QuickFolders, or vice versa.  I searched Bugzilla and the forums for
+&quot;recent&quot; and was unable to find anything for QuickFolders on this topic.
+
+I can think of two good ways to do this, and you might think of more.  These
+two are not quite the same as each other, and complement each other.  They
+represent the flow of information in two directions between Thunderbird and
+QuickFolders:
+
+(1) When a folder is accessed via a QuickFolders tab, add it to Thunderbird's
+Recent Folders list.  This would make it accessible through native TB commands
+such as right-click on message -&gt; Move To -&gt; Recent.   I don't know whether
+this is possible through code.
+
+(2) Make an option in QuickFolders to have a &quot;Recent&quot; tab in the QuickFolders
+toolbar, with a dropdown of subfolders like the other tabs.  I have seen
+fleeting references in Internet postings to this being an existing feature, but
+I can't figure out how to actually create it.  To be most useful, the dropdown
+list should be dynamic, i.e., automatically updated when Thunderbird changes
+the list.
+
+P.S.  I'm using Windows 7, which does not appear in the Bugzilla dropdown for
+OS.
+
+Thanks, as always, for your consideration.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=23379.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-16 12:00:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23379.html#c0">comment #0</a>)
+<span class="quote">&gt; It would be nice to be able to access Thunderbird's &quot;Recent Folders&quot; list
+&gt; through QuickFolders, or vice versa.  I searched Bugzilla and the forums for
+&gt; &quot;recent&quot; and was unable to find anything for QuickFolders on this topic.
+&gt; 
+&gt; I can think of two good ways to do this, and you might think of more.  These
+&gt; two are not quite the same as each other, and complement each other.  They
+&gt; represent the flow of information in two directions between Thunderbird and
+&gt; QuickFolders:
+&gt; 
+&gt; (1) When a folder is accessed via a QuickFolders tab, add it to Thunderbird's
+&gt; Recent Folders list.  This would make it accessible through native TB commands
+&gt; such as right-click on message -&gt; Move To -&gt; Recent.   I don't know whether
+&gt; this is possible through code.</span >
+i think you should have a look at the folder tree (left hand window) iy says
+all folders there beside some small arrows - clicking these should get you to
+the recent folders list. i believe this lists all folders regardless of how you
+got there: be it by selecting a folder from the tree, by pushing N to get to
+the next unread mail or by clicking a QF  link. Could you do some tests to see
+whether this is roughly the list that you're looking for. you can also navigate
+more fine grained (per message) using the back and forward buttons.
+
+I actually had thought about adding these buttons for purely folder navigation,
+this should include all visited folders even (especially) the ones not listed
+or visible on the QF toolbar. my take on the recent folders list on the 
+is that it is just this, do you agree?
+
+which would mean you are looking for a way ro acess just this list from the  QF
+toolbar...
+
+
+
+<span class="quote">&gt; (2) Make an option in QuickFolders to have a &quot;Recent&quot; tab in the QuickFolders
+&gt; toolbar, with a dropdown of subfolders like the other tabs.  I have seen
+&gt; fleeting references in Internet postings to this being an existing feature, but
+&gt; I can't figure out how to actually create it.</span >
+
+see above...
+
+
+<span class="quote">&gt; To be most useful, the dropdown
+&gt; list should be dynamic, i.e., automatically updated when Thunderbird changes
+&gt; the list.</span >
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="quote">&gt; 
+&gt; P.S.  I'm using Windows 7, which does not appear in the Bugzilla dropdown for
+&gt; OS.
+&gt; 
+&gt; Thanks, as always, for your consideration.
+&gt; </span >
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=23379.html#c2">
+            #2</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-10-16 22:23:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I did know about the Recent Folders list that is available as one of the
+choices in the left-hand Folders Tree pane, and that is indeed ROUGHLY the list
+I had in mind. It's true that clicking a QF tab to move to a folder does add
+that folder to the Recent list in that pane, but in my hands, dragging a
+message to a QF tab, which I do very frequently to move my messages into
+folders, does NOT add the folder to that list unless I also then refresh the
+list by switching the left pane to a different list, then back to the Recent
+list.  (I am now in TB v3.1.4, but I believe this has been true for at least
+several older versions as well.)
+
+However, I find it confusing to switch lists in the left pane because I almost
+always want to see all folders there, and sometimes forget to check which list
+I'm looking at.  Moreover, I work with several e-mail accounts (addresses) in
+the same TB window, and the list of Recent Folders in the left pane appends the
+account names to each folder, making the names too wide to fully display in the
+pane, as I have it configured as a fairly narrow column.
+
+There is another not-quite-identical &quot;Recent Folders&quot; list that I actually use
+much more often and doesn't require taking the mouse to the far left.  If you
+right-click on a message in the message list, or anywhere in the body while
+reading a message, the context menu contains three items that involve a
+&quot;Recent&quot; list, namely
+a) Move To -&gt; Recent
+b) Copy To -&gt; Recent
+c) Move/Copy to &quot;Last Destination Folder Name&quot; Again (the name in the quotes is
+presumably at the top of a list of Recent Folders).
+I would like it if dragging a message to a QF tab automatically pushed that
+destination folder onto the lists used by these context commands.  That's what
+I meant by my original suggestion (1).  At the moment, in my hands, it does
+not.
+
+My suggestion (2), as you realized, largely duplicated the &quot;left-pane Recent&quot;
+functionality.  I really only mentioned it because I saw references to it and
+wondered if I missed an existing feature, and how to create it on the QF
+toolbar, where its tab could be renamed, positioned, colored, and always
+unmistakably visible.  That would be &quot;nice to have,&quot; but my suggestion (1) is
+more important to my work.
+
+BTW, there are many Internet postings complaining that TB's internal &quot;Recent
+Folders&quot; list(s) are not maintained accurately.  For examples, see the output
+of Googling the phrase below, with the quotes as shown:
+
+thunderbird &quot;recent folders&quot; list
+
+I do not expect you to solve that problem, which I think is mostly a difference
+of opinion about what the algorithm should be concerning what actions cause a
+folder to be pushed onto the list.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=23379.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-17 10:07:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+
+<span class="quote">&gt; &gt; (1) When a folder is accessed via a QuickFolders tab, add it to Thunderbird's &gt; &gt; Recent Folders list.</span >
+
+As far as my testing goesm this already happens. I clicked various QF shortcuts
+and they were added to the recent folders list (the one on the folder tree).
+
+I think what you want is to add the (last folder jumped to) to the &quot;Move to
+Recent&quot; context menu. Note that this is obviously changing the designed
+behavior to only have folders in this list that mail was recently moved to (or
+at least what I understand).
+
+QF does not try to change the existing behavior of Thunderbird, so I feel a 
+bit uneasy about such a change.  However, closer to suggestion (2) it should be
+possible to add a &quot;Recent&quot; tab that contains all folders of the &quot;Recent
+Folders&quot; folder tree, would that be sufficient? As far as my tests go this list
+_both_ the folders visited and the folders that had mails dropped into them.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=23379.html#c4">
+            #4</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-10-17 10:24:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I fully agree and also see on my machine that clicking on QF shortcuts does add
+the folders to the recent folders list on the tree.  The action that is
+different is DRAGGING A MESSAGE TO A QF TAB; in my hands, this does NOT add the
+destination folder to the list )but I would like it to do so).  In contrast,
+moving a message by TB's existing mechanism (rightclick -&gt; Move To) DOES add
+the destination folder to the list.
+
+So, I don't think I'm asking for a changed behavior of Thunderbird.  I do think
+I'm asking for something a little different than your interpretation, so I
+apologize if I've been unclear.  You thought I wanted to 'add the (last folder
+jumped to) to the &quot;Move to Recent&quot; context menu', but I think that already
+happens.  What I really want is what I said in the  previous paragraph about
+dragging a message.
+
+Adding a &quot;Recent&quot; tab to QF would help if it includes folders that had messages
+recently dragged to their QF tabs, and I understand your distinction between
+the behavior of TB and the behavior of QF.
+
+However, if you're uneasy about making the change, please do not compromise
+your principles.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=23379.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-17 10:54:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; The action that is
+&gt;different is DRAGGING A MESSAGE TO A QF TAB; in my hands, this does NOT add the
+&gt;destination folder to the list )but I would like it to do so).  In contrast,
+&gt;moving a message by TB's existing mechanism (rightclick -&gt; Move To) DOES add
+&gt;the destination folder to the list.</span >
+
+I have just tested this and I got to observe the following behavior: if the
+recent mail view is displayed then your observation is correct. However if any
+other tree view is selected moving mail to a QF tab does indeed add the folder
+to the recent folders view. So I believe this is not so much a matter of the
+MRU timestamp of the folders not being updated, but that there is no event
+causing the folder tree to refresh. (In this case we might be able to file this
+as a bug). It could well be related to the way I handle ondrop events in order
+to facilitate submenu dragging etc. 
+
+One of the problems when programming this is the bubbling and propagating of
+events which makes it hard to predict which menu items will get mail drop
+events. But I can try and debug the move to event (via context menu) to  see
+what it does in addition to refresh the (recent) folder tree.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=23379.html#c6">
+            #6</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-10-19 06:16:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Recent&#32;Folder&#32;List&#32;after&#32;Drag&#32;Msg&#32;to&#32;QuickFolders&#32;Tab.gif" name="attach_6666" title="Recent Folders Lists - Two Different?">Created an attachment (id=6666)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6666&amp;action=edit" title="Recent Folders Lists - Two Different?">[details]</a></span>
+Recent Folders Lists - Two Different?
+
+Thanks for that latest note.  It really helps to focus the discussion.  And I
+understand that you are reluctant to undertake bug fixes that Mozilla should be
+doing.
+
+However, now I think I may be looking at a different list than you are.  The 
+attached screen shot shows the state of my TB (v3.1.4) and QF (v2.0) after the
+following steps:
+(1) While viewing my Inbox, I dragged a message from &quot;KAYAK&quot; (subject &quot;Your
+Price Alert&quot;, timestamp 2:23 a.m.) from my Inbox to the QF tab for the &quot;Yale&quot;
+folder (last green tab).
+(2) I changed the folder tree display from All to Recent.  The Yale folder did
+appear at the top of the Recent list at that point, agreeing with what you
+described you saw.  But then ...
+(3) I switched to viewing the Yale folder by clicking the Yale tab in the QF
+toolbar.  (This event alone would add Yale to the Recent list in the left pane,
+but in this example, it was already there.)
+(4) In the Yale folder's message list (shown in the screen shot) I
+right-clicked the message, then picked Move To -&gt; Recent, and got the dropdown
+folder list as shown in the screen shot, which does NOT include the Yale
+folder.  Note that in the same screen shot, Yale DOES appear in the left pane
+Recent list.  This seems to show that they are two different lists.  There also
+happens to be a second example in the same screen shot: the folder named
+&quot;AstraZeneca&quot; also appears on the left but not in the drop-down.  The two lists
+have different lengths - the dropdown seems to include more folders at the
+bottom, and I don't know what controls that.
+
+This behavior is the same for right-clicking on any message in any folder.
+
+The only way I have found so far to get the Yale folder to be added to the
+context menu's drop-drown list is to move something to Yale by using TB's own
+&quot;Move To&quot; command.  What I would have liked is for it to be added by my step
+(1), i.e., dragging a message to the Yale tab in the QF toolbar.
+
+I do understand that this may be a flaw in TB rather than a feature of QF. 
+It's not critical to my work flow, and I'm sure you have more important things
+to work on.
+
+Thanks again for your patience.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=23379.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-19 06:43:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+
+
+<span class="quote">&gt; have different lengths - the dropdown seems to include more folders at the
+&gt; bottom, and I don't know what controls that.</span >
+
+So far I have only looked at the source code of the list in the folder tree,
+and that is hard coded to a maximum of 15 locations.
+
+<span class="quote">&gt; 
+&gt; This behavior is the same for right-clicking on any message in any folder.
+&gt; 
+&gt; The only way I have found so far to get the Yale folder to be added to the
+&gt; context menu's drop-drown list is to move something to Yale by using TB's own
+&gt; &quot;Move To&quot; command.  What I would have liked is for it to be added by my step
+&gt; (1), i.e., dragging a message to the Yale tab in the QF toolbar.</span >
+
+<span class="quote">&gt; 
+&gt; I do understand that this may be a flaw in TB rather than a feature of QF. </span >
+
+It seems strange that the same operation (moving an email) has different
+actions attached, I would say the Move to Context menu does completely its own
+thing (I have hacked into the code, but not [yet] understood it). The treeview
+appears to take time stamps from the folders themselves which seems like a more
+reliable (if less performant) method. I have started to write some proof of
+concept code, copying the method that creates the list of recent folders but
+that is still WIP... if I get a workable prototype I will attach it to this bug
+for testing.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=23379.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-24 06:33:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF-2.1a.pre1.xpi" name="attach_6669" title="alpha version with recent tab">Created an attachment (id=6669)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6669&amp;action=edit" title="alpha version with recent tab">[details]</a></span>
+alpha version with recent tab
+
+Here is a test version, very rough, but I think it does what you want. You can
+not configure this yet, it is always shown and the label (Recent) and color are
+hard coded, but should be good enough for a functional test. I have decided to
+hard code the number of recent folders to 20, even if you start a new session.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=23379.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-27 03:17:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QF-2.1a.pre2.xpi" name="attach_6671" title="alpha version 2 with recent tab">Created an attachment (id=6671)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6671&amp;action=edit" title="alpha version 2 with recent tab">[details]</a></span>
+alpha version 2 with recent tab
+
+The recent tab is now rebuilt on right click (there might be a slight delay,
+please test if this is usable). Also in General Options there are additional
+settings when right clicking the Recent Tab check box. Most recent folder count
+now defaults to 12.
+
+Note: only English and German locales are working in this version! The others
+will throw an error when QF options is opened.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=23379.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-29 03:31:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-2.1a.pre5.xpi" name="attach_6674" title="2.1 Preview 5">Created an attachment (id=6674)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6674&amp;action=edit" title="2.1 Preview 5">[details]</a></span>
+2.1 Preview 5
+
+Final Prerelease for Recent Folder feature. Compatible with SeaMonkey 2+,
+Postbox 2+, Thunderbird 3+
+
+Added optional alphabetical sort feature for recent items.
+
+Right-clicking on the Recent Folder Option displays the additional options
+
+- show/hide &quot;Recent Folders&quot; Label
+- sort alphabetically
+- max number of recent folders displayed
+
+limitations:
+- color hardcoded (yellow)
+- position: this is always the first tab
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=23379.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-29 03:31:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QF-2.1a.pre5.xpi.1" name="attach_6675" title="2.1 Preview 5">Created an attachment (id=6675)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6675&amp;action=edit" title="2.1 Preview 5">[details]</a></span>
+2.1 Preview 5
+
+Final Prerelease for Recent Folder feature. Compatible with SeaMonkey 2+,
+Postbox 2+, Thunderbird 3+
+
+Added optional alphabetical sort feature for recent items.
+
+Right-clicking on the Recent Folder Option displays the additional options
+
+- show/hide &quot;Recent Folders&quot; Label
+- sort alphabetically
+- max number of recent folders displayed
+
+limitations:
+- color hardcoded (yellow)
+- position: this is always the first tab
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=23379.html#c12">
+            #12</a> From 
+          <a href="mailto:CLweb&#64;comcast.net">Charlie</a>
+          2010-10-29 05:05:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It works quite nicely.
+
+The option to present the list alphabetically is very helpful.  I have already
+expanded my list from 12 to 20, and don't always go for the few most recent, in
+which case it's easier to find the target on an alphabetical list.  It also
+groups similarly named targets like &quot;Inbox - account1&quot; with &quot;Inbox - account2&quot;,
+helping to find and pick the right one.  And, it makes a folder stay in
+approximately the same position in the list no matter how recently it's been
+accessed.  That helps me to find it fast, as opposed to having it jump to the
+top if I use it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=23379.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-11-08 23:41:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Version 2.1 has been reviewed today and officially implements recent Folders.
+By default, the recent folder tab is not shown, it has to be activated in
+General Options.
+
+On the reviewer's request I added support for Thunderbird version 2.
+
+Compatible with SeaMonkey 2+, Postbox 2+, Thunderbird 2+
+
+
+Right-clicking on the Recent Folder Option displays the additional options
+
+- show/hide &quot;Recent Folders&quot; Label
+- sort alphabetically
+- max number of recent folders displayed
+
+limitations:
+- color hardcoded (yellow)
+- position: this is always the first tab
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=23379.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-11-08 23:44:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=23170.html" title="RESOLVED DUPLICATE - Recently accessed folders">Bug 23170</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23379&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

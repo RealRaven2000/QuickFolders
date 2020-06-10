@@ -1,0 +1,1596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25089 &ndash; default forward quote can't be completely hidden</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25089&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25089">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25089">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25089">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25089">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25089</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">default forward quote can't be completely hidden</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-05-18 01:01:50</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-05-18 01:01:50">
+  <input type="hidden" name="longdesclength" value="26">
+  <input type="hidden" name="id" value="25089">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="default forward quote can't be completely hidden">default forward quote can't be completely hidden
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25089.html">25089</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25089&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25089">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+            <option value="bugzilla&#64;pigsgrame.de">bugzilla&#64;pigsgrame.de</option>
+            <option value="gzstb&#64;t-online.de">gzstb&#64;t-online.de</option>
+            <option value="macej.peter&#64;gmail.com">macej.peter&#64;gmail.com</option>
+            <option value="mozdev&#64;lichtjager.nl">mozdev&#64;lichtjager.nl</option>
+            <option value="seambeat&#64;gmail.com">seambeat&#64;gmail.com</option>
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="screenshot.jpg"
+               title="View the content of the attachment">
+          <b>screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (23.99 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7336"
+               title="Go to the comment associated with the attachment">2012-08-18 11:56</a>,
+
+            <a href="mailto:Fishever&#64;web.de"
+               title="Write an email to the creator of the attachment">Fishever&#64;web.de
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7336&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.2pre53.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">Latest Prerelease 0.9.2 prerelease 53</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (246.90 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7381"
+               title="Go to the comment associated with the attachment">2012-09-05 01:08</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7381&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="smartTemplate-0.9.2pre54.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 pre 54</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (250.42 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7382"
+               title="Go to the comment associated with the attachment">2012-09-05 11:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7382&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.2pre85.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 prerelease 85</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (284.80 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7399"
+               title="Go to the comment associated with the attachment">2012-10-26 01:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7399&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="smartTemplate-0.9.5.3pre31.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">st4 0.9.5 prerelase 31</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (335.50 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7899"
+               title="Go to the comment associated with the attachment">2014-07-25 01:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7899&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="smartTemplate-0.9.6.1pre4.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 4</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (336.77 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_7946"
+               title="Go to the comment associated with the attachment">2014-10-21 02:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7946&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="smartTemplate-0.9.7pre97.xpi"
+               title="View the content of the attachment">
+          <b>0.9.7 prerelease 97</b></a>
+
+          <span class="bz_attach_extra_info">
+              (340.14 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25089.html#attach_8040"
+               title="Go to the comment associated with the attachment">2015-04-15 03:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8040&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25089.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (5)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25089&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25089">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25089">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25089">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25089">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25089.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-08-18 05:52
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Reply quote works fine, but the forward quote can't be hidden completely, you
+can still see &quot;------original message------&quot; behinde your own made quote. error
+console shows mainly two types of warning: 1. Unknown property
+'mso-style-priority'. Declaration dropped. 2. unknown character panose-1 in
+rule @font-face.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25089.html#c1">
+            #1</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-08-18 11:38:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Are you using plain text mode? The 2 errors you are seeing are caused by
+content (contents of an email, possibly written with outlook) and are not
+relevant in this specific case. For better error console output and the ability
+to copy all error output as text, please install console2.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25089.html#c2">
+            #2</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-08-18 11:56:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="screenshot.jpg" name="attach_7336" title="screenshot">Created an attachment (id=7336)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7336&amp;action=edit" title="screenshot">[details]</a></span>
+screenshot
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25089.html#c3">
+            #3</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-08-18 11:58:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >thanks a lot for the willing to help, but I'm really not that kind of expert
+with thunderbird.......but still did what you asked me to do, downloaded
+console2 and write myself a clean simple mail online (html), then click forward
+button, and nothing shows up in the error console, and BTW, I'm using a chinese
+version thunderbird so even I can copy paste you the warnings, they're all in
+chinese......sorry dude......
+I made a screenshot, the chinese words in the picture means orignal message,
+which is the thing I would like to hide and I believe it's a part of the
+default quote. I don't know if this is just happening to me or because of the
+language version, the last version of the addon works fine, so hope this could
+help. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25089.html#c4">
+            #4</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-08-18 12:40:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c3">comment #3</a>)
+<span class="quote">&gt; thanks a lot for the willing to help, but I'm really not that kind of expert
+&gt; with thunderbird.......but still did what you asked me to do, downloaded
+&gt; console2 and write myself a clean simple mail online (html), then click forward
+&gt; button, and nothing shows up in the error console, </span >
+
+now that you have console2 installed, click on All (top left button) and then
+under Options, activate &quot;Report strict warning&quot; and &quot;Report all JS Exceptions&quot;
+
+<span class="quote">&gt; and BTW, I'm using a chinese
+&gt; version thunderbird so even I can copy paste you the warnings, they're all in
+&gt; chinese......sorry dude......</span >
+ok, but file names and line numbers should still be in English. :)
+
+<span class="quote">&gt; I made a screenshot, the chinese words in the picture means original message,
+&gt; which is the thing I would like to hide and I believe it's a part of the
+&gt; default quote. </span >
+
+Yes, we match that against the language resource that it comes from. I wonder
+whether the match doesn't work because of a string format problem caused by
+Chinese characters... will have to test that with Chinese locale... comparing
+strings with eastern languages can sometimes be problematic.
+
+<span class="quote">&gt; I don't know if this is just happening to me or because of the
+&gt; language version, the last version of the addon works fine, so hope this could
+&gt; help. </span >
+the last version does the same kind of matching for finding the quote header.
+Have you checked the option [x] &quot;Disable default THunderbird quote header&quot; at
+the bottom of the smartTemplate4 settings for Forwarding?
+
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25089.html#c5">
+            #5</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-08-18 13:24:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25089.html#c3">comment #3</a>)</span >
+ &quot;Report strict warning&quot; and &quot;Report all JS Exceptions&quot;
+<span class="quote">&gt; 
+&gt; &gt; and BTW, I'm using a chinese
+&gt; &gt; version thunderbird so even I can copy paste you the warnings, they're all in
+&gt; &gt; chinese......sorry dude......
+&gt; ok, but file names and line numbers should still be in English. :)
+&gt; </span >
+
+Ok I have tried this with simplified Chinese (zh-CN) but couldn't reproduce it.
+Which Chinese locale are you using? And which version of Thunderbird?
+
+Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25089.html#c6">
+            #6</a> From 
+          <a href="mailto:seambeat&#64;gmail.com">seambeat&#64;gmail.com</a>
+          2012-09-05 00:12:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+
+I experience the same problem. When I forward a message, SmartTemplate4 inserts
+its header but doesn't remove the original one. It seams to swallow first two
+lines of the original, but while they are empty I'm not sure about it. 
+
+Note 1: In preferences, the check box &quot;Disable default Thunderbird quote
+header&quot; is checked. 
+
+Note 2: The Error Console is empty (cleared before forward, empty after it)
+
+Note 3: Reply header works fine.
+
+The message being forwarded looks like this:
+
+-----------------------------------------------------------------------------
+
+
+----- Original Message -----
+From: <a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>
+To: <a href="mailto:seambeat@gmail.com">seambeat@gmail.com</a>
+Sent:  Wed Sep 05 2012 08:37:39 GMT+0200
+Subject: Bugzilla@Mozdev: confirm account creation-------- Original Message
+--------
+Subject: Bugzilla@Mozdev: confirm account creation
+Date: Tue,  4 Sep 2012 23:37:39 -0700 (PDT)
+From: <a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>
+To: <a href="mailto:seambeat@gmail.com">seambeat@gmail.com</a>
+
+&lt;message body&gt;
+-----------------------------------------------------------------------------
+
+The first 2 empty lines belong to the header I defined in SmartTemplate4. They
+are OK. Then comes the actual (non empty) content of the template (5 lines) -
+OK. The original Thunderbird header is appended right behind the
+SmartTemplates4's one without newline - this is the bug, the original header
+should be removed.
+
+I'm on Linux/Ubuntu 12.04/Gnome 3 having Thunderbird 15.0 with SmartTemplate4
+0.9.1.
+
+PS: SmartTemplate4 is great. Found it recently, I like the possibility to
+define the header completely by my self.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25089.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-09-05 01:08:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre53.xpi" name="attach_7381" title="Latest Prerelease 0.9.2 prerelease 53">Created an attachment (id=7381)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7381&amp;action=edit" title="Latest Prerelease 0.9.2 prerelease 53">[details]</a></span>
+Latest Prerelease 0.9.2 prerelease 53
+
+Please use the latest version to check whether it is gone. Note that you have
+to move the &quot;quote header&quot; part that you are referring to, to the new textbox
+at the top. 
+
+The bottom text box is for the salutation and other parts of the reply message
+body.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25089.html#c8">
+            #8</a> From 
+          <a href="mailto:seambeat&#64;gmail.com">seambeat&#64;gmail.com</a>
+          2012-09-05 04:47:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.2pre53.xpi" name="attach_7381" title="Latest Prerelease 0.9.2 prerelease 53">attachment (id=7381)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7381&amp;action=edit" title="Latest Prerelease 0.9.2 prerelease 53">[details]</a></span> [details]
+&gt; Latest Prerelease 0.9.2 prerelease 53
+&gt; 
+&gt; Please use the latest version to check whether it is gone. Note that you have
+&gt; to move the &quot;quote header&quot; part that you are referring to, to the new textbox
+&gt; at the top. 
+&gt; 
+&gt; The bottom text box is for the salutation and other parts of the reply message
+&gt; body.
+&gt; </span >
+
+It works as expected. Both reply and forward are OK. Thanks. :)
+
+There is just one more inconvenience. My templates for both reply and forward
+are the same:
+
+2 empty lines (just to have a place I can type to)
+5 lines with header data (separator, From, To, Sent, Subject)
+1 empty line (to separate the header from the original message body)
+
+When I do reply, I get the reply message with the cursor on the first line at
+position (about) 80, i.e. at the end of the line which is actually empty (no
+spaces, just newline). I need to hit a key or click to the window, to get the
+cursor to the beginning of the line, where it should be. It is not an issue
+since I still need to hit a key to write the reply, but it looks strange.
+
+The forward is OK, the focus is in the &quot;To&quot; address row so I can type the
+address I want to forward to.
+
+This is probably a TB/GTK thing but maybe you can &quot;workabout it&quot;.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25089.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-09-05 07:09:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25126.html" title="RESOLVED DUPLICATE - &quot;Disable Standard Mailheaders&quot; not workling in TB 16">Bug 25126</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25089.html#c10">
+            #10</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-09-05 09:43:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi there. I'm the reporter of this bug. Have tried the latest version been
+posted (pre53), pity it didn't work for me. I can't reach the setting option,
+it said error of XML analising at position:
+chrome://smarttemplate4/content/settings.xul
+Think I met this before and that time I asked for your help, too. By sending me
+another version solved this problem. Maybe it's the language thing.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25089.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-09-05 10:07:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c10">comment #10</a>)
+<span class="quote">&gt; Hi there. I'm the reporter of this bug. Have tried the latest version been
+&gt; posted (pre53), pity it didn't work for me. I can't reach the setting option,
+&gt; it said error of XML analising at position:
+&gt; chrome://smarttemplate4/content/settings.xul
+&gt; Think I met this before and that time I asked for your help, too. By sending me
+&gt; another version solved this problem. Maybe it's the language thing.
+&gt; </span >
+Which line, and which language?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25089.html#c12">
+            #12</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-09-05 10:24:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm using thunderbird 15.0 on windows 7 32bit, simplified chinese (zh-Cn)
+Error is at row 180, column 12.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25089.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-09-05 11:01:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre54.xpi" name="attach_7382" title="0.9.2 pre 54">Created an attachment (id=7382)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7382&amp;action=edit" title="0.9.2 pre 54">[details]</a></span>
+0.9.2 pre 54
+
+This one includes the missing simplified chinese Strings, fresh from our
+translator
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25089.html#c14">
+            #14</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-09-05 13:30:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thanks for the new version. It works now. But my old problem is still there
+(like the screenshot I uploaded), forward mode works still not completely fine
+with me. So now maybe we can say this is because of some other extensions I've
+used but not a bug of ST4. Anyway, still thanks a lot for the help.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25089.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-09-06 05:47:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=25127.html" title="RESOLVED DUPLICATE - Forward message looks different than reply">Bug 25127</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25089.html#c16">
+            #16</a> From 
+          <a href="mailto:macej.peter&#64;gmail.com">PeterM</a>
+          2012-10-01 04:15:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >0.9.2pre54
+Thank you for your effort. I can confirm the original problem still exists. But
+I think I've found a reason.
+I'm using Slovakian (sk-SK) TB 15.0.1. When forwarding, the original quote
+appears under the one from SmartTemplate.
+
+It seems that forward delimiter text is no longer taken from resource 1041 but
+(surprisingly) from mailnews.reply_header_originalmessage. See
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=776438">https://bugzilla.mozilla.org/show_bug.cgi?id=776438</a>
+
+In my case, resource 1041 returns:
+---- Pôvodná správa ----
+but mailnews.reply_header_originalmessage returns:
+-------- Pôvodná správa --- Original Message --------
+
+They are not the same so the quote deletion fails.
+
+Now the technical solution.
+ST4 uses bndl.GetStringFromID(1041) in delForwardHeader function. For newer
+versions of TB it should probably read from
+mailnews.reply_header_originalmessage
+
+When I placed the following line:
+origMsgDelimiter =
+Components.classes[&quot;@mozilla.org/preferences-service;1&quot;].getService(Components.interfaces.nsIPrefBranch).getComplexValue(&quot;mailnews.reply_header_originalmessage&quot;,
+Components.interfaces.nsIPrefLocalizedString).data;
+
+after line:
+let origMsgDelimiter = bndl.GetStringFromID(1041);
+
+then everything worked fine. Note, I didn't use:
+origMsgDelimiter =
+SmartTemplate4.pref.getCom(&quot;mailnews.reply_header_originalmessage&quot;,
+origMsgDelimiter);
+
+It's because my mailnews.reply_header_originalmessage is not explicitly
+redefined and it uses default value. It such a case, getCom returns
+chrome://messenger/locale/messengercompose/composeMsgs.properties
+
+To correctly resolve localized string, the nsIPrefLocalizedString should be
+used instead of nsISupportsString in getCom function. See
+<a href="https://developer.mozilla.org/en-US/docs/Code_snippets/Preferences">https://developer.mozilla.org/en-US/docs/Code_snippets/Preferences</a>
+I thing the getCom should be modified with nsIPrefLocalizedString to avoid
+similar problems in other parts of code.
+
+Hope this helps to fix the problem.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25089.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-10-26 00:21:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c16">comment #16</a>)
+<span class="quote">&gt; 0.9.2pre54
+&gt; Thank you for your effort. I can confirm the original problem still exists. But
+&gt; I think I've found a reason.
+&gt; I'm using Slovakian (sk-SK) TB 15.0.1. When forwarding, the original quote
+&gt; appears under the one from SmartTemplate.
+&gt; 
+&gt; It seems that forward delimiter text is no longer taken from resource 1041 but
+&gt; (surprisingly) from mailnews.reply_header_originalmessage. See
+&gt; <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=776438">https://bugzilla.mozilla.org/show_bug.cgi?id=776438</a></span >
+
+<span class="quote">&gt; It's because my mailnews.reply_header_originalmessage is not explicitly
+&gt; redefined and it uses default value. It such a case, getCom returns
+&gt; chrome://messenger/locale/messengercompose/composeMsgs.properties
+&gt; 
+&gt; To correctly resolve localized string, the nsIPrefLocalizedString should be
+&gt; used instead of nsISupportsString in getCom function. See
+&gt; <a href="https://developer.mozilla.org/en-US/docs/Code_snippets/Preferences">https://developer.mozilla.org/en-US/docs/Code_snippets/Preferences</a>
+&gt; I thing the getCom should be modified with nsIPrefLocalizedString to avoid
+&gt; similar problems in other parts of code.
+&gt; 
+&gt; Hope this helps to fix the problem.
+&gt; </span >
+
+Wow that's been pretty detailed, thanks. I will look into this, need to digest
+it first :)
+
+When you said &quot;newer version&quot; do you have any idea from which version number
+onwards this applies?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25089.html#c18">
+            #18</a> From 
+          <a href="mailto:macej.peter&#64;gmail.com">PeterM</a>
+          2012-10-26 00:36:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c17">comment #17</a>)
+<span class="quote">&gt; When you said &quot;newer version&quot; do you have any idea from which version number
+&gt; onwards this applies?</span >
+
+According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=776438">https://bugzilla.mozilla.org/show_bug.cgi?id=776438</a> this started
+in TB 14.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25089.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-10-26 01:55:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre85.xpi" name="attach_7399" title="0.9.2 prerelease 85">Created an attachment (id=7399)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7399&amp;action=edit" title="0.9.2 prerelease 85">[details]</a></span>
+0.9.2 prerelease 85
+
+Attempt to fix this is by using mailnews.reply_header_originalmessage according
+to Thunderbird [Bug 776438] 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25089.html#c20">
+            #20</a> From 
+          <a href="mailto:Fishever&#64;web.de">Fishever&#64;web.de</a>
+          2012-10-26 02:10:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c19">comment #19</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.2pre85.xpi" name="attach_7399" title="0.9.2 prerelease 85">attachment (id=7399)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7399&amp;action=edit" title="0.9.2 prerelease 85">[details]</a></span> [details]
+&gt; 0.9.2 prerelease 85
+&gt; 
+&gt; Attempt to fix this is by using mailnews.reply_header_originalmessage according
+&gt; to Thunderbird [Bug 776438] 
+&gt; </span >
+
+Thanks a lot for the effort. This version now works perfect with me. So I think
+bug fixed.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25089.html#c21">
+            #21</a> From 
+          <a href="mailto:macej.peter&#64;gmail.com">PeterM</a>
+          2012-10-26 02:12:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25089.html#c19">comment #19</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.2pre85.xpi" name="attach_7399" title="0.9.2 prerelease 85">attachment (id=7399)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7399&amp;action=edit" title="0.9.2 prerelease 85">[details]</a></span> [details]
+&gt; 0.9.2 prerelease 85</span >
+
+Yes, this version works fine. Thank you.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25089.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-07-24 12:42:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Reopening this bug, apparently we have the same problem in Thunderbird 31.0 -
+when forwarding emails the original quote header is not removed anymore.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25089.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-07-25 01:59:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.5.3pre31.xpi" name="attach_7899" title="st4 0.9.5 prerelase 31">Created an attachment (id=7899)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7899&amp;action=edit" title="st4 0.9.5 prerelase 31">[details]</a></span>
+st4 0.9.5 prerelase 31
+
+This fixes the problem on Thunderbird 31.0. Apparently there is a new
+forwarding header &quot;---- Forwarwded Message ---- &quot; which is different from the
+reply header &quot;----- Original Message -----&quot;
+
+See
+<a href="http://mxr.mozilla.org/comm-central/source/suite/locales/en-US/chrome/mailnews/compose/composeMsgs.properties#285">http://mxr.mozilla.org/comm-central/source/suite/locales/en-US/chrome/mailnews/compose/composeMsgs.properties#285</a>
+
+
+mailnews.reply_header_originalmessage=-------- Original Message --------
+mailnews.forward_header_originalmessage=-------- Forwarded Message --------
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25089.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-10-21 02:20:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre4.xpi" name="attach_7946" title="0.9.6.1 prerelease 4">Created an attachment (id=7946)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7946&amp;action=edit" title="0.9.6.1 prerelease 4">[details]</a></span>
+0.9.6.1 prerelease 4
+
+Additional version for users of older versions of Thunderbird (Tb 24). This
+used to throw an error when looking for the &quot;forward&quot; header. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25089.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-15 03:59:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.7pre97.xpi" name="attach_8040" title="0.9.7 prerelease 97">Created an attachment (id=8040)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8040&amp;action=edit" title="0.9.7 prerelease 97">[details]</a></span>
+0.9.7 prerelease 97
+
+I was still able to reproduce the bug in Postbox with plain text mode. It seems
+ST4 was a little to conservative in deleting plain text nodes so I remedied
+this.
+
+There is a config new setting 
+
+extensions.smartTemplate4.plainText.preserveTextNodes
+
+which is now defaulted to &quot;false&quot;. Set to &quot;true&quot; for getting the old behavior
+back if it deletes &quot;too much&quot;.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

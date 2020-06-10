@@ -1,0 +1,1839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25536 &ndash; Not working in Earlybird 25.0a2 (2013-08-14)</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25536&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25536">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25536">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25536">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25536">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25536</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Not working in Earlybird 25.0a2 (2013-08-14)</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-09-05 18:40:30</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25536&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-09-05 18:40:30">
+  <input type="hidden" name="longdesclength" value="27">
+  <input type="hidden" name="id" value="25536">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Not working in Earlybird 25.0a2 (2013-08-14)">Not working in Earlybird 25.0a2 (2013-08-14)
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25536.html">25536</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="blocker">blocker
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25536&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25536">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:webweaver64&#64;gmail.com">Shari Smith &lt;webweaver64&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="hckpost&#64;freeola.net">hckpost&#64;freeola.net</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.12pre56.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.12 prerelase 56</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (472.61 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25536.html#attach_7653"
+               title="Go to the comment associated with the attachment">2013-08-15 13:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7653&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.12pre96.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.12 Prerelase 96</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (483.78 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25536.html#attach_7657"
+               title="Go to the comment associated with the attachment">2013-09-02 02:16</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7657&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.12pre103.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.12 Prerelase 103</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (483.82 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25536.html#attach_7658"
+               title="Go to the comment associated with the attachment">2013-09-02 06:50</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7658&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="quickfolders_prerelease_rendering_issue.jpg"
+               title="View the content of the attachment">
+          <b>prerelease 103 - rendering issue</b></a>
+
+          <span class="bz_attach_extra_info">
+              (457.67 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25536.html#attach_7659"
+               title="Go to the comment associated with the attachment">2013-09-02 09:22</a>,
+
+            <a href="mailto:hckpost&#64;freeola.net"
+               title="Write an email to the creator of the attachment">helkav
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7659&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-3.12pre110.xpi"
+               title="View the content of the attachment">
+          <b>3.12 Prerelase 110</b></a>
+
+          <span class="bz_attach_extra_info">
+              (484.76 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25536.html#attach_7660"
+               title="Go to the comment associated with the attachment">2013-09-02 13:50</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7660&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25536.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (3)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25536&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25536&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25536">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25536">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25536">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25536">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25536.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2013-08-15 12:07
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >When updated all tabs were gone, and I'm unable to add them again.
+I tried to find version 3.3 which is listed on your site as the latest version
+however it's not showing up anywhere.
+
+I disabled all addons to double check it isn't working.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25536.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-08-15 13:15:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >According to 
+
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/</a>
+
+3.11 is the latest released version
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25536.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-08-15 13:16:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.12pre56.xpi.1" name="attach_7653" title="3.12 prerelase 56">Created an attachment (id=7653)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7653&amp;action=edit" title="3.12 prerelase 56">[details]</a></span>
+3.12 prerelase 56
+
+try this version - it might be a duplicate of [<span class="bz_closed"><a href="show_bug.cgi@id=25533.html" title="RESOLVED FIXED - QF 3.12pre55 doesn't work with SeaMonkey 2.23a1">bug 25533</a></span>]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25536.html#c3">
+            #3</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-08-20 02:31:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+I had the same issue
+
+I have downloaded the prerelease version indicated and tried it out in Aurora
+26.0a1
+
+It seems to be working fine...have just briefly tested it...I will keep testing
+it over the next few days and report back...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25536.html#c4">
+            #4</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-02 01:41:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I downloaded the pre-release and that worked for a few daily updates and now it
+doesn't work again.
+
+This must be very frustrating for add-on developers. I strongly feel TB should
+a minimum backward-compatibility so you don't keep having to re-write your
+add-ons every time there's an update
+
+I have gone back to EarlyBird for the moment, I will watch and see if another
+pre-release comes out so I can go back to Daily
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25536.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 02:16:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.12pre96.xpi" name="attach_7657" title="3.12 Prerelase 96">Created an attachment (id=7657)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7657&amp;action=edit" title="3.12 Prerelase 96">[details]</a></span>
+3.12 Prerelase 96
+
+The latest prerelease. Works well with Tb 17.0.8 and Earlybird. Did not test on
+daily.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25536.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 02:36:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c4">comment #4</a>)
+<span class="quote">&gt; I downloaded the pre-release and that worked for a few daily updates and now it
+&gt; doesn't work again.</span >
+
+try the new prerelease, if you get the same oriblem, please check tools &gt; error
+console. I highly recommend installing console2 and then disabling content
+logging for more meaningful results.
+
+<span class="quote">&gt; This must be very frustrating for add-on developers. I strongly feel TB should
+&gt; a minimum backward-compatibility so you don't keep having to re-write your
+&gt; add-ons every time there's an update.</span >
+
+it is not easy as there are constant improvements and cleanups in gecko's code
+base, so as addons developers we have to stay &quot;on the ball&quot;!
+
+<span class="quote">&gt; 
+&gt; I have gone back to EarlyBird for the moment, I will watch and see if another
+&gt; pre-release comes out so I can go back to Daily
+&gt; </span >
+
+yeah, try pre96 I, have a feeling there is at least one Tb code-base related
+fix that might help. Note: only most (but not all) locales are complete in this
+version, so if you use Polish or Asian locales it might not work for you (You
+would get missing entities errors). I have tried to find out which ones exactly
+but babelzilla is currently unavailabe - the perks of being non-commercial ;-)
+
+English and West-European versions should be fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25536.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 03:21:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c4">comment #4</a>)
+&gt; &gt; I downloaded the pre-release and that worked for a few daily updates and now it
+&gt; &gt; doesn't work again.
+&gt; 
+&gt; try the new prerelease, if you get the same oriblem, please check tools &gt; error
+&gt; console. I highly recommend installing console2 and then disabling content
+&gt; logging for more meaningful results.
+&gt; 
+&gt; &gt; This must be very frustrating for add-on developers. I strongly feel TB should
+&gt; &gt; a minimum backward-compatibility so you don't keep having to re-write your
+&gt; &gt; add-ons every time there's an update.
+&gt; 
+&gt; it is not easy as there are constant improvements and cleanups in gecko's code
+&gt; base, so as addons developers we have to stay &quot;on the ball&quot;!
+&gt; </span >
+I have just run it on a VM and I can reproduce the problem, seems a major one
+(and it could just be a temporary bug in Thunderbird):
+
+Error: ReferenceError: GetMsgFolderFromUri is not defined
+Source file: chrome://quickfolders/content/quickfolders-model.js
+Line: 170
+
+if this is indeed the case that would pose a BIG problem for all addons that
+deal with folders...
+
+I have sent a question to tb-planning, but this should really be reported as a
+bug to Thunderbird core, as that is potentially a huge problem. The other
+recent breakage by converting nsIMsgAccount from nsIMutableArray to nsIArray
+was relatively easy to fix but raises soem obvious concerns on how these
+changes are published to the Addon Developers community.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25536.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 06:50:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.12pre103.xpi" name="attach_7658" title="3.12 Prerelase 103">Created an attachment (id=7658)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7658&amp;action=edit" title="3.12 Prerelase 103">[details]</a></span>
+3.12 Prerelase 103
+
+After some back and forth with the #maildev list it surfaced that widgetglue.js
+had been gotten rid off. I can potentially imagine that this will affect quite
+a big amount of Addons, so I think raising a bug on this is in order.
+
+I also had to rewrite portions of code for quickFilters and of course branch
+out the code for Postbox as it did not have the module &quot;MailUtils.js&quot; which has
+the missing mail folder function.
+
+Tested in 
+Tb 17.0.8, Tb 24.0, Tb 3.1.20 and Tb 26.0a1 (2013-09-02) 
+Postbox 3.0.8
+SeaMonkey 2.19
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25536.html#c9">
+            #9</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-02 09:22:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolders_prerelease_rendering_issue.jpg" name="attach_7659" title="prerelease 103 - rendering issue">Created an attachment (id=7659)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7659&amp;action=edit" title="prerelease 103 - rendering issue">[details]</a></span>
+prerelease 103 - rendering issue
+
+I have just retested with the latest pre-release 103 as suggested, and although
+the folders have been restored, there is a rendering issue: see attached file
+
+this update of Daily has JUST fixed a bug # 909136 I previously reported with
+rendering, which seems too much of a coincidence for me
+
+Daily version 26.0a1 (2013-09-02)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25536.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 09:28:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class=""><a href="quickfolders_prerelease_rendering_issue.jpg" name="attach_7659" title="prerelease 103 - rendering issue">attachment (id=7659)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7659&amp;action=edit" title="prerelease 103 - rendering issue">[details]</a></span> [details]
+&gt; prerelease 103 - rendering issue
+&gt; 
+&gt; I have just retested with the latest pre-release 103 as suggested, and although
+&gt; the folders have been restored, there is a rendering issue: see attached file
+&gt; 
+&gt; this update of Daily has JUST fixed a bug # 909136 I previously reported with
+&gt; rendering, which seems too much of a coincidence for me
+&gt; 
+&gt; Daily version 26.0a1 (2013-09-02)
+&gt; </span >
+
+
+Before you change anything, can you make a screenshot of the &quot;bling my tabs&quot;
+settings please?
+
+Just set a different standard tab color and you should be good to go. There was
+some fundamental changes in tab coloring, and the translation from the old
+colors to the new ones seems to be not quite up to par yet.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25536.html#c11">
+            #11</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-02 09:46:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have just retested with the latest pre-release 103 as suggested, and although
+the folders have been restored, there is a rendering issue:see attached file
+
+(In reply to <a href="show_bug.cgi@id=25536.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c9">comment #9</a>)
+&gt; &gt; Created an <span class=""><a href="quickfolders_prerelease_rendering_issue.jpg" name="attach_7659" title="prerelease 103 - rendering issue">attachment (id=7659)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7659&amp;action=edit" title="prerelease 103 - rendering issue">[details]</a></span> [details] [details]
+&gt; &gt; prerelease 103 - rendering issue
+&gt; &gt; 
+&gt; &gt; I have just retested with the latest pre-release 103 as suggested, and although
+&gt; &gt; the folders have been restored, there is a rendering issue: see attached file
+&gt; &gt; 
+&gt; &gt; this update of Daily has JUST fixed a bug # 909136 I previously reported with
+&gt; &gt; rendering, which seems too much of a coincidence for me
+&gt; &gt; 
+&gt; &gt; Daily version 26.0a1 (2013-09-02)
+&gt; &gt; 
+&gt; 
+&gt; 
+&gt; Before you change anything, can you make a screenshot of the &quot;bling my tabs&quot;
+&gt; settings please?
+&gt; 
+&gt; Just set a different standard tab color and you should be good to go. There was
+&gt; some fundamental changes in tab coloring, and the translation from the old
+&gt; colors to the new ones seems to be not quite up to par yet.
+&gt; </span >
+
+ah yes that sorted it, so obviously no biggie then. there is a seperate issue
+with TB itself where if I increase font size some dialogs are too 'long' but
+without a scrollbar I have to guess what's at the bottom. I'm just passing this
+on because there's no point me attaching the screenshot you want. 
+
+just to confirm changing my standard tab colour back to white sorted the issue-
+should have been obvious really!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25536.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 10:03:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c11">comment #11</a>)
+<span class="quote">&gt; I have just retested with the latest pre-release 103 as suggested, and although
+&gt; the folders have been restored, there is a rendering issue:see attached file
+&gt; 
+&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c10">comment #10</a>)
+&gt; &gt; 
+&gt; &gt; Before you change anything, can you make a screenshot of the &quot;bling my tabs&quot;
+&gt; &gt; settings please?
+&gt; &gt; 
+&gt; &gt; Just set a different standard tab color and you should be good to go. There was
+&gt; &gt; some fundamental changes in tab coloring, and the translation from the old
+&gt; &gt; colors to the new ones seems to be not quite up to par yet.
+&gt; &gt; 
+&gt; 
+&gt; ah yes that sorted it, so obviously no biggie then. there is a seperate issue
+&gt; with TB itself where if I increase font size some dialogs are too 'long' but
+&gt; without a scrollbar I have to guess what's at the bottom. I'm just passing this
+&gt; on because there's no point me attaching the screenshot you want. 
+&gt; 
+&gt; just to confirm changing my standard tab colour back to white sorted the issue-
+&gt; should have been obvious really!
+&gt; </span >
+
+It would have been interesting to know what your previous color choice for
+Standard tabs was as I don't really want the same to happen to the other 24,000
+users :-)
+
+Note: You have a lot of Virtual Tabs. Do you ever experience performance issues
+with these?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25536.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-02 13:50:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.12pre110.xpi" name="attach_7660" title="3.12 Prerelase 110">Created an attachment (id=7660)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7660&amp;action=edit" title="3.12 Prerelase 110">[details]</a></span>
+3.12 Prerelase 110
+
+I had a major re-think of the coloring system and create an &quot;import&quot; routine
+for pre 3.12 installations. More importantly, I came to the conclusion, that I
+actually need 5 palette types instead of 4. Hope it is clear from the &quot;Bling my
+Tabs&quot; options page.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25536.html#c14">
+            #14</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-03 01:45:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c13">comment #13</a>)
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders-tb-pb-sm-3.12pre110.xpi" name="attach_7660" title="3.12 Prerelase 110">attachment (id=7660)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7660&amp;action=edit" title="3.12 Prerelase 110">[details]</a></span> [details]
+&gt; 3.12 Prerelase 110
+&gt; 
+&gt; I had a major re-think of the coloring system and create an &quot;import&quot; routine
+&gt; for pre 3.12 installations. More importantly, I came to the conclusion, that I
+&gt; actually need 5 palette types instead of 4. Hope it is clear from the &quot;Bling my
+&gt; Tabs&quot; options page.
+&gt; </span >
+
+(In reply to <a href="show_bug.cgi@id=25536.html#c12">comment #12</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c11">comment #11</a>)
+&gt; &gt; I have just retested with the latest pre-release 103 as suggested, and although
+&gt; &gt; the folders have been restored, there is a rendering issue:see attached file
+&gt; &gt; 
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c10">comment #10</a>)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Before you change anything, can you make a screenshot of the &quot;bling my tabs&quot;
+&gt; &gt; &gt; settings please?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Just set a different standard tab color and you should be good to go. There was
+&gt; &gt; &gt; some fundamental changes in tab coloring, and the translation from the old
+&gt; &gt; &gt; colors to the new ones seems to be not quite up to par yet.
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; ah yes that sorted it, so obviously no biggie then. there is a seperate issue
+&gt; &gt; with TB itself where if I increase font size some dialogs are too 'long' but
+&gt; &gt; without a scrollbar I have to guess what's at the bottom. I'm just passing this
+&gt; &gt; on because there's no point me attaching the screenshot you want. 
+&gt; &gt; 
+&gt; &gt; just to confirm changing my standard tab colour back to white sorted the issue-
+&gt; &gt; should have been obvious really!
+&gt; &gt; 
+&gt; 
+&gt; It would have been interesting to know what your previous color choice for
+&gt; Standard tabs was as I don't really want the same to happen to the other 24,000
+&gt; users :-)
+&gt; 
+&gt; Note: You have a lot of Virtual Tabs. Do you ever experience performance issues
+&gt; with these?
+&gt; </span >
+
+I do have several virtual tabs (I presume you mean tabs created from virtual
+folders?) I don't know how you could see that, but no I haven't noticed any
+performance issues to do with quickfolders. The combination of virtual folders
+and quickfolders helps me keep my TB manageable. 
+
+The only issue is that mark folder read on a virtual quickfolder tab (phew)
+doesn't work correctly. it takes the unread indicator from the label but the
+unread mails still remain unread
+
+P.S. I think my tab colour was white before I upgraded last time, when I went
+in it had changed to navy/black
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25536.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-03 03:37:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c14">comment #14</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c13">comment #13</a>)
+&gt; &gt; Note: You have a lot of Virtual Tabs. Do you ever experience performance issues
+&gt; &gt; with these?
+&gt; &gt; 
+&gt; 
+&gt; I do have several virtual tabs (I presume you mean tabs created from virtual
+&gt; folders?) I don't know how you could see that, </span >
+
+I am psychic! ;)
+
+Actually the icons were a good a giveaway.
+
+<span class="quote">&gt; I haven't noticed any
+&gt; performance issues to do with quickfolders. The combination of virtual folders
+&gt; and quickfolders helps me keep my TB manageable. </span >
+
+cool. Another nice use case.
+
+<span class="quote">&gt; 
+&gt; The only issue is that mark folder read on a virtual quickfolder tab (phew)
+&gt; doesn't work correctly. it takes the unread indicator from the label but the
+&gt; unread mails still remain unread</span >
+
+This might be Thunderbird bug but feel free to file a separate bug here. Who
+knows maybe it can be fixed for the 3.12 release, there is still a bit of
+function creep:
+
+<a href="http://quickfolders.mozdev.org/version.html#3.12">http://quickfolders.mozdev.org/version.html#3.12</a>
+
+<span class="quote">&gt; 
+&gt; P.S. I think my tab colour was white before I upgraded last time, when I went
+&gt; in it had changed to navy/black
+&gt; </span >
+
+Okay, I think I got the upgrade covered quite well in code. Need to run some
+more tests on fresh profiles though.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25536.html#c16">
+            #16</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-03 03:50:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >ok please let me know of any testing I can help with
+
+I currently keep latest releases of Daily / Early / TB on my system : Win 7
+64bit
+
+however I also have a linux / win xp dual boot on an old laptop (haven't
+installed TB on those yet, but have been meaning to)
+
+so any of those systems / configs you need specific tests on, just let me know
+
+I have to be honest I haven't donated yet (and this is an add-on worthy of it)
+as I have already gone over my software budget for this year...but maybe this
+way I can donate in time instead for the moment
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25536.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-03 04:04:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c16">comment #16</a>)
+<span class="quote">&gt; ok please let me know of any testing I can help with
+&gt; 
+&gt; I currently keep latest releases of Daily / Early / TB on my system : Win 7
+&gt; 64bit however I also have a linux / win xp dual boot on an old laptop (haven't
+&gt; installed TB on those yet, but have been meaning to)
+&gt; 
+&gt; so any of those systems / configs you need specific tests on, just let me know</span >
+
+okay we will see - I am using the free virtualbox and have an XP and a Ubuntu
+virtual machine, both of which are running constantly running out of space (I
+partitioned too small).
+
+
+<span class="quote">&gt; I have to be honest I haven't donated yet (and this is an add-on worthy of it)
+&gt; as I have already gone over my software budget for this year...but maybe this
+&gt; way I can donate in time instead for the moment</span >
+
+Don't worry :) bug filing is also very valuable. If you want to do something
+good for me leave a 5star reply, and as always, recommend my addons!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25536.html#c18">
+            #18</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-03 04:22:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >BTW re the virtual folders &quot;mark as read&quot; - that option is simply not available
+in TB daily (not in the context menu anyway, and I can't see anywhere else it
+would be) so perhaps it's best to just disable it on a quickfolders virtual tab
+until/if it becomes available in TB?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25536.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-03 07:52:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c18">comment #18</a>)
+<span class="quote">&gt; BTW re the virtual folders &quot;mark as read&quot; - that option is simply not available
+&gt; in TB daily (not in the context menu anyway, and I can't see anywhere else it
+&gt; would be) so perhaps it's best to just disable it on a quickfolders virtual tab
+&gt; until/if it becomes available in TB?
+&gt; </span >
+
+good idea. should be possible....
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25536.html#c20">
+            #20</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-09-03 21:28:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+
+I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+is QF 3.12pre56. So:
+- How useful would it be to upgrade? (44 patchlevels are enough to give me
+pause)
+- Is there a central place which can be checked at any time for the latest
+bleeding-edge development version of QuickFolders? (and yes, I know that
+bleeding-edge versions are less stable than release versions, but I'm OK with
+that, because OTOH by using those same bleeding-edge versions and testing them
+in all possible ways one has a better chance to find and fix bugs early, before
+they bite the general public).
+
+And --- sorry for the bugspam. ;-/
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25536.html#c21">
+            #21</a> From 
+          <a href="mailto:hckpost&#64;freeola.net">helkav</a>
+          2013-09-04 01:18:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>)
+<span class="quote">&gt; Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+&gt; SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+&gt; 
+&gt; I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+&gt; is QF 3.12pre56. So:
+&gt; - How useful would it be to upgrade? (44 patchlevels are enough to give me
+&gt; pause)
+&gt; - Is there a central place which can be checked at any time for the latest
+&gt; bleeding-edge development version of QuickFolders? (and yes, I know that
+&gt; bleeding-edge versions are less stable than release versions, but I'm OK with
+&gt; that, because OTOH by using those same bleeding-edge versions and testing them
+&gt; in all possible ways one has a better chance to find and fix bugs early, before
+&gt; they bite the general public).
+&gt; 
+&gt; And --- sorry for the bugspam. ;-/
+&gt; </span >
+
+Hope I'm not jumping in incorrectly here (I'm not the dev!) but I have the
+latest pre-release installed because I have TB daily &amp; EarlyBird. You may not
+need it with TB release, I'm not sure.
+
+If you're nervous about it you could keep a seperate profile for TB release and
+that way have the release add-on to go with TB release, and the pre-release
+add-on to go with Daily or EarlyBird. Personally I find it easy enough to roll
+back anyway so I don't worry about it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25536.html#c22">
+            #22</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-09-04 03:47:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c21">comment #21</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>)
+&gt; &gt; Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+&gt; &gt; SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+&gt; &gt; 
+&gt; &gt; I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+&gt; &gt; is QF 3.12pre56. So:
+&gt; &gt; - How useful would it be to upgrade? (44 patchlevels are enough to give me
+&gt; &gt; pause)
+&gt; &gt; - Is there a central place which can be checked at any time for the latest
+&gt; &gt; bleeding-edge development version of QuickFolders? (and yes, I know that
+&gt; &gt; bleeding-edge versions are less stable than release versions, but I'm OK with
+&gt; &gt; that, because OTOH by using those same bleeding-edge versions and testing them
+&gt; &gt; in all possible ways one has a better chance to find and fix bugs early, before
+&gt; &gt; they bite the general public).
+&gt; &gt; 
+&gt; &gt; And --- sorry for the bugspam. ;-/
+&gt; &gt; 
+&gt; 
+&gt; Hope I'm not jumping in incorrectly here (I'm not the dev!) but I have the
+&gt; latest pre-release installed because I have TB daily &amp; EarlyBird. You may not
+&gt; need it with TB release, I'm not sure.
+&gt; 
+&gt; If you're nervous about it you could keep a seperate profile for TB release and
+&gt; that way have the release add-on to go with TB release, and the pre-release
+&gt; add-on to go with Daily or EarlyBird. Personally I find it easy enough to roll
+&gt; back anyway so I don't worry about it.
+&gt; </span >
+
+As you could have seen from the top lines of my post I'm using a trunk build of
+SeaMonkey, one whose MailNews component is approximately equivalent with
+Thunderbird 26.0a1. In fact I use neither Aurora nor Beta nor Release, so I
+don't need parallel profiles for different versions. The question is: could
+there be known bugs in the version I'm using which were fixed in the, er, 54
+patchlevels since then? (and I ought to have checked my math in <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>.)
+And is there some constant place, always the same, where I could go look every
+day or two to see if a new patchlevel has been published?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25536.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-04 09:33:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c22">comment #22</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c21">comment #21</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>)
+&gt; &gt; &gt; Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+&gt; &gt; &gt; SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+&gt; &gt; &gt; is QF 3.12pre56. So:
+&gt; &gt; &gt; - How useful would it be to upgrade? (44 patchlevels are enough to give me
+&gt; &gt; &gt; pause)</span >
+
+probably more useful to me as I get some bug reports. A lot of the &quot;late&quot;
+version numbers are caused by me updating translations or iteration on a bug,
+so the variations are usually minimal. (And you see above that I mark obsolete
+frequently)
+
+I was thinking whether I should introduce an official beta channel which would
+be useful 2-3 weeks before each release, but I have to look into the extra work
+involved...
+
+<span class="quote">&gt; &gt; &gt; - Is there a central place which can be checked at any time for the latest
+&gt; &gt; &gt; bleeding-edge development version of QuickFolders? </span >
+
+<a href="http://quickfolders.mozdev.org/version.html#latest">http://quickfolders.mozdev.org/version.html#latest</a>
+
+I keep that updated as I develop. But I do not post versions here, only bug
+links.
+
+<span class="quote">&gt; 
+&gt; As you could have seen from the top lines of my post I'm using a trunk build of
+&gt; SeaMonkey, one whose MailNews component is approximately equivalent with
+&gt; Thunderbird 26.0a1. In fact I use neither Aurora nor Beta nor Release, so I
+&gt; don't need parallel profiles for different versions. The question is: could
+&gt; there be known bugs in the version I'm using which were fixed in the, er, 54
+&gt; patchlevels since then?</span >
+
+That is possible - they are probably not SeaMonkey specific. In fact we are in
+one :0) the best place to consult on what was fixed:
+
+<a href="http://quickfolders.mozdev.org/version.html#3.12">http://quickfolders.mozdev.org/version.html#3.12</a>
+
+I do not add prerelease numbers here and actually reordered the list to be
+non-chronological so it is a little tricky to determine what the most current
+version is. I don't usually publish prereleases (only attach them to the bugs
+they address) but I also never branch so higher version numbers are better. The
+official place for official betas would be here:
+
+<a href="http://downloads.mozdev.org/quickfolders/">http://downloads.mozdev.org/quickfolders/</a>
+
+...but to my shame I admit it wasn't updated in a LONG time. If it helps I can
+put the latest prerelease there, but I don't promise this to be always updated.
+
+<span class="quote">&gt; (and I ought to have checked my math in <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>.)
+&gt; And is there some constant place, always the same, where I could go look every
+&gt; day or two to see if a new patchlevel has been published?
+&gt; </span >
+
+I guess since you are following all my bugzilla bugs you are pretty much
+informed of all my prereleases... 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25536.html#c24">
+            #24</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-09-04 15:07:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c23">comment #23</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c22">comment #22</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c21">comment #21</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>)
+&gt; &gt; &gt; &gt; Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+&gt; &gt; &gt; &gt; SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+&gt; &gt; &gt; &gt; is QF 3.12pre56. So:
+&gt; &gt; &gt; &gt; - How useful would it be to upgrade? (44 patchlevels are enough to give me
+&gt; &gt; &gt; &gt; pause)
+&gt; 
+&gt; probably more useful to me as I get some bug reports.</span >
+
+OK, i'll do it then.
+
+<span class="quote">&gt; A lot of the &quot;late&quot;
+&gt; version numbers are caused by me updating translations or iteration on a bug,
+&gt; so the variations are usually minimal. (And you see above that I mark obsolete
+&gt; frequently)
+&gt; 
+&gt; I was thinking whether I should introduce an official beta channel which would
+&gt; be useful 2-3 weeks before each release, but I have to look into the extra work
+&gt; involved...
+&gt; 
+&gt; &gt; &gt; &gt; - Is there a central place which can be checked at any time for the latest
+&gt; &gt; &gt; &gt; bleeding-edge development version of QuickFolders? 
+&gt; 
+&gt; <a href="http://quickfolders.mozdev.org/version.html#latest">http://quickfolders.mozdev.org/version.html#latest</a>
+&gt; 
+&gt; I keep that updated as I develop. But I do not post versions here, only bug
+&gt; links.
+&gt; 
+&gt; &gt; 
+&gt; &gt; As you could have seen from the top lines of my post I'm using a trunk build of
+&gt; &gt; SeaMonkey, one whose MailNews component is approximately equivalent with
+&gt; &gt; Thunderbird 26.0a1. In fact I use neither Aurora nor Beta nor Release, so I
+&gt; &gt; don't need parallel profiles for different versions. The question is: could
+&gt; &gt; there be known bugs in the version I'm using which were fixed in the, er, 54
+&gt; &gt; patchlevels since then?
+&gt; 
+&gt; That is possible - they are probably not SeaMonkey specific. In fact we are in
+&gt; one :0) the best place to consult on what was fixed:
+&gt; 
+&gt; <a href="http://quickfolders.mozdev.org/version.html#3.12">http://quickfolders.mozdev.org/version.html#3.12</a>
+&gt; 
+&gt; I do not add prerelease numbers here and actually reordered the list to be
+&gt; non-chronological so it is a little tricky to determine what the most current
+&gt; version is. I don't usually publish prereleases (only attach them to the bugs
+&gt; they address) but I also never branch so higher version numbers are better. The
+&gt; official place for official betas would be here:
+&gt; 
+&gt; <a href="http://downloads.mozdev.org/quickfolders/">http://downloads.mozdev.org/quickfolders/</a></span >
+
+In fact, I did check that before posting <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>, but I saw only old stuff
+there.
+
+<span class="quote">&gt; 
+&gt; ...but to my shame I admit it wasn't updated in a LONG time. If it helps I can
+&gt; put the latest prerelease there, but I don't promise this to be always updated.
+&gt; 
+&gt; &gt; (and I ought to have checked my math in <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>.)
+&gt; &gt; And is there some constant place, always the same, where I could go look every
+&gt; &gt; day or two to see if a new patchlevel has been published?
+&gt; &gt; 
+&gt; 
+&gt; I guess since you are following all my bugzilla bugs you are pretty much
+&gt; informed of all my prereleases... 
+&gt; </span >
+
+:-) I would have followed the QuickFolders QA Contact, especially a dummy one
+as used at BMO, or else watched the QuickFolders::General Component (which
+comes out to the same thing), if the Mozdev version of Bugzilla allowed it. But
+they haven't updated their Bugzilla in years, and it doesn't; so I watch the
+default assignee (you) instead, and mark as read without reading when I get
+bugmail for quickFilters, smarttemplate4, etc., which are not installed here.
+
+As a SeaMonkey triager, I follow SeaMonkey::General at AMO, and then I found
+out that it was useful to watch some components of SeaMonkey, MailNews Core,
+Toolkit and Other Applications which often get new bugs &quot;that interest me&quot;. So
+I'm doing the same at Mozdev. :-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25536.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-09-05 14:53:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c24">comment #24</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25536.html#c23">comment #23</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c22">comment #22</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c21">comment #21</a>)
+&gt; &gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=25536.html#c20">comment #20</a>)
+&gt; &gt; &gt; &gt; &gt; Mozilla/5.0 (X11; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0
+&gt; &gt; &gt; &gt; &gt; SeaMonkey/2.23a1 ID:20130829003001 c-c:2e8458f26a91 m-c:aebdc69b02e5
+&gt; &gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; &gt; I see attached to this bug an XPI labeled &quot;QF 3.12pre110&quot;. What I am using now
+&gt; &gt; &gt; &gt; &gt; is QF 3.12pre56. So:
+&gt; &gt; &gt; &gt; &gt; - How useful would it be to upgrade? (44 patchlevels are enough to give me
+&gt; &gt; &gt; &gt; &gt; pause)
+&gt; &gt; 
+&gt; &gt; probably more useful to me as I get some bug reports.
+&gt; 
+&gt; OK, i'll do it then.
+&gt; </span >
+Okay,  to make that whole thing a little more significant, I uploaded my first
+&quot;beta&quot; version today. Once it is reviewed by AMO, you can downloaded QF
+3.12beta1 from the bottom of the QuickFolders AMO page. You will then
+automatically be upgraded to the next beta (or release) and stay on the beta
+channel until you decide to (manually) install a normal release version. This
+way I can push out important milestones to a select crowd of users without
+having to alert everybody of all my prereleases all the time.
+
+So just head on over to
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/</a>
+and scroll down to the bottom, hit development channel and click on the
+download button.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25536.html#c26">
+            #26</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2013-09-05 18:40:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25536.html#c25">comment #25</a>)
+[...]
+<span class="quote">&gt; So just head on over to
+&gt; <a href="https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/thunderbird/addon/quickfolders-tabbed-folders/</a>
+&gt; and scroll down to the bottom, hit development channel and click on the
+&gt; download button.
+&gt; </span >
+
+Or rather, for me it is
+<a href="https://addons.mozilla.org/en-US/seamonkey/addon/quickfolders-tabbed-folders/">https://addons.mozilla.org/en-US/seamonkey/addon/quickfolders-tabbed-folders/</a>
+
+:-)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25536&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

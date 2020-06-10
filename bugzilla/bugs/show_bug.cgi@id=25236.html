@@ -1,0 +1,1271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25236 &ndash; Update 0.9.2 built-in signature can not display?</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25236&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25236">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25236">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25236">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25236">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25236</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Update 0.9.2 built-in signature can not display?</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-07-06 06:13:54</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25236&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-07-06 06:13:54">
+  <input type="hidden" name="longdesclength" value="18">
+  <input type="hidden" name="id" value="25236">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Update 0.9.2 built-in signature can not display?">Update 0.9.2 built-in signature can not display?
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25236.html">25236</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>WORKSFORME
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25236&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25236">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:taglife1&#64;gmail.com">taglife &lt;taglife1&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="richard&#64;richardhess.com">richard&#64;richardhess.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="2012-12-03_131636.png"
+               title="View the content of the attachment">
+          <b>2012-12-03_131636.png</b></a>
+
+          <span class="bz_attach_extra_info">
+              (45.46 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25236.html#attach_7447"
+               title="Go to the comment associated with the attachment">2012-12-02 21:43</a>,
+
+            <a href="mailto:taglife1&#64;gmail.com"
+               title="Write an email to the creator of the attachment">taglife
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7447&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.3pre50.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.3 prerelease 50</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (313.97 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25236.html#attach_7510"
+               title="Go to the comment associated with the attachment">2013-02-04 08:25</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7510&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="smartTemplate-0.9.3pre50&#32;zh-TW&#32;setting&#32;XML&#32;error.png"
+               title="View the content of the attachment">
+          <b>smartTemplate-0.9.3pre50 zh-TW setting XML error.png</b></a>
+
+          <span class="bz_attach_extra_info">
+              (68.80 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=25236.html#attach_7511"
+               title="Go to the comment associated with the attachment">2013-02-04 09:10</a>,
+
+            <a href="mailto:taglife1&#64;gmail.com"
+               title="Write an email to the creator of the attachment">taglife
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7511&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.3pre268.xpi.2"
+               title="View the content of the attachment">
+          <b>0.9.3 Prerelease 268</b></a>
+
+          <span class="bz_attach_extra_info">
+              (313.58 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25236.html#attach_7617"
+               title="Go to the comment associated with the attachment">2013-07-06 06:13</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7617&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25236.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25236&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25236&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25236">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25236">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25236">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25236">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25236.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-11-26 00:52
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >0.9.1 built-in signature can display.
+Update 0.9.2 built-in signature can not display?
+How to solve?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25236.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-26 01:38:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Please install the extension console2 and run it via Tools &gt; Error Console
+using the following settings:
+
+[x]Errors
+[x]Warnings
+[x]Messages
+[x]JS
+[x]XML
+[x]Chrome
+
+You can copy the output _as text_ (!) as an attachment to this bug. 
+
+(in the error console: right-click, select all, right-click, copy)
+
+Also please tell us what signature-related settings you have in Tools &gt; Account
+Settings &gt; (main), and how the &quot;Composition and Addressing&quot; &gt; &quot;Composition&quot; box
+is configured.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25236.html#c2">
+            #2</a> From 
+          <a href="mailto:taglife1&#64;gmail.com">taglife</a>
+          2012-11-26 04:04:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This photo:
+<a href="https://lh4.googleusercontent.com/-ni4ZYZ8jVwU/ULNaAemXcYI/AAAAAAAAE9M/Su6-hbbCL3A/I/SmartTemplate4%2525200.9.2.gif">https://lh4.googleusercontent.com/-ni4ZYZ8jVwU/ULNaAemXcYI/AAAAAAAAE9M/Su6-hbbCL3A/I/SmartTemplate4%2525200.9.2.gif</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25236.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-26 06:45:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25236.html#c2">comment #2</a>)
+<span class="quote">&gt; This photo:
+&gt; <a href="https://lh4.googleusercontent.com/-ni4ZYZ8jVwU/ULNaAemXcYI/AAAAAAAAE9M/Su6-hbbCL3A/I/SmartTemplate4%2525200.9.2.gif">https://lh4.googleusercontent.com/-ni4ZYZ8jVwU/ULNaAemXcYI/AAAAAAAAE9M/Su6-hbbCL3A/I/SmartTemplate4%2525200.9.2.gif</a>
+&gt; </span >
+Thanks for the little movie. We still require more information in the form of
+an error log. 
+
+If I see this correctly you have the case for a signature text in the case of
+creating a new email.
+
+Please install the thunderbird extension console2 and run it via Tools &gt; Error
+Console
+
+using the following settings:
+
+[x]Errors
+[x]Warnings
+[x]Messages
+[x]JS
+[x]XML
+[x]Chrome
+
+You can copy the TEXT output or the error log _AS TEXT FILE_ (!) as an
+attachment to this bug. If you are having problems installing or running
+console2 you can contact me directly - Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25236.html#c4">
+            #4</a> From 
+          <a href="mailto:taglife1&#64;gmail.com">taglife</a>
+          2012-11-27 01:25:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Open Thunderbird write a new mail:
+
+警告: Mutation Events 已被棄用。請改用 MutationObserver。
+來源檔案: chrome://calendar/content/widgets/calendar-widgets.xml
+列: 306
+ ----------
+2012-11-27 17:21:17     Feeds   INFO    downloaded: Update: RSS Feeds/Mozilla
+Links -&gt; <a href="http://mozlinks-zh.blogspot.com/feeds/posts/default">http://mozlinks-zh.blogspot.com/feeds/posts/default</a>.
+此項消息來源沒有新文章。
+
+ ----------
+2012-11-27 17:21:17     Feeds   INFO    downloaded: Update: RSS Feeds/Mozilla
+Taiwan -&gt; <a href="http://blog.mozilla.com.tw/feed">http://blog.mozilla.com.tw/feed</a>. 此項消息來源沒有新文章。
+
+ ----------
+2012-11-27 17:21:17     Feeds   INFO    downloaded: Update: RSS Feeds/MUKI
+space* -&gt; <a href="http://feeds.feedburner.com/s760502">http://feeds.feedburner.com/s760502</a>.
+此項消息來源沒有新文章。
+
+ ----------
+2012-11-27 17:21:18     Feeds   INFO    downloaded: Update: RSS Feeds/PopVideo
+0.6.5 -&gt; <a href="http://fxthunder.com/blog/archives/1139/feed">http://fxthunder.com/blog/archives/1139/feed</a>.
+此項消息來源沒有新文章。
+
+ ----------
+2012-11-27 17:21:18     Feeds   INFO    downloaded: Update: RSS Feeds/xThunder
+1.3.1 -&gt; <a href="http://fxthunder.com/blog/archives/909/feed">http://fxthunder.com/blog/archives/909/feed</a>.
+此項消息來源沒有新文章。
+
+ ----------
+2012-11-27 17:21:20     Feeds   INFO    downloaded: Update: RSS
+Feeds/风飘林's Blog -&gt; 找不到
+<a href="http://blog.bitcp.com/feed">http://blog.bitcp.com/feed</a>。請檢查並確定名稱正確。
+
+ ----------
+2012-11-27 17:21:20     Feeds   INFO    downloaded: Update: RSS
+Feeds/风飘林's Blog 评论 -&gt; 找不到
+<a href="http://blog.bitcp.com/comments/feed">http://blog.bitcp.com/comments/feed</a>。請檢查並確定名稱正確。
+
+ ----------
+錯誤: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: '[JavaScript Error:
+&quot;this.imAccount is null&quot; {file: &quot;resource:///components/imIncomingServer.js&quot;
+line: 53}]' when calling method: [nsIMsgFolder::prettyName]
+來源檔案: chrome://messenger/content/AccountManager.js
+列: 1185
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25236.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-30 05:43:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25236.html#c4">comment #4</a>)
+<span class="quote">&gt; Open Thunderbird write a new mail:
+&gt; 
+&gt; 警告: Mutation Events 已被棄用。請改用 MutationObserver。
+&gt; 來源檔案: chrome://calendar/content/widgets/calendar-widgets.xml
+&gt; 列: 306</span >
+Nothing useful here, what other extensions have you installed?
+
+You can enable Debug Mode in ST4 Options &gt; Advanced &gt; Global Settings  and make
+sure you disable XML and Content logging.
+
+Also, please take a look at [<span class="bz_closed"><a href="show_bug.cgi@id=25241.html" title="RESOLVED FIXED - 0.9.2: signature displayed indented to right">Bug 25241</a></span>] there might be a workaround for you by
+using %sig(html)% with 0.9.3pre2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25236.html#c6">
+            #6</a> From 
+          <a href="mailto:taglife1&#64;gmail.com">taglife</a>
+          2012-12-02 21:19:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Lightning 1.9
+
+Where is &quot;Global Settings  and make sure you disable XML and Content logging&quot;?
+
+0.9.3pre2 still the same built-in signature can not display...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25236.html#c7">
+            #7</a> From 
+          <a href="mailto:taglife1&#64;gmail.com">taglife</a>
+          2012-12-02 21:43:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="2012-12-03_131636.png" name="attach_7447" title="2012-12-03_131636.png">Created an attachment (id=7447)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7447&amp;action=edit" title="2012-12-03_131636.png">[details]</a></span>
+2012-12-03_131636.png
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25236.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-03 00:14:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25236.html#c6">comment #6</a>)
+<span class="quote">&gt; Lightning 1.9
+&gt; 
+&gt; Where is &quot;Global Settings </span >
+smartTemplate Options &gt; Advanced &gt; Global Settings Tab (second tab, after help)
+
+
+<span class="quote">&gt; and make sure you disable XML and Content logging&quot;?</span >
+First install console2! (I generally do not like screenshots of error logs)
+tools &gt; error console  (or CTRL+SHIFT+J)
+all options are on the top of the error console. console2 supports Select All
+and Copy via right-click menu. error log = text!
+
+<span class="quote">&gt; 
+&gt; 0.9.3pre2 still the same built-in signature can not display...
+&gt; </span >
+Did you try using %sig%?
+
+Also, please try to add at least one Return into the Template field.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25236.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-12-03 00:19:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can you also look at [<span class="bz_closed"><a href="show_bug.cgi@id=25241.html" title="RESOLVED FIXED - 0.9.2: signature displayed indented to right">Bug 25241</a></span>] this might help you. There is a test version
+there with 2 new variations
+
+%sig(html)%
+and
+%sig(text)%
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25236.html#c10">
+            #10</a> From 
+          <a href="mailto:richard&#64;richardhess.com">Richard L Hess</a>
+          2012-12-03 06:27:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" > 0.9.3 prerelease2 seems to fix this problem.
+
+If it does not, try placing a single CR/LF (enter key) in each blank template.
+That worked for me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25236.html#c11">
+            #11</a> From 
+          <a href="mailto:richard&#64;richardhess.com">Richard L Hess</a>
+          2012-12-03 06:37:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Axel,
+
+To be more specific on my sig fails to show. I'm using TB's DEFAULT sigs from
+the settings pane and SmartTemplate blocked them from being added with this
+update/TB17 update combination. 
+
+Now my native TB sigs show through again.
+
+I have never used the SmartTemplate %sig command because I never needed it. I
+use SmartTemplate mostly to reformat forwarding headers.
+
+It's a very convoluted set of settings.
+
+I use POPFile and it places a link in the header to change the spam settings
+for a particular message (teach the Bayesian filter). So for that reason, I use
+Mnenhy to select that and other specific headers to show when I expand
+CompactHeader--the link is clickable.
+
+But, that leaves me with way too many boring headers when I forward a message.
+SmartTemplate solves that problem nicely. 
+
+I currently have 22 active Add-Ons to TB. QuickText was another one that broke
+with TB17, but is now fixed.
+
+Richard
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25236.html#c12">
+            #12</a> From 
+          <a href="mailto:richard&#64;richardhess.com">Richard L Hess</a>
+          2012-12-04 20:58:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >My friend redeveloped the signature not displaying. I have it working fine with
+all the add-ons she has and more. This is with 0.9.3pre2 installed. 15 minutes
+of looking did not help.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25236.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-04 08:25:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.3pre50.xpi" name="attach_7510" title="0.9.3 prerelease 50">Created an attachment (id=7510)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7510&amp;action=edit" title="0.9.3 prerelease 50">[details]</a></span>
+0.9.3 prerelease 50
+
+Please try this latest prerelease version, just to make sure that it wasn't
+fixed in the meantime.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25236.html#c14">
+            #14</a> From 
+          <a href="mailto:taglife1&#64;gmail.com">taglife</a>
+          2013-02-04 09:10:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.3pre50&#32;zh-TW&#32;setting&#32;XML&#32;error.png" name="attach_7511" title="smartTemplate-0.9.3pre50 zh-TW setting XML error.png">Created an attachment (id=7511)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7511&amp;action=edit" title="smartTemplate-0.9.3pre50 zh-TW setting XML error.png">[details]</a></span>
+smartTemplate-0.9.3pre50 zh-TW setting XML error.png
+
+Hi,
+0.9.3 prerelease 50 built-in signature display OK ^.^
+But zh-TW setting XML error ...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25236.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-02-04 09:38:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25236.html#c14">comment #14</a>)
+<span class="quote">&gt; Created an <span class=""><a href="smartTemplate-0.9.3pre50&#32;zh-TW&#32;setting&#32;XML&#32;error.png" name="attach_7511" title="smartTemplate-0.9.3pre50 zh-TW setting XML error.png">attachment (id=7511)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7511&amp;action=edit" title="smartTemplate-0.9.3pre50 zh-TW setting XML error.png">[details]</a></span> [details]
+&gt; smartTemplate-0.9.3pre50 zh-TW setting XML error.png
+&gt; 
+&gt; Hi,
+&gt; 0.9.3 prerelease 50 built-in signature display OK ^.^
+&gt; But zh-TW setting XML error ...
+&gt; </span >
+
+yeah I forgot to put up the usual disclaimer - we have 2 brand new settings in
+the global preferences and they haven't been given to our translators yet. ONly
+German and English work with this version :S
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25236.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-07-06 06:13:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.3pre268.xpi.2" name="attach_7617" title="0.9.3 Prerelease 268">Created an attachment (id=7617)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7617&amp;action=edit" title="0.9.3 Prerelease 268">[details]</a></span>
+0.9.3 Prerelease 268
+
+The latest version, this is code complete for next weekend's release. Last
+orders on this bug, but I did lots of testing with signatures (and signature
+positions) so it should be working. Still pending some  translations, I used
+&quot;replace with English where missing&quot; so it should work on all locales.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25236.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-07-06 06:13:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >marking as worksforme, based on prerelease 268
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25236&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

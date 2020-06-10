@@ -1,0 +1,1647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25951 &ndash; ST4 not working in SeaMonkey 2.32 - Temporal Deadzone</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25951&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25951">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25951">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25951">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25951">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25951</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">ST4 not working in SeaMonkey 2.32 - Temporal Deadzone</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-07-09 03:38:51</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25951&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-07-09 03:38:51">
+  <input type="hidden" name="longdesclength" value="25">
+  <input type="hidden" name="id" value="25951">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="ST4 not working in SeaMonkey 2.32 - Temporal Deadzone">ST4 not working in SeaMonkey 2.32 - Temporal Deadzone
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25951.html">25951</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="blocker">blocker
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25951&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25951">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:subscribe&#64;shiftmail.com">Mike &lt;subscribe&#64;shiftmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="subscribe&#64;shiftmail.com">subscribe&#64;shiftmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Smarttemplate_sample_email_2015-01-26_092708.jpg"
+               title="View the content of the attachment">
+          <b>Email example showing smarttemplate setting in browser</b></a>
+
+          <span class="bz_attach_extra_info">
+              (109.46 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7989"
+               title="Go to the comment associated with the attachment">2015-01-26 06:30</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7989&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="Smarttemplate_email_reply_with_headers_ignored_2015-01-26_093117.jpg"
+               title="View the content of the attachment">
+          <b>reply to email examply showing smarttemplate settings are ignored</b></a>
+
+          <span class="bz_attach_extra_info">
+              (77.37 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7990"
+               title="Go to the comment associated with the attachment">2015-01-26 06:32</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7990&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="Smarttemplate_example_when_it_worked_2015-01-26_093729.jpg"
+               title="View the content of the attachment">
+          <b>Example of last day smarttemplate reply header worked for me</b></a>
+
+          <span class="bz_attach_extra_info">
+              (78.75 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7991"
+               title="Go to the comment associated with the attachment">2015-01-26 06:39</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7991&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="smartTemplate-0.9.6.1pre35.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 35</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (333.09 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7992"
+               title="Go to the comment associated with the attachment">2015-01-26 07:39</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="ST4_0961_prerelease_test_2015-01-26_104937.jpg"
+               title="View the content of the attachment">
+          <b>Results of prerelease patch on original sample email</b></a>
+
+          <span class="bz_attach_extra_info">
+              (86.42 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7993"
+               title="Go to the comment associated with the attachment">2015-01-26 07:51</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7993&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="ST4_prerel0961_wrong_quote_position_2015-01-26_105645.jpg"
+               title="View the content of the attachment">
+          <b>Some email replies have quote incorrectly positioned at top</b></a>
+
+          <span class="bz_attach_extra_info">
+              (178.53 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7994"
+               title="Go to the comment associated with the attachment">2015-01-26 07:59</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7994&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="ST4_sample_email_multiple_addressees_2015-01-26_111431.jpg"
+               title="View the content of the attachment">
+          <b>Sample email with multiple addressees</b></a>
+
+          <span class="bz_attach_extra_info">
+              (29.08 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7995"
+               title="Go to the comment associated with the attachment">2015-01-26 08:15</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7995&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a8" href="ST4_sample_email_reply_multiple_addressees_2015-01-26_111750.jpg"
+               title="View the content of the attachment">
+          <b>Sample email REPLY with multiple addresses</b></a>
+
+          <span class="bz_attach_extra_info">
+              (47.21 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7996"
+               title="Go to the comment associated with the attachment">2015-01-26 08:21</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7996&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a9" href="ST4_sample_email_replyall_multiple_addressees_2015-01-26_111750.jpg"
+               title="View the content of the attachment">
+          <b>Sample email REPLYALL to multiple addressees</b></a>
+
+          <span class="bz_attach_extra_info">
+              (41.57 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7997"
+               title="Go to the comment associated with the attachment">2015-01-26 08:23</a>,
+
+            <a href="mailto:subscribe&#64;shiftmail.com"
+               title="Write an email to the creator of the attachment">Mike
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7997&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a10" href="smartTemplate-0.9.6.1pre38.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.6.1 prerelease 38</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (333.25 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_7998"
+               title="Go to the comment associated with the attachment">2015-01-26 09:27</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7998&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a11" href="smartTemplate-0.9.6.1pre86.xpi"
+               title="View the content of the attachment">
+          <b>0.9.6.1 prerelease 86</b></a>
+
+          <span class="bz_attach_extra_info">
+              (334.60 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25951.html#attach_8022"
+               title="Go to the comment associated with the attachment">2015-03-12 09:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8022&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25951.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (2)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25951&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25951&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25951">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25951">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25951">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25951">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25951.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2015-01-26 06:30
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Smarttemplate_sample_email_2015-01-26_092708.jpg" name="attach_7989" title="Email example showing smarttemplate setting in browser">Created an attachment (id=7989)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7989&amp;action=edit" title="Email example showing smarttemplate setting in browser">[details]</a></span>
+Email example showing smarttemplate setting in browser
+
+Windows 7, Seamonkey 2.32, Smarttemplate .0.9.6
+
+Smarttemplate setting to replace default Reply header is completely ignored.
+I tried removing and reinstalling the add-on without successful result.
+I tried reinstalling Seamonkey without successful result.
+
+I don't know exactly when this add-on stopped working.
+Checking back on my Sent folder emails, it looks like around 1/13/2015 it
+stopped.  I am not sure but think it coincides with the latest Seamonkey
+update.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25951.html#c1">
+            #1</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 06:32:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Smarttemplate_email_reply_with_headers_ignored_2015-01-26_093117.jpg" name="attach_7990" title="reply to email examply showing smarttemplate settings are ignored">Created an attachment (id=7990)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7990&amp;action=edit" title="reply to email examply showing smarttemplate settings are ignored">[details]</a></span>
+reply to email examply showing smarttemplate settings are ignored
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25951.html#c2">
+            #2</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 06:39:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Smarttemplate_example_when_it_worked_2015-01-26_093729.jpg" name="attach_7991" title="Example of last day smarttemplate reply header worked for me">Created an attachment (id=7991)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7991&amp;action=edit" title="Example of last day smarttemplate reply header worked for me">[details]</a></span>
+Example of last day smarttemplate reply header worked for me
+
+The template appears to have stopped replacing the default on 1/13.
+Seamonkey had been updated around that time, but I hadn't really kept track of
+the missing template headers.   I noticed it today.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25951.html#c3">
+            #3</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 07:07:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Here's the console2 output during the reply of the sample email in the
+attachments.
+I tried using the right-click in the smarttemplate debug options, but
+right-click on the debug selection was ignored.
+
+Hopefully, this console2 debug info will help uncover the problem.
+Thanks
+
+=============================================================================
+Console2 Output
+=============================================================================
+
+Warning: TypeError: setting a property that has only a getter
+ ----------
+Warning: TypeError: setting a property that has only a getter
+ ----------
+Warning: TypeError: setting a property that has only a getter
+ ----------
+Error: TypeError: redeclaration of variable versionLabel
+Source file: chrome://smarttemplate4/content/smartTemplate-util.js
+Line: 268, Column: 9
+Source code:
+     let versionLabel = window.document.getElementById(&quot;smartTemplate
+ ----------
+Warning: ReferenceError: reference to undefined property SmartTemplate4.Util
+Source file: chrome://smarttemplate4/content/smartTemplate-main.js
+Line: 446
+ ----------
+Error: TypeError: SmartTemplate4.Util is undefined
+Source file: chrome://smarttemplate4/content/smartTemplate-main.js
+Line: 446
+ ----------
+Warning: window.controllers is deprecated. Do not use it for UA detection.
+Source file: chrome://editor/content/ComposerCommands.js
+Line: 198
+
+=============================================================================
+End of output
+=============================================================================
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25951.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 07:08:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c2">comment #2</a>)
+<span class="quote">&gt; Created an <span class=""><a href="Smarttemplate_example_when_it_worked_2015-01-26_093729.jpg" name="attach_7991" title="Example of last day smarttemplate reply header worked for me">attachment (id=7991)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7991&amp;action=edit" title="Example of last day smarttemplate reply header worked for me">[details]</a></span> [details]
+&gt; Example of last day smarttemplate reply header worked for me
+&gt; 
+&gt; The template appears to have stopped replacing the default on 1/13.
+&gt; Seamonkey had been updated around that time, but I hadn't really kept track of
+&gt; the missing template headers.   I noticed it today.
+&gt; </span >
+
+Could you paste (as text) your template and quote headers please? I did some
+tests with SeaMonkey 2.31 and noticed a problem with %shortdate% so far.
+
+If you attach any error logs please attach them as text (not images) as this is
+easier to parse.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25951.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 07:11:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Good news - I just updated SeaMonkey to 2.32 and could reproduce the probem.
+
+I am pretty sure it is caused by the changes in 
+
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1001090#c196">https://bugzilla.mozilla.org/show_bug.cgi?id=1001090#c196</a>
+
+landing in the SeaMonkey code base. Will upload a patch soon.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25951.html#c6">
+            #6</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 07:27:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25951.html#c2">comment #2</a>)
+&gt; &gt; Created an <span class=""><a href="Smarttemplate_example_when_it_worked_2015-01-26_093729.jpg" name="attach_7991" title="Example of last day smarttemplate reply header worked for me">attachment (id=7991)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7991&amp;action=edit" title="Example of last day smarttemplate reply header worked for me">[details]</a></span> [details] [details]
+&gt; &gt; Example of last day smarttemplate reply header worked for me
+&gt; &gt; 
+&gt; &gt; The template appears to have stopped replacing the default on 1/13.
+&gt; &gt; Seamonkey had been updated around that time, but I hadn't really kept track of
+&gt; &gt; the missing template headers.   I noticed it today.
+&gt; &gt; 
+&gt; 
+&gt; Could you paste (as text) your template and quote headers please? I did some
+&gt; tests with SeaMonkey 2.31 and noticed a problem with %shortdate% so far.
+&gt; 
+&gt; If you attach any error logs please attach them as text (not images) as this is
+&gt; easier to parse.
+&gt; </span >
+
+Reply Quote Header:
+
+&lt;b&gt;Subject&lt;/b&gt;: %subject%
+&lt;b&gt;Date:&lt;/b&gt; %X:=sent% %n%/%d%/%Y% %l%:%M%:%S% %p%
+&lt;b&gt;From:&lt;/b&gt; %from(mail)%
+&lt;b&gt;To:&lt;/b&gt; %to(mail)%
+[[&lt;b&gt;Cc:&lt;/b&gt; %cc(mail)%]] 
+
+There is no Template content.
+
+Hope this helps
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25951.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 07:39:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">Created an attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span>
+0.9.6.1 prerelease 35
+
+Here is a quickfix. please test thoroughly.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25951.html#c8">
+            #8</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 07:51:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ST4_0961_prerelease_test_2015-01-26_104937.jpg" name="attach_7993" title="Results of prerelease patch on original sample email">Created an attachment (id=7993)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7993&amp;action=edit" title="Results of prerelease patch on original sample email">[details]</a></span>
+Results of prerelease patch on original sample email
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25951.html#c9">
+            #9</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 07:57:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 35
+&gt; 
+&gt; Here is a quickfix. please test thoroughly.
+&gt; </span >
+
+Test of prerelease patch has returned functionality.  However I noticed
+something peculiar, for my original test email, the quoted original message was
+correctly positioned below the reply entry point.  See attachment image.
+
+When I tried replying to the bugzilla email, the quoted original message was
+incorrectly placed above the Reply entry point.  This seems like it may be an
+unrelated issue to this bug.  See attachment image.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25951.html#c10">
+            #10</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 07:59:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ST4_prerel0961_wrong_quote_position_2015-01-26_105645.jpg" name="attach_7994" title="Some email replies have quote incorrectly positioned at top">Created an attachment (id=7994)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7994&amp;action=edit" title="Some email replies have quote incorrectly positioned at top">[details]</a></span>
+Some email replies have quote incorrectly positioned at top
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25951.html#c11">
+            #11</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:06:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c7">comment #7</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 35
+&gt; 
+&gt; Here is a quickfix. please test thoroughly.
+&gt; </span >
+
+Replyall function appears to ignore multiple CC: and TO: in original quote
+header copy.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25951.html#c12">
+            #12</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:13:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25951.html#c7">comment #7</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.6.1 prerelease 35
+&gt; &gt; 
+&gt; &gt; Here is a quickfix. please test thoroughly.
+&gt; &gt; 
+&gt; 
+&gt; Replyall function appears to ignore multiple CC: and TO: in original quote
+&gt; header copy.
+&gt; </span >
+
+I attached a sample email of this problem and the reply email for the sample an
+example.
+
+It appears that each to addressee is replaced by the same address.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25951.html#c13">
+            #13</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:15:36 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ST4_sample_email_multiple_addressees_2015-01-26_111431.jpg" name="attach_7995" title="Sample email with multiple addressees">Created an attachment (id=7995)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7995&amp;action=edit" title="Sample email with multiple addressees">[details]</a></span>
+Sample email with multiple addressees
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25951.html#c14">
+            #14</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:21:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ST4_sample_email_reply_multiple_addressees_2015-01-26_111750.jpg" name="attach_7996" title="Sample email REPLY with multiple addresses">Created an attachment (id=7996)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7996&amp;action=edit" title="Sample email REPLY with multiple addresses">[details]</a></span>
+Sample email REPLY with multiple addresses
+
+Instead of copying the single person replied to, the same address is used
+multiple times for each addressee
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25951.html#c15">
+            #15</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:23:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="ST4_sample_email_replyall_multiple_addressees_2015-01-26_111750.jpg" name="attach_7997" title="Sample email REPLYALL to multiple addressees">Created an attachment (id=7997)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7997&amp;action=edit" title="Sample email REPLYALL to multiple addressees">[details]</a></span>
+Sample email REPLYALL to multiple addressees
+
+Only one addressee is copied repeatedly to the Reply quote for the number
+original addressees.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25951.html#c16">
+            #16</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:26:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25951.html#c7">comment #7</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.6.1 prerelease 35
+&gt; &gt; 
+&gt; &gt; Here is a quickfix. please test thoroughly.
+&gt; &gt; 
+&gt; 
+&gt; Replyall function appears to ignore multiple CC: and TO: in original quote
+&gt; header copy.
+&gt; </span >
+
+REPLY function seems to try to Quote multiple TO and CC addresses.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25951.html#c17">
+            #17</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:30:59 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class=""><a href="ST4_sample_email_reply_multiple_addressees_2015-01-26_111750.jpg" name="attach_7996" title="Sample email REPLY with multiple addresses">attachment 7996</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7996&amp;action=edit" title="Sample email REPLY with multiple addresses">[details]</a></span>)
+Reply only should show only one From and the TO addressees (usually one
+addressee).  It looks like the same TO addressee is listing multiple times.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25951.html#c18">
+            #18</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 08:31:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class=""><a href="ST4_sample_email_replyall_multiple_addressees_2015-01-26_111750.jpg" name="attach_7997" title="Sample email REPLYALL to multiple addressees">attachment 7997</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7997&amp;action=edit" title="Sample email REPLYALL to multiple addressees">[details]</a></span>)
+It looks like the same addressee is listing multiple times instead of the
+different TO addressee.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25951.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 08:44:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c16">comment #16</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25951.html#c11">comment #11</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25951.html#c7">comment #7</a>)
+&gt; &gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre35.xpi" name="attach_7992" title="0.9.6.1 prerelease 35">attachment (id=7992)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7992&amp;action=edit" title="0.9.6.1 prerelease 35">[details]</a></span> [details] [details] [details]
+&gt; &gt; &gt; 0.9.6.1 prerelease 35
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Here is a quickfix. please test thoroughly.
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Replyall function appears to ignore multiple CC: and TO: in original quote
+&gt; &gt; header copy.
+&gt; &gt; 
+&gt; 
+&gt; REPLY function seems to try to Quote multiple TO and CC addresses.
+&gt; </span >
+
+Appears to be applying to the to(mail) and from(mail) switch specifically. Let
+me check.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25951.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 09:27:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre38.xpi" name="attach_7998" title="0.9.6.1 prerelease 38">Created an attachment (id=7998)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7998&amp;action=edit" title="0.9.6.1 prerelease 38">[details]</a></span>
+0.9.6.1 prerelease 38
+
+Bugfix for patched version prerelease 35
+
+should be better.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25951.html#c21">
+            #21</a> From 
+          <a href="mailto:subscribe&#64;shiftmail.com">Mike</a>
+          2015-01-26 09:45:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c20">comment #20</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre38.xpi" name="attach_7998" title="0.9.6.1 prerelease 38">attachment (id=7998)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7998&amp;action=edit" title="0.9.6.1 prerelease 38">[details]</a></span> [details]
+&gt; 0.9.6.1 prerelease 38
+&gt; 
+&gt; Bugfix for patched version prerelease 35
+&gt; 
+&gt; should be better.
+&gt; </span >
+
+It's working a lot better as you indicated.
+
+Do you have any idea why replies to emails routed to shiftmail.com position the
+quoted original messages at the top of the reply instead of at the bottom? 
+Quoted original messages are set to position at the bottom of a reply.
+
+The headers are in the form of:
+
+Subject:        [smarttemplate4] [<span class="bz_closed"><a href="show_bug.cgi@id=25951.html" title="RESOLVED FIXED - ST4 not working in SeaMonkey 2.32 - Temporal Deadzone">Bug 25951</a></span>] ST4 not working in SeaMonkey 2.32
+- Temporal Deadzone
+Date:   Mon, 26 Jan 2015 17:27:04 +0000
+From:   <a href="mailto:bugzilla-daemon@mozdev.mozdev.org">bugzilla-daemon@mozdev.mozdev.org</a>
+&lt;<a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>&gt;
+Reply-To:       <a href="mailto:bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com">bugzilla-daemon.-.mozdev.mozdev.org.-.subscribe@shiftmail.com</a>
+To:     <a href="mailto:leishirsute@yahoo.com">leishirsute@yahoo.com</a>
+
+
+Replies for other emails that are not routed through shiftmail.com appear to be
+working correctly now as far as TO and CC addressees and positioning at the
+bottom of a reply.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25951.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-26 10:41:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25951.html#c21">comment #21</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25951.html#c20">comment #20</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.6.1pre38.xpi" name="attach_7998" title="0.9.6.1 prerelease 38">attachment (id=7998)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7998&amp;action=edit" title="0.9.6.1 prerelease 38">[details]</a></span> [details] [details]
+&gt; &gt; 0.9.6.1 prerelease 38
+&gt; &gt; 
+&gt; &gt; Bugfix for patched version prerelease 35
+&gt; &gt; 
+&gt; &gt; should be better.
+&gt; &gt; 
+&gt; 
+&gt; It's working a lot better as you indicated.</span >
+
+Good. Problems like this were to be expected because I had to eliminate the use
+of &quot;var&quot; and had to move some variables in order to &quot;scope&quot; them correctly. The
+initalisation of result=&quot;&quot; in the loop that iterates the mails was moved
+outside of the loop which broke the behavior. Goes to show that generic
+variable names like &quot;result&quot; are fairly shitty (original author of the addon),
+I renamed it to &quot;addressee&quot; and can now actually read the code better as well.
+
+<span class="quote">&gt; 
+&gt; Do you have any idea why replies to emails routed to shiftmail.com position the</span >
+Yes I have, but let's not spam this bug with other support issues. Just send me
+an email for this one :)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25951.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-03-12 09:09:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.6.1pre86.xpi" name="attach_8022" title="0.9.6.1 prerelease 86">Created an attachment (id=8022)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8022&amp;action=edit" title="0.9.6.1 prerelease 86">[details]</a></span>
+0.9.6.1 prerelease 86
+
+SeaMonkey version bumped up to 2.37.* and various other fixes
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25951.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-09 03:38:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in 1.0.1 Release
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25951&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

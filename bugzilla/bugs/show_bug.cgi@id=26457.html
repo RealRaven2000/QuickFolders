@@ -1,0 +1,1217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26457 &ndash; Auto processing of filters with tags when option is off</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26457&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26457">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26457">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26457">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26457">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26457</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Auto processing of filters with tags when option is off</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2019-05-17 04:25:03</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26457&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2019-05-17 04:25:03">
+  <input type="hidden" name="longdesclength" value="7">
+  <input type="hidden" name="id" value="26457">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Auto processing of filters with tags when option is off">Auto processing of filters with tags when option is off
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26457.html">26457</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="quickFilters">quickFilters
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=quickFilters">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26457&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26457">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:zabolyx&#64;gmail.com">Justin Williams &lt;zabolyx&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="2017-12-11_16h16_23.png"
+               title="View the content of the attachment">
+          <b>Current options set for QuickFilter</b></a>
+
+          <span class="bz_attach_extra_info">
+              (60.89 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=26457.html#attach_8351"
+               title="Go to the comment associated with the attachment">2017-12-12 05:37</a>,
+
+            <a href="mailto:zabolyx&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Justin Williams
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8351&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="2017-12-11_16h19_41.mp4"
+               title="View the content of the attachment">
+          <b>Short video of the filters triggering from selecting an email that is already tagged</b></a>
+
+          <span class="bz_attach_extra_info">
+              (490.40 KB,
+                video/mp4)
+
+            <br>
+            <a href="show_bug.cgi@id=26457.html#attach_8352"
+               title="Go to the comment associated with the attachment">2017-12-12 05:39</a>,
+
+            <a href="mailto:zabolyx&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Justin Williams
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8352&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="quickFilters-tb-pb-sm-3.4.1pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.4.1 prerelease 2</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (383.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26457.html#attach_8353"
+               title="Go to the comment associated with the attachment">2017-12-12 09:25</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8353&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="quickFilters-tb-pb-sm-3.4.1pre4.xpi"
+               title="View the content of the attachment">
+          <b>3.4.1 prerelease 4</b></a>
+
+          <span class="bz_attach_extra_info">
+              (383.72 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26457.html#attach_8354"
+               title="Go to the comment associated with the attachment">2017-12-12 11:39</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8354&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26457.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26457&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26457&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26457">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26457">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26457">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26457">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26457.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2017-12-12 05:37
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="2017-12-11_16h16_23.png" name="attach_8351" title="Current options set for QuickFilter">Created an attachment (id=8351)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8351&amp;action=edit" title="Current options set for QuickFilter">[details]</a></span>
+Current options set for QuickFilter
+
+With the update to QuickFilters 3.4 any emails that are tagged as Done by
+filters or manually get archived automatically even though the filter that is
+used to archive them is set to manually.
+
+If I manually tag a message with Done it will process the archive filter and
+remove them from the inbox.
+
+If the messages are tagged by filters, as soon as I click on the email to view
+it is processed by the filters and archived.
+
+If I remove the tags and move them back to the inbox from the archive they are
+rearchived because the filters are ran again and the messages tagged as Done
+and moved back into the Archive. Even though I'm not marking the messages as
+Unread.
+
+I've tinkered with disabling other extensions that affect the filtering and
+have not been able to get this to stop happening.
+
+I've removed extensions I no longer or rarely use and this still happens.
+
+I've updated TB to 52.5.0 from 52.4.0 and it still happens.
+
+It does stop happening when I downgrade QuickFilters to the previous version.
+
+
+
+My current Extensions in TB.
+
+
+Application: Thunderbird 52.5.0 (20171121193617)
+Operating System: WINNT (x86-msvc)
+
+- Account Colors 9.2
+        Associates colors with account names and identities. Applies colors to
+folder tree, message list and message headers accordingly.
+- Adblock Plus 2.9.1
+        Ads were yesterday!
+- Address Close Button 1.3
+        Allow you to add a Address Close Button to mail compose window.
+- AddressBookTab 1.5
+        It adds a button that can be put in toolbars and that open the
+addressbook in a new tab
+- Always HTML 1
+        Disable automatic degradation of HMTL mails to plain-text mails.
+- AttachExtraTools 1.7.1
+        Adds some tools to attach files
+- Attachment Search Tab 0.4.3
+        Adds a tool to search attachments
+- Auto Address Cleaner 1.0.4
+        Remove comment, display name from addresses before sending mail.
+- Auto Save Drafts Folders 0.3.0b1
+        Allows auto saved drafts to be stored in a separate folder from
+manually saved drafts.
+- Autohide folders panel 0.6
+        Extension automatically hides the folders panel. The folder panel can
+be seen by placing the mouse pointer in the left corner of the window or by
+Accel-1 shortkey.
+- Batch Copy 1.1
+        Batch Copy creates a local copy of your IMAP account, copies all
+messages and maintains folder structure. Batch Copy can run incrementally to
+copy only new messages.
+- Calendar Tweaks 6.3
+        Allows several tweaks to the Thunderbird/Lightning calendar user
+interface including new selection styles and repeating event icons.
+- Change quote and reply format 0.8.7.1
+        Change the reply header and the reply format
+- checkCompatibility 1.3.1-signed.1-signed
+        Reinstates the extensions.checkCompatibility preference.
+- Clean Links 2.7.1-signed.1-signed
+        Converts obfuscated/nested links to genuine clean links
+- Color Folders 1.1
+        Color Folder Treeview Icons.
+- CompactHeader 2.1.3
+        Add ability to reduce header size to one or two lines. Linkify subjects
+in RSS feeds.
+- Contacts Sidebar 1.7pre
+        Displays the address books in a sidebar in the 3-pane-window.
+- Copy Folder 2.1
+        Copy folders recursively to any location.
+- Count Filters 1.0
+        This add-on provides various search filters couting values, such as
+total number of recipients, or number of lines, words,links in body message.
+- Deselect on Delete 2.0
+        Disables selection of the next message when deleting
+- Display Mail User Agent 1.7.0
+        Displays the mail program with which the selected mail was written
+- Display Quota 0.3.7
+        This extension will display the current status of your quota in
+thunderbird's statusbar and will warn you when you reach a configurable limit.
+- Download Status Bar 15.0.0.1
+        If you are the kind of person who likes to have total control over
+every aspect of your downloads, &quot;Download Status Bar&quot; is the add-on you are
+looking for.
+- Dropbox for Filelink 1.0.1
+        Add Dropbox support to Thunderbird's Filelink feature.
+- Duplicate Contact Manager 0.9.2
+        Facilitates handling of duplicate contacts in your address books.
+- Edit email subject 2.1.0
+        Edit received e-mail subjects.
+- EditHtml 0.2.3.4
+        Gives a way to edit the HTML code of the mail
+- Exchange EWS Provider 3.9.0
+        Allows you to sync Calendar, Tasks and Contacts with your Microsoft
+Exchange 2007/2010/2013 EWS server from within lightning.
+
+You can view, delete, create and update calendar and task/todo items. And
+manage &quot;Out of Office&quot; settings.
+You can read and use contacts and global addres list contacts for address
+autcompletion.
+
+Dutch, French, English, German, Swedish and Japanese localizations.
+
+Some of the icons and images used are from the Fugue Icons Collection made by
+Yusuke Kamiyamane (<a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a>)
+- Expression Search / Google Mail UI 1.2
+        Type &quot;from:fred to:tom&quot; to see all messages from Fred to Tom in the
+current view.
+- ExtendIMAPFilters 1.0.1 (Disabled)
+        Enable filters on new IMAP read messages (bug 308148)
+- Extension List Dumper 2 1.0.2
+        Dumps a list of the installed extensions.
+- FileSwap.com Filelink 1.0.1
+        Enables automatic linking of large file attachments through
+FileSwap.com
+- FiltaQuilla 1.2.2.kzA1-ZAB
+        Mail filter custom actions and searches
+- Folder Filters Button 1.3
+        Toolbar button to execute Run Filters on Folders from Tools menu
+- FolderFlags 1.2.6
+        Allows users to edit the flags Thunderbird sets on folders.
+- Folderpane Tools 0.6.1
+        Allows for customization of the folder pane such as rearranging
+accounts and choosing a startup folder.
+- GlodaQuilla 0.3.3
+        Global Indexing enhancements
+- Header Tools Lite 0.6.1
+        Allows to modify the header and the source of messages.
+- Hide C. Titlebar Plus Lite 1.3.7
+        &quot;Maximize your screen content space by controlling the presence of
+Thunderbird window Title bar.   Adds Main Application Button at top-left
+corner. (like Firefox has).  Close Tab! instead of Close Window  for System
+Close Button or ALT+F4.&quot;
+- Highlighter 0.6.5
+        Quickly highlight some text in the thunderbird compose windows.
+- Incoming Addresses Collector 0.3.3
+        Allows to collect incoming addresses
+- keyconfig 20110522
+        Rebind your keys.
+- Lightning 5.4.5
+        Integrated Calendaring &amp; Scheduling for your Email client
+- Lightning Calendar Tabs 2.0
+        An addon which extends the Lighting calendar views with tabs.
+- LocalFolder 0.8.10
+        Add as many local folders as you want to.
+- LookOut (fix version) 1.2.20
+        LookOut reads and integrates TNEF encoded parts in emails.
+- Mail Merge 4.9.1
+        Mass Mail and Personal Mail
+- Mail Redirect 0.9.3
+        Allow to redirect (a.k.a. &quot;remail&quot;) mail messages to other recipients.
+- Mail Summaries 4.0a1
+        Adds a summary of mail accounts and folders to replace the account
+central pane and the empty folder preview
+- MailHops 3.1.4
+        MailHops maps the route an email traveled to get to you.  Using GeoIP
+it also displays distance traveled along with the location (city, state and
+country) of the sender.
+- Message Archive Options 5.0.0
+        Adds the ability to customise the date format of the archive folders
+created by TB3's Archive Message function
+- More About 3.0.0
+        Adds &quot;about:&quot; menu and button.
+- MoreFunctionsForAddressBook 1.0b3
+        Adds some functions to the AddressBook
+- No Message Pane Sorting by Mouse 1.2
+        This extension prevents accidental sorting of the message pane by
+disabling the mouse button clicks on the column headers. You can still sort the
+message pane easily by ctrl-clicking the header.
+- NoComposeAccount 1.3.2
+        Have the option of Thunderbird always using the default account or a
+blank account when composing or replying to messages
+- Personal Level Indicators 0.8
+        Shows an indicator so you can tell if an email was addressed only to
+you (»), a group (›), or a mailing list.
+- PrintingTools 1.2.5
+        Add some options for message and addressbook printing
+- ProfileSwitcher 1.7.6.1
+        Adds profile name to status bar tooltip and options to launch other
+profiles
+- QuickFilter Unreplied 1.1
+        Adds a filter to show only unreplied emails
+- QuickFilterPlus 1.0.9
+        Adds personal filters to quickfilter bar
+- quickFilters 3.4
+        Quickly generate mail filters on the fly, by dragging and dropping
+mails and analyzing their attributes.
+- QuickFilterToolbar 1.0
+        Makes the quick filter bar a proper toolbar.
+- QuickFolders 4.8
+        Bookmark your favorite mail folders in Thunderbird.
+- Quicktext 0.9.11.7
+        Adds a toolbar with unlimited number of text to quickly insert. It's
+also possible to use variables like [[TO=firstname]]. With settings for
+everything.
+- RedirectFilter 0.1.8
+        Redirect action in the filters.
+- ReFwdFormatter 1.58.0
+        Remove the &quot;&gt;&quot; prefix from quote. Remove &quot;[&quot; and &quot;]&quot; from the forward
+subject.
+- Remove Duplicate Messages 0.1.14
+        Removes duplicate messages by folder context menu.
+- Remove Duplicate Messages (Alternate) 0.3.14 (Disabled)
+        Locates duplicate messages in mail folders and removes them.
+- Reply to All as Cc 1.5.1
+        Send a reply for recipients as CC except the sender, when you do &quot;Reply
+to All&quot;.
+- ReplySearch 0.1.6
+        Tool to find the replies to a message
+- Restart 3.0.2
+        Adds &quot;Restart&quot; menu and button.
+- Saved Password Editor 2.10.4
+        Adds the ability to create and edit entries in the password manager.
+- SavedSearchInSubFolders 1.3
+        Just let that saved search folder search in subfolders!
+- Search as list 3.1
+        Search results appear as list (as per the &quot;Open email as list&quot; button).
+- Search Results Sort By Date Not Relevance 1.14
+        Makes search results sort by &quot;date&quot; instead of &quot;relevance&quot; by default.
+- SecondOpinion 1.0
+        This extension implements a convenient way to check and upload
+attachments to VirusTotal.com
+- Send Later 6.3.1
+        True “Send Later” functionality to schedule the time for sending an
+email.
+- SlideShow 1.4.8
+        Slideshow for picture attachments
+- Sort and Search Customization Dialogs 0.1.3.1-signed.1-signed
+        Sort and search buttons in toolbar customization dialog
+- SortTags 0.2
+        Allows to sort tags
+- Stylish 2.1.1
+        Restyle the web with Stylish, a user styles manager.
+- Subject Manager 0.5.1
+        Allows to manage email subject.
+- Tag Toolbar 0.9.00
+        Add toolbar for toggling tags.
+- Text Link 5.0.2016031501
+        Allows URI texts written in webpages to be loaded by double clicks.
+- ThreadVis 2.2.0
+        Displays a small graphic visualising the context (thread) of the
+currently selected email.
+- ThunderSec 2.0.2
+        Provides security features for Mozilla Thunderbird. These include DNSBL
+and RBL support, DKIM and SPF failure verifications. DNSBL support can be used
+to leverage Spamhaus, Abuse.ch and other DNSBL/RBL databases, including custom
+ones.
+- Timeline 0.5
+        A timeline calendar view
+- Today's messages 1.3.1
+        Show only your today's messages
+- ToneQuilla 1.1.1
+        Play sound as mail filter action
+- Toolbar Buttons 1.1.1-signed.1-signed
+        Adds toolbar buttons to the customize toolbar window in several
+programs including Firefox, Thunderbird and SeaMonkey.  Some of the buttons
+make commonly preformed actions quicker, others add new functionality.
+- Trashcan 1.1
+        Provides a Trashcan for Lightning
+- Version Number in Add-ons Manager 1.09
+        Easily viewable version information in the Firefox/Thunderbird Add-ons
+Manager
+- WebApp Tabs 2.1
+        Load WebApps into tabs in Thunderbird
+- XNote++ 2.2.13
+        Add Post-It to your mails.
+- Xpunge 0.6
+        Empties the Trash and Junk folders, and compacts folders in multiple
+Thunderbird accounts.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26457.html#c1">
+            #1</a> From 
+          <a href="mailto:zabolyx&#64;gmail.com">Justin Williams</a>
+          2017-12-12 05:39:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="2017-12-11_16h19_41.mp4" name="attach_8352" title="Short video of the filters triggering from selecting an email that is already tagged">Created an attachment (id=8352)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8352&amp;action=edit" title="Short video of the filters triggering from selecting an email that is already tagged">[details]</a></span>
+Short video of the filters triggering from selecting an email that is already
+tagged
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26457.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-12-12 07:21:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The bug (which v displays a notification 
+
+QuickFilters 
+Apply filters to selected message
+
+) can also be caused by having the XNote++ Add-on installed.
+
+As a workaround, filter notifications can be completely disabled by setting the
+config setting:
+
+
+Extensions.quickfilters.notifications.runfilter=false
+
+This disables all notifications when filters are run manually. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26457.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-12-12 09:25:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="quickFilters-tb-pb-sm-3.4.1pre2.xpi" name="attach_8353" title="3.4.1 prerelease 2">Created an attachment (id=8353)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8353&amp;action=edit" title="3.4.1 prerelease 2">[details]</a></span>
+3.4.1 prerelease 2
+
+Test version where autofiltering (on tag change) is by default disabled. It can
+bee reenabled by setting
+
+extensions.quickfilters.listener.tags.autofilter = true
+
+I was able to reproduce the bug with xnote++ installed by tagging messages in
+various folders.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26457.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-12-12 10:52:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >At the moment I default to not filtering on tagging, which in hindsight may not
+be the optimal solution. instead I think it might be best to have this as an
+option and just simply suppress the filtering message in that case. This way it
+is less disruptive but the filters still can optionally react to the tag
+change, which was actually a useful feature in my books.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26457.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2017-12-12 11:39:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickFilters-tb-pb-sm-3.4.1pre4.xpi" name="attach_8354" title="3.4.1 prerelease 4">Created an attachment (id=8354)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8354&amp;action=edit" title="3.4.1 prerelease 4">[details]</a></span>
+3.4.1 prerelease 4
+
+Added an option for auto filtering and removed the message as well.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26457.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-05-17 04:25:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed: Version 3.4.1 Released Dec. 19, 2017
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26457&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

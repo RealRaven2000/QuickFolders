@@ -1,0 +1,880 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25209 &ndash; Grouping of Tabs - categories vs. groups</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25209&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25209">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25209">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25209">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_NEW bz_component_General bz_bug_25209">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25209</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Grouping of Tabs - categories vs. groups</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-11-02 18:05:45</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25209&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-11-02 18:05:45">
+  <input type="hidden" name="longdesclength" value="3">
+  <input type="hidden" name="id" value="25209">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Grouping of Tabs - categories vs. groups">Grouping of Tabs - categories vs. groups
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25209.html">25209</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>NEW</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25209&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25209">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:yango.pohl&#64;zahnunfall.de">Yango Pohl &lt;yango.pohl&#64;zahnunfall.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25209&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25209&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25209">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25209">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25209">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25209">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25209.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-11-01 23:22
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Hi, Axel,
+I use a subnote (small screen), which I attach to big screens @home and @work -
+so there are 3 resolutions, and therefore 3 different views (plus a huge number
+more with changed window widths) of tb and qf.
+That means that the tabs are changing the position, so it is not possible to
+learn where they are, and I always drag a mail to the right side while the tab
+is left at this resolution... Furthermore tabs belonging to each other may be
+separated at a certain resolution, due to line wrapping. And every tab placed
+not at the end will also change positions of many other tabs... And if number
+of eails and the other information, like unread emails, etc is displayed may
+also change the position of tabs...
+I understand that this is the solution to save most space, but always changing
+position...
+
+Thus, grouping of tabs - and the fixed position of these groups, at least
+within certain limits - would be great.
+Something like fences for the desktop. <a href="http://www.stardock.com/products/fences/">http://www.stardock.com/products/fences/</a> 
+Prerequisite would be a minimal width - and some good ideas how to use the
+space if a big monitor is used. Perhaps also like fences where you can define
+different arrangements for every resolution...
+
+An alternative could be categories, but at the moment the use is inconvenient: 
+The change of categories requires too much action with the mouse: going all the
+way to the most left and upper corner, clicking, then choosing ONE category,
+without any visual help (colours), so you have to read before you can select,
+then hopefully correctly clicking on the desired category, or starting again...
+Most awkward, if you drag a mail and you notice that the desired tabs are not
+available in this category. 
+Categories should be colour coded, as an option available with one mouseclick
+(be a tab), and changeable on-the-fly. And even then, when exceeding a certain
+number of tabs, these lose their position...
+
+Greets, Yango
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25209.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-02 03:40:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25209.html#c0">comment #0</a>)
+<span class="quote">&gt; Hi, Axel,
+&gt; I use a subnote (small screen), which I attach to big screens @home and @work -
+&gt; so there are 3 resolutions, and therefore 3 different views (plus a huge number
+&gt; more with changed window widths) of tb and qf.
+&gt; That means that the tabs are changing the position, so it is not possible to
+&gt; learn where they are, and I always drag a mail to the right side while the tab
+&gt; is left at this resolution... Furthermore tabs belonging to each other may be
+&gt; separated at a certain resolution, due to line wrapping.</span >
+
+the way I solve this in my setup is by using colors which are distinct per
+folder and task. E.g. I use dark red for everything Mozilla related. I get your
+point about the spatial memory but please consider that quickfolders is after
+all just a toolbar...
+
+<span class="quote">&gt; Thus, grouping of tabs - and the fixed position of these groups, at least
+&gt; within certain limits - would be great.
+&gt; Something like fences for the desktop. <a href="http://www.stardock.com/products/fences/">http://www.stardock.com/products/fences/</a> </span >
+
+I know and use fences for a while but it is very different to have a whole
+desktop area to &quot;play&quot; with and only a small toolbar strip. One feature request
+I may point you to is [<span class="bz_closed"><a href="show_bug.cgi@id=23039.html" title="RESOLVED FIXED - Support Line Breaks to force multiple tab rows">bug 23039</a></span>], which proposes inserting line breaks so that
+groups of tabs may be in individual lines. I have actually tried to do this for
+a while but gave up after spending a couple of hours - I might return to this
+bug as well later.
+
+<span class="quote">&gt; Prerequisite would be a minimal width - and some good ideas how to use the
+&gt; space if a big monitor is used. Perhaps also like fences where you can define
+&gt; different arrangements for every resolution...</span >
+
+hmm, that might be overkill, certainly for the majority of users... also like I
+said, we have a lot less screen real estate than fences, so I cannot really see
+the benefit.
+
+<span class="quote">&gt; An alternative could be categories, but at the moment the use is inconvenient: 
+&gt; The change of categories requires too much action with the mouse: going all the
+&gt; way to the most left and upper corner, clicking, then choosing ONE category,
+&gt; without any visual help (colours), so you have to read before you can select,
+&gt; then hopefully correctly clicking on the desired category, or starting again...</span >
+
+There is another powerful way you can use categories: open several mail tabs
+(thunderbird tabs) and choose a folder from a different QuickFolders category
+on each. E.g. you might have a &quot;Work&quot; Tab and a &quot;Friends&quot; Tab and a &quot;Projects&quot;
+Tab open. Each of the tabs will be automatically associated with the category
+of the chosen folder; you can now simply drag the mail to the tab (if the
+category is not displayed at the moment) and it will automatically show the
+tabs of the correct category. It is actually more difficult to explain than to
+use, please give it a try. One caveat is that this feature was designed when
+you could only have a tab in one category, so I need to update this so the Tab
+really &quot;remembers&quot; the group in case the current folder there is in a different
+one... probably time for creating yet another bug...
+
+PS: I am leaving this bug as unassigned as we apparently haven't got any fixed
+requirements.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25209.html#c2">
+            #2</a> From 
+          <a href="mailto:yango.pohl&#64;zahnunfall.de">Yango Pohl</a>
+          2012-11-02 18:05:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25209.html#c1">comment #1</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25209.html#c0">comment #0</a>)
+&gt; &gt; Hi, Axel,
+&gt; &gt; I use a subnote (small screen), which I attach to big screens @home and @work -
+&gt; &gt; so there are 3 resolutions, and therefore 3 different views (plus a huge number
+&gt; &gt; more with changed window widths) of tb and qf.
+&gt; &gt; That means that the tabs are changing the position, so it is not possible to
+&gt; &gt; learn where they are, and I always drag a mail to the right side while the tab
+&gt; &gt; is left at this resolution... Furthermore tabs belonging to each other may be
+&gt; &gt; separated at a certain resolution, due to line wrapping.
+&gt; 
+&gt; the way I solve this in my setup is by using colors which are distinct per
+&gt; folder and task. E.g. I use dark red for everything Mozilla related. I get your
+&gt; point about the spatial memory but please consider that quickfolders is after
+&gt; all just a toolbar...
+&gt; 
+&gt; &gt; Thus, grouping of tabs - and the fixed position of these groups, at least
+&gt; &gt; within certain limits - would be great.
+&gt; &gt; Something like fences for the desktop. <a href="http://www.stardock.com/products/fences/">http://www.stardock.com/products/fences/</a> 
+&gt; 
+&gt; I know and use fences for a while but it is very different to have a whole
+&gt; desktop area to &quot;play&quot; with and only a small toolbar strip. One feature request
+&gt; I may point you to is [<span class="bz_closed"><a href="show_bug.cgi@id=23039.html" title="RESOLVED FIXED - Support Line Breaks to force multiple tab rows">bug 23039</a></span>], which proposes inserting line breaks so that
+&gt; groups of tabs may be in individual lines. I have actually tried to do this for
+&gt; a while but gave up after spending a couple of hours - I might return to this
+&gt; bug as well later.
+&gt; 
+&gt; &gt; Prerequisite would be a minimal width - and some good ideas how to use the
+&gt; &gt; space if a big monitor is used. Perhaps also like fences where you can define
+&gt; &gt; different arrangements for every resolution...
+&gt; 
+&gt; hmm, that might be overkill, certainly for the majority of users... also like I
+&gt; said, we have a lot less screen real estate than fences, so I cannot really see
+&gt; the benefit.
+&gt; 
+&gt; &gt; An alternative could be categories, but at the moment the use is inconvenient: 
+&gt; &gt; The change of categories requires too much action with the mouse: going all the
+&gt; &gt; way to the most left and upper corner, clicking, then choosing ONE category,
+&gt; &gt; without any visual help (colours), so you have to read before you can select,
+&gt; &gt; then hopefully correctly clicking on the desired category, or starting again...
+&gt; 
+&gt; There is another powerful way you can use categories: open several mail tabs
+&gt; (thunderbird tabs) and choose a folder from a different QuickFolders category
+&gt; on each. E.g. you might have a &quot;Work&quot; Tab and a &quot;Friends&quot; Tab and a &quot;Projects&quot;
+&gt; Tab open. Each of the tabs will be automatically associated with the category
+&gt; of the chosen folder; you can now simply drag the mail to the tab (if the
+&gt; category is not displayed at the moment) and it will automatically show the
+&gt; tabs of the correct category. It is actually more difficult to explain than to
+&gt; use, please give it a try. One caveat is that this feature was designed when
+&gt; you could only have a tab in one category, so I need to update this so the Tab
+&gt; really &quot;remembers&quot; the group in case the current folder there is in a different
+&gt; one... probably time for creating yet another bug...
+&gt; 
+&gt; PS: I am leaving this bug as unassigned as we apparently haven't got any fixed
+&gt; requirements.
+&gt; </span >
+
+Hi, Axel,
+thanks for the reply  - I also saw these restrictions, could have been that you
+had a good idea to overcome these.
+
+Sounds great what you write about the categories, seems to be what I tried to
+suggest. But I can't figure out how to do, I don't understand your hints. I ran
+through the faqs and the help, but could not find a hint. Can you please tell
+how to do that in words understandable even by a &quot;dau&quot;.
+Thx Yango
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25209&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1795 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25697 &ndash; When clicked, tab is incorrectly flagged for invalid folder</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25697&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25697">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25697">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25697">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25697">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25697</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">When clicked, tab is incorrectly flagged for invalid folder</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2016-12-13 08:54:13</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25697&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2016-12-13 08:54:13">
+  <input type="hidden" name="longdesclength" value="33">
+  <input type="hidden" name="id" value="25697">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="When clicked, tab is incorrectly flagged for invalid folder">When clicked, tab is incorrectly flagged for invalid folder
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25697.html">25697</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25697&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25697">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:mvalle&#64;cscs.ch">Mario Valle &lt;mvalle&#64;cscs.ch&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="racemoto&#64;googlemail.com">racemoto&#64;googlemail.com</option>
+            <option value="tiago&#64;vgt.com.br">tiago&#64;vgt.com.br</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-3.14.1pre1.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14.1 pre 1</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (503.47 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25697.html#attach_7782"
+               title="Go to the comment associated with the attachment">2014-02-12 17:04</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7782&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.14.1pre2.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14.1 pre 2</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (504.25 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25697.html#attach_7784"
+               title="Go to the comment associated with the attachment">2014-02-13 13:33</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7784&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-3.14.1pre3.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14.1 pre 3</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (504.30 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25697.html#attach_7785"
+               title="Go to the comment associated with the attachment">2014-02-13 15:27</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7785&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-3.14.1pre4.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">3.14.1 pre 4</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (504.33 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25697.html#attach_7786"
+               title="Go to the comment associated with the attachment">2014-02-13 15:39</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7786&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-4.6.1pre18.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.6.1 prerelease 18</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (704.16 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25697.html#attach_8246"
+               title="Go to the comment associated with the attachment">2016-12-13 08:49</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8246&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25697.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (5)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25697&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25697&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25697">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25697">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25697">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25697">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25697.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-02-12 12:14
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >After today's QuickFolders upgrade (V 3.14) when I select one specific tab I
+receive the following error dialog: 
+0 CSCS tickets: This is a tab that points to an invalid folder:
+imap://<a href="mailto:mvalle@imap.cscs.ch">mvalle@imap.cscs.ch</a>/INBOX/0 CSCS tickets
+Delete this Tab?
+
+But the folder is valid (I can open it from the message list pane) and the
+problem happens only with this folder.
+
+If I delete the tab and drag again the folder form the message list pane, same
+problem.
+
+Any idea?
+Thanks!
+mario
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25697.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 13:37:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Might this be caused by the folder name starting with a numeral? Is it
+persistent if you rename the folder to &quot;Zero CSCS tickets&quot; (you can leave the
+QuickFolders tab with the original name if you like)?
+
+Also are other folders on the same account impacted as well?
+
+You can also check in the actual file location to test whether there is a file
+of this name. Find the file system location by right-clicking the folder and
+selecting &quot;Properties...&quot;
+
+Then please copy the &quot;Location&quot; value so I get an understanding on where the
+validation routine is looking. It should be something similar to this:
+
+mailbox:///C:/Users/FRED/AppData/Roaming/Thunderbird/Profiles/abc123xyz.default/Mail/imap.cscs.ch/Inbox.sbd/0
+CSCS tickets
+
+the part after mailbox:/// can be pasted in the Windows explorer address bar to
+find the containing folder (..\Inbox.sbd) and then the name of the folder
+(either &quot;0 CSCS tickets&quot; or &quot;0 CSCS tickets.sbd&quot; or some encoded version of it
+as spaces in file names or variable values can often be problematic as well)
+
+If the problem persists, you can disable the folder validity check with the
+config setting:
+
+extensions.quickfolders.autoValidateFolders = false
+
+You can get to about:config via Thunderbird Options &gt; Advanced &gt; General Tab.
+Click [Config Editor...]. 
+
+In the search box, Paste &quot;autoValidateFolders&quot;.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25697.html#c2">
+            #2</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 13:38:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Same behaviour here for several folders - however, I can't really see any rule
+this is following.
+
+I have 4 mailaccounts in my Thunderbird profile and this occurs for some
+folders in any of the accounts - it's not restricted to only one of the
+accounts...
+
+The failing tabs (more precisely: the corresponding folders) do not carry any
+special chars, blanks or such in the names.
+
+Thanks for looking at this issue!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25697.html#c3">
+            #3</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 13:44:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >2 examples for failing tabs/folders:
+(personal or company names replaced)
+
+imap://<a href="mailto:name-privat@imap.tld">name-privat@imap.tld</a>/INBOX
+(and several subfolders)
+
+imap://<a href="mailto:name@mail.domain.tld">name@mail.domain.tld</a>/INBOX
+(and several subfolders)
+
+while 
+
+imap://<a href="mailto:name@imap.domain.tld">name@imap.domain.tld</a>/INBOX
+
+works perfectly.
+
+I really see no difference when it comes to the path itself. 
+
+Anything else I could do to help you analysing this? Is there any kind of error
+logging I might supply?
+
+(I am on a Mac, using OSX 10.7.5 and Thunderbird 24.3.0 with Quickfolders 3.14)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25697.html#c4">
+            #4</a> From 
+          <a href="mailto:mvalle&#64;cscs.ch">Mario Valle</a>
+          2014-02-12 13:51:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Downgraded to 3.12.4 and the problem disappeared
+
+Anyway, the folder was:
+imap://<a href="mailto:mvalle@imap.cscs.ch">mvalle@imap.cscs.ch</a>/INBOX/0%20CSCS%20tickets
+
+There are other folders starting with 0 that do not exhibit this problem.
+All other folders on the same account do not exhibit this problem.
+
+Thanks for looking!
+mario
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25697.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 13:59:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c3">comment #3</a>)
+<span class="quote">&gt; 2 examples for failing tabs/folders:
+&gt; (personal or company names replaced)
+&gt; 
+&gt; imap://<a href="mailto:name-privat@imap.tld">name-privat@imap.tld</a>/INBOX
+&gt; (and several subfolders)</span >
+
+<span class="quote">&gt; 
+&gt; Anything else I could do to help you analysing this? Is there any kind of error
+&gt; logging I might supply?</span >
+
+
+The path is not logged, but it would be helpful to learn the file name itself
+on your file system. Can you follow the instructions in <a href="show_bug.cgi@id=25697.html#c1">Comment #1</a> to get
+there?
+
+All I need to know is
+
+1) The &quot;Location&quot; string as shown in folder properties
+2) The real file name, which you can find by going to the containing folder
+(following what is in the Location String) in your file navigation utility
+(whatever this is called on the Mac, is it &quot;Finder&quot; or something)
+
+If the disparity involves more than an added (or missing) .sbd then this would
+explain the bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25697.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 14:02:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c4">comment #4</a>)
+<span class="quote">&gt; Downgraded to 3.12.4 and the problem disappeared
+&gt; 
+&gt; Anyway, the folder was:
+&gt; imap://<a href="mailto:mvalle@imap.cscs.ch">mvalle@imap.cscs.ch</a>/INBOX/0%20CSCS%20tickets</span >
+
+WHat is the name on the hard drive? Looks to me like the spaces were (falsely?)
+encoded as %20. If you rename the folder and replace the spaces with _ it
+should work.
+
+<span class="quote">&gt; 
+&gt; There are other folders starting with 0 that do not exhibit this problem.
+&gt; All other folders on the same account do not exhibit this problem.
+&gt; 
+&gt; Thanks for looking!
+&gt; mario
+&gt; </span >
+
+No need to downgrade simply set
+
+extensions.quickfolders.autoValidateFolders = false
+
+for disabling the behavior. (See instructions in <a href="show_bug.cgi@id=25697.html#c1">Comment #1</a>)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25697.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 14:04:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >FYI, the function that validates the folder names:
+doesMailFolderExist: function checkExists(msgFolder) {
+  if (!msgFolder || !msgFolder.filePath)  {
+    return false;
+  }
+  if (msgFolder.flags &amp;
+QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP)
+    return true; // we do not validate nntp folders
+  if (msgFolder.filePath.exists()) {
+    return true;
+  }
+  else {
+    let oldPath = msgFolder.filePath.path.toString();
+    let testPath = '';
+    if (oldPath.endsWith('.sbd')) {
+      testPath = oldPath.substr(0, oldPath.length-4);
+    }
+    else {
+      testPath = oldPath + &quot;.sbd&quot;;
+    }
+    let localFile =
+Components.classes[&quot;@mozilla.org/file/local;1&quot;].createInstance(Components.interfaces.nsILocalFile);
+    localFile.initWithPath(testPath);
+    if (localFile.exists())
+      return true;
+  }
+  return false;
+},
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25697.html#c8">
+            #8</a> From 
+          <a href="mailto:mvalle&#64;cscs.ch">Mario Valle</a>
+          2014-02-12 14:44:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Found something.
+Under the ImapMail folder the failing folder is the only one that has only the
+msf file and not the no-extension empty file with the same name.
+
+C:\Users\mvalle\AppData\Roaming\Thunderbird\Profiles\b0wcdptw.default\ImapMail\imap.cscs.ch\INBOX.sbd
+
+.
+. (The following works)
+.
+0 Gimp
+0 Gimp.msf
+.
+. (The following does not work)
+.
+0 CSCS tickets.msf
+.
+.
+.
+
+Hope it helps
+mario
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25697.html#c9">
+            #9</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 15:02:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c5">comment #5</a>)
+
+For one of the folders (Inbox of the GMail account I am using here as well),
+the location is:
+
+imap://racemoto%<a href="mailto:40googlemail.com@imap.googlemail.com">40googlemail.com@imap.googlemail.com</a>/INBOX
+
+The file path is:
+
+/Users/username/Library/Thunderbird/Profiles/sdt7899i.username/ImapMail/imap.googlemail.com/INBOX.sbd
+
+(regarding the location: unfortunalety, I see the same behaviour for 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25697.html#c10">
+            #10</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 15:04:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >sorry, last sentence was not finished yet:
+
+(regarding the location: unfortunalety, I see the same behaviour for folders
+without any character replacement, e.g. without carrying a &quot;@&quot; or &quot;%40&quot; in the
+path)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25697.html#c11">
+            #11</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 17:01:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >as it's possible to disable the folder validity check - why do we need it at
+all, what exactly is the purpose?
+
+or more precisely: what disadvantages or problems might ocurr by disabling the
+check?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25697.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 17:04:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14.1pre1.xpi" name="attach_7782" title="3.14.1 pre 1">Created an attachment (id=7782)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7782&amp;action=edit" title="3.14.1 pre 1">[details]</a></span>
+3.14.1 pre 1
+
+If you run this test version with debug mode enabled, what does tools &gt; error
+console show?
+
+ (debug mode can be enabled with  a check box on the bottom of quickfolders
+advanced tab)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25697.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 17:07:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+(In reply to <a href="show_bug.cgi@id=25697.html#c11">comment #11</a>)
+<span class="quote">&gt; as it's possible to disable the folder validity check - why do we need it at
+&gt; all, what exactly is the purpose?</span >
+# to check for tabs of &quot;dead&quot;  folders (which have been deleted or maybe
+renamed without QF realizing it)
+# to avoid confusion when you use such a folder by dragging emails onto it
+
+<span class="quote">&gt; or more precisely: what disadvantages or problems might ocurr by disabling the
+&gt; check?</span >
+# none, if all your tabs point to valid folders
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25697.html#c14">
+            #14</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 17:20:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >debug gives me:
+
+QuickFolders 18:13:16.469  [9134 ms]     
+doesMailFolderExist() 1. path does not exist
+[/Users/username/Library/Thunderbird/Profiles/sdt7899i.username/ImapMail/imap.googlemail.com/INBOX-1]
+
+QuickFolders 18:13:16.469  [0 ms]        
+doesMailFolderExist() 2. path does not exist
+[/Users/username/Library/Thunderbird/Profiles/sdt7899i.username/ImapMail/imap.googlemail.com/INBOX-1.sbd]
+- returning false
+
+...which is indeed correct. The folder contains only 2 files with &quot;INBOX&quot;:
+
+INBOX-1.msf
+INBOX.msf
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25697.html#c15">
+            #15</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-12 17:21:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >with folder validity checking disabled, everything works just fine.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25697.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 22:43:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c14">comment #14</a>)
+<span class="quote">&gt; debug gives me:
+&gt; 
+&gt; QuickFolders 18:13:16.469  [9134 ms]     
+&gt; doesMailFolderExist() 1. path does not exist
+&gt; [/Users/username/Library/Thunderbird/Profiles/sdt7899i.username/ImapMail/imap.googlemail.com/INBOX-1]
+&gt; 
+&gt; QuickFolders 18:13:16.469  [0 ms]        
+&gt; doesMailFolderExist() 2. path does not exist
+&gt; [/Users/username/Library/Thunderbird/Profiles/sdt7899i.username/ImapMail/imap.googlemail.com/INBOX-1.sbd]
+&gt; - returning false
+&gt; 
+&gt; ...which is indeed correct. The folder contains only 2 files with &quot;INBOX&quot;:
+&gt; 
+&gt; INBOX-1.msf
+&gt; INBOX.msf
+&gt; </span >
+
+You can delete these files (they are broken index files) with THunderbird
+switched off. then recreate the folder tab.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25697.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-12 22:58:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c3">comment #3</a>)
+<span class="quote">&gt; 2 examples for failing tabs/folders:
+&gt; (personal or company names replaced)
+&gt; 
+&gt; imap://<a href="mailto:name-privat@imap.tld">name-privat@imap.tld</a>/INBOX
+&gt; (and several subfolders)</span >
+
+<span class="quote">&gt; 
+&gt; Anything else I could do to help you analysing this? Is there any kind of error
+&gt; logging I might supply?</span >
+
+
+The path is not logged, but it would be helpful to learn the file name itself
+on your file system. Can you follow the instructions in <a href="show_bug.cgi@id=25697.html#c1">Comment #1</a> to get
+there?
+
+All I need to know is
+
+1) The &quot;Location&quot; string as shown in folder properties
+2) The real file name, which you can find by going to the containing folder
+(following what is in the Location String) in your file navigation utility
+(whatever this is called on the Mac, is it &quot;Finder&quot; or something)
+
+If the disparity involves more than an added (or missing) .sbd then this would
+explain the bug.
+
+(In reply to <a href="show_bug.cgi@id=25697.html#c8">comment #8</a>)
+<span class="quote">&gt; Found something.
+&gt; Under the ImapMail folder the failing folder is the only one that has only the
+&gt; msf file and not the no-extension empty file with the same name.
+&gt; 
+&gt; C:\Users\mvalle\AppData\Roaming\Thunderbird\Profiles\b0wcdptw.default\ImapMail\imap.cscs.ch\INBOX.sbd
+&gt; 
+&gt; .
+&gt; . (The following works)
+&gt; .
+&gt; 0 Gimp
+&gt; 0 Gimp.msf
+&gt; .
+&gt; . (The following does not work)
+&gt; .
+&gt; 0 CSCS tickets.msf
+&gt; .
+&gt; .
+&gt; .
+&gt; 
+&gt; Hope it helps
+&gt; mario
+&gt; </span >
+
+msf files are index files and can be rebuilt. the actual data is either in &quot;0
+CSCS tickets&quot; or &quot;0 CSCS tickets.sbd&quot;, these are the 2 cases that QuickFOlders
+looks for. 
+
+If you close down Tb you can delete the msf file and it will be rebuilt
+automatically. <a href="http://forums.mozillazine.org/viewtopic.php?f=39&amp;t=450392">http://forums.mozillazine.org/viewtopic.php?f=39&amp;t=450392</a>
+
+However I think there is a problem with encoding the spaces, so if you rename
+the folder to 0_CSCS_tickets and then create the Tab it will probably work.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25697.html#c18">
+            #18</a> From 
+          <a href="mailto:mvalle&#64;cscs.ch">Mario Valle</a>
+          2014-02-13 10:42:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Solved.
+Remember the problematic folder is from an IMAP server.
+I created an empty file called &quot;0 CSCS tickets&quot; in the
+C:\Users\mvalle\AppData\Roaming\Thunderbird\Profiles\b0wcdptw.default\ImapMail\imap.cscs.ch\INBOX.sbd
+directory where already lives the &quot;0 CSCS tickets.msf&quot; file and now version
+3.14 does not say anymore invalid folder.
+Thanks for your help!
+mario
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25697.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-13 11:28:31 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c18">comment #18</a>)
+<span class="quote">&gt; Solved.
+&gt; Remember the problematic folder is from an IMAP server.
+&gt; I created an empty file called &quot;0 CSCS tickets&quot; in the
+&gt; C:\Users\mvalle\AppData\Roaming\Thunderbird\Profiles\b0wcdptw.default\ImapMail\imap.cscs.ch\INBOX.sbd
+&gt; directory where already lives the &quot;0 CSCS tickets.msf&quot; file and now version
+&gt; 3.14 does not say anymore invalid folder.
+&gt; Thanks for your help!
+&gt; mario
+&gt; </span >
+
+This is an unusal way to resolve this. The file  (without extension) you
+created is where the actual content of the emails is stored, and I believe the
+msf files might just be headers. Unless the folder has subfolders in which case
+Tb will create a folder filename.sbd and move the messages in there; it is kind
+of confusing. Is the folder selected for offline use? Maybe this is something I
+need to check in the validation function and ignore IMAP folders that are not
+&quot;subscribed&quot;. I will look into it and upload a patch shortly...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25697.html#c20">
+            #20</a> From 
+          <a href="mailto:mvalle&#64;cscs.ch">Mario Valle</a>
+          2014-02-13 11:37:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Please read again my mail.
+
+It is an IMAP server. That means no mail is stored locally. And this IMAP
+folder is obviously subscribed because I can see it in the TB folders list.
+
+I simply noticed the missing empty file was the only difference this folder had
+compared to the working ones. Besides this, I really don't know anything about
+what TB stores under the profile folder.
+
+Anyway, thanks again for this incredibly useful tool and for pointing me in the
+right direction!
+mario
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25697.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-13 11:55:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25697.html#c20">comment #20</a>)
+<span class="quote">&gt; Please read again my mail.
+&gt; 
+&gt; It is an IMAP server. That means no mail is stored locally. And this IMAP
+&gt; folder is obviously subscribed because I can see it in the TB folders list.</span >
+
+I mean not subscribed, but storing the mail locally. There is no other
+explanation for the actual container of the emails (the file with no extension
+or the file with .sbd appended) being missing, the emails have to be stored
+_somewhere_. My understanding so far was that downloaded mails and / or their
+headers are stored in this file (which you manually created).
+
+If I can reproduce the bug somehow on my IMAP account (I mainly use POP as it
+is more reliable and faster on my slow connection; also I prefer to store mail
+locally as I do not trust my email providers to do this for me) then it will be
+easier to fix for me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25697.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-13 13:33:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14.1pre2.xpi" name="attach_7784" title="3.14.1 pre 2">Created an attachment (id=7784)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7784&amp;action=edit" title="3.14.1 pre 2">[details]</a></span>
+3.14.1 pre 2
+
+I just added a menu item &quot;Explorer Folder Location...&quot; to the Mail Folder
+Commands sub menu. It operates similarly to the action that occurs when you go
+to tools &gt; saved files, right-click a file and select &quot;open containing folder&quot;: 
+
+The command should open the containing folder in the file system and highlight
+the &quot;folder file&quot;. If there is trouble with the path it should show an error
+message.
+
+Hope you find this useful.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25697.html#c23">
+            #23</a> From 
+          <a href="mailto:tiago&#64;vgt.com.br">Tiago Oliveira de Jesus</a>
+          2014-02-13 13:56:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi all!
+
+First, sorry, my english is bad :(
+
+I have same error in two folders:
+
+imap://tiago%<a href="mailto:40vgt.com.br@mail.vgt.com.br">40vgt.com.br@mail.vgt.com.br</a>/INBOX/Resolvidos/2014/Fevereiro
+imap://tiago%<a href="mailto:40vgt.com.br@mail.vgt.com.br">40vgt.com.br@mail.vgt.com.br</a>/INBOX/Resolvidos/2014/Janeiro
+
+In folder: imap://tiago%<a href="mailto:40vgt.com.br@mail.vgt.com.br">40vgt.com.br@mail.vgt.com.br</a>/INBOX/Resolvidos/2014
+error not happening.
+
+I'm using &quot;Icedove 17.0.10&quot; at Debian/Gnu Linux.
+
+I hope to help.
+
+[] s
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25697.html#c24">
+            #24</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-13 15:14:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am also using IMAP only - and I have every option for caching, downloading or
+local storage of mails disabled.
+
+@Mario: is your Thunderbird set up in a similar way? 
+
+maybe that's why we are missing some files that Axel does have in his profile,
+hence checking for them might not make sense if we're working on IMAP
+folders...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25697.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-13 15:27:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14.1pre3.xpi" name="attach_7785" title="3.14.1 pre 3">Created an attachment (id=7785)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7785&amp;action=edit" title="3.14.1 pre 3">[details]</a></span>
+3.14.1 pre 3
+
+Same as pre 2, this time also Postbox and SeaMOnkey compatible. After the last
+comment I tested in Ubuntu and was able to reproduce the problem: apparently in
+ubuntu there are msf files but for some reason no additional file without the
+msf extension; I will ask over at the maildev group if this is correct.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25697.html#c26">
+            #26</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-13 15:33:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mario confirmed by mail: his IMAP settings are identical (no caching, no
+downloading etc.)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25697.html#c27">
+            #27</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-02-13 15:39:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-3.14.1pre4.xpi" name="attach_7786" title="3.14.1 pre 4">Created an attachment (id=7786)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7786&amp;action=edit" title="3.14.1 pre 4">[details]</a></span>
+3.14.1 pre 4
+
+This latest version is based on the following assumptions:
+
+either of
+folderName.sbd  (folder)
+folderName      (file)
+folderName.msf  (file)
+
+have to exist for the folder to be recognized as &quot;valid&quot;. I still have to
+confirm with the maildev group if this is reasonable. But based on this I was
+able to fix the behavior on my Ubuntu test platform. Also  note this has the
+new command Mail Folder Commands &gt; Explorer Folder Location which opens the
+parent folder and should display one of the three above. (In Windows, it also
+selects the correct file)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25697.html#c28">
+            #28</a> From 
+          <a href="mailto:racemoto&#64;googlemail.com">André</a>
+          2014-02-13 16:13:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >using  3.14.1 pre 4, I can gladly confirm: works perfectly now ;-)
+
+thanks a lot, I really appreciate your time and efforts! (please find a little
+donation in your paypal account)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25697.html#c29">
+            #29</a> From 
+          <a href="mailto:tiago&#64;vgt.com.br">Tiago Oliveira de Jesus</a>
+          2014-02-13 16:18:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Yep!
+
+3.14.1 pre 4, works for my too!
+
+Thanks! 
+
+[] s
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25697.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-13 08:49:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.6.1pre18.xpi" name="attach_8246" title="4.6.1 prerelease 18">Created an attachment (id=8246)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8246&amp;action=edit" title="4.6.1 prerelease 18">[details]</a></span>
+4.6.1 prerelease 18
+
+Adding the button in the current folder toolbar (center screen)
+
+Make this new button visible in QuickFolders Settings &gt;&gt; Advanced in the
+section Current Folder Toolbar. Making the Current Folder Toolbar always
+visible is highly recommended as it has some very useful commands right into
+center screen, such as:
+        # Dragable current Mail(s) Icon
+        # Recent Folder Button
+        # Message Navigation (next unread, mark thread as read and jump)
+        # Folder Siblings
+        # Customize Icon
+        # Filter Assistant
+        # Mail Folder Commands Submenu
+        # Repair Folder
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25697.html#c31">
+            #31</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-13 08:52:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.6.1pre18.xpi" name="attach_8246" title="4.6.1 prerelease 18">attachment 8246</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8246&amp;action=edit" title="4.6.1 prerelease 18">[details]</a></span>)
+I made a mistake - submitted this attachment to the wrong bug, Bugzilla's bug
+navigation is weird!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25697.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2016-12-13 08:54:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I believe this was already fixed (in Release 4.0.3)
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25697&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

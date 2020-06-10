@@ -1,0 +1,53 @@
+Warning: attempting to write 7229 bytes to preference extensions.installCache. This is bad for general performance and memory usage. Such an amount of data should rather be written to an external file.
+Could not read chrome manifest 'file:///usr/lib/thunderbird/extensions/%7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D/chrome.manifest'.
+While creating services from category 'profile-after-change', could not create service for entry 'Disk Space Watcher Service', contract ID '@mozilla.org/toolkit/disk-space-watcher;1'
+Метка времени: 29.09.2013 10:47:49
+Предупреждение: redeclaration of var calInstanceOf
+Источник: resource://calendar/modules/calUtils.jsm -> file:///usr/lib/thunderbird/extensions/%7Be2fda1a4-762b-4020-b5ad-a41df1933103%7D/calendar-js/calUtils.js
+Строка 444, символ 9
+Исходный код:
+function calInstanceOf(aObject, aInterface) { 
+Метка времени: 29.09.2013 10:47:49
+Предупреждение: in strict mode code, functions may be declared only at top level or immediately within another function
+Источник: resource://calendar/modules/calUtils.jsm -> file:///usr/lib/thunderbird/extensions/%7Be2fda1a4-762b-4020-b5ad-a41df1933103%7D/calendar-js/calUtils.js
+Строка 1230, символ 21
+Исходный код:
+            function eq(obj) { 
+Метка времени: 29.09.2013 10:47:49
+Предупреждение: in strict mode code, functions may be declared only at top level or immediately within another function
+Источник: resource://calendar/modules/calUtils.jsm -> file:///usr/lib/thunderbird/extensions/%7Be2fda1a4-762b-4020-b5ad-a41df1933103%7D/calendar-js/calUtils.js
+Строка 1244, символ 21
+Исходный код:
+            function neq(obj) { 
+Метка времени: 29.09.2013 10:47:49
+Предупреждение: in strict mode code, functions may be declared only at top level or immediately within another function
+Источник: resource://calendar/modules/calUtils.jsm -> file:///usr/lib/thunderbird/extensions/%7Be2fda1a4-762b-4020-b5ad-a41df1933103%7D/calendar-js/calUtils.js
+Строка 1328, символ 21
+Исходный код:
+            function filterFunc(op_) { 
+Метка времени: 29.09.2013 10:47:49
+Предупреждение: in strict mode code, functions may be declared only at top level or immediately within another function
+Источник: resource://calendar/modules/calUtils.jsm -> file:///usr/lib/thunderbird/extensions/%7Be2fda1a4-762b-4020-b5ad-a41df1933103%7D/calendar-js/calUtils.js
+Строка 1379, символ 21
+Исходный код:
+            function forEachFunc(op) { 
+Метка времени: 29.09.2013 10:47:50
+Ошибка: префикс не связан c пространством имён
+Исходный код:
+<html:div xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+[JavaScript Error: "[Exception... ""  nsresult: "0x804e03f7 (<unknown>)"  location: "JS frame :: chrome://calendartimeline/content/timeline.js :: getTimelineItems/getListener.onOperationComplete :: line 164"  data: no]"]
+Sun Sep 29 2013 10:47:51 GMT+0400 (MSK) CH: Current logLevel: 1
+2013-09-29 10:47:51	extensions.sendlater3	WARN	addSENDLATER3ColumnHandler: gDBView problem
+2013-09-29 06:47:53.627  [GetSelectedMails.startup]: Profiles settings are: '[{"name":"%u041F%u043E%u0447%u0442%u0430","accountsSelection":{"account5":true,"account8":true,"account6":true,"account2":true,"account20":false,"account7":true},"headersFetching":{"account5":0,"account8":0,"account6":0,"account2":0,"account7":0},"customButtonTitle":"Get%20%27Profile%201%27","customButton":false,"customButtonIcon":"green","headersFetchingDefault":{"account5":false,"account8":false},"server":{"account5":false,"account8":false},"serverName":{"account5":"pop.yandex.ru","account8":"pop.gmail.com"},"serverDefault":{"account5":false,"account8":false},"port":{"account5":false,"account8":false},"portNumber":{"account5":995,"account8":995},"portDefault":{"account5":false,"account8":false},"sendBeforeGet":false}]'
+2013-09-29 06:47:53.638  [GetSelectedMails.updateProfilesList]: Profiles list has been updated
+2013-09-29 06:47:53.638  [GetSelectedMails.selectDefaultProfile]: Profile #0 'Почта' has been set as default profile
+Метка времени: 29.09.2013 10:48:18
+Ошибка: префикс не связан c пространством имён
+Исходный код:
+<html:div xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+[JavaScript Error: "[Exception... ""  nsresult: "0x804e03f7 (<unknown>)"  location: "JS frame :: chrome://calendartimeline/content/timeline.js :: getTimelineItems/getListener.onOperationComplete :: line 164"  data: no]"]
+Метка времени: 29.09.2013 10:48:46
+Ошибка: префикс не связан c пространством имён
+Исходный код:
+<html:div xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+[JavaScript Error: "[Exception... ""  nsresult: "0x804e03f7 (<unknown>)"  location: "JS frame :: chrome://calendartimeline/content/timeline.js :: getTimelineItems/getListener.onOperationComplete :: line 164"  data: no]"]

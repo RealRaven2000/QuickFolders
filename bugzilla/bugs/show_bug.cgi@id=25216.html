@@ -1,0 +1,1215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25216 &ndash; Feature Request: &quot;Disable signature&quot; option for new messages</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25216&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25216">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25216">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25216">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25216">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25216</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Feature Request: &quot;Disable signature&quot; option for new messages</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2013-07-06 06:20:17</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25216&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2013-07-06 06:20:17">
+  <input type="hidden" name="longdesclength" value="18">
+  <input type="hidden" name="id" value="25216">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Feature Request: &quot;Disable signature&quot; option for new messages">Feature Request: &quot;Disable signature&quot; option for new messages
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25216.html">25216</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>LATER
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P4">P4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25216&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25216">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</option>
+            <option value="smarttemplate4&#64;posteo.de">smarttemplate4&#64;posteo.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="smartTemplate-0.9.2pre123.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">0.9.2 prerelease 123</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (288.65 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25216.html#attach_7409"
+               title="Go to the comment associated with the attachment">2012-11-11 14:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7409&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-0.9.3pre268.xpi.1"
+               title="View the content of the attachment">
+          <b>0.9.3 Prerelease 268</b></a>
+
+          <span class="bz_attach_extra_info">
+              (313.58 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=25216.html#attach_7619"
+               title="Go to the comment associated with the attachment">2013-07-06 06:20</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7619&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=25216.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25216&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25216&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25216">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25216">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25216">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25216">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25216.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-11-10 00:52
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Feature Request: Make &quot;Disable Standard Mailheaders&quot; also appear in new
+messages.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25216.html#c1">
+            #1</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-10 01:59:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >This will be useful to have exactly the same signature aspect in all the
+situations (presently different)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25216.html#c2">
+            #2</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-11-11 03:17:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >&quot;standard Mailheader or quote header as well&quot; you have only on reply and
+forward case but not in new Messages
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25216.html#c3">
+            #3</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-11 04:57:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am sorry, I was not clear!
+My problem concerned in fact the appearance of the signatures. I had noticed a
+difference between the appearance of the signature in answers or forwarded
+messages with %sig% and &quot;Disable Standard Mailheaders&quot; (signature not in grey)
+and the appearance of the signature (grey) in new messages.
+I solved this problem by cancelling the %sig% in answers and forwarded
+messages.
+All the signatures are now grey.
+But I would prefer them to be all in the usual color of the message...
+Is it possible to do anything about this?
+Thanks!!!!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25216.html#c4">
+            #4</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-11-11 05:29:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c3">comment #3</a>)
+basicly: thunderbird pasts below your message a &quot;header line&quot; like 
+&quot;on date author wrote:&quot; or the table on forwarding message with the full mail
+details.
+We search this elements and replace it with the user definied template this is
+the design of the Add-on.
+On a new Message you don't have such elements in case that is an complete blank
+mail.
+
+We preffer in the future to use the signature Settings inside Thunderbird
+Account settings as to set the %sig% and %sig(2)% variables in your template.
+-&gt; you see self why!
+
+You can style with css to formate your signature same as your template.
+Make an id and give them the same font-family, size and color as your template
+e.g.
+
+&lt;div id=&quot;mySig&quot; style=&quot;font-family: tahoma, sans-serif; color: #000000;
+font-size: 12pt;&quot;&gt;
+  here comes now your signature phrase
+&lt;/div&gt;
+
+This you do with all of your signatures (set inside account settings of
+thunderbird per each identity) which you use inside Thunderbird and all should
+be worked well.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25216.html#c5">
+            #5</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-11-11 05:49:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c4">comment #4</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25216.html#c3">comment #3</a>)</span >
+but additional note: thunderbird supports signatures for reply and forward case
+only.
+If you like to have an signature on new messages you should place the div id
+things (see below) in your template for new messages!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25216.html#c6">
+            #6</a> From 
+          <a href="mailto:smarttemplate4&#64;posteo.de">MarkyMarkDE</a>
+          2012-11-11 06:03:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c5">comment #5</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25216.html#c4">comment #4</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25216.html#c3">comment #3</a>)</span >
+i'm sorry! Thunderbird paste the signature on new messages, you can ignore my
+additional <a href="show_bug.cgi@id=25216.html#c5">comment #5</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25216.html#c7">
+            #7</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-11 10:40:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >In answer to previous comments
+Do I have to understand that you and Axel Grude can't or don't want to create a
+command that would have the same effect on signatures in new messages as the
+command &quot;Disable Standard Mailheaders&quot; has on answers or forwarded messages?
+This would unfortunately end my request.
+Thank you to think of it.
+And anyway thank you for this very good add-on.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25216.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-11 10:57:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c7">comment #7</a>)
+<span class="quote">&gt; In answer to previous comments
+&gt; Do I have to understand that you and Axel Grude can't or don't want to create a
+&gt; command that would have the same effect on signatures in new messages as the
+&gt; command &quot;Disable Standard Mailheaders&quot; has on answers or forwarded messages?
+&gt; This would unfortunately end my request.
+&gt; Thank you to think of it.
+&gt; And anyway thank you for this very good add-on.
+&gt; </span >
+
+I still do not understand your request. Do you want a new option &quot;disable
+signature&quot; for the new mail window only?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25216.html#c9">
+            #9</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-11 11:24:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c7">comment 7</a>)
+Yes, exactly! This would resolve my question explained in <a href="show_bug.cgi@id=25216.html#c3">comment #3</a> (sorry for
+my initial confused explanation).
+Is it possible to create this option? Would you accept to try do it?
+Thanks a lot!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25216.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-11 11:54:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I suggest that this should be a &quot;per Account setting&quot; on the &quot;Write&quot; Tab of
+smartTemplate4, so that you can have different setting for each template you
+are using?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25216.html#c11">
+            #11</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-11 12:27:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c10">comment #10</a>)
+<span class="quote">&gt; I suggest that this should be a &quot;per Account setting&quot; on the &quot;Write&quot; Tab of
+&gt; smartTemplate4, so that you can have different setting for each template you
+&gt; are using?
+&gt; </span >
+This &quot;per account setting&quot; could be useful for other people, but as far as I am
+concerned, the only thing I would like is to disable, even globally,
+the grey appearance of the thunderbird standard signature. It is yet possible
+with the present (french) version of SmartTemplate4 for answers and forwarded
+messages (with %sig% and &quot;Disable Standard Mailheaders&quot;)but not for new
+messages.
+Thank you for your answers!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25216.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-11 12:41:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25216.html#c10">comment #10</a>)
+&gt; This &quot;per account setting&quot; could be useful for other people, but as far as I am
+&gt; concerned, the only thing I would like is to disable, even globally,
+&gt; the grey appearance of the thunderbird standard signature. It is yet possible
+&gt; with the present (french) version of SmartTemplate4 for answers and forwarded
+&gt; messages (with %sig% and &quot;Disable Standard Mailheaders&quot;)but not for new
+&gt; messages.</span >
+
+Yes, except this behavior is completely independent from the option &quot;Disable
+Standard Mailheaders&quot;. It should work in all cases even when that box is not
+checked.
+
+Explanation: Once you use the %sig% variable, the standard signature placement
+from Thunderbird is not used anymore, and we insert the signature at the place
+where you want it. That's why I did not understand the bug under its original
+title.
+
+And having it as a global option only might be counter-productive as a lot of
+people see signature as something that is account-specific. E.g. they might use
+a different signature for newsgroups, for their personal and for their work
+email. It will take a while to develop this new option as it will need input
+from our translators, once we have the next version released, I will create
+some test versions and append them to this bug.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25216.html#c13">
+            #13</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-11 12:57:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c12">comment #12</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25216.html#c11">comment #11</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25216.html#c10">comment #10</a>)
+&gt; &gt; This &quot;per account setting&quot; could be useful for other people, but as far as I am
+&gt; &gt; concerned, the only thing I would like is to disable, even globally,
+&gt; &gt; the grey appearance of the thunderbird standard signature. It is yet possible
+&gt; &gt; with the present (french) version of SmartTemplate4 for answers and forwarded
+&gt; &gt; messages (with %sig% and &quot;Disable Standard Mailheaders&quot;)but not for new
+&gt; &gt; messages.
+&gt; 
+&gt; Yes, except this behavior is completely independent from the option &quot;Disable
+&gt; Standard Mailheaders&quot;. It should work in all cases even when that box is not
+&gt; checked.
+&gt; 
+&gt; Explanation: Once you use the %sig% variable, the standard signature placement
+&gt; from Thunderbird is not used anymore, and we insert the signature at the place
+&gt; where you want it. That's why I did not understand the bug under its original
+&gt; title.
+&gt; 
+&gt; And having it as a global option only might be counter-productive as a lot of
+&gt; people see signature as something that is account-specific. E.g. they might use
+&gt; a different signature for newsgroups, for their personal and for their work
+&gt; email. It will take a while to develop this new option as it will need input
+&gt; from our translators, once we have the next version released, I will create
+&gt; some test versions and append them to this bug.
+&gt; </span >
+You are helping me to explain the problem completely:
+In my system, if I use the %sig% variable without checking &quot;Disable Standard
+Mailheaders&quot;, I have two signatures: the one generated by SmartTemplate4, in
+black (or the color chosen for the message) and the standard one
+(grey)generated by Thunderbird. If &quot;Disable Standard Mailheaders&quot; is checked, I
+have only the signature I want: the one generated by SmartTenplate4. This is
+possible only in answers and forwarded messages.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25216.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-11-11 14:24:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="smartTemplate-0.9.2pre123.xpi" name="attach_7409" title="0.9.2 prerelease 123">Created an attachment (id=7409)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7409&amp;action=edit" title="0.9.2 prerelease 123">[details]</a></span>
+0.9.2 prerelease 123
+
+This latest beta works for me - if you want to disable the gray font at the
+end, use %sig(2)% or use a html signature and put in some explicit font
+coloring.
+
+e.g.
+
+&lt;div id=&quot;testSignature&quot; style=&quot;width: 65%; padding: 0.8em 1.2em; font:x-small
+verdana; color: #444; box-shadow: 4px 4px 9px -2px rgba(0,0,0,0.65);
+border-radius: 1em; padding: 0.4em 2em; border: 1px dashed #444; background:
+rgb(230,240,163);
+&gt;
+&lt;b class=&quot;myName&quot; style=&quot;text-shadow: 1px 1px 2px #DDD;cursor:pointer;&quot;&gt;John
+Doe&lt;/b&gt;
+&lt;br&gt;Bug Requester
+&lt;br&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25216.html#c15">
+            #15</a> From 
+          <a href="mailto:bugbugbug&#64;laposte.net">bugbugbug&#64;laposte.net</a>
+          2012-11-12 12:42:46 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25216.html#c14">comment #14</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="smartTemplate-0.9.2pre123.xpi" name="attach_7409" title="0.9.2 prerelease 123">attachment (id=7409)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7409&amp;action=edit" title="0.9.2 prerelease 123">[details]</a></span> [details]
+&gt; 0.9.2 prerelease 123
+&gt; 
+&gt; This latest beta works for me - if you want to disable the gray font at the
+&gt; end, use %sig(2)% or use a html signature and put in some explicit font
+&gt; coloring.
+&gt; 
+&gt; e.g.
+&gt; 
+&gt; &lt;div id=&quot;testSignature&quot; style=&quot;width: 65%; padding: 0.8em 1.2em; font:x-small
+&gt; verdana; color: #444; box-shadow: 4px 4px 9px -2px rgba(0,0,0,0.65);
+&gt; border-radius: 1em; padding: 0.4em 2em; border: 1px dashed #444; background:
+&gt; rgb(230,240,163);
+&gt; &gt;
+&gt; &lt;b class=&quot;myName&quot; style=&quot;text-shadow: 1px 1px 2px #DDD;cursor:pointer;&quot;&gt;John
+&gt; Doe&lt;/b&gt;
+&gt; &lt;br&gt;Bug Requester
+&gt; &lt;br&gt;
+&gt; &lt;/div&gt;
+&gt; </span >
+Thanks a lot for your last answer.
+I had'nt tried %sig(2)%. It works perfectly well on my professional computer,
+with Windows XP; but not on my own computer, with Windows 7.
+I give up, too complicated!!!
+Thanks again, anyway. SmartTemplate4 is nevertheless very smart and useful!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25216.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-07-06 06:19:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Marking as LATER as there is the workaround of using %sig% and there will not
+be extra time to put this into the next release (planned for next weekend).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25216.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2013-07-06 06:20:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-0.9.3pre268.xpi.1" name="attach_7619" title="0.9.3 Prerelease 268">Created an attachment (id=7619)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7619&amp;action=edit" title="0.9.3 Prerelease 268">[details]</a></span>
+0.9.3 Prerelease 268
+
+Just the latest beta, there were some improvements around %sig% handling that
+might help you.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25216&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

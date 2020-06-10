@@ -1,0 +1,2897 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 23258 &ndash; QF Buttons missing styling</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23258&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23258">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=23258">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23258">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_23258">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;23258</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QF Buttons missing styling</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-05-25 13:10:24</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23258&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-05-25 13:10:24">
+  <input type="hidden" name="longdesclength" value="37">
+  <input type="hidden" name="id" value="23258">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QF Buttons missing styling">QF Buttons missing styling
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=23258.html">23258</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>DUPLICATE
+          of bug <a href="show_bug.cgi@id=24849.html" title="ASSIGNED - QF tab bar customizations don't stick">24849</a>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows Vista">Windows Vista
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=23258&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=23258">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:madabug&#64;madarasz.nl">Lewis &lt;madabug&#64;madarasz.nl&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+            <option value="calle&#64;gmx.de">calle&#64;gmx.de</option>
+            <option value="k.habermann&#64;gmx.de">k.habermann&#64;gmx.de</option>
+            <option value="skyshado-info&#64;yahoo.com">skyshado-info&#64;yahoo.com</option>
+            <option value="ziomau10&#64;gmail.com">ziomau10&#64;gmail.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Knipsel-qf3.JPG"
+               title="View the content of the attachment">
+          <b>Quick folder flat buttons and warnings</b></a>
+
+          <span class="bz_attach_extra_info">
+              (62.14 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_6617"
+               title="Go to the comment associated with the attachment">2010-09-20 07:54</a>,
+
+            <a href="mailto:madabug&#64;madarasz.nl"
+               title="Write an email to the creator of the attachment">Lewis
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6617&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="CurrentFolderToolbar.jpg"
+               title="View the content of the attachment">
+          <b>Unstyled folder toolbar</b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.79 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_7186"
+               title="Go to the comment associated with the attachment">2012-02-24 05:07</a>,
+
+            <a href="mailto:ziomau10&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Maurizio Ferraris
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7186&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="findRules.png"
+               title="View the content of the attachment">
+          <b>finding the breaking rule</b></a>
+
+          <span class="bz_attach_extra_info">
+              (63.21 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_7187"
+               title="Go to the comment associated with the attachment">2012-02-24 05:15</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7187&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a4" href="CSSRule.jpg"
+               title="View the content of the attachment">
+          <b>Found the CSS Rule?</b></a>
+
+          <span class="bz_attach_extra_info">
+              (186.43 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_7188"
+               title="Go to the comment associated with the attachment">2012-02-25 09:22</a>,
+
+            <a href="mailto:ziomau10&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Maurizio Ferraris
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7188&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="CSSRuleOK.jpg"
+               title="View the content of the attachment">
+          <b>CSS Rule OK</b></a>
+
+          <span class="bz_attach_extra_info">
+              (157.89 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_7189"
+               title="Go to the comment associated with the attachment">2012-02-25 10:05</a>,
+
+            <a href="mailto:ziomau10&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Maurizio Ferraris
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7189&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="Console.txt"
+               title="View the content of the attachment">
+          <b>Console2 contents</b></a>
+
+          <span class="bz_attach_extra_info">
+              (6.00 KB,
+                text/plain)
+
+            <br>
+            <a href="show_bug.cgi@id=23258.html#attach_7191"
+               title="Go to the comment associated with the attachment">2012-02-26 05:13</a>,
+
+            <a href="mailto:ziomau10&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Maurizio Ferraris
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7191&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=23258&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23258&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=23258">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=23258">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=23258">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=23258">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=23258.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2010-09-20 07:51
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >QF Buttons start flat and cannot be changed via Layout menu. 
+I can change the settings in the QF layout menu but the buttons one sees do not
+change. And they stay like in the attached picture.
+
+see attached picture
+for picture of buttons and for warning message(s) (in dutch) 
+Translation: (I Think :-)  )
+-  'NaN' found in rgb() where number or percentage expected. Fault during
+parsing value for/of 'background-color' Declaration ignored. 
+in qf  options.xul
+-  'NaN' found in rgb() where number or percentage expected. Fault during
+parsing value for/of 'background-color' Declaration ignored. 
+in qf  quickfolders-layout.css
+
+
+I haven't yet taken the time to switch off the other extensions one by one to
+isolate the problem. Maybe you have a hunch what the problemcause can be or
+which (other) extensions is the problemcreator
+
+
+- Below my extensions
+
+Aangemaakt: Mon Sep 20 2010 16:27:13 GMT+0200
+User Agent: Mozilla/5.0 (Windows; U; Windows NT 6.0; nl-NL; rv:1.8.1.23)
+Gecko/20090812 Lightning/0.9 Thunderbird/2.0.0.23 Mnenhy/0.7.6.666
+Build-ID: 20100915113750
+
+Ingeschakelde extensies: [42] = switched on extensions
+
+    * Add-on Collector 1.2.1 - <a href="mailto:sharing@addons.mozilla.org">sharing@addons.mozilla.org</a> - Deel en ontdek
+add-ons.
+    * AddressBookTab 1.3.2 - <a href="mailto:AddressBookTab@dischert.luc">AddressBookTab@dischert.luc</a> - It adds a button
+that can be put in toolbars and that open the addressbook in a new tab
+    * AttachmentExtractor 1.3.5 - {35834d20-efdb-4f78-ab77-9635fb4e56c4} - Pakt
+alle bijlages uit van geselecteerde berichten.
+    * British English Dictionary 1.19 - <a href="mailto:en-GB@dictionaries.addons.mozilla.org">en-GB@dictionaries.addons.mozilla.org</a>
+    * CompactHeader 1.2.4 - {58D4392A-842E-11DE-B51A-C7B855D89593} - Add
+ability to reduce header size to one or two lines. Linkify subjects in RSS
+feeds.
+    * Copy Sent to Current 0.9.6 - <a href="mailto:copysent2current@ggbs.de">copysent2current@ggbs.de</a> - Stelt u in staat
+om (aanvullend) een kopie van verzonden berichten in de huidige map te bewaren
+of een map te kiezen waarnaar het bericht wordt weggeschreven
+    * Dictionary Switcher 1.1.5 - <a href="mailto:dictionary-switcher-tb@design-noir.de">dictionary-switcher-tb@design-noir.de</a> -
+Displays the currently selected dictionary in the status bar and allows to
+change it.
+    * Display Mail User Agent 1.6.6 - {F8147CF4-B9E3-445B-AA87-081ED66548F8} -
+Geeft het mailprogramma weer waarmee het geselecteerde bericht is opgesteld
+    * English (Australian) Dictionary 2.1.1 -
+<a href="mailto:en-AU@dictionaries.addons.mozilla.org">en-AU@dictionaries.addons.mozilla.org</a> - I'm sick of all my favoUrite coloUrful
+language being marked incorrect.
+    * Extra Folder Columns 1.1 - <a href="mailto:extra-cols@jminta_gmail.com">extra-cols@jminta_gmail.com</a> - Adds additional
+columns to Thunderbird's folder pane
+    * FiltaQuilla 1.1.0 - <a href="mailto:filtaquilla@mesquilla.com">filtaquilla@mesquilla.com</a> - Mail filter custom
+actions and searches
+    * Filter Button Thunderbird 0.2.2 - {4DEAAEEC-FC67-11DA-8ABF-A21DECFE1765}
+- Voegt een werkbalkknop toe om filters toe te passen.
+    * Folderpane Tools 0.6 - {b243fe83-b8a7-47de-855d-21d865243d5d} - Allows
+for customization of the folder pane such as rearranging accounts and choosing
+a startup folder.
+    * FoxClocks 2.6.18 - {d37dc5d0-431d-44e5-8c91-49419370caa1} - Toont de
+lokale tijd over de hele wereld in de statusbalk / werkbalk. Ondersteunt
+vrijwel alle tijdzones.
+    * German Dictionary, extended for Austria 2.0.1 -
+<a href="mailto:de-AT@dictionaries.addons.mozilla.org">de-AT@dictionaries.addons.mozilla.org</a> - German dictionary (new Orthography) for
+spellchecking in Mozilla products, extended with Austrian words. Using
+igerman98 dictionary version 20091006.
+    * ImportExportTools (Mboximport enhanced) 2.3.5 -
+{3ed8cc52-86fc-4613-9026-c1ef969da4c3} - Voegt wat hulpmiddelen toe om
+berichten en mappen te importeren en exporteren
+    * Lightning 1.0b2 - {e2fda1a4-762b-4020-b5ad-a41df1933103} - Een
+geïntegreerde agenda voor Thunderbird
+    * Mail Tweak 1.0pre7 - <a href="mailto:mail-tweak@rod.whiteley">mail-tweak@rod.whiteley</a> - A collection of fixes and
+enhancements
+    * Massive Extender 0.9.6 - {E6175356-15A3-11DF-AFEE-C56455D89593} - Extends
+the Mozilla Add-on Collector with batch actions making it possible to install,
+uninstall, enable and disable entire collections or personalized selected items
+en masse. NB: Requires latest Mozilla Add-on Collector (v.1.1.0-1.2.1).
+    * Maximize Message Pane 1.1.10 - {CC1FC7EB-79F7-4A28-B12C-731304F16E53} -
+Maximaliseer het berichtenpaneel door het conversatiepaneel en het mappenpaneel
+in te klappen.
+    * MinimizeToTray Plus 1.0.8 - {de1b245c-de57-11da-ba2d-0050c2490048} -
+Minimaliseert Mozillavensters naar het systeemvak
+    * Mnenhy 0.8.3 - {bf591015-b599-4125-9428-3cb746ddca31} - Mozilla
+enhancements with special focus upon Mail&amp;News
+    * MR Tech Toolkit 6.0.4 - {9669CC8F-B388-42FE-86F4-CB5E7F5A8BDC} - Local
+Install hulpprogramma's voor alle gebruikers. (nl-NL)
+    * New Tab Button 0.1.23 - {3AB03506-4329-483F-BA03-EA5493232260} - Add
+toolbar button for opening messages in new tabs
+    * Nostalgy 0.2.25 - <a href="mailto:nostalgy@alain.frisch">nostalgy@alain.frisch</a> - Adds shortcuts to change
+folder, move message, with folder completion
+    * Password Exporter 1.2.1 - {B17C1C5A-04B1-11DB-9804-B622A1EF5492} -
+Exporteer en importeer uw opgeslagen wachtwoorden.
+    * QuickFolders 2.0 - <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a> - Bookmark uw favoriete mail
+folders in Thunderbird.
+    * Remove Duplicate Messages (Alternate) 0.3.4 -
+{a300a000-5e21-4ee0-a115-9ec8f4eaa92b} - Locates duplicate messages in mail
+folders and removes them.
+    * Select Addressbook Text 1.3.2 - <a href="mailto:select_addressbook_text@cbmarkwardt.com">select_addressbook_text@cbmarkwardt.com</a> -
+Copy and paste a name, phone number, address or other text from your
+Thunderbird address book quickly, with just a single menu click.
+    * Send Filter 1.0.4 - <a href="mailto:sendfilter@xzer.net">sendfilter@xzer.net</a> - Enable the message filters on
+sent folder automatically
+    * Show InOut 0.7.9 - <a href="mailto:showInOut@ggbs.de">showInOut@ggbs.de</a> - Voegt kolommen aan het
+discussievenster toe waarin wordt aangegeven of een mail ontvangen of verstuurd
+is
+    * Signature Switch 1.6.6 - {2ab1b709-ba03-4361-abf9-c50b964ff75d} - Schakel
+het onderschrift aan of uit en kies uit een persoonlijk ingestelde set
+onderschriften.
+    * SmoothWheel (AMO) 0.45.6.20100202.1 -
+{5F590AA2-1221-4113-A6F4-A4BB62414FAC} - Scrolls the document smoothly when
+scrolling the mouse wheel
+    * Sync On Arrival 1.3 - {304fe8a0-ad69-442a-9fe6-4226a073ae6a} -
+Synchronizes folders immediately when new messages arrive.
+    * Thunderbird Message Filter Import/Export 1.3.7.6 -
+<a href="mailto:FiltersImportExport@mozilla.org">FiltersImportExport@mozilla.org</a> - Thunderbird Message Filter Import/Export is
+een Thunderbird/Mozilla uitbreiding om berichtenfilters te importeren en
+exporteren.
+    * Tiny Menu 2.0.2 - {d33c2f7c-b1e6-4d46-ab0e-be1f6d05c904} - Vervangt de
+standaard menubalk door een klein popup menu.
+    * ToneQuilla 1.0.1 - <a href="mailto:tonequilla@mesquilla.com">tonequilla@mesquilla.com</a> - Play sound as mail filter
+action
+    * Toolbar Buttons 0.6.0.8 - {03B08592-E5B4-45ff-A0BE-C1D975458688} - Voegt
+werkbalkknoppen toe
+    * United States English Dictionary 4.0.0 -
+<a href="mailto:en-US@dictionaries.addons.mozilla.org">en-US@dictionaries.addons.mozilla.org</a> - English United States (en-US)
+spellchecking dictionary
+    * Virtual Identity 0.6.8 - {dddd428e-5ac8-4a81-9f78-276c734f75b8} - Maakt
+het mogelijk om uw identiteitsinstellingen voor een enkel bericht rechtstreeks
+te wijzigen.
+    * Woordenboek Nederlands 2.2.0 - <a href="mailto:nl-NL@dictionaries.addons.mozilla.org">nl-NL@dictionaries.addons.mozilla.org</a> -
+Dit woordenboek Nederlands voor de spellingcontrole in Mozilla-producten is
+gebaseerd op de woordenlijst 1.10G van OpenTaal. Het product volgt de regels en
+principes van de officiële spelling en draagt het Keurmerk Spelling van de
+Nederlandse Taalunie. Voor meer informatie zie:
+<a href="http://www.taalunieversum.org/spelling/keurmerk/">http://www.taalunieversum.org/spelling/keurmerk/</a>
+    * Wörterbuch Deutsch (de-DE), Hunspell-unterstützt 20100720 -
+<a href="mailto:de_DE@dicts.j3e.de">de_DE@dicts.j3e.de</a>
+
+
+Uitgeschakelde extensies: [10] = switched off extensions
+
+    * Custom Buttons² 3.1.0 - <a href="mailto:CustomButtons2@cbtnext.org">CustomButtons2@cbtnext.org</a> - Enables the
+creation of custom buttons for toolbars.
+    * DictionarySearch 4.0.0 - {a0faa0a4-f1a7-4098-9a74-21efc3a92372} - Looks
+up selected word in an online dictionary
+    * Display mail route 0.3.1 - {F8147CF4-B9E3-445B-AA87-081ED66548FB} -
+Displays country icons for the stations the mail has been routed
+    * FireShot 0.85 - {0b457cAA-602d-484a-8fe7-c1d894a011ba} - Adds the ability
+to take a screenshot of the page, edit it and save, copy to clipboard, send to
+external editor or e-mail it.
+    * Headers Toggle 0.5.2.2 - {655d9ec2-7839-47c3-915b-8fa9b7ce7901} - Adds
+toggling headers from keyboard functionality.
+    * miniBird 0.5.2 - {bde451f9-0fcb-2fcf-3b9b-626f1f37d6e5} - Original
+Thunderbird 2.0 theme reduced to minimal sizesfor the maximum userplace and
+customized to render an 'half flat' sytle.
+    * Quicktext 0.9.9.9 - {8845e3b3-e8fb-40e2-95e9-ec40294818c4} - Adds a
+toolbar with unlimited number of text to quickly insert. It's also possible to
+use varibles like [[TO=firstname]]. With settings for everything.
+    * SmartTemplate 0.6.0 - <a href="mailto:smarttemplate@thunderbird.extension">smarttemplate@thunderbird.extension</a> - Smart
+template which can also customize quote header per account
+    * Stylish 1.0.11 - {46551EC9-40F0-4e47-8E18-8E5CF550CFB8}
+    * TB Tabloc 0.1.0 - <a href="mailto:tb_tabloc@asukaze.net">tb_tabloc@asukaze.net</a> - Protect tabs.
+
+
+Totaal aantal extensies: 52
+
+Geïnstalleerde thema's: [3]
+
+    * Littlebird 1.8.61 - {247042CB-2281-483B-AC2D-230B2F3774CB} - Littlebird
+for Thunderbird, based on icons from art.gnome.org
+    * Nautipolis for Thunderbird 1.8.61 -
+{E2F592C8-CCD4-4951-9F93-6DFA76C4B062} - Nautipolis for Thunderbird, based on
+icons from art.gnome.org
+    * Standaard - {972ce4c6-7e08-4474-a285-3208198ce6fd}
+
+
+Geïnstalleerde plugins: (22)
+
+    * 2007 Microsoft Office system: NPOFF12.DLL
+      - Office Plugin for Netscape Navigator
+    * ActiveTouch General Plugin Container: npatgpc.dll
+      - ActiveTouch General Plugin Container Version 103
+    * Express View: npexview.dll
+      - Express View Browser Plugin
+    * Foxit Reader Plugin for Mozilla: npFoxitReaderPlugin.dll
+      - Foxit Reader Plug-In For Firefox and Netscape
+    * Google Earth Plugin: npgeplugin.dll
+      - GEPlugin
+    * Google Update: npGoogleOneClick8.dll
+      - Google Update
+    * iTunes Application Detector: npitunes.dll
+      - iTunes Detector Plug-in
+    * Java Deployment Toolkit 6.0.210.7: npdeployJava1.dll
+      - NPRuntime Script Plug-in Library for Java(TM) Deploy
+    * Java(TM) Platform SE 6 U21: npjp2.dll
+      - Next Generation Java Plug-in 1.6.0_21 for Mozilla browsers
+    * LizardTech DjVu: npdjvu.dll
+      - DjVu Plug-In(external version 6.1.1.1574)
+    * QuickTime Plug-in 7.6.7: npqtplugin.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin2.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin3.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin4.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin5.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin6.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * QuickTime Plug-in 7.6.7: npqtplugin7.dll
+      - The QuickTime Plugin allows you to view a wide variety of multimedia
+content in Web pages. For more information, visit the QuickTime Web site.
+    * Shockwave Flash: NPSWF32.dll
+      - Shockwave Flash 10.1 r82
+    * Shockwave for Director: np32dsw.dll
+      - Adobe Shockwave for Director Netscape plug-in, version 11.5.8.612
+    * Silverlight Plug-In: npctrl.1.0.30401.0.dll
+      - 4.0.50524.0
+    * Windows Presentation Foundation: NPWPF.dll
+      - Windows Presentation Foundation (WPF) plug-in for Mozilla browsers
+    * XStandard: NPXStandard.dll
+      - XStandard (Unicode)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=23258.html#c1">
+            #1</a> From 
+          <a href="mailto:madabug&#64;madarasz.nl">Lewis</a>
+          2010-09-20 07:54:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Knipsel-qf3.JPG" name="attach_6617" title="Quick folder flat buttons and warnings">Created an attachment (id=6617)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=6617&amp;action=edit" title="Quick folder flat buttons and warnings">[details]</a></span>
+Quick folder flat buttons and warnings
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=23258.html#c2">
+            #2</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2010-09-20 11:24:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Which version of Thunderbird are you using? the failing CSS rules are not to
+blame anyway - any other error messages?
+
+A screen shot of the 2nd options page (Layout) might be helpful.
+
+Also what happens if you use Shell stjil tabbladen or use a different Theme?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=23258.html#c3">
+            #3</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2010-09-20 11:31:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >to avoid the &quot;NaN&quot; message referring to background / foreground colors, try to
+select some explicit colors (Back and Font) for &quot;Standaard Tab Kleur&quot; and
+&quot;Toolbar Achtergrond&quot; on the Layout page. The [Standaard Kleuren] button uses
+some deprecated System color names.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=23258.html#c4">
+            #4</a> From 
+          <a href="mailto:skyshado-info&#64;yahoo.com">Francesco Sforza</a>
+          2010-10-07 01:16:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm having the same issue with TB 3.1.4 Portable under Vista. I have found the
+following work around (assume you start from the &quot;flat tabs&quot; situation):
+o Disable QF (Tools-&gt;add-ons)
+o Restart TB
+o Enable QF
+o Restart TB
+No other changes: disable-restar-enable-restart. This is obviously quite
+annoying!
+When QF tabs appear flat only three warnings appear in the Error Console:
+&quot;Warning: Error in parsing value for 'white-space'.  Declaration dropped.
+Source file: <a href="https://www.mozdev.org/bugs/skins/standard/global.css">https://www.mozdev.org/bugs/skins/standard/global.css</a> Line: 254&quot;.
+Same for line 255 and 256.
+Almost the same even when QF tabs appear correctly; there are a few warnings in
+the Error Console, e.g.: &quot;Warning: Error in parsing value for 'white-space'. 
+Declaration dropped.
+Source file: <a href="https://www.mozdev.org/bugs/skins/standard/global.css">https://www.mozdev.org/bugs/skins/standard/global.css</a> Line: 256&quot; 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=23258.html#c5">
+            #5</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2010-10-07 01:30:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c4">comment #4</a>)
+<span class="quote">&gt; I'm having the same issue with TB 3.1.4 Portable under Vista. I have found the
+&gt; following work around (assume you start from the &quot;flat tabs&quot; situation):
+&gt; o Disable QF (Tools-&gt;add-ons)
+&gt; o Restart TB
+&gt; o Enable QF
+&gt; o Restart TB
+&gt; No other changes: disable-restar-enable-restart. This is obviously quite
+&gt; annoying!
+&gt; When QF tabs appear flat only three warnings appear in the Error Console:
+&gt; &quot;Warning: Error in parsing value for 'white-space'.  Declaration dropped.
+&gt; Source file: <a href="https://www.mozdev.org/bugs/skins/standard/global.css">https://www.mozdev.org/bugs/skins/standard/global.css</a> Line: 254&quot;.
+&gt; Same for line 255 and 256.
+&gt; Almost the same even when QF tabs appear correctly; there are a few warnings in
+&gt; the Error Console, e.g.: &quot;Warning: Error in parsing value for 'white-space'. 
+&gt; Declaration dropped.
+&gt; Source file: <a href="https://www.mozdev.org/bugs/skins/standard/global.css">https://www.mozdev.org/bugs/skins/standard/global.css</a> Line: 256&quot; 
+&gt; </span >
+
+that warning looks like it comes from Content not from the mail client (chrome)
+itself - if you disable content in the debug window it may not be shown.
+
+Are you using the standard theme? Once you have done the workaround, how long
+does it take for the bug to re-appear? Next time you start TB, or is it
+intermittent? Also does it always happen straight after starting TB or can it
+&quot;loose&quot; the styling during a mail session?
+
+Try increasing the delay time on the first options page of QuickFolders.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=23258.html#c6">
+            #6</a> From 
+          <a href="mailto:skyshado-info&#64;yahoo.com">Francesco Sforza</a>
+          2010-10-13 05:11:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c5">comment #5</a>)
+
+<span class="quote">&gt; that warning looks like it comes from Content not from the mail client (chrome)
+&gt; itself - if you disable content in the debug window it may not be shown.
+&gt; 
+&gt; Are you using the standard theme? Once you have done the workaround, how long
+&gt; does it take for the bug to re-appear? Next time you start TB, or is it
+&gt; intermittent? Also does it always happen straight after starting TB or can it
+&gt; &quot;loose&quot; the styling during a mail session?
+&gt; 
+&gt; Try increasing the delay time on the first options page of QuickFolders.
+&gt; </span >
+
+Yes, I'm using the standard theme.
+Yes, the issue consistently (meaning always) reappears the next time a restart
+TB
+Yes, it always happens straight after starting TB. I don't think I've ever lost
+QF while &quot;on the road&quot;. Actually, I believe tabs appear only after entering
+credentials: at that point they are either &quot;good&quot; or &quot;flat&quot;. I'll double check.
+
+I will also try to increase the delay time.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=23258.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-13 05:21:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=23258.html#c5">comment #5</a>)
+&gt; 
+&gt; 
+&gt; Actually, I believe tabs appear only after entering
+&gt; credentials: at that point they are either &quot;good&quot; or &quot;flat&quot;. I'll double check.</span >
+
+I think here is an important one - what do you mean by enter credentials? You
+probably have a different set up to me - do you tell your thunderbird to ask
+for the Email password every time you start up? Then it might be related to the
+time it takes to enter the password (try cancelling the dialog straight away
+and see if this will always show the styling (or miss the styling always)
+consistently.
+
+I think we might be on to something here!!
+
+Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=23258.html#c8">
+            #8</a> From 
+          <a href="mailto:skyshado-info&#64;yahoo.com">Francesco Sforza</a>
+          2010-10-16 03:47:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c7">comment #7</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=23258.html#c6">comment #6</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=23258.html#c5">comment #5</a>)
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Actually, I believe tabs appear only after entering
+&gt; &gt; credentials: at that point they are either &quot;good&quot; or &quot;flat&quot;. I'll double check.
+&gt; 
+&gt; I think here is an important one - what do you mean by enter credentials? You
+&gt; probably have a different set up to me - do you tell your thunderbird to ask
+&gt; for the Email password every time you start up? Then it might be related to the
+&gt; time it takes to enter the password (try cancelling the dialog straight away
+&gt; and see if this will always show the styling (or miss the styling always)
+&gt; consistently.
+&gt; 
+&gt; I think we might be on to something here!!
+&gt; 
+&gt; Axel
+&gt; </span >
+
+Yes, I enter passwords for my e-mail accounts when required, each time I start
+TB.
+This does not appear to be a factor: I tried &quot;cancel&quot; (password request dialog)
+and I tried setting up a looong delay (15 seconds in the debug options) before
+starting QF. To no avail: the only work-around is
+disable-restart-enable-restart.
+
+Cheers, Franz
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=23258.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-16 12:59:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c8">comment #8</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=23258.html#c7">comment #7</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=23258.html#c6">comment #6</a>)
+&gt; &gt; &gt; (In reply to <a href="show_bug.cgi@id=23258.html#c5">comment #5</a>)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Actually, I believe tabs appear only after entering
+&gt; &gt; &gt; credentials: at that point they are either &quot;good&quot; or &quot;flat&quot;. I'll double check.
+&gt; &gt; 
+&gt; &gt; I think here is an important one - what do you mean by enter credentials? You
+&gt; &gt; probably have a different set up to me - do you tell your thunderbird to ask
+&gt; &gt; for the Email password every time you start up? Then it might be related to the
+&gt; &gt; time it takes to enter the password (try cancelling the dialog straight away
+&gt; &gt; and see if this will always show the styling (or miss the styling always)
+&gt; &gt; consistently.
+&gt; &gt; 
+&gt; &gt; I think we might be on to something here!!
+&gt; &gt; 
+&gt; &gt; Axel
+&gt; &gt; 
+&gt; 
+&gt; Yes, I enter passwords for my e-mail accounts when required, each time I start
+&gt; TB.
+&gt; This does not appear to be a factor: I tried &quot;cancel&quot; (password request dialog)
+&gt; and I tried setting up a looong delay (15 seconds in the debug options) before
+&gt; starting QF. To no avail: the only work-around is
+&gt; disable-restart-enable-restart.
+&gt; 
+&gt; Cheers, Franz
+&gt; </span >
+
+can you try disabling Mail Tweak 1.0pre7 and mr tech?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=23258.html#c10">
+            #10</a> From 
+          <a href="mailto:skyshado-info&#64;yahoo.com">Francesco Sforza</a>
+          2010-10-17 02:09:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c9">comment #9</a>) 
+<span class="quote">&gt; 
+&gt; can you try disabling Mail Tweak 1.0pre7 and mr tech?
+&gt; </span >
+Not sure what you mean exactly. 
+Please, find the list of my add-ons hereunder. Note that quite a few are
+disabled because incompatible with 3.1.4. A couple have been installed after
+QF, namely Clip to OneNote, Clean Subject and Any Confirmation Message (I
+believe); these latest additions seems not to have modified the QF situation.
+
+Cheers, Franz
+
+Application: Thunderbird 3.1.4 (20100915113750)
+Operating System: WINNT (x86-msvc)
+
+October 17, 2010
+
+Total number of items: 44
+
+- accountex 0.3.0
+        {cf3b5651-d280-49db-8df2-ff4d1c2fd47c}
+        <a href="http://accountex.mozdev.org">http://accountex.mozdev.org</a>
+        Thunderbird 3.0 - 3.1.*
+        Export/Import Account Settings...
+- Any Confirmation Message before Send 1.0.2
+        {918a14da-0929-414e-a0f6-4cb15af18962}
+        <a href="http://something.cool.coocan.jp/kenichi/">http://something.cool.coocan.jp/kenichi/</a>
+        Thunderbird 1.5 - 3.1.*
+        You can set Any Confirmation Message before Send.
+- Chrome List 0.2.2
+        (Disabled, Incompatible)
+        <a href="mailto:chromelist@extensions.gijsk.com">chromelist@extensions.gijsk.com</a>
+        <a href="http://www.gijsk.com/">http://www.gijsk.com/</a>
+        Thunderbird 2.0 - 3.0a1
+        Lets you take a peek at the files under the hood of your application
+and add-ons.
+- Clean Subject 0.4.2
+        <a href="mailto:cleansubject@style-biz.de">cleansubject@style-biz.de</a>
+        <a href="http://style-biz.de/extensions/cleansubject/">http://style-biz.de/extensions/cleansubject/</a>
+        Thunderbird 1.5b - 3.2a1pre
+        Cleans the subject from multiple occurrences of subject prefixes and
+postfixes such as &quot;Re: Re-2:&quot; or similar variants that other clients add as
+reply or forward pre-/postfix.
+- Clip to OneNote 3.1
+        {966762eb-7132-4081-ac70-20d20161ad96}
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/12003">https://addons.mozilla.org/en-US/firefox/addon/12003</a>
+        Thunderbird 3.0a1pre - 3.3a1pre
+        Send text and pictures to Microsoft Office OneNote with a single click.
+- CompactHeader 1.2.4
+        {58D4392A-842E-11DE-B51A-C7B855D89593}
+        <a href="http://compactheader.mozdev.org/">http://compactheader.mozdev.org/</a>
+        Thunderbird 3.0 - 3.2a1pre
+        Add ability to reduce header size to one or two lines. Linkify subjects
+in RSS feeds.
+- ConfigDate 0.7
+        {782E3D25-61FD-4997-AA8F-D3F18FA92ECC}
+        <a href="http://www.thunderbird-mail.de/wiki/ConfigDate_(English">http://www.thunderbird-mail.de/wiki/ConfigDate_(English</a>)
+        Thunderbird 3.0 - 3.2a1pre
+        Configure the 'Date' column and displayed date in message header
+- Console² 0.6.1
+        {1280606b-2510-4fe0-97ef-9b5a22eafe80}
+        <a href="http://console2.mozdev.org/index.html">http://console2.mozdev.org/index.html</a>
+        Thunderbird 1.5 - 3.2a1pre
+        The next generation error console.
+- Contacts Sidebar 0.7.1
+        (Disabled, Incompatible)
+        {4dce973c-25a5-4657-8e37-6c2a85c24a7e}
+        <a href="http://jpeters.no-ip.com/extensions/?page=tb_cs">http://jpeters.no-ip.com/extensions/?page=tb_cs</a>
+        Thunderbird 1.5b - 3.0a1
+        Displays the address books in a sidebar in the 3-pane-window.
+- CuteMenus - Crystal SVG 1.9.3
+        (Disabled, Incompatible)
+        {63df8e21-711c-4074-a257-b065cadc28d8}
+        <a href="http://www.cutemenuproject.com/">http://www.cutemenuproject.com/</a>
+        Thunderbird 1.0 - 3.0a2pre
+        Adds icons to all menus.
+- Display Mail User Agent 1.6.6
+        {F8147CF4-B9E3-445B-AA87-081ED66548F8}
+        <a href="http://www.juergen-ernst.de/addons/dispmua.html">http://www.juergen-ernst.de/addons/dispmua.html</a>
+        Thunderbird 2.0 - 3.1.*
+        Displays the mail program with which the selected mail was written
+- Dissociate Occurrence 1.0.0.20100406
+        {a3f7e54d-a384-48df-8724-e4ef794b2733}
+        Thunderbird 2.0 - 3.1.*
+        Provides an extra menu item to events' context menu, allowing an
+occurrence to be dissociated from the rest of the series
+- Dizionario italiano 3.1
+        <a href="mailto:it-IT@dictionaries.addons.mozilla.org">it-IT@dictionaries.addons.mozilla.org</a>
+        <a href="http://www.mozillaitalia.org">http://www.mozillaitalia.org</a>
+        Thunderbird 2.0a1 - 3.2a1pre
+        Dizionario italiano basato sulla versione 2.4 (01/09/2007) del
+dizionario realizzato dal progetto Linguistico
+- Extension List Dumper 1.14.8
+        <a href="mailto:extensionlistdumper@sogame.cat">extensionlistdumper@sogame.cat</a>
+        <a href="http://sogame.awardspace.com/">http://sogame.awardspace.com/</a>
+        Thunderbird 1.5 - 3.1.*
+        Dumps a list of the installed extensions.
+- Extension Manager Extended 2.8.1
+        <a href="mailto:Extended@spanglerco.com">Extended@spanglerco.com</a>
+        <a href="http://extended.spanglerco.com/">http://extended.spanglerco.com/</a>
+        Thunderbird 2.0 - 3.1.*
+        Use the extension manager to view the id and the folder of an
+extension.
+- FiltaQuilla 1.1.0
+        <a href="mailto:filtaquilla@mesquilla.com">filtaquilla@mesquilla.com</a>
+        <a href="http://www.mesquilla.com/extensions/filtaquilla">http://www.mesquilla.com/extensions/filtaquilla</a>
+        Thunderbird 3.0b3pre - 3.2a1pre
+        Mail filter custom actions and searches
+- Forward 0.10
+        <a href="mailto:forward@mozdev.org">forward@mozdev.org</a>
+        <a href="http://forward.mozdev.org">http://forward.mozdev.org</a>
+        Thunderbird 1.5 - 3.3a1pre
+        Add Inline / As Attachment option to Forward button and Message context
+menu
+- header scroll extension 0.3.2
+        (Disabled, Incompatible)
+        {F8147CF4-B9E3-445B-AA87-081ED66548FA}
+        <a href="http://www.cweiske.de/misc_extensions.htm#headerScroll">http://www.cweiske.de/misc_extensions.htm#headerScroll</a>
+        Thunderbird 1.0 - 2.0.0.*
+        Adds a scrollbar to the extended all header view
+- Highlight Text 1.0
+        (Disabled, Incompatible)
+        <a href="mailto:highlightText@paul.rojas">highlightText@paul.rojas</a>
+        Thunderbird 1.5 - 2.0.0.*
+        Highlights a selected text
+- JavaScript Debugger 0.9.88.1
+        {f13b157f-b174-47e7-a34d-4815ddfdfeb8}
+        <a href="http://www.hacksrus.com/~ginda/venkman/">http://www.hacksrus.com/~ginda/venkman/</a>
+        Thunderbird 3.0 - 3.3a1pre
+        JavaScript debugger and profiler
+- Lightning 1.0b2
+        {e2fda1a4-762b-4020-b5ad-a41df1933103}
+        <a href="http://www.mozilla.org/projects/calendar/releases/lightning1.0b2.html">http://www.mozilla.org/projects/calendar/releases/lightning1.0b2.html</a>
+        Thunderbird 3.1 - 3.1.*
+        An integrated calendar for Thunderbird
+- LookOut 1.2.11
+        <a href="mailto:lookout@aron.rubin">lookout@aron.rubin</a>
+        <a href="http://lookout.mozdev.org">http://lookout.mozdev.org</a>
+        Thunderbird 1.5 - 3.1.*
+        LookOut reads and integrates TNEF encoded parts in emails
+- Mnenhy 0.8.3
+        {bf591015-b599-4125-9428-3cb746ddca31}
+        <a href="http://mnenhy.mozdev.org/">http://mnenhy.mozdev.org/</a>
+        Thunderbird 3.0 - 3.2a1pre
+        Mozilla enhancements with special focus upon Mail&amp;News
+- More Tools Menu 1.2.1
+        (Disabled, Incompatible)
+        {9a7a67d3-3048-47fb-acde-d0f7ae51f86a}
+        <a href="http://trac.arantius.com/wiki/Extensions/MoreToolsMenu">http://trac.arantius.com/wiki/Extensions/MoreToolsMenu</a>
+        Thunderbird 2.0 - 2.0.0.*
+        Unclutter the &quot;Tools&quot; menu by moving new items to a &quot;More Tools&quot; menu.
+- MoreFunctionsForAddressBook 0.5.8.4.1
+        (Disabled, Incompatible)
+        {3e17310d-82e8-4a43-bd2f-7c3055bfe589}
+        <a href="https://nic-nac-project.org/~kaosmos/index-en.html">https://nic-nac-project.org/~kaosmos/index-en.html</a>
+        Thunderbird 1.0 - 2.0.0.*
+        Add some functions to the Addressbook
+- NestedQuote Remover 0.8.5
+        {12a1584b-2123-473d-8752-e82e74e3cb1b}
+        <a href="http://mozext.achimonline.de">http://mozext.achimonline.de</a>
+        Thunderbird 0.7 - 3.2a1pre
+        Remove nested quotes when replying to a mail.
+- Options Menu 1.8
+        (Disabled, Incompatible)
+        {1a6907cb-d310-4d82-bded-c0dd31f8d9a2}
+        <a href="http://james.istop.com/OptionsMenu">http://james.istop.com/OptionsMenu</a>
+        Thunderbird 1.5 - 2.0.0.*
+- Priority Switcher 0.6
+        {0D2172E4-C5AE-465A-B80D-53A840275B5E}
+        <a href="http://www.geocities.jp/wknxc134/moz_ext/">http://www.geocities.jp/wknxc134/moz_ext/</a>
+        Thunderbird 3.0b1 - 3.1.*
+        Change priority of the message.
+- QuickFolders 2.0
+        <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>
+        <a href="http://quickfolders.mozdev.org/index.html">http://quickfolders.mozdev.org/index.html</a>
+        Thunderbird 1.5 - 3.3a1pre
+        Bookmark your favorite mail folders in Thunderbird.
+- Quote Colors 0.3
+        {B274D460-4DF9-454c-AC69-CA71398D7498}
+        <a href="http://quotecolors.mozdev.org/">http://quotecolors.mozdev.org/</a>
+        Thunderbird 2.0 - 3.1.*
+        Configure text and background colors of quotes in mail and news
+messages.
+- QuoteCollapse 0.8
+        {0b62b504-857c-4f62-a336-2e8425bd5738}
+        <a href="http://quotecollapse.mozdev.org/">http://quotecollapse.mozdev.org/</a>
+        Thunderbird 3.0b1 - 3.1.*
+        Collapse quotes.
+- Remove Duplicate Messages (Alternate) 0.3.5
+        {a300a000-5e21-4ee0-a115-9ec8f4eaa92b}
+        <a href="http://removedupes.mozdev.org/">http://removedupes.mozdev.org/</a>
+        Thunderbird 2.0 - 3.1.*
+        Locates duplicate messages in mail folders and removes them.
+- Restart Thunderbird 1.0
+        <a href="mailto:restarttb@briks.si">restarttb@briks.si</a>
+        <a href="http://briks.si/projekti/">http://briks.si/projekti/</a>
+        Thunderbird 1.5 - 3.1.*
+        Restart Thunderbird with ease
+- Rewrap Toolbar Button 1.0.1
+        (Disabled, Incompatible)
+        {f8872423-0a53-4846-812f-70fb73284209}
+        Thunderbird 1.0 - 2.0.0.*
+        Allows you to add a Rewrap toolbar button to mail composition windows.
+- Signature Switch 1.6.6
+        {2ab1b709-ba03-4361-abf9-c50b964ff75d}
+        <a href="http://mozext.achimonline.de">http://mozext.achimonline.de</a>
+        Thunderbird 0.7 - 3.2a1pre
+        Switch the signature on/off or choose a new one from your predefined
+set.
+- SmartSave Thunderbird Extension 0.1.5.2
+        (Disabled, Incompatible)
+        {031984cf-187c-40a2-bc8c-3ca45ccdb3e8}
+        Thunderbird 0.8 - 2.0.0.*
+        Now you can export your messages in a smarter way!
+- TB Header Tools Extension 0.6.6
+        (Disabled, Incompatible)
+        {72C9D014-F94A-4f1a-8FD4-6F160DFE143B}
+        <a href="http://www.supportware.net/mozilla/">http://www.supportware.net/mozilla/</a>
+        Thunderbird 0.5 - 3.1.2+
+        You can now modify the header detail of messages
+- TB Reset Quote Header Extension 0.3.1
+        (Disabled, Incompatible)
+        {2893F2E1-EFFC-463f-8E8B-FD4702C0FA77}
+        <a href="http://www.supportware.net/mozilla/">http://www.supportware.net/mozilla/</a>
+        Thunderbird 0.8 - 3.0+
+        You can now modify the look of the quote header on replies.
+- ThreadBubble 0.8
+        (Disabled, Incompatible)
+        <a href="mailto:threadbubble@micropipes.com">threadbubble@micropipes.com</a>
+        <a href="http://www.micropipes.com/code/threadbubble/">http://www.micropipes.com/code/threadbubble/</a>
+        Thunderbird 2.0 - 3.0a2pre
+        Make Thunderbird resort threads by date when a new message arrives.
+- Timestamp 0.5.1
+        (Disabled, Incompatible)
+        {c055dfb5-15af-428a-8a66-637c6032dddb}
+        <a href="http://jpeters.no-ip.com/extensions/?page=tb_ts">http://jpeters.no-ip.com/extensions/?page=tb_ts</a>
+        Thunderbird 1.0 - 2.0.0.*
+        Quickly add the current time and date into textboxes and mail messages.
+- Toolbar Buttons 0.6.0.8
+        {03B08592-E5B4-45ff-A0BE-C1D975458688}
+        <a href="http://codefisher.org/toolbar_button/">http://codefisher.org/toolbar_button/</a>
+        Thunderbird 2.0 - 3.3a1pre
+        Adds toolbar buttons.
+- Virtual Identity 0.6.8
+        {dddd428e-5ac8-4a81-9f78-276c734f75b8}
+        <a href="http://www.absorb.it/virtual-id">http://www.absorb.it/virtual-id</a>
+        Thunderbird 1.5 - 3.1.*
+        Allows you to modify your Identity settings for a single Mail on the
+fly.
+- XNote 2.2.1
+        <a href="mailto:xnote@froihofer.net">xnote@froihofer.net</a>
+        <a href="http://www.froihofer.net/xnote/">http://www.froihofer.net/xnote/</a>
+        Thunderbird 3.0 - 3.1.*
+        Add Post-It to your mails
+- xSearchbarT2 0.4
+        (Disabled, Incompatible)
+        <a href="mailto:xsearchbar@aleytys.pc.my">xsearchbar@aleytys.pc.my</a>
+        <a href="http://xsidebar.mozdev.org/">http://xsidebar.mozdev.org/</a>
+        Thunderbird 2.0 - 3.0b2pre
+        Message Searchbar for Thunderbird2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=23258.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-10-17 04:49:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=23258.html#c9">comment #9</a>) 
+&gt; &gt; 
+&gt; &gt; can you try disabling Mail Tweak 1.0pre7 and mr tech?
+&gt; &gt; 
+&gt; Not sure what you mean exactly. 
+&gt; Please, find the list of my add-ons hereunder. </span >
+
+Sorry, I was referring to the extension list of the original poster. From what
+I can see, it doesn't look like any of your other extensions might be to blame.
+
+I think at this stage I can not think of anything unless you are getting more
+warnings on console2 - make sure you enable all options, including strict and
+then disable content.
+
+You might also try  uninstalling QF and the reinstalling fresh, as the
+disable-restart workaround seems to point to a failed installation. (?)
+
+Ax
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=23258.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2010-11-21 06:46:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; 
+&gt; Sorry, I was referring to the extension list of the original poster. From what
+&gt; I can see, it doesn't look like any of your other extensions might be to blame.
+&gt; 
+&gt; I think at this stage I can not think of anything unless you are getting more
+&gt; warnings on console2 - make sure you enable all options, including strict and
+&gt; then disable content.
+&gt; 
+&gt; You might also try  uninstalling QF and the reinstalling fresh, as the
+&gt; disable-restart workaround seems to point to a failed installation. (?)
+&gt; 
+&gt; Ax
+&gt; </span >
+
+Is there any news on this with version 2.1?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=23258.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-06-03 01:15:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It looks like the bug is caused by Mnenhy, I had a few users report this and
+disabling / uninstalling Mnenhy made the error go away.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=23258.html#c14">
+            #14</a> From 
+          <a href="mailto:calle&#64;gmx.de">Carsten Brughmans</a>
+          2011-06-03 02:11:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I enabled Mnenhy and disabled all optional packages in Mnehny - no problem.
+The more packages are enabled the more often I get the 'flat' buttons after
+start of TB. I.e. with 2 or 3 packages enabled I get the flat style in 1 out of
+5 starts of TB, with all packages enable I get it every restart. The first
+restart after changing options in Mnenhy always works well.
+
+There are no errors or warnings on Error Console². 
+
+QuickFolders [logTime init]
+initDocAndWindow - QuickFolders.doc = [object XULDocument]  this.doc = [object
+XULDocument]
+ ----------
+QuickFolders 10:50:11.332  [0 ms]  
+initDelayed ==== correct window: chrome://messenger/content/messenger.xul - -
+Mozilla Thunderbird
+wait 2500 msec until init()...
+ ----------
+QuickFolders:QF.init() - QuickFolders Version 2.5
+Running on Thunderbird Version 3.1.10
+ ----------
+QuickFolders 10:50:13.906  [2574 ms]   
+last selected Category:__UNCATEGORIZED
+ ----------
+QuickFolders 10:50:13.906  [0 ms]  
+Selecting Category: __UNCATEGORIZED...
+ ----------
+QuickFolders 10:50:13.907  [1 ms]  
+updateFolders(rebuildCategories: true, minimal: false)- Style: flat style -
+Number of Folders = 13
+ ----------
+QuickFolders 10:50:13.909  [2 ms]  
+updateCategories() - [0 Categories]
+ ----------
+QuickFolders 10:50:13.916  [7 ms]  
+No Categories defined, hiding Categories box.
+ ----------
+QuickFolders 10:50:14.400  [484 ms]  
+13 of 13 tabs  created on Toolbar.
+ ----------
+QuickFolders 10:50:14.400  [0 ms]  
+Successfully selected Category: __UNCATEGORIZED
+ ----------
+QuickFolders 10:50:14.400  [0 ms]  
+QF.init() ends.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=23258.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2011-06-03 03:19:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c14">comment #14</a>)
+<span class="quote">&gt; I enabled Mnenhy and disabled all optional packages in Mnehny - no problem.
+&gt; The more packages are enabled the more often I get the 'flat' buttons after
+&gt; start of TB. I.e. with 2 or 3 packages enabled I get the flat style in 1 out of
+&gt; 5 starts of TB, with all packages enable I get it every restart. The first
+&gt; restart after changing options in Mnenhy always works well.
+&gt; 
+&gt; There are no errors or warnings on Error Console². 
+&gt; 
+&gt; QuickFolders [logTime init]
+&gt; initDocAndWindow - QuickFolders.doc = [object XULDocument]  this.doc = [object
+&gt; XULDocument]
+&gt;  ----------
+&gt; QuickFolders 10:50:11.332  [0 ms]  
+&gt; initDelayed ==== correct window: chrome://messenger/content/messenger.xul - -
+&gt; Mozilla Thunderbird
+&gt; wait 2500 msec until init()...</span >
+
+It might help to try to manipulate the [ms] init delay on startup option on QF.
+try with a higher value (5000ms) and a lower value (250ms) to see if this makes
+the problem less / more frequent.
+
+Also, in console2, make sure you have ALL enabled and then disable Content
+logging; also enable the options Strict Warnings, CSS Errors, Report all JS
+Exceptions.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=23258.html#c16">
+            #16</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-23 01:34:15 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I am having the same issue described here, but this issue looks dead since
+several months.
+I followed most of the suggestione here with no behaviour change.
+I disabled many extensions, I changed timings...
+I have up to date TB 10.0.2 and QF 2.13.
+The only thing that once changed was run the &quot;Find Orphaned Tabs&quot; command (that
+found one missing folder).
+On the next restart the tabs were correct. But any further restart, leave the
+tabs flat.
+The only consistent way is the restore the tabs is the alredy mentioned
+requence disable-restart-enable-restart.
+I have seen an error parsing line 706 of quickfolders-layout.css, where there
+is a wrong comment using //
+But even removing the offendine comment, rebuilding the xpi and reainstalling
+the new xpi doen not solve the problem.
+I wish to help find this problem, can someone suggest other test to do?
+
+My istallation is:
+
+  Application Basics
+
+    Name: Thunderbird
+    Version: 10.0.2
+    User Agent: Mozilla/5.0 (Windows NT 5.1; rv:10.0.2) Gecko/20120216
+Thunderbird/10.0.2
+    Profile Directory: Open Containing Folder
+
+              (Local drive)
+    Application Build ID: 20120216022751
+    Enabled Plugins: about:plugins
+    Build Configuration: about:buildconfig
+    Crash Reports: about:crashes
+    Memory Use: about:memory
+
+
+  Extensions
+    Auto Compress File, 0.2.4, true, <a href="mailto:AutoCompressFile@gmail.com">AutoCompressFile@gmail.com</a>
+    Console², 0.9, true, {1280606b-2510-4fe0-97ef-9b5a22eafe80}
+    Diccionario de Español/España, 1.5, true,
+<a href="mailto:es-es@dictionaries.addons.mozilla.org">es-es@dictionaries.addons.mozilla.org</a>
+    Dictionary Switcher, 1.1.5, true, <a href="mailto:dictionary-switcher-tb@design-noir.de">dictionary-switcher-tb@design-noir.de</a>
+    Dizionario italiano, 3.3.1, true, <a href="mailto:it-IT@dictionaries.addons.mozilla.org">it-IT@dictionaries.addons.mozilla.org</a>
+    Enigmail, 1.3.5, true, {847b3a00-7ab1-11d4-8f02-006008948af5}
+    Google Contacts, 0.6.40, true, {BDD92442-0534-4D6F-A966-BAB7D561D781}
+    ImportExportTools, 2.6.4, true, {3ed8cc52-86fc-4613-9026-c1ef969da4c3}
+    Mail Redirect, 0.7.6.9, true, {CC3C233D-6668-41bc-AAEB-F3A1D1D594F5}
+    NewReturnReceiptHandler, 0.4.9.4, true,
+{e0333e13-45a5-4840-b996-14afa2f04ca6}
+    QuickFolders, 2.13, true, <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>
+    QuickPasswords, 1.9.1, true, <a href="mailto:QuickPasswords@axelg.com">QuickPasswords@axelg.com</a>
+    Saved Password Editor, 2.5, true, <a href="mailto:savedpasswordeditor@daniel.dawson">savedpasswordeditor@daniel.dawson</a>
+    ToggleReplied, 0.3.3, true, <a href="mailto:togglereplied@eyrich-net.org">togglereplied@eyrich-net.org</a>
+    CompactHeader, 2.0.1, false, {58D4392A-842E-11DE-B51A-C7B855D89593}
+    Duplicate Contact Manager, 0.8.1, false,
+{b4447f60-db9c-11da-a94d-0800200c9a66}
+    Extra Folder Columns, 1.1.4, false, <a href="mailto:extra-cols@jminta_gmail.com">extra-cols@jminta_gmail.com</a>
+    Test Pilot for Thunderbird, 1.3.4, false, <a href="mailto:tbtestpilot@labs.mozilla.com">tbtestpilot@labs.mozilla.com</a>
+
+  Modified Preferences
+
+    Name: Value
+
+      accessibility.typeaheadfind.flashBar: 0
+      dom.max_chrome_script_run_time: 0
+      dom.report_all_js_exceptions: true
+      extensions.lastAppVersion: 10.0.2
+      font.size.fixed.x-western: 12
+      general.useragent.extra.mnenhy: Mnenhy/0.8.3
+      gfx.blacklist.direct2d: 2
+      gfx.blacklist.layers.direct3d10: 2
+      gfx.blacklist.layers.direct3d10-1: 2
+      gfx.blacklist.layers.direct3d9: 2
+      gfx.blacklist.layers.opengl: 2
+      gfx.blacklist.suggested-driver-version: 257.21
+      gfx.blacklist.webgl.angle: 2
+      gfx.blacklist.webgl.msaa: 2
+      gfx.blacklist.webgl.opengl: 2
+      mail.openMessageBehavior.version: 1
+      network.cookie.cookieBehavior: 2
+      network.cookie.prefsMigrated: true
+      places.database.lastMaintenance: 1329899793
+      places.history.expiration.transient_current_max_pages: 93634
+      places.history.expiration.transient_optimal_database_size: 149813984
+      print.print_printer: \\contabfe\HP DeskJet 1220C Printer
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_bgcolor: true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_bgimages: true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_command:
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_downloadfonts:
+true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_edge_bottom: 0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_edge_left: 0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_edge_right: 0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_edge_top: 0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_evenpages: true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_footercenter:
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_footerleft: &amp;PT
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_footerright: &amp;D
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_headercenter:
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_headerleft: &amp;T
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_headerright: &amp;U
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_in_color: true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_margin_bottom:
+0.5
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_margin_left: 0.5
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_margin_right: 0.5
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_margin_top: 0.5
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_oddpages: true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_orientation: 0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_pagedelay: 500
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_data: 9
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_height:
+11.00
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_size:
+84410549
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_size_type:
+0
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_size_unit:
+1
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_paper_width: 8.50
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_printer:
+\\contabfe\HP DeskJet 1220C Printer
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_reversed: false
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_scaling: 1.25
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_shrink_to_fit:
+true
+      print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_to_file: false
+     
+print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_unwriteable_margin_bottom:
+0
+     
+print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_unwriteable_margin_left:
+0
+     
+print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_unwriteable_margin_right:
+0
+     
+print.printer_\\contabfe\HP_DeskJet_1220C_Printer.print_unwriteable_margin_top:
+0
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_bgcolor: false
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_bgimages: false
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_command:
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_downloadfonts:
+true
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_evenpages: true
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_footercenter:
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_footerleft: &amp;PT
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_footerright: &amp;D
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_headercenter:
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_headerleft: &amp;T
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_headerright: &amp;U
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_in_color: true
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_margin_bottom:
+0.5
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_margin_left:
+0.5
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_margin_right:
+0.5
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_margin_top: 0.5
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_oddpages: true
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_orientation: 0
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_pagedelay: 500
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_data: 9
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_height:
+11.00
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_size:
+84410549
+     
+print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_size_type: 0
+     
+print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_size_unit: 1
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_paper_width:
+8.50
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_printer:
+\\FSDAK\HP LaserJet 5000 Series PCL 6
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_reversed: false
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_scaling: 0.30
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_shrink_to_fit:
+true
+      print.printer_\\FSDAK\HP_LaserJet_5000_Series_PCL_6.print_to_file: false
+      print.printer_Acrobat_PDFWriter.print_bgcolor: false
+      print.printer_Acrobat_PDFWriter.print_bgimages: false
+      print.printer_Acrobat_PDFWriter.print_command:
+      print.printer_Acrobat_PDFWriter.print_downloadfonts: true
+      print.printer_Acrobat_PDFWriter.print_evenpages: true
+      print.printer_Acrobat_PDFWriter.print_footercenter:
+      print.printer_Acrobat_PDFWriter.print_footerleft: &amp;PT
+      print.printer_Acrobat_PDFWriter.print_footerright: &amp;D
+      print.printer_Acrobat_PDFWriter.print_headercenter:
+      print.printer_Acrobat_PDFWriter.print_headerleft: &amp;T
+      print.printer_Acrobat_PDFWriter.print_headerright: &amp;U
+      print.printer_Acrobat_PDFWriter.print_in_color: true
+      print.printer_Acrobat_PDFWriter.print_margin_bottom: 0.5
+      print.printer_Acrobat_PDFWriter.print_margin_left: 0.5
+      print.printer_Acrobat_PDFWriter.print_margin_right: 0.5
+      print.printer_Acrobat_PDFWriter.print_margin_top: 0.5
+      print.printer_Acrobat_PDFWriter.print_oddpages: true
+      print.printer_Acrobat_PDFWriter.print_orientation: 0
+      print.printer_Acrobat_PDFWriter.print_pagedelay: 500
+      print.printer_Acrobat_PDFWriter.print_paper_data: 9
+      print.printer_Acrobat_PDFWriter.print_paper_height: 11.00
+      print.printer_Acrobat_PDFWriter.print_paper_size: 84410549
+      print.printer_Acrobat_PDFWriter.print_paper_size_type: 0
+      print.printer_Acrobat_PDFWriter.print_paper_size_unit: 1
+      print.printer_Acrobat_PDFWriter.print_paper_width: 8.50
+      print.printer_Acrobat_PDFWriter.print_printer: Acrobat PDFWriter
+      print.printer_Acrobat_PDFWriter.print_reversed: false
+      print.printer_Acrobat_PDFWriter.print_scaling: 0.30
+      print.printer_Acrobat_PDFWriter.print_shrink_to_fit: true
+      print.printer_Acrobat_PDFWriter.print_to_file: false
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_bgcolor:
+true
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_bgimages:
+true
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_command:
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_downloadfonts:
+true
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_edge_bottom: 0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_edge_left: 0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_edge_right: 0
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_edge_top:
+0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_evenpages: true
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_footercenter:
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_footerleft: &amp;PT
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_footerright: &amp;D
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_headercenter:
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_headerleft: &amp;T
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_headerright: &amp;U
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_in_color:
+true
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_margin_bottom:
+0.5
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_margin_left:
+0.5
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_margin_right:
+0.5
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_margin_top: 0.5
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_oddpages:
+true
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_orientation: 0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_pagedelay: 500
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_paper_data: 9
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_paper_height:
+11.00
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_paper_size_type:
+0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_paper_size_unit:
+1
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_paper_width:
+8.50
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_reversed:
+false
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_scaling:
+1.25
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_shrink_to_fit:
+true
+      print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_to_file:
+false
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_unwriteable_margin_bottom:
+0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_unwriteable_margin_left:
+0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_unwriteable_margin_right:
+0
+     
+print.printer_Automatico_hp_psc_1310_series_su_EEPC-LUISA.print_unwriteable_margin_top:
+0
+      print.printer_Bullzip_PDF_Printer.print_bgcolor: false
+      print.printer_Bullzip_PDF_Printer.print_bgimages: false
+      print.printer_Bullzip_PDF_Printer.print_command:
+      print.printer_Bullzip_PDF_Printer.print_downloadfonts: true
+      print.printer_Bullzip_PDF_Printer.print_evenpages: true
+      print.printer_Bullzip_PDF_Printer.print_footercenter:
+      print.printer_Bullzip_PDF_Printer.print_footerleft: &amp;D
+      print.printer_Bullzip_PDF_Printer.print_footerright: &amp;PT
+      print.printer_Bullzip_PDF_Printer.print_headercenter:
+      print.printer_Bullzip_PDF_Printer.print_headerleft: &amp;T
+      print.printer_Bullzip_PDF_Printer.print_headerright: &amp;U
+      print.printer_Bullzip_PDF_Printer.print_in_color: true
+      print.printer_Bullzip_PDF_Printer.print_margin_bottom: 0.590277791023254
+      print.printer_Bullzip_PDF_Printer.print_margin_left: 0.393750011920929
+      print.printer_Bullzip_PDF_Printer.print_margin_right: 0.393750011920929
+      print.printer_Bullzip_PDF_Printer.print_margin_top: 0.393750011920929
+      print.printer_Bullzip_PDF_Printer.print_oddpages: true
+      print.printer_Bullzip_PDF_Printer.print_orientation: 0
+      print.printer_Bullzip_PDF_Printer.print_pagedelay: 500
+      print.printer_Bullzip_PDF_Printer.print_paper_data: 9
+      print.printer_Bullzip_PDF_Printer.print_paper_height: 11.00
+      print.printer_Bullzip_PDF_Printer.print_paper_size: 84410549
+      print.printer_Bullzip_PDF_Printer.print_paper_size_type: 0
+      print.printer_Bullzip_PDF_Printer.print_paper_size_unit: 1
+      print.printer_Bullzip_PDF_Printer.print_paper_width: 8.50
+      print.printer_Bullzip_PDF_Printer.print_reversed: false
+      print.printer_Bullzip_PDF_Printer.print_scaling: 1.25
+      print.printer_Bullzip_PDF_Printer.print_shrink_to_fit: true
+      print.printer_Bullzip_PDF_Printer.print_to_file: false
+      security.ask_for_password: 1
+      security.disable_button.openCertManager: false
+
+  Graphics
+
+    Adapter Description: NVIDIA Quadro FX 3700M
+    Vendor ID: 10de
+    Device ID: 061e
+    Adapter RAM: Unknown
+    Adapter Drivers: nv4_disp
+    Driver Version: 6.14.11.7653
+    Driver Date: 9-16-2008
+    Adapter RAM (GPU #2): Unknown
+    Adapter Drivers (GPU #2): Unknown
+    WebGL Renderer: Blocked for your graphics driver version. Try updating your
+graphics driver to version 257.21 or newer.
+    GPU Accelerated Windows: 0/1. Blocked for your graphics driver version. Try
+updating your graphics driver to version 257.21 or newer.
+
+
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=23258.html#c17">
+            #17</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-23 04:07:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ok, first of all, install the latest version of QuickFolders 3.0.2 - then go to
+the &quot;Bling my Tabs&quot; (Layout) tab in the options and switch between Native and
+Flat Style. what happens?
+
+If it changes the style, do a restart. If style is gone after the restart, open
+DOM inspector. (You might have to download it as extension). 
+
+In DOMi, click Inspect &gt; Chrome Document &gt; &lt;your main window&gt;.
+
+Click the arrow button (Find a node to inspect by clicking on it)
+
+Click on the QF toolbar, best use the right hand side of it.
+
+This should bring you to the box QuickFolders-FoldersBox, which is underneath
+the toolbar QuickFolders-Toolbar. QuickFolders-Toolbar should be of class
+&quot;toolbar-flat&quot;.
+
+Underneath the QuickFolders-FoldersBox click on any toolbarbutton, and select
+Object-Computed style on the right hand side.
+
+The button should be:
+display: -moz-box;
+-moz-appearance: none;
+box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 2px -1px;
+border-top-color: rgb(170, 170, 170);
+background-color: rgb(204, 0, 0);  /* or another value you have set */
+
+
+are these what you get so far?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=23258.html#c18">
+            #18</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-23 06:30:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c17">comment #17</a>)0
+<span class="quote">&gt; ...
+&gt; are these what you get so far?</span >
+
+Somewhat... more on this later.
+
+I have to tell that waiting for your response I decided to disable all
+extensione and the reenable them one at a time to see if there was some
+interaction.
+What happened is that, when everything was disabled, the tab were correct
+(wow!).
+But unfortunately after having reenabled all of the extensions that were
+enabled before, the tabs are still correct.
+And this holds true, after many restarts and even before upgrading to the
+newest QF version.
+
+One final consideration:
+This bug was present since a long time and many versions (both TB and QF), and
+somewhat I always managed to make it go away doing &quot;things&quot; with addons
+(enable, disable QF and/or others, and so on ...).
+But it surfaced again and again, usually after an upgrade to TB.
+So my impression is that it is still related to how and when addons are loaded
+and initialized.
+
+Anyway for your information I did everything you described in you request, and
+everything looks like you described. Only on the last step, in the right side I
+see a lot of properties, not only the ones you describe.
+Sticking to thoose properties only, I have:
+
+display: -moz-box;
+-moz-appearance: none;
+box-shadow: none;
+border-top-color: rgb(170, 170, 170);
+background-color: rgb(236, 233, 216);
+
+The only difference seems to be box-shadow.
+
+If (or when) this bug happens again I will follow your indications before doing
+any quick fix, so you will have all the informations you need, while the bug is
+still present.
+In the meanwhile, let me know if you need further help.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=23258.html#c19">
+            #19</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-23 06:43:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c18">comment #18</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=23258.html#c17">comment #17</a>)0
+&gt; &gt; ...
+&gt; &gt; are these what you get so far?
+&gt; 
+&gt; Somewhat... more on this later.
+&gt; 
+&gt; I have to tell that waiting for your response I decided to disable all
+&gt; extensione and the reenable them one at a time to see if there was some
+&gt; interaction.
+&gt; What happened is that, when everything was disabled, the tab were correct
+&gt; (wow!).
+&gt; But unfortunately after having reenabled all of the extensions that were
+&gt; enabled before, the tabs are still correct.</span >
+I will list my own list below for your reference.
+
+<span class="quote">&gt; Only on the last step, in the right side I
+&gt; see a lot of properties, not only the ones you describe.
+&gt; Sticking to thoose properties only, I have:
+&gt; 
+&gt; display: -moz-box;
+&gt; -moz-appearance: none;
+&gt; box-shadow: none;
+&gt; border-top-color: rgb(170, 170, 170);
+&gt; background-color: rgb(236, 233, 216);
+&gt; 
+&gt; The only difference seems to be box-shadow.</span >
+thanks, I believe it is only these few are that are relevant to the look of the
+buttons (no styling opposed to tabs). box-shadow is dependant on the &quot;Shadows&quot;
+option on &quot;Bling My Tabs&quot;; you can experiment with the settings on this to
+achieve different looks (most of them are shown instantly but some, such as
+border radius, only are applied when you click on Ok).
+
+Here is the list of my (enabled) Extensions:
+Application: Thunderbird 10.0.2 (20120216022751)
+- Android Contacts Sync 2.0.1
+- CompactHeader 2.0.1
+- Console² 0.9
+- Copy Sent to Current 1.0.2
+- Dictionary Switcher 1.3.2
+- Display Mail User Agent 1.6.8
+- DOM Inspector 2.0.10
+- Extension List Dumper 1.15.2
+- Extra Folder Columns 1.1.4
+- FiltaQuilla 1.2.0
+- Folder Pane View Switcher 1.7
+- Get Selected Mails 0.6.0
+- Is It Compatible? 0.5.3
+- JavaScript Debugger 0.9.88.2
+- JunQuilla 1.0.2
+- Lightning 1.2.1
+- LookOut 1.2.13
+- New Account Types 11.0
+- Noia 2.0 eXtreme XT 3.36
+- Provider for Google Calendar 0.9
+- Quick Locale Switcher 1.7.8
+- QuickArchiver 0.2.1
+- QuickFolders 3.0.2
+- QuickPasswords 1.9.1
+- Saved Password Editor 2.5
+- Shrunked Image Resizer 2.9
+- Stationery 0.7.8
+- Sun Cult 1.3.20111118
+- Tag Toolbar 0.8.35
+- Test Pilot for Thunderbird 1.3.5
+- ThunderBirthDay 0.8.0
+- TweeQuilla - Twitter for Thunderbird (App) 1.0
+- ViewAbout 2.0.1
+- Wörterbuch Deutsch (de-DE), Hunspell-unterstützt 20120211
+- Xpunge 0.4.3
+- xSidebar for Thunderbird 0.8
+- Year View 0.4.1
+- Zombie Keys 2.11pre2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=23258.html#c20">
+            #20</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-24 04:56:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >As somewhat anticipated, today I have again the flat tabs.
+So I followed again your steps and here are the results.
+
+1) In &quot;Bling My Tabs&quot;, changing from Flat to Native does not change anything.
+Even doing repeated restarts.
+
+2) In DOM the QuickFolders-Toolbar is of class &quot;toolbar-flat&quot;.
+
+3) In DOM the tab Computed Style is:
+display: -moz-box;
+-moz-appearance: toolbarbutton;
+box-shadow: none;
+border-top-color: transparent;
+background-color: transparent;
+
+This is what I get when the tabs are flat.
+It looks like something is different now.
+I leave the tabs as they are now ... ready to make additional test as required.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=23258.html#c21">
+            #21</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-24 05:07:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="CurrentFolderToolbar.jpg" name="attach_7186" title="Unstyled folder toolbar">Created an attachment (id=7186)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7186&amp;action=edit" title="Unstyled folder toolbar">[details]</a></span>
+Unstyled folder toolbar
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=23258.html#c22">
+            #22</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-24 05:09:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >If this may help, I noticed that also the &quot;Current Folder Toolbar&quot; appears flat
+when the main tab bar is flat.
+I attach a picture for this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=23258.html#c23">
+            #23</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-24 05:15:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="findRules.png" name="attach_7187" title="finding the breaking rule">Created an attachment (id=7187)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7187&amp;action=edit" title="finding the breaking rule">[details]</a></span>
+finding the breaking rule
+
+<span class="quote">&gt; 
+&gt; 3) In DOM the tab Computed Style is:
+&gt; display: -moz-box;
+&gt; -moz-appearance: toolbarbutton;</span >
+Hi Maurizio, this moz-appearance setting is exactly the reason why they appear
+flat. Now You need to go into css rules and find the rule that sets this
+appearance; this is somewhat tricky and takes some patience but once you find
+which file this is in, you will have the culprit. If it is not in a file that
+means it is set by Javascript by one of your extensions, which makes it harder
+to find.
+
+In DOM inspector, find a toolbarbutton, then open CSS Rules. Go through the top
+right list until you find a rule that sets -moz-appearance =&gt; toolbarbutton
+
+send a screenshot or  name / location of the rule
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=23258.html#c24">
+            #24</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-24 05:24:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c22">comment #22</a>)
+<span class="quote">&gt; If this may help, I noticed that also the &quot;Current Folder Toolbar&quot; appears flat
+&gt; when the main tab bar is flat.
+&gt; I attach a picture for this.
+&gt; </span >
+Which makes me believe it is either a global theme rule or a javascript from an
+extension that overwrites the rule in memory. Do any of your extensions use
+visible toolbarbuttons?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=23258.html#c25">
+            #25</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-25 09:22:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="CSSRule.jpg" name="attach_7188" title="Found the CSS Rule?">Created an attachment (id=7188)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7188&amp;action=edit" title="Found the CSS Rule?">[details]</a></span>
+Found the CSS Rule?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=23258.html#c26">
+            #26</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-25 09:27:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Alex,
+I followed your suggestions and added an image with my findings.
+I notice a big difference with respect to yours: in the top right pane I have
+just three rules, and none of them come from QF.
+Maybe this is a hint.
+
+Regarding your othe request: I don't know how to find exactly which buttons
+come from which extension, but ot top of my head, Enigmail and MailRedirect
+show visible buttons on the main and/or message toolbars.
+
+Hope this is helpful.
+Should you need further investigations let me know.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=23258.html#c27">
+            #27</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-25 10:04:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have to inform that after having upgraded the two extensions
+(&quot;ImportExporTool&quot; and &quot;AutoCompress&quot;) and after a few restarts the tabs are
+now normal.
+Following the CSS Rules I can now see after the three &quot;global&quot; rules that looks
+quite the same as before, now I have several &quot;QuickFolders&quot; rules that set the
+-moz-appearence as &quot;tab&quot; (see the attachment &quot;CSS Rule OK&quot;).
+I believe that this fact does demonstrate once again that fiddling with the
+add-ons temporarly fixes the problem.
+I also expect that tomorrow, maybe after a reboot the tabs will disappear
+again.
+I'll keep you informed.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=23258.html#c28">
+            #28</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-25 10:05:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="CSSRuleOK.jpg" name="attach_7189" title="CSS Rule OK">Created an attachment (id=7189)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7189&amp;action=edit" title="CSS Rule OK">[details]</a></span>
+CSS Rule OK
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=23258.html#c29">
+            #29</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-25 11:11:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >The last screenshot shows you have chosen native tabs, try and use the flat
+style instead (first choice in the drop down). Then, when it happens again,
+look at all the rules
+
+1st look at computed style - this is what you are seeing
+
+2nd look at all rules to see whether -moz-appearance:none is set and whether
+-moz-appearance:toolbarbutton is set somewhere else. You can have many
+different values for the same attribute but only one &quot;wins&quot;. That is the one
+with the highest specificity.
+
+Once i know which file puts in this rule, I can program countermeasures.
+
+The other possibility is that something crashes at the start of Thunderbird and
+the css file is not read, but that is unlikely. Also, if the style breaks
+again, try cogwheel &gt; refresh visible tabs.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=23258.html#c30">
+            #30</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-26 01:24:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry,
+I changed so many times that I lost some setting.
+As expected today the tabs are again missing, so I set back the &quot;Flat style&quot;
+(nothing changed) e started the investigations you suggested.
+The computed style is:
+-moz-appearance: toolbarbutton;
+Looking at the CSS Rures I have the same situation as shown in the attachment
+&quot;Found the CSS Rule?&quot;.
+That is I see just three rules, and none of them comes from any QuickFolder or
+other extension files.
+Additionally I can tell you that the sequence disable-restart-enable-restart
+works fine (until next reboot) even if I disable/enable another absolutely
+unrelated extension (I tryed some different ones).
+
+More and more it looks like this is not really a QF bug, but something
+systemwide happens here.
+Are there any startup log files to look at?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=23258.html#c31">
+            #31</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-26 03:56:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Maurizio, the fact that none of the overlay rules are loaded at all still looks
+to me something like goes wrong at start up. 
+
+So again, try console2 and the following settings from 
+<a href="https://developer.mozilla.org/en/Setting_up_extension_development_environment">https://developer.mozilla.org/en/Setting_up_extension_development_environment</a>
+
+javascript.options.showInConsole = true.
+javascript.options.strict = true
+extensions.logging.enabled = true
+nglayout.debug.disable_xul_fastload = true
+
+You might also want to set dom.report_all_js_exceptions = true
+
+Also in Console2 enable all error checking, except for &quot;contents&quot;.
+
+Restart Thunderbird and check the output from the start. You can
+right-click+copy and then paste the output to a text file (attach it to the
+bug). Better than filling up this page so gets super long.
+
+Also, when you go &quot;up&quot; in the DOMi as far as the outer container
+&quot;QuickFOlders-toolbar&quot; (class=toolbar-flat)
+
+do you see any rules from the quickifpolders chrome folder there?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=23258.html#c32">
+            #32</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-26 05:13:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Console.txt" name="attach_7191" title="Console2 contents">Created an attachment (id=7191)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7191&amp;action=edit" title="Console2 contents">[details]</a></span>
+Console2 contents
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=23258.html#c33">
+            #33</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-02-26 05:23:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi,
+I set the settings as you suggested and attached the console2 contents after a
+restart (see &quot;Console2 contents&quot;).
+
+I have to say that I coudln't find the nglayout.debug.disable_xul_fastload
+setting. I have only two entries in nglayout section and both are true, anyway.
+
+I can also confirm that cimbing the tree of containers up to the
+&quot;QuickFolders-toolbar&quot; there is no rule coming from something QF related.
+Everything comes from either chrome://global/content/xul.css or
+chrome://global/skin/toolbar.css.
+And the toolbar buttons have rules from chrome://global/skin/toolbarbutton.css
+too.
+
+I have saved also the xml description of the QF Tolbar node (right click - Copy
+XML), but since it contains folder names I'd rather keep it private.
+Should you need it, I can send it to you to a private mail.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=23258.html#c34">
+            #34</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-26 05:35:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c33">comment #33</a>)
+<span class="quote">&gt; I have to say that I coudln't find the nglayout.debug.disable_xul_fastload
+&gt; setting. I have only two entries in nglayout section and both are true, anyway.</span >
+
+Try to create a new (boolean) value via right click. If it doesn't do anything,
+at least will also not do any harm.
+
+<span class="quote">&gt; 
+&gt; I can also confirm that climbing the tree of containers up to the
+&gt; &quot;QuickFolders-toolbar&quot; there is no rule coming from something QF related.
+&gt; Everything comes from either chrome://global/content/xul.css or
+&gt; chrome://global/skin/toolbar.css.
+&gt; And the toolbar buttons have rules from chrome://global/skin/toolbarbutton.css
+&gt; too.</span >
+
+So the overlay is clearly missing or ignoring the CSS include in overlay.xul:
+
+&lt;?xml-stylesheet href=&quot;chrome://quickfolders/content/quickfolders-layout.css&quot;
+title=&quot;QuickFolderStyles&quot; type=&quot;text/css&quot;?&gt;
+
+This should definitely not be happening. ???
+                                         \o/
+                                          I
+                                         / \
+
+<span class="quote">&gt; 
+&gt; I have saved also the xml description of the QF Tolbar node (right click - Copy
+&gt; XML), but since it contains folder names I'd rather keep it private.
+&gt; Should you need it, I can send it to you to a private mail.</span >
+
+It will probably just give what is in the xul file already, but if you like,
+you can send it to my email address.
+
+The last thing you can try is to increase the delay at the start (by using
+QF-Advanced / Debug delay = 10000) , although it is doubtful as I am starting
+to think that it is not related to QF's initialization routine: this stuff
+happens early on during the overlay process.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=23258.html#c35">
+            #35</a> From 
+          <a href="mailto:ziomau10&#64;gmail.com">Maurizio Ferraris</a>
+          2012-03-12 03:16:09 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Sorry for the delay, but finding the right combination of extensions that cause
+the problem, is a long tedious and error prone process.
+
+Anyway it seems that the real difference happens enabling the extension:
+Quick Passwords 1.9.1
+
+I started disabling all extensions but quickfolders and waiting a few days and
+relaunchs and reboots, and then re-enabling one at a time starting from the
+most used (at least by me). Always waiting, from one enable and the next.
+
+The actual situation is:
+QuickFolders 3.0.2
+Dizionario Italiano 3.3.1
+Google Contacts 0.6.40
+Auto Compress File 0.2.5
+Mail Redirect 0.7.6.9
+Quick Password 1.9.1
+
+I tried also with only the two extensions:
+QuickFolders 3.0.2
+Quick Password 1.9.1
+and nothing else and the problem persists.
+
+Hope this helps.
+Mau.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=23258.html#c36">
+            #36</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-05-25 13:10:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=23258.html#c35">comment #35</a>)
+<span class="quote">&gt; Sorry for the delay, but finding the right combination of extensions that cause
+&gt; the problem, is a long tedious and error prone process.
+&gt; 
+&gt; Anyway it seems that the real difference happens enabling the extension:
+&gt; Quick Passwords 1.9.1
+&gt; 
+&gt; I started disabling all extensions but quickfolders and waiting a few days and
+&gt; relaunchs and reboots, and then re-enabling one at a time starting from the
+&gt; most used (at least by me). Always waiting, from one enable and the next.
+&gt; 
+&gt; The actual situation is:
+&gt; QuickFolders 3.0.2
+&gt; Dizionario Italiano 3.3.1
+&gt; Google Contacts 0.6.40
+&gt; Auto Compress File 0.2.5
+&gt; Mail Redirect 0.7.6.9
+&gt; Quick Password 1.9.1
+&gt; 
+&gt; I tried also with only the two extensions:
+&gt; QuickFolders 3.0.2
+&gt; Quick Password 1.9.1
+&gt; and nothing else and the problem persists.
+&gt; 
+&gt; Hope this helps.
+&gt; Mau.
+&gt; </span >
+
+I have rewritten the coloring piece, can you check [<a href="show_bug.cgi@id=24849.html" title="ASSIGNED - QF tab bar customizations don't stick">Bug 24849</a>] for updated
+versions?
+
+*** This bug has been marked as a duplicate of <a href="show_bug.cgi@id=24849.html" title="ASSIGNED - QF tab bar customizations don't stick">bug 24849</a> ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=23258&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

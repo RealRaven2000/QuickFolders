@@ -1,0 +1,1298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24849 &ndash; QF tab bar customizations don't stick</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24849&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24849">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24849">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24849">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_24849">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24849</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">QF tab bar customizations don't stick</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-05-25 13:10:24</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24849&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-05-25 13:10:24">
+  <input type="hidden" name="longdesclength" value="16">
+  <input type="hidden" name="id" value="24849">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="QF tab bar customizations don't stick">QF tab bar customizations don't stick
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24849.html">24849</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows 7">Windows 7
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24849&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24849">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer &lt;keith&#64;collyer.uk.net&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="madabug&#64;madarasz.nl">madabug&#64;madarasz.nl</option>
+            <option value="mnenhy&#64;tprac.de">mnenhy&#64;tprac.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="Capture.JPG.1"
+               title="View the content of the attachment">
+          <b>Shows the bland tabs</b></a>
+
+          <span class="bz_attach_extra_info">
+              (25.59 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=24849.html#attach_7226"
+               title="Go to the comment associated with the attachment">2012-04-22 12:20</a>,
+
+            <a href="mailto:keith&#64;collyer.uk.net"
+               title="Write an email to the creator of the attachment">Keith Collyer
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7226&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-3.5.1pre255.xpi"
+               title="View the content of the attachment">
+          <b>Patched version3.5.1 pre255</b></a>
+
+          <span class="bz_attach_extra_info">
+              (431.38 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24849.html#attach_7256"
+               title="Go to the comment associated with the attachment">2012-05-25 12:46</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7256&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24849&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24849&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24849">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24849">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24849">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24849">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24849.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-04-22 12:20
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="Capture.JPG.1" name="attach_7226" title="Shows the bland tabs">Created an attachment (id=7226)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7226&amp;action=edit" title="Shows the bland tabs">[details]</a></span>
+Shows the bland tabs
+
+Windows 7m (Portable) TB 11.0.1
+Thought this was like 24835, but that is a different OS and old TB. I am not
+seeing any folder tab customization at all, and I don't get the icon for QF
+settings, though the slot exists and can be clicked on.
+
+Console log (not sure how much is relevant):
+
+Could not read chrome manifest
+'file:///J:/PortableApps/ThunderbirdPortable/Data/profile/extensions/<a href="mailto:en-GB@dictionaries.addons.mozilla.org">en-GB@dictionaries.addons.mozilla.org</a>/chrome.manifest'.
+ ----------
+Sun Apr 22 2012 20:05:33
+Warning: assignment to undeclared variable GoIM
+Source file: chrome://addressbooktab/content/AddressBookTab.js
+Line: 556
+ ----------
+Sun Apr 22 2012 20:05:33
+Warning: assignment to undeclared variable DisplayCardViewPane
+Source file: chrome://addressbooktab/content/AddressBookTab.js
+Line: 557
+ ----------
+Sun Apr 22 2012 20:05:33
+Warning: assignment to undeclared variable ClearCardViewPane
+Source file: chrome://addressbooktab/content/AddressBookTab.js
+Line: 558
+ ----------
+Sun Apr 22 2012 20:05:33
+Warning: assignment to undeclared variable DirPaneSelectionChange
+Source file: chrome://addressbooktab/content/AddressBookTab.js
+Line: 559
+ ----------
+Sun Apr 22 2012 20:05:34
+Warning: Expected declaration but found '/'.  Skipped to next declaration.
+Source file: chrome://testpilot/content/browser.css
+Line: 75
+ ----------
+Sun Apr 22 2012 20:05:34
+Warning: Expected declaration but found '/'.  Skipped to next declaration.
+Source file: chrome://testpilot/content/browser.css
+Line: 77
+ ----------
+Sun Apr 22 2012 20:05:34
+Warning: Expected declaration but found '/'.  Skipped to next declaration.
+Source file: chrome://testpilot/content/browser.css
+Line: 89
+ ----------
+Sun Apr 22 2012 20:05:34
+Warning: Expected declaration but found '/'.  Skipped to next declaration.
+Source file: chrome://testpilot/content/browser.css
+Line: 91
+ ----------
+Sun Apr 22 2012 20:05:35
+Warning: reference to undefined property
+Cc['@mozilla.org/extensions/manager;1']
+Source file: chrome://attachmentextractor/content/attachmentextractor.js
+Line: 426
+ ----------
+Sun Apr 22 2012 20:05:35
+Error: Cc['@mozilla.org/extensions/manager;1'] is undefined
+Source file: chrome://attachmentextractor/content/attachmentextractor.js
+Line: 426
+ ----------
+Sun Apr 22 2012 20:05:35
+Warning: reference to undefined property node.id
+Source file: chrome://messenger/content/folderWidgets.xml
+Line: 56
+ ----------
+Sun Apr 22 2012 20:05:35
+Warning: reference to undefined property aTabType.panelId
+Source file: chrome://messenger/content/tabmail.xml
+Line: 375
+ ----------
+Sun Apr 22 2012 20:05:35
+Warning: reference to undefined property 2
+Source file: chrome://messenger/content/folderPane.js
+Line: 1500
+ ----------
+Sun Apr 22 2012 20:05:36
+Warning: reference to undefined property mainToolbar.currentSet
+Source file: chrome://attachmentextractor/content/attachmentextractor.js
+Line: 616
+ ----------
+Sun Apr 22 2012 20:05:36
+Error: mainToolbar.currentSet is undefined
+Source file: chrome://attachmentextractor/content/attachmentextractor.js
+Line: 616
+ ----------
+Interface module loaded.
+
+ ----------
+QuickFolders:QuickFolders.init() - QuickFolders Version 3.0.hc
+Running on Thunderbird Version 11.0.1
+ ----------
+Sun Apr 22 2012 20:05:38
+Warning: assignment to undeclared variable GoIM
+Source file: chrome://addressbooktab/content/AddressBookTab.js
+Line: 556
+ ----------
+Sun Apr 22 2012 20:05:38
+Warning: reference to undefined property types[type]
+Source file: chrome://mozapps/content/extensions/extensions.js
+Line: 1503
+ ----------
+Sun Apr 22 2012 20:05:39
+Warning: reference to undefined property this.childrenByTagNameNS(itemNode,
+DC_NS, &quot;creator&quot;)[0]
+Source file: chrome://messenger-newsblog/content/feed-parser.js
+Line: 170
+ ----------
+Sun Apr 22 2012 20:05:39
+Warning: assignment to undeclared variable t
+Source file: chrome://select_addressbook_text/content/overlay.js
+Line: 562
+ ----------
+Sun Apr 22 2012 20:05:39
+Warning: reference to undefined property this.childrenByTagNameNS(channel,
+ATOM_IETF_NS, &quot;subtitle&quot;)[0]
+Source file: chrome://messenger-newsblog/content/feed-parser.js
+Line: 395
+ ----------
+Sun Apr 22 2012 20:05:39
+Warning: reference to undefined property this.treeBoxObject.view
+Source file: chrome://global/content/bindings/tree.xml
+ ----------
+Sun Apr 22 2012 20:05:39
+Warning: assignment to undeclared variable i
+Source file: chrome://morecols/content/moreColsOverlay.js
+Line: 80
+ ----------
+Sun Apr 22 2012 20:05:52
+Warning: reference to undefined property this.maxAddressesBeforeMore
+Source file: chrome://messenger/content/mailWidgets.xml
+Line: 820
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24849.html#c1">
+            #1</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-22 12:28:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24849.html#c0">comment #0</a>)
+<span class="quote">&gt; Windows 7m (Portable) TB 11.0.1</span >
+
+should read:
+
+Windows 7 64-bit
+Portable TB 11.0.1
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24849.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-22 13:23:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >i think this is all part of the same bug, maybe caused by loading the same
+style sheet multiple times. I don't know how this can happen, but could you try 
+
+<a href="http://downloads.mozdev.org/quickfolders/">http://downloads.mozdev.org/quickfolders/</a>
+
+QuickFolders-tb-pb-sm-3.2pre8.xpi
+
+as I tried to use the last style sheet for modifications, it might help even
+though I still don't quite know how the duplication comes about.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24849.html#c3">
+            #3</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-22 14:26:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I can download pre6, but when I try for pre8 I only get 36k before it claims to
+be finished. Tried in FF and Chrome, so even though the directory says it is
+over 400k there is a problem
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24849.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-22 16:31:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24849.html#c3">comment #3</a>)
+<span class="quote">&gt; I can download pre6, but when I try for pre8 I only get 36k before it claims to
+&gt; be finished. Tried in FF and Chrome, so even though the directory says it is
+&gt; over 400k there is a problem
+&gt; </span >
+try again tomorrow I believe there is a mirror problem on mozdev . but pre 6
+should already have the,code change does.it make any difference?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24849.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-24 00:17:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >any news on this one? did pre6 behave any different? you can also try to
+increase the delay value on the advanced tab to 8000... 
+
+please email if you want more specific support, as 
+these issues are usually very profile specific.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24849.html#c6">
+            #6</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-24 02:01:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >By the time I got to try, pre8 was available, it has not made a difference.
+I'll try increasing the delay.
+The strange thing is that it is not consistent, when I first started TB with
+pre8, I got pimped tabs, this morning plain ones. Since then, only seeing
+plain. What seems to make a difference is disabling then re-enabling QF - every
+time I do this, I get the pimped tabs after re-enabling.
+Tried  increasing the delay as suggested, but that has made no difference.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24849.html#c7">
+            #7</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-24 02:10:52 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >By the time I got to try, pre8 was available, it has not made a difference.
+I'll try increasing the delay.
+The strange thing is that it is not consistent, when I first started TB with
+pre8, I got pimped tabs, this morning plain ones. Since then, only seeing
+plain. What seems to make a difference is disabling then re-enabling QF - every
+time I do this, I get the pimped tabs after re-enabling.
+Tried  increasing the delay as suggested, but that has made no difference.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24849.html#c8">
+            #8</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-25 04:58:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Can you post the list of enabled extensions for more info? You can use the
+Extensions List Dumper Addon for this if you like.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24849.html#c9">
+            #9</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-25 05:05:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >BTW, upgraded to TB 12 (portable) and not yet seeing the problem, though only
+restarted a couple of times.
+
+As requested:
+
+Application: Thunderbird 12.0 (20120420153905)
+Operating System: WINNT (x86-msvc)
+
+- Adblock Plus 2.0.3 (Disabled)
+        {d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}
+- AddressBookTab 1.4.2
+        <a href="mailto:AddressBookTab@dischert.luc">AddressBookTab@dischert.luc</a>
+- AttachmentExtractor 1.3.5.1
+        {35834d20-efdb-4f78-ab77-9635fb4e56c4}
+- British English Dictionary 1.19.1
+        <a href="mailto:en-GB@dictionaries.addons.mozilla.org">en-GB@dictionaries.addons.mozilla.org</a>
+- CompactHeader 2.0.2 (Disabled)
+        {58D4392A-842E-11DE-B51A-C7B855D89593}
+- Console² 0.9
+        {1280606b-2510-4fe0-97ef-9b5a22eafe80}
+- Contact Photos 0.1.11
+        <a href="mailto:contactphotos@pirules.org">contactphotos@pirules.org</a>
+- CuteButtons - Crystal SVG 0.3.3 (Disabled)
+        CuteButtonsCrystalSVG@ChoGGi
+- Enigmail 1.4.1 (Disabled)
+        {847b3a00-7ab1-11d4-8f02-006008948af5}
+- Exit Button Thunderbird 0.5 (Disabled)
+        {7D76A40F-65E0-4a44-91D1-7EFFBADC32F2}
+- Extension List Dumper 1.15.2
+        <a href="mailto:extensionlistdumper@sogame.cat">extensionlistdumper@sogame.cat</a>
+- Extra Folder Columns 1.1.4
+        <a href="mailto:extra-cols@jminta_gmail.com">extra-cols@jminta_gmail.com</a>
+- FiltaQuilla 1.2.0 (Disabled)
+        <a href="mailto:filtaquilla@mesquilla.com">filtaquilla@mesquilla.com</a>
+- gContactSync 0.3.4
+        <a href="mailto:gContactSync@pirules.net">gContactSync@pirules.net</a>
+- Get all mails 1.1.4
+        <a href="mailto:GetAllMails@LN200704191215.net">GetAllMails@LN200704191215.net</a>
+- Google Contacts 0.6.40 (Disabled)
+        {BDD92442-0534-4D6F-A966-BAB7D561D781}
+- ImportExportTools 2.7.0.3 (Disabled)
+        {3ed8cc52-86fc-4613-9026-c1ef969da4c3}
+- JunQuilla 1.0.2 (Disabled)
+        <a href="mailto:junquilla@mesquilla.com">junquilla@mesquilla.com</a>
+- Lightning 1.4
+        {e2fda1a4-762b-4020-b5ad-a41df1933103}
+- LookOut 1.2.13 (Disabled)
+        <a href="mailto:lookout@aron.rubin">lookout@aron.rubin</a>
+- Mail Redirect 0.7.6.10
+        {CC3C233D-6668-41bc-AAEB-F3A1D1D594F5}
+- Mailbox Alert 0.16.1 (Disabled)
+        {9c21158b-2c76-4d0a-980a-c51fc9cefaa7}
+- Mark All Read Button 0.5 (Disabled)
+        {DA506923-55C4-4fbe-9E4C-D24B80D7DE9F}
+- Mnenhy 0.8.5
+        {bf591015-b599-4125-9428-3cb746ddca31}
+- MoreFunctionsForAddressBook 0.6.7.2
+        {3e17310d-82e8-4a43-bd2f-7c3055bfe589}
+- NestedQuote Remover 0.8.8
+        {12a1584b-2123-473d-8752-e82e74e3cb1b}
+- Noia 2.0 eXtreme XT 3.37 (Disabled)
+        <a href="mailto:noia2_full_xt@gd.noia">noia2_full_xt@gd.noia</a>
+- Personal Level Indicators 0.5 (Disabled)
+        <a href="mailto:personal-level-indicators@taval.de">personal-level-indicators@taval.de</a>
+- Provider for Google Calendar 0.9
+        {a62ef8ec-5fdc-40c2-873c-223b8a6925cc}
+- QuickFolders 3.2pre8
+        <a href="mailto:quickfolders@curious.be">quickfolders@curious.be</a>
+- QuoteAndComposeManager 0.3.30
+        {ce1c1a31-4ec2-484f-8099-e2cb0f381c21}
+- Remove Duplicate Messages (Alternate) 0.3.7 (Disabled)
+        {a300a000-5e21-4ee0-a115-9ec8f4eaa92b}
+- Select Addressbook Text 1.5
+        <a href="mailto:select_addressbook_text@cbmarkwardt.com">select_addressbook_text@cbmarkwardt.com</a>
+- Show InOut 1.0.0 (Disabled)
+        <a href="mailto:showInOut@ggbs.de">showInOut@ggbs.de</a>
+- Silvermel and Charamel XT 1.5.1 (Disabled)
+        <a href="mailto:silvermelxt@pardal.de">silvermelxt@pardal.de</a>
+- Test Pilot for Thunderbird 1.3.9
+        <a href="mailto:tbtestpilot@labs.mozilla.com">tbtestpilot@labs.mozilla.com</a>
+- Thunderbird Conversations 2.3.2 (Disabled)
+        <a href="mailto:gconversation@xulforum.org">gconversation@xulforum.org</a>
+- ThunderPlunger 2.10.3 (Disabled)
+        {bfec0750-aa6f-11db-abbd-0800200c9a66}
+- Unified search 0.6.4
+        {FAD2EADC-7D70-11DF-8B33-89D1DED72085}
+- Unsubscribe 2.6 (Disabled)
+        <a href="mailto:tb-unsubscribe@developer.com">tb-unsubscribe@developer.com</a>
+- Xpunge 0.4.3 (Disabled)
+        {786abda0-fd14-d247-bf69-38b2fc18491b}
+- Zindus 0.8.40 (Disabled)
+        {ad7d8a66-253b-11dc-977c-000c29a3126e}
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24849.html#c10">
+            #10</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-27 02:24:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Damn it! Problem back again today. Disable QF, restart TB, reenable, restart
+and the colours are back.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24849.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-27 02:40:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24849.html#c10">comment #10</a>)
+<span class="quote">&gt; Damn it! Problem back again today. Disable QF, restart TB, reenable, restart
+&gt; and the colours are back.
+&gt; </span >
+
+Thanks for the extensions list.
+
+Can you try to disable Mnenhy? It is know to cause problems with QuickFolders
+(although I do noit exactly know why).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=24849.html#c12">
+            #12</a> From 
+          <a href="mailto:keith&#64;collyer.uk.net">Keith Collyer</a>
+          2012-04-27 07:52:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Disabling Mnenhy seems to have sorted out the problem. At least I restarted
+several times since disabling and not yet seen a repeat. If I get time, I may
+investigate the Mnenhy options to see if there are any in particular that cause
+the issue.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=24849.html#c13">
+            #13</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-04-27 14:34:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24849.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24849.html#c10">comment #10</a>)
+&gt; &gt; Damn it! Problem back again today. Disable QF, restart TB, reenable, restart
+&gt; &gt; and the colours are back.
+&gt; &gt; 
+&gt; 
+&gt; Thanks for the extensions list.
+&gt; 
+&gt; Can you try to disable Mnenhy? It is know to cause problems with QuickFolders
+&gt; (although I do noit exactly know why).
+&gt; </span >
+
+Maybe you can try to work it out with the help of Karsten Düsterloh, the
+Mnenhy author, who is also the &quot;owner&quot; of the SeaMonkey MailNews module? If he
+has time, of course.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=24849.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-05-25 12:46:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-3.5.1pre255.xpi" name="attach_7256" title="Patched version3.5.1 pre255">Created an attachment (id=7256)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7256&amp;action=edit" title="Patched version3.5.1 pre255">[details]</a></span>
+Patched version3.5.1 pre255
+
+This is a major re-write of the coloring piece for QuickFolders. It also
+includes the possibility to set individual colors from the palette on the 4
+different states (default / folder-selected / hovered / draggedOver). Currently
+works well in flat-style default &amp; striped, and still has some quirks in pastel
+mode. Tested in Windows XP and Ubuntu 11.10.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=24849.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-05-25 13:10:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=23258.html" title="RESOLVED DUPLICATE - QF Buttons missing styling">Bug 23258</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24849&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

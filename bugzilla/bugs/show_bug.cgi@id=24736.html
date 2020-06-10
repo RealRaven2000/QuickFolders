@@ -1,0 +1,1784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 24736 &ndash; Quickfolders Toolbar</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24736&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24736">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=24736">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24736">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_24736">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;24736</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Quickfolders Toolbar</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-04-03 22:14:24</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24736&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-04-03 22:14:24">
+  <input type="hidden" name="longdesclength" value="24">
+  <input type="hidden" name="id" value="24736">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Quickfolders Toolbar">Quickfolders Toolbar
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=24736.html">24736</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows XP">Windows XP
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=24736&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=24736">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:dnice&#64;wi.rr.com">David Nice &lt;dnice&#64;wi.rr.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="axelg&#64;gofree.indigo.ie">axelg&#64;gofree.indigo.ie</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="quickfolderstoolbar.jpg"
+               title="View the content of the attachment">
+          <b>Screenshot</b></a>
+
+          <span class="bz_attach_extra_info">
+              (32.66 KB,
+                image/jpeg)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7175"
+               title="Go to the comment associated with the attachment">2012-02-17 10:44</a>,
+
+            <a href="mailto:dnice&#64;wi.rr.com"
+               title="Write an email to the creator of the attachment">David Nice
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7175&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="msgInTab.png"
+               title="View the content of the attachment">
+          <b>message in Tab</b></a>
+
+          <span class="bz_attach_extra_info">
+              (141.84 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7178"
+               title="Go to the comment associated with the attachment">2012-02-19 14:42</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7178&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a3" href="msgInWindow.png"
+               title="View the content of the attachment">
+          <b>message in Window</b></a>
+
+          <span class="bz_attach_extra_info">
+              (84.88 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7179"
+               title="Go to the comment associated with the attachment">2012-02-19 14:43</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7179&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="QuickFolders_3.0pre27.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">QF 3.0 Prerelease 27</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (369.87 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7180"
+               title="Go to the comment associated with the attachment">2012-02-19 15:37</a>,
+
+            <a href="mailto:axelg&#64;gofree.indigo.ie"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7180&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a5" href="xulDebug.png"
+               title="View the content of the attachment">
+          <b>debug menu showing which overlay is used</b></a>
+
+          <span class="bz_attach_extra_info">
+              (33.99 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7181"
+               title="Go to the comment associated with the attachment">2012-02-20 00:35</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7181&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a6" href="inspectingCurrentFolderBar.png"
+               title="View the content of the attachment">
+          <b>Inspecting the Current Folder toolbar using DOMi</b></a>
+
+          <span class="bz_attach_extra_info">
+              (409.45 KB,
+                image/png)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7182"
+               title="Go to the comment associated with the attachment">2012-02-20 00:45</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7182&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a7" href="QuickFolders_3.1pre4.xpi"
+               title="View the content of the attachment">
+          <b>New version with better overlays and configurable toolbar</b></a>
+
+          <span class="bz_attach_extra_info">
+              (381.03 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=24736.html#attach_7219"
+               title="Go to the comment associated with the attachment">2012-04-02 06:47</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7219&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=24736.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (1)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=24736&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24736&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=24736">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=24736">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=24736">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=24736">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=24736.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2012-02-16 11:17
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >As a feature I would like to be able to turn off the toolbar. As a bug the
+close button on the toolbar does not function and the toolbar rests at top
+right of messages and forces message to occupy only the left half of the
+window.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=24736.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-16 13:10:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Could you post a screen shot? It is not clear whether you mean the main
+QuickFolders bar (which can be hidden by using View / Toolbars / QuickFolders
+toolbar) and which has no close button - like all other toolbars. Or do you
+mean the Current Folder toolbar, which has a close button at the right? A
+screenshot with close button highlighted would be helpful. Also, which version
+of QuickFolders and which version of Thunderbird are we talking about?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=24736.html#c2">
+            #2</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-02-17 05:53:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Mozilla/5.0 (X11; Linux x86_64; rv:13.0a1) Gecko/20120216 Firefox/13.0a1
+SeaMonkey/2.10a1 ID:20120216003016
+
+QuickFolders 2.13
+
+Works for me.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=24736.html#c3">
+            #3</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-02-17 10:44:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="quickfolderstoolbar.jpg" name="attach_7175" title="Screenshot">Created an attachment (id=7175)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7175&amp;action=edit" title="Screenshot">[details]</a></span>
+Screenshot
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=24736.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-17 11:53:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c3">comment #3</a>)
+<span class="quote">&gt; Created an <span class=""><a href="quickfolderstoolbar.jpg" name="attach_7175" title="Screenshot">attachment (id=7175)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7175&amp;action=edit" title="Screenshot">[details]</a></span> [details]
+&gt; Screenshot
+&gt; </span >
+
+Is that theme Noia 2.0 extreme? I just tested all 3pane views with that:
+
+View &gt; Layout &gt; Classic View
+View &gt; Layout &gt; Wide View
+View &gt; Layout &gt; Vertical View
+
+but I could not get it to display in the way that it shows on your screen shot. 
+
+Further, in when opened in a tab in single message view the toolbar shows above
+the single message.
+
+When I open a message in a new window, the toolbar is not displayed at all.
+
+Unfortunately the screenshot does not tell me what mode you are using, and why
+thunderbird 10 has no tabs?
+
+Have you got any other extensions installed that potentially interfere with the
+3pane overlay? Can you try to open DOM-inspector and inspect the window in
+chrome mode to find out the document name?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=24736.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-17 12:08:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Also, can you check tools &gt; error console, to whether any warnings or errors
+are shown after opening the single message? QF seems to behave as if you are
+running an older version of Thunderbird (pre10) where the stacking of the
+header structure was different; maybe something bad is happening during the
+version recognition. Also try to enable Debug mode for more information.
+
+You can record debugging to text by installing console2 - highly recommended
+over the normal error console. Then highlight the contents of the Error Console
+and copy to clipboard via right-click.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=24736.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-18 13:11:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c5">comment #5</a>)
+<span class="quote">&gt; Also, can you check tools &gt; error console, to whether any warnings or errors
+&gt; are shown after opening the single message? QF seems to behave as if you are
+&gt; running an older version of Thunderbird (pre10) where the stacking of the
+&gt; header structure was different; maybe something bad is happening during the
+&gt; version recognition. Also try to enable Debug mode for more information.
+&gt; 
+&gt; You can record debugging to text by installing console2 - highly recommended
+&gt; over the normal error console. Then highlight the contents of the Error Console
+&gt; and copy to clipboard via right-click.
+&gt; </span >
+
+YOu need to give the complete list of extensions and which theme is active in
+order to complete bug investigation. Also please check the error output in
+tools / error console.
+
+thanks
+  Axel
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=24736.html#c7">
+            #7</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-02-19 13:19:57 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c6">comment #6</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=24736.html#c5">comment #5</a>)
+&gt; &gt; Also, can you check tools &gt; error console, to whether any warnings or errors
+&gt; &gt; are shown after opening the single message? QF seems to behave as if you are
+&gt; &gt; running an older version of Thunderbird (pre10) where the stacking of the
+&gt; &gt; header structure was different; maybe something bad is happening during the
+&gt; &gt; version recognition. Also try to enable Debug mode for more information.
+&gt; &gt; 
+&gt; &gt; You can record debugging to text by installing console2 - highly recommended
+&gt; &gt; over the normal error console. Then highlight the contents of the Error Console
+&gt; &gt; and copy to clipboard via right-click.
+&gt; &gt; 
+&gt; 
+&gt; YOu need to give the complete list of extensions and which theme is active in
+&gt; order to complete bug investigation. Also please check the error output in
+&gt; tools / error console.
+&gt; 
+&gt; thanks
+&gt;   Axel
+&gt; </span >
+
+I'll go through all of that as soon as I have a little time (day or 2).In the
+meantime, you might want to know that this issue only came up whenI applied the
+most recent update to Tbird and then the most recent quickfolders update, this
+issue appeared. I made no changes to other addons.
+
+
+Where do I find console2
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=24736.html#c8">
+            #8</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-02-19 13:58:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >For Starters the Error console shows one warning upon opening a single message:
+
+Warning: XUL box for toolbarbutton element contained an inline #text child,
+forcing all its children to be wrapped in a block.
+Source File: chrome://messenger/content/messageWindow.xul
+Line: 0 
+
+Here is content of messageWindow.xul:
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+
+
+&lt;?xml-stylesheet href=&quot;chrome://messenger/skin/messageWindow.css&quot;
+type=&quot;text/css&quot;?&gt;
+
+&lt;?xul-overlay href=&quot;chrome://communicator/content/utilityOverlay.xul&quot;?&gt;
+&lt;?xul-overlay href=&quot;chrome://messenger/content/msgHdrViewOverlay.xul&quot;?&gt;
+&lt;?xul-overlay href=&quot;chrome://messenger/content/mailWindowOverlay.xul&quot;?&gt;
+&lt;?xul-overlay href=&quot;chrome://messenger/content/mailOverlay.xul&quot;?&gt;
+&lt;?xul-overlay href=&quot;chrome://messenger/content/editContactOverlay.xul&quot;?&gt;
+
+&lt;!DOCTYPE window [
+&lt;!ENTITY % brandDTD SYSTEM &quot;chrome://branding/locale/brand.dtd&quot; &gt;
+%brandDTD;
+&lt;!ENTITY % messengerDTD SYSTEM &quot;chrome://messenger/locale/messenger.dtd&quot; &gt;
+%messengerDTD;
+&lt;!ENTITY % customizeToolbarDTD SYSTEM
+&quot;chrome://global/locale/customizeToolbar.dtd&quot;&gt;
+%customizeToolbarDTD;
+]&gt;
+
+&lt;!--
+  - This window displays a single message.
+  --&gt;
+&lt;window id=&quot;messengerWindow&quot;
+        xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+        title=&quot;&amp;titledefault.label;&quot;
+        titlemodifier=&quot;&amp;titledefault.label;&quot;
+        titlemenuseparator=&quot;&amp;titleSeparator.label;&quot;
+        onload=&quot;OnLoadMessageWindow()&quot;
+        onunload=&quot;OnUnloadMessageWindow()&quot;
+        persist=&quot;width height screenX screenY sizemode&quot;
+        toggletoolbar=&quot;true&quot;
+        windowtype=&quot;mail:messageWindow&quot;
+        lightweightthemes=&quot;true&quot;
+        lightweightthemesfooter=&quot;status-bar&quot;&gt;
+
+  &lt;stringbundleset id=&quot;stringbundleset&quot;&gt;
+    &lt;stringbundle id=&quot;bundle_brand&quot;
+src=&quot;chrome://branding/locale/brand.properties&quot;/&gt;
+    &lt;stringbundle id=&quot;bundle_offlinePrompts&quot;
+src=&quot;chrome://messenger/locale/offline.properties&quot;/&gt;
+  &lt;/stringbundleset&gt;
+
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://global/content/globalOverlay.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/shareglue.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/commandglue.js&quot;/&gt;
+
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/folderDisplay.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/messageDisplay.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/mailWindow.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/messageWindow.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/accountUtils.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://global/content/contentAreaUtils.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/nsContextMenu.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/mailContextMenus.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/phishingDetector.js&quot;/&gt;
+
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://communicator/content/contentAreaClick.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://global/content/nsDragAndDrop.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/msgViewNavigation.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/widgetglue.js&quot;/&gt;
+  &lt;script type=&quot;application/javascript&quot;
+src=&quot;chrome://messenger/content/editContactOverlay.js&quot;/&gt;
+
+  &lt;commandset id=&quot;mailCommands&quot;&gt;
+    &lt;commandset id=&quot;mailFileMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailViewMenuItems&quot;/&gt;
+
+    &lt;commandset id=&quot;mailEditMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailSearchMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailGoMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailMessageMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailToolbarItems&quot;/&gt;
+    &lt;commandset id=&quot;mailGetMsgMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailMarkMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailToolsMenuItems&quot;/&gt;
+    &lt;commandset id=&quot;mailEditContextMenuItems&quot;/&gt;
+
+    &lt;commandset id=&quot;tasksCommands&quot;/&gt;
+    &lt;commandset id=&quot;commandKeys&quot;/&gt;
+    &lt;command id=&quot;cmd_close&quot; oncommand=&quot;window.close();&quot;/&gt;
+  &lt;/commandset&gt;
+
+  &lt;keyset id=&quot;mailKeys&quot;&gt;
+    &lt;keyset id=&quot;tasksKeys&quot;/&gt;
+    &lt;key keycode=&quot;VK_ESCAPE&quot; oncommand=&quot;window.close();&quot;/&gt;
+  &lt;/keyset&gt;
+
+  &lt;popupset&gt;
+    &lt;panel id=&quot;editContactPanel&quot;/&gt;
+    &lt;menupopup id=&quot;emailAddressPopup&quot; class=&quot;emailAddressPopup&quot;
+position=&quot;after_start&quot;
+              
+onpopupshowing=&quot;setupEmailAddressPopup(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup')); goUpdateCommand('cmd_createFilterFromPopup')&quot;
+              
+onpopuphiding=&quot;hideEmailNewsPopup(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;&gt;
+      &lt;menuitem id=&quot;emailAddressPlaceHolder&quot; label=&quot;&quot;
+                disabled=&quot;true&quot;/&gt;
+      &lt;menuseparator/&gt;
+      &lt;menuitem id=&quot;addToAddressBookItem&quot;
+                label=&quot;&amp;AddDirectlyToAddressBook.label;&quot;
+                accesskey=&quot;&amp;AddDirectlyToAddressBook.accesskey;&quot;
+               
+oncommand=&quot;AddContact(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;/&gt;
+      &lt;menuitem id=&quot;editContactItem&quot; label=&quot;&amp;EditContact.label;&quot; hidden=&quot;true&quot;
+                accesskey=&quot;&amp;EditContact.accesskey;&quot;
+               
+oncommand=&quot;EditContact(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;/&gt;
+      &lt;menuitem id=&quot;viewContactItem&quot; label=&quot;&amp;ViewContact.label;&quot; hidden=&quot;true&quot;
+                accesskey=&quot;&amp;ViewContact.accesskey;&quot;
+               
+oncommand=&quot;EditContact(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;/&gt;
+
+      &lt;menuitem id=&quot;sendMailToItem&quot; label=&quot;&amp;SendMessageTo.label;&quot;
+                accesskey=&quot;&amp;SendMessageTo.accesskey;&quot;
+               
+oncommand=&quot;SendMailToNode(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;/&gt;
+      &lt;menuitem id=&quot;copyEmailAddressItem&quot; label=&quot;&amp;CopyEmailAddress.label;&quot;
+                accesskey=&quot;&amp;CopyEmailAddress.accesskey;&quot;
+               
+oncommand=&quot;CopyEmailNewsAddress(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;/&gt;
+      &lt;menuseparator/&gt;
+      &lt;menuitem id=&quot;createFilterFromItem&quot; label=&quot;&amp;CreateFilterFrom.label;&quot;
+                accesskey=&quot;&amp;CreateFilterFrom.accesskey;&quot;
+               
+oncommand=&quot;CreateFilter(findEmailNodeFromPopupNode(document.popupNode,
+'emailAddressPopup'))&quot;
+                observes=&quot;cmd_createFilterFromPopup&quot;/&gt;
+    &lt;/menupopup&gt;
+
+    &lt;menupopup id=&quot;messageIdContext&quot;/&gt;
+
+    &lt;menupopup id=&quot;mailContext&quot;/&gt;
+  &lt;/popupset&gt;
+
+  &lt;menupopup id=&quot;attachmentListContext&quot;/&gt;
+  &lt;menupopup id=&quot;attachmentItemContext&quot;/&gt;
+  &lt;menupopup id=&quot;header-toolbar-context-menu&quot;/&gt;
+  &lt;menupopup id=&quot;attachment-toolbar-context-menu&quot;/&gt;
+  &lt;menupopup id=&quot;copyUrlPopup&quot;/&gt;
+  &lt;menupopup id=&quot;toolbar-context-menu&quot;/&gt;
+
+  &lt;toolbox id=&quot;mail-toolbox&quot; class=&quot;toolbox-top&quot;&gt;
+  &lt;/toolbox&gt;
+
+  &lt;tooltip id=&quot;aHTMLTooltip&quot; onpopupshowing=&quot;return
+FillInHTMLTooltip(document.tooltipNode);&quot;/&gt;
+
+ &lt;!-- msg header view --&gt;
+  &lt;!-- a convenience box for ease of extension overlaying --&gt;
+  &lt;hbox id=&quot;messagepaneboxwrapper&quot; flex=&quot;1&quot;&gt;
+    &lt;vbox id=&quot;messagepanebox&quot; flex=&quot;3&quot;
+          ondragover=&quot;nsDragAndDrop.dragOver(event, messagepaneObserver);&quot;
+          ondragdrop=&quot;nsDragAndDrop.drop(event, messagepaneObserver);&quot;
+          ondragexit=&quot;nsDragAndDrop.dragExit(event, messagepaneObserver);&quot;&gt;
+
+      &lt;hbox id=&quot;msgHeaderView&quot;/&gt;
+      &lt;hbox id=&quot;editMessageBox&quot;/&gt;
+
+      &lt;deck id=&quot;msgNotificationBar&quot;/&gt;
+
+      &lt;!-- message view --&gt;
+      &lt;browser id=&quot;messagepane&quot; context=&quot;mailContext&quot; tooltip=&quot;aHTMLTooltip&quot;
+               style=&quot;height: 0px; min-height: 1px&quot; flex=&quot;1&quot; name=&quot;messagepane&quot;
+               disablesecurity=&quot;true&quot; disablehistory=&quot;true&quot;
+type=&quot;content-primary&quot;
+               onresize=&quot;return messagePaneOnResize(event);&quot; autofind=&quot;false&quot;
+               src=&quot;about:blank&quot; onclick=&quot;return contentAreaClick(event);&quot; /&gt;
+      &lt;splitter id=&quot;attachment-splitter&quot; collapse=&quot;after&quot;
+resizebefore=&quot;closest&quot; resizeafter=&quot;closest&quot; collapsed=&quot;true&quot;/&gt;
+      &lt;vbox id=&quot;attachmentView&quot;/&gt;
+      &lt;findbar id=&quot;FindToolbar&quot; browserid=&quot;messagepane&quot;/&gt;
+    &lt;/vbox&gt;
+  &lt;/hbox&gt;
+
+  &lt;panel id=&quot;customizeToolbarSheetPopup&quot; noautohide=&quot;true&quot;&gt;
+    &lt;iframe id=&quot;customizeToolbarSheetIFrame&quot;
+            style=&quot;&amp;dialog.style;&quot;
+            hidden=&quot;true&quot;/&gt;
+  &lt;/panel&gt;
+
+  &lt;statusbar class=&quot;chromeclass-status&quot; id=&quot;status-bar&quot;/&gt;
+&lt;/window&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=24736.html#c9">
+            #9</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-02-19 14:07:26 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Current active addons:
+
+Lightning 1.2.1
+Noia 2.0 eXtreme XT 3.36
+Quickfolders 2.12
+Quicktext 0.9.11.1
+Test Pilot for Thunderbird 1.3.5
+xSidebar for Thunderbird 0.8
+
+That is all active addons
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=24736.html#c10">
+            #10</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:25:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c8">comment #8</a>)
+<span class="quote">&gt; For Starters the Error console shows one warning upon opening a single message:
+&gt; 
+&gt; Warning: XUL box for toolbarbutton element contained an inline #text child,
+&gt; forcing all its children to be wrapped in a block.</span >
+
+Ok this should definitely not be happening. I am overlaying
+
+&lt;vbox id=&quot;messagepanebox&quot;&gt;
+and inject my current folder toolbar before the browser element &quot;messagepane&quot;
+
+
+here is the relevant part of the messageWindow:
+
+<span class="quote">&gt;  &lt;!-- msg header view --&gt;
+&gt;   &lt;!-- a convenience box for ease of extension overlaying --&gt;
+&gt;   &lt;hbox id=&quot;messagepaneboxwrapper&quot; flex=&quot;1&quot;&gt;
+&gt;     &lt;vbox id=&quot;messagepanebox&quot; flex=&quot;3&quot;&gt;
+&gt; 
+&gt;       &lt;hbox id=&quot;msgHeaderView&quot;/&gt;
+&gt;       &lt;hbox id=&quot;editMessageBox&quot;/&gt;
+&gt; 
+&gt;       &lt;deck id=&quot;msgNotificationBar&quot;/&gt;
+&gt; 
+&gt;       &lt;!-- message view --&gt;
+&gt;       &lt;browser id=&quot;messagepane&quot; name=&quot;messagepane&quot; /&gt;</span >
+
+the rest isn't relevant.
+
+My toolbar is in a special hbox:
+
+&lt;vbox id=&quot;messagepanebox&quot;&gt;
+  &lt;hbox id=&quot;QuickFolders-PreviewToolbarPanel-Single&quot;
+insertbefore=&quot;messagepane&quot;&gt;
+     &lt;spacer flex=&quot;5&quot; id=&quot;QF-CurrentLeftSpacer&quot;/&gt;
+        &lt;toolbar id=&quot;QuickFolders-CurrentFolderTools&quot;&gt;
+           &lt;toolbarbutton ../&gt;
+           &lt;toolbarbutton ../&gt;
+           &lt;toolbarbutton ../&gt;
+        &lt;/toolbar&gt;
+     &lt;/spacer&gt;
+  &lt;/hbox&gt;
+&lt;/vbox&gt;
+
+that is all there is to it; there are no inline text elements it is just
+spacer, toolbar, spacer. 
+
+This leads me to believe that another extension is injecting some text into
+this area, which makes my current Folder toolbar stick out.
+
+What other extensions have you installed? What's your current theme?
+
+It is possible that other extension authors were not as careful as me when
+overlaying their xul. I have 3 different sets of xul files, one for Tb2, one
+for Tb3-9, and one for Tb10+...
+
+You can find out whether there are any text elements in the toolbarbuttons.
+Best use DOM inspector and remove the buttons, one by one.
+
+DOMi will give you the real resulting window (after the overlay has been
+applied) and not just the file from Mozilla, which is what you were showing.
+Contact me via email to give you more instructions if you need them.
+
+BTW. console2 is an extension. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=24736.html#c11">
+            #11</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:32:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c9">comment #9</a>)
+<span class="quote">&gt; Current active addons:
+&gt; 
+&gt; Lightning 1.2.1
+&gt; Noia 2.0 eXtreme XT 3.36
+&gt; Quickfolders 2.12
+&gt; Quicktext 0.9.11.1
+&gt; Test Pilot for Thunderbird 1.3.5
+&gt; xSidebar for Thunderbird 0.8
+&gt; 
+&gt; That is all active addons
+&gt; </span >
+
+Ok, I need the exact settings you have set on Nojia eXtreme XT. I think that is
+doing something it shouldn't do. Also try what happens if you set the main
+toolbar to icon without text? (And best restart Tb after that)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=24736.html#c12">
+            #12</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:38:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I still do not understand your screenshot. Where are your tabs? Are you looking
+at a message in a new window? How do you get to the message in the view
+(without any folder tree, but also not in a tab? I will posta a screenshot on
+what it looks like on my system if I open a message in a new tab, and then what
+it looks like if I open a message in its own window.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=24736.html#c13">
+            #13</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:42:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="msgInTab.png" name="attach_7178" title="message in Tab">Created an attachment (id=7178)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7178&amp;action=edit" title="message in Tab">[details]</a></span>
+message in Tab
+
+Showing Message in its own tab (using same theme as you). the current folder
+toolbar is displayed above the message header. All buttons on the toolbar are
+working
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=24736.html#c14">
+            #14</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:43:27 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="msgInWindow.png" name="attach_7179" title="message in Window">Created an attachment (id=7179)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7179&amp;action=edit" title="message in Window">[details]</a></span>
+message in Window
+
+showing the message in its own window: current message toolbar is not displayed
+at all.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=24736.html#c15">
+            #15</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 14:59:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I tested by installing quickText, but that did not make any difference. I
+already have Lightning  and Nojia xTreme installed. The only thing out of the
+ordinay is your xSideBar 0.8 which is bot available on AMO (only 0.7 is), and
+Mozilla's test pilot. COuld you disable these and restart to see whether it
+changes anything?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=24736.html#c16">
+            #16</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-19 15:37:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders_3.0pre27.xpi" name="attach_7180" title="QF 3.0 Prerelease 27">Created an attachment (id=7180)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7180&amp;action=edit" title="QF 3.0 Prerelease 27">[details]</a></span>
+QF 3.0 Prerelease 27
+
+This is a test version. What happens when you right-click on the options button
+(the cogwheel beside the close windows button). It should show the name of the
+xul overlay that is currently active.
+
+Also, can you try to open the options and by (normally) clicking the same
+button, and then 
+- click on the advanced tab
+- uncheck the option &quot;display the toolbar&quot; uder Current Folder toolbar
+
+In order to use QuickFolders you should probably also make the _main_
+QuickFolders toolbar visible, using View &gt; toolbars &gt; QuickFolders toolbar
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=24736.html#c17">
+            #17</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2012-02-19 16:59:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c15">comment #15</a>)
+<span class="quote">&gt; I tested by installing quickText, but that did not make any difference. I
+&gt; already have Lightning  and Nojia xTreme installed. The only thing out of the
+&gt; ordinay is your xSideBar 0.8 which is bot available on AMO (only 0.7 is), and
+&gt; Mozilla's test pilot. COuld you disable these and restart to see whether it
+&gt; changes anything?
+&gt; </span >
+
+xSidebar 0.8 for Thunderbird is available on Mozdev:
+<a href="http://xsidebar.mozdev.org/tsidebar/index.html">http://xsidebar.mozdev.org/tsidebar/index.html</a>
+
+xSidebar 1.1 (and 1.2 alpha) for SeaMonkey is also available:
+<a href="http://xsidebar.mozdev.org/installation.html">http://xsidebar.mozdev.org/installation.html</a>
+
+The author is Philip Chee, a SeaMonkey developer of excellent reputation.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=24736.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-20 00:35:10 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="xulDebug.png" name="attach_7181" title="debug menu showing which overlay is used">Created an attachment (id=7181)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7181&amp;action=edit" title="debug menu showing which overlay is used">[details]</a></span>
+debug menu showing which overlay is used
+
+This screenshot shows the menu that pops up if you right click the options
+button in the Prerelease27 posted previously; this is important as it will show
+which version is overlayed. If it is the Tb10 version as expected and shown on
+the screenshot, then the only way to finally further investigate the bug is by
+looking at the individual elements in (and around) the toolbar, to see whether
+any are modified with injected text.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=24736.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-02-20 00:45:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="inspectingCurrentFolderBar.png" name="attach_7182" title="Inspecting the Current Folder toolbar using DOMi">Created an attachment (id=7182)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7182&amp;action=edit" title="Inspecting the Current Folder toolbar using DOMi">[details]</a></span>
+Inspecting the Current Folder toolbar using DOMi
+
+In order to investigate what is happening with the current folder toolbar and
+the buttons on it, install DOMi (DOM inspector)
+
+<a href="https://addons.mozilla.org/en-US/thunderbird/addon/dom-inspector-6622/">https://addons.mozilla.org/en-US/thunderbird/addon/dom-inspector-6622/</a>
+
+Press CTRL+SHIFT+i to start inspecting, and select 
+File &gt; Inspect Chrome Document &gt; (title of your mail window)
+
+Click the arrow button (find a node to inspect by clicking on it) and then
+click on the current folder toolbar close button that is not working for you.
+
+Left hand side is the DOM tree (the structure of all elements in the mail
+window)
+The right hand side shows the attributes of the button.
+
+Investigating the buttons and their container(s) will tell me whether something
+else manipulates the overlay in a way to break it. 
+
+The screenshot shows the expected contents when you click on the close button -
+note that there is no floating text element anywhere in the DOM tree within the 
+QuickFolders-PreviewToolbarPanel box; within the toolbarbuttons there should
+also be no additional elements except for images and labels, which you may see
+displayed in red if you enable View&gt;show anonymous content. You should not see
+any TEXT elements within the QuickFolders-PreviewToolbarPanel box.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=24736.html#c20">
+            #20</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-02-22 12:24:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It appear that the xSideBar 0.8 is the culprit. I installed that because I have
+had  persistent problem opening the contact pane when composing a new email.
+Nobody has been able to resolve the issue so installing that resolved that
+issue.
+
+It never interfered with anything until I updated the browser and quickfolders.
+
+Since I need to Bcc up to 40 club members monthly,I need the contact pane to do
+that easily. It would be great if the address book would be able to Bcc a list. 
+
+Should I close this and open a new bug issue to see if I can resolve the
+contact pane issue?  
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=24736.html#c21">
+            #21</a> From 
+          <a href="mailto:axelg&#64;gofree.indigo.ie">Axel Grude</a>
+          2012-02-22 12:32:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Maybe you could create a  bug with xSidebar, but you should definitely have a
+look at your console2 output as well!!!
+
+I can run xSidebar 0.8 without this problem happening, so it might be a
+configuration issue. Also, where is your main QF toolbar? There is a new
+version out soon, with that you can hide the current folder toolbar from the
+options window, so that might be a temporary workaround.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=24736.html#c22">
+            #22</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2012-04-02 06:47:54 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders_3.1pre4.xpi" name="attach_7219" title="New version with better overlays and configurable toolbar">Created an attachment (id=7219)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7219&amp;action=edit" title="New version with better overlays and configurable toolbar">[details]</a></span>
+New version with better overlays and configurable toolbar
+
+This version fixes some overlay issues as I was able to reproduce the bug on Tb
+11.01.
+
+Also there is now a separate option on the advanced tab to show/hide the
+current folder bar in the standalone Mail window. Tested in Tb 11.01, but
+should be backwards compatible.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=24736.html#c23">
+            #23</a> From 
+          <a href="mailto:dnice&#64;wi.rr.com">David Nice</a>
+          2012-04-03 22:14:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=24736.html#c22">comment #22</a>)
+
+Well I'll be. Everything now works properly. I will still look into what
+started the problem to begin with.  
+
+
+<span class="quote">&gt; Created an <span class=""><a href="QuickFolders_3.1pre4.xpi" name="attach_7219" title="New version with better overlays and configurable toolbar">attachment (id=7219)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7219&amp;action=edit" title="New version with better overlays and configurable toolbar">[details]</a></span> [details]
+&gt; New version with better overlays and configurable toolbar
+&gt; 
+&gt; This version fixes some overlay issues as I was able to reproduce the bug on Tb
+&gt; 11.01.
+&gt; 
+&gt; Also there is now a separate option on the advanced tab to show/hide the
+&gt; current folder bar in the standalone Mail window. Tested in Tb 11.01, but
+&gt; should be backwards compatible.
+&gt; </span >
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24736&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

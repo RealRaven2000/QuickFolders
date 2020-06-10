@@ -1,0 +1,1679 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25887 &ndash; Offline Attachments can slow down Composer startup</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25887&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25887">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25887">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25887">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_ASSIGNED bz_component_General bz_bug_25887">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25887</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Offline Attachments can slow down Composer startup</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2015-04-29 02:23:01</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25887&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2015-04-29 02:23:01">
+  <input type="hidden" name="longdesclength" value="28">
+  <input type="hidden" name="id" value="25887">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Offline Attachments can slow down Composer startup">Offline Attachments can slow down Composer startup
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25887.html">25887</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>ASSIGNED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P2">P2
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="major">major
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25887&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25887">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="arai_a&#64;mac.com">arai_a&#64;mac.com</option>
+            <option value="joaosilva&#64;ambitermo.com">joaosilva&#64;ambitermo.com</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="0001-Bug-25887-Use-nsIMsgMessageService.streamHeaders-for.patch"
+               title="View the content of the attachment">
+          <b>Bug 25887 - Use nsIMsgMessageService.streamHeaders for downloading message headers if available.</b></a>
+
+          <span class="bz_attach_extra_info">
+              (5.58 KB,
+                patch)
+
+            <br>
+            <a href="show_bug.cgi@id=25887.html#attach_7973"
+               title="Go to the comment associated with the attachment">2014-12-06 05:12</a>,
+
+            <a href="mailto:arai_a&#64;mac.com"
+               title="Write an email to the creator of the attachment">Tooru Fujisawa [:arai]
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7973&amp;action=edit">Details</a>
+            | <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7973&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a2" href="smartTemplate-overlay.js"
+               title="View the content of the attachment">
+          <b>nsIChannel.asyncOpen with processNextEvent loop</b></a>
+
+          <span class="bz_attach_extra_info">
+              (62.61 KB,
+                application/x-javascript)
+
+            <br>
+            <a href="show_bug.cgi@id=25887.html#attach_7975"
+               title="Go to the comment associated with the attachment">2014-12-08 05:42</a>,
+
+            <a href="mailto:arai_a&#64;mac.com"
+               title="Write an email to the creator of the attachment">Tooru Fujisawa [:arai]
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7975&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25887&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25887&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25887">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25887">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25887">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25887">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25887.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-10-27 07:09
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >When a mail has an attachment the classGetHeaders function is slow.
+
+Very slow.
+
+
+Everything goes fast till the first inputStream.available() call,
+but this call takes around 45 minutes... (although there is almost no cpu usage
+during that time)
+
+Error conditions:
+
+1. The email is big or has attachments
+2. the email is stored on an IMAP serbver
+3. the body of the message is not fully downloaded
+
+This bug was first reported on 01/June/2014 by Benito van der Zander
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25887.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-10-27 07:10:41 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c0">comment #0</a>)
+<span class="quote">&gt; When a mail has an attachment the classGetHeaders function is slow.
+&gt; 
+&gt; Very slow.
+&gt; </span >
+
+There had been some complaints in attachments crashing or stalling Tb which I
+never could reproduce so this will definitely be helpful. I had a brief glance
+at the code and maybe there is a way to make this code more efficient. 
+
+First of all it seems wasteful to stream the entire message in order to extract
+the headers - intuition seems to suggest that they would be at the top of the
+message body,  so maybe cutting off after a few k would probably be sufficient.
+
+I don't have the code in front of me but if it appends strings in 2k chunks
+them that would require a lot of memory reallocation -as you know strings in js
+are immutable. Did you experience accelerated memory consumption during that
+loop?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25887.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-10-27 07:11:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c1">comment #1</a>)
+<span class="quote">&gt; 
+&gt; There had been some complaints in attachments crashing or stalling Tb which I
+&gt; never could reproduce so this will definitely be helpful. I had a brief glance
+&gt; at the code and maybe there is a way to make this code more efficient. 
+&gt; 
+&gt; First of all it seems wasteful to stream the entire message in order to extract
+&gt; the headers - intuition seems to suggest that they would be at the top of the
+&gt; message body,  so maybe cutting off after a few k would probably be sufficient.</span >
+
+There might be another method to just get the headers
+
+But I need the entire message for my insert-an-appropiate-greeting template
+
+<span class="quote">&gt; 
+&gt; I don't have the code in front of me but if it appends strings in 2k chunks
+&gt; them that would require a lot of memory reallocation -as you know strings in js
+&gt; are immutable. Did you experience accelerated memory consumption during that
+&gt; loop?
+&gt; </span >
+
+That does not matter. Nothing in the loop matters.
+
+It hangs before the loop body is ever executed.
+
+Perhaps it is a bug in tb itself. Or a completely different way to read the
+current mail should be used
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25887.html#c3">
+            #3</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-10-27 07:12:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c2">comment #2</a>)
+<span class="quote">&gt; 
+&gt; That does not matter. Nothing in the loop matters.
+&gt; 
+&gt; It hangs before the loop body is ever executed.
+&gt; 
+&gt; Perhaps it is a bug in tb itself. Or a completely different way to read the
+&gt; current mail should be used
+&gt; </span >
+
+
+The size does not matter.
+
+What matters, are the offline settings. When TB is set to download/sync all
+messages for offline use, it works fine.
+
+Otherwise, it shows &quot;size unknown&quot; on some attachments, and on those messages
+it is too slow.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25887.html#c4">
+            #4</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-10-27 23:03:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >To introduce asyncronous things there, we have to make all caller functions of
+SmartTemplate4.classGetHeaders and SmartTemplate4.classGetHeaders.content
+asyncronous,
+up to notifyComposeBodyReady (I guess this is already asyncronous, because it's
+listener function).
+Otherwise, we should write a busy loop for waiting asyncronous call somewhere,
+with JavaScript, that's too bad :(
+
+We may need to re-construct all those functions, splitting them into multiple
+parts, by making them Continuation-passing style, for asyncronous call.
+(especially, it would be difficult around replaceReservedWords function, and it
+may need totally different strategy)
+
+If we can use Task.jsm, it may be easier to convert current code, without
+splitting functions.
+But it's available from mozilla17, and it uses Promise.jsm from mozilla31.
+(you want to support Postbox, right?)
+Of course you can store the copy of them into smartTemplate4 add-on itself. But
+I don't know which version supports all of your supported appllications.
+
+  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=763311">https://bugzilla.mozilla.org/show_bug.cgi?id=763311</a>
+  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=887923">https://bugzilla.mozilla.org/show_bug.cgi?id=887923</a>
+
+I'll try to make a draft patch, without using Task.jsm, but it may take a long
+time ;)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25887.html#c5">
+            #5</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-10-30 03:43:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Here is call graph for functions to be made async.
+Yeah, so much functions, I guess this is almost impossible, or at least
+extremely hard work :(
+
+Especially, following functions are called from Thunderbird itself, etc:
+  * window.LoadIdentity
+  * SmartTemplate4.stateListener.NotifyComposeBodyReady
+and not sure it could be made async.
+
+Also, following function is called from Stationery Add-on:
+  * fixer.preprocessHTML
+It requires modification to that add-on.
+
+It may be better to find out another solution...
+
+----
+
+SmartTemplate4.classGetHeaders
+ |
+ +- SmartTemplate4.regularize
+     |
+     +- SmartTemplate4.classSmartTemplate.getProcessedText
+         |
+         +- SmartTemplate4.classSmartTemplate.extractSignature
+         |   |
+         |   +- SmartTemplate4.classSmartTemplate.insertTemplate
+         |   |   |
+         |   |   +- SmartTemplate4.notifyComposeBodyReady
+         |   |   |   |
+         |   |   |   +- SmartTemplate4.stateListener.NotifyComposeBodyReady ?
+         |   |   |   |
+         |   |   |   +- &quot;stationery-template-loaded&quot; event anonymous function $
+         |   |   |
+         |   |   +- SmartTemplate4.loadIdentity
+         |   |       |
+         |   |       +- smartTemplate_loadIdentity (= window.LoadIdentity) ?
+         |   |
+         |   +- SmartTemplate4.loadIdentity *
+         |
+         +- getQuoteHeader
+         |   |
+         |   +- SmartTemplate4.classSmartTemplate.insertTemplate *
+         |
+         +- getSmartTemplate
+         |   |
+         |   +- SmartTemplate4.classSmartTemplate.insertTemplate *
+         |
+         +- SmartTemplate4.preprocessHTMLStationery
+             |
+             +- fixer.preprocessHTML
+                 |
+                (Stationery add-on)
+                 |
+                 +- Stationery.templates.load
+                     |
+                     +- Stationery_.ApplyHTMLTemplate
+                         |
+                         +- Stationery_.ApplyTemplate
+                             |
+                             +- Stationery.onComposeBodyReady
+                             |   |
+                             |   +- stateListener.NotifyComposeBodyReady $
+                             |
+                             +- Stationery_.onIdentityChanged
+                             |   |
+                             |   +- &quot;compose-from-changed&quot; event $
+                             |
+                             +- Stationery.templates.onTemplateMenuitemCommand
+                             |   |
+                             |   +- menuitem.oncommand $
+                             |
+                             +- Stationery.templates.onHandlerMenuitemCommand
+                                 |
+                                 +- menuitem.oncommand $
+
+SmartTemplate4.classGetHeaders.content
+ |
+ +- replaceReservedWords
+     |
+     +- sandbox.variable
+     |   |
+     |   +- sandboxed script
+     |       |
+     |       +- Components.utils.evalInSandbox
+     |           |
+     |           +- replaceJavascript @ (no caller)
+     |
+     +- sandbox.messageRaw
+     |   |
+     |   +- sandboxed script *
+     |
+     +- expand
+     |   |
+     |   +- replaceReservedWords (&quot;hh:mm:ss&quot; only) @
+     |
+     +- msg.replace
+         |
+         +- SmartTemplate4.regularize *
+
+*: duplicated entry
+$: already async
+?: outside
+@: can be ignored
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25887.html#c6">
+            #6</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-10-30 04:43:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c5">comment #5</a>)
+<span class="quote">&gt; Here is call graph for functions to be made async.
+&gt; Yeah, so much functions, I guess this is almost impossible, or at least
+&gt; extremely hard work :(
+&gt; 
+&gt; Especially, following functions are called from Thunderbird itself, etc:
+&gt;   * window.LoadIdentity
+&gt;   * SmartTemplate4.stateListener.NotifyComposeBodyReady
+&gt; and not sure it could be made async.
+&gt; 
+&gt; Also, following function is called from Stationery Add-on:
+&gt;   * fixer.preprocessHTML
+&gt; It requires modification to that add-on.
+&gt; 
+&gt; It may be better to find out another solution...
+&gt; </span >
+
+The thing is - the only reason I am streaming the mail is to get at all its
+headers:
+
+headers.initialize(msgContent, msgContent.length);
+
+Maybe there is a more efficient way to do this... as long as GLODA is enabled
+and we are only dealing with standard headers it shouldn't be such a big issue.
+Custom headers might not actually be in it though, and I believe GLODA can be
+disabled by the users (?)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25887.html#c7">
+            #7</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-10-30 05:58:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >For message header, nsIMsgMessageService.messageURIToMsgHdr could be used.
+Still we need another way to get message body though.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25887.html#c8">
+            #8</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-05 02:03:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I'm also having the same problem.
+My TB crashes when replying a message.
+
+It would be great if the SMT4 team could minimize or solve this problem!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25887.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-05 02:18:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c8">comment #8</a>)
+<span class="quote">&gt; I'm also having the same problem.
+&gt; My TB crashes when replying a message.
+&gt; 
+&gt; It would be great if the SMT4 team could minimize or solve this problem!
+&gt; </span >
+
+I wish we could - I have already tried to get 2 other developers involved in
+solving this bug but haven't had much success with it. In the meantime you can
+try to minimize this problem by storing mail with attachments locally rather
+than on a remote server. 
+
+I will leave the Severity as &quot;Major&quot; as I do acknowledge that it is a big
+problem. By the way THunderbird doesn't actually crash, the stream downloads
+the whole mail but it can take a *long* time (half an hour).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25887.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-05 02:23:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c7">comment #7</a>)
+<span class="quote">&gt; For message header, nsIMsgMessageService.messageURIToMsgHdr could be used.
+&gt; Still we need another way to get message body though.
+&gt; </span >
+
+Could you attempt writing a patch? The body is not that important as it will
+come into composer automatically; but we have to parse the headers at the
+notifyCompose ready message.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25887.html#c11">
+            #11</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-05 02:34:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25887.html#c7">comment #7</a>)
+&gt; &gt; For message header, nsIMsgMessageService.messageURIToMsgHdr could be used.
+&gt; &gt; Still we need another way to get message body though.
+&gt; &gt; 
+&gt; 
+&gt; Could you attempt writing a patch? The body is not that important as it will
+&gt; come into composer automatically; but we have to parse the headers at the
+&gt; notifyCompose ready message.
+&gt; </span >
+
+Unless solving the slowness about retrieving the body part (hdr.content
+method), &quot;messageRaw&quot; variable is still slow as before,
+and there is no performance improvement if &quot;messageRaw&quot; is used.
+
+If you are trying to improve performance for the configuration without
+&quot;messageRaw&quot;, I'm willing to write the patch ;)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25887.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-05 04:26:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c11">comment #11</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25887.html#c10">comment #10</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25887.html#c7">comment #7</a>)
+&gt; &gt; &gt; For message header, nsIMsgMessageService.messageURIToMsgHdr could be used.
+&gt; &gt; &gt; Still we need another way to get message body though.
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Could you attempt writing a patch? The body is not that important as it will
+&gt; &gt; come into composer automatically; but we have to parse the headers at the
+&gt; &gt; notifyCompose ready message.
+&gt; &gt; 
+&gt; 
+&gt; Unless solving the slowness about retrieving the body part (hdr.content
+&gt; method), &quot;messageRaw&quot; variable is still slow as before,
+&gt; and there is no performance improvement if &quot;messageRaw&quot; is used.
+&gt; 
+&gt; If you are trying to improve performance for the configuration without
+&gt; &quot;messageRaw&quot;, I'm willing to write the patch ;)
+&gt; </span >
+
+Hi Tooru, yes go for it if you can!
+
+I am totally willing of scrapping &quot;messageRaw&quot; as it is an edge case,  I don't
+think anybody uses it anyway. I have never once seen it mentioned in support
+cases. I only inherited the Add-on though, so maybe it was used in the past by
+somebody. But this issue is much more important, and really smartTemplate4 is
+about headers, not the body of the mail. I leave that to the &quot;quoting engine&quot;
+of the mail host.
+
+I think going down the route of the asynchronous stream reader is very high
+risk as it might also break our Stationery support. If there is an alternative
+to stream reader to get at all the headers then that would be the ideal way to
+do it.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25887.html#c13">
+            #13</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-06 04:30:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hmm, unfortunatelly, nsIMsgDBHdr contains only following properties for my
+example message,
+and some of them are not in original format (like date)
+
+---
+flags
+statusOfset
+sender
+recipients
+subject
+message-id
+references
+date (unix time[sec] in hex)
+dateReceived
+priority
+msgCharSet
+size
+junkscore
+junkscoreorigin
+keywords
+threadParent
+msgThreadId
+ProtoThreadFlags
+X-GM-MSGID
+X-GM-THRID
+X-GM-LABELS
+label
+msgOffset
+storeToken
+offlineMsgSize
+numLines
+gloda-id
+sender_name
+---
+
+I guess there might be some more, depending on the message,
+but it still does not cover all headers.
+  <a href="http://mxr.mozilla.org/comm-esr31/source/mailnews/base/public/nsIMsgHdr.idl">http://mxr.mozilla.org/comm-esr31/source/mailnews/base/public/nsIMsgHdr.idl</a>
+
+So, the header which can be supported will be following (yeah, very few...):
+
+---
+Subject (subject)
+Date? (date)
+From (sender)
+To (recipients)
+Message-ID (message-id)
+---
+
+However, Special variable is described as following in help:
+<span class="quote">&gt; %...% = Any Header-line</span >
+
+So, nsIMsgDBHdr is not suitable for replacement :(
+
+Of course, we could use it for optimization (so, use nsIMsgDBHdr for those
+supported headers, and use streamMessage/streamHeaders for others).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25887.html#c14">
+            #14</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-06 05:12:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="0001-Bug-25887-Use-nsIMsgMessageService.streamHeaders-for.patch" name="attach_7973" title="Bug 25887 - Use nsIMsgMessageService.streamHeaders for downloading message headers if available.">Created an attachment (id=7973)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7973&amp;action=edit" title="Bug 25887 - Use nsIMsgMessageService.streamHeaders for downloading message headers if available.">[details]</a></span>
+<a href="show_bug.cgi@id=25887.html" title="ASSIGNED - Offline Attachments can slow down Composer startup">Bug 25887</a> - Use nsIMsgMessageService.streamHeaders for downloading message
+headers if available.
+
+draft patch (not yet tested with latest code)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25887.html#c15">
+            #15</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-07 10:46:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Unfortuately again, nsIInputStream.available takes so long time even with
+nsIMsgMessageService.streamHeader...
+We need yet another solution.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25887.html#c16">
+            #16</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-07 11:59:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Tried using imap:// URI instead of imap-message:// URI, with
+nsIChannel.asyncOpen.
+With it, I can get message source within a few seconds, even if large
+attachment is not downloaded :D
+so I'll try this way.
+
+I need to find the canonical way to convert imap-message:// URI to imap:// URI.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25887.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-07 13:01:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c16">comment #16</a>)
+<span class="quote">&gt; Tried using imap:// URI instead of imap-message:// URI, with
+&gt; nsIChannel.asyncOpen.
+&gt; With it, I can get message source within a few seconds, even if large
+&gt; attachment is not downloaded :D
+&gt; so I'll try this way.
+&gt; 
+&gt; I need to find the canonical way to convert imap-message:// URI to imap:// URI.
+&gt; </span >
+
+Awesome work man!!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25887.html#c18">
+            #18</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-08 00:21:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >When I embed async channel into SmartTemplate4.classGetHeaders,
+and wait for it with Services.tm.currentThread.processNextEvent() loop,
+it hangs again for large attachment :(
+
+So, in the end, I think it's not possible with synchrounous method.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25887.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-12-08 01:37:32 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c18">comment #18</a>)
+<span class="quote">&gt; When I embed async channel into SmartTemplate4.classGetHeaders,
+&gt; and wait for it with Services.tm.currentThread.processNextEvent() loop,
+&gt; it hangs again for large attachment :(</span >
+
+I would like to see the code of how you did this
+
+<span class="quote">&gt; 
+&gt; So, in the end, I think it's not possible with synchrounous method.
+&gt; </span >
+The question is, if we stop processing after a timeout (using the above method)
+would we be able to prompt the user to download the message (or we do it
+ourselves) first and then try again? At least that way we &quot;know&quot; what has
+happened and can communicate it to the user.
+
+Also if we do not stream the headers, how can Composer handle the mail that
+quickly (or when smartTemplate4 is not used)? (I appears only through using the
+*stream* we slow things down)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25887.html#c20">
+            #20</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-08 05:42:25 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smartTemplate-overlay.js" name="attach_7975" title="nsIChannel.asyncOpen with processNextEvent loop">Created an attachment (id=7975)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7975&amp;action=edit" title="nsIChannel.asyncOpen with processNextEvent loop">[details]</a></span>
+nsIChannel.asyncOpen with processNextEvent loop
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25887.html#c21">
+            #21</a> From 
+          <a href="mailto:arai_a&#64;mac.com">Tooru Fujisawa [:arai]</a>
+          2014-12-08 05:50:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c19">comment #19</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25887.html#c18">comment #18</a>)
+&gt; &gt; When I embed async channel into SmartTemplate4.classGetHeaders,
+&gt; &gt; and wait for it with Services.tm.currentThread.processNextEvent() loop,
+&gt; &gt; it hangs again for large attachment :(
+&gt; 
+&gt; I would like to see the code of how you did this</span >
+
+Posted in previous comment
+
+<span class="quote">&gt; &gt; So, in the end, I think it's not possible with synchrounous method.
+&gt; &gt; 
+&gt; The question is, if we stop processing after a timeout (using the above method)
+&gt; would we be able to prompt the user to download the message (or we do it
+&gt; ourselves) first and then try again? At least that way we &quot;know&quot; what has
+&gt; happened and can communicate it to the user.</span >
+
+Yeah, it could.
+
+<span class="quote">&gt; Also if we do not stream the headers, how can Composer handle the mail that
+&gt; quickly (or when smartTemplate4 is not used)? (I appears only through using the
+&gt; *stream* we slow things down)</span >
+
+I think it's because Thuderbird itself loads the message totally
+asynchronously.
+The problem happens only when I load the message synchronously,
+or wait for asyncronous stream with semi-busy loop in main thread.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25887.html#c22">
+            #22</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-16 01:57:04 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ahy news about the solution for this Bug?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25887.html#c23">
+            #23</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2014-12-29 07:32:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c22">comment #22</a>)
+<span class="quote">&gt; Ahy news about the solution for this Bug?
+&gt; </span >
+
+Any news about the solution for this Bug?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25887.html#c24">
+            #24</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-01-22 10:07:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Any development on this subject?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25887.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-01-22 14:20:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c24">comment #24</a>)
+<span class="quote">&gt; Any development on this subject?
+&gt; 
+&gt; Thanks
+&gt; </span >
+
+I am afraid not at the moment. I am currently working on some prototype code in
+another (much simpler) addon in order to &quot;crack&quot; Promis-based code writing, but
+that is only one very small step to rewrite ST4 so that the code can run
+asynchronously. It is not easy, and also it needs some research on promises on
+reading streams. The risk of this failing is actually quite high.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25887.html#c26">
+            #26</a> From 
+          <a href="mailto:joaosilva&#64;ambitermo.com">João</a>
+          2015-04-29 02:08:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c25">comment #25</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25887.html#c24">comment #24</a>)
+&gt; &gt; Any development on this subject?
+&gt; &gt; 
+&gt; &gt; Thanks
+&gt; &gt; 
+&gt; 
+&gt; I am afraid not at the moment. I am currently working on some prototype code in
+&gt; another (much simpler) addon in order to &quot;crack&quot; Promis-based code writing, but
+&gt; that is only one very small step to rewrite ST4 so that the code can run
+&gt; asynchronously. It is not easy, and also it needs some research on promises on
+&gt; reading streams. The risk of this failing is actually quite high.
+&gt; </span >
+
+Hi,
+
+Any news about this update?
+
+Thanks
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25887.html#c27">
+            #27</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-04-29 02:23:01 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25887.html#c26">comment #26</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25887.html#c25">comment #25</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25887.html#c24">comment #24</a>)
+&gt; &gt; &gt; Any development on this subject?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Thanks
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; I am afraid not at the moment. I am currently working on some prototype code in
+&gt; &gt; another (much simpler) addon in order to &quot;crack&quot; Promis-based code writing, but
+&gt; &gt; that is only one very small step to rewrite ST4 so that the code can run
+&gt; &gt; asynchronously. It is not easy, and also it needs some research on promises on
+&gt; &gt; reading streams. The risk of this failing is actually quite high.
+&gt; &gt; 
+&gt; 
+&gt; Hi,
+&gt; 
+&gt; Any news about this update?
+&gt; 
+&gt; Thanks
+&gt; </span >
+
+Only one small thing - there was a mention of somebody working on an IO
+buffering on the Tb-Planning list, which I am still in the process of following
+up. This might or might not be related to the stream problem we are
+experiencing here:
+
+
+On 4/28/2015 12:18 AM, Wayne Mery (Thunderbird QA) wrote:
+<span class="quote">&gt; &gt; * Ishikawa's promising work on IO buffering (broken circa version 3)</span >
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25887&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

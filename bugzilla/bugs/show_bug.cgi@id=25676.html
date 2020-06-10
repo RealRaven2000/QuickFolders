@@ -1,0 +1,2171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 25676 &ndash; Turing complete templates [patch] - Script Blocks in Template</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25676&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25676">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=25676">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25676">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_25676">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;25676</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Turing complete templates [patch] - Script Blocks in Template</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2019-10-22 07:36:12</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25676&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2019-10-22 07:36:12">
+  <input type="hidden" name="longdesclength" value="37">
+  <input type="hidden" name="id" value="25676">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Turing complete templates [patch] - Script Blocks in Template">
+        <span title="Turing complete templates [patch] - Script Blocks in Template">Turing complete templates [patch] - Script Blocks in Temp...
+        </span>
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=25676.html">25676</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="smarttemplate4">smarttemplate4
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=smarttemplate4">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Linux">Linux
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P3">P3
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="enhancement">enhancement
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=25676&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=25676">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:benito&#64;benibela.de">Benito van der Zander &lt;benito&#64;benibela.de&gt;</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2"><input type="hidden" name="cc" value=""></td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a1" href="smart.diff"
+               title="View the content of the attachment">
+          <b>patch</b></a>
+
+          <span class="bz_attach_extra_info">
+              (13.80 KB,
+                patch)
+
+            <br>
+            <a href="show_bug.cgi@id=25676.html#attach_7759"
+               title="Go to the comment associated with the attachment">2014-01-04 16:38</a>,
+
+            <a href="mailto:benito&#64;benibela.de"
+               title="Write an email to the creator of the attachment">Benito van der Zander
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7759&amp;action=edit">Details</a>
+            | <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7759&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=25676&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25676&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=25676">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=25676">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=25676">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=25676">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=25676.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2014-01-04 15:10
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >The addon is called SmartTemplate, but does it have smart templates?
+
+Let us think about it. What is smartness? Reacting on unexpected situations,
+thinking in original ways, creating new stuff never seen before...
+
+Can a template react on anything and create something original? No! It
+basically  just copies something from somewhere. Even always to the same places
+in the mail.
+
+So despite its name, it is actually not smart at all! It is a stupid template
+
+
+--
+
+This patch changes that and maximizes the smartness by evaluating arbitrary
+javascript expressions between %%..%%-markers in the templates. Thereby the 
+usual variables can be accessed.
+
+E.g.:
+
+Hi %% from.contains(&quot;local.company.domain&quot;) ? from(&quot;firstname&quot;) : from(&quot;name&quot;)
+%%,
+
+%% [&quot;Bye&quot;, &quot;Best&quot;][Math.floor(Math.random()*2)]  %%,
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=25676.html#c1">
+            #1</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-04 16:06:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c0">comment #0</a>)
+
+<span class="quote">&gt; 
+&gt; This patch changes that and maximizes the smartness by evaluating arbitrary
+&gt; javascript expressions between %%..%%-markers in the templates. Thereby the 
+&gt; usual variables can be accessed.
+&gt; 
+&gt; E.g.:
+&gt; 
+&gt; Hi %% from.contains(&quot;local.company.domain&quot;) ? from(&quot;firstname&quot;) : from(&quot;name&quot;)
+&gt; %%,
+&gt; </span >
+
+
+So where is the patch? Are you saying you want to contribute some code?
+
+Also, keep in mind that most users won't be familar with C trinary operators
+such as 
+
+A ? B : C;
+
+<span class="quote">&gt; %% [&quot;Bye&quot;, &quot;Best&quot;][Math.floor(Math.random()*2)]  %%,</span >
+
+well, same to you, but if you suggest something we need better defined
+requirements.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=25676.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-04 16:33:30 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >By the way I am open to contributors of code. But let's first define what makes
+most sense to the users of this Addon. One thing we do not necessarily want it
+for it to be abused by people who want to turn Thunderbird into a mass-mailing
+solution. 
+
+Also the fields are mainly taken from the mail header and there is very little
+&quot;smartness&quot; involved in that, the main engine is one terrible mess of regexp
+replacements (you can tell that I am not the original author, I only inherited
+this Addon). So there is no proper parsing going on, no trees are built and the
+whole thing is a terrible unstructured mess.
+
+I only took over the Addon as a favor, but I honestly do not have enough spare
+time to completely refactor it. However I made the fields integrate with
+Stationery and there is even parsing / replacement possible in Signatures, so I
+tried to make it more flexible, without doing a whole rewrite. There was also a
+lot of hard coded &lt;br&gt; counting badness in it which I removed and made more
+resilient(*), but I am still quite amazed that it actually works at all. As a
+User I am not overly impressed with it and I see it as a good addition to
+Stationery; it would be &quot;smarter&quot; if it could insert names etc. after adding
+them to the Address-bar in Composer, so writing a patch to support this would
+probably be a better use of your energy: feel free to raise a bug on that, but
+be a little more concrete that time.
+
+(*) usually users thank for this with complaints about changed functionality,
+as they do not know what unwholesome mess they are working with...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=25676.html#c3">
+            #3</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-04 16:38:02 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="smart.diff" name="attach_7759" title="patch">Created an attachment (id=7759)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=7759&amp;action=edit" title="patch">[details]</a></span>
+patch
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=25676.html#c4">
+            #4</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-04 16:40:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;So where is the patch? </span >
+
+
+This bug tracker is also not smart, and discards attachments without
+description :(
+
+<span class="quote">&gt;Also, keep in mind that most users won't be familar with C trinary operators</span >
+such as 
+
+But it is the javascript syntax.
+
+There is no choice
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=25676.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-04 18:05:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I merged in the patch and checked it in at
+
+<a href="https://code.google.com/p/smart-template-4/source/list">https://code.google.com/p/smart-template-4/source/list</a>
+
+I will test that functionality tomorrow. Hopefully this is not going to create
+some problems during the review as even evalInSandbox can be problematic during
+security vetting, but if it works as advertised I am willing to take a chance
+on this.
+
+PS: if you want to do some good, find a way of eliminating that terrible code
+in 
+
+smartTemplate-overlay.js:1187 ff.
+
+it is an absolute eyesore and bet it can be done much more elegantly without
+adding all that terrible temporary markup to each line... (It is from the
+original author)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=25676.html#c6">
+            #6</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-05 07:50:19 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;PS: if you want to do some good, find a way of eliminating that terrible code</span >
+in 
+<span class="quote">&gt;smartTemplate-overlay.js:1187 ff.</span >
+
+Three possible ways:
+
+1) Use indexOf with startindex to find the  next line break / [[-marker and
+then check the replacement offset (fourth parameter of replaceReservedWords) to
+check if the offset is before or after the line break. And update the indices
+when the inserted text changes the length.
+
+2) Use split with capturing parenthesis to split it into \n,[[,$ tokens and
+then process every token, and join the result back together
+
+3) Do not use regex replace, but  your own parser / regex search to find the
+next \n,[[,%,... and then concatenate the pieces together
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=25676.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 04:55:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >There are a couple of improvements that are necessary with the demarkation of
+Javascript blocks. %% is not a good idea for 2 reasons
+
+1. could be added accidentally, too unspecific
+2. we shouldn't have the same token for start &amp; end of a JS bracket
+3. it is also not specific as to &quot;when&quot; / &quot;how often&quot; the JS should be
+executed. 
+4. It probably also keep track of whether it has already been executed
+
+At the moment we usually execute the %variable% replacements on the composer
+specific NotifyComposeBodyReady event of the gMsgCompose State Listener. It is
+conceivable that a future version would have script that can execute on other
+events, such as NotifyComposeFieldsReady, ComposeProcessDone, SaveInFolderDone
+etc.
+
+(I am hoping for a dedicated &quot;Send&quot; event as this would be most useful for a
+final update of Address-specific headers)
+
+We should probably address 1 &amp; 2 before thinking of release I would propose
+something like this:
+
+%script%
+%scriptEnd%
+
+(At a later stage we could add optional parameters that specify an event type,
+such as)
+%script(ComposeBodyReady)%
+%script(ComposeProcessDone)%
+%script(BeforeSend)%
+etc.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=25676.html#c8">
+            #8</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-06 11:25:53 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;%script%
+&gt;%scriptEnd%</span >
+
+That's cumbersome.
+
+I thought of the javascript insertions as nothing special, just as a more
+flexible template variable. Evaluated, when all the other variables are
+inserted
+
+Perhaps go the other way, and just use single % .. % as markers?
+
+Then insert the replaced variables, if the text between the markers is a valid
+variable, and evaluate it as javascript otherwise...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=25676.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 11:51:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c8">comment #8</a>)
+<span class="quote">&gt; &gt;%script%
+&gt; &gt;%scriptEnd%
+&gt; 
+&gt; That's cumbersome.
+&gt; 
+&gt; I thought of the javascript insertions as nothing special, just as a more
+&gt; flexible template variable. Evaluated, when all the other variables are
+&gt; inserted
+&gt; 
+&gt; Perhaps go the other way, and just use single % .. % as markers?</span >
+
+no that's even worse as it can very well lead to problems as % is also a valid
+character within a HTML document. I am afraid I have to insist on at least 2
+things:
+a)start and finish delimiter for Javascript block must be distinct
+b)a single character (or anything that isn't unique enough so that it requires
+&quot;recognization from context&quot;) is not acceptable. it is simply too fragile.
+
+with my suggestion I kept in sync with the existing naming conventions
+%variable%. 
+
+Of course, if you intend to write a lot of JS code in your templates are
+worried about typing too much (or creating somewhat cramped / noisy markup), I
+would settle for this pair:
+
+%{%   ...insert JS code here...          %}%
+
+This is just about as terse as I am willing to make it - would this be
+acceptable?
+
+I also have a follow question on usage of smartTemplate variables _from within_
+these JS code blocks. Within this context are you removing the need of wrapping
+them with % so that %varName% can (must) be written varName? I am not saying I
+am against that (although there is the danger of being overwritten by JS
+variables) just curious, and I haven't taken the time to read your code in
+great detail yet.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=25676.html#c10">
+            #10</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 12:03:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c9">comment #9</a>)
+<span class="quote">&gt; I also have a follow question on usage of smartTemplate variables _from within_
+&gt; these JS code blocks. Within this context are you removing the need of wrapping
+&gt; them with % so that %varName% can (must) be written varName? I am not saying I
+&gt; am against that (although there is the danger of being overwritten by JS
+&gt; variables) just curious, and I haven't taken the time to read your code in
+&gt; great detail yet.
+&gt; </span >
+
+Just reading the patch from line 211 ff. I see you actually add functions
+specifically. I think we need some documentation on what you adding. 
+
+Would it be fair to say +227 is a list of JavaScript functions that you import? 
+
+I vote we rename the new function &quot;scriptlet block&quot; to highlight that only a
+limited / selected number of functions are supported.
+
+Did you test whether replace supports (expects) regexp functions. I dread the
+moment my users expect me to support advanced JavaScript from within
+smartTemplate4 - I think we need a few good links for &quot;how-to&quot; pages.
+
+By the way seeing the toLocaleUpperCase() function reminds me that %name% needs
+a &quot;capitalize&quot; mode... I was thinking of adding that as a global option but it
+might become a scriptlet function as well...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=25676.html#c11">
+            #11</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-06 12:36:58 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+
+<span class="quote">&gt;Of course, if you intend to write a lot of JS code in your templates are</span >
+worried about typing too much (or creating somewhat cramped / noisy markup), 
+
+I am going to use only js code, so it can smartly choose a random text every
+time and people do not notice that it is a template...
+
+<span class="quote">&gt;I</span >
+would settle for this pair:
+<span class="quote">&gt;%{%   ...insert JS code here...          %}%</span >
+
+That would be okay
+
+There is also the problem that it only evaluates a single expression, so
+anything complicated would have to be written as %{% (function(){ ... return
+...})() %}%
+
+
+
+<span class="quote">&gt;Within this context are you removing the need of wrapping</span >
+them with % so that %varName% can (must) be written varName?
+
+
+Yes
+
+
+<span class="quote">&gt;Would it be fair to say +227 is a list of JavaScript functions that you import? </span >
+
+
+No
+
+These functions are only used to let varName behave like a string (so e.g.
+varName.substr exists), although varName is a function. (btw, I could not
+figure out how to give varName a length property)
+
+It is a clever hack, so if you have a variable with parameter like
+%from(firstname)%, you can write from in the javascript, and get the same as
+%from%, and you can write from(&quot;firstname&quot;) to get the same as
+%from(firstname)%.  (it is even possible to add a variable firstname =
+&quot;firstname&quot;, then you can just write from(firstname) )
+
+
+In the javascript, all variables of the rw2h map can be used directly, and in
+addition there is a function variable(&quot;...&quot;), which returns the same as %...%  
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=25676.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 12:59:37 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c11">comment #11</a>)
+<span class="quote">&gt; I am going to use only js code, so it can smartly choose a random text every
+&gt; time and people do not notice that it is a template...</span >
+Hope you don't use it to create a SpamBot :)
+If I read this correctly do you write the complete email as a series of
+expressions? Surely you only need the flexibility of scriptlets when you are
+using fields? Do you also intend to include HTML markup within these blocks? A
+&quot;rainbow colored text&quot; script would be great...
+
+<span class="quote">&gt; &gt;Would it be fair to say +227 is a list of JavaScript functions that you import? 
+&gt; 
+&gt; No
+&gt; 
+&gt; These functions are only used to let varName behave like a string (so e.g.
+&gt; varName.substr exists), although varName is a function. (btw, I could not
+&gt; figure out how to give varName a length property)
+&gt; 
+&gt; It is a clever hack, so if you have a variable with parameter like
+&gt; %from(firstname)%, you can write from in the javascript, and get the same as
+&gt; %from%, and you can write from(&quot;firstname&quot;) to get the same as
+&gt; %from(firstname)%.  (it is even possible to add a variable firstname =
+&gt; &quot;firstname&quot;, then you can just write from(firstname) )</span >
+
+ok, so let me rephrase that - you overload a selection of string methods onto
+the variables - the evaluation result is then passed back and replaced with the
+complete scriptlet containing the expression.
+
+can we also have a constant string as starting point, such as
+'ABCDE'.toLowerCase(); or would we have to create a smartTemplate function
+%string('ABCD')% for this?
+
+<span class="quote">&gt; 
+&gt; In the javascript, all variables of the rw2h map can be used directly, and in
+&gt; addition there is a function variable(&quot;...&quot;), which returns the same as %...%  
+&gt; </span >
+ok, which seems to be the reverse of what I asked above (string literal).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=25676.html#c13">
+            #13</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-06 13:23:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; the evaluation result is then passed back and replaced with the</span >
+complete scriptlet containing the expression.
+
+
+What do you mean?
+
+The expression is evaluated to a normal string
+
+<span class="quote">&gt;If I read this correctly do you write the complete email as a series of</span >
+expressions? Surely you only need the flexibility of scriptlets when you are
+using fields?
+
+I use it to choose a random greeting, closing; choosing different texts
+depending if I reply to a mail in German/English from a friend or a
+professional contact.
+
+Currently my final template looks like this:
+
+%% (function(){
+  var message = messageRaw(1000);
+  function score(a){
+    var res = 0;
+    for (var i=0;i&lt;a.length;i++) res += message.count(&quot; &quot;+a[i]+&quot; &quot;);
+    return res;
+  }
+  var langDE = score([&quot;der&quot;, &quot;die&quot;, &quot;du&quot;, &quot;Hallo&quot;, &quot;hallo&quot;, &quot;und&quot;]);
+  if (from.toString().contains(&quot;.de&quot;)) langDE += 1;
+  var langEN = score([&quot;the&quot;, &quot;a&quot;,   &quot;you&quot;, &quot;Hello&quot;, &quot;Hello&quot;, &quot;and&quot;]);
+  var lang = langDE &gt; langEN ? &quot;de&quot; : &quot;en&quot;;
+
+  formal = false;
+  var greeting;
+  var finalize = function(s){return s;}
+  if (lang == &quot;de&quot;) {
+    formal = message.contains(&quot;Sehr geehrte&quot;) || message.contains(&quot;Mit
+freundlichen Gr&quot;) 
+             || (score([&quot;Sie&quot;, &quot;Ihr&quot;, &quot;Ihnen&quot;, &quot;Ihrem&quot;, &quot;Ihrer&quot;]) -
+message.count(&quot;.Sie&quot;) - message.count(&quot;. Sie&quot;) &gt; score([&quot;du&quot;, &quot;Du&quot;, &quot;dir&quot;,
+&quot;dein&quot;, &quot;Dir&quot;, &quot;Dein&quot;, &quot;deinem&quot;]));
+
+    greeting = [&quot;Hallo&quot;]; 
+    if (!formal) greeting = greeting.concat([&quot;Hi&quot;, &quot;Hallo&quot;, &quot;Hallo&quot;]);
+    else greeting = greeting.concat([&quot;Sehr geehrte&quot;]);
+    closing=[&quot;Viele Grüße&quot;, &quot;Viele Grüße&quot;, &quot;Viele Grüße&quot;]; 
+    if (!formal) closing = closing.concat([&quot;Gruß&quot;, &quot;Schöne Grüße&quot;,
+&quot;Grüße&quot;, &quot;Liebe Grüße&quot;]);
+    else closing = closing.concat([&quot;Mit freundlichen Grüßen&quot;]);
+    finalize = function (s) {
+      if (formal || s.endsWith(&quot;e&quot;)) {      
+        var fullname = from(&quot;name&quot;);
+        var female, addgenderspec = formal;
+        if (fullname.contains(&quot;Fr.&quot;)) { female = true; addgenderspec = false; }
+        else if (fullname.contains(&quot;Hr.&quot;)) { female = false; addgenderspec =
+false; }
+        else {
+          if (fullname.contains(&quot;Dr.&quot;)) addgenderspec = false;        
+          var firstname = from(&quot;firstname&quot;);
+          female = (firstname.endsWith(&quot;a&quot;) || firstname.endsWith(&quot;ah&quot;) ||
+(firstname.endsWith(&quot;an&quot;) &amp;&amp; !firstname.endsWith(&quot;ian&quot;)));
+        }
+        if (!female &amp;&amp; s.endsWith(&quot;e&quot;)) s = s + &quot;r&quot;;
+        if (addgenderspec) s = s + &quot; &quot; + (female ? &quot;Frau&quot; : &quot;Herr&quot;);
+      }
+      return s;
+    }
+  } else if (lang == &quot;en&quot;) {
+    greeting = [&quot;Hi&quot;]; 
+    closing = [&quot;Bye&quot;, &quot;Best&quot;, &quot;Cheers&quot;];
+  }
+
+  return finalize(choose(greeting)) + &quot; &quot; + (formal ? from(&quot;name&quot;) :
+from(&quot;firstname&quot;)); 
+})()%%,
+
+%cursor%
+
+%% choose(closing) %%,
+Benito %% formal ? &quot;van der Zander&quot; : &quot;&quot; %%
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=25676.html#c14">
+            #14</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-06 13:25:07 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt; Do you also intend to include HTML markup within these blocks?</span >
+
+I do not do that, but it should be possible.
+
+(which is why the result of the script expression is inserted after everything
+has been escaped)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=25676.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-06 15:13:16 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c13">comment #13</a>)
+<span class="quote">&gt; &gt; the evaluation result is then passed back and replaced with the
+&gt; complete scriptlet containing the expression.
+&gt; 
+&gt; What do you mean?
+&gt; 
+&gt; The expression is evaluated to a normal string</span >
+
+I meant the opposite of what I wrote :-) 
+
+the evaluated string replaces the whole block
+
+%{%  (function(){return 'schöner Tach heute'; }); %}% !!
+
+=&gt;
+schöner Tach heute !!
+
+Did I get it right this time? :)
+
+
+<span class="quote">&gt; 
+&gt; I use it to choose a random greeting, closing; choosing different texts
+&gt; depending if I reply to a mail in German/English from a friend or a
+&gt; professional contact.
+&gt; 
+&gt; Currently my final template looks like this:
+&gt; 
+&gt; %% (function(){
+&gt;   var message = messageRaw(1000);
+&gt;   function score(a){
+&gt;     var res = 0;
+&gt;     for (var i=0;i&lt;a.length;i++) res += message.count(&quot; &quot;+a[i]+&quot; &quot;);
+&gt;     return res;
+&gt;   }
+&gt;   var langDE = score([&quot;der&quot;, &quot;die&quot;, &quot;du&quot;, &quot;Hallo&quot;, &quot;hallo&quot;, &quot;und&quot;]);
+&gt;   if (from.toString().contains(&quot;.de&quot;)) langDE += 1;
+&gt;   var langEN = score([&quot;the&quot;, &quot;a&quot;,   &quot;you&quot;, &quot;Hello&quot;, &quot;Hello&quot;, &quot;and&quot;]);
+&gt;   var lang = langDE &gt; langEN ? &quot;de&quot; : &quot;en&quot;;
+&gt; 
+&gt;   formal = false;
+&gt;   var greeting;
+&gt;   var finalize = function(s){return s;}
+&gt;   if (lang == &quot;de&quot;) {
+&gt;     formal = message.contains(&quot;Sehr geehrte&quot;) || message.contains(&quot;Mit
+&gt; freundlichen Gr&quot;) 
+&gt;              || (score([&quot;Sie&quot;, &quot;Ihr&quot;, &quot;Ihnen&quot;, &quot;Ihrem&quot;, &quot;Ihrer&quot;]) -
+&gt; message.count(&quot;.Sie&quot;) - message.count(&quot;. Sie&quot;) &gt; score([&quot;du&quot;, &quot;Du&quot;, &quot;dir&quot;,
+&gt; &quot;dein&quot;, &quot;Dir&quot;, &quot;Dein&quot;, &quot;deinem&quot;]));
+&gt; 
+&gt;     greeting = [&quot;Hallo&quot;]; 
+&gt;     if (!formal) greeting = greeting.concat([&quot;Hi&quot;, &quot;Hallo&quot;, &quot;Hallo&quot;]);
+&gt;     else greeting = greeting.concat([&quot;Sehr geehrte&quot;]);
+&gt;     closing=[&quot;Viele Grüße&quot;, &quot;Viele Grüße&quot;, &quot;Viele Grüße&quot;]; 
+&gt;     if (!formal) closing = closing.concat([&quot;Gruß&quot;, &quot;Schöne Grüße&quot;,
+&gt; &quot;Grüße&quot;, &quot;Liebe Grüße&quot;]);
+&gt;     else closing = closing.concat([&quot;Mit freundlichen Grüßen&quot;]);
+&gt;     finalize = function (s) {
+&gt;       if (formal || s.endsWith(&quot;e&quot;)) {      
+&gt;         var fullname = from(&quot;name&quot;);
+&gt;         var female, addgenderspec = formal;
+&gt;         if (fullname.contains(&quot;Fr.&quot;)) { female = true; addgenderspec = false; }
+&gt;         else if (fullname.contains(&quot;Hr.&quot;)) { female = false; addgenderspec =
+&gt; false; }
+&gt;         else {
+&gt;           if (fullname.contains(&quot;Dr.&quot;)) addgenderspec = false;        
+&gt;           var firstname = from(&quot;firstname&quot;);
+&gt;           female = (firstname.endsWith(&quot;a&quot;) || firstname.endsWith(&quot;ah&quot;) ||
+&gt; (firstname.endsWith(&quot;an&quot;) &amp;&amp; !firstname.endsWith(&quot;ian&quot;)));
+&gt;         }
+&gt;         if (!female &amp;&amp; s.endsWith(&quot;e&quot;)) s = s + &quot;r&quot;;
+&gt;         if (addgenderspec) s = s + &quot; &quot; + (female ? &quot;Frau&quot; : &quot;Herr&quot;);
+&gt;       }
+&gt;       return s;
+&gt;     }
+&gt;   } else if (lang == &quot;en&quot;) {
+&gt;     greeting = [&quot;Hi&quot;]; 
+&gt;     closing = [&quot;Bye&quot;, &quot;Best&quot;, &quot;Cheers&quot;];
+&gt;   }
+&gt; 
+&gt;   return finalize(choose(greeting)) + &quot; &quot; + (formal ? from(&quot;name&quot;) :
+&gt; from(&quot;firstname&quot;)); 
+&gt; })()%%,
+&gt; 
+&gt; %cursor%
+&gt; 
+&gt; %% choose(closing) %%,
+&gt; Benito %% formal ? &quot;van der Zander&quot; : &quot;&quot; %%</span >
+
+funky. unfortunately, I have more questions.
+
+can you please explain:
+
+what is &quot;closing&quot;, &quot;formal&quot; etc. an adhoc declared variable?
+
+In what scope are these variables declared (I hope they stay sandboxed and do
+not pollute chrome context)? From your (I assume working) example I see that
+the three parts of the script seem to work within the same context, so that's a
+good thing. I assume one could even potentially add DOM manipulation and inject
+css given a powerful set of scripts, it is all a little scary as well.
+
+Can you send me an example email generated with this, I am interested in the
+end-result and whether the scripts are completely &quot;consumed&quot; (replaced with
+text that they generate after running once) or whether they stay within the
+email text (which was my original assumption).
+
+Would it behoove us to declare &quot;use strict&quot; within this scriptlet, or is that
+impossible?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=25676.html#c16">
+            #16</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-06 15:27:33 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;Did I get it right this time? :)</span >
+
+yes
+
+<span class="quote">&gt;what is &quot;closing&quot;, &quot;formal&quot; etc. an adhoc declared variable?
+&gt;In what scope are these variables declared</span >
+
+Yes.
+
+Not sure where they are, probably they become properties of the window object
+of the sandbox
+
+
+<span class="quote">&gt;Would it behoove us to declare &quot;use strict&quot; within this scriptlet, or is that</span >
+impossible?
+
+It might already be in strict mode (got some errors related to that, when I
+wrote it lazily)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=25676.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-09 04:00:39 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >2 questions (I believe the patch is incomplete)
+
+1. where do you integrate (call) replaceJavascript (I see it is recursive but
+you have to call it somewhere, possibly within replaceReservedWords)?
+
+2. to implement %{% %}% syntax I modified line 1183 to
+
+msg = msg.replace(/%\{%((.|\n)*?)%\}%/gm, replaceJavascript);
+
+I guess you need a similar change to the regex at the (missing?) integration
+point.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=25676.html#c18">
+            #18</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-09 08:22:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+<span class="quote">&gt;1. where do you integrate (call) replaceJavascript (I see it is recursive but</span >
+you have to call it somewhere, possibly within replaceReservedWords)?
+
+It is called by the msg.replace in line 1183
+
+
+Then it takes two steps
+
+%% 1+2+3 %% becomes %internal-javascript-ref(0)%  which is replaced, when all
+the normal variables are replaced
+
+
+<span class="quote">&gt;2. to implement %{% %}% syntax I modified line 1183 to
+&gt;msg = msg.replace(/%\{%((.|\n)*?)%\}%/gm, replaceJavascript);</span >
+
+That should work
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=25676.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-01-09 09:43:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c18">comment #18</a>)
+<span class="quote">&gt; &gt;1. where do you integrate (call) replaceJavascript (I see it is recursive but
+&gt; you have to call it somewhere, possibly within replaceReservedWords)?
+&gt; 
+&gt; It is called by the msg.replace in line 1183
+&gt; </span >
+Darn. My Syntax highlighting program (notepad++) got confused and missed one of
+the closing } in line 1155. So it looked like replaceReservedWords was called
+in recursion. Gonna pull this apart into 2 lines.
+
+:-)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=25676.html#c20">
+            #20</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-01-09 12:46:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Well, you should try to get a *smart* editor
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=25676.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-03-26 10:59:29 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c20">comment #20</a>)
+<span class="quote">&gt; Well, you should try to get a *smart* editor
+&gt; </span >
+
+Benito, could you write a short &quot;how to use this feature&quot; section so I can
+include it in the version notes?
+
+What I have is too vague:
+
+&quot;We are allowing certain (string) Javascript functions in concatenation to our
+%variable% as long as they are in a script block %{%    %}% . Local variables
+can be defined within these blocks, only 1 expression line is allowed per
+block,
+hence best to wrap all code in (function() { ..code.. })()&quot;
+
+Also at least one simple example with a local variable that can be used between
+2 code blocks would be a great help. And do we need an inclusive list of
+allowed JavaScript functions?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=25676.html#c22">
+            #22</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-03-29 00:02:38 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >
+
+
+&quot;We are allowing certain (string) Javascript functions in concatenation to our
+%variable% as long as they are in a script block %{%    %}% . Local variables
+can be defined within these blocks, only 1 expression line is allowed per
+block,
+hence best to wrap all code in (function() { ..code.. })()&quot;
+
+We have added %{% expression %}% as syntax to include a single, arbitrary
+javascript expression in a template. All usual javascript expressions and
+functions can be used, and the usual SmartTemplate variables are available as
+functions and variables.  The window object is shared across all %{%%}% blocks,
+so multiple blocks can use the same variables.   To use multiple statements in
+an expression these statements can be wrapped in a single function call: %{%
+(function() { ..code.. })() %}%   
+
+?
+
+
+<span class="quote">&gt;Also at least one simple example with a local variable that can be used between</span >
+2 code blocks would be a great help.
+
+%{% (function() { 
+    switch (from.toString()) {
+      case &quot;<a href="mailto:rob@example.org">rob@example.org</a>&quot;: greeting=&quot;Hi Rob!&quot;; closing=&quot;Bye&quot;; break;
+      case &quot;<a href="mailto:bob@example.org">bob@example.org</a>&quot;: greeting=&quot;Hi Bob!&quot;; closing=&quot;Bye&quot;; break;
+      default: greeting=&quot;Hi&quot;; closing=&quot;Regards&quot;; break;
+    }
+})() %}%
+%{% greeting %}%
+
+%{% closing %}%
+
+<span class="quote">&gt; And do we need an inclusive list of allowed JavaScript functions?</span >
+
+
+Not really, that depends too much on the functions thunderbird makes available
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=25676.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-06 16:49:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c18">comment #18</a>)
+<span class="quote">&gt; &gt;1. where do you integrate (call) replaceJavascript (I see it is recursive but
+&gt; you have to call it somewhere, possibly within replaceReservedWords)?
+&gt; 
+&gt; It is called by the msg.replace in line 1183
+&gt; 
+&gt; 
+&gt; Then it takes two steps
+&gt; 
+&gt; %% 1+2+3 %% becomes %internal-javascript-ref(0)%  which is replaced, when all
+&gt; the normal variables are replaced
+&gt; 
+&gt; 
+&gt; &gt;2. to implement %{% %}% syntax I modified line 1183 to
+&gt; &gt;msg = msg.replace(/%\{%((.|\n)*?)%\}%/gm, replaceJavascript);
+&gt; 
+&gt; That should work
+&gt; </span >
+
+Thanks for that. I am stil having trouble testing this, when I use your example
+I am getting:
+====================
+ERR: TypeError: (intermediate value)(...) is undefined Hi 
+
+...
+
+Regards
+======================
+
+ALso I am not sure whether I like the way the syntax does not require
+smartTemplate variables to be wrapped in %% (e.g. from is a reserved word so
+this might lead to problems). Is there an issue with strict mode?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=25676.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-06 16:54:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c23">comment #23</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25676.html#c18">comment #18</a>)</span >
+
+<span class="quote">&gt; 
+&gt; Thanks for that. I am stil having trouble testing this, when I use your example
+&gt; I am getting:
+&gt; ====================
+&gt; ERR: TypeError: (intermediate value)(...) is undefined Hi 
+&gt; 
+&gt; ...
+&gt; 
+&gt; Regards
+&gt; ======================
+&gt; 
+&gt; ALso I am not sure whether I like the way the syntax does not require
+&gt; smartTemplate variables to be wrapped in %% (e.g. from is a reserved word so
+&gt; this might lead to problems). Is there an issue with strict mode?
+&gt; </span >
+Ignore <a href="show_bug.cgi@id=25676.html#c23">comment #23</a>  for now... extra } found. I am working on an additional
+example at the moment.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=25676.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-04-06 17:05:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c24">comment #24</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=25676.html#c23">comment #23</a>)
+&gt; &gt; (In reply to <a href="show_bug.cgi@id=25676.html#c18">comment #18</a>)
+&gt; 
+&gt; &gt; 
+&gt; &gt; Thanks for that. I am stil having trouble testing this, when I use your example
+&gt; &gt; I am getting:
+&gt; &gt; ====================
+&gt; &gt; ERR: TypeError: (intermediate value)(...) is undefined Hi 
+&gt; &gt; 
+&gt; &gt; ...
+&gt; &gt; 
+&gt; &gt; Regards
+&gt; &gt; ======================
+&gt; &gt; 
+&gt; &gt; ALso I am not sure whether I like the way the syntax does not require
+&gt; &gt; smartTemplate variables to be wrapped in %% (e.g. from is a reserved word so
+&gt; &gt; this might lead to problems). Is there an issue with strict mode?
+&gt; &gt; 
+&gt; Ignore <a href="show_bug.cgi@id=25676.html#c23">comment #23</a>  for now... extra } found. I am working on an additional
+&gt; example at the moment.
+&gt; </span >
+Tried to use the script block for recording the time and injecting a onClose
+event but the problem is of course all code runs in sandbox and cannot access
+any objects from outside its own scope (e.g. window). The only way I could do
+this if I exposed a %fileStream% variable. (which I won't)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=25676.html#c26">
+            #26</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-04-06 18:46:44 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;ALso I am not sure whether I like the way the syntax does not require</span >
+smartTemplate variables to be wrapped in %% (e.g. from is a reserved word so
+this might lead to problems). Is there an issue with strict mode?
+
+Is it? It is not listed there:
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Reserved_Words">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Reserved_Words</a>
+
+
+There is also the variable(&quot;from&quot;) function 
+
+
+<span class="quote">&gt;Tried to use the script block for recording the time and injecting a onClose</span >
+event but the problem is of course all code runs in sandbox and cannot access
+any objects from outside its own scope (e.g. window). The only way I could do
+this if I exposed a %fileStream% variable. (which I won't)
+
+
+?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=25676.html#c27">
+            #27</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2014-07-10 11:49:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I had a user request of somebody who wants to use a template mail in order to
+automate sending replies based on a paypal notification. The pattern he has in
+his email is &quot;Shoulder Tatoo NNN&quot;, where NNN is a 3 digit number. He basically
+is using a template for each Tatoo to reply individually, the only difference
+in the template appears to that number (NNN).
+
+Is it possible to use your patch to craft a regex to determine this number so I
+can re-inject it into the template - this way the user can use one template
+only? If so, can you give me an idea how to code this?
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=25676.html#c28">
+            #28</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2014-07-13 18:34:49 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Something like this could work:
+
+    %{% /Shoulder Tatoo ([0-9]+)/.exec(messageRaw(1000))[1] %}%
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=25676.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-25 05:52:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c22">comment #22</a>)
+<span class="quote">&gt; 
+&gt; 
+&gt; &gt;Also at least one simple example with a local variable that can be used between
+&gt; 2 code blocks would be a great help.
+&gt; 
+&gt; %{% (function() { 
+&gt;     switch (from.toString()) {
+&gt;       case &quot;<a href="mailto:rob@example.org">rob@example.org</a>&quot;: greeting=&quot;Hi Rob!&quot;; closing=&quot;Bye&quot;; break;
+&gt;       case &quot;<a href="mailto:bob@example.org">bob@example.org</a>&quot;: greeting=&quot;Hi Bob!&quot;; closing=&quot;Bye&quot;; break;
+&gt;       default: greeting=&quot;Hi&quot;; closing=&quot;Regards&quot;; break;
+&gt;     }
+&gt; })() %}%
+&gt; %{% greeting %}%
+&gt; 
+&gt; %{% closing %}%</span >
+
+I have tested this but it has a few drawbacks. from is replaced by the script
+with %from()% which is then replaced with the name not the email address. If we
+could include the from(mail) from(mail,name) etc. syntax and replace it this
+would be better. as a workaround, for the moment we can use frommail. (It
+returns the mail address within &lt; &gt;). Also the function must return a string
+otherwise an error is inserted. So the revised version for the moment would be:
+
+%{% (function() { 
+    switch (frommail.toString()) {
+      case &quot;&lt;<a href="mailto:rob@example.org">rob@example.org</a>&gt;&quot;: greeting=&quot;Hallo Rob&quot;; closing=&quot;later!&quot;; break;
+      case &quot;&lt;<a href="mailto:bob@example.org">bob@example.org</a>&gt;&quot;: greeting=&quot;Hi Bob&quot;; closing=&quot;Ciao&quot;; break;
+      default: greeting=&quot;Hi &quot; + from; closing=&quot;Regards&quot;; break;
+    } 
+    return &quot;&quot;;
+})() %}%
+
+%{% greeting %}%&lt;br&gt;
+...&lt;br&gt;
+%{% closing %}%&lt;br&gt;
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=25676.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-25 06:43:17 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Improved version of a language determining script
+
+%{% (function() { 
+    test  = frommail.toString();
+    dotPos = test.lastIndexOf('.');
+    ending = test.substring(dotPos).slice(0,3);
+    switch (ending) {
+      case &quot;.de&quot;: 
+        greeting=&quot;Hallo &quot; + fromname; 
+        closing=&quot;Auf Wiedersehen&quot;; 
+        break;
+      case &quot;.co&quot;: 
+      case &quot;.uk&quot;: 
+        greeting=&quot;Dear &quot; + fromname; 
+        closing=&quot;kind regards&quot;; 
+        break;
+      default: greeting=&quot;Hi &quot; + frommail; closing=&quot;Regards&quot;; break;
+    } return &quot;&quot;;
+})() %}%
+
+One of the problems with the ending is that it includes the &gt; (&amp;gt;) entity and
+for some reasons &quot;.de&gt;&quot; turns out to be 11 characters long, not quite sure why
+as I didn't debug it. So I chose to be lazy and truncate after 3 characters
+instead (which is not nice for .com addresses). But it kind of works so you can
+build your own more sophisticated versions from there.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=25676.html#c31">
+            #31</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2015-07-25 08:32:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;. If we could include the from(mail) from(mail,name) etc. syntax and replace it this would be better. as a workaround, for the moment we can use frommail. (It</span >
+returns the mail address within &lt; &gt;).
+
+The syntax is supposed to work as from(&quot;mail&quot;) in the patch
+
+
+<span class="quote">&gt;One of the problems with the ending is that it includes the &gt; (&amp;gt;) entity and</span >
+for some reasons &quot;.de&gt;&quot;
+
+It is probably better to use regular expressions, like:
+
+    ...
+    test  = frommail.toString();
+    if (/[.]de&gt;?$/.test(test)) { /* de ... */ } 
+    else if (/([.]uk|[.]com)&gt;?$/.test(test)) { /* en ... */ } 
+    ...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=25676.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-25 09:33:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c31">comment #31</a>)
+<span class="quote">&gt; &gt;. If we could include the from(mail) from(mail,name) etc. syntax and replace it this would be better. as a workaround, for the moment we can use frommail. (It
+&gt; returns the mail address within &lt; &gt;).
+&gt; 
+&gt; The syntax is supposed to work as from(&quot;mail&quot;) in the patch
+&gt; 
+&gt; </span >
+I tried these variants
+
+test  = from(&quot;mail&quot;).toString();
+test  = from(mail).toString();
+test  = from(mail);
+
+But they always throws:
+ERR: ReferenceError: mail is not defined
+
+if I try to force the variable using this syntax
+
+test  = %from(mail)%;
+
+I get this:
+ERR: SyntaxError: expected expression, got '%'
+
+I was wondering whether this is because of smartTempalte-overlay.js line 1643
+
+if (typeof arg === &quot;undefined&quot;) return &quot;%&quot;+aname + &quot;()%&quot;; //do not allow name()
+
+remote debugging it is a little hit &amp; miss.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=25676.html#c33">
+            #33</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2015-07-25 13:01:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;test  = from(&quot;mail&quot;).toString();
+&gt;test  = from(mail).toString();
+&gt;test  = from(mail);
+&gt;But they always throws:
+&gt;ERR: ReferenceError: mail is not defined</span >
+
+You sure?
+
+For 2 and 3 that is supposed to happen, but I do not see how it can happen in
+1.
+mail is not even a reference there
+
+<span class="quote">&gt;if (typeof arg === &quot;undefined&quot;) return &quot;%&quot;+aname + &quot;()%&quot;; //do not allow name()</span >
+
+That is there to prevent people from using from()  with parenthesis and nothing
+in them
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=25676.html#c34">
+            #34</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2015-07-25 13:21:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=25676.html#c33">comment #33</a>)
+<span class="quote">&gt; &gt;test  = from(&quot;mail&quot;).toString();
+&gt; &gt;test  = from(mail).toString();
+&gt; &gt;test  = from(mail);
+&gt; &gt;But they always throws:
+&gt; &gt;ERR: ReferenceError: mail is not defined
+&gt; 
+&gt; You sure?</span >
+
+Yes, but I was able to make it work since with single quotes:
+
+test = from('mail')
+
+I understand that this will be executed within the Script Block like
+
+%from(mail)%
+
+I wonder two things
+a) are the double quotes removed by something in the sandbox?
+b) does the mechanism support multiple arguments? Such as:
+
+%from(firstname,lastname,bracketMail(;))%
+
+-&gt;
+
+from('firstname','lastname','bracketMail[;]')
+
+(not tested)
+
+<span class="quote">&gt; &gt;if (typeof arg === &quot;undefined&quot;) return &quot;%&quot;+aname + &quot;()%&quot;; //do not allow name()
+&gt; 
+&gt; That is there to prevent people from using from()  with parenthesis and nothing
+&gt; in them</span >
+
+if there is no argument, should it not be simply  &quot;%&quot; + aname + &quot;%&quot;  ? We don't
+generally support empty parentheses () in our variables. I know the syntax is
+horrible, but it is how it is. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=25676.html#c35">
+            #35</a> From 
+          <a href="mailto:benito&#64;benibela.de">Benito van der Zander</a>
+          2015-07-26 14:07:23 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="quote">&gt;I wonder two things
+&gt;a) are the double quotes removed by something in the sandbox?</span >
+
+No idea.
+
+It works on my computer with double and single quotes.
+
+<span class="quote">&gt;b) does the mechanism support multiple arguments? Such as:</span >
+
+It would probably be 
+from('firstname,lastname,bracketMail(;)')
+
+Afair, in the normal, non-javascript mode, something like %foo(bar,123)% is
+split to a pair of &quot;foo&quot; and &quot;bar,123&quot;, and then a &quot;foo&quot; function is called
+with argument &quot;(bar,123)&quot;. In the javascript, you call the &quot;foo&quot; function
+directly and can choose any argument (except for the surrounding parentheses
+that are always added).
+
+<span class="quote">&gt;if there is no argument, should it not be simply  &quot;%&quot; + aname + &quot;%&quot;  ? We don't</span >
+generally support empty parentheses () in our variables. I know the syntax is
+horrible, but it is how it is. 
+
+That part is not evaluated further. If you write mail(), it will insert
+%mail()% as string in the final mail. 
+
+So %mail()% and %{%mail()%}% becomes the same nonsense. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=25676.html#c36">
+            #36</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2019-10-22 07:36:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >It seems the Cu.nukeSandbox() function fails in Thunderbird 68 so I have a
+bugfix which is going to land in v2.4.2 - so by then, scripting in ST⁴ will
+be back. I also heard that &quot;new Functino()&quot; will eventually be deprecated, not
+sure from which version onwards this will be an issue.
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25676&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

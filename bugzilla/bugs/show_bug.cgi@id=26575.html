@@ -1,0 +1,2103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta name="robots" content="noindex,noarchive,nofollow">
+    <title>Bug 26575 &ndash; Thunderbird 60: QF context menus broken.</title>
+
+
+<link rel="Top" href="https://www.mozdev.org/bugs/">
+
+  
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26575&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26575">
+
+
+      <link rel="Show" title="Bug Activity"
+            href="https://www.mozdev.org/bugs/show_activity.cgi?id=26575">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26575">
+
+
+    
+
+    <script type="text/javascript">
+  <!--
+  
+  function initHelp() {}
+  // -->
+  </script>
+
+    
+
+    
+      <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+            rel="stylesheet"
+            type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/standard/global.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <!--[if IE]>
+        
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+
+    
+
+    
+        <link href="https://www.mozdev.org/bugs/skins/custom/global.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    <link href="https://www.mozdev.org/sharedimages/mozdev-icon.png" rel="icon" type="image/png">
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla@Mozdev" href="https://www.mozdev.org/bugs/search_plugin.cgi">
+                                          
+  </head>
+
+
+
+  <body onload=""
+        class="www-mozdev-org-bugs bz_bug bz_status_RESOLVED bz_component_General bz_bug_26575">
+
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<div id="mozdev-logolet">
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla@Mozdev &ndash; Bug&nbsp;26575</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Thunderbird 60: QF context menus broken.</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2018-10-16 05:20:45</p>
+    </td>
+</tr>
+</table>
+</div>
+
+<ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_top"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26575&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+
+</div>
+
+<div id="bugzilla-body">
+
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<hr>
+<script type="text/javascript">
+  <!--
+
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+      document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                     id + ');">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id) {
+      /* pre id="comment_name_N" */
+      var text_elem = document.getElementById('comment_text_'+id);
+      var text = getText(text_elem);
+
+      /* make sure we split on all newlines -- IE or Moz use \r and \n
+       * respectively.
+       */
+      text = text.split(/\r|\n/);
+
+      var replytext = "";
+      for (var i=0; i < text.length; i++) {
+          replytext += "> " + text[i] + "\n"; 
+      }
+
+      replytext = "(In reply to comment #" + id + ")\n" + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  function updateCommentTagControl(checkbox, form) {
+      if (checkbox.checked) {
+          form.comment.className='bz_private';
+      } else {
+          form.comment.className='';
+      }
+  }
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="https://www.mozdev.org/bugs/process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2018-10-16 05:20:45">
+  <input type="hidden" name="longdesclength" value="38">
+  <input type="hidden" name="id" value="26575">
+
+  
+  <table>
+    <tr>
+      <td valign="top">
+        <fieldset>
+          <legend>Details</legend>
+          <table>
+
+            
+            <tr>
+              <td align="right">
+                <label for="short_desc" accesskey="s"><b><u>S</u>ummary</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="short_desc" id="short_desc"
+              value="Thunderbird 60: QF context menus broken.">Thunderbird 60: QF context menus broken.
+  </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <table>
+                  <tr>
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <b>Bug#</b>:
+      </td>
+      <td>
+        <a href="show_bug.cgi@id=26575.html">26575</a>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td align="right">
+        <label for="product" accesskey="p"><b><u>P</u>roduct</b></label>:
+      </td><td>
+      <input type="hidden" id="product" name="product" value="QuickFolders">QuickFolders
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="component" accesskey="m"><b><a href="https://www.mozdev.org/bugs/describecomponents.cgi?product=QuickFolders">Co<u>m</u>ponent</a></b></label>:
+      </td><td>
+      <input type="hidden" id="component" name="component" value="General">General
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#status">Status</a></b>:
+      </td>
+      <td>RESOLVED</td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#resolution">Resolution</a></b>:
+      </td>
+      <td>FIXED
+      </td>
+    </tr>
+  </table></td>
+
+                    
+                    <td valign="top"><table cellspacing="1" cellpadding="1">
+    <tr>
+      <td align="right">
+        <label for="rep_platform" accesskey="h"><b><u>H</u>ardware</b></label>:
+      </td><td>
+      <input type="hidden" id="rep_platform" name="rep_platform" value="PC">PC
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="op_sys" accesskey="o"><b><u>O</u>S</b></label>:
+      </td><td>
+      <input type="hidden" id="op_sys" name="op_sys" value="Windows NT">Windows NT
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="version"><b>Version</b></label>:
+      </td><td>
+      <input type="hidden" id="version" name="version" value="unspecified">unspecified
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="priority" accesskey="i"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#priority">Pr<u>i</u>ority</a></b></label>:
+      </td><td>
+      <input type="hidden" id="priority" name="priority" value="P1">P1
+  </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <label for="bug_severity"><b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#bug_severity">Severity</a></b></label>:
+      </td><td>
+      <input type="hidden" id="bug_severity" name="bug_severity" value="normal">normal
+  </td>
+    </tr>
+
+      <tr>
+        <td align="right">
+          <label for="target_milestone"><b>
+            Target Milestone</b></label>:
+        </td><td>
+      <input type="hidden" id="target_milestone" name="target_milestone" value="---">---
+  </td>
+      </tr>
+  </table></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><hr size="1"></td>
+            </tr>
+
+            
+
+            <tr>
+              <td align="right">
+                <label for="bug_file_loc" accesskey="u"><b>
+                    <u>U</u>RL</b></label>:
+              </td><td colspan="2">
+       <input type="hidden" name="bug_file_loc" id="bug_file_loc"
+              value="">
+  </td>
+            </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="status_whiteboard" id="status_whiteboard"
+              value="">
+  </td>
+              </tr>
+
+              <tr>
+                <td align="right">
+                  <label for="keywords" accesskey="k">
+                    <b><a href="https://www.mozdev.org/bugs/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+                </td><td colspan="2">
+       <input type="hidden" name="keywords" id="keywords"
+              value="">
+  </td>
+              </tr>
+
+            
+
+
+            
+
+            <tr><th align="right">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="dependson" name="dependson"
+             value="">
+  </td>
+            </tr>
+
+            <tr><th align="right">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>
+  </td>
+  <td>
+      <input type="hidden" id="blocked" name="blocked"
+             value="">
+  </td>
+            </tr>
+
+            <tr>
+              <th>&nbsp;</th>
+
+              <td colspan="2">
+                <a href="https://www.mozdev.org/bugs/showdependencytree.cgi?id=26575&amp;hide_resolved=1">Show
+                   dependency tree</a>
+
+                  - <a href="https://www.mozdev.org/bugs/showdependencygraph.cgi?id=26575">Show
+                       dependency graph</a>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+
+      
+      <script type="text/javascript">
+        <!--
+        var v = document.body.offsetHeight;
+        //-->
+      </script>
+
+      <td valign="top">
+        
+        <fieldset>
+          <legend>People</legend><table cellpadding="1" cellspacing="1">
+    <tr>
+      <td align="right">
+        <b>Reporter</b>:
+      </td>
+      <td>
+        <a href="mailto:najoll&#64;posteo.net">najoll&#64;posteo.net</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">
+        <b><a href="https://www.mozdev.org/bugs/page.cgi?id=fields.html#assigned_to">Assigned&nbsp;To</a></b>:
+      </td>
+      <td>
+        <a href="mailto:axel.grude&#64;gmail.com">Axel Grude &lt;axel.grude&#64;gmail.com&gt;</a>
+      </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="right" valign="top">
+          <label for="cc"><b>CC</b></label>:
+        </td>
+        <td valign="top">
+          <select id="cc" name="cc" multiple="multiple" size="5">
+            <option value="alexandermalfait&#64;gmail.com">alexandermalfait&#64;gmail.com</option>
+            <option value="antoine.mechelynck&#64;gmail.com">antoine.mechelynck&#64;gmail.com</option>
+            <option value="joerg.giencke&#64;gmail.com">joerg.giencke&#64;gmail.com</option>
+            <option value="joll.nicholas&#64;gmail.com">joll.nicholas&#64;gmail.com</option>
+            <option value="kburton&#64;waitrose.com">kburton&#64;waitrose.com</option>
+            <option value="wiledsch&#64;web.de">wiledsch&#64;web.de</option>
+          </select>
+        </td>
+    </tr>
+  </table>
+        </fieldset>
+
+        
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+  <!--
+  function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var rows = table.getElementsByTagName("tr");
+    var originalHeight = table.offsetHeight; // Store current height for scrolling
+
+    var toggle;
+    if (link.innerHTML == "Show Obsolete") {
+      toggle = ""; // This should be 'table-row', but IE 6 doesn't understand it.
+      link.innerHTML = "Hide Obsolete";
+    }
+    else {
+      toggle = "none";
+      link.innerHTML = "Show Obsolete";
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].className.match('bz_tr_obsolete'))
+        rows[i].style.display = toggle;
+    }
+
+    var newHeight = table.offsetHeight;
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+  }
+  //-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a1" href="QuickFolders-tb-pb-sm-4.11pre77.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 77</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (746.50 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8507"
+               title="Go to the comment associated with the attachment">2018-08-09 04:59</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8507&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a2" href="QuickFolders-tb-pb-sm-4.11pre95.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 95</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (746.99 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8510"
+               title="Go to the comment associated with the attachment">2018-08-12 03:37</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8510&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a3" href="QuickFolders-tb-pb-sm-4.11pre100.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 100</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (747.22 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8512"
+               title="Go to the comment associated with the attachment">2018-08-13 16:01</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8512&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a4" href="QuickFolders-tb-pb-sm-4.11pre118.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 118</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (747.81 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8515"
+               title="Go to the comment associated with the attachment">2018-08-14 06:48</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8515&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a5" href="QuickFolders-tb-pb-sm-4.11pre180.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 180</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (749.58 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8519"
+               title="Go to the comment associated with the attachment">2018-08-16 12:24</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8519&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a6" href="QuickFolders-tb-pb-sm-4.11pre182.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 182</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (749.61 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8520"
+               title="Go to the comment associated with the attachment">2018-08-17 11:58</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8520&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a7" href="QuickFolders-tb-pb-sm-4.11pre184.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 184</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (763.20 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8521"
+               title="Go to the comment associated with the attachment">2018-08-18 14:55</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8521&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a8" href="QuickFolders-tb-pb-sm-4.11pre206.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 206</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (763.76 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8522"
+               title="Go to the comment associated with the attachment">2018-08-29 04:12</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8522&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a9" href="QuickFolders-tb-pb-sm-4.11pre212.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 212</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (824.73 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8523"
+               title="Go to the comment associated with the attachment">2018-08-29 11:48</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8523&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a10" href="QuickFolders-tb-pb-sm-4.11pre220.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 220</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (764.28 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8525"
+               title="Go to the comment associated with the attachment">2018-09-07 07:41</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8525&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a11" href="QuickFolders-tb-pb-sm-4.11pre237.xpi"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 237</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (764.45 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8528"
+               title="Go to the comment associated with the attachment">2018-09-22 12:09</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8528&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 bz_tr_obsolete">
+        <td valign="top">
+            <a name="a12" href="QuickFolders-tb-pb-sm-4.11pre237.xpi.1"
+               title="View the content of the attachment">
+          <b><span class="bz_obsolete">4.11 prerelease 237</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (764.45 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8529"
+               title="Go to the comment associated with the attachment">2018-09-22 12:15</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8529&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="
+                 ">
+        <td valign="top">
+            <a name="a13" href="QuickFolders-tb-pb-sm-4.11pre242.xpi"
+               title="View the content of the attachment">
+          <b>4.11 prerelease 242</b></a>
+
+          <span class="bz_attach_extra_info">
+              (764.57 KB,
+                application/x-xpinstall)
+
+            <br>
+            <a href="show_bug.cgi@id=26575.html#attach_8530"
+               title="Go to the comment associated with the attachment">2018-09-24 08:29</a>,
+
+            <a href="mailto:axel.grude&#64;gmail.com"
+               title="Write an email to the creator of the attachment">Axel Grude
+            </a>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8530&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="show_bug.cgi@id=26575.html#a0" onClick="return toggle_display(this);">Hide Obsolete</a> (12)
+        </span>
+      <a href="https://www.mozdev.org/bugs/attachment.cgi?bugid=26575&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+
+
+
+
+  <br>
+  <table cellpadding="1" cellspacing="1">
+    <tr>
+      <td>
+          <fieldset>
+            <legend>Note</legend>
+            <p>
+              You need to
+              <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26575&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </p>
+          </fieldset>
+      </td>
+
+      <td valign="top">
+        <fieldset>
+          <legend>Related actions</legend>
+          <ul>
+            <li><a href="https://www.mozdev.org/bugs/show_activity.cgi?id=26575">View Bug Activity</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?format=multiple&amp;id=26575">Format For Printing</a></li>
+            <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?ctype=xml&amp;id=26575">XML</a></li>
+            <li><a href="https://www.mozdev.org/bugs/enter_bug.cgi?cloned_bug_id=26575">Clone This Bug</a></li>
+          </ul>
+
+
+          
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+
+
+
+
+<hr>
+
+<div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+<div class="bz_comment">
+        <table>
+          <tr>
+            <th align="left">
+              <b><a name="c0" href="show_bug.cgi@id=26575.html#c0">
+                Description</a>:</b>&nbsp;&nbsp;
+            </th>
+            <td align="left" width="30%">
+              <b>Opened:</b> 2018-08-08 13:50
+            </td>
+          </tr>
+        </table>
+        
+
+
+<pre class="bz_comment_text" >Please see the attached video.
+
+Windows 8.1 x64. QF 4.10
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c1" href="show_bug.cgi@id=26575.html#c1">
+            #1</a> From 
+          <a href="mailto:najoll&#64;posteo.net">najoll&#64;posteo.net</a>
+          2018-08-08 13:53:50 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Ah, video. Did not attach. I've put the video here:
+
+<a href="https://app.box.com/s/qlhxoo9f400lfdnyncdftnrwi1o21c8z">https://app.box.com/s/qlhxoo9f400lfdnyncdftnrwi1o21c8z</a>
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c2" href="show_bug.cgi@id=26575.html#c2">
+            #2</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-08 19:05:03 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I have seen similar behavior (intermittently) in Thunderbird 60, it happens
+S9ometimes, not always) when the mousee cursor hits the very bottom pixel of
+the button / tab. The only workaround at the moment is using the keyboard to
+navigate down or move the mouse faster - I spent 3 hours troubleshooting it
+today (before you reported the bug). 
+
+Hopefully I will find the reason and come up with a fix for 4.11 very soon.
+
+Do you find that it doesn't happen on the very first tab? (Recent folder Tab -
+the one with the yellow clock)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c3" href="show_bug.cgi@id=26575.html#c3">
+            #3</a> From 
+          <a href="mailto:najoll&#64;posteo.net">najoll&#64;posteo.net</a>
+          2018-08-08 19:50:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Thank you for your work, Axel.
+
+I find that the problem *does* extent to the the 'clock' / 'recents' tab.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c4" href="show_bug.cgi@id=26575.html#c4">
+            #4</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-09 04:59:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre77.xpi" name="attach_8507" title="4.11 prerelease 77">Created an attachment (id=8507)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8507&amp;action=edit" title="4.11 prerelease 77">[details]</a></span>
+4.11 prerelease 77
+
+I think I managed to get rid of most of the popup side effects by offsetting
+the menu 3px to the top (it used to be 1px in previous versions). 2px still
+made the problem appear sporadically, -10 would remove the problem completely
+(because the menu effectively would be placed underneath thee cursor, but it's
+suboptimal as it obscures the folder name which removes important context)
+
+You can experiment with changing the setting:
+extensions.quickfolders.debug.popupmenus.verticalOffset
+(default = -3) if you need to optimize it. 
+
+Unfortunately, you need to eitheer restart Thunderbird or right-click a folder
+<span class="quote">&gt; open in new window for testing the new setting. (menu offset applies in new</span >
+windows as this will trigger the initialising code)
+
+I may also experiment in future test versions with moving the mouse cursor
+position down into the menu. Might be a bit jarring though.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c5" href="show_bug.cgi@id=26575.html#c5">
+            #5</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-09 11:31:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Additional problems: the commands on the menus and the &quot;jump to folder&quot;
+functionality frequently stops working, so the whole system has become highly
+unreliable.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c6" href="show_bug.cgi@id=26575.html#c6">
+            #6</a> From 
+          <a href="mailto:joll.nicholas&#64;gmail.com">joll.nicholas&#64;gmail.com</a>
+          2018-08-10 12:35:42 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I just got an update to QF 4.11pre77. In that version, the menu problem
+persists, but in attenuated form, i.e. it's still there, but not as bad! So
+that's something!
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c7" href="show_bug.cgi@id=26575.html#c7">
+            #7</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-10 13:00:08 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c6">comment #6</a>)
+<span class="quote">&gt; I just got an update to QF 4.11pre77. In that version, the menu problem
+&gt; persists, but in attenuated form, i.e. it's still there, but not as bad! So
+&gt; that's something!
+&gt; </span >
+
+THat's good - I think it alleviates some of the &quot;slipping off the border of the
+button&quot; problems. However did you experience the commands (clicking a
+subfolder) not working at all? I got that a lot..
+
+I spent a few hours today using mozregression to narrow down from which exact
+thunderbird version on the problem popped up but too many THunderbird versions
+it downloaded weree broken (they didn't even start fully). ONe thing I am quite
+certain off at this stage is that it was caused by relatively recent changes in
+Thunderbird 60 and not by changes within QuickFolders. At some stage I want to
+raise a Thunderbird bug on this.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c8" href="show_bug.cgi@id=26575.html#c8">
+            #8</a> From 
+          <a href="mailto:joll.nicholas&#64;gmail.com">joll.nicholas&#64;gmail.com</a>
+          2018-08-10 15:16:40 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Dear Axel
+
+Clicking subfolders (in QF menus) does indeed seem not to work. It is hard to
+test, though, because, very often the menus disappear when I try to use them! 
+
+I suppose we should be grateful for the TB 60 improvements . .
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c9" href="show_bug.cgi@id=26575.html#c9">
+            #9</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-12 03:37:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre95.xpi" name="attach_8510" title="4.11 prerelease 95">Created an attachment (id=8510)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8510&amp;action=edit" title="4.11 prerelease 95">[details]</a></span>
+4.11 prerelease 95
+
+made the delay before refreshing the icons configurable. 
+
+Open about:config and edit the value
+
+extensions.quickfolders.treeIconsDelay
+
+default is 7500 (ms) which works for me but shorter delays may be possible.
+
+# The refresh is only in done in Thunderbird versions &gt;= 60, as it isn't
+necessary in Tb 52.*
+# when refreshing too early, it can lead to the CSS of QUickFolders not working
+(Tab buttons and toolbar buttons unstyled)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c10" href="show_bug.cgi@id=26575.html#c10">
+            #10</a> From 
+          <a href="mailto:antoine.mechelynck&#64;gmail.com">Tony Mechelynck</a>
+          2018-08-12 04:18:21 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre95.xpi" name="attach_8510" title="4.11 prerelease 95">attachment (id=8510)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8510&amp;action=edit" title="4.11 prerelease 95">[details]</a></span> [details]
+&gt; 4.11 prerelease 95
+&gt; [...]</span >
+
+N.B. FWIW, AFAICT this add-on identifies itself as version 4.11pre94 (not 95)
+in its install.rdf. Probably not much of a problem but you never know...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c11" href="show_bug.cgi@id=26575.html#c11">
+            #11</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-12 04:34:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c10">comment #10</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26575.html#c9">comment #9</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre95.xpi" name="attach_8510" title="4.11 prerelease 95">attachment (id=8510)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8510&amp;action=edit" title="4.11 prerelease 95">[details]</a></span> [details] [details]
+&gt; &gt; 4.11 prerelease 95
+&gt; &gt; [...]
+&gt; 
+&gt; N.B. FWIW, AFAICT this add-on identifies itself as version 4.11pre94 (not 95)
+&gt; in its install.rdf. Probably not much of a problem but you never know...
+&gt; </span >
+
+Yeah you're right. It's still build 95 I only forgot to raise the release
+number in install.rdf.
+
+unfortunately my batch script can only change the file name (and not the
+version no entry) when I build, so I have to edit that manually beforehand. I
+get it right about 95% of the time! :)
+
+MY BATCH:
+
+&quot;C:\Program Files\7-Zip\7z&quot; a -xr!.svn quickFolders.zip install.rdf
+chrome.manifest chrome defaults license.txt
+set /P quickFoldersRev=&lt;revision.txt
+set /a quickFoldersRev+=1
+echo %quickFoldersRev% &gt; revision.txt
+move *.xpi &quot;..\..\Release\_Test Versions\4.11\&quot;
+rename quickFolders.zip QuickFolders-tb-pb-sm-4.11pre%quickFoldersRev%.xpi
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c12" href="show_bug.cgi@id=26575.html#c12">
+            #12</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-12 11:57:12 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c9">comment #9</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre95.xpi" name="attach_8510" title="4.11 prerelease 95">attachment (id=8510)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8510&amp;action=edit" title="4.11 prerelease 95">[details]</a></span> [details]
+&gt; 4.11 prerelease 95
+&gt; 
+&gt; made the delay before refreshing the icons configurable. </span >
+
+I actually meant to attach this to [<span class="bz_closed"><a href="show_bug.cgi@id=26566.html" title="RESOLVED FIXED - Thunderbird 60 doesn't show custom icons in folder tree">Bug 26566</a></span>] hence the somewhat disjointed
+description. 
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c13" href="show_bug.cgi@id=26575.html#c13">
+            #13</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-13 16:01:43 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre100.xpi" name="attach_8512" title="4.11 prerelease 100">Created an attachment (id=8512)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8512&amp;action=edit" title="4.11 prerelease 100">[details]</a></span>
+4.11 prerelease 100
+
+Added an additional click handler for all folder entries (for Thunderbrid&gt;=60
+only). It feels like it makes the operation a little more reliable. Still
+having the big problem of submenus erratically closing when the mouse pointer
+is dragged into them), 
+
+Also didn't add any additional click handlers for the QuickFolders / Mail
+Folder commands, so they remain unreliable. (e.g. mark folder reead, get all
+messages)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c14" href="show_bug.cgi@id=26575.html#c14">
+            #14</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-14 06:48:35 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre118.xpi" name="attach_8515" title="4.11 prerelease 118">Created an attachment (id=8515)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8515&amp;action=edit" title="4.11 prerelease 118">[details]</a></span>
+4.11 prerelease 118
+
+# Added some new event handlers (instead of using &quot;oncommand&quot; attribute I now
+use addEventListener(&quot;command&quot; ... )
+# removed injection of color names into palette menus
+
+the inconsistency of the popup menus still largely remains...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c15" href="show_bug.cgi@id=26575.html#c15">
+            #15</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-15 14:04:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=26580.html" title="RESOLVED DUPLICATE - Mouse over / drop-down lists do not stick / work">Bug 26580</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c16" href="show_bug.cgi@id=26575.html#c16">
+            #16</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-15 14:06:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Going to drop a new version soon. The vanishing menus are still a problem,
+reliability of folders clicked somewhat improved.
+
+I have been working on this for about 40 hours so far. Still not 100% what
+causes it (except that it caused by a regression in mozilla-central which is
+owned by the &quot;Firefox&quot; team of Mozilla and not Thunderbird)
+
+It works in Thunderbird 60.0b6 
+and fails in Thunderbird 60.0b7 so this is the regression range for this bug.
+
+I also raised
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1482861">https://bugzilla.mozilla.org/show_bug.cgi?id=1482861</a>
+on this. Please add your observations there if you want.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c17" href="show_bug.cgi@id=26575.html#c17">
+            #17</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-16 12:24:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre180.xpi" name="attach_8519" title="4.11 prerelease 180">Created an attachment (id=8519)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8519&amp;action=edit" title="4.11 prerelease 180">[details]</a></span>
+4.11 prerelease 180
+
+I did a crazy amount of refactoring and emergency coding to at least repair the
+commands. I still do not know why the menus &quot;vanish&quot; when pointed to but at
+least the command should now work when you manage to hit the menu with mouse.
+Keyboard (oncommand) probably not so much yet. 
+
+One problem was duplication of events in some cases so I added a safety
+procedure that checks whether the same menu command has been triggered within
+1000msec and discards it as a duplicate. We might tweak that and take the
+waiting time down for those who are coffee addicts.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c18" href="show_bug.cgi@id=26575.html#c18">
+            #18</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-17 08:30:13 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Did anyone test revisin 180? I find the commands mostly work in Thunderbird
+60.0 release (except for the sometimes temperamental &quot;vanishing&quot; menus). Here
+my test results on Windows 7 Pro 64:
+
+Tested in Thunderbird 60:
+QuickFolders Tab - Right Click - click subfolders ✔️
+QuickFolders Tab - Right Click - Mark Folder Read ✔️
+QuickFolders Tab - Right Click - Get Messages ✔️
+'' - Right Click - QF Commands - Rename Tab ✔️
+'' - Right Click - QF Commands - Remove From Category ✔️
+'' - Right Click - QF Commands - Tab Color - color ✔️❌ (2)
+'' - Right Click - '' - Set Tab Category ❌ (1)
+'' - Right Click - ''  - Remove Tab ✔️
+'' - Right Click - ''  - Insert / Remove Line Break ✔️
+'' - Right Click - '' - Insert / Remove Separator ✔️
+'' - Right Click - '' - Customize Icon ✔️
+'' - Right Click - '' - Remove Customized Icon ✔️
+'' - Right Click - Mail Folder Commands - Compact Folder ✔️
+'' - Right Click - Mail Folder Commands - Delete Folder ✔️
+'' - Right Click - .. - Repair Folder ✔️
+'' - Right Click - .. - Search Messages ✔️
+'' - Right Click - .. - Folder Properties ✔️
+'' - Right Click - .. - Explore Folder Location ✔️
+
+QuickFolders Options Button -  only brings up menu on right click (main mouse
+handler is broken)
+Reading List Button - only works on right-click
+QuickJump button - context menu only shown on right-click. Not sure if by
+design.
+
+
+Right-Click + CTRL: Brings up the QuickFolders Commands Menu items, seems to
+react consistently with the same items above.
+
+(1) in Debug mode I get:
+No emergency handler for this event type.
+(2) only when the menu was &quot;persistent&quot;, in this case maybe 25% of the time. I
+also found that sometimes the correct color was not set.. so this needs special
+investigation
+
+I will do a separate test on 52.9 I fear that's more broken right now.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c19" href="show_bug.cgi@id=26575.html#c19">
+            #19</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-17 08:32:11 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c18">comment #18</a>)
+<span class="quote">&gt; Did anyone test revisin 180? I find the commands mostly work in Thunderbird
+&gt; 60.0 release (except for the sometimes temperamental &quot;vanishing&quot; menus). Here
+&gt; my test results on Windows 7 Pro 64:
+&gt; 
+&gt; Tested in Thunderbird 60:
+&gt; QuickFolders Tab - Right Click - click subfolders ✔️
+&gt; QuickFolders Tab - Right Click - Mark Folder Read ✔️
+&gt; QuickFolders Tab - Right Click - Get Messages ✔️
+&gt; '' - Right Click - QF Commands - Rename Tab ✔️
+&gt; '' - Right Click - QF Commands - Remove From Category ✔️
+&gt; '' - Right Click - QF Commands - Tab Color - color ✔️❌ (2)
+&gt; '' - Right Click - '' - Set Tab Category ❌ (1)
+&gt; '' - Right Click - ''  - Remove Tab ✔️
+&gt; '' - Right Click - ''  - Insert / Remove Line Break ✔️
+&gt; '' - Right Click - '' - Insert / Remove Separator ✔️
+&gt; '' - Right Click - '' - Customize Icon ✔️
+&gt; '' - Right Click - '' - Remove Customized Icon ✔️
+&gt; '' - Right Click - Mail Folder Commands - Compact Folder ✔️
+&gt; '' - Right Click - Mail Folder Commands - Delete Folder ✔️
+&gt; '' - Right Click - .. - Repair Folder ✔️
+&gt; '' - Right Click - .. - Search Messages ✔️
+&gt; '' - Right Click - .. - Folder Properties ✔️
+&gt; '' - Right Click - .. - Explore Folder Location ✔️
+&gt; 
+&gt; QuickFolders Options Button -  only brings up menu on right click (main mouse
+&gt; handler is broken)
+&gt; Reading List Button - only works on right-click
+&gt; QuickJump button - context menu only shown on right-click. Not sure if by
+&gt; design.
+&gt; 
+&gt; 
+&gt; Right-Click + CTRL: Brings up the QuickFolders Commands Menu items, seems to
+&gt; react consistently with the same items above.
+&gt; 
+&gt; (1) in Debug mode I get:
+&gt; No emergency handler for this event type.
+&gt; (2) only when the menu was &quot;persistent&quot;, in this case maybe 25% of the time. I
+&gt; also found that sometimes the correct color was not set.. so this needs special
+&gt; investigation
+&gt; 
+&gt; I will do a separate test on 52.9 I fear that's more broken right now.
+&gt; </span >
+Forgot - we need a test of all items on Current Folder button (middle toolbar)_
+too.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c20" href="show_bug.cgi@id=26575.html#c20">
+            #20</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-17 11:58:56 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre182.xpi" name="attach_8520" title="4.11 prerelease 182">Created an attachment (id=8520)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8520&amp;action=edit" title="4.11 prerelease 182">[details]</a></span>
+4.11 prerelease 182
+
+Fixed (Thunderbird 60): 
+# Color selection commands.
+# Set Category Command
+# click handlers (for left click) on the toolbar buttons (QF Options, Reeading
+List, quickJump button)
+
+Known issues: Compact folder appears to be triggered twice, going to fix this
+for the next prerelease
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c21" href="show_bug.cgi@id=26575.html#c21">
+            #21</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-18 14:55:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre184.xpi" name="attach_8521" title="4.11 prerelease 184">Created an attachment (id=8521)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8521&amp;action=edit" title="4.11 prerelease 184">[details]</a></span>
+4.11 prerelease 184
+
+Removed duplicates from remaining commands. Added strings for all
+localisations.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c22" href="show_bug.cgi@id=26575.html#c22">
+            #22</a> From 
+          <a href="mailto:kburton&#64;waitrose.com">Keith Burton</a>
+          2018-08-19 13:55:34 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Hi Axel
+
+Thanks for your efforts with these updates.
+
+Tested 4.11 prerelease 184 on Tb 60 (Win 7 Pro 64). Eight tabs in total, some
+with no folders, some with several and one with loads of folders.
+Apologies if I am missing something, but, missing menus seem little better
+although sub menus - when you do get a menu to stick - seem more reliable
+(albeit picky about mousing accuracy). BUT, that is only true using Flat Style,
+any of the other tab types; Apple Pills, Native Tabs, Buttons and Toolbar
+Buttons all appear to be good.
+
+The one thing that is certain though, when using Flat Style, is that stopping
+the pointer 1px onto the bottom of the tab IS reliable, every time (sub-menu
+mousing accuracy not withstanding).
+
+So, for me, a very workable workaround is to un-bling those tabs and put up
+with Native ones for the time being...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c23" href="show_bug.cgi@id=26575.html#c23">
+            #23</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-19 14:06:00 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c22">comment #22</a>)
+<span class="quote">&gt; Hi Axel
+&gt; 
+&gt; Thanks for your efforts with these updates.
+&gt; 
+&gt; Tested 4.11 prerelease 184 on Tb 60 (Win 7 Pro 64). Eight tabs in total, some
+&gt; 
+&gt; So, for me, a very workable workaround is to un-bling those tabs and put up
+&gt; with Native ones for the time being...
+&gt; </span >
+Nice one, good find!
+
+One more thing you may try: in about:config, set
+
+extensions.quickfolders.debug.popupmenus.verticalOffset = 0
+
+(You have to restart Thunderbird to make the setting work). To my great
+surprise it improved the whole situation a lot. [It looks a little uglier as it
+doubles up the border between tabs and menu, but I can live with this.]
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c24" href="show_bug.cgi@id=26575.html#c24">
+            #24</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-19 14:11:06 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >One more important finding: 
+
+when *changing* from the &quot;default toolbars&quot; setting back to the &quot;flat style&quot;
+the error reoccurs. I have a very big hunch now that it is caused by
+duplication of document nodes (e.g. same menu with same id is built twice)
+
+All menus are built dynamically and I attempt to reuse them for performance
+reasons. I think changing the theme creates duplicates - and they may well also
+be contributing to the problem from the start... It's a little hard to prove as
+their not so easy to find with inspector.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c25" href="show_bug.cgi@id=26575.html#c25">
+            #25</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-29 03:22:20 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >I did a bi-section of my own code to see what may be the trouble.
+
+1) Thunderbird 60 seems to ignore all commands from context menus on the
+toolbars in QF 4.10. However the same context menu on the current folder button
+works
+2) Menus appear to be more stable in 4.10 (they do not vanish)
+3) I did replace the &lt;oncommand=&quot;function()&quot; /&gt; attributes with event listeners
+in order to fix the &quot;jump to subfolder&quot; commands, but menu jumpyness remains
+
+In the old version 4.10 I compared the current folder menu &amp; the toolbar menu
+markup and found that all mennu, menuitem, menuseparator nodes etc. have the
+attribute:
+xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+
+while both menus are built dynamically I never actually inject this attribute
+but I bet this is a the root of the menu jumpynesss / non functioning problem.
+I need to find out why / how this attribute got injected into the Current
+Folder context menu (and why not on the toolbarbuttons).
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c26" href="show_bug.cgi@id=26575.html#c26">
+            #26</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-29 04:12:47 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre206.xpi" name="attach_8522" title="4.11 prerelease 206">Created an attachment (id=8522)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8522&amp;action=edit" title="4.11 prerelease 206">[details]</a></span>
+4.11 prerelease 206
+
+I believe I made it better here.
+
+I injected the &quot;privileged&quot; attribute
+
+xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+
+to all new menu elements (including separators / menu / menupopup elements).
+Now it appears to me the menus finally do not inexplicably vanish anymore.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c27" href="show_bug.cgi@id=26575.html#c27">
+            #27</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-29 04:26:55 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c26">comment #26</a>)
+<span class="quote">&gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre206.xpi" name="attach_8522" title="4.11 prerelease 206">attachment (id=8522)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8522&amp;action=edit" title="4.11 prerelease 206">[details]</a></span> [details]
+&gt; 4.11 prerelease 206
+&gt; 
+&gt; I believe I made it better here.
+&gt; 
+&gt; I injected the &quot;privileged&quot; attribute
+&gt; 
+&gt; xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+&gt; 
+&gt; to all new menu elements (including separators / menu / menupopup elements).
+&gt; Now it appears to me the menus finally do not inexplicably vanish anymore.
+&gt; </span >
+
+.. or at least for the first couple of times I use the popup menus. It appears
+the longer I use the Add-on within a Thunderbird session, the more unreliable
+the menus seem to become again... (I am back to one of my earlier theories of
+garbage DOM objects and duplicate menus with same id confusing the DOM tree)
+well, it was a start at least.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c28" href="show_bug.cgi@id=26575.html#c28">
+            #28</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-29 04:34:18 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi@id=26575.html#c27">comment #27</a>)
+<span class="quote">&gt; (In reply to <a href="show_bug.cgi@id=26575.html#c26">comment #26</a>)
+&gt; &gt; Created an <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre206.xpi" name="attach_8522" title="4.11 prerelease 206">attachment (id=8522)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8522&amp;action=edit" title="4.11 prerelease 206">[details]</a></span> [details] [details]
+&gt; &gt; 4.11 prerelease 206
+&gt; &gt; 
+&gt; &gt; I believe I made it better here.
+&gt; &gt; 
+&gt; &gt; I injected the &quot;privileged&quot; attribute
+&gt; &gt; 
+&gt; &gt; xmlns=&quot;<a href="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</a>&quot;
+&gt; &gt; 
+&gt; &gt; to all new menu elements (including separators / menu / menupopup elements).
+&gt; &gt; Now it appears to me the menus finally do not inexplicably vanish anymore.
+&gt; &gt; 
+&gt; 
+&gt; .. or at least for the first couple of times I use the popup menus. It appears
+&gt; the longer I use the Add-on within a Thunderbird session, the more unreliable
+&gt; the menus seem to become again... (I am back to one of my earlier theories of
+&gt; garbage DOM objects and duplicate menus with same id confusing the DOM tree)
+&gt; well, it was a start at least.
+&gt; </span >
+
+The plot thickens.. apparently the xmlns tags get removed by Thunderbird on the
+&quot;Non-working&quot; menu items.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c29" href="show_bug.cgi@id=26575.html#c29">
+            #29</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-08-29 11:48:24 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre212.xpi" name="attach_8523" title="4.11 prerelease 212">Created an attachment (id=8523)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8523&amp;action=edit" title="4.11 prerelease 212">[details]</a></span>
+4.11 prerelease 212
+
+Some of the code changes wheren't done in the right branch.
+
+Anyway this one adds the previously mentioned XUL attribute to all menu
+children.
+
+I think there are still some performance problems, I want to get to a stage
+where I do not re-create the menus from scratch every time a tab is
+(right-)clicked; it would be rather better to only update the labels of any
+existing (sub)foplder (to update unread count+status) and keep the existing
+click handler. 
+
+The problem with replacing the &quot;oncommand&quot; attribute with an event handler is
+that  removal of the handlers is difficult without keeping a list of handlers
+(you have to pass in the correct function instance when removing the handler,
+which is technically hard to do, as I am closuring the function for every
+subfolder)
+
+I am pretty sure repeated use of the popup meenus now creates some performance 
+issues and possibly memory holes as well. I may yet return to the old method
+(adding oncommand handler attributes) if I can make it work in thunderbird 60.
+The overall performance may be better as there is less active event handlers at
+the same time.,
+
+Alternatively I will look into handline the go to folder events from a shared
+event handler on the button which should also get the strain on the system
+down. It's just another major refactoring exercise...
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c30" href="show_bug.cgi@id=26575.html#c30">
+            #30</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-07 07:41:28 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre220.xpi" name="attach_8525" title="4.11 prerelease 220">Created an attachment (id=8525)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8525&amp;action=edit" title="4.11 prerelease 220">[details]</a></span>
+4.11 prerelease 220
+
+This version seems more stable - and contains 2 major changes:
+
+Added 
+  event.preventDefault();
+  event.stopPropagation();
+to where I add the contextmenu command listener.
+
+Added a config setting
+extensions.quickfolders.debug.popupmenus.isOnCommandAttr
+to turn on the old &quot;oncommand&quot; attribute (default is false)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c31" href="show_bug.cgi@id=26575.html#c31">
+            #31</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-20 10:11:14 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=26585.html" title="RESOLVED DUPLICATE - Tab context menus don't work">Bug 26585</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c32" href="show_bug.cgi@id=26575.html#c32">
+            #32</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-22 12:09:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre237.xpi" name="attach_8528" title="4.11 prerelease 237">Created an attachment (id=8528)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8528&amp;action=edit" title="4.11 prerelease 237">[details]</a></span>
+4.11 prerelease 237
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c33" href="show_bug.cgi@id=26575.html#c33">
+            #33</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-22 12:15:51 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre237.xpi.1" name="attach_8529" title="4.11 prerelease 237">Created an attachment (id=8529)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8529&amp;action=edit" title="4.11 prerelease 237">[details]</a></span>
+4.11 prerelease 237
+
+These are mainly style channges for &quot;flat-style&quot; toolbar buttons. Apparently
+the other themes (such as apple pills, native tabs, buttons) do not have the
+menu probnlems, so I was looking for CSS rules that are specific to the &quot;flat
+style&quot; toolbarbuttons
+
+CSS CHANGES
+- Removed &quot;em-based&quot; sizings in my CSS rules. I wanted the spacing within and
+around the buttons depending on the (configurable) font sizes. I think this
+*may* contribute to triggering the bug. These generate &quot;decimal pixel values&quot;
+such as 1.5px and may contribute to problems with the new HTML engine of
+Thunderbird.
+- replaced border-bottom: none with border-bottom-width: 0
+- Removed border-collapse: collapse; on hover.
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c34" href="show_bug.cgi@id=26575.html#c34">
+            #34</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-22 12:16:48 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >(From update of <span class="bz_obsolete"><a href="QuickFolders-tb-pb-sm-4.11pre237.xpi" name="attach_8528" title="4.11 prerelease 237">attachment 8528</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8528&amp;action=edit" title="4.11 prerelease 237">[details]</a></span>)
+duplicated / early submission (comment was missing)
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c35" href="show_bug.cgi@id=26575.html#c35">
+            #35</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-09-24 08:29:05 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" ><span class=""><a href="QuickFolders-tb-pb-sm-4.11pre242.xpi" name="attach_8530" title="4.11 prerelease 242">Created an attachment (id=8530)</a> <a href="https://www.mozdev.org/bugs/attachment.cgi?id=8530&amp;action=edit" title="4.11 prerelease 242">[details]</a></span>
+4.11 prerelease 242
+
+Issues fixed:
+
+1) the popup menu was triggered by (left) mouse click. this should only happen
+if the tab is on the current folder. Otherwise it should only go to the folder.
+Apparently the click event is somehow duplicate
+
+2) the select colors functionality in options / bling my tab was broken
+
+3) put spacer container &quot;QuickFolders-Folders-Pane&quot; back to push down tabs when
+only one row of tabs is shown
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c36" href="show_bug.cgi@id=26575.html#c36">
+            #36</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-10-15 06:07:22 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >*** <span class="bz_closed"><a href="show_bug.cgi@id=26589.html" title="RESOLVED DUPLICATE - Selecting folders by right-click on foldertabs does not work">Bug 26589</a></span> has been marked as a duplicate of this bug. ***
+</pre>
+    </div>
+  <div class="bz_comment">
+        <span class="bz_comment_head">
+          <span class="comment_rule">-------</span> <i>Comment
+          <a name="c37" href="show_bug.cgi@id=26575.html#c37">
+            #37</a> From 
+          <a href="mailto:axel.grude&#64;gmail.com">Axel Grude</a>
+          2018-10-16 05:20:45 
+          </i>
+          <span class="comment_rule">-------</span>
+        </span>
+        
+
+
+<pre class="bz_comment_text" >Fixed in 4.11, released on 16/10/2018
+</pre>
+    </div>
+</div>
+
+</form>
+
+<hr>
+<i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions">
+    <div class="label">Actions: </div><ul class="links">
+  <li><a href="https://www.mozdev.org/bugs/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="https://www.mozdev.org/bugs/buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" name="quicksearch">
+    <input class="btn" type="submit" value="Find" id="find_bottom"></form></li>
+
+  <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/report.cgi">Reports</a></li>
+
+  <li>
+    <span class="separator">| </span>
+      <a href="https://www.mozdev.org/bugs/request.cgi">Requests</a></li>
+
+
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/createaccount.cgi">New&nbsp;Account</a></li>
+      
+
+
+
+      
+
+        
+      <li><span class="separator">| </span><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26575&amp;GoAheadAndLogIn=1">Log&nbsp;In</a></li>
+</ul>
+  </li>
+
+  
+    
+    
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body>
+</html>

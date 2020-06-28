@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
+
+
+<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
+
+<dialog id="qf-options"
+				xmlns:html="http://www.w3.org/1999/xhtml"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				title="&qf.prefwindow.quickfolders.options;"
+				buttons="extra2,accept,cancel"
+				buttonlabelextra2="&qf.label.donate;"
+				onload="QuickFolders.Options.load();"
+				lightweightthemes="true"
+				>
+<!-- tooltiptextextra2="&qf.label.donateLink;" -->
+<!--  	ondialogaccept="QuickFolders.Options.accept();"
+				ondialogcancel="QuickFolders.Options.close();"
+				ondialogextra2="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });" -->
+
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/qf-styles.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/options.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
+	<script type="application/javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
+  <script type="application/javascript">
+	const QI = QuickFolders.Interface,
+	      options = QuickFolders.Options,
+				util = QuickFolders.Util;
+	</script>
+	
+	<prefpane id="qf-options-prefpane" orient="vertical">
+		<box id="qf-header-container">
+			<vbox>
+				<spacer flex="1" />
+				<image id="qf-options-icon" 
+				       src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" 
+				       onclick="options.collapseHead();"/>
+				<spacer flex="1" />
+			</vbox>
+			<hbox id="qf-options-header" class="paneSelector" flex="1" align="center">
+				<label id="dialogProductTitle"
+							 class="dialogheader-title"
+							 value="&qf.label.quickfolders;" />
+				<image id="qf-youtube" 
+				       src="chrome://quickfolders/skin/ico/youtube.png" 
+							 tooltiptext="&qf.youtube.tbdaily;"
+				       onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
+				<spacer flex="1" />
+				<label id="qf-options-header-description"
+							 onclick="if (options.showVersionHistory(this, true)) setTimeout(function() { window.close(); });return false;"
+							 tooltiptext="&qf.options.versionnumber.tooltip;" />
+			</hbox>
+		</box>
+
+		<popupset>
+			<menupopup id="QuickFolders-Options-PalettePopup" class="QuickFolders-folder-popup">
+				<!-- created in Interface code -->
+			</menupopup>
+		</popupset>
+
+		<tabbox id="QuickFolders-Options-Tabbox" orient="vertical">
+			<tabs>
+				<tab id="QuickFolders-General" label="&qf.tab.general;" />
+				<tab id="QuickFolders-Advanced" label="&qf.tab.advanced;" />
+				<tab id="QuickFolders-Layout" label="&qf.tab.layout;" />
+				<tab id="QuickFolders-Help" label="&qf.tab.quickhelp;" />
+				<tab id="QuickFolders-Support" label="&qf.tab.support;" />
+				<tab id="QuickFolders-Pro" label="&qf.tab.gopro;" class="free" />
+			</tabs>
+			<tabpanels id="QuickFolders-Panels">
+				<tabpanel id="QuickFolders-Options-general" orient="vertical">
+					<preferences id="prefsGeneral">
+						<preference id="qfpg-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" instantApply="true"/>
+						<preference id="qfpg-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" instantApply="true"/>
+						<preference id="qfpg-ShowNewMail" name="extensions.quickfolders.showNewMailHighlight" type="bool" />
+						<preference id="qfpg-ShowRecentTab" name="extensions.quickfolders.showRecentTab" type="bool" />
+						<preference id="qfpg-ShowQuickMove" name="extensions.quickfolders.showQuickMove" type="bool" />
+						<preference id="qfpg-ShowBookmarks" name="extensions.quickfolders.bookmarks.showButton" type="bool" />
+						<preference id="qfpg-ShowToolbarMenuIcon" name="extensions.quickfolders.showToolIcon" type="bool" />
+						<preference id="qfpg-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool" />
+						<preference id="qfpg-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool" />
+						<preference id="qfpg-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool" instantApply="true"/>
+						<preference id="qfpg-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool" />
+						<preference id="qfpg-ShowCountInSubFolders" name="extensions.quickfolders.showCountInSubFolders" type="bool" />
+						<preference id="qfpg-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool" instantApply="true"/>
+						<preference id="qfpg-ShowFoldersWithNewMailItalic" name="extensions.quickfolders.showFoldersWithNewMailItalic" type="bool" instantApply="true"/>
+						<preference id="qfpg-HideToolbarWhenNotNeeded" name="extensions.quickfolders.toolbar.onlyShowInMailWindows" type="bool" instantApply="true"/>
+						<preference id="qfpg-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool" />
+						<preference id="qfpg-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool" />
+						<preference id="qfpg-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool" />
+						<preference id="qfpg-Thunderbird-Preference-FolderCrossing" name="mailnews.nav_crosses_folders" type="int" />
+						<preference id="qfpg-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool" />
+						<preference id="qfpg-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string" />
+						<preference id="qfpg-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" instantApply="true"/>
+						
+						<preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int" />
+					</preferences>
+					
+			
+
+					<html:fieldset orient="horizontal">
+						<html:legend>&qf.label.keyboard;</html:legend>
+						<vbox>
+							<checkbox label="&qf.checkbox.usekeyboardshortcuts;"
+												preference="qfpg-UseKeyboardShortcuts"/>
+							<checkbox label="&qf.checkbox.showshortcutnumber;"
+												class="indent"
+												preference="qfpg-ShowShortcutNumber"
+												oncommand="options.toggleBoolPreference(this);QI.updateMainWindow();" />
+							<checkbox label="&qf.checkbox.usekeyboardshortcutsCTRL;"
+												class="indent"
+												preference="qfpg-UseKeyboardShortcutCTRL"
+												instantApply="true" />
+						</vbox>
+						<vbox>
+							<hbox>
+								<checkbox id="chkRebuildAccel"
+													label="&qf.checkbox.useRebuildShortcut;"
+													preference="qfpg-RebuildShortcut"
+													instantApply="true" />
+								<textbox id="QuickFolders-Options-RebuildShortcutKey"
+												 preference="qfpg-RebuildShortcutKey"
+												 class = "shortCutKey"
+												 instantApply="true" />
+							</hbox>
+							<checkbox label="&qf.checkbox.useNavigationShortcuts;"
+												preference="qfpg-NavigateShortcut" />
+						</vbox>
+					</html:fieldset>
+
+					<html:fieldset orient="horizontal">
+						<html:legend>&qf.label.tabContent;</html:legend>
+						<vbox>
+							<checkbox label="&qf.checkbox.showUnreadBold;"
+												preference="qfpg-ShowUnreadFoldersBold"
+												oncommand="options.toggleBoolPreference(this);"/>
+							<checkbox label="&qf.checkbox.showNonEmptyItalics;"
+												preference="qfpg-ShowFoldersWithMessagesItalic"
+												oncommand="options.toggleBoolPreference(this);"/>
+							<checkbox label="&qf.checkbox.showNewMailItalics;"
+												preference="qfpg-ShowFoldersWithNewMailItalic"
+												oncommand="options.toggleBoolPreference(this);"/>
+							<checkbox label="&qf.checkbox.highlightNewMail;"
+												preference="qfpg-ShowNewMail"
+												oncommand="options.toggleBoolPreference(this);"/>
+						</vbox>
+						<vbox>
+							<checkbox label="&qf.checkbox.showUnreadMessageCount;"
+												preference="qfpg-ShowUnread"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox label="&qf.checkbox.showTotalMessageCount;"
+												preference="qfpg-ShowTotalNumber"
+												instantApply="true"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox label="&qf.checkbox.showCountInSubFolders;"
+												preference="qfpg-ShowCountInSubFolders"
+												instantApply="true"
+												oncommand="options.toggleBoolPreference(this);"
+												tooltiptext="&qf.checkbox.showCountInSubFolders.tooltip;" />
+							<hbox pack="end">
+								<button label="&qf.button.configureTooltips;" 
+												oncommand="options.configureTooltips(this);return true;" />		
+							</hbox>
+						</vbox>
+					</html:fieldset>
+
+					<hbox>
+						<html:fieldset orient="vertical" flex="1">
+							<html:legend>&qf.label.behavior;</html:legend>
+							<vbox>
+								<checkbox label="&qf.checkbox.autoFocusPreview;"
+													preference="qfpg-FocusPreview"
+													instantApply="true" />
+								<checkbox label="&qf.checkbox.showSubfolders;"
+													preference="qfpg-ShowSubFolders"
+													instantApply="true" />
+								<checkbox label="&qf.checkbox.sortMenusAlpha;"
+													tooltiptext="&qf.checkbox.sortMenusAlpha.tooltip;"
+													preference="qfpg-EnableMenuSorting"
+													instantApply="true" />
+								<checkbox	label="&qf.checkbox.autoHideToolbar;"
+													tooltiptext="&qf.checkbox.autoHideToolbar.tooltip;"
+													preference="qfpg-HideToolbarWhenNotNeeded"
+													instantApply="true"
+                          oncontextmenu="options.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
+                          />
+							</vbox>
+						</html:fieldset>
+
+						<html:fieldset orient="vertical" flex="2">
+							<html:legend>&qf.label.mainToolbar;</html:legend>
+							<vbox>
+								<checkbox id="chkToolbarMenu"
+													label="&qf.checkbox.tabMenuIcon;"
+													tooltiptext="&qf.checkbox.tabMenuIcon.tooltip;"
+													preference="qfpg-ShowToolbarMenuIcon"
+													instantApply="true"
+													oncommand="options.toggleBoolPreference(this);" />
+								<checkbox id="chkQuickMove"
+													label="&qf.checkbox.showQuickMove;"
+													tooltiptext="&qf.checkbox.showQuickMove.tooltip;"
+													preference="qfpg-ShowQuickMove"
+													instantApply="true"
+													oncontextmenu="options.showAboutConfig(this,'quickfolders.premium.findFolder.max',true);return false;"
+													oncommand="options.toggleBoolPreference(this);" />
+								<checkbox id="chkBookmarks"
+													label="&qf.checkbox.readingList;"
+													tooltiptext="&qf.checkbox.readingList.tooltip;"
+													preference="qfpg-ShowBookmarks"
+													instantApply="true"
+													oncommand="options.toggleBoolPreference(this);"
+													oncontextmenu="options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
+								<checkbox id="chkRecent"
+													label="&qf.checkbox.showRecentTab;"
+													tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
+													preference="qfpg-ShowRecentTab"
+													instantApply="true"
+													oncontextmenu="options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
+													oncommand="options.toggleBoolPreference(this);" />
+							</vbox>
+						</html:fieldset>
+					</hbox>
+					<hbox>
+						<html:fieldset flex="2">
+							<html:legend>&qf.group.navigation;</html:legend>
+							<hbox align="center">
+								<label value="&qf.label.goNextUnread;"
+											 tooltiptext="&qf.label.goNextUnread.tip;"
+											 />
+								<menulist sizetopopup="none"
+													preference="qfpg-Thunderbird-Preference-FolderCrossing"
+													instantApply="true"
+													oncommand="options.selectFolderCrossing(this);">
+									<menupopup>
+										<menuitem label="&qf.goNextUnread.auto;"
+															value="0" />
+										<menuitem label="&qf.goNextUnread.prompt;"
+															value="1" />
+										<menuitem label="&qf.goNextUnread.none;"
+															value="2" />
+									</menupopup>
+								</menulist>
+							</hbox>
+						</html:fieldset>
+					</hbox>
+				</tabpanel>
+
+				<tabpanel id="QuickFolders-Options-advanced" orient="vertical">
+					<preferences id="prefsAdvanced">
+						<preference id="qfpa-ShowCurrentFolderBar"               name="extensions.quickfolders.showCurrentFolderToolbar" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowCurrentFolderBar-SingleMessage" name="extensions.quickfolders.showCurrentFolderToolbar.messageWindow" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowCurrentFolderBar-MsgTab"        name="extensions.quickfolders.showCurrentFolderToolbar.singleMailTab" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowCloseButton" name="extensions.quickfolders.currentFolderBar.showClose" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowRecentButton" name="extensions.quickfolders.currentFolderBar.showRecentButton" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowFilterButton" name="extensions.quickfolders.currentFolderBar.showFilterButton" type="bool"  instantApply="true"/>
+						<preference id="qfpa-ShowFolderMenuButton" name="extensions.quickfolders.currentFolderBar.showFolderMenuButton" type="bool" instantApply="true" />
+						<preference id="qfpa-ShowRepairFolderButton" name="extensions.quickfolders.currentFolderBar.showRepairFolderButton" type="bool"  instantApply="true"/>
+						<preference id="qfpa-ShowMsgNavButton" name="extensions.quickfolders.currentFolderBar.navigation.showButtons" type="bool" instantApply="true"/>
+						<preference id="qfpa-ShowFolderNavButton" name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons" type="bool"  instantApply="true"/>
+						<preference id="qfpa-ShowIconButtons" name="extensions.quickfolders.currentFolderBar.showIconButtons" type="bool"  instantApply="true"/>
+						<preference id="qfpa-CurrentFolder-Background" name="extensions.quickfolders.currentFolderBar.background" type="string"  instantApply="true"/>
+						<preference id="qfpa-CurrentFolder-Lightweight" name="extensions.quickfolders.currentFolderBar.background.lightweight" type="bool"  instantApply="true"/>
+						<preference id="qfpa-flexLeft" name="extensions.quickfolders.currentFolderBar.flexLeft" type="int" />
+						<preference id="qfpa-flexRight" name="extensions.quickfolders.currentFolderBar.flexRight" type="int" />
+						<preference id="qfpa-FolderMenu-CTRL" name="extensions.quickfolders.folderMenu.CTRL" type="bool" />
+						<preference id="qfpa-FolderMenu-openNewTab" name="extensions.quickfolders.folderMenu.openNewTab" type="bool" />
+						<preference id="qfpa-FolderMenu-getMailForInbox" name="extensions.quickfolders.folderMenu.getMessagesForInbox" type="bool" />
+						<preference id="qfpa-FolderMenu-getMailForNews" name="extensions.quickfolders.folderMenu.getMessagesForNews" type="bool" />
+						<preference id="qfpa-FolderMenu-markAllRead" name="extensions.quickfolders.folderMenu.markAllRead" type="bool" />
+						<preference id="qfpa-FolderMenu-markAllReadRecursive" name="extensions.quickfolders.folderMenu.markAllReadRecursive" type="bool" />
+						<preference id="qfpa-FolderMenu-emptyJunk" name="extensions.quickfolders.folderMenu.emptyJunk" type="bool" />
+						<preference id="qfpa-FolderMenu-emptyTrash" name="extensions.quickfolders.folderMenu.emptyTrash" type="bool" />
+						<preference id="qfpa-FolderMenu-newFolder" name="extensions.quickfolders.folderMenu.dragToNew" type="bool" />
+						<preference id="qfpa-CommandMenu-Icons" name="extensions.quickfolders.commandMenu.icon" type="bool" />
+						<preference id="qfpa-CommandMenu-CTRL" name="extensions.quickfolders.commandMenu.CTRL" type="bool" />
+						<preference id="qfpa-CommandMenu-Separator" name="extensions.quickfolders.commandMenu.separator" type="bool" />
+						<preference id="qfpa-CommandMenu-LineBreak" name="extensions.quickfolders.commandMenu.lineBreak" type="bool" />
+						<preference id="qfpa-CommandMenu-Support" name="extensions.quickfolders.commandMenu.support" type="bool" />
+						<preference id="qfpa-CommandMenu-Help" name="extensions.quickfolders.commandMenu.help" type="bool" />
+						<preference id="qfpa-CommandMenu-Options" name="extensions.quickfolders.commandMenu.options" type="bool" />
+						<preference id="qfpa-ShowQuickFoldersLabel" name="extensions.quickfolders.showQuickfoldersLabel" type="bool" instantApply="true"/>
+						<preference id="qfpa-CollapseCategory" name="extensions.quickfolders.collapseCategories" type="bool" />
+						<preference id="qfpa-Transitions" name="extensions.quickfolders.style.transitions" type="bool" instantApply="true" />
+						<preference id="qfpa-Debug" name="extensions.quickfolders.debug" type="bool" instantApply="true"/>
+            <preference id="qfpa-ToolbarPosition" name="extensions.quickfolders.toolbar.ordinalPosition" type="int" instantApply="true" />
+					</preferences>
+
+					<hbox id="advancedConfig">
+						<html:fieldset>
+							<html:legend>&qf.label.currentFolderToolbar;</html:legend>
+							<vbox id="currentFolderCustomize">
+							<checkbox id="chkCurrentFolderShow"
+												label="&qf.checkbox.currentFolder.show;"
+												preference="qfpa-ShowCurrentFolderBar"
+												oncommand="options.toggleCurrentFolderBar(this,'');" />
+							<checkbox id="chkCurrentFolderShowSingleTab"
+												class="indent"
+												label="&qf.checkbox.singleMessageTab.currentFolder.show;"
+												preference="qfpa-ShowCurrentFolderBar-MsgTab"
+												oncommand="options.toggleCurrentFolderBar(this,'singleMailTab');" />
+							<checkbox id="chkCurrentFolderShowSingleMsg"
+												class="indent"
+												label="&qf.checkbox.singleMessage.currentFolder.show;"
+												tooltiptext="&qf.checkbox.singleMessage.currentFolder.tooltip;"
+												preference="qfpa-ShowCurrentFolderBar-SingleMessage"
+												oncommand="options.toggleCurrentFolderBar(this,'messageWindow');" />
+							<checkbox id="chkRecentCurrent"
+												label="&qf.checkbox.showRecentButton;"
+												tooltiptext="&qf.checkbox.showRecentTab.tooltip;"
+												preference="qfpa-ShowRecentButton"
+												oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.recentfolders',true);return false;"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkMsgNavigation"
+												label="&qf.checkbox.showMessageNavigation;"
+												preference="qfpa-ShowMsgNavButton"
+												oncontextmenu="options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkFolderNavigation"
+												label="&qf.checkbox.showFolderNavigation;"
+												preference="qfpa-ShowFolderNavButton"
+												oncontextmenu="options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowFolderMenuButton"
+												label="&qf.checkbox.showMailFolderCommands;"
+												preference="qfpa-ShowFolderMenuButton"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowRepairFolderButton"
+												label="Repair Folder"
+												preference="qfpa-ShowRepairFolderButton"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowIconButtons"
+												label="&qf.checkbox.showIconButtons;"
+												preference="qfpa-ShowIconButtons"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowFilterButton"
+												label="&qf.checkbox.showFilterButton;"
+												tooltiptext="&qf.checkbox.showFilterButton.tooltip;"
+												preference="qfpa-ShowFilterButton"
+												oncommand="options.toggleBoolPreference(this);" />
+							<checkbox id="chkShowCloseButton"
+												label="&qf.checkbox.currentFolder.closeButton;"
+												preference="qfpa-ShowCloseButton"
+												oncommand="options.toggleBoolPreference(this);" />
+							</vbox>
+						</html:fieldset>
+
+						<html:fieldset orient="horizontal" flex="2">
+							<html:legend>&qf.label.menus;</html:legend>
+							<hbox>
+							<html:fieldset id="mailCommandsCustomize" flex="1">
+								<html:legend>&qf.label.menus.mailFolder;</html:legend>
+								<vbox>
+									<checkbox id="qfHideMailcommandsUnlessCTRL"
+														label="&qf.label.menus.hideQFunlessCTRL;"
+														preference="qfpa-FolderMenu-CTRL" />
+									<checkbox id="qfOpenInNewTab" 
+														label="Open In New Tab"
+														preference="qfpa-FolderMenu-openNewTab" />
+									<checkbox id="qfGetMail" label="&qf.checkbox.menus.getMailForInbox;"
+														preference="qfpa-FolderMenu-getMailForInbox" />
+									<checkbox id="qfGetMail"
+														label="&qf.checkbox.menus.getMailForNews;"
+														preference="qfpa-FolderMenu-getMailForNews" />
+									<checkbox label="&qf.checkbox.menus.markAllRead;"
+														preference="qfpa-FolderMenu-markAllRead" />
+									<checkbox label="&qf.checkbox.menus.markAllReadRecursive;"
+														preference="qfpa-FolderMenu-markAllReadRecursive" />
+									<checkbox label="&qf.checkbox.menus.emptyJunk;"
+														preference="qfpa-FolderMenu-emptyJunk" />
+									<checkbox label="&qf.checkbox.menus.emptyTrash;"
+														preference="qfpa-FolderMenu-emptyTrash" />
+									<checkbox id="qfNewFolder"
+														label="&qf.checkbox.menus.dragToNewFolder;"
+														preference="qfpa-FolderMenu-newFolder"
+														oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;" />
+								</vbox>
+							</html:fieldset>
+
+							<html:fieldset id="contextMenuCommandsCustomize" >
+								<html:legend>&qf.label.menus.quickFolder;</html:legend>
+								<vbox>
+									<checkbox id="qfHideQFcommandsUnlessCTRL"
+														label="&qf.label.menus.hideQFunlessCTRL;"
+														preference="qfpa-CommandMenu-CTRL" />
+									<checkbox id="qfInsertSeparator"
+														label="&qf.label.menus.separator;"
+														preference="qfpa-CommandMenu-Separator" />
+									<checkbox id="qfInsertLineBreak"
+														label="&qf.label.menus.lineBreak;"
+														preference="qfpa-CommandMenu-LineBreak" />
+									<checkbox id="qfCustomizeIcon"
+														label="&qf.label.menus.customIcon;"
+														preference="qfpa-CommandMenu-Icons" />
+									<checkbox id="qfMenuHelp"
+														label="&qf.label.menus.help;"
+														preference="qfpa-CommandMenu-Help" />
+									<checkbox id="qfMenuSupport"
+														label="&qf.label.menus.support;"
+														preference="qfpa-CommandMenu-Support" />
+									<checkbox id="qfMenuOptions"
+														label="&qf.label.menus.options;"
+														preference="qfpa-CommandMenu-Options" />
+								</vbox>
+							</html:fieldset>
+							</hbox>
+						</html:fieldset>
+					</hbox>
+          
+          <html:fieldset	orient="horizontal" id="grpToolbarPosition">
+            <html:legend>&qf.label.toolbarPosition;</html:legend>
+            <hbox>
+              <textbox id="toolbarPosition"
+                       flex="1"
+                       preference="qfpa-ToolbarPosition"
+                       tooltiptext="&qf.toolbarPosition.tooltip;"
+                       />
+              <button label="&qf.btn.applyPosition;"
+                onclick="options.applyOrdinalPosition();" 
+								/>
+            </hbox>
+          </html:fieldset>
+
+					<html:fieldset	orient="horizontal" id="grpCurrentFolderBackground">
+						<html:legend>&qf.caption.currentFolderBackground;</html:legend>
+						<vbox id="currentFolderBackgroundContainer">
+							<hbox flex="1" id="currentFolderStyle">
+								<textbox id="currentFolderBackground"
+												 flex="1"
+												 preference="qfpa-CurrentFolder-Background"
+												 onblur="options.sanitizeCSS(this);"
+												 />
+								<menulist id="QuickFolders-CurrentFolder-Background-Select"
+													sizetopopup="none"
+													oncommand="QI.updateMainWindow();">
+									<menupopup>
+										<!-- list order must correspond with BGCHOICE enum -->
+										<menuitem label="&qf.currentFolderBackground.default;"
+															oncommand="options.setCurrentToolbarBackground('default', true);"
+															value="default" />
+										<menuitem label="&qf.currentFolderBackground.dark;"
+															oncommand="options.setCurrentToolbarBackground('dark', true);"
+															value="dark" />
+										<menuitem label="&qf.currentFolderBackground.translucent;"
+															oncommand="options.setCurrentToolbarBackground('translucent', true);"
+															value="translucent" />
+										<menuitem label="&qf.currentFolderBackground.custom;"
+															oncommand="options.setCurrentToolbarBackground('custom', true);"
+															value="custom" />
+										<menuitem label="lightweight"
+															oncommand="options.setCurrentToolbarBackground('lightweight', true);"
+															value="lightweight" />
+									</menupopup>
+								</menulist>
+								<button label="&qf.button.currentFolderBackground.set;"
+												class="narrow"
+												onclick="options.setCurrentToolbarBackgroundCustom();" 
+												/>
+							</hbox>
+							<hbox flex="1">
+								<checkbox label="&qf.checkbox.currentfolder.lightweight;"
+													preference="qfpa-CurrentFolder-Lightweight"
+													oncommand="options.toggleBoolPreference(this,false); options.updateCurrentFolderBar();" />
+								<spacer flex="1" />
+								<label control="leftSpacer"
+											 value ="&qf.currentfolder.leftSpacer;" />
+								<textbox id="leftSpacer"
+								         type="number"
+												 size="1"
+												 class="num1digit"
+												 preference="qfpa-flexLeft"
+												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<label control="rightSpacer"
+											 value ="&qf.currentfolder.rightSpacer;" />
+								<textbox id="rightSpacer"
+								         type="number"
+												 size="1"
+												 class="num1digit"
+												 preference="qfpa-flexRight"
+												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<spacer flex="2" />
+							</hbox>
+						</vbox>
+					</html:fieldset>
+
+					<html:fieldset orient="horizontal" >
+						<html:legend>&qf.label.misc;</html:legend>
+						<checkbox label="&qf.checkbox.displaylabel;"
+											tooltiptext="&qf.checkbox.displaylabel.tooltip;"
+											preference="qfpa-ShowQuickFoldersLabel"
+											oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
+											oncommand="options.toggleBoolPreference(this);" />
+						<checkbox label="&qf.checkbox.hideCategoryBox;"
+											tooltiptext="&qf.checkbox.hideCategoryBox.tooltip;"
+											preference="qfpa-CollapseCategory"
+											oncommand="options.toggleBoolPreference(this);" />
+						<checkbox label="&qf.checkbox.enableTransitions;"
+											tooltiptext="&qf.checkbox.enableTransitions.tooltip;"
+											preference="qfpa-Transitions"
+											oncommand="options.toggleBoolPreference(this);" />
+					</html:fieldset>
+
+					<separator class="thin" />
+					<hbox align="center" class="quickhelp-dbg" >
+						<checkbox label="&qf.checkbox.debug;"
+											tooltiptext="&qf.checkbox.debug.tooltip;"
+											preference="qfpa-Debug"
+											oncontextmenu="options.toggleBoolPreference(this,true);options.showAboutConfig(this,'quickfolders.debug',true);return false;" />
+						<label value="&qf.label.initdelay;"
+									 style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;" />
+						<textbox id="initdelay"
+										 preference="QuickFolders-init-delay"
+										 />
+						<button id="copyFolders"
+										label="&qf.copyfolders;"
+										tooltiptext="&qf.copyfolders.tooltip;"
+									  oncommand="options.copyFolderEntries();" />
+						<button id="pasteFolders"
+										label=""
+						        tooltiptext="&qf.pastefolders.tooltip;"
+									  oncommand="options.pasteFolderEntries();" />
+					</hbox>
+				</tabpanel>
+
+				<tabpanel id="QuickFolders-Options-layout" orient="vertical" >
+					<preferences id="prefsLayout">
+						<preference id="qfpl-CustomizedRadius" name="extensions.quickfolders.style.corners.customizedRadius" type="bool" instantApply="true"/>
+						<preference id="qfpl-TopRadius" name="extensions.quickfolders.style.corners.customizedTopRadiusN" type="int" instantApply="true"/>
+						<preference id="qfpl-BottomRadius" name="extensions.quickfolders.style.corners.customizedBottomRadiusN" type="int" instantApply="true"/>
+						<preference id="qfpl-ButtonMinimalHeight" name="extensions.quickfolders.style.button.minHeight" type="int" />
+						<preference id="qfpl-ButtonTopPadding" name="extensions.quickfolders.style.button.paddingTop" type="int" />
+						<preference id="qfpl-Theme" name="extensions.quickfolders.style.theme" type="string" instantApply="true"/>
+						<preference id="qfpl-ShowIcons" name="extensions.quickfolders.showIcons" type="bool" />
+						<preference id="qfpl-ButtonFontSize" name="extensions.quickfolders.buttonFontSizeN" type="int"  instantApply="true"/>
+						<preference id="qfpl-ToolbarBottom" name="extensions.quickfolders.style.Toolbar.bottomLineWidth" type="int"  instantApply="true"/>
+						<preference id="qfpl-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string"  instantApply="true"/>
+						<preference id="qfpl-TransparentButtons" name="extensions.quickfolders.transparentButtons" type="bool"   instantApply="true"/>
+						<preference id="qfpl-ShowBorders" name="extensions.quickfolders.style.borders" type="bool"  instantApply="true"/>
+						<preference id="qfpl-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool"  instantApply="true"/>
+						<preference id="qfpl-Shadows" name="extensions.quickfolders.buttonShadows" type="bool" />
+						<preference id="qfpl-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"  instantApply="true"/>
+						<!-- "uncolored" tabs (inactive)	0, 1, n -->
+						<preference id="qfpl-InactiveTab-PaletteType" name="extensions.quickfolders.style.InactiveTab.paletteType" type="int" />
+						<!-- "colored" tabs (inactive)		1, n		-->
+						<preference id="qfpl-ColoredTab-PaletteType" name="extensions.quickfolders.style.ColoredTab.paletteType" type="int" />
+						<preference id="qfpl-ActiveTab-PaletteType" name="extensions.quickfolders.style.ActiveTab.paletteType" type="int" />
+						<preference id="qfpl-DragOver-PaletteType" name="extensions.quickfolders.style.DragOver.paletteType" type="int" />
+						<preference id="qfpl-HoveredTab-PaletteType" name="extensions.quickfolders.style.HoveredTab.paletteType" type="int" />
+					</preferences>
+
+					<html:fieldset>
+						<html:legend>&qf.label.appearance;</html:legend>
+						<vbox>
+							<hbox>
+								<vbox>
+									<hbox align="center">
+										<label class="textBoxLabel"
+													 control="QuickFolders-Themes"
+													 value="&qf.label.themes;" />
+										<menulist id="QuickFolders-Theme-Selector"
+															sizetopopup="none"
+															preference="qfpl-Theme"
+															oncommand="QI.updateMainWindow();">
+											<menupopup>
+												<!-- values in this list are QuickFolders.Themes.themes.id values -->
+												<menuitem id="QuickFolders-Theme-FlatStyle"
+																	label="&qf.themes.flatTabs.label;"
+																	originalName="Flat Style"
+																	value="flatTabs"													
+																	oncommand="options.selectTheme(window.document, 'flatTabs');" />
+												<menuitem id="QuickFolders-Theme-Pills"
+																	label="&qf.themes.applePills.label;"
+																	originalName="Apple Pills"
+																	value="applePills"
+																	oncommand="options.selectTheme(window.document, 'applePills');" />
+												<menuitem id="QuickFolders-Theme-NativeTabs"
+																	label="&qf.themes.nativeTabs.label;"
+																	originalName="Native Tabs"
+																	value="nativeTabs"
+																	oncommand="options.selectTheme(window.document, 'nativeTabs');" />
+												<menuitem id="QuickFolders-Theme-ButtonStyle"
+																	label="&qf.themes.realButtons.label;"
+																	originalName="Flat Style"
+																	value="realButtons"
+																	oncommand="options.selectTheme(window.document, 'realButtons');" />
+												<menuitem id="QuickFolders-Theme-FlatButtons"
+																	label="&qf.themes.flatButtons.label;"
+																	originalName="Toolbar Buttons"
+																	value="flatButtons"
+																	oncommand="options.selectTheme(window.document, 'flatButtons');" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</vbox>
+								<vbox>
+									<hbox>
+										<label id="Quickfolders-Theme-Author-Label"
+													 value="&qf.options.label.themeAuthor;"
+													 class="textBoxLabel" />
+										<label id="Quickfolders-Theme-Author" value="" />
+									</hbox>
+									<description id="Quickfolders-Theme-Description"
+															 flex="1"
+															 style="margin-left:6px !important;max-width:46em;"
+										>...</description>
+								</vbox>
+							</hbox>
+							<checkbox id="qf-options-icons"
+												label="&qf.checkbox.showIcons;"
+												preference="qfpl-ShowIcons"
+												oncommand="options.toggleBoolPreference(this);" />
+							<hbox align="center">
+								<label id="button-font-size-label"
+											 value="&qf.label.buttonFontSizeNumeric;"
+											 control="button-font-size" />
+								<textbox id="button-font-size"
+												 type="number"
+												 size="3"
+												 class="num2digits"
+												 preference="qfpl-ButtonFontSize"
+												 onchange="options.changeTextPreference(this);" />
+								<label value="px" />
+								<separator flex="1" />
+								<hbox id="btnHeightTweaks">
+									<label value="&qf.toolbarMinimumHeight;" />
+									<textbox id="buttonMinHeight"
+													 type="number"
+													 preference="qfpl-ButtonMinimalHeight"
+													 class="num2digits"
+													 onchange="options.changeTextPreference(this);"/>
+									<label value="px" />
+									<separator flex="1" />
+									<label value="Top padding:" />
+									<textbox id="buttonPaddingTop"
+													 type="number"
+													 class="num2digits"
+													 preference="qfpl-ButtonTopPadding"
+													 style="max-width:4em; width:auto;"
+													 onchange="options.changeTextPreference(this);"/>
+									<label value="px" />
+								</hbox>
+								
+								<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
+								<hbox id="qf-tweakBorders" align="center">
+									<label value="&qf.label.pixels;" />
+									<checkbox id="chkShowBorders"
+														label="&qf.options.themes.showBorders.checkbox;"
+														preference="qfpl-ShowBorders"
+														oncommand="options.toggleBoolPreference(this);" />
+								</hbox>
+							</hbox>
+							<separator class="thin" />
+							<hbox align="center" id="qf-tweakRadius">
+								<checkbox id="chkCustomRadius"
+													label="&qf.options.themes.customCornerRadius.checkbox;"
+													preference="qfpl-CustomizedRadius"
+													oncommand="options.toggleBoolPreference(this);" />
+								<label value="&qf.options.themes.customCornerRadius.Top.label;"
+											 control="QuickFolders-Options-CustomTopRadius" />
+								<textbox id="QuickFolders-Options-CustomTopRadius"
+												 type="number"
+												 size="3"
+												 class="num1digit"
+												 preference="qfpl-TopRadius"
+												 onchange="options.changeTextPreference(this);" />
+								<label value="px" />
+								<label value="&qf.options.themes.customCornerRadius.Bottom.label;"
+											 control="QuickFolders-Options-CustomBottomRadius" />
+								<textbox id="QuickFolders-Options-CustomBottomRadius"
+												 type="number"
+												 size="3"
+												 class="num1digit"
+												 preference="qfpl-BottomRadius"
+												 onchange="options.changeTextPreference(this);" />
+								<label value="px" />
+								<button label="&qf.button.default;"
+												oncommand="options.setDefaultButtonRadius();" />
+							</hbox>
+						</vbox>
+					</html:fieldset>
+					<html:fieldset>
+						<html:legend>&qf.label.Toolbar;</html:legend>
+						<hbox align="center">
+							<label value="&qf.label.ToolbarBackground;" />
+							<html:input id="toolbar-colorpicker"
+													type="color"
+													palettename="standard"
+													style="vertical-align:middle"
+												  elementInfo="Toolbar.background-color"
+													previewLabel="qf-StandardColors"
+													onchange="return options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors');" />
+							<checkbox label="&qf.checkbox.transparent;"
+												preference="qfpl-TransparentToolbar"
+												oncommand="return options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);" />
+							<spacer />
+							<hbox id="qf-tweakToolbarBorder" align="center">
+								<label id="toolbar-bottom-label"
+											 value="&qf.label.Toolbar.bottomLine;"
+											 control="toolbar-bottom-size" />
+								<textbox id="toolbar-bottom-size"
+												 tooltiptext="&qf.label.Toolbar.bottomLine.tip;"
+												 type="number"
+												 class="num1digit"
+												 size="3"
+												 preference="qfpl-ToolbarBottom"
+												 onchange="options.changeTextPreference(this);" />										 
+								<label value="px" />
+							</hbox>			 
+							<hbox align="center">
+								<label value="&qf.toolbarMinimumHeight;"
+											 tooltiptext="&qf.toolbarMinimumHeight.tooltip;"
+											 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
+											 onclick="util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
+											 style = "text-decoration:underline;cursor:pointer;" />
+								<textbox id="toolbarMinHeight"
+												 type="number"
+												 class="num2digits"
+												 preference="qfpl-ToolbarMinimalHeight" />
+								<label value="px" />
+							</hbox>
+						</hbox>						
+					</html:fieldset>
+					<html:fieldset id="qf-tweakColors">
+						<html:legend>&qf.label.colors;</html:legend>
+						<vbox>
+							<!-- styling hacks, we need these for the rules to apply to our preview 'tabs' -->
+							<hbox id="qf-flat-toolbar"
+										flex="1" 
+										class='quickfolders-flat'>
+								<vbox>
+									<!-- pretend toolbar -->
+									<hbox style="margin-top: .2em;" id="qf-StandardColors" lwtheme-image="true">
+										<vbox>
+											<hbox align="center">
+												<label id="inactivetabs-label"
+															 class="qfTabPreview"
+															 stylePrefKey="InactiveTab"
+															 value="&qf.label.UncoloredTab;"
+															 tooltiptext="&qf.label.UncoloredTab.tooltip;"
+															 context="QuickFolders-Options-PalettePopup"
+															 onclick="options.showPalette(this, 'standard');" />
+												<html:input id="inactive-fontcolorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="InactiveTab.color"
+																		 previewLabel="inactivetabs-label"
+																		 onchange="return options.styleUpdate('InactiveTab','color', this.value, 'inactivetabs-label');" />
+												<html:input id="inactive-colorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="InactiveTab.background-color"
+																		 onchange="return options.colorPickerTranslucent(this);" />
+												<menulist id="menuStandardPalette"
+																	sizetopopup="none"
+																	preference="qfpl-InactiveTab-PaletteType"
+																	oncommand="options.showPalettePreview(true);">
+													<menupopup>
+														<menuitem label="&qf.palette.twoColors;"
+																			value="0"
+																			oncommand="options.toggleUsePalette(this, 'standard', 0, true);" />
+														<menuitem label="&qf.palette.standard;"
+																			value="1"
+																			oncommand="options.toggleUsePalette(this, 'standard', 1, true);" />
+														<menuitem label="&qf.palette.pastel;"
+																			value="2"
+																			oncommand="options.toggleUsePalette(this, 'standard', 2, true);" />
+														<menuitem label="&qf.palette.night;"
+																			value="3"
+																			oncommand="options.toggleUsePalette(this, 'standard', 3, true);" />
+													</menupopup>
+												</menulist>
+											</hbox>
+											<separator class="thin" />
+											<hbox align="center">
+												<spacer flex="1" />
+												<label id="coloredtabs-label"
+															 value="&qf.label.ColoredTabPalette;"
+															 tooltiptext="&qf.label.ColoredTabPalette.tooltip;"
+															 stylePrefKey="ColoredTab"
+															 class="textBoxLabel"
+															 context="QuickFolders-Options-PalettePopup"
+															 onclick="options.showPalette(this, 'colored');" />
+												<menulist id="menuColoredPalette"
+																	sizetopopup="none"
+																	preference="qfpl-ColoredTab-PaletteType"
+																	oncommand="options.showPalettePreview(true);">
+													<menupopup>
+														<menuitem label="&qf.palette.standard;"
+																			value="1"
+																			oncommand="options.toggleUsePalette(this, 'colored', 1, true);" />
+														<menuitem label="&qf.palette.pastel;"
+																			value="2"
+																			oncommand="options.toggleUsePalette(this, 'colored', 2, true);" />
+														<menuitem label="&qf.palette.night;"
+																			value="3"
+																			oncommand="options.toggleUsePalette(this, 'colored', 3, true);" />
+													</menupopup>
+												</menulist>
+											</hbox>
+										</vbox>
+									</hbox>
+									<separator class="thin" />
+									<hbox>
+										<checkbox id="qf-options-shadow"
+															label="&qf.checkbox.shadows;"
+															preference="qfpl-Shadows"
+															oncommand= "return options.showButtonShadow(!this.checked);" />
+										<checkbox id="buttonTransparency"
+															label="&qf.checkbox.transparent;"
+															preference="qfpl-TransparentButtons"
+															oncommand="return options.toggleColorTranslucent(this, 'inactive-colorpicker', 'inactivetabs-label', 'InactiveTab');" />
+									</hbox>
+								</vbox>
+								<spacer flex="1" />
+								<vbox id="qf-stateColors">
+									<grid>
+										<columns>
+											<column />
+											<column />
+											<column />
+											<column />
+										</columns>
+										<rows>
+											<row align="center">
+												<label id="activetabs-label"
+															 value="&qf.label.ActiveTabColor;"
+															 tooltiptext="&qf.label.setcolors;"
+															 class="qfTabPreview"
+															 stylePrefKey="ActiveTab"
+															 context="QuickFolders-Options-PalettePopup"
+															 onclick="options.showPalette(this, 'active');" />
+												<html:input id="activetab-fontcolorpicker"
+																		 type="color"
+																		 palettename="vibrant"
+																		 elementInfo="ActiveTab.color"
+																		 previewLabel="activetabs-label"
+																		 onchange="return options.styleUpdate('ActiveTab','color', this.value, 'activetabs-label');" />
+												<html:input id="activetab-colorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="ActiveTab.background-color"
+																		 previewLabel="activetabs-label"
+																		 onchange="return options.styleUpdate('ActiveTab','background-color', this.value, 'activetabs-label');" />
+												<!-- instead of a checkbox, lets have a selection: no palette, like standard, vibrant, pastel"
+												This used to call options.toggleUsePalette(this,'active') from a checkbox
+												-->
+												<menulist id="menuActiveTabPalette"
+																	sizetopopup="none"
+																	preference="qfpl-ActiveTab-PaletteType"
+																	oncommand="QI.updateMainWindow();">
+													<menupopup>
+														<menuitem label="&qf.palette.twoColors;"
+																			value="0"
+																			oncommand="options.toggleUsePalette(this, 'active', 0, true);" />
+														<menuitem label="&qf.palette.standard;"
+																			value="1"
+																			oncommand="options.toggleUsePalette(this, 'active', 1, true);" />
+														<menuitem label="&qf.palette.pastel;"
+																			value="2"
+																			oncommand="options.toggleUsePalette(this, 'active', 2, true);" />
+														<menuitem label="&qf.palette.night;"
+																			value="3"
+																			oncommand="options.toggleUsePalette(this, 'active', 3, true);" />
+													</menupopup>
+												</menulist>
+											</row>
+											<row align="center">
+												<label id="hoveredtabs-label"
+															 value="&qf.label.HoveredTabColor;"
+															 tooltiptext="&qf.label.setcolors;"
+															 class="qfTabPreview"
+															 stylePrefKey="HoveredTab"
+															 context="QuickFolders-Options-PalettePopup"
+															 onclick="options.showPalette(this, 'hovered');" />
+												<html:input id="hover-fontcolorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="HoveredTab.color"
+																		 previewLabel="hoveredtabs-label"
+																		 onchange="return options.styleUpdate('HoveredTab','color', this.value, 'hoveredtabs-label');" />
+												<html:input id="hover-colorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="HoveredTab.background-color"
+																		 previewLabel="hoveredtabs-label"
+																		 onchange="return options.styleUpdate('HoveredTab','background-color', this.value, 'hoveredtabs-label');" />
+												<menulist id="menuHoverPalette"
+																	sizetopopup="none"
+																	preference="qfpl-HoveredTab-PaletteType"
+																	oncommand="QI.updateMainWindow();">
+													<menupopup>
+														<menuitem label="&qf.palette.twoColors;"
+																			value="0"
+																			oncommand="options.toggleUsePalette(this, 'hovered', 0, true);" />
+														<menuitem label="&qf.palette.standard;"
+																			value="1"
+																			oncommand="options.toggleUsePalette(this, 'hovered', 1, true);" />
+														<menuitem label="&qf.palette.pastel;"
+																			value="2"
+																			oncommand="options.toggleUsePalette(this, 'hovered', 2, true);" />
+														<menuitem label="&qf.palette.night;"
+																			value="3"
+																			oncommand="options.toggleUsePalette(this, 'hovered', 3, true);" />
+													</menupopup>
+												</menulist>
+											</row>
+											<row align="center">
+												<label id="dragovertabs-label"
+															 value="&qf.label.DragOverBackground;"
+															 class="qfTabPreview"
+															 stylePrefKey="DragOver"
+															 context="QuickFolders-Options-PalettePopup"
+															 onclick="options.showPalette(this, 'dragOver');" />
+												<html:input id="dragover-fontcolorpicker"
+																		 palettename="standard"
+																		 type="color"
+																		 elementInfo="DragTab.color"
+																		 previewLabel="dragovertabs-label"
+																		 onchange="return options.styleUpdate('DragTab', 'color', this.value, 'dragovertabs-label');" />
+												<html:input id="dragover-colorpicker"
+																		 type="color"
+																		 palettename="standard"
+																		 elementInfo="DragTab.background-color"
+																		 previewLabel="dragovertabs-label"
+																		 onchange="return options.styleUpdate('DragTab', 'background-color', this.value, 'dragovertabs-label');" />
+												<menulist id="menuDragOverPalette"
+																	sizetopopup="none"
+																	preference="qfpl-DragOver-PaletteType"
+																	oncommand="QI.updateMainWindow();">
+													<menupopup>
+														<menuitem label="&qf.palette.twoColors;"
+																			value="0"
+																			oncommand="options.toggleUsePalette(this, 'dragOver', 0, true);" />
+														<menuitem label="&qf.palette.standard;"
+																			value="1"
+																			oncommand="options.toggleUsePalette(this, 'dragOver', 1, true);" />
+														<menuitem label="&qf.palette.pastel;"
+																			value="2"
+																			oncommand="options.toggleUsePalette(this, 'dragOver', 2, true);" />
+														<menuitem label="&qf.palette.night;"
+																			value="3"
+																			oncommand="options.toggleUsePalette(this, 'dragOver', 3, true);" />
+													</menupopup>
+												</menulist>
+											</row>
+										</rows>
+									</grid>
+									<separator class="thin" />
+									<hbox id="qf-stateColors-defaultButton" pack="end">
+										<button label="&qf.button.defaultcolors;" oncommand="options.setDefaultColors();" />
+									</hbox>
+								</vbox>
+							</hbox>
+							<hbox id="qf-individualColors" flex="1">
+								<html:fieldset>
+									<html:legend>&qf.options.LayoutColorAppearance;</html:legend>
+									<radiogroup orient="horizontal"
+															preference="qfpl-ColorTabStyleId"
+															oncommand="options.setColoredTabStyleFromRadioGroup(this);">
+										<radio id="ExampleStripedColor" 
+													 label=" &qf.options.LayoutColorAppearanceStriped;"
+													 value="0"
+													 src="chrome://quickfolders/skin/ico/striped-example.gif" />
+										<radio id="ExampleFilledColor"
+													 label=" &qf.options.LayoutColorAppearanceFilled;"
+													 value="1"
+													 src="chrome://quickfolders/skin/ico/full-example.gif" />
+									</radiogroup>
+								</html:fieldset>
+							</hbox>
+						</vbox>
+						
+					</html:fieldset>
+				</tabpanel>
+				<tabpanel id="QuickFolders-Options-quickhelp" orient="vertical" align="center">
+					<vbox id="quickHelpPane" flex="1"  class="niceFont">
+						<separator class="thin" />
+							<description id="importantNote">
+								&qf.description.linkNote;
+							</description>
+							<vbox height="70">
+							<button id="L0"
+											href="http://quickfolders.org/"
+											tooltiptext="quickfolders.org"
+											onclick="util.openURL(event,'http://quickfolders.org/'); setTimeout(function() { window.close(); });">
+								<label width="270">&qf.label.homePage;</label>
+							</button>
+						</vbox>
+						<!-- help details, scrollable so I can add more later ... -->
+						<vbox id="quickHelpTextPane">
+							<description>&qf.description.dragToAdd;</description>
+							<description>&qf.description.dragToPosition;</description>
+							<description>&qf.description.dragToPopup;</description>
+							<description>&qf.description.changeCategory;</description>
+							<description>&qf.description.rightClickOptions;</description>
+							<!-- NOSTALGY - OBSOLETE!
+							<description>&qf.description.tipMsg;</description>
+							-->
+						</vbox>
+					</vbox>
+				</tabpanel>
+				<tabpanel id="QuickFolders-Options-support" orient="vertical">
+					<separator class="thin" />
+					<grid id="supportgrid" class="niceFont">
+						<columns>
+							<column flex="1" width="400" />
+							<column flex="1" width="200" />
+						</columns>
+						<rows>
+							<row>
+								<description>&qf.youtube.description;</description>
+								<div id="L1"
+								     class="button"
+										 tooltiptext="https://www.youtube.com/c/thunderbirddaily"
+										 onclick="util.openLinkInBrowser(event,'https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89')">
+									<label>&qf.youtube.link;</label>
+								</div>
+							</row>
+							<separator class="thin" />
+							<row>
+								<description class="niceFont">&qf.description.bugzilla;</description>
+								<div id="L2"
+								     class="button"
+										 tooltiptext="quickfolders.org/bugs.html"
+										 onclick="util.openURL(event,'http://quickfolders.org/bugs.html')">
+									<label>&qf.label.bugzilla;</label>
+								</div>
+							</row>
+							<separator class="thin" />
+							<row>
+								<description class="niceFont"
+														 oncontextmenu="util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
+									&qf.description.versionhistory;
+								</description>
+								<div id="L3"
+								     class="button"
+												tooltiptext="http://quickfolders.org/version.html"
+												onclick="options.showVersionHistory(this, false); 
+												setTimeout(function() { window.close(); });
+												return true;">
+									<label>&qf.label.versionhistory;</label>
+								</div>
+							</row>
+							<separator class="thin" />
+							<row>
+								<description class="niceFont">&qf.description.languages;</description>
+								<div id="L4"
+								     class="button"
+											 tooltiptext="www.babelzilla.org?extension=5099"
+											 onclick="util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099');">
+									<label>&qf.label.languagesLink;</label>
+								</div>
+							</row>
+							<separator class="thin" />
+							<row>
+								<description class="niceFont">&qf.description.contactMe;</description>
+								<div id="L5"
+								     class="button"
+										 onclick="options.sendMail('axelg@gofree.indigo.ie'); setTimeout(function() { window.close(); });">
+									<label>&qf.label.contactLink;</label>
+								</div>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				<!-- Licensing tab -->
+				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
+					<preferences id="prefsPremium">
+						<preference id="qfpp-QuickJumpShortcut" name="extensions.quickfolders.quickJump.useHotkey" type="bool"   instantApply="true"/>
+            <preference id="qfpp-QuickJumpShortcutShift" name="extensions.quickfolders.quickJump.Hotkey.Shift" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickJumpShortcutKey" name="extensions.quickfolders.quickJump.Hotkey" type="string" instantApply="true"/>
+            
+						<preference id="qfpp-QuickMoveShortcut" name="extensions.quickfolders.quickMove.useHotkey" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickMoveShortcutShift" name="extensions.quickfolders.quickMove.Hotkey.Shift" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickMoveShortcutKey" name="extensions.quickfolders.quickMove.Hotkey" type="string" instantApply="true"/>
+            
+						<preference id="qfpp-QuickCopyShortcut" name="extensions.quickfolders.quickCopy.useHotkey" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickCopyShortcutShift" name="extensions.quickfolders.quickCopy.Hotkey.Shift" type="bool"   instantApply="true"/>
+						<preference id="qfpp-QuickCopyShortcutKey" name="extensions.quickfolders.quickCopy.Hotkey" type="string" instantApply="true"/>
+            
+						<preference id="qfpp-QuickMoveAutoFill" name="extensions.quickfolders.quickMove.autoFill" type="bool" />
+						<preference id="qfpp-skipFolderShortcut" name="extensions.quickfolders.skipFolder.useHotkey" type="bool" instantApply="true"/>
+						<preference id="qfpp-skipFolderShortcutKey" name="extensions.quickfolders.skipFolder.Hotkey" type="string" instantApply="true"/>
+						<preference id="qfpp-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" instantApply="true"/>
+						<preference id="qfpp-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" instantApply="true"/>
+						<preference id="qfpp-MultiCategory" name="extensions.quickfolders.premium.categories.multiSelect" type="bool" instantApply="true" />
+						<preference id="qfpp-restoreConfigTabs" name="extensions.quickfolders.restoreConfig.tabs" type="bool" instantApply="true" />
+						<preference id="qfpp-restoreConfigGeneral" name="extensions.quickfolders.restoreConfig.general" type="bool" instantApply="true" />
+						<preference id="qfpp-restoreConfigLayout" name="extensions.quickfolders.restoreConfig.layout" type="bool" instantApply="true" />
+					</preferences>
+						
+					<description>&qf.label.insertLicense;</description>
+					<hbox id="licenseContainer" align="start">
+						<html:textarea id="txtLicenseKey"
+										 class="licenseKey"
+										 flex="1"
+										 multiline="true"
+										 rows="4"
+										 tooltiptext="&qf.label.insertLicense.tooltip;"></html:textarea>
+						<vbox>
+							<button id="btnPasteLicense"
+											label="&qf.button.pasteLicense;"
+											oncommand="options.pasteLicense();" />
+							<button id="btnValdidateLicense"
+											label="&qf.button.validateLicense;"
+											oncommand="options.validateLicenseInOptions(false);" />
+						</vbox>
+					</hbox>
+					<separator class="licenseSeparator" />
+					<hbox id="validationDate" collapsed="true">
+						<label>&qf.label.licenseValid;</label>
+						<label id="licenseDate" value="-" />
+					</hbox>
+					<separator class = "licenseSeparator" />
+					<hbox id="validationResults">
+					  <vbox>
+							<description id="validationPassed" class="niceFont" collapsed="true">&qf.licenseValidation.passed;</description>
+							<description id="validationFailed" class="niceFont licenseError" collapsed="true">&qf.licenseValidation.failed;</description>
+							<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.expired;</description>
+							<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.invalidMail;</description>
+							<description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">&qf.licenseValidation.notMatchedMail;</description>
+							<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">&qf.licenseValidation.invalidAddon;</description>
+					  </vbox>
+						<spacer flex="1"/>
+					</hbox>
+					<vbox height="40" >
+						<box class="btnLicenseContainer">
+							<spacer flex="1" />
+							<button id="btnLicense" 
+											label="Buy License"
+											class="register"
+											oncommand="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + options.currentOptionsTab); window.close(); });" />
+							<spacer flex="1" />
+						</box>
+					</vbox>
+					<separator flex="1" />
+					<hbox>
+						<html:fieldset id="premiumConfig" disabled="true">
+							<html:legend>&qf.premiumConfig;</html:legend>
+							<vbox>
+								<hbox>
+									<checkbox id="chkQuickJumpHotkey"
+														label="&qf.checkbox.quickJump;"
+														tooltiptext="&qf.checkbox.quickJump.tip;"
+														preference="qfpp-QuickJumpShortcut"
+														disabled="true" />
+                  <checkbox preference="qfpp-QuickJumpShortcutShift"
+                            label="&qf.checkbox.shift;+" />
+									<textbox id="qf-QuickJumpShortcut"
+													 preference="qfpp-QuickJumpShortcutKey"
+													 class="shortCutKey"
+													 disabled="true"
+													 maxLength="1"
+													 />
+								</hbox>
+								<hbox>
+									<checkbox id="chkQuickMoveHotkey"
+														label="&qf.checkbox.quickMove;"
+														tooltiptext="&qf.checkbox.quickMove.tip;"
+														preference="qfpp-QuickMoveShortcut"
+														disabled="true" 
+														oncontextmenu="options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
+														/>
+                  <checkbox preference="qfpp-QuickMoveShortcutShift"
+                            label="&qf.checkbox.shift;+" />
+									<textbox id="qf-QuickMoveShortcut"
+													 preference="qfpp-QuickMoveShortcutKey"
+													 class="shortCutKey"
+													 maxLength="1"
+													 disabled="true" />
+								</hbox>
+								<hbox>
+									<checkbox id="chkQuickCopyHotkey"
+														label="&qf.checkbox.quickCopy;"
+														tooltiptext="&qf.checkbox.quickCopy.tip;"
+														preference="qfpp-QuickCopyShortcut"
+														disabled="true" />
+                  <checkbox preference="qfpp-QuickCopyShortcutShift"
+                            label="&qf.checkbox.shift;+" />
+									<textbox id="qf-QuickCopyShortcut"
+													 preference="qfpp-QuickCopyShortcutKey"
+													 class="shortCutKey"
+													 maxLength="1"
+													 disabled="true" />
+								</hbox>
+								<hbox>
+									<spacer style="width: 16px;" />
+									<checkbox id="chkQuickMoveAutoFill"
+														label = "&qf.checkbox.quickmove.autofill;"
+														tooltiptext="&qf.checkbox.quickmove.autofill.tip;"
+														preference="qfpp-QuickMoveAutoFill" 
+														disabled="true"
+														/>
+								</hbox>
+								<spacer style="height: 0.5em;" />
+								<hbox>
+									<checkbox id="chkSkipFolderHotkey"
+														label="&qf.checkbox.skipFolder;"
+														tooltiptext="&qf.checkbox.skipFolder.tip;"
+														preference="qfpp-skipFolderShortcut"
+														disabled="true" />
+									<textbox id="qf-SkipFolderShortcut"
+													 preference="qfpp-skipFolderShortcutKey"
+													 class="shortCutKey"
+													 maxLength="1"
+													 disabled="true" />
+								</hbox>
+								
+								<hbox align="center">
+									<label control="menuQuickMoveFormat"
+												 value="&qf.quickMove.path.format;"/>
+									<menulist id="menuQuickMoveFormat"
+														sizetopopup="none"
+														preference="qfpp-QuickMove-PathType"
+														disabled="true"
+														oncommand="options.selectQuickMoveFormat(this);">
+										<menupopup>
+											<menuitem label="&qf.pathFormat.folderName;"
+																value="0"/>
+											<menuitem label="&qf.pathFormat.folderAndAccount;"
+																value="1"/>
+											<menuitem label="&qf.pathFormat.AccountAndPath;"
+																value="2"/>
+											<menuitem label="&qf.pathFormat.PathOnly;"
+																value="3"/>
+											<menuitem label="&qf.pathFormat.URI;"
+																value="4"/>
+										</menupopup>
+									</menulist>
+									<label id="button-font-size-label"
+												 control="quickmove-path-depth"
+												 value ="&qf.pathFormat.maxDepth;" />
+									<textbox id="quickmove-path-depth"
+													 tooltiptext="&qf.pathFormat.tooltip;"
+													 type="number"
+													 class="num1digit"
+													 size="3"
+													 preference="qfpp-QuickMove-PathDepth"
+													 disabled="true"/>
+								</hbox>
+								<hbox>
+									<checkbox id="chkCategories"
+														label="&qf.categories.supportMultiple;"
+														tooltiptext="&qf.categories.supportMultiple.tooltip;"
+														preference="qfpp-MultiCategory"
+														disabled="true" />
+								</hbox>
+							</vbox>
+						</html:fieldset>
+						<html:fieldset id="backupRestore" disabled="true">
+							<html:legend>&qf.backupAndRestore;</html:legend>
+							<vbox>
+								<hbox>
+									<button id="btnSaveConfig" 
+													label="&qf.storeConfig;"
+													oncommand="QI.storeConfig(Preferences);" />
+									<spacer flex="1" />
+								</hbox>
+								<hbox>
+									<button id="btnLoadConfig" 
+													label="&qf.loadConfig;"
+													oncommand="QI.loadConfig(Preferences);"
+													disabled="true" />
+									<spacer flex="1" />
+								</hbox>
+								<checkbox id="chkConfigIncludeTabs"
+													label="&qf.checkbox.storeConfig.tabs;"
+													preference="qfpp-restoreConfigTabs"
+													oncommand="options.toggleBoolPreference(this, true);"
+													disabled="true" />
+								<checkbox id="chkConfigIncludeGeneral"
+													label="&qf.checkbox.storeConfig.general;"
+													preference="qfpp-restoreConfigGeneral"
+													oncommand="options.toggleBoolPreference(this, true);"
+													disabled="true" />
+								<checkbox id="chkConfigIncludeLayout"
+													label="&qf.checkbox.storeConfig.layout;"
+													preference="qfpp-restoreConfigLayout"
+													oncommand="options.toggleBoolPreference(this, true);"
+													disabled="true" />
+							</vbox>
+						</html:fieldset>
+					</hbox>
+					<separator flex="1" />
+
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<separator class="thin" />
+	</prefpane>
+	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+	<script>
+	  Components.utils.import('resource://gre/modules/Services.jsm');
+	  QuickFolders.Options.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
+	</script>
+
+</dialog>

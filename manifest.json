@@ -23,6 +23,10 @@
 	
   "options_ui": {
     "page": "options.xhtml"
+  },
+  
+  "background": {
+    "scripts": ["qf-background.js"]
   }
 	
 	/*,	

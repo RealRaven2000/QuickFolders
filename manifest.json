@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "QuickFolders",
 	"description": "Bookmark your favorite mail folders in Thunderbird.",
-  "version": "5.0pre0",
+  "version": "5.0pre6",
   "developer": {
 	  "name": "Axel Grude",
     "url": "http://quickfolders.org/index.html"
@@ -11,8 +11,8 @@
   "applications": {
     "gecko": {
       "id": "quickfolders@curious.be",
-      "strict_min_version": "60.0",
-      "strict_max_version": "69.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
     }
   },
   "icons": {

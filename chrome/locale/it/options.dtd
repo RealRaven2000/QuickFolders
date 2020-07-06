@@ -76,9 +76,9 @@
 <!ENTITY qf.label.menus.help "Guida di Quick Folders">
 <!ENTITY qf.label.menus.support "Supporto di QuickFolders">
 <!ENTITY qf.label.menus.options "Opzioni">
-<!ENTITY qf.label.toolbarPosition "Posizione della barra degli QuickFolders">
-<!ENTITY qf.toolbarPosition.tooltip "0 = sopra altre barre degli strumenti; 100 = fondo. Il valore elevato dipende da altri componenti aggiuntivi.">
-<!ENTITY qf.btn.applyPosition "Applica valore di posizione!">
+<!ENTITY qf.label.toolbarPosition "Posizione della barra di QuickFolders">
+<!ENTITY qf.toolbarPosition.tooltip "0 = sopra tutte le altre barre degli strumenti; 100 = sotto a tutte. L'attribuzione di un valore elevato è funzione della presenza di altre estensioni.">
+<!ENTITY qf.btn.applyPosition "Inserire un valore relativo alla posizione!">
 <!ENTITY qf.caption.currentFolderBackground "Sfondo della barra degli strumenti della cartella corrente">
 <!ENTITY qf.button.currentFolderBackground.set "Configurazione">
 <!ENTITY qf.checkbox.currentfolder.lightweight "Integra in un tema 'leggero'">

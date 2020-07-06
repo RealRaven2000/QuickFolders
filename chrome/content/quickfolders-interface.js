@@ -1648,7 +1648,7 @@ QuickFolders.Interface = {
             }
           }
 					else {
-						if (prefs.isSkipFolderShortcut && (theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase())) {
+						if (isShiftOnly && prefs.isSkipFolderShortcut && (theKeyPressed == prefs.SkipFolderShortcutKey.toLowerCase())) {
 							QuickFolders.Interface.onSkipFolder();
 							isHandled = true;
 						}
@@ -4837,6 +4837,7 @@ QuickFolders.Interface = {
 				} // palette
 				break;
 			case VK_ESCAPE:
+        event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
 			  if (isShift) // [Bug 26660] SHIFT + ESC resets move list
 					QuickFolders.quickMove.resetList();
 			  QI.findFolder(false);

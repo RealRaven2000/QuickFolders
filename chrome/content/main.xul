@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<overlay id="quicktextOverlay"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <script type="application/x-javascript" src="chrome://quickfolders/content/main.js" /> 
+ 
+  <menuseparator id="quicktext-settings-sep" insertbefore="prefSep" />
+  <menuitem id="quicktext-settings" label="QUICKFOLDERMSG" oncommand="quicktext.openSettings();" insertbefore="prefSep" class="menu-iconic quicktext-icon menuitem-iconic" />
+
+</overlay>

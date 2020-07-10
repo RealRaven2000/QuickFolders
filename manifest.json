@@ -27,6 +27,27 @@
   
   "background": {
     "scripts": ["chrome/content/qf-background.js"]
+  },
+
+  "experiment_apis": {
+    "LegacyPrefs": {
+      "schema": "chrome/content/api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "chrome/content/api/LegacyPrefs/implementation.js"
+      
+      }
+    },
+    "ConversionHelper": {
+      "schema": "chrome/content/api/ConversionHelper/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["ConversionHelper"]],
+        "script": "chrome/content/api/ConversionHelper/implementation.js"
+      }
+    }
   }
+   
 	
 }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<overlay id="QuickFolders-Overlay" 
+
+xmlns:html="http://www.w3.org/1999/xhtml">
+
+<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-tablistener.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-bookmarks.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/qf-advancedTab.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-folderTree.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/qf-styles.js" />
+<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
+
+
+<script type="application/x-javascript" src="chrome://quickfolders/content/main.js" /> 
+  <script type="application/x-javascript" src="chrome://quickfolders/content/scripts/locales.js" /> 
+
+
+
+    <keyset  id = "qf-keyset"  insertbefore="mainPopupSet">
+        <key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+    </keyset>
+
+	<toolbarpalette id="MailToolbarPalette">
+        <toolbarbutton id="QuickFolders-toolbar-button" 
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              label="qf.toolbar.quickfolders.toolbar;" 
+              tooltiptext="qf.toolbar.quickfolders.toolbar;"
+              oncommand="QuickFolders.Interface.toggleToolbar(this);"
+              checked="true"
+              />
+        <toolbarbutton id="QuickFolders-createfolder" 
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              label="quickfolders.toolbar.newsubfolder;" 
+              tooltiptext="quickfolders.toolbar.newsubfolder;" 
+              oncommand="QuickFolders.Interface.onCreateInstantFolder();"
+            />
+          <toolbarbutton id="QuickFolders-skipfolder"
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              label="quickfolders.toolbar.skip;" 
+              tooltiptext="qf.tooltip.skipUnreadFolder;" 
+              oncommand="QuickFolders.Interface.onSkipFolder(null);"
+            />
+      </toolbarpalette>
+
+
+      <toolbar
+      id="QuickFolders-Toolbar"
+      toolbarname="QuickFolders Toolbar"
+      class="toolbar-primary"
+      ondragover="quickfolders.openSettings()"
+      ondrop="quickfolders.openSettings()"
+      ondragenter="quickfolders.openSettings()"
+      dragdroparea="QuickFolders-FoldersBox"
+      customizable="false"
+      context="QuickFolders-ToolbarPopup"
+      flex="10"
+      insertafter="mail-bar3"
+  >
+  <hbox id="QuickFolders-left" align="center">
+      <vbox id="QuickFolders-LabelBox" flex="0">
+          <toolbarbutton id="QuickFolders-title-label" 
+                         oncommand="QuickFolders.Interface.clickTitleLabel(this);"
+                                       label="qf.label.quickfolders;" />
+      </vbox>
+      
+<!-- move QuickFolders-Tools-Pane to separate overlay -->
+  </hbox>
+
+
+
+  <popupset id="QuickFolders-Palette" >
+    <menupopup id="QuickFolders-PalettePopup" 
+               class="QuickFolders-folder-popup" 
+                        
+                         onclick="QuickFolders.Interface.clickHandler(event,this);">
+        <!-- created in Interface code -->
+    </menupopup>
+    <menupopup id="QuickFolders-FindPopup" 
+               class="menu-iconic widerMenu" 
+               position="after_start"
+               oncommand="QuickFolders.Interface.selectFound(this, event);"
+               onkeypress="QuickFolders.Interface.foundInput(this, event);"
+               onblur="QuickFolders.Interface.findPopupBlur(this, event);"
+               ignorekeys="false">
+    </menupopup>
+</popupset>
+
+
+
+
+  <vbox id="QuickFolders-Folders-Pane"  flex="1">
+    <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
+    
+    <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
+        <label id="QuickFolders-Instructions-Label" crop="end">qf.label.dragFolderLabel;</label>
+        <!-- Filled dynamically by the script -->
+    </box>
+<!-- 		-->		
+</vbox>
+
+
+  </toolbar>
+
+
+</overlay>
+

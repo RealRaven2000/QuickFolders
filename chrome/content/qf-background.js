@@ -34,7 +34,8 @@ async function main() {
    await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messenger.xul", "chrome://quickfolders/content/main.xul");        
    //await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://quicktext/content/quicktext.xul");        
    await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messenger.xhtml", "chrome://quickfolders/content/main.xul");        
-   
+   await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messenger.xhtml", "chrome://quickfolders/content/overlay.xhtml");        
+      
    // register a script which is called upon add-on unload (to unload any JSM loaded via overlays)
   //!! await browser.ConversionHelper.registerUnloadScript("chrome://quickfolders/content/scripts/unload.js");
    

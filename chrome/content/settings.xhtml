@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
+<!--DOCTYPE window-->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
+
+
+
+
+<dialog
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				title="qf.prefwindow.quickfolders.options;"
+				buttons="extra2,accept,cancel"
+				buttonlabelextra2="qf.label.donate;"
+				lightweightthemes="true"
+				onload="QuickFolders.Options.load();"
+
+>
+
+<prefpane id="qf-options-prefpane" orient="vertical">
+
+  <box id="qf-header-container">
+    <vbox>
+      <spacer flex="1" />
+      <image id="qf-options-icon" 
+             src="chrome://quickfolders/content/skin/ico/quickfolders-Icon.png" 
+             onclick="options.collapseHead();"/>
+      <spacer flex="1" />
+    </vbox>
+    <hbox id="qf-options-header" class="paneSelector" flex="1" align="center">
+      <label id="dialogProductTitle"
+             class="dialogheader-title"
+             value="qf.label.quickfolders;" />
+      <image id="qf-youtube" 
+             src="chrome://quickfolders/content/skin/ico/youtube.png" 
+             tooltiptext="qf.youtube.tbdaily;"
+             onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
+      <spacer flex="1" />
+      <label id="qf-options-header-description"
+             onclick="if (options.showVersionHistory(this, true)) setTimeout(function() { window.close(); });return false;"
+             tooltiptext="qf.options.versionnumber.tooltip;" />
+    </hbox>
+  </box>
+
+  <popupset>
+    <menupopup id="QuickFolders-Options-PalettePopup" class="QuickFolders-folder-popup">
+      <!-- created in Interface code -->
+    </menupopup>
+  </popupset>
+
+
+  <tabbox id="QuickFolders-Options-Tabbox" orient="vertical">
+    <tabs>
+      <tab id="QuickFolders-General" label="qf.tab.general;" />
+      <tab id="QuickFolders-Advanced" label="qf.tab.advanced;" />
+      <tab id="QuickFolders-Layout" label="qf.tab.layout;" />
+      <tab id="QuickFolders-Help" label="qf.tab.quickhelp;" />
+      <tab id="QuickFolders-Support" label="qf.tab.support;" />
+      <tab id="QuickFolders-Pro" label="qf.tab.gopro;" class="free" />
+    </tabs>
+    <tabpanels id="QuickFolders-Panels">
+      <tabpanel id="QuickFolders-Options-general" orient="vertical">
+        <preferences id="prefsGeneral">
+          <preference id="qfpg-ShowUnread" name="extensions.quickfolders.showUnreadOnButtons" type="bool" instantApply="true"/>
+          <preference id="qfpg-ShowUnreadFoldersBold" name="extensions.quickfolders.showUnreadFoldersBold" type="bool" instantApply="true"/>
+          <preference id="qfpg-ShowNewMail" name="extensions.quickfolders.showNewMailHighlight" type="bool" />
+          <preference id="qfpg-ShowRecentTab" name="extensions.quickfolders.showRecentTab" type="bool" />
+          <preference id="qfpg-ShowQuickMove" name="extensions.quickfolders.showQuickMove" type="bool" />
+          <preference id="qfpg-ShowBookmarks" name="extensions.quickfolders.bookmarks.showButton" type="bool" />
+          <preference id="qfpg-ShowToolbarMenuIcon" name="extensions.quickfolders.showToolIcon" type="bool" />
+          <preference id="qfpg-UseKeyboardShortcuts" name="extensions.quickfolders.useKeyboardShortcuts" type="bool" />
+          <preference id="qfpg-UseKeyboardShortcutCTRL" name="extensions.quickfolders.useKeyboardShortcutCTRL" type="bool" />
+          <preference id="qfpg-ShowShortcutNumber" name="extensions.quickfolders.showShortcutNumber" type="bool" instantApply="true"/>
+          <preference id="qfpg-ShowTotalNumber" name="extensions.quickfolders.showTotalNumber" type="bool" />
+          <preference id="qfpg-ShowCountInSubFolders" name="extensions.quickfolders.showCountInSubFolders" type="bool" />
+          <preference id="qfpg-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool" instantApply="true"/>
+          <preference id="qfpg-ShowFoldersWithNewMailItalic" name="extensions.quickfolders.showFoldersWithNewMailItalic" type="bool" instantApply="true"/>
+          <preference id="qfpg-HideToolbarWhenNotNeeded" name="extensions.quickfolders.toolbar.onlyShowInMailWindows" type="bool" instantApply="true"/>
+          <preference id="qfpg-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool" />
+          <preference id="qfpg-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool" />
+          <preference id="qfpg-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool" />
+          <preference id="qfpg-Thunderbird-Preference-FolderCrossing" name="mailnews.nav_crosses_folders" type="int" />
+          <preference id="qfpg-RebuildShortcut" name="extensions.quickfolders.useRebuildShortcut" type="bool" />
+          <preference id="qfpg-RebuildShortcutKey" name="extensions.quickfolders.rebuildShortcutKey" type="string" />
+          <preference id="qfpg-NavigateShortcut" name="extensions.quickfolders.useNavigateShortcuts" type="bool" instantApply="true"/>
+          
+          <preference id="QuickFolders-init-delay" name="extensions.quickfolders.initDelay" type="int" />
+        </preferences>
+
+			
+
+        <html:fieldset orient="horizontal">
+
+          <html:legend>qf.label.keyboard;</html:legend>
+          <vbox>
+            <checkbox label="qf.checkbox.usekeyboardshortcuts;"
+                      preference="qfpg-UseKeyboardShortcuts"/>
+            <checkbox label="qf.checkbox.showshortcutnumber;"
+                      class="indent"
+                      preference="qfpg-ShowShortcutNumber"
+                      oncommand="options.toggleBoolPreference(this);QI.updateMainWindow();" />
+            <checkbox label="qf.checkbox.usekeyboardshortcutsCTRL;"
+                      class="indent"
+                      preference="qfpg-UseKeyboardShortcutCTRL"
+                      instantApply="true" />
+          </vbox>
+          <vbox>
+            <hbox>
+              <checkbox id="chkRebuildAccel"
+                        label="qf.checkbox.useRebuildShortcut;"
+                        preference="qfpg-RebuildShortcut"
+                        instantApply="true" />
+              <textbox id="QuickFolders-Options-RebuildShortcutKey"
+                       preference="qfpg-RebuildShortcutKey"
+                       class = "shortCutKey"
+                       instantApply="true" />
+            </hbox>
+            <checkbox label="qf.checkbox.useNavigationShortcuts;"
+                      preference="qfpg-NavigateShortcut" />
+          </vbox>
+
+
+				</html:fieldset>
+
+        <html:fieldset orient="horizontal">
+          <html:legend>qf.label.tabContent;</html:legend>
+          <vbox>
+            <checkbox label="qf.checkbox.showUnreadBold;"
+                      preference="qfpg-ShowUnreadFoldersBold"
+                      oncommand="options.toggleBoolPreference(this);"/>
+            <checkbox label="qf.checkbox.showNonEmptyItalics;"
+                      preference="qfpg-ShowFoldersWithMessagesItalic"
+                      oncommand="options.toggleBoolPreference(this);"/>
+            <checkbox label="qf.checkbox.showNewMailItalics;"
+                      preference="qfpg-ShowFoldersWithNewMailItalic"
+                      oncommand="options.toggleBoolPreference(this);"/>
+            <checkbox label="qf.checkbox.highlightNewMail;"
+                      preference="qfpg-ShowNewMail"
+                      oncommand="options.toggleBoolPreference(this);"/>
+          </vbox>
+          <vbox>
+            <checkbox label="qf.checkbox.showUnreadMessageCount;"
+                      preference="qfpg-ShowUnread"
+                      oncommand="options.toggleBoolPreference(this);" />
+            <checkbox label="qf.checkbox.showTotalMessageCount;"
+                      preference="qfpg-ShowTotalNumber"
+                      instantApply="true"
+                      oncommand="options.toggleBoolPreference(this);" />
+            <checkbox label="qf.checkbox.showCountInSubFolders;"
+                      preference="qfpg-ShowCountInSubFolders"
+                      instantApply="true"
+                      oncommand="options.toggleBoolPreference(this);"
+                      tooltiptext="qf.checkbox.showCountInSubFolders.tooltip;" />
+            <hbox pack="end">
+              <button label="qf.button.configureTooltips;" 
+                      oncommand="options.configureTooltips(this);return true;" />		
+            </hbox>
+          </vbox>
+        </html:fieldset>
+        <hbox>
+          <html:fieldset orient="vertical" flex="1">
+            <html:legend>qf.label.behavior;</html:legend>
+            <vbox>
+              <checkbox label="qf.checkbox.autoFocusPreview;"
+                        preference="qfpg-FocusPreview"
+                        instantApply="true" />
+              <checkbox label="qf.checkbox.showSubfolders;"
+                        preference="qfpg-ShowSubFolders"
+                        instantApply="true" />
+              <checkbox label="qf.checkbox.sortMenusAlpha;"
+                        tooltiptext="qf.checkbox.sortMenusAlpha.tooltip;"
+                        preference="qfpg-EnableMenuSorting"
+                        instantApply="true" />
+              <checkbox	label="qf.checkbox.autoHideToolbar;"
+                        tooltiptext="qf.checkbox.autoHideToolbar.tooltip;"
+                        preference="qfpg-HideToolbarWhenNotNeeded"
+                        instantApply="true"
+                        oncontextmenu="options.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
+                        />
+            </vbox>
+          </html:fieldset>
+
+          <html:fieldset orient="vertical" flex="2">
+            <html:legend>qf.label.mainToolbar;</html:legend>
+            <vbox>
+              <checkbox id="chkToolbarMenu"
+                        label="qf.checkbox.tabMenuIcon;"
+                        tooltiptext="qf.checkbox.tabMenuIcon.tooltip;"
+                        preference="qfpg-ShowToolbarMenuIcon"
+                        instantApply="true"
+                        oncommand="options.toggleBoolPreference(this);" />
+              <checkbox id="chkQuickMove"
+                        label="qf.checkbox.showQuickMove;"
+                        tooltiptext="qf.checkbox.showQuickMove.tooltip;"
+                        preference="qfpg-ShowQuickMove"
+                        instantApply="true"
+                        oncontextmenu="options.showAboutConfig(this,'quickfolders.premium.findFolder.max',true);return false;"
+                        oncommand="options.toggleBoolPreference(this);" />
+              <checkbox id="chkBookmarks"
+                        label="qf.checkbox.readingList;"
+                        tooltiptext="qf.checkbox.readingList.tooltip;"
+                        preference="qfpg-ShowBookmarks"
+                        instantApply="true"
+                        oncommand="options.toggleBoolPreference(this);"
+                        oncontextmenu="options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
+              <checkbox id="chkRecent"
+                        label="qf.checkbox.showRecentTab;"
+                        tooltiptext="qf.checkbox.showRecentTab.tooltip;"
+                        preference="qfpg-ShowRecentTab"
+                        instantApply="true"
+                        oncontextmenu="options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
+                        oncommand="options.toggleBoolPreference(this);" />
+            </vbox>
+          </html:fieldset>
+        </hbox>
+        <hbox>
+          <html:fieldset flex="2">
+            <html:legend>qf.group.navigation;</html:legend>
+            <hbox align="center">
+              <label value="qf.label.goNextUnread;"
+                     tooltiptext="qf.label.goNextUnread.tip;"
+                     />
+              <menulist sizetopopup="none"
+                        preference="qfpg-Thunderbird-Preference-FolderCrossing"
+                        instantApply="true"
+                        oncommand="options.selectFolderCrossing(this);">
+                <menupopup>
+                  <menuitem label="qf.goNextUnread.auto;"
+                            value="0" />
+                  <menuitem label="qf.goNextUnread.prompt;"
+                            value="1" />
+                  <menuitem label="qf.goNextUnread.none;"
+                            value="2" />
+                </menupopup>
+              </menulist>
+            </hbox>
+          </html:fieldset>
+        </hbox>
+
+
+      </tabpanel>
+      
+    </tabpanels>
+  </tabbox>
+</prefpane> 
+
+
+
+</dialog>

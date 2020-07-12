@@ -1,0 +1,610 @@
+@import url('chrome://quickfolders/content/quickfolders-layout.css');
+@import url('chrome://quickfolders/skin/quickfolders-palettes.css'); 
+@import url('chrome://quickfolders/content/contribute.css');
+@import url('chrome://quickfolders/content/license.css');
+
+/* platform specific styling */
+:root {
+ --toolbarHighlight: rgba(255,255,255,.5);
+}
+
+/* Options window */
+#qf-options-prefpane {
+	min-height: 400px;
+}
+
+#qf-header-container {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	background-image: url("chrome://messenger/skin/preferences/background.png");
+	background-color: transparent;
+	color: -moz-fieldtext;
+}
+
+#qf-options-icon {
+	height: 32px !important;
+	width: 32px !important;
+	padding: 0;
+	margin: 0 5px;
+}
+
+#qf-options-header {
+	margin: 15px 5px 15px 5px;
+	background-image:  linear-gradient(var(--toolbarHighlight), transparent), var(--lwt-header-image);
+	border: 1px solid;
+	border-radius: 6px;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-right-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDDarkShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+	padding: 1px 8px;
+	color: white;
+	font-family: Calibri,sans-serif;
+	opacity: 0.85;
+}
+
+
+#qf-youtube {
+	cursor: pointer;
+	max-height: 24px;
+}
+
+#qf-options-header label {
+  padding: 8px;
+}
+
+#qf-options-header .dialogheader-title {
+	margin: 0px !important;
+	font-size: 13pt;
+	font-weight: bold;
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
+	color: white !important;
+}
+
+/* version number */
+#qf-options-header-description {
+	background-color: rgba(60, 60, 60, 0.4); /* darken */
+	border-radius: 3px;
+	color: white !important;
+	font-size: 11pt;
+	margin-bottom: 7px;
+  padding: 4px 8px !important;
+	text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 2px rgb(96, 96, 60), 1px 2px 2px rgb(0, 0, 0);
+}
+
+#qf-options-header-description:hover {
+	cursor: pointer;
+	background-color: rgba(180,200,220,0.25);
+	border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* preview container which represents the toolbar */
+#qf-StandardColors {
+	padding: 3px 10px;
+	border: #BBBBBB;
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	/* the highlighted mail tab overlays a transparent highlight color, usually brightening */
+	background: linear-gradient(var(--toolbarHighlight), transparent);
+}
+
+#chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/reload.png"); }
+#chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/cogwheel.png"); }
+#chkCurrentFolderShow .checkbox-icon, 
+#chkCurrentFolderShowSingleMsg .checkbox-icon,
+#chkCurrentFolderShowSingleTab .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
+#chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/msgNavigate.png"); }
+#chkFolderNavigation .checkbox-icon { 
+  list-style-image: url("chrome://quickfolders/skin/ico/fugue-nw.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+#chkShowIconButtons .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture.png"); -moz-image-region: rect(0px, 16px, 16px, 0px); }
+#chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/folderCommand.png"); }
+#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/wrench.png"); }
+#chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/Filter.png"); }
+#chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png"); }
+#chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon { 
+	list-style-image: url("chrome://quickfolders/skin/ico/chk-history.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+#chkQuickMove .checkbox-icon, 
+#chkQuickMoveHotkey .checkbox-icon
+{ 
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+#chkQuickCopy .checkbox-icon, 
+#chkQuickCopyHotkey .checkbox-icon
+{ 
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	-moz-image-region: rect(64px, 16px, 80px, 0px); 
+}
+#chkQuickJumpHotkey .checkbox-icon { 
+	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	-moz-image-region: rect(48px, 16px, 64px, 0px);
+}
+
+#chkSkipFolderHotkey .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/skin/ico/exit-folder.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#chkBookmarks .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+#chkCategories .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/skin/ico/fugue-balloons.png"); 
+}
+
+#qfOpenInNewTab .checkbox-icon {
+  list-style-image : url('chrome://quickfolders/skin/ico/promote-Tab.png');
+}
+
+hbox > textbox:not([multiline="true"]) {
+	max-height: 2em;
+} 
+hbox > button {
+	max-height: 3em !important;
+}
+
+button.narrow {
+  width:auto;
+  min-width: 4em;
+}
+
+#chkCogWheel .checkbox-icon {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#chkCogWheel:hover .checkbox-icon {
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+/****** LINKS	********/
+label.text-link[href] {
+	padding: 4px 2px 4px 5px !important;
+	vertical-align: middle !important;
+}
+
+label.text-link[href] > * {
+	text-decoration: underline !important;
+}
+
+label.text-link[href]:hover {
+	color: white !important;
+	background-color: blue !important;
+}
+
+button.debug {
+	border-radius: 2px !important;
+	-moz-appearance: none !important;
+	background-color: #B00;
+	color: #FFF;
+	border: 1px solid gray;
+	padding:2px 5px;
+}
+
+label.text-link[href]:focus {
+	color: #FFF !important;
+	background-color: #06396F !important;
+	border: 1px #006 solid;
+	text-decoration: underline !important;
+}
+
+label.qfTabPreview {
+	border: #AAA 1px solid;
+	border-radius: 4px 5px 0 0;
+	padding: 3px 8px;
+	min-width:20px;
+	max-height:22px;
+	vertical-align:middle;
+}
+
+label [href^="mailto"] {
+	text-decoration: underline	!important;
+}
+
+/*#L0 {
+	margin: 0.7em 12em 0.8em 11em !important;
+}
+#L0:hover {
+	margin: 1.0em 11.8em 0.5em 11.2em !important;
+}*/
+
+label.text-link {
+	border-radius: 0.5em;
+	margin: 0.3em 1em !important;
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
+}
+
+label.text-link:hover {
+	box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.8);
+}
+
+label.text-link, label.text-link[visited="true"] {
+	border: 1px #AAA solid;
+	padding: 4px 2px 6px 5px !important;
+	text-decoration: underline !important;
+	vertical-align: middle !important;
+	text-align: center;
+	font-size: 12px;
+}
+
+#QuickFolders-Options-quickhelp {
+/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical" 
+   and align="center" so all elements inside will be centered vertically*/
+/* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
+  padding-left: 20px; 
+  padding-right: 20px;
+	text-align: justify;
+}
+
+#quickHelpPane {
+  max-width: 650px;
+}
+#quickHelpTextPane {
+	/*overflow-y: scroll;*/
+	min-height: 16em;
+}
+
+#quickHelpTextPane description {
+  margin-bottom: 0.5em;  
+}
+
+description#importantNote {
+	font-weight: bold;
+	color: #A00 !important;
+}
+
+hbox.quickhelp-dbg {
+	background-color:#333;
+	background: linear-gradient(to bottom, rgba(174,188,191,1) 0%, rgba(110,119,116,1) 27%, rgba(10,14,10,1) 48%, rgba(10,8,9,1) 100%);
+	border-radius: 0.5em;
+	color:#CCC;
+	padding: 3px 8px 3px 8px;
+}
+
+#initdelay {
+	max-width: 4em;
+}
+
+#copyFolders {
+	list-style-image: url("chrome://quickfolders/skin/ico/copy-tabs.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#copyFolders label {
+	margin-left: 2px !important; 
+}
+
+#pasteFolders {
+	min-width: 18px;
+	list-style-image: url("chrome://quickfolders/skin/ico/paste-tabs.png"); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+}
+
+#pasteFolders label {
+	display: none;
+}
+
+#pasteFolders:hover {
+	-moz-image-region: rect(16px, 16px, 32px, 0px); 
+}
+
+
+.shortCutKey {
+	width: 3em;
+	text-align: center;
+}
+
+#QuickFolders-Options-Tabbox tab {
+	border-radius: 4px 4px 0 0;
+}
+
+/* Experimental to avoid ugly tabs */
+/*
+#QuickFolders-Options-Tabbox tab:not([selected="true"]) {
+  max-width: 120px !important;
+}
+
+#QuickFolders-Options-Tabbox tab:not([selected="true"]) .tab-text{
+	min-width: 3em;
+	text-overflow: ellipsis;
+}
+*/
+
+#QuickFolders-Options-Tabbox tab .tab-icon { margin-right:6px; }
+
+#QuickFolders-Theme-Selector {
+	max-width:50%; 
+	vertical-align:top;
+}
+
+#licenseContainer {
+  /* min-height: 3em; */
+}
+.licenseSeparator {
+  min-height: 10px;
+}
+.licenseKey {
+  font-size: 10pt;
+	font-family: Consolas, Courier, monospace;
+}
+#txtLicenseKey {
+	height: 5.2em !important;
+	min-width: 45em; /* avoid "shrinking" too much in licenseKey only mode */
+}
+
+/* Test (Teo) - wanted to disable this font for consistency reasons
+   note that on Mac the system font is already a lot bigger than on Windows
+	 in Windows, mine is Tahoma, 8pt which makes a longer texts hard to read
+	 
+	 move #btnLicense to separate style sheet license.css
+  */
+.niceFont, 
+.niceFont description, 
+.niceFont button,
+.niceFont button label
+{
+  font-family: cambria, Georgia, serif;
+  font-size: 10.2pt;
+}
+
+.niceFont description {
+	/* text-shadow: 0px 0px 2px rgb(250, 250, 255), 0px 0px 10px rgb(250, 250, 255), 0px 0px 6px rgb(250, 250, 255); */
+}
+
+.licenseError {
+	border: 1px solid white;
+	color: white !important;
+	background: #A50B5E !important;
+	padding: 5px;
+}
+.licenseWarning {
+	border: 1px solid #00468C;
+	color: #00468C !important;
+	background: #FFD12A !important;
+	padding: 5px;
+}
+
+
+#validationResults description {
+  max-width:50em;
+}
+#validationResults:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+#validationPassed {
+  color: rgb(0,120,0);
+}
+
+/* improve visibility on dark themes */
+
+#QuickFolders-Panels {
+  /* min-height: 425px; */
+}
+
+#QuickFolders-Options-support {
+	background-image: url("chrome://quickfolders/skin/thunderbird-earlybird.png") !important;
+	background-repeat: no-repeat;
+}
+
+
+#supportgrid {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+
+
+#supportgrid columns,
+#supportgrid rows {
+  width: 600px !important;
+  max-width: 600px !important;
+	min-width: 400px;
+}
+
+/*added/changed by Teo*/
+#supportgrid row {
+  height: 55px;
+	margin-top: 0.9em;
+}
+
+/* #supportgrid  button, */
+#supportgrid .button {
+	display: table-cell;
+  width: 230px !important;
+  max-width: 230px !important;
+	min-width: 220px !important;
+	padding: 0.5em;
+	border: 1px solid rgba(80, 80, 80, 0.4);
+	height: 55px;	
+	text-align: center;
+	vertical-align: middle;
+}
+/* #supportgrid button label, */
+#supportgrid .button label  {
+  vertical-align: middle;
+	text-align: center;
+	margin: 4px;
+}
+
+#L0, #L1, #L2, #L3, #L4, #L5 {
+  -moz-appearance: none !important;
+	font-style: normal;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	text-align: center;
+	text-shadow: none !important;
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
+	/*background-color: #FFFFFF !important;*/  /*here you can set color*/
+}
+
+#L0 {
+	margin: 0.7em 12em 0.8em 11em !important;
+	min-height: 4em;
+	line-height: 1.6em;
+}
+
+#L0:hover {
+	margin: 1.0em 11.8em 0.5em 11.2em !important;
+}
+
+/* green */
+#L1:hover, #L0:hover, #L1:focus {
+	background-color: #076130 !important;
+	background: linear-gradient(to bottom, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
+	color: #FFF !important;
+	border: 1px #24463C solid;
+}
+
+#L1:active {
+	color: #FFF !important;
+	background-color: #076030 !important;
+	border: 1px #24463C solid;
+}
+
+/* blutorange */
+#L2:hover, #L2:focus {
+	background-color: rgb(251,202,159);
+	background: linear-gradient(to bottom, rgba(251,202,159,1) 0%, rgba(248,148,60,1) 23%, rgba(239,101,21,1) 42%, rgba(252,183,122,1) 100%) !important;
+	color: #FFF !important;
+	border: 1px #802D19 solid;
+}
+
+#L2:active {
+	color: #FFF !important;
+	text-shadow: #fdd 0 0 1px;
+}
+
+/* version history - yellow */
+#L3:hover, #L3:focus {
+	background-color: rgb(252,234,187) !important;
+	background: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,234,187,1) 6%, rgba(248,181,0,1) 34%, rgba(251,223,147,1) 100%) !important;
+	color: rgb(75, 20, 0) !important;
+	border: 1px #802D19 solid;
+}
+
+#L3:active {
+	color: #FFF !important;
+	text-shadow: #fdd 0 0 1px;
+}
+
+/* blue */
+#L4:hover, #L4:focus {
+	background-color: #2B9EEE !important;
+	background: linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%) !important;
+	color: #FFF !important;
+	border: 1px #006 solid;
+}
+
+#L4:active {
+	color: #FFF !important;
+	text-shadow: #fdd 0 0 1px;
+}
+
+/* cherry-red */
+#L5:hover, #L5:focus {
+	background-color: rgb(174,45,28) !important;
+	background: linear-gradient(to bottom, rgba(174,45,28,1) 0%, rgba(214,90,79,1) 12%, rgba(193,53,38,1) 43%, rgba(126,24,8,1) 100%) !important;
+	color: #FFF !important;
+	border: 1px #4B1400 solid;
+}
+
+#L5:active {
+	color: #FFF !important;
+	text-shadow: #fdd 0 0 1px;
+}
+
+#advancedConfig > groupbox {
+  /* max-height: 230px; */
+	min-height: 50px;
+}
+
+#currentFolderCustomize {
+	/* -moz-appearance: listbox; */
+	/* for textured themes */
+	background-color: rgba(255, 255, 255, 0.4);  
+	backface-visibility: visible;
+	box-shadow: 1px 1px 1px threedshadow inset;
+	height: 250px;
+	max-height: 250px;
+	overflow-y: scroll;
+}
+
+#mailCommandsCustomize {
+  min-width: 17em;
+}
+#contextMenuCommandsCustomize {
+  min-width: 15em;
+}
+
+/* toolbar preview with brighttext support */
+#qf-options-prefpane * {
+	text-shadow: none;
+}
+
+#qf-header-container:-moz-lwtheme,
+#qf-flat-toolbar:-moz-lwtheme {
+	/* --lwt-header-image defined in theme / messenger */
+	background-image: var(--lwt-header-image) !important;
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+
+#qf-flat-toolbar #coloredtabs-label, 
+#qf-flat-toolbar checkbox {
+	color: var(--lwt-text-color);
+}
+
+#qf-flat-toolbar {
+	padding: 5px 20px;
+}
+
+#currentFolderBackgroundContainer,
+#currentFolderBackground,
+#currentFolderStyle {
+	width: -moz-available;
+}
+
+/* from messenger
+:root:-moz-lwtheme[lwtheme-image] {
+  background-image: var(--lwt-header-image), var(--lwt-additional-images) !important;
+}
+
+:root:-moz-lwtheme:-moz-window-inactive {
+  background-color: var(--lwt-accent-color-inactive, var(--lwt-accent-color)) !important;
+}
+*/
+
+/* number fields */
+textbox[type="number"] {
+	padding-right: 0;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	margin-right: 0px;
+}
+textbox[type="number"] .textbox-input {
+	margin: 0;
+}
+
+.num1digit {
+	max-width: 4em;
+	width: auto;
+}
+
+.num2digits {
+	max-width: 5em;
+	width: auto;
+}
+
+.num3digits {
+	max-width: 6em;
+	width: auto;
+}

@@ -8,6 +8,8 @@ async function main() {
 
    // setup ConversionHelper
    await browser.ConversionHelper.registerChromeUrl([ ["content", "quickfolders", "chrome/content/"] ]);
+   //debugger;
+   //await browser.ConversionHelper.registerChromeUrl([ ["skin", "quickfolders", "classic/1.0","chrome/skin/"] ]);
    await browser.ConversionHelper.registerApiFolder("chrome://quickfolders/content/api/ConversionHelper/");
    
    // define default prefs and migrate legacy settings

@@ -24,6 +24,7 @@ var ConversionHelper = class extends ExtensionCommon.ExtensionAPI {
       ConversionHelper: {
 
         registerChromeUrl: async function(chromeData) {
+          //debugger;
           const manifestURI = Services.io.newURI(
             "manifest.json",
             null,

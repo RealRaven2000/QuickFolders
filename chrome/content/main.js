@@ -19,4 +19,4 @@ var quicktext = {
 }
 
 // custom event, fired by the overlay loader after it has finished loading
-document.addEventListener("DOMOverlayLoaded_{8845E3B3-E8FB-40E2-95E9-EC40294818C4}", () => { gQuicktext.loadSettings(false); }, { once: true });
+//document.addEventListener("DOMOverlayLoaded_{8845E3B3-E8FB-40E2-95E9-EC40294818C4}", () => { gQuicktext.loadSettings(false); }, { once: true });

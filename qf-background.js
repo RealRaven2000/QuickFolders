@@ -40,10 +40,10 @@ async function main() {
   ["locale", "quickfolders", "sv-SE", "chrome/locale/sv-SE/"],
   ["locale", "quickfolders", "vi", "chrome/locale/vi/"],
   ["locale", "quickfolders", "zh-CN", "chrome/locale/zh-CN/"],
-  ["locale", "quickfolders", "zh-CHS chrome/locale/zh-CN/"],
+  ["locale", "quickfolders", "zh-CHS", "chrome/locale/zh-CN/"],
   ["locale", "quickfolders", "zh", "chrome/locale/zh/"],
-  ["locale", "quickfolders", "zh-CHT chrome/locale/zh/"],
-  ["locale", "quickfolders", "zh-TW", "chrome/locale/zh/"],
+  ["locale", "quickfolders", "zh-CHT", "chrome/locale/zh/"],
+  ["locale", "quickfolders", "zh-TW", "chrome/locale/zh/"]
 ]);
 
  /* 
@@ -60,7 +60,7 @@ async function main() {
   * - isAddOnShutDown : indicates, if onUnload() has been called due to manual 
   *   window closing or add-on shutdown
   */
- messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "content/scripts/qf-messenger.js");
+ messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
 
  /* 
   * Any JSM which has been loaded by any of the registered JavaScript file, needs

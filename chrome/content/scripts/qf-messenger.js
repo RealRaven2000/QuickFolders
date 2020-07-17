@@ -1,6 +1,8 @@
 
+console.log("load");
+
 function onLoad(window, wasAlreadyOpen) {
-	console.log("load");
+	console.log("onload");
 	// Get the label using an entry from the i18n locale JSON file in the _locales folder.
 	// you currently do not have any JSON locales
 	// let label = this.extension.localeData.localizeMessage("menuLabel");
@@ -16,13 +18,13 @@ function onLoad(window, wasAlreadyOpen) {
 <menuitem id="quickfolders-settings"
 	label="&qf.toolbar.quickfolders.toolbar;" 
 	oncommand="window.openDialog('chrome://quickfolders/content/settings.xhtml', 'quicktextConfig', 'chrome,resizable,centerscreen')" 
-	class="menu-iconic  menuitem-iconic" />
+	class="menu-iconic  menuitem-iconic" />	
 `, 
-	["chrome://quickfolders/locale/calendar.dtd"]);
+	["chrome://quickfolders/locale/overlay.dtd"]);
 
 	// Add the parsed fragment to the UI.
 	let refItem = window.document.getElementById("prefSep");
-	menuAccountmgr.parentNode.insertBefore(xul, refItem);
+	refItem.parentNode.insertBefore(xul, refItem);
 }
 
 function onUnload(window, isAddOnShutDown) {

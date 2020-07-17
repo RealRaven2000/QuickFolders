@@ -39,12 +39,12 @@
       
       }
     },
-    "ConversionHelper": {
-      "schema": "chrome/content/api/ConversionHelper/schema.json",
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "paths": [["ConversionHelper"]],
-        "script": "chrome/content/api/ConversionHelper/implementation.js"
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
       }
     }
   }

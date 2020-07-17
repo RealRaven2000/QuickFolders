@@ -60,7 +60,7 @@ async function main() {
   * - isAddOnShutDown : indicates, if onUnload() has been called due to manual 
   *   window closing or add-on shutdown
   */
- messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "content/scripts/messenger.js");
+ messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "content/scripts/qf-messenger.js");
 
  /* 
   * Any JSM which has been loaded by any of the registered JavaScript file, needs

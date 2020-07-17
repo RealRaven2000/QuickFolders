@@ -1,6 +1,6 @@
 
 function onLoad(window, wasAlreadyOpen) {
-
+	console.log("load");
 	// Get the label using an entry from the i18n locale JSON file in the _locales folder.
 	// you currently do not have any JSON locales
 	// let label = this.extension.localeData.localizeMessage("menuLabel");

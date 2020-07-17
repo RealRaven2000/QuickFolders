@@ -337,7 +337,8 @@ function onLoad(window, wasAlreadyOpen) {
 
 function onUnload(window, isAddOnShutDown) {
 	// Remove all our elementsof class qfElement
-	let elements = window.document.getElementsByClassName("qfElement");
+	let elements = Array.from(window.document.getElementsByClassName("qfElement"));
+	console.log(elements);
 	for (let element of elements) {
 		console.log("Removing: " + (element.id || element.tagName))
 		element.remove();

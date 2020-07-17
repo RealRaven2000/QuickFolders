@@ -1,8 +1,27 @@
 
 console.log("load");
+// this is a polyfill for the buil-in pref function
+function pref(aName, aDefault) {
+	let defaults = Services.prefs.getDefaultBranch("");
+  switch (typeof aDefault) {
+	case "string":
+		return defaults.setCharPref(aName, aDefault);
+
+	case "number":
+		return defaults.setIntPref(aName, aDefault);
+	
+	case "boolean":
+		return defaults.setBoolPref(aName, aDefault);
+	  
+	default:
+	  throw new Error("Preference <" + aName + "> has an unsupported type <" + typeof aDefault + ">. Allowed are string, number and boolean.");
+  }
+}
 
 function onLoad(window, wasAlreadyOpen) {
 	console.log("onload");
+	//replace old pref default file (without this all your calls to getPref fail as there is no default define)
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/scripts/quickfoldersDefaults.js", this, "UTF-8");
 	// Get the label using an entry from the i18n locale JSON file in the _locales folder.
 	// you currently do not have any JSON locales
 	// let label = this.extension.localeData.localizeMessage("menuLabel");

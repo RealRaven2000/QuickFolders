@@ -1,5 +1,5 @@
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-console.log("load");
 // this is a polyfill for the buil-in pref function
 function pref(aName, aDefault) {
 	let defaults = Services.prefs.getDefaultBranch("");
@@ -19,7 +19,6 @@ function pref(aName, aDefault) {
 }
 
 function onLoad(window, wasAlreadyOpen) {
-	console.log("onload");
 	// make window and document available in this "sandbox" (we are inside the window["QF"] namespace)
 	this.window = window;
 	this.document = window.document;
@@ -53,10 +52,10 @@ function onLoad(window, wasAlreadyOpen) {
 
 	// Parse a XUL fragment
 	// The oncommand attribute does not know "this", so we need to specify
-	// the entiry hierachy, including "ListenerExampleAddon" namespace of this
+	// the entiry hierachy, including "QF" namespace of this
 	// JavaScript files as defined in messenger.WindowListener.startListening()
-	// in background.js.
-	
+	// in background.js.	
+
 	// append to MailToolbarPalette
 	let toolbarpalette = window.MozXULElement.parseXULToFragment(`
 	  <toolbarbutton id="QuickFolders-toolbar-button" 
@@ -330,7 +329,7 @@ function onLoad(window, wasAlreadyOpen) {
 	// Add the parsed fragment to the UI.
 	window.document.documentElement.appendChild(documentRoot);
 	
-	this.QuickFolders.Util.logDebug('Adding Folder Listener...');
+	QuickFolders.Util.logDebug('Adding Folder Listener...');
 	QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
     QuickFolders.addLoadEventListener();
 	

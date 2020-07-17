@@ -22,6 +22,27 @@ function onLoad(window, wasAlreadyOpen) {
 	console.log("onload");
 	//replace old pref default file (without this all your calls to getPref fail as there is no default define)
 	Services.scriptloader.loadSubScript("chrome://quickfolders/content/scripts/quickfoldersDefaults.js", this, "UTF-8");
+	
+	// Load all JS directly
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-rsa.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-register.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-bookmarks.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-change-order.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-model.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-advancedTab.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folderTree.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", this, "UTF-8");
+	Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", this, "UTF-8");
+
 	// Get the label using an entry from the i18n locale JSON file in the _locales folder.
 	// you currently do not have any JSON locales
 	// let label = this.extension.localeData.localizeMessage("menuLabel");
@@ -295,26 +316,7 @@ function onLoad(window, wasAlreadyOpen) {
 	["chrome://quickfolders/locale/overlay.dtd"]);
 	window.document.getElementById("folderPaneContext").appendChild(folderPaneContextMenuItems);
 	
-	let documentRoot = window.MozXULElement.parseXULToFragment(`
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-tablistener.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-bookmarks.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-change-order.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/qf-advancedTab.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-folderTree.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-folder-category.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/qf-styles.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
-	
+	let documentRoot = window.MozXULElement.parseXULToFragment(`	
 	<keyset class="qfElement">
 		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="window.QF.QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>

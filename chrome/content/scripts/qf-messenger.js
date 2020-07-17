@@ -19,20 +19,20 @@ function onLoad(window, wasAlreadyOpen) {
 			class="qfElement toolbarbutton-1 chromeclass-toolbar-additional"
 			label="&qf.toolbar.quickfolders.toolbar;" 
 			tooltiptext="&qf.toolbar.quickfolders.toolbar;"
-			oncommand="QuickFolders.Interface.toggleToolbar(this);"
+			oncommand="window.QF.QuickFolders.Interface.toggleToolbar(this);"
 			checked="true"
 			/>
 	  <toolbarbutton id="QuickFolders-createfolder" 
 			class="qfElement toolbarbutton-1 chromeclass-toolbar-additional"
 			label="&quickfolders.toolbar.newsubfolder;" 
 			tooltiptext="&quickfolders.toolbar.newsubfolder;" 
-			oncommand="QuickFolders.Interface.onCreateInstantFolder();"
+			oncommand="window.QF.QuickFolders.Interface.onCreateInstantFolder();"
 		  />
 		<toolbarbutton id="QuickFolders-skipfolder"
 			class="qfElement toolbarbutton-1 chromeclass-toolbar-additional"
 			label="&quickfolders.toolbar.skip;" 
 			tooltiptext="&qf.tooltip.skipUnreadFolder;" 
-			oncommand="QuickFolders.Interface.onSkipFolder(null);"
+			oncommand="window.QF.QuickFolders.Interface.onSkipFolder(null);"
 		  />
 `, 
 	["chrome://quickfolders/locale/overlay.dtd"]);
@@ -59,7 +59,7 @@ function onLoad(window, wasAlreadyOpen) {
 		<hbox id="QuickFolders-left" align="center">
 			<vbox id="QuickFolders-LabelBox" flex="0">
 				<toolbarbutton id="QuickFolders-title-label" 
-				               oncommand="QuickFolders.Interface.clickTitleLabel(this);"
+				               oncommand="window.QF.QuickFolders.Interface.clickTitleLabel(this);"
 											 label="&qf.label.quickfolders;" />
 			</vbox>
 			
@@ -69,14 +69,14 @@ function onLoad(window, wasAlreadyOpen) {
 			<menupopup id="QuickFolders-PalettePopup" 
 			           class="QuickFolders-folder-popup" 
 								 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-								 onclick="QuickFolders.Interface.clickHandler(event,this);">
+								 onclick="window.QF.QuickFolders.Interface.clickHandler(event,this);">
 			</menupopup>
 			<menupopup id="QuickFolders-FindPopup" 
 			           class="menu-iconic widerMenu" 
 					   position="after_start"
-					   oncommand="QuickFolders.Interface.selectFound(this, event);"
-					   onkeypress="QuickFolders.Interface.foundInput(this, event);"
-					   onblur="QuickFolders.Interface.findPopupBlur(this, event);"
+					   oncommand="window.QF.QuickFolders.Interface.selectFound(this, event);"
+					   onkeypress="window.QF.QuickFolders.Interface.foundInput(this, event);"
+					   onblur="window.QF.QuickFolders.Interface.findPopupBlur(this, event);"
 					   ignorekeys="false">
 			</menupopup>
 		</popupset>
@@ -85,21 +85,21 @@ function onLoad(window, wasAlreadyOpen) {
 			<menupopup id="QuickFolders-quickMoveMenu">
 				<menuitem id="QuickFolders-quickMove-suspend"
 				          label="&quickfolders.quickMove.menu.suspend;"
-				          oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
+				          oncommand="window.QF.QuickFolders.quickMove.toggleSuspendMove(this);" 
 				          type="checkbox"
 				          />
 				<menuitem id="QuickFolders-quickMove-cancel"
 				          label="&quickfolders.quickMove.menu.cancel;"
-				          oncommand="QuickFolders.quickMove.cancel();" 
+				          oncommand="window.QF.QuickFolders.quickMove.cancel();" 
 				          collapsed="true"
 				          />
 				<menuitem id="QuickFolders-quickMove-showSearch"
 				          label="&quickfolders.quickMove.menu.showSearch;"
-				          oncommand="QuickFolders.quickMove.showSearch();" 
+				          oncommand="window.QF.QuickFolders.quickMove.showSearch();" 
 				          />
 				<menuitem id="QuickFolders-quickMove-hideSearch"
 				          label="&quickfolders.quickMove.menu.hideSearch;"
-				          oncommand="QuickFolders.quickMove.hideSearch();" 
+				          oncommand="window.QF.QuickFolders.quickMove.hideSearch();" 
 				          collapsed="true"
 				          />
 			</menupopup>
@@ -111,12 +111,12 @@ function onLoad(window, wasAlreadyOpen) {
 				          label="&quickfolders.readingList.clear;"
 									class="cmd"
 									collapsed="true"
-				          oncommand="QuickFolders.bookmarks.resetList(true);" 
+				          oncommand="window.QF.QuickFolders.bookmarks.resetList(true);" 
 				          />
 				<menuitem id="QuickFolders-readingList-add"
 				          label="&quickfolders.readingList.addCurrent;"
 									class="cmd"
-				          oncommand="QuickFolders.bookmarks.addCurrent();" 
+				          oncommand="window.QF.QuickFolders.bookmarks.addCurrent();" 
 				          />
 			</menupopup>
 		</popupset>	
@@ -131,23 +131,23 @@ function onLoad(window, wasAlreadyOpen) {
 					
 						<menuitem id="QuickFolders-ToolbarPopup-dbg1"
 											label="Test Tree only Icons"
-											oncommand="QuickFolders.Interface.testTreeIcons();" 
+											oncommand="window.QF.QuickFolders.Interface.testTreeIcons();" 
 											class="menuitem-iconic"
 											/>
 											
 						<menuitem id="QuickFolders-ToolbarPopup-dbg2"
 											label="Load FolderTree Dictionary"
-											oncommand="QuickFolders.FolderTree.loadDictionary();" 
+											oncommand="window.QF.QuickFolders.FolderTree.loadDictionary();" 
 											class="menuitem-iconic"
 											/>														
 					  <menuitem id="QuickFolders-ToolbarPopup-dbg3"
 						          label="Platform info - aboutHost()"
-											oncommand="QuickFolders.Util.aboutHost();"
+											oncommand="window.QF.QuickFolders.Util.aboutHost();"
 											class="menuitem-iconic"
 											/>
 					  <menuitem id="QuickFolders-ToolbarPopup-dbg4"
 						          label="Load Platform CSS"
-											oncommand="QuickFolders.Util.loadPlatformStylesheet();"
+											oncommand="window.QF.QuickFolders.Util.loadPlatformStylesheet();"
 											class="menuitem-iconic"
 											/>
 
@@ -157,7 +157,7 @@ function onLoad(window, wasAlreadyOpen) {
 				<menuitem id="QuickFolders-ToolbarPopup-find"
 				          label="&qf.menuitem.quickfolders.find;"
 				          accesskey="&qf.menuitem.quickfolders.findAccess;"
-				          oncommand="QuickFolders.Interface.findFolder(true,'quickJump');" 
+				          oncommand="window.QF.QuickFolders.Interface.findFolder(true,'quickJump');" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfFindFolder"
 									collapsed="true"
@@ -165,21 +165,21 @@ function onLoad(window, wasAlreadyOpen) {
 				<menuitem id="QuickFolders-ToolbarPopup-options"
 				          label="&qf.menuitem.quickfolders.options;"
 				          accesskey="&qf.menuitem.quickfolders.optionsAccess;"
-				          oncommand="QuickFolders.Interface.viewOptions(-1);" 
+				          oncommand="window.QF.QuickFolders.Interface.viewOptions(-1);" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfOptions"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-filterMode"
 				          label="&qf.menuitem.quickfolders.filters;"
 				          accesskey="&qf.menuitem.quickfolders.filtersAccess;"
-				          oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);"
+				          oncommand="window.QF.QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);"
 				          class="cmd menuitem-iconic"
 				          tagName="qfFilter"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-paintBucket"
 				          label="&qf.menuitem.quickfolders.togglePaintMode;"
 				          accesskey="&qf.menuitem.quickfolders.togglePaintModeAccess;"
-				          oncommand="QuickFolders.Interface.togglePaintMode('toggle');"
+				          oncommand="window.QF.QuickFolders.Interface.togglePaintMode('toggle');"
 				          class="cmd menuitem-iconic"
 				          tagName="qfPaintBucket"
 				          context="QuickFolders-Palette"
@@ -187,21 +187,21 @@ function onLoad(window, wasAlreadyOpen) {
 				<menuitem id="QuickFolders-ToolbarPopup-changeOrder"
 				          label="&qf.menuitem.quickfolders.changeOrder;"
 				          accesskey="&qf.menuitem.quickfolders.changeOrderAccess;"
-				          oncommand="QuickFolders.Interface.viewChangeOrder();"
+				          oncommand="window.QF.QuickFolders.Interface.viewChangeOrder();"
 				          class="cmd menuitem-iconic"
 				          tagName="qfOrder"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-support"
 				          label="&qf.menuitem.quickfolders.support;"
 				          accesskey="&qf.menuitem.quickfolders.supportAccess;"
-				          oncommand="QuickFolders.Interface.viewSupport();"
+				          oncommand="window.QF.QuickFolders.Interface.viewSupport();"
 				          class="cmd menuitem-iconic"
 				          tagName="qfSupport"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-help"
 				          label="&qf.menuitem.quickfolders.help;"
 				          accesskey="&qf.menuitem.quickfolders.helpAccess;"
-				          oncommand="QuickFolders.Interface.viewHelp();" 
+				          oncommand="window.QF.QuickFolders.Interface.viewHelp();" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfHelp"
 				          />
@@ -209,20 +209,20 @@ function onLoad(window, wasAlreadyOpen) {
 				<menuitem id="QuickFolders-ToolbarPopup-refresh"
 				          label="&qf.menuitem.quickfolders.repairTabs;"
 				          accesskey="&qf.menuitem.quickfolders.repairTabsAccess;"
-				          oncommand="QuickFolders.Interface.updateMainWindow();" 
+				          oncommand="window.QF.QuickFolders.Interface.updateMainWindow();" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfRebuild"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-repair"
 				          label="&qf.menuitem.quickfolders.repairTreeIcons;"
-				          oncommand="QuickFolders.Interface.repairTreeIcons();" 
+				          oncommand="window.QF.QuickFolders.Interface.repairTreeIcons();" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfRepairTreeIcons"
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-tidy"
 				          label="&qf.menuitem.quickfolders.deleteDeadTabs;"
 				          accesskey="&qf.menuitem.quickfolders.deleteDeadTabsAccess;"
-				          oncommand="QuickFolders.Interface.tidyDeadFolders();" 
+				          oncommand="window.QF.QuickFolders.Interface.tidyDeadFolders();" 
 				          class="cmd menuitem-iconic"
 				          tagName="qfTidyTabs"
 				          />
@@ -230,13 +230,13 @@ function onLoad(window, wasAlreadyOpen) {
 				<menuitem id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
 				          label="&qf.menuitem.quickfolders.displayPreviewToolbar;"
 				          accesskey="&qf.menuitem.quickfolders.displayPreviewToolbarAccessKey;"
-				          oncommand="QuickFolders.Interface.displayNavigationToolbar(true,'?');"
+				          oncommand="window.QF.QuickFolders.Interface.displayNavigationToolbar(true,'?');"
 				          class="cmd menuitem-iconic"
 				          tagName="qfPreviewToolbar" 
 				          />
 				<menuitem id="QuickFolders-ToolbarPopup-register"
 				          label="&qf.menuitem.quickfolders.register;"
-				          oncommand="QuickFolders.Licenser.showDialog('mainPopup');"
+				          oncommand="window.QF.QuickFolders.Licenser.showDialog('mainPopup');"
 				          class="cmd menuitem-iconic free"
 				          tagName="qfRegister"
 				          />
@@ -265,14 +265,13 @@ function onLoad(window, wasAlreadyOpen) {
 			  tag="qfIconAdd"
               class="qfElement menuitem-iconic"
               insertafter="folderPaneContext-properties"
-              oncommand="QuickFolders.Interface.onSelectIcon(this,event);"/>
+              oncommand="window.QF.QuickFolders.Interface.onSelectIcon(this,event);"/>
     <menuitem id="context-quickFoldersRemoveIcon"
               label="&qf.foldercontextmenu.quickfolders.removeIcon;"
 			  tag="qfIconRemove"
               class="qfElement menuitem-iconic"
               insertafter="context-quickFoldersIcon"
-              oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"/>
-  </popup>	
+              oncommand="window.QF.QuickFolders.Interface.onRemoveIcon(this,event);"/>
 `, 
 	["chrome://quickfolders/locale/overlay.dtd"]);
 	window.document.getElementById("folderPaneContext").appendChild(folderPaneContextMenuItems);
@@ -298,15 +297,15 @@ function onLoad(window, wasAlreadyOpen) {
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
 	
 	<keyset class="qfElement">
-		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="window.QF.QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>
 `, 
 	["chrome://quickfolders/locale/overlay.dtd"]);
 
 	// Add the parsed fragment to the UI.
-	window.document.appendChild(documentRoot);
+	window.document.documentElement.appendChild(documentRoot);
 	
-	QuickFolders.Util.logDebug('Adding Folder Listener...');
+	this.QuickFolders.Util.logDebug('Adding Folder Listener...');
 	QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
     QuickFolders.addLoadEventListener();
 	

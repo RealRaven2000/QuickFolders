@@ -61,6 +61,7 @@ async function main() {
   *   window closing or add-on shutdown
   */
  messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
+ messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xul", "chrome/content/scripts/qf-messenger.js");
 
  /* 
   * Any JSM which has been loaded by any of the registered JavaScript file, needs

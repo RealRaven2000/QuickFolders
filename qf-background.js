@@ -76,7 +76,6 @@ async function main() {
   * an object inside the global window. The name of that object can be specified via
   * the parameter of startListening(). This object also contains an extension member.
   */
- messenger.WindowListener.startListening("QuickFolders");
+ messenger.WindowListener.startListening("QF");
 }
-
 main();

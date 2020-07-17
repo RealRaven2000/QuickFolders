@@ -20,6 +20,10 @@ function pref(aName, aDefault) {
 
 function onLoad(window, wasAlreadyOpen) {
 	console.log("onload");
+	// make window and document available in this "sandbox" (we are inside the window["QF"] namespace)
+	this.window = window;
+	this.document = window.document;
+
 	//replace old pref default file (without this all your calls to getPref fail as there is no default define)
 	Services.scriptloader.loadSubScript("chrome://quickfolders/content/scripts/quickfoldersDefaults.js", this, "UTF-8");
 	

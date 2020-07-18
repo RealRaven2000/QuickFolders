@@ -320,6 +320,7 @@ function onLoad(window, wasAlreadyOpen) {
 	window.document.getElementById("folderPaneContext").appendChild(folderPaneContextMenuItems);
 	
 	let documentRoot = window.MozXULElement.parseXULToFragment(`	
+	<html:link rel="stylesheet" href="chrome://quickfolders/content/scripts/test.css"/>
 	<keyset class="qfElement">
 		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="window.QF.QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>

@@ -2,8 +2,6 @@ content quickfolders       chrome/content/
 #jsm modules
 resource quickfolders  chrome://quickfolders/content/
 # Thunderbird 61 new old legacy
-resource quickfoldersShim60  chrome/content/shim60/ platformversion<61
-resource quickfoldersShim60  chrome/content/shim61/ platformversion>=61
 
 locale quickfolders en-US  chrome/locale/en-US/
 locale quickfolders ca     chrome/locale/ca/
@@ -29,19 +27,18 @@ locale quickfolders zh-CHT chrome/locale/zh/
 locale quickfolders zh-TW  chrome/locale/zh/
 
 #platforms specific content - allow additional platforms specific rules
-#skin    quickfolders-pl    classic/1.0  chrome/skin/
 skin    quickfolders       classic/1.0  chrome/skin/
 
 # shim-JS for platforms>11 - this section will avoid the pesky errors in Thunderbird about for..in being outdated
 # while also avoid Postbox crashing us for syntax when we use for..of
 #tb (for..of)
-content quickfoldersShim chrome://quickfolders/content/shim12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+#content quickfoldersShim chrome://quickfolders/content/shim12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
 #sm (for..of)
-content quickfoldersShim chrome://quickfolders/content/shim12/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#content quickfoldersShim chrome://quickfolders/content/shim12/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 
 #postbox (for in) (for..of)
 ## for old postbox, we can't combine application & platformversion 
-content quickfoldersShim chrome://quickfolders/content/shim12/ application=postbox@postbox-inc.com platformversion>51
+#content quickfoldersShim chrome://quickfolders/content/shim12/ application=postbox@postbox-inc.com platformversion>51
 
 # ECMA.next code (function*) etc.
 content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAold/ platformversion<26
@@ -53,9 +50,9 @@ content quickfoldersShimECMA  chrome://quickfolders/content/shimECMAnew/
 # Thunderbird >=12
 content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 # SeaMonkey
-content myXUL chrome://quickfolders/content/xulSM/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#content myXUL chrome://quickfolders/content/xulSM/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 # Postbox
-content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-inc.com
+#content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-inc.com
 
 #ALL
 overlay chrome://messenger/content/messenger.xul          chrome://myXUL/content/overlayCurrentfolder.xul
@@ -72,13 +69,6 @@ overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/
 overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
 overlay chrome://messenger/content/messenger.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion>=61
 
-#Postbox - we need to keep overlaying mailWindowOverlay at the moment or we loose the styling
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlayPostbox.xul application=postbox@postbox-inc.com
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application=postbox@postbox-inc.com
-
-#SeaMonkey
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/overlaySeamonkey.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-overlay chrome://messenger/content/mailWindowOverlay.xul chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 
 #Toolbox - moved to  separate file to re-implement quickmove in Tb70+
 overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul platformversion<69.0
@@ -86,19 +76,16 @@ overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/
 
 ##Style Tweaks
 #All
-style chrome://global/content/customizeToolbar.xul  chrome://quickfolders/content/quickfolders-layout.css appversion<59.0a1
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css appversion>=59.0a1
 style chrome://messenger/content/messenger.xul   chrome://quickfolders/content/quickfolders-68.css appversion>67
 
 # hidden option for revealing small icons checkbox:
-overlay chrome://global/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion<59.0a1
-overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul appversion>59.0a1
+overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul 
 
 
 ## modern styles - new monochrome icons for Thunderbird 60
 ## new flexible layout path quickfoldersLayout/content
-content quickfoldersLayout  chrome://quickfolders/content/layoutClassic/ appversion<60.0
-content quickfoldersLayout  chrome://quickfolders/content/layout60/ appversion>59.99
+content quickfoldersLayout  chrome://quickfolders/content/layout60/ 
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfoldersLayout/content/quickfolders-mods.css 
 
 
@@ -111,25 +98,4 @@ style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/skin/q
 style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/content/quickfolders-filters.css
 style chrome://messenger/content/messenger.xul      chrome://quickfolders/content/qf-foldertree.css
  
-
-#Postbox
-style chrome://quickfolders/content/overlayPostbox.xul chrome://quickfolders/content/quickfolders-filters.css application=postbox@postbox-inc.com
-
-#SeaMonkey # appversion<2.2  = before gecko2
-style chrome://quickfolders/content/overlaySeamonkey.xul chrome://quickfolders/content/quickfolders-filters.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-
-####### LEGACY RULES - these list deprecated css styles, for backwards compatibility with older versions of Gecko
-#######                should be ignored by the validator (but probably aren't)
-#Tb legacy
-
-#SM legacy
-
-#Postbox - still all legacy styles for linear-gradients!
-style chrome://quickfolders/content/change-order.xul        chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6
-style chrome://quickfolders/content/register.xul            chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6
-style chrome://quickfolders/content/overlayFilterList.xul   chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6
-style chrome://quickfolders/content/set-folder-category.xul chrome://quickfolders/content/qf_legacy16.css application=postbox@postbox-inc.com appversion<6
-style chrome://messenger/content/messenger.xul              chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<6
-style chrome://quickfolders/content/options.xul             chrome://quickfolders/skin/quickfolders-palettes-legacy.css application=postbox@postbox-inc.com appversion<6
 

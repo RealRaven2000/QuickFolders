@@ -916,15 +916,6 @@ var QuickFolders = {
 		let versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
                             .getService(Ci.nsIVersionComparator);
 		
-    // load legacy border radius + box-shadow rules
-		if (ApName == 'Thunderbird' && versionComparator.compare(ApVer, "4.0") < 0) {
-			let sE = QuickFolders.Styles;
-			util.logDebugOptional("css.styleSheets","Loading legacy style sheet... Ap Version=" + ApVer + "; styleEngine = " + sE);
-			let ss = QuickFolders.Interface.getStyleSheet(sE, 'chrome://quickfolders/content/quickfolders-pre4.css', "");
-		}
-		else
-			util.logDebugOptional("css.styleSheets","App Version {" + ApVer + "}>=4.0   => no legacy css rules loaded!");
-		
 		QuickFolders.initListeners();
 		
 		// move out to allow reload / editing feature

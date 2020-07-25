@@ -94,17 +94,11 @@ QuickFolders.Interface = {
 			if (this._paletteStyleSheet)
 				return this._paletteStyleSheet;
 		}
-		let ss = 
-			util.isCSSGradients ?
-			'skin/quickfolders-palettes.css' : 
-			'skin/quickfolders-palettes-legacy.css';
+		let ss = 'content/skin/quickfolders-palettes.css';
 			
 		this._paletteStyleSheet = 'chrome://quickfolders/' + ss;
 		if (!this._paletteStyleSheetOfOptions)  {
-      if (util.Application == 'Postbox')
-        this._paletteStyleSheetOfOptions = 'chrome://quickfolders/content/skin/quickfolders-palettes-legacy.css';
-      else
-        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/content/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
+      this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/content/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
     }  
 		util.logDebugOptional('css,css.Detail',"My Palette Stylesheet = " + ss);
 		

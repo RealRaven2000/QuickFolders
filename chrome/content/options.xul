@@ -3,7 +3,7 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!--  tb 59 -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
-<?xml-stylesheet href="chrome://quickfolders/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
 
 
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/options.dtd" >
@@ -44,7 +44,7 @@
 			<vbox>
 				<spacer flex="1" />
 				<image id="qf-options-icon" 
-				       src="chrome://quickfolders/skin/ico/quickfolders-Icon.png" 
+				       src="chrome://quickfolders/content/skin/ico/quickfolders-Icon.png" 
 				       onclick="options.collapseHead();"/>
 				<spacer flex="1" />
 			</vbox>
@@ -53,7 +53,7 @@
 							 class="dialogheader-title"
 							 value="&qf.label.quickfolders;" />
 				<image id="qf-youtube" 
-				       src="chrome://quickfolders/skin/ico/youtube.png" 
+				       src="chrome://quickfolders/content/skin/ico/youtube.png" 
 							 tooltiptext="&qf.youtube.tbdaily;"
 				       onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
 				<spacer flex="1" />
@@ -970,11 +970,11 @@
 										<radio id="ExampleStripedColor" 
 													 label=" &qf.options.LayoutColorAppearanceStriped;"
 													 value="0"
-													 src="chrome://quickfolders/skin/ico/striped-example.gif" />
+													 src="chrome://quickfolders/content/skin/ico/striped-example.gif" />
 										<radio id="ExampleFilledColor"
 													 label=" &qf.options.LayoutColorAppearanceFilled;"
 													 value="1"
-													 src="chrome://quickfolders/skin/ico/full-example.gif" />
+													 src="chrome://quickfolders/content/skin/ico/full-example.gif" />
 									</radiogroup>
 								</html:fieldset>
 							</hbox>

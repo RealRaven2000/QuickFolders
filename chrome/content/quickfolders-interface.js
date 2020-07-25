@@ -102,9 +102,9 @@ QuickFolders.Interface = {
 		this._paletteStyleSheet = 'chrome://quickfolders/' + ss;
 		if (!this._paletteStyleSheetOfOptions)  {
       if (util.Application == 'Postbox')
-        this._paletteStyleSheetOfOptions = 'chrome://quickfolders/skin/quickfolders-palettes-legacy.css';
+        this._paletteStyleSheetOfOptions = 'chrome://quickfolders/content/skin/quickfolders-palettes-legacy.css';
       else
-        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
+        this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // 'chrome://quickfolders/content/skin/quickfolders-options.css';  // this._paletteStyleSheet; 
     }  
 		util.logDebugOptional('css,css.Detail',"My Palette Stylesheet = " + ss);
 		
@@ -2387,7 +2387,7 @@ QuickFolders.Interface = {
 				lbl = ''; // Thread
 				break;
 			case 'Trash':
-				image = "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')";
+				image = "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')";
 				lbl = 'trash';
 				break;
 			default:
@@ -4504,7 +4504,7 @@ QuickFolders.Interface = {
 				
 				try {
 					let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
-						? "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')"
+						? "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')"
 						: ((typeof subfolder.getStringProperty != 'undefined') ? subfolder.getStringProperty("iconURL") : null);
 					if (iconURL) {
 						menuitem.style.setProperty('list-style-image', iconURL, '');
@@ -4623,7 +4623,7 @@ QuickFolders.Interface = {
 					try {
 						// [Bug 26157] is folder deleted? use different icon!
 						let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
-						  ? "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')"
+						  ? "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')"
 						  :  ((typeof subfolder.getStringProperty != 'undefined')? subfolder.getStringProperty("iconURL") : null);
 						if (iconURL) {
 							subMenu.style.setProperty('list-style-image', iconURL, '');
@@ -5864,7 +5864,7 @@ QuickFolders.Interface = {
   },
   
 	getButtonColorClass: function getButtonColorClass(col, noStripe) {
-		//let sColFolder = (tabStyle == 0) ? "chrome://quickfolders/skin/striped" : "chrome://quickfolders/skin/cols";
+		//let sColFolder = (tabStyle == 0) ? "chrome://quickfolders/content/skin/striped" : "chrome://quickfolders/content/skin/cols";
 		let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
 		
 		return 'col'+col+ 
@@ -7033,7 +7033,7 @@ QuickFolders.Interface = {
 				catch(ex) {
 					util.logException('Exception during togglePaintMode(on)', ex);
 				};
-				toolbar.style.setProperty('cursor', "url(chrome://quickfolders/skin/ico/fugue-paint-cursor.png) 14 13, auto", 'important'); // supply hotspot coordinates
+				toolbar.style.setProperty('cursor', "url(chrome://quickfolders/content/skin/ico/fugue-paint-cursor.png) 14 13, auto", 'important'); // supply hotspot coordinates
 			}
 			else {
 				toolbar.style.setProperty('cursor', 'auto', 'important');
@@ -7101,7 +7101,7 @@ QuickFolders.Interface = {
     styleEngine.setElementStyle(ss, 
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',  
                                 'list-style-image', 
-                                "url('chrome://quickfolders/skin/ico/pro-16.png')", 
+                                "url('chrome://quickfolders/content/skin/ico/pro-16.png')", 
                                 true);
   } , 
   

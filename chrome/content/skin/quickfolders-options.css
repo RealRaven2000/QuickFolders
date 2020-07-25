@@ -1,5 +1,5 @@
 @import url('chrome://quickfolders/content/quickfolders-layout.css');
-@import url('chrome://quickfolders/skin/quickfolders-palettes.css'); 
+@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css'); 
 @import url('chrome://quickfolders/content/contribute.css');
 @import url('chrome://quickfolders/content/license.css');
 
@@ -87,57 +87,57 @@
 	background: linear-gradient(var(--toolbarHighlight), transparent);
 }
 
-#chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/reload.png"); }
-#chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/cogwheel.png"); }
+#chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/reload.png"); }
+#chkToolbarMenu .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/cogwheel.png"); }
 #chkCurrentFolderShow .checkbox-icon, 
 #chkCurrentFolderShowSingleMsg .checkbox-icon,
-#chkCurrentFolderShowSingleTab .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/toolbar.png"); }
-#chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/msgNavigate.png"); }
+#chkCurrentFolderShowSingleTab .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/toolbar.png"); }
+#chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/msgNavigate.png"); }
 #chkFolderNavigation .checkbox-icon { 
-  list-style-image: url("chrome://quickfolders/skin/ico/fugue-nw.png");
+  list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-nw.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
-#chkShowIconButtons .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/fugue-picture.png"); -moz-image-region: rect(0px, 16px, 16px, 0px); }
-#chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/folderCommand.png"); }
-#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/wrench.png"); }
-#chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/Filter.png"); }
-#chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png"); }
+#chkShowIconButtons .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-picture.png"); -moz-image-region: rect(0px, 16px, 16px, 0px); }
+#chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/folderCommand.png"); }
+#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/wrench.png"); }
+#chkShowFilterButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/Filter.png"); }
+#chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/close-button-option.png"); }
 #chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon { 
-	list-style-image: url("chrome://quickfolders/skin/ico/chk-history.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/chk-history.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 #chkQuickMove .checkbox-icon, 
 #chkQuickMoveHotkey .checkbox-icon
 { 
-	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 #chkQuickCopy .checkbox-icon, 
 #chkQuickCopyHotkey .checkbox-icon
 { 
-	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(64px, 16px, 80px, 0px); 
 }
 #chkQuickJumpHotkey .checkbox-icon { 
-	list-style-image: url("chrome://quickfolders/skin/ico/quickMove.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png"); 
 	-moz-image-region: rect(48px, 16px, 64px, 0px);
 }
 
 #chkSkipFolderHotkey .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/skin/ico/exit-folder.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/exit-folder.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 
 #chkBookmarks .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-bookmark.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-bookmark.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 #chkCategories .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-balloons.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-balloons.png"); 
 }
 
 #qfOpenInNewTab .checkbox-icon {
-  list-style-image : url('chrome://quickfolders/skin/ico/promote-Tab.png');
+  list-style-image : url('chrome://quickfolders/content/skin/ico/promote-Tab.png');
 }
 
 hbox > textbox:not([multiline="true"]) {
@@ -271,7 +271,7 @@ hbox.quickhelp-dbg {
 }
 
 #copyFolders {
-	list-style-image: url("chrome://quickfolders/skin/ico/copy-tabs.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/copy-tabs.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 
@@ -281,7 +281,7 @@ hbox.quickhelp-dbg {
 
 #pasteFolders {
 	min-width: 18px;
-	list-style-image: url("chrome://quickfolders/skin/ico/paste-tabs.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/paste-tabs.png"); 
 	-moz-image-region: rect(0px, 16px, 16px, 0px); 
 }
 
@@ -389,7 +389,7 @@ hbox.quickhelp-dbg {
 }
 
 #QuickFolders-Options-support {
-	background-image: url("chrome://quickfolders/skin/thunderbird-earlybird.png") !important;
+	background-image: url("chrome://quickfolders/content/skin/thunderbird-earlybird.png") !important;
 	background-repeat: no-repeat;
 }
 

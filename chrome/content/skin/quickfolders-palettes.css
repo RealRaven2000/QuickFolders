@@ -837,7 +837,7 @@
 
 menuitem[tag="qfColor0"].color,
 menuitem[tag="qfColor0"].color:hover {
-	list-style-image : url('chrome://quickfolders/skin/ico/folder.png') !important;
+	list-style-image : url('chrome://quickfolders/content/skin/ico/folder.png') !important;
 }
 
 menuitem[tag="qfColor0"] { background-image: none!important; }

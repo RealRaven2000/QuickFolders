@@ -1,6 +1,6 @@
 
 hbox#qf-header:before {
-	content: url("chrome://quickfolders/skin/ico/quickfolders-Icon.png");
+	content: url("chrome://quickfolders/content/skin/ico/quickfolders-Icon.png");
 	margin: 0.2em 0.5em 0em 0.2em;
 }
 hbox#qf-header {
@@ -54,12 +54,12 @@ hbox.drag-image {
 button.order-button-up {
 /*    -moz-appearance: button-small; */
     max-height: 1.9em !important;
-    list-style-image: url("chrome://quickfolders/skin/ico/dropUp.gif") !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/dropUp.gif") !important;
 }
 button.order-button-down {
 /*    -moz-appearance: button-small; */
     max-height: 1.9em !important;
-    list-style-image: url("chrome://quickfolders/skin/ico/dropDown.gif") !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/dropDown.gif") !important;
 }
 
 rows#QuickFolders-change-order-grid-rows row

@@ -383,7 +383,7 @@ QuickFolders.Util = {
 		setTimeout(function() {
 				try {
 					if (!icon)
-						icon = "chrome://quickfolders/skin/ico/quickfolders-Icon.png";
+						icon = "chrome://quickfolders/content/skin/ico/quickfolders-Icon.png";
 					Components.classes['@mozilla.org/alerts-service;1'].
 								getService(Components.interfaces.nsIAlertsService).
 								showAlertNotification(icon, title, text, false, '', null, 'quickfolders-alert');
@@ -545,7 +545,7 @@ QuickFolders.Util = {
       util.logDebugOptional("premium", "notifyBox.appendNotification()…");
 			notifyBox.appendNotification( theText, 
 					notificationKey , 
-					"chrome://quickfolders/skin/ico/proFeature.png" , 
+					"chrome://quickfolders/content/skin/ico/proFeature.png" , 
 					notifyBox.PRIORITY_INFO_HIGH, 
 					nbox_buttons ); // , eventCallback
 			if (util.Application == 'Postbox') {
@@ -1786,13 +1786,13 @@ QuickFolders.Util = {
 		util.logDebug("Loading platform styles for " + util.HostSystem + "…");
 		switch (util.HostSystem) {
 			case "linux":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "winnt":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "darwin":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 		}
 		if (util.ApplicationName =="Interlink") {

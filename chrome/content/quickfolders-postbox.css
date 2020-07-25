@@ -1,5 +1,5 @@
 
-@import url('chrome://quickfolders/skin/quickfolders-palettes.css');
+@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
 
 
 /* Postbox fixes; */
@@ -50,7 +50,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
  #pbSearchThresholdNotifcationBar notification[value=quickfolders-filter] button:nth-child(2) {
    -moz-appearance: toolbarbutton;
    /* background-image: close-button-option */
-   list-style-image: url("chrome://quickfolders/skin/ico/close-button-option.png");
+   list-style-image: url("chrome://quickfolders/content/skin/ico/close-button-option.png");
    min-width: 16px;
    background-image: none;
  }

@@ -3,13 +3,13 @@
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive,
 menuitem.cmd[tagName="qfFilter"] 
 {
-	list-style-image: url("chrome://quickfolders/skin/ico/Filter-Map.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/Filter-Map.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 menuitem.cmd[tagName="qfFilter"] .menu-iconic-icon { -moz-image-region: rect(0px, 16px, 16px, 0px) !important; }
 menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon { 
-	list-style-image: url("chrome://quickfolders/skin/ico/Filter-Map.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/Filter-Map.png");
 	-moz-image-region: rect(16px, 16px, 32px, 0px)  !important; 
 }
 

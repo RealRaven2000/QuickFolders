@@ -1295,9 +1295,9 @@ QuickFolders.Options = {
         getElement = document.getElementById.bind(document);
     
 		getElement('ExampleStripedColor').src=
-			isPastel ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";
+			isPastel ? "chrome://quickfolders/content/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/content/skin/ico/striped-example.gif";
 		getElement('ExampleFilledColor').src=
-			isPastel ? "chrome://quickfolders/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/skin/ico/full-example.gif";
+			isPastel ? "chrome://quickfolders/content/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/content/skin/ico/full-example.gif";
 
 		let picker = getElement('inactive-colorpicker');
 	

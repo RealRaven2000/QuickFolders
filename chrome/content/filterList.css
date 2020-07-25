@@ -1,21 +1,21 @@
 
 #qf-reorderButtonTop, #reorderTopButton {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-top.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-arrow-top.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 
 #qf-reorderButtonBottom, #reorderBottomButton {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-bottom.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-arrow-bottom.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 
 #reorderDownButton {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-down.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-arrow-down.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 
 #reorderUpButton {
-	list-style-image: url("chrome://quickfolders/skin/ico/fugue-arrow-up.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-arrow-up.png");
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 

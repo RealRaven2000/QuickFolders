@@ -130,7 +130,7 @@ QuickFolders.FilterWorker = {
 				
 					notifyBox.appendNotification( theText, 
 							notificationKey , 
-							"chrome://quickfolders/skin/ico/filterTemplate.png" , 
+							"chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
 							notifyBox.PRIORITY_INFO_LOW, 
 								nbox_buttons,
 								function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback

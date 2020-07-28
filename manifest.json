@@ -8,6 +8,9 @@
         "name" : "Axel Grude",
         "url" : "http://quickfolders.org/index.html"
     },
+  "background": {
+    "scripts": ["qf-background1.js"]
+  },
     "applications" : { 
         "gecko" : { 
             "id" : "quickfolders@curious.be",

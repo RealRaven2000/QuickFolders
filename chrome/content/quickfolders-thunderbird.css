@@ -1,5 +1,6 @@
 @import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
 
+
 #QuickFolders-FindFolder {
 	background-color: var(--url-and-searchbar-background-color, hsla(0,0%,100%,.8));  /* Tb 60 */
 	color: var(--url-and-searchbar-color, black);	  /* Tb 60 */

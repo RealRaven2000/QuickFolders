@@ -3,51 +3,51 @@
     "manifest_version" : 2,
     "name" : "QuickFolders",
     "description" : "Bookmark your favorite mail folders in Thunderbird.",
-    "version" : "5.0pre40",
+    "version" : "5.0pre41",
     "developer" : { 
         "name" : "Axel Grude",
         "url" : "http://quickfolders.org/index.html"
     },
   "background": {
-    "scripts": ["qf-background1.js"]
+    "scripts": ["qf-background.js"]
   },
-    "applications" : { 
-        "gecko" : { 
-            "id" : "quickfolders@curious.be",
-            "strict_min_version" : "60.0",
-            "strict_max_version" : "69.0"
-        }
-    },
-    "experiment_apis": {
-        "LegacyPrefs": {
-          "schema": "chrome/content/api/LegacyPrefs/schema.json",
-          "parent": {
-            "scopes": ["addon_parent"],
-            "paths": [["LegacyPrefs"]],
-            "script": "chrome/content/api/LegacyPrefs/implementation.js"
-          
-          }
-        },
-        "WindowListener": {
-          "schema": "chrome/content/api/WindowListener/schema.json",
-          "parent": {
-            "scopes": ["addon_parent"],
-            "paths": [["WindowListener"]],
-            "script": "chrome/content/api/WindowListener/implementation.js"
-          }
-        }
-    },
-      
-        "icons" : { 
-        "16" : "chrome/content/skin/ico/QF16x16.png",
-        "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
-        "64" : "chrome/content/skin/ico/QF64x64.png"
-    },
-    "legacy" : { 
-        "options" : { 
-            "page" : "chrome://quickfolders/content/options.xul",
-            "open_in_tab" : false
-        }
+  "applications" : { 
+    "gecko" : { 
+        "id" : "quickfolders@curious.be",
+        "strict_min_version" : "60.0",
+        "strict_max_version" : "69.0"
     }
+  },
+  "experiment_apis": {
+    "LegacyPrefs": {
+      "schema": "chrome/content/api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "chrome/content/api/LegacyPrefs/implementation.js"
+      
+      }
+    },
+  "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    }
+  },
+    
+ "icons" : { 
+    "16" : "chrome/content/skin/ico/QF16x16.png",
+    "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
+    "64" : "chrome/content/skin/ico/QF64x64.png"
+  },
+  "legacy" : { 
+    "options" : { 
+        "page" : "chrome://quickfolders/content/options.xul",
+        "open_in_tab" : false
+    }
+  }
 
 }

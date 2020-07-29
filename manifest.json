@@ -18,7 +18,27 @@
             "strict_max_version" : "69.0"
         }
     },
-    "icons" : { 
+    "experiment_apis": {
+        "LegacyPrefs": {
+          "schema": "chrome/content/api/LegacyPrefs/schema.json",
+          "parent": {
+            "scopes": ["addon_parent"],
+            "paths": [["LegacyPrefs"]],
+            "script": "chrome/content/api/LegacyPrefs/implementation.js"
+          
+          }
+        },
+        "WindowListener": {
+          "schema": "chrome/content/api/WindowListener/schema.json",
+          "parent": {
+            "scopes": ["addon_parent"],
+            "paths": [["WindowListener"]],
+            "script": "chrome/content/api/WindowListener/implementation.js"
+          }
+        }
+    },
+      
+        "icons" : { 
         "16" : "chrome/content/skin/ico/QF16x16.png",
         "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
         "64" : "chrome/content/skin/ico/QF64x64.png"

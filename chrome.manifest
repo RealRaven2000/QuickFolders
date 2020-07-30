@@ -34,14 +34,15 @@ overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome:
 
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
-overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion<61
-overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
-overlay chrome://messenger/content/messenger.xul  chrome://quickfolders/content/overlay.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion>=61
+#overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/content/scrollPatch/scrollMenus.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} 
+overlay chrome://messenger/content/messenger.xul  chrome://quickfolders/content/overlay.xul  
 
 
 #Toolbox - moved to  separate file to re-implement quickmove in Tb70+
-overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul platformversion<69.0
-overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools69.xul platformversion>=69.0
+# TB 68:
+overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul 
+// TB 78:
+#overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools69.xul platformversion>=69.0
 
 ##Style Tweaks
 #All

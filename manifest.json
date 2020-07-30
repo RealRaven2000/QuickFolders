@@ -1,15 +1,12 @@
 { 
-    "author" : "Axel Grude",
-    "manifest_version" : 2,
-    "name" : "QuickFolders",
-    "description" : "Bookmark your favorite mail folders in Thunderbird.",
-    "version" : "5.0pre41",
-    "developer" : { 
-        "name" : "Axel Grude",
-        "url" : "http://quickfolders.org/index.html"
-    },
-  "background": {
-    "scripts": ["qf-background.js"]
+  "author" : "Axel Grude",
+  "manifest_version" : 2,
+  "name" : "QuickFolders",
+  "description" : "Bookmark your favorite mail folders in Thunderbird.",
+  "version" : "5.0pre42",
+  "developer" : { 
+      "name" : "Axel Grude",
+      "url" : "http://quickfolders.org/index.html"
   },
   "applications" : { 
     "gecko" : { 
@@ -18,7 +15,18 @@
         "strict_max_version" : "69.0"
     }
   },
+  "background": {
+    "scripts": ["qf-background.js"]
+  },
   "experiment_apis": {
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    },  
     "LegacyPrefs": {
       "schema": "chrome/content/api/LegacyPrefs/schema.json",
       "parent": {
@@ -27,27 +35,13 @@
         "script": "chrome/content/api/LegacyPrefs/implementation.js"
       
       }
-    },
-  "WindowListener": {
-      "schema": "chrome/content/api/WindowListener/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["WindowListener"]],
-        "script": "chrome/content/api/WindowListener/implementation.js"
-      }
     }
   },
-    
+
  "icons" : { 
     "16" : "chrome/content/skin/ico/QF16x16.png",
     "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
     "64" : "chrome/content/skin/ico/QF64x64.png"
-  },
-  "legacy" : { 
-    "options" : { 
-        "page" : "chrome://quickfolders/content/options.xul",
-        "open_in_tab" : false
-    }
   }
 
 }

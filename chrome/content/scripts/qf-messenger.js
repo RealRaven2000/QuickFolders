@@ -296,27 +296,20 @@ function onLoad(wasAlreadyOpen) {
 	window.document.getElementById("folderPaneContext").appendChild(folderPaneContextMenuItems);
 	
   debugger;
-	let styleStuff1 = window.MozXULElement.parseXULToFragment(`	
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/quickfolders-layout.css"  title="QuickFolderStyles" />
-`);  
-  window.document.documentElement.appendChild(styleStuff1);
-  // NOT WORKING, THROWS:
-  // Content at moz-nullprincipal:{57c1344e-fea9-43ed-9ee5-0290b1f7741f} may not load or link to chrome://quickfolders/content/quickfolders-layout.css.
-  
-	let styleStuff = window.MozXULElement.parseXULToFragment(`	
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/quickfolders-layout.css"  title="QuickFolderStyles" />
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/quickfolders-thunderbird.css"  title="QuickFolderStyles" />
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/quickfolders-filters.css" title="QuickFoldersFilters" />
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/skin/quickfolders-widgets.css" />
-  <html:link rel="stylesheet" href="chrome://quickfolders/content/qf-foldertree.css" />
+  let layout = injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+  layout.setAttribute("title", "QuickFolderStyles");
+  let tb = injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
+  // tb.setAttribute("title", "QuickFolderStyles");
+  injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
+  injectCSS("chrome://quickfolders/content/qf-foldertree.css");
+
+  let keyset = window.MozXULElement.parseXULToFragment(`
 	<keyset class="${namespace}">
 		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="${namespace}.QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>
 `, 
-	["chrome://quickfolders/locale/overlay.dtd"]);
-
-	// Add the parsed fragment to the UI.
-	window.document.documentElement.appendChild(styleStuff);
+	["chrome://quickfolders/locale/overlay.dtd"]);  
+  window.document.documentElement.appendChild(keyset);
 	
 	QuickFolders.Util.logDebug('Adding Folder Listener...');
 	QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);

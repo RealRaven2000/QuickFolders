@@ -34,7 +34,8 @@ async function main() {
  
     messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
     
-    // messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
+    // xhtml for Tb78 ?
+    messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xul", "chrome/content/scripts/qf-messenger.js");
 
     messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");

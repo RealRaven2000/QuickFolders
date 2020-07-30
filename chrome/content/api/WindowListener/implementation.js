@@ -2,10 +2,13 @@
  * This file is provided by the addon-developer-support repository at
  * https://github.com/thundernest/addon-developer-support
  *
+ * Version: 1.7
+ * - add injectCSS
+ * - add optional enforced namespace
+ *
  * Version: 1.6
  * - added mutation observer to be able to inject into browser elements
  * - use larger icons as fallback
- *
  *
  * Author: John Bieling (john@thunderbird.net)
  * 
@@ -122,7 +125,11 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
             : context.extension.rootURI.resolve(aPath);
         },
         
-        startListening() {
+        startListening(_forcedNamespace = null) {
+          if (_forcedNamespace) {
+            self.namespace = _forcedNamespace;
+          }
+          
           // async sleep function using Promise
           async function sleep(delay) {
             let timer =  Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);            
@@ -154,6 +161,10 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
               // messenger window is opened.
               //chromeURLs: Object.keys(self.registeredWindows),
               onLoadWindow(window) {                
+                if (window.hasOwnProperty(self.namespace)) {
+                  throw new Error("Namespace <" + self.namespace + "> already exists, aborting to load add-on <" + self.extension.manifest.name + ">");
+                  return;
+                }
                 window[self.namespace] = {};
                 
                 // Special action #1: If this is the main messenger window
@@ -234,6 +245,10 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                             }
                             if (loaded) {
                               let targetWindow = mutation.target.contentWindow.wrappedJSObject;
+                              if (targetWindow.hasOwnProperty(self.namespace)) {
+                                throw new Error("Namespace <" + self.namespace + "> already exists, aborting to load add-on <" + self.extension.manifest.name + ">");
+                                return;
+                              }
                               targetWindow[self.namespace] = {};
                               // load of window has finished, inject (isAddonActivation = false)
                               self._loadIntoWindow(targetWindow, false);
@@ -245,6 +260,10 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                   for (let element of browserElements) {
                       if (self.registeredWindows.hasOwnProperty(element.getAttribute("src"))) {
                         let targetWindow = element.contentWindow.wrappedJSObject;
+                        if (targetWindow.hasOwnProperty(self.namespace)) {
+                          throw new Error("Namespace <" + self.namespace + "> already exists, aborting to load add-on <" + self.extension.manifest.name + ">");
+                          return;
+                        }
                         targetWindow[self.namespace] = {};
                         //inject directly because the window is already open (isAddonActivation = true)
                         self._loadIntoWindow(targetWindow, true);
@@ -281,6 +300,16 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           window[this.namespace].window = window;
           window[this.namespace].document = window.document;
           
+          // helper function to inject CSS
+          window[this.namespace].injectCSS = function (cssFile) {
+            let ns = window.document.documentElement.lookupNamespaceURI("html");
+            let element = window.document.createElementNS(ns, "link");
+            element.setAttribute("class", "autoinjected_" + this.namespace);
+            element.setAttribute("rel", "stylesheet");
+            element.setAttribute("href", cssFile);
+            return window.document.documentElement.appendChild(element);
+          }
+          
           // Make extension object available in loaded JavaScript
           window[this.namespace].extension = this.extension;
           // Add messenger obj
@@ -307,18 +336,26 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
         }        
       }
 
-      if (window.hasOwnProperty(this.namespace) && this.registeredWindows.hasOwnProperty(window.location.href)) {      
+      if (window.hasOwnProperty(this.namespace) && this.registeredWindows.hasOwnProperty(window.location.href)) {
         //  Remove this window from the list of open windows
         this.openWindows = this.openWindows.filter(e => (e != window));    
         
+        // Remove all auto injected objects
+        let elements = Array.from(window.document.getElementsByClassName("autoinjected_" + this.namespace));
+        for (let element of elements) {
+          element.remove();
+        }        
+
         try {
           // Call onUnload()
           window[this.namespace].onUnload(isAddonDeactivation);
         } catch (e) {
           Components.utils.reportError(e)
         }
-        
-        // Remove injected JS object
+      }
+      
+      // Remove namespace object, if it exists
+      if (window.hasOwnProperty(this.namespace)) {
         delete window[this.namespace];
       }
   }

@@ -643,7 +643,7 @@ var QuickFolders = {
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 			// var thefunc='QuickFolders.init()';
 			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
-			setTimeout(function() { QuickFolders.init(); }, nDelay);
+			win.setTimeout(function() { QuickFolders.init(); }, nDelay);
       let folderTree = QuickFolders.mailFolderTree;
       // add an onSelect event!
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);

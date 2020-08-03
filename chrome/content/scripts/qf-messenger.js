@@ -1,6 +1,7 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 // Load all JS directly
+debugger;
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", this, "UTF-8");
@@ -313,7 +314,8 @@ function onLoad(wasAlreadyOpen) {
 	
 	QuickFolders.Util.logDebug('Adding Folder Listener...');
 	QuickFolders_mailSession.AddFolderListener(QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-    QuickFolders.addLoadEventListener();
+	QuickFolders.addLoadEventListener();
+	QuickFolders.initDelayed(window);
 	
 }
 

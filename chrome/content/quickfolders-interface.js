@@ -12,6 +12,7 @@ if (typeof ChromeUtils.import == "undefined") {
 }
 else 
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", this, "UTF-8");
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);

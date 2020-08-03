@@ -128,6 +128,7 @@ QuickFolders.Util = {
 						doc = mail3PaneWindow.document;
 			}
 		}
+		let elem=  doc.getElementById(id);//to view it
 		return doc.getElementById(id);
 	} ,
   

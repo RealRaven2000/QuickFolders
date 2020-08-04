@@ -900,8 +900,8 @@ var QuickFolders = {
 				gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
 			}
 			else {
-				QuickFolders.RenameFolders_Tb = RenameFolder;  // SeaMonkey, legacy Postbox 
-				RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
+				//?QuickFolders.RenameFolders_Tb = RenameFolder;  // SeaMonkey, legacy Postbox 
+				//?RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
 			}
     }
     
@@ -962,7 +962,7 @@ var QuickFolders = {
     }
     
     // Force Registration key check (if key is entered) in order to update interface
-    setTimeout( function() {
+    window.setTimeout( function() {
 			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register'),
 			    State = util.Licenser.ELicenseState,
 					hasLicense = util.hasPremiumLicense(true);

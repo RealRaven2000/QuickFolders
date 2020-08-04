@@ -1995,7 +1995,7 @@ var QuickFolders = {
 	addLoadEventListener: function addLoadEventListener() {
 		// avoid registering this event listener twice!
 		if (!this.loadListen) {
-			window.addEventListener("load", function() { QuickFolders.initDelayed(window); }, true);
+			//window.addEventListener("load", function() { QuickFolders.initDelayed(window); }, true);
 		}
 		this.loadListen=true;
 	},

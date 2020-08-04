@@ -42,13 +42,6 @@
     "16" : "chrome/content/skin/ico/QF16x16.png",
     "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
     "64" : "chrome/content/skin/ico/QF64x64.png"
-  },
-  "legacy" : { 
-    "options" : { 
-        "page" : "chrome://quickfolders/content/options.xul",
-        "open_in_tab" : false
-    }
-}
-
+  }
 
 }

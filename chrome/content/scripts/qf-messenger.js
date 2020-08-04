@@ -7,6 +7,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", this, "UTF-8");
+//Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-register.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", this, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-rsa.js", this, "UTF-8");

@@ -110,6 +110,7 @@ QuickFolders.Util = {
 	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
 		const util = QuickFolders.Util;
 	  try { 
+		    let mail3Pane= util.getMail3PaneWindow();
 			return util.getMail3PaneWindow().QuickFolders.Licenser;
 		}
 		catch(ex) {

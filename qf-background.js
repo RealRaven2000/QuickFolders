@@ -32,15 +32,14 @@ async function main() {
         ["locale", "quickfolders", "zh-TW", "chrome/locale/zh/"]
     ]);
  
-    messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+    messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xul"); 
     
-    // xhtml for Tb78 ?
-    messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
+    // xhtml for Tb78
+    // messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xul", "chrome/content/scripts/qf-messenger.js");
 
     messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
     messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
-    messenger.WindowListener.registerWindow("chrome://quickfolders/content/options.xul","chrome/content/scripts/qf-options.js");
 
  /*
   * Start listening for opened windows. Whenever a window is opened, the registered

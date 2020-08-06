@@ -382,7 +382,9 @@ END LICENSE BLOCK */
     ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
     ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
 
-    
+   	TODOs
+	=========
+	qf-messenger: 68 load tools.xul, 78: load tools69 
     
 	Future Work
 	===========
@@ -441,6 +443,8 @@ END LICENSE BLOCK */
   WISHLIST
   ========
 	- drag to thread finds quickfolder with correct thread and drops message there
+
+
 */
 
 

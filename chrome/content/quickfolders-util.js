@@ -110,8 +110,8 @@ QuickFolders.Util = {
 	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
 		const util = QuickFolders.Util;
 	  try { 
-		    let mail3Pane= util.getMail3PaneWindow();
-			return util.getMail3PaneWindow().QuickFolders.Licenser;
+      let mail3Pane = util.getMail3PaneWindow();
+			return mail3Pane.QuickFolders.Licenser;
 		}
 		catch(ex) {
 			util.logException('Retrieve Licenser failed: ', ex);
@@ -121,7 +121,7 @@ QuickFolders.Util = {
 
 	$: function(id) {
 		// get an element from the main window for manipulating
-		let doc=document; // we want the main document
+		let doc = document; // we want the main document
 		if (doc.documentElement && doc.documentElement.tagName) {
 			if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
 					let mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
@@ -129,8 +129,8 @@ QuickFolders.Util = {
 						doc = mail3PaneWindow.document;
 			}
 		}
-		let elem=  doc.getElementById(id);//to view it
-		return doc.getElementById(id);
+		let elem = doc.getElementById(id);
+		return elem;
 	} ,
   
   enumProperties: function enumProps(v) {

@@ -421,7 +421,78 @@ WL.injectElements(`
 
 
 //-----------------------------
+//qf-tools
 
+
+WL.injectElements(`
+    
+<hbox id="QuickFolders-left">
+<vbox id="QuickFolders-Tools-Pane" 
+insertafter="QuickFolders-LabelBox">
+    <hbox id="QuickFolders-Category-Box"
+              ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver)">
+        <menulist id="QuickFolders-Category-Selection" 
+                            oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
+                            sizetopopup="none" 
+                            collapsed="true">
+            <menupopup>
+                <!-- filled dynamically from JS -->
+            </menupopup>
+        </menulist>
+        <hbox id="QuickFolders-oneButtonPanel">
+            <toolbarbutton id="QuickFolders-mainPopup"
+                             class="popupButton"
+                             tooltiptext="&qf.tooltip.mainOptions;"
+                             context="QuickFolders-ToolbarPopup"
+                             onclick="QuickFolders.Interface.showPopup(this,'QuickFolders-ToolbarPopup',event);"/>
+            <toolbarbutton id="QuickFolders-filterActive"
+                             tooltiptext="&qf.tooltip.filters;"
+                             oncommand="QuickFolders.Interface.toggle_FilterMode(false);"
+                             collapsed="true"/>
+            <toolbarbutton id="QuickFolders-paintBucketActive"
+                             label="ABC"
+                             tooltiptext="&qf.tooltip.paintCanActive;"
+                             context="QuickFolders-PalettePopup" 
+                             oncommand="QuickFolders.Interface.showPalette(this);"
+                             collapsed="true"/>
+            <toolbarbutton id="QuickFolders-readingList"
+                             class="popupButton"
+                             tooltiptext="&quickfolders.readingList.tooltip;"
+                             label=""
+                             onclick="QuickFolders.Interface.readingListClick(event,this);"
+                             ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+                             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+                             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+                             context="QuickFolders-readingListMenu"
+                             collapsed="true"/>
+            <toolbarbutton id="QuickFolders-quickMove"
+                             class="popupButton"
+                             tooltiptext="&qf.tooltip.quickMove;"
+                             label=""
+                             onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
+                             ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
+                             ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
+                             ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+                             context="QuickFolders-quickMoveMenu"
+                             />
+            <!-- removed searchbutton=true so pressing [Enter] is not necessary-->
+            <textbox id="QuickFolders-FindFolder" 
+                     oncommand="QuickFolders.Interface.findFolderName(this);"
+                     onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
+                     class="searchBox"
+                     type="search"
+                     collapsed="true"
+                     placeholder="&quickfolders.findFolder.placeHolder;"/>
+         </hbox>
+    </hbox>
+</vbox>
+</hbox>
+
+`, ["chrome://quickfolders/locale/overlay.dtd"]);
+
+
+//qf-tools
+//------------------------------------
     
     window.QuickFolders.Util.logDebug('Adding Folder Listener...');
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);

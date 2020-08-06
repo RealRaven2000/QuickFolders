@@ -34,7 +34,9 @@ async function main() {
  
     messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xul"); 
     
-    // xhtml for Tb78
+ //attention: each target window (like messenger.xul) can appear only once
+ // this is different from chrome.manifest
+ // xhtml for Tb78
     // messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xul", "chrome/content/scripts/qf-messenger.js");
 

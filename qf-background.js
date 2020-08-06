@@ -40,6 +40,9 @@ async function main() {
     // messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xul", "chrome/content/scripts/qf-messenger.js");
 
+    messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose.xul", "chrome/content/scripts/qf-composer.js");
+
+
     messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
     messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
 

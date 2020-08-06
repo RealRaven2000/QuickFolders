@@ -26,11 +26,11 @@ locale quickfolders zh-TW  chrome/locale/zh/
 #ALL
 overlay chrome://messenger/content/messenger.xul          chrome://quickfolders/content/overlayCurrentfolder.xul
 overlay chrome://messenger/content/messageWindow.xul      chrome://quickfolders/content/currentFolderSingleMessage.xul
-overlay chrome://messenger/content/SearchDialog.xul       chrome://quickfolders/content/overlaySearchDialog.xul
-overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
+#overlay chrome://messenger/content/SearchDialog.xul       chrome://quickfolders/content/overlaySearchDialog.xul
+#overlay chrome://messenger/content/FilterListDialog.xul   chrome://quickfolders/content/overlayFilterList.xul
 
 # messengercompose.xul (MailCompose Window)
-overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://quickfolders/content/overlayComposer.xul
+#overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://quickfolders/content/overlayComposer.xul
 
 # replace mailWindowOverlay.xul with messenger.xul!
 #TB3+
@@ -40,7 +40,7 @@ overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/
 
 #Toolbox - moved to  separate file to re-implement quickmove in Tb70+
 # TB 68:
-overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul 
+#overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools.xul 
 // TB 78:
 #overlay chrome://quickfolders/content/overlay.xul chrome://quickfolders/content/qf-tools69.xul platformversion>=69.0
 

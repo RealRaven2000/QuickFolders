@@ -65,8 +65,8 @@ function onLoad(activatedWhileWindowOpen) {
 
     
     window.QuickFolders.Util.logDebug('Adding FilterList...');
-    window.addEventListener("load", function(e) { QuickFolders.FilterList.onLoadFilterList(e);}, false); 
-    window.QuickFolders.FilterList.onLoadFilterList();
+    // obsolete window.addEventListener("load", function(e) { QuickFolders.FilterList.onLoadFilterList(e);}, false); 
+    window.QuickFolders.FilterList.onLoadFilterList();  //? event needed?
 }
 
 function onUnload(isAddOnShutDown) {

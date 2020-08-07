@@ -46,11 +46,11 @@ overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/
 
 ##Style Tweaks
 #All
-style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css 
+#style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-layout.css 
 #style chrome://messenger/content/messenger.xul   chrome://quickfolders/content/quickfolders-68.css 
 
 # hidden option for revealing small icons checkbox:
-overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul 
+#overlay chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/overlayCustomizeToolbar.xul 
 
 
 ## modern styles - new monochrome icons for Thunderbird 60

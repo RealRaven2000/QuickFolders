@@ -1792,7 +1792,9 @@ QuickFolders.Util = {
 				break;
 			case "winnt":
 //				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/qf-platform.css', 'QuickFolderPlatformStyles');
+//				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/qf-platform.css', 'QuickFolderPlatformStyles');
+				let newCSS = QuickFolders.WL.injectCSS('chrome://quickfolders/content/skin/win/qf-platform.css');
+				newCSS.setAttribute("title", "QuickFolderPlatformStyles");
 				break;
 			case "darwin":
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');

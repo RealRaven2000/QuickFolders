@@ -499,7 +499,7 @@ insertafter="QuickFolders-LabelBox">
     window.QuickFolders.Util.logDebug('Adding Folder Listener...');
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
 //   obsolete   window.QuickFolders.addLoadEventListener();
-    window.QuickFolders.initDelayed(window);
+    window.QuickFolders.initDelayed(window, WL);
 }
 
 function onUnload(isAddOnShutDown) {

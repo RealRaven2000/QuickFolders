@@ -559,6 +559,7 @@ var QuickFolders_getDocument= function() {
 var QuickFolders = {
 	doc: null,
 	win: null,
+	WL: {},
   RenameFolders_Tb: null,
 	isQuickFolders: true, // to verify this
 	_folderTree: null,
@@ -629,8 +630,9 @@ var QuickFolders = {
 		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
 	},
 
-	initDelayed: function initDelayed(win) {
+	initDelayed: function initDelayed(win, WLorig) {
 	  if (this.initDone) return;
+	  QuickFolders.WL = WLorig;
 		const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,

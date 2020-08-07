@@ -9,7 +9,7 @@ function onLoad(activatedWhileWindowOpen) {
     
     window.QuickFolders.Util.logDebug('Adding Search Dialog...');
    //obsolete  window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 
-    window.QuickFolders.SearchDialog.onLoad();  //event needed?
+    window.QuickFolders.SearchDialog.onLoad();  //?event needed?
  }
 
 function onUnload(isAddOnShutDown) {

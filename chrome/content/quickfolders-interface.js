@@ -6127,8 +6127,9 @@ QuickFolders.Interface = {
 			let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService),
 			    ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
 			    fileUri = (Name.length && Name.indexOf("chrome://")<0) ? "chrome://quickfolders/content/" + Name : Name,
-			    uri = ios.newURI(fileUri, null, null);
-			if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
+				uri = ios.newURI(fileUri, null, null);
+			let sheetRegistered=sss.sheetRegistered(uri, sss.USER_SHEET);
+			if(!sheetRegistered) {
 				util.logDebugOptional("css", "=============================================================\n"
 				                                 + "style sheet not registered - now loading: " + uri);
 				sss.loadAndRegisterSheet(uri, sss.USER_SHEET);

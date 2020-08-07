@@ -1791,7 +1791,8 @@ QuickFolders.Util = {
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "winnt":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
+//				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
+				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "darwin":
 				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');

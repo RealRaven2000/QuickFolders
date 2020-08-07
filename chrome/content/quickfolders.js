@@ -385,6 +385,7 @@ END LICENSE BLOCK */
    	TODOs
 	=========
 	qf-messenger: 68 load tools.xul, 78: load tools69 
+	platform-css copy to content (not content/skin/something)
     
 	Future Work
 	===========

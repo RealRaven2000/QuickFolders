@@ -8,8 +8,8 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 function onLoad(activatedWhileWindowOpen) {
     
     window.QuickFolders.Util.logDebug('Adding Search Dialog...');
-    window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 
-    window.QuickFolders.SearchDialog.onLoad();
+   //obsolete  window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 
+    window.QuickFolders.SearchDialog.onLoad();  //event needed?
  }
 
 function onUnload(isAddOnShutDown) {

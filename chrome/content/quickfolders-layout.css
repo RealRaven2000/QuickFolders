@@ -207,6 +207,7 @@ menupopup.widerMenu menucaption {
 	height: auto; /* was 19px */
 	vertical-align:top;
 	background-repeat: repeat-x;
+  display: inline-block;
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,

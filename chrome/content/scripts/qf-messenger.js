@@ -21,6 +21,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js"
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
+    console.log (Services.appinfo.version);
     let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
     layout.setAttribute("title", "QuickFolderStyles");
     
@@ -337,9 +338,12 @@ WL.injectElements(`
                                              class="icon"
                                              special="qfMsgFolderNavigation" 
                                              oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
-                                             tooltiptext="&qf.tooltip.conversationRead;" />
-                <!-- skip folder -->
-                <toolbarbutton id="quickFoldersSkipFolder"
+                                             tooltiptext="&qf.tooltip.conversationRead;" />`
+                                             +
+                
+                  //          <!-- skip folder -->   (//comment is treated as node)
+                  `
+                           <toolbarbutton id="quickFoldersSkipFolder"
                                              class="icon"
                                              special="qfMsgFolderNavigation" 
                                              oncommand="QuickFolders.Interface.onSkipFolder(this);"

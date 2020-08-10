@@ -48,8 +48,11 @@ function onLoad(activatedWhileWindowOpen) {
                              class="icon"
                              special="qfMsgFolderNavigation" 
                                          oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
-                             tooltiptext="&qf.tooltip.conversationRead;" />
-            <!-- skip folder -->
+                             tooltiptext="&qf.tooltip.conversationRead;" />`
+                             +
+
+  //          <!-- skip folder -->
+  `
             <toolbarbutton id="quickFoldersSkipFolder"
                                          class="icon"
                                          special="qfMsgFolderNavigation" 

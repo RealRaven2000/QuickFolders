@@ -2214,6 +2214,8 @@ QuickFolders.Interface = {
 			}
 			this.FoldersBox.appendChild(button);
 			if (folder) {
+        // in Tb78, they use gFolderTreeView._onDragDrop, gFolderTreeView._onDragStart, gFolderTreeView._onDragOver
+        // these are defined in mail/base/content/folderPane.js
 				this.setEventAttribute(button, "ondragenter", "nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
 				this.setEventAttribute(button, "ondragover", "nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
 				this.setEventAttribute(button, "ondrop", "nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");

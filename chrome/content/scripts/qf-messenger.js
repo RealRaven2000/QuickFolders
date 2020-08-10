@@ -507,4 +507,10 @@ insertafter="QuickFolders-LabelBox">
 }
 
 function onUnload(isAddOnShutDown) {
+  let treeView = window.gFolderTreeView;
+  if (treeView) {
+    // remove  custom flags!
+    delete treeView["supportsIcons"];  
+    delete treeView["qfIconsEnabled"];
+  }
 }

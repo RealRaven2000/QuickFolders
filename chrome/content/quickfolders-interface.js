@@ -1915,7 +1915,11 @@ QuickFolders.Interface = {
 			if (popupId=="QuickFolders-ToolbarPopup" && evt) {
 				// find all menu items with class "dbgMenu" and uncollapse them
 				let nodes = p.childNodes;
-				for (let i=0; i<nodes.length; i++) {
+				if (!nodes) {
+					debugger;
+				//	return;
+				}
+						for (let i=0; i<nodes.length; i++) {
 					if(nodes[i].classList.contains('dbgMenu')) {
 						nodes[i].collapsed=!evt.shiftKey;
 					}

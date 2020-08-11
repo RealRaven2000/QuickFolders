@@ -1872,7 +1872,7 @@ QuickFolders.Util = {
   getAnonymousNodes(doc,el) {
     let aN = [];
     for (let i = el.childNodes.length-1; i>0; i--) {
-      if (!el[i].getAttribute("id") && !el[i].getAttribute("name"))
+      if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
         aN.push(el);
     }
     return aN;

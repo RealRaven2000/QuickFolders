@@ -27,21 +27,21 @@ QuickFolders.FolderTree = {
         return; // for now, disable it
       }
       else { treeView = gFolderTreeView; }
-      if (treeView.supportsIcons) return; // already defined!
+      if (gFolderTreeView.supportsIcons) return; // already defined!
       if (QuickFolders.FolderTree.GetCellProperties)
         return;
-      QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties.bind(treeView);
+      QuickFolders.FolderTree.GetCellProperties = gFolderTreeView.getCellProperties.bind(gFolderTreeView);
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
-      treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
-      treeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
-        if (QuickFolders.FolderTree.GetCellProperties == treeView.getCellProperties) {
+      gFolderTreeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
+      gFolderTreeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
+        if (QuickFolders.FolderTree.GetCellProperties == gFolderTreeView.getCellProperties) {
           debugger;
           return null; // avoid "impossible" recursion?
         }
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
-          let folder = treeView.getFolderForIndex(row);
-          if (!treeView.qfIconsEnabled) {
+          let folder = gFolderTreeView.getFolderForIndex(row);
+          if (!gFolderTreeView.qfIconsEnabled) {
             return props;
           }
 					/*
@@ -52,7 +52,7 @@ QuickFolders.FolderTree = {
 					*/
 					
           try {
-						if (treeView.supportsIcons) {
+						if (gFolderTreeView.supportsIcons) {
 							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
 								// save folder icon selector
@@ -75,7 +75,7 @@ QuickFolders.FolderTree = {
         }
         return props;
       } // end of override		
-      treeView.supportsIcons = true;
+      gFolderTreeView.supportsIcons = true;
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
       this.loadDictionary();

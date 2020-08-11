@@ -40,8 +40,8 @@
 												 position="after_start"
 												 oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, false);"
 												 onclick= "QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
-												 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-												 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+												 ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
+												 ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"
 												 tooltiptext="&qf.tooltip.RecentFolders;"/>
 					<toolbarseparator special="qfMsgFolderNavigation" />
 					<toolbarbutton id="quickFoldersPreviousUnread"
@@ -81,8 +81,8 @@
 						<toolbarbutton id="QuickFoldersCurrentFolder"
 													 label="Current Folder"
 													 class="selected-folder"
-													 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-													 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
+													 ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
+													 ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"/>
 					</hbox>
 					<toolbarbutton id="QuickFolders-NavigateRight"
 												 class="icon"

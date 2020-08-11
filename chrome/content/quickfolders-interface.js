@@ -5828,7 +5828,7 @@ QuickFolders.Interface = {
 
   configureCategory: function configureCategory(folder, quickfoldersPointer) {
 		let retval = {btnClicked:null};
-		window.openDialog('chrome://quickfolders/content/set-folder-category.xul',
+		window.openDialog('chrome://quickfolders/content/set-folder-category.xhtml',
 			'quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal=no,resizable,alwaysRaised', quickfoldersPointer, folder,retval);
 		if (retval.btnClicked!=null)
 			QuickFolders.Model.update();

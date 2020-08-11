@@ -871,9 +871,9 @@ QuickFolders.Interface = {
 				  "hideFolderNavigation=" + hideFolderNavigation + "\n" 
 				);
 						
-				for (let n=0; n< toolbar2.childNodes.length; n++)
+				for (let n=0; n< toolbar2.children.length; n++)
 				{
-					let node = toolbar2.childNodes[n],
+					let node = toolbar2.children[n],
 							special = node.getAttribute('special');
 					if (special && special=="qfMsgFolderNavigation") {
 						node.collapsed = hideMsgNavigation;
@@ -1894,7 +1894,7 @@ QuickFolders.Interface = {
 						this.setEventAttribute(mps[0], 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
 					}
           // [Bug 26703] add folder command popup if it was hidden
-          let nodes = p.childNodes;
+          let nodes = p.children;
           for (let i=0; i<nodes.length; i++) {
             if(nodes[i].id == 'quickFoldersMailFolderCommands') {
               menupopup.insertBefore(nodes[i], menupopup.firstChild);
@@ -1914,7 +1914,7 @@ QuickFolders.Interface = {
 			// debug menu items (only visible if SHIFT held during click.)
 			if (popupId=="QuickFolders-ToolbarPopup" && evt) {
 				// find all menu items with class "dbgMenu" and uncollapse them
-				let nodes = p.childNodes;
+				let nodes = p.children;
 				//debugger;
 				if (!nodes) {
 					debugger;
@@ -1944,8 +1944,8 @@ QuickFolders.Interface = {
     // Alt+Down highlight the first folder
     if (evt.hasOwnProperty("QFtype")) {
       // skip focus to first folder!
-      if (evt.QFtype == "NavDown" && p.childNodes) {
-        for (let m of p.childNodes) {
+      if (evt.QFtype == "NavDown" && p.children) {
+        for (let m of p.children) {
           if (m.getAttribute("tag") == "sub") {
             /*
             setTimeout( function() { 
@@ -2515,7 +2515,7 @@ QuickFolders.Interface = {
 					break;
 				case 'SeaMonkey':
 					tabmail.openTab(util.mailFolderTypeName, 7, folder.URI); // '3pane'
-					QuickFolders.tabContainer.selectedIndex = tabmail.tabContainer.childNodes.length - 1;
+					QuickFolders.tabContainer.selectedIndex = tabmail.tabContainer.children.length - 1;
 					break;
 				case 'Postbox':
 					let win = util.getMail3PaneWindow();
@@ -3995,7 +3995,7 @@ QuickFolders.Interface = {
 	},
 	
 	tearDownMenu: function tearDownMenu(menu) {
-		while (menu.hasChildNodes())
+		while (menu.haschildren())
 			this.tearDownMenu(menu.lastChild);
 		menu.parentNode.removeChild(menu);
 	},
@@ -4145,7 +4145,7 @@ QuickFolders.Interface = {
       button.removeChild(button.firstChild);
     
     // we might have created an empty popup so only append it if it has child Nodes
-    if (menupopup.childNodes && menupopup.childNodes.length) {
+    if (menupopup.children && menupopup.children.length) {
       button.appendChild(menupopup); 
     }
 
@@ -4580,27 +4580,27 @@ QuickFolders.Interface = {
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
-					let c = popupMenu.childNodes.length-1, //count of last menu item
+					let c = popupMenu.children.length-1, //count of last menu item
 					    added = false,
 					    sNewName = killDiacritics(subfolder.name);
 					// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
 					// >=0 undo this change - fixes [Bug 21317]
-					for (;c>=0 && popupMenu.childNodes[c].hasAttribute('label');c--) {
-						if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute('label')))
+					for (;c>=0 && popupMenu.children[c].hasAttribute('label');c--) {
+						if (sNewName > killDiacritics(popupMenu.children[c].getAttribute('label')))
 						{
-							if (c+1 == popupMenu.childNodes.length)
+							if (c+1 == popupMenu.children.length)
 								popupMenu.appendChild(menuitem);
 							else
-								popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
+								popupMenu.insertBefore(menuitem,popupMenu.children[c+1]);
 							added=true;
 							break;
 						}
 					}
 					if (!added) { // nothing with a label was found? then this must be the first folder item in the menu
-						if (c+1 >= popupMenu.childNodes.length)
+						if (c+1 >= popupMenu.children.length)
 							popupMenu.appendChild(menuitem);
 						else
-							popupMenu.insertBefore(menuitem,popupMenu.childNodes[c+1]);
+							popupMenu.insertBefore(menuitem,popupMenu.children[c+1]);
 					}
 				} // end alphanumeric sorting
 				else
@@ -5256,8 +5256,8 @@ QuickFolders.Interface = {
 		}
 		if (menupopup.childElementCount>1) {
 			// remove dummy!
-			for (let i = menupopup.childNodes.length-1; i>0; i--) {
-				let item = menupopup.childNodes[i];
+			for (let i = menupopup.children.length-1; i>0; i--) {
+				let item = menupopup.children[i];
 				if (item.getAttribute("tag") == "dummy")
 				 menupopup.removeChild(item);
 			}

@@ -418,7 +418,7 @@ QuickFolders.Options = {
 			let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
 			if (selectOptionsPane >=0) {
 				panels.selectedIndex = selectOptionsPane; // for some reason the tab doesn't get selected
-				panels.tabbox.selectedTab = panels.tabbox.tabs.childNodes[selectOptionsPane];
+				panels.tabbox.selectedTab = panels.tabbox.tabs.children[selectOptionsPane];
 			}
 		}
 		catch(e) { ; }

@@ -419,8 +419,8 @@ QuickFolders.Util = {
 			// we could empty the value and stick thje text into textContent instead!
 			    hbox = note.boxObject.firstChild.firstChild;
 			if (hbox) {
-				this.logDebug('hbox = ' + hbox.tagName + ' hbox.childNodes: ' + hbox.childNodes.length);
-				let desc = hbox.childNodes[1];
+				this.logDebug('hbox = ' + hbox.tagName + ' hbox.children: ' + hbox.children.length);
+				let desc = hbox.children[1];
 				desc.textContent = desc.value.toString();
 				desc.removeAttribute('value');
 			}
@@ -668,16 +668,16 @@ QuickFolders.Util = {
     if (!element) return;
 		QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
 		if (withCategories)
-			while(element.childNodes.length > 0) {
-				element.removeChild(element.childNodes[0]);
+			while(element.children.length > 0) {
+				element.removeChild(element.children[0]);
 			}
 		else {
 			let nCount=0;	// skip removal of category selection box
-			while(element.childNodes.length > nCount) {
-				if (element.childNodes[nCount].id=='QuickFolders-Category-Box')
+			while(element.children.length > nCount) {
+				if (element.children[nCount].id=='QuickFolders-Category-Box')
 					nCount++;
 				else
-					element.removeChild(element.childNodes[nCount]);
+					element.removeChild(element.children[nCount]);
 			}
 		}
 	} ,
@@ -750,9 +750,9 @@ QuickFolders.Util = {
 			    sb = QuickFolders_getDocument().getElementById('status-bar'),
 			    el, sbt;
 			if (sb) {
-				for (let i = 0; i < sb.childNodes.length; i++)
+				for (let i = 0; i < sb.children.length; i++)
 				{
-					el = sb.childNodes[i];
+					el = sb.children[i];
 					if (el.nodeType == 1 && el.id == 'statusTextBox') {
 						sbt = el;
 					    break;
@@ -761,9 +761,9 @@ QuickFolders.Util = {
 				// SeaMonkey
 				if (!sbt)
 					sbt = sb;
-				for (let i = 0; i < sbt.childNodes.length; i++)
+				for (let i = 0; i < sbt.children.length; i++)
 				{
-					el = sbt.childNodes[i];
+					el = sbt.children[i];
 					if (el.nodeType == 1 && el.id == 'statusText') {
 					    el.label = s;
 							if (isTimeout) {
@@ -1373,7 +1373,7 @@ QuickFolders.Util = {
           if (browserWin.currentTab.reload) browserWin.currentTab.reload(); 
           // activate last tab
           if (tabBrowser && tabBrowser.tabContainer)
-            tabBrowser.tabContainer.selectedIndex = tabBrowser.tabContainer.childNodes.length-1;
+            tabBrowser.tabContainer.selectedIndex = tabBrowser.tabContainer.children.length-1;
 				}
 				else
 					QuickFolders_globalWin.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFolders update');

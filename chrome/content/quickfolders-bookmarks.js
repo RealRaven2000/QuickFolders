@@ -259,8 +259,8 @@ QuickFolders.bookmarks = {
   // removes all bookmarks from reading list. retain command items.
   tearDownMenu: function tearDownMenu() {
     let menu = QuickFolders.Util.$('QuickFolders-readingListMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
+    for (let i = menu.children.length-1; i>0; i--) {
+      let item = menu.children[i];
       if (!item.classList.contains('cmd') || item.tagName=='menuseparator')
         menu.removeChild(item);
     }

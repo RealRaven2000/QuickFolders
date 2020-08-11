@@ -180,8 +180,8 @@ QuickFolders.quickMove = {
       this.IsCopy.pop();
     }
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
+    for (let i = menu.children.length-1; i>0; i--) {
+      let item = menu.children[i];
       if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
         menu.removeChild(item);
     }

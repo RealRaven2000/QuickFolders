@@ -1179,7 +1179,7 @@ var QuickFolders = {
 						if (psib.label) util.logDebugOptional("dnd", "check next sibling + " + psib.nodeName + " '" + psib.label +"' ...");
 						if (psib.nodeName === 'menu' && popupStart !== psib) {
 							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
-							psib.childNodes.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
+							psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
 						}
 						psib = psib.nextSibling;
 					}
@@ -1188,12 +1188,12 @@ var QuickFolders = {
 						if (psib.label) util.logDebugOptional("dnd", "check previous sibling + " + psib.nodeName + " '" + psib.label +"' ...");
 						if (psib.nodeName === 'menu' && popupStart !== psib) {
 							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
-							psib.childNodes.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
+							psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
 						}
 						psib = psib.previousSibling;
 					}
 					// only show popup if they have at least one menu item!
-					if (pchild.childNodes && pchild.childNodes.length > 0)
+					if (pchild.children && pchild.children.length > 0)
 						pchild.openPopup(popupStart, 'end_before', 0, -1, "context", false);  // showPopup() has been deprecated ages ago!!
 					util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
 				}
@@ -1650,7 +1650,7 @@ var QuickFolders = {
               util.logDebug('Document did not return the popup: ' + popupId);
             }
 						// avoid showing empty popup
-						if (p && p.childNodes && p.childNodes.length) {
+						if (p && p.children && p.children.length) {
 						
 							// from a certain size, make sure to shift menu to right to allow clicking the tab
 							let minRealign = prefs.getIntPref("folderMenu.realignMinTabs"),
@@ -1659,10 +1659,10 @@ var QuickFolders = {
 							  let c,
                     isDebug = prefs.isDebugOption('popupmenus.drag');
 								// count top level menu items
-								for (c = 0; c < p.childNodes.length; c++) {
+								for (c = 0; c < p.children.length; c++) {
 									if (isDebug) {
 										util.logDebugOptional("popupmenus.drag", 
-											c + ': ' + p.childNodes[c].tagName + ' - ' +  p.childNodes[c].getAttribute('label'));
+											c + ': ' + p.children[c].tagName + ' - ' +  p.children[c].getAttribute('label'));
 									}
 									if (c > minRealign) {
 										isShift = true;

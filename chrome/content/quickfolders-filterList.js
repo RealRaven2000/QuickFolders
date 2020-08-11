@@ -186,7 +186,7 @@ QuickFolders.FilterList = {
 		    buttonTop = document.getElementById("qf-reorderButtonTop"),
 		    buttonBottom = document.getElementById("qf-reorderButtonBottom"),
 		    upDisabled = !(oneFilterSelected && 
-		                   this.getSelectedFilterAt(list, 0) != list.childNodes[1]);
+		                   this.getSelectedFilterAt(list, 0) != list.children[1]);
 		if (list.currentIndex == 0) // SM
 			upDisabled = true;
 		buttonTop.disabled = upDisabled;

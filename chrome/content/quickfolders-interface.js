@@ -2344,7 +2344,7 @@ QuickFolders.Interface = {
   addCustomStyles: function addCustomStyles(button, entry) {
 		const util = QuickFolders.Util;
     function getLabel(button) {
-        let anonChildren = document.getAnonymousNodes(button);
+        let anonChildren = util.getAnonymousNodes(document,button);
         if (!anonChildren) return null;
         for (let i=0; i<anonChildren.length; i++) {
           if (anonChildren[i].classList.contains('toolbarbutton-text'))
@@ -3995,7 +3995,7 @@ QuickFolders.Interface = {
 	},
 	
 	tearDownMenu: function tearDownMenu(menu) {
-		while (menu.haschildren())
+		while (menu.hasChildNodes())
 			this.tearDownMenu(menu.lastChild);
 		menu.parentNode.removeChild(menu);
 	},

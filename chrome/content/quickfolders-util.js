@@ -1868,6 +1868,15 @@ QuickFolders.Util = {
 		alert("This folder doesn't exist! Function not available.." 
 		  + txt ? "\nFolder URI = " + txt : "");
 	} ,
+  
+  getAnonymousNodes(doc,el) {
+    let aN = [];
+    for (let i = el.childNodes.length-1; i>0; i--) {
+      if (!el[i].getAttribute("id") && !el[i].getAttribute("name"))
+        aN.push(el);
+    }
+    return aN;
+  } ,
 	
 	// helper function to get a name from an uri that has no folder
 	getNameFromURI: function getNameFromURI(uri) {

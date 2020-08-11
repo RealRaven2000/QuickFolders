@@ -28,6 +28,8 @@ QuickFolders.FolderTree = {
       }
       else { treeView = gFolderTreeView; }
       if (treeView.supportsIcons) return; // already defined!
+      if (QuickFolders.FolderTree.GetCellProperties)
+        return;
       QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties.bind(treeView);
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
       treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');

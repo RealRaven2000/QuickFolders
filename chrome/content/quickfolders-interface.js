@@ -470,8 +470,8 @@ QuickFolders.Interface = {
 						button.setAttribute('position','after_start');
 						// button.addEventListener("contextmenu", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, false); }, true);
 						button.addEventListener("click", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, true); return false; }, false);
-						button.addEventListener("dragenter", function(event) { nsDragAndDrop.dragEnter(event, QuickFolders.buttonDragObserver); }, false);
-						button.addEventListener("dragover", function(event) { nsDragAndDrop.dragOver(event, QuickFolders.buttonDragObserver); return false; }, false);
+						button.addEventListener("dragenter", function(event) { QuickFolders.buttonDragObserver.dragEnter(event); }, false);
+						button.addEventListener("dragover", function(event) { QuickFolders.buttonDragObserver.dragOver(event); return false; }, false);
 					}
 				}
 			}
@@ -787,13 +787,13 @@ QuickFolders.Interface = {
 		// current message dragging
 		let button = this.MailButton;
 		if (button)
-			this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
+			this.setEventAttribute(button, "ondragstart","windows.QuickFolders.messageDragObserver.startDrag(event,true)");
 
 		// current thread dragging; let's piggyback "isThread"...
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
 		button = util.$('QuickFolders-CurrentThread'); 
 		if (button)
-			this.setEventAttribute(button, "ondragstart","event.isThread=true; nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
+			this.setEventAttribute(button, "ondragstart","event.isThread=true; windows.QuickFolders.messageDragObserver.startDrag(event,true)");
 		if (prefs.isShowCategoryNewCount) {
 			
 		}
@@ -2194,9 +2194,9 @@ QuickFolders.Interface = {
 							}
 						}, false); 
 					button.hasClickEventListener = true;
-					this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+					this.setEventAttribute(button, "ondragstart","windows.QuickFolders.buttonDragObserver.startDrag(event, true)");
 					// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-					this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+					this.setEventAttribute(button, "ondragend","windows.QuickFolders.buttonDragObserver.dragExit(event)");
 				}
       }
     }
@@ -2217,9 +2217,9 @@ QuickFolders.Interface = {
 			if (folder) {
         // in Tb78, they use gFolderTreeView._onDragDrop, gFolderTreeView._onDragStart, gFolderTreeView._onDragOver
         // these are defined in mail/base/content/folderPane.js
-				this.setEventAttribute(button, "ondragenter", "nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
-				this.setEventAttribute(button, "ondragover", "nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-				this.setEventAttribute(button, "ondrop", "nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+				this.setEventAttribute(button, "ondragenter", "windows.QuickFolders.buttonDragObserver.dragEnter(event);");
+				this.setEventAttribute(button, "ondragover", "windows.QuickFolders.buttonDragObserver.dragOver(event);");
+				this.setEventAttribute(button, "ondrop", "windows.QuickFolders.buttonDragObserver(event);");
 			}
 			// button.setAttribute("flex",100);
 		}
@@ -2233,9 +2233,9 @@ QuickFolders.Interface = {
 
 		if (!theButton) {
 			// AG add dragging of buttons
-			this.setEventAttribute(button, "ondragstart","nsDragAndDrop.startDrag(event,QuickFolders.buttonDragObserver, true)");
+			this.setEventAttribute(button, "ondragstart","windows.QuickFolders.buttonDragObserver.startDrag(event, true)");
 			// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-			this.setEventAttribute(button, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
+			this.setEventAttribute(button, "ondragend","windows.QuickFolders.buttonDragObserver.dragExit(event)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 
@@ -2403,9 +2403,9 @@ QuickFolders.Interface = {
 		button.setAttribute("tooltiptext", tooltip);
 		button.setAttribute("id", SpecialId);
 
-		this.setEventAttribute(button, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);");
-		this.setEventAttribute(button, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);");
-		this.setEventAttribute(button, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
+		this.setEventAttribute(button, "ondragenter","windows.QuickFolders.buttonDragObserver.dragEnter(event);");
+		this.setEventAttribute(button, "ondragover","windows.QuickFolders.buttonDragObserver.dragOver(event);");
+		this.setEventAttribute(button, "ondrop","windows.QuickFolders.buttonDragObserver.drop(event);");
 		this.SpecialToolbar.appendChild(button);
 	} ,
 
@@ -4374,8 +4374,8 @@ QuickFolders.Interface = {
 					createFolderMenuItem.setAttribute("class","menuitem-iconic");
 					
 					// use parent folder URI as each starting point
-					this.setEventAttribute(createFolderMenuItem, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(createFolderMenuItem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
+					this.setEventAttribute(createFolderMenuItem, "ondragenter","windows.QuickFolders.buttonDragObserver.dragEnter(event);");
+					this.setEventAttribute(createFolderMenuItem, "ondrop","windows.QuickFolders.buttonDragObserver.drop(event);");  // only case where we use the dedicated observer of the popup!
 					
 					// [Bug 26425] option to put 'create new subfolder' on top
 					if (prefs.getBoolPref('dragToCreateFolder.menutop'))
@@ -4574,9 +4574,9 @@ QuickFolders.Interface = {
 
 				menuitem.folder = subfolder;
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
-				this.setEventAttribute(menuitem, "ondragover","nsDragAndDrop.dragOver(event,QuickFolders.popupDragObserver)"); // okay
-				this.setEventAttribute(menuitem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
-				this.setEventAttribute(menuitem, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+				this.setEventAttribute(menuitem, "ondragover","windows.QuickFolders.buttonDragObserver.dragOver(event)"); // okay
+				this.setEventAttribute(menuitem, "ondrop","windows.QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
+				this.setEventAttribute(menuitem, "ondragend","windows.QuickFolders.buttonDragObserver.dragExit(event);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
@@ -4632,10 +4632,10 @@ QuickFolders.Interface = {
 					} 
 					catch(ex) {;}
 
-					this.setEventAttribute(subMenu, "ondragenter","nsDragAndDrop.dragEnter(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(subMenu, "ondrop","nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);"); // use same as buttondragobserver for mail drop!
+					this.setEventAttribute(subMenu, "ondragenter","windows.QuickFolders.buttonDragObserver.dragEnter(event);");
+					this.setEventAttribute(subMenu, "ondrop","windows.QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
 					// this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(subMenu, "ondragend","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
+					this.setEventAttribute(subMenu, "ondragend","windows.QuickFolders.buttonDragObserver.dragExit(event);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;

@@ -33,7 +33,7 @@ QuickFolders.FolderTree = {
       QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties.bind(treeView);
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
       treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
-      treeView.getCellProperties = function(row, col) {
+      treeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
           let folder = treeView.getFolderForIndex(row);

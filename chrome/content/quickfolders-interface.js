@@ -84,7 +84,7 @@ QuickFolders.Interface = {
 	
 	get PaletteStyleSheet() {
 		const util = QuickFolders.Util;
-	  let isOptionsScreen = (document.location.href.toString() == 'chrome://quickfolders/content/options.xul');
+	  let isOptionsScreen = (document.location.href.toString() == 'chrome://quickfolders/content/options.xhtml');
 	
 		if (isOptionsScreen) {
 			if (this._paletteStyleSheetOfOptions)
@@ -5497,7 +5497,7 @@ QuickFolders.Interface = {
         features = (QuickFolders.Util.HostSystem == 'linux') ?
           'chrome,titlebar,centerscreen,resizable,dependent,instantApply' :
           'chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
-		    win = window.openDialog('chrome://quickfolders/content/options.xul',
+		    win = window.openDialog('chrome://quickfolders/content/options.xhtml',
           'quickfolders-options',
           features,
           QuickFolders,
@@ -5506,19 +5506,19 @@ QuickFolders.Interface = {
 
 	viewHelp: function viewHelp() {
 		let params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+		window.openDialog('chrome://quickfolders/content/options.xhtml','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
 	} ,
 
 	viewSupport: function viewSupport() {
 		let params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+		window.openDialog('chrome://quickfolders/content/options.xhtml','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
 	} ,
   
   viewLicense: function viewLicense() {
 		let win = QuickFolders.Util.getMail3PaneWindow(),
         params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.QuickFolders}, out:null};
         
-    win.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+    win.openDialog('chrome://quickfolders/content/options.xhtml','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {

@@ -471,7 +471,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 /* NATIVE TABS */
 .quickfolders-realTabs toolbarbutton
 {
-	-moz-appearance: tab;
+	appearance: tab;
 }
 
 /* NATIVE BUTTONS */

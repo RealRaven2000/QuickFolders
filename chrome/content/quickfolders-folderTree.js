@@ -34,6 +34,10 @@ QuickFolders.FolderTree = {
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
       treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
       treeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
+        if (QuickFolders.FolderTree.GetCellProperties == treeView.getCellProperties) {
+          debugger;
+          return null; // avoid "impossible" recursion?
+        }
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
           let folder = treeView.getFolderForIndex(row);

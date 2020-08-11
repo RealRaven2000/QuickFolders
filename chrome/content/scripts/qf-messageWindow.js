@@ -72,8 +72,8 @@ function onLoad(activatedWhileWindowOpen) {
                 <toolbarbutton id="QuickFoldersCurrentFolder"
                                label="Current Folder"
                                class="selected-folder"
-                               ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-                               ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"/>
+                               ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
+                               ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"/>
             </hbox>
             <toolbarbutton id="QuickFolders-NavigateRight"
                              class="icon"

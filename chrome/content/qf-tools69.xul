@@ -15,7 +15,7 @@
 			<vbox id="QuickFolders-Tools-Pane" 
             insertafter="QuickFolders-LabelBox">
 				<hbox id="QuickFolders-Category-Box"
-						  ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver)">
+						  ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event)">
 					<menulist id="QuickFolders-Category-Selection" 
 										oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
 										sizetopopup="none" 
@@ -45,9 +45,9 @@
 										 tooltiptext="&quickfolders.readingList.tooltip;"
 										 label=""
 										 onclick="QuickFolders.Interface.readingListClick(event,this);"
-										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
-										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+										 ondrop="window.QuickFolders.buttonDragObserver.drop(event);"
+										 ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
+										 ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"
 										 context="QuickFolders-readingListMenu"
 										 collapsed="true"/>
 						<toolbarbutton id="QuickFolders-quickMove"
@@ -55,9 +55,9 @@
 										 tooltiptext="&qf.tooltip.quickMove;"
 										 label=""
 										 onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
-										 ondrop="nsDragAndDrop.drop(event, QuickFolders.buttonDragObserver);"
-										 ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.buttonDragObserver);"
-										 ondragover="nsDragAndDrop.dragOver(event,QuickFolders.buttonDragObserver);"
+										 ondrop="window.QuickFolders.buttonDragObserver.drop(event);"
+										 ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
+										 ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"
 										 context="QuickFolders-quickMoveMenu"
 										 />
 						<!-- removed searchbutton=true so pressing [Enter] is not necessary -->

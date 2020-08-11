@@ -5522,7 +5522,7 @@ QuickFolders.Interface = {
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {
-		window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
+		window.openDialog('chrome://quickfolders/content/change-order.xhtml','quickfolders-change-order',
 						  'chrome,titlebar,toolbar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
 	} ,
 

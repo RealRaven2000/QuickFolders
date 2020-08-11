@@ -57,7 +57,7 @@ overlay chrome://messenger/content/mailWindowOverlay.xul  chrome://quickfolders/
 style chrome://messenger/content/customizeToolbar.xul chrome://quickfolders/content/quickfolders-mods.css 
 
 style chrome://global/content/alerts/alert.xul      chrome://quickfolders/content/quickfolders-alert.css
-style chrome://quickfolders/content/register.xul    chrome://quickfolders/content/skin/quickfolders-widgets.css
+style chrome://quickfolders/content/register.xhtml    chrome://quickfolders/content/skin/quickfolders-widgets.css
 #style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/content/skin/quickfolders-widgets.css
 #style chrome://quickfolders/content/overlay.xul     chrome://quickfolders/content/quickfolders-filters.css
 #style chrome://messenger/content/messenger.xul      chrome://quickfolders/content/qf-foldertree.css

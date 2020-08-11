@@ -113,7 +113,7 @@ QuickFolders.Licenser = {
   
   showDialog: function showDialog(featureName) {
 		let params = {inn:{referrer:featureName, instance: QuickFolders}, out:null};
-    window.openDialog('chrome://quickfolders/content/register.xul','quickfolders-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',QuickFolders,params).focus();
+    window.openDialog('chrome://quickfolders/content/register.xhtml','quickfolders-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',QuickFolders,params).focus();
   } ,
   
   accept: function accept() {

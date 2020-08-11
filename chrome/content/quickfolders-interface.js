@@ -1915,6 +1915,7 @@ QuickFolders.Interface = {
 			if (popupId=="QuickFolders-ToolbarPopup" && evt) {
 				// find all menu items with class "dbgMenu" and uncollapse them
 				let nodes = p.childNodes;
+				//debugger;
 				if (!nodes) {
 					debugger;
 				//	return;

@@ -2194,9 +2194,9 @@ QuickFolders.Interface = {
 							}
 						}, false); 
 					button.hasClickEventListener = true;
-					this.setEventAttribute(button, "ondragstart","window.QuickFolders.buttonDragObserver.startDrag(event, true)");
+					this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
 					// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-					this.setEventAttribute(button, "ondragend","window.QuickFolders.buttonDragObserver.dragExit(event)");
+					this.setEventAttribute(button, "ondragend","QuickFolders.buttonDragObserver.dragExit(event)");
 				}
       }
     }
@@ -2217,9 +2217,9 @@ QuickFolders.Interface = {
 			if (folder) {
         // in Tb78, they use gFolderTreeView._onDragDrop, gFolderTreeView._onDragStart, gFolderTreeView._onDragOver
         // these are defined in mail/base/content/folderPane.js
-				this.setEventAttribute(button, "ondragenter", "window.QuickFolders.buttonDragObserver.dragEnter(event);");
-				this.setEventAttribute(button, "ondragover", "window.QuickFolders.buttonDragObserver.dragOver(event);");
-				this.setEventAttribute(button, "ondrop", "window.QuickFolders.buttonDragObserver(event);");
+				this.setEventAttribute(button, "ondragenter", "QuickFolders.buttonDragObserver.dragEnter(event);");
+				this.setEventAttribute(button, "ondragover", "QuickFolders.buttonDragObserver.dragOver(event);");
+				this.setEventAttribute(button, "ondrop", "QuickFolders.buttonDragObserver(event);");
 			}
 			// button.setAttribute("flex",100);
 		}
@@ -2233,9 +2233,9 @@ QuickFolders.Interface = {
 
 		if (!theButton) {
 			// AG add dragging of buttons
-			this.setEventAttribute(button, "ondragstart","window.QuickFolders.buttonDragObserver.startDrag(event, true)");
+			this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
 			// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-			this.setEventAttribute(button, "ondragend","window.QuickFolders.buttonDragObserver.dragExit(event)");
+			this.setEventAttribute(button, "ondragend","QuickFolders.buttonDragObserver.dragExit(event)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 
@@ -2403,9 +2403,9 @@ QuickFolders.Interface = {
 		button.setAttribute("tooltiptext", tooltip);
 		button.setAttribute("id", SpecialId);
 
-		this.setEventAttribute(button, "ondragenter","window.QuickFolders.buttonDragObserver.dragEnter(event);");
-		this.setEventAttribute(button, "ondragover","window.QuickFolders.buttonDragObserver.dragOver(event);");
-		this.setEventAttribute(button, "ondrop","window.QuickFolders.buttonDragObserver.drop(event);");
+		this.setEventAttribute(button, "ondragenter","QuickFolders.buttonDragObserver.dragEnter(event);");
+		this.setEventAttribute(button, "ondragover","QuickFolders.buttonDragObserver.dragOver(event);");
+		this.setEventAttribute(button, "ondrop","QuickFolders.buttonDragObserver.drop(event);");
 		this.SpecialToolbar.appendChild(button);
 	} ,
 
@@ -4574,9 +4574,9 @@ QuickFolders.Interface = {
 
 				menuitem.folder = subfolder;
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
-				this.setEventAttribute(menuitem, "ondragover","window.QuickFolders.popupDragObserver.dragOver(event)"); // okay
-				this.setEventAttribute(menuitem, "ondrop","window.QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
-				this.setEventAttribute(menuitem, "ondragend","window.QuickFolders.popupDragObserver.dragExit(event);");
+				this.setEventAttribute(menuitem, "ondragover","QuickFolders.popupDragObserver.dragOver(event)"); // okay
+				this.setEventAttribute(menuitem, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
+				this.setEventAttribute(menuitem, "ondragend","QuickFolders.popupDragObserver.dragExit(event);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!

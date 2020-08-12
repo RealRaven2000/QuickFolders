@@ -1843,7 +1843,7 @@ var QuickFolders = {
           prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces,
 					Cc = Components.classes;
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
           
 			let isShift = evt.shiftKey,
 			    debugDragging = false,

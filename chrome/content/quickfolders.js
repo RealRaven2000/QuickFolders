@@ -1031,8 +1031,7 @@ var QuickFolders = {
 		
 
 		dragExit: function dragExit(evt) {
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
 			this.util.logDebugOptional("dnd","toolbarDragObserver.dragExit");
 			if (QuickFolders_globalHidePopupId) {
 				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
@@ -1040,8 +1039,7 @@ var QuickFolders = {
 		} ,
 		
 		dragEnter: function qftoolbar_dragEnter(evt) {
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
 //		dragEnter: function dragEnter(evt, dragSession) {
 				// session = nsIDragSession
 			let t = evt.currentTarget,
@@ -1066,15 +1064,14 @@ var QuickFolders = {
 		},
 
 		dragOver: function qftoolbar_dragOver(evt){//}, flavour, dragSession){
-      if (!evt)
-        debugger;
-      evt.preventDefault();
+      if (!evt) debugger;
       let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(),
           types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
 			// [Bug 26560] add text/plain
 			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/plain" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
 				dragSession.canDrop = true;
+        evt.preventDefault();
 			}
 			else {
 				this.util.logDebugOptional("dnd","toolbarDragObserver.dragOver - can not drop " + contentType);
@@ -1095,8 +1092,8 @@ var QuickFolders = {
 		},
 
 		drop: function drop(evt, dropData, dragSession) {
-      if (!evt || !dragSession)
-        debugger;
+      if (!evt) debugger;
+      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			if (this.prefs.isDebugOption('dnd')) debugger;
@@ -1186,8 +1183,7 @@ var QuickFolders = {
 		},
 		dragOverTimer: null,
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
-      if (!evt || !dragSession)
-        debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 
@@ -1237,7 +1233,7 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
-      if ( !evt) debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!
@@ -1502,8 +1498,7 @@ var QuickFolders = {
 		},
 
 		dragStart: function msgObs_dragStart(event, transferData, action) {
-      if (!event || !transferData)
-        debugger;
+      if (!event || !transferData) debugger;
       
 			let button = event.target;
 			transferData.data = new TransferData();
@@ -1529,8 +1524,7 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		dragEnter: function btnObs_dragEnter(evt, dragSession) {
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
       
       const util = QuickFolders.Util,
@@ -1758,8 +1752,7 @@ var QuickFolders = {
 		
 		// deal with old folder popups
 		dragExit: function btnObs_dragExit(event, dragSession) {
-      if (!event || !dragSession)
-        debugger;
+      if (!event) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			const util = QuickFolders.Util;
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
@@ -1814,8 +1807,7 @@ var QuickFolders = {
 		} ,
 
 		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
 			// dragSession.canDrop = true;
@@ -2105,6 +2097,7 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
 	// try to get the index of the folder in the tree
 	try {
 		let index ;
+    const util = QuickFolders.Util;
 
 		if (typeof tree.getIndexOfFolder !== 'undefined')
 			index = tree.getIndexOfFolder(msgFolder);
@@ -2117,7 +2110,7 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
 				else
 					return -1;
 
-		QuickFolders.Util.logDebugOptional ("folders.select", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
+		util.logDebugOptional ("folders.select", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
 
 		if (index === -1) {
 			if (null==msgFolder.parent)
@@ -2143,7 +2136,7 @@ function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
 		return index;
 	}
 	catch(e) {
-		QuickFolders.Util.logException('Exception in QuickFolders_MyEnsureFolderIndex', e);
+		util.logException('Exception in QuickFolders_MyEnsureFolderIndex', e);
 		return -1;
 	}
 

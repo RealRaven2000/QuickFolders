@@ -8,6 +8,24 @@
  --toolbarHighlight: rgba(255,255,255,.5);
 }
 
+/* Tb78 too wasteful with vertical space: */
+tabpanel checkbox {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+tabpanel fieldset legend {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+checkbox image.checkbox-icon {
+  max-height: 16px; /* avoid stretching my icons! */
+  margin-top: 2px;
+}
+fieldset[orient="horizontal"] > vbox {
+  display: inline-block; 
+}
+
 /* Options window */
 #qf-options-prefpane {
 	min-height: 400px;

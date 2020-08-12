@@ -1860,6 +1860,7 @@ var QuickFolders = {
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
+      let isPreventDefault = true;
 			switch (contentType) {
 				case  "text/x-moz-folder": 
 					if (!isShift) {
@@ -1889,7 +1890,9 @@ var QuickFolders = {
 							QI.moveFolder(sourceFolder, targetFolder);
 						}
 					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.drop:" + e); };
+					catch(e) {
+            QuickFolders.LocalErrorLogger("Exception in QuickFolders.drop:" + e); 
+           };
 					break;
 				case  "text/x-moz-message":
 				  // use dropData to retrieve the messages!
@@ -2016,12 +2019,19 @@ var QuickFolders = {
 					}
 
 					break;
+        case "text/plain":    // newsgroup names
 				case "text/unicode":  // dropping another tab on this tab inserts it before
           // let buttonURI = dropData.data;
           let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					QuickFolders.ChangeOrder.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
 					break;
+        default:
+          isPreventDefault = false;
 			}
+      if (isPreventDefault) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
 		},
 
 		// new handler for starting drag of buttons (re-order)

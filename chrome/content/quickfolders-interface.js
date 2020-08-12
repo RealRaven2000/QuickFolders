@@ -787,7 +787,7 @@ QuickFolders.Interface = {
 		// current message dragging
 		let button = this.MailButton;
 		if (button)
-			this.setEventAttribute(button, "ondragstart","window.QuickFolders.messageDragObserver.startDrag(event,true)");
+			this.setEventAttribute(button, "ondragstart","QuickFolders.messageDragObserver.startDrag(event,true)");
 
 		// current thread dragging; let's piggyback "isThread"...
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
@@ -4374,8 +4374,8 @@ QuickFolders.Interface = {
 					createFolderMenuItem.setAttribute("class","menuitem-iconic");
 					
 					// use parent folder URI as each starting point
-					this.setEventAttribute(createFolderMenuItem, "ondragenter","window.QuickFolders.popupDragObserver.dragEnter(event);");
-					this.setEventAttribute(createFolderMenuItem, "ondrop","window.QuickFolders.popupDragObserver.drop(event);");  // only case where we use the dedicated observer of the popup!
+					this.setEventAttribute(createFolderMenuItem, "ondragenter","QuickFolders.popupDragObserver.dragEnter(event);");
+					this.setEventAttribute(createFolderMenuItem, "ondrop","QuickFolders.popupDragObserver.drop(event);");  // only case where we use the dedicated observer of the popup!
 					
 					// [Bug 26425] option to put 'create new subfolder' on top
 					if (prefs.getBoolPref('dragToCreateFolder.menutop'))
@@ -4635,7 +4635,7 @@ QuickFolders.Interface = {
 					this.setEventAttribute(subMenu, "ondragenter","QuickFolders.popupDragObserver.dragEnter(event);");
 					this.setEventAttribute(subMenu, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
 					// this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(subMenu, "ondragend","window.QuickFolders.popupDragObserver.dragExit(event);");
+					this.setEventAttribute(subMenu, "ondragend","QuickFolders.popupDragObserver.dragExit(event);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;

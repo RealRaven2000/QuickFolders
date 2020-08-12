@@ -1065,7 +1065,7 @@ var QuickFolders = {
 			return false;
 		},
 
-		dragOver: function qftoolbar_dragOver(evt, flavour, dragSession){
+		dragOver: function qftoolbar_dragOver(evt){//}, flavour, dragSession){
       if (!evt)
         debugger;
       evt.preventDefault();

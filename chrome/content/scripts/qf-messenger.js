@@ -317,8 +317,8 @@ WL.injectElements(`
                                              position="after_start"
                                              oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, false);"
                                              onclick= "QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
-                                             ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
-                                             ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"
+                                             ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
+                                             ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
                                              tooltiptext="&qf.tooltip.RecentFolders;"/>
                 <toolbarseparator special="qfMsgFolderNavigation" />
                 <toolbarbutton id="quickFoldersPreviousUnread"
@@ -361,8 +361,8 @@ WL.injectElements(`
                     <toolbarbutton id="QuickFoldersCurrentFolder"
                                                  label="Current Folder"
                                                  class="selected-folder"
-                                                 ondragenter="window.QuickFolders.buttonDragObserver..dragEnter(event);"
-                                                 ondragover="window.QuickFolders.buttonDragObserver..dragOver(event);"/>
+                                                 ondragenter="QuickFolders.buttonDragObserver..dragEnter(event);"
+                                                 ondragover="QuickFolders.buttonDragObserver..dragOver(event);"/>
                 </hbox>
                 <toolbarbutton id="QuickFolders-NavigateRight"
                                              class="icon"
@@ -437,7 +437,7 @@ WL.injectElements(`
 <vbox id="QuickFolders-Tools-Pane" 
 insertafter="QuickFolders-LabelBox">
     <hbox id="QuickFolders-Category-Box"
-              ondragenter="window.QuickFolders.buttonDragObserver..dragEnter(event)">
+              ondragenter="QuickFolders.buttonDragObserver..dragEnter(event)">
         <menulist id="QuickFolders-Category-Selection" 
                             oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
                             sizetopopup="none" 
@@ -467,9 +467,9 @@ insertafter="QuickFolders-LabelBox">
                              tooltiptext="&quickfolders.readingList.tooltip;"
                              label=""
                              onclick="QuickFolders.Interface.readingListClick(event,this);"
-                             ondrop="window.QuickFolders.buttonDragObserver..drop(event);"
-                             ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
-                             ondragover="window.QuickFolders.buttonDragObserver..dragOver(event);"
+                             ondrop="QuickFolders.buttonDragObserver..drop(event);"
+                             ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
+                             ondragover="QuickFolders.buttonDragObserver..dragOver(event);"
                              context="QuickFolders-readingListMenu"
                              collapsed="true"/>
             <toolbarbutton id="QuickFolders-quickMove"
@@ -477,9 +477,9 @@ insertafter="QuickFolders-LabelBox">
                              tooltiptext="&qf.tooltip.quickMove;"
                              label=""
                              onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
-                             ondrop="window.QuickFolders.buttonDragObserver.drop(event);"
-                             ondragenter="window.QuickFolders.buttonDragObserver.dragEnter(event);"
-                             ondragover="window.QuickFolders.buttonDragObserver.dragOver(event);"
+                             ondrop="QuickFolders.buttonDragObserver.drop(event);"
+                             ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
+                             ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
                              context="QuickFolders-quickMoveMenu"
                              />
             <!-- removed searchbutton=true so pressing [Enter] is not necessary-->

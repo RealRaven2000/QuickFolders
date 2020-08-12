@@ -793,7 +793,7 @@ QuickFolders.Interface = {
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
 		button = util.$('QuickFolders-CurrentThread'); 
 		if (button)
-			this.setEventAttribute(button, "ondragstart","event.isThread=true; window.QuickFolders.messageDragObserver.startDrag(event,true)");
+			this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
 		if (prefs.isShowCategoryNewCount) {
 			
 		}

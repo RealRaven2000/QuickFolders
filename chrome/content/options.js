@@ -1510,7 +1510,7 @@ QuickFolders.Options = {
       + ', readOnly: ' + readOnly +')');
 			// "chrome://global/content/config.xul?debug"
 		const name = "Preferences:ConfigManager";
-		let uri = "chrome://global/content/config.xul";
+		let uri = "chrome://global/content/config.xhtml";
 		if (util.Application == 'Postbox')
 			uri += "?debug";
 

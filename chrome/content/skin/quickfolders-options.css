@@ -22,9 +22,26 @@ checkbox image.checkbox-icon {
   max-height: 16px; /* avoid stretching my icons! */
   margin-top: 2px;
 }
-fieldset[orient="horizontal"] > vbox {
+fieldset[orient="horizontal"] > vbox,
+fieldset[orient="horizontal"] > checkbox {
   display: inline-block; 
 }
+/* scale down the overly larger number textboxes / spinner controls */
+tabpanel html|input[type="number"] {
+  min-height: 22px;
+}
+
+tabpanel html|input[type="number"]::-moz-number-spin-up, 
+tabpanel html|input[type="number"]::-moz-number-spin-down {
+  min-width: 16px !important;
+  min-height: 8px !important;
+}
+
+/* html input ignores flex attribute */
+#currentFolderBackground {
+  min-width: 520px;
+}
+
 
 /* Options window */
 #qf-options-prefpane {

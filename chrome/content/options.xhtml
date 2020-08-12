@@ -136,7 +136,9 @@
 													label="&qf.checkbox.useRebuildShortcut;"
 													preference="qfpg-RebuildShortcut"
 													instantApply="true" />
-								<textbox id="QuickFolders-Options-RebuildShortcutKey"
+								<html:input
+                  type="text"
+                  id="QuickFolders-Options-RebuildShortcutKey"
 												 preference="qfpg-RebuildShortcutKey"
 												 class = "shortCutKey"
 												 instantApply="true" />
@@ -427,11 +429,13 @@
           <html:fieldset	orient="horizontal" id="grpToolbarPosition">
             <html:legend>&qf.label.toolbarPosition;</html:legend>
             <hbox>
-              <textbox id="toolbarPosition"
-                       flex="1"
-                       preference="qfpa-ToolbarPosition"
-                       tooltiptext="&qf.toolbarPosition.tooltip;"
-                       />
+              <html:input
+                  type="text"
+                  id="toolbarPosition"
+                  flex="1"
+                  preference="qfpa-ToolbarPosition"
+                  tooltiptext="&qf.toolbarPosition.tooltip;"
+                 />
               <button label="&qf.btn.applyPosition;"
                 onclick="options.applyOrdinalPosition();" 
 								/>
@@ -442,11 +446,14 @@
 						<html:legend>&qf.caption.currentFolderBackground;</html:legend>
 						<vbox id="currentFolderBackgroundContainer">
 							<hbox flex="1" id="currentFolderStyle">
-								<textbox id="currentFolderBackground"
-												 flex="1"
-												 preference="qfpa-CurrentFolder-Background"
-												 onblur="options.sanitizeCSS(this);"
-												 />
+                <hbox flex="2">
+                  <html:input
+                    type="text"
+                    id="currentFolderBackground"
+                    preference="qfpa-CurrentFolder-Background"
+                    onblur="options.sanitizeCSS(this);"
+                    />
+                </hbox>
 								<menulist id="QuickFolders-CurrentFolder-Background-Select"
 													sizetopopup="none"
 													oncommand="QI.updateMainWindow();">
@@ -481,20 +488,20 @@
 								<spacer flex="1" />
 								<label control="leftSpacer"
 											 value ="&qf.currentfolder.leftSpacer;" />
-								<textbox id="leftSpacer"
-								         type="number"
-												 size="1"
-												 class="num1digit"
-												 preference="qfpa-flexLeft"
-												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<html:input
+                  id="leftSpacer"
+                  type="number"
+                  class="num1digit"
+                  preference="qfpa-flexLeft"
+                  onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
 								<label control="rightSpacer"
 											 value ="&qf.currentfolder.rightSpacer;" />
-								<textbox id="rightSpacer"
-								         type="number"
-												 size="1"
-												 class="num1digit"
-												 preference="qfpa-flexRight"
-												 onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+								<html:input
+                  id="rightSpacer"
+								  type="number"
+									class="num1digit"
+									preference="qfpa-flexRight"
+									onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
 								<spacer flex="2" />
 							</hbox>
 						</vbox>
@@ -525,9 +532,11 @@
 											oncontextmenu="options.toggleBoolPreference(this,true);options.showAboutConfig(this,'quickfolders.debug',true);return false;" />
 						<label value="&qf.label.initdelay;"
 									 style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;" />
-						<textbox id="initdelay"
-										 preference="QuickFolders-init-delay"
-										 />
+            <html:input
+              type="text"
+              id="initdelay"
+              preference="QuickFolders-init-delay"
+              />
 						<button id="copyFolders"
 										label="&qf.copyfolders;"
 										tooltiptext="&qf.copyfolders.tooltip;"
@@ -630,30 +639,32 @@
 								<label id="button-font-size-label"
 											 value="&qf.label.buttonFontSizeNumeric;"
 											 control="button-font-size" />
-								<textbox id="button-font-size"
-												 type="number"
-												 size="3"
-												 class="num2digits"
-												 preference="qfpl-ButtonFontSize"
-												 onchange="options.changeTextPreference(this);" />
+								<html:input
+                  id="button-font-size"
+									type="number"
+									class="num2digits"
+									preference="qfpl-ButtonFontSize"
+									onchange="options.changeTextPreference(this);" />
 								<label value="px" />
 								<separator flex="1" />
 								<hbox id="btnHeightTweaks">
 									<label value="&qf.toolbarMinimumHeight;" />
-									<textbox id="buttonMinHeight"
-													 type="number"
-													 preference="qfpl-ButtonMinimalHeight"
-													 class="num2digits"
-													 onchange="options.changeTextPreference(this);"/>
+                  <html:input
+                    type="number"
+                    id="buttonMinHeight"
+                    preference="qfpl-ButtonMinimalHeight"
+                    class="num2digits"
+                    onchange="options.changeTextPreference(this);"/>
 									<label value="px" />
 									<separator flex="1" />
 									<label value="Top padding:" />
-									<textbox id="buttonPaddingTop"
-													 type="number"
-													 class="num2digits"
-													 preference="qfpl-ButtonTopPadding"
-													 style="max-width:4em; width:auto;"
-													 onchange="options.changeTextPreference(this);"/>
+                  <html:input
+                    type="number"
+                    id="buttonPaddingTop"
+										class="num2digits"
+										preference="qfpl-ButtonTopPadding"
+										style="max-width:4em; width:auto;"
+										onchange="options.changeTextPreference(this);"/>
 									<label value="px" />
 								</hbox>
 								
@@ -674,21 +685,21 @@
 													oncommand="options.toggleBoolPreference(this);" />
 								<label value="&qf.options.themes.customCornerRadius.Top.label;"
 											 control="QuickFolders-Options-CustomTopRadius" />
-								<textbox id="QuickFolders-Options-CustomTopRadius"
-												 type="number"
-												 size="3"
+                <html:input
+                         type="number"
+								         id="QuickFolders-Options-CustomTopRadius"
 												 class="num1digit"
 												 preference="qfpl-TopRadius"
 												 onchange="options.changeTextPreference(this);" />
 								<label value="px" />
 								<label value="&qf.options.themes.customCornerRadius.Bottom.label;"
 											 control="QuickFolders-Options-CustomBottomRadius" />
-								<textbox id="QuickFolders-Options-CustomBottomRadius"
-												 type="number"
-												 size="3"
-												 class="num1digit"
-												 preference="qfpl-BottomRadius"
-												 onchange="options.changeTextPreference(this);" />
+								<html:input
+												type="number"
+                        id="QuickFolders-Options-CustomBottomRadius"
+												class="num1digit"
+												preference="qfpl-BottomRadius"
+												onchange="options.changeTextPreference(this);" />
 								<label value="px" />
 								<button label="&qf.button.default;"
 												oncommand="options.setDefaultButtonRadius();" />
@@ -714,13 +725,13 @@
 								<label id="toolbar-bottom-label"
 											 value="&qf.label.Toolbar.bottomLine;"
 											 control="toolbar-bottom-size" />
-								<textbox id="toolbar-bottom-size"
-												 tooltiptext="&qf.label.Toolbar.bottomLine.tip;"
-												 type="number"
-												 class="num1digit"
-												 size="3"
-												 preference="qfpl-ToolbarBottom"
-												 onchange="options.changeTextPreference(this);" />										 
+								<html:input
+                      type="number"
+                      id="toolbar-bottom-size"
+											tooltiptext="&qf.label.Toolbar.bottomLine.tip;"
+											class="num1digit"
+											preference="qfpl-ToolbarBottom"
+											onchange="options.changeTextPreference(this);" />										 
 								<label value="px" />
 							</hbox>			 
 							<hbox align="center">
@@ -729,8 +740,9 @@
 											 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
 											 onclick="util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
 											 style = "text-decoration:underline;cursor:pointer;" />
-								<textbox id="toolbarMinHeight"
+								<html:input 
 												 type="number"
+                         id="toolbarMinHeight"
 												 class="num2digits"
 												 preference="qfpl-ToolbarMinimalHeight" />
 								<label value="px" />
@@ -1163,12 +1175,14 @@
 														disabled="true" />
                   <checkbox preference="qfpp-QuickJumpShortcutShift"
                             label="&qf.checkbox.shift;+" />
-									<textbox id="qf-QuickJumpShortcut"
-													 preference="qfpp-QuickJumpShortcutKey"
-													 class="shortCutKey"
-													 disabled="true"
-													 maxLength="1"
-													 />
+									<html:input
+                    type="text"
+                    id="qf-QuickJumpShortcut"
+                    preference="qfpp-QuickJumpShortcutKey"
+                    class="shortCutKey"
+                    disabled="true"
+                    maxLength="1"
+                    />
 								</hbox>
 								<hbox>
 									<checkbox id="chkQuickMoveHotkey"
@@ -1180,11 +1194,13 @@
 														/>
                   <checkbox preference="qfpp-QuickMoveShortcutShift"
                             label="&qf.checkbox.shift;+" />
-									<textbox id="qf-QuickMoveShortcut"
-													 preference="qfpp-QuickMoveShortcutKey"
-													 class="shortCutKey"
-													 maxLength="1"
-													 disabled="true" />
+									<html:input
+                    type="text"
+                    id="qf-QuickMoveShortcut"
+                    preference="qfpp-QuickMoveShortcutKey"
+                    class="shortCutKey"
+                    maxLength="1"
+                    disabled="true" />
 								</hbox>
 								<hbox>
 									<checkbox id="chkQuickCopyHotkey"
@@ -1194,11 +1210,13 @@
 														disabled="true" />
                   <checkbox preference="qfpp-QuickCopyShortcutShift"
                             label="&qf.checkbox.shift;+" />
-									<textbox id="qf-QuickCopyShortcut"
-													 preference="qfpp-QuickCopyShortcutKey"
-													 class="shortCutKey"
-													 maxLength="1"
-													 disabled="true" />
+									<html:input
+                    type="text"
+                    id="qf-QuickCopyShortcut"
+										preference="qfpp-QuickCopyShortcutKey"
+										class="shortCutKey"
+										maxLength="1"
+										disabled="true" />
 								</hbox>
 								<hbox>
 									<spacer style="width: 16px;" />
@@ -1216,11 +1234,13 @@
 														tooltiptext="&qf.checkbox.skipFolder.tip;"
 														preference="qfpp-skipFolderShortcut"
 														disabled="true" />
-									<textbox id="qf-SkipFolderShortcut"
-													 preference="qfpp-skipFolderShortcutKey"
-													 class="shortCutKey"
-													 maxLength="1"
-													 disabled="true" />
+									<html:input
+                    type="text"
+                    id="qf-SkipFolderShortcut"
+										preference="qfpp-skipFolderShortcutKey"
+										class="shortCutKey"
+										maxLength="1"
+										disabled="true" />
 								</hbox>
 								
 								<hbox align="center">
@@ -1247,13 +1267,13 @@
 									<label id="button-font-size-label"
 												 control="quickmove-path-depth"
 												 value ="&qf.pathFormat.maxDepth;" />
-									<textbox id="quickmove-path-depth"
-													 tooltiptext="&qf.pathFormat.tooltip;"
-													 type="number"
-													 class="num1digit"
-													 size="3"
-													 preference="qfpp-QuickMove-PathDepth"
-													 disabled="true"/>
+									<html:input
+                    type="number"
+                    id="quickmove-path-depth"
+										tooltiptext="&qf.pathFormat.tooltip;"
+										class="num1digit"
+										preference="qfpp-QuickMove-PathDepth"
+										disabled="true"/>
 								</hbox>
 								<hbox>
 									<checkbox id="chkCategories"

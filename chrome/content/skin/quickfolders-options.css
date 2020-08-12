@@ -37,6 +37,11 @@ tabpanel html|input[type="number"]::-moz-number-spin-down {
   min-height: 8px !important;
 }
 
+#qf-options-prefpane legend:-moz-lwtheme {
+  background-color: unset; /* avoid black bars with lightweight themes */
+  background-color: var(--moz-dialog);
+}
+
 /* html input ignores flex attribute */
 #currentFolderBackground {
   min-width: 520px;

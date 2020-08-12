@@ -1069,9 +1069,8 @@ var QuickFolders = {
       if (!evt)
         debugger;
       evt.preventDefault();
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
-
-			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+      let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(),
+          types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
 			// [Bug 26560] add text/plain
 			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/plain" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
@@ -1238,8 +1237,7 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
-      if (!dragSession || !evt)
-        debugger;
+      if ( !evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!

@@ -596,6 +596,10 @@ var QuickFolders = {
 	compactLastFolderUri: null,
 	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
 
+	//for testing
+	debug_log: function debug_log(ev) {
+		console.log("DnD");
+	},
 	// helper function to do init from options dialog!
 	initDocAndWindow: function initDocAndWindow(win) {
     let util = QuickFolders.Util,
@@ -1010,7 +1014,10 @@ var QuickFolders = {
 		get prefs() { return QuickFolders.Preferences; } ,
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
-
+		debug_log: function debug_log(ev) {
+			console.log("toolbarDragObserver:DnD");
+		},
+	
 		canHandleMultipleItems: false,
 		
 		getSupportedFlavours : function () {
@@ -1030,8 +1037,9 @@ var QuickFolders = {
 			}
 		} ,
 		
-		onDragEnter: function onDragEnter(evt, session) {
-      // session = nsIDragSession
+		onDragEnter: function onDragEnter(evt) {
+//		onDragEnter: function onDragEnter(evt, session) {
+				// session = nsIDragSession
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
           ot = evt.originalTarget;

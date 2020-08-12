@@ -263,8 +263,9 @@ QuickFolders.FolderTree = {
 	
 	forceRedraw: function() {
 		// force redrawing the folder pane
+		const box = document.getElementById("folderTree").boxObject; // not working in Thunderbird 78
+    if(!box) return;
 		const util = QuickFolders.Util;
-		var box = document.getElementById("folderTree").boxObject;
 		// nsITreeBoxObject will be deprecated from Tb69
 		try {
 			if (Components.interfaces.nsITreeBoxObject) {

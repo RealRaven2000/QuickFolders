@@ -1030,14 +1030,18 @@ var QuickFolders = {
 		},
 		
 
-		dragExit: function(evt) {
+		dragExit: function dragExit(evt) {
+      if (!evt)
+        debugger;
 			this.util.logDebugOptional("dnd","toolbarDragObserver.dragExit");
 			if (QuickFolders_globalHidePopupId) {
 				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
 			}
 		} ,
 		
-		dragEnter: function dragEnter(evt) {
+		dragEnter: function qftoolbar_dragEnter(evt) {
+      if (!evt)
+        debugger;
 //		dragEnter: function dragEnter(evt, session) {
 				// session = nsIDragSession
 			let t = evt.currentTarget,
@@ -1061,7 +1065,9 @@ var QuickFolders = {
 			return false;
 		},
 
-		onDragOver: function onDragOver(evt, flavour, session){
+		dragOver: function qftoolbar_dragOver(evt, flavour, session){
+      if (!evt || !session)
+        debugger;
 			let contentType = flavour.contentType;
 			// [Bug 26560] add text/plain
 			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/plain" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
@@ -1085,10 +1091,13 @@ var QuickFolders = {
 			return true;
 		},
 
-		onDrop: function onDrop(evt, dropData, dragSession) {
+		drop: function drop(evt, dropData, dragSession) {
+      if (!evt || !dragSession)
+        debugger;
+      
 			if (this.prefs.isDebugOption('dnd')) debugger;
 			let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDrop - " + contentType);
+			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
  			function addFolder(src) {
 					if(src) {
 						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
@@ -1100,7 +1109,7 @@ var QuickFolders = {
 					}
 			};
 
-			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.onDrop " + contentType);
+			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
 			let msgFolder, sourceUri;
 
 			switch (contentType) {
@@ -1170,6 +1179,8 @@ var QuickFolders = {
 		},
 		dragOverTimer: null,
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
+      if (!session || !dragSession)
+        debugger;
 			let popupStart = evt.target;
 			const prefs = QuickFolders.Preferences,
 			      util = QuickFolders.Util;
@@ -1215,6 +1226,8 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
+      if (!session || !evt)
+        debugger;
 			// find parent node!
 			util.logDebugOptional("dnd","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
@@ -1227,7 +1240,9 @@ var QuickFolders = {
 			}
 		} ,
 
-		dragOver: function menuObs_onDragOver(evt, flavor, session){
+		dragOver: function menuObs_dragOver(evt, flavor, session){
+      if (!session || !evt)
+        debugger;
 			session.canDrop = (flavor.contentType === "text/x-moz-message");
 			if (null !== QuickFolders_globalLastChildPopup) {
 				/*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
@@ -1236,8 +1251,8 @@ var QuickFolders = {
 		},
 
 		// drop mails on popup: move mail, like in buttondragobserver
-		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.onDrop INSTEAD!
-		onDrop: function menuObs_onDrop(evt, dropData, dragSession) {
+		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.drop INSTEAD!
+		drop: function menuObs_drop(evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
 				    util = QuickFolders.Util,
             model = QuickFolders.Model,
@@ -1368,7 +1383,7 @@ var QuickFolders = {
 			}
 
 			try {
-				util.logDebugOptional("dnd","popupDragObserver.onDrop " + contentType);
+				util.logDebugOptional("dnd","popupDragObserver.drop " + contentType);
 				util.logDebugOptional("dnd","target's parent folder: " + menuItem.folder.URI);
 				let targetFolder = menuItem.folder.QueryInterface(Ci.nsIMsgFolder);
 
@@ -1417,7 +1432,7 @@ var QuickFolders = {
 							}
 						}
 						catch (e) {
-							QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+							QuickFolders.LocalErrorLogger("Exception in drop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
 						}
 					}
 				}
@@ -1465,6 +1480,9 @@ var QuickFolders = {
 		},
 
 		dragStart: function msgObs_dragStart(event, transferData, action) {
+      if (!event || !transferData)
+        debugger;
+      
 			let button = event.target;
 			transferData.data = new TransferData();
 
@@ -1489,6 +1507,9 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		dragEnter: function btnObs_dragEnter(evt, dragSession) {
+      if (!evt || !dragSession)
+        debugger;
+      
       const util = QuickFolders.Util,
 						prefs = QuickFolders.Preferences,
 			      QI = QuickFolders.Interface,
@@ -1714,6 +1735,8 @@ var QuickFolders = {
 		
 		// deal with old folder popups
 		dragExit: function btnObs_dragExit(event, dragSession) {
+      if (!event || !dragSession)
+        debugger;
 			const util = QuickFolders.Util;
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
 			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
@@ -1766,7 +1789,9 @@ var QuickFolders = {
 			}
 		} ,
 
-		dragOver: function btnObs_onDragOver(evt, flavor, session){
+		dragOver: function btnObs_dragOver(evt, flavor, session){
+      if (!evt || !session)
+        debugger;
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavor=" + flavor.contentType);
 			session.canDrop = true;
 			if (flavor.contentType === "text/x-moz-message" || flavor.contentType === "text/unicode"
@@ -1779,7 +1804,7 @@ var QuickFolders = {
 			}
 		},
 
-		onDrop: function btnObs_onDrop(evt, dropData, dragSession) {
+		drop: function btnObs_drop(evt, dropData, dragSession) {
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
@@ -1795,7 +1820,7 @@ var QuickFolders = {
 					
 			if (prefs.isDebugOption("dnd")) debugger;
       try {
-        util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + contentType);
+        util.logDebugOptional("dnd", "buttonDragObserver.drop flavor=" + contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
@@ -1825,7 +1850,7 @@ var QuickFolders = {
 							QI.moveFolder(sourceFolder, targetFolder);
 						}
 					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.onDrop:" + e); };
+					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.drop:" + e); };
 					break;
 				case  "text/x-moz-message":
 				  // use dropData to retrieve the messages!
@@ -1873,7 +1898,7 @@ var QuickFolders = {
 								}
 							}
 							catch (e) {
-								QuickFolders.LocalErrorLogger("Exception in onDrop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
+								QuickFolders.LocalErrorLogger("Exception in drop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
 							}
 						}
 					}
@@ -1894,7 +1919,7 @@ var QuickFolders = {
           
           // quickMove menu
           if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-            util.logDebugOptional("dnd", "onDrop: quickMove button - added " + messageUris.length + " message URIs");
+            util.logDebugOptional("dnd", "drop: quickMove button - added " + messageUris.length + " message URIs");
             // copy message list into "holding area"
             while (messageUris.length) {
               let newUri = messageUris.pop();
@@ -1907,7 +1932,7 @@ var QuickFolders = {
           // reading List menu
           if (DropTarget.id && DropTarget.id =="QuickFolders-readingList") {
             let bm = QuickFolders.bookmarks;
-            util.logDebugOptional("dnd", "onDrop: readingList button - added " + messageUris.length + " message URIs");
+            util.logDebugOptional("dnd", "drop: readingList button - added " + messageUris.length + " message URIs");
             // copy message list 
             while (messageUris.length) {
               let newUri = messageUris.pop();
@@ -1921,7 +1946,7 @@ var QuickFolders = {
           }
           
 					try {
-						util.logDebugOptional("dnd", "onDrop: " + messageUris.length + " messageUris to " + targetFolder.URI);
+						util.logDebugOptional("dnd", "drop: " + messageUris.length + " messageUris to " + targetFolder.URI);
 						if(messageUris.length > 0) {
 							
 							lastAction = "moveMessages";
@@ -1937,11 +1962,11 @@ var QuickFolders = {
 						}
 
 					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in onDrop -" + lastAction + "... " + e); };
+					catch(e) {QuickFolders.LocalErrorLogger("Exception in drop -" + lastAction + "... " + e); };
 					// close any top level menu items after message drop!
 
 					//hide popup's menus!
-					util.logDebug ("buttonDragObserver.onDrop DropTarget = " + DropTarget.tagName + 
+					util.logDebug ("buttonDragObserver.drop DropTarget = " + DropTarget.tagName + 
             + (DropTarget.id ? '[' + DropTarget.id + ']' : '')
             + '  Target Folder:' + targetFolder.name );
 

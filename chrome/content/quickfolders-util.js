@@ -1786,21 +1786,24 @@ QuickFolders.Util = {
 		      util = QuickFolders.Util,
 					styleEngine = QuickFolders.Styles;
 		util.logDebug("Loading platform styles for " + util.HostSystem + "…");
+		let path="";
 		switch (util.HostSystem) {
 			case "linux":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
+				path= 'chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles';
+				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "winnt":
+				path= 'chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles';
 //				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
-//				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/qf-platform.css', 'QuickFolderPlatformStyles');
-				let newCSS = QuickFolders.WL.injectCSS('chrome://quickfolders/content/skin/win/qf-platform.css');
-				newCSS.setAttribute("title", "QuickFolderPlatformStyles");
 				break;
 			case "darwin":
-				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
+				path= 'chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles';
+				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 		}
-		if (util.ApplicationName =="Interlink") {
+		let newCSS = QuickFolders.WL.injectCSS(path);
+		newCSS.setAttribute("title", "QuickFolderPlatformStyles");
+if (util.ApplicationName =="Interlink") {
 			let url = win.document.URL,
 			    isMainWindow = url.endsWith("messenger.xul");
 			if (isMainWindow) {

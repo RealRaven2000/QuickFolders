@@ -2219,7 +2219,7 @@ QuickFolders.Interface = {
         // these are defined in mail/base/content/folderPane.js
 				this.setEventAttribute(button, "ondragenter", "QuickFolders.buttonDragObserver.dragEnter(event);");
 				this.setEventAttribute(button, "ondragover", "QuickFolders.buttonDragObserver.dragOver(event);");
-				this.setEventAttribute(button, "ondrop", "QuickFolders.buttonDragObserver(event);");
+				this.setEventAttribute(button, "ondrop", "QuickFolders.buttonDragObserver.drop(event);");
 			}
 			// button.setAttribute("flex",100);
 		}
@@ -4632,8 +4632,8 @@ QuickFolders.Interface = {
 					} 
 					catch(ex) {;}
 
-					this.setEventAttribute(subMenu, "ondragenter","window.QuickFolders.popupDragObserver.dragEnter(event);");
-					this.setEventAttribute(subMenu, "ondrop","window.QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
+					this.setEventAttribute(subMenu, "ondragenter","QuickFolders.popupDragObserver.dragEnter(event);");
+					this.setEventAttribute(subMenu, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
 					// this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
 					this.setEventAttribute(subMenu, "ondragend","window.QuickFolders.popupDragObserver.dragExit(event);");
 

@@ -1837,7 +1837,7 @@ var QuickFolders = {
 			}
 		},
 
-		drop: function btnObs_drop(evt, dropData, dragSession) {
+		drop: function btnObs_drop(evt){//}, dropData, dragSession) {
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,

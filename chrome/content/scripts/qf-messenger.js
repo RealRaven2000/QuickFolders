@@ -305,6 +305,7 @@ WL.injectElements(`
     
         <hbox id="QuickFolders-PreviewToolbarPanel" 
                 position="1"
+                insertbefore="singlemessage"
                     style="display:none;">
             <spacer flex="5" id="QF-CurrentLeftSpacer"/>
             <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">

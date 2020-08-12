@@ -1096,9 +1096,9 @@ var QuickFolders = {
 			return true;
 		},
 
-		drop: function drop(evt, dropData, dragSession) {
-      if (!evt || !dragSession)
-        debugger;
+		drop: function drop(evt, dragSession) {
+      if (!evt) debugger;
+      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			if (this.prefs.isDebugOption('dnd')) debugger;
@@ -1131,23 +1131,27 @@ var QuickFolders = {
               if (msgFolder.QueryInterface)
                 sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
               else
-                sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dropData, dragSession); // Postbox
+                sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // Postbox
               addFolder(sourceUri);
             }
 					}
 					else {
-						sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dropData, dragSession); // older gecko versions.
+						sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // older gecko versions.
             addFolder(sourceUri);
 					}
 
 					break;
 				case "text/currentfolder":
-					sourceUri = dropData.data;
+          debugger;
+					// sourceUri = dropData.data;
+          sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					addFolder(sourceUri);
 					break;
 				case "text/plain":  // [Bug 26560]
 				case "text/unicode":  // plain text: button was moved OR: a menuitem was dropped!!
-					sourceUri = dropData.data;
+          debugger;
+					// sourceUri = dropData.data;
+          sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					let eType = dragSession.dataTransfer.mozSourceNode.tagName,
 					    myDragPos,
 					    target = evt.currentTarget;
@@ -1188,8 +1192,7 @@ var QuickFolders = {
 		},
 		dragOverTimer: null,
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
-      if (!evt || !dragSession)
-        debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 
@@ -1239,8 +1242,7 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
-      if (!dragSession || !evt)
-        debugger;
+      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!
@@ -1256,8 +1258,7 @@ var QuickFolders = {
 		} ,
 
 		dragOver: function menuObs_dragOver(evt, flavour, dragSession){
-      if (!dragSession || !evt)
-        debugger;
+      if (!evt) debugger;
       dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
       let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
@@ -1504,9 +1505,8 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		dragStart: function msgObs_dragStart(event, transferData, action) {
-      if (!event || !transferData)
-        debugger;
+		startDrag: function msgObs_startDrag(event, transferData, action) {
+      if (!event || !transferData) debugger;
       
 			let button = event.target;
 			transferData.data = new TransferData();
@@ -1532,8 +1532,8 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		dragEnter: function btnObs_dragEnter(evt, dragSession) {
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
+      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
       
       const util = QuickFolders.Util,
@@ -1761,8 +1761,8 @@ var QuickFolders = {
 		
 		// deal with old folder popups
 		dragExit: function btnObs_dragExit(event, dragSession) {
-      if (!event || !dragSession)
-        debugger;
+      if (!event) debugger;
+      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			const util = QuickFolders.Util;
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
@@ -1817,8 +1817,8 @@ var QuickFolders = {
 		} ,
 
 		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
-      if (!evt)
-        debugger;
+      if (!evt) debugger;
+      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
 			// dragSession.canDrop = true;
@@ -1835,9 +1835,9 @@ var QuickFolders = {
 				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.dragOver - can not drop " + types[0]);
 				dragSession.canDrop = false;
 			}
-		},
+		} ,
 
-		drop: function btnObs_drop(evt){//}, dropData, dragSession) {
+		drop: function btnObs_drop(evt){
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
@@ -1876,13 +1876,16 @@ var QuickFolders = {
 							for (let i=0; i<count; i++) { // allow multiple folder drops...
 								let msgFolder = evt.dataTransfer.mozGetDataAt(contentType, i);
 								if (!msgFolder.QueryInterface) // Postbox
-									msgFolder = QuickFolders.Model.getMsgFolderFromUri(util.getFolderUriFromDropData(evt, dropData, dragSession), false);
+									msgFolder = QuickFolders.Model.getMsgFolderFromUri(
+                    util.getFolderUriFromDropData(evt, dragSession), 
+                    false);
 								foldersArray.push(msgFolder);
 							}
 							QI.moveFolder(foldersArray, targetFolder, count);
 						}					
 						else {
-							let sourceFolder = util.getFolderFromDropData(evt, dropData, dragSession);
+							let sourceFolder = 
+                util.getFolderFromDropData(evt, dragSession);
 							QI.moveFolder(sourceFolder, targetFolder);
 						}
 					}
@@ -2014,51 +2017,32 @@ var QuickFolders = {
 
 					break;
 				case "text/unicode":  // dropping another tab on this tab inserts it before
-					QuickFolders.ChangeOrder.insertAtPosition(dropData.data, DropTarget.folder.URI, "");
+          // let buttonURI = dropData.data;
+          let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
+					QuickFolders.ChangeOrder.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
 					break;
 			}
 		},
 
 		// new handler for starting drag of buttons (re-order)
-		dragStart: function btnObs_dragStart(event, transferData, action) {
+		startDrag: function btnObs_startDrag(event, transferData, action) {
 			const util = QuickFolders.Util;
 			let button = event.target;
-			util.logDebugOptional('dnd', 'buttonDragObserver.dragStart\n' 
+			util.logDebugOptional('dnd', 'buttonDragObserver.startDrag\n' 
 			                           + 'button.folder=' + button.folder + '\n' 
 																 + 'button.id=' + button.id);
 			if(!button.folder)
 				 return;
-			transferData.data = new TransferData();
-			// if current folder button is started to drag, use a different flavour
-			if (button.id && button.id === "QuickFoldersCurrentFolder")
-				transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
-			else
-				transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
-			// now let's start supporting dragging to the tab bar.
-			// it looks like I need to wrap http://mxr.mozilla.org/comm-central/source/mail/base/content/tabmail.xml
-			//  ---  dragstart  ---
-			// let dt = event.dataTransfer;
-			//  // If we drag within the same window, we use the tab directly
-      // dt.mozSetDataAt("application/x-moz-tabmail-tab", draggedTab, 0);
-			// // otherwise we use session restore & JSON to migrate the tab.
-      // let uri = this.tabmail.persistTab(tab);    // <==== !!!!
-			// if (uri)
-      //   uri = JSON.stringify(uri);
-			// dt.mozSetDataAt("application/x-moz-tabmail-json", uri, 0);
-			// dt.mozCursor = "default";
-			//  --- dragover ---
-			//  // incase the user is dragging something else than a tab, and
-      //  // keeps hovering over a tab, we assume he wants to switch to this tab.
-      //  if ((dt.mozTypesAt(0)[0] != "application/x-moz-tabmail-tab")
-      //         && (dt.mozTypesAt(0)[1] != "application/x-moz-tabmail-json")) {
-			//    let tab = this._getDragTargetTab(event);
-      // 		if (!tab) return;
-			//  --- drop ---
-			// 
-			
-			
-			
-			
+			// transferData.data = new TransferData();
+      // if current folder button is started to drag, use a different flavour
+			if (button.id && button.id === "QuickFoldersCurrentFolder") {
+				// transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
+        event.dataTransfer.mozSetDataAt("text/currentfolder", button.folder.URI, 0);
+      }
+			else {
+				// transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
+        event.dataTransfer.mozSetDataAt("text/unicode", button.folder.URI, 0);
+      }
 		}
 
 	},

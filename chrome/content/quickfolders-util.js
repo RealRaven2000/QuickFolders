@@ -787,7 +787,7 @@ QuickFolders.Util = {
 		}
 	} ,
 
-	getFolderUriFromDropData: function getFolderUriFromDropData(evt, dropData, dragSession) {
+	getFolderUriFromDropData: function getFolderUriFromDropData(evt, dragSession) {
 		let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
@@ -824,21 +824,15 @@ QuickFolders.Util = {
 		return null;
 	} ,
 
-	getFolderFromDropData: function getFolderFromDropData(evt, dropData, dragSession) {
+	getFolderFromDropData: function getFolderFromDropData(evt, dragSession) {
 		let msgFolder=null;
 
-// 		if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) {
-// 			msgFolder = evt.dataTransfer.mozGetDataAt(dropData.flavour.contentType, 0);
-// 		}
-// 		else {
-    let uri = this.getFolderUriFromDropData(evt, dropData, dragSession); // older gecko versions.
+    let uri = this.getFolderUriFromDropData(evt, dragSession); // older gecko versions.
     if (!uri)
       return null;
     msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(Components.interfaces.nsIMsgFolder);
-// 		}
-//
-		return msgFolder;
 
+		return msgFolder;
 	} ,
 	
 	isVirtual: function isVirtual(folder) {

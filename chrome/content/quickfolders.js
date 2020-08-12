@@ -1042,7 +1042,7 @@ var QuickFolders = {
 		dragEnter: function qftoolbar_dragEnter(evt) {
       if (!evt)
         debugger;
-//		dragEnter: function dragEnter(evt, session) {
+//		dragEnter: function dragEnter(evt, dragSession) {
 				// session = nsIDragSession
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
@@ -1065,17 +1065,21 @@ var QuickFolders = {
 			return false;
 		},
 
-		dragOver: function qftoolbar_dragOver(evt, flavour, session){
-      if (!evt || !session)
+		dragOver: function qftoolbar_dragOver(evt, flavour, dragSession){
+      if (!evt)
         debugger;
-			let contentType = flavour.contentType;
+      evt.preventDefault();
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+
+			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+          contentType = types[0];
 			// [Bug 26560] add text/plain
 			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/plain" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
-				session.canDrop = true;
+				dragSession.canDrop = true;
 			}
 			else {
 				this.util.logDebugOptional("dnd","toolbarDragObserver.dragOver - can not drop " + contentType);
-				session.canDrop = false;
+				dragSession.canDrop = false;
 			}
 		},
 		
@@ -1094,9 +1098,13 @@ var QuickFolders = {
 		drop: function drop(evt, dropData, dragSession) {
       if (!evt || !dragSession)
         debugger;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			if (this.prefs.isDebugOption('dnd')) debugger;
-			let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
+			// let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
+      let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+          contentType = types[0];
+
 			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
  			function addFolder(src) {
 					if(src) {
@@ -1179,11 +1187,15 @@ var QuickFolders = {
 		},
 		dragOverTimer: null,
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
-      if (!session || !dragSession)
+      if (!evt || !dragSession)
         debugger;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+
+
 			let popupStart = evt.target;
 			const prefs = QuickFolders.Preferences,
 			      util = QuickFolders.Util;
+      
 			util.logDebugOptional("dnd","popupDragObserver.dragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				evt.preventDefault(); // fix layout issues in TB3 + Postbox!
@@ -1226,8 +1238,10 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
-      if (!session || !evt)
+      if (!dragSession || !evt)
         debugger;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      
 			// find parent node!
 			util.logDebugOptional("dnd","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
@@ -1240,10 +1254,16 @@ var QuickFolders = {
 			}
 		} ,
 
-		dragOver: function menuObs_dragOver(evt, flavor, session){
-      if (!session || !evt)
+		dragOver: function menuObs_dragOver(evt, flavour, dragSession){
+      if (!dragSession || !evt)
         debugger;
-			session.canDrop = (flavor.contentType === "text/x-moz-message");
+      dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      
+      let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+          contentType = types[0];
+
+      
+			session.canDrop = (contentType === "text/x-moz-message");
 			if (null !== QuickFolders_globalLastChildPopup) {
 				/*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
 				QuickFolders_globalLastChildPopup=null;
@@ -1258,11 +1278,15 @@ var QuickFolders = {
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
             QFFW = QuickFolders.FilterWorker;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      
 			let isThread = evt.isThread,
 			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
 			    menuItem = evt.target,
           messageUriList = QuickFolders.popupDragObserver.newFolderMsgUris,
-          contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
+          types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+          contentType = types[0];
+          
 					
 			let moveOrCopy = function moveOrCopy(newFolder, sourceURI) {
 				let sourceFolder,
@@ -1420,12 +1444,12 @@ var QuickFolders = {
 					for (let i = 0; i < dragSession.numDropItems; i++) {
 						dragSession.getData (trans, i);
 						let dataObj = new Object(),
-								flavor = new Object(),
+								flavour = new Object(),
 								len = new Object();
 						try {
-							trans.getAnyTransferData(flavor, dataObj, len);
+							trans.getAnyTransferData(flavour, dataObj, len);
 
-							if ((flavor.value === "text/x-moz-message") && dataObj) {
+							if ((flavour.value === "text/x-moz-message") && dataObj) {
 								dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
 								let messageUri = dataObj.data.substring(0, len.value);
 								QuickFolders.popupDragObserver.newFolderMsgUris.push(messageUri);
@@ -1507,8 +1531,9 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		dragEnter: function btnObs_dragEnter(evt, dragSession) {
-      if (!evt || !dragSession)
+      if (!evt)
         debugger;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
       
       const util = QuickFolders.Util,
 						prefs = QuickFolders.Preferences,
@@ -1737,6 +1762,7 @@ var QuickFolders = {
 		dragExit: function btnObs_dragExit(event, dragSession) {
       if (!event || !dragSession)
         debugger;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			const util = QuickFolders.Util;
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
 			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
@@ -1789,18 +1815,24 @@ var QuickFolders = {
 			}
 		} ,
 
-		dragOver: function btnObs_dragOver(evt, flavor, session){
-      if (!evt || !session)
+		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
+      if (!evt)
         debugger;
-			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavor=" + flavor.contentType);
-			session.canDrop = true;
-			if (flavor.contentType === "text/x-moz-message" || flavor.contentType === "text/unicode"
-			 || flavor.contentType === "text/plain"
-			 || flavor.contentType === "text/x-moz-folder" || flavor.contentType === "text/x-moz-newsfolder")
-				session.canDrop = true;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
+			// dragSession.canDrop = true;
+      
+      let types = Array.from(evt.dataTransfer.mozTypesAt(0)); // replace flavour param
+      if (   types.includes("text/x-moz-message") 
+          || types.includes("text/unicode") 
+          || types.includes("text/plain")
+          || types.includes("text/x-moz-folder")
+          || types.includes("text/x-moz-newsfolder")
+         )
+        dragSession.canDrop = true;
 			else {
-				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.dragOver - can not drop " + flavor.contentType);
-				session.canDrop = false;
+				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.dragOver - can not drop " + types[0]);
+				dragSession.canDrop = false;
 			}
 		},
 
@@ -1810,17 +1842,20 @@ var QuickFolders = {
           prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces,
 					Cc = Components.classes;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
           
 			let isShift = evt.shiftKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
 			    targetFolder = DropTarget.folder,
 					lastAction = "",
-					contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
-					
+					types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+          contentType = types[0];
+
+          
 			if (prefs.isDebugOption("dnd")) debugger;
       try {
-        util.logDebugOptional("dnd", "buttonDragObserver.drop flavor=" + contentType);
+        util.logDebugOptional("dnd", "buttonDragObserver.drop flavour=" + contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
@@ -1881,13 +1916,13 @@ var QuickFolders = {
 							//alert('dragSession.getData ... '+(i+1));
 							dragSession.getData (trans, i);
 							let dataObj = new Object(),
-									flavor = new Object(),
+									flavour = new Object(),
 									len = new Object();
 							if (debugDragging ) util.alert('trans.getAnyTransferData ... '+(i+1));
 							try {
-								trans.getAnyTransferData(flavor, dataObj, len);
+								trans.getAnyTransferData(flavour, dataObj, len);
 
-								if (flavor.value === "text/x-moz-message" && dataObj) {
+								if (flavour.value === "text/x-moz-message" && dataObj) {
 
 									dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
 									if (debugDragging ) util.alert('getting data from dataObj...');
@@ -1993,7 +2028,7 @@ var QuickFolders = {
 			if(!button.folder)
 				 return;
 			transferData.data = new TransferData();
-			// if current folder button is started to drag, use a different flavor
+			// if current folder button is started to drag, use a different flavour
 			if (button.id && button.id === "QuickFoldersCurrentFolder")
 				transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
 			else

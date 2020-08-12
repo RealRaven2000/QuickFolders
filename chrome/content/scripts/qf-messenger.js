@@ -63,7 +63,7 @@ function onLoad(activatedWhileWindowOpen) {
                 id="QuickFolders-Toolbar"
                 toolbarname="QuickFolders Toolbar"
                 class="toolbar-primary"
-                ondragover="(QuickFolders.toolbarDragObserver).dragOver(evt, flavour, session);"
+                ondragover="(QuickFolders.toolbarDragObserver).dragOver(event, flavour, session);"
                 ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
                 ondragenter="QuickFolders.toolbarDragObserver.debug_log(event);"
                 dragdroparea="QuickFolders-FoldersBox"

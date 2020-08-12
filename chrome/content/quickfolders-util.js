@@ -791,6 +791,8 @@ QuickFolders.Util = {
 		let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 		trans.addDataFlavor("text/x-moz-folder");
 		trans.addDataFlavor("text/x-moz-newsfolder");
+    if (!evt) debugger;
+    if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
 
 		// alert ("numDropItems = " + dragSession.numDropItems + ", isDataFlavorSupported=" + dragSession.isDataFlavorSupported("text/x-moz-folder"));
 
@@ -798,9 +800,11 @@ QuickFolders.Util = {
 
 		let dataObj = new Object(),
 		    len = new Object(),
-		    flavor =  dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
+        types = Array.from(evt.dataTransfer.mozTypesAt(0)),
+        contentType = types[0],
+		    flavour = contentType; // dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
 		try {
-			trans.getTransferData(flavor, dataObj, len);
+			trans.getTransferData(flavour, dataObj, len);
 
 			if (dataObj) {
 				dataObj = dataObj.value.QueryInterface(Components.interfaces.nsISupportsString);
@@ -810,7 +814,7 @@ QuickFolders.Util = {
 		}
 		catch(e) {
 			if (evt.dataTransfer.mozGetDataAt) {
-				let f = evt.dataTransfer.mozGetDataAt(flavor, 0)
+				let f = evt.dataTransfer.mozGetDataAt(flavour, 0)
 				if (f && f.URI)
 					return f.URI;
 			}

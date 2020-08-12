@@ -1030,15 +1030,15 @@ var QuickFolders = {
 		},
 		
 
-		onDragExit: function onDragExit(evt) {
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragExit");
+		dragExit: function(evt) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.dragExit");
 			if (QuickFolders_globalHidePopupId) {
 				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
 			}
 		} ,
 		
-		onDragEnter: function onDragEnter(evt) {
-//		onDragEnter: function onDragEnter(evt, session) {
+		dragEnter: function dragEnter(evt) {
+//		dragEnter: function dragEnter(evt, session) {
 				// session = nsIDragSession
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
@@ -1046,7 +1046,7 @@ var QuickFolders = {
       if (ot) {
         dTxt += "\noriginal target:" + ot.nodeName + "  '" + ot.id + "'";
       }
-			this.util.logDebugOptional("dnd","toolbarDragObserver.onDragEnter - \n" + dTxt);
+			this.util.logDebugOptional("dnd","toolbarDragObserver.dragEnter - \n" + dTxt);
 			if (ot && ot.nodeName.includes('arrowscrollbox')) {
         this.util.logDebugOptional("dnd","dragEnter on arrowscrollbox - creating scroll event");
         let event = document.createEvent('Event');
@@ -1068,7 +1068,7 @@ var QuickFolders = {
 				session.canDrop = true;
 			}
 			else {
-				this.util.logDebugOptional("dnd","toolbarDragObserver.onDragover - can not drop " + contentType);
+				this.util.logDebugOptional("dnd","toolbarDragObserver.dragOver - can not drop " + contentType);
 				session.canDrop = false;
 			}
 		},
@@ -1169,11 +1169,11 @@ var QuickFolders = {
 			return flavours;
 		},
 		dragOverTimer: null,
-		onDragEnter: function menuObs_onDragEnter(evt, dragSession) {
+		dragEnter: function menuObs_dragEnter(evt, dragSession) {
 			let popupStart = evt.target;
 			const prefs = QuickFolders.Preferences,
 			      util = QuickFolders.Util;
-			util.logDebugOptional("dnd","popupDragObserver.onDragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd","popupDragObserver.dragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				evt.preventDefault(); // fix layout issues in TB3 + Postbox!
 
@@ -1207,27 +1207,27 @@ var QuickFolders = {
 				}
 			}
 			catch(e) {
-				QuickFolders.Util.logDebug ("onDragEnter: failure - " + e);
+				QuickFolders.Util.logDebug ("dragEnter: failure - " + e);
 			}
 		},
 
 		// deal with old folder popups
-		onDragExit: function menuObs_onDragExit(evt, dragSession) {
+		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
 			// find parent node!
-			util.logDebugOptional("dnd","popupDragObserver.onDragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				if (popupStart.nodeName=='menu') {
 					QuickFolders_globalLastChildPopup = popupStart; // remember to destroy!
 				}
 			}
 			catch (e) {
-				util.logDebugOptional("dnd","CATCH popupDragObserver.onDragExit: \n" + e);
+				util.logDebugOptional("dnd","CATCH popupDragObserver.dragExit: \n" + e);
 			}
 		} ,
 
-		onDragOver: function menuObs_onDragOver(evt, flavor, session){
+		dragOver: function menuObs_onDragOver(evt, flavor, session){
 			session.canDrop = (flavor.contentType === "text/x-moz-message");
 			if (null !== QuickFolders_globalLastChildPopup) {
 				/*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
@@ -1464,7 +1464,7 @@ var QuickFolders = {
 			return flavours;
 		},
 
-		onDragStart: function msgObs_onDragStart(event, transferData, action) {
+		dragStart: function msgObs_dragStart(event, transferData, action) {
 			let button = event.target;
 			transferData.data = new TransferData();
 
@@ -1488,7 +1488,7 @@ var QuickFolders = {
 
 		dragOverTimer: null,
 
-		onDragEnter: function btnObs_onDragEnter(evt, dragSession) {
+		dragEnter: function btnObs_dragEnter(evt, dragSession) {
       const util = QuickFolders.Util,
 						prefs = QuickFolders.Preferences,
 			      QI = QuickFolders.Interface,
@@ -1502,7 +1502,7 @@ var QuickFolders = {
 				let isAlt = evt.altKey,
 				    isCtrl = evt.ctrlKey,
 				    isShift = evt.shiftKey;
-				util.logDebugOptional("dnd","buttonDragObserver.onDragEnter - sourceNode = " + dragSession.sourceNode.nodeName + "\n"
+				util.logDebugOptional("dnd","buttonDragObserver.dragEnter - sourceNode = " + dragSession.sourceNode.nodeName + "\n"
 					+ "  ALT = " + isAlt 
 					+ "  CTRL = " + isCtrl 
 					+ "  SHIFT = " + isShift);
@@ -1708,26 +1708,26 @@ var QuickFolders = {
 				
 			}
 			catch(ex) {
-				util.logException ("EXCEPTION buttonDragObserver.onDragEnter: ", ex);
+				util.logException ("EXCEPTION buttonDragObserver.dragEnter: ", ex);
 			}
 		} ,
 		
 		// deal with old folder popups
-		onDragExit: function btnObs_onDragExit(event, dragSession) {
+		dragExit: function btnObs_dragExit(event, dragSession) {
 			const util = QuickFolders.Util;
-			util.logDebugOptional("dnd", "buttonDragObserver.onDragExit\n" + 
+			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
 			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
 				"event.target=" + event.target || "[none]");
 			if (!dragSession.sourceNode) { 
-				util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - session without sourceNode! exiting dragExit handler...");
+				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)
 				  event.preventDefault();
 				return; 
 			}
 			try {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
-				util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - sourceNode = " + src);
-			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.onDragExit - " + e); }
+				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - sourceNode = " + src);
+			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.dragExit - " + e); }
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
 				util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
 				dragSession.canDrop=false;
@@ -1766,15 +1766,15 @@ var QuickFolders = {
 			}
 		} ,
 
-		onDragOver: function btnObs_onDragOver(evt, flavor, session){
-			//QuickFolders.Util.logDebug("buttonDragObserver.onDragOver flavor=" + flavor.contentType);
+		dragOver: function btnObs_onDragOver(evt, flavor, session){
+			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavor=" + flavor.contentType);
 			session.canDrop = true;
 			if (flavor.contentType === "text/x-moz-message" || flavor.contentType === "text/unicode"
 			 || flavor.contentType === "text/plain"
 			 || flavor.contentType === "text/x-moz-folder" || flavor.contentType === "text/x-moz-newsfolder")
 				session.canDrop = true;
 			else {
-				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.onDragover - can not drop " + flavor.contentType);
+				QuickFolders.Util.logDebugOptional("dnd", "buttonDragObserver.dragOver - can not drop " + flavor.contentType);
 				session.canDrop = false;
 			}
 		},
@@ -1959,10 +1959,10 @@ var QuickFolders = {
 		},
 
 		// new handler for starting drag of buttons (re-order)
-		onDragStart: function btnObs_onDragStart(event, transferData, action) {
+		dragStart: function btnObs_dragStart(event, transferData, action) {
 			const util = QuickFolders.Util;
 			let button = event.target;
-			util.logDebugOptional('dnd', 'buttonDragObserver.onDragStart\n' 
+			util.logDebugOptional('dnd', 'buttonDragObserver.dragStart\n' 
 			                           + 'button.folder=' + button.folder + '\n' 
 																 + 'button.id=' + button.id);
 			if(!button.folder)

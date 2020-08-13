@@ -249,11 +249,11 @@ QuickFolders.Options = {
 		if (!version) debugger;
 		
     util.logDebugOptional('options', 'QuickFolders.Options.load()');
+    let modeNum = -1;
 		if (window.arguments) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
-        let modeNum = -1;
         if (this.optionsMode) {
           switch (this.optionsMode) {
             case "helpOnly":
@@ -335,19 +335,26 @@ QuickFolders.Options = {
 			earlyExit = true; // we do not set any values!
 		}
 		
+    let displayPanel = null;
     switch(this.optionsMode) {
       case "licenseKey":
-        tabbox.selectedPanel = getElement('QuickFolders-Pro');
-        tabbox.selectedPanel.collapsed = false;
+        displayPanel = getElement('QuickFolders-Options-goPro');
         break;
       case "helpOnly":
-        tabbox.selectedPanel = getElement('QuickFolders-Help');
-        tabbox.selectedPanel.collapsed = false;
+        displayPanel = getElement('QuickFolders-Options-quickhelp');
         break;
       case "supportOnly":
-        tabbox.selectedPanel = getElement('QuickFolders-Support');
-        tabbox.selectedPanel.collapsed = false;
+        displayPanel = getElement('QuickFolders-Options-support');
         break;
+    }
+    if (displayPanel) {
+      // tabbox.selectedPanel = displayPanel;
+      displayPanel.collapsed = false;
+      // for some reason it always stays at the last one
+      setTimeout(function() {
+        tabbox.selectedPanel = displayPanel;
+      }, 150);
+      
     }
     
     // .0 private license, .1 domain license

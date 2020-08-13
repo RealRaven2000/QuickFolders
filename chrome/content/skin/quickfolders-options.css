@@ -3,6 +3,8 @@
 @import url('chrome://quickfolders/content/contribute.css');
 @import url('chrome://quickfolders/content/license.css');
 
+/******* start thunderbird 78 fixes  *********/
+/******* start thunderbird 78 fixes  *********/
 /* platform specific styling */
 :root {
  --toolbarHighlight: rgba(255,255,255,.5);
@@ -22,6 +24,11 @@ checkbox image.checkbox-icon {
   max-height: 16px; /* avoid stretching my icons! */
   margin-top: 2px;
 }
+
+fieldset {
+  border: 1px solid var(--field-border-color);
+}
+
 fieldset[orient="horizontal"] > vbox,
 fieldset[orient="horizontal"] > checkbox {
   display: inline-block; 
@@ -41,11 +48,29 @@ tabpanel html|input[type="number"]::-moz-number-spin-down {
   background-color: unset; /* avoid black bars with lightweight themes */
   background-color: var(--moz-dialog);
 }
+#QuickFolders-Options-Tabbox tabs {
+  margin-block: 4px 2px;
+}
 
 /* html input ignores flex attribute */
 #currentFolderBackground {
   min-width: 520px;
 }
+
+#copyFolders {
+  color: rgb(20,20,20) !important;
+}
+
+tabpanel input[type="color"] {
+  padding: 0 !important;
+}
+tabpanel input[type="color"] div {
+  padding: 4px !important;
+}
+
+/******* end thunderbird 78 fixes  *********/
+/******* end thunderbird 78 fixes  *********/
+
 
 
 /* Options window */
@@ -635,7 +660,7 @@ textbox[type="number"] .textbox-input {
 }
 
 .num1digit {
-	max-width: 4em;
+	max-width: 4.5em;
 	width: auto;
 }
 

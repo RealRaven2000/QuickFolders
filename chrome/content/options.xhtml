@@ -481,7 +481,7 @@
 												onclick="options.setCurrentToolbarBackgroundCustom();" 
 												/>
 							</hbox>
-							<hbox flex="1">
+							<hbox flex="1" align="center">
 								<checkbox label="&qf.checkbox.currentfolder.lightweight;"
 													preference="qfpa-CurrentFolder-Lightweight"
 													oncommand="options.toggleBoolPreference(this,false); options.updateCurrentFolderBar();" />
@@ -647,7 +647,7 @@
 									onchange="options.changeTextPreference(this);" />
 								<label value="px" />
 								<separator flex="1" />
-								<hbox id="btnHeightTweaks">
+								<hbox id="btnHeightTweaks" align="center">
 									<label value="&qf.toolbarMinimumHeight;" />
                   <html:input
                     type="number"
@@ -663,9 +663,9 @@
                     id="buttonPaddingTop"
 										class="num2digits"
 										preference="qfpl-ButtonTopPadding"
-										style="max-width:4em; width:auto;"
 										onchange="options.changeTextPreference(this);"/>
 									<label value="px" />
+									<separator flex="1" />
 								</hbox>
 								
 								<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
@@ -692,6 +692,7 @@
 												 preference="qfpl-TopRadius"
 												 onchange="options.changeTextPreference(this);" />
 								<label value="px" />
+                <separator flex="1" />
 								<label value="&qf.options.themes.customCornerRadius.Bottom.label;"
 											 control="QuickFolders-Options-CustomBottomRadius" />
 								<html:input
@@ -701,8 +702,10 @@
 												preference="qfpl-BottomRadius"
 												onchange="options.changeTextPreference(this);" />
 								<label value="px" />
+                <separator flex="1" />
 								<button label="&qf.button.default;"
 												oncommand="options.setDefaultButtonRadius();" />
+                <separator flex="2" />
 							</hbox>
 						</vbox>
 					</html:fieldset>
@@ -720,7 +723,7 @@
 							<checkbox label="&qf.checkbox.transparent;"
 												preference="qfpl-TransparentToolbar"
 												oncommand="return options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);" />
-							<spacer />
+							<spacer flex="1" />
 							<hbox id="qf-tweakToolbarBorder" align="center">
 								<label id="toolbar-bottom-label"
 											 value="&qf.label.Toolbar.bottomLine;"

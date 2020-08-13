@@ -190,13 +190,16 @@
 							<vbox>
 								<checkbox label="&qf.checkbox.autoFocusPreview;"
 													preference="qfpg-FocusPreview"
+                          oncommand="options.toggleBoolPreference(this);"
 													instantApply="true" />
 								<checkbox label="&qf.checkbox.showSubfolders;"
 													preference="qfpg-ShowSubFolders"
+                          oncommand="options.toggleBoolPreference(this);"
 													instantApply="true" />
 								<checkbox label="&qf.checkbox.sortMenusAlpha;"
 													tooltiptext="&qf.checkbox.sortMenusAlpha.tooltip;"
 													preference="qfpg-EnableMenuSorting"
+                          oncommand="options.toggleBoolPreference(this);"
 													instantApply="true" />
 								<checkbox	label="&qf.checkbox.autoHideToolbar;"
 													tooltiptext="&qf.checkbox.autoHideToolbar.tooltip;"
@@ -1283,6 +1286,7 @@
 														label="&qf.categories.supportMultiple;"
 														tooltiptext="&qf.categories.supportMultiple.tooltip;"
 														preference="qfpp-MultiCategory"
+                            oncommand="options.toggleBoolPreference(this);"
 														disabled="true" />
 								</hbox>
 							</vbox>

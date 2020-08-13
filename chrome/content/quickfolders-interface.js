@@ -956,9 +956,10 @@ QuickFolders.Interface = {
         for (let i = 0; i < lCatCount; i++) {
           let category = bookmarkCategories[i];
           if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
-            let menuItem = this.createMenuItem(category, category, 'menuitem-iconic');
+            let menuItem = this.createMenuItem(category, category, 'menuitem-iconic'),
+                isMultiCategories = prefs.getBoolPref('premium.categories.multiSelect');
             // add checkbox for multiple category selection
-            if (prefs.getBoolPref('premium.categories.multiSelect')) {
+            if (isMultiCategories) {
 							// multi selection
 							if (cats.includes(category))
 								menuItem.setAttribute("checked", true);

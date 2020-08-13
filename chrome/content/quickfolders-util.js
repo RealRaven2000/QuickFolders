@@ -1647,20 +1647,28 @@ QuickFolders.Util = {
 	} ,
 	
 	doesMailFolderExist: function checkExists(msgFolder) {
+    const FLAGS = QuickFolders.Util.FolderFlags;
     if (!msgFolder) return false;
 		if (!msgFolder.filePath)	{
 			QuickFolders.Util.logDebug('doesMailFolderExist() msgFolder.filePath missing! - returning false');
 			return false;
 		}
-		if (msgFolder.flags & QuickFolders.Util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP)
+		if (msgFolder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP)
 		  return true; // we do not validate nntp folders
 		if (msgFolder.filePath.exists()) {
 			return true;
 		}
 		else {
 		  // jcranmer's method. Just check for the parent, and we are done.
+      // empty folder:
+      let p = msgFolder.parent;
+      if(!p) return false;
+      if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
+        return false; // empty folder, in trash`1
+      /*
 			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
 		      folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
+      */
 			return folder.parent != null;
 		}
 		return false;

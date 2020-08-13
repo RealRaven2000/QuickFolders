@@ -253,8 +253,22 @@ QuickFolders.Options = {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
-				if (this.optionsMode >= 0)
-					prefs.setIntPref('lastSelectedOptionsTab', this.optionsMode);
+        let modeNum = -1;
+        if (this.optionsMode) {
+          switch (this.optionsMode) {
+            case "helpOnly":
+              modeNum = this.QF_PREF_HELP;
+              break;
+            case "supportOnly":
+              modeNum = this.QF_PREF_SUPPORT;
+              break;
+            case "licenseKey":
+              modeNum = this.QF_PREF_LICENSE;
+              break;
+          }
+        }
+				if (modeNum >= 0)
+					prefs.setIntPref('lastSelectedOptionsTab', modeNum);
 			}
 			catch(e) {;}
     }
@@ -324,12 +338,15 @@ QuickFolders.Options = {
     switch(this.optionsMode) {
       case "licenseKey":
         tabbox.selectedPanel = getElement('QuickFolders-Pro');
+        tabbox.selectedPanel.collapsed = false;
         break;
       case "helpOnly":
         tabbox.selectedPanel = getElement('QuickFolders-Help');
+        tabbox.selectedPanel.collapsed = false;
         break;
       case "supportOnly":
         tabbox.selectedPanel = getElement('QuickFolders-Support');
+        tabbox.selectedPanel.collapsed = false;
         break;
     }
     

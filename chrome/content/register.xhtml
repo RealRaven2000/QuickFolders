@@ -3,6 +3,10 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-register.css" title="QuickFolderRegStyles" type="text/css"?>
 
+<?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+
+
 <!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/register.dtd" >
 
 <dialog 
@@ -10,6 +14,7 @@
 	id="qf-register"
 	buttons="none"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
 	ondialogcancel="var cancel=QuickFolders.Licenser.cancel.bind(QuickFolders.Licenser); cancel();"
 	onload="var load=QuickFolders.Licenser.load.bind(QuickFolders.Licenser); load();"
 >
@@ -103,7 +108,7 @@
 							 class="ref"
 							 value="&email.label;" 
 							 />
-				<textbox id="email" />
+				<html:input type="text" id="email" />
 			</hbox>
 		</vbox>
 	  <spacer flex="1"/>
@@ -113,14 +118,14 @@
 							 class="ref"
 							 value="&firstName.label;" 
 							 />
-				<textbox id="firstName" />
+				<html:input type="text" id="firstName" />
 			</hbox>
 			<hbox>
 				<label control="lastName"
 				       class="ref"
 							 value="&lastName.label;" 
 							 />
-				<textbox id="lastName" />
+				<html:input type="text" id="lastName" />
 			</hbox>
 		</vbox>
 		<spacer flex="3" />
@@ -156,5 +161,5 @@
 			</tr>
 		</table>
 	</vbox>
-	<textbox id="referrer" collapsed="true"/>
+	<html:input type="text" id="referrer" collapsed="true"/>
 </dialog>

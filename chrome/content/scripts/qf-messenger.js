@@ -32,6 +32,7 @@ function onLoad(activatedWhileWindowOpen) {
     WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
     WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
     WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
 
     WL.injectElements(`
         <!-- Thunderbird & SeaMonkey -->

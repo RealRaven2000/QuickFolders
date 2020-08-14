@@ -10,7 +10,8 @@ menuitem.cmd[tagName="qfFilter"] {
 }
 
 #QuickFolders-Category-Box[mode="filter"] toolbarbutton#QuickFolders-filterActive {
-	background-color: transparent !important;
+  background-image: linear-gradient(to bottom, #b70000 0%,#540000 62%,#000000 100%) !important;
+	/* background-color: transparent !important; */
 	padding: 0px 2px;
 	margin: 0;
 	min-height: 20px;

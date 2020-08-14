@@ -2,7 +2,7 @@
 #QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive,
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive,
 menuitem.cmd[tagName="qfFilter"] {
-	list-style-image: url("chrome://quickfolders/skin/ico/filter-add.svg");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-add.svg");
     -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
     fill: currentColor;
     fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -24,7 +24,7 @@ menuitem.cmd[tagName="qfFilter"] {
 /* disable filter */
 #QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive[mode="filter"]:hover,
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive:hover {
-	list-style-image: url("chrome://quickfolders/skin/ico/filter-del.svg");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-del.svg");
 	stroke: red;
 }
 

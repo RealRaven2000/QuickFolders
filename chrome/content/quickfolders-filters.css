@@ -1,16 +1,12 @@
 
 #QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive,
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive,
-menuitem.cmd[tagName="qfFilter"] 
-{
-	list-style-image: url("chrome://quickfolders/content/skin/ico/Filter-Map.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
-}
-
-menuitem.cmd[tagName="qfFilter"] .menu-iconic-icon { -moz-image-region: rect(0px, 16px, 16px, 0px) !important; }
-menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon { 
-	list-style-image: url("chrome://quickfolders/content/skin/ico/Filter-Map.png");
-	-moz-image-region: rect(16px, 16px, 32px, 0px)  !important; 
+menuitem.cmd[tagName="qfFilter"] {
+	list-style-image: url("chrome://quickfolders/skin/ico/filter-add.svg");
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+    fill: currentColor;
+    fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+    stroke: var(--green-highlight);
 }
 
 #QuickFolders-Category-Box[mode="filter"] toolbarbutton#QuickFolders-filterActive {
@@ -18,18 +14,18 @@ menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon {
 	padding: 0px 2px;
 	margin: 0;
 	min-height: 20px;
-	-moz-image-region: rect(16px, 16px, 32px, 0px);
 }
 
 /* current Folder bar: filter is active */
 #QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive[mode="filter"] {
-	-moz-image-region: rect(48px, 16px, 64px, 0px);
+	fill: var(--new-highlight);
 }
 
 /* disable filter */
 #QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive[mode="filter"]:hover,
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive:hover {
-	-moz-image-region: rect(32px, 16px, 48px, 0px);
+	list-style-image: url("chrome://quickfolders/skin/ico/filter-del.svg");
+	stroke: red;
 }
 
 
@@ -57,7 +53,7 @@ notificationbox *[value="quickfolders-filter"] .messageCloseButton:hover {
 }
 
 /* postbox - this description simply won't wrap! */
-notificationbox *[value="quickfolders-filter"] description.messageText 
+notificationbox *[value="quickfolders-filter"] description.messageText
 {
 	white-space: normal !important;
 	height: auto;
@@ -79,7 +75,7 @@ notificationbox xbl-notification[value="quickfolders-filter"] {
 }
 
 #displayDeck {
-	
+
 }
 
 /* fix some accidental truncations */

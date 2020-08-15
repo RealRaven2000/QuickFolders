@@ -200,15 +200,10 @@ checkbox .checkbox-label-box .checkbox-icon {
     fill-opacity: var(--toolbarbutton-icon-fill-opacity);
     stroke: transparent;
     stroke-opacity: 0;
-    /*
-	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png"); 
-	-moz-image-region: rect(48px, 16px, 64px, 0px);
-  */
 }
 
 #chkSkipFolderHotkey .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/exit-folder.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+  list-style-image: url("chrome://quickfolders/content/skin/ico/skip-folder.svg");
 }
 
 #chkBookmarks .checkbox-icon {

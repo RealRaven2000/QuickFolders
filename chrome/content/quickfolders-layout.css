@@ -8,7 +8,6 @@
 #QuickFolders-Toolbar toolbarbutton.popupButton {
 	background: transparent !important;
 	border-style: none !important;
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	min-height: 16px;
 	height: 16px !important;
 	background-size: 16px 16px !important;
@@ -603,8 +602,8 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 
 /** SPECIAL FOLDER ICONS **/
 
-#QuickFolders-Toolbar toolbarbutton,
-#QuickFolders-CurrentFolderTools toolbarbutton {
+#QuickFolders-Toolbar toolbarbutton.icon,
+#QuickFolders-CurrentFolderTools toolbarbutton.icon {
   -moz-context-properties: fill, fill-opacity;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -707,6 +706,10 @@ menupopup.QuickFolders-folder-popup menuitem.color:focus
 #QuickFolders-Tools-Pane toolbarbutton {
   /* eliminate padding in Linux as it leads to squashed icons*/
   -moz-appearance: none;
+}
+
+#QuickFolders-oneButtonPanel toolbarbutton {
+  color: inherit !important;
 }
 
 /* the hardcoded to white texts need dark shadows */

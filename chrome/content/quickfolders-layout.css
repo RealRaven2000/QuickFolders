@@ -604,13 +604,19 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 
 #QuickFolders-Toolbar toolbarbutton.icon,
 #QuickFolders-CurrentFolderTools toolbarbutton.icon {
-  -moz-context-properties: fill, fill-opacity;
+  -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 }
 
-#QuickFolders-Toolbar toolbarbutton.recent.icon, #QuickFolders-CurrentFolderTools toolbarbutton.recent.icon {
+#QuickFolders-Toolbar toolbarbutton.recent.icon {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/history.svg");
+    stroke: currentColor;
+}
+
+#QuickFolders-CurrentFolderTools toolbarbutton.recent.icon {
+	list-style-image: url("chrome://quickfolders/content/skin/ico/history.svg");
+    stroke: #e9a400;
 }
 
 #QuickFolders-Toolbar toolbarbutton.inbox.icon, #QuickFolders-CurrentFolderTools toolbarbutton.inbox.icon {list-style-image: url("chrome://messenger/skin/icons/inbox.svg");}

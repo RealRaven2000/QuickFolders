@@ -1,0 +1,64 @@
+/* modern look thunderbird 60 + */
+:root {
+  --green-highlight: #03a203;
+  --new-highlight: #0488d5;
+}
+
+:root[lwt-tree-brighttext] {
+  --green-highlight: #86D129;
+  --new-highlight: #0aa5ff;
+}
+
+#QuickFolders-skipfolder {
+  list-style-image: url("//quickfolders/content/skin/ico/skip-folder.svg");
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  stroke: currentColor;
+  stroke-opacity: 0;
+}
+
+#QuickFolders-skipfolder:hover, #QuickFolders-skipfolder:active {
+  stroke: var(--green-highlight);
+  stroke-opacity: 1;
+}
+
+#QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/content/skin/ico/folder-add.svg");
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  stroke: currentColor;
+}
+
+#QuickFolders-createfolder:hover {
+  stroke: var(--green-highlight);
+}
+
+/* new style for palette; Large */
+#QuickFolders-toolbar-button {
+  list-style-image: url("//quickfolders/content/skin/ico/toolbar.svg");
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  stroke: currentColor;
+}
+
+#QuickFolders-toolbar-button:hover,
+#QuickFolders-toolbar-button[checked="true"] {
+  stroke: var(--green-highlight);
+}
+
+
+/* toned down the color of active filter mode */
+#QuickFolders-Category-Box[mode="filter"] {
+	background-image: none;
+	background-color: var(--toolbarbutton-checkedhover-backgroundcolor);
+}
+
+/* [Bug 26612] Tb 60.3.2 only displays first row of tabs - caused by .chromeclass-toolbar */
+toolbar#QuickFolders-Toolbar {
+	/* overflow-x: initial; */
+	-moz-appearance: none;
+	border-collapse: separate;
+}

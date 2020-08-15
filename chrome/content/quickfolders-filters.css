@@ -3,9 +3,6 @@
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive,
 menuitem.cmd[tagName="qfFilter"] {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-add.svg");
-    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
-    fill: currentColor;
-    fill-opacity: var(--toolbarbutton-icon-fill-opacity);
     stroke: var(--green-highlight);
 }
 

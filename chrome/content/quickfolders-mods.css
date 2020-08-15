@@ -59,6 +59,6 @@
 /* [Bug 26612] Tb 60.3.2 only displays first row of tabs - caused by .chromeclass-toolbar */
 toolbar#QuickFolders-Toolbar {
 	/* overflow-x: initial; */
-	moz-appearance: none;
+	-moz-appearance: none;
 	border-collapse: separate;
 }

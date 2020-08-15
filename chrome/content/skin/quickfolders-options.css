@@ -1,5 +1,5 @@
 @import url('chrome://quickfolders/content/quickfolders-layout.css');
-@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css'); 
+@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
 @import url('chrome://quickfolders/content/contribute.css');
 @import url('chrome://quickfolders/content/license.css');
 
@@ -31,14 +31,14 @@ fieldset {
 
 fieldset[orient="horizontal"] > vbox,
 fieldset[orient="horizontal"] > checkbox {
-  display: inline-block; 
+  display: inline-block;
 }
 /* scale down the overly larger number textboxes / spinner controls */
 tabpanel html|input[type="number"] {
   min-height: 22px;
 }
 
-tabpanel html|input[type="number"]::-moz-number-spin-up, 
+tabpanel html|input[type="number"]::-moz-number-spin-up,
 tabpanel html|input[type="number"]::-moz-number-spin-down {
   min-width: 16px !important;
   min-height: 8px !important;
@@ -155,46 +155,46 @@ tabpanel input[type="color"] div {
 checkbox .checkbox-label-box .checkbox-icon {
   margin-left: 1px;
   margin-right: 2px;
-  
+
 }
 
 #chkRebuildAccel .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/reload.png"); }
-#chkToolbarMenu .checkbox-icon { 
+#chkToolbarMenu .checkbox-icon {
   list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
 }
-#chkCurrentFolderShow .checkbox-icon, 
+#chkCurrentFolderShow .checkbox-icon,
 #chkCurrentFolderShowSingleMsg .checkbox-icon,
 #chkCurrentFolderShowSingleTab .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/toolbar.png"); }
 #chkMsgNavigation .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/msgNavigate.png"); }
-#chkFolderNavigation .checkbox-icon { 
+#chkFolderNavigation .checkbox-icon {
   list-style-image: url("chrome://quickfolders/content/skin/ico/goup.svg");
 }
-#chkShowIconButtons .checkbox-icon { 
+#chkShowIconButtons .checkbox-icon {
 	list-style-image: url("chrome://messenger/skin/icons/image.svg");
 }
 #chkShowFolderMenuButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/folderCommand.png"); }
-#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/wrench.png"); }
-#chkShowFilterButton .checkbox-icon { 
-	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-add.svg");  
+#chkShowRepairFolderButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/wrench.svg"); }
+#chkShowFilterButton .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-add.svg");
 }
 #chkShowCloseButton .checkbox-icon { list-style-image: url("chrome://quickfolders/content/skin/ico/close-button-option.png"); }
-#chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon { 
+#chkRecent .checkbox-icon, #chkRecentCurrent .checkbox-icon {
   list-style-image: url("chrome://quickfolders/content/skin/ico/history.svg");
 }
 
 #chkQuickMoveHotkey .checkbox-icon
-{ 
+{
   list-style-image: url("chrome://quickfolders/content/skin/ico/move.svg");
 }
-#chkQuickCopy .checkbox-icon, 
+#chkQuickCopy .checkbox-icon,
 #chkQuickCopyHotkey .checkbox-icon
-{ 
-	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png"); 
-	-moz-image-region: rect(64px, 16px, 80px, 0px); 
+{
+	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png");
+	-moz-image-region: rect(64px, 16px, 80px, 0px);
 }
 
-#chkQuickMove .checkbox-icon, 
-#chkQuickJumpHotkey .checkbox-icon { 
+#chkQuickMove .checkbox-icon,
+#chkQuickJumpHotkey .checkbox-icon {
   list-style-image: url("chrome://quickfolders/content/skin/ico/move.svg");
     fill: currentColor;
     fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -211,11 +211,11 @@ checkbox .checkbox-label-box .checkbox-icon {
   -moz-context-properties: fill;
   fill: currentcolor;
 
-/*	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-bookmark.png"); 
+/*	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-bookmark.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px); */
 }
 #chkCategories .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-balloons.png"); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-balloons.png");
 }
 
 #qfOpenInNewTab .checkbox-icon {
@@ -224,7 +224,7 @@ checkbox .checkbox-label-box .checkbox-icon {
 
 hbox > textbox:not([multiline="true"]) {
 	max-height: 2em;
-} 
+}
 hbox > button {
 	max-height: 3em !important;
 }
@@ -315,10 +315,10 @@ label.text-link, label.text-link[visited="true"] {
 }
 
 #QuickFolders-Options-quickhelp {
-/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical" 
+/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical"
    and align="center" so all elements inside will be centered vertically*/
 /* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
-  padding-left: 20px; 
+  padding-left: 20px;
   padding-right: 20px;
 	text-align: justify;
 }
@@ -332,7 +332,7 @@ label.text-link, label.text-link[visited="true"] {
 }
 
 #quickHelpTextPane description {
-  margin-bottom: 0.5em;  
+  margin-bottom: 0.5em;
 }
 
 description#importantNote {
@@ -354,17 +354,17 @@ hbox.quickhelp-dbg {
 
 #copyFolders {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/copy-tabs.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #copyFolders label {
-	margin-left: 2px !important; 
+	margin-left: 2px !important;
 }
 
 #pasteFolders {
 	min-width: 18px;
-	list-style-image: url("chrome://quickfolders/content/skin/ico/paste-tabs.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+	list-style-image: url("chrome://quickfolders/content/skin/ico/paste-tabs.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #pasteFolders label {
@@ -372,7 +372,7 @@ hbox.quickhelp-dbg {
 }
 
 #pasteFolders:hover {
-	-moz-image-region: rect(16px, 16px, 32px, 0px); 
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
 }
 
 
@@ -400,7 +400,7 @@ hbox.quickhelp-dbg {
 #QuickFolders-Options-Tabbox tab .tab-icon { margin-right:6px; }
 
 #QuickFolders-Theme-Selector {
-	max-width:50%; 
+	max-width:50%;
 	vertical-align:top;
 }
 
@@ -422,11 +422,11 @@ hbox.quickhelp-dbg {
 /* Test (Teo) - wanted to disable this font for consistency reasons
    note that on Mac the system font is already a lot bigger than on Windows
 	 in Windows, mine is Tahoma, 8pt which makes a longer texts hard to read
-	 
+
 	 move #btnLicense to separate style sheet license.css
   */
-.niceFont, 
-.niceFont description, 
+.niceFont,
+.niceFont description,
 .niceFont button,
 .niceFont button label
 {
@@ -504,7 +504,7 @@ hbox.quickhelp-dbg {
 	min-width: 220px !important;
 	padding: 0.5em;
 	border: 1px solid rgba(80, 80, 80, 0.4);
-	height: 55px;	
+	height: 55px;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -611,7 +611,7 @@ hbox.quickhelp-dbg {
 #currentFolderCustomize {
 	/* -moz-appearance: listbox; */
 	/* for textured themes */
-	background-color: rgba(255, 255, 255, 0.4);  
+	background-color: rgba(255, 255, 255, 0.4);
 	backface-visibility: visible;
 	box-shadow: 1px 1px 1px threedshadow inset;
 	height: 250px;
@@ -640,7 +640,7 @@ hbox.quickhelp-dbg {
 }
 
 
-#qf-flat-toolbar #coloredtabs-label, 
+#qf-flat-toolbar #coloredtabs-label,
 #qf-flat-toolbar checkbox {
 	color: var(--lwt-text-color);
 }

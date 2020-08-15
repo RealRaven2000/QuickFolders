@@ -77,15 +77,6 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 	margin-right: -7px;
 }
 
-
-menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folder-search.png');
-}
-
-menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folder_open.png');
-}
-
 tab#QuickFolders-General  {
 	list-style-image: url('chrome://quickfolders/content/skin/ico/settings-general.png');
 }
@@ -182,10 +173,6 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 
 #quickFoldersNavToggle image {
    margin: 0;
-}
-
-#quickFoldersNavToggle:hover {
-  fill: var(--new-highlight);
 }
 
 #quickFoldersPreviousUnread {

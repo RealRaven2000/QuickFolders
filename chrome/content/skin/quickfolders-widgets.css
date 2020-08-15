@@ -132,7 +132,8 @@ menuitem.cmd[tagName="qfOptions"] .menu-iconic-icon {
 }
 toolbarbutton#QuickFolders-Options:hover,
 menuitem.cmd[tagName="qfOptions"]:hover .menu-iconic-icon {
-	stroke: #f00e0e !important;
+    fill: var(--new-highlight) !important;
+	stroke: currentColor !important;
 }
 
 menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,

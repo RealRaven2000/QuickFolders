@@ -155,7 +155,7 @@ menupopup.widerMenu menucaption {
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
     fill: var(--new-highlight);
-	stroke: #f00e0e;
+	stroke: currentColor;
 }
 
 #QuickFolders-Toolbar {

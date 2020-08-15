@@ -41,14 +41,10 @@
     -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
     fill: currentColor;
     fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-    stroke: transparent;
-    stroke-opacity: 0;
-}
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove:hover {
 	stroke: var(--new-highlight);
     stroke-opacity: 1;
-    fill-opacity: 0.35;
 }
+
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-readingList {
 	list-style-image: url("chrome://messenger/skin/icons/tag.svg");
     -moz-context-properties: fill;

@@ -185,10 +185,6 @@ checkbox .checkbox-label-box .checkbox-icon {
   stroke: #e9a400;
 }
 
-#chkQuickMoveHotkey .checkbox-icon
-{
-  list-style-image: url("chrome://quickfolders/content/skin/ico/move.svg");
-}
 #chkQuickCopy .checkbox-icon,
 #chkQuickCopyHotkey .checkbox-icon
 {
@@ -197,11 +193,12 @@ checkbox .checkbox-label-box .checkbox-icon {
 }
 
 #chkQuickMove .checkbox-icon,
+#chkQuickMoveHotkey .checkbox-icon,
 #chkQuickJumpHotkey .checkbox-icon {
   list-style-image: url("chrome://quickfolders/content/skin/ico/move.svg");
     -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
     fill: currentColor;
-    fill-opacity: 0.5;
+    fill-opacity: 1;
     stroke: #0488d5;
     stroke-opacity: 1;
 }

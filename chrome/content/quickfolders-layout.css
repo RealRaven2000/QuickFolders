@@ -731,7 +731,7 @@ menupopup.QuickFolders-folder-popup menuitem.color:focus
 }
 
 menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] { list-style-image : url('chrome://quickfolders/content/skin/ico/rename.gif') !important;}
-menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-image : url('chrome://quickfolders/content/skin/ico/compact.png') !important;}
+menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-image : url('chrome://quickfolders/content/skin/ico/compact.svg') !important;}
 menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
   list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-picture.png') !important;
 }
@@ -805,7 +805,9 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
 }
 
 #QuickFolders-currentFolderMailFolderCommands {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.png');
+	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
+    -moz-context-properties: fill, fill-opacity, stroke !important;
+    stroke: var(--new-highlight) !important;
 }
 
 #folderPaneContext-downloadAll {

@@ -39,7 +39,7 @@
                 <label>&qf.label.newcategory;</label>
 
                 <hbox>
-                    <textbox
+                    <html:input
                         id="new-category-name"
                         onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
                     />
@@ -51,7 +51,7 @@
                 <label>&qf.label.renameselectedcategory;</label>
 
                 <hbox>
-                    <textbox
+                    <html:input
                         id="rename-category-new-name"
                         onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.renameSelectedCategory() }"
                     />

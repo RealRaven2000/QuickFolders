@@ -386,6 +386,8 @@ END LICENSE BLOCK */
 	=========
 	qf-messenger: 68 load tools.xul, 78: load tools69 
 	platform-css copy to content (not content/skin/something)
+	CSS: textbox replace with html:input
+	js: get by tag: replace textbox
     
 	Future Work
 	===========

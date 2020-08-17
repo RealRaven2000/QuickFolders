@@ -27,7 +27,7 @@ function onLoad(activatedWhileWindowOpen) {
         value="&qf.label.filterSingleEntity;" />
 
 
-    <textbox id="qf-Filter"
+    <html:input id="qf-Filter"
         flex="7"
         type="search"
         oncommand="QuickFolders.FilterList.onFindFilter(false, true);"

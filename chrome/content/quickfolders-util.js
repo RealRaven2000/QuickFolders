@@ -1669,7 +1669,7 @@ QuickFolders.Util = {
 			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
 		      folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
       */
-			return folder.parent != null;
+			return true; // msgFolder.parent != null;
 		}
 		return false;
 	},

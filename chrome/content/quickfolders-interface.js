@@ -3269,7 +3269,7 @@ QuickFolders.Interface = {
 					}
 					else
 						menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
-					if (QI.isCommandListeners) {
+/* 					if (QI.isCommandListeners) {
 						menuitem.addEventListener("command",
 						function(event) {
 							if (!QI.checkIsDuplicateEvent({id:id}))
@@ -3278,7 +3278,8 @@ QuickFolders.Interface = {
 					}
 					if (QI.isOncommandAttributes || forceOnCommand)
 						this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
-					menuColorPopup.appendChild(menuitem);
+ */
+          menuColorPopup.appendChild(menuitem);
 				}
 			}
 			else {
@@ -3338,14 +3339,15 @@ QuickFolders.Interface = {
 		{
 			menuitem = createMailCmdMenuItem("folderPaneContext-getMessages" , this.getUIstring("qfGetMail", "Get Messages…"));
 
-			if (QI.isCommandListeners) menuitem.addEventListener("command",
+/* 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({id:"folderPaneContext-getMessages"}))
 						QI.onGetMessages(menuitem); },
 					false);
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
-			menuitem.setAttribute('accesskey',this.getUIstring("qfGetMailAccess", "G"));
+ */
+      menuitem.setAttribute('accesskey',this.getUIstring("qfGetMailAccess", "G"));
 			MailCommands.appendChild(menuitem);
 			if (isRootMenu)
 				topShortCuts ++ ;
@@ -3384,14 +3386,14 @@ QuickFolders.Interface = {
               !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX)) {
               let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + type + "]";
 							menuitem = createMailCmdMenuItem("folderPaneContext-downloadAll", downloadLabel);
-							if (QI.isOncommandAttributes)
+/* 							if (QI.isOncommandAttributes)
 								this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDownloadAll(this);");
 							if (QI.isCommandListeners) menuitem.addEventListener("command",
 								function(event) {
 									if (!QI.checkIsDuplicateEvent({id:"folderPaneContext-downloadAll"}))
 										QI.onDownloadAll(menuitem);
 								}, false);
-              // MailCommands.appendChild(menuitem);
+ */              // MailCommands.appendChild(menuitem);
               // if (isRootMenu)
               menupopup.appendChild(menuitem);
               topShortCuts ++ ;
@@ -3454,14 +3456,15 @@ QuickFolders.Interface = {
 		if (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
 			let id = "folderPaneContext-virtual";
 			menuitem = createMailCmdMenuItem(id, this.getUIstring("qfEditVirtual", "Search Properties…"), "searchProperties");
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEditVirtualFolder(this);");
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({id:id}))
 						QI.onEditVirtualFolder(menuitem);
 					}, false);
-			menuitem.setAttribute('accesskey',this.getUIstring("qfEditVirtualAccess", "S"));
+ */
+      menuitem.setAttribute('accesskey',this.getUIstring("qfEditVirtualAccess", "S"));
 			MailCommands.appendChild(menuitem);
 			if (isRootMenu)
 				topShortCuts ++ ;
@@ -3473,14 +3476,15 @@ QuickFolders.Interface = {
 			menuitem = createMailCmdMenuItem(id, this.getUIstring("qfCompactFolder", "Compact Folder"), "qfCompact");
 			menuitem.setAttribute("accesskey",this.getUIstring("qfCompactFolderAccess","C"));
 
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onCompactFolder(this,'compactFolder')");
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({id:id}))
 						QI.onCompactFolder(menuitem,'compactFolder');
 				}, false);
-			MailCommands.appendChild(menuitem);
+ */
+      MailCommands.appendChild(menuitem);
 		}
 
 		// ===================================
@@ -3508,14 +3512,14 @@ QuickFolders.Interface = {
 			if (folder.deletable) {
 				let id = "folderPaneContext-remove";
 				menuitem = createMailCmdMenuItem(id, this.getUIstring("qfDeleteFolder", "Delete Folder"));
-				if (QI.isOncommandAttributes)
+/* 				if (QI.isOncommandAttributes)
 				  this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDeleteFolder(this);");
 				if (QI.isCommandListeners) menuitem.addEventListener("command",
 					function(event) {
 						if (!QI.checkIsDuplicateEvent({id:id}))
 							QI.onDeleteFolder(menuitem);
 					}, false);
-
+ */
 				menuitem.setAttribute("accesskey",this.getUIstring("qfDeleteFolderAccess","D"));
 				MailCommands.appendChild(menuitem);
 			}
@@ -3525,14 +3529,15 @@ QuickFolders.Interface = {
 		if (folder.canRename) {
 			let id = "folderPaneContext-rename";
 			menuitem = createMailCmdMenuItem(id, this.getUIstring("qfRenameFolder", "Rename Folder"));
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 			  this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onRenameFolder(this);");
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 			  function(event) {
 				  if (!QI.checkIsDuplicateEvent({id:id}))
 						QI.onRenameFolder(menuitem);
 				}, false);
-			menuitem.setAttribute("accesskey",this.getUIstring("qfRenameFolderAccess","R"));
+ */
+      menuitem.setAttribute("accesskey",this.getUIstring("qfRenameFolderAccess","R"));
 			MailCommands.appendChild(menuitem);
 			MailCommands.appendChild(this.createIconicElement('menuseparator','*'));
 		}
@@ -3540,51 +3545,52 @@ QuickFolders.Interface = {
 		// Repair Folder
 		menuitem = createMailCmdMenuItem("quickFoldersFolderRepair", this.getUIstring("qfFolderRepair","Repair Folder"), "qfFolderRepair");
 		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderRepairAccess","F"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 		  this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onRepairFolder(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:"quickFoldersFolderRepair"}))
 					QI.onRepairFolder(menuitem);
 			}, false);
-		MailCommands.appendChild(menuitem);
+ */
+    MailCommands.appendChild(menuitem);
 
 		// Search Messages
 		let srchMenu = util.getMail3PaneWindow().document.getElementById("folderPaneContext-searchMessages")
 		menuitem = createMailCmdMenuItem("quickFolders-folderSearchMessages", srchMenu.getAttribute('label'), "qfFolderSearch");
 		let ak = srchMenu.getAttribute('accesskey');
 		if (ak) menuitem.setAttribute("accesskey", ak);
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 		  this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onSearchMessages(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:"quickFolders-folderSearchMessages"}))
 					QI.onSearchMessages(menuitem);
-			}, false);
+			}, false); */
 		MailCommands.appendChild(menuitem);
 
 		// Folder Properties
 		menuitem = createMailCmdMenuItem("folderPaneContext-properties", this.getUIstring("qfFolderProperties","Folder Properties…"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
       this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onFolderProperties(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:"folderPaneContext-properties"}))
 					QI.onFolderProperties(menuitem);
-			}, false);
+			}, false); */
 		menuitem.setAttribute("accesskey",this.getUIstring("qfFolderPropertiesAccess","P"));
 		MailCommands.appendChild(menuitem);
 
 		// Open in File System
 		MailCommands.appendChild(this.createIconicElement('menuseparator','*'));
 		menuitem = createMailCmdMenuItem("quickFolders-openFolderLocation", this.getUIstring("qfFolderOpenLocation","Explore Folder Location…"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onFolderOpenLocation(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:"quickFolders-openFolderLocation"}))
 					QI.onFolderOpenLocation(menuitem);
-			}, false);
+			}, false); */
 		MailCommands.appendChild(menuitem);
 
 	} ,
@@ -3627,13 +3633,14 @@ QuickFolders.Interface = {
 		menuitem.setAttribute('label',this.getUIstring('qfSetCategory', 'Set Bookmark Category…'));
 		menuitem.setAttribute('accesskey',this.getUIstring('qfSetCategoryA', 'C'));
 
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand', 'QuickFolders.Interface.configureCategory_FromMenu(this)');
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({tag:"qfCategory"}))
 					QI.configureCategory_FromMenu(menuitem);
 				}, false);
+        */
 
 		QFcommandPopup.appendChild(menuitem);
 
@@ -3643,14 +3650,15 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('tag','qfRemoveCategory');
 			menuitem.setAttribute('label',this.getUIstring('qfRemoveCategory', 'Remove from Category'));
 
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.removeFromCategory(this)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 				  if (!QI.checkIsDuplicateEvent({tag:"qfRemoveCategory"}))
 						QI.removeFromCategory(menuitem);
 				}, false);
-			QFcommandPopup.appendChild(menuitem);
+ */
+      QFcommandPopup.appendChild(menuitem);
 		}
 
 		// DeleteQuickFolder
@@ -3659,27 +3667,28 @@ QuickFolders.Interface = {
 
 		menuitem.setAttribute('label',this.getUIstring('qfRemoveBookmark', 'Remove bookmark'));
 		menuitem.setAttribute('accesskey',this.getUIstring('qfRemoveBookmarkAccess','R'));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveBookmark(this)');
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 		  function(event) {
 			  if (!QI.checkIsDuplicateEvent({tag:"qfRemove"}))
 					QI.onRemoveBookmark(menuitem);
 			}, false);
-		QFcommandPopup.appendChild(menuitem);
+ */		QFcommandPopup.appendChild(menuitem);
 
 		// RenameQuickFolder
     menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
 		menuitem.setAttribute('tag','qfRename');
 		menuitem.setAttribute('label',this.getUIstring('qfRenameBookmark','Rename Bookmark'));
 		menuitem.setAttribute('accesskey',this.getUIstring('qfRenameBookmarkAccess','R'));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRenameBookmark(this)');
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 			  if (!QI.checkIsDuplicateEvent({tag:"qfRename"}))
 					QI.onRenameBookmark(menuitem); }, false);
-		QFcommandPopup.appendChild(menuitem);
+ */
+    QFcommandPopup.appendChild(menuitem);
 
 		if (prefs.getBoolPref("commandMenu.lineBreak")) {
 			let tag = entry.breakBefore ? 'qfBreakDel' : 'qfBreak';
@@ -3687,13 +3696,14 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('tag', tag);
 			let brString = entry.breakBefore ? this.getUIstring('qfRemoveLineBreak', 'Remove Line Break!') : this.getUIstring('qfInsertLineBreak', 'Insert Line Break!')
 			menuitem.setAttribute('label', brString);
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onBreakToggle(this)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({tag:tag}))
 						QI.onBreakToggle(menuitem); }, false);
-			QFcommandPopup.appendChild(menuitem);
+ */
+      QFcommandPopup.appendChild(menuitem);
 		}
 
 		if (prefs.getBoolPref("commandMenu.separator")) {
@@ -3702,13 +3712,14 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('tag', tag);
 			let lbString = entry.separatorBefore ? this.getUIstring('qfRemoveSeparator', 'Remove Separator!') : this.getUIstring('qfInsertSeparator', 'Insert Separator!')
 			menuitem.setAttribute('label', lbString);
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSeparatorToggle(this)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({tag:tag}))
 						QI.onSeparatorToggle(menuitem); }, false);
-			QFcommandPopup.appendChild(menuitem);
+ */
+      QFcommandPopup.appendChild(menuitem);
 		}
 
 		let menuItemToClone;
@@ -3720,24 +3731,26 @@ QuickFolders.Interface = {
       menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
 			menuitem.setAttribute('tag', 'qfIconAdd');
 			menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Customize Icon…'));
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({tag:'qfIconAdd'}))
 						QI.onSelectIcon(menuitem); }, false);
-			QFcommandPopup.appendChild(menuitem);
+ */
+      QFcommandPopup.appendChild(menuitem);
 
       menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
 			menuitem.setAttribute('tag', 'qfIconRemove');
 			menuitem.setAttribute('label',this.getUIstring('qfRemoveIcon','Remove Customized Icon…'));
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({tag:'qfIconRemove'}))
 						QI.onRemoveIcon(menuitem); }, false);
-			if (!entry.icon)
+ */ 
+      if (!entry.icon)
 				menuitem.collapsed = true;
 			QFcommandPopup.appendChild(menuitem);
 
@@ -3755,9 +3768,10 @@ QuickFolders.Interface = {
 			menuitem.setAttribute('checked', 'false');
 
 		// we want the coordinates, therefore using click event:
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'onclick','QuickFolders.Interface.onAdvancedProperties(event, this);');
-		QFcommandPopup.appendChild(menuitem);
+ */
+    QFcommandPopup.appendChild(menuitem);
 
 		// Options, Support and Help
 		if (prefs.getBoolPref("commandMenu.options")
@@ -4194,14 +4208,14 @@ QuickFolders.Interface = {
 		let menuitem = this.createIconicElement('menuitem');
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute('label',this.getUIstring("qfDeleteJunk", "Purge Junk"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDeleteJunk(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:id}))
 					QI.onDeleteJunk(menuitem);
 				},
-				false);
+				false); */
 		return menuitem;
 	} ,
 
@@ -4212,7 +4226,7 @@ QuickFolders.Interface = {
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute('label', this.getUIstring("qfEmptyJunk", "Empty Junk"));
 		menuitem.setAttribute('accesskey', this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEmptyJunk(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
@@ -4220,7 +4234,8 @@ QuickFolders.Interface = {
 					QI.onEmptyJunk(menuitem);
 				},
 				false);
-		return menuitem;
+ */
+    return menuitem;
 	} ,
 
 	createMenuItem_GetMail: function createMenuItem_GetMail(folder) {
@@ -4238,16 +4253,15 @@ QuickFolders.Interface = {
 			getMailMenuItem.setAttribute('accesskey', this.getUIstring("qfGetMailAccess", "G"));
 
 			// use parent folder URI as each starting point
-			if (QI.isOncommandAttributes)
+/* 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(getMailMenuItem, "oncommand","QuickFolders.Interface.onGetMessages(this)");
 			if (QI.isCommandListeners) getMailMenuItem.addEventListener("command",
 				function(event) {
 					if (!QI.checkIsDuplicateEvent({id:id}))
 						QI.onGetMessages(getMailMenuItem);
 					}, false);
-
+ */
 			return getMailMenuItem;
-
 		}
 		catch(ex) {
 			QuickFolders.Util.logException('Exception in createMenuItem_GetMail (Get Mail Command for Inbox): ' + server, ex);
@@ -4262,14 +4276,14 @@ QuickFolders.Interface = {
 		menuitem.setAttribute("id", id);
 		menuitem.setAttribute('label',this.getUIstring("qfEmptyTrash", "Empty Trash"));
 		menuitem.setAttribute("accesskey",this.getUIstring("qfEmptyTrashAccess","T"));
-		if (QI.isOncommandAttributes)
+/* 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEmptyTrash(this);event.stopPropagation();");
 		if (QI.isCommandListeners) menuitem.addEventListener("command",
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:id}))
 					QI.onEmptyTrash(menuitem);
 				event.stopPropagation();
-				}, false);
+				}, false); */
 		return menuitem;
 	} ,
 
@@ -4285,7 +4299,7 @@ QuickFolders.Interface = {
     );
     if (!recursive)
       menuitem.setAttribute('accesskey',this.getUIstring("qfMarkAllReadAccess","M"));
-		if (QI.isOncommandAttributes) {
+/* 		if (QI.isOncommandAttributes) {
       let t = recursive ? "true" : "false";
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onMarkAllRead(this, event, "+ t +");");
     }
@@ -4293,7 +4307,7 @@ QuickFolders.Interface = {
 			function(event) {
 				if (!QI.checkIsDuplicateEvent({id:id}))
 					QI.onMarkAllRead(menuitem, event, recursive);
-				}, false);
+				}, false); */
 		if (disabled)
 			menuitem.setAttribute("disabled", true);
 		return menuitem;

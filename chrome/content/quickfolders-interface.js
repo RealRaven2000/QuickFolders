@@ -452,7 +452,7 @@ QuickFolders.Interface = {
 			if (!isCurrentFolderButton)
 				this.menuPopupsByOffset[0] = menupopup;
 
-			if (button.firstChild && typeof button.firstChild != 'undefined')
+			if (button.firstChild && button.firstChild.tagName=="menupopup")
 				button.removeChild(button.firstChild);
 
 			button.appendChild(menupopup);

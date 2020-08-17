@@ -38,7 +38,7 @@
 					<toolbarbutton id="QuickFolders-Recent-CurrentFolderTool" tag="#Recent" class="recent icon"
 												 context="QuickFolders-folder-popup-Recent-CurrentFolderTool"
 												 position="after_start"
-												 oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, false);"
+												 oncontextmenu="QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
 												 onclick= "QuickFolders.Interface.onClickRecentCurrentFolderTools(event.target, event, true); return false;"
 												 ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
 												 ondragover="QuickFolders.buttonDragObserver.dragOver(event);"

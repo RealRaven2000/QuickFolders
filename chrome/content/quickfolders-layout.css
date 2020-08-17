@@ -2,7 +2,8 @@
 /* broke out palette piece for custom configurations */
 @import url('chrome://quickfolders/content/skin/quickfolders-widgets.css');
 /* version specific styling */
-@import url('chrome://quickfolders/content/skin/quickfolders-mods.css');
+/* @import url('chrome://quickfoldersLayout/content/quickfolders-mods.css'); */
+@import url('chrome://quickfolders/content/quickfolders-mods.css');
 
 
 #QuickFolders-Toolbar toolbarbutton.popupButton {
@@ -202,11 +203,12 @@ menupopup.widerMenu menucaption {
 
 /* fix wrong padding in Noia & other themes */
 #QuickFolders-FoldersBox toolbarbutton {
+	background-repeat: repeat-x;
+  display: inline-block;
+	height: auto; /* was 19px */
 	padding-top: 0px;
 	padding-bottom: 0px;
-	height: auto; /* was 19px */
 	vertical-align:top;
-	background-repeat: repeat-x;
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
@@ -375,7 +377,8 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-FoldersBox {
-	display: inline-box;
+	/* display: inline-box;  - Tb68 only */
+  display: block; /* was inline-box, wrong! */
 	float:right;
 	max-height:25em;
 	margin-bottom: 0px;

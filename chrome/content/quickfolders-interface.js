@@ -4169,7 +4169,7 @@ QuickFolders.Interface = {
 		util.logDebugOptional("popupmenus","Creating Popup Set for Mail Commands - " + folder.name);
 		menupopup.folder = folder;
 
-		if (button.firstChild)
+		if (button.firstChild && button.firstChild.tagName=="menupopup")
 			button.removeChild(button.firstChild);
 		button.appendChild(menupopup);
 

@@ -429,7 +429,8 @@ WL.injectElements(`
 
 
 //-----------------------------
-//qf-tools
+//qf-tools.xul
+//^ ^ wrong: we should load qf-tools69.xul
 
 
 WL.injectElements(`
@@ -438,7 +439,7 @@ WL.injectElements(`
 <vbox id="QuickFolders-Tools-Pane" 
 insertafter="QuickFolders-LabelBox">
     <hbox id="QuickFolders-Category-Box"
-              ondragenter="QuickFolders.buttonDragObserver..dragEnter(event)">
+              ondragenter="QuickFolders.buttonDragObserver.dragEnter(event)">
         <menulist id="QuickFolders-Category-Selection" 
                             oncommand="QuickFolders.Interface.selectCategory(this.value,false,this,event);" 
                             sizetopopup="none" 
@@ -484,7 +485,7 @@ insertafter="QuickFolders-LabelBox">
                              context="QuickFolders-quickMoveMenu"
                              />
             <!-- removed searchbutton=true so pressing [Enter] is not necessary-->
-            <textbox id="QuickFolders-FindFolder" 
+            <search-textbox id="QuickFolders-FindFolder" 
                      oncommand="QuickFolders.Interface.findFolderName(this);"
                      onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
                      class="searchBox"

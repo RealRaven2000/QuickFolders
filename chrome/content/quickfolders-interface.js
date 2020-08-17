@@ -1943,7 +1943,7 @@ QuickFolders.Interface = {
 		}
 
     // Alt+Down highlight the first folder
-    if (evt.hasOwnProperty("QFtype")) {
+    if (evt && evt.hasOwnProperty("QFtype")) {
       // skip focus to first folder!
       if (evt.QFtype == "NavDown" && p.children) {
         for (let m of p.children) {
@@ -4169,12 +4169,22 @@ QuickFolders.Interface = {
 		util.logDebugOptional("popupmenus","Creating Popup Set for Mail Commands - " + folder.name);
 		menupopup.folder = folder;
 
-		if (button.firstChild && button.firstChild.tagName=="menupopup")
-			button.removeChild(button.firstChild);
+    // remove the old menu:
+    for (let i = button.childNodes.length-1; i>0; i--) {
+      let el = button.childNodes[i];
+      if (el.tagName == "menupopup" && el.id == menupopup.id) {
+        button.removeChild(el);
+      }
+    }
 		button.appendChild(menupopup);
 
     // last parameter: pass in menupopup for "promoting" top level items such as "Mark Folder as Read"
 		QI.appendMailFolderCommands(menupopup, folder, true, button, menupopup);
+    
+    this.setEventAttribute(menupopup, 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
+    this.setEventAttribute(menupopup, 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
+    
+    
 		QI.showPopup(button, menupopup.id, null);
 	} ,
 

@@ -1565,6 +1565,8 @@ QuickFolders.Interface = {
 						||
 						tag == 'html:input'      // Thunderbird 78 textboxes.
 						||
+            tag == 'search-textbox' // Thunderbird 78 search boxes 
+            ||
 						tag == 'findbar')   // [Bug 26654] in-mail search
           )
 					||

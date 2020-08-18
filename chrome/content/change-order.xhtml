@@ -5,12 +5,12 @@
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/change_order.dtd" >
 
-<dialog
-  title="&qf.dialog.changeorder;"
-	buttons="accept"
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    ondialogaccept="QuickFolders.Model.update();"
-    onload="QuickFolders.ChangeOrder.init(this)"
+<dialog title="&qf.dialog.changeorder;"
+        buttons="accept"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        ondialogaccept="QuickFolders.Model.update();"
+        onload="QuickFolders.ChangeOrder.init(this)"
 >
 	<script>
 		var QuickFolders = window.arguments[0];

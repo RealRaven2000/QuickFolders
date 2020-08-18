@@ -694,21 +694,7 @@ menupopup.QuickFolders-folder-popup menuitem.color {
 
 menupopup.QuickFolders-folder-popup menuitem.color,
 menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"] {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-color.png') !important;
-}
-
-menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"]:hover {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-color.png') !important;
-}
-
-menupopup.QuickFolders-folder-popup menuitem.color .menu-iconic-icon,
-menu.menu-iconic[tag="qfTabColorMenu"] .menu-iconic-icon
-{
-	-moz-image-region: rect(0px, 16px, 16px, 0px) !important;
-}
-
-menupopup.QuickFolders-folder-popup menuitem.color:hover .menu-iconic-icon {
-	-moz-image-region: rect(16px, 16px, 32px, 0px)  !important;
+	list-style-image: url('chrome://mozapps/skin/extensions/category-themes.svg') !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.color:hover,
@@ -739,37 +725,59 @@ menupopup.QuickFolders-folder-popup menuitem.color:focus
 
 /** MAIL COMMANDS + CONTEXT MENU ITEMS **/
 .mailCmd {
-  -moz-context-properties: fill, fill-opacity, stroke;
-  fill: currentColor;
-  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-  stroke: currentColor;
+    -moz-context-properties: fill, stroke;
+    fill: currentColor;
+    stroke: currentColor;
 }
 
-menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] { list-style-image : url('chrome://quickfolders/content/skin/ico/rename.gif') !important;}
-menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] { list-style-image : url('chrome://quickfolders/content/skin/ico/compact.svg') !important;}
-menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
-  list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-picture.png') !important;
+menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] {
+    list-style-image: url('chrome://quickfolders/content/skin/ico/rename.gif') !important;
 }
-menuitem.cmd[tag="qfIconAdd"]  *, menuitem.mailCmd[tag="qfIconAdd"] * {
-  -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] {
+    list-style-image: url('chrome://quickfolders/content/skin/ico/compact.svg') !important;
+}
+menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
+    list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
 }
 menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] {
-  list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-picture-remove.png') !important;
-}
-menuitem.cmd[tag="qfIconRemove"] *, menuitem.mailCmd[tag="qfIconRemove"] * {
-  -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
 }
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
-menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] { list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-balloons.png') !important;}
-menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"] { list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-balloonRemove.png') !important;}
-menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] { list-style-image : url('chrome://quickfolders/content/skin/ico/editdelete.png') !important;}
-menuitem.cmd[tag="qfBreak"] { list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-linebreak-add.png') !important; }
-menuitem.cmd[tag="qfBreakDel"] { list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-linebreak-delete.png') !important; }
-menuitem.cmd[tag="qfSeparator"] { list-style-image : url('chrome://quickfolders/content/skin/ico/separator-add.png') !important; }
-menuitem.cmd[tag="qfSeparatorDel"] { list-style-image : url('chrome://quickfolders/content/skin/ico/separator-delete.png') !important; }
+menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
+	list-style-image: url("chrome://quickfolders/content/skin/ico/balloons.svg");
+    -moz-context-properties: fill, stroke;
+    stroke: var(--new-highlight);
+}
+menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"] {
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+}
+menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] {
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+}
+menuitem.cmd[tag="qfBreak"],
+menuitem.cmd[tag="qfBreakDel"] {
+    list-style-image: url('chrome://quickfolders/content/skin/ico/line-break.svg') !important;
+    -moz-context-properties: fill, stroke, stroke-opacity;
+    stroke: red;
+    stroke-opacity: 0;
+}
+menuitem.cmd[tag="qfBreakDel"] {
+    stroke-opacity: 1;
+}
+menuitem.cmd[tag="qfSeparator"],
+menuitem.cmd[tag="qfSeparatorDel"] {
+    list-style-image: url('chrome://quickfolders/content/skin/ico/separator.svg') !important;
+    -moz-context-properties: fill, stroke, stroke-opacity;
+    stroke: red;
+    stroke-opacity: 0;
+}
+menuitem.cmd[tag="qfSeparatorDel"] {
+    stroke-opacity: 1;
+}
 menuitem.mailCmd[tag="qfFolderRepair"],
-#QuickFolders-RepairFolderBtn { list-style-image : url('chrome://quickfolders/content/skin/ico/wrench.svg') !important; }
-
+#QuickFolders-RepairFolderBtn {
+    list-style-image: url('chrome://quickfolders/content/skin/ico/wrench.svg') !important;
+}
 
 #QuickFolders-FoldersBox toolbarseparator {
   vertical-align: top;
@@ -785,19 +793,21 @@ menuitem.mailCmd[tag="qfFolderRepair"],
 .quickfolders-realTabs #QuickFolders-FoldersBox toolbarseparator,
 .quickfolders-pills #QuickFolders-FoldersBox toolbarseparator,
 .quickfolders-realbuttons #QuickFolders-FoldersBox toolbarseparator,
-.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator
-{
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator {
   margin-left: 1px;
   margin-right: 4px;
 }
-.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator
-{
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator {
   margin-top: 6px !important;
 }
 
 
-#quickFoldersCommands  { list-style-image : url('chrome://quickfolders/content/skin/ico/QF16x16.png') !important;}
-#quickFoldersMailFolderCommands  { list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.png') !important;}
+#quickFoldersCommands,
+#quickFoldersMailFolderCommands {
+	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
+    -moz-context-properties: fill, fill-opacity, stroke !important;
+    stroke: var(--new-highlight) !important;
+}
 
 #QuickFolders-paintBucketActive menuitem,
 #QuickFolders-paintBucketActive menu,

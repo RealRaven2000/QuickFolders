@@ -23,6 +23,8 @@ tabpanel fieldset legend {
 checkbox image.checkbox-icon {
   max-height: 16px; /* avoid stretching my icons! */
   margin-top: 4px;
+  -moz-context-properties: fill;
+  fill: currentcolor;
 }
 
 fieldset {
@@ -203,10 +205,13 @@ checkbox .checkbox-label-box .checkbox-icon {
 }
 
 #chkQuickCopy .checkbox-icon,
-#chkQuickCopyHotkey .checkbox-icon
-{
-	list-style-image: url("chrome://quickfolders/content/skin/ico/quickMove.png");
-	-moz-image-region: rect(64px, 16px, 80px, 0px);
+#chkQuickCopyHotkey .checkbox-icon {
+	list-style-image: url("chrome://quickfolders/content/skin/ico/quick-copy.svg");
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+    fill: currentColor;
+    fill-opacity: 1;
+    stroke: #0488d5;
+    stroke-opacity: 1;
 }
 
 #chkQuickMove .checkbox-icon,
@@ -226,14 +231,17 @@ checkbox .checkbox-label-box .checkbox-icon {
 
 #chkBookmarks .checkbox-icon {
   list-style-image: url("chrome://messenger/skin/icons/tag.svg");
-  -moz-context-properties: fill;
-  fill: currentcolor;
 
 /*	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-bookmark.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px); */
 }
 #chkCategories .checkbox-icon {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-balloons.png");
+	list-style-image: url("chrome://quickfolders/content/skin/ico/balloons.svg");
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+    fill: currentColor;
+    fill-opacity: 1;
+    stroke: var(--new-highlight);
+    stroke-opacity: 1;
 }
 
 #qfOpenInNewTab .checkbox-icon {

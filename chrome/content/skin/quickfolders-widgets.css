@@ -65,7 +65,7 @@ tab#QuickFolders-Advanced {
 }
 
 tab#QuickFolders-Layout {
-	list-style-image : url('chrome://messenger/skin/icons/smiley.svg');
+	list-style-image : url('chrome://quickfolders/content/skin/ico/smiley.svg');
 }
 
 menuitem.cmd[tagName="qfHelp"],

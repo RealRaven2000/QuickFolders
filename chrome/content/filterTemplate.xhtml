@@ -9,7 +9,6 @@
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/filters.dtd" >
 
 
-
 <dialog title="&qf.filters.title;"
         id="qf-template"
         buttons="extra2,cancel,extra1"
@@ -19,9 +18,9 @@
         buttonlabelextra1="&qf.continueFilter.label;"
         buttonaccesskeyextra1="&qf.continueFilter.shortcut;"
         buttonlabelextra2="&qf.label.donate;"
-        ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
         ondialogcancel="return QuickFolders.FilterWorker.cancelTemplate();"
         ondialogextra1="return QuickFolders.FilterWorker.acceptTemplate();"
+        ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html')"
         onload="QuickFolders.FilterWorker.loadTemplate();"
 >
 <!--	tooltiptextextra2="&qf.donate.tooltip;" -->
@@ -60,11 +59,11 @@
           onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
           preference="qfp-SelectedFilterTemplate"
           rows="6">
-            <richlistitem label='&qf.filters.template.from;' value='from' />
-            <richlistitem label='&qf.filters.template.to;' value='to' />
-            <richlistitem label='&qf.filters.template.list;' value='list' />
-            <richlistitem label='&qf.filters.template.topic;' value='topic' />
-            <richlistitem label='&qf.filters.template.tag;' value='tag' />
+            <richlistitem value='from'>  &qf.filters.template.from; </richlistitem>
+            <richlistitem value='to'>    &qf.filters.template.to;   </richlistitem>
+            <richlistitem value='list'>  &qf.filters.template.list; </richlistitem>
+            <richlistitem value='topic'> &qf.filters.template.topic;</richlistitem>
+            <richlistitem value='tag'>   &qf.filters.template.tag;  </richlistitem>
         </richlistbox>
         <vbox id="quickFiltersPromoBox">
           <description id="getQuickFilters">&qf.label.getQuickFilters;</description>

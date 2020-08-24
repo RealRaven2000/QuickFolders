@@ -780,10 +780,11 @@ menuitem.mailCmd[tag="qfFolderRepair"],
 }
 
 #QuickFolders-FoldersBox toolbarseparator {
-  vertical-align: top;
-  min-height: 15px;
+  display: inline-block;
   margin-top: 3px;
   margin-bottom: 3px;
+  min-height: 15px;
+  vertical-align: top;
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarseparator {
   margin-left: 2px;

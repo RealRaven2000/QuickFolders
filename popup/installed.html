@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Installed</title>
+  </head>
+  <body>
+<b></b>
+<br><br>
+https://extensionworkshop.com/documentation/develop/onboard-upboard-offboard-users/
+<br><br>
+addListener syntax <br>
+Parameters<br>
+
+function<br>
+
+    The callback function called when this event occurs. The function will be passed the following arguments:<br>
+
+    details<br>
+        An object with the following properties:<br>
+
+        idOptional<br>
+            string. The ID of the imported shared module extension that updated. This is present only if the reason value is shared_module_update.<br>
+        previousVersionOptional<br>
+            string. The previous version of the extension just updated. This is only present if the reason value is update.<br>
+        reason<br>
+            An runtime.OnInstalledReason value, stating the reason that this event is being dispatched.<br>
+        temporary<br>
+            boolean. True if the add-on was installed temporarily. For example, using the "about:debugging" page in Firefox or using web-ext run. False otherwise.<br>
+            <br>
+            https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onInstalled<br>
+
+  </body>
+</html>

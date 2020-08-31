@@ -975,16 +975,14 @@ QuickFolders.Util = {
 	getTabInfoLength: function getTabInfoLength(tabmail) {
 		if (tabmail.tabInfo)
 		  return tabmail.tabInfo.length;
-	  if (tabmail.tabOwners)
-		  return tabmail.tabOwners.length;
 		return null;
 	} ,
 	
 	getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
 		if (tabmail.tabInfo && tabmail.tabInfo.length)
 			return tabmail.tabInfo[idx];
-		if (tabmail.tabOwners)
-		  return tabmail.tabOwners[idx];
+    this.logDebug("getTabInfoByIndex("+ tabmail + ", " + idx +") fails: check tabInfo length! = " + tabmail.tabInfo);
+    console.log(tabmail);
 		return null;
 	} ,
 	
@@ -1005,8 +1003,6 @@ QuickFolders.Util = {
 			}
 			return tab.mode.name;
 		}
-		if (tab.type)  // Pb
-		  return tab.type;
 		return "";
 	},
 	

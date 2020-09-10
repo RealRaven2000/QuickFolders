@@ -3,33 +3,58 @@
   <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Installed</title>
+  <title>Welcome to QuickFolders</title>
+  <link rel="stylesheet" href="update.css" type="text/css">
   </head>
   <body>
-<b></b>
-<br><br>
-https://extensionworkshop.com/documentation/develop/onboard-upboard-offboard-users/
-<br><br>
-addListener syntax <br>
-Parameters<br>
+   <h1>Successfully installed {addon} </h1>
+    <p>Thank you for installing {addon}. You are now running v. {version} on Thunderbird {appver}.</p>
+    
+    <p>My Add-ons are currently undergoing fundamental changes in order to
+      remain compatible with the Mozilla platform. Changes there have been
+      increasingly more complex to the point that the annual conversion 
+      effort to the new ESR period takes a considerable amount of time
+      and resources.</p>
+      
+    <p>In the case of {addon}, alterations to the new legacy-less
+      model already took multiple weeks and are still ongoing, while 
+      it is likely that we will be losing some functionality. With a 
+      complex Add-on like this its inevitable.</p>
+      
+    <p class="actionlinks">
+	      <a id="register" 
+           href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-install"
+ 	      >
+      I want to buy a license</a>
+    </p>      
+      
+    <h2>Cost and Benefit</h2>
+    
+    <p>Software  development costs time and money - unlike many platform apps,
+      Add-ons are not written
+      by large corporations, nor are they sponsored in any way by Mozilla.
+      Mozilla only provide us with a platform to bring our software to you,
+      the end users - if we need to charge or ask for help we cannot do
+      this from addons.thunderbird.net - it is not an "app store" with built in
+      paywalls or license management like iTunes or google play.</p>
+      
+    <p>In order to remain useful, Add-on authors have to now raise the funds
+      necessary to repair and rewrite so that our users can keep benefiting
+      from the functionality we bring to the table. </p>
+      
+    <p>To help {addon} stay functional and alive:</p>
+      <ul class="actions">
+        <li>Purchase a license</li>
+        <li>Help out with a one time donation.</li>
+      </ul>
+    
+    <p class="actionlinks">
+      <a id="donate"
+         href="http://quickfolders.org/donate.html?referrer=landing-install"
+      >I want to contribute with a one time donation</a>
+    </p>
+    
 
-function<br>
-
-    The callback function called when this event occurs. The function will be passed the following arguments:<br>
-
-    details<br>
-        An object with the following properties:<br>
-
-        idOptional<br>
-            string. The ID of the imported shared module extension that updated. This is present only if the reason value is shared_module_update.<br>
-        previousVersionOptional<br>
-            string. The previous version of the extension just updated. This is only present if the reason value is update.<br>
-        reason<br>
-            An runtime.OnInstalledReason value, stating the reason that this event is being dispatched.<br>
-        temporary<br>
-            boolean. True if the add-on was installed temporarily. For example, using the "about:debugging" page in Firefox or using web-ext run. False otherwise.<br>
-            <br>
-            https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onInstalled<br>
 
   </body>
 </html>

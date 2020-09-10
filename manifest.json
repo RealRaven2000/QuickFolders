@@ -3,7 +3,7 @@
   "manifest_version" : 2,
   "name" : "QuickFolders",
   "description" : "Bookmark your favorite mail folders in Thunderbird.",
-  "version" : "5.0pre70",
+  "version" : "5.0pre73",
   "developer" : { 
       "name" : "Axel Grude",
       "url" : "http://quickfolders.org/index.html"
@@ -35,6 +35,15 @@
         "script": "chrome/content/api/LegacyPrefs/implementation.js"
       
       }
+    },
+    "Utilities": {
+      "schema": "chrome/content/api/Utilities/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["Utilities"]],
+        "script": "chrome/content/api/Utilities/implementation.js"
+      
+       }
     }
   },
 

@@ -6,6 +6,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-model.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-change-order.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
@@ -13,8 +14,16 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js"
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/options.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-palettes.css");
-    layout.setAttribute("title", "QuickFolderPalettes");
+    let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+    layout.setAttribute("title", "QuickFolderStyles");
+    
+    let layout1 = WL.injectCSS("chrome://quickfolders/content/quickfolders-palettes.css");
+    layout1.setAttribute("title", "QuickFolderPalettes");
+    
+    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
+
     
 
     WL.injectElements(`
@@ -119,8 +128,7 @@ function onLoad(activatedWhileWindowOpen) {
 
    
     window.QuickFolders.Util.logDebug('Adding messageWindow...');
-    window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-//   obsolete   window.QuickFolders.addLoadEventListener();
+    // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
     window.QuickFolders.initDelayed(window);
 }
 

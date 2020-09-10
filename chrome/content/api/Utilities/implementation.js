@@ -21,6 +21,23 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     return {
       Utilities: {
 
+        isLicensed() {
+        return true;
+         
+        },
+
+
+        getAddonVersion() {
+          return "5.7";
+ 
+        },
+
+
+        getAddonName() {
+          return "Quickfolders";
+        },
+
+
          openLinkExternally(url) {
           let uri = url;
           if (!(uri instanceof Ci.nsIURI)) {

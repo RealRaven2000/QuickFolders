@@ -13,6 +13,14 @@ ul.actions {
   padding: 5px 8px;
 }
 
+
+.actionlinks div {
+  background-color: darkred;
+  box-shadow: 5px 5px 5px rgba(50,50,50,0.5);
+  color: white;
+  padding: 5px 8px;
+}
+
 .actionlinks a:hover {
   background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
 }
@@ -20,6 +28,11 @@ ul.actions {
 .actionlinks a:active {
   background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
 }
+
+.actionlinks div:active {
+  background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
+}
+
 
 body * {
   background-color: white;

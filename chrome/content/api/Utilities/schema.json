@@ -4,6 +4,30 @@
     "functions": [
      
       {
+        "name": "isLicensed",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+
+      {
+        "name": "getAddonVersion",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+
+      {
+        "name": "getAddonName",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+
+      {
         "name": "showXhtmlPage",
         "type": "function",
         "parameters": [

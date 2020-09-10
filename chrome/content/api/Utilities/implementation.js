@@ -2,8 +2,9 @@
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-  
-
+//das geht nicht:
+//var { QF } = ChromeUtils.import("chrome://quickfolders/content/quickfolders.js");  
+//var { utils } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-util.js");
 
 
 
@@ -28,7 +29,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
 
         getAddonVersion() {
-          return "5.7";
+          return "5.7";//utils.Version;
  
         },
 

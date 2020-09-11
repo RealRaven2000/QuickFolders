@@ -5,10 +5,11 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 //das geht nicht:
 //var { QF } = ChromeUtils.import("chrome://quickfolders/content/quickfolders.js");  
 //var { utils } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-util.js");
+//var { addonPrefs } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-preferences.js");
+//Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
+var win= Services.wm.getMostRecentWindow("mail:3pane");
 
-
-
-
+console.log("impl utilities");
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
     
@@ -23,23 +24,22 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
       Utilities: {
 
         isLicensed() {
-        return true;
+        return  (win.QuickFolders.Licenser).isLicensed;
          
         },
 
 
         getAddonVersion() {
-          return "5.7";//utils.Version;
- 
+          return win.QuickFolders.Util.VersionSanitized;
         },
 
 
         getAddonName() {
-          return "Quickfolders";
+          return win.QuickFolders.Util.ADDON_NAME;
         },
 
 
-         openLinkExternally(url) {
+        openLinkExternally(url) {
           let uri = url;
           if (!(uri instanceof Ci.nsIURI)) {
             uri = Services.io.newURI(url);
@@ -50,16 +50,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             .getService(Ci.nsIExternalProtocolService)
             .loadURI(uri);
         },
+
         showXhtmlPage(uri) {
 
-          console.log("from Experiment - MX");  
-          //openLinkExternally("http://quickfolders.org/donate.html");
+        //  console.log("from Experiment - MX");  
           let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
           .getService(Components.interfaces.nsIWindowMediator)
           .getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri);
-          //mail3PaneWindow.openDialog("chrome://quickfolders/content/register.xhtml");
-         // mail3PaneWindow.open( "http://quickfolders.org/donate.html");
         }
   
         // get may only return something, if a value is set

@@ -8,7 +8,8 @@
 
   END LICENSE BLOCK 
 */
-
+console.log("QF-prefs");
+//export  {QuickFolders.Preferences};
 QuickFolders.Preferences = {
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 

@@ -69,6 +69,7 @@ QuickFolders.Util = {
 	HARDCODED_CURRENTVERSION : "5.0", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
+	ADDON_NAME: "QuickFolders",
 	FolderFlags : {  // nsMsgFolderFlags
 		MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
 		MSG_FOLDER_FLAG_NEWSHOST  : 0x0002,

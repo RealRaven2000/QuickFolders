@@ -26,9 +26,6 @@ addEventListener("click", async (event) => {
   });  
 
 
-//let body = window.document.getElementById("body");
-let doc=document;
-//console.log (document.body.innerText);
 
 addEventListener("load", async (event) => {
 	debugger;
@@ -36,7 +33,7 @@ addEventListener("load", async (event) => {
 	let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
 	let  htmltext2=htmltext.replace(/{version}/g, await messenger.Utilities.getAddonVersion());
 	htmltext=htmltext2.replace(/{appver}/g, await messenger.Utilities.getTBVersion());
-		//same for license, TB version   let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
+		//same for license,   let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
 		document.body.innerHTML=htmltext;
 
   });  

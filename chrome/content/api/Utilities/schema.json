@@ -18,6 +18,13 @@
         "parameters": []
       },
 
+      {
+        "name": "getTBVersion",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
 
       {
         "name": "getAddonName",

@@ -33,6 +33,10 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return win.QuickFolders.Util.VersionSanitized;
         },
 
+        getTBVersion() { //somehow(??), we can also get this in MX
+          return Services.appinfo.version;//win.QuickFolders.Util.VersionSanitized;
+        },
+
 
         getAddonName() {
           return win.QuickFolders.Util.ADDON_NAME;

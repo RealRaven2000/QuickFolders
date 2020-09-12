@@ -35,7 +35,7 @@ addEventListener("load", async (event) => {
 	debugger;
 	let text= document.body.innerHTML;//	console.log (document.body.innerText);
 	let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
-	let  htmltext2=htmltext.replace(/{version}/g, await messenger.Utilities.getAddonVersion());
+	let  htmltext2=htmltext.replace(/{version}/g, await messenger.Utilities.getAddonVersion()); //oder: browser.runtime.getManifest().version
 	htmltext=htmltext2.replace(/{appver}/g, await messenger.Utilities.getTBVersion());
 		//same for license,   let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
 		document.body.innerHTML=htmltext;

@@ -510,7 +510,7 @@ insertafter="QuickFolders-LabelBox">
     //WL.messenger.windows.create({}); //goes into loop
     //WL.context.apiCan.findAPIPath("compose").beginNew(); // Geoff, but: context not defined
     //console.log(WL.context);
-    WL.messenger.compose.beginNew();
+    //WL.messenger.compose.beginNew();  //example how to call api from legacy
 }
 
 function onUnload(isAddOnShutDown) {

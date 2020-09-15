@@ -11,6 +11,7 @@ ul.actions {
   box-shadow: 5px 5px 5px rgba(50,50,50,0.5);
   color: white;
   padding: 5px 8px;
+  cursor: pointer;
 }
 
 .actionlinks a:hover {

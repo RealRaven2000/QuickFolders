@@ -48,7 +48,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           if (!(uri instanceof Ci.nsIURI)) {
             uri = Services.io.newURI(url);
           }
-        
           
           Cc["@mozilla.org/uriloader/external-protocol-service;1"]
             .getService(Ci.nsIExternalProtocolService)
@@ -56,8 +55,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         showXhtmlPage(uri) {
-
-        //  console.log("from Experiment - MX");  
           let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
           .getService(Components.interfaces.nsIWindowMediator)
           .getMostRecentWindow("mail:3pane");  

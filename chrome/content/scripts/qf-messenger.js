@@ -362,8 +362,8 @@ WL.injectElements(`
                     <toolbarbutton id="QuickFoldersCurrentFolder"
                                                  label="Current Folder"
                                                  class="selected-folder"
-                                                 ondragenter="QuickFolders.buttonDragObserver..dragEnter(event);"
-                                                 ondragover="QuickFolders.buttonDragObserver..dragOver(event);"/>
+                                                 ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
+                                                 ondragover="QuickFolders.buttonDragObserver.dragOver(event);"/>
                 </hbox>
                 <toolbarbutton id="QuickFolders-NavigateRight"
                                              class="icon"

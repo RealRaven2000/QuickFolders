@@ -507,6 +507,10 @@ insertafter="QuickFolders-LabelBox">
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
 //   obsolete   window.QuickFolders.addLoadEventListener();
     window.QuickFolders.initDelayed(window, WL);
+    //WL.messenger.windows.create({}); //goes into loop
+    //WL.context.apiCan.findAPIPath("compose").beginNew(); // Geoff, but: context not defined
+    //console.log(WL.context);
+    WL.messenger.compose.beginNew();
 }
 
 function onUnload(isAddOnShutDown) {

@@ -66,6 +66,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
     this.menu_addonsManager_id ="addonsManager";
     this.menu_addonsManager_prefs_id = "addonsManager_prefs_revived";
     this.menu_addonPrefs_id = "addonPrefs_revived";
+    this.context= context,
 
     this.registeredWindows = {};
     this.pathToStartupScript = null;
@@ -83,7 +84,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
 
     return {
       WindowListener: {
-
+        context:5, 
         registerOptionsPage(optionsUrl) {
           self.pathToOptionsPage = optionsUrl.startsWith("chrome://")
             ? optionsUrl
@@ -207,6 +208,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
             let startupJS = {};
             startupJS.WL = {}
             startupJS.WL.extension = self.extension;
+            startupJS.WL.context = 5;
             startupJS.WL.messenger = Array.from(self.extension.views).find(
               view => view.viewType === "background").xulBrowser.contentWindow
               .wrappedJSObject.browser;
@@ -490,6 +492,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
 
           // Add extension object to WLDATA object
           window[this.uniqueRandomID].WL.extension = this.extension;
+          window[this.uniqueRandomID].WL.context = this.context;
           // Add messenger object to WLDATA object
           window[this.uniqueRandomID].WL.messenger = Array.from(this.extension.views).find(
             view => view.viewType === "background").xulBrowser.contentWindow

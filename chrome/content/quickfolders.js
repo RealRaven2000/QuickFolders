@@ -634,7 +634,7 @@ var QuickFolders = {
 	initDelayed: function initDelayed(win, WLorig) {
 	  if (this.initDone) return;
 	  QuickFolders.WL = WLorig;
-		const Cc = Components.classes,
+	  const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,

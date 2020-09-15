@@ -1203,14 +1203,16 @@ var QuickFolders = {
 		} ,
 
 		dragOver: function menuObs_dragOver(evt, flavour, dragSession){
-      if (!evt) debugger;
-      dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+	  if (!evt) debugger;
+	  //line 1207: with/without if??
+	  //line 1225: needs to go here and into dragExit??
+	  if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
       let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
 
-      
-			session.canDrop = (contentType === "text/x-moz-message");
+      //this is session.canDrop or dragsession.canDrop??
+			dragsession.canDrop = (contentType === "text/x-moz-message");
 			if (null !== QuickFolders_globalLastChildPopup) {
 				/*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
 				QuickFolders_globalLastChildPopup=null;

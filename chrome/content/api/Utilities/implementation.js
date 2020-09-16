@@ -30,7 +30,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
 
         getAddonVersion() {
-          return win.QuickFolders.Util.VersionSanitized;
+          return win.QuickFolders.Util.Version;
         },
 
         getTBVersion() { //somehow(??), we can also get this in MX

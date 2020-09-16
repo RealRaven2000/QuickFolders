@@ -77,6 +77,8 @@ h1, h2, h3, h4 {
   font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
   text-align: center;
   color: rgba(20,30,50,0.6);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   
   text-shadow:
        3px 3px 0 #EEE,
@@ -96,14 +98,14 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 34pt;
+  font-size: 30pt;
 }
 
 h2 {
-  font-size: 30pt;
+  font-size: 26pt;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 20pt;
+  font-size: 18pt;
 }

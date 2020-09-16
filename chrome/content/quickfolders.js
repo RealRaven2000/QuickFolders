@@ -1212,11 +1212,13 @@ var QuickFolders = {
           contentType = types[0];
 
       //this is session.canDrop or dragsession.canDrop??
-			dragsession.canDrop = (contentType === "text/x-moz-message");
-			if (null !== QuickFolders_globalLastChildPopup) {
-				/*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
-				QuickFolders_globalLastChildPopup=null;
-			}
+      if (dragSession) {
+        dragsession.canDrop = (contentType === "text/x-moz-message");
+        if (null !== QuickFolders_globalLastChildPopup) {
+          /*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
+          QuickFolders_globalLastChildPopup=null;
+        }
+      }
 		},
 
 		// drop mails on popup: move mail, like in buttondragobserver

@@ -125,7 +125,7 @@ QuickFolders.bookmarks = {
                      entry.date);
         searchTerms.push(realTerm);
     }
-    window.openDialog("chrome://messenger/content/SearchDialog.xul", "_blank",
+    window.openDialog("chrome://messenger/content/SearchDialog.xhtml", "_blank",
                       "chrome,resizable,status,centerscreen,dialog=no",
                       { folder: targetFolder, searchTerms: searchTerms, searchSession: searchSession });          
   },

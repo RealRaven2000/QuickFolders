@@ -601,12 +601,12 @@ var QuickFolders = {
 	initDocAndWindow: function initDocAndWindow(win) {
     let util = QuickFolders.Util,
 		    mainWindow;
-    if (win && win.document && win.document.documentURI.indexOf('/messenger.xul')>0)
+    if (win && win.document && win.document.documentURI.indexOf('/messenger.xhtml')>0)
       mainWindow = win;
-    else if (win && win.document.documentURI.indexOf('/messageWindow.xul')>0)
+    else if (win && win.document.documentURI.indexOf('/messageWindow.xhtml')>0)
       mainWindow = win; // allow passing in single message window also
     else {
-      if (win || (!win && window.documentURI.indexOf('/messageWindow.xul')==-1))
+      if (win || (!win && window.documentURI.indexOf('/messageWindow.xhtml')==-1))
         mainWindow = util.getMail3PaneWindow();
     }
 
@@ -756,7 +756,7 @@ var QuickFolders = {
       // Actually do the rename
       folder.rename(aName, msgWindow);
     }
-    window.openDialog("chrome://messenger/content/renameFolderDialog.xul",
+    window.openDialog("chrome://messenger/content/renameFolderDialog.xhtml",
                       "",
                       "chrome,modal,centerscreen",
                       {preselectedURI: folder.URI,
@@ -1422,18 +1422,18 @@ var QuickFolders = {
 					dualUseFolders = targetFolder.server.dualUseFolders;
 
 				util.logDebugOptional('dnd,dragToNew',
-				  "window.openDialog (newFolderDialog.xul)\n"
+				  "window.openDialog (newFolderDialog.xhtml)\n"
 					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
 					+ "dualUseFolders:" + dualUseFolders);
 				if (util.Application=='Postbox' && util.PlatformVersion<52) {
 					// see newFolderDialog.js for when Callback is called.
-					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
+					window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
                       "",
                       "chrome,titlebar,modal",
                       {preselectedURI:targetFolder.URI, dualUseFolders:dualUseFolders, okCallback:newFolderCallback});
 				}
 				else {
-					window.openDialog("chrome://messenger/content/newFolderDialog.xul",
+					window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
 							"",
 							"chrome,modal,resizable=no,centerscreen",
 							{folder: targetFolder, dualUseFolders: dualUseFolders, okCallback: newFolderCallback});

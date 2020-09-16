@@ -1188,7 +1188,7 @@ QuickFolders.Interface = {
 			const winType = "global:console";
 			prefs.setBoolPref("debug.folderTree.icons",true);
 			// Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).clear();
-			toOpenWindowByType(winType, "chrome://console2/content/console2.xul");
+			toOpenWindowByType(winType, "chrome://console2/content/console2.xhtml");  //TODO chrome://console2/content/console2.xhtml does not exist??
 			let win = Services.wm.getMostRecentWindow(winType);
 			// win.clearConsole();
 		}
@@ -2759,7 +2759,7 @@ QuickFolders.Interface = {
 
     // the window may correct its x position if cropped by screen's right edge
     let win = window.openDialog(
-      'chrome://quickfolders/content/quickfolders-advanced-tab-props.xul',
+      'chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml',
       'quickfilters-advanced','alwaysRaised, titlebar=no,chrome,close=no,top=' + y +',left=' + x,
       folder, entry); //
     win.focus();

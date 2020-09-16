@@ -207,6 +207,11 @@ QuickFolders.Util = {
     caption = caption || "QuickFolders";
     Services.prompt.alert(null, caption, msg);
   },
+
+
+  checkDonationOrBuyLicenceReminder: function checkDonationOrBuyLicenceReminder () {
+
+  },
   
   get supportsMap() {
     return (typeof Map == "function");
@@ -1808,7 +1813,7 @@ QuickFolders.Util = {
 		newCSS.setAttribute("title", "QuickFolderPlatformStyles");
 if (util.ApplicationName =="Interlink") {
 			let url = win.document.URL,
-			    isMainWindow = url.endsWith("messenger.xul");
+			    isMainWindow = url.endsWith("messenger.xhtml");
 			if (isMainWindow) {
 				util.logDebug("Interlink - Main window: loading toolbar fix…");
 				let ss = QI.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');

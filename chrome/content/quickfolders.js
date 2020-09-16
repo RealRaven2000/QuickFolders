@@ -1213,7 +1213,7 @@ var QuickFolders = {
 
       //this is session.canDrop or dragsession.canDrop??
       if (dragSession) {
-        dragsession.canDrop = (contentType === "text/x-moz-message");
+        dragSession.canDrop = (contentType === "text/x-moz-message");
         if (null !== QuickFolders_globalLastChildPopup) {
           /*QuickFolders_globalLastChildPopup.firstChild.hidePopup();*/
           QuickFolders_globalLastChildPopup=null;

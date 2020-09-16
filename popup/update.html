@@ -10,7 +10,18 @@
   <body>
     <div id="innerwrapper">
     <h1>{addon} Updated</h1>
-    <p>Thank you for updating {addon}. You are now running  {addon} <b>{version}</b> on Thunderbird {appver}.</p>
+    <p>Thank you for updating {addon}. You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.</p>
+    
+    <p>My Add-ons require fundamental changes in order to
+      remain compatible with the Mozilla platform. My team at github.com
+      (realraven2000, opto and paenglab) is working to make {addon} fully 
+      functional again.
+    </p>
+      
+    <p>
+      We have already spent over 200 hours on the conversion project - and there is more work in
+      fixing regressions and problems caused by changes in Thunderbird.
+    </p>
     
     <p>To help {addon} stay functional and alive:</p>
     <ul class="actions">
@@ -20,12 +31,6 @@
       
     <h2>Buy a License!</h2>
     
-    <p>My Add-ons are currently undergoing fundamental changes in order to
-      remain compatible with the Mozilla platform. Changes there have been
-      increasingly more complex to the point that the annual conversion 
-      effort to the new ESR period takes a considerable amount of time
-      and resources.</p>
-      
     <p>In the case of {addon}, alterations to the new legacy-less
       model already took multiple weeks and are still ongoing, while 
       it is likely that we will be losing some functionality. With a 
@@ -57,7 +62,7 @@
       
       <input type="checkbox" id= "remind"  name="remind"
       checked>
-      <label for = "remind" > Remind me in 10 days</label>
+      <label for = "remind" > Remind me again in 10 days</label>
     </p>
     </div>
   </body>

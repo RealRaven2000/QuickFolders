@@ -1520,7 +1520,7 @@ QuickFolders.Interface = {
 			if (!prefs.isDebugOption('events.keyboard')) return;
       util.logDebugOptional("events.keyboard",
 				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
-			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n" +
+			  "charcode = " + e.keyCode + " = "  + (String.fromCharCode(e.keyCode)).toLowerCase() + "\n" +
         "keyCode = " + e.keyCode);
 		}
     const QI = QuickFolders.Interface,
@@ -1538,7 +1538,7 @@ QuickFolders.Interface = {
 		if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')
         &&
         isCtrl && isAlt && dir!='up' && prefs.isUseRebuildShortcut) {
-			if ((String.fromCharCode(e.charCode)).toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
+			if ((String.fromCharCode(e.keyCode)).toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
 				this.updateFolders(true, false);
 				try {
 					util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
@@ -1590,7 +1590,7 @@ QuickFolders.Interface = {
       if (util.hasPremiumLicense(false)) {
 				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!='up',
             isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!='up',
-				    theKeyPressed = (String.fromCharCode(e.charCode)).toLowerCase();
+				    theKeyPressed = (String.fromCharCode(e.keyCode)).toLowerCase();
 				util.logDebugOptional("premium.quickJump", "hasPremiumLicense = true\n" +
 				  "quickJump Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
 				  "quickMove Shortcut = " + prefs.isQuickMoveShortcut + ", " + prefs.QuickMoveShortcutKey + "\n" +
@@ -1724,13 +1724,13 @@ QuickFolders.Interface = {
           (prefs.isUseKeyboardShortcutsCTRL && isCtrl);
 
         if (shouldBeHandled) {
-          let sFriendly = (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') + e.charCode + " : code=" + e.keyCode,
+          let sFriendly = (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') + e.keyCode + " : code=" + e.keyCode,
               shortcut = -1;
           util.logDebugOptional("events", "windowKeyPress[" + dir + "]" + sFriendly);
           if (dir == 'up')
             shortcut = e.keyCode-48;
           if (dir == 'down')
-            shortcut = e.charCode-48;
+            shortcut = e.keyCode-48;
 
           if (shortcut >= 0 && shortcut < 10) {
             isHandled = true;

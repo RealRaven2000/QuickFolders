@@ -30,7 +30,7 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
 	
 	<keyset>
-		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+		<key id="quickFolders-ToggleTree" keycode="VK_F7" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>
 
 	<!-- Thunderbird & SeaMonkey -->

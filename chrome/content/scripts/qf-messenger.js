@@ -35,6 +35,11 @@ function onLoad(activatedWhileWindowOpen) {
     WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
 
     WL.injectElements(`
+    
+        <keyset>
+          <key id="quickFolders-ToggleTree" keycode="VK_F7" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+        </keyset>
+    
         <!-- Thunderbird & SeaMonkey -->
         <toolbarpalette id="MailToolbarPalette">
           <toolbarbutton id="QuickFolders-toolbar-button" 

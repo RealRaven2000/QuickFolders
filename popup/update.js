@@ -28,7 +28,7 @@ addEventListener("click", async (event) => {
 
 
 addEventListener("load", async (event) => {
-	debugger;
+	//debugger;
 	let text= document.body.innerHTML;//	console.log (document.body.innerText);
 	let htmltext=text.replace(/{addon}/g, await browser.runtime.getManifest().name );//messenger.Utilities.getAddonName());
 	let  htmltext2=htmltext.replace(/{version}/g, await messenger.Utilities.getAddonVersion()); //oder: browser.runtime.getManifest().version
@@ -37,6 +37,14 @@ addEventListener("load", async (event) => {
 		document.body.innerHTML=htmltext;
 
   });  
+
+  addEventListener("unload", async (event) => {
+
+	let remindMe = document.getElementById("remind").checked;//.innerHTML;//	console.log (document.body.innerText);
+
+
+  });  
+
 
   loglic();
 

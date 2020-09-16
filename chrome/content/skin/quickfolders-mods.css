@@ -1,52 +1,93 @@
 /* modern look thunderbird 60 + */
-:root {
-  --green-highlight: #03a203;
-  --new-highlight: #0488d5;
-}
-
-:root[lwt-tree-brighttext] {
-  --green-highlight: #86D129;
-  --new-highlight: #0aa5ff;
-}
 
 #QuickFolders-skipfolder {
-  list-style-image: url("//quickfolders/content/skin/ico/skip-folder.svg");
-  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
-  fill: currentColor;
-  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-  stroke: currentColor;
-  stroke-opacity: 0;
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+  list-style-image: url("//quickfolders/skin/ico/skip-60.png");
+}
+
+toolbar[brighttext="true"] #QuickFolders-skipfolder {
+  list-style-image: url("//quickfolders/skin/ico/skip-60-bright.png");
 }
 
 #QuickFolders-skipfolder:hover, #QuickFolders-skipfolder:active {
-  stroke: var(--green-highlight);
-  stroke-opacity: 1;
+	-moz-image-region: rect(16px, 16px, 32px, 0px);
 }
 
 #QuickFolders-createfolder {
-  list-style-image: url("//quickfolders/content/skin/ico/folder-add.svg");
-  -moz-context-properties: fill, fill-opacity, stroke;
-  fill: currentColor;
-  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-  stroke: currentColor;
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60.png");
+	-moz-image-region: rect(0px, 18px, 18px, 0px);
 }
 
-#QuickFolders-createfolder:hover {
-  stroke: var(--green-highlight);
+toolbar[brighttext="true"] #QuickFolders-createfolder {
+  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60-bright.png");
+	-moz-image-region: rect(0px, 18px, 18px, 0px);
+}
+
+#QuickFolders-createfolder:hover,
+toolbar[brighttext="true"] #QuickFolders-createfolder:hover {
+	-moz-image-region: rect(18px, 18px, 36px, 0px);
+}
+
+toolbar[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 image {
+  height: 16px;
+  width: 16px;
+}
+
+
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button.toolbarbutton-1 image {
+  height: 22px;
+  width: 22px;
 }
 
 /* new style for palette; Large */
-#QuickFolders-toolbar-button {
-  list-style-image: url("//quickfolders/content/skin/ico/toolbar.svg");
-  -moz-context-properties: fill, fill-opacity, stroke;
-  fill: currentColor;
-  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-  stroke: currentColor;
+toolbarpaletteitem  #QuickFolders-toolbar-button.toolbarbutton-1,
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button {
+  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbar-modern.png");
 }
 
-#QuickFolders-toolbar-button:hover,
-#QuickFolders-toolbar-button[checked="true"] {
-  stroke: var(--green-highlight);
+toolbar[brighttext]:not([iconsize="small"]) #QuickFolders-toolbar-button {
+  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbar-mod-bright.png");
+}
+
+
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button[checked="true"],
+toolbarpaletteitem  #QuickFolders-toolbar-button.toolbarbutton-1
+{
+	-moz-image-region: rect(0px, 22px, 22px, 0px);
+}
+
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button:hover {
+  -moz-image-region: rect(22px 22px 44px 0px);
+}
+
+toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button:not([checked="true"]) {
+  -moz-image-region: rect(44px 22px 66px 0px);
+}
+
+[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1,
+#mail-toolbox > toolbar[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 {
+  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbarSmall.png");
+}
+[brighttext][iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 {
+  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbarSmall-bright.png");
+}
+
+/* small icon rules */
+/* toolbar shown */
+[iconsize="small"] #QuickFolders-toolbar-button[checked=true].toolbarbutton-1 {
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+[iconsize="small"] #QuickFolders-toolbar-button:hover,
+#mail-toolbox > toolbar[iconsize="small"] #QuickFolders-toolbar-button:hover
+{
+  -moz-image-region: rect(16px 16px 32px 0px);
+}
+
+/* toolbar hidden */
+[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 {
+  -moz-image-region: rect(32px 16px 48px 0px);
 }
 
 
@@ -59,6 +100,6 @@
 /* [Bug 26612] Tb 60.3.2 only displays first row of tabs - caused by .chromeclass-toolbar */
 toolbar#QuickFolders-Toolbar {
 	/* overflow-x: initial; */
-	-moz-appearance: none;
+	moz-appearance: none;
 	border-collapse: separate;
 }

@@ -1159,7 +1159,11 @@ var QuickFolders = {
 						if (psib.label) util.logDebugOptional("dnd", "check next sibling + " + psib.nodeName + " '" + psib.label +"' ...");
 						if (psib.nodeName === 'menu' && popupStart !== psib) {
 							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
-							psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
+              // HTMLCollection
+              for (let x of psib.children) {
+                if (x.tagName=='menupopup') x.hidePopup();
+              }
+							// psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
 						}
 						psib = psib.nextSibling;
 					}
@@ -1168,7 +1172,10 @@ var QuickFolders = {
 						if (psib.label) util.logDebugOptional("dnd", "check previous sibling + " + psib.nodeName + " '" + psib.label +"' ...");
 						if (psib.nodeName === 'menu' && popupStart !== psib) {
 							if (psib.label) util.logDebugOptional("dnd", "Hiding previous popup menu.");
-							psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
+              for (let x of psib.children) {
+                if (x.tagName=='menupopup') x.hidePopup();
+              }
+              // psib.children.forEach(x => { if (x.tagName=='menupopup') x.hidePopup(); });
 						}
 						psib = psib.previousSibling;
 					}

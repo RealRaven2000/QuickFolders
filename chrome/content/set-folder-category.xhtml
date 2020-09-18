@@ -41,7 +41,7 @@
                 <hbox>
                     <html:input
                         id="new-category-name"
-                        onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.addToNewCategory() }"
+                        onkeydown="if(event.key == 'Enter') { QuickFolders.FolderCategory.addToNewCategory() }"
                     />
                     <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
                 </hbox>
@@ -53,7 +53,7 @@
                 <hbox>
                     <html:input
                         id="rename-category-new-name"
-                        onkeydown="if(event.keyCode == KeyEvent.DOM_VK_RETURN) { QuickFolders.FolderCategory.renameSelectedCategory() }"
+                        onkeydown="if(event.key == 'Enter') { QuickFolders.FolderCategory.renameSelectedCategory() }"
                     />
                     <button label="&qf.button.rename;" oncommand="QuickFolders.FolderCategory.renameSelectedCategory()" />
                 </hbox>

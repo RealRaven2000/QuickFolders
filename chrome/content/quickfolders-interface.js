@@ -1520,8 +1520,8 @@ QuickFolders.Interface = {
 			if (!prefs.isDebugOption('events.keyboard')) return;
       util.logDebugOptional("events.keyboard",
 				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
-			  "charcode = " + e.keyCode + " = "  + (String.fromCharCode(e.keyCode)).toLowerCase() + "\n" +
-        "keyCode = " + e.keyCode);
+			  "key = " + e.key + " = "  + (e.key.toLowerCase() + "\n" +
+        "keyCode = " + e.keyCode));
 		}
     const QI = QuickFolders.Interface,
 					util = QuickFolders.Util,
@@ -1538,7 +1538,7 @@ QuickFolders.Interface = {
 		if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')
         &&
         isCtrl && isAlt && dir!='up' && prefs.isUseRebuildShortcut) {
-			if ((String.fromCharCode(e.keyCode)).toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
+			if (e.key.toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
 				this.updateFolders(true, false);
 				try {
 					util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
@@ -1590,7 +1590,7 @@ QuickFolders.Interface = {
       if (util.hasPremiumLicense(false)) {
 				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!='up',
             isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!='up',
-				    theKeyPressed = (String.fromCharCode(e.keyCode)).toLowerCase();
+				    theKeyPressed = e.key.toLowerCase();
 				util.logDebugOptional("premium.quickJump", "hasPremiumLicense = true\n" +
 				  "quickJump Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
 				  "quickMove Shortcut = " + prefs.isQuickMoveShortcut + ", " + prefs.QuickMoveShortcutKey + "\n" +
@@ -1662,59 +1662,57 @@ QuickFolders.Interface = {
 
     if (tabmode == 'folder' || tabmode == '3pane') { // only allow these shortcuts on the 3pane window!
       if (!isCtrl && isAlt && (dir != 'up') && prefs.isUseNavigateShortcuts) {
-        // Alt + Left
-        if (e.keyCode == 38) { // ALT + up
-          this.goUpFolder();
-          isHandled = true;
-        }
+        switch (e.code) {
+          case "ArrowUp":
+            this.goUpFolder();
+            isHandled = true;
+            break;
+          case "ArrowLeft":
+            if (!this.goPreviousQuickFolder())
+              this.goPreviousSiblingFolder();
+            isHandled = true;
+            break;
+          case "ArrowRight":
+            if (!this.goNextQuickFolder())
+              this.goNextSiblingFolder();
+            isHandled = true;
+            break;
+          case "ArrowDown":
+          { // ALT + down
+            let f = util.CurrentFolder;
+            if (f) {
+              // let folderEntry = QuickFolders.Model.getFolderEntry(f.URI);
+              let btn = QI.getButtonByFolder(f);
+              if (!btn) {
+                // trigger the context menu of current folder button, if it  is on screen
+                let toolpanel = document.getElementById("QuickFolders-CurrentFolderTools");
+                if (toolpanel && toolpanel.parentNode.style["display"]!="none") {
+                  btn = document.getElementById('QuickFoldersCurrentFolder');
+                }
+              }
+              if (btn) {
+                let popupId = btn.getAttribute('popupId');
+                if (popupId) { // linux avoid this getting triggered twice
+                  let activePopup = document.getElementById(popupId);
 
-        if (e.keyCode == 37) { // ALT + left
-          if (!this.goPreviousQuickFolder())
-            this.goPreviousSiblingFolder();
-          isHandled = true;
-        }
-
-        if (e.keyCode == 39)  { // ALT + right
-          if (!this.goNextQuickFolder())
-            this.goNextSiblingFolder();
-          isHandled = true;
-        }
-
-        if (e.keyCode == 40)  { // ALT + down
-				  let f = util.CurrentFolder;
-					if (f) {
-						// let folderEntry = QuickFolders.Model.getFolderEntry(f.URI);
-						let btn = QI.getButtonByFolder(f);
-						if (!btn) {
-							// trigger the context menu of current folder button, if it  is on screen
-							let toolpanel = document.getElementById("QuickFolders-CurrentFolderTools");
-							if (toolpanel && toolpanel.parentNode.style["display"]!="none") {
-								btn = document.getElementById('QuickFoldersCurrentFolder');
-							}
-						}
-						if (btn) {
-							let popupId = btn.getAttribute('popupId');
-							if (popupId) { // linux avoid this getting triggered twice
-								let activePopup = document.getElementById(popupId);
-
-								if (document.getElementById(popupId))
-								// show only subfolders, without commands!
-								QI.showPopup(btn, popupId, null, true); // leave event argument empty
-							}
-							else {
-								if (btn.hasContextListener) {
-									let event = document.createEvent('mouseevent');
-                  event.QFtype="NavDown"; // use this to signal popup menu to focus on first subfolder
-									event.initEvent('contextmenu', true, true);
-									btn.dispatchEvent(event);
-								}
-							}
-						}
-					}
-				  isHandled = true;
-				}
-
-
+                  if (document.getElementById(popupId))
+                  // show only subfolders, without commands!
+                  QI.showPopup(btn, popupId, null, true); // leave event argument empty
+                }
+                else {
+                  if (btn.hasContextListener) {
+                    let event = document.createEvent('mouseevent');
+                    event.QFtype="NavDown"; // use this to signal popup menu to focus on first subfolder
+                    event.initEvent('contextmenu', true, true);
+                    btn.dispatchEvent(event);
+                  }
+                }
+              }
+            }
+            isHandled = true;
+          }
+          
+        } // code switch
       }
 
       if (prefs.isUseKeyboardShortcuts) {
@@ -1724,13 +1722,25 @@ QuickFolders.Interface = {
           (prefs.isUseKeyboardShortcutsCTRL && isCtrl);
 
         if (shouldBeHandled) {
-          let sFriendly = (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') + e.keyCode + " : code=" + e.keyCode,
+          let sFriendly = (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') + e.key + " : code=" + e.code,
               shortcut = -1;
           util.logDebugOptional("events", "windowKeyPress[" + dir + "]" + sFriendly);
-          if (dir == 'up')
-            shortcut = e.keyCode-48;
-          if (dir == 'down')
-            shortcut = e.keyCode-48;
+          // determine the shortcut number
+          
+          if (dir == 'up' || dir == 'down') {
+            switch (e.key) {
+              case "0": shortcut = 0; break;
+              case "1": shortcut = 1; break;
+              case "2": shortcut = 2; break;
+              case "3": shortcut = 3; break;
+              case "4": shortcut = 4; break;
+              case "5": shortcut = 5; break;
+              case "6": shortcut = 6; break;
+              case "7": shortcut = 7; break;
+              case "8": shortcut = 8; break;
+              case "9": shortcut = 9; break;
+            }
+          }
 
           if (shortcut >= 0 && shortcut < 10) {
             isHandled = true;
@@ -4816,24 +4826,26 @@ QuickFolders.Interface = {
 		let isShift = (event && event.shiftKey) || false;
 
     function makeEvent(evtType, evt) {
-      let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
-      keypress_event.initKeyEvent(evtType, true, true, null,      // typeArg, canBubble, cancelable
-               false, false, false, false,                        // ctrl, alt, shift, meta
-               evt, 0);                                           // keyCode, charcode
-      return keypress_event;
+      let clonedEvent = new KeyboardEvent(evtType, evt); // keydown or keyup (was keypress)
+      return clonedEvent;
+      // let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
+      // keypress_event.initKeyEvent(evtType, true, true, null,      // typeArg, canBubble, cancelable
+               // false, false, false, false,                        // ctrl, alt, shift, meta
+               // evt, 0);                                           // keyCode, charcode
+      // return keypress_event;
     }
 		let menupopup,
         util = QuickFolders.Util,
         QI = QuickFolders.Interface;
-	  if (event.keyCode) switch (event.keyCode) {
-      case VK_ENTER:
-			  util.logDebugOptional("interface.findFolder","VK_ENTER");
+	  if (event.key) switch (event.key) {
+      case "Enter":
+			  util.logDebugOptional("interface.findFolder","Enter");
         QI.findFolderName(event.target, true);
         event.preventDefault();
         break;
-		  case VK_DOWN:
-			case VK_UP:
-			  util.logDebugOptional("interface.findFolder", (event.keyCode==VK_DOWN) ? "VK_DOWN" : "VK_UP");
+		  case "ArrowDown":
+			case "ArrowUp":
+			  util.logDebugOptional("interface.findFolder", (event.key=="ArrowDown") ? "ArrowDown" : "ArrowUp");
 				menupopup = document.getElementById('QuickFolders-FindPopup');
 				let fC = menupopup.firstChild;
 				if (!fC) {
@@ -4857,16 +4869,16 @@ QuickFolders.Interface = {
 
 					setTimeout( function() {
 						util.logDebugOptional("interface.findFolder","creating Keyboard Events…");
-						if (menupopup.dispatchEvent(makeEvent('keydown', event.keyCode))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent('keydown', event))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
 						}
-						if (menupopup.dispatchEvent(makeEvent('keyup', event.keyCode))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent('keyup', event))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keyup event was dispatched.");
             }
 					});
 				} // palette
 				break;
-			case VK_ESCAPE:
+			case "Escape":
         event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
 			  if (isShift) // [Bug 26660] SHIFT + ESC resets move list
 					QuickFolders.quickMove.resetList();

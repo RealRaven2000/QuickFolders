@@ -11,9 +11,7 @@ function onLoad(activatedWhileWindowOpen) {
 				//       that left the "small icons" sitch activated
 				//       to activate this code, set extensions.quickfolders.toolbarpalette.showSmallIcons = true
 				//       this will unhide the "small icons" checkbox on the customize toolbar window
-                QuickFolders.Preferences.unhideSmallIcons();
-
-
+        //      QuickFolders.Preferences.unhideSmallIcons();
 }
 
 function onUnload(isAddOnShutDown) {

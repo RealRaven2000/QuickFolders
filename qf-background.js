@@ -7,21 +7,48 @@ async function main() {
 
     // landing windows.
     messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
-        // if (temporary) return; // skip during development
+      debugger;
+      let isProUser=false, 
+          isExpired=false;
+      try {
+        const util = window.QuickFolders.Util,
+              licenser = util.Licenser,
+              isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired;
+      }
+      catch (ex) {
+        console.log("LEGACY PROBLEM IN qf-background.js !!");
+        console.log("LEGACY PROBLEM IN qf-background.js !!");
+        console.log(ex);
+        console.log("LEGACY PROBLEM IN qf-background.js !!");
+        console.log("LEGACY PROBLEM IN qf-background.js !!");
+      }
+            
+            
+      // if (temporary) return; // skip during development
       switch (reason) {
         case "install":
         {
-          const url = browser.runtime.getURL("popup/installed.html");
+          let url = browser.runtime.getURL("popup/installed.html");
+          if (isProUser) {
+            url += "?user=Pro";
+            if (isExpired)
+              url += "&isExpired=true"
+          }
           //await browser.tabs.create({ url });
-          await browser.windows.create({ url, type: "popup", width: 960, height: 960, });
+          await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
         }
         break;
         // see below
         case "update":
         {
-          const url = browser.runtime.getURL("popup/update.html");
+          let url = browser.runtime.getURL("popup/update.html");
+          if (isProUser) {
+            url += "?user=Pro";
+            if (isExpired)
+              url += "&isExpired=true"
+          }
           //await browser.tabs.create({ url });
-          await browser.windows.create({ url, type: "popup", width: 960, height: 960, });
+          await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
         }
         break;
       // see below

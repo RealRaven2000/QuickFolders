@@ -9,10 +9,7 @@
   END LICENSE BLOCK 
 */
 
-if (typeof ChromeUtils.import == "undefined") 
-	Components.utils.import('resource://gre/modules/Services.jsm');
-else
-	var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {

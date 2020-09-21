@@ -8,7 +8,7 @@
 .testversion p {
   background-color: rgb(0,0,90); /* dark blue */
   color: yellow !important;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 #innerwrapper {
@@ -55,17 +55,18 @@ ul.actions {
 
 
 body, body * {
-  background-color: rgb(20,15,05);
-  color: white;
+  background-color: white;
+  color: rgb(20,15,05);
 }
 
-body > p {
-  background-color: rgb(20,15,05);
-  color: white;
+body p, body li {
+  background-color: white;
+  color: rgb(20,15,05);
+  font-size: 12pt;
 }
 
 .versionnumber {
-  color: lightblue;
+  color: darkblue;
 }
 
 
@@ -101,14 +102,14 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 30pt;
+  font-size: 25pt;
 }
 
 h2 {
-  font-size: 26pt;
+  font-size: 20pt;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 18pt;
+  font-size: 16pt;
 }

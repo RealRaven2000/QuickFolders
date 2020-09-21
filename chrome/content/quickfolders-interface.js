@@ -3291,8 +3291,9 @@ QuickFolders.Interface = {
 							}, false);
 					}
 					if (QI.isOncommandAttributes || forceOnCommand)
-						this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
  */
+          if(forceOnCommand)
+            this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')");
           menuColorPopup.appendChild(menuitem);
 				}
 			}
@@ -5958,7 +5959,7 @@ QuickFolders.Interface = {
       let btn = element.folder ? element : targetElement, // menu item
           entry = QuickFolders.Model.getButtonEntry(btn);
       if (entry && entry.customPalette) {
-        paletteToken = this.getPaletteClassToken(entry.customPalette);
+        paletteToken = this.getPaletteClassToken(entry.customPalette).trim();
       }
     }
 
@@ -5971,10 +5972,10 @@ QuickFolders.Interface = {
 
 		// remove palette name(s)
 		element.className = this.stripPaletteClasses(element.className, paletteToken);
-		let hasClass = (paletteToken && element.classList.contains(paletteToken));
+		let hasClass = (paletteToken && element.classList.contains(paletteToken.trim()));
 		if (!hasClass) {
 		  if (paletteToken)
-				element.className += paletteToken;
+        element.classList.add(paletteToken.trim());
 		}
 	} ,
 

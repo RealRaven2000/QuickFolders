@@ -197,29 +197,34 @@ QuickFolders.Options = {
 	loadPreferences: function qf_loadPreferences() {
 		const util = QuickFolders.Util;
 		if (typeof Preferences == 'undefined') {
-			if (typeof ChromeUtils.import == "undefined") 
-				Components.utils.import('resource://gre/modules/Services.jsm');
-			else
-				var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
-			
-			let context={};
-			Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", context, "UTF-8" /* The script's encoding */); 
-			if (typeof Preferences == 'undefined') {
-				util.logDebug("Skipping loadPreferences - Preferences object not defined");
-				return; // older versions of Thunderbird do not need this.
-			}
+      util.logToConsole("Preferences is not defined - this shouldn't happen!");
+      return;
 		}	
 		util.logDebug("loadPreferences - start:");
+    
+    let myprefElements = document.querySelectorAll("[preference]");
+		let foundElements = {};
+		for (let myprefElement of myprefElements) {
+      let legacyPrefId = myprefElement.getAttribute("preference");
+			foundElements[legacyPrefId] = myprefElement;
+		}
+
 		let myprefs = document.getElementsByTagName("preference");
 		if (myprefs.length) {
 			let prefArray = [];
 			for (let it of myprefs) {
-				let p = new Object({ id: it.id, 
+				let p = new Object({ id: it.getAttribute('name'), 
 						      name: it.getAttribute('name'),
 						      type: it.getAttribute('type') });
-				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+				// not supported
+				// if (it.getAttribute('instantApply') == "true") p.instantApply = true;
 				prefArray.push(p);
+			    // manually change the shortname in the preference attribute to the actual
+				// preference "id" (as in the preference manager)
+				foundElements[it.id].setAttribute("preference", it.getAttribute("name"));
 			}
+			
+			
 			util.logDebug("Adding " + prefArray.length + " preferences to Preferences loader…")
 			if (Preferences)
 				Preferences.addAll(prefArray);
@@ -1040,7 +1045,7 @@ QuickFolders.Options = {
 		prefs.setStringPref('currentFolderBar.background', styleValue);
 		prefs.setStringPref('currentFolderBar.background.selection', choice);
 		if (Preferences) {
-			Preferences.get('qfpa-CurrentFolder-Background')._value=styleValue;
+			Preferences.get('extensions.quickfolders.currentFolderBar.background')._value=styleValue;
 		}
 		//if (withUpdate)
 		//	QuickFolders.Interface.updateMainWindow();

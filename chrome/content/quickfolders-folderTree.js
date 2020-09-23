@@ -263,11 +263,11 @@ QuickFolders.FolderTree = {
 	
 	forceRedraw: function() {
 		// force redrawing the folder pane
-		const box = document.getElementById("folderTree").boxObject; // not working in Thunderbird 78
-    if(!box) return;
 		const util = QuickFolders.Util;
 		// nsITreeBoxObject will be deprecated from Tb69
 		try {
+      const box = document.getElementById("folderTree").boxObject; // not working in Thunderbird 78
+      if(!box) return;
 			if (Components.interfaces.nsITreeBoxObject) {
 				box.QueryInterface(Components.interfaces.nsITreeBoxObject);
 				box.invalidate();
@@ -276,7 +276,7 @@ QuickFolders.FolderTree = {
 				box.element.invalidate();
 		}
 		catch (ex) {
-			util.logException('forceRedraw',ex);
+			util.logException('forceRedraw', ex);
 		}
 	} ,
 	/*									 

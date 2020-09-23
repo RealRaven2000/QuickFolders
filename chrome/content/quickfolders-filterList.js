@@ -269,59 +269,38 @@ QuickFolders.FilterList = {
 			}
 		}
 		
-		if (util.Application == 'Thunderbird') {
-			// move the search filter box
-			let dropDown = document.getElementById("serverMenu");
+    // move the search filter box
+    let dropDown = document.getElementById("serverMenu");
 
-			dropDown.parentNode.insertBefore(searchBox, dropDown.nextSibling);
-			dropDown.addEventListener("command", function(e) { window.setTimeout(function() {QuickFolders.FilterList.onFindFilter(true, false);}, 50); }, false);
-			
-			// create a container that holds list label and count...
-			let rowAbove = filterList.parentNode.parentNode.previousSibling,
-			    hbox = document.createXULElement ? document.createXULElement('hbox') : document.createElement('hbox');
-      filterHeader = rowAbove.firstChild;
-			filterHeader.id='filterHeader';
-			rowAbove.appendChild(hbox);
-			hbox.appendChild(filterHeader);
-			hbox.appendChild(document.createXULElement ? document.createXULElement('spacer') : document.createElement('spacer'));
-			countBox.flex="1"; // make sure this is never obscured by the label
-			hbox.appendChild(countBox);
-			 
-			this.updateCountBox();
-			// we need to overwrite the existing functions in order to support the "filtered" state
-			let reorderUpButton = document.getElementById("reorderUpButton"),
-			    reorderDownButton = document.getElementById("reorderDownButton"),
-			    runFiltersButton =  document.getElementById("runFiltersButton");
-			QuickFolders.Interface.setEventAttribute(reorderUpButton, "oncommand", "QuickFolders.FilterList.onUp(event);");
-			QuickFolders.Interface.setEventAttribute(reorderDownButton, "oncommand", "QuickFolders.FilterList.onDown(event);");
-			
-			// find the log button (first button in hbox) and move it down
-			let filterLogButton = dropDown.parentNode.getElementsByTagName("button")[0];
-			// insert Filter log button at the bottom
-			runFiltersButton.parentNode.insertBefore(filterLogButton, runFiltersButton)
-			// move run filters button to left 
-			let runFiltersFolderMenu =  document.getElementById("runFiltersFolder");
-			runFiltersFolderMenu.parentNode.appendChild(runFiltersButton);
-		}
-		else {
-			// for the moment we do not support this on SM / POstbox as I have problems with removing stuff from the treeview!
-			// in future we need to build our own tree
-			// build a treeview that supports hidden elements and overwrite gFilterTreeView 
-			// #maildev@Neil: could create a virtual list, the SeaMonkey view is only interested in the filterCount property and the getFilterAt method
-			searchBox.collapsed = true;
-			
-			filterHeader = document.getElementById("filterHeader");
-			let row=filterHeader.parentNode,
-			    hbox = document.createXULElement ? document.createXULElement('hbox') : document.createElement('hbox');
-			row.appendChild(hbox);
-			
-			hbox.appendChild(countBox);
-			hbox.appendChild(document.createXULElement ? document.createXULElement('spacer') : document.createElement('spacer'));
-			countBox.flex="1"; // make sure this is never obscured by the label
-			hbox.appendChild(countBox);
-			
-			this.updateCountBox();
-		}
+    dropDown.parentNode.insertBefore(searchBox, dropDown.nextSibling);
+    dropDown.addEventListener("command", function(e) { window.setTimeout(function() {QuickFolders.FilterList.onFindFilter(true, false);}, 50); }, false);
+    
+    // create a container that holds list label and count...
+    let rowAbove = filterList.parentNode.parentNode.previousSibling,
+        hbox = document.createXULElement ? document.createXULElement('hbox') : document.createElement('hbox');
+    filterHeader = rowAbove.firstChild;
+    filterHeader.id='filterHeader';
+    rowAbove.appendChild(hbox);
+    hbox.appendChild(filterHeader);
+    hbox.appendChild(document.createXULElement ? document.createXULElement('spacer') : document.createElement('spacer'));
+    countBox.flex="1"; // make sure this is never obscured by the label
+    hbox.appendChild(countBox);
+     
+    this.updateCountBox();
+    // we need to overwrite the existing functions in order to support the "filtered" state
+    let reorderUpButton = document.getElementById("reorderUpButton"),
+        reorderDownButton = document.getElementById("reorderDownButton"),
+        runFiltersButton =  document.getElementById("runFiltersButton");
+    QuickFolders.Interface.setEventAttribute(reorderUpButton, "oncommand", "QuickFolders.FilterList.onUp(event);");
+    QuickFolders.Interface.setEventAttribute(reorderDownButton, "oncommand", "QuickFolders.FilterList.onDown(event);");
+    
+    // find the log button (first button in hbox) and move it down
+    let filterLogButton = dropDown.parentNode.getElementsByTagName("button")[0];
+    // insert Filter log button at the bottom
+    runFiltersButton.parentNode.insertBefore(filterLogButton, runFiltersButton)
+    // move run filters button to left 
+    let runFiltersFolderMenu =  document.getElementById("runFiltersFolder");
+    runFiltersFolderMenu.parentNode.appendChild(runFiltersButton);
 	} ,
 	
 	// helper function for SeaMonkey/Postbox (which doesn't have a gCurrentFilterList)
@@ -370,13 +349,7 @@ QuickFolders.FilterList = {
 		if (typeof gCurrentFilterList !== "undefined") {
 			rebuildFilterList(gCurrentFilterList);
 		}
-		else {
-			if (util.Application=='Postbox') {
-				refresh();
-				this.updateCountBox();
-				return;
-			}
-			
+		else {			
 			// force a repaint through the BoxObject
 			let fl = this.getFilterListElement(),
 			    // from: SM's setServer(uri) function - no gRDF in Postbox!
@@ -384,15 +357,9 @@ QuickFolders.FilterList = {
 			    msgFolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
 			
 			//Calling getFilterList will detect any errors in rules.dat, backup the file, and alert the user
-			switch(util.Application) {
-				case 'Postbox': 
-					this.gFilterTreeView().filterList = msgFolder.getFilterList(gFilterListMsgWindow);
-					break;
-				default:
-					this.gFilterTreeView().filterList = msgFolder.getEditableFilterList(gFilterListMsgWindow);
-					break;
-			}
-			fl.boxObject.invalidate();
+      this.gFilterTreeView().filterList = msgFolder.getEditableFilterList(gFilterListMsgWindow);
+      
+			// fl.boxObject.invalidate(); -= not working in Tb78!! boxObject is deprecated
 		}
 		this.updateCountBox();
 	} ,

@@ -2753,8 +2753,9 @@ QuickFolders.Interface = {
         button = util.getPopupNode(element),
         folder = button.folder,
         entry = QuickFolders.Model.getFolderEntry(folder.URI),
-        x = button.boxObject.screenX,
-        y = button.boxObject.screenY + button.boxObject.height;
+        boxObject = button.getBoundingClientRect(),     // boxObject deprecate in Tb78
+        x = boxObject.x,                                // boxObject.screenX
+        y = boxObject.y + boxObject.height;             // button.boxObject.screenY + button.boxObject.height
 		if (!folder) {
 			util.alertButtonNoFolder(button);
 			return;

@@ -414,28 +414,6 @@ QuickFolders.Util = {
 		}
 	},
 	
-	// Postbox special functions to avoid line being truncated
-	// removes description.value and adds it into inner text
-	fixLineWrap: function fixLineWrap(notifyBox, notificationKey) {
-    try {
-		  if (!notifyBox || !notificationKey)
-				return;
-			let note = notifyBox.getNotificationWithValue(notificationKey),
-			// if we  could get at the description element within the notificaiton 
-			// we could empty the value and stick thje text into textContent instead!
-			    hbox = note.boxObject.firstChild.firstChild;
-			if (hbox) {
-				this.logDebug('hbox = ' + hbox.tagName + ' hbox.children: ' + hbox.children.length);
-				let desc = hbox.children[1];
-				desc.textContent = desc.value.toString();
-				desc.removeAttribute('value');
-			}
-		}
-		catch(ex) {
-			this.logException('Postbox notification: ', ex);
-		}
-	} ,
-	
 	onCloseNotification: function onCloseNotification(eventType, notifyBox, notificationKey) {
 		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
 		window.setTimeout(function() {

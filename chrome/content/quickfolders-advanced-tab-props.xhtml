@@ -19,6 +19,7 @@
 	buttonlabelextra2="&btnReset;"
 	buttonlabelextra1="&btnApply;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="QuickFolders.AdvancedTab.load();"
 >
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -81,8 +82,10 @@
 					<row align="center">
 						<label value="&toAddress;"
 						       control="txtToAddress"/>	
-						<textbox id="txtToAddress" 
-						         tooltiptext="&toAddress.tooltip;"/>
+						<html:input
+                  type="text"
+                  id="txtToAddress" 
+                  tooltiptext="&toAddress.tooltip;"/>
 					</row>
 					<!-- non-row elements span the whole width -->
 					<hbox>
@@ -147,18 +150,22 @@
 						<button label="&cssBackground;"
 						        oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
 										class="textLink"/>	
-						<textbox id="txtBackground" 
-						         tooltiptext="&cssBackground.tooltip;"
-										 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
+						<html:input
+                  type="text"
+                  id="txtBackground" 
+                  tooltiptext="&cssBackground.tooltip;"
+                  onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
 					</row>
 					<row>
 						<button label="&cssColor;"
 						       oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
 						       class="textLink"/>
 						<hbox>
-							<textbox id="txtColor" 
-											 tooltiptext="&cssColor.tooltip;"
-											 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
+							<html:input
+                  type="text"
+                  id="txtColor" 
+                  tooltiptext="&cssColor.tooltip;"
+                  onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
 							<colorpicker id="txtColorPicker" 
 											 type="button"
 											 onchange="return QuickFolders.AdvancedTab.pickColor(this.color);"/>

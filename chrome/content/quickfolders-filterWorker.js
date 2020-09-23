@@ -136,10 +136,6 @@ QuickFolders.FilterWorker = {
 								function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
 								); 
 							
-					if (util.Application == 'Postbox') {
-						util.fixLineWrap(notifyBox, notificationKey);
-					}						
-							
 				}
 				else {
 					// fallback for systems that do not support notification (currently: SeaMonkey)
@@ -744,7 +740,7 @@ QuickFolders.FilterWorker = {
       desc.textContent = this.getBundleString(descriptionId);
     }
     window.sizeToContent();
-    let rect = desc.getBoundingClientRect ? desc.getBoundingClientRect() : desc.boxObject;
+    let rect = desc.getBoundingClientRect();
     if (rect && rect.height && window.height) {
       window.height += rect.height;
     }

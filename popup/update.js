@@ -13,17 +13,20 @@
     */
     
     
-		let name = await mxUtilties.getAddonName();
-		await messenger.Utilities.logDebug ("Addon Name: " + name);
-    
-		let lis = await mxUtilties.isLicensed();	
-    mxUtilties.logDebug ("isLicensed: " + lis);
-    
-		let ver = await mxUtilties.getAddonVersion();	
-    mxUtilties.logDebug ("Addon Version: " + ver);
-    
-		let isProUser = await mxUtilties.LicenseIsProUser();		
-    mxUtilties.logDebug ("isProUser: " + isProUser);
+		let name = await mxUtilties.getAddonName(),    
+		    lis = await mxUtilties.isLicensed(),	
+		    ver = await mxUtilties.getAddonVersion(),
+		    isProUser = await mxUtilties.LicenseIsProUser();
+        
+		await mxUtilties.logDebug (
+        "====== update.js script  ====== \n "
+      + " Addon Name: " + name + "\n"
+      + " isLicensed: " + lis + "\n"
+      + " Addon Version: " + ver  + "\n"
+      + " isProUser: " + isProUser + "\n"
+      + "=============================== \n "
+      ) ;
+
     
 		if (isProUser) {
       let isExpired = await mxUtilties.LicenseIsExpired();		

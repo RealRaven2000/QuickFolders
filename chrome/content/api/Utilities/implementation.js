@@ -27,10 +27,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     return {
       Utilities: {
 
-        logDebug (what) {
-          console.log("logDebug!" + what);
-          return true;
-          // return win.QuickFolders.Util.logDebug(what);
+        logDebug (text) {
+          win.QuickFolders.Util.logDebug(text);
         },
         
         isLicensed() {

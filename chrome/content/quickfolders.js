@@ -688,7 +688,9 @@ var QuickFolders = {
 		else {
 		  try {
         let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
-        QI.Toolbar.style.display = 'none';
+        let qfToolbar = QI.Toolbar;
+        
+        if (qfToolbar) qfToolbar.style.display = 'none';
         // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
         let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');

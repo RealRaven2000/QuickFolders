@@ -899,7 +899,6 @@ QuickFolders.Interface = {
 					model = QuickFolders.Model;
 		let cat = this.CategoryMenu,
 		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
-		if (prefs.isDebugOption("categories")) debugger;
 		if (cat) {
 			// don't show if ALWAYS and NEVER are the only ones that are references by tabs
 			let catArray = model.Categories,

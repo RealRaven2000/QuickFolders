@@ -1809,8 +1809,13 @@ QuickFolders.Util = {
 				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 		}
-		let newCSS = QuickFolders_globalWin.QuickFolders.WL.injectCSS(path);
-		newCSS.setAttribute("title", "QuickFolderPlatformStyles");
+    
+    setTimeout(function() {
+      // note - in a single message window  QuickFolders_globalWin == messageWindow.xhtml
+      let newCSS = QuickFolders_globalWin.QuickFolders.WL.injectCSS(path);
+      newCSS.setAttribute("title", "QuickFolderPlatformStyles");
+    },150);
+    
 if (util.ApplicationName =="Interlink") {
 			let url = win.document.URL,
 			    isMainWindow = url.endsWith("messenger.xhtml");

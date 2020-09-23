@@ -1,12 +1,35 @@
 
-	async function loglic() {
-		
-		let name = await messenger.Utilities.getAddonName();
-		console.log ( 		 name);
-		let lis = await messenger.Utilities.isLicensed();		 
-		console.log ( 		 lis);
-		let ver = await messenger.Utilities.getAddonVersion();	
-		console.log ( 		 ver);	
+	async function licenseLog() {
+    // messenger.Utilities is our own function which communicates with the main QF instance.
+    // see api/utilities/implementation.js
+    const mxUtilties = messenger.Utilities;
+    
+    debugger;
+		// Test functions
+    /*
+    await messenger.Utilities.logDebug ("-------------------------------------------\n" +
+                "logic function == update popup\n",
+                "-------------------------------------------");
+    */
+    
+    
+		let name = await mxUtilties.getAddonName();
+		await messenger.Utilities.logDebug ("Addon Name: " + name);
+    
+		let lis = await mxUtilties.isLicensed();	
+    mxUtilties.logDebug ("isLicensed: " + lis);
+    
+		let ver = await mxUtilties.getAddonVersion();	
+    mxUtilties.logDebug ("Addon Version: " + ver);
+    
+		let isProUser = await mxUtilties.LicenseIsProUser();		
+    mxUtilties.logDebug ("isProUser: " + isProUser);
+    
+		if (isProUser) {
+      let isExpired = await mxUtilties.LicenseIsExpired();		
+      mxUtilties.logDebug ("License is expired: " + isExpired);
+    } 
+
 	}
 
 
@@ -29,11 +52,13 @@ addEventListener("click", async (event) => {
 
 addEventListener("load", async (event) => {
 	//debugger;
-	let text= document.body.innerHTML;//	
-	let htmltext=text.replace(/{addon}/g, await browser.runtime.getManifest().name );//oder messenger.Utilities.getAddonName());
-	let  htmltext2=htmltext.replace(/{version}/g, await messenger.Utilities.getAddonVersion()); //oder: browser.runtime.getManifest().version
-	htmltext=htmltext2.replace(/{appver}/g, await messenger.Utilities.getTBVersion());
-		//same for license,   let htmltext=text.replace(/{addon}/g, await messenger.Utilities.getAddonName());
+  const mxUtilties = messenger.Utilities;
+	let text = document.body.innerHTML,//	
+	    htmltext = text.replace(/{addon}/g, await browser.runtime.getManifest().name ),    //oder mxUtilties.getAddonName());
+	    htmltext2 = htmltext.replace(/{version}/g, await mxUtilties.getAddonVersion()); //oder: browser.runtime.getManifest().version
+      
+	htmltext = htmltext2.replace(/{appver}/g, await mxUtilties.getTBVersion());
+		//same for license,   let htmltext=text.replace(/{addon}/g, await mxUtilties.getAddonName());
 		document.body.innerHTML=htmltext;
 
   });  
@@ -46,7 +71,7 @@ addEventListener("load", async (event) => {
   });  
 
 
-  loglic();
+  licenseLog();
 
 
 

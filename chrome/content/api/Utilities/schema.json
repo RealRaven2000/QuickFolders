@@ -1,8 +1,34 @@
 [
   {
     "namespace": "Utilities",
-    "functions": [
-     
+    "functions": [ 
+      {
+        "name": "logDebug",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "text",
+            "type": "string",
+            "description": "what text to log"
+          }
+        ]
+      },
+
+      {
+        "name": "LicenseIsExpired",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+      {
+        "name": "LicenseIsProUser",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+    
       {
         "name": "isLicensed",
         "type": "function",

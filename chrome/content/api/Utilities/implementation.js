@@ -7,7 +7,11 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 //var { utils } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-util.js");
 //var { addonPrefs } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-preferences.js");
 //Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
-var win= Services.wm.getMostRecentWindow("mail:3pane");
+
+// might be better to get the parent window of the current window
+// because we may be screwed otherwise.
+var win = Services.wm.getMostRecentWindow("mail:3pane"); 
+
 
 console.log("impl utilities");
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
@@ -23,27 +27,38 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     return {
       Utilities: {
 
+        logDebug (what) {
+          console.log("logDebug!" + what);
+          return true;
+          // return win.QuickFolders.Util.logDebug(what);
+        },
+        
         isLicensed() {
-        return  (win.QuickFolders.Licenser).isLicensed;
-         
+          return  (win.QuickFolders.Licenser).isValidated;
+        },
+        
+        LicenseIsExpired() {
+          return  win.QuickFolders.Licenser.isExpired;
         },
 
+        LicenseIsProUser() {
+          return  win.QuickFolders.Util.hasPremiumLicense(false);
+        },
 
-        getAddonVersion() {
+        getAddonVersion: function() {
           return win.QuickFolders.Util.Version;
         },
 
-        getTBVersion() { //somehow(??), we can also get this in MX
+        getTBVersion : function() { //somehow(??), we can also get this in MX
           return Services.appinfo.version;//win.QuickFolders.Util.VersionSanitized;
         },
 
 
-        getAddonName() {
+        getAddonName : function() {
           return win.QuickFolders.Util.ADDON_NAME;
         },
-
-
-        openLinkExternally(url) {
+        
+        openLinkExternally: function(url) {
           let uri = url;
           if (!(uri instanceof Ci.nsIURI)) {
             uri = Services.io.newURI(url);
@@ -54,10 +69,10 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             .loadURI(uri);
         },
 
-        showXhtmlPage(uri) {
+        showXhtmlPage: function(uri) {
           let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-          .getService(Components.interfaces.nsIWindowMediator)
-          .getMostRecentWindow("mail:3pane");  
+            .getService(Components.interfaces.nsIWindowMediator)
+            .getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri);
         }
   

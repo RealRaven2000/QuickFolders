@@ -38,20 +38,9 @@ QuickFolders.TabListener = {
         if (tabMode == 'message') {
           // Tb / Pb
           let msg = null, fld = null;
-          switch (util.Application) {
-            case 'Postbox': 
-              msg = info._msgHdr;
-              if (msg) fld = msg.folder;
-              break;
-            case 'Thunderbird': 
-              if (info.messageDisplay)
-                msg = info.messageDisplay.displayedMessage;
-              if (msg) fld = msg.folder;
-              break;
-            case 'SeaMonkey':
-              fld = info.msgSelectedFolder;
-              break;
-          }
+          if (info.messageDisplay)
+            msg = info.messageDisplay.displayedMessage;
+          if (msg) fld = msg.folder;
           if (fld) {
             // reflect in current folder toolbar!
             QI.initCurrentFolderTab(QI.CurrentFolderTab, fld, null, info);

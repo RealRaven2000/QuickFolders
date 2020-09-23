@@ -597,6 +597,7 @@ var QuickFolders = {
 	debug_log: function debug_log(ev) {
 		console.log("DnD");
 	},
+  
 	// helper function to do init from options dialog!
 	initDocAndWindow: function initDocAndWindow(win) {
     let util = QuickFolders.Util,
@@ -625,15 +626,16 @@ var QuickFolders = {
 			QuickFolders.doc = document;
 			QuickFolders.win = window;
 		}
-		QuickFolders_globalWin=QuickFolders.win;
-		QuickFolders_globalDoc=QuickFolders.doc;
+		QuickFolders_globalWin = QuickFolders.win;
+		QuickFolders_globalDoc = QuickFolders.doc;
 
 		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
 	},
 
 	initDelayed: function initDelayed(win, WLorig) {
 	  if (this.initDone) return;
-	  QuickFolders.WL = WLorig;
+    if (WLorig)
+      QuickFolders.WL = WLorig;
 	  const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,
@@ -669,22 +671,17 @@ var QuickFolders = {
 				);
 			}
 			
-			// [Issue 4] Entering text in quickJump doesn't show suggestions while typing
-			// add input event handler to search box (xbl binding for type=search was removed)
-			if (util.versionGreaterOrEqual(util.ApplicationVersion, "68")) {
-				util.logDebug("Adding Search Input event handler...");
-			  let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
-				if (findFolderBox) {
-					findFolderBox.addEventListener("input", function() {
-						  QI.findFolderName(findFolderBox);
-						}
-					);
-				}
-				else{
-					util.logDebug("element not found: QuickFolders-FindFolder");
-				}
-			}
-			
+      util.logDebug("Adding Search Input event handler...");
+      let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
+      if (findFolderBox) {
+        findFolderBox.addEventListener("input", function() {
+            QI.findFolderName(findFolderBox);
+          }
+        );
+      }
+      else{
+        util.logDebug("element not found: QuickFolders-FindFolder");
+      }
 			
 			this.initDone=true;
 		}
@@ -832,6 +829,14 @@ var QuickFolders = {
 		}
     finally {
 			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+      // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
+      if (QI.currentActiveCategories) {
+        util.logDebugOptional('categories', "forcing selectCategory");
+        let bkCat = QI.currentActiveCategories; // force redraw by deleting it
+        QI._selectedCategories = null;
+        QI.selectCategory(bkCat);
+      }
+      
     }
 	
 	},

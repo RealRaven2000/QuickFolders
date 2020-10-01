@@ -1943,7 +1943,7 @@ QuickFolders.Interface = {
 		}
     
     // Alt+Down highlight the first folder
-    if (evt.hasOwnProperty("QFtype")) {
+    if (evt && evt.hasOwnProperty("QFtype")) {
       // skip focus to first folder!
       if (evt.QFtype == "NavDown" && p.childNodes) {
         for (let m of p.childNodes) {

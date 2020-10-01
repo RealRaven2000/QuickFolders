@@ -685,7 +685,7 @@ QuickFolders.FilterWorker = {
       }
     }
     catch (ex) {
-      util.logException("QuickFolders.FilterWorker.loadTemplate()", e);
+      util.logException("QuickFolders.FilterWorker.loadTemplate()", ex);
     }
     
 	} ,

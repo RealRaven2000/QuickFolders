@@ -185,7 +185,7 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 
 #quickFoldersSkipFolder {
-    list-style-image: url("//quickfolders/content/skin/ico/skip-folder.svg");
+    list-style-image: url("chrome://quickfolders/content/skin/ico/skip-folder.svg");
     stroke: var(--green-highlight) !important;
     stroke-opacity: 0;
 }

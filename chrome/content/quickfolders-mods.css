@@ -10,7 +10,7 @@
 }
 
 #QuickFolders-skipfolder {
-  list-style-image: url("//quickfolders/content/skin/ico/skip-folder.svg");
+  list-style-image: url("chrome://quickfolders/content/skin/ico/skip-folder.svg");
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -24,7 +24,7 @@
 }
 
 #QuickFolders-createfolder {
-  list-style-image: url("//quickfolders/content/skin/ico/folder-add.svg");
+  list-style-image: url("chrome://quickfolders/content/skin/ico/folder-add.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -37,7 +37,7 @@
 
 /* new style for palette; Large */
 #QuickFolders-toolbar-button {
-  list-style-image: url("//quickfolders/content/skin/ico/toolbar.svg");
+  list-style-image: url("chrome://quickfolders/content/skin/ico/toolbar.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);

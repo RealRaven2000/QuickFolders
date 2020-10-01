@@ -2,11 +2,11 @@
 
 #QuickFolders-skipfolder {
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
-  list-style-image: url("//quickfolders/skin/ico/skip-60.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/skip-60.png");
 }
 
 toolbar[brighttext="true"] #QuickFolders-skipfolder {
-  list-style-image: url("//quickfolders/skin/ico/skip-60-bright.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/skip-60-bright.png");
 }
 
 #QuickFolders-skipfolder:hover, #QuickFolders-skipfolder:active {
@@ -14,12 +14,12 @@ toolbar[brighttext="true"] #QuickFolders-skipfolder {
 }
 
 #QuickFolders-createfolder {
-  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/toolbar-newfolder-60.png");
 	-moz-image-region: rect(0px, 18px, 18px, 0px);
 }
 
 toolbar[brighttext="true"] #QuickFolders-createfolder {
-  list-style-image: url("//quickfolders/skin/ico/toolbar-newfolder-60-bright.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/toolbar-newfolder-60-bright.png");
 	-moz-image-region: rect(0px, 18px, 18px, 0px);
 }
 
@@ -42,11 +42,11 @@ toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button.toolbarbutton-1 ima
 /* new style for palette; Large */
 toolbarpaletteitem  #QuickFolders-toolbar-button.toolbarbutton-1,
 toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button {
-  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbar-modern.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/quickfolders-toolbar-modern.png");
 }
 
 toolbar[brighttext]:not([iconsize="small"]) #QuickFolders-toolbar-button {
-  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbar-mod-bright.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/quickfolders-toolbar-mod-bright.png");
 }
 
 
@@ -66,11 +66,11 @@ toolbar:not([iconsize="small"]) #QuickFolders-toolbar-button:not([checked="true"
 
 [iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1,
 #mail-toolbox > toolbar[iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 {
-  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbarSmall.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/quickfolders-toolbarSmall.png");
 }
 [brighttext][iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1,
 #mail-toolbox > toolbar[brighttext][iconsize="small"] #QuickFolders-toolbar-button.toolbarbutton-1 {
-  list-style-image: url("//quickfolders/skin/ico/quickfolders-toolbarSmall-bright.png");
+  list-style-image: url("chrome://quickfolders/skin/ico/quickfolders-toolbarSmall-bright.png");
 }
 
 /* small icon rules */

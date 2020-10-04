@@ -14,7 +14,7 @@ var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.org/");
+		return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
 	}
 };
 
@@ -1587,7 +1587,7 @@ QuickFolders.Options = {
 		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
 			util.openURL(null, 
-			  util.makeUriPremium("http://quickfolders.org/version.html")
+			  util.makeUriPremium("https://quickfolders.org/version.html")
 				+ "#" + pureVersion);
 			return true;
 		}

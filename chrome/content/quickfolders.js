@@ -437,7 +437,7 @@ END LICENSE BLOCK */
   ============
 
 
-	A complete list of bugs can be viewed at http://quickfolders.org/bugs.html
+	A complete list of bugs can be viewed at https://quickfolders.org/bugs.html
   PLANNED FEATURES
   ================
 	- persist categories in separate JSON list for more flexibility (e.g. rename)

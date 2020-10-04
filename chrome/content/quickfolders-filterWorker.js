@@ -685,7 +685,7 @@ QuickFolders.FilterWorker = {
         return QuickFolders.FilterWorker.acceptTemplate();
       });
       window.addEventListener('dialogextra2', function (event) { 
-        QuickFolders.Util.openLinkInBrowser(event,'http://quickfolders.org/donate.html');
+        QuickFolders.Util.openLinkInBrowser(event,'https://quickfolders.org/donate.html');
       });
       
       

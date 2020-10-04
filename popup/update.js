@@ -39,7 +39,7 @@
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
 	console.log ( messenger.Utilities.isLicensed()  );
-	messenger.Utilities.openLinkExternally("http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
+	messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
   });
 
@@ -47,7 +47,7 @@ addEventListener("click", async (event) => {
   addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("donate")) {
 
-	  messenger.Utilities.openLinkExternally("http://quickfolders.org/donate.html");
+	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html");
 	}
   });  
 

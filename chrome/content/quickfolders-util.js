@@ -1969,13 +1969,13 @@ QuickFolders.Util.FirstRun = {
 					// on very first run, we go to the index page - welcome blablabla
 					util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
 					window.setTimeout(function() {
-						util.openURL(null, "http://quickfolders.org/index.html");
+						util.openURL(null, "https://quickfolders.org/index.html");
 					}, 1500); 
 				}
 			}
 			else { 
         let isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired,
-        		versionPage = util.makeUriPremium("http://quickfolders.org/version.html") + "#" + pureVersion;
+        		versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
 				suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");

@@ -776,7 +776,8 @@ menuitem.cmd[tag="qfSeparatorDel"] {
 }
 menuitem.mailCmd[tag="qfFolderRepair"],
 #QuickFolders-RepairFolderBtn {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/wrench.svg') !important;
+    list-style-image: url('chrome://quickfolders/content/skin/ico/repairFolder.svg') !important;
+    stroke: var(--new-highlight) !important;
 }
 
 #QuickFolders-FoldersBox toolbarseparator {

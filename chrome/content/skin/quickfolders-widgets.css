@@ -110,7 +110,7 @@ menuitem.cmd[tagName="qfFindFolder"] {
 menuitem.cmd[tagName="qfRebuild"] {
   list-style-image: url('chrome://calendar/skin/shared/icons/synchronize.svg') !important;
 }
-menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/content/skin/ico/broom.png') !important; }
+menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/content/skin/ico/clean.svg') !important; }
 menuitem.cmd[tagName="qfRepairTreeIcons"] {
   list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
 }

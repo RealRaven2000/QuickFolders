@@ -186,7 +186,9 @@ checkbox .checkbox-label-box .checkbox-icon {
     stroke: var(--new-highlight) !important;
 }
 #chkShowRepairFolderButton .checkbox-icon {
-    list-style-image: url("chrome://quickfolders/content/skin/ico/wrench.svg");
+    list-style-image: url("chrome://quickfolders/content/skin/ico/repairFolder.svg");
+    -moz-context-properties: fill, stroke !important;
+    stroke: var(--new-highlight) !important;
 }
 #chkShowFilterButton .checkbox-icon {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/filter-add.svg");

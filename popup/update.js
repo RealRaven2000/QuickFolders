@@ -4,7 +4,6 @@
     // see api/utilities/implementation.js
     const mxUtilties = messenger.Utilities;
     
-    debugger;
 		// Test functions
     /*
     await messenger.Utilities.logDebug ("-------------------------------------------\n" +
@@ -54,15 +53,69 @@ addEventListener("click", async (event) => {
 
 
 addEventListener("load", async (event) => {
-	//debugger;
+    const addonName = await browser.runtime.getManifest().name, // or mxUtilties.getAddonName()); == 'quickFilters'
+          hoursWorked = 250,
+          remindInDays = 10;
   const mxUtilties = messenger.Utilities;
-	let text = document.body.innerHTML,//	
-	    htmltext = text.replace(/{addon}/g, await browser.runtime.getManifest().name ),    //oder mxUtilties.getAddonName());
-	    htmltext2 = htmltext.replace(/{version}/g, await mxUtilties.getAddonVersion()); //oder: browser.runtime.getManifest().version
+
+    // force replacement for __MSG_xx__ entities
+    // using John's helper method (which calls i18n API)
+    i18n.updateDocument();
+    
+        
       
-	htmltext = htmltext2.replace(/{appver}/g, await mxUtilties.getTBVersion());
-		//same for license,   let htmltext=text.replace(/{addon}/g, await mxUtilties.getAddonName());
-		document.body.innerHTML=htmltext;
+    let h1 = document.getElementById('heading-updated');
+    if (h1) {
+      // this api function can do replacements for us
+      h1.innerText = messenger.i18n.getMessage('heading-updated', addonName);
+    }
+    
+    let thanksInfo = document.getElementById('thanks-for-updating-intro');
+    if (thanksInfo) {
+      thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
+    }
+    
+    let verInfo = document.getElementById('active-version-info');
+    if (verInfo) {
+      let addonVer = await mxUtilties.getAddonVersion(),
+          appVer = await mxUtilties.getTBVersion();
+      
+      // use the i18n API      
+      // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
+      // for multiple replacements, pass an array
+      verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
+        .replace("{boldStart}","<b class='versionnumber'>")
+        .replace("{boldEnd}","</b>");
+    }
+    
+    let timeAndEffort =  document.getElementById('time-and-effort');
+    if (timeAndEffort) {
+      timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
+    }
+    
+    let measuredEffort =  document.getElementById('hours-effort');
+    if (measuredEffort) {
+      measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
+    }
+    
+    let suggestion = document.getElementById('support-suggestion');
+    if (suggestion) {
+      suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
+    }
+    
+    let preference = document.getElementById('support-preference');
+    if (preference) {
+      preference.innerText = messenger.i18n.getMessage("support-preference", addonName);
+    }
+    
+    let remind = document.getElementById('label-remind-me');
+    if (remind) {
+      remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
+      
+    }
+    
+    let title = document.getElementById('window-title');
+    title.innerText = messenger.i18n.getMessage("window-title", addonName);
 
   });  
 

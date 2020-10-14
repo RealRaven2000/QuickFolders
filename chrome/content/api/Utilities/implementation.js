@@ -2,18 +2,10 @@
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-//das geht nicht:
-//var { QF } = ChromeUtils.import("chrome://quickfolders/content/quickfolders.js");  
-//var { utils } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-util.js");
-//var { addonPrefs } = ChromeUtils.import("chrome://quickfolders/content/quickfolders-preferences.js");
-//Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
-
-// might be better to get the parent window of the current window
-// because we may be screwed otherwise.
 var win = Services.wm.getMostRecentWindow("mail:3pane"); 
 
 
-console.log("impl utilities");
+console.log("quickfolders implementation utilities");
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
     

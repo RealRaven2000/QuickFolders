@@ -3,18 +3,18 @@
 
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
-	messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
+    messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
-    if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
-      messenger.Utilities.showXhtmlPage("chrome://quickfilters/content/register.xhtml");
-      window.close(); // not allowed by content script!
-    }
+  if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
+    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
+    window.close(); // not allowed by content script!
+  }
 
 	if (event.target.id.startsWith("donate")) {
 
 	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html");
 	}
-  });  
+});
 
 
 

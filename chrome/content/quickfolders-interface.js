@@ -6807,6 +6807,9 @@ QuickFolders.Interface = {
                              "QuickFolders-PreviewToolbarPanel"
                            );
 		if (currentFolderBar) {
+      util.logDebugOptional("interface.currentFolderBar", "currentFolderBar.style.display = " + currentFolderBar.style.display + "\n"
+        + "tabMode = " + tabMode + "\n" 
+        + "visible = " + visible);
       if (selector == 'singleMailTab' && tabMode =='message'
           ||
           selector == '' && tabMode == util.mailFolderTypeName
@@ -6821,6 +6824,9 @@ QuickFolders.Interface = {
         }
       }
 		}
+    else {
+      util.logDebugOptional("interface.currentFolderBar", "currentFolderBar element not retrieved");
+    }
 	} ,
 
 	get CurrentTabMode() {

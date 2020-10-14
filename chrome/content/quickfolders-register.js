@@ -161,7 +161,7 @@ QuickFolders.Licenser = {
       }
     }
     
-		if (window.arguments && window.arguments[1].inn.referrer) {
+		if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.referrer) {
       let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }

@@ -12,8 +12,34 @@
 }
 
 #innerwrapper {
+  position: relative.;
+  background-color: white;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+/* make a nice watermark behind these */
+#innerwrapper p,
+#innerwrapper ul,
+#innerwrapper li,
+#innerwrapper span {
+  background-color: transparent;
+}
+
+/* pseudo element to achieve background opacity */
+#innerwrapper:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  background-image: url("../chrome/content/skin/ico/QF64x64.png");
+  background-position: 1.5em 0.5em; 
+  background-repeat: no-repeat; 
+  background-size: 15%;
+  margin-left: -10%;
+  height: 100%;
+  width: 100%;
 }
 
 ul.actions {

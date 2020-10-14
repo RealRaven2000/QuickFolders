@@ -1,49 +1,15 @@
 
-	async function licenseLog() {
-    // messenger.Utilities is our own function which communicates with the main QF instance.
-    // see api/utilities/implementation.js
-    const mxUtilties = messenger.Utilities;
-    
-		// Test functions
-    /*
-    await messenger.Utilities.logDebug ("-------------------------------------------\n" +
-                "logic function == update popup\n",
-                "-------------------------------------------");
-    */
-    
-    
-		let name = await mxUtilties.getAddonName(),    
-		    lis = await mxUtilties.isLicensed(),	
-		    ver = await mxUtilties.getAddonVersion(),
-		    isProUser = await mxUtilties.LicenseIsProUser();
-        
-		await mxUtilties.logDebug (
-        "====== update.js script  ====== \n "
-      + " Addon Name: " + name + "\n"
-      + " isLicensed: " + lis + "\n"
-      + " Addon Version: " + ver  + "\n"
-      + " isProUser: " + isProUser + "\n"
-      + "=============================== \n "
-      ) ;
-
-    
-		if (isProUser) {
-      let isExpired = await mxUtilties.LicenseIsExpired();		
-      mxUtilties.logDebug ("License is expired: " + isExpired);
-    } 
-
-	}
 
 
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
-	console.log ( messenger.Utilities.isLicensed()  );
 	messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
-  });
+    if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
+      messenger.Utilities.showXhtmlPage("chrome://quickfilters/content/register.xhtml");
+      window.close(); // not allowed by content script!
+    }
 
-
-  addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("donate")) {
 
 	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html");
@@ -116,6 +82,10 @@ addEventListener("load", async (event) => {
     
     let title = document.getElementById('window-title');
     title.innerText = messenger.i18n.getMessage("window-title", addonName);
+           
+    updateActions(addonName);
+
+    addAnimation('body');
 
   });  
 
@@ -127,7 +97,6 @@ addEventListener("load", async (event) => {
   });  
 
 
-  licenseLog();
 
 
 

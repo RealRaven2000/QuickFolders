@@ -31,8 +31,15 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           win.QuickFolders.Util.logDebug(text);
         },
         
-        isLicensed() {
-          return  (win.QuickFolders.Licenser).isValidated;
+        // returns true if a valid license is there, but also when the license is expired.
+        // this gives us an option to check whether to show extension links instead after 
+        // we check for the license
+        isLicensed(forceValidation) {
+          let hasLicense =  // (win.quickFilters.Licenser).isValidated;
+            win.QuickFolders.Util.hasPremiumLicense(forceValidation);
+          if (!hasLicense)
+            return win.QuickFolders.Licenser.isExpired; // if it is expired, we say it is still "licensed" for the purposes of this api!
+          return hasLicense;
         },
         
         LicenseIsExpired() {

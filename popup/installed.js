@@ -4,10 +4,11 @@ addEventListener("click", async (event) => {
 
 	  messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
-  });
+	if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
+	  messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
+    window.close();
+	}
 
-
-  addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("donate")) {
 
 	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html");
@@ -17,15 +18,6 @@ addEventListener("click", async (event) => {
 
 
   
-	async function loglic() {
-		
-		let name = await messenger.Utilities.getAddonName(),
-		    lis = await messenger.Utilities.isLicensed(),		 
-		    ver = await messenger.Utilities.getAddonVersion();	
-		//console.log ( 		 name);
-		//console.log ( 		 lis);
-		//console.log ( 		 ver);	
-	}
 
 
 
@@ -78,15 +70,16 @@ addEventListener("load", async (event) => {
     }
     
 
-
-
     let title = document.getElementById('window-title');
     if (title)
       title.innerText = messenger.i18n.getMessage("window-title", addonName);
+    
+    updateActions(addonName);
+
+    addAnimation('body');
 
   });  
 
-  loglic();
 
 
 

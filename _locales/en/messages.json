@@ -20,7 +20,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -31,7 +31,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -42,7 +42,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -53,7 +53,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -63,7 +63,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },  
@@ -89,7 +89,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -109,7 +109,7 @@
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
-        "example" : "quickFilters"
+        "example" : "QuickFolders"
       }    
     }
   },
@@ -117,6 +117,14 @@
   "purchase-a-license" : {
     "message" : "Purchase a license."
   }, 
+      
+  "renew-your-license" : {
+    "message" : "Renew your license."
+  },  
+  
+  "extend-your-license" : {
+    "message" : "Consider extending your license by a year."
+  },  
       
   "donate" : {
     "message" : "Help out with a one time donation."
@@ -137,11 +145,20 @@
   }, 
 
   "ongoing-work": {
-    "message": "The necessary alterations to switch to the new legacy-less model (mail experiment) already took multiple weeks and are still ongoing, while it is possible that we will be losing some functionality. With a complex Add-on like this, expensive work becomes inevitable."
+    "message": "The necessary alterations to switch to the new legacy-less model (mail experiment) already took multiple weeks and are still ongoing, while some functions could be impacted. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this."
   },
   
   "btn-want-a-license": {
     "message" : "I want to buy a license"
+  } ,
+
+  "btn-extend-license": {
+    "message" : "I want to extend my license by one year"
+  } ,
+
+
+  "btn-renew-license": {
+    "message" : "I want to renew my license"
   } ,
 
   "donate-heading" : {
@@ -157,7 +174,7 @@
   } ,
   
   "addon-authors-struggle" : {
-    "message" : "To continue to be useful, Add-on developers now need to step up the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message" : "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   } ,
   
   "btn-want-to-donate" : {

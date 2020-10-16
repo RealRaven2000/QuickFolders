@@ -5807,7 +5807,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
     try {
-      let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode
+      let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode;
       util.logDebugOptional("interface.currentFolderBar", 'initCurrentFolderTab(' + (folder ? folder.prettyName : 'null') + ')\n'
                             + "tabMode: " + tabMode);
       this.hoistCurrentFolderBar(currentFolderTab, tabInfo);
@@ -7071,8 +7071,8 @@ QuickFolders.Interface = {
 
 			toolbar = this.Toolbar;
 			if(active) {
-				let tabColor = 1;
-				let folder = util.CurrentFolder;
+				let tabColor = 1,
+				    folder = util.CurrentFolder;
 				if (folder) {
 					let folderEntry = QuickFolders.Model.getFolderEntry(folder.URI);
 					tabColor = folderEntry && folderEntry.tabColor ? folderEntry.tabColor : tabColor;
@@ -7093,8 +7093,10 @@ QuickFolders.Interface = {
 						menupopup.insertBefore(this.createIconicElement('menuseparator','*'), menupopup.firstChild);
 						menupopup.insertBefore(mItem, menupopup.firstChild);
 					}
-					else
+					else {
 						util.logDebugOptional("interface","palette already built (firstChild exists)");
+          }
+          
 					util.logDebugOptional("interface","initElementPaletteClass…");
 					this.initElementPaletteClass(menupopup);
 				}

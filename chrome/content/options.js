@@ -1267,10 +1267,12 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 		      QI = util.getMail3PaneWindow().QuickFolders.Interface;
 		let prefString = cb.getAttribute("preference"),
-		    pref = document.getElementById(prefString);
+        pref = prefString;
+    //  using the new preference system, this attribute should be the actual full string of the pref.
+		//  pref = document.getElementById(prefString);
 		
-		if (pref)
-			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
+		if (prefString)
+			QuickFolders.Preferences.setBoolPrefVerbose(pref, cb.checked);  //  pref.getAttribute('name')
 		if (noUpdate)
 			return true;
 		switch (pref) {

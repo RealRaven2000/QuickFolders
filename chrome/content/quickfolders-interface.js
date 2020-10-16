@@ -6822,11 +6822,15 @@ QuickFolders.Interface = {
           + "visible = " + visible);
         if (selector == 'singleMailTab' && tabMode =='message'
             ||
-            selector == '' && tabMode == util.mailFolderTypeName
+            selector == '' // && tabMode == util.mailFolderTypeName
             ||
             selector == 'messageWindow'
            ) {
+          
+          // currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+          currentFolderBar.collapsed = !visible;
           currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+          util.logDebugOptional("interface.currentFolderBar", "Effected display of current folder bar =" + currentFolderBar.style.display);
           if (visible && selector != 'messageWindow') {
             let rect = currentFolderBar.getBoundingClientRect();
             if (!rect.width)

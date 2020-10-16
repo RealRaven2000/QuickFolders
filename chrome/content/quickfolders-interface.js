@@ -6763,70 +6763,88 @@ QuickFolders.Interface = {
    *                           'singleMailTab' - a single message (conversation) tab
    *                           'messageWindow' - a single mail window
    **/
-	displayNavigationToolbar: function displayNavigationToolbar(visible, selector) {
-    if (typeof selector === 'undefined') selector = ''; // Unfortunately Postbox cannot do default parameters
+	displayNavigationToolbar: function displayNavigationToolbar(visible, selector = '') {
+    const util = QuickFolders.Util;
+    try {
+      const mail3PaneWindow = util.getMail3PaneWindow(),
+            mailMessageWindow = util.getSingleMessageWindow();
 
-    if (selector=='?') {
-      // determine selector from context
-      let wt = document.getElementById('messengerWindow').getAttribute('windowtype');
-      if (wt === 'mail:messageWindow') {
-        selector = 'messageWindow';
-      }
-      else {
-        if (this.CurrentTabMode=='message')
-          selector = 'singleMailTab';
-        else
-          selector = ''; // 3pane mode
-      }
-    }
-    let util = QuickFolders.Util,
-        mail3PaneWindow = util.getMail3PaneWindow(),
-        mailMessageWindow = util.getSingleMessageWindow(),
-        win, doc;
-		util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + visible + ", selector=" + selector + ")");
-    // store change in prefs
-    QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
-
-		if (selector=='messageWindow') {
-			if (null == mailMessageWindow) return; // single message window not displayed
-			win = mailMessageWindow;
-		}
-		else {
-			if (null == mail3PaneWindow) return; // main window not displayed
-			win = mail3PaneWindow;
-		}
-    doc = win.document;
-		if (!doc) return;
-
-		// doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
-
-    let tabMode = QuickFolders.Interface.CurrentTabMode,
-        currentFolderBar = doc.getElementById(
-                             (selector=='messageWindow') ?
-                             "QuickFolders-PreviewToolbarPanel-Single" :
-                             "QuickFolders-PreviewToolbarPanel"
-                           );
-		if (currentFolderBar) {
-      util.logDebugOptional("interface.currentFolderBar", "currentFolderBar.style.display = " + currentFolderBar.style.display + "\n"
-        + "tabMode = " + tabMode + "\n" 
-        + "visible = " + visible);
-      if (selector == 'singleMailTab' && tabMode =='message'
-          ||
-          selector == '' && tabMode == util.mailFolderTypeName
-          ||
-          selector == 'messageWindow'
-         ) {
-        currentFolderBar.style.display = visible ? '-moz-box' : 'none';
-        if (visible && selector != 'messageWindow') {
-          let rect = currentFolderBar.getBoundingClientRect();
-          if (!rect.width)
-            this.hoistCurrentFolderBar(this.CurrentFolderTab);
+      if (selector=='?') {
+        // determine selector from context
+        let wt = document.getElementById('messengerWindow').getAttribute('windowtype');
+        if (wt === 'mail:messageWindow') {
+          selector = 'messageWindow';
+        }
+        else {
+          if (this.CurrentTabMode=='message')
+            selector = 'singleMailTab';
+          else
+            selector = ''; // 3pane mode
         }
       }
-		}
-    else {
-      util.logDebugOptional("interface.currentFolderBar", "currentFolderBar element not retrieved");
+      let win, doc;
+      util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + visible + ", selector=" + selector + ")");
+      // store change in prefs
+      QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
+
+      if (selector=='messageWindow') {
+        if (null == mailMessageWindow) return; // single message window not displayed
+        win = mailMessageWindow;
+      }
+      else {
+        if (null == mail3PaneWindow) return; // main window not displayed
+        win = mail3PaneWindow;
+      }
+      doc = win.document;
+      util.logDebugOptional("interface.currentFolderBar", "win=" + win + "\ndocument=" + doc);
+      if (!doc) {
+        util.logDebugOptional("interface.currentFolderBar", 
+            "|================================================|" + "\n" 
+          + "|  not changing UI, early exit: doc is empty!"      + "\n"
+          + "|================================================|"  );
+        return;
+      }
+
+      // doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
+
+      let tabMode = QuickFolders.Interface.CurrentTabMode,
+          currentFolderBar = doc.getElementById(
+                               (selector=='messageWindow') ?
+                               "QuickFolders-PreviewToolbarPanel-Single" :
+                               "QuickFolders-PreviewToolbarPanel"
+                             );
+      if (currentFolderBar) {
+        util.logDebugOptional("interface.currentFolderBar", 
+            "|===========================================================|" + "\n" 
+          + "| currentFolderBar.style.display = " + currentFolderBar.style.display  + "\n" 
+          + "|===========================================================|" + "\n" 
+          + "tabMode = " + tabMode + "\n" 
+          + "visible = " + visible);
+        if (selector == 'singleMailTab' && tabMode =='message'
+            ||
+            selector == '' && tabMode == util.mailFolderTypeName
+            ||
+            selector == 'messageWindow'
+           ) {
+          currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+          if (visible && selector != 'messageWindow') {
+            let rect = currentFolderBar.getBoundingClientRect();
+            if (!rect.width)
+              this.hoistCurrentFolderBar(this.CurrentFolderTab);
+          }
+        }
+      }
+      else {
+        util.logDebugOptional("interface.currentFolderBar", 
+            "|====================================================|" + "\n" 
+          + "|  currentFolderBar element could not be retrieved"     + "\n" 
+          + "|====================================================|" + "\n");
+      }
     }
+    catch(ex) {
+      util.logException("displayNavigationToolbar(" + visible + ", " + selector + ")", ex);
+    }
+      
 	} ,
 
 	get CurrentTabMode() {

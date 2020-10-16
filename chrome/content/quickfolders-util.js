@@ -2277,7 +2277,7 @@ QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, it
 
 QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
 	const util = QuickFolders.Util;
-	util.logDebugOptional("interface.findFolder","shim / allFoldersMatch()");
+	util.logDebugOptional("interface.findFolder","allFoldersMatch()");
 	for (let folder of util.allFoldersIterator(isFiling)) {
 		if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
 		addMatchingFolder(matches, folder);

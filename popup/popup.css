@@ -31,14 +31,14 @@
   content: ' ';
   display: block;
   position: absolute;
-  opacity: 0.3;
-  background-image: url("../chrome/content/skin/ico/QF64x64.png");
-  background-position: 1.5em 0.5em; 
+  opacity: 0.4;
+  background-image: url("../chrome/content/skin/ico/QuickFolders_32.svg");
+  background-position: 2.4em 5em; 
   background-repeat: no-repeat; 
-  background-size: 30%;
+  background-size: 84%;
   margin-left: -10%;
-  height: 30%;
-  width: 40%;
+  height: 56%;
+  width: 29%;
 }
  
 

@@ -1,4 +1,4 @@
-{ 
+{
   "author" : "Axel Grude",
   "manifest_version" : 2,
   "name" : "QuickFolders",
@@ -6,12 +6,12 @@
   "version" : "5.0pre112",
   "default_locale": "en",
   "author": "Axel Grude, Klaus Buecher/opto",
-  "developer" : { 
+  "developer" : {
       "name" : "Axel Grude",
       "url" : "https://quickfolders.org/index.html"
   },
-  "applications" : { 
-    "gecko" : { 
+  "applications" : {
+    "gecko" : {
         "id" : "quickfolders@curious.be",
         "strict_min_version" : "78.0",
         "strict_max_version" : "78.*"
@@ -28,14 +28,14 @@
         "paths": [["WindowListener"]],
         "script": "chrome/content/api/WindowListener/implementation.js"
       }
-    },  
+    },
     "LegacyPrefs": {
       "schema": "chrome/content/api/LegacyPrefs/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["LegacyPrefs"]],
         "script": "chrome/content/api/LegacyPrefs/implementation.js"
-      
+
       }
     },
     "Utilities": {
@@ -44,15 +44,14 @@
         "scopes": ["addon_parent"],
         "paths": [["Utilities"]],
         "script": "chrome/content/api/Utilities/implementation.js"
-      
+
        }
     }
   },
 
- "icons" : { 
-    "16" : "chrome/content/skin/ico/QF16x16.png",
-    "32" : "chrome/content/skin/ico/quickfolders-Icon.png",
-    "64" : "chrome/content/skin/ico/QF64x64.png"
+ "icons" : {
+    "32" : "chrome/content/skin/ico/QuickFolders_32.svg",
+    "64" : "chrome/content/skin/ico/QuickFolders_32.svg"
   }
 
 }

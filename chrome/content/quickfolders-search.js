@@ -54,36 +54,12 @@ QuickFolders.SearchDialog = {
             updateSearchFolderPicker(folder.URI);
         }
         
-      if ((util.Application == 'Postbox' || util.Application == 'SeaMonkey')
-          && 
-          typeof initializeSearchRows == 'function') 
-      {
-        // create a collection from array and pass it to initializeSearchRows
-        let termsArray = args.searchTerms,
-            templateCollection = Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsICollection),
-            count = termsArray.length;
-        for (let i = 0; i < count; i++) {
-          templateCollection.AppendElement(termsArray[i]);
-        }
-        for (let j = 0; j < count; j++) { // just doing it this way to prove my collection 'works'
-          gSearchSession.appendTerm(templateCollection.QueryElementAt(j, Ci.nsIMsgSearchTerm));
-        }
-        
-        // remove last row?
-        removeSearchRow(0); // possible?
-        --gTotalSearchTerms;
-        // now pass the collection
-        initializeSearchRows(nsMsgSearchScope.offlineMail, templateCollection);
-        initializeBooleanWidgets(); // make sure radiobutton 'all' is selected (from first searchTerm)
+      for (let i=0; i<searchTerms.length; i++) {
+        this.addSearchTerm(searchTerms[i]);
       }
-      else {
-        for (let i=0; i<searchTerms.length; i++) {
-          this.addSearchTerm(searchTerms[i]);
-        }
-        // remove first (empty) row
-        removeSearchRow(0);
-        --gTotalSearchTerms;
-      }
+      // remove first (empty) row
+      removeSearchRow(0);
+      --gTotalSearchTerms;
       // Postbox only ?
       if (saveSearchTerms && window.gSearchSession) {
         util.logDebug('Saving search terms... to session: ' + window.gSearchSession);

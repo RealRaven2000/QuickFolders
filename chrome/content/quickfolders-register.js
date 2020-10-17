@@ -567,7 +567,7 @@ QuickFolders.Licenser = {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] secondary ids");
         // ... allow using non default identities 
         let ids = ac.identities, // array of nsIMsgIdentity 
-            idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+            idCount = ids ? ids.length : 0;
         util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids…");
         if (ids) {
           for (let i=0; i<idCount; i++) {

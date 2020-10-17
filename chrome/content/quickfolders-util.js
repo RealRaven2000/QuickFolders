@@ -317,44 +317,15 @@ QuickFolders.Util = {
         singleMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
     return singleMessageWindow;
   } ,
-	
-  /** 
-	* getAccountsPostbox() return an Array of mail Accounts for Postbox
-	*/   
-	getAccountsPostbox: function getAccountsPostbox() {
-	  let accounts=[],
-        actManager = this.getMail3PaneWindow().accountManager,
-        Ci = Components.interfaces,
-		    smartServers = actManager.allSmartServers;
-		for (let i = 0; i < smartServers.Count(); i++)
-		{
-			let smartServer = smartServers.QueryElementAt(i, Ci.nsIMsgIncomingServer),
-			    account_groups = smartServer.getCharValue("group_accounts");
-			if (account_groups)
-			{
-				let groups = account_groups.split(",");
-				for (let k=0; k<groups.length; k++) {
-          let account = actManager.getAccount(groups[k]); // groups returns accountkey
-					if (account) {
-						accounts.push(account);
-					}
-				}
-			}
-		}
-		return accounts;
-	},
   
   // safe wrapper to get member from account.identities array
   getIdentityByIndex: function getIdentityByIndex(ids, index) {
     const Ci = Components.interfaces;
     if (!ids) return null;
     try {
-      if (ids.queryElementAt) {
-        return ids.queryElementAt(index, Ci.nsIMsgIdentity);
-      }
-      if (ids.QueryElementAt) {  // Postbox
-        return ids.QueryElementAt(index, Ci.nsIMsgIdentity);
-      }
+      // replace queryElementAt with array[index].QueryInterface!
+      if (ids[index])
+        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
       return null;
     }
     catch(ex) {
@@ -364,12 +335,7 @@ QuickFolders.Util = {
   } ,
   
 	get mailFolderTypeName() {
-		switch(this.Application) {
-			case "Thunderbird": return "folder";
-			case "SeaMonkey": return "3pane";
-			default: return "folder";
-		}
-		return "";
+    return "folder";
 	} ,
 
 	get PlatformVersion() {
@@ -846,14 +812,8 @@ QuickFolders.Util = {
 			}
 			step = 1;
 
-			let messageList,
-			    ap = util.Application,
-			    hostsystem = util.HostSystem;
-			//nsISupportsArray is deprecated in TB3 as it's a hog :-)
-			if (ap=='Thunderbird' || ap=='SeaMonkey')
-				messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-			else
-				messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Ci.nsISupportsArray);
+          //nsISupportsArray is deprecated in TB3 as it's a hog :-)
+			let messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 			step = 2;
 
 			// copy what we need...
@@ -881,16 +841,12 @@ QuickFolders.Util = {
         }
 
 				messageIdList.push(Message.messageId);
-				if (ap=='Thunderbird' || ap=='SeaMonkey')
-					messageList.appendElement(Message , false);
-				else
-					messageList.AppendElement(Message);
+        messageList.appendElement(Message , false);
 			}
 
 			step = 3;
-			let sourceMsgHdr = (ap=='Thunderbird' || ap=='SeaMonkey') ?
-				messageList.queryElementAt(0, Ci.nsIMsgDBHdr) :
-        messageList.GetElementAt(0).QueryInterface(Ci.nsIMsgDBHdr);
+			let sourceMsgHdr = 
+				messageList.queryElementAt(0, Ci.nsIMsgDBHdr);   //TB78 replace queryElementAt with array[index].QueryInterface?
 			step = 4;
 
 			let sourceFolder = sourceMsgHdr.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
@@ -2290,17 +2246,13 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
 		      Cc = Components.classes;
     let util = QuickFolders.Util, 
         aAccounts=[];
-    if (util.Application == 'Postbox') 
-      aAccounts = util.getAccountsPostbox();
-    else {
-			Components.utils.import("resource:///modules/iteratorUtils.jsm");
-			let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
-				           .getService(Ci.nsIMsgAccountManager).accounts;
-      aAccounts = [];
-      for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
-        aAccounts.push(ac);
-      };
-    }
+    Components.utils.import("resource:///modules/iteratorUtils.jsm");
+    let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
+                 .getService(Ci.nsIMsgAccountManager).accounts;
+    aAccounts = [];
+    for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+      aAccounts.push(ac);
+    };
     return aAccounts;
   }
 });

@@ -181,7 +181,7 @@
     "message" : "Je veux aider avec un don unique."
   } ,
   
-  "translated-by-google" {
+  "translated-by-google" : {
     "message": "traductions fournies par google",
     "description": "disclaimer."
   },
@@ -194,14 +194,5 @@
         "example" : "10"
       }    
     }    
-  }
-    "message": "You clicked $URL$.",
-    "description": "Tells the user which link they clicked.",
-    "placeholders": {
-      "url" : {
-        "content" : "$1",
-        "example" : "https://developer.mozilla.org"
-      }
-    }
   }
 }

@@ -37,7 +37,7 @@
   },
   
   "heading-installed": {
-    "message": $addonName$ 已成功安裝",
+    "message": "$addonName$ 已成功安裝",
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName" : {
@@ -181,7 +181,7 @@
     "message" : "我想提供一次捐款。"
   } ,
   
-  "translated-by-google" {
+  "translated-by-google" : {
     "message": "谷歌提供的翻譯",
     "description": "disclaimer."
   },
@@ -196,8 +196,8 @@
     }    
   },  
   
-  "translated-by-google" {
-    "message": translations provided by google",
+  "translated-by-google" : {
+    "message": "谷歌提供的翻譯",
     "description": "disclaimer."
   }
 }

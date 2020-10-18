@@ -59,7 +59,7 @@
   },
   
   "thanks-for-installing-intro": {
-    "message":  $addonName$ をインストールしていただきありがとうございます。",
+    "message": "$addonName$ をインストールしていただきありがとうございます。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -181,7 +181,7 @@
     "message" : "一度の寄付を手伝いたいです。"
   } ,
   
-  "translated-by-google" {
+  "translated-by-google" : {
     "message": "グーグルによって提供される翻訳",
     "description": "disclaimer."
   },

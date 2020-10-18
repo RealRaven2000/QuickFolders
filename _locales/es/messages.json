@@ -170,19 +170,24 @@
   } ,
   
   "mozillas-basic-platform" : {
-    "message" : "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message" : "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
   } ,
   
   "addon-authors-struggle" : {
-    "message" : "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message" : "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
   } ,
   
   "btn-want-to-donate" : {
-    "message" : "I want to help with a one time donation."
+    "message" : "Quiero ayudar con una donación única."
   } ,
   
+  "translated-by-google" {
+    "message": "traducciones proporcionadas por google",
+    "description": "disclaimer."
+  },
+  
   "label-remind-me" : {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "Recordármelo de nuevo en $countDays$ días.",
     "placeholders": {
       "countDays" : {
         "content" : "$1", 

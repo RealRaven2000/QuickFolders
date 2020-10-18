@@ -170,19 +170,24 @@
   } ,
   
   "mozillas-basic-platform" : {
-    "message" : "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message" : "Mozillaは、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。 ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.netからこれを行うことはできません。これは、ペイウォールやiTunesやGooglePlayのようなライセンス管理が組み込まれた「アプリストア」ではありません。"
   } ,
   
   "addon-authors-struggle" : {
-    "message" : "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message" : "引き続き有用であるために、アドオン開発者は、ユーザーが提供する機能の恩恵を受け続けることができるように、修正と書き換えに必要なリソースに資金を提供する必要があります。"
   } ,
   
   "btn-want-to-donate" : {
-    "message" : "I want to help with a one time donation."
+    "message" : "一度の寄付を手伝いたいです。"
   } ,
   
+  "translated-by-google" {
+    "message": "グーグルによって提供される翻訳",
+    "description": "disclaimer."
+  },
+  
   "label-remind-me" : {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "$countDays$日後にもう一度思い出してください。",
     "placeholders": {
       "countDays" : {
         "content" : "$1", 

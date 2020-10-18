@@ -184,27 +184,6 @@
   "translated-by-google" {
     "message": "překlady poskytované google",
     "description": "disclaimer."
-  },
-  
-  "label-remind-me" : {
-    "message": "Připomenout mi to znovu za $countDays$ dnů.",
-    "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
-  },  
-  
-  
-  "notificationContent": {
-    "message": "You clicked $URL$.",
-    "description": "Tells the user which link they clicked.",
-    "placeholders": {
-      "url" : {
-        "content" : "$1",
-        "example" : "https://developer.mozilla.org"
-      }
-    }
   }
+  
 }

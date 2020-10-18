@@ -199,17 +199,5 @@
   "translated-by-google" {
     "message": translations provided by google",
     "description": "disclaimer."
-  },
-  
-  
-  "notificationContent": {
-    "message": "You clicked $URL$.",
-    "description": "Tells the user which link they clicked.",
-    "placeholders": {
-      "url" : {
-        "content" : "$1",
-        "example" : "https://developer.mozilla.org"
-      }
-    }
   }
 }

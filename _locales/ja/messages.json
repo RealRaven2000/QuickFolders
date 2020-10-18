@@ -37,7 +37,7 @@
   },
   
   "heading-installed": {
-    "message": "Successfully installed $addonName$",
+    "message": "$addonName$ が正常にインストールされました",
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName" : {
@@ -49,7 +49,7 @@
   
   
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "$addonName$ を更新していただきありがとうございます。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -59,7 +59,7 @@
   },
   
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message":  $addonName$ をインストールしていただきありがとうございます。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -69,7 +69,7 @@
   },  
   
  "active-version-info" : {
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "これで、Thunderbird $appVer$ で{boldStart}バージョン $addonVer$ {boldEnd}を実行しています。",
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "placeholders": {
       "addonVer" : {
@@ -85,7 +85,7 @@
   },  
   
   "time-and-effort": { 
-    "message": "My Add-ons require fundamental changes in order to remain compatible with the Mozilla platform. My development team at Github (Realraven2000, opto and paenglab) is working diligently to restore full functionality for $addonName$ .",
+    "message": "私のアドオンは、Mozillaプラットフォームとの互換性を維持するために、根本的な変更が必要です。 Githubの私の開発チーム（Realraven2000、opto、paenglab）は、$addonName$ の全機能を復元するために熱心に取り組んでいます。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -95,7 +95,7 @@
   },
   
   "hours-effort" : {
-    "message": "We have already spent significant resources (over $hoursSpent$ hours) on the conversion project - and there is more work in fixing regressions and issues caused by changes in Thunderbird.",
+    "message": "変換プロジェクトにはすでにかなりのリソース（$hoursSpent$時間以上）を費やしており、Thunderbirdの変更によって引き起こされるリグレッションや問題の修正にはさらに多くの作業があります。",
     "placeholders": {
       "hoursSpent" : {
         "content" : "$1", 
@@ -105,7 +105,7 @@
   },
   
   "support-suggestion" : {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "$addonName$が機能し、存続するように、それを非常に重要なものにしてください。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -115,27 +115,27 @@
   },
   
   "purchase-a-license" : {
-    "message" : "Purchase a license."
+    "message" : "ライセンスを購入します。"
   }, 
       
   "renew-your-license" : {
-    "message" : "Renew your license."
+    "message" : "ライセンスを更新します。"
   },  
   
   "extend-your-license" : {
-    "message" : "Consider extending your license by a year."
+    "message" : "ライセンスを1年延長することを検討してください。"
   },  
       
   "donate" : {
-    "message" : "Help out with a one time donation."
+    "message" : "一度の寄付を手伝ってください。"
   },   
    
   "purchase-heading" : {
-    "message" : "Buying a License!"
+    "message" : "ライセンスを購入する！"
   }, 
   
   "support-preference" : {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "これは、$addonName$をサポートするための推奨される方法です。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -145,28 +145,28 @@
   }, 
 
   "ongoing-work": {
-    "message": "The necessary alterations to switch to the new legacy-less model (mail experiment) already took multiple weeks and are still ongoing, while some functions could be impacted. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this."
+    "message": "新しいレガシーレスモデル（メール実験）に切り替えるために必要な変更は、すでに数週間かかり、現在も進行中ですが、一部の機能が影響を受ける可能性があります。 このような複雑なアドオンを使用すると、高価な作業が避けられなくなります。 これで私たちを助けてください。"
   },
   
   "btn-want-a-license": {
-    "message" : "I want to buy a license"
+    "message" : "ライセンスを購入したい"
   } ,
 
   "btn-extend-license": {
-    "message" : "I want to extend my license by one year"
+    "message" : "ライセンスを1年延長したい"
   } ,
 
 
   "btn-renew-license": {
-    "message" : "I want to renew my license"
+    "message" : "ライセンスを更新したい"
   } ,
 
   "donate-heading" : {
-    "message" : "Help by Donating!"
+    "message" : "寄付して助けてください！"
   } ,
 
   "cost-of-independence" : {
-    "message" : "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message" : "ソフトウェア開発には時間とお金がかかります-多くのプラットフォームアプリとは異なり、アドオンは大企業によって作成されておらず、Mozillaによって後援されていません。"
   } ,
   
   "mozillas-basic-platform" : {

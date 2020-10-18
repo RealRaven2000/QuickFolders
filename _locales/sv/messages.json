@@ -37,7 +37,7 @@
   },
   
   "heading-installed": {
-    "message": "Successfully installed $addonName$",
+    "message": "$addonName$ installerades med framgång",
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName" : {
@@ -49,7 +49,7 @@
   
   
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "Tack för att du uppdaterade $addonName$.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -59,7 +59,7 @@
   },
   
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "Tack för att du installerade $addonName$.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -69,7 +69,7 @@
   },  
   
  "active-version-info" : {
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "Du kör nu {boldStart} version $addonVer$ {boldEnd} på Thunderbird $appVer$.",
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "placeholders": {
       "addonVer" : {
@@ -85,7 +85,7 @@
   },  
   
   "time-and-effort": { 
-    "message": "My Add-ons require fundamental changes in order to remain compatible with the Mozilla platform. My development team at Github (Realraven2000, opto and paenglab) is working diligently to restore full functionality for $addonName$ .",
+    "message": "Mina tillägg kräver grundläggande ändringar för att förbli kompatibla med Mozilla-plattformen. Mitt utvecklingsteam på Github (Realraven2000, opto och paenglab) arbetar flitigt med att återställa full funktionalitet för  $addonName$.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -95,7 +95,7 @@
   },
   
   "hours-effort" : {
-    "message": "We have already spent significant resources (over $hoursSpent$ hours) on the conversion project - and there is more work in fixing regressions and issues caused by changes in Thunderbird.",
+    "message": "Vi har redan spenderat betydande resurser (över $hoursSpent$ timmar) på konverteringsprojektet - och det finns mycket mer arbete med att fixa regressioner och problem som orsakas av förändringar i Thunderbird.",
     "placeholders": {
       "hoursSpent" : {
         "content" : "$1", 
@@ -105,7 +105,7 @@
   },
   
   "support-suggestion" : {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -115,27 +115,27 @@
   },
   
   "purchase-a-license" : {
-    "message" : "Purchase a license."
+    "message" : "Köp en licens."
   }, 
       
   "renew-your-license" : {
-    "message" : "Renew your license."
+    "message" : "Förnya din licens."
   },  
   
   "extend-your-license" : {
-    "message" : "Consider extending your license by a year."
+    "message" : "Överväg att förlänga din licens med ett år."
   },  
       
   "donate" : {
-    "message" : "Help out with a one time donation."
+    "message" : "Hjälp med en engångs donation."
   },   
    
   "purchase-heading" : {
-    "message" : "Buying a License!"
+    "message" : "Att köpa en licens!"
   }, 
   
   "support-preference" : {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "Detta är det föredragna sättet att stödja $addonName$.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
@@ -145,28 +145,28 @@
   }, 
 
   "ongoing-work": {
-    "message": "The necessary alterations to switch to the new legacy-less model (mail experiment) already took multiple weeks and are still ongoing, while some functions could be impacted. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this."
+    "message": "De nödvändiga ändringarna för att byta till den nya arvslösa modellen (mailexperiment) tog redan flera veckor och pågår fortfarande, medan vissa funktioner kan påverkas. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
   },
   
   "btn-want-a-license": {
-    "message" : "I want to buy a license"
+    "message" : "Jag vill köpa en licens"
   } ,
 
   "btn-extend-license": {
-    "message" : "I want to extend my license by one year"
+    "message" : "Jag vill förlänga min licens med ett år"
   } ,
 
 
   "btn-renew-license": {
-    "message" : "I want to renew my license"
+    "message" : "Jag vill förnya min licens"
   } ,
 
   "donate-heading" : {
-    "message" : "Help by Donating!"
+    "message" : "Hjälp genom att donera!"
   } ,
 
   "cost-of-independence" : {
-    "message" : "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message" : "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
   } ,
   
   "mozillas-basic-platform" : {

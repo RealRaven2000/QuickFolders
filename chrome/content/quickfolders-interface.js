@@ -4829,11 +4829,6 @@ QuickFolders.Interface = {
     function makeEvent(evtType, evt) {
       let clonedEvent = new KeyboardEvent(evtType, evt); // keydown or keyup (was keypress)
       return clonedEvent;
-      // let keypress_event = document.createEvent("KeyboardEvent"); // KeyEvents
-      // keypress_event.initKeyEvent(evtType, true, true, null,      // typeArg, canBubble, cancelable
-               // false, false, false, false,                        // ctrl, alt, shift, meta
-               // evt, 0);                                           // keyCode, charcode
-      // return keypress_event;
     }
 		let menupopup,
         util = QuickFolders.Util,

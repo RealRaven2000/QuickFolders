@@ -10,8 +10,9 @@
 // to see Postbox doing it,
 // check mailnews\base\search\resources\content\SearchDialog.js
 //   and                                        searchTermOverlay.js
+// Thunderbird 78 -  a lot of the global elements are not available at load time - maybe we need to hook up with a different event?
 QuickFolders.SearchDialog = {
-  addSearchTerm: function addSearchTerm(searchTerm) {
+  addSearchTerm: function addSearchTerm(folder, searchTerm) {
     const Ci = Components.interfaces, 
           Cc = Components.classes,
           utils = QuickFolders.Util,
@@ -19,11 +20,13 @@ QuickFolders.SearchDialog = {
           typeOperator = Ci.nsMsgSearchOp;
     utils.logDebug('addSearchTerm(attrib = ' + searchTerm.attrib + ')');
     // let's try and clone the term using the proper session
-    let rowIndex = gSearchTermList.getRowCount();
+    let SearchTermList = document.getElementById("searchTermList"); 
+    let rowIndex = SearchTermList.getRowCount();  // used to be gSearchTermList
     // from http://mxr.mozilla.org/comm-central/source/mailnews/base/search/content/searchTermOverlay.js#232
     //      onMore() called when the [+] button is clicked on a row (simulate last row)
     
-    createSearchRow(rowIndex, gSearchScope, searchTerm, false);
+    let searchScope = GetScopeForFolder(folder); // was gSearchScope
+    createSearchRow(rowIndex, searchScope, searchTerm, false);
     gTotalSearchTerms++;
     updateRemoveRowButton();
 
@@ -53,13 +56,17 @@ QuickFolders.SearchDialog = {
           if (!folder.isServer)
             updateSearchFolderPicker(folder.URI);
         }
-        
-      for (let i=0; i<searchTerms.length; i++) {
-        this.addSearchTerm(searchTerms[i]);
+      if (searchTerms.length) {
+        let addSearchTerm_quickfolders = this.addSearchTerm.bind(this);
+        setTimeout( function initSearchTerms() {
+            for (let i=0; i<searchTerms.length; i++) {
+              addSearchTerm_quickfolders(folder, searchTerms[i]);
+            }
+            // remove first (empty) row
+            removeSearchRow(0);
+            --gTotalSearchTerms;
+          }, 500);
       }
-      // remove first (empty) row
-      removeSearchRow(0);
-      --gTotalSearchTerms;
       // Postbox only ?
       if (saveSearchTerms && window.gSearchSession) {
         util.logDebug('Saving search terms... to session: ' + window.gSearchSession);

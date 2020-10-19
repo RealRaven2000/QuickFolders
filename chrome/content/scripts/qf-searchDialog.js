@@ -7,7 +7,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 
 function onLoad(activatedWhileWindowOpen) {
     
-    window.QuickFolders.Util.logDebug('Adding Search Dialog...');
+    window.QuickFolders.Util.logDebug('Adding Functionality for Search Dialog (to support finding missing mails in reading list)...');
    //obsolete  window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 
     window.QuickFolders.SearchDialog.onLoad();  //?event needed?
  }

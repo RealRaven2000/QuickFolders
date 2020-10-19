@@ -156,11 +156,17 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
         // we need to prep the addressing widget to avoid inserting an empty line on top
         // rebuild all addresses - for this we need to remove all [dummy] rows
         // except for the very first one.
+        // Tb78 TO DO - replace this with API code
+        // in Tb78 this listbox "addressingWidget" doesn't exist anymore
+        // See https://thunderbird-webextensions.readthedocs.io/en/78/compose.html 
+        /*
         let listbox = document.getElementById("addressingWidget");
         while (listbox.itemCount>1) { // remove everything apart from first item:
           listbox.getItemAtIndex(listbox.itemCount-1).remove();
         }
-				CompFields2Recipients(ComposeFields);
+        */
+				CompFields2Recipients(ComposeFields); // are we still allowed to call this function?
+        // ComposeFields.setComposeDetails()
       }
 		}
 		catch(ex) {
@@ -291,7 +297,8 @@ QuickFolders.initComposeListener = function QF_initListener() {
 	}
 };
 
-window.setTimeout ( function() {
+// window.setTimeout ( function() 
+{
   let util = QuickFolders.MainQuickFolders.Util,
       logDebugOptional = util.logDebugOptional.bind(util);
 	// QuickFolders.init();
@@ -299,4 +306,5 @@ window.setTimeout ( function() {
   logDebugOptional('composer', "Adding initComposeListener for msgcomposeWindow...");
   let composer = document.getElementById("msgcomposeWindow");
   composer.addEventListener("compose-window-init", QuickFolders.initComposeListener, false);
-},10 );
+}
+// ,10 );

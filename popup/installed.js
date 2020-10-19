@@ -1,7 +1,14 @@
+/* BEGIN LICENSE BLOCK
+
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+// Script for splash screen displayed when installing this Extension
 
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
-
 	  messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
 	if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
@@ -10,8 +17,7 @@ addEventListener("click", async (event) => {
 	}
 
 	if (event.target.id.startsWith("donate")) {
-
-	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html");
+	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html#donate");
 	}
   });  
 

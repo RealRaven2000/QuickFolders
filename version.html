@@ -244,16 +244,22 @@
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.0 - WIP</a>
 				</h4>
           <p>
-            This is the new version that will be compatible with Thunderbird 78 (eventually).
+            This is the new version whis is compatible with Thunderbird 78.
           </p>
 					<ul>
-						<li>We are currently working on a compatible version - this will be released on ATN very soon!</li>
-						<li>To install QuickFolders in Thunderbird78 go here:
-            <a href="https://github.com/RealRaven2000/QuickFolders/releases/tag/5.0pre92">Release 5.0pre92</a>
-            and download the xpi file from the assets box below. Then drag the file into Add-ons Manager to install it.
+						<li>We are currently working on a compatible version - this will be officially published on ATN very soon!</li>
+						<li>
+              To install QuickFolders in Thunderbird78 go here:
+              <a href="https://github.com/RealRaven2000/QuickFolders/releases/tag/5.0pre116">Release 5.0pre116</a>
+              and download the xpi file from the assets box below. Then drag the file into Add-ons Manager to install it.
             </li>
-						<li>note there are still some major issues to fix especially around the settings dialog, as Thunderbird
-              has deprecated preference bindings and we haven't been able to fix it fully.
+            <li>
+              In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API,
+              which will require full permissions on installation. As regards being allowed to do stuff, it is actually not
+              different with any classic Add-on: they always had full access to all functions within Thunderbird.
+              The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders
+              will also use this more modern approach - but the APIs for this have to be created and accepted 
+              by Mozilla first.
             </li>
 					</ul>
 			</li>

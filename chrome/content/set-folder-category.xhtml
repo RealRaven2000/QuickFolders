@@ -5,9 +5,10 @@
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/set_folder_category.dtd" >
 <dialog title="&qf.dialog.setcategory;"
-	buttons="accept,cancel"
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    onload="QuickFolders.FolderCategory.init(this, window.arguments[1]);"
+        buttons="accept,cancel"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="QuickFolders.FolderCategory.init(this, window.arguments[1]);"
 >
 <!--  ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"   borked in Thunderbird 68 -->
 

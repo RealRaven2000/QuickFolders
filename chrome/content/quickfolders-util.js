@@ -1601,10 +1601,6 @@ QuickFolders.Util = {
       if(!p) return false;
       if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
         return false; // empty folder, in trash`1
-      /*
-			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(Components.interfaces.nsIRDFService),
-		      folder = rdf.GetResource(msgFolder.URI).QueryInterface(Components.interfaces.nsIMsgFolder); 
-      */
 			return true; // msgFolder.parent != null;
 		}
 		return false;
@@ -2290,14 +2286,10 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     if (fls)
       folder = fls.getOrCreateFolderForURL(aUrl); 
     else {
-      // In theory, we should query our map first to see if we have the folder.
-      // However, the way you create a new folder anyways presently requires
-      // hitting up the RDF service in the first place, so there's no point trying
-      // to force a double-query of the map in this error scenario.
-      let rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
-      // Unlike above, we don't want to catch the exception--it will propagate to
-      // a promise rejection.
-      folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
+      // old method, relying on Ci.nsIRDFService
+      // let rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
+      // folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
+      folder = null;
     }
 
 		logDebug('folder = ' + folder);		

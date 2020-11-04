@@ -467,32 +467,12 @@ if (typeof DeferredTask == "undefined")
 // wrap function for session store: persist / restore categories	
 var QuickFolders_PrepareSessionStore = function () {
 	const util = QuickFolders.Util,
+        model = QuickFolders.Model,
 		    CI = Components.interfaces;
 	if (!util) {
 		return;
 	}
-	if (util.Application == "Postbox") {
-		// we have to wrap persistTabString() 
-		// so append  some script in order to restore the categories in Postbox
-		let tabMail = document.getElementById('tabmail');
-		if (tabMail && typeof tabMail.QuickFolders_persistTabString == 'undefined') {
-			tabMail.QuickFolders_persistTabString = tabMail.persistTabString; // backup old function
-			tabMail.persistTabString = function() {
-				var tString = tabMail.QuickFolders_persistTabString(),
-				    PostboxSessionRestoreScript = '';
-				
-				if (util && QuickFolders.Interface) {
-					PostboxSessionRestoreScript = QuickFolders.Interface.restoreSessionScript();
-					if (util.isDebug)  debugger;
-				}
-				return tString + PostboxSessionRestoreScript;
-			}
-		}
-		else window.setTimeout(function () {
-			QuickFolders_PrepareSessionStore();
-		}, 5000);
-	}
-	else if (typeof mailTabType != "undefined") { // Thunderbird
+	if (typeof mailTabType != "undefined") { // Thunderbird
 		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
 		mailTabType.QuickFolders_SessionStore = true;
 		// overwrite persist 
@@ -509,13 +489,15 @@ var QuickFolders_PrepareSessionStore = function () {
 		let orgRestore = mailTabType.modes["folder"].restoreTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
 		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
 			orgRestore(aTabmail, aPersistedState);
+      debugger;
 			let txt;
 			try {
 				aPersistedState.QuickFoldersCategory || "(no category)";
 		  } catch(ex) {;}
 			util.logDebug("restored tabs: " + txt);
-			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
-			    folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
+			// let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
+      //      folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
+			let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
 			if (folder && aPersistedState.QuickFoldersCategory) {
         let tabInfo, theUri;
 			  // Thunderbird only code, so it is fine to use tabInfo here:
@@ -2122,6 +2104,7 @@ function QuickFolders_MyChangeSelection(tree, newIndex) {
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	const util = QuickFolders.Util,
         prefs = QuickFolders.Preferences,
+        model = QuickFolders.Model,
         QI = QuickFolders.Interface,
 				Ci = Components.interfaces,
 				Cc = Components.classes;
@@ -2153,7 +2136,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	    msgFolder,
 	    isInvalid = false;
 	try {
-	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
+	  msgFolder = model.getMsgFolderFromUri(folderUri, true);  
 		if (prefs.getBoolPref("autoValidateFolders")) {
 		  isInvalid = (!util.doesMailFolderExist(msgFolder));
 		}
@@ -2166,7 +2149,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (isInvalid) {
 	  // invalid folder; suggest to correct this!
     util.logDebugOptional("folders.select","detected invalid folder, trying to correct entry table.");
-		let folderEntry = QuickFolders.Model.getFolderEntry(folderUri);
+		let folderEntry = model.getFolderEntry(folderUri);
     if (!folderEntry) return false;
     if (folderEntry.disableValidation) {
       ; // do nothing. a pending rename invalidated this entry
@@ -2175,7 +2158,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 			switch(QI.deleteFolderPrompt(folderEntry, false)) {
 			  case 1: // delete 
 				  // save changes right away!
-					prefs.storeFolderEntries(QuickFolders.Model.selectedFolders);
+					prefs.storeFolderEntries(model.selectedFolders);
           // update the model
           QI.updateFolders(true, true);
 				  break;
@@ -2286,9 +2269,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
             util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
             // toggle to smartfolder view and reinitalize folder variable!
             theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-            let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
-                folderResource = rdf.GetResource(folderUri);
-            msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
+            //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
+            //    folderResource = rdf.GetResource(folderUri);
+            msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
             parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
           }
 
@@ -2420,7 +2403,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	
 	// speed up the highlighting... - is this only necessary on MAC ?
 	if (highlightTabFirst) {
-	  let entry = QuickFolders.Model.getFolderEntry(folderUri);
+	  let entry = model.getFolderEntry(folderUri);
 		if (entry) {
       util.logDebugOptional("folders.select", 'onTabSelected() - highlighting speed hack');
 		  QuickFolders.Interface.onTabSelected();  

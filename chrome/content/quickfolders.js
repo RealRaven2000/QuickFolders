@@ -381,6 +381,19 @@ END LICENSE BLOCK */
   4.18.2 QuickFolders Pro - WIP
     ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
     ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
+    
+  5.0 QuickFolders Pro - WIP
+    ## [issue 8] Make QuickFolders compatible with Thunderbird 78 ESR
+    ##         - Converted to mail extension with experimental APIs (using WindowLoader) as required by the new Mozilla "non-legacy" model
+    ##         - Removed nsIRDFService dependencies
+    ##         - rewrote preference bindings in all dialogs
+    ##         - Added new Thunderbird 78 compatible Icons (svg)
+    ##         - Klaus Buecher (@Opto) did the initial conversion of all XUL interfaces
+    ##           and fixed some bugs. John Bieling (funded my Mozilla) helped with 
+    ##           the WindowLoader implementation and fixin the broken preferences
+    ## Known issues:
+    ##  - any dragover styling (special color, dropmarkers when moving tabs around) is now removed
+    ##
 
    	TODOs
 	=========

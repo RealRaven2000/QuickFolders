@@ -1727,17 +1727,17 @@ QuickFolders.Interface = {
           // determine the shortcut number
           
           if (dir == 'up' || dir == 'down') {
-            switch (e.key) {
-              case "0": shortcut = 0; break;
-              case "1": shortcut = 1; break;
-              case "2": shortcut = 2; break;
-              case "3": shortcut = 3; break;
-              case "4": shortcut = 4; break;
-              case "5": shortcut = 5; break;
-              case "6": shortcut = 6; break;
-              case "7": shortcut = 7; break;
-              case "8": shortcut = 8; break;
-              case "9": shortcut = 9; break;
+            switch (e.code) {
+              case "Digit0": shortcut = 0; break;
+              case "Digit1": shortcut = 1; break;
+              case "Digit2": shortcut = 2; break;
+              case "Digit3": shortcut = 3; break;
+              case "Digit4": shortcut = 4; break;
+              case "Digit5": shortcut = 5; break;
+              case "Digit6": shortcut = 6; break;
+              case "Digit7": shortcut = 7; break;
+              case "Digit8": shortcut = 8; break;
+              case "Digit9": shortcut = 9; break;
             }
           }
 
@@ -3077,6 +3077,7 @@ QuickFolders.Interface = {
   } ,
 
 	rebuildSummary: function rebuildSummary(folder) {
+    // global objects: msgWindow
 		const Ci = Components.interfaces,
 					Cc = Components.classes;
 		let isCurrent=false;
@@ -3122,35 +3123,14 @@ QuickFolders.Interface = {
 			}
 			folder.updateFolder(msgWindow);
 			if (isCurrent) {
-				if (typeof(gFolderDisplay.show) != 'undefined')
-					gFolderDisplay.show(folder);
+				if (typeof(gFolderDisplay.show) != 'undefined') {
+          setTimeout(
+            function() {gFolderDisplay.show(folder);},
+            100
+          )
+					
+        }
 			}
-		}
-		else { // Postbox / SeaMonkey
-			let msgDB = folder.getMsgDatabase(msgWindow);
-			try {
-				if (folder.supportsOffline) {
-					// Remove the offline store, if any.
-					let offlineStore = folder.filePath;
-					if (offlineStore.exists())
-						offlineStore.remove(false);
-				}
-			}
-			catch (ex) {
-				Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).logStringMessage("failed to remove offline store: " + ex);
-			}
-
-			msgDB.summaryValid = false;
-			folder.ForceDBClosed();
-			// these two lines will cause the thread pane to get reloaded
-			// when the download/reparse is finished. Only do this
-			// if the selected folder is loaded (i.e., not thru the
-			// context menu on a non-loaded folder).
-			if (folder == GetLoadedMsgFolder()) {
-				gRerootOnFolderLoad = true;
-				gCurrentFolderToReroot = folder.URI;
-			}
-			folder.updateFolder(msgWindow);
 		}
 
 		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);

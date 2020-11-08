@@ -388,6 +388,7 @@ END LICENSE BLOCK */
     ##         - Removed nsIRDFService dependencies
     ##         - rewrote preference bindings in all dialogs
     ##         - Added new Thunderbird 78 compatible Icons (svg)
+    ##         - rewrote search algorithm for missing mails in reading list
     ##         - Klaus Buecher (@Opto) did the initial conversion of all XUL interfaces
     ##           and fixed some bugs. John Bieling (funded my Mozilla) helped with 
     ##           the WindowLoader implementation and fixin the broken preferences

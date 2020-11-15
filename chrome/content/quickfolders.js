@@ -2034,21 +2034,38 @@ var QuickFolders = {
     }
     this.folderPaneListen= true;
   },
+  
+  removeFolderPaneListener: function() {
+    let menu = document.getElementById('folderPaneContext');
+    if (menu) {
+      menu.removeEventListener("popupshowing", QuickFolders.Interface.folderPanePopup);
+    }
+  },
+  
+  TabEventListeners: {},
 
 	addTabEventListener: function addTabEventListener() {
 		try {
 		  let tabContainer = QuickFolders.tabContainer;
-			tabContainer.addEventListener("select", function(event) { QuickFolders.TabListener.select(event); }, false);
-			// let tabmail = document.getElementById("tabmail");
-			tabContainer.addEventListener("TabClose", function(event) { QuickFolders.TabListener.closeTab(event); }, false);
-			tabContainer.addEventListener("TabOpen", function(event) { QuickFolders.TabListener.newTab(event); }, false);
-			tabContainer.addEventListener("TabMove", function(event) { QuickFolders.TabListener.moveTab(event); }, false);
+      this.TabEventListeners["select"] = function(event) { QuickFolders.TabListener.select(event); }
+      this.TabEventListeners["TabClose"] = function(event) { QuickFolders.TabListener.closeTab(event); }
+      this.TabEventListeners["TabOpen"] = function(event) { QuickFolders.TabListener.newTab(event); }
+      this.TabEventListeners["TabMove"] = function(event) { QuickFolders.TabListener.moveTab(event); }
+      for (let key in this.TabEventListeners) {
+        tabContainer.addEventListener(key, this.TabEventListeners[key], false);
+      }
 		}
 		catch (e) {
 			QuickFolders.LocalErrorLogger("No tabContainer available! " + e);
 			QuickFolders._tabContainer = null;
 		}
-	}
+	},
+	removeTabEventListener: function removeTabEventListener() {
+    let tabContainer = QuickFolders.tabContainer;
+    for (let key in this.TabEventListeners) {
+      tabContainer.removeEventListener(key, this.TabEventListeners[key]);
+    }
+  }
 };
 
 

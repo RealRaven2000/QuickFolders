@@ -6872,10 +6872,18 @@ QuickFolders.Interface = {
 					QuickFolders.Interface.onDeckChange(aTab);
 				}
 			};
+      this.TabMonitor = monitor;
 			tabmail.registerTabMonitor(monitor);
 			QuickFolders.Util.logDebugOptional("toolbarHiding", "registered Tab Monitor");
 		}
 	} ,
+  
+  removeToolbarHiding: function removeToolbarHiding() {
+    let tabmail = QuickFolders.Util.$("tabmail");
+    // we need to undo: 
+    if (this.TabMonitor)
+      tabmail.unregisterTabMonitor(this.TabMonitor);
+  },
 
   // Called when we go to a different mail tab in order to show / hide QuickFolders Toolbar accordingly
 	onDeckChange : function onDeckChange(targetTab) {

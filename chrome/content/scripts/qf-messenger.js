@@ -519,6 +519,16 @@ insertafter="QuickFolders-LabelBox">
 }
 
 function onUnload(isAddOnShutDown) {
+  // remove all listeners
+  try {
+    window.QuickFolders.Interface.removeToolbarHiding();
+    window.QuickFolders.removeTabEventListener();
+    window.QuickFolders.removeFolderPaneListener();
+  }
+  catch(ex) {
+    console.logException(ex);
+  }
+  // remove icon patch
   let treeView = window.gFolderTreeView;
   if (treeView) {
     // remove  custom flags!
@@ -529,7 +539,5 @@ function onUnload(isAddOnShutDown) {
       window.gFolderTreeView.getCellProperties = window.QuickFolders.FolderTree.GetCellProperties;
       delete window.QuickFolders.FolderTree["GetCellProperties"];
     }
-
-
   }
 }

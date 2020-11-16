@@ -46,7 +46,7 @@ var QuickFolders_TabURIopener = {
 			if (tabmail) {
 				// find existing tab with URL
 				if (!util.findMailTab(tabmail, URL)) {
-					sTabMode = (util.Application == "Thunderbird") ? "contentTab" : "3pane";
+					sTabMode = "contentTab";
 					tabmail.openTab(sTabMode,
 					{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
 				}
@@ -244,11 +244,7 @@ QuickFolders.Util = {
 				
 				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 				const addonId = util.ADDON_ID.toString();
-				
-				if (util.versionGreaterOrEqual(util.ApplicationVersion, "61")) 
-					AddonManager.getAddonByID(addonId).then(function(addonId) { versionCallback(addonId); } ); // this function is now a promise
-				else
-					AddonManager.getAddonByID(addonId, versionCallback);
+        AddonManager.getAddonByID(addonId).then(function(addonId) { versionCallback(addonId); } ); // this function is now a promise
 			}
 
 			util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
@@ -389,7 +385,7 @@ QuickFolders.Util = {
 		let item = notifyBox.getNotificationWithValue(notificationKey);
 		if(item) {
 		  // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
-			notifyBox.removeNotification(item, (QuickFolders.Util.Application == 'Postbox'));	 // skipAnimation
+			notifyBox.removeNotification(item, false);	 // skipAnimation
 		}
 			}, 200);
 	} ,
@@ -431,18 +427,7 @@ QuickFolders.Util = {
     let usage = prefs.getIntPref("premium." + featureName + ".usage");
     usage++;
     prefs.setIntPref("premium." + featureName + ".usage", usage);
-    
-		switch(util.Application) {
-			case 'Postbox': 
-				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-				break;
-			case 'Thunderbird': 
-				notificationId = 'mail-notification-box'
-				break;
-			case 'SeaMonkey':
-				notificationId = null;
-				break;
-		}
+    notificationId = 'mail-notification-box';
 		
 		if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
 			notifyBox = specialTabs.msgNotificationBar;
@@ -458,14 +443,6 @@ QuickFolders.Util = {
 		theText = theText.replace ("{1}", "'" + featureName + "'");
     if (text)
       theText = theText + '  ' + text;
-    try {
-      // disable notification only on SeaMonkey.
-      if (util.Application == 'SeaMonkey') {
-        util.slideAlert(title, theText);          
-        return;
-      }
-    } catch(ex) {return;}
-    
     
     let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!"),
         hotKey = util.getBundleString("qf.notification.premium.btn.hotKey", "L"),
@@ -491,7 +468,7 @@ QuickFolders.Util = {
 			if (notifyBox) {
 				let item = notifyBox.getNotificationWithValue(notificationKey)
 				if (item)
-					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
+					notifyBox.removeNotification(item, false);
 			}
 		
       util.logDebugOptional("premium", "notifyBox.appendNotification()…");
@@ -500,9 +477,6 @@ QuickFolders.Util = {
 					"chrome://quickfolders/content/skin/ico/proFeature.png" , 
 					notifyBox.PRIORITY_INFO_HIGH, 
 					nbox_buttons ); // , eventCallback
-			if (util.Application == 'Postbox') {
-				this.fixLineWrap(notifyBox, notificationKey);
-			}
 		}
 		else {
       // code should not be called, on SM we would have a sliding notification for now
@@ -660,7 +634,7 @@ QuickFolders.Util = {
 		let found=false,
 		    tabmail = document.getElementById("tabmail");
 		if (tabmail) {
-			let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+			let tab =  tabmail.selectedTab;
 
 			if (tab) {
 			  let tabMode = this.getTabMode(tab);
@@ -928,19 +902,6 @@ QuickFolders.Util = {
 	
 	getTabMode: function getTabMode(tab) {
 	  if (tab.mode) {   // Tb / Sm
-		  if (this.Application=='SeaMonkey' && (typeof tab.modeBits != 'undefined')) {
-				const kTabShowFolderPane  = 1 << 0;
-				const kTabShowMessagePane = 1 << 1;
-				const kTabShowThreadPane  = 1 << 2;			
-				// SM: maybe also check	tab.getAttribute("type")=='folder'
-				// check for single message shown - SeaMonkey always uses 3pane!
-				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
-			  if ( (tab.modeBits & kTabShowMessagePane) 
-             && 
-             !(tab.modeBits & kTabShowFolderPane)) {
-				  return 'message';
-				}
-			}
 			return tab.mode.name;
 		}
 		return "";
@@ -955,13 +916,9 @@ QuickFolders.Util = {
 		}
 		else
 		{
-			let currentURI;
+			let currentURI = null;
 			if (gFolderDisplay && gFolderDisplay.displayedFolder)
 				currentURI = gFolderDisplay.displayedFolder.URI;
-			else  if (util.Application=='Postbox') { //legacy
-				currentURI = GetSelectedFolderURI();
-				// aFolder = FolderParam.QueryInterface(Components.interfaces.nsIMsgFolder);
-			}
 			// in search result folders, there is no current URI!
 			if (!currentURI)
 				return null;
@@ -1045,11 +1002,7 @@ QuickFolders.Util = {
 		let messages;
 		if (typeof gFolderDisplay !='undefined') {
 			messages = gFolderDisplay.selectedMessageUris;
-			if (!QuickFolders.Util.Application=='SeaMonkey')
-				gFolderDisplay.hintAboutToDeleteMessages();
-		}
-		else {
-			messages = QuickFolders.Util.pbGetSelectedMessageURIs();
+			gFolderDisplay.hintAboutToDeleteMessages();
 		}
 		if (!messages)
 			return null;
@@ -1172,9 +1125,6 @@ QuickFolders.Util = {
 	      scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 	  try {
       scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
-      if (this.Application == 'Postbox') {
-        this.logToConsole(scriptError, 'EXCEPTION');
-      }
       consoleService.logMessage(scriptError);
     }
     catch(ex) {
@@ -1296,24 +1246,6 @@ QuickFolders.Util = {
     let Ci = Components.interfaces;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			if (QuickFolders.Util.Application=='SeaMonkey') {
-				let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator),
-				    browserWin = windowManager.getMostRecentWindow( "navigator:browser" );
-				if (browserWin) {
-					let URI = linkURI,
-              tabBrowser = browserWin.getBrowser(),
-              params = {"selected":true};
-          browserWin.currentTab = tabBrowser.addTab(URI, params); 
-          if (browserWin.currentTab.reload) browserWin.currentTab.reload(); 
-          // activate last tab
-          if (tabBrowser && tabBrowser.tabContainer)
-            tabBrowser.tabContainer.selectedIndex = tabBrowser.tabContainer.children.length-1;
-				}
-				else
-					QuickFolders_globalWin.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFolders update');
-        browserWin.focus();
-				return;
-			}
 			let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
 			    ioservice = Components.classes["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
 			    uri = ioservice.newURI(linkURI, null, null);
@@ -1368,15 +1300,11 @@ QuickFolders.Util = {
 					util = QuickFolders.Util;
 		linkURI = util.makeUriPremium(linkURI);
 		try {
-      if (util.Application=='Thunderbird') {
-        let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
-            ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-        service.loadURI(ioservice.newURI(linkURI, null, null));
-        if (null!=evt)
-          evt.stopPropagation();
-      }
-      else
-        this.openLinkInBrowserForced(linkURI);
+      let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
+          ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+      service.loadURI(ioservice.newURI(linkURI, null, null));
+      if (null!=evt)
+        evt.stopPropagation();
 		}
 		catch(e) { 
       this.logDebug("openLinkInBrowser (" + linkURI + ") " + e.toString()); 
@@ -1386,18 +1314,10 @@ QuickFolders.Util = {
 
 	// moved from options.js (then called
 	openURL: function openURL(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
-		let ioservice, iuri, eps;
-		if (QuickFolders.Util.Application=='SeaMonkey' || QuickFolders.Util.Application=='Postbox')
-		{
-			this.openLinkInBrowserForced(URL);
-			if(null!=evt) evt.stopPropagation();
-		}
-		else {
-			if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
-				if (evt.preventDefault)  evt.preventDefault();
-				if (evt.stopPropagation)  evt.stopPropagation();
-			}
-		}
+    if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
+      if (evt.preventDefault)  evt.preventDefault();
+      if (evt.stopPropagation)  evt.stopPropagation();
+    }
 	},
 
 	getBundleString: function getBundleString(id, defaultText) { // moved from local copies in various modules.
@@ -1506,22 +1426,9 @@ QuickFolders.Util = {
 	
 	get isCSSGradients() {
 	  try {
-			const util = QuickFolders.Util;
 		  if (this._isCSSGradients !== -1)
 				return this._isCSSGradients;
-			this._isCSSGradients = false;
-			if (util.Application == 'Thunderbird') 
-				this._isCSSGradients = true;
-			else {
-				let appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);		
-				if (appInfo && (parseFloat(appInfo.platformVersion)>=16.0
-												||
-												appInfo.name == 'Interlink')
-				) {
-					this._isCSSGradients = true;
-				}
-				
-			}
+      this._isCSSGradients = true; // Thunderbird
 		}
 		catch(ex) {
 			this._isCSSGradients = false;
@@ -1531,9 +1438,7 @@ QuickFolders.Util = {
 	
 	// use legacy iterator code
 	get isLegacyIterator() {
-		const util = QuickFolders.Util;
-		if (util.PlatformVersion<13 && util.ApplicationName != 'Interlink')
-			return true;
+    // only gecko <13 or Interlink
 		return false;
 	} ,
 	
@@ -1547,28 +1452,15 @@ QuickFolders.Util = {
 	
 	get isCSSRadius() {
 	  if (this._isCSSRadius === -1) {
-			const util = QuickFolders.Util,
-			      application = util.Application,
-						appVer = util.ApplicationVersion;
-			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-																	.getService(Components.interfaces.nsIVersionComparator);
-			this._isCSSRadius =																
-				((application == 'Thunderbird') && (versionComparator.compare(appVer, "4.0") >= 0))
-				 ||
-				((application == 'SeaMonkey') && (versionComparator.compare(appVer, "2.2") >= 0))
-				 ||
-				((application == 'Postbox') && (versionComparator.compare(appVer, "3.0") >= 0));
+			this._isCSSRadius =	true
 		}
 		return this._isCSSRadius;
 	},
 	
 	get isCSSShadow() {
-		/*
 		if (this._isCSSShadow === -1) {
-			let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-                              .getService(Components.interfaces.nsIVersionComparator);
-			this._isCSSShadow = (versionComparator.compare(QuickFolders.Util.PlatformVersion, "2.0") >= 0);
-		}*/
+			this._isCSSShadow = true;
+		}
 		return this._isCSSShadow;
 	} ,
 	
@@ -1631,41 +1523,7 @@ QuickFolders.Util = {
     let util = QuickFolders.Util,
         tabmail = util.$("tabmail");
     // TO DO - do sanity check on msgHdr (does the message still exist) and throw!
-    switch (util.Application) {
-      case 'Thunderbird':
-        tabmail.openTab('message', {msgHdr: hdr, background: false});  
-        break;
-      case 'SeaMonkey':
-        try {
-          // check out SM mplementaiton of 3pane openTab here:
-          // http://mxr.mozilla.org/comm-central/source/suite/mailnews/tabmail.js#43
-          let tabMode = tabmail.tabModes['3pane'],
-              modeBits = 2; // get current mode? (kTabShowFolderPane = 1, kTabShowMessagePane = 2, kTabShowThreadPane = 4)
-          // a somewhat stupid hack to bring the new tab into the foreground...
-          let openInBack = tabmail.mPrefs.getBoolPref("browser.tabs.loadInBackground")
-          if (openInBack)
-            tabmail.mPrefs.setBoolPref("browser.tabs.loadInBackground", false);
-          tabmail.openTab('3pane', modeBits, hdr.folder.URI, hdr); // 
-          if (openInBack)
-            tabmail.mPrefs.setBoolPref("browser.tabs.loadInBackground", true);
-        }
-        catch(ex) {
-          this.logException('SeaMonkey openTab failed: ', ex); 
-        }
-        break;
-      case 'Postbox':
-        let win = util.getMail3PaneWindow();
-        // from src/mail/base/content/mailWindowOverlay.js
-        win.MsgOpenNewTabForMessageWithAnimation(
-               hdr.messageKey, 
-               hdr.folder.URI, //
-               '',       // aMode 'conversation' or ''
-               false ,   // Background  
-               true      // skipAnimation 
-               // [, aAccountURI (optional) ]
-               )
-        break;
-    }
+    tabmail.openTab('message', {msgHdr: hdr, background: false}); 
   },
   
   // open an email in a new tab
@@ -1694,30 +1552,6 @@ QuickFolders.Util = {
     else
       return null;
   },
-  
-	// postbox helper function
-	pbGetSelectedMessages : function pbGetSelectedMessages() {
-	  let messageList = [];
-	  // guard against any other callers.
-	  if (this.Application != 'Postbox')
-		  throw('pbGetSelectedMessages: Postbox specific function!');
-			
-	  try {
-      let messageUris = this.pbGetSelectedMessageUris();
-      //let messageIdList = [];
-      // messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
-      for (let i = 0; i < messageUris.length; i++) {
-        let messageUri = messageUris[i],
-            Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-        messageList.push(Message);
-      }
-      return messageList;
-	  }
-	  catch (ex) {
-	    dump("GetSelectedMessages ex = " + ex + "\n");
-	    return null;
-	  }
-	} ,
 	
 	loadPlatformStylesheet: function loadPlatformStylesheet(win) {
 		const QI = QuickFolders.Interface,
@@ -1746,16 +1580,6 @@ QuickFolders.Util = {
       newCSS.setAttribute("title", "QuickFolderPlatformStyles");
     },150);
     
-if (util.ApplicationName =="Interlink") {
-			let url = win.document.URL,
-			    isMainWindow = url.endsWith("messenger.xhtml");
-			if (isMainWindow) {
-				util.logDebug("Interlink - Main window: loading toolbar fix…");
-				let ss = QI.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
-				// fixes missing colored bottom line under QT tabs
-				styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat", '-moz-appearance', 'none');
-			}
-		}
 	} ,
 	
   Postbox_writeFile: function Pb_writeFile(path, jsonData) {

@@ -1435,19 +1435,10 @@ var QuickFolders = {
 				  "window.openDialog (newFolderDialog.xhtml)\n"
 					+ "folder/preselectedURI:" + targetFolder + " (URI: " + targetFolder.URI + ")\n"
 					+ "dualUseFolders:" + dualUseFolders);
-				if (util.Application=='Postbox' && util.PlatformVersion<52) {
-					// see newFolderDialog.js for when Callback is called.
-					window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
-                      "",
-                      "chrome,titlebar,modal",
-                      {preselectedURI:targetFolder.URI, dualUseFolders:dualUseFolders, okCallback:newFolderCallback});
-				}
-				else {
-					window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
-							"",
-							"chrome,modal,resizable=no,centerscreen",
-							{folder: targetFolder, dualUseFolders: dualUseFolders, okCallback: newFolderCallback});
-				}
+        window.openDialog("chrome://messenger/content/newFolderDialog.xhtml",
+            "",
+            "chrome,modal,resizable=no,centerscreen",
+            {folder: targetFolder, dualUseFolders: dualUseFolders, okCallback: newFolderCallback});
 			} catch(e) { QuickFolders.LocalErrorLogger("Exception in OnDrop event: " + e); return false}
 			return true;
 		}

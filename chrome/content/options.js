@@ -444,6 +444,7 @@ QuickFolders.Options = {
 		try {
 			let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
 			if (selectOptionsPane >=0) {
+        debugger;
 				panels.selectedIndex = selectOptionsPane; // for some reason the tab doesn't get selected
 				panels.tabbox.selectedTab = panels.tabbox.tabs.children[selectOptionsPane];
 			}

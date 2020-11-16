@@ -2370,13 +2370,10 @@ QuickFolders.Interface = {
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
-				if (util.Application != 'Postbox')
-					button.style.setProperty('background-image', entry.cssBack, '');
-				else
-					button.style.setProperty('background', entry.cssBack, 'important');
+        button.style.setProperty('background-image', entry.cssBack, '');
         let l = getLabel(button);
         if (l)
-          l.style.setProperty('color', entry.cssColor, util.Application == 'Postbox' ? 'important' : '');
+          l.style.setProperty('color', entry.cssColor, '');
       }
       catch(ex) {
         QuickFolders.Util.logException('custom CSS failed',ex);

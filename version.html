@@ -241,7 +241,7 @@
 			<a name="5.0">&nbsp;</a>
 			<li>
 				<h4>
-				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.0 - WIP</a>
+				<a href="#" onclick="alert('This is currently under Review on ATN\nPlease mail me if you want a preview version for testing.')">Version 5.0 - WIP</a>
 				</h4>
           <p>
             This is the new version whis is compatible with Thunderbird 78.
@@ -262,6 +262,53 @@
               by Mozilla first.
             </li>
 					</ul>
+          
+					<h4 class="inList">Thunderbird 68 Fixes</h4>
+          <ul>
+            <li> 
+              In order to maintain full functionality, this Add-on had to be rewritten as a mail extension 
+              with experimental API, which will require full permissions on installation. As regards being allowed to 
+              do stuff, it is actually not different with any classic Add-on: they always had full access to all 
+              functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - 
+              eventually QuickFolders will also use this more modern approach - but the APIs for this have to be created 
+              and accepted by Mozilla first. This means a lot of ongoing work for the nexty 12 months forward - please 
+              support this with a license or donation:</li>
+            <li>
+              You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> 
+              here. This is the preferred way of funding all the ongoing work and improvements.</li>
+            <li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>
+          </ul>
+
+          <h4 class="inList">Changes / Work Items</h4>
+          <ul>
+          <li>
+            Removed backwards compatible (shim) code and all code implementing cross-compatibiliy 
+            for SeaMonkey and Postbox. The code base had to be forked into a new branch, so if I backport 
+            bug fixes this will double my work for the legacy Thunderbird users.</li>
+          <li>
+            [issue 35] "Skip Unread Folder" hides "Add star" function... the Shortcut for 
+            skipping unread folders works even without pressing the Shift key</li>
+          <li>
+            Reading list: jumping to a moved mail brings up a search dialog. Unfortunately this was not populated with meaningful search conditions</li>
+          <li>
+            New icon layout base on the new <a href="https://style.thunderbird.net/">Photon Design System</p> for Thunderbird. 
+            The fantastic new Icon conversion was kindly and expertly done by Richard Paenglab</li>
+          <li> Removed nsIRDFService dependencies</li>
+          <li> rewrote preference bindings in all dialogs</ul>
+          <li> Added new Thunderbird 78 compatible Icons (svg)</li>
+          <li> rewrote search algorithm for missing mails in reading list</li>
+          <li> Klaus Buecher (@Opto) did the initial conversion of all XUL interface and fixed some bugs. 
+            John Bieling (from the Thunderbird team) helped with the WindowLoader implementation and fixing the broken preferences. 
+            Many thanks to both of themn for their fantastic work!</li>
+          </ul>
+
+          <h4 class="inList">Known issues</h4>
+          <ul>
+            <li>
+              Any dragover styling (special color, dropmarkers when moving tabs around) is currently broken - this is caused by an experimental style selector which has been now removed by Mozilla due to little take-up of the HTML community. We will need to recode these parts using JavaScript.
+            </li>
+          </ul>
+          
 			</li>
       
       
@@ -276,9 +323,10 @@
              "Skip Unread Folder" hides "Add star" function... <br>
               the Shortcut for skipping unread folders works even without pressing the Shift key</li>
 						<li> 
-              Reading list: jumping to a moved mail should bring up a search dialog (which it does).
-              Unfortunately that isn't filled with meaningful search conditions - I think this needs
-              to be rewritten pretty much to work asyunchronously.
+              Reading list: jumping to a missing mail brings up a search dialog. 
+              The conditions were not automatically filled - this version fixes that 
+              in Thunderbird 68.12.  I am not sure from which version forward this 
+              stopped working.
             </li>
 						<li> 
               Thunderbird 78: We alread have compatible pre-releases available - please check <a href="#5.0">the entry

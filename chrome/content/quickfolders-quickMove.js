@@ -42,13 +42,18 @@ QuickFolders.quickMove = {
 	rememberLastFolder: function rememberLastFolder(URIorFolder, parentName) {
 		const prefs = QuickFolders.Preferences,
 		      util = QuickFolders.Util;
-		if (prefs.isDebugOption('quickMove')) {
-			util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
-		}
-		let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
-		    sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
-		prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
-		util.logDebugOptional('quickMove',"Storing: " + sRememberFolder)
+    try {
+			if (prefs.isDebugOption('quickMove')) {
+				util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
+			}
+			let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
+			    sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
+			prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
+	      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder);
+    }
+    catch (ex) {
+      util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);
+    }
 	},
 	
   // move or copy mails (or both at the same time!)

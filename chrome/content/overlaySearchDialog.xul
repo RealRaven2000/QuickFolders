@@ -10,10 +10,4 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-search.js" />
 		
-  <window id="searchMailWindow">		
-	
-		<script type="text/javascript">
-			window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 
-		</script>
-	</window>
 </overlay>

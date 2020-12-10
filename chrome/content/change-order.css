@@ -51,6 +51,17 @@ hbox.drag-image {
   margin-bottom: 20px;
 }
 
+/* for some reason these buttons don't render labels */
+#QuickFolders-change-order-grid button {
+  -moz-appearance: none;
+  border: 1px solid darkgray !important;
+  border-radius: 3px;
+  padding-left: 1em;
+  padding-bottom: 0.1em;
+}
+#QuickFolders-change-order-grid button:hover {
+  color: -moz-dialogtext;
+}
 button.order-button-up {
 /*    -moz-appearance: button-small; */
     max-height: 1.9em !important;

@@ -59,22 +59,27 @@ QuickFolders.ChangeOrder = {
 			this.downString = this.getUIstring("qfDown","Down");
 
 		let rows = this.$('QuickFolders-change-order-grid-rows'),
-		    row = document.createXULElement ? document.createXULElement("row") : document.createElement("row"),
+		    row = document.createXULElement("row"),
 		    folderLabel = document.createXULElement("label");
-		folderLabel.appendChild(document.createTextNode(label));
+		// folderLabel.appendChild(document.createTextNode(label));
+    folderLabel.textContent = label;
 		row.appendChild(folderLabel);
 
-		let buttonUp = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
+		let buttonUp = document.createXULElement("button");
 		buttonUp.className = "order-button-up";
 
 		buttonUp.setAttribute("label",this.upString);
+    buttonUp.textContent = this.upString; // ugly hack for borked Tb78, no idea why no label shows...
+    
 		buttonUp.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
 		row.appendChild(buttonUp);
 
-		let buttonDown = document.createXULElement ? document.createXULElement("button") : document.createElement("button");
+		let buttonDown = document.createXULElement("button");
 		buttonDown.className = "order-button-down";
 		buttonDown.setAttribute("label",this.downString);
+    buttonDown.textContent = this.downString; // ugly hack for borked Tb78, no idea why no label shows...
+    
 		buttonDown.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
 		row.appendChild(buttonDown);

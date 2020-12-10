@@ -94,3 +94,6 @@ QuickFolders.SearchDialog = {
   }
   
 }
+
+/* removed from xul overlay */
+window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 

@@ -381,6 +381,10 @@ END LICENSE BLOCK */
   4.18.2 QuickFolders Pro - WIP
     ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
     ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
+    ## [issue 80] Recent Folders list not updated when moving email using drag and drop
+    ## improved dropmarker behavior when dragging tabs over multiple rows 
+    ## in the dialog "change order of tabs" the up and down labels on the buttons are not rendered for some reason
+       this is now worked around by removing the button styling from these elements
 
     
     
@@ -1537,16 +1541,24 @@ var QuickFolders = {
 
               // find out whether drop target button is right or left from source button:
               if (node.hasAttributes()) {
-                let box = node.boxObject;
-                if (box) {
-                  let dx = (box.x - button.boxObject.x);
-                  if (dx !== 0) {
-                    let sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT"),
-                        sOther=(dx>0 ? "dragRIGHT" : "dragLEFT");
-                    button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
-										button.classList.remove(sOther);
+                // check previous siblings to see if target button is found - then it's to the left. otherwise it's to the right
+                let i = null,
+                    sib = node;
+                let sDirection="",
+                    sOther="";
+                while( (sib = sib.previousSibling) != null ) {
+                  if (sib == button) {
+                    sDirection = "dragLEFT";
+                    sOther = "dragRIGHT";
+                    break;
                   }
                 }
+                if(!sDirection) {
+                  sDirection = "dragRIGHT";
+                  sOther = "dragLEFT";
+                }
+                button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
+                button.classList.remove(sOther);
 							}
 						}
 					}
@@ -2554,18 +2566,29 @@ QuickFolders.FolderListener = {
 		try {
 			if (typeof QuickFolders === 'undefined')
 				return;
+      const util = QuickFolders.Util;
 			let prop = property ? property.toString() : '',
-          log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
+          log = util.logDebugOptional.bind(util),
+          isTouch = false;
 			log("listeners.folder", "OnItemIntPropertyChanged - property = " + prop);
 			if (prop === "TotalUnreadMessages" ||
-				(QuickFolders.Preferences.isShowTotalCount 
-					&& prop === "TotalMessages")) {
+				(QuickFolders.Preferences.isShowTotalCount && prop === "TotalMessages")) {
 					QuickFolders.Interface.setFolderUpdateTimer(item);
 					let cF = QuickFolders.Interface.CurrentFolderTab;
 					if (cF && cF.folder && cF.folder==item) { // quick update of CurrentFolder tab:
 					  QuickFolders.Interface.initCurrentFolderTab(cF, item);
 					}
+          if (newValue > oldValue)
+            isTouch = true;
 			}
+      if (prop === "TotalMessages" && (newValue > oldValue)) {
+        isTouch = true;
+      }
+      // [issue 80] add folder to recent list if item was added (via d+d)
+      if (isTouch) {
+        util.touch(item);
+      }
+      
 			if (QuickFolders.compactReportFolderCompacted && prop === "FolderSize") {
 				try
 				{

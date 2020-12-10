@@ -941,8 +941,13 @@ QuickFolders.Util = {
 	
 	// Set the MRU time for a folder to make it appear in recent folders list
 	touch: function touch(folder) {
-		const util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+          FLAGS = util.FolderFlags;
 		try {
+      // special folders we do not want / need in recent history:
+      if (folder.flags & 
+            (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 
+             FLAGS.MSG_FOLDER_FLAG_JUNK  | FLAGS.MSG_FOLDER_FLAG_ARCHIVES | FLAGS.MSG_FOLDER_FLAG_DRAFTS)) return;
 			if (folder.SetMRUTime)
 				folder.SetMRUTime();
 			else {

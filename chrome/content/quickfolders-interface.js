@@ -701,7 +701,7 @@ QuickFolders.Interface = {
 		if (QuickFolders.Model.selectedFolders.length)
 			sDebug += ' - Number of Folders = ' + QuickFolders.Model.selectedFolders.length;
 
-		util.logDebug(sDebug);
+		util.logDebugOptional("interface", sDebug);
 
 		if (!minimalUpdate) {
 			this.buttonsByOffset = [];
@@ -5916,7 +5916,7 @@ QuickFolders.Interface = {
       let btn = element.folder ? element : targetElement, // menu item
           entry = QuickFolders.Model.getButtonEntry(btn);
       if (entry && entry.customPalette) {
-        paletteToken = this.getPaletteClassToken(entry.customPalette);
+        paletteToken = this.getPaletteClassToken(entry.customPalette).trim();
       }
     }
       		
@@ -5929,10 +5929,10 @@ QuickFolders.Interface = {
 		
 		// remove palette name(s)
 		element.className = this.stripPaletteClasses(element.className, paletteToken);
-		let hasClass = (paletteToken && element.classList.contains(paletteToken));
+		let hasClass = (paletteToken && element.classList.contains(paletteToken.trim()));
 		if (!hasClass) {
 		  if (paletteToken)
-				element.className += paletteToken;
+        element.classList.add(paletteToken.trim());
 		}
 	} ,
 	
@@ -6769,6 +6769,9 @@ QuickFolders.Interface = {
           ||
           selector == 'messageWindow'
          ) {
+          
+        // currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+        currentFolderBar.collapsed = !visible;
         currentFolderBar.style.display = visible ? '-moz-box' : 'none';
         if (visible && selector != 'messageWindow') {
           let rect = currentFolderBar.getBoundingClientRect();
@@ -7003,8 +7006,8 @@ QuickFolders.Interface = {
 			
 			toolbar = this.Toolbar;
 			if(active) {
-				let tabColor = 1;
-				let folder = util.CurrentFolder;
+				let tabColor = 1,
+				    folder = util.CurrentFolder;
 				if (folder) {
 					let folderEntry = QuickFolders.Model.getFolderEntry(folder.URI);
 					tabColor = folderEntry && folderEntry.tabColor ? folderEntry.tabColor : tabColor;
@@ -7025,8 +7028,10 @@ QuickFolders.Interface = {
 						menupopup.insertBefore(this.createIconicElement('menuseparator','*'), menupopup.firstChild);
 						menupopup.insertBefore(mItem, menupopup.firstChild);
 					}
-					else
+					else {
 						util.logDebugOptional("interface","palette already built (firstChild exists)");
+          }
+          
 					util.logDebugOptional("interface","initElementPaletteClass…");
 					this.initElementPaletteClass(menupopup);
 				}

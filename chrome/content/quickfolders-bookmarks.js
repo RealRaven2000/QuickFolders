@@ -66,7 +66,8 @@ QuickFolders.bookmarks = {
           Cc = Components.classes,
           nsMsgSearchScope = Ci.nsMsgSearchScope,
           nsMsgSearchAttrib = Ci.nsMsgSearchAttrib,
-          nsMsgSearchOp = Ci.nsMsgSearchOp;
+          nsMsgSearchOp = Ci.nsMsgSearchOp,
+          util = QuickFolders.Util;
     function setTermValue(term, attr, op, valStr) {
       let val = term.value;
       term.attrib = attr;
@@ -83,9 +84,26 @@ QuickFolders.bookmarks = {
 	  function _getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
+    
+    // from test_bug404489.js 
+    var hitCount,
+        searchListener = {
+      onSearchHit(dbHdr, folder) {
+        debugger;
+        hitCount++;
+      },
+      onSearchDone(status) {
+        util.logDebug("Search found " + hitCount + " matches.");
+        searchSession = null;
+      },
+      onNewSearch() {
+        hitCount = 0;
+      },
+    }; 
+
+    
     let getFolder = QuickFolders.Model.getMsgFolderFromUri,
         folder = getFolder(entry.FolderUri),
-        util = QuickFolders.Util,
         searchSession = Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
         offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual, // Postbox doesn't like nsMsgFolderFlags.Offline?
@@ -125,9 +143,12 @@ QuickFolders.bookmarks = {
                      entry.date);
         searchTerms.push(realTerm);
     }
+
+    // we overlay the dialog - the actual work is done in quickfolders-search.js
     window.openDialog("chrome://messenger/content/SearchDialog.xul", "_blank",
                       "chrome,resizable,status,centerscreen,dialog=no",
                       { folder: targetFolder, searchTerms: searchTerms, searchSession: searchSession });          
+                      
   },
   
   openMessage: function (entry, forceMethod)  {

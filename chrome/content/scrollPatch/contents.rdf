@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+<!-- this is probably necessary (and now missing) to make sure dragging items on an overflowing folders menu 
+     triggers scrolling down once you land on the chevron. Needs to be rewritten in pure JS, so I am leaving 
+     it in the project, for now -->
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
 	<Seq about="urn:mozilla:package:root">

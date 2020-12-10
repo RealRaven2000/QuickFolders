@@ -452,8 +452,9 @@ QuickFolders.Interface = {
 			if (!isCurrentFolderButton)
 				this.menuPopupsByOffset[0] = menupopup;
 
-			if (button.firstChild && button.firstChild.tagName=="menupopup")
-				button.removeChild(button.firstChild);
+      // [issue 76] - removing firstChild was incorrect in Tb78.
+      let menuchildren = button.querySelectorAll('#' + menupopup.id);
+      menuchildren.forEach(el => button.removeChild(el))
 
 			button.appendChild(menupopup);
 
@@ -911,11 +912,17 @@ QuickFolders.Interface = {
 			}
 			cat.style.display = (showToolIcon || isCustomCat) ? '-moz-inline-box' : 'none';
 			cat.collapsed = (!isCustomCat);
-			if (this.currentActiveCategories && !catArray.includes(this.currentActiveCategories)) {
-				// make sure all tabs are visible in case we delete the last category!
-				this.selectCategory(FCat.ALL);
-			}
-
+      
+      if (this.currentActiveCategories) {
+        if (this.currentActiveCategories == FCat.UNCATEGORIZED) // [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
+          this.selectCategory(FCat.UNCATEGORIZED);
+        else {
+          if (!catArray.includes(this.currentActiveCategories)) {
+            // make sure all tabs are visible in case we delete the last category!
+            this.selectCategory(FCat.ALL);
+          }
+        }
+      }
 
 			if (prefs.getBoolPref('collapseCategories'))
 				cat.classList.add('autocollapse');
@@ -929,8 +936,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      model = QuickFolders.Model,
 					prefs = QuickFolders.Preferences,
-          FCat = QuickFolders.FolderCategory,
-					isPostbox = (util.Application=='Postbox') ? true : false;
+          FCat = QuickFolders.FolderCategory;
 
 		util.logDebugOptional("interface", "updateCategories()");
 
@@ -945,7 +951,8 @@ QuickFolders.Interface = {
     try {
       if (lCatCount > 0 && menuList && menuPopup) {
 				let activeCatsList = this.currentActiveCategories,
-				    cats = activeCatsList ? activeCatsList.split('|') : [];
+				    cats = activeCatsList ? activeCatsList.split('|') : [],
+            isMultiCategories = prefs.getBoolPref('premium.categories.multiSelect')
         util.clearChildren(menuPopup,true);
 
         menuPopup.appendChild(this.createMenuItem(
@@ -955,15 +962,12 @@ QuickFolders.Interface = {
         for (let i = 0; i < lCatCount; i++) {
           let category = bookmarkCategories[i];
           if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
-            let menuItem = this.createMenuItem(category, category, 'menuitem-iconic'),
-                isMultiCategories = prefs.getBoolPref('premium.categories.multiSelect');
+            let menuItem = this.createMenuItem(category, category, 'menuitem-iconic');
             // add checkbox for multiple category selection
             if (isMultiCategories) {
 							// multi selection
 							if (cats.includes(category))
 								menuItem.setAttribute("checked", true);
-							if (isPostbox)
-								menuItem.setAttribute("type","checkbox");
             }
             menuPopup.appendChild(menuItem);
           }
@@ -985,8 +989,11 @@ QuickFolders.Interface = {
 					menuPopup.appendChild(this.createIconicElement('menuseparator','*'));
 				}
 				if (isUncat) {
-					let s = this.getUIstring("qfUncategorized","(Uncategorized)");
-					menuPopup.appendChild(this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic'));
+					let s = this.getUIstring("qfUncategorized","(Uncategorized)"),
+              itemUncat = this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic');
+					menuPopup.appendChild(itemUncat);
+          if (cats.includes(FCat.UNCATEGORIZED) && isMultiCategories)
+            itemUncat.setAttribute("checked", true);
 				}
 				if (isNever) {
 					let s = this.getUIstring("qfShowNever","Never Show (Folder Alias)");
@@ -2209,8 +2216,7 @@ QuickFolders.Interface = {
 						}, false);
 					button.hasClickEventListener = true;
 					this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
-					// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-					this.setEventAttribute(button, "ondragend","QuickFolders.buttonDragObserver.dragExit(event)");
+					this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event, true)");
 				}
       }
     }
@@ -2234,6 +2240,7 @@ QuickFolders.Interface = {
 				this.setEventAttribute(button, "ondragenter", "QuickFolders.buttonDragObserver.dragEnter(event);");
 				this.setEventAttribute(button, "ondragover", "QuickFolders.buttonDragObserver.dragOver(event);");
 				this.setEventAttribute(button, "ondrop", "QuickFolders.buttonDragObserver.drop(event);");
+				this.setEventAttribute(button, "ondragleave", "QuickFolders.buttonDragObserver.dragExit(event);");
 			}
 			// button.setAttribute("flex",100);
 		}
@@ -2249,7 +2256,7 @@ QuickFolders.Interface = {
 			// AG add dragging of buttons
 			this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
 			// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-			this.setEventAttribute(button, "ondragend","QuickFolders.buttonDragObserver.dragExit(event)");
+			this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 
@@ -2416,6 +2423,7 @@ QuickFolders.Interface = {
 
 		this.setEventAttribute(button, "ondragenter","QuickFolders.buttonDragObserver.dragEnter(event);");
 		this.setEventAttribute(button, "ondragover","QuickFolders.buttonDragObserver.dragOver(event);");
+		this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event);");
 		this.setEventAttribute(button, "ondrop","QuickFolders.buttonDragObserver.drop(event);");
 		this.SpecialToolbar.appendChild(button);
 	} ,
@@ -4593,7 +4601,7 @@ QuickFolders.Interface = {
 				this.setEventAttribute(menuitem, "ondragenter","event.preventDefault();"); // fix layout issues...
 				this.setEventAttribute(menuitem, "ondragover","QuickFolders.popupDragObserver.dragOver(event)"); // okay
 				this.setEventAttribute(menuitem, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
-				this.setEventAttribute(menuitem, "ondragend","QuickFolders.popupDragObserver.dragExit(event);");
+				this.setEventAttribute(menuitem, "ondragleave","QuickFolders.popupDragObserver.dragExit(event);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
@@ -4651,8 +4659,7 @@ QuickFolders.Interface = {
 
 					this.setEventAttribute(subMenu, "ondragenter","QuickFolders.popupDragObserver.dragEnter(event);");
 					this.setEventAttribute(subMenu, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
-					// this.setEventAttribute(subMenu, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.popupDragObserver);");
-					this.setEventAttribute(subMenu, "ondragend","QuickFolders.popupDragObserver.dragExit(event);");
+					this.setEventAttribute(subMenu, "ondragleave","QuickFolders.popupDragObserver.dragExit(event);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;
@@ -5537,7 +5544,7 @@ QuickFolders.Interface = {
 
 	viewChangeOrder: function viewChangeOrder() {
 		window.openDialog('chrome://quickfolders/content/change-order.xhtml','quickfolders-change-order',
-						  'chrome,titlebar,toolbar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
+						  'chrome,titlebar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
 	} ,
 
   lastTabSelected: null,
@@ -6195,7 +6202,8 @@ QuickFolders.Interface = {
 		// default hover colors: (not sure if we even need them during paint mode)
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover','background-color', hoverBackColor,true);
 		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover','background-color', hoverBackColor,true);
-    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover','color', hoverColor, true);
+    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover .toolbarbutton-text','color', hoverColor, true); // [issue 81] - add selector for label
+    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover .toolbarbutton-icon','color', hoverColor, true); // [issue 81] - add selector for icon
 
 		let paintButton = isPaintMode ? this.PaintButton : null;
 
@@ -6249,9 +6257,9 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
 		    // let dragOverColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
 		    dragOverColor = prefs.getUserStyle("DragTab","color","White");
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over','background-color', prefs.getUserStyle("DragTab","background-color","#E93903"),true);
+		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover','background-color', prefs.getUserStyle("DragTab","background-color","#E93903"),true);
     let noColorClass = 'col0'; // ####
-    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':-moz-drag-over','color', dragOverColor, true); // ####
+    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + '.dragover','color', dragOverColor, true); // ####
 
 		if (prefs.getIntPref('style.DragOver.paletteType')) {
 			let paletteClass = this.getPaletteClassCss('DragOver'),
@@ -6259,13 +6267,13 @@ QuickFolders.Interface = {
 			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
 			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
 			// for some reason this one is completely ignored by SeaMonkey and Postbox
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over', 'background-image', dragOverGradient, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':-moz-drag-over','color', dragOverColor, true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover', 'background-image', dragOverGradient, true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.dragover','color', dragOverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '[buttonover="true"]','color', dragOverColor, true);
 		}
 		else {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over', 'background-image', 'none', true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over','color', dragOverColor,true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover', 'background-image', 'none', true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover','color', dragOverColor,true);
 		}
 	} ,
 
@@ -6282,7 +6290,6 @@ QuickFolders.Interface = {
 		if (exclude !== 'night')
 		  className = className.replace(/\s*night/,'')
 		return className;
-
 	} ,
 
 	getPaletteClass: function getPaletteClass(tabStateId) {
@@ -6342,8 +6349,9 @@ QuickFolders.Interface = {
 			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', 'none', true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
 		}
-    engine.removeElementStyle(ss, '.quickfolders-flat .selected-folder', 'color');
-    engine.setElementStyle(ss, '.quickfolders-flat .selected-folder', 'color', selectedColor,true);
+    // style label and image (to also overwrite theme color for svg icons)
+    engine.removeElementStyle(ss, '.quickfolders-flat .selected-folder > *:not(menupopup)', 'color');  
+    engine.setElementStyle(ss, '.quickfolders-flat .selected-folder > *:not(menupopup)', 'color', selectedColor,true);
 	} ,
 
 	// INACTIVE STATE (DEFAULT)
@@ -6378,40 +6386,37 @@ QuickFolders.Interface = {
 				paletteEntry += 'striped';
 			let ruleName = (!isTabsStriped ? '.quickfolders-flat ' : '') + paletteClass + '.col' + paletteEntry;
 			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image'); // remove 'none'
+			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(.dragover)', 'background-image'); // remove 'none'
 			// removed 'toolbarbutton'. qualifier
-			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)', 'background-image', inactiveGradient, false);
-			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)#QuickFoldersCurrentFolder', 'background-image', inactiveGradient, false);
+			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(.dragover)', 'background-image', inactiveGradient, false);
+			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(.dragover)#QuickFoldersCurrentFolder', 'background-image', inactiveGradient, false);
 
 			inactiveGradientColor = (inactiveColor=='black') ? engine.getElementStyle(ssPalettes, ruleName, 'color') : inactiveColor;
 		}
 		else {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image', 'none', false);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(.dragover)', 'background-image', 'none', false);
 		}
 
     // tb + avoidCurrentFolder
-	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + '.' + noColorClass,'color', inactiveColor, false);
+	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + '.' + noColorClass + ' .toolbarbutton-text', 'color', inactiveColor, false); // [issue 81] - add selector for label
+	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + '.' + noColorClass + ' .toolbarbutton-icon', 'color', inactiveColor, false); // [issue 81] - add selector for icon
     if (inactiveGradientColor!=null)
-      engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass,'color', inactiveGradientColor, false);
+      engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass, 'color', inactiveGradientColor, false);
 
 		// Coloring all striped tabbed buttons that have individual colors
     let coloredPaletteClass = this.getPaletteClassCss('ColoredTab');
 		if (isTabsStriped) { // paletteClass = plastic, pastel, "", apple
 			// fallback for uncolored current folder (striped style)
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder.col0' + paletteClass,'color', inactiveColor, false);
-		  // throws 'An invalid or illegal string was specified' in Postbox:
-			if (util.Application != 'Postbox' || util.Appversion > 5.4) {
-				// avoid for current folder button as it always will be completely colored
-        // #issue 7 these rules didn't work due to a syntax error
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + coloredPaletteClass,'color', inactiveColor, false);
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + paletteClass,'color', inactiveColor, false);
-			}
+      // avoid for current folder button as it always will be completely colored
+      // #issue 7 these rules didn't work due to a syntax error
+      engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + coloredPaletteClass,'color', inactiveColor, false);
+      engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + paletteClass,'color', inactiveColor, false);
 		}
 		else {
 			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass,'color');
 			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + coloredPaletteClass,'color');
 		}
-
 	} ,
 
 	// Get all blingable elements and make them look user defined.
@@ -7008,7 +7013,7 @@ QuickFolders.Interface = {
 					this.updateFolders(true, true);
 
 				// Filter Validation!
-				setTimeout(function() {  QuickFolders.FilterList.validateFilterTargets(fromURI, newURI); });
+				setTimeout(function() {  QuickFolders.Util.validateFilterTargets(fromURI, newURI); });
 			}
 		}
 		catch(ex) {

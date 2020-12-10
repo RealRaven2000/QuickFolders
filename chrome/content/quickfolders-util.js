@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.0", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -855,8 +855,13 @@ QuickFolders.Util = {
 	
 	// Set the MRU time for a folder to make it appear in recent folders list
 	touch: function touch(folder) {
-		const util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+          FLAGS = util.FolderFlags;
 		try {
+      // special folders we do not want / need in recent history:
+      if (folder.flags & 
+            (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 
+             FLAGS.MSG_FOLDER_FLAG_JUNK  | FLAGS.MSG_FOLDER_FLAG_ARCHIVES | FLAGS.MSG_FOLDER_FLAG_DRAFTS)) return;
 			if (folder.SetMRUTime)
 				folder.SetMRUTime();
 			else {
@@ -1222,6 +1227,7 @@ QuickFolders.Util = {
 	
 	findMailTab: function findMailTab(tabmail, URL) {
 		const util = QuickFolders.Util;
+    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 		// mail: tabmail.tabInfo[n].browser		
 		let baseURL = util.getBaseURI(URL),
 				numTabs = util.getTabInfoLength(tabmail);
@@ -1232,7 +1238,15 @@ QuickFolders.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					info.browser.loadURI(URL);
+          try {
+            let params = {
+              triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal()
+            }
+            info.browser.loadURI(URL, params);
+          }
+          catch(ex) {
+            util.logException(ex);
+          }
 					return true;
 				}
 			}
@@ -1654,6 +1668,36 @@ QuickFolders.Util = {
 		const ellipsis = "\u2026".toString();
 		let slash = uri.lastIndexOf("/");
 		return slash>0 ? ellipsis  + uri.substr(slash) : ellipsis + uri.substr(-16);
+	},
+	
+  // moved from FilterList!
+	validateFilterTargets: function(sourceURI, targetURI) {
+		// fix any filters that might still point to the moved folder.
+		// 1. nsIMsgAccountManager  loop through list of servers
+		try {
+			const Ci = Components.interfaces,
+			      util = QuickFolders.Util;
+			let Accounts = util.Accounts,
+			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+	                        .getService(Ci.nsIMsgAccountManager); 
+			for (let a=0; a<Accounts.length; a++) {
+				let account = Accounts[a];
+				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
+				{ 
+					let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
+					QuickFolders.Util.logDebugOptional("filters", "checking account for filter changes: " +  srv.prettyName);
+					// 2. getFilterList
+					let filterList = srv.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
+					// 3. use  nsIMsgFilterList.matchOrChangeFilterTarget(oldUri, newUri, false) 
+					if (filterList) {
+						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 
+					}
+				}
+			}    
+		}
+		catch(ex) {
+			QuickFolders.Util.logException("Exception in QuickFolders.Util.validateFilterTargets ", ex);
+		}
 	}
 
   

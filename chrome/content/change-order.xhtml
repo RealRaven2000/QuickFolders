@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="change-order.css" type="text/css"?>
+
+<!--  tb 78 -->
+<?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/content/widgets.css" type="text/css"?>
+
+
+<?xml-stylesheet href="chrome://quickfolders/content/change-order.css" type="text/css"?>
 
 <!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/change_order.dtd" >
 
@@ -16,18 +24,19 @@
 		var QuickFolders = window.arguments[0];
 	</script>
 
-<hbox id="qf-header" >
-	<hbox id="qf-options-header" flex="12">
-		<label class="dialogheader-title"
-			value="&qf.dialog.changeorder;"
-			flex="1"/>
+  <hbox id="qf-header" >
+    <hbox id="qf-options-header" flex="12">
+      <label class="dialogheader-title"
+        value="&qf.dialog.changeorder;"
+        flex="1"/>
 
-		<label id="qf-options-header-description"/>
-	</hbox>
-</hbox>
+      <label id="qf-options-header-description"/>
+    </hbox>
+  </hbox>
+
  	<description style="max-width:455px" id="Explain-Drag">
-     &qf.description.dragexplain;
-    </description>
+   &qf.description.dragexplain;
+  </description>
 
     <hbox class="drag-image">
       <image src="chrome://quickfolders/content/skin/ico/Drag-Tabs.gif" />
@@ -54,5 +63,5 @@
 		    	</row>
 	    	</rows>
 	    </grid>
-    </vbox >
+    </vbox>
 </dialog>

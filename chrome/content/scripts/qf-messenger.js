@@ -311,7 +311,7 @@ WL.injectElements(`
     
         <hbox id="QuickFolders-PreviewToolbarPanel" 
                 position="1"
-                insertbefore="singlemessage"
+                insertbefore="multimessage"
                     style="display:none;">
             <spacer flex="5" id="QF-CurrentLeftSpacer"/>
             <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
@@ -522,6 +522,7 @@ function onUnload(isAddOnShutDown) {
   // remove all listeners
   try {
     window.QuickFolders.Interface.removeToolbarHiding();
+    window.QuickFolders_mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
     window.QuickFolders.removeTabEventListener();
     window.QuickFolders.removeFolderPaneListener();
   }

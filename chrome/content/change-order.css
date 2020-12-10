@@ -1,6 +1,6 @@
 
 hbox#qf-header:before {
-	content: url("chrome://quickfolders/content/skin/ico/quickfolders-Icon.png");
+	content: url("chrome://quickfolders/content/skin/ico/QuickFolders_32.svg");
 	margin: 0.2em 0.5em 0em 0.2em;
 }
 hbox#qf-header {
@@ -9,7 +9,7 @@ hbox#qf-header {
 	background-color: rgb(154,201,244);
 	color: #fff;
 	padding: 5px 8px;
-	border-radius: 0.8em;
+	border-radius: 0.1em;
 	border: 1px solid #aaa;
 	box-shadow: inset 0px 0px 10px #666;
 }
@@ -19,6 +19,7 @@ description#Explain-Drag {
 }
 
 #qf-options-header {
+  display: inline-block;
 	vertical-align: top;
 	margin-top: 0.5em;
 }
@@ -29,9 +30,6 @@ description#Explain-Drag {
 	font-family: calibri,sans-serif;
 	color: none;
 }
-
-
-
 
 vbox#myscrollbox {
   overflow: auto;
@@ -51,20 +49,32 @@ hbox.drag-image {
   margin-bottom: 20px;
 }
 
+#QuickFolders-change-order-grid button {
+  -moz-appearance: none;
+  border: 1px solid darkgray !important;
+  border-radius: 3px;
+  padding-left: 1.5em;
+  padding-bottom: 0.1em;
+}
+#QuickFolders-change-order-grid button:hover {
+  color: -moz-dialogtext;
+}
+button * {
+  margin: auto;
+  text-align: center;
+}
+
 button.order-button-up {
-/*    -moz-appearance: button-small; */
-    max-height: 1.9em !important;
-    list-style-image: url("chrome://quickfolders/content/skin/ico/dropUp.gif") !important;
+  max-height: 1.9em !important;
+  list-style-image: url("chrome://quickfolders/content/skin/ico/dropUp.gif") !important;
 }
 button.order-button-down {
-/*    -moz-appearance: button-small; */
-    max-height: 1.9em !important;
-    list-style-image: url("chrome://quickfolders/content/skin/ico/dropDown.gif") !important;
+  max-height: 1.9em !important;
+  list-style-image: url("chrome://quickfolders/content/skin/ico/dropDown.gif") !important;
 }
 
 rows#QuickFolders-change-order-grid-rows row
 {
   line-height: 1.8em !important;
-  /*overflow: auto;*/
 }
 

@@ -42,6 +42,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return  win.QuickFolders.Util.hasPremiumLicense(false);
         },
 
+        LicensedDaysLeft() {
+          let today = new Date(),
+              licensedDate = new Date(win.QuickFolders.Licenser.DecryptedDate),
+              daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
+          return daysLeft;
+        },
+        
         getAddonVersion: function() {
           return win.QuickFolders.Util.Version;
         },

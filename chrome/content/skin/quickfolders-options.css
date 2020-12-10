@@ -35,6 +35,13 @@ fieldset[orient="horizontal"] > vbox,
 fieldset[orient="horizontal"] > checkbox {
   display: inline-block;
 }
+
+menulist#folderCrossing,
+menulist[preference^="extensions.quickfolders"] , 
+menulist#QuickFolders-CurrentFolder-Background-Select 
+{
+  color: var(--field-text-color) !important; // 
+}
 /* scale down the overly larger number textboxes / spinner controls */
 tabpanel html|input[type="number"] {
   min-height: 22px;

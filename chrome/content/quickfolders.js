@@ -382,7 +382,7 @@ END LICENSE BLOCK */
     ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
     ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
     
-  5.0 QuickFolders Pro - WIP
+  5.0 QuickFolders Pro - 17/11/2020
     ## [issue 8] Make QuickFolders compatible with Thunderbird 78 ESR
     ##         - Converted to mail extension with experimental APIs (using WindowLoader) as required by the new Mozilla "non-legacy" model
     ##         - Removed nsIRDFService dependencies
@@ -395,6 +395,20 @@ END LICENSE BLOCK */
     ## Known issues:
     ##  - any dragover styling (special color, dropmarkers when moving tabs around) is now removed
     ##
+    
+  5.1 QuickFolders Pro - WIP
+    ## [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another category
+    ## [issue 76] Recent Folders List does not updated until TB closed and reopened
+    ## [issue 80] Recent Folders list not updated when moving email using drag and drop
+    ## [issue 79] Drag over color + Dropmarkers when reordering Tabs not working
+    ## [issue 81] Current Folder Toolbar display - text is always black
+    ## [issue 84] Can't drag enevelope icon in Navigation bar (a.k.a. Current Folder) to a folder / QuickFolder drop target
+                  also the Navigation Bar is hidden if multiple mails or a thread is selected.
+    ## Hide option to extend license if it is already more than 1 year into the future.
+    ## Hide popup screen for licensed users who have > 40 days left on their license
+    ## removed Encryption test code from options.js
+    ## validateFilterTargets moved to other module to avoid console errors
+
 
    	TODOs
 	=========
@@ -990,8 +1004,6 @@ var QuickFolders = {
 		dragEnter: function qftoolbar_dragEnter(evt) {
       if (!evt)
         debugger;
-//		dragEnter: function dragEnter(evt, dragSession) {
-				// session = nsIDragSession
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
           ot = evt.originalTarget;
@@ -1027,7 +1039,6 @@ var QuickFolders = {
 				dragSession.canDrop = true;
 			}
 			else {
-				this.util.logDebugOptional("dnd","toolbarDragObserver.dragOver - can not drop " + contentType);
 				dragSession.canDrop = false;
 			}
 		},
@@ -1138,7 +1149,9 @@ var QuickFolders = {
 			flavours.appendFlavour("text/x-moz-folder"); // folder tree items
 			return flavours;
 		},
+    
 		dragOverTimer: null,
+    
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
       if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
@@ -1453,10 +1466,7 @@ var QuickFolders = {
 
 		startDrag: function msgObs_startDrag(event, transferData, action) {
       if (!event || !transferData) debugger;
-      
-			let button = event.target;
-			transferData.data = new TransferData();
-
+			// transferData.data = new TransferData(); // legacy code
 			// check event.originalTarget and event.target
 			QuickFolders.Util.threadPaneOnDragStart(event);
 		}
@@ -1506,6 +1516,11 @@ var QuickFolders = {
 				}
 				let button = evt.target;
 				
+        // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
+        if (button) {
+          button.classList.add("dragover");
+        }
+        
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
         if (button.id && button.id =="QuickFolders-quickMove" || button.id =="QuickFolders-readingList") {
@@ -1536,16 +1551,24 @@ var QuickFolders = {
 
               // find out whether drop target button is right or left from source button:
               if (node.hasAttributes()) {
-                let box = node.boxObject;
-                if (box) {
-                  let dx = (box.x - button.boxObject.x);
-                  if (dx !== 0) {
-                    let sDirection=(dx>0 ? "dragLEFT" : "dragRIGHT"),
-                        sOther=(dx>0 ? "dragRIGHT" : "dragLEFT");
-                    button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
-										button.classList.remove(sOther);
+                // check previous siblings to see if target button is found - then it's to the left. otherwise it's to the right
+                let i = null,
+                    sib = node;
+                let sDirection="",
+                    sOther="";
+                while( (sib = sib.previousSibling) != null ) {
+                  if (sib == button) {
+                    sDirection = "dragLEFT";
+                    sOther = "dragRIGHT";
+                    break;
                   }
                 }
+                if(!sDirection) {
+                  sDirection = "dragRIGHT";
+                  sOther = "dragLEFT";
+                }
+                button.classList.add(sDirection); // add style for drop arrow (remove onDragEnd)
+                button.classList.remove(sOther);
 							}
 						}
 					}
@@ -1714,6 +1737,13 @@ var QuickFolders = {
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
 			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
 				"event.target=" + event.target || "[none]");
+			let button = event.target;
+      
+      // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
+      if (button) {
+        button.classList.remove("dragover");
+      }      
+        
 			if (!dragSession.sourceNode) { 
 				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - session without sourceNode! exiting dragExit handler...");
 				if (!dragSession.dataTransfer)
@@ -1724,12 +1754,12 @@ var QuickFolders = {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
 				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - sourceNode = " + src);
 			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.dragExit - " + e); }
+      
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
 				util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
 				dragSession.canDrop=false;
 				return;
 			}
-			let button = event.target;
 			if (dragSession.isDataFlavorSupported("text/unicode") || dragSession.isDataFlavorSupported("text/plain")) { // drag buttons
 				// remove dragdrop marker:
 				button.classList.remove("dragLEFT");
@@ -1761,6 +1791,17 @@ var QuickFolders = {
 				window.dump("Cannot setup for delete: popup \n" + ex);
 			}
 		} ,
+    
+    dragLeave: function btnObs_dragLeave(event) {
+			let button = event.target;
+      const util = QuickFolders.Util;
+      // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
+      if (button) {
+        util.logDebugOptional("dnd", "dragLeave event!");
+        button.classList.remove("dragover");
+      }      
+    } ,
+
 
 		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
       if (!evt) debugger;
@@ -1798,6 +1839,11 @@ var QuickFolders = {
 					lastAction = "",
 					types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
+          
+      // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
+      if (DropTarget) {
+        DropTarget.classList.remove("dragover");
+      }      
 
           
 			if (prefs.isDebugOption("dnd")) debugger;
@@ -2579,18 +2625,29 @@ QuickFolders.FolderListener = {
 		try {
 			if (typeof QuickFolders === 'undefined')
 				return;
+      const util = QuickFolders.Util;
 			let prop = property ? property.toString() : '',
-          log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
+          log = util.logDebugOptional.bind(util),
+          isTouch = false;
 			log("listeners.folder", "OnItemIntPropertyChanged - property = " + prop);
 			if (prop === "TotalUnreadMessages" ||
-				(QuickFolders.Preferences.isShowTotalCount 
-					&& prop === "TotalMessages")) {
+				(QuickFolders.Preferences.isShowTotalCount && prop === "TotalMessages")) {
 					QuickFolders.Interface.setFolderUpdateTimer(item);
 					let cF = QuickFolders.Interface.CurrentFolderTab;
 					if (cF && cF.folder && cF.folder==item) { // quick update of CurrentFolder tab:
 					  QuickFolders.Interface.initCurrentFolderTab(cF, item);
 					}
+          if (newValue > oldValue)
+            isTouch = true;
 			}
+      if (prop === "TotalMessages" && (newValue > oldValue)) {
+        isTouch = true;
+      }
+      // [issue 80] add folder to recent list if item was added (via d+d)
+      if (isTouch) {
+        util.touch(item);
+      }
+
 			if (QuickFolders.compactReportFolderCompacted && prop === "FolderSize") {
 				try
 				{
@@ -2606,15 +2663,15 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = QuickFolders.Util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
 							break;
 						case 'emptyJunk':
-							message = QuickFolders.Util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
+							message = util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
 							if (!item.URI)
 								size2 = 0;
 							break;
 						case 'emptyTrash':
-							message = QuickFolders.Util.getBundleString("qfEmptiedTrash", "Emptied trash.");
+							message = util.getBundleString("qfEmptiedTrash", "Emptied trash.");
 							if (!item.URI)
 								size2 = 0;
 							break;
@@ -2622,9 +2679,9 @@ QuickFolders.FolderListener = {
 							message = "unknown compactReportCommandType: [" + compactReportCommandType + "]";
 							break;
 					}
-					let originalSize= QuickFolders.Util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
-					    newSize = QuickFolders.Util.getBundleString("qfCompactedNewFolderSize","New Size"),
-					    expunged = QuickFolders.Util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
+					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
+					    newSize = util.getBundleString("qfCompactedNewFolderSize","New Size"),
+					    expunged = util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
 					    out = message + " :: "
 						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
 								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
@@ -2632,10 +2689,13 @@ QuickFolders.FolderListener = {
 						+ newSize + ": " + add1000Separators(size2.toString()) ;
 					//make sure it displays straight away and overwrite the compacting done message as well.
 
-					setTimeout(function() { QuickFolders.Util.slideAlert("QuickFolders",out); QuickFolders.Util.logDebug(out); }, 250); // display "after compacting"
+					setTimeout(function() { 
+            QuickFolders.Util.slideAlert("QuickFolders",out); QuickFolders.Util.logDebug(out); 
+          }, 250); // display "after compacting"
 
 					QuickFolders.compactLastFolderUri = null;
 					QuickFolders.compactLastFolderSize = 0;
+          
 				} catch(e) {;};
 			}
 		}

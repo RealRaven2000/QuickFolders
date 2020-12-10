@@ -4,8 +4,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-composer.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-     
-  window.QuickFolders.Util.logDebug('Adding Compose xul...');
+  // window.QuickFolders.Util.logDebug('Adding Compose xul...');
 }
 
 function onUnload(isAddOnShutDown) {

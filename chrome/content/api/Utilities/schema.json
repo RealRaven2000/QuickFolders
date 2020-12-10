@@ -30,6 +30,13 @@
       },
     
       {
+        "name": "LicensedDaysLeft",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+    
+      {
         "name": "isLicensed",
         "type": "function",
         "async": true,

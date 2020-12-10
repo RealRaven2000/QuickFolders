@@ -24,10 +24,13 @@ addEventListener("click", async (event) => {
 
 
 addEventListener("load", async (event) => {
-    const addonName = await browser.runtime.getManifest().name, // or mxUtilties.getAddonName()); == 'quickFilters'
-          hoursWorked = 250,
+    const manifest = await messenger.runtime.getManifest(),
+          browserInfo = await messenger.runtime.getBrowserInfo(),
+          addonName = manifest.name,
+          addonVer = manifest.version,
+          appVer = browserInfo.version,
+          hoursWorked = 300,
           remindInDays = 10;
-  const mxUtilties = messenger.Utilities;
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
@@ -48,8 +51,6 @@ addEventListener("load", async (event) => {
     
     let verInfo = document.getElementById('active-version-info');
     if (verInfo) {
-      let addonVer = await mxUtilties.getAddonVersion(),
-          appVer = await mxUtilties.getTBVersion();
       
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.

@@ -279,7 +279,9 @@
 						<li> 
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/79">[issue 79]</a>
               Fixed: Drag over color + Dropmarkers when reordering Tabs not working<br>
-              <img src="images/drag-dropmarkers.png" alt="dragover state repaired" />
+              <img src="images/drag-dropmarkers.png" alt="dragover state repaired" /><br>
+              This was caused by an experimental style selector [<tt>-moz-drag-over</tt>] which has been now removed by Mozilla 
+              due to little take-up of the HTML community. I had to rewrite these parts using pure JavaScript.
             </li>
 						<li> 
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/81">[issue 81]</a>

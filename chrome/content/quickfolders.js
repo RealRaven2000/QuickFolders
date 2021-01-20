@@ -378,14 +378,25 @@ END LICENSE BLOCK */
     ## [issue 34] {Create Option to} make QuickFolders appear at the Bottom of Other Toolbars
     
     
-  4.18.2 QuickFolders Pro - WIP
+  4.18.2 QuickFolders Pro - 10/12/2020 
     ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
     ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
     ## [issue 80] Recent Folders list not updated when moving email using drag and drop
     ## improved dropmarker behavior when dragging tabs over multiple rows 
     ## in the dialog "change order of tabs" the up and down labels on the buttons are not rendered for some reason
        this is now worked around by removing the button styling from these elements
-
+       
+  4.19.1 QuickFolders Pro - 20/01/2021
+    ## [issue 75] support moving folders using the quickMove button
+    ## Improved reopening any support sites already open in a tab by jumping to the correct place if necessary
+    ## [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another category
+    ## [issue 23] quickMove aborts with "Nothing to do: Message is already in folder" if the first mail in the selection 
+                  is already in target folder. 
+                  This may happen if you drag mails from a multi-folder view such as a search results window.
+                  It can also happen if you execute the quickMove command after a while and you (or a filter)
+                  have moved some of the mails to the target folder already.
+    ## changed support site links to https (secure) protocol
+    ## Fixed: when restarting Thunderbird after an Add-on was installed Tabs from ALL categories were displayed.
     
     
 	Future Work
@@ -395,10 +406,6 @@ END LICENSE BLOCK */
     
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
-		
-    ## [issue 23] quickMove fails if first mail is already in target folder (open in conversation)
-    ##            probably similar to a virtual search folder.
-    
     
 	Known Issues
 	============
@@ -429,14 +436,12 @@ END LICENSE BLOCK */
 
 
   KNOWN ISSUES
-  ============
 
 
   OPEN BUGS
   ============
 
-
-	A complete list of bugs can be viewed at http://quickfolders.org/bugs.html
+	A complete list of bugs can be viewed at https://quickfolders.org/bugs.html
   PLANNED FEATURES
   ================
 	- persist categories in separate JSON list for more flexibility (e.g. rename)
@@ -706,7 +711,7 @@ var QuickFolders = {
             switch (util.Application) {
               case 'Thunderbird':
                 // from messageWindow.js actuallyLoadMessage()
-                if (args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+                if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
                   let msgHdr= args[0];
                   fld = msgHdr.folder;
                 }
@@ -848,9 +853,10 @@ var QuickFolders = {
 
 			let tabmail = document.getElementById("tabmail"),
 					idx = QuickFolders.tabContainer.selectedIndex || 0,
-			    tab = util.getTabInfoByIndex(tabmail, idx); // in Sm, this can return null!
+			    tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
+          tabMode = null; 
 			if (tab) {
-				let tabMode = util.getTabMode(tab);
+				tabMode = util.getTabMode(tab);
 				// is this a new Thunderbird window?
 				let cats;
 				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
@@ -875,12 +881,20 @@ var QuickFolders = {
 			}
 			else
 				util.logDebug('init: could not retrieve tab / tabMode\n tab=' + tab + ' tabMode = ' + tabMode);
-				
-			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
 		}
 		catch(ex) {
 			util.logException('init: folderEntries', ex);
 		}
+    finally {
+			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+      // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
+      if (QI.currentActiveCategories) {
+        util.logDebugOptional('categories', "forcing selectCategory");
+        let bkCat = QI.currentActiveCategories; // force redraw by deleting it
+        QI._selectedCategories = null;
+        QI.selectCategory(bkCat);
+      }
+    }
 	
 	},
 
@@ -1237,10 +1251,12 @@ var QuickFolders = {
 		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.onDrop INSTEAD!
 		onDrop: function menuObs_onDrop(evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
+            Cc = Components.classes,
 				    util = QuickFolders.Util,
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
             QFFW = QuickFolders.FilterWorker;
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
 			let isThread = evt.isThread,
 			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
 			    menuItem = evt.target,
@@ -1792,6 +1808,8 @@ var QuickFolders = {
 					Ci = Components.interfaces,
 					Cc = Components.classes;
           
+      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+          
 			let isShift = evt.shiftKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
@@ -1804,14 +1822,22 @@ var QuickFolders = {
         util.logDebugOptional("dnd", "buttonDragObserver.onDrop flavor=" + contentType);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
+      let isPreventDefault = true,
+          isMoveFolderQuickMove = false;
 
 			switch (contentType) {
 				case  "text/x-moz-folder": 
 					if (!isShift) {
-						let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-								"Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-						util.alert(sPrompt);
-						break;
+            // [issue 75] support moving folders through quickMove
+            if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+              isMoveFolderQuickMove = true;
+            }
+            else {
+              let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+                  "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+              util.alert(sPrompt);
+              break;
+            }
 					}
 					// handler for dropping folders
 					try {
@@ -1821,17 +1847,28 @@ var QuickFolders = {
 							for (let i=0; i<count; i++) { // allow multiple folder drops...
 								let msgFolder = evt.dataTransfer.mozGetDataAt(contentType, i);
 								if (!msgFolder.QueryInterface) // Postbox
-									msgFolder = QuickFolders.Model.getMsgFolderFromUri(util.getFolderUriFromDropData(evt, dropData, dragSession), false);
+									msgFolder = QuickFolders.Model.getMsgFolderFromUri(
+                    util.getFolderUriFromDropData(evt, dropData, dragSession), 
+                    false);
 								foldersArray.push(msgFolder);
 							}
-							QI.moveFolder(foldersArray, targetFolder, count);
+              if (!isMoveFolderQuickMove)
+                QI.moveFolders(foldersArray, targetFolder);
+              else {
+                // stash folders away for the next quickMove
+                // foldersArray -- 
+                QuickFolders.quickMove.addFolders(foldersArray, evt.ctrlKey);
+                QuickFolders.quickMove.update();
+              }
 						}					
 						else {
 							let sourceFolder = util.getFolderFromDropData(evt, dropData, dragSession);
-							QI.moveFolder(sourceFolder, targetFolder);
+							QI.moveFolders([sourceFolder], targetFolder);
 						}
 					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in QuickFolders.onDrop:" + e); };
+					catch(e) {
+            QuickFolders.LocalErrorLogger("Exception in QuickFolders.onDrop:" + e); 
+          };
 					break;
 				case  "text/x-moz-message":
 				  // use dropData to retrieve the messages!
@@ -1958,10 +1995,17 @@ var QuickFolders = {
 					}
 
 					break;
+        case "text/plain":    // newsgroup names
 				case "text/unicode":  // dropping another tab on this tab inserts it before
 					QuickFolders.ChangeOrder.insertAtPosition(dropData.data, DropTarget.folder.URI, "");
 					break;
+        default:
+          isPreventDefault = false;
 			}
+      if (isPreventDefault) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
 		},
 
 		// new handler for starting drag of buttons (re-order)
@@ -1979,31 +2023,6 @@ var QuickFolders = {
 				transferData.data.addDataForFlavour("text/currentfolder", button.folder.URI);
 			else
 				transferData.data.addDataForFlavour("text/unicode", button.folder.URI);
-			// now let's start supporting dragging to the tab bar.
-			// it looks like I need to wrap http://mxr.mozilla.org/comm-central/source/mail/base/content/tabmail.xml
-			//  ---  dragstart  ---
-			// let dt = event.dataTransfer;
-			//  // If we drag within the same window, we use the tab directly
-      // dt.mozSetDataAt("application/x-moz-tabmail-tab", draggedTab, 0);
-			// // otherwise we use session restore & JSON to migrate the tab.
-      // let uri = this.tabmail.persistTab(tab);    // <==== !!!!
-			// if (uri)
-      //   uri = JSON.stringify(uri);
-			// dt.mozSetDataAt("application/x-moz-tabmail-json", uri, 0);
-			// dt.mozCursor = "default";
-			//  --- dragover ---
-			//  // incase the user is dragging something else than a tab, and
-      //  // keeps hovering over a tab, we assume he wants to switch to this tab.
-      //  if ((dt.mozTypesAt(0)[0] != "application/x-moz-tabmail-tab")
-      //         && (dt.mozTypesAt(0)[1] != "application/x-moz-tabmail-json")) {
-			//    let tab = this._getDragTargetTab(event);
-      // 		if (!tab) return;
-			//  --- drop ---
-			// 
-			
-			
-			
-			
 		}
 
 	},
@@ -2114,6 +2133,7 @@ function QuickFolders_MyChangeSelection(tree, newIndex) {
 function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	const util = QuickFolders.Util,
         prefs = QuickFolders.Preferences,
+        model = QuickFolders.Model,
         QI = QuickFolders.Interface,
 				Ci = Components.interfaces,
 				Cc = Components.classes;
@@ -2145,7 +2165,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	    msgFolder,
 	    isInvalid = false;
 	try {
-	  msgFolder = QuickFolders.Model.getMsgFolderFromUri(folderUri, true);  
+	  msgFolder = model.getMsgFolderFromUri(folderUri, true);  
 		if (prefs.getBoolPref("autoValidateFolders")) {
 		  isInvalid = (!util.doesMailFolderExist(msgFolder));
 		}
@@ -2158,7 +2178,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (isInvalid) {
 	  // invalid folder; suggest to correct this!
     util.logDebugOptional("folders.select","detected invalid folder, trying to correct entry table.");
-		let folderEntry = QuickFolders.Model.getFolderEntry(folderUri);
+		let folderEntry = model.getFolderEntry(folderUri);
     if (!folderEntry) return false;
     if (folderEntry.disableValidation) {
       ; // do nothing. a pending rename invalidated this entry
@@ -2167,7 +2187,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 			switch(QI.deleteFolderPrompt(folderEntry, false)) {
 			  case 1: // delete 
 				  // save changes right away!
-					prefs.storeFolderEntries(QuickFolders.Model.selectedFolders);
+					prefs.storeFolderEntries(model.selectedFolders);
           // update the model
           QI.updateFolders(true, true);
 				  break;
@@ -2278,9 +2298,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
             util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
             // toggle to smartfolder view and reinitalize folder variable!
             theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-            let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
-                folderResource = rdf.GetResource(folderUri);
-            msgFolder = folderResource.QueryInterface(Ci.nsIMsgFolder);
+            // let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
+            //    folderResource = rdf.GetResource(folderUri);
+            msgFolder = model.getMsgFolderFromUri(folderUri); // folderResource.QueryInterface(Ci.nsIMsgFolder);
             parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
           }
 
@@ -2412,7 +2432,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	
 	// speed up the highlighting... - is this only necessary on MAC ?
 	if (highlightTabFirst) {
-	  let entry = QuickFolders.Model.getFolderEntry(folderUri);
+	  let entry = model.getFolderEntry(folderUri);
 		if (entry) {
       util.logDebugOptional("folders.select", 'onTabSelected() - highlighting speed hack');
 		  QuickFolders.Interface.onTabSelected();  
@@ -2604,15 +2624,15 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = QuickFolders.Util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
 							break;
 						case 'emptyJunk':
-							message = QuickFolders.Util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
+							message = util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
 							if (!item.URI)
 								size2 = 0;
 							break;
 						case 'emptyTrash':
-							message = QuickFolders.Util.getBundleString("qfEmptiedTrash", "Emptied trash.");
+							message = util.getBundleString("qfEmptiedTrash", "Emptied trash.");
 							if (!item.URI)
 								size2 = 0;
 							break;
@@ -2620,9 +2640,9 @@ QuickFolders.FolderListener = {
 							message = "unknown compactReportCommandType: [" + compactReportCommandType + "]";
 							break;
 					}
-					let originalSize= QuickFolders.Util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
-					    newSize = QuickFolders.Util.getBundleString("qfCompactedNewFolderSize","New Size"),
-					    expunged = QuickFolders.Util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
+					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
+					    newSize = util.getBundleString("qfCompactedNewFolderSize","New Size"),
+					    expunged = util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
 					    out = message + " :: "
 						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
 								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
@@ -2630,7 +2650,7 @@ QuickFolders.FolderListener = {
 						+ newSize + ": " + add1000Separators(size2.toString()) ;
 					//make sure it displays straight away and overwrite the compacting done message as well.
 
-					setTimeout(function() { QuickFolders.Util.slideAlert("QuickFolders",out); QuickFolders.Util.logDebug(out); }, 250); // display "after compacting"
+					setTimeout(function() { util.slideAlert("QuickFolders",out); util.logDebug(out); }, 250); // display "after compacting"
 
 					QuickFolders.compactLastFolderUri = null;
 					QuickFolders.compactLastFolderSize = 0;

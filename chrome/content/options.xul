@@ -990,9 +990,9 @@
 							</description>
 							<vbox height="70">
 							<button id="L0"
-											href="http://quickfolders.org/"
+											href="https://quickfolders.org/"
 											tooltiptext="quickfolders.org"
-											onclick="util.openURL(event,'http://quickfolders.org/'); setTimeout(function() { window.close(); });">
+											onclick="util.openURL(event,'https://quickfolders.org/'); setTimeout(function() { window.close(); });">
 								<label width="270">&qf.label.homePage;</label>
 							</button>
 						</vbox>
@@ -1032,7 +1032,7 @@
 								<div id="L2"
 								     class="button"
 										 tooltiptext="quickfolders.org/bugs.html"
-										 onclick="util.openURL(event,'http://quickfolders.org/bugs.html')">
+										 onclick="util.openURL(event,'https://quickfolders.org/bugs.html')">
 									<label>&qf.label.bugzilla;</label>
 								</div>
 							</row>
@@ -1044,7 +1044,7 @@
 								</description>
 								<div id="L3"
 								     class="button"
-												tooltiptext="http://quickfolders.org/version.html"
+												tooltiptext="https://quickfolders.org/version.html"
 												onclick="options.showVersionHistory(this, false); 
 												setTimeout(function() { window.close(); });
 												return true;">

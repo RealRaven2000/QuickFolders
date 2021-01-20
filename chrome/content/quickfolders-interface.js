@@ -905,7 +905,6 @@ QuickFolders.Interface = {
 					model = QuickFolders.Model;
 		let cat = this.CategoryMenu,
 		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
-		if (prefs.isDebugOption("categories")) debugger;
 		if (cat) {
 			// don't show if ALWAYS and NEVER are the only ones that are references by tabs
 			let catArray = model.Categories,
@@ -918,10 +917,17 @@ QuickFolders.Interface = {
 			}
 			cat.style.display = (showToolIcon || isCustomCat) ? '-moz-inline-box' : 'none';
 			cat.collapsed = (!isCustomCat);
-			if (this.currentActiveCategories && !catArray.includes(this.currentActiveCategories)) {
-				// make sure all tabs are visible in case we delete the last category!
-				this.selectCategory(FCat.ALL);
-			}
+      
+      if (this.currentActiveCategories) {
+        if (this.currentActiveCategories == FCat.UNCATEGORIZED) // [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
+          this.selectCategory(FCat.UNCATEGORIZED);
+        else {
+          if (!catArray.includes(this.currentActiveCategories)) {
+						// make sure all tabs are visible in case we delete the last category!
+						this.selectCategory(FCat.ALL);
+					}
+        }
+      }
 
 				
 			if (prefs.getBoolPref('collapseCategories')) 
@@ -952,7 +958,8 @@ QuickFolders.Interface = {
     try { 
       if (lCatCount > 0 && menuList && menuPopup) {
 				let activeCatsList = this.currentActiveCategories,
-				    cats = activeCatsList ? activeCatsList.split('|') : [];
+				    cats = activeCatsList ? activeCatsList.split('|') : [],
+            isMultiCategories = prefs.getBoolPref('premium.categories.multiSelect');
         util.clearChildren(menuPopup,true);
 
         menuPopup.appendChild(this.createMenuItem(
@@ -964,12 +971,13 @@ QuickFolders.Interface = {
           if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
             let menuItem = this.createMenuItem(category, category, 'menuitem-iconic');
             // add checkbox for multiple category selection
-            if (prefs.getBoolPref('premium.categories.multiSelect')) {
+            if (isMultiCategories) {
 							// multi selection
-							if (cats.includes(category))
+							if (cats.includes(category)) {
 								menuItem.setAttribute("checked", true);
-							if (isPostbox)
-								menuItem.setAttribute("type","checkbox");
+								if (isPostbox)
+									menuItem.setAttribute("type","checkbox");
+							}
             }
             menuPopup.appendChild(menuItem);
           }
@@ -991,8 +999,14 @@ QuickFolders.Interface = {
 					menuPopup.appendChild(this.createIconicElement('menuseparator','*'));
 				}
 				if (isUncat) {
-					let s = this.getUIstring("qfUncategorized","(Uncategorized)");
-					menuPopup.appendChild(this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic'));
+					let s = this.getUIstring("qfUncategorized","(Uncategorized)"),
+              itemUncat = this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic');
+					menuPopup.appendChild(itemUncat);
+          if (cats.includes(FCat.UNCATEGORIZED) && isMultiCategories) {
+            itemUncat.setAttribute("checked", true);
+						if (isPostbox)
+							menuItem.setAttribute("type","checkbox");
+					}
 				}
 				if (isNever) {
 					let s = this.getUIstring("qfShowNever","Never Show (Folder Alias)");
@@ -1636,13 +1650,24 @@ QuickFolders.Interface = {
                 // first let's reset anything in the quickMove if we are in single message mode:
                 QuickMove.resetList();
               }
-              let messageUris  = util.getSelectedMsgUris();
-              if (messageUris) {
-                let currentFolder = util.CurrentFolder;
-                while (messageUris.length) {
-                  QuickMove.add(messageUris.pop(), currentFolder, iscopy);
+              // is the folder tree highlighted?
+              // [issue 75] support moving folders through quickMove
+              if (eventTarget && eventTarget.getAttribute("id") == "folderTree") {
+                let folders = gFolderTreeView.getSelectedFolders();
+                if (folders.length) { 
+                  QuickMove.addFolders(folders, iscopy);
+                  QuickMove.update();
                 }
-                QuickMove.update();
+              }
+              else {
+	              let messageUris  = util.getSelectedMsgUris();
+	              if (messageUris) {
+	                let currentFolder = util.CurrentFolder;
+	                while (messageUris.length) {
+	                  QuickMove.add(messageUris.pop(), currentFolder, iscopy);
+	                }
+	                QuickMove.update();
+	              }
               }
               isHandled = true;
             }
@@ -3106,8 +3131,12 @@ QuickFolders.Interface = {
 			}
 			folder.updateFolder(msgWindow);
 			if (isCurrent) {
-				if (typeof(gFolderDisplay.show) != 'undefined')
-					gFolderDisplay.show(folder);
+				if (typeof(gFolderDisplay.show) != 'undefined') {
+          setTimeout(
+            function() {gFolderDisplay.show(folder);},
+            100
+          );
+        }
 			}
 		}
 		else { // Postbox / SeaMonkey
@@ -5522,7 +5551,7 @@ QuickFolders.Interface = {
 
 	viewChangeOrder: function viewChangeOrder() {
 		window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
-						  'chrome,titlebar,toolbar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
+						  'chrome,titlebar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
 	} ,
 
   lastTabSelected: null,
@@ -6903,16 +6932,37 @@ QuickFolders.Interface = {
 		QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
 	
-	moveFolder: function moveFolder(fromFolder, targetFolder, arrCount) {
-		// [Bug 26517] support multiple folder moves - addeed "count" and transmitting URIs
+	moveFolders: function moveFolders(fromFolders, targetFolder) {
+		// [Bug 26517] support multiple folder moves - added "count" and transmitting URIs
 		const Cc = Components.classes,
 		      Ci = Components.interfaces,
 					util = QuickFolders.Util;
-					
+    let arrCount = fromFolders.length;
+          
+		function isChildFolder(f)	 {
+      for (let i=0; i<fromFolders.length; i++) {
+        if (f == fromFolders[i]) continue;
+        let p = f;
+        while (p = p.parent) {
+          if (p == fromFolders[i]) return true;
+        }
+      }
+      return false;
+    }
+    // make  sure this is not a child of previous folders! 
+    // in this case, it will be moved anyway through its parent
+    // and may lead to a problem (remaining folders are not moved)
+    let newFolders = [];
+    for (let j=0; j<arrCount; j++) {
+      let fld = fromFolders[j];
+      if (isChildFolder(fld)) continue; // skip
+      newFolders.push(fld);
+    }
+    arrCount = newFolders.length;
+    
 		let lastFolder,
 		    sPrompt = util.getBundleString("qfConfirmMoveFolder", "Really move folder {0} to {1}?"),
-				whatIsMoved = arrCount ? 
-				             (arrCount==1 ? fromFolder[0].prettyName : "[" + arrCount + " folders]") : fromFolder.prettyName;
+				whatIsMoved = (arrCount==1 ? newFolders[0].prettyName : "[" + arrCount + " folders]");
 				
 		sPrompt = sPrompt.replace("{0}", whatIsMoved);
 		sPrompt = sPrompt.replace("{1}", targetFolder.prettyName);
@@ -6921,13 +6971,14 @@ QuickFolders.Interface = {
 		
 		let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 		try {
-			let toCount = arrCount || 1, // for the moment only support dragging one folder.
-					ap = util.Application,
-					isNewArray = (ap == 'Thunderbird' || ap == 'SeaMonkey');
-			for (let i = 0; i < toCount; i++) {
+			let ap = util.Application,
+					isNewArray = (ap == 'Thunderbird' || ap == 'SeaMonkey'),
+          countChanges = 0; 
+			for (let i = 0; i < newFolders.length; i++) {
 				let folders = new Array,
-				    fld = arrCount ? fromFolder[i] : fromFolder,
+				    fld = newFolders[i],
 				    fromURI = fld.URI;
+            
 				lastFolder = fld; // keep track of last folder in case of a problem.
 				folders.push(fld); // dt.mozGetDataAt("text/x-moz-folder", i).QueryInterface(Ci.nsIMsgFolder)
 				let array = isNewArray ?
@@ -6936,6 +6987,9 @@ QuickFolders.Interface = {
 				
 				if (!isNewArray)
 					array.AppendElement(fld);
+        if (util.CurrentFolder == fld) {
+          this.goUpFolder();
+        }
 				
 				// cannot move if the target Folder is in a different account?
 				// folders[0]\ == targetFolder.server
@@ -6953,14 +7007,14 @@ QuickFolders.Interface = {
 				// get encoded folder Name:
 				let slash = fromURI.lastIndexOf('/'),
 						encName = fromURI.substring(slash),
-						newURI = targetFolder.URI + encName,
-						countChanges = QuickFolders.Model.moveFolderURI(fromURI, newURI);
-				if (countChanges)
-					this.updateFolders(true, true);
+						newURI = targetFolder.URI + encName;
+				countChanges += QuickFolders.Model.moveFolderURI(fromURI, newURI);
 				
 				// Filter Validation!
-				setTimeout(function() {  QuickFolders.FilterList.validateFilterTargets(fromURI, newURI); });
+				setTimeout(function() {  QuickFolders.Util.validateFilterTargets(fromURI, newURI); });
 			}
+			if (countChanges)
+				this.updateFolders(true, true);
 		}
 		catch(ex) {
 			sPrompt = util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");

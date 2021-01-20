@@ -444,38 +444,7 @@ QuickFolders.FilterList = {
 		if (focusSearchBox)
 			searchBox.focus();
 
-	} ,
-	
-	validateFilterTargets: function(sourceURI, targetURI) {
-		// fix any filters that might still point to the moved folder.
-		// 1. nsIMsgAccountManager  loop through list of servers
-		try {
-			const Ci = Components.interfaces,
-			      util = QuickFolders.Util;
-			let Accounts = util.Accounts,
-			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-	                        .getService(Ci.nsIMsgAccountManager); 
-			for (let a=0; a<Accounts.length; a++) {
-				let account = Accounts[a];
-				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
-				{ 
-					let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
-					QuickFolders.Util.logDebugOptional("filters", "checking account for filter changes: " +  srv.prettyName);
-					// 2. getFilterList
-					let filterList = srv.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
-					// 3. use  nsIMsgFilterList.matchOrChangeFilterTarget(oldUri, newUri, false) 
-					if (filterList) {
-						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 
-					}
-				}
-			}    
-		}
-		catch(ex) {
-			QuickFolders.Util.logException("Exception in QuickFolders.FilterList.validateFilterTargets ", ex);
-		}
-
-	}
-	
+	} 	
 	
 };
 

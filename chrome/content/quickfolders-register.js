@@ -276,7 +276,7 @@ QuickFolders.Licenser = {
   } ,
   
   goPro: function goPro(license_type) {
-    const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfolders",
+    const productDetail = "https://sites.fastspring.com/quickfolders/product/quickfolders",
 					prefs =  QuickFolders.Preferences,
           util = QuickFolders.Util;
     // redirect to registration site; pass in the feature that brought user here
@@ -290,14 +290,14 @@ QuickFolders.Licenser = {
 				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
 			  break;
 			case 1: // domain license
-				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
+				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
 			  break;
 			case 2: // license renewal
 				if (QuickFolders.Crypto.key_type==1) { // domain license!
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
 				}
 				else
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
 				// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 				featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 				// should we autoselect the correct email address?
@@ -324,7 +324,7 @@ QuickFolders.Licenser = {
 
    /* obsolete form submission from code */
   postForm  : function postForm_obsolete(util) {
-    let url ="http://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
+    let url ="https://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
         oReq;
     
     if (util.PlatformVersion >=16.0) {
@@ -345,7 +345,7 @@ QuickFolders.Licenser = {
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    QuickFolders.Util.openURL(event,'http://quickfolders.org/premium.html');
+    QuickFolders.Util.openURL(event,'https://quickfolders.org/premium.html');
   },
   
   // format QF-EMAIL:DATE;CRYPTO

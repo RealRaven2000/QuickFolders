@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.18.2", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.19.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -863,8 +863,7 @@ QuickFolders.Util = {
 			step = 1;
 
 			let messageList,
-			    ap = util.Application,
-			    hostsystem = util.HostSystem;
+			    ap = util.Application;
 			//nsISupportsArray is deprecated in TB3 as it's a hog :-)
 			if (ap=='Thunderbird' || ap=='SeaMonkey')
 				messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
@@ -875,7 +874,9 @@ QuickFolders.Util = {
 			// copy what we need...
 			let messageIdList = [],
           isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
-          bookmarks = QuickFolders.bookmarks;
+          bookmarks = QuickFolders.bookmarks,
+          isTargetDifferent = false,
+          sourceFolder;
 			for (let i = 0; i < messageUris.length; i++) {
 				let messageUri = messageUris[i],
 				    Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
@@ -883,6 +884,7 @@ QuickFolders.Util = {
         if(isMarkAsRead) {
           Message.markRead(true);
         }
+        step = 3;
         // if we move, check our reading list!
         if (!makeCopy && bookmarked>=0) {
           let entry = bookmarks.Entries[bookmarked];
@@ -901,16 +903,17 @@ QuickFolders.Util = {
 					messageList.appendElement(Message , false);
 				else
 					messageList.AppendElement(Message);
+        // [issue 23]  quick move from search list fails if first mail is already in target folder
+        //  What to do if we have "various" source folders?
+        if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {
+          sourceFolder = Message.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
+          isTargetDifferent = true;
+        }
 			}
 
-			step = 3;
-			let sourceMsgHdr = (ap=='Thunderbird' || ap=='SeaMonkey') ?
-				messageList.queryElementAt(0, Ci.nsIMsgDBHdr) :
-        messageList.GetElementAt(0).QueryInterface(Ci.nsIMsgDBHdr);
 			step = 4;
 
-			let sourceFolder = sourceMsgHdr.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
-      if (sourceFolder == targetFolder) {
+      if (!isTargetDifferent) {
         util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
@@ -921,9 +924,9 @@ QuickFolders.Util = {
 			step = 7;
       let isMove = (!makeCopy); // mixed!
       util.logDebugOptional('dnd,quickMove,dragToNew', 'calling CopyMessages (\n' +
-        'sourceFolder = ' + sourceFolder + '\n'+
+        'sourceFolder = ' + sourceFolder.prettyName + '\n'+
         'messages = ' + messageList + '\n' +
-        'destinationFolder = ' + targetFolder + '\n' + 
+        'destinationFolder = ' + targetFolder.prettyName + '\n' + 
         'isMove = (various)\n' + 
         'listener = QuickFolders.CopyListener\n' +
         'msgWindow = ' + msgWindow + '\n' +
@@ -1341,7 +1344,11 @@ QuickFolders.Util = {
 	
 	findMailTab: function findMailTab(tabmail, URL) {
 		const util = QuickFolders.Util;
-		// mail: tabmail.tabInfo[n].browser		
+    if (typeof ChromeUtils.import == "undefined") 
+      Components.utils.import('resource://gre/modules/Services.jsm');
+    else
+      var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');    
+
 		let baseURL = util.getBaseURI(URL),
 				numTabs = util.getTabInfoLength(tabmail);
 		
@@ -1351,7 +1358,15 @@ QuickFolders.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					info.browser.loadURI(URL);
+          try {
+            let params = {
+              triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal()
+            }
+            info.browser.loadURI(URL, params);
+          }
+          catch(ex) {
+            util.logException(ex);
+          }
 					return true;
 				}
 			}
@@ -1875,9 +1890,39 @@ QuickFolders.Util = {
 		const ellipsis = "\u2026".toString();
 		let slash = uri.lastIndexOf("/");
 		return slash>0 ? ellipsis  + uri.substr(slash) : ellipsis + uri.substr(-16);
+	},
+
+  // moved from FilterList!
+	validateFilterTargets: function(sourceURI, targetURI) {
+		// fix any filters that might still point to the moved folder.
+		// 1. nsIMsgAccountManager  loop through list of servers
+		try {
+			const Ci = Components.interfaces,
+			      util = QuickFolders.Util;
+			let Accounts = util.Accounts,
+			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+	                        .getService(Ci.nsIMsgAccountManager); 
+			for (let a=0; a<Accounts.length; a++) {
+				let account = Accounts[a];
+				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
+				{ 
+					let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
+					QuickFolders.Util.logDebugOptional("filters", "checking account for filter changes: " +  srv.prettyName);
+					// 2. getFilterList
+					let filterList = srv.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
+					// 3. use  nsIMsgFilterList.matchOrChangeFilterTarget(oldUri, newUri, false) 
+					if (filterList) {
+						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 
+					}
+				}
+			}    
+		}
+		catch(ex) {
+			QuickFolders.Util.logException("Exception in QuickFolders.Util.validateFilterTargets ", ex);
+		}
 	}
 
-  
+    
 };  // QuickFolders.Util
 
 
@@ -1966,13 +2011,13 @@ QuickFolders.Util.FirstRun = {
 					// on very first run, we go to the index page - welcome blablabla
 					util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
 					window.setTimeout(function() {
-						util.openURL(null, "http://quickfolders.org/index.html");
+						util.openURL(null, "https://quickfolders.org/index.html");
 					}, 1500); 
 				}
 			}
 			else { 
         let isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired,
-        		versionPage = util.makeUriPremium("http://quickfolders.org/version.html") + "#" + pureVersion;
+        		versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
 				suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");

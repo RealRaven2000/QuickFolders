@@ -253,10 +253,6 @@
               Up until now, you could only move folders by holding Shift and dragging to a QuickFolders tab, which was 
               an inconvenient limitation.
             </li>
-						<li> 
-              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/90">[issue 90]</a>
-              Useless entries in "Recent Folders" list.
-            </li>
             <li> 
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/92">[issue 92]</a> 
               - do not apply To address from advanced tab properties when replying to an email!
@@ -308,7 +304,7 @@
             <h4 class="inList">Bug Fixes</h4>
             <li> 
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/72">[issue 72]</a>
-              Fixed: Category "_Uncategorized" will show all categories after moving a folder to another category
+              Fixed: Category "_Uncategorized" erratically showed all categories after moving a folder to another category
             </li>
 						<li> 
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/76">[issue 76]</a>
@@ -349,6 +345,7 @@
             <h4 class="inList">Miscellaneus</h4>
 						<li> removed Encryption test code from options.js </li>
 						<li> validateFilterTargets moved to other module to avoid console errors.</li>
+            <li> Improved reopening any support sites already open in a tab by jumping to the correct place if necessary.</li>
 					</ul>
 			</li>      
       
@@ -461,6 +458,35 @@
           
 			</li>
       
+      
+			<a name="4.19">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.19 - WIP</a>
+				</h4>
+          <p> The following items were backported from the current version for Thunderbird 78 (QuickFolders 
+            <a href="#5.1">5.1</a> and <a href="#5.2">5.2</a>) </p>
+					<ul>
+            <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/75">[issue 75]</a>
+              - Support moving folders with the quickMove function. You can now move one or multiple folders by dragging them 
+              from the tree to the quickMove button or hitting Shift+M (with a Pro License) while  the folder tree is highlighted.<br>
+              Up until now, you could only move folders by holding Shift and dragging to a QuickFolders tab, which was 
+              an inconvenient limitation.
+            </li>
+            <li> 
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/72">[issue 72]</a>
+              Fixed: Category "_Uncategorized" erratically showed all categories after moving a folder to another category
+            </li>
+            <li>
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/23">[issue 23]</a> 
+              Fixed: quickMove aborts with "Nothing to do: Message is already in folder" if the first mail in the 
+              selection is already in target folder. This may happen if you drag mails from a multi-folder view 
+              such as a search results window. It can also happen if you execute the quickMove command after a 
+              while and you (or a filter) have moved some of the mails to the target folder already.
+            </li>
+            <li>Improved reopening any support sites already open in a tab by jumping to the correct place if necessary.</li>
+					</ul>
+			</li>
       
 			<a name="4.18.2">&nbsp;</a>
 			<li>

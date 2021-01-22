@@ -4,12 +4,18 @@
     margin-left:  120px !important;
     margin-right: 120px !important;
 	}
+  #infoTabs {
+    margin-right: 5px !important;
+  }
 }
 /* max width of 1000px */
 @media only screen and (min-width: 850px) and (max-width: 1000px) {
   #main-content-no-nav {
     margin-left: 9%  !important;
     margin-right: 9% !important;
+  }
+  #infoTabs {
+    margin-right: -4% !important;
   }
 }
 
@@ -18,7 +24,7 @@
 /*** screen size support ***/
 @media only screen and (max-width: 850px){
   #infoTabs {
-    margin-right: -8% !important; 
+    margin-right: -2% !important; 
   }
   #main-content-no-nav {
     margin-left: 0  !important;

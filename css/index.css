@@ -1,4 +1,4 @@
-@import url("/css/myProjects.css") screen;
+@import url("myProjects.css") screen;
 
 h4#settingsGeneral:before {
   content: url('/ico/settings-general.png');
@@ -17,9 +17,6 @@ h4#settingsAdvanced:before {
 .optionlist h5 {
 	background: rgb(242,246,248);
 	background: linear-gradient(to bottom,  rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%);
-	background: -webkit-linear-gradient(top , rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%);
-	background: -o-linear-gradient(top, rgba(241,231,103,1) 0%,rgba(241,231,103,1) 37%,rgba(254,182,69,1) 100%);
-	background: -ms-linear-gradient(top, rgba(241,231,103,1) 0%,rgba(241,231,103,1) 37%,rgba(254,182,69,1) 100%);
 	border: 1px rgba(80,80,80,0.3) !important;
 	border-radius: 5px 5px 0 0;
   color: rgb (0,0,0);

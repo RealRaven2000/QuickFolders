@@ -396,18 +396,37 @@ END LICENSE BLOCK */
     ##  - any dragover styling (special color, dropmarkers when moving tabs around) is now removed
     ##
     
-  5.1 QuickFolders Pro - WIP
+  5.1 QuickFolders Pro - 10/12/2020
     ## [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another category
     ## [issue 76] Recent Folders List does not updated until TB closed and reopened
     ## [issue 80] Recent Folders list not updated when moving email using drag and drop
     ## [issue 79] Drag over color + Dropmarkers when reordering Tabs not working
     ## [issue 81] Current Folder Toolbar display - text is always black
-    ## [issue 84] Can't drag enevelope icon in Navigation bar (a.k.a. Current Folder) to a folder / QuickFolder drop target
+    ## [issue 84] Can't drag envelope icon in Navigation bar (a.k.a. Current Folder) to a folder / QuickFolder drop target
                   also the Navigation Bar is hidden if multiple mails or a thread is selected.
     ## Hide option to extend license if it is already more than 1 year into the future.
     ## Hide popup screen for licensed users who have > 40 days left on their license
     ## removed Encryption test code from options.js
     ## validateFilterTargets moved to other module to avoid console errors
+    ## In the dialog "change order of tabs" the Up and Down labels on the buttons were not rendered 
+    ## Improved legibility of dropdown items in themed  QuickFolders options dialog
+    ## Improved reopening any support sites already open in a tab by jumping to the correct place if necessary
+
+  5.2 QuickFolders Pro - WIP
+    ## [issue 91] Improvement: QF advanced properties setting "from identity" : set "Reply-to" address accordingly
+                  also spawned some improvements in SmartTemplates [issue 108] where text blocks were duplicated
+                  by setting the from identity
+    ## [issue 92] do not apply To address from advanced tab propertiues when replying to an email!
+    ## [issue 94] Tb78: fixed - Tab-specific properties were displayed in incorrect screen position 
+    ## [issue 75] support moving folders using the quickMove button
+    ## [issue 96] Drag'n'drop issue in TB 85 beta.
+    ## [issue 23] quickMove aborts with "Nothing to do: Message is already in folder" if the first mail in the selection 
+                  is already in target folder. 
+                  This may happen if you drag mails from a multi-folder view such as a search results window.
+                  It can also happen if you execute the quickMove command after a while and you (or a filter)
+                  have moved some of the mails to the target folder already.
+    ## Hide referrer field in license purchase window
+    -=-----------------=-    
 
 
    	TODOs
@@ -425,8 +444,7 @@ END LICENSE BLOCK */
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
 		
-    ## [issue 23] quickMove fails if first mail is already in target folder (open in conversation)
-    ##            probably similar to a virtual search folder.
+
     
     
 	Known Issues
@@ -605,7 +623,9 @@ var QuickFolders = {
 
 	//for testing
 	debug_log: function debug_log(ev) {
-		console.log("DnD");
+    const prefs = QuickFolders.Preferences;
+    if (prefs.isDebug)
+      console.log("DnD " + ev);
 	},
   
 	// helper function to do init from options dialog!
@@ -808,7 +828,7 @@ var QuickFolders = {
 			    tab = util.getTabInfoByIndex(tabmail, idx),
           tabMode = null; 
 			if (tab) {
-				let tabMode = util.getTabMode(tab);
+				tabMode = util.getTabMode(tab);
 				// is this a new Thunderbird window?
 				let cats;
 				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
@@ -977,7 +997,10 @@ var QuickFolders = {
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
 		debug_log: function debug_log(ev) {
-			console.log("toolbarDragObserver:DnD");
+      let type = ev.type || "",
+          id = ev.target ? (ev.target.id || "") : "no target",
+          txt  = ev ? (type + " " + id) : "";
+			console.log("toolbarDragObserver:DnD " + txt) ;
 		},
 	
 		canHandleMultipleItems: false,
@@ -1101,14 +1124,12 @@ var QuickFolders = {
 
 					break;
 				case "text/currentfolder":
-          debugger;
 					// sourceUri = dropData.data;
           sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					addFolder(sourceUri);
 					break;
 				case "text/plain":  // [Bug 26560]
 				case "text/unicode":  // plain text: button was moved OR: a menuitem was dropped!!
-          debugger;
 					// sourceUri = dropData.data;
           sourceUri = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					let eType = dragSession.dataTransfer.mozSourceNode.tagName,
@@ -1244,6 +1265,7 @@ var QuickFolders = {
 		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.drop INSTEAD!
 		drop: function menuObs_drop(evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
+            Cc = Components.classes,
 				    util = QuickFolders.Util,
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
@@ -1852,14 +1874,21 @@ var QuickFolders = {
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
-      let isPreventDefault = true;
+      let isPreventDefault = true,
+          isMoveFolderQuickMove = false;
 			switch (contentType) {
 				case  "text/x-moz-folder": 
 					if (!isShift) {
-						let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-								"Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-						util.alert(sPrompt);
-						break;
+            // [issue 75] support moving folders through quickMove
+            if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+              isMoveFolderQuickMove = true;
+            }
+            else {
+              let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+                  "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+              util.alert(sPrompt);
+              break;
+            }
 					}
 					// handler for dropping folders
 					try {
@@ -1874,12 +1903,19 @@ var QuickFolders = {
                     false);
 								foldersArray.push(msgFolder);
 							}
-							QI.moveFolder(foldersArray, targetFolder, count);
+              if (!isMoveFolderQuickMove)
+                QI.moveFolders(foldersArray, targetFolder);
+              else {
+                // stash folders away for the next quickMove
+                // foldersArray -- 
+                QuickFolders.quickMove.addFolders(foldersArray, evt.ctrlKey);
+                QuickFolders.quickMove.update();
+              }
 						}					
 						else {
 							let sourceFolder = 
                 util.getFolderFromDropData(evt, dragSession);
-							QI.moveFolder(sourceFolder, targetFolder);
+							QI.moveFolders([sourceFolder], targetFolder);
 						}
 					}
 					catch(e) {

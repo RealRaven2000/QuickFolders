@@ -1,4 +1,4 @@
-<b>Release 5.1</b>
+<b>Release 5.2</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the nexty 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
@@ -6,21 +6,10 @@
 
 <b>Changes / Items worked</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/72">[issue 72]</a> Category "_Uncategorized" will show all categories after moving a folder to another category
-</li>
-<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/76">[issue 76]</a>Recent Folders List is not updated until Thunderbird is restarted.
-</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/80">[issue 80]</a> Recent Folders list not updated when moving email using drag and drop to the folder tree.  I have made the updating of this folder time stamp somewhat more aggressive, but avoiding to add folders like Inbox, Sent, Archives, Drafts, Junk, Trash and Templates because they would always end up on top.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/79">[issue 79]</a> Drag over color + Dropmarkers when reordering Tabs not working
-</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/81">[issue 81]</a> Current Folder Toolbar display - text is always black
-</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/84">[issue 84]</a> Can't drag envelope icon in Navigation bar (a.k.a. Current Folder) to a folder / QuickFolder drop target. Also the Navigation Bar is hidden if multiple mails or a thread is selected.</li>
-<li> Hide option to extend license if it is already more than 1 year into the future. </li>
-<li> Hide popup screen for licensed users who have > 40 days left on their license </li>
-<li> removed Encryption test code from options.js </li>
-<li> validateFilterTargets moved to other module to avoid console errors.</li>
-<li> Improve legibility of dropdown items in themed  QuickFolders options dialog. Especially affects users of dark themes </li>
-<li> In the dialog "change order of tabs" the <i>Up</i> and <i>Down</i> labels on the buttons were not rendered for some yet unknown reason - this is now worked around by removing the button styling from these elements</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/92">[issue 92] - do not apply To address from advanced tab propertiues when replying to an email!</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/94">[issue 94] - Tb78: Tab-specific properties displayed in incorrect screen position.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/75">[issue 75]</a> Support moving folders via quickMove button. You can now move one or multiple folders by dragging them from the tree to the quickMove button or hitting Shift+M (with a Pro License) while  the folder tree is highlighted. Up until now, you could only move folders by holding Shift and dragging to a QuickFolders tab.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/96">[issue 96]</a> Drag'n'drop issue in Thunderbird 85 beta. Although I fixed this particular issue I make no guarantees for any functionality if you are using beta versions. I can only support the current ESR version Thunderbird 78.1 - 78.* fully.</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/23">[issue 23]</a> Fixed: quickMove aborts with "Nothing to do: Message is already in folder" if the first mail in the selection is already in target folder. This may happen if you drag mails from a multi-folder view such as a search results window. It can also happen if you execute the quickMove command after a while and you (or a filter) have moved some of the mails to the target folder already.</li>
 </ul>
 

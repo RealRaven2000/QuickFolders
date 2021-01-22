@@ -176,8 +176,8 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 	}
 					
 	function setMailHeaders(folder, options, isOrigin) {
-		const ADVANCED_FLAGS = util.ADVANCED_FLAGS;
-		
+		const ADVANCED_FLAGS = util.ADVANCED_FLAGS,
+          msgComposeType = Ci.nsIMsgCompType;
 		var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		
 		if (!folder.URI) return;
@@ -196,9 +196,19 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
         else {
           // already explicitely set child folder settings are not overwritten by parents!
           if (entry.toAddress && !options.toAddress) {
-            options.toAddress = entry.toAddress;
-            let dbg = txt.replace('{1}', entry.toAddress);
-            util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+            // [issue 92] - do not apply when replying!
+            if (gMsgCompose.type == msgComposeType.Reply
+             || gMsgCompose.type == msgComposeType.ReplyAll
+             || gMsgCompose.type == msgComposeType.ReplyToSender
+             || gMsgCompose.type == msgComposeType.ReplyToGroup
+             || gMsgCompose.type == msgComposeType.ReplyToSenderAndGroup
+             || gMsgCompose.type == msgComposeType.ReplyToList)
+              util.logDebugOptional('composer', "not overwriting to address: this is a reply case");
+            else {
+              options.toAddress = entry.toAddress;
+              let dbg = txt.replace('{1}', entry.toAddress);
+              util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+            }
           }
           if (entry.fromIdentity && !options.identity) {
             let dbg = txt.replace('{1}', entry.fromIdentity);
@@ -253,9 +263,11 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 				var identityList = document.getElementById("msgIdentity");
 				identityList.selectedItem =
 					identityList.getElementsByAttribute("identitykey", identity.key)[0];
-				let event = document.createEvent('Events');
-				event.initEvent('compose-from-changed', false, true);
-				document.getElementById("msgcomposeWindow").dispatchEvent(event);
+				// let event = document.createEvent('Events');
+				// event.initEvent('compose-from-changed', false, true);
+				// document.getElementById("msgcomposeWindow").dispatchEvent(event);
+        // instead we will trigger the command that is also bound to the dropdown.
+        LoadIdentity(false);
 			}
 		}
 

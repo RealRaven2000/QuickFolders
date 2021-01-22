@@ -190,7 +190,7 @@ QuickFolders.Styles = {
                 st.setProperty(attribute, value, ((important) ?	"important" : ""));
               }
               else {
-                if (origProperty=="");
+                // if (origProperty=="");
                 st.setProperty(attribute, value, ((important) ?	"important" : ""));
                 foundRule = true;
               }

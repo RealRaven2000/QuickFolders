@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.1", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -203,6 +203,9 @@ QuickFolders.Util = {
 		return this.mHost; // linux - winnt - darwin
 	},
   
+  // return the button pressed:
+  // 0 - ok / yes / default
+  // 1 - cancel
   alert: function alert(msg, caption) {
     caption = caption || "QuickFolders";
     Services.prompt.alert(null, caption, msg);
@@ -786,14 +789,22 @@ QuickFolders.Util = {
 			}
 			step = 1;
 
-          //nsISupportsArray is deprecated in TB3 as it's a hog :-)
-			let messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+			let messageList,
+          isListArray = util.versionGreaterOrEqual(util.ApplicationVersion, "85"); // [issue 96]
+          
+      if (isListArray) 
+        messageList = [];
+      else
+        messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+        
 			step = 2;
 
 			// copy what we need...
 			let messageIdList = [],
           isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
-          bookmarks = QuickFolders.bookmarks;
+          bookmarks = QuickFolders.bookmarks,
+          isTargetDifferent = false,
+          sourceFolder;
 			for (let i = 0; i < messageUris.length; i++) {
 				let messageUri = messageUris[i],
 				    Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
@@ -801,6 +812,7 @@ QuickFolders.Util = {
         if(isMarkAsRead) {
           Message.markRead(true);
         }
+        step = 3;
         // if we move, check our reading list!
         if (!makeCopy && bookmarked>=0) {
           let entry = bookmarks.Entries[bookmarked];
@@ -815,16 +827,20 @@ QuickFolders.Util = {
         }
 
 				messageIdList.push(Message.messageId);
-        messageList.appendElement(Message , false);
+        if (isListArray) 
+          messageList.push(Message);
+        else
+          messageList.appendElement(Message , false);
+        // [issue 23]  quick move from search list fails if first mail is already in target folder
+        //  What to do if we have "various" source folders?
+        if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {
+          sourceFolder = Message.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
+          isTargetDifferent = true;
+        }
 			}
 
-			step = 3;
-			let sourceMsgHdr = 
-				messageList.queryElementAt(0, Ci.nsIMsgDBHdr);   //TB78 replace queryElementAt with array[index].QueryInterface?
 			step = 4;
-
-			let sourceFolder = sourceMsgHdr.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
-      if (sourceFolder == targetFolder) {
+      if (!isTargetDifferent) {
         util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
@@ -833,16 +849,17 @@ QuickFolders.Util = {
 			step = 6;
 			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;
-      let isMove = (!makeCopy); // mixed!
+      let isMove = (!makeCopy), // mixed!
+          mw = msgWindow; // msgWindow  - global
       util.logDebugOptional('dnd,quickMove,dragToNew', 'calling CopyMessages (\n' +
-        'sourceFolder = ' + sourceFolder + '\n'+
+        'sourceFolder = ' + sourceFolder.prettyName + '\n'+
         'messages = ' + messageList + '\n' +
-        'destinationFolder = ' + targetFolder + '\n' + 
+        'destinationFolder = ' + targetFolder.prettyName + '\n' + 
         'isMove = (various)\n' + 
         'listener = QuickFolders.CopyListener\n' +
-        'msgWindow = ' + msgWindow + '\n' +
+        'window = ' + mw + '\n' +
         'allowUndo = true)');      
-			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, msgWindow, true);
+			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
 			step = 8;
 			util.touch(targetFolder); // set MRUTime
 			return messageIdList; // we need the first element for further processing
@@ -938,22 +955,6 @@ QuickFolders.Util = {
 		return aFolder;
 	} ,
 
-	pbGetSelectedMessageURIs : function pbGetSelectedMessageURIs() {
-	  try {
-	    let messageArray = {},
-	        length = {},
-	        view = GetDBView();
-	    view.getURIsForSelection(messageArray, length);
-	    if (length.value)
-	    	return messageArray.value;
-	    else
-	    	return null;
-	  }
-	  catch (ex) {
-	    dump("GetSelectedMessages ex = " + ex + "\n");
-	    return null;
-	  }
-	},
 	
 /**
  * Returns a new filename that is guaranteed to not be in the Set
@@ -1506,7 +1507,7 @@ QuickFolders.Util = {
       let p = msgFolder.parent;
       if(!p) return false;
       if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
-        return false; // empty folder, in trash`1
+        return false; // empty folder, in trash
 			return true; // msgFolder.parent != null;
 		}
 		return false;

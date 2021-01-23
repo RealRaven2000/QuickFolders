@@ -126,11 +126,30 @@
 			<br />
 
 			<a name="news" > </a>
-			<h3>Latest News (01/September/2019) - more QuickFolders Thunderbird 68 Compatibility</h3>
-			<p>QuickFolders 4.16 adds even more changes to support the latest version of Thunderbird - the next 
-			   ESR period (2019-2020) is starting this month. The release version is already published
-				 and will be pushed out as autopmatic update to users soon.
-			   Latest changes include:
+			<h3>Latest News (23/01/2021) - QuickFolders Thunderbird 78 Compatibility</h3>
+			<p>
+        QuickFolders 5.2 adds even more changes to support the latest version of Thunderbird - the next 
+			  ESR period (2020-2021) started last October. 
+        Among other things, Thunderbird 78 has a new systemn for permissions, so you will see
+        a message asking for full permissions. There is a 
+        <a href="https://support.mozilla.org/en-US/kb/permission-request-messages-thunderbird-extensions#w_have-full-unrestricted-access-to-thunderbird-and-your-computer">new article</a>
+        on the Mozilla support pages explaining why this is actually essentially nothing new. As Thunderbird 
+        follows Firefox which moves toward web extensions, a new technology has emerged that restricts Add-ons
+        to use only managed entry points (APIs) for adding functionality - these are still largely
+        incomplete as regards the many things Add-ons can actually add to the application. That's 
+        why Thunderbird allows using "experimental APIs", which is essentially a wrapper technology
+        that allows (substantially modified) classic extensions to run on this system.
+      </p>   
+      <p>
+       This also meant splitting the code base for the older versions and having separate releases
+       (it's not possible to combine both system in a single Add-on). Essentially new functionality
+       will go into the newer versions of QuickFolders (5.0 and higher) whereas I back-port bug fixes and some 
+       selected functionality to the legacy versions of QuickFolders (4.18 and higher).
+       Both versions will automatically update the correct user base as usual.
+      </p>
+      <p>
+       For the list of latest changes <a href="#latest">click here</a>.
+       For Thunderbird 68, <a href="#latestlegacy">click here</a>.
 			</p>
 			<ul>
 				<li> [4.16] The quickMove / quickJump  box had stopped working. 4.16 fixed it and brings back the automatic suggestions
@@ -139,19 +158,7 @@
 				<li> [4.16] Subfolder menus do not expand - A regression has caused subfolders (2nd and higher level) not to be expanded on the drag / click context menus of the folder tabs.
 				</li>
 				<li> [4.16] Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed.</li>
-				<li> [4.15.4] Fixed broken functionality of dialog buttons (Cancel, Ok didn't close dialog). </li>
-				<li> [4.15.4] Remember last opened panel in options dialog. </li>
-				<li> [4.15.4] Fixed syntax for module import (Services.jsm, PluralForm). </li>
-				<li> [4.15.4] Fixed broken notification panels. </li>
-				<li> [4.15.4] Replaced prefwindows with dialogs.</li>
-				<li> [4.15.4] Use newer preferences script.</li>
-				<li> [4.15.4] Replace groupbox elements with html fieldsets.</li>
-				<li> [4.15.4] Use new promise-based AddonManager object.</li>
 			</ul>
-			<p>Note that any versions uploaded at mozdev.org will from now on be restricted to only
-			  contain an English and German locale, as there is a hard limit for attachments of
-				1000 Kbyte.
-			</p>
 			 
 			<a name="quickJump"> </a>
 			<h4>Premium Feature: quickJump</h4>
@@ -203,18 +210,6 @@
 
 			<hr />
 
-
-			<h3>Older Versions, Beta Versions</h3>
-
-			<p>Older versions can be downloaded here, although I do not recommend it; also you can download some of the betas that I am generating when I fix ongoing issues.
-			Some of these might also be on bugzilla as patches.<br/>
-
-			I usually fix bugs fairly quickly but you might find some of these buggy - you have been warned:</p>
-
-			<a href="http://downloads.mozdev.org/quickfolders/" target="_blank">http://downloads.mozdev.org/quickfolders/</a>
-
-			<hr />
-
 			<h3>Version Details</h3>
 
 			<p class=note>
@@ -223,7 +218,7 @@
 
 			<ul id="version-history">
 
-			<a name="latest">&nbsp;</a>
+<a name="latest">&nbsp;</a>
 			<!--
 			<a name="5.*">&nbsp;</a>
 			<li>
@@ -511,6 +506,7 @@
           
 			</li>
       
+<a name="latestlegacy">&nbsp;</a>
       
 			<a name="4.19">&nbsp;</a>
 			<a name="4.19.1">&nbsp;</a>

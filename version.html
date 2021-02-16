@@ -307,11 +307,16 @@
             <h4 class="inList">Improvements</h4>
 						<li>
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/82">[issue 82]</a>
-              Improved sorting of search results during quickMove / quickJump
+              Improved sorting of search results during quickMove / quickJump. The results are now sorted
+              mainly based on alphabetical order (with boosts for folder names that start with the searched text 
+              and completely matching the search text). As before, partial strings are only matched from a length
+              of at least 3 letters.
             </li>
 						<li>
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/109">[issue 109]</a>
-              Mark Messages read in Folder and the subfolders recursively not displayed as expected
+              Mark Messages read in Folder and the subfolders recursively not displayed as expected.
+              This additional menu item that can be used to set subfolders read was only displayed if the actual 
+              folder of the tab itself had no unread emails, and only child folders had them.
             </li>
 						<li>
               <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/37">[issue 37]</a>

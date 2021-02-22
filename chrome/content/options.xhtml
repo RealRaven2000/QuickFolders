@@ -847,140 +847,133 @@
 															oncommand="return options.toggleColorTranslucent(this, 'inactive-colorpicker', 'inactivetabs-label', 'InactiveTab');" />
 									</hbox>
 								</vbox>
-								<spacer flex="1" />
+								<spacer />
 								<vbox id="qf-stateColors">
-									<grid>
-										<columns>
-											<column />
-											<column />
-											<column />
-											<column />
-										</columns>
-										<rows>
-											<row align="center">
-												<label id="activetabs-label"
-															 value="&qf.label.ActiveTabColor;"
-															 tooltiptext="&qf.label.setcolors;"
-															 class="qfTabPreview"
-															 stylePrefKey="ActiveTab"
-															 context="QuickFolders-Options-PalettePopup"
-															 onclick="options.showPalette(this, 'active');" />
-												<html:input id="activetab-fontcolorpicker"
-																		 type="color"
-																		 palettename="vibrant"
-																		 elementInfo="ActiveTab.color"
-																		 previewLabel="activetabs-label"
-																		 onchange="return options.styleUpdate('ActiveTab','color', this.value, 'activetabs-label');" />
-												<html:input id="activetab-colorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="ActiveTab.background-color"
-																		 previewLabel="activetabs-label"
-																		 onchange="return options.styleUpdate('ActiveTab','background-color', this.value, 'activetabs-label');" />
-												<!-- instead of a checkbox, lets have a selection: no palette, like standard, vibrant, pastel"
-												This used to call options.toggleUsePalette(this,'active') from a checkbox
-												-->
-												<menulist id="menuActiveTabPalette"
-																	sizetopopup="none"
-																	preference="qfpl-ActiveTab-PaletteType"
-																	oncommand="QI.updateMainWindow();">
-													<menupopup>
-														<menuitem label="&qf.palette.twoColors;"
-																			value="0"
-																			oncommand="options.toggleUsePalette(this, 'active', 0, true);" />
-														<menuitem label="&qf.palette.standard;"
-																			value="1"
-																			oncommand="options.toggleUsePalette(this, 'active', 1, true);" />
-														<menuitem label="&qf.palette.pastel;"
-																			value="2"
-																			oncommand="options.toggleUsePalette(this, 'active', 2, true);" />
-														<menuitem label="&qf.palette.night;"
-																			value="3"
-																			oncommand="options.toggleUsePalette(this, 'active', 3, true);" />
-													</menupopup>
-												</menulist>
-											</row>
-											<row align="center">
-												<label id="hoveredtabs-label"
-															 value="&qf.label.HoveredTabColor;"
-															 tooltiptext="&qf.label.setcolors;"
-															 class="qfTabPreview"
-															 stylePrefKey="HoveredTab"
-															 context="QuickFolders-Options-PalettePopup"
-															 onclick="options.showPalette(this, 'hovered');" />
-												<html:input id="hover-fontcolorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="HoveredTab.color"
-																		 previewLabel="hoveredtabs-label"
-																		 onchange="return options.styleUpdate('HoveredTab','color', this.value, 'hoveredtabs-label');" />
-												<html:input id="hover-colorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="HoveredTab.background-color"
-																		 previewLabel="hoveredtabs-label"
-																		 onchange="return options.styleUpdate('HoveredTab','background-color', this.value, 'hoveredtabs-label');" />
-												<menulist id="menuHoverPalette"
-																	sizetopopup="none"
-																	preference="qfpl-HoveredTab-PaletteType"
-																	oncommand="QI.updateMainWindow();">
-													<menupopup>
-														<menuitem label="&qf.palette.twoColors;"
-																			value="0"
-																			oncommand="options.toggleUsePalette(this, 'hovered', 0, true);" />
-														<menuitem label="&qf.palette.standard;"
-																			value="1"
-																			oncommand="options.toggleUsePalette(this, 'hovered', 1, true);" />
-														<menuitem label="&qf.palette.pastel;"
-																			value="2"
-																			oncommand="options.toggleUsePalette(this, 'hovered', 2, true);" />
-														<menuitem label="&qf.palette.night;"
-																			value="3"
-																			oncommand="options.toggleUsePalette(this, 'hovered', 3, true);" />
-													</menupopup>
-												</menulist>
-											</row>
-											<row align="center">
-												<label id="dragovertabs-label"
-															 value="&qf.label.DragOverBackground;"
-															 class="qfTabPreview"
-															 stylePrefKey="DragOver"
-															 context="QuickFolders-Options-PalettePopup"
-															 onclick="options.showPalette(this, 'dragOver');" />
-												<html:input id="dragover-fontcolorpicker"
-																		 palettename="standard"
-																		 type="color"
-																		 elementInfo="DragTab.color"
-																		 previewLabel="dragovertabs-label"
-																		 onchange="return options.styleUpdate('DragTab', 'color', this.value, 'dragovertabs-label');" />
-												<html:input id="dragover-colorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="DragTab.background-color"
-																		 previewLabel="dragovertabs-label"
-																		 onchange="return options.styleUpdate('DragTab', 'background-color', this.value, 'dragovertabs-label');" />
-												<menulist id="menuDragOverPalette"
-																	sizetopopup="none"
-																	preference="qfpl-DragOver-PaletteType"
-																	oncommand="QI.updateMainWindow();">
-													<menupopup>
-														<menuitem label="&qf.palette.twoColors;"
-																			value="0"
-																			oncommand="options.toggleUsePalette(this, 'dragOver', 0, true);" />
-														<menuitem label="&qf.palette.standard;"
-																			value="1"
-																			oncommand="options.toggleUsePalette(this, 'dragOver', 1, true);" />
-														<menuitem label="&qf.palette.pastel;"
-																			value="2"
-																			oncommand="options.toggleUsePalette(this, 'dragOver', 2, true);" />
-														<menuitem label="&qf.palette.night;"
-																			value="3"
-																			oncommand="options.toggleUsePalette(this, 'dragOver', 3, true);" />
-													</menupopup>
-												</menulist>
-											</row>
-										</rows>
-									</grid>
+                
+                
+									<div id="colorsGrid" class="grid-container">
+              
+                    <label id="activetabs-label"
+                           value="&qf.label.ActiveTabColor;"
+                           tooltiptext="&qf.label.setcolors;"
+                           class="qfTabPreview"
+                           stylePrefKey="ActiveTab"
+                           context="QuickFolders-Options-PalettePopup"
+                           onclick="options.showPalette(this, 'active');" />
+                    <html:input id="activetab-fontcolorpicker"
+                                 type="color"
+                                 palettename="vibrant"
+                                 elementInfo="ActiveTab.color"
+                                 previewLabel="activetabs-label"
+                                 onchange="return options.styleUpdate('ActiveTab','color', this.value, 'activetabs-label');" />
+                    <html:input id="activetab-colorpicker"
+                                 type="color"
+                                 palettename="standard"
+                                 elementInfo="ActiveTab.background-color"
+                                 previewLabel="activetabs-label"
+                                 onchange="return options.styleUpdate('ActiveTab','background-color', this.value, 'activetabs-label');" />
+
+                    <menulist id="menuActiveTabPalette"
+                              sizetopopup="none"
+                              preference="qfpl-ActiveTab-PaletteType"
+                              oncommand="QI.updateMainWindow();">
+                      <menupopup>
+                        <menuitem label="&qf.palette.twoColors;"
+                                  value="0"
+                                  oncommand="options.toggleUsePalette(this, 'active', 0, true);" />
+                        <menuitem label="&qf.palette.standard;"
+                                  value="1"
+                                  oncommand="options.toggleUsePalette(this, 'active', 1, true);" />
+                        <menuitem label="&qf.palette.pastel;"
+                                  value="2"
+                                  oncommand="options.toggleUsePalette(this, 'active', 2, true);" />
+                        <menuitem label="&qf.palette.night;"
+                                  value="3"
+                                  oncommand="options.toggleUsePalette(this, 'active', 3, true);" />
+                      </menupopup>
+                    </menulist>
+
+
+                    <label id="hoveredtabs-label"
+                           value="&qf.label.HoveredTabColor;"
+                           tooltiptext="&qf.label.setcolors;"
+                           class="qfTabPreview"
+                           stylePrefKey="HoveredTab"
+                           context="QuickFolders-Options-PalettePopup"
+                           onclick="options.showPalette(this, 'hovered');" />
+                    <html:input id="hover-fontcolorpicker"
+                                 type="color"
+                                 palettename="standard"
+                                 elementInfo="HoveredTab.color"
+                                 previewLabel="hoveredtabs-label"
+                                 onchange="return options.styleUpdate('HoveredTab','color', this.value, 'hoveredtabs-label');" />
+                    <html:input id="hover-colorpicker"
+                                 type="color"
+                                 palettename="standard"
+                                 elementInfo="HoveredTab.background-color"
+                                 previewLabel="hoveredtabs-label"
+                                 onchange="return options.styleUpdate('HoveredTab','background-color', this.value, 'hoveredtabs-label');" />
+                    <menulist id="menuHoverPalette"
+                              sizetopopup="none"
+                              preference="qfpl-HoveredTab-PaletteType"
+                              oncommand="QI.updateMainWindow();">
+                      <menupopup>
+                        <menuitem label="&qf.palette.twoColors;"
+                                  value="0"
+                                  oncommand="options.toggleUsePalette(this, 'hovered', 0, true);" />
+                        <menuitem label="&qf.palette.standard;"
+                                  value="1"
+                                  oncommand="options.toggleUsePalette(this, 'hovered', 1, true);" />
+                        <menuitem label="&qf.palette.pastel;"
+                                  value="2"
+                                  oncommand="options.toggleUsePalette(this, 'hovered', 2, true);" />
+                        <menuitem label="&qf.palette.night;"
+                                  value="3"
+                                  oncommand="options.toggleUsePalette(this, 'hovered', 3, true);" />
+                      </menupopup>
+                    </menulist>
+
+
+                    <label id="dragovertabs-label"
+                           value="&qf.label.DragOverBackground;"
+                           class="qfTabPreview"
+                           stylePrefKey="DragOver"
+                           context="QuickFolders-Options-PalettePopup"
+                           onclick="options.showPalette(this, 'dragOver');" />
+                    <html:input id="dragover-fontcolorpicker"
+                                 palettename="standard"
+                                 type="color"
+                                 elementInfo="DragTab.color"
+                                 previewLabel="dragovertabs-label"
+                                 onchange="return options.styleUpdate('DragTab', 'color', this.value, 'dragovertabs-label');" />
+                    <html:input id="dragover-colorpicker"
+                                 type="color"
+                                 palettename="standard"
+                                 elementInfo="DragTab.background-color"
+                                 previewLabel="dragovertabs-label"
+                                 onchange="return options.styleUpdate('DragTab', 'background-color', this.value, 'dragovertabs-label');" />
+                    <menulist id="menuDragOverPalette"
+                              sizetopopup="none"
+                              preference="qfpl-DragOver-PaletteType"
+                              oncommand="QI.updateMainWindow();">
+                      <menupopup>
+                        <menuitem label="&qf.palette.twoColors;"
+                                  value="0"
+                                  oncommand="options.toggleUsePalette(this, 'dragOver', 0, true);" />
+                        <menuitem label="&qf.palette.standard;"
+                                  value="1"
+                                  oncommand="options.toggleUsePalette(this, 'dragOver', 1, true);" />
+                        <menuitem label="&qf.palette.pastel;"
+                                  value="2"
+                                  oncommand="options.toggleUsePalette(this, 'dragOver', 2, true);" />
+                        <menuitem label="&qf.palette.night;"
+                                  value="3"
+                                  oncommand="options.toggleUsePalette(this, 'dragOver', 3, true);" />
+                      </menupopup>
+                    </menulist>
+
+
+									</div>
 									<separator class="thin" />
 									<hbox id="qf-stateColors-defaultButton" pack="end">
 										<button label="&qf.button.defaultcolors;" oncommand="options.setDefaultColors();" />
@@ -1037,67 +1030,53 @@
 				</tabpanel>
 				<tabpanel id="QuickFolders-Options-support" orient="vertical">
 					<separator class="thin" />
-					<grid id="supportgrid" class="niceFont">
-						<columns>
-							<column flex="1" width="400" />
-							<column flex="1" width="200" />
-						</columns>
-						<rows>
-							<row>
-								<description>&qf.youtube.description;</description>
-								<div id="L1"
-								     class="button"
-										 tooltiptext="https://www.youtube.com/c/thunderbirddaily"
-										 onclick="util.openLinkInBrowser(event,'https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89')">
-									<label>&qf.youtube.link;</label>
-								</div>
-							</row>
-							<separator class="thin" />
-							<row>
-								<description class="niceFont">&qf.description.bugzilla;</description>
-								<div id="L2"
-								     class="button"
-										 tooltiptext="quickfolders.org/bugs.html"
-										 onclick="util.openURL(event,'https://quickfolders.org/bugs.html')">
-									<label>&qf.label.bugzilla;</label>
-								</div>
-							</row>
-							<separator class="thin" />
-							<row>
-								<description class="niceFont"
-														 oncontextmenu="util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
-									&qf.description.versionhistory;
-								</description>
-								<div id="L3"
-								     class="button"
-												tooltiptext="https://quickfolders.org/version.html"
-												onclick="options.showVersionHistory(this, false); 
-												setTimeout(function() { window.close(); });
-												return true;">
-									<label>&qf.label.versionhistory;</label>
-								</div>
-							</row>
-							<separator class="thin" />
-							<row>
-								<description class="niceFont">&qf.description.languages;</description>
-								<div id="L4"
-								     class="button"
-											 tooltiptext="www.babelzilla.org?extension=5099"
-											 onclick="util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099');">
-									<label>&qf.label.languagesLink;</label>
-								</div>
-							</row>
-							<separator class="thin" />
-							<row>
-								<description class="niceFont">&qf.description.contactMe;</description>
-								<div id="L5"
-								     class="button"
-										 onclick="options.sendMail('axelg@gofree.indigo.ie'); setTimeout(function() { window.close(); });">
-									<label>&qf.label.contactLink;</label>
-								</div>
-							</row>
-						</rows>
-					</grid>
+					<div id="supportgrid" class="grid-container niceFont">
+          
+            <description>&qf.youtube.description;</description>
+            <div id="L1"
+                 class="button"
+                 tooltiptext="https://www.youtube.com/c/thunderbirddaily"
+                 onclick="util.openLinkInBrowser(event,'https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89')">
+              <label>&qf.youtube.link;</label>
+            </div>
+
+            <description class="niceFont">&qf.description.bugzilla;</description>
+            <div id="L2"
+                 class="button"
+                 tooltiptext="quickfolders.org/bugs.html"
+                 onclick="util.openURL(event,'https://quickfolders.org/bugs.html')">
+              <label>&qf.label.bugzilla;</label>
+            </div>
+
+            <description class="niceFont"
+                         oncontextmenu="util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
+              &qf.description.versionhistory;
+            </description>
+            <div id="L3"
+                 class="button"
+                    tooltiptext="https://quickfolders.org/version.html"
+                    onclick="options.showVersionHistory(this, false); 
+                    setTimeout(function() { window.close(); });
+                    return true;">
+              <label>&qf.label.versionhistory;</label>
+            </div>
+
+            <description class="niceFont">&qf.description.languages;</description>
+            <div id="L4"
+                 class="button"
+                   tooltiptext="www.babelzilla.org?extension=5099"
+                   onclick="util.openLinkInBrowser(event,'http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=203&amp;type=filelist2&amp;extension=5099');">
+              <label>&qf.label.languagesLink;</label>
+            </div>
+
+            <description class="niceFont">&qf.description.contactMe;</description>
+            <div id="L5"
+                 class="button"
+                 onclick="options.sendMail('axel.grude@gmail.com'); setTimeout(function() { window.close(); });">
+              <label>&qf.label.contactLink;</label>
+            </div>
+            
+					</div>
 				</tabpanel>
 				<!-- Licensing tab -->
 				<tabpanel id="QuickFolders-Options-goPro" orient="vertical">
@@ -1120,9 +1099,9 @@
 						<preference id="qfpp-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" instantApply="true"/>
 						<preference id="qfpp-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" instantApply="true"/>
 						<preference id="qfpp-MultiCategory" name="extensions.quickfolders.premium.categories.multiSelect" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigTabs" name="extensions.quickfolders.restoreConfig.tabs" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigGeneral" name="extensions.quickfolders.restoreConfig.general" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigLayout" name="extensions.quickfolders.restoreConfig.layout" type="bool" instantApply="true" />
+						<preference id="restoreConfigTabs" name="extensions.quickfolders.restoreConfig.tabs" type="bool" instantApply="true" />
+						<preference id="restoreConfigGeneral" name="extensions.quickfolders.restoreConfig.general" type="bool" instantApply="true" />
+						<preference id="restoreConfigLayout" name="extensions.quickfolders.restoreConfig.layout" type="bool" instantApply="true" />
 					</preferences>
 						
 					<description>&qf.label.insertLicense;</description>
@@ -1299,7 +1278,7 @@
 								<hbox>
 									<button id="btnSaveConfig" 
 													label="&qf.storeConfig;"
-													oncommand="QI.storeConfig(Preferences);" />
+													oncommand="QI.storeConfig(Preferences, options.prefMap);" />
 									<spacer flex="1" />
 								</hbox>
 								<hbox>
@@ -1311,17 +1290,17 @@
 								</hbox>
 								<checkbox id="chkConfigIncludeTabs"
 													label="&qf.checkbox.storeConfig.tabs;"
-													preference="qfpp-restoreConfigTabs"
+													preference="restoreConfigTabs"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 								<checkbox id="chkConfigIncludeGeneral"
 													label="&qf.checkbox.storeConfig.general;"
-													preference="qfpp-restoreConfigGeneral"
+													preference="restoreConfigGeneral"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 								<checkbox id="chkConfigIncludeLayout"
 													label="&qf.checkbox.storeConfig.layout;"
-													preference="qfpp-restoreConfigLayout"
+													preference="restoreConfigLayout"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 							</vbox>

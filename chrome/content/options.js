@@ -29,6 +29,7 @@ QuickFolders.Options = {
 	QF_PREF_LAYOUT : 2,
 	QF_PREF_ADVANCED : 1,
 	QF_PREF_GENERAL : 0,
+  prefMap : {},
 
   // save space, for visually impaired
   collapseHead: function collapseHead() {
@@ -44,9 +45,8 @@ QuickFolders.Options = {
 	rememberLastTab: function rememberLastTab() {
 		let tabbox = document.getElementById("QuickFolders-Options-Tabbox");
 		QuickFolders.Preferences.setIntPref('lastSelectedOptionsTab', tabbox.selectedIndex);
-		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 	} ,
+  
 	
 	accept: function accept(evt) {
 		const prefs = QuickFolders.Preferences;
@@ -94,6 +94,7 @@ QuickFolders.Options = {
 			Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
 		};
 		this.rememberLastTab();
+    QuickFolders.Interface.updateObserver(); // update the main window layout
 		return true;
 	} ,
 	
@@ -210,9 +211,14 @@ QuickFolders.Options = {
 		if (myprefs.length) {
 			let prefArray = [];
 			for (let it of myprefs) {
-				let p = new Object({ id: it.getAttribute('name'), 
-						      name: it.getAttribute('name'),
-						      type: it.getAttribute('type') });
+				let p = new Object(
+          {
+            id: it.getAttribute('name'), 
+            name: it.getAttribute('name'),
+            type: it.getAttribute('type') 
+          }
+        );
+        this.prefMap[it.getAttribute('name')] =  it.getAttribute('id'); // store original Id!
 				// not supported
 				// if (it.getAttribute('instantApply') == "true") p.instantApply = true;
 				prefArray.push(p);
@@ -360,15 +366,7 @@ QuickFolders.Options = {
       
     }
     
-    // .0 private license, .1 domain license
-    // these are only for testing, so normal users shouldn't need them, default to '' via code
-		/*
-    let EncryptionKey = prefs.getStringPref('premium.encryptionKey.' + QuickFolders.Crypto.key_type.toString());
-    if (EncryptionKey) {
-      getElement('boxKeyGenerator').collapsed = false;
-      licenser.RSA_encryption = EncryptionKey;
-    }
-		*/
+
     
     if (earlyExit) return;
     if (licenser.isValidated)
@@ -444,9 +442,9 @@ QuickFolders.Options = {
 		try {
 			let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
 			if (selectOptionsPane >=0) {
-        debugger;
 				panels.selectedIndex = selectOptionsPane; // for some reason the tab doesn't get selected
-				panels.tabbox.selectedTab = panels.tabbox.tabs.children[selectOptionsPane];
+        let firstTabOffset = (panels.tabbox.tabs.children[0].tagName == 'tab') ? 0 : 1;
+				panels.tabbox.selectedTab = panels.tabbox.tabs.children[selectOptionsPane + firstTabOffset];
 			}
 		}
 		catch(e) { ; }
@@ -551,18 +549,16 @@ QuickFolders.Options = {
   
   selectQuickMoveFormat: function selectQuickMoveFormat(menuList) {
     let prefString1 = menuList.getAttribute('preference'),
-        prefName1 = document.getElementById(prefString1).getAttribute('name'),
         val = menuList.value;
-    QuickFolders.Util.logDebug('Setting quick move format pref[' + prefName1 + ']: ' + val + '…');
-    QuickFolders.Preferences.setIntPreference(prefName1, parseInt(val));
+    QuickFolders.Util.logDebug('Setting quick move format pref[' + prefString1 + ']: ' + val + '…');
+    QuickFolders.Preferences.setIntPreference(prefString1, parseInt(val));
   } ,
 	
 	selectFolderCrossing: function selectFolderCrossing(menuList) {
     let prefString = menuList.getAttribute('preference'),
-        prefName = document.getElementById(prefString).getAttribute('name'),
         val = menuList.value;
-    QuickFolders.Util.logDebug('Setting folder crossing pref[' + prefName1 + ']: ' + val + '…');
-    QuickFolders.Preferences.setIntPreference(prefName, parseInt(val));
+    QuickFolders.Util.logDebug('Setting folder crossing pref[' + prefString + ']: ' + val + '…');
+    QuickFolders.Preferences.setIntPreference(prefString, parseInt(val));
 	} ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
@@ -940,20 +936,6 @@ QuickFolders.Options = {
 		lightweight: 4
 	} ,
 
-	toggleMutexCheckbox: function toggleMutexCheckbox(cbox, cbox2Name) {
-		const prefs = QuickFolders.Preferences;
-		let prefString1 = cbox.getAttribute('preference'),
-		    prefName1 = document.getElementById(prefString1).getAttribute('name'),
-		    cbox2 = document.getElementById(cbox2Name);
-		if(!prefs.getBoolPrefVerbose(prefName1)) { // not yet checked but will be after event is propagated.
-			let prefString2 = cbox2.getAttribute('preference'),
-			    prefName2 = document.getElementById(prefString2).getAttribute('name');
-			// uncheck the other checkbox
-			if (prefs.getBoolPrefVerbose(prefName2))
-				prefs.setBoolPrefVerbose(prefName2, false);
-		}
-	},
-
 	setDefaultButtonRadius: function setDefaultButtonRadius() {
 		const prefs = QuickFolders.Preferences;
 		document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4";
@@ -1250,16 +1232,12 @@ QuickFolders.Options = {
 	},
 
 	changeTextPreference: function changeTextPreference(txtBox) {
-		let prefString = txtBox.getAttribute("preference"),
-		    pref = document.getElementById(prefString);
+		let prefString = txtBox.getAttribute("preference");
 		
-		if (pref) {
-      let name = pref.getAttribute('name');
-      if(name)
-        QuickFolders.Preferences.setIntPreference(name, txtBox.value);
-      else
-        QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
-    }
+		if (Preferences.get(prefString)) 
+      QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
+    else
+      QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
 		return QuickFolders.Interface.updateMainWindow(false);
 	},
 	
@@ -1267,16 +1245,15 @@ QuickFolders.Options = {
 	toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
 		const util = QuickFolders.Util,
 		      QI = util.getMail3PaneWindow().QuickFolders.Interface;
-		let prefString = cb.getAttribute("preference"),
-        pref = prefString;
+		let prefString = cb.getAttribute("preference");
     //  using the new preference system, this attribute should be the actual full string of the pref.
 		//  pref = document.getElementById(prefString);
 		
 		if (prefString)
-			QuickFolders.Preferences.setBoolPrefVerbose(pref, cb.checked);  //  pref.getAttribute('name')
+			QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);  
 		if (noUpdate)
 			return true;
-		switch (pref) {
+		switch (prefString) {
 			case 'extensions.quickfolders.collapseCategories':
 			  QI.updateCategoryLayout();
 			  return;
@@ -1291,12 +1268,9 @@ QuickFolders.Options = {
 		if (userStyle)
 			QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.value);
 
-		// problems with instantapply?
-		let prefString = cb.getAttribute("preference"),
-		    pref = document.getElementById(prefString);
-		
-		if (pref)
-			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
+		let prefString = cb.getAttribute("preference");
+		if (prefString)
+			QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
 		
 		return QuickFolders.Interface.updateMainWindow(true);
 	},

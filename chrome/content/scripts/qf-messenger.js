@@ -83,8 +83,6 @@ function onLoad(activatedWhileWindowOpen) {
                                        oncommand="QuickFolders.Interface.clickTitleLabel(this);"
                                                      label="&qf.label.quickfolders;" />
                     </vbox>
-                    
-              <!-- move QuickFolders-Tools-Pane to separate overlay -->
                 </hbox>
                 
                 <popupset id="QuickFolders-Palette" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -92,7 +90,6 @@ function onLoad(activatedWhileWindowOpen) {
                                class="QuickFolders-folder-popup" 
                                          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
                                          onclick="QuickFolders.Interface.clickHandler(event,this);">
-                        <!-- created in Interface code -->
                     </menupopup>
                     <menupopup id="QuickFolders-FindPopup" 
                                class="menu-iconic widerMenu" 

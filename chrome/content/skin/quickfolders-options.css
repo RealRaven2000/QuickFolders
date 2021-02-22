@@ -516,19 +516,13 @@ hbox.quickhelp-dbg {
   margin-right: 1.5em;
 }
 
-
-
-#supportgrid columns,
-#supportgrid rows {
-  width: 600px !important;
-  max-width: 600px !important;
-	min-width: 400px;
-}
-
-/*added/changed by Teo*/
-#supportgrid row {
-  height: 55px;
-	margin-top: 0.9em;
+/* row heights */
+#supportgrid {
+  grid-template-columns: 400px 200px;
+  grid-template-rows: 60px;
+  gap: 20px 5px;
+/*  height: 55px;
+	margin-top: 0.9em; */
 }
 
 /* #supportgrid  button, */
@@ -681,7 +675,19 @@ hbox.quickhelp-dbg {
 }
 
 #qf-flat-toolbar {
-	padding: 5px 20px;
+  display: flex;
+  flex-direction: row;
+	padding: 5px 12px;
+}
+
+#qf-flat-toolbar spacer {
+	min-width: 2em;
+  flex-grow: 10; /* not working yet ? */
+	flex-shrink: 4; /* not working yet ? */
+}
+
+#qf-flat-toolbar vbox {
+  flex-grow: 0;
 }
 
 #currentFolderBackgroundContainer,
@@ -724,4 +730,17 @@ textbox[type="number"] .textbox-input {
 .num3digits {
 	max-width: 6em;
 	width: auto;
+}
+
+
+/* grid replacement */
+.grid-container {
+  align-content: start;
+  display: grid;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+}
+
+#colorsGrid {
+  grid-template-columns: auto 40px 40px auto; /* widths of columns */
 }

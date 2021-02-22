@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.2", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.3", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -2068,7 +2068,10 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
 		// https://bugzilla.mozilla.org/show_bug.cgi?id=1220564
 		//items = [new ftvItem(f) for each (f in recent)];
 		for (let f of recent) { 
-		  items.push(new ftvItem(f)) 
+      if (typeof ftvItem == "function") 
+        items.push(new ftvItem(f));
+      else
+        items.push(new FtvItem(f));
 	  };
 		
     // There are no children in this view! flatten via empty array

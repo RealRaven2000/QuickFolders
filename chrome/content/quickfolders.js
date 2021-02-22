@@ -377,10 +377,9 @@ END LICENSE BLOCK */
     ## [issue 20] Change default for QuickFolders Toolbar to be on the bottom
     ## [issue 34] {Create Option to} make QuickFolders appear at the Bottom of Other Toolbars
     
-    
-  4.18.2 QuickFolders Pro - WIP
-    ## [issue 35] "Skip Unread Folder" hides "Add star" function... #
-    ## [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
+  === FORKED CODE BASE FOR THUNDERBIRD 78 ===
+  
+=== 5.0 ===  
     
   5.0 QuickFolders Pro - 17/11/2020
     ## [issue 8] Make QuickFolders compatible with Thunderbird 78 ESR
@@ -412,7 +411,7 @@ END LICENSE BLOCK */
     ## Improved legibility of dropdown items in themed  QuickFolders options dialog
     ## Improved reopening any support sites already open in a tab by jumping to the correct place if necessary
 
-  5.2 QuickFolders Pro - WIP
+  5.2 QuickFolders Pro - 22/01/2021
     ## [issue 91] Improvement: QF advanced properties setting "from identity" : set "Reply-to" address accordingly
                   also spawned some improvements in SmartTemplates [issue 108] where text blocks were duplicated
                   by setting the from identity
@@ -426,7 +425,32 @@ END LICENSE BLOCK */
                   It can also happen if you execute the quickMove command after a while and you (or a filter)
                   have moved some of the mails to the target folder already.
     ## Hide referrer field in license purchase window
-    -=-----------------=-    
+    
+    
+  5.3 QuickFolders Pro - WIP
+    ## [issue 106] Tb78: backup does not save general / advanced / layout settings
+    ## [issue 108] Some changes in options window are ignored and not stored
+    ## [issue 111] Paint Mode is not working in Thunderbird 78
+    
+    ## [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
+    ## [issue 88]  Fixed highlighting of drop targets when dragging mails into a subfolder. This used to work in Thunderbird 68
+    ## [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
+    ## [issue 109] Mark Messages read in Folder and the subfolders recursively not displayed as expected
+    ## [issue 37] When no match is found using the "/" in quickMove box, display "No matching parent folders!" instead of "..."
+    ## [issue 82] Improved sorting of search results during quickMove / quickJump
+    ## [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
+    ## [issue 112] Reading List menu - Add current Item not working
+    
+    ## [issue 114] Make QuickFolders compatible with Thunderbird beta 86.0b3
+                   Removed grids from options screen to suport Thunderbird 86 and higher.
+                   Using renamed function FtvItem for creating Recent folders list.
+
+
+
+    -=-----------------=-    PLANNED
+    ## [issue 103] Feature Request: Support copying folders
+    ## [issue 37] "/" in quickMove box for non-existent parent - show "no match..." instead of "..."
+    
 
 
    	TODOs

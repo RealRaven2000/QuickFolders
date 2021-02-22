@@ -454,49 +454,50 @@ QuickFolders.bookmarks = {
         browsers = null,
         DomWindow = null,
         theBrowser = null;
-    if (util.Application=='Postbox') return null;
-    
-    let getWindowEnumerator = 
-      (util.isLinux) ?
-      mediator.getXULWindowEnumerator :
-      mediator.getZOrderXULWindowEnumerator;
-    browsers = getWindowEnumerator ('navigator:browser', true);
-    if (browsers) {
-      theBrowser = browsers.getNext();
-      if (theBrowser) {
-        if (theBrowser.getInterface)
-          DomWindow = theBrowser.getInterface(interfaceType);
-        else {
-          try {
-            // Linux
-            DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType);
-          }
-          catch(e) {;}
-        }
-      }
-    }
-    if (!DomWindow) {
-      browsers = getWindowEnumerator ('navigator:browser', true);
-      if (!browsers || !(util.Application!='Firefox' && browsers.hasMoreElements()))
-        browsers = getWindowEnumerator ('mail:3pane', true);
-      if (!browsers)
-        return  null;
-      try {
-        if (browsers.hasMoreElements()) {
-          theBrowser = browsers.getNext();
+
+    try{
+      let getWindowEnumerator = mediator.getEnumerator;
+      if (browsers) {
+        theBrowser = browsers.getNext();
+        if (theBrowser) {
           if (theBrowser.getInterface)
             DomWindow = theBrowser.getInterface(interfaceType);
-          else // Linux
-            DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType)
-        }
-        else {
-          DomWindow=getBrowser();  // Linux last resort
+          else {
+            try {
+              // Linux
+              DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType);
+            }
+            catch(e) {;}
+          }
         }
       }
-      catch(ex) {
-        util.logException("getBrowser() failed:", ex);
-      }
+      if (!DomWindow) {
+        browsers = getWindowEnumerator ('navigator:browser', true);
+        if (!browsers || !browsers.hasMoreElements())
+          browsers = getWindowEnumerator ('mail:3pane', true);
+        if (!browsers)
+          return  null;
+        try {
+          if (browsers.hasMoreElements()) {
+            theBrowser = browsers.getNext();
+            if (theBrowser.getInterface)
+              DomWindow = theBrowser.getInterface(interfaceType);
+            else // Linux
+              DomWindow = theBrowser.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(interfaceType)
+          }
+          else {
+            DomWindow = getBrowser();  // Linux last resort
+          }
+        }
+        catch(ex) {
+          util.logException("getBrowser() failed:", ex);
+        }
+      }      
     }
+    catch (ex) {
+      util.logException("getBrowser() failed:", ex);
+    }
+
     return DomWindow;
   },
   

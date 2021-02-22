@@ -153,20 +153,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 			// try to update headers - ComposeFieldsReady()
 			// http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
 			if (modType == 'address') {
-        // we need to prep the addressing widget to avoid inserting an empty line on top
-        // rebuild all addresses - for this we need to remove all [dummy] rows
-        // except for the very first one.
-        // Tb78 TO DO - replace this with API code
-        // in Tb78 this listbox "addressingWidget" doesn't exist anymore
-        // See https://thunderbird-webextensions.readthedocs.io/en/78/compose.html 
-        /*
-        let listbox = document.getElementById("addressingWidget");
-        while (listbox.itemCount>1) { // remove everything apart from first item:
-          listbox.getItemAtIndex(listbox.itemCount-1).remove();
-        }
-        */
-				CompFields2Recipients(ComposeFields); // are we still allowed to call this function?
-        // ComposeFields.setComposeDetails()
+				CompFields2Recipients(ComposeFields); 
       }
 		}
 		catch(ex) {
@@ -205,9 +192,16 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
              || gMsgCompose.type == msgComposeType.ReplyToList)
               util.logDebugOptional('composer', "not overwriting to address: this is a reply case");
             else {
-              options.toAddress = entry.toAddress;
-              let dbg = txt.replace('{1}', entry.toAddress);
-              util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+              if (gMsgCompose.type == msgComposeType.New && gMsgCompose.compFields.to) {
+                // [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
+                util.logDebugOptional('composer', "New mail: not overwriting to address - " + gMsgCompose.compFields.to + "\n"
+                  + "this was probably set by clicking Write from AB.");
+              }
+              else {
+                options.toAddress = entry.toAddress;
+                let dbg = txt.replace('{1}', entry.toAddress);
+                util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
+              }
             }
           }
           if (entry.fromIdentity && !options.identity) {
@@ -263,10 +257,8 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 				var identityList = document.getElementById("msgIdentity");
 				identityList.selectedItem =
 					identityList.getElementsByAttribute("identitykey", identity.key)[0];
-				// let event = document.createEvent('Events');
-				// event.initEvent('compose-from-changed', false, true);
-				// document.getElementById("msgcomposeWindow").dispatchEvent(event);
-        // instead we will trigger the command that is also bound to the dropdown.
+        // instead of sending the compose-from-changed event to msgcomposeWindow,
+        // we will trigger the command that is also bound to the dropdown.
         LoadIdentity(false);
 			}
 		}

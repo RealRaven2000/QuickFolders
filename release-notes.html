@@ -1,15 +1,46 @@
-<b>Release 5.2</b>
+<b>Release 5.3</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
 <li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a></ul>
 
-<b>Changes / Items worked</b>
+<b>Fixed Thunderbird 78 Regressions</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/92">[issue 92]</a> - do not apply To address from advanced tab properties when replying to an email!</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/94">[issue 94]</a> - Tb78: Tab-specific properties displayed in incorrect screen position.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/75">[issue 75]</a> Support moving folders via quickMove button. You can now move one or multiple folders by dragging them from the tree to the quickMove button or hitting Shift+M (with a Pro License) while  the folder tree is highlighted. Up until now, you could only move folders by holding Shift and dragging to a QuickFolders tab.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/96">[issue 96]</a> Drag'n'drop issue in Thunderbird 85 beta. Although I fixed this particular issue I make no guarantees for any functionality if you are using beta versions. I can only support the current ESR version Thunderbird 78.1 - 78.* fully.</li>
-<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/23">[issue 23]</a> Fixed: quickMove aborts with "Nothing to do: Message is already in folder" if the first mail in the selection is already in target folder. This may happen if you drag mails from a multi-folder view such as a search results window. It can also happen if you execute the quickMove command after a while and you (or a filter) have moved some of the mails to the target folder already.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/106">[issue 106]</a> Backup function does not save general / advanced / layout settings.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/108">[issue 108]</a> Some changes in options window are ignored and not stored. Settings that could not be changed from the options screen: 
+- Premium / quick move display format 
+- General / Message Navigation / Go to next unread mail.
+
+Also, many layout settings were not updating immediately through the User Interface, because of broken instant apply settings. 
+</li>
+<li> Fixed highlighting of drop targets when dragging mails into a subfolder.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/111">[issue 111]</a> Paint Mode stopped working in Thunderbird 78. You can now use Paint Mode again from the QuickFolders tools menu to change the colors of multiple tabs. (For best results use the flat style theme).
+
+Activate paint mode, then select a color from the palette and click on the tabs you want to change:
+
+The colors displayed depend on the selected "Palette for Colored Tabs" which is a global setting and offers 3 choices (Standard, Pastel and Night Vision for dark themes). </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/101">[issue 101]</a> If multiple categories are selected, closing QuickFolders settings reverts to "Show All". </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/88">[issue 88]</a> Fixed highlighting of drop targets when dragging mails into a subfolder. </li>
+</ul>
+
+<b>Improvements</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/82">[issue 82]</a> Improved sorting of search results during quickMove / quickJump.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/109">[issue 109]</a> Menu item Mark Messages read in Folder + subfolders not displayed as expected - it was only shown if the folder of the tab didn't have unread emails itself. This additional menu item that can be used to set subfolders read was only displayed if the actual folder of the tab itself had no unread emails, and only child folders had them. Configure this command in QuickFolders settings / Advanced / Menu Configuration / Mail Commands</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/37">[issue 37]</a> When no match is found using the "/" in quickMove box, display "No matching parent folders!" instead of "..."</li>
+</ul>
+
+<b>Other Bug Fixes</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/101">[issue 101]</a> If multiple categories are selected, closing QuickFolders settings reverts to "Show All".</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/107">[issue 107]</a> Restoring general / layout Settings only works if option for restoring folders also active.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/110">[issue 110]</a> "Tab-specific Properties" overwrites <i>To</i> Address when clicking <i>Write</i> from Address Book.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/112">[issue 112]</a> Reading List menu - Add current Item not working. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/114">[issue 114]</a> Make QuickFolders compatible with <i>Thunderbird beta 86.0b3</i>
+- Removed grids from options screen to suport Thunderbird 86 and higher.
+- Using renamed function FtvItem for creating Recent folders list.
+
+If you find more regressions associated with Thunderbird 86 or higher, please report at issue 114 linked above.</li>
+<ul>
 </ul>
 

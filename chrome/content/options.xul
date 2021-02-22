@@ -1094,9 +1094,9 @@
 						<preference id="qfpp-QuickMove-PathType" name="extensions.quickfolders.premium.findFolder.folderPathDetail" type="int" instantApply="true"/>
 						<preference id="qfpp-QuickMove-PathDepth" name="extensions.quickfolders.premium.findFolder.maxPathItems" type="int" instantApply="true"/>
 						<preference id="qfpp-MultiCategory" name="extensions.quickfolders.premium.categories.multiSelect" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigTabs" name="extensions.quickfolders.restoreConfig.tabs" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigGeneral" name="extensions.quickfolders.restoreConfig.general" type="bool" instantApply="true" />
-						<preference id="qfpp-restoreConfigLayout" name="extensions.quickfolders.restoreConfig.layout" type="bool" instantApply="true" />
+						<preference id="restoreConfigTabs" name="extensions.quickfolders.restoreConfig.tabs" type="bool" instantApply="true"/>
+						<preference id="restoreConfigGeneral" name="extensions.quickfolders.restoreConfig.general" type="bool" instantApply="true"/>
+						<preference id="restoreConfigLayout" name="extensions.quickfolders.restoreConfig.layout" type="bool" instantApply="true"/>
 					</preferences>
 						
 					<description>&qf.label.insertLicense;</description>
@@ -1263,7 +1263,7 @@
 								<hbox>
 									<button id="btnSaveConfig" 
 													label="&qf.storeConfig;"
-													oncommand="QI.storeConfig(Preferences);" />
+													oncommand="QI.storeConfig(Preferences, options.prefMap);" />
 									<spacer flex="1" />
 								</hbox>
 								<hbox>
@@ -1275,17 +1275,17 @@
 								</hbox>
 								<checkbox id="chkConfigIncludeTabs"
 													label="&qf.checkbox.storeConfig.tabs;"
-													preference="qfpp-restoreConfigTabs"
+													preference="restoreConfigTabs"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 								<checkbox id="chkConfigIncludeGeneral"
 													label="&qf.checkbox.storeConfig.general;"
-													preference="qfpp-restoreConfigGeneral"
+													preference="restoreConfigGeneral"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 								<checkbox id="chkConfigIncludeLayout"
 													label="&qf.checkbox.storeConfig.layout;"
-													preference="qfpp-restoreConfigLayout"
+													preference="restoreConfigLayout"
 													oncommand="options.toggleBoolPreference(this, true);"
 													disabled="true" />
 							</vbox>

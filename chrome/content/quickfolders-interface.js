@@ -922,13 +922,25 @@ QuickFolders.Interface = {
         if (this.currentActiveCategories == FCat.UNCATEGORIZED) // [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
           this.selectCategory(FCat.UNCATEGORIZED);
         else {
-          if (!catArray.includes(this.currentActiveCategories)) {
-						// make sure all tabs are visible in case we delete the last category!
-						this.selectCategory(FCat.ALL);
-					}
+          // [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
+          let cats = this.currentActiveCategories ? this.currentActiveCategories.split('|') : [],
+              newCats = [];
+          
+          // remove invalid categories
+          for (let selCat of cats) {
+            if (catArray.includes(selCat)) {
+              newCats.push(selCat);
+            }
+          }
+          if (!newCats.length) {
+            // make sure all tabs are visible in case we delete the last category!
+            this.selectCategory(FCat.ALL);
+          }
+          else if (cats.length > newCats.length) {
+            QuickFolders.Interface.selectCategory(newCats.join('|'),false);
+          }
         }
       }
-
 				
 			if (prefs.getBoolPref('collapseCategories')) 
 				cat.classList.add('autocollapse');
@@ -1582,6 +1594,10 @@ QuickFolders.Interface = {
             ||
             tag == 'input'      // Thunderbird 68 textboxes.
 						||
+						tag == 'html:input'      // Thunderbird 78 textboxes.
+						||
+            tag == 'search-textbox' // Thunderbird 78 search boxes 
+            ||
 						tag == 'findbar')   // [Bug 26654] in-mail search
           )
 					||
@@ -2316,8 +2332,11 @@ QuickFolders.Interface = {
       else {
 				if (nUnreadSubfolders == nUnreadTotal)
 					cssClass += " has-unreadSubOnly";
-				else
+				else {
+          if (nUnreadSubfolders)
+            cssClass += " has-unreadSub"; // [issue 109]
 					cssClass += " has-unread";
+        }
 			}
 		}
 
@@ -4939,8 +4958,8 @@ QuickFolders.Interface = {
 			if (matchPos >= 0) {
 				// only add to matches if not already there
 				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
-					let rank = searchString.length - folder.prettyName.length; 
-					if (rank == 0) rank += 7;  // full match - promote
+					let rank = 1; // searchString.length - folder.prettyName.length;
+					if (searchString.length == folder.prettyName.length) rank += 7;  // full match - promote
 					if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
 					if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
 						// is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
@@ -5061,8 +5080,8 @@ QuickFolders.Interface = {
 			    // folderEntry.uri
 			    matchPos = folderNameSearched.indexOf(searchString);
 			if (matchPos >= 0) {
-				let rank = searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
-				if (rank == 0) rank += 4;  // full match - promote
+				let rank = 0; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
+				if (searchString.length == folderEntry.name.length) rank += 4;  // full match - promote
 				if (matchPos == 0)  rank += 2; // promote the rank if folder name starts with this string
 				if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
 				  // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred" ":fred" "(fred" "@fred"
@@ -5151,7 +5170,11 @@ QuickFolders.Interface = {
 		// rebuild popup
 		let menupopup, txtDebugMenu = '';
 		if (true) {
-			matches.sort(function (a,b) { if (b.rank - a.rank == 0) return b.lname - a.lname; return b.rank - a.rank; });
+			matches.sort(function (a,b) { 
+        if (b.rank - a.rank == 0) 
+          return b.lname - a.lname; // Alphabetic
+        return b.rank - a.rank; 
+      });
 			
 			menupopup = util.$("QuickFolders-FindPopup");
       if (QuickFolders.quickMove.isActive) {
@@ -5272,8 +5295,9 @@ QuickFolders.Interface = {
 			}
 
 			if (!menupopup.childElementCount) {
-				let menuitem = this.createIconicElement('menuitem','*');
-				menuitem.setAttribute('label', ELLIPSIS); // just one dummy to show we were searching
+				let menuitem = this.createIconicElement('menuitem','*'),
+            noMatchWrn = util.getBundleString("qfNoFolderMatch", "No matching parent folders!");
+				menuitem.setAttribute('label', noMatchWrn); // just one dummy to show we were searching
 				menuitem.setAttribute("tag", "dummy");
 				menupopup.appendChild(menuitem);
 			}
@@ -7217,7 +7241,7 @@ QuickFolders.Interface = {
 		
 	}	,
 	
-	storeConfig: function qf_storeConfig(preferences) {
+	storeConfig: function qf_storeConfig(preferences, prefMap) {
 		// see options.copyFolderEntries
     const Cc = Components.classes,
           Ci = Components.interfaces,
@@ -7241,27 +7265,35 @@ QuickFolders.Interface = {
 			let isLicense =  (util.Licenser.isExpired || util.Licenser.isValidated);
 			if (isLicense)
 				storedObj.premium = [];				
+      util.logDebug("Storing configuration...")
 			
 			for (let info of prefInfos) {
-				let node = { key: info.name, val: info.value, id: info.id }
-				switch (info.id.substr(0,5)) {
-					case 'qfpg-':  // general
-						storedObj.general.push(node);
-						break;
-					case 'qfpa-':  // advanced
-						storedObj.advanced.push(node);
-						break;
-					case 'qfpl-':  // layout
-						storedObj.layout.push(node);
-						break;
-					case 'qfpp-':  // premium - make sure not to import the License without confirmation!
-						if (isLicense)
-							storedObj.premium.push(node);
-						break;
-					default:
-						util.logDebug("Not storing - unknown preference category: " + node.key);
-				}
+				let node = { key: info.name, val: info.value, id: info.id, originalId: info.originalId }
+        let originId = prefMap[info.id];
+        if (originId) {
+          switch (originId.substr(0,5)) {
+            case 'qfpg-':  // general
+              storedObj.general.push(node);
+              break;
+            case 'qfpa-':  // advanced
+              storedObj.advanced.push(node);
+              break;
+            case 'qfpl-':  // layout
+              storedObj.layout.push(node);
+              break;
+            case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+              if (isLicense)
+                storedObj.premium.push(node);
+              break;
+            default:
+              util.logDebug("Not storing - unknown preference category: " + node.key);
+          }
+        }
+        else {
+          util.logDebug("Not found - map entry for " + info.id);
+        }
 			}
+        
 			// now save all color pickers.
 			let elements = document.getElementsByTagName('html:input');
 			for (let i=0; i<elements.length; i++) {
@@ -7279,11 +7311,42 @@ QuickFolders.Interface = {
 
 	loadConfig: function qf_loadConfig(preferences) {
 		function changePref(pref) {
-			let p = preferences.get(pref.id);
+			let p = preferences.get(pref.key);
 			if (p) {
 				if (p._value != pref.val) {
 					util.logDebug("Changing [" + p._name + "]" + pref.id + " : " + pref.val);
 					p._value = pref.val;
+          let e = foundElements[pref.id];
+          if (e) {
+            switch(e.tagName) {
+              case 'checkbox':
+                e.checked = pref.val;
+                if (e.getAttribute('oncommand'))
+                  e.dispatchEvent(new Event("command"));
+                break;
+              case 'textbox': // legacy
+              case 'html:input':
+              case 'html:textarea':
+                e.value = pref.val;
+                if (e.id == "currentFolderBackground") {
+                  options.setCurrentToolbarBackgroundCustom();
+                }
+                break;
+              case 'menulist':
+                e.selectedIndex = pref.val;
+                let menuitem = e.selectedItem;
+                if (menuitem && menuitem.getAttribute('oncommand'))
+                  menuitem.dispatchEvent(new Event("command"));
+                break;
+              case 'radiogroup':
+                e.value = pref.val;
+                if (e.getAttribute('oncommand'))
+                  e.dispatchEvent(new Event("command"));
+              default:
+                debugger;
+                break;
+            }
+          }
 				}
 			}
 		}
@@ -7293,12 +7356,15 @@ QuickFolders.Interface = {
 						service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
 						util = QuickFolders.Util,
 						prefs = QuickFolders.Preferences,
-						options = QuickFolders.Options;
+						options = QuickFolders.Options,
+            QI = QuickFolders.Interface;
+
 			try {
 				// removes prettyfication:
 				let config = dataString.replace(/\r?\n|\r/, ''),
 						data = JSON.parse(config),
 				    entries = data.folders,
+            isLayoutModified = false,
 						question = util.getBundleString('qf.prompt.restoreFolders', 
 							"This will delete all QuickFolders tabs and replace with the items from the file." +
 							"\n{0} entries were read." +
@@ -7345,74 +7411,103 @@ QuickFolders.Interface = {
 						util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
 					}
 					delete data.folders; // remove this part to move on to the rest of settings
-					// ====================================================================
-					if (prefs.getBoolPref('restoreConfig.general') && data.general) {
-						for (let i=0; i<data.general.length; i++) {
-							changePref(data.general[i]);
-						}
-					}
-					if (prefs.getBoolPref('restoreConfig.layout')) {
-						if (data.layout) {
-							for (let i=0; i<data.layout.length; i++) {
-								changePref(data.layout[i]);
-							}
-						}
-						if (data.advanced) {
-							for (let i=0; i<data.advanced.length; i++) {
-								changePref(data.advanced[i]);
-							}
-						}
-						
-						if (data.premium) {
-							for (let i=0; i<data.premium.length; i++) {
-								changePref(data.premium[i]);
-							}
-						}
-						// load custom colors and restore color pickers
-						// options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
-						if (data.userStyle) {
-							let elements = document.getElementsByTagName('html:input');
-							for (let i=0; i<elements.length; i++) {
-								let element = elements[i];
-								try {
-									if (element.getAttribute('type')=='color') {
-										let elementInfo = element.getAttribute('elementInfo');
-										// find the matching entry from json file
-										for(let j=0; j<data.userStyle.length; j++) {
-											let jnode = data.userStyle[j];
-											if (jnode.elementInfo == elementInfo) {
-												// only change value if nevessary
-												if (element.value != jnode.val) {
-													element.value = jnode.val; // change color picker itself
-													util.logDebug("Changing [" + elementInfo + "] : " + jnode.val);
-													let info = jnode.elementInfo.split('.');
-													if (info.length == 2)
-														options.styleUpdate(
-															info[0],   // element name e..g. ActiveTab
-															info[1],   // element style (color / background-color)
-															jnode.val, 
-															element.getAttribute('previewLabel')); // preview tab / label
-												}
-												break;
-											}
-										}
-										// QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue)
-									}
-								}
-								catch(ex) {
-									util.logException("Loading layout setting[" + i + "] (color picker " + element.id + ") failed:", ex);
-								}
-							}
-						}
-						
-					}
 				}
+            
+        // ====================================================================
+        // for testing, switch to bling tab
+        // options.selectPane(0);
+            
+        // [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
+        if (prefs.getBoolPref('restoreConfig.general') && data.general) {
+          for (let i=0; i<data.general.length; i++) {
+            changePref(data.general[i]);
+          }
+          isLayoutModified = true;
+        }
+        if (prefs.getBoolPref('restoreConfig.layout')) {
+          if (data.layout) {
+            // options.selectPane(2);
+            for (let i=0; i<data.layout.length; i++) {
+              changePref(data.layout[i]);
+            }
+            isLayoutModified = true;
+          }
+          if (data.advanced) {
+            // options.selectPane(1);
+            for (let i=0; i<data.advanced.length; i++) {
+              changePref(data.advanced[i]);
+            }
+          }
+          
+          if (data.premium) {
+            // options.selectPane(5);
+            for (let i=0; i<data.premium.length; i++) {
+              changePref(data.premium[i]);
+            }
+          }
+          // load custom colors and restore color pickers
+          // options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
+          if (data.userStyle) {
+            // options.selectPane(2);
+            let elements = document.getElementsByTagName('html:input');
+            for (let i=0; i<elements.length; i++) {
+              let element = elements[i];
+              try {
+                if (element.getAttribute('type')=='color') {
+                  let elementInfo = element.getAttribute('elementInfo');
+                  // find the matching entry from json file
+                  for(let j=0; j<data.userStyle.length; j++) {
+                    let jnode = data.userStyle[j];
+                    if (jnode.elementInfo == elementInfo) {
+                      // only change value if nevessary
+                      if (element.value != jnode.val) {
+                        element.value = jnode.val; // change color picker itself
+                        util.logDebug("Changing [" + elementInfo + "] : " + jnode.val);
+                        let info = jnode.elementInfo.split('.');
+                        if (info.length == 2)
+                          options.styleUpdate(
+                            info[0],   // element name e..g. ActiveTab
+                            info[1],   // element style (color / background-color)
+                            jnode.val, 
+                            element.getAttribute('previewLabel')); // preview tab / label
+                      }
+                      break;
+                    }
+                  }
+                  // QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue)
+                }
+              }
+              catch(ex) {
+                util.logException("Loading layout setting[" + i + "] (color picker " + element.id + ") failed:", ex);
+              }
+            }
+          }
+          
+        }
+        if (isLayoutModified) { // instant visual feedback
+          // options.initBling(null);
+          // QuickFolders.Options.accept();
+          QI.updateObserver(); //  update the main window layout
+          // QI.updateMainWindow(true);
+          // options.accept();
+          // let QI = util.getMail3PaneWindow().QuickFolders.Interface, // get main window instance
+          // QI.updateUserStyles();
+        }
 			}
 			catch (ex) {
 				util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
 				Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
 			}
 		}		
+    // find all controls with bound preferences
+    let myprefElements = document.querySelectorAll("[preference]");
+		let foundElements = {};
+		for (let myprefElement of myprefElements) {
+      let prefName = myprefElement.getAttribute("preference");
+			foundElements[prefName] = myprefElement;
+		}	
+    
+    
 		this.fileConfig('load', null, null, readData); // load does the reading itself?
 	} ,
 	
@@ -7535,7 +7630,13 @@ QuickFolders.Interface = {
     
     return true;		
  		
-	}
+	},
+  
+  // moved from options.js - this should update the main UI!
+  updateObserver: function updateObserver() {
+		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+		observerService.notifyObservers(null, "quickfolders-options-saved", null);
+  } 
 	
   
 }; // Interface

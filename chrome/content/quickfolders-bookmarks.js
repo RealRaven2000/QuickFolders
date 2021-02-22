@@ -477,12 +477,17 @@ QuickFolders.bookmarks = {
         theBrowser = null;
     if (util.Application=='Postbox') return null;
     
-    let getWindowEnumerator = 
+    let getWindowEnumerator;
+    
+    if (mediator.getEnumerator) {
+      getWindowEnumerator = mediator.getEnumerator
+    }
+    else getWindowEnumerator = 
       (util.isLinux) ?
       mediator.getXULWindowEnumerator :
       mediator.getZOrderXULWindowEnumerator;
     browsers = getWindowEnumerator ('navigator:browser', true);
-    if (browsers) {
+    if (browsers && browsers.hasMoreElements()) {
       theBrowser = browsers.getNext();
       if (theBrowser) {
         if (theBrowser.getInterface)
@@ -498,7 +503,7 @@ QuickFolders.bookmarks = {
     }
     if (!DomWindow) {
       browsers = getWindowEnumerator ('navigator:browser', true);
-      if (!browsers || !(util.Application!='Firefox' && browsers.hasMoreElements()))
+      if (!browsers || !browsers.hasMoreElements())
         browsers = getWindowEnumerator ('mail:3pane', true);
       if (!browsers)
         return  null;

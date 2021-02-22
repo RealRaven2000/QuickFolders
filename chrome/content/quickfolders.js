@@ -398,6 +398,18 @@ END LICENSE BLOCK */
     ## changed support site links to https (secure) protocol
     ## Fixed: when restarting Thunderbird after an Add-on was installed Tabs from ALL categories were displayed.
     
+  4.20  QuickFolders Pro - WIP
+    ## [issue 101]  If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
+    ## Fixed: When dragging mails on a subfolder item contained in a QuickFolders tab popup, the folder item 
+       is shown with an underline. But all child folders were also displayed underlined.
+    ## [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
+    ## [issue 37] When no match is found using the "/" in quickMove box, display "No matching parent folders!" instead of "..."
+    ## [issue 109] Mark Messages read in Folder and the subfolders recursively not displayed as expected
+    ## [issue 92] do not apply "To address" from advanced tab properties when replying to an email!
+    ## [issue 82] Improved sorting of search results during quickMove / quickJump
+    ## [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
+    ## [issue 112] Reading List menu - Add current Item not working
+    
     
 	Future Work
 	===========

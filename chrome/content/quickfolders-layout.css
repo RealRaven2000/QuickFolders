@@ -770,9 +770,12 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over
 }
 
 menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over,
-menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over
-{
-	list-style-image : url('chrome://quickfolders/skin/ico/tb-anchor.png') !important;
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+	list-style-image : url('chrome://quickfolders/content/skin/ico/tb-anchor.png') !important;
+}
+
+menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over > label,
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label {
 	text-decoration: underline;
 }
 
@@ -901,7 +904,7 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 /* [Bug 26570] only show mark folder read if it has unread items in it */
 toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead,
 toolbarbutton:not(.has-unread):not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive,
-toolbarbutton:not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive {
+toolbarbutton:not(.has-unreadSubOnly):not(.has-unreadSub) #folderPaneContext-markMailFolderAllReadRecursive {
 	display: none;
 }
 

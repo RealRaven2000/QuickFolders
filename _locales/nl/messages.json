@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 jaar QuickFolders - Speciale paasuitverkoop!"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "Dit is de beste kans om een licentie te krijgen, want er is een {boldStart} 50% korting {boldEnd} op de prijs van een QuickFolders Pro-licentie om 12 jaar QuickFolders te vieren! Deze speciale aanbieding is beschikbaar tot {boldStart} 31 maart {boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Lees hier wat er nieuw is sinds de introductie van Thunderbird 78:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Wat is er nieuw?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro heeft nu geavanceerde zoekinstellingen zoals geruisloos verplaatsen en uitsluiten van accounts naar keuze of het beperken van resultaten binnen een account en verbeterde functies voor het verplaatsen en kopiëren van mappen. Ik heb ook meer functies gerepareerd om compatibel te blijven met Thunderbird 87 en hoger."
+  },  
+
   "time-and-effort": { 
-    "message": "Mijn add-ons vereisen fundamentele wijzigingen om compatibel te blijven met het Mozilla-platform. Mijn ontwikkelingsteam bij Github (Realraven2000, opto en paenglab) werkt hard om de volledige functionaliteit voor $addonName$ te herstellen.",
+    "message": "$addonName$ vereist voortdurende wijzigingen om compatibel te blijven met het Mozilla-platform. Ik ben constant bezig om zoveel mogelijk functionaliteit te behouden voor toekomstige versies van Thunderbird.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

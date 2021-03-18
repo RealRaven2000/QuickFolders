@@ -78,3 +78,22 @@ button.proFeature {
 .dialogheader-description {
   text-shadow: -1px -1px 1px rgba(0,0,0,0.67);
 }
+
+
+/* grid replacement */
+.grid-container {
+  align-content: start;
+  align-items: center;  
+  display: grid;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+}
+
+#advancedGrid {
+  grid-template-columns: auto auto; /* widths of columns */
+}
+
+#styleGrid {
+  grid-template-columns: auto auto; /* widths of columns */
+}
+}

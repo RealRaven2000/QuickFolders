@@ -427,7 +427,7 @@ END LICENSE BLOCK */
     ## Hide referrer field in license purchase window
     
     
-  5.3 QuickFolders Pro - WIP
+  5.3 QuickFolders Pro - 22/02/2021
     ## [issue 106] Tb78: backup does not save general / advanced / layout settings
     ## [issue 108] Some changes in options window are ignored and not stored
     ## [issue 111] Paint Mode is not working in Thunderbird 78
@@ -445,12 +445,23 @@ END LICENSE BLOCK */
                    Removed grids from options screen to suport Thunderbird 86 and higher.
                    Using renamed function FtvItem for creating Recent folders list.
 
+  5.4 QuickFolders Pro - WIP
+    ## [issue 115] fix restoring of config values
+    ## [issue 116] Custom Text color in tab-specific is not set on tab
+    ## [issue 117] Add color picker for text color in tab-specific properties
+    ## [issue 74] QuickMove: easily enable silent mode / disable notification
+    ## [issue 118] Restrict quickMove results to current server
+    ## [issue 119] quickJump list - option to list more than 25 search results, persistently
+    ## [issue 103] quickMove now also supports copying folders. To copy a folder, 
+                   hold down the CTRL key while you drop it on the quickMove button
+
+    
+    TO DO:
+    ## [issue 103] Feature Request: Support copying folders
 
 
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
-    ## [issue 37] "/" in quickMove box for non-existent parent - show "no match..." instead of "..."
-    
 
 
    	TODOs
@@ -1879,6 +1890,7 @@ var QuickFolders = {
       let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
           
 			let isShift = evt.shiftKey,
+          isCtrl = evt.ctrlKey,
 			    debugDragging = false,
 			    DropTarget = evt.target,
 			    targetFolder = DropTarget.folder,
@@ -1927,8 +1939,13 @@ var QuickFolders = {
                     false);
 								foldersArray.push(msgFolder);
 							}
-              if (!isMoveFolderQuickMove)
-                QI.moveFolders(foldersArray, targetFolder);
+              if (!isMoveFolderQuickMove) {
+                let IsCopy = [];
+                for (let f of foldersArray) {
+                  IsCopy.push(false); // only support move this way at the moment
+                }
+                QI.moveFolders(foldersArray, IsCopy, targetFolder);
+              }
               else {
                 // stash folders away for the next quickMove
                 // foldersArray -- 
@@ -1939,7 +1956,7 @@ var QuickFolders = {
 						else {
 							let sourceFolder = 
                 util.getFolderFromDropData(evt, dragSession);
-							QI.moveFolders([sourceFolder], targetFolder);
+							QI.moveFolders([sourceFolder], [isCtrl], targetFolder);
 						}
 					}
 					catch(e) {

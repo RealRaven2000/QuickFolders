@@ -49,7 +49,7 @@
 	border: 1px solid #fff;
 	border-radius: 0.4em;
 /*	box-shadow: 3px 3px 4px -1px rgba(0, 0, 0, 0.5); */
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 	font-weight: bold;
 	transition-property: box-shadow, margin;
 	transition-duration: 0.75s, 0.2s;

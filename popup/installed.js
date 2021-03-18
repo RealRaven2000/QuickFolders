@@ -55,7 +55,6 @@ addEventListener("load", async (event) => {
     
     let verInfo = document.getElementById('active-version-info');
     if (verInfo) {
-      
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
       // for multiple replacements, pass an array
@@ -78,7 +77,7 @@ addEventListener("load", async (event) => {
     let title = document.getElementById('window-title');
     if (title)
       title.innerText = messenger.i18n.getMessage("window-title", addonName);
-    
+      
     updateActions(addonName);
 
     addAnimation('body');

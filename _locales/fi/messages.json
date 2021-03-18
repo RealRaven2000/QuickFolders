@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 vuotta QuickFoldersia - erityinen pääsiäistarjous!"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "Nyt on paras mahdollisuus hankkia lisenssi, koska QuickFolders Pro -lisenssin hinta on {boldStart} 50% alempi {boldEnd} juhlimaan 12 vuotta QuickFoldersia! Tämä erikoistarjous on saatavilla {boldStart} 31.3. {boldEnd} asti."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Lue Thunderbird 78: n käyttöönoton jälkeen uutta täältä:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Mikä on uutta?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro on nyt edistyneet hakuasetukset, kuten valitsemiesi tilien hiljainen siirtäminen ja poissulkeminen tai tulosten rajoittaminen tilillä ja parannetut toiminnot kansioiden siirtämiseen ja kopioimiseen. Korjasin myös enemmän toimintoja pysyäkseen yhteensopivina Thunderbird 87: n ja uudempien kanssa."
+  },  
+
   "time-and-effort": { 
-    "message": "Omat lisäosat edellyttävät perusteellisia muutoksia pysyäkseen yhteensopivina Mozilla-alustan kanssa. Kehitystiimini Githubissa (Realraven2000, opto ja paenglab) työskentelee ahkerasti palauttamaan $addonName$: n kaikki toiminnot.",
+    "message": "$addonName$ vaatii jatkuvia muutoksia, jotta se pysyy yhteensopivana Mozilla-alustan kanssa. Pyrin jatkuvasti säilyttämään mahdollisimman paljon toiminnallisuutta tuleville Thunderbird-versioille.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

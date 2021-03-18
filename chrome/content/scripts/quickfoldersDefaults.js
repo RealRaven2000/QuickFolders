@@ -105,7 +105,6 @@ pref("extensions.quickfolders.style.corners.customizedTopRadiusN", 4);
 pref("extensions.quickfolders.style.corners.customizedBottomRadiusN", 0);
 pref("extensions.quickfolders.style.button.minHeight", 20);
 pref("extensions.quickfolders.style.button.paddingTop", 1);
-pref("extensions.quickfolders.style.borders", true);
 // Special State colors
 pref("extensions.quickfolders.style.Toolbar.bottomLineWidth", 3);
 pref("extensions.quickfolders.style.Toolbar.background-color", "transparent");
@@ -244,6 +243,10 @@ pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
+pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
+pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
+pref("extensions.quickfolders.quickMove.maxResults",25);
+
 /* popupProFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);

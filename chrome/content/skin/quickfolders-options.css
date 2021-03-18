@@ -546,25 +546,31 @@ hbox.quickhelp-dbg {
 
 #L0, #L1, #L2, #L3, #L4, #L5 {
   -moz-appearance: none !important;
-	font-style: normal;
 	border-radius: 0.5em;
 	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	font-style: normal;
 	text-align: center;
 	text-shadow: none !important;
 	transition-property: box-shadow;
 	transition-duration: 0.2s;
-	/*background-color: #FFFFFF !important;*/  /*here you can set color*/
 }
 
 #L0 {
+  border: 1px solid rgba(80, 80, 80, 0.4);  
+  display: inline-block;
+	line-height: 1.6em;
 	margin: 0.7em 12em 0.8em 11em !important;
 	min-height: 4em;
-	line-height: 1.6em;
 }
 
 #L0:hover {
 	margin: 1.0em 11.8em 0.5em 11.2em !important;
 }
+
+#L0 label {
+  margin: 0.5em 1em;
+}
+
 
 /* green */
 #L1:hover, #L0:hover, #L1:focus {
@@ -743,4 +749,9 @@ textbox[type="number"] .textbox-input {
 
 #colorsGrid {
   grid-template-columns: auto 40px 40px auto; /* widths of columns */
+}
+
+/* removed preferences.css */
+html|fieldset > vbox {
+  vertical-align:top
 }

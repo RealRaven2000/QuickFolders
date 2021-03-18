@@ -163,18 +163,18 @@
 <!ENTITY qf.label.languagesLink "Fordítás hozzáadása…">
 <!ENTITY qf.description.contactMe "Személyesen is elérhet a axelg@gofree.indigo.ie címen:">
 <!ENTITY qf.label.contactLink "Lépjen kapcsolatba velem (angolul vagy németül)…">
-<!ENTITY qf.label.insertLicense "Insert your personal License key here:">
+<!ENTITY qf.label.insertLicense "Helyezze ide a személyes licenckulcsát:">
 <!ENTITY qf.label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
 <!ENTITY qf.button.pasteLicense "paste">
 <!ENTITY qf.button.validateLicense "validate">
-<!ENTITY qf.label.licenseValid "Your license is valid until:">
-<!ENTITY qf.licenseValidation.passed "Thanks for registering QuickFolders Pro! All premium features are now unlocked.">
-<!ENTITY qf.licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY qf.licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY qf.licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
+<!ENTITY qf.label.licenseValid "Az Ön engedélye a következő időpontig érvényes:">
+<!ENTITY qf.licenseValidation.passed "Köszönjük a QuickFolders Pro regisztrálását! Az összes prémium funkció fel van oldva.">
+<!ENTITY qf.licenseValidation.failed "A megadott licenckulcs érvénytelen. Ellenőrizze a FastSpring e-mailjét az utasításokért. Ha továbbra is problémái vannak, vegye fel a kapcsolatot a Támogatás fülön keresztül.">
+<!ENTITY qf.licenseValidation.invalidAddon "Lehet, hogy a megadott licenckulcs egy másik kiegészítőhöz tartozik. A (z) {0} licenckulcsai a következővel kezdődnek: {1}.">
+<!ENTITY qf.licenseValidation.expired "A megadott licenckulcs lejárt. Kérjük, nyomja meg az alábbi gombot a licenc megújításához.">
 <!ENTITY qf.licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY qf.licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY qf.premiumConfig "Premium Features">
+<!ENTITY qf.licenseValidation.notMatchedMail "A titkosított e-mail cím nem egyezik az olvasható címmel.">
+<!ENTITY qf.premiumConfig "Prémium funkciók">
 <!ENTITY qf.checkbox.shift "Shift">
 <!ENTITY qf.checkbox.quickJump "quickJump - Go to any folder with Shortcut:">
 <!ENTITY qf.checkbox.quickJump.tip "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry.">
@@ -184,8 +184,8 @@
 <!ENTITY qf.checkbox.quickCopy.tip "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry.">
 <!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
-<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
+<!ENTITY qf.checkbox.skipFolder "Olvasatlan mappa kihagyása - használja a Billentyűparancsot: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Parancsikon a következő olvasatlan mappára ugráshoz.">
 <!ENTITY qf.backupAndRestore "Backup / Restore">
 <!ENTITY qf.storeConfig "Save Configuration…">
 <!ENTITY qf.loadConfig "Load Configuration…">
@@ -200,10 +200,11 @@
 <!ENTITY qf.pathFormat.URI "Folder URI">
 <!ENTITY qf.pathFormat.maxDepth "Maximum path depth:">
 <!ENTITY qf.pathFormat.tooltip "Maximum number of folders displayed in folder path.">
+<!ENTITY qf.search.advanced "Speciális keresési beállítások…">
 <!ENTITY qf.categories.supportMultiple "Support selecting multiple tab categories">
-<!ENTITY qf.categories.supportMultiple.tooltip "Use the SHIFT key in order to select more than one category on the dropdown.">
-<!ENTITY qf.checkbox.readingList "Reading List">
-<!ENTITY qf.checkbox.readingList.tooltip "A list for mails that should be read later. Drag your important emails on this button.">
+<!ENTITY qf.categories.supportMultiple.tooltip "A SHIFT gombbal több kategóriát is kiválaszthat a legördülő menüből.">
+<!ENTITY qf.checkbox.readingList "Olvasási lista">
+<!ENTITY qf.checkbox.readingList.tooltip "A levelek listája, amelyet később el kell olvasni. Húzza a fontos e-maileket erre a gombra.">
 <!ENTITY qf.label.donate "Támogatás">
 <!-- obsolete ?? double check in js code -->
 <!ENTITY qf.label.instantApplyMsg "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat.">

@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 lat QuickFolders - Specjalna wyprzedaż wielkanocna!"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "Teraz jest najlepsza okazja do zdobycia licencji, ponieważ istnieje {boldStart} 50% zniżki {boldEnd} na cenę licencji QuickFolders Pro z okazji 12-lecia QuickFolders! Ta oferta specjalna będzie dostępna do {boldStart} 31 marca {boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Przeczytaj o nowościach od czasu wprowadzenia Thunderbirda 78 tutaj:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Co nowego?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro ma teraz zaawansowane ustawienia wyszukiwania, takie jak ciche przenoszenie i wykluczanie wybranych kont lub ograniczanie wyników na koncie, a także ulepszone funkcje przenoszenia i kopiowania folderów. Naprawiłem także więcej funkcji, aby zachować zgodność z Thunderbirdem 87 i nowszymi."
+  },  
+
   "time-and-effort": { 
-    "message": "Moje dodatki wymagają fundamentalnych zmian, aby pozostać kompatybilnymi z platformą Mozilla. Mój zespół programistów w Github (Realraven2000, opto i paenglab) pilnie pracuje, aby przywrócić pełną funkcjonalność $addonName$.",
+    "message": "$addonName$ wymaga ciągłych zmian, aby pozostać kompatybilnym z platformą Mozilla. Nieustannie pracuję nad zachowaniem jak największej funkcjonalności dla przyszłych wersji Thunderbirda.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

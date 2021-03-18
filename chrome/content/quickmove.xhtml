@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!--  tb 78 -->
+<?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/content/widgets.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://quickfolders/content/quickmove-options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/quickmove_settings.dtd" >
+
+<dialog title="&qf.dialog.quickmove.settings;"
+        buttons="accept"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        ondialogaccept="QuickFolders.quickMove.Settings.accept();"
+        onload="QuickFolders.quickMove.Settings.load();"
+>
+
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />  
+	<script type="application/javascript" src="chrome://quickfolders/content/quickmove-settings.js" />
+
+
+  <hbox id="qf-header" >
+    <hbox id="qf-options-header" flex="12">
+      <label class="dialogheader-title"
+        value="&qf.dialog.quickmove.settings;"
+        flex="1"/>
+
+      <label id="qf-options-header-description"/>
+    </hbox>
+  </hbox>
+  
+  <hbox align="center">
+    <label control="maxResults"
+           value ="&qf.quickMove.maxResults;:" />
+    <html:input
+      id="maxResults"
+      type="number"
+      class="num2digit" />
+  </hbox>
+  
+  <checkbox id="chkSilent" label="&qf.quickMove.silent;" />
+
+  <checkbox id="chkLockAccounts" label="&qf.quickMove.lockAccount;"/>
+  
+ 	<description style="max-width:525px">&qf.quickMove.excludeAccounts;</description>
+  <html:fieldset>
+    <html:legend>&qf.accounts;</html:legend>
+    <vbox id="currentFolderCustomize">
+      <hbox class="accountItem" id="dummy">
+        <label>No Accounts with default Identity found!</label>
+      </hbox>
+
+    </vbox>
+  </html:fieldset>
+  
+
+
+
+</dialog>

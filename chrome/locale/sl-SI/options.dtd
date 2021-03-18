@@ -182,13 +182,13 @@
 <!ENTITY qf.checkbox.quickMove.tip "Bližnjica za vlečenje pošte na gumb za hitri premik za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa.">
 <!ENTITY qf.checkbox.quickCopy "Hitro kopiranje - Kopirajte pošto v katerokoli mapo z bližnjico:">
 <!ENTITY qf.checkbox.quickCopy.tip "Bližnjica za vlečenje pošte na gumb za hitro kopiranje za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa.">
-<!ENTITY qf.checkbox.quickmove.autofill "Insert last folder name executed">
+<!ENTITY qf.checkbox.quickmove.autofill "Vstavi ime iskane zadnje mape">
 <!ENTITY qf.checkbox.quickmove.autofill.tip "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations.">
-<!ENTITY qf.checkbox.skipFolder "Skip Unread Folder - use Shortcut: SHIFT +">
-<!ENTITY qf.checkbox.skipFolder.tip "Shortcut for jumping to the next unread folder.">
-<!ENTITY qf.backupAndRestore "Backup / Restore">
-<!ENTITY qf.storeConfig "Save Configuration…">
-<!ENTITY qf.loadConfig "Load Configuration…">
+<!ENTITY qf.checkbox.skipFolder "Preskoči neprebrano mapo - uporabite bližnjico: SHIFT +">
+<!ENTITY qf.checkbox.skipFolder.tip "Bližnjica za preskok na naslednjo neprebrano mapo.">
+<!ENTITY qf.backupAndRestore "Varnostno kopiranje / obnovitev">
+<!ENTITY qf.storeConfig "Shrani konfiguracijo…">
+<!ENTITY qf.loadConfig "Naloži konfiguracijo…">
 <!ENTITY qf.checkbox.storeConfig.tabs "Include QuickFolders Tabs">
 <!ENTITY qf.checkbox.storeConfig.general "Include general settings">
 <!ENTITY qf.checkbox.storeConfig.layout "Include advanced and layout">
@@ -200,6 +200,7 @@
 <!ENTITY qf.pathFormat.URI "URI mape">
 <!ENTITY qf.pathFormat.maxDepth "Največja globina poti:">
 <!ENTITY qf.pathFormat.tooltip "Največje število map prikazanih v poti mape.">
+<!ENTITY qf.search.advanced "Nastavitve naprednega iskanja…">
 <!ENTITY qf.categories.supportMultiple "Podpora za izbiro več kategorij zavihkov">
 <!ENTITY qf.categories.supportMultiple.tooltip "Uporabite tipko SHIFT, da v spustnem seznamu izberete več kot eno kategorijo.">
 <!ENTITY qf.checkbox.readingList "Bralni seznam">

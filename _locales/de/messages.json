@@ -90,8 +90,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
-  "time-and-effort": { 
-    "message": "Meine Add-Ons erfordern grundlegende Änderungen, um mit der Mozilla-Plattform kompatibel zu bleiben. Mein Entwicklungsteam auf Github (Realraven2000, opto und paenglab) arbeitet fleißig daran, die volle Funktionalität für $addonName$ wiederherzustellen.",
+  "special-offer-head" : {
+    "message": "12 Jahre QuickFolders - Sonderangebot zu Ostern!"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "Jetzt ist die beste Gelegenheit, Ihre Lizenz zu erwerben, da der Preis einer QuickFolders Pro-Lizenz anlässlich des 12-jährigen Bestehens von QuickFolders {boldStart}um 50% gesenkt{boldEnd} wird. Dieses Sonderangebot gilt bis zum {boldStart}31. März{boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Lesen Sie hier, was es seit der Einführung von Thunderbird 78 neues gibt:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Was gibt's Neues?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro verfügt jetzt über erweiterte Sucheinstellungen wie das stille Verschieben und Ausschließen von Konten Ihrer Wahl oder das Einschränken der Ergebnisse innerhalb eines Kontos sowie verbesserte Funktionen zum Verschieben und Kopieren von Ordnern. Ich habe auch mehrere Funktionen repariert, um mit Thunderbird 87 und höher kompatibel zu bleiben."
+  },  
+
+  "time-and-effort" : { 
+    "message": "$addonName$ erfordert fortlaufend Änderungen, um mit der Mozilla-Plattform kompatibel zu bleiben. Ich arbeite ständig daran, so viele Funktionen wie möglich für zukünftige Versionen von Thunderbird beizubehalten.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

@@ -16,13 +16,9 @@ QuickFolders.quickMove = {
   isMoveActive: false,
   Uris: [],      // message Uris of mails lined up for move (quickMove)
   folders: [],
-  IsCopy: [],    // copy flag, false for move
+  IsCopy: [],    // copy flag, false for move, this is synced to the list of messages / folders.
   Origins: [],   // source folder array
   
-	get silent() {
-		return QuickFolders.Preferences.getBoolPref('quickMove.premium.silentMode');
-	},
-
   get isActive() {
     return (this.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
   },
@@ -94,7 +90,7 @@ QuickFolders.quickMove = {
             }, 1200);
         }
       }
-			if (!QuickFolders.quickMove.silent)
+			if (!QuickFolders.quickMove.Settings.isSilent)
 				util.slideAlert("QuickFolders",notify);
     }
     function copyList(uris, origins, isCopy) {
@@ -149,7 +145,7 @@ QuickFolders.quickMove = {
 
 		try {
       if (this.folders.length) { // [issue 75] move folders instead
-        QI.moveFolders(this.folders, fld);
+        QI.moveFolders(this.folders, this.IsCopy, fld);
       }
       else {
         // split mails to copy / move:   
@@ -183,7 +179,10 @@ QuickFolders.quickMove = {
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.children.length-1; i>0; i--) {
       let item = menu.children[i];
-      if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
+      if (item.classList.contains('msgUri') || 
+          item.classList.contains('folderUri') || 
+          item.classList.contains('folderCopy') || 
+          item.tagName=='menuseparator')
         menu.removeChild(item);
     }    
   },
@@ -233,24 +232,49 @@ QuickFolders.quickMove = {
     }
   },
   
+  // [issue 75] support moving folders through quickMove
   addFolders: function addFolders(foldersArray, isCopy) {
-    // [issue 75] support moving folders through quickMove
-    for (let f of foldersArray) {
-      if (!this.folders.includes(f))
-        this.folders.push(f);
-    }
-    if (this.Uris.length) {
-      this.resetMenu();
+    const QI = QuickFolders.Interface;
+    let initialCount = this.folders.length;
+    if (!initialCount && this.Uris.length) {
       // clear uris for moving mails
+      this.resetMenu();
       while (this.Uris.length) this.Uris.pop();
     }    
+    
+    // add folder items to menu
+    let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
+    if (!initialCount)
+      menu.appendChild(document.createXULElement ? document.createXULElement('menuseparator') : document.createElement('menuseparator'));
+    for (let f of foldersArray) {
+      if (this.folders.includes(f)) {
+        util.logDebug("Omitting folder " + f.prettyname + " as it is already on the list!")
+        continue;
+      }
+      this.folders.push(f);
+      this.IsCopy.push(isCopy);
+      let label = f.prettyName,
+          menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+      menuitem.setAttribute("label", label);
+      menuitem.classList.add(isCopy ? 'folderCopy' : 'folderUri');
+      menuitem.classList.add('menuitem-iconic');
+      menuitem.addEventListener("command", function() { QuickFolders_MySelectFolder(f.URI); });  // or QI.openFolderInNewTab(folder)
+      menu.appendChild(menuitem);
+    }
+    
     if (this.hasFolders) {
       this.isMoveActive = true;
-      QuickFolders.Interface.toggleMoveModeSearchBox(true);
+      QI.toggleMoveModeSearchBox(true);
     }
   } ,
   
+  // Add an item to the list of things to be moved.
   add: function add(newUri, sourceFolder, isCopy)  {
+    // remove any pending folders to move!
+    if (this.hasFolders) {
+      this.resetMenu();
+      while (this.folders.length) this.folders.pop();
+    }
     if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
       let chevron = ' ' + "\u00BB".toString() + ' ',
           showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 

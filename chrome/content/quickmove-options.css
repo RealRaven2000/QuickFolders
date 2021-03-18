@@ -1,0 +1,45 @@
+
+hbox#qf-header:before {
+	content: url("chrome://quickfolders/content/skin/ico/QuickFolders_32.svg");
+	margin: 0.2em 0.5em 0em 0.2em;
+}
+hbox#qf-header {
+	background-image:linear-gradient(to bottom, #19347f 0%, #0984e2 100%);
+	background-repeat: repeat-x;
+	background-color: #0984e2;
+	color: #fff;
+	padding: 5px 8px;
+	border-radius: 0.1em;
+	border: 1px solid #aaa;
+	box-shadow: inset 0px 0px 6px rgba(0,0,0,0.6);
+  margin-bottom: 5px;
+}
+
+#qf-options-header {
+  display: inline-block;
+	vertical-align: top;
+	margin-top: 0.5em;
+}
+#qf-options-header .dialogheader-title {
+	margin: 0px !important;
+	font-size: large;
+	font-weight: bold;
+	font-family: calibri,sans-serif;
+	color: none;
+}
+
+.num2digits, #maxResults {
+	max-width: 4em;
+	width: auto;
+}
+
+
+/* grid replacement */
+#currentFolderCustomize {
+  align-content: start;
+  display: grid;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  grid-template-columns: auto auto; /* widths of columns */
+  margin-top: 5px;
+}

@@ -25,6 +25,18 @@
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-copy.png") !important;
 }
 
+#QuickFolders-quickMoveMenu .folderUri {
+  list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+}
+
+#QuickFolders-quickMoveMenu .folderCopy {
+  list-style-image: url('chrome://quickfolders/content/skin/ico/folder-add.svg') !important;
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  stroke: var(--green-highlight);
+}
+
 #QuickFolders-quickMoveMenu .msgUri.invalid,
 #QuickFolders-readingListMenu .msgUri.invalid {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-invalid.png");

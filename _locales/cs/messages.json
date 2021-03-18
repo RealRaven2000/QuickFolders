@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 let QuickFolders - speciální velikonoční výprodej!"
+  } ,  
+  
+  "special-offer-content" : {
+    "message": "Nyní je nejlepší příležitost získat licenci, protože k oslavě 12 let QuickFolders došlo k {boldStart}50% snížení{boldEnd} ceny licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}31. Března{boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Přečtěte si, co je nového od zavedení Thunderbirdu 78 zde:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Co je nového?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro má nyní pokročilé nastavení vyhledávání, jako je tiché přesouvání a vyloučení účtů podle vašeho výběru nebo omezení výsledků v rámci účtu a vylepšené funkce pro přesouvání a kopírování složek. Opravil jsem také více položek, abych zůstal kompatibilní s Thunderbirdem 87 a vyššími."
+  },  
+
   "time-and-effort": { 
-    "message": "Moje doplňky vyžadují zásadní změny, aby zůstaly kompatibilní s platformou Mozilla. Můj vývojový tým v Githubu (Realraven2000, opto a paenglab) pilně pracuje na obnovení plné funkčnosti pro $addonName$.",
+    "message": "$addonName$ vyžaduje průběžné změny, aby zůstal kompatibilní s platformou Mozilla. Neustále pracuji na zachování co největší funkčnosti pro budoucí verze Thunderbirdu.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

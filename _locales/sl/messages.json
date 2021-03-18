@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 let QuickFolders - posebna velikonočna prodaja!"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "Zdaj je najboljša priložnost za pridobitev licence, saj obstaja {boldStart} 50% znižanje {boldEnd} cene licence QuickFolders Pro za praznovanje 12 let QuickFolders! Ta posebna ponudba bo na voljo do {boldStart} 31. marca {boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Tukaj si preberite, kaj je novega od uvedbe Thunderbirda 78:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "Kaj je novega?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro ima zdaj napredne nastavitve iskanja, kot so tiho premikanje in izključitev računov po vaši izbiri ali omejevanje rezultatov v računu ter izboljšane funkcije za premikanje in kopiranje map. Popravil sem tudi več funkcij, da sem ostal združljiv s Thunderbirdom 87 in novejšimi."
+  },  
+
   "time-and-effort": { 
-    "message": "Moji dodatki zahtevajo temeljne spremembe, da bi ostali združljivi s platformo Mozilla. Moja razvojna skupina pri Githubu (Realraven2000, opto in paenglab) si prizadevno prizadeva obnoviti popolno funkcionalnost za $addonName$.",
+    "message": "$addonName$ zahteva stalne spremembe, da ostane združljiv s platformo Mozilla. Nenehno si prizadevam, da bi ohranil čim več funkcionalnosti za prihodnje različice Thunderbirda.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

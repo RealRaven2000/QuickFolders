@@ -85,6 +85,49 @@ div[collapsed=true]{
   visibility: collapse;
   display :none;
 }
+
+/* sales and other important announcments */
+.importantInfo {
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+}
+
+.importantInfo p {
+  color: white;
+}
+
+.importantInfo p b {
+  color: yellow !important;
+  background-color: transparent;
+}
+
+#specialOffer {
+  border-radius: 6px;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 0.1em 1em;
+}
+
+#specialOffer h2 {
+  background: none !important;
+  margin-top: 16px;
+  text-shadow:
+     -1px -1px 0 #EEE,  
+      1px -1px 0 #EEE,
+      -1px 1px 0 #EEE,
+       1px 1px 0 #EEE !important;
+  
+}
+
+#specialOffer #bargainIcon {
+  background: transparent !important;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  right: -2em;
+  top: -1em;
+}
+
 #purchaseLicenseListItem { /* test */
 /*
   background-color: lightyellow;

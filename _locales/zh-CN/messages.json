@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "QuickFolders 12年-复活节特别促销！"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "现在是获得许可证的最佳机会，因为庆祝QuickFolders成立12周年的QuickFolders Pro许可证价格降低了{boldStart} 50％{boldEnd}！ 此特别优惠将持续到{boldStart} 3月31日{boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "在此处阅读有关自Thunderbird 78引入以来的新功能：" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "什么是新的？"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro 现在具有高级搜索设置，例如静默移动和排除您选择的帐户或将结果限制在一个帐户内，以及改进的用于移动和复制文件夹的功能。 我还修复了更多功能，以与Thunderbird 87和更高版本兼容。"
+  },  
+
   "time-and-effort": { 
-    "message": "我的附加组件需要进行基本更改，以保持与Mozilla平台的兼容性。 我在Github的开发团队（Realraven2000，opto和paenglab）正在努力恢复 $addonName$ 的全部功能。",
+    "message": "$addonName$ 需要进行不断的更改，以保持与Mozilla平台的兼容性。 我一直在努力为Thunderbird的未来版本保留尽可能多的功能。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

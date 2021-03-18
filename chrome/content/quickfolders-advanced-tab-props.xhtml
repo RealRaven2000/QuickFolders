@@ -62,13 +62,8 @@
 	
 		<groupbox>
 		  <caption label="&grpComposer;"/>
-			<grid>
-				<columns>
-					<column/>
-					<column flex="2"/>
-				</columns>	
-				<rows>
-					<row align="center">
+			<div id="advancedGrid" class="grid-container">
+
 						<label value="&fromAddress;"
 						       control="mailIdentity"/>	
 						<menulist id="mailIdentity"
@@ -78,17 +73,16 @@
 							<menupopup>
 							</menupopup>
 						</menulist>
-					</row>
-					<row align="center">
+
 						<label value="&toAddress;"
 						       control="txtToAddress"/>	
 						<html:input
                   type="text"
                   id="txtToAddress" 
                   tooltiptext="&toAddress.tooltip;"/>
-					</row>
-					<!-- non-row elements span the whole width -->
-					<hbox>
+
+					<!-- span the whole width -->
+					<hbox style="grid-column: 1 / span 2;">
 						<checkbox 
 							id="chkComposerSubFolders"
 							label="&chkComposerSubfolders;" 
@@ -99,8 +93,7 @@
 										tooltiptext=""
 										label="  "/>
 					</hbox>
-				</rows>
-			</grid>
+			</div>
 		</groupbox>
 		
 		<groupbox>
@@ -140,43 +133,36 @@
 				          onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"
 									/>	
 			  
-			  <grid>
-				<columns>
-					<column/>
-					<column flex="3"/>
-				</columns>	
-				<rows>
-					<row>
-						<button label="&cssBackground;"
-						        oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
-										class="textLink"/>	
-						<html:input
-                  type="text"
-                  id="txtBackground" 
-                  tooltiptext="&cssBackground.tooltip;"
-                  onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
-					</row>
-					<row>
-						<button label="&cssColor;"
-						       oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
-						       class="textLink"/>
-						<hbox>
-							<html:input
-                  type="text"
-                  id="txtColor" 
-                  tooltiptext="&cssColor.tooltip;"
-                  onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
-							<colorpicker id="txtColorPicker" 
-											 type="button"
-											 onchange="return QuickFolders.AdvancedTab.pickColor(this.color);"/>
-							<spacer flex="1"/>
-							<label id="cssPreview" 
-										 value="Preview"
-										 tooltiptext="Current selected folder colors will always override this."/>
-						</hbox>
-					</row>
-				</rows>
-			  </grid>
+			  <div id="styleGrid" class="grid-container">
+          <button label="&cssBackground;"
+                  oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
+                  class="textLink"/>	
+          <html:input
+                type="text"
+                id="txtBackground" 
+                tooltiptext="&cssBackground.tooltip;"
+                onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
+          
+          
+          <button label="&cssColor;"
+                 oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
+                 class="textLink"/>
+          <hbox>
+            <html:input
+                type="text"
+                id="txtColor" 
+                tooltiptext="&cssColor.tooltip;"
+                onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
+            <html:input 
+                id="txtColorPicker" 
+                type="color"
+                onchange="return QuickFolders.AdvancedTab.pickColor(this.value);"/>
+            <spacer flex="1"/>
+            <label id="cssPreview" 
+                   value="Preview"
+                   tooltiptext="Current selected folder colors will always override this."/>
+          </hbox>
+			  </div>
 		    </hbox>
 		</groupbox>
 		<hbox>

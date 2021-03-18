@@ -89,8 +89,28 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "QuickFoldersの12年-特別なイースターセール！"
+  } ,  
+
+  "special-offer-content" : {
+    "message": "QuickFoldersの12周年を祝うために、QuickFolders Proライセンスの価格が {boldStart} 50％割引{boldEnd} されているため、今がライセンスを取得する最高の機会です。 この特別オファーは、{boldStart} 3月31日{boldEnd} までご利用いただけます。"
+  },
+  
+  "whats-new-intro" : {
+    "message": "Thunderbird 78の導入以降の新機能については、こちらをご覧ください。" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "新着情報？"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Proには、選択したアカウントのサイレント移動と除外、アカウント内の結果の制限などの高度な検索設定と、フォルダーの移動とコピーの機能の改善があります。 また、Thunderbird 87 以降との互換性を維持するために、より多くの機能を修復しました。"
+  },  
+
   "time-and-effort": { 
-    "message": "私のアドオンは、Mozilla プラットフォームとの互換性を維持するために、根本的な変更を必要としています。Github の私の開発チーム (Realraven2000、opto、paenglab) は、$addonName$ の全機能を復元するために熱心に取り組んでいます。",
+    "message": "$addonName$ は、Mozillaプラットフォームとの互換性を維持するために、継続的な変更が必要です。 私はThunderbirdの将来のバージョンのために可能な限り多くの機能を保持するために絶えず取り組んでいます。",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 

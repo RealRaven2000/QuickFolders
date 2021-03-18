@@ -235,119 +235,6 @@ QuickFolders.Interface = {
 		this.TimeoutID=0;
 	},
 
-	// Postbox / SeaMonkey specific code:
-	// See also: http://mxr.mozilla.org/mozilla/source/mail/base/content/mail-folder-bindings.xml#369
-	generateMRUlist_Postbox_TB2: function generateMRUlist_Postbox_TB2() {
-		const Cc = Components.classes,
-		      Ci = Components.interfaces;
-		// use strict: must declare local functions at the top!
-
-		/**    checkSubFolders(aFolder)
-		 * This function will iterate through any existing
-		 * sub-folders and
-		 *    (1) check if they're recent and
-		 *    (2) recursively call this function to iterate through any sub-sub-folders.
-		 *
-		 * @param aFolder:  the folder to check
-		 */
-		function checkSubFolders(aFolder) {
-			if (!aFolder.hasSubFolders)
-				return;
-			let myenum; // force instanciation for SM
-			if (typeof aFolder.subFolders != 'undefined')
-				myenum = aFolder.subFolders;
-			else
-				myenum = aFolder.GetSubFolders();
-
-
-			let done=false;
-			while (!done) {
-				let folder;
-				if (typeof myenum.currentItem!='undefined')
-					folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
-				else // SeaMonkey
-				{
-					if (myenum.hasMoreElements())
-						folder = myenum.getNext().QueryInterface(Ci.nsIMsgFolder);
-					else {
-						done=true;
-						break;
-					}
-				}
-				QuickFolders.Util.logDebugOptional("popupmenus","	   check for recent: " + folder.prettyName);
-
-				addIfRecent(folder);
-				checkSubFolders(folder);
-				// Postbox
-				if (typeof myenum.next != 'undefined') {
-					try { myenum.next(); } catch(e) {done=true;}
-				}
-			}
-			done=false;
-		}
-
-		/**    addIfRecent(aFolder)
-		 * This function will add a folder to the recentFolders array if it
-		 * is among the 15 most recent.  If we exceed 15 folders, it will pop
-		 * the oldest folder, ensuring that we end up with the right number
-		 *
-		 * @param aFolder the folder to check
-		 */
-		function addIfRecent(aFolder) {
-			if (!aFolder.canFileMessages || !aFolder.getStringProperty)
-				return;
-
-			let time = 0;
-			try {
-				time = aFolder.getStringProperty("MRUTime");
-			} catch(ex) {}
-			if (time <= oldestTime) {
-				QuickFolders.Util.logDebugOptional('recentFolders.detail','time <= oldest: ' + aFolder.prettyName);
-				return;
-			}
-
-			if (recentFolders.length >= MAXRECENT) {
-				recentFolders.sort(sorter);
-				QuickFolders.Util.logDebugOptional('recentFolders','recentFolders.pop(): '
-					+ recentFolders[recentFolders.length-1].prettyName
-					+ '\n- MRUTime: ' + recentFolders[recentFolders.length-1].getStringProperty("MRUTime")
-					+ '\n- for folder: ' + aFolder.prettyName
-					+ '\ntime=' + time
-					+ '\noldestTime=' + oldestTime);
-				recentFolders.pop();
-				oldestTime = recentFolders[recentFolders.length-1].getStringProperty("MRUTime");
-			}
-			recentFolders.push(aFolder);
-		}
-
-		function sorter(a, b) {
-			if (a.getStringProperty("MRUTime") < b.getStringProperty("MRUTime"))
-				return 1;
-			return -1;
-		}
-
-		QuickFolders.Util.logDebugOptional('recentFolders','generateMRUlist_Postbox_TB2');
-		// Iterate through all folders in all accounts, and check MRU_Time,
-		// then take the most recent 15.
-		let recentFolders = [],
-		    oldestTime = 0, // let sometimes creates a problem in TB2!
-		    MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount"),
-	      menu = this,
-        // Start iterating at the top of the hierarchy, that is, with the root
-        // folders for every account.
-		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
-		// Postbox only:
-		if (util.isLegacyIterator) {
-			for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-				addIfRecent(acct.incomingServer.rootFolder);
-				checkSubFolders(acct.incomingServer.rootFolder);
-			}
-		}
-
-		recentFolders.sort(sorter);
-		return recentFolders;
-	} ,
-
 	createRecentPopup: function createRecentPopup(passedPopup, isDrag, isCreate, isCurrentFolderButton) {
 		const Cc = Components.classes,
 		      Ci = Components.interfaces;
@@ -382,26 +269,16 @@ QuickFolders.Interface = {
 
 		// convert array into nsISimpleEnumerator
 		let recentFolders,
-		    FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray),
-		    isOldFolderList = false;
-		if (typeof gFolderTreeView=='undefined')
-		{
-			recentFolders = this.generateMRUlist_Postbox_TB2();
-			isOldFolderList = true;
-		}
-		else {
-      // moved out to shim b/c for..of not liked by Postbox
-			recentFolders = util.generateMRUlist(gFolderTreeView);
-		}
+		    FoldersArray = []; // Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+
+    // moved out to shim b/c for..of not liked by Postbox
+    recentFolders = util.generateMRUlist(gFolderTreeView);
 
     let debugText = '';
 		for (let i = 0; i < recentFolders.length; i++) {
-			let f;
-			if (isOldFolderList)
-				f = recentFolders[i];
-			else
-				f = recentFolders[i]._folder;
-			FoldersArray.appendElement(f, false);
+			let f = recentFolders[i]._folder;
+      FoldersArray.push(f);
+			// FoldersArray.appendElement(f, false);
       if (prefs.isDebugOption('recentFolders.detail')) {
         debugText += '\n' + i + '. appended ' +  f.prettyName.padEnd(25, " ") + ' ' + f.URI;
       }
@@ -410,7 +287,7 @@ QuickFolders.Interface = {
 
 		// addSubFoldersPopupFromList expects nsISimpleEnumerator, enumerate() convrts the nsIMutableArray
 		let isAlphaSorted =  prefs.getBoolPref("recentfolders.sortAlphabetical");
-		this.addSubFoldersPopupFromList(FoldersArray.enumerate(), menupopup, isDrag, isAlphaSorted, true);
+		this.addSubFoldersPopupFromList(FoldersArray, menupopup, isDrag, isAlphaSorted, true);
 		util.logDebugOptional('recentFolders','=============================\n'
 			+ 'createRecentPopup Finished!');
 		return menupopup;
@@ -1217,7 +1094,6 @@ QuickFolders.Interface = {
 			const separator = "==============================\n";
 			let f = 0, affected = 0;
 			util.logDebug(separator + "loading Dictionary…");
-			//let allFolders = util.allFoldersIterator(false);
 			util.logDebug(separator + "Iterating all folders…");
 			for (let folder of util.allFoldersIterator(false)) {
 				//let folder = allFolders[i];
@@ -2392,13 +2268,13 @@ QuickFolders.Interface = {
   addCustomStyles: function addCustomStyles(button, entry) {
 		const util = QuickFolders.Util;
     function getLabel(button) {
-        let anonChildren = util.getAnonymousNodes(document,button);
-        if (!anonChildren) return null;
-        for (let i=0; i<anonChildren.length; i++) {
-          if (anonChildren[i].classList.contains('toolbarbutton-text'))
-            return anonChildren[i];
-        }
-        return null;
+      let anonChildren = util.getAnonymousNodes(document,button);
+      if (!anonChildren) return null;
+      for (let i=0; i<anonChildren.length; i++) {
+        if (anonChildren[i].classList.contains('toolbarbutton-text'))
+          return anonChildren[i];
+      }
+      return null;
     }
     let ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
     // custom colors
@@ -2555,19 +2431,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewTab()");
 		if (tabmail) {
 		  let tabName = folder.name;
-			switch (util.Application) {
-				case 'Thunderbird':
-				  tabmail.openTab(util.mailFolderTypeName, {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} ) ;
-					break;
-				case 'SeaMonkey':
-					tabmail.openTab(util.mailFolderTypeName, 7, folder.URI); // '3pane'
-					QuickFolders.tabContainer.selectedIndex = tabmail.tabContainer.children.length - 1;
-					break;
-				case 'Postbox':
-					let win = util.getMail3PaneWindow();
-					win.MsgOpenNewTabForFolder(folder.URI, null /* msgHdr.messageKey key*/, false /*Background*/ )
-					break;
-			}
+      tabmail.openTab(util.mailFolderTypeName, {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
 		}
 	} ,
 
@@ -4337,19 +4201,9 @@ QuickFolders.Interface = {
         maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
 
 		util.logDebugOptional('popupmenus.subfolders', 'addSubFoldersPopupFromList(..)');
-		while (!done) {
-			// TB2 and Postbox:
-			if (typeof subfolders.currentItem!='undefined')
-				subfolder = subfolders.currentItem().QueryInterface(Ci.nsIMsgFolder);
-			else {
-				if (subfolders.hasMoreElements())
-					subfolder = subfolders.getNext().QueryInterface(Ci.nsIMsgFolder);
-				else {
-					done=true;
-					break;
-				}
-			}
-
+    // change subfolders from nsIMutableArray to Array
+    for (subfolder of subfolders) {
+		// while (!done) 
 			try {
 				this.debugPopupItems++;
 				let menuitem = this.createIconicElement('menuitem','*'),
@@ -4521,10 +4375,6 @@ QuickFolders.Interface = {
 
 					subPopup.removeChild(menuitem);
 				}
-
-				if (typeof subfolders.next!='undefined') {
-					try { subfolders.next(); } catch(e) { done=true; }
-				}
 			}
 			catch(ex) {
         util.logException('Exception in addSubFoldersPopupFromList: ', ex);
@@ -4543,10 +4393,19 @@ QuickFolders.Interface = {
 		if (folder.hasSubFolders) {
 			util.logDebugOptional('popupmenus.subfolders', 'Adding folders…');
 			let subfolders;
-			if (typeof folder.subFolders != 'undefined')
-				subfolders = folder.subFolders;
-			else
-				subfolders = folder.GetSubFolders();
+      if (folder.subFolders.hasMoreElements) {
+        // Tb78 and older - uses nsIMutableArray
+        subfolders = [];
+        let x=100;
+        var subFolders = folder.subFolders;
+				while (subFolders.hasMoreElements()) {
+					let sf = subFolders.getNext().QueryInterface(Ci.nsIMsgFolder);
+          subfolders.push(sf);          
+          if (--x==0) break; // safety
+        }
+			}      
+      else
+        subfolders = folder.subFolders; // Tb 87
 
 			let isAlphaSorted = prefs.isSortSubfolderMenus;
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, false);
@@ -4872,7 +4731,8 @@ QuickFolders.Interface = {
           prefs = QuickFolders.Preferences,
           Ci = Components.interfaces,
 					ELLIPSIS = "\u2026".toString(),
-					CHEVRON = "\u00BB".toString();
+					CHEVRON = "\u00BB".toString(),
+          maxResults = prefs.getIntPref("quickMove.maxResults"); // was hard coded to 25
 
 		let isSelected = false,
 				enteredSearch = searchBox.value,
@@ -4886,7 +4746,10 @@ QuickFolders.Interface = {
 		let account = null,
 		    identity = null,
 		    matches = [],
-				parents = [];
+				parents = [],
+        excludedServers = QuickFolders.quickMove.Settings.excludedIds,
+        isLockAccount = QuickFolders.quickMove.Settings.isLockInAccount,
+        currentFolder = util.CurrentFolder;
 
 		// change: if only 1 character is given, then the name must start with that character!
 		// first, search QuickFolders
@@ -4905,6 +4768,10 @@ QuickFolders.Interface = {
 					  continue;  // skip if not starting with single letter
 				}
 				let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
+        if (excludedServers.includes(fld.server.key))
+          continue;
+        if (isLockAccount &&  fld.server && currentFolder.server && fld.server.key!=currentFolder.server.key)
+          continue;
 				if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) // [Bug 26692]
 					continue;
 				// avoid duplicates
@@ -4950,36 +4817,15 @@ QuickFolders.Interface = {
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
 
 		// multiple slashes?
-		let isLegacyIterator = util.isLegacyIterator;
-    if (isLegacyIterator) {
-			util.logDebugOptional("interface.findFolder", "Using old folder iterator for Platform=" + util.PlatformVersion);
-      let AF = util.allFoldersIterator(isFiling);
-			util.logDebugOptional("Assigned AllFolders = " + AF);
-      for (let fi=0; fi<AF.length; fi++) {
-        let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
-        if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
-				addMatchingFolder(matches, folder);
-      }
-    }
-    else {
 			util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
 			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
 			util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
-		}
 
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-			if (isLegacyIterator) {  // util.Application == 'Postbox'
-				let AF = util.allFoldersIterator(isFiling);
-				for (let fi=0; fi<AF.length; fi++) {
-					let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
-					addIfMatch(folder, matches.parentString || parentString, parents);
-				}
-			}
-			else
-				for (let folder of util.allFoldersIterator(isFiling)) {
-					addIfMatch(folder, matches.parentString || parentString, parents);
-				}
+      for (let folder of util.allFoldersIterator(isFiling)) {
+        addIfMatch(folder, matches.parentString || parentString, parents);
+      }
 		}
 		util.logDebugOptional("interface.findFolder", "built list: " + matches.length + " matches found. Building menu…");
 
@@ -5005,7 +4851,7 @@ QuickFolders.Interface = {
 				menupopup.removeChild(menupopup.firstChild);
 		  if (matches.length) {
 				// restrict results to 25
-				let count = Math.min(matches.length,25);
+				let count = Math.min(matches.length, maxResults);
 				for (let j=0; j<count; j++) {
 					let menuitem = this.createIconicElement('menuitem','*');
 					// menuitem.className='color menuitem-iconic';
@@ -6465,117 +6311,87 @@ QuickFolders.Interface = {
 	goPreviousSiblingFolder: function goPreviousSiblingFolder() {
     const Cc = Components.classes,
 		      Ci = Components.interfaces;
-		let aFolder = QuickFolders.Util.CurrentFolder,
-		    parentFolder = aFolder.parent,
+		let current = QuickFolders.Util.CurrentFolder,
+		    parentFolder = current.parent,
 		    myenum; // force instanciation for SM
-		if (!aFolder || !parentFolder)
+		if (!current || !parentFolder)
 			return;
-
-		if (typeof parentFolder.subFolders != 'undefined')
-			myenum = parentFolder.subFolders;
-		else
-			myenum = parentFolder.GetSubFolders();
-		let done=false,
-		    target=null,
-		    folder=null;
-		while (!done) {
-			target = folder;
-			if (typeof myenum.currentItem!='undefined') {
-				folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
-				if (typeof myenum.next != 'undefined') {
-					try { myenum.next(); }
-					catch(e) {
-						done=true;
-					}
-				}
-			}
-			else // SeaMonkey
-			{
-				if (myenum.hasMoreElements())
-					folder = myenum.getNext().QueryInterface(Ci.nsIMsgFolder);
-				else {
-					done=true;
-					break;
-				}
-			}
-			if (folder.URI == aFolder.URI) {
-				done=true;
-				// if target is null:
-				let x = null;
-				while (target == null) {  // we are at start, lets go to the end (wrap around)
-					if (typeof myenum.currentItem!='undefined') {
-						try {
-							myenum.next();
-							x = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder);
-						} // no next: end of list
-						catch(e) {
-							target = x;
-						}
-					}
-					else {
-						if (myenum.hasMoreElements())
-							x = myenum.getNext();
-						else {
-							if (!x) break; // only 1 item present
-							target = x.QueryInterface(Ci.nsIMsgFolder);
-						}
-					}
-				}
-			}
-		}
+    
+    let childFolders;
+    
+    if (parentFolder.subFolders.hasMoreElements) {
+      let myenum = parentFolder.subFolders;
+      childFolders = [];
+      while (myenum.hasMoreElements()) {
+        childFolders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
+      }
+    }
+    else { // Tb 88
+      childFolders = parentFolder.subFolders;
+    }
+    
+    // do nothing if this is the only folder:
+    if (childFolders.length == 1) return;
+    
+		let target = null,
+        iCurrent;
+        
+    for (let i=0; i<childFolders.length; i++) {
+      if (current == childFolders[i]) {
+        iCurrent = i;
+      }
+    }
+    if (iCurrent==0) { // go to last element
+      target = childFolders[childFolders.length-1];
+    }
+    else
+      target = childFolders[iCurrent-1];
+    
 		if (null!=target)
 			QuickFolders_MySelectFolder(target.URI);
 
 	} ,
 
 	goNextSiblingFolder: function goNextSiblingFolder() {
-		let aFolder = QuickFolders.Util.CurrentFolder,
-		    parentFolder = aFolder.parent,
+		let current = QuickFolders.Util.CurrentFolder,
+		    parentFolder = current.parent,
         myenum; // force instanciation for SM
-		if (!aFolder || !parentFolder)
+		if (!current || !parentFolder)
 			return;
-
-		if (typeof parentFolder.subFolders != 'undefined')
-			myenum = parentFolder.subFolders;
-		else
-			myenum = parentFolder.GetSubFolders();
-		let done=false,
-		    found=false,
-		    first=null,
-	      folder;
-		while (!(done)) {
-			if (typeof myenum.currentItem!='undefined') {
-				folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
-				if (typeof myenum.next != 'undefined') {
-					try {
-						myenum.next();
-					}
-					catch(e) {
-						done=true;
-					}
-				}
-			}
-			else { // SeaMonkey
-				if (myenum.hasMoreElements())
-					folder = myenum.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-				else {
-					done=true;
-					break;
-				}
-			}
-			if (!first)
-				first = folder;
-			if (found)
-				done=true;
-			if (folder.URI == aFolder.URI)
-				found=true;
-		}
-		if (found) {
-			if (folder.URI == aFolder.URI)
-				QuickFolders_MySelectFolder(first.URI);
-			else
-				QuickFolders_MySelectFolder(folder.URI);
-		}
+      
+    let childFolders;
+      
+    if (parentFolder.subFolders.hasMoreElements) {
+      let myenum = parentFolder.subFolders;
+      childFolders = [];
+      while (myenum.hasMoreElements()) {
+        childFolders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
+      }
+    }
+    else { // Tb 88
+      childFolders = parentFolder.subFolders;
+    }
+    
+    // do nothing if this is the only folder:
+    if (childFolders.length == 1) return;
+    
+		let target = null,
+        iCurrent;
+        
+    for (let i=0; i<childFolders.length; i++) {
+      if (current == childFolders[i]) {
+        iCurrent = i;
+      }
+    }
+    
+    if (iCurrent==childFolders.length-1) { // go to first element
+      target = childFolders[0];
+    }
+    else
+      target = childFolders[iCurrent+1];
+    
+		if (null!=target)
+			QuickFolders_MySelectFolder(target.URI);
 	} ,
 
   /**
@@ -6803,7 +6619,7 @@ QuickFolders.Interface = {
 		QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
 
-	moveFolders: function moveFolders(fromFolders, targetFolder) {
+	moveFolders: function moveFolders(fromFolders, isCopy, targetFolder) {
 		// [Bug 26517] support multiple folder moves - added "count" and transmitting URIs
 		const Cc = Components.classes,
 		      Ci = Components.interfaces,
@@ -6823,17 +6639,20 @@ QuickFolders.Interface = {
     // make  sure this is not a child of previous folders! 
     // in this case, it will be moved anyway through its parent
     // and may lead to a problem (remaining folders are not moved)
-    let newFolders = [];
+    let newFolders = [], newIsCopy = [];
     for (let j=0; j<arrCount; j++) {
       let fld = fromFolders[j];
       if (isChildFolder(fld)) continue; // skip
       newFolders.push(fld);
+      newIsCopy.push(isCopy[j]);
     }
     arrCount = newFolders.length;
     
     
 		let lastFolder,
-		    sPrompt = util.getBundleString("qfConfirmMoveFolder", "Really move folder {0} to {1}?"),
+		    sPrompt = isCopy[0] ?
+          util.getBundleString("qfConfirmCopyFolder", "Really copy folder {0} to {1}?") :
+          util.getBundleString("qfConfirmMoveFolder", "Really move folder {0} to {1}?"),
 				whatIsMoved = arrCount==1 ? newFolders[0].prettyName : "[" + arrCount + " folders]";
 
 		sPrompt = sPrompt.replace("{0}", whatIsMoved);
@@ -6841,18 +6660,18 @@ QuickFolders.Interface = {
 		let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
 		if (!promptService.confirm(window, "QuickFolders", sPrompt)) return;
 
-		let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 		try {
 			let toCount = arrCount || 1,
           countChanges = 0; 
 			for (let i = 0; i < toCount; i++) {
+        // break up into single actions!
 				let folders = new Array,
 				    fld = newFolders[i],
+            isCopy = newIsCopy[i],
 				    fromURI = fld.URI;
             
 				lastFolder = fld; // keep track of last folder in case of a problem.
 				folders.push(fld); // dt.mozGetDataAt("text/x-moz-folder", i).QueryInterface(Ci.nsIMsgFolder)
-				let array = toXPCOMArray(folders, Ci.nsIMutableArray);
         if (util.CurrentFolder == fld) {
           this.goUpFolder();
         }
@@ -6863,20 +6682,32 @@ QuickFolders.Interface = {
 												&&
 											 (fld.server.type == 'pop3' || fld.server.type == 'imap' || fld.server.type == 'none')),
 						listener = null;
-				cs.CopyFolders(array,
-											 targetFolder,
-											 isMove,
-											 listener,
-											 msgWindow); // msgWindow  - global
+        if (isCopy) isMove=false; // force copy
+        let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService),
+            array = toXPCOMArray(folders, Ci.nsIMutableArray); // Tb 78
+        if (cs.CopyFolders)
+          cs.CopyFolders(array,
+                         targetFolder,
+                         isMove,
+                         listener,
+                         msgWindow); // msgWindow  - global
+        else { // Tb 88
+          var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+          MailServices.copy.copyFolders(folders, targetFolder, isMove, listener, null);
+        }
 				// in case it has a Tab, fix the uri
 				//  see also OnItemRemoved
 				// get encoded folder Name:
-				let slash = fromURI.lastIndexOf('/'),
-						encName = fromURI.substring(slash),
-						newURI = targetFolder.URI + encName;
-        countChanges += QuickFolders.Model.moveFolderURI(fromURI, newURI);
-				// Filter Validation!
-				setTimeout(function() {  QuickFolders.Util.validateFilterTargets(fromURI, newURI); }, 1000);
+        if (isMove) {
+          let slash = fromURI.lastIndexOf('/'),
+              encName = fromURI.substring(slash),
+              newURI = targetFolder.URI + encName;
+          countChanges += QuickFolders.Model.moveFolderURI(fromURI, newURI);
+          // Filter Validation!
+          setTimeout(function() {  
+            QuickFolders.Util.validateFilterTargets(fromURI, newURI); }, 1000
+          );
+        }
 			}
       if (countChanges)
         this.updateFolders(true, true);
@@ -7146,6 +6977,16 @@ QuickFolders.Interface = {
 					storedObj.userStyle.push(node);
 				}
 			}
+      
+      // [issue 115] store selection for background dropdown
+      const bgKey = 'currentFolderBar.background.selection';
+      let backgroundSelection = prefs.getStringPref(bgKey);
+      storedObj.layout.push({
+        key: 'extensions.quickfolders.' + bgKey, 
+        val: backgroundSelection, 
+        originalId: 'qfpa-CurrentFolder-Selection'} 
+      );
+      
 		}
 
 		let prettifiedJson = JSON.stringify(storedObj, null, '  ');
@@ -7154,13 +6995,18 @@ QuickFolders.Interface = {
 	} ,
 
 	loadConfig: function qf_loadConfig(preferences) {
+    const prefs = QuickFolders.Preferences,
+          options = QuickFolders.Options,
+				  util = QuickFolders.Util;
+
 		function changePref(pref) {
 			let p = preferences.get(pref.key);
 			if (p) {
 				if (p._value != pref.val) {
-					util.logDebug("Changing [" + p._name + "]" + pref.id + " : " + pref.val);
+          // [issue 115] fix restoring of config values
+					util.logDebug("Changing [" + p.id + "] " + pref.originalId + " : " + pref.val);
 					p._value = pref.val;
-          let e = foundElements[pref.id];
+          let e = foundElements[pref.key];
           if (e) {
             switch(e.tagName) {
               case 'checkbox':
@@ -7193,14 +7039,22 @@ QuickFolders.Interface = {
           }
 				}
 			}
+      else {
+        switch(pref.key) {
+          case 'extensions.quickfolders.currentFolderBar.background.selection':
+            if (pref.val && prefs.getStringPref(pref.key) != pref.val) {
+              options.setCurrentToolbarBackground(pref.val, true);
+            }
+            break;
+          default:
+            util.logDebug("loadConfig - unhandled preference: " + pref.key);
+        }
+      }
 		}
     function readData(dataString) {
 			const Cc = Components.classes,
 						Ci = Components.interfaces,
 						service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
-						util = QuickFolders.Util,
-						prefs = QuickFolders.Preferences,
-						options = QuickFolders.Options,
             QI = QuickFolders.Interface;
 			try {
 				// removes prettyfication:
@@ -7390,18 +7244,6 @@ QuickFolders.Interface = {
 					let lastPath = path.substr(0, lastSlash);
 					util.logDebug("Storing Path: " + lastPath);
 					prefs.setStringPref('files.path', lastPath);
-          if (util.Application=='Postbox' && util.PlatformVersion<50) {
-            switch (mode) {
-              case 'load':
-                let settings = util.Postbox_readFile(path);
-                readFunction(settings);
-                return;
-              case 'save':
-                util.Postbox_writeFile(path, jsonData)
-                return;
-            }
-            throw ('invalid mode: ' + mode);
-          }
 
 					const {OS} = (typeof ChromeUtils.import == "undefined") ?
 						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :

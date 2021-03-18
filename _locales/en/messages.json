@@ -80,33 +80,42 @@
         "content" : "$2",
         "example" : "78.0b4"
       }
-      
     }
-  },  
+  }, 
   
   "license-is-extended" : {
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window.",
     "description": "Shown if license expires more than a year from now"
   },
   
+  "special-offer-head" : {
+    "message": "12 years of QuickFolders - Special Easter Sale!"
+  } ,
+  
+  "special-offer-content" : {
+    "message": "Now is the best opportunity to get a License as there is a {boldStart}50% reduction{boldEnd} on the price of a QuickFolders Pro license to celebrate 12 years of QuickFolders! This special offer will be available until {boldStart}March 31st{boldEnd}."
+  },
+  
+  "whats-new-intro" : {
+    "message": "Read up on what is new since the introduction of Thunderbird 78 here:" 
+  },
+  
+  "whats-new-btn" : {
+    "message": "What's new?"
+  }, 
+  
+  "whats-new-list" : {
+    "message" : "QuickFolders Pro now has advanced search settings like silent moving and excluding accounts of your choice or restricting results within an account and improved functions for moving and copying folders. I also repaired more items to remain compatible with Thunderbird 87 and higher."
+  },  
+  
   "time-and-effort": { 
-    "message": "My Add-ons require fundamental changes in order to remain compatible with the Mozilla platform. My development team at Github (Realraven2000, opto and paenglab) is working diligently to restore full functionality for $addonName$ .",
+    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
     "placeholders": {
       "addonName" : {
         "content" : "$1", 
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "We have already spent significant resources (over $hoursSpent$ hours) on the conversion project - and there is more work in fixing regressions and issues caused by changes in Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -200,5 +209,7 @@
       }    
     }    
   }
+  
+
   
 }

@@ -8,7 +8,7 @@
 <?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
 <?xml-stylesheet href="chrome://global/content/widgets.css" type="text/css"?>
 <!--  tb 59 -->
-<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<!--  ? xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ? -->
 
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-widgets.css" title="QuickFolderStyles" type="text/css"?>
@@ -565,7 +565,6 @@
 						<preference id="qfpl-ToolbarBottom" name="extensions.quickfolders.style.Toolbar.bottomLineWidth" type="int"  instantApply="true"/>
 						<preference id="qfpl-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string"  instantApply="true"/>
 						<preference id="qfpl-TransparentButtons" name="extensions.quickfolders.transparentButtons" type="bool"   instantApply="true"/>
-						<preference id="qfpl-ShowBorders" name="extensions.quickfolders.style.borders" type="bool"  instantApply="true"/>
 						<preference id="qfpl-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool"  instantApply="true"/>
 						<preference id="qfpl-Shadows" name="extensions.quickfolders.buttonShadows" type="bool" />
 						<preference id="qfpl-ColorTabStyleId" name="extensions.quickfolders.colorTabStyle" type="int"  instantApply="true"/>
@@ -640,46 +639,38 @@
 												preference="qfpl-ShowIcons"
 												oncommand="options.toggleBoolPreference(this);" />
 							<hbox align="center">
-								<label id="button-font-size-label"
-											 value="&qf.label.buttonFontSizeNumeric;"
-											 control="button-font-size" />
-								<html:input
+                <label id="button-font-size-label"
+                       value="&qf.label.buttonFontSizeNumeric;"
+                       control="button-font-size" />
+                <html:input
                   id="button-font-size"
-									type="number"
-									class="num2digits"
-									preference="qfpl-ButtonFontSize"
-									onchange="options.changeTextPreference(this);" />
-								<label value="px" />
-								<separator flex="1" />
-								<hbox id="btnHeightTweaks" align="center">
-									<label value="&qf.toolbarMinimumHeight;" />
+                  type="number"
+                  class="num2digits"
+                  preference="qfpl-ButtonFontSize"
+                  onchange="options.changeTextPreference(this);" />
+                <label value="px" />                    
+
+                <separator style="width: 30px" />
+                
+                <hbox id="btnHeightTweaks" align="center">
+                  <label value="&qf.toolbarMinimumHeight;" />
                   <html:input
                     type="number"
                     id="buttonMinHeight"
                     preference="qfpl-ButtonMinimalHeight"
                     class="num2digits"
                     onchange="options.changeTextPreference(this);"/>
-									<label value="px" />
-									<separator flex="1" />
-									<label value="Top padding:" />
+                  <label value="px" />
+                  <separator style="width: 20px" />
+                  <label value="Top padding:" />
                   <html:input
                     type="number"
                     id="buttonPaddingTop"
-										class="num2digits"
-										preference="qfpl-ButtonTopPadding"
-										onchange="options.changeTextPreference(this);"/>
-									<label value="px" />
-									<separator flex="1" />
-								</hbox>
-								
-								<!-- no theme currently supports this, is it obsolete? [theme.supportsFeatures.borderToggle]-->
-								<hbox id="qf-tweakBorders" align="center">
-									<label value="&qf.label.pixels;" />
-									<checkbox id="chkShowBorders"
-														label="&qf.options.themes.showBorders.checkbox;"
-														preference="qfpl-ShowBorders"
-														oncommand="options.toggleBoolPreference(this);" />
-								</hbox>
+                    class="num2digits"
+                    preference="qfpl-ButtonTopPadding"
+                    onchange="options.changeTextPreference(this);"/>
+                  <label value="px" />
+                </hbox>
 							</hbox>
 							<separator class="thin" />
 							<hbox align="center" id="qf-tweakRadius">
@@ -1008,12 +999,13 @@
 								&qf.description.linkNote;
 							</description>
 							<vbox height="70">
-							<button id="L0"
-											href="https://quickfolders.org/"
-											tooltiptext="quickfolders.org"
-											onclick="util.openURL(event,'https://quickfolders.org/'); setTimeout(function() { window.close(); });">
+							<div id="L0"
+                  class="button"
+                  href="https://quickfolders.org/"
+                  tooltiptext="quickfolders.org"
+                  onclick="util.openURL(event,'https://quickfolders.org/'); setTimeout(function() { window.close(); });">
 								<label width="270">&qf.label.homePage;</label>
-							</button>
+							</div>
 						</vbox>
 						<!-- help details, scrollable so I can add more later ... -->
 						<vbox id="quickHelpTextPane">
@@ -1262,6 +1254,14 @@
 										preference="qfpp-QuickMove-PathDepth"
 										disabled="true"/>
 								</hbox>
+
+                <hbox>
+                  <button id="quickMoveAdvanced"
+                          label="&qf.search.advanced;" 
+                          oncommand="options.quickMoveAdvancedSettings();"
+                          disabled="true" 
+                  />
+                </hbox>
 								<hbox>
 									<checkbox id="chkCategories"
 														label="&qf.categories.supportMultiple;"

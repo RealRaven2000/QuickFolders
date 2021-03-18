@@ -48,13 +48,22 @@ var QuickFolders_TabURIopener = {
 				if (!util.findMailTab(tabmail, URL)) {
 					sTabMode = "contentTab";
 					tabmail.openTab(sTabMode,
-					{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
+					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
 				}
 			}
 			else
-				window.openDialog("chrome://messenger/content/", "_blank",
-								  "chrome,dialog=no,all", null,
-			  { tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", id:"QuickFolders_Weblink"} } );
+				window.openDialog(
+          "chrome://messenger/content/", "_blank",
+					"chrome,dialog=no,all", null,
+          { tabType: "contentTab", 
+            tabParams: {
+              contentPage: URL, 
+              url: URL, 
+              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
+              id: "QuickFolders_Weblink"
+            } 
+          } 
+        );
 		}
 		catch(e) { return false; }
 		return true;
@@ -66,7 +75,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.3", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.4", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -1451,12 +1460,6 @@ QuickFolders.Util = {
 		return this._isCSSGradients;
 	},
 	
-	// use legacy iterator code
-	get isLegacyIterator() {
-    // only gecko <13 or Interlink
-		return false;
-	} ,
-	
 	aboutHost: function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
@@ -1657,8 +1660,9 @@ QuickFolders.Util = {
   getAnonymousNodes(doc,el) {
     let aN = [];
     for (let i = el.childNodes.length-1; i>0; i--) {
-      if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
-        aN.push(el);
+      let c = el.childNodes[i];
+      if (!c.getAttribute("id") && !c.getAttribute("name"))
+        aN.push(c);
     }
     return aN;
   } ,
@@ -1867,6 +1871,7 @@ QuickFolders.Util.FirstRun = {
 				}
 				
 				util.loadPlatformStylesheet(window);
+        QuickFolders.quickMove.Settings.loadExclusions();
 			}
 			util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally
@@ -1902,14 +1907,24 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
 
 
 
-  // iterate all folders
-  // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
-QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
+// iterate all folders
+// writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
+// isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
+QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQuickJumpOrMove = false) {
 	let Ci = Components.interfaces,
 			Cc = Components.classes,
 			acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),
 			FoldersArray, allFolders,
-			util = QuickFolders.Util;
+			util = QuickFolders.Util,
+      quickMoveSettings = QuickFolders.quickMove.Settings,
+      isLockedInAccount = quickMoveSettings.isLockInAccount,
+      currentFolder, currentServer;
+  if (isQuickJumpOrMove) {
+    currentFolder = util.CurrentFolder;
+    if (!currentFolder) isQuickJumpOrMove = false; // can't determine current account
+    currentServer = currentFolder.server ? currentFolder.server.key : null;
+    quickMoveSettings.loadExclusions(); // prepare list of servers to omit
+  }
 	
 	if (typeof ChromeUtils.import == "undefined")
 		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
@@ -1927,6 +1942,16 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 					 (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSHOST))) {
 					continue;
 			}
+      if (isQuickJumpOrMove) {
+        if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
+          continue;
+        if (quickMoveSettings.excludedIds.length) {
+          // exclude account
+          if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
+            continue;
+          }
+        }
+      }
 			FoldersArray.appendElement(aFolder, false);
 		}		       
 		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
@@ -1938,6 +1963,7 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 		allFolders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 		// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
 		for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+      if ((isQuickJumpOrMove || writable) && !account.canFileMessagesOnServer) continue;
 			if (account.rootFolder)
 				account.rootFolder.ListDescendents(allFolders);
 			for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
@@ -2102,7 +2128,7 @@ QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, it
 QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
 	const util = QuickFolders.Util;
 	util.logDebugOptional("interface.findFolder","allFoldersMatch()");
-	for (let folder of util.allFoldersIterator(isFiling)) {
+	for (let folder of util.allFoldersIterator(isFiling, true)) {
 		if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
 		addMatchingFolder(matches, folder);
 	}

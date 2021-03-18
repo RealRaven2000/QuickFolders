@@ -8,9 +8,15 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 addEventListener("click", async (event) => {
-	if (event.target.id.startsWith("register")) {
+	if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
     messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
 	}
+  if (event.target.id=='whatsNew') {
+    const manifest = await messenger.runtime.getManifest(),
+          version = manifest.version;
+    messenger.Utilities.openLinkExternally("https://quickfolders.org/version.html" + "#" + version);
+    
+  }
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
     messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
     window.close(); // not allowed by content script!
@@ -51,7 +57,6 @@ addEventListener("load", async (event) => {
     
     let verInfo = document.getElementById('active-version-info');
     if (verInfo) {
-      
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
       // for multiple replacements, pass an array
@@ -83,8 +88,14 @@ addEventListener("load", async (event) => {
     let remind = document.getElementById('label-remind-me');
     if (remind) {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
-      
     }
+    
+    let specialOffer = document.getElementById('specialOfferTxt');
+    if (specialOffer)
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>");
+
     
     let title = document.getElementById('window-title');
     title.innerText = messenger.i18n.getMessage("window-title", addonName);

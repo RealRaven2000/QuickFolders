@@ -75,7 +75,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.4", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.4.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",

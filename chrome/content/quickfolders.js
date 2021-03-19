@@ -445,7 +445,7 @@ END LICENSE BLOCK */
                    Removed grids from options screen to suport Thunderbird 86 and higher.
                    Using renamed function FtvItem for creating Recent folders list.
 
-  5.4 QuickFolders Pro - WIP
+  5.4 QuickFolders Pro - 19                                                                                                                                                                                     /03/2021
     ## [issue 115] fix restoring of config values
     ## [issue 116] Custom Text color in tab-specific is not set on tab
     ## [issue 117] Add color picker for text color in tab-specific properties

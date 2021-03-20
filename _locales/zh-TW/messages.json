@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "我們已經在轉換項目上花費了大量資源（超過$hoursSpent$小時），並且還有很多工作可以解決由Thunderbird更改引起的回歸和問題。",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "為了使$addonName$保持功能性和活躍性，請務必這樣做：",
     "placeholders": {

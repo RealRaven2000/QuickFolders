@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Abbiamo già speso risorse significative (oltre $hoursSpent$ ore) sul progetto di conversione e c'è ancora molto lavoro da fare per correggere regressioni e problemi causati dalle modifiche in Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di fare un favore fondamentale:",
     "placeholders": {

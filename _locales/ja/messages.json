@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "変換プロジェクトにはすでにかなりのリソース ($hoursSpent$ 時間以上) を費やしており、Thunderbird の変更によって引き起こされるリグレッションや問題の修正にはさらに多くの作業が必要です。",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "$addonName$ が機能し、存続できるように、重要なお願いがあります。",
     "placeholders": {

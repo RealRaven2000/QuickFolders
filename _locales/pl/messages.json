@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Wydaliśmy już znaczne zasoby (ponad $hoursSpent$ godzin) na projekt konwersji - i jest więcej pracy w naprawianiu regresji i problemów spowodowanych zmianami w Thunderbirdzie.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Aby $addonName$ działało i żyło, zrób to bardzo ważną przysługę:",
     "placeholders": {

@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Za projekt pretvorbe smo že porabili pomembna sredstva (več kot $hoursSpent$ ur) - in še veliko dela je pri odpravljanju regresij in težav, ki jih povzročajo spremembe v storitvi Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Da bo $addonName$ ostal funkcionalen in živ, storite to zelo pomembno:",
     "placeholders": {

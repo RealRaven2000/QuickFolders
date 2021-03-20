@@ -119,16 +119,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Olemme jo käyttäneet huomattavia resursseja (yli $hoursSpent$ tuntia) konversioprojektiin - ja Thunderbirdin muutosten aiheuttamien regressioiden ja ongelmien korjaamisessa on paljon enemmän työtä.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Jotta $addonName$ pysyisi toiminnassa ja elossa, tee se elintärkeäksi palvelukseksi:",
     "placeholders": {

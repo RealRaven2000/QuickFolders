@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 lat QuickFolders - Specjalna wyprzedaż wielkanocna!"
+    "message": "12 lat QuickFolders - upewnij się, że może to trwać!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Drogi {name} {boldEnd}, jeśli nie masz jeszcze licencji, rozważ obsługę QuickFolders w przyszłości. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Teraz jest najlepsza okazja do zdobycia licencji, ponieważ istnieje {boldStart} 50% zniżki {boldEnd} na cenę licencji QuickFolders Pro z okazji 12-lecia QuickFolders! Ta oferta specjalna będzie dostępna do {boldStart} 31 marca {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ma teraz zaawansowane ustawienia wyszukiwania, takie jak ciche przenoszenie i wykluczanie wybranych kont lub ograniczanie wyników na koncie, a także ulepszone funkcje przenoszenia i kopiowania folderów. Naprawiłem także więcej funkcji, aby zachować zgodność z Thunderbirdem 87 i nowszymi."
+    "message" : "QuickFolders Pro ma teraz zaawansowane ustawienia wyszukiwania, takie jak ciche przenoszenie i wykluczanie wybranych kont lub ograniczanie wyników na koncie, a także ulepszone funkcje przenoszenia i kopiowania folderów. Naprawiłem także więcej funkcji, aby zachować zgodność z Thunderbirdem 88 i nowszymi."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Niezbędne zmiany w celu przejścia na nowy model bez starszych wersji (eksperyment z pocztą) zajęły już wiele tygodni i nadal trwają, chociaż może to mieć wpływ na niektóre funkcje. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym."
+    "message": "Modyfikacje mające na celu konwersję QuickFolders do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym."
   },
   
   "btn-want-a-license": {

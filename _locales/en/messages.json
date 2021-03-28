@@ -89,8 +89,12 @@
   },
   
   "special-offer-head" : {
-    "message": "12 years of QuickFolders - Special Easter Sale!"
-  } ,
+    "message": "12 years of QuickFolders - make sure it can continue!"
+  },
+  
+  "special-offer-intro" : {
+    "message": "{boldStart}Dear {name}{boldEnd}, if you haven't got a license yet, please consider supporting QuickFolders for the future. More big changes on Thunderbird are coming and I need {boldStart}your help{boldEnd} to keep up!"
+  },
   
   "special-offer-content" : {
     "message": "Now is the best opportunity to get a License as there is a {boldStart}50% reduction{boldEnd} on the price of a QuickFolders Pro license to celebrate 12 years of QuickFolders! This special offer will be available until {boldStart}March 31st{boldEnd}."
@@ -105,7 +109,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro now has advanced search settings like silent moving and excluding accounts of your choice or restricting results within an account and improved functions for moving and copying folders. I also repaired more items to remain compatible with Thunderbird 87 and higher."
+    "message" : "QuickFolders Pro now has advanced search settings like silent moving and excluding accounts of your choice or restricting results within an account and improved functions for moving and copying folders. I also repaired more items to remain compatible with Thunderbird 88 and higher."
   },  
   
   "time-and-effort": { 
@@ -159,7 +163,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "The necessary alterations to switch to the new legacy-less model (mail experiment) already took multiple weeks and are still ongoing, while some functions could be impacted. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this."
+    "message": "The alterations to convert QuickFolders to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this."
   },
   
   "btn-want-a-license": {

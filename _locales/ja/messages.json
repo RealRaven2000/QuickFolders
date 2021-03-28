@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "QuickFoldersの12年-特別なイースターセール！"
+    "message": "QuickFoldersの12年-それが継続できることを確認してください！"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart}親愛なる{name} {boldEnd}、まだライセンスを取得していない場合は、将来のためにQuickFoldersをサポートすることを検討してください。 Thunderbirdのさらに大きな変更が予定されており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！"
+  } ,
+  
   "special-offer-content" : {
     "message": "QuickFoldersの12周年を祝うために、QuickFolders Proライセンスの価格が {boldStart} 50％割引{boldEnd} されているため、今がライセンスを取得する最高の機会です。 この特別オファーは、{boldStart} 3月31日{boldEnd} までご利用いただけます。"
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Proには、選択したアカウントのサイレント移動と除外、アカウント内の結果の制限などの高度な検索設定と、フォルダーの移動とコピーの機能の改善があります。 また、Thunderbird 87 以降との互換性を維持するために、より多くの機能を修復しました。"
+    "message" : "QuickFolders Proには、選択したアカウントのサイレント移動と除外、アカウント内の結果の制限などの高度な検索設定と、フォルダーの移動とコピーの機能の改善があります。 また、Thunderbird 88 以降との互換性を維持するために、より多くの機能を修復しました。"
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "新しいレガシーレスモデル（メール実験）に切り替えるために必要な変更は、すでに数週間かかり、現在も進行中ですが、一部の機能が影響を受ける可能性があります。このような複雑なアドオンのためには、多額のコストが避けられません。支援をお願いします。"
+    "message": "QuickFoldersを新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。"
   },
   
   "btn-want-a-license": {

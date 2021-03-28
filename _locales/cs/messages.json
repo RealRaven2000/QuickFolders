@@ -90,8 +90,12 @@
   },
   
   "special-offer-head" : {
-    "message": "12 let QuickFolders - speciální velikonoční výprodej!"
+    "message": "12 let QuickFolders - ujistěte se, že to může pokračovat!"
   } ,  
+  
+  "special-offer-intro" : {
+    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+  } ,
   
   "special-offer-content" : {
     "message": "Nyní je nejlepší příležitost získat licenci, protože k oslavě 12 let QuickFolders došlo k {boldStart}50% snížení{boldEnd} ceny licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}31. Března{boldEnd}."
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro má nyní pokročilé nastavení vyhledávání, jako je tiché přesouvání a vyloučení účtů podle vašeho výběru nebo omezení výsledků v rámci účtu a vylepšené funkce pro přesouvání a kopírování složek. Opravil jsem také více položek, abych zůstal kompatibilní s Thunderbirdem 87 a vyššími."
+    "message" : "QuickFolders Pro má nyní pokročilé nastavení vyhledávání, jako je tiché přesouvání a vyloučení účtů podle vašeho výběru nebo omezení výsledků v rámci účtu a vylepšené funkce pro přesouvání a kopírování složek. Opravil jsem také více položek, abych zůstal kompatibilní s Thunderbirdem 88 a vyššími."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Nezbytné úpravy přechodu na nový starší model (experiment pošty) již trvaly několik týdnů a stále probíhají, zatímco některé funkce by mohly být ovlivněny. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím."
+    "message": "Změny převodu QuickFolders na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím."
   },
   
   "btn-want-a-license": {

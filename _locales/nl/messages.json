@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 jaar QuickFolders - Speciale paasuitverkoop!"
+    "message": "12 jaar QuickFolders - zorg ervoor dat het kan doorgaan!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om QuickFolders voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Dit is de beste kans om een licentie te krijgen, want er is een {boldStart} 50% korting {boldEnd} op de prijs van een QuickFolders Pro-licentie om 12 jaar QuickFolders te vieren! Deze speciale aanbieding is beschikbaar tot {boldStart} 31 maart {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro heeft nu geavanceerde zoekinstellingen zoals geruisloos verplaatsen en uitsluiten van accounts naar keuze of het beperken van resultaten binnen een account en verbeterde functies voor het verplaatsen en kopiëren van mappen. Ik heb ook meer functies gerepareerd om compatibel te blijven met Thunderbird 87 en hoger."
+    "message" : "QuickFolders Pro heeft nu geavanceerde zoekinstellingen zoals geruisloos verplaatsen en uitsluiten van accounts naar keuze of het beperken van resultaten binnen een account en verbeterde functies voor het verplaatsen en kopiëren van mappen. Ik heb ook meer functies gerepareerd om compatibel te blijven met Thunderbird 88 en hoger."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "De noodzakelijke wijzigingen om over te schakelen naar het nieuwe legacy-less model (mail-experiment) hebben al meerdere weken geduurd en zijn nog steeds aan de gang, terwijl sommige functies hierdoor kunnen worden beïnvloed. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee."
+    "message": "De aanpassingen om QuickFolders om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee."
   },
   
   "btn-want-a-license": {

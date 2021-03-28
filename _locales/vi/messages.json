@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 năm của QuickFolders - Giảm giá đặc biệt cho lễ Phục sinh!"
+    "message": "12 năm của QuickFolders - hãy đảm bảo rằng nó có thể tiếp tục!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ QuickFolders trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Bây giờ là cơ hội tốt nhất để nhận Giấy phép vì có {boldStart} giảm 50% {boldEnd} giá của giấy phép QuickFolders Pro để kỷ niệm 12 năm QuickFolders! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 31 tháng 3 {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro hiện có các cài đặt tìm kiếm nâng cao như di chuyển im lặng và loại trừ tài khoản bạn chọn hoặc giới hạn kết quả trong tài khoản và các chức năng được cải thiện để di chuyển và sao chép thư mục. Tôi cũng đã sửa chữa nhiều chức năng hơn để vẫn tương thích với Thunderbird 87 trở lên."
+    "message" : "QuickFolders Pro hiện có các cài đặt tìm kiếm nâng cao như di chuyển im lặng và loại trừ tài khoản bạn chọn hoặc giới hạn kết quả trong tài khoản và các chức năng được cải thiện để di chuyển và sao chép thư mục. Tôi cũng đã sửa chữa nhiều chức năng hơn để vẫn tương thích với Thunderbird 88 trở lên."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Các thay đổi cần thiết để chuyển sang mô hình kế thừa mới (thử nghiệm thư) đã mất nhiều tuần và vẫn đang tiếp tục, trong khi một số chức năng có thể bị ảnh hưởng. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Hãy giúp chúng tôi với điều này."
+    "message": "Các thay đổi để chuyển QuickFolders sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này."
   },
   
   "btn-want-a-license": {

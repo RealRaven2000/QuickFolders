@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 let QuickFolders - posebna velikonočna prodaja!"
+    "message": "12 let QuickFolders - poskrbite, da se lahko nadaljuje!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, če še nimate licence, razmislite o podpori QuickFolders za prihodnost. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Zdaj je najboljša priložnost za pridobitev licence, saj obstaja {boldStart} 50% znižanje {boldEnd} cene licence QuickFolders Pro za praznovanje 12 let QuickFolders! Ta posebna ponudba bo na voljo do {boldStart} 31. marca {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ima zdaj napredne nastavitve iskanja, kot so tiho premikanje in izključitev računov po vaši izbiri ali omejevanje rezultatov v računu ter izboljšane funkcije za premikanje in kopiranje map. Popravil sem tudi več funkcij, da sem ostal združljiv s Thunderbirdom 87 in novejšimi."
+    "message" : "QuickFolders Pro ima zdaj napredne nastavitve iskanja, kot so tiho premikanje in izključitev računov po vaši izbiri ali omejevanje rezultatov v računu ter izboljšane funkcije za premikanje in kopiranje map. Popravil sem tudi več funkcij, da sem ostal združljiv s Thunderbirdom 88 in novejšimi."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Potrebne spremembe za prehod na novi model, ki ne vsebuje starejših različic (eksperiment s pošto), so trajale že več tednov in še vedno potekajo, medtem ko bi to lahko vplivalo na nekatere funkcije. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem."
+    "message": "Spremembe pretvorbe QuickFolders v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem."
   },
   
   "btn-want-a-license": {

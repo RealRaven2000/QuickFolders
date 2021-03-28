@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 vuotta QuickFoldersia - erityinen pääsiäistarjous!"
+    "message": "12 vuotta QuickFoldersia - varmista, että se voi jatkua!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Nyt on paras mahdollisuus hankkia lisenssi, koska QuickFolders Pro -lisenssin hinta on {boldStart} 50% alempi {boldEnd} juhlimaan 12 vuotta QuickFoldersia! Tämä erikoistarjous on saatavilla {boldStart} 31.3. {boldEnd} asti."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro on nyt edistyneet hakuasetukset, kuten valitsemiesi tilien hiljainen siirtäminen ja poissulkeminen tai tulosten rajoittaminen tilillä ja parannetut toiminnot kansioiden siirtämiseen ja kopioimiseen. Korjasin myös enemmän toimintoja pysyäkseen yhteensopivina Thunderbird 87: n ja uudempien kanssa."
+    "message" : "QuickFolders Pro on nyt edistyneet hakuasetukset, kuten valitsemiesi tilien hiljainen siirtäminen ja poissulkeminen tai tulosten rajoittaminen tilillä ja parannetut toiminnot kansioiden siirtämiseen ja kopioimiseen. Korjasin myös enemmän toimintoja pysyäkseen yhteensopivina Thunderbird 88: n ja uudempien kanssa."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Tarvittavat muutokset siirtymiseksi uuteen vanhaan malliin (postikokeilu) kesti jo useita viikkoja ja ovat edelleen käynnissä, vaikka joihinkin toimintoihin voi olla vaikutusta. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä."
+    "message": "Muutokset QuickFoldersin muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä."
   },
   
   "btn-want-a-license": {

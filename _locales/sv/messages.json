@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 år av QuickFolders - Special påskförsäljning!"
+    "message": "12 år med QuickFolders - se till att det kan fortsätta!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Kära {name} {boldEnd}, om du inte har någon licens ännu, kan du överväga att stödja QuickFolders för framtiden. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att fortsätta!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Nu är det bästa tillfället att få en licens eftersom det finns en {boldStart} 50% rabatt {boldEnd} på priset på en QuickFolders Pro-licens för att fira 12 år av QuickFolders! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 31 mars {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro har nu avancerade sökinställningar som tyst flyttning och exkluderar konton efter eget val eller begränsar resultat inom ett konto och förbättrade funktioner för flyttning och kopiering av mappar. Jag reparerade också fler funktioner för att förbli kompatibla med Thunderbird 87 och högre."
+    "message" : "QuickFolders Pro har nu avancerade sökinställningar som tyst flyttning och exkluderar konton efter eget val eller begränsar resultat inom ett konto och förbättrade funktioner för flyttning och kopiering av mappar. Jag reparerade också fler funktioner för att förbli kompatibla med Thunderbird 88 och högre."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "De nödvändiga ändringarna för att byta till den nya arvslösa modellen (mailexperiment) tog redan flera veckor och pågår fortfarande, medan vissa funktioner kan påverkas. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
+    "message": "Ändringarna för att konvertera QuickFolders till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
   },
   
   "btn-want-a-license": {

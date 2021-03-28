@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 anni di QuickFolders - Offerta speciale di Pasqua!"
+    "message": "12 anni di QuickFolders: assicurati che possa continuare!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Gentile {name} {boldEnd}, se non hai ancora una licenza, considera di supportare QuickFolders per il futuro. Sono in arrivo altri grandi cambiamenti su Thunderbird e ho bisogno del tuo {boldStart} del tuo aiuto {boldEnd} per stare al passo!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Questa è la migliore opportunità per ottenere una licenza in quanto vi è una {boldStart} riduzione del 50% {boldEnd} sul prezzo di una licenza QuickFolders Pro per celebrare i 12 anni di QuickFolders! Questa offerta speciale sarà disponibile fino al {boldStart} 31 marzo {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ora ha impostazioni di ricerca avanzate come lo spostamento silenzioso e l'esclusione di account di tua scelta o la limitazione dei risultati all'interno di un account e funzioni migliorate per lo spostamento e la copia delle cartelle. Ho anche riparato più funzioni per rimanere compatibile con Thunderbird 87 e versioni successive."
+    "message" : "QuickFolders Pro ora ha impostazioni di ricerca avanzate come lo spostamento silenzioso e l'esclusione di account di tua scelta o la limitazione dei risultati all'interno di un account e funzioni migliorate per lo spostamento e la copia delle cartelle. Ho anche riparato più funzioni per rimanere compatibile con Thunderbird 88 e versioni successive."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Le modifiche necessarie per passare al nuovo modello senza legacy (esperimento di posta) hanno già richiesto diverse settimane e sono ancora in corso, mentre alcune funzioni potrebbero risentirne. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo."
+    "message": "Le modifiche per convertire le cartelle rapide nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo."
   },
   
   "btn-want-a-license": {

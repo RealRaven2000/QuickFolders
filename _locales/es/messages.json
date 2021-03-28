@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 años de QuickFolders - ¡Oferta especial de Pascua!"
+    "message": "12 años de QuickFolders: ¡asegúrese de que pueda continuar!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Estimado {name} {boldEnd}, si aún no tiene una licencia, considere la posibilidad de admitir QuickFolders en el futuro. Se avecinan más cambios importantes en Thunderbird y necesito {boldStart} tu ayuda {boldEnd} para mantenerme al día."
+  } ,
+  
   "special-offer-content" : {
     "message": "¡Ahora es la mejor oportunidad para obtener una licencia, ya que hay una {boldStart} reducción del 50% {boldEnd} en el precio de una licencia QuickFolders Pro para celebrar los 12 años de QuickFolders! Esta oferta especial estará disponible hasta el {boldStart} 31 de marzo {boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ahora tiene configuraciones de búsqueda avanzadas como movimiento silencioso y exclusión de cuentas de su elección o restricción de resultados dentro de una cuenta y funciones mejoradas para mover y copiar carpetas. También reparé más funciones para seguir siendo compatible con Thunderbird 87 y superior."
+    "message" : "QuickFolders Pro ahora tiene configuraciones de búsqueda avanzadas como movimiento silencioso y exclusión de cuentas de su elección o restricción de resultados dentro de una cuenta y funciones mejoradas para mover y copiar carpetas. También reparé más funciones para seguir siendo compatible con Thunderbird 88 y superior."
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "Las modificaciones necesarias para cambiar al nuevo modelo sin legado (experimento de correo) ya tomaron varias semanas y aún están en curso, mientras que algunas funciones podrían verse afectadas. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto."
+    "message": "Las modificaciones para convertir QuickFolders al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto."
   },
   
   "btn-want-a-license": {

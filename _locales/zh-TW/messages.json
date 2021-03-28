@@ -90,9 +90,13 @@
   },
   
   "special-offer-head" : {
-    "message": "QuickFolders 12年-特別復活節促銷！"
+    "message": "QuickFolders已有12年了-請確保它可以繼續！"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart}尊敬的{name} {boldEnd}：如果您尚未獲得許可，請考慮將來支持QuickFolders。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}來跟上！"
+  } ,
+  
   "special-offer-content" : {
     "message": "現在是獲得許可證的最佳機會，因為慶祝QuickFolders成立12週年的QuickFolders Pro許可證價格降低了 {boldStart} 50％{boldEnd}！ 此特別優惠將持續到 {boldStart} 3月31日{boldEnd}."
   },
@@ -106,7 +110,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro 現在具有高級搜索設置，例如靜默移動和排除您選擇的帳戶或將結果限制在一個帳戶內，並且具有用於移動和復製文件夾的改進功能。 我還修復了更多功能，以與Thunderbird 87和更高版本兼容。"
+    "message" : "QuickFolders Pro 現在具有高級搜索設置，例如靜默移動和排除您選擇的帳戶或將結果限制在一個帳戶內，並且具有用於移動和復製文件夾的改進功能。 我還修復了更多功能，以與Thunderbird 88和更高版本兼容。"
   },  
 
   "time-and-effort": { 
@@ -160,7 +164,7 @@
   }, 
 
   "ongoing-work": {
-    "message": "切換到新的無遺留模型的必要更改（郵件實驗）已經花費了數週時間，並且仍在進行中，同時某些功能可能會受到影響。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。"
+    "message": "將QuickFolders轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。"
   },
   
   "btn-want-a-license": {

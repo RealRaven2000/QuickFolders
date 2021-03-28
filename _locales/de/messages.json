@@ -91,9 +91,13 @@
   },
   
   "special-offer-head" : {
-    "message": "12 Jahre QuickFolders - Sonderangebot zu Ostern!"
+    "message": "12 Jahre QuickFolders - stellen Sie sicher, dass es weitergeht!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Liebe(r) {name} {boldEnd}, wenn Sie noch keine Lizenz haben, sollten Sie QuickFolders für die Zukunft unterstützen. Weitere große Änderungen an Thunderbird kommen und ich brauche {boldStart}Ihre Hilfe{boldEnd}, um Schritt zu halten!"
+  } ,
+  
   "special-offer-content" : {
     "message": "Jetzt ist die beste Gelegenheit, Ihre Lizenz zu erwerben, da der Preis einer QuickFolders Pro-Lizenz anlässlich des 12-jährigen Bestehens von QuickFolders {boldStart}um 50% gesenkt{boldEnd} wird. Dieses Sonderangebot gilt bis zum {boldStart}31. März{boldEnd}."
   },
@@ -107,7 +111,7 @@
   }, 
   
   "whats-new-list" : {
-    "message" : "QuickFolders Pro verfügt jetzt über erweiterte Sucheinstellungen wie das stille Verschieben und Ausschließen von Konten Ihrer Wahl oder das Einschränken der Ergebnisse innerhalb eines Kontos sowie verbesserte Funktionen zum Verschieben und Kopieren von Ordnern. Ich habe auch mehrere Funktionen repariert, um mit Thunderbird 87 und höher kompatibel zu bleiben."
+    "message" : "QuickFolders Pro verfügt jetzt über erweiterte Sucheinstellungen wie das stille Verschieben und Ausschließen von Konten Ihrer Wahl oder das Einschränken der Ergebnisse innerhalb eines Kontos sowie verbesserte Funktionen zum Verschieben und Kopieren von Ordnern. Ich habe auch mehrere Funktionen repariert, um mit Thunderbird 88 und höher kompatibel zu bleiben."
   },  
 
   "time-and-effort" : { 
@@ -161,7 +165,7 @@
   }, 
   
   "ongoing-work": {
-    "message": "Die notwendigen Änderungen, um auf das neue Modell ohne Legacy (Mail-Experiment) umzusteigen, dauerten bereits mehrere Wochen und dauern noch an, während einige Funktionen beeinträchtigt werden könnten. Mit einem komplexen Add-On wie diesem wird teure Arbeit unvermeidlich. Bitte helfen Sie uns dabei."
+    "message": "Die Änderungen zur Konvertierung von QuickFolders auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei."
   },
 
   

@@ -1,4 +1,4 @@
-<b>Release 5.4</b>
+<b>Release 5.4.2</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
@@ -32,11 +32,12 @@ You can use the advanced panel for a number of functions, such as not showing th
 <ul>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/115">[issue 115]</a> Restore does not load some general / layout setting. Some general / layout settings were not restored properly even when they were saved during backup. </li>
 <li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/114">[issue 114]</a> Make QuickFolders compatible with <span class="emphasis">Thunderbird beta 86.0b3</span>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/114">[issue 114]</a> Make QuickFolders compatible with <span class="emphasis">Thunderbird beta 88.0b1</span>
 
 - Fixed: Support Pages did not open anymore as content Tabs have a different parameter set.
 - Fixed: layout of advanced tab properties broken due to deprecated grid element.
 - Fixed: Copy / Move folders uses new MailServices.copy object
+- 5.4.2: Removed strict_max_version for users for 88.0b1 (this version is not supported by their validation process)
 
 If you find more regressions associated with Thunderbird 86 or higher, please report them at issue 114 linked above.
 </li>            

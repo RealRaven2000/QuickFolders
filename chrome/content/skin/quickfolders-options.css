@@ -40,7 +40,7 @@ menulist#folderCrossing,
 menulist[preference^="extensions.quickfolders"] , 
 menulist#QuickFolders-CurrentFolder-Background-Select 
 {
-  color: var(--field-text-color) !important; // 
+  color: var(--field-text-color) !important; 
 }
 /* scale down the overly larger number textboxes / spinner controls */
 tabpanel html|input[type="number"] {
@@ -754,4 +754,9 @@ textbox[type="number"] .textbox-input {
 /* removed preferences.css */
 html|fieldset > vbox {
   vertical-align:top
+}
+
+/* fix too wide elements in layout tab */
+.toowide {
+  min-width: 650px;
 }

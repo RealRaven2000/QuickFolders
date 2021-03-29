@@ -98,7 +98,15 @@
  
 
         ]
+      },
+      
+      {
+        "name": "getUserName",
+        "type": "function",
+        "async": true,
+        "parameters": []
       }
+      
 
    ]
   }

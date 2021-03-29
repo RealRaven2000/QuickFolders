@@ -445,7 +445,7 @@ END LICENSE BLOCK */
                    Removed grids from options screen to suport Thunderbird 86 and higher.
                    Using renamed function FtvItem for creating Recent folders list.
 
-  5.4 QuickFolders Pro - 19                                                                                                                                                                                     /03/2021
+  5.4.1 QuickFolders Pro - 19/03/2021
     ## [issue 115] fix restoring of config values
     ## [issue 116] Custom Text color in tab-specific is not set on tab
     ## [issue 117] Add color picker for text color in tab-specific properties
@@ -454,6 +454,12 @@ END LICENSE BLOCK */
     ## [issue 119] quickJump list - option to list more than 25 search results, persistently
     ## [issue 103] quickMove now also supports copying folders. To copy a folder, 
                    hold down the CTRL key while you drop it on the quickMove button
+                   
+  5.4.2 QuickFolders Pro - 28/03/2021
+    ## Added supoport for Thunderbird 88.0b1
+    ## replaced Tb account-manager module with MailServices
+    ## removed some of the excessive with from settings dialog
+    
 
     
     TO DO:
@@ -1914,17 +1920,15 @@ var QuickFolders = {
           isMoveFolderQuickMove = false;
 			switch (contentType) {
 				case  "text/x-moz-folder": 
-					if (!isShift) {
-            // [issue 75] support moving folders through quickMove
-            if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-              isMoveFolderQuickMove = true;
-            }
-            else {
-              let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-                  "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-              util.alert(sPrompt);
-              break;
-            }
+          // [issue 75] support moving folders through quickMove
+          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+            isMoveFolderQuickMove = true;
+          }
+					if (!isShift && !isMoveFolderQuickMove) {
+            let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+                "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+            util.alert(sPrompt);
+            break;
 					}
 					// handler for dropping folders
 					try {

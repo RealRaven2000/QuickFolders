@@ -37,7 +37,7 @@ async function main() {
         //await browser.tabs.create({ url });
         let screenH = window.screen.height,
             windowHeight = (screenH > 870) ? 870 : screenH;
-        await browser.windows.create({ url, type: "popup", width: 950, height: windowHeight, });
+        await browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, });
       }
       break;
     // see below

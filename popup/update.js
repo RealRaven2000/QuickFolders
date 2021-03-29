@@ -70,10 +70,10 @@ addEventListener("load", async (event) => {
       timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
     }
     
-    let measuredEffort =  document.getElementById('hours-effort');
-    if (measuredEffort) {
-      measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
-    }
+    // let measuredEffort =  document.getElementById('hours-effort');
+    // if (measuredEffort) {
+      // measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
+    // }
     
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
@@ -95,7 +95,20 @@ addEventListener("load", async (event) => {
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>");
+          
+    let specialIntro = document.getElementById('specialOfferIntro');
+    if (specialIntro) {
+      let userName = await messenger.Utilities.getUserName();
+      specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>")
+        .replace("{name}", userName);
+    }
 
+    let ongoing = document.getElementById('ongoing-work');
+    if (ongoing) {
+      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
+    }
     
     let title = document.getElementById('window-title');
     title.innerText = messenger.i18n.getMessage("window-title", addonName);

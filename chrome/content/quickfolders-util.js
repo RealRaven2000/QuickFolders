@@ -75,7 +75,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.4.1", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.4.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -1682,9 +1682,7 @@ QuickFolders.Util = {
 		try {
 			const Ci = Components.interfaces,
 			      util = QuickFolders.Util;
-			let Accounts = util.Accounts,
-			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-	                        .getService(Ci.nsIMsgAccountManager); 
+			let Accounts = util.Accounts; 
 			for (let a=0; a<Accounts.length; a++) {
 				let account = Accounts[a];
 				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
@@ -1698,7 +1696,7 @@ QuickFolders.Util = {
 						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 
 					}
 				}
-			}    
+			} 
 		}
 		catch(ex) {
 			QuickFolders.Util.logException("Exception in QuickFolders.Util.validateFilterTargets ", ex);
@@ -1913,7 +1911,8 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
 QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQuickJumpOrMove = false) {
 	let Ci = Components.interfaces,
 			Cc = Components.classes,
-			acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),
+      {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm"), // replace account-manager
+			acctMgr = MailServices.accounts,
 			FoldersArray, allFolders,
 			util = QuickFolders.Util,
       quickMoveSettings = QuickFolders.quickMove.Settings,
@@ -1925,11 +1924,9 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQ
     currentServer = currentFolder.server ? currentFolder.server.key : null;
     quickMoveSettings.loadExclusions(); // prepare list of servers to omit
   }
-	
-	if (typeof ChromeUtils.import == "undefined")
-		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
-	else
-		var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
+  
+  // toXPCOMArray(allFolders, Ci.nsIMutableArray) ?	
+  var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
 	
   if (acctMgr.allFolders) { // Thunderbird & modern builds
 		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
@@ -1956,24 +1953,9 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQ
 		}		       
 		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
 	}
-	else { //old / SeaMonkey?
-		/**   ### obsolete code  ###  */
-		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-		let accounts = acctMgr.accounts;
-		allFolders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-		// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
-		for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-      if ((isQuickJumpOrMove || writable) && !account.canFileMessagesOnServer) continue;
-			if (account.rootFolder)
-				account.rootFolder.ListDescendents(allFolders);
-			for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
-				FoldersArray.appendElement(aFolder, false);
-				if (writable && !folder.canFileMessages) {
-					continue;
-				}
-			}		 
-		}	
-		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
+	else { 
+    util.logToConsole("Error: allFolders missing in MailServices.accounts!");
+		return [];
 	}
 } 
 
@@ -2136,15 +2118,12 @@ QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentM
 
 Object.defineProperty(QuickFolders.Util, "Accounts",
 { get: function() {
-    const Ci = Components.interfaces,
-		      Cc = Components.classes;
-    let util = QuickFolders.Util, 
-        aAccounts=[];
-    Components.utils.import("resource:///modules/iteratorUtils.jsm");
-    let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
-                 .getService(Ci.nsIMsgAccountManager).accounts;
-    aAccounts = [];
-    for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
+    
+    let acMgr = MailServices.accounts,
+        aAccounts = [];
+        
+    for (let ac of acMgr.accounts) {
       aAccounts.push(ac);
     };
     return aAccounts;

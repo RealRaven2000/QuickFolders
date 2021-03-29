@@ -165,7 +165,13 @@
   }, 
   
   "ongoing-work": {
-    "message": "Die Änderungen zur Konvertierung von QuickFolders auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei."
+    "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
 
   

@@ -164,7 +164,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Le modifiche per convertire le cartelle rapide nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo."
+    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

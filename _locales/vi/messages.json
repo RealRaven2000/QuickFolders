@@ -164,7 +164,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Các thay đổi để chuyển QuickFolders sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này."
+    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

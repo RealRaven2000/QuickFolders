@@ -164,7 +164,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Ändringarna för att konvertera QuickFolders till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

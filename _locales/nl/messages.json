@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Lees hier wat er nieuw is sinds de introductie van Thunderbird 78:" 
+    "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):" 
   },
   
   "whats-new-btn" : {
     "message": "Wat is er nieuw?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Hoogtepunten"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro heeft nu geavanceerde zoekinstellingen zoals geruisloos verplaatsen en uitsluiten van accounts naar keuze of het beperken van resultaten binnen een account en verbeterde functies voor het verplaatsen en kopiëren van mappen. Ik heb ook meer functies gerepareerd om compatibel te blijven met Thunderbird 88 en hoger."
+    "message" : "Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message-tabblad: verplaats en e-mail en open automatisch de volgende ongelezen e-mail op hetzelfde tabblad {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

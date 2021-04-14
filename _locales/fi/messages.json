@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Lue Thunderbird 78: n käyttöönoton jälkeen uutta täältä:" 
+    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   
   "whats-new-btn" : {
     "message": "Mikä on uutta?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Kohokohdat"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro on nyt edistyneet hakuasetukset, kuten valitsemiesi tilien hiljainen siirtäminen ja poissulkeminen tai tulosten rajoittaminen tilillä ja parannetut toiminnot kansioiden siirtämiseen ja kopioimiseen. Korjasin myös enemmän toimintoja pysyäkseen yhteensopivina Thunderbird 88: n ja uudempien kanssa."
+    "message" : "Tämä versio laajentaa quickMove-toimintoa edelleen seuraavien ominaisuuksien avulla: {L1} Yksi viesti -välilehti: siirrä ja lähetä sähköpostia ja avaa seuraava lukematon sähköposti samalla välilehdellä {L2} {L1} Mahdollisuus peruuttaa quickMove kokonaan (ja tyhjentää sen luettelo viestit) yhdellä ESCAPE-painalluksella. {L2} {L1} Vanhempien kansioiden edistynyt vastaavuus lukemalla _ ja välilyönneistä ja käsittelemällä niitä kuin etsityn nimen alku. {L2} {L1} Korjattu: kansioiden haku katselun aikana hakutuloksissa tai monikansioisessa keskustelussa näkyvät viestit. {L2} {L1} Nämä ja lisätoiminnot, joilla rajoitetaan hakutuloksia tietyiltä tileiltä, voidaan määrittää QuickFolders Pro -välilehden Tarkennettu haku -asetusten kautta. {L2}"
   },  
 
   "time-and-effort": { 

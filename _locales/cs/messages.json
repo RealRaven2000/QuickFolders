@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Přečtěte si, co je nového od zavedení Thunderbirdu 78 zde:" 
+    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   
   "whats-new-btn" : {
     "message": "Co je nového?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Hlavní body"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro má nyní pokročilé nastavení vyhledávání, jako je tiché přesouvání a vyloučení účtů podle vašeho výběru nebo omezení výsledků v rámci účtu a vylepšené funkce pro přesouvání a kopírování složek. Opravil jsem také více položek, abych zůstal kompatibilní s Thunderbirdem 88 a vyššími."
+    "message" : "Tato verze dále rozšiřuje funkci quickMove o následující funkce: {L1} Karta Jedna zpráva: přesunutí a odeslání e-mailu a automatické otevření dalšího nepřečteného e-mailu na stejné kartě {L2} {L1} Možnost úplného zrušení quickMove (a vyprázdnění seznamu zprávy) jediným stisknutím klávesy ESCAPE. {L2} {L1} Pokročilé porovnávání nadřazených složek čtením z oddělovačů _ a mezer a zacházením s nimi jako se začátkem hledaného jména. {L2} {L1} Opraveno: vyhledávání složek při prohlížení zprávy zobrazené ve výsledcích vyhledávání nebo z vícesložkové konverzace. {L2} {L1} Tyto a další funkce omezující výsledky vyhledávání z určitých účtů lze konfigurovat pomocí Rozšířeného nastavení vyhledávání na kartě QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

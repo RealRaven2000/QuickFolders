@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Przeczytaj o nowościach od czasu wprowadzenia Thunderbirda 78 tutaj:" 
+    "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):" 
   },
   
   "whats-new-btn" : {
     "message": "Co nowego?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Najważniejsze"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ma teraz zaawansowane ustawienia wyszukiwania, takie jak ciche przenoszenie i wykluczanie wybranych kont lub ograniczanie wyników na koncie, a także ulepszone funkcje przenoszenia i kopiowania folderów. Naprawiłem także więcej funkcji, aby zachować zgodność z Thunderbirdem 88 i nowszymi."
+    "message" : "Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Zakładka pojedynczej wiadomości: przenieś i wyślij e-mailem i automatycznie otwórz następny nieprzeczytany e-mail w tej samej zakładce {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

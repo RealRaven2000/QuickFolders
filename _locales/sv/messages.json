@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Läs om vad som är nytt sedan introduktionen av Thunderbird 78 här:" 
+    "message": "Läs den detaljerade ändringsloggen här (endast engelska):" 
   },
   
   "whats-new-btn" : {
     "message": "Vad är nytt?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Höjdpunkter"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro har nu avancerade sökinställningar som tyst flyttning och exkluderar konton efter eget val eller begränsar resultat inom ett konto och förbättrade funktioner för flyttning och kopiering av mappar. Jag reparerade också fler funktioner för att förbli kompatibla med Thunderbird 88 och högre."
+    "message" : "Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: flytta och skicka e-post och automatiskt öppna nästa olästa e-postmeddelande på samma flik {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

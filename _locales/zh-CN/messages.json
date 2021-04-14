@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "在此处阅读有关自Thunderbird 78引入以来的新功能：" 
+    "message": "在此处阅读详细的更改日志（仅英语）：" 
   },
   
   "whats-new-btn" : {
     "message": "什么是新的？"
   }, 
   
+  "whats-new-head" : {
+    "message": "强调"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro 现在具有高级搜索设置，例如静默移动和排除您选择的帐户或将结果限制在一个帐户内，以及改进的用于移动和复制文件夹的功能。 我还修复了更多功能，以与Thunderbird 88和更高版本兼容。"
+    "message" : "此版本通过以下功能进一步扩展了quickMove功能：{L1}“单个邮件”选项卡：移动和“电子邮件”并自动在同一选项卡中打开下一封未读电子邮件{L2} {L1}选项，以完全取消quickMove（并清空其列表 {L2} {L1}通过读取_和空格分隔符并将它们视为搜索名称的开头来进行高级匹配，例如：{L2} {L1}已修复：在查看时搜索文件夹 {L2} {L1}这些和其他用于限制某些帐户搜索结果的功能可以通过QuickFolders Pro标签上的“高级搜索设置”进行配置。{L2}"
   },  
 
   "time-and-effort": { 

@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Lisez les nouveautés depuis l'introduction de Thunderbird 78 ici:" 
+    "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):" 
   },
   
   "whats-new-btn" : {
     "message": "Quoi de neuf?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Points forts"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro dispose désormais de paramètres de recherche avancés tels que le déplacement silencieux et l'exclusion des comptes de votre choix ou la restriction des résultats dans un compte et des fonctions améliorées pour déplacer et copier des dossiers. J'ai également réparé plus de fonctions pour rester compatible avec Thunderbird 88 et supérieur."
+    "message" : "Cette version étend encore la fonction quickMove grâce aux fonctionnalités suivantes: {L1} Onglet Message unique: déplacer et envoyer un e-mail et ouvrir automatiquement le prochain e-mail non lu dans le même onglet {L2} {L1} Option pour annuler complètement quickMove (et vider sa liste de messages) avec une simple pression sur ÉCHAPPEMENT. {L2} {L1} Correspondance avancée des dossiers parents en lisant à partir des délimiteurs _ et d'espacement et en les traitant comme le début d'un nom recherché. {L2} {L1} Réparé: recherche de dossiers lors de la visualisation messages affichés dans les résultats de recherche ou à partir d'une conversation à plusieurs dossiers. {L2} {L1} Ces fonctions, ainsi que des fonctions supplémentaires permettant de restreindre les résultats de recherche de certains comptes, peuvent être configurées via les paramètres de recherche avancée de l'onglet QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

@@ -101,15 +101,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Read up on what is new since the introduction of Thunderbird 78 here:" 
+    "message": "Read the detailed change log here (English only):" 
   },
   
   "whats-new-btn" : {
     "message": "What's new?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Highlights"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro now has advanced search settings like silent moving and excluding accounts of your choice or restricting results within an account and improved functions for moving and copying folders. I also repaired more items to remain compatible with Thunderbird 88 and higher."
+    "message" : "This version further improves the quickMove function through the following features: {L1}Single Message Tab: move and Email and automatically open the next unread email in the same tab{L2}{L1}Option to completely cancel quickMove (and empty its list of messages) with a single press of ESCAPE.{L2}{L1}Advanced matching of parent folders by reading from _ and space delimiters and treating them like the start of a searched name.{L2}{L1}Repaired: search folders while viewing messages displayed in search results or from multi-folder conversation.{L2}{L1}These and additional functions to restrict search results from certain accounts can be configured through the Advanced Search Settings on the QuickFolders Pro Tab.{L2}"
   },  
   
   "time-and-effort": { 

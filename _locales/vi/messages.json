@@ -102,15 +102,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Đọc thêm những gì mới kể từ khi Thunderbird 78 được giới thiệu tại đây:" 
+    "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):" 
   },
   
   "whats-new-btn" : {
     "message": "Có gì mới?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Điểm nổi bật"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro hiện có các cài đặt tìm kiếm nâng cao như di chuyển im lặng và loại trừ tài khoản bạn chọn hoặc giới hạn kết quả trong tài khoản và các chức năng được cải thiện để di chuyển và sao chép thư mục. Tôi cũng đã sửa chữa nhiều chức năng hơn để vẫn tương thích với Thunderbird 88 trở lên."
+    "message" : "Phiên bản này mở rộng thêm chức năng quickMove thông qua các tính năng sau: {L1} Tab Single Message: di chuyển và Email và tự động mở email chưa đọc tiếp theo trong cùng một tab {L2} {L1} Tùy chọn để hủy hoàn toàn quickMove (và làm trống danh sách thư) chỉ với một lần nhấn ESCAPE. {L2} {L1} Đối sánh nâng cao các thư mục mẹ bằng cách đọc từ dấu _ và dấu cách và coi chúng như phần đầu của tên được tìm kiếm. {L2} {L1} Đã sửa chữa: tìm kiếm thư mục trong khi xem thông báo hiển thị trong kết quả tìm kiếm hoặc từ cuộc hội thoại nhiều thư mục. {L2} {L1} Bạn có thể định cấu hình các chức năng này và các chức năng bổ sung để hạn chế kết quả tìm kiếm từ một số tài khoản nhất định thông qua Cài đặt Tìm kiếm Nâng cao trên Tab QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 

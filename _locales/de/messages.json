@@ -103,15 +103,19 @@
   },
   
   "whats-new-intro" : {
-    "message": "Lesen Sie hier, was es seit der Einführung von Thunderbird 78 neues gibt:" 
+    "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):" 
   },
   
   "whats-new-btn" : {
     "message": "Was gibt's Neues?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Highlights"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro verfügt jetzt über erweiterte Sucheinstellungen wie das stille Verschieben und Ausschließen von Konten Ihrer Wahl oder das Einschränken der Ergebnisse innerhalb eines Kontos sowie verbesserte Funktionen zum Verschieben und Kopieren von Ordnern. Ich habe auch mehrere Funktionen repariert, um mit Thunderbird 88 und höher kompatibel zu bleiben."
+    "message" : "Diese Version erweitert die quickMove-Funktion um die folgenden Funktionen: {L1} Im dedizierten Mail-Tab: Nach Verschieben der aktuellen Nachricht die nächste ungelesene E-Mail im Tab öffnen {L2} {L1} Option zum vollständigen Abbruch von quickMove (und Leeren der Nachrichten-Liste) mit einem einzigen Druck auf ESCAPE. {L2} {L1} Erweiterte Suche von Elternverzeichnissen indem _ und Leerzeichen als Start eines gesuchten Namens behandelt werden. {L2} {L1} Repariert: Durchsuchen von Ordnern während der Anzeige Nachrichten, die in Suchergebnissen oder aus Konversationen mit mehreren Ordnern angezeigt werden. {L2} {L1} Diese und zusätzliche Funktionen zum Einschränken der Suchergebnisse bestimmter Konten können über die erweiterten Sucheinstellungen auf der Registerkarte QuickFolders Pro konfiguriert werden. {L2}"
   },  
 
   "time-and-effort" : { 

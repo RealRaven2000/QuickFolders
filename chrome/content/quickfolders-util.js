@@ -851,8 +851,11 @@ QuickFolders.Util = {
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
         // either go to the next mail... or close the tab
-        if (QuickFolders.quickMove.Settings.isGoNext)
+        if (QuickFolders.quickMove.Settings.isGoNext) {
           goDoCommand('cmd_nextMsg');
+          QuickFolders.Interface.ensureCurrentFolder();
+          document.getElementById('messagepane').focus();
+        }
       }
       
 			step = 5;

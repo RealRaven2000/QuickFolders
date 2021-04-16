@@ -467,9 +467,9 @@ END LICENSE BLOCK */
                    prefixes such as "01_" or are composite of 2 terms with space e.g. "apple tree" can still be found.
     ## [issue 134] Feature Request: Escape key to "Cancel quickMove" completely
     ## changed folder tree shortcut from F7 to F9 (like in Thunderbird 68)
-    ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving - should go to next unread mail instead
-                   this behavior  is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
-                   instead Tb will open the next unread mail - see extensions.quickfolders.quickMove.gotoNextUnreadAfterMove
+    ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving -
+                   this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
+                   instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
 
 
     

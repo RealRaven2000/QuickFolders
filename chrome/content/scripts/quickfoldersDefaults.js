@@ -38,7 +38,7 @@ pref("extensions.quickfolders.quickMove.lastFolderName","");
 pref("extensions.quickfolders.quickMove.autoFill",true);
 pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.quickMove.reopenMsgTabAfterMove", false); // [issue 132] disable reopening moved mail in single message tab
-pref("extensions.quickfolders.quickMove.gotoNextUnreadAfterMove", true); // [issue 132] open next unread mail in single tab after moving this mail
+pref("extensions.quickfolders.quickMove.gotoNextMsgAfterMove", true); // [issue 132] open next unread mail in single tab after moving this mail
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickCopy.Hotkey.Shift", true);

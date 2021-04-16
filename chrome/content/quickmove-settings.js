@@ -29,7 +29,7 @@
       return prefs.getBoolPref('quickMove.premium.escapeClearsList');
     },
     get isGoNext() {
-      return prefs.getBoolPref('quickMove.gotoNextUnreadAfterMove');
+      return prefs.getBoolPref('quickMove.gotoNextMsgAfterMove');
     },
     get isReopen() {
       return prefs.getBoolPref('quickMove.reopenMsgTabAfterMove');
@@ -166,7 +166,7 @@
     toggleGoNext: function(el, evt) {
       let isChecked = el.checked;
       if (evt.type == "keypress" && evt.key != " ") return;
-      prefs.setBoolPref("quickMove.gotoNextUnreadAfterMove", isChecked);
+      prefs.setBoolPref("quickMove.gotoNextMsgAfterMove", isChecked);
     },
     
     toggleReopen: function(el, evt) {

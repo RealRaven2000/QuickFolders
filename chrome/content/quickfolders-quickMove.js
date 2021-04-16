@@ -66,6 +66,7 @@ QuickFolders.quickMove = {
 	// only pass this when search was done in the format parent/folder
   execute: function execute(targetFolderUri, parentName) {
     function showFeedback(actionCount, messageIdList, isCopy) {
+      const prefs = QuickFolders.Preferences;
       // show notification
       if (!actionCount) 
         return;
@@ -84,14 +85,14 @@ QuickFolders.quickMove = {
         let messageDb = fld.msgDatabase || null;
         if (messageDb && !isCopy) {
           // reusing the existing Tab didn't work so we close & re-open msg from the new location.
-          // let tab = (QuickFolders.Util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
-          // currentTab.folderDisplay.selectMessage(msgHdr, true);
-          setTimeout( 
-            function() {
-              let msgHdr = messageDb.getMsgHdrForMessageID(theMessage);
-              util.logDebugOptional('quickMove', 'reopen mail in tab:' + msgHdr.mime2DecodedSubject );
-              QuickFolders.Util.openMessageTabFromHeader(msgHdr);
-            }, 1200);
+          // [issue 132] only reopen the moved mail if this option is enabled (default is false)
+          if (prefs.getBoolPref("quickMove.reopenMsgTabAfterMove"))
+	          setTimeout( 
+	            function() {
+	              let msgHdr = messageDb.getMsgHdrForMessageID(theMessage);
+	              util.logDebugOptional('quickMove', 'reopen mail in tab:' + msgHdr.mime2DecodedSubject );
+	              QuickFolders.Util.openMessageTabFromHeader(msgHdr);
+	            }, 1200);
         }
       }
 			if (!QuickFolders.quickMove.silent)

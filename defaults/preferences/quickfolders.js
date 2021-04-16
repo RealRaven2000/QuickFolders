@@ -36,14 +36,15 @@ pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.Hotkey.Shift", true);
 pref("extensions.quickfolders.quickMove.lastFolderName","");
 pref("extensions.quickfolders.quickMove.autoFill",true);
-pref("extensions.quickfolders.quickMove.premium.silentMode", false);
+pref("extensions.quickfolders.quickMove.folderLabel", true);
+pref("extensions.quickfolders.quickMove.reopenMsgTabAfterMove", false);
+pref("extensions.quickfolders.quickMove.gotoNextUnreadAfterMove", true);
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickCopy.Hotkey.Shift", true);
 pref("extensions.quickfolders.skipFolder.useHotkey", false);
 pref("extensions.quickfolders.skipFolder.Hotkey", 'S');
 pref("extensions.quickfolders.skipFolder.Hotkey.Shift", true);
-pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.bookmarks.folderLabel", true);
 pref("extensions.quickfolders.bookmarks.showButton", true);
@@ -164,6 +165,7 @@ pref("extensions.quickfolders.debug.interface.buttonStyles", false);
 pref("extensions.quickfolders.debug.interface.findFolder", false);
 pref("extensions.quickfolders.debug.interface.currentFolderBar", false);
 pref("extensions.quickfolders.debug.interface.update",false);
+pref("extensions.quickfolders.debug.interface.userStyles", false);
 pref("extensions.quickfolders.debug.listeners.tabmail", false);
 pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.mailTabs", false);
@@ -244,6 +246,7 @@ pref("extensions.quickfolders.premium.categories.multiSelect",false);
 pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
+pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 /* popupProFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);

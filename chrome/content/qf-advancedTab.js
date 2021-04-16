@@ -95,7 +95,7 @@ QuickFolders.AdvancedTab = {
       iUnread.checked = (entry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) && true;
       
       elem('txtColor').value = entry.cssColor || '';
-      elem('txtColorPicker').color = elem('txtColor').value;
+      elem('txtColorPicker').value = elem('txtColor').value;
       elem('txtBackground').value = entry.cssBack || '';
       // custom palette
       let isPalette = (entry.flags & ADVANCED_FLAGS.CUSTOM_PALETTE) && true;
@@ -338,7 +338,7 @@ QuickFolders.AdvancedTab = {
   
   updatePicker: function updatePicker(textbox) {
     if (textbox.length) {
-      document.getElementById('txtColorPicker').color = textbox.value;
+      document.getElementById('txtColorPicker').value = textbox.value;
     }
   } ,
   

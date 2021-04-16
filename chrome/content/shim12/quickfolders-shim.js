@@ -57,6 +57,7 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable) {
 		allFolders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 		// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
 		for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+      if ((writable) && !account.canFileMessagesOnServer) continue;
 			if (account.rootFolder)
 				account.rootFolder.ListDescendents(allFolders);
 			for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {

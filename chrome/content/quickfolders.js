@@ -398,7 +398,7 @@ END LICENSE BLOCK */
     ## changed support site links to https (secure) protocol
     ## Fixed: when restarting Thunderbird after an Add-on was installed Tabs from ALL categories were displayed.
     
-  4.20  QuickFolders Pro - WIP
+  4.20  QuickFolders Pro - 21/02/2021
     ## [issue 101]  If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
     ## Fixed: When dragging mails on a subfolder item contained in a QuickFolders tab popup, the folder item 
        is shown with an underline. But all child folders were also displayed underlined.
@@ -410,6 +410,16 @@ END LICENSE BLOCK */
     ## [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
     ## [issue 112] Reading List menu - Add current Item not working
     
+    
+  4.21 QuickFolders Pro - WIP
+    ## [issue 115] fix restoring of config values - support saving / restoring current folder bar background selection
+    ## [issue 117] Add color picker for text color in tab-specific properties
+    ## In QF Settings, make sure correct options tab is opened / remembered
+    ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving - should go to next unread mail instead
+                   this behavior  is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
+                   instead Tb will open the next unread mail - see extensions.quickfolders.quickMove.gotoNextUnreadAfterMove
+    
+  
     
 	Future Work
 	===========
@@ -1568,7 +1578,7 @@ var QuickFolders = {
               let node = dragSession.sourceNode;
 
               // find out whether drop target button is right or left from source button:
-              if (node.hasAttributes()) {
+              if (node && node.attributes.length > 0) {
                 // check previous siblings to see if target button is found - then it's to the left. otherwise it's to the right
                 let i = null,
                     sib = node;
@@ -1818,8 +1828,7 @@ var QuickFolders = {
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces,
-					Cc = Components.classes;
-          
+					Cc = Components.classes;        
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
           
 			let isShift = evt.shiftKey,
@@ -1839,17 +1848,15 @@ var QuickFolders = {
 
 			switch (contentType) {
 				case  "text/x-moz-folder": 
-					if (!isShift) {
-            // [issue 75] support moving folders through quickMove
-            if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-              isMoveFolderQuickMove = true;
-            }
-            else {
-              let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-                  "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-              util.alert(sPrompt);
-              break;
-            }
+          // [issue 75] support moving folders through quickMove
+          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+            isMoveFolderQuickMove = true;
+          }
+					if (!isShift && !isMoveFolderQuickMove) {
+            let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+                "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+            util.alert(sPrompt);
+            break;
 					}
 					// handler for dropping folders
 					try {

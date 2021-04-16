@@ -19,6 +19,7 @@
 	buttonlabelextra2="&btnReset;"
 	buttonlabelextra1="&btnApply;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="QuickFolders.AdvancedTab.load();"
 >
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -159,13 +160,14 @@
 							<textbox id="txtColor" 
 											 tooltiptext="&cssColor.tooltip;"
 											 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
-							<colorpicker id="txtColorPicker" 
-											 type="button"
-											 onchange="return QuickFolders.AdvancedTab.pickColor(this.color);"/>
-							<spacer flex="1"/>
-							<label id="cssPreview" 
-										 value="Preview"
-										 tooltiptext="Current selected folder colors will always override this."/>
+            <html:input 
+                id="txtColorPicker" 
+                type="color"
+                onchange="return QuickFolders.AdvancedTab.pickColor(this.value);"/>
+            <spacer flex="1"/>
+            <label id="cssPreview" 
+                   value="Preview"
+                   tooltiptext="Current selected folder colors will always override this."/>
 						</hbox>
 					</row>
 				</rows>

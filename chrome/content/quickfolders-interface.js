@@ -342,13 +342,6 @@ QuickFolders.Interface = {
         // Start iterating at the top of the hierarchy, that is, with the root
         // folders for every account.
 		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
-		// Postbox only:
-		if (util.isLegacyIterator) {
-			for (let acct in fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-				addIfRecent(acct.incomingServer.rootFolder);
-				checkSubFolders(acct.incomingServer.rootFolder);
-			}
-		}
 
 		recentFolders.sort(sorter);
 		return recentFolders;
@@ -1229,7 +1222,7 @@ QuickFolders.Interface = {
 			const separator = "==============================\n";
 			let f = 0, affected = 0;
 			util.logDebug(separator + "loading Dictionary…");
-			//let allFolders = util.allFoldersIterator(false);
+
 			util.logDebug(separator + "Iterating all folders…");
 			for (let folder of util.allFoldersIterator(false)) {
 				//let folder = allFolders[i];
@@ -1340,7 +1333,8 @@ QuickFolders.Interface = {
     return this._selectedCategories;
   } ,
   set currentActiveCategories(v) {
-		const util = QuickFolders.Util;
+		const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
     this._selectedCategories = v; // set menuitem value?
     let menulist = this.CategoryMenu,
         cats = v.split('|'),
@@ -1350,8 +1344,9 @@ QuickFolders.Interface = {
 				menulist.value = v;
 				// if multiple select, check all boxes
 				for (let i=0; i<menulist.itemCount; i++) {
-					let it = menulist.getItemAtIndex(i),
-							isSelected = (cats.includes(it.value));
+					let it = menulist.getItemAtIndex(i);
+          if (it.tagName!='menuitem') continue;
+					let isSelected = (cats.includes(it.value));
 					if (isSelected) {
 						txtDebug += 'Check menuitem: ' + it.value + '\n';
 						it.setAttribute('checked', isSelected); // check selected value
@@ -5011,7 +5006,10 @@ QuickFolders.Interface = {
         maxLevel--;
         f = f.parent;
 				
-        if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+        // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        // ignore 1-character matches
+        if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
 					// 1st (top level) match
 					if (!directParent) directParent = f;
 					
@@ -5034,7 +5032,9 @@ QuickFolders.Interface = {
 					directParent = null;
 			while (f && maxLevel) {
 				maxLevel--;
-				if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+        // [issue 135] allow in-string search for children using delimiters: - _ . and space!
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+				if (folderNameMatches.some(a => a.startsWith(search))) {   
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {
 						if (parentList.indexOf(directParent)<0) {
@@ -5108,25 +5108,7 @@ QuickFolders.Interface = {
 			parentCount = parentString.split("/").length + 1; // original entry for parent
     }
 		let isFiling = QuickFolders.quickMove.isActive;
-    /********* old jump point *********/
-		/*
-		// [Bug 26565] if 1 unique full match is found - without children!, we can automatically jump there
-		if (     (matches.length == 1) 
-			    && (!isFiling) && (matches[0].folder && !matches[0].folder.hasSubFolders)
-          && (matches[0].lname == searchString)      // one exact FULL match
-				|| (wordStartMatch(matches[0].lname) && forceFind)) // match starts with search string + [Enter] key was pressed
-       ) {
-			// go to folder
-			isSelected = QuickFolders_MySelectFolder(matches[0].uri);
-			if (matches[0].parentString)
-				QuickFolders.quickMove.rememberLastFolder(matches[0].uri, matches[0].parentString);
-      setTimeout(function() {
-        QuickFolders.Interface.tearDownSearchBox();
-      }, 400);
-      return; // ????
-		}
-		*/
-		
+
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
 		// "parent/" no name given, only lists the direct children
 		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
@@ -5134,36 +5116,15 @@ QuickFolders.Interface = {
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
 		
 		// multiple slashes?
-		let isLegacyIterator = util.isLegacyIterator;
-    if (isLegacyIterator) {
-			util.logDebugOptional("interface.findFolder", "Using old folder iterator for Platform=" + util.PlatformVersion);
-      let AF = util.allFoldersIterator(isFiling);
-			util.logDebugOptional("Assigned AllFolders = " + AF);
-      for (let fi=0; fi<AF.length; fi++) {
-        let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
-        if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
-				addMatchingFolder(matches, folder);
-      }
-    }
-    else {
-			util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
-			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);		
-			util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
-		}
+    util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
+    util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);		
+    util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
 			
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-			if (isLegacyIterator) {  // util.Application == 'Postbox'
-				let AF = util.allFoldersIterator(isFiling);
-				for (let fi=0; fi<AF.length; fi++) {
-					let folder = AF.queryElementAt(fi, Ci.nsIMsgFolder);
-					addIfMatch(folder, matches.parentString || parentString, parents);
-				}
-			}
-			else
-				for (let folder of util.allFoldersIterator(isFiling)) {
-					addIfMatch(folder, matches.parentString || parentString, parents);
-				}
+      for (let folder of util.allFoldersIterator(isFiling, true)) {
+        addIfMatch(folder, matches.parentString || parentString, parents);
+      }
 		}
 		util.logDebugOptional("interface.findFolder", "built list: " + matches.length + " matches found. Building menu…");
 		
@@ -6456,13 +6417,14 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
 		try {
-			util.logDebugOptional ("interface","updateUserStyles()");
+			util.logDebugOptional ("interface.userStyles","updateUserStyles()");
 			// get MAIN STYLE SHEET
 			let styleEngine = QuickFolders.Styles,
 			    ss = this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
           
 			if (!ss) return false;
-			
+
+			util.logDebugOptional ("interface.userStyles","Palette sheet");
 			// get PALETTE STYLE SHEET
 			let ssPalettes = this.getStyleSheet(styleEngine, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes');
       ssPalettes = ssPalettes ? ssPalettes : ss; // if this fails, use main style sheet.
@@ -6470,16 +6432,19 @@ QuickFolders.Interface = {
 			    tabStyle = prefs.ColoredTabStyle;
 			
 			if (prefs.isCssTransitions) {
+        util.logDebugOptional ("interface.userStyles","Css transitions");
 				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration', '1s, 1s, 2s, 1s');
 				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property', 'color, background-color, border-radius, box-shadow');
 			}
 			else {
+        util.logDebugOptional ("interface.userStyles","Remove Css transitions");
 				styleEngine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration');
 				styleEngine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property');
 			}
 
 			// =================
 			// FONT COLORS
+      util.logDebugOptional ("interface.userStyles","Font Colors");
 			let theColorString = prefs.getUserStyle("InactiveTab","color","black"),
 			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
 					btnSelector = '.quickfolders-flat toolbarbutton';
@@ -6493,6 +6458,7 @@ QuickFolders.Interface = {
 
 			// =================
 			// CUSTOM RADIUS 
+      util.logDebugOptional ("interface.userStyles","Custom Radius");
 			let topRadius = "4px",
 			    bottomRadius = "0px";
 			if (prefs.getBoolPref("style.corners.customizedRadius")) {
@@ -6509,6 +6475,7 @@ QuickFolders.Interface = {
 			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
 			
 			// QuickFolders Toolbar only
+      util.logDebugOptional ("interface.userStyles","main toolbar buttons");
 			let btnInToolbarSelector = '.quickfolders-flat .folderBarContainer toolbarbutton',
 			    buttonHeight = prefs.getIntPref('style.button.minHeight') + "px",
 			    topPadding =  prefs.getIntPref('style.button.paddingTop') + "px";
@@ -6520,6 +6487,7 @@ QuickFolders.Interface = {
 			// BORDERS & SHADOWS
 			// for full colored tabs color the border as well!
 			// but should only apply if background image is set!!
+      util.logDebugOptional ("interface.userStyles","shadow");
 			let SHADOW = util.isCSSShadow ? 'box-shadow' : '-moz-box-shadow';
 			if (prefs.getBoolPref("buttonShadows")) {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'1px -1px 3px -1px rgba(0,0,0,0.3)', true);
@@ -6536,6 +6504,7 @@ QuickFolders.Interface = {
 			styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane','border-bottom-color', colActiveBG, true); // only in main toolbar!
 
 			let theInit = '';
+      util.logDebugOptional ("interface.userStyles","folder styles");
 			try {
 			  theInit = 'SelectedFolderStyle';
 				this.initSelectedFolderStyle(ss, ssPalettes, tabStyle);			
@@ -6551,6 +6520,7 @@ QuickFolders.Interface = {
 			}
 			
 			// TOOLBAR
+      util.logDebugOptional ("interface.userStyles","toolbar colors");
 			theColorString = prefs.getUserStyle("Toolbar","background-color","ButtonFace");
 			if (prefs.getBoolPref("transparentToolbar"))
 				theColorString = "transparent";
@@ -6571,6 +6541,7 @@ QuickFolders.Interface = {
       }
       
       // main toolbar position
+      util.logDebugOptional ("interface.userStyles","toolbar position");
       let ordinalGroup = prefs.getIntPref('toolbar.ordinalPosition') || 0;
       styleEngine.setElementStyle(ss,'#QuickFolders-Toolbar', '-moz-box-ordinal-group', ordinalGroup.toString());
 
@@ -7303,13 +7274,27 @@ QuickFolders.Interface = {
 					storedObj.userStyle.push(node);
 				}
 			}
+      
+      // [issue 115] store selection for background dropdown
+      const bgKey = 'currentFolderBar.background.selection';
+      let backgroundSelection = prefs.getStringPref(bgKey);
+      storedObj.layout.push({
+        key: 'extensions.quickfolders.' + bgKey, 
+        val: backgroundSelection, 
+        originalId: 'qfpa-CurrentFolder-Selection'} 
+      );
+      
 		}
 				
 		let prettifiedJson = JSON.stringify(storedObj, null, '  '); 
 		this.fileConfig('save', prettifiedJson, 'QuickFolders-Config');
+    util.logDebug("Configuration stored.");
 	} ,
 
 	loadConfig: function qf_loadConfig(preferences) {
+    const util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
+					options = QuickFolders.Options;
 		function changePref(pref) {
 			let p = preferences.get(pref.key);
 			if (p) {
@@ -7349,14 +7334,21 @@ QuickFolders.Interface = {
           }
 				}
 			}
+      else {
+        switch(pref.key) {
+          case 'extensions.quickfolders.currentFolderBar.background.selection':
+            if (pref.val && prefs.getStringPref(pref.key) != pref.val) {
+              options.setCurrentToolbarBackground(pref.val, true);
+            }
+            break;
+          default:
+            util.logDebug("loadConfig - unhandled preference: " + pref.key);
+        }
+      }
 		}
 		function readData(dataString) {
 			const Cc = Components.classes,
 						Ci = Components.interfaces,
-						service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
-						util = QuickFolders.Util,
-						prefs = QuickFolders.Preferences,
-						options = QuickFolders.Options,
             QI = QuickFolders.Interface;
 
 			try {

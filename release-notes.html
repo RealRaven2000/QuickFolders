@@ -1,21 +1,21 @@
-Release 4.20
+Release 4.21
 
 This release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, I highly recommend updating Thunderbird to the current 78 release version.
 To support QuickFolders, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a license</a> or <a href="https://quickfolders.org/donate.html?referrer=atn-version-page">donate</a> to support the project.
 
 <b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/82">[issue 82]</a> Improved sorting of search results during quickMove / quickJump.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/109">[issue 109]</a> Menu item Mark Messages read in Folder + subfolders not displayed as expected - it was only shown if the folder of the tab didn't have unread emails itself. This additional menu item that can be used to set subfolders read was only displayed if the actual folder of the tab itself had no unread emails, and only child folders had them. Configure this command in QuickFolders settings / Advanced / Menu Configuration / Mail Commands</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/37">[issue 37]</a> When no match is found using the "/" in quickMove box, display "No matching parent folders!" instead of "..."</li></ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/117">[issue 117]</a> Added color picker for text color in tab-specific properties.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/132">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.
+This behavior has now been changed on request to go to the next unread email instead. It can be modified by editing the following configuration settings (the <a href="#5.5">Thunderbird 78 version</a> of QuickFolders has a dedicated User Interface):
+
+<tt>extensions.quickfolders.quickMove.reopenMsgTabAfterMove</tt>
+<tt>extensions.quickfolders.quickMove.gotoNextUnreadAfterMove</tt></li>
+<li>QuickFolders Settings, now makes sure that correct options tab is opened / remembered</li>
+</ul>
+
 
 <b>Bug Fixes</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/101">[issue 101]</a> If multiple categories are selected, closing QuickFolders settings reverts to "Show All"</li>
-<li> Fixed: When dragging mails on a subfolder item contained in a QuickFolders tab popup, the folder item is shown with an underline. But all child folders were also displayed underlined.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/107">[issue 107]</a> Restoring general / layout Settings only works if option for restoring folders also active.</li>
-
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/92">[issue 92]</a> do not apply "To address" from advanced tab propertiues when replying to an email!</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/110">[issue 110]</a> "Tab-specific Properties" overwrites <i>To</i> Address when clicking <i>Write</i> from Address Book.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/112">[issue 112]</a> Reading List menu - Add current Item not working. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/115">[issue 115]</a> Fixed restoring of config values. Some general / layout settings were not restored properly even when they were saved during backup.</li>
 </ul>

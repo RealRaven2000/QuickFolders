@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.20", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.21", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -846,7 +846,8 @@ QuickFolders.Util = {
 	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function moveMessages(targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
-          util = QuickFolders.Util; 
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences; 
 		let step = 0;
     if (!messageUris) 
       return null;
@@ -917,6 +918,15 @@ QuickFolders.Util = {
         util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
+      
+      // [issue 132] Shift-M opens a new tab after moving the message...
+      // if we move the email and are in a single message window, we need to jump to the next unread mail first!
+      if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+        // either go to the next mail... or close the tab
+        if (prefs.getBoolPref("quickMove.gotoNextUnreadAfterMove"))
+          goDoCommand('cmd_nextMsg');
+      }
+      
 			step = 5;
 			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
@@ -1612,14 +1622,6 @@ QuickFolders.Util = {
 		}
 		return this._isCSSGradients;
 	},
-	
-	// use legacy iterator code
-	get isLegacyIterator() {
-		const util = QuickFolders.Util;
-		if (util.PlatformVersion<13 && util.ApplicationName != 'Interlink')
-			return true;
-		return false;
-	} ,
 	
 	aboutHost: function aboutHost() {
 		const util = QuickFolders.Util;

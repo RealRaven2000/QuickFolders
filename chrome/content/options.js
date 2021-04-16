@@ -249,12 +249,13 @@ QuickFolders.Options = {
 					QI = QuickFolders.Interface,
 					options = QuickFolders.Options,
 					licenser = util.Licenser;
+    let isOptionsTab = window.arguments && window.arguments.length>1;
 					
 		util.logDebug("QuickFolders.Options.load()");
 		
 		if (prefs.isDebugOption('options')) debugger;
     // version number must be copied over first!
-		if (window.arguments && window.arguments[1].inn.instance) {
+		if (isOptionsTab && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
 			util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
@@ -265,12 +266,26 @@ QuickFolders.Options = {
 		if (!version) debugger;
 		
     util.logDebugOptional('options', 'QuickFolders.Options.load()');
-		if (window.arguments) {
+    let modeNum = -1;
+		if (isOptionsTab) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
-				if (this.optionsMode >= 0)
-					prefs.setIntPref('lastSelectedOptionsTab', this.optionsMode);
+        if (this.optionsMode) {
+          switch (this.optionsMode) {
+            case "helpOnly":
+              modeNum = this.QF_PREF_HELP;
+              break;
+            case "supportOnly":
+              modeNum = this.QF_PREF_SUPPORT;
+              break;
+            case "licenseKey":
+              modeNum = this.QF_PREF_LICENSE;
+              break;
+        }
+			}
+				if (modeNum >= 0)
+					prefs.setIntPref('lastSelectedOptionsTab', modeNum);
 			}
 			catch(e) {;}
     }

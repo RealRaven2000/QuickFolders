@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.21", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.21.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -923,7 +923,7 @@ QuickFolders.Util = {
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
         // either go to the next mail... or close the tab
-        if (prefs.getBoolPref("quickMove.gotoNextUnreadAfterMove"))
+        if (prefs.getBoolPref("quickMove.gotoNextMsgAfterMove"))
           goDoCommand('cmd_nextMsg');
       }
       

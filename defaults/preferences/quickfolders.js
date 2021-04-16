@@ -38,7 +38,7 @@ pref("extensions.quickfolders.quickMove.lastFolderName","");
 pref("extensions.quickfolders.quickMove.autoFill",true);
 pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.quickMove.reopenMsgTabAfterMove", false);
-pref("extensions.quickfolders.quickMove.gotoNextUnreadAfterMove", true);
+pref("extensions.quickfolders.quickMove.gotoNextMsgAfterMove", true);
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickCopy.Hotkey.Shift", true);

@@ -1,4 +1,4 @@
-<b>Release 5.4.2</b>
+<b>Release 5.5</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
@@ -6,40 +6,13 @@
 
 <b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/117">[issue 117]</a> Add color picker for text color in tab-specific properties.</li>
-<li> Added quickMove advanced settings panel for the following new features:
-
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/118">[issue 118]</a> Restrict quickMove results to current server. I also added a list of accounts to explicitely exclude selected servers from search results.
-
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/74">[issue 74]</a> User Interface to enable silent mode / disable notification after moving mails. 
-
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/119">[issue 119]</a>The maximum number of search results can be changed from 25. 
-</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/103">[issue 103]</a> quickMove now also supports copying folders. To copy a folder, hold down the CTRL key while you drop it on the quickMove button. Queued folders are now also properly listed in the quickMove menu.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/136">[issue 136]</a> Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual folder view (such as search results / or after open message in conversation). This was a  side effect of changes from <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/57">[issue 57]</a>.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a> quickMove / quickJump: When using "/" for parent folders searching for substrings should work better... The Search algorithm now recognizes Underscore _ and Space within folder names so that parent folders with  prefixes such as "01_test" can still be found without knowing the number (type "test\subfoldername" to get 
+a match in this example). </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/132">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.
+This behavior has now been changed on request to go to the next unread email instead. If necessary, this new behavior can be changed in via the advanced search settings button in the Single Message Tab box on the QF Pro settings tab.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/134">[issue 134]</a> Feature Request: Escape key to "Cancel quickMove" completely. Before this change, Cancel would hide the search box but keep the list of mails queued to be moved so that more items could be added later. If necessary, the old behavior can be restored in the Advanced search settings dialog. </li>
+<li> Changed folder tree shortcut from F7 to F9 (consistent with Thunderbird 68).  Push F0 to make the folder tree visible or quickly hide it.</li>
 <li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li>
+
 </ul>
-
-<b>Bug Fixes</b>
-<ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/115">[issue 115]</a> fix restoring of config values </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/116">[issue 116]</a> Custom Text color in tab-specific is not set on tab.
-<li> Regression in 4.5 (fixed in 5.4.1) <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/123"> [issue 123]</a> Fixed: An error in the French translation leads to the Settings screen not loading.</li>
-You can use the advanced panel for a number of functions, such as not showing the unread status or excluding a folder (and optionally also its subfolders) from the quickMove search results. You can also prefill a different from address and to address when writing new mails. To display it, right-click any tab and select"Tab-secific Properties" from the QuickFolders commands submenu.
-</li>
-</ul>
-
-<b>Thunderbird 78 Regressions, Tb 87 and beyond</b>
-<ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/115">[issue 115]</a> Restore does not load some general / layout setting. Some general / layout settings were not restored properly even when they were saved during backup. </li>
-<li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/114">[issue 114]</a> Make QuickFolders compatible with <span class="emphasis">Thunderbird beta 88.0b1</span>
-
-- Fixed: Support Pages did not open anymore as content Tabs have a different parameter set.
-- Fixed: layout of advanced tab properties broken due to deprecated grid element.
-- Fixed: Copy / Move folders uses new MailServices.copy object
-- 5.4.2: Removed `strict_max_version` for users of 88.0b1 (this version number is not supported by their validation process when submitting it to atn)
-
-If you find more regressions associated with Thunderbird 86 or higher, please report them at issue 114 linked above.
-</li>            
-</ul>
-

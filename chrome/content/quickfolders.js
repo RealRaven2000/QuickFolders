@@ -460,12 +460,19 @@ END LICENSE BLOCK */
     ## replaced Tb account-manager module with MailServices
     ## removed some of the excessive with from settings dialog
     
+  5.5 QuickFolders Pro - WIP
+    ## [issue 136] quickMove - no folder suggestions while viewing in searched list (search results / open msg in conversation)
+    ## [issue 135] "/" for sub / parent folders should work for substring, not just prefix...
+                   Added the possibility to ignore _ and space within folder names so that parent folders with 
+                   prefixes such as "01_" or are composite of 2 terms with space e.g. "apple tree" can still be found.
+    ## [issue 134] Feature Request: Escape key to "Cancel quickMove" completely
+    ## changed folder tree shortcut from F7 to F9 (like in Thunderbird 68)
+    ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving - should go to next unread mail instead
+                   this behavior  is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
+                   instead Tb will open the next unread mail - see extensions.quickfolders.quickMove.gotoNextUnreadAfterMove
+
 
     
-    TO DO:
-    ## [issue 103] Feature Request: Support copying folders
-
-
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
 
@@ -1613,7 +1620,7 @@ var QuickFolders = {
               let node = dragSession.sourceNode;
 
               // find out whether drop target button is right or left from source button:
-              if (node.hasAttributes()) {
+              if (node && node.hasAttributes()) {
                 // check previous siblings to see if target button is found - then it's to the left. otherwise it's to the right
                 let i = null,
                     sib = node;

@@ -9,12 +9,12 @@ END LICENSE BLOCK */
 
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
-    messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
+    messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");    
 	}
   if (event.target.id=='whatsNew') {
     const manifest = await messenger.runtime.getManifest(),
           version = manifest.version;
-    messenger.Utilities.openLinkExternally("https://quickfolders.org/version.html" + "#" + version);
+    messenger.Utilities.showVersionHistory();
     
   }
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
@@ -35,7 +35,6 @@ addEventListener("load", async (event) => {
           addonName = manifest.name,
           addonVer = manifest.version,
           appVer = browserInfo.version,
-          hoursWorked = 300,
           remindInDays = 10;
 
     // force replacement for __MSG_xx__ entities
@@ -70,10 +69,6 @@ addEventListener("load", async (event) => {
       timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
     }
     
-    // let measuredEffort =  document.getElementById('hours-effort');
-    // if (measuredEffort) {
-      // measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
-    // }
     
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
@@ -103,6 +98,13 @@ addEventListener("load", async (event) => {
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>")
         .replace("{name}", userName);
+    }
+    
+    let whatsNewLst = document.getElementById('whatsNewList');
+    if (whatsNewLst) {
+      whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
+        .replace(/\{L1\}/g,"<li>")
+        .replace(/\{L2\}/g,"</li>");
     }
 
     let ongoing = document.getElementById('ongoing-work');

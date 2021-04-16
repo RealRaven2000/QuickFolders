@@ -16,6 +16,7 @@
   background-color: white;
   padding-left: 10%;
   padding-right: 10%;
+  /*  border: 1px solid rgba(120,120,120,0.3);  test */
 }
 
 /* make a nice watermark behind these */
@@ -33,7 +34,7 @@
   position: absolute;
   opacity: 0.4;
   background-image: url("../chrome/content/skin/ico/QuickFolders_32.svg");
-  background-position: 2.4em 5em; 
+  background-position: 3em 5em; 
   background-repeat: no-repeat; 
   background-size: 84%;
   margin-left: -10%;
@@ -81,7 +82,9 @@ ul.actions {
 ul.actions *[collapsed=true],
 .actionlinks a[collapsed=true],
 p[collapsed=true],
-div[collapsed=true]{
+div[collapsed=true],
+h2[collapsed=true],
+canvas[collapsed=true] {
   visibility: collapse;
   display :none;
 }
@@ -92,7 +95,9 @@ div[collapsed=true]{
   color: white;
 }
 
-.importantInfo p {
+.importantInfo p, 
+.importantInfo ul, 
+.importantInfo li {
   color: white;
 }
 
@@ -101,14 +106,14 @@ div[collapsed=true]{
   background-color: transparent;
 }
 
-#specialOffer {
+#specialBox {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;
   padding: 0.1em 1em;
 }
 
-#specialOffer h2 {
+#specialBox h2 {
   background: none !important;
   margin-top: 16px;
   text-shadow:
@@ -126,6 +131,10 @@ div[collapsed=true]{
   position: relative;
   right: -2em;
   top: -1em;
+}
+
+#specialBox #specialOffer {
+  background: transparent !important;
 }
 
 #purchaseLicenseListItem { /* test */

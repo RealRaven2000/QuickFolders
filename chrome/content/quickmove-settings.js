@@ -25,6 +25,16 @@
     get isSilent() {
       return prefs.getBoolPref('quickMove.premium.silentMode');
     },
+    get isClearList() {
+      return prefs.getBoolPref('quickMove.premium.escapeClearsList');
+    },
+    get isGoNext() {
+      return prefs.getBoolPref('quickMove.gotoNextUnreadAfterMove');
+    },
+    get isReopen() {
+      return prefs.getBoolPref('quickMove.reopenMsgTabAfterMove');
+    },
+    
     
     loadExclusions: function loadExclusions() {
       let excludedList = prefs.getStringPref('quickMove.premium.excludedAccounts');
@@ -84,6 +94,23 @@
       chkSilent.addEventListener("click", function(evt) {QuickFolders.quickMove.Settings.toggleSilent(chkSilent, evt)} );
       chkSilent.addEventListener("keypress", function(evt) {QuickFolders.quickMove.Settings.toggleSilent(chkSilent, evt)} );
       
+      
+      let chkEsc = document.getElementById('chkEscapeClearsList');
+      chkEsc.checked = settings.isClearList;
+      chkEsc.addEventListener("click", function(evt) {QuickFolders.quickMove.Settings.toggleClearList(chkEsc, evt)} );
+      chkEsc.addEventListener("keypress", function(evt) {QuickFolders.quickMove.Settings.toggleClearList(chkEsc, evt)} );
+      
+      let chkGoNext = document.getElementById('chkGoNext');
+      chkGoNext.checked = settings.isGoNext;
+      chkGoNext.addEventListener("click", function(evt) {QuickFolders.quickMove.Settings.toggleGoNext(chkGoNext, evt)} );
+      chkGoNext.addEventListener("keypress", function(evt) {QuickFolders.quickMove.Settings.toggleGoNext(chkGoNext, evt)} );
+      
+      let chkReopen = document.getElementById('chkReopen');
+      chkReopen.checked = settings.isReopen;
+      chkReopen.addEventListener("click", function(evt) {QuickFolders.quickMove.Settings.toggleReopen(chkReopen, evt)} );
+      chkReopen.addEventListener("keypress", function(evt) {QuickFolders.quickMove.Settings.toggleReopen(chkReopen, evt)} );
+      
+      
       let maxResults = document.getElementById('maxResults');
       maxResults.value = prefs.getIntPref("quickMove.maxResults");
       maxResults.addEventListener("change", function(evt) {QuickFolders.quickMove.Settings.changeMaxResults(maxResults)} );
@@ -117,19 +144,41 @@
         prefs.setStringPref('quickMove.premium.excludedAccounts',list.join(","));
       }
     },
+    
     toggleLockInAccount: function(el, evt) {
       let isChecked = el.checked;
       if (evt.type == "keypress" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.premium.lockInAccount", isChecked);
     },
+    
     toggleSilent: function(el, evt) {
       let isChecked = el.checked;
       if (evt.type == "keypress" && evt.key != " ") return;
       prefs.setBoolPref("quickMove.premium.silentMode", isChecked);
     },
+    
+    toggleClearList: function(el, evt) {
+      let isChecked = el.checked;
+      if (evt.type == "keypress" && evt.key != " ") return;
+      prefs.setBoolPref("quickMove.premium.escapeClearsList", isChecked);
+    },
+    
+    toggleGoNext: function(el, evt) {
+      let isChecked = el.checked;
+      if (evt.type == "keypress" && evt.key != " ") return;
+      prefs.setBoolPref("quickMove.gotoNextUnreadAfterMove", isChecked);
+    },
+    
+    toggleReopen: function(el, evt) {
+      let isChecked = el.checked;
+      if (evt.type == "keypress" && evt.key != " ") return;
+      prefs.setBoolPref("quickMove.reopenMsgTabAfterMove", isChecked);
+    },
+    
     changeMaxResults: function(el) {
       prefs.setIntPref("quickMove.maxResults", el.value);
     },
+    
     accept: function() {
       // transmit to main window:
       util.Mail3PaneWindow.QuickFolders.quickMove.Settings.loadExclusions();

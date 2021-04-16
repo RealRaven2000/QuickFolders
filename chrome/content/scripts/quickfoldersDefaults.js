@@ -36,13 +36,15 @@ pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.Hotkey.Shift", true);
 pref("extensions.quickfolders.quickMove.lastFolderName","");
 pref("extensions.quickfolders.quickMove.autoFill",true);
+pref("extensions.quickfolders.quickMove.folderLabel", true);
+pref("extensions.quickfolders.quickMove.reopenMsgTabAfterMove", false); // [issue 132] disable reopening moved mail in single message tab
+pref("extensions.quickfolders.quickMove.gotoNextUnreadAfterMove", true); // [issue 132] open next unread mail in single tab after moving this mail
 pref("extensions.quickfolders.quickCopy.useHotkey", false);
 pref("extensions.quickfolders.quickCopy.Hotkey", 'T');
 pref("extensions.quickfolders.quickCopy.Hotkey.Shift", true);
 pref("extensions.quickfolders.skipFolder.useHotkey", false);
 pref("extensions.quickfolders.skipFolder.Hotkey", 'S');
 pref("extensions.quickfolders.skipFolder.Hotkey.Shift", true);
-pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.showToolIcon", true);
 pref("extensions.quickfolders.bookmarks.folderLabel", true);
 pref("extensions.quickfolders.bookmarks.showButton", true);
@@ -243,6 +245,7 @@ pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
+pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
 pref("extensions.quickfolders.quickMove.maxResults",25);

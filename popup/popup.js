@@ -47,8 +47,11 @@ async function updateActions(addonName) {
   // purchaseLicenseListItem - not collapsed
   hide('licenseExtended');
   
+  let isActionList = true;
+  
   if (isLicensed) {
     hide('purchaseLicenseListItem');
+    hideSelectorItems('.donations');
     hide('register');
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
@@ -60,24 +63,51 @@ async function updateActions(addonName) {
       hide('renewLicenseListItem');
       hide('renew');
       let gpdays = await mxUtilties.LicensedDaysLeft();
-      if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
-      show('extendLicenseListItem');
-      show('extend');
+      if (gpdays<50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
+        show('extendLicenseListItem');
+        show('extend');
       }
       else {
         show('licenseExtended');
+        hide('time-and-effort')
+        hide('purchaseHeader');
+        hide('whyPurchase');
         hide('extendLicenseListItem');
         hide('extend');
+        let animation = document.getElementById('gimmick');
+        animation.parentNode.removeChild(animation);
+
+        isActionList = false;
       }
     }
   }  
   else {
     let currentTime=new Date(),
-        endSale = new Date("2021-03-30");
+        endSale = new Date("2021-05-01");
     if (currentTime < endSale) {
       show('specialOffer');
       hideSelectorItems('.donations');
+      hide('whyPurchase');
+      isActionList = false;
     }
   }  
+  if (!isActionList) {
+    hide('actionBox');
+  }
+
+  // resize to contents if necessary...
+  let win = await browser.windows.getCurrent(),
+      wrapper = document.getElementById('innerwrapper'),
+      r = wrapper.getBoundingClientRect(),
+      newHeight = Math.round(r.height) + 80,
+      maxHeight = window.screen.height;
+      
+  if (newHeight>maxHeight) newHeight = maxHeight-15;
+  browser.windows.update(win.id, 
+    {height: newHeight}
+  );
+      
+  // window.sizeToContent();
+  
   
 }

@@ -86,6 +86,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             .getService(Ci.nsIExternalProtocolService)
             .loadURI(uri);
         },
+        
+        showVersionHistory: function() {
+          const util = win.QuickFolders.Util;
+          util.showVersionHistory();
+        },
 
         showXhtmlPage: function(uri) {
           let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]

@@ -997,15 +997,11 @@ QuickFolders.Options = {
     switch (choice) {
       case 'default':
         backgroundCombo.selectedIndex = this.BGCHOICE.default;
-        setting.value = (util.isCSSGradients)
-                        ? 'linear-gradient(to top, #FFF 7%, #BDB9BD 88%, #EEE 100%)'
-                        : '-moz-linear-gradient(bottom, #FFF 7%, #BDB9BD 88%, #EEE 100%)';
+        setting.value = 'linear-gradient(to top, #FFF 7%, #BDB9BD 88%, #EEE 100%)';
         break;
       case 'dark':
         backgroundCombo.selectedIndex = this.BGCHOICE.dark;
-        setting.value = (util.isCSSGradients)
-                        ? 'linear-gradient(rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
-                        : '-moz-linear-gradient(bottom, rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))'
+        setting.value =  'linear-gradient(rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))';
         break;
       case 'translucent':
         backgroundCombo.selectedIndex = this.BGCHOICE.translucent;
@@ -1558,7 +1554,7 @@ QuickFolders.Options = {
       });
   },
 
-  showVersionHistory: function showVersionHistory(label, ask) {
+  showVersionHistory: function showVersionHistory(ask) {
     let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
         sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");

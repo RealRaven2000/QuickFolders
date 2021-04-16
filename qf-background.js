@@ -26,18 +26,18 @@ async function main() {
           // suppress update popup for users with licenses that have been recently renewed
           let gpdays = await mxUtilties.LicensedDaysLeft();
           console.log("Licensed - " + gpdays  + " Days left.");
-          if (gpdays>40) {
-            console.log("Omitting update popup!");
-            return;
-          }
+          // if (gpdays>40) {
+            // console.log("Omitting update popup!");
+            // return;
+          // }
         }
         
 
         let url = browser.runtime.getURL("popup/update.html");
         //await browser.tabs.create({ url });
         let screenH = window.screen.height,
-            windowHeight = (screenH > 870) ? 870 : screenH;
-        await browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, });
+            windowHeight = (screenH > 870) ? 870 : screenH;  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/windows/create
+        await browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
       }
       break;
     // see below

@@ -72,10 +72,7 @@ var QuickFolders_TabURIopener = {
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-  _isCSSGradients: -1,
-	_isCSSRadius: -1,
-	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.4.2", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.5", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -220,11 +217,6 @@ QuickFolders.Util = {
     Services.prompt.alert(null, caption, msg);
   },
 
-
-  checkDonationOrBuyLicenceReminder: function checkDonationOrBuyLicenceReminder () {
-
-  },
-  
   get supportsMap() {
     return (typeof Map == "function");
   } ,
@@ -782,7 +774,8 @@ QuickFolders.Util = {
 	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function moveMessages(targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
-          util = QuickFolders.Util; 
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences; 
 		let step = 0;
     if (!messageUris) 
       return null;
@@ -853,6 +846,15 @@ QuickFolders.Util = {
         util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
+      
+      // [issue 132] Shift-M opens a new tab after moving the message...
+      // if we move the email and are in a single message window, we need to jump to the next unread mail first!
+      if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+        // either go to the next mail... or close the tab
+        if (QuickFolders.quickMove.Settings.isGoNext)
+          goDoCommand('cmd_nextMsg');
+      }
+      
 			step = 5;
 			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
@@ -1448,18 +1450,6 @@ QuickFolders.Util = {
 		}
 	},
 	
-	get isCSSGradients() {
-	  try {
-		  if (this._isCSSGradients !== -1)
-				return this._isCSSGradients;
-      this._isCSSGradients = true; // Thunderbird
-		}
-		catch(ex) {
-			this._isCSSGradients = false;
-		}
-		return this._isCSSGradients;
-	},
-	
 	aboutHost: function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
@@ -1468,20 +1458,7 @@ QuickFolders.Util = {
 		  
 	} ,
 	
-	get isCSSRadius() {
-	  if (this._isCSSRadius === -1) {
-			this._isCSSRadius =	true
-		}
-		return this._isCSSRadius;
-	},
-	
-	get isCSSShadow() {
-		if (this._isCSSShadow === -1) {
-			this._isCSSShadow = true;
-		}
-		return this._isCSSShadow;
-	} ,
-	
+
 	// helper function for css value entries - strips off rule part and semicolon (end)
 	sanitizeCSSvalue: function sanitizeCSSvalue(val) {
 		let colon = val.indexOf(':');
@@ -1701,7 +1678,15 @@ QuickFolders.Util = {
 		catch(ex) {
 			QuickFolders.Util.logException("Exception in QuickFolders.Util.validateFilterTargets ", ex);
 		}
-	}
+	},
+  
+  showVersionHistory: function showVersionHistory() {
+		const util = QuickFolders.Util;
+    let version = util.VersionSanitized;
+    util.openURL(null, util.makeUriPremium("https://quickfolders.org/version.html") + "#" + version);
+  } ,
+  
+  
 
   
 };  // QuickFolders.Util
@@ -1711,7 +1696,8 @@ QuickFolders.Util = {
 QuickFolders.Util.FirstRun = {
 	init: function init() {
     const util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences;
+          prefs = QuickFolders.Preferences,
+          quickMoveSettings = QuickFolders.quickMove.Settings;
 		let prev = -1, firstrun = true,
 		    showFirsts = true, debugFirstRun = false,
 		    prefBranchString = "extensions.quickfolders.",
@@ -1803,29 +1789,11 @@ QuickFolders.Util.FirstRun = {
         // this section does not get loaded if it's a fresh install.
 				suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
 				
-				/** minor version upgrades / sales  **/
-				if (pureVersion.indexOf('4.8.3') == 0 && prev.indexOf("4.8") == 0)
-          suppressVersionScreen = true;
-				
-				
 				// SILENT UPDATES
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
-				//  same for 3.14.1, 3.14.2 etc - no donation screen
-				if ((pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
-					  ||
-					  (pureVersion.indexOf('4.9.') == 0 && prev.indexOf("4.9") == 0)
-            ||
-            (pureVersion.indexOf('4.17.4') == 0 && prev.indexOf("4.17.3") == 0)
-					  )
-        {
-					suppressVersionScreen = true;
-				}
+				// then set suppressVersionScreen = true;
         if (isPremiumLicense) {
 					util.logDebugOptional ("firstrun","has premium license.");
-					if ((pureVersion.indexOf('4.8.1')==0  || pureVersion.indexOf('4.8.2')==0 )
-					    && prev.indexOf("4.8") == 0) {
-						suppressVersionScreen = true;
-					}
 				}
 				
 				let isThemeUpgrade = prefs.tidyUpBadPreferences();
@@ -1869,7 +1837,7 @@ QuickFolders.Util.FirstRun = {
 				}
 				
 				util.loadPlatformStylesheet(window);
-        QuickFolders.quickMove.Settings.loadExclusions();
+        quickMoveSettings.loadExclusions();
 			}
 			util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally
@@ -1917,11 +1885,15 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQ
 			util = QuickFolders.Util,
       quickMoveSettings = QuickFolders.quickMove.Settings,
       isLockedInAccount = quickMoveSettings.isLockInAccount,
-      currentFolder, currentServer;
+      currentFolder, currentServer = 0;
   if (isQuickJumpOrMove) {
     currentFolder = util.CurrentFolder;
-    if (!currentFolder) isQuickJumpOrMove = false; // can't determine current account
-    currentServer = currentFolder.server ? currentFolder.server.key : null;
+    if (!currentFolder) { // [issue 136] search result list has no current folder!
+      isLockedInAccount = false;
+    }
+    else {
+      currentServer = currentFolder.server ? currentFolder.server.key : null;
+    }
     quickMoveSettings.loadExclusions(); // prepare list of servers to omit
   }
   

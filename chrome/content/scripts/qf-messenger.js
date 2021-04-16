@@ -39,7 +39,7 @@ function onLoad(activatedWhileWindowOpen) {
     WL.injectElements(`
     
         <keyset>
-          <key id="quickFolders-ToggleTree" keycode="VK_F7" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+          <key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
         </keyset>
     
         <!-- Thunderbird & SeaMonkey -->

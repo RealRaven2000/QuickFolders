@@ -17,7 +17,7 @@ async function addAnimation(el) {
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    canvas.id = 'gimmick'
+    canvas.id = 'gimmick';
 
     var coins = [],
         coin = new Image();

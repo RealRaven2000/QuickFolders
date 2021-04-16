@@ -65,7 +65,7 @@
 				       onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
 				<spacer flex="1" />
 				<label id="qf-options-header-description"
-							 onclick="if (options.showVersionHistory(this, true)) setTimeout(function() { window.close(); });return false;"
+							 onclick="if (options.showVersionHistory(true)) setTimeout(function() { window.close(); });return false;"
 							 tooltiptext="&qf.options.versionnumber.tooltip;" />
 			</hbox>
 		</box>
@@ -1047,7 +1047,7 @@
             <div id="L3"
                  class="button"
                     tooltiptext="https://quickfolders.org/version.html"
-                    onclick="options.showVersionHistory(this, false); 
+                    onclick="options.showVersionHistory(false); 
                     setTimeout(function() { window.close(); });
                     return true;">
               <label>&qf.label.versionhistory;</label>

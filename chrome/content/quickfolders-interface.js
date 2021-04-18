@@ -1269,7 +1269,7 @@ QuickFolders.Interface = {
 		let tabmail = document.getElementById("tabmail"),
 		    info = util.getTabInfoByIndex(tabmail, tabIndex);
 		info.QuickFoldersCategory = categories;
-		let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+		let tab = tabmail.selectedTab;
 		if (tab == info) {
 			// current Tab:
 			QuickFolders.Interface.selectCategory(categories, false);
@@ -4482,18 +4482,7 @@ QuickFolders.Interface = {
 			if (isCtrlKey) {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
-					switch (util.Application) {
-						case 'Thunderbird':
-							tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
-							break;
-						case 'SeaMonkey':
-							tabmail.openTab(util.mailFolderTypeName, 7, folderUri);
-							break;
-						case 'Postbox':
-							let win = util.getMail3PaneWindow();
-							win.MsgOpenNewTabForFolder(folderUri, null /* msgHdr.messageKey key*/, false /*Background*/ )
-							break;
-					}
+          tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
 				}
 			}
 		}
@@ -4791,7 +4780,8 @@ QuickFolders.Interface = {
 			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
 			parentCount = parentString.split("/").length + 1; // original entry for parent
     }
-		let isFiling = QuickFolders.quickMove.isActive;
+		const isFiling = QuickFolders.quickMove.isActive,
+          isQuickJump = true;
     /********* old jump point *********/
 		/*
 		// [Bug 26565] if 1 unique full match is found - without children!, we can automatically jump there
@@ -4818,13 +4808,13 @@ QuickFolders.Interface = {
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
 
 		// multiple slashes?
-			util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
-			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
-			util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
+    util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
+    util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
+    util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
 
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-      for (let folder of util.allFoldersIterator(isFiling)) {
+      for (let folder of util.allFoldersIterator(isFiling, isQuickJump)) {
         addIfMatch(folder, matches.parentString || parentString, parents);
       }
 		}
@@ -5257,23 +5247,12 @@ QuickFolders.Interface = {
         util = QuickFolders.Util,
         idx = QuickFolders.tabContainer.selectedIndex,
         tabmail = document.getElementById("tabmail"),
-        tabs = tabmail.tabInfo || tabmail.tabOwners, // Pb: tabOwners
+        tabs = tabmail.tabInfo, 
         info = util.getTabInfoByIndex(tabmail, idx),
         tabMode = util.getTabMode(info);  // tabs[idx]
     // single message mode
     if (tabMode == 'message') {
-      let msg;
-      switch (util.Application) {
-        case 'Postbox':
-          msg = info._msgHdr;
-          break;
-        case 'Thunderbird':
-          msg = info.messageDisplay.displayedMessage
-          break;
-        case 'SeaMonkey':
-          msg = info.msgSelectedFolder;
-          break;
-      }
+      let msg = info.messageDisplay.displayedMessage;
       if (msg) {
         folder = msg.folder;
       }
@@ -5282,13 +5261,9 @@ QuickFolders.Interface = {
         return folder;
       }
     }
-
-    if (info.msgSelectedFolder)  // Sm
-      folder = info.msgSelectedFolder;
-    else if (  info.folderDisplay
-            && info.folderDisplay.view
-            && info.folderDisplay.view.displayedFolder)  // Tb
-      folder = info.folderDisplay.view.displayedFolder
+    let fD = info.folderDisplay;
+    if (fD && fD.view && fD.view.displayedFolder)  // Tb
+      folder = fD.view.displayedFolder
     else   // Postbox
       folder = GetFirstSelectedMsgFolder();
     QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : 'n/a'));
@@ -5304,11 +5279,9 @@ QuickFolders.Interface = {
 				prefs = QuickFolders.Preferences; // let's not use _this_ in an event function
 		try  {
 			// avoid TB logging unnecessary errors in Stack Trace
-			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
-				return;
+			if (!gFolderTreeView) return;
 
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
-      // SM use: info.msgSelectedFolder
       if (forceButton)
         folder = forceButton.folder;
       else if (forceFolder)

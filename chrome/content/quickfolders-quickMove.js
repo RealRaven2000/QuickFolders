@@ -82,7 +82,7 @@ QuickFolders.quickMove = {
         if (messageDb && !isCopy) {
           // reusing the existing Tab didn't work so we close & re-open msg from the new location.
           // [issue 132] only reopen the moved mail if this option is enabled (default is false)
-          if (QuickFolders.quickMove.isReopen) {
+          if (QuickFolders.quickMove.Settings.isReopen) {
             setTimeout( 
               function() {
                 let msgHdr = messageDb.getMsgHdrForMessageID(theMessage);

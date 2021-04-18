@@ -586,7 +586,7 @@ var QuickFolders_PrepareSessionStore = function () {
       debugger;
 			let txt;
 			try {
-				aPersistedState.QuickFoldersCategory || "(no category)";
+				txt = aPersistedState.QuickFoldersCategory || "(no category)";
 		  } catch(ex) {;}
 			util.logDebug("restored tabs: " + txt);
 			// let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
@@ -2637,8 +2637,14 @@ QuickFolders.FolderListener = {
             tabEntry = Model.getFolderEntry(parent.folderURL);
             
         if (tabEntry &&  tabEntry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) {
-          let messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-          messageList.appendElement(item , false);
+          let messageList;
+          if (util.versionGreaterOrEqual(util.ApplicationVersion, "85")) {
+            messageList = [item];
+          }
+          else {
+            messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+            messageList.appendElement(item , false);
+          }
           parent.markMessagesRead(messageList, false);
         }
         

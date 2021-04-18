@@ -546,20 +546,14 @@ QuickFolders.bookmarks = {
       /*     GET CONTEXT FROM CURRENT MAIL TAB  */
       if (!isOriginBrowser) {
         if (tabmail) {
-          let tab = tabmail.selectedTab || tabmail.currentTab,  // Pb currentTab
+          let tab = tabmail.selectedTab,  
               theMode = tab.mode ? tab.mode.name : tab.getAttribute("type");
           if (!browser)
             browser = tab.browser;
           if (theMode == 'folder') {
-            if (util.Application == 'Postbox') {
-              if (GetNumSelectedMessages()>0)
-                theMode = 'message';
-            }
-            else {
-              // if we are in folder mode we might have a message selected
-              if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
-                theMode = 'message';
-              }
+            // if we are in folder mode we might have a message selected
+            if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
+              theMode = 'message';
             }
           }
           

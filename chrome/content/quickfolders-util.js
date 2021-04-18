@@ -632,9 +632,10 @@ QuickFolders.Util = {
 	} ,
 
 	// find the first mail tab representing a folder and open it
-	ensureFolderViewTab: function ensureFolderViewTab() {
+  // extension: pass in preferred folder and open that tab if it exists
+  // if we already are on a folder view, do nothing!
+	ensureFolderViewTab: function ensureFolderViewTab(folder = null) {
 		const util = QuickFolders.Util;
-		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
 		let found=false,
 		    tabmail = document.getElementById("tabmail");
 		if (tabmail) {
@@ -648,15 +649,28 @@ QuickFolders.Util = {
 					// switchToTab
 					// iterate tabs
 					let tabInfoCount = util.getTabInfoLength(tabmail);
+          let firstFound = -1;
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
 						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
 							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
-							tabmail.switchToTab(i);
-							found = true;
-							break;
+              if (firstFound<0) firstFound = i;
+              if (!folder) 
+                break;
+              else {
+                let fD = info ? info.folderDisplay : null;
+                if (fD.view && fD.view.displayedFolder && folder.URI == fD.view.displayedFolder.URI) {
+                  firstFound = i;
+                  break; // this is the one we want
+                }
+              }
 						}
 					}
+          if (firstFound>=0) {
+            tabmail.switchToTab(firstFound);
+            found = true;
+          }
+          
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
 					for (let i=0;(!found) && i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
@@ -828,7 +842,7 @@ QuickFolders.Util = {
           }
         }
 
-				messageIdList.push(Message.messageId);
+				messageIdList.push(Message.messageId); 
         if (isListArray) 
           messageList.push(Message);
         else
@@ -849,13 +863,17 @@ QuickFolders.Util = {
       
       // [issue 132] Shift-M opens a new tab after moving the message...
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
+      let tabmail = document.getElementById("tabmail"),
+          currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.selectedIndex]
+          moveFromSingleMailTab = false;
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+        moveFromSingleMailTab = true;
         // either go to the next mail... or close the tab
         if (QuickFolders.quickMove.Settings.isGoNext) {
           goDoCommand('cmd_nextMsg');
           QuickFolders.Interface.ensureCurrentFolder();
-          document.getElementById('messagepane').focus();
         }
+        document.getElementById('messagepane').focus();
       }
       
 			step = 5;
@@ -872,10 +890,20 @@ QuickFolders.Util = {
         'isMove = (various)\n' + 
         'listener = QuickFolders.CopyListener\n' +
         'window = ' + mw + '\n' +
-        'allowUndo = true)');      
+        'allowUndo = true)'); 
+      let currentTab = tabmail.selectedTab;
 			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
 			step = 8;
 			util.touch(targetFolder); // set MRUTime
+      if (moveFromSingleMailTab && currentTabId>0 && !QuickFolders.quickMove.Settings.isGoNext) {
+        // close single message tab:
+        if (currentTabId == tabmail.currentTabInfo.tabId) {
+          // TO DO: goto corresponding folder tab or at least tab 0
+          util.ensureFolderViewTab(sourceFolder);
+          // now close the tab Tb opened.
+          tabmail.closeTab(currentTab, false);
+        }
+      }
 			return messageIdList; // we need the first element for further processing
 		}
 		catch(e) {
@@ -1268,7 +1296,7 @@ QuickFolders.Util = {
 		}
 		return false;
 	} ,	
-	
+  
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function openLinkInBrowserForced(linkURI) {
@@ -2052,7 +2080,7 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
 		//items = [new ftvItem(f) for each (f in recent)];
 		for (let f of recent) { 
       if (typeof ftvItem == "function") 
-        items.push(new ftvItem(f));
+        items.push(new ftvItem(f)); // Tb78 and older
       else
         items.push(new FtvItem(f));
 	  };

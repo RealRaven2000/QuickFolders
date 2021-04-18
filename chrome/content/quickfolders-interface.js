@@ -5778,7 +5778,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
     try {
-      let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode
+      let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode;
       util.logDebugOptional("interface.currentFolderBar", 'initCurrentFolderTab(' + (folder ? folder.prettyName : 'null') + ')\n'
                             + "tabMode: " + tabMode);
       this.hoistCurrentFolderBar(currentFolderTab, tabInfo);
@@ -6822,7 +6822,8 @@ QuickFolders.Interface = {
 				if (selectedTab>=0) {
 					let tab = util.getTabInfoByIndex(tabmail, selectedTab);
 					if (tab) {
-						tabMode = util.getTabMode(tab);  // test in Postbox
+						tabMode = util.getTabMode(tab);
+            util.logDebug("CurrentTabMode() \n selectedTab = " + selectedTab + "\n tabMode = " + tabMode);
 						if (tabMode == "glodaSearch" && tab.collection) { //distinguish gloda search result
 							tabMode = "glodaSearch-result";
 						}

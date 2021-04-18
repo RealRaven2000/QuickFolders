@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.21.1", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.21.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -702,7 +702,7 @@ QuickFolders.Util = {
 	} ,
 
 	// find the first mail tab representing a folder and open it
-	ensureFolderViewTab: function ensureFolderViewTab() {
+	ensureFolderViewTab: function ensureFolderViewTab(folder) {
 		const util = QuickFolders.Util;
 		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
 		let found=false,
@@ -718,15 +718,28 @@ QuickFolders.Util = {
 					// switchToTab
 					// iterate tabs
 					let tabInfoCount = util.getTabInfoLength(tabmail);
+          let firstFound = -1;
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
 						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
 							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
-							tabmail.switchToTab(i);
-							found = true;
-							break;
+              if (firstFound<0) firstFound = i;
+              if (!folder) 
+                break;
+              else {
+                let fD = info ? info.folderDisplay : null;
+                if (fD.view && fD.view.displayedFolder && folder.URI == fD.view.displayedFolder.URI) {
+                  firstFound = i;
+                  break; // this is the one we want
+                }
+              }
 						}
 					}
+          if (firstFound>=0) {
+            tabmail.switchToTab(firstFound);
+            found = true;
+          }
+          
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
 					for (let i=0;(!found) && i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
@@ -919,12 +932,23 @@ QuickFolders.Util = {
         return null;
       }
       
+      
       // [issue 132] Shift-M opens a new tab after moving the message...
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
+      let tabMail = document.getElementById("tabmail"),
+          currentTabInfo = tabMail.tabInfo[QuickFolders.tabContainer.selectedIndex], 
+          // currentTabId = currentTabInfo.tabId,  
+          currentTabSelIdx = QuickFolders.tabContainer.selectedIndex,
+          moveFromSingleMailTab = false,
+          isGoNext = prefs.getBoolPref("quickMove.gotoNextMsgAfterMove");
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+        moveFromSingleMailTab = true;
         // either go to the next mail... or close the tab
-        if (prefs.getBoolPref("quickMove.gotoNextMsgAfterMove"))
+        if (isGoNext) {
           goDoCommand('cmd_nextMsg');
+          QuickFolders.Interface.ensureCurrentFolder();
+        }
+        document.getElementById('messagepane').focus();
       }
       
 			step = 5;
@@ -941,9 +965,20 @@ QuickFolders.Util = {
         'listener = QuickFolders.CopyListener\n' +
         'msgWindow = ' + msgWindow + '\n' +
         'allowUndo = true)');      
+      let currentTab = tabMail.selectedTab;
 			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, msgWindow, true);
 			step = 8;
 			util.touch(targetFolder); // set MRUTime
+      if (moveFromSingleMailTab && currentTabSelIdx > 0 && !isGoNext) {
+        // close single message tab:
+        util.logDebug("moveMessages: currentTabSelIdx = " + currentTabSelIdx);
+        if (currentTabSelIdx == QuickFolders.tabContainer.selectedIndex) {
+          // TO DO: goto corresponding folder tab or at least tab 0
+          util.ensureFolderViewTab(sourceFolder);
+          // now close the tab Tb opened.
+          tabMail.closeTab(currentTab, false);
+        }
+      }
 			return messageIdList; // we need the first element for further processing
 		}
 		catch(e) {
@@ -999,6 +1034,7 @@ QuickFolders.Util = {
 	} ,
 	
 	getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
+    this.logDebug("getTabInfoByIndex(tabmail, " + idx + ") tabInfo: " + tabmail.tabInfo);
 		if (tabmail.tabInfo && tabmail.tabInfo.length)
 			return tabmail.tabInfo[idx];
 		if (tabmail.tabOwners)

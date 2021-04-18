@@ -1,0 +1,55 @@
+/* platform styles - Mac */
+#qf-header-container {
+  padding-bottom: 0.9em;
+}
+#QuickFolders-Options-Tabbox tab {
+  padding: 2px 0;
+  margin-bottom: -3px;
+}
+
+#QuickFolders-Options-quickhelp {
+  font-size: 10pt !important;
+}
+
+/* #btnLicense - note this will get special rules for Mac */
+.niceFont, 
+.niceFont * {
+  font-family: initial !important; /* or inherit ? */
+  font-size: 10pt !important;
+}
+
+#firstName, #lastName {
+  width: 12em;
+}
+/*
+#QuickFolders-Options-Tabbox tab .tab-text {
+  margin-top: -6px;	
+}
+#QuickFolders-Options-Tabbox tab .tab-icon {
+  margin-top: -3px;
+}
+#QuickFolders-Options-Tabbox tabpanels {
+  padding-top: 1em;
+}
+#QuickFolders-Options-Tabbox tab .tab-icon { 
+  margin: -15px 0px -6px 0px; 
+}
+*/
+
+#QuickFolders-CurrentFolderTools toolbarbutton {
+  max-width: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/** make sure empty labels don't take up space **/
+#QuickFolders-CurrentFolderTools toolbarbutton > .toolbarbutton-text,
+#QuickFolders-oneButtonPanel toolbarbutton > .toolbarbutton-text  {
+  visibility: collapse;
+  margin: 0 !important;
+}
+
+/* Mac width fix */
+#QuickFolders-Options-Tabbox tab:not([selected="true"]) .tab-text{
+   max-width:80px;
+   text-overflow: ellipsis;
+}

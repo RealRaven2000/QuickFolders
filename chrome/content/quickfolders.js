@@ -535,7 +535,7 @@ var QuickFolders_PrepareSessionStore = function () {
 			orgRestore(aTabmail, aPersistedState);
 			let txt;
 			try {
-				aPersistedState.QuickFoldersCategory || "(no category)";
+				txt = aPersistedState.QuickFoldersCategory || "(no category)";
 		  } catch(ex) {;}
 			util.logDebug("restored tabs: " + txt);
 			let rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),

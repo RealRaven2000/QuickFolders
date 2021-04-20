@@ -127,6 +127,7 @@ function onLoad(activatedWhileWindowOpen) {
 
 `, ["chrome://quickfolders/locale/overlay.dtd"]);
 
+/*
     // renamed QuickFolders-oneButtonPanel to QuickFolders-Toolbar to snatch css rules:
     WL.injectElements(`   
 <vbox id="messagepanebox">    
@@ -187,6 +188,7 @@ function onLoad(activatedWhileWindowOpen) {
   </hbox>
 </vbox>
 `, ["chrome://quickfolders/locale/overlay.dtd"]);
+*/
         
     window.QuickFolders.Util.logDebug('Adding messageWindow...');
     // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);

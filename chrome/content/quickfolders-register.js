@@ -321,16 +321,8 @@ QuickFolders.Licenser = {
     let url ="https://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
         oReq;
     
-    if (util.PlatformVersion >=16.0) {
-      const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1", "nsIXMLHttpRequest");    
-      oReq = new XMLHttpRequest();
-    }
-    else {
-      const { XMLHttpRequest_Legacy } = Components.classes["@mozilla.org/appshell/appShellService;1"]
-                                       .getService(Components.interfaces.nsIAppShellService)
-                                       .hiddenDOMWindow;
-      oReq = new XMLHttpRequest_Legacy();
-    }
+    const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1", "nsIXMLHttpRequest");    
+    oReq = new XMLHttpRequest();
     // oReq.onload = reqListener;
     let formData = new FormData();
     formData.append("submit", "purchase");

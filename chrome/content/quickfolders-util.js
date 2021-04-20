@@ -353,19 +353,7 @@ QuickFolders.Util = {
 	} ,
 
 	slideAlert: function slideAlert(title, text, icon) {
-/*		const util = QuickFolders.Util;
-		util.logDebug('slideAlert: ' + text);
-		setTimeout(function() {
-				try {
-					if (!icon)
-						icon = "chrome://quickfolders/content/skin/ico/quickfolders-Icon.png";
-					Components.classes['@mozilla.org/alerts-service;1'].
-								getService(Components.interfaces.nsIAlertsService).
-								showAlertNotification(icon, title, text, false, '', null, 'quickfolders-alert');
-				} catch(e) {
-				// prevents runtime error on platforms that don't implement nsIAlertsService
-				}
-			} , 0);*/
+    /*	my first background call! */
 		QuickFolders.Util.notifyTools.notifyBackground({func: "slideAlert", args: [title, text, icon]});
 	} ,
 	
@@ -1488,7 +1476,6 @@ QuickFolders.Util = {
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
 		   "PlatformVersion: " + util.PlatformVersion + "\nname: " + util.ApplicationName;
 		util.logToConsole(txt);
-		  
 	} ,
 	
 
@@ -1609,57 +1596,6 @@ QuickFolders.Util = {
     },150);
     
 	} ,
-	
-  Postbox_writeFile: function Pb_writeFile(path, jsonData) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-    // stateString.data = aData;
-    // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
-
-    // Initialize the file output stream.
-    let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-    ostream.init(file, 
-                 0x02 | 0x08 | 0x20,   // write-only,create file, reset if exists
-                 0x600,   // read+write permissions
-                 ostream.DEFER_OPEN); 
-
-    // Obtain a converter to convert our data to a UTF-8 encoded input stream.
-    let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
-    converter.charset = "UTF-8";
-
-    // Asynchronously copy the data to the file.
-    let istream = converter.convertToInputStream(jsonData); // aData
-    NetUtil.asyncCopy(istream, ostream, function(rc) {
-      if (Components.isSuccessCode(rc)) {
-        // do something for success
-      }
-    });
-  } ,
-  
-  Postbox_readFile: function Pb_readFile(path) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-          
-    let fstream = Cc["@mozilla.org/network/file-input-stream;1"].
-                  createInstance(Ci.nsIFileInputStream);
-    fstream.init(file, -1, 0, 0);
-
-    let cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].
-                  createInstance(Ci.nsIConverterInputStream);
-    cstream.init(fstream, "UTF-8", 0, 0);
-
-    let string  = {};
-    cstream.readString(-1, string);
-    cstream.close();
-    return string.value;    
-  }, 
 	
 	alertButtonNoFolder: function alertButtonNoFolder(button) {
 		let txt = button ? button.getAttribute('folderURI') : "";

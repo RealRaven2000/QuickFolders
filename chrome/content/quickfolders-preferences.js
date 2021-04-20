@@ -64,14 +64,7 @@ QuickFolders.Preferences = {
 
 		try {
 			const PS = this.service;
-			let folders = 
-			  (typeof PS.getStringPref === 'function') ?
-				PS.getStringPref(setting) :
-			  PS.getComplexValue(setting, Components.interfaces.nsISupportsString).data;
-			// fall back for old version
-			if (folders.length<3)
-				folders = PS.getStringPref("QuickFolders.folders");
-
+			let folders = PS.getStringPref(setting);
 			if(folders) {
 				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
 				let entries = JSON.parse(folders);
@@ -283,10 +276,7 @@ QuickFolders.Preferences = {
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 		  const url = "extensions.quickfolders.textQuickfoldersLabel",
 					  PS = this.service;
-			let customTitle = 
-			  (typeof PS.getStringPref === 'function') ?
-				this.service.getStringPref(url) :
-			  this.service.getComplexValue(url, Components.interfaces.nsISupportsString).data;
+			let customTitle = PS.getStringPref(url);
 			return renewalLabel || customTitle;
 		}
 		catch(e) { return renewalLabel || 'QuickFolders'; }
@@ -492,10 +482,7 @@ QuickFolders.Preferences = {
 		  
     try {
 		  const Ci = Components.interfaces, Cc = Components.classes;
-			prefString = 
-				this.service.getStringPref ?
-				this.service.getStringPref(key) :
-				this.service.getComplexValue(key, Ci.nsISupportsString).data;			
+			prefString = this.service.getStringPref(key);
     }
     catch(ex) {
       QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
@@ -565,12 +552,7 @@ QuickFolders.Preferences = {
 	},
   
   get supportsCustomIcon() {
-    switch(QuickFolders.Util.Application) {
-      case "Thunderbird":
-        return true;
-      default:
-        return false; // SeaMonkey and Postbox - custom icons not supported!
-    }
+    return true; // may be forbidden in future Thunderbird versions? 91+
   },
 	
 	unhideSmallIcons() {

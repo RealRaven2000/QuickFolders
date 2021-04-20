@@ -768,7 +768,7 @@ var QuickFolders = {
         let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
         let qfToolbar = QI.Toolbar;
         
-        if (qfToolbar) qfToolbar.style.display = 'none';
+        // if (qfToolbar) qfToolbar.style.display = 'none';
         // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
         let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
@@ -1388,56 +1388,22 @@ var QuickFolders = {
           
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
-					let platform = util.PlatformVersion;
-					if (typeof DeferredTask == 'undefined' && typeof Task != 'object') {  // legacy code. Remove once Task.jsm lands in Postbox
-						aFolder.createSubfolder(uriName, msgWindow);
+          let newFolderUri = aFolder.URI + "/" + uriName,
+              encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
+          util.getOrCreateFolder(
+            newFolderUri, 
+            Ci.nsMsgFolderFlags.Mail).then(
+              function createFolderCallback(f) {
+                let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
+                moveOrCopy(fld, currentURI);
+                
+              },
+              function failedCreateFolder(ex) {
+                util.logException('getOrCreateFolder() ', ex);	
+                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
+              }
+            );
 						
-						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
-						let server = aFolder.server.QueryInterface(Ci.nsIMsgIncomingServer),
-								timeOut = (server.type == 'imap') ? 
-													prefs.getIntPref('dragToCreateFolder.imap.delay') : 0;
-						// Ugly legacy code. Remove once Task lands in Postbox
-						let deferredMove = function deferredMove_Postbox(parentFolder) {
-							// if folder creation is successful, we can continue with calling the
-							// other drop handler that takes care of dropping the messages!
-							step = '2. find new sub folder - old platform code running on Gecko ' + platform;
-							util.logDebugOptional("dragToNew", step);
-							let newFolder = model.getMsgFolderFromUri(parentFolder.URI + "/" + isEncodeUri ? uriName : encodeURI(uriName), true);
-							
-							if (!newFolder) {
-								QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
-								if (QuickFolders.DeferredMoveCount<25) {  // async retry
-									setTimeout( function() { deferredMove(parentFolder); }, 500);
-								}
-								else { // we give up
-									QuickFolders.DeferredMoveCount = 0;
-								}
-								return;
-							}
-							menuItem.folder = newFolder.QueryInterface(Ci.nsIMsgFolder);
-							moveOrCopy(newFolder, currentURI);
-							// check bookmarks?
-						}						
-						setTimeout( function() { deferredMove(aFolder); }, timeOut);  // timeout for 1st try
-					}
-					else { // use async task for create folder and move
-					  let newFolderUri = aFolder.URI + "/" + uriName,
-                encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
-						util.getOrCreateFolder(
-							newFolderUri, 
-							Ci.nsMsgFolderFlags.Mail).then(
-								function createFolderCallback(f) {
-									let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
-									moveOrCopy(fld, currentURI);
-									
-								},
-								function failedCreateFolder(ex) {
-									util.logException('getOrCreateFolder() ', ex);	
-									util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
-								}
-							);
-						
-					}
 					return true;
 				}
 				catch(ex) {

@@ -413,8 +413,6 @@ QuickFolders.Interface = {
         current = !existsMsgDisplay ? null : gMessageDisplay.displayedMessage.folder;
     if (!existsMsgDisplay) {
       let txt = "No gMessageDisplay in current view";
-      if (util.Application=='Postbox')
-        txt += "\nSorry, but Postbox doesn't support navigation from single message window!";
       util.logToConsole(txt);
       return;
     }
@@ -436,14 +434,7 @@ QuickFolders.Interface = {
 			goDoCommand('button_previous');
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
-    } else
-      if (QuickFolders.Util.Application == 'Postbox'
-          &&
-          QuickFolders.Interface.CurrentTabMode == 'message')
-      {
-        // See mailWindow.js messagePaneOnClick(event)
-        // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
-      }
+    }
 	} ,
 
 	onGoNextMsg: function onGoNextMsg(button, isSingleMessage) {
@@ -456,14 +447,7 @@ QuickFolders.Interface = {
     // this will eventually call folderDisplay.navigate()
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
-    } else
-      if (QuickFolders.Util.Application == 'Postbox'
-          &&
-          QuickFolders.Interface.CurrentTabMode == 'message')
-      {
-        // See mailWindow.js messagePaneOnClick(event)
-        // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
-      }
+    }
 	} ,
 
 	onToggleNavigation: function onToggleNavigation(button) {
@@ -1240,27 +1224,6 @@ QuickFolders.Interface = {
 		else {
 			return this.currentActiveCategories;
 		}
-	} ,
-
-	// Postbox specific: build a string script for restoring tab categories
-  restoreSessionScript	: function restoreSessionScript() {
-    const util = QuickFolders.Util;
-		let tabmail = document.getElementById("tabmail"),
-		    tabInfoCount = util.getTabInfoLength(tabmail),
-				restoreScript = '';
-		for (let i = 0; i < tabInfoCount; i++) {
-			let info = util.getTabInfoByIndex(tabmail, i);
-			if (info && util.getTabMode(info) == util.mailFolderTypeName) {
-			  // found a folder tab, with categories
-				let cats = info.QuickFoldersCategory;
-				if (cats) {
-					// escape any single quotes in category string:
-					let escaped = cats.replace(/\\([\s\S])|(')/g, "\\$1$2");
-					restoreScript += "QuickFolders.Interface.restoreCategories(" + i + ", '" + escaped + "');";
-				}
-			}
-		}
-		return restoreScript;
 	} ,
 
 	// this is used on session restore currently only by Postbox
@@ -2711,21 +2674,17 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.onMarkAllRead()");
 		try {
 			let f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-      if (util.Application == 'Postbox')
-        f.markAllMessagesRead();
-      else {
-        f.markAllMessagesRead(msgWindow); // msgWindow  - global
-        if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
-          // iterate all folders and mark all children as read:
-          for (let folder of util.allFoldersIterator(false)) {
-            // check unread
-            if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
-              setTimeout(
-                function() { 
-                  folder.markAllMessagesRead(msgWindow);  // msgWindow  - global
-                }
-              )
-            }
+      f.markAllMessagesRead(msgWindow); // msgWindow  - global
+      if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
+        // iterate all folders and mark all children as read:
+        for (let folder of util.allFoldersIterator(false)) {
+          // check unread
+          if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
+            setTimeout(
+              function() { 
+                folder.markAllMessagesRead(msgWindow);  // msgWindow  - global
+              }
+            )
           }
         }
       }
@@ -2744,15 +2703,7 @@ QuickFolders.Interface = {
 		    result = null;
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
-
-		if (((util.Application == 'Postbox') || (util.Application == 'SeaMonkey'))
-			  && typeof MsgDeleteFolder === 'function'
-			 ) {
-			QuickFolders_MySelectFolder(folderButton.folder.URI);
-			MsgDeleteFolder();
-		}
-		else
-			this.globalTreeController.deleteFolder(folderButton.folder);
+    this.globalTreeController.deleteFolder(folderButton.folder);
 		if (parent)
 			QuickFolders_MySelectFolder(parent.URI)
 
@@ -2784,14 +2735,8 @@ QuickFolders.Interface = {
 		QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderUri = folder.URI;
 		QuickFolders.compactReportCommandType = 'emptyTrash';
-
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgEmptyTrash();
-		}
-		else {
-			this.globalTreeController.emptyTrash(folder);
-		}
+    this.globalTreeController.emptyTrash(folder);
+    
 		QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
 	} ,
 
@@ -2799,24 +2744,8 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-		if (typeof GetSelectedFolderURI === 'function') {
-		  // old Postbox Code
-			let getSelFunction;
-			try {
-			  // functions from folderPaneContext
-			  // Postbox hack: we pretend the tree folder was selected by temporarily replacing GetSelectedFolderURI
-			  getSelFunction = GetSelectedFolderURI;
-				GetSelectedFolderURI = function() { return folder.URI; };
-				deleteAllInFolder('emptyJunk');
-			}
-			catch(ex) { util.logException('Exception in onEmptyJunk ', ex);  };
-			if (getSelFunction)
-				GetSelectedFolderURI = getSelFunction;
-		}
-		else {
-			this.globalTreeController.emptyJunk(folder);
-		  this.compactFolder(folder, 'emptyJunk');
-		}
+    this.globalTreeController.emptyJunk(folder);
+    this.compactFolder(folder, 'emptyJunk');
 	} ,
 
 	onDeleteJunk: function onDeleteJunk(element) {
@@ -2833,12 +2762,7 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgFolderProperties();
-		}
-		else
-			this.globalTreeController.editVirtualFolder(folder);
+    this.globalTreeController.editVirtualFolder(folder);
 	} ,
 
 	onFolderProperties: function onFolderProperties(element) {
@@ -2852,12 +2776,7 @@ QuickFolders.Interface = {
 			return;
 		}
 
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgFolderProperties();
-		}
-		else
-			this.globalTreeController.editFolder(null,folder);
+    this.globalTreeController.editFolder(null,folder);
 	} ,
 
 	openExternal: function openExternal(aFile) {
@@ -2946,19 +2865,8 @@ QuickFolders.Interface = {
 				||
 				folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX))
 		{
-			if (typeof GetNewMsgs != "undefined") { // Tb, Sm
-   			if (folder.server.type != 'none')
-				  GetNewMsgs(folder.server, folder);
-			}
-			else if (typeof MsgGetMessage != "undefined") {  // Postbox
-			  let getM = GetSelectedMsgFolders;
-				try {
-				  GetSelectedMsgFolders = function() { let msg=[]; msg.push(folder); return msg; };
-					GetFolderMessages();
-				}
-				catch(ex) {}
-				GetSelectedMsgFolders = getM;
-			}
+      if (folder.server.type != 'none')
+        GetNewMsgs(folder.server, folder);
 		}
 	} ,
 
@@ -3050,22 +2958,13 @@ QuickFolders.Interface = {
 		if (util.getOrCreateFolder) {
 			QI.onCreateInstantFolder(folder);  // async function
 		}
-		else { // legacy code - uses "classic" dialog.
-			if ((util.Application == 'SeaMonkey') ||
-          (util.Application == 'Postbox' && typeof MsgNewFolder === 'function'))
-			{
-				QuickFolders_MySelectFolder(folder.URI);
-				MsgNewFolder(NewFolder); // NewFolder() = global function - doesn't exist in Postbox!
-			}
-			else {
-				QI.globalTreeController.newFolder(folder);
-			}
+		else { 
+      QI.globalTreeController.newFolder(folder);
 		}
 	},
 
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
-	// currently not used in Postbox build because it requires Tasc.async
 	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
@@ -3290,9 +3189,7 @@ QuickFolders.Interface = {
       }
     }
 
-		if (util.Application!="Postbox"
-		    &&
-		    prefs.getBoolPref("folderMenu.emptyJunk"))
+		if (prefs.getBoolPref("folderMenu.emptyJunk"))
 		{
 			// EmptyJunk
 			if (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
@@ -4860,11 +4757,8 @@ QuickFolders.Interface = {
 		}
 		util.logDebugOptional("interface.findFolder", "built menu.");
 
-		// special commands: if slash was entered, allow creating subfolders. Exclude _old_ Postbox.
-		if (parentPos>0 &&
-		    (util.Application!='Postbox' ||
-				 util.Application=='Postbox' && typeof Task === 'object')
-				) {
+		// special commands: if slash was entered, allow creating subfolders.
+		if (parentPos>0) {
 			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
 			// [Bug 26283] add matches from quickfolders (if named differently)
 			let isFound = false;
@@ -4883,7 +4777,7 @@ QuickFolders.Interface = {
 				if (matchPos == 0 && prefs.isDebugOption('quickMove')) debugger;
 				if (matchPos == 0
 				   &&
-				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri - Postbox can't understand this.
+				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri 
 					let nsIfolder = model.getMsgFolderFromUri(folderEntry.uri, false); // determine the real folder name
 					// this folder does not exist (under its real name) - add it!
 					nsIfolder.setStringProperty("isQuickFolder", true); // add this flag
@@ -5932,7 +5826,7 @@ QuickFolders.Interface = {
 			    paletteEntry = prefs.getIntPref('style.DragOver.paletteEntry'),
 			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
 			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			// for some reason this one is completely ignored by SeaMonkey and Postbox
+			
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover', 'background-image', dragOverGradient, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.dragover','color', dragOverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '[buttonover="true"]','color', dragOverColor, true);
@@ -6895,10 +6789,7 @@ QuickFolders.Interface = {
 		      service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
 					util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
-					sFolderString =
-					  util.PlatformVersion < 57.0 ?
-					  service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data :
-						service.getStringPref("QuickFolders.folders");
+					sFolderString = service.getStringPref("QuickFolders.folders");
 		let obj = JSON.parse(sFolderString),
         storedObj = { folders: obj }; // wrap into "folders" subobject, so we can add more settings
 

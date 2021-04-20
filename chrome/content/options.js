@@ -744,11 +744,6 @@ QuickFolders.Options = {
     
     if (Services.clipboard)
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-    else {
-      // Postbox code
-      let cb = Cc["@mozilla.org/widget/clipboard;1"].getService(Ci.nsIClipboard);
-      cb.getData(trans, cb.kGlobalClipboard);
-    }
 
     trans.getTransferData("text/unicode", str, strLength);
     // Tb 66 strLength doesn't have a value attribute
@@ -1398,11 +1393,6 @@ QuickFolders.Options = {
     
     if (Services.clipboard) 
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-    else {
-      // Postbox code
-      let cb = Cc["@mozilla.org/widget/clipboard;1"].getService(Ci.nsIClipboard);
-      cb.getData(trans, cb.kGlobalClipboard);
-    }
     trans.getTransferData("text/unicode", str, strLength);
     
     
@@ -1460,10 +1450,7 @@ QuickFolders.Options = {
 
     try {
       let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper),
-          sFolderString = 
-            util.PlatformVersion < 57.0 ?
-            service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data :
-            service.getStringPref("QuickFolders.folders");
+          sFolderString = service.getStringPref("QuickFolders.folders");
 
       util.logToConsole("Folder String: " & sFolderString);
       try {
@@ -1510,8 +1497,6 @@ QuickFolders.Options = {
       // "chrome://global/content/config.xul?debug"
     const name = "Preferences:ConfigManager";
     let uri = "chrome://global/content/config.xhtml";
-    if (util.Application == 'Postbox')
-      uri += "?debug";
 
     let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
         w = mediator.getMostRecentWindow(name),

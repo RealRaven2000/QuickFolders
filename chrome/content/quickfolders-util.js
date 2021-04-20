@@ -7,6 +7,7 @@
 
   END LICENSE BLOCK */
 
+ 
 if (typeof ChromeUtils.import == "undefined")
 	Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
 else
@@ -352,7 +353,7 @@ QuickFolders.Util = {
 	} ,
 
 	slideAlert: function slideAlert(title, text, icon) {
-		const util = QuickFolders.Util;
+/*		const util = QuickFolders.Util;
 		util.logDebug('slideAlert: ' + text);
 		setTimeout(function() {
 				try {
@@ -364,7 +365,8 @@ QuickFolders.Util = {
 				} catch(e) {
 				// prevents runtime error on platforms that don't implement nsIAlertsService
 				}
-			} , 0);
+			} , 0);*/
+		QuickFolders.Util.notifyTools.notifyBackground({func: "slideAlert", args: [title, text, icon]});
 	} ,
 	
 //	disableFeatureNotification: function disableFeatureNotification(featureName) {
@@ -2298,3 +2300,12 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 // 				"tag" : [Ci.nsMsgFilterAction.AddTag, "strValue", "tag"]
 // 				"move" : [Ci.nsMsgFilterAction.MoveToFolder, "folder"]
 // 			 };
+
+
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+Services.scriptloader.loadSubScript(
+  ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be").rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+  QuickFolders.Util,
+  "UTF-8"
+);

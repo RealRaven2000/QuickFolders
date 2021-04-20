@@ -16,8 +16,9 @@
     }
   },
   "background": {
-    "scripts": ["qf-background.js"]
+    "page": "qf-background.html"
   },
+  "permissions": ["notifications"],
   "experiment_apis": {
     "WindowListener": {
       "schema": "chrome/content/api/WindowListener/schema.json",
@@ -33,6 +34,15 @@
         "scopes": ["addon_parent"],
         "paths": [["LegacyPrefs"]],
         "script": "chrome/content/api/LegacyPrefs/implementation.js"
+
+      }
+    },
+    "NotifyTools": {
+      "schema": "chrome/content/api/NotifyTools/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["NotifyTools"]],
+        "script": "chrome/content/api/NotifyTools/implementation.js"
 
       }
     },

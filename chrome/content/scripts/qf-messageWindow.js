@@ -127,7 +127,67 @@ function onLoad(activatedWhileWindowOpen) {
 
 `, ["chrome://quickfolders/locale/overlay.dtd"]);
 
-   
+    // renamed QuickFolders-oneButtonPanel to QuickFolders-Toolbar to snatch css rules:
+    WL.injectElements(`   
+<vbox id="messagepanebox">    
+  <hbox id="QuickFolders-PreviewToolbarPanel-Single">
+    <hbox id="QuickFolders-Toolbar" insertbefore="QF-CurrentLeftSpacer">
+      <hbox id="QuickFolders-oneButtonPanel">
+          <toolbarbutton id="QuickFolders-quickMove"
+                           class="popupButton"
+                           tooltiptext="&qf.tooltip.quickMove;"
+                           label=""
+                           onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
+                           ondrop="QuickFolders.buttonDragObserver.drop(event);"
+                           ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
+                           ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
+                           context="QuickFolders-quickMoveMenu"
+                           />
+          <search-textbox id="QuickFolders-FindFolder" 
+                   oncommand="QuickFolders.Interface.findFolderName(this);"
+                   onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
+                   class="searchBox"
+                   type="search"
+                   collapsed="true"
+                   placeholder="&quickfolders.findFolder.placeHolder;"/>
+      </hbox>
+       
+      <popupset id="QuickFolders-QuickMovePopupSet">
+          <menupopup id="QuickFolders-quickMoveMenu">
+              <menuitem id="QuickFolders-quickMove-suspend"
+                        label="&quickfolders.quickMove.menu.suspend;"
+                        oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
+                        type="checkbox"
+                        />
+              <menuitem id="QuickFolders-quickMove-cancel"
+                        label="&quickfolders.quickMove.menu.cancel;"
+                        oncommand="QuickFolders.quickMove.cancel();" 
+                        collapsed="true"
+                        />
+              <menuitem id="QuickFolders-quickMove-showSearch"
+                        label="&quickfolders.quickMove.menu.showSearch;"
+                        oncommand="QuickFolders.quickMove.showSearch();" 
+                        />
+              <menuitem id="QuickFolders-quickMove-hideSearch"
+                        label="&quickfolders.quickMove.menu.hideSearch;"
+                        oncommand="QuickFolders.quickMove.hideSearch();" 
+                        collapsed="true"
+                        />
+          </menupopup>
+      </popupset> 
+
+      <vbox id="QuickFolders-Folders-Pane"  flex="1">
+          <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
+          
+          <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
+      </box>
+      
+      </vbox>
+    </hbox>
+  </hbox>
+</vbox>
+`, ["chrome://quickfolders/locale/overlay.dtd"]);
+        
     window.QuickFolders.Util.logDebug('Adding messageWindow...');
     // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
     window.QuickFolders.initDelayed(window);

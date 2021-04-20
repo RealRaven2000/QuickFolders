@@ -344,12 +344,9 @@ WL.injectElements(`
                                              class="icon"
                                              special="qfMsgFolderNavigation" 
                                              oncommand="QuickFolders.Interface.onClickThreadTools(event.target, event); return false;"
-                                             tooltiptext="&qf.tooltip.conversationRead;" />`
-                                             +
-                
-                  //          <!-- skip folder -->   (//comment is treated as node)
-                  `
-                           <toolbarbutton id="quickFoldersSkipFolder"
+                                             tooltiptext="&qf.tooltip.conversationRead;" />
+                                             
+                <toolbarbutton id="quickFoldersSkipFolder"
                                              class="icon"
                                              special="qfMsgFolderNavigation" 
                                              oncommand="QuickFolders.Interface.onSkipFolder(this);"

@@ -22,13 +22,9 @@
 				title="&qf.prefwindow.quickfolders.options;"
 				buttons="extra2,accept,cancel"
 				buttonlabelextra2="&qf.label.donate;"
-				onload="QuickFolders.Options.load();"
 				lightweightthemes="true"
 				>
-<!-- tooltiptextextra2="&qf.label.donateLink;" -->
-<!--  	ondialogaccept="QuickFolders.Options.accept();"
-				ondialogcancel="QuickFolders.Options.close();"
-				ondialogextra2="setTimeout(function() { QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); window.close(); });" -->
+<!-- all events are wired in options.load which is loaded at the end of options.js -->
 
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
@@ -1041,7 +1037,7 @@
             </div>
 
             <description class="niceFont"
-                         oncontextmenu="util.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
+                         oncontextmenu="options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
               &qf.description.versionhistory;
             </description>
             <div id="L3"
@@ -1278,13 +1274,13 @@
 								<hbox>
 									<button id="btnSaveConfig" 
 													label="&qf.storeConfig;"
-													oncommand="QI.storeConfig(Preferences, options.prefMap);" />
+													oncommand="options.storeConfig(Preferences, options.prefMap);" />
 									<spacer flex="1" />
 								</hbox>
 								<hbox>
 									<button id="btnLoadConfig" 
 													label="&qf.loadConfig;"
-													oncommand="QI.loadConfig(Preferences);"
+													oncommand="options.loadConfig(Preferences);"
 													disabled="true" />
 									<spacer flex="1" />
 								</hbox>

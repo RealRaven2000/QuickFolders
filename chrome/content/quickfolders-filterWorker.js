@@ -634,7 +634,7 @@ QuickFolders.FilterWorker = {
           // document.getElementById('quickFiltersPromoBox').collapsed = true;
         }
       }
-      // window.addEventListener('dialogaccept', function () { QuickFolders.Options.accept(); });
+      
       window.addEventListener('dialogcancel', function () { return QuickFolders.FilterWorker.cancelTemplate(); });
       window.addEventListener('dialogextra1', function (event) { 
         return QuickFolders.FilterWorker.acceptTemplate();

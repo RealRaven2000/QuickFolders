@@ -451,9 +451,7 @@ QuickFolders.Options = {
     panels.addEventListener('select', function(evt) { QuickFolders.Options.onTabSelect(panels,evt); } );
     options.configExtra2Button();
     
-    
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
-    
   },
   
   initBling: function initBling (tabbox) {
@@ -737,10 +735,7 @@ QuickFolders.Options = {
         strLength = {},
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
-    if (typeof ChromeUtils.import == "undefined") 
-      Components.utils.import('resource://gre/modules/Services.jsm');
-    else
-      var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
     
     if (Services.clipboard)
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
@@ -1385,11 +1380,7 @@ QuickFolders.Options = {
     util.popupProFeature("pasteFolderEntries");
         
     trans.addDataFlavor("text/unicode");
-    if (typeof ChromeUtils.import == "undefined") 
-      Components.utils.import('resource://gre/modules/Services.jsm');
-    else
-      var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
-    
+    var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
     
     if (Services.clipboard) 
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
@@ -1663,7 +1654,7 @@ QuickFolders.Options = {
     switch(validStatus) {
       case  "extend":
         let txtExtend = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
-        btnLicense.collapsed = false
+        btnLicense.collapsed = false;
         btnLicense.label = txtExtend; // text should be extend not renew
         btnLicense.setAttribute('tooltiptext',
           util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
@@ -1687,10 +1678,414 @@ QuickFolders.Options = {
           'quickfolders-search-options',
           'chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
           QuickFolders,
-          params).focus()    
+          params).focus();
+       
   },
-
   
+  /*******************************************
+  /**   moved from quickfolders-util.js     **
+  /*******************************************/
+	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
+		// adds a new option to about:config, that isn't there by default
+		if (confirm(textPrompt)) {
+			// create (non existent filter setting:
+			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
+			QuickFolders.Options.showAboutConfig(null, filter, true, false);
+		}
+	},
+	
+	storeConfig: function qf_storeConfig(preferences, prefMap) {
+		// see options.copyFolderEntries
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+		      service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+					util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
+					sFolderString = service.getStringPref("QuickFolders.folders");
+		let obj = JSON.parse(sFolderString),
+        storedObj = { folders: obj }; // wrap into "folders" subobject, so we can add more settings
+
+		// add more settings here! (should we include license string?)
+		if (preferences) {
+			let prefInfos = preferences.getAll();
+			storedObj.general = [];
+			storedObj.advanced = [];
+			storedObj.layout = [];
+			storedObj.userStyle = [];
+			let isLicense =  (util.Licenser.isExpired || util.Licenser.isValidated);
+			if (isLicense)
+				storedObj.premium = [];
+      util.logDebug("Storing configuration...")
+
+			for (let info of prefInfos) {
+        let originId = prefMap[info.id];
+				let node = { key: info.id, val: info.value, originalId: originId }
+        if (originId) {
+          switch (originId.substr(0,5)) {
+            case 'qfpg-':  // general
+              storedObj.general.push(node);
+              break;
+            case 'qfpa-':  // advanced
+              storedObj.advanced.push(node);
+              break;
+            case 'qfpl-':  // layout
+              storedObj.layout.push(node);
+              break;
+            case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+              if (isLicense)
+                storedObj.premium.push(node);
+              break;
+            default:
+              util.logDebug("Not storing - unknown preference category: " + node.key);
+          }
+        }
+        else {
+          util.logDebug("Not found - map entry for " + info.id);
+        }
+			}
+			// now save all color pickers.
+			let elements = document.getElementsByTagName('html:input');
+			for (let i=0; i<elements.length; i++) {
+				let element = elements[i];
+				if (element.getAttribute('type')=='color') {
+					let node = { elementInfo: element.getAttribute('elementInfo'), val: element.value };
+					storedObj.userStyle.push(node);
+				}
+			}
+      
+      // [issue 115] store selection for background dropdown
+      const bgKey = 'currentFolderBar.background.selection';
+      let backgroundSelection = prefs.getStringPref(bgKey);
+      storedObj.layout.push({
+        key: 'extensions.quickfolders.' + bgKey, 
+        val: backgroundSelection, 
+        originalId: 'qfpa-CurrentFolder-Selection'} 
+      );
+      
+		}
+
+		let prettifiedJson = JSON.stringify(storedObj, null, '  ');
+		this.fileConfig('save', prettifiedJson, 'QuickFolders-Config');
+    util.logDebug("Configuration stored.")
+	} ,
+
+	loadConfig: function qf_loadConfig(preferences) {
+    const prefs = QuickFolders.Preferences,
+          options = QuickFolders.Options,
+				  util = QuickFolders.Util;
+
+		function changePref(pref) {
+			let p = preferences.get(pref.key);
+			if (p) {
+				if (p._value != pref.val) {
+          // [issue 115] fix restoring of config values
+					util.logDebug("Changing [" + p.id + "] " + pref.originalId + " : " + pref.val);
+					p._value = pref.val;
+          let e = foundElements[pref.key];
+          if (e) {
+            switch(e.tagName) {
+              case 'checkbox':
+                e.checked = pref.val;
+                if (e.getAttribute('oncommand'))
+                  e.dispatchEvent(new Event("command"));
+                break;
+              case 'textbox': // legacy
+              case 'html:input':
+              case 'html:textarea':
+                e.value = pref.val;
+                if (e.id == "currentFolderBackground") {
+                  options.setCurrentToolbarBackgroundCustom();
+                }
+                break;
+              case 'menulist':
+                e.selectedIndex = pref.val;
+                let menuitem = e.selectedItem;
+                if (menuitem && menuitem.getAttribute('oncommand'))
+                  menuitem.dispatchEvent(new Event("command"));
+                break;
+              case 'radiogroup':
+                e.value = pref.val;
+                if (e.getAttribute('oncommand'))
+                  e.dispatchEvent(new Event("command"));
+              default:
+                debugger;
+                break;
+            }
+          }
+				}
+			}
+      else {
+        switch(pref.key) {
+          case 'extensions.quickfolders.currentFolderBar.background.selection':
+            if (pref.val && prefs.getStringPref(pref.key) != pref.val) {
+              options.setCurrentToolbarBackground(pref.val, true);
+            }
+            break;
+          default:
+            util.logDebug("loadConfig - unhandled preference: " + pref.key);
+        }
+      }
+		}
+    
+    function readData(dataString) {
+			const Cc = Components.classes,
+						Ci = Components.interfaces,
+						service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+            QI = QuickFolders.Interface;
+			try {
+				// removes prettyfication:
+				let config = dataString.replace(/\r?\n|\r/, ''),
+						data = JSON.parse(config),
+				    entries = data.folders,
+            isLayoutModified = false,
+						question = util.getBundleString('qf.prompt.restoreFolders',
+							"This will delete all QuickFolders tabs and replace with the items from the file." +
+							"\n{0} entries were read." +
+							"\nReplace tabs?");
+				if (prefs.getBoolPref('restoreConfig.tabs')
+				   && Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
+					for (let ent of entries) {
+						if (typeof ent.tabColor ==='undefined' || ent.tabColor ==='undefined')
+							ent.tabColor = 0;
+						// default the name!!
+						if (!ent.name) {
+							// retrieve the name from the folder uri (prettyName)
+							let f = QuickFolders.Model.getMsgFolderFromUri(ent.uri, false);
+							if (f)
+								ent.name = f.prettyName;
+							else
+								ent.name = util.getNameFromURI(ent.uri);
+						}
+					}
+					if (!entries.length)
+						entries=[];
+					// the following function calls this.updateMainWindow() which calls this.updateFolders()
+					util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
+					let invalidCount = 0,
+					    modelEntries = util.getMail3PaneWindow().QuickFolders.Model.selectedFolders;
+					// updateFolders() will append "invalid" property into entry of main model if folder URL cannot be found
+					for (let i=0; i<modelEntries.length; i++) {
+						if (modelEntries[i].invalid)
+							invalidCount++;
+					}
+
+					question = util.getBundleString('qf.prompt.loadFolders.confirm', "Accept the loaded Tabs?");
+					if (invalidCount) {
+						let wrn =
+						  util.getBundleString('qfInvalidTabCount', "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command.");
+						question = wrn.replace("{0}", invalidCount) + "\n" + question;
+					}
+					if (Services.prompt.confirm(window, "QuickFolders", question)) {
+						// store
+						prefs.storeFolderEntries(entries);
+					}
+					else {
+						// roll back
+						util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
+					}
+					delete data.folders; // remove this part to move on to the rest of settings
+				}
+        // ====================================================================
+        // [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
+        if (prefs.getBoolPref('restoreConfig.general') && data.general) {
+          for (let i=0; i<data.general.length; i++) {
+            changePref(data.general[i]);
+          }
+          isLayoutModified = true;
+        }
+        if (prefs.getBoolPref('restoreConfig.layout')) {
+          if (data.layout) {
+            for (let i=0; i<data.layout.length; i++) {
+              changePref(data.layout[i]);
+            }
+            isLayoutModified = true;
+          }
+          if (data.advanced) {
+            for (let i=0; i<data.advanced.length; i++) {
+              changePref(data.advanced[i]);
+            }
+          }
+
+          if (data.premium) {
+            for (let i=0; i<data.premium.length; i++) {
+              changePref(data.premium[i]);
+            }
+          }
+          // load custom colors and restore color pickers
+          // options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
+          if (data.userStyle) {
+            let elements = document.getElementsByTagName('html:input');
+            for (let i=0; i<elements.length; i++) {
+              let element = elements[i];
+              try {
+                if (element.getAttribute('type')=='color') {
+                  let elementInfo = element.getAttribute('elementInfo');
+                  // find the matching entry from json file
+                  for(let j=0; j<data.userStyle.length; j++) {
+                    let jnode = data.userStyle[j];
+                    if (jnode.elementInfo == elementInfo) {
+                      // only change value if nevessary
+                      if (element.value != jnode.val) {
+                        element.value = jnode.val; // change color picker itself
+                        util.logDebug("Changing [" + elementInfo + "] : " + jnode.val);
+                        let info = jnode.elementInfo.split('.');
+                        if (info.length == 2)
+                          options.styleUpdate(
+                            info[0],   // element name e..g. ActiveTab
+                            info[1],   // element style (color / background-color)
+                            jnode.val,
+                            element.getAttribute('previewLabel')); // preview tab / label
+                      }
+                      break;
+                    }
+                  }
+                  // QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue)
+                }
+              }
+              catch(ex) {
+                util.logException("Loading layout setting[" + i + "] (color picker " + element.id + ") failed:", ex);
+              }
+            }
+          }
+
+        }
+        if (isLayoutModified) { // instant visual feedback
+          // QI.updateMainWindow(true);
+          QI.updateObserver(); //  update the main window layout
+        }
+        
+			}
+			catch (ex) {
+				util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
+				Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
+			}
+		}
+    // find all controls with bound preferences
+    let myprefElements = document.querySelectorAll("[preference]"),
+		    foundElements = {};
+		for (let myprefElement of myprefElements) {
+      let prefName = myprefElement.getAttribute("preference");
+			foundElements[prefName] = myprefElement;
+		}	
+		this.fileConfig('load', null, null, readData); // load does the reading itself?
+	} ,
+
+	fileConfig: function qf_fileConfig(mode, jsonData, fname, readFunction) {
+		const Cc = Components.classes,
+          Ci = Components.interfaces,
+          util = QuickFolders.Util,
+					prefs = QuickFolders.Preferences,
+					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
+		util.popupProFeature(mode + "_config"); // save_config, load_config
+    let filterText,
+		    fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
+        fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
+
+		let dPath = prefs.getStringPref('files.path');
+		if (dPath) {
+			let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+			defaultPath.initWithPath(dPath);
+			if (defaultPath.exists()) { // avoid crashes if the folder has been deleted
+				fp.displayDirectory = defaultPath; // nsILocalFile
+				util.logDebug("Setting default path for filepicker: " + dPath);
+			}
+			else {
+				util.logDebug("fileFilters()\nPath does not exist: " + dPath);
+			}
+		}
+		fp.init(window, "", fileOpenMode); // second parameter: prompt
+    filterText = util.getBundleString("qf.fpJsonFile","JSON File");
+    fp.appendFilter(filterText, "*.json");
+    fp.defaultExtension = 'json';
+    if (mode == 'save') {
+			let fileName = fname;
+/*
+			if (isDateStamp) {
+				let d = new Date(),
+				    timeStamp = d.getFullYear() + "-" + twoDigs(d.getMonth()+1) + "-" + twoDigs(d.getDate()) + "_" + twoDigs(d.getHours()) + "-" + twoDigs(d.getMinutes());
+				fileName = fname + "_" + timeStamp;
+			}
+			*/
+      fp.defaultString = fileName + '.json';
+    }
+
+    let fpCallback = function fpCallback_FilePicker(aResult) {
+      if (aResult == Ci.nsIFilePicker.returnOK || aResult == Ci.nsIFilePicker.returnReplace) {
+        if (fp.file) {
+          let path = fp.file.path;
+					// Store last Path
+					util.logDebug("File Picker Path: " + path);
+					let lastSlash = path.lastIndexOf("/");
+					if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
+					let lastPath = path.substr(0, lastSlash);
+					util.logDebug("Storing Path: " + lastPath);
+					prefs.setStringPref('files.path', lastPath);
+
+					const {OS} = (typeof ChromeUtils.import == "undefined") ?
+						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
+						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+
+          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+          switch (mode) {
+            case 'load':
+              let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
+              promiseRead.then(
+                function readSuccess(data) {
+                  readFunction(data);
+                },
+                function readFailed(ex) {
+                  util.logDebug ('read() - Failure: ' + ex);
+                }
+              )
+              break;
+            case 'save':
+              // if (aResult == Ci.nsIFilePicker.returnReplace)
+              let promiseDelete = OS.File.remove(path);
+              // defined 2 functions
+              util.logDebug ('Setting up promise Delete');
+              promiseDelete.then (
+                function saveJSON() {
+                  util.logDebug ('saveJSON()…');
+                  // force appending correct file extension!
+                  if (!path.toLowerCase().endsWith('.json'))
+                    path += '.json';
+                  let promiseWrite = OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+                  promiseWrite.then(
+                    function saveSuccess(byteCount) {
+                      util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
+                    },
+                    function saveReject(fileError) {  // OS.File.Error
+                      util.logDebug ('bookmarks.save error:' + fileError);
+                    }
+                  );
+                },
+                function failDelete(fileError) {
+                  util.logDebug ('OS.File.remove failed for reason:' + fileError);
+                }
+              );
+              break;
+          }
+        }
+      }
+    }
+
+		if (fp.open)
+			fp.open(fpCallback);
+  	else { // Postbox
+		  fpCallback(fp.show());
+  	}
+
+    return true;
+ 		
+	},
+  
+
 }
+
+window.document.addEventListener('DOMContentLoaded', 
+  QuickFolders.Options.load.bind(QuickFolders.Options) , 
+  { once: true });
+  
+
 
 

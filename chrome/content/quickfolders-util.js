@@ -357,15 +357,6 @@ QuickFolders.Util = {
 //		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
 //	} ,
   
-	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
-		// adds a new option to about:config, that isn't there by default
-		if (confirm(textPrompt)) {
-			// create (non existent filter setting:
-			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
-			QuickFolders.Options.showAboutConfig(null, filter, true, false);
-		}
-	},
-	
 	onCloseNotification: function onCloseNotification(eventType, notifyBox, notificationKey) {
 		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
 		window.setTimeout(function() {

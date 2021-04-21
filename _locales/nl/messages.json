@@ -1,227 +1,1707 @@
 {
-  "extensionName": {
-    "message": "QuickFolders",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Bookmark your favorite mail folders in Thunderbird.",
-    "description": "Description of the extension."
-  },
-
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
-  },
-  
-  "window-title": {
-    "message": "Welkom bij $addonName$",
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+    "account.label": {
+        "message": "Selecteer account:"
+    },
+    "active-version-info": {
+        "description": "The boldStart and boldEnd parts will be replaced with html tags",
+        "message": "U voert nu {boldStart} versie $addonVer$ {boldEnd} uit op Thunderbird $appVer$.",
+        "placeholders": {
+            "addonVer": {
+                "content": "$1",
+                "example": "Version 1.1"
+            },
+            "appVer": {
+                "content": "$2",
+                "example": "78.0b4"
+            }
+        }
+    },
+    "addon-authors-struggle": {
+        "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
+    },
+    "btn-extend-license": {
+        "message": "Ik wil mijn licentie met een jaar verlengen"
+    },
+    "btn-renew-license": {
+        "message": "Ik wil mijn licentie verlengen"
+    },
+    "btn-want-a-license": {
+        "message": "Ik wil een vergunning kopen"
+    },
+    "btn-want-to-donate": {
+        "message": "Ik wil helpen met een eenmalige donatie."
+    },
+    "btnApply": {
+        "message": "Toepassen"
+    },
+    "btnCategory": {
+        "message": "Categorieën"
+    },
+    "btnCategory.tooltip": {
+        "message": "Tabbladcategorieën definiëren"
+    },
+    "btnReset": {
+        "message": "Terugzetten naar standaardwaarden"
+    },
+    "buyDomainLicense.button": {
+        "message": "Een domeinlicentie kopen"
+    },
+    "buyDomainLicense.instruct": {
+        "message": "Hebt u een licentie nodig voor een bedrijf met meer dan vijf gebruikers? Een domeinlicentie zal goedkoper zijn:"
+    },
+    "buyLicense.instruct": {
+        "message": "Hebt u een licentie voor uzelf nodig? Neem een persoonlijke licentie. Deze is aan uw persoonlijke e-mailadres gekoppeld en kan bij verschillende installaties worden gebruikt."
+    },
+    "buyPersonalLicense.button": {
+        "message": "Een persoonlijke licentie kopen!"
+    },
+    "chkComposerSubfolders": {
+        "message": "Ook op submappen toepassen"
+    },
+    "chkHideFromQuickJump": {
+        "message": "Weglaten uit quickJump / quickMove"
+    },
+    "chkHideFromQuickJump.tooltip": {
+        "message": "Deze map en onderliggende ervan in quickJump- / quickMove-resultaten weglaten"
+    },
+    "chkIgnoreCounts": {
+        "message": "Aantal berichten verbergen"
+    },
+    "chkIgnoreCounts.tooltip": {
+        "message": "Nooit aantal berichten weergeven"
+    },
+    "chkIgnoreUnread": {
+        "message": "Status Ongelezen verbergen"
+    },
+    "chkIgnoreUnread.tooltip": {
+        "message": "Nooit vette of aantal ongelezen berichten weergeven, zelfs niet als er ongelezen berichten zijn"
+    },
+    "chkSetMailsUnread": {
+        "message": "E-mail markeren als ongelezen"
+    },
+    "chkSetMailsUnread.tooltip": {
+        "message": "Als u berichten naar deze map verplaatst, worden ze als ongelezen gemarkeerd."
+    },
+    "cost-of-independence": {
+        "message": "Softwareontwikkeling kost tijd en geld - in tegenstelling tot veel platform-apps worden add-ons niet geschreven door grote bedrijven en worden ze op geen enkele manier gesponsord door Mozilla."
+    },
+    "cssBackground": {
+        "message": "Achtergrond"
+    },
+    "cssBackground.tooltip": {
+        "message": "Voer een CSS-achtergrond in, bv. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    },
+    "cssColor": {
+        "message": "Tekstkleur"
+    },
+    "cssColor.tooltip": {
+        "message": "Voer een CSS-kleur in, bv. rgba(100,20,20,0.8)"
+    },
+    "defaultAccountAddress.value": {
+        "message": "Standaardidentiteit voor account"
+    },
+    "domainLicense.email": {
+        "message": "We nemen via dit e-mailadres binnen twee werkdagen contact met u op om uw domeinlicentie te genereren. Voer de domeinnaam voor de licentie in op de volgende pagina."
+    },
+    "domainLicense.header": {
+        "message": "Licentie voor e-maildomein"
+    },
+    "domainLicense.instruct": {
+        "message": "De licentie is gebonden aan het domein van uw bedrijf. De licentie staat gebruikers met e-mailadressen onder deze domeinnaam toe om QuickFolders Pro te gebruiken. Als u bijvoorbeeld de domeinnaam ‘abc.com’ invoert, mogen e-mailgebruikers zoals fred@abc.com, martha@abc.com, mike.doe@abc.com etc. de licentie gebruiken. Het maximale aantal individuele gebruikers is het aantal dat u op het eerste scherm hebt ingevoerd."
+    },
+    "domainLicense.validate": {
+        "message": "Zorg ervoor dat u de domeinnaam *exact hetzelfde* invoert zoals in de e-mailadressen van uw bedrijf (het deel *na* het teken @), aangezien dit zal worden gebruikt om de e-mailadressen van uw gebruikers te autoriseren."
+    },
+    "donate": {
+        "message": "Help mee met een eenmalige donatie."
+    },
+    "donate-heading": {
+        "message": "Help door te doneren!"
+    },
+    "email.label": {
+        "message": "E-mailadres:"
+    },
+    "enterLicenseKey.button": {
+        "message": "Licentiesleutel invoeren…"
+    },
+    "enterLicenseKey.tooltip": {
+        "message": "Voer de licentiesleutel in die u via e-mail hebt ontvangen."
+    },
+    "extend-your-license": {
+        "message": "Overweeg om uw licentie met een jaar te verlengen."
+    },
+    "extensionDescription": {
+        "description": "Description of the extension.",
+        "message": "Bookmark your favorite mail folders in Thunderbird."
+    },
+    "extensionName": {
+        "description": "Name of the extension.",
+        "message": "QuickFolders"
+    },
+    "extensions.quickfolders@curious.be.description": {
+        "message": "Maak bladwijzers voor uw favoriete e-mailmappen in Thunderbird."
+    },
+    "firstName.label": {
+        "message": "Voornaam:"
+    },
+    "freeLicense": {
+        "message": "Als u onlangs aan het QuickFolders-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met mij op via het tabblad Ondersteuning in de QuickFolders-opties."
+    },
+    "fromAddress": {
+        "message": "Van:"
+    },
+    "fromAddress.tooltip": {
+        "message": "Standaardidentiteit bij het opstellen van e-mails"
+    },
+    "getQuickFolders": {
+        "message": "QuickFolders Pro kopen"
+    },
+    "grpComposer": {
+        "message": "Standaard-e-mailvelden"
+    },
+    "grpCustomCSS": {
+        "message": "CSS aanpassen"
+    },
+    "grpTabBehavior": {
+        "message": "Geavanceerd Tabbladgedrag"
+    },
+    "heading-installed": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ succesvol geïnstalleerd",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "heading-updated": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ Succesvol bijgewerkt",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "intro": {
+        "message": "Een jaarlicentie voor QuickFolders Pro geeft u een jaar lang alle premiumfuncties. Hierdoor kunnen we het product tevens verder ondersteunen en laten groeien en omzetten naar iets wat nog geweldiger is."
+    },
+    "label-remind-me": {
+        "message": "Herinner me er over $countDays$ dagen opnieuw aan.",
+        "placeholders": {
+            "countDays": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    },
+    "lastName.label": {
+        "message": "Achternaam:"
+    },
+    "lblCustomPalette": {
+        "message": "Aangepast palet:"
+    },
+    "license-is-extended": {
+        "description": "Shown if license expires more than a year from now",
+        "message": "Bedankt voor het onlangs verlengen van uw licentie of als u heeft gedoneerd. Omdat u heeft geholpen om deze add-on toekomstbestendig te maken, kunt u dit venster eenvoudig sluiten."
+    },
+    "licenseWindow.title": {
+        "message": "QuickFolders Pro-licentie"
+    },
+    "mozillas-basic-platform": {
+        "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
+    },
+    "notificationTitle": {
+        "description": "Title of the click notification.",
+        "message": "Click notification"
+    },
+    "ongoing-work": {
+        "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "purchase-a-license": {
+        "message": "Koop een licentie."
+    },
+    "purchase-heading": {
+        "message": "Een licentie kopen!"
+    },
+    "qf.accounts": {
+        "message": "Accounts"
+    },
+    "qf.alert.pasteFolders.formatErr": {
+        "message": "Kon tabbladen niet aanmaken. Zie Extra > Foutconsole voor meer details."
+    },
+    "qf.backupAndRestore": {
+        "message": "Back-up / Herstel"
+    },
+    "qf.btn.applyPosition": {
+        "message": "Positiewaarde toepassen!"
+    },
+    "qf.button.add": {
+        "message": "Toevoegen!"
+    },
+    "qf.button.configureTooltips": {
+        "message": "Tooltips configureren…"
+    },
+    "qf.button.currentFolderBackground.set": {
+        "message": "instellen"
+    },
+    "qf.button.default": {
+        "message": "Standaardwaarden"
+    },
+    "qf.button.defaultcolors": {
+        "message": "Standaardkleuren"
+    },
+    "qf.button.deleteselectedcategory": {
+        "message": "Geselecteerde categorie verwijderen"
+    },
+    "qf.button.down": {
+        "message": "Omhoog"
+    },
+    "qf.button.pasteLicense": {
+        "message": "plakken"
+    },
+    "qf.button.rename": {
+        "message": "Hernoemen"
+    },
+    "qf.button.reorderButtonBottom": {
+        "message": "Onderaan"
+    },
+    "qf.button.reorderButtonBottom.accessKey": {
+        "message": "d"
+    },
+    "qf.button.reorderButtonBottom.toolTip": {
+        "message": "voert filter na alle overige uit"
+    },
+    "qf.button.reorderButtonTop": {
+        "message": "Bovenaan"
+    },
+    "qf.button.reorderButtonTop.accessKey": {
+        "message": "o"
+    },
+    "qf.button.reorderButtonTop.toolTip": {
+        "message": "Filter herschikken zodat dit voor alle overige wordt uitgevoerd"
+    },
+    "qf.button.up": {
+        "message": "Omlaag"
+    },
+    "qf.button.validateLicense": {
+        "message": "valideren"
+    },
+    "qf.caption.currentFolderBackground": {
+        "message": "Werkbalkachtergrond van huidige map"
+    },
+    "qf.categories.supportMultiple": {
+        "message": "Ondersteuning voor het selecteren van meerdere tabbladcategorieën"
+    },
+    "qf.categories.supportMultiple.tooltip": {
+        "message": "Gebruik de Shift-toets om meer dan één categorie in het vervolgkeuzemenu te selecteren."
+    },
+    "qf.checkbox.autoFocusPreview": {
+        "message": "Focus op berichtenlijst leggen bij wisselen van tabblad"
+    },
+    "qf.checkbox.autoHideToolbar": {
+        "message": "QuickFolders verbergen wanneer onnodig"
+    },
+    "qf.checkbox.autoHideToolbar.tooltip": {
+        "message": "Vouwt de werkbalk samen in speciale tabbladen zoals agenda, inhoud, add-onbeheerder."
+    },
+    "qf.checkbox.currentFolder.closeButton": {
+        "message": "Knop Sluiten"
+    },
+    "qf.checkbox.currentFolder.show": {
+        "message": "Werkbalk weergeven"
+    },
+    "qf.checkbox.currentfolder.lightweight": {
+        "message": "integreren met lichtgewicht thema"
+    },
+    "qf.checkbox.debug": {
+        "message": "Foutopsporingsmodus"
+    },
+    "qf.checkbox.debug.tooltip": {
+        "message": "Kik met rechts op dit selectievakje voor geavanceerde foutopsporingsopties"
+    },
+    "qf.checkbox.displaylabel": {
+        "message": "Het label ‘QuickFolders’ in de werkbalk weergeven"
+    },
+    "qf.checkbox.displaylabel.tooltip": {
+        "message": "Klik met rechts om de tekst van dit label te wijzigen"
+    },
+    "qf.checkbox.enableTransitions": {
+        "message": "CSS-overgangen inschakelen"
+    },
+    "qf.checkbox.enableTransitions.tooltip": {
+        "message": "Toont vloeiende overgangen tussen de verschillende aspecten van de tabbladkleuren."
+    },
+    "qf.checkbox.hideCategoryBox": {
+        "message": "Categorieën samenvouwen"
+    },
+    "qf.checkbox.hideCategoryBox.tooltip": {
+        "message": "Minimaliseert het menu van categorieën om minder plaats in te nemen."
+    },
+    "qf.checkbox.highlightNewMail": {
+        "message": "Mappen met nieuwe berichten accentueren"
+    },
+    "qf.checkbox.menus.dragToNewFolder": {
+        "message": "Naar nieuwe submap slepen"
+    },
+    "qf.checkbox.menus.emptyJunk": {
+        "message": "Map Ongewenst leegmaken"
+    },
+    "qf.checkbox.menus.emptyTrash": {
+        "message": "Prullenbak leegmaken"
+    },
+    "qf.checkbox.menus.getMailForInbox": {
+        "message": "Berichten ophalen (e-mailaccounts)"
+    },
+    "qf.checkbox.menus.getMailForNews": {
+        "message": "Berichten ophalen (nieuwsaccounts)"
+    },
+    "qf.checkbox.menus.markAllRead": {
+        "message": "Map als gelezen markeren"
+    },
+    "qf.checkbox.menus.markAllReadRecursive": {
+        "message": "Map als gelezen markeren (recursief)"
+    },
+    "qf.checkbox.quickCopy": {
+        "message": "quickCopy - e-mail naar een map kopiëren met sneltoets:"
+    },
+    "qf.checkbox.quickCopy.tip": {
+        "message": "Sneltoets voor het slepen van e-mailberichten naar de knop quickCopy voor het snelste kopiëren naar een map via invoer van naam."
+    },
+    "qf.checkbox.quickJump": {
+        "message": "quickJump - mappen zoeken met sneltoets:"
+    },
+    "qf.checkbox.quickJump.tip": {
+        "message": "Sneltoets voor aanklikken van de knop quickJump voor de snelste navigatie via naamingave."
+    },
+    "qf.checkbox.quickMove": {
+        "message": "quickMove - e-mail naar een map verplaatsen met sneltoets:"
+    },
+    "qf.checkbox.quickMove.tip": {
+        "message": "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in een map via invoer van naam."
+    },
+    "qf.checkbox.quickmove.autofill": {
+        "message": "Naam van laatst gebruikte map invoegen"
+    },
+    "qf.checkbox.quickmove.autofill.tip": {
+        "message": "De laatste met succes gebruikte map wordt ingevoegd. Druk op Enter om deze te gebruiken, of typ iets anders voor andere bestemmingen."
+    },
+    "qf.checkbox.readingList": {
+        "message": "Leeslijst"
+    },
+    "qf.checkbox.readingList.tooltip": {
+        "message": "Een lijst met e-mailberichten die later moeten worden gelezen. Versleep uw belangrijke berichten naar deze knop."
+    },
+    "qf.checkbox.shadows": {
+        "message": "schaduwen"
+    },
+    "qf.checkbox.shift": {
+        "message": "Shift"
+    },
+    "qf.checkbox.showCountInSubFolders": {
+        "message": "Ook totalen voor submappen weergeven"
+    },
+    "qf.checkbox.showCountInSubFolders.tooltip": {
+        "message": "Deze worden weergeven met een ‘+’ naast de aantallen; onderliggende ongelezen e-mailberichten maken het tabblad ook vet als de bovenstaande optie is geactiveerd"
+    },
+    "qf.checkbox.showFilterButton": {
+        "message": "Knop ‘Filters maken’"
+    },
+    "qf.checkbox.showFilterButton.tooltip": {
+        "message": "U kunt ook filters aanmaken middels het QuickFolders-contextmenu."
+    },
+    "qf.checkbox.showFolderNavigation": {
+        "message": "Mapnavigatieknoppen"
+    },
+    "qf.checkbox.showIconButtons": {
+        "message": "Pictogramknoppen aanpassen"
+    },
+    "qf.checkbox.showIcons": {
+        "message": "Pictogrammen weergeven (Postvak IN, Verzonden, Ongewenst, Prullenbak, Concepten, Archieven, Sjablonen)"
+    },
+    "qf.checkbox.showMailFolderCommands": {
+        "message": "E-mailmapopdrachten"
+    },
+    "qf.checkbox.showMessageNavigation": {
+        "message": "Berichtnavigatieknoppen"
+    },
+    "qf.checkbox.showNewMailItalics": {
+        "message": "Tabbladen met nieuwe e-mailberichten cursief weergeven"
+    },
+    "qf.checkbox.showNonEmptyItalics": {
+        "message": "Tabbladen voor mappen die berichten bevatten schuingedrukt weergeven"
+    },
+    "qf.checkbox.showQuickMove": {
+        "message": "Knop snelVerplaatsen"
+    },
+    "qf.checkbox.showQuickMove.tooltip": {
+        "message": "De knop snelVerplaatsen kan worden gebruikt om e-mailberichten naar een aangewezen bestemmingsmap te verplaatsen. U kunt berichten uit meerdere mappen verzamelen. Zodra u de gewenste berichten hierin hebt staan, voert u de naam van de bestemmingsmap in in het zoekveld."
+    },
+    "qf.checkbox.showRecentButton": {
+        "message": "Knop Recente mappen"
+    },
+    "qf.checkbox.showRecentTab": {
+        "message": "Tabblad Recente mappen weergeven"
+    },
+    "qf.checkbox.showRecentTab.tooltip": {
+        "message": "Klik met rechts voor instellingen"
+    },
+    "qf.checkbox.showSubfolders": {
+        "message": "Submappen uitvouwen in pop-upmenu’s"
+    },
+    "qf.checkbox.showTotalMessageCount": {
+        "message": "Totale aantal berichten op de mapknop weergeven"
+    },
+    "qf.checkbox.showUnreadBold": {
+        "message": "Tabbladen voor mappen met ongelezen berichten vet weergeven"
+    },
+    "qf.checkbox.showUnreadMessageCount": {
+        "message": "Aantal ongelezen berichten op de mapknop weergeven"
+    },
+    "qf.checkbox.showshortcutnumber": {
+        "message": "Sneltoetsnummer op maplabels weergeven"
+    },
+    "qf.checkbox.singleMessage.currentFolder.show": {
+        "message": "…ook in losse berichtvensters"
+    },
+    "qf.checkbox.singleMessage.currentFolder.tooltip": {
+        "message": "Werkbalk van huidige map tonen in het venster dat opent wanneer u een e-mailbericht in een nieuw venster opent"
+    },
+    "qf.checkbox.singleMessageTab.currentFolder.show": {
+        "message": "Werkbalk in losse berichtentabbladen"
+    },
+    "qf.checkbox.skipFolder": {
+        "message": "Ongelezen map overslaan - sneltoets gebruiken: SHIFT +"
+    },
+    "qf.checkbox.skipFolder.tip": {
+        "message": "Sneltoets voor het springen naar de volgende ongelezen map."
+    },
+    "qf.checkbox.sortMenusAlpha": {
+        "message": "Alfabetische sortering van menu’s met submappen afdwingen"
+    },
+    "qf.checkbox.sortMenusAlpha.tooltip": {
+        "message": "Gebruik deze optie alleen als uw e-mailclient de submappen niet juist sorteert."
+    },
+    "qf.checkbox.storeConfig.general": {
+        "message": "Algemene instellingen opnemen"
+    },
+    "qf.checkbox.storeConfig.layout": {
+        "message": "Geeavanceerd en opmaak opnemen"
+    },
+    "qf.checkbox.storeConfig.tabs": {
+        "message": "QuickFolders-tabbladen opnemen"
+    },
+    "qf.checkbox.tabMenuIcon": {
+        "message": "Pictogram Werkbalkmenu"
+    },
+    "qf.checkbox.tabMenuIcon.tooltip": {
+        "message": "Dit menu kan ook worden aangeroepen door rechts te klikken op de werkbalk zelf"
+    },
+    "qf.checkbox.transparent": {
+        "message": "transparant"
+    },
+    "qf.checkbox.useNavigationShortcuts": {
+        "message": "Alt+Links / Alt+Rechts voor vorige / volgende tabblad"
+    },
+    "qf.checkbox.usePalette": {
+        "message": "Palet gebruiken"
+    },
+    "qf.checkbox.useRebuildShortcut": {
+        "message": "Tabbladen opnieuw opbouwen met sneltoets: Ctrl + Alt +"
+    },
+    "qf.checkbox.usekeyboardshortcuts": {
+        "message": "Sneltoetsen gebruiken (Alt + 1 t/m Alt + 9)"
+    },
+    "qf.checkbox.usekeyboardshortcutsCTRL": {
+        "message": "Ctrl in plaats van Alt gebruiken"
+    },
+    "qf.continueFilter.label": {
+        "message": "Filter maken…"
+    },
+    "qf.continueFilter.shortcut": {
+        "message": "F"
+    },
+    "qf.copyfolders": {
+        "message": "Tabbladen kopiëren"
+    },
+    "qf.copyfolders.tooltip": {
+        "message": "De configuratie van QuickFolders-tabbladen naar het klembord kopiëren"
+    },
+    "qf.currentFolderBackground.custom": {
+        "message": "aangepast"
+    },
+    "qf.currentFolderBackground.dark": {
+        "message": "donker"
+    },
+    "qf.currentFolderBackground.default": {
+        "message": "standaard"
+    },
+    "qf.currentFolderBackground.translucent": {
+        "message": "doorschijnend"
+    },
+    "qf.currentfolder.leftSpacer": {
+        "message": "Inspringing links:"
+    },
+    "qf.currentfolder.rightSpacer": {
+        "message": "Inspringing rechts:"
+    },
+    "qf.description.bugzilla": {
+        "message": "Gebruik Bugzilla voor alle officiële functieaanvragen en bugrapporten"
+    },
+    "qf.description.categoryusage": {
+        "message": "U kunt dit tabblad in een categorie zetten (bv. ‘Werk’, ‘Privé’, …)."
+    },
+    "qf.description.changeCategory": {
+        "message": "Klik met rechts op een tabblad om het in een of meer categorieën in te delen. Maakt een filter voor categorieën links van de tabbladen."
+    },
+    "qf.description.contactMe": {
+        "message": "U kunt ook persoonlijk contact met mij opnemen via axelg@gofree.indigo.ie:"
+    },
+    "qf.description.donate": {
+        "message": "Als QuickFolders u net zo bevalt als ons en de ontwikkeling ervan wilt steunen, kunt u wat geld doneren voor de verdere ontwikkeling van QuickFolders."
+    },
+    "qf.description.dragToAdd": {
+        "message": "Sleep e-mailmappen over een lege ruimte van de werkbalk om een nieuwe QuickFolder aan te maken (werkt als een snelkoppeling/alias). Sleep berichten naar de QuickFolder om ze naar de bijbehorende map te verplaatsen (of te kopiëren m.b.v. de modifier-toets). Klik op de QuickFolder om naar de bijhorende map te navigeren."
+    },
+    "qf.description.dragToPopup": {
+        "message": "Sleep berichten naar het QuickFolder-pop-upmenu om ze naar submappen te verplaatsen."
+    },
+    "qf.description.dragToPosition": {
+        "message": "Sleep QuickFolders zijwaarts om hun posities te wijzigen. Klik met rechts op de QuickFolder om het contextmenu te openen; via selectie kunt u naar submappen springen. ‘Tabblad hernoemen’ wijzigt het label van de QuickFolder. ‘Tabblad verwijderen’ verwijdert de QuickFolder (niet de echte e-mailmap)."
+    },
+    "qf.description.dragexplain": {
+        "message": "U kunt de tabbladen ook verslepen! Versleep het tabblad naar een ander om het ervoor of erna te plaatsen."
+    },
+    "qf.description.editcategory": {
+        "message": "Selecteer een bestaande categorie door erop te dubbelklikken, of voeg hieronder een nieuwe categorie toe."
+    },
+    "qf.description.experimentalItems": {
+        "message": "De volgende items zijn experimenteel; hopelijk werken ze in de volgende versie!!"
+    },
+    "qf.description.languages": {
+        "message": "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op BabelZilla:"
+    },
+    "qf.description.linkNote": {
+        "message": "Bezoek de startpagina van QuickFolders voor een gedetailleerde handleiding, tips en veelgestelde vragen:"
+    },
+    "qf.description.multicategory": {
+        "message": "Om een map aan meer dan één categorie toe te voegen: houd SHIFT of CONTROL ingedrukt tijdens het selecteren van items."
+    },
+    "qf.description.pulldown": {
+        "message": "De QuickFolders-werkbalk zal een pulldownmenu weergeven, waarmee u uw tabbladen op categorie kunt filteren."
+    },
+    "qf.description.rightClickOptions": {
+        "message": "Klik met rechts op een lege ruimte om het optiesmenu te openen. In het optiesmenu kunt u de ingebouwde stijl (kleiner) of de vlakke stijl (duidelijker; ondersteunt sleep-indicator) selecteren."
+    },
+    "qf.description.tipMsg": {
+        "message": "Tip: als u een groot aantal mappen hebt, probeer dan de Nostalgy-extensie om uw berichten toetsenbordgestuurd te organiseren."
+    },
+    "qf.description.versionhistory": {
+        "message": "Gedetailleerde versiegeschiedenis op quickfolders.org"
+    },
+    "qf.dialog.changeorder": {
+        "message": "De volgorde van de tabbladen wijzigen"
+    },
+    "qf.dialog.quickmove.settings": {
+        "message": "quickMove geavanceerde instellingen"
+    },
+    "qf.dialog.setcategory": {
+        "message": "De categorie voor een tabblad instellen"
+    },
+    "qf.donate.tooltip": {
+        "message": "Steun de ontwikkeling van QuickFolders!"
+    },
+    "qf.filters.instructions": {
+        "message": "Selecteer een sjabloon. U kunt de regels van het filter instellen op het volgende scherm."
+    },
+    "qf.filters.template.from": {
+        "message": "Gebaseerd op afzender (van)"
+    },
+    "qf.filters.template.from.description": {
+        "message": "Dit is waarschijnlijk het meestgebruikte patroon: dit haalt het e-mailadres van de afzender op en plakt het in de filtervoorwaardenvelden voor Van en Aan. Op deze manier worden volledige discussies met de afzender naar de nieuwe map verplaatst."
+    },
+    "qf.filters.template.list": {
+        "message": "Mailinglijst"
+    },
+    "qf.filters.template.list.description": {
+        "message": "Analoog aan ‘Gebaseerd op afzender’, maar het vult de voorwaardenveld ‘Aan’ niet."
+    },
+    "qf.filters.template.tag": {
+        "message": "Op label"
+    },
+    "qf.filters.template.tag.description": {
+        "message": "Gebruikt de labels van het e-mailbericht en gebruikt deze als filtervoorwaarden."
+    },
+    "qf.filters.template.to": {
+        "message": "Gebaseerd op ontvanger (aan)"
+    },
+    "qf.filters.template.to.description": {
+        "message": "Analoog aan ‘Gebaseerd op afzender’: gebruik dit wanneer u een e-mailbericht dat u naar iemand anders hebt verstuurd markeert. Dit haalt het e-mailadres van de afzender op en plakt het in de filtervoorwaardenvelden voor Van en Aan. Op deze manier worden volledige discussies met de afzender naar de nieuwe map verplaatst."
+    },
+    "qf.filters.template.topic": {
+        "message": "Op onderwerp"
+    },
+    "qf.filters.template.topic.description": {
+        "message": "Dit zoekt naar speciale expressies tussen haakjes, bv. [postzegelverzamelaars] of {veganisten}, en maakt op basis hiervan een filtervoorwaarde aan; veel e-mailgroepen gebruiken een dergelijk patroon, dus het is handig in gebruik."
+    },
+    "qf.filters.title": {
+        "message": "Filters maken"
+    },
+    "qf.filters.toggleMessage.notificationText": {
+        "message": "Filterleermodus is ingeschakeld. Wanneer u een e-mailbericht naar QuickFolders verplaatst, wordt de wizard ‘Filterregel aanmaken’ gestart. Thunderbird gebruikt berichtenfilters voor het automatisch verplaatsen van berichten op basis van regels als ‘wie is de afzender?’ of ‘staat een bepaald trefwoord in de onderwerpregel?’. Om de filterleermodus uit te schakelen, drukt u op de knop Filter linksboven in de QuickFolders-werkbalk."
+    },
+    "qf.filters.toggleMessage.title": {
+        "message": "Filters aanmaken"
+    },
+    "qf.foldercontextmenu.quickfolders.customizeIcon": {
+        "message": "Pictogram aanpassen…"
+    },
+    "qf.foldercontextmenu.quickfolders.removeIcon": {
+        "message": "Aangepast pictogram verwijderen"
+    },
+    "qf.fpJsonFile": {
+        "message": "JSON-bestand"
+    },
+    "qf.goNextUnread.auto": {
+        "message": "Naar de volgende map zonder bevestiging (aanbevolen)"
+    },
+    "qf.goNextUnread.none": {
+        "message": "Niks doen als er geen ongelezen berichten in de map zijn"
+    },
+    "qf.goNextUnread.prompt": {
+        "message": "Vragen om naar de volgende ongelezen map te gaan"
+    },
+    "qf.group.navigation": {
+        "message": "Berichtnavigatie"
+    },
+    "qf.label.ActiveTabColor": {
+        "message": "Actief tabblad:"
+    },
+    "qf.label.ColoredTabPalette": {
+        "message": "Palet voor gekleurde tabbladen:"
+    },
+    "qf.label.ColoredTabPalette.tooltip": {
+        "message": "Palet voor tabbladen met een specifieke kleur"
+    },
+    "qf.label.DragOverBackground": {
+        "message": "Slepen:"
+    },
+    "qf.label.HoveredTabColor": {
+        "message": "Aangewezen tabblad:"
+    },
+    "qf.label.Toolbar": {
+        "message": "Werkbalk"
+    },
+    "qf.label.Toolbar.bottomLine": {
+        "message": "Breedte van onderste regel:"
+    },
+    "qf.label.Toolbar.bottomLine.tip": {
+        "message": "De breedte van de regel onder tabbladen. Wijzig de kleur met de Actieve Tabbladkleurkiezer hieronder."
+    },
+    "qf.label.ToolbarBackground": {
+        "message": "Werkbalkachtergrond:"
+    },
+    "qf.label.UncoloredTab": {
+        "message": "Ongekleurd tabblad"
+    },
+    "qf.label.UncoloredTab.tooltip": {
+        "message": "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur"
+    },
+    "qf.label.appearance": {
+        "message": "Vormgeving"
+    },
+    "qf.label.behavior": {
+        "message": "Gedrag"
+    },
+    "qf.label.bugzilla": {
+        "message": "Een bug melden / functie aanvragen…"
+    },
+    "qf.label.buttonFontSizeNumeric": {
+        "message": "Lettertypegrootte voor knoppen (0 voor standaard):"
+    },
+    "qf.label.cancel": {
+        "message": "Annuleren"
+    },
+    "qf.label.colors": {
+        "message": "Kleuren"
+    },
+    "qf.label.contactLink": {
+        "message": "Contact opnemen (Engels of Duits)…"
+    },
+    "qf.label.currentFolderToolbar": {
+        "message": "Werkbalk van huidige map"
+    },
+    "qf.label.donate": {
+        "message": "Doneren"
+    },
+    "qf.label.donateLink": {
+        "message": "De donatiepagina bezoeken…"
+    },
+    "qf.label.dragFolderLabel": {
+        "message": "Sleep mappen hiernaartoe om een tabblad te maken. Klik op het tabblad om naar de map te gaan, sleep berichten om ze te verplaatsen/kopiëren."
+    },
+    "qf.label.existingcategories": {
+        "message": "Bestaande categorieën:"
+    },
+    "qf.label.filterCountN_of_M": {
+        "message": "{0} van {1}"
+    },
+    "qf.label.filterEntities": {
+        "message": "items"
+    },
+    "qf.label.filterSingleEntity": {
+        "message": "1 item"
+    },
+    "qf.label.getQuickFilters": {
+        "message": "Installeer mijn extensie quickFilters voor een betere en krachtigere manier om filters te maken!"
+    },
+    "qf.label.goNextUnread": {
+        "message": "Naar volgende ongelezen e-mailbericht:"
+    },
+    "qf.label.goNextUnread.tip": {
+        "message": "Gewoonlijk vraagt Thunderbird bevestiging wanneer u naar een andere map zou gaan om naar het volgende ongelezen bericht te gaan."
+    },
+    "qf.label.haveLicense": {
+        "message": "Hebt u al een licentie?"
+    },
+    "qf.label.homePage": {
+        "message": "Gedetailleerde informatie op de nieuwe QuickFolders-startpagina op quickfolders.org…"
+    },
+    "qf.label.initdelay": {
+        "message": "[ms] init delay {1000 is standaard}:"
+    },
+    "qf.label.insertLicense": {
+        "message": "Voer hier uw persoonlijke licentiesleutel in:"
+    },
+    "qf.label.insertLicense.tooltip": {
+        "message": "U vindt uw licentiesleutel in de orderbevestiging die u per e-mail van FastSpring hebt ontvangen."
+    },
+    "qf.label.instantApplyMsg": {
+        "message": "NB Als u hieronder alleen een knop [Sluiten] ziet, werken de kleurinstellingen misschien niet - als oplossing kunt u met rechts op een leeg gebied in de QuickFolders-werkbalk klikken om opties te selecteren… Hierdoor wordt de knop [OK] weergegeven, waardoor kleuren zouden moeten worden opgeslagen."
+    },
+    "qf.label.keyboard": {
+        "message": "Sneltoetsen"
+    },
+    "qf.label.languagesLink": {
+        "message": "Vertaling toevoegen…"
+    },
+    "qf.label.licenseValid": {
+        "message": "Uw licentie is geldig tot:"
+    },
+    "qf.label.mainToolbar": {
+        "message": "Hoofdwerkbalkelementen"
+    },
+    "qf.label.menus": {
+        "message": "Menu-instellingen"
+    },
+    "qf.label.menus.customIcon": {
+        "message": "Pictogram aanpassen"
+    },
+    "qf.label.menus.help": {
+        "message": "QuickFolders-hulp"
+    },
+    "qf.label.menus.hideQFunlessCTRL": {
+        "message": "Alleen weergeven met Ctrl-toets ingedrukt"
+    },
+    "qf.label.menus.lineBreak": {
+        "message": "Regeleinde invoegen"
+    },
+    "qf.label.menus.mailFolder": {
+        "message": "E-mailopdrachten"
+    },
+    "qf.label.menus.options": {
+        "message": "Opties"
+    },
+    "qf.label.menus.quickFolder": {
+        "message": "QuickFolders-opdrachten"
+    },
+    "qf.label.menus.separator": {
+        "message": "Scheidingsteken invoegen"
+    },
+    "qf.label.menus.support": {
+        "message": "QuickFolders-ondersteuning"
+    },
+    "qf.label.misc": {
+        "message": "Diversen"
+    },
+    "qf.label.newcategory": {
+        "message": "Nieuwe categorie:"
+    },
+    "qf.label.pixels": {
+        "message": "pixels"
+    },
+    "qf.label.quickFilters.link": {
+        "message": "quickFilters downloaden!"
+    },
+    "qf.label.quickfolders": {
+        "message": "QuickFolders:"
+    },
+    "qf.label.renameselectedcategory": {
+        "message": "Geselecteerde categorie hernoemen"
+    },
+    "qf.label.setcolors": {
+        "message": "Instellen [Tekstkleur], Achtergrondkleur"
+    },
+    "qf.label.tabContent": {
+        "message": "Tabbladinhoud"
+    },
+    "qf.label.testfolder": {
+        "message": "Testmap"
+    },
+    "qf.label.testfolder2": {
+        "message": "Testmap 2"
+    },
+    "qf.label.themes": {
+        "message": "Thema’s:"
+    },
+    "qf.label.toolbarPosition": {
+        "message": "Positie van QuickFolders-balk"
+    },
+    "qf.label.versionhistory": {
+        "message": "Versiegeschiedenis lezen…"
+    },
+    "qf.licenseValidation.expired": {
+        "message": "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen."
+    },
+    "qf.licenseValidation.failed": {
+        "message": "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met mij op via het tabblad Ondersteuning."
+    },
+    "qf.licenseValidation.guessAddon": {
+        "message": "(De ingevoerde sleutel is mogelijk voor {2})."
+    },
+    "qf.licenseValidation.invalidAddon": {
+        "message": "De ingevoerde licentiesleutel is mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}."
+    },
+    "qf.licenseValidation.invalidMail": {
+        "message": "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met mij op via het tabblad Ondersteuning."
+    },
+    "qf.licenseValidation.notMatchedMail": {
+        "message": "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres."
+    },
+    "qf.licenseValidation.passed": {
+        "message": "Bedankt voor uw registratie van QuickFolders Pro! Alle premiumfuncties kunnen nu worden gebruikt."
+    },
+    "qf.loadConfig": {
+        "message": "Configuratie laden…"
+    },
+    "qf.menu.Color": {
+        "message": "Kleur"
+    },
+    "qf.menu.tabColor": {
+        "message": "Geen kleur!"
+    },
+    "qf.menuitem.quickfolders.changeOrder": {
+        "message": "Volgorde van de tabbladen wijzigen"
+    },
+    "qf.menuitem.quickfolders.changeOrderAccess": {
+        "message": "w"
+    },
+    "qf.menuitem.quickfolders.deleteDeadTabs": {
+        "message": "Zwevende tabbladen zoeken"
+    },
+    "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+        "message": "t"
+    },
+    "qf.menuitem.quickfolders.displayPreviewToolbar": {
+        "message": "Hulpmiddelen voor huidige map weergeven"
+    },
+    "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
+        "message": "d"
+    },
+    "qf.menuitem.quickfolders.filters": {
+        "message": "Berichtfilters maken…"
+    },
+    "qf.menuitem.quickfolders.filtersAccess": {
+        "message": "f"
+    },
+    "qf.menuitem.quickfolders.find": {
+        "message": "Map zoeken…"
+    },
+    "qf.menuitem.quickfolders.findAccess": {
+        "message": "z"
+    },
+    "qf.menuitem.quickfolders.help": {
+        "message": "QuickFolders-hulp…"
+    },
+    "qf.menuitem.quickfolders.helpAccess": {
+        "message": "h"
+    },
+    "qf.menuitem.quickfolders.options": {
+        "message": "QuickFolders-opties…"
+    },
+    "qf.menuitem.quickfolders.optionsAccess": {
+        "message": "o"
+    },
+    "qf.menuitem.quickfolders.register": {
+        "message": "QuickFolders Pro registreren…"
+    },
+    "qf.menuitem.quickfolders.repairTabs": {
+        "message": "Zichtbare tabbladen vernieuwen!"
+    },
+    "qf.menuitem.quickfolders.repairTabsAccess": {
+        "message": "n"
+    },
+    "qf.menuitem.quickfolders.repairTreeIcons": {
+        "message": "Boompictogrammen repareren"
+    },
+    "qf.menuitem.quickfolders.support": {
+        "message": "QuickFolders-ondersteuning…"
+    },
+    "qf.menuitem.quickfolders.supportAccess": {
+        "message": "s"
+    },
+    "qf.menuitem.quickfolders.togglePaintMode": {
+        "message": "Verfmodus"
+    },
+    "qf.menuitem.quickfolders.togglePaintModeAccess": {
+        "message": "V"
+    },
+    "qf.notification.categoryIsReadOnly": {
+        "message": "Dit item kan niet worden verwijderd."
+    },
+    "qf.notification.dontShowAgain": {
+        "message": "Dit bericht niet meer tonen"
+    },
+    "qf.notification.premium.btn.extendLicense": {
+        "message": "Licentie verlengen"
+    },
+    "qf.notification.premium.btn.extendLicense.tooltip": {
+        "message": "Hierdoor wordt de huidige licentiedatum met 1 jaar verlengd. Dit is doorgaans goedkoper dan een nieuwe licentie."
+    },
+    "qf.notification.premium.btn.getLicense": {
+        "message": "Licentie verkrijgen!"
+    },
+    "qf.notification.premium.btn.hotKey": {
+        "message": "L"
+    },
+    "qf.notification.premium.btn.renewLicense": {
+        "message": "Licentie vernieuwen"
+    },
+    "qf.notification.premium.readingList": {
+        "message": "U hebt nu {1} bladwijzers gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
+    },
+    "qf.notification.premium.tabIcons": {
+        "message": "U hebt nu {1} pictogrammen gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
+    },
+    "qf.notification.premium.text": {
+        "message": "{1} is een Premium-functie; registreer QuickFolders om deze permanent te gebruiken."
+    },
+    "qf.notification.premium.title": {
+        "message": "Premium-functie"
+    },
+    "qf.options.LayoutColorAppearance": {
+        "message": "Individuele tabbladkleurweergave"
+    },
+    "qf.options.LayoutColorAppearanceFilled": {
+        "message": "(opgevulde stijl)"
+    },
+    "qf.options.LayoutColorAppearanceStriped": {
+        "message": "(gestreepte stijl)"
+    },
+    "qf.options.label.themeAuthor": {
+        "message": "Themaschrijver:"
+    },
+    "qf.options.theme.pastelColors": {
+        "message": "Pastelkleuren"
+    },
+    "qf.options.themes.customCornerRadius.Bottom.label": {
+        "message": "Onderzijde:"
+    },
+    "qf.options.themes.customCornerRadius.Top.label": {
+        "message": "Bovenzijde:"
+    },
+    "qf.options.themes.customCornerRadius.checkbox": {
+        "message": "Aangepaste hoekradius"
+    },
+    "qf.options.themes.showBorders.checkbox": {
+        "message": "Randen altijd weergeven"
+    },
+    "qf.options.versionnumber.tooltip": {
+        "message": "Klik met rechts voor versiegeschiedenis."
+    },
+    "qf.palette.inactive": {
+        "message": "Zoals inactieve tabbladen"
+    },
+    "qf.palette.night": {
+        "message": "Nachtzicht"
+    },
+    "qf.palette.pastel": {
+        "message": "Pastelkleuren"
+    },
+    "qf.palette.standard": {
+        "message": "Standaardpalet"
+    },
+    "qf.palette.twoColors": {
+        "message": "2 kleuren"
+    },
+    "qf.pastefolders.tooltip": {
+        "message": "Alle QuickFolders verwijderen en nieuwe configuratie van klembord inlezen"
+    },
+    "qf.pathFormat.AccountAndPath": {
+        "message": "Account - Mappad"
+    },
+    "qf.pathFormat.PathOnly": {
+        "message": "Mappad"
+    },
+    "qf.pathFormat.URI": {
+        "message": "Map-URI"
+    },
+    "qf.pathFormat.folderAndAccount": {
+        "message": "Mapnaam - E-mailaccount"
+    },
+    "qf.pathFormat.folderName": {
+        "message": "Mapnaam"
+    },
+    "qf.pathFormat.maxDepth": {
+        "message": "Maximale paddiepte:"
+    },
+    "qf.pathFormat.tooltip": {
+        "message": "Maximale aantal mappen in mappad."
+    },
+    "qf.prefwindow.quickfolders.options": {
+        "message": "QuickFolders-opties"
+    },
+    "qf.premium.renewLicense.tooltip": {
+        "message": "Uw licentie is {1} dagen geleden verlopen"
+    },
+    "qf.premiumConfig": {
+        "message": "Premiumfuncties"
+    },
+    "qf.prompt.category.deleteMultiple": {
+        "message": "Meerdere categorieën verwijderen?"
+    },
+    "qf.prompt.contact.subject": {
+        "message": "Voer een korte onderwerpregel in:"
+    },
+    "qf.prompt.contact.title": {
+        "message": "Contact met QuickFolders-ondersteuning"
+    },
+    "qf.prompt.loadFolders.confirm": {
+        "message": "Geladen tabbladen accepteren?"
+    },
+    "qf.prompt.newFolder.createQFtab": {
+        "message": "Ook een QuickFolders-tabblad maken"
+    },
+    "qf.prompt.newFolder.newChildName": {
+        "message": "Voer naam voor nieuwe submap van {0} in"
+    },
+    "qf.prompt.newFolder.title": {
+        "message": "Nieuwe map"
+    },
+    "qf.prompt.pasteFolders": {
+        "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items op uw klembord.\\n{0} items gevonden op klembord.\\nWeet u het zeker?"
+    },
+    "qf.prompt.pasteFolders.confirm": {
+        "message": "Weergegeven tabbladen behouden?"
+    },
+    "qf.prompt.readingList.removeItem": {
+        "message": "Dit bericht verwijderen?"
+    },
+    "qf.prompt.readingList.searchMissingItem": {
+        "message": "Kan de e-mail niet vinden; mogelijk is deze ondertussen verplaatst.\\n{1}\\n\\nWilt u ernaar zoeken?"
+    },
+    "qf.prompt.restoreFolders": {
+        "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items in het bestand.\\n{0} items zijn gelezen.\\nTabbladen vervangen?"
+    },
+    "qf.prompt.switchDomainLicense": {
+        "message": "Wisselen naar domeinlicentie?"
+    },
+    "qf.quickMove.escapeClears": {
+        "message": "Escape-toets wist de berichtenlijst."
+    },
+    "qf.quickMove.excludeAccounts": {
+        "message": "Selecteer alle accounts die moeten worden uitgesloten van de zoekresultaten:"
+    },
+    "qf.quickMove.lockAccount": {
+        "message": "Toon alleen resultaten van het huidige e-mailaccount."
+    },
+    "qf.quickMove.maxResults": {
+        "message": "Maximaal aantal zoekresultaten"
+    },
+    "qf.quickMove.path.format": {
+        "message": "Weergave:"
+    },
+    "qf.quickMove.silent": {
+        "message": "Geen melding na het verplaatsen van mails."
+    },
+    "qf.register.licenseValid.expired": {
+        "message": "Uw licentie is verlopen op:"
+    },
+    "qf.search.advanced": {
+        "message": "Geavanceerde zoekinstellingen…"
+    },
+    "qf.storeConfig": {
+        "message": "Configuratie opslaan…"
+    },
+    "qf.tab.advanced": {
+        "message": "Geavanceerd"
+    },
+    "qf.tab.general": {
+        "message": "Algemeen"
+    },
+    "qf.tab.gopro": {
+        "message": "QuickFolders Pro"
+    },
+    "qf.tab.layout": {
+        "message": "Pimp mijn tabbladen!"
+    },
+    "qf.tab.quickhelp": {
+        "message": "Snelle hulp"
+    },
+    "qf.tab.support": {
+        "message": "Ondersteuning"
+    },
+    "qf.textbox.searchBox.emptyText": {
+        "message": "Filters zoeken op naam…"
+    },
+    "qf.textbox.searchBox.toolTip": {
+        "message": "voer een trefwoord in om naar filters te zoeken op naam"
+    },
+    "qf.themes.applePills.description": {
+        "message": "Een aangename opmaak voor onze Mac-gebruikers - duidelijk en eenvoudig; met enkele optionele kleuropties."
+    },
+    "qf.themes.applePills.label": {
+        "message": "Apple Pills"
+    },
+    "qf.themes.flatButtons.description": {
+        "message": "Standaard werkbalkknoppen - dit lijkt het meeste op het uiterlijk van de originele versie 0.5!"
+    },
+    "qf.themes.flatButtons.label": {
+        "message": "Werkbalkknoppen"
+    },
+    "qf.themes.flatTabs.description": {
+        "message": "Modern tabbladuiterlijk - volledige aanpasbaar. Ziet er geweldig uit in Windows en Linux."
+    },
+    "qf.themes.flatTabs.label": {
+        "message": "Vlakke stijl"
+    },
+    "qf.themes.nativeTabs.description": {
+        "message": "De opmaak lijkt op de tabbladen van uw OS - minder kleuropties, maar kan meer geïntegreerd en synchroon lijken met de thema’s van uw e-mailprogramma."
+    },
+    "qf.themes.nativeTabs.label": {
+        "message": "Ingebouwde tabbladen"
+    },
+    "qf.themes.realButtons.description": {
+        "message": "Drukknoppen - deze lijken op standaardknoppen in dialoogvensters"
+    },
+    "qf.themes.realButtons.label": {
+        "message": "Drukknoppen"
+    },
+    "qf.toolbar.quickfolders.toolbar": {
+        "message": "QuickFolders-werkbalk"
+    },
+    "qf.toolbarMinimumHeight": {
+        "message": "Minimale hoogte:"
+    },
+    "qf.toolbarMinimumHeight.tooltip": {
+        "message": "Voor Mac-systemen die te maken hebben met [Bug 25021]"
+    },
+    "qf.toolbarPosition.tooltip": {
+        "message": "0 = boven andere werkbalken; 100 = onder. Hoge waarde hangt af van andere add-ons."
+    },
+    "qf.tooltip.RecentFolders": {
+        "message": "Recente mappen"
+    },
+    "qf.tooltip.closeToolbar": {
+        "message": "Deze werkbalk sluiten"
+    },
+    "qf.tooltip.conversationRead": {
+        "message": "Conversatie als gelezen markeren en naar volgend bericht springen"
+    },
+    "qf.tooltip.emailIcon": {
+        "message": "Huidig e-mailbericht - sleep naar een QuickFolders-tabblad om het e-mailbericht te verplaatsen"
+    },
+    "qf.tooltip.filterStart": {
+        "message": "Filterleren activeren. Slepen van e-mailberichten naar een QuickFolder maakt nieuwe filters aan."
+    },
+    "qf.tooltip.filters": {
+        "message": "Aanmaken van filters stoppen."
+    },
+    "qf.tooltip.folderUp": {
+        "message": "Naar bovenliggende map"
+    },
+    "qf.tooltip.goNextFolder": {
+        "message": "Naar het volgende [ongelezen] bericht"
+    },
+    "qf.tooltip.goPreviousFolder": {
+        "message": "Naar het vorige [ongelezen] bericht"
+    },
+    "qf.tooltip.mailFolderCommands": {
+        "message": "E-mailmapopdrachten"
+    },
+    "qf.tooltip.mainOptions": {
+        "message": "QuickFolders-opties en geavanceerde opdrachten"
+    },
+    "qf.tooltip.paintCanActive": {
+        "message": "Verfmodus: klik voor palet, klik op tabbladen om ze te kleuren, rechtsklik op tabbladen om de kleur te selecteren"
+    },
+    "qf.tooltip.quickFoldersNavToggle": {
+        "message": "navigeren door alleen ongelezen / alle berichten wisselen"
+    },
+    "qf.tooltip.quickMove": {
+        "message": "snelVerplaatsen: sleep een e-mailbericht hiernaartoe en voer daarna de mapnaam in"
+    },
+    "qf.tooltip.skipUnreadFolder": {
+        "message": "Naar volgende ongelezen map springen"
+    },
+    "qf.tooltip.threadIcon": {
+        "message": "Huidige conversatie - sleep naar een QuickFolders-tabblad om conversatie te verplaatsen"
+    },
+    "qf.youtube.description": {
+        "message": "Bezoek voor gedetailleerde video’s over Thunderbird-add-ons en hoe u QuickFolders kunt gebruiken mijn YouTube-kanaal ‘Thunderbird Daily’."
+    },
+    "qf.youtube.link": {
+        "message": "Video’s over QuickFolders bekijken…"
+    },
+    "qf.youtube.tbdaily": {
+        "message": "Bezoek Thunderbird Daily - YouTube-kanaal voor tips en tutorials voor het gebruik van QuickFolders"
+    },
+    "qfAlertCopyString": {
+        "message": "Mapstring naar klembord gekopieerd!"
+    },
+    "qfAlertDropFolderVirtual": {
+        "message": "U kunt berichten niet naar een virtuele map kopiëren!"
+    },
+    "qfAlertUpgradeSuccess": {
+        "message": "QuickFolders is met succes bijgewerkt naar versie:"
+    },
+    "qfAll": {
+        "message": "(Alles weergeven)"
+    },
+    "qfCantMoveFolder": {
+        "message": "Map {0} kan niet worden verplaatst."
+    },
+    "qfColorPickingWIP": {
+        "message": "Sorry, deze functie is nog in ontwikkeling!"
+    },
+    "qfCommandAccess": {
+        "message": "Q"
+    },
+    "qfCommandPopup": {
+        "message": "QuickFolders-opdrachten"
+    },
+    "qfCompactFolder": {
+        "message": "Map comprimeren"
+    },
+    "qfCompactFolderAccess": {
+        "message": "c"
+    },
+    "qfCompacted": {
+        "message": "Gecomprimeerd:"
+    },
+    "qfCompactedBytesFreed": {
+        "message": "Bytes vrijgemaakt"
+    },
+    "qfCompactedFolder": {
+        "message": "Map gecomprimeerd"
+    },
+    "qfCompactedNewFolderSize": {
+        "message": "Nieuwe grootte"
+    },
+    "qfCompactedOriginalFolderSize": {
+        "message": "Originele grootte"
+    },
+    "qfConfirmCopyFolder": {
+        "message": "Werkelijk map {0} kopiëren naar {1}?"
+    },
+    "qfConfirmMoveFolder": {
+        "message": "Map {0} echt verplaatsen naar {1}?"
+    },
+    "qfConfirmVersionLink": {
+        "message": "Versiegeschiedenis voor QuickFolders weergeven"
+    },
+    "qfDeadTabsCount": {
+        "message": "aantal gevonden zwevende tabbladen:"
+    },
+    "qfDeadTabsDeleted": {
+        "message": "aantal verwijderde zwevende tabbladen:"
+    },
+    "qfDeleteFolder": {
+        "message": "Map verwijderen"
+    },
+    "qfDeleteFolderAccess": {
+        "message": "v"
+    },
+    "qfDeleteJunk": {
+        "message": "Ongewenste berichten verwijderen"
+    },
+    "qfDown": {
+        "message": "Omlaag"
+    },
+    "qfDownloadAll": {
+        "message": "Alles downloaden"
+    },
+    "qfEditVirtual": {
+        "message": "Zoekeigenschappen…"
+    },
+    "qfEditVirtualAccess": {
+        "message": "e"
+    },
+    "qfEmptiedJunk": {
+        "message": "Ongewenste berichten verwijderd en map gecomprimeerd"
+    },
+    "qfEmptiedTrash": {
+        "message": "Prullenbak leeggemaakt."
+    },
+    "qfEmptyJunk": {
+        "message": "Map Ongewenst leegmaken"
+    },
+    "qfEmptyJunkAccess": {
+        "message": "O"
+    },
+    "qfEmptyTrash": {
+        "message": "Prullenbak leegmaken"
+    },
+    "qfEmptyTrashAccess": {
+        "message": "P"
+    },
+    "qfFolderAccess": {
+        "message": "M"
+    },
+    "qfFolderAlreadyBookmarked": {
+        "message": "Er is al een tabblad voor deze map."
+    },
+    "qfFolderOpenLocation": {
+        "message": "Maplocatie verkennen…"
+    },
+    "qfFolderPopup": {
+        "message": "Mapopdrachten"
+    },
+    "qfFolderProperties": {
+        "message": "Mapeigenschappen…"
+    },
+    "qfFolderPropertiesAccess": {
+        "message": "p"
+    },
+    "qfFolderRepair": {
+        "message": "Map repareren"
+    },
+    "qfFolderRepairAccess": {
+        "message": "r"
+    },
+    "qfFolderRepairedMsg": {
+        "message": "Map is gerepareerd:"
+    },
+    "qfGetMail": {
+        "message": "Berichten ophalen"
+    },
+    "qfGetMailAccess": {
+        "message": "o"
+    },
+    "qfInsertLineBreak": {
+        "message": "Regeleinde invoegen"
+    },
+    "qfInsertSeparator": {
+        "message": "Scheidingsteken invoegen"
+    },
+    "qfInvalidTabCount": {
+        "message": "{0} tabbladen gevonden zonder geldige doelmap. U kunt deze verwijderen met de opdracht ‘Zwevende tabbladen zoeken’."
+    },
+    "qfMarkAllRead": {
+        "message": "Map als gelezen markeren"
+    },
+    "qfMarkAllReadAccess": {
+        "message": "m"
+    },
+    "qfMarkAllReadRecursive": {
+        "message": "Map + submappen als gelezen markeren"
+    },
+    "qfMenuColor": {
+        "message": "Kleur"
+    },
+    "qfMenuTabColorDisabledInTheme": {
+        "message": "Selecteer een ander thema voor ondersteuning van kleuren…"
+    },
+    "qfMenuTabColorNone": {
+        "message": "Geen kleur!"
+    },
+    "qfMenuTabColorPopup": {
+        "message": "Tabbladkleur"
+    },
+    "qfMoveFolderOrNewTab": {
+        "message": "Sleep mappen naar een leeg gebied op de werkbalk - Houd SHIFT ingedrukt tijdens het slepen om de map te VERPLAATSEN."
+    },
+    "qfNavigationWrapped": {
+        "message": "Geen andere ongelezen mappen gevonden, doorgegaan in {1}."
+    },
+    "qfNewFolder": {
+        "message": "Nieuwe submap"
+    },
+    "qfNewFolderAccess": {
+        "message": "N"
+    },
+    "qfNewName": {
+        "message": "Voer een nieuwe naam in voor het tabblad"
+    },
+    "qfNewSubFolder": {
+        "message": "Submap {0} aanmaken \\u00BB {1}…"
+    },
+    "qfNoFolderMatch": {
+        "message": "Geen overeenkomende bovenliggende mappen!"
+    },
+    "qfPaintToggle": {
+        "message": "Verfmodus beëindigen"
+    },
+    "qfRecentFolders": {
+        "message": "Recente mappen"
+    },
+    "qfRemoveBookmark": {
+        "message": "Tabblad verwijderen"
+    },
+    "qfRemoveBookmarkAccess": {
+        "message": "v"
+    },
+    "qfRemoveCategory": {
+        "message": "Verwijderen uit huidige categorie"
+    },
+    "qfRemoveCategoryPrompt": {
+        "message": "De categorie is ‘{1}’ - Verwijderen?"
+    },
+    "qfRemoveIcon": {
+        "message": "Pictogram verwijderen"
+    },
+    "qfRemoveLineBreak": {
+        "message": "Regeleinde verwijderen"
+    },
+    "qfRemoveSeparator": {
+        "message": "Scheidingsteken verwijderen"
+    },
+    "qfRenameBookmark": {
+        "message": "Tabblad hernoemen…"
+    },
+    "qfRenameBookmarkAccess": {
+        "message": "h"
+    },
+    "qfRenameFolder": {
+        "message": "Mapnaam wijzigen"
+    },
+    "qfRenameFolderAccess": {
+        "message": "w"
+    },
+    "qfRepairTreeIconsMissing": {
+        "message": "De volgende pictogrambestanden bestaan niet:"
+    },
+    "qfSavePrompt": {
+        "message": "Deze wijzigingen opslaan?"
+    },
+    "qfSelectIcon": {
+        "message": "Pictogram aanpassen…"
+    },
+    "qfSetCategory": {
+        "message": "Tabbladcategorie instellen…"
+    },
+    "qfSetCategoryA": {
+        "message": "T"
+    },
+    "qfShowAlways": {
+        "message": "Altijd tonen!"
+    },
+    "qfShowNever": {
+        "message": "Nooit tonen (mapalias)"
+    },
+    "qfTabAdvancedOptions": {
+        "message": "Tabbladspecifieke eigenschappen…"
+    },
+    "qfTabDeleteOption": {
+        "message": "Dit doen voor de overige {0} mappen."
+    },
+    "qfTabDeletePrompt": {
+        "message": "Dit tabblad verwijderen?"
+    },
+    "qfThisTabIsInvalid": {
+        "message": ": Dit tabblad verwijst naar een ongeldige map."
+    },
+    "qfTidyDeadFolders": {
+        "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."
+    },
+    "qfTreeIconsInvalidCount": {
+        "message": "{0} ontbrekende pictogrammen"
+    },
+    "qfTreeIconsRepairedCount": {
+        "message": "{0} boompictogrammen gerepareerd"
+    },
+    "qfUncategorized": {
+        "message": "(Zonder categorie)"
+    },
+    "qfUp": {
+        "message": "Omhoog"
+    },
+    "qfUpdatedThemesEngineMsg": {
+        "message": "Er is een nieuwe thema-engine voor QuickFolders geïnstalleerd. Selecteer een item in het dropdownveld en klik op [OK]."
+    },
+    "qfVersionDisableOnUpdate": {
+        "message": "Versiegeschiedenis niet meer weergeven na updates?"
+    },
+    "quickMove.singleMessage.goNext": {
+        "message": "Geef de volgende e-mail weer nadat u de huidige hebt verplaatst"
+    },
+    "quickMove.singleMessage.reopenTab": {
+        "message": "Open de originele e-mail opnieuw nadat deze is verplaatst"
+    },
+    "quickMove.singleMessageTabs": {
+        "message": "Tabblad Eén bericht"
+    },
+    "quickfolders.findFolder.placeHolder": {
+        "message": "mapnaam"
+    },
+    "quickfolders.quickMove.menu.cancel": {
+        "message": "snelVerplaatsen annuleren"
+    },
+    "quickfolders.quickMove.menu.hideSearch": {
+        "message": "Mapnaamveld verbergen"
+    },
+    "quickfolders.quickMove.menu.showSearch": {
+        "message": "Mapnaamveld weergeven"
+    },
+    "quickfolders.quickMove.menu.suspend": {
+        "message": "Naar map springen (e-mailberichten niet verplaatsen)"
+    },
+    "quickfolders.readingList.addCurrent": {
+        "message": "Huidige bericht toevoegen"
+    },
+    "quickfolders.readingList.clear": {
+        "message": "Leeslijst opschonen"
+    },
+    "quickfolders.readingList.tooltip": {
+        "message": "Leeslijst"
+    },
+    "quickfolders.toolbar.newsubfolder": {
+        "message": "Nieuwe submap…"
+    },
+    "quickfolders.toolbar.skip": {
+        "message": "Overslaan"
+    },
+    "quickfoldersQuickCopiedMails": {
+        "message": "Bericht gekopieerd naar map {2};{1} berichten gekopieerd naar map {2}"
+    },
+    "quickfoldersQuickMovedMails": {
+        "message": "Bericht verplaatst naar map {2};{1} berichten verplaatst naar map {2}"
+    },
+    "renew-your-license": {
+        "message": "Verleng uw licentie."
+    },
+    "special-offer-content": {
+        "message": "Maak QuickFolders toekomstbestendig en haal een licentie op terwijl er {boldStart} 40% korting {boldEnd} is op de prijs van QuickFolders Pro! Deze speciale aanbieding is beschikbaar tot {boldStart} 1 mei {boldEnd}."
+    },
+    "special-offer-head": {
+        "message": "Maak QuickFolders toekomstbestendig!"
+    },
+    "special-offer-intro": {
+        "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om QuickFolders voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
+    },
+    "support-preference": {
+        "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "quickFilters"
+            }
+        }
+    },
+    "support-suggestion": {
+        "message": "Zodat $addonName$ functioneel en levend blijft, doe het alsjeblieft een belangrijke gunst:",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "testDrive": {
+        "message": "U kunt de premiumfuncties uitproberen met de gratis versie, maar deze zijn mogelijk enigszins beperkt."
+    },
+    "thanks-for-installing-intro": {
+        "message": "Bedankt voor het installeren van  $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "thanks-for-updating-intro": {
+        "message": "Bedankt voor het updaten van $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "time-and-effort": {
+        "message": "$addonName$ vereist voortdurende wijzigingen om compatibel te blijven met het Mozilla-platform. Ik ben constant bezig om zoveel mogelijk functionaliteit te behouden voor toekomstige versies van Thunderbird.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "toAddress": {
+        "message": "Aan:"
+    },
+    "toAddress.tooltip": {
+        "message": "Standaard ontvangeradres bij het opstellen van e-mailberichten"
+    },
+    "translated-by-google": {
+        "description": "disclaimer.",
+        "message": "vertalingen geleverd door Google"
+    },
+    "updates.title": {
+        "message": "Updates"
+    },
+    "updatesExpiry": {
+        "message": "QuickFolders Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als voor gratis gebruikers. Exclusieve premiumfuncties vereisen een geldige licentiesleutel."
+    },
+    "vouchers.title": {
+        "message": "Tegoedbonnen"
+    },
+    "whats-new-btn": {
+        "message": "Wat is er nieuw?"
+    },
+    "whats-new-head": {
+        "message": "Hoogtepunten"
+    },
+    "whats-new-intro": {
+        "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
+    },
+    "whats-new-list": {
+        "message": "Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
+    },
+    "window-title": {
+        "description": "page title. first placeholder will be replaced with Add-on name",
+        "message": "Welkom bij $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "windowTitle": {
+        "message": "Geavanceerde eigenschappen"
+    },
+    "yearlyLicense.premiumFeatures": {
+        "message": "QuickFolders Pro geeft u onbeperkt toegang tot de premiumfuncties."
+    },
+    "yearlyLicense.premiumFeatures.moreInfoLink": {
+        "message": "Meer over premiumfuncties."
+    },
+    "yearlyLicense.title": {
+        "message": "Jaarlicentie"
+    },
+    "yearlyLicense.usageTerm": {
+        "message": "De licentie geldt voor uw persoonlijke gebruik en is verbonden aan uw e-mailadres. U kunt het bij meerdere e-mailclients installeren, zolang deze zijn ingesteld om dat adres te gebruiken."
+    },
+    "yearlyLicense.usageTerm1": {
+        "message": "Extra e-mailadressen zijn geen probleem - deze vereisen geen aparte licentie. In het geval van vragen kunt u mij bereiken via het ondersteuningstabblad."
     }
-  },
-
-  "heading-updated": {
-    "message": "$addonName$ Succesvol bijgewerkt",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "heading-installed": {
-    "message": "$addonName$ succesvol geïnstalleerd",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  
-  "thanks-for-updating-intro": {
-    "message": "Bedankt voor het updaten van $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "thanks-for-installing-intro": {
-    "message": "Bedankt voor het installeren van  $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
-  
- "active-version-info" : {
-    "message": "U voert nu {boldStart} versie $addonVer$ {boldEnd} uit op Thunderbird $appVer$.",
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
-      },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
-      }
-      
-    }
-  },  
-  
-  "license-is-extended" : {
-    "message": "Bedankt voor het onlangs verlengen van uw licentie of als u heeft gedoneerd. Omdat u heeft geholpen om deze add-on toekomstbestendig te maken, kunt u dit venster eenvoudig sluiten.",
-    "description": "Shown if license expires more than a year from now"
-  },
-  
-  "special-offer-head" : {
-    "message": "Maak QuickFolders toekomstbestendig!"
-  } ,  
-
-  "special-offer-intro" : {
-    "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om QuickFolders voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
-  } ,
-  
-  "special-offer-content" : {
-    "message": "Maak QuickFolders toekomstbestendig en haal een licentie op terwijl er {boldStart} 40% korting {boldEnd} is op de prijs van QuickFolders Pro! Deze speciale aanbieding is beschikbaar tot {boldStart} 1 mei {boldEnd}."
-  },
-  
-  "whats-new-intro" : {
-    "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):" 
-  },
-  
-  "whats-new-btn" : {
-    "message": "Wat is er nieuw?"
-  }, 
-  
-  "whats-new-head" : {
-    "message": "Hoogtepunten"
-  },
-  
-  "whats-new-list" : {
-    "message" : "Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
-  },  
-
-  "time-and-effort": { 
-    "message": "$addonName$ vereist voortdurende wijzigingen om compatibel te blijven met het Mozilla-platform. Ik ben constant bezig om zoveel mogelijk functionaliteit te behouden voor toekomstige versies van Thunderbird.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "support-suggestion" : {
-    "message": "Zodat $addonName$ functioneel en levend blijft, doe het alsjeblieft een belangrijke gunst:",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "purchase-a-license" : {
-    "message" : "Koop een licentie."
-  }, 
-      
-  "renew-your-license" : {
-    "message" : "Verleng uw licentie."
-  },  
-  
-  "extend-your-license" : {
-    "message" : "Overweeg om uw licentie met een jaar te verlengen."
-  },  
-      
-  "donate" : {
-    "message" : "Help mee met een eenmalige donatie."
-  },   
-   
-  "purchase-heading" : {
-    "message" : "Een licentie kopen!"
-  }, 
-  
-  "support-preference" : {
-    "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "quickFilters"
-      }    
-    }
-  }, 
-
-  "ongoing-work": {
-    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "btn-want-a-license": {
-    "message" : "Ik wil een vergunning kopen"
-  } ,
-
-  "btn-extend-license": {
-    "message" : "Ik wil mijn licentie met een jaar verlengen"
-  } ,
-
-
-  "btn-renew-license": {
-    "message" : "Ik wil mijn licentie verlengen"
-  } ,
-
-  "donate-heading" : {
-    "message" : "Help door te doneren!"
-  } ,
-
-  "cost-of-independence" : {
-    "message" : "Softwareontwikkeling kost tijd en geld - in tegenstelling tot veel platform-apps worden add-ons niet geschreven door grote bedrijven en worden ze op geen enkele manier gesponsord door Mozilla."
-  } ,
-  
-  "mozillas-basic-platform" : {
-    "message" : "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
-  } ,
-  
-  "addon-authors-struggle" : {
-    "message" : "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
-  } ,
-  
-  "btn-want-to-donate" : {
-    "message" : "Ik wil helpen met een eenmalige donatie."
-  } ,
-  
-  "translated-by-google" : {
-    "message": "vertalingen geleverd door Google",
-    "description": "disclaimer."
-  },
-  
-  "label-remind-me" : {
-    "message": "Herinner me er over $countDays$ dagen opnieuw aan.",
-    "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
-  }
 }

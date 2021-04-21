@@ -3,7 +3,7 @@
  * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
  */
 
-import * as tools from "./scripts/tools.mjs";
+import * as util from "./scripts/qf-util.mjs";
 
 async function main() {
 
@@ -105,9 +105,9 @@ async function main() {
 main();
 
 messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
-    switch (info.func) {        
-        case"slideAlert":
-            tools[info.func](...info.args);
-            break;
-    }
+  switch (info.func) {        
+    case"slideAlert":
+      util[info.func](...info.args);
+      break;
+  }
 });

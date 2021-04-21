@@ -5,22 +5,13 @@
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-tab-advanced.css" title="QuickFolderAdvancedStyles" type="text/css"?>
 
-<!-- multiple language resources, so we get palette titles -->
-<!DOCTYPE dialog [
-  <!ENTITY % advancedDTD SYSTEM "chrome://quickfolders/locale/advanced.dtd">
-  %advancedDTD;
-  <!ENTITY % optionsDTD SYSTEM "chrome://quickfolders/locale/options.dtd">
-  %optionsDTD;
-]>
-
 <dialog 
 	id="qf-tabproperties"
 	buttons="extra1, extra2, accept"
-	buttonlabelextra2="&btnReset;"
-	buttonlabelextra1="&btnApply;"
+	buttonlabelextra2="__MSG_btnReset__"
+	buttonlabelextra1="__MSG_btnApply__"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="QuickFolders.AdvancedTab.load();"
 >
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
@@ -28,19 +19,22 @@
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/x-javascript" src="chrome://quickfolders/content/qf-advancedTab.js" />
+  <!-- mx-l10n -->
+  <script type="application/javascript" src="chrome://quickfolders/content/i18n.js" />
+  
 
-	<label id="defaultAccountAddress" collapsed="true" value="&defaultAccountAddress.value;" />
+	<label id="defaultAccountAddress" collapsed="true" value="__MSG_defaultAccountAddress.value__" />
 	<vbox>
 	  <hbox>
 			<hbox 
-				title="&windowTitle;" 
-				defaultTitle="&windowTitle;" 
+				title="__MSG_windowTitle__" 
+				defaultTitle="__MSG_windowTitle__" 
 				description="[Tab Name]"
 				id="myHeader"
 				flex="1"
 				onclick = "QuickFolders.AdvancedTab.headerClick(event);"
 				>
-				<label class="dialogheader-title" value="&windowTitle;" />
+				<label class="dialogheader-title" value="__MSG_windowTitle__" />
 				<spacer flex="1" />
 				<label class="dialogheader-description" id="tabName" value="[Tab Name]" />
 			</hbox>
@@ -52,40 +46,40 @@
 		</hbox>
 
 		<hbox align="center">
-		  <toolbarbutton label="&btnCategory;:"
+		  <toolbarbutton label="__MSG_btnCategory__:"
 						oncommand="QuickFolders.AdvancedTab.configureCategory();"
-						tooltiptext="&btnCategory.tooltip;"
+						tooltiptext="__MSG_btnCategory.tooltip__"
 		  />
 		  <label id="lblCategories"></label>
 		  <spacer />
 		</hbox>
 	
 		<groupbox>
-		  <caption label="&grpComposer;"/>
+		  <caption label="__MSG_grpComposer__"/>
 			<div id="advancedGrid" class="grid-container">
 
-						<label value="&fromAddress;"
+						<label value="__MSG_fromAddress__"
 						       control="mailIdentity"/>	
 						<menulist id="mailIdentity"
 											sizetopopup="none"
 											oncommand="QuickFolders.AdvancedTab.selectIdentity(this);"
-											tooltiptext="&fromAddress.tooltip;">									 
+											tooltiptext="__MSG_fromAddress.tooltip__">									 
 							<menupopup>
 							</menupopup>
 						</menulist>
 
-						<label value="&toAddress;"
+						<label value="__MSG_toAddress__"
 						       control="txtToAddress"/>	
 						<html:input
                   type="text"
                   id="txtToAddress" 
-                  tooltiptext="&toAddress.tooltip;"/>
+                  tooltiptext="__MSG_toAddress.tooltip__"/>
 
 					<!-- span the whole width -->
 					<hbox style="grid-column: 1 / span 2;">
 						<checkbox 
 							id="chkComposerSubFolders"
-							label="&chkComposerSubfolders;" 
+							label="__MSG_chkComposerSubfolders__" 
 							/>	
 						<button class="proFeature" 
 						        id="proRecursiveIcon" 
@@ -97,36 +91,36 @@
 		</groupbox>
 		
 		<groupbox>
-		  <caption label="&grpTabBehavior;"/>
+		  <caption label="__MSG_grpTabBehavior__"/>
 			<hbox>
 				<checkbox
 					id="chkIgnoreUnread"
-					label="&chkIgnoreUnread;"
-					tooltiptext="&chkIgnoreUnread.tooltip;"
+					label="__MSG_chkIgnoreUnread__"
+					tooltiptext="__MSG_chkIgnoreUnread.tooltip__"
 				/>
 				<checkbox
 						id="chkIgnoreCounts"
-					label="&chkIgnoreCounts;"
-					tooltiptext="&chkIgnoreCounts.tooltip;"
+					label="__MSG_chkIgnoreCounts__"
+					tooltiptext="__MSG_chkIgnoreCounts.tooltip__"
 				/>	
 			</hbox>
 			<hbox>
 				<checkbox
 					id="chkHideFromQuickJump"
-					label="&chkHideFromQuickJump;"
-					tooltiptext="&chkHideFromQuickJump.tooltip;"
+					label="__MSG_chkHideFromQuickJump__"
+					tooltiptext="__MSG_chkHideFromQuickJump.tooltip__"
 				/>	
 			</hbox>
 			<hbox>
 				<checkbox
           id="chkSetMailsUnread"
-          label="&chkSetMailsUnread;"
-          tooltiptext="&chkSetMailsUnread.tooltip;"
+          label="__MSG_chkSetMailsUnread__"
+          tooltiptext="__MSG_chkSetMailsUnread.tooltip__"
 				/>	
       </hbox>
 		</groupbox>
 		<groupbox>
-		  <caption label="&grpCustomCSS;"/>
+		  <caption label="__MSG_grpCustomCSS__"/>
 		  <hbox>
 			  
 			  <checkbox id="chkCustomCSS"
@@ -134,24 +128,24 @@
 									/>	
 			  
 			  <div id="styleGrid" class="grid-container">
-          <button label="&cssBackground;"
+          <button label="__MSG_cssBackground__"
                   oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
                   class="textLink"/>	
           <html:input
                 type="text"
                 id="txtBackground" 
-                tooltiptext="&cssBackground.tooltip;"
+                tooltiptext="__MSG_cssBackground.tooltip__"
                 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
           
           
-          <button label="&cssColor;"
+          <button label="__MSG_cssColor__"
                  oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
                  class="textLink"/>
           <hbox>
             <html:input
                 type="text"
                 id="txtColor" 
-                tooltiptext="&cssColor.tooltip;"
+                tooltiptext="__MSG_cssColor.tooltip__"
                 onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
             <html:input 
                 id="txtColorPicker" 
@@ -167,22 +161,22 @@
 		</groupbox>
 		<hbox>
 			<checkbox id="chkCustomPalette"
-		              label="&lblCustomPalette;"/>
+		              label="__MSG_lblCustomPalette__"/>
 			<menulist id="menuCustomTabPalette"
 					  sizetopopup="none"
 					  oncommand="QuickFolders.AdvancedTab.updatePalette(this);"
 					  >
 				<menupopup>
-					<menuitem label="&qf.palette.twoColors;"
+					<menuitem label="__MSG_qf.palette.twoColors__"
 							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 0);"
 							  value="0"/>
-					<menuitem label="&qf.palette.standard;"
+					<menuitem label="__MSG_qf.palette.standard__"
 							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 1);"
 							  value="1"/>
-					<menuitem label="&qf.palette.pastel;"
+					<menuitem label="__MSG_qf.palette.pastel__"
 							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 2);"
 							  value="2"/>
-					<menuitem label="&qf.palette.night;"
+					<menuitem label="__MSG_qf.palette.night__"
 							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 3);"
 							  value="3"/>
 				</menupopup>

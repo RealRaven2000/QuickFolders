@@ -1861,7 +1861,6 @@ QuickFolders.Interface = {
 			    numUnreadInSubFolders = isFolderInterface ? (folder.getNumUnread(true) - numUnread) : 0,
 			    numTotal = isFolderInterface ? folder.getTotalMessages(false) : 0,
 			    numTotalInSubFolders = isFolderInterface ? (folder.getTotalMessages(true) - numTotal) : 0,
-          ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS,
           isShowTotals = prefs.isShowTotalCount,
           isShowUnread = prefs.isShowUnreadCount,
 			    displayNumbers = [],
@@ -1890,9 +1889,9 @@ QuickFolders.Interface = {
 			label += (useName && useName.length > 0) ? useName : (folder ? folder.name : "?? " + util.getNameFromURI(entry.uri));
 
       if (isShowTotals && entry && entry.flags)
-        isShowTotals = (entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS) ? false : true;
+        isShowTotals = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_COUNTS) ? false : true;
       if (isShowUnread && entry && entry.flags)
-        isShowUnread = (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD) ? false : true;
+        isShowUnread = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_UNREAD) ? false : true;
 
 			util.logDebugOptional("folders",
 				  "unread " + (isShowUnread ? "(displayed)" : "(not displayed)") + ": " + numUnread
@@ -2162,7 +2161,7 @@ QuickFolders.Interface = {
 	styleFolderButton: function styleFolderButton(button, nUnreadTotal, nUnreadSubfolders, numTotal, specialStyle, tabColor, gotNew, icon, entry) {
 		//reset style!
 		let cssClass = '',
-        ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+        ADVANCED_FLAGS = QuickFolders.Util.ADVANCED_FLAGS;
 		//  toolbarbutton-menubutton-button
 
 		QuickFolders.Util.logDebugOptional("buttonStyle","styleFolderButton(" + button.getAttribute("label")
@@ -2237,7 +2236,7 @@ QuickFolders.Interface = {
       }
       return null;
     }
-    let ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+    let ADVANCED_FLAGS = util.ADVANCED_FLAGS;
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {

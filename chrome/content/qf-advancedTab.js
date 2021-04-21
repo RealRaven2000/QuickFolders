@@ -29,7 +29,7 @@ QuickFolders.AdvancedTab = {
   } ,
   
   load: function load() {
-		const util = this.MainQuickFolders.Util,
+		const util = QuickFolders.AdvancedTab.MainQuickFolders.Util,
 		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || util.ADVANCED_FLAGS;
     let dropdownCount = 0;
 		
@@ -156,6 +156,16 @@ QuickFolders.AdvancedTab = {
     tabHeader.setAttribute('description', entry.name); // not working anymore, dialogheader is not displayed
 		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder ? this.folder.URI : QuickFolders.AdvancedTab.folder.URI);
 		tabName.value = entry.name;
+    
+    // mx-l10n
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
+
+    // Provide a relative path to i18.js from the root of your extension.
+    let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
+    Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
+    i18n.updateDocument({extension});
+    
 		
 		this.updateCSSpreview();
     
@@ -377,3 +387,9 @@ QuickFolders.AdvancedTab = {
     
 }  // AdvancedTab
 
+// initialize the dialog and do l10n
+window.document.addEventListener('DOMContentLoaded', 
+  QuickFolders.AdvancedTab.load.bind(QuickFolders.AdvancedTab) , 
+  { once: true });
+  
+  

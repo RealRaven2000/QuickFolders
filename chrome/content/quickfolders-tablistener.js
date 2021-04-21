@@ -64,7 +64,7 @@ QuickFolders.TabListener = {
           // Do not switch to current folder's category, if current tab has another selected!
           else {
             // there is no need for this if it is not a mail tab.
-            if (tabMode == util.mailFolderTypeName) {
+            if (tabMode == "folder") {
               QI.setTabSelectTimer();
             }
             else {
@@ -77,7 +77,7 @@ QuickFolders.TabListener = {
         
         // for non-folder tabs: reset lastTabSelected to force refresh of current folder 
         // when we go back to a folder tab
-        if (tabMode != util.mailFolderTypeName)
+        if (tabMode != "folder")
           QI.lastTabSelected = null;
       }
     }

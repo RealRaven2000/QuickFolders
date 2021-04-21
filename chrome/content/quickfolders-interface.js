@@ -1307,7 +1307,7 @@ QuickFolders.Interface = {
 			let tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
 			    tabMode = util.getTabMode(tab);
 			if (tab &&
-			    (tabMode == util.mailFolderTypeName || tabMode == "message")) {
+			    (tabMode == "folder" || tabMode == "message")) {
 				tab.QuickFoldersCategory = QI.currentActiveCategories; // store list!
 				// setTabValue does not exist (yet)
 				//if (sessionStoreManager.setTabValue)
@@ -2392,7 +2392,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewTab()");
 		if (tabmail) {
 		  let tabName = folder.name;
-      tabmail.openTab(util.mailFolderTypeName, {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
+      tabmail.openTab("folder", {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
 		}
 	} ,
 
@@ -4379,7 +4379,7 @@ QuickFolders.Interface = {
 			if (isCtrlKey) {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
-          tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
+          tabmail.openTab("folder", {folder: folderUri, messagePaneVisible:true } );
 				}
 			}
 		}
@@ -6327,7 +6327,7 @@ QuickFolders.Interface = {
           + "visible = " + visible);
         if (selector == 'singleMailTab' && tabMode =='message'
             ||
-            selector == '' // && tabMode == util.mailFolderTypeName
+            selector == '' // && tabMode == "folder"
             ||
             selector == 'messageWindow'
            ) {

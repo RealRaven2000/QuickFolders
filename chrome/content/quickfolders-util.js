@@ -335,10 +335,6 @@ QuickFolders.Util = {
     return null;
   } ,
   
-	get mailFolderTypeName() {
-    return "folder";
-	} ,
-
 	get PlatformVersion() {
 		if (null==this.mPlatformVer)
 			try {
@@ -634,7 +630,7 @@ QuickFolders.Util = {
 			if (tab) {
 			  let tabMode = this.getTabMode(tab);
 				util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
-				if (tabMode != util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
+				if (tabMode != "folder") { 
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					// iterate tabs
@@ -642,7 +638,7 @@ QuickFolders.Util = {
           let firstFound = -1;
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
-						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
+						if (info && this.getTabMode(info) == "folder") { 
 							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
               if (firstFound<0) firstFound = i;
               if (!folder) 
@@ -964,26 +960,20 @@ QuickFolders.Util = {
 	// of folder is deleted we should not throw an error!
 	get CurrentFolder() {
 		const util = QuickFolders.Util;
-		let aFolder;
-		if (typeof(GetLoadedMsgFolder) != 'undefined') {
-			aFolder = GetLoadedMsgFolder();
-		}
-		else
-		{
-			let currentURI = null;
-			if (gFolderDisplay && gFolderDisplay.displayedFolder)
-				currentURI = gFolderDisplay.displayedFolder.URI;
-			// in search result folders, there is no current URI!
-			if (!currentURI)
-				return null;
-			try {
-				aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
-			}
-			catch(ex) {
-				util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
-				return null;
-			}
-		}
+		let aFolder,
+        currentURI = null;
+    if (gFolderDisplay && gFolderDisplay.displayedFolder)
+      currentURI = gFolderDisplay.displayedFolder.URI;
+    // in search result folders, there is no current URI!
+    if (!currentURI)
+      return null;
+    try {
+      aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+    }
+    catch(ex) {
+      util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
+      return null;
+    }
 		return aFolder;
 	} ,
 
@@ -1471,7 +1461,7 @@ QuickFolders.Util = {
 		}
 	},
 	
-	aboutHost: function aboutHost() {
+	aboutHost: async function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
 		   "PlatformVersion: " + util.PlatformVersion + "\nname: " + util.ApplicationName;
@@ -2170,33 +2160,7 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
           if (!isAsync || !needToCreate)
             resolve();
         });
-        await deferred;
-			
-				
-/*				
-      if (needToCreate) {
-        let deferred = PromiseUtils.defer();
-        let listener = {
-          OnStartRunningUrl(url) {},
-          OnStopRunningUrl(url, aExitCode) {
-            if (aExitCode == Cr.NS_OK)
-              deferred.resolve();
-            else
-              deferred.reject(aExitCode);
-          },
-          QueryInterface: XPCOMUtils.generateQI([Ci.nsIUrlListener])
-        };
-
-        // If any error happens, it will throw--causing the outer promise to
-        // reject.
-				logDebug('folder.createStorageIfMissing()...');		
-        folder.createStorageIfMissing(isAsync ? listener : null);
-        if (!isAsync || !needToCreate)
-          deferred.resolve();
-        yield deferred.promise;
-      }
-*/
-			
+        await deferred;	
 			
       }
 /*
@@ -2211,33 +2175,9 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     return folder;
   };
 
-//			//// CHEAT SHEET
-// 			// from comm-central/mailnews/test/resources/filterTestUtils.js
-// 			let ATTRIB_MAP = {
-// 				// Template : [attrib, op, field of value, otherHeader]
-// 				"subject" : [Ci.nsMsgSearchAttrib.Subject, contains, "str", null],
-// 				"from" : [Ci.nsMsgSearchAttrib.Sender, contains, "str", null],
-// 				"date" : [Ci.nsMsgSearchAttrib.Date, Ci.nsMsgSearchOp.Is, "date", null],
-// 				"size" : [Ci.nsMsgSearchAttrib.Size, Ci.nsMsgSearchOp.Is, "size", null],
-// 				"message-id" : [Ci.nsMsgSearchAttrib.OtherHeader+1, contains, "str", "Message-ID"],
-// 				"user-agent" : [Ci.nsMsgSearchAttrib.OtherHeader+2, contains, "str", "User-Agent"]
-// 			 };
-// 			 // And this maps strings to filter actions
-// 			 let ACTION_MAP = {
-// 				// Template : [action, auxiliary attribute field, auxiliary value]
-// 				"priority" : [Ci.nsMsgFilterAction.ChangePriority, "priority", 6],
-// 				"delete" : [Ci.nsMsgFilterAction.Delete],
-// 				"read" : [Ci.nsMsgFilterAction.MarkRead],
-// 				"unread" : [Ci.nsMsgFilterAction.MarkUnread],
-// 				"kill" : [Ci.nsMsgFilterAction.KillThread],
-// 				"watch" : [Ci.nsMsgFilterAction.WatchThread],
-// 				"flag" : [Ci.nsMsgFilterAction.MarkFlagged],
-// 				"stop": [Ci.nsMsgFilterAction.StopExecution],
-// 				"tag" : [Ci.nsMsgFilterAction.AddTag, "strValue", "tag"]
-// 				"move" : [Ci.nsMsgFilterAction.MoveToFolder, "folder"]
-// 			 };
 
-
+// the following adds the notifyTools API as a util method to communicate with the background page
+// this mechanism will be used to replace legacy code with API calls.
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 Services.scriptloader.loadSubScript(

@@ -7,18 +7,7 @@
 
   END LICENSE BLOCK */
 
-if (QuickFolders.Util.Application != 'Postbox') {
-	  if (typeof ChromeUtils.import !== "undefined") {
-			try { // Tb 61
-				var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
-			}
-			catch (ex) {
-				ChromeUtils.import("resource:///modules/MailUtils.js");
-			}  
-		}
-		else
-			Components.utils.import("resource:///modules/MailUtils.js");
-}
+var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 
 QuickFolders.Model = {
   selectedFolders: [],
@@ -314,31 +303,7 @@ QuickFolders.Model = {
 
   getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
     const util = QuickFolders.Util;
-    let msgfolder = null;
-    if (typeof MailUtils != 'undefined') {
-			if (MailUtils.getExistingFolder)
-				msgfolder = MailUtils.getExistingFolder(uri, checkFolderAttributes);
-			else
-				msgfolder = MailUtils.getFolderForURI(uri, checkFolderAttributes);
-    }
-		else 
-			try {
-				let mw = QuickFolders.win,
-						resource = mw.GetMsgFolderFromUri ? mw.GetMsgFolderFromUri(uri, checkFolderAttributes) : mw.GetResourceFromUri(uri);
-				if (!resource) {
-					util.logToConsole('getMsgFolderFromUri() - no resource from uri ' + uri);
-					return null;
-				}
-				msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
-				if (checkFolderAttributes) {
-					if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
-						msgfolder = null;
-					}
-				}
-			}
-			catch (ex) {
-				 QuickFolders.Util.logException("getMsgFolderFromUri( " + uri + ")", ex);
-			}
+    let msgfolder = MailUtils.getExistingFolder(uri, checkFolderAttributes);
 		if (msgfolder && !msgfolder.parent && !msgfolder.isServer) return null; // invalid folder
     return msgfolder;
   } ,

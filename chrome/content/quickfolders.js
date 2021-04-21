@@ -570,7 +570,7 @@ var QuickFolders_PrepareSessionStore = function () {
 		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
 		mailTabType.QuickFolders_SessionStore = true;
 		// overwrite persist 
-		let orgPersist = mailTabType.modes["folder"].persistTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
+		let orgPersist = mailTabType.modes["folder"].persistTab;
 		mailTabType.modes["folder"].persistTab = function(aTab) {
 			let retval = orgPersist(aTab);
 			if (retval) {
@@ -580,7 +580,7 @@ var QuickFolders_PrepareSessionStore = function () {
 			return retval; 
 		}
 		// overwrite restoreTab
-		let orgRestore = mailTabType.modes["folder"].restoreTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
+		let orgRestore = mailTabType.modes["folder"].restoreTab;
 		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
 			orgRestore(aTabmail, aPersistedState);
       debugger;
@@ -894,7 +894,7 @@ var QuickFolders = {
 				  cats = tab.QuickFoldersCategory;
 				
 				util.logDebug('init: setting categories to ' + cats);
-				if (tabMode == util.mailFolderTypeName || tabMode == "message") {
+				if (tabMode == "folder" || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
 					QI.currentActiveCategories = cats;
 				}
@@ -2305,7 +2305,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 				continue; 
 			// SM seems to have "false" tabs (without any info in them) we are not interested in them
 			if (  folderUri === tabURI
-			   && util.getTabMode(info) == util.mailFolderTypeName // SM folders only, no single msg.
+			   && util.getTabMode(info) == "folder"
 			   && i !== QuickFolders.tabContainer.selectedIndex)
 			{
         util.logDebugOptional("folders.select","matched folder to open tab, switching to tab " + i);

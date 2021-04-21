@@ -2,35 +2,6 @@
     "account.label": {
         "message": "Select account:"
     },
-    "active-version-info": {
-        "description": "The boldStart and boldEnd parts will be replaced with html tags",
-        "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
-        "placeholders": {
-            "addonVer": {
-                "content": "$1",
-                "example": "Version 1.1"
-            },
-            "appVer": {
-                "content": "$2",
-                "example": "78.0b4"
-            }
-        }
-    },
-    "addon-authors-struggle": {
-        "message": "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
-    },
-    "btn-extend-license": {
-        "message": "Tôi muốn gia hạn giấy phép của mình thêm một năm"
-    },
-    "btn-renew-license": {
-        "message": "Tôi muốn gia hạn giấy phép của mình"
-    },
-    "btn-want-a-license": {
-        "message": "Tôi muốn mua giấy phép"
-    },
-    "btn-want-to-donate": {
-        "message": "Tôi muốn giúp đỡ với khoản đóng góp một lần."
-    },
     "btnApply": {
         "message": "Apply"
     },
@@ -82,9 +53,6 @@
     "chkSetMailsUnread.tooltip": {
         "message": "If you move mail into this folder it is set to unread."
     },
-    "cost-of-independence": {
-        "message": "Việc phát triển phần mềm tốn kém thời gian và tiền bạc - không giống như nhiều ứng dụng nền tảng, Tiện ích bổ sung không được viết bởi các tập đoàn lớn, cũng như không được Mozilla tài trợ theo bất kỳ hình thức nào."
-    },
     "cssBackground": {
         "message": "Background"
     },
@@ -112,12 +80,6 @@
     "domainLicense.validate": {
         "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
     },
-    "donate": {
-        "message": "Giúp đỡ với khoản đóng góp một lần."
-    },
-    "donate-heading": {
-        "message": "Giúp đỡ bằng cách quyên góp!"
-    },
     "email.label": {
         "message": "Email:"
     },
@@ -127,19 +89,8 @@
     "enterLicenseKey.tooltip": {
         "message": "Enter the License Key code sent to you via Email."
     },
-    "extend-your-license": {
-        "message": "Xem xét gia hạn giấy phép của bạn thêm một năm."
-    },
-    "extensionDescription": {
-        "description": "Description of the extension.",
-        "message": "Bookmark your favorite mail folders in Thunderbird."
-    },
-    "extensionName": {
-        "description": "Name of the extension.",
-        "message": "QuickFolders"
-    },
     "extensions.quickfolders@curious.be.description": {
-        "message": "Đánh dấu các thư mục yêu thích trong Thunderbird."
+        "message": "Könyvjelzőzze a kedvenc mappáit a Thunderbirdben!"
     },
     "firstName.label": {
         "message": "First Name:"
@@ -165,37 +116,8 @@
     "grpTabBehavior": {
         "message": "Advanced Tab Behavior"
     },
-    "heading-installed": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "Đã cài đặt thành công $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "heading-updated": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "$addonName$ đã được cập nhật thành côngs",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
     "intro": {
         "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
-    },
-    "label-remind-me": {
-        "message": "Nhắc lại tôi sau $countDays$ ngày.",
-        "placeholders": {
-            "countDays": {
-                "content": "$1",
-                "example": "10"
-            }
-        }
     },
     "lastName.label": {
         "message": "Last Name:"
@@ -203,37 +125,11 @@
     "lblCustomPalette": {
         "message": "Custom Palette:"
     },
-    "license-is-extended": {
-        "description": "Shown if license expires more than a year from now",
-        "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
-    },
     "licenseWindow.title": {
         "message": "QuickFolders Pro License"
     },
-    "mozillas-basic-platform": {
-        "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
-    },
-    "notificationTitle": {
-        "description": "Title of the click notification.",
-        "message": "Click notification"
-    },
-    "ongoing-work": {
-        "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "purchase-a-license": {
-        "message": "Mua giấy phép."
-    },
-    "purchase-heading": {
-        "message": "Mua Giấy phép!"
-    },
     "qf.accounts": {
-        "message": "Tài khoản"
+        "message": "Fiókok"
     },
     "qf.alert.pasteFolders.formatErr": {
         "message": "Could not create tabs. See tools / error console for more detail."
@@ -242,103 +138,103 @@
         "message": "Backup / Restore"
     },
     "qf.btn.applyPosition": {
-        "message": "Áp dụng giá trị vị trí!"
+        "message": "Alkalmazza a pozícióértéket!"
     },
     "qf.button.add": {
-        "message": "Thêm!"
+        "message": "Hozzáadás!"
     },
     "qf.button.configureTooltips": {
         "message": "Configure tooltips…"
     },
     "qf.button.currentFolderBackground.set": {
-        "message": "chọn"
+        "message": "apply"
     },
     "qf.button.default": {
-        "message": "Defaults"
+        "message": "Alapértelmezett"
     },
     "qf.button.defaultcolors": {
-        "message": "Màu mặc định"
+        "message": "Alapértelmezett színek"
     },
     "qf.button.deleteselectedcategory": {
-        "message": "Xóa danh mục được chọn"
+        "message": "Kijelölt kategória törlése"
     },
     "qf.button.down": {
-        "message": "Xuống"
+        "message": "Le"
     },
     "qf.button.pasteLicense": {
         "message": "paste"
     },
     "qf.button.rename": {
-        "message": "Đổi tên"
+        "message": "Átnevezés"
     },
     "qf.button.reorderButtonBottom": {
-        "message": "Xuống Cuối"
+        "message": "Aljára"
     },
     "qf.button.reorderButtonBottom.accessKey": {
-        "message": "B"
+        "message": "a"
     },
     "qf.button.reorderButtonBottom.toolTip": {
-        "message": "chạy bộ lọc sau tất cả các thứ khác"
+        "message": "Szűrő áthelyezése, így az összes többi után hajtódik végre"
     },
     "qf.button.reorderButtonTop": {
-        "message": "Lên Đầu"
+        "message": "Tetejére"
     },
     "qf.button.reorderButtonTop.accessKey": {
-        "message": "o"
+        "message": "T"
     },
     "qf.button.reorderButtonTop.toolTip": {
-        "message": "chạy bộ lọc trước tất cả các thứ khác"
+        "message": "Szűrő áthelyezése, így az összes többi előtt hajtódik végre"
     },
     "qf.button.up": {
-        "message": "Lên"
+        "message": "Fel"
     },
     "qf.button.validateLicense": {
         "message": "validate"
     },
     "qf.caption.currentFolderBackground": {
-        "message": "nền của Thanh Công Cụ Thư Mục Hiện Tại"
+        "message": "Current Folder Toolbar background"
     },
     "qf.categories.supportMultiple": {
         "message": "Support selecting multiple tab categories"
     },
     "qf.categories.supportMultiple.tooltip": {
-        "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+        "message": "A SHIFT gombbal több kategóriát is kiválaszthat a legördülő menüből."
     },
     "qf.checkbox.autoFocusPreview": {
-        "message": "Tập trung vào danh sách tin nhắn khi chuyển các thẻ"
+        "message": "Üzenetlista kijelölése fülek váltásakor"
     },
     "qf.checkbox.autoHideToolbar": {
-        "message": "Ẩn QuickFolders khi không dùng"
+        "message": "QuickFolders mappák elrejtése amikor nem szükségesek"
     },
     "qf.checkbox.autoHideToolbar.tooltip": {
-        "message": "Thu gọn thanh công cụ trong các thẻ đặc biệt như lịch, nội dung, quản lý addon."
+        "message": "Speciális eszköztárak összecsukása, mint a naptár, a tartalom és a kiegészítőkezelő."
     },
     "qf.checkbox.currentFolder.closeButton": {
-        "message": "Nút Đóng"
+        "message": "Bezárás gomb"
     },
     "qf.checkbox.currentFolder.show": {
-        "message": "Hiển thị Thanh Công Cụ"
+        "message": "Eszköztár megjelenítése"
     },
     "qf.checkbox.currentfolder.lightweight": {
         "message": "integrate with lightweight theme"
     },
     "qf.checkbox.debug": {
-        "message": "Chế độ sửa lỗi"
+        "message": "Debug mód"
     },
     "qf.checkbox.debug.tooltip": {
-        "message": "ấn chuột phải vào ô kiểm này cho các tùy chọn sửa lỗi nâng cao"
+        "message": "kattintson jobb gombbal a jelölőnégyzetbe a debug opciókhoz"
     },
     "qf.checkbox.displaylabel": {
-        "message": "Hiển thị 'QuickFolders' trên thanh công cụ"
+        "message": "&quot;QuickFolders&quot; címke megjelenítése az eszköztáron"
     },
     "qf.checkbox.displaylabel.tooltip": {
-        "message": "ấn chuột phải để thay đổi chữ của nhãn này"
+        "message": "kattintson jobb gombbal a címke címének megváltoztatásához"
     },
     "qf.checkbox.enableTransitions": {
-        "message": "Cho phép chuyển tiếp CSS"
+        "message": "CSS átmenetek engedélyezése"
     },
     "qf.checkbox.enableTransitions.tooltip": {
-        "message": "Hiển thị chuyển tiếp mượt giữa các màu sắc của thẻ."
+        "message": "Sima átmeneteket jelenít meg a fülek színezésén."
     },
     "qf.checkbox.hideCategoryBox": {
         "message": "Collapse Categories"
@@ -347,28 +243,28 @@
         "message": "Minimizes the Categories menu to take up less space."
     },
     "qf.checkbox.highlightNewMail": {
-        "message": "Làm nổi bật các thư mục có thư mới"
+        "message": "Új üzeneteket tartalmazó mappák kiemelése"
     },
     "qf.checkbox.menus.dragToNewFolder": {
-        "message": "Kéo vào một thư mục con mới"
+        "message": "Drag to new Subfolder"
     },
     "qf.checkbox.menus.emptyJunk": {
-        "message": "Xóa hết Rác"
+        "message": "Piszkozatok kiürítése"
     },
     "qf.checkbox.menus.emptyTrash": {
-        "message": "Xóa hết thư rác"
+        "message": "Törölt elemek kiürítése"
     },
     "qf.checkbox.menus.getMailForInbox": {
-        "message": "Nhận tin nhắn (Tài khoản thư)"
+        "message": "Üzenetek letöltése (levelezési postafiókok)"
     },
     "qf.checkbox.menus.getMailForNews": {
-        "message": "Nhận tin nhắn (Tài khoản tin tức)"
+        "message": "Üzenetek letöltése (hírcsatorna fiókok)"
     },
     "qf.checkbox.menus.markAllRead": {
-        "message": "Đánh dấu thư mục là Đã Đọc"
+        "message": "Mappa jelölése olvasottként"
     },
     "qf.checkbox.menus.markAllReadRecursive": {
-        "message": "Đánh dấu thư mục là Đã Đọc (đệ quy)"
+        "message": "Mappa jelölése olvasottként (rekurzív)"
     },
     "qf.checkbox.quickCopy": {
         "message": "quickCopy - Copy mail to any folder with Shortcut:"
@@ -395,28 +291,28 @@
         "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
     },
     "qf.checkbox.readingList": {
-        "message": "Reading List"
+        "message": "Olvasási lista"
     },
     "qf.checkbox.readingList.tooltip": {
-        "message": "A list for mails that should be read later. Drag your important emails on this button."
+        "message": "A levelek listája, amelyet később el kell olvasni. Húzza a fontos e-maileket erre a gombra."
     },
     "qf.checkbox.shadows": {
-        "message": "Bóng"
+        "message": "árnyékok"
     },
     "qf.checkbox.shift": {
         "message": "Shift"
     },
     "qf.checkbox.showCountInSubFolders": {
-        "message": "Hiển thị toàn bộ các thư mục con"
+        "message": "Az almappákét is jelenítse meg"
     },
     "qf.checkbox.showCountInSubFolders.tooltip": {
-        "message": "Chúng được hiển thị ngăn cách bởi dấu '+' bên cạnh số đếm chính; thư chưa đọc bên trong sẽ làm cho thẻ được in đậm lên nếu tùy chọn trên được kích hoạt."
+        "message": "Ezek '+' -al lesznek elválasztva a fő számtól, ha tartalmaz olvasatlan üzenetet, a fül is félkövér lesz, amennyiben a fenti opció aktív"
     },
     "qf.checkbox.showFilterButton": {
-        "message": "Nút 'Tạo Bộ Lọc'"
+        "message": "&quot;Szűrők létrehozása&quot; gomb"
     },
     "qf.checkbox.showFilterButton.tooltip": {
-        "message": "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders."
+        "message": "Szűrőket a QuickFolders jobb gombos menüjének használatával is készíthet."
     },
     "qf.checkbox.showFolderNavigation": {
         "message": "Folder Navigation buttons"
@@ -425,19 +321,19 @@
         "message": "Customize Icon buttons"
     },
     "qf.checkbox.showIcons": {
-        "message": "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)"
+        "message": "Ikonok megjelenítése (Beérkezett üzenetek, Elküldött üzenetek, Spam, Törölt elemek, Piszkozatok, Archívum, Sablonok)"
     },
     "qf.checkbox.showMailFolderCommands": {
-        "message": "Mail Folder Commands"
+        "message": "Üzenetmappa parancsok"
     },
     "qf.checkbox.showMessageNavigation": {
-        "message": "Nút Điều Hướng Tin Nhắn"
+        "message": "Üzenet mozgatás gombok"
     },
     "qf.checkbox.showNewMailItalics": {
         "message": "Display tabs with newly arrived mail italic"
     },
     "qf.checkbox.showNonEmptyItalics": {
-        "message": "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng"
+        "message": "Olvasatlan üzeneteket tartalmazó mappák megjelenítése dőlttel"
     },
     "qf.checkbox.showQuickMove": {
         "message": "quickMove Button"
@@ -446,49 +342,49 @@
         "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
     },
     "qf.checkbox.showRecentButton": {
-        "message": "Nút thư mục hiện tại"
+        "message": "Nemrég látogatott mappák gomb"
     },
     "qf.checkbox.showRecentTab": {
-        "message": "Hiển thị thẻ các thư mục gần đây nhất"
+        "message": "Mutassa az előző mappa fült"
     },
     "qf.checkbox.showRecentTab.tooltip": {
-        "message": "Nhấp chuột phải để chỉnh cấu hình"
+        "message": "Kattintson jobb gombbal a beállításokhoz"
     },
     "qf.checkbox.showSubfolders": {
-        "message": "Mở rộng các thư mục con trong trình đơn tự bung"
+        "message": "Fülek kiterjesztése a felugró ablakokban"
     },
     "qf.checkbox.showTotalMessageCount": {
-        "message": "Hiển thị tổng số tin nhắn trên nút thư mục"
+        "message": "Az összes üzenetek számának megjelenítése a mappán"
     },
     "qf.checkbox.showUnreadBold": {
-        "message": "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm"
+        "message": "Olvasatlan üzeneteket tartalmazó mappák megjelenítése félkövérrel"
     },
     "qf.checkbox.showUnreadMessageCount": {
-        "message": "Hiển thị số tin nhắn chưa đọc trên nút thư mục"
+        "message": "Az olvasatlan üzenetek számának megjelenítése a mappán"
     },
     "qf.checkbox.showshortcutnumber": {
-        "message": "Hiển thị số phím tắt trên nhãn thư mục"
+        "message": "Gyorsgomb sorszám megjelenítése a mappák címkéjén"
     },
     "qf.checkbox.singleMessage.currentFolder.show": {
-        "message": "…cả trong các cửa sổ Tin Nhắn Đơn"
+        "message": "… az üzenetablakokban is"
     },
     "qf.checkbox.singleMessage.currentFolder.tooltip": {
-        "message": "Hiển thị thanh thư mục hiện tại trong cửa sổ khi bạn mở một Thư ở cửa sổ mới"
+        "message": "A jelenlegi mappa eszköztár megjelenítése abban az ablakban, ami az üzenet új ablakban való megjelenítésekor nyílik"
     },
     "qf.checkbox.singleMessageTab.currentFolder.show": {
         "message": "Toolbar in Single Message Tabs"
     },
     "qf.checkbox.skipFolder": {
-        "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+        "message": "Olvasatlan mappa kihagyása - használja a Billentyűparancsot: SHIFT +"
     },
     "qf.checkbox.skipFolder.tip": {
-        "message": "Shortcut for jumping to the next unread folder."
+        "message": "Parancsikon a következő olvasatlan mappára ugráshoz."
     },
     "qf.checkbox.sortMenusAlpha": {
-        "message": "Bắt buộc sắp xếp các thư mục con trên trình đơn theo thứ tự bảng chữ cái."
+        "message": "Almappák felsorolása ABC sorrendben a menüben"
     },
     "qf.checkbox.sortMenusAlpha.tooltip": {
-        "message": "Chỉ sử dụng tùy chọn này nếu hộp thư khách hàng không sắp xếp các thư mục con theo đúng thứ tự."
+        "message": "Csak akkor használja ezt a funkciót, ha az e-mail kliense nem megfelelő sorrendben jeleníti meg az almappákat."
     },
     "qf.checkbox.storeConfig.general": {
         "message": "Include general settings"
@@ -500,52 +396,52 @@
         "message": "Include QuickFolders Tabs"
     },
     "qf.checkbox.tabMenuIcon": {
-        "message": "Biểu tượng thanh công cụ"
+        "message": "Eszköztár ikon"
     },
     "qf.checkbox.tabMenuIcon.tooltip": {
-        "message": "Trình đơn này cũng có thể được gọi bằng cách kích chuột phải lên chính thanh công cụ"
+        "message": "A menü az eszköztáron jobb kattintással is előhívható"
     },
     "qf.checkbox.transparent": {
-        "message": "hiệu ứng trong suốt"
+        "message": "átlátszó"
     },
     "qf.checkbox.useNavigationShortcuts": {
-        "message": "Phím ALT-trái/ALT-phải để chuyển sang Thẻ phía trước/sau"
+        "message": "Alt+Jobbra / Alt+Balra az előző / következő fülhöz"
     },
     "qf.checkbox.usePalette": {
-        "message": "Dùng bảng màu"
+        "message": "Paletta használata"
     },
     "qf.checkbox.useRebuildShortcut": {
-        "message": "Xây dựng lại các thẻ với phím tắt: Ctrl + Alt +"
+        "message": "Fülek újraépítése a Ctrl + Alt + billentyűkombinációval"
     },
     "qf.checkbox.usekeyboardshortcuts": {
-        "message": "Sử dụng phím tắt (Alt + 1 đến Alt + 9)"
+        "message": "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)"
     },
     "qf.checkbox.usekeyboardshortcutsCTRL": {
-        "message": "Sử dụng Ctrl thay cho Alt"
+        "message": "Alt helyett Ctrl használata"
     },
     "qf.continueFilter.label": {
-        "message": "Tạo Bộ Lọc…"
+        "message": "Szűrő létrehozása…"
     },
     "qf.continueFilter.shortcut": {
-        "message": "L"
+        "message": "S"
     },
     "qf.copyfolders": {
         "message": "Copy Tabs"
     },
     "qf.copyfolders.tooltip": {
-        "message": "Sao chép chuỗi cấu hình vào bộ nhớ tạm"
+        "message": "Mappák beállításainak másolása a vágólapra"
     },
     "qf.currentFolderBackground.custom": {
-        "message": "thay đổi"
+        "message": "custom"
     },
     "qf.currentFolderBackground.dark": {
-        "message": "tối"
+        "message": "dark"
     },
     "qf.currentFolderBackground.default": {
-        "message": "mặc định"
+        "message": "default"
     },
     "qf.currentFolderBackground.translucent": {
-        "message": "trong suốt"
+        "message": "translucent"
     },
     "qf.currentfolder.leftSpacer": {
         "message": "Left Spacer:"
@@ -554,112 +450,112 @@
         "message": "Right Spacer:"
     },
     "qf.description.bugzilla": {
-        "message": "Hãy sử dụng Bugzilla cho tất cả các yêu cầu về tính năng chính thức và báo cáo lỗi"
+        "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a Bugzillát"
     },
     "qf.description.categoryusage": {
-        "message": "Bạn có thể để đánh dấu này vào một danh mục (như: &apos;Công việc&apos;, &apos;Riêng tư&apos;, ...)."
+        "message": "A könyvjelzőjét hozzáadhatja egy kategóriához (pl. &apos;Munka&apos;, &apos;Személyes&apos;, stb.)."
     },
     "qf.description.changeCategory": {
-        "message": "Ấn chuột phải lên đánh dấu để xếp nó vào một danh mục. Bạn sẽ thấy các danh mục xổ xuống ở bên trái thanh."
+        "message": "Kattintson jobb gombbal a könyvjelzőre kategóriákba rendezéshez. A kategóriák listáját a bal oldalon találja."
     },
     "qf.description.contactMe": {
-        "message": "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:"
+        "message": "Személyesen is elérhet a axelg@gofree.indigo.ie címen:"
     },
     "qf.description.donate": {
-        "message": "Nếu bạn yêu thích QuickFolders như chúng tôi và muốn hỗ trợ phát triển nó, bạn có thể quyên góp tiền cho QuickFolders"
+        "message": "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért."
     },
     "qf.description.dragToAdd": {
-        "message": "Kéo thư mục chứa thư vào vùng trống trên thanh công cụ để tạo ra một thư mục truy cập nhanh mới (làm việc giống như một đường dẫn tắt/bí danh). Kéo các tin nhắn lên thanh thư mục truy cập nhanh để di chuyển chúng vào thư mục tương ứng (hoặc Sao chép với các phím thay đổi). Ấn vào thư mục truy cập nhanh để tới thư mục chứa thư điện tử."
+        "message": "Új gyorsmappa (hivatkozásként működik) létrehozásához húzza az üzenetmappát az eszköztár üres részére. Húzza az üzeneteket a gyorsmappára, hogy a megfelelő mappába mozgassa őket (vagy másolja módosító billentyűvel). Kattintson a gyorsmappára a főmappa megnyitásához."
     },
     "qf.description.dragToPopup": {
-        "message": "Kéo các tin nhắn lên trình đơn tự bung của thư mục truy cập nhanh để chuyển các tin nhắn vào các thư mục con."
+        "message": "Húzza az üzeneteket a gyorsmappa felugró menüjébe az almappákba való mozgatáshoz."
     },
     "qf.description.dragToPosition": {
-        "message": "Kéo thư mục truy cập nhanh sang bên để thay đổi vị trí của chúng. Ấn chuột phải vào thư mục truy cập nhanh để hiện trình đơn ngữ cảnh; bạn có thể chuyển tới thư mục con bằng cách chọn trong trình đơn đó. 'Đổi tên đánh dấu' thay đổi nhãn cho thư mục truy cập nhanh. 'Gỡ bỏ đánh dấu' xóa thư mục truy cập nhanh (không phải là thư mục chứa thư điện tử)."
+        "message": "Húzza a gyorsmappákat oldalra a helyzetük megváltoztatásához. Kattintson jobb gombbal a környezeti menü eléréséhez; kijelöléssel az almappába ugorhat. A &apos;könyvjelző&apos; átnevezése megváltoztatja a gyorsmappa nevét. A &apos;könyvjelző eltávolítása&apos; törli a gyorsmappát (kivéve, ha ez a főmappa)."
     },
     "qf.description.dragexplain": {
-        "message": "Các đánh dấu còn có thể được kéo để đổi vị trí! Thả vào phía trên của một đánh dấu khác để chèn vào phía trước/sau nó."
+        "message": "A könyvjelzők sorrendjét megváltoztathatja a &quot;fogd és vidd&quot; módszerrel is!"
     },
     "qf.description.editcategory": {
-        "message": "Chọn một danh mục đã tồn tại bằng cách nháy đúp chuột vào nó, hoặc thêm một danh mục mới dưới đây."
+        "message": "Létező kategóriát kijelölheti dupla kattintással, alant új kategóriát hozhat létre:"
     },
     "qf.description.experimentalItems": {
-        "message": "Các mục dưới đây để thử nghiệm, hy vọng chúng sẽ hoạt động ở phiên bản tiếp theo!!"
+        "message": "A következő elemek fejlesztésben vannak, remélhetőleg a következő változatban működni fognak!"
     },
     "qf.description.languages": {
-        "message": "QuickFolders hỗ trợ ngôn ngữ - bạn có thể trợ giúp bằng cách dịch sang ngôn ngữ của bạn tại Babelzilla:"
+        "message": "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a Babelzillán:"
     },
     "qf.description.linkNote": {
-        "message": "Ghé thăm trang chủ QuickFolders để xem thêm hướng dẫn sử dụng chi tiết, các mẹo và các câu hỏi thường gặp:"
+        "message": "QuickFolders  honlap meglátogatása: részletes ismertető, tippek, és GYÍK"
     },
     "qf.description.multicategory": {
-        "message": "Để thêm một thư mục vào nhiều danh mục: Ấn phím SHIFT hoặc CONTROL khi chọn các mục."
+        "message": "Ha egy mappát több kategóriához szeretne sorolni, tartsa lenyomva a SHIFT vagy a CONTROL billentyűt a kijelölés közben."
     },
     "qf.description.pulldown": {
-        "message": "Thanh QuickFolders sẽ hiện một trình đơn xổ xuống, cho phép bạn lọc các đánh dấu theo danh mục."
+        "message": "A QuickFolders eszköztár megjelenít egy legördülőt, így szűrheti a könyvjelzőket kategóriánként."
     },
     "qf.description.rightClickOptions": {
-        "message": "Ấn chuột phải lên vùng trống để mở trình đơn tùy chọn. Trong này, bạn có thể lựa chọn kiểu âm bản (nhỏ hơn) hoặc kiểu phẳng (rõ ràng hơn; hỗ trợ hiển thị khi kéo)."
+        "message": "Kattintson jobb gombbal egy üres helyre az opciók menü előhívásához. Itt választhat alap stílust (kisebb) vagy lapos stílust (áttekinthetőbb)."
     },
     "qf.description.tipMsg": {
-        "message": "Mẹo nhỏ: nếu bạn có nhiều thưc mục, hãy sử dụng thử ứng dụng mở rộng Nostalgy cho bàn phím để thực hiện việc sắp xếp tin nhắn."
+        "message": "Tipp: ha rengeteg mappája van, próbálja ki a Nostalgy kiegészítőt, mellyel a billentyűzettel rendezheti az üzeneteit!"
     },
     "qf.description.versionhistory": {
-        "message": "Chi tiết về các phiên bản cũ tại quickfolders.org"
+        "message": "Részletes verziótörténet a quickfolders.org -on"
     },
     "qf.dialog.changeorder": {
-        "message": "Thay đổi thứ tự các đánh dấu"
+        "message": "Könyvjelzők sorrendjének megváltoztatása"
     },
     "qf.dialog.quickmove.settings": {
-        "message": "quickMove Cài đặt nâng cao"
+        "message": "quickMove Speciális beállítások"
     },
     "qf.dialog.setcategory": {
-        "message": "Lập danh mục đánh dấu"
+        "message": "Könyvjelző kategorizálása"
     },
     "qf.donate.tooltip": {
-        "message": "Hỗ trợ cho sự phát triển của QuickFolders!"
+        "message": "Kérem támogassa a QuickFolders fejlesztését!"
     },
     "qf.filters.instructions": {
-        "message": "Hãy chọn một giao diện. Bạn có thể điều chỉnh chi tiết các quy tắc lọc ở màn hình tiếp theo."
+        "message": "Kérem válasszon ki egy sablont. Tovább finomíthatja a szűrő szabályokat a következő képernyőn."
     },
     "qf.filters.template.from": {
-        "message": "Dựa trên Người Gửi (từ)"
+        "message": "A feladó alapján (kitől)"
     },
     "qf.filters.template.from.description": {
-        "message": "Đây có lẽ là mẫu được dùng nhiều nhất: nó sẽ lấy các địa chỉ thư điện tử của người gửi rồi thêm chúng vào các vùng điều kiện gửi từ và gửi đến của bộ lọc. Theo cách này, toàn bộ các hội thoại với người gửi sẽ được di chuyển vào một thư mục mới."
+        "message": "Valószínűleg ez a leggyakrabban használt formula: lekéri a feladó címét és beilleszti a 'feladó' és 'címzett' szűrési feltétel mezőkbe. Így ezzel a feladóval folytatott teljes beszélgetések át lesznek helyezve az új mappába."
     },
     "qf.filters.template.list": {
-        "message": "Danh sách thư"
+        "message": "Levelezési lista"
     },
     "qf.filters.template.list.description": {
-        "message": "Tương tự như Dựa trên Người Gửi, nhưng nó không điền vùng điều kiện 'gửi đến'."
+        "message": "Hasonló a 'Feladó alapján' - hoz, de nem tölti ki a 'címzett' feltételi mezőt."
     },
     "qf.filters.template.tag": {
-        "message": "Bằng các nhãn"
+        "message": "Címkék szerint"
     },
     "qf.filters.template.tag.description": {
-        "message": "Dùng các nhãn của thư và thêm chúng vào các điều kiện bộ lọc."
+        "message": "A levelek címkéit használja és hozzáadja azokat a szűrési feltételekhez."
     },
     "qf.filters.template.to": {
-        "message": "Dựa trên Người Nhận (tới)"
+        "message": "A címzett alapján (kinek)"
     },
     "qf.filters.template.to.description": {
-        "message": "Tương tự như 'Dựa trên Người Gửi': dùng cái này khi bạn đánh dấu một thư mà bạn đã gửi cho ai đó. Nó sẽ lấy các địa chỉ thư điện tử của người nhận rồi thêm chúng vào các vùng điều kiện gửi từ và gửi đến của bộ lọc. Theo cách này, toàn bộ hội thoại tới và từ người gửi sẽ được di chuyển vào một thư mục mới."
+        "message": "Hasonló a 'Feladó alapján' - hoz: akkor használja ezt, ha azért akarja jelölni a levelet, mert azt másnak szeretné elküldeni. Lekéri a címzett e-mail címét és beilleszti a 'feladó' és 'címzett' szűrési feltétel mezőkbe. Ezáltal a másik féllel folytatott teljes beszélgetés az új mappába kerül."
     },
     "qf.filters.template.topic": {
-        "message": "Bằng tiêu đề"
+        "message": "Tárgy szerint"
     },
     "qf.filters.template.topic.description": {
-        "message": "Nó sẽ tìm kiếm các từ ngữ trong ngoặc đơn, ví dụ: [bộ sưu tập tem] hay {ăn chay} và tạo một điều kiện bộ lọc dựa trên đó; rất nhiều thư được cài đặt dùng mẫu này, nên nó thực sự rất dễ dùng."
+        "message": "Speciális kifejezéseket keres a zárójelek között, pl. [bélyeggyűjtők] vagy {vegetáriánusok} és egy új szűrőt készít ezek alapján; rengeteg tömeges levél ilyen formulákat használ, így ez nagyon könnyen használható."
     },
     "qf.filters.title": {
-        "message": "Tạo bộ lọc"
+        "message": "Szűrők létrehozása"
     },
     "qf.filters.toggleMessage.notificationText": {
-        "message": "Chế độ Filter Learning đã được bật. Bất cứ khi nào bạn di chuyển một thư điện tử vào QuickFolders, chương trình Hướng Dẫn 'Tạo Quy Tắc Bộ Lọc' sẽ khởi động. Thunderbird sử dụng các bộ lọc tin nhắn để tự động di chuyển các thư điện tử dựa trên các quy tắc như 'ai là người gửi?', 'có từ khóa nào đó trong tiêu đề hay không?'. Để tắt chế độ Filter Learning, hãy ấn nút lọc nằm ở phía trên, bên trái của thanh QuickFolders."
+        "message": "A szűrő tanuló mód elindult. Amikor csak áthelyez egy e-mailt a QuickFolders - be, a \"Szűrő Szabály Létrehozása\" varázsló fog elindulni. A Thunderbird szűrőket használ az e-mailek szabályok szerinti automatikus áthelyezéséhez, mint például \"ki a feladó?\", \"egy bizonyos kulcsszót tartalmaz a tárgy?\". Ha ki akarja kapcsolni a szűrő tanuló módot, kattintson a szűrő gombra a QuickFolders eszköztár bal felső sarkában."
     },
     "qf.filters.toggleMessage.title": {
-        "message": "Tạo các bộ lọc"
+        "message": "Szűrők létrehozása"
     },
     "qf.foldercontextmenu.quickfolders.customizeIcon": {
         "message": "Customize Icon…"
@@ -683,7 +579,7 @@
         "message": "Message Navigation"
     },
     "qf.label.ActiveTabColor": {
-        "message": "Màu của thẻ đang xem"
+        "message": "Aktív fül színe:"
     },
     "qf.label.ColoredTabPalette": {
         "message": "Palette for Colored Tabs:"
@@ -692,10 +588,10 @@
         "message": "Palette for tabs with a specific color"
     },
     "qf.label.DragOverBackground": {
-        "message": "Màu khi kéo qua:"
+        "message": "Ráhúzott fül színe:"
     },
     "qf.label.HoveredTabColor": {
-        "message": "Màu của thẻ khi đưa chuột lên trên thẻ"
+        "message": "Fókuszban lévő fül színe"
     },
     "qf.label.Toolbar": {
         "message": "Toolbar"
@@ -707,7 +603,7 @@
         "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
     },
     "qf.label.ToolbarBackground": {
-        "message": "Nền thanh công cụ:"
+        "message": "Eszköztár háttérszíne:"
     },
     "qf.label.UncoloredTab": {
         "message": "Uncolored Tab"
@@ -716,49 +612,49 @@
         "message": "Look of (inactive) tabs without a specifically selected color"
     },
     "qf.label.appearance": {
-        "message": "Appearance"
+        "message": "Megjelenés"
     },
     "qf.label.behavior": {
-        "message": "Hành vi"
+        "message": "Viselkedés"
     },
     "qf.label.bugzilla": {
-        "message": "Báo cáo lỗi / Yêu cầu tính năng mới bằng Bugzilla…"
+        "message": "Bug jelentése / Új funkció javaslása a Bugzillán"
     },
     "qf.label.buttonFontSizeNumeric": {
         "message": "Button font size (0 for default):"
     },
     "qf.label.cancel": {
-        "message": "Hủy bỏ"
+        "message": "Mégse"
     },
     "qf.label.colors": {
-        "message": "Colors"
+        "message": "Színek"
     },
     "qf.label.contactLink": {
-        "message": "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)…"
+        "message": "Lépjen kapcsolatba velem (angolul vagy németül)…"
     },
     "qf.label.currentFolderToolbar": {
-        "message": "Thanh công cụ thư mục hiện tại"
+        "message": "Jelenlegi mappa eszköztár"
     },
     "qf.label.donate": {
-        "message": "Quyên góp"
+        "message": "Támogatás"
     },
     "qf.label.donateLink": {
-        "message": "Ghé thăm trang quyên góp…"
+        "message": "Adományozási honlap megtekintése…"
     },
     "qf.label.dragFolderLabel": {
-        "message": "Kéo thư mục vào đây để đánh dấu. Ấn vào đánh dấu để tới thư mục, kéo các tin nhắn để di chuyển/sao chép chúng."
+        "message": "Húzza a mappát ide könyvjelzőzéshez. Kattintson a könyvjelzőre a mappára ugráshoz, húzza rá üzeneteket a mappába való mozgatáshoz."
     },
     "qf.label.existingcategories": {
-        "message": "Các danh mục đã tồn tại:"
+        "message": "Létező kategóriák:"
     },
     "qf.label.filterCountN_of_M": {
-        "message": "{0} trong {1}"
+        "message": "{0} a(z) {1} - ból"
     },
     "qf.label.filterEntities": {
-        "message": "thứ"
+        "message": "elem"
     },
     "qf.label.filterSingleEntity": {
-        "message": "1 thứ"
+        "message": "egy elem"
     },
     "qf.label.getQuickFilters": {
         "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
@@ -773,40 +669,40 @@
         "message": "Already have a License?"
     },
     "qf.label.homePage": {
-        "message": "Thông tin chi tiết trên trang chủ của QuickFolders tại quickfolders.org…"
+        "message": "További információ az új QuickFolders honlapon a quickfolders.org -on..."
     },
     "qf.label.initdelay": {
-        "message": "[mili giây] thời gian trễ ban đầu {1000 là chuẩn}:"
+        "message": "[ms] kezdési késleltetés (1000 az alapértelmezett):"
     },
     "qf.label.insertLicense": {
-        "message": "Insert your personal License key here:"
+        "message": "Helyezze ide a személyes licenckulcsát:"
     },
     "qf.label.insertLicense.tooltip": {
         "message": "Your license key is contained in your order confirmation email from Fastspring."
     },
     "qf.label.instantApplyMsg": {
-        "message": "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn… làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại."
+        "message": "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat."
     },
     "qf.label.keyboard": {
-        "message": "Phím tắt"
+        "message": "Billentyű kombinációk"
     },
     "qf.label.languagesLink": {
-        "message": "Thêm ngôn ngữ…"
+        "message": "Fordítás hozzáadása…"
     },
     "qf.label.licenseValid": {
         "message": "Your license is valid until:"
     },
     "qf.label.mainToolbar": {
-        "message": "Các phần tử Thanh Công Cụ chính"
+        "message": "Fő eszköztár elemek"
     },
     "qf.label.menus": {
-        "message": "Thiết lập trình đơn"
+        "message": "Menü konfiguráció"
     },
     "qf.label.menus.customIcon": {
         "message": "Customize Icon"
     },
     "qf.label.menus.help": {
-        "message": "Hướng dẫn"
+        "message": "QuickFolders Help"
     },
     "qf.label.menus.hideQFunlessCTRL": {
         "message": "Only display with CTRL key held"
@@ -815,28 +711,28 @@
         "message": "Insert Line Break"
     },
     "qf.label.menus.mailFolder": {
-        "message": "Các Lệnh về Thư"
+        "message": "Mail Commands"
     },
     "qf.label.menus.options": {
-        "message": "Tùy chọn"
+        "message": "Options"
     },
     "qf.label.menus.quickFolder": {
-        "message": "Các lệnh QuickFolders"
+        "message": "QuickFolders Commands"
     },
     "qf.label.menus.separator": {
         "message": "Insert Separator"
     },
     "qf.label.menus.support": {
-        "message": "Trợ giúp"
+        "message": "QuickFolders Support"
     },
     "qf.label.misc": {
-        "message": "Linh tinh"
+        "message": "Egyéb"
     },
     "qf.label.newcategory": {
-        "message": "Danh mục mới:"
+        "message": "Új kategória:"
     },
     "qf.label.pixels": {
-        "message": "điểm ảnh"
+        "message": "pixelek"
     },
     "qf.label.quickFilters.link": {
         "message": "get quickFilters!"
@@ -845,82 +741,82 @@
         "message": "QuickFolders:"
     },
     "qf.label.renameselectedcategory": {
-        "message": "Đổi tên danh mục được chọn"
+        "message": "Kijelölt kategória átnevezése"
     },
     "qf.label.setcolors": {
-        "message": "Chọn [Màu chữ, màu nền"
+        "message": "Szöveg színének, háttér színének beállítása"
     },
     "qf.label.tabContent": {
-        "message": "Nội dung thẻ"
+        "message": "Fül tartalom"
     },
     "qf.label.testfolder": {
-        "message": "Thư mục thử nghiệm"
+        "message": "Teszt Mappa"
     },
     "qf.label.testfolder2": {
-        "message": "Thư mục thử nghiệm 2"
+        "message": "Teszt Mappa 2"
     },
     "qf.label.themes": {
-        "message": "Themes:"
+        "message": "Témák:"
     },
     "qf.label.toolbarPosition": {
-        "message": "Thanh công cụ QuickFolders Vị trí"
+        "message": "A QuickFolders eszköztár pozíciója"
     },
     "qf.label.versionhistory": {
-        "message": "Xem phiên bản cũ…"
+        "message": "Verziótörténet"
     },
     "qf.licenseValidation.expired": {
-        "message": "The license key you entered is expired. Please press the button below to renew your license."
+        "message": "A megadott licenckulcs lejárt. Kérjük, nyomja meg az alábbi gombot a licenc megújításához."
     },
     "qf.licenseValidation.failed": {
-        "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+        "message": "A megadott licenckulcs érvénytelen. Ellenőrizze a FastSpring e-mailjét az utasításokért. Ha továbbra is problémái vannak, vegye fel a kapcsolatot a Támogatás fülön keresztül."
     },
     "qf.licenseValidation.guessAddon": {
         "message": "(The key entered may be for {2})."
     },
     "qf.licenseValidation.invalidAddon": {
-        "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+        "message": "Lehet, hogy a megadott licenckulcs egy másik kiegészítőhöz tartozik. A (z) {0} licenckulcsai a következővel kezdődnek: {1}."
     },
     "qf.licenseValidation.invalidMail": {
         "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
     },
     "qf.licenseValidation.notMatchedMail": {
-        "message": "Encrypted Email address does not match readable one."
+        "message": "A titkosított e-mail cím nem egyezik az olvasható címmel."
     },
     "qf.licenseValidation.passed": {
-        "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+        "message": "Köszönjük a QuickFolders Pro regisztrálását! Az összes prémium funkció fel van oldva."
     },
     "qf.loadConfig": {
         "message": "Load Configuration…"
     },
     "qf.menu.Color": {
-        "message": "Màu sắc"
+        "message": "Szín"
     },
     "qf.menu.tabColor": {
-        "message": "Không màu!"
+        "message": "Nincs szín!"
     },
     "qf.menuitem.quickfolders.changeOrder": {
-        "message": "Đổi thử tự các đánh dấu…"
+        "message": "Könyvjelzők sorrendjének megváltoztatása"
     },
     "qf.menuitem.quickfolders.changeOrderAccess": {
-        "message": "D"
+        "message": "m"
     },
     "qf.menuitem.quickfolders.deleteDeadTabs": {
-        "message": "Tìm các thẻ mồ côi"
+        "message": "Törölt fülek keresése"
     },
     "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-        "message": "T"
+        "message": "k"
     },
     "qf.menuitem.quickfolders.displayPreviewToolbar": {
-        "message": "Hiển thị các công cụ cho thư mục hiện tại"
+        "message": "Jelenlegi mappa eszközök megjelenítése"
     },
     "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-        "message": "D"
+        "message": "J"
     },
     "qf.menuitem.quickfolders.filters": {
-        "message": "Tạo Bộ Lọc Tin Nhắn…"
+        "message": "Üzenetszűrők létrehozása…"
     },
     "qf.menuitem.quickfolders.filtersAccess": {
-        "message": "L"
+        "message": "l"
     },
     "qf.menuitem.quickfolders.find": {
         "message": "Find Folder…"
@@ -929,46 +825,46 @@
         "message": "i"
     },
     "qf.menuitem.quickfolders.help": {
-        "message": "Trợ giúp…"
+        "message": "QuickFolders súgó…"
     },
     "qf.menuitem.quickfolders.helpAccess": {
-        "message": "g"
+        "message": "Q"
     },
     "qf.menuitem.quickfolders.options": {
-        "message": "Tùy chọn QuickFolders…"
+        "message": "QuickFolders beállítások…"
     },
     "qf.menuitem.quickfolders.optionsAccess": {
-        "message": "T"
+        "message": "b"
     },
     "qf.menuitem.quickfolders.register": {
         "message": "QuickFolders Pro License…"
     },
     "qf.menuitem.quickfolders.repairTabs": {
-        "message": "Làm mới các thẻ nhìn thấy!"
+        "message": "Látható fülek frissítése"
     },
     "qf.menuitem.quickfolders.repairTabsAccess": {
-        "message": "V"
+        "message": "f"
     },
     "qf.menuitem.quickfolders.repairTreeIcons": {
         "message": "Repair Tree Icons"
     },
     "qf.menuitem.quickfolders.support": {
-        "message": "Hỗ trợ QuickFolders…"
+        "message": "QuickFolders támogatás…"
     },
     "qf.menuitem.quickfolders.supportAccess": {
-        "message": "Q"
+        "message": "t"
     },
     "qf.menuitem.quickfolders.togglePaintMode": {
-        "message": "Chế độ tô màu"
+        "message": "Színezési mód"
     },
     "qf.menuitem.quickfolders.togglePaintModeAccess": {
-        "message": "p"
+        "message": "S"
     },
     "qf.notification.categoryIsReadOnly": {
         "message": "This item cannot be deleted."
     },
     "qf.notification.dontShowAgain": {
-        "message": "Không hiển thị thông báo này nữa."
+        "message": "Ne mutassa újra ezt az üzenetet."
     },
     "qf.notification.premium.btn.extendLicense": {
         "message": "Extend License"
@@ -998,34 +894,34 @@
         "message": "Premium Feature"
     },
     "qf.options.LayoutColorAppearance": {
-        "message": "Màu riêng của từng thẻ"
+        "message": "Egyéni fül szín megjelenítés"
     },
     "qf.options.LayoutColorAppearanceFilled": {
-        "message": "(kiểu phủ kín)"
+        "message": "(kitöltött stílus)"
     },
     "qf.options.LayoutColorAppearanceStriped": {
-        "message": "(kiểu gạch sọc)"
+        "message": "(csíkos stílus)"
     },
     "qf.options.label.themeAuthor": {
-        "message": "Tác giả giao diện:"
+        "message": "Téma szerzője:"
     },
     "qf.options.theme.pastelColors": {
-        "message": "Phấn màu"
+        "message": "Pasztell színek"
     },
     "qf.options.themes.customCornerRadius.Bottom.label": {
-        "message": "Dưới cùng:"
+        "message": "Alsó:"
     },
     "qf.options.themes.customCornerRadius.Top.label": {
-        "message": "Trên cùng:"
+        "message": "Felső:"
     },
     "qf.options.themes.customCornerRadius.checkbox": {
-        "message": "Tùy chỉnh bán kính góc"
+        "message": "Egyedi corner radius"
     },
     "qf.options.themes.showBorders.checkbox": {
-        "message": "Luôn hiển thị các đường biên"
+        "message": "Mindig jelenítse meg a szegélyeket"
     },
     "qf.options.versionnumber.tooltip": {
-        "message": "Nhấp chuột phải để xem các phiên bản trước."
+        "message": "A programverziók közti változások megjelenítéséhez kattintson jobb gombbal."
     },
     "qf.palette.inactive": {
         "message": "Like inactive Tabs"
@@ -1067,13 +963,13 @@
         "message": "Maximum number of folders displayed in folder path."
     },
     "qf.prefwindow.quickfolders.options": {
-        "message": "Tùy chọn QuickFolders"
+        "message": "QuickFolders Beállítások"
     },
     "qf.premium.renewLicense.tooltip": {
         "message": "Your license expired {1} days ago"
     },
     "qf.premiumConfig": {
-        "message": "Premium Features"
+        "message": "Prémium funkciók"
     },
     "qf.prompt.category.deleteMultiple": {
         "message": "Ok to delete multiple categories?"
@@ -1115,88 +1011,88 @@
         "message": "Switch to Domain License?"
     },
     "qf.quickMove.escapeClears": {
-        "message": "Phím Escape xóa danh sách tin nhắn."
+        "message": "Az Escape gomb törli az üzenetek listáját."
     },
     "qf.quickMove.excludeAccounts": {
-        "message": "Chọn bất kỳ tài khoản nào cần được loại trừ khỏi kết quả tìm kiếm:"
+        "message": "Válassza ki azokat a fiókokat, amelyeket ki kell zárni a keresési eredmények közül:"
     },
     "qf.quickMove.lockAccount": {
-        "message": "Chỉ hiển thị kết quả từ tài khoản thư hiện tại."
+        "message": "Csak az aktuális e-mail fiók eredményeit jelenítse meg."
     },
     "qf.quickMove.maxResults": {
-        "message": "Số lượng kết quả tìm kiếm tối đa"
+        "message": "A keresési eredmények maximális száma"
     },
     "qf.quickMove.path.format": {
         "message": "Display Format:"
     },
     "qf.quickMove.silent": {
-        "message": "Không có thông báo sau khi chuyển thư."
+        "message": "Nincsenek értesítések a levelek áthelyezése után."
     },
     "qf.register.licenseValid.expired": {
         "message": "Your license expired on:"
     },
     "qf.search.advanced": {
-        "message": "Cài đặt tìm kiếm nâng cao…"
+        "message": "Speciális keresési beállítások…"
     },
     "qf.storeConfig": {
         "message": "Save Configuration…"
     },
     "qf.tab.advanced": {
-        "message": "Nâng cao"
+        "message": "Haladó"
     },
     "qf.tab.general": {
-        "message": "Tổng quan"
+        "message": "Általános"
     },
     "qf.tab.gopro": {
         "message": "QuickFolders Pro"
     },
     "qf.tab.layout": {
-        "message": "Sắp xếp các thẻ!"
+        "message": "Spécizze fel a füleket!"
     },
     "qf.tab.quickhelp": {
-        "message": "Trợ giúp"
+        "message": "Gyorssegéd"
     },
     "qf.tab.support": {
-        "message": "Hỗ trợ"
+        "message": "Támogatás"
     },
     "qf.textbox.searchBox.emptyText": {
-        "message": "tìm bộ lọc…"
+        "message": "Szűrők keresése név alapján…"
     },
     "qf.textbox.searchBox.toolTip": {
-        "message": "điền một từ khóa để tìm bộ lọc theo tên"
+        "message": "Adjon meg egy kulcsszót a szűrők név szerinti kereséséhez"
     },
     "qf.themes.applePills.description": {
-        "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+        "message": "Egy kellemes téma Mac felhasználóknak - letisztult és egyszerű, pár opcionális színnel."
     },
     "qf.themes.applePills.label": {
         "message": "Apple Pills"
     },
     "qf.themes.flatButtons.description": {
-        "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+        "message": "Szabványos eszköztár gombok - ez áll a legközelebb az eredeti 0.5 verzió kinézetéhez!"
     },
     "qf.themes.flatButtons.label": {
-        "message": "Các nút công cụ"
+        "message": "Eszköztár gombok"
     },
     "qf.themes.flatTabs.description": {
-        "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+        "message": "Modern kinézet - teljesen testre szabható. Nagyszerűen mutat Windowson és Linuxon."
     },
     "qf.themes.flatTabs.label": {
-        "message": "Phong cách phẳng"
+        "message": "Flat Style"
     },
     "qf.themes.nativeTabs.description": {
-        "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+        "message": "Ez a kinézet az operációs rendszer témájához hasonlít - kevesebb színezési beállítás, de jobban integráltnak tűnik és szinkronban van az e-mail kliens témájával."
     },
     "qf.themes.nativeTabs.label": {
-        "message": "Các thẻ gốc"
+        "message": "Native Tabs"
     },
     "qf.themes.realButtons.description": {
-        "message": "Nút ấn - các nút có phong cách như trên các hộp thoại chuẩn"
+        "message": "Nyomógombok - úgy néznek ki, mint a szabványos gombok a dialógusablakokon"
     },
     "qf.themes.realButtons.label": {
-        "message": "Nút ấn"
+        "message": "Nyomógombok"
     },
     "qf.toolbar.quickfolders.toolbar": {
-        "message": "Thanh công cụ QuickFolders"
+        "message": "QuickFolders eszköztár"
     },
     "qf.toolbarMinimumHeight": {
         "message": "Minimum height:"
@@ -1205,55 +1101,55 @@
         "message": "For Mac systems who encounter [Bug 25021]"
     },
     "qf.toolbarPosition.tooltip": {
-        "message": "0 = trên đầu các thanh công cụ khác; 100 = đáy. Giá trị cao phụ thuộc vào các Tiện ích bổ sung khác."
+        "message": "0 = más eszköztárak tetején; 100 = alsó. A magas érték más kiegészítőktől függ."
     },
     "qf.tooltip.RecentFolders": {
-        "message": "Các thư mục gần đây nhất"
+        "message": "Előző mappák"
     },
     "qf.tooltip.closeToolbar": {
-        "message": "Đóng thanh công cụ này"
+        "message": "Eszköztár bezárása"
     },
     "qf.tooltip.conversationRead": {
-        "message": "Đánh dấu Hội Thoại là Đã Đọc và chuyển tới Thư chưa đọc tiếp theo"
+        "message": "Beszélgetés megjelölése olvasottként és ugrás a következő olvasatlan e-mailre"
     },
     "qf.tooltip.emailIcon": {
-        "message": "Thư hiện tại - kéo vào thẻ QuickFolders để di chuyển Thư"
+        "message": "Aktuális email - húzza egy QuickFolders fülre a mail áthelyezéséhez"
     },
     "qf.tooltip.filterStart": {
-        "message": "Hướng dẫn kích hoạt bộ lọc. Kéo các thư điện tử vào QuickFolder để tạo các Bộ Lọc mới."
+        "message": "Szűrő tanuló mód aktív. Az e-mail áthúzása egy gyorsmappára új szűrőket generál."
     },
     "qf.tooltip.filters": {
-        "message": "Dừng việc tạo các bộ lọc."
+        "message": "Ne készítsen szűrőket."
     },
     "qf.tooltip.folderUp": {
-        "message": "Chuyển tới thư mục mẹ"
+        "message": "Ugrás a szülő mappába"
     },
     "qf.tooltip.goNextFolder": {
-        "message": "Move to the next [unread] message"
+        "message": "Ugrás a következő olvasatlan üzenetre"
     },
     "qf.tooltip.goPreviousFolder": {
-        "message": "Move to the previous unread message"
+        "message": "Ugrás az előző olvasatlan üzenetre"
     },
     "qf.tooltip.mailFolderCommands": {
-        "message": "Các lệnh thư mục chứa Thư"
+        "message": "Üzenetmappa parancsok"
     },
     "qf.tooltip.mainOptions": {
-        "message": "Các tùy chọn và lệnh nâng cao của QuickFolders"
+        "message": "QuickFolders beállítások és haladó parancsok"
     },
     "qf.tooltip.paintCanActive": {
-        "message": "Chế độ vẽ: nhấp chuột để mở bảng màu, nhấp chuột vào các thẻ để tô màu cho chúng, nhấp chuột phải vào các thẻ để lấy màu của chúng"
+        "message": "Színezési mód: kattintson a palettához, kattintson a fülekre a kiszínezésükhöz, kattintson jobb gombbal a fülekre, hogy lekérdezze azok színét."
     },
     "qf.tooltip.quickFoldersNavToggle": {
-        "message": "Chuyển đổi giữa các thư chưa đọc / tất cả các thư"
+        "message": "váltás az olvasatlan / összes levél közti navigálás között"
     },
     "qf.tooltip.quickMove": {
-        "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+        "message": "quickMove: drag an email here then enter folder name"
     },
     "qf.tooltip.skipUnreadFolder": {
         "message": "Skip to next Unread Folder"
     },
     "qf.tooltip.threadIcon": {
-        "message": "Đề tài hiện tại - kéo vào thẻ QuickFolder để di chuyển Hội Thoại"
+        "message": "Jelenlegi beszélgetés - húzza egy QuickFolders fülre a beszélgetés áthelyezéséhez"
     },
     "qf.youtube.description": {
         "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
@@ -1265,199 +1161,199 @@
         "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
     },
     "qfAlertCopyString": {
-        "message": "Tên thư mục đã được sao chép vào bộ nhớ!"
+        "message": "A mappa neve másolva a vágólapra!"
     },
     "qfAlertDropFolderVirtual": {
-        "message": "Bạn không thể sao chép thư điện tử vào thư mục tìm kiếm!"
+        "message": "Nem másolhat üzenetet virtuális mappába!"
     },
     "qfAlertUpgradeSuccess": {
-        "message": "Đã nâng cấp thành công QuickFolders lên phiên bản:"
+        "message": "QuickFolders frissítve a lett a következő verzióra:"
     },
     "qfAll": {
-        "message": "(Hiện tất cả)"
+        "message": "(Mindent mutasson)"
     },
     "qfCantMoveFolder": {
-        "message": "Thư mục {0} không thể di chuyển được."
+        "message": "A {0} mappa nem áthelyezhető."
     },
     "qfColorPickingWIP": {
-        "message": "Xin lỗi, tính năng này vẫn đang được hoàn thiện!\\n"
+        "message": "Elnézést, de ez a funkció még nincs kész!"
     },
     "qfCommandAccess": {
         "message": "Q"
     },
     "qfCommandPopup": {
-        "message": "Các lệnh QuickFolders"
+        "message": "QuickFolders parancsok"
     },
     "qfCompactFolder": {
-        "message": "Thu gọn thư mục"
+        "message": "Tömörített mappa"
     },
     "qfCompactFolderAccess": {
-        "message": "F"
+        "message": "T"
     },
     "qfCompacted": {
-        "message": "Thu gọn:"
+        "message": "Tömörített:"
     },
     "qfCompactedBytesFreed": {
-        "message": "Bytes expunged"
+        "message": "Felszabadított byte-ok"
     },
     "qfCompactedFolder": {
-        "message": "Compacted folder"
+        "message": "Tömörített mappa"
     },
     "qfCompactedNewFolderSize": {
-        "message": "New size"
+        "message": "Új méret"
     },
     "qfCompactedOriginalFolderSize": {
-        "message": "Original size"
+        "message": "Eredeti méret"
     },
     "qfConfirmCopyFolder": {
-        "message": "Thực sự sao chép thư mục {0} vào {1}?"
+        "message": "Valóban másolja a {0} mappát a {1} mappába?"
     },
     "qfConfirmMoveFolder": {
-        "message": "Bạn thực sự muốn di chuyển {0} vào {1}?"
+        "message": "Valóban áthelyez a {0} mappát a {1} -ba?"
     },
     "qfConfirmVersionLink": {
-        "message": "Hiển thị các phiên bản trước của QuickFolders"
+        "message": "Programváltozatok előzményeinek megtekintése"
     },
     "qfDeadTabsCount": {
-        "message": "# các thẻ mồ côi được tìm thấy:"
+        "message": "# elárvult fül található:"
     },
     "qfDeadTabsDeleted": {
-        "message": "# các thẻ mồ côi đã bị xóa:"
+        "message": "# elárvult fülek eltávolítva:"
     },
     "qfDeleteFolder": {
-        "message": "Xóa thư mục"
+        "message": "Mappa törlése"
     },
     "qfDeleteFolderAccess": {
-        "message": "X"
+        "message": "r"
     },
     "qfDeleteJunk": {
-        "message": "Xóa rác"
+        "message": "Purge Junk"
     },
     "qfDown": {
-        "message": "Xuống dưới"
+        "message": "Le"
     },
     "qfDownloadAll": {
         "message": "Download All"
     },
     "qfEditVirtual": {
-        "message": "Tùy chọn tìm kiếm…"
+        "message": "Keresés a tulajdonságokban"
     },
     "qfEditVirtualAccess": {
-        "message": "h"
+        "message": "j"
     },
     "qfEmptiedJunk": {
-        "message": "Emptied junk and compacted folder"
+        "message": "Kuka ürítve és mappa tömörítve"
     },
     "qfEmptiedTrash": {
-        "message": "Emptied trash."
+        "message": "Törölt elemek ürítve."
     },
     "qfEmptyJunk": {
-        "message": "Xóa thư rác"
+        "message": "Spam kiürítése"
     },
     "qfEmptyJunkAccess": {
-        "message": "a"
+        "message": "S"
     },
     "qfEmptyTrash": {
-        "message": "Xóa thùng rác"
+        "message": "Lomtár kiürítése"
     },
     "qfEmptyTrashAccess": {
-        "message": "T"
+        "message": "L"
     },
     "qfFolderAccess": {
-        "message": "C"
+        "message": "m"
     },
     "qfFolderAlreadyBookmarked": {
-        "message": "Thư mục đã được đánh dấu."
+        "message": "A mappa már könyvjelzőzve van."
     },
     "qfFolderOpenLocation": {
         "message": "Explore Folder Location…"
     },
     "qfFolderPopup": {
-        "message": "Các lệnh Thư Mục chứa thư"
+        "message": "E-mail mappa parancsok"
     },
     "qfFolderProperties": {
-        "message": "Các đặc tính thư mục"
+        "message": "Mappa tulajdonságai…"
     },
     "qfFolderPropertiesAccess": {
-        "message": "P"
+        "message": "d"
     },
     "qfFolderRepair": {
-        "message": "Sửa thư mục"
+        "message": "Mappa javítása"
     },
     "qfFolderRepairAccess": {
-        "message": "F"
+        "message": "v"
     },
     "qfFolderRepairedMsg": {
-        "message": "Thư mục đã được sửa chữa:"
+        "message": "Mappa javítva:"
     },
     "qfGetMail": {
-        "message": "Get Messages"
+        "message": "Üzenetek letöltése"
     },
     "qfGetMailAccess": {
-        "message": "G"
+        "message": "ö"
     },
     "qfInsertLineBreak": {
-        "message": "Xuống dòng"
+        "message": "Insert Line Break"
     },
     "qfInsertSeparator": {
-        "message": "Thêm dấu phân cách"
+        "message": "Insert Separator"
     },
     "qfInvalidTabCount": {
         "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
     },
     "qfMarkAllRead": {
-        "message": "Đánh dấu thư mục đã đọc"
+        "message": "Mappa olvasottnak jelölése"
     },
     "qfMarkAllReadAccess": {
-        "message": "u"
+        "message": "o"
     },
     "qfMarkAllReadRecursive": {
         "message": "Mark folder + subfolders Read"
     },
     "qfMenuColor": {
-        "message": "Màu sắc"
+        "message": "Szín"
     },
     "qfMenuTabColorDisabledInTheme": {
         "message": "Select different Theme to support coloring…"
     },
     "qfMenuTabColorNone": {
-        "message": "Không màu!"
+        "message": "Nincs szín!"
     },
     "qfMenuTabColorPopup": {
-        "message": "Màu thẻ"
+        "message": "Fül szín"
     },
     "qfMoveFolderOrNewTab": {
-        "message": "Kéo các thư mục vào vùng trống trên thanh công cụ - Để DI CHUYỂN thư mục, ấn giữ phím SHIFT trong lúc kéo."
+        "message": "Húzza a mappát egy üres eszköztárterületre, a mappa ÁTHELYEZÉSÉHEZ tartsa lenyomja a SHIFT billentyűt."
     },
     "qfNavigationWrapped": {
         "message": "No other unread folders found, continuing in {1}."
     },
     "qfNewFolder": {
-        "message": "Tạo một thư mục con…"
+        "message": "Új almappa"
     },
     "qfNewFolderAccess": {
-        "message": "T"
+        "message": "a"
     },
     "qfNewName": {
-        "message": "Thêm một tên mới cho đánh dấu"
+        "message": "Írja be a könyvjelző új nevét"
     },
     "qfNewSubFolder": {
         "message": "Create subfolder {0} \\u00BB {1}…"
     },
     "qfNoFolderMatch": {
-        "message": "Không có thư mục mẹ phù hợp!"
+        "message": "Nincsenek megfelelő szülőmappák!"
     },
     "qfPaintToggle": {
-        "message": "Hoàn tất Chế độ Tô Màu"
+        "message": "Színezési mód befejezése"
     },
     "qfRecentFolders": {
-        "message": "Các thư mục gần đây nhất"
+        "message": "Előző mappák"
     },
     "qfRemoveBookmark": {
-        "message": "Bỏ đánh dấu"
+        "message": "Könyvjelzők eltávolítása"
     },
     "qfRemoveBookmarkAccess": {
-        "message": "R"
+        "message": "e"
     },
     "qfRemoveCategory": {
         "message": "Remove from current Category"
@@ -1469,40 +1365,40 @@
         "message": "Remove Customized Icon"
     },
     "qfRemoveLineBreak": {
-        "message": "Bỏ xuống dòng"
+        "message": "Remove Line Break"
     },
     "qfRemoveSeparator": {
-        "message": "Bỏ dấu phân cách"
+        "message": "Remove Separator"
     },
     "qfRenameBookmark": {
-        "message": "Đổi tên đánh dấu…"
+        "message": "Könyvjelző átnevezése…"
     },
     "qfRenameBookmarkAccess": {
-        "message": "N"
+        "message": "n"
     },
     "qfRenameFolder": {
-        "message": "Đổi tên thư mục"
+        "message": "Mappa átnevezése…"
     },
     "qfRenameFolderAccess": {
-        "message": "D"
+        "message": "z"
     },
     "qfRepairTreeIconsMissing": {
         "message": "The following icon files do not exist:"
     },
     "qfSavePrompt": {
-        "message": "Có lưu các thay đổi không?"
+        "message": "Változtatások mentése?"
     },
     "qfSelectIcon": {
         "message": "Customize Icon…"
     },
     "qfSetCategory": {
-        "message": "Lập danh mục đánh dấu…"
+        "message": "Könyvjelző kategóriájának beállítása…"
     },
     "qfSetCategoryA": {
-        "message": "C"
+        "message": "k"
     },
     "qfShowAlways": {
-        "message": "Luôn hiện!"
+        "message": "Mindig mutassa!"
     },
     "qfShowNever": {
         "message": "Never Show (Folder Alias)"
@@ -1514,13 +1410,13 @@
         "message": "Do this with the remaining {0} folders."
     },
     "qfTabDeletePrompt": {
-        "message": "Bạn muốn xóa thẻ này chứ?"
+        "message": "Törölje a fület?"
     },
     "qfThisTabIsInvalid": {
-        "message": ": Đây là thẻ chỉ tới một thư mục hợp lệ:"
+        "message": ": Ez a fül egy érvénytelen mappára mutat:"
     },
     "qfTidyDeadFolders": {
-        "message": "Cái này sẽ xóa bỏ những thẻ có thư mục không hợp lệ.\\nĐôi khi điều này xảy ra do một thư mục nào đó đã bị xóa hoặc di chuyển mà QuickFolders không được thông báo."
+        "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
     },
     "qfTreeIconsInvalidCount": {
         "message": "{0} icons missing"
@@ -1529,25 +1425,25 @@
         "message": "{0} tree icons repaired"
     },
     "qfUncategorized": {
-        "message": "(Chưa được xếp danh mục)"
+        "message": "(nincs kategorizálva)"
     },
     "qfUp": {
-        "message": "Lên trên"
+        "message": "Fel"
     },
     "qfUpdatedThemesEngineMsg": {
-        "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
+        "message": "Egy új téma lett telepítve a QuickFolders-hez. Kérem válasszon ki egy elemet a legördülő menüből, és kattintson az [Ok] gombra."
     },
     "qfVersionDisableOnUpdate": {
         "message": "Stop displaying version history after updates?"
     },
     "quickMove.singleMessage.goNext": {
-        "message": "Hiển thị thư tiếp theo sau khi chuyển thư hiện tại"
+        "message": "A következő levél megjelenítése az aktuális áthelyezése után"
     },
     "quickMove.singleMessage.reopenTab": {
-        "message": "Mở lại thư gốc sau khi chuyển đi"
+        "message": "Nyissa meg újra az eredeti levelet, miután áthelyezte"
     },
     "quickMove.singleMessageTabs": {
-        "message": "Tab tin nhắn đơn"
+        "message": "Egyetlen üzenet fül"
     },
     "quickfolders.findFolder.placeHolder": {
         "message": "folder name"
@@ -1574,7 +1470,7 @@
         "message": "Reading List"
     },
     "quickfolders.toolbar.newsubfolder": {
-        "message": "Tạo một thư mục con…"
+        "message": "Új almappa…"
     },
     "quickfolders.toolbar.skip": {
         "message": "Skip"
@@ -1585,75 +1481,14 @@
     "quickfoldersQuickMovedMails": {
         "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
     },
-    "renew-your-license": {
-        "message": "Gia hạn giấy phép của bạn."
-    },
-    "special-offer-content": {
-        "message": "Làm cho QuickFolders bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm 40% {boldEnd} về giá của QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 1 tháng 5 {boldEnd}."
-    },
-    "special-offer-head": {
-        "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
-    },
-    "special-offer-intro": {
-        "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ QuickFolders trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
-    },
-    "support-preference": {
-        "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "quickFilters"
-            }
-        }
-    },
-    "support-suggestion": {
-        "message": "Để $addonName$ vẫn hoạt động và tồn tại, hãy làm điều đó một cách quan trọng:",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
     "testDrive": {
         "message": "You can test drive the premium features with the free version, but they might be slightly restricted."
-    },
-    "thanks-for-installing-intro": {
-        "message": "Cảm ơn bạn đã cài đặt $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "thanks-for-updating-intro": {
-        "message": "Cảm ơn bạn đã cập nhật $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "time-and-effort": {
-        "message": "$addonName$ yêu cầu các thay đổi liên tục để vẫn tương thích với nền tảng Mozilla. Tôi không ngừng làm việc để giữ lại nhiều chức năng nhất có thể cho các phiên bản Thunderbird trong tương lai.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
     },
     "toAddress": {
         "message": "To:"
     },
     "toAddress.tooltip": {
         "message": "Default To Address when composing new mails"
-    },
-    "translated-by-google": {
-        "description": "disclaimer.",
-        "message": "bản dịch do google cung cấp"
     },
     "updates.title": {
         "message": "Updates"
@@ -1663,28 +1498,6 @@
     },
     "vouchers.title": {
         "message": "Vouchers"
-    },
-    "whats-new-btn": {
-        "message": "Có gì mới?"
-    },
-    "whats-new-head": {
-        "message": "Điểm nổi bật"
-    },
-    "whats-new-intro": {
-        "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
-    },
-    "whats-new-list": {
-        "message": "Phiên bản này mở rộng thêm chức năng quickMove thông qua các tính năng sau: {L1} Tab Tin nhắn Đơn: tùy chọn để tự động mở email tiếp theo trong cùng một tab sau khi chuyển một tin nhắn {L2} {L1} Tùy chọn để hủy hoàn toàn quickMove (và làm trống danh sách thư) chỉ với một lần nhấn ESCAPE. {L2} {L1} Đối sánh nâng cao các thư mục mẹ bằng cách đọc từ dấu _ và dấu cách và coi chúng như phần đầu của tên được tìm kiếm. {L2} {L1} Đã sửa chữa: tìm kiếm thư mục trong khi xem thông báo hiển thị trong kết quả tìm kiếm hoặc từ cuộc hội thoại nhiều thư mục. {L2} {L1} Bạn có thể định cấu hình các chức năng này và các chức năng bổ sung để hạn chế kết quả tìm kiếm từ một số tài khoản nhất định thông qua Cài đặt Tìm kiếm Nâng cao trên Tab QuickFolders Pro. {L2}"
-    },
-    "window-title": {
-        "description": "page title. first placeholder will be replaced with Add-on name",
-        "message": "Chào mừng bạn đến với $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
     },
     "windowTitle": {
         "message": "Advanced Properties"

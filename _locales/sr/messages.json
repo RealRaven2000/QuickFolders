@@ -1,227 +1,1707 @@
 {
-  "extensionName": {
-    "message": "QuickFolders",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Bookmark your favorite mail folders in Thunderbird.",
-    "description": "Description of the extension."
-  },
-
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
-  },
-  
-  "window-title": {
-    "message": "Добродошли у $addonName$",
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+    "account.label": {
+        "message": "Изаберите налог:"
+    },
+    "active-version-info": {
+        "description": "The boldStart and boldEnd parts will be replaced with html tags",
+        "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+        "placeholders": {
+            "addonVer": {
+                "content": "$1",
+                "example": "Version 1.1"
+            },
+            "appVer": {
+                "content": "$2",
+                "example": "78.0b4"
+            }
+        }
+    },
+    "addon-authors-struggle": {
+        "message": "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
+    },
+    "btn-extend-license": {
+        "message": "Желим да продужим лиценцу за годину дана"
+    },
+    "btn-renew-license": {
+        "message": "Желим да обновим лиценцу"
+    },
+    "btn-want-a-license": {
+        "message": "Желим да купим лиценцу"
+    },
+    "btn-want-to-donate": {
+        "message": "Желим да помогнем једнократном донацијом."
+    },
+    "btnApply": {
+        "message": "Примени"
+    },
+    "btnCategory": {
+        "message": "Категорије"
+    },
+    "btnCategory.tooltip": {
+        "message": "Одреди категорије језичака"
+    },
+    "btnReset": {
+        "message": "Врати подразумевано"
+    },
+    "buyDomainLicense.button": {
+        "message": "Купи групну лиценцу"
+    },
+    "buyDomainLicense.instruct": {
+        "message": "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:"
+    },
+    "buyLicense.instruct": {
+        "message": "Треба вам само једна лиценца? Онда набавите лиценцу за једног корисника. Везана је за вашу личну ел. адресу и може се користити за више инсталација."
+    },
+    "buyPersonalLicense.button": {
+        "message": "Купи личну лиценцу!"
+    },
+    "chkComposerSubfolders": {
+        "message": "Also apply to subfolders"
+    },
+    "chkHideFromQuickJump": {
+        "message": "Omit from quickJump / quickMove"
+    },
+    "chkHideFromQuickJump.tooltip": {
+        "message": "Omit this folder and its children in quickJump / quickMove results"
+    },
+    "chkIgnoreCounts": {
+        "message": "Сакриј бројач порука"
+    },
+    "chkIgnoreCounts.tooltip": {
+        "message": "Никада не приказуј број садржаних порука"
+    },
+    "chkIgnoreUnread": {
+        "message": "Сакриј стање непрочитаних"
+    },
+    "chkIgnoreUnread.tooltip": {
+        "message": "Никада не приказуј подебљани или број непрочитаних, чак ни када фасцикла садржи непрочитане поруке."
+    },
+    "chkSetMailsUnread": {
+        "message": "Set mail to unread"
+    },
+    "chkSetMailsUnread.tooltip": {
+        "message": "If you move mail into this folder it is set to unread."
+    },
+    "cost-of-independence": {
+        "message": "Развој софтвера кошта време и новац - за разлику од многих апликација на платформи, додатке не пишу велике корпорације, нити их Мозилла спонзорише на било који начин."
+    },
+    "cssBackground": {
+        "message": "Позадина"
+    },
+    "cssBackground.tooltip": {
+        "message": "Унесите CSS позадину, попут linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    },
+    "cssColor": {
+        "message": "Боја текста"
+    },
+    "cssColor.tooltip": {
+        "message": "Унесите CSS боју, попут rgba(100,20,20,0.8)"
+    },
+    "defaultAccountAddress.value": {
+        "message": "Account Default Identity"
+    },
+    "domainLicense.email": {
+        "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+    },
+    "domainLicense.header": {
+        "message": "Licensed Email Domain"
+    },
+    "domainLicense.instruct": {
+        "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
+    },
+    "domainLicense.validate": {
+        "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
+    },
+    "donate": {
+        "message": "Помозите једнократном донацијом."
+    },
+    "donate-heading": {
+        "message": "Помоћ донацијом!"
+    },
+    "email.label": {
+        "message": "Ел. адреса:"
+    },
+    "enterLicenseKey.button": {
+        "message": "Унесите број лиценце..."
+    },
+    "enterLicenseKey.tooltip": {
+        "message": "Унесите број лиценце који сте примили ел. поруком"
+    },
+    "extend-your-license": {
+        "message": "Размислите о продужењу лиценце за годину дана."
+    },
+    "extensionDescription": {
+        "description": "Description of the extension.",
+        "message": "Bookmark your favorite mail folders in Thunderbird."
+    },
+    "extensionName": {
+        "description": "Name of the extension.",
+        "message": "QuickFolders"
+    },
+    "extensions.quickfolders@curious.be.description": {
+        "message": "Забележите своје омиљене фасцикле поште у Тандерберду."
+    },
+    "firstName.label": {
+        "message": "Име:"
+    },
+    "freeLicense": {
+        "message": "Ако сте недавно донирали за QuickFolders или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка QuickFolders."
+    },
+    "fromAddress": {
+        "message": "From:"
+    },
+    "fromAddress.tooltip": {
+        "message": "Default Identity when composing emails"
+    },
+    "getQuickFolders": {
+        "message": "Набави QuickFolders Pro"
+    },
+    "grpComposer": {
+        "message": "Default Email Fields"
+    },
+    "grpCustomCSS": {
+        "message": "Прилагођени CSS"
+    },
+    "grpTabBehavior": {
+        "message": "Advanced Tab Behavior"
+    },
+    "heading-installed": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "Успешно инсталиран $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "heading-updated": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ је успешно ажурирано",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "intro": {
+        "message": "Годишња лиценца за QuickFolders вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи."
+    },
+    "label-remind-me": {
+        "message": "Подсети ме поново за {цоунтДаис} дана.",
+        "placeholders": {
+            "countDays": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    },
+    "lastName.label": {
+        "message": "Презиме:"
+    },
+    "lblCustomPalette": {
+        "message": "Прилагођена палета:"
+    },
+    "license-is-extended": {
+        "description": "Shown if license expires more than a year from now",
+        "message": "Хвала вам што сте недавно продужили лиценцу или ако сте донирали. Као што сте помогли у будућем доказивању овог додатка, можете једноставно затворити овај прозор."
+    },
+    "licenseWindow.title": {
+        "message": "QuickFolders Pro лиценца"
+    },
+    "mozillas-basic-platform": {
+        "message": "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са аддонс.тхундербирд.нет - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."
+    },
+    "notificationTitle": {
+        "description": "Title of the click notification.",
+        "message": "Click notification"
+    },
+    "ongoing-work": {
+        "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "purchase-a-license": {
+        "message": "Купите лиценцу."
+    },
+    "purchase-heading": {
+        "message": "Куповина лиценце!"
+    },
+    "qf.accounts": {
+        "message": "Рачуни"
+    },
+    "qf.alert.pasteFolders.formatErr": {
+        "message": "Could not create tabs. See tools / error console for more detail."
+    },
+    "qf.backupAndRestore": {
+        "message": "Backup / Restore"
+    },
+    "qf.btn.applyPosition": {
+        "message": "Примените вредност позиције!"
+    },
+    "qf.button.add": {
+        "message": "Додај!"
+    },
+    "qf.button.configureTooltips": {
+        "message": "Подешавање облачића са описом…"
+    },
+    "qf.button.currentFolderBackground.set": {
+        "message": "постављено"
+    },
+    "qf.button.default": {
+        "message": "Подразумевано"
+    },
+    "qf.button.defaultcolors": {
+        "message": "Подразумеване боје"
+    },
+    "qf.button.deleteselectedcategory": {
+        "message": "Избриши изабрану категорију"
+    },
+    "qf.button.down": {
+        "message": "Надоле"
+    },
+    "qf.button.pasteLicense": {
+        "message": "налепи"
+    },
+    "qf.button.rename": {
+        "message": "Преименуј"
+    },
+    "qf.button.reorderButtonBottom": {
+        "message": "на дно"
+    },
+    "qf.button.reorderButtonBottom.accessKey": {
+        "message": "Д"
+    },
+    "qf.button.reorderButtonBottom.toolTip": {
+        "message": "Прераспореди филтер, тако да се извршава после свих осталих"
+    },
+    "qf.button.reorderButtonTop": {
+        "message": "На врх"
+    },
+    "qf.button.reorderButtonTop.accessKey": {
+        "message": "В"
+    },
+    "qf.button.reorderButtonTop.toolTip": {
+        "message": "Прераспореди филтер, тако да се извршава пре свих осталих"
+    },
+    "qf.button.up": {
+        "message": "Нагоре"
+    },
+    "qf.button.validateLicense": {
+        "message": "потврди"
+    },
+    "qf.caption.currentFolderBackground": {
+        "message": "Позадина траке са алаткама тренутне фасцикле"
+    },
+    "qf.categories.supportMultiple": {
+        "message": "Support selecting multiple tab categories"
+    },
+    "qf.categories.supportMultiple.tooltip": {
+        "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    },
+    "qf.checkbox.autoFocusPreview": {
+        "message": "Пребаци на списак порука када се мењају језичци"
+    },
+    "qf.checkbox.autoHideToolbar": {
+        "message": "Сакриј QuickFolders кад није потребан"
+    },
+    "qf.checkbox.autoHideToolbar.tooltip": {
+        "message": "Умањује траку са алаткама у посебне језичке, попут календара, садржаја и управљача додацима."
+    },
+    "qf.checkbox.currentFolder.closeButton": {
+        "message": "Дугме за затварање"
+    },
+    "qf.checkbox.currentFolder.show": {
+        "message": "Прикажи тренутну траку са алаткама"
+    },
+    "qf.checkbox.currentfolder.lightweight": {
+        "message": "integrate with lightweight theme"
+    },
+    "qf.checkbox.debug": {
+        "message": "Начин приказивања грешака"
+    },
+    "qf.checkbox.debug.tooltip": {
+        "message": "притисните десни клик на ово поље да бисте приступили напредним опцијама извештавања о грешкама"
+    },
+    "qf.checkbox.displaylabel": {
+        "message": "Прикажи натпис „QuickFolders” на траци са алаткама"
+    },
+    "qf.checkbox.displaylabel.tooltip": {
+        "message": "притисните десни клик на бисте изменили текст овог натписа"
+    },
+    "qf.checkbox.enableTransitions": {
+        "message": "Омогући CSS прелазе"
+    },
+    "qf.checkbox.enableTransitions.tooltip": {
+        "message": "Приказује благе прелазе између мењања разних боја језичака."
+    },
+    "qf.checkbox.hideCategoryBox": {
+        "message": "Collapse Categories"
+    },
+    "qf.checkbox.hideCategoryBox.tooltip": {
+        "message": "Minimizes the Categories menu to take up less space."
+    },
+    "qf.checkbox.highlightNewMail": {
+        "message": "Истакни фасцикле када стигне нова порука"
+    },
+    "qf.checkbox.menus.dragToNewFolder": {
+        "message": "Превуци у нову подфасицклу"
+    },
+    "qf.checkbox.menus.emptyJunk": {
+        "message": "Обриши нежељене"
+    },
+    "qf.checkbox.menus.emptyTrash": {
+        "message": "Обриши смеће"
+    },
+    "qf.checkbox.menus.getMailForInbox": {
+        "message": "Прими поруке (налози за поруке)"
+    },
+    "qf.checkbox.menus.getMailForNews": {
+        "message": "Прими поруке (налози за вести)"
+    },
+    "qf.checkbox.menus.markAllRead": {
+        "message": "Означи фасциклу као прочитану"
+    },
+    "qf.checkbox.menus.markAllReadRecursive": {
+        "message": "Означи фасциклу као прочитану (рекурзивно)"
+    },
+    "qf.checkbox.quickCopy": {
+        "message": "quickCopy - копирајте поруку у било коју фасциклу помоћу пречице "
+    },
+    "qf.checkbox.quickCopy.tip": {
+        "message": "Пречица за превлачење порука на quickCopy дугме, ради брзог копирања у било коју фасциклу."
+    },
+    "qf.checkbox.quickJump": {
+        "message": "quickJump - Пронађите фасцикле помоћу пречице "
+    },
+    "qf.checkbox.quickJump.tip": {
+        "message": "Пречица дугмета за брзо кретање служи за најбрже кретање било где, помоћу уноса назива."
+    },
+    "qf.checkbox.quickMove": {
+        "message": "брзоПремештање - преместите поруку у било коју фасциклу помоћу пречице "
+    },
+    "qf.checkbox.quickMove.tip": {
+        "message": "Пречица за превлачење порука у дугме брзоПремештање служи за најбрже премештање у било коју фасциклу, помоћу уноса назива."
+    },
+    "qf.checkbox.quickmove.autofill": {
+        "message": "Insert last folder name executed"
+    },
+    "qf.checkbox.quickmove.autofill.tip": {
+        "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+    },
+    "qf.checkbox.readingList": {
+        "message": "Списак читања"
+    },
+    "qf.checkbox.readingList.tooltip": {
+        "message": "Списак порука које би требало да прочитате касније. Превуците важне поруке на ово дугме."
+    },
+    "qf.checkbox.shadows": {
+        "message": "сенке"
+    },
+    "qf.checkbox.shift": {
+        "message": "Схифт"
+    },
+    "qf.checkbox.showCountInSubFolders": {
+        "message": "Прикажи и укупан број фасцикли"
+    },
+    "qf.checkbox.showCountInSubFolders.tooltip": {
+        "message": "Приказани су одвојено са знаком „+” поред главног бројача; непрочитане поруке које се налазе у њему ће, такође, подебљати језичак ако је горња опција активна"
+    },
+    "qf.checkbox.showFilterButton": {
+        "message": "Дугме „Направи филтере”"
+    },
+    "qf.checkbox.showFilterButton.tooltip": {
+        "message": "Филтере можете направити и коришћењем приручног менија QuickFolders"
+    },
+    "qf.checkbox.showFolderNavigation": {
+        "message": "Дугмад за кретање кроз фасцикле"
+    },
+    "qf.checkbox.showIconButtons": {
+        "message": "Прилагоди дугмад икона"
+    },
+    "qf.checkbox.showIcons": {
+        "message": "Прикажи иконе (Примљене, послате, нежељене, избрисане, у припреми, архивиране, обрасци)"
+    },
+    "qf.checkbox.showMailFolderCommands": {
+        "message": "Наредбе фасцикле са поштом"
+    },
+    "qf.checkbox.showMessageNavigation": {
+        "message": "Дугмад за кретање кроз поруке"
+    },
+    "qf.checkbox.showNewMailItalics": {
+        "message": "Језичке у којима има нових порука прикажи искошеним словима"
+    },
+    "qf.checkbox.showNonEmptyItalics": {
+        "message": "Искоси језичке фасцикли које садрже поруке"
+    },
+    "qf.checkbox.showQuickMove": {
+        "message": "Дугме за брзо премештање"
+    },
+    "qf.checkbox.showQuickMove.tooltip": {
+        "message": "Дугме за брзо премештање може бити коришћено за премештање порука у одабрану фасциклу. Можете премештати поруке из више фасцикли. Када у њему имате поруке, унесите назив одредишне фасцикле у поље за претрагу."
+    },
+    "qf.checkbox.showRecentButton": {
+        "message": "Дугме за недавне фасцикле"
+    },
+    "qf.checkbox.showRecentTab": {
+        "message": "Прикажи јазичак са недавно отвореним фасциклама"
+    },
+    "qf.checkbox.showRecentTab.tooltip": {
+        "message": "Притисните десни клик да бисте подесили"
+    },
+    "qf.checkbox.showSubfolders": {
+        "message": "Развиј подфасцикле у искачућим менијима"
+    },
+    "qf.checkbox.showTotalMessageCount": {
+        "message": "Прикажи укупан број порука на дугмету фасцикле"
+    },
+    "qf.checkbox.showUnreadBold": {
+        "message": "Подебљај дугмад фасцикли које садрже непрочитане поруке"
+    },
+    "qf.checkbox.showUnreadMessageCount": {
+        "message": "Прикажи број непрочитаних порука на дугмету фасцикле"
+    },
+    "qf.checkbox.showshortcutnumber": {
+        "message": "Прикажи број пречице на наслову фасцикле"
+    },
+    "qf.checkbox.singleMessage.currentFolder.show": {
+        "message": "…и у прозорима са једном поруком"
+    },
+    "qf.checkbox.singleMessage.currentFolder.tooltip": {
+        "message": "Прикажи траку са алаткама тренутног прозора који се отвара када изаберете да отворите е-поруку у новом прозору."
+    },
+    "qf.checkbox.singleMessageTab.currentFolder.show": {
+        "message": "Трака са алаткама у језичцима са једном поруком"
+    },
+    "qf.checkbox.skipFolder": {
+        "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    },
+    "qf.checkbox.skipFolder.tip": {
+        "message": "Shortcut for jumping to the next unread folder."
+    },
+    "qf.checkbox.sortMenusAlpha": {
+        "message": "Присили ређање менија са подфасциклама по азбуци"
+    },
+    "qf.checkbox.sortMenusAlpha.tooltip": {
+        "message": "Ову опцију користите само ако ваш програм за е-пошту не ређа подфасцикле исправно."
+    },
+    "qf.checkbox.storeConfig.general": {
+        "message": "Include general settings"
+    },
+    "qf.checkbox.storeConfig.layout": {
+        "message": "Include advanced and layout"
+    },
+    "qf.checkbox.storeConfig.tabs": {
+        "message": "Include QuickFolders Tabs"
+    },
+    "qf.checkbox.tabMenuIcon": {
+        "message": "Икона менија траке са алаткама"
+    },
+    "qf.checkbox.tabMenuIcon.tooltip": {
+        "message": "Овај мени можете добити и десним кликом на траку са алаткама"
+    },
+    "qf.checkbox.transparent": {
+        "message": "провидно"
+    },
+    "qf.checkbox.useNavigationShortcuts": {
+        "message": "Алт+лево за претходнни/алт+десно за следећи језичак"
+    },
+    "qf.checkbox.usePalette": {
+        "message": "Користи палету"
+    },
+    "qf.checkbox.useRebuildShortcut": {
+        "message": "Врати језичке помоћћу пречице ктрл+алт"
+    },
+    "qf.checkbox.usekeyboardshortcuts": {
+        "message": "Користи пречице на тастатури (од алт+а до алт+9)"
+    },
+    "qf.checkbox.usekeyboardshortcutsCTRL": {
+        "message": "Користи ктрл уместо алт"
+    },
+    "qf.continueFilter.label": {
+        "message": "Направи филтер…"
+    },
+    "qf.continueFilter.shortcut": {
+        "message": "ф"
+    },
+    "qf.copyfolders": {
+        "message": "Copy Tabs"
+    },
+    "qf.copyfolders.tooltip": {
+        "message": "Копирање подешавања фасцикле у оставу"
+    },
+    "qf.currentFolderBackground.custom": {
+        "message": "прилагођено"
+    },
+    "qf.currentFolderBackground.dark": {
+        "message": "тамно"
+    },
+    "qf.currentFolderBackground.default": {
+        "message": "подразумевано"
+    },
+    "qf.currentFolderBackground.translucent": {
+        "message": "провидно"
+    },
+    "qf.currentfolder.leftSpacer": {
+        "message": "Left Spacer:"
+    },
+    "qf.currentfolder.rightSpacer": {
+        "message": "Right Spacer:"
+    },
+    "qf.description.bugzilla": {
+        "message": "Користите Багзилу за све званичне захтеве и пријављивање грешака"
+    },
+    "qf.description.categoryusage": {
+        "message": "Можете да ставите овај језичак у категорију (нпр. посао, приватно итд)"
+    },
+    "qf.description.changeCategory": {
+        "message": "Притисните десни клик на омиљено место да бисте организовали категорије. На левој страни траке ћете добити падајући списак категорија."
+    },
+    "qf.description.contactMe": {
+        "message": "Можете да ме и лично контактирате на axelg@gofree.indigo.ie:"
+    },
+    "qf.description.donate": {
+        "message": "Ако волите додатак QuickFolders као и ми, а желели бисте да подржите његов развој, можете да донирате нешто новца."
+    },
+    "qf.description.dragToAdd": {
+        "message": "Превуците фасциклу са порукама у празан простор нове траке са алаткама да бисте напраили нову фасциклу за брзи приступ (нешто попут пречице). Превуците поруке у фасциклу за брзи приступ да бисте их преместили у одговарајућу (или копирајте помоћу пречице на тастатури). Кликните на фасциклу за брзи приступ да бисте отворили фасциклу са порукама."
+    },
+    "qf.description.dragToPopup": {
+        "message": "Превуците поруке у искачући мени фасцикле за брзи приступ да бисте их преместили у подфасцикле."
+    },
+    "qf.description.dragToPosition": {
+        "message": "Бочно превуците фасцикле за брзе приступе да бисте променили њихове позиције. Кликните десним кликом на фасциклу за брзи приступ да бисте приступили садржајном менију; бирањем можете да пређете у подфасцикле; преименовање и бележење; измењивање натписа фасцикле за брзи приступ; уклањање омиљеног места; брисање фасцикле за брзи приступ (али не и фасцикле са порукама)."
+    },
+    "qf.description.dragexplain": {
+        "message": "И превлачењем можете да им мењате положај! Превуците једну изнад друге да бисте је поставили пре/после ње."
+    },
+    "qf.description.editcategory": {
+        "message": "Дуплим кликом изаберите постојећу категорију или додајте нову испод."
+    },
+    "qf.description.experimentalItems": {
+        "message": "Следеће ставке су пробне, па се надамо да ће бити уграђене у наредно издање!"
+    },
+    "qf.description.languages": {
+        "message": "QuickFolders подржава мног ејезике преводе, па можете помоћи са превођењем превођењем на ваш језик (помоћу Бабелзиле):"
+    },
+    "qf.description.linkNote": {
+        "message": "Посетите матичну страницу додатка QuickFolders да бисте видели детаљно упутство за кориснике, савете и ЧПП:"
+    },
+    "qf.description.multicategory": {
+        "message": "Да бисте додали фасциклу у неколико категорија, држите притиснут ШИФТ или КТРЛ док бирате ставке."
+    },
+    "qf.description.pulldown": {
+        "message": "QuickFolders трака ће приказати падајући списак, што ће вам омогућити филтрирање језичака по категорији."
+    },
+    "qf.description.rightClickOptions": {
+        "message": "Притисните десни клик на празан простор да бисте отворили мени са опцијама. У њима можете да одаберете подразумевани стил (мањи) или раван стил (прегледнији и подржава показивач приликом премештања)."
+    },
+    "qf.description.tipMsg": {
+        "message": "Савет: ако имате много фасцикли, испробајте додатак Nostalgy за организовање порука помоћу тастатуре."
+    },
+    "qf.description.versionhistory": {
+        "message": "Детаљан историјат верзија на quickfolders.org"
+    },
+    "qf.dialog.changeorder": {
+        "message": "Измени редослед забелешки"
+    },
+    "qf.dialog.quickmove.settings": {
+        "message": "Напредна подешавања за брзо quickMove"
+    },
+    "qf.dialog.setcategory": {
+        "message": "Подесите категорију језичка"
+    },
+    "qf.donate.tooltip": {
+        "message": "Подржи развој додатка QuickFolders!"
+    },
+    "qf.filters.instructions": {
+        "message": "Изаберите предложак. У следећем кораку ћете моћи да подешавате правила филтера."
+    },
+    "qf.filters.template.from": {
+        "message": "Засновано на пошиљаоцу (од)"
+    },
+    "qf.filters.template.from.description": {
+        "message": "Ово је вероватно најчешће коришћени шаблон: откриће е-адресу пошиљаоца и налепити је у поља „ од” и „за” у филтерима. На овај начин, комплетан разговор са пошиљаоцем ће бити премештен у нову фасциклу."
+    },
+    "qf.filters.template.list": {
+        "message": "Списак за слање"
+    },
+    "qf.filters.template.list.description": {
+        "message": "Слично „Засновано на пошиљаоцу”, али не попуњава поље „за”."
+    },
+    "qf.filters.template.tag": {
+        "message": "по ознакама"
+    },
+    "qf.filters.template.tag.description": {
+        "message": "Користи ознаке из е-поруке и додаје их као филтер."
+    },
+    "qf.filters.template.to": {
+        "message": "Засновано на примаоцу (за)"
+    },
+    "qf.filters.template.to.description": {
+        "message": "Слично „Засновано на пошиљаоцу”: користите када означите поруку коју желите да пошаљете некоме другоме. Ово је открити е-адресу примаоца и налепити је у поља „од” и „за” у филтерима. На овај начин, комплетан разговор са контактом ће бити премештен у нову фасциклу."
+    },
+    "qf.filters.template.topic": {
+        "message": "по предмету"
+    },
+    "qf.filters.template.topic.description": {
+        "message": "Ово ће тражити специјалне изразе у заградама, на пример [сакупљачи маркица] или {вегани}, а потом направити филтер  заснован на њима. Веома је лако за коришћење приликом слања великог броја порука."
+    },
+    "qf.filters.title": {
+        "message": "Направи филтере"
+    },
+    "qf.filters.toggleMessage.notificationText": {
+        "message": "Започето је учење филтера. Сваки пут када преместите QuickFolders поруку у QuickFolders, биће покренут чаробњак за прављење филтера. Тандерберд користи филтера порука да би аутоматски преместио поруке пратећи ко је пошиљалац, да ли се задата реч налази у предмету поруке и слично. Да бисте прекинули овај режим, притисните дугме за филтер у горњем левом углу траке са алаткама QuickFolders."
+    },
+    "qf.filters.toggleMessage.title": {
+        "message": "Прављење филтера"
+    },
+    "qf.foldercontextmenu.quickfolders.customizeIcon": {
+        "message": "Прилагоди икону..."
+    },
+    "qf.foldercontextmenu.quickfolders.removeIcon": {
+        "message": "Уклони прилагођено дугме"
+    },
+    "qf.fpJsonFile": {
+        "message": "JSON File"
+    },
+    "qf.goNextUnread.auto": {
+        "message": "Go to next folder without asking (recommended)"
+    },
+    "qf.goNextUnread.none": {
+        "message": "Do nothing if no unread email is left in folder"
+    },
+    "qf.goNextUnread.prompt": {
+        "message": "Ask to go to next unread folder"
+    },
+    "qf.group.navigation": {
+        "message": "Message Navigation"
+    },
+    "qf.label.ActiveTabColor": {
+        "message": "Боја активног језичка:"
+    },
+    "qf.label.ColoredTabPalette": {
+        "message": "Палета за обојене језичке:"
+    },
+    "qf.label.ColoredTabPalette.tooltip": {
+        "message": "Палета за језичке одређене боје"
+    },
+    "qf.label.DragOverBackground": {
+        "message": "Боја за превлачење:"
+    },
+    "qf.label.HoveredTabColor": {
+        "message": "Боја језичка када се нанесе миш:"
+    },
+    "qf.label.Toolbar": {
+        "message": "Трака са алаткама"
+    },
+    "qf.label.Toolbar.bottomLine": {
+        "message": "Ширина доње линије:"
+    },
+    "qf.label.Toolbar.bottomLine.tip": {
+        "message": "Ширина линије испод језичака. Њену коју можете изменити помоћу бирача боје активног језичка испод."
+    },
+    "qf.label.ToolbarBackground": {
+        "message": "Позадина траке са алаткама:"
+    },
+    "qf.label.UncoloredTab": {
+        "message": "Необојени језичци"
+    },
+    "qf.label.UncoloredTab.tooltip": {
+        "message": "Изглед неактивних језичака без посебно одабране боје"
+    },
+    "qf.label.appearance": {
+        "message": "Изглед"
+    },
+    "qf.label.behavior": {
+        "message": "Понашање"
+    },
+    "qf.label.bugzilla": {
+        "message": "Пријави грешку/предложи нешто ново помоћу Багзиле…"
+    },
+    "qf.label.buttonFontSizeNumeric": {
+        "message": "Величина фонта на дугмету (0 је подразумевана):"
+    },
+    "qf.label.cancel": {
+        "message": "Откажи"
+    },
+    "qf.label.colors": {
+        "message": "Боје"
+    },
+    "qf.label.contactLink": {
+        "message": "Контактирајте ме (на енглеском или немачком)…"
+    },
+    "qf.label.currentFolderToolbar": {
+        "message": "Трака са алаткама тренутне фасцикле"
+    },
+    "qf.label.donate": {
+        "message": "Донирај"
+    },
+    "qf.label.donateLink": {
+        "message": "Посети страницу за донирање"
+    },
+    "qf.label.dragFolderLabel": {
+        "message": "Превуците фасцикле овде да бисте их додали у омиљена места. Кликните на омиљено место да бисте отишли у фасциклу. Превуците их да бисте их померили/копирали овде."
+    },
+    "qf.label.existingcategories": {
+        "message": "Постојеће категорије:"
+    },
+    "qf.label.filterCountN_of_M": {
+        "message": "{0} од {1}"
+    },
+    "qf.label.filterEntities": {
+        "message": "ставки(е)"
+    },
+    "qf.label.filterSingleEntity": {
+        "message": "1 ставка"
+    },
+    "qf.label.getQuickFilters": {
+        "message": "Ако желите да правите филтере на побољшани и моћнији начин, инсталирајте мој додатак quickFilters!"
+    },
+    "qf.label.goNextUnread": {
+        "message": "Go to next unread email:"
+    },
+    "qf.label.goNextUnread.tip": {
+        "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+    },
+    "qf.label.haveLicense": {
+        "message": "Већ имате лиценцу?"
+    },
+    "qf.label.homePage": {
+        "message": "Детаљне информације на новој страници додатка QuickFolders на quickfolders.org…"
+    },
+    "qf.label.initdelay": {
+        "message": "[мс] почетна пауза {стандардно је 1000}:"
+    },
+    "qf.label.insertLicense": {
+        "message": "Унесите свој лични број лиценце овде:"
+    },
+    "qf.label.insertLicense.tooltip": {
+        "message": "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а."
+    },
+    "qf.label.instantApplyMsg": {
+        "message": "Напомена: ако испод видите само дугме [Затвори], подешавања боја можда неће радити. Како бисте решили овај проблем, пробајте да притиснете десни клик на празну површину фасцикле за брзи приступ. То ће присилити дугме [У реду] да се појави, па ће боје тиме бити сачуване."
+    },
+    "qf.label.keyboard": {
+        "message": "Пречице на тастатури"
+    },
+    "qf.label.languagesLink": {
+        "message": "Преведи…"
+    },
+    "qf.label.licenseValid": {
+        "message": "Ваша лиценца важи до:"
+    },
+    "qf.label.mainToolbar": {
+        "message": "Елементи главне траке са алаткама"
+    },
+    "qf.label.menus": {
+        "message": "Подешавање менија"
+    },
+    "qf.label.menus.customIcon": {
+        "message": "Прилагоди икону"
+    },
+    "qf.label.menus.help": {
+        "message": "QuickFolders - помоћ"
+    },
+    "qf.label.menus.hideQFunlessCTRL": {
+        "message": "Only display with CTRL key held"
+    },
+    "qf.label.menus.lineBreak": {
+        "message": "Уметни нови ред"
+    },
+    "qf.label.menus.mailFolder": {
+        "message": "Наредбе поште"
+    },
+    "qf.label.menus.options": {
+        "message": "Опције"
+    },
+    "qf.label.menus.quickFolder": {
+        "message": "QuickFolders - наредбе"
+    },
+    "qf.label.menus.separator": {
+        "message": "Уметни раздвајач"
+    },
+    "qf.label.menus.support": {
+        "message": "QuickFolders - подршка"
+    },
+    "qf.label.misc": {
+        "message": "Разно"
+    },
+    "qf.label.newcategory": {
+        "message": "Нова категорија:"
+    },
+    "qf.label.pixels": {
+        "message": "пиксела"
+    },
+    "qf.label.quickFilters.link": {
+        "message": "Набави quickFilters!"
+    },
+    "qf.label.quickfolders": {
+        "message": "QuickFolders:"
+    },
+    "qf.label.renameselectedcategory": {
+        "message": "Преименуј изабрану категорију"
+    },
+    "qf.label.setcolors": {
+        "message": "Подеси [боју текста], боју позадине"
+    },
+    "qf.label.tabContent": {
+        "message": "Садржај језичка"
+    },
+    "qf.label.testfolder": {
+        "message": "Пробна фасцикла"
+    },
+    "qf.label.testfolder2": {
+        "message": "Пробна фасцикла 2"
+    },
+    "qf.label.themes": {
+        "message": "Теме:"
+    },
+    "qf.label.toolbarPosition": {
+        "message": "Положај траке са алаткама КуицкФолдерс"
+    },
+    "qf.label.versionhistory": {
+        "message": "Погледај историјат верзија…"
+    },
+    "qf.licenseValidation.expired": {
+        "message": "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу."
+    },
+    "qf.licenseValidation.failed": {
+        "message": "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка."
+    },
+    "qf.licenseValidation.guessAddon": {
+        "message": "(The key entered may be for {2})."
+    },
+    "qf.licenseValidation.invalidAddon": {
+        "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    },
+    "qf.licenseValidation.invalidMail": {
+        "message": "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ."
+    },
+    "qf.licenseValidation.notMatchedMail": {
+        "message": "Шифроване ел. адресе се не подударају са читљивима."
+    },
+    "qf.licenseValidation.passed": {
+        "message": "Хвала што сте регистровали QuickFolders про! Све могућности су сада откључане."
+    },
+    "qf.loadConfig": {
+        "message": "Load Configuration…"
+    },
+    "qf.menu.Color": {
+        "message": "Боја"
+    },
+    "qf.menu.tabColor": {
+        "message": "Безбојно"
+    },
+    "qf.menuitem.quickfolders.changeOrder": {
+        "message": "Измени редослед омиљених места"
+    },
+    "qf.menuitem.quickfolders.changeOrderAccess": {
+        "message": "И"
+    },
+    "qf.menuitem.quickfolders.deleteDeadTabs": {
+        "message": "Пронађи заостале картице"
+    },
+    "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+        "message": "з"
+    },
+    "qf.menuitem.quickfolders.displayPreviewToolbar": {
+        "message": "Прикажи алатке за тренутну фасциклу"
+    },
+    "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
+        "message": "А"
+    },
+    "qf.menuitem.quickfolders.filters": {
+        "message": "Направи филтере за поруке…"
+    },
+    "qf.menuitem.quickfolders.filtersAccess": {
+        "message": "Ф"
+    },
+    "qf.menuitem.quickfolders.find": {
+        "message": "Пронађи фасциклу…"
+    },
+    "qf.menuitem.quickfolders.findAccess": {
+        "message": "ф"
+    },
+    "qf.menuitem.quickfolders.help": {
+        "message": "Помоћ за QuickFolders"
+    },
+    "qf.menuitem.quickfolders.helpAccess": {
+        "message": "м"
+    },
+    "qf.menuitem.quickfolders.options": {
+        "message": "QuickFolders - опције"
+    },
+    "qf.menuitem.quickfolders.optionsAccess": {
+        "message": "О"
+    },
+    "qf.menuitem.quickfolders.register": {
+        "message": "Региструј QuickFolders Pro…"
+    },
+    "qf.menuitem.quickfolders.repairTabs": {
+        "message": "Освежи видљиве картице!"
+    },
+    "qf.menuitem.quickfolders.repairTabsAccess": {
+        "message": "О"
+    },
+    "qf.menuitem.quickfolders.repairTreeIcons": {
+        "message": "Поправи иконе"
+    },
+    "qf.menuitem.quickfolders.support": {
+        "message": "Подршка за QuickFolders"
+    },
+    "qf.menuitem.quickfolders.supportAccess": {
+        "message": "П"
+    },
+    "qf.menuitem.quickfolders.togglePaintMode": {
+        "message": "Режим за бојење"
+    },
+    "qf.menuitem.quickfolders.togglePaintModeAccess": {
+        "message": "б"
+    },
+    "qf.notification.categoryIsReadOnly": {
+        "message": "This item cannot be deleted."
+    },
+    "qf.notification.dontShowAgain": {
+        "message": "Убудуће не приказуј ову поруку."
+    },
+    "qf.notification.premium.btn.extendLicense": {
+        "message": "Extend License"
+    },
+    "qf.notification.premium.btn.extendLicense.tooltip": {
+        "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    },
+    "qf.notification.premium.btn.getLicense": {
+        "message": "Набави лиценцу!"
+    },
+    "qf.notification.premium.btn.hotKey": {
+        "message": "л"
+    },
+    "qf.notification.premium.btn.renewLicense": {
+        "message": "Renew License"
+    },
+    "qf.notification.premium.readingList": {
+        "message": "Имате одређено {1} белешки. Бесплатна верзија додатка QuickFolders дозвољава највише {2}."
+    },
+    "qf.notification.premium.tabIcons": {
+        "message": "Имате одређено {1} икона(е). Бесплатна верзија додатка QuickFolders дозвољава највише {2}."
+    },
+    "qf.notification.premium.text": {
+        "message": "{1} је доступна у премијум верзији. Региструјете QuickFolders, ако желите трајно да користите."
+    },
+    "qf.notification.premium.title": {
+        "message": "Премијум могућност"
+    },
+    "qf.options.LayoutColorAppearance": {
+        "message": "Приказ појединачне боје језичка"
+    },
+    "qf.options.LayoutColorAppearanceFilled": {
+        "message": "(попуњен стил)"
+    },
+    "qf.options.LayoutColorAppearanceStriped": {
+        "message": "(пругасти стил)"
+    },
+    "qf.options.label.themeAuthor": {
+        "message": "Аутор теме:"
+    },
+    "qf.options.theme.pastelColors": {
+        "message": "Пастелне боје"
+    },
+    "qf.options.themes.customCornerRadius.Bottom.label": {
+        "message": "доњи:"
+    },
+    "qf.options.themes.customCornerRadius.Top.label": {
+        "message": "горњи:"
+    },
+    "qf.options.themes.customCornerRadius.checkbox": {
+        "message": "Прилагођени радијус углова"
+    },
+    "qf.options.themes.showBorders.checkbox": {
+        "message": "Увек приказуј оквире"
+    },
+    "qf.options.versionnumber.tooltip": {
+        "message": "Притисните десни клик да бисте видели историјат верзија."
+    },
+    "qf.palette.inactive": {
+        "message": "као неактивни језичци"
+    },
+    "qf.palette.night": {
+        "message": "Ноћни визир"
+    },
+    "qf.palette.pastel": {
+        "message": "пастелне боје"
+    },
+    "qf.palette.standard": {
+        "message": "стандардна палета"
+    },
+    "qf.palette.twoColors": {
+        "message": "две боје"
+    },
+    "qf.pastefolders.tooltip": {
+        "message": "Delete all QuickFolders and read new configuration from clipboard"
+    },
+    "qf.pathFormat.AccountAndPath": {
+        "message": "Налог - путања фасцикле"
+    },
+    "qf.pathFormat.PathOnly": {
+        "message": "Путања фасцикле"
+    },
+    "qf.pathFormat.URI": {
+        "message": "URI фасцикле"
+    },
+    "qf.pathFormat.folderAndAccount": {
+        "message": "назив фасцикле - налог поште"
+    },
+    "qf.pathFormat.folderName": {
+        "message": "Назив фасцикле"
+    },
+    "qf.pathFormat.maxDepth": {
+        "message": "Највиша дубина путање:"
+    },
+    "qf.pathFormat.tooltip": {
+        "message": "Највиши број порука које се приказују у путањи фасцикле."
+    },
+    "qf.prefwindow.quickfolders.options": {
+        "message": "QuickFolders - опције"
+    },
+    "qf.premium.renewLicense.tooltip": {
+        "message": "Your license expired {1} days ago"
+    },
+    "qf.premiumConfig": {
+        "message": "Премијум могућности"
+    },
+    "qf.prompt.category.deleteMultiple": {
+        "message": "Ok to delete multiple categories?"
+    },
+    "qf.prompt.contact.subject": {
+        "message": "Унесите предмет укратко:"
+    },
+    "qf.prompt.contact.title": {
+        "message": "Контактирај подршку за QuickFolders"
+    },
+    "qf.prompt.loadFolders.confirm": {
+        "message": "Accept the loaded Tabs?"
+    },
+    "qf.prompt.newFolder.createQFtab": {
+        "message": "Also create a QuickFolders Tab"
+    },
+    "qf.prompt.newFolder.newChildName": {
+        "message": "Enter name for new child folder under {0}"
+    },
+    "qf.prompt.newFolder.title": {
+        "message": "New Folder"
+    },
+    "qf.prompt.pasteFolders": {
+        "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
+    },
+    "qf.prompt.pasteFolders.confirm": {
+        "message": "Keep the displayed Tabs?"
+    },
+    "qf.prompt.readingList.removeItem": {
+        "message": "Уклонити ову ставку?"
+    },
+    "qf.prompt.readingList.searchMissingItem": {
+        "message": "Није могуће наћи поруку. Могуће је да је негде премештена у међувремену.\\n{1}\\n\\nЖелите ли да је потражите?"
+    },
+    "qf.prompt.restoreFolders": {
+        "message": "This will delete all QuickFolders tabs and replace with the items from the file.\\n{0} entries were read.\\nReplace tabs?"
+    },
+    "qf.prompt.switchDomainLicense": {
+        "message": "Switch to Domain License?"
+    },
+    "qf.quickMove.escapeClears": {
+        "message": "Есцапе Кеи брише листу порука."
+    },
+    "qf.quickMove.excludeAccounts": {
+        "message": "Изаберите све налоге које треба изузети из резултата претраге:"
+    },
+    "qf.quickMove.lockAccount": {
+        "message": "Прикажи резултате само са тренутног налога поште."
+    },
+    "qf.quickMove.maxResults": {
+        "message": "Максималан број резултата претраге"
+    },
+    "qf.quickMove.path.format": {
+        "message": "Облик приказа:"
+    },
+    "qf.quickMove.silent": {
+        "message": "Нема обавештења након премештања поште."
+    },
+    "qf.register.licenseValid.expired": {
+        "message": "Your license expired on:"
+    },
+    "qf.search.advanced": {
+        "message": "Подешавања напредне претраге…"
+    },
+    "qf.storeConfig": {
+        "message": "Save Configuration…"
+    },
+    "qf.tab.advanced": {
+        "message": "Напредно"
+    },
+    "qf.tab.general": {
+        "message": "Основно"
+    },
+    "qf.tab.gopro": {
+        "message": "QuickFolders про"
+    },
+    "qf.tab.layout": {
+        "message": "Набуџи моје језичке!"
+    },
+    "qf.tab.quickhelp": {
+        "message": "Брза помоћ"
+    },
+    "qf.tab.support": {
+        "message": "Подршка"
+    },
+    "qf.textbox.searchBox.emptyText": {
+        "message": "Претраживање по називу..."
+    },
+    "qf.textbox.searchBox.toolTip": {
+        "message": "унесите кључну реч да бисте претраживали по називу"
+    },
+    "qf.themes.applePills.description": {
+        "message": "слично Mac-у - једноставан, са произвољним бојама."
+    },
+    "qf.themes.applePills.label": {
+        "message": "Apple пилуле"
+    },
+    "qf.themes.flatButtons.description": {
+        "message": "Стандардна дугмад траке са алаткама - најсличније оригиналном изгледу издања 0.5!"
+    },
+    "qf.themes.flatButtons.label": {
+        "message": "Дугмад траке са алаткама"
+    },
+    "qf.themes.flatTabs.description": {
+        "message": "модерни језичци - потпуно прилагодиви и изгледају дивно на Windows-у and Линуксу."
+    },
+    "qf.themes.flatTabs.label": {
+        "message": "Равни стил"
+    },
+    "qf.themes.nativeTabs.description": {
+        "message": "слично оперативном ситему - мање опција за боје, али изгледа усклађеније са програмом за размену порука."
+    },
+    "qf.themes.nativeTabs.label": {
+        "message": "Почетне боје"
+    },
+    "qf.themes.realButtons.description": {
+        "message": "Тастери - изгледају као стандардна дугмад у прозорима"
+    },
+    "qf.themes.realButtons.label": {
+        "message": "Тастери"
+    },
+    "qf.toolbar.quickfolders.toolbar": {
+        "message": "QuickFolders трака са алаткама"
+    },
+    "qf.toolbarMinimumHeight": {
+        "message": "Најмања висина:"
+    },
+    "qf.toolbarMinimumHeight.tooltip": {
+        "message": "За кориснике Mac система који имају проблем са [Bug 25021]"
+    },
+    "qf.toolbarPosition.tooltip": {
+        "message": "0 = на врху других трака са алаткама; 100 = дно. Висока вредност зависи од других додатака."
+    },
+    "qf.tooltip.RecentFolders": {
+        "message": "Недавне фасцикле"
+    },
+    "qf.tooltip.closeToolbar": {
+        "message": "Затвори ову траку са алаткама"
+    },
+    "qf.tooltip.conversationRead": {
+        "message": "Означи разговоре као прочитане и пређи на следећу непрочитану поруку"
+    },
+    "qf.tooltip.emailIcon": {
+        "message": "Тренутна пошта - превуците QuickFolders језичак да бисте преместили пошту"
+    },
+    "qf.tooltip.filterStart": {
+        "message": "Активирај учење филтера. Превлачењем порука у QuickFolder направићете нове филтере."
+    },
+    "qf.tooltip.filters": {
+        "message": "Немој да правиш филтере."
+    },
+    "qf.tooltip.folderUp": {
+        "message": "Иди у надређену фасциклу"
+    },
+    "qf.tooltip.goNextFolder": {
+        "message": "Пређи на следећу непрочитану поруку"
+    },
+    "qf.tooltip.goPreviousFolder": {
+        "message": "Пређи на претходну непрочитану поруку"
+    },
+    "qf.tooltip.mailFolderCommands": {
+        "message": "Наредбе фасцикле са поштом"
+    },
+    "qf.tooltip.mainOptions": {
+        "message": "QuickFolders - опције и напредне наредбе"
+    },
+    "qf.tooltip.paintCanActive": {
+        "message": "Режим за бојење: кликните на палету, потом на језичке, да бисте их обојили, а десним кликом, ако желите да добијете њихову боју."
+    },
+    "qf.tooltip.quickFoldersNavToggle": {
+        "message": "пређи кретаће између непрочитаних и свих порука"
+    },
+    "qf.tooltip.quickMove": {
+        "message": "брзо премештање: превуците ел. поруку овде, а потом унесите назив фасцикле"
+    },
+    "qf.tooltip.skipUnreadFolder": {
+        "message": "Skip to next Unread Folder"
+    },
+    "qf.tooltip.threadIcon": {
+        "message": "Тренутна тема - превуците QuickFolders језичак да бисте преместили разговоре"
+    },
+    "qf.youtube.description": {
+        "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    },
+    "qf.youtube.link": {
+        "message": "Watch Videos about QuickFolders…"
+    },
+    "qf.youtube.tbdaily": {
+        "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+    },
+    "qfAlertCopyString": {
+        "message": "Ниска фасцикле је копирана у оставу!"
+    },
+    "qfAlertDropFolderVirtual": {
+        "message": "Не можете да копирате пошту у виртуелну фасциклу!"
+    },
+    "qfAlertUpgradeSuccess": {
+        "message": "QuickFolders је успешно дограђен на издање"
+    },
+    "qfAll": {
+        "message": "(прикажи све)"
+    },
+    "qfCantMoveFolder": {
+        "message": "Фасцикла {0} се не може преместити."
+    },
+    "qfColorPickingWIP": {
+        "message": "Жао нам је, али се на овој могућности још ради!"
+    },
+    "qfCommandAccess": {
+        "message": "Н"
+    },
+    "qfCommandPopup": {
+        "message": "QuickFolders - наредбе"
+    },
+    "qfCompactFolder": {
+        "message": "Сажми фасциклу"
+    },
+    "qfCompactFolderAccess": {
+        "message": "С"
+    },
+    "qfCompacted": {
+        "message": "Сажето:"
+    },
+    "qfCompactedBytesFreed": {
+        "message": "Избрисани бајтови"
+    },
+    "qfCompactedFolder": {
+        "message": "Сажета фасцикла"
+    },
+    "qfCompactedNewFolderSize": {
+        "message": "Нова величина"
+    },
+    "qfCompactedOriginalFolderSize": {
+        "message": "Оригинална величина"
+    },
+    "qfConfirmCopyFolder": {
+        "message": "Стварно копирати директоријум {0} у {1}?"
+    },
+    "qfConfirmMoveFolder": {
+        "message": "Желите ли да преместите фасциклу {0} у {1}?"
+    },
+    "qfConfirmVersionLink": {
+        "message": "Прикажи историјат додатка QuickFolders"
+    },
+    "qfDeadTabsCount": {
+        "message": "Пронађено је # заосталих језичака:"
+    },
+    "qfDeadTabsDeleted": {
+        "message": "Уклоњено је # заосталих језичака:"
+    },
+    "qfDeleteFolder": {
+        "message": "Избриши фасциклу"
+    },
+    "qfDeleteFolderAccess": {
+        "message": "И"
+    },
+    "qfDeleteJunk": {
+        "message": "Испразни корпу за отпатке"
+    },
+    "qfDown": {
+        "message": "Доле"
+    },
+    "qfDownloadAll": {
+        "message": "Преузми све"
+    },
+    "qfEditVirtual": {
+        "message": "Својства претраживања…"
+    },
+    "qfEditVirtualAccess": {
+        "message": "П"
+    },
+    "qfEmptiedJunk": {
+        "message": "Испражњена је корпа за отпатке и зажета фасцикла"
+    },
+    "qfEmptiedTrash": {
+        "message": "Испражњена корпа за отпатке"
+    },
+    "qfEmptyJunk": {
+        "message": "Избриши непотребно"
+    },
+    "qfEmptyJunkAccess": {
+        "message": "Н"
+    },
+    "qfEmptyTrash": {
+        "message": "Избриши смеће"
+    },
+    "qfEmptyTrashAccess": {
+        "message": "С"
+    },
+    "qfFolderAccess": {
+        "message": "П"
+    },
+    "qfFolderAlreadyBookmarked": {
+        "message": "Фасцикла је већ забележена."
+    },
+    "qfFolderOpenLocation": {
+        "message": "Истражи локацију фасцикле..."
+    },
+    "qfFolderPopup": {
+        "message": "Наредбе фасцикле са поштом"
+    },
+    "qfFolderProperties": {
+        "message": "Својства фасцикле…"
+    },
+    "qfFolderPropertiesAccess": {
+        "message": "С"
+    },
+    "qfFolderRepair": {
+        "message": "Поправи фасциклу"
+    },
+    "qfFolderRepairAccess": {
+        "message": "П"
+    },
+    "qfFolderRepairedMsg": {
+        "message": "Фасцикла је поправљена:"
+    },
+    "qfGetMail": {
+        "message": "Прими поруке"
+    },
+    "qfGetMailAccess": {
+        "message": "р"
+    },
+    "qfInsertLineBreak": {
+        "message": "Уметни прелом реда"
+    },
+    "qfInsertSeparator": {
+        "message": "Уметни разделник"
+    },
+    "qfInvalidTabCount": {
+        "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
+    },
+    "qfMarkAllRead": {
+        "message": "Означи фасциклу као прочитану"
+    },
+    "qfMarkAllReadAccess": {
+        "message": "П"
+    },
+    "qfMarkAllReadRecursive": {
+        "message": "Mark folder + subfolders Read"
+    },
+    "qfMenuColor": {
+        "message": "Боја"
+    },
+    "qfMenuTabColorDisabledInTheme": {
+        "message": "Select different Theme to support coloring…"
+    },
+    "qfMenuTabColorNone": {
+        "message": "безбојнан"
+    },
+    "qfMenuTabColorPopup": {
+        "message": "Боја језичка"
+    },
+    "qfMoveFolderOrNewTab": {
+        "message": "Превуците фасциклу у празан простор на траци са алаткама. Да бисте преместили фасциклу, превуците држећи шифт."
+    },
+    "qfNavigationWrapped": {
+        "message": "No other unread folders found, continuing in {1}."
+    },
+    "qfNewFolder": {
+        "message": "Нова подфасцикла…"
+    },
+    "qfNewFolderAccess": {
+        "message": "Ф"
+    },
+    "qfNewName": {
+        "message": "Унесите нови назив језичка"
+    },
+    "qfNewSubFolder": {
+        "message": "Create subfolder {0} \\u00BB {1}…"
+    },
+    "qfNoFolderMatch": {
+        "message": "Нема одговарајућих надређених директоријума!"
+    },
+    "qfPaintToggle": {
+        "message": "Изађи из режима за бојење"
+    },
+    "qfRecentFolders": {
+        "message": "Недавне фасцикле"
+    },
+    "qfRemoveBookmark": {
+        "message": "Уклони језичка"
+    },
+    "qfRemoveBookmarkAccess": {
+        "message": "У"
+    },
+    "qfRemoveCategory": {
+        "message": "Уклони из тренутне категорије"
+    },
+    "qfRemoveCategoryPrompt": {
+        "message": "Уклонити из категорије {1}?"
+    },
+    "qfRemoveIcon": {
+        "message": "Уклони икону"
+    },
+    "qfRemoveLineBreak": {
+        "message": "Уклони прелом реда"
+    },
+    "qfRemoveSeparator": {
+        "message": "Уклони разделник"
+    },
+    "qfRenameBookmark": {
+        "message": "Преименуј језичак…"
+    },
+    "qfRenameBookmarkAccess": {
+        "message": "П"
+    },
+    "qfRenameFolder": {
+        "message": "Преименуј фасциклу…"
+    },
+    "qfRenameFolderAccess": {
+        "message": "П"
+    },
+    "qfRepairTreeIconsMissing": {
+        "message": "Следеће датотеке са иконама не постоје:"
+    },
+    "qfSavePrompt": {
+        "message": "Желите ли да сачувате промене?"
+    },
+    "qfSelectIcon": {
+        "message": "Икона..."
+    },
+    "qfSetCategory": {
+        "message": "Подеси категорију језичка…"
+    },
+    "qfSetCategoryA": {
+        "message": "К"
+    },
+    "qfShowAlways": {
+        "message": "Увек прикажи!"
+    },
+    "qfShowNever": {
+        "message": "Never Show (Folder Alias)"
+    },
+    "qfTabAdvancedOptions": {
+        "message": "Својства језичака..."
+    },
+    "qfTabDeleteOption": {
+        "message": "Do this with the remaining {0} folders."
+    },
+    "qfTabDeletePrompt": {
+        "message": "Желите ли да избришете овај језичак?"
+    },
+    "qfThisTabIsInvalid": {
+        "message": ": ово је језичак који указује на неважећу фасциклу:"
+    },
+    "qfTidyDeadFolders": {
+        "message": "Ово ће уклонити језичке којима нису додељене важеће фасцикле.\\nОво се понекад дешава ако је фасцикла избрисана или премештена без обавештавања додатка QuickFolders."
+    },
+    "qfTreeIconsInvalidCount": {
+        "message": "{0} икона/е недостаје"
+    },
+    "qfTreeIconsRepairedCount": {
+        "message": "{0} икона/е је поправљено"
+    },
+    "qfUncategorized": {
+        "message": "(некатегоризовано)"
+    },
+    "qfUp": {
+        "message": "Горе"
+    },
+    "qfUpdatedThemesEngineMsg": {
+        "message": "Инсталиран је нови механизам тема за QuickFolders. Изаберите ставку из падајућег списка и притисните У реду."
+    },
+    "qfVersionDisableOnUpdate": {
+        "message": "Не приказивати историјат измена верзије након ажурирања?"
+    },
+    "quickMove.singleMessage.goNext": {
+        "message": "Прикажите следећу пошту након премештања тренутне"
+    },
+    "quickMove.singleMessage.reopenTab": {
+        "message": "Поново отворите оригиналну пошту након што је премештена"
+    },
+    "quickMove.singleMessageTabs": {
+        "message": "Картица појединачне поруке"
+    },
+    "quickfolders.findFolder.placeHolder": {
+        "message": "назив фасцикле"
+    },
+    "quickfolders.quickMove.menu.cancel": {
+        "message": "Откажи брзо померање"
+    },
+    "quickfolders.quickMove.menu.hideSearch": {
+        "message": "Сакриј оквир са називом фасцикле"
+    },
+    "quickfolders.quickMove.menu.showSearch": {
+        "message": "Прикажи оквир са називом фасцикле"
+    },
+    "quickfolders.quickMove.menu.suspend": {
+        "message": "Скочи на фасциклу (не премешта поруке)"
+    },
+    "quickfolders.readingList.addCurrent": {
+        "message": "Додај тренутну ставку"
+    },
+    "quickfolders.readingList.clear": {
+        "message": "Очисти списак читања"
+    },
+    "quickfolders.readingList.tooltip": {
+        "message": "Списак читања"
+    },
+    "quickfolders.toolbar.newsubfolder": {
+        "message": "Нова подфасцикла…"
+    },
+    "quickfolders.toolbar.skip": {
+        "message": "Skip"
+    },
+    "quickfoldersQuickCopiedMails": {
+        "message": "Порука је копирана у фасциклу {2};{1} порука је копирано у фасциклу {2}"
+    },
+    "quickfoldersQuickMovedMails": {
+        "message": "Порука је премештена у фасциклу {2};{1} порука је премештено у фасциклу {2}"
+    },
+    "renew-your-license": {
+        "message": "Обновите лиценцу."
+    },
+    "special-offer-content": {
+        "message": "Направите КуицкФолдерс доказ у будућности и преузмите лиценцу док постоји {boldStart} попуст од 40% {boldEnd} на цени КуицкФолдерс Про! Ова посебна понуда биће доступна до {boldStart} 31. марта {boldEnd}."
+    },
+    "special-offer-head": {
+        "message": "Нека QuickFolders буду будући доказ!"
+    },
+    "special-offer-intro": {
+        "message": "{boldStart} Поштовани {name} {boldEnd}, ако још увек немате лиценцу, размислите о подршци КуицкФолдерс-у за будућност. Долазе још велике промене на Тхундербирду и треба ми {boldStart} ваша помоћ {boldEnd} да наставим!"
+    },
+    "support-preference": {
+        "message": "Ово је преферирани начин подршке $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "quickFilters"
+            }
+        }
+    },
+    "support-suggestion": {
+        "message": "Да би $addonName$ остао функционалан и жив, учините му виталну услугу:",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "testDrive": {
+        "message": "Можете испробати премијум могућности и у бесплатној верзији, али ће бити делимично ограничене."
+    },
+    "thanks-for-installing-intro": {
+        "message": "Хвала вам што сте инсталирали $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "thanks-for-updating-intro": {
+        "message": "Хвала вам што сте ажурирали $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "time-and-effort": {
+        "message": "$addonName$ захтева сталне промене како би остао компатибилан са Мозилла платформом. Стално радим на томе да задржим што више функционалности за будуће верзије Тхундербирда.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "toAddress": {
+        "message": "To:"
+    },
+    "toAddress.tooltip": {
+        "message": "Default To Address when composing new mails"
+    },
+    "translated-by-google": {
+        "description": "disclaimer.",
+        "message": "преводи које пружа гоогле"
+    },
+    "updates.title": {
+        "message": "Ажурирања"
+    },
+    "updatesExpiry": {
+        "message": "QuickFolders Pro ће аутоматски бити ажуриран преко addons.thunderbird.net, као и обично. Након годину дана, можете обновити лиценцу или наставити да користите премијум могућности под истим условима као и корисници бесплатне верзије. Премијум могућности ће захтевати регистрациони кључ."
+    },
+    "vouchers.title": {
+        "message": "Купони"
+    },
+    "whats-new-btn": {
+        "message": "Шта је ново?"
+    },
+    "whats-new-head": {
+        "message": "Издвајамо"
+    },
+    "whats-new-intro": {
+        "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
+    },
+    "whats-new-list": {
+        "message": "Ова верзија додатно проширује функцију куицкМове кроз следеће функције: {L1} Картица појединачне поруке: опција за аутоматско отварање следеће е-поште на истој картици након премештања поруке {L2} {L1} Опција за потпуно отказивање куицкМове (и испразните његову листу поруке) једним притиском на ЕСЦАПЕ. {L2} {L1} Напредно подударање надређених директоријума читањем из _ и разграничника и поступањем са њима као с почетком претраживаног имена. {L2} {L1} Поправљено: претрага директоријума током прегледа поруке приказане у резултатима претраге или из разговора у више директоријума. {L2} {L1} Ове и додатне функције за ограничавање резултата претраживања са одређених налога могу се конфигурисати путем напредних подешавања претраге на картици КуицкФолдерс Про. {L2}"
+    },
+    "window-title": {
+        "description": "page title. first placeholder will be replaced with Add-on name",
+        "message": "Добродошли у $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "QuickFolders"
+            }
+        }
+    },
+    "windowTitle": {
+        "message": "Напредна својства"
+    },
+    "yearlyLicense.premiumFeatures": {
+        "message": "QuickFolders Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије QuickFolders-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике."
+    },
+    "yearlyLicense.premiumFeatures.moreInfoLink": {
+        "message": "Више о премијум могућностима."
+    },
+    "yearlyLicense.title": {
+        "message": "Годишња лиценца"
+    },
+    "yearlyLicense.usageTerm": {
+        "message": "Лиценца је за вашу личну употрету и везана је за вашу ел. адресу. Можете је инсталирати на више програма, док год су подешени за рад са том ел. адресом."
+    },
+    "yearlyLicense.usageTerm1": {
+        "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
     }
-  },
-
-  "heading-updated": {
-    "message": "$addonName$ је успешно ажурирано",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "heading-installed": {
-    "message": "Успешно инсталиран $addonName$",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  
-  "thanks-for-updating-intro": {
-    "message": "Хвала вам што сте ажурирали $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "thanks-for-installing-intro": {
-    "message": "Хвала вам што сте инсталирали $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
-  
- "active-version-info" : {
-    "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
-      },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
-      }
-      
-    }
-  },  
-  
-  "license-is-extended" : {
-    "message": "Хвала вам што сте недавно продужили лиценцу или ако сте донирали. Као што сте помогли у будућем доказивању овог додатка, можете једноставно затворити овај прозор.",
-    "description": "Shown if license expires more than a year from now"
-  },
-  
-  "special-offer-head" : {
-    "message": "Нека QuickFolders буду будући доказ!"
-  } ,  
-
-  "special-offer-intro" : {
-    "message": "{boldStart} Поштовани {name} {boldEnd}, ако још увек немате лиценцу, размислите о подршци КуицкФолдерс-у за будућност. Долазе још велике промене на Тхундербирду и треба ми {boldStart} ваша помоћ {boldEnd} да наставим!"
-  } ,
-  
-  "special-offer-content" : {
-    "message": "Направите КуицкФолдерс доказ у будућности и преузмите лиценцу док постоји {boldStart} попуст од 40% {boldEnd} на цени КуицкФолдерс Про! Ова посебна понуда биће доступна до {boldStart} 31. марта {boldEnd}."
-  },
-  
-  "whats-new-intro" : {
-    "message": "Детаљни дневник промена прочитајте овде (само на енглеском):" 
-  },
-  
-  "whats-new-btn" : {
-    "message": "Шта је ново?"
-  }, 
-  
-  "whats-new-head" : {
-    "message": "Издвајамо"
-  },
-  
-  "whats-new-list" : {
-    "message" : "Ова верзија додатно проширује функцију куицкМове кроз следеће функције: {L1} Картица појединачне поруке: опција за аутоматско отварање следеће е-поште на истој картици након премештања поруке {L2} {L1} Опција за потпуно отказивање куицкМове (и испразните његову листу поруке) једним притиском на ЕСЦАПЕ. {L2} {L1} Напредно подударање надређених директоријума читањем из _ и разграничника и поступањем са њима као с почетком претраживаног имена. {L2} {L1} Поправљено: претрага директоријума током прегледа поруке приказане у резултатима претраге или из разговора у више директоријума. {L2} {L1} Ове и додатне функције за ограничавање резултата претраживања са одређених налога могу се конфигурисати путем напредних подешавања претраге на картици КуицкФолдерс Про. {L2}"
-  },  
-
-  "time-and-effort": { 
-    "message": "$addonName$ захтева сталне промене како би остао компатибилан са Мозилла платформом. Стално радим на томе да задржим што више функционалности за будуће верзије Тхундербирда.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "support-suggestion" : {
-    "message": "Да би $addonName$ остао функционалан и жив, учините му виталну услугу:",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "purchase-a-license" : {
-    "message" : "Купите лиценцу."
-  }, 
-      
-  "renew-your-license" : {
-    "message" : "Обновите лиценцу."
-  },  
-  
-  "extend-your-license" : {
-    "message" : "Размислите о продужењу лиценце за годину дана."
-  },  
-      
-  "donate" : {
-    "message" : "Помозите једнократном донацијом."
-  },   
-   
-  "purchase-heading" : {
-    "message" : "Куповина лиценце!"
-  }, 
-  
-  "support-preference" : {
-    "message": "Ово је преферирани начин подршке $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "quickFilters"
-      }    
-    }
-  }, 
-
-  "ongoing-work": {
-    "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },
-  
-  "btn-want-a-license": {
-    "message" : "Желим да купим лиценцу"
-  } ,
-
-  "btn-extend-license": {
-    "message" : "Желим да продужим лиценцу за годину дана"
-  } ,
-
-
-  "btn-renew-license": {
-    "message" : "Желим да обновим лиценцу"
-  } ,
-
-  "donate-heading" : {
-    "message" : "Помоћ донацијом!"
-  } ,
-
-  "cost-of-independence" : {
-    "message" : "Развој софтвера кошта време и новац - за разлику од многих апликација на платформи, додатке не пишу велике корпорације, нити их Мозилла спонзорише на било који начин."
-  } ,
-  
-  "mozillas-basic-platform" : {
-    "message" : "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са аддонс.тхундербирд.нет - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."
-  } ,
-  
-  "addon-authors-struggle" : {
-    "message" : "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
-  } ,
-  
-  "btn-want-to-donate" : {
-    "message" : "Желим да помогнем једнократном донацијом."
-  } ,
-  
-  "translated-by-google" : {
-    "message": "преводи које пружа гоогле",
-    "description": "disclaimer."
-  },
-  
-  "label-remind-me" : {
-    "message": "Подсети ме поново за {цоунтДаис} дана.",
-    "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
-  }
 }

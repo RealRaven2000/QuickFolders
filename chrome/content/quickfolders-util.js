@@ -1507,21 +1507,6 @@ QuickFolders.Util = {
 		let f = QuickFolders.Model.getMsgFolderFromUri(URI);
 		return (f && f.parent) ? true : false;
 	},
-	
-	polyFillEndsWidth: function polyFillEndsWidth() {
-		if (!String.prototype.endsWith) {
-			Object.defineProperty(String.prototype, 'endsWith', {
-					enumerable: false,
-					configurable: false,
-					writable: false,
-					value: function (searchString, position) {
-							position = (position || this.length) - searchString.length;
-							let lastIndex = this.lastIndexOf(searchString);
-							return lastIndex !== -1 && lastIndex === position;
-					}
-			});
-		}
-	},
   
   // open an email in a new tab
   openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
@@ -1545,18 +1530,6 @@ QuickFolders.Util = {
     }
     return true;
   } ,
- 
-  pbGetSelectedMessageUris: function pbGetSelectedMessageUris() {
-    let messageArray = {},
-        length = {},
-        view = GetDBView();
-    view.getURIsForSelection(messageArray, length);
-    if (length.value) {
-      return messageArray.value;
-    }
-    else
-      return null;
-  },
 	
 	loadPlatformStylesheet: function loadPlatformStylesheet(win) {
 		const QI = QuickFolders.Interface,
@@ -1567,15 +1540,12 @@ QuickFolders.Util = {
 		switch (util.HostSystem) {
 			case "linux":
 				path= 'chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles';
-				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "winnt":
 				path= 'chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles';
-//				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "darwin":
 				path= 'chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles';
-				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 		}
     
@@ -1755,7 +1725,6 @@ QuickFolders.Util.FirstRun = {
 					util.logDebugOptional ("firstrun","has premium license.");
 				}
 				
-				let isThemeUpgrade = prefs.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();
 
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
@@ -1766,9 +1735,7 @@ QuickFolders.Util.FirstRun = {
 
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
-
 						// DONATION PAGE - REMOVED
-
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
 						if (!suppressVersionScreen) {
@@ -1777,22 +1744,9 @@ QuickFolders.Util.FirstRun = {
 						}
 					}
 
-					if (isThemeUpgrade) {
-						sUpgradeMessage +=
-						  "\n" +
-						  util.getBundleString("qfUpdatedThemesEngineMsg",
-						  	"A new theming engine for QuickFolders has been installed, please select a look from the drop down box and click [Ok].");
-						window.setTimeout(function(){
-							// open options window for setting new theming engine options! for pimp my Tabs panel visible
-							QuickFolders.Interface.viewOptions(1, sUpgradeMessage);
-						}, 4600);
-					}
-					else
-						window.setTimeout(function(){
-							util.slideAlert("QuickFolders",sUpgradeMessage);
-						}, 3000);
-
-
+          window.setTimeout(function(){
+            util.slideAlert("QuickFolders",sUpgradeMessage);
+          }, 3000);
 				}
 				
 				util.loadPlatformStylesheet(window);

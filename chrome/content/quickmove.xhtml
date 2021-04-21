@@ -10,27 +10,27 @@
 
 <?xml-stylesheet href="chrome://quickfolders/content/quickmove-options.css" type="text/css"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/quickmove_settings.dtd" >
 
-<dialog title="&qf.dialog.quickmove.settings;"
+
+<dialog title="__MSG_qf.dialog.quickmove.settings__"
         buttons="accept"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        ondialogaccept="QuickFolders.quickMove.Settings.accept();"
-        onload="QuickFolders.quickMove.Settings.load();"
 >
 
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />  
-	<script type="application/javascript" src="chrome://quickfolders/content/quickmove-settings.js" />
-
+	<script type="application/javascript" src="chrome://quickfolders/content/quickmove-settings.js" />  
+  <!-- mx localisation -->
+	<script type="application/javascript" src="chrome://quickfolders/content/quickmove-settings-load.js" />
+  <script type="application/javascript" src="chrome://quickfolders/content/i18n.js" />
 
   <hbox id="qf-header" >
     <hbox id="qf-options-header" flex="12">
       <label class="dialogheader-title"
-        value="&qf.dialog.quickmove.settings;"
+        value="__MSG_qf.dialog.quickmove.settings__"
         flex="1"/>
 
       <label id="qf-options-header-description"/>
@@ -39,31 +39,31 @@
   
   <hbox align="center">
     <label control="maxResults"
-           value ="&qf.quickMove.maxResults;:" />
+           value ="__MSG_qf.quickMove.maxResults__:" />
     <html:input
       id="maxResults"
       type="number"
       class="num2digit" />
   </hbox>
   
-  <checkbox id="chkSilent" label="&qf.quickMove.silent;" />
+  <checkbox id="chkSilent" label="__MSG_qf.quickMove.silent__" />
   
-  <checkbox id="chkEscapeClearsList" label="&qf.quickMove.escapeClears;"/>
+  <checkbox id="chkEscapeClearsList" label="__MSG_qf.quickMove.escapeClears__"/>
 
   <html:fieldset>
-    <html:legend>&quickMove.singleMessageTabs;</html:legend>
+    <html:legend>__MSG_quickMove.singleMessageTabs__</html:legend>
     <vbox id="singleMessageBehavior">
-      <checkbox id="chkGoNext" label="&quickMove.singleMessage.goNext;" />
-      <checkbox id="chkReopen" label="&quickMove.singleMessage.reopenTab;" />
+      <checkbox id="chkGoNext" label="__MSG_quickMove.singleMessage.goNext__" />
+      <checkbox id="chkReopen" label="__MSG_quickMove.singleMessage.reopenTab__" />
     </vbox>
   </html:fieldset>
     
 
-  <checkbox id="chkLockAccounts" label="&qf.quickMove.lockAccount;"/>
+  <checkbox id="chkLockAccounts" label="__MSG_qf.quickMove.lockAccount__"/>
   
- 	<description style="max-width:525px">&qf.quickMove.excludeAccounts;</description>
+ 	<description style="max-width:525px">__MSG_qf.quickMove.excludeAccounts__</description>
   <html:fieldset>
-    <html:legend>&qf.accounts;</html:legend>
+    <html:legend>__MSG_qf.accounts__</html:legend>
     <vbox id="currentFolderCustomize">
       <hbox class="accountItem" id="dummy">
         <label>No Accounts with default Identity found!</label>
@@ -71,7 +71,6 @@
 
     </vbox>
   </html:fieldset>
-
 
 
 </dialog>

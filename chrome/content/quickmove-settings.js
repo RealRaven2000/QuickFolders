@@ -114,6 +114,17 @@
       let maxResults = document.getElementById('maxResults');
       maxResults.value = prefs.getIntPref("quickMove.maxResults");
       maxResults.addEventListener("change", function(evt) {QuickFolders.quickMove.Settings.changeMaxResults(maxResults)} );
+      
+      
+      // l10n
+      var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+      let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
+
+      // Provide a relative path to i18.js from the root of your extension.
+      let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
+      Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
+      i18n.updateDocument({extension});
+    
     },
     
     toggleAccountExclusion: function toggleAccountExclusion(el, evt) {

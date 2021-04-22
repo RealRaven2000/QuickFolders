@@ -19,7 +19,7 @@ var ChangeOrder = {
 	} ,
   
   
-	init: function(window) {
+	init: function() {
 		this.window = window;
     // [mx-l10n]
     QuickFolders.Util.localize(window); 

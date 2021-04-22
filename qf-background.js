@@ -50,7 +50,9 @@ async function main() {
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   
   messenger.WindowListener.registerChromeUrl([ 
-      ["content", "quickfolders", "chrome/content/"],
+      ["content", "quickfolders", "chrome/content/"]
+  ]);
+/*
       ["locale", "quickfolders", "en-US", "chrome/locale/en-US/"],
       ["locale", "quickfolders", "ca", "chrome/locale/ca/"],
       ["locale", "quickfolders", "de", "chrome/locale/de/"],
@@ -73,8 +75,7 @@ async function main() {
       ["locale", "quickfolders", "zh", "chrome/locale/zh/"],
       ["locale", "quickfolders", "zh-CHT", "chrome/locale/zh/"],
       ["locale", "quickfolders", "zh-TW", "chrome/locale/zh/"]
-  ]);
-
+ */
   messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
     
   //attention: each target window (like messenger.xul) can appear only once

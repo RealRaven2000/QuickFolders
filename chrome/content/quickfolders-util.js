@@ -1364,6 +1364,18 @@ QuickFolders.Util = {
 		}
 		return s;
 	} ,
+  
+  localize: function(that) {
+    var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
+
+    // Provide a relative path to i18.js from the root of your extension.
+    let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
+    Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
+    i18n.updateDocument({extension});
+    return extension;
+  } ,
 
 	getFolderTooltip: function getFolderTooltip(folder, btnLabel) {
 		// tooltip - see also Attributes section of
@@ -1778,7 +1790,7 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
     }
   }
   return found;
-}
+} // QuickFolders.Util.iterateFolders
 
 
 

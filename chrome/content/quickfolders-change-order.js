@@ -22,8 +22,15 @@ QuickFolders.ChangeOrder = {
 	init: function(window) {
 		this.window = window;
 		this.showFolders();
-		window.sizeToContent();
-		window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
+    // [mx-l10n]
+    QuickFolders.Util.localize(this);
+    
+    window.setTimeout (
+      function() {
+        window.sizeToContent();
+        window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
+      }
+    )
 	} ,
 
 	$: function(id) {
@@ -114,7 +121,9 @@ QuickFolders.ChangeOrder = {
 	} 
 }
 
-
-window.addEventListener('load', function () { QuickFolders.ChangeOrder.init(window); });
+window.document.addEventListener('DOMContentLoaded', 
+  QuickFolders.ChangeOrder.init(window).bind(QuickFolders.ChangeOrder) , 
+  { once: true });
+  
 window.addEventListener('dialogaccept', function () { QuickFolders.ChangeOrder.accept(); });
 

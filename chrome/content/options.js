@@ -451,9 +451,12 @@ QuickFolders.Options = {
     panels.addEventListener('select', function(evt) { QuickFolders.Options.onTabSelect(panels,evt); } );
     options.configExtra2Button();
     
-    // [mx-l10n]
-    util.localize(window, {extra2: 'qf.label.donate'});
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
+  },
+  
+  l10n: function l10n() {
+    // [mx-l10n]
+    QuickFolders.Util.localize(window, {extra2: 'qf.label.donate'});
   },
   
   initBling: function initBling (tabbox) {
@@ -2085,6 +2088,10 @@ QuickFolders.Options = {
 }
 
 window.document.addEventListener('DOMContentLoaded', 
+  QuickFolders.Options.l10n.bind(QuickFolders.Options) , 
+  { once: true });
+  
+window.addEventListener('load', 
   QuickFolders.Options.load.bind(QuickFolders.Options) , 
   { once: true });
   

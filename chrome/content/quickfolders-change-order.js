@@ -7,31 +7,24 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
-var QuickFolders_StringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-var QuickFolders_bundle = QuickFolders_StringBundleSvc.createBundle("chrome://quickfolders/locale/quickfolders.properties");
-
-QuickFolders.ChangeOrder = {
+var ChangeOrder = {
 	window: null,
 	upString: "",
 	downString: "",
 
 	getUIstring: function(id, defaultString) {
 		return QuickFolders.Util.getBundleString(id, defaultString);
-	},
+	} ,
 
 	init: function(window) {
 		this.window = window;
 		this.showFolders();
     // [mx-l10n]
-    QuickFolders.Util.localize(this);
+    // QuickFolders.Util.localize(this); <== this will always throw: Uncaught ReferenceError: i18n is not defined
+    // moved sizing stuff into event below!
     
-    window.setTimeout (
-      function() {
-        window.sizeToContent();
-        window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
-      }
-    )
 	} ,
+  
 
 	$: function(id) {
 		return this.window.document.getElementById(id);
@@ -75,7 +68,7 @@ QuickFolders.ChangeOrder = {
 		buttonUp.setAttribute("label", this.upString);
     
 		buttonUp.linkedFolder = folder;
-		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
 		row.appendChild(buttonUp);
 
 		let buttonDown = document.createXULElement("button");
@@ -83,7 +76,7 @@ QuickFolders.ChangeOrder = {
 		buttonDown.setAttribute("label", this.downString);
     
 		buttonDown.linkedFolder = folder;
-		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
+		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
 		row.appendChild(buttonDown);
     try {
       rows.appendChild(row);
@@ -105,7 +98,7 @@ QuickFolders.ChangeOrder = {
 					tmp = modelSelection[i - 1];
 					modelSelection[i - 1] = modelSelection[i];
 					modelSelection[i] = tmp;
-					QuickFolders.ChangeOrder.showFolders();
+					ChangeOrder.showFolders();
 					return;
 				}
 
@@ -113,7 +106,7 @@ QuickFolders.ChangeOrder = {
 					tmp = modelSelection[i + 1];
 					modelSelection[i + 1] = modelSelection[i];
 					modelSelection[i] = tmp;
-					QuickFolders.ChangeOrder.showFolders();
+					ChangeOrder.showFolders();
 					return;
 				}
 			}
@@ -121,9 +114,26 @@ QuickFolders.ChangeOrder = {
 	} 
 }
 
+function localize() {
+    var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
+
+    // Provide a relative path to i18.js from the root of your extension.
+    let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
+    Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
+    i18n.updateDocument({extension});
+}
+    
+    
 window.document.addEventListener('DOMContentLoaded', 
-  QuickFolders.ChangeOrder.init(window).bind(QuickFolders.ChangeOrder) , 
+  function() {
+    ChangeOrder.init(window); // .bind(ChangeOrder);
+    localize();               // have to call this locally - QuickFolders.Util.localize() will FAIL!
+    window.sizeToContent();
+    window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
+  }, 
   { once: true });
   
-window.addEventListener('dialogaccept', function () { QuickFolders.ChangeOrder.accept(); });
+window.addEventListener('dialogaccept', function () { ChangeOrder.accept(); });
 

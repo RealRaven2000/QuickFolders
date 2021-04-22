@@ -554,6 +554,63 @@ QuickFolders.Model = {
       + s5 + "\n");
       
     this.paletteUpgraded = true;
-  }
+  } ,
+  
+  // moved from quickfolders-change-order.js
+	insertAtPosition: function(buttonURI, targetURI, toolbarPos) {
+		let folderEntry, folder, iSource, iTarget,
+		    modelSelection = QuickFolders.Model.selectedFolders;
+
+		switch(toolbarPos) {
+			case "LeftMost":
+				iTarget = 0;
+				break;
+			case "RightMost":
+				iTarget = modelSelection.length-1;
+				break;
+		}
+
+		for (let i = 0; i < modelSelection.length; i++) {
+			folderEntry = QuickFolders.Model.selectedFolders[i];
+			folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
+
+			if (toolbarPos=="")
+				if (folderEntry.uri==targetURI) {
+					iTarget = i;
+					if (iSource!=null) break;
+				}
+
+			if (folderEntry.uri==buttonURI) {
+				iSource = i;
+				if (iTarget!=null) break;
+			}
+		}
+
+		//button not found: might have been a menu item to add a new button!
+		if (iSource==null && targetURI=="")
+			return false;
+
+
+		if (iSource!=iTarget)
+		{
+			let tmp;
+			if (iSource<iTarget) { // drag right
+				for (let i=iSource; i<iTarget; i++) {
+					tmp = modelSelection[i];
+					modelSelection[i] = modelSelection[i+1];
+					modelSelection[i+1] = tmp;
+				}
+			}
+			else {  // drag left
+				for (let i=iSource; i>iTarget; i--) {
+					tmp = modelSelection[i];
+					modelSelection[i] = modelSelection[i-1];
+					modelSelection[i-1] = tmp;
+				}
+			}
+			QuickFolders.Model.update(); // update folders!
+		}
+		return true;
+   }  
 }  // Model
 

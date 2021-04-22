@@ -29,6 +29,11 @@ QuickFolders.ChangeOrder = {
 	$: function(id) {
 		return this.window.document.getElementById(id);
 	} ,
+  
+  accept: function() {
+    QuickFolders.Model.update(); 
+    QuickFolders.Interface.updateMainWindow(false);
+  } ,
 
 	showFolders: function() {
 		let rows = this.$('QuickFolders-change-order-grid-rows');
@@ -60,9 +65,7 @@ QuickFolders.ChangeOrder = {
 
 		let buttonUp = document.createXULElement("button");
 		buttonUp.className = "order-button-up";
-
 		buttonUp.setAttribute("label", this.upString);
-    buttonUp.textContent = this.upString; // ugly hack for borked Tb78, no idea why no label shows...
     
 		buttonUp.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
@@ -71,12 +74,16 @@ QuickFolders.ChangeOrder = {
 		let buttonDown = document.createXULElement("button");
 		buttonDown.className = "order-button-down";
 		buttonDown.setAttribute("label", this.downString);
-    buttonDown.textContent = this.downString; // ugly hack for borked Tb78, no idea why no label shows...
     
 		buttonDown.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","QuickFolders.ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
 		row.appendChild(buttonDown);
-		rows.appendChild(row);
+    try {
+      rows.appendChild(row);
+    }
+    catch (ex) {
+      ;
+    }
 	} ,
 
 	onButtonClick: function(button, direction, folderURI) {
@@ -104,61 +111,10 @@ QuickFolders.ChangeOrder = {
 				}
 			}
 		}
-	} ,
-
-	insertAtPosition: function(buttonURI, targetURI, toolbarPos) {
-		let folderEntry, folder, iSource, iTarget,
-		    modelSelection = QuickFolders.Model.selectedFolders;
-
-		switch(toolbarPos) {
-			case "LeftMost":
-				iTarget = 0;
-				break;
-			case "RightMost":
-				iTarget = modelSelection.length-1;
-				break;
-		}
-
-		for (let i = 0; i < modelSelection.length; i++) {
-			folderEntry = QuickFolders.Model.selectedFolders[i];
-			folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
-
-			if (toolbarPos=="")
-				if (folderEntry.uri==targetURI) {
-					iTarget = i;
-					if (iSource!=null) break;
-				}
-
-			if (folderEntry.uri==buttonURI) {
-				iSource = i;
-				if (iTarget!=null) break;
-			}
-		}
-
-		//button not found: might have been a menu item to add a new button!
-		if (iSource==null && targetURI=="")
-			return false;
-
-
-		if (iSource!=iTarget)
-		{
-			let tmp;
-			if (iSource<iTarget) { // drag right
-				for (let i=iSource; i<iTarget; i++) {
-					tmp = modelSelection[i];
-					modelSelection[i] = modelSelection[i+1];
-					modelSelection[i+1] = tmp;
-				}
-			}
-			else {  // drag left
-				for (let i=iSource; i>iTarget; i--) {
-					tmp = modelSelection[i];
-					modelSelection[i] = modelSelection[i-1];
-					modelSelection[i-1] = tmp;
-				}
-			}
-			QuickFolders.Model.update(); // update folders!
-		}
-		return true;
-   }
+	} 
 }
+
+
+window.addEventListener('load', function () { QuickFolders.ChangeOrder.init(window); });
+window.addEventListener('dialogaccept', function () { QuickFolders.ChangeOrder.accept(); });
+

@@ -471,6 +471,7 @@ END LICENSE BLOCK */
                    this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
   5.6
+    ## fixed tool dialog "change the order of tabs"
     ## web extensions localization. [mx-l10n]
     ##   removed the legacy way of localization
     ##   conversion of all dtd and properties files to messages.json
@@ -1198,7 +1199,7 @@ var QuickFolders = {
 						addFolder(sourceUri);
 					}
 					else {
-						if (!QuickFolders.ChangeOrder.insertAtPosition(sourceUri, "", myDragPos)) {
+						if (!QuickFolders.Model.insertAtPosition(sourceUri, "", myDragPos)) {
 							//a menu item for a tab that does not exist was dropped!
 							addFolder(sourceUri);
 						}
@@ -2076,7 +2077,7 @@ var QuickFolders = {
 				case "text/unicode":  // dropping another tab on this tab inserts it before
           // let buttonURI = dropData.data;
           let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
-					QuickFolders.ChangeOrder.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
+					QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
 					break;
         default:
           isPreventDefault = false;

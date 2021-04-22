@@ -90,7 +90,8 @@
       
       
       // [mx-l10n]
-      QuickFolders.Util.localize(this);
+      QuickFolders.Util.localize(window);
+
     
     },
     
@@ -171,7 +172,7 @@
 
 // initialize the dialog and do l10n
 window.document.addEventListener('DOMContentLoaded', 
-  qmSettings.load.call(qmSettings) , 
+  qmSettings.load.bind(qmSettings) , 
   { once: true });
 
 window.addEventListener('dialogaccept', 

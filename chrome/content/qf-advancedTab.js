@@ -158,8 +158,10 @@ QuickFolders.AdvancedTab = {
 		tabName.value = entry.name;
     
     // [mx-l10n]
-    QuickFolders.Util.localize(document, {"extra1":'btnApply', "extra2": 'btnReset'});
-
+    QuickFolders.Util.localize(window, {
+		extra1: "btnApply", 
+		extra2: "btnReset",
+	});
 		this.updateCSSpreview();
     
     // we wait as the width isn't correct on load

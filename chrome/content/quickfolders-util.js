@@ -1365,21 +1365,18 @@ QuickFolders.Util = {
 		return s;
 	} ,
   
-  localize: function(document, buttons) {
-    var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
-
-    // Provide a relative path to i18.js from the root of your extension.
-    let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
-    Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
-    i18n.updateDocument({extension});
-    if (buttons) {
-      for (let [id, label] of Object.entries(buttons)) {
-        document.documentElement.getButton(id).label = extension.localeData.localizeMessage(label); // apply
-      }
-    }    
-    return extension;
+  localize: function(window, buttons = null) {
+		Services.scriptloader.loadSubScript(
+		  QuickFolders.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
+		  window,
+		  "UTF-8"
+		);
+	  window.i18n.updateDocument({extension: QuickFolders.Util.extension});
+		if (buttons) {
+			for (let [name, label] of Object.entries(buttons)) {
+		    window.document.documentElement.getButton(name).label =  QuickFolders.Util.extension.localeData.localizeMessage(label); // apply
+			}
+		}
   } ,
 
 	getFolderTooltip: function getFolderTooltip(folder, btnLabel) {
@@ -2147,8 +2144,9 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 // this mechanism will be used to replace legacy code with API calls.
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
 Services.scriptloader.loadSubScript(
-  ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be").rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+  QuickFolders.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
   QuickFolders.Util,
   "UTF-8"
 );

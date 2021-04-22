@@ -16,6 +16,9 @@ var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 // removed UI functionde from QuickFolders.Licenser
 var Register = {
+  l10n: function() {
+    QuickFolders.Util.localize(document);
+  },
   load: function load() {
     const getElement = document.getElementById.bind(document),
           util = QuickFolders.Util,
@@ -54,7 +57,6 @@ var Register = {
     }
     
     
-    QuickFolders.Util.localize(document);
     
 		if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.referrer) {
       let ref = getElement('referrer');
@@ -234,7 +236,10 @@ var Register = {
 // initialize the dialog and do l10n
 //	onload="var load=Register.load.bind(Register); load();"
 window.document.addEventListener('DOMContentLoaded', 
-  Register.load.call(Register) , 
+  Register.l10n.bind(Register) , 
+  { once: true });
+window.document.addEventListener('load', 
+  Register.load.bind(Register) , 
   { once: true });
 
 //	ondialogcancel="var cancelRegister.cancel.bind(Register); cancel();"

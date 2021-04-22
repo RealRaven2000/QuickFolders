@@ -452,8 +452,7 @@ QuickFolders.Options = {
     options.configExtra2Button();
     
     // [mx-l10n]
-    util.localize(document, {"extra2":'qf.label.donate'});
-    
+    util.localize(window, {extra2: 'qf.label.donate'});
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
   },
   

@@ -89,7 +89,7 @@
       maxResults.addEventListener("change", function(evt) { qmSettings.changeMaxResults(maxResults)} );
       
       
-      // mx-l10n
+      // [mx-l10n]
       var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
       let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
 

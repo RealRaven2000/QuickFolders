@@ -470,6 +470,13 @@ END LICENSE BLOCK */
     ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving -
                    this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
+  5.6
+    ## web extensions localization. [mx-l10n]
+    ##   removed the legacy way of localization
+    ##   conversion of all dtd and properties files to messages.json
+    ##   calling overlay localisation with i18n.js
+    ## 	 replaced bundle strings - removed all instances of GetStringFromName
+    ##   label dialog extra buttons manually after i18n.updateDocument
 
 
     

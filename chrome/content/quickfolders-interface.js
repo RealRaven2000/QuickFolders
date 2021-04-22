@@ -115,15 +115,7 @@ QuickFolders.Interface = {
 	} ,
 
 	getUIstring: function getUIstring(id, defaultString) {
-		let s;
-		try {
-			s = QuickFolders.Properties.GetStringFromName(id);
-		}
-		catch(ex) {
-			QuickFolders.Util.logException('Exception during getUIstring(' + id + ') ', ex);
-			s = defaultString;
-		}
-		return s;
+    return QuickFolders.Util.getBundleString(id, defaultString);
 	},
 
 	setBoundKeyListener: function setBoundKeyListener(b) {

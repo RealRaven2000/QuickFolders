@@ -16,13 +16,7 @@ QuickFolders.ChangeOrder = {
 	downString: "",
 
 	getUIstring: function(id, defaultString) {
-		let s;
-		try{s=QuickFolders_bundle.GetStringFromName(id);}
-		catch(e) { 
-			QuickFolders.Util.logException('Exception during getUIstring(' + id + ') ', e);
-			s = defaultString; 
-		}
-		return s;
+		return QuickFolders.Util.getBundleString(id, defaultString);
 	},
 
 	init: function(window) {

@@ -157,7 +157,7 @@ QuickFolders.AdvancedTab = {
 		tabHeader.setAttribute('tooltiptext', 'URI: ' + this.folder ? this.folder.URI : QuickFolders.AdvancedTab.folder.URI);
 		tabName.value = entry.name;
     
-    // mx-l10n
+    // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
     let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
 
@@ -165,8 +165,10 @@ QuickFolders.AdvancedTab = {
     let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
     Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
     i18n.updateDocument({extension});
-    
-		
+    // localize extra buttons:
+    document.documentElement.getButton("extra1").label = extension.localeData.localizeMessage('btnApply'); // apply
+    document.documentElement.getButton("extra2").label = extension.localeData.localizeMessage('btnReset'); // reset
+
 		this.updateCSSpreview();
     
     // we wait as the width isn't correct on load

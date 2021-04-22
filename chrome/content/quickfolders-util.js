@@ -1349,12 +1349,17 @@ QuickFolders.Util = {
 	},
 
 	getBundleString: function getBundleString(id, defaultText) { // moved from local copies in various modules.
-		let s="";
-		try {
-			s= QuickFolders.Properties.GetStringFromName(id);
+    // [mx-l10n]
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be');
+    let localized = extension.localeData.localizeMessage(id);
+  
+		let s = "";
+		if (localized) {
+			s = localized;
 		}
-		catch(e) {
-			s= defaultText;
+		else {
+			s = defaultText;
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
 		}
 		return s;

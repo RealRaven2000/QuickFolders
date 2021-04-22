@@ -451,7 +451,7 @@ QuickFolders.Options = {
     panels.addEventListener('select', function(evt) { QuickFolders.Options.onTabSelect(panels,evt); } );
     options.configExtra2Button();
     
-    // mx-l10n
+    // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
     let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
 
@@ -460,6 +460,11 @@ QuickFolders.Options = {
     Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
     i18n.updateDocument({extension});
     
+    // dialog buttons need to be localized separately
+    try {
+      document.documentElement.getButton("extra2").label = extension.localeData.localizeMessage('qf.label.donate'); // donate
+    }
+    catch(ex) {;}
     
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
   },

@@ -676,16 +676,7 @@ QuickFolders.FilterWorker = {
 	},
 	
   getBundleString  : function getBundleString(id) {
-    //let bundle = document.getElementById("bundle_filter");
-    try {
-      if(!this.bundle)
-        this.bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://quickfolders/locale/filters.properties");
-      return this.bundle.GetStringFromName(id);
-    }
-    catch(e) {
-      QuickFolders.Util.logException("Could not retrieve bundle string: " + id + "\n", e);
-    }
-    return '';
+    return QuickFolders.Util.getBundleString(id);
   },
 	
   selectTemplateFromList: function selectTemplateFromList(element) {
